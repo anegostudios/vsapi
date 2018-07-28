@@ -1,0 +1,46 @@
+﻿using Vintagestory.API.MathTools;
+
+namespace Vintagestory.API.Common.Entities
+{
+    public class TrackedPlayerProperties
+    {
+        public int EyesInWaterColorShift = 0;
+        public int EyesInLavaColorShift = 0;
+        public float EyesInLavaDepth = 0;
+        public float EyesInWaterDepth = 0;
+
+        public float DayLight = 1;
+        public float MoonLight = 0;
+        public double FallSpeed = 0;
+        public BlockPos PlayerChunkPos = new BlockPos();
+
+        /// <summary>
+        /// Relative value. bottom 0...1 sealevel, 1 .... 2 max-y
+        /// </summary>
+        public float posY;
+
+        /// <summary>
+        /// 0...32
+        /// </summary>
+        public float sunSlight = 21;
+
+        /// <summary>
+        /// Weather at the players position
+        /// </summary>
+        public float[] Weather;
+
+        /// <summary>
+        /// The servers playstyle
+        /// </summary>
+        public EnumPlayStyle Playstyle;
+
+
+        public TrackedPlayerProperties()
+        {
+
+        }
+
+
+
+    }
+}

@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vintagestory.API.Datastructures
+{
+    public class ByteArrayAttribute : ArrayAttribute<byte>, IAttribute
+    {
+        public ByteArrayAttribute()
+        {
+
+        }
+
+        public ByteArrayAttribute(byte[] value)
+        {
+            this.value = value;
+        }
+
+        public void ToBytes(BinaryWriter stream)
+        {
+            stream.Write((ushort)value.Length);
+            stream.Write(value);
+        }
+
+        public void FromBytes(BinaryReader stream)
+        {
+            int length = stream.ReadInt16();
+            value = stream.ReadBytes(length);
+        }
+
+        public int GetAttributeId()
+        {
+            return 8;
+        }
+
+    }
+}

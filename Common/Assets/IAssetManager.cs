@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO.Compression;
+using Vintagestory.API.Config;
+
+namespace Vintagestory.API.Common
+{
+    /*/// <summary>
+    /// Callback for when assets have been loaded. Can be registered with through the IAssetManager.
+    /// </summary>
+    /// <param name="assets"></param>
+    public delegate void AfterAssetFolderLoaded(List<IAsset> assets);*/
+
+    /// <summary>
+    /// Takes care loading, reloading and managing all files inside the assets folder. All asset names and paths are always converted to lower case.
+    /// </summary>
+    public interface IAssetManager
+    {
+        Dictionary<AssetLocation, IAsset> AllAssets { get; }
+
+        /// <summary>
+        /// Retrieves an asset from given path within the assets folder. Throws an exception when the asset does not exist. Remember to use lower case paths.
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <returns></returns>
+        IAsset Get(string Path);
+
+        /// <summary>
+        /// Retrieves an asset from given path within the assets folder. Throws an exception when the asset does not exist. Remember to use lower case paths.
+        /// </summary>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        IAsset Get(AssetLocation Location);
+
+        /// <summary>
+        /// Retrieves an asset from given path within the assets folder. Returns null when the asset does not exist. Remember to use lower case paths.
+        /// </summary>
+        /// <param name="Category"></param>
+        /// <param name="Path"></param>
+        /// <returns></returns>
+        IAsset TryGet(string Path);
+
+        /// <summary>
+        /// Retrieves an asset from given path within the assets folder. Returns null when the asset does not exist. Remember to use lower case paths.
+        /// </summary>
+        /// <param name="Location"></param>
+        /// <returns></returns>
+        IAsset TryGet(AssetLocation Location);
+
+        /// <summary>
+        /// Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched.
+        /// </summary>
+        /// <param name="pathBegins"></param>
+        /// <param name="domain"></param>
+        /// <param name="loadAsset">Whether it should load the contents of this asset</param>
+        /// <returns></returns>
+        List<IAsset> GetMany(string pathBegins, string domain = null, bool loadAsset = true);
+
+
+        /// <summary>
+        /// Searches for all assets in given basepath and uses JSON.NET to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="logger"></param>
+        /// <param name="pathBegins"></param>
+        /// <param name="domain"></param>
+        /// <returns></returns>
+        Dictionary<AssetLocation, T> GetMany<T>(ILogger logger, string pathBegins, string domain = null);
+
+
+        /// <summary>
+        /// Returns all asset locations that begins with given path and domain. If no domain is specified, all domains will be searched.
+        /// </summary>
+        /// <param name="pathBegins"></param>
+        /// <param name="domain"></param>
+        /// <returns></returns>
+        List<AssetLocation> GetLocations(string pathBegins, string domain = null);
+
+
+        /// <summary>
+        /// Retrieves an asset from given path within the assets folder and uses JSON.NET to automatically turn them into objects. Throws an exception when the asset does not exist or the conversion failed. Remember to use lower case paths.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        T Get<T>(AssetLocation location);
+
+        /// <summary>
+        /// Reloads all assets in given base location path. It returns the amount of the found locations.
+        /// </summary>
+        /// <param name="basePath"></param>
+        /// <returns></returns>
+        int Reload(AssetLocation baseLocation);
+
+        /// <summary>
+        /// Reloads all assets in given base location path. It returns the amount of the found locations.
+        /// </summary>
+        /// <param name="basePath"></param>
+        /// <returns></returns>
+        int Reload(AssetCategory category);
+
+        /// <summary>
+        /// Returns all origins in the prority order. Highest (First) to Lowest (Last)
+        /// </summary>
+        /// <returns></returns>
+        List<IAssetOrigin> GetOrigins();
+    }
+}

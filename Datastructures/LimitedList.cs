@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Vintagestory.API.Datastructures
+{
+    /// <summary>
+    /// Holds a limited amount of items, discards the lowest index item when an overflow happens
+    /// </summary>
+    public class LimitedList<TElem> : IEnumerable
+    {
+        private List<TElem> elems;
+        private int capacity;
+
+        /// <summary>
+        /// Create a new list with a given maximum capacity
+        /// </summary>
+        /// <param name="maxCapacity"></param>
+        public LimitedList(int maxCapacity)
+        {
+            elems = new List<TElem>(maxCapacity);
+            capacity = maxCapacity;
+        }
+
+        public void Add(TElem key)
+        {
+            if (elems.Count >= capacity)
+            {
+                elems.RemoveAt(0);
+            }
+            elems.Add(key);
+        }
+
+        public TElem this[int index]
+        {
+            get
+            {
+                return elems[index];
+            }
+        }
+
+        public void Clear()
+        {
+            elems.Clear();
+        }
+
+        public int Count
+        {
+            get { return elems.Count; }
+        }
+
+        public void RemoveAt(int i)
+        {
+            elems.RemoveAt(i);
+        }
+
+        public bool IsFull()
+        {
+            return elems.Count == capacity;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return elems.GetEnumerator();
+        }
+
+        public TElem[] ToArray()
+        {
+            return elems.ToArray();
+        }
+    }
+}

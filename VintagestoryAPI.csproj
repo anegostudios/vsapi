@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A3582245-A1D1-4135-BA90-8EFD7830DA83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VintagestoryAPI</RootNamespace>
+    <AssemblyName>VintagestoryAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <TargetFrameworkProfile />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>7</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\bin\Release\VintagestoryAPI.XML</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FastBuild|AnyCPU' ">
+    <OutputPath>bin\FastBuild\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="protobuf-net, Version=1.0.0.282, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\API\IAmbientManager.cs" />
+    <Compile Include="Client\API\IGuiAPI.cs" />
+    <Compile Include="Client\API\IInputAPI.cs" />
+    <Compile Include="Client\API\ITextureAtlasAPI.cs" />
+    <Compile Include="Client\Config\ClientSettingsApi.cs" />
+    <Compile Include="Client\Input\EnumGlKeys.cs" />
+    <Compile Include="Client\Input\EnumHotkeyType.cs" />
+    <Compile Include="Client\Input\HotKey.cs" />
+    <Compile Include="Client\Input\KeyCombination.cs" />
+    <Compile Include="Client\Input\KeyEvent.cs" />
+    <Compile Include="Client\Input\MouseEvent.cs" />
+    <Compile Include="Client\MeshPool\MeshDataPool.cs" />
+    <Compile Include="Client\MeshPool\MeshDataPoolManager.cs" />
+    <Compile Include="Client\MeshPool\MeshDataPoolMasterManager.cs" />
+    <Compile Include="Client\Render\FramebufferData.cs" />
+    <Compile Include="Client\Render\FramebufferRef.cs" />
+    <Compile Include="Client\Render\FrustumCulling.cs" />
+    <Compile Include="Client\UI\CairoFont.cs" />
+    <Compile Include="Client\UI\ElementBounds.cs" />
+    <Compile Include="Client\UI\ElementEmptyBounds.cs" />
+    <Compile Include="Client\UI\ElementStdBounds.cs" />
+    <Compile Include="Client\UI\Elements\ElementGeometrics.cs" />
+    <Compile Include="Client\UI\Elements\ElementSizing.cs" />
+    <Compile Include="Client\UI\Elements\Impl\GuiElement.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementButton.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementCompactScrollbar.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementControl.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementDropDown.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementHorizontalTabs.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementLever.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementListMenu.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementScrollbar.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementSlider.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementSliderOld.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementSwitch.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementSwitchOld.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementTextButton.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementVerticalTabs.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementChatInput.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementConfigList.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementDialogTitleBar.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementNumberInput.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementStatbar.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTable.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTextArea.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTextInput.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementItemSlotGrid.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementItemSlotGridBase.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementItemSlotGridExcl.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementItemSlotGridJounral.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementPassiveItemSlot.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementSkillItemGrid.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\Components\TextComponent.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\Components\TextComponentBase.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\Components\TextLinkComponent.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementDynamicText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementEditableTextBase.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementEmbossedText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementHoverText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementItemstackInfo.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementNewVersionText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementRichtext.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementCell.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementClip.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementModCell.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Misc\TableCell.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementCustomDraw.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementDialogBackground.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementEngravedText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementGameOverlay.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementGrayBackground.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementImage.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementImageBackground.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementInset.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementInsetShadedText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementParent.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementSignWithText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementStaticText.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Static\GuiElementTextBase.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Misc\SkillItem.cs" />
+    <Compile Include="Client\UI\EnumDialogType.cs" />
+    <Compile Include="Client\UI\EnumTextOrientation.cs" />
+    <Compile Include="Client\UI\FontConfig.cs" />
+    <Compile Include="Client\UI\GuiComposer.cs" />
+    <Compile Include="Client\UI\Dialog\GuiDialog.cs" />
+    <Compile Include="Client\UI\Dialog\GuiDialogBlockEntityInventory.cs" />
+    <Compile Include="Client\UI\Dialog\GuiDialogGeneric.cs" />
+    <Compile Include="Client\UI\Dialog\GuiJsonDialog.cs" />
+    <Compile Include="Client\UI\HudElement.cs" />
+    <Compile Include="Client\UI\IconUtil.cs" />
+    <Compile Include="Client\UI\TextSizeProber.cs" />
+    <Compile Include="Client\UI\TextUtil.cs" />
+    <Compile Include="Common\Collectible\Block\VertexFlags.cs" />
+    <Compile Include="Common\Collectible\CreativeTabAndStackList.cs" />
+    <Compile Include="Common\Collectible\GrindingProperties.cs" />
+    <Compile Include="Common\Model\Animation\AnimationMetaData.cs" />
+    <Compile Include="Common\Model\Animation\BlendEntityAnimator.cs" />
+    <Compile Include="Common\Model\Animation\ElementPose.cs" />
+    <Compile Include="Common\Model\Animation\RunningAnimation.cs" />
+    <Compile Include="Common\Model\Animation\ServerEntityAnimator.cs" />
+    <Compile Include="Client\Model\Mesh\IMeshPoolSupplier.cs" />
+    <Compile Include="Client\Model\Mesh\NormalUtil.cs" />
+    <Compile Include="Common\Model\Shape\AttachmentPoint.cs" />
+    <Compile Include="Client\Render\IStandardShaderProgram.cs" />
+    <Compile Include="Client\UI\JsonDialog.cs" />
+    <Compile Include="Client\UI\ElementAlignment.cs" />
+    <Compile Include="Common\API\IBulkBlockAccessor.cs" />
+    <Compile Include="Common\API\IEventAPI.cs" />
+    <Compile Include="Common\API\IMapChunk.cs" />
+    <Compile Include="Common\Assets\JsonUtil.cs" />
+    <Compile Include="Common\Assets\Mod.cs" />
+    <Compile Include="Common\ByteSerializable.cs" />
+    <Compile Include="Common\Collectible\Block\BlockSchematic.cs" />
+    <Compile Include="Client\API\ICairoFont.cs" />
+    <Compile Include="Client\API\IClientEventAPI.cs" />
+    <Compile Include="Client\API\IClientNetworkAPI.cs" />
+    <Compile Include="Client\API\IClientNetworkChannel.cs" />
+    <Compile Include="Client\API\IClientPlayer.cs" />
+    <Compile Include="Client\API\ICoreClientAPI.cs" />
+    <Compile Include="Client\API\ITesselatorAPI.cs" />
+    <Compile Include="Client\API\IRenderAPI.cs" />
+    <Compile Include="Client\API\IRenderer.cs" />
+    <Compile Include="Client\API\ModelRef.cs" />
+    <Compile Include="Client\Audio\BasicMusicTrack.cs" />
+    <Compile Include="Client\Audio\IMusicTrack.cs" />
+    <Compile Include="Client\Audio\IMusicEngine.cs" />
+    <Compile Include="Client\Audio\RainMusicTrack.cs" />
+    <Compile Include="Common\Model\Animation\AnimationJoint.cs" />
+    <Compile Include="Client\Model\Mesh\LineMeshUtil.cs" />
+    <Compile Include="Client\Render\EnumBlendMode.cs" />
+    <Compile Include="Client\Render\EnumRenderStage.cs" />
+    <Compile Include="Common\API\ICoreAPI.cs" />
+    <Compile Include="Common\API\IMapRegion.cs" />
+    <Compile Include="Common\Assets\AssetLocation.cs" />
+    <Compile Include="Common\Assets\AssetCategory.cs" />
+    <Compile Include="Common\Assets\IAssetOrigin.cs" />
+    <Compile Include="Common\Collectible\Block\BlockSelection.cs" />
+    <Compile Include="Common\Collectible\Block\Crop\CropBehavior.cs" />
+    <Compile Include="Common\Collectible\Block\Crop\Farmland.cs" />
+    <Compile Include="Common\Collectible\EnumItemUseCancelReason.cs" />
+    <Compile Include="Common\Collectible\EnumRandomizeAxes.cs" />
+    <Compile Include="Common\Collectible\ModelTransformKeyFrame.cs" />
+    <Compile Include="Common\Crafting\ClayFormingRecipe.cs" />
+    <Compile Include="Common\Crafting\KnappingRecipe.cs" />
+    <Compile Include="Common\Crafting\RecipeBase.cs" />
+    <Compile Include="Common\Crafting\SmithingRecipe.cs" />
+    <Compile Include="Common\Effect\EnumBlastType.cs" />
+    <Compile Include="Datastructures\AttributeTree\Other\ArrayAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\Other\ScalarAttribute.cs" />
+    <Compile Include="Math\Rectangle\Rectanglei.cs" />
+    <Compile Include="Datastructures\SemVer.cs" />
+    <Compile Include="Server\BuildAreaConfig.cs" />
+    <Compile Include="Server\ISaveGame.cs" />
+    <Compile Include="Server\IServerConfig.cs" />
+    <Compile Include="Util\EqualityUtil.cs" />
+    <Compile Include="Util\SerializerUtil.cs" />
+    <Compile Include="Util\StringUtil.cs" />
+    <None Include="api\index.md" />
+    <None Include="articles\intro.md" />
+    <None Include="articles\toc.md" />
+    <None Include="Common\Entity\AI\Goap\Action\ActionFleeFrom.cs" />
+    <None Include="Common\Entity\AI\Goap\Action\ActionMeleeAttack.cs" />
+    <None Include="Common\Entity\AI\Goap\Action\ActionPickup.cs" />
+    <None Include="Common\Entity\AI\Goap\Action\ActionRunTo.cs" />
+    <None Include="Common\Entity\AI\Goap\Action\ActionWalkTo.cs" />
+    <None Include="Common\Entity\AI\Goap\AIAction.cs" />
+    <None Include="Common\Entity\AI\Goap\AIGoal.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalAvoidPlayer.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalAvoidPredators.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalEatWhenHungry.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalExplore.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalFleeWhenHurt.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalHerd.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalHide.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalKillPlayer.cs" />
+    <None Include="Common\Entity\AI\Goap\Goal\GoalSleepWhenTired.cs" />
+    <Compile Include="Common\EntityBehavior\BehaviorPassivePhysics.cs" />
+    <Compile Include="Common\Entity\AI\PathTraverser\PathTraverserBase.cs" />
+    <Compile Include="Common\Entity\AI\PathTraverser\StraightLine.cs" />
+    <Compile Include="Common\Entity\AI\Task\AiTaskBase.cs" />
+    <Compile Include="Common\Entity\AI\Task\IAiTask.cs" />
+    <Compile Include="Common\Entity\EntityAgent.cs" />
+    <Compile Include="Common\Entity\EntityControls.cs" />
+    <Compile Include="Common\Entity\EntityHumanoid.cs" />
+    <Compile Include="Common\Entity\EntityItem.cs" />
+    <Compile Include="Common\Entity\EntityPlayer.cs" />
+    <Compile Include="Common\Entity\EntitySelection.cs" />
+    <Compile Include="Common\Entity\EnumEntityState.cs" />
+    <Compile Include="Common\Entity\EnumHabitat.cs" />
+    <Compile Include="Common\Entity\Player\EnumItemUsing.cs" />
+    <Compile Include="Common\IMountable.cs" />
+    <Compile Include="Common\Inventory\CreativeSlot.cs" />
+    <Compile Include="Common\Inventory\DummySlot.cs" />
+    <Compile Include="Common\Inventory\IInventoryNetworkUtil.cs" />
+    <Compile Include="Common\Inventory\InventoryBase.cs" />
+    <Compile Include="Common\Inventory\InventoryBasePlayer.cs" />
+    <Compile Include="Common\Inventory\InventoryGeneric.cs" />
+    <Compile Include="Common\Inventory\ISlotProvider.cs" />
+    <Compile Include="Common\Inventory\ItemSlot.cs" />
+    <Compile Include="Common\Inventory\ItemSlotCharacter.cs" />
+    <Compile Include="Common\Inventory\ItemSlotOutput.cs" />
+    <Compile Include="Common\Inventory\ItemSlotSurvival.cs" />
+    <Compile Include="Common\Inventory\ItemSlotUniversal.cs" />
+    <Compile Include="Common\Inventory\ItemStackMergeOperation.cs" />
+    <Compile Include="Common\Particle\BlockVoxelParticles.cs" />
+    <Compile Include="Common\Particle\CollectibleParticleProperties.cs" />
+    <Compile Include="Common\Particle\ParticlesProviderBase.cs" />
+    <Compile Include="Common\Texture\BitmapExternal.cs" />
+    <Compile Include="Common\Weather\AmbientModifier.cs" />
+    <Compile Include="Datastructures\AttributeTree\BoolArrayAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\BoolAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\DoubleAttrayAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\FloatArrayAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\IntArrayAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\LongArrayAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\TreeArrayAttribute.cs" />
+    <Compile Include="Datastructures\ListDictionary.cs" />
+    <Compile Include="Common\Particle\ExplosionParticles.cs" />
+    <Compile Include="Common\Particle\IParticleInstance.cs" />
+    <Compile Include="Common\Worldproperty\MetalProperty.cs" />
+    <Compile Include="Common\Worldproperty\MetalPropertyVariant.cs" />
+    <Compile Include="Datastructures\AttributeTree\ByteArrayAttribute.cs" />
+    <Compile Include="Math\Rectangle\Rectangled.cs" />
+    <Compile Include="Math\Rectangle\Rectanglef.cs" />
+    <Compile Include="Math\AABBIntersectionTest.cs" />
+    <Compile Include="Math\CollisionTester.cs" />
+    <Compile Include="Math\Crc32Algorithm.cs" />
+    <Compile Include="Math\Cuboid\ICuboid.cs" />
+    <Compile Include="Math\MapUtil.cs" />
+    <Compile Include="Math\Matrix\MatrixTools.cs" />
+    <Compile Include="Math\ShapeUtil.cs" />
+    <Compile Include="Math\Sphere.cs" />
+    <Compile Include="Math\Vector\IVec3.cs" />
+    <Compile Include="Math\Vector\Ray.cs" />
+    <Compile Include="Math\Vector\Vec4d.cs" />
+    <Compile Include="Math\Vector\Vec4f.cs" />
+    <Compile Include="Math\WeightedValue.cs" />
+    <Compile Include="Server\API\IServerEventAPI.cs" />
+    <Compile Include="Common\API\IClassRegistryAPI.cs" />
+    <Compile Include="Server\API\IServerAPI.cs" />
+    <Compile Include="Server\API\IServerNetworkAPI.cs" />
+    <Compile Include="Server\API\IServerPlayer.cs" />
+    <Compile Include="Server\API\IWorldManagerAPI.cs" />
+    <Compile Include="Config\Lang.cs" />
+    <Compile Include="Datastructures\AttributeTree\DoubleAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\FloatAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\IntAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\ItemstackAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\LongAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\StringArrayAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\StringAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\Other\SyncedTreeAttribute.cs" />
+    <Compile Include="Datastructures\AttributeTree\TreeAttribute.cs" />
+    <Compile Include="Datastructures\CachedCuboidList.cs" />
+    <Compile Include="Common\Chat\CmdArgs.cs" />
+    <Compile Include="Common\Entity\EntityRenderer.cs" />
+    <Compile Include="Common\Collectible\ItemStack.cs" />
+    <Compile Include="Datastructures\AttributeTree\Other\JsonTreeAttribute.cs" />
+    <Compile Include="Datastructures\StackMatrix4.cs" />
+    <Compile Include="Common\Entity\EnumEntityActivity.cs" />
+    <Compile Include="Common\Weather\EnumWeatherPattern.cs" />
+    <Compile Include="Datastructures\AttributeTree\Other\IAttribute.cs" />
+    <Compile Include="Common\Collectible\IBlockEntityContainer.cs" />
+    <Compile Include="Common\Entity\Player\IEntityPlayer.cs" />
+    <Compile Include="Datastructures\AttributeTree\ITreeAttribute.cs" />
+    <Compile Include="Client\Audio\CaveMusicTrack.cs" />
+    <Compile Include="Client\Audio\MusicTrackPart.cs" />
+    <Compile Include="Common\Entity\Entity.cs" />
+    <Compile Include="Datastructures\AttributeTree\Other\EnumAttributeType.cs" />
+    <Compile Include="Client\EnumCameraType.cs" />
+    <Compile Include="Client\Render\EnumFaceCullMode.cs" />
+    <Compile Include="Common\EnumHandled.cs" />
+    <Compile Include="Common\Collectible\Item\EnumItemCategory.cs" />
+    <Compile Include="Common\Controls\EnumLockFlyPlaneMode.cs" />
+    <Compile Include="Common\EnumHighlightShape.cs" />
+    <Compile Include="Common\Controls\EnumModifierKey.cs" />
+    <Compile Include="Common\Collectible\EnumTool.cs" />
+    <Compile Include="Common\Assets\IAssetManager.cs" />
+    <Compile Include="Common\Model\Shape\IBlockShapeSupplier.cs" />
+    <Compile Include="Common\Entity\IEntityAgent.cs" />
+    <Compile Include="Common\API\IGameCalendar.cs" />
+    <Compile Include="Common\API\IModLoader.cs" />
+    <Compile Include="Server\API\IServerNetworkChannel.cs" />
+    <Compile Include="Server\ITreeGenerator.cs" />
+    <Compile Include="Server\IServerPlayerData.cs" />
+    <Compile Include="Server\Worldgen\IWorldGenHandler.cs" />
+    <Compile Include="Common\Entity\Player\IPlayer.cs" />
+    <Compile Include="Client\Render\IShaderProgram.cs" />
+    <Compile Include="Client\API\IShaderAPI.cs" />
+    <Compile Include="Client\Render\ITerrainMeshPool.cs" />
+    <Compile Include="Client\Texture\ITextureSource.cs" />
+    <Compile Include="Server\Worldgen\IWorldGenBlockAccessor.cs" />
+    <Compile Include="Math\Cuboid\Cuboidi.cs" />
+    <Compile Include="Math\FastRandom.cs" />
+    <Compile Include="Common\Collectible\Collectible.cs" />
+    <Compile Include="Common\Model\Animation\FastEntityAnimator.cs" />
+    <Compile Include="Common\Entity\EntityBehavior.cs" />
+    <Compile Include="Client\UI\ItemRenderInfo.cs" />
+    <Compile Include="Common\Particle\AirBubbleParticles.cs" />
+    <Compile Include="Common\Particle\SimpleParticleProperties.cs" />
+    <Compile Include="Common\Particle\WaterSplashParticles.cs" />
+    <Compile Include="Common\Model\Animation\Animation.cs" />
+    <Compile Include="Common\Collectible\Block\BlockBehavior.cs" />
+    <Compile Include="Config\GlobalConstants.cs" />
+    <Compile Include="Config\RuntimeEnv.cs" />
+    <Compile Include="Datastructures\BoolRef.cs" />
+    <Compile Include="Math\EnumAxis.cs" />
+    <Compile Include="Config\GameVersion.cs" />
+    <Compile Include="Client\Render\EnumDrawMode.cs" />
+    <Compile Include="Client\Render\EnumHighlightBlocksMode.cs" />
+    <Compile Include="Client\Render\EnumRenderPass.cs" />
+    <Compile Include="Common\API\IBlockAccessorRevertable.cs" />
+    <Compile Include="Client\API\IClientWorldAccessor.cs" />
+    <Compile Include="Common\Entity\IEntityNpc.cs" />
+    <Compile Include="Server\API\IServerWorldAccessor.cs" />
+    <Compile Include="Math\Cuboid\Cuboidd.cs" />
+    <Compile Include="Math\Cuboid\Cuboidf.cs" />
+    <Compile Include="Datastructures\IOrderedDictionary.cs" />
+    <Compile Include="Datastructures\LimitedList.cs" />
+    <Compile Include="Datastructures\OrderedDictionary.cs" />
+    <Compile Include="Datastructures\UniqueQueue.cs" />
+    <Compile Include="Math\Vector\Vec2d.cs" />
+    <Compile Include="Math\Vector\Vec2f.cs" />
+    <Compile Include="Math\Vector\Vec4i.cs" />
+    <Compile Include="Server\EnumClientState.cs" />
+    <Compile Include="Common\Collectible\Block\EnumBlockMaterial.cs" />
+    <Compile Include="Common\Chat\EnumChatType.cs" />
+    <Compile Include="Client\Render\EnumChunkRenderPass.cs" />
+    <Compile Include="Math\EnumCombination.cs" />
+    <Compile Include="Common\Combat\EnumDamageType.cs" />
+    <Compile Include="Common\Combat\EnumDespawnReason.cs" />
+    <Compile Include="Common\Collectible\Item\EnumItemDamageSource.cs" />
+    <Compile Include="Client\Render\EnumItemRenderTarget.cs" />
+    <Compile Include="Common\Particle\EnumParticleModel.cs" />
+    <Compile Include="Common\Entity\Player\EnumPlayerGroupMemberShip.cs" />
+    <Compile Include="Common\Playstyle\EnumPlayStyle.cs" />
+    <Compile Include="Common\Playstyle\EnumPlayStyleFlag.cs" />
+    <Compile Include="Server\Worldgen\EnumWorldgenPreset.cs" />
+    <Compile Include="Server\Worldgen\IChunkProviderThread.cs" />
+    <Compile Include="Common\Entity\IEntity.cs" />
+    <Compile Include="Client\Audio\ILoadedSound.cs" />
+    <Compile Include="Common\API\ILogger.cs" />
+    <Compile Include="Server\Worldgen\INeighbourChunkProvider.cs" />
+    <Compile Include="Common\Particle\IParticlePropertiesProvider.cs" />
+    <Compile Include="Common\API\IBlockAccesor.cs" />
+    <Compile Include="Datastructures\LimitedDictionary.cs" />
+    <Compile Include="Common\Entity\Player\IWorldPlayerData.cs" />
+    <Compile Include="Common\Entity\Player\IPlayerInventoryManager.cs" />
+    <Compile Include="Server\IPlayerPrivilegeGroup.cs" />
+    <Compile Include="Common\API\IWorldChunk.cs" />
+    <Compile Include="Common\API\IWorldAccessor.cs" />
+    <Compile Include="Math\Matrix\Mat22.cs" />
+    <Compile Include="Math\Matrix\Mat23.cs" />
+    <Compile Include="Math\Matrix\Mat3d.cs" />
+    <Compile Include="Math\Matrix\Mat3f.cs" />
+    <Compile Include="Math\Matrix\Mat4d.cs" />
+    <Compile Include="Math\Matrix\Mat4f.cs" />
+    <Compile Include="Math\Matrix\Quaternion.cs" />
+    <Compile Include="Common\Texture\BitmapRef.cs" />
+    <Compile Include="Common\Collectible\Block\Crop\BlockCropProperties.cs" />
+    <Compile Include="Common\Collectible\Block\BlockEntity.cs" />
+    <Compile Include="Common\Particle\AdvancedParticleProperties.cs" />
+    <Compile Include="Common\Entity\EntityType.cs" />
+    <Compile Include="Common\Collectible\JsonItemStack.cs" />
+    <Compile Include="Common\Collectible\Item\MetalAlloy.cs" />
+    <Compile Include="Common\Collectible\Item\MetalAlloyIngredient.cs" />
+    <Compile Include="Common\Model\Animation\AnimationFrame.cs" />
+    <Compile Include="Common\Model\Shape\CompositeShape.cs" />
+    <Compile Include="Client\Texture\CompositeTexture.cs" />
+    <Compile Include="Datastructures\RotatableCube.cs" />
+    <Compile Include="Common\Chat\ChatCommand.cs" />
+    <Compile Include="Common\Chat\ChatLine.cs" />
+    <Compile Include="Common\Combat\DamageSource.cs" />
+    <Compile Include="Common\Entity\EntityDespawn.cs" />
+    <Compile Include="Datastructures\IntMap.cs" />
+    <Compile Include="Math\ColorUtil.cs" />
+    <Compile Include="Math\BlockFacing.cs" />
+    <Compile Include="Math\BlockPos.cs" />
+    <Compile Include="Common\Entity\EntityPos.cs" />
+    <Compile Include="Common\Entity\SyncedEntityPos.cs" />
+    <Compile Include="Math\Vector\Vec2i.cs" />
+    <Compile Include="Math\Vector\Vec3d.cs" />
+    <Compile Include="Math\Vector\Vec3f.cs" />
+    <Compile Include="Math\Vector\Vec3i.cs" />
+    <Compile Include="Server\EnumCheatProtectionLevel.cs" />
+    <Compile Include="Common\Combat\EnumDamageSource.cs" />
+    <Compile Include="Common\Combat\EnumDeathReason.cs" />
+    <Compile Include="Common\Entity\Player\EnumGameMode.cs" />
+    <Compile Include="Common\EnumLogType.cs" />
+    <Compile Include="Common\Controls\EnumMouseButton.cs" />
+    <Compile Include="Common\API\EnumAppSide.cs" />
+    <Compile Include="Server\EnumServerRunPhase.cs" />
+    <Compile Include="Common\Controls\EnumSpecialKey.cs" />
+    <Compile Include="Math\EnumTransformFunction.cs" />
+    <Compile Include="Server\Worldgen\EnumWorldGenPass.cs" />
+    <Compile Include="Common\Assets\IAsset.cs" />
+    <Compile Include="Common\Inventory\IInventory.cs" />
+    <Compile Include="Common\Collectible\IItemStack.cs" />
+    <Compile Include="Server\API\IServerChunk.cs" />
+    <Compile Include="Common\Inventory\IItemSlot.cs" />
+    <Compile Include="Math\GameMath.cs" />
+    <Compile Include="Math\Noise\ClampedNoise.cs" />
+    <Compile Include="Math\Noise\NormalizedNoise.cs" />
+    <Compile Include="Math\Noise\SimplexOctave.cs" />
+    <Compile Include="Common\Model\Animation\AnimationKeyFrame.cs" />
+    <Compile Include="Common\Model\Animation\AnimationKeyFrameElement.cs" />
+    <Compile Include="Client\Model\Mesh\CustomMeshDataPart.cs" />
+    <Compile Include="Common\Model\Shape\Shape.cs" />
+    <Compile Include="Common\Model\Shape\ShapeElement.cs" />
+    <Compile Include="Common\Model\Shape\ShapeElementFace.cs" />
+    <Compile Include="Common\Collectible\Block\Block.cs" />
+    <Compile Include="Common\Collectible\CollectibleVariantGroup.cs" />
+    <Compile Include="Client\UI\EnumFontStyle.cs" />
+    <Compile Include="Client\Render\EnumDrawType.cs" />
+    <Compile Include="Common\Collectible\Block\EnumMatterState.cs" />
+    <Compile Include="Common\Collectible\CombustibleProperties.cs" />
+    <Compile Include="Common\Crafting\GridRecipe.cs" />
+    <Compile Include="Common\Crafting\CraftingRecipeIngredient.cs" />
+    <Compile Include="Common\Collectible\Item\Item.cs" />
+    <Compile Include="Common\Collectible\EnumItemClass.cs" />
+    <Compile Include="Common\API\Delegates.cs" />
+    <Compile Include="Common\Collectible\Block\BlockDropItemStack.cs" />
+    <Compile Include="Common\Collectible\NutritionProperties.cs" />
+    <Compile Include="Common\API\ModSystem.cs" />
+    <Compile Include="Common\Collectible\ModelTransform.cs" />
+    <Compile Include="Server\MultiplayerServerEntry.cs" />
+    <Compile Include="Server\PlayerGroup.cs" />
+    <Compile Include="Server\PlayerGroupMembership.cs" />
+    <Compile Include="Server\PlayerSpawn.cs" />
+    <Compile Include="Server\Privilege.cs" />
+    <Compile Include="Client\Model\Mesh\CustomMeshDataPartByte.cs" />
+    <Compile Include="Client\Model\Mesh\CustomMeshDataPartFloat.cs" />
+    <Compile Include="Client\Model\Mesh\CustomMeshDataPartInt.cs" />
+    <Compile Include="Client\Texture\LoadedTexture.cs" />
+    <Compile Include="Client\Model\Mesh\MeshData.cs" />
+    <Compile Include="Client\Model\Mesh\CubeMeshUtil.cs" />
+    <Compile Include="Client\Model\Mesh\QuadMeshUtil.cs" />
+    <Compile Include="Client\UI\TextBackground.cs" />
+    <Compile Include="Client\Audio\SoundParams.cs" />
+    <Compile Include="Client\Texture\TextureAtlasPosition.cs" />
+    <Compile Include="Common\Entity\Player\TrackedProperties.cs" />
+    <Compile Include="Common\Inventory\WeightedSlot.cs" />
+    <Compile Include="Math\EvolvingNatFloat.cs" />
+    <Compile Include="Math\NatFloat.cs" />
+    <Compile Include="Common\Collectible\Block\BlockSounds.cs" />
+    <Compile Include="Common\Worldproperty\WorldProperty.cs" />
+    <Compile Include="Common\Worldproperty\WorldPropertyVariant.cs" />
+    <Compile Include="Server\API\ICoreServerAPI.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\ArrayExtensions.cs" />
+    <Compile Include="Math\Ascii85.cs" />
+    <Compile Include="Util\DictExtensions.cs" />
+    <Compile Include="Util\HashsetExtensions.cs" />
+    <Compile Include="Datastructures\JsonObject.cs" />
+    <Compile Include="Util\ListExtensions.cs" />
+    <Compile Include="Util\ReaderWriterExtensions.cs" />
+    <None Include="docfx.json" />
+    <None Include="index.md" />
+    <None Include="packages.config" />
+    <None Include="toc.yml" />
+    <Compile Include="Common\API\ModInfo.cs" />
+    <Compile Include="Common\API\ModInfoAttribute.cs" />
+    <Compile Include="Common\API\ModDependency.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cairo\Cairo.csproj">
+      <Project>{364577DB-9728-4951-AC2C-EDF7A6FCC09D}</Project>
+      <Name>Cairo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Config\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\docfx.console.2.32.0\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.32.0\build\docfx.console.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\docfx.console.2.32.0\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.32.0\build\docfx.console.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

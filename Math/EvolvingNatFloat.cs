@@ -1,0 +1,131 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Newtonsoft.Json;
+using System.IO;
+
+namespace Vintagestory.API.MathTools
+{
+    public delegate float TransformFunction(float firstvalue, float factor, float sequence);
+
+    /// <summary>
+    /// A number generator whose return value changes over time, parametrized by a transform function and some constants
+    /// </summary>
+    [JsonObject(MemberSerialization.OptIn)]
+    public class EvolvingNatFloat
+    {
+        static TransformFunction[] transfuncs;
+
+        static EvolvingNatFloat()
+        {
+            transfuncs = new TransformFunction[20];
+
+            transfuncs[(int)EnumTransformFunction.IDENTICAL] = (firstval, factor, seq) => { return firstval; };
+
+            transfuncs[(int)EnumTransformFunction.LINEAR] = (firstval, factor, seq) => { return firstval + factor * seq; };
+
+            transfuncs[(int)EnumTransformFunction.INVERSELINEAR] = (firstval, factor, seq) => { return firstval + 1f / (1f + factor * seq); };
+
+            transfuncs[(int)EnumTransformFunction.LINEARNULLIFY] = (firstval, factor, seq) => {
+                return
+                    factor > 0 ?
+                    Math.Min(0, firstval + factor * seq) :
+                    Math.Max(0, firstval + factor * seq)
+                ;
+            };
+
+            transfuncs[(int)EnumTransformFunction.LINEARREDUCE] = (firstval, factor, seq) => { return firstval - firstval / Math.Abs(firstval) * factor * seq; };
+
+            transfuncs[(int)EnumTransformFunction.LINEARINCREASE] = (firstval, factor, seq) => { return firstval + firstval / Math.Abs(firstval) * factor * seq; };
+
+            transfuncs[(int)EnumTransformFunction.QUADRATIC] = (firstval, factor, seq) => { return firstval + Math.Sign(factor) * (factor * seq) * (factor * seq); };
+
+            transfuncs[(int)EnumTransformFunction.ROOT] = (firstval, factor, seq) => { return firstval + (float)Math.Sqrt(factor * seq); };
+
+            transfuncs[(int)EnumTransformFunction.SINUS] = (firstval, factor, seq) => { return firstval + GameMath.FastSin(factor * seq); };
+
+            transfuncs[(int)EnumTransformFunction.CLAMPEDPOSITIVESINUS] = (firstval, factor, seq) => { return firstval * GameMath.Min(5 * Math.Abs(GameMath.FastSin(factor * seq)), 1); };
+
+            transfuncs[(int)EnumTransformFunction.COSINUS] = (firstval, factor, seq) => { return firstval + GameMath.FastCos(factor * seq); };
+
+            transfuncs[(int)EnumTransformFunction.SMOOTHSTEP] = (firstval, factor, seq) => { return firstval + GameMath.SmoothStep(factor * seq); };
+        }
+
+
+        [JsonProperty]
+        EnumTransformFunction transform = EnumTransformFunction.IDENTICAL;
+        [JsonProperty]
+        float factor = 0;
+        [JsonProperty]
+        float? maxvalue;
+
+        public EvolvingNatFloat()
+        {   
+        }
+
+        public EvolvingNatFloat(EnumTransformFunction transform, float factor)
+        {
+            this.transform = transform;
+            this.factor = factor;
+        }
+
+        public static EvolvingNatFloat createIdentical(float value)
+        {
+            return new EvolvingNatFloat(EnumTransformFunction.IDENTICAL, 0f);
+        }
+
+
+
+        public static EvolvingNatFloat create(EnumTransformFunction function, float factor)
+        {
+            return new EvolvingNatFloat(function, factor);
+        }
+
+        
+      
+
+        EvolvingNatFloat setMax(float? value)
+        {
+            this.maxvalue = value;
+            return this;
+        }
+
+
+
+        // Sequence should always run from 0 to 1000
+        public float nextFloat(float firstvalue, float sequence)
+        {
+            float result = transfuncs[(int)transform](firstvalue, factor, sequence);
+            if (maxvalue != null) return Math.Min((float)maxvalue, result);
+            return result;
+        }
+
+
+        public EvolvingNatFloat Clone()
+        {
+            EvolvingNatFloat copy = (EvolvingNatFloat)MemberwiseClone();
+            return copy;
+        }
+
+        public void FromBytes(BinaryReader reader)
+        {
+            transform = (EnumTransformFunction)reader.ReadByte();
+            factor = reader.ReadSingle();
+        }
+
+        public void ToBytes(BinaryWriter writer)
+        {
+            writer.Write((byte)transform);
+            writer.Write(factor);
+        }
+
+       
+        public static EvolvingNatFloat CreateFromBytes(BinaryReader reader)
+        {
+            EvolvingNatFloat evo = new EvolvingNatFloat();
+            evo.FromBytes(reader);
+            return evo;
+        }
+    }
+}
