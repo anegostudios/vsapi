@@ -20,6 +20,19 @@ namespace Vintagestory.API.MathTools
         public double Y2;
         public double Z2;
 
+        /// <summary>
+        /// X2-X1
+        /// </summary>
+        public double Width => X2 - X1;
+        /// <summary>
+        /// Y2-Y1
+        /// </summary>
+        public double Height => Y2 - Y1;
+        /// <summary>
+        /// Z2-Z1
+        /// </summary>
+        public double Length => Z2 - Z1;
+
         public Vec3d Start
         {
             get { return new Vec3d(X1, Y1, Z1); }
@@ -80,16 +93,16 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        public Cuboidd Add(IVec3 vec)
+        public Cuboidd Translate(IVec3 vec)
         {
-            Add(vec.XAsDouble, vec.YAsDouble, vec.ZAsDouble);
+            Translate(vec.XAsDouble, vec.YAsDouble, vec.ZAsDouble);
             return this;
         }
 
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        public Cuboidd Add(double posX, double posY, double posZ)
+        public Cuboidd Translate(double posX, double posY, double posZ)
         {
             this.X1 += posX;
             this.Y1 += posY;
@@ -100,29 +113,17 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
-        /// <summary>
-        /// Substractes the given offset to the cuboid
-        /// </summary>
-        public Cuboidd Sub(IVec3 vec)
+        public Cuboidd GrowBy(double dx, double dy, double dz)
         {
-            Sub(vec.XAsDouble, vec.YAsDouble, vec.ZAsDouble);
+            this.X1 -= dx;
+            this.Y1 -= dy;
+            this.Z1 -= dz;
+            this.X2 += dx;
+            this.Y2 += dy;
+            this.Z2 += dz;
             return this;
         }
-
-        /// <summary>
-        /// Substractes the given offset to the cuboid
-        /// </summary>
-        public Cuboidd Sub(double posX, double posY, double posZ)
-        {
-            this.X1 -= posX;
-            this.Y1 -= posY;
-            this.Z1 -= posZ;
-            this.X2 -= posX;
-            this.Y2 -= posY;
-            this.Z2 -= posZ;
-            return this;
-        }
-
+        
         /// <summary>
         /// Returns if the given point is inside the cuboid
         /// </summary>
@@ -181,6 +182,11 @@ namespace Vintagestory.API.MathTools
             double cz = z - GameMath.Clamp(z, Z1, Z2);
 
             return Math.Sqrt(cx*cx + cy*cy + cz*cz);
+        }
+
+        public Cuboidi ToCuboidi()
+        {
+            return new Cuboidi((int)X1, (int)Y1, (int)Z1, (int)X2, (int)Y2, (int)Z2);
         }
 
 

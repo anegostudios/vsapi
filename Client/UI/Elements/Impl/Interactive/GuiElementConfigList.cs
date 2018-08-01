@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -70,7 +71,7 @@ namespace Vintagestory.API.Client
             }
 
             innerBounds = Bounds.FlatCopy();
-            innerBounds.fixedHeight = totalHeight / ClientSettingsApi.GUIScale; // Unscaled value!
+            innerBounds.fixedHeight = totalHeight / RuntimeEnv.GUIScale; // Unscaled value!
             innerBounds.CalcWorldBounds();
         }
 
@@ -127,8 +128,8 @@ namespace Vintagestory.API.Client
         {
             api.Render.Render2DTexturePremultipliedAlpha(textureId, innerBounds);
 
-            int mouseX = api.Input.GetMouseCurrentX();
-            int mouseY = api.Input.GetMouseCurrentY();
+            int mouseX = api.Input.MouseX;
+            int mouseY = api.Input.MouseY;
 
             double diff;
 
@@ -148,10 +149,10 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            if (!innerBounds.parentBounds.PointInside(args.X, args.Y)) return;
+            if (!innerBounds.ParentBounds.PointInside(args.X, args.Y)) return;
 
-            int mouseX = api.Input.GetMouseCurrentX();
-            int mouseY = api.Input.GetMouseCurrentY(); // - (int)bounds.fixedY + 5
+            int mouseX = api.Input.MouseX;
+            int mouseY = api.Input.MouseY; // - (int)bounds.fixedY + 5
             double diff;
 
             if (innerBounds.PointInside(mouseX, mouseY))

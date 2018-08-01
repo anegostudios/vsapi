@@ -123,5 +123,10 @@ namespace Vintagestory.API.Common
                   | (windWave ? 1 : 0) << 11
                   | (waterWave ? 1 : 0) << 12;
         }
+
+        public VertexFlags Clone()
+        {
+            return new VertexFlags(All);
+        }
     }
 }

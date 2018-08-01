@@ -21,8 +21,8 @@ namespace Vintagestory.API.Client
         public float[] PosY;
         [JsonProperty]
         public float[] Sunlight;
-        [JsonProperty]
-        public Dictionary<EnumWeatherPattern, float[]> Weather = new Dictionary<EnumWeatherPattern, float[]>();
+        //[JsonProperty]
+        //public Dictionary<EnumWeatherPattern, float[]> Weather = new Dictionary<EnumWeatherPattern, float[]>();
         [JsonProperty]
         public AssetLocation[] Files;
 
@@ -77,11 +77,11 @@ namespace Vintagestory.API.Client
                 applied++;
             }
 
-            foreach (var val in Weather)
+            /*foreach (var val in Weather)
             {
                 suitability += GameMath.TriangleStep(props.Weather[(int)val.Key], val.Value[0], val.Value[1]);
                 applied++;
-            }
+            }*/
 
             if (applied == 0) return 1;
 

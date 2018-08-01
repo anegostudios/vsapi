@@ -93,6 +93,15 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Called when the block was broken in survival mode or through explosions and similar. Generally in situations where you probably want 
+        /// to drop the block entity contents, if it has any
+        /// </summary>
+        public virtual void OnBlockBroken()
+        {
+
+        }
+
+        /// <summary>
         /// Called when the chunk the block entity resides in was unloaded. Removes the game tick listeners, so still call the base method
         /// </summary>
         public virtual void OnBlockUnloaded()

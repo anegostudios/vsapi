@@ -5,6 +5,7 @@ using Cairo;
 using Vintagestory.API.Common;
 using Vintagestory.API.Client;
 using System.Drawing;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {    
@@ -104,7 +105,7 @@ namespace Vintagestory.API.Client
 
         public static double scaled(double value)
         {
-            return value * ClientSettingsApi.GUIScale;
+            return value * RuntimeEnv.GUIScale;
         }
 
 
@@ -443,7 +444,7 @@ namespace Vintagestory.API.Client
         public virtual bool IsPositionInside(int posX, int posY)
         {
             return 
-                InsideClipElement ? Bounds.parentBounds.PointInside(posX, posY) : Bounds.PointInside(posX, posY);
+                InsideClipElement ? Bounds.ParentBounds.PointInside(posX, posY) : Bounds.PointInside(posX, posY);
         }
 
         public virtual int OutlineColor()

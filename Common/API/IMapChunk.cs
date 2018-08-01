@@ -13,8 +13,19 @@ namespace Vintagestory.API.Common
 
         EnumWorldGenPass CurrentPass { get; set; }
 
-        void SetModdata(string key, byte[] data);
-        byte[] GetModdata(string key);
+        /// <summary>
+        /// Can be used to store custom data along with the map chunk
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        void SetData(string key, byte[] data);
+
+        /// <summary>
+        /// Can be used to retrieve custom data from the map chunk (as previously set by SetModdata)
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        byte[] GetData(string key);
 
         
         /// <summary>
@@ -32,6 +43,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         ushort[] TopRockIdMap { get; }
 
+        /// <summary>
+        /// Causes the TTL counter to reset so that it the mapchunk does not unload. No effect when called client side.
+        /// </summary>
         void MarkFresh();
+
+        /// <summary>
+        /// Tells the server that it has to save the changes of this chunk to disk. No effect when called client side.
+        /// </summary>
+        void MarkDirty();
     }
 }

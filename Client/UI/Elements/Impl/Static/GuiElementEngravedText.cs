@@ -1,6 +1,7 @@
 ﻿using System;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -23,7 +24,7 @@ namespace Vintagestory.API.Client
 
             Bounds.CalcWorldBounds();
 
-            ImageSurface insetShadowSurface = new ImageSurface(Format.Argb32, Bounds.parentBounds.OuterWidthInt, Bounds.parentBounds.OuterHeightInt);
+            ImageSurface insetShadowSurface = new ImageSurface(Format.Argb32, Bounds.ParentBounds.OuterWidthInt, Bounds.ParentBounds.OuterHeightInt);
             Context ctxInsetShadow = new Context(insetShadowSurface);
 
             ctxInsetShadow.SetSourceRGB(0, 0, 0);
@@ -37,11 +38,11 @@ namespace Vintagestory.API.Client
             insetShadowSurface.Blur(7,
                 (int)Math.Max(0, Bounds.drawX - 4),
                 (int)Math.Max(0, Bounds.drawY - 4),
-                (int)Math.Min(Bounds.parentBounds.OuterWidth, Bounds.drawX + Font.GetTextExtents(text).Width + 6),
-                (int)Math.Min(Bounds.parentBounds.OuterHeight, Bounds.drawY + ctxInsetShadow.FontExtents.Height + 6)
+                (int)Math.Min(Bounds.ParentBounds.OuterWidth, Bounds.drawX + Font.GetTextExtents(text).Width + 6),
+                (int)Math.Min(Bounds.ParentBounds.OuterHeight, Bounds.drawY + ctxInsetShadow.FontExtents.Height + 6)
             );
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.parentBounds.OuterWidthInt, Bounds.parentBounds.OuterHeightInt);
+            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.ParentBounds.OuterWidthInt, Bounds.ParentBounds.OuterHeightInt);
             Context ctxText = new Context(surface);
 
             ctxText.Operator = Operator.Source;
@@ -88,7 +89,7 @@ namespace Vintagestory.API.Client
                 ctx.MoveTo(x - extents.XBearing, x - extents.YBearing);
                 ctx.ShowText("" + c);
                 
-                x += extents.Width + spacing * ClientSettingsApi.GUIScale;
+                x += extents.Width + spacing * RuntimeEnv.GUIScale;
             }
         }
 

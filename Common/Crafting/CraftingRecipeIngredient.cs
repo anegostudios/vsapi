@@ -160,7 +160,8 @@ namespace Vintagestory.API.Common
                 IsWildCard = IsWildCard,
                 IsTool = IsTool,
                 AllowedVariants = AllowedVariants == null ? null : (string[])AllowedVariants.Clone(),
-                ResolvedItemstack = ResolvedItemstack?.Clone()
+                ResolvedItemstack = ResolvedItemstack?.Clone(),
+                ReturnedStack = ReturnedStack?.Clone()
             };
 
             if (Attributes != null) stack.Attributes = Attributes.Clone();

@@ -81,6 +81,15 @@ namespace Vintagestory.API.MathTools
             Weight = reader.ReadSingle();
             Value = reader.ReadSingle();
         }
+
+        public WeightedFloat Clone()
+        {
+            return new WeightedFloat()
+            {
+                Weight = Weight,
+                Value = Value
+            };
+        }
     }
     
     public class WeightedFloatArray : WeightedValue<float[]>
@@ -97,6 +106,16 @@ namespace Vintagestory.API.MathTools
         {
             return new WeightedFloatArray(value, weight);
         }
+
+        public WeightedFloatArray Clone()
+        {
+            return new WeightedFloatArray()
+            {
+                Weight = Weight,
+                Value = (float[])Value.Clone()
+            };
+        }
+
 
         public void ToBytes(BinaryWriter writer)
         {

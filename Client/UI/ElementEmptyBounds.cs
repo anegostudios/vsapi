@@ -26,7 +26,7 @@ namespace Vintagestory.API.Client
 
         public ElementEmptyBounds()
         {
-            bothSizing = ElementSizing.FitToChildren;
+            BothSizing = ElementSizing.FitToChildren;
         }
 
         public override void CalcWorldBounds()

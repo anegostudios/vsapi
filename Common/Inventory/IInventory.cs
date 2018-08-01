@@ -12,6 +12,11 @@ namespace Vintagestory.API.Common
     public interface IInventory
     {
         /// <summary>
+        /// Wether or not to remove the inventory from the players inventory list upon closing it
+        /// </summary>
+        bool RemoveOnClose { get; }
+
+        /// <summary>
         /// Called by item slot, if true, player cannot take items from this chest
         /// </summary>
         bool TakeLocked { get; }
@@ -46,12 +51,12 @@ namespace Vintagestory.API.Common
         HashSet<int> DirtySlots { get; }
 
         /// <summary>
-        /// Marks the inventory available for interaction for this player
+        /// Marks the inventory available for interaction for this player. Returns a open inventory packet that can be sent to the server for synchronization.
         /// </summary>
         /// <param name="player"></param>
         object Open(IPlayer player);
         /// <summary>
-        /// Removes ability to interact with this inventory for this player
+        /// Removes ability to interact with this inventory for this player. Returns a close inventory packet that can be sent to the server for synchronization.
         /// </summary>
         /// <param name="player"></param>
         object Close(IPlayer player);

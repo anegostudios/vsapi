@@ -9,6 +9,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class InventoryBasePlayer : InventoryBase
     {
+        public override bool RemoveOnClose => false;
+
         protected string playerUID;
 
         public InventoryBasePlayer(string className, string playerUID, ICoreAPI api) : base(className, playerUID, api)

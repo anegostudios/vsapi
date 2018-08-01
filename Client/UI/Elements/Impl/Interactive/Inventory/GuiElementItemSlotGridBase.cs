@@ -99,7 +99,7 @@ namespace Vintagestory.API.Client
             font.FontWeight = FontWeight.Bold;
             font.Color = new double[] { 1, 1, 1, 1 };
             font.StrokeColor = new double[] { 0, 0, 0, 1 };
-            font.StrokeWidth = ClientSettingsApi.GUIScale;
+            font.StrokeWidth = RuntimeEnv.GUIScale;
 
             textComposer = new GuiElementStaticText(api, "", EnumTextOrientation.Right, textBounds, font);
 
@@ -305,7 +305,7 @@ namespace Vintagestory.API.Client
             foreach (var val in renderedSlots)
             {
                 // Don't need to render stuff completely outside, saves us many render calls (~down to 100 draw calls instead of 600 for creative inventory)
-                if (slotBounds[i].PartiallyInside(Bounds.parentBounds))
+                if (slotBounds[i].PartiallyInside(Bounds.ParentBounds))
                 {
                     ItemSlot slot = val.Value;
 
@@ -406,7 +406,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            if (!Bounds.parentBounds.PointInside(args.X, args.Y)) return;
+            if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
             base.OnMouseDownOnElement(api, args);
             wasMouseDownOnSlotIndex.Clear();
 
@@ -446,7 +446,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
-            if (!Bounds.parentBounds.PointInside(args.X, args.Y))
+            if (!Bounds.ParentBounds.PointInside(args.X, args.Y))
             {
                 if (hoverSlotId != -1)
                 {

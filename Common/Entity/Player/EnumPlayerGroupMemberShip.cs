@@ -11,14 +11,9 @@ namespace Vintagestory.API.Common.Entities
         None,
 
         /// <summary>
-        /// Member, but chat window is usually not opened 
+        /// Member
         /// </summary>
-        TransientMember,
-
-        /// <summary>
-        /// Member, chat window always opened
-        /// </summary>
-        PersistentMember,
+        Member,
 
         /// <summary>
         /// Operator of this channel

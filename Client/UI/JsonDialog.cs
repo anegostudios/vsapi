@@ -32,7 +32,7 @@ namespace Vintagestory.API.Client
     public class JsonDialogSettings
     {
         public string Code;
-        public ElementAlignment Alignment;
+        public EnumDialogArea Alignment;
         public float PosX;
         public float PosY;
         public DialogRow[] Rows;
@@ -67,7 +67,7 @@ namespace Vintagestory.API.Client
         public void FromBytes(BinaryReader reader)
         {
             Code = reader.ReadString();
-            Alignment = (ElementAlignment)reader.ReadInt32();
+            Alignment = (EnumDialogArea)reader.ReadInt32();
             PosX = reader.ReadSingle();
             PosY = reader.ReadSingle();
             Rows = new DialogRow[reader.ReadInt32()];

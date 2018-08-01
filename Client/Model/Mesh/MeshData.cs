@@ -48,7 +48,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The second vertex color buffer. This should hold VerticesCount*4 values.
         /// </summary>
-        public byte[] rgba2;
+        public byte[] Rgba2;
 
         /// <summary>
         /// The indices buffer. This should hold IndicesCount values.
@@ -271,18 +271,18 @@ namespace Vintagestory.API.Client
         }
 
 
-        public float[] getXyz() { return xyz; }
-        public void setXyz(float[] p) { xyz = p; }
-        public byte[] getRgba() { return Rgba; }
-        public void setRgba(byte[] p) { Rgba = p; }
-        public byte[] getRgba2() { return rgba2; }
-        public void setRgba2(byte[] p) { rgba2 = p; }
-        public float[] getUv() { return Uv; }
-        public void setUv(float[] p) { Uv = p; }
-        public int[] getIndices() { return Indices; }
-        public void setIndices(int[] p) { Indices = p; }
-        public EnumDrawMode getMode() { return mode; }
-        public void setMode(EnumDrawMode p) { mode = p; }
+        public float[] GetXyz() { return xyz; }
+        public void SetXyz(float[] p) { xyz = p; }
+        public byte[] GetRgba() { return Rgba; }
+        public void SetRgba(byte[] p) { Rgba = p; }
+        public byte[] GetRgba2() { return Rgba2; }
+        public void SetRgba2(byte[] p) { Rgba2 = p; }
+        public float[] GetUv() { return Uv; }
+        public void SetUv(float[] p) { Uv = p; }
+        public int[] GetIndices() { return Indices; }
+        public void SetIndices(int[] p) { Indices = p; }
+        public EnumDrawMode GetMode() { return mode; }
+        public void SetMode(EnumDrawMode p) { mode = p; }
 
 
         /// <summary>
@@ -554,7 +554,7 @@ namespace Vintagestory.API.Client
             }
             if (withRgba2)
             {
-                rgba2 = new byte[quantityVertices * 4];
+                Rgba2 = new byte[quantityVertices * 4];
             }
             if (withFlags)
             {
@@ -659,12 +659,12 @@ namespace Vintagestory.API.Client
                         Rgba[RgbaCount + 3] = data.Rgba[vertexNum * 4 + 3];
                     }
 
-                    if (rgba2 != null)
+                    if (Rgba2 != null)
                     {
-                        rgba2[RgbaCount + 0] = data.rgba2[vertexNum * 4 + 0];
-                        rgba2[RgbaCount + 1] = data.rgba2[vertexNum * 4 + 1];
-                        rgba2[RgbaCount + 2] = data.rgba2[vertexNum * 4 + 2];
-                        rgba2[RgbaCount + 3] = data.rgba2[vertexNum * 4 + 3];
+                        Rgba2[RgbaCount + 0] = data.Rgba2[vertexNum * 4 + 0];
+                        Rgba2[RgbaCount + 1] = data.Rgba2[vertexNum * 4 + 1];
+                        Rgba2[RgbaCount + 2] = data.Rgba2[vertexNum * 4 + 2];
+                        Rgba2[RgbaCount + 3] = data.Rgba2[vertexNum * 4 + 3];
                     }
 
                     if (Flags != null)
@@ -753,12 +753,12 @@ namespace Vintagestory.API.Client
                     Rgba[RgbaCount + 3] = sourceMesh.Rgba[i * 4 + 3];
                 }
 
-                if (rgba2 != null && sourceMesh.rgba2 != null)
+                if (Rgba2 != null && sourceMesh.Rgba2 != null)
                 {
-                    rgba2[RgbaCount + 0] = sourceMesh.rgba2[i * 4 + 0];
-                    rgba2[RgbaCount + 1] = sourceMesh.rgba2[i * 4 + 1];
-                    rgba2[RgbaCount + 2] = sourceMesh.rgba2[i * 4 + 2];
-                    rgba2[RgbaCount + 3] = sourceMesh.rgba2[i * 4 + 3];
+                    Rgba2[RgbaCount + 0] = sourceMesh.Rgba2[i * 4 + 0];
+                    Rgba2[RgbaCount + 1] = sourceMesh.Rgba2[i * 4 + 1];
+                    Rgba2[RgbaCount + 2] = sourceMesh.Rgba2[i * 4 + 2];
+                    Rgba2[RgbaCount + 3] = sourceMesh.Rgba2[i * 4 + 3];
                 }
 
                 if (Flags != null && sourceMesh.Flags != null)
@@ -853,12 +853,12 @@ namespace Vintagestory.API.Client
                     Rgba[RgbaCount + 3] = (byte)((data.Rgba[i * 4 + 3] * ((lightMultiply >> 24) & 0xff)) / 255);
                 }
 
-                if (rgba2 != null)
+                if (Rgba2 != null)
                 {
-                    rgba2[RgbaCount + 0] = (byte)((data.Rgba[i * 4 + 0] * (lightMultiply2 & 0xff)) / 255);
-                    rgba2[RgbaCount + 1] = (byte)((data.Rgba[i * 4 + 1] * ((lightMultiply2 >> 8) & 0xff)) / 255);
-                    rgba2[RgbaCount + 2] = (byte)((data.Rgba[i * 4 + 2] * ((lightMultiply2 >> 16) & 0xff)) / 255);
-                    rgba2[RgbaCount + 3] = (byte)((data.Rgba[i * 4 + 3] * ((lightMultiply2 >> 24) & 0xff)) / 255);
+                    Rgba2[RgbaCount + 0] = (byte)((data.Rgba[i * 4 + 0] * (lightMultiply2 & 0xff)) / 255);
+                    Rgba2[RgbaCount + 1] = (byte)((data.Rgba[i * 4 + 1] * ((lightMultiply2 >> 8) & 0xff)) / 255);
+                    Rgba2[RgbaCount + 2] = (byte)((data.Rgba[i * 4 + 2] * ((lightMultiply2 >> 16) & 0xff)) / 255);
+                    Rgba2[RgbaCount + 3] = (byte)((data.Rgba[i * 4 + 3] * ((lightMultiply2 >> 24) & 0xff)) / 255);
                 }
 
                 if (Flags != null)
@@ -1082,7 +1082,7 @@ namespace Vintagestory.API.Client
             // Write int color into byte array
             unsafe
             {
-                fixed (byte* rgbaByte2 = rgba2)
+                fixed (byte* rgbaByte2 = Rgba2)
                 {
                     int* rgbaInt2 = (int*)rgbaByte2;
                     rgbaInt2[Rgba2Count / 4] = color2;
@@ -1180,10 +1180,10 @@ namespace Vintagestory.API.Client
             Rgba[RgbaCount + 2] = color[2];
             Rgba[RgbaCount + 3] = color[3];
 
-            rgba2[Rgba2Count + 0] = color2[0];
-            rgba2[Rgba2Count + 1] = color2[1];
-            rgba2[Rgba2Count + 2] = color2[2];
-            rgba2[Rgba2Count + 3] = color2[3];
+            Rgba2[Rgba2Count + 0] = color2[0];
+            Rgba2[Rgba2Count + 1] = color2[1];
+            Rgba2[Rgba2Count + 2] = color2[2];
+            Rgba2[Rgba2Count + 3] = color2[3];
 
             Flags[FlagsCount] = 0;
 
@@ -1352,15 +1352,15 @@ namespace Vintagestory.API.Client
                 Rgba = largerRgba;
             }
 
-            if (rgba2 != null)
+            if (Rgba2 != null)
             {
                 int rgba2Count = Rgba2Count;
                 byte[] largerRgba2 = new byte[rgba2Count * 2];
-                for (int i = 0; i < rgba2.Length; i++)
+                for (int i = 0; i < Rgba2.Length; i++)
                 {
-                    largerRgba2[i] = rgba2[i];
+                    largerRgba2[i] = Rgba2[i];
                 }
-                rgba2 = largerRgba2;
+                Rgba2 = largerRgba2;
             }
 
             if (Flags != null)
@@ -1453,12 +1453,12 @@ namespace Vintagestory.API.Client
                 }
                 
 
-                if (rgba2 != null)
+                if (Rgba2 != null)
                 {
-                    dest.rgba2 = new byte[Rgba2Count];
+                    dest.Rgba2 = new byte[Rgba2Count];
                     for (int i = 0; i < Rgba2Count; i++)
                     {
-                        dest.rgba2[i] = rgba2[i];
+                        dest.Rgba2[i] = Rgba2[i];
                     }
                 }
 

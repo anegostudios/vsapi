@@ -41,11 +41,7 @@ namespace Vintagestory.API.Common.Entities
         {
         }
 
-        public virtual void OnSetEntityName(string playername)
-        {
-            
-        }
-
+        
         public virtual void OnEntityReceiveSaturation(float saturation)
         {
             

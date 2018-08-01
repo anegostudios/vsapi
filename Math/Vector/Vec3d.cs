@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,10 +12,14 @@ namespace Vintagestory.API.MathTools
     /// Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
 
+    [ProtoContract]
     public class Vec3d : IVec3
     {
+        [ProtoMember(1)]
         public double X;
+        [ProtoMember(2)]
         public double Y;
+        [ProtoMember(3)]
         public double Z;
 
         public BlockPos AsBlockPos { get { return new BlockPos((int)X, (int)Y, (int)Z); } }
@@ -318,6 +323,10 @@ namespace Vintagestory.API.MathTools
             return new Vec3d(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
         }
 
+        public static Vec3d operator +(Vec3d left, Vec3i right)
+        {
+            return new Vec3d(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
 
         public static Vec3d operator -(Vec3d left, float right)
         {

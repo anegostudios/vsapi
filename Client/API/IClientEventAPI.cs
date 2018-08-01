@@ -61,7 +61,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="renderer"></param>
         /// <param name="renderStage"></param>
-        void RegisterRenderer(IRenderer renderer, EnumRenderStage renderStage);
+        /// <param name="profilingName">If set, the frame profile will record the frame cost for this renderer</param>
+        void RegisterRenderer(IRenderer renderer, EnumRenderStage renderStage, string profilingName = null);
+
         /// <summary>
         /// Removes a previously registered rendering handler.
         /// </summary>
@@ -98,6 +100,11 @@ namespace Vintagestory.API.Client
         /// Called when textures got reloaded
         /// </summary>
         event Common.Action OnReloadTextures;
+
+        /// <summary>
+        /// Called when the client received the level finalize packet from the server
+        /// </summary>
+        event Common.Action OnLevelFinalize;
 
         /// <summary>
         /// Called when shapes got reloaded

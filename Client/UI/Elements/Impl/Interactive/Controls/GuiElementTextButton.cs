@@ -177,7 +177,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
-            if ((enabled && Bounds.PointInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY())) || active)
+            if ((enabled && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) || active)
             {
                 if (!isOver && PlaySound) api.Gui.PlaySound("menubutton");
                 isOver = true;

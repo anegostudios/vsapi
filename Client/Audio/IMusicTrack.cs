@@ -14,7 +14,7 @@ namespace Vintagestory.API.Client
         bool IsActive { get; }
         float Priority { get; }
 
-        void Initialize(IAssetManager assetManager, IClientWorldAccessor world);
+        void Initialize(IAssetManager assetManager, ICoreClientAPI capi);
 
         bool ShouldPlay(TrackedPlayerProperties props, IMusicEngine musicEngine);
         void BeginPlay(TrackedPlayerProperties props, IMusicEngine musicEngine);

@@ -76,6 +76,18 @@ namespace Vintagestory.API.Datastructures
 			Dictionary.Add(key, value);
 			List.Insert(index, new KeyValuePair<TKey, TValue>(key, value));
 		}
+
+        public void InsertBefore(TKey Atkey, TKey key, TValue value)
+        {
+            for (int index = 0; index < List.Count; index++)
+            {
+                if (List[index].Key.Equals(Atkey))
+                {
+                    Insert(index, key, value);
+                    return;
+                }
+            }
+        }
         
 
         public void RemoveAt(int index)

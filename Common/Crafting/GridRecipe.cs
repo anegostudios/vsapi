@@ -95,7 +95,7 @@ namespace Vintagestory.API.Common
 
             if (!Output.Resolve(world))
             {
-                world.Logger.Error("Grid Recipe with output {0}: Output cannot be resolved", Output);
+                world.Logger.Error("Grid Recipe '{0}': Output {1} cannot be resolved", Name, Output);
                 return false;
             }
 
@@ -124,7 +124,7 @@ namespace Vintagestory.API.Common
                 {
                     for (int i = 0; i < world.Blocks.Length; i++)
                     {
-                        if (world.Blocks[i] == null) continue;
+                        if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
 
                         if (CraftingRecipeIngredient.WildCardMatch(val.Value.Code, world.Blocks[i].Code, val.Value.AllowedVariants))
                         {
@@ -137,7 +137,8 @@ namespace Vintagestory.API.Common
                 {
                     for (int i = 0; i < world.Items.Length; i++)
                     {
-                        if (world.Items[i] == null) continue;
+                        if (world.Items[i] == null || world.Items[i].IsMissing) continue;
+
                         if (CraftingRecipeIngredient.WildCardMatch(val.Value.Code, world.Items[i].Code, val.Value.AllowedVariants))
                         {
                             string code = world.Items[i].Code.Path.Substring(wildcardStartLen);
@@ -531,6 +532,7 @@ namespace Vintagestory.API.Common
             recipe.Shapeless = Shapeless;
             recipe.Output = Output.Clone();
             recipe.Name = Name;
+            
 
             return recipe;
         }

@@ -13,6 +13,9 @@ namespace Vintagestory.API.Common
     public delegate void OnInventoryOpened(IPlayer player);
     public delegate void OnInventoryClosed(IPlayer player);
 
+    /// <summary>
+    /// Basic class representing an item inventory
+    /// </summary>
     public abstract class InventoryBase : IInventory
     {
         /// <summary>
@@ -40,16 +43,32 @@ namespace Vintagestory.API.Common
 
         public string InventoryID { get { return className + "-" + instanceID; } }
         public string ClassName { get { return className; } }
+
+        /// <summary>
+        /// Milliseconds since server startup when the inventory was last changed (not used currently)
+        /// </summary>
         public long LastChanged { get { return lastChangedSinceServerStart; } }
 
+        /// <summary>
+        /// Returns the amount of existing slots in this inventory
+        /// </summary>
         public abstract int QuantitySlots { get; }
         
         public virtual bool IsDirty { get { return dirtySlots.Count > 0; } }
 
         public HashSet<int> DirtySlots { get { return dirtySlots; } }
 
+        /// <summary>
+        /// Called by item slot, if true, player cannot take items from this chest
+        /// </summary>
         public virtual bool TakeLocked { get; set; }
+
+        /// <summary>
+        /// Called by item slot, if true, player cannot take items from this chest
+        /// </summary>
         public virtual bool PutLocked { get; set; }
+
+        public virtual bool RemoveOnClose => true;
 
         public event API.Common.Action<int> SlotModified;
         public event API.Common.Action<int> SlotNotified;
@@ -106,7 +125,8 @@ namespace Vintagestory.API.Common
             {
                 InvNetworkUtil.Api = api;
             }
-            
+
+            AfterBlocksLoaded(api.World);
         }
 
         public virtual void AfterBlocksLoaded(IWorldAccessor world)
@@ -115,7 +135,11 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Returns the slot at given slot number. Returns null for invalid slot number (below 0 or above QuantitySlots), otherwise given slot.
+        /// </summary>
+        /// <param name="slotId"></param>
+        /// <returns></returns>
         public abstract ItemSlot GetSlot(int slotId);
 
         ItemSlot IInventory.GetSlot(int slotId)
@@ -138,6 +162,11 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Will return -1 if the slot is not found in this inventory
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <returns></returns>
         public virtual int GetSlotId(IItemSlot slot)
         {
             for (int i = 0; i < QuantitySlots; i++)
@@ -211,6 +240,12 @@ namespace Vintagestory.API.Common
         }
 
 
+        /// <summary>
+        /// Attempts to flip the contents of both slots
+        /// </summary>
+        /// <param name="targetSlotId"></param>
+        /// <param name="itemSlot"></param>
+        /// <returns></returns>
         public object TryFlipItems(int targetSlotId, IItemSlot itemSlot)
         {
             IItemSlot targetSlot = GetSlot(targetSlotId);
@@ -431,6 +466,11 @@ namespace Vintagestory.API.Common
             return new ItemSlot(this);
         }
 
+        /// <summary>
+        /// Server Side: Will resent the slot contents to the client and mark them dirty there as well
+        /// Client Side: Will refresh stack size, model and stuff if this stack is currently being rendered
+        /// </summary>
+        /// <param name="slotId"></param>
         public virtual void MarkSlotDirty(int slotId)
         {
             if (slotId < 0) throw new Exception("Negative slotid?!");
@@ -491,6 +531,11 @@ namespace Vintagestory.API.Common
         }
 
 
+        /// <summary>
+        /// Marks the inventory available for interaction for this player. Returns a open inventory packet that can be sent to the server for synchronization.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public virtual object Open(IPlayer player)
         {
             object packet = InvNetworkUtil.DidOpen(player);
@@ -500,6 +545,11 @@ namespace Vintagestory.API.Common
             return packet;
         }
 
+        /// <summary>
+        /// Removes ability to interact with this inventory for this player. Returns a close inventory packet that can be sent to the server for synchronization.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public virtual object Close(IPlayer player)
         {
             object packet = InvNetworkUtil.DidClose(player);
@@ -510,6 +560,11 @@ namespace Vintagestory.API.Common
             return packet;
         }
 
+        /// <summary>
+        /// Checks if given player has this inventory currently opened
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public virtual bool HasOpened(IPlayer player)
         {
             return openedByPlayerGUIds.Contains(player.PlayerUID);

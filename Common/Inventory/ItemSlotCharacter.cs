@@ -9,17 +9,19 @@ namespace Vintagestory.API.Common
 {
     public enum EnumCharacterDressType
     {
-        Head,
-        Shoulder,
-        UpperBody,
-        LowerBody,
-        Foot,
+        Head = 0,
+        Shoulder = 1,
+        UpperBody = 2,
+        UpperBodyOver = 11,
+        LowerBody = 3,
+        Foot = 4,
 
-        Hand,
-        Necklace,
-        Emblem,
-        Ring,
-        Waist
+        Neck = 6,
+        Emblem = 7,
+        Ring = 8,
+        Arm = 10,
+        Hand = 5,
+        Waist = 9,
     }
 
     public class ItemSlotCharacter : ItemSlot

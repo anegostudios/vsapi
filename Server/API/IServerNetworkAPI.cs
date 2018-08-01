@@ -24,6 +24,28 @@
         void SendBlockEntityPacket(IServerPlayer player, int x, int y, int z, int packetId, byte[] data = null);
 
         /// <summary>
+        /// Sends a entity packet to the given player and entity. For quick an easy entity network communication without setting up a channel first.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="packetId"></param>
+        /// <param name="data"></param>
+        void SendEntityPacket(IServerPlayer player, long entityid, int packetId, byte[] data = null);
+
+
+        /// <summary>
+        /// Sends a entity packet to all players in range. For quick an easy entity network communication without setting up a channel first.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="packetId"></param>
+        /// <param name="data"></param>
+        void BroadcastEntityPacket(long entityid, int packetId, byte[] data = null);
+
+
+        /// <summary>
         /// Broadcasts a blockentity packet to all connected players. For quick an easy network communication without setting up a channel first.
         /// </summary>
         /// <param name="x"></param>

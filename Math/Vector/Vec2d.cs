@@ -11,13 +11,18 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     public class Vec2d
     {
-        public double x;
-        public double y;
+        public double X;
+        public double Y;
+
+        public Vec2d()
+        {
+
+        }
 
         public Vec2d(double x, double y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
     }
 }

@@ -16,7 +16,12 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IAssetManager
     {
+        /// <summary>
+        /// All assets found in the assets folder
+        /// </summary>
         Dictionary<AssetLocation, IAsset> AllAssets { get; }
+
+        bool Exists(AssetLocation location);
 
         /// <summary>
         /// Retrieves an asset from given path within the assets folder. Throws an exception when the asset does not exist. Remember to use lower case paths.

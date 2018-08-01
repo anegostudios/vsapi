@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
@@ -105,7 +106,7 @@ namespace Vintagestory.API.Client
                 CairoFont font = CairoFont.WhiteSmallText();
                 font.UnscaledFontsize *= factor;
                 TextExtents extents = font.GetTextExtents(elem.Label);
-                labelWidth = extents.Width / factor / ClientSettingsApi.GUIScale + 1;
+                labelWidth = extents.Width / factor / RuntimeEnv.GUIScale + 1;
                 FontExtents fext = font.GetFontExtents();
 
                 ElementBounds labelBounds = ElementBounds.Fixed(x, y + Math.Max(0, (elem.Height * factor - fext.Height) / 2), labelWidth, elem.Height).WithScale(factor);

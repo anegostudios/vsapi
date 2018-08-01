@@ -288,7 +288,7 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        public float nextFloat(float multiplier, FastRandom rand)
+        public float nextFloat(float multiplier, FastPositionalRandom rand)
         {
             float rnd;
 

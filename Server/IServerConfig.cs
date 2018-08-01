@@ -60,12 +60,7 @@ namespace Vintagestory.API.Server
         /// The interval of time in ms between each execution of the random tick system
         /// </summary>
         int BlockTickInterval { get; set; }
-
-        /// <summary>
-        /// List of areas allowed/forbidden to build in
-        /// </summary>
-        List<BuildAreaConfig> BuildAreas { get; set; }
-
+        
         /// <summary>
         /// List of player roles 
         /// </summary>

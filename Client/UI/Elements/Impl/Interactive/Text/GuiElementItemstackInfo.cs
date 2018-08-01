@@ -3,10 +3,11 @@ using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
-    public delegate string InfoTextDelegate(IItemStack stack);
+    public delegate string InfoTextDelegate(ItemSlot slot);
 
     class GuiElementItemstackInfo : GuiElementTextBase
     {
@@ -18,7 +19,8 @@ namespace Vintagestory.API.Client
         static double[] backTint = ElementGeometrics.DialogStrongBgColor;
         static double[] textTint = ElementGeometrics.DialogDefaultTextColor;
 
-        ItemStack itemstack;
+        ItemSlot curSlot;
+        ItemStack curStack;
 
 
         GuiElementStaticText titleElement;
@@ -60,11 +62,11 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < lines.Length; i++)
             {
-                currentWidth = Math.Max(currentWidth, descriptionElement.Font.GetTextExtents(lines[i]).Width / ClientSettingsApi.GUIScale + 10);
+                currentWidth = Math.Max(currentWidth, descriptionElement.Font.GetTextExtents(lines[i]).Width / RuntimeEnv.GUIScale + 10);
             }
 
             currentWidth += 40 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3;
-            currentWidth = Math.Max(currentWidth, titleElement.Font.GetTextExtents(title).Width / ClientSettingsApi.GUIScale + 10);
+            currentWidth = Math.Max(currentWidth, titleElement.Font.GetTextExtents(title).Width / RuntimeEnv.GUIScale + 10);
             currentWidth = Math.Min(currentWidth, maxWidth);
 
             double descWidth = currentWidth - scaled(ItemStackSize) - 50;
@@ -79,18 +81,16 @@ namespace Vintagestory.API.Client
             currentHeight = Math.Max(lineheight, 50 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
             titleElement.Bounds.fixedHeight = currentHeight;
             descriptionElement.Bounds.fixedHeight = currentHeight;
-            Bounds.fixedHeight = currentHeight / ClientSettingsApi.GUIScale;
-
-            //Console.WriteLine("bounds recalced heightis now " + bounds.fixedHeight);
+            Bounds.fixedHeight = currentHeight / RuntimeEnv.GUIScale;
         }
 
 
         void Recompose()
         {
-            if (itemstack == null) return;
+            if (curSlot?.Itemstack == null) return;
 
-            string title = itemstack.GetName();
-            string desc = OnRequireInfoText(itemstack);
+            string title = curSlot.GetStackName();
+            string desc = OnRequireInfoText(curSlot);
             desc.TrimEnd();
 
 
@@ -136,14 +136,14 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            if (itemstack == null) return;
+            if (curSlot?.Itemstack == null) return;
 
             api.Render.Render2DTexturePremultipliedAlpha(textureId, Bounds, 1000);
 
             double offset = (int)scaled(30 + ItemStackSize/2);
 
             api.Render.RenderItemstackToGui(
-                itemstack,
+                curSlot.Itemstack,
                 (int)Bounds.renderX + offset,
                 (int)Bounds.renderY + offset + (int)scaled(MarginTop), 
                 1000 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 2, 
@@ -161,27 +161,21 @@ namespace Vintagestory.API.Client
         
 
 
-        public ItemStack GetItemStack()
+        public ItemSlot GetSlot()
         {
-            return itemstack;
+            return curSlot;
         }
 
-        public void SetItemstack(ItemStack itemstack)
+        public void SetSourceSlot(ItemSlot nowSlot)
         {
-            bool recompose = this.itemstack == null || !this.itemstack.Equals(itemstack);
+            bool recompose = this.curStack == null || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(curStack));
 
-            this.itemstack = itemstack;
+            this.curSlot = nowSlot;
+            this.curStack = nowSlot?.Itemstack;
 
-            if (itemstack == null)
+            if (nowSlot?.Itemstack == null)
             {
                 Bounds.fixedHeight = 0;
-            } else
-            {
-                // Whats this good for? This makes overlays weirdly squeezed
-               /* bounds.fixedHeight = Math.Max(MinBoxHeight, 
-                    MarginTop + descriptionElement.GetMultilineTextHeight(OnRequireInfoText(itemstack), bounds.fixedWidth - 30) / ClientSettingsApi.GUIScale
-                );*/
-                //Console.WriteLine("set height to {0}", bounds.fixedHeight);
             }
 
             if (recompose) Recompose();

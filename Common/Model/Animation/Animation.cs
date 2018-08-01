@@ -105,7 +105,6 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < elements.Length; i++)
             {
                 ShapeElement element = elements[i];
-                element.CacheInverseTransformMatrix();
 
                 ElementPose animTransform = new ElementPose();
                 animTransform.ForElement = element;

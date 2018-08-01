@@ -53,10 +53,10 @@ namespace Vintagestory.API.Client
             int visibleRows = Math.Min(rows, 7);
 
             // 1. The bounds of the slot grid itself. It is offseted by slot padding. It determines the size of the dialog, so we build the dialog from the bottom up
-            ElementBounds slotGridBounds = ElementStdBounds.SlotGrid(ElementAlignment.None, pad, pad, cols, visibleRows);
+            ElementBounds slotGridBounds = ElementStdBounds.SlotGrid(EnumDialogArea.None, pad, pad, cols, visibleRows);
 
             // 1a.) Determine the full size of scrollable area, required to calculate scrollbar handle size
-            ElementBounds fullGridBounds = ElementStdBounds.SlotGrid(ElementAlignment.None, 0, 0, cols, rows);
+            ElementBounds fullGridBounds = ElementStdBounds.SlotGrid(EnumDialogArea.None, 0, 0, cols, rows);
 
             // 2. Around that is the 3 wide inset stroke
             ElementBounds insetBounds = slotGridBounds.ForkBoundingParent(6, 6, 6, 6);
@@ -72,10 +72,10 @@ namespace Vintagestory.API.Client
                     insetBounds
                     .ForkBoundingParent(elemToDlgPad, elemToDlgPad + 70, elemToDlgPad + 40, elemToDlgPad)
                     .WithFixedAlignmentOffset(-ElementGeometrics.DialogToScreenPadding, 0)
-                    .WithAlignment(openedchests >= 3 ? ElementAlignment.LeftMiddle : ElementAlignment.RightMiddle)
+                    .WithAlignment(openedchests >= 3 ? EnumDialogArea.LeftMiddle : EnumDialogArea.RightMiddle)
                 ;
 
-                if (!ClientSettingsApi.FloatyGuis)
+                if (!capi.Settings.Bool["floatyGuis"])
                 {
                     if (openedchests % 3 == 1) dialogBounds.fixedOffsetY -= dialogBounds.fixedHeight + 10;
                     if (openedchests % 3 == 2) dialogBounds.fixedOffsetY += dialogBounds.fixedHeight + 10;
@@ -110,10 +110,10 @@ namespace Vintagestory.API.Client
                     insetBounds
                     .ForkBoundingParent(elemToDlgPad, elemToDlgPad + 20, elemToDlgPad, elemToDlgPad)
                     .WithFixedAlignmentOffset(-ElementGeometrics.DialogToScreenPadding, 0)
-                    .WithAlignment(openedchests >= 3 ? ElementAlignment.LeftMiddle : ElementAlignment.RightMiddle)
+                    .WithAlignment(openedchests >= 3 ? EnumDialogArea.LeftMiddle : EnumDialogArea.RightMiddle)
                 ;
 
-                if (!ClientSettingsApi.FloatyGuis)
+                if (!capi.Settings.Bool["floatyGuis"])
                 {
                     if (openedchests % 3 == 1) dialogBounds.fixedOffsetY -= dialogBounds.fixedHeight + 10;
                     if (openedchests % 3 == 2) dialogBounds.fixedOffsetY += dialogBounds.fixedHeight + 10;
@@ -151,7 +151,7 @@ namespace Vintagestory.API.Client
 
         public override void OnRender2D(float deltaTime)
         {
-            if (ClientSettingsApi.FloatyGuis)
+            if (capi.Settings.Bool["floatyGuis"])
             {
 
                 EntityPlayer entityPlayer = capi.World.Player.Entity;
@@ -164,7 +164,7 @@ namespace Vintagestory.API.Client
                     return;
                 }
 
-                SingleComposer.Bounds.alignment = ElementAlignment.None;
+                SingleComposer.Bounds.Alignment = EnumDialogArea.None;
                 SingleComposer.Bounds.fixedOffsetX = 0;
                 SingleComposer.Bounds.fixedOffsetY = 0;
                 SingleComposer.Bounds.absFixedX = pos.X - SingleComposer.Bounds.OuterWidth / 2;

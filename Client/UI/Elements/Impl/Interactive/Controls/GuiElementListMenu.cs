@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -99,8 +100,8 @@ namespace Vintagestory.API.Client
 
             visibleBounds = Bounds.FlatCopy();
             visibleBounds.fixedHeight = Math.Min(maxHeight, expandedBoxHeight);
-            visibleBounds.fixedWidth = expandedBoxWidth / ClientSettingsApi.GUIScale;
-            visibleBounds.fixedY += Bounds.InnerHeight / ClientSettingsApi.GUIScale;
+            visibleBounds.fixedWidth = expandedBoxWidth / RuntimeEnv.GUIScale;
+            visibleBounds.fixedY += Bounds.InnerHeight / RuntimeEnv.GUIScale;
             visibleBounds.CalcWorldBounds();
 
             Font.SetupContext(ctx);
@@ -129,7 +130,7 @@ namespace Vintagestory.API.Client
 
 
             // Scrollbar static stuff
-            scrollbar.Bounds.WithFixedSize(10, visibleBounds.fixedHeight - 4).WithFixedPosition(expandedBoxWidth / ClientSettingsApi.GUIScale - 12, 0).WithFixedPadding(0, 2);
+            scrollbar.Bounds.WithFixedSize(10, visibleBounds.fixedHeight - 4).WithFixedPosition(expandedBoxWidth / RuntimeEnv.GUIScale - 10, 0).WithFixedPadding(0, 2);
             scrollbar.Bounds.WithEmptyParent();
             scrollbar.Bounds.CalcWorldBounds();
 
@@ -137,7 +138,7 @@ namespace Vintagestory.API.Client
             ctx = genContext(surface);
             
             scrollbar.ComposeElements(ctx, surface);
-            scrollbar.SetHeights((int)visibleBounds.InnerHeight / ClientSettingsApi.GUIScale, (int)expandedBoxHeight);
+            scrollbar.SetHeights((int)visibleBounds.InnerHeight / RuntimeEnv.GUIScale, (int)expandedBoxHeight);
 
             generateTexture(surface, ref scrollbarTextureId);
 
@@ -248,8 +249,8 @@ namespace Vintagestory.API.Client
         {
             if (!expanded) return;
 
-            int mouseX = api.Input.GetMouseCurrentX();
-            int mouseY = api.Input.GetMouseCurrentY();
+            int mouseX = api.Input.MouseX;
+            int mouseY = api.Input.MouseY;
 
             if (mouseX >= Bounds.renderX && mouseX <= Bounds.renderX + expandedBoxWidth)
             {
@@ -293,7 +294,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
-            if (expanded && visibleBounds.PointInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY()))
+            if (expanded && visibleBounds.PointInside(api.Input.MouseX, api.Input.MouseY))
             {
                 scrollbar.OnMouseWheel(api, args);
             }

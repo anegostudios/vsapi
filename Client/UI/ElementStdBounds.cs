@@ -16,14 +16,14 @@ namespace Vintagestory.API.Client
         /// <param name="fixedWidth"></param>
         /// <param name="fixedHeight"></param>
         /// <returns></returns>
-        internal static ElementBounds Statbar( ElementAlignment alignment, double width)
+        internal static ElementBounds Statbar( EnumDialogArea alignment, double width)
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = alignment,
                 fixedWidth = width,
                 fixedHeight = GuiElementStatbar.DefaultHeight,
-                bothSizing = ElementSizing.Fixed
+                BothSizing = ElementSizing.Fixed
             };
         }
 
@@ -35,7 +35,7 @@ namespace Vintagestory.API.Client
         {
             get
             {
-                return new ElementBounds() { alignment = ElementAlignment.CenterMiddle, bothSizing = ElementSizing.FitToChildren };
+                return new ElementBounds() { Alignment = EnumDialogArea.CenterMiddle, BothSizing = ElementSizing.FitToChildren };
             }
         }
 
@@ -50,7 +50,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static ElementBounds MainScreenRightPart()
         {
-            ElementBounds bounds = ElementBounds.Percentual(ElementAlignment.RightMiddle, 1, 1);
+            ElementBounds bounds = ElementBounds.Percentual(EnumDialogArea.RightMiddle, 1, 1);
             bounds.horizontalSizing = ElementSizing.PercentualSubstractFixed;
             bounds.fixedWidth = mainMenuUnscaledLogoSize + mainMenuUnscaledLogoHorPadding * 2 + mainMenuUnscaledWoodPlankWidth;
             return bounds;
@@ -63,7 +63,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static ElementBounds AutosizedMainDialogAtPos(double fixedY)
         {
-            return new ElementBounds().WithSizing(ElementSizing.FitToChildren).WithAlignment(ElementAlignment.CenterFixed).WithFixedPosition(0, fixedY);
+            return new ElementBounds().WithSizing(ElementSizing.FitToChildren).WithAlignment(EnumDialogArea.CenterFixed).WithFixedPosition(0, fixedY);
         }
 
 
@@ -89,12 +89,12 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="rowIndex"></param>
         /// <returns></returns>
-        public static ElementBounds MenuButton(float rowIndex, ElementAlignment alignment = ElementAlignment.CenterFixed)
+        public static ElementBounds MenuButton(float rowIndex, EnumDialogArea alignment = EnumDialogArea.CenterFixed)
         {
             return new ElementBounds()
             {
-                alignment = alignment,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = alignment,
+                BothSizing = ElementSizing.Fixed,
                 fixedY = 80 * rowIndex,
                 fixedPaddingX = 2,
                 fixedPaddingY = 2
@@ -107,12 +107,12 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="rowIndex"></param>
         /// <returns></returns>
-        public static ElementBounds Rowed(float rowIndex, double padding, ElementAlignment alignment = ElementAlignment.None)
+        public static ElementBounds Rowed(float rowIndex, double padding, EnumDialogArea alignment = EnumDialogArea.None)
         {
             return new ElementBounds()
             {
-                alignment = alignment,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = alignment,
+                BothSizing = ElementSizing.Fixed,
                 fixedY = 70 * rowIndex,
                 fixedPaddingX = padding,
                 fixedPaddingY = padding
@@ -134,8 +134,8 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = ElementAlignment.None,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = EnumDialogArea.None,
+                BothSizing = ElementSizing.Fixed,
                 fixedX = fixedX,
                 fixedY = fixedY,
                 fixedWidth = fixedWith,
@@ -148,8 +148,8 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = ElementAlignment.None,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = EnumDialogArea.None,
+                BothSizing = ElementSizing.Fixed,
                 fixedX = x,
                 fixedY = y,
                 fixedWidth = GuiElementLever.unscaledLeverWidth,
@@ -161,8 +161,8 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = ElementAlignment.None,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = EnumDialogArea.None,
+                BothSizing = ElementSizing.Fixed,
                 fixedX = x,
                 fixedY = y,
                 fixedWidth = width,
@@ -180,8 +180,8 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = leftElement.alignment,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = leftElement.Alignment,
+                BothSizing = ElementSizing.Fixed,
                 fixedOffsetX = leftElement.fixedX + leftElement.fixedWidth + 3,
                 fixedOffsetY = leftElement.fixedY,
                 fixedPaddingX = GuiElementScrollbar.scrollbarPadding,
@@ -195,8 +195,8 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = ElementAlignment.None,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = EnumDialogArea.None,
+                BothSizing = ElementSizing.Fixed,
                 fixedX = x,
                 fixedY = y,
                 fixedWidth = GuiElementPassiveItemSlot.unscaledSlotSize,
@@ -205,12 +205,12 @@ namespace Vintagestory.API.Client
         }
 
 
-        public static ElementBounds SlotGrid(ElementAlignment alignment, double x, double y, int cols, int rows)
+        public static ElementBounds SlotGrid(EnumDialogArea alignment, double x, double y, int cols, int rows)
         {
             return new ElementBounds()
             {
-                alignment = alignment,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = alignment,
+                BothSizing = ElementSizing.Fixed,
                 fixedX = x,
                 fixedY = y,
                 fixedWidth = cols * (GuiElementPassiveItemSlot.unscaledSlotSize + GuiElementItemSlotGrid.unscaledSlotPadding),
@@ -222,8 +222,8 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = ElementAlignment.None,
-                bothSizing = ElementSizing.Fixed,
+                Alignment = EnumDialogArea.None,
+                BothSizing = ElementSizing.Fixed,
                 fixedX = fixedX,
                 fixedY = fixedY,
                 fixedWidth = width,
@@ -236,11 +236,11 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = ElementAlignment.None,
+                Alignment = EnumDialogArea.None,
                 verticalSizing = ElementSizing.Fixed,
                 horizontalSizing = ElementSizing.Percentual,
                 percentWidth = 1,
-                fixedHeight = 30
+                fixedHeight = (float)ElementGeometrics.TitleBarHeight
             };
         }
     }

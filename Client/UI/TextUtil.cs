@@ -38,9 +38,9 @@ namespace Vintagestory.API.Client
 
             return new LoadedTexture(capi)
             {
-                textureId = textureId,
-                width = width,
-                height = height
+                TextureId = textureId,
+                Width = width,
+                Height = height
             };
         }
 
@@ -96,9 +96,9 @@ namespace Vintagestory.API.Client
 
             return new LoadedTexture(capi)
             {
-                textureId = textureId,
-                width = width,
-                height = height
+                TextureId = textureId,
+                Width = width,
+                Height = height
             };
         }
 

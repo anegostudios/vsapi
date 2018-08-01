@@ -330,7 +330,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool IsWater()
         {
-            return Code.Path.StartsWith("water-");
+            return Code?.Path.StartsWith("water-") == true;
         }
 
 
@@ -495,6 +495,14 @@ namespace Vintagestory.API.Common
         {
             EnumHandling handled = EnumHandling.NotHandled;
             bool result = true;
+
+            if (!world.TestPlayerAccessBlock(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
+            {
+                // Probably good idea to do so, so lets do it :P
+                byPlayer.InventoryManager.ActiveHotbarSlot.MarkDirty();
+
+                return false;
+            }
 
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
@@ -691,7 +699,16 @@ namespace Vintagestory.API.Common
                     world.PlaySoundAt(Sounds.Break, pos.X, pos.Y, pos.Z, byPlayer);
                 }
             }
-           
+
+            if (EntityClass != null)
+            {
+                BlockEntity entity = world.BlockAccessor.GetBlockEntity(pos);
+                if (entity != null)
+                {
+                    entity.OnBlockBroken();
+                }
+            }
+
             world.BlockAccessor.SetBlock(0, pos);
         }
 
@@ -1053,6 +1070,7 @@ namespace Vintagestory.API.Common
 
             base.OnHeldIdle(slot, byEntity);
         }
+        
 
         /// <summary>
         /// The origin point from which particles are being spawned
@@ -1355,7 +1373,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="api"></param>
         /// <param name="textureDict"></param>
-        public virtual void OnCollectTextures(ICoreAPI api, OrderedDictionary<AssetLocation, bool> textureDict)
+        public virtual void OnCollectTextures(ICoreAPI api, OrderedDictionary<AssetLocationAndSource, bool> textureDict)
         {
             BakeAndCollect(api, Textures, textureDict);
             BakeAndCollect(api, TexturesInventory, textureDict);
@@ -1367,7 +1385,7 @@ namespace Vintagestory.API.Common
         /// <param name="api"></param>
         /// <param name="dict"></param>
         /// <param name="textureDict"></param>
-        protected virtual void BakeAndCollect(ICoreAPI api, Dictionary<string, CompositeTexture> dict, OrderedDictionary<AssetLocation, bool> textureDict)
+        protected virtual void BakeAndCollect(ICoreAPI api, Dictionary<string, CompositeTexture> dict, OrderedDictionary<AssetLocationAndSource, bool> textureDict)
         {
             foreach (var val in dict)
             {
@@ -1378,12 +1396,12 @@ namespace Vintagestory.API.Common
                 {
                     for (int i = 0; i < ct.Baked.BakedVariants.Length; i++)
                     {
-                        textureDict[ct.Baked.BakedVariants[i].BakedName] = true;
+                        textureDict[new AssetLocationAndSource(ct.Baked.BakedVariants[i].BakedName, "Baked variant of block " + Code)] = true;
                     }
                     continue;
                 }
 
-                textureDict[ct.Baked.BakedName] = true;
+                textureDict[new AssetLocationAndSource(ct.Baked.BakedName, "Baked variant of block " + Code)] = true;
             }
         }
 
@@ -1472,6 +1490,16 @@ namespace Vintagestory.API.Common
                     world.SpawnItemEntity(drops[i], new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
                 }
             }
+
+            if (EntityClass != null)
+            {
+                BlockEntity entity = world.BlockAccessor.GetBlockEntity(pos);
+                if (entity != null)
+                {
+                    entity.OnBlockBroken();
+                }
+            }
+
         }
 
         /// <summary>

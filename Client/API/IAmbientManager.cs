@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API
 {
@@ -27,10 +28,37 @@ namespace Vintagestory.API
         /// </summary>
         OrderedDictionary<string, AmbientModifier> CurrentModifiers { get; }
 
+
+        /// <summary>
+        /// The blended fog color, calculated every frame from the list of modifiers
+        /// </summary>
+        Vec4f BlendedFogColor { get; }
+
+        /// <summary>
+        /// The blended ambient color, calculated every frame from the list of modifiers
+        /// </summary>
+        Vec3f BlendedAmbientColor { get; }
+
         /// <summary>
         /// The blended fog density, calculated every frame from the list of modifiers
         /// </summary>
         float BlendedFogDensity { get; }
+
+        /// <summary>
+        /// The blended flat fog density, calculated every frame from the list of modifiers
+        /// </summary>
+        float BlendedFlatFogDensity { get; set; }
+
+        /// <summary>
+        /// The blended flat fog y-offset, calculated every frame from the list of modifiers
+        /// </summary>
+        float BlendedFlatFogYOffset { get; set; }
+
+        /// <summary>
+        /// BlendedFlatFogYPos + SeaLevel - MainCamera.TargetPosition.Y
+        /// </summary>
+        float BlendedFlatFogYPosForShader { get; set; }
+
         /// <summary>
         /// The blended fog min, calculated every frame from the list of modifiers
         /// </summary>
@@ -40,12 +68,10 @@ namespace Vintagestory.API
         /// </summary>
         float BlendedCloudBrightness { get; }
         /// <summary>
-        /// The blended large cloud density, calculated every frame from the list of modifiers
+        /// The blended cloud density, calculated every frame from the list of modifiers
         /// </summary>
-        float BlendedLargeCloudDensity { get; }
-        /// <summary>
-        /// The blended small cloud density, calculated every frame from the list of modifiers
-        /// </summary>
-        float BlendedSmallCloudDensity { get; }
+        float BlendedCloudDensity { get; }
+
+        void UpdateAmbient(float dt);
     }
 }

@@ -124,30 +124,7 @@ namespace Vintagestory.API.Server
         /// <param name="privilegeCode"></param>
         /// <returns></returns>
         bool RemovePrivilegeFromGroup(string groupCode, string privilegeCode);
-
-        /// <summary>
-        /// Grans a new build area where players may build with given permission level
-        /// </summary>
-        /// <param name="x1"></param>
-        /// <param name="y1"></param>
-        /// <param name="z1"></param>
-        /// <param name="x2"></param>
-        /// <param name="y2"></param>
-        /// <param name="z2"></param>
-        /// <param name="permissionLevel"></param>
-        void GrantBuildArea(int x1, int y1, int z1, int x2, int y2, int z2, int permissionLevel);
-
-        /// <summary>
-        /// Removes a previously granted area
-        /// </summary>
-        /// <param name="x1"></param>
-        /// <param name="y1"></param>
-        /// <param name="z1"></param>
-        /// <param name="x2"></param>
-        /// <param name="y2"></param>
-        /// <param name="z2"></param>
-        void RevokeBuildArea(int x1, int y1, int z1, int x2, int y2, int z2);
-
+        
 
         /// <summary>
         /// Returns the players permission level

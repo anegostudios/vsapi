@@ -28,7 +28,7 @@ namespace Vintagestory.API.Server
                 announce,
                 readlists,
                 give,
-                buildareamodify,
+                claimland,
                 setspawn,
                 controlserver,
                 tp,
@@ -53,12 +53,12 @@ namespace Vintagestory.API.Server
         public static string useblock = "useblock";
 
         /// <summary>
-        /// Place or break blocks everywhere, ignoring area permissons
+        /// Place or break blocks everywhere, completely ignoring area permissons
         /// </summary>
         public static string buildblockseverywhere = "buildblockseverywhere";
 
         /// <summary>
-        /// Use blocks everywhere, ignoring area permissons
+        /// Use blocks everywhere, completely ignoring area permissons
         /// </summary>
         public static string useblockseverywhere = "useblockseverywhere";
 
@@ -118,9 +118,9 @@ namespace Vintagestory.API.Server
         public static string give = "give";
 
         /// <summary>
-        /// Ability to modify block building permissions by area
+        /// Ability to claim lands
         /// </summary>
-        public static string buildareamodify = "areamodify";
+        public static string claimland = "areamodify";
 
         /// <summary>
         /// Ability to set default spawn

@@ -153,8 +153,8 @@ namespace Vintagestory.API.Client
 
             double spacing = scaled(unscaledTabSpacing);
 
-            int mouseRelX = api.Input.GetMouseCurrentX() - (int)Bounds.absX;
-            int mouseRelY = api.Input.GetMouseCurrentY() - (int)Bounds.absY;
+            int mouseRelX = api.Input.MouseX - (int)Bounds.absX;
+            int mouseRelY = api.Input.MouseY - (int)Bounds.absY;
 
             double xposend = (int)Bounds.InnerWidth;
             double ypos = 0;
@@ -195,8 +195,8 @@ namespace Vintagestory.API.Client
             double xposend = Bounds.InnerWidth + 1;
             double ypos = 0;
 
-            int mouseRelX = api.Input.GetMouseCurrentX() - (int)Bounds.absX;
-            int mouseRelY = api.Input.GetMouseCurrentY() - (int)Bounds.absY;
+            int mouseRelX = api.Input.MouseX - (int)Bounds.absX;
+            int mouseRelY = api.Input.MouseY - (int)Bounds.absY;
 
             for (int i = 0; i < tabs.Length; i++)
             {

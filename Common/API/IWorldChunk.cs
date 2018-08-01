@@ -50,7 +50,7 @@ namespace Vintagestory.API.Common
         void Unpack();
 
         /// <summary>
-        /// Marks this chunk as modified. If called on server side it will be stored to disk, if called on client it will be redrawn
+        /// Marks this chunk as modified. If called on server side it will be stored to disk on the next autosave or during shutdown, if called on client it will be redrawn
         /// </summary>
         void MarkModified();
 

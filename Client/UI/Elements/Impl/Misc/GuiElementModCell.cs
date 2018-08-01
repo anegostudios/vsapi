@@ -4,6 +4,7 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using System.Drawing;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -188,7 +189,7 @@ namespace Vintagestory.API.Client
             Bounds.CalcWorldBounds();
 
             double padding = Bounds.absPaddingY;
-            double unscaledPadding = Bounds.absPaddingY / ClientSettingsApi.GUIScale;
+            double unscaledPadding = Bounds.absPaddingY / RuntimeEnv.GUIScale;
             double boxwidth = Bounds.InnerWidth;
 
             var mod = (Mod)cell.Data;
@@ -202,11 +203,11 @@ namespace Vintagestory.API.Client
 
             this.Font = cell.TitleFont;
             this.text = cell.Title;
-            titleTextheight = GetMultilineTextHeight(cell.Title, boxwidth) / ClientSettingsApi.GUIScale; // Need unscaled values here
+            titleTextheight = GetMultilineTextHeight(cell.Title, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
 
             this.Font = cell.DetailTextFont;
             this.text = cell.DetailText;
-            double detailTextHeight = GetMultilineTextHeight(cell.DetailText, boxwidth) / ClientSettingsApi.GUIScale; // Need unscaled values here
+            double detailTextHeight = GetMultilineTextHeight(cell.DetailText, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
 
             Bounds.fixedHeight = unscaledPadding + titleTextheight + unscaledPadding + detailTextHeight + unscaledPadding;
 
@@ -218,14 +219,14 @@ namespace Vintagestory.API.Client
 
         public void OnRenderInteractiveElements(ICoreClientAPI api, ElementBounds parentBounds, float deltaTime)
         {
-            int dx = api.Input.GetMouseCurrentX() - (int)parentBounds.absX;
-            int dy = api.Input.GetMouseCurrentY() - (int)parentBounds.absY;
+            int dx = api.Input.MouseX - (int)parentBounds.absX;
+            int dy = api.Input.MouseY - (int)parentBounds.absY;
             Vec2d pos = Bounds.PositionInside(dx, dy);
 
             var mod = (Mod)cell.Data;
             if (mod.Info != null && pos != null)
             {
-                if (pos.x > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
+                if (pos.X > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
                 {
                     api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
                 }

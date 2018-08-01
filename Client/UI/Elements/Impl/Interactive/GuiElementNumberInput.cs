@@ -110,8 +110,8 @@ namespace Vintagestory.API.Client
         {
             base.RenderInteractiveElements(deltaTime);
 
-            int mouseX = api.Input.GetMouseCurrentX();
-            int mouseY = api.Input.GetMouseCurrentY();
+            int mouseX = api.Input.MouseX;
+            int mouseY = api.Input.MouseY;
 
             if (mouseX >= Bounds.absX + Bounds.OuterWidth - rightSpacing && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)
             {
@@ -130,13 +130,14 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
-            if (!IsPositionInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY())) return;
+            if (!IsPositionInside(api.Input.MouseX, api.Input.MouseY)) return;
 
             rightSpacing = scaled(17);
 
             float size = args.deltaPrecise > 0 ? 1 : -1;
 
-            if (api.Input.KeyboardKeyState[(int)GlKeys.LShift]) size /= 10;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.LShift]) size /= 10;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
 
             double val;
             double.TryParse(lines[0], out val);
@@ -158,7 +159,8 @@ namespace Vintagestory.API.Client
 
             float size = 1f;
 
-            if (api.Input.KeyboardKeyState[(int)GlKeys.LShift]) size /= 10;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.LShift]) size /= 10;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
 
             if (mouseX >= Bounds.absX + Bounds.OuterWidth - rightSpacing && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)
             {

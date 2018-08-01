@@ -20,7 +20,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns if this mod should be loaded for the given app side.
         /// </summary>
-        public virtual bool ShouldLoad(EnumAppSide side)
+        public virtual bool ShouldLoad(EnumAppSide forSide)
         {
             return true;
         }

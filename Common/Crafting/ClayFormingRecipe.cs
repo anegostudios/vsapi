@@ -141,7 +141,7 @@ namespace Vintagestory.API.Common
             {
                 for (int i = 0; i < world.Blocks.Length; i++)
                 {
-                    if (world.Blocks[i] == null) continue;
+                    if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
 
                     if (WildCardMatch(Ingredient.Code, world.Blocks[i].Code))
                     {
@@ -158,7 +158,8 @@ namespace Vintagestory.API.Common
             {
                 for (int i = 0; i < world.Items.Length; i++)
                 {
-                    if (world.Items[i] == null) continue;
+                    if (world.Items[i] == null || world.Items[i].IsMissing) continue;
+
                     if (WildCardMatch(Ingredient.Code, world.Items[i].Code))
                     {
                         string code = world.Items[i].Code.Path.Substring(wildcardStartLen);

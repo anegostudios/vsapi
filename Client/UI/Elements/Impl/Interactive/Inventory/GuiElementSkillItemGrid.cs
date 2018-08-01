@@ -89,8 +89,8 @@ namespace Vintagestory.API.Client
             double slotWidth = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
             double slotHeight = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
 
-            int dx = api.Input.GetMouseCurrentX() - (int)Bounds.absX;
-            int dy = api.Input.GetMouseCurrentY() - (int)Bounds.absY;
+            int dx = api.Input.MouseX - (int)Bounds.absX;
+            int dy = api.Input.MouseY - (int)Bounds.absY;
 
             for (int i = 0; i < rows*cols; i++)
             {
@@ -112,12 +112,12 @@ namespace Vintagestory.API.Client
                 skillItems.TryGetValue(i, out skillItem);
                 if (skillItem == null) { continue; }
 
-                if (skillItem.texture != null)
+                if (skillItem.Texture != null)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(skillItem.texture.textureId, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1, slotWidth, slotHeight);
+                    api.Render.Render2DTexturePremultipliedAlpha(skillItem.Texture.TextureId, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1, slotWidth, slotHeight);
                 }
 
-                skillItem.renderHandler?.Invoke(skillItem.code, deltaTime, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1);
+                skillItem.RenderHandler?.Invoke(skillItem.Code, deltaTime, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1);
             }
         }
 
@@ -125,8 +125,8 @@ namespace Vintagestory.API.Client
         {
             base.OnMouseDownOnElement(api, args);
 
-            int dx = api.Input.GetMouseCurrentX() - (int)Bounds.absX;
-            int dy = api.Input.GetMouseCurrentY() - (int)Bounds.absY;
+            int dx = api.Input.MouseX - (int)Bounds.absX;
+            int dy = api.Input.MouseY - (int)Bounds.absY;
 
             double slotPadding = scaled(GuiElementItemSlotGrid.unscaledSlotPadding);
             double slotWidth = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);

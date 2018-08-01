@@ -82,6 +82,10 @@ namespace Vintagestory.API.Client
         public virtual bool Focused { get { return focused; } }
         public virtual EnumDialogType DialogType { get { return EnumDialogType.Dialog; } }
 
+        public event Common.Action OnOpened;
+        public event Common.Action OnClosed;
+
+
         protected ICoreClientAPI capi;
 
         protected virtual void OnFocusChanged(bool on)
@@ -131,8 +135,13 @@ namespace Vintagestory.API.Client
 
         public virtual bool UnregisterOnClose {  get { return false; } }
 
-        public virtual void OnGuiOpened() { }
-        public virtual void OnGuiClosed() { }
+        public virtual void OnGuiOpened() {
+            
+        }
+
+        public virtual void OnGuiClosed() {
+            
+        }
 
         public virtual bool TryOpen()
         {
@@ -152,6 +161,7 @@ namespace Vintagestory.API.Client
             if (!wasOpened)
             {
                 OnGuiOpened();
+                OnOpened?.Invoke();
                 capi.Gui.TriggerDialogOpened(this);
             }
 
@@ -163,6 +173,7 @@ namespace Vintagestory.API.Client
             opened = false;
             UnFocus();
             OnGuiClosed();
+            OnClosed?.Invoke();
             focused = false;
             capi.Gui.TriggerDialogClosed(this);
 
@@ -177,7 +188,7 @@ namespace Vintagestory.API.Client
             focused = true;
         }
 
-        public void Toggle()
+        public virtual void Toggle()
         {
             if (IsOpened())
             {
@@ -284,13 +295,13 @@ namespace Vintagestory.API.Client
 
         public virtual bool OnEscapePressed()
         {
-            if (this is HudElement) return false;
+            if (DialogType == EnumDialogType.HUD) return false;
             return TryClose();
         }
 
-        public virtual bool OnMouseEnterSlot(IItemSlot slot) { return false; }
-        public virtual bool OnMouseLeaveSlot(IItemSlot itemSlot) { return false; }
-        public virtual bool OnMouseClickSlot(IItemSlot itemSlot) { return false; }
+        public virtual bool OnMouseEnterSlot(ItemSlot slot) { return false; }
+        public virtual bool OnMouseLeaveSlot(ItemSlot itemSlot) { return false; }
+        public virtual bool OnMouseClickSlot(ItemSlot itemSlot) { return false; }
 
         public virtual void OnMouseDown(MouseEvent args)
         {
@@ -369,7 +380,7 @@ namespace Vintagestory.API.Client
             {
                 foreach (GuiComposer composer in DialogComposers.Values)
                 {
-                    if (composer.Bounds.PointInside(capi.Input.GetMouseCurrentX(), capi.Input.GetMouseCurrentY()))
+                    if (composer.Bounds.PointInside(capi.Input.MouseX, capi.Input.MouseY))
                     {
                         args.SetHandled(true);
                     }

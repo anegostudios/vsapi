@@ -7,7 +7,8 @@ namespace Vintagestory.API.Common
     public class AirBubbleParticles : IParticlePropertiesProvider
     {
         Random rand = new Random();
-        public Vec3d basePos = new Vec3d();
+        public Vec3d BasePos = new Vec3d();
+        public Vec3f AddVelocity = new Vec3f();
 
         public void Init(ICoreAPI api) { }
 
@@ -28,12 +29,12 @@ namespace Vintagestory.API.Common
 
         public Vec3d GetPos()
         {
-            return new Vec3d(basePos.X + rand.NextDouble() * 0.25 - 0.125, basePos.Y + 0.1 + rand.NextDouble() * 0.2, basePos.Z + rand.NextDouble() * 0.25 - 0.125);
+            return new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
         }
 
         public float GetQuantity()
         {
-            return 15;
+            return 30;
         }
 
         public byte[] GetRgbaColor()
@@ -49,7 +50,7 @@ namespace Vintagestory.API.Common
 
         public float GetSize()
         {
-            return 0.4f;
+            return (float)rand.NextDouble() * 0.2f + 0.2f;
         }
 
         public EvolvingNatFloat GetSizeEvolve()
@@ -59,7 +60,12 @@ namespace Vintagestory.API.Common
 
         public Vec3f GetVelocity(Vec3d pos)
         {
-            return new Vec3f(2 * (float)rand.NextDouble() - 1f, 0.1f * (float)rand.NextDouble() + 0.4f, 2 * (float)rand.NextDouble() - 1f);
+            return new Vec3f(
+                1 * (float)rand.NextDouble() - 0.5f + AddVelocity.X, 
+                0.1f * (float)rand.NextDouble() + 0.4f + AddVelocity.Y, 
+                1 * (float)rand.NextDouble() - 0.5f + AddVelocity.Z
+            );
+
         }
 
         public EvolvingNatFloat[] GetVelocityEvolve()

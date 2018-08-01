@@ -187,7 +187,7 @@ namespace Vintagestory.API.Client
             api.Render.Render2DTexturePremultipliedAlpha(handleTextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
 
 
-            if (mouseDownOnSlider || Bounds.PointInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY()))
+            if (mouseDownOnSlider || Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
             {
                 ElementBounds elemBounds = textElem.Bounds;
                 api.Render.Render2DTexturePremultipliedAlpha(
@@ -224,9 +224,9 @@ namespace Vintagestory.API.Client
         {
             if (!enabled) return;
 
-            if (!Bounds.PointInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY())) return;
+            if (!Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) return;
 
-            args.Handled = updateValue(api.Input.GetMouseCurrentX());
+            args.Handled = updateValue(api.Input.MouseX);
 
             mouseDownOnSlider = true;
         }
@@ -252,14 +252,14 @@ namespace Vintagestory.API.Client
 
             if (mouseDownOnSlider)
             {
-                args.Handled = updateValue(api.Input.GetMouseCurrentX());
+                args.Handled = updateValue(api.Input.MouseX);
             }
         }
 
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
-            if (!Bounds.PointInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY())) return;
+            if (!Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) return;
             args.SetHandled(true);
 
             int dir = Math.Sign(args.deltaPrecise);

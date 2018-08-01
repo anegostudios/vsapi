@@ -1,4 +1,5 @@
 ﻿using System;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Common
@@ -296,6 +297,16 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        public virtual string GetStackName()
+        {
+            return itemstack?.GetName();
+        }
+
+        public virtual string GetStackDescription(IClientWorldAccessor world, bool extendedDebugInfo)
+        {
+            return itemstack?.GetDescription(world, extendedDebugInfo);
+        }
 
     }
 }

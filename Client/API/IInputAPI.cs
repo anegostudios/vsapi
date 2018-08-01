@@ -8,7 +8,7 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {
-    public class MouseState
+    public class MouseButtonState
     {
         public bool Left;
         public bool Middle;
@@ -30,21 +30,28 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The current mouse button state
         /// </summary>
-        MouseState Mouse { get; }
+        MouseButtonState MouseButton { get; }
         
         /// <summary>
         /// The current mouse button state outside of dialogs / clicked inside the game world
         /// </summary>
-        MouseState InWorldMouse { get; }
+        MouseButtonState InWorldMouseButton { get; }
 
-        int GetMouseCurrentX();
-        int GetMouseCurrentY();
+        /// <summary>
+        /// The current x-position of the mouse, relative to the upper left corner of the game window
+        /// </summary>
+        int MouseX { get; }
+
+        /// <summary>
+        /// The current y-position of the mouse, relative to the upper left corner of the game window
+        /// </summary>
+        int MouseY { get; }
 
 
         // These should not be here. Should be part of an event bus event
-        void TriggerOnMouseEnterSlot(IItemSlot slot);
-        void TriggerOnMouseLeaveSlot(IItemSlot itemSlot);
-        void TriggerOnMouseClickSlot(IItemSlot itemSlot);
+        void TriggerOnMouseEnterSlot(ItemSlot slot);
+        void TriggerOnMouseLeaveSlot(ItemSlot itemSlot);
+        void TriggerOnMouseClickSlot(ItemSlot itemSlot);
 
 
 

@@ -27,10 +27,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         Sky = 5,
         /// <summary>
-        /// For instanced rendering of clouds
-        /// </summary>
-        Clouds = 6,
-        /// <summary>
         /// For rendering the stars skybox
         /// </summary>
         Nightsky = 7,

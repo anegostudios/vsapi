@@ -178,7 +178,7 @@ namespace Vintagestory.API.Client
             {
                 xyz[i] = CubeVertices[i];
             }
-            m.setXyz(xyz);
+            m.SetXyz(xyz);
             float[] uv = new float[2 * 4 * 6];
             for (int i = 0; i < 2 * 4 * 6; i++)
             {
@@ -186,11 +186,11 @@ namespace Vintagestory.API.Client
             }
 
             byte[] rgba = new byte[4 * 4 * 6];
-            m.setRgba(rgba);
+            m.SetRgba(rgba);
 
-            m.setUv(uv);
+            m.SetUv(uv);
             m.SetVerticesCount(4 * 6);
-            m.setIndices(CubeVertexIndices);
+            m.SetIndices(CubeVertexIndices);
             m.SetIndicesCount(3 * 2 * 6);
             return m;
         }
@@ -406,20 +406,20 @@ namespace Vintagestory.API.Client
             {
                 xyz[i] = CubeVertices[i + 3*4*offset];
             }
-            m.setXyz(xyz);
+            m.SetXyz(xyz);
             float[] uv = new float[2 * 4 * 1];
             for (int i = 0; i < uv.Length; i++)
             {
                 uv[i] = CubeUvCoords[i + 2*4*offset];
             }
-            m.setUv(uv);
+            m.SetUv(uv);
 
             byte[] rgba = new byte[4 * 4 * 1];
             for (int i = 0; i < rgba.Length; i++)
             {
                 rgba[i] = (byte)255;
             }
-            m.setRgba(rgba);
+            m.SetRgba(rgba);
             
             m.SetVerticesCount(4 * 1);
             int[] indices = new int[3 * 2 * 1];
@@ -428,7 +428,7 @@ namespace Vintagestory.API.Client
                 indices[i] = CubeVertexIndices[i];
 
             }
-            m.setIndices(indices);
+            m.SetIndices(indices);
             m.SetIndicesCount(3 * 2 * 1);
 
             return m;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -85,6 +86,7 @@ namespace Vintagestory.API.Client
             conditionalAdds.Push(condition);
             return this;
         }
+        
 
         public GuiComposer EndIf()
         {
@@ -344,7 +346,7 @@ namespace Vintagestory.API.Client
             // Prefer an element that is currently hovered 
             foreach (GuiElement element in interactiveElements.Values)
             {
-                if (element.IsPositionInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY())) {
+                if (element.IsPositionInside(api.Input.MouseX, api.Input.MouseY)) {
                     element.OnMouseWheel(api, mouse);
                 }
                 
@@ -404,14 +406,14 @@ namespace Vintagestory.API.Client
                 return;
             }
 
-            if (bounds.parentBounds.RequiresRecalculation)
+            if (bounds.ParentBounds.RequiresRecalculation)
             {
                 Api.Logger.Notification("Window probably resized, recalculating dialog bounds and recomposing " + dialogName + "...");
                 bounds.MarkDirtyRecursive();
-                bounds.parentBounds.CalcWorldBounds();
+                bounds.ParentBounds.CalcWorldBounds();
 
                 // Check here to because it would crash otherwise when trying to calc bounds and child bounds
-                if (bounds.parentBounds.OuterWidth == 0 || bounds.parentBounds.OuterHeight == 0)
+                if (bounds.ParentBounds.OuterWidth == 0 || bounds.ParentBounds.OuterHeight == 0)
                 {
                     return;
                 }
@@ -486,7 +488,7 @@ namespace Vintagestory.API.Client
 
         internal static double scaled(double value)
         {
-            return value * ClientSettingsApi.GUIScale;
+            return value * RuntimeEnv.GUIScale;
         }
 
 

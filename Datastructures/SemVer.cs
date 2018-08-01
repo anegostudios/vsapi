@@ -153,7 +153,7 @@ namespace ProperVersion
 			{
 				// Don't do anything if we already encountered an error before.
 				if (error != null) return;
-				error = $"Error parsing version string '{ s }' at index { index }: " + string.Format(message,
+				error = $"Failed parsing version string '{ s }' at index { index }: " + string.Format(message,
 					PART_LOOKUP[nextMode ? mode + 1 : mode],
 					(chr != null) ? $"'{ chr }'" : "end of string");
 				if (throwException) throw new FormatException(error);

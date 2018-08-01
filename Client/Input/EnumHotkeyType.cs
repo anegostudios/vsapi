@@ -9,7 +9,7 @@ namespace Vintagestory.API.Client
     public enum HotkeyType
     {
         /// <summary>
-        /// Controls that are always available
+        /// Controls that are always available (survival and creative mode)
         /// </summary>
         GeneralControls,
         /// <summary>

@@ -197,6 +197,12 @@ namespace Vintagestory.API.MathTools
         {
             return val < min ? min : val > max ? max : val;
         }
+
+        public static byte Clamp(byte val, byte min, byte max)
+        {
+            return val < min ? min : val > max ? max : val;
+        }
+
         public static double Clamp(double val, double min, double max)
         {
             return val < min ? min : val > max ? max : val;

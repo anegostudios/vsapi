@@ -81,7 +81,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        public Cuboidf Add(float posX, float posY, float posZ)
+        public Cuboidf Translate(float posX, float posY, float posZ)
         {
             this.X1 += posX;
             this.Y1 += posY;
@@ -95,9 +95,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        public Cuboidf Add(IVec3 vec)
+        public Cuboidf Translate(IVec3 vec)
         {
-            Add(vec.XAsFloat, vec.YAsFloat, vec.ZAsFloat);
+            Translate(vec.XAsFloat, vec.YAsFloat, vec.ZAsFloat);
             return this;
         }
 

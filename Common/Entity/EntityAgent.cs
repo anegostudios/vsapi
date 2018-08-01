@@ -157,7 +157,7 @@ namespace Vintagestory.API.Common
 
         public override void OnInteract(EntityAgent byEntity, IItemSlot slot, Vec3d hitPosition, int mode)
         {
-            if (mode == 0)
+            if (mode == 0 && byEntity.World.Side == EnumAppSide.Server)
             {
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
 

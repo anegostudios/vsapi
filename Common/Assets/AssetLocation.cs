@@ -8,6 +8,33 @@ using Vintagestory.API.Config;
 namespace Vintagestory.API.Common
 {
     /// <summary>
+    /// Defines a complete path to an assets, including it's domain. Includes an extra Source field for debugging.
+    /// </summary>
+    [TypeConverterAttribute(typeof(StringAssetLocationConverter))]
+    public class AssetLocationAndSource : AssetLocation, IEquatable<AssetLocation>
+    {
+        public string Source;
+
+        public AssetLocationAndSource(string location) : base(location)
+        {
+        }
+
+        public AssetLocationAndSource(AssetLocation loc) : base(loc.Domain, loc.Path)
+        {
+        }
+
+        public AssetLocationAndSource(AssetLocation loc, string source) : base(loc.Domain, loc.Path)
+        {
+            this.Source = source;
+        }
+
+        public AssetLocationAndSource(string domain, string path, string source) : base(domain, path)
+        {
+            this.Source = source;
+        }
+    }
+
+    /// <summary>
     /// Defines a complete path to an assets, including it's domain
     /// </summary>
     [TypeConverterAttribute(typeof(StringAssetLocationConverter))]

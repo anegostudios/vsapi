@@ -107,7 +107,7 @@ namespace Vintagestory.API.MathTools
             }
 
             entity.CollidedVertically = collided;
-            entityBox.Add(0, tmpMotion.Y, 0);
+            entityBox.Translate(0, tmpMotion.Y, 0);
 
 
             // X - Collision (Horizontal)
@@ -133,7 +133,7 @@ namespace Vintagestory.API.MathTools
                 );
             }
 
-            entityBox.Add(tmpMotion.X, 0, 0);
+            entityBox.Translate(tmpMotion.X, 0, 0);
 
             // Z - Collision (Horizontal)
 
@@ -176,7 +176,7 @@ namespace Vintagestory.API.MathTools
         {
             BlockPos blockPos = new BlockPos();
             Vec3d blockPosVec = new Vec3d();
-            Cuboidd entityBox = entityBoxRel.ToDouble().Add(pos);
+            Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
 
             int minX = (int)(entityBoxRel.X1 + pos.X);
             int minY = (int)(entityBoxRel.Y1 + pos.Y - 1);  // -1 for the extra high collision box of fences

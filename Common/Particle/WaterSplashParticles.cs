@@ -7,7 +7,9 @@ namespace Vintagestory.API.Common
     public class WaterSplashParticles : ParticlesProviderBase
     {
         Random rand = new Random();
-        public Vec3d basePos = new Vec3d();
+        public Vec3d BasePos = new Vec3d();
+        public Vec3f AddVelocity = new Vec3f();
+        public float QuantityMul;
 
         public override bool DieInLiquid() { return true; }
         public override float GetGravityEffect() { return 1f; }
@@ -15,12 +17,12 @@ namespace Vintagestory.API.Common
 
         public override Vec3d GetPos()
         {
-            return new Vec3d(basePos.X + rand.NextDouble() * 0.25 - 0.125, basePos.Y + 0.1 + rand.NextDouble() * 0.2, basePos.Z + rand.NextDouble() * 0.25 - 0.125);
+            return new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
         }
 
         public override float GetQuantity()
         {
-            return 15;
+            return 45 * QuantityMul;
         }
 
         public override byte[] GetRgbaColor()
@@ -41,12 +43,17 @@ namespace Vintagestory.API.Common
 
         public override EvolvingNatFloat GetSizeEvolve()
         {
-            return new EvolvingNatFloat(EnumTransformFunction.LINEAR, 1);
+            return new EvolvingNatFloat(EnumTransformFunction.LINEAR, 0.5f);
+        }
+
+        public override EvolvingNatFloat GetOpacityEvolve()
+        {
+            return new EvolvingNatFloat(EnumTransformFunction.QUADRATIC, -16);
         }
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
-            return new Vec3f(2 * (float)rand.NextDouble() - 1f, 3 * (float)rand.NextDouble() + 2f, 2 * (float)rand.NextDouble() - 1f);
+            return new Vec3f(2 * (float)rand.NextDouble() - 1f + AddVelocity.X, 3 * (float)rand.NextDouble() + 2f + AddVelocity.Y, 2 * (float)rand.NextDouble() - 1f + AddVelocity.Z);
         }
     }
 }

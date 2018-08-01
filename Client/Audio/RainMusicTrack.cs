@@ -39,7 +39,7 @@ namespace Vintagestory.API.Client
             throw new NotImplementedException();
         }
 
-        public void Initialize(IAssetManager assetManager, IClientWorldAccessor world)
+        public void Initialize(IAssetManager assetManager, ICoreClientAPI capi)
         {
             throw new NotImplementedException();
         }

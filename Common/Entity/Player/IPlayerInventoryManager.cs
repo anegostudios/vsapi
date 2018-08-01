@@ -44,7 +44,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The slot the player currently hovers over with his mouse cursor
         /// </summary>
-        IItemSlot CurrentHoveredSlot { get; }
+        ItemSlot CurrentHoveredSlot { get; }
 
 
         /// <summary>
@@ -135,13 +135,13 @@ namespace Vintagestory.API.Common
         /// Only then interaction with other inventories becomes possible
         /// </summary>
         /// <param name="inventory"></param>
-        void OpenInventory(IInventory inventory);
+        object OpenInventory(IInventory inventory);
 
         /// <summary>
         /// Notifies the inventory manager that the player has closed an inventory. Should always be called on both sides (client and server). After closing interaction with given inventory becomes no longer possible until reopened
         /// </summary>
         /// <param name="inventory"></param>
-        void CloseInventory(IInventory inventory);
+        object CloseInventory(IInventory inventory);
 
         /// <summary>
         /// Shorthand for Inventories.ContainsValue(inventory)

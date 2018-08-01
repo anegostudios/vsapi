@@ -22,6 +22,7 @@ namespace Vintagestory.API.Common
         public DamageSource DeathReason;
 
         double eyeHeightCurrent;
+        ICoreAPI api;
 
         Vec3d IEntityPlayer.CameraPos
         {
@@ -96,6 +97,13 @@ namespace Vintagestory.API.Common
 
         }
 
+        public override void Initialize(ICoreAPI api, long chunkindex3d)
+        {
+            this.api = api;
+            base.Initialize(api, chunkindex3d);
+        }
+
+
         public override double EyeHeight()
         {
             if (MountedOn?.SuggestedAnimation == "sleep")
@@ -141,7 +149,7 @@ namespace Vintagestory.API.Common
 
 
             double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(6 * walkCounter) * amplitude) + offset);
-            if (ClientSettingsApi.ViewBobbing) newEyeheight += stepHeight;
+            if (api.Side == EnumAppSide.Client && (api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
 
             
 
@@ -229,12 +237,6 @@ namespace Vintagestory.API.Common
                 (int)pos.Z);
         }
 
-
-
-        public override void Initialize(ICoreAPI api, long chunkindex3d)
-        {
-            base.Initialize(api, chunkindex3d);
-        }
 
 
 

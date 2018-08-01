@@ -173,7 +173,7 @@ namespace Vintagestory.API.Common.Entities
             if (clientConf.Shape?.Base == null || clientConf.Shape.Base.Path.Length == 0)
             {
                 shapePath = new AssetLocation("shapes/block/basic/cube.json");
-                if (!clientConf.Shape.VoxelizeTexture)
+                if (clientConf.Shape?.VoxelizeTexture != true)
                 {
                     capi.World.Logger.Warning("No entity shape supplied for entity {0}, using cube shape", entityType.Code);
                 }
@@ -204,6 +204,21 @@ namespace Vintagestory.API.Common.Entities
 
             clientConf.LoadedShape = entityShape;
             entityShape.ResolveReferences(capi.World.Logger, clientConf.Shape.Base.ToString());
+
+            CacheInvTransforms(clientConf.LoadedShape.Elements);
+            
+
+        }
+
+        private void CacheInvTransforms(ShapeElement[] elements)
+        {
+            if (elements == null) return;
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                elements[i].CacheInverseTransformMatrix();
+                CacheInvTransforms(elements[i].Children);
+            }
         }
     }
 

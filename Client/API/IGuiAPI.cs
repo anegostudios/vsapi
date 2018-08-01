@@ -35,7 +35,14 @@ namespace Vintagestory.API.Client
         /// A utility class that contains a bunch of hardcoded icons
         /// </summary>
         IconUtil Icons { get; }
-        
+
+
+        /// <summary>
+        /// If there is a currenly opened dialog or hud element, the method will return the bounds occuppying that area, otherwise null
+        /// </summary>
+        /// <param name="alignment"></param>
+        /// <returns></returns>
+        List<ElementBounds> GetDialogBoundsInArea(EnumDialogArea area);
 
         /// <summary>
         /// Creates a new gui composition

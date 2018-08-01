@@ -11,6 +11,17 @@ namespace Vintagestory.API.Client
     public interface IRenderAPI
     {
         /// <summary>
+        /// The currently configured z-far plane
+        /// </summary>
+        float Zfar { get; }
+        /// <summary>
+        /// The currently configured z-near plane
+        /// </summary>
+        float ZNear { get; }
+
+        ModelTransform CameraOffset { get; }
+
+        /// <summary>
         /// The render stage the engine is currently at
         /// </summary>
         EnumRenderStage CurrentRenderStage { get; }
@@ -60,6 +71,10 @@ namespace Vintagestory.API.Client
 
 
         #region OpenGL
+        /// <summary>
+        /// Returns null if no OpenGL Error happened, otherwise one of the official opengl error codes
+        /// </summary>
+        /// <returns></returns>
         string GlGetError();
 
 

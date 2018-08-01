@@ -10,7 +10,7 @@ namespace Vintagestory.API.Common
 {
     public class EntitySelection
     {
-        public IEntity entity;
+        public Entity entity;
         public Vec3d Position;
         public BlockFacing Face;
         public Vec3d HitPosition;

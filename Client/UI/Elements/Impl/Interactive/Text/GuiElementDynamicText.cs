@@ -1,6 +1,7 @@
 ﻿using System;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -30,7 +31,7 @@ namespace Vintagestory.API.Client
      
         public void AutoHeight()
         {
-            Bounds.fixedHeight = GetMultilineTextHeight(text, Bounds.InnerWidth, lineHeightMultiplier) / ClientSettingsApi.GUIScale;
+            Bounds.fixedHeight = GetMultilineTextHeight(text, Bounds.InnerWidth, lineHeightMultiplier) / RuntimeEnv.GUIScale;
             Bounds.CalcWorldBounds();
             autoHeight = true;
         }

@@ -27,7 +27,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Weather at the players position
         /// </summary>
-        public float[] Weather;
+        //public float[] Weather;
 
         /// <summary>
         /// The servers playstyle

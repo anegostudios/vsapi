@@ -13,8 +13,6 @@ namespace Vintagestory.API.Client
     {
         public string DialogTitle;
 
-        API.Common.Action onclosed;
-        public API.Common.Action OnClosed { get { return onclosed; } set { onclosed = value; } }
 
         public override bool UnregisterOnClose => true;
         public virtual ITreeAttribute Attributes => null;
@@ -29,12 +27,7 @@ namespace Vintagestory.API.Client
             get { return null; }
         }
 
-        public override void OnGuiClosed()
-        {
-            base.OnGuiClosed();
-
-            onclosed?.Invoke();
-        }
+        
 
         public virtual void Recompose()
         {
@@ -68,7 +61,7 @@ namespace Vintagestory.API.Client
             {
                 Cuboidf box = boxes[i];
                 Vec3d playerEye = capi.World.Player.Entity.Pos.XYZ.Add(0, capi.World.Player.Entity.EyeHeight(), 0);
-                dist = Math.Min(dist, box.ToDouble().Add(blockEntityPos.X, blockEntityPos.Y, blockEntityPos.Z).ShortestDistanceFrom(playerEye));
+                dist = Math.Min(dist, box.ToDouble().Translate(blockEntityPos.X, blockEntityPos.Y, blockEntityPos.Z).ShortestDistanceFrom(playerEye));
             }
 
             return dist <= capi.World.Player.WorldData.PickingRange + 0.5;
@@ -85,7 +78,7 @@ namespace Vintagestory.API.Client
                 return;
             }
 
-            SingleComposer.Bounds.alignment = ElementAlignment.None;
+            SingleComposer.Bounds.Alignment = EnumDialogArea.None;
             SingleComposer.Bounds.fixedOffsetX = 0;
             SingleComposer.Bounds.fixedOffsetY = 0;
             SingleComposer.Bounds.absFixedX = pos.X - SingleComposer.Bounds.OuterWidth / 2;

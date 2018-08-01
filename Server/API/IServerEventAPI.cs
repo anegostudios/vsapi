@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Action = Vintagestory.API.Common.Action;
 
 namespace Vintagestory.API.Server
 {
+    public delegate void EntitySpawnDelegate(Entity entity);
+
     /// <summary>
     /// Contains methods to hook into various server processes
     /// </summary>
     public interface IServerEventAPI : IEventAPI
     {
+        /// <summary>
+        /// Triggered when a new entity spawned
+        /// </summary>
+        event EntitySpawnDelegate OnEntitySpawn;
+
         /// <summary>
         /// Returns the list of currently registered map chunk generator handlers for given playstyle. Returns an array of handler lists. Each element in the array represents all the handlers for one worldgenpass (see EnumWorldGenPass)       
         /// </summary>

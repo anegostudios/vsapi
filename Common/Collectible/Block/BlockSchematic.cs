@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
@@ -41,6 +42,8 @@ namespace Vintagestory.API.Common
     public class BlockSchematic
     {
         [JsonProperty]
+        public string GameVersion;
+        [JsonProperty]
         public int SizeX;
         [JsonProperty]
         public int SizeY;
@@ -57,12 +60,17 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public Dictionary<uint, string> BlockEntities = new Dictionary<uint, string>();
         [JsonProperty]
+        public List<string> Entities = new List<string>();
+
+        [JsonProperty]
         public EnumReplaceMode ReplaceMode = EnumReplaceMode.ReplaceAllNoAir;
 
 
 
         public Dictionary<BlockPos, ushort> BlocksUnpacked = new Dictionary<BlockPos, ushort>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
+        public List<Entity> EntitiesUnpacked = new List<Entity>();
+
 
 
         protected Block fillerBlock;
@@ -216,7 +224,7 @@ namespace Vintagestory.API.Common
     
 
 
-        public virtual void AddArea(IBlockAccessor blockAccess, BlockPos start, BlockPos end)
+        public virtual void AddArea(IWorldAccessor world, BlockPos start, BlockPos end)
         {
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
             BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z));
@@ -228,12 +236,12 @@ namespace Vintagestory.API.Common
                     for (int z = startPos.Z; z < finalPos.Z; z++)
                     {
                         BlockPos pos = new BlockPos(x, y, z);
-                        ushort blockid = blockAccess.GetBlockId(pos);
+                        ushort blockid = world.BlockAccessor.GetBlockId(pos);
                         if (blockid == 0) continue;
 
                         BlocksUnpacked[pos] = blockid;
 
-                        BlockEntity be = blockAccess.GetBlockEntity(pos);
+                        BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
                         if (be != null)
                         {
                             BlockEntitiesUnpacked[pos] = EncodeBlockEntityData(be);
@@ -242,10 +250,12 @@ namespace Vintagestory.API.Common
                     }
                 }
             }
+
+            EntitiesUnpacked.AddRange(world.GetEntitiesInsideCuboid(start, end));
         }
 
 
-        public virtual bool Pack(IBlockAccessor blockAccessor, BlockPos startPos)
+        public virtual bool Pack(IWorldAccessor world, BlockPos startPos)
         {
             Indices.Clear();
             BlockIds.Clear();
@@ -279,7 +289,7 @@ namespace Vintagestory.API.Common
                 if (val.Value == 0) continue;
 
                 // Store a block mapping
-                BlockCodes[val.Value] = blockAccessor.GetBlock(val.Value).Code;
+                BlockCodes[val.Value] = world.BlockAccessor.GetBlock(val.Value).Code;
 
                 // Store relative position and the block id
                 int dx = val.Key.X - minX;
@@ -302,6 +312,22 @@ namespace Vintagestory.API.Common
                 BlockEntities[(uint)((dy << 20) | (dz << 10) | dx)] = val.Value;
             }
 
+            foreach (Entity e in EntitiesUnpacked)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    BinaryWriter writer = new BinaryWriter(ms);
+
+                    writer.Write(world.ClassRegistry.GetEntityClassName(e.GetType()));
+
+                    e.WillExport(startPos);
+                    e.ToBytes(writer, false);
+                    e.DidImportOrExport(startPos);
+
+                    Entities.Add(Ascii85.Encode(ms.ToArray()));
+                }
+            }
+
             return true;
         }
 
@@ -312,9 +338,9 @@ namespace Vintagestory.API.Common
         /// <param name="blocAccessor"></param>
         /// <param name="startPos"></param>
         /// <returns></returns>
-        public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumOrigin origin = EnumOrigin.StartPos, bool replaceMetaBlocks = true)
+        public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, bool replaceMetaBlocks = true)
         {
-            return Place(blockAccessor, worldForCollectibleResolve, startPos, ReplaceMode, origin, replaceMetaBlocks);
+            return Place(blockAccessor, worldForCollectibleResolve, startPos, ReplaceMode, replaceMetaBlocks);
         }
 
         /// <summary>
@@ -324,7 +350,7 @@ namespace Vintagestory.API.Common
         /// <param name="startPos"></param>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumReplaceMode mode, EnumOrigin origin = EnumOrigin.StartPos, bool replaceMetaBlocks = true)
+        public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumReplaceMode mode, bool replaceMetaBlocks = true)
         {
             BlockPos curPos = new BlockPos();
             int placed = 0;
@@ -382,7 +408,7 @@ namespace Vintagestory.API.Common
 
             if (!(blockAccessor is IBlockAccessorRevertable))
             {
-                PlaceBlockEntities(blockAccessor, worldForCollectibleResolve, startPos, mode);
+                PlaceEntitiesAndBlockEntities(blockAccessor, worldForCollectibleResolve, startPos);
             }
 
             return placed;
@@ -390,7 +416,7 @@ namespace Vintagestory.API.Common
 
 
 
-        public virtual void RotateWhilePacked(IBlockAccessor blockAccessor, int angle, bool flipVertical = false)
+        public virtual void RotateWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, bool flipVertical = false)
         {
             BlockPos curPos = new BlockPos();
             BlockPos startPos = new BlockPos(1024, 1024, 1024);
@@ -399,6 +425,8 @@ namespace Vintagestory.API.Common
 
             BlocksUnpacked.Clear();
             BlockEntitiesUnpacked.Clear();
+
+            angle = GameMath.Mod(angle, 360);
 
             for (int i = 0; i < Indices.Count; i++)
             {
@@ -410,7 +438,7 @@ namespace Vintagestory.API.Common
                 int dz = (int)((index >> 10) & 0x1ff);
 
                 AssetLocation blockCode = BlockCodes[storedBlockid];
-                Block newBlock = blockAccessor.GetBlock(blockCode);
+                Block newBlock = worldForResolve.GetBlock(blockCode);
                 if (newBlock == null) continue;
 
                 if (flipVertical)
@@ -418,17 +446,20 @@ namespace Vintagestory.API.Common
                     dy = SizeY - dy;
 
                     AssetLocation newCode = newBlock.GetVerticallyFlippedBlockCode();
-                    newBlock = blockAccessor.GetBlock(newCode);
+                    newBlock = worldForResolve.GetBlock(newCode);
                 }
 
                 if (angle != 0)
                 {
                     AssetLocation newCode = newBlock.GetRotatedBlockCode(angle);
-                    newBlock = blockAccessor.GetBlock(newCode);
+                    newBlock = worldForResolve.GetBlock(newCode);
                 }
 
-                dx -= SizeX / 2;
-                dz -= SizeX / 2;
+                if (aroundOrigin != EnumOrigin.StartPos)
+                {
+                    dx -= SizeX / 2;
+                    dz -= SizeZ / 2;
+                }
 
                 BlockPos pos = new BlockPos(dx, dy, dz);
 
@@ -457,8 +488,11 @@ namespace Vintagestory.API.Common
                         break;
                 }
 
-                pos.X += SizeX / 2;
-                pos.Z += SizeZ / 2;
+                if (aroundOrigin != EnumOrigin.StartPos)
+                {
+                    pos.X += SizeX / 2;
+                    pos.Z += SizeZ / 2;
+                }
 
                 curPos.Set(pos.X + startPos.X, pos.Y + startPos.Y, pos.Z + startPos.Z);
 
@@ -474,7 +508,7 @@ namespace Vintagestory.API.Common
                 int dz = (int)((index >> 10) & 0x1ff);
 
                 dx -= SizeX / 2;
-                dz -= SizeX / 2;
+                dz -= SizeZ / 2;
 
                 BlockPos pos = new BlockPos(dx, dy, dz);
 
@@ -508,14 +542,26 @@ namespace Vintagestory.API.Common
 
                 curPos.Set(pos.X + startPos.X, pos.Y + startPos.Y, pos.Z + startPos.Z);
 
-                BlockEntitiesUnpacked[pos] = val.Value;
+                string beData = val.Value;
+
+
+                BlockEntity be = worldForResolve.ClassRegistry.CreateBlockEntity(worldForResolve.GetBlock(BlocksUnpacked[pos]).EntityClass);
+                if (be is IBlockEntityRotatable)
+                {
+                    ITreeAttribute tree = DecodeBlockEntityData(beData);
+                    (be as IBlockEntityRotatable).OnRotated(tree, angle, flipVertical);
+                    beData = StringEncodeTreeAttribute(tree);
+                }
+
+                BlockEntitiesUnpacked[pos] = beData;
             }
 
-            Pack(blockAccessor, startPos);
+
+            Pack(worldForResolve, startPos);
         }
         
 
-        public void PlaceBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumReplaceMode mode = EnumReplaceMode.Replaceable)
+        public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos)
         {
             BlockPos curPos = new BlockPos();
 
@@ -544,9 +590,38 @@ namespace Vintagestory.API.Common
 
                 if (be != null)
                 {
-                    be.FromTreeAtributes(DecodeBlockEntityData(val.Value), worldForCollectibleResolve);
+                    ITreeAttribute tree = DecodeBlockEntityData(val.Value);
+                    tree.SetInt("posx", curPos.X);
+                    tree.SetInt("posy", curPos.Y);
+                    tree.SetInt("posz", curPos.Z);
+
+                    be.FromTreeAtributes(tree, worldForCollectibleResolve);
                     be.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes);                    
                     be.pos = curPos.Copy();
+                }
+            }
+
+            foreach (string entityData in Entities)
+            {
+                using (MemoryStream ms = new MemoryStream(Ascii85.Decode(entityData)))
+                {
+                    BinaryReader reader = new BinaryReader(ms);
+
+                    string className = reader.ReadString();
+                    Entity entity = worldForCollectibleResolve.ClassRegistry.CreateEntity(className);
+
+                    entity.FromBytes(reader, false);
+                    entity.DidImportOrExport(startPos);
+
+                    // Not ideal but whatever
+                    if (blockAccessor is IWorldGenBlockAccessor)
+                    {
+                        (blockAccessor as IWorldGenBlockAccessor).AddEntity(entity);
+                    } else
+                    {
+                        worldForCollectibleResolve.SpawnEntity(entity);
+                    }
+                    
                 }
             }
         }
@@ -633,6 +708,8 @@ namespace Vintagestory.API.Common
 
         public virtual string Save(string outfilepath)
         {
+            this.GameVersion = API.Config.GameVersion.ShortGameVersion;
+
             if (!outfilepath.EndsWith(".json"))
             {
                 outfilepath += ".json";
@@ -659,13 +736,19 @@ namespace Vintagestory.API.Common
 
         public virtual string EncodeBlockEntityData(BlockEntity be)
         {
-            TreeAttribute attr = new TreeAttribute();
-            be.ToTreeAttributes(attr);
+            TreeAttribute tree = new TreeAttribute();
+            be.ToTreeAttributes(tree);
+
+            return StringEncodeTreeAttribute(tree);
+        }
+
+        public virtual string StringEncodeTreeAttribute(ITreeAttribute tree)
+        {
             byte[] data;
             using (MemoryStream ms = new MemoryStream())
             {
                 BinaryWriter writer = new BinaryWriter(ms);
-                attr.ToBytes(writer);
+                tree.ToBytes(writer);
                 data = ms.ToArray();
             }
 

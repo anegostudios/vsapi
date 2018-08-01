@@ -9,7 +9,19 @@ namespace Vintagestory.API.Server
 {
     public class PlayerGroupMembership
     {
+        /// <summary>
+        /// The member ship level in this group
+        /// </summary>
         public EnumPlayerGroupMemberShip Level;
-        public string lastKnownPlayerGroupName;
+
+        /// <summary>
+        /// The last known group name 
+        /// </summary>
+        public string GroupName;
+
+        /// <summary>
+        /// The group id
+        /// </summary>
+        public int GroupUid;
     }
 }

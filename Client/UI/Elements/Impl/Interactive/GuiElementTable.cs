@@ -2,6 +2,7 @@
 using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -112,7 +113,7 @@ namespace Vintagestory.API.Client
                 cell.CreateDynamicParts();
                 i++;
 
-                unscaledHeight += cell.Bounds.OuterHeight / ClientSettingsApi.GUIScale + unscaledCellSpacing;
+                unscaledHeight += cell.Bounds.OuterHeight / RuntimeEnv.GUIScale + unscaledCellSpacing;
             }
 
             //surface.WriteToPng("table.png");
@@ -130,7 +131,7 @@ namespace Vintagestory.API.Client
                 fixedPaddingY = UnscaledCellVerPadding,
                 fixedWidth = Bounds.fixedWidth - 2 * UnscaledCellHorPadding - 2 * unscaledCellSpacing,
                 fixedHeight = 0,
-                bothSizing = ElementSizing.Fixed,
+                BothSizing = ElementSizing.Fixed,
             }.WithParent(insideBounds);
 
             IGuiElementCell cellElem = this.cellcreator(cell, cellBounds);
@@ -155,12 +156,12 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            if (!Bounds.parentBounds.PointInside(args.X, args.Y)) return;
+            if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
 
             int i = 0;
 
-            int dx = api.Input.GetMouseCurrentX() - (int)Bounds.absX;
-            int dy = api.Input.GetMouseCurrentY() - (int)Bounds.absY;
+            int dx = api.Input.MouseX - (int)Bounds.absX;
+            int dy = api.Input.MouseY - (int)Bounds.absY;
 
 
             foreach (IGuiElementCell element in elementCells)
@@ -171,7 +172,7 @@ namespace Vintagestory.API.Client
                 {
                     api.Gui.PlaySound("menubutton_press");
 
-                    if (pos.x > element.Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
+                    if (pos.X > element.Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
                     {
                         rightPartClick?.Invoke(i);
                         args.Handled = true;
@@ -195,8 +196,8 @@ namespace Vintagestory.API.Client
 
             int i = 0;
 
-            int dx = api.Input.GetMouseCurrentX() - (int)Bounds.absX;
-            int dy = api.Input.GetMouseCurrentY() - (int)Bounds.absY;
+            int dx = api.Input.MouseX - (int)Bounds.absX;
+            int dy = api.Input.MouseY - (int)Bounds.absY;
 
             foreach (IGuiElementCell element in elementCells)
             {

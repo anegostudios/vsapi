@@ -25,6 +25,17 @@ namespace Vintagestory.API.Client
         void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null);
 
         /// <summary>
+        /// Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="packetId"></param>
+        /// <param name="data"></param>
+        void SendEntityPacket(long entityid, int packetId, byte[] data = null);
+
+
+        /// <summary>
         /// Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
         /// </summary>
         /// <param name="x"></param>
@@ -33,6 +44,15 @@ namespace Vintagestory.API.Client
         /// <param name="packetId"></param>
         /// <param name="internalPacket"></param>
         void SendBlockEntityPacket(int x, int y, int z, object internalPacket);
+
+
+        /// <summary>
+        /// Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
+        /// </summary>
+        /// <param name="entityid"></param>
+        /// <param name="internalPacket"></param>
+        void SendEntityPacket(long entityid, object internalPacket);
+
 
         /// <summary>
         /// Sends given packet data to the server. This let's you mess with the raw network communication and fiddle with internal engine packets if you know the protocol. For normal network communication you probably want to register your own network channel.

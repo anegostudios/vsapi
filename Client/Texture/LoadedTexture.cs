@@ -4,62 +4,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
     public class LoadedTexture
     {
-        public int textureId;
-        public int width;
-        public int height;
+        public int TextureId;
+        public int Width;
+        public int Height;
 
         bool disposed;
 
         string trace;
-        ICoreClientAPI capi;
-
-        static bool DEBUG_DISPOSE;
+        protected ICoreClientAPI capi;
 
         static LoadedTexture()
         {
-            //Environment.SetEnvironmentVariable("LOADEDTEXTURE_DEBUG_DISPOSE", "1");
-            DEBUG_DISPOSE = Environment.GetEnvironmentVariable("LOADEDTEXTURE_DEBUG_DISPOSE") == "1";
         }
 
         public LoadedTexture(ICoreClientAPI capi)
         {
             this.capi = capi;
 
-            if (DEBUG_DISPOSE)
+            if (RuntimeEnv.DebugTextureDispose)
             {
                 trace = Environment.StackTrace;
             }
         }
 
-        public LoadedTexture(int textureId, int width, int height)
+        public LoadedTexture(ICoreClientAPI capi, int textureId, int width, int height)
         {
-            this.textureId = textureId;
-            this.width = width;
-            this.height = height;
+            this.capi = capi;
+            this.TextureId = textureId;
+            this.Width = width;
+            this.Height = height;
+
+            if (RuntimeEnv.DebugTextureDispose)
+            {
+                trace = Environment.StackTrace;
+            }
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             this.disposed = true;
-            capi?.Gui.DeleteTexture(textureId);
+            capi?.Gui.DeleteTexture(TextureId);
         }
 
         ~LoadedTexture()
         {
             if (disposed || capi?.IsShuttingDown == true) return;
 
-            if (!DEBUG_DISPOSE)
+            if (trace == null)
             {
-                capi?.World.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Set env var LOADEDTEXTURE_DEBUG_DISPOSE to get allocation trace.", textureId);
+                capi?.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Set env RuntimeEnv.DebugTextureDispose to get allocation trace.", TextureId);
             }
             else
             {
-                capi?.World.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Allocated at {1}.", textureId, trace);
+                capi?.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Allocated at {1}.", TextureId, trace);
             }
 
         }

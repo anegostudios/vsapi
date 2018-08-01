@@ -19,6 +19,12 @@ namespace Vintagestory.API.Common
     public abstract class CollectibleObject
     {
         /// <summary>
+        /// This value is set the the BlockId or ItemId-Remapper if it encounters a block/item in the savegame, 
+        /// but no longer exists as a loaded block/item
+        /// </summary>
+        public bool IsMissing { get; set; }
+
+        /// <summary>
         /// The block or item id
         /// </summary>
         public abstract int Id { get; }

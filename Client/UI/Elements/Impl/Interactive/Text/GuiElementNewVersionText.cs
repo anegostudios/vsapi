@@ -2,6 +2,7 @@
 using Cairo;
 using Vintagestory.API.Common;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -29,7 +30,7 @@ namespace Vintagestory.API.Client
         {
             text = "Version " + versionnumber + " now available \\o/\nClick here to go to the downloads page";
 
-            Bounds.fixedHeight = GetMultilineTextHeight(text, Bounds.InnerWidth, 1f) / ClientSettingsApi.GUIScale;
+            Bounds.fixedHeight = GetMultilineTextHeight(text, Bounds.InnerWidth, 1f) / RuntimeEnv.GUIScale;
             Bounds.CalcWorldBounds();
 
             offsetY = -2*Bounds.fixedHeight;

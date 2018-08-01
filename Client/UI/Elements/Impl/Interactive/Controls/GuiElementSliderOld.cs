@@ -157,7 +157,7 @@ namespace Vintagestory.API.Client
 
             api.Render.RenderTexture(handleTextureId, Bounds.renderX + padding + handlePosition, Bounds.renderY - dy, (int)handleWidth+5, (int)handleHeight+5);
 
-            if (mouseDownOnSlider || Bounds.PointInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY()))
+            if (mouseDownOnSlider || Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
             {
                 ElementBounds elemBounds = textElem.Bounds;
                 api.Render.RenderTexture(
@@ -194,9 +194,9 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            if (!Bounds.PointInside(api.Input.GetMouseCurrentX(), api.Input.GetMouseCurrentY())) return;
+            if (!Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) return;
 
-            args.Handled = updateValue(api.Input.GetMouseCurrentX());
+            args.Handled = updateValue(api.Input.MouseX);
 
             mouseDownOnSlider = true;
         }
@@ -218,7 +218,7 @@ namespace Vintagestory.API.Client
         {
             if (mouseDownOnSlider)
             {
-                args.Handled = updateValue(api.Input.GetMouseCurrentX());
+                args.Handled = updateValue(api.Input.MouseX);
             }
         }
 

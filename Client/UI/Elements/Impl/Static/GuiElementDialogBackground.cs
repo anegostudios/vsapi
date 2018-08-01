@@ -8,10 +8,12 @@ namespace Vintagestory.API.Client
     {
         bool hotBarLayout = false;
         bool strongBackground;
+        double topPadding = 0;
 
-        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool strongBackground, bool hotBarLayout = false) : base(capi, bounds)
+        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool strongBackground, bool hotBarLayout = false, double topPadding = 0) : base(capi, bounds)
         {
             this.hotBarLayout = hotBarLayout;
+            this.topPadding = topPadding;
             this.strongBackground = strongBackground;
         }
 
@@ -22,7 +24,7 @@ namespace Vintagestory.API.Client
             
             if (hotBarLayout)
             {
-                double midBoxWidth = 0.15 * Bounds.parentBounds.OuterWidth;
+                double midBoxWidth = 0.15 * Bounds.ParentBounds.OuterWidth;
                 double midBoxHeight = 0.2 * Bounds.OuterHeight;
 
                 //bounds.fixedY = bounds.OuterHeight / 2;
@@ -30,7 +32,7 @@ namespace Vintagestory.API.Client
 
                 double radius = ElementGeometrics.DialogBGRadius;
                 double x = Bounds.bgDrawX;
-                double y = Bounds.bgDrawY + midBoxHeight;
+                double y = Bounds.bgDrawY + midBoxHeight + topPadding;
                 double width = Bounds.OuterWidth;
                 double height = Bounds.OuterHeight;
                 double degrees = Math.PI / 180.0;
@@ -51,7 +53,7 @@ namespace Vintagestory.API.Client
             }
             else
             {
-                DialogRoundRectangle(ctx, Bounds);
+                RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + topPadding, Bounds.OuterWidth, Bounds.OuterHeight - topPadding, ElementGeometrics.DialogBGRadius);
             }
 
             if (strongBackground)
@@ -74,11 +76,11 @@ namespace Vintagestory.API.Client
     {
 
         // Single rectangle shape
-        public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool strongBackground = false)
+        public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool strongBackground = false, double topPadding = 0)
         {
             if (!composer.composed)
             {
-                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, strongBackground, false));
+                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, strongBackground, false, topPadding));
             }
             return composer;
         }

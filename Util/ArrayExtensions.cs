@@ -36,7 +36,7 @@ namespace Vintagestory.API.Util
         /// <typeparam name="T"></typeparam>
         /// <param name="rand"></param>
         /// <param name="array"></param>
-        public static void Shuffle<T>(this T[] array, Random rand)
+        public static T[] Shuffle<T>(this T[] array, Random rand)
         {
             int n = array.Length;        // The number of items left to shuffle (loop invariant).
             while (n > 1)
@@ -47,6 +47,8 @@ namespace Vintagestory.API.Util
                 array[n] = array[k];
                 array[k] = temp;
             }
+
+            return array;
         }
     }
 }

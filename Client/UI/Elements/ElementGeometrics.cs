@@ -9,7 +9,7 @@
         public static double HalfPadding = 5f;
 
         public static double DialogToScreenPadding = 10f;
-
+        public static double TitleBarHeight = 30;
         public static double DialogBGRadius = 1;
         public static double ElementBGRadius = 1;
 

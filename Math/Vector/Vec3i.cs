@@ -1,14 +1,19 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 3 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [ProtoContract]
     public class Vec3i : IEquatable<Vec3i>, IVec3
     {
+        [ProtoMember(1)]
         public int X;
+        [ProtoMember(2)]
         public int Y;
+        [ProtoMember(3)]
         public int Z;
         
         public BlockPos AsBlockPos
@@ -228,6 +233,16 @@ namespace Vintagestory.API.MathTools
         public Vec3i AddCopy(BlockFacing facing)
         {
             return new Vec3i(X + facing.Normali.X, Y + facing.Normali.Y, Z + facing.Normali.Z);
+        }
+
+        public BlockPos ToBlockPos()
+        {
+            return new BlockPos()
+            {
+                X = this.X,
+                Y = this.Y,
+                Z = this.Z
+            };
         }
     }
 }

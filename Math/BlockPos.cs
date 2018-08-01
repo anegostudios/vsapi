@@ -73,6 +73,15 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public BlockPos Set(Vec3i pos)
+        {
+            X = pos.X;
+            Y = pos.Y;
+            Z = pos.Z;
+            return this;
+        }
+
+
 
         /// <summary>
         /// Sets XYZ to new vlaues
@@ -568,6 +577,11 @@ namespace Vintagestory.API.MathTools
         float IVec3.ZAsFloat { get { return Z; } }
 
         #region Operators
+        public static BlockPos operator +(BlockPos left, BlockPos right)
+        {
+            return new BlockPos(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
+
         public static BlockPos operator +(BlockPos left, int right)
         {
             return new BlockPos(left.X + right, left.Y + right, left.Z + right);

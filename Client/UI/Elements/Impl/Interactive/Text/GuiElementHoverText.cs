@@ -1,4 +1,5 @@
 ﻿using Cairo;
+using System;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
@@ -40,22 +41,28 @@ namespace Vintagestory.API.Client
 
             if (autoWidth)
             {
-                Bounds.fixedWidth = (int)(Font.GetTextExtents(text).Width + 2 * padding + 1);
-                Bounds.fixedHeight = (int)(Font.GetFontExtents().Height + 2 * padding + 1);
+                string[] lines = text.Split('\n');
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        width = (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1);
+                    } else
+                    {
+                        width = Math.Max(width, (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1));
+                    }
+                }
+                
             } else
             {
-                width = (int)(scaled(unscaledWidth) + 1);
-                height = (int)(GetMultilineTextHeight(text, width - 2 * padding) + 2 * padding + 1);
+                width = (int)(scaled(unscaledWidth) + 1);                
             }
 
-            
+
+            height = (int)(GetMultilineTextHeight(text, width - 2 * padding) + 2 * padding + 1);
+
             Bounds.CalcWorldBounds();
-
-            if (autoWidth)
-            {
-                width = (int)Bounds.InnerWidth;
-                height = (int)Bounds.InnerHeight;
-            }
+            
 
             ImageSurface surface = new ImageSurface(Format.Argb32, width, height);
             Context ctx = genContext(surface);
@@ -83,8 +90,8 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            int mouseX = api.Input.GetMouseCurrentX();
-            int mouseY = api.Input.GetMouseCurrentY();
+            int mouseX = api.Input.MouseX;
+            int mouseY = api.Input.MouseY;
 
             if ((autoDisplay && Bounds.PointInside(mouseX, mouseY)) || visible)
             {
@@ -135,6 +142,11 @@ namespace Vintagestory.API.Client
         internal void SetFollowMouse(bool on)
         {
             followMouse = on;
+        }
+
+        public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
+        {
+            // Can't click this so don't set the Handled value
         }
     }
 

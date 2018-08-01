@@ -9,7 +9,7 @@ namespace Vintagestory.API.Client
         public static MeshData GetRectangle(int color = 0)
         {
             MeshData m = new MeshData();
-            m.setMode(EnumDrawMode.Lines);
+            m.SetMode(EnumDrawMode.Lines);
             m.xyz = new float[3 * 4];
             m.Rgba = new byte[4 * 4];
             m.Indices = new int[8];
@@ -28,7 +28,7 @@ namespace Vintagestory.API.Client
         public static MeshData GetCube(int color = 0)
         {
             MeshData m = new MeshData();
-            m.setMode(EnumDrawMode.Lines);
+            m.SetMode(EnumDrawMode.Lines);
             m.xyz = new float[3 * 4 * 6];
             m.Rgba = new byte[4 * 4 * 6];
             m.Indices = new int[8 * 6];

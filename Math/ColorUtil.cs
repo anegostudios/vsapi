@@ -92,6 +92,11 @@ namespace Vintagestory.API.MathTools
         public static readonly double[] BlackArgbDouble = new double[] { 0,0,0, 1 };
 
 
+        /// <summary>
+        /// Reverses the RGB channels, but leaves alpha untouched. Basically turns RGBA into BGRA and vice versa
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public static byte[] ReverseColorBytes(byte[] color)
         {
             return new byte[]
@@ -103,6 +108,11 @@ namespace Vintagestory.API.MathTools
             };
         }
 
+        /// <summary>
+        /// Reverses the RGB channels, but leaves alpha untouched. Basically turns RGBA into BGRA and vice versa
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public static int ReverseColorBytes(int color)
         {
             return

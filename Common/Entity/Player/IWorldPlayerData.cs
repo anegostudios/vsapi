@@ -29,9 +29,14 @@ namespace Vintagestory.API.Common
         EntityControls EntityControls { get; }
 
         /// <summary>
-        /// The players viewing distance in blocks
+        /// The players viewing distance in blocks that is allowed by the server
         /// </summary>
         int LastApprovedViewDistance { get; set; }
+
+        /// <summary>
+        /// The players desired viewing distance in blocks
+        /// </summary>
+        int DesiredViewDistance { get; set; }
 
         /// <summary>
         /// The players current game mode. Will return Spectator mode while the player is connecting.

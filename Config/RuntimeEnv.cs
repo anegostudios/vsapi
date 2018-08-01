@@ -5,6 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Threading;
+using Cairo;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Net;
 
 namespace Vintagestory.API.Config
 {
@@ -23,6 +28,14 @@ namespace Vintagestory.API.Config
     /// </summary>
     public static class RuntimeEnv
     {
+        public static bool DebugTextureDispose = false;
+        //public static bool DebugCairoDispose;
+        public static bool DebugVAODispose;
+
+        public static int MainThreadId;
+
+        public static float GUIScale;
+
         /// <summary>
         /// The current operating system
         /// </summary>
@@ -40,7 +53,7 @@ namespace Vintagestory.API.Config
 
         static RuntimeEnv()
         {
-            if (Path.DirectorySeparatorChar == '\\')
+            if (System.IO.Path.DirectorySeparatorChar == '\\')
             {
                 OS = OS.Windows;
                 EnvSearchPathName = "PATH";
@@ -58,6 +71,7 @@ namespace Vintagestory.API.Config
 			OS = OS.Linux;
 			EnvSearchPathName = "LD_LIBRARY_PATH";
 			LibExtension = ".so";
+
         }
 
 		[DllImport("libc")]
@@ -93,6 +107,72 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Whether we are in a dev environment or not
         /// </summary>
-        public static readonly bool IsDevEnvironment = !Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets"));
+        public static readonly bool IsDevEnvironment = !Directory.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets"));
+
+
+        public static string GetLocalIpAddress()
+        {
+            try
+            {
+                // This seems to be the preferred / more reliable way of getting the ip
+                // but it seems of of the methods are not implemented in mono so we fallback 
+                // to a simple method if an exception is thrown
+
+                UnicastIPAddressInformation mostSuitableIp = null;
+
+                var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+
+                foreach (var network in networkInterfaces)
+                {
+                    if (network.OperationalStatus != OperationalStatus.Up)
+                    {
+                        continue;
+                    }
+
+                    var properties = network.GetIPProperties();
+
+                    if (properties.GatewayAddresses.Count == 0)
+                    {
+                        continue;
+                    }
+
+                    foreach (var address in properties.UnicastAddresses)
+                    {
+                        if (address.Address.AddressFamily != AddressFamily.InterNetwork)
+                        {
+                            continue;
+                        }
+
+                        if (IPAddress.IsLoopback(address.Address))
+                        {
+                            continue;
+                        }
+
+                        if (!address.IsDnsEligible)
+                        {
+                            if (mostSuitableIp == null) mostSuitableIp = address;
+                            continue;
+                        }
+
+                        // The best IP is the IP got from DHCP server
+                        if (address.PrefixOrigin != PrefixOrigin.Dhcp)
+                        {
+                            if (mostSuitableIp == null || !mostSuitableIp.IsDnsEligible) mostSuitableIp = address;
+                            continue;
+                        }
+
+                        return address.Address.ToString();
+                    }
+                }
+
+                return mostSuitableIp != null ? mostSuitableIp.Address.ToString() : "";
+            } catch (Exception)
+            {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                var ipAddress = host.AddressList.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
+                return ipAddress.ToString();
+            }
+            
+        }
     }
 }

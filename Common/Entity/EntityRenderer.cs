@@ -15,7 +15,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// A reference to the client api
         /// </summary>
-        public ICoreClientAPI api;
+        public ICoreClientAPI capi;
 
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Vintagestory.API.Common.Entities
         public EntityRenderer(Entity entity, ICoreClientAPI api)
         {
             this.entity = entity;
-            this.api = api;
+            this.capi = api;
         }
 
 

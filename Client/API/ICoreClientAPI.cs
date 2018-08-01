@@ -12,13 +12,19 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface ICoreClientAPI : ICoreAPI
     {
+        ISettings Settings { get; }
 
         ILogger Logger { get; }
 
         /// <summary>
-        /// Amount of milliseconds ellapsed since startup
+        /// Amount of milliseconds ellapsed since client startup
         /// </summary>
         long ElapsedMilliseconds { get; }
+
+        /// <summary>
+        /// Amount of milliseconds ellapsed while in a running game that is not paused
+        /// </summary>
+        long InWorldEllapsedMilliseconds { get; }
 
         /// <summary>
         /// True if the client is currently in the process of exiting

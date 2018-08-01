@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -14,12 +15,12 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class ElementBounds
     {
-        public ElementBounds parentBounds;
-        public List<ElementBounds> childBounds;
+        public ElementBounds ParentBounds;
+        public List<ElementBounds> ChildBounds;
 
-        public ElementAlignment alignment;
+        public EnumDialogArea Alignment;
 
-        public ElementSizing bothSizing
+        public ElementSizing BothSizing
         {
             set { verticalSizing = value; horizontalSizing = value; }
         }
@@ -84,8 +85,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Absolute position of the element plus margin. Same as renderX but without padding
         /// </summary>
-        public virtual double absX { get { return absFixedX + absMarginX + absOffsetX + parentBounds.absPaddingX + parentBounds.absX; } }
-        public virtual double absY { get { return absFixedY + absMarginY + absOffsetY + parentBounds.absPaddingY + parentBounds.absY; } }
+        public virtual double absX { get { return absFixedX + absMarginX + absOffsetX + ParentBounds.absPaddingX + ParentBounds.absX; } }
+        public virtual double absY { get { return absFixedY + absMarginY + absOffsetY + ParentBounds.absPaddingY + ParentBounds.absY; } }
 
         /// <summary>
         /// Width including padding
@@ -119,20 +120,20 @@ namespace Vintagestory.API.Client
         {
             get
             {
-                return absFixedX + absMarginX + absOffsetX + (parentBounds.IsDrawingSurface ? parentBounds.absPaddingX : parentBounds.drawX);
+                return absFixedX + absMarginX + absOffsetX + (ParentBounds.IsDrawingSurface ? ParentBounds.absPaddingX : ParentBounds.drawX);
             }
         }
         public virtual double bgDrawY
         {
             get
             {
-                return absFixedY + absMarginY + absOffsetY + (parentBounds.IsDrawingSurface ? parentBounds.absPaddingY : parentBounds.drawY);
+                return absFixedY + absMarginY + absOffsetY + (ParentBounds.IsDrawingSurface ? ParentBounds.absPaddingY : ParentBounds.drawY);
             }
         }
 
 
-        public virtual double renderX { get { return absFixedX + absMarginX + absOffsetX + parentBounds.absPaddingX + parentBounds.renderX; } }
-        public virtual double renderY { get { return absFixedY + absMarginY + absOffsetY + parentBounds.absPaddingY + parentBounds.renderY; } }
+        public virtual double renderX { get { return absFixedX + absMarginX + absOffsetX + ParentBounds.absPaddingX + ParentBounds.renderX; } }
+        public virtual double renderY { get { return absFixedY + absMarginY + absOffsetY + ParentBounds.absPaddingY + ParentBounds.renderY; } }
 
 
 
@@ -146,9 +147,9 @@ namespace Vintagestory.API.Client
         public void MarkDirtyRecursive()
         {
             Initialized = false;
-            if (childBounds != null)
+            if (ChildBounds != null)
             {
-                foreach (ElementBounds child in childBounds)
+                foreach (ElementBounds child in ChildBounds)
                 {
                     child.MarkDirtyRecursive();
                 }
@@ -185,9 +186,9 @@ namespace Vintagestory.API.Client
 
                     case ElementSizing.Percentual:
                     case ElementSizing.PercentualSubstractFixed:
-                        absFixedX = percentX * parentBounds.OuterWidth;
-                        absInnerWidth = percentWidth * parentBounds.OuterWidth;
-                        absPaddingX = scaled(fixedPaddingX) + percentPaddingX * parentBounds.OuterWidth;
+                        absFixedX = percentX * ParentBounds.OuterWidth;
+                        absInnerWidth = percentWidth * ParentBounds.OuterWidth;
+                        absPaddingX = scaled(fixedPaddingX) + percentPaddingX * ParentBounds.OuterWidth;
 
                         if (horizontalSizing == ElementSizing.PercentualSubstractFixed)
                         {
@@ -206,9 +207,9 @@ namespace Vintagestory.API.Client
 
                     case ElementSizing.Percentual:
                     case ElementSizing.PercentualSubstractFixed:
-                        absFixedY = percentY * parentBounds.OuterHeight;
-                        absInnerHeight = percentHeight * parentBounds.OuterHeight;
-                        absPaddingY = scaled(fixedPaddingY) + percentPaddingY * parentBounds.OuterHeight;
+                        absFixedY = percentY * ParentBounds.OuterHeight;
+                        absInnerHeight = percentHeight * ParentBounds.OuterHeight;
+                        absPaddingY = scaled(fixedPaddingY) + percentPaddingY * ParentBounds.OuterHeight;
 
                         if (horizontalSizing == ElementSizing.PercentualSubstractFixed)
                         {
@@ -221,17 +222,17 @@ namespace Vintagestory.API.Client
 
 
             // Only if the parent element has been initialized already
-            if (parentBounds.Initialized)
+            if (ParentBounds.Initialized)
             {
-                calcMarginFromAlignment(parentBounds.InnerWidth, parentBounds.InnerHeight);
+                calcMarginFromAlignment(ParentBounds.InnerWidth, ParentBounds.InnerHeight);
             }
 
             Initialized = true;
 
-            if (childBounds != null)
+            if (ChildBounds != null)
             {
 
-                foreach (ElementBounds child in childBounds)
+                foreach (ElementBounds child in ChildBounds)
                 {
                     if (!child.Initialized)
                     {
@@ -244,64 +245,64 @@ namespace Vintagestory.API.Client
 
         void calcMarginFromAlignment(double dialogWidth, double dialogHeight)
         {
-            switch (alignment)
+            switch (Alignment)
             {
-                case ElementAlignment.FixedTop:
+                case EnumDialogArea.FixedTop:
                     break;
-                case ElementAlignment.FixedMiddle:
+                case EnumDialogArea.FixedMiddle:
                     absMarginY = dialogHeight / 2 - OuterHeight / 2;
                     break;
-                case ElementAlignment.FixedBottom:
+                case EnumDialogArea.FixedBottom:
                     absMarginY = dialogHeight - OuterHeight;
                     break;
-                case ElementAlignment.CenterFixed:
+                case EnumDialogArea.CenterFixed:
                     absMarginX = dialogWidth / 2 - OuterWidth / 2;
                     break;
 
-                case ElementAlignment.CenterBottom:
+                case EnumDialogArea.CenterBottom:
                     absMarginX = dialogWidth / 2 - OuterWidth / 2;
                     absMarginY = dialogHeight - OuterHeight;
                     break;
-                case ElementAlignment.CenterMiddle:
+                case EnumDialogArea.CenterMiddle:
                     absMarginX = dialogWidth / 2 - OuterWidth / 2;
                     absMarginY = dialogHeight / 2 - OuterHeight / 2;
                     break;
 
-                case ElementAlignment.CenterTop:
+                case EnumDialogArea.CenterTop:
                     absMarginX = dialogWidth / 2 - OuterWidth / 2;
                     break;
 
-                case ElementAlignment.LeftBottom:
+                case EnumDialogArea.LeftBottom:
                     absMarginX = 0;
                     absMarginY = dialogHeight - OuterHeight;
                     break;
-                case ElementAlignment.LeftMiddle:
+                case EnumDialogArea.LeftMiddle:
                     absMarginX = 0;
                     absMarginY = dialogHeight / 2 - absInnerHeight / 2;
                     break;
-                case ElementAlignment.LeftTop:
+                case EnumDialogArea.LeftTop:
                     absMarginX = 0;
                     absMarginY = 0;
                     break;
-                case ElementAlignment.LeftFixed:
+                case EnumDialogArea.LeftFixed:
                     absMarginX = 0;
                     break;
 
 
-                case ElementAlignment.RightBottom:
+                case EnumDialogArea.RightBottom:
                     absMarginX = dialogWidth - OuterWidth;
                     absMarginY = dialogHeight - OuterHeight;
                     break;
-                case ElementAlignment.RightMiddle:
+                case EnumDialogArea.RightMiddle:
                     absMarginX = dialogWidth - OuterWidth;
                     absMarginY = dialogHeight / 2 - OuterHeight / 2;
                     break;
-                case ElementAlignment.RightTop:
+                case EnumDialogArea.RightTop:
                     absMarginX = dialogWidth - OuterWidth;
                     absMarginY = 0;
                     break;
 
-                case ElementAlignment.RightFixed:
+                case EnumDialogArea.RightFixed:
                     absMarginX = dialogWidth - OuterWidth - 0;
                     break;
 
@@ -310,7 +311,7 @@ namespace Vintagestory.API.Client
 
         void buildBoundsFromChildren()
         {
-            if (childBounds == null)
+            if (ChildBounds == null)
             {
                 throw new Exception("Cant build bounds from children elements, there are no children!");
             }
@@ -318,11 +319,11 @@ namespace Vintagestory.API.Client
             double width = 0;
             double height = 0;
 
-            foreach (ElementBounds bounds in childBounds)
+            foreach (ElementBounds bounds in ChildBounds)
             {
                 // Alignment can only happen once the max size is known, so ignore it for now
-                ElementAlignment prevAlign = bounds.alignment;
-                bounds.alignment = ElementAlignment.None;
+                EnumDialogArea prevAlign = bounds.Alignment;
+                bounds.Alignment = EnumDialogArea.None;
 
                 bounds.CalcWorldBounds();
 
@@ -336,7 +337,7 @@ namespace Vintagestory.API.Client
                 }
 
                 // Reassign actual alignment, now as we can calculate the alignment
-                bounds.alignment = prevAlign;
+                bounds.Alignment = prevAlign;
             }
 
             if (width == 0 || height == 0)
@@ -351,7 +352,7 @@ namespace Vintagestory.API.Client
 
         public static double scaled(double value)
         {
-            return value * ClientSettingsApi.GUIScale;
+            return value * RuntimeEnv.GUIScale;
         }
 
 
@@ -388,20 +389,20 @@ namespace Vintagestory.API.Client
 
         public ElementBounds WithChild(ElementBounds bounds)
         {
-            if (childBounds == null)
+            if (ChildBounds == null)
             {
-                childBounds = new List<ElementBounds>();
+                ChildBounds = new List<ElementBounds>();
             }
 
-            if (!childBounds.Contains(bounds))
+            if (!ChildBounds.Contains(bounds))
             {
-                childBounds.Add(bounds);
+                ChildBounds.Add(bounds);
             }
 
 
-            if (bounds.parentBounds == null)
+            if (bounds.ParentBounds == null)
             {
-                bounds.parentBounds = this;
+                bounds.ParentBounds = this;
             }
 
             return this;
@@ -490,7 +491,7 @@ namespace Vintagestory.API.Client
                 fixedWidth = fixedWidth,
                 fixedPaddingX = fixedPaddingX,
                 fixedPaddingY = fixedPaddingY,
-                parentBounds = Empty.WithSizing(ElementSizing.FitToChildren)
+                ParentBounds = Empty.WithSizing(ElementSizing.FitToChildren)
             };
         }
 
@@ -502,7 +503,7 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = Alignment,
                 verticalSizing = verticalSizing,
                 horizontalSizing = horizontalSizing,
                 percentHeight = percentHeight,
@@ -519,7 +520,7 @@ namespace Vintagestory.API.Client
                 fixedMarginY = fixedMarginY,
                 percentPaddingX = percentPaddingX,
                 percentPaddingY = percentPaddingY,
-                parentBounds = parentBounds
+                ParentBounds = ParentBounds
             };
         }
 
@@ -531,7 +532,7 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = Alignment,
                 verticalSizing = verticalSizing,
                 horizontalSizing = horizontalSizing,
                 percentHeight = percentHeight,
@@ -550,7 +551,7 @@ namespace Vintagestory.API.Client
                 fixedMarginY = fixedMarginY,
                 percentPaddingX = percentPaddingX,
                 percentPaddingY = percentPaddingY,
-                parentBounds = parentBounds,
+                ParentBounds = ParentBounds,
             };
         }
 
@@ -558,7 +559,7 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = Alignment,
                 verticalSizing = verticalSizing,
                 horizontalSizing = horizontalSizing,
                 percentHeight = percentHeight,
@@ -577,7 +578,7 @@ namespace Vintagestory.API.Client
                 fixedMarginY = fixedMarginY,
                 percentPaddingX = percentPaddingX,
                 percentPaddingY = percentPaddingY,
-                parentBounds = parentBounds,
+                ParentBounds = ParentBounds,
             };
         }
 
@@ -591,7 +592,7 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = Alignment,
                 verticalSizing = verticalSizing,
                 horizontalSizing = horizontalSizing,
                 percentHeight = percentHeight,
@@ -608,7 +609,7 @@ namespace Vintagestory.API.Client
                 fixedMarginY = fixedMarginY,
                 percentPaddingX = percentPaddingX,
                 percentPaddingY = percentPaddingY,
-                parentBounds = parentBounds
+                ParentBounds = ParentBounds
             };
         }
 
@@ -625,7 +626,7 @@ namespace Vintagestory.API.Client
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = Alignment,
                 verticalSizing = verticalSizing,
                 horizontalSizing = horizontalSizing,
                 percentHeight = percentHeight,
@@ -640,7 +641,7 @@ namespace Vintagestory.API.Client
                 fixedPaddingY = fixedPaddingY,
                 percentPaddingX = percentPaddingX,
                 percentPaddingY = percentPaddingY,
-                parentBounds = this
+                ParentBounds = this
             };
 
         }
@@ -657,7 +658,7 @@ namespace Vintagestory.API.Client
         {
             ElementBounds bounds = new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = Alignment,
                 verticalSizing = verticalSizing,
                 horizontalSizing = horizontalSizing,
                 fixedOffsetX = fixedOffsetX,
@@ -675,7 +676,7 @@ namespace Vintagestory.API.Client
             percentWidth = 1;
             percentHeight = 1;
 
-            parentBounds = bounds;
+            ParentBounds = bounds;
 
             return bounds;
         }
@@ -725,9 +726,9 @@ namespace Vintagestory.API.Client
             return this;
         }
 
-        public ElementBounds WithAlignment(ElementAlignment alignment)
+        public ElementBounds WithAlignment(EnumDialogArea alignment)
         {
-            this.alignment = alignment;
+            this.Alignment = alignment;
             return this;
         }
 
@@ -885,7 +886,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public ElementBounds WithParent(ElementBounds bounds)
         {
-            parentBounds = bounds;
+            ParentBounds = bounds;
             return this;
         }
 
@@ -895,7 +896,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public ElementBounds WithEmptyParent()
         {
-            parentBounds = Empty;
+            ParentBounds = Empty;
             return this;
         }
 
@@ -912,14 +913,14 @@ namespace Vintagestory.API.Client
         {
             get
             {
-                return new ElementBounds() { alignment = ElementAlignment.None, bothSizing = ElementSizing.Percentual, percentWidth = 1, percentHeight = 1 };
+                return new ElementBounds() { Alignment = EnumDialogArea.None, BothSizing = ElementSizing.Percentual, percentWidth = 1, percentHeight = 1 };
             }
         }
 
 
-        public static ElementBounds FixedPos(ElementAlignment alignment, double fixedX, double fixedY)
+        public static ElementBounds FixedPos(EnumDialogArea alignment, double fixedX, double fixedY)
         {
-            return new ElementBounds() { alignment = alignment, bothSizing = ElementSizing.Fixed, fixedX = fixedX, fixedY = fixedY };
+            return new ElementBounds() { Alignment = alignment, BothSizing = ElementSizing.Fixed, fixedX = fixedX, fixedY = fixedY };
         }
 
 
@@ -934,7 +935,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static ElementBounds FixedSize(double fixedWidth, double fixedHeight)
         {
-            return new ElementBounds() { alignment = ElementAlignment.None, fixedWidth = fixedWidth, fixedHeight = fixedHeight, bothSizing = ElementSizing.Fixed };
+            return new ElementBounds() { Alignment = EnumDialogArea.None, fixedWidth = fixedWidth, fixedHeight = fixedHeight, BothSizing = ElementSizing.Fixed };
         }
 
         /// <summary>
@@ -944,9 +945,9 @@ namespace Vintagestory.API.Client
         /// <param name="fixedWidth"></param>
         /// <param name="fixedHeight"></param>
         /// <returns></returns>
-        public static ElementBounds FixedSize(ElementAlignment alignment, double fixedWidth, double fixedHeight)
+        public static ElementBounds FixedSize(EnumDialogArea alignment, double fixedWidth, double fixedHeight)
         {
-            return new ElementBounds() { alignment = alignment, fixedWidth = fixedWidth, fixedHeight = fixedHeight, bothSizing = ElementSizing.Fixed };
+            return new ElementBounds() { Alignment = alignment, fixedWidth = fixedWidth, fixedHeight = fixedHeight, BothSizing = ElementSizing.Fixed };
         }
 
         /// <summary>
@@ -959,7 +960,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static ElementBounds Fixed(double fixedX, double fixedY, double fixedWidth, double fixedHeight)
         {
-            return new ElementBounds() { fixedX = fixedX, fixedY = fixedY, fixedWidth = fixedWidth, fixedHeight = fixedHeight, bothSizing = ElementSizing.Fixed };
+            return new ElementBounds() { fixedX = fixedX, fixedY = fixedY, fixedWidth = fixedWidth, fixedHeight = fixedHeight, BothSizing = ElementSizing.Fixed };
         }
 
 
@@ -972,16 +973,16 @@ namespace Vintagestory.API.Client
         /// <param name="fixedWidth"></param>
         /// <param name="fixedHeight"></param>
         /// <returns></returns>
-        public static ElementBounds FixedOffseted(ElementAlignment alignment, double fixedOffsetX, double fixedOffsetY, double fixedWidth, double fixedHeight)
+        public static ElementBounds FixedOffseted(EnumDialogArea alignment, double fixedOffsetX, double fixedOffsetY, double fixedWidth, double fixedHeight)
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = alignment,
                 fixedOffsetX = fixedOffsetX,
                 fixedOffsetY = fixedOffsetY,
                 fixedWidth = fixedWidth,
                 fixedHeight = fixedHeight,
-                bothSizing = ElementSizing.Fixed
+                BothSizing = ElementSizing.Fixed
             };
         }
 
@@ -994,16 +995,16 @@ namespace Vintagestory.API.Client
         /// <param name="fixedWidth"></param>
         /// <param name="fixedHeight"></param>
         /// <returns></returns>
-        public static ElementBounds Fixed(ElementAlignment alignment, double fixedX, double fixedY, double fixedWidth, double fixedHeight)
+        public static ElementBounds Fixed(EnumDialogArea alignment, double fixedX, double fixedY, double fixedWidth, double fixedHeight)
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = alignment,
                 fixedX = fixedX,
                 fixedY = fixedY,
                 fixedWidth = fixedWidth,
                 fixedHeight = fixedHeight,
-                bothSizing = ElementSizing.Fixed
+                BothSizing = ElementSizing.Fixed
             };
         }
 
@@ -1014,14 +1015,14 @@ namespace Vintagestory.API.Client
         /// <param name="percentWidth"></param>
         /// <param name="percentHeight"></param>
         /// <returns></returns>
-        public static ElementBounds Percentual(ElementAlignment alignment, double percentWidth, double percentHeight)
+        public static ElementBounds Percentual(EnumDialogArea alignment, double percentWidth, double percentHeight)
         {
             return new ElementBounds()
             {
-                alignment = alignment,
+                Alignment = alignment,
                 percentWidth = percentWidth,
                 percentHeight = percentHeight,
-                bothSizing = ElementSizing.Percentual
+                BothSizing = ElementSizing.Percentual
             };
         }
 
@@ -1041,7 +1042,7 @@ namespace Vintagestory.API.Client
                 percentY = percentY,
                 percentWidth = percentWidth,
                 percentHeight = percentHeight,
-                bothSizing = ElementSizing.Percentual
+                BothSizing = ElementSizing.Percentual
             };
         }
 

@@ -84,8 +84,8 @@
     <Compile Include="Client\API\IAmbientManager.cs" />
     <Compile Include="Client\API\IGuiAPI.cs" />
     <Compile Include="Client\API\IInputAPI.cs" />
+    <Compile Include="Client\API\ISettings.cs" />
     <Compile Include="Client\API\ITextureAtlasAPI.cs" />
-    <Compile Include="Client\Config\ClientSettingsApi.cs" />
     <Compile Include="Client\Input\EnumGlKeys.cs" />
     <Compile Include="Client\Input\EnumHotkeyType.cs" />
     <Compile Include="Client\Input\HotKey.cs" />
@@ -173,9 +173,12 @@
     <Compile Include="Client\UI\IconUtil.cs" />
     <Compile Include="Client\UI\TextSizeProber.cs" />
     <Compile Include="Client\UI\TextUtil.cs" />
+    <Compile Include="Common\API\EnumBlockAccessFlags.cs" />
+    <Compile Include="Common\Collectible\Block\IBlockEntityRotatable.cs" />
     <Compile Include="Common\Collectible\Block\VertexFlags.cs" />
     <Compile Include="Common\Collectible\CreativeTabAndStackList.cs" />
     <Compile Include="Common\Collectible\GrindingProperties.cs" />
+    <Compile Include="Common\EntityBehavior\BehaviorNameTag.cs" />
     <Compile Include="Common\Model\Animation\AnimationMetaData.cs" />
     <Compile Include="Common\Model\Animation\BlendEntityAnimator.cs" />
     <Compile Include="Common\Model\Animation\ElementPose.cs" />
@@ -230,11 +233,12 @@
     <Compile Include="Common\Effect\EnumBlastType.cs" />
     <Compile Include="Datastructures\AttributeTree\Other\ArrayAttribute.cs" />
     <Compile Include="Datastructures\AttributeTree\Other\ScalarAttribute.cs" />
+    <Compile Include="Math\Noise\SimplexNoise.cs" />
     <Compile Include="Math\Rectangle\Rectanglei.cs" />
     <Compile Include="Datastructures\SemVer.cs" />
-    <Compile Include="Server\BuildAreaConfig.cs" />
     <Compile Include="Server\ISaveGame.cs" />
     <Compile Include="Server\IServerConfig.cs" />
+    <Compile Include="Server\LandClaim.cs" />
     <Compile Include="Util\EqualityUtil.cs" />
     <Compile Include="Util\SerializerUtil.cs" />
     <Compile Include="Util\StringUtil.cs" />
@@ -289,7 +293,7 @@
     <Compile Include="Common\Particle\CollectibleParticleProperties.cs" />
     <Compile Include="Common\Particle\ParticlesProviderBase.cs" />
     <Compile Include="Common\Texture\BitmapExternal.cs" />
-    <Compile Include="Common\Weather\AmbientModifier.cs" />
+    <Compile Include="Common\AmbientModifier.cs" />
     <Compile Include="Datastructures\AttributeTree\BoolArrayAttribute.cs" />
     <Compile Include="Datastructures\AttributeTree\BoolAttribute.cs" />
     <Compile Include="Datastructures\AttributeTree\DoubleAttrayAttribute.cs" />
@@ -341,7 +345,6 @@
     <Compile Include="Datastructures\AttributeTree\Other\JsonTreeAttribute.cs" />
     <Compile Include="Datastructures\StackMatrix4.cs" />
     <Compile Include="Common\Entity\EnumEntityActivity.cs" />
-    <Compile Include="Common\Weather\EnumWeatherPattern.cs" />
     <Compile Include="Datastructures\AttributeTree\Other\IAttribute.cs" />
     <Compile Include="Common\Collectible\IBlockEntityContainer.cs" />
     <Compile Include="Common\Entity\Player\IEntityPlayer.cs" />
@@ -425,7 +428,7 @@
     <Compile Include="Common\API\ILogger.cs" />
     <Compile Include="Server\Worldgen\INeighbourChunkProvider.cs" />
     <Compile Include="Common\Particle\IParticlePropertiesProvider.cs" />
-    <Compile Include="Common\API\IBlockAccesor.cs" />
+    <Compile Include="Common\API\IBlockAccessor.cs" />
     <Compile Include="Datastructures\LimitedDictionary.cs" />
     <Compile Include="Common\Entity\Player\IWorldPlayerData.cs" />
     <Compile Include="Common\Entity\Player\IPlayerInventoryManager.cs" />
@@ -482,8 +485,8 @@
     <Compile Include="Server\API\IServerChunk.cs" />
     <Compile Include="Common\Inventory\IItemSlot.cs" />
     <Compile Include="Math\GameMath.cs" />
-    <Compile Include="Math\Noise\ClampedNoise.cs" />
-    <Compile Include="Math\Noise\NormalizedNoise.cs" />
+    <Compile Include="Math\Noise\ClampedSimplexNoise.cs" />
+    <Compile Include="Math\Noise\NormalizedSimplexNoise.cs" />
     <Compile Include="Math\Noise\SimplexOctave.cs" />
     <Compile Include="Common\Model\Animation\AnimationKeyFrame.cs" />
     <Compile Include="Common\Model\Animation\AnimationKeyFrameElement.cs" />
@@ -551,9 +554,7 @@
       <Name>Cairo</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\docfx.console.2.32.0\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.32.0\build\docfx.console.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

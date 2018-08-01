@@ -1,6 +1,6 @@
 ﻿namespace Vintagestory.API
 {
-    public class RectangleFloat
+    public class Rectanglef
     {
         public float X;
         public float Y;
@@ -12,12 +12,12 @@
             return Y + Height;
         }
 
-        public RectangleFloat()
+        public Rectanglef()
         {
 
         }
 
-        public RectangleFloat(float x, float y, float width, float height)
+        public Rectanglef(float x, float y, float width, float height)
         {
             this.X = x;
             this.Y = y;
@@ -25,9 +25,9 @@
             this.Height = height;
         }
 
-        public static RectangleFloat Create(float x, float y, float width, float height)
+        public static Rectanglef Create(float x, float y, float width, float height)
         {
-            RectangleFloat r = new RectangleFloat();
+            Rectanglef r = new Rectanglef();
             r.X = x;
             r.Y = y;
             r.Width = width;

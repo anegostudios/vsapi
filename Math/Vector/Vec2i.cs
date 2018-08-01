@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,12 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 2 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [ProtoContract]
     public class Vec2i : IEquatable<Vec2i>
     {
+        [ProtoMember(1)]
         public int X;
+        [ProtoMember(2)]
         public int Y;
 
         public Vec2i()

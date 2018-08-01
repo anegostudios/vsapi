@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -108,14 +109,14 @@ namespace Vintagestory.API.Client
             if (onlyGrow)
             {
                 // Divide by guiscale because calcWorldBounds will multiply it again with guiscale
-                bounds.fixedWidth = Math.Max(bounds.fixedWidth, textWidth / ClientSettingsApi.GUIScale + 1);
-                bounds.fixedHeight = Math.Max(bounds.fixedHeight, textHeight / ClientSettingsApi.GUIScale);
+                bounds.fixedWidth = Math.Max(bounds.fixedWidth, textWidth / RuntimeEnv.GUIScale + 1);
+                bounds.fixedHeight = Math.Max(bounds.fixedHeight, textHeight / RuntimeEnv.GUIScale);
             }
             else
             {
                 // Divide by guiscale because calcWorldBounds will multiply it again with guiscale
-                bounds.fixedWidth = Math.Max(1, textWidth / ClientSettingsApi.GUIScale + 1);
-                bounds.fixedHeight = Math.Max(1, textHeight / ClientSettingsApi.GUIScale);
+                bounds.fixedWidth = Math.Max(1, textWidth / RuntimeEnv.GUIScale + 1);
+                bounds.fixedHeight = Math.Max(1, textHeight / RuntimeEnv.GUIScale);
             }
         }
 
@@ -140,7 +141,7 @@ namespace Vintagestory.API.Client
 
         public void SetupContext(Context ctx)
         {
-            if (Thread.CurrentThread.ManagedThreadId != ClientSettingsApi.MainThreadId)
+            if (Thread.CurrentThread.ManagedThreadId != RuntimeEnv.MainThreadId)
             {
                 throw new Exception("Programming Error. SetupContext not called from main thread. Not a thread safe method");
             }

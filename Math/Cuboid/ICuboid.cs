@@ -24,23 +24,13 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        C Add(T posX, T posY, T posZ);
+        C Translate(T posX, T posY, T posZ);
 
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        C Add(IVec3 vec);
-
-        /// <summary>
-        /// Substractes the given offset to the cuboid
-        /// </summary>
-        C Sub(T posX, T posY, T posZ);
-
-        /// <summary>
-        /// Substractes the given offset to the cuboid
-        /// </summary>
-        C Sub(IVec3 vec);
-
+        C Translate(IVec3 vec);
+        
         /// <summary>
         /// Returns if the given point is inside the cuboid
         /// </summary>

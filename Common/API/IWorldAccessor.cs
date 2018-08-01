@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -40,6 +41,11 @@ namespace Vintagestory.API.Common
         /// The currently configured sea level (y-coordinate)
         /// </summary>
         int SeaLevel { get; }
+
+        /// <summary>
+        /// The world seed. Accessible on the server and the client
+        /// </summary>
+        int Seed { get; }
 
         /// <summary>
         /// The currently configured max sun light level
@@ -185,7 +191,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The current weather for each weather pattern. A value of 0 denotes in active, a value of 1 denotes strongly active
         /// </summary>
-        float[] GetWeatherAtPosition(BlockPos pos);
+        //float[] GetWeatherAtPosition(BlockPos pos);
 
         /// <summary>
         /// Spawns a dropped itemstack at given position. Will immediately disappear if stacksize==0
@@ -203,14 +209,23 @@ namespace Vintagestory.API.Common
         void SpawnEntity(Entity entity);
 
         /// <summary>
-        /// Retrieve all entities within given range and given matcher method
+        /// Retrieve all entities within given range and given matcher method. If now matcher method is supplied, all entities are returned.
         /// </summary>
         /// <param name="position"></param>
         /// <param name="horRange"></param>
         /// <param name="vertRange"></param>
         /// <param name="matches"></param>
         /// <returns></returns>
-        Entity[] GetEntitiesAround(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity> matches);
+        Entity[] GetEntitiesAround(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity> matches = null);
+
+        /// <summary>
+        /// Retrieve all entities within a cuboid bound by startPos and endPos. If now matcher method is supplied, all entities are returned.
+        /// </summary>
+        /// <param name="startPos"></param>
+        /// <param name="endPos"></param>
+        /// <param name="matches"></param>
+        /// <returns></returns>
+        Entity[] GetEntitiesInsideCuboid(BlockPos startPos, BlockPos endPos, ActionConsumable<Entity> matches = null);
 
         /// <summary>
         /// Retrieve all players within given range and given matcher method. This method is faster than when using GetEntitiesAround with a matcher for players
@@ -463,6 +478,26 @@ namespace Vintagestory.API.Common
         /// Utility for testing intersections. Only access from main thread.
         /// </summary>
         AABBIntersectionTest InteresectionTester { get; }
-        
+
+
+
+        /// <summary>
+        /// Checks with the permission system if given player has use or place/break permissions on supplied position. Returns always true when called on the client!
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="pos"></param>
+        /// <param name="accessFlag"></param>
+        /// <returns></returns>
+        bool CanPlayerAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
+
+
+        /// <summary>
+        /// Same as CanPlayerAccessBlock() but also sends an error message to the player and executes a MarkDirty() event the block. Returns always true when called on the client!
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="pos"></param>
+        /// <param name="accessFlag"></param>
+        /// <returns></returns>
+        bool TestPlayerAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
     }
 }

@@ -110,7 +110,7 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < selectionBoxes.Length; i++)
             {
-                tmpCuboidd.Set(selectionBoxes[i]).Add(pos.X, pos.Y, pos.Z);
+                tmpCuboidd.Set(selectionBoxes[i]).Translate(pos.X, pos.Y, pos.Z);
                 if (RayIntersectsWithCuboid(tmpCuboidd, ref hitOnBlockFaceTmp, ref hitPositionTmp))
                 {
                     if (intersects && hitPosition.SquareDistanceTo(ray.origin) <= hitPositionTmp.SquareDistanceTo(ray.origin))
@@ -133,7 +133,7 @@ namespace Vintagestory.API.MathTools
         {
             if (selectionBox == null) return false;
 
-            tmpCuboidd.Set(selectionBox).Add(posX, posY, posZ);
+            tmpCuboidd.Set(selectionBox).Translate(posX, posY, posZ);
             return RayIntersectsWithCuboid(tmpCuboidd, ref hitOnBlockFace, ref hitPosition);
         }
 

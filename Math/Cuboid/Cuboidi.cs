@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,81 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
+    [ProtoContract]
     public class Cuboidi : ICuboid<int,Cuboidi>
     {
+        [ProtoMember(1)]
         public int X1;
+        
+        [ProtoMember(2)]
         public int Y1;
+
+        [ProtoMember(3)]
         public int Z1;
 
+        [ProtoMember(4)]
         public int X2;
+
+        [ProtoMember(5)]
         public int Y2;
+
+        [ProtoMember(6)]
         public int Z2;
+
+        public int MinX
+        {
+            get { return Math.Min(X1, X2); }
+        }
+        public int MinY
+        {
+            get { return Math.Min(Y1, Y2); }
+        }
+        public int MinZ
+        {
+            get { return Math.Min(Z1, Z2); }
+        }
+
+
+        public int MaxX
+        {
+            get { return Math.Max(X1, X2); }
+        }
+        public int MaxY
+        {
+            get { return Math.Max(Y1, Y2); }
+        }
+        public int MaxZ
+        {
+            get { return Math.Max(Z1, Z2); }
+        }
+
+
+
+        public int SizeX
+        {
+            get { return MaxX - MinX; }
+        }
+
+        public int SizeY
+        {
+            get { return MaxY - MinY; }
+        }
+
+        public int SizeZ
+        {
+            get { return MaxZ - MinZ; }
+        }
+
+        public int SizeXYZ
+        {
+            get { return SizeX * SizeY * SizeZ; }
+        }
+
+        public int SizeXZ
+        {
+            get { return SizeX * SizeZ; }
+        }
+
 
         public Vec3i Start
         {
@@ -24,6 +91,14 @@ namespace Vintagestory.API.MathTools
         public Vec3i End
         {
             get { return new Vec3i(X2, Y2, Z2); }
+        }
+
+        public Vec3i Center
+        {
+            get
+            {
+                return new Vec3i((X1 + X2) / 2, (Y1 + Y2) / 2, (Z1 + Z2) / 2);
+            }
         }
         
 
@@ -73,7 +148,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        public Cuboidi Add(int posX, int posY, int posZ)
+        public Cuboidi Translate(int posX, int posY, int posZ)
         {
             this.X1 += posX;
             this.Y1 += posY;
@@ -87,9 +162,9 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
-        public Cuboidi Add(IVec3 vec)
+        public Cuboidi Translate(IVec3 vec)
         {
-            Add(vec.XAsInt, vec.YAsInt, vec.ZAsInt);
+            Translate(vec.XAsInt, vec.YAsInt, vec.ZAsInt);
             return this;
         }
 
@@ -108,6 +183,20 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Divides the given value to the cuboid
+        /// </summary>
+        public Cuboidi Div(int value)
+        {
+            this.X1 /= value;
+            this.Y1 /= value;
+            this.Z1 /= value;
+            this.X2 /= value;
+            this.Y2 /= value;
+            this.Z2 /= value;
+            return this;
+        }
+
+        /// <summary>
         /// Substractes the given offset to the cuboid
         /// </summary>
         public Cuboidi Sub(IVec3 vec)
@@ -116,13 +205,25 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public bool Contains(Vec3d pos)
+        {
+            return pos.X >= MinX && pos.X < MaxX && pos.Y >= MinY && pos.Y < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
+        }
 
         /// <summary>
         /// Returns if the given point is inside the cuboid
         /// </summary>
         public bool Contains(int x, int y, int z)
         {
-            return x >= X1 && x < X2 && y >= Y1 && y < Y2 && z >= Z1 && z < Z2;
+            return x >= MinX && x < MaxX && y >= MinY && y < MaxY && z >= MinZ && z < MaxZ;
+        }
+
+        /// <summary>
+        /// Returns if the given point is inside the cuboid
+        /// </summary>
+        public bool Contains(BlockPos pos)
+        {
+            return pos.X >= MinX && pos.X < MaxX && pos.Y >= MinY && pos.Y < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
         }
 
         /// <summary>
@@ -130,7 +231,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool ContainsOrTouches(int x, int y, int z)
         {
-            return x >= X1 && x <= X2 && y >= Y1 && y <= Y2 && z >= Z1 && z <= Z2;
+            return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY && z >= MinZ && z <= MaxZ;
+        }
+
+
+        /// <summary>
+        /// Returns if the given point is inside the cuboid
+        /// </summary>
+        public bool ContainsOrTouches(BlockPos pos)
+        {
+            return pos.X >= MinX && pos.X <= MaxX && pos.Y >= MinY && pos.Y <= MaxY && pos.Z >= MinZ && pos.Z <= MaxZ;
         }
 
         /// <summary>
@@ -183,6 +293,8 @@ namespace Vintagestory.API.MathTools
         {
             return ShortestDistanceFrom(vec.XAsInt, vec.YAsInt, vec.ZAsInt);
         }
+
+        
 
         /// <summary>
         /// Returns a new x coordinate that's ensured to be outside this cuboid. Used for collision detection.
@@ -334,17 +446,26 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// If the given cuboid intersects with this cubiod
         /// </summary>
-        public bool IntersectsWith(Cuboidi with)
+        public bool Intersects(Cuboidi with)
         {
-            return with.X2 > this.X1 && with.X1 < this.X2 ? (with.Y2 > this.Y1 && with.Y1 < this.Y2 ? with.Z2 > this.Z1 && with.Z1 < this.Z2 : false) : false;
+            return with.MaxX > this.MinX && with.MinX < this.MaxX ? (with.MaxY > this.MinY && with.MinY < this.MaxY ? with.MaxZ > this.MinZ && with.MinZ < this.Z2 : false) : false;
         }
+
+        /// <summary>
+        /// If the given cuboid intersects with this cubiod
+        /// </summary>
+        public bool IntersectsOrTouches(Cuboidi with)
+        {
+            return with.MaxX >= this.MinX && with.MinX <= this.MaxX ? (with.MaxY >= this.MinY && with.MinY <= this.MaxY ? with.MaxZ >= this.MinZ && with.MinZ <= this.Z2 : false) : false;
+        }
+
 
         /// <summary>
         /// Creates a copy of the cuboid
         /// </summary>
         public Cuboidi Clone()
         {
-            Cuboidi cloned = (Cuboidi)MemberwiseClone();
+            Cuboidi cloned = new Cuboidi(Start, End);
             return cloned;
         }
 
@@ -352,5 +473,17 @@ namespace Vintagestory.API.MathTools
         {
             return other.X1 == X1 && other.Y1 == Y1 && other.Z1 == Z1 && other.X2 == X2 && other.Y2 == Y2 && other.Z2 == Z2;
         }
+
+        /// <summary>
+        /// Returns true if supplied cuboid is directly adjacent to this one
+        /// </summary>
+        /// <param name="cuboidi"></param>
+        /// <returns></returns>
+        internal bool IsAdjacent(Cuboidi cuboidi)
+        {
+            return !Intersects(cuboidi) && IntersectsOrTouches(cuboidi);
+        }
+
+
     }
 }

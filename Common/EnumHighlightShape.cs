@@ -10,6 +10,7 @@ namespace Vintagestory.API.Common
     {
         Arbitrary = 0,
         Cube = 1,
-        Ball = 2
+        Ball = 2,
+        Cubes = 3
     }
 }

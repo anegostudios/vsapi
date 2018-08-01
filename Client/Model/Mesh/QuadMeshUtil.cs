@@ -43,15 +43,15 @@ namespace Vintagestory.API.Client
             {
                 xyz[i] = quadVertices[i];
             }
-            m.setXyz(xyz);
+            m.SetXyz(xyz);
             float[] uv = new float[2 * 4];
             for (int i = 0; i < uv.Length; i++)
             {
                 uv[i] = quadTextureCoords[i];
             }
-            m.setUv(uv);
+            m.SetUv(uv);
             m.SetVerticesCount(4);
-            m.setIndices(quadVertexIndices);
+            m.SetIndices(quadVertexIndices);
             m.SetIndicesCount(3 * 2);
             return m;
         }
@@ -129,7 +129,7 @@ namespace Vintagestory.API.Client
             xyz[10] = y + height;
             xyz[11] = z;
 
-            m.setXyz(xyz);
+            m.SetXyz(xyz);
 
             float[] uv = new float[2 * 4];
             for (int i = 0; i < uv.Length; i+=2)
@@ -137,7 +137,7 @@ namespace Vintagestory.API.Client
                 uv[i] = quadTextureCoords[i] * width;
                 uv[i+1] = quadTextureCoords[i+1] * height;
             }
-            m.setUv(uv);
+            m.SetUv(uv);
 
             byte[] rgba = new byte[4 * 4];
             for (int i = 0; i < 4; i++)
@@ -148,10 +148,10 @@ namespace Vintagestory.API.Client
                 rgba[i * 4 + 3] = a;
             }
 
-            m.setRgba(rgba);
+            m.SetRgba(rgba);
 
             m.SetVerticesCount(4);
-            m.setIndices(quadVertexIndices);
+            m.SetIndices(quadVertexIndices);
             m.SetIndicesCount(3 * 2);
             return m;
         }
@@ -192,7 +192,7 @@ namespace Vintagestory.API.Client
             xyz[10] = y;
             xyz[11] = z + length;
 
-            m.setXyz(xyz);
+            m.SetXyz(xyz);
 
             float[] uv = new float[2 * 4];
             for (int i = 0; i < uv.Length; i+=2)
@@ -200,7 +200,7 @@ namespace Vintagestory.API.Client
                 uv[i] = quadTextureCoords[i] * width;
                 uv[i+1] = quadTextureCoords[i+1] * length;
             }
-            m.setUv(uv);
+            m.SetUv(uv);
 
             byte[] rgba = new byte[4 * 4];
             for (int i = 0; i < 4; i++)
@@ -211,10 +211,10 @@ namespace Vintagestory.API.Client
                 rgba[i * 4 + 3] = a;
             }
 
-            m.setRgba(rgba);
+            m.SetRgba(rgba);
 
             m.SetVerticesCount(4);
-            m.setIndices(quadVertexIndices);
+            m.SetIndices(quadVertexIndices);
             m.SetIndicesCount(3 * 2);
             return m;
         }
@@ -244,7 +244,7 @@ namespace Vintagestory.API.Client
             xyz[10] = dy + dh;
             xyz[11] = 0;
 
-            m.setXyz(xyz);
+            m.SetXyz(xyz);
 
             float[] uv = new float[2 * 4];
 
@@ -260,7 +260,7 @@ namespace Vintagestory.API.Client
             uv[6] = u;
             uv[7] = v + v2;
 
-            m.setUv(uv);
+            m.SetUv(uv);
 
             byte[] rgba = new byte[4 * 4];
             for (int i = 0; i < 4; i++)
@@ -271,10 +271,10 @@ namespace Vintagestory.API.Client
                 rgba[i * 4 + 3] = a;
             }
 
-            m.setRgba(rgba);
+            m.SetRgba(rgba);
 
             m.SetVerticesCount(4);
-            m.setIndices(quadVertexIndices);
+            m.SetIndices(quadVertexIndices);
             m.SetIndicesCount(3 * 2);
             return m;
         }

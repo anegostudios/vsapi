@@ -59,6 +59,9 @@ namespace Vintagestory.API.Common.Entities
 
 
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode = new Dictionary<string, AnimationMetaData>();
+
+        
+
         public bool AnimationsDirty;
         public BlockFacing ClimbingOnFace;
 
@@ -342,6 +345,16 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnHurt(DamageSource dmgSource, float damage)
         {
 
+        }
+
+        /// <summary>
+        /// Extra check if an ai task should be started
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
+        public virtual bool ShouldExecuteTask(IAiTask task)
+        {
+            return true;
         }
 
         /// <summary>
@@ -636,17 +649,20 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual void OnCollideWithLiquid()
         {
+            if (World.Side == EnumAppSide.Server) return;
+
             EntityPos pos = LocalPos;
             float yDistance = (float)Math.Abs(PositionBeforeFalling.Y - pos.Y);
 
-            float splashStrength = (2 * GameMath.Sqrt((CollisionBox.X2 - CollisionBox.X1) * (CollisionBox.Y2 - CollisionBox.Y1)) + GameMath.Sqrt(yDistance) / 2);
+            double splashStrength = 2 * GameMath.Sqrt((CollisionBox.X2 - CollisionBox.X1) * (CollisionBox.Y2 - CollisionBox.Y1)) + pos.Motion.Length() * 10;
+            // + GameMath.Sqrt(yDistance) / 2);
 
             if (splashStrength < 0.4f || yDistance < 0.25f) return;
 
             Block block = World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - CollisionBox.Y1), (int)pos.Z);
 
             string[] soundsBySize = new string[]{ "sounds/environment/smallsplash", "sounds/environment/mediumsplash", "sounds/environment/largesplash" };
-            string sound = soundsBySize[(int)GameMath.Clamp(splashStrength / 1.2f, 0, 2)];
+            string sound = soundsBySize[(int)GameMath.Clamp(splashStrength / 1.6, 0, 2)];
 
             
             World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.Y, (float)pos.Z, null);
@@ -654,11 +670,15 @@ namespace Vintagestory.API.Common.Entities
 
             if (splashStrength >= 2)
             {
-                SplashParticleProps.basePos.Set(pos.X, pos.Y, pos.Z);
+                SplashParticleProps.BasePos.Set(pos.X, pos.Y, pos.Z);
+                SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
+                SplashParticleProps.QuantityMul = (float)splashStrength - 1;
+                
                 World.SpawnParticles(SplashParticleProps);
 
-                SplashParticleProps.basePos.Set(pos.X, pos.Y - 0.5f, pos.Z);
-                World.SpawnParticles(AirBubbleParticleProps);
+                /*AirBubbleParticleProps.BasePos.Set(pos.X, pos.Y - 0.75f, pos.Z);
+                AirBubbleParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
+                World.SpawnParticles(AirBubbleParticleProps);*/
             }
             
         }
@@ -670,18 +690,8 @@ namespace Vintagestory.API.Common.Entities
         {
 
         }
+        
 
-        /// <summary>
-        /// Sets the name of the entity. E.g. the players name for EntityPlayers
-        /// </summary>
-        /// <param name="playername"></param>
-        public virtual void SetName(string playername)
-        {
-            foreach (EntityBehavior behavior in Behaviors)
-            {
-                behavior.OnSetEntityName(playername);
-            }
-        }
 
         /// <summary>
         /// Called every 1/75 second
@@ -821,8 +831,16 @@ namespace Vintagestory.API.Common.Entities
             return Behaviors.FirstOrDefault(bh => bh.PropertyName().Equals(name));
         }
 
+        /// <summary>
+        /// Returns the first behavior instance for given entity of given type. Returns null if it doesn't exist.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public virtual T GetBehavior<T>() where T : EntityBehavior
+        {
+            return (T)Behaviors.FirstOrDefault(bh => bh is T);
+        }
 
-        
 
         /// <summary>
         /// Returns true if given activity is running
@@ -1053,8 +1071,33 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+
         /// <summary>
-        /// Makes the entity despawn
+        /// Called when on the client side something called capi.Network.SendEntityPacket()
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="packetid"></param>
+        /// <param name="data"></param>
+        public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
+        {
+            
+        }
+
+        /// <summary>
+        /// Called when on the server side something called sapi.Network.SendEntityPacket()
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="packetid"></param>
+        /// <param name="data"></param>
+        public virtual void OnReceivedServerPacket(int packetid, byte[] data)
+        {
+
+        }
+
+
+
+        /// <summary>
+        /// Makes the entity despawn. Entities only drop something on EnumDespawnReason.Death
         /// </summary>
         public virtual void Die(EnumDespawnReason reason = EnumDespawnReason.Death, DamageSource damageSourceForDeath = null)
         {
@@ -1155,11 +1198,55 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="statecode"></param>
         /// <returns></returns>
-        public bool HasEmotionState(string statecode)
+        public virtual bool HasEmotionState(string statecode)
         {
             ITreeAttribute attr = Attributes.GetTreeAttribute("emotionstates");
             return attr != null && attr.HasAttribute(statecode);
         }
 
+
+        /// <summary>
+        /// This method is called by the BlockSchematic class a moment before a schematic containing this entity is getting exported.
+        /// Since a schematic can be placed anywhere in the world, this method has to make sure the entities position is set to a value
+        /// relative of the schematic origin point defined by startPos
+        /// Right after calling this method, the world edit system will call .ToBytes() to serialize the entity
+        /// </summary>
+        /// <param name="startPos"></param>
+        public virtual void WillExport(BlockPos startPos)
+        {
+            ServerPos.X -= startPos.X;
+            ServerPos.Y -= startPos.Y;
+            ServerPos.Z -= startPos.Z;
+
+            Pos.X -= startPos.X;
+            Pos.Y -= startPos.Y;
+            Pos.Z -= startPos.Z;
+
+            PositionBeforeFalling.X -= startPos.X;
+            PositionBeforeFalling.Y -= startPos.Y;
+            PositionBeforeFalling.Z -= startPos.Z;
+        }
+
+        /// <summary>
+        /// This method is called by the BlockSchematic class a moment after a schematic containing this entity has been exported. 
+        /// Since a schematic can be placed anywhere in the world, this method has to make sure the entities position is set to the correct 
+        /// position in relation to the target position of the schematic to be imported.
+        /// </summary>
+        /// <param name="startPos"></param>
+        public virtual void DidImportOrExport(BlockPos startPos)
+        {
+            ServerPos.X += startPos.X;
+            ServerPos.Y += startPos.Y;
+            ServerPos.Z += startPos.Z;
+
+            Pos.X += startPos.X;
+            Pos.Y += startPos.Y;
+            Pos.Z += startPos.Z;
+
+            PositionBeforeFalling.X += startPos.X;
+            PositionBeforeFalling.Y += startPos.Y;
+            PositionBeforeFalling.Z += startPos.Z;
+        }
+        
     }
 }

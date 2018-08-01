@@ -2,6 +2,7 @@
 using Cairo;
 using Vintagestory.API;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Action = Vintagestory.API.Common.Action;
 
@@ -23,8 +24,10 @@ namespace Vintagestory.API.Client
         Rectangled menuIconRect;
 
         bool didInit = false;
+        public bool drawBg = false;
         bool movable = false;
         bool moving = false;
+
         Vec2i movingStartPos = new Vec2i();
         ElementBounds parentBoundsBefore = null;
 
@@ -59,14 +62,14 @@ namespace Vintagestory.API.Client
                 if (pos != null)
                 {
                     movable = true;
-                    parentBoundsBefore = Bounds.parentBounds.FlatCopy();
-                    Bounds.parentBounds.alignment = ElementAlignment.None;
-                    Bounds.parentBounds.fixedX = pos.X;
-                    Bounds.parentBounds.fixedY = pos.Y;
-                    Bounds.parentBounds.absMarginX = 0;
-                    Bounds.parentBounds.absMarginY = 0;
-                    Bounds.parentBounds.MarkDirtyRecursive();
-                    Bounds.parentBounds.CalcWorldBounds();
+                    parentBoundsBefore = Bounds.ParentBounds.FlatCopy();
+                    Bounds.ParentBounds.Alignment = EnumDialogArea.None;
+                    Bounds.ParentBounds.fixedX = pos.X;
+                    Bounds.ParentBounds.fixedY = pos.Y;
+                    Bounds.ParentBounds.absMarginX = 0;
+                    Bounds.ParentBounds.absMarginY = 0;
+                    Bounds.ParentBounds.MarkDirtyRecursive();
+                    Bounds.ParentBounds.CalcWorldBounds();
                 }
                 return;
             }
@@ -75,16 +78,16 @@ namespace Vintagestory.API.Client
             {
                 if (parentBoundsBefore != null)
                 {
-                    Bounds.parentBounds.fixedX = parentBoundsBefore.fixedX;
-                    Bounds.parentBounds.fixedY = parentBoundsBefore.fixedY;
-                    Bounds.parentBounds.fixedOffsetX = parentBoundsBefore.fixedOffsetX;
-                    Bounds.parentBounds.fixedOffsetY = parentBoundsBefore.fixedOffsetY;
-                    Bounds.parentBounds.alignment = parentBoundsBefore.alignment;
-                    Bounds.parentBounds.absMarginX = parentBoundsBefore.absMarginX;
-                    Bounds.parentBounds.absMarginY = parentBoundsBefore.absMarginY;
+                    Bounds.ParentBounds.fixedX = parentBoundsBefore.fixedX;
+                    Bounds.ParentBounds.fixedY = parentBoundsBefore.fixedY;
+                    Bounds.ParentBounds.fixedOffsetX = parentBoundsBefore.fixedOffsetX;
+                    Bounds.ParentBounds.fixedOffsetY = parentBoundsBefore.fixedOffsetY;
+                    Bounds.ParentBounds.Alignment = parentBoundsBefore.Alignment;
+                    Bounds.ParentBounds.absMarginX = parentBoundsBefore.absMarginX;
+                    Bounds.ParentBounds.absMarginY = parentBoundsBefore.absMarginY;
 
-                    Bounds.parentBounds.MarkDirtyRecursive();
-                    Bounds.parentBounds.CalcWorldBounds();
+                    Bounds.ParentBounds.MarkDirtyRecursive();
+                    Bounds.ParentBounds.CalcWorldBounds();
                 }
 
                 movable = false;
@@ -93,16 +96,16 @@ namespace Vintagestory.API.Client
             else
             {
                 movable = true;
-                parentBoundsBefore = Bounds.parentBounds.FlatCopy();
-                Bounds.parentBounds.alignment = ElementAlignment.None;
-                Bounds.parentBounds.fixedOffsetX = 0;
-                Bounds.parentBounds.fixedOffsetY = 0;
-                Bounds.parentBounds.fixedX = Bounds.parentBounds.absX / ClientSettingsApi.GUIScale;
-                Bounds.parentBounds.fixedY = Bounds.parentBounds.absY / ClientSettingsApi.GUIScale;
-                Bounds.parentBounds.absMarginX = 0;
-                Bounds.parentBounds.absMarginY = 0;
-                Bounds.parentBounds.MarkDirtyRecursive();
-                Bounds.parentBounds.CalcWorldBounds();
+                parentBoundsBefore = Bounds.ParentBounds.FlatCopy();
+                Bounds.ParentBounds.Alignment = EnumDialogArea.None;
+                Bounds.ParentBounds.fixedOffsetX = 0;
+                Bounds.ParentBounds.fixedOffsetY = 0;
+                Bounds.ParentBounds.fixedX = Bounds.ParentBounds.absX / RuntimeEnv.GUIScale;
+                Bounds.ParentBounds.fixedY = Bounds.ParentBounds.absY / RuntimeEnv.GUIScale;
+                Bounds.ParentBounds.absMarginX = 0;
+                Bounds.ParentBounds.absMarginY = 0;
+                Bounds.ParentBounds.MarkDirtyRecursive();
+                Bounds.ParentBounds.CalcWorldBounds();
             }
         }
 
@@ -113,6 +116,10 @@ namespace Vintagestory.API.Client
                 SetUpMovableState(null);
                 didInit = true;
             }
+
+            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, ElementGeometrics.DialogBGRadius);
+            ctx.SetSourceRGBA(ElementGeometrics.DialogDefaultBgColor);
+            ctx.FillPreserve();
 
             Bounds.CalcWorldBounds();
 
@@ -212,8 +219,8 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            int mouseX = api.Input.GetMouseCurrentX();
-            int mouseY = api.Input.GetMouseCurrentY();
+            int mouseX = api.Input.MouseX;
+            int mouseY = api.Input.MouseY;
 
             if (closeIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY))
             {
@@ -231,8 +238,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            int mouseX = api.Input.GetMouseCurrentX();
-            int mouseY = api.Input.GetMouseCurrentY();
+            int mouseX = api.Input.MouseX;
+            int mouseY = api.Input.MouseY;
 
             if (closeIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY))
             {
@@ -264,7 +271,7 @@ namespace Vintagestory.API.Client
 
             if (moving)
             {
-                api.Gui.SetDialogPosition(baseComposer.dialogName, new Vec2i((int)Bounds.parentBounds.fixedX, (int)Bounds.parentBounds.fixedY));
+                api.Gui.SetDialogPosition(baseComposer.dialogName, new Vec2i((int)Bounds.ParentBounds.fixedX, (int)Bounds.ParentBounds.fixedY));
             }
 
             moving = false;
@@ -276,10 +283,10 @@ namespace Vintagestory.API.Client
 
             if (moving)
             {
-                Bounds.parentBounds.fixedX += args.X - movingStartPos.X;
-                Bounds.parentBounds.fixedY += args.Y - movingStartPos.Y;
+                Bounds.ParentBounds.fixedX += args.X - movingStartPos.X;
+                Bounds.ParentBounds.fixedY += args.Y - movingStartPos.Y;
                 movingStartPos.Set(args.X, args.Y);
-                Bounds.parentBounds.CalcWorldBounds();
+                Bounds.ParentBounds.CalcWorldBounds();
             }
         }
 
@@ -321,6 +328,19 @@ namespace Vintagestory.API.Client
             if (!composer.composed)
             {
                 composer.AddInteractiveElement(new GuiElementDialogTitleBar(composer.Api, text, composer, OnClose, font, bounds));
+            }
+
+            return composer;
+        }
+
+        // Single rectangle shape
+        public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null)
+        {
+            if (!composer.composed)
+            {
+                GuiElementDialogTitleBar elem = new GuiElementDialogTitleBar(composer.Api, text, composer, OnClose, font, bounds);
+                elem.drawBg = true;
+                composer.AddInteractiveElement(elem);
             }
 
             return composer;

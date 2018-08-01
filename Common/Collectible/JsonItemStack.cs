@@ -84,6 +84,7 @@ namespace Vintagestory.API.Common
             JsonItemStack stack = new JsonItemStack()
             {
                 Code = Code.Clone(),
+                ResolvedItemstack = ResolvedItemstack?.Clone(),
                 StackSize = StackSize,
                 Type = Type,
             };

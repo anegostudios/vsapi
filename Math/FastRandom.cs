@@ -9,7 +9,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// A faster random particularly suitable for worldgen
     /// </summary>
-    public class FastRandom
+    public class FastPositionalRandom
     {
         internal long worldSeed;
         internal long mapGenSeed;
@@ -19,7 +19,7 @@ namespace Vintagestory.API.MathTools
         /// Initialize random with given seed
         /// </summary>
         /// <param name="worldSeed"></param>
-        public FastRandom(long worldSeed)
+        public FastPositionalRandom(long worldSeed)
         {
             SetWorldSeed(worldSeed);
         }
@@ -27,7 +27,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Initialize random with no seed. Use SetWorldSeed() to initialize
         /// </summary>
-        public FastRandom()
+        public FastPositionalRandom()
         {
 
         }
@@ -90,14 +90,28 @@ namespace Vintagestory.API.MathTools
             return r;
         }
 
+
+        public int NextInt()
+        {
+            return NextInt(int.MaxValue);
+        }
+
         /// <summary>
-        /// Returns a 6 digit precision random number from 0 - 1
+        /// Returns a random number from 0 - 1
         /// </summary>
         /// <returns></returns>
         public float NextFloat()
         {
-            return NextInt(10000000) / 10000000f;
+            return (float)NextInt(int.MaxValue) / int.MaxValue;
         }
 
+        /// <summary>
+        /// Returns a random number from 0 - 1
+        /// </summary>
+        /// <returns></returns>
+        public double NextDouble()
+        {
+            return (double)NextInt(int.MaxValue) / int.MaxValue;
+        }
     }
 }

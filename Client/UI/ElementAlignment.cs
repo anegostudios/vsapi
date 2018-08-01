@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
     /// First word = X Alignment (left, center, right or fixed)
     /// Second word = Y Alignment (top, middle, bottom or fixed)
     /// </summary>
-    public enum ElementAlignment
+    public enum EnumDialogArea
     {
         None,
         LeftTop,

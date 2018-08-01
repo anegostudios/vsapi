@@ -37,7 +37,7 @@ namespace Vintagestory.API.Client
 
         long activeUntilMs;
         long cooldownUntilMs;
-        IWorldAccessor world;
+        ICoreClientAPI capi;
         List<string> activeTracks = new List<string>();
 
 
@@ -82,9 +82,9 @@ namespace Vintagestory.API.Client
             get { return Priority; }
         }
 
-        public void Initialize(IAssetManager assetManager, IClientWorldAccessor world)
+        public void Initialize(IAssetManager assetManager, ICoreClientAPI capi)
         {
-            this.world = world;
+            this.capi = capi;
 
             PartsShuffled = new MusicTrackPart[Parts.Length];
 
@@ -98,7 +98,7 @@ namespace Vintagestory.API.Client
         public bool ShouldPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
             if (props.sunSlight > 3) return false;
-            if (world.ElapsedMilliseconds < cooldownUntilMs) return false;
+            if (capi.World.ElapsedMilliseconds < cooldownUntilMs) return false;
 
             return true;
         }
@@ -106,7 +106,7 @@ namespace Vintagestory.API.Client
 
         public void BeginPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
-            activeUntilMs = world.ElapsedMilliseconds + (int)(SessionPlayTime * 1000);
+            activeUntilMs = capi.World.ElapsedMilliseconds + (int)(SessionPlayTime * 1000);
         }
 
 
@@ -118,7 +118,7 @@ namespace Vintagestory.API.Client
                 return false;
             }
 
-            if (activeUntilMs > 0 && world.ElapsedMilliseconds >= activeUntilMs)
+            if (activeUntilMs > 0 && capi.World.ElapsedMilliseconds >= activeUntilMs)
             {
                 // Ok, time to stop. We play the current tracks until the end and stop
                 bool active = IsActive;
@@ -147,7 +147,7 @@ namespace Vintagestory.API.Client
             {
                 MusicTrackPart part = PartsShuffled[i];
                 bool isPlaying = part.IsPlaying;
-                bool shouldPlay = part.Applicable(world, props);
+                bool shouldPlay = part.Applicable(capi.World, props);
 
                 // Part has recently ended
                 if (!isPlaying && part.Sound != null)
@@ -183,7 +183,7 @@ namespace Vintagestory.API.Client
                     part.Loading = true;
                     musicEngine.StartTrack(location, (sound) => { part.Sound = sound; part.Loading = false; });
 
-                    part.StartedMs = world.ElapsedMilliseconds;
+                    part.StartedMs = capi.World.ElapsedMilliseconds;
                     quantityActive++;
                 }
             }
@@ -213,7 +213,7 @@ namespace Vintagestory.API.Client
             // When naturally stopped, give the player a break from the cave sounds (3-10 minutes)
             if (!wasInterupted)
             {
-                cooldownUntilMs = world.ElapsedMilliseconds + (long)(1000 * (3*60 + rand.NextDouble() * 7*60));
+                cooldownUntilMs = capi.World.ElapsedMilliseconds + (long)(1000 * (3*60 + rand.NextDouble() * 7*60));
             }
         }
         

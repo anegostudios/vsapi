@@ -143,16 +143,16 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static BakedCompositeTexture Bake(IAssetManager assetManager, CompositeTexture ct)
         {
-            BakedCompositeTexture bakedCt = new BakedCompositeTexture();
+            BakedCompositeTexture bct = new BakedCompositeTexture();
 
-            bakedCt.BakedName = ct.Base.Clone();
+            bct.BakedName = ct.Base.Clone();
              
             if (ct.Base.Path.EndsWith("*"))
             {
-                List<IAsset> assets = assetManager.GetMany("textures/" + bakedCt.BakedName.Path.Substring(0, bakedCt.BakedName.Path.Length - 1), bakedCt.BakedName.Domain);
+                List<IAsset> assets = assetManager.GetMany("textures/" + bct.BakedName.Path.Substring(0, bct.BakedName.Path.Length - 1), bct.BakedName.Domain);
                 if (assets.Count == 0)
                 {
-                    ct.Base = bakedCt.BakedName = new AssetLocation("unknown");
+                    ct.Base = bct.BakedName = new AssetLocation("unknown");
                 }
 
                 if (assets.Count == 1)
@@ -160,7 +160,7 @@ namespace Vintagestory.API.Client
                     ct.Base = assets[0].Location.Clone();
                     ct.Base.Path = assets[0].Location.Path.Substring("textures/".Length);
                     ct.Base.RemoveEnding();
-                    bakedCt.BakedName = ct.Base.Clone();
+                    bct.BakedName = ct.Base.Clone();
                 }
 
                 if (assets.Count > 1)
@@ -182,7 +182,7 @@ namespace Vintagestory.API.Client
                         if (i == 0)
                         {
                             ct.Base = newLocation;
-                            bakedCt.BakedName = ct.Base;
+                            bct.BakedName = ct.Base;
                         } else
                         {
                             alternates[origLength + i - 1] = new CompositeTexture(newLocation);
@@ -197,32 +197,31 @@ namespace Vintagestory.API.Client
 
             if (ct.Overlays != null)
             {
-                bakedCt.TextureFilenames = new AssetLocation[ct.Overlays.Length + 1];
-                bakedCt.TextureFilenames[0] = ct.Base.Clone();
+                bct.TextureFilenames = new AssetLocation[ct.Overlays.Length + 1];
+                bct.TextureFilenames[0] = ct.Base.Clone();
 
                 for (int i = 0; i < ct.Overlays.Length; i++)
                 {
-                    bakedCt.TextureFilenames[i + 1] = ct.Overlays[i].Clone();
-
-                    bakedCt.BakedName.Path += "++" + ct.Overlays[i].ToString();
+                    bct.TextureFilenames[i + 1] = ct.Overlays[i].Clone();
+                    bct.BakedName.Path += "++" + ct.Overlays[i].Path;
                 }
             }
             else
             {
-                bakedCt.TextureFilenames = new AssetLocation[] { ct.Base.Clone() };
+                bct.TextureFilenames = new AssetLocation[] { ct.Base.Clone() };
             }
 
             if (ct.Alternates != null)
             {
-                bakedCt.BakedVariants = new BakedCompositeTexture[ct.Alternates.Length + 1];
-                bakedCt.BakedVariants[0] = bakedCt;
+                bct.BakedVariants = new BakedCompositeTexture[ct.Alternates.Length + 1];
+                bct.BakedVariants[0] = bct;
                 for (int i = 0; i < ct.Alternates.Length; i++)
                 {
-                    bakedCt.BakedVariants[i + 1] = Bake(assetManager, ct.Alternates[i]);
+                    bct.BakedVariants[i + 1] = Bake(assetManager, ct.Alternates[i]);
                 }
             }
 
-            return bakedCt;
+            return bct;
         }
     }
 

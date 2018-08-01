@@ -85,6 +85,13 @@ namespace Vintagestory.API.Common
         float DayLightStrength { get; set; }
 
         /// <summary>
+        /// Returns a value between 0 (no sunlight) and 1 (full sunlight)
+        /// </summary>
+        /// <returns></returns>
+        float MoonLightStrength { get; set; }
+
+
+        /// <summary>
         /// The current hour of the day as integer
         /// </summary>
         int FullHourOfDay { get; }

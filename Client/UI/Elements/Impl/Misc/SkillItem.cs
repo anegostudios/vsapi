@@ -7,13 +7,14 @@ namespace Vintagestory.API.Client
 
     public class SkillItem
     {
-        public string name;
-        public AssetLocation code;
-        public LoadedTexture texture;
-        public KeyCombination hotkey;
+        public string Name;
+        public string Description;
+        public AssetLocation Code;
+        public LoadedTexture Texture;
+        public KeyCombination Hotkey;
 
-        public RenderSkillItemDelegate renderHandler;
+        public RenderSkillItemDelegate RenderHandler;
 
-        public object data;
+        public object Data;
     }
 }

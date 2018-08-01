@@ -112,11 +112,18 @@ namespace Vintagestory.API.Common
         Type GetBlockEntity(string bockEntityClass);
 
         /// <summary>
-        /// Returns to the block entity class if give Type is a registered block entity class
+        /// Returns the block entity class code if give Type is a registered block entity class
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
         string GetBlockEntityClass(Type type);
+
+        /// <summary>
+        /// Returns the entity class code if give Type is a registered entity class
+        /// </summary>
+        /// <param name="entityType"></param>
+        /// <returns></returns>
+        string GetEntityClassName(Type entityType);
 
         /// <summary>
         /// Creates a crop behavior instance from given block class 

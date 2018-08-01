@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,22 @@ namespace Vintagestory.API.Common
 {
     public class JsonUtil
     {
+        public static T FromBytes<T>(byte[] data)
+        {
+            using (var stream = new MemoryStream(data))
+            {
+                using (var sr = new StreamReader(stream, Encoding.UTF8, true))
+                {
+                    return JsonConvert.DeserializeObject<T>(sr.ReadToEnd());
+                }
+            }
+        }
+
+        public static byte[] ToBytes<T>(T obj)
+        {
+            return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj));
+        }
+
 
         public static void PopulateObject(object toPopulate, string text, string domain, JsonSerializerSettings settings = null)
         {
