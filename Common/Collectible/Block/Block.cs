@@ -1643,7 +1643,7 @@ namespace Vintagestory.API.Common
         /// Used by the block loader to replace wildcards with their final values
         /// </summary>
         /// <param name="searchReplace"></param>
-        public void FillPlaceHolders(Dictionary<string, string> searchReplace)
+        public void FillPlaceHolders(ILogger logger, Dictionary<string, string> searchReplace)
         {
             if (CombustibleProps != null && CombustibleProps.SmeltedStack != null)
             {
@@ -1662,6 +1662,12 @@ namespace Vintagestory.API.Common
             {
                 foreach (CompositeTexture tex in Textures.Values)
                 {
+                    if (tex.Base == null)
+                    {
+                        logger.Error("Encountered wrong block texture definition in block {0}, there is no Base attribute! Block will have broken textures.", Code);
+                        tex.Base = new AssetLocation("unknown");
+                    }
+
                     tex.FillPlaceHolders(searchReplace);
                 }
             }
@@ -1670,6 +1676,12 @@ namespace Vintagestory.API.Common
             {
                 foreach (CompositeTexture tex in TexturesInventory.Values)
                 {
+                    if (tex.Base == null)
+                    {
+                        logger.Error("Encountered wrong block inventory texture definition in block {0}, there is no Base attribute! Block will have broken textures.", Code);
+                        tex.Base = new AssetLocation("unknown");
+                    }
+
                     tex.FillPlaceHolders(searchReplace);
                 }
             }

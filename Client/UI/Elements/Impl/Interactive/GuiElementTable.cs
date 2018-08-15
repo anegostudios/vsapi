@@ -14,6 +14,7 @@ namespace Vintagestory.API.Client
         void UpdateCellHeight();
         void ComposeElements(Context ctx, ImageSurface surface);
         void CreateDynamicParts();
+        void Dispose();
     }
 
     public delegate IGuiElementCell OnRequireCell(TableCell cell, ElementBounds bounds);
@@ -30,7 +31,7 @@ namespace Vintagestory.API.Client
         public API.Common.Action<int> leftPartClick;
         public API.Common.Action<int> rightPartClick;
 
-        int tableTextureId;
+        LoadedTexture tableTexture;
 
         ElementBounds insideBounds;
 
@@ -38,6 +39,7 @@ namespace Vintagestory.API.Client
 
         public GuiElementTable(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> OnMouseDownOnCellLeft, API.Common.Action<int> OnMouseDownOnCellRight, OnRequireCell cellCreator, List<TableCell> cells = null) : base(capi, bounds)
         {
+            tableTexture = new LoadedTexture(capi);
             this.cellcreator = cellCreator;
 
             insideBounds = new ElementBounds().WithFixedPadding(unscaledCellSpacing).WithEmptyParent();
@@ -59,6 +61,11 @@ namespace Vintagestory.API.Client
 
         internal void ReloadCells(List<TableCell> cells)
         {
+            foreach (var val in elementCells)
+            {
+                val?.Dispose();
+            }
+
             elementCells.Clear();
 
             foreach (TableCell cell in cells)
@@ -117,7 +124,7 @@ namespace Vintagestory.API.Client
             }
 
             //surface.WriteToPng("table.png");
-            generateTexture(surface, ref tableTextureId);
+            generateTexture(surface, ref tableTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -192,7 +199,7 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexturePremultipliedAlpha(tableTextureId, Bounds);
+            api.Render.Render2DTexturePremultipliedAlpha(tableTexture.TextureId, Bounds);
 
             int i = 0;
 
@@ -203,6 +210,17 @@ namespace Vintagestory.API.Client
             {
                 element.OnRenderInteractiveElements(api, Bounds, deltaTime);
                 i++;
+            }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            tableTexture.Dispose();
+
+            foreach (var val in elementCells)
+            {
+                val.Dispose();
             }
         }
 

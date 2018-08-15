@@ -6,7 +6,7 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementHoverText : GuiElementTextBase
     {
-        int hoverTextureId;
+        LoadedTexture hoverTexture;
         int unscaledWidth;
         int unscaledPadding = 5;
 
@@ -17,6 +17,7 @@ namespace Vintagestory.API.Client
         bool visible = false;
         bool followMouse = true;
         bool autoWidth = false;
+        public bool fillBounds = false;
 
         public EnumTextOrientation textOrientation = EnumTextOrientation.Left;
 
@@ -28,6 +29,8 @@ namespace Vintagestory.API.Client
         public GuiElementHoverText(ICoreClientAPI capi, string text, CairoFont font, int width, ElementBounds bounds) : base(capi, text, font, bounds)
         {
             unscaledWidth = width;
+
+            hoverTexture = new LoadedTexture(capi);
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
@@ -39,29 +42,64 @@ namespace Vintagestory.API.Client
         {
             double padding = scaled(unscaledPadding);
 
-            if (autoWidth)
+            if (fillBounds)
             {
-                string[] lines = text.Split('\n');
-                for (int i = 0; i < lines.Length; i++)
+
+                if (autoWidth)
                 {
-                    if (i == 0)
-                    {
-                        width = (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1);
-                    } else
-                    {
-                        width = Math.Max(width, (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1));
-                    }
+                    Bounds.fixedWidth = (int)(Font.GetTextExtents(text).Width + 2 * padding + 1);
+                    Bounds.fixedHeight = (int)(Font.GetFontExtents().Height + 2 * padding + 1);
                 }
-                
-            } else
+                else
+                {
+                    width = (int)(scaled(unscaledWidth) + 1);
+                    height = (int)(GetMultilineTextHeight(text, width - 2 * padding) + 2 * padding + 1);
+                }
+
+
+                Bounds.CalcWorldBounds();
+
+                if (autoWidth)
+                {
+                    width = (int)Bounds.InnerWidth;
+                    height = (int)Bounds.InnerHeight;
+                }
+
+            }
+            else
             {
-                width = (int)(scaled(unscaledWidth) + 1);                
+
+                if (autoWidth)
+                {
+                    string[] lines = text.Split('\n');
+                    for (int i = 0; i < lines.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            width = (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1);
+                        }
+                        else
+                        {
+                            width = Math.Max(width, (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1));
+                        }
+                    }
+
+                }
+                else
+                {
+                    width = (int)(scaled(unscaledWidth) + 1);
+                }
+
+
+                height = (int)(GetMultilineTextHeight(text, width - 2 * padding) + 2 * padding + 1);
+
+                Bounds.CalcWorldBounds();
             }
 
 
-            height = (int)(GetMultilineTextHeight(text, width - 2 * padding) + 2 * padding + 1);
 
-            Bounds.CalcWorldBounds();
+
+            
             
 
             ImageSurface surface = new ImageSurface(Format.Argb32, width, height);
@@ -82,7 +120,7 @@ namespace Vintagestory.API.Client
 
             ShowMultilineText(ctx, text, (int)padding, (int)padding, width - 2 * padding, textOrientation);
 
-            generateTexture(surface, ref hoverTextureId);
+            generateTexture(surface, ref hoverTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -114,7 +152,7 @@ namespace Vintagestory.API.Client
                     y -= (y + height) - api.Render.FrameHeight;
                 }
 
-                api.Render.Render2DTexturePremultipliedAlpha(hoverTextureId, (int)x, (int)y, width, height);
+                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x, (int)y, width, height);
             }
         }
 
@@ -147,6 +185,13 @@ namespace Vintagestory.API.Client
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             // Can't click this so don't set the Handled value
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            hoverTexture.Dispose();
         }
     }
 

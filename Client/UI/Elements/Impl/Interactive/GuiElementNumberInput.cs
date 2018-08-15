@@ -13,10 +13,11 @@ namespace Vintagestory.API.Client
     {
         //public double Scale = 1;
 
-        public int buttonHighlightTextureId;
+        public LoadedTexture buttonHighlightTexture;
         
         public GuiElementNumberInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font) : base(capi, bounds, OnTextChanged, font)
         {
+            buttonHighlightTexture = new LoadedTexture(capi);
         }
 
         public float GetValue()
@@ -86,7 +87,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.SetSourceRGBA(0, 0, 0, 0.2);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref highlightTextureId);
+            generateTexture(surfaceHighlight, ref highlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
@@ -100,7 +101,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.SetSourceRGBA(0, 0, 0, 0.2);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref buttonHighlightTextureId);
+            generateTexture(surfaceHighlight, ref buttonHighlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
@@ -119,10 +120,10 @@ namespace Vintagestory.API.Client
 
                 if (mouseY > Bounds.absY + heightHalf + 1)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(buttonHighlightTextureId, Bounds.renderX + Bounds.OuterWidth - rightSpacing - 1, Bounds.renderY + heightHalf + 1, rightSpacing, heightHalf);
+                    api.Render.Render2DTexturePremultipliedAlpha(buttonHighlightTexture.TextureId, Bounds.renderX + Bounds.OuterWidth - rightSpacing - 1, Bounds.renderY + heightHalf + 1, rightSpacing, heightHalf);
                 } else
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(buttonHighlightTextureId, Bounds.renderX + Bounds.OuterWidth - rightSpacing - 1, Bounds.renderY, rightSpacing, heightHalf);
+                    api.Render.Render2DTexturePremultipliedAlpha(buttonHighlightTexture.TextureId, Bounds.renderX + Bounds.OuterWidth - rightSpacing - 1, Bounds.renderY, rightSpacing, heightHalf);
                 }
             }
         }
@@ -185,6 +186,12 @@ namespace Vintagestory.API.Client
 
                 
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            buttonHighlightTexture.Dispose();
         }
 
 

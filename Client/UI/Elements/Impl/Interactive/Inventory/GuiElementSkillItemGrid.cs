@@ -15,7 +15,7 @@ namespace Vintagestory.API.Client
         public Action<int> OnSlotOver;
 
         public int selectedIndex = -1;
-        int hoverTextureId;
+        LoadedTexture hoverTexture;
 
 
         public override bool Focusable
@@ -25,6 +25,8 @@ namespace Vintagestory.API.Client
 
         public GuiElementSkillItemGrid(ICoreClientAPI capi, Dictionary<int, SkillItem> skillItems, int cols, int rows, Action<int> OnSlotClick, ElementBounds bounds) : base(capi, bounds)
         {
+            hoverTexture = new LoadedTexture(capi);
+
             this.skillItems = skillItems;
             this.cols = cols;
             this.rows = rows;
@@ -77,7 +79,7 @@ namespace Vintagestory.API.Client
             RoundRectangle(ctx, 1, 1, slotWidth, slotHeight, ElementGeometrics.ElementBGRadius);
             ctx.Fill();
 
-            generateTexture(surface, ref hoverTextureId);
+            generateTexture(surface, ref hoverTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -104,7 +106,7 @@ namespace Vintagestory.API.Client
 
                 if (over || i == selectedIndex)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextureId, Bounds.renderX + posX, Bounds.renderY + posY, slotWidth, slotHeight);
+                    api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, Bounds.renderX + posX, Bounds.renderY + posY, slotWidth, slotHeight);
                     if (over) OnSlotOver?.Invoke(i);
                 }
 
@@ -139,7 +141,14 @@ namespace Vintagestory.API.Client
 
             OnSlotClick?.Invoke(index);
         }
-        
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            hoverTexture.Dispose();
+        }
+
     }
 
     public static partial class GuiComposerHelpers

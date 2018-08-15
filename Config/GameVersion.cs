@@ -19,7 +19,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.6.0";
+        public const string OverallVersion = "1.6.7";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -29,7 +29,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-rc.1";
+        public const string ShortGameVersion = OverallVersion + "";
 
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
@@ -52,7 +52,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public static string NetworkVersion = "1.6.0";
+        public static string NetworkVersion = "1.7.0";
 
         /// <summary>
         /// Version of the savegame database
@@ -60,7 +60,7 @@ namespace Vintagestory.API.Config
         public static int DatabaseVersion = 2;
 
 
-        static string[] separators = new string[] { ".", "pre", " ", "-" };
+        static string[] separators = new string[] { ".", "-pre.", "-rc." };
         static string[] splitVersionString(string version)
         {
             return version.Split(separators, StringSplitOptions.None);

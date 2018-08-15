@@ -18,6 +18,8 @@ namespace Vintagestory.API.Common.Entities
         protected float pitch; // "rotZ"
         protected int stance;
 
+
+
         public Vec3d Motion = new Vec3d();
 
         public virtual double X {

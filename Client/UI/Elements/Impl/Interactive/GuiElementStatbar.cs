@@ -15,8 +15,9 @@ namespace Vintagestory.API.Client
         double[] color;
         bool rightToLeft = false;
 
-        int valueTextureId;
-        int flashTextureId;
+        LoadedTexture valueTexture;
+        LoadedTexture flashTexture;
+
         int valueWidth;
         int valueHeight;
 
@@ -27,6 +28,9 @@ namespace Vintagestory.API.Client
 
         public GuiElementStatbar(ICoreClientAPI capi, ElementBounds bounds, double[] color, bool rightToLeft) : base(capi, "", CairoFont.WhiteDetailText(), bounds)
         {
+            valueTexture = new LoadedTexture(capi);
+            flashTexture = new LoadedTexture(capi);
+
             this.color = color;
             this.rightToLeft = rightToLeft;
             value = new Random(Guid.NewGuid().GetHashCode()).Next(100);
@@ -115,7 +119,7 @@ namespace Vintagestory.API.Client
             }
 
 
-            generateTexture(surface, ref valueTextureId);
+            generateTexture(surface, ref valueTexture);
             
             ctx.Dispose();
             surface.Dispose();
@@ -141,7 +145,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Fill();
 
-            generateTexture(surface, ref flashTextureId);
+            generateTexture(surface, ref flashTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -167,11 +171,11 @@ namespace Vintagestory.API.Client
 
             if (alpha > 0)
             {
-                api.Render.RenderTexture(flashTextureId, x - 14, y - 14, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28, 50, new Vec4f(1.5f, 1, 1, alpha));
+                api.Render.RenderTexture(flashTexture.TextureId, x - 14, y - 14, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28, 50, new Vec4f(1.5f, 1, 1, alpha));
             }
 
 
-            api.Render.RenderTexture(valueTextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
+            api.Render.RenderTexture(valueTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
         }
 
 
@@ -202,6 +206,13 @@ namespace Vintagestory.API.Client
         internal void SetLocked(float healthlocked)
         {
             lockedValue = healthlocked;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            valueTexture.Dispose();
+            flashTexture.Dispose();
         }
     }
 

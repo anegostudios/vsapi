@@ -16,6 +16,8 @@ namespace Vintagestory.API.Client
         InventoryBase inventory = null;
         BlockPos blockEntityPos;
         int cols;
+        public AssetLocation OpenSound = new AssetLocation("sounds/block/chestopen");
+        public AssetLocation CloseSound = new AssetLocation("sounds/block/chestclose");
 
         bool isduplicate = false;
 
@@ -40,7 +42,7 @@ namespace Vintagestory.API.Client
             }
 
             capi.World.Player.InventoryManager.OpenInventory(inventory);
-            capi.Gui.PlaySound(new AssetLocation("sounds/block/chestopen"));
+            capi.Gui.PlaySound(OpenSound, true);
 
             this.inventory = inventory;
             this.blockEntityPos = blockEntityPos;
@@ -222,7 +224,7 @@ namespace Vintagestory.API.Client
 
             capi.Network.SendBlockEntityPacket(blockEntityPos.X, blockEntityPos.Y, blockEntityPos.Z, (int)EnumBlockContainerPacketId.CloseInventory);
             
-            capi.Gui.PlaySound(new AssetLocation("sounds/block/chestclose"));
+            capi.Gui.PlaySound(CloseSound, true);
         }
 
 

@@ -10,7 +10,8 @@ namespace Vintagestory.API.Client
         EnumTextOrientation orientation;
         public float lineHeightMultiplier;
 
-        int textureId;
+        LoadedTexture textTexture;
+
         float[] strokeRGB = new float[] { 0, 0, 0, 1 };
         double strokeWidth = 0.5;
 
@@ -21,6 +22,7 @@ namespace Vintagestory.API.Client
         {
             this.orientation = orientation;
             lineHeightMultiplier = 1f;
+            textTexture = new LoadedTexture(capi);
         }
 
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
@@ -39,19 +41,19 @@ namespace Vintagestory.API.Client
         public void RecomposeMultiLine()
         {
             if (autoHeight) AutoHeight();
-
+            
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
             Context ctx = genContext(surface);
             ShowMultilineText(ctx, text, 0, 0, Bounds.InnerWidth, orientation, lineHeightMultiplier);
 
-            generateTexture(surface, ref textureId);
+            generateTexture(surface, ref textTexture);
             ctx.Dispose();
             surface.Dispose();
         }
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexturePremultipliedAlpha(textureId, (int)Bounds.renderX, (int)Bounds.renderY, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+            api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
         }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
@@ -87,6 +89,11 @@ namespace Vintagestory.API.Client
             this.strokeWidth = thickness;
         }
 
+
+        public override void Dispose()
+        {
+            textTexture?.Dispose();
+        }
 
     }
 

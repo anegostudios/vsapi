@@ -22,7 +22,7 @@ namespace Vintagestory.API.Client
         protected float currentHandleHeight = 0;
 
 
-        protected int handleTextureId;
+        protected LoadedTexture handleTexture;
 
         public override bool Focusable { get { return true; } }
 
@@ -54,6 +54,8 @@ namespace Vintagestory.API.Client
 
         public GuiElementScrollbar(ICoreClientAPI capi, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds) : base(capi, bounds)
         {
+            handleTexture = new LoadedTexture(capi);
+
             this.onNewScrollbarValue = onNewScrollbarValue;
         }
 
@@ -85,7 +87,7 @@ namespace Vintagestory.API.Client
 
             EmbossRoundRectangleElement(ctx, 0, 0, scaled(scrollbarWidth-1), currentHandleHeight, false, 2, 3);
 
-            generateTexture(surface, ref handleTextureId);
+            generateTexture(surface, ref handleTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -94,7 +96,7 @@ namespace Vintagestory.API.Client
         public override void RenderInteractiveElements(float deltaTime)
         {
             api.Render.Render2DTexturePremultipliedAlpha(
-                handleTextureId, 
+                handleTexture.TextureId,
                 (float)(Bounds.renderX + Bounds.absPaddingX),
                 (float)(Bounds.renderY + Bounds.absPaddingY + currentHandlePosition),
                 (float)(scaled(scrollbarWidth)),
@@ -214,6 +216,13 @@ namespace Vintagestory.API.Client
                 currentHandlePosition = (float)Math.Min(Bounds.InnerHeight - currentHandleHeight, currentHandlePosition + diff);
                 TriggerChanged();
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            handleTexture.Dispose();
         }
     }
 

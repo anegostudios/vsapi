@@ -23,5 +23,15 @@ namespace Vintagestory.API.Server
         /// </summary>
         Dictionary<string, string> CustomPlayerData { get; }
 
+        /// <summary>
+        /// Extra land claim allowance (beyond whats granted by the role)
+        /// </summary>
+        int ExtraLandClaimAllowance { get; set; }
+
+        /// <summary>
+        /// Extra land claim areas (beyond whats granted by the role)
+        /// </summary>
+        int ExtraLandClaimAreas { get; set; }
+
     }
 }

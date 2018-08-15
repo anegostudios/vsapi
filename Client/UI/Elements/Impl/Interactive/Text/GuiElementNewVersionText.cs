@@ -8,7 +8,7 @@ namespace Vintagestory.API.Client
 {
     class GuiElementNewVersionText : GuiElementTextBase
     {
-        int textureId;
+        LoadedTexture texture;
         public bool visible;
         public double offsetY;
 
@@ -18,7 +18,7 @@ namespace Vintagestory.API.Client
 
         public GuiElementNewVersionText(ICoreClientAPI capi, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
-            
+            texture = new LoadedTexture(capi);
         }
 
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
@@ -77,7 +77,7 @@ namespace Vintagestory.API.Client
 
             ShowMultilineText(ctx, text, Bounds.drawX + iconX + 20, Bounds.drawY, Bounds.InnerWidth, EnumTextOrientation.Left, 1f);
 
-            generateTexture(surface, ref textureId);
+            generateTexture(surface, ref texture);
             ctx.Dispose();
             surface.Dispose();
         }
@@ -93,7 +93,7 @@ namespace Vintagestory.API.Client
         {
             if (visible)
             {
-                api.Render.Render2DTexturePremultipliedAlpha(textureId, (int)Bounds.renderX, (int)Bounds.renderY + offsetY, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight + shadowHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY + offsetY, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight + shadowHeight);
 
                 offsetY = Math.Min(0, offsetY + 100 * deltaTime);
             }
@@ -109,8 +109,15 @@ namespace Vintagestory.API.Client
             }
         }
 
-        
-        
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            texture.Dispose();
+        }
+
+
 
 
 

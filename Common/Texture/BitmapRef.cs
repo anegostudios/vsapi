@@ -1,8 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace Vintagestory.API.Common
 {
-    public abstract class BitmapRef
+    public abstract class BitmapRef : IDisposable
     {
         public abstract void Dispose();
 
@@ -13,6 +14,7 @@ namespace Vintagestory.API.Common
         public abstract int Height { get; }
 
         public abstract void Save(string filename);
+        
     }
 
 }

@@ -8,6 +8,8 @@ namespace Vintagestory.API.Common
     {
         Random rand = new Random();
         public Vec3d BasePos = new Vec3d();
+        public Vec3d AddPos = new Vec3d();
+
         public Vec3f AddVelocity = new Vec3f();
         public float QuantityMul;
 
@@ -17,12 +19,12 @@ namespace Vintagestory.API.Common
 
         public override Vec3d GetPos()
         {
-            return new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
+            return new Vec3d(BasePos.X + rand.NextDouble() * AddPos.X, BasePos.Y + rand.NextDouble() * AddPos.Y, BasePos.Z + AddPos.Z * rand.NextDouble());
         }
 
         public override float GetQuantity()
         {
-            return 45 * QuantityMul;
+            return 30 * QuantityMul;
         }
 
         public override byte[] GetRgbaColor()

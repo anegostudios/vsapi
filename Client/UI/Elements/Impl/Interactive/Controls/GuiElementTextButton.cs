@@ -17,7 +17,7 @@ namespace Vintagestory.API.Client
         GuiElementStaticText pressedText;
 
 
-        int hoverTextureId = 0;
+        LoadedTexture hoverTexture;
         
         ActionConsumable onClick;
 
@@ -37,6 +37,7 @@ namespace Vintagestory.API.Client
 
         public GuiElementTextButton(ICoreClientAPI capi, string text, CairoFont font, CairoFont hoverFont, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal) : base(capi, bounds)
         {
+            hoverTexture = new LoadedTexture(capi);
             this.buttonStyle = style;
 
             normalText = new GuiElementStaticText(capi, text, EnumTextOrientation.Center, bounds, font);
@@ -76,7 +77,7 @@ namespace Vintagestory.API.Client
             pressedText.ComposeElements(ctx, surface);
             pressedText.Bounds.fixedY -= textOffsetY;
 
-            generateTexture(surface, ref hoverTextureId);
+            generateTexture(surface, ref hoverTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -165,7 +166,7 @@ namespace Vintagestory.API.Client
             if (isOver || currentlyMouseDownOnElement)
             {
                 api.Render.Render2DTexturePremultipliedAlpha(
-                    hoverTextureId,
+                    hoverTexture.TextureId,
                     normalText.Bounds.renderX,
                     normalText.Bounds.renderY,
                     normalText.Bounds.OuterWidthInt,
@@ -221,6 +222,13 @@ namespace Vintagestory.API.Client
         public void SetActive(bool active)
         {
             this.active = active;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            hoverTexture.Dispose();
         }
     }
 

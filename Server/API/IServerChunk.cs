@@ -24,7 +24,5 @@ namespace Vintagestory.API.Server
         /// <param name="key"></param>
         /// <returns></returns>
         byte[] GetModdata(string key);
-
-
     }
 }

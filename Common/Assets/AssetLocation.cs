@@ -47,12 +47,12 @@ namespace Vintagestory.API.Common
 
         public string Domain {
             get { return domain ?? "game"; }
-            set { domain = value; }
+            set { domain = value; Validate(); }
         }
 
         public string Path {
             get { return path; }
-            set { path = value; }
+            set { path = value; Validate(); }
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Vintagestory.API.Common
             if ((domain?.Length == 0) || (path.Length == 0) || (domain?.Contains('/') ?? false) ||
                 (path[0] == '/') || (path[path.Length - 1] == '/') || path.Contains("//"))
             {
-                throw new ArgumentException($"'{ path }' is not a valid asset location!");
+                throw new ArgumentException($"'{ this }' is not a valid asset location!");
             }
         }
 

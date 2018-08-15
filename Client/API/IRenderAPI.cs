@@ -231,7 +231,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Loads given texture through the assets managers and loads it onto the graphics card. Will return a cached version on every subsequent call to this method. Returns a textureid ready to be used in BindTexture2d
         /// </summary>
-        /// <param name="assetPath"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
         int GetOrLoadTexture(AssetLocation name);
 

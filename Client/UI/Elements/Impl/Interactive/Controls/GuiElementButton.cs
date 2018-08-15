@@ -10,8 +10,8 @@ namespace Vintagestory.API.Client
         public bool Toggleable = false;
         public bool On;
 
-        int releasedTextureId;
-        int pressedTextureId;
+        LoadedTexture releasedTexture;
+        LoadedTexture pressedTexture;
 
         int unscaledDepth = 4;
 
@@ -21,6 +21,9 @@ namespace Vintagestory.API.Client
 
         public GuiElementToggleButton(ICoreClientAPI capi, string icon, string text, CairoFont font, API.Common.Action<bool> OnToggled, ElementBounds bounds, bool toggleable = false) : base(capi, text, font, bounds)
         {
+            releasedTexture = new LoadedTexture(capi);
+            pressedTexture = new LoadedTexture(capi);
+
             handler = OnToggled;
             this.Toggleable = toggleable;
             this.icon = icon;
@@ -58,7 +61,7 @@ namespace Vintagestory.API.Client
                 api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + 3, Bounds.absPaddingY + 3, Bounds.InnerWidth - 6, Bounds.InnerHeight - 6, ElementGeometrics.DialogDefaultTextColor);
             }
 
-            generateTexture(surface, ref releasedTextureId);
+            generateTexture(surface, ref releasedTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -91,7 +94,7 @@ namespace Vintagestory.API.Client
                 api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + scaled(4), Bounds.absPaddingY + scaled(4), Bounds.InnerWidth - scaled(8), Bounds.InnerHeight - scaled(8), ElementGeometrics.DialogDefaultTextColor);
             }
 
-            generateTexture(surface, ref pressedTextureId);
+            generateTexture(surface, ref pressedTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -99,7 +102,7 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexturePremultipliedAlpha(On ? pressedTextureId : releasedTextureId, Bounds);
+            api.Render.Render2DTexturePremultipliedAlpha(On ? pressedTexture.TextureId : releasedTexture.TextureId, Bounds);
         }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
@@ -125,6 +128,14 @@ namespace Vintagestory.API.Client
         public void SetValue(bool on)
         {
             this.On = on;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            releasedTexture.Dispose();
+            pressedTexture.Dispose();
         }
     }
 

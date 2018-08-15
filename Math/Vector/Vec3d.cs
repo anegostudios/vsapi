@@ -225,6 +225,13 @@ namespace Vintagestory.API.MathTools
             return (Vec3d)MemberwiseClone();
         }
 
+        public void Sub(Vec3d vec)
+        {
+            X -= vec.X;
+            Y -= vec.Y;
+            Z -= vec.Z;
+        }
+
         public Vec3d Add(double value)
         {
             X += value;
@@ -249,6 +256,14 @@ namespace Vintagestory.API.MathTools
                 a.Y - b.Y,
                 a.Z - b.Z
             );
+        }
+
+        public Vec3d Sub(BlockPos pos)
+        {
+            X -= pos.X;
+            Y -= pos.Y;
+            Z -= pos.Z;
+            return this;
         }
 
         public Vec3d OffsetCopy(float x, float y, float z)
@@ -310,6 +325,14 @@ namespace Vintagestory.API.MathTools
             double dz = Z - pos.Z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
+        }
+
+        public float HorizontalSquareDistanceTo(Vec3d pos)
+        {
+            double dx = X - pos.X;
+            double dz = Z - pos.Z;
+
+            return (float)(dx * dx + dz * dz);
         }
 
         #region Operators
@@ -384,11 +407,7 @@ namespace Vintagestory.API.MathTools
             return new Vec3f((float)X, (float)Y, (float)Z);
         }
 
-        public BlockPos ToBlockPos()
-        {
-            return new BlockPos((int)X, (int)Y, (int)Z);
-        }
-
+        
         public override string ToString()
         {
             return "x=" + X + ", y=" + Y + ", z=" + Z;

@@ -11,7 +11,9 @@ namespace Vintagestory.API.Client
 
     public interface IGuiComposerManager
     {
-        void UnfocusElements();       
+        void UnfocusElements();
+
+        Dictionary<string, GuiComposer> Composers { get; }
     }
 
     /// <summary>
@@ -65,6 +67,11 @@ namespace Vintagestory.API.Client
         public ElementBounds Bounds
         {
             get { return bounds; }
+        }
+
+        public bool IsCached
+        {
+            get { return composerManager.Composers.ContainsKey(dialogName); }
         }
 
 
@@ -555,7 +562,19 @@ namespace Vintagestory.API.Client
             return null;
         }
 
+        public void Dispose()
+        {
+            foreach (var val in interactiveElements)
+            {
+                val.Value.Dispose();
+            }
 
+            foreach (var val in staticElements)
+            {
+                val.Value.Dispose();
+            }
 
+            composed = false;
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementTextInput : GuiElementEditableTextBase
     {
-        protected int highlightTextureId;
+        protected LoadedTexture highlightTexture;
         protected ElementBounds highlightBounds;
 
         internal bool DeleteOnRefocusBackSpace;
@@ -16,6 +16,7 @@ namespace Vintagestory.API.Client
         public GuiElementTextInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string>OnTextChanged, CairoFont font) : base(capi, font, bounds)
         {
             this.OnTextChanged = OnTextChanged;
+            highlightTexture = new LoadedTexture(capi);
         }
 
         public void HideCharacters()
@@ -37,7 +38,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.SetSourceRGBA(0, 0, 0, 0.2);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref highlightTextureId);
+            generateTexture(surfaceHighlight, ref highlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
@@ -52,7 +53,7 @@ namespace Vintagestory.API.Client
         {
             if (HasFocus)
             {
-                api.Render.Render2DTexture(highlightTextureId, highlightBounds);
+                api.Render.Render2DTexture(highlightTexture.TextureId, highlightBounds);
             }
 
             api.Render.GlScissor(
@@ -63,7 +64,7 @@ namespace Vintagestory.API.Client
             );
 
             api.Render.GlScissorFlag(true);
-            api.Render.Render2DTexturePremultipliedAlpha(textTextureId, Bounds.renderX - renderLeftOffset, Bounds.renderY, textSize.X, textSize.Y);
+            api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, Bounds.renderX - renderLeftOffset, Bounds.renderY, textSize.X, textSize.Y);
             api.Render.GlScissorFlag(false);
 
             base.RenderInteractiveElements(deltaTime);
@@ -88,6 +89,12 @@ namespace Vintagestory.API.Client
             }
 
             base.OnKeyDown(api, args);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            highlightTexture.Dispose();
         }
     }
 

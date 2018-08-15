@@ -12,6 +12,14 @@ namespace Vintagestory.API.Server
     /// </summary>
     public interface IWorldManagerAPI
     {
+        // Returns a (cloned) list of all currently loaded map chunks. The key is the 2d index of the map chunk, can be turned into an x/z coord
+        Dictionary<long, IMapChunk> AllLoadedMapchunks { get; }
+
+        /// <summary>
+        /// Returns a (cloned) list of all currently loaded chunks. The key is the 3d index of the chunk, can be turned into an x/y/z coord
+        /// </summary>
+        Dictionary<long, IServerChunk> AllLoadedChunks { get; }
+
         /// <summary>
         /// The worlds savegame object. If you change these values they will be permanently stored
         /// </summary>
@@ -145,7 +153,16 @@ namespace Vintagestory.API.Server
         /// <param name="onlyIfInRange"></param>
         void ForceSendChunk(int chunkX, int chunkY, int chunkZ, bool onlyIfInRange);
 
-        
+        /// <summary>
+        /// Forcefully (re-)sends a mapchunk to all connected clients ignoring whether this chunk has been sent before or not
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="onlyIfInRange"></param>
+        void ForceSendMapChunk(int chunkX, int chunkZ, bool onlyIfInRange);
+
+
+
         /// <summary>
         /// Unloads a column of chunks at given coordinate independent of any nearby players and sends an appropriate unload packet to the player
         /// </summary>
@@ -316,5 +333,6 @@ namespace Vintagestory.API.Server
         /// <param name="minPos"></param>
         /// <param name="maxPos"></param>
         void FullRelight(BlockPos minPos, BlockPos maxPos);
+        
     }
 }

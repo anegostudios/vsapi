@@ -26,7 +26,7 @@ namespace Vintagestory.API.Client
         GuiElementStaticText titleElement;
         GuiElementStaticText descriptionElement;
 
-        int textureId;
+        LoadedTexture texture;
         double maxWidth;
 
         InfoTextDelegate OnRequireInfoText;
@@ -34,6 +34,8 @@ namespace Vintagestory.API.Client
         public GuiElementItemstackInfo(ICoreClientAPI capi, ElementBounds bounds, InfoTextDelegate OnRequireInfoText) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
         {
             this.OnRequireInfoText = OnRequireInfoText;
+
+            texture = new LoadedTexture(capi);
 
             ElementBounds textBounds = bounds.CopyOnlySize();
 
@@ -127,7 +129,7 @@ namespace Vintagestory.API.Client
 
             descriptionElement.ComposeElements(ctx, surface);
 
-            generateTexture(surface, ref textureId);
+            generateTexture(surface, ref texture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -138,7 +140,7 @@ namespace Vintagestory.API.Client
         {
             if (curSlot?.Itemstack == null) return;
 
-            api.Render.Render2DTexturePremultipliedAlpha(textureId, Bounds, 1000);
+            api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, Bounds, 1000);
 
             double offset = (int)scaled(30 + ItemStackSize/2);
 
@@ -181,5 +183,12 @@ namespace Vintagestory.API.Client
             if (recompose) Recompose();
         }
 
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            texture.Dispose();
+        }
     }
 }

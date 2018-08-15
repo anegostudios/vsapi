@@ -514,6 +514,8 @@ namespace Vintagestory.API.Common
 
         }
 
+        
+
         /// <summary>
         /// Should return the current items tool mode.
         /// </summary>
@@ -1005,7 +1007,7 @@ namespace Vintagestory.API.Common
                 if (CombustibleProps.BurnTemperature > 0)
                 {
                     dsc.AppendLine(Lang.Get("Burn temperature: {0}°C", CombustibleProps.BurnTemperature));
-                    dsc.Append(Lang.Get("Burn duration: {0}s", CombustibleProps.BurnDuration));
+                    dsc.AppendLine(Lang.Get("Burn duration: {0}s", CombustibleProps.BurnDuration));
                 }
                 
 

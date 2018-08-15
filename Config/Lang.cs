@@ -49,8 +49,8 @@ namespace Vintagestory.API.Config
             }
         }
 
-        Dictionary<string, string> LangEntries = new Dictionary<string, string>();
-        Dictionary<Regex, string> LangRegexes = new Dictionary<Regex, string>();
+        public Dictionary<string, string> LangEntries = new Dictionary<string, string>();
+        public Dictionary<Regex, string> LangRegexes = new Dictionary<Regex, string>();
 
         /// <summary>
         /// Yes this means in a singleplayer situdation server and client share the same lang inst, but thats okay, since they use the same file anyway?

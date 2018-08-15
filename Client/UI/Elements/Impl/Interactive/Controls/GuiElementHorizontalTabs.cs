@@ -17,7 +17,7 @@ namespace Vintagestory.API.Client
 
         internal GuiTab[] tabs;
 
-        int[] hoverTextureIds;
+        LoadedTexture[] hoverTextures;
         int[] tabWidths;
 
         public int activeElement = 0;
@@ -30,7 +30,8 @@ namespace Vintagestory.API.Client
         {
             this.tabs = tabs;
             handler = onTabClicked;
-            hoverTextureIds = new int[tabs.Length];
+            hoverTextures = new LoadedTexture[tabs.Length];
+            for (int i = 0; i < tabs.Length; i++) hoverTextures[i] = new LoadedTexture(capi);
             tabWidths = new int[tabs.Length];
         }
 
@@ -120,7 +121,7 @@ namespace Vintagestory.API.Client
                 ShowTextCorrectly(ctx, tabs[i].name, padding, 1);
 
               
-                generateTexture(surface, ref hoverTextureIds[i]);
+                generateTexture(surface, ref hoverTextures[i]);
 
                 ctx.Dispose();
                 surface.Dispose();
@@ -140,7 +141,7 @@ namespace Vintagestory.API.Client
             {
                 if (i == activeElement || mouseRelX > xpos && mouseRelX < xpos + tabWidths[i] && mouseRelY > 0 && mouseRelY < Bounds.InnerHeight)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextureIds[i], (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
+                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
                 }
 
                 xpos += tabWidths[i] + spacing;
@@ -190,6 +191,16 @@ namespace Vintagestory.API.Client
         {
             handler(tabs[selectedIndex].index);
             activeElement = selectedIndex;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            for (int i = 0; i < hoverTextures.Length; i++)
+            {
+                hoverTextures[i].Dispose();
+            }
         }
     }
 

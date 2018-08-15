@@ -40,7 +40,7 @@ namespace Vintagestory.API.Client
 
             EmbossRoundRectangleElement(ctx, 0, 0, scaled(Bounds.InnerWidth - 1), currentHandleHeight, false, 2, 2);
 
-            generateTexture(surface, ref handleTextureId);
+            generateTexture(surface, ref handleTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -49,7 +49,7 @@ namespace Vintagestory.API.Client
         public override void RenderInteractiveElements(float deltaTime)
         {
             api.Render.Render2DTexturePremultipliedAlpha(
-                handleTextureId,
+                handleTexture.TextureId,
                 (float)(Bounds.renderX + Bounds.absPaddingX + 1),
                 (float)(Bounds.renderY + Bounds.absPaddingY + currentHandlePosition),
                 (float)scaled(Bounds.InnerWidth - 1),

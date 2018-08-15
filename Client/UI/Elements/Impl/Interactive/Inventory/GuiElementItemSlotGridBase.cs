@@ -23,13 +23,15 @@ namespace Vintagestory.API.Client
         protected int cols;
         protected int rows;
         protected int prevSlotQuantity;
-        protected int slotTextureId, highlightSlotTextureId;
+        
 
         Dictionary<string, int> slotTextureIdsByBackgroundIcon = new Dictionary<string, int>();
         Dictionary<int, float> slotNotifiedZoomEffect = new Dictionary<int, float>();
 
         protected ElementBounds[] slotBounds;
-        protected int[] slotQuantityTextureIds;
+
+        protected LoadedTexture slotTexture, highlightSlotTexture;
+        protected LoadedTexture[] slotQuantityTextures;
 
         protected GuiElementStaticText textComposer;
 
@@ -55,6 +57,8 @@ namespace Vintagestory.API.Client
 
         public GuiElementItemSlotGridBase(ICoreClientAPI capi, IInventory inventory, API.Common.Action<object> SendPacket, int cols, ElementBounds bounds) : base(capi, bounds)
         {
+            slotTexture = new LoadedTexture(capi);
+            highlightSlotTexture = new LoadedTexture(capi);
             prevSlotQuantity = inventory.QuantitySlots;
             this.inventory = inventory;
             this.cols = cols;
@@ -78,7 +82,9 @@ namespace Vintagestory.API.Client
         void ComposeInteractiveElements()
         { 
             slotBounds = new ElementBounds[availableSlots.Count];
-            slotQuantityTextureIds = new int[availableSlots.Count];
+            slotQuantityTextures = new LoadedTexture[availableSlots.Count];
+            for (int k = 0; k < slotQuantityTextures.Length; k++) slotQuantityTextures[k] = new LoadedTexture(this.api);
+
             this.rows = (int)Math.Ceiling(1f * availableSlots.Count / cols);
 
             Bounds.CalcWorldBounds();
@@ -113,7 +119,7 @@ namespace Vintagestory.API.Client
             slotCtx.Fill();
             EmbossRoundRectangleElement(slotCtx, 0, 0, absSlotWidth, absSlotHeight, true);
 
-            generateTexture(slotSurface, ref slotTextureId, true);
+            generateTexture(slotSurface, ref slotTexture, true);
 
             slotCtx.Dispose();
             slotSurface.Dispose();
@@ -150,7 +156,7 @@ namespace Vintagestory.API.Client
             RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, ElementGeometrics.ElementBGRadius);
             slotCtx.Fill();
 
-            generateTexture(slotSurface, ref highlightSlotTextureId);
+            generateTexture(slotSurface, ref highlightSlotTexture);
 
             slotCtx.Dispose();
             slotSurface.Dispose();
@@ -188,8 +194,8 @@ namespace Vintagestory.API.Client
 
             if (!drawItemDamage) // && !drawStackSize)
             {
-                api.Gui.DeleteTexture(slotQuantityTextureIds[slotIndex]);
-                slotQuantityTextureIds[slotIndex] = 0;
+                slotQuantityTextures[slotIndex].Dispose();
+                slotQuantityTextures[slotIndex] = new LoadedTexture(api);
                 return true;
             }
 
@@ -228,7 +234,7 @@ namespace Vintagestory.API.Client
                 ShadePath(textCtx, 1);
             }
 
-            generateTexture(textSurface, ref slotQuantityTextureIds[slotIndex]);
+            generateTexture(textSurface, ref slotQuantityTextures[slotIndex]);
             textCtx.Dispose();
             textSurface.Dispose();
 
@@ -314,14 +320,14 @@ namespace Vintagestory.API.Client
                         api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBackgroundIcon[slot.BackgroundIcon], slotBounds[i]);
                     } else
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(slotTextureId, slotBounds[i]);
+                        api.Render.Render2DTexturePremultipliedAlpha(slotTexture.TextureId, slotBounds[i]);
                     }
 
                     
 
                     if (highlightSlotId == val.Key || hoverSlotId == val.Key)
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(highlightSlotTextureId, slotBounds[i]);
+                        api.Render.Render2DTexturePremultipliedAlpha(highlightSlotTexture.TextureId, slotBounds[i]);
                     }
 
                     if (slot.Itemstack == null) { i++; continue; }
@@ -344,9 +350,9 @@ namespace Vintagestory.API.Client
                         ColorUtil.WhiteArgb
                     );
 
-                    if (slotQuantityTextureIds[i] != 0)
+                    if (slotQuantityTextures[i].TextureId != 0)
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(slotQuantityTextureIds[i], slotBounds[i]);
+                        api.Render.Render2DTexturePremultipliedAlpha(slotQuantityTextures[i].TextureId, slotBounds[i]);
                     }
 
                 }
@@ -573,6 +579,16 @@ namespace Vintagestory.API.Client
             {
                 lastelem.isLastSlotGridInComposite = true;
             }
+        }
+
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            for (int i = 0; slotQuantityTextures != null && i < slotQuantityTextures.Length; i++) slotQuantityTextures[i]?.Dispose();
+            slotTexture.Dispose();
+            highlightSlotTexture.Dispose();
         }
     }
 }

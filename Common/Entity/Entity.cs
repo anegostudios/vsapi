@@ -7,6 +7,7 @@ using Vintagestory.API.Server;
 using Vintagestory.API.Config;
 using System;
 using System.Linq;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -34,7 +35,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EntityRenderer Renderer;
 
-        public bool BroadcastServerPos;
+        //public bool BroadcastServerPos;
         public EntityDespawnReason DespawnReason;
 
 
@@ -43,6 +44,8 @@ namespace Vintagestory.API.Common.Entities
 
         private AssetLocation savedTypeCode;
         private EntityType entityType;
+
+        protected ICoreAPI api;
 
         public AssetLocation SavedTypeCode { get { return savedTypeCode; } }
 
@@ -365,6 +368,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual void Initialize(ICoreAPI api, long InChunkIndex3d)
         {
             this.World = api.World;
+            this.api = api;
             this.InChunkIndex3d = InChunkIndex3d;
 
             if (entityType == null)
@@ -408,7 +412,7 @@ namespace Vintagestory.API.Common.Entities
 
                     loadServerAnimator();
 
-                    DebugAttributes.SetString("Origin", Attributes.GetString("origin", "??"));
+                    DebugAttributes.SetString("origin", Attributes.GetString("origin", "??"));
                 }
                 else
                 {
@@ -522,6 +526,8 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        public bool Teleporting;
+
         /// <summary>
         /// Teleports the entity to given position
         /// </summary>
@@ -530,12 +536,21 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="z"></param>
         public virtual void TeleportToDouble(double x, double y, double z)
         {
-            Pos.SetPos(x, y, z);
-            ServerPos.SetPos(x, y, z);
-            PreviousServerPos.SetPos(-99, -99, -99);
-            PositionBeforeFalling.Set(x, y, z);
-            Pos.Motion.Set(0, 0, 0);
-            BroadcastServerPos = true;
+            Teleporting = true;
+            ICoreServerAPI sapi = this.api as ICoreServerAPI;
+            if (sapi != null)
+            {
+                sapi.World.LoadChunkColumn((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, () =>
+                {
+                    Pos.SetPos(x, y, z);
+                    ServerPos.SetPos(x, y, z);
+                    PreviousServerPos.SetPos(-99, -99, -99);
+                    PositionBeforeFalling.Set(x, y, z);
+                    Pos.Motion.Set(0, 0, 0);
+                    Teleporting = false;
+                });
+
+            }
         }
 
         /// <summary>
@@ -654,8 +669,10 @@ namespace Vintagestory.API.Common.Entities
             EntityPos pos = LocalPos;
             float yDistance = (float)Math.Abs(PositionBeforeFalling.Y - pos.Y);
 
-            double splashStrength = 2 * GameMath.Sqrt((CollisionBox.X2 - CollisionBox.X1) * (CollisionBox.Y2 - CollisionBox.Y1)) + pos.Motion.Length() * 10;
-            // + GameMath.Sqrt(yDistance) / 2);
+            double width = CollisionBox.X2 - CollisionBox.X1;
+            double height = CollisionBox.Y2 - CollisionBox.Y1;
+
+            double splashStrength = 2 * GameMath.Sqrt(width * height) + pos.Motion.Length() * 10;
 
             if (splashStrength < 0.4f || yDistance < 0.25f) return;
 
@@ -664,13 +681,18 @@ namespace Vintagestory.API.Common.Entities
             string[] soundsBySize = new string[]{ "sounds/environment/smallsplash", "sounds/environment/mediumsplash", "sounds/environment/largesplash" };
             string sound = soundsBySize[(int)GameMath.Clamp(splashStrength / 1.6, 0, 2)];
 
-            
+            splashStrength = Math.Min(10, splashStrength);
+
             World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.Y, (float)pos.Z, null);
             World.SpawnBlockVoxelParticles(pos.XYZ, block, CollisionBox.X2 - CollisionBox.X1, (int)(4 * splashStrength));
 
             if (splashStrength >= 2)
             {
-                SplashParticleProps.BasePos.Set(pos.X, pos.Y, pos.Z);
+                ////return new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
+
+                SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y, pos.Z - width / 2);
+                SplashParticleProps.AddPos.Set(width, 0.3, width);
+
                 SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
                 SplashParticleProps.QuantityMul = (float)splashStrength - 1;
                 
@@ -1080,7 +1102,6 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="data"></param>
         public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
         {
-            
         }
 
         /// <summary>
@@ -1091,7 +1112,14 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="data"></param>
         public virtual void OnReceivedServerPacket(int packetid, byte[] data)
         {
-
+            // Teleport packet
+            if (packetid == 1)
+            {
+                Vec3d newPos = SerializerUtil.Deserialize<Vec3d>(data);
+                this.Pos.SetPos(newPos);
+                this.ServerPos.SetPos(newPos);
+                this.World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);
+            }
         }
 
 

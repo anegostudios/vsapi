@@ -5,6 +5,7 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -22,7 +23,6 @@ namespace Vintagestory.API.Common
         public DamageSource DeathReason;
 
         double eyeHeightCurrent;
-        ICoreAPI api;
 
         Vec3d IEntityPlayer.CameraPos
         {
@@ -121,81 +121,89 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
-            double newEyeheight = Type.EyeHeight;
-            double newModelHeight = Type.HitBoxSize.Y;
+            IPlayer player = World.PlayerByUid(PlayerUID);
 
-            if (servercontrols.FloorSitting)
+            if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
-                newEyeheight *= 0.45f;
-                newModelHeight *= 0.5f;
-            }
-            else if (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.IsFlying)
-            {
-                newEyeheight *= 0.85f;
-                newModelHeight *= 0.85f;
-            }
+                double newEyeheight = Type.EyeHeight;
+                double newModelHeight = Type.HitBoxSize.Y;
 
-            bool moving = (servercontrols.TriesToMove && LocalPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
-
-            double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3);
-
-            walkCounter = moving ? walkCounter + frequency : 0;
-            walkCounter = walkCounter % GameMath.TWOPI;
-
-            double sneakMul = (servercontrols.Sneak ? 1.7 : 1);
-
-            double amplitude = (FeetInLiquid ? 0.8 : 1) /  (3 * sneakMul);
-            double offset = -0.2 / sneakMul;
-
-
-            double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(6 * walkCounter) * amplitude) + offset);
-            if (api.Side == EnumAppSide.Client && (api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
-
-            
-
-            if (moving)
-            {
-                if (stepHeight > prevStepHeight)
+                if (servercontrols.FloorSitting)
                 {
-                    if (direction == -1)
+                    newEyeheight *= 0.45f;
+                    newModelHeight *= 0.5f;
+                }
+                else if (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.IsFlying)
+                {
+                    newEyeheight *= 0.85f;
+                    newModelHeight *= 0.85f;
+                }
+
+                bool moving = (servercontrols.TriesToMove && LocalPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
+
+                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3);
+
+                walkCounter = moving ? walkCounter + frequency : 0;
+                walkCounter = walkCounter % GameMath.TWOPI;
+
+                double sneakMul = (servercontrols.Sneak ? 1.7 : 1);
+
+                double amplitude = (FeetInLiquid ? 0.8 : 1) / (3 * sneakMul);
+                double offset = -0.2 / sneakMul;
+
+
+                double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(6 * walkCounter) * amplitude) + offset);
+                if (api.Side == EnumAppSide.Client && (api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
+
+
+
+                if (moving)
+                {
+                    if (stepHeight > prevStepHeight)
                     {
-                        IPlayer player = World.PlayerByUid(PlayerUID);
-                        float volume = controls.Sneak ? 0.5f : 1f;
-
-                        int blockIdUnder = BlockUnderPlayer();
-                        int blockIdInside = BlockInsidePlayer();
-
-                        AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
-                        AssetLocation soundinside = World.Blocks[blockIdInside].Sounds?.Inside;
-
-                        if (soundwalk != null)
+                        if (direction == -1)
                         {
-                            if (blockIdInside != blockIdUnder && soundinside != null)
+
+                            float volume = controls.Sneak ? 0.5f : 1f;
+
+                            int blockIdUnder = BlockUnderPlayer();
+                            int blockIdInside = BlockInsidePlayer();
+
+                            AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
+                            AssetLocation soundinside = World.Blocks[blockIdInside].Sounds?.Inside;
+
+                            if (soundwalk != null)
                             {
-                                World.PlaySoundAt(soundwalk, this, player, true, 12, volume * 0.5f);
-                                World.PlaySoundAt(soundinside, this, player, true, 12, volume);
-                            }
-                            else
-                            {
-                                World.PlaySoundAt(soundwalk, this, player, true, 12, volume);
+                                if (blockIdInside != blockIdUnder && soundinside != null)
+                                {
+                                    World.PlaySoundAt(soundwalk, this, player, true, 12, volume * 0.5f);
+                                    World.PlaySoundAt(soundinside, this, player, true, 12, volume);
+                                }
+                                else
+                                {
+                                    World.PlaySoundAt(soundwalk, this, player, true, 12, volume);
+                                }
                             }
                         }
+                        direction = 1;
                     }
-                    direction = 1;
-                } else
-                {
-                    direction = -1;
+                    else
+                    {
+                        direction = -1;
+                    }
+
                 }
-                
+
+                prevStepHeight = stepHeight;
+
+                double diff = (newEyeheight - eyeHeightCurrent) * 5 * dt;
+                eyeHeightCurrent = diff > 0 ? Math.Min(eyeHeightCurrent + diff, newEyeheight) : Math.Max(eyeHeightCurrent + diff, newEyeheight);
+
+                diff = (newModelHeight - CollisionBox.Y2) * 5 * dt;
+                CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
+
             }
 
-            prevStepHeight = stepHeight;
-
-            double diff = (newEyeheight - eyeHeightCurrent) * 5 * dt;
-            eyeHeightCurrent = diff > 0 ? Math.Min(eyeHeightCurrent + diff, newEyeheight) : Math.Max(eyeHeightCurrent + diff, newEyeheight);
-
-            diff = (newModelHeight - CollisionBox.Y2) * 5 * dt;
-            CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
 
             base.OnGameTick(dt);
 
@@ -206,12 +214,17 @@ namespace Vintagestory.API.Common
         public override void OnFallToGround(double motionY)
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
-            int blockIdUnder = BlockUnderPlayer();
-            AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
-            if (soundwalk != null)
+
+            if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
-                World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
+                int blockIdUnder = BlockUnderPlayer();
+                AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
+                if (soundwalk != null)
+                {
+                    World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
+                }
             }
+            
 
             base.OnFallToGround(motionY);
         }
@@ -363,6 +376,35 @@ namespace Vintagestory.API.Common
             {
                 base.OnCollideWithLiquid();
             }
+        }
+
+
+        public override void TeleportToDouble(double x, double y, double z)
+        {
+            Teleporting = true;
+            ICoreServerAPI sapi = this.api as ICoreServerAPI;
+            if (sapi != null)
+            {
+                sapi.World.LoadChunkColumn((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, () =>
+                {
+                    Pos.SetPos(x, y, z);
+                    ServerPos.SetPos(x, y, z);
+                    PreviousServerPos.SetPos(-99, -99, -99);
+                    PositionBeforeFalling.Set(x, y, z);
+                    Pos.Motion.Set(0, 0, 0);
+                    if (this is EntityPlayer)
+                    {
+                        sapi.Network.BroadcastEntityPacket(Entityid, 1, SerializerUtil.Serialize(ServerPos.XYZ));
+                    }
+
+                    WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+
+                    Teleporting = false;
+                });
+
+            }
+
+            
         }
     }
 }

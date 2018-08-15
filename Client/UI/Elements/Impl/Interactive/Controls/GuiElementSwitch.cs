@@ -7,7 +7,7 @@ namespace Vintagestory.API.Client
     {
         API.Common.Action<bool> handler;
 
-        int onTextureId;
+        LoadedTexture onTexture;
 
         public bool On;
 
@@ -18,6 +18,8 @@ namespace Vintagestory.API.Client
 
         public GuiElementSwitch(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds, double size = 30, double padding = 5) : base(capi, bounds)
         {
+            onTexture = new LoadedTexture(capi);
+
             bounds.fixedWidth = size;
             bounds.fixedHeight = size;
 
@@ -49,7 +51,7 @@ namespace Vintagestory.API.Client
             RoundRectangle(ctx, 0, 0, size, size, 3);
             fillWithPattern(api, ctx, waterTextureName);
 
-            generateTexture(surface, ref onTextureId);
+            generateTexture(surface, ref onTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -63,7 +65,7 @@ namespace Vintagestory.API.Client
                 double size = scaled(unscaledSize - 2 * unscaledPadding);
                 double padding = scaled(unscaledPadding);
 
-                api.Render.Render2DTexturePremultipliedAlpha(onTextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)size, (int)size);
+                api.Render.Render2DTexturePremultipliedAlpha(onTexture.TextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)size, (int)size);
             }
             
         }
@@ -81,6 +83,14 @@ namespace Vintagestory.API.Client
         {
             On = on;
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            onTexture.Dispose();
+        }
+
     }
 
     public static partial class GuiComposerHelpers

@@ -76,7 +76,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="handler"></param>
         void BlockTexturesLoaded(Common.Action handler);
-
+        
         /// <summary>
         /// Called when the player tries to reload the shaders (happens when graphics settings are changed)
         /// </summary>

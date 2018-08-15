@@ -11,8 +11,8 @@ namespace Vintagestory.API.Client
 
         internal GuiTab[] tabs;
 
-        int baseTextureId;
-        int[] hoverTextureIds;
+        LoadedTexture baseTexture;
+        LoadedTexture[] hoverTextures;
         int[] tabWidths;
 
         public int activeElement = 0;
@@ -28,7 +28,10 @@ namespace Vintagestory.API.Client
         {
             this.tabs = tabs;
             handler = onTabClicked;
-            hoverTextureIds = new int[tabs.Length];
+            hoverTextures = new LoadedTexture[tabs.Length];
+            for (int i = 0; i < tabs.Length; i++) hoverTextures[i] = new LoadedTexture(capi);
+            baseTexture = new LoadedTexture(capi);
+
             tabWidths = new int[tabs.Length];
         }
 
@@ -88,7 +91,7 @@ namespace Vintagestory.API.Client
 
             ComposeOverlays();
 
-            generateTexture(surface, ref baseTextureId);
+            generateTexture(surface, ref baseTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -140,7 +143,7 @@ namespace Vintagestory.API.Client
                 ShowTextCorrectly(ctx, tabs[i].name, padding+3, 2);
 
 
-                generateTexture(surface, ref hoverTextureIds[i]);
+                generateTexture(surface, ref hoverTextures[i]);
 
                 ctx.Dispose();
                 surface.Dispose();
@@ -149,7 +152,7 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexture(baseTextureId, (int)Bounds.renderX, (int)Bounds.renderY, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
+            api.Render.Render2DTexture(baseTexture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
 
             double spacing = scaled(unscaledTabSpacing);
 
@@ -163,7 +166,7 @@ namespace Vintagestory.API.Client
             {
                 if (i == activeElement || (mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextureIds[i], (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i], (int)tabHeight + 2);
+                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i], (int)tabHeight + 2);
                 }
 
                 ypos += tabHeight + spacing;
@@ -224,6 +227,14 @@ namespace Vintagestory.API.Client
         {
             if (triggerHandler) handler(tabs[selectedIndex].index);
             activeElement = selectedIndex;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            for (int i = 0; i < hoverTextures.Length; i++) hoverTextures[i].Dispose();
+            baseTexture.Dispose();
         }
     }
 

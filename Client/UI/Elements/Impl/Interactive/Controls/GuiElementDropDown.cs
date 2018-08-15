@@ -11,13 +11,15 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementDropDown : GuiElementTextControl
     {
-        GuiElementListMenu listMenu;
+        protected GuiElementListMenu listMenu;
         
         
-        protected int highlightTextureId;
-        int currentValueTextureId;
+        protected LoadedTexture highlightTexture;
+        protected LoadedTexture currentValueTexture;
+
+
         protected ElementBounds highlightBounds;
-        API.Common.Action<string> onSelectionChanged;
+        protected API.Common.Action<string> onSelectionChanged;
 
         public override double DrawOrder
         {
@@ -45,6 +47,9 @@ namespace Vintagestory.API.Client
 
         public GuiElementDropDown(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, API.Common.Action<string> onSelectionChanged, ElementBounds bounds) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
         {
+            highlightTexture = new LoadedTexture(capi);
+            currentValueTexture = new LoadedTexture(capi);
+
             listMenu = new GuiElementListMenu(capi, values, names, selectedIndex, didSelect, bounds)
             {
                 hoveredIndex = selectedIndex   
@@ -93,7 +98,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.SetSourceRGBA(0, 0, 0, 0.2);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref highlightTextureId);
+            generateTexture(surfaceHighlight, ref highlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
@@ -128,7 +133,7 @@ namespace Vintagestory.API.Client
                 ShowTextCorrectly(ctx, listMenu.names[listMenu.selectedIndex], 5, (valueHeight - height)/2);
             }
 
-            generateTexture(surface, ref currentValueTextureId);
+            generateTexture(surface, ref currentValueTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -138,7 +143,7 @@ namespace Vintagestory.API.Client
         public override void RenderInteractiveElements(float deltaTime)
         {
             api.Render.Render2DTexturePremultipliedAlpha(
-                currentValueTextureId, 
+                currentValueTexture.TextureId, 
                 (int)Bounds.renderX, 
                 (int)Bounds.renderY, 
                 (int)valueWidth, 
@@ -149,7 +154,7 @@ namespace Vintagestory.API.Client
 
             if (HasFocus)
             {
-                api.Render.Render2DTexture(highlightTextureId, highlightBounds);
+                api.Render.Render2DTexture(highlightTexture.TextureId, highlightBounds);
             }
         }
 
@@ -198,6 +203,14 @@ namespace Vintagestory.API.Client
         public void SetList(string[] values, string[] names)
         {
             this.listMenu.SetList(values, names);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            highlightTexture.Dispose();
+            currentValueTexture.Dispose();
         }
     }
 

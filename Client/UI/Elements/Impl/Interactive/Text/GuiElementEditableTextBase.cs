@@ -29,8 +29,8 @@ namespace Vintagestory.API.Client
        // internal int selectedTextStart;
         //internal int selectedTextEnd;
 
-        internal int caretTextureId;
-        internal int textTextureId;
+        internal LoadedTexture caretTexture;
+        internal LoadedTexture textTexture;
         //internal int selectionTextureId;
 
         internal API.Common.Action<string> OnTextChanged;
@@ -75,6 +75,9 @@ namespace Vintagestory.API.Client
 
         public GuiElementEditableTextBase(ICoreClientAPI capi, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
+            caretTexture = new LoadedTexture(capi);
+            textTexture = new LoadedTexture(capi);
+
             lines = new List<string>
             {
                 ""
@@ -275,11 +278,11 @@ namespace Vintagestory.API.Client
             }
 
 
-            generateTexture(surface, ref textTextureId);
+            generateTexture(surface, ref textTexture);
             ctx.Dispose();
             surface.Dispose();
 
-            if (caretTextureId == 0)
+            if (caretTexture.TextureId == 0)
             {
                 caretHeight = fontHeight;
                 surface = new ImageSurface(Format.Argb32, (int)3.0, (int)fontHeight);
@@ -294,7 +297,7 @@ namespace Vintagestory.API.Client
                 ctx.ClosePath();
                 ctx.Stroke();
 
-                generateTexture(surface, ref caretTextureId);
+                generateTexture(surface, ref caretTexture.TextureId);
 
                 ctx.Dispose();
                 surface.Dispose();
@@ -526,12 +529,21 @@ namespace Vintagestory.API.Client
 
                 if (caretDisplayed && caretX - renderLeftOffset < Bounds.InnerWidth)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(caretTextureId, Bounds.renderX + caretX + scaled(1.5) - renderLeftOffset, Bounds.renderY + caretY + topPadding, 2, caretHeight);
+                    api.Render.Render2DTexturePremultipliedAlpha(caretTexture.TextureId, Bounds.renderX + caretX + scaled(1.5) - renderLeftOffset, Bounds.renderY + caretY + topPadding, 2, caretHeight);
                 }
 
                 
             }
         }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            caretTexture.Dispose();
+            textTexture.Dispose();
+        }
+
 
 
     }

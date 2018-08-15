@@ -31,7 +31,7 @@ namespace Vintagestory.API.Client
         Action<int> OnItemClick;
 
         int textureId;
-        int hoverTextureId;
+        LoadedTexture hoverTexture;
 
         public ElementBounds innerBounds;
 
@@ -40,18 +40,12 @@ namespace Vintagestory.API.Client
 
         public GuiElementConfigList(ICoreClientAPI capi, List<ConfigItem> items, Action<int> OnItemClick, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
+            hoverTexture = new LoadedTexture(capi);
+
             this.items = items;
             this.OnItemClick = OnItemClick;
             this.errorFont = font.Clone();
             this.stdFont = font;
-
-            ImageSurface surface = new ImageSurface(Format.Argb32, 200, 10);
-            Context ctx = genContext(surface);
-            ctx.SetSourceRGBA(1, 1, 1, 0.4);
-            ctx.Paint();
-            generateTexture(surface, ref hoverTextureId);
-            ctx.Dispose();
-            surface.Dispose();
         }
 
         public void Autoheight() {
@@ -75,8 +69,16 @@ namespace Vintagestory.API.Client
             innerBounds.CalcWorldBounds();
         }
 
-        public override void ComposeTextElements(Context ctx, ImageSurface surface)
+        public override void ComposeTextElements(Context ctxs, ImageSurface surfaces)
         {
+            ImageSurface surface = new ImageSurface(Format.Argb32, 200, 10);
+            Context ctx = genContext(surface);
+            ctx.SetSourceRGBA(1, 1, 1, 0.4);
+            ctx.Paint();
+            generateTexture(surface, ref hoverTexture);
+            ctx.Dispose();
+            surface.Dispose();
+
             Refresh();
         }
 
@@ -141,7 +143,7 @@ namespace Vintagestory.API.Client
 
                     if (diff > 0 && diff < item.height)
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(hoverTextureId, (int)innerBounds.absX, (int)innerBounds.absY + (int)item.posY, innerBounds.InnerWidth, item.height);
+                        api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)innerBounds.absX, (int)innerBounds.absY + (int)item.posY, innerBounds.InnerWidth, item.height);
                     }
                 }
             }
@@ -169,6 +171,13 @@ namespace Vintagestory.API.Client
                     i++;
                 }
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            hoverTexture.Dispose();
         }
 
     }

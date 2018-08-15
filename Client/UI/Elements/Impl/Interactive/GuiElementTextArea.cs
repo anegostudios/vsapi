@@ -7,11 +7,12 @@ namespace Vintagestory.API.Client
     public class GuiElementTextArea : GuiElementEditableTextBase
     {
         double minHeight;
-        int highlightTextureId;
+        LoadedTexture highlightTexture;
         ElementBounds highlightBounds;
 
         public GuiElementTextArea(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font) : base(capi, font, bounds)
         {
+            highlightTexture = new LoadedTexture(capi);
             multilineMode = true;
             minHeight = bounds.fixedHeight;
             this.OnTextChanged = OnTextChanged;
@@ -47,7 +48,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.SetSourceRGBA(0.5, 0.5, 0.5, 0.3);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref highlightTextureId);
+            generateTexture(surfaceHighlight, ref highlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
@@ -61,11 +62,11 @@ namespace Vintagestory.API.Client
             if (HasFocus)
             {
                 api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
-                api.Render.Render2DTexturePremultipliedAlpha(highlightTextureId, highlightBounds);
+                api.Render.Render2DTexturePremultipliedAlpha(highlightTexture.TextureId, highlightBounds);
                 api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
             }
 
-            api.Render.Render2DTexturePremultipliedAlpha(textTextureId, Bounds);
+            api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, Bounds);
 
             base.RenderInteractiveElements(deltaTime);
         }
@@ -73,6 +74,12 @@ namespace Vintagestory.API.Client
         public void SetMaxLines(int maxlines)
         {
             this.maxlines = maxlines;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            highlightTexture.Dispose();
         }
     }
 

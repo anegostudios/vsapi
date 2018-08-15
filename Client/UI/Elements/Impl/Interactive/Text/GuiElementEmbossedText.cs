@@ -9,11 +9,12 @@ namespace Vintagestory.API.Client
 
         bool enabled;
 
-        int textureId;
+        LoadedTexture texture;
 
             
         public GuiElementEmbossedText(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds) : base(capi, text, font, bounds) 
         {
+            texture = new LoadedTexture(capi);
             enabled = true;
         }
 
@@ -88,7 +89,7 @@ namespace Vintagestory.API.Client
             ctxText.MoveTo(padding, padding);
             ShowTextCorrectly(ctxText, text);
 
-            generateTexture(surface, ref textureId);
+            generateTexture(surface, ref texture);
             
             surface.Dispose();
             ctxText.Dispose();
@@ -96,9 +97,16 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexturePremultipliedAlpha(textureId, Bounds);
+            api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, Bounds);
         }
 
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            texture.Dispose();
+        }
 
     }
 

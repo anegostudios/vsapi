@@ -181,7 +181,7 @@ namespace Vintagestory.API.Common.Entities
             }
             else
             {
-                shapePath = clientConf.Shape.Base.CopyWithPath("shapes/" + clientConf.Shape.Base.Path + ".json");
+                shapePath = clientConf.Shape.Base.Clone().WithPathPrefix("shapes/").WithPathAppendix(".json");
             }
 
             IAsset asset = capi.Assets.TryGet(shapePath);
@@ -299,6 +299,12 @@ namespace Vintagestory.API.Common.Entities
         public float MaxTemp = 40;
         public float MinRain = 0f;
         public float MaxRain = 1f;
+        public float MinForest = 0;
+        public float MaxForest = 1;
+        public float MinShrubs = 0;
+        public float MaxShrubs = 1;
+
+        public float MinForestOrShrubs = 0;
     }
 
 

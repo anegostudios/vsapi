@@ -21,6 +21,7 @@ namespace Vintagestory.API.Common
         protected float soundRange;
 
         protected string whenInEmotionState;
+        protected string whenNotInEmotionState;
 
         protected long cooldownUntilMs;
 
@@ -39,6 +40,8 @@ namespace Vintagestory.API.Common
             this.slot = (int)taskConfig["slot"]?.AsInt(0);
             this.mincooldown = (int)taskConfig["mincooldown"]?.AsInt(0);
             this.maxcooldown = (int)taskConfig["maxcooldown"]?.AsInt(100);
+            int initialmincooldown = (int)taskConfig["initialMinCoolDown"]?.AsInt(mincooldown);
+            int initialmaxcooldown = (int)taskConfig["initialMaxCoolDown"]?.AsInt(maxcooldown);
 
             if (taskConfig["animation"].Exists)
             {
@@ -51,6 +54,7 @@ namespace Vintagestory.API.Common
             }
 
             this.whenInEmotionState = taskConfig["whenInEmotionState"].AsString();
+            this.whenNotInEmotionState = taskConfig["whenNotInEmotionState"].AsString();
 
             if (taskConfig["sound"] != null)
             {
@@ -58,7 +62,7 @@ namespace Vintagestory.API.Common
                 soundRange = taskConfig["soundRange"].AsFloat(16);
             }
 
-            cooldownUntilMs = entity.World.ElapsedMilliseconds + mincooldown + entity.World.Rand.Next(maxcooldown - mincooldown);
+            cooldownUntilMs = entity.World.ElapsedMilliseconds + initialmincooldown + entity.World.Rand.Next(initialmaxcooldown - initialmincooldown);
         }
 
         public virtual int Slot

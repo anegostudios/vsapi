@@ -79,6 +79,14 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         int LoadCairoTexture(Cairo.ImageSurface surface, bool linearMag);
 
+        /// <summary>
+        /// Load the contents of a cairo surface into a opengl texture. Re-uses the supplied texture exists and the size is correct. Otherwise deletes the texture and regenerates it.
+        /// </summary>
+        /// <param name="surface"></param>
+        /// <param name="linearMag"></param>
+        /// <returns></returns>
+        void LoadOrUpdateCairoTexture(Cairo.ImageSurface surface, bool linearMag, ref LoadedTexture intoTexture);
+
 
         /// <summary>
         /// Retrieve the saved dialog position from settings

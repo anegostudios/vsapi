@@ -28,8 +28,13 @@ namespace Vintagestory.API.Config
     /// </summary>
     public static class RuntimeEnv
     {
+        /// <summary>
+        /// If TEXTURE_DEBUG_DISPOSE is set, the initial value set here will be overridden
+        /// </summary>
         public static bool DebugTextureDispose = false;
-        //public static bool DebugCairoDispose;
+        /// <summary>
+        /// If VAO_DEBUG_DISPOSE is set, the initial value set here will be overridden
+        /// </summary>
         public static bool DebugVAODispose;
 
         public static int MainThreadId;

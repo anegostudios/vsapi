@@ -242,7 +242,7 @@ namespace Vintagestory.API.Common
                     (alive && (servercontrols.TriesToMove || ((servercontrols.Jump || servercontrols.Sneak) && servercontrols.IsClimbing)) ? EnumEntityActivity.Move : EnumEntityActivity.Idle) |
                     (alive && Swimming ? EnumEntityActivity.Swim : 0) |
                     (alive && servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
-                    (alive && servercontrols.Sneak && !servercontrols.IsClimbing ? EnumEntityActivity.SneakMode : 0) |
+                    (alive && servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting ? EnumEntityActivity.SneakMode : 0) |
                     (alive && servercontrols.Sprint ? EnumEntityActivity.SprintMode : 0) |
                     (alive && servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
                     (alive && servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |

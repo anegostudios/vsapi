@@ -5,11 +5,12 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementChatInput : GuiElementEditableTextBase
     {
-        int highlightTextureId;
+        LoadedTexture highlightTexture;
         ElementBounds highlightBounds;
 
         public GuiElementChatInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged) : base(capi, null, bounds)
         {
+            highlightTexture = new LoadedTexture(capi);
             this.OnTextChanged = OnTextChanged;
             this.caretColor = new float[] { 1, 1, 1, 1 };
             this.Font = CairoFont.WhiteSmallText();
@@ -44,7 +45,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.SetSourceRGBA(1, 1, 1, 0.1);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref highlightTextureId);
+            generateTexture(surfaceHighlight, ref highlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
@@ -60,16 +61,23 @@ namespace Vintagestory.API.Client
             if (hasFocus)
             {
                 api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
-                api.Render.Render2DTexturePremultipliedAlpha(highlightTextureId, highlightBounds);
+                api.Render.Render2DTexturePremultipliedAlpha(highlightTexture.TextureId, highlightBounds);
                 api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
             }
 
             api.Render.GlScissor((int)(Bounds.renderX), (int)(api.Render.FrameHeight - Bounds.renderY - Bounds.InnerHeight), Bounds.OuterWidthInt + 1 - (int)rightSpacing, Bounds.OuterHeightInt + 1 - (int)bottomSpacing);
             api.Render.GlScissorFlag(true);
-            api.Render.Render2DTexturePremultipliedAlpha(textTextureId, Bounds.renderX - renderLeftOffset, Bounds.renderY, textSize.X, textSize.Y);
+            api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, Bounds.renderX - renderLeftOffset, Bounds.renderY, textSize.X, textSize.Y);
             api.Render.GlScissorFlag(false);
             
             base.RenderInteractiveElements(deltaTime);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            highlightTexture.Dispose();
         }
     }
 

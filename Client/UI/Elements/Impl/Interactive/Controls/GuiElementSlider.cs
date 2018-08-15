@@ -21,13 +21,14 @@ namespace Vintagestory.API.Client
         bool triggerOnMouseUp = false;
         bool didChangeValue = false;
 
-        int handleTextureId;
-        int hoverTextTextureId;
-        int waterTextureId;
+        LoadedTexture handleTexture;
+        LoadedTexture hoverTextTexture;
+        LoadedTexture waterTexture;
+        LoadedTexture alarmValueTexture;
 
         GuiElementStaticText textElem;
 
-        int alarmValueTextureId;
+        
         Rectangled alarmTextureRect;
 
         ActionConsumable<int> onNewSliderValue;
@@ -54,6 +55,11 @@ namespace Vintagestory.API.Client
 
         public GuiElementSlider(ICoreClientAPI capi, ActionConsumable<int> onNewSliderValue, ElementBounds bounds) : base(capi, bounds)
         {
+            handleTexture = new LoadedTexture(capi);
+            hoverTextTexture = new LoadedTexture(capi);
+            waterTexture = new LoadedTexture(capi);
+            alarmValueTexture = new LoadedTexture(capi);
+
             this.onNewSliderValue = onNewSliderValue;
         }
 
@@ -105,7 +111,7 @@ namespace Vintagestory.API.Client
             ctx.LineWidth = 2;
             ctx.Stroke();
             
-            generateTexture(surface, ref handleTextureId);
+            generateTexture(surface, ref handleTexture);
             ctx.Dispose();
             surface.Dispose();
 
@@ -143,7 +149,7 @@ namespace Vintagestory.API.Client
 
             textElem.ComposeElements(ctx, surface);
 
-            generateTexture(surface, ref hoverTextTextureId);
+            generateTexture(surface, ref hoverTextTexture);
             ctx.Dispose();
             surface.Dispose();
         }
@@ -162,17 +168,17 @@ namespace Vintagestory.API.Client
             ctx.SetSource(pattern);
             ctx.Fill();           
 
-            generateTexture(surface, ref waterTextureId);
+            generateTexture(surface, ref waterTexture);
             ctx.Dispose();
             surface.Dispose();
         }
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            if ((float)(alarmValue - minValue) / (maxValue - minValue) > 0 && alarmValueTextureId > 0)
+            if ((float)(alarmValue - minValue) / (maxValue - minValue) > 0 && alarmValueTexture.TextureId > 0)
             {
                 float alarmValueRel = (float)alarmValue / maxValue;
-                api.Render.RenderTexture(alarmValueTextureId, Bounds.renderX + alarmTextureRect.X, Bounds.renderY + alarmTextureRect.Y, alarmTextureRect.Width, alarmTextureRect.Height);
+                api.Render.RenderTexture(alarmValueTexture.TextureId, Bounds.renderX + alarmTextureRect.X, Bounds.renderY + alarmTextureRect.Y, alarmTextureRect.Width, alarmTextureRect.Height);
             }
 
             double sliderWidth = Bounds.InnerWidth - 2 * padding - handleWidth / 2;
@@ -182,16 +188,16 @@ namespace Vintagestory.API.Client
             double insetHeight = Bounds.InnerHeight - 2 * padding;
             double dy = (handleHeight - Bounds.OuterHeight + padding) / 2;
 
-            api.Render.Render2DTexturePremultipliedAlpha(waterTextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)(handlePosition + 5), (int)insetHeight);
+            api.Render.Render2DTexturePremultipliedAlpha(waterTexture.TextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)(handlePosition + 5), (int)insetHeight);
 
-            api.Render.Render2DTexturePremultipliedAlpha(handleTextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
+            api.Render.Render2DTexturePremultipliedAlpha(handleTexture.TextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
 
 
             if (mouseDownOnSlider || Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
             {
                 ElementBounds elemBounds = textElem.Bounds;
                 api.Render.Render2DTexturePremultipliedAlpha(
-                    hoverTextTextureId,
+                    hoverTextTexture.TextureId,
                     (int)(Bounds.renderX + padding + handlePosition - elemBounds.OuterWidth / 2 + handleWidth / 2),
                     (int)(Bounds.renderY - scaled(20) - elemBounds.OuterHeight),
                     elemBounds.OuterWidthInt,
@@ -215,7 +221,7 @@ namespace Vintagestory.API.Client
             RoundRectangle(ctx, 0, 0, alarmTextureRect.Width, alarmTextureRect.Height, ElementGeometrics.ElementBGRadius);
             ctx.Fill();
 
-            generateTexture(surface, ref alarmValueTextureId);
+            generateTexture(surface, ref alarmValueTexture.TextureId);
             ctx.Dispose();
             surface.Dispose();
         }
@@ -268,10 +274,7 @@ namespace Vintagestory.API.Client
             ComposeHoverTextElement();
             ComposeWaterTexture();
 
-            if (onNewSliderValue != null)
-            {    
-                onNewSliderValue(currentValue);
-            }
+            onNewSliderValue?.Invoke(currentValue);
         }
 
 
@@ -337,6 +340,16 @@ namespace Vintagestory.API.Client
         public int GetValue()
         {
             return currentValue;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            handleTexture.Dispose();
+            hoverTextTexture.Dispose();
+            waterTexture.Dispose();
+            alarmValueTexture.Dispose();
         }
     }
 

@@ -102,6 +102,11 @@ namespace Vintagestory.API.Client
             if (prevTexId > 0) api.Render.GLDeleteTexture(prevTexId);
         }
 
+        protected void generateTexture(ImageSurface surface, ref LoadedTexture intoTexture, bool linearMag = true)
+        {
+            api.Gui.LoadOrUpdateCairoTexture(surface, linearMag, ref intoTexture);
+        }
+
 
         public static double scaled(double value)
         {
@@ -452,5 +457,9 @@ namespace Vintagestory.API.Client
             return 255 + (255 << 8) + (255 << 16) + (128 << 24);
         }
 
+        public virtual void Dispose()
+        {
+
+        }
     }
 }

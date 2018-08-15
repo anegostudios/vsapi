@@ -18,8 +18,8 @@ namespace Vintagestory.API.Client
 
         public static int unscaledCloseIconSize = 15;
 
-        int closeIconHoverTextureId;
-        int menuIconHoverTextureId;
+        LoadedTexture closeIconHoverTexture;
+        LoadedTexture menuIconHoverTexture;
         Rectangled closeIconRect;
         Rectangled menuIconRect;
 
@@ -34,6 +34,9 @@ namespace Vintagestory.API.Client
 
         public GuiElementDialogTitleBar(ICoreClientAPI capi, string text, GuiComposer composer, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null) : base(capi, text, font, bounds)
         {
+            closeIconHoverTexture = new LoadedTexture(capi);
+            menuIconHoverTexture = new LoadedTexture(capi);
+
             if (bounds == null) this.Bounds = ElementStdBounds.TitleBar();
             if (font == null) this.Font = CairoFont.SmallDialogText();
             this.OnClose = OnClose;
@@ -197,7 +200,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0.8, 0, 0, 0.6);
             api.Gui.Icons.DrawCross(ctx, 2, 2, crossWidth, crossSize);
 
-            generateTexture(surface, ref closeIconHoverTextureId);
+            generateTexture(surface, ref closeIconHoverTexture);
 
             surface.Dispose();
             ctx.Dispose();
@@ -211,7 +214,7 @@ namespace Vintagestory.API.Client
             api.Gui.Icons.Drawmenuicon_svg(ctx, 1.5, 1.5, (int)menuSize, (int)menuSize, new double[] { 0.8, 0, 0, 0.9 });
             api.Gui.Icons.Drawmenuicon_svg(ctx, 2, 2, (int)menuSize, (int)menuSize, new double[] { 0.8, 0, 0, 0.6 });
 
-            generateTexture(surface, ref menuIconHoverTextureId);
+            generateTexture(surface, ref menuIconHoverTexture);
 
             surface.Dispose();
             ctx.Dispose();
@@ -224,12 +227,12 @@ namespace Vintagestory.API.Client
 
             if (closeIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY))
             {
-                api.Render.Render2DTexturePremultipliedAlpha(closeIconHoverTextureId, Bounds.absX + closeIconRect.X - 3, Bounds.absY + closeIconRect.Y - 3, closeIconRect.Width + 4, closeIconRect.Height + 4, 200);
+                api.Render.Render2DTexturePremultipliedAlpha(closeIconHoverTexture.TextureId, Bounds.absX + closeIconRect.X - 3, Bounds.absY + closeIconRect.Y - 3, closeIconRect.Width + 4, closeIconRect.Height + 4, 200);
             }
             
             if (menuIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY) || listMenu.IsOpened)
             {
-                api.Render.Render2DTexturePremultipliedAlpha(menuIconHoverTextureId, Bounds.absX + menuIconRect.X - 2, Bounds.absY + menuIconRect.Y - 2, menuIconRect.Width + 6, menuIconRect.Height + 6, 200);
+                api.Render.Render2DTexturePremultipliedAlpha(menuIconHoverTexture.TextureId, Bounds.absX + menuIconRect.X - 2, Bounds.absY + menuIconRect.Y - 2, menuIconRect.Width + 6, menuIconRect.Height + 6, 200);
             }
 
             listMenu.RenderInteractiveElements(deltaTime);
@@ -316,6 +319,15 @@ namespace Vintagestory.API.Client
         internal void SetSelectedIndex(int selectedIndex)
         {
             this.listMenu.SetSelectedIndex(selectedIndex);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            closeIconHoverTexture.Dispose();
+            menuIconHoverTexture.Dispose();
+            listMenu?.Dispose();
         }
     }
 

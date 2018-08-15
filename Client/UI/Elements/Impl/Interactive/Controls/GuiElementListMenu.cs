@@ -26,9 +26,10 @@ namespace Vintagestory.API.Client
 
         API.Common.Action<string> onSelectionChanged;
 
-        int hoverTextureId;
-        int dropDownTextureId;
-        int scrollbarTextureId;
+        LoadedTexture hoverTexture;
+        LoadedTexture dropDownTexture;
+        LoadedTexture scrollbarTexture;
+
         bool expanded;
 
         double scrollOffY = 0;
@@ -54,6 +55,10 @@ namespace Vintagestory.API.Client
 
         public GuiElementListMenu(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, API.Common.Action<string> onSelectionChanged, ElementBounds bounds) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
         {
+            hoverTexture = new LoadedTexture(capi);
+            dropDownTexture = new LoadedTexture(capi);
+            scrollbarTexture = new LoadedTexture(capi);
+
             this.values = values;
             this.names = names;
             this.selectedIndex = selectedIndex;
@@ -123,7 +128,7 @@ namespace Vintagestory.API.Client
                 ShowTextCorrectly(ctx, names[i], 0, 0);
             }
 
-            generateTexture(surface, ref dropDownTextureId);
+            generateTexture(surface, ref dropDownTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -140,7 +145,7 @@ namespace Vintagestory.API.Client
             scrollbar.ComposeElements(ctx, surface);
             scrollbar.SetHeights((int)visibleBounds.InnerHeight / RuntimeEnv.GUIScale, (int)expandedBoxHeight);
 
-            generateTexture(surface, ref scrollbarTextureId);
+            generateTexture(surface, ref scrollbarTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -156,7 +161,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(col);
             RoundRectangle(ctx, 0, 0, expandedBoxWidth, 30*Scale, 0);
             ctx.Fill();
-            generateTexture(surface, ref hoverTextureId);
+            generateTexture(surface, ref hoverTexture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -171,7 +176,7 @@ namespace Vintagestory.API.Client
                 api.Render.BeginScissor(visibleBounds);
 
                 api.Render.Render2DTexturePremultipliedAlpha(
-                    dropDownTextureId, 
+                    dropDownTexture.TextureId, 
                     (int)Bounds.renderX,
                     (int)Bounds.renderY + (int)Bounds.InnerHeight - (int)scrollOffY, 
                     (int)expandedBoxWidth, 
@@ -182,7 +187,7 @@ namespace Vintagestory.API.Client
                 if (hoveredIndex >= 0)
                 {
                     api.Render.Render2DTexturePremultipliedAlpha(
-                        hoverTextureId, 
+                        hoverTexture.TextureId, 
                         (int)Bounds.renderX, 
                         (int)(Bounds.renderY + Bounds.InnerHeight + 30 * Scale * hoveredIndex), 
                         (int)expandedBoxWidth - scaled(14), 
@@ -194,7 +199,7 @@ namespace Vintagestory.API.Client
                 api.Render.EndScissor();
 
                 api.Render.Render2DTexturePremultipliedAlpha(
-                    scrollbarTextureId,
+                    scrollbarTexture.TextureId,
                     (int)visibleBounds.renderX,
                     (int)visibleBounds.renderY,
                     (int)visibleBounds.OuterWidth,
@@ -320,7 +325,17 @@ namespace Vintagestory.API.Client
         }
 
 
+        public override void Dispose()
+        {
+            base.Dispose();
 
-        
+            hoverTexture.Dispose();
+            dropDownTexture.Dispose();
+            scrollbarTexture.Dispose();
+
+            scrollbar?.Dispose();
+        }
+
+
     }
 }

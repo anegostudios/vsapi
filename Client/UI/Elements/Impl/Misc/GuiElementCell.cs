@@ -16,8 +16,8 @@ namespace Vintagestory.API.Client
 
         bool showModifyIcons = true;
 
-        internal int leftHighlightTextureId;
-        internal int rightHighlightTextureId;
+        LoadedTexture leftHighlightTexture;
+        LoadedTexture rightHighlightTexture;
 
         ElementBounds IGuiElementCell.Bounds
         {
@@ -27,7 +27,8 @@ namespace Vintagestory.API.Client
         public GuiElementCell(ICoreClientAPI capi, TableCell cell, ElementBounds bounds) : base(capi, "", null, bounds)
         {
             this.cell = cell;
-            
+            leftHighlightTexture = new LoadedTexture(capi);
+            rightHighlightTexture = new LoadedTexture(capi);
 
             if (cell.TitleFont == null)
             {
@@ -119,12 +120,12 @@ namespace Vintagestory.API.Client
 
         public void CreateDynamicParts()
         {
-            ComposeHover(true, ref leftHighlightTextureId);
-            ComposeHover(false, ref rightHighlightTextureId);
+            ComposeHover(true, ref leftHighlightTexture);
+            ComposeHover(false, ref rightHighlightTexture);
         }
 
 
-        void ComposeHover(bool left, ref int textureId)
+        void ComposeHover(bool left, ref LoadedTexture textureId)
         {
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
             Context ctx = genContext(surface);
@@ -194,12 +195,20 @@ namespace Vintagestory.API.Client
 
             if (pos.X > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
             {
-                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTexture.TextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
             }
             else
             {
-                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTexture.TextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            leftHighlightTexture.Dispose();
+            rightHighlightTexture.Dispose();
         }
     }
 }

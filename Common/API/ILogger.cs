@@ -13,6 +13,11 @@ namespace Vintagestory.API.Common
         event LogEntryDelegate EntryAdded;
 
         /// <summary>
+        /// Removes any handler that registered to the EntryAdded event. This method is called when the client leaves a world or server shuts down.
+        /// </summary>
+        void ClearWatchers();
+
+        /// <summary>
         /// Add a log entry
         /// </summary>
         /// <param name="logType"></param>

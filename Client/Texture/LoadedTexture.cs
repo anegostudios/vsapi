@@ -49,16 +49,19 @@ namespace Vintagestory.API.Client
         public virtual void Dispose()
         {
             this.disposed = true;
-            capi?.Gui.DeleteTexture(TextureId);
+            if (TextureId != 0)
+            {
+                capi?.Gui.DeleteTexture(TextureId);
+            }
         }
 
         ~LoadedTexture()
         {
-            if (disposed || capi?.IsShuttingDown == true) return;
+            if (TextureId == 0 || disposed || capi?.IsShuttingDown == true) return;
 
             if (trace == null)
             {
-                capi?.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Set env RuntimeEnv.DebugTextureDispose to get allocation trace.", TextureId);
+                capi?.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Set env var TEXTURE_DEBUG_DISPOSE to get allocation trace.", TextureId);
             }
             else
             {

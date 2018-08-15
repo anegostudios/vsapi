@@ -21,6 +21,18 @@ namespace Vintagestory.API.Client
                 this.dialog = dialog;
             }
 
+            public void ClearComposers()
+            {
+                foreach (var val in dialogComposers)
+                {
+                    if (!val.Value.IsCached)
+                    {
+                        val.Value?.Dispose();
+                    }
+                }
+                dialogComposers.Clear();
+            }
+
             public GuiComposer this[string key]
             {
                 get {
@@ -91,6 +103,7 @@ namespace Vintagestory.API.Client
         protected virtual void OnFocusChanged(bool on)
         {
             if (on == focused) return;
+            if (DialogType == EnumDialogType.Dialog && !opened) return;
 
             if (on)
             {
@@ -416,7 +429,14 @@ namespace Vintagestory.API.Client
         }
 
 
-        public virtual void Dispose() { }
+        public virtual void Dispose() {
+            DialogComposers?.ClearComposers();
+        }
+
+        public void ClearComposers()
+        {
+            DialogComposers?.ClearComposers();
+        }
 
 
         public abstract string ToggleKeyCombinationCode { get; }

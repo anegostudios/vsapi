@@ -12,6 +12,14 @@ namespace Vintagestory.API.Common
     public interface IWorldAccessor
     {
         /// <summary>
+        /// The default spawn position as sent by the server (usually the map middle). Does not take player specific spawn point into account
+        /// </summary>
+        EntityPos DefaultSpawnPosition { get; }
+
+
+        FrameProfilerUtil FrameProfiler { get; }
+
+        /// <summary>
         /// The api interface
         /// </summary>
         ICoreAPI Api { get; }
