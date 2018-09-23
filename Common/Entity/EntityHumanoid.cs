@@ -4,12 +4,7 @@ namespace Vintagestory.API.Common
 {
     public class EntityHumanoid : EntityAgent
     {
-        public override double EyeHeight()
-        {
-            return controls.Sneak ? 1.5 : 1.6;
-        }
+        public override double EyeHeight => base.Properties.EyeHeight - (controls.Sneak ? 0.1 : 0.0);
 
-
-        
     }
 }

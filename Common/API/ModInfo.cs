@@ -55,7 +55,7 @@ namespace Vintagestory.API.Common
         /// whitespace and special characters) if missing.)
         /// </summary>
         [JsonProperty]
-        public string ModID { get; internal set; }
+        public string ModID { get; set; }
 
         /// <summary> The version of this mod. For example "2.10.4". (optional) </summary>
         [JsonProperty]
@@ -82,7 +82,7 @@ namespace Vintagestory.API.Common
 
         /// <summary> Names of people contributing to this mod. (optional) </summary>
         [JsonProperty]
-        public IReadOnlyList<string> Contributors { get; private set; }
+        public IReadOnlyList<string> Contributors { get; set; }
             = new List<string>().AsReadOnly();
 
 
@@ -91,25 +91,25 @@ namespace Vintagestory.API.Common
         /// (Optional. Universal (both server and client) by default.)
         /// </summary>
         [JsonProperty]
-        public EnumAppSide Side { get; private set; } = EnumAppSide.Universal;
+        public EnumAppSide Side { get; set; } = EnumAppSide.Universal;
 
         /// <summary>
         /// If set to false and the mod is universal, clients don't need the mod
         /// to join. (Optional. True by default.)
         /// </summary>
         [JsonProperty]
-        public bool RequiredOnClient { get; private set; } = true;
+        public bool RequiredOnClient { get; set; } = true;
 
         /// <summary> List of mods (and versions) this mod depends on. </summary>
         [JsonProperty, JsonConverter(typeof(DependenciesConverter))]
-        public IReadOnlyList<ModDependency> Dependencies { get; private set; }
+        public IReadOnlyList<ModDependency> Dependencies { get; set; }
             = new List<ModDependency>().AsReadOnly();
 
 
         // Parameterless constructor is needed for JSON conversion.
-        private ModInfo() {  }
+        public ModInfo() {  }
 
-        internal ModInfo(EnumModType type, string name, string modID, string version,
+        public ModInfo(EnumModType type, string name, string modID, string version,
                          string description, IEnumerable<string> authors, IEnumerable<string> contributors, string website,
                          EnumAppSide side, bool requiredOnClient, IEnumerable<ModDependency> dependencies)
         {

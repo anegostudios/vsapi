@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -9,7 +10,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class SimpleParticleProperties : IParticlePropertiesProvider
     {
-        public Random rand = new Random();
+        public static Random rand = new Random();
 
         public float minQuantity;
         public float addQuantity;
@@ -26,7 +27,7 @@ namespace Vintagestory.API.Common
         public float minSize = 1f;
         public float maxSize = 1f;
 
-        public byte[] color;
+        public int color;
         public byte glowLevel;
         public EnumParticleModel model = EnumParticleModel.Cube;
 
@@ -44,18 +45,21 @@ namespace Vintagestory.API.Common
         public bool SelfPropelled;
 
         public Block ColorByBlock;
+        public int TintIndex;
 
         public SimpleParticleProperties()
         {
         }
 
-        public void Init(ICoreAPI api) { }
+//        ICoreAPI api;
+
+        public void Init(ICoreAPI api) {  }
 
         public SimpleParticleProperties(float minQuantity, float maxQuantity, int color, Vec3d minPos, Vec3d maxPos, Vec3f minVelocity, Vec3f maxVelocity, float lifeLength = 1f, float gravityEffect = 1f, float minSize = 1f, float maxSize = 1f, EnumParticleModel model = EnumParticleModel.Cube)
         {
             this.minQuantity = minQuantity;
             this.addQuantity = maxQuantity - minQuantity;
-            this.color = ColorUtil.ToBGRABytes(color);
+            this.color = color;
             this.minPos = minPos;
             this.addPos = maxPos - minPos;
             this.minVelocity = minVelocity;
@@ -107,8 +111,13 @@ namespace Vintagestory.API.Common
             return minSize + (float)rand.NextDouble() * (maxSize - minSize);
         }
 
-        public byte[] GetRgbaColor()
+        public int GetRgbaColor(ICoreClientAPI capi)
         {
+            if (ColorByBlock != null) return ColorByBlock.GetRandomColor(capi, new ItemStack(ColorByBlock));
+            if (TintIndex > 0)
+            {
+                return capi.ApplyColorTintOnRgba((int)TintIndex, color, (int)minPos.X, (int)minPos.Y, (int)minPos.Z);
+            }
             return color;
         }
 
@@ -175,11 +184,7 @@ namespace Vintagestory.API.Common
         }
 
         public bool TerrainCollision() { return WithTerrainCollision; }
-
-        Block IParticlePropertiesProvider.ColorByBlock()
-        {
-            return ColorByBlock;
-        }
+        
 
 
 
@@ -220,6 +225,8 @@ namespace Vintagestory.API.Common
 
             writer.Write(ColorByBlock == null);
             if (ColorByBlock != null) writer.Write(ColorByBlock.BlockId);
+
+            writer.Write((ushort)TintIndex);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -234,7 +241,7 @@ namespace Vintagestory.API.Common
             gravityEffect = reader.ReadSingle();
             minSize = reader.ReadSingle();
             maxSize = reader.ReadSingle();
-            color = reader.ReadBytes(4);
+            color = reader.ReadInt32();
             glowLevel = reader.ReadByte();
             model = (EnumParticleModel)reader.ReadInt32();
             ShouldDieInAir = reader.ReadBoolean();
@@ -273,11 +280,14 @@ namespace Vintagestory.API.Common
             {
                 ColorByBlock = resolver.Blocks[reader.ReadInt16()];
             }
+
+            TintIndex = reader.ReadInt16();
         }
 
         public void BeginParticle() { }
 
         public IParticlePropertiesProvider[] GetSecondaryParticles() { return null; }
+        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
 
         public float GetSecondarySpawnInterval()
         {

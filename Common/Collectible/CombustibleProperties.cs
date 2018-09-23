@@ -40,6 +40,11 @@ namespace Vintagestory.API.Common
         public int MeltingPoint;
 
         /// <summary>
+        /// If there is a melting point, the max temperature it can reach. Set to 0 for no limit 
+        /// </summary>
+        public int MaxTemperature;
+
+        /// <summary>
         /// For how many seconds the temperature has to be above the melting point until the item is smelted
         /// </summary>
         public float MeltingDuration;
@@ -87,6 +92,7 @@ namespace Vintagestory.API.Common
             cloned.SmeltedRatio = SmeltedRatio;
             cloned.RequiresContainer = RequiresContainer;
             cloned.SmeltingType = SmeltingType;
+            cloned.MaxTemperature = MaxTemperature;
 
             if (SmeltedStack != null)
             {

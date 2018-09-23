@@ -10,37 +10,80 @@ using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Adds a basic music track.
+    /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class BasicMusicTrack : IMusicTrack
     {
+        /// <summary>
+        /// The location of the track.
+        /// </summary>
         [JsonProperty("File")]
         public AssetLocation Location;
 
+        /// <summary>
+        /// The current play style of the track
+        /// </summary>
         [JsonProperty]
         public string Playstyle = "*";
+
+        /// <summary>
+        /// Minimum sunlight to play the track.
+        /// </summary>
         [JsonProperty]
         public int MinSunlight = 5;
+
+        /// <summary>
+        /// Earliest to play the track.
+        /// </summary>
         [JsonProperty]
         public float? MinHour = 0;
+
+        /// <summary>
+        /// Latest to play the track.
+        /// </summary>
         [JsonProperty]
         public float? MaxHour = 24;
 
+        /// <summary>
+        /// Is it loading?
+        /// </summary>
         bool loading = false;
 
+        /// <summary>
+        /// Get the current sound file.
+        /// </summary>
         public ILoadedSound Sound;
         
+        /// <summary>
+        /// Is the current song actively playing or is it loading? (False if neither action.
+        /// </summary>
         public bool IsActive {
             get {
                 return loading || (Sound != null && Sound.IsPlaying);
             }
         }
+
+        /// <summary>
+        /// The current song's priority.
+        /// </summary>
         public float Priority { get { return 1f; } }
+
+        /// <summary>
+        /// The name of the track.
+        /// </summary>
         public string Name { get { return Location.ToShortString(); } }
 
-
+        /// <summary>
+        /// The music seed for random values.
+        /// </summary>
         static Random rand = new Random();
 
-        static float[][] anySongCoolDowns = new float[][] {
+        /// <summary>
+        /// Cooldowns between songs. (in seconds)
+        /// </summary>
+        static readonly float[][] AnySongCoolDowns = new float[][] {
             // Rare
             new float[] { 16*60, 8*60 },
             // Sometimes
@@ -49,25 +92,56 @@ namespace Vintagestory.API.Client
             new float[] { 4*60, 2*60 }
         };
 
-        static float[] sameSongCoolDown = new float[] { 25 * 60, 20 * 60 };
+        /// <summary>
+        /// Time before we play the same song again.  First value is the maximum delay, second value is the minimum. (In seconds)
+        /// </summary>
+        static readonly float[] SameSongCoolDown = new float[] { 25 * 60, 20 * 60 };
 
+        /// <summary>
+        /// Is this track initialized?
+        /// </summary>
         static bool initialized = false;
+
+        /// <summary>
+        /// Global cooldown until next track
+        /// </summary>
         static long globalCooldownUntilMs;
+
+        /// <summary>
+        /// Cooldown for each track by name.
+        /// </summary>
         static Dictionary<string, long> tracksCooldownUntilMs = new Dictionary<string, long>();
 
-
+        /// <summary>
+        /// Core client API.
+        /// </summary>
         ICoreClientAPI capi;
 
+        /// <summary>
+        /// Static initializer.
+        /// </summary>
         static BasicMusicTrack() {
             
         }
 
+        /// <summary>
+        /// Gets the previous frequency setting.
+        /// </summary>
         static int prevFrequency;
+
+        /// <summary>
+        /// Gets the current Music Frequency setting.
+        /// </summary>
         public int MusicFrequency
         {
             get { return capi.Settings.Int["musicFrequency"]; }
         }
 
+        /// <summary>
+        /// Initialize the track.
+        /// </summary>
+        /// <param name="assetManager">the global Asset Manager</param>
+        /// <param name="capi">The Core Client API</param>
         public void Initialize(IAssetManager assetManager, ICoreClientAPI capi)
         {
             this.capi = capi;
@@ -75,7 +149,7 @@ namespace Vintagestory.API.Client
 
             if (!initialized)
             {
-                globalCooldownUntilMs = (long)(1000 * (anySongCoolDowns[MusicFrequency][0] / 4 + rand.NextDouble() * anySongCoolDowns[MusicFrequency][1] / 2));
+                globalCooldownUntilMs = (long)(1000 * (AnySongCoolDowns[MusicFrequency][0] / 4 + rand.NextDouble() * AnySongCoolDowns[MusicFrequency][1] / 2));
 
                 capi.Settings.Int.AddWatcher("musicFrequency", (newval) => { FrequencyChanged(newval, capi); });
 
@@ -86,6 +160,11 @@ namespace Vintagestory.API.Client
             }   
         }
 
+        /// <summary>
+        /// The Frequency change in the static system.
+        /// </summary>
+        /// <param name="newFreq">The new frequency</param>
+        /// <param name="capi">the core client API</param>
         private static void FrequencyChanged(int newFreq, ICoreClientAPI capi)
         {
             if (newFreq > prevFrequency)
@@ -94,12 +173,18 @@ namespace Vintagestory.API.Client
             }
             if (newFreq < prevFrequency)
             {
-                globalCooldownUntilMs = (long)(capi.World.ElapsedMilliseconds + 1000 * (anySongCoolDowns[newFreq][0] / 4 + rand.NextDouble() * anySongCoolDowns[newFreq][1] / 2));
+                globalCooldownUntilMs = (long)(capi.World.ElapsedMilliseconds + 1000 * (AnySongCoolDowns[newFreq][0] / 4 + rand.NextDouble() * AnySongCoolDowns[newFreq][1] / 2));
             }
 
             prevFrequency = newFreq;
         }
 
+        /// <summary>
+        /// Should this current track play?
+        /// </summary>
+        /// <param name="props">Player Properties</param>
+        /// <param name="musicEngine">the Music Engine.</param>
+        /// <returns>Should we play the current track?</returns>
         public bool ShouldPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
             if (IsActive) return false;
@@ -128,6 +213,11 @@ namespace Vintagestory.API.Client
             return true;
         }
 
+        /// <summary>
+        /// Begins playing the Music track.
+        /// </summary>
+        /// <param name="props">Player Properties</param>
+        /// <param name="musicEngine">The Music Engine</param>
         public void BeginPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
             loading = true;
@@ -138,6 +228,13 @@ namespace Vintagestory.API.Client
             });
         }
 
+        /// <summary>
+        /// Is it cool for the current track to continue playing?
+        /// </summary>
+        /// <param name="dt">Delta Time/Change in time.</param>
+        /// <param name="props">Track properties.</param>
+        /// <param name="musicEngine">the Music Engine.</param>
+        /// <returns>Cool or not cool?</returns>
         public bool ContinuePlay(float dt, TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
             if (!IsActive)
@@ -151,7 +248,11 @@ namespace Vintagestory.API.Client
             return true;
         }
         
-
+        /// <summary>
+        /// Fades out the current track.  
+        /// </summary>
+        /// <param name="seconds">The duration of the fade out in seconds.</param>
+        /// <param name="onFadedOut">What to have happen after the track has faded out.</param>
         public void FadeOut(float seconds, Common.Action onFadedOut = null)
         {
             loading = false;
@@ -173,17 +274,20 @@ namespace Vintagestory.API.Client
             SetCooldown(1f);
         }
 
-
+        /// <summary>
+        /// Sets the cooldown of the current track.
+        /// </summary>
+        /// <param name="multiplier">The multiplier for the cooldown.</param>
         public void SetCooldown(float multiplier)
         {
-            globalCooldownUntilMs = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (anySongCoolDowns[MusicFrequency][0] + rand.NextDouble() * anySongCoolDowns[MusicFrequency][1])) * multiplier);
+            globalCooldownUntilMs = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (AnySongCoolDowns[MusicFrequency][0] + rand.NextDouble() * AnySongCoolDowns[MusicFrequency][1])) * multiplier);
 
-            tracksCooldownUntilMs[Name] = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (sameSongCoolDown[0] + rand.NextDouble() * sameSongCoolDown[1])) * multiplier);
+            tracksCooldownUntilMs[Name] = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (SameSongCoolDown[0] + rand.NextDouble() * SameSongCoolDown[1])) * multiplier);
         }
 
-
-
-
+        /// <summary>
+        /// Updates the volume of the current track provided Sound is not null. (effectively calls Sound.SetVolume)
+        /// </summary>
         public void UpdateVolume()
         {
             if (Sound != null)

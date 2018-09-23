@@ -64,18 +64,22 @@ namespace Vintagestory.API.Common
             servercontrols = new EntityControls();
         }
 
+        public AnimationMetaData[] Animations;
 
-        public override void Initialize(ICoreAPI api, long InChunkIndex3d)
+
+        public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
-            base.Initialize(api, InChunkIndex3d);
+            base.Initialize(properties, api, InChunkIndex3d);
 
             PathTraverser = new StraightLinePathTraverser(this);
 
-            if (Type.Client.Animations != null)
+            if (properties.Client.Animations != null)
             {
-                foreach (AnimationMetaData anim in Type.Client.Animations)
+                Animations = new AnimationMetaData[properties.Client.Animations.Length];
+                for(int i = 0; i < Animations.Length; i++)
                 {
-                    anim.Init();
+                    Animations[i] = properties.Client.Animations[i].Clone();
+                    Animations[i].Init();
                 }
             }
 
@@ -101,6 +105,8 @@ namespace Vintagestory.API.Common
             get { return servercontrols; }
         }
 
+        double IEntityAgent.EyeHeight => Properties.EyeHeight;
+
         public bool IsEyesSubmerged()
         {
             int blockId = GetEyesBlockId();
@@ -109,7 +115,7 @@ namespace Vintagestory.API.Common
 
         public ushort GetEyesBlockId()
         {
-            BlockPos pos = LocalPos.AsBlockPos.Add(0, (float)EyeHeight(), 0);
+            BlockPos pos = LocalPos.AsBlockPos.Add(0, (float)Properties.EyeHeight, 0);
             return World.BlockAccessor.GetBlockId(pos.X, pos.Y, pos.Z);
         }
 
@@ -157,29 +163,65 @@ namespace Vintagestory.API.Common
 
         public override void OnInteract(EntityAgent byEntity, IItemSlot slot, Vec3d hitPosition, int mode)
         {
-            if (mode == 0 && byEntity.World.Side == EnumAppSide.Server)
+            if (mode == 0)
             {
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
+                IPlayer byPlayer = null;
 
                 if (byEntity is EntityPlayer && !IsActivityRunning("invulnerable"))
                 {
-                    World.PlaySoundAt(new AssetLocation("sounds/player/slap"), ServerPos.X, ServerPos.Y, ServerPos.Z);
+                    byPlayer = (byEntity as EntityPlayer).Player;
+
+                    World.PlaySoundAt(new AssetLocation("sounds/player/slap"), ServerPos.X, ServerPos.Y, ServerPos.Z, byPlayer);
                     slot?.Itemstack?.Collectible.OnAttackingWith(byEntity.World, byEntity, slot);
                 }
 
-                ReceiveDamage(new DamageSource() { source = EnumDamageSource.Entity, sourceEntity = (Entity)byEntity, type = EnumDamageType.BluntAttack }, damage);
+                if (Api.Side == EnumAppSide.Client && damage > 1 && !IsActivityRunning("invulnerable") && Properties.Attributes?["spawnDamageParticles"].AsBool() == true)
+                {
+                    Vec3d pos = LocalPos.XYZ + hitPosition;
+                    Vec3d minPos = pos.AddCopy(-0.15, -0.15, -0.15);
+                    Vec3d maxPos = pos.AddCopy(0.15, 0.15, 0.15);
+
+                    int textureSubId = this.Properties.Client.FirstTexture.Baked.TextureSubId;
+                    Vec3f tmp = new Vec3f();
+
+                    for (int i = 0; i < 10; i++)
+                    {
+                        int color = (Api as ICoreClientAPI).EntityTextureAtlas.GetRandomPixel(textureSubId);
+
+                        tmp.Set(
+                            1f - 2*(float)World.Rand.NextDouble(),
+                            2*(float)World.Rand.NextDouble(),
+                            1f - 2*(float)World.Rand.NextDouble()
+                        );
+                        
+                        World.SpawnParticles(
+                            1, color, minPos, maxPos,
+                            tmp, tmp, 1.5f, 1f, 0.25f + (float)World.Rand.NextDouble() * 0.25f,
+                            EnumParticleModel.Cube, byPlayer
+                        );
+                    }   
+                }
+
+                ReceiveDamage(new DamageSource() {
+                    Source = EnumDamageSource.Entity,
+                    SourceEntity = (Entity)byEntity,
+                    Type = EnumDamageType.BluntAttack,
+                    HitPosition = hitPosition
+                }, damage);
 
                 
             }
         }
 
+
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
         {
             if (!Alive) return false;
 
-            if (damageSource.type != EnumDamageType.Heal)
+            if (damageSource.Type != EnumDamageType.Heal)
             {
-                PlayEntitySound("hurt");
+                PlayEntitySound("hurt", (damageSource.SourceEntity as EntityPlayer)?.Player);
             }
 
             /*if (damageSource.type == EnumDamageType.BluntAttack && damageSource.sourceEntity != null)
@@ -201,8 +243,8 @@ namespace Vintagestory.API.Common
         public override bool ReceiveDamage(DamageSource damageSource, float damage)
         {
             bool ret = base.ReceiveDamage(damageSource, damage);
-
-            if (ret && this is EntityPlayer && damageSource.GetSourcePosition() != null)
+            
+            if (ret && this is EntityPlayer && damageSource.GetSourcePosition() != null && World.Side == EnumAppSide.Server)
             {
                 ((IServerPlayer)World.PlayerByUid(((EntityPlayer)this).PlayerUID)).SendPositionToClient();
             }
@@ -211,20 +253,20 @@ namespace Vintagestory.API.Common
         }
 
 
-        public virtual void ReceiveSaturation(float saturation)
+        public virtual void ReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
         {
             if (!Alive) return;
 
-            if (ShouldReceiveSaturation(saturation))
+            if (ShouldReceiveSaturation(saturation, foodCat, saturationLossDelay))
             {
-                foreach (EntityBehavior behavior in Behaviors)
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
                 {
-                    behavior.OnEntityReceiveSaturation(saturation);
+                    behavior.OnEntityReceiveSaturation(saturation, foodCat, saturationLossDelay);
                 }
             }
         }
 
-        public virtual bool ShouldReceiveSaturation(float saturation)
+        public virtual bool ShouldReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
         {
             return true;
         }
@@ -240,7 +282,7 @@ namespace Vintagestory.API.Common
 
                 CurrentControls =
                     (alive && (servercontrols.TriesToMove || ((servercontrols.Jump || servercontrols.Sneak) && servercontrols.IsClimbing)) ? EnumEntityActivity.Move : EnumEntityActivity.Idle) |
-                    (alive && Swimming ? EnumEntityActivity.Swim : 0) |
+                    (alive && Swimming && !servercontrols.FloorSitting ? EnumEntityActivity.Swim : 0) |
                     (alive && servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
                     (alive && servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting ? EnumEntityActivity.SneakMode : 0) |
                     (alive && servercontrols.Sprint ? EnumEntityActivity.SprintMode : 0) |
@@ -257,11 +299,9 @@ namespace Vintagestory.API.Common
                 AnimationMetaData defaultAnim = null;
                 bool anyAverageAnimActive = false;
 
-
-                AnimationMetaData[] anims = Type.Client?.Animations;
-                for (int i = 0; anims != null && i < anims.Length; i++)
+                for (int i = 0; Animations != null && i < Animations.Length; i++)
                 {
-                    AnimationMetaData anim = anims[i];
+                    AnimationMetaData anim = Animations[i];
                     bool wasActive = ActiveAnimationsByAnimCode.ContainsKey(anim.Animation);
                     bool nowActive = anim.Matches((int)CurrentControls);
 
@@ -292,7 +332,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            if (Type.RotateModelOnClimb && World.Side == EnumAppSide.Server)
+            if (Properties.RotateModelOnClimb && World.Side == EnumAppSide.Server)
             {
                 if (Controls.IsClimbing && ClimbingOnFace != null)
                 {

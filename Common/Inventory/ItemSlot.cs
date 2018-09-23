@@ -9,7 +9,7 @@ namespace Vintagestory.API.Common
         protected ItemStack itemstack;
         protected InventoryBase inventory;
         
-        public IInventory Inventory { get { return inventory; } }
+        public InventoryBase Inventory { get { return inventory; } }
 
         /// <summary>
         /// Icon name to be drawn in the slot background

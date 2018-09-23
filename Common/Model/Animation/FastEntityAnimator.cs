@@ -258,7 +258,7 @@ namespace Vintagestory.API.Common
                 }
             } catch (Exception e)
             {
-                string str = string.Format("Something crashed while trying to calculate an animation frame for {0}. AllFrames.Length={1}, currframee={2}, tf mats length={3}. Exception: {4}", entity?.Type?.Code, anim.Animation.AllFrames.Length,  anim.CurrentFrame, TransformationMatrices.Length, e);
+                string str = string.Format("Something crashed while trying to calculate an animation frame for {0}. AllFrames.Length={1}, currframee={2}, tf mats length={3}. Exception: {4}", entity?.Code, anim.Animation.AllFrames.Length,  anim.CurrentFrame, TransformationMatrices.Length, e);
                 throw new Exception(str);
             }
         }

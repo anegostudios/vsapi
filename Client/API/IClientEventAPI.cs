@@ -6,11 +6,10 @@ namespace Vintagestory.API.Client
 {
     public delegate void MouseEventDelegate(MouseEvent e);
     public delegate void KeyEventDelegate(KeyEvent e);
-    public delegate void PlayerSpawnClient(IClientPlayer byPlayer);
-    public delegate void PlayerDespawnClient(IClientPlayer byPlayer);
+    public delegate void PlayerEventDelegate(IClientPlayer byPlayer);
+    
 
     public delegate void OnGamePauseResume(bool isPaused);
-    public delegate void OnLeaveWorld();
     public delegate void ChatLineDelegate(int groupId, string message, EnumChatType chattype, string data);
     public delegate void ClientChatLineDelegate(int groupId, ref string message);
 
@@ -22,7 +21,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Called when a chat message was received
         /// </summary>
-        event ChatLineDelegate OnChatMessage;
+        event ChatLineDelegate ChatMessage;
 
         /// <summary>
         /// Called before a chat message is sent to the server
@@ -30,14 +29,26 @@ namespace Vintagestory.API.Client
         //event ClientChatLineDelegate OnSendChatMessage;
 
         /// <summary>
-        /// Called when a player joins
+        /// Called when a player joins. The Entity of the player might be null if out of range!
         /// </summary>
-        event PlayerSpawnClient PlayerSpawn;
+        event PlayerEventDelegate PlayerJoin;
 
         /// <summary>
-        /// Called whenever a player disconnects (timeout, leave, disconnect, kick, etc.). 
+        /// Called whenever a player disconnects (timeout, leave, disconnect, kick, etc.). The Entity of the player might be null if out of range!
         /// </summary>
-        event PlayerDespawnClient PlayerDespawn;
+        event PlayerEventDelegate PlayerLeave;
+
+
+        /// <summary>
+        /// Called when a players entity got in range
+        /// </summary>
+        event PlayerEventDelegate PlayerEntitySpawn;
+
+        /// <summary>
+        /// Called whenever a players got out of range
+        /// </summary>
+        event PlayerEventDelegate PlayerEntityDespawn;
+
 
         /// <summary>
         /// When the game was paused/resumed (only in single player)
@@ -47,14 +58,17 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// When the player leaves the world to go back to the main menu
         /// </summary>
-        event OnLeaveWorld LeaveWorld;
+        event API.Common.Action LeaveWorld;
 
         /// <summary>
         /// When a player block has been modified
         /// </summary>
-        event Common.Action<BlockPos> OnBlockChanged;
+        event Common.Action<BlockPos> BlockChanged;
 
-        event Common.Action OnActiveSlotChanged;
+        /// <summary>
+        /// When the player changed his active hotbar slot
+        /// </summary>
+        event Common.Action ActiveSlotChanged;
 
         /// <summary>
         /// Registers a rendering handler to be called during every render frame
@@ -75,42 +89,29 @@ namespace Vintagestory.API.Client
         /// Called when server assetes were received and all texture atlases have been created
         /// </summary>
         /// <param name="handler"></param>
-        void BlockTexturesLoaded(Common.Action handler);
+        event Common.Action BlockTexturesLoaded;
         
         /// <summary>
-        /// Called when the player tries to reload the shaders (happens when graphics settings are changed)
-        /// </summary>
-        /// <param name="loadShader"></param>
-        void RegisterReloadShaders(ActionBoolReturn loadShader);
-
-        /// <summary>
-        /// Removes a previously register reload handler
-        /// </summary>
-        /// <param name="loadShader"></param>
-        void UnregisterReloadShaders(ActionBoolReturn loadShader);
-
-
-        /// <summary>
-        /// Called when the player leaves the current game world
-        /// </summary>
-        /// <param name="handler"></param>
-        void RegisterOnLeaveWorld(Common.Action handler);
-
+        /// Fired when the player tries to reload the shaders (happens when graphics settings are changed)
+        event ActionBoolReturn ReloadShader;
+        
         /// <summary>
         /// Called when textures got reloaded
         /// </summary>
-        event Common.Action OnReloadTextures;
+        event Common.Action ReloadTextures;
 
         /// <summary>
         /// Called when the client received the level finalize packet from the server
         /// </summary>
-        event Common.Action OnLevelFinalize;
+        event Common.Action LevelFinalize;
 
         /// <summary>
         /// Called when shapes got reloaded
         /// </summary>
-        event Common.Action OnReloadShapes;
-        
+        event Common.Action ReloadShapes;
+
+
+
 
         /// <summary>
         /// Provides low level access to the mouse down event. If e.Handled is set to true, the event will not be handled by the game
@@ -132,7 +133,5 @@ namespace Vintagestory.API.Client
         /// Provides low level access to the key up event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
         event KeyEventDelegate OnKeyUp;
-
-        
     }
 }

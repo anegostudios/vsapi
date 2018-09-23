@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
@@ -128,7 +129,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// List of all loaded entity types. 
         /// </summary>
-        EntityType[] EntityTypes { get; }
+        EntityProperties[] EntityTypes { get; }
 
         /// <summary>
         /// List of all loaded crafting recipes
@@ -139,6 +140,12 @@ namespace Vintagestory.API.Common
         /// List of all loaded metal alloys
         /// </summary>
         AlloyRecipe[] Alloys { get; }
+
+        /// <summary>
+        /// List of all loaded cooking recipes
+        /// </summary>
+        CookingRecipe[] CookingRecipes { get; }
+
 
         /// <summary>
         /// List of all loaded smithing recipes
@@ -193,7 +200,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="entityCode"></param>
         /// <returns></returns>
-        EntityType GetEntityType(AssetLocation entityCode);
+        EntityProperties GetEntityType(AssetLocation entityCode);
 
 
         /// <summary>
@@ -354,27 +361,31 @@ namespace Vintagestory.API.Common
         /// <param name="dualCallByPlayer"></param>
         void SpawnParticles(IParticlePropertiesProvider particlePropertiesProvider, IPlayer dualCallByPlayer = null);
 
-        /// <summary>
-        /// Spawn a bunch of particles colored by given block texture
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="block"></param>
-        /// <param name="radius"></param>
-        /// <param name="quantity"></param>
-        /// <param name="scale"></param>
-        /// <param name="dualCallByPlayer"></param>
-        void SpawnBlockVoxelParticles(Vec3d pos, Block block, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null);
 
         /// <summary>
-        /// Spawn a bunch of particles colored by given block texture
+        /// Spawn a bunch of particles colored by the block at given position
         /// </summary>
-        /// <param name="pos"></param>
+        /// <param name="blockPos">The position of the block to take the color from</param>
+        /// <param name="pos">The position where the particles should spawn</param>
         /// <param name="item"></param>
         /// <param name="radius"></param>
         /// <param name="quantity"></param>
         /// <param name="scale"></param>
         /// <param name="dualCallByPlayer"></param>
-        void SpawnItemVoxelParticles(Vec3d pos, Item item, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null);
+        void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null);
+
+
+        /// <summary>
+        /// Spawn a bunch of particles colored by given itemstack
+        /// </summary>
+        /// <param name="pos">The position where the particles should spawn</param>
+        /// <param name="item"></param>
+        /// <param name="radius"></param>
+        /// <param name="quantity"></param>
+        /// <param name="scale"></param>
+        /// <param name="dualCallByPlayer"></param>
+        void SpawnCubeParticles(Vec3d pos, ItemStack item, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null);
+
 
 
 
@@ -507,5 +518,26 @@ namespace Vintagestory.API.Common
         /// <param name="accessFlag"></param>
         /// <returns></returns>
         bool TestPlayerAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
+
+
+
+        /// <summary>
+        /// Sends given player a list of block positions that should be highlighted
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="blocks"></param>
+        /// <param name="mode"></param>
+        /// <param name="shape">When arbitrary, the blocks list represents the blocks to be highlighted. When Cube the blocks list should contain 2 positions for start and end</param>
+        void HighlightBlocks(IPlayer player, List<BlockPos> blocks, List<int> colors, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
+
+        /// <summary>
+        /// Sends given player a list of block positions that should be highlighted (using a default color)
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="blocks"></param>
+        /// <param name="mode"></param>
+        /// <param name="shape">When arbitrary, the blocks list represents the blocks to be highlighted. When Cube the blocks list should contain 2 positions for start and end</param>
+        void HighlightBlocks(IPlayer player, List<BlockPos> blocks, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
+
     }
 }

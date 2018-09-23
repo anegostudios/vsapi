@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using ProtoBuf;
@@ -105,10 +106,22 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public void ToBytes(BinaryWriter writer)
+        {
+            writer.Write(X);
+            writer.Write(Y);
+            writer.Write(Z);
+        }
+
         public BlockPos West()
         {
             Z -= 1;
             return this;
+        }
+
+        public static BlockPos CreateFromBytes(BinaryReader reader)
+        {
+            return new BlockPos(reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
         }
 
         public BlockPos North()

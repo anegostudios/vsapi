@@ -21,7 +21,7 @@
         Configuration,
 
         /// <summary>
-        /// Mods will be compiled, AssetManager will init all origins and cache assets.
+        /// Mods will be compiled and started, AssetManager will init all origins and cache assets.
         /// </summary>
         LoadAssets,
 

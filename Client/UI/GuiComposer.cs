@@ -23,6 +23,11 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class GuiComposer
     {
+        /// <summary>
+        /// Triggered when the gui scale changed or the game window was resized
+        /// </summary>
+        public event Action OnRecomposed;
+
         public static int Outlines = 0;
 
         internal IGuiComposerManager composerManager;
@@ -143,6 +148,8 @@ namespace Vintagestory.API.Client
         {
             composed = false;
             Compose(false);
+
+            OnRecomposed?.Invoke();
         }
 
         internal void UnFocusElements()
@@ -442,8 +449,7 @@ namespace Vintagestory.API.Client
         {
             if (recomposeOnRender)
             {
-                composed = false;
-                Compose();
+                ReCompose();
                 recomposeOnRender = false;
             }
 

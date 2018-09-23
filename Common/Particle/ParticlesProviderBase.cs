@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -36,15 +37,11 @@ namespace Vintagestory.API.Common
             return Vec3f.Zero;
         }
 
-        public virtual byte[] GetRgbaColor()
+        public virtual int GetRgbaColor(ICoreClientAPI capi)
         {
-            return ColorUtil.WhiteArgbBytes;
+            return ColorUtil.WhiteArgb;
         }
-
-        public virtual Block ColorByBlock()
-        {
-            return null;
-        }
+        
 
         public virtual EvolvingNatFloat GetOpacityEvolve()
         {
@@ -127,6 +124,7 @@ namespace Vintagestory.API.Common
         {
             return null;
         }
+        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
 
         public virtual void BeginParticle() { }
         public virtual void PrepareForSecondarySpawn(IParticleInstance particleInstance) { }

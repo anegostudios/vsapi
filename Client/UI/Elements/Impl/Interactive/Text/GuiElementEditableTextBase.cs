@@ -176,7 +176,12 @@ namespace Vintagestory.API.Client
             renderLeftOffset = Math.Max(0, caretX - Bounds.InnerWidth + rightSpacing);
         }
 
-        
+
+        public void SetValue(float value)
+        {
+            SetValue(value + "");
+        }
+
         /// <summary>
         /// Sets given text, sets the cursor to the end of the text
         /// </summary>
@@ -359,34 +364,12 @@ namespace Vintagestory.API.Client
 
                 if (args.KeyCode == (int)GlKeys.Left)
                 {
-                    if (caretPosInLine > 0)
-                    {
-                        SetCaretPos(caretPosInLine - 1, caretPosLine);
-                        api.Gui.PlaySound("tick");
-                    } else
-                    {
-                        if (caretPosLine > 0)
-                        {
-                            SetCaretPos(lines[caretPosLine - 1].Length, caretPosLine - 1);
-                            api.Gui.PlaySound("tick");
-                        }
-                    }
+                    MoveCursor(-1, args.CtrlPressed);
                 }
 
                 if (args.KeyCode == (int)GlKeys.Right)
                 {
-                    if (caretPosInLine < lines[caretPosLine].Length)
-                    {
-                        SetCaretPos(caretPosInLine + 1, caretPosLine);
-                        api.Gui.PlaySound("tick");
-                    } else
-                    {
-                        if (caretPosLine < lines.Count - 1)
-                        {
-                            SetCaretPos(0, caretPosLine + 1);
-                            api.Gui.PlaySound("tick");
-                        }
-                    }
+                    MoveCursor(1, args.CtrlPressed);
                 }
 
                 if (args.KeyCode == (int)GlKeys.V && args.CtrlPressed)
@@ -544,6 +527,44 @@ namespace Vintagestory.API.Client
             textTexture.Dispose();
         }
 
+
+        public void MoveCursor(int dir, bool wholeWord = false)
+        {
+            bool done = false;
+            bool moved = 
+                ((caretPosInLine > 0 || caretPosLine > 0) && dir < 0) ||
+                ((caretPosInLine < lines[caretPosLine].Length || caretPosLine < lines.Count-1) && dir > 0)
+            ;
+
+            int newPos = caretPosInLine;
+            int newLine = caretPosLine;
+
+            while (!done) {
+                newPos += dir;
+
+                if (newPos < 0)
+                {
+                    if (newLine <= 0) break;
+                    newLine--;
+                    newPos = lines[newLine].Length;
+                } 
+
+                if (newPos > lines[newLine].Length)
+                {
+                    if (newLine >= lines.Count - 1) break;
+                    newPos = 0;
+                    newLine++;
+                }
+
+                done = !wholeWord || (newPos > 0 && lines[newLine][newPos - 1] == ' ');
+            }
+
+            if (moved)
+            {
+                SetCaretPos(newPos, newLine);
+                api.Gui.PlaySound("tick");
+            }
+        }
 
 
     }

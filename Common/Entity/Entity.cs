@@ -8,65 +8,57 @@ using Vintagestory.API.Config;
 using System;
 using System.Linq;
 using Vintagestory.API.Util;
+using System.Text;
 
 namespace Vintagestory.API.Common.Entities
 {
     /// <summary>
     /// The basic class for all entities in the game
     /// </summary>
-    public abstract class Entity : IEntity
+    public abstract class Entity : RegistryObject, IEntity
     {
         public static WaterSplashParticles SplashParticleProps = new WaterSplashParticles();
         public static AirBubbleParticles AirBubbleParticleProps = new AirBubbleParticles();
 
-        public List<EntityBehavior> Behaviors = new List<EntityBehavior>();
-
+        /// <summary>
+        /// World where the entity is spawned in
+        /// </summary>
         public IWorldAccessor World;
 
-        public long InChunkIndex3d;
-        public long Entityid;
-        /// <summary>
-        /// Set by the client renderer when the entity was rendered last frame
-        /// </summary>
-        public bool IsRendered;
-        public bool IsShadowRendered;
-        /// <summary>
-        /// Set by the game client
-        /// </summary>
-        public EntityRenderer Renderer;
+        public ICoreAPI Api;
 
-        //public bool BroadcastServerPos;
-        public EntityDespawnReason DespawnReason;
+        public EntityProperties Properties { private set; get; }
 
+        public EntitySidedProperties SidedProperties
+        {
+            get
+            {
+                if (Properties == null)
+                    return null;
+                if (World.Side.IsClient())
+                    return Properties.Client;
+                return Properties.Server;
+            }
+        }
 
-        public int TrackingRange;
-        public Cuboidf CollisionBox;
-
-        private AssetLocation savedTypeCode;
-        private EntityType entityType;
-
-        protected ICoreAPI api;
-
-        public AssetLocation SavedTypeCode { get { return savedTypeCode; } }
 
         /// <summary>
-        /// Color used when the entity is being attacked
+        /// Server simulated animations. Only takes care of stopping animations once they're done
+        /// Set and Called by the Entities ServerSystem
         /// </summary>
-        protected int HurtColor = ColorUtil.ColorFromArgb(255, 255, 100, 100);
-
+        public ServerEntityAnimator ServerAnimator;
 
         /// <summary>
         /// An uptime value running activities.
         /// </summary>
         public Dictionary<string, long> ActivityTimers = new Dictionary<string, long>();
 
-
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode = new Dictionary<string, AnimationMetaData>();
 
-        
 
         public bool AnimationsDirty;
-        public BlockFacing ClimbingOnFace;
+        
+        public bool BroadcastServerPos;
 
         /// <summary>
         /// Client position
@@ -77,12 +69,6 @@ namespace Vintagestory.API.Common.Entities
         /// Server simulated position. If this value differs to greatly from client pos we have to override client pos
         /// </summary>
         public EntityPos ServerPos = new EntityPos();
-
-        /// <summary>
-        /// Server simulated animations. Only takes care of stopping animations once they're done
-        /// Set and Called by the Entities ServerSystem
-        /// </summary>
-        public ServerEntityAnimator ServerAnimator;
 
         /// <summary>
         /// ServerPos on server, Pos on client
@@ -100,9 +86,45 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// The position where the entity last had contact with the ground
         /// </summary>
-        public Vec3d PositionBeforeFalling = new Vec3d();
+        public Vec3d PositionBeforeFalling = new Vec3d();        
 
-        
+        public long InChunkIndex3d;
+
+        EntityPos IEntity.Pos
+        {
+            get { return Pos; }
+        }
+
+        EntityPos IEntity.ServerPos
+        {
+            get { return ServerPos; }
+        }
+
+        public Cuboidf CollisionBox;
+
+        Cuboidf IEntity.CollisionBox
+        {
+            get { return CollisionBox; }
+        }
+
+        public bool Teleporting;
+
+        public virtual double EyeHeight { get { return Properties.EyeHeight; } }
+
+
+        /// <summary>
+        /// A unique identifier for this entity
+        /// </summary>
+        public long EntityId;
+
+        long IEntity.EntityId
+        {
+            get { return EntityId; }
+        }
+
+        AssetLocation IEntity.Code => Code;
+
+        public int SimulationRange;
 
         /// <summary>
         /// Permanently stored entity attributes that are sent to client everytime they have been changed
@@ -118,6 +140,22 @@ namespace Vintagestory.API.Common.Entities
         /// Permanently stored entity attributes that are only client or only server side
         /// </summary>
         public SyncedTreeAttribute Attributes = new SyncedTreeAttribute();
+
+        ITreeAttribute IEntity.WatchedAttributes
+        {
+            get { return WatchedAttributes; }
+        }
+
+        ITreeAttribute IEntity.Attributes
+        {
+            get { return Attributes; }
+        }
+
+
+        /// <summary>
+        /// The face the entity is climbing on. Null if the entity is not climbing
+        /// </summary>
+        public BlockFacing ClimbingOnFace;
 
         /// <summary>
         /// True if this entity is in touch with the ground
@@ -145,19 +183,18 @@ namespace Vintagestory.API.Common.Entities
         public bool CollidedHorizontally;
 
         /// <summary>
-        /// Players and whatever the player rides on will be stored seperatly
-        /// </summary>
-        public virtual bool StoreWithChunk { get { return true; } }
-
-        /// <summary>
-        /// Whether this entity should always stay in Active model, regardless on how far away other player are
-        /// </summary>
-        public virtual bool AlwaysActive { get { return false; } }
-
-        /// <summary>
         /// CollidedVertically || CollidedHorizontally
         /// </summary>
         public bool Collided { get { return CollidedVertically || CollidedHorizontally; } }
+
+        /// <summary>
+        /// If gravity should applied to this entity
+        /// </summary>
+        public virtual bool ApplyGravity
+        {
+            get { return Properties.Habitat == EnumHabitat.Land || (Properties.Habitat == EnumHabitat.Sea && !Swimming); }
+        }
+
 
         /// <summary>
         /// Determines on whether an entity floats on liquids or not. Water has a density of 1000.
@@ -175,57 +212,12 @@ namespace Vintagestory.API.Common.Entities
             get { return null; }
         }
 
-        /// <summary>
-        /// If gravity should applied to this entity
-        /// </summary>
-        public virtual bool ApplyGravity
-        {
-            get { return Type?.Habitat == EnumHabitat.Land || (Type?.Habitat == EnumHabitat.Sea && !Swimming); }
-        }
-
-        /// <summary>
-        /// A unique identifier for this entity
-        /// </summary>
-        public long EntityId
-        {
-            get { return Entityid; }
-            set { Entityid = value; }
-        }
-
-        long IEntity.EntityId
-        {
-            get { return Entityid; }
-        }
-
-        EntityPos IEntity.Pos
-        {
-            get { return Pos; }
-        }
-
-        EntityPos IEntity.ServerPos
-        {
-            get { return ServerPos; }
-        }
-
-        ITreeAttribute IEntity.WatchedAttributes
-        {
-            get { return WatchedAttributes; }
-        }
-
-        ITreeAttribute IEntity.Attributes
-        {
-            get { return Attributes; }
-        }
-
-        Cuboidf IEntity.CollisionBox
-        {
-            get { return CollisionBox; }
-        }
+        
 
         // Stored in WatchedAttributes in from/tobytes 
         public EnumEntityState State;
 
-
+        public EntityDespawnReason DespawnReason;
 
         /// <summary>
         /// True if the entity is in state active or inactive
@@ -244,36 +236,34 @@ namespace Vintagestory.API.Common.Entities
             get { return !Alive; }
         }
 
-
         EnumEntityState IEntity.State
         {
             get { return State; }
         }
 
         /// <summary>
-        /// The type of the entity
+        /// Players and whatever the player rides on will be stored seperatly
         /// </summary>
-        public virtual EntityType Type
-        {
-            get { return entityType; }
-        }
+        public virtual bool StoreWithChunk { get { return true; } }
 
         /// <summary>
-        /// Used by various renderers to retrieve the entities texture it should be drawn with
+        /// Whether this entity should always stay in Active model, regardless on how far away other player are
         /// </summary>
-        public virtual CompositeTexture Texture
-        {
-            get { return entityType.Client.FirstTexture; }
-        }
+        public virtual bool AlwaysActive { get { return false; } }
+
+
 
         /// <summary>
-        /// Name of there renderer system that draws this entity
+        /// Set by the client renderer when the entity was rendered last frame
         /// </summary>
-        public virtual string RendererName
-        {
-            get { return entityType.Client.Renderer; }
-        }
+        public bool IsRendered;
 
+        public bool IsShadowRendered;
+
+        /// <summary>
+        /// Color used when the entity is being attacked
+        /// </summary>
+        protected int HurtColor = ColorUtil.ToRgba(255, 255, 100, 100);
 
         /// <summary>
         /// Used by some renderers to apply an overal color tint on the entity
@@ -289,15 +279,6 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// How high the camera should be placed if this entity were to be controlled by the player
-        /// </summary>
-        /// <returns></returns>
-        public virtual double EyeHeight()
-        {
-               return entityType.EyeHeight;
-        }
-
-        /// <summary>
         /// Called when something tries to given an itemstack to this entity
         /// </summary>
         /// <param name="itemstack"></param>
@@ -305,6 +286,49 @@ namespace Vintagestory.API.Common.Entities
         public virtual bool TryGiveItemStack(ItemStack itemstack)
         {
             return false;
+        }
+
+        public virtual void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
+        {
+            if (EntityId != (World as IClientWorldAccessor).Player.Entity.EntityId)
+            {
+                ActiveAnimationsByAnimCode.Clear();
+            }
+
+            for (int i = 0; i < activeAnimationsCount; i++)
+            {
+                int crc32 = activeAnimations[i];
+                for (int j = 0; j < Properties.Client.LoadedShape.Animations.Length; j++)
+                {
+                    Animation anim = Properties.Client.LoadedShape.Animations[j];
+                    int mask = ~(1 << 31); // Because I fail to get the sign bit transmitted correctly over the network T_T
+                    if ((anim.CodeCrc32 & mask) == (crc32 & mask))
+                    {
+                        if (ActiveAnimationsByAnimCode.ContainsKey(anim.Code)) break;
+
+                        string code = anim.Code == null ? anim.Name.ToLowerInvariant() : anim.Code;
+
+                        AnimationMetaData animmeta = null;
+                        Properties.Client.AnimationsByMetaCode.TryGetValue(code, out animmeta);
+
+                        if (animmeta == null)
+                        {
+                            animmeta = new AnimationMetaData()
+                            {
+                                Code = code,
+                                Animation = code,
+                                CodeCrc32 = anim.CodeCrc32
+                            };
+                        }
+
+                        animmeta.AnimationSpeed = activeAnimationSpeeds[i];
+
+                        ActiveAnimationsByAnimCode[anim.Code] = animmeta;
+                    }
+                }
+            }
+
+
         }
 
         /// <summary>
@@ -330,13 +354,12 @@ namespace Vintagestory.API.Common.Entities
             get { return World; }
         }
 
-
         /// <summary>
         /// Creates a new instance of an entity
         /// </summary>
         public Entity()
         {
-            TrackingRange = GlobalConstants.DefaultTrackingRange;
+            SimulationRange = GlobalConstants.DefaultTrackingRange;
 
             WatchedAttributes.SetAttribute("animations", new TreeAttribute());
         }
@@ -365,16 +388,13 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="world"></param>
         /// <param name="InChunkIndex3d"></param>
-        public virtual void Initialize(ICoreAPI api, long InChunkIndex3d)
+        public virtual void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
             this.World = api.World;
-            this.api = api;
+            this.Api = api;
+            this.Properties = properties;
+            this.Class = properties.Class;
             this.InChunkIndex3d = InChunkIndex3d;
-
-            if (entityType == null)
-            {
-                entityType = World.GetEntityType(savedTypeCode);
-            }
 
             WatchedAttributes.SetFloat("onHurt", 0);
             int onHurtCounter = WatchedAttributes.GetInt("onHurtCounter");
@@ -393,38 +413,16 @@ namespace Vintagestory.API.Common.Entities
                 }
             });
 
-
-            if (entityType != null)
+            if (Properties.HitBoxSize != null)
             {
-                if (entityType.HitBoxSize != null)
-                {
-                    SetHitbox(entityType.HitBoxSize.X, entityType.HitBoxSize.Y);
-                }
-
-                if (World.Side == EnumAppSide.Server)
-                {
-                    loadBehaviors(entityType.Server?.Behaviors);
-
-                    if (entityType.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
-                    {
-                        WatchedAttributes.SetInt("textureIndex", World.Rand.Next(entityType.Client.FirstTexture.Alternates.Length + 1));
-                    }
-
-                    loadServerAnimator();
-
-                    DebugAttributes.SetString("origin", Attributes.GetString("origin", "??"));
-                }
-                else
-                {
-                    loadBehaviors(entityType.Client?.Behaviors);
-                }
+                SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
             }
-            
 
-            if (AlwaysActive)
+            if (AlwaysActive || api.Side == EnumAppSide.Client)
             {
                 State = EnumEntityState.Active;
-            } else
+            }
+            else
             {
                 State = EnumEntityState.Inactive;
 
@@ -433,13 +431,25 @@ namespace Vintagestory.API.Common.Entities
                 {
                     if (players[i].Entity == null) continue;
 
-                    if (Pos.InRangeOf(players[i].Entity.Pos, TrackingRange * TrackingRange))
+                    if (Pos.InRangeOf(players[i].Entity.Pos, SimulationRange * SimulationRange))
                     {
                         State = EnumEntityState.Active;
                         break;
                     }
                 }
             }
+
+            if (api.Side.IsServer())
+            {
+                if (properties.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
+                {
+                    WatchedAttributes.SetInt("textureIndex", World.Rand.Next(properties.Client.FirstTexture.Alternates.Length + 1));
+                }
+
+                loadServerAnimator();
+            }
+
+            this.Properties.Initialize(this, api);
         }
 
         /// <summary>
@@ -447,9 +457,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         protected virtual void loadServerAnimator()
         {
-            if (entityType?.Client?.Shape?.Base != null)
+            if (Properties.Client?.Shape?.Base != null)
             {
-                Shape shape = World.AssetManager.Get(entityType.Client.Shape.Base.Clone().WithPathPrefix("shapes/").WithPathAppendix(".json")).ToObject<Shape>();
+                Shape shape = World.AssetManager.Get(Properties.Client.Shape.Base.Clone().WithPathPrefix("shapes/").WithPathAppendix(".json")).ToObject<Shape>();
                 if (shape.Animations == null) return;
 
                 for (int i = 0; i < shape.Animations.Length; i++)
@@ -476,57 +486,28 @@ namespace Vintagestory.API.Common.Entities
             EnumHandling handled = EnumHandling.NotHandled;
             ItemStack[] stacks = null;
 
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 stacks = behavior.GetDrops(world, pos, byPlayer, ref handled);
-                if (handled == EnumHandling.Last) return stacks;
+                if (handled == EnumHandling.PreventSubsequent) return stacks;
             }
 
             if (handled == EnumHandling.PreventDefault) return stacks;
 
-            if (entityType.Drops == null) return null;
+            if (Properties.Drops == null) return null;
             List<ItemStack> todrop = new List<ItemStack>();
 
-            for (int i = 0; i < entityType.Drops.Length; i++)
+            for (int i = 0; i < Properties.Drops.Length; i++)
             {
-                ItemStack stack = entityType.Drops[i].GetNextItemStack();
+                ItemStack stack = Properties.Drops[i].GetNextItemStack();
                 if (stack == null) continue;
 
                 todrop.Add(stack);
-                if (entityType.Drops[i].LastDrop) break;
+                if (Properties.Drops[i].LastDrop) break;
             }
 
             return todrop.ToArray();
         }
-
-        /// <summary>
-        /// Sets the entity to given type
-        /// </summary>
-        /// <param name="entityType"></param>
-        public virtual void SetType(EntityType entityType)
-        {
-            this.entityType = entityType;
-        }
-
-
-        void loadBehaviors(JsonObject[] behaviors)
-        {
-            if (behaviors == null) return;
-
-            this.Behaviors.Clear();
-
-            for (int i = 0; i < behaviors.Length; i++)
-            {
-                string code = behaviors[i]["code"].AsString();
-                if (code == null) continue;
-
-                EntityBehavior behavior = World.ClassRegistry.CreateEntityBehavior(this, code);
-                behavior.Initialize(entityType, behaviors[i]);
-                AddBehavior(behavior);
-            }
-        }
-
-        public bool Teleporting;
 
         /// <summary>
         /// Teleports the entity to given position
@@ -537,7 +518,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual void TeleportToDouble(double x, double y, double z)
         {
             Teleporting = true;
-            ICoreServerAPI sapi = this.api as ICoreServerAPI;
+            ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
                 sapi.World.LoadChunkColumn((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, () =>
@@ -598,7 +579,6 @@ namespace Vintagestory.API.Common.Entities
             TeleportToDouble(position.X, position.Y, position.Z);
         }
 
-
         /// <summary>
         /// Called when the entity should be receiving damage from given source
         /// </summary>
@@ -606,17 +586,17 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="damage"></param>
         public virtual bool ReceiveDamage(DamageSource damageSource, float damage)
         {
-            if ((!Alive || IsActivityRunning("invulnerable")) && damageSource.type != EnumDamageType.Heal) return false;
+            if ((!Alive || IsActivityRunning("invulnerable")) && damageSource.Type != EnumDamageType.Heal) return false;
 
             if (ShouldReceiveDamage(damageSource, damage)) {
-                if (damageSource.type != EnumDamageType.Heal)
+                if (damageSource.Type != EnumDamageType.Heal)
                 {
                     WatchedAttributes.SetInt("onHurtCounter", WatchedAttributes.GetInt("onHurtCounter") + 1);
                     WatchedAttributes.SetFloat("onHurt", damage); // Causes the client to be notified
                     StartAnimation("hurt");
                 }
 
-                foreach (EntityBehavior behavior in Behaviors)
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
                 {
                     behavior.OnEntityReceiveDamage(damageSource, damage);
                 }
@@ -625,7 +605,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     Vec3d dir = (ServerPos.XYZ - damageSource.GetSourcePosition()).Normalize();
                     dir.Y = 0.1f;
-                    float factor = GameMath.Clamp((1 - Type.KnockbackResistance) / 10f, 0, 2);
+                    float factor = GameMath.Clamp((1 - Properties.KnockbackResistance) / 10f, 0, 2);
                     ServerPos.Motion.Add(dir.X * factor, dir.Y * factor, dir.Z * factor);
                 }
 
@@ -653,7 +633,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="motionY"></param>
         public virtual void OnFallToGround(double motionY)
         {
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnFallToGround(PositionBeforeFalling, motionY);
             }
@@ -684,7 +664,7 @@ namespace Vintagestory.API.Common.Entities
             splashStrength = Math.Min(10, splashStrength);
 
             World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.Y, (float)pos.Z, null);
-            World.SpawnBlockVoxelParticles(pos.XYZ, block, CollisionBox.X2 - CollisionBox.X1, (int)(4 * splashStrength));
+            World.SpawnCubeParticles(pos.AsBlockPos, pos.XYZ, CollisionBox.X2 - CollisionBox.X1, (int)(4 * splashStrength));
 
             if (splashStrength >= 2)
             {
@@ -712,8 +692,6 @@ namespace Vintagestory.API.Common.Entities
         {
 
         }
-        
-
 
         /// <summary>
         /// Called every 1/75 second
@@ -721,14 +699,14 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="dt"></param>
         public virtual void OnGameTick(float dt)
         {
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnGameTick(dt);
             }
 
-            if (World is IClientWorldAccessor && World.Rand.NextDouble() < Type.IdleSoundChance / 100.0)
+            if (World is IClientWorldAccessor && World.Rand.NextDouble() < Properties.IdleSoundChance / 100.0)
             {
-                PlayEntitySound("idle", null, true, Type.IdleSoundRange);
+                PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
             }
         }
 
@@ -737,7 +715,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual void OnEntitySpawn()
         {
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnEntitySpawn();
             }
@@ -764,7 +742,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="despawn"></param>
         public virtual void OnEntityDespawn(EntityDespawnReason despawn)
         {
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnEntityDespawn(despawn);
             }
@@ -778,10 +756,10 @@ namespace Vintagestory.API.Common.Entities
         {
             EnumHandling handled = EnumHandling.NotHandled;
 
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnReceivedServerPos(ref handled);
-                if (handled == EnumHandling.Last) break;
+                if (handled == EnumHandling.PreventSubsequent) break;
             }
 
             if (handled == EnumHandling.NotHandled)
@@ -815,7 +793,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="behavior"></param>
         public virtual void AddBehavior(EntityBehavior behavior)
         {
-            Behaviors.Add(behavior);
+            SidedProperties.Behaviors.Add(behavior);
         }
 
 
@@ -825,7 +803,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="behavior"></param>
         public virtual void RemoveBehavior(EntityBehavior behavior)
         {
-            Behaviors.Remove(behavior);
+            SidedProperties.Behaviors.Remove(behavior);
         }
 
         /// <summary>
@@ -835,9 +813,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual bool HasBehavior(string behaviorName)
         {
-            for (int i = 0; i < Behaviors.Count; i++)
+            for (int i = 0; i < SidedProperties.Behaviors.Count; i++)
             {
-                if (Behaviors[i].PropertyName().Equals(behaviorName)) return true;
+                if (SidedProperties.Behaviors[i].PropertyName().Equals(behaviorName)) return true;
             }
 
             return false;
@@ -850,7 +828,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual EntityBehavior GetBehavior(string name)
         {
-            return Behaviors.FirstOrDefault(bh => bh.PropertyName().Equals(name));
+            return SidedProperties.Behaviors.FirstOrDefault(bh => bh.PropertyName().Equals(name));
         }
 
         /// <summary>
@@ -860,10 +838,10 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual T GetBehavior<T>() where T : EntityBehavior
         {
-            return (T)Behaviors.FirstOrDefault(bh => bh is T);
+            return (T)SidedProperties.Behaviors.FirstOrDefault(bh => bh is T);
         }
-
-
+        
+		
         /// <summary>
         /// Returns true if given activity is running
         /// </summary>
@@ -916,7 +894,6 @@ namespace Vintagestory.API.Common.Entities
             }
 
             AnimationsDirty = true;
-            if (animdata.Code == null) animdata.Code = animdata.Animation;
             ActiveAnimationsByAnimCode[animdata.Animation] = animdata;
             SetDebugAnimsInfo();
         }
@@ -933,7 +910,7 @@ namespace Vintagestory.API.Common.Entities
 
             AnimationMetaData animdata = null;
 
-            if (Type.Client.AnimationsByMetaCode.TryGetValue(configCode, out animdata))
+            if (Properties.Client.AnimationsByMetaCode.TryGetValue(configCode, out animdata))
             {
                 StartAnimation(animdata);
                 
@@ -1006,7 +983,7 @@ namespace Vintagestory.API.Common.Entities
                 writer.Write(GameVersion.ShortGameVersion);
             }
             
-            writer.Write(Entityid);
+            writer.Write(EntityId);
             WatchedAttributes.SetInt("entityState", (int)State);
             WatchedAttributes.ToBytes(writer);
             ServerPos.ToBytes(writer);
@@ -1014,12 +991,12 @@ namespace Vintagestory.API.Common.Entities
             writer.Write(PositionBeforeFalling.Y);
             writer.Write(PositionBeforeFalling.Z);
 
-            if (entityType.Code == null)
+            if (Code == null)
             {
                 World.Logger.Error("Entity.ToBytes(): entityType.Code is null?! Entity will probably be incorrectly saved to disk");
             }
 
-            writer.Write(entityType.Code?.ToShortString());
+            writer.Write(Code?.ToShortString());
 
             if (!forClient)
             {
@@ -1052,16 +1029,30 @@ namespace Vintagestory.API.Common.Entities
                 version = reader.ReadString();
             }
 
-            Entityid = reader.ReadInt64();
+            EntityId = reader.ReadInt64();
             WatchedAttributes.FromBytes(reader);
-            State = (EnumEntityState)WatchedAttributes.GetInt("entityState", 0);
+
+            if (GameVersion.IsLowerVersionThan(version, "1.7.0") && this is EntityPlayer)
+            {
+                ITreeAttribute healthTree = WatchedAttributes.GetTreeAttribute("health");
+                if (healthTree != null)
+                {
+                    healthTree.SetFloat("basemaxhealth", 15);
+                }
+            }
+
+            if (!fromServer)
+            {
+                State = (EnumEntityState)WatchedAttributes.GetInt("entityState", 0);
+            }
+            
 
             ServerPos.FromBytes(reader);
             Pos.SetFrom(ServerPos);
             PositionBeforeFalling.X = reader.ReadDouble();
             PositionBeforeFalling.Y = reader.ReadDouble();
             PositionBeforeFalling.Z = reader.ReadDouble();
-            savedTypeCode = new AssetLocation(reader.ReadString());
+            Code = new AssetLocation(reader.ReadString());
 
             if (!fromServer)
             {
@@ -1160,7 +1151,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
         {
             AssetLocation[] locations = null;
-            if (entityType.ResolvedSounds != null && entityType.ResolvedSounds.TryGetValue(type, out locations) && locations.Length > 0)
+            if (Properties.Sounds != null && Properties.Sounds.TryGetValue(type, out locations) && locations.Length > 0)
             {
                 World.PlaySoundAt(
                     locations[World.Rand.Next(locations.Length)], 
@@ -1201,10 +1192,10 @@ namespace Vintagestory.API.Common.Entities
         {
             EnumHandling handled = EnumHandling.NotHandled;
 
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnStateChanged(beforeState, ref handled);
-                if (handled == EnumHandling.Last) return;
+                if (handled == EnumHandling.PreventSubsequent) return;
             }
         }
 
@@ -1215,7 +1206,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="data"></param>
         public virtual void Notify(string key, object data)
         {
-            foreach (EntityBehavior behavior in Behaviors)
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.Notify(key, data);
             }
@@ -1275,6 +1266,31 @@ namespace Vintagestory.API.Common.Entities
             PositionBeforeFalling.Y += startPos.Y;
             PositionBeforeFalling.Z += startPos.Z;
         }
-        
+
+
+        public virtual string GetName()
+        {
+            return Lang.Get(Code.Domain + ":item-creature-" + Code.Path);
+        }
+
+        public virtual string GetInfoText()
+        {
+            StringBuilder infotext = new StringBuilder();
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.GetInfoText(infotext);
+            }
+
+            int generation = WatchedAttributes.GetInt("generation", 0);
+            
+            if (generation > 0)
+            {
+                infotext.AppendLine(Lang.Get("Generation: {0}", generation));
+            }
+
+
+            return infotext.ToString();
+        }
+
     }
 }

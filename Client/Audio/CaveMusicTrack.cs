@@ -16,10 +16,10 @@ namespace Vintagestory.API.Client
     /// - Decide which Trackpieces to play
     /// - Allow individual rules per Trackpiece
     /// Specific examples:
-    /// - Play Thunder ambient only if thunderlevel > 10
+    /// - Play Thunder ambient only if thunderlevel above 10
     ///   - Thunder ambient volume based on thunderlevel (between 0.3 and 1.1?)
-    /// - Play Aquatic Drone only when y < 60
-    /// - Play Deep Drone only when y < 50
+    /// - Play Aquatic Drone only when y below 60
+    /// - Play Deep Drone only when y below 50
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class CaveMusicTrack : IMusicTrack
@@ -31,16 +31,18 @@ namespace Vintagestory.API.Client
 
         MusicTrackPart[] PartsShuffled;
 
-        int MaxSimultaenousTracks = 3;
-        float SimultaenousTrackChance = 0.01f;
-        float Priority = 2f;
+        int maxSimultaenousTracks = 3;
+        float simultaenousTrackChance = 0.01f;
+        float priority = 2f;
 
         long activeUntilMs;
         long cooldownUntilMs;
         ICoreClientAPI capi;
         List<string> activeTracks = new List<string>();
 
-
+        /// <summary>
+        /// The name of the music track.
+        /// </summary>
         public string Name { get {
                 string active = "";
                 for (int i = 0; i < Parts.Length; i++)
@@ -65,6 +67,9 @@ namespace Vintagestory.API.Client
             get { return 4 * 60 + 6 * 60 * rand.NextDouble(); }
         }
 
+        /// <summary>
+        /// Is the track active?
+        /// </summary>
         public bool IsActive
         {
             get
@@ -77,11 +82,19 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// The priority of the track.
+        /// </summary>
         float IMusicTrack.Priority
         {
-            get { return Priority; }
+            get { return priority; }
         }
 
+        /// <summary>
+        /// Initializes the music track
+        /// </summary>
+        /// <param name="assetManager">the global Asset Manager</param>
+        /// <param name="capi">The Core Client API</param>
         public void Initialize(IAssetManager assetManager, ICoreClientAPI capi)
         {
             this.capi = capi;
@@ -95,6 +108,12 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Should the game play this track?
+        /// </summary>
+        /// <param name="props">The properties of the current track.</param>
+        /// <param name="musicEngine">the Music Engine.</param>
+        /// <returns>Do we play this track?</returns>
         public bool ShouldPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
             if (props.sunSlight > 3) return false;
@@ -103,13 +122,23 @@ namespace Vintagestory.API.Client
             return true;
         }
 
-
+        /// <summary>
+        /// Starts playing the track.
+        /// </summary>
+        /// <param name="props">The properties of the current track.</param>
+        /// <param name="musicEngine">the Music Engine.</param>
         public void BeginPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
             activeUntilMs = capi.World.ElapsedMilliseconds + (int)(SessionPlayTime * 1000);
         }
 
-
+        /// <summary>
+        /// Do we continue playing this track?
+        /// </summary>
+        /// <param name="dt">Delta time or Change in time</param>
+        /// <param name="props">The properties of the current track.</param>
+        /// <param name="musicEngine">the Music Engine.</param>
+        /// <returns>Are we still playing or do we stop?</returns>
         public bool ContinuePlay(float dt, TrackedPlayerProperties props, IMusicEngine musicEngine)
         {
             if (props.sunSlight > 3)
@@ -172,8 +201,8 @@ namespace Vintagestory.API.Client
                     !isPlaying && 
                     shouldPlay && 
                     !part.Loading &&
-                    quantityActive < MaxSimultaenousTracks && 
-                    (quantityActive == 0 || rand.NextDouble() < SimultaenousTrackChance)
+                    quantityActive < maxSimultaenousTracks && 
+                    (quantityActive == 0 || rand.NextDouble() < simultaenousTrackChance)
                 ;
 
                 if (shouldStart)
@@ -191,7 +220,11 @@ namespace Vintagestory.API.Client
             return true;
         }
 
-      
+        /// <summary>
+        /// Fade out the track to end.
+        /// </summary>
+        /// <param name="seconds">Seconds to fade out across.</param>
+        /// <param name="onFadedOut">Delegate to have happen once the fade-out is done.</param>
         public void FadeOut(float seconds, Common.Action onFadedOut = null)
         {
             bool wasInterupted = false;
@@ -217,6 +250,9 @@ namespace Vintagestory.API.Client
             }
         }
         
+        /// <summary>
+        /// Updates the volume of the track.
+        /// </summary>
         public void UpdateVolume()
         {
             foreach (MusicTrackPart part in Parts)

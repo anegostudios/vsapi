@@ -162,6 +162,12 @@ namespace Vintagestory.API.Server
         void RegisterMetalAlloy(AlloyRecipe alloy);
 
         /// <summary>
+        /// Registers a new cooking recipe. These are sent to the client during connect, so only need to register them on the server side.
+        /// </summary>
+        /// <param name="alloy"></param>
+        void RegisterCookingRecipe(CookingRecipe recipe);
+
+        /// <summary>
         /// Registers a new clay forming recipe. These are sent to the client during connect, so only need to register them on the server side.
         /// </summary>
         /// <param name="recipe"></param>

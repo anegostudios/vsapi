@@ -8,6 +8,11 @@ namespace Vintagestory.API.Client
 {
     public static class GlKeyNames
     {
+        /// <summary>
+        /// Converts the given key to a string.
+        /// </summary>
+        /// <param name="key">the key being passed in.</param>
+        /// <returns>the string name of the key.</returns>
         public static string ToString(GlKeys key)
         {
             switch (key)

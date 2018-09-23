@@ -69,15 +69,15 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// White opaque argb color
         /// </summary>
-        public static readonly int WhiteArgb = ColorFromArgb(255, 255, 255, 255);
+        public static readonly int WhiteArgb = ToRgba(255, 255, 255, 255);
         /// <summary>
         /// White opaque AHSV color
         /// </summary>
-        public static readonly int WhiteAhsl = ColorFromArgb(255, 255, 0, 0);
+        public static readonly int WhiteAhsl = ToRgba(255, 255, 0, 0);
         /// <summary>
         /// Black opaque rgb color
         /// </summary>
-        public static readonly int BlackArgb = ColorFromArgb(255, 0, 0, 0);
+        public static readonly int BlackArgb = ToRgba(255, 0, 0, 0);
         /// <summary>
         /// Black opaque rgb color
         /// </summary>
@@ -197,6 +197,12 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        public static int ColorFromRgba(byte[] channels)
+        {
+            return channels[0] | (channels[1] << 8) | (channels[2] << 16) | (channels[3] << 24);
+        }
+
+
         /// <summary>
         /// Returns a 4 element rgb double with values between 0..1
         /// </summary>
@@ -265,7 +271,25 @@ namespace Vintagestory.API.MathTools
                 (int)((color & 0xff) * multiplier)
             ;
         }
-        
+
+
+
+        /// <summary>
+        /// Multiplies a float value to the rgb color channels
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
+        public static int ColorMultiply4(int color, float redMul, float greenMul, float blueMul, float alphaMul)
+        {
+            return
+                ((int)(((color >> 24) & 0xff) * alphaMul) << 24) |
+                ((int)(((color >> 16) & 0xff) * blueMul) << 16) |
+                ((int)(((color >> 8) & 0xff) * greenMul) << 8) |
+                (int)((color & 0xff) * redMul)
+            ;
+        }
+
 
 
 
@@ -373,13 +397,13 @@ namespace Vintagestory.API.MathTools
         /// <returns>Combined HSV Color</returns>
         public static int[] ColorCombineHSV(int h1, int s1, int v1, int h2, int s2, int v2)
         {
-            int[] rgb1 = HSV2RGBInts(h1, s1, v1);
-            int[] rgb2 = HSV2RGBInts(h2, s2, v2);
+            int[] rgb1 = Hsv2RgbInts(h1, s1, v1);
+            int[] rgb2 = Hsv2RgbInts(h2, s2, v2);
 
             float leftweight = (float)v1 / (v1 + v2);
             float rightweight = 1 - leftweight;
 
-            int[] hsv = RGB2HSVInts(
+            int[] hsv = RgbToHsvInts(
                 (int)(rgb1[0] * leftweight + rgb2[0] * rightweight),
                 (int)(rgb1[1] * leftweight + rgb2[1] * rightweight),
                 (int)(rgb1[2] * leftweight + rgb2[2] * rightweight)
@@ -403,13 +427,13 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int[] ColorSubstractHSV(int h1, int s1, int v1, int h2, int s2, int v2)
         {
-            int[] rgb1 = HSV2RGBInts(h1, s1, v1);
-            int[] rgb2 = HSV2RGBInts(h2, s2, v2);
+            int[] rgb1 = Hsv2RgbInts(h1, s1, v1);
+            int[] rgb2 = Hsv2RgbInts(h2, s2, v2);
 
             float leftweight = (float)(v1 + v2) / v1;
             float rightweight = 1 - (float)v1 / (v1 + v2);
 
-            int[] hsv = RGB2HSVInts(
+            int[] hsv = RgbToHsvInts(
                 (int)(rgb1[0] * leftweight - rgb2[0] * rightweight),
                 (int)(rgb1[1] * leftweight - rgb2[1] * rightweight),
                 (int)(rgb1[2] * leftweight - rgb2[2] * rightweight)
@@ -428,7 +452,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="g"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static int ColorFromArgb(int a, int r, int g, int b)
+        public static int ToRgba(int a, int r, int g, int b)
         {
             int iCol = (a << 24) | (r << 16) | (g << 8) | b;
             return iCol;
@@ -501,7 +525,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="g"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static int RGB2HSV(int r, int g, int b)
+        public static int Rgb2Hsv(int r, int g, int b)
         {
             float K = 0f;
 
@@ -531,7 +555,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="rgb"></param>
         /// <returns></returns>
-        public static int RGB2HSV(int rgb)
+        public static int Rgb2HSv(int rgb)
         {
             float K = 0f;
 
@@ -567,7 +591,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="g"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static int[] RGB2HSVInts(int r, int g, int b)
+        public static int[] RgbToHsvInts(int r, int g, int b)
         {
             float K = 0f;
 
@@ -597,7 +621,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="hsv"></param>
         /// <returns></returns>
-        public static int HSV2RGB(int hsv)
+        public static int Hsv2Rgb(int hsv)
         {
             int region, p, q, t;
             int remainder;
@@ -642,7 +666,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="s"></param>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static int HSV2RGB(int h, int s, int v)
+        public static int HsvToRgb(int h, int s, int v)
         {
             int region, p, q, t;
             int remainder;
@@ -694,9 +718,9 @@ namespace Vintagestory.API.MathTools
         /// <param name="v"></param>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static int HSV2ARGB(int h, int s, int v)
+        public static int HsvToRgba(int h, int s, int v)
         {
-            return HSV2ARGB(h, s, v, OpaqueAlpha);
+            return HsvToRgba(h, s, v, OpaqueAlpha);
         }
 
         /// <summary>
@@ -706,7 +730,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="s"></param>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static int HSV2ARGB(int h, int s, int v, int a)
+        public static int HsvToRgba(int h, int s, int v, int a)
         {
             int region, p, q, t;
             int remainder;
@@ -747,7 +771,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="s"></param>
         /// <param name="v"></param>
         /// <returns></returns>
-        public static int[] HSV2RGBInts(int h, int s, int v)
+        public static int[] Hsv2RgbInts(int h, int s, int v)
         {
             int region, p, q, t;
             int remainder;
@@ -841,7 +865,7 @@ namespace Vintagestory.API.MathTools
             };
         }
 
-        public static float[] getIncandescenceColorAsColor4f(int temperature)
+        public static float[] GetIncandescenceColorAsColor4f(int temperature)
         {
             if (temperature < 500) return new float[] { 0f, 0f, 0f, 0f };
 

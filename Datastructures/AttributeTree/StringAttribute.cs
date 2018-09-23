@@ -28,5 +28,10 @@ namespace Vintagestory.API.Datastructures
         {
             return 5;
         }
+
+        public override string ToJsonToken()
+        {
+            return "\"" + value + "\"";
+        }
     }
 }

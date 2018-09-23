@@ -178,6 +178,11 @@ namespace Vintagestory.API.Datastructures
             attributes.Remove(key);
         }
 
+        public virtual void SetBool(string key, bool value)
+        {
+            attributes[key] = new BoolAttribute(value);
+        }
+
         public virtual void SetInt(string key, int value)
         {
             attributes[key] = new IntAttribute(value);
@@ -219,6 +224,10 @@ namespace Vintagestory.API.Datastructures
         }
 
 
+        public virtual bool? TryGetBool(string key)
+        {
+            return ((BoolAttribute)attributes.TryGetValue(key))?.value;
+        }
 
         public virtual int? TryGetInt(string key)
         {
@@ -235,6 +244,11 @@ namespace Vintagestory.API.Datastructures
             return ((FloatAttribute)attributes.TryGetValue(key))?.value;
         }
 
+        public virtual bool GetBool(string key, bool defaultValue = false)
+        {
+            BoolAttribute attr = attributes.TryGetValue(key) as BoolAttribute;
+            return attr == null ? defaultValue : attr.value;
+        }
 
         public virtual int GetInt(string key, int defaultValue = 0)
         {
@@ -366,7 +380,7 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool IsSubSetOf(IAttribute other)
+        public bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other)
         {
             if (!(other is TreeAttribute)) return false;
             TreeAttribute otherTree = (TreeAttribute)other;
@@ -379,10 +393,10 @@ namespace Vintagestory.API.Datastructures
 
                 if (val.Value is TreeAttribute)
                 {
-                    if (!(otherTree.attributes[val.Key] as TreeAttribute).IsSubSetOf(val.Value)) return false;
+                    if (!(otherTree.attributes[val.Key] as TreeAttribute).IsSubSetOf(worldForResolve, val.Value)) return false;
                 } else
                 {
-                    if (!otherTree.attributes[val.Key].Equals(val.Value)) return false;
+                    if (!otherTree.attributes[val.Key].Equals(worldForResolve, val.Value)) return false;
                 }
             }
 
@@ -394,7 +408,7 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool Equals(IAttribute other)
+        public bool Equals(IWorldAccessor worldForResolve, IAttribute other)
         {
             if (!(other is TreeAttribute)) return false;
             TreeAttribute otherTree = (TreeAttribute)other;
@@ -404,47 +418,72 @@ namespace Vintagestory.API.Datastructures
             foreach (var val in attributes)
             {
                 if (!otherTree.attributes.ContainsKey(val.Key)) return false;
-                if (!otherTree.attributes[val.Key].Equals(val.Value)) return false;
+                if (!otherTree.attributes[val.Key].Equals(worldForResolve, val.Value)) return false;
             }
 
 
             return true;
         }
 
-        public bool Equals(IAttribute other, params string[] ignorePaths)
+        public bool Equals(IWorldAccessor worldForResolve, IAttribute other, params string[] ignorePaths)
         {
-            return Equals(other, "", ignorePaths);
+            return Equals(worldForResolve, other, "", ignorePaths);
         }
 
-        public bool Equals(IAttribute other, string currentPath, params string[] ignorePaths)
+        public bool Equals(IWorldAccessor worldForResolve, IAttribute other, string currentPath, params string[] ignorePaths)
         {
             if (!(other is TreeAttribute)) return false;
             TreeAttribute otherTree = (TreeAttribute)other;
 
             if (ignorePaths.Length == 0 && attributes.Count != otherTree.attributes.Count) return false;
-
+            
+            // Test 1 and 2: 
+            // - Check for exists in a, but missing in b
+            // - Check for a != b
             foreach (var val in attributes)
             {
                 string curPath = currentPath + (currentPath.Length > 0 ? "/" : "") + val.Key;
-
                 if (ignorePaths.Contains(curPath)) continue;
-
                 if (!otherTree.attributes.ContainsKey(val.Key)) return false;
 
                 IAttribute otherAttr = otherTree.attributes[val.Key];
 
                 if (otherAttr is TreeAttribute)
                 {
-                    if (!((TreeAttribute)otherAttr).Equals(val.Value, currentPath, ignorePaths)) return false;
+                    if (!((TreeAttribute)otherAttr).Equals(worldForResolve, val.Value, currentPath, ignorePaths)) return false;
                 } else
                 {
-                    if (!otherAttr.Equals(val.Value)) return false;
+                    if (otherAttr is ItemstackAttribute)
+                    {
+                        if (!(otherAttr as ItemstackAttribute).Equals(worldForResolve, val.Value, ignorePaths))
+                        {
+                            return false;
+                        }
+                    } else
+                    {
+                        if (!otherAttr.Equals(worldForResolve, val.Value)) return false;
+                    }
+                    
                 }
+            }
+
+            // Test 3: 
+            // - Check for exists in b, but missing in a
+            foreach (var val in otherTree.attributes)
+            {
+                string curPath = currentPath + (currentPath.Length > 0 ? "/" : "") + val.Key;
+                if (ignorePaths.Contains(curPath)) continue;
+                if (!attributes.ContainsKey(val.Key)) return false;
             }
 
 
             return true;
         }
+
+
+
+
+
 
         public string ToJsonToken()
         {
@@ -463,6 +502,39 @@ namespace Vintagestory.API.Datastructures
             sb.Append(" }");
 
             return sb.ToString();
+        }
+
+        public virtual void MergeTree(ITreeAttribute tree)
+        {
+            if(tree is TreeAttribute)
+            {
+                foreach(var attribute in (tree as TreeAttribute).attributes)
+                {
+                    MergeAttribute(this, attribute.Key, attribute.Value);
+                }
+            }
+            throw new ArgumentException("Excepted TreeAtribute but got " + tree.GetType().Name + "! " + tree.ToString() + "");
+        }
+
+        protected virtual void MergeAttribute(ITreeAttribute currentTree, string key, IAttribute value)
+        {
+            IAttribute existing = attributes.TryGetValue(key);
+
+            if (existing == null)
+                attributes[key] = value;
+
+            if (existing.GetAttributeId() != value.GetAttributeId())
+                throw new Exception("Cannot merge attributes! Exepected attributeId " + existing.GetAttributeId().ToString() + " instead of " + value.GetAttributeId().ToString() + "! Existing: " + existing.ToString() + ", new: " + value.ToString());
+
+            if (value is ITreeAttribute)
+            {
+                foreach (var attribute in (value as TreeAttribute).attributes)
+                {
+                    MergeAttribute(existing as ITreeAttribute, attribute.Key, attribute.Value);
+                }
+            }
+            else
+                attributes[key] = value;
         }
     }
 }

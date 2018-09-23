@@ -33,6 +33,14 @@ namespace Vintagestory.API.Client
                 dialogComposers.Clear();
             }
 
+            public void Dispose()
+            {
+                foreach (var val in dialogComposers)
+                {
+                    val.Value?.Dispose();
+                }
+            }
+
             public GuiComposer this[string key]
             {
                 get {
@@ -430,7 +438,7 @@ namespace Vintagestory.API.Client
 
 
         public virtual void Dispose() {
-            DialogComposers?.ClearComposers();
+            DialogComposers?.Dispose();
         }
 
         public void ClearComposers()

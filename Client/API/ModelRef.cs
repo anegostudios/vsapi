@@ -4,8 +4,14 @@ using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Mesh reference.
+    /// </summary>
     public class MeshRef
     {
+        /// <summary>
+        /// Am I disposed?
+        /// </summary>
         public bool Disposed;
 
         /// <summary>

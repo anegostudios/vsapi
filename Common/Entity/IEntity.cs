@@ -15,11 +15,16 @@ namespace Vintagestory.API.Common.Entities
     public interface IEntity
     {
         /// <summary>
+        /// Globael unique identifier 
+        /// </summary>
+        AssetLocation Code { get; }
+
+        EntityProperties Properties { get; }
+
+        /// <summary>
         /// Server wide unique identifier of this entity
         /// </summary>
         long EntityId { get; }
-
-        EntityType Type { get; }
 
         bool Alive { get; }
 
@@ -108,12 +113,6 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="byEntity"></param>
         /// <returns></returns>
         ItemStack OnCollected(Entity byEntity);
-
-        /// <summary>
-        /// Sets the type of this entity
-        /// </summary>
-        /// <param name="entityType"></param>
-        void SetType(EntityType entityType);
 
         /// <summary>
         /// Plays a preconfigured sound of this entity (from entitytype config)

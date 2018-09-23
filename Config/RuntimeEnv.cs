@@ -35,7 +35,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// If VAO_DEBUG_DISPOSE is set, the initial value set here will be overridden
         /// </summary>
-        public static bool DebugVAODispose;
+        public static bool DebugVAODispose = false;
 
         public static int MainThreadId;
 

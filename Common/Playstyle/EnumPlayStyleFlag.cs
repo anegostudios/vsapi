@@ -14,6 +14,9 @@ namespace Vintagestory.API.Common
         SurviveAndAutomate = 0x4,
         CreativeBuilding   = 0x8,
         All = WildernessSurvival | SurviveAndBuild |
-              SurviveAndAutomate | CreativeBuilding
+              SurviveAndAutomate | CreativeBuilding,
+
+        Survival = WildernessSurvival | SurviveAndBuild |
+              SurviveAndAutomate 
     }
 }

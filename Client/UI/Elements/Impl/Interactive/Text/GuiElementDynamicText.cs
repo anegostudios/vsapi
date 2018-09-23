@@ -18,6 +18,8 @@ namespace Vintagestory.API.Client
         public Action OnClick;
         public bool autoHeight;
 
+        
+
         public GuiElementDynamicText(ICoreClientAPI capi, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds) : base(capi, text, font, bounds)
         {
             this.orientation = orientation;

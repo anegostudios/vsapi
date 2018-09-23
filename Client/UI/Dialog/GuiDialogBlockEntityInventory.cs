@@ -88,7 +88,7 @@ namespace Vintagestory.API.Client
 
                 SingleComposer =
                     capi.Gui
-                    .CreateCompo("blockentityinventory", dialogBounds, false)
+                    .CreateCompo("blockentityinventory" + blockEntityPos, dialogBounds, false)
                     .AddDialogBG(ElementBounds.Fill)
                     .AddDialogTitleBar(DialogTitle, CloseIconPressed)
                     .AddInset(insetBounds, 8, 0.85f)
@@ -124,7 +124,7 @@ namespace Vintagestory.API.Client
 
                 SingleComposer =
                     capi.Gui
-                    .CreateCompo("blockentityinventory", dialogBounds, false)
+                    .CreateCompo("blockentityinventory"+blockEntityPos, dialogBounds, false)
                     .AddDialogBG(ElementBounds.Fill)
                     .AddDialogTitleBar(DialogTitle, CloseIconPressed)
                     .AddInset(insetBounds, 8, 0.85f)

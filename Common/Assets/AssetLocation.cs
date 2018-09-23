@@ -47,34 +47,40 @@ namespace Vintagestory.API.Common
 
         public string Domain {
             get { return domain ?? "game"; }
-            set { domain = value; Validate(); }
+            set { domain = value; }
         }
 
         public string Path {
             get { return path; }
-            set { path = value; Validate(); }
+            set { path = value; }
         }
 
         /// <summary>
         /// Create a new AssetLocation. If no domain is prefixed, the default 'game' domain is used.
         /// </summary>
-        /// <param name="path"></param>
-        public AssetLocation(string path)
+        /// <param name="domainAndPath"></param>
+        /// <param name="validated">Wether to ensure that supplied domainAndPath, and any future modifications results in syntax correct asset locations</param>
+        public AssetLocation(string domainAndPath)
         {
-            path = path.ToLowerInvariant();
-            var colonIndex = path.IndexOf(':');
+            ResolveToDomainAndPath(domainAndPath, out domain, out path);
+        }
+        
+        
+        static void ResolveToDomainAndPath(string domainAndPath, out string domain, out string path)
+        {
+            domainAndPath = domainAndPath.ToLowerInvariant();
+            var colonIndex = domainAndPath.IndexOf(':');
+
             if (colonIndex == -1)
             {
-                this.domain = null;
-                this.path   = path;
+                domain = null;
+                path = domainAndPath;
             }
-            else if (path.IndexOf(':', colonIndex + 1) == -1)
+            else
             {
-                this.domain = path.Substring(0, colonIndex);
-                this.path   = path.Substring(colonIndex + 1);
+                domain = domainAndPath.Substring(0, colonIndex);
+                path = domainAndPath.Substring(colonIndex + 1);
             }
-            else throw new ArgumentException($"'{ path }' is not a valid asset location!");
-            Validate();
         }
 
         /// <summary>
@@ -86,15 +92,21 @@ namespace Vintagestory.API.Common
         {
             this.domain = domain?.ToLowerInvariant();
             this.path   = path.ToLowerInvariant();
-            Validate();
         }
 
-        private void Validate()
+
+        
+        /// <summary>
+        /// Returns true if this is a valid path. For an asset location to be valid it needs to 
+        /// have any string as domain, any string as path, the domain may not contain slashes, and the path may not contain 2 consecutive slashes
+        /// </summary>
+        public bool Valid
         {
-            if ((domain?.Length == 0) || (path.Length == 0) || (domain?.Contains('/') ?? false) ||
-                (path[0] == '/') || (path[path.Length - 1] == '/') || path.Contains("//"))
-            {
-                throw new ArgumentException($"'{ this }' is not a valid asset location!");
+            get {
+                bool invalid = ((domain?.Length == 0) || (path.Length == 0) || (domain?.Contains('/') ?? false) ||
+                (path[0] == '/') || (path[path.Length - 1] == '/') || path.Contains("//"));
+
+                return !invalid;
             }
         }
 
@@ -140,14 +152,12 @@ namespace Vintagestory.API.Common
         public AssetLocation WithPathPrefix(string prefix)
         {
             path = prefix + path;
-            Validate();
             return this;
         }
 
         public AssetLocation WithPathAppendix(string appendix)
         {
             path += appendix;
-            Validate();
             return this;
         }
 
@@ -156,7 +166,6 @@ namespace Vintagestory.API.Common
             if (!path.EndsWith(appendix))
             {
                 path += appendix;
-                Validate();
             }
             return this;
         }
@@ -175,7 +184,6 @@ namespace Vintagestory.API.Common
         public virtual void RemoveEnding()
         {
             path = path.Substring(0, path.LastIndexOf("."));
-            Validate();
         }
 
         public virtual AssetLocation Clone()
@@ -191,7 +199,6 @@ namespace Vintagestory.API.Common
         public virtual AssetLocation WithPath(string path)
         {
             this.Path = path;
-            Validate();
             return this;
         }
 

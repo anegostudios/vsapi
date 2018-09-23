@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Datastructures
@@ -45,15 +46,20 @@ namespace Vintagestory.API.Datastructures
             if (value != null) value.ToBytes(stream);
         }
 
-        public bool Equals(IAttribute attr)
+        public bool Equals(IWorldAccessor worldForResolve, IAttribute attr)
+        {
+            return Equals(worldForResolve, attr, null);
+        }
+
+        internal bool Equals(IWorldAccessor worldForResolve, IAttribute attr, string[] ignorePaths)
         {
             if (!(attr is ItemstackAttribute)) return false;
 
             ItemstackAttribute stackAttr = (ItemstackAttribute)attr;
 
-            return 
-                (stackAttr.value == null) == (value == null) ||
-                (stackAttr.value != null && stackAttr.value.Equals(value))
+            return
+                (stackAttr.value == null && value == null) ||
+                (stackAttr.value != null && stackAttr.value.Equals(worldForResolve, value, ignorePaths))
             ;
         }
 
@@ -61,5 +67,7 @@ namespace Vintagestory.API.Datastructures
         {
             throw new System.NotImplementedException();
         }
+
+        
     }
 }

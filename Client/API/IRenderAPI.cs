@@ -30,12 +30,22 @@ namespace Vintagestory.API.Client
         /// The default view matrix used during perspective rendering. Is refreshed before EnumRenderStage.Opaque. Useful for doing projections in the Ortho stage via MatrixToolsd.Project()
         /// </summary>
         double[] PerspectiveViewMat { get; }
+        
         /// <summary>
         /// The default projection matrix used during perspective rendering. Is refreshed before EnumRenderStage.Opaque. Useful for doing projections in the Ortho stage via MatrixToolsd.Project()
         /// </summary>
         double[] PerspectiveProjectionMat { get; }
 
+        /// <summary>
+        /// The name of the font used during this render (if it exists).
+        /// </summary>
+        [Obsolete("Please use ElementGeometrics.DecorativeFontName instead")]
         string DecorativeFontName { get; }
+
+        /// <summary>
+        /// The standard font used during this render (if it exists).
+        /// </summary>
+        [Obsolete("Please use ElementGeometrics.StandardFontName instead.")]
         string StandardFontName { get; }
 
         /// <summary>
@@ -48,6 +58,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         int FrameHeight { get; }
 
+        /// <summary>
+        /// The camera type.
+        /// </summary>
         EnumCameraMode CameraType { get; }
 
         /// <summary>
@@ -77,23 +90,35 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         string GlGetError();
 
+        /// <summary>
+        /// If opengl debug mode is enabled and an opengl error is found this method will throw an exception. 
+        /// It is recommended to use this methods in a few spots during render code to track down rendering issues in time.
+        /// </summary>
+        /// <param name="message"></param>
+        void CheckGlError();
 
+        /// <summary>
+        /// The current model view.
+        /// </summary>
         void GlMatrixModeModelView();
 
         /// <summary>
         /// Pushes a copy of the current matrix onto the games matrix stack
         /// </summary>
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
         void GlPushMatrix();
 
         /// <summary>
         /// Pops the top most matrix from the games matrix stack
         /// </summary>
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
         void GlPopMatrix();
 
         /// <summary>
         /// Replaces the top most matrix with given one
         /// </summary>
         /// <param name="matrix"></param>
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
         void GlLoadMatrix(double[] matrix);
 
         /// <summary>
@@ -102,6 +127,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
         void GlTranslate(float x, float y, float z);
 
         /// <summary>
@@ -110,6 +136,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
         void GlTranslate(double x, double y, double z);
 
         /// <summary>
@@ -118,6 +145,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
         void GlScale(float x, float y, float z);
 
         /// <summary>
@@ -127,14 +155,29 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
         void GlRotate(float angle, float x, float y, float z);
 
-
+        /// <summary>
+        /// Enables the Culling faces.
+        /// </summary>
         void GlEnableCullFace();
+
+        /// <summary>
+        /// Disables the culling faces.
+        /// </summary>
         void GlDisableCullFace();
+
+        /// <summary>
+        /// Enables the Depth Test.
+        /// </summary>
+        void GLEnableDepthTest();       
         
+        /// <summary>
+        /// Disables the Depth Test.
+        /// </summary>
         void GLDisableDepthTest();
-        void GLEnableDepthTest();
+ 
 
         /// <summary>
         /// Regenerates the mip maps for the currently bound texture
@@ -202,52 +245,75 @@ namespace Vintagestory.API.Client
         #endregion
 
         #region Texture
-
+        /// <summary>
+        /// Creates a bitmap from a given PNG.
+        /// </summary>
+        /// <param name="pngdata">the PNG data passed in.</param>
+        /// <returns>A bitmap object.</returns>
         BitmapExternal BitmapCreateFromPng(byte[] pngdata);
 
-        int LoadTextureFromBgra(int[] rgbaPixels, int width, int height, bool linearMag, int clampMode);
+        /// <summary>
+        /// Loads texture from Pixels in BGRA format.
+        /// </summary>
+        /// <param name="bgraPixels">The pixel array</param>
+        /// <param name="width">the width of the final texture</param>
+        /// <param name="height">the height of the final texture</param>
+        /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
+        /// <param name="clampMode">The current clamp mode</param>
+        /// <returns>The GLID for the resulting texture.</returns>
+        int LoadTextureFromBgra(int[] bgraPixels, int width, int height, bool linearMag, int clampMode);
+
+        /// <summary>
+        /// Loads texture from Pixels in RGBA format.
+        /// </summary>
+        /// <param name="rgbaPixels">The pixel array</param>
+        /// <param name="width">the width of the final texture</param>
+        /// <param name="height">the height of the final texture</param>
+        /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
+        /// <param name="clampMode">The current clamp mode</param>
+        /// <returns>The OpenGL Identifier for the resulting texture.</returns>
         int LoadTextureFromRgba(int[] rgbaPixels, int width, int height, bool linearMag, int clampMode);
-        
+
 
         /// <summary>
         /// Deletes given texture
         /// </summary>
-        /// <param name="textureId"></param>
+        /// <param name="textureId">the OpenGL Identifier for the target Texture.</param>
         void GLDeleteTexture(int textureId);
         
 
         /// <summary>
         /// Max size a texture can have on the current graphics card
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The maximum size a texture can have on the current graphics card in Pixels.</returns>
         int GlGetMaxTextureSize();
 
         /// <summary>
         /// Binds given texture. For use with shaders - you should assign the texture directly though shader uniforms.
         /// </summary>
-        /// <param name="textureid"></param>
+        /// <param name="textureid">The OpenGL Identifier ID for the target texture to bind.</param>
         void BindTexture2d(int textureid);
 
         /// <summary>
         /// Loads given texture through the assets managers and loads it onto the graphics card. Will return a cached version on every subsequent call to this method. Returns a textureid ready to be used in BindTexture2d
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name">the location of the texture as it exists within the game or mod directory.</param>
+        /// <returns>The OpenGL Identifier ID for the given asset available for binding.</returns>
         int GetOrLoadTexture(AssetLocation name);
 
         /// <summary>
         /// Loads the texture supplied by the bitmap, uploads it to the graphics card and keeps a cached version under given name. Will return that cached version on every subsequent call to this method. Returns a textureid ready to be used in BindTexture2d
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="bmp"></param>
-        /// <returns></returns>
+        /// <param name="name">the location of the texture as it exists within the game or mod directory.</param>
+        /// <param name="bmp">The referenced bitmap</param>
+        /// <returns>The OpenGL Identifier ID for the given asset available for binding.</returns>
         int GetOrLoadTexture(AssetLocation name, BitmapRef bmp);
 
         /// <summary>
         /// Removes given texture from the cache and from graphics card memory
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name">the location of the texture as it exists within the game or mod directory.</param>
+        /// <returns>whether the operation was successful or not.</returns>
         bool DeleteTexture(AssetLocation name);
 
         #endregion
@@ -303,18 +369,18 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Allocates memory on the graphics card. Can use UpdateMesh() to populate it with data. The custom mesh data parts may be null. Sizes are in bytes.
         /// </summary>
-        /// <param name="xyzSize"></param>
-        /// <param name="normalSize"></param>
-        /// <param name="uvSize"></param>
-        /// <param name="rgbaSize"></param>
+        /// <param name="xyzSize">the squared size of the texture.</param>
+        /// <param name="normalSize">the size of the normals</param>
+        /// <param name="uvSize">the size of the UV map.</param>
+        /// <param name="rgbaSize">size of the RGBA colors.</param>
         /// <param name="rgba2Size"></param>
-        /// <param name="flagsSize"></param>
-        /// <param name="indicesSize"></param>
-        /// <param name="customFloats"></param>
-        /// <param name="customBytes"></param>
-        /// <param name="drawMode"></param>
-        /// <param name="staticDraw"></param>
-        /// <returns></returns>
+        /// <param name="flagsSize">Size of the render flags.</param>
+        /// <param name="indicesSize">Size of the indices</param>
+        /// <param name="customFloats">Float valuse of the mesh</param>
+        /// <param name="customBytes">Byte values of the mesh</param>
+        /// <param name="drawMode">The current draw mode</param>
+        /// <param name="staticDraw">whether the draw should be static or dynamic.</param>
+        /// <returns>the reference to the mesh</returns>
         MeshRef AllocateEmptyMesh(int xyzSize, int normalSize, int uvSize, int rgbaSize, int rgba2Size, int flagsSize, int indicesSize, CustomMeshDataPartFloat customFloats, CustomMeshDataPartByte customBytes, CustomMeshDataPartInt customInts, EnumDrawMode drawMode = EnumDrawMode.Triangles, bool staticDraw = true);
 
         /// <summary>
@@ -507,7 +573,7 @@ namespace Vintagestory.API.Client
         /// <param name="fontName"></param>
         /// <param name="color"></param>
         /// <returns></returns>
-        ICairoFont GetFont(double unscaledFontSize, string fontName, double[] color, double[] strokeColor = null);
+        CairoFont GetFont(double unscaledFontSize, string fontName, double[] color, double[] strokeColor = null);
 
         /// <summary>
         /// The current ambient color (e.g. will return a blue tint when player is under water)
@@ -528,7 +594,10 @@ namespace Vintagestory.API.Client
         /// Density of the current fog. Fog is calculated as followed in the shaders: clamp(fogMin + 1 - 1 / exp(gl_FragDepth * fogDensity), 0, 1)
         /// </summary>
         float FogDensity { get; }
-        
+
+        float WaterWaveCounter { get; }
+        float WindWaveCounter { get; }
+
 
         #endregion
     }

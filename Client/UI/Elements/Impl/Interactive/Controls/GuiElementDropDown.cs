@@ -200,6 +200,13 @@ namespace Vintagestory.API.Client
             ComposeCurrentValue();
         }
 
+
+        public void SetSelectedValue(string value)
+        {
+            this.listMenu.SetSelectedValue(value);
+            ComposeCurrentValue();
+        }
+
         public void SetList(string[] values, string[] names)
         {
             this.listMenu.SetList(values, names);
@@ -212,6 +219,7 @@ namespace Vintagestory.API.Client
             highlightTexture.Dispose();
             currentValueTexture.Dispose();
         }
+
     }
 
 

@@ -21,39 +21,43 @@ namespace Vintagestory.API.Client
         /// </summary>
         OIT = 2,
         /// <summary>
+        /// To render the held item over water. If done in the opaque pass it would not render water behind it.
+        /// </summary>
+        AfterOIT = 3,
+        /// <summary>
         /// Shadow map
         /// </summary>
-        ShadowFar = 3,
+        ShadowFar = 4,
         /// <summary>
         /// Shadow map done
         /// </summary>
-        ShadowFarDone = 4,
+        ShadowFarDone = 5,
 
         /// <summary>
         /// Shadow map
         /// </summary>
-        ShadowNear = 5,
+        ShadowNear = 6,
         /// <summary>
         /// Shadow map done
         /// </summary>
-        ShadowNearDone = 6,
+        ShadowNearDone = 7,
 
         /// <summary>
         /// After all 3d geometry has rendered and post processing of the frame is complete
         /// </summary>
-        AfterPostProcessing = 7,
+        AfterPostProcessing = 8,
         /// <summary>
         /// Ortho mode for rendering GUIs and everything 2D
         /// </summary>
-        Ortho = 8,
+        Ortho = 9,
         /// <summary>
         /// The post processing passes are merged with all 3d geometry and the scene is color graded
         /// </summary>
-        AfterFinalComposition = 9,
+        AfterFinalComposition = 10,
         /// <summary>
         /// Scene is blitted onto the default frame buffer, buffers not yet swapped though so can still render to default FB
         /// </summary>
-        Done = 10
+        Done = 11
         
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Vintagestory.API.Client;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
@@ -59,53 +60,47 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// When the player wrote a chat message. Set consumed.value to true to prevent further processing of this chat message
     /// </summary>
-    /// <param name="byPlayer"></param>
-    /// <param name="channelId"></param>
-    /// <param name="message"></param>
-    /// <param name="consumed"></param>
-    /// <returns></returns>
-    public delegate string PlayerChat(IServerPlayer byPlayer, int channelId, string message, BoolRef consumed);
+    /// <param name="byPlayer">The player that chatted.</param>
+    /// <param name="channelId">The channel ID number</param>
+    /// <param name="message">The message from the player.</param>
+    /// <param name="consumed">Was the message consumed?</param>
+    /// <returns>The resulting string.</returns>
+    public delegate string PlayerChatDelegate(IServerPlayer byPlayer, int channelId, string message, BoolRef consumed);
 
-    public delegate void PlayerDeath(IServerPlayer byPlayer, DamageSource damageSource);
+    public delegate void PlayerDeathDelegate(IServerPlayer byPlayer, DamageSource damageSource);
 
-    public delegate void PlayerChangeGameMode(IServerPlayer player);
-
-    public delegate void DialogClick(IServerPlayer byPlayer, string widgetId);
-
-    public delegate void SpecialKey(IServerPlayer byPlayer, EnumSpecialKey key);
-
-    public delegate void SelectedHotbarslotChanged(IServerPlayer byPlayer);
-
-    public delegate void UpdateEntity(int chunkx, int chunky, int chunkz, int id);
-
-    public delegate void UseEntity(IServerPlayer byPlayer, int chunkx, int chunky, int chunkz, int id);
-
-    public delegate void HitEntity(IServerPlayer byPlayer, int chunkx, int chunky, int chunkz, int id);
-
-    public delegate void PlayerJoinServer(IServerPlayer byPlayer);
-    public delegate void PlayerDisconnectServer(IServerPlayer byPlayer);
-    public delegate void PlayerLeave(IServerPlayer byPlayer);
+    public delegate void DialogClickDelegate(IServerPlayer byPlayer, string widgetId);
 
 
+    public delegate void SelectedHotbarSlotDelegate(IServerPlayer byPlayer);
 
-    public delegate void ChunkColumnGeneration(IServerChunk[] chunks, int chunkX, int chunkZ);
+    public delegate void UpdateEntityDelegate(int chunkx, int chunky, int chunkz, int id);
 
-    public delegate void ChunkGenerationPass(IServerChunk chunk, int chunkX, int chunkY, int chunkZ);
+    public delegate void UseEntityDelegate(IServerPlayer byPlayer, int chunkx, int chunky, int chunkz, int id);
 
-    public delegate void MapChunkGenerator(IMapChunk mapChunk, int chunkX, int chunkZ);
+    public delegate void HitEntityDelegate(IServerPlayer byPlayer, int chunkx, int chunky, int chunkz, int id);
 
-    public delegate void MapRegionGenerator(IMapRegion mapRegion, int regionX, int regionZ);
+    public delegate void PlayerDelegate(IServerPlayer byPlayer);
 
-    public delegate void WorldGenThread(IChunkProviderThread chunkProvider);
+    public delegate void EntityDelegate(Entity entity);
 
-    //public delegate void BlockUpdate(int x, int y, int z);
+    public delegate void ChunkColumnGenerationDelegate(IServerChunk[] chunks, int chunkX, int chunkZ);
 
-    public delegate void BlockUse(IServerPlayer byPlayer, BlockSelection blockSel);
-    public delegate void BlockBreak(IServerPlayer byPlayer, ushort oldblockId, BlockSelection blockSel);
-    public delegate void BlockPlace(IServerPlayer byPlayer, ushort oldblockId, BlockSelection blockSel, ItemStack withItemStack);
+    public delegate void ChunkGenerationPassDelegate(IServerChunk chunk, int chunkX, int chunkY, int chunkZ);
+
+    public delegate void MapChunkGeneratorDelegate(IMapChunk mapChunk, int chunkX, int chunkZ);
+
+    public delegate void MapRegionGeneratorDelegate(IMapRegion mapRegion, int regionX, int regionZ);
+
+    public delegate void WorldGenThreadDelegate(IChunkProviderThread chunkProvider);
+
+
+    public delegate void BlockUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
+    public delegate void BlockBreakDelegate(IServerPlayer byPlayer, ushort oldblockId, BlockSelection blockSel);
+    public delegate void BlockPlaceDelegate(IServerPlayer byPlayer, ushort oldblockId, BlockSelection blockSel, ItemStack withItemStack);
     
-    public delegate bool CanUse(IServerPlayer byPlayer, BlockSelection blockSel);
-    public delegate bool CanPlaceOrBreak(IServerPlayer byPlayer, BlockSelection blockSel);
+    public delegate bool CanUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
+    public delegate bool CanPlaceOrBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
 
 
 

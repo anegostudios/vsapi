@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -27,15 +28,14 @@ namespace Vintagestory.API.Common
             return 30 * QuantityMul;
         }
 
-        public override byte[] GetRgbaColor()
+        public override int GetRgbaColor(ICoreClientAPI capi)
         {
-            return ColorUtil.HSVa2RGBaBytes(new byte[] {
+            return ColorUtil.HsvToRgba(
                 (byte)GameMath.Clamp(110, 0, 255),
                 (byte)GameMath.Clamp(40 + rand.Next(50), 0, 255),
                 (byte)GameMath.Clamp(200 + rand.Next(30), 0, 255),
                 (byte)GameMath.Clamp(120 + rand.Next(50), 0, 255)
-            });
-
+            );
         }
 
         public override float GetSize()

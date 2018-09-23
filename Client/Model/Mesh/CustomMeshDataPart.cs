@@ -9,7 +9,7 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Holds arbitrary mesh data for meshes to be used in a shader
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The arbitrary type.</typeparam>
     public abstract class CustomMeshDataPart<T>
     {
         bool customAllocationSize = false;
@@ -42,37 +42,51 @@ namespace Vintagestory.API.Client
         /// Amount of variable components for variable (i.e. 2, 3 for a vec2 and a vec3), valid values are 1, 2, 3 and 4 (limited by glVertexAttribPointer)
         /// </summary>
         public int[] InterleaveSizes = null;
+
         /// <summary>
         /// Stride - Size in bytes of all values for one vertex
         /// </summary>
         public int InterleaveStride = 0;
+
         /// <summary>
         /// Offset in bytes for each in variable 
         /// </summary>
         public int[] InterleaveOffsets = null;
+
         /// <summary>
         /// For instanced rendering
         /// </summary>
         public bool Instanced = false;
+
         /// <summary>
         /// Set to false if you intend to update the buffer very often (i.e. every frame)
         /// </summary>
         public bool StaticDraw = true;
+
         /// <summary>
         /// Used as offset when doing a partial update on an existing buffer
         /// </summary>
         public int BaseOffset = 0;
 
-
+        /// <summary>
+        /// Blank constructor.
+        /// </summary>
         public CustomMeshDataPart()
         {
         }
 
+        /// <summary>
+        /// Array initialization constructor.
+        /// </summary>
+        /// <param name="arraySize">the size of the typed Array.</param>
         public CustomMeshDataPart(int arraySize) {
             Values = new T[arraySize];
         }
 
-
+        /// <summary>
+        /// Grows the buffer with a minimum.
+        /// </summary>
+        /// <param name="growAtLeastBy">The minimum amount to grow the buffer by.</param>
         public void GrowBuffer(int growAtLeastBy = 1)
         {
             if (Values == null)
@@ -83,6 +97,10 @@ namespace Vintagestory.API.Client
             Array.Resize(ref Values, Math.Max(Values.Length + growAtLeastBy, Count * 2));
         }
 
+        /// <summary>
+        /// Adds a value to the buffer.
+        /// </summary>
+        /// <param name="value">The value to add.</param>
         public void Add(T value)
         {
             if (Count >= BufferSize)
@@ -92,31 +110,11 @@ namespace Vintagestory.API.Client
             Values[Count++] = value;
         }
 
-        public void Add(T value1, T value2)
-        {
-            if (Count + 1 >= BufferSize)
-            {
-                GrowBuffer(2);
-            }
-
-            Values[Count++] = value1;
-            Values[Count++] = value2;
-        }
-
-        public void Add(T value1, T value2, T value3, T value4)
-        {
-            if (Count + 3 >= BufferSize)
-            {
-                GrowBuffer(4);
-            }
-
-            Values[Count++] = value1;
-            Values[Count++] = value2;
-            Values[Count++] = value3;
-            Values[Count++] = value4;
-        }
-
-        public void Add(T[] values)
+        /// <summary>
+        /// Adds multiple values to the buffer.
+        /// </summary>
+        /// <param name="values">The values being added.</param>
+        public void Add(params T[] values)
         {
             if (Count + values.Length > BufferSize)
             {
@@ -128,8 +126,6 @@ namespace Vintagestory.API.Client
                 Values[Count++] = values[i];
             }
         }
-
-
 
         /// <summary>
         /// Lets you define your a self defined size to be allocated on the graphics card.
@@ -149,8 +145,10 @@ namespace Vintagestory.API.Client
             customAllocationSize = false;
         }
 
-
-        
+        /// <summary>
+        /// Sets a value from a given mesh data part.
+        /// </summary>
+        /// <param name="meshdatapart">the mesh data part for this type.</param>
         public void SetFrom(CustomMeshDataPart<T> meshdatapart)
         {
             customAllocationSize = meshdatapart.customAllocationSize;

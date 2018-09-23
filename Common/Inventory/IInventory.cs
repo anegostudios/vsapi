@@ -78,7 +78,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="skipSlots"></param>
         /// <returns></returns>
-        WeightedSlot GetBestSuitedSlot(IPlayer actingPlayer, ItemSlot sourceSlot, List<IItemSlot> skipSlots = null);
+        WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<IItemSlot> skipSlots = null);
 
         /// <summary>
         /// Will place quantity items from the source slot into the best fitting slot of this inventory. Might fill several of the inventories slots.

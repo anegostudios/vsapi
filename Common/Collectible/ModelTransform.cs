@@ -29,7 +29,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Vec3f Origin = new Vec3f(0.5f, 0.5f, 0.5f);
         /// <summary>
-        /// Whether to rotate in gui item preview or to rotate when dropped
+        /// For Gui Transform: Whether to slowly spin in gui item preview 
+        /// For Ground Transform: Whether to apply a random rotation to the dropped item
+        /// No effect on other transforms
         /// </summary>
         public bool Rotate = true;
 
@@ -37,6 +39,45 @@ namespace Vintagestory.API.Common
         /// Scaling per axis
         /// </summary>
         public Vec3f ScaleXYZ = new Vec3f(1, 1, 1);
+
+
+        public static ModelTransform NoTransform {
+            get
+            {
+                return new ModelTransform().EnsureDefaultValues();
+            }
+        }
+
+        public float[] AsMatrix
+        {
+            get
+            {
+                float[] mat = Mat4f.Create();
+                Mat4f.Translate(mat, mat, Translation.X, Translation.Y, Translation.Z);
+                Mat4f.Translate(mat, mat, Origin.X, Origin.Y, Origin.Z);
+
+                Mat4f.RotateX(mat, mat, Rotation.X * GameMath.DEG2RAD);
+                Mat4f.RotateY(mat, mat, Rotation.Y * GameMath.DEG2RAD);
+                Mat4f.RotateZ(mat, mat, Rotation.Z * GameMath.DEG2RAD);
+
+                Mat4f.Scale(mat, mat, ScaleXYZ.X, ScaleXYZ.Y, ScaleXYZ.Z);
+
+                Mat4f.Translate(mat, mat, -Origin.X, -Origin.Y, -Origin.Z);
+
+                return mat;
+            }
+        }
+
+        
+
+        /*public float[] AsQuaternion
+        {
+            get
+            {
+                //double[] quat = Quaterniond.Create();
+                //Quaterniond.
+            }
+        }*/
 
         /// <summary>
         /// Scale = 1, No Translation, Rotation by -45 deg in Y-Axis
@@ -82,6 +123,21 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
+        /// Scale = 1, No Translation, Rotation by -45 deg in Y-Axis, 1.5x scale
+        /// </summary>
+        /// <returns></returns>
+        public static ModelTransform BlockDefaultGround()
+        {
+            return new ModelTransform()
+            {
+                Translation = new Vec3f(),
+                Rotation = new Vec3f(0, -45, 0),
+                Origin = new Vec3f(0.5f, 0, 0.5f),
+                Scale = 1.5f
+            };
+        }
+
+        /// <summary>
         /// Scale = 1, No Translation, No Rotation
         /// </summary>
         /// <returns></returns>
@@ -101,7 +157,7 @@ namespace Vintagestory.API.Common
         /// Scale = 1, No Translation, Rotation by 180 deg in X-Axis
         /// </summary>
         /// <returns></returns>
-        public static ModelTransform ItemDefault()
+        public static ModelTransform ItemDefaultFp()
         {
             return new ModelTransform()
             {
@@ -125,14 +181,26 @@ namespace Vintagestory.API.Common
             };
         }
 
+        public static ModelTransform ItemDefaultGround()
+        {
+            return new ModelTransform()
+            {
+                Translation = new Vec3f(0, 0, 0),
+                Rotation = new Vec3f(90, 0, 0),
+                Origin = new Vec3f(0.5f, 0, 0.5f),
+                Scale = 1.5f
+            };
+        }
+
 
         /// <summary>
         /// Makes sure that Translation and Rotation is not null
         /// </summary>
-        public void EnsureDefaultValues()
+        public ModelTransform EnsureDefaultValues()
         {
             if (Translation == null) Translation = new Vec3f();
             if (Rotation == null) Rotation = new Vec3f();
+            return this;
         }
 
         public ModelTransform Clone()

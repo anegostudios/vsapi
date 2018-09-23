@@ -47,7 +47,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="entityClass"></param>
         /// <returns></returns>
-        Entity CreateEntity(EntityType entityType);
+        Entity CreateEntity(EntityProperties entityType);
 
         /// <summary>
         /// Creates an instance of a mountable that has been registered with api.RegisterMountable

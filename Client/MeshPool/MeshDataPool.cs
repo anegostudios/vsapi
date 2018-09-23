@@ -10,8 +10,19 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class MeshDataPool
     {
+        /// <summary>
+        /// The maximum parts for this pool.
+        /// </summary>
         public int MaxPartsPerPool;
+
+        /// <summary>
+        /// The current vertices for this pool.
+        /// </summary>
         public int VerticesPoolSize;
+
+        /// <summary>
+        /// the amount of indicies for this pool.
+        /// </summary>
         public int IndicesPoolSize;
 
         internal MeshRef modelRef;
@@ -21,21 +32,54 @@ namespace Vintagestory.API.Client
         internal List<ModelDataPoolLocation> poolLocations = new List<ModelDataPoolLocation>();
 
         // For final rendering 
+
+        /// <summary>
+        /// The starting byte for each index.
+        /// </summary>
         public int[] indicesStartsByte;
+
+        /// <summary>
+        /// The size of each index.
+        /// </summary>
         public int[] indicesSizes;
+
+        /// <summary>
+        /// How many index groups are there.
+        /// </summary>
         public int indicesGroupsCount = 0;
         
 
         // Current position on where the next free vertex/index can be placed
+        /// <summary>
+        /// the position of the indices.
+        /// </summary>
         public int indicesPosition;
+
+        /// <summary>
+        /// the position of the vertices.
+        /// </summary>
         public int verticesPosition;
 
+        /// <summary>
+        /// The current fragmentaton.
+        /// </summary>
         public float CurrentFragmentation;
+
+        /// <summary>
+        /// How many of the vertices are used.
+        /// </summary>
         public int UsedVertices;
 
         internal Vec3i poolOrigin;
 
+        /// <summary>
+        /// How many triangles are rendered.
+        /// </summary>
         public int RenderedTriangles;
+
+        /// <summary>
+        /// How many triangles are allocated.
+        /// </summary>
         public int AllocatedTris;
 
 
@@ -45,6 +89,17 @@ namespace Vintagestory.API.Client
             this.VerticesPoolSize = verticesPoolSize;
         }
 
+        /// <summary>
+        /// Allocates a new pool for mesh data.
+        /// </summary>
+        /// <param name="capi">The core client API</param>
+        /// <param name="verticesPoolSize">The vertices pool size.</param>
+        /// <param name="indicesPoolSize">The index pool size.</param>
+        /// <param name="maxPartsPerPool">The maximum parts per pool.</param>
+        /// <param name="customFloats">The custom floats of the pool.</param>
+        /// <param name="customBytes">The custom bytes of the pool.</param>
+        /// <param name="customInts">The custom ints of the pool.</param>
+        /// <returns>The resulting mesh data pool.</returns>
         public static MeshDataPool AllocateNewPool(ICoreClientAPI capi, int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
         {
             MeshDataPool pool = new MeshDataPool(verticesPoolSize, indicesPoolSize, maxPartsPerPool);
@@ -81,7 +136,7 @@ namespace Vintagestory.API.Client
                 0, // MeshData.NormalSize * MaxVertexSize, - normals currently not in use
                 MeshData.UvSize * verticesPoolSize,
                 MeshData.RgbaSize * verticesPoolSize,
-                MeshData.Rgba2Size * verticesPoolSize,
+                MeshData.RgbaSize * verticesPoolSize,
                 MeshData.FlagsSize * verticesPoolSize,
                 MeshData.IndexSize * indicesPoolSize,
                 customFloats,
@@ -95,6 +150,14 @@ namespace Vintagestory.API.Client
             return pool;
         }
 
+        /// <summary>
+        /// Attempts to add the new model.
+        /// </summary>
+        /// <param name="capi">The core client API</param>
+        /// <param name="modeldata">The model to add</param>
+        /// <param name="modelOrigin">The origin point of the model.</param>
+        /// <param name="frustumCullSphere">The culling sphere.</param>
+        /// <returns>The location of the model (and the data) in the pool.</returns>
         public ModelDataPoolLocation TryAdd(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere)
         {
             if (poolLocations.Count >= MaxPartsPerPool) return null;
@@ -177,7 +240,7 @@ namespace Vintagestory.API.Client
             modeldata.XyzOffset = vertexPosition * MeshData.XyzSize;
             modeldata.NormalsOffset = vertexPosition * MeshData.NormalSize;
             modeldata.RgbaOffset = vertexPosition * MeshData.RgbaSize;
-            modeldata.Rgba2Offset = vertexPosition * MeshData.Rgba2Size;
+            modeldata.Rgba2Offset = vertexPosition * MeshData.RgbaSize;
             modeldata.UvOffset = vertexPosition * MeshData.UvSize;
             modeldata.FlagsOffset = vertexPosition * MeshData.FlagsSize;
             modeldata.IndicesOffset = indexPosition * MeshData.IndexSize;
@@ -226,7 +289,10 @@ namespace Vintagestory.API.Client
             return poolLocation;
         }
 
-
+        /// <summary>
+        /// Attempts to remove the model from the pool if the model exists.  Will throw an invalid call or an InvalidOperationException if used improperly.
+        /// </summary>
+        /// <param name="location">The location of the model data.</param>
         public void RemoveLocation(ModelDataPoolLocation location)
         {
             if (location.poolId != poolId)
@@ -236,7 +302,7 @@ namespace Vintagestory.API.Client
 
             if (!poolLocations.Remove(location))
             {    
-                throw new Exception("Tried to remove mesh that does not exist. This shouldnn't happen");
+                throw new InvalidOperationException("Tried to remove mesh that does not exist. This shouldnn't happen");
             }
 
             // Last location?
@@ -258,14 +324,23 @@ namespace Vintagestory.API.Client
             CalcFragmentation();
         }
 
-
+        /// <summary>
+        /// Draw the model.
+        /// </summary>
+        /// <param name="capi">The core client API</param>
+        /// <param name="frustumCuller">The area where models can be viewed from the camera.</param>
+        /// <param name="frustumCullMode">The mode of the culling.</param>
         public void Draw(ICoreClientAPI capi, FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
             FrustumCull(frustumCuller, frustumCullMode);
             capi.Render.RenderMesh(modelRef, indicesStartsByte, indicesSizes, indicesGroupsCount);
         }
 
-
+        /// <summary>
+        /// Cleans up the rendering view of the models.
+        /// </summary>
+        /// <param name="frustumCuller">The area where models can be viewed from the camera.</param>
+        /// <param name="frustumCullMode">The mode of the culling.</param>
         public void FrustumCull(FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
             indicesGroupsCount = 0;
@@ -295,17 +370,27 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        /// <summary>
+        /// Is this an empty pool.
+        /// </summary>
+        /// <returns>true if the pool is empty.</returns>
         public bool IsEmpty()
         {
             return poolLocations.Count == 0;
         }
 
+        /// <summary>
+        /// Disposes of the current mesh pool.
+        /// </summary>
+        /// <param name="capi">The core client API</param>
         public void Dispose(ICoreClientAPI capi)
         {
             capi.Render.DeleteMesh(modelRef);
         }
 
+        /// <summary>
+        /// Calculates the current fragmentation of the mesh.
+        /// </summary>
         public void CalcFragmentation()
         {
             int curPos = 0;
@@ -328,6 +413,10 @@ namespace Vintagestory.API.Client
             CurrentFragmentation = (float)unusedVertices / verticesPosition;
         }
 
+        /// <summary>
+        /// Gets the current fragmentation of the pool.
+        /// </summary>
+        /// <returns></returns>
         public float GetFragmentation()
         {
             return CurrentFragmentation;
@@ -335,19 +424,49 @@ namespace Vintagestory.API.Client
     }
 
 
-
+    /// <summary>
+    /// Contains all the data for the given model pool.
+    /// </summary>
     public class ModelDataPoolLocation
     {
+        /// <summary>
+        /// The ID of the pool model.
+        /// </summary>
         public int poolId;
+
+        /// <summary>
+        /// Where the indices of the model start.
+        /// </summary>
         public int indicesStart;
+
+        /// <summary>
+        /// Where the indices of the model end.
+        /// </summary>
         public int indicesEnd;
 
+        /// <summary>
+        /// Where the vertices start.
+        /// </summary>
         public int verticesStart;
+
+        /// <summary>
+        /// Where the vertices end.
+        /// </summary>
         public int verticesEnd;
 
+        /// <summary>
+        /// The culling sphere.
+        /// </summary>
         public Sphere frustumCullSphere;
 
+        /// <summary>
+        /// Whether this model is visible or not.
+        /// </summary>
         public bool Visible;
+
+        /// <summary>
+        /// Used for models with movements (like a door).
+        /// </summary>
         public int TransitionCounter;
 
         private bool UpdateVisibleFlag(bool inFrustum)

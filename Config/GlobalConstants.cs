@@ -173,7 +173,7 @@ namespace Vintagestory.API.Config
         public static AssetLocation EntityBlockFallingTypeCode = new AssetLocation("blockfalling");
 
         /// <summary>
-        /// Itemstack attributes that should be ignored during a stack.Collectible.Equals() comparison
+        /// Default Itemstack attributes that should be ignored during a stack.Collectible.Equals() comparison
         /// </summary>
         public static string[] IgnoredStackAttributes = new string[] { "temperature", "toolMode" };
 

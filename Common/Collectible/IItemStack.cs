@@ -48,7 +48,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="sourceStack"></param>
         /// <returns></returns>
-        bool Equals(ItemStack sourceStack, params string[] ignoreAttributeSubTrees);
+        bool Equals(IWorldAccessor worldForResolve, ItemStack sourceStack, params string[] ignoreAttributeSubTrees);
         
         /// <summary>
         /// Serializes this itemstack into a byte stream

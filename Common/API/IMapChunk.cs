@@ -44,6 +44,11 @@ namespace Vintagestory.API.Common
         ushort[] TopRockIdMap { get; }
 
         /// <summary>
+        /// The highest position of any non-air block
+        /// </summary>
+        ushort YMax { get; set; }
+
+        /// <summary>
         /// Causes the TTL counter to reset so that it the mapchunk does not unload. No effect when called client side.
         /// </summary>
         void MarkFresh();

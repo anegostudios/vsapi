@@ -31,6 +31,18 @@ namespace Vintagestory.API.Datastructures
             OnModified.Add(new TreeModifiedListener() { path = path, listener = listener });
         }
 
+        public void UnregisterListener(Action listener)
+        {
+            foreach (var val in OnModified)
+            {
+                if (val.listener == listener)
+                {
+                    OnModified.Remove(val);
+                    return;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Marks the whole attribute tree as dirty, so that it will be resent to all connected clients. Does not trigger modified listeners (because it makes no sense and breaks things)

@@ -200,7 +200,7 @@ namespace Vintagestory.API.Client
             {
                 Color = ElementGeometrics.LightBrownTextColor,
                 FontWeight = FontWeight.Bold,
-                Fontname = ElementGeometrics.decorativeFontName,
+                Fontname = ElementGeometrics.DecorativeFontName,
                 UnscaledFontsize = 24
             };
         }
@@ -211,7 +211,7 @@ namespace Vintagestory.API.Client
             {
                 Color = ElementGeometrics.LightBrownHoverTextColor,
                 FontWeight = FontWeight.Bold,
-                Fontname = ElementGeometrics.decorativeFontName,
+                Fontname = ElementGeometrics.DecorativeFontName,
                 UnscaledFontsize = 24
             };
         }
@@ -221,7 +221,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = new double[] { 1, 1, 1, 0.9 },
-                Fontname = ElementGeometrics.standardFontName,
+                Fontname = ElementGeometrics.StandardFontName,
                 UnscaledFontsize = 18
             };
         }
@@ -231,7 +231,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = new double[] { 0, 0, 0, 0.9 },
-                Fontname = ElementGeometrics.standardFontName,
+                Fontname = ElementGeometrics.StandardFontName,
                 UnscaledFontsize = ElementGeometrics.SmallFontSize
             };
         }
@@ -241,7 +241,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = new double[] { 234 / 255.0, 220 / 255.0, 206 / 255.0, 1 },
-                Fontname = ElementGeometrics.decorativeFontName,
+                Fontname = ElementGeometrics.DecorativeFontName,
                 UnscaledFontsize = ElementGeometrics.SmallFontSize,
                 FontWeight = FontWeight.Bold
             };
@@ -252,7 +252,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = new double[] { 234 / 255.0, 220 / 255.0, 206 / 255.0, 1 },
-                Fontname = ElementGeometrics.decorativeFontName,
+                Fontname = ElementGeometrics.DecorativeFontName,
                 UnscaledFontsize = ElementGeometrics.SmallishFontSize,
                 FontWeight = FontWeight.Bold
             };
@@ -264,7 +264,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.standardFontName,
+                Fontname = ElementGeometrics.StandardFontName,
                 UnscaledFontsize = ElementGeometrics.NormalFontSize
             };
         }
@@ -275,7 +275,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.standardFontName,
+                Fontname = ElementGeometrics.StandardFontName,
                 UnscaledFontsize = ElementGeometrics.SmallishFontSize
             };
         }
@@ -286,7 +286,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.standardFontName,
+                Fontname = ElementGeometrics.StandardFontName,
                 UnscaledFontsize = ElementGeometrics.SmallFontSize
             };
 
@@ -298,7 +298,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.standardSemiBoldFontName,
+                Fontname = ElementGeometrics.StandardSemiBoldFontName,
                 UnscaledFontsize = ElementGeometrics.DetailFontSize
             };
 

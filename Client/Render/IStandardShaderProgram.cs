@@ -23,7 +23,16 @@ namespace Vintagestory.API.Client
         float FogMinIn { set; }
         float FogDensityIn { set; }
         float[] ProjectionMatrix { set; }
-        float[] ModelViewMatrix { set; }
+        float[] ModelMatrix { set; }
+        float[] ViewMatrix { set; }
+
         int ExtraGlow { set; }
+
+        float[] ToShadowMapSpaceMatrixFar { set; }
+        float[] ToShadowMapSpaceMatrixNear { set; }
+        
+        int WaterWave { set; }
+        float WaterWaveCounter { set; }
+        Vec3f Playerpos { set; }
     }
 }

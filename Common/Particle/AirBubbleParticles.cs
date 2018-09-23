@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -13,7 +14,7 @@ namespace Vintagestory.API.Common
         public void Init(ICoreAPI api) { }
 
         public IParticlePropertiesProvider[] GetSecondaryParticles() { return null;  }
-        public Block ColorByBlock() { return null; }
+        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
         public bool DieInAir() { return true; }
         public bool DieInLiquid() { return false; }
         public byte GetGlowLevel() { return 0; }
@@ -37,14 +38,14 @@ namespace Vintagestory.API.Common
             return 30;
         }
 
-        public byte[] GetRgbaColor()
+        public int GetRgbaColor(ICoreClientAPI capi)
         {
-            return ColorUtil.HSVa2RGBaBytes(new byte[] {
+            return ColorUtil.HsvToRgba(
                 (byte)GameMath.Clamp(110, 0, 255),
                 (byte)GameMath.Clamp(20 + rand.Next(20), 0, 255),
                 (byte)GameMath.Clamp(220 + rand.Next(30), 0, 255),
                 (byte)GameMath.Clamp(120 + rand.Next(50), 0, 255)
-            });
+            );
 
         }
 

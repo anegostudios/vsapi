@@ -8,15 +8,15 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// List of registered map region generation handlers
         /// </summary>
-        List<MapRegionGenerator> OnMapRegionGen { get; }
+        List<MapRegionGeneratorDelegate> OnMapRegionGen { get; }
         /// <summary>
         /// List of registered map chunk generation handlers
         /// </summary>
-        List<MapChunkGenerator> OnMapChunkGen { get; }
+        List<MapChunkGeneratorDelegate> OnMapChunkGen { get; }
         /// <summary>
         /// List of registered map chunk generation handlers per pass (see EnumWorldGenPass)
         /// </summary>
-        List<ChunkColumnGeneration>[] OnChunkColumnGen { get; }
+        List<ChunkColumnGenerationDelegate>[] OnChunkColumnGen { get; }
         /// <summary>
         /// Empties all three lists
         /// </summary>

@@ -36,7 +36,7 @@ namespace Vintagestory.API.MathTools
             Vec3d pos = entitypos.XYZ;
 
             // Full stop when already inside a collisionbox, but allow a small margin of error
-            // Causes too many issues
+            // Disabled. Causes too many issues
             /*(if (blockWhenInside && IsColliding(worldaccess.BlockAccessor, entity.CollisionBox, pos, false))
             {
                 entity.CollidedVertically = true;
@@ -214,7 +214,57 @@ namespace Vintagestory.API.MathTools
 
 
 
-        
+        /// <summary>
+        /// Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="entityBoxRel"></param>
+        /// <param name="pos"></param>
+        /// <param name="alsoCheckTouch"></param>
+        /// <returns></returns>
+        public Cuboidd GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true)
+        {
+            BlockPos blockPos = new BlockPos();
+            Vec3d blockPosVec = new Vec3d();
+            Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
+
+            int minX = (int)(entityBoxRel.X1 + pos.X);
+            int minY = (int)(entityBoxRel.Y1 + pos.Y - 1);  // -1 for the extra high collision box of fences
+            int minZ = (int)(entityBoxRel.Z1 + pos.Z);
+            int maxX = (int)Math.Ceiling(entityBoxRel.X2 + pos.X);
+            int maxY = (int)Math.Ceiling(entityBoxRel.Y2 + pos.Y);
+            int maxZ = (int)Math.Ceiling(entityBoxRel.Z2 + pos.Z);
+
+            for (int y = minY; y <= maxY; y++)
+            {
+                for (int x = minX; x <= maxX; x++)
+                {
+                    for (int z = minZ; z <= maxZ; z++)
+                    {
+                        Block block = blockAccessor.GetBlock(x, y, z);
+                        blockPos.Set(x, y, z);
+                        blockPosVec.Set(x, y, z);
+
+                        Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
+
+                        for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
+                        {
+                            Cuboidf collBox = collisionBoxes[i];
+                            if (collBox == null) continue;
+
+                            bool colliding = alsoCheckTouch ? entityBox.IntersectsOrTouches(collBox, blockPosVec) : entityBox.Intersects(collBox, blockPosVec);
+                            if (colliding) return collBox.ToDouble().Translate(blockPos);
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+
+
+
 
         public static bool AabbIntersect(Cuboidf aabb, double x, double y, double z, Cuboidf aabb2, Vec3d pos)
         {

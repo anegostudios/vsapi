@@ -16,6 +16,7 @@ namespace Vintagestory.API.Common
         public static AssetCategory lang = new AssetCategory("lang", false, EnumAppSide.Universal);
         public static AssetCategory lore = new AssetCategory("journal", false, EnumAppSide.Universal);
         public static AssetCategory patches = new AssetCategory("patches", false, EnumAppSide.Universal);
+        public static AssetCategory config = new AssetCategory("config", false, EnumAppSide.Universal);
         public static AssetCategory worldproperties = new AssetCategory("worldproperties", true, EnumAppSide.Universal);
         public static AssetCategory sounds = new AssetCategory("sounds", false, EnumAppSide.Universal);
         public static AssetCategory shapes = new AssetCategory("shapes", false, EnumAppSide.Universal);

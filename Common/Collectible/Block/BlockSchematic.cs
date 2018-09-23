@@ -416,7 +416,7 @@ namespace Vintagestory.API.Common
 
 
 
-        public virtual void RotateWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, bool flipVertical = false)
+        public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)
         {
             BlockPos curPos = new BlockPos();
             BlockPos startPos = new BlockPos(1024, 1024, 1024);
@@ -441,12 +441,32 @@ namespace Vintagestory.API.Common
                 Block newBlock = worldForResolve.GetBlock(blockCode);
                 if (newBlock == null) continue;
 
-                if (flipVertical)
+                if (flipAxis != null)
                 {
-                    dy = SizeY - dy;
+                    if (flipAxis == EnumAxis.Y)
+                    {
+                        dy = SizeY - dy;
 
-                    AssetLocation newCode = newBlock.GetVerticallyFlippedBlockCode();
-                    newBlock = worldForResolve.GetBlock(newCode);
+                        AssetLocation newCode = newBlock.GetVerticallyFlippedBlockCode();
+                        newBlock = worldForResolve.GetBlock(newCode);
+                    }
+
+                    if (flipAxis == EnumAxis.X)
+                    {
+                        dx = SizeX - dx;
+
+                        AssetLocation newCode = newBlock.GetHorizontallyFlippedBlockCode((EnumAxis)flipAxis);
+                        newBlock = worldForResolve.GetBlock(newCode);
+                    }
+
+                    if (flipAxis == EnumAxis.Z)
+                    {
+                        dz = SizeZ - dz;
+
+                        AssetLocation newCode = newBlock.GetHorizontallyFlippedBlockCode((EnumAxis)flipAxis);
+                        newBlock = worldForResolve.GetBlock(newCode);
+                    }
+
                 }
 
                 if (angle != 0)
@@ -545,21 +565,31 @@ namespace Vintagestory.API.Common
                 string beData = val.Value;
 
 
-                BlockEntity be = worldForResolve.ClassRegistry.CreateBlockEntity(worldForResolve.GetBlock(BlocksUnpacked[pos]).EntityClass);
-                if (be is IBlockEntityRotatable)
-                {
-                    ITreeAttribute tree = DecodeBlockEntityData(beData);
-                    (be as IBlockEntityRotatable).OnRotated(tree, angle, flipVertical);
-                    beData = StringEncodeTreeAttribute(tree);
-                }
+                string entityclass = worldForResolve.GetBlock(BlocksUnpacked[pos]).EntityClass;
 
-                BlockEntitiesUnpacked[pos] = beData;
+                if (entityclass != null)
+                {
+                    BlockEntity be = worldForResolve.ClassRegistry.CreateBlockEntity(entityclass);
+                    if (be is IBlockEntityRotatable)
+                    {
+                        ITreeAttribute tree = DecodeBlockEntityData(beData);
+                        (be as IBlockEntityRotatable).OnTransformed(tree, angle, flipAxis);
+                        beData = StringEncodeTreeAttribute(tree);
+                    }
+
+                    BlockEntitiesUnpacked[pos] = beData;
+                }
             }
 
 
             Pack(worldForResolve, startPos);
         }
         
+
+
+
+
+
 
         public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos)
         {
@@ -848,18 +878,23 @@ namespace Vintagestory.API.Common
             return 0;
         }
 
-
-        public BlockSchematic Clone()
+        /// <summary>
+        /// Makes a deep copy of the packed schematic. Unpacked data and loaded meta information is not cloned.
+        /// </summary>
+        /// <returns></returns>
+        public BlockSchematic ClonePacked()
         {
             BlockSchematic cloned = new BlockSchematic();
             cloned.SizeX = SizeX;
             cloned.SizeY = SizeY;
             cloned.SizeZ = SizeZ;
+            cloned.GameVersion = GameVersion;
             cloned.BlockCodes = new Dictionary<int, AssetLocation>(BlockCodes);
             cloned.ItemCodes = new Dictionary<int, AssetLocation>(ItemCodes);
             cloned.Indices = new List<uint>(Indices);
             cloned.BlockIds = new List<int>(BlockIds);
             cloned.BlockEntities = new Dictionary<uint, string>(BlockEntities);
+            cloned.Entities = new List<string>(Entities);
             cloned.ReplaceMode = ReplaceMode;
             return cloned;
         }

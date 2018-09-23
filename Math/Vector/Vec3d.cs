@@ -300,6 +300,14 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public Vec3d Set(BlockPos pos)
+        {
+            this.X = pos.X;
+            this.Y = pos.Y;
+            this.Z = pos.Z;
+            return this;
+        }
+
         public float SquareDistanceTo(float x, float y, float z)
         {
             double dx = X - x;

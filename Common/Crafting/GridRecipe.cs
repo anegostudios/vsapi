@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -54,9 +56,18 @@ namespace Vintagestory.API.Common
         /// </summary>
         public AssetLocation Name;
 
+        /// <summary>
+        /// Optional attributes
+        /// </summary>
+        [JsonConverter(typeof(JsonAttributesConverter))]
+        public JsonObject Attributes;
+
+
         public CraftingRecipeIngredient[] resolvedIngredients;
 
         public bool Enabled = true;
+
+        IWorldAccessor world;
 
         /// <summary>
         /// Turns Ingredients into IItemStacks
@@ -65,6 +76,8 @@ namespace Vintagestory.API.Common
         /// <returns>True on successful resolve</returns>
         public bool ResolveIngredients(IWorldAccessor world)
         {
+            this.world = world;
+
             IngredientPattern = IngredientPattern.Replace(",", "").Replace("\t", "").Replace("\r", "").Replace("\n", "");
 
             if (IngredientPattern == null || Width * Height != IngredientPattern.Length) {
@@ -209,7 +222,7 @@ namespace Vintagestory.API.Common
                 bool found = false;
                 for (int j = 0; j < exactMatchIngredients.Count; j++)
                 {
-                    if (exactMatchIngredients[j].ResolvedItemstack.Equals(stack, GlobalConstants.IgnoredStackAttributes))
+                    if (exactMatchIngredients[j].ResolvedItemstack.Satisfies(stack))
                     {
                         exactMatchIngredients[j].ResolvedItemstack.StackSize += stack.StackSize;
                         found = true;
@@ -226,11 +239,11 @@ namespace Vintagestory.API.Common
                 
                 for (int j = 0; j < exactMatchIngredients.Count; j++)
                 {
-                    if (exactMatchIngredients[j].ResolvedItemstack.Equals(inStack, GlobalConstants.IgnoredStackAttributes))
+                    if (exactMatchIngredients[j].ResolvedItemstack.Satisfies(inStack))
                     {
                         int quantity = Math.Min(exactMatchIngredients[j].ResolvedItemstack.StackSize, inStack.StackSize);
 
-                        inStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlots[i], exactMatchIngredients[j], byPlayer, quantity);
+                        inStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlots[i], this, exactMatchIngredients[j], byPlayer, quantity);
                         
                         exactMatchIngredients[j].ResolvedItemstack.StackSize -= quantity;
 
@@ -255,7 +268,7 @@ namespace Vintagestory.API.Common
                     {
                         int quantity = Math.Min(ingredient.Quantity, inStack.StackSize);
 
-                        inStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlots[i], wildcardIngredients[j], byPlayer, quantity);
+                        inStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlots[i], this, wildcardIngredients[j], byPlayer, quantity);
 
                         if (ingredient.IsTool)
                         {
@@ -294,7 +307,7 @@ namespace Vintagestory.API.Common
 
                     int quantity = ingredient.IsWildCard ? ingredient.Quantity : ingredient.ResolvedItemstack.StackSize;
 
-                    slot.Itemstack.Collectible.OnConsumedByCrafting(inputSlots, slot, ingredient, byPlayer, quantity);
+                    slot.Itemstack.Collectible.OnConsumedByCrafting(inputSlots, slot, this, ingredient, byPlayer, quantity);
                 }
             }
 
@@ -348,7 +361,7 @@ namespace Vintagestory.API.Common
                     bool found = false;
                     for (int j = 0; j < suppliedStacks.Count; j++)
                     {
-                        if (suppliedStacks[j].Equals(suppliedSlots[i].Itemstack, GlobalConstants.IgnoredStackAttributes))
+                        if (suppliedStacks[j].Satisfies(suppliedSlots[i].Itemstack))
                         {
                             suppliedStacks[j].StackSize += suppliedSlots[i].Itemstack.StackSize;
                             found = true;
@@ -377,6 +390,8 @@ namespace Vintagestory.API.Common
                             CraftingRecipeIngredient.WildCardMatch(ingredient.Code, inputStack.Collectible.Code, ingredient.AllowedVariants) &&
                             inputStack.StackSize >= ingredient.Quantity
                         ;
+
+                        foundw &= inputStack.Collectible.MatchesForCrafting(inputStack, this, ingredient);
                     }
 
                     if (!foundw) return false;
@@ -388,7 +403,7 @@ namespace Vintagestory.API.Common
                 bool found = false;
                 for (int j = 0; j < ingredientStacks.Count; j++)
                 {
-                    if (ingredientStacks[j].Equals(stack, GlobalConstants.IgnoredStackAttributes))
+                    if (ingredientStacks[j].Equals(world, stack, GlobalConstants.IgnoredStackAttributes))
                     {
                         ingredientStacks[j].StackSize += stack.StackSize;
                         found = true;
@@ -413,9 +428,12 @@ namespace Vintagestory.API.Common
                 for (int j = 0; !found && j < suppliedStacks.Count; j++)
                 {
                     found =
-                        ingredientStacks[i].Equals(suppliedStacks[j], GlobalConstants.IgnoredStackAttributes) &&
-                        ingredientStacks[i].StackSize <= suppliedStacks[j].StackSize
+                        ingredientStacks[i].Satisfies(suppliedStacks[j]) &&
+                        ingredientStacks[i].StackSize <= suppliedStacks[j].StackSize &&
+                        suppliedStacks[j].Collectible.MatchesForCrafting(suppliedStacks[j], this, null)
                     ;
+
+                    if (found) suppliedStacks.RemoveAt(j);
                 }
 
                 equals &= found;
@@ -440,6 +458,8 @@ namespace Vintagestory.API.Common
                     if (inputStack == null) continue;
 
                     if (!ingredient.SatisfiesAsIngredient(inputStack)) return false;
+
+                    if (!inputStack.Collectible.MatchesForCrafting(inputStack, this, ingredient)) return false;
                 }
             }
 
@@ -483,6 +503,12 @@ namespace Vintagestory.API.Common
             }
 
             writer.Write(Name.ToShortString());
+
+            writer.Write(Attributes == null);
+            if (Attributes != null)
+            {
+                writer.Write(Attributes.Token.ToString());
+            }
         }
 
         /// <summary>
@@ -510,6 +536,10 @@ namespace Vintagestory.API.Common
 
             Name = new AssetLocation(reader.ReadString());
 
+            if (!reader.ReadBoolean())
+            {
+                Attributes = new JsonObject(JToken.Parse(reader.ReadString()));
+            }
         }
 
         /// <summary>
@@ -532,6 +562,7 @@ namespace Vintagestory.API.Common
             recipe.Shapeless = Shapeless;
             recipe.Output = Output.Clone();
             recipe.Name = Name;
+            recipe.Attributes = Attributes?.Clone();
             
 
             return recipe;

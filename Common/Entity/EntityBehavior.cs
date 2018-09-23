@@ -19,7 +19,7 @@ namespace Vintagestory.API.Common.Entities
             this.entity = entity;
         }
 
-        public virtual void Initialize(EntityType entityType, JsonObject attributes)
+        public virtual void Initialize(EntityProperties properties, JsonObject attributes)
         {
             
         }
@@ -42,7 +42,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
         
-        public virtual void OnEntityReceiveSaturation(float saturation)
+        public virtual void OnEntityReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
         {
             
         }
@@ -70,6 +70,11 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="key"></param>
         /// <param name="data"></param>
         public virtual void Notify(string key, object data)
+        {
+            
+        }
+
+        public virtual void GetInfoText(StringBuilder infotext)
         {
             
         }

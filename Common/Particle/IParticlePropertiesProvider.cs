@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -51,16 +52,10 @@ namespace Vintagestory.API.Common
         Vec3f GetVelocity(Vec3d pos);
 
         /// <summary>
-        /// Rgba Color, one byte per channel. You can e.g. use ColorUtil.ToBytes(ColorUtil.ColorFromArgb(255, 0, 200, 50)) to for a more readable color selection.
+        /// The particles Rgba Color
         /// </summary>
         /// <returns></returns>
-        byte[] GetRgbaColor();
-
-        /// <summary>
-        /// If true GetRgbaColor() is ignored and instead uses the given blocks texture as color reference
-        /// </summary>
-        /// <returns></returns>
-        Block ColorByBlock(); 
+        int GetRgbaColor(ICoreClientAPI capi);
 
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
@@ -171,6 +166,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns></returns>
         IParticlePropertiesProvider[] GetSecondaryParticles();
+
+        /// <summary>
+        /// The particle to spawn upon the particle death.
+        /// </summary>
+        /// <returns></returns>
+        IParticlePropertiesProvider[] GetDeathParticles();
 
         /// <summary>
         /// Updates instance related state for secondary particles based on the given parent particle instance

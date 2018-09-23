@@ -31,6 +31,10 @@ namespace Vintagestory.API.Datastructures
 
             switch (type)
             {
+                case EnumAttributeType.Bool:
+                    {
+                        return new BoolAttribute(value == "true");
+                    }
                 case EnumAttributeType.Int:
                     {
                         int val = 0;

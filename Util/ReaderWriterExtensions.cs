@@ -31,5 +31,28 @@ namespace Vintagestory.API.Util
 
             return values;
         }
+
+
+        public static void WriteArray(this BinaryWriter writer, int[] values)
+        {
+            writer.Write(values.Length);
+            for (int i = 0; i < values.Length; i++)
+            {
+                writer.Write(values[i]);
+            }
+        }
+
+        public static int[] ReadIntArray(this BinaryReader reader)
+        {
+            int length = reader.ReadInt32();
+            int[] values = new int[length];
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = reader.ReadInt32();
+            }
+
+            return values;
+        }
     }
 }

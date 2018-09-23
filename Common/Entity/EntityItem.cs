@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -10,11 +11,20 @@ namespace Vintagestory.API.Common
     {
         ItemStack stack;
         public long itemSpawnedMilliseconds;
+        Vec3d tmpPos = new Vec3d();
+        int counter = 0;
+        bool stuckInBlock;
 
         public ItemStack Itemstack
         {
             get { return WatchedAttributes.GetItemstack("itemstack"); }
             set { WatchedAttributes.SetItemstack("itemstack", value); stack = value; }
+        }
+
+        public string ByPlayerUid
+        {
+            get { return WatchedAttributes.GetString("byPlayerUid"); }
+            set { WatchedAttributes.SetString("byPlayerUid", value); }
         }
 
         public override float MaterialDensity
@@ -39,30 +49,27 @@ namespace Vintagestory.API.Common
 
         public EntityItem() : base()
         {
-            AddBehavior(new EntityBehaviorPassivePhysics(this));
+            
         }
 
-        public override void Initialize(ICoreAPI api, long chunkindex3d)
+        public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
         {
-            base.Initialize(api, chunkindex3d);
+            base.Initialize(properties, api, chunkindex3d);
 
-            if (Itemstack == null)
+            if (Itemstack == null || !Itemstack.ResolveBlockOrItem(World))
             {
                 Die();
+                this.Itemstack = null;
+                return;
             }
-            else
-            {
-                if (!Itemstack.ResolveBlockOrItem(World))
-                {
-                    this.Itemstack = null;
-                    Die();
-                }
-            }
+
+
+
 
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;
-
             Swimming = FeetInLiquid = World.BlockAccessor.GetBlock(Pos.AsBlockPos).IsLiquid();
         }
+
 
         public override void OnGameTick(float dt)
         {
@@ -72,14 +79,84 @@ namespace Vintagestory.API.Common
             {
                 Itemstack.Collectible.OnGroundIdle(this);
             }
+
+            
+            if (counter++ > 10 || stuckInBlock)
+            {
+                stuckInBlock = false;
+                counter = 0;
+                Properties.Habitat = EnumHabitat.Land;
+                if (!Swimming)
+                {
+                    tmpPos.Set(LocalPos.X, LocalPos.Y, LocalPos.Z);
+                    Cuboidd collbox = World.CollisionTester.GetCollidingCollisionBox(World.BlockAccessor, CollisionBox, tmpPos, false);
+
+                    if (collbox != null)
+                    {
+                        PushoutOfCollisionbox(dt, collbox);
+                        stuckInBlock = true;
+                    }
+                }
+            }
         }
+
+        private void PushoutOfCollisionbox(float dt, Cuboidd collBox)
+        {
+            double posX = LocalPos.X;
+            double posY = LocalPos.Y;
+            double posZ = LocalPos.Z;
+            /// North: Negative Z
+            /// East: Positive X
+            /// South: Positive Z
+            /// West: Negative X
+
+            double[] distByFacing = new double[]
+            {
+                posZ - collBox.Z1, // N
+                collBox.X2 - posX, // E
+                collBox.Z2 - posZ, // S
+                posX - collBox.X1, // W
+                collBox.Y2 - posY, // U
+                99 // D
+            };
+
+            BlockFacing pushDir = BlockFacing.UP;
+            double shortestDist = 99;
+            for (int i = 0; i < distByFacing.Length; i++)
+            {
+                BlockFacing face = BlockFacing.ALLFACES[i];
+                if (distByFacing[i] < shortestDist && !World.CollisionTester.IsColliding(World.BlockAccessor, CollisionBox, tmpPos.Set(posX + face.Normali.X, posY, posZ + face.Normali.Z)))
+                {
+                    shortestDist = distByFacing[i];
+                    pushDir = face;
+                }    
+            }
+
+            dt = Math.Min(dt, 0.1f);
+
+            LocalPos.X += pushDir.Normali.X * dt;
+            LocalPos.Y += pushDir.Normali.Y * dt;
+            LocalPos.Z += pushDir.Normali.Z * dt;
+
+            LocalPos.Motion.X = pushDir.Normali.X * dt;
+            LocalPos.Motion.Y = pushDir.Normali.Y * dt * 2;
+            LocalPos.Motion.Z = pushDir.Normali.Z * dt;
+
+            Properties.Habitat = EnumHabitat.Air;
+        }
+
+
+
+
+
+
+
 
         public static EntityItem FromItemstack(ItemStack itemstack, Vec3d position, Vec3d velocity, IWorldAccessor world)
         {
             EntityItem item = new EntityItem();
-
-            item.SetType(world.GetEntityType(GlobalConstants.EntityItemTypeCode));
-            item.TrackingRange = 3 * world.BlockAccessor.ChunkSize;
+            item.Code = GlobalConstants.EntityItemTypeCode;
+            item.SimulationRange = 3 * world.BlockAccessor.ChunkSize;
             item.Itemstack = itemstack;
 
             item.ServerPos.SetPos(position);

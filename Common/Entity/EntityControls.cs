@@ -56,7 +56,8 @@ namespace Vintagestory.API.Common
 
         public int UsingCount;
         public long UsingBeginMS;
-        public ModelTransform UsingHeldItemTransform;
+        public ModelTransform UsingHeldItemTransformBefore;
+        public ModelTransform UsingHeldItemTransformAfter;
 
         public float MovespeedMultiplier = 1f;
         public bool Dirty;

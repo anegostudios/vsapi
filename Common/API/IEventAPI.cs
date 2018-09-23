@@ -33,7 +33,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called whenever a chunk was marked dirty (as in, its blocks or light values have been modified)
         /// </summary>
-        event ChunkDirty OnChunkDirty;
+        event ChunkDirty ChunkDirty;
 
         /// <summary>
         /// There's 2 global event busses, 1 on the client and 1 on the server. This pushes an event onto the bus.

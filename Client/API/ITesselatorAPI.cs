@@ -4,6 +4,9 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Manager interface for Tesselators.
+    /// </summary>
     public interface ITesselatorManager
     {
         /// <summary>
@@ -12,6 +15,20 @@ namespace Vintagestory.API.Client
         /// <param name="block"></param>
         /// <returns></returns>
         MeshData GetDefaultBlockMesh(Block block);
+
+        /// <summary>
+        /// Returns the default block mesh ref that being used by the engine when rendering a block in the inventory. The alternate and inventory versions are seperate.
+        /// </summary>
+        /// <param name="block"></param>
+        /// <returns></returns>
+        MeshRef GetDefaultBlockMeshRef(Block block);
+
+        /// <summary>
+        /// Returns the default block mesh ref that being used by the engine when rendering an item in the inventory. The alternate and inventory versions are seperate.
+        /// </summary>
+        /// <param name="block"></param>
+        /// <returns></returns>
+        MeshRef GetDefaultItemMeshRef(Item block);
     }
 
     /// <summary>
@@ -147,6 +164,6 @@ namespace Vintagestory.API.Client
         /// <param name="altTextureNumber"></param>
         /// <param name="returnNullWhenMissing"></param>
         /// <returns></returns>
-        ITexPositionSource GetTextureSource(EntityType entity, int altTextureNumber = 0, bool returnNullWhenMissing = false);
+        ITexPositionSource GetTextureSource(Entity entity, int altTextureNumber = 0, bool returnNullWhenMissing = false);
     }
 }

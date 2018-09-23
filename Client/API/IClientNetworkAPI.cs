@@ -64,9 +64,18 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sends given packet to server. For use with inventory supplied network packets only, since the packet format is not exposed to the api 
         /// </summary>
-        /// <param name="packetClient"></param>
+        /// <param name="packetClient">The network packet to send.</param>
         void SendPacketClient(object packetClient);
 
+        /// <summary>
+        /// Sends the current hand interaction.  
+        /// </summary>
+        /// <param name="mouseButton">the current mouse button press</param>
+        /// <param name="blockSelection">the currently selected Block (if there is one)</param>
+        /// <param name="entitySelection">the currently selected Entity (if there is one)</param>
+        /// <param name="beforeUseType"></param>
+        /// <param name="state">The state of the hand.</param>
+        /// <param name="cancelReason">The reason we cancelled the use of an item (if there is  one)</param>
         void SendHandInteraction(int mouseButton, BlockSelection blockSelection, EntitySelection entitySelection, EnumHandInteract beforeUseType, int state, EnumItemUseCancelReason cancelReason);
     }
 }

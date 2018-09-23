@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
         float minValue = 0;
         float maxValue = 100;
         float value = 32;
-        float lockedValue = 0;
+        float lineInterval = 10;
 
         double[] color;
         bool rightToLeft = false;
@@ -80,11 +80,8 @@ namespace Vintagestory.API.Client
             ctx.LineWidth = scaled(1.8);
 
 
-            double[] fatrgba = (double[])ElementGeometrics.FatBarColor.Clone();
-            fatrgba[3] = 0.3f;
-
-            int lines = 10;
-            float lockCrossout = lockedValue / (maxValue - minValue);
+            int lines = (int)((maxValue - minValue) / lineInterval);
+            
             for (int i = 1; i < lines; i++)
             {
                 ctx.NewPath();
@@ -92,30 +89,10 @@ namespace Vintagestory.API.Client
 
                 double x = (Bounds.InnerWidth * i) / lines;
 
-                ctx.MoveTo(x, 1);
+                ctx.MoveTo(x, 0);
                 ctx.LineTo(x, Math.Max(3, Bounds.InnerHeight - 1));
                 ctx.ClosePath();
                 ctx.Stroke();
-
-                if (lockCrossout > 0)
-                {
-                    double len = Math.Min(lockCrossout, 1f / lines) * Bounds.InnerWidth;
-
-                    ctx.NewPath();
-                    ctx.SetSourceRGBA(fatrgba);
-                    ctx.MoveTo((Bounds.InnerWidth * (lines - i)) / lines + (1f / lines * Bounds.InnerWidth - len), 1);
-                    ctx.LineTo((Bounds.InnerWidth * (lines - i)) / lines + len + (1f / lines * Bounds.InnerWidth - len), Math.Max(3, Bounds.InnerHeight - 1));
-                    ctx.ClosePath();
-                    ctx.Stroke();
-
-                    ctx.NewPath();
-                    ctx.MoveTo((Bounds.InnerWidth * (lines - i)) / lines + (1f / lines * Bounds.InnerWidth - len), Math.Max(3, Bounds.InnerHeight - 1));
-                    ctx.LineTo((Bounds.InnerWidth * (lines - i)) / lines + len + (1f / lines * Bounds.InnerWidth - len), 1);
-                    ctx.ClosePath();
-                    ctx.Stroke();
-                }
-
-                lockCrossout -= 1f / lines;
             }
 
 
@@ -178,6 +155,10 @@ namespace Vintagestory.API.Client
             api.Render.RenderTexture(valueTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
         }
 
+        public void SetLineInterval(float value)
+        {
+            lineInterval = value;
+        }
 
         public void SetValue(float value)
         {
@@ -202,12 +183,7 @@ namespace Vintagestory.API.Client
             ComposeValueOverlay();
             ComposeFlashOverlay();
         }
-
-        internal void SetLocked(float healthlocked)
-        {
-            lockedValue = healthlocked;
-        }
-
+        
         public override void Dispose()
         {
             base.Dispose();

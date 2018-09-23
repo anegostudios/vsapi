@@ -105,13 +105,33 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Plays a sound, non location specific
         /// </summary>
-        /// <param name="soundname"></param>
+        /// <param name="soundname">The name of the sound</param>
+        /// <param name="randomizePitch">Should we randomize the Pitch?</param>
         void PlaySound(string soundname, bool randomizePitch = false);
 
+        /// <summary>
+        /// Plays a sound, non location specific.
+        /// </summary>
+        /// <param name="soundname">The name of the sound</param>
+        /// <param name="randomizePitch">Should we randomize the pitch?</param>
         void PlaySound(AssetLocation soundname, bool randomizePitch = false);
 
+        /// <summary>
+        /// Requests the given GUI to be given focus.
+        /// </summary>
+        /// <param name="guiDialog">The dialogue wanting attention.</param>
         void RequestFocus(GuiDialog guiDialog);
+
+        /// <summary>
+        /// Triggers the opening of a dialogue.  
+        /// </summary>
+        /// <param name="guiDialog">The dialogue to be opened.</param>
         void TriggerDialogOpened(GuiDialog guiDialog);
+
+        /// <summary>
+        /// Triggers the closing of a dialogue.
+        /// </summary>
+        /// <param name="guiDialog">The dialogue to be closed.</param>
         void TriggerDialogClosed(GuiDialog guiDialog);
     }
 }

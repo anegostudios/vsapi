@@ -284,17 +284,6 @@ namespace Vintagestory.API.Server
         Block[] SearchBlockTypes(string codeBeginsWith, string domain = GlobalConstants.DefaultDomain);
 
 
-        /// <summary>
-        /// Sends given player a list of block positions that should be highlighted
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="blocks"></param>
-        /// <param name="mode"></param>
-        /// <param name="shape">When arbitrary, the blocks list represents the blocks to be highlighted. When Cube the blocks list should contain 2 positions for start and end</param>
-        void HighlightBlocks(IPlayer player, List<BlockPos> blocks, List<int> colors, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
-
-        void HighlightBlocks(IPlayer player, List<BlockPos> blocks, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
-
         #endregion
 
 

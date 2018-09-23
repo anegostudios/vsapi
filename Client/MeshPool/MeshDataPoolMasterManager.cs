@@ -14,11 +14,19 @@ namespace Vintagestory.API.Client
         List<MeshDataPool> modelPools = new List<MeshDataPool>();
         ICoreClientAPI capi;
 
+        /// <summary>
+        /// Initializes the master mesh data pool.
+        /// </summary>
+        /// <param name="capi">The Client API.</param>
         public MeshDataPoolMasterManager(ICoreClientAPI capi)
         {
             this.capi = capi;
         }
 
+        /// <summary>
+        /// Removes the models with the given locations.
+        /// </summary>
+        /// <param name="locations">The locations of the model data.</param>
         public void RemoveModelData(ModelDataPoolLocation[] locations)
         {
             for (int i = 0; i < locations.Length; i++)
@@ -33,12 +41,20 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Adds a new pool to the master pool.
+        /// </summary>
+        /// <param name="pool">The mesh data pool to add.</param>
         public void AddModelDataPool(MeshDataPool pool)
         {
             pool.poolId = modelPools.Count;
             modelPools.Add(pool);
         }
 
+        /// <summary>
+        /// Cleans up and gets rid of all the pools.
+        /// </summary>
+        /// <param name="capi">The client API.</param>
         public void DisposeAllPools(ICoreClientAPI capi)
         {
             for (int i = 0; i < modelPools.Count; i++)
@@ -47,6 +63,10 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Calculates the fragmentation.
+        /// </summary>
+        /// <returns>The resulting calculation.</returns>
         public float CalcFragmentation()
         {
             long totalUsed = 0;
@@ -60,6 +80,10 @@ namespace Vintagestory.API.Client
             return (float)(1 - (double)totalUsed / (double)totalAllocated);
         }
 
+        /// <summary>
+        /// The number of model pools in this master manager.
+        /// </summary>
+        /// <returns>The number of model pools</returns>
         public int QuantityModelDataPools()
         {
             return modelPools.Count;

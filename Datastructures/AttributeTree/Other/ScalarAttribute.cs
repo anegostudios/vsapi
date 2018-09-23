@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Common;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Datastructures
@@ -11,7 +12,7 @@ namespace Vintagestory.API.Datastructures
     {
         public T value;
 
-        public virtual bool Equals(IAttribute attr)
+        public virtual bool Equals(IWorldAccessor worldForResolve, IAttribute attr)
         {
             return attr.GetValue().Equals(value) || EqualityUtil.NumberEquals(value as object, attr.GetValue());
         }
@@ -26,7 +27,7 @@ namespace Vintagestory.API.Datastructures
             return value.ToString();
         }
 
-        public string ToJsonToken()
+        public virtual string ToJsonToken()
         {
             return value.ToString();
         }

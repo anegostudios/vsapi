@@ -60,7 +60,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; boxes != null && i < boxes.Length; i++)
             {
                 Cuboidf box = boxes[i];
-                Vec3d playerEye = capi.World.Player.Entity.Pos.XYZ.Add(0, capi.World.Player.Entity.EyeHeight(), 0);
+                Vec3d playerEye = capi.World.Player.Entity.Pos.XYZ.Add(0, capi.World.Player.Entity.EyeHeight, 0);
                 dist = Math.Min(dist, box.ToDouble().Translate(blockEntityPos.X, blockEntityPos.Y, blockEntityPos.Z).ShortestDistanceFrom(playerEye));
             }
 

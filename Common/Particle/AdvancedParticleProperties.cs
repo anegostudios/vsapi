@@ -2,6 +2,7 @@
 using System.IO;
 using Vintagestory.API.MathTools;
 using System;
+using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common
 {
@@ -10,6 +11,9 @@ namespace Vintagestory.API.Common
     {
         [JsonProperty]
         public AdvancedParticleProperties[] SecondaryParticles;
+
+        [JsonProperty]
+        public AdvancedParticleProperties[] DeathParticles;
 
         [JsonProperty]
         public NatFloat SecondarySpawnInterval = NatFloat.createUniform(0, 0);
@@ -98,14 +102,21 @@ namespace Vintagestory.API.Common
             return DieInLiquid;
         }
 
-        public byte[] GetRgbaColor()
+        public int GetRgbaColor(ICoreClientAPI capi)
         {
-            return ColorUtil.HSVa2RGBaBytes(new byte[] {
+            int color = ColorUtil.HsvToRgba(
                 (byte)GameMath.Clamp(HsvaColor[0].nextFloat(), 0, 255),
                 (byte)GameMath.Clamp(HsvaColor[1].nextFloat(), 0, 255),
                 (byte)GameMath.Clamp(HsvaColor[2].nextFloat(), 0, 255),
                 (byte)GameMath.Clamp(HsvaColor[3].nextFloat(), 0, 255)
-            });
+            );
+
+            int r = color & 0xff;
+            int g = (color >> 8) & 0xff;
+            int b = (color >> 16) & 0xff;
+            int a = (color >> 24) & 0xff;
+
+            return (r << 16) | (g << 8) | (b << 0) | (a << 24);
         }
 
         public float GetGravityEffect()
@@ -223,6 +234,20 @@ namespace Vintagestory.API.Common
                     SecondaryParticles[i].ToBytes(writer);
                 }
             }
+
+
+            if (DeathParticles == null)
+            {
+                writer.Write(0);
+            }
+            else
+            {
+                writer.Write(DeathParticles.Length);
+                for (int i = 0; i < DeathParticles.Length; i++)
+                {
+                    DeathParticles[i].ToBytes(writer);
+                }
+            }
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -289,6 +314,16 @@ namespace Vintagestory.API.Common
                     SecondaryParticles[i] = AdvancedParticleProperties.createFromBytes(reader, resolver);
                 }
             }
+
+            int deathPropCount = reader.ReadInt32();
+            if (deathPropCount > 0)
+            {
+                DeathParticles = new AdvancedParticleProperties[deathPropCount];
+                for (int i = 0; i < deathPropCount; i++)
+                {
+                    DeathParticles[i] = AdvancedParticleProperties.createFromBytes(reader, resolver);
+                }
+            }
         }
 
         public static AdvancedParticleProperties createFromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -345,17 +380,14 @@ namespace Vintagestory.API.Common
             return SelfPropelled;
         }
 
-        Block IParticlePropertiesProvider.ColorByBlock()
-        {
-            return block;
-        }
-
         public void BeginParticle() { }
 
         public IParticlePropertiesProvider[] GetSecondaryParticles()
         {
             return SecondaryParticles;
         }
+
+        public IParticlePropertiesProvider[] GetDeathParticles() { return DeathParticles; }
 
         public float GetSecondarySpawnInterval()
         {

@@ -6,6 +6,11 @@ namespace Vintagestory.API.Client
     //(-1,-1,-1) to (1,1,1)
     public class LineMeshUtil
     {
+        /// <summary>
+        /// Gets the current rectangle for the line.
+        /// </summary>
+        /// <param name="color">the converted base color.</param>
+        /// <returns>The mesh data for the rectangle..</returns>
         public static MeshData GetRectangle(int color = 0)
         {
             MeshData m = new MeshData();
@@ -25,6 +30,11 @@ namespace Vintagestory.API.Client
             return m;
         }
 
+        /// <summary>
+        /// Gets the cube of this line.
+        /// </summary>
+        /// <param name="color">The converted base color.</param>
+        /// <returns>The mesh data for the cube.</returns>
         public static MeshData GetCube(int color = 0)
         {
             MeshData m = new MeshData();
@@ -79,7 +89,15 @@ namespace Vintagestory.API.Client
             return m;
         }
 
-
+        /// <summary>
+        /// Adds a 2D line to the mesh data.
+        /// </summary>
+        /// <param name="m">The current mesh data.</param>
+        /// <param name="x1">X position of the first point.</param>
+        /// <param name="y1">Y position of the first point.</param>
+        /// <param name="x2">X position of the second point.</param>
+        /// <param name="y2">Y position of the second point.</param>
+        /// <param name="color">The converted base color.</param>
         public static void AddLine2D(MeshData m, float x1, float y1, float x2, float y2, int color)
         {
             int startVertex = m.GetVerticesCount();
@@ -91,6 +109,15 @@ namespace Vintagestory.API.Client
             m.Indices[m.IndicesCount++] = startVertex + 1;
         }
 
+        /// <summary>
+        /// Adds a collection of lines to the given mesh.
+        /// </summary>
+        /// <param name="m">The current mesh data.</param>
+        /// <param name="p0">The first point.</param>
+        /// <param name="p1">The second point.</param>
+        /// <param name="p2">The third point.</param>
+        /// <param name="p3">The fourth point.</param>
+        /// <param name="color">The color of the resulting lines.</param>
         public static void AddLineLoop(MeshData m, Vec3f p0, Vec3f p1, Vec3f p2, Vec3f p3, int color)
         {
             int startVertex = m.GetVerticesCount();
@@ -109,6 +136,14 @@ namespace Vintagestory.API.Client
             m.Indices[m.IndicesCount++] = startVertex + 0;
         }
 
+        /// <summary>
+        /// Adds a vertex to the mesh data.
+        /// </summary>
+        /// <param name="model">The mesh data.</param>
+        /// <param name="x">X position of the vertex.</param>
+        /// <param name="y">Y position of the vertex.</param>
+        /// <param name="z">Z position of the vertex.</param>
+        /// <param name="color">The color of the vertex.</param>
         public static void AddVertex(MeshData model, float x, float y, float z, int color)
         {
             model.xyz[model.XyzCount + 0] = x;

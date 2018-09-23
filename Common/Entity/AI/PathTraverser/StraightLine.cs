@@ -12,10 +12,10 @@ namespace Vintagestory.API.Common
 
         public StraightLinePathTraverser(EntityAgent entity) : base(entity)
         {
-            if (entity?.Type?.Server?.Attributes != null)
+            if (entity?.Properties.Server?.Attributes != null)
             {
-                minTurnAnglePerSec = (float)entity.Type.Server?.Attributes["pathfinder"]["minTurnAnglePerSec"].AsFloat(250);
-                maxTurnAnglePerSec = (float)entity.Type.Server?.Attributes["pathfinder"]["maxTurnAnglePerSec"].AsFloat(450);
+                minTurnAnglePerSec = (float)entity.Properties.Server.Attributes.GetTreeAttribute("pathfinder").GetFloat("minTurnAnglePerSec", 250);
+                maxTurnAnglePerSec = (float)entity.Properties.Server.Attributes.GetTreeAttribute("pathfinder").GetFloat("maxTurnAnglePerSec", 450);
             } else
             {
                 minTurnAnglePerSec = 250;
@@ -42,7 +42,7 @@ namespace Vintagestory.API.Common
 
             // For land dwellers only check horizontal distance
             double sqDistToTarget = 
-                entity.Type.Habitat == API.Common.EnumHabitat.Land ?
+                entity.Properties.Habitat == API.Common.EnumHabitat.Land ?
                     target.SquareDistanceTo(entity.ServerPos.X, target.Y, entity.ServerPos.Z) :
                     target.SquareDistanceTo(entity.ServerPos.X, entity.ServerPos.Y, entity.ServerPos.Z)
                 ;
@@ -103,7 +103,7 @@ namespace Vintagestory.API.Common
             controls.WalkVector.Mul(movingSpeed);
 
             // Make it walk along the wall, but not walk into the wall, which causes it to climb
-            if (entity.Type.RotateModelOnClimb && entity.Controls.IsClimbing && entity.ClimbingOnFace != null)
+            if (entity.Properties.RotateModelOnClimb && entity.Controls.IsClimbing && entity.ClimbingOnFace != null)
             {
                 BlockFacing facing = entity.ClimbingOnFace;
                 if (Math.Sign(facing.Normali.X) == Math.Sign(controls.WalkVector.X))

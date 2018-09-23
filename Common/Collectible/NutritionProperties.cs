@@ -1,25 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
-    public enum EnumFoodNutrient
+    public enum EnumFoodCategory
     {
         Fruit,
         Vegetable,
         Protein,
         Grain,
-        Dairy
+        Dairy,
+        Unknown
     }
 
     public class FoodNutritionProperties
     {
-        public EnumFoodNutrient FoodCategory;
-
+        public EnumFoodCategory FoodCategory;
+        
         public float Saturation = 0f;
+
+        public float SaturationLossDelay = 10f;
 
         public float Health = 0f;
 
@@ -36,5 +40,6 @@ namespace Vintagestory.API.Common
                 EatenStack = EatenStack?.Clone()
             };
         }
+
     }
 }

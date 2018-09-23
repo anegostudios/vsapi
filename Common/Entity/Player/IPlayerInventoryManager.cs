@@ -96,7 +96,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceInventory"></param>
         /// <param name="sourceSlot"></param>
         /// <returns></returns>
-        ItemSlot GetBestSuitedHotbarSlot(IPlayer actingPlayer, IInventory sourceInventory, ItemSlot sourceSlot);
+        ItemSlot GetBestSuitedHotbarSlot(IInventory sourceInventory, ItemSlot sourceSlot);
 
         /// <summary>
         /// Returns the hotbar inventory object. Obvious comment is being obvious.
@@ -109,7 +109,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="sourceSlot"></param>
         /// <returns></returns>
-        ItemSlot GetBestSuitedSlot(IPlayer actingPlayer, ItemSlot sourceSlot, bool onlyPlayerInventory, List<IItemSlot> skipSlots = null);
+        ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, List<IItemSlot> skipSlots = null);
 
         /// <summary>
         /// Tries to move away items from the source slot into any other slot of another inventory
@@ -118,8 +118,16 @@ namespace Vintagestory.API.Common
         /// <param name="op"></param>
         /// <param name="onlyPlayerInventory">Forces to place the item only into the players personal inventory</param>
         /// <returns>One or more client packets that may be sent to the server for synchronisation</returns>
-        object[] TryTransferItemFrom(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, bool slotNotifyEffect = false);
+        object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, bool slotNotifyEffect = false);
 
+        /// <summary>
+        /// Tries to move items from source slot to target slot (useful for client side inventory utilities)
+        /// </summary>
+        /// <param name="sourceSlot"></param>
+        /// <param name="targetSlot"></param>
+        /// <param name="op">If successfull, a client packet that may be sent to the server for synchronisation</param>
+        /// <returns></returns>
+        object TryTransferTo(ItemSlot sourceSlot, ItemSlot targetSlot, ref ItemStackMoveOperation op);
 
         /// <summary>
         /// Tries to add given itemstack to the players inventory

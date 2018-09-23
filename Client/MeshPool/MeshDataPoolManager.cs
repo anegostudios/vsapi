@@ -29,7 +29,18 @@ namespace Vintagestory.API.Client
         
         Vec3f tmp = new Vec3f();
 
-
+        /// <summary>
+        /// Creates a new Mesh Data Pool
+        /// </summary>
+        /// <param name="masterPool">The master mesh data pool manager</param>
+        /// <param name="frustumCuller">the Frustum Culler for the Pool</param>
+        /// <param name="capi">The Client API</param>
+        /// <param name="defaultVertexPoolSize">Size allocated for the Vertices.</param>
+        /// <param name="defaultIndexPoolSize">Size allocated for the Indices</param>
+        /// <param name="maxPartsPerPool">The maximum number of parts for this pool.</param>
+        /// <param name="customFloats">Additional float data</param>
+        /// <param name="customBytes">Additional byte data</param>
+        /// <param name="customInts">additional int data</param>
         public MeshDataPoolManager(MeshDataPoolMasterManager masterPool, FrustumCulling frustumCuller, ICoreClientAPI capi, int defaultVertexPoolSize, int defaultIndexPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
         {
             this.masterPool = masterPool;
@@ -43,6 +54,13 @@ namespace Vintagestory.API.Client
             this.maxPartsPerPool = maxPartsPerPool;
         }
 
+        /// <summary>
+        /// Adds a model to the mesh pool.
+        /// </summary>
+        /// <param name="modeldata">The model data</param>
+        /// <param name="modelOrigin">The origin point of the Model</param>
+        /// <param name="frustumCullSphere">The culling sphere.</param>
+        /// <returns>The location identifier for the pooled model.</returns>
         public ModelDataPoolLocation AddModel(MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere)
         {
             ModelDataPoolLocation location = null;
@@ -74,6 +92,12 @@ namespace Vintagestory.API.Client
             return location;
         }
 
+        /// <summary>
+        /// Renders the model.
+        /// </summary>
+        /// <param name="playerpos">The position of the Player</param>
+        /// <param name="originUniformName"></param>
+        /// <param name="frustumCullMode">The culling mode.  Default is CulHideDelay.</param>
         public void Render(Vec3d playerpos, string originUniformName, EnumFrustumCullMode frustumCullMode = EnumFrustumCullMode.CullHideDelay)
         {
             for (int i = 0; i < pools.Count; i++)
@@ -91,6 +115,12 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Gets the stats of the model.
+        /// </summary>
+        /// <param name="usedVideoMemory">The amount of memory used by this pool.</param>
+        /// <param name="renderedTris">The number of Tris rendered by this pool.</param>
+        /// <param name="allocatedTris">The number of tris allocated by this pool.</param>
         public void GetStats(ref long usedVideoMemory, ref long renderedTris, ref long allocatedTris)
         {
             // 1 index = 4 byte

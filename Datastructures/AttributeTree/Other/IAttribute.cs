@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -21,7 +22,7 @@ namespace Vintagestory.API.Datastructures
         object GetValue();
         string ToJsonToken();
 
-        bool Equals(IAttribute attr);
+        bool Equals(IWorldAccessor worldForResolve, IAttribute attr);
 
     }
 }

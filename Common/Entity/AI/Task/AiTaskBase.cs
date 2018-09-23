@@ -17,20 +17,26 @@ namespace Vintagestory.API.Common
         protected int slot;
         protected int mincooldown;
         protected int maxcooldown;
+
+        protected double mincooldownHours;
+        protected double maxcooldownHours;
+
         protected string sound;
         protected float soundRange;
+        protected float soundChance=1.01f;
 
         protected string whenInEmotionState;
         protected string whenNotInEmotionState;
 
         protected long cooldownUntilMs;
+        protected double cooldownUntilTotalHours;
 
 
         public AiTaskBase(EntityAgent entity)
         {
             this.entity = entity;
             this.world = entity.World;
-            rand = new Random((int)entity.Entityid);
+            rand = new Random((int)entity.EntityId);
         }
 
         public virtual void LoadConfig(JsonObject taskConfig, JsonObject aiConfig)
@@ -40,6 +46,10 @@ namespace Vintagestory.API.Common
             this.slot = (int)taskConfig["slot"]?.AsInt(0);
             this.mincooldown = (int)taskConfig["mincooldown"]?.AsInt(0);
             this.maxcooldown = (int)taskConfig["maxcooldown"]?.AsInt(100);
+
+            this.mincooldownHours = (double)taskConfig["mincooldownHours"]?.AsDouble(0);
+            this.maxcooldownHours = (double)taskConfig["maxcooldownHours"]?.AsDouble(0);
+
             int initialmincooldown = (int)taskConfig["initialMinCoolDown"]?.AsInt(mincooldown);
             int initialmaxcooldown = (int)taskConfig["initialMaxCoolDown"]?.AsInt(maxcooldown);
 
@@ -90,7 +100,7 @@ namespace Vintagestory.API.Common
                 entity.StartAnimation(animMeta);
             }
 
-            if (sound != null)
+            if (sound != null && entity.World.Rand.NextDouble() <= soundChance)
             {
                 entity.World.PlaySoundAt(new AssetLocation("sounds/"+sound), entity.ServerPos.X, entity.ServerPos.Y, entity.ServerPos.Z, null, true, soundRange);
             }
@@ -104,6 +114,7 @@ namespace Vintagestory.API.Common
         public virtual void FinishExecute(bool cancelled)
         {
             cooldownUntilMs = entity.World.ElapsedMilliseconds + mincooldown + entity.World.Rand.Next(maxcooldown - mincooldown);
+            cooldownUntilTotalHours = entity.World.Calendar.TotalHours + mincooldownHours + entity.World.Rand.NextDouble() * (maxcooldownHours - mincooldownHours);
 
             if (animMeta != null)
             {

@@ -71,7 +71,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="entityClassName"></param>
         /// <param name="config"></param>
-        void RegisterEntityClass(string entityClassName, EntityType config);
+        void RegisterEntityClass(string entityClassName, EntityProperties config);
 
         /// <summary>
         /// Register a new Blockclass. Must happen before any blocks are loaded. Be sure to register it on the client and server side.

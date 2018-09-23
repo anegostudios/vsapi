@@ -80,7 +80,7 @@ namespace Vintagestory.API.Client
 
             // Height depends on the width
             double lineheight = descriptionElement.GetMultilineTextHeight();
-            currentHeight = Math.Max(lineheight, 50 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
+            currentHeight = Math.Max(lineheight, scaled(50) + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
             titleElement.Bounds.fixedHeight = currentHeight;
             descriptionElement.Bounds.fixedHeight = currentHeight;
             Bounds.fixedHeight = currentHeight / RuntimeEnv.GUIScale;
@@ -170,17 +170,31 @@ namespace Vintagestory.API.Client
 
         public void SetSourceSlot(ItemSlot nowSlot)
         {
-            bool recompose = this.curStack == null || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(curStack));
+            //bool recompose = this.curStack == null || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(curStack));
 
-            this.curSlot = nowSlot;
-            this.curStack = nowSlot?.Itemstack;
+            bool recompose =
+                ((this.curStack == null) != (nowSlot?.Itemstack == null))
+                || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(curStack));
+
 
             if (nowSlot?.Itemstack == null)
             {
-                Bounds.fixedHeight = 0;
+                this.curSlot = null;
             }
 
-            if (recompose) Recompose();
+            if (recompose)
+            {
+                this.curSlot = nowSlot;
+                this.curStack = nowSlot?.Itemstack?.Clone();
+
+                if (nowSlot?.Itemstack == null)
+                {
+                    Bounds.fixedHeight = 0;
+                }
+                
+                Recompose();
+                //Console.WriteLine("do recomp");
+            }
         }
 
 

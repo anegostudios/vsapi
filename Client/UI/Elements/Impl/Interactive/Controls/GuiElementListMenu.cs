@@ -316,6 +316,18 @@ namespace Vintagestory.API.Client
         {
             this.selectedIndex = selectedIndex;
         }
+        
+        public void SetSelectedValue(string value)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == value)
+                {
+                    SetSelectedIndex(i);
+                    return;
+                }
+            }
+        }
 
         public void SetList(string[] values, string[] names)
         {

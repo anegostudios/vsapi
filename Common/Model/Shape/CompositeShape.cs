@@ -51,7 +51,7 @@ namespace Vintagestory.API.Common
 
             CompositeShape ct = new CompositeShape()
             {
-                Base = Base.Clone(),
+                Base = Base?.Clone(),
                 Alternates = alternatesClone,
                 VoxelizeTexture = VoxelizeTexture,
                 rotateX = rotateX,
@@ -79,13 +79,13 @@ namespace Vintagestory.API.Common
             return ct;
         }
 
-        internal void FillPlaceHolders(Dictionary<string, string> searchReplace)
+        public void FillPlaceHolders(Dictionary<string, string> searchReplace)
         {
             foreach (var val in searchReplace)
             {
                 if (Base?.Path == null) continue;
 
-                Base.Path = Block.FillPlaceHolder(Base.Path, val.Key, val.Value);
+                Base.Path = RegistryObject.FillPlaceHolder(Base.Path, val.Key, val.Value);
             }
 
             if (Alternates != null)

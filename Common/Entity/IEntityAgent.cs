@@ -49,13 +49,13 @@ namespace Vintagestory.API.Common.Entities
         /// Saturates the entity by given value, reducing their hunger
         /// </summary>
         /// <param name="saturation"></param>
-        void ReceiveSaturation(float saturation);
+        void ReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10);
 
         /// <summary>
         /// The height from where the camera is placed when being played by a player
         /// </summary>
         /// <returns></returns>
-        double EyeHeight();
+        double EyeHeight { get; }
 
         /// <summary>
         /// True if the eyes are under water

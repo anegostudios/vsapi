@@ -1,0 +1,125 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
+
+namespace Vintagestory.API.Client
+{
+    public class Matrixf
+    {
+        public float[] Values;
+
+        public double[] ValuesAsDouble {
+            get
+            {
+                double[] values = new double[16];
+                for (int i = 0; i < 16; i++) values[i] = Values[i];
+                return values;
+            }
+        }
+
+        public Matrixf()
+        {
+            Values = Mat4f.Create();
+        }
+
+        public static Matrixf Create()
+        {
+            return new Matrixf();
+        }
+
+        public Matrixf Identity()
+        {
+            Mat4f.Identity(Values);
+            return this;
+        }
+
+        public Matrixf Set(float[] values)
+        {
+            Values[0] = values[0];
+            Values[1] = values[1];
+            Values[2] = values[2];
+            Values[3] = values[3];
+            Values[4] = values[4];
+            Values[5] = values[5];
+            Values[6] = values[6];
+            Values[7] = values[7];
+            Values[8] = values[8];
+            Values[9] = values[9];
+            Values[10] = values[10];
+            Values[11] = values[11];
+            Values[12] = values[12];
+            Values[13] = values[13];
+            Values[14] = values[14];
+            Values[15] = values[15];
+            return this;
+        }
+
+        public Matrixf Set(double[] values)
+        {
+            Values[0] = (float)values[0];
+            Values[1] = (float)values[1];
+            Values[2] = (float)values[2];
+            Values[3] = (float)values[3];
+            Values[4] = (float)values[4];
+            Values[5] = (float)values[5];
+            Values[6] = (float)values[6];
+            Values[7] = (float)values[7];
+            Values[8] = (float)values[8];
+            Values[9] = (float)values[9];
+            Values[10] = (float)values[10];
+            Values[11] = (float)values[11];
+            Values[12] = (float)values[12];
+            Values[13] = (float)values[13];
+            Values[14] = (float)values[14];
+            Values[15] = (float)values[15];
+            return this;
+        }
+
+        public Matrixf Translate(double x, double y, double z)
+        {
+            Mat4f.Translate(Values, Values, (float)x, (float)y, (float)z);
+            return this;
+        }
+
+
+        public Matrixf Translate(float x, float y, float z)
+        {
+            Mat4f.Translate(Values, Values, x, y, z);
+            return this;
+        }
+
+        public Matrixf Scale(float x, float y, float z)
+        {
+            Mat4f.Scale(Values, Values, x, y, z);
+            return this;
+        }
+
+        public Matrixf RotateX(float radX)
+        {
+            Mat4f.RotateX(Values, Values, radX);
+            return this;
+        }
+
+        public Matrixf RotateY(float radY)
+        {
+            Mat4f.RotateY(Values, Values, radY);
+            return this;
+        }
+
+        public Matrixf RotateZ(float radZ)
+        {
+            Mat4f.RotateZ(Values, Values, radZ);
+            return this;
+        }
+
+        public Matrixf Mul(float[] mat)
+        {
+            Mat4f.Mul(Values, Values, mat);
+            return this;
+        }
+
+    }
+}

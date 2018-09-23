@@ -219,7 +219,22 @@ namespace Vintagestory.API.Client
             return m;
         }
 
-
+        /// <summary>
+        /// Returns a custom quad mesh with the given params.
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        /// <param name="u2"></param>
+        /// <param name="v2"></param>
+        /// <param name="dx"></param>
+        /// <param name="dy"></param>
+        /// <param name="dw"></param>
+        /// <param name="dh"></param>
+        /// <param name="r"></param>
+        /// <param name="g"></param>
+        /// <param name="b"></param>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static MeshData GetCustomQuadModelData(
             float u, float v, float u2, float v2,
             float dx, float dy, float dw, float dh,

@@ -1,5 +1,6 @@
 ﻿using ProtoBuf;
 using System;
+using System.Collections.Generic;
 
 namespace Vintagestory.API.MathTools
 {
@@ -15,7 +16,32 @@ namespace Vintagestory.API.MathTools
         public int Y;
         [ProtoMember(3)]
         public int Z;
-        
+
+        /// <summary>
+        /// List of offset of all direct and indirect neighbours of coordinate 0/0/0
+        /// </summary>
+        public static readonly Vec3i[] DirectAndIndirectNeighbours;
+
+
+        static Vec3i()
+        {
+            List<Vec3i> allNeighbours = new List<Vec3i>();
+            for (int dx = -1; dx <= 1; dx++)
+            {
+                for (int dy = -1; dy <= 1; dy++)
+                {
+                    for (int dz = -1; dz <= 1; dz++)
+                    {
+                        if (dx == 0 && dy == 0 && dz == 0) continue;
+
+                        allNeighbours.Add(new Vec3i(dx, dy, dz));
+                    }
+                }
+            }
+
+            DirectAndIndirectNeighbours = allNeighbours.ToArray();
+        }
+
         public BlockPos AsBlockPos
         {
             get { return new BlockPos(X, Y, Z); }

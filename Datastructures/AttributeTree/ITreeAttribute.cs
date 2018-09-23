@@ -40,6 +40,13 @@ namespace Vintagestory.API.Datastructures
         void RemoveAttribute(string key);
 
         /// <summary>
+        /// Creates a bool attribute with given key and value
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        void SetBool(string key, bool value);
+
+        /// <summary>
         /// Creates an int attribute with given key and value
         /// </summary>
         /// <param name="key"></param>
@@ -89,6 +96,20 @@ namespace Vintagestory.API.Datastructures
         /// <param name="itemstack"></param>
         void SetItemstack(string key, ItemStack itemstack);
 
+        /// <summary>
+        /// Retrieves a bool or null if the key is not found
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        bool? TryGetBool(string key);
+
+        /// <summary>
+        /// Retrieves a bool or default value if key is not found
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        bool GetBool(string key, bool defaultValue = false);
 
         /// <summary>
         /// Retrieves an int or null if the key is not found
@@ -188,8 +209,14 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         ITreeAttribute Clone();
 
+        /// <summary>
+        /// Merges trees (it will overwrite existing values)
+        /// </summary>
+        /// <param name="tree"></param>
+        void MergeTree(ITreeAttribute tree);
 
-        bool Equals(IAttribute attr, params string[] ignoreSubTrees);
-        bool IsSubSetOf(IAttribute other);
+
+        bool Equals(IWorldAccessor worldForResolve, IAttribute attr, params string[] ignoreSubTrees);
+        bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other);
     }
 }

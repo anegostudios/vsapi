@@ -41,6 +41,24 @@ namespace Vintagestory.API.Common
             int length = Pattern[0][0].Length;
             int width = Pattern[0].Length;
             int height = Pattern.Length;
+            
+            for (int i = 0; i < Pattern.Length; i++)
+            {
+                if (Pattern[i].Length != width)
+                {
+                    throw new Exception(string.Format("Invalid clay forming recipe {3}! Layer {0} has a width of {1}, " +
+                        "which is not the same as the first layer width of {2}. All layers need to be sized equally.", i, Pattern[i].Length, width, this.Name));
+                }
+
+                for (int j = 0; j < Pattern[i].Length; j++)
+                {
+                    if (Pattern[i][j].Length != length)
+                    {
+                        throw new Exception(string.Format("Invalid clay forming recipe {3}! Layer {0}, line {4} has a length of {1}, " +
+                        "which is not the same as the first layer length of {2}. All layers need to be sized equally.", i, Pattern[i][j].Length, length, this.Name, j));
+                    }
+                }
+            }
 
             // We'll center the recipe to the horizontal middle
             int startX = (16 - width) / 2;

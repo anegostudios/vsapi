@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -13,6 +14,14 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IBlockEntityRotatable
     {
-        void OnRotated(ITreeAttribute tree, int byDegrees, bool flipVertical = false);
+        /// <summary>
+        /// If flipAxis is null it means it was not flipped, only horizontally rotated. Apply flip first, and then rotation.
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="degreeRotation"></param>
+        /// <param name="flipAxis"></param>
+        void OnTransformed(ITreeAttribute tree, int degreeRotation, EnumAxis? flipAxis);
+
+        
     }
 }

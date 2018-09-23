@@ -55,7 +55,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         OnlySunLight,
         /// <summary>
-        /// Will get you max(sunlight, blocklight)
+        /// Will get you max(onlysunlight, onlyblocklight)
         /// </summary>
         MaxLight,
         /// <summary>

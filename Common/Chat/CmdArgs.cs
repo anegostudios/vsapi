@@ -109,7 +109,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Removes the first argument and returns it
         /// </summary>
-        public string PopSingle(string defaultValue = null)
+        public string PopWord(string defaultValue = null)
         {
             if (args.Count == 0) return defaultValue;
             string first = args[0];
@@ -147,7 +147,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public T PopEnum<T>(T defaultValue = default(T))
         { 
-            string arg = PopSingle();
+            string arg = PopWord();
             if (arg == null) return defaultValue;
 
             int val;
@@ -169,7 +169,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public int? PopInt(int? defaultValue = null)
         {
-            string arg = PopSingle();
+            string arg = PopWord();
             if (arg == null) return defaultValue;
 
             int val;
@@ -188,7 +188,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public long? PopLong(long? defaultValue = null)
         {
-            string arg = PopSingle();
+            string arg = PopWord();
             if (arg == null) return defaultValue;
 
             long val;
@@ -209,7 +209,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public bool? PopBool(bool? defaultValue = null)
         {
-            string arg = PopSingle()?.ToLowerInvariant();
+            string arg = PopWord()?.ToLowerInvariant();
             if (arg == null) return defaultValue;
 
             return arg == "1" || arg == "yes" || arg == "on" || arg == "true";
@@ -223,7 +223,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public double? PopDouble(double? defaultValue = null)
         {
-            string arg = PopSingle();
+            string arg = PopWord();
             if (arg == null) return defaultValue;
 
             double val;
@@ -242,7 +242,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public float? PopFloat(float? defaultValue = null)
         {
-            string arg = PopSingle();
+            string arg = PopWord();
             if (arg == null) return defaultValue;
 
             float val;

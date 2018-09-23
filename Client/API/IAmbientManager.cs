@@ -72,6 +72,10 @@ namespace Vintagestory.API
         /// </summary>
         float BlendedCloudDensity { get; }
 
+        /// <summary>
+        /// The update loop for this manager. Runs every frame.
+        /// </summary>
+        /// <param name="dt">the Delta or change in Time</param>
         void UpdateAmbient(float dt);
     }
 }

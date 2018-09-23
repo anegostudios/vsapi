@@ -22,7 +22,7 @@ namespace Vintagestory.API.Common
         public abstract Vec3d GetPos();
 
         public abstract Vec3f GetVelocity(Vec3d pos);
-        public abstract byte[] GetRgbaColor();
+        public abstract int GetRgbaColor(ICoreClientAPI capi);
         public abstract byte GetGlowLevel();
         public abstract EnumParticleModel ParticleModel();
 
@@ -56,40 +56,7 @@ namespace Vintagestory.API.Common
         }
 
 
-
-        public static byte[] RandomItemPixel(ICoreClientAPI api, Item item, BlockFacing facing, BlockPos pos)
-        {
-            int textureSubId = item.FirstTexture.Baked.TextureSubId;
-            int color = ColorUtil.ReverseColorBytes(api.GetRandomItemPixel(item.ItemId, textureSubId));
-            color = (Math.Min(255, (color >> 24) + 50) << 24) | (color & 0x00ffffff);
-            return ColorUtil.ToBGRABytes(color);
-        }
-
-
-        public static byte[] RandomBlockPixel(ICoreClientAPI api, Block block, BlockFacing facing, BlockPos pos)
-        {
-            int tintIndex = block.TintIndex;
-
-            int textureSubId = block.TextureSubIdForRandomBlockPixel(api.World, pos, facing, ref tintIndex);
-
-            int color = ColorUtil.ReverseColorBytes(api.GetRandomBlockPixel(block.BlockId, textureSubId));
-
-            // TODO: FIXME
-            // We probably need to pre-generate like a list of 50 random colors per block face 
-            // not by probing the first texture but by probing all elmenent faces that are facing that block face
-            // Has to include the info if that pixel has to be biome tinted or not and then tinted as below
-            // Result:
-            // - No more white block pixels
-            // - Properly biome tinted
-            if (tintIndex > 0)
-            {
-                color = api.ApplyColorTint(tintIndex, color, pos.X, pos.Y, pos.Z);
-            }
-
-            color = (Math.Min(255, (color >> 24) + 50) << 24) | (color & 0x00ffffff);
-
-            return ColorUtil.ToBGRABytes(color);
-        }
+        
 
         public Vec3d RandomBlockPos(IBlockAccessor blockAccess, BlockPos pos, Block block, BlockFacing facing = null)
         {
@@ -175,6 +142,8 @@ namespace Vintagestory.API.Common
         {
             return null;
         }
+
+        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
 
         public virtual float GetSecondarySpawnInterval()
         {

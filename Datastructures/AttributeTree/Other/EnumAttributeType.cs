@@ -10,6 +10,7 @@
         String = 5,
         Tree = 6,
         Itemstack = 7,
-        StringArray = 8
+        StringArray = 8,
+        Bool = 9
     }
 }

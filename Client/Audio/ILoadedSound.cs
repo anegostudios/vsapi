@@ -8,6 +8,9 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface ILoadedSound
     {
+        /// <summary>
+        /// Is the sound disposed of?
+        /// </summary>
         bool IsDisposed { get; }
 
         /// <summary>

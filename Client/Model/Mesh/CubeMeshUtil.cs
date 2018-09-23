@@ -83,7 +83,9 @@ namespace Vintagestory.API.Client
             -1, -1,  1
         };
 
-
+        /// <summary>
+        /// Cube face indices, in order: North, East, South, West, Up, Down.
+        /// </summary>
         public static int[] CubeFaceIndices =
         {
             BlockFacing.NORTH.Index,
@@ -94,6 +96,9 @@ namespace Vintagestory.API.Client
             BlockFacing.DOWN.Index,
         };
 
+        /// <summary>
+        /// Cube UV Rotation.
+        /// </summary>
         public static int[] CubeUvRotation =
         {
             0,
@@ -395,7 +400,11 @@ namespace Vintagestory.API.Client
         }
 
 
-
+        /// <summary>
+        /// Gets the face of a given cube.
+        /// </summary>
+        /// <param name="face">The face you want to fetch in cardinal directions.</param>
+        /// <returns>The mesh data for the cube's given face.</returns>
         public static MeshData GetCubeFace(BlockFacing face)
         {
             int offset = face.Index;
@@ -434,7 +443,14 @@ namespace Vintagestory.API.Client
             return m;
         }
 
-
+        /// <summary>
+        /// Gets the face of a given cube.
+        /// </summary>
+        /// <param name="face">The face you want to fetch in cardinal directions.</param>
+        /// <param name="scaleH">The horizontal scale.</param>
+        /// <param name="scaleV">The vertical scale.</param>
+        /// <param name="translate">The translation desired.</param>
+        /// <returns>The mesh data for the given parameters.</returns>
         public static MeshData GetCubeFace(BlockFacing face, float scaleH, float scaleV, Vec3f translate)
         {
             MeshData modelData = GetCubeFace(face);

@@ -79,7 +79,7 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                return !(World is IClientWorldAccessor) || ((IClientWorldAccessor)World).Player.Entity.EntityId != Entityid;
+                return !(World is IClientWorldAccessor) || ((IClientWorldAccessor)World).Player.Entity.EntityId != EntityId;
             }
         }
 
@@ -91,33 +91,43 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public IPlayer Player
+        {
+            get
+            {
+                return World?.PlayerByUid(PlayerUID);
+            }
+        }
+
 
         public EntityPlayer() : base()
         {
 
         }
 
-        public override void Initialize(ICoreAPI api, long chunkindex3d)
+        public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
         {
-            this.api = api;
-            base.Initialize(api, chunkindex3d);
+            base.Initialize(properties, api, chunkindex3d);
         }
 
 
-        public override double EyeHeight()
+        public override double EyeHeight
         {
-            if (MountedOn?.SuggestedAnimation == "sleep")
+            get
             {
-                return 0.3;
-            }
+                if (MountedOn?.SuggestedAnimation == "sleep")
+                {
+                    return 0.3;
+                }
 
-            return eyeHeightCurrent;
+                return eyeHeightCurrent;
+            }
         }
 
         double walkCounter;
         double prevStepHeight;
         int direction = 0;
-        
+
 
         public override void OnGameTick(float dt)
         {
@@ -125,13 +135,13 @@ namespace Vintagestory.API.Common
 
             if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
-                double newEyeheight = Type.EyeHeight;
-                double newModelHeight = Type.HitBoxSize.Y;
+                double newEyeheight = Properties.EyeHeight;
+                double newModelHeight = Properties.HitBoxSize.Y;
 
                 if (servercontrols.FloorSitting)
                 {
-                    newEyeheight *= 0.45f;
-                    newModelHeight *= 0.5f;
+                    newEyeheight *= 0.5f;
+                    newModelHeight *= 0.55f;
                 }
                 else if (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.IsFlying)
                 {
@@ -153,7 +163,7 @@ namespace Vintagestory.API.Common
 
 
                 double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(6 * walkCounter) * amplitude) + offset);
-                if (api.Side == EnumAppSide.Client && (api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
+                if (World.Side == EnumAppSide.Client && (World.Api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
 
 
 
@@ -224,7 +234,7 @@ namespace Vintagestory.API.Common
                     World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
                 }
             }
-            
+
 
             base.OnFallToGround(motionY);
         }
@@ -269,9 +279,9 @@ namespace Vintagestory.API.Common
             DespawnReason = null;
             DeadNotify = true;
             TryStopHandAction(true, EnumItemUseCancelReason.Death);
-            
 
-            if (Type.Server?.Attributes?["keepContents"]?.AsBool(false) != true)
+
+            if (Properties.Server?.Attributes?.GetBool("keepContents", false) != true)
             {
                 World.PlayerByUid(PlayerUID).InventoryManager.OnDeath();
             }
@@ -280,13 +290,13 @@ namespace Vintagestory.API.Common
         public virtual void Revive()
         {
             Alive = true;
-            ReceiveDamage(new DamageSource() { source = EnumDamageSource.Respawn, type = EnumDamageType.Heal }, 9999);
+            ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Respawn, Type = EnumDamageType.Heal }, 9999);
         }
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
         {
             EnumGameMode mode = World.PlayerByUid(PlayerUID).WorldData.CurrentGameMode;
-            if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource.type != EnumDamageType.Heal) return false;
+            if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource.Type != EnumDamageType.Heal) return false;
 
             return base.ShouldReceiveDamage(damageSource, damage);
         }
@@ -302,22 +312,22 @@ namespace Vintagestory.API.Common
             if (damage != 0 && World?.Side == EnumAppSide.Server)
             {
                 string strDamage = "Lost " + (damage).ToString();
-                if (damageSource.type == EnumDamageType.Heal) strDamage = "Gained " + damage;
+                if (damageSource.Type == EnumDamageType.Heal) strDamage = "Gained " + damage;
 
-                string msg = Lang.Get("{0} hp through {1}", strDamage, damageSource.type.ToString().ToLowerInvariant());// damageSource.source.ToString().ToLowerInvariant());
-                
-                if (damageSource.source == EnumDamageSource.Player)
+                string msg = Lang.Get("{0} hp through {1}", strDamage, damageSource.Type.ToString().ToLowerInvariant());// damageSource.source.ToString().ToLowerInvariant());
+
+                if (damageSource.Source == EnumDamageSource.Player)
                 {
-                    EntityPlayer eplr = damageSource.sourceEntity as EntityPlayer;
-                    msg = Lang.Get("{0} hp by player {1}", strDamage, damageSource.source.ToString().ToLowerInvariant(), World.PlayerByUid(eplr.PlayerUID).PlayerName);
+                    EntityPlayer eplr = damageSource.SourceEntity as EntityPlayer;
+                    msg = Lang.Get("{0} hp by player {1}", strDamage, damageSource.Source.ToString().ToLowerInvariant(), World.PlayerByUid(eplr.PlayerUID).PlayerName);
                 }
 
-                if (damageSource.source == EnumDamageSource.Entity)
+                if (damageSource.Source == EnumDamageSource.Entity)
                 {
-                    string creatureName = Lang.Get("prefixandcreature-" + damageSource.sourceEntity.Type.Code.Path.Replace("-",""));
+                    string creatureName = Lang.Get("prefixandcreature-" + damageSource.SourceEntity.Code.Path.Replace("-", ""));
                     msg = Lang.Get("{0} hp by {1}", strDamage, creatureName);
                 }
-                
+
                 (World.PlayerByUid(PlayerUID) as IServerPlayer).SendMessage(GlobalConstants.DamageLogChatGroup, msg, EnumChatType.Notification);
             }
         }
@@ -333,8 +343,9 @@ namespace Vintagestory.API.Common
 
             if (forceStop)
             {
-                controls.HandUse = EnumHandInteract.None; 
-            } else
+                controls.HandUse = EnumHandInteract.None;
+            }
+            else
             {
                 controls.HandUse = RightHandItemSlot.Itemstack.Collectible.OnHeldUseCancel(secondsPassed, RightHandItemSlot, this, player.CurrentBlockSelection, player.CurrentEntitySelection, cancelReason);
             }
@@ -353,7 +364,7 @@ namespace Vintagestory.API.Common
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
 
-            foreach(InventoryBase inv in player.InventoryManager.Inventories.Values)
+            foreach (InventoryBase inv in player.InventoryManager.Inventories.Values)
             {
                 if (!inv.HasOpened(player)) continue;
 
@@ -382,7 +393,7 @@ namespace Vintagestory.API.Common
         public override void TeleportToDouble(double x, double y, double z)
         {
             Teleporting = true;
-            ICoreServerAPI sapi = this.api as ICoreServerAPI;
+            ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
                 sapi.World.LoadChunkColumn((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, () =>
@@ -394,7 +405,7 @@ namespace Vintagestory.API.Common
                     Pos.Motion.Set(0, 0, 0);
                     if (this is EntityPlayer)
                     {
-                        sapi.Network.BroadcastEntityPacket(Entityid, 1, SerializerUtil.Serialize(ServerPos.XYZ));
+                        sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
                     }
 
                     WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
@@ -404,7 +415,7 @@ namespace Vintagestory.API.Common
 
             }
 
-            
+
         }
     }
 }

@@ -9,40 +9,89 @@ namespace Vintagestory.API.Client
     [JsonObject(MemberSerialization.OptIn)]
     public class MusicTrackPart
     {
+        /// <summary>
+        /// The minimum Suitability of the given track
+        /// </summary>
         [JsonProperty]
         public float MinSuitability = 0.1f;
+
+        /// <summary>
+        /// The maximum Suitability of the given track
+        /// </summary>
         [JsonProperty]
         public float MaxSuitability = 1f;
+
+        /// <summary>
+        /// The minimum volume of a given track.
+        /// </summary>
         [JsonProperty]
         public float MinVolumne = 0.35f;
+
+        /// <summary>
+        /// The maximum volume of a given track.
+        /// </summary>
         [JsonProperty]
         public float MaxVolumne = 1f;
+
+        /// <summary>
+        /// the Y position.
+        /// </summary>
         [JsonProperty]
         public float[] PosY;
+
         [JsonProperty]
         public float[] Sunlight;
         //[JsonProperty]
         //public Dictionary<EnumWeatherPattern, float[]> Weather = new Dictionary<EnumWeatherPattern, float[]>();
+        
+        /// <summary>
+        /// The files for the part.
+        /// </summary>
         [JsonProperty]
         public AssetLocation[] Files;
 
-
+        /// <summary>
+        /// The loaded sound
+        /// </summary>
         public ILoadedSound Sound;
+
+        /// <summary>
+        /// Start time in Miliseconds
+        /// </summary>
         public long StartedMs;
+
+        /// <summary>
+        /// Am I loading?
+        /// </summary>
         public bool Loading;
+
         internal AssetLocation NowPlayingFile;
 
-
+        /// <summary>
+        /// Am I playing?
+        /// </summary>
         public bool IsPlaying
         {
             get { return Sound != null && Sound.IsPlaying; }
         }
 
+        /// <summary>
+        /// Am I applicable?
+        /// </summary>
+        /// <param name="world">world information</param>
+        /// <param name="props">the properties of the current track.</param>
+        /// <returns></returns>
         public bool Applicable(IWorldAccessor world, TrackedPlayerProperties props)
         {
             return CurrentSuitability(world, props) > MinSuitability;
         }
 
+        /// <summary>
+        /// The current volume of the track.
+        /// </summary>
+        /// <param name="world">world information</param>
+        /// <param name="props">the properties of the current track.</param>
+        /// <returns></returns>
         public float CurrentVolume(IWorldAccessor world, TrackedPlayerProperties props)
         {
             // y = k * x + d
@@ -59,6 +108,12 @@ namespace Vintagestory.API.Client
             return GameMath.Min(k * x + d, MaxVolumne);
         }
 
+        /// <summary>
+        /// The current Suitability of the track.
+        /// </summary>
+        /// <param name="world">world information</param>
+        /// <param name="props">the properties of the current track.</param>
+        /// <returns></returns>
         public float CurrentSuitability(IWorldAccessor world, TrackedPlayerProperties props)
         {
             int applied = 0;
@@ -88,6 +143,10 @@ namespace Vintagestory.API.Client
             return suitability / applied;
         }
 
+        /// <summary>
+        /// Expands the target files.
+        /// </summary>
+        /// <param name="assetManager">The current AssetManager instance.</param>
         public virtual void ExpandFiles(IAssetManager assetManager)
         {
             List<AssetLocation> expandedFiles = new List<AssetLocation>();

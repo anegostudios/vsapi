@@ -14,6 +14,7 @@ namespace Vintagestory.API.Common
         public const int ZOffsetBitMask = 0x3 << 8;
         public const int WindWaveBitMask = 1 << 11;
         public const int WaterWaveBitMask = 1 << 12;
+        public const int LowContrastBitMask = 1 << 13;
 
         int all;
 
@@ -31,11 +32,12 @@ namespace Vintagestory.API.Common
                 ZOffset = (byte)((value >> 8) & 0x3);
                 WindWave = ((value >> 11) & 1) != 0;
                 WaterWave = ((value >> 12) & 1) != 0;
+                LowContrast = ((value >> 13) & 1) != 0;
             }
         }
 
         byte glowLevel, zOffset;
-        bool windWave, waterWave;
+        bool windWave, waterWave, lowContrast;
 
         // Bits 0..7
         [JsonProperty]
@@ -97,6 +99,21 @@ namespace Vintagestory.API.Common
             }
         }
 
+        // Bit 13
+        [JsonProperty]
+        public bool LowContrast
+        {
+            get
+            {
+                return lowContrast;
+            }
+            set
+            {
+                lowContrast = value;
+                UpdateAll();
+            }
+        }
+
         public VertexFlags()
         {
 
@@ -107,12 +124,13 @@ namespace Vintagestory.API.Common
             All = flags;
         }
 
-        public VertexFlags(byte glowLevel, byte zOffset, bool windWave, bool waterWave)
+        public VertexFlags(byte glowLevel, byte zOffset, bool windWave, bool waterWave, bool lowContrast)
         {
             this.glowLevel = glowLevel;
             this.zOffset = zOffset;
             this.windWave = windWave;
             this.waterWave = waterWave;
+            this.lowContrast = lowContrast;
             UpdateAll();
         }
 
@@ -121,7 +139,8 @@ namespace Vintagestory.API.Common
             all = glowLevel
                   | ((zOffset & 0x3) << 8)
                   | (windWave ? 1 : 0) << 11
-                  | (waterWave ? 1 : 0) << 12;
+                  | (waterWave ? 1 : 0) << 12
+                  | (lowContrast ? 1 : 0) << 13;
         }
 
         public VertexFlags Clone()

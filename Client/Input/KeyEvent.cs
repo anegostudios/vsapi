@@ -8,55 +8,41 @@ namespace Vintagestory.API.Client
 {
     public class KeyEvent
     {
-        char keyChar;
-        int keyCode;
 
-        
-        bool modifierCtrl;
-        bool modifierShift;
-        bool modifierAlt;
-        bool handled;
+        /// <summary>
+        /// the character for the given key.
+        /// </summary>
+        public char KeyChar { get; set; }
 
-        public char KeyChar
-        {
-            get { return keyChar; }
-            set { keyChar = value; }
-        }
-
-        public int KeyCode
-        {
-            get { return keyCode; }
-            set { keyCode = value; }
-        }
+        /// <summary>
+        /// The keycode value.  
+        /// </summary>
+        public int KeyCode { get; set; }
 
         /// <summary>
         /// If a player taps in quick succession, this is the second key
         /// </summary>
         public int? KeyCode2 { get; set; }
 
-        public bool Handled
-        {
-            get { return handled; }
-            set { handled = value; }
-        }
+        /// <summary>
+        /// Is this keypress/key combination handled?
+        /// </summary>
+        public bool Handled { get; set; }
 
-        public bool CtrlPressed
-        {
-            get { return modifierCtrl; }
-            set { modifierCtrl = value; }
-        }
+        /// <summary>
+        /// Is control/Ctrl being held down?
+        /// </summary>
+        public bool CtrlPressed { get; set; }
 
-        public bool ShiftPressed
-        {
-            get { return modifierShift; }
-            set { modifierShift = value; }
-        }
+        /// <summary>
+        /// Is Shift being held down?
+        /// </summary>
+        public bool ShiftPressed { get; set; }
 
-        public bool AltPressed
-        {
-            get { return modifierAlt; }
-            set { modifierAlt = value; }
-        }
+        /// <summary>
+        /// Is Alt being held down?
+        /// </summary>
+        public bool AltPressed { get; set; }
     }
 
 }

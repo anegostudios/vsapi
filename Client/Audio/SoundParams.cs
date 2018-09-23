@@ -44,10 +44,23 @@ namespace Vintagestory.API.Client
         public float Pitch = 1f;
 
         /// <summary>
-        /// The sounds initial volumne
+        /// The sounds initial volumne (0f - 1f)
         /// </summary>
-        public float Volume = 1f;
-
+        public float Volume
+        {
+            get { return volume; }
+            set
+            {
+                if (value > 1f)
+                    volume = 1f;
+                else if (value < 0f)
+                    volume = 0f;
+                else
+                    volume = value;
+            }
+        }
+        float volume = 1f;
+        
         /// <summary>
         /// The sounds initial range
         /// </summary>
@@ -58,11 +71,18 @@ namespace Vintagestory.API.Client
         /// </summary>
         public EnumSoundType SoundType = EnumSoundType.Sound;
 
+        /// <summary>
+        /// Empty Constructor.
+        /// </summary>
         public SoundParams()
         {
 
         }
 
+        /// <summary>
+        /// Constructs the sound based off the asset location.
+        /// </summary>
+        /// <param name="location">The asset location of the track.</param>
         public SoundParams(AssetLocation location)
         {
             this.Location = location;

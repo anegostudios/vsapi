@@ -16,8 +16,13 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Contains all properties shared by Blocks and Items
     /// </summary>
-    public abstract class CollectibleObject
+    public abstract class CollectibleObject : RegistryObject
     {
+        /// <summary>
+        /// Liquids are handled and rendered differently than solid blocks.
+        /// </summary>
+        public EnumMatterState MatterState = EnumMatterState.Solid;
+
         /// <summary>
         /// This value is set the the BlockId or ItemId-Remapper if it encounters a block/item in the savegame, 
         /// but no longer exists as a loaded block/item
@@ -33,11 +38,6 @@ namespace Vintagestory.API.Common
         /// Block or Item?
         /// </summary>
         public abstract EnumItemClass ItemClass { get; }
-
-        /// <summary>
-        /// A unique domain + code of the collectible. Must be globally unique for all items / all blocks.
-        /// </summary>
-        public AssetLocation Code = null;
 
         /// <summary>
         /// Max amount of collectible that one default inventory slot can hold
@@ -168,6 +168,12 @@ namespace Vintagestory.API.Common
 
         static int[] ItemDamageColor;
 
+        /// <summary>
+        /// The api object, assigned during OnLoaded
+        /// </summary>
+        protected ICoreAPI api;
+
+
         static CollectibleObject()
         {
             int[] colors = new int[]
@@ -198,12 +204,12 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Server Side: Called once the collectible has been registered
+        /// Server Side: Called one the collectible has been registered
         /// Client Side: Called once the collectible has been loaded from server packet
         /// </summary>
         public virtual void OnLoaded(ICoreAPI api)
         {
-            
+            this.api = api;
         }
 
         /// <summary>
@@ -213,6 +219,18 @@ namespace Vintagestory.API.Common
         public virtual void OnUnloaded(ICoreAPI api)
         {
 
+        }
+
+        /// <summary>
+        /// Should return the nutrition properties of the item/block
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="itemstack"></param>
+        /// <param name="forEntity"></param>
+        /// <returns></returns>
+        public virtual FoodNutritionProperties GetNutritionProperties(IWorldAccessor world, ItemStack itemstack, Entity forEntity)
+        {
+            return NutritionProps;
         }
 
         /// <summary>
@@ -306,11 +324,50 @@ namespace Vintagestory.API.Common
         /// <param name="remainingResistance"></param>
         /// <param name="dt"></param>
         /// <returns></returns>
-        public virtual float OnBlockBreaking(IPlayer player, BlockSelection blockSel, IItemSlot itemslot, float remainingResistance, float dt)
+        public virtual float OnBlockBreaking(IPlayer player, BlockSelection blockSel, IItemSlot itemslot, float remainingResistance, float dt, int counter)
         {
             Block block = player.Entity.World.BlockAccessor.GetBlock(blockSel.Position);
 
-            if (block.RequiredMiningTier > 0 && (itemslot.Itemstack.Collectible.MiningTier < block.RequiredMiningTier || !MiningSpeed.ContainsKey(block.BlockMaterial)))
+            Vec3f faceVec = blockSel.Face.Normalf;
+            Random rnd = player.Entity.World.Rand;
+
+            bool cantMine = block.RequiredMiningTier > 0 && (itemslot.Itemstack.Collectible.MiningTier < block.RequiredMiningTier || !MiningSpeed.ContainsKey(block.BlockMaterial));
+
+            if ((counter % 5 == 0) && (rnd.NextDouble() < 0.12 || cantMine) && (block.BlockMaterial == EnumBlockMaterial.Stone || block.BlockMaterial == EnumBlockMaterial.Ore) && (Tool == EnumTool.Pickaxe || Tool == EnumTool.Hammer))
+            {
+                double posx = blockSel.Position.X + blockSel.HitPosition.X;
+                double posy = blockSel.Position.Y + blockSel.HitPosition.Y;
+                double posz = blockSel.Position.Z + blockSel.HitPosition.Z;
+
+                player.Entity.World.SpawnParticles(new SimpleParticleProperties()
+                {
+                    minQuantity = 0,
+                    addQuantity = 8,
+                    color = ColorUtil.ToRgba(255, 255, 255, 128),
+                    minPos = new Vec3d(posx + faceVec.X * 0.01f, posy + faceVec.Y * 0.01f, posz + faceVec.Z * 0.01f),
+                    addPos = new Vec3d(0, 0, 0),
+                    minVelocity = new Vec3f(
+                        4 * faceVec.X,
+                        4 * faceVec.Y,
+                        4 * faceVec.Z
+                    ),
+                    addVelocity = new Vec3f(
+                        8 * ((float)rnd.NextDouble() - 0.5f),
+                        8 * ((float)rnd.NextDouble() - 0.5f),
+                        8 * ((float)rnd.NextDouble() - 0.5f)
+                    ),
+                    lifeLength = 0.025f,
+                    gravityEffect = 0f,
+                    minSize = 0.03f,
+                    maxSize = 0.4f,
+                    model = EnumParticleModel.Cube,
+                    glowLevel = 200,
+                    SizeEvolve = new EvolvingNatFloat(EnumTransformFunction.LINEAR, -0.15f)
+                });
+            }
+
+
+            if (cantMine)
             {
                 return remainingResistance;
             }
@@ -385,9 +442,9 @@ namespace Vintagestory.API.Common
         /// Called when an entity holds this item in hands in 3rd person mode
         /// </summary>
         /// <param name="activeHotbarSlot"></param>
-        /// <param name="byEntity"></param>
+        /// <param name="forEntity"></param>
         /// <returns></returns>
-        public virtual string GetHeldTpIdleAnimation(IItemSlot activeHotbarSlot, IEntity byEntity)
+        public virtual string GetHeldTpIdleAnimation(IItemSlot activeHotbarSlot, Entity forEntity)
         {
             return HeldTpIdleAnimation;
         }
@@ -396,11 +453,11 @@ namespace Vintagestory.API.Common
         /// Called when an entity holds this item in hands in 3rd person mode
         /// </summary>
         /// <param name="activeHotbarSlot"></param>
-        /// <param name="byEntity"></param>
+        /// <param name="forEntity"></param>
         /// <returns></returns>
-        public virtual string GetHeldTpUseAnimation(IItemSlot activeHotbarSlot, IEntity byEntity)
+        public virtual string GetHeldTpUseAnimation(IItemSlot activeHotbarSlot, Entity forEntity)
         {
-            if (this.NutritionProps != null) return null;
+            if (GetNutritionProperties(forEntity.World, activeHotbarSlot.Itemstack, forEntity) != null) return null;
 
             return HeldTpUseAnimation;
         }
@@ -411,7 +468,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="byEntity"></param>
         /// <param name="itemslot"></param>
-        public virtual void OnAttackingWith(IWorldAccessor world, IEntity byEntity, IItemSlot itemslot)
+        public virtual void OnAttackingWith(IWorldAccessor world, Entity byEntity, IItemSlot itemslot)
         {
             if (DamagedBy != null && DamagedBy.Contains(EnumItemDamageSource.Attacking))
             {
@@ -421,12 +478,28 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
+        /// Called when this collectible is attempted to being used as part of a crafting recipe and should get consumed now. Return false if it doesn't match the ingredient
+        /// </summary>
+        /// <param name="inputStack"></param>
+        /// <param name="gridRecipe"></param>
+        /// <param name="ingredient"></param>
+        /// <returns></returns>
+        public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)
+        {
+            return true;
+        }
+
+
+
+        /// <summary>
         /// Called when this collectible is being used as part of a crafting recipe and should get consumed now
         /// </summary>
+        /// <param name="allInputSlots"></param>
         /// <param name="stackInSlot"></param>
         /// <param name="fromIngredient"></param>
         /// <param name="byPlayer"></param>
-        public virtual void OnConsumedByCrafting(IItemSlot[] allInputSlots, IItemSlot stackInSlot, CraftingRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)
+        /// <param name="quantity"></param>
+        public virtual void OnConsumedByCrafting(IItemSlot[] allInputSlots, IItemSlot stackInSlot, GridRecipe gridRecipe, CraftingRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)
         {
             if (fromIngredient.IsTool)
             {
@@ -612,11 +685,20 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="useType"></param>
         /// <returns></returns>
-        public EnumHandInteract OnHeldUseStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType)
+        public void OnHeldUseStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType, ref EnumHandHandling handling)
         {
-            bool shouldBegin = useType == EnumHandInteract.HeldItemAttack ? OnHeldAttackStart(slot, byEntity, blockSel, entitySel) : OnHeldInteractStart(slot, byEntity, blockSel, entitySel);
+            if (useType == EnumHandInteract.HeldItemAttack)
+            {
+                OnHeldAttackStart(slot, byEntity, blockSel, entitySel, ref handling);
+                return;
+            }
 
-            return shouldBegin ? useType : EnumHandInteract.None;
+            if (useType == EnumHandInteract.HeldItemInteract)
+            {
+                OnHeldInteractStart(slot, byEntity, blockSel, entitySel, ref handling);
+                return;
+            }
+            
         }
 
         /// <summary>
@@ -684,13 +766,13 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        public virtual void OnHeldAttackStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
         {
-            return false;
+            
         }
 
         /// <summary>
-        /// When the player has canceled a custom attack action.
+        /// When the player has canceled a custom attack action. Return false to deny action cancellation.
         /// </summary>
         /// <param name="secondsPassed"></param>
         /// <param name="slot"></param>
@@ -740,9 +822,9 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns>True if an interaction should happen (makes it sync to the server), false if no sync to server is required</returns>
-        public virtual bool OnHeldInteractStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        public virtual void OnHeldInteractStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
         {
-            if (NutritionProps != null)
+            if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) != null)
             {
                 byEntity.World.RegisterCallback((dt) =>
                 {
@@ -757,10 +839,8 @@ namespace Vintagestory.API.Common
 
                 byEntity.StartAnimation("eat");
 
-                return true;
+                handling = EnumHandHandling.PreventDefault;
             }
-
-            return false;
         }
 
 
@@ -775,56 +855,35 @@ namespace Vintagestory.API.Common
         /// <returns>False if the interaction should be stopped. True if the interaction should continue</returns>
         public virtual bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
-            if (NutritionProps == null) return false;
+            if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) == null) return false;
 
             if (byEntity.World is IClientWorldAccessor)
             {
                 ModelTransform tf = new ModelTransform();
-                tf.Origin.Set(1.1f, 0.5f, 0.5f);
+                
                 tf.EnsureDefaultValues();
 
-                if (ItemClass == EnumItemClass.Item)
+                tf.Origin.Set(0f, 0, 0f);
+
+                if (secondsUsed > 0.5f)
                 {
-                    if (secondsUsed > 0.5f)
-                    {
-                        tf.Translation.X = GameMath.Sin(30 * secondsUsed) / 10;
-                    }
-
-                    tf.Translation.Z += -Math.Min(1.2f, secondsUsed * 4 * 1.57f);
-                    tf.Translation.Y += Math.Min(0.5f, secondsUsed * 2);
-
-                    tf.Rotation.Y -= Math.Min(85f, secondsUsed * 350 * 1.5f);
-                    tf.Rotation.X += Math.Min(40f, secondsUsed * 350 * 0.75f);
-                    tf.Rotation.Z += Math.Min(40f, secondsUsed * 350 * 0.75f);
-                }
-                else
-                {
-                    tf.Translation.X -= Math.Min(1.7f, secondsUsed * 4 * 1.8f);
-                    tf.Scale = 1 + Math.Min(0.5f, secondsUsed * 4 * 1.8f);
-                    tf.Rotation.X += Math.Min(40f, secondsUsed * 350 * 0.75f);
-
-                    if (secondsUsed > 0.5f)
-                    {
-                        tf.Translation.Y = GameMath.Sin(30 * secondsUsed) / 10;
-                    }
-
+                    tf.Translation.Y = Math.Min(0.02f, GameMath.Sin(20 * secondsUsed) / 10);
                 }
 
-                byEntity.Controls.UsingHeldItemTransform = tf;
+                tf.Translation.X -= Math.Min(1f, secondsUsed * 4 * 1.57f);
+                tf.Translation.Y += Math.Min(0.15f, secondsUsed * 2);
+
+                tf.Rotation.X += Math.Min(30f, secondsUsed * 350);
+                tf.Rotation.Y += Math.Min(80f, secondsUsed * 350);
+                
+                byEntity.Controls.UsingHeldItemTransformAfter = tf;
 
                 Vec3d pos = byEntity.Pos.AheadCopy(0.4f).XYZ;
-                pos.Y += byEntity.EyeHeight() - 0.4f;
+                pos.Y += byEntity.EyeHeight - 0.4f;
 
                 if (secondsUsed > 0.5f && (int)(30 * secondsUsed) % 7 == 1)
                 {
-                    if (slot.Itemstack.Class == EnumItemClass.Block)
-                    {
-                        byEntity.World.SpawnBlockVoxelParticles(pos, slot.Itemstack.Block, 0.3f, 4, 0.5f);
-                    }
-                    else
-                    {
-                        byEntity.World.SpawnItemVoxelParticles(pos, slot.Itemstack.Item, 0.3f, 4, 0.5f);
-                    }
+                    byEntity.World.SpawnCubeParticles(pos, slot.Itemstack, 0.3f, 4, 0.5f);
                 }
 
                 return secondsUsed <= 1f;
@@ -844,26 +903,28 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         public virtual void OnHeldInteractStop(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
-            if (byEntity.World is IServerWorldAccessor && NutritionProps != null && secondsUsed >= 0.95f)
-            {
-                byEntity.ReceiveSaturation(NutritionProps.Saturation);
+            FoodNutritionProperties nutriProps = GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity);
 
-                if (NutritionProps.EatenStack != null)
+            if (byEntity.World is IServerWorldAccessor && nutriProps != null && secondsUsed >= 0.95f)
+            {
+                byEntity.ReceiveSaturation(nutriProps.Saturation, nutriProps.FoodCategory);
+
+                if (nutriProps.EatenStack != null)
                 {
                     IPlayer player = null;
                     if (byEntity is IEntityPlayer) player = byEntity.World.PlayerByUid(((IEntityPlayer)byEntity).PlayerUID);
 
-                    if (player == null || !player.InventoryManager.TryGiveItemstack(NutritionProps.EatenStack.ResolvedItemstack.Clone(), true))
+                    if (player == null || !player.InventoryManager.TryGiveItemstack(nutriProps.EatenStack.ResolvedItemstack.Clone(), true))
                     {
-                        byEntity.World.SpawnItemEntity(NutritionProps.EatenStack.ResolvedItemstack.Clone(), byEntity.LocalPos.XYZ);
+                        byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack.Clone(), byEntity.LocalPos.XYZ);
                     }
                 }
 
                 slot.Itemstack.StackSize--;
                 
-                if (NutritionProps.Health != 0)
+                if (nutriProps.Health != 0)
                 {
-                    byEntity.ReceiveDamage(new DamageSource() { source = EnumDamageSource.Internal, type = NutritionProps.Health > 0 ? EnumDamageType.Heal : EnumDamageType.Poison }, Math.Abs(NutritionProps.Health));
+                    byEntity.ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = nutriProps.Health > 0 ? EnumDamageType.Heal : EnumDamageType.Poison }, Math.Abs(nutriProps.Health));
                 }
 
                 slot.MarkDirty();
@@ -971,20 +1032,21 @@ namespace Vintagestory.API.Common
                     }
 
                 }
-
-
             }
 
-            if (NutritionProps != null)
+            FoodNutritionProperties nutriProps = GetNutritionProperties(world, stack, world.Side == EnumAppSide.Client ? (world as IClientWorldAccessor).Player.Entity : null);
+            if (nutriProps != null)
             {
-                if (Math.Abs(NutritionProps.Health) > 0.001f)
+                if (Math.Abs(nutriProps.Health) > 0.001f)
                 {
-                    dsc.Append(Lang.Get("When eaten: {0} sat, {1} hp\n", NutritionProps.Saturation, NutritionProps.Health));
+                    dsc.Append(Lang.Get("When eaten: {0} sat, {1} hp\n", nutriProps.Saturation, nutriProps.Health));
                 }
                 else
                 {
-                    dsc.Append(Lang.Get("When eaten: {0} sat\n", NutritionProps.Saturation));
+                    dsc.Append(Lang.Get("When eaten: {0} sat\n", nutriProps.Saturation));
                 }
+
+                dsc.AppendLine(Lang.Get("Food Category: {0}", nutriProps.FoodCategory));
             }
 
             if (GrindingProps != null)
@@ -1311,121 +1373,6 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Returns a new assetlocation with an equal domain and the given path
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public AssetLocation CodeWithPath(string path)
-        {
-            return Code.CopyWithPath(path);
-        }
-
-        /// <summary>
-        /// Removes componentsToRemove parts from the blocks code end by splitting it up at every occurence of a dash ('-'). Right to left.
-        /// </summary>
-        /// <param name="componentsToRemove"></param>
-        /// <returns></returns>
-        public string CodeWithoutParts(int componentsToRemove)
-        {
-            int i = Code.Path.Length;
-            int index = 0;
-            while (i-- > 0 && componentsToRemove > 0)
-            {
-                if (Code.Path[i] == '-')
-                {
-                    index = i;
-                    componentsToRemove--;
-                }
-            }
-
-            return Code.Path.Substring(0, index);
-        }
-
-
-        /// <summary>
-        /// Removes componentsToRemove parts from the blocks code beginning by splitting it up at every occurence of a dash ('-'). Left to Right
-        /// </summary>
-        /// <param name="componentsToRemove"></param>
-        /// <returns></returns>
-        public string CodeEndWithoutParts(int componentsToRemove)
-        {
-            int i = 0;
-            int index = 0;
-            while (i++ < Code.Path.Length && componentsToRemove > 0)
-            {
-                if (Code.Path[i] == '-')
-                {
-                    index = i + 1;
-                    componentsToRemove--;
-                }
-            }
-
-            return Code.Path.Substring(index, Code.Path.Length - index);
-        }
-
-
-        /// <summary>
-        /// Replaces the last parts from the blocks code and replaces it with components by splitting it up at every occurence of a dash ('-')
-        /// </summary>
-        /// <param name="components"></param>
-        /// <returns></returns>
-        public AssetLocation CodeWithParts(params string[] components)
-        {
-            if (Code == null) return null;
-
-            AssetLocation newCode = Code.CopyWithPath(CodeWithoutParts(components.Length));
-            for (int i = 0; i < components.Length; i++) newCode.Path += "-" + components[i];
-            return newCode;
-        }
-
-        /// <summary>
-        /// Replaces the last parts from the blocks code and replaces it with components by splitting it up at every occurence of a dash ('-')
-        /// </summary>
-        /// <param name="components"></param>
-        /// <returns></returns>
-        public AssetLocation CodeWithPart(string part, int atPosition = 0)
-        {
-            if (Code == null) return null;
-
-            AssetLocation newCode = Code.Clone();
-            string[] parts = newCode.Path.Split('-');
-            parts[atPosition] = part;
-            newCode.Path = String.Join("-", parts);
-
-            return newCode;
-        }
-
-
-        /// <summary>
-        /// Returns the n-th code part in inverse order. If the code contains no dash ('-') the whole code is returned. Returns null if posFromRight is too high.
-        /// </summary>
-        /// <param name="posFromRight"></param>
-        /// <returns></returns>
-        public string LastCodePart(int posFromRight = 0)
-        {
-            if (Code == null) return null;
-            if (posFromRight == 0 && !Code.Path.Contains('-')) return Code.Path;
-
-            string[] parts = Code.Path.Split('-');
-            return parts.Length - 1 - posFromRight >= 0 ? parts[parts.Length - 1 - posFromRight] : null;
-        }
-
-        /// <summary>
-        /// Returns the n-th code part. If the code contains no dash ('-') the whole code is returned. Returns null if posFromLeft is too high.
-        /// </summary>
-        /// <param name="posFromLeft"></param>
-        /// <returns></returns>
-        public string FirstCodePart(int posFromLeft = 0)
-        {
-            if (Code == null) return null;
-            if (posFromLeft == 0 && !Code.Path.Contains('-')) return Code.Path;
-
-            string[] parts = Code.Path.Split('-');
-            return posFromLeft <= parts.Length - 1 ? parts[posFromLeft] : null;
-        }
-
-
-        /// <summary>
         /// Should return true if given stacks are equal, ignoring their stack size.
         /// </summary>
         /// <param name="thisStack"></param>
@@ -1437,7 +1384,7 @@ namespace Vintagestory.API.Common
             return 
                 thisStack.Class == otherStack.Class &&
                 thisStack.Id == otherStack.Id &&
-                thisStack.Attributes.Equals(otherStack.Attributes, ignoreAttributeSubTrees)
+                thisStack.Attributes.Equals(api.World, otherStack.Attributes, ignoreAttributeSubTrees)
             ;
         }
 
@@ -1452,13 +1399,15 @@ namespace Vintagestory.API.Common
             return
                 thisStack.Class == otherStack.Class &&
                 thisStack.Id == otherStack.Id &&
-                thisStack.Attributes.IsSubSetOf(otherStack.Attributes)
+                thisStack.Attributes.IsSubSetOf(api.World, otherStack.Attributes)
             ;
         }
 
         /// <summary>
         /// This method is for example called by chests when they are being exported as part of a block schematic. Has to store all the currents world id mappings so it can be correctly imported again
         /// </summary>
+        /// <param name="world"></param>
+        /// <param name="inSlot"></param>
         /// <param name="blockIdMapping"></param>
         /// <param name="itemIdMapping"></param>
         public virtual void OnStoreCollectibleMappings(IWorldAccessor world, ItemSlot inSlot, Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
@@ -1477,6 +1426,7 @@ namespace Vintagestory.API.Common
         /// Returns true if the block has given behavior
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="withInheritance"></param>
         /// <returns></returns>
         public virtual bool HasBehavior(Type type, bool withInheritance)
         {
@@ -1504,36 +1454,36 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        /// <summary>
+        /// Should return a random pixel within the items/blocks texture
+        /// </summary>
+        /// <param name="capi"></param>
+        /// <param name="stack"></param>
+        /// <returns></returns>
+        public virtual int GetRandomColor(ICoreClientAPI capi, ItemStack stack)
+        {
+            return 0;
+        }
+
+
 
         /// <summary>
-        /// Returns true if any given wildcard matches the blocks code. E.g. water-* will match all water blocks
+        /// Returns true if this blocks matterstate is liquid
         /// </summary>
-        /// <param name="wildcards"></param>
         /// <returns></returns>
-        public bool WildCardMatch(AssetLocation[] wildcards)
+        public virtual bool IsLiquid()
         {
-            foreach (AssetLocation wildcard in wildcards)
-            {
-                if (WildCardMatch(wildcard)) return true;
-            }
-
-            return false;
+            return MatterState == EnumMatterState.Liquid;
         }
-        
+
         /// <summary>
-        /// Returns true if given wildcard matches the blocks code. E.g. water-* will match all water blocks
+        /// Return true if this is water (used for checking if Farmland is watered)
         /// </summary>
-        /// <param name="wildCard"></param>
         /// <returns></returns>
-        public bool WildCardMatch(AssetLocation wildCard)
+        public virtual bool IsWater()
         {
-            if (wildCard == Code) return true;
-
-            if (Code == null || wildCard.Domain != Code.Domain) return false;
-
-            string pattern = Regex.Escape(wildCard.Path).Replace(@"\*", @"(.*)");
-
-            return Regex.IsMatch(Code.Path, @"^" + pattern + @"$");
+            return Code?.Path.StartsWith("water-") == true || Code.Path == "waterportion";
         }
+
     }
 }

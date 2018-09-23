@@ -100,7 +100,12 @@ namespace Vintagestory.API.Common
             Type = (EnumItemClass)reader.ReadInt16();
             Code = new AssetLocation(reader.ReadString());
             StackSize = reader.ReadInt32();
-            ResolvedItemstack = new ItemStack(reader);
+
+            if (reader.ReadBoolean())
+            {
+                ResolvedItemstack = new ItemStack(reader);
+            }
+            
         }
 
         public virtual void ToBytes(BinaryWriter writer)
@@ -108,7 +113,11 @@ namespace Vintagestory.API.Common
             writer.Write((short)Type);
             writer.Write(Code.ToShortString());
             writer.Write(StackSize);
-            ResolvedItemstack.ToBytes(writer);
+            writer.Write(ResolvedItemstack != null);
+            if (ResolvedItemstack != null)
+            {
+                ResolvedItemstack.ToBytes(writer);
+            }
         }
 
         public void FillPlaceHolder(string key, string value)

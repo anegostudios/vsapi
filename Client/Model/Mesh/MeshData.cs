@@ -214,20 +214,61 @@ namespace Vintagestory.API.Client
         /// </summary>
         public int RenderPassCount;
 
-
+        /// <summary>
+        /// Gets the number of verticies in the the mesh.
+        /// </summary>
+        /// <returns>The number of verticies in this mesh.</returns>
+        /// <remarks>..Shouldn't this be a property?</remarks>
         public int GetVerticesCount() { return VerticesCount; }
+
+        /// <summary>
+        /// Sets the number of verticies in this mesh.
+        /// </summary>
+        /// <param name="value">The number of verticies in this mesh</param>
+        /// <remarks>..Shouldn't this be a property?</remarks>
         public void SetVerticesCount(int value) { VerticesCount = value; }
 
+        /// <summary>
+        /// Gets the number of Indicices in this mesh.
+        /// </summary>
+        /// <returns>The number of indicies in the mesh.</returns>
+        /// <remarks>..Shouldn't this be a property?</remarks>
         public int GetIndicesCount() { return IndicesCount; }
+
+        /// <summary>
+        /// Sets the number of indices in this mesh.
+        /// </summary>
+        /// <param name="value">The number of indices in this mesh.</param>
         public void SetIndicesCount(int value) { IndicesCount = value; }
 
-
+        /// <summary>
+        /// The size of the position values.
+        /// </summary>
         public const int XyzSize = sizeof(float) * 3;
+
+        /// <summary>
+        /// The size of the normals.
+        /// </summary>
         public const int NormalSize = sizeof(int);
+
+        /// <summary>
+        /// The size of the color.
+        /// </summary>
         public const int RgbaSize = sizeof(byte) * 4;
-        public const int Rgba2Size = sizeof(byte) * 4;
+
+        /// <summary>
+        /// The size of the Uv.
+        /// </summary>
         public const int UvSize = sizeof(float) * 2;
+
+        /// <summary>
+        /// the size of the index.
+        /// </summary>
         public const int IndexSize = sizeof(int) * 1;
+
+        /// <summary>
+        /// the size of the flags.
+        /// </summary>
         public const int FlagsSize = sizeof(int);
 
         /// <summary>
@@ -528,43 +569,43 @@ namespace Vintagestory.API.Client
         /// Creates a new mesh data instance with given components, but you can also freely nullify or set individual components after initialization
         /// Any component that is null is ignored by UploadModel/UpdateModel
         /// </summary>
-        /// <param name="quantityVertices"></param>
-        /// <param name="quantityIndices"></param>
+        /// <param name="capacityVertices"></param>
+        /// <param name="capacityIndices"></param>
         /// <param name="withUv"></param>
         /// <param name="withNormals"></param>
         /// <param name="withRgba"></param>
         /// <param name="withRgba2"></param>
         /// <param name="withFlags"></param>
-        public MeshData(int quantityVertices, int quantityIndices, bool withNormals = false, bool withUv = true, bool withRgba = true, bool withRgba2 = true, bool withFlags = true)
+        public MeshData(int capacityVertices, int capacityIndices, bool withNormals = false, bool withUv = true, bool withRgba = true, bool withRgba2 = true, bool withFlags = true)
         {
-            xyz = new float[quantityVertices * 3];
+            xyz = new float[capacityVertices * 3];
 
             if (withNormals)
             {
-                Normals = new int[quantityVertices];
+                Normals = new int[capacityVertices];
             }
 
             if (withUv)
             {
-                Uv = new float[quantityVertices * 2];
+                Uv = new float[capacityVertices * 2];
             }
             if (withRgba)
             {
-                Rgba = new byte[quantityVertices * 4];
+                Rgba = new byte[capacityVertices * 4];
             }
             if (withRgba2)
             {
-                Rgba2 = new byte[quantityVertices * 4];
+                Rgba2 = new byte[capacityVertices * 4];
             }
             if (withFlags)
             {
-                Flags = new int[quantityVertices];
+                Flags = new int[capacityVertices];
             }
 
-            Indices = new int[quantityIndices];
+            Indices = new int[capacityIndices];
 
-            IndicesMax = quantityIndices;
-            VerticesMax = quantityVertices;
+            IndicesMax = capacityIndices;
+            VerticesMax = capacityVertices;
         }
 
         /// <summary>

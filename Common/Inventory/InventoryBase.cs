@@ -181,7 +181,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public virtual WeightedSlot GetBestSuitedSlot(IPlayer actingPlayer, ItemSlot sourceSlot, List<IItemSlot> skipSlots = null)
+        public virtual WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<IItemSlot> skipSlots = null)
         {
             WeightedSlot bestWSlot = new WeightedSlot();
 
@@ -196,7 +196,7 @@ namespace Vintagestory.API.Common
 
                 if (slot.Itemstack != null && slot.CanTakeFrom(sourceSlot))
                 {
-                    float curWeight = GetSuitability(actingPlayer, sourceSlot, slot, true);
+                    float curWeight = GetSuitability(sourceSlot, slot, true);
 
                     if (bestWSlot.slot == null || bestWSlot.weight < curWeight)
                     {
@@ -214,7 +214,7 @@ namespace Vintagestory.API.Common
 
                 if (slot.Itemstack == null && slot.CanTakeFrom(sourceSlot))
                 {
-                    float curWeight = GetSuitability(actingPlayer, sourceSlot, slot, false);
+                    float curWeight = GetSuitability(sourceSlot, slot, false);
 
                     if (bestWSlot.slot == null || bestWSlot.weight < curWeight)
                     {
@@ -234,7 +234,7 @@ namespace Vintagestory.API.Common
         /// <param name="targetSlot"></param>
         /// <param name="isMerge"></param>
         /// <returns></returns>
-        public virtual float GetSuitability(IPlayer actingPlayer, ItemSlot sourceSlot, ItemSlot targetSlot, bool isMerge)
+        public virtual float GetSuitability(ItemSlot sourceSlot, ItemSlot targetSlot, bool isMerge)
         {
             return isMerge ? (baseWeight + 3) : (baseWeight + 1);
         }
@@ -314,7 +314,7 @@ namespace Vintagestory.API.Common
         /// Called when one of the containing slot was notified via NotifySlot
         /// </summary>
         /// <param name="slotId"></param>
-        public virtual void DidNotifySlot(int slotId)
+        public virtual void PerformNotifySlot(int slotId)
         {
             ItemSlot slot = GetSlot(slotId);
             if (slot == null || slot.Inventory != this) return;

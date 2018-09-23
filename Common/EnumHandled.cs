@@ -12,7 +12,7 @@ namespace Vintagestory.API.Common
     public enum EnumHandling
     {
         /// <summary>
-        /// Do run default and subsequent behaviors
+        /// Do run default and subsequent or previous behaviors
         /// </summary>
         NotHandled,
         /// <summary>
@@ -22,6 +22,10 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Do not execute default behavior, do not let subsequent behaviors execute
         /// </summary>
-        Last
+        PreventSubsequent,
+        /// <summary>
+        /// Do not execute default behavior, do not let any behaviors execute. This of course does not prevent the metehods to get executed, but can prevent i.e. a hand use/attack interaction that was allowed by a previous behavior
+        /// </summary>
+        //PreventAll
     }
 }

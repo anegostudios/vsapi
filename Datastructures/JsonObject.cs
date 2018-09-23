@@ -324,6 +324,22 @@ namespace Vintagestory.API
                 if (jval.Value is string) return new StringAttribute((string)jval.Value);
             }
 
+            // Object, but an itemstack?
+            /*JObject jobj = token as JObject;
+            if (jobj != null)
+            {
+                if (jobj["type"] != null && jobj["code"] != null)
+                {
+                    JValue typeVal = jobj["type"] as JValue;
+                    if (typeVal != null && typeVal.Value is string)
+                    {
+
+                    }
+                }
+
+                return tree;
+            }*/
+
             // Object 
 
             JObject jobj = token as JObject;
@@ -344,6 +360,9 @@ namespace Vintagestory.API
             JArray jarr = token as JArray;
             if (jarr != null)
             {
+                if (!jarr.HasValues)
+                    return new TreeArrayAttribute(new TreeAttribute[0]);
+
                 JToken first = jarr[0];
 
                 JValue jvalFirst = first as JValue;
@@ -358,19 +377,13 @@ namespace Vintagestory.API
                     return null;
                 }
 
-                JObject jobjFirst = first as JObject;
-                if (jobj != null)
+                TreeAttribute[] attrs = new TreeAttribute[jarr.Count];
+                for (int i = 0; i < attrs.Length; i++)
                 {
-                    TreeAttribute[] attrs = new TreeAttribute[jarr.Count];
-                    for (int i = 0; i < attrs.Length; i++)
-                    {
-                        attrs[i] = (TreeAttribute)ToAttribute(jarr[i]);
-                    }
-
-                    return new TreeArrayAttribute(attrs);
+                    attrs[i] = (TreeAttribute)ToAttribute(jarr[i]);
                 }
 
-                return null;
+                return new TreeArrayAttribute(attrs);
             }
 
             return null;

@@ -9,7 +9,7 @@ namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Material of which a block my be made of
-    /// Currently only used for for mining speed for tools
+    /// Currently only used for mining speed for tools
     /// </summary>
     public enum EnumBlockMaterial
     {

@@ -5,7 +5,7 @@
         /// <summary>
         /// The inventory the slot belongs to
         /// </summary>
-        IInventory Inventory { get; }
+        InventoryBase Inventory { get; }
 
         /// <summary>
         /// The contained itemstack

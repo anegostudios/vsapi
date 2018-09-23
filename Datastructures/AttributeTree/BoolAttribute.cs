@@ -28,5 +28,11 @@ namespace Vintagestory.API.Datastructures
         {
             return 9;
         }
+
+        public override string ToJsonToken()
+        {
+            // Newtonsoft.Json does not like uppercase True/False o.O
+            return value ? "true" : "false";
+        }
     }
 }

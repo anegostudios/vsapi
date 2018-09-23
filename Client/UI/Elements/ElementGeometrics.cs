@@ -28,10 +28,10 @@
         // Used for itemstack quantities and in itemstack info box 
         public static double DetailFontSize = 14;
 
-        public static string decorativeFontName = "Lora";
-        public static string standardFontName = "Montserrat";
-        public static string standardSemiBoldFontName = "Montserrat";
-        public static string standardBoldFontName = "Montserrat";
+        public static string DecorativeFontName = "Lora";
+        public static string StandardFontName = "Montserrat";
+        public static string StandardSemiBoldFontName = "Montserrat";
+        public static string StandardBoldFontName = "Montserrat";
 
         public static double[] DialogLightBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.35 };
         public static double[] DialogDefaultBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.8 };
@@ -52,7 +52,7 @@
 
         public static double[] HealthBarColor = new double[] { 0.659, 0, 0, 1 };
         public static double[] FoodBarColor = new double[] { 0.482, 0.521, 0.211, 1 };
-        public static double[] FatBarColor = new double[] { 224 / 255.0, 222 / 255.0, 186 / 255.0, 1 };
+        //public static double[] FatBarColor = new double[] { 224 / 255.0, 222 / 255.0, 186 / 255.0, 1 };
         public static double[] XPBarColor = new double[] { 0.745, 0.61, 0f, 1 };
 
         public static double[] TitleBarColor = new double[] { 0, 0, 0, 0.2 };

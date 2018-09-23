@@ -10,6 +10,16 @@ namespace Vintagestory.API.Util
     {
         public delegate T fillCallback<T>(int index);
 
+        public static T[] Append<T>(this T[] array, T value)
+        {
+            T[] grown = new T[array.Length + 1];
+            Array.Copy(array, grown, array.Length);
+
+            grown[array.Length] = value;
+
+            return grown;
+        }
+
         public static T[] Fill<T>(this T[] originalArray, T with)
         {
             for (int i = 0; i < originalArray.Length; i++)

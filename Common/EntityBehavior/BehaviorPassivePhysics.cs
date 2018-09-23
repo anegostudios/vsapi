@@ -24,7 +24,7 @@ namespace Vintagestory.API.Common
 
         }
 
-        public override void Initialize(EntityType config, JsonObject attributes)
+        public override void Initialize(EntityProperties properties, JsonObject attributes)
         {
             waterDragValue = 1 - (1 - GlobalConstants.WaterDrag) * (float)attributes["waterDragFactor"].AsDouble(1);
 
@@ -95,9 +95,14 @@ namespace Vintagestory.API.Common
                 if (entity.Swimming)
                 {
                     Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + entity.SwimmingOffsetY + 1), (int)pos.Z);
-                    
-                    float swimmingDepth = Math.Min(1, 1 - (float)(pos.Y + entity.SwimmingOffsetY) + (int)(pos.Y + entity.SwimmingOffsetY) + (aboveblock.IsLiquid() ? 1 : 0));
-                    fact = 1.5f * swimmingDepth * GameMath.Clamp(entity.MaterialDensity / aboveblock.MaterialDensity - 1, -0.1f, 1f) + (1 - swimmingDepth) / 70f;
+                    Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z);
+
+                    float swimmingDepth = Math.Min(
+                        1, 
+                        1 - (float)(pos.Y + entity.SwimmingOffsetY) + (int)(pos.Y + entity.SwimmingOffsetY) + (aboveblock.IsLiquid() ? 1 : 0) - (1 - inblock.LiquidLevel / 7f)
+                    );
+
+                    fact = 1.5f * swimmingDepth * GameMath.Clamp(entity.MaterialDensity / inblock.MaterialDensity - 1, -0.1f, 1f) + (1 - swimmingDepth) / 70f;
                 }
 
                 pos.Motion.Y -= fact * (gravityPerSecond * dt + Math.Max(0, -0.015f * pos.Motion.Y));
@@ -170,7 +175,7 @@ namespace Vintagestory.API.Common
 
             if (GlobalConstants.OutsideWorld(pos.X, pos.Y, pos.Z, entity.World.BlockAccessor))
             {
-                entity.DespawnReason = new EntityDespawnReason() { reason = EnumDespawnReason.Death, damageSourceForDeath = new DamageSource() { source = EnumDamageSource.Fall } };
+                entity.DespawnReason = new EntityDespawnReason() { reason = EnumDespawnReason.Death, damageSourceForDeath = new DamageSource() { Source = EnumDamageSource.Fall } };
                 return;
             }
 

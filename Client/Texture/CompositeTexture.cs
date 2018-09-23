@@ -101,17 +101,17 @@ namespace Vintagestory.API.Client
             return ct;
         }
 
-        internal void FillPlaceHolders(Dictionary<string, string> searchReplace)
+        public void FillPlaceHolders(Dictionary<string, string> searchReplace)
         {
             foreach (var val in searchReplace)
             {
-                Base.Path = Block.FillPlaceHolder(Base.Path, val.Key, val.Value);
+                Base.Path = RegistryObject.FillPlaceHolder(Base.Path, val.Key, val.Value);
 
                 if (Overlays != null)
                 {
                     for (int i = 0; i < Overlays.Length; i++)
                     {
-                        Overlays[i].Path = Block.FillPlaceHolder(Overlays[i].Path, val.Key, val.Value);
+                        Overlays[i].Path = RegistryObject.FillPlaceHolder(Overlays[i].Path, val.Key, val.Value);
                     }
                 }
             }
@@ -127,13 +127,53 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field
+        /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field. This method is called by the texture atlas managers.
+        /// Won't have any effect if called after the texture atlasses have been created.
         /// </summary>
         public void Bake(IAssetManager assetManager)
         {
             Baked = Bake(assetManager, this);
         }
 
+        /// <summary>
+        /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field. This method can be called after the game world has loaded.
+        /// </summary>
+        /// <param name="capi"></param>
+        /// <param name="intoAtlas"></param>
+        public void RuntimeBake(ICoreClientAPI capi, ITextureAtlasAPI intoAtlas)
+        {
+            Baked = Bake(capi.Assets, this);
+
+            List<AssetLocation> locations = new List<AssetLocation>();
+
+            RuntimeInsert(capi, intoAtlas, Baked);
+
+            if (Baked.BakedVariants != null)
+            {
+                foreach (var val in Baked.BakedVariants)
+                {
+                    RuntimeInsert(capi, intoAtlas, val);
+                }
+            }
+        }
+
+
+        bool RuntimeInsert(ICoreClientAPI capi, ITextureAtlasAPI intoAtlas, BakedCompositeTexture btex)
+        {
+            BitmapRef bmp = capi.Assets.Get(btex.BakedName).ToBitmap(capi);
+
+            int textureSubId;
+            TextureAtlasPosition texpos;
+            if (intoAtlas.InsertTexture(bmp, out textureSubId, out texpos))
+            {
+                btex.TextureSubId = textureSubId;
+                capi.Render.DeleteTexture(btex.BakedName);
+                return true;
+            }
+
+            bmp.Dispose();
+            return false;
+        }
 
         /// <summary>
         /// Expands a CompositeTexture to a texture atlas friendly version and populates the Baked field
@@ -141,7 +181,7 @@ namespace Vintagestory.API.Client
         /// <param name="assetManager"></param>
         /// <param name="ct"></param>
         /// <returns></returns>
-        public static BakedCompositeTexture Bake(IAssetManager assetManager, CompositeTexture ct)
+        static BakedCompositeTexture Bake(IAssetManager assetManager, CompositeTexture ct)
         {
             BakedCompositeTexture bct = new BakedCompositeTexture();
 

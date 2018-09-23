@@ -29,13 +29,34 @@ namespace Vintagestory.API.Client
         /// </summary>
         public KeyCombination DefaultMapping;
 
+        /// <summary>
+        /// The code of the Hotkey.
+        /// </summary>
         public string Code;
+
+        /// <summary>
+        /// The name of the Hotkey
+        /// </summary>
         public string Name;
 
+        /// <summary>
+        /// The type of the key combination.  This defaults to HotkeyType.CharacterControls.
+        /// </summary>
         public HotkeyType KeyCombinationType = HotkeyType.CharacterControls;
 
+        /// <summary>
+        /// This is the action that happens when the hotkey is used.
+        /// </summary>
         public ActionConsumable<KeyCombination> Handler;
 
+        /// <summary>
+        /// Was this hotkey pressed?
+        /// </summary>
+        /// <param name="keyEventargs">Event arguments for the given key.</param>
+        /// <param name="world">The current world for the key.</param>
+        /// <param name="player">The player that pressed the buttons.</param>
+        /// <param name="allowCharacterControls">Do we allow character control functions.</param>
+        /// <returns>If the hotkey was pressed or not.</returns>
         public virtual bool DidPress(KeyEvent keyEventargs, IWorldAccessor world, IPlayer player, bool allowCharacterControls)
         {
             return
@@ -48,6 +69,14 @@ namespace Vintagestory.API.Client
             ;
         }
 
+        /// <summary>
+        /// Fallback version of the DidPress event.
+        /// </summary>
+        /// <param name="keyEventargs">Event arguments for the given key.</param>
+        /// <param name="world">The current world for the key.</param>
+        /// <param name="player">The player that pressed the buttons.</param>
+        /// <param name="allowCharacterControls">Do we allow character control functions.</param>
+        /// <returns>If the hotkey was pressed or not.</returns>
         public virtual bool FallbackDidPress(KeyEvent keyEventargs, IWorldAccessor world, IPlayer player, bool allowCharacterControls)
         {
             bool haveModifier = CurrentMapping.Alt || CurrentMapping.Ctrl || CurrentMapping.Shift;
@@ -61,7 +90,10 @@ namespace Vintagestory.API.Client
         }
 
 
-
+        /// <summary>
+        /// Clones the hotkey.
+        /// </summary>
+        /// <returns>the cloned hotkey.</returns>
         public HotKey Clone()
         {
             HotKey hk = (HotKey)MemberwiseClone();
@@ -70,6 +102,9 @@ namespace Vintagestory.API.Client
             return hk;
         }
 
+        /// <summary>
+        /// Sets the default keymap for this hotkey.
+        /// </summary>
         public void SetDefaultMapping()
         {
             DefaultMapping = new KeyCombination()

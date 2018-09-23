@@ -40,7 +40,21 @@ namespace Vintagestory.API.Datastructures
         {
             return 10;
         }
-        
 
+        public override string ToJsonToken()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (i > 0) sb.Append(", ");
+
+                sb.Append("\"" + value[i] + "\"");
+            }
+            sb.Append("]");
+
+            return sb.ToString();
+        }
     }
 }

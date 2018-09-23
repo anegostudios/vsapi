@@ -21,6 +21,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         Dictionary<AssetLocation, IAsset> AllAssets { get; }
 
+        /// <summary>
+        /// Returns true if given asset exists in the list of loaded assets
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
         bool Exists(AssetLocation location);
 
         /// <summary>
@@ -105,9 +110,11 @@ namespace Vintagestory.API.Common
         int Reload(AssetCategory category);
 
         /// <summary>
-        /// Returns all origins in the prority order. Highest (First) to Lowest (Last)
+        /// Returns all origins in the priority order. Highest (First) to Lowest (Last)
         /// </summary>
         /// <returns></returns>
-        List<IAssetOrigin> GetOrigins();
+        List<IAssetOrigin> Origins { get; }
+
+        void AddPathOrigin(string domain, string fullPath);
     }
 }

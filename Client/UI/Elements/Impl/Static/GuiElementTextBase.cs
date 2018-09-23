@@ -7,9 +7,11 @@ namespace Vintagestory.API.Client
     public class GuiElementTextBase : GuiElement
     {
         protected string text;
-        internal bool textPathMode = false;
-        internal CairoFont Font;
-        internal TextSizeProber Prober;
+        public bool textPathMode = false;
+        public CairoFont Font;
+        public TextSizeProber Prober;
+
+        public int QuantityTextLines { get; private set; }
 
         public GuiElementTextBase(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds) : base(capi, bounds)
         {
@@ -82,6 +84,8 @@ namespace Vintagestory.API.Client
             Font.SetupContext(ctx);
 
             string[] lines = Prober.InsertAutoLineBreaks(ctx, new StringBuilder(text), boxWidth).Split('\n');
+
+            QuantityTextLines = lines.Length;
 
             return ShowMultilineText(ctx, lines, posX, posY, boxWidth, orientation, lineHeightMultiplier);
         }

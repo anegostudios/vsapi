@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -61,7 +62,7 @@ namespace Vintagestory.API.Common
 
         public static SimpleParticleProperties ExplosionFireParticles = new SimpleParticleProperties(
             10, 20,
-            ColorUtil.ColorFromArgb(150, 0, 255, 255),
+            ColorUtil.ToRgba(150, 0, 255, 255),
             new Vec3d(),
             new Vec3d(),
             new Vec3f(-1.5f, -1.5f, -1.5f),
@@ -92,11 +93,11 @@ namespace Vintagestory.API.Common
         // Temporary data
         SimpleParticleProperties[] providers;
         int curParticle = -1;
-        byte[] color;
+        int color;
 
         public ExplosionSmokeParticles()
         {
-            color = ColorUtil.ToRGBABytes(ColorUtil.ColorFromArgb(50, 220, 220, 220));
+            color = ColorUtil.ToRgba(50, 220, 220, 220);
 
             providers = new SimpleParticleProperties[]
             {
@@ -135,14 +136,13 @@ namespace Vintagestory.API.Common
         {
             curParticle++;
         }
-
-        public Block ColorByBlock() { return null; }
+        
         public bool DieInAir() { return false; }
         public bool DieInLiquid() { return true; }
         public byte GetGlowLevel() { return 0; }
         public float GetGravityEffect() { return -0.04f; }
         public bool TerrainCollision() { return true; }
-        public float GetLifeLength() { return 5f + (float)providers[0].rand.NextDouble(); }
+        public float GetLifeLength() { return 5f + (float)SimpleParticleProperties.rand.NextDouble(); }
 
         public EvolvingNatFloat GetOpacityEvolve() { return EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -125f); }
         public EvolvingNatFloat GetRedEvolve() { return null; }
@@ -174,11 +174,12 @@ namespace Vintagestory.API.Common
             return quantityParticles;
         }
 
-        public byte[] GetRgbaColor()
+        public int GetRgbaColor(ICoreClientAPI capi)
         {
-            color[3] = (byte)(50 + providers[0].rand.Next(100));
-            return color;
+            color = color & 0x00ffffff;
+            color |= 50 + SimpleParticleProperties.rand.Next(100);
 
+            return color;
         }
 
         public float GetSize()
@@ -285,6 +286,7 @@ namespace Vintagestory.API.Common
         {
             return null;
         }
+        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
 
         public void PrepareForSecondarySpawn(IParticleInstance particleInstance)
         {

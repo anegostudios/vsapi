@@ -16,4 +16,15 @@ namespace Vintagestory.API.Common
         SurviveAndAutomate = 2,
         CreativeBuilding = 3
     }
+
+   /* public class Playstyle
+    {
+        public string Code;
+
+        public string[] IncludeMods;
+
+        public string[] ExcludeMods;
+
+        public JsonObject Attributes;
+    }*/
 }

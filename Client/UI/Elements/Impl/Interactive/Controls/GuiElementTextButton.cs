@@ -267,8 +267,8 @@ namespace Vintagestory.API.Client
             {
                 CairoFont font1 = CairoFont.ButtonText();
                 CairoFont font2 = CairoFont.ButtonPressedText();
-                font1.Fontname = ElementGeometrics.standardBoldFontName;
-                font2.Fontname = ElementGeometrics.standardBoldFontName;
+                font1.Fontname = ElementGeometrics.StandardBoldFontName;
+                font2.Fontname = ElementGeometrics.StandardBoldFontName;
                 font1.FontWeight = FontWeight.Bold;
                 font2.FontWeight = FontWeight.Bold;
                 font1.UnscaledFontsize = ElementGeometrics.SmallFontSize;

@@ -28,7 +28,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public override void Initialize(EntityType entityType, JsonObject attributes)
+        public override void Initialize(EntityProperties entityType, JsonObject attributes)
         {
             base.Initialize(entityType, attributes);
 

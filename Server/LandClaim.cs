@@ -135,7 +135,7 @@ namespace Vintagestory.API.Server
             {
                 OwnedByEntityId = entity.EntityId,
                 ProtectionLevel = protectionLevel,
-                LastKnownOwnerName = Lang.Get("item-creature-" + entity.Type.Code) + (entityName == null ? "" : " " + entityName)
+                LastKnownOwnerName = Lang.Get("item-creature-" + entity.Code) + (entityName == null ? "" : " " + entityName)
             };
         }
 

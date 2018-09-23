@@ -46,9 +46,9 @@ namespace Vintagestory.API.Common
         public Item()
         {
             GuiTransform = ModelTransform.ItemDefaultGui();
-            FpHandTransform = ModelTransform.ItemDefault();
+            FpHandTransform = ModelTransform.ItemDefaultFp();
             TpHandTransform = ModelTransform.ItemDefaultTp();
-            GroundTransform = ModelTransform.ItemDefault();
+            GroundTransform = ModelTransform.ItemDefaultGround();
         }
 
         /// <summary>
@@ -60,6 +60,23 @@ namespace Vintagestory.API.Common
             this.ItemId = itemId;
             MaxStackSize = 1;
         }
+
+        /// <summary>
+        /// Should return a random pixel within the items/blocks texture
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <param name="facing"></param>
+        /// <param name="tintIndex"></param>
+        /// <returns></returns>
+        public override int GetRandomColor(ICoreClientAPI capi, ItemStack stack)
+        {
+            if (Textures == null || Textures.Count == 0) return 0;
+
+            BakedCompositeTexture tex = Textures?.First().Value?.Baked;
+            return tex == null ? 0 : capi.ItemTextureAtlas.GetRandomPixel(tex.TextureSubId);
+        }
+
 
 
         /// <summary>
@@ -81,17 +98,17 @@ namespace Vintagestory.API.Common
             
             if (CombustibleProps != null && CombustibleProps.SmeltedStack != null)
             {
-                CombustibleProps.SmeltedStack.Code = Block.FillPlaceHolder(CombustibleProps.SmeltedStack.Code, searchReplace);
+                CombustibleProps.SmeltedStack.Code = FillPlaceHolder(CombustibleProps.SmeltedStack.Code, searchReplace);
             }
 
             if (NutritionProps != null && NutritionProps.EatenStack != null)
             {
-                NutritionProps.EatenStack.Code = Block.FillPlaceHolder(NutritionProps.EatenStack.Code, searchReplace);
+                NutritionProps.EatenStack.Code = FillPlaceHolder(NutritionProps.EatenStack.Code, searchReplace);
             }
 
             if (GrindingProps != null && GrindingProps.GrindedStack != null)
             {
-                GrindingProps.GrindedStack.Code = Block.FillPlaceHolder(GrindingProps.GrindedStack.Code, searchReplace);
+                GrindingProps.GrindedStack.Code = FillPlaceHolder(GrindingProps.GrindedStack.Code, searchReplace);
             }
         }
 

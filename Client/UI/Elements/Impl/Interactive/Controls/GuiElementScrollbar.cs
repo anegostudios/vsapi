@@ -133,7 +133,13 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
-            UpdateHandlePositionAbs(currentHandlePosition - 10 * args.deltaPrecise);
+            float y = currentHandlePosition - (float)scaled(102) * args.deltaPrecise / ScrollConversionFactor;
+
+            double scrollbarMoveableHeight = Bounds.InnerHeight - currentHandleHeight;
+            currentHandlePosition = (float)GameMath.Clamp(y, 0, scrollbarMoveableHeight);
+            TriggerChanged();
+            
+
             args.SetHandled(true);
         }
 

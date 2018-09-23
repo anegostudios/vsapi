@@ -8,6 +8,9 @@ using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Creates a track for rain related music.  [Not yet implemented]
+    /// </summary>
     public class RainMusicTrack : IMusicTrack
     {
         public bool IsActive

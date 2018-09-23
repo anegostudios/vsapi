@@ -15,6 +15,9 @@ namespace Vintagestory.API.Client
         public bool Right;
     }
 
+    /// <summary>
+    /// This interface manages the inputs of the player and is used mostly on the client side.  
+    /// </summary>
     public interface IInputAPI
     {
         /// <summary>
@@ -48,9 +51,26 @@ namespace Vintagestory.API.Client
         int MouseY { get; }
 
 
-        // These should not be here. Should be part of an event bus event
+        // These should not be here. Should be part of an event bus event (someone has to code that)
+        /// <summary>
+        /// Handles the event when the mouse enters the bounding box of the given item slot.
+        /// </summary>
+        /// <param name="slot">The slot of the item.</param>
+        /// <remarks>Part of a group of things that will be moved to an event bus at some point.</remarks>
         void TriggerOnMouseEnterSlot(ItemSlot slot);
+
+        /// <summary>
+        /// Handles the event when the mouse leaves the bounding box of the given item slot.
+        /// </summary>
+        /// <param name="itemSlot">The slot of the item</param>
+        /// <remarks>Part of a group of things that will be moved to an event bus at some point.</remarks>
         void TriggerOnMouseLeaveSlot(ItemSlot itemSlot);
+
+        /// <summary>
+        /// Handles the event when the mouse clicks on a given item slot.
+        /// </summary>
+        /// <param name="itemSlot">The slot of the item</param>
+        /// <remarks>Part of a group of things that will be moved to an event bus at some point.</remarks>
         void TriggerOnMouseClickSlot(ItemSlot itemSlot);
 
 
@@ -91,6 +111,13 @@ namespace Vintagestory.API.Client
         /// </summary>
         OrderedDictionary<string, HotKey> HotKeys { get; }
 
+        /// <summary>
+        /// Gets the hotkey by the given hotkey code.
+        /// </summary>
+        /// <param name="toggleKeyCombinationCode">the key combination code.</param>
+        /// <returns>The registered hotkey.</returns>
         HotKey GetHotKeyByCode(string toggleKeyCombinationCode);
+
+
     }
 }

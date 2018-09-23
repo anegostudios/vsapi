@@ -371,6 +371,51 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+
+
+        /// <summary>
+        /// Multiplies two mat4's
+        /// 
+        /// </summary>
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="a">{mat4} a the first operand</param>
+        /// <param name="b">{mat4} b the second operand</param>
+        /// <returns>{mat4} out</returns>
+        public static double[] Multiply(double[] output, float[] a, double[] b)
+        {
+            double a00 = a[0]; double a01 = a[1]; double a02 = a[2]; double a03 = a[3];
+            double a10 = a[4]; double a11 = a[5]; double a12 = a[6]; double a13 = a[7];
+            double a20 = a[8]; double a21 = a[9]; double a22 = a[10]; double a23 = a[11];
+            double a30 = a[12]; double a31 = a[13]; double a32 = a[14]; double a33 = a[15];
+
+            // Cache only the current line of the second matrix
+            double b0 = b[0]; double b1 = b[1]; double b2 = b[2]; double b3 = b[3];
+            output[0] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            output[1] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            output[2] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            output[3] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+            b0 = b[4]; b1 = b[5]; b2 = b[6]; b3 = b[7];
+            output[4] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            output[5] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            output[6] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            output[7] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+            b0 = b[8]; b1 = b[9]; b2 = b[10]; b3 = b[11];
+            output[8] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            output[9] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            output[10] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            output[11] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+
+            b0 = b[12]; b1 = b[13]; b2 = b[14]; b3 = b[15];
+            output[12] = b0 * a00 + b1 * a10 + b2 * a20 + b3 * a30;
+            output[13] = b0 * a01 + b1 * a11 + b2 * a21 + b3 * a31;
+            output[14] = b0 * a02 + b1 * a12 + b2 * a22 + b3 * a32;
+            output[15] = b0 * a03 + b1 * a13 + b2 * a23 + b3 * a33;
+            return output;
+        }
+
+
         /// <summary>
         /// mat4.multiply
         /// </summary>
@@ -379,6 +424,19 @@ namespace Vintagestory.API.MathTools
         /// <param name="b"></param>
         /// <returns></returns>
         public static double[] Mul(double[] output, double[] a, double[] b)
+        {
+            return Multiply(output, a, b);
+        }
+
+
+        /// <summary>
+        /// mat4.multiply
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Mul(double[] output, float[] a, double[] b)
         {
             return Multiply(output, a, b);
         }

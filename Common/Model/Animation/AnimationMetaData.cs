@@ -34,6 +34,16 @@ namespace Vintagestory.API.Common
         public bool MatchExact = false;
         [JsonProperty]
         public bool DefaultAnim = false;
+
+        public AnimationTrigger Clone()
+        {
+            return new AnimationTrigger()
+            {
+                OnControls = (EnumEntityActivity[])this.OnControls?.Clone(),
+                MatchExact = this.MatchExact,
+                DefaultAnim = this.DefaultAnim
+            };
+        }
     }
 
     public class AnimationMetaData
@@ -96,6 +106,26 @@ namespace Vintagestory.API.Common
             return (TriggeredBy?.MatchExact == true) ? (currentActivities == withActivitiesMerged) : ((currentActivities & withActivitiesMerged) > 0);
         }
 
+        public AnimationMetaData Clone()
+        {
+            return new AnimationMetaData()
+            {
+                Code = this.Code,
+                Animation = this.Animation,
+                Weight = this.Weight,
+                ElementWeight = new Dictionary<string, float>(this.ElementWeight),
+                AnimationSpeed = this.AnimationSpeed,
+                MulWithWalkSpeed = this.MulWithWalkSpeed,
+                EaseInSpeed = this.EaseInSpeed,
+                EaseOutSpeed = this.EaseOutSpeed,
+                TriggeredBy = this.TriggeredBy?.Clone(),
+                BlendMode = this.BlendMode,
+                ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(this.ElementBlendMode),
+                withActivitiesMerged = this.withActivitiesMerged,
+                CodeCrc32 = this.CodeCrc32,
+                WasStartedFromTrigger = this.WasStartedFromTrigger
+    };
+        }
 
         public override bool Equals(object obj)
         {

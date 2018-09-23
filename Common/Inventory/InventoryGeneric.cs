@@ -10,14 +10,14 @@ namespace Vintagestory.API.Common
         ItemSlot[] slots;
         NewSlotDelegate onNewSlot = null;
 
-        public InventoryGeneric(int quantitySlots, string className, string instanceId, ICoreAPI api, NewSlotDelegate onNewSlot) : base(className, instanceId, api)
+        public InventoryGeneric(int quantitySlots, string className, string instanceId, ICoreAPI api, NewSlotDelegate onNewSlot = null) : base(className, instanceId, api)
         {
             this.onNewSlot = onNewSlot;
 
             slots = GenEmptySlots(quantitySlots);
         }
 
-        public InventoryGeneric(int quantitySlots, string invId, ICoreAPI api, NewSlotDelegate onNewSlot) : base (invId, api)
+        public InventoryGeneric(int quantitySlots, string invId, ICoreAPI api, NewSlotDelegate onNewSlot = null) : base (invId, api)
         {
             this.onNewSlot = onNewSlot;
 

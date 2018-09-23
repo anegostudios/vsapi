@@ -12,8 +12,14 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface ICoreClientAPI : ICoreAPI
     {
+        /// <summary>
+        /// The settings instance.
+        /// </summary>
         ISettings Settings { get; }
 
+        /// <summary>
+        /// The local Logger instance.
+        /// </summary>
         ILogger Logger { get; }
 
         /// <summary>
@@ -40,33 +46,18 @@ namespace Vintagestory.API.Client
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
-        int ApplyColorTint(int tintIndex, int color, int posX, int posY, int posZ);
+        int ApplyColorTintOnRgba(int tintIndex, int color, int posX, int posY, int posZ, bool flipRb = true);
 
         /// <summary>
-        /// Returns you an rgba value picked randomly inside the given texture subid of given block
+        /// Loads the rgb (plant or water) tint value for given rain and temp value and multiplies it byte-wise with supplied color
         /// </summary>
-        /// <param name="blockId"></param>
-        /// <param name="textureSubId"></param>
+        /// <param name="tintIndex"></param>
+        /// <param name="color"></param>
+        /// <param name="rain"></param>
+        /// <param name="temp"></param>
+        /// <param name="flipRb"></param>
         /// <returns></returns>
-        int GetRandomBlockPixel(ushort blockId, int textureSubId);
-
-        /// <summary>
-        /// Returns you an rgba value picked inside the texture subid of given block at given relative position inside its texture (0..1)
-        /// </summary>
-        /// <param name="blockId"></param>
-        /// <param name="textureSubId"></param>
-        /// <param name="px"></param>
-        /// <param name="py"></param>
-        /// <returns></returns>
-        int GetBlockPixelAt(ushort blockId, int textureSubId, float px, float py);
-
-        /// <summary>
-        /// Returns you a rgba value picked randomly inside the first texture of given item
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <param name="textureSubId"></param>
-        /// <returns></returns>
-        int GetRandomItemPixel(int itemId, int textureSubId);
+        int ApplyColorTintOnRgba(int tintIndex, int color, int rain, int temp, bool flipRb = true);
 
         /// <summary>
         /// True if the game is currently paused (only available in singleplayer)
@@ -131,7 +122,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// API for the Entity Texture Atlas
         /// </summary>
-        IEntityTextureAtlasAPI EntityTextureAtlas { get; }
+        ITextureAtlasAPI EntityTextureAtlas { get; }
 
         /// <summary>
         /// API for Rendering stuff onto the screen using OpenGL
@@ -148,6 +139,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         new IClientWorldAccessor World { get; }
 
+        /// <summary>
+        /// Active GUI objects.
+        /// </summary>
         IEnumerable<object> OpenedGuis { get; }
 
 
