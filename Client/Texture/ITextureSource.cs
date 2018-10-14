@@ -14,6 +14,9 @@ namespace Vintagestory.API.Client
     {
         TextureAtlasPosition this[string textureCode] { get; }
 
+        /// <summary>
+        /// This returns the size of the atlas this texture resides in.
+        /// </summary>
         int AtlasSize { get; }
     }
 }

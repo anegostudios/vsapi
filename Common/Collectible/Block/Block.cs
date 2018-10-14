@@ -180,6 +180,11 @@ namespace Vintagestory.API.Common
         public bool[] SideAo = new bool[] { true, true, true, true, true, true };
 
         /// <summary>
+        /// Defines which of the 6 block neighbours should receive AO if this block is in front of them
+        /// </summary>
+        public bool[] NeighbourSideAo = new bool[] { false, false, false, false, false, false };
+
+        /// <summary>
         /// Defines what creature groups may spawn on this block
         /// </summary>
         public string[] AllowSpawnCreatureGroups = new string[] { "*" };
@@ -808,12 +813,7 @@ namespace Vintagestory.API.Common
 
             if (EntityClass != null)
             {
-                BlockEntity entity = world.BlockAccessor.GetBlockEntity(pos);
-                if (entity != null)
-                {
-                    world.BlockAccessor.RemoveBlockEntity(pos);
-                    entity.OnBlockRemoved();
-                }
+                world.BlockAccessor.RemoveBlockEntity(pos);
             }
         }
 
@@ -1261,9 +1261,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public BlockBehavior GetBehavior<T>()
+        public T GetBehavior<T>() where T : BlockBehavior
         {
-            return GetBehavior(typeof(T), false);
+            return (T)GetBehavior(typeof(T), false);
         }
 
 

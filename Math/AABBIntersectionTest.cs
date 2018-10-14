@@ -15,7 +15,7 @@ namespace Vintagestory.API.MathTools
 
 
     // Based on http://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-plane-and-ray-disk-intersection
-    // Our picking ray will always a block at any position along the ray, because empty areas are considered air blocks. 
+    // Our picking ray will always be a block at any position along the ray, because empty areas are considered air blocks. 
     // So what we are really interested in is on what block face is the ray exiting and continue search in that direction
     // => This code is a ray-intersects-plane algo. It wanders along the exiting faces of full blocks and checks at each position for collisions with the blocks selection box
     // TODO: Replace with Slab method? -> https://tavianator.com/fast-branchless-raybounding-box-intersections/
@@ -65,7 +65,7 @@ namespace Vintagestory.API.MathTools
             //if (!blockSelectionTester.IsValidPos(pos)) return null;
 
             // Get the face where our ray will exit
-            BlockFacing lastExitedBlockFace = GetExitingFullBlockFace(pos);
+            BlockFacing lastExitedBlockFace = GetExitingFullBlockFace(pos, ref lastExitedBlockFacePos);
             if (lastExitedBlockFace == null) return null;
 
             float maxDistanceSq = (maxDistance + 1) * (maxDistance + 1);
@@ -78,7 +78,7 @@ namespace Vintagestory.API.MathTools
                 pos.Offset(lastExitedBlockFace);
                 //if (!blockSelectionTester.IsValidPos(pos)) return null;
 
-                lastExitedBlockFace = GetExitingFullBlockFace(pos);
+                lastExitedBlockFace = GetExitingFullBlockFace(pos, ref lastExitedBlockFacePos);
                 if (lastExitedBlockFace == null) return null;
 
                 distanceSq = pos.DistanceSqTo(ray.origin.X - 0.5f, ray.origin.Y - 0.5f, ray.origin.Z - 0.5f);
@@ -213,7 +213,7 @@ namespace Vintagestory.API.MathTools
 
 
 
-        private BlockFacing GetExitingFullBlockFace(BlockPos pos)
+        private BlockFacing GetExitingFullBlockFace(BlockPos pos, ref Vec3d exitPos)
         {
             for (int i = 0; i < BlockFacing.ALLFACES.Length; i++)
             {
@@ -232,9 +232,9 @@ namespace Vintagestory.API.MathTools
                     if (t >= 0)
                     {
                         Vec3d pHit = new Vec3d(ray.origin.X + ray.dir.X * t, ray.origin.Y + ray.dir.Y * t, ray.origin.Z + ray.dir.Z * t);
-                        lastExitedBlockFacePos = Vec3d.Sub(pHit, planePosition);
+                        exitPos = Vec3d.Sub(pHit, planePosition);
 
-                        if (Math.Abs(lastExitedBlockFacePos.X) <= 0.5 && Math.Abs(lastExitedBlockFacePos.Y) <= 0.5 && Math.Abs(lastExitedBlockFacePos.Z) <= 0.5)
+                        if (Math.Abs(exitPos.X) <= 0.5 && Math.Abs(exitPos.Y) <= 0.5 && Math.Abs(exitPos.Z) <= 0.5)
                         {
                             return blockSideFacing;
                         }
@@ -244,6 +244,7 @@ namespace Vintagestory.API.MathTools
 
             return null;
         }
+
     }
 
 
@@ -255,6 +256,8 @@ namespace Vintagestory.API.MathTools
         Block GetBlock(BlockPos pos);
 
         Cuboidf[] GetBlockIntersectionBoxes(BlockPos pos);
+
+        Entity[] GetEntitiesAround(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity> matches = null);
 
         bool IsValidPos(BlockPos pos);
 

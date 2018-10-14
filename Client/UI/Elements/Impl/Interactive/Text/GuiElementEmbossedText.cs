@@ -11,18 +11,31 @@ namespace Vintagestory.API.Client
 
         LoadedTexture texture;
 
-            
+        /// <summary>
+        /// Creates a new embossed text element.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="text">The text of the component.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">The bounds of the component.</param>
         public GuiElementEmbossedText(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds) : base(capi, text, font, bounds) 
         {
             texture = new LoadedTexture(capi);
             enabled = true;
         }
 
+        /// <summary>
+        /// Whether or not the component is enabled.
+        /// </summary>
         public bool IsEnabled()
         {
             return enabled;
         }
 
+        /// <summary>
+        /// Sets whether or not the component is enabled.
+        /// </summary>
+        /// <param name="enabled"></param>
         public void SetEnabled(bool enabled)
         {
             this.enabled = enabled;
@@ -114,6 +127,13 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds an embossed text component to the GUI.
+        /// </summary>
+        /// <param name="text">The text of the component.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">The bounds of the component.</param>
+        /// <param name="key">The name of the component.</param>
         public static GuiComposer AddEmbossedText(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -123,6 +143,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the EmbossedText component by name.
+        /// </summary>
+        /// <param name="key">The name of the component.</param>
+        /// <returns>the named component of the text.</returns>
         public static GuiElementEmbossedText GetEmbossedText(this GuiComposer composer, string key)
         {
             return (GuiElementEmbossedText)composer.GetElement(key);

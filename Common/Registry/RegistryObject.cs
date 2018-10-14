@@ -89,7 +89,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Replaces the last parts from the blocks code and replaces it with components by splitting it up at every occurence of a dash ('-')
+        /// Replaces one part from the blocks code and replaces it with components by splitting it up at every occurence of a dash ('-')
         /// </summary>
         /// <param name="components"></param>
         /// <returns></returns>

@@ -12,22 +12,43 @@ namespace Vintagestory.API.Client
     {
         public ElementBounds Bounds;
         
-
+        /// <summary>
+        /// Requests a line break, if applicable.
+        /// </summary>
+        /// <param name="width">The new width.</param>
+        /// <returns>a new TextComponentBase.  Null by default.</returns>
         public virtual TextComponentBase[] RequestLineBreakAt(float width)
         {
             return null;
         }
 
+        /// <summary>
+        /// Updates the bounds of the Text Component.
+        /// </summary>
+        /// <param name="withFont">The font to use.</param>
+        /// <param name="startX">The X position of the text.</param>
+        /// <param name="startY">The Y position of the text</param>
         public virtual void UpdateBounds(CairoFont withFont, double startX, double startY)
         {
             Bounds.WithFixedPosition(startX, startY).CalcWorldBounds();
         }
 
+        /// <summary>
+        /// Composes the element.
+        /// </summary>
+        /// <param name="ctx">Context of the text component.</param>
+        /// <param name="surface">The surface of the image.</param>
+        /// <param name="withFont">The font for the element.</param>
         public virtual void ComposeElements(Context ctx, ImageSurface surface, CairoFont withFont)
         {
 
         }
 
+        /// <summary>
+        /// Renders the text component.
+        /// </summary>
+        /// <param name="api">The client API.</param>
+        /// <param name="deltaTime">The change in time.</param>
         public virtual void RenderInteractiveElements(ICoreClientAPI api, float deltaTime)
         {
         }

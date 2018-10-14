@@ -89,7 +89,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Relaxed bulk block access to the worlds block data. Since this is a single bulk block access instance the cached data is shared for everything accessing this method, hence should only be accessed from the main thread and any changed comitted within the same game tick. You can however use the WorldManager api to get your own instance of a bulk block accessor
         /// </summary>
-        IBlockAccessor BulkBlockAccessor { get; }
+        IBulkBlockAccessor BulkBlockAccessor { get; }
 
         /// <summary>
         /// Interface to create instance of certain classes
@@ -398,7 +398,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySelection"></param>
         /// <param name="filter">Can be used to ignore certain blocks</param>
         void RayTraceForSelection(Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null);
-
+        
 
         /// <summary>
         /// Shoots out a virtual ray at between given positions and stops when the ray hits a block or entity intersection box supplied by given supplier. The block/entity it struck first is then returned by reference.

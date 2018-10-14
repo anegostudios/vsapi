@@ -56,7 +56,7 @@ namespace Vintagestory.API.Client
         internal bool InsideClip;
 
         public ICoreClientAPI Api;
-
+        public float zDepth=50;
 
         public Action<bool> OnFocusChanged;
 
@@ -455,7 +455,7 @@ namespace Vintagestory.API.Client
 
             if (!onlyDynamicRender)
             {
-                Api.Render.Render2DTexture(staticElementsTextureId, bounds);
+                Api.Render.Render2DTexture(staticElementsTextureId, bounds, zDepth);
             }
 
             foreach (GuiElement element in interactiveElementsInDrawOrder)

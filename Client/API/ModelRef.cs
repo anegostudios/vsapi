@@ -12,7 +12,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Am I disposed?
         /// </summary>
-        public bool Disposed;
+        public bool Disposed { get; protected set; }
 
         /// <summary>
         /// Equivalent to calling api.Render.DeleteMesh()

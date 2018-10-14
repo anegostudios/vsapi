@@ -52,6 +52,12 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Creates a new Scrollbar.
+        /// </summary>
+        /// <param name="capi">The client API.</param>
+        /// <param name="onNewScrollbarValue">The event that fires when the scrollbar is changed.</param>
+        /// <param name="bounds">The bounds of the scrollbar.</param>
         public GuiElementScrollbar(ICoreClientAPI capi, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds) : base(capi, bounds)
         {
             handleTexture = new LoadedTexture(capi);
@@ -104,13 +110,21 @@ namespace Vintagestory.API.Client
             );
         }
 
-
+        /// <summary>
+        /// Sets the height of the scrollbar.
+        /// </summary>
+        /// <param name="visibleHeight">The visible height of the scrollbar</param>
+        /// <param name="totalHeight">The total height of the scrollbar.</param>
         public void SetHeights(float visibleHeight, float totalHeight)
         {
             this.visibleHeight = visibleHeight;
             SetNewTotalHeight(totalHeight);
         }
         
+        /// <summary>
+        /// Sets the total height, recalculating things for the new height.
+        /// </summary>
+        /// <param name="totalHeight">The total height of the scrollbar.</param>
         public void SetNewTotalHeight(float totalHeight)
         {
             this.totalHeight = totalHeight;
@@ -176,11 +190,17 @@ namespace Vintagestory.API.Client
             TriggerChanged();
         }
 
+        /// <summary>
+        /// Triggers the change to the new value of the scrollbar.
+        /// </summary>
         public void TriggerChanged()
         {
             onNewScrollbarValue(CurrentYPosition);
         }
 
+        /// <summary>
+        /// Puts the scrollblock to the very bottom of the scrollbar.
+        /// </summary>
         public void ScrollToBottom()
         {
             // 0..1 
@@ -236,7 +256,12 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
+        /// <summary>
+        /// Adds a vertical scrollbar to the GUI.  
+        /// </summary>
+        /// <param name="onNewScrollbarValue">The action when the scrollbar changes.</param>
+        /// <param name="bounds">The bounds of the scrollbar.</param>
+        /// <param name="key">The name of the scrollbar.</param>
         public static GuiComposer AddVerticalScrollbar(this GuiComposer composer, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -246,6 +271,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the scrollbar by name.
+        /// </summary>
+        /// <param name="key">The name of the scrollbar.</param>
+        /// <returns>The scrollbar itself.</returns>
         public static GuiElementScrollbar GetScrollbar(this GuiComposer composer, string key)
         {
             return (GuiElementScrollbar)composer.GetElement(key);

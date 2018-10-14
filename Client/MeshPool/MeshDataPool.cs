@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -462,7 +463,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Whether this model is visible or not.
         /// </summary>
-        public bool Visible;
+        public bool FrustumVisible;
+
+        public BoolRef CullVisible = new BoolRef() { value = true };
 
         /// <summary>
         /// Used for models with movements (like a door).
@@ -471,27 +474,29 @@ namespace Vintagestory.API.Client
 
         private bool UpdateVisibleFlag(bool inFrustum)
         {
-            if (Visible && !inFrustum)
+            if (FrustumVisible && !inFrustum)
             {
                 TransitionCounter--;
-                if (TransitionCounter <= 0) Visible = false;
+                if (TransitionCounter <= 0) FrustumVisible = false;
             }
 
-            if (!Visible && inFrustum)
+            if (!FrustumVisible && inFrustum)
             {
                 TransitionCounter = 10;
-                Visible = true;
+                FrustumVisible = true;
             }
 
-            return Visible;
+            return FrustumVisible;
         }
 
         internal bool IsVisible(EnumFrustumCullMode mode, FrustumCulling frustumCuller)
         {
             return
+                (
                 (mode == EnumFrustumCullMode.CullHideDelay && UpdateVisibleFlag(frustumCuller.SphereInFrustum(frustumCullSphere))) ||
                 (mode == EnumFrustumCullMode.CullInstant && frustumCuller.SphereInFrustum(frustumCullSphere)) ||
                 mode == EnumFrustumCullMode.NoCull
+                ) && CullVisible.value
             ;
         }
     }

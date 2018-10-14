@@ -256,6 +256,17 @@ namespace Vintagestory.API.Datastructures
             return attr == null ? defaultValue : attr.value;
         }
 
+        public virtual double GetDecimal(string key, double defaultValue = 0)
+        {
+            IAttribute attr = attributes.TryGetValue(key);
+            if (attr is IntAttribute) return (int)attr.GetValue();
+            if (attr is FloatAttribute) return (float)attr.GetValue();
+            if (attr is DoubleAttribute) return (double)attr.GetValue();
+            if (attr is LongAttribute) return (long)attr.GetValue();
+
+            return defaultValue;
+        }
+
         public virtual double GetDouble(string key, double defaultValue = 0)
         {
             DoubleAttribute attr = attributes.TryGetValue(key) as DoubleAttribute;
@@ -284,6 +295,23 @@ namespace Vintagestory.API.Datastructures
         public virtual ITreeAttribute GetTreeAttribute(string key)
         {
             return attributes.TryGetValue(key) as ITreeAttribute;
+        }
+
+        public virtual ITreeAttribute GetOrAddTreeAttribute(string key)
+        {
+            var attr = attributes.TryGetValue(key);
+            if (attr == null)
+            {
+                var result = new TreeAttribute();
+                SetAttribute(key, result);
+                return result;
+            }
+            else if (attr is ITreeAttribute result)
+            {
+                return result;
+            }
+            else throw new InvalidOperationException(
+                $"The attribute with key '{ key }' is a { attr.GetType().Name }, not TreeAttribute.");
         }
 
         public ItemStack GetItemstack(string key, ItemStack defaultValue = null)

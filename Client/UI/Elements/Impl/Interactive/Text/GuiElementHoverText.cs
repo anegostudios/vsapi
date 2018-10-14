@@ -26,6 +26,15 @@ namespace Vintagestory.API.Client
             get { return 0.9; }
         }
 
+        /// <summary>
+        /// Creates a new instance of hover text.
+        /// </summary>
+        /// <param name="capi">The client API.</param>
+        /// <param name="text">The text of the text.</param>
+        /// <remarks>For the text and the text.</remarks>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="width">The width of the text.</param>
+        /// <param name="bounds">the bounds of the text.</param>
         public GuiElementHoverText(ICoreClientAPI capi, string text, CairoFont font, int width, ElementBounds bounds) : base(capi, text, font, bounds)
         {
             unscaledWidth = width;
@@ -156,22 +165,37 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Sets the text of the component and changes it.
+        /// </summary>
+        /// <param name="text">The text to change.</param>
         public void SetNewText(string text)
         {
             this.text = text;
             ComposeHoverElement();
         }
 
+        /// <summary>
+        /// Sets whether the text automatically displays or not.
+        /// </summary>
+        /// <param name="on">Whether the text is displayed.</param>
         public void SetAutoDisplay(bool on)
         {
             autoDisplay = on;
         }
 
+        /// <summary>
+        /// Sets the visibility to the 
+        /// </summary>
+        /// <param name="on"></param>
         public void SetVisible(bool on)
         {
             visible = on;
         }
 
+        /// <summary>
+        /// Sets whether or not the width of the component should automatiocally adjust.
+        /// </summary>
         public void SetAutoWidth(bool on)
         {
             autoWidth = on;
@@ -200,6 +224,14 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds a hover text to the GUI.
+        /// </summary>
+        /// <param name="text">The text of the text.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="width">The width of the text.</param>
+        /// <param name="bounds">The bounds of the text.</param>
+        /// <param name="key">The name of this hover text component.</param>
         public static GuiComposer AddHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -209,6 +241,10 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Fetches the hover text component by name.
+        /// </summary>
+        /// <param name="key">The name of the text component.</param>
         public static GuiElementHoverText GetHoverText(this GuiComposer composer, string key)
         {
             return (GuiElementHoverText)composer.GetElement(key);

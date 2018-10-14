@@ -71,6 +71,21 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         bool TryStopHandAction(bool isCancel, EnumItemUseCancelReason cancelReason = EnumItemUseCancelReason.ReleasedMouse);
 
+        /// <summary>
+        /// Sets a walk speed modifier that affects the entity's movement speed. Overrides existing value with the same key.
+        /// Is multiplied with other modifiers like so: <code>baseMovementSpeed * mod1 * mod2 * ...</code>
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="persistent">Whether the modifier should be saved and loaded.</param>
+        void SetWalkSpeedModifier(string key, float value, bool persistent);
+
+        /// <summary>
+        /// Removes a previously set walk speed modifier. Does nothing if it doesn't exist.
+        /// </summary>
+        /// <param name="key"></param>
+        void RemoveWalkSpeedModifier(string key);
+
     }
 
 }

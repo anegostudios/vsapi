@@ -19,7 +19,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Block or Item?
         /// </summary>
-        public EnumItemClass Type;
+        public EnumItemClass Type = EnumItemClass.Block;
         /// <summary>
         /// Code of the block or item
         /// </summary>

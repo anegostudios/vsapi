@@ -35,6 +35,16 @@ namespace Vintagestory.API.Client
 
         public override bool Focusable { get { return true; } }
 
+        /// <summary>
+        /// Creates a button with text.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="text">The text of the button.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="hoverFont">The font of the text when the player is hovering over the button.</param>
+        /// <param name="onClick">The event fired when the button is clicked.</param>
+        /// <param name="bounds">The bounds of the button.</param>
+        /// <param name="style">The style of the button.</param>
         public GuiElementTextButton(ICoreClientAPI capi, string text, CairoFont font, CairoFont hoverFont, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal) : base(capi, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
@@ -49,6 +59,10 @@ namespace Vintagestory.API.Client
             this.onClick = onClick;
         }
 
+        /// <summary>
+        /// Sets the orientation of the text both when clicked and when idle.
+        /// </summary>
+        /// <param name="orientation">The orientation of the text.</param>
         public void SetOrientation(EnumTextOrientation orientation)
         {
             normalText.orientation = orientation;
@@ -219,6 +233,10 @@ namespace Vintagestory.API.Client
             currentlyMouseDownOnElement = false;
         }
 
+        /// <summary>
+        /// Sets the button as active or inactive.
+        /// </summary>
+        /// <param name="active">Active == clickable</param>
         public void SetActive(bool active)
         {
             this.active = active;
@@ -235,6 +253,16 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        /// <summary>
+        /// Creates a button for the current GUI.
+        /// </summary>
+        /// <param name="text">The text on the button.</param>
+        /// <param name="onClick">The event fired when the button is clicked.</param>
+        /// <param name="bounds">The bounds of the button.</param>
+        /// <param name="buttonFont">The font of the button.</param>
+        /// <param name="style">The style of the button. (Default: Normal)</param>
+        /// <param name="orientation">The orientation of the text. (Default: center)</param>
+        /// <param name="key">The internal name of the button.</param>
         public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, CairoFont buttonFont, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
         {
             if (!composer.composed)
@@ -248,6 +276,15 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Creates a button for the current GUI.
+        /// </summary>
+        /// <param name="text">The text on the button.</param>
+        /// <param name="onClick">The event fired when the button is clicked.</param>
+        /// <param name="bounds">The bounds of the button.</param>
+        /// <param name="style">The style of the button. (Default: Normal)</param>
+        /// <param name="orientation">The orientation of the text. (Default: center)</param>
+        /// <param name="key">The internal name of the button.</param>
         public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
         {
             if (!composer.composed)
@@ -260,7 +297,15 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
-
+        /// <summary>
+        /// Creates a small button for the current GUI.
+        /// </summary>
+        /// <param name="text">The text on the button.</param>
+        /// <param name="onClick">The event fired when the button is clicked.</param>
+        /// <param name="bounds">The bounds of the button.</param>
+        /// <param name="style">The style of the button. (Default: Normal)</param>
+        /// <param name="orientation">The orientation of the text. (Default: center)</param>
+        /// <param name="key">The internal name of the button.</param>
         public static GuiComposer AddSmallButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
         {
             if (!composer.composed)
@@ -281,7 +326,10 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
-
+        /// <summary>
+        /// Gets the button by name.
+        /// </summary>
+        /// <param name="key">The name of the button.</param>
         public static GuiElementTextButton GetButton(this GuiComposer composer, string key)
         {
             return (GuiElementTextButton)composer.GetElement(key);

@@ -3,11 +3,21 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Creates a toggle button for the GUI.
+    /// </summary>
     public class GuiElementToggleButton : GuiElementTextControl
     {
-        API.Common.Action<bool> handler;
+        Common.Action<bool> handler;
 
+        /// <summary>
+        /// Is this button toggleable?
+        /// </summary>
         public bool Toggleable = false;
+
+        /// <summary>
+        /// Is this button on?
+        /// </summary>
         public bool On;
 
         LoadedTexture releasedTexture;
@@ -17,24 +27,42 @@ namespace Vintagestory.API.Client
 
         string icon;
 
+        /// <summary>
+        /// Is this element capable of being in the focus?
+        /// </summary>
         public override bool Focusable { get { return true; } }
 
-        public GuiElementToggleButton(ICoreClientAPI capi, string icon, string text, CairoFont font, API.Common.Action<bool> OnToggled, ElementBounds bounds, bool toggleable = false) : base(capi, text, font, bounds)
+        /// <summary>
+        /// Constructor for the button
+        /// </summary>
+        /// <param name="capi">The core client API.</param>
+        /// <param name="icon">The icon name</param>
+        /// <param name="text">The text for the button.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="OnToggled">The action that happens when the button is toggled.</param>
+        /// <param name="bounds">The bounding box of the button.</param>
+        /// <param name="toggleable">Can the button be toggled on or off?</param>
+        public GuiElementToggleButton(ICoreClientAPI capi, string icon, string text, CairoFont font, Common.Action<bool> OnToggled, ElementBounds bounds, bool toggleable = false) : base(capi, text, font, bounds)
         {
             releasedTexture = new LoadedTexture(capi);
             pressedTexture = new LoadedTexture(capi);
 
             handler = OnToggled;
-            this.Toggleable = toggleable;
+            Toggleable = toggleable;
             this.icon = icon;
         }
 
+        /// <summary>
+        /// Composes the element in both the pressed, and released states.
+        /// </summary>
+        /// <param name="ctx">The context of the element.</param>
+        /// <param name="surface">The surface of the element.</param>
+        /// <remarks>Neither the context, nor the surface is used in this function.</remarks>
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             ComposeReleasedButton();
             ComposePressedButton();
         }
-
 
         void ComposeReleasedButton()
         {
@@ -100,36 +128,62 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
+        /// <summary>
+        /// Renders the button.
+        /// </summary>
+        /// <param name="deltaTime">The time elapsed.</param>
         public override void RenderInteractiveElements(float deltaTime)
         {
             api.Render.Render2DTexturePremultipliedAlpha(On ? pressedTexture.TextureId : releasedTexture.TextureId, Bounds);
         }
 
+        /// <summary>
+        /// Handles the mouse button press while the mouse is on this button.
+        /// </summary>
+        /// <param name="api">The client API</param>
+        /// <param name="args">The mouse event arguments.</param>
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             base.OnMouseDownOnElement(api, args);
 
             On = !On;
-            if (handler != null) handler(On);
+            handler?.Invoke(On);
             api.Gui.PlaySound("toggleswitch");
         }
 
+        /// <summary>
+        /// Handles the mouse button release while the mouse is on this button.
+        /// </summary>
+        /// <param name="api">The client API</param>
+        /// <param name="args">The mouse event arguments</param>
         public override void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args)
         {
             if (!Toggleable) On = false;
         }
 
+        /// <summary>
+        /// Handles the event fired when the mouse is released.
+        /// </summary>
+        /// <param name="api">The client API</param>
+        /// <param name="args">Mouse event arguments</param>
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
             if (!Toggleable) On = false;
             base.OnMouseUp(api, args);
         }
 
+        /// <summary>
+        /// Sets the value of the button.
+        /// </summary>
+        /// <param name="on">Am I on or off?</param>
         public void SetValue(bool on)
         {
-            this.On = on;
+            On = on;
         }
 
+        /// <summary>
+        /// Disposes of the button.
+        /// </summary>
         public override void Dispose()
         {
             base.Dispose();
@@ -142,13 +196,25 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        /// <summary>
+        /// Gets the toggle button by name in the GUIComposer.
+        /// </summary>
+        /// <param name="key">The name of the button.</param>
+        /// <returns>A button.</returns>
         public static GuiElementToggleButton GetToggleButton(this GuiComposer composer, string key)
         {
             return (GuiElementToggleButton)composer.GetElement(key);
         }
 
 
-
+        /// <summary>
+        /// Creates a toggle button with the given parameters.
+        /// </summary>
+        /// <param name="text">The text of the button.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="onToggle">The event that happens once the button is toggled.</param>
+        /// <param name="bounds">The bounding box of the button.</param>
+        /// <param name="key">The name of the button for easy access.</param>
         public static GuiComposer AddToggleButton(this GuiComposer composer, string text, CairoFont font, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -158,6 +224,13 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Adds an icon button.
+        /// </summary>
+        /// <param name="icon">The name of the icon.</param>
+        /// <param name="onToggle">The event that happens once the button is toggled.</param>
+        /// <param name="bounds">The bounding box of the button.</param>
+        /// <param name="key">The name of the button for easy access.</param>
         public static GuiComposer AddIconButton(this GuiComposer composer, string icon, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -167,7 +240,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
-
+        /// <summary>
+        /// Toggles the given button.
+        /// </summary>
+        /// <param name="key">The name of the button that was set.</param>
+        /// <param name="selectedIndex">the index of the button.</param>
         public static void ToggleButtonsSetValue(this GuiComposer composer, string key, int selectedIndex)
         {
             int i = 0;
@@ -179,7 +256,14 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        /// <summary>
+        /// Adds multiple buttons with icons.
+        /// </summary>
+        /// <param name="icons">The collection of icons for the buttons.</param>
+        /// <param name="font">The font for the buttons.</param>
+        /// <param name="onToggle">The event called when the buttons are pressed.</param>
+        /// <param name="bounds">The bounds of the buttons.</param>
+        /// <param name="key">The key given to the bundle of buttons.</param>
         public static GuiComposer AddIconToggleButtons(this GuiComposer composer, string[] icons, CairoFont font, API.Common.Action<int> onToggle, ElementBounds[] bounds, string key = null)
         {
             if (!composer.composed)
@@ -213,6 +297,14 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Adds multiple buttons with Text.
+        /// </summary>
+        /// <param name="texts">The texts on all the buttons.</param>
+        /// <param name="font">The font for the buttons</param>
+        /// <param name="onToggle">The event fired when the button is pressed.</param>
+        /// <param name="bounds">The bounds of the buttons.</param>
+        /// <param name="key">The key given to the bundle of buttons.</param>
         public static GuiComposer AddTextToggleButtons(this GuiComposer composer, string[] texts, CairoFont font, API.Common.Action<int> onToggle, ElementBounds[] bounds, string key = null)
         {
             if (!composer.composed)

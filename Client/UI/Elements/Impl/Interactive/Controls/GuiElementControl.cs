@@ -11,10 +11,18 @@ namespace Vintagestory.API.Client
     {
         protected bool enabled = true;
 
+        /// <summary>
+        /// Constructor for the element.
+        /// </summary>
+        /// <param name="capi">The Client API.</param>
+        /// <param name="bounds">the bounds of the element.</param>
         public GuiElementControl(ICoreClientAPI capi, ElementBounds bounds) : base(capi, bounds)
         {
         }
 
+        /// <summary>
+        /// Enables/disables the given element (default is enabled)
+        /// </summary>
         public bool Enabled { get { return this.enabled; } set { enabled = value; } }
 
     }
@@ -24,10 +32,20 @@ namespace Vintagestory.API.Client
     {
         protected bool enabled = true;
 
+        /// <summary>
+        /// Constructor for the text element.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="text">The text value of the element.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">the bounds of the element.</param>
         public GuiElementTextControl(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds) : base(capi, text, font, bounds)
         {
         }
 
+        /// <summary>
+        /// Enables/disables the given element (default is enabled)
+        /// </summary>
         public bool Enabled { get { return this.enabled; } set { enabled = value; } }
 
     }

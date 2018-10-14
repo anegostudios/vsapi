@@ -16,6 +16,14 @@ namespace Vintagestory.API.Client
 
         public override bool Focusable { get { return true; } }
 
+        /// <summary>
+        /// Creates a switch which can be toggled.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="OnToggled">The event that happens when the switch is flipped.</param>
+        /// <param name="bounds">The bounds of the element.</param>
+        /// <param name="size">The size of the switch. (Default: 30)</param>
+        /// <param name="padding">The padding on the outside of the switch (Default: 5)</param>
         public GuiElementSwitch(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds, double size = 30, double padding = 5) : base(capi, bounds)
         {
             onTexture = new LoadedTexture(capi);
@@ -79,6 +87,10 @@ namespace Vintagestory.API.Client
             api.Gui.PlaySound("toggleswitch");
         }
 
+        /// <summary>
+        /// Sets the value of the switch on or off.
+        /// </summary>
+        /// <param name="on">on == true.</param>
         public void SetValue(bool on)
         {
             On = on;
@@ -96,6 +108,14 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds a switch to the GUI.
+        /// </summary>
+        /// <param name="onToggle">The event that happens when the switch is toggled.</param>
+        /// <param name="bounds">The bounds of the switch.</param>
+        /// <param name="key">the name of the switch. (Default: null)</param>
+        /// <param name="size">The size of the switch (Default: 30)</param>
+        /// <param name="padding">The padding around the switch (Default: 5)</param>
         public static GuiComposer AddSwitch(this GuiComposer composer, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null, double size = 30, double padding = 5)
         {
             if (!composer.composed)
@@ -105,6 +125,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the switch by name.
+        /// </summary>
+        /// <param name="key">The internal name of the switch.</param>
+        /// <returns>Returns the named switch.</returns>
         public static GuiElementSwitch GetSwitch(this GuiComposer composer, string key)
         {
             return (GuiElementSwitch)composer.GetElement(key);

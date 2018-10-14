@@ -126,6 +126,13 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         int GetInt(string key, int defaultValue = 0);
 
+        /// <summary>
+        /// Retrieves an int, float, long or double value. Whatever attribute is found for given key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        double GetDecimal(string key, double defaultValue = 0);
 
         /// <summary>
         /// Retrieves a long or null value if key is not found
@@ -202,6 +209,14 @@ namespace Vintagestory.API.Datastructures
         /// <param name="key"></param>
         /// <returns></returns>
         ITreeAttribute GetTreeAttribute(string key);
+        
+        /// <summary>
+        /// Retrieves an attribute tree or adds it if key is not found.
+        /// Throws an exception if the key does exist but is not a tree.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        ITreeAttribute GetOrAddTreeAttribute(string key);
 
         /// <summary>
         /// Creates a deep copy of the attribute tree

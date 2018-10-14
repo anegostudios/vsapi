@@ -30,4 +30,26 @@ namespace Vintagestory.API.MathTools
         }
 
     }
+
+
+    public class Vec4i<T>
+    {
+        public int X;
+        public int Y;
+        public int Z;
+        public T Value;
+
+        public Vec4i()
+        {
+
+        }
+
+        public Vec4i(int x, int y, int z, T Value)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
+            this.Value = Value;
+        }
+    }
 }

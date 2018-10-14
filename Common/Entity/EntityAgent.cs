@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -422,7 +423,44 @@ namespace Vintagestory.API.Common
 
             multiplier *= 1 + (belowBlock.WalkSpeedMultiplier - 1) / (1 - groundDragFactor);
 
+            // Apply walk speed modifiers.
+            var attribute = WatchedAttributes.GetTreeAttribute("walkSpeedModifiers");
+            if (attribute?.Count > 0)
+            {
+                // Enumerate over all values in this attribute as tree attributes, then
+                // multiply their "Value" properties together with the current multiplier.
+                multiplier *= attribute.Values.Cast<ITreeAttribute>()
+                    .Aggregate(1.0F, (current, modifier) => current * modifier.GetFloat("Value"));
+            }
+
             return multiplier;
+        }
+
+        /// <summary>
+        /// Sets a walk speed modifier that affects the entity's movement speed. Overrides existing value with the same key.
+        /// Is multiplied with other modifiers like so: <code>baseMovementSpeed * mod1 * mod2 * ...</code>
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="persistent">Whether the modifier should be saved and loaded.</param>
+        public void SetWalkSpeedModifier(string key, float value, bool persistent)
+        {
+            var attribute = WatchedAttributes
+                .GetOrAddTreeAttribute("walkSpeedModifiers")
+                .GetOrAddTreeAttribute(key);
+            
+            attribute.SetFloat("Value", value);
+            attribute.SetBool("Persistent", persistent);
+        }
+
+        /// <summary>
+        /// Removes a previously set walk speed modifier. Does nothing if it doesn't exist.
+        /// </summary>
+        /// <param name="key"></param>
+        public void RemoveWalkSpeedModifier(string key)
+        {
+            WatchedAttributes.GetTreeAttribute("walkSpeedModifiers")
+                ?.RemoveAttribute(key);
         }
 
 
@@ -444,6 +482,21 @@ namespace Vintagestory.API.Common
                     WatchedAttributes.RemoveAttribute("mountedOn");
                 }
                 
+            }
+
+            var walkSpeedAttr = WatchedAttributes.GetTreeAttribute("walkSpeedModifiers");
+            if (walkSpeedAttr?.Count > 0)
+            {
+                var clone = walkSpeedAttr.Clone();
+                // Don't save any non-persistent walk speed modifiers.
+                foreach (var pair in clone)
+                {
+                    var key        = pair.Key;
+                    var persistent = ((ITreeAttribute)pair.Value).GetBool("Persistent");
+                    if (!persistent) walkSpeedAttr.RemoveAttribute(key);
+                }
+                // Restore the original values.
+                WatchedAttributes["walkSpeedModifiers"] = clone;
             }
 
             base.ToBytes(writer, forClient);
@@ -494,9 +547,6 @@ namespace Vintagestory.API.Common
         {
             
         }
-
-        
-
 
     }
 }

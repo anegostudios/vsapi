@@ -8,6 +8,7 @@ namespace Vintagestory.API.MathTools
     public static class ShapeUtil
     {
         static Vec3f[][] cubicShellNormalizedVectors;
+        
 
         static ShapeUtil()
         {
@@ -36,12 +37,41 @@ namespace Vintagestory.API.MathTools
                     }
                 }
             }
+
+            
         }
+
 
 
         public static Vec3f[] GetCachedCubicShellNormalizedVectors(int radius)
         {
             return cubicShellNormalizedVectors[radius];
+        }
+
+        public static Vec3i[] GenCubicShellVectors(int r)
+        {
+            int[] ab = new int[2];
+            Vec3i[] vectors = new Vec3i[(2 * r + 1) * (2 * r + 1) * 6];
+            int j = 0;
+
+            foreach (BlockFacing facing in BlockFacing.ALLFACES)
+            {
+                for (ab[0] = -r; ab[0] <= r; ab[0]++)
+                {
+                    for (ab[1] = -r; ab[1] <= r; ab[1]++)
+                    {
+                        Vec3i pos = new Vec3i(facing.Normali.X * r, facing.Normali.Y * r, facing.Normali.Z * r);
+                        int l = 0;
+                        if (pos.X == 0) pos.X = ab[l++];
+                        if (pos.Y == 0) pos.Y = ab[l++];
+                        if (l < 2 && pos.Z == 0) pos.Z = ab[l++];
+
+                        vectors[j++] = pos;
+                    }
+                }
+            }
+
+            return vectors;
         }
 
 

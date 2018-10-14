@@ -1132,6 +1132,8 @@ namespace Vintagestory.API.Common.Entities
                         World.SpawnItemEntity(drops[i], LocalPos.XYZ.AddCopy(0, 0.25, 0));
                     }
                 }
+
+                StartAnimation("die");
             }
 
             DespawnReason = new EntityDespawnReason() {
@@ -1151,7 +1153,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
         {
             AssetLocation[] locations = null;
-            if (Properties.Sounds != null && Properties.Sounds.TryGetValue(type, out locations) && locations.Length > 0)
+            if (Properties.ResolvedSounds != null && Properties.ResolvedSounds.TryGetValue(type, out locations) && locations.Length > 0)
             {
                 World.PlaySoundAt(
                     locations[World.Rand.Next(locations.Length)], 

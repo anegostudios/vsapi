@@ -116,7 +116,7 @@ namespace Vintagestory.API.Client
         /// <param name="values">The values being added.</param>
         public void Add(params T[] values)
         {
-            if (Count + values.Length > BufferSize)
+            if (Count + values.Length >= BufferSize)
             {
                 GrowBuffer(values.Length);
             }

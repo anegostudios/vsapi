@@ -6,6 +6,7 @@ using System.Text;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Config;
 using System.Collections.Generic;
+using VintagestoryAPI.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -323,16 +324,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="searchText"></param>
         /// <returns></returns>
-        public bool MatchesSearchText(string searchText)
+        public bool MatchesSearchText(IWorldAccessor world, string searchText)
         {
-            if (Class == EnumItemClass.Block)
-            {
-                return GetName().ToLowerInvariant().Contains(searchText.ToLowerInvariant());
-            }
-            else
-            {
-                return GetName().ToLowerInvariant().Contains(searchText.ToLowerInvariant());
-            }
+           return 
+                GetName().CaseInsensitiveContains(searchText)
+                || GetDescription(world, false).CaseInsensitiveContains(searchText)
+            ;
+
         }
 
         /// <summary>

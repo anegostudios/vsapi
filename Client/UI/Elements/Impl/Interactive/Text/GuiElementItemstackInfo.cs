@@ -31,6 +31,12 @@ namespace Vintagestory.API.Client
 
         InfoTextDelegate OnRequireInfoText;
 
+        /// <summary>
+        /// Creates an ItemStackInfo element.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="bounds">The bounds of the object.</param>
+        /// <param name="OnRequireInfoText">The function that is called when an item information is called.</param>
         public GuiElementItemstackInfo(ICoreClientAPI capi, ElementBounds bounds, InfoTextDelegate OnRequireInfoText) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
         {
             this.OnRequireInfoText = OnRequireInfoText;
@@ -162,12 +168,19 @@ namespace Vintagestory.API.Client
         
         
 
-
+        /// <summary>
+        /// Gets the item slot for this stack info.
+        /// </summary>
+        /// <returns></returns>
         public ItemSlot GetSlot()
         {
             return curSlot;
         }
 
+        /// <summary>
+        /// Sets the source slot for stacks.
+        /// </summary>
+        /// <param name="nowSlot"></param>
         public void SetSourceSlot(ItemSlot nowSlot)
         {
             //bool recompose = this.curStack == null || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(curStack));

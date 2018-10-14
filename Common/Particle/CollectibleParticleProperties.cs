@@ -66,9 +66,9 @@ namespace Vintagestory.API.Common
                 Cuboidf box = (selectionBoxes != null && selectionBoxes.Length > 0) ? selectionBoxes[0] : Block.DefaultCollisionBox;
 
                 return new Vec3d(
-                    pos.X + box.X1 + rand.NextDouble() * (box.X2 - box.X1),
-                    pos.Y + box.Y1 + rand.NextDouble() * (box.Y2 - box.Y1),
-                    pos.Z + box.Z1 + rand.NextDouble() * (box.Z2 - box.Z1)
+                    pos.X + box.X1 + 1 / 32f + rand.NextDouble() * (box.X2 - box.X1 - 1 / 16f),
+                    pos.Y + box.Y1 + 1 / 32f + rand.NextDouble() * (box.Y2 - box.Y1 - 1 / 16f),
+                    pos.Z + box.Z1 + 1 / 32f + rand.NextDouble() * (box.Z2 - box.Z1 - 1 / 16f)
                 );
             }
             else
@@ -82,41 +82,41 @@ namespace Vintagestory.API.Common
                 bool haveCollisionBox = boxes != null && boxes.Length > 0;
 
                 Vec3d basepos = new Vec3d(
-                    pos.X + 0.5f + face.X / 1.95f + (haveCollisionBox && facing.Axis == EnumAxis.X ? (face.X > 0 ? boxes[0].X2 - 1 : boxes[0].X1) : 0),
-                    pos.Y + 0.5f + face.Y / 1.95f + (haveCollisionBox && facing.Axis == EnumAxis.Y ? (face.Y > 0 ? boxes[0].Y2 - 1 : boxes[0].Y1) : 0),
-                    pos.Z + 0.5f + face.Z / 1.95f + (haveCollisionBox && facing.Axis == EnumAxis.Z ? (face.Z > 0 ? boxes[0].Z2 - 1 : boxes[0].Z1) : 0)
+                    pos.X + 0.5f + face.X / 1.9f + (haveCollisionBox && facing.Axis == EnumAxis.X ? (face.X > 0 ? boxes[0].X2 - 1 : boxes[0].X1) : 0),
+                    pos.Y + 0.5f + face.Y / 1.9f + (haveCollisionBox && facing.Axis == EnumAxis.Y ? (face.Y > 0 ? boxes[0].Y2 - 1 : boxes[0].Y1) : 0),
+                    pos.Z + 0.5f + face.Z / 1.9f + (haveCollisionBox && facing.Axis == EnumAxis.Z ? (face.Z > 0 ? boxes[0].Z2 - 1 : boxes[0].Z1) : 0)
                 );
 
                 Vec3d posVariance = new Vec3d(
-                    1f * (1 - face.X),
-                    1f * (1 - face.Y),
-                    1f * (1 - face.Z)
+                    1f * (1 - Math.Abs(face.X)),
+                    1f * (1 - Math.Abs(face.Y)),
+                    1f * (1 - Math.Abs(face.Z))
                 );
 
                 return new Vec3d(
                     basepos.X + (rand.NextDouble() - 0.5) * posVariance.X,
-                    basepos.Y + (rand.NextDouble() - 0.5) * posVariance.Y,
+                    basepos.Y + (rand.NextDouble() - 0.5) * posVariance.Y - (facing == BlockFacing.DOWN ? 0.1f : 0f),
                     basepos.Z + (rand.NextDouble() - 0.5) * posVariance.Z
                 );
             }
         }
 
-        public EvolvingNatFloat GetOpacityEvolve()
+        public virtual EvolvingNatFloat GetOpacityEvolve()
         {
             return null;
         }
 
-        public EvolvingNatFloat GetRedEvolve() { return null; }
-        public EvolvingNatFloat GetGreenEvolve() { return null; }
-        public EvolvingNatFloat GetBlueEvolve() { return null; }
+        public virtual EvolvingNatFloat GetRedEvolve() { return null; }
+        public virtual EvolvingNatFloat GetGreenEvolve() { return null; }
+        public virtual EvolvingNatFloat GetBlueEvolve() { return null; }
 
 
-        public EvolvingNatFloat GetSizeEvolve()
+        public virtual EvolvingNatFloat GetSizeEvolve()
         {
             return null;
         }
 
-        public Block ColorByBlock()
+        public virtual Block ColorByBlock()
         {
             return null;
         }

@@ -79,6 +79,7 @@ namespace Vintagestory.API.Common
             {
                 Itemstack.Collectible.OnGroundIdle(this);
             }
+            else Die();
 
             
             if (counter++ > 10 || stuckInBlock)

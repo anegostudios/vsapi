@@ -75,6 +75,7 @@ namespace Vintagestory.API.Common
         public event OnInventoryOpened OnInventoryOpened;
         public event OnInventoryClosed OnInventoryClosed;
 
+
         public InventoryBase(string className, string instanceID, ICoreAPI api)
         {
             openedByPlayerGUIds = new HashSet<string>();

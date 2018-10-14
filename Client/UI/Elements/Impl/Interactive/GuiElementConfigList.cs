@@ -6,16 +6,36 @@ using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// A config item for the GUIElementConfigList
+    /// </summary>
     public class ConfigItem
     {
+        /// <summary>
+        /// The name of the config item.
+        /// </summary>
         public string key;
+
+        /// <summary>
+        /// the value of the config item.  
+        /// </summary>
         public string value;
 
         public string code;
 
+        /// <summary>
+        /// Has this particular config item errored?
+        /// </summary>
         public bool error;
 
+        /// <summary>
+        /// The y position of the config item.
+        /// </summary>
         public double posY;
+
+        /// <summary>
+        /// The height of the config item.
+        /// </summary>
         public double height;
     }
 
@@ -38,6 +58,14 @@ namespace Vintagestory.API.Client
         public CairoFont errorFont;
         public CairoFont stdFont;
 
+        /// <summary>
+        /// Creates a new dropdown configuration list.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="items">The list of items in the configuration.</param>
+        /// <param name="OnItemClick">The event fired when the particular item is clicked.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">the bounds of the element.</param>
         public GuiElementConfigList(ICoreClientAPI capi, List<ConfigItem> items, Action<int> OnItemClick, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
@@ -48,6 +76,9 @@ namespace Vintagestory.API.Client
             this.stdFont = font;
         }
 
+        /// <summary>
+        /// Automatically adjusts the height of the element.
+        /// </summary>
         public void Autoheight() {
             double totalHeight = 0;
             double pad = scaled(unscaledPadding);

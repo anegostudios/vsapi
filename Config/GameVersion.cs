@@ -1,4 +1,5 @@
 ﻿using System;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Config
 {
@@ -19,17 +20,17 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.7.0";
+        public const string OverallVersion = "1.7.5";
 
         /// <summary>
         /// Whether this is a stable or unstable version
         /// </summary>
-        public const EnumGameBranch Branch = EnumGameBranch.Unstable;
+        public const EnumGameBranch Branch = EnumGameBranch.Stable;
 
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-rc.2";
+        public const string ShortGameVersion = OverallVersion + "";
 
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
@@ -52,7 +53,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public static string NetworkVersion = "1.7.1";
+        public static string NetworkVersion = "1.7.2";
 
         /// <summary>
         /// Version of the savegame database
@@ -60,10 +61,28 @@ namespace Vintagestory.API.Config
         public static int DatabaseVersion = 2;
 
 
-        static string[] separators = new string[] { ".", "-pre.", "-rc." };
-        static string[] splitVersionString(string version)
+        static string[] separators = new string[] { ".", "-" };
+        static int[] splitVersionString(string version)
         {
-            return version.Split(separators, StringSplitOptions.None);
+            string[] parts = version.Split(separators, StringSplitOptions.None);
+            if (parts.Length <= 3)
+            {
+                parts = parts.Append("2");
+            } else
+            {
+                if (parts[3] == "rc") parts[3] = "1";
+                else parts[3] = "0";
+            }
+
+            int[] versions = new int[parts.Length];
+            for (int i = 0; i < parts.Length; i++)
+            {
+                int ver;
+                int.TryParse(parts[i], out ver);
+                versions[i] = ver;
+            }
+
+            return versions;
         }
 
         /// <summary>
@@ -73,8 +92,8 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsCompatibleApiVersion(string version)
         {
-            string[] partsTheirs = splitVersionString(version);
-            string[] partsMine = splitVersionString(APIVersion);
+            int[] partsTheirs = splitVersionString(version);
+            int[] partsMine = splitVersionString(APIVersion);
 
             if (partsTheirs.Length < 2) return false;
 
@@ -88,8 +107,8 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsCompatibleNetworkVersion(string version)
         {
-            string[] partsTheirs = splitVersionString(version);
-            string[] partsMine = splitVersionString(NetworkVersion);
+            int[] partsTheirs = splitVersionString(version);
+            int[] partsMine = splitVersionString(NetworkVersion);
 
             if (partsTheirs.Length < 2) return false;
 
@@ -115,23 +134,15 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsAtLeastVersion(string version, string reference)
         {
-            string[] partsMin = splitVersionString(reference);
-            string[] partsCur = splitVersionString(version);
+            int[] partsMin = splitVersionString(reference);
+            int[] partsCur = splitVersionString(version);
 
             for (int i = 0; i < partsMin.Length; i++)
             {
                 if (i >= partsCur.Length) return false;
 
-                int partMin = 0;
-                int.TryParse(partsMin[i], out partMin);
-
-                int partCur = 0;
-                int.TryParse(partsCur[i], out partCur);
-
-
-                if (partMin > partCur) return false;
-
-                if (partMin < partCur) return true;
+                if (partsMin[i] > partsCur[i]) return false;
+                if (partsMin[i] < partsCur[i]) return true;
             }
 
             return true;
@@ -151,21 +162,15 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsNewerVersionThan(string version, string reference)
         {
-            string[] partsMin = splitVersionString(reference);
-            string[] partsCur = splitVersionString(version);
+            int[] partsMin = splitVersionString(reference);
+            int[] partsCur = splitVersionString(version);
 
             for (int i = 0; i < partsMin.Length; i++)
             {
                 if (i >= partsCur.Length) return false;
 
-                int partMin = 0;
-                int.TryParse(partsMin[i], out partMin);
-
-                int partCur = 0;
-                int.TryParse(partsCur[i], out partCur);
-
-                if (partMin > partCur) return false;
-                if (partMin < partCur) return true;
+                if (partsMin[i] > partsCur[i]) return false;
+                if (partsMin[i] < partsCur[i]) return true;
             }
 
             return false;

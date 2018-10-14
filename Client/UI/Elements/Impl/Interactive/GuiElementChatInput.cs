@@ -8,6 +8,12 @@ namespace Vintagestory.API.Client
         LoadedTexture highlightTexture;
         ElementBounds highlightBounds;
 
+        /// <summary>
+        /// Adds a chat input element to the UI.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="bounds">The bounds of the chat input.</param>
+        /// <param name="OnTextChanged">The event fired when the text is altered.</param>
         public GuiElementChatInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged) : base(capi, null, bounds)
         {
             highlightTexture = new LoadedTexture(capi);
@@ -85,6 +91,12 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        /// <summary>
+        /// Adds a chat input to the GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the text.</param>
+        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="key">The name of this chat component.</param>
         public static GuiComposer AddChatInput(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, string key = null)
         {
             if (!composer.composed)
@@ -95,6 +107,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the chat input by name.
+        /// </summary>
+        /// <param name="key">The name of the chat input component.</param>
+        /// <returns>The named component.</returns>
         public static GuiElementChatInput GetChatInput(this GuiComposer composer, string key)
         {
             return (GuiElementChatInput)composer.GetElement(key);

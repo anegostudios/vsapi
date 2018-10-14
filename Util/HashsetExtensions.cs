@@ -36,5 +36,17 @@ namespace Vintagestory.API.Util
 
             return builder.ToString();
         }
+
+
+        public static T PopOne<T>(this ICollection<T> items)
+        {
+            T item = items.FirstOrDefault();
+            if (item != null)
+            {
+                items.Remove(item);
+            }
+            return item;
+        }
+        
     }
 }

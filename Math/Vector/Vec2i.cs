@@ -85,6 +85,11 @@ namespace Vintagestory.API.MathTools
         {
             return new Vec2i(X, Y);
         }
+
+        public override string ToString()
+        {
+            return X + " / " + Y;
+        }
     }
 
 

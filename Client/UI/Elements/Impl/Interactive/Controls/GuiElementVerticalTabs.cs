@@ -24,6 +24,14 @@ namespace Vintagestory.API.Client
 
         public override bool Focusable { get { return true; } }
 
+        /// <summary>
+        /// Creates a new vertical tab group.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="tabs">The collection of individual tabs.</param>
+        /// <param name="font">The font for the group of them all.</param>
+        /// <param name="bounds">The bounds of the tabs.</param>
+        /// <param name="onTabClicked">The event fired when the tab is clicked.</param>
         public GuiElementVerticalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, ElementBounds bounds, API.Common.Action<int> onTabClicked) : base(capi, "", font, bounds)
         {
             this.tabs = tabs;
@@ -216,13 +224,21 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        /// <summary>
+        /// Switches to a different tab.
+        /// </summary>
+        /// <param name="selectedIndex">The tab to switch to.</param>
         public void SetValue(int selectedIndex)
         {
             handler(tabs[selectedIndex].index);
             activeElement = selectedIndex;
         }
 
+        /// <summary>
+        /// Switches to a different tab.
+        /// </summary>
+        /// <param name="selectedIndex">The tab to switch to.</param>
+        /// <param name="triggerHandler">Whether or not the handler triggers.</param>
         public void SetValue(int selectedIndex, bool triggerHandler)
         {
             if (triggerHandler) handler(tabs[selectedIndex].index);
@@ -240,6 +256,13 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        /// <summary>
+        /// Adds multiple tabs to a group of vertical tabs.
+        /// </summary>
+        /// <param name="tabs">The tabs being added.</param>
+        /// <param name="bounds">The boundaries of the tab group.</param>
+        /// <param name="OnTabClicked">The event fired when any of the tabs are clicked.</param>
+        /// <param name="key">The name of this tab group.</param>
         public static GuiComposer AddVerticalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, API.Common.Action<int> OnTabClicked, string key = null)
         {
             if (!composer.composed)
@@ -251,6 +274,10 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the vertical tab group as declared by name.
+        /// </summary>
+        /// <param name="key">The name of the vertical tab group to get.</param>
         public static GuiElementVerticalTabs GetVerticalTab(this GuiComposer composer, string key)
         {
             return (GuiElementVerticalTabs)composer.GetElement(key);

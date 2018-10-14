@@ -5,6 +5,9 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
+    /// <remarks>
+    /// PULL THE LEVER KRONK!
+    /// </remarks>
     public class GuiElementLever : GuiElement
     {
         internal bool leverOn;
@@ -49,7 +52,12 @@ namespace Vintagestory.API.Client
         bool transitioning = false;
 
 
-        
+        /// <summary>
+        /// Creates the Lever with the specified bounds.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="onLeverNewState">The event fired when the lever is flipped.</param>
+        /// <param name="bounds"></param>
         public GuiElementLever(ICoreClientAPI capi, ActionConsumable<bool> onLeverNewState, ElementBounds bounds) : base(capi, bounds)
         {
             this.onLeverNewState = onLeverNewState;
@@ -277,7 +285,12 @@ namespace Vintagestory.API.Client
             }
         }
 
-        public void setLeverState(bool leverOn)
+        /// <summary>
+        /// Sets the lever state.
+        /// </summary>
+        /// <param name="leverOn">On or off?</param>
+        /// <remarks>WRONG LEVERRRRRRRRRR!</remarks>
+        public void SetLeverState(bool leverOn)
         {
             this.leverOn = leverOn;
 
@@ -289,6 +302,12 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds a lever to the current GUI.
+        /// </summary>
+        /// <param name="onLeverNewState">The event that fires when the lever is flipped.</param>
+        /// <param name="bounds">The bounds of the lever.</param>
+        /// <param name="key">The name for the lever.</param>
         public static GuiComposer AddLever(this GuiComposer composer, ActionConsumable<bool> onLeverNewState, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -298,6 +317,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the lever by name.
+        /// </summary>
+        /// <param name="key">Wrong Lever.</param>
+        /// <returns>The lever.</returns>
         public static GuiElementLever GetLever(this GuiComposer composer, string key)
         {
             return (GuiElementLever)composer.GetElement(key);

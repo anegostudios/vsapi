@@ -62,7 +62,10 @@ namespace Vintagestory.API.Common.Entities
 
         public EntityServerProperties Server;
 
-        public Dictionary<string, AssetLocation[]> Sounds;
+        public Dictionary<string, AssetLocation> Sounds;
+
+        public Dictionary<string, AssetLocation[]> ResolvedSounds = new Dictionary<string, AssetLocation[]>();
+
 
         public float IdleSoundChance = 0.3f;
 
@@ -97,14 +100,21 @@ namespace Vintagestory.API.Common.Entities
                     DropsCopy[i] = Drops[i].Clone();
             }
 
-            Dictionary<string, AssetLocation[]> csounds = new Dictionary<string, AssetLocation[]>();
+            Dictionary<string, AssetLocation> csounds = new Dictionary<string, AssetLocation>();
             foreach (var val in Sounds)
             {
+                csounds[val.Key] = val.Value.Clone();
+            }
+
+
+            Dictionary<string, AssetLocation[]> cresolvedsounds = new Dictionary<string, AssetLocation[]>();
+            foreach (var val in ResolvedSounds)
+            {
                 AssetLocation[] locs = val.Value;
-                csounds[val.Key] = new AssetLocation[locs.Length];
+                cresolvedsounds[val.Key] = new AssetLocation[locs.Length];
                 for (int i = 0; i < locs.Length; i++)
                 {
-                    csounds[val.Key][i] = locs[i].Clone();
+                    cresolvedsounds[val.Key][i] = locs[i].Clone();
                 }
             }
 
@@ -121,7 +131,7 @@ namespace Vintagestory.API.Common.Entities
                 RotateModelOnClimb = RotateModelOnClimb,
                 KnockbackResistance = KnockbackResistance,
                 Attributes = Attributes?.Clone(),
-                Sounds = new Dictionary<string, AssetLocation[]>(Sounds),
+                Sounds = new Dictionary<string, AssetLocation>(Sounds),
                 IdleSoundChance = IdleSoundChance,
                 IdleSoundRange = IdleSoundRange,
                 Drops = DropsCopy,
@@ -148,6 +158,36 @@ namespace Vintagestory.API.Common.Entities
             }
 
             Client?.Init(); // Init also on server
+
+            InitSounds(api.Assets);
+        }
+
+        public void InitSounds(IAssetManager assetManager)
+        {
+            if (Sounds != null)
+            {
+                foreach (var val in Sounds)
+                {
+                    if (val.Value.Path.EndsWith("*"))
+                    {
+                        List<IAsset> assets = assetManager.GetMany("sounds/" + val.Value.Path.Substring(0, val.Value.Path.Length - 1), val.Value.Domain);
+                        AssetLocation[] sounds = new AssetLocation[assets.Count];
+                        int i = 0;
+
+                        foreach (IAsset asset in assets)
+                        {
+                            sounds[i++] = asset.Location;
+                        }
+
+                        ResolvedSounds[val.Key] = sounds;
+                    }
+                    else
+                    {
+                        ResolvedSounds[val.Key] = new AssetLocation[] { val.Value.Clone().WithPathPrefix("sounds/") };
+                    }
+                }
+            }
+
         }
     }
 

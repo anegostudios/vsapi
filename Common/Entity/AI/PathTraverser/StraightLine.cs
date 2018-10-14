@@ -12,7 +12,7 @@ namespace Vintagestory.API.Common
 
         public StraightLinePathTraverser(EntityAgent entity) : base(entity)
         {
-            if (entity?.Properties.Server?.Attributes != null)
+            if (entity?.Properties.Server?.Attributes?.GetTreeAttribute("pathfinder") != null)
             {
                 minTurnAnglePerSec = (float)entity.Properties.Server.Attributes.GetTreeAttribute("pathfinder").GetFloat("minTurnAnglePerSec", 250);
                 maxTurnAnglePerSec = (float)entity.Properties.Server.Attributes.GetTreeAttribute("pathfinder").GetFloat("maxTurnAnglePerSec", 450);

@@ -23,6 +23,7 @@ namespace Vintagestory.API.Common
 
         protected string sound;
         protected float soundRange;
+        protected int soundStartMs;
         protected float soundChance=1.01f;
 
         protected string whenInEmotionState;
@@ -31,6 +32,7 @@ namespace Vintagestory.API.Common
         protected long cooldownUntilMs;
         protected double cooldownUntilTotalHours;
 
+        
 
         public AiTaskBase(EntityAgent entity)
         {
@@ -70,6 +72,7 @@ namespace Vintagestory.API.Common
             {
                 sound = taskConfig["sound"].AsString();
                 soundRange = taskConfig["soundRange"].AsFloat(16);
+                soundStartMs = taskConfig["soundStartMs"].AsInt(0);
             }
 
             cooldownUntilMs = entity.World.ElapsedMilliseconds + initialmincooldown + entity.World.Rand.Next(initialmaxcooldown - initialmincooldown);
@@ -102,7 +105,16 @@ namespace Vintagestory.API.Common
 
             if (sound != null && entity.World.Rand.NextDouble() <= soundChance)
             {
-                entity.World.PlaySoundAt(new AssetLocation("sounds/"+sound), entity.ServerPos.X, entity.ServerPos.Y, entity.ServerPos.Z, null, true, soundRange);
+                if (soundStartMs > 0)
+                {
+                    entity.World.RegisterCallback((dt) => {
+                        entity.World.PlaySoundAt(new AssetLocation("sounds/" + sound), entity.ServerPos.X, entity.ServerPos.Y, entity.ServerPos.Z, null, true, soundRange);
+                    }, soundStartMs);
+                } else
+                {
+                    entity.World.PlaySoundAt(new AssetLocation("sounds/" + sound), entity.ServerPos.X, entity.ServerPos.Y, entity.ServerPos.Z, null, true, soundRange);
+                }
+                
             }
         }
 

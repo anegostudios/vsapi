@@ -62,7 +62,7 @@ namespace Vintagestory.API.Common
 
         public static SimpleParticleProperties ExplosionFireParticles = new SimpleParticleProperties(
             10, 20,
-            ColorUtil.ToRgba(150, 0, 255, 255),
+            ColorUtil.ToRgba(150, 255, 255, 0),
             new Vec3d(),
             new Vec3d(),
             new Vec3f(-1.5f, -1.5f, -1.5f),
@@ -177,7 +177,7 @@ namespace Vintagestory.API.Common
         public int GetRgbaColor(ICoreClientAPI capi)
         {
             color = color & 0x00ffffff;
-            color |= 50 + SimpleParticleProperties.rand.Next(100);
+            color |= (50 + SimpleParticleProperties.rand.Next(100)) << 24;
 
             return color;
         }

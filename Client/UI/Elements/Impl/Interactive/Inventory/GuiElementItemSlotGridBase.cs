@@ -6,11 +6,15 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Client;
+using VintagestoryAPI.Util;
 
 namespace Vintagestory.API.Client
 {
     public delegate bool CanClickSlotDelegate(int slotID);
 
+    /// <summary>
+    /// A base class for the slot grid.  For all your slot grid needs.
+    /// </summary>
     public abstract class GuiElementItemSlotGridBase : GuiElement
     {
         public static double unscaledSlotPadding = 3;
@@ -59,14 +63,22 @@ namespace Vintagestory.API.Client
             get { return true; }
         }
 
-        public GuiElementItemSlotGridBase(ICoreClientAPI capi, IInventory inventory, API.Common.Action<object> SendPacket, int cols, ElementBounds bounds) : base(capi, bounds)
+        /// <summary>
+        /// Creates a new instance of this class.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="inventory">The attached inventory</param>
+        /// <param name="SendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
+        /// <param name="columns">The number of columns in the GUI.</param>
+        /// <param name="bounds">The bounds of the slot grid.</param>
+        public GuiElementItemSlotGridBase(ICoreClientAPI capi, IInventory inventory, API.Common.Action<object> SendPacket, int columns, ElementBounds bounds) : base(capi, bounds)
         {
             slotTexture = new LoadedTexture(capi);
             highlightSlotTexture = new LoadedTexture(capi);
             prevSlotQuantity = inventory.QuantitySlots;
             this.inventory = inventory;
-            this.cols = cols;
-            this.SendPacketHandler = SendPacket;
+            cols = columns;
+            SendPacketHandler = SendPacket;
 
             inventory.SlotNotified += OnSlotNotified;
         }
@@ -302,6 +314,8 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
+            (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = !isLeftMouseDownStartedInsideElem;
+
             // Slot sizes
             double absSlotPadding = scaled(unscaledSlotPadding);
             double absSlotWidth = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
@@ -376,11 +390,32 @@ namespace Vintagestory.API.Client
         {
             if (hoverSlotId != -1) api.Input.TriggerOnMouseLeaveSlot(inventory.GetSlot(hoverSlotId));
             hoverSlotId = -1;
+
+            (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = true;
         }
 
         public override int OutlineColor()
         {
             return (255 << 8) + (255 << 24);
+        }
+
+        Dictionary<int, string> nameAndDescByItemSlotId = null;
+
+        public Dictionary<int, string> SearchCache { get { return nameAndDescByItemSlotId; } set { nameAndDescByItemSlotId = value; } }
+
+        public Dictionary<int, string> CreateSearchCache()
+        {
+            nameAndDescByItemSlotId = new Dictionary<int, string>();
+
+            foreach (var val in availableSlots)
+            {
+                ItemSlot slot = inventory.GetSlot(val.Key);
+                if (slot.Itemstack == null) continue;
+
+                nameAndDescByItemSlotId[val.Key] = slot.Itemstack.GetName() + " " + slot.Itemstack.GetDescription(api.World, false);
+            }
+
+            return nameAndDescByItemSlotId;
         }
 
         public void FilterItemsBySearchText(string text)
@@ -394,17 +429,30 @@ namespace Vintagestory.API.Client
                 ItemSlot slot = inventory.GetSlot(val.Key);
 
                 if (slot.Itemstack == null) continue;
-
-                if (searchText == null || searchText.Length == 0 || slot.Itemstack.MatchesSearchText(searchText))
+                if (searchText == null || searchText.Length == 0)
                 {
                     renderedSlots.Add(val.Key, slot);
+                    continue;
                 }
+
+                string cachedtext = "";
+                if (nameAndDescByItemSlotId != null && nameAndDescByItemSlotId.TryGetValue(val.Key, out cachedtext))
+                {
+                    if (cachedtext.CaseInsensitiveContains(searchText)) renderedSlots.Add(val.Key, slot);
+                } else
+                {
+                    if (slot.Itemstack.MatchesSearchText(api.World, searchText)) renderedSlots.Add(val.Key, slot);
+                }
+
+                
             }
 
             this.rows = (int)Math.Ceiling(1f * renderedSlots.Count / cols);
             ComposeInteractiveElements();
 
         }
+
+        
 
         #endregion
 
@@ -436,6 +484,7 @@ namespace Vintagestory.API.Client
                     wasMouseDownOnSlotIndex.Add(i);
                     if (isLeftMouseDownStartedInsideElem)
                     {
+                        //Console.WriteLine("======================");
                         referenceDistributStack = api.World.Player.InventoryManager.MouseItemSlot.Itemstack.Clone();
                         int slotid = renderedSlots.GetKeyAtIndex(i);
                         leftMouseDownDistributeSlotsBySlotid.Add(slotid, inventory.GetSlot(slotid).StackSize);
@@ -462,6 +511,7 @@ namespace Vintagestory.API.Client
             isLeftMouseDownStartedInsideElem = false;
             wasMouseDownOnSlotIndex.Clear();
             leftMouseDownDistributeSlotsBySlotid.Clear();
+            (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = true;
             base.OnMouseUp(api, args);
         }
 
@@ -526,7 +576,7 @@ namespace Vintagestory.API.Client
 
                             if (api.World.Player.InventoryManager.MouseItemSlot.StackSize <= 0)
                             {
-                                RedistributeStacks(i);
+                                RedistributeStacks(newHoverSlotid);
                             }
                         }
                     }
@@ -547,13 +597,15 @@ namespace Vintagestory.API.Client
             hoverSlotId = -1;
         }
 
-        private void RedistributeStacks(int newIndex)
+        private void RedistributeStacks(int intoSlotId)
         {
             int stacksPerSlot = referenceDistributStack.StackSize / leftMouseDownDistributeSlotsBySlotid.Count;
-
+            //Console.WriteLine("-----");
             for (int i = 0; i < leftMouseDownDistributeSlotsBySlotid.Count - 1; i++)
             {
                 int sourceSlotid = leftMouseDownDistributeSlotsBySlotid.GetKeyAtIndex(i);
+                if (sourceSlotid == intoSlotId) continue;
+
                 ItemSlot sourceSlot = inventory.GetSlot(sourceSlotid);
 
                 int beforesize = leftMouseDownDistributeSlotsBySlotid[sourceSlotid];
@@ -561,24 +613,18 @@ namespace Vintagestory.API.Client
 
                 if (nowsize - beforesize > stacksPerSlot)
                 {
-                    //Console.WriteLine("{0} - {1} > {2}", nowsize, beforesize, stacksPerSlot);
+                    //Console.WriteLine("Move {0} items from {1} to {2}, stackperslot={3}", nowsize - beforesize - stacksPerSlot, sourceSlotid, intoSlotId, stacksPerSlot);
 
-                    for (int j = i+1; j < leftMouseDownDistributeSlotsBySlotid.Count; j++)
+                    ItemSlot targetSlot = inventory.GetSlot(intoSlotId);
+                    ItemStackMoveOperation op = new ItemStackMoveOperation(api.World, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge);
+                    op.ActingPlayer = api.World.Player;
+                    op.RequestedQuantity = nowsize - beforesize - stacksPerSlot;
+
+                    object packet = api.World.Player.InventoryManager.TryTransferTo(sourceSlot, targetSlot, ref op);
+
+                    if (packet != null)
                     {
-                        int targetslotid = leftMouseDownDistributeSlotsBySlotid.GetKeyAtIndex(j);
-                        ItemSlot targetSlot = inventory.GetSlot(targetslotid);
-                        ItemStackMoveOperation op = new ItemStackMoveOperation(api.World, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge);                        
-                        op.ActingPlayer = api.World.Player;
-                        op.RequestedQuantity = nowsize - beforesize - stacksPerSlot;
-
-                        object packet = api.World.Player.InventoryManager.TryTransferTo(sourceSlot, targetSlot, ref op);
-
-                        if (packet != null)
-                        {
-                            SendPacketHandler(packet);
-                        }
-
-                        if (op.NotMovedQuantity == 0) break;
+                        SendPacketHandler(packet);
                     }
                 }
             }
@@ -631,11 +677,18 @@ namespace Vintagestory.API.Client
 
         #endregion
 
+        /// <summary>
+        /// Highlights a specific slot.
+        /// </summary>
+        /// <param name="slotId">The slot to highlight.</param>
         public void HighlightSlot(int slotId)
         {
             highlightSlotId = slotId;
         }
 
+        /// <summary>
+        /// Removes the active slot highlight.
+        /// </summary>
         public void RemoveSlotHighlight()
         {
             highlightSlotId = -1;
@@ -672,5 +725,7 @@ namespace Vintagestory.API.Client
             slotTexture.Dispose();
             highlightSlotTexture.Dispose();
         }
+
+        
     }
 }

@@ -11,6 +11,10 @@ namespace Vintagestory.API.Client
     {
         internal string text;
 
+        /// <summary>
+        /// Creates a new text component.
+        /// </summary>
+        /// <param name="text">The text in the text component.</param>
         public TextComponent(string text)
         {
             this.text = text;

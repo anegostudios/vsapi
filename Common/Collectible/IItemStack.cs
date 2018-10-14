@@ -67,7 +67,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="searchText"></param>
         /// <returns></returns>
-        bool MatchesSearchText(string searchText);
+        bool MatchesSearchText(IWorldAccessor world, string searchText);
 
         /// <summary>
         /// Returns the name displayed in the players inventory

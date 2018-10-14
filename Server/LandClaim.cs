@@ -154,7 +154,7 @@ namespace Vintagestory.API.Server
             // Owner
             if (player.PlayerUID.Equals(OwnedByPlayerUid) || player.Groups.Any((ms) => ms.GroupUid == OwnedByPlayerGroupUid)) return true;
             // Has higher priv level
-            if (player.Role.PrivilegeLevel >= ProtectionLevel) return true;
+            if (player.Role.PrivilegeLevel > ProtectionLevel) return true;
 
             EnumBlockAccessFlags flags;
             if (PermittedPlayerUids.TryGetValue(player.PlayerUID, out flags) && (flags & claimFlag) > 0)

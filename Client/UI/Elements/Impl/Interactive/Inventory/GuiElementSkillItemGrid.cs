@@ -5,6 +5,9 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// A slot for item skills.
+    /// </summary>
     public class GuiElementSkillItemGrid : GuiElement
     {
         Dictionary<int, SkillItem> skillItems;
@@ -23,17 +26,26 @@ namespace Vintagestory.API.Client
             get { return true; }
         }
 
-        public GuiElementSkillItemGrid(ICoreClientAPI capi, Dictionary<int, SkillItem> skillItems, int cols, int rows, Action<int> OnSlotClick, ElementBounds bounds) : base(capi, bounds)
+        /// <summary>
+        /// Creates a Skill Item Grid.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="skillItems">The items with skills.</param>
+        /// <param name="columns">The columns of the Item Grid</param>
+        /// <param name="rows">The Rows of the Item Grid.</param>
+        /// <param name="OnSlotClick">The event fired when the slot is clicked.</param>
+        /// <param name="bounds">The bounds of the Item Grid.</param>
+        public GuiElementSkillItemGrid(ICoreClientAPI capi, Dictionary<int, SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds) : base(capi, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
 
             this.skillItems = skillItems;
-            this.cols = cols;
+            this.cols = columns;
             this.rows = rows;
             this.OnSlotClick = OnSlotClick;
 
             this.Bounds.fixedHeight = rows * (GuiElementItemSlotGrid.unscaledSlotPadding + GuiElementPassiveItemSlot.unscaledSlotSize);
-            this.Bounds.fixedWidth = cols * (GuiElementItemSlotGrid.unscaledSlotPadding + GuiElementPassiveItemSlot.unscaledSlotSize);
+            this.Bounds.fixedWidth = columns * (GuiElementItemSlotGrid.unscaledSlotPadding + GuiElementPassiveItemSlot.unscaledSlotSize);
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
@@ -154,15 +166,29 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
-        public static GuiComposer AddSkillItemGrid(this GuiComposer composer, Dictionary<int, SkillItem> skillItems, int cols, int rows, Action<int> OnSlotClick, ElementBounds bounds, string key = null)
+        /// <summary>
+        /// Adds a skill item grid to the GUI.
+        /// </summary>
+        /// <param name="skillItems">The items that represent skills.</param>
+        /// <param name="columns">the columns in the skill item grid.</param>
+        /// <param name="rows">The rows in the skill item grid.</param>
+        /// <param name="OnSlotClick">The effect when a slot is clicked.</param>
+        /// <param name="bounds">The bounds of the item grid.</param>
+        /// <param name="key">The name of the item grid to add.</param>
+        public static GuiComposer AddSkillItemGrid(this GuiComposer composer, Dictionary<int, SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementSkillItemGrid(composer.Api, skillItems, cols, rows, OnSlotClick, bounds), key);
+                composer.AddInteractiveElement(new GuiElementSkillItemGrid(composer.Api, skillItems, columns, rows, OnSlotClick, bounds), key);
             }
             return composer;
         }
 
+        /// <summary>
+        /// Fetches the skill item grid by name
+        /// </summary>
+        /// <param name="key">The name of the skill item grid to get.</param>
+        /// <returns>The skill item grid to get.</returns>
         public static GuiElementSkillItemGrid GetSkillItemGrid(this GuiComposer composer, string key)
         {
             return (GuiElementSkillItemGrid)composer.GetElement(key);

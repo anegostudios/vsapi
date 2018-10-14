@@ -147,6 +147,10 @@ namespace Vintagestory.API.Common
                 {
                     newEyeheight *= 0.85f;
                     newModelHeight *= 0.85f;
+                } else if (!Alive)
+                {
+                    newEyeheight *= 0.25f;
+                    newModelHeight *= 0.25f;
                 }
 
                 bool moving = (servercontrols.TriesToMove && LocalPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
@@ -279,7 +283,7 @@ namespace Vintagestory.API.Common
             DespawnReason = null;
             DeadNotify = true;
             TryStopHandAction(true, EnumItemUseCancelReason.Death);
-
+            TryUnmount();
 
             if (Properties.Server?.Attributes?.GetBool("keepContents", false) != true)
             {
@@ -291,6 +295,7 @@ namespace Vintagestory.API.Common
         {
             Alive = true;
             ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Respawn, Type = EnumDamageType.Heal }, 9999);
+            StopAnimation("die");
         }
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)

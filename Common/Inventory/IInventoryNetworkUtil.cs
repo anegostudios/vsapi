@@ -14,5 +14,8 @@ namespace Vintagestory.API.Common
 
         object DidOpen(IPlayer player);
         object DidClose(IPlayer player);
+
+        bool AcceptServerUpdates { get; set; }
+
     }
 }

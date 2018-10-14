@@ -32,7 +32,7 @@ namespace Vintagestory.API.Config
                 List<IAsset> assets = origins[i].GetAssets(AssetCategory.lang);
                 foreach (var asset in assets)
                 {
-                    if (asset.Name.Equals(language + ".json"))
+                    if (asset.Name.Equals(language.ToLowerInvariant() + ".json"))
                     {
                         string text = asset.ToText();
 

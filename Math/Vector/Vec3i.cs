@@ -95,13 +95,26 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
-
+        public int ManhattenDistanceTo(Vec3i vec)
+        {
+            return Math.Abs(X - vec.X) + Math.Abs(Y - vec.Y) + Math.Abs(Z - vec.Z);
+        }
 
         public long SquareDistanceTo(Vec3i vec)
         {
             long dx = X - vec.X;
             long dy = Y - vec.Y;
             long dz = Z - vec.Z;
+
+            return dx * dx + dy * dy + dz * dz;
+        }
+
+
+        public long SquareDistanceTo(int x, int y, int z)
+        {
+            long dx = X - x;
+            long dy = Y - y;
+            long dz = Z - z;
 
             return dx * dx + dy * dy + dz * dz;
         }
@@ -159,12 +172,30 @@ namespace Vintagestory.API.MathTools
             return new Vec3i(left.X / right, left.Y / right, left.Z / right);
         }
 
-        internal void Set(int positionX, int positionY, int positionZ)
+        public Vec3i Set(int positionX, int positionY, int positionZ)
         {
             this.X = positionX;
             this.Y = positionY;
             this.Z = positionZ;
+            return this;
         }
+
+        public Vec3i Set(Vec3i fromPos)
+        {
+            this.X = fromPos.X;
+            this.Y = fromPos.Y;
+            this.Z = fromPos.Z;
+            return this;
+        }
+
+        internal void Offset(BlockFacing face)
+        {
+            this.X += face.Normali.X;
+            this.Y += face.Normali.Y;
+            this.Z += face.Normali.Z;
+        }
+
+
 
         public Vec3i Clone()
         {
@@ -223,6 +254,7 @@ namespace Vintagestory.API.MathTools
         }
 
         static ulong chunkMask = 134217728 - 1;   // 2^27 - 1
+
         
         public static Vec3i FromChunkIndex(ulong index)
         {
@@ -270,5 +302,6 @@ namespace Vintagestory.API.MathTools
                 Z = this.Z
             };
         }
+
     }
 }

@@ -21,6 +21,14 @@ namespace Vintagestory.API.Client
 
         GuiElementStaticText textComposer;
 
+        /// <summary>
+        /// Creates a new passive item slot.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="bounds">the bounds of the Slot.</param>
+        /// <param name="inventory">the attached inventory for the slot.</param>
+        /// <param name="slot">The slot of the slot.</param>
+        /// <param name="drawBackground">Do we draw the background for this slot? (Default: true)</param>
         public GuiElementPassiveItemSlot(ICoreClientAPI capi, ElementBounds bounds, IInventory inventory, IItemSlot slot, bool drawBackground = true) : base(capi, bounds)
         {
             this.slot = slot;
@@ -70,6 +78,13 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds a passive item slot to the GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the Slot</param>
+        /// <param name="inventory">The inventory attached to the slot.</param>
+        /// <param name="slot">The internal slot of the slot.</param>
+        /// <param name="drawBackground">Do we draw the background for this slot? (Default: true)</param>
         public static GuiComposer AddPassiveItemSlot(this GuiComposer composer, ElementBounds bounds, IInventory inventory, IItemSlot slot, bool drawBackground = true)
         {
             if (!composer.composed)

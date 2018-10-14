@@ -11,12 +11,26 @@ namespace Vintagestory.API.Client
     /// </summary>
     public abstract class GuiDialogGeneric : GuiDialog
     {
+        /// <summary>
+        /// The title of the Dialog.
+        /// </summary>
         public string DialogTitle;
 
-
+        /// <summary>
+        /// Should this Dialog de-register itself once closed?
+        /// </summary>
         public override bool UnregisterOnClose => true;
+
+        /// <summary>
+        /// The tree attributes for this dialog.
+        /// </summary>
         public virtual ITreeAttribute Attributes => null;
 
+        /// <summary>
+        /// Constructor for a generic Dialog.
+        /// </summary>
+        /// <param name="DialogTitle">The title of the dialog.</param>
+        /// <param name="capi">The Client API</param>
         public GuiDialogGeneric(string DialogTitle, ICoreClientAPI capi) : base(capi)
         {
             this.DialogTitle = DialogTitle;
@@ -27,8 +41,9 @@ namespace Vintagestory.API.Client
             get { return null; }
         }
 
-        
-
+        /// <summary>
+        /// Recomposes the dialog with it's set of elements.
+        /// </summary>
         public virtual void Recompose()
         {
             foreach (GuiComposer composer in DialogComposers.Values)
@@ -37,6 +52,9 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Unfocuses the elements in each composer.
+        /// </summary>
         public virtual void UnfocusElements()
         {
             foreach (GuiComposer composer in DialogComposers.Values)
@@ -45,12 +63,20 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Focuses a specific element in the single composer.
+        /// </summary>
+        /// <param name="index">Index of the element.</param>
         public virtual void FocusElement(int index)
         {
             SingleComposer.FocusElement(index);
         }
 
-
+        /// <summary>
+        /// Checks if the player is in range of the block.
+        /// </summary>
+        /// <param name="blockEntityPos">The block's position.</param>
+        /// <returns>In range or no?</returns>
         public virtual bool IsInRangeOfBlock(BlockPos blockEntityPos)
         {
             Block block = capi.World.BlockAccessor.GetBlock(blockEntityPos);
@@ -67,6 +93,10 @@ namespace Vintagestory.API.Client
             return dist <= capi.World.Player.WorldData.PickingRange + 0.5;
         }
 
+        /// <summary>
+        /// Positions the dialogue above a given point.
+        /// </summary>
+        /// <param name="aboveHeadPos">The given point.</param>
         public virtual void PositionDialogAbove(Vec3d aboveHeadPos)
         {
             EntityPlayer entityPlayer = capi.World.Player.Entity;

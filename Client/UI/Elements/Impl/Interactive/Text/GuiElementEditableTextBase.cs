@@ -72,7 +72,12 @@ namespace Vintagestory.API.Client
             get { return true; }
         }
 
-
+        /// <summary>
+        /// Initializes the text component.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">The bounds of the component.</param>
         public GuiElementEditableTextBase(ICoreClientAPI capi, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
             caretTexture = new LoadedTexture(capi);
@@ -97,6 +102,11 @@ namespace Vintagestory.API.Client
             OnLostFocus?.Invoke();
         }
 
+        /// <summary>
+        /// Sets the position of the cursor at a given point.
+        /// </summary>
+        /// <param name="x">X position of the cursor.</param>
+        /// <param name="y">Y position of the cursor.</param>
         public void SetCaretPos(double x, double y)
         {
             caretPosLine = 0;
@@ -143,7 +153,11 @@ namespace Vintagestory.API.Client
 
 
        
-
+        /// <summary>
+        /// Sets the position of the cursor to a specific character.
+        /// </summary>
+        /// <param name="posInLine">The position in the line.</param>
+        /// <param name="posLine">The line of the text.</param>
         public void SetCaretPos(int posInLine, int posLine = 0)
         {
             caretBlinkMilliseconds = api.ElapsedMilliseconds;
@@ -176,7 +190,10 @@ namespace Vintagestory.API.Client
             renderLeftOffset = Math.Max(0, caretX - Bounds.InnerWidth + rightSpacing);
         }
 
-
+        /// <summary>
+        /// Sets a numerical value to the text, appending it to the end of the text.
+        /// </summary>
+        /// <param name="value">The value to add to the text.</param>
         public void SetValue(float value)
         {
             SetValue(value + "");
@@ -374,7 +391,8 @@ namespace Vintagestory.API.Client
 
                 if (args.KeyCode == (int)GlKeys.V && args.CtrlPressed)
                 {
-                    string insert = System.Windows.Forms.Clipboard.GetText(System.Windows.Forms.TextDataFormat.Text);
+                    string insert = System.Windows.Forms.Clipboard.GetText(System.Windows.Forms.TextDataFormat.UnicodeText);
+                    insert = insert.Replace("\uFEFF", ""); // UTF-8 bom, we don't need that one, like ever
 
                     string fulltext = string.Join("\n", lines);
 
@@ -528,6 +546,11 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Moves the cursor forward and backward by an amount.
+        /// </summary>
+        /// <param name="dir">The direction to move the cursor.</param>
+        /// <param name="wholeWord">Whether or not we skip entire words moving it.</param>
         public void MoveCursor(int dir, bool wholeWord = false)
         {
             bool done = false;

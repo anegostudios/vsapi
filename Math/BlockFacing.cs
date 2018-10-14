@@ -15,6 +15,8 @@ namespace Vintagestory.API.MathTools
     /// East: Positive X
     /// South: Positive Z
     /// West: Negative X
+    /// Up: Positive Y
+    /// Down: Negative Y
     /// </summary>
     public class BlockFacing
     {

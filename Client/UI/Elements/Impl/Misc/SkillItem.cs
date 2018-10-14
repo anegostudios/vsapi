@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Client;
+﻿using System;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
@@ -16,5 +17,10 @@ namespace Vintagestory.API.Client
         public RenderSkillItemDelegate RenderHandler;
 
         public object Data;
+
+        internal void Dispose()
+        {
+            Texture?.Dispose();
+        }
     }
 }

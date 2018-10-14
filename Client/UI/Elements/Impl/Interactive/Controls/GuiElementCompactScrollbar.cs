@@ -5,15 +5,31 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementCompactScrollbar : GuiElementScrollbar
     {
+        /// <summary>
+        /// The padding around the scrollbar.
+        /// </summary>
         public static new int scrollbarPadding = 2;
 
+        /// <summary>
+        /// Can this GUIElement be focusable? (default: true).
+        /// </summary>
         public override bool Focusable { get { return true; } }
 
+        /// <summary>
+        /// Scrollbar constructor.
+        /// </summary>
+        /// <param name="capi">Client API</param>
+        /// <param name="onNewScrollbarValue">Event for the changing of the scrollbar or scrolling of the mousewheel.</param>
+        /// <param name="bounds">the bounding box of the scrollbar.</param>
         public GuiElementCompactScrollbar(ICoreClientAPI capi, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds) : base(capi, onNewScrollbarValue, bounds) {
 
         }
 
-
+        /// <summary>
+        /// Composes the element.
+        /// </summary>
+        /// <param name="ctxStatic">The context of the element</param>
+        /// <param name="surface">The surface of the image for the element (Not used, can be null.)</param>
         public override void ComposeElements(Context ctxStatic, ImageSurface surface)
         {
             Bounds.CalcWorldBounds();
@@ -46,6 +62,10 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
+        /// <summary>
+        /// Renders the element.
+        /// </summary>
+        /// <param name="deltaTime">The amount of time that has passed.</param>
         public override void RenderInteractiveElements(float deltaTime)
         {
             api.Render.Render2DTexturePremultipliedAlpha(
@@ -65,6 +85,12 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds a compact vertical scrollbar to the current GUI.
+        /// </summary>
+        /// <param name="onNewScrollbarValue">The event fired for the change in the scrollbar.</param>
+        /// <param name="bounds">the bounds of the scrollbar.</param>
+        /// <param name="key">the internal name of the scrollbar.</param>
         public static GuiComposer AddCompactVerticalScrollbar(this GuiComposer composer, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -74,6 +100,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the scrollbar from the dialogue.
+        /// </summary>
+        /// <param name="key">the internal name of the scrollbar to be gotten</param>
+        /// <returns>The scrollbar with the given key.</returns>
         public static GuiElementCompactScrollbar GetCompactScrollbar(this GuiComposer composer, string key)
         {
             return (GuiElementCompactScrollbar)composer.GetElement(key);

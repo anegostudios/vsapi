@@ -38,6 +38,9 @@ namespace Vintagestory.API.Client
 
         ElementBounds visibleBounds;
 
+        /// <summary>
+        /// Is the current menu opened?
+        /// </summary>
         public bool IsOpened
         {
             get { return expanded; }
@@ -53,6 +56,15 @@ namespace Vintagestory.API.Client
             get { return true; }
         }
 
+        /// <summary>
+        /// Creates a new GUI Element List Menu
+        /// </summary>
+        /// <param name="capi">The Client API.</param>
+        /// <param name="values">The values of the list.</param>
+        /// <param name="names">The names for each of the values.</param>
+        /// <param name="selectedIndex">The default selected index.</param>
+        /// <param name="onSelectionChanged">The event fired when the selection is changed.</param>
+        /// <param name="bounds">The bounds of the GUI element.</param>
         public GuiElementListMenu(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, API.Common.Action<string> onSelectionChanged, ElementBounds bounds) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
         {
             hoverTexture = new LoadedTexture(capi);
@@ -69,10 +81,10 @@ namespace Vintagestory.API.Client
 
             ElementBounds scrollbarBounds = ElementBounds.Fixed(0, 0, 0, 0).WithEmptyParent();
 
-            scrollbar = new GuiElementCompactScrollbar(api, onNewScrollbarValue, scrollbarBounds);
+            scrollbar = new GuiElementCompactScrollbar(api, OnNewScrollbarValue, scrollbarBounds);
         }
 
-        private void onNewScrollbarValue(float offY)
+        private void OnNewScrollbarValue(float offY)
         {
             scrollOffY = (int)(offY / (30 * Scale)) * 30 * Scale;
         }
@@ -82,7 +94,9 @@ namespace Vintagestory.API.Client
             ComposeDynamicElements();
         }
 
-
+        /// <summary>
+        /// Composes the list of elements dynamically.
+        /// </summary>
         public void ComposeDynamicElements()
         {
             Bounds.CalcWorldBounds();
@@ -181,7 +195,7 @@ namespace Vintagestory.API.Client
                     (int)Bounds.renderY + (int)Bounds.InnerHeight - (int)scrollOffY, 
                     (int)expandedBoxWidth, 
                     (int)expandedBoxHeight,
-                    60
+                    110
                 );
 
                 if (hoveredIndex >= 0)
@@ -192,7 +206,7 @@ namespace Vintagestory.API.Client
                         (int)(Bounds.renderY + Bounds.InnerHeight + 30 * Scale * hoveredIndex), 
                         (int)expandedBoxWidth - scaled(14), 
                         (int)30 * Scale,
-                        61
+                        111
                     );
                 }
 
@@ -204,7 +218,7 @@ namespace Vintagestory.API.Client
                     (int)visibleBounds.renderY,
                     (int)visibleBounds.OuterWidth,
                     (int)visibleBounds.OuterHeight,
-                    66
+                    116
                 );
 
                 scrollbar.Bounds.WithParent(Bounds);
@@ -268,7 +282,9 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        /// <summary>
+        /// Opens the menu.
+        /// </summary>
         public void Open()
         {
             expanded = true;
@@ -312,11 +328,19 @@ namespace Vintagestory.API.Client
             expanded = false;
         }
 
+        /// <summary>
+        /// Sets the selected index.
+        /// </summary>
+        /// <param name="selectedIndex">The index to be set to.</param>
         public void SetSelectedIndex(int selectedIndex)
         {
             this.selectedIndex = selectedIndex;
         }
         
+        /// <summary>
+        /// Sets the selected index to the given value.
+        /// </summary>
+        /// <param name="value">The value to be set to.</param>
         public void SetSelectedValue(string value)
         {
             for (int i = 0; i < values.Length; i++)
@@ -329,6 +353,11 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Sets the list for the GUI Element list value.
+        /// </summary>
+        /// <param name="values">The values of the list.</param>
+        /// <param name="names">The names of the values.</param>
         public void SetList(string[] values, string[] names)
         {
             this.values = values;

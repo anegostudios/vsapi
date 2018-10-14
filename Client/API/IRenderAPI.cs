@@ -95,7 +95,7 @@ namespace Vintagestory.API.Client
         /// It is recommended to use this methods in a few spots during render code to track down rendering issues in time.
         /// </summary>
         /// <param name="message"></param>
-        void CheckGlError();
+        void CheckGlError(string messsage = "");
 
         /// <summary>
         /// The current model view.
@@ -261,6 +261,7 @@ namespace Vintagestory.API.Client
         /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
         /// <param name="clampMode">The current clamp mode</param>
         /// <returns>The GLID for the resulting texture.</returns>
+        [Obsolete("Use LoadOrUpdateTextureFromBgra(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture); instead. This method cannot warn you of memor leaks when the texture is not properly disposed.")]
         int LoadTextureFromBgra(int[] bgraPixels, int width, int height, bool linearMag, int clampMode);
 
         /// <summary>
@@ -272,7 +273,29 @@ namespace Vintagestory.API.Client
         /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
         /// <param name="clampMode">The current clamp mode</param>
         /// <returns>The OpenGL Identifier for the resulting texture.</returns>
+        [Obsolete("Use LoadOrUpdateTextureFromRgba(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture); instead. This method cannot warn you of memor leaks when the texture is not properly disposed.")]
         int LoadTextureFromRgba(int[] rgbaPixels, int width, int height, bool linearMag, int clampMode);
+
+
+        /// <summary>
+        /// Loads texture from Pixels in BGRA format.
+        /// </summary>
+        /// <param name="bgraPixels">The pixel array</param>
+        /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
+        /// <param name="clampMode">The current clamp mode</param>
+        /// <param name="intoTexture">The target texture space it should load the pixels into. Must have width/height set accordingly</param>
+        /// <returns>The GLID for the resulting texture.</returns>
+        void LoadOrUpdateTextureFromBgra(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture);
+
+        /// <summary>
+        /// Loads texture from Pixels in RGBA format.
+        /// </summary>
+        /// <param name="rgbaPixels">The pixel array</param>
+        /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
+        /// <param name="clampMode">The current clamp mode</param>
+        /// <param name="intoTexture">The target texture space it should load the pixels into. Must have width/height set accordingly</param>
+        /// <returns>The OpenGL Identifier for the resulting texture.</returns>
+        void LoadOrUpdateTextureFromRgba(int[] rgbaPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture);
 
 
         /// <summary>

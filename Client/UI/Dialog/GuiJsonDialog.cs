@@ -11,41 +11,71 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// This is a dialogue built from JSON files.  
+    /// </summary>
+    /// <remarks>
+    /// JSON made this gui.  Thanks JSON.
+    /// </remarks>
     public class GuiJsonDialog : GuiDialogGeneric
     {
         JsonDialogSettings settings;
 
+        /// <summary>
+        /// The debug name of the GUI
+        /// </summary>
         public override string DebugName
         {
             get { return "jsondialog-" + settings.Code; }
         }
 
+        /// <summary>
+        /// Key Combination for the GUI
+        /// </summary>
         public override string ToggleKeyCombinationCode
         {
             get { return null; }
         }
 
+        /// <summary>
+        /// Tree attributes for the GUI
+        /// </summary>
         public override ITreeAttribute Attributes
         {
             get { return null; }
         }
 
+        /// <summary>
+        /// Builds the dialogue using the dialogue settings from JSON.
+        /// </summary>
+        /// <param name="settings">The dialogue settings.</param>
+        /// <param name="capi">The Client API</param>
         public GuiJsonDialog(JsonDialogSettings settings, ICoreClientAPI capi) : base("", capi)
         {
             this.settings = settings;
             ComposeDialog();
         }
 
+        /// <summary>
+        /// Recomposes the GUI.
+        /// </summary>
         public override void Recompose()
         {
             ComposeDialog();
         }
 
+        /// <summary>
+        /// Should the world interactions be disabled?
+        /// </summary>
+        /// <returns>Whether JSON thinks world interaction should be disabled.</returns>
         public override bool DisableWorldInteract()
         {
             return settings.DisableWorldInteract;
         }
 
+        /// <summary>
+        /// Composes the dialogue with specifications dictated by JSON.
+        /// </summary>
         public void ComposeDialog()
         {
             double factor = settings.SizeMultiplier;
@@ -258,7 +288,10 @@ namespace Vintagestory.API.Client
             elementNumber++;
         }
 
-
+        /// <summary>
+        /// Fires an event when the mouse is held down.
+        /// </summary>
+        /// <param name="args">The mouse events.</param>
         public override void OnMouseDown(MouseEvent args)
         {
             base.OnMouseDown(args);
@@ -275,6 +308,9 @@ namespace Vintagestory.API.Client
 
         }
 
+        /// <summary>
+        /// Reloads the values in the GUI.
+        /// </summary>
         public void ReloadValues()
         {
             GuiComposer composer = DialogComposers["cmdDlg" + settings.Code];

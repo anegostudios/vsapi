@@ -81,6 +81,13 @@ namespace Vintagestory.API.MathTools
             this.Z = values[2];
         }
 
+        public Vec3f(Vec3i vec3i)
+        {
+            this.X = vec3i.X;
+            this.Y = vec3i.Y;
+            this.Z = vec3i.Z;
+        }
+
         /// <summary>
         /// Returns the n-th coordinate
         /// </summary>
@@ -131,13 +138,22 @@ namespace Vintagestory.API.MathTools
             return (float)(X * a.X + Y * a.Y + Z * a.Z);
         }
 
-
-        internal double Dot(float[] pos)
+        /// <summary>
+        /// Returns the dot product with given vector
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public double Dot(float[] pos)
         {
             return X * pos[0] + Y * pos[1] + Z * pos[2];
         }
 
-        internal double Dot(double[] pos)
+        /// <summary>
+        /// Returns the dot product with given vector
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public double Dot(double[] pos)
         {
             return (float)(X * pos[0] + Y * pos[1] + Z * pos[2]);
         }
@@ -156,6 +172,11 @@ namespace Vintagestory.API.MathTools
             return new double[] { X, Y, Z };
         }
 
+        /// <summary>
+        /// Creates the cross product from a and b and sets own values accordingly
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
         public void Cross(Vec3f a, Vec3f b)
         {
             X = a.Y * b.Z - a.Z * b.Y;
@@ -163,6 +184,11 @@ namespace Vintagestory.API.MathTools
             Z = a.X * b.Y - a.Y * b.X;            
         }
 
+        /// <summary>
+        /// Creates the cross product from a and b and sets own values accordingly
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
         public void Cross(Vec3f a, Vec4f b)
         {
             X = a.Y * b.Z - a.Z * b.Y;

@@ -16,6 +16,12 @@ namespace Vintagestory.API.Client
 
         double[] backColor = new double[] { 197 / 255.0, 137 / 255.0, 72 / 255.0, 1 };
 
+        /// <summary>
+        /// Creates a NewVersion text component.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">The bounds of the component.</param>
         public GuiElementNewVersionText(ICoreClientAPI capi, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
             texture = new LoadedTexture(capi);
@@ -26,6 +32,10 @@ namespace Vintagestory.API.Client
             
         }
 
+        /// <summary>
+        /// Recomposes a multi-line message.
+        /// </summary>
+        /// <param name="versionnumber">The version number of the new version.</param>
         public void RecomposeMultiLine(string versionnumber)
         {
             text = "Version " + versionnumber + " now available \\o/\nClick here to go to the downloads page";

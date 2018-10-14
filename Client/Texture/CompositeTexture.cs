@@ -101,6 +101,10 @@ namespace Vintagestory.API.Client
             return ct;
         }
 
+        /// <summary>
+        /// This fills the placeholders with their final string values.
+        /// </summary>
+        /// <param name="searchReplace"></param>
         public void FillPlaceHolders(Dictionary<string, string> searchReplace)
         {
             foreach (var val in searchReplace)
@@ -138,8 +142,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field. This method can be called after the game world has loaded.
         /// </summary>
-        /// <param name="capi"></param>
-        /// <param name="intoAtlas"></param>
+        /// <param name="capi">The Client API</param>
+        /// <param name="intoAtlas">The atlas to insert the baked texture.</param>
         public void RuntimeBake(ICoreClientAPI capi, ITextureAtlasAPI intoAtlas)
         {
             Baked = Bake(capi.Assets, this);

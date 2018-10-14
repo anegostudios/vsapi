@@ -52,7 +52,12 @@ namespace Vintagestory.API.Client
 
         public override bool Focusable { get { return true; } }
 
-
+        /// <summary>
+        /// Builds a slider.  A horizontal customizeable slider.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="onNewSliderValue">The event that's fired when the slider changed.</param>
+        /// <param name="bounds">the bounds of the object.</param>
         public GuiElementSlider(ICoreClientAPI capi, ActionConsumable<int> onNewSliderValue, ElementBounds bounds) : base(capi, bounds)
         {
             handleTexture = new LoadedTexture(capi);
@@ -317,14 +322,24 @@ namespace Vintagestory.API.Client
         }
 
 
-
+        /// <summary>
+        /// Sets a value to warn the player that going over this is not a good idea.
+        /// </summary>
+        /// <param name="value">The maximum limit before things break down.</param>
         public void SetAlarmValue(int value)
         {
             alarmValue = value;
             MakeAlarmValueTexture();
         }
 
-
+        /// <summary>
+        /// Sets the values of the slider.
+        /// </summary>
+        /// <param name="currentValue">The value the slider is now.</param>
+        /// <param name="minValue">The lowest value.</param>
+        /// <param name="maxValue">The highest value.</param>
+        /// <param name="step">Each step between values.</param>
+        /// <param name="unit">The units of the value. %, chunks, ect.</param>
         public void SetValues(int currentValue, int minValue, int maxValue, int step, string unit = "")
         {
             this.currentValue = currentValue;
@@ -337,6 +352,9 @@ namespace Vintagestory.API.Client
             ComposeWaterTexture();
         }
 
+        /// <summary>
+        /// Gets the current value of the slider.
+        /// </summary>
         public int GetValue()
         {
             return currentValue;
@@ -358,6 +376,12 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds a slider to the current GUI.
+        /// </summary>
+        /// <param name="onNewSliderValue">The event that fires when the slider's value is changed.</param>
+        /// <param name="bounds">The bounds of the slider.</param>
+        /// <param name="key">the internal name of the slider.</param>
         public static GuiComposer AddSlider(this GuiComposer composer, ActionConsumable<int> onNewSliderValue, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -367,6 +391,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the slider by name from the GUI.
+        /// </summary>
+        /// <param name="key">the internal name of the slider.</param>
+        /// <returns>the slider.</returns>
         public static GuiElementSlider GetSlider(this GuiComposer composer, string key)
         {
             return (GuiElementSlider)composer.GetElement(key);

@@ -88,7 +88,7 @@ namespace Vintagestory.API.Common
         {
             dt *= meta.GetCurrentAnimationSpeed(walkspeed);
 
-            //if (Animation.Code == "swimidle") Console.WriteLine(Animation.Code + ": " + CurrentFrame + " / " + Animation.QuantityFrames + " / " + EasingFactor);
+            if (Animation.Code == "swimidle") Console.WriteLine(Animation.Code + ": " + CurrentFrame + " / " + Animation.QuantityFrames + " / " + EasingFactor);
 
             if (Active || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
             {

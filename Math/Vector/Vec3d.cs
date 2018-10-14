@@ -284,6 +284,14 @@ namespace Vintagestory.API.MathTools
             );
         }
 
+        public Vec3d Set(Vec3i pos)
+        {
+            this.X = pos.X;
+            this.Y = pos.Y;
+            this.Z = pos.Z;
+            return this;
+        }
+
         public Vec3d Set(double x, double y, double z)
         {
             this.X = x;
