@@ -280,7 +280,7 @@ namespace Vintagestory.API.Common
         /// <param name="renderinfo"></param>
         public virtual void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
         {
-            
+
         }
 
 
@@ -313,6 +313,7 @@ namespace Vintagestory.API.Common
         {
             return AttackRange;
         }
+
 
 
         /// <summary>
@@ -384,10 +385,10 @@ namespace Vintagestory.API.Common
         /// <param name="itemslot"></param>
         /// <param name="blockSel"></param>
         /// <returns></returns>
-        public virtual bool OnBlockBrokenWith(IWorldAccessor world, IEntity byEntity, IItemSlot itemslot, BlockSelection blockSel)
+        public virtual bool OnBlockBrokenWith(IWorldAccessor world, Entity byEntity, IItemSlot itemslot, BlockSelection blockSel)
         {
             IPlayer byPlayer = null;
-            if (byEntity is IEntityPlayer) byPlayer = world.PlayerByUid(((IEntityPlayer)byEntity).PlayerUID);
+            if (byEntity is EntityPlayer) byPlayer = world.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
             Block block = world.BlockAccessor.GetBlock(blockSel.Position);
             block.OnBlockBroken(world, blockSel.Position, byPlayer);
@@ -422,7 +423,7 @@ namespace Vintagestory.API.Common
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
         /// <returns></returns>
-        public virtual ModelTransformKeyFrame[] GeldHeldFpHitAnimation(IItemSlot slot, IEntity byEntity)
+        public virtual ModelTransformKeyFrame[] GeldHeldFpHitAnimation(IItemSlot slot, Entity byEntity)
         {
             return null;
         }
@@ -433,7 +434,7 @@ namespace Vintagestory.API.Common
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
         /// <returns></returns>
-        public virtual string GetHeldTpHitAnimation(IItemSlot slot, IEntity byEntity)
+        public virtual string GetHeldTpHitAnimation(IItemSlot slot, Entity byEntity)
         {
             return HeldTpHitAnimation;
         }
@@ -530,7 +531,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="byEntity"></param>
         /// <param name="itemslot"></param>
-        public virtual void DamageItem(IWorldAccessor world, IEntity byEntity, IItemSlot itemslot)
+        public virtual void DamageItem(IWorldAccessor world, Entity byEntity, IItemSlot itemslot)
         {
             IItemStack itemstack = itemslot.Itemstack;
 
@@ -542,16 +543,16 @@ namespace Vintagestory.API.Common
             {
                 itemslot.Itemstack = null;
 
-                if (byEntity is IEntityPlayer)
+                if (byEntity is EntityPlayer)
                 {
-                    IPlayer player = world.PlayerByUid(((IEntityPlayer)byEntity).PlayerUID);
+                    IPlayer player = world.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
                     world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), player, player);
                 } else
                 {
                     world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), byEntity.Pos.X, byEntity.Pos.Y, byEntity.Pos.Z);
                 }
 
-                
+
             }
 
             itemslot.MarkDirty();
@@ -587,7 +588,7 @@ namespace Vintagestory.API.Common
 
         }
 
-        
+
 
         /// <summary>
         /// Should return the current items tool mode.
@@ -610,7 +611,7 @@ namespace Vintagestory.API.Common
         /// <param name="toolMode"></param>
         public virtual void SetToolMode(IItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int toolMode)
         {
-            
+
         }
 
         /// <summary>
@@ -650,7 +651,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
-        public virtual void OnHeldIdle(IItemSlot slot, IEntityAgent byEntity)
+        public virtual void OnHeldIdle(IItemSlot slot, EntityAgent byEntity)
         {
 
         }
@@ -661,7 +662,7 @@ namespace Vintagestory.API.Common
         /// <param name="entityItem"></param>
         public virtual void OnGroundIdle(EntityItem entityItem)
         {
-            
+
         }
 
         /// <summary>
@@ -685,7 +686,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="useType"></param>
         /// <returns></returns>
-        public void OnHeldUseStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType, ref EnumHandHandling handling)
+        public void OnHeldUseStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType, ref EnumHandHandling handling)
         {
             if (useType == EnumHandInteract.HeldItemAttack)
             {
@@ -698,7 +699,7 @@ namespace Vintagestory.API.Common
                 OnHeldInteractStart(slot, byEntity, blockSel, entitySel, ref handling);
                 return;
             }
-            
+
         }
 
         /// <summary>
@@ -711,7 +712,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="cancelReason"></param>
         /// <returns></returns>
-        public EnumHandInteract OnHeldUseCancel(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
+        public EnumHandInteract OnHeldUseCancel(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
         {
             EnumHandInteract useType = byEntity.Controls.HandUse;
 
@@ -728,7 +729,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns></returns>
-        public EnumHandInteract OnHeldUseStep(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        public EnumHandInteract OnHeldUseStep(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             EnumHandInteract useType = byEntity.Controls.HandUse;
 
@@ -746,7 +747,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <param name="useType"></param>
-        public void OnHeldUseStop(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType)
+        public void OnHeldUseStop(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType)
         {
             if (useType == EnumHandInteract.HeldItemAttack)
             {
@@ -766,9 +767,9 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns></returns>
-        public virtual void OnHeldAttackStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
+        public virtual void OnHeldAttackStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
         {
-            
+
         }
 
         /// <summary>
@@ -781,7 +782,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="cancelReason"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackCancel(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
+        public virtual bool OnHeldAttackCancel(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
         {
             return false;
         }
@@ -795,7 +796,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSelection"></param>
         /// <param name="entitySel"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackStep(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel)
+        public virtual bool OnHeldAttackStep(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel)
         {
             return false;
         }
@@ -808,9 +809,9 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySel"></param>
-        public virtual void OnHeldAttackStop(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel)
+        public virtual void OnHeldAttackStop(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel)
         {
-            
+
         }
 
 
@@ -822,7 +823,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns>True if an interaction should happen (makes it sync to the server), false if no sync to server is required</returns>
-        public virtual void OnHeldInteractStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
+        public virtual void OnHeldInteractStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
         {
             if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) != null)
             {
@@ -831,13 +832,13 @@ namespace Vintagestory.API.Common
                     if (byEntity.Controls.HandUse == EnumHandInteract.HeldItemInteract)
                     {
                         IPlayer player = null;
-                        if (byEntity is IEntityPlayer) player = byEntity.World.PlayerByUid(((IEntityPlayer)byEntity).PlayerUID);
+                        if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
                         byEntity.PlayEntitySound("eat", player);
                     }
                 }, 500);
 
-                byEntity.StartAnimation("eat");
+                byEntity.AnimManager?.StartAnimation("eat");
 
                 handling = EnumHandHandling.PreventDefault;
             }
@@ -853,14 +854,23 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns>False if the interaction should be stopped. True if the interaction should continue</returns>
-        public virtual bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        public virtual bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) == null) return false;
+
+            Vec3d pos = byEntity.Pos.AheadCopy(0.4f).XYZ;
+            pos.Y += byEntity.EyeHeight - 0.4f;
+
+            if (secondsUsed > 0.5f && (int)(30 * secondsUsed) % 7 == 1)
+            {
+                byEntity.World.SpawnCubeParticles(pos, slot.Itemstack, 0.3f, 4, 0.5f, (byEntity as EntityPlayer)?.Player);
+            }
+
 
             if (byEntity.World is IClientWorldAccessor)
             {
                 ModelTransform tf = new ModelTransform();
-                
+
                 tf.EnsureDefaultValues();
 
                 tf.Origin.Set(0f, 0, 0f);
@@ -871,20 +881,12 @@ namespace Vintagestory.API.Common
                 }
 
                 tf.Translation.X -= Math.Min(1f, secondsUsed * 4 * 1.57f);
-                tf.Translation.Y += Math.Min(0.15f, secondsUsed * 2);
+                tf.Translation.Y += Math.Min(0.05f, secondsUsed * 2);
 
                 tf.Rotation.X += Math.Min(30f, secondsUsed * 350);
                 tf.Rotation.Y += Math.Min(80f, secondsUsed * 350);
-                
+
                 byEntity.Controls.UsingHeldItemTransformAfter = tf;
-
-                Vec3d pos = byEntity.Pos.AheadCopy(0.4f).XYZ;
-                pos.Y += byEntity.EyeHeight - 0.4f;
-
-                if (secondsUsed > 0.5f && (int)(30 * secondsUsed) % 7 == 1)
-                {
-                    byEntity.World.SpawnCubeParticles(pos, slot.Itemstack, 0.3f, 4, 0.5f);
-                }
 
                 return secondsUsed <= 1f;
             }
@@ -901,7 +903,7 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
-        public virtual void OnHeldInteractStop(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        public virtual void OnHeldInteractStop(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             FoodNutritionProperties nutriProps = GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity);
 
@@ -912,7 +914,7 @@ namespace Vintagestory.API.Common
                 if (nutriProps.EatenStack != null)
                 {
                     IPlayer player = null;
-                    if (byEntity is IEntityPlayer) player = byEntity.World.PlayerByUid(((IEntityPlayer)byEntity).PlayerUID);
+                    if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
                     if (player == null || !player.InventoryManager.TryGiveItemstack(nutriProps.EatenStack.ResolvedItemstack.Clone(), true))
                     {
@@ -921,7 +923,7 @@ namespace Vintagestory.API.Common
                 }
 
                 slot.Itemstack.StackSize--;
-                
+
                 if (nutriProps.Health != 0)
                 {
                     byEntity.ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = nutriProps.Health > 0 ? EnumDamageType.Heal : EnumDamageType.Poison }, Math.Abs(nutriProps.Health));
@@ -941,7 +943,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="cancelReason"></param>
         /// <returns></returns>
-        public virtual bool OnHeldInteractCancel(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
+        public virtual bool OnHeldInteractCancel(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
         {
             return true;
         }
@@ -958,10 +960,21 @@ namespace Vintagestory.API.Common
         /// <param name="handling"></param>
         public virtual void OnHeldDropped(IWorldAccessor world, IPlayer byPlayer, IItemSlot slot, int quantity, ref EnumHandling handling)
         {
-            
+
         }
 
 
+        /// <summary>
+        /// Called by the inventory system when you hover over an item stack. This is the item stack name that is getting displayed.
+        /// </summary>
+        /// <param name="itemStack"></param>
+        /// <returns></returns>
+        public virtual string GetHeldItemName(ItemStack itemStack)
+        {
+            string type = ItemClass == EnumItemClass.Block ? "block" : "item";
+
+            return Lang.GetMatching(Code?.Domain + AssetLocation.LocationSeparator + type + "-" + Code?.Path);
+        }
 
 
         /// <summary>
@@ -991,7 +1004,7 @@ namespace Vintagestory.API.Common
             {
                 dsc.AppendLine(Lang.Get("Durability: {0} / {1}", stack.Attributes.GetInt("durability", Durability), Durability));
             }
-            
+
 
             if (MiningSpeed != null && MiningSpeed.Count > 0)
             {
@@ -1009,7 +1022,7 @@ namespace Vintagestory.API.Common
                 }
 
                 dsc.Append("\n");
-                
+
             }
 
             if (IsBackPack(stack))
@@ -1071,7 +1084,7 @@ namespace Vintagestory.API.Common
                     dsc.AppendLine(Lang.Get("Burn temperature: {0}°C", CombustibleProps.BurnTemperature));
                     dsc.AppendLine(Lang.Get("Burn duration: {0}s", CombustibleProps.BurnDuration));
                 }
-                
+
 
                 string smelttype = CombustibleProps.SmeltingType.ToString().ToLowerInvariant();
                 if (CombustibleProps.MeltingPoint > 0)
@@ -1083,23 +1096,312 @@ namespace Vintagestory.API.Common
                 {
                     int instacksize = CombustibleProps.SmeltedRatio;
                     int outstacksize = CombustibleProps.SmeltedStack.ResolvedItemstack.StackSize;
-                    
+
 
                     string str = instacksize == 1 ?
-                        Lang.Get("game:smeltdesc-"+ smelttype+"-singular", outstacksize, CombustibleProps.SmeltedStack.ResolvedItemstack.GetName()) :
-                        Lang.Get("game:smeltdesc-" + smelttype+"-plural", instacksize, outstacksize, CombustibleProps.SmeltedStack.ResolvedItemstack.GetName())
+                        Lang.Get("game:smeltdesc-" + smelttype + "-singular", outstacksize, CombustibleProps.SmeltedStack.ResolvedItemstack.GetName()) :
+                        Lang.Get("game:smeltdesc-" + smelttype + "-plural", instacksize, outstacksize, CombustibleProps.SmeltedStack.ResolvedItemstack.GetName())
                     ;
-                    
+
                     dsc.AppendLine(str);
                 }
 
-                
+
             }
 
             if (descText.Length > 0 && dsc.Length > 0) dsc.Append("\n");
             dsc.Append(descText);
         }
 
+
+
+        /// <summary>
+        /// Detailed information on this block/item to be displayed in the handbook
+        /// </summary>
+        /// <param name="stack"></param>
+        /// <param name="capi"></param>
+        /// <param name="allStacks">An itemstack for every block and item that should be considered during information display</param>
+        /// <param name="openDetailPageFor">Callback when someone clicks a displayed itemstack</param>
+        /// <returns></returns>
+        public virtual RichTextComponentBase[] GetHandbookInfo(ItemStack stack, ICoreClientAPI capi, ItemStack[] allStacks, Action<ItemStack> openDetailPageFor)
+        {
+            List<RichTextComponentBase> components = new List<RichTextComponentBase>();
+
+            components.Add(new ItemstackTextComponent(capi, stack, 100, 10, EnumFloat.Left));
+            components.Add(new RichTextComponent(stack.GetName() + "\n", CairoFont.WhiteSmallishText()));
+            components.Add(new RichTextComponent(stack.GetDescription(capi.World), CairoFont.WhiteSmallText()));
+
+
+            components.Add(new ClearFloatTextComponent(10));
+
+
+            if (stack.Class == EnumItemClass.Block)
+            {
+                ItemStack[] stacks = stack.Block.GetDrops(capi.World, capi.World.Player.Entity.Pos.AsBlockPos, capi.World.Player, 1);
+
+                if (stacks.Length > 0)
+                {
+                    Dictionary<AssetLocation, ItemStack> drops = new Dictionary<AssetLocation, ItemStack>();
+                    foreach (var val in stacks) drops[val.Collectible.Code] = val;
+
+                    components.Add(new RichTextComponent(Lang.Get("Drops when broken") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                    while (drops.Count > 0)
+                    {
+                        ItemStack rstack = drops.First().Value;
+                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, drops, 40, EnumFloat.Inline, openDetailPageFor);
+                        components.Add(comp);
+                    }
+
+                    components.Add(new ClearFloatTextComponent(10));
+                }
+            }
+
+            
+
+            // Obtained through...
+            // * Killing drifters
+            // * From flax crops
+            List<string> killCreatures = new List<string>();
+        
+            foreach (var val in capi.World.EntityTypes)
+            {
+                if (val.Drops == null) continue;
+
+                for (int i = 0; i < val.Drops.Length; i++)
+                {
+                    if (val.Drops[i].ResolvedItemstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                    {
+                        killCreatures.Add(Lang.Get(val.Code.Domain + ":item-creature-" + val.Code.Path));
+                    }
+                }
+            }
+
+            Dictionary<AssetLocation, ItemStack> breakBlocks = new Dictionary<AssetLocation, ItemStack>();
+
+            foreach (var val in allStacks)
+            {
+                if (val.Block == null) continue;
+
+                ItemStack[] stacks = val.Block.GetDrops(capi.World, capi.World.Player.Entity.Pos.AsBlockPos, capi.World.Player, 1);
+                if (stacks == null) continue;
+
+                for (int i = 0; i < stacks.Length; i++)
+                {
+                    if (stacks[i].Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                    {
+                        breakBlocks[val.Block.Code] = new ItemStack(val.Block);
+                    }
+                }
+            }
+
+            bool haveText = false;
+
+            if (killCreatures.Count > 0)
+            {
+                components.Add(new RichTextComponent(Lang.Get("Obtained by killing") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                components.Add(new RichTextComponent(string.Join(", " , killCreatures) + "\n", CairoFont.WhiteSmallText()));
+                haveText = true;
+            }
+
+            
+
+            if (breakBlocks.Count > 0)
+            {
+                components.Add(new RichTextComponent((haveText ? "\n" : "") + Lang.Get("Obtained by breaking") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                while (breakBlocks.Count > 0)
+                {
+                    ItemStack rstack = breakBlocks.First().Value;
+                    SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, breakBlocks, 40, EnumFloat.Inline, openDetailPageFor);
+                    components.Add(comp);
+                }
+                haveText = true;
+            }
+
+
+            // Found in....
+            string customFoundIn = stack.Collectible.Attributes?["handbook"]?["foundIn"]?.AsString(null);
+            if (customFoundIn != null)
+            {
+                components.Add(new RichTextComponent((haveText ? "\n" : "") + Lang.Get("Found in") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                components.Add(new RichTextComponent(Lang.Get(customFoundIn), CairoFont.WhiteSmallText()));
+                haveText = true;
+            }
+
+            // Ingredient for...
+            // Pickaxe
+            // Axe
+
+            Dictionary<AssetLocation, ItemStack> recipestacks = new Dictionary<AssetLocation, ItemStack>();
+
+            foreach (var recval in capi.World.GridRecipes)
+            {
+                foreach (var val in recval.resolvedIngredients)
+                {
+                    CraftingRecipeIngredient ingred = val;
+
+                    if (ingred != null && ingred.SatisfiesAsIngredient(stack))
+                    {
+                        recipestacks[recval.Output.ResolvedItemstack.Collectible.Code] = recval.Output.ResolvedItemstack;
+                    }
+                }
+            }
+
+            
+            foreach (var val in capi.World.SmithingRecipes)
+            {
+                if (val.Ingredient.SatisfiesAsIngredient(stack))
+                {
+                    recipestacks[val.Output.ResolvedItemstack.Collectible.Code] = val.Output.ResolvedItemstack;
+                }
+            }
+
+            
+            foreach (var val in capi.World.ClayFormingRecipes)
+            {
+                if (val.Ingredient.SatisfiesAsIngredient(stack))
+                {
+                    recipestacks[val.Output.ResolvedItemstack.Collectible.Code] = val.Output.ResolvedItemstack;
+                }
+            }
+
+            
+            foreach (var val in capi.World.KnappingRecipes)
+            {
+                if (val.Ingredient.SatisfiesAsIngredient(stack))
+                {
+                    recipestacks[val.Output.ResolvedItemstack.Collectible.Code] = val.Output.ResolvedItemstack;
+                }
+            }
+
+
+            if (recipestacks.Count > 0)
+            {
+                components.Add(new ClearFloatTextComponent(10));
+                components.Add(new RichTextComponent(Lang.Get("Ingredient for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                while (recipestacks.Count > 0)
+                {
+                    ItemStack rstack = recipestacks.First().Value;
+                    SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, recipestacks, 40, EnumFloat.Inline, openDetailPageFor);
+                    components.Add(comp);
+                }
+            }
+
+
+            // Created by....
+            // * Smithing
+            // * Grid crafting:
+            //   x x x
+            //   x x x
+            //   x x x
+
+            bool smithable = false;
+            bool knappable = false;
+            bool clayformable = false;
+
+            foreach (var val in capi.World.SmithingRecipes)
+            {
+                if (val.Output.ResolvedItemstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                {
+                    smithable = true;
+                    break;
+                }
+            }
+
+            foreach (var val in capi.World.KnappingRecipes)
+            {
+                if (val.Output.ResolvedItemstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                {
+                    knappable = true;
+                    break;
+                }
+            }
+
+
+            foreach (var val in capi.World.ClayFormingRecipes)
+            {
+                if (val.Output.ResolvedItemstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                {
+                    clayformable = true;
+                    break;
+                }
+            }
+
+
+            List<GridRecipe> recipes = new List<GridRecipe>();
+
+            foreach (var val in capi.World.GridRecipes)
+            {
+                if (val.Output.ResolvedItemstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                {
+                    recipes.Add(val);
+                }
+            }
+
+
+            Dictionary<AssetLocation, ItemStack> bakables = new Dictionary<AssetLocation, ItemStack>();
+            foreach (var val in allStacks)
+            {
+                ItemStack smeltedStack = val.Collectible.CombustibleProps?.SmeltedStack?.ResolvedItemstack;
+
+                if (smeltedStack != null && smeltedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                {
+                    bakables[val.Collectible.Code] = val;
+                }
+            }
+            
+            
+
+
+            string customCreatedBy = stack.Collectible.Attributes?["handbook"]?["createdBy"]?.AsString(null);
+
+
+            if (recipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0)
+            {
+                components.Add(new ClearFloatTextComponent(10));
+                components.Add(new RichTextComponent(Lang.Get("Created by") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (smithable) components.Add(new RichTextComponent("• " + Lang.Get("Smithing") + "\n", CairoFont.WhiteSmallText()));
+                if (knappable) components.Add(new RichTextComponent("• " + Lang.Get("Knapping") + "\n", CairoFont.WhiteSmallText()));
+                if (clayformable) components.Add(new RichTextComponent("• " + Lang.Get("Clay forming") + "\n", CairoFont.WhiteSmallText()));
+                if (customCreatedBy != null) components.Add(new RichTextComponent("• " + Lang.Get(customCreatedBy) + "\n", CairoFont.WhiteSmallText()));
+
+
+                if (bakables.Count > 0)
+                {
+                    components.Add(new RichTextComponent("• " + Lang.Get("Heating") + "\n", CairoFont.WhiteSmallText()));
+                    while (bakables.Count > 0)
+                    {
+                        ItemStack rstack = bakables.First().Value;
+                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, bakables, 40, EnumFloat.Inline, openDetailPageFor);
+                        components.Add(comp);
+                    }
+                }
+
+
+                if (recipes.Count > 0)
+                {
+                    if (knappable) components.Add(new RichTextComponent("• " + Lang.Get("Crafting") + "\n", CairoFont.WhiteSmallText()));
+
+                    components.Add(new SlideshowGridRecipeTextComponent(capi, recipes.ToArray(), 40, EnumFloat.None, openDetailPageFor, allStacks));
+                }
+            }
+
+            JsonObject obj = stack.Collectible.Attributes?["handbook"]?["extraSections"];
+            if (obj != null && obj.Exists)
+            {
+                ExtraSection[] sections = obj?.AsObject<ExtraSection[]>();
+                for (int i = 0; i < sections.Length; i++)
+                {
+                    components.Add(new ClearFloatTextComponent(10));
+                    components.Add(new RichTextComponent(Lang.Get(sections[i].Title) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                    components.Add(new RichTextComponent(Lang.Get(sections[i].Text) + "\n", CairoFont.WhiteSmallText()));
+                }
+            }
+
+            return components.ToArray();
+        }
+
+
+        class ExtraSection { public string Title; public string Text; }
 
         /// <summary>
         /// Should return true if the stack can be placed into given slot

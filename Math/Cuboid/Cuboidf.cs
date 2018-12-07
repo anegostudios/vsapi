@@ -78,6 +78,7 @@ namespace Vintagestory.API.MathTools
             this.Z2 = collisionBox.Z2;
         }
 
+ 
         /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>

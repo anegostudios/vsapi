@@ -161,11 +161,13 @@ namespace Vintagestory.API.Server
             {
                 return true;
             }
-
             
             foreach (PlayerGroupMembership group in player.Groups)
             {
-                if (PermittedPlayerGroupIds.TryGetValue(group.GroupUid, out flags) && (flags & claimFlag) > 0) return true;
+                if (PermittedPlayerGroupIds.TryGetValue(group.GroupUid, out flags) && (flags & claimFlag) > 0)
+                {
+                    return true;
+                }
             }
 
             return false;

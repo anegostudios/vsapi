@@ -72,7 +72,7 @@ namespace Vintagestory.API.Client
 
                     ctx.SetSourceRGBA(1, 1, 1, 0.2);
 
-                    RoundRectangle(ctx, Bounds.drawX + posX, Bounds.drawY + posY, slotWidth, slotHeight, ElementGeometrics.ElementBGRadius);
+                    RoundRectangle(ctx, Bounds.drawX + posX, Bounds.drawY + posY, slotWidth, slotHeight, GuiStyle.ElementBGRadius);
                     ctx.Fill();
                     EmbossRoundRectangleElement(ctx, Bounds.drawX + posX, Bounds.drawY + posY, slotWidth, slotHeight, true);
                 }
@@ -88,7 +88,7 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             ctx.SetSourceRGBA(1, 1, 1, 0.7);
-            RoundRectangle(ctx, 1, 1, slotWidth, slotHeight, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctx, 1, 1, slotWidth, slotHeight, GuiStyle.ElementBGRadius);
             ctx.Fill();
 
             generateTexture(surface, ref hoverTexture);

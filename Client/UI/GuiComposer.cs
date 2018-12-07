@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -20,13 +21,14 @@ namespace Vintagestory.API.Client
     /// Composes a dialog which are made from a set of elements
     /// The composed dialog is cached, so to recompose you have to Recompose All elements or instantiate a new composer with doCache set to false
     /// The caching allows the dialog using the composer to not worry about performance and just call compose whenever it has to display a new composed dialog
+    /// You add components by chaining the functions of the composer together for building the result.
     /// </summary>
     public class GuiComposer
     {
         /// <summary>
         /// Triggered when the gui scale changed or the game window was resized
         /// </summary>
-        public event Action OnRecomposed;
+        public event API.Common.Action OnRecomposed;
 
         public static int Outlines = 0;
 
@@ -41,7 +43,7 @@ namespace Vintagestory.API.Client
         int currentFocusableElementKey; // Default key index if no custom key is set
 
         internal string dialogName;
-        int staticElementsTextureId;
+        LoadedTexture staticElementsTexture;
 
         ElementBounds bounds;
 
@@ -58,7 +60,7 @@ namespace Vintagestory.API.Client
         public ICoreClientAPI Api;
         public float zDepth=50;
 
-        public Action<bool> OnFocusChanged;
+        public API.Common.Action<bool> OnFocusChanged;
 
         /// <summary>
         /// A unique number assigned to each element
@@ -74,38 +76,50 @@ namespace Vintagestory.API.Client
             get { return bounds; }
         }
 
-        public bool IsCached
-        {
-            get { return composerManager.Composers.ContainsKey(dialogName); }
-        }
-
+        internal bool IsCached;
 
         internal GuiComposer(ICoreClientAPI api, ElementBounds bounds, string dialogName)
         {
+            staticElementsTexture = new LoadedTexture(api);
             this.dialogName = dialogName;
             this.bounds = bounds;
             this.Api = api;
             parentBoundsForNextElement.Push(bounds);
         }
 
+        /// <summary>
+        /// Creates an empty GuiComposer.
+        /// </summary>
+        /// <param name="api">The Client API</param>
+        /// <returns>An empty GuiComposer.</returns>
         public static GuiComposer CreateEmpty(ICoreClientAPI api)
         {
             return new GuiComposer(api, ElementBounds.Empty, null).Compose();
         }
-
+        
+        /// <summary>
+        /// Adds a condition for adding a group of items to the GUI- eg: if you have a crucible in the firepit, add those extra slots.  Should always pair with an EndIf()
+        /// </summary>
+        /// <param name="condition">When the following slots should be added</param>
         public GuiComposer AddIf(bool condition)
         {
             conditionalAdds.Push(condition);
             return this;
         }
         
-
+        /// <summary>
+        /// End of the AddIf block.
+        /// </summary>
         public GuiComposer EndIf()
         {
             if (conditionalAdds.Count > 0) conditionalAdds.Pop();
             return this;
         }
 
+        /// <summary>
+        /// Starts a set of child elements.
+        /// </summary>
+        /// <param name="bounds">The bounds for the child elements.</param>
         public GuiComposer BeginChildElements(ElementBounds bounds)
         {
             if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
@@ -119,13 +133,18 @@ namespace Vintagestory.API.Client
             return this;
         }
 
-
+        /// <summary>
+        /// Starts a set of child elements.
+        /// </summary>
         public GuiComposer BeginChildElements()
         {
             parentBoundsForNextElement.Push(lastAddedElementBounds);
             return this;
         }
 
+        /// <summary>
+        /// End of the current set of child elements.
+        /// </summary>
         public GuiComposer EndChildElements()
         {
             if (parentBoundsForNextElement.Count > 1)
@@ -136,14 +155,18 @@ namespace Vintagestory.API.Client
             return this;
         }
 
-
+        /// <summary>
+        /// Sets the render to Dynamic components only
+        /// </summary>
         public GuiComposer OnlyDynamic()
         {
             onlyDynamicRender = true;
             return this;
         }
 
-        
+        /// <summary>
+        /// Rebuilds the Composed GUI.  
+        /// </summary>
         public void ReCompose()
         {
             composed = false;
@@ -158,7 +181,9 @@ namespace Vintagestory.API.Client
             OnFocusChanged?.Invoke(false);
         }
 
-
+        /// <summary>
+        /// Gets the currently tabbed index element, if there is one currently focused.
+        /// </summary>
         public GuiElement CurrentTabIndexElement
         {
             get {
@@ -174,6 +199,9 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Gets the maximum tab index of the components.
+        /// </summary>
         public int MaxTabIndex
         {
             get
@@ -191,7 +219,11 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        /// <summary>
+        /// marks an element as in focus.  
+        /// </summary>
+        /// <param name="tabIndex">The tab index to focus at.</param>
+        /// <returns>Whether or not the focus could be done.</returns>
         public bool FocusElement(int tabIndex)
         {
             GuiElement newFocusedElement = null;
@@ -220,6 +252,10 @@ namespace Vintagestory.API.Client
             UnfocusOwnElementsExcept(null);
         }
 
+        /// <summary>
+        /// Unfocuses all elements except one specific element.
+        /// </summary>
+        /// <param name="elem">The element to remain in focus.</param>
         public void UnfocusOwnElementsExcept(GuiElement elem)
         {
             foreach (GuiElement element in interactiveElements.Values)
@@ -234,12 +270,21 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Tells the composer to compose the gui.
+        /// </summary>
+        /// <param name="focusFirstElement">Whether or not to put the first element in focus.</param>
         public GuiComposer Compose(bool focusFirstElement = true)
         {
             if (composed)
             {
                 if (focusFirstElement && MaxTabIndex >= 0) FocusElement(0);
                 return this;
+            }
+
+            foreach (GuiElement element in staticElements.Values)
+            {
+                element.BeforeCalcBounds();
             }
 
             bounds.Initialized = false;
@@ -278,13 +323,7 @@ namespace Vintagestory.API.Client
                 interactiveElementsInDrawOrder.Insert(insertPos, element);
             }
 
-            int oldTexId = staticElementsTextureId;
-
-            //surface.WriteToPng(dialogName+".png");
-           
-            staticElementsTextureId = Api.Gui.LoadCairoTexture(surface, true);
-            if (oldTexId > 0) Api.Gui.DeleteTexture(oldTexId);
-
+            Api.Gui.LoadOrUpdateCairoTexture(surface, true, ref staticElementsTexture);
             
 
             ctx.Dispose();
@@ -297,17 +336,25 @@ namespace Vintagestory.API.Client
             return this;
         }
 
-
-        public void OnMouseUp(ICoreClientAPI api, MouseEvent mouse)
+        /// <summary>
+        /// Fires the OnMouseUp events.
+        /// </summary>
+        /// <param name="api">The client API.</param>
+        /// <param name="mouse">The mouse information.</param>
+        public void OnMouseUp(MouseEvent mouse)
         {
             foreach (GuiElement element in interactiveElements.Values)
             {
-                element.OnMouseUp(api, mouse);
+                element.OnMouseUp(Api, mouse);
             }
             
         }
 
-        public void OnMouseDown(ICoreClientAPI api, MouseEvent mouse)
+        /// <summary>
+        /// Fires the OnMouseDown events.
+        /// </summary>
+        /// <param name="mouse">The mouse information.</param>
+        public void OnMouseDown(MouseEvent mouse)
         {
             bool beforeHandled = false;
             bool nowHandled = false;
@@ -315,7 +362,7 @@ namespace Vintagestory.API.Client
             {
                 if (!beforeHandled)
                 {
-                    element.OnMouseDown(api, mouse);
+                    element.OnMouseDown(Api, mouse);
                     nowHandled = mouse.Handled;
                 }
 
@@ -344,11 +391,15 @@ namespace Vintagestory.API.Client
             
         }
 
-        public void OnMouseMove(ICoreClientAPI api, MouseEvent mouse)
+        /// <summary>
+        /// Fires the OnMouseMove events.
+        /// </summary>
+        /// <param name="mouse">The mouse information.</param>
+        public void OnMouseMove(MouseEvent mouse)
         {
             foreach (GuiElement element in interactiveElements.Values)
             {
-                element.OnMouseMove(api, mouse);
+                element.OnMouseMove(Api, mouse);
                 if (mouse.Handled)
                 {
                     break;
@@ -356,12 +407,37 @@ namespace Vintagestory.API.Client
             }
         }
 
-        public void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs mouse) {
+
+        public bool OnMouseEnterSlot(IItemSlot slot)
+        {
+            foreach (GuiElement element in interactiveElements.Values)
+            {
+                if (element.OnMouseEnterSlot(Api, slot)) return true;
+            }
+            return false;
+        }
+
+
+        public bool OnMouseLeaveSlot(IItemSlot slot)
+        {
+            foreach (GuiElement element in interactiveElements.Values)
+            {
+                if (element.OnMouseLeaveSlot(Api, slot)) return true;
+            }
+            return false;
+        }
+
+
+        /// <summary>
+        /// Fires the OnMouseWheel events.
+        /// </summary>
+        /// <param name="mouse">The mouse wheel information.</param>
+        public void OnMouseWheel(MouseWheelEventArgs mouse) {
             // Prefer an element that is currently hovered 
             foreach (GuiElement element in interactiveElements.Values)
             {
-                if (element.IsPositionInside(api.Input.MouseX, api.Input.MouseY)) {
-                    element.OnMouseWheel(api, mouse);
+                if (element.IsPositionInside(Api.Input.MouseX, Api.Input.MouseY)) {
+                    element.OnMouseWheel(Api, mouse);
                 }
                 
                 if (mouse.IsHandled) return;
@@ -370,17 +446,23 @@ namespace Vintagestory.API.Client
 
             foreach (GuiElement element in interactiveElements.Values)
             {
-                element.OnMouseWheel(api, mouse);
+                element.OnMouseWheel(Api, mouse);
                 if (mouse.IsHandled) break;
             }
         }
 
-
-        public void OnKeyDown(ICoreClientAPI api, KeyEvent args, bool haveFocus)
+        
+        /// <summary>
+        /// Fires the OnKeyDown events.
+        /// </summary>
+        /// <param name="api">The Client API.</param>
+        /// <param name="args">The keyboard information.</param>
+        /// <param name="haveFocus">Whether or not the gui has focus.</param>
+        public void OnKeyDown(KeyEvent args, bool haveFocus)
         {
             foreach (GuiElement element in interactiveElements.Values)
             {
-                element.OnKeyDown(api, args);
+                element.OnKeyDown(Api, args);
                 if (args.Handled) break;
             }
 
@@ -403,15 +485,23 @@ namespace Vintagestory.API.Client
             }
         }
 
-        public void OnKeyPress(ICoreClientAPI api, KeyEvent args) {
+        /// <summary>
+        /// Fires the OnKeyPress event.
+        /// </summary>
+        /// <param name="args">The keyboard information</param>
+        public void OnKeyPress(KeyEvent args) {
 
             foreach (GuiElement element in interactiveElements.Values)
             {
-                element.OnKeyPress(api, args);
+                element.OnKeyPress(Api, args);
                 if (args.Handled) break;
             }
         }
 
+        /// <summary>
+        /// Fires the PostRender event.
+        /// </summary>
+        /// <param name="deltaTime">The change in time.</param>
         public void PostRender(float deltaTime)
         {
             // Window size goes 0 when minimized
@@ -442,9 +532,14 @@ namespace Vintagestory.API.Client
             {
                 element.PostRenderInteractiveElements(deltaTime);
             }
-
         }
 
+        public string MouseOverCursor;
+
+        /// <summary>
+        /// Fires the render event.
+        /// </summary>
+        /// <param name="deltaTime">The change in time.</param>
         public void Render(float deltaTime)
         {
             if (recomposeOnRender)
@@ -455,12 +550,18 @@ namespace Vintagestory.API.Client
 
             if (!onlyDynamicRender)
             {
-                Api.Render.Render2DTexture(staticElementsTextureId, bounds, zDepth);
+                Api.Render.Render2DTexture(staticElementsTexture.TextureId, bounds, zDepth);
             }
 
+            MouseOverCursor = "normal";
             foreach (GuiElement element in interactiveElementsInDrawOrder)
             {
                 element.RenderInteractiveElements(deltaTime);
+
+                if (element.IsPositionInside(Api.Input.MouseX, Api.Input.MouseY))
+                {
+                    MouseOverCursor = element.MouseOverCursor;
+                }
             }
 
 
@@ -504,7 +605,11 @@ namespace Vintagestory.API.Client
             return value * RuntimeEnv.GUIScale;
         }
 
-
+        /// <summary>
+        /// Adds an interactive element to the composer.
+        /// </summary>
+        /// <param name="element">The element to add.</param>
+        /// <param name="key">The name of the element. (default: null)</param>
         public GuiComposer AddInteractiveElement(GuiElement element, string key = null)
         {
             if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
@@ -534,6 +639,11 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        /// <summary>
+        /// Adds a static element to the composer.
+        /// </summary>
+        /// <param name="element">The element to add.</param>
+        /// <param name="key">The name of the element (default: null)</param>
         public GuiComposer AddStaticElement(GuiElement element, string key = null)
         {
             if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
@@ -552,7 +662,10 @@ namespace Vintagestory.API.Client
             return this;
         }
 
-
+        /// <summary>
+        /// Gets the element by name.
+        /// </summary>
+        /// <param name="key">The name of the element to get.</param>
         public GuiElement GetElement(string key)
         {
             if (interactiveElements.ContainsKey(key))
@@ -568,6 +681,7 @@ namespace Vintagestory.API.Client
             return null;
         }
 
+        
         public void Dispose()
         {
             foreach (var val in interactiveElements)
@@ -579,6 +693,8 @@ namespace Vintagestory.API.Client
             {
                 val.Value.Dispose();
             }
+
+            staticElementsTexture.Dispose();
 
             composed = false;
         }

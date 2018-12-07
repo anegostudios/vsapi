@@ -8,6 +8,13 @@ namespace Vintagestory.API.Client
         string textureName;
         float brightness;
 
+        /// <summary>
+        /// Creates a new Image Background for the GUI.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="bounds">The bounds of the element.</param>
+        /// <param name="textureName">The name of the texture.</param>
+        /// <param name="brightness">The brightness of the texture. (Default: 1f)</param>
         public GuiElementImageBackground(ICoreClientAPI capi, ElementBounds bounds, string textureName, float brightness = 1f) : base(capi, bounds)
         {
             this.textureName = textureName;
@@ -40,7 +47,13 @@ namespace Vintagestory.API.Client
 
     public static class GuiElementImageBackgroundHelper
     {
-        public static GuiComposer AddBG(this GuiComposer composer, ElementBounds bounds, string textureName, float brightness = 1f)
+        /// <summary>
+        /// Adds a background to the current GUI
+        /// </summary>
+        /// <param name="bounds">The bounds of the background</param>
+        /// <param name="textureName">The name of the background texture.</param>
+        /// <param name="brightness">The brightness of the texture (default: 1f)</param>
+        public static GuiComposer AddImageBG(this GuiComposer composer, ElementBounds bounds, string textureName, float brightness = 1f)
         {
             if (!composer.composed)
             {

@@ -12,7 +12,9 @@ namespace Vintagestory.API.Client
     {
         public static double unscaledRightBoxWidth = 40;
 
-
+        /// <summary>
+        /// The base cell.
+        /// </summary>
         public TableCell cell;
         IAssetManager assetManager;
         double titleTextheight;
@@ -33,6 +35,13 @@ namespace Vintagestory.API.Client
             get { return Bounds; }
         }
 
+        /// <summary>
+        /// Adds a mod cell to the table.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="cell">The table cell to add.</param>
+        /// <param name="assetManager">The asset manager for the mod</param>
+        /// <param name="bounds">The bounds of the cell</param>
         public GuiElementModCell(ICoreClientAPI capi, TableCell cell, IAssetManager assetManager, ElementBounds bounds) : base(capi, "", null, bounds)
         {
             this.cell = cell;
@@ -64,7 +73,7 @@ namespace Vintagestory.API.Client
             {
                 RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, 1);
 
-                ctx.SetSourceRGB(ElementGeometrics.DialogDefaultBgColor[0], ElementGeometrics.DialogDefaultBgColor[1], ElementGeometrics.DialogDefaultBgColor[2]);
+                ctx.SetSourceRGB(GuiStyle.DialogDefaultBgColor[0], GuiStyle.DialogDefaultBgColor[1], GuiStyle.DialogDefaultBgColor[2]);
                 ctx.Fill();
             }
 
@@ -83,15 +92,15 @@ namespace Vintagestory.API.Client
             }
 
             Font = cell.TitleFont;
-            titleTextheight = ShowMultilineText(ctx, cell.Title, Bounds.drawX + textOffset, Bounds.drawY, Bounds.InnerWidth - textOffset);
+            titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.Title, Bounds.drawX + textOffset, Bounds.drawY, Bounds.InnerWidth - textOffset);
 
             Font = cell.DetailTextFont;
-            ShowMultilineText(ctx, cell.DetailText, Bounds.drawX + textOffset, Bounds.drawY + titleTextheight + Bounds.absPaddingY, Bounds.InnerWidth - textOffset);
+            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.DetailText, Bounds.drawX + textOffset, Bounds.drawY + titleTextheight + Bounds.absPaddingY, Bounds.InnerWidth - textOffset);
 
             if (cell.RightTopText != null)
             {
                 TextExtents extents = Font.GetTextExtents(cell.RightTopText);
-                ShowMultilineText(ctx, cell.RightTopText, Bounds.drawX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.drawY + Bounds.absPaddingY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
+                textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.RightTopText, Bounds.drawX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.drawY + Bounds.absPaddingY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
             }
 
             if (cell.HighlightCell > 0)
@@ -123,7 +132,9 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        /// <summary>
+        /// Builds the dynamic parts of the cell.
+        /// </summary>
         public void CreateDynamicParts()
         {
             ComposeHover(true, ref leftHighlightTextureId);
@@ -183,7 +194,9 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
-
+        /// <summary>
+        /// Updates the height of the given cell based off information.
+        /// </summary>
         public void UpdateCellHeight()
         {
             Bounds.CalcWorldBounds();
@@ -203,11 +216,11 @@ namespace Vintagestory.API.Client
 
             this.Font = cell.TitleFont;
             this.text = cell.Title;
-            titleTextheight = GetMultilineTextHeight(cell.Title, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
+            titleTextheight = textUtil.GetMultilineTextHeight(Font, cell.Title, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
 
             this.Font = cell.DetailTextFont;
             this.text = cell.DetailText;
-            double detailTextHeight = GetMultilineTextHeight(cell.DetailText, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
+            double detailTextHeight = textUtil.GetMultilineTextHeight(Font, cell.DetailText, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
 
             Bounds.fixedHeight = unscaledPadding + titleTextheight + unscaledPadding + detailTextHeight + unscaledPadding;
 
@@ -217,6 +230,12 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Renders the interactive element.
+        /// </summary>
+        /// <param name="api">The Client API</param>
+        /// <param name="parentBounds">The parent bounds of the cell.</param>
+        /// <param name="deltaTime">The change in time.</param>
         public void OnRenderInteractiveElements(ICoreClientAPI api, ElementBounds parentBounds, float deltaTime)
         {
             int dx = api.Input.MouseX - (int)parentBounds.absX;

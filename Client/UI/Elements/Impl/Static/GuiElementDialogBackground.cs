@@ -6,13 +6,21 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementDialogBackground : GuiElement
     {
-        bool hotBarLayout = false;
+        //bool hotBarLayout = false;
         bool strongBackground;
         double topPadding = 0;
 
-        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool strongBackground, bool hotBarLayout = false, double topPadding = 0) : base(capi, bounds)
+        /// <summary>
+        /// Adds a Background to the Dialog.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="bounds">The bounds of the element.</param>
+        /// <param name="strongBackground">Whether the background is strong or not.</param>
+        /// <param name="hotBarLayout">Whether or not the hotbar is rendered in this gui.</param>
+        /// <param name="topPadding">The top padding area of the GUI</param>
+        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool strongBackground, double topPadding = 0) : base(capi, bounds)
         {
-            this.hotBarLayout = hotBarLayout;
+            //this.hotBarLayout = hotBarLayout;
             this.topPadding = topPadding;
             this.strongBackground = strongBackground;
         }
@@ -22,7 +30,7 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
             
-            if (hotBarLayout)
+            /*if (hotBarLayout)
             {
                 double midBoxWidth = 0.15 * Bounds.ParentBounds.OuterWidth;
                 double midBoxHeight = 0.2 * Bounds.OuterHeight;
@@ -30,7 +38,7 @@ namespace Vintagestory.API.Client
                 //bounds.fixedY = bounds.OuterHeight / 2;
                 //bounds.calcWorldBounds();
 
-                double radius = ElementGeometrics.DialogBGRadius;
+                double radius = GuiStyle.DialogBGRadius;
                 double x = Bounds.bgDrawX;
                 double y = Bounds.bgDrawY + midBoxHeight + topPadding;
                 double width = Bounds.OuterWidth;
@@ -51,17 +59,17 @@ namespace Vintagestory.API.Client
 
                 ctx.ClosePath();
             }
-            else
+            else*/
             {
-                RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + topPadding, Bounds.OuterWidth, Bounds.OuterHeight - topPadding, ElementGeometrics.DialogBGRadius);
+                RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + topPadding, Bounds.OuterWidth, Bounds.OuterHeight - topPadding, GuiStyle.DialogBGRadius);
             }
 
             if (strongBackground)
             {
-                ctx.SetSourceRGBA(ElementGeometrics.DialogStrongBgColor);
+                ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
             } else
             {
-                ctx.SetSourceRGBA(ElementGeometrics.DialogDefaultBgColor);
+                ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor);
             }
             
             ctx.FillPreserve();       
@@ -76,24 +84,35 @@ namespace Vintagestory.API.Client
     {
 
         // Single rectangle shape
+        /// <summary>
+        /// Adds a single rectangle background to the GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the GUI</param>
+        /// <param name="strongBackground">Whether or not the background is strong.</param>
+        /// <param name="topPadding">The amount of padding at the top of the gui.</param>
         public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool strongBackground = false, double topPadding = 0)
         {
             if (!composer.composed)
             {
-                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, strongBackground, false, topPadding));
+                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, strongBackground, topPadding));
             }
             return composer;
         }
 
         // Multi rectangle shape
-        public static GuiComposer AddDialogBGHotBar(this GuiComposer composer, ElementBounds bounds, bool strongBackground = false)
+        /// <summary>
+        /// Adds a multi-rectangle background.
+        /// </summary>
+        /// <param name="bounds">The bounds of the GUI</param>
+        /// <param name="strongBackground">Whether or not the background is strong.</param>
+        /*public static GuiComposer AddDialogBGHotBar(this GuiComposer composer, ElementBounds bounds, bool strongBackground = false)
         {
             if (!composer.composed)
             {
                 composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, strongBackground, true));
             }
             return composer;
-        }
+        }*/
 
     }
 

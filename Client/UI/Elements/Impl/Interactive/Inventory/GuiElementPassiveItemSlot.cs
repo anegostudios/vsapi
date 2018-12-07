@@ -54,7 +54,7 @@ namespace Vintagestory.API.Client
             double absSlotSize = scaled(unscaledSlotSize);
 
             ElementBounds textBounds = ElementBounds
-              .Fixed(0, unscaledSlotSize - ElementGeometrics.SmallFontSize - 2, unscaledSlotSize - 5, unscaledSlotSize - 5)
+              .Fixed(0, unscaledSlotSize - GuiStyle.SmallFontSize - 2, unscaledSlotSize - 5, unscaledSlotSize - 5)
               .WithEmptyParent();
 
             CairoFont font = CairoFont.WhiteSmallText();

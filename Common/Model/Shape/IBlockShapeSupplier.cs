@@ -16,7 +16,7 @@ namespace Vintagestory.API.Common
         /// The Tesselator runs in a seperate thread, so you have to make sure the fields and methods you access inside this method are thread safe.
         /// </summary>
         /// <param name="mesher">The chunk mesh, add your stuff here</param>
-        /// <param name="tesselator">If you need to tesselate something, I suggest you use this tesselator, since using the main thread tesselator can cause race conditions</param>
-        bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator);
+        /// <param name="tessThreadTesselator">If you need to tesselate something, you should use this tesselator, since using the main thread tesselator can cause race conditions and crash the game</param>
+        bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator);
     }
 }

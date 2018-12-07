@@ -62,7 +62,7 @@ namespace Vintagestory.API.Client
                 else
                 {
                     width = (int)(scaled(unscaledWidth) + 1);
-                    height = (int)(GetMultilineTextHeight(text, width - 2 * padding) + 2 * padding + 1);
+                    height = (int)(textUtil.GetMultilineTextHeight(Font, text, width - 2 * padding) + 2 * padding + 1);
                 }
 
 
@@ -100,7 +100,7 @@ namespace Vintagestory.API.Client
                 }
 
 
-                height = (int)(GetMultilineTextHeight(text, width - 2 * padding) + 2 * padding + 1);
+                height = (int)(textUtil.GetMultilineTextHeight(Font, text, width - 2 * padding) + 2 * padding + 1);
 
                 Bounds.CalcWorldBounds();
             }
@@ -118,16 +118,16 @@ namespace Vintagestory.API.Client
             ctx.Paint();
 
 
-            double[] color = ElementGeometrics.DialogStrongBgColor;
+            double[] color = GuiStyle.DialogStrongBgColor;
 
             ctx.SetSourceRGBA(color[0], color[1], color[2], color[3]);
 
-            RoundRectangle(ctx, 0, 0, width, height, ElementGeometrics.DialogBGRadius);
+            RoundRectangle(ctx, 0, 0, width, height, GuiStyle.DialogBGRadius);
             ctx.FillPreserve();
             ctx.SetSourceRGBA(color[0] / 2, color[1] / 2, color[2] / 2, color[3]);
             ctx.Stroke();
 
-            ShowMultilineText(ctx, text, (int)padding, (int)padding, width - 2 * padding, textOrientation);
+            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, text, (int)padding, (int)padding, width - 2 * padding, textOrientation);
 
             generateTexture(surface, ref hoverTexture);
 

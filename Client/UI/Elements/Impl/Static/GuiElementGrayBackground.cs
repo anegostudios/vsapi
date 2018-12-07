@@ -5,6 +5,12 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementGrayBackground : GuiElement
     {
+
+        /// <summary>
+        /// Creates a new gray background.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="bounds">The bouds of the GUI Element.</param>
         public GuiElementGrayBackground(ICoreClientAPI capi, ElementBounds bounds) : base(capi, bounds)
         {
 
@@ -23,7 +29,10 @@ namespace Vintagestory.API.Client
 
     public static class GuiElementGrayBackgroundHelpber
     {
-
+        /// <summary>
+        /// Adds a gray background to the current GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the backgrounds.</param>
         public static GuiComposer AddGrayBG(this GuiComposer composer, ElementBounds bounds)
         {
             if (!composer.composed)

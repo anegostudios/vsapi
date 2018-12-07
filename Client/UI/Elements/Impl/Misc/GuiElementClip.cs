@@ -7,6 +7,12 @@ namespace Vintagestory.API.Client
     {
         bool clip;
 
+        /// <summary>
+        /// Adds a clipped area to the GUI.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="clip">Do we clip?</param>
+        /// <param name="bounds">The bounds of the element.</param>
         public GuiElementClip(ICoreClientAPI capi, bool clip, ElementBounds bounds) : base(capi, bounds)
         {
             this.clip = clip;
@@ -45,7 +51,10 @@ namespace Vintagestory.API.Client
 
     public static class GuiElementClipHelpler
     {
-
+        /// <summary>
+        /// Adds a starting clip to the GUI. Purely decorative.
+        /// </summary>
+        /// <param name="bounds">The bounds of the object.</param>
         public static GuiComposer BeginClip(this GuiComposer composer, ElementBounds bounds)
         {
             if (!composer.composed)
@@ -57,6 +66,9 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Adds an ending clip to the GUI after the previous element.
+        /// </summary>
         public static GuiComposer EndClip(this GuiComposer composer)
         {
             if (!composer.composed)

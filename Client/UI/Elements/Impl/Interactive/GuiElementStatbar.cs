@@ -5,6 +5,11 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
+    public delegate string StatbarValueDelegate();
+
+    /// <summary>
+    /// A stat bar to the GUI for keeping track of progress and numbers.
+    /// </summary>
     public class GuiElementStatbar : GuiElementTextBase
     {
         float minValue = 0;
@@ -15,8 +20,9 @@ namespace Vintagestory.API.Client
         double[] color;
         bool rightToLeft = false;
 
-        LoadedTexture valueTexture;
+        LoadedTexture barTexture;
         LoadedTexture flashTexture;
+        LoadedTexture valueTexture;
 
         int valueWidth;
         int valueHeight;
@@ -24,16 +30,30 @@ namespace Vintagestory.API.Client
         public bool shouldFlash;
         public float flashTime;
 
-        public static double DefaultHeight = 7;
+        public bool showValueOnHover=true;
+        public StatbarValueDelegate onGetStatbarValue;
+        public CairoFont valueFont = CairoFont.WhiteSmallText().WithStroke(ColorUtil.BlackArgbDouble, 0.75);
 
+        public static double DefaultHeight = 8;
+
+        /// <summary>
+        /// Creates a new stat bar for the GUI.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="bounds">The bounds of the stat bar.</param>
+        /// <param name="color">The color of the stat bar.</param>
+        /// <param name="rightToLeft">Determines the direction that the bar fills.</param>
         public GuiElementStatbar(ICoreClientAPI capi, ElementBounds bounds, double[] color, bool rightToLeft) : base(capi, "", CairoFont.WhiteDetailText(), bounds)
         {
-            valueTexture = new LoadedTexture(capi);
+            barTexture = new LoadedTexture(capi);
             flashTexture = new LoadedTexture(capi);
+            valueTexture = new LoadedTexture(capi);
 
             this.color = color;
             this.rightToLeft = rightToLeft;
             value = new Random(Guid.NewGuid().GetHashCode()).Next(100);
+
+            onGetStatbarValue = () => { return (int)value + " / " + (int)this.maxValue; };
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
@@ -96,10 +116,19 @@ namespace Vintagestory.API.Client
             }
 
 
-            generateTexture(surface, ref valueTexture);
+            generateTexture(surface, ref barTexture);
             
             ctx.Dispose();
             surface.Dispose();
+
+            if (showValueOnHover)
+            {
+                api.Gui.TextTexture.GenOrUpdateTextTexture(onGetStatbarValue(), valueFont, ref valueTexture, new TextBackground() {
+                    FillColor = GuiStyle.DialogStrongBgColor,
+                    Padding = 5,
+                    StrokeWidth = 2
+                } );
+            }
         }
 
         private void ComposeFlashOverlay()
@@ -151,15 +180,30 @@ namespace Vintagestory.API.Client
                 api.Render.RenderTexture(flashTexture.TextureId, x - 14, y - 14, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28, 50, new Vec4f(1.5f, 1, 1, alpha));
             }
 
+            api.Render.RenderTexture(barTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
 
-            api.Render.RenderTexture(valueTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
+            if (showValueOnHover && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
+            {
+                double tx = api.Input.MouseX + 16;
+                double ty = api.Input.MouseY + valueTexture.Height - 4;
+                api.Render.RenderTexture(valueTexture.TextureId, tx, ty, valueTexture.Width, valueTexture.Height, 2000);
+            }
+            
         }
 
+        /// <summary>
+        /// Sets the line interval for the Status Bar.
+        /// </summary>
+        /// <param name="value">The value to set for the line interval/</param>
         public void SetLineInterval(float value)
         {
             lineInterval = value;
         }
 
+        /// <summary>
+        /// Sets the value for the status bar and updates the bar.
+        /// </summary>
+        /// <param name="value">The new value of the status bar.</param>
         public void SetValue(float value)
         {
             this.value = value;
@@ -167,6 +211,12 @@ namespace Vintagestory.API.Client
             ComposeFlashOverlay();
         }
 
+        /// <summary>
+        /// Sets the value for the status bar as well as the minimum and maximum values.
+        /// </summary>
+        /// <param name="value">The new value of the status bar.</param>
+        /// <param name="min">The minimum value of the status bar.</param>
+        /// <param name="max">The maximum value of the status bar.</param>
         public void SetValues(float value, float min, float max)
         {
             this.value = value;
@@ -176,6 +226,11 @@ namespace Vintagestory.API.Client
             ComposeFlashOverlay();
         }
 
+        /// <summary>
+        /// Sets the minimum and maximum values of the status bar.
+        /// </summary>
+        /// <param name="min">The minimum value of the status bar.</param>
+        /// <param name="max">The maximum value of the status bar.</param>
         public void SetMinMax(float min, float max)
         {
             minValue = min;
@@ -187,14 +242,21 @@ namespace Vintagestory.API.Client
         public override void Dispose()
         {
             base.Dispose();
-            valueTexture.Dispose();
+            barTexture.Dispose();
             flashTexture.Dispose();
+            valueTexture.Dispose();
         }
     }
 
     public static partial class GuiComposerHelpers
     {
 
+        /// <summary>
+        /// Adds a stat bar to the current GUI with a minimum of 0 and a maximum of 100.
+        /// </summary>
+        /// <param name="bounds">The bounds of the stat bar.</param>
+        /// <param name="color">The color of the stat bar.</param>
+        /// <param name="key">The internal name of the stat bar.</param>
         public static GuiComposer AddStatbar(this GuiComposer composer, ElementBounds bounds, double[] color, string key = null)
         {
             if (!composer.composed)
@@ -204,6 +266,12 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Adds a stat bar with filling in the opposite direction. Default values are from 0 to 100.
+        /// </summary>
+        /// <param name="bounds">the bounds of the stat bar.</param>
+        /// <param name="color">the color of the stat bar.</param>
+        /// <param name="key">The internal name of the stat bar.</param>
         public static GuiComposer AddInvStatbar(this GuiComposer composer, ElementBounds bounds, double[] color, string key = null)
         {
             if (!composer.composed)
@@ -213,7 +281,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
-
+        /// <summary>
+        /// Gets the stat bar by name.
+        /// </summary>
+        /// <param name="key">The internal name of the stat bar to fetch.</param>
+        /// <returns>The named stat bar.</returns>
         public static GuiElementStatbar GetStatbar(this GuiComposer composer, string key)
         {
             return (GuiElementStatbar)composer.GetElement(key);

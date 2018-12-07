@@ -72,7 +72,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static ElementBounds DialogBackground()
         {
-            return new ElementBounds().WithSizing(ElementSizing.FitToChildren).WithFixedPadding(ElementGeometrics.ElementToDialogPadding);
+            return new ElementBounds().WithSizing(ElementSizing.FitToChildren).WithFixedPadding(GuiStyle.ElementToDialogPadding);
         }
 
         /// <summary>
@@ -140,20 +140,6 @@ namespace Vintagestory.API.Client
                 fixedY = fixedY,
                 fixedWidth = fixedWith,
                 fixedHeight = fixedHeight
-            };
-        }
-
-
-        public static ElementBounds Lever(double x, double y)
-        {
-            return new ElementBounds()
-            {
-                Alignment = EnumDialogArea.None,
-                BothSizing = ElementSizing.Fixed,
-                fixedX = x,
-                fixedY = y,
-                fixedWidth = GuiElementLever.unscaledLeverWidth,
-                fixedHeight = GuiElementLever.unscaledLeverHeight + GuiElementLever.unscaledLampYOffset + 20
             };
         }
 
@@ -240,7 +226,7 @@ namespace Vintagestory.API.Client
                 verticalSizing = ElementSizing.Fixed,
                 horizontalSizing = ElementSizing.Percentual,
                 percentWidth = 1,
-                fixedHeight = (float)ElementGeometrics.TitleBarHeight
+                fixedHeight = (float)GuiStyle.TitleBarHeight
             };
         }
     }

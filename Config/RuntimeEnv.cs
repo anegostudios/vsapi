@@ -36,6 +36,11 @@ namespace Vintagestory.API.Config
         /// If VAO_DEBUG_DISPOSE is set, the initial value set here will be overridden
         /// </summary>
         public static bool DebugVAODispose = false;
+        /// <summary>
+        /// Debug sound memory leaks. No ENV var
+        /// </summary>
+        public static bool DebugSoundDispose = false;
+
 
         public static int MainThreadId;
 
@@ -173,9 +178,16 @@ namespace Vintagestory.API.Config
                 return mostSuitableIp != null ? mostSuitableIp.Address.ToString() : "";
             } catch (Exception)
             {
-                var host = Dns.GetHostEntry(Dns.GetHostName());
-                var ipAddress = host.AddressList.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
-                return ipAddress.ToString();
+                try
+                {
+                    var host = Dns.GetHostEntry(Dns.GetHostName());
+                    var ipAddress = host.AddressList.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
+                    return ipAddress.ToString();
+                } catch (Exception)
+                {
+                    return "Unknown ip";
+                }
+                
             }
             
         }

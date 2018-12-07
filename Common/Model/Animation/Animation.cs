@@ -65,43 +65,62 @@ namespace Vintagestory.API.Common
 
         public uint CodeCrc32;
 
-        public AnimationFrame[] AllFrames;
-        public AnimationKeyFrame[][] PrevNextKeyFrameByFrame;
+        public AnimationFrame[][] PrevNextKeyFrameByFrame;
+
+
         protected HashSet<int> jointsDone = new HashSet<int>();
 
+        public void GenCrc32()
+        {
+            CodeCrc32 = GameMath.Crc32(Code.ToLowerInvariant());
+        }
 
         /// <summary>
         /// Compiles the animation into a bunch of matrices, 31 matrices per frame.
         /// </summary>
-        public void GenerateAllFrames(ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
+        /// <param name="rootElements"></param>
+        /// <param name="jointsById"></param>
+        /// <param name="recursive">When false, will only do root elements</param>
+        public void GenerateAllFrames(ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, bool recursive = true)
         {
-            CodeCrc32 = GameMath.Crc32(Code.ToLowerInvariant());
+            GenCrc32();
+            
+            AnimationFrame[] resolvedKeyFrames = new AnimationFrame[KeyFrames.Length];
 
-            AllFrames = new AnimationFrame[QuantityFrames];
-
-            for (int i = 0; i < AllFrames.Length; i++)
+            for (int i = 0; i < resolvedKeyFrames.Length; i++)
             {
-                AllFrames[i] = new AnimationFrame();
+                resolvedKeyFrames[i] = new AnimationFrame() { FrameNumber = KeyFrames[i].Frame } ;
             }
 
             if (KeyFrames.Length == 0) return;
 
-            for (int i = 0; i < AllFrames.Length; i++)
+            for (int i = 0; i < resolvedKeyFrames.Length; i++)
             {
                 jointsDone.Clear();
-                GenerateFrame(i, rootElements, jointsById, Mat4f.Create(), AllFrames[i].RootElementTransforms);
+                GenerateFrame(i, resolvedKeyFrames, rootElements, jointsById, Mat4f.Create(), resolvedKeyFrames[i].RootElementTransforms, recursive);
             }
 
-            for (int i = 0; i < AllFrames.Length; i++)
+            for (int i = 0; i < resolvedKeyFrames.Length; i++)
             {
-                AllFrames[i].FinalizeMatrices(jointsById);
+                resolvedKeyFrames[i].FinalizeMatrices(jointsById);
+            }
+
+            PrevNextKeyFrameByFrame = new AnimationFrame[QuantityFrames][];
+            for (int i = 0; i < QuantityFrames; i++)
+            {
+                AnimationFrame left, right;
+                getLeftRightResolvedFrame(i, resolvedKeyFrames, out left, out right);
+
+                PrevNextKeyFrameByFrame[i] = new AnimationFrame[] { left, right };
             }
         }
 
 
 
-        protected void GenerateFrame(int frameNumber, ShapeElement[] elements, Dictionary<int, AnimationJoint> jointsById, float[] modelMatrix, List<ElementPose> transforms)
+        protected void GenerateFrame(int indexNumber, AnimationFrame[] resKeyFrames, ShapeElement[] elements, Dictionary<int, AnimationJoint> jointsById, float[] modelMatrix, List<ElementPose> transforms, bool recursive = true)
         {
+            int frameNumber = resKeyFrames[indexNumber].FrameNumber;
+
             for (int i = 0; i < elements.Length; i++)
             {
                 ShapeElement element = elements[i];
@@ -118,18 +137,19 @@ namespace Vintagestory.API.Common
 
                 if (element.JointId > 0 && !jointsDone.Contains(element.JointId))
                 {
-                    AllFrames[frameNumber].SetTransform(element.JointId, animModelMatrix);
+                    resKeyFrames[indexNumber].SetTransform(element.JointId, animModelMatrix);
                     jointsDone.Add(element.JointId);
                 }
 
-                if (element.Children != null)
+                if (recursive && element.Children != null)
                 {
-                    GenerateFrame(frameNumber, element.Children, jointsById, animModelMatrix, animTransform.ChildElementPoses);
+                    GenerateFrame(indexNumber, resKeyFrames, element.Children, jointsById, animModelMatrix, animTransform.ChildElementPoses);
                 }
 
                 
             }
         }
+
 
 
         protected void GenerateFrameForElement(int frameNumber, ShapeElement element, ref ElementPose transform)
@@ -244,6 +264,39 @@ namespace Vintagestory.API.Common
 
                 keyframeIndex++;
             }
+        }
+
+
+
+
+        protected void getLeftRightResolvedFrame(int frameNumber, AnimationFrame[] frames, out AnimationFrame left, out AnimationFrame right)
+        {
+            left = null;
+            right = null;
+
+            // Go left of frameNumber until we hit the first keyframe
+            int keyframeIndex = frames.Length - 1;
+            bool loopAround = false;
+
+            while (keyframeIndex >= -1)
+            {
+                AnimationFrame keyframe = frames[GameMath.Mod(keyframeIndex, frames.Length)];
+                keyframeIndex--;
+
+                if (keyframe.FrameNumber <= frameNumber || loopAround)
+                {
+                    left = keyframe;
+                    break;
+                }
+
+                if (keyframeIndex == -1) loopAround = true;
+            }
+
+
+            keyframeIndex += 2;
+            AnimationFrame nextkeyframe = frames[GameMath.Mod(keyframeIndex, frames.Length)];
+            right = nextkeyframe;
+            return;
         }
     }
 }

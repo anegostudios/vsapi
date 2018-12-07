@@ -10,6 +10,13 @@ namespace Vintagestory.API.Client
         LoadedTexture highlightTexture;
         ElementBounds highlightBounds;
 
+        /// <summary>
+        /// Creates a new text area.
+        /// </summary>
+        /// <param name="capi">The client API</param>
+        /// <param name="bounds">The bounds of the text area.</param>
+        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="font">The font of the text.</param>
         public GuiElementTextArea(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font) : base(capi, font, bounds)
         {
             highlightTexture = new LoadedTexture(capi);
@@ -20,7 +27,7 @@ namespace Vintagestory.API.Client
         
         internal override void TextChanged()
         {
-            Bounds.fixedHeight = Math.Max(minHeight, GetMultilineTextHeight(lines.ToArray(), Bounds.InnerWidth));
+            Bounds.fixedHeight = Math.Max(minHeight, textUtil.GetMultilineTextHeight(Font, string.Join("\n", lines), Bounds.InnerWidth));
             Bounds.CalcWorldBounds();
             base.TextChanged();
         }
@@ -71,6 +78,10 @@ namespace Vintagestory.API.Client
             base.RenderInteractiveElements(deltaTime);
         }
 
+        /// <summary>
+        /// Sets the number of lines in the Text Area.
+        /// </summary>
+        /// <param name="maxlines">The maximum number of lines.</param>
         public void SetMaxLines(int maxlines)
         {
             this.maxlines = maxlines;
@@ -87,6 +98,13 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        /// <summary>
+        /// Adds a text area to the GUI.  
+        /// </summary>
+        /// <param name="bounds">The bounds of the Text Area</param>
+        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="key">The name of the text area.</param>
         public static GuiComposer AddTextArea(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
@@ -102,6 +120,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the text area by name.
+        /// </summary>
+        /// <param name="key">The name of the text area.</param>
+        /// <returns>The named Text Area.</returns>
         public static GuiElementTextArea GetTextArea(this GuiComposer composer, string key)
         {
             return (GuiElementTextArea)composer.GetElement(key);

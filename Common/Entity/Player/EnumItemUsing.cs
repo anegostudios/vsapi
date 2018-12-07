@@ -16,7 +16,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         NotHandled = 0,
         /// <summary>
-        /// Uses the engine default behavior which is to play an attack animation and do block breaking/damage entities if in range,
+        /// Uses the engine default behavior which is to play an attack or build animation and do block breaking/damage entities if in range,
         /// but also notify the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
         /// </summary>
         Handled = 1,

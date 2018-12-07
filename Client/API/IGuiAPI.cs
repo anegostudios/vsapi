@@ -24,12 +24,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// A utility class that does text texture generation for you
         /// </summary>
-        TextUtil Text { get; }
+        TextTextureUtil TextTexture { get; }
 
         /// <summary>
         /// A utlity class that helps you figure out the dimensions of text
         /// </summary>
-        TextSizeProber TextSizeProber { get; }
+        TextDrawUtil TextSizeProber { get; }
 
         /// <summary>
         /// A utility class that contains a bunch of hardcoded icons
@@ -49,10 +49,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="dialogName"></param>
         /// <param name="bounds"></param>
-        /// <param name="doCache"></param>
-        /// <param name="setWindowBounds"></param>
         /// <returns></returns>
-        GuiComposer CreateCompo(string dialogName, ElementBounds bounds, bool doCache = true, bool setWindowBounds = true);
+        GuiComposer CreateCompo(string dialogName, ElementBounds bounds);
 
 
         /// <summary>

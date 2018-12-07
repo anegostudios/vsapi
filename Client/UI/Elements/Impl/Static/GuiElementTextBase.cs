@@ -6,123 +6,90 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementTextBase : GuiElement
     {
+        public TextDrawUtil textUtil;
+
         protected string text;
+
+        /// <summary>
+        /// Whether or not the text path mode is active.
+        /// </summary>
         public bool textPathMode = false;
+
+        /// <summary>
+        /// The font of the Text Element.
+        /// </summary>
         public CairoFont Font;
-        public TextSizeProber Prober;
 
-        public int QuantityTextLines { get; private set; }
+        /// <summary>
+        /// The prober for the text size.
+        /// </summary>
+        ///public TextSizeProber Prober;
 
+        /// <summary>
+        /// Creates a new text based element.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="text">The text of this element.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">The bounds of the element.</param>
         public GuiElementTextBase(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds) : base(capi, bounds)
         {
+            Font = font;
+            textUtil = new TextDrawUtil();
             this.text = text;
-            this.Font = font;
-            Prober = new TextSizeProber();
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             Font.SetupContext(ctx);
-
             Bounds.CalcWorldBounds();
-
             ComposeTextElements(ctx, surface);
         }
 
         public virtual void ComposeTextElements(Context ctx, ImageSurface surface) { }
 
 
-        internal void ShowTextCorrectly(Context ctx, string text, double offsetX = 0, double offsetY = 0)
+        public double GetMultilineTextHeight()
         {
-            if (text == null || text.Length == 0) return;
-
-            PointD point = ctx.CurrentPoint;
-            ctx.MoveTo(offsetX + point.X, offsetY + point.Y + ctx.FontExtents.Ascent);
-
-            if (textPathMode || Font.StrokeWidth > 0)
-            {
-                ctx.TextPath(text);
-                if (!textPathMode)
-                {
-                    ctx.SetSourceRGBA(Font.Color);
-                    ctx.FillPreserve();
-                    ctx.LineWidth = Font.StrokeWidth;
-                    ctx.SetSourceRGBA(Font.StrokeColor);
-                    ctx.Stroke();
-                }
-            } else
-            {
-                ctx.ShowText(text);
-
-                if (Font.RenderTwice) {
-                    ctx.MoveTo(offsetX + point.X, offsetY + point.Y + ctx.FontExtents.Ascent);
-                    ctx.ShowText(text);
-                }
-            }
+            return textUtil.GetMultilineTextHeight(Font, text, Bounds.InnerWidth);
         }
 
-
-
-        //int caretPos = 0;
-        //bool gotLinebreak = false;
-
-
-        internal double GetMultilineTextHeight(string text, double boxWidth, double lineHeightMultiplier = 1f)
+        public double DrawMultilineTextAt(Context ctx, double posX, double posY, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
-            return Prober.GetMultilineTextHeight(Font, text, boxWidth, lineHeightMultiplier);
-        }
-
-        internal double GetMultilineTextHeight(string[] lines, double boxWidth, double lineHeightMultiplier = 1f)
-        {
-            return Prober.GetMultilineTextHeight(Font, lines, boxWidth, lineHeightMultiplier);
-        }
-
-        internal double ShowMultilineText(Context ctx, string text, double posX, double posY, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left, double lineHeightMultiplier = 1f)
-        {
-            if (text == null || text.Length == 0) return 0;
-
             Font.SetupContext(ctx);
 
-            string[] lines = Prober.InsertAutoLineBreaks(ctx, new StringBuilder(text), boxWidth).Split('\n');
+            TextLine[] lines = textUtil.Lineize(Font, text, Bounds.InnerWidth);
 
-            QuantityTextLines = lines.Length;
+            ctx.Save();
+            Matrix m = ctx.Matrix;
+            m.Translate(posX, posY);
+            ctx.Matrix = m;
+            
+            textUtil.DrawMultilineText(ctx, Font, lines, orientation);
+            ctx.Restore();
 
-            return ShowMultilineText(ctx, lines, posX, posY, boxWidth, orientation, lineHeightMultiplier);
+            return lines.Length == 0 ? 0 : (lines[lines.Length - 1].Bounds.Y + lines[lines.Length - 1].Bounds.Height);
         }
 
-        internal double ShowMultilineText(Context ctx, string[] lines, double posX, double posY, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left, double lineHeightMultiplier = 1f)
+
+
+        /// <summary>
+        /// Draws the line of text on a component.
+        /// </summary>
+        /// <param name="ctx">The context of the text</param>
+        /// <param name="text">The text of the text.</param>
+        /// <param name="posX">The X Position of the text.</param>
+        /// <param name="posY">The Y position of the text.</param>
+        /// <param name="textPathMode">The pathing mode.</param>
+        public void DrawTextLineAt(Context ctx, string text, double posX, double posY, bool textPathMode = false)
         {
-            double offsetX = 0;
-            double offsetY = ctx.FontExtents.Height;
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (orientation == EnumTextOrientation.Center)
-                {
-                    offsetX = (boxWidth - ctx.TextExtents(lines[i]).Width) / 2;
-                }
-
-                if (orientation == EnumTextOrientation.Right)
-                {
-                    offsetX = boxWidth - ctx.TextExtents(lines[i]).Width;
-                }
-
-                ctx.MoveTo(posX + offsetX, posY + i * offsetY * lineHeightMultiplier);
-                ShowTextCorrectly(ctx, lines[i]);
-            }
-
-
-            return lines.Length * offsetY * lineHeightMultiplier;
+            textUtil.DrawTextLine(ctx, Font, text, posX, posY, textPathMode);
         }
 
-     
-
-
-        public virtual void SetValue(string text)
-        {
-            this.text = text;
-        }
-
+        /// <summary>
+        /// Gets the text on the element.
+        /// </summary>
+        /// <returns>The text of the element.</returns>
         public virtual string GetText()
         {
             return text;
@@ -130,7 +97,7 @@ namespace Vintagestory.API.Client
 
         internal virtual void setFont(CairoFont font)
         {
-            this.Font = font;
+            Font = font;
         }
 
     }

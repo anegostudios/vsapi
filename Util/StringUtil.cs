@@ -19,5 +19,15 @@ namespace Vintagestory.API.Util
             return text.Substring(0, 1).ToUpperInvariant() + text.Substring(1);
         }
 
+
+        public static int CountChars(this string text, char c)
+        {
+            int cnt = 0;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (text[i] == c) cnt++;
+            }
+            return cnt;
+        }
     }
 }

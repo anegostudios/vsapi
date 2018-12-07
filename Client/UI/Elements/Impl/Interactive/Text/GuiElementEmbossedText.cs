@@ -80,11 +80,11 @@ namespace Vintagestory.API.Client
 
             ctxText.SetSourceRGBA(0, 0, 0, 0.95);
             ctxText.MoveTo(padding + shadowOffset, padding + shadowOffset);
-            ShowTextCorrectly(ctxText, text);
+            DrawTextLineAt(ctxText, text, 0, 0);
 
             ctxText.SetSourceRGBA(255, 255, 255, enabled ? 0.95 : 0.5);
             ctxText.MoveTo(padding + shineOffset, padding + shineOffset);
-            ShowTextCorrectly(ctxText, text);
+            DrawTextLineAt(ctxText, text, 0, 0);
 
 
             surface.Blur(3, 0, 0, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
@@ -100,7 +100,7 @@ namespace Vintagestory.API.Client
             
             Font.SetupContext(ctxText);
             ctxText.MoveTo(padding, padding);
-            ShowTextCorrectly(ctxText, text);
+            DrawTextLineAt(ctxText, text, 0, 0);
 
             generateTexture(surface, ref texture);
             

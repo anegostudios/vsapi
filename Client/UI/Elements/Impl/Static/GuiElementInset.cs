@@ -8,6 +8,13 @@ namespace Vintagestory.API.Client
         int depth;
         float brightness;
 
+        /// <summary>
+        /// Creates a new inset for the GUI.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="bounds">The bounds of the Element.</param>
+        /// <param name="depth">The depth of the element.</param>
+        /// <param name="brightness">The brightness of the inset.</param>
         public GuiElementInset(ICoreClientAPI capi, ElementBounds bounds, int depth, float brightness) : base(capi, bounds)
         {
             this.depth = depth;
@@ -33,6 +40,12 @@ namespace Vintagestory.API.Client
 
     public static class GuiElementInsetHelper
     {
+        /// <summary>
+        /// Adds an inset to the current GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the inset.</param>
+        /// <param name="depth">The depth of the inset.</param>
+        /// <param name="brightness">The brightness of the inset.</param>
         public static GuiComposer AddInset(this GuiComposer composer, ElementBounds bounds, int depth, float brightness = 1f)
         {
             if (!composer.composed)

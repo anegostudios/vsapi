@@ -10,7 +10,7 @@
         /// </summary>
         Off,
         /// <summary>
-        /// Server will: Verify all players connecting against the vintage story auth server, simulate each players movements and correct the position if the client reports the player at a different positions, verify the players picking range when placing or removing blocks
+        /// Server will: Simulate each players movements and correct the position if the client reports the player at a different positions, verify the players picking range when placing or removing blocks
         /// </summary>
         Basic,
         /// <summary>

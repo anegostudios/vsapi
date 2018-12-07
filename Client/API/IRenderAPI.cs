@@ -11,13 +11,10 @@ namespace Vintagestory.API.Client
     public interface IRenderAPI
     {
         /// <summary>
-        /// The currently configured z-far plane
+        /// A number of default shader uniforms
         /// </summary>
-        float Zfar { get; }
-        /// <summary>
-        /// The currently configured z-near plane
-        /// </summary>
-        float ZNear { get; }
+        DefaultShaderUniforms ShaderUniforms { get; }
+        
 
         ModelTransform CameraOffset { get; }
 
@@ -617,10 +614,7 @@ namespace Vintagestory.API.Client
         /// Density of the current fog. Fog is calculated as followed in the shaders: clamp(fogMin + 1 - 1 / exp(gl_FragDepth * fogDensity), 0, 1)
         /// </summary>
         float FogDensity { get; }
-
-        float WaterWaveCounter { get; }
-        float WindWaveCounter { get; }
-
+        
 
         #endregion
     }

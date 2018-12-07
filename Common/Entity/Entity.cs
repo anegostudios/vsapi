@@ -15,10 +15,12 @@ namespace Vintagestory.API.Common.Entities
     /// <summary>
     /// The basic class for all entities in the game
     /// </summary>
-    public abstract class Entity : RegistryObject, IEntity
+    public abstract class Entity : RegistryObject
     {
         public static WaterSplashParticles SplashParticleProps = new WaterSplashParticles();
         public static AirBubbleParticles AirBubbleParticleProps = new AirBubbleParticles();
+
+        #region Entity Fields
 
         /// <summary>
         /// World where the entity is spawned in
@@ -26,40 +28,20 @@ namespace Vintagestory.API.Common.Entities
         public IWorldAccessor World;
 
         public ICoreAPI Api;
-
-        public EntityProperties Properties { private set; get; }
-
-        public EntitySidedProperties SidedProperties
-        {
-            get
-            {
-                if (Properties == null)
-                    return null;
-                if (World.Side.IsClient())
-                    return Properties.Client;
-                return Properties.Server;
-            }
-        }
-
+        
 
         /// <summary>
         /// Server simulated animations. Only takes care of stopping animations once they're done
         /// Set and Called by the Entities ServerSystem
         /// </summary>
-        public ServerEntityAnimator ServerAnimator;
+        public IAnimationManager AnimManager;
 
         /// <summary>
         /// An uptime value running activities.
         /// </summary>
         public Dictionary<string, long> ActivityTimers = new Dictionary<string, long>();
-
-        public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode = new Dictionary<string, AnimationMetaData>();
-
-
-        public bool AnimationsDirty;
         
-        public bool BroadcastServerPos;
-
+        
         /// <summary>
         /// Client position
         /// </summary>
@@ -69,14 +51,6 @@ namespace Vintagestory.API.Common.Entities
         /// Server simulated position. If this value differs to greatly from client pos we have to override client pos
         /// </summary>
         public EntityPos ServerPos = new EntityPos();
-
-        /// <summary>
-        /// ServerPos on server, Pos on client
-        /// </summary>
-        public EntityPos LocalPos
-        {
-            get { return World.Side == EnumAppSide.Server ? ServerPos : Pos; }
-        }
 
         /// <summary>
         /// Server simulated position copy. Needed by Entities system to send pos updatess only if ServerPos differs noticably from PreviousServerPos
@@ -90,26 +64,19 @@ namespace Vintagestory.API.Common.Entities
 
         public long InChunkIndex3d;
 
-        EntityPos IEntity.Pos
-        {
-            get { return Pos; }
-        }
-
-        EntityPos IEntity.ServerPos
-        {
-            get { return ServerPos; }
-        }
-
+        /// <summary>
+        /// The entities collision box. Offseted by the animation system when necessary
+        /// </summary>
         public Cuboidf CollisionBox;
 
-        Cuboidf IEntity.CollisionBox
-        {
-            get { return CollisionBox; }
-        }
+        /// <summary>
+        /// The entities collision box. Not Offseted.
+        /// </summary>
+        public Cuboidf OriginCollisionBox;
 
-        public bool Teleporting;
 
-        public virtual double EyeHeight { get { return Properties.EyeHeight; } }
+        public bool Teleporting; // Used by the teleporter block
+        public bool IsTeleport; // Used by the server to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
 
 
         /// <summary>
@@ -117,40 +84,12 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public long EntityId;
 
-        long IEntity.EntityId
-        {
-            get { return EntityId; }
-        }
+        //AssetLocation Entity.Code => Code;
 
-        AssetLocation IEntity.Code => Code;
-
+        /// <summary>
+        /// The range in blocks the entity has to be to a client to do physics and AI. When outside range, then <seealso cref="State"/> will be set to inactive
+        /// </summary>
         public int SimulationRange;
-
-        /// <summary>
-        /// Permanently stored entity attributes that are sent to client everytime they have been changed
-        /// </summary>
-        public SyncedTreeAttribute WatchedAttributes = new SyncedTreeAttribute();
-
-        /// <summary>
-        /// If entity debug mode is on, this info will be transitted to client and displayed above the entities head
-        /// </summary>
-        public SyncedTreeAttribute DebugAttributes = new SyncedTreeAttribute();
-
-        /// <summary>
-        /// Permanently stored entity attributes that are only client or only server side
-        /// </summary>
-        public SyncedTreeAttribute Attributes = new SyncedTreeAttribute();
-
-        ITreeAttribute IEntity.WatchedAttributes
-        {
-            get { return WatchedAttributes; }
-        }
-
-        ITreeAttribute IEntity.Attributes
-        {
-            get { return Attributes; }
-        }
-
 
         /// <summary>
         /// The face the entity is climbing on. Null if the entity is not climbing
@@ -182,10 +121,128 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public bool CollidedHorizontally;
 
+        // Stored in WatchedAttributes in from/tobytes 
+        public EnumEntityState State;
+
+        public EntityDespawnReason DespawnReason;
+
+        /// <summary>
+        /// Permanently stored entity attributes that are sent to client everytime they have been changed
+        /// </summary>
+        public SyncedTreeAttribute WatchedAttributes = new SyncedTreeAttribute();
+
+        /// <summary>
+        /// If entity debug mode is on, this info will be transitted to client and displayed above the entities head
+        /// </summary>
+        public SyncedTreeAttribute DebugAttributes = new SyncedTreeAttribute();
+
+        /// <summary>
+        /// Permanently stored entity attributes that are only client or only server side
+        /// </summary>
+        public SyncedTreeAttribute Attributes = new SyncedTreeAttribute();
+
+
+        /// <summary>
+        /// Set by the client renderer when the entity was rendered last frame
+        /// </summary>
+        public bool IsRendered;
+
+        /// <summary>
+        /// Set by the client renderer when the entity shadow was rendered last frame
+        /// </summary>
+        public bool IsShadowRendered;
+
+        /// <summary>
+        /// Color used when the entity is being attacked
+        /// </summary>
+        protected int HurtColor = ColorUtil.ToRgba(255, 255, 100, 100);
+
+        #endregion
+
+        #region Properties
+
+        /*IWorldAccessor Entity.World
+        {
+            get { return World; }
+        }*/
+
+        public EntityProperties Properties { private set; get; }
+
+        public EntitySidedProperties SidedProperties
+        {
+            get
+            {
+                if (Properties == null) return null;
+                if (World.Side.IsClient()) return Properties.Client;
+
+                return Properties.Server;
+            }
+        }
+
+        /// <summary>
+        /// Should return true when this entity should be interactable by a player or other entities
+        /// </summary>
+        public virtual bool IsInteractable
+        {
+            get { return true; }
+        }
+
+
+        /// <summary>
+        /// Used for passive physics simulation, together with the MaterialDensity to check how deep in the water the entity should float
+        /// </summary>
+        public virtual double SwimmingOffsetY
+        {
+            get { return CollisionBox.Y1 + CollisionBox.Y2 / 2; }
+        }
+
+
         /// <summary>
         /// CollidedVertically || CollidedHorizontally
         /// </summary>
         public bool Collided { get { return CollidedVertically || CollidedHorizontally; } }
+
+        /// <summary>
+        /// ServerPos on server, Pos on client
+        /// </summary>
+        public EntityPos LocalPos
+        {
+            get { return World.Side == EnumAppSide.Server ? ServerPos : Pos; }
+        }
+
+        /*EntityPos Entity.Pos
+        {
+            get { return Pos; }
+        }
+
+        EntityPos Entity.ServerPos
+        {
+            get { return ServerPos; }
+        }
+
+        Cuboidf Entity.CollisionBox
+        {
+            get { return CollisionBox; }
+        }*/
+
+        public virtual double EyeHeight { get { return Properties.EyeHeight; } }
+
+        /*long Entity.EntityId
+        {
+            get { return EntityId; }
+        }
+
+        ITreeAttribute Entity.WatchedAttributes
+        {
+            get { return WatchedAttributes; }
+        }
+
+        ITreeAttribute Entity.Attributes
+        {
+            get { return Attributes; }
+        }
+        */
+
 
         /// <summary>
         /// If gravity should applied to this entity
@@ -212,22 +269,6 @@ namespace Vintagestory.API.Common.Entities
             get { return null; }
         }
 
-        
-
-        // Stored in WatchedAttributes in from/tobytes 
-        public EnumEntityState State;
-
-        public EntityDespawnReason DespawnReason;
-
-        /// <summary>
-        /// True if the entity is in state active or inactive
-        /// </summary>
-        public virtual bool Alive
-        {
-            get { return WatchedAttributes.GetInt("entityDead", 0) == 0; }
-            set { WatchedAttributes.SetInt("entityDead", value ? 0 : 1); }
-        }
-
         /// <summary>
         /// just a !Alive currently
         /// </summary>
@@ -236,10 +277,10 @@ namespace Vintagestory.API.Common.Entities
             get { return !Alive; }
         }
 
-        EnumEntityState IEntity.State
+        /*EnumEntityState Entity.State
         {
             get { return State; }
-        }
+        }*/
 
         /// <summary>
         /// Players and whatever the player rides on will be stored seperatly
@@ -251,19 +292,14 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual bool AlwaysActive { get { return false; } }
 
-
-
         /// <summary>
-        /// Set by the client renderer when the entity was rendered last frame
+        /// True if the entity is in state active or inactive
         /// </summary>
-        public bool IsRendered;
-
-        public bool IsShadowRendered;
-
-        /// <summary>
-        /// Color used when the entity is being attacked
-        /// </summary>
-        protected int HurtColor = ColorUtil.ToRgba(255, 255, 100, 100);
+        public virtual bool Alive
+        {
+            get { return WatchedAttributes.GetInt("entityDead", 0) == 0; }
+            set { WatchedAttributes.SetInt("entityDead", value ? 0 : 1); }
+        }
 
         /// <summary>
         /// Used by some renderers to apply an overal color tint on the entity
@@ -273,86 +309,13 @@ namespace Vintagestory.API.Common.Entities
             get
             {
                 int val = RemainingActivityTime("invulnerable");
-                
+
                 return val > 0 ? ColorUtil.ColorOverlay(HurtColor, ColorUtil.WhiteArgb, 1f - val / 500f) : ColorUtil.WhiteArgb;
             }
         }
 
-        /// <summary>
-        /// Called when something tries to given an itemstack to this entity
-        /// </summary>
-        /// <param name="itemstack"></param>
-        /// <returns></returns>
-        public virtual bool TryGiveItemStack(ItemStack itemstack)
-        {
-            return false;
-        }
-
-        public virtual void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
-        {
-            if (EntityId != (World as IClientWorldAccessor).Player.Entity.EntityId)
-            {
-                ActiveAnimationsByAnimCode.Clear();
-            }
-
-            for (int i = 0; i < activeAnimationsCount; i++)
-            {
-                int crc32 = activeAnimations[i];
-                for (int j = 0; j < Properties.Client.LoadedShape.Animations.Length; j++)
-                {
-                    Animation anim = Properties.Client.LoadedShape.Animations[j];
-                    int mask = ~(1 << 31); // Because I fail to get the sign bit transmitted correctly over the network T_T
-                    if ((anim.CodeCrc32 & mask) == (crc32 & mask))
-                    {
-                        if (ActiveAnimationsByAnimCode.ContainsKey(anim.Code)) break;
-
-                        string code = anim.Code == null ? anim.Name.ToLowerInvariant() : anim.Code;
-
-                        AnimationMetaData animmeta = null;
-                        Properties.Client.AnimationsByMetaCode.TryGetValue(code, out animmeta);
-
-                        if (animmeta == null)
-                        {
-                            animmeta = new AnimationMetaData()
-                            {
-                                Code = code,
-                                Animation = code,
-                                CodeCrc32 = anim.CodeCrc32
-                            };
-                        }
-
-                        animmeta.AnimationSpeed = activeAnimationSpeeds[i];
-
-                        ActiveAnimationsByAnimCode[anim.Code] = animmeta;
-                    }
-                }
-            }
-
-
-        }
-
-        /// <summary>
-        /// Should return true when this entity should be interactable by a player or other entities
-        /// </summary>
-        public virtual bool IsInteractable
-        {
-            get { return true; }
-        }
-
-
-        /// <summary>
-        /// Used for passive physics simulation, together with the MaterialDensity to check how deep in the water the entity should float
-        /// </summary>
-        public virtual double SwimmingOffsetY
-        {
-            get { return CollisionBox.Y1 + CollisionBox.Y2 / 2; }
-        }
-
-
-        IWorldAccessor IEntity.World
-        {
-            get { return World; }
-        }
+        #endregion
+        
 
         /// <summary>
         /// Creates a new instance of an entity
@@ -360,6 +323,7 @@ namespace Vintagestory.API.Common.Entities
         public Entity()
         {
             SimulationRange = GlobalConstants.DefaultTrackingRange;
+            AnimManager = new AnimationManager();
 
             WatchedAttributes.SetAttribute("animations", new TreeAttribute());
         }
@@ -373,15 +337,6 @@ namespace Vintagestory.API.Common.Entities
 
         }
 
-        /// <summary>
-        /// Extra check if an ai task should be started
-        /// </summary>
-        /// <param name="task"></param>
-        /// <returns></returns>
-        public virtual bool ShouldExecuteTask(IAiTask task)
-        {
-            return true;
-        }
 
         /// <summary>
         /// Called when this entity got created or loaded
@@ -413,9 +368,27 @@ namespace Vintagestory.API.Common.Entities
                 }
             });
 
+            WatchedAttributes.RegisterModifiedListener("entityDead", () =>
+            {
+                if (Alive || Properties.DeadHitBoxSize == null)
+                {
+                    SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
+                } else
+                {
+                    SetHitbox(Properties.DeadHitBoxSize.X, Properties.DeadHitBoxSize.Y);
+                }
+            });
+
             if (Properties.HitBoxSize != null)
             {
-                SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
+                if (Alive || Properties.DeadHitBoxSize == null)
+                {
+                    SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
+                }
+                else
+                {
+                    SetHitbox(Properties.DeadHitBoxSize.X, Properties.DeadHitBoxSize.Y);
+                }
             }
 
             if (AlwaysActive || api.Side == EnumAppSide.Client)
@@ -444,35 +417,32 @@ namespace Vintagestory.API.Common.Entities
                 if (properties.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
                 {
                     WatchedAttributes.SetInt("textureIndex", World.Rand.Next(properties.Client.FirstTexture.Alternates.Length + 1));
-                }
-
-                loadServerAnimator();
+                }                
             }
 
             this.Properties.Initialize(this, api);
-        }
 
-        /// <summary>
-        /// Loads the server side lightweight animator (does not calcuate any transformation matrices). This one is used for correct syncing of animations.
-        /// </summary>
-        protected virtual void loadServerAnimator()
-        {
-            if (Properties.Client?.Shape?.Base != null)
+            AnimManager = AnimationCache.InitManager(api, AnimManager, this, Properties.Client.LoadedShape);
+            
+            if (this is EntityPlayer)
             {
-                Shape shape = World.AssetManager.Get(Properties.Client.Shape.Base.Clone().WithPathPrefix("shapes/").WithPathAppendix(".json")).ToObject<Shape>();
-                if (shape.Animations == null) return;
-
-                for (int i = 0; i < shape.Animations.Length; i++)
-                {
-                    if (shape.Animations[i].Code == null)
-                    {
-                        shape.Animations[i].Code = shape.Animations[i].Name.ToLowerInvariant().Replace(" ", "");
-                    }
-                }
-
-                ServerAnimator = new ServerEntityAnimator(this, shape.Animations);
+                AnimManager.HeadController = new PlayerHeadController(AnimManager, this as EntityPlayer, Properties.Client.LoadedShape);
             }
         }
+
+
+        /// <summary>
+        /// Called when something tries to given an itemstack to this entity
+        /// </summary>
+        /// <param name="itemstack"></param>
+        /// <returns></returns>
+        public virtual bool TryGiveItemStack(ItemStack itemstack)
+        {
+            return false;
+        }
+
+
+
 
         /// <summary>
         /// Is called before the entity is killed, should return what items this entity should drop. Return null or empty array for no drops.
@@ -518,19 +488,20 @@ namespace Vintagestory.API.Common.Entities
         public virtual void TeleportToDouble(double x, double y, double z)
         {
             Teleporting = true;
+
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
                 sapi.World.LoadChunkColumn((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, () =>
                 {
+                    IsTeleport = true;
                     Pos.SetPos(x, y, z);
                     ServerPos.SetPos(x, y, z);
-                    PreviousServerPos.SetPos(-99, -99, -99);
                     PositionBeforeFalling.Set(x, y, z);
                     Pos.Motion.Set(0, 0, 0);
                     Teleporting = false;
                 });
-
+                
             }
         }
 
@@ -579,6 +550,8 @@ namespace Vintagestory.API.Common.Entities
             TeleportToDouble(position.X, position.Y, position.Z);
         }
 
+
+
         /// <summary>
         /// Called when the entity should be receiving damage from given source
         /// </summary>
@@ -593,7 +566,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     WatchedAttributes.SetInt("onHurtCounter", WatchedAttributes.GetInt("onHurtCounter") + 1);
                     WatchedAttributes.SetFloat("onHurt", damage); // Causes the client to be notified
-                    StartAnimation("hurt");
+                    AnimManager.StartAnimation("hurt");
                 }
 
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)
@@ -615,6 +588,7 @@ namespace Vintagestory.API.Common.Entities
             return false;
         }
 
+
         /// <summary>
         /// Should return true if the entity can get damaged by given damageSource. Is called by ReceiveDamage.
         /// </summary>
@@ -626,6 +600,25 @@ namespace Vintagestory.API.Common.Entities
             return true;
         }
 
+        /// <summary>
+        /// Called every 1/75 second
+        /// </summary>
+        /// <param name="dt"></param>
+        public virtual void OnGameTick(float dt)
+        {
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnGameTick(dt);
+            }
+
+            if (World is IClientWorldAccessor && World.Rand.NextDouble() < Properties.IdleSoundChance / 100.0 && Alive)
+            {
+                PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
+            }
+        }
+
+
+        #region Events
 
         /// <summary>
         /// Called when the entity collided vertically
@@ -638,6 +631,7 @@ namespace Vintagestory.API.Common.Entities
                 behavior.OnFallToGround(PositionBeforeFalling, motionY);
             }
         }
+
 
         /// <summary>
         /// Called when the entity got in touch with a liquid
@@ -658,7 +652,7 @@ namespace Vintagestory.API.Common.Entities
 
             Block block = World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - CollisionBox.Y1), (int)pos.Z);
 
-            string[] soundsBySize = new string[]{ "sounds/environment/smallsplash", "sounds/environment/mediumsplash", "sounds/environment/largesplash" };
+            string[] soundsBySize = new string[] { "sounds/environment/smallsplash", "sounds/environment/mediumsplash", "sounds/environment/largesplash" };
             string sound = soundsBySize[(int)GameMath.Clamp(splashStrength / 1.6, 0, 2)];
 
             splashStrength = Math.Min(10, splashStrength);
@@ -675,38 +669,12 @@ namespace Vintagestory.API.Common.Entities
 
                 SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
                 SplashParticleProps.QuantityMul = (float)splashStrength - 1;
-                
+
                 World.SpawnParticles(SplashParticleProps);
 
                 /*AirBubbleParticleProps.BasePos.Set(pos.X, pos.Y - 0.75f, pos.Z);
                 AirBubbleParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
                 World.SpawnParticles(AirBubbleParticleProps);*/
-            }
-            
-        }
-
-        /// <summary>
-        /// Called when the entity has left a liquid
-        /// </summary>
-        public virtual void OnExitedLiquid()
-        {
-
-        }
-
-        /// <summary>
-        /// Called every 1/75 second
-        /// </summary>
-        /// <param name="dt"></param>
-        public virtual void OnGameTick(float dt)
-        {
-            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
-            {
-                behavior.OnGameTick(dt);
-            }
-
-            if (World is IClientWorldAccessor && World.Rand.NextDouble() < Properties.IdleSoundChance / 100.0)
-            {
-                PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
             }
         }
 
@@ -722,6 +690,29 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
+        /// Called when the entity despawns
+        /// </summary>
+        /// <param name="despawn"></param>
+        public virtual void OnEntityDespawn(EntityDespawnReason despawn)
+        {
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnEntityDespawn(despawn);
+            }
+
+            AnimManager.Dispose();
+        }
+
+
+        /// <summary>
+        /// Called when the entity has left a liquid
+        /// </summary>
+        public virtual void OnExitedLiquid()
+        {
+
+        }
+
+        /// <summary>
         /// Called when an entity has interacted with this entity
         /// </summary>
         /// <param name="byEntity"></param>
@@ -733,32 +724,18 @@ namespace Vintagestory.API.Common.Entities
             
         }
 
-
-
-
-        /// <summary>
-        /// Called when the entity despawns
-        /// </summary>
-        /// <param name="despawn"></param>
-        public virtual void OnEntityDespawn(EntityDespawnReason despawn)
-        {
-            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
-            {
-                behavior.OnEntityDespawn(despawn);
-            }
-
-        }
+        
 
         /// <summary>
         /// Called by client when a new server pos arrived
         /// </summary>
-        public void OnReceivedServerPos()
+        public void OnReceivedServerPos(bool isTeleport)
         {
             EnumHandling handled = EnumHandling.NotHandled;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
-                behavior.OnReceivedServerPos(ref handled);
+                behavior.OnReceivedServerPos(isTeleport, ref handled);
                 if (handled == EnumHandling.PreventSubsequent) break;
             }
 
@@ -768,6 +745,64 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        /// <summary>
+        /// Called when on the client side something called capi.Network.SendEntityPacket()
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="packetid"></param>
+        /// <param name="data"></param>
+        public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
+        {
+        }
+
+        /// <summary>
+        /// Called when on the server side something called sapi.Network.SendEntityPacket()
+        /// </summary>
+        /// <param name="packetid"></param>
+        /// <param name="data"></param>
+        public virtual void OnReceivedServerPacket(int packetid, byte[] data)
+        {
+            // Teleport packet
+            if (packetid == 1)
+            {
+                Vec3d newPos = SerializerUtil.Deserialize<Vec3d>(data);
+                this.Pos.SetPos(newPos);
+                this.ServerPos.SetPos(newPos);
+                this.World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);
+            }
+        }
+
+        public virtual void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
+        {
+            AnimManager.OnReceivedServerAnimations(activeAnimations, activeAnimationsCount, activeAnimationSpeeds);
+        }
+
+        /// <summary>
+        /// Called by BehaviorCollectEntities of nearby entities. Should return the itemstack that should be collected. If the item stack was fully picked up, BehaviorCollectEntities will kill this entity
+        /// </summary>
+        /// <param name="byEntity"></param>
+        /// <returns></returns>
+        public virtual ItemStack OnCollected(Entity byEntity)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Called on the server when the entity was changed from active to inactive state or vice versa
+        /// </summary>
+        /// <param name="beforeState"></param>
+        public virtual void OnStateChanged(EnumEntityState beforeState)
+        {
+            EnumHandling handled = EnumHandling.NotHandled;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnStateChanged(beforeState, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+        }
+
+        #endregion
 
 
         /// <summary>
@@ -785,6 +820,7 @@ namespace Vintagestory.API.Common.Entities
                 Z2 = length/2,
                 Y2 = height
             };
+            OriginCollisionBox = CollisionBox.Clone();
         }
 
         /// <summary>
@@ -834,7 +870,6 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Returns the first behavior instance for given entity of given type. Returns null if it doesn't exist.
         /// </summary>
-        /// <param name="name"></param>
         /// <returns></returns>
         public virtual T GetBehavior<T>() where T : EntityBehavior
         {
@@ -876,78 +911,6 @@ namespace Vintagestory.API.Common.Entities
             ActivityTimers[key] = World.ElapsedMilliseconds + milliseconds;
         }
 
-        /// <summary>
-        /// Client: Starts given animation
-        /// Server: Sends all active anims to all connected clients then purges the ActiveAnimationsByAnimCode list
-        /// </summary>
-        /// <param name="animdata"></param>
-        public virtual void StartAnimation(AnimationMetaData animdata)
-        {
-            AnimationMetaData activeAnimdata = null;
-
-            // Already active, won't do anything
-            if (ActiveAnimationsByAnimCode.TryGetValue(animdata.Animation, out activeAnimdata) && activeAnimdata == animdata) return;
-
-            if (animdata.Code == null)
-            {
-                throw new Exception("anim meta data code cannot be null!");
-            }
-
-            AnimationsDirty = true;
-            ActiveAnimationsByAnimCode[animdata.Animation] = animdata;
-            SetDebugAnimsInfo();
-        }
-
-
-        /// <summary>
-        /// Start a new animation defined in the entity config file. If it's not defined, it won't play.
-        /// Use StartAnimation(AnimationMetaData animdata) to circumvent the entity config anim data.
-        /// </summary>
-        /// <param name="configCode">Anim config code, not the animation code!</param>
-        public virtual void StartAnimation(string configCode)
-        {
-            if (configCode == null) return;
-
-            AnimationMetaData animdata = null;
-
-            if (Properties.Client.AnimationsByMetaCode.TryGetValue(configCode, out animdata))
-            {
-                StartAnimation(animdata);
-                
-                return;
-            } else
-            {
-                //Console.WriteLine("anim not found " + configCode);
-            }
-        }
-
-        /// <summary>
-        /// Stops given animation
-        /// </summary>
-        /// <param name="code"></param>
-        public virtual void StopAnimation(string code)
-        {
-            if (code == null) return;
-
-            if (World.Side == EnumAppSide.Server)
-            {
-                AnimationsDirty = true;
-            }
-            
-            if (!ActiveAnimationsByAnimCode.Remove(code) && ActiveAnimationsByAnimCode.Count > 0)
-            {
-                foreach (var val in ActiveAnimationsByAnimCode)
-                {
-                    if (val.Value.Code == code)
-                    {
-                        ActiveAnimationsByAnimCode.Remove(val.Key);
-                        break;
-                    }
-                }
-            }
-
-            SetDebugAnimsInfo();
-        }
 
         /// <summary>
         /// Updates the DebugAttributes tree
@@ -960,7 +923,7 @@ namespace Vintagestory.API.Common.Entities
             
             string anims = "";
             int i = 0;
-            foreach (string anim in ActiveAnimationsByAnimCode.Keys)
+            foreach (string anim in AnimManager.ActiveAnimationsByAnimCode.Keys)
             {
                 if (i++ > 0) anims += ",";
                 anims += anim;
@@ -1003,15 +966,9 @@ namespace Vintagestory.API.Common.Entities
                 Attributes.ToBytes(writer);
             }
 
-            writer.Write(ActiveAnimationsByAnimCode.Count);
-            foreach (var val in ActiveAnimationsByAnimCode)
-            {
-                if (val.Value == null) continue;
-
-                writer.Write(val.Key);
-                if (val.Value.Code == null) val.Value.Code = val.Key; // ah wtf.
-                val.Value.ToBytes(writer);
-            }
+            TreeAttribute tree = new TreeAttribute();
+            AnimManager?.ToAttributes(tree);
+            tree.ToBytes(writer);
         }
 
 
@@ -1059,59 +1016,24 @@ namespace Vintagestory.API.Common.Entities
                 Attributes.FromBytes(reader);
             }
 
-            int count = reader.ReadInt32();
-            for (int i = 0; i < count; i++)
+            // In 1.8 animation data format was changed to use a TreeAttribute. 
+            if (fromServer || GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1"))
             {
-                string code = reader.ReadString();
-
-                if (GameVersion.IsAtLeastVersion(version, "1.4.9"))
-                {
-                    ActiveAnimationsByAnimCode[code] = AnimationMetaData.FromBytes(reader);
-
-                    if (ActiveAnimationsByAnimCode[code] == null)
-                    {
-                        throw new Exception("anim meta data code cannot be null!");
-                    }
-                }
-                else if (GameVersion.IsAtLeastVersion(version, "1.3.8"))
-                {
-                    ActiveAnimationsByAnimCode[code] = new AnimationMetaData() { Animation = code, AnimationSpeed = reader.ReadSingle() };
-                }
-                else
-                {
-                    ActiveAnimationsByAnimCode[code] = new AnimationMetaData() { Animation = code, AnimationSpeed = 1f };
-                }
-            }
-        }
-
-
-        /// <summary>
-        /// Called when on the client side something called capi.Network.SendEntityPacket()
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="packetid"></param>
-        /// <param name="data"></param>
-        public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
-        {
-        }
-
-        /// <summary>
-        /// Called when on the server side something called sapi.Network.SendEntityPacket()
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="packetid"></param>
-        /// <param name="data"></param>
-        public virtual void OnReceivedServerPacket(int packetid, byte[] data)
-        {
-            // Teleport packet
-            if (packetid == 1)
+                TreeAttribute animTree = new TreeAttribute();
+                animTree.FromBytes(reader);
+                AnimManager?.FromAttributes(animTree);
+            } else
             {
-                Vec3d newPos = SerializerUtil.Deserialize<Vec3d>(data);
-                this.Pos.SetPos(newPos);
-                this.ServerPos.SetPos(newPos);
-                this.World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);
+                // Should not be too bad to just ditch pre 1.8 animations
+                // as the entity ai systems start new ones eventually anyway
             }
+
+
+            // Any new data loading added here should not be loaded if below version 1.8 or 
+            // you might get corrupt data from old binary animation data
         }
+
+
 
 
 
@@ -1133,7 +1055,13 @@ namespace Vintagestory.API.Common.Entities
                     }
                 }
 
-                StartAnimation("die");
+                AnimManager.ActiveAnimationsByAnimCode.Clear();
+                AnimManager.StartAnimation("die");
+
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                {
+                    behavior.OnEntityDeath(damageSourceForDeath);
+                }
             }
 
             DespawnReason = new EntityDespawnReason() {
@@ -1176,30 +1104,7 @@ namespace Vintagestory.API.Common.Entities
             return false;
         }
 
-        /// <summary>
-        /// Called by BehaviorCollectEntities of nearby entities. Should return the itemstack that should be collected. If the item stack was fully picked up, BehaviorCollectEntities will kill this entity
-        /// </summary>
-        /// <param name="byEntity"></param>
-        /// <returns></returns>
-        public virtual ItemStack OnCollected(Entity byEntity)
-        {
-            return null;
-        }
 
-        /// <summary>
-        /// Called on the server when the entity was changed from active to inactive state or vice versa
-        /// </summary>
-        /// <param name="beforeState"></param>
-        public virtual void OnStateChanged(EnumEntityState beforeState)
-        {
-            EnumHandling handled = EnumHandling.NotHandled;
-
-            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
-            {
-                behavior.OnStateChanged(beforeState, ref handled);
-                if (handled == EnumHandling.PreventSubsequent) return;
-            }
-        }
 
         /// <summary>
         /// This method pings the Notify() method of all behaviors and ai tasks. Can be used to spread information to other creatures.
@@ -1272,8 +1177,14 @@ namespace Vintagestory.API.Common.Entities
 
         public virtual string GetName()
         {
+            if (!Alive)
+            {
+                return Lang.Get(Code.Domain + ":item-dead-creature-" + Code.Path);
+            }
+
             return Lang.Get(Code.Domain + ":item-creature-" + Code.Path);
         }
+
 
         public virtual string GetInfoText()
         {
@@ -1292,6 +1203,17 @@ namespace Vintagestory.API.Common.Entities
 
 
             return infotext.ToString();
+        }
+
+
+        public virtual void StartAnimation(string code)
+        {
+            AnimManager.StartAnimation(code);
+        }
+
+        public virtual void StopAnimation(string code)
+        {
+            AnimManager.StopAnimation(code);
         }
 
     }

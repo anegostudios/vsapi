@@ -13,12 +13,23 @@ namespace Vintagestory.API.Client
 
         protected int refocusStage = 0;
 
+        /// <summary>
+        /// Adds a text input to the GUI
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="bounds">The bounds of the text input.</param>
+        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="font">The font of the text.</param>
         public GuiElementTextInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string>OnTextChanged, CairoFont font) : base(capi, font, bounds)
         {
+            MouseOverCursor = "textselect";
             this.OnTextChanged = OnTextChanged;
             highlightTexture = new LoadedTexture(capi);
         }
 
+        /// <summary>
+        /// Tells the text component to hide the characters in the text.
+        /// </summary>
         public void HideCharacters()
         {
             hideCharacters = true;
@@ -102,6 +113,14 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+
+        /// <summary>
+        /// Adds a text input to the current GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the text input.</param>
+        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="key">The name of this text component.</param>
         public static GuiComposer AddTextInput(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
@@ -117,6 +136,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the text input by input name.
+        /// </summary>
+        /// <param name="key">The name of the text input to get.</param>
+        /// <returns>The named text input</returns>
         public static GuiElementTextInput GetTextInput(this GuiComposer composer, string key)
         {
             return (GuiElementTextInput)composer.GetElement(key);

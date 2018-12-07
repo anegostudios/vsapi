@@ -102,7 +102,11 @@ namespace Vintagestory.API.Client
         {
             double embossHeight = scaled(3);
 
-            if (buttonStyle == EnumButtonStyle.Normal) embossHeight = scaled(2);
+            if (buttonStyle == EnumButtonStyle.Normal)
+            {
+                embossHeight = scaled(2);
+            }
+
 
             Bounds.CalcWorldBounds();
             normalText.AutoBoxSize(true);
@@ -223,11 +227,11 @@ namespace Vintagestory.API.Client
         {
             if (enabled && currentlyMouseDownOnElement && Bounds.PointInside(args.X, args.Y) && args.Button == EnumMouseButton.Left)
             {
-                args.Handled = onClick();
-                if (args.Handled && PlaySound)
+                if (PlaySound)
                 {
                     api.Gui.PlaySound("menubutton_press");
                 }
+                args.Handled = onClick();
             }
 
             currentlyMouseDownOnElement = false;
@@ -267,7 +271,7 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                CairoFont hoverFont = buttonFont.Clone().WithColor(ElementGeometrics.LightBrownHoverTextColor);
+                CairoFont hoverFont = buttonFont.Clone().WithColor(GuiStyle.LightBrownHoverTextColor);
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, buttonFont, hoverFont, onClick, bounds, style);
                 elem.SetOrientation(orientation);
                 composer.AddInteractiveElement(elem, key);
@@ -312,12 +316,12 @@ namespace Vintagestory.API.Client
             {
                 CairoFont font1 = CairoFont.ButtonText();
                 CairoFont font2 = CairoFont.ButtonPressedText();
-                font1.Fontname = ElementGeometrics.StandardBoldFontName;
-                font2.Fontname = ElementGeometrics.StandardBoldFontName;
+                font1.Fontname = GuiStyle.StandardBoldFontName;
+                font2.Fontname = GuiStyle.StandardBoldFontName;
                 font1.FontWeight = FontWeight.Bold;
                 font2.FontWeight = FontWeight.Bold;
-                font1.UnscaledFontsize = ElementGeometrics.SmallFontSize;
-                font2.UnscaledFontsize = ElementGeometrics.SmallFontSize;
+                font1.UnscaledFontsize = GuiStyle.SmallFontSize;
+                font2.UnscaledFontsize = GuiStyle.SmallFontSize;
 
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, font1, font2, onClick, bounds, style);
                 elem.SetOrientation(orientation);

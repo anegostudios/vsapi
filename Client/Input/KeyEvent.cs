@@ -35,6 +35,11 @@ namespace Vintagestory.API.Client
         public bool CtrlPressed { get; set; }
 
         /// <summary>
+        /// Is mac os command key being held down?
+        /// </summary>
+        public bool CommandPressed { get; set; }
+
+        /// <summary>
         /// Is Shift being held down?
         /// </summary>
         public bool ShiftPressed { get; set; }

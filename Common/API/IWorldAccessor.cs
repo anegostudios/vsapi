@@ -37,6 +37,11 @@ namespace Vintagestory.API.Common
         long[] LoadedChunkIndices { get; }
 
         /// <summary>
+        /// Returns a list all loaded chunk positions in the form of a long index
+        /// </summary>
+        long[] LoadedMapChunkIndices { get; }
+
+        /// <summary>
         /// The currently configured block light brightness levels
         /// </summary>
         float[] BlockLightLevels { get; }
@@ -324,7 +329,7 @@ namespace Vintagestory.API.Common
         /// <param name="randomizePitch"></param>
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
-        void PlaySoundAt(AssetLocation location, IEntity atEntity, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+        void PlaySoundAt(AssetLocation location, Entity atEntity, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound at given player position.
@@ -507,17 +512,17 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="accessFlag"></param>
         /// <returns></returns>
-        bool CanPlayerAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
+        EnumWorldAccessResponse TestAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
 
 
         /// <summary>
-        /// Same as CanPlayerAccessBlock() but also sends an error message to the player and executes a MarkDirty() event the block. Returns always true when called on the client!
+        /// Same as <see cref="TestAccessBlock(IPlayer, BlockPos, EnumBlockAccessFlags)"/> but also sends an error message to the player and executes a MarkDirty() event the block. Returns always true when called on the client!
         /// </summary>
         /// <param name="player"></param>
         /// <param name="pos"></param>
         /// <param name="accessFlag"></param>
         /// <returns></returns>
-        bool TestPlayerAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
+        bool TryAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
 
 
 

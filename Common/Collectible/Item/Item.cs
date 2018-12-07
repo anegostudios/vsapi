@@ -77,41 +77,6 @@ namespace Vintagestory.API.Common
             return tex == null ? 0 : capi.ItemTextureAtlas.GetRandomPixel(tex.TextureSubId);
         }
 
-
-
-        /// <summary>
-        /// Fills in placeholders in the composite texture (called by the VSGameContent mod during item loading)
-        /// </summary>
-        /// <param name="searchReplace"></param>
-        public void FillPlaceHolders(Dictionary<string, string> searchReplace)
-        {
-            foreach (CompositeTexture tex in Textures.Values)
-            {
-                tex.FillPlaceHolders(searchReplace);
-            }
-
-            Shape?.FillPlaceHolders(searchReplace);
-            foreach (var val in searchReplace)
-            {
-                Attributes?.FillPlaceHolder(val.Key, val.Value);
-            }
-            
-            if (CombustibleProps != null && CombustibleProps.SmeltedStack != null)
-            {
-                CombustibleProps.SmeltedStack.Code = FillPlaceHolder(CombustibleProps.SmeltedStack.Code, searchReplace);
-            }
-
-            if (NutritionProps != null && NutritionProps.EatenStack != null)
-            {
-                NutritionProps.EatenStack.Code = FillPlaceHolder(NutritionProps.EatenStack.Code, searchReplace);
-            }
-
-            if (GrindingProps != null && GrindingProps.GrindedStack != null)
-            {
-                GrindingProps.GrindedStack.Code = FillPlaceHolder(GrindingProps.GrindedStack.Code, searchReplace);
-            }
-        }
-
         /// <summary>
         /// Creates a deep copy of the item
         /// </summary>

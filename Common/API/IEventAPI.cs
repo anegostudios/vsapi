@@ -31,6 +31,16 @@ namespace Vintagestory.API.Common
     public interface IEventAPI
     {
         /// <summary>
+        /// Triggered when a new entity spawned
+        /// </summary>
+        event EntityDelegate OnEntitySpawn;
+
+        /// <summary>
+        /// Triggered when a new entity spawned
+        /// </summary>
+        event EntityDespawnDelegate OnEntityDespawn;
+
+        /// <summary>
         /// Called whenever a chunk was marked dirty (as in, its blocks or light values have been modified)
         /// </summary>
         event ChunkDirty ChunkDirty;

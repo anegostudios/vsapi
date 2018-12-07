@@ -5,6 +5,7 @@
         Gas,
         Liquid,
         Solid,
-        Plasma // Because we can... :D
+        Plasma,
+        BoseEinsteinCondensate
     }
 }

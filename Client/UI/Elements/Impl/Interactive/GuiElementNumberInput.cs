@@ -9,17 +9,31 @@ using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// A numerical input field for inputting numbers.
+    /// </summary>
     public class GuiElementNumberInput : GuiElementTextInput
     {
         //public double Scale = 1;
 
         public LoadedTexture buttonHighlightTexture;
         
+        /// <summary>
+        /// Creates a numerical input field.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="bounds">The bounds of the GUI.</param>
+        /// <param name="OnTextChanged">The event fired when the number is changed.</param>
+        /// <param name="font">The font of the numbers.</param>
         public GuiElementNumberInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font) : base(capi, bounds, OnTextChanged, font)
         {
             buttonHighlightTexture = new LoadedTexture(capi);
         }
 
+        /// <summary>
+        /// Gets the current value of the number.
+        /// </summary>
+        /// <returns>A float representing the value.</returns>
         public float GetValue()
         {
             float val;
@@ -48,7 +62,7 @@ namespace Vintagestory.API.Client
 
             double heightHalf = Bounds.OuterHeight / 2 - 1;
 
-            ctx.SetSourceRGBA(ElementGeometrics.DialogHighlightColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
             RoundRectangle(ctx, Bounds.drawX + Bounds.InnerWidth - scaled(17 + 1) * Scale, Bounds.drawY, rightSpacing * Scale, heightHalf, 1);
             ctx.Fill();
 
@@ -61,7 +75,7 @@ namespace Vintagestory.API.Client
             ctx.Fill();
 
 
-            ctx.SetSourceRGBA(ElementGeometrics.DialogHighlightColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
             RoundRectangle(ctx, Bounds.drawX + Bounds.InnerWidth - (rightSpacing + scaled(1)) * Scale, Bounds.drawY + heightHalf + scaled(1) * Scale, rightSpacing * Scale, heightHalf, 1);
             ctx.Fill();
 
@@ -200,6 +214,13 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        /// <summary>
+        /// Adds a numeric input for the current GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the number input.</param>
+        /// <param name="OnTextChanged">The event fired when the number is changed.</param>
+        /// <param name="font">The font for the numbers.</param>
+        /// <param name="key">The name for this GuiElementNumberInput</param>
         public static GuiComposer AddNumberInput(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
@@ -215,6 +236,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the number input by name.
+        /// </summary>
+        /// <param name="key">The internal name of the numeric input.</param>
+        /// <returns>The named numeric input.</returns>
         public static GuiElementNumberInput GetNumberInput(this GuiComposer composer, string key)
         {
             return (GuiElementNumberInput)composer.GetElement(key);

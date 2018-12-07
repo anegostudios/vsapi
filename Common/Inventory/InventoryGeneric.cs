@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Common;
+﻿using System;
+using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
@@ -24,10 +25,27 @@ namespace Vintagestory.API.Common
             slots = GenEmptySlots(quantitySlots);
         }
 
-        public override int QuantitySlots
+
+        public override int Count
         {
             get { return slots.Length; }
         }
+
+        public override ItemSlot this[int slotId]
+        {
+            get
+            {
+                if (slotId < 0 || slotId >= Count) return null;
+                return slots[slotId];
+            }
+            set
+            {
+                if (slotId < 0 || slotId >= Count) throw new ArgumentOutOfRangeException(nameof(slotId));
+                if (value == null) throw new ArgumentNullException(nameof(value));
+                slots[slotId] = value;
+            }
+        }
+
 
         public bool IsEmpty { get {
                 for (int i = 0; i < slots.Length; i++)
@@ -37,11 +55,6 @@ namespace Vintagestory.API.Common
 
                 return true;
         } }
-
-        public override ItemSlot GetSlot(int slotId)
-        {
-            return slots[slotId];
-        }
 
         public override void FromTreeAttributes(ITreeAttribute treeAttribute)
         {

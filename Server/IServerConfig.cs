@@ -72,7 +72,7 @@ namespace Vintagestory.API.Server
         string DefaultRoleCode { get; set; }
 
         /// <summary>
-        /// AntiAbuse protection level. The anti abuse system is very buggy at the moment
+        /// AntiAbuse protection level. Use not recommended, it is very buggy at the moment
         /// </summary>
         EnumProtectionLevel AntiAbuse { get; set; }
 
@@ -90,5 +90,10 @@ namespace Vintagestory.API.Server
         /// Whether or not to allow Player versus Player
         /// </summary>
         bool AllowPvP { get; set; }
+
+        /// <summary>
+        /// Whether or not fire should spread
+        /// </summary>
+        bool AllowFireSpread { get; set; }
     }
 }

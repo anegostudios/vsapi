@@ -125,7 +125,7 @@ namespace Vintagestory.API.Client
 
             Font.SetupContext(ctx);
 
-            ctx.SetSourceRGBA(ElementGeometrics.DialogDefaultBgColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor);
             RoundRectangle(ctx, 0, 0, expandedBoxWidth, expandedBoxHeight, 1);
             ctx.FillPreserve();
             ctx.SetSourceRGBA(0,0,0,0.5);
@@ -134,12 +134,11 @@ namespace Vintagestory.API.Client
             double height = Font.GetFontExtents().Height;
             double offy = (30 - height) / 2;
 
-            ctx.SetSourceRGBA(ElementGeometrics.DialogDefaultTextColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
 
             for (int i = 0; i < values.Length; i++)
             {
-                ctx.MoveTo(5 * Scale, ((int)offy + i * 30) * Scale);
-                ShowTextCorrectly(ctx, names[i], 0, 0);
+                DrawTextLineAt(ctx, names[i], 5 * Scale, ((int)offy + i * 30) * Scale);
             }
 
             generateTexture(surface, ref dropDownTexture);
@@ -170,7 +169,7 @@ namespace Vintagestory.API.Client
             surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)(30 * Scale));
             ctx = genContext(surface);
 
-            double[] col = ElementGeometrics.DialogHighlightColor;
+            double[] col = GuiStyle.DialogHighlightColor;
             col[3] = 0.5;
             ctx.SetSourceRGBA(col);
             RoundRectangle(ctx, 0, 0, expandedBoxWidth, 30*Scale, 0);
@@ -221,9 +220,13 @@ namespace Vintagestory.API.Client
                     116
                 );
 
+                api.Render.GlPushMatrix();
+                api.Render.GlTranslate(0, 0, 100);
                 scrollbar.Bounds.WithParent(Bounds);
                 scrollbar.Bounds.absFixedY = Bounds.InnerHeight;
                 scrollbar.RenderInteractiveElements(deltaTime);
+
+                api.Render.GlPopMatrix();
             }
 
         }

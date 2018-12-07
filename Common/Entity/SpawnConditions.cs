@@ -110,6 +110,9 @@ namespace Vintagestory.API.Common.Entities
         public float MinShrubs = 0;
         public float MaxShrubs = 1;
 
+        public float MinY = 0;
+        public float MaxY = 1;
+
         public float MinForestOrShrubs = 0;
 
     }

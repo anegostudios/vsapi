@@ -86,7 +86,7 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             RoundRectangle(ctx, 0, 0, scaled(scrollbarWidth-1), currentHandleHeight, 3);
-            ctx.SetSourceRGBA(ElementGeometrics.DialogHighlightColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
             ctx.FillPreserve();
             ctx.SetSourceRGBA(0, 0, 0, 0.3);
             ctx.Fill();
@@ -130,7 +130,9 @@ namespace Vintagestory.API.Client
             this.totalHeight = totalHeight;
 
             float heightDiffFactor = GameMath.Clamp(this.visibleHeight / totalHeight, 0, 1);
-            currentHandleHeight = (float)(heightDiffFactor * Bounds.InnerHeight);
+
+            currentHandleHeight = Math.Max(10, (float)(heightDiffFactor * Bounds.InnerHeight));
+
 
             currentHandlePosition = (float)Math.Min(currentHandlePosition, Bounds.InnerHeight - currentHandleHeight);
             TriggerChanged();

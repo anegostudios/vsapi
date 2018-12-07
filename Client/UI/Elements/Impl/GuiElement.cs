@@ -24,13 +24,34 @@ namespace Vintagestory.API.Client
         internal string lastShownText = "";
         internal ImageSurface metalNail;
 
+        /// <summary>
+        /// The bounds of the element.
+        /// </summary>
         public ElementBounds Bounds;
+
+        /// <summary>
+        /// The tab index of the element.
+        /// </summary>
         public int TabIndex;
+
+        /// <summary>
+        /// Whether or not the element has focus.
+        /// </summary>
         protected bool hasFocus;
+
+        /// <summary>
+        /// If the element is inside a clip or not.
+        /// </summary>
         public bool InsideClipElement;
 
+        /// <summary>
+        /// The Client API.
+        /// </summary>
         protected ICoreClientAPI api;
 
+        /// <summary>
+        /// Whether or not the element has focus or not.
+        /// </summary>
         public bool HasFocus {
             get { return hasFocus; }
         }
@@ -43,48 +64,81 @@ namespace Vintagestory.API.Client
             get { return 0; }
         }
         
+        /// <summary>
+        /// Whether or not the element can be focused.
+        /// </summary>
         public virtual bool Focusable
         {
             get { return false; }
         }
 
+        /// <summary>
+        /// The scale of the element.
+        /// </summary>
         public virtual double Scale
         {
             get; set;
         } = 1;
 
+        /// <summary>
+        /// The event fired when the element gains focus.
+        /// </summary>
         public virtual void OnFocusGained()
         {
             hasFocus = true;
         }
 
+        /// <summary>
+        /// The event fired when the element looses focus.
+        /// </summary>
         public virtual void OnFocusLost()
         {
             hasFocus = false;
         }
 
+        /// <summary>
+        /// Adds a new GUIElement to the GUI.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="bounds">The bounds of the element.</param>
         public GuiElement(ICoreClientAPI capi, ElementBounds bounds)
         {
             this.api = capi;
             this.Bounds = bounds;
         }
 
-
+        /// <summary>
+        /// Composes the elements.
+        /// </summary>
+        /// <param name="ctxStatic">The context of the components.</param>
+        /// <param name="surface">The surface of the GUI.</param>
         public virtual void ComposeElements(Context ctxStatic, ImageSurface surface)
         {
             
         }
 
+        /// <summary>
+        /// Renders the element as an interactive element.
+        /// </summary>
+        /// <param name="deltaTime">The change in time.</param>
         public virtual void RenderInteractiveElements(float deltaTime)
         {
 
         }
 
+        /// <summary>
+        /// The post render of the interactive element.
+        /// </summary>
+        /// <param name="deltaTime">The change in time.</param>
         public virtual void PostRenderInteractiveElements(float deltaTime)
         {
 
         }
 
+        /// <summary>
+        /// Renders the focus overlay.
+        /// </summary>
+        /// <param name="deltaTime">The change in time.</param>
         public void RenderFocusOverlay(float deltaTime)
         {
           //  presenter.DrawRectangle((int)bounds.renderX, (int)bounds.renderY, 800, (int)bounds.OuterWidth, (int)bounds.OuterHeight, 255 + (255 << 8) + (255 << 16) + (96 << 24));
@@ -92,7 +146,12 @@ namespace Vintagestory.API.Client
 
 
 
-
+        /// <summary>
+        /// Generates a texture with an ID.
+        /// </summary>
+        /// <param name="surface">The image surface supplied.</param>
+        /// <param name="textureId">The previous texture id.</param>
+        /// <param name="linearMag">Whether or not the texture will have linear magnification.</param>
         protected void generateTexture(ImageSurface surface, ref int textureId, bool linearMag = true)
         {
             int prevTexId = textureId;
@@ -102,37 +161,32 @@ namespace Vintagestory.API.Client
             if (prevTexId > 0) api.Render.GLDeleteTexture(prevTexId);
         }
 
+        /// <summary>
+        /// Generates a new texture.
+        /// </summary>
+        /// <param name="surface">The surface provided.</param>
+        /// <param name="intoTexture">The texture to be loaded into.</param>
+        /// <param name="linearMag">Whether or not the texture will have linear magnification.</param>
         protected void generateTexture(ImageSurface surface, ref LoadedTexture intoTexture, bool linearMag = true)
         {
             api.Gui.LoadOrUpdateCairoTexture(surface, linearMag, ref intoTexture);
         }
 
-
+        /// <summary>
+        /// Changes the scale of the GUIElement by the GUIScale factor.
+        /// </summary>
+        /// <param name="value">The base scale value.</param>
+        /// <returns>The modified scale value based on the GUIScale.</returns>
         public static double scaled(double value)
         {
             return value * RuntimeEnv.GUIScale;
         }
 
-
-        protected ImageSurface getMetalNail()
-        {
-            if (metalNail == null)
-            {
-                metalNail = new ImageSurface(Format.Argb32, (int)scaled(8), (int)scaled(8));
-                Context ctx = new Context(metalNail);
-
-                RoundRectangle(ctx, 0, 0, scaled(5), scaled(5), scaled(3));
-                fillWithPattern(api, ctx, noisyMetalTextureName);
-                
-                ctx.Fill();
-                EmbossRoundRectangle(ctx, 0, 0, scaled(5), scaled(5), scaled(3), 1, 0.7f, 2, 0.7f);
-                ctx.Dispose();
-            }
-
-            return metalNail;
-        }
-
-
+        /// <summary>
+        /// Generates context based off the image surface.
+        /// </summary>
+        /// <param name="surface">The surface where the context is based.</param>
+        /// <returns>The context based off the provided surface.</returns>
         protected Context genContext(ImageSurface surface)
         {
             Context ctx = new Context(surface);
@@ -142,6 +196,11 @@ namespace Vintagestory.API.Client
             return ctx;
         }
 
+        /// <summary>
+        /// Gets a surface pattern based off the bitmap.
+        /// </summary>
+        /// <param name="bitmap">The provided bitmap.</param>
+        /// <returns>The resulting surface pattern.</returns>
         public static SurfacePattern getPattern(Bitmap bitmap)
         {
             ImageSurface patternSurface = getImageSurfaceFromAsset(bitmap);
@@ -151,6 +210,11 @@ namespace Vintagestory.API.Client
             return pattern;
         }
 
+        /// <summary>
+        /// Gets an image surface based off the bitmap.
+        /// </summary>
+        /// <param name="bitmap">The provided bitmap.</param>
+        /// <returns>The image surface built from the bitmap.</returns>
         public static ImageSurface getImageSurfaceFromAsset(Bitmap bitmap)
         {
             BitmapData bmp_data = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
@@ -175,7 +239,13 @@ namespace Vintagestory.API.Client
             return imageSurface;
         }
 
-
+        /// <summary>
+        /// Gets an image surface based off the bitmap.
+        /// </summary>
+        /// <param name="bitmap">The provided bitmap.</param>
+        /// <param name="width">The width requested.</param>
+        /// <param name="height">The height requested.</param>
+        /// <returns>The image surface built from the bitmap and data.</returns>
         public static ImageSurface getImageSurfaceFromAsset(Bitmap bitmap, int width, int height)
         {
             ImageSurface imageSurface = new ImageSurface(Format.Argb32, width, height);
@@ -183,6 +253,19 @@ namespace Vintagestory.API.Client
             return imageSurface;
         }
 
+
+        public virtual void BeforeCalcBounds()
+        {
+            
+        }
+
+        /// <summary>
+        /// Gets a surface pattern from a named file.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="texFileName">The name of the file.</param>
+        /// <param name="doCache">Do we cache the file?</param>
+        /// <returns>The resulting surface pattern.</returns>
         public static SurfacePattern getPattern(ICoreClientAPI capi, string texFileName, bool doCache = true)
         {
             if (cachedPatterns.ContainsKey(texFileName) && cachedPatterns[texFileName].Key.HandleValid)
@@ -200,6 +283,12 @@ namespace Vintagestory.API.Client
             return pattern;
         }
 
+        /// <summary>
+        /// Fetches an image surface from a named file.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="texFileName">The name of the text file.</param>
+        /// <returns></returns>
         public static ImageSurface getImageSurfaceFromAsset(ICoreClientAPI capi, string texFileName)
         {
             byte[] pngdata = capi.Assets.Get("textures/gui/" + texFileName).Data;
@@ -232,6 +321,14 @@ namespace Vintagestory.API.Client
             return imageSurface;
         }
 
+        /// <summary>
+        /// Fills an area with a pattern.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="ctx">The context of the fill.</param>
+        /// <param name="texFileName">The name of the texture file.</param>
+        /// <param name="preserve">Whether or not to preserve the aspect ratio of the texture.</param>
+        /// <returns>The surface pattern filled with the given texture.</returns>
         public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, string texFileName, bool preserve = false)
         {
             SurfacePattern pattern = getPattern(capi, texFileName);
@@ -246,6 +343,10 @@ namespace Vintagestory.API.Client
             return pattern;
         }
 
+        /// <summary>
+        /// Discards a pattern based off the the filename.
+        /// </summary>
+        /// <param name="texFilename">The pattern to discard.</param>
         public static void DiscardPattern(string texFilename)
         {
             if (cachedPatterns.ContainsKey(texFilename))
@@ -266,16 +367,20 @@ namespace Vintagestory.API.Client
             return pattern;
         }
 
-
+        
         protected void Lamp(Context ctx, double x, double y, float[] color)
         {
             ctx.SetSourceRGBA(color[0], color[1], color[2], 1);
-            RoundRectangle(ctx, x, y, scaled(10), scaled(10), ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctx, x, y, scaled(10), scaled(10), GuiStyle.ElementBGRadius);
             ctx.Fill();
             EmbossRoundRectangleElement(ctx, x, y, scaled(10), scaled(10));
         }
 
-
+        /// <summary>
+        /// Makes a rectangle with the provided context and bounds.
+        /// </summary>
+        /// <param name="ctx">The context for the rectangle.</param>
+        /// <param name="bounds">The bounds of the rectangle.</param>
         public static void Rectangle(Context ctx, ElementBounds bounds)
         {
             ctx.NewPath();
@@ -286,6 +391,14 @@ namespace Vintagestory.API.Client
             ctx.ClosePath();
         }
 
+        /// <summary>
+        /// Makes a rectangle with specified parameters.
+        /// </summary>
+        /// <param name="ctx">Context of the rectangle</param>
+        /// <param name="x">The X position of the rectangle</param>
+        /// <param name="y">The Y position of the rectangle</param>
+        /// <param name="width">The width of the rectangle</param>
+        /// <param name="height">The height of the rectangle.</param>
         public static void Rectangle(Context ctx, double x, double y, double width, double height)
         {
             ctx.NewPath();
@@ -296,16 +409,26 @@ namespace Vintagestory.API.Client
             ctx.ClosePath();
         }
 
-
+        /// <summary>
+        /// Creates a rounded rectangle.
+        /// </summary>
+        /// <param name="ctx">The GUI context</param>
+        /// <param name="bounds">The bounds of the rectangle.</param>
         public void DialogRoundRectangle(Context ctx, ElementBounds bounds)
         {
-            RoundRectangle(ctx, bounds.bgDrawX, bounds.bgDrawY, bounds.OuterWidth, bounds.OuterHeight, ElementGeometrics.DialogBGRadius);
+            RoundRectangle(ctx, bounds.bgDrawX, bounds.bgDrawY, bounds.OuterWidth, bounds.OuterHeight, GuiStyle.DialogBGRadius);
         }
 
-
+        /// <summary>
+        /// Creates a rounded rectangle element.
+        /// </summary>
+        /// <param name="ctx">The context for the rectangle.</param>
+        /// <param name="bounds">The bounds of the rectangle.</param>
+        /// <param name="isBackground">Is the rectangle part of a background GUI object (Default: false)</param>
+        /// <param name="radius">The radius of the corner of the rectangle (default: -1)</param>
         public void ElementRoundRectangle(Context ctx, ElementBounds bounds, bool isBackground = false, double radius = -1)
         {
-            if (radius == -1) radius = ElementGeometrics.ElementBGRadius;
+            if (radius == -1) radius = GuiStyle.ElementBGRadius;
             if (isBackground)
             {
                 RoundRectangle(ctx, bounds.bgDrawX, bounds.bgDrawY, bounds.OuterWidth, bounds.OuterHeight, radius);
@@ -316,6 +439,15 @@ namespace Vintagestory.API.Client
             
         }
 
+        /// <summary>
+        /// Creates a rounded rectangle
+        /// </summary>
+        /// <param name="ctx">The context for the rectangle.</param>
+        /// <param name="x">The X position of the rectangle</param>
+        /// <param name="y">The Y position of the rectangle</param>
+        /// <param name="width">The width of the rectangle</param>
+        /// <param name="height">The height of the rectangle.</param>
+        /// <param name="radius">The radius of the corner of the rectangle.</param>
         public static void RoundRectangle(Context ctx, double x, double y, double width, double height, double radius)
         {
             double degrees = Math.PI / 180.0;
@@ -329,36 +461,80 @@ namespace Vintagestory.API.Client
             ctx.ClosePath();
         }
 
-
+        /// <summary>
+        /// Shades a path with the given context.
+        /// </summary>
+        /// <param name="ctx">The context of the shading.</param>
+        /// <param name="thickness">The thickness of the line to shade.</param>
         public void ShadePath(Context ctx, int thickness = 3)
         {
             ctx.Operator = Operator.Atop;
 
-            ctx.SetSourceRGBA(0, 0, 0, 0.4);
+            ctx.SetSourceRGBA(GuiStyle.DialogBorderColor);
             ctx.LineWidth = 2.0;
             ctx.Stroke();
 
             ctx.Operator = Operator.Over;
         }
 
-
+        /// <summary>
+        /// Adds an embossed rounded rectangle to the dialog.
+        /// </summary>
+        /// <param name="ctx">The context of the rectangle.</param>
+        /// <param name="x">The X position of the rectangle</param>
+        /// <param name="y">The Y position of the rectangle</param>
+        /// <param name="width">The width of the rectangle</param>
+        /// <param name="height">The height of the rectangle.</param>
+        /// <param name="inverse">Whether or not it goes in or out.</param>
         public void EmbossRoundRectangleDialog(Context ctx, double x, double y, double width, double height, bool inverse = false)
         {
-            EmbossRoundRectangle(ctx, x, y, width, height, ElementGeometrics.DialogBGRadius, 4, 0.5f, 1.5f, 0.5f, inverse, 0.25f);
+            EmbossRoundRectangle(ctx, x, y, width, height, GuiStyle.DialogBGRadius, 4, 0.5f, 1.5f, 0.5f, inverse, 0.25f);
         }
 
-
+        /// <summary>
+        /// Adds an embossed rounded rectangle to the dialog.
+        /// </summary>
+        /// <param name="ctx">The context of the rectangle.</param>
+        /// <param name="x">The X position of the rectangle</param>
+        /// <param name="y">The Y position of the rectangle</param>
+        /// <param name="width">The width of the rectangle</param>
+        /// <param name="height">The height of the rectangle.</param>
+        /// <param name="inverse">Whether or not it goes in or out.</param>
+        /// <param name="depth">The depth of the emboss.</param>
+        /// <param name="radius">The radius of the corner of the rectangle.</param>
         public void EmbossRoundRectangleElement(Context ctx, double x, double y, double width, double height, bool inverse = false, int depth = 2, int radius = -1)
         {
-            EmbossRoundRectangle(ctx, x, y, width, height, radius == - 1 ? ElementGeometrics.ElementBGRadius : radius, depth, 0.7f, 2.0f, 0.5f, inverse, 0.25f);
+            EmbossRoundRectangle(ctx, x, y, width, height, radius == - 1 ? GuiStyle.ElementBGRadius : radius, depth, 0.7f, 2.0f, 0.5f, inverse, 0.25f);
         }
 
+        /// <summary>
+        /// Adds an embossed rounded rectangle to the dialog.
+        /// </summary>
+        /// <param name="ctx">The context of the rectangle.</param>
+        /// <param name="bounds">The position and size of the rectangle.</param>
+        /// <param name="inverse">Whether or not it goes in or out. (Default: false)</param>
+        /// <param name="depth">The depth of the emboss. (Default: 2)</param>
+        /// <param name="radius">The radius of the corner of the rectangle. (default: -1)</param>
         public void EmbossRoundRectangleElement(Context ctx, ElementBounds bounds, bool inverse = false, int depth = 2, int radius = -1)
         {
             EmbossRoundRectangle(ctx, bounds.drawX, bounds.drawY, bounds.InnerWidth, bounds.InnerHeight, radius, depth, 0.5f, 1.2f, 0.8f, inverse, 0.25f);
         }
-        
 
+        /// <summary>
+        /// Adds an embossed rounded rectangle to the dialog.
+        /// </summary>
+        /// <param name="ctx">The context of the rectangle.</param>
+        /// <param name="x">The X position of the rectangle</param>
+        /// <param name="y">The Y position of the rectangle</param>
+        /// <param name="width">The width of the rectangle</param>
+        /// <param name="height">The height of the rectangle.</param>
+        /// <param name="radius">The radius of the corner of the rectangle.</param>
+        /// <param name="thickness">The thickness of the emboss. (Default: 3)</param>
+        /// <param name="intensity">The intensity of the emboss. (Default: 0.4f)</param>
+        /// <param name="fallOff">How quickly the effect falls off around corners (default: 2)</param>
+        /// <param name="lightDarkBalance">How skewed is the light/dark balance (Default: 1)</param>
+        /// <param name="inverse">Whether or not it goes in or out. (Default: false)</param>
+        /// <param name="alphaOffset">The offset for the alpha part of the emboss. (Default: 0)</param>
         protected void EmbossRoundRectangle(Context ctx, double x, double y, double width, double height, double radius, int thickness = 3, float intensity = 0.4f, float fallOff = 2, float lightDarkBalance = 1f, bool inverse = false, float alphaOffset = 0)
         {
             double degrees = Math.PI / 180.0;
@@ -416,7 +592,11 @@ namespace Vintagestory.API.Client
 
 
 
-
+        /// <summary>
+        /// The event fired when the mouse is down the element is around.  Fires before OnMouseDownOnElement, however OnMouseDownOnElement is called within the base function.
+        /// </summary>
+        /// <param name="api">The Client API</param>
+        /// <param name="mouse">The mouse event args.</param>
         public virtual void OnMouseDown(ICoreClientAPI api, MouseEvent mouse)
         {
             if (IsPositionInside(mouse.X, mouse.Y))
@@ -426,12 +606,28 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// The event fired when the mouse is pressed while on the element. Called after OnMouseDown and tells the engine that the event is handled.
+        /// </summary>
+        /// <param name="api">The Client API</param>
+        /// <param name="mouse">The mouse event args.</param>
         public virtual void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             args.Handled = true;
         }
 
+        /// <summary>
+        /// The event fired when the mouse is released on the element.  Called after OnMouseUp.  
+        /// </summary>
+        /// <param name="api">The Client API</param>
+        /// <param name="mouse">The mouse event args.</param>
         public virtual void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args) { }
+
+        /// <summary>
+        /// The event fired when the mouse is released.  
+        /// </summary>
+        /// <param name="api">The Client API.</param>
+        /// <param name="args">The arguments for the mouse event.</param>
         public virtual void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
             if (IsPositionInside(args.X, args.Y))
@@ -440,18 +636,63 @@ namespace Vintagestory.API.Client
             }
         }
 
+        public virtual bool OnMouseEnterSlot(ICoreClientAPI api, IItemSlot slot)
+        {
+            return false;
+        }
+
+        public virtual bool OnMouseLeaveSlot(ICoreClientAPI api, IItemSlot slot)
+        {
+            return false;
+        }
+
+
+        /// <summary>
+        /// The event fired when the mouse is moved.
+        /// </summary>
+        /// <param name="api">The Client API.</param>
+        /// <param name="args">The mouse event arguments.</param>
         public virtual void OnMouseMove(ICoreClientAPI api, MouseEvent args) { }
+
+        /// <summary>
+        /// The event fired when the mouse wheel is scrolled.
+        /// </summary>
+        /// <param name="api">The Client API</param>
+        /// <param name="args">The mouse wheel arguments.</param>
         public virtual void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args) { }
 
+        /// <summary>
+        /// The event fired when a key is held down.
+        /// </summary>
+        /// <param name="api">The client API</param>
+        /// <param name="args">The key event arguments.</param>
         public virtual void OnKeyDown(ICoreClientAPI api, KeyEvent args) { }
+
+        /// <summary>
+        /// The event fired the moment a key is pressed.
+        /// </summary>
+        /// <param name="api">The Client API.</param>
+        /// <param name="args">The keyboard state when the key was pressed.</param>
         public virtual void OnKeyPress(ICoreClientAPI api, KeyEvent args) { }
 
+        /// <summary>
+        /// Whether or not the point on screen is inside the Element's area.
+        /// </summary>
+        /// <param name="posX">The X Position of the point.</param>
+        /// <param name="posY">The Y Position of the point.</param>
+        /// <returns></returns>
         public virtual bool IsPositionInside(int posX, int posY)
         {
             return 
                 InsideClipElement ? Bounds.ParentBounds.PointInside(posX, posY) : Bounds.PointInside(posX, posY);
         }
 
+        public virtual string MouseOverCursor { get; protected set; } = "normal";
+
+        /// <summary>
+        /// The compressed version of the outline color as a single int value.
+        /// </summary>
+        /// <returns></returns>
         public virtual int OutlineColor()
         {
             return 255 + (255 << 8) + (255 << 16) + (128 << 24);

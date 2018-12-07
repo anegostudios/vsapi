@@ -47,7 +47,7 @@ namespace Vintagestory.API.Common.Entities
             
         }
 
-        public virtual void OnReceivedServerPos(ref EnumHandling handled)
+        public virtual void OnReceivedServerPos(bool isTeleport, ref EnumHandling handled)
         {
             
         }
@@ -77,6 +77,11 @@ namespace Vintagestory.API.Common.Entities
         public virtual void GetInfoText(StringBuilder infotext)
         {
             
+        }
+
+        public virtual void OnEntityDeath(DamageSource damageSourceForDeath)
+        {
+
         }
     }
 }

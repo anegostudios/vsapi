@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Vintagestory.API.Common;
@@ -49,11 +50,26 @@ namespace Vintagestory.API.Common
         /// </summary>
         public long LastChanged { get { return lastChangedSinceServerStart; } }
 
+
         /// <summary>
-        /// Returns the amount of existing slots in this inventory
+        /// Returns the number of slots in this inventory.
         /// </summary>
-        public abstract int QuantitySlots { get; }
-        
+        public abstract int Count { get; }
+
+        /// <summary>
+        /// Gets or sets the slot at the given slot number.
+        /// Returns null for invalid slot number (below 0 or above Count-1).
+        /// The setter allows for replacing slots with custom ones, though caution is advised.
+        /// </summary>
+        public abstract ItemSlot this[int slotId] { get; set; }
+
+        [Obsolete("Use Count instead.")]
+        public int QuantitySlots => Count;
+
+        [Obsolete("Use indexer instead.")]
+        public ItemSlot GetSlot(int slotId) => this[slotId];
+
+
         public virtual bool IsDirty { get { return dirtySlots.Count > 0; } }
 
         public HashSet<int> DirtySlots { get { return dirtySlots; } }
@@ -136,23 +152,10 @@ namespace Vintagestory.API.Common
         }
 
 
-        /// <summary>
-        /// Returns the slot at given slot number. Returns null for invalid slot number (below 0 or above QuantitySlots), otherwise given slot.
-        /// </summary>
-        /// <param name="slotId"></param>
-        /// <returns></returns>
-        public abstract ItemSlot GetSlot(int slotId);
-
-        ItemSlot IInventory.GetSlot(int slotId)
-        {
-            return GetSlot(slotId);
-        }
-
         public virtual void ResolveBlocksOrItems()
         {
-            for (int i = 0; i < QuantitySlots; i++)
+            foreach (var slot in this)
             {
-                ItemSlot slot = GetSlot(i);
                 if (slot.Itemstack != null)
                 {
                     if (!slot.Itemstack.ResolveBlockOrItem(Api.World))
@@ -170,9 +173,9 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetSlotId(IItemSlot slot)
         {
-            for (int i = 0; i < QuantitySlots; i++)
+            for (int i = 0; i < Count; i++)
             {
-                if (GetSlot(i) == slot)
+                if (this[i] == slot)
                 {
                     return i;
                 }
@@ -190,9 +193,8 @@ namespace Vintagestory.API.Common
             if (sourceSlot.Inventory == this) return bestWSlot;
 
             // 1. Prefer already filled slots
-            for (int i = 0; i < QuantitySlots; i++)
+            foreach (var slot in this)
             {
-                ItemSlot slot = GetSlot(i);
                 if (skipSlots.Contains(slot)) continue;
 
                 if (slot.Itemstack != null && slot.CanTakeFrom(sourceSlot))
@@ -208,9 +210,8 @@ namespace Vintagestory.API.Common
             }
 
             // 2. Otherwise use empty slots
-            for (int i = 0; i < QuantitySlots; i++)
+            foreach (var slot in this)
             {
-                ItemSlot slot = GetSlot(i);
                 if (skipSlots.Contains(slot)) continue;
 
                 if (slot.Itemstack == null && slot.CanTakeFrom(sourceSlot))
@@ -249,7 +250,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public object TryFlipItems(int targetSlotId, IItemSlot itemSlot)
         {
-            IItemSlot targetSlot = GetSlot(targetSlotId);
+            IItemSlot targetSlot = this[targetSlotId];
             if (targetSlot != null && targetSlot.TryFlipWith(itemSlot))
             {
                 return InvNetworkUtil.GetFlipSlotsPacket(itemSlot.Inventory, itemSlot.Inventory.GetSlotId(itemSlot), targetSlotId);
@@ -282,7 +283,7 @@ namespace Vintagestory.API.Common
         {
             object packet = InvNetworkUtil.GetActivateSlotPacket(slotId, op);
 
-            GetSlot(slotId).ActivateSlot((ItemSlot)sourceSlot, ref op);
+            this[slotId].ActivateSlot((ItemSlot)sourceSlot, ref op);
 
             return packet;
         }
@@ -317,7 +318,7 @@ namespace Vintagestory.API.Common
         /// <param name="slotId"></param>
         public virtual void PerformNotifySlot(int slotId)
         {
-            ItemSlot slot = GetSlot(slotId);
+            ItemSlot slot = this[slotId];
             if (slot == null || slot.Inventory != this) return;
 
             SlotNotified?.Invoke(slotId);
@@ -385,8 +386,8 @@ namespace Vintagestory.API.Common
             }
 
             // 3. Source and Dest slot must exist
-            slots[0] = sourceInv.GetSlot(slotIds[0]);
-            slots[1] = targetInv.GetSlot(slotIds[1]);
+            slots[0] = sourceInv[slotIds[0]];
+            slots[1] = targetInv[slotIds[1]];
 
             return slots;
         }
@@ -488,14 +489,14 @@ namespace Vintagestory.API.Common
 
         public virtual void DiscardAll()
         {
-            for (int i = 0; i < QuantitySlots; i++)
+            for (int i = 0; i < Count; i++)
             {
-                if (GetSlot(i).Itemstack != null)
+                if (this[i].Itemstack != null)
                 {
                     dirtySlots.Add(i);
                 }
 
-                GetSlot(i).Itemstack = null;
+                this[i].Itemstack = null;
             }
         }
 
@@ -503,26 +504,24 @@ namespace Vintagestory.API.Common
         {
             foreach (int slotId in slotsIds)
             {
-                if (GetSlot(slotId).Itemstack != null)
-                {
-                    if (slotId < 0) throw new Exception("Negative slotid?!");
-                    dirtySlots.Add(slotId);
-                    Api.World.SpawnItemEntity(GetSlot(slotId).Itemstack, pos);
-                    GetSlot(slotId).Itemstack = null;
-                }
+                if (slotId < 0) throw new Exception("Negative slotid?!");
+                var slot = this[slotId];
+
+                if (slot.Itemstack == null) continue;
+                Api.World.SpawnItemEntity(slot.Itemstack, pos);
+                slot.Itemstack = null;
+                slot.MarkDirty();
             }
         }
 
         public virtual void DropAll(Vec3d pos)
         {
-            for (int i = 0; i < QuantitySlots; i++)
+            foreach (var slot in this)
             {
-                if (GetSlot(i).Itemstack != null)
-                {
-                    dirtySlots.Add(i);
-                    Api.World.SpawnItemEntity(GetSlot(i).Itemstack, pos);
-                    GetSlot(i).Itemstack = null;
-                }
+                if (slot.Itemstack == null) continue;
+                Api.World.SpawnItemEntity(slot.Itemstack, pos);
+                slot.Itemstack = null;
+                slot.MarkDirty();
             }
         }
     
@@ -571,5 +570,18 @@ namespace Vintagestory.API.Common
             return openedByPlayerGUIds.Contains(player.PlayerUID);
         }
 
+
+        public IEnumerator<ItemSlot> GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return this[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

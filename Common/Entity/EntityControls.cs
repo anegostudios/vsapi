@@ -143,7 +143,7 @@ namespace Vintagestory.API.Common
 
         public void CalcMovementVectors(EntityPos pos, float dt)
         {
-            double moveSpeed = dt * GlobalConstants.BaseMoveSpeed * MovespeedMultiplier;
+            double moveSpeed = dt * GlobalConstants.BaseMoveSpeed * MovespeedMultiplier * GlobalConstants.OverallSpeedMultiplier;
             
             double dz = (Forward ? -moveSpeed : 0) + (Backward ? moveSpeed : 0);
             double dx = (Right ? moveSpeed : 0) + (Left ? -moveSpeed : 0);

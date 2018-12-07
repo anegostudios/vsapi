@@ -99,7 +99,7 @@ namespace Vintagestory.API.Client
             ctx.Fill();
             EmbossRoundRectangleElement(ctx, Bounds, true, 1, 2);
 
-            ctx.SetSourceRGBA(ElementGeometrics.DialogHighlightColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
             RoundRectangle(ctx, Bounds.drawX + Bounds.InnerWidth - scaled(20 + 1) * Scale, Bounds.drawY, scaled(20) * Scale, Bounds.InnerHeight - scaled(1), 1);
             ctx.Fill();
 
@@ -150,13 +150,13 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             Font.SetupContext(ctx);
-            ctx.SetSourceRGBA(ElementGeometrics.DialogDefaultTextColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
 
             if (listMenu.selectedIndex >= 0)
             {
                 double height = Font.GetFontExtents().Height;
 
-                ShowTextCorrectly(ctx, listMenu.names[listMenu.selectedIndex], 5, (valueHeight - height)/2);
+                DrawTextLineAt(ctx, listMenu.names[listMenu.selectedIndex], 5, (valueHeight - height)/2);
             }
 
             generateTexture(surface, ref currentValueTexture);

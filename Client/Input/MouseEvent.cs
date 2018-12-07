@@ -15,32 +15,34 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Current X position of the mouse.
         /// </summary>
-        public int X;
+        public int X { get; }
 
         /// <summary>
         /// Current Y position of the mouse.
         /// </summary>
-        public int Y;
+        public int Y { get; }
 
         /// <summary>
         /// The X movement of the mouse.
         /// </summary>
-        public int MovementX;
+        public int DeltaX { get; }
 
         /// <summary>
         /// The Y movement of the mouse.
         /// </summary>
-        public int MovementY;
+        public int DeltaY { get; }
 
         /// <summary>
-        /// The current state of the mouse buttons.
+        /// Gets the current mouse button pressed.
         /// </summary>
-        public EnumMouseButton Button;
+        public EnumMouseButton Button { get; }
 
         /// <summary>
         /// Am I handled?
         /// </summary>
         public bool Handled { get; set; }
+
+        
 
         /// <summary>
         /// This is apparently used for mouse move events (set to true if the mouse state has changed during constant polling, set to false if the move event came from opentk. This emulated state is apparantly used to determine the correct delta position to turn the camera.
@@ -48,6 +50,21 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         /// 
         //public bool Emulated;
+
+
+        public MouseEvent(int x, int y, int deltaX, int deltaY, EnumMouseButton button)
+        {
+            X = x; Y = y; DeltaX = deltaX; DeltaY = deltaY; Button = button;
+        }
+
+        public MouseEvent(int x, int y, int deltaX, int deltaY)
+            : this(x, y, deltaX, deltaY, EnumMouseButton.None) { }
+
+        public MouseEvent(int x, int y, EnumMouseButton button)
+            : this(x, y, 0, 0, button) { }
+
+        public MouseEvent(int x, int y)
+            : this(x, y, 0, 0, EnumMouseButton.None) { }
     }
 
     /// <summary>

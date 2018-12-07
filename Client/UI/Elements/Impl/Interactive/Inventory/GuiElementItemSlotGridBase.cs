@@ -114,10 +114,10 @@ namespace Vintagestory.API.Client
             double absSlotHeight = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
 
             ElementBounds textBounds = ElementBounds
-                .Fixed(0, GuiElementPassiveItemSlot.unscaledSlotSize - ElementGeometrics.SmallishFontSize - 2, GuiElementPassiveItemSlot.unscaledSlotSize - 5, GuiElementPassiveItemSlot.unscaledSlotSize - 5)
+                .Fixed(0, GuiElementPassiveItemSlot.unscaledSlotSize - GuiStyle.SmallishFontSize - 2, GuiElementPassiveItemSlot.unscaledSlotSize - 5, GuiElementPassiveItemSlot.unscaledSlotSize - 5)
                 .WithEmptyParent();
 
-            CairoFont font = CairoFont.WhiteSmallText().WithFontSize((float)ElementGeometrics.SmallishFontSize);
+            CairoFont font = CairoFont.WhiteSmallText().WithFontSize((float)GuiStyle.SmallishFontSize);
             font.FontWeight = FontWeight.Bold;
             font.Color = new double[] { 1, 1, 1, 1 };
             font.StrokeColor = new double[] { 0, 0, 0, 1 };
@@ -130,8 +130,8 @@ namespace Vintagestory.API.Client
             ImageSurface slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
             Context slotCtx = genContext(slotSurface);
 
-            slotCtx.SetSourceRGBA(ElementGeometrics.DialogAlternateBgColor);
-            RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, ElementGeometrics.ElementBGRadius);
+            slotCtx.SetSourceRGBA(GuiStyle.DialogAlternateBgColor);
+            RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
             slotCtx.Fill();
             EmbossRoundRectangleElement(slotCtx, 0, 0, absSlotWidth, absSlotHeight, true);
 
@@ -148,8 +148,8 @@ namespace Vintagestory.API.Client
                 slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
                 slotCtx = genContext(slotSurface);
 
-                slotCtx.SetSourceRGBA(ElementGeometrics.DialogAlternateBgColor);
-                RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, ElementGeometrics.ElementBGRadius);
+                slotCtx.SetSourceRGBA(GuiStyle.DialogAlternateBgColor);
+                RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
                 slotCtx.Fill();
                 EmbossRoundRectangleElement(slotCtx, 0, 0, absSlotWidth, absSlotHeight, true);
 
@@ -168,8 +168,8 @@ namespace Vintagestory.API.Client
             slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
             slotCtx = genContext(slotSurface);
 
-            slotCtx.SetSourceRGBA(ElementGeometrics.DialogBlueBgColor);
-            RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, ElementGeometrics.ElementBGRadius);
+            slotCtx.SetSourceRGBA(GuiStyle.DialogBlueBgColor);
+            RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
             slotCtx.Fill();
 
             generateTexture(slotSurface, ref highlightSlotTexture);
@@ -231,7 +231,7 @@ namespace Vintagestory.API.Client
             {
                 double x = scaled(4);
                 double y = (int)slotBounds[slotIndex].InnerHeight - scaled(3) - scaled(4);
-                textCtx.SetSourceRGBA(ElementGeometrics.DialogStrongBgColor);
+                textCtx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
                 double width = (slotBounds[slotIndex].InnerWidth - scaled(8));
                 double height = scaled(4);
                 RoundRectangle(textCtx, x, y, width, height, 1);
@@ -466,7 +466,8 @@ namespace Vintagestory.API.Client
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
-            base.OnMouseDownOnElement(api, args);
+            //base.OnMouseDownOnElement(api, args);
+
             wasMouseDownOnSlotIndex.Clear();
             leftMouseDownDistributeSlotsBySlotid.Clear();
 
@@ -498,6 +499,7 @@ namespace Vintagestory.API.Client
                         api.Input.KeyboardKeyState[(int)GlKeys.LControl],
                         api.Input.KeyboardKeyState[(int)GlKeys.LAlt]
                     );
+                    args.Handled = true;
 
                     break;
                     
@@ -534,7 +536,8 @@ namespace Vintagestory.API.Client
                 if (slotBounds[i].PointInside(args.X, args.Y))
                 {
                     int newHoverSlotid = renderedSlots.GetKeyAtIndex(i);
-                    ItemStack stack = inventory.GetSlot(newHoverSlotid).Itemstack;
+                    ItemSlot newHoverSlot = inventory.GetSlot(newHoverSlotid);
+                    ItemStack stack = newHoverSlot.Itemstack;
 
                     // Cheap hax for hover-right-mouse-down slot filling
                     if (isRightMouseDownStartedInsideElem && !wasMouseDownOnSlotIndex.Contains(i))
@@ -583,9 +586,10 @@ namespace Vintagestory.API.Client
 
 
 
-                    if (newHoverSlotid != hoverSlotId && inventory.GetSlot(newHoverSlotid) != null)
+                    if (newHoverSlotid != hoverSlotId && newHoverSlot != null)
                     {
-                        api.Input.TriggerOnMouseEnterSlot(inventory.GetSlot(newHoverSlotid));
+                        api.Input.TriggerOnMouseEnterSlot(newHoverSlot);
+                        hoverInv = newHoverSlot.Inventory;
                     }
 
                     hoverSlotId = newHoverSlotid;
@@ -596,6 +600,17 @@ namespace Vintagestory.API.Client
             if (hoverSlotId != -1) api.Input.TriggerOnMouseLeaveSlot(inventory.GetSlot(hoverSlotId));
             hoverSlotId = -1;
         }
+
+        IInventory hoverInv;
+        public override bool OnMouseLeaveSlot(ICoreClientAPI api, IItemSlot slot)
+        {
+            if (slot.Inventory == hoverInv)
+            {
+                hoverSlotId = -1;
+            }
+            return false;
+        }
+
 
         private void RedistributeStacks(int intoSlotId)
         {
@@ -630,7 +645,7 @@ namespace Vintagestory.API.Client
             }
         }
 
-        internal virtual void SlotClick(ICoreClientAPI api, int slotId, EnumMouseButton mouseButton, bool shiftPressed, bool ctrlPressed, bool altPressed)
+        public virtual void SlotClick(ICoreClientAPI api, int slotId, EnumMouseButton mouseButton, bool shiftPressed, bool ctrlPressed, bool altPressed)
         {
             List<IInventory> inventories = api.World.Player.InventoryManager.OpenedInventories;
             IInventory mouseCursorSlot = api.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.mousecursorInvClassName);
@@ -641,6 +656,7 @@ namespace Vintagestory.API.Client
                 (ctrlPressed ? EnumModifierKey.CTRL : 0) |
                 (altPressed ? EnumModifierKey.ALT : 0)
             ;
+
             ItemStackMoveOperation op = new ItemStackMoveOperation(api.World, mouseButton, modifiers, EnumMergePriority.AutoMerge);
             op.ActingPlayer = api.World.Player;
 

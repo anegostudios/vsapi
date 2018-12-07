@@ -9,6 +9,14 @@ namespace Vintagestory.API.Client
         public double offsetX;
         public double offsetY;
 
+        /// <summary>
+        /// Creates a new GUIElementStaticText.
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="text">The text of the Element</param>
+        /// <param name="orientation">The orientation of the text.</param>
+        /// <param name="bounds">The bounds of the element.</param>
+        /// <param name="font">The font of the text.</param>
         public GuiElementStaticText(ICoreClientAPI capi, string text, EnumTextOrientation orientation, ElementBounds bounds, CairoFont font) : base(capi, text, font, bounds)
         {
             this.orientation = orientation;
@@ -18,20 +26,20 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
 
-            Bounds.absInnerHeight = ShowMultilineText(ctx, text, (int)(offsetX + Bounds.drawX), (int)(offsetY + Bounds.drawY), Bounds.InnerWidth, orientation);
+            Bounds.absInnerHeight = textUtil.AutobreakAndDrawMultilineTextAt(
+                ctx, Font, text, (int)(offsetX + Bounds.drawX), (int)(offsetY + Bounds.drawY), 
+                Bounds.InnerWidth, 
+                orientation
+            );
         }
-
-        internal double GetMultilineTextHeight(double lineHeightMultiplier = 1f)
-        {
-            return GetMultilineTextHeight(text, Bounds.InnerWidth, lineHeightMultiplier);
-        }
+        
 
         internal void AutoBoxSize(bool onlyGrow = false)
         {
             Font.AutoBoxSize(text, Bounds, onlyGrow);
         }
 
-        public override void SetValue(string text)
+        public void SetValue(string text)
         {
             this.text = text;
         }
@@ -40,7 +48,13 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
+        /// <summary>
+        /// Adds a static text component to the GUI
+        /// </summary>
+        /// <param name="text">The text of the text component.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">The bounds of the text container.</param>
+        /// <param name="key">The name of the component.</param>
         public static GuiComposer AddStaticText(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -50,7 +64,14 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
-
+        /// <summary>
+        /// Adds a static text component to the GUI
+        /// </summary>
+        /// <param name="text">The text of the text component.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="orientation">The orientation of the text.</param>
+        /// <param name="bounds">The bounds of the text container.</param>
+        /// <param name="key">The name of the component.</param>
         public static GuiComposer AddStaticText(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -60,6 +81,14 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Adds a static text component to the GUI that automatically resizes as necessary.
+        /// </summary>
+        /// <param name="text">The text of the text component.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="orientation">The orientation of the text.</param>
+        /// <param name="bounds">The bounds of the text container.</param>
+        /// <param name="key">The name of the component.</param>
         public static GuiComposer AddStaticTextAutoBoxSize(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -71,6 +100,10 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the static text component by name.
+        /// </summary>
+        /// <param name="key">The name of the component.</param>
         public static GuiElementStaticText GetStaticText(this GuiComposer composer, string key)
         {
             return (GuiElementStaticText)composer.GetElement(key);

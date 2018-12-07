@@ -9,6 +9,14 @@ namespace Vintagestory.API.Client
     {
         EnumTextOrientation orientation;
 
+        /// <summary>
+        /// Creates a new Engraved Text element.
+        /// </summary>
+        /// <param name="capi">The client API.</param>
+        /// <param name="text">The text on the element.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="bounds">The bounds of the Text Element.</param>
+        /// <param name="orientation">The orientation of the text.</param>
         public GuiElementEngravedText(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds, EnumTextOrientation orientation = EnumTextOrientation.Left) : base(capi, text, font, bounds) 
         {
             this.orientation = orientation;
@@ -32,7 +40,7 @@ namespace Vintagestory.API.Client
             Font.Color = new double[] { 20, 20, 20, 0.35f };
             Font.SetupContext(ctxInsetShadow);
 
-            ShowMultilineText(ctxInsetShadow, text, Bounds.drawX + scaled(2), Bounds.drawY + scaled(2), Bounds.InnerWidth, orientation);
+            DrawMultilineTextAt(ctxInsetShadow, Bounds.drawX + scaled(2), Bounds.drawY + scaled(2), orientation);
 
 
             insetShadowSurface.Blur(7,
@@ -53,10 +61,10 @@ namespace Vintagestory.API.Client
             Font.SetupContext(ctxText);
 
             ctxText.SetSourceRGBA(0, 0, 0, 0.4);
-            ShowMultilineText(ctxText, text, Bounds.drawX - scaled(0.5), Bounds.drawY - scaled(0.5), Bounds.InnerWidth, orientation);
+            DrawMultilineTextAt(ctxText, Bounds.drawX - scaled(0.5), Bounds.drawY - scaled(0.5), orientation);
 
             ctxText.SetSourceRGBA(1, 1, 1, 1);
-            ShowMultilineText(ctxText, text, Bounds.drawX + scaled(1), Bounds.drawY + scaled(1), Bounds.InnerWidth, orientation);
+            DrawMultilineTextAt(ctxText, Bounds.drawX + scaled(1), Bounds.drawY + scaled(1), orientation);
 
             ctxText.Operator = Operator.Atop;
             ctxText.SetSourceSurface(insetShadowSurface, 0, 0);
@@ -68,7 +76,7 @@ namespace Vintagestory.API.Client
             ctxText.Operator = Operator.Over;
             Font.Color = new double[] { 0, 0, 0, 0.35 };
             Font.SetupContext(ctxText);
-            ShowMultilineText(ctxText, text, (int)Bounds.drawX, (int)Bounds.drawY, Bounds.InnerWidth, orientation);
+            DrawMultilineTextAt(ctxText, (int)Bounds.drawX, (int)Bounds.drawY, orientation);
 
             ctxStatic.Antialias = Antialias.Best;
             ctxStatic.Operator = Operator.HardLight;

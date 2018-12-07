@@ -38,14 +38,6 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Tree attributes for the GUI
-        /// </summary>
-        public override ITreeAttribute Attributes
-        {
-            get { return null; }
-        }
-
-        /// <summary>
         /// Builds the dialogue using the dialogue settings from JSON.
         /// </summary>
         /// <param name="settings">The dialogue settings.</param>
@@ -64,11 +56,7 @@ namespace Vintagestory.API.Client
             ComposeDialog();
         }
 
-        /// <summary>
-        /// Should the world interactions be disabled?
-        /// </summary>
-        /// <returns>Whether JSON thinks world interaction should be disabled.</returns>
-        public override bool DisableWorldInteract()
+        public override bool RequiresUngrabbedMouse()
         {
             return settings.DisableWorldInteract;
         }
@@ -89,7 +77,7 @@ namespace Vintagestory.API.Client
 
             GuiComposer composer =
                 capi.Gui
-               .CreateCompo("cmdDlg" + settings.Code, dlgBounds, false)
+               .CreateCompo("cmdDlg" + settings.Code, dlgBounds)
                .AddDialogBG(ElementStdBounds.DialogBackground().WithScale(factor).WithFixedPadding(settings.Padding), true)
                .BeginChildElements()
             ;

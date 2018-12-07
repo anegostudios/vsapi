@@ -8,8 +8,10 @@ namespace Vintagestory.API.Client
 {
     public class TextBackground
     {
-        public int padding = 0;
-        public double radius = 0;
-        public double[] color = new double[] { 0, 0, 0, 0 };
+        public int Padding = 0;
+        public double Radius = 0;
+        public double[] FillColor = new double[] { 0, 0, 0, 0 };
+        public double[] StrokeColor = GuiStyle.DialogBorderColor;
+        public double StrokeWidth = 0;
     }
 }

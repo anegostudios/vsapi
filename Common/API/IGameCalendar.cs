@@ -35,12 +35,12 @@ namespace Vintagestory.API.Common
         /// This acts as a multiplier on how much faster an ingame second passes by compared to a real life second. The default is 60, hence per default a day lasts 24 minutes
         /// This is the sum of all modifiers
         /// </summary>
-        int SpeedOfTime { get; }
+        float SpeedOfTime { get; }
 
         /// <summary>
         /// If you want to modify the time speed, set a value here
         /// </summary>
-        void SetTimeSpeedModifier(string name, int speed);
+        void SetTimeSpeedModifier(string name, float speed);
 
         void RemoveTimeSpeedModifier(string name);
 

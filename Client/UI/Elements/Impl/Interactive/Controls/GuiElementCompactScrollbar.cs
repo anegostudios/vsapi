@@ -51,7 +51,7 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             RoundRectangle(ctx, 0, 0, scaled(Bounds.InnerWidth - 1), currentHandleHeight, 2);
-            ctx.SetSourceRGBA(ElementGeometrics.DialogDefaultBgColor[0], ElementGeometrics.DialogDefaultBgColor[1], ElementGeometrics.DialogDefaultBgColor[2], ElementGeometrics.DialogDefaultBgColor[3]);
+            ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor[0], GuiStyle.DialogDefaultBgColor[1], GuiStyle.DialogDefaultBgColor[2], GuiStyle.DialogDefaultBgColor[3]);
             ctx.Fill();
 
             EmbossRoundRectangleElement(ctx, 0, 0, scaled(Bounds.InnerWidth - 1), currentHandleHeight, false, 2, 2);

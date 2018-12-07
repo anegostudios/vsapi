@@ -31,8 +31,10 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
+        /// <param name="handHandling"></param>
+        /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual void OnHeldAttackStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandHandling handling)
+        public virtual void OnHeldAttackStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandHandling handling)
         {
             handHandling = EnumHandHandling.NotHandled;
         }
@@ -47,8 +49,9 @@ namespace Vintagestory.API.Common
         /// <param name="blockSelection"></param>
         /// <param name="entitySel"></param>
         /// <param name="cancelReason"></param>
+        /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackCancel(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandHandling handling)
+        public virtual bool OnHeldAttackCancel(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandHandling handling)
         {
             handling = EnumHandHandling.NotHandled;
             return false;
@@ -62,8 +65,9 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySel"></param>
+        /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackStep(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
+        public virtual bool OnHeldAttackStep(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
         {
             handling = EnumHandHandling.NotHandled;
             return false;
@@ -77,7 +81,8 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySel"></param>
-        public virtual void OnHeldAttackStop(float secondsPassed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
+        /// <param name="handling"></param>
+        public virtual void OnHeldAttackStop(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
         {
             handling = EnumHandHandling.NotHandled;
         }
@@ -91,9 +96,10 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
+        /// <param name="handHandling"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual void OnHeldInteractStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandling handling)
+        public virtual void OnHeldInteractStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandling handling)
         {
             handling = EnumHandling.NotHandled;
         }
@@ -109,7 +115,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
+        public virtual bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
         {
             handling = EnumHandling.NotHandled;
             return false;
@@ -124,7 +130,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
-        public virtual void OnHeldInteractStop(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
+        public virtual void OnHeldInteractStop(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
         {
             handling = EnumHandling.NotHandled;
             return;
@@ -222,7 +228,8 @@ namespace Vintagestory.API.Common
         /// <param name="blockAccessor"></param>
         /// <param name="pos"></param>
         /// <param name="type"></param>
-        /// <param name="handled"></param>
+        /// <param name="sc"></param>
+        /// <param name="handling"></param>
         /// <returns></returns>
         public virtual bool CanCreatureSpawnOn(IBlockAccessor blockAccessor, BlockPos pos, EntityProperties type, BaseSpawnConditions sc, ref EnumHandling handling)
         {
@@ -314,6 +321,19 @@ namespace Vintagestory.API.Common
             handling = EnumHandling.NotHandled;
         }
 
+
+        /// <summary>
+        /// Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
+        /// Be aware that the vanilla OnBlockPlaced block behavior is to spawn the block entity if any is associated with this block, so this code will not get executed if you set handled to PreventDefault or Last
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="blockPos"></param>
+        /// <param name="handled"></param>
+        public virtual void OnBlockPlaced(IWorldAccessor world, BlockPos blockPos, ref EnumHandling handled)
+        {
+            handled = EnumHandling.NotHandled;
+        }
+
         /// <summary>
         /// When a player does a right click while targeting this placed block. Should return true if the event is handled, so that other events can occur, e.g. eating a held item if the block is not interactable with.
         /// </summary>
@@ -337,6 +357,7 @@ namespace Vintagestory.API.Common
         {
 
         }
+
 
     }
 }

@@ -13,6 +13,23 @@ namespace Vintagestory.API.Client
     public delegate void ChatLineDelegate(int groupId, string message, EnumChatType chattype, string data);
     public delegate void ClientChatLineDelegate(int groupId, ref string message);
 
+    public class DummyRenderer : IRenderer
+    {
+        public double RenderOrder { get; set; }
+        public int RenderRange { get; set; }
+        public System.Action<float> action;
+
+        public void Dispose()
+        {
+
+        }
+
+        public void OnRenderFrame(float deltaTime, EnumRenderStage stage)
+        {
+            action(deltaTime);
+        }
+    }
+
     /// <summary>
     /// Contains some client specific events you can hook into
     /// </summary>
@@ -66,9 +83,10 @@ namespace Vintagestory.API.Client
         event Common.Action<BlockPos> BlockChanged;
 
         /// <summary>
-        /// When the player changed his active hotbar slot
+        /// Fired when the local player changes their active
+        /// hotbar slot, or has it changed by the server.
         /// </summary>
-        event Common.Action ActiveSlotChanged;
+        event Common.Action<ActiveHotbarSlotChangedEvent> ActiveHotbarSlotChanged;
 
         /// <summary>
         /// Registers a rendering handler to be called during every render frame
@@ -116,22 +134,22 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Provides low level access to the mouse down event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
-        event MouseEventDelegate OnMouseDown;
+        event MouseEventDelegate MouseDown;
         /// <summary>
         /// Provides low level access to the mouse up event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
-        event MouseEventDelegate OnMouseUp;
+        event MouseEventDelegate MouseUp;
         /// <summary>
         /// Provides low level access to the mouse move event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
-        event MouseEventDelegate OnMouseMove;
+        event MouseEventDelegate MouseMove;
         /// <summary>
         /// Provides low level access to the key down event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
-        event KeyEventDelegate OnKeyDown;
+        event KeyEventDelegate KeyDown;
         /// <summary>
         /// Provides low level access to the key up event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
-        event KeyEventDelegate OnKeyUp;
+        event KeyEventDelegate KeyUp;
     }
 }

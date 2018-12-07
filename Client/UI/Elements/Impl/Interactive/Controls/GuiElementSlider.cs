@@ -135,8 +135,8 @@ namespace Vintagestory.API.Client
                 text = OnSliderTooltip(currentValue);
             }
 
-            textElem = new GuiElementStaticText(api, text, EnumTextOrientation.Center, bounds, CairoFont.WhiteMediumText().WithFontSize((float)ElementGeometrics.SubNormalFontSize));
-            textElem.Font.UnscaledFontsize = ElementGeometrics.SmallishFontSize;
+            textElem = new GuiElementStaticText(api, text, EnumTextOrientation.Center, bounds, CairoFont.WhiteMediumText().WithFontSize((float)GuiStyle.SubNormalFontSize));
+            textElem.Font.UnscaledFontsize = GuiStyle.SmallishFontSize;
             textElem.AutoBoxSize();
             textElem.Bounds.CalcWorldBounds();
 
@@ -145,10 +145,10 @@ namespace Vintagestory.API.Client
 
             ctx.SetSourceRGBA(1, 1, 1, 0);
             ctx.Paint();
-            ctx.SetSourceRGBA(ElementGeometrics.DialogStrongBgColor);
-            RoundRectangle(ctx, 0, 0, bounds.OuterWidth, bounds.OuterHeight, ElementGeometrics.ElementBGRadius);
+            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
+            RoundRectangle(ctx, 0, 0, bounds.OuterWidth, bounds.OuterHeight, GuiStyle.ElementBGRadius);
             ctx.FillPreserve();
-            double[] color = ElementGeometrics.DialogStrongBgColor;
+            double[] color = GuiStyle.DialogStrongBgColor;
             ctx.SetSourceRGBA(color[0] / 2, color[1] / 2, color[2] / 2, color[3]);
             ctx.Stroke();
 
@@ -223,7 +223,7 @@ namespace Vintagestory.API.Client
 
             ctx.SetSourceRGBA(1, 0, 1, 0.4);
 
-            RoundRectangle(ctx, 0, 0, alarmTextureRect.Width, alarmTextureRect.Height, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctx, 0, 0, alarmTextureRect.Width, alarmTextureRect.Height, GuiStyle.ElementBGRadius);
             ctx.Fill();
 
             generateTexture(surface, ref alarmValueTexture.TextureId);

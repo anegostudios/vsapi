@@ -13,7 +13,6 @@ namespace Vintagestory.API.Common.Entities
 {
     public class EntityProperties
     {
-
         public AssetLocation Code;
 
         public string Class;
@@ -23,12 +22,13 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EnumHabitat Habitat = EnumHabitat.Land;
 
-        public Vec2f HitBoxSize;
+        public Vec2f HitBoxSize = new Vec2f(0.2f, 0.2f);
+        public Vec2f DeadHitBoxSize = new Vec2f(0.3f, 0.3f);
 
         /// <summary>
         /// How high the camera should be placed if this entity were to be controlled by the player
         /// </summary>
-        internal double EyeHeight;
+        public double EyeHeight;
 
         public void SetEyeHeight(double height)
         {
@@ -53,9 +53,6 @@ namespace Vintagestory.API.Common.Entities
 
         public float KnockbackResistance;
 
-        /// <summary>
-        /// Permanently stored entity attributes that are client and server side
-        /// </summary>
         public JsonObject Attributes;
 
         public EntityClientProperties Client;
@@ -65,7 +62,6 @@ namespace Vintagestory.API.Common.Entities
         public Dictionary<string, AssetLocation> Sounds;
 
         public Dictionary<string, AssetLocation[]> ResolvedSounds = new Dictionary<string, AssetLocation[]>();
-
 
         public float IdleSoundChance = 0.3f;
 
@@ -123,7 +119,8 @@ namespace Vintagestory.API.Common.Entities
                 Code = Code.Clone(),
                 Class = Class,
                 Habitat = Habitat,
-                HitBoxSize = HitBoxSize,
+                HitBoxSize = HitBoxSize.Clone(),
+                DeadHitBoxSize = DeadHitBoxSize.Clone(),
                 CanClimb = CanClimb,
                 CanClimbAnywhere = CanClimbAnywhere,
                 FallDamage = FallDamage,
@@ -157,7 +154,7 @@ namespace Vintagestory.API.Common.Entities
                 Server.loadBehaviors(entity, this, api.World);
             }
 
-            Client?.Init(); // Init also on server
+            Client?.Init(Code, api.World);
 
             InitSounds(api.Assets);
         }
@@ -214,13 +211,14 @@ namespace Vintagestory.API.Common.Entities
                 if (code == null) continue;
 
                 EntityBehavior behavior = world.ClassRegistry.CreateEntityBehavior(entity, code);
-                behavior.Initialize(properties, BehaviorsAsJsonObj[i]);
                 Behaviors.Add(behavior);
+                behavior.Initialize(properties, BehaviorsAsJsonObj[i]);
             }
         }
 
         public abstract EntitySidedProperties Clone();
     }
+
 
     public class EntityClientProperties : EntitySidedProperties
     {
@@ -254,34 +252,39 @@ namespace Vintagestory.API.Common.Entities
 
         public CompositeShape Shape;
 
+        /// <summary>
+        /// Only loaded for World.EntityTypes instances of EntityProperties, because it makes no sense to have 1000 loaded entities needing to load 1000 shapes. During entity load/spawn this value is assigned however
+        /// On the client it gets set by the EntityTextureAtlasManager
+        /// On the server by the EntitySimulation system
+        /// </summary>
+        public Shape LoadedShape;
+
         public float Size = 1f;
 
         public AnimationMetaData[] Animations;
 
-        public Dictionary<string, AnimationMetaData> AnimationsByMetaCode = new Dictionary<string, AnimationMetaData>();
-
-
-        public Shape LoadedShape;
+        public Dictionary<string, AnimationMetaData> AnimationsByMetaCode = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
 
         /// <summary>
         /// Returns the first texture in Textures dict
         /// </summary>
         public CompositeTexture FirstTexture { get { return (Textures == null || Textures.Count == 0) ? null : Textures.First().Value; } }
 
-        public void LoadShape(EntityProperties entityType, ICoreClientAPI capi)
+
+        public Shape LoadShape(EntityProperties entityTypeForLogging, ICoreAPI api)
         {
             AssetLocation shapePath;
             Shape entityShape = null;
 
             // Not using a shape, it seems, so whatev ^_^
-            if (Shape == null) return;
+            if (Shape == null) return null;
 
             if (Shape?.Base == null || Shape.Base.Path.Length == 0)
             {
                 shapePath = new AssetLocation("shapes/block/basic/cube.json");
                 if (Shape?.VoxelizeTexture != true)
                 {
-                    capi.World.Logger.Warning("No entity shape supplied for entity {0}, using cube shape", entityType.Code);
+                    api.World.Logger.Warning("No entity shape supplied for entity {0}, using cube shape", entityTypeForLogging.Code);
                 }
                 Shape.Base = new AssetLocation("block/basic/cube");
             }
@@ -290,12 +293,12 @@ namespace Vintagestory.API.Common.Entities
                 shapePath = Shape.Base.CopyWithPath("shapes/" + Shape.Base.Path + ".json");
             }
 
-            IAsset asset = capi.Assets.TryGet(shapePath);
+            IAsset asset = api.Assets.TryGet(shapePath);
 
             if (asset == null)
             {
-                capi.World.Logger.Error("Entity shape {0} for entity {1} not found, was supposed to be at {2}. Entity will be invisible!", Shape, entityType.Code, shapePath);
-                return;
+                api.World.Logger.Error("Entity shape {0} for entity {1} not found, was supposed to be at {2}. Entity will be invisible!", Shape, entityTypeForLogging.Code, shapePath);
+                return null;
             }
 
             try
@@ -304,17 +307,16 @@ namespace Vintagestory.API.Common.Entities
             }
             catch (Exception e)
             {
-                capi.World.Logger.Error("Exception thrown when trying to load entity shape {0} for entity {1}. Entity will be invisible! Exception: {2}", Shape, entityType.Code, e);
-                return;
+                api.World.Logger.Error("Exception thrown when trying to load entity shape {0} for entity {1}. Entity will be invisible! Exception: {2}", Shape, entityTypeForLogging.Code, e);
+                return null;
             }
 
-            LoadedShape = entityShape;
-            entityShape.ResolveReferences(capi.World.Logger, Shape.Base.ToString());
+            entityShape.ResolveReferences(api.World.Logger, Shape.Base.ToString());
+            CacheInvTransforms(entityShape.Elements);
 
-            CacheInvTransforms(LoadedShape.Elements);
-
-
+            return entityShape;
         }
+
 
         private void CacheInvTransforms(ShapeElement[] elements)
         {
@@ -327,7 +329,7 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
-        public void Init()
+        public void Init(AssetLocation entityTypeCode, IWorldAccessor world)
         {
             if (Animations != null)
             {
@@ -337,24 +339,17 @@ namespace Vintagestory.API.Common.Entities
                     if (animMeta.Animation != null) AnimationsByMetaCode[animMeta.Code] = animMeta;
                     animMeta.Init();
                 }
-
             }
+
+            LoadedShape = world.EntityTypes.FirstOrDefault(et => et.Code.Equals(entityTypeCode))?.Client?.LoadedShape;
         }
-
-        /*public void Bake(IAssetManager assetManager)
-        {
-            foreach (var val in Textures)
-            {
-                val.Value.Bake(assetManager);
-            }
-        }*/
-
+        
+        /// <summary>
+        /// Does not clone textures and shapes
+        /// </summary>
+        /// <returns></returns>
         public override EntitySidedProperties Clone()
         {
-            /*Dictionary<string, CompositeTexture> newTextures = new Dictionary<string, CompositeTexture>();
-            foreach (var texture in Textures)
-                newTextures[texture.Key] = texture.Value.Clone();*/
-
             AnimationMetaData[] newAnimations = null;
             if (Animations != null)
             {
@@ -363,10 +358,13 @@ namespace Vintagestory.API.Common.Entities
                     newAnimations[i] = Animations[i].Clone();
             }
 
-            Dictionary<string, AnimationMetaData> newAnimationsByMetaData = new Dictionary<string, AnimationMetaData>();
+            Dictionary<string, AnimationMetaData> newAnimationsByMetaData = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
+
             foreach (var animation in AnimationsByMetaCode)
+            {
                 newAnimationsByMetaData[animation.Key] = animation.Value.Clone();
-            
+            }
+
             return new EntityClientProperties(BehaviorsAsJsonObj.Clone() as JsonObject[])
             {
                 Textures = Textures,
@@ -375,8 +373,7 @@ namespace Vintagestory.API.Common.Entities
                 Size = Size,
                 Shape = Shape?.Clone(),
                 Animations = newAnimations,
-                AnimationsByMetaCode = newAnimationsByMetaData,
-                LoadedShape = LoadedShape
+                AnimationsByMetaCode = newAnimationsByMetaData
             };
         }
     }
@@ -388,7 +385,7 @@ namespace Vintagestory.API.Common.Entities
         public ITreeAttribute Attributes;
 
         public SpawnConditions SpawnConditions;
-
+        
         public override EntitySidedProperties Clone()
         {
             return new EntityServerProperties(BehaviorsAsJsonObj.Clone() as JsonObject[])
@@ -398,4 +395,5 @@ namespace Vintagestory.API.Common.Entities
             };
         }
     }
+    
 }

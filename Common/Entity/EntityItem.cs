@@ -11,9 +11,6 @@ namespace Vintagestory.API.Common
     {
         ItemStack stack;
         public long itemSpawnedMilliseconds;
-        Vec3d tmpPos = new Vec3d();
-        int counter = 0;
-        bool stuckInBlock;
 
         public ItemStack Itemstack
         {
@@ -80,70 +77,6 @@ namespace Vintagestory.API.Common
                 Itemstack.Collectible.OnGroundIdle(this);
             }
             else Die();
-
-            
-            if (counter++ > 10 || stuckInBlock)
-            {
-                stuckInBlock = false;
-                counter = 0;
-                Properties.Habitat = EnumHabitat.Land;
-                if (!Swimming)
-                {
-                    tmpPos.Set(LocalPos.X, LocalPos.Y, LocalPos.Z);
-                    Cuboidd collbox = World.CollisionTester.GetCollidingCollisionBox(World.BlockAccessor, CollisionBox, tmpPos, false);
-
-                    if (collbox != null)
-                    {
-                        PushoutOfCollisionbox(dt, collbox);
-                        stuckInBlock = true;
-                    }
-                }
-            }
-        }
-
-        private void PushoutOfCollisionbox(float dt, Cuboidd collBox)
-        {
-            double posX = LocalPos.X;
-            double posY = LocalPos.Y;
-            double posZ = LocalPos.Z;
-            /// North: Negative Z
-            /// East: Positive X
-            /// South: Positive Z
-            /// West: Negative X
-
-            double[] distByFacing = new double[]
-            {
-                posZ - collBox.Z1, // N
-                collBox.X2 - posX, // E
-                collBox.Z2 - posZ, // S
-                posX - collBox.X1, // W
-                collBox.Y2 - posY, // U
-                99 // D
-            };
-
-            BlockFacing pushDir = BlockFacing.UP;
-            double shortestDist = 99;
-            for (int i = 0; i < distByFacing.Length; i++)
-            {
-                BlockFacing face = BlockFacing.ALLFACES[i];
-                if (distByFacing[i] < shortestDist && !World.CollisionTester.IsColliding(World.BlockAccessor, CollisionBox, tmpPos.Set(posX + face.Normali.X, posY, posZ + face.Normali.Z)))
-                {
-                    shortestDist = distByFacing[i];
-                    pushDir = face;
-                }    
-            }
-
-            dt = Math.Min(dt, 0.1f);
-
-            LocalPos.X += pushDir.Normali.X * dt;
-            LocalPos.Y += pushDir.Normali.Y * dt;
-            LocalPos.Z += pushDir.Normali.Z * dt;
-
-            LocalPos.Motion.X = pushDir.Normali.X * dt;
-            LocalPos.Motion.Y = pushDir.Normali.Y * dt * 2;
-            LocalPos.Motion.Z = pushDir.Normali.Z * dt;
-
-            Properties.Habitat = EnumHabitat.Air;
         }
 
 

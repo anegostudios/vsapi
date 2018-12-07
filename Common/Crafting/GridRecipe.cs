@@ -65,7 +65,6 @@ namespace Vintagestory.API.Common
 
         public CraftingRecipeIngredient[] resolvedIngredients;
 
-        public bool Enabled = true;
 
         IWorldAccessor world;
 
@@ -80,7 +79,8 @@ namespace Vintagestory.API.Common
 
             IngredientPattern = IngredientPattern.Replace(",", "").Replace("\t", "").Replace("\r", "").Replace("\n", "");
 
-            if (IngredientPattern == null || Width * Height != IngredientPattern.Length) {
+            if (IngredientPattern == null || Width * Height != IngredientPattern.Length)
+            {
                 world.Logger.Error("Grid Recipe with output {0} has no ingredient pattern or incorrect ingredient pattern length. Ignoring recipe.", Output);
                 return false;
             }
@@ -113,7 +113,7 @@ namespace Vintagestory.API.Common
             }
 
             return true;
-        } 
+        }
 
 
         /// <summary>
@@ -146,7 +146,8 @@ namespace Vintagestory.API.Common
                             codes.Add(codepart);
                         }
                     }
-                } else
+                }
+                else
                 {
                     for (int i = 0; i < world.Items.Length; i++)
                     {
@@ -210,6 +211,7 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < resolvedIngredients.Length; i++)
             {
                 CraftingRecipeIngredient ingredient = resolvedIngredients[i];
+                if (ingredient == null) continue;
 
                 if (ingredient.IsWildCard || ingredient.IsTool)
                 {
@@ -236,7 +238,7 @@ namespace Vintagestory.API.Common
             {
                 ItemStack inStack = inputSlots[i].Itemstack;
                 if (inStack == null) continue;
-                
+
                 for (int j = 0; j < exactMatchIngredients.Count; j++)
                 {
                     if (exactMatchIngredients[j].ResolvedItemstack.Satisfies(inStack))
@@ -244,7 +246,7 @@ namespace Vintagestory.API.Common
                         int quantity = Math.Min(exactMatchIngredients[j].ResolvedItemstack.StackSize, inStack.StackSize);
 
                         inStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlots[i], this, exactMatchIngredients[j], byPlayer, quantity);
-                        
+
                         exactMatchIngredients[j].ResolvedItemstack.StackSize -= quantity;
 
                         if (exactMatchIngredients[j].ResolvedItemstack.StackSize <= 0)
@@ -258,7 +260,7 @@ namespace Vintagestory.API.Common
 
                 for (int j = 0; j < wildcardIngredients.Count; j++)
                 {
-                    CraftingRecipeIngredient ingredient = resolvedIngredients[j];
+                    CraftingRecipeIngredient ingredient = wildcardIngredients[j];
 
                     if (
                         ingredient.Type == inStack.Class &&
@@ -268,12 +270,13 @@ namespace Vintagestory.API.Common
                     {
                         int quantity = Math.Min(ingredient.Quantity, inStack.StackSize);
 
-                        inStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlots[i], this, wildcardIngredients[j], byPlayer, quantity);
+                        inStack.Collectible.OnConsumedByCrafting(inputSlots, inputSlots[i], this, ingredient, byPlayer, quantity);
 
                         if (ingredient.IsTool)
                         {
                             wildcardIngredients.RemoveAt(j);
-                        } else
+                        }
+                        else
                         {
                             ingredient.Quantity -= quantity;
 
@@ -377,6 +380,8 @@ namespace Vintagestory.API.Common
             {
                 CraftingRecipeIngredient ingredient = resolvedIngredients[i];
 
+                if (ingredient == null) continue;
+
                 if (ingredient.IsWildCard)
                 {
                     bool foundw = false;
@@ -414,7 +419,7 @@ namespace Vintagestory.API.Common
                 if (!found) ingredientStacks.Add(stack.Clone());
             }
 
-            
+
 
             if (ingredientStacks.Count != suppliedStacks.Count) return false;
 
@@ -467,7 +472,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        
+
 
         internal T GetElementInGrid<T>(int row, int col, T[] stacks, int gridwidth)
         {
@@ -477,7 +482,7 @@ namespace Vintagestory.API.Common
             return stacks[row * gridwidth + col];
         }
 
-        
+
 
         /// <summary>
         /// Serialized the recipe
@@ -554,16 +559,26 @@ namespace Vintagestory.API.Common
             recipe.Height = Height;
             recipe.IngredientPattern = IngredientPattern;
             recipe.Ingredients = new Dictionary<string, CraftingRecipeIngredient>();
-            foreach(var val in Ingredients)
+            if (Ingredients != null)
             {
-                recipe.Ingredients[val.Key] = val.Value.Clone();
+                foreach (var val in Ingredients)
+                {
+                    recipe.Ingredients[val.Key] = val.Value.Clone();
+                }
+            }
+            if (resolvedIngredients != null)
+            {
+                recipe.resolvedIngredients = new CraftingRecipeIngredient[resolvedIngredients.Length];
+                for (int i = 0; i < resolvedIngredients.Length; i++)
+                {
+                    recipe.resolvedIngredients[i] = resolvedIngredients[i]?.Clone();
+                }
             }
 
             recipe.Shapeless = Shapeless;
             recipe.Output = Output.Clone();
             recipe.Name = Name;
             recipe.Attributes = Attributes?.Clone();
-            
 
             return recipe;
         }

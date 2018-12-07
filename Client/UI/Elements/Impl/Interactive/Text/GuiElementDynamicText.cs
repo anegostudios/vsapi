@@ -8,7 +8,6 @@ namespace Vintagestory.API.Client
     public class GuiElementDynamicText : GuiElementTextBase
     {
         EnumTextOrientation orientation;
-        public float lineHeightMultiplier;
 
         LoadedTexture textTexture;
 
@@ -18,7 +17,13 @@ namespace Vintagestory.API.Client
         public Action OnClick;
         public bool autoHeight;
 
-        
+        public int QuantityTextLines { get
+            {
+                return textUtil.GetQuantityTextLines(Font, text, Bounds.InnerWidth);
+            }
+        }
+
+
         /// <summary>
         /// Adds a new element that renders text dynamically.
         /// </summary>
@@ -30,7 +35,6 @@ namespace Vintagestory.API.Client
         public GuiElementDynamicText(ICoreClientAPI capi, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds) : base(capi, text, font, bounds)
         {
             this.orientation = orientation;
-            lineHeightMultiplier = 1f;
             textTexture = new LoadedTexture(capi);
         }
 
@@ -45,7 +49,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void AutoHeight()
         {
-            Bounds.fixedHeight = GetMultilineTextHeight(text, Bounds.InnerWidth, lineHeightMultiplier) / RuntimeEnv.GUIScale;
+            Bounds.fixedHeight = GetMultilineTextHeight() / RuntimeEnv.GUIScale;
             Bounds.CalcWorldBounds();
             autoHeight = true;
         }
@@ -59,9 +63,12 @@ namespace Vintagestory.API.Client
             
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
             Context ctx = genContext(surface);
-            ShowMultilineText(ctx, text, 0, 0, Bounds.InnerWidth, orientation, lineHeightMultiplier);
+            DrawMultilineTextAt(ctx, 0, 0, orientation);
             
             generateTexture(surface, ref textTexture);
+
+           // surface.WriteToPng("bla.png");
+
             ctx.Dispose();
             surface.Dispose();
         }
@@ -79,12 +86,7 @@ namespace Vintagestory.API.Client
         }
         
 
-
-        internal void enableStroke()
-        {
-            textPathMode = true;
-        }
-
+        
         /// <summary>
         /// Sets the text value of the element.
         /// </summary>
@@ -110,7 +112,6 @@ namespace Vintagestory.API.Client
         /// <param name="thickness">the thickness of the text.</param>
         public void setStroke(float[] rgba, double thickness)
         {
-            textPathMode = true;
             this.strokeRGB = rgba;
             this.strokeWidth = thickness;
         }
@@ -133,14 +134,12 @@ namespace Vintagestory.API.Client
         /// <param name="font">The font of the text.</param>
         /// <param name="orientation">the text orientation.</param>
         /// <param name="bounds">the bounds of the </param>
-        /// <param name="lineheightmultiplier">The multiplier for the height of the lines.</param>
         /// <param name="key">The name of the element.</param>
-        public static GuiComposer AddDynamicText(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, float lineheightmultiplier = 1f, string key = null)
+        public static GuiComposer AddDynamicText(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {
                 GuiElementDynamicText elem = new GuiElementDynamicText(composer.Api, text, font, orientation, bounds);
-                elem.lineHeightMultiplier = lineheightmultiplier;
                 composer.AddInteractiveElement(elem, key);
             }
             return composer;

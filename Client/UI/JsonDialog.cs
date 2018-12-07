@@ -49,7 +49,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         public OnValueGetDelegate OnGet;
 
-
+        /// <summary>
+        /// Writes the content to the writer.
+        /// </summary>
+        /// <param name="writer">The writer to fill with data.</param>
         public void ToBytes(BinaryWriter writer)
         {
             writer.Write(Code);
@@ -64,6 +67,10 @@ namespace Vintagestory.API.Client
             writer.Write(SizeMultiplier);
         }
 
+        /// <summary>
+        /// Reads the content to the dialog.
+        /// </summary>
+        /// <param name="reader">The reader to read from.</param>
         public void FromBytes(BinaryReader reader)
         {
             Code = reader.ReadString();

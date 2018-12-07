@@ -40,7 +40,7 @@ namespace Vintagestory.API.Client
         {
             text = "Version " + versionnumber + " now available \\o/\nClick here to go to the downloads page";
 
-            Bounds.fixedHeight = GetMultilineTextHeight(text, Bounds.InnerWidth, 1f) / RuntimeEnv.GUIScale;
+            Bounds.fixedHeight = GetMultilineTextHeight() / RuntimeEnv.GUIScale;
             Bounds.CalcWorldBounds();
 
             offsetY = -2*Bounds.fixedHeight;
@@ -52,7 +52,7 @@ namespace Vintagestory.API.Client
             double iconSize = scaled(14);
             double iconY = (Bounds.InnerHeight - iconSize) / 2;
 
-            double[] bgc = ElementGeometrics.DarkBrownColor;
+            double[] bgc = GuiStyle.DarkBrownColor;
             bgc[0] /= 2;
             bgc[1] /= 2;
             bgc[2] /= 2;
@@ -75,7 +75,7 @@ namespace Vintagestory.API.Client
             gradient.Dispose();
 
             ctx.Arc(Bounds.drawX + iconX, Bounds.OuterHeight / 2, iconSize/2 + scaled(4), 0, Math.PI * 2);
-            ctx.SetSourceRGBA(ElementGeometrics.DarkBrownColor);
+            ctx.SetSourceRGBA(GuiStyle.DarkBrownColor);
             ctx.Fill();
 
             double fontheight = Font.GetFontExtents().Height;
@@ -85,7 +85,7 @@ namespace Vintagestory.API.Client
             surface.Image(bitmap.bmp, (int)(Bounds.drawX + iconX - iconSize / 2), (int)(Bounds.drawY + iconY), (int)iconSize, (int)iconSize);
             bitmap.Dispose();
 
-            ShowMultilineText(ctx, text, Bounds.drawX + iconX + 20, Bounds.drawY, Bounds.InnerWidth, EnumTextOrientation.Left, 1f);
+            DrawMultilineTextAt(ctx, Bounds.drawX + iconX + 20, Bounds.drawY);
 
             generateTexture(surface, ref texture);
             ctx.Dispose();

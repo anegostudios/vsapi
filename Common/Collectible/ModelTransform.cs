@@ -97,13 +97,13 @@ namespace Vintagestory.API.Common
         /// Scale = 1, No Translation, Rotation by -45 deg in Y-Axis
         /// </summary>
         /// <returns></returns>
-        public static ModelTransform BlockDefault()
+        public static ModelTransform BlockDefaultFp()
         {
             return new ModelTransform()
             {
-                Translation = new Vec3f(),
-                Rotation = new Vec3f(0, -45, 0),
-                Scale = 1f
+                Translation = new Vec3f(0, -0.15f, 0.5f),
+                Rotation = new Vec3f(0, -20, 0),
+                Scale = 1.3f
             };
         }
 
@@ -187,7 +187,7 @@ namespace Vintagestory.API.Common
             {
                 Translation = new Vec3f(0, 0, 0),
                 Rotation = new Vec3f(90, 0, 0),
-                Origin = new Vec3f(0.5f, 0, 0.5f),
+                Origin = new Vec3f(0.5f, 0.5f, 0.53f),
                 Scale = 1.5f
             };
         }

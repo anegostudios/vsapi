@@ -11,7 +11,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Controls that are always available (survival and creative mode)
         /// </summary>
-        GeneralControls,
+        GUIOrOtherControls,
         /// <summary>
         /// Controls that control the players character. Only triggered when the player not currently inside a dialog.
         /// </summary>

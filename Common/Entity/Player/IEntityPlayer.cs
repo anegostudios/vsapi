@@ -7,7 +7,7 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common.Entities
 {
-    public interface IEntityPlayer : IEntityAgent
+    /*public interface EntityPlayer : EntityAgent
     {
         string PlayerUID { get; }
 
@@ -15,5 +15,5 @@ namespace Vintagestory.API.Common.Entities
         /// Render position for the own player on the client
         /// </summary>
         Vec3d CameraPos { get; }
-    }
+    }*/
 }

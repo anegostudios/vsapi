@@ -12,6 +12,13 @@ namespace Vintagestory.API.Client
 
         int texId;
 
+        /// <summary>
+        /// Adds a custom drawing element to the GUI
+        /// </summary>
+        /// <param name="capi">The Client API</param>
+        /// <param name="bounds">The bounds of the Element</param>
+        /// <param name="OnDraw">The event fired when the object is drawn.</param>
+        /// <param name="interactive">Whether or not the element is able to be interacted with (Default: false)</param>
         public GuiElementCustomDraw(ICoreClientAPI capi, ElementBounds bounds, DrawDelegateWithBounds OnDraw, bool interactive = false) : base(capi, bounds)
         {
             this.OnDraw = OnDraw;
@@ -31,6 +38,9 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Redraws the element.
+        /// </summary>
         public void Redraw()
         {
             ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
@@ -57,6 +67,11 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        /// <summary>
+        /// Adds a static custom draw component to the GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the component.</param>
+        /// <param name="OnDraw">The event fired when the element is drawn.</param>
         public static GuiComposer AddStaticCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds OnDraw)
         {
             if (!composer.composed)
@@ -66,6 +81,12 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Adds a dynamic custom draw component to the GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the component.</param>
+        /// <param name="OnDraw">The event fired when the element is drawn.</param>
+        /// <param name="key">The name of the element.</param>
         public static GuiComposer AddDynamicCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds OnDraw, string key = null)
         {
             if (!composer.composed)

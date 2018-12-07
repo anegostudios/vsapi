@@ -61,7 +61,7 @@ namespace Vintagestory.API.Client
 
 
             // Wood bg
-            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, GuiStyle.ElementBGRadius);
             fillWithPattern(api, ctxStatic, woodTextureName);
 
             EmbossRoundRectangleElement(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight);
@@ -72,7 +72,7 @@ namespace Vintagestory.API.Client
 
             // Wood Inset 
             ctxStatic.SetSourceRGBA(0, 0, 0, 0.6);
-            RoundRectangle(ctxStatic, Bounds.drawX + padding, Bounds.drawY + padding, insetWidth, insetHeight, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctxStatic, Bounds.drawX + padding, Bounds.drawY + padding, insetWidth, insetHeight, GuiStyle.ElementBGRadius);
             ctxStatic.Fill();
 
             EmbossRoundRectangleElement(ctxStatic, Bounds.drawX + padding, Bounds.drawY + padding, insetWidth, insetHeight, true);
@@ -86,7 +86,7 @@ namespace Vintagestory.API.Client
 
                 ctxStatic.SetSourceRGBA(0.62, 0, 0, 0.4);
                 
-                RoundRectangle(ctxStatic, Bounds.drawX + padding + insetWidth * alarmValueRel, Bounds.drawY + padding, insetWidth * (1- alarmValueRel), insetHeight, ElementGeometrics.ElementBGRadius);
+                RoundRectangle(ctxStatic, Bounds.drawX + padding + insetWidth * alarmValueRel, Bounds.drawY + padding, insetWidth * (1- alarmValueRel), insetHeight, GuiStyle.ElementBGRadius);
                 ctxStatic.Fill();
             }
 
@@ -98,11 +98,11 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(1, 1, 1, 0);
             ctx.Paint();
             ctx.SetSourceRGBA(0, 0, 0, 0.5);
-            RoundRectangle(ctx, 0, 0, handleWidth, handleHeight, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctx, 0, 0, handleWidth, handleHeight, GuiStyle.ElementBGRadius);
             ctx.Fill();
             surface.Blur(3);
 
-            RoundRectangle(ctx, 0, 0, handleWidth, handleHeight, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctx, 0, 0, handleWidth, handleHeight, GuiStyle.ElementBGRadius);
             fillWithPattern(api, ctx, woodTextureName);
 
             EmbossRoundRectangleElement(ctx, 0, 0, handleWidth, handleHeight, false);
@@ -120,7 +120,7 @@ namespace Vintagestory.API.Client
             ElementBounds bounds = new ElementBounds().WithFixedPadding(7).WithParent(ElementBounds.Empty);
 
             textElem = new GuiElementStaticText(api, currentValue + unit, EnumTextOrientation.Center, bounds, CairoFont.WhiteMediumText());
-            textElem.Font.UnscaledFontsize = ElementGeometrics.SmallishFontSize;
+            textElem.Font.UnscaledFontsize = GuiStyle.SmallishFontSize;
             textElem.AutoBoxSize();
             textElem.Bounds.CalcWorldBounds();
 
@@ -130,7 +130,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(1, 1, 1, 0);
             ctx.Paint();
             ctx.SetSourceRGBA(0, 0, 0, 0.3);
-            RoundRectangle(ctx, 0, 0, bounds.OuterWidth, bounds.OuterHeight, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctx, 0, 0, bounds.OuterWidth, bounds.OuterHeight, GuiStyle.ElementBGRadius);
             ctx.Fill();
 
             textElem.ComposeElements(ctx, surface);
@@ -184,7 +184,7 @@ namespace Vintagestory.API.Client
 
             ctx.SetSourceRGBA(1, 0, 1, 0.4);
 
-            RoundRectangle(ctx, 0, 0, alarmTextureRect.Width, alarmTextureRect.Height, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctx, 0, 0, alarmTextureRect.Width, alarmTextureRect.Height, GuiStyle.ElementBGRadius);
             ctx.Fill();
 
             generateTexture(surface, ref alarmValueTextureId);

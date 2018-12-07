@@ -8,6 +8,9 @@ using Action = Vintagestory.API.Common.Action;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// A title bar for your GUI.  
+    /// </summary>
     public class GuiElementDialogTitleBar : GuiElementTextBase
     {
         GuiElementListMenu listMenu;
@@ -15,7 +18,9 @@ namespace Vintagestory.API.Client
         Action OnClose;
         internal GuiComposer baseComposer;
 
-
+        /// <summary>
+        /// The size of the close icon in the top right corner of the GUI.
+        /// </summary>
         public static int unscaledCloseIconSize = 15;
 
         LoadedTexture closeIconHoverTexture;
@@ -31,7 +36,15 @@ namespace Vintagestory.API.Client
         Vec2i movingStartPos = new Vec2i();
         ElementBounds parentBoundsBefore = null;
 
-
+        /// <summary>
+        /// Creates a new title bar.  
+        /// </summary>
+        /// <param name="capi">The Client API.</param>
+        /// <param name="text">The text on the title bar.</param>
+        /// <param name="composer">The GuiComposer for the title bar.</param>
+        /// <param name="OnClose">The event fired when the title bar is closed.</param>
+        /// <param name="font">The font of the title bar.</param>
+        /// <param name="bounds">The bounds of the title bar.</param>
         public GuiElementDialogTitleBar(ICoreClientAPI capi, string text, GuiComposer composer, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null) : base(capi, text, font, bounds)
         {
             closeIconHoverTexture = new LoadedTexture(capi);
@@ -120,13 +133,13 @@ namespace Vintagestory.API.Client
                 didInit = true;
             }
 
-            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, ElementGeometrics.DialogBGRadius);
-            ctx.SetSourceRGBA(ElementGeometrics.DialogDefaultBgColor);
+            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, GuiStyle.DialogBGRadius);
+            ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor);
             ctx.FillPreserve();
 
             Bounds.CalcWorldBounds();
 
-            double radius = ElementGeometrics.DialogBGRadius;
+            double radius = GuiStyle.DialogBGRadius;
 
             ctx.NewPath();
             ctx.MoveTo(Bounds.drawX, Bounds.drawY + Bounds.InnerHeight - 1);
@@ -136,7 +149,7 @@ namespace Vintagestory.API.Client
             ctx.LineTo(Bounds.drawX + Bounds.OuterWidth, Bounds.drawY + Bounds.InnerHeight - 1);
             ctx.ClosePath();
 
-            ctx.SetSourceRGBA(ElementGeometrics.TitleBarColor);
+            ctx.SetSourceRGBA(GuiStyle.TitleBarColor);
             ctx.FillPreserve();
 
             //EmbossRoundRectangleDialog(ctx, bounds.drawX, bounds.drawY, bounds.OuterWidth, bounds.InnerHeight - 1);
@@ -150,7 +163,7 @@ namespace Vintagestory.API.Client
             
             ctx.MoveTo(0, 0);
             Font.SetupContext(ctx);
-            ShowTextCorrectly(ctx, text, scaled(ElementGeometrics.ElementToDialogPadding), scaled(-1));
+            DrawTextLineAt(ctx, text, scaled(GuiStyle.ElementToDialogPadding), scaled(-1));
 
             double crossSize = scaled(unscaledCloseIconSize);
             double menuSize = scaled(unscaledCloseIconSize + 2);
@@ -335,6 +348,13 @@ namespace Vintagestory.API.Client
     {
 
         // Single rectangle shape
+        /// <summary>
+        /// Adds a dialog title bar to the GUI.  
+        /// </summary>
+        /// <param name="text">The text of the title bar.</param>
+        /// <param name="OnClose">The event fired when the title bar is closed.</param>
+        /// <param name="font">The font of the title bar.</param>
+        /// <param name="bounds">The bounds of the title bar.</param>
         public static GuiComposer AddDialogTitleBar(this GuiComposer composer, string text, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null)
         {
             if (!composer.composed)
@@ -346,6 +366,13 @@ namespace Vintagestory.API.Client
         }
 
         // Single rectangle shape
+        /// <summary>
+        /// Adds a dialog title bar to the GUI with a background.
+        /// </summary>
+        /// <param name="text">The text of the title bar.</param>
+        /// <param name="OnClose">The event fired when the title bar is closed.</param>
+        /// <param name="font">The font of the title bar.</param>
+        /// <param name="bounds">The bounds of the title bar.</param>
         public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null)
         {
             if (!composer.composed)

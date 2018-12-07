@@ -37,11 +37,9 @@ namespace Vintagestory.API.Client
             {
                 foreach (var val in dialogComposers)
                 {
-                    if (!val.Value.IsCached)
-                    {
-                        val.Value?.Dispose();
-                    }
+                    val.Value?.Dispose();
                 }
+
                 dialogComposers.Clear();
             }
 
@@ -329,6 +327,8 @@ namespace Vintagestory.API.Client
             
         }
 
+        public string MouseOverCursor;
+
         /// <summary>
         /// This runs when the dialogue is ready to render all of the components.
         /// </summary>
@@ -338,6 +338,8 @@ namespace Vintagestory.API.Client
             foreach (var val in DialogComposers)
             {
                 val.Value.Render(deltaTime);
+
+                MouseOverCursor = val.Value.MouseOverCursor;
             }
         }
 
@@ -378,7 +380,7 @@ namespace Vintagestory.API.Client
         {
             foreach (GuiComposer composer in DialogComposers.Values)
             {
-                composer.OnKeyDown(capi, args, focused);
+                composer.OnKeyDown(args, focused);
                 if (args.Handled)
                 {
                     return;
@@ -414,7 +416,7 @@ namespace Vintagestory.API.Client
 
             foreach (GuiComposer composer in DialogComposers.Values)
             {
-                composer.OnKeyPress(capi, args);
+                composer.OnKeyPress(args);
                 if (args.Handled) return;
             }
             
@@ -441,14 +443,36 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="slot">The slot the mouse entered.</param>
         /// <returns>Whether this event was handled.</returns>
-        public virtual bool OnMouseEnterSlot(ItemSlot slot) { return false; }
+        public virtual bool OnMouseEnterSlot(IItemSlot slot) {
+
+            foreach (GuiComposer composer in DialogComposers.Values)
+            {
+                if (composer.OnMouseEnterSlot(slot))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Fires when the mouse leaves the slot.
         /// </summary>
         /// <param name="itemSlot">The slot the mouse entered.</param>
         /// <returns>Whether this event was handled.</returns>
-        public virtual bool OnMouseLeaveSlot(ItemSlot itemSlot) { return false; }
+        public virtual bool OnMouseLeaveSlot(IItemSlot itemSlot) {
+
+            foreach (GuiComposer composer in DialogComposers.Values)
+            {
+                if (composer.OnMouseLeaveSlot(itemSlot))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Fires when the mouse clicks within the slot.
@@ -467,7 +491,7 @@ namespace Vintagestory.API.Client
 
             foreach (GuiComposer composer in DialogComposers.Values)
             {
-                composer.OnMouseDown(capi, args);
+                composer.OnMouseDown(args);
                 if (args.Handled)
                 {
                     return;
@@ -497,7 +521,7 @@ namespace Vintagestory.API.Client
 
             foreach (GuiComposer composer in DialogComposers.Values)
             {
-                composer.OnMouseUp(capi, args);
+                composer.OnMouseUp(args);
                 if (args.Handled) return;
             }
 
@@ -520,7 +544,7 @@ namespace Vintagestory.API.Client
 
             foreach (GuiComposer composer in DialogComposers.Values)
             {
-                composer.OnMouseMove(capi, args);
+                composer.OnMouseMove(args);
                 if (args.Handled) return;
             }
             
@@ -542,7 +566,7 @@ namespace Vintagestory.API.Client
         {
             foreach (GuiComposer composer in DialogComposers.Values)
             {
-                composer.OnMouseWheel(capi, args);
+                composer.OnMouseWheel(args);
                 if (args.IsHandled) return;
             }
 
@@ -586,10 +610,11 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Should this dialogue disable world interaction?
+        /// Returns whether this dialog absolutely requires the mouse to be ungrabbed.
+        /// If true, prevents mouse lock (from GuiMouseLock setting) and world interactions with the mouse.
         /// </summary>
         /// <returns></returns>
-        public virtual bool DisableWorldInteract()
+        public virtual bool RequiresUngrabbedMouse()
         {
             return true;
         }

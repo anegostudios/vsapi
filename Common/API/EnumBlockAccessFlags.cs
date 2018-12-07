@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
-
     [Flags]
     public enum EnumBlockAccessFlags
     {

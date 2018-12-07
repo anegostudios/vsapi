@@ -102,11 +102,6 @@ namespace Vintagestory.API.Client
         float[] ToShadowMapSpaceMatrixNear { set; }
         
         /// <summary>
-        /// If set to 1, the mesh will have a water waving effect applied.
-        /// </summary>
-        int WaterWave { set; }
-        
-        /// <summary>
         /// Required for water waving meshes.  Supplied the water counter as supplied as IRenderAPI.WaterWaveCounter.
         /// </summary>
         float WaterWaveCounter { set; }
@@ -115,5 +110,9 @@ namespace Vintagestory.API.Client
         /// The position of the player.
         /// </summary>
         Vec3f Playerpos { set; }
+
+        int DontWarpVertices { set; }
+
+        int AddRenderFlags { set; }
     }
 }

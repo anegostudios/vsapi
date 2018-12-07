@@ -20,7 +20,7 @@ namespace Vintagestory.API.Client
 
         public GuiElementSwitchOld(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds) : base(capi, "", null, bounds)
         {
-            Font = CairoFont.SmallDialogText().WithFontSize((float)ElementGeometrics.SubNormalFontSize);
+            Font = CairoFont.SmallDialogText().WithFontSize((float)GuiStyle.SubNormalFontSize);
 
             handler = OnToggled;
 
@@ -33,7 +33,7 @@ namespace Vintagestory.API.Client
             Bounds.CalcWorldBounds();
 
             ctxStatic.SetSourceRGBA(0, 0, 0, 0.2);
-            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, ElementGeometrics.ElementBGRadius);
+            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, GuiStyle.ElementBGRadius);
             ctxStatic.Fill();
             EmbossRoundRectangleElement(ctxStatic, Bounds, true, 2);
 
@@ -55,7 +55,7 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, 0, 0, handleWidth, handleHeight, false, 2, 1);
 
             Font.SetupContext(ctx);
-            ShowMultilineText(ctx, text, 0, -scaled(3), handleWidth, EnumTextOrientation.Center);
+            //LineTextUtil.DrawTextLine(ctx, text, 0, -scaled(3), handleWidth, EnumTextOrientation.Center);
 
             generateTexture(surface, ref textureId);
 

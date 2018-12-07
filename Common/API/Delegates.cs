@@ -7,6 +7,13 @@ using Vintagestory.API.Server;
 namespace Vintagestory.API.Common
 {
     /// <summary>
+    /// Return false to stop walking the inventory
+    /// </summary>
+    /// <param name="slot"></param>
+    /// <returns></returns>
+    public delegate bool OnInventorySlot(IItemSlot slot);
+
+    /// <summary>
     /// Return true if the action/event should be "consumed" (e.g. mark a mouse click as handled)
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -25,6 +32,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     /// <returns></returns>
     public delegate bool ActionBoolReturn();
+
+    public delegate bool ActionBoolReturn<T>(T t);
 
     /// <summary>
     /// Return true if the action/event should be "consumed" (e.g. mark a mouse click as handled)
@@ -82,7 +91,13 @@ namespace Vintagestory.API.Common
 
     public delegate void PlayerDelegate(IServerPlayer byPlayer);
 
+    public delegate void PlayerChangeHotbarSlot(IServerPlayer byPlayer, ActiveHotbarSlotChangedEvent eventArgs);
+
     public delegate void EntityDelegate(Entity entity);
+
+    public delegate void EntityDespawnDelegate(Entity entity, EntityDespawnReason reason);
+
+    public delegate void OnInteractDelegate(Entity entity, IPlayer byPlayer, IItemSlot slot, Vec3d hitPosition, int mode, ref EnumHandling handling);
 
     public delegate void ChunkColumnGenerationDelegate(IServerChunk[] chunks, int chunkX, int chunkZ);
 

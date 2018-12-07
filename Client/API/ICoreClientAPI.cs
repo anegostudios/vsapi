@@ -23,6 +23,11 @@ namespace Vintagestory.API.Client
         ILogger Logger { get; }
 
         /// <summary>
+        /// Platform independent ui methods and features. 
+        /// </summary>
+        IXPlatFormsUI Forms { get; }
+
+        /// <summary>
         /// Amount of milliseconds ellapsed since client startup
         /// </summary>
         long ElapsedMilliseconds { get; }

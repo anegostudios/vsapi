@@ -67,7 +67,7 @@ namespace Vintagestory.API.Client
                 ctx.LineTo(Bounds.drawX + xpos + tabWidths[i], Bounds.drawY + Bounds.InnerHeight);
                 ctx.ClosePath();
 
-                double[] color = ElementGeometrics.DialogDefaultBgColor;
+                double[] color = GuiStyle.DialogDefaultBgColor;
                 ctx.SetSourceRGBA(color[0], color[1], color[2], color[3] * 0.75);
 
                 ctx.FillPreserve();
@@ -76,7 +76,7 @@ namespace Vintagestory.API.Client
 
                 Font.SetupContext(ctx);
 
-                ShowTextCorrectly(ctx, tabs[i].name, Bounds.drawX + xpos + padding, Bounds.drawY + 1);
+                DrawTextLineAt(ctx, tabs[i].name, Bounds.drawX + xpos + padding, Bounds.drawY + 1);
 
                 xpos += tabWidths[i] + spacing;
             }
@@ -110,7 +110,7 @@ namespace Vintagestory.API.Client
                 ctx.LineTo(tabWidths[i], Bounds.InnerHeight + 1);
                 ctx.ClosePath();
 
-                double[] color = ElementGeometrics.DialogDefaultBgColor;
+                double[] color = GuiStyle.DialogDefaultBgColor;
                 ctx.SetSourceRGBA(color[0], color[1], color[2], color[3] * 0.75);
                 ctx.Fill();
 
@@ -126,7 +126,7 @@ namespace Vintagestory.API.Client
 
                 Font.SetupContext(ctx);
 
-                ShowTextCorrectly(ctx, tabs[i].name, padding, 1);
+                DrawTextLineAt(ctx, tabs[i].name, padding, 1);
 
               
                 generateTexture(surface, ref hoverTextures[i]);

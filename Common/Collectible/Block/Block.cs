@@ -276,7 +276,7 @@ namespace Vintagestory.API.Common
         public Block()
         {
             GuiTransform = ModelTransform.BlockDefaultGui();
-            FpHandTransform = ModelTransform.BlockDefault();
+            FpHandTransform = ModelTransform.BlockDefaultFp();
             TpHandTransform = ModelTransform.BlockDefaultTp();
             GroundTransform = ModelTransform.BlockDefaultGround();
         }
@@ -479,7 +479,7 @@ namespace Vintagestory.API.Common
             EnumHandling handled = EnumHandling.NotHandled;
             bool result = true;
 
-            if (!world.TestPlayerAccessBlock(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
+            if (!world.TryAccessBlock(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
             {
                 // Probably good idea to do so, so lets do it :P
                 byPlayer.InventoryManager.ActiveHotbarSlot.MarkDirty();
@@ -528,7 +528,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override void OnHeldAttackStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
+        public override void OnHeldAttackStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
         {
             base.OnHeldAttackStart(slot, byEntity, blockSel, entitySel, ref handling);
         }
@@ -542,7 +542,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns></returns>
-        public override void OnHeldInteractStart(IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling)
+        public override void OnHeldInteractStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling)
         {
             EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
             WalkBehaviors(
@@ -562,7 +562,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns></returns>
-        public override bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        public override bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             
             EnumHandling handled = EnumHandling.NotHandled;
@@ -590,7 +590,7 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
-        public override void OnHeldInteractStop(float secondsUsed, IItemSlot slot, IEntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        public override void OnHeldInteractStop(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
         {
             EnumHandling handled = EnumHandling.NotHandled;
 
@@ -750,7 +750,7 @@ namespace Vintagestory.API.Common
         /// <param name="secondsIgniting"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnTryIgniteBlock(IEntityAgent byEntity, BlockPos pos, float secondsIgniting, ref EnumHandling handling)
+        public virtual bool OnTryIgniteBlock(EntityAgent byEntity, BlockPos pos, float secondsIgniting, ref EnumHandling handling)
         {
             handling = EnumHandling.NotHandled;
             return false;
@@ -763,7 +763,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="secondsIgniting"></param>
         /// <param name="handling"></param>
-        public virtual void OnTryIgniteBlockOver(IEntityAgent byEntity, BlockPos pos, float secondsIgniting, ref EnumHandling handling)
+        public virtual void OnTryIgniteBlockOver(EntityAgent byEntity, BlockPos pos, float secondsIgniting, ref EnumHandling handling)
         {
             handling = EnumHandling.NotHandled;
             
@@ -826,6 +826,16 @@ namespace Vintagestory.API.Common
         /// <param name="byItemStack">May be null!</param>
         public virtual void OnBlockPlaced(IWorldAccessor world, BlockPos blockPos, ItemStack byItemStack = null)
         {
+            EnumHandling handled = EnumHandling.NotHandled;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                behavior.OnBlockPlaced(world, blockPos, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (handled == EnumHandling.PreventDefault) return;
+
             if (EntityClass != null)
             {
                 world.BlockAccessor.SpawnBlockEntity(EntityClass, blockPos, byItemStack);
@@ -862,6 +872,11 @@ namespace Vintagestory.API.Common
         {
             EnumHandling handled = EnumHandling.NotHandled;
             bool result = true;
+
+            if (!world.TryAccessBlock(byPlayer, blockSel.Position, EnumBlockAccessFlags.Use))
+            {
+                return false;
+            }
 
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
@@ -1032,7 +1047,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
-        public override void OnHeldIdle(IItemSlot slot, IEntityAgent byEntity)
+        public override void OnHeldIdle(IItemSlot slot, EntityAgent byEntity)
         {
             // Would be nice, doesn't look nice :/
             /*if (ParticleProperties != null && ParticleProperties.Length > 0 && byEntity.World is IClientWorldAccessor && byEntity.World.Rand.NextDouble() > 0.5)
@@ -1554,7 +1569,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Should return an RGB color for this block. Current use: In the world map. Default behavior: The center block pixel color of the first texture in the list
+        /// Should return an RGB color for this block. Current use: In the world map. Default behavior: The 2 averaged pixels at 40%/40% ad 60%/60% position
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos"></param>
@@ -1671,66 +1686,6 @@ namespace Vintagestory.API.Common
             if (Attributes != null) cloned.Attributes = Attributes.Clone();
 
             return cloned;
-        }
-
-        /// <summary>
-        /// Used by the block loader to replace wildcards with their final values
-        /// </summary>
-        /// <param name="searchReplace"></param>
-        public void FillPlaceHolders(ILogger logger, Dictionary<string, string> searchReplace)
-        {
-            if (CombustibleProps != null && CombustibleProps.SmeltedStack != null)
-            {
-                CombustibleProps.SmeltedStack.Code = FillPlaceHolder(CombustibleProps.SmeltedStack.Code, searchReplace);
-            }
-
-            if (Drops != null)
-            {
-                for (int i = 0; i < Drops.Length; i++)
-                {
-                    Drops[i].Code = FillPlaceHolder(Drops[i].Code, searchReplace);
-                }
-            }
-
-            if (Textures != null)
-            {
-                foreach (CompositeTexture tex in Textures.Values)
-                {
-                    if (tex.Base == null)
-                    {
-                        logger.Error("Encountered wrong block texture definition in block {0}, there is no Base attribute! Block will have broken textures.", Code);
-                        tex.Base = new AssetLocation("unknown");
-                    }
-
-                    tex.FillPlaceHolders(searchReplace);
-                }
-            }
-
-            if (TexturesInventory != null)
-            {
-                foreach (CompositeTexture tex in TexturesInventory.Values)
-                {
-                    if (tex.Base == null)
-                    {
-                        logger.Error("Encountered wrong block inventory texture definition in block {0}, there is no Base attribute! Block will have broken textures.", Code);
-                        tex.Base = new AssetLocation("unknown");
-                    }
-
-                    tex.FillPlaceHolders(searchReplace);
-                }
-            }
-
-            Shape.FillPlaceHolders(searchReplace);
-            if (ShapeInventory != null)
-            {
-                ShapeInventory = ShapeInventory.Clone();
-                ShapeInventory.FillPlaceHolders(searchReplace);
-            }
-
-            foreach (var val in searchReplace)
-            {
-                Attributes?.FillPlaceHolder(val.Key, val.Value);
-            }
         }
 
 

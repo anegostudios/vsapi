@@ -50,6 +50,14 @@ namespace Vintagestory.API.Client
         /// </summary>
         int MouseY { get; }
 
+        /// <summary>
+        /// When controlling the camera, this is the camera yaw determined by the game engine
+        /// </summary>
+        float MouseYaw { get; }
+        /// <summary>
+        /// When controlling the camera, this is the camera pitch determined by the game engine
+        /// </summary>
+        float MousePitch { get; }
 
         // These should not be here. Should be part of an event bus event (someone has to code that)
         /// <summary>
@@ -81,9 +89,10 @@ namespace Vintagestory.API.Client
         bool MouseWorldInteractAnyway { get; set; }
 
         /// <summary>
-        /// True if the player currently has a visible mouse cursor (i.e. is not locked to look around ingame)
+        /// True if the mouse cursor is currently grabbed and not visible.
+        /// (Such as while controlling the character's view in first person.)
         /// </summary>
-        bool MouseCursorVisible { get; }
+        bool MouseGrabbed { get; }
 
         /// <summary>
         /// Registers a hot key with given default key combination, the player will be able change these in the controls. Supplied hotkeyCode can than be used to register a hotkey handler.

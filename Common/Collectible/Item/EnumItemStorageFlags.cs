@@ -45,5 +45,9 @@ namespace Vintagestory.API.Common
         /// Clothes, Armor and Accessories
         /// </summary>
         Outfit = 128,
+        /// <summary>
+        /// Off hand slot
+        /// </summary>
+        Offhand = 256,
     }
 }

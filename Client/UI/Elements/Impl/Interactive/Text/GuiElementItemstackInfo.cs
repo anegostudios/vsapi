@@ -16,8 +16,8 @@ namespace Vintagestory.API.Client
         public static int BoxWidth = 400;
         public static int MinBoxHeight = 80;
 
-        static double[] backTint = ElementGeometrics.DialogStrongBgColor;
-        static double[] textTint = ElementGeometrics.DialogDefaultTextColor;
+        static double[] backTint = GuiStyle.DialogStrongBgColor;
+        static double[] textTint = GuiStyle.DialogDefaultTextColor;
 
         ItemSlot curSlot;
         ItemStack curStack;
@@ -121,12 +121,12 @@ namespace Vintagestory.API.Client
             ctx.Paint();
 
             ctx.SetSourceRGBA(backTint[0], backTint[1], backTint[2], backTint[3]);
-            RoundRectangle(ctx, textBounds.bgDrawX, textBounds.bgDrawY, textBounds.OuterWidthInt, textBounds.OuterHeightInt, ElementGeometrics.DialogBGRadius);
+            RoundRectangle(ctx, textBounds.bgDrawX, textBounds.bgDrawY, textBounds.OuterWidthInt, textBounds.OuterHeightInt, GuiStyle.DialogBGRadius);
             ctx.FillPreserve();
             ctx.SetSourceRGBA(backTint[0] / 2, backTint[1] / 2, backTint[2] / 2, backTint[3]);
             ctx.Stroke();
 
-            ctx.SetSourceRGBA(ElementGeometrics.DialogAlternateBgColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogAlternateBgColor);
             RoundRectangle(ctx, textBounds.drawX, textBounds.drawY + scaled(MarginTop), scaled(ItemStackSize) + scaled(40), scaled(ItemStackSize) + scaled(40), 0);
             ctx.Fill();
 

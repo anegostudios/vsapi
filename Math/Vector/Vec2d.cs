@@ -13,6 +13,7 @@ namespace Vintagestory.API.MathTools
     {
         public double X;
         public double Y;
+        
 
         public Vec2d()
         {

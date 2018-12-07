@@ -79,24 +79,6 @@ namespace Vintagestory.API.Common
             return ct;
         }
 
-        public void FillPlaceHolders(Dictionary<string, string> searchReplace)
-        {
-            foreach (var val in searchReplace)
-            {
-                if (Base?.Path == null) continue;
-
-                Base.Path = RegistryObject.FillPlaceHolder(Base.Path, val.Key, val.Value);
-            }
-
-            if (Alternates != null)
-            {
-                for (int i = 0; i < Alternates.Length; i++)
-                {
-                    Alternates[i].FillPlaceHolders(searchReplace);
-                }
-            }
-        }
-
 
         /// <summary>
         /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field

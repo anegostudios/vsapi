@@ -111,6 +111,11 @@ namespace Vintagestory.API.MathTools
 
             return GameMath.Sqrt(dx * dx + dy * dy);
         }
+
+        public Vec2f Clone()
+        {
+            return new Vec2f(X, Y);
+        }
     }
 
 

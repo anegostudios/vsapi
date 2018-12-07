@@ -6,11 +6,22 @@ using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
+    public enum EnumItemType
+    {
+        Item,
+        Title
+    }
+
     /// <summary>
-    /// A config item for the GUIElementConfigList
+    /// A config item for the GUIElementConfigList.
     /// </summary>
     public class ConfigItem
     {
+        /// <summary>
+        /// Item or title
+        /// </summary>
+        public EnumItemType Type = EnumItemType.Item;
+
         /// <summary>
         /// The name of the config item.
         /// </summary>
@@ -21,6 +32,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         public string value;
 
+        /// <summary>
+        /// The code of the config item.
+        /// </summary>
         public string code;
 
         /// <summary>
@@ -39,6 +53,11 @@ namespace Vintagestory.API.Client
         public double height;
     }
 
+    public delegate void ConfigItemClickDelegate(int index, int indexWithoutTitles);
+
+    /// <summary>
+    /// A configurable list of items.  An example of this is the controls in the settings menu.
+    /// </summary>
     public class GuiElementConfigList : GuiElementTextBase
     {
         public static double unscaledPadding = 2;
@@ -48,7 +67,7 @@ namespace Vintagestory.API.Client
 
         public List<ConfigItem> items;
 
-        Action<int> OnItemClick;
+        ConfigItemClickDelegate OnItemClick;
 
         int textureId;
         LoadedTexture hoverTexture;
@@ -57,6 +76,7 @@ namespace Vintagestory.API.Client
 
         public CairoFont errorFont;
         public CairoFont stdFont;
+        public CairoFont titleFont;
 
         /// <summary>
         /// Creates a new dropdown configuration list.
@@ -66,7 +86,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnItemClick">The event fired when the particular item is clicked.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="bounds">the bounds of the element.</param>
-        public GuiElementConfigList(ICoreClientAPI capi, List<ConfigItem> items, Action<int> OnItemClick, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
+        public GuiElementConfigList(ICoreClientAPI capi, List<ConfigItem> items, ConfigItemClickDelegate OnItemClick, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
 
@@ -74,6 +94,8 @@ namespace Vintagestory.API.Client
             this.OnItemClick = OnItemClick;
             this.errorFont = font.Clone();
             this.stdFont = font;
+            this.titleFont = font.Clone().WithWeight(FontWeight.Bold);
+            this.titleFont.Color[3] = 0.6;
         }
 
         /// <summary>
@@ -84,15 +106,20 @@ namespace Vintagestory.API.Client
             double pad = scaled(unscaledPadding);
 
             Bounds.CalcWorldBounds();
+            bool first = true;
 
             foreach (ConfigItem item in items)
             {
                 double lineHeight = Math.Max(
-                    GetMultilineTextHeight(item.key, Bounds.InnerWidth * leftWidthRel), 
-                    GetMultilineTextHeight(item.value, Bounds.InnerWidth * rightWidthRel)
+                    textUtil.GetMultilineTextHeight(Font, item.key, Bounds.InnerWidth * leftWidthRel),
+                    textUtil.GetMultilineTextHeight(Font, item.value, Bounds.InnerWidth * rightWidthRel)
                 );
 
+                if (!first && item.Type == EnumItemType.Title) lineHeight += scaled(20);
+
                 totalHeight += pad + lineHeight + pad;
+
+                first = false;
             }
 
             innerBounds = Bounds.FlatCopy();
@@ -113,7 +140,9 @@ namespace Vintagestory.API.Client
             Refresh();
         }
 
-
+        /// <summary>
+        /// Refreshes the Config List.
+        /// </summary>
         public void Refresh()
         {
             Autoheight();
@@ -123,7 +152,7 @@ namespace Vintagestory.API.Client
 
             double height = 0;
             double pad = scaled(unscaledPadding);
-
+            bool first = true;
 
             foreach (ConfigItem item in items)
             {
@@ -134,16 +163,22 @@ namespace Vintagestory.API.Client
                 {
                     Font = stdFont;
                 }
+                if (item.Type == EnumItemType.Title) Font = titleFont;
 
-                double leftHeight = ShowMultilineText(ctx, item.key, 0, height + pad, innerBounds.InnerWidth * leftWidthRel, EnumTextOrientation.Left);
-                double rightHeight = ShowMultilineText(ctx, item.value, innerBounds.InnerWidth * (1 - rightWidthRel), height + pad, innerBounds.InnerWidth * rightWidthRel, EnumTextOrientation.Left);
 
-                double itemHeight = pad + Math.Max(leftHeight, rightHeight) + pad;
+                double offY = !first && item.Type == EnumItemType.Title ? scaled(20) : 0;
+
+                double leftHeight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, item.key, 0, offY + height + pad, innerBounds.InnerWidth * leftWidthRel, EnumTextOrientation.Left);
+                double rightHeight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, item.value, innerBounds.InnerWidth * (1 - rightWidthRel), offY + height + pad, innerBounds.InnerWidth * rightWidthRel, EnumTextOrientation.Left);
+
+                double itemHeight = offY + pad + Math.Max(leftHeight, rightHeight) + pad;
 
                 item.posY = height;
                 item.height = itemHeight;
-
+                
                 height += itemHeight;
+
+                first = false;
             }
 
             //surface.WriteToPng("configlist.png");
@@ -172,7 +207,7 @@ namespace Vintagestory.API.Client
                 {
                     diff = mouseY - (item.posY + innerBounds.absY);
 
-                    if (diff > 0 && diff < item.height)
+                    if (item.Type != EnumItemType.Title && diff > 0 && diff < item.height)
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)innerBounds.absX, (int)innerBounds.absY + (int)item.posY, innerBounds.InnerWidth, item.height);
                     }
@@ -190,16 +225,24 @@ namespace Vintagestory.API.Client
 
             if (innerBounds.PointInside(mouseX, mouseY))
             {
-                int i = 0;
+                int elemIndex = 0;
+                int elemNoTitleIndex = 0;
                 foreach (ConfigItem item in items)
                 {
                     diff = mouseY - (item.posY + innerBounds.absY);
 
-                    if (diff > 0 && diff < item.height)
+                    if (item.Type != EnumItemType.Title && diff > 0 && diff < item.height)
                     {
-                        OnItemClick(i);
+                        OnItemClick(elemIndex, elemNoTitleIndex);
                     }
-                    i++;
+
+                    elemIndex++;
+
+
+                    if (item.Type != EnumItemType.Title)
+                    {
+                        elemNoTitleIndex++;
+                    }
                 }
             }
         }
@@ -215,7 +258,15 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-        public static GuiComposer AddConfigList(this GuiComposer composer, List<ConfigItem> items, Action<int> OnItemClick, CairoFont font, ElementBounds bounds, string key = null)
+        /// <summary>
+        /// Adds a config List to the current GUI.
+        /// </summary>
+        /// <param name="items">The items to add.</param>
+        /// <param name="OnItemClick">The event fired when the item is clicked.</param>
+        /// <param name="font">The font of the Config List.</param>
+        /// <param name="bounds">The bounds of the config list.</param>
+        /// <param name="key">The name of the config list.</param>
+        public static GuiComposer AddConfigList(this GuiComposer composer, List<ConfigItem> items, ConfigItemClickDelegate OnItemClick, CairoFont font, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {
@@ -226,6 +277,11 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        /// <summary>
+        /// Gets the config list by name.
+        /// </summary>
+        /// <param name="key">The name of the config list.</param>
+        /// <returns></returns>
         public static GuiElementConfigList GetConfigList(this GuiComposer composer, string key)
         {
             return (GuiElementConfigList)composer.GetElement(key);

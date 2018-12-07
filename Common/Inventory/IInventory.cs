@@ -9,7 +9,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Basic interface representing an item inventory
     /// </summary>
-    public interface IInventory
+    public interface IInventory : IReadOnlyCollection<ItemSlot>
     {
         /// <summary>
         /// Wether or not to remove the inventory from the players inventory list upon closing it
@@ -32,15 +32,16 @@ namespace Vintagestory.API.Common
         long LastChanged { get; }
 
         /// <summary>
-        /// Returns the slot at given slot number. Returns null for invalid slot number (below 0 or above QuantitySlots), otherwise given slot.
+        /// Gets or sets the slot at the given slot number.
+        /// Returns null for invalid slot number (below 0 or above Count-1).
+        /// The setter allows for replacing slots with custom ones, though caution is advised.
         /// </summary>
-        /// <param name="slotId"></param>
-        /// <returns></returns>
+        ItemSlot this[int slotId] { get; set; }
+
+        [Obsolete("Use indexer instead.")]
         ItemSlot GetSlot(int slotId);
 
-        /// <summary>
-        /// Returns the amount of existing slots in this inventory
-        /// </summary>
+        [Obsolete("Use Count instead.")]
         int QuantitySlots { get; }
 
 

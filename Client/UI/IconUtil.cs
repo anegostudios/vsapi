@@ -10,11 +10,22 @@ namespace Vintagestory.API.Client
     {
         ICoreClientAPI capi;
 
+        /// <summary>
+        /// Creates a new IconUtil instance.
+        /// </summary>
+        /// <param name="capi">The Client API.</param>
         public IconUtil(ICoreClientAPI capi)
         {
             this.capi = capi;
         }
 
+        /// <summary>
+        /// Generates the texture.  
+        /// </summary>
+        /// <param name="width">The width of the drawing</param>
+        /// <param name="height">The height of the drawing.</param>
+        /// <param name="drawHandler">A delegate which handles the drawing.</param>
+        /// <returns>The resulting built texture.</returns>
         public LoadedTexture GenTexture(int width, int height, DrawDelegate drawHandler)
         {
             ImageSurface surface = new ImageSurface(Format.Argb32, width, height);
@@ -35,11 +46,31 @@ namespace Vintagestory.API.Client
             };
         }
 
+        /// <summary>
+        /// Draws the icon.
+        /// </summary>
+        /// <param name="cr">The context.</param>
+        /// <param name="type">The type to draw</param>
+        /// <param name="x">X position of the Icon.</param>
+        /// <param name="y">Y position of the Icon.</param>
+        /// <param name="width">Width of the Icon.</param>
+        /// <param name="height">Height of the Icon.</param>
+        /// <param name="rgba">The color of the icon.</param>
         public void DrawIcon(Context cr, string type, double x, double y, double width, double height, double[] rgba)
         {
             DrawIconInt(cr, type, (int)x, (int)y, (float)width, (float)height, rgba);
         }
 
+        /// <summary>
+        /// Draws the icon.
+        /// </summary>
+        /// <param name="cr">The context.</param>
+        /// <param name="type">The type to draw</param>
+        /// <param name="x">X position of the Icon.</param>
+        /// <param name="y">Y position of the Icon.</param>
+        /// <param name="width">Width of the Icon.</param>
+        /// <param name="height">Height of the Icon.</param>
+        /// <param name="rgba">The color of the icon.</param>
         public void DrawIconInt(Context cr, string type, int x, int y, float width, float height, double[] rgba)
         {
 
@@ -165,7 +196,7 @@ namespace Vintagestory.API.Client
                     Drawbracers_svg(cr, x, y, width, height, rgba);
                     break;
 
-                case "offhand":
+                case "handheld":
                     Drawhandheld_svg(cr, x, y, width, height, rgba);
                     break;
 
@@ -176,9 +207,486 @@ namespace Vintagestory.API.Client
                 case "right":
                     Drawright_svg(cr, x, y, width, height, rgba);
                     break;
+
+                case "offhand":
+                    Drawoffhand_svg(cr, x, y, width, height, rgba);
+                    break;
             }
         }
 
+
+
+        public void Drawapple_svg(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 70;
+            float h = 84;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(58.730469, 27.890625);
+            cr.CurveTo(55.242188, 25.496094, 50.855469, 24.300781, 46.667969, 25);
+            cr.CurveTo(42.878906, 25.597656, 40.085938, 27.988281, 37.292969, 30.285156);
+            cr.CurveTo(36.996094, 30.484375, 36.59375, 30.285156, 36.695313, 29.882813);
+            cr.CurveTo(37.59375, 25.796875, 37.492188, 21.410156, 36.496094, 17.222656);
+            cr.CurveTo(45.171875, 20.3125, 62.023438, 16.222656, 61.722656, 4.957031);
+            cr.CurveTo(61.722656, 4.359375, 61.226563, 4.058594, 60.726563, 4.15625);
+            cr.CurveTo(52.351563, 1.265625, 38.488281, 6.253906, 36.097656, 15.527344);
+            cr.CurveTo(34.898438, 12.136719, 33.105469, 8.84375, 30.613281, 6.351563);
+            cr.CurveTo(30.015625, 5.753906, 28.917969, 6.550781, 29.414063, 7.25);
+            cr.CurveTo(34.601563, 15.027344, 36.894531, 22.707031, 34.601563, 31.878906);
+            cr.CurveTo(32.707031, 29.785156, 30.8125, 27.589844, 28.019531, 26.394531);
+            cr.CurveTo(24.429688, 24.800781, 20.542969, 24.898438, 16.953125, 26.292969);
+            cr.CurveTo(7.679688, 29.785156, 3.089844, 40.851563, 2.992188, 50.226563);
+            cr.CurveTo(2.890625, 60.496094, 9.773438, 69.171875, 17.25, 75.554688);
+            cr.CurveTo(21.140625, 78.84375, 28.417969, 81.9375, 32.40625, 77.25);
+            cr.CurveTo(33.105469, 76.453125, 34.402344, 76.351563, 35.101563, 77.25);
+            cr.CurveTo(38.890625, 81.636719, 46.367188, 81.636719, 50.457031, 78.148438);
+            cr.CurveTo(58.035156, 71.566406, 64.914063, 60.496094, 66.609375, 50.527344);
+            cr.CurveTo(68.003906, 42.25, 65.910156, 32.777344, 58.730469, 27.890625);
+            cr.ClosePath();
+            cr.MoveTo(59.730469, 5.851563);
+            cr.CurveTo(56.738281, 14.628906, 45.667969, 17.820313, 37.09375, 16.222656);
+            cr.CurveTo(40.585938, 7.648438, 51.253906, 4.757813, 59.730469, 5.851563);
+            cr.ClosePath();
+            cr.MoveTo(65.015625, 48.53125);
+            cr.CurveTo(64.214844, 55.808594, 60.527344, 62.390625, 56.339844, 68.273438);
+            cr.CurveTo(52.449219, 73.757813, 40.984375, 82.832031, 35.101563, 71.566406);
+            cr.CurveTo(34.898438, 71.265625, 34.5, 71.167969, 34.300781, 71.367188);
+            cr.CurveTo(33.902344, 71.066406, 33.304688, 71.066406, 33.105469, 71.566406);
+            cr.CurveTo(27.621094, 80.738281, 15.953125, 72.164063, 11.964844, 67.378906);
+            cr.CurveTo(6.28125, 60.398438, 3.789063, 52.320313, 5.984375, 43.445313);
+            cr.CurveTo(8.078125, 35.367188, 13.960938, 26.695313, 23.234375, 27.09375);
+            cr.CurveTo(27.921875, 27.292969, 31.308594, 30.085938, 34.300781, 33.375);
+            cr.CurveTo(36.097656, 35.367188, 41.78125, 41.75, 44.375, 42.546875);
+            cr.CurveTo(44.972656, 42.746094, 40.882813, 36.964844, 40.285156, 36.664063);
+            cr.CurveTo(39.785156, 36.464844, 39.289063, 36.167969, 38.890625, 35.867188);
+            cr.CurveTo(37.492188, 34.96875, 37.59375, 32.875, 38.890625, 31.878906);
+            cr.CurveTo(43.875, 28.191406, 48.5625, 25.097656, 55.441406, 28.289063);
+            cr.CurveTo(63.019531, 31.878906, 65.8125, 40.554688, 65.015625, 48.53125);
+            cr.ClosePath();
+            cr.MoveTo(65.015625, 48.53125);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 6;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(58.730469, 27.890625);
+            cr.CurveTo(55.242188, 25.496094, 50.855469, 24.300781, 46.667969, 25);
+            cr.CurveTo(42.878906, 25.597656, 40.085938, 27.988281, 37.292969, 30.285156);
+            cr.CurveTo(36.996094, 30.484375, 36.59375, 30.285156, 36.695313, 29.882813);
+            cr.CurveTo(37.59375, 25.796875, 37.492188, 21.410156, 36.496094, 17.222656);
+            cr.CurveTo(45.171875, 20.3125, 62.023438, 16.222656, 61.722656, 4.957031);
+            cr.CurveTo(61.722656, 4.359375, 61.226563, 4.058594, 60.726563, 4.15625);
+            cr.CurveTo(52.351563, 1.265625, 38.488281, 6.253906, 36.097656, 15.527344);
+            cr.CurveTo(34.898438, 12.136719, 33.105469, 8.84375, 30.613281, 6.351563);
+            cr.CurveTo(30.015625, 5.753906, 28.917969, 6.550781, 29.414063, 7.25);
+            cr.CurveTo(34.601563, 15.027344, 36.894531, 22.707031, 34.601563, 31.878906);
+            cr.CurveTo(32.707031, 29.785156, 30.8125, 27.589844, 28.019531, 26.394531);
+            cr.CurveTo(24.429688, 24.800781, 20.542969, 24.898438, 16.953125, 26.292969);
+            cr.CurveTo(7.679688, 29.785156, 3.089844, 40.851563, 2.992188, 50.226563);
+            cr.CurveTo(2.890625, 60.496094, 9.773438, 69.171875, 17.25, 75.554688);
+            cr.CurveTo(21.140625, 78.84375, 28.417969, 81.9375, 32.40625, 77.25);
+            cr.CurveTo(33.105469, 76.453125, 34.402344, 76.351563, 35.101563, 77.25);
+            cr.CurveTo(38.890625, 81.636719, 46.367188, 81.636719, 50.457031, 78.148438);
+            cr.CurveTo(58.035156, 71.566406, 64.914063, 60.496094, 66.609375, 50.527344);
+            cr.CurveTo(68.003906, 42.25, 65.910156, 32.777344, 58.730469, 27.890625);
+            cr.ClosePath();
+            cr.MoveTo(59.730469, 5.851563);
+            cr.CurveTo(56.738281, 14.628906, 45.667969, 17.820313, 37.09375, 16.222656);
+            cr.CurveTo(40.585938, 7.648438, 51.253906, 4.757813, 59.730469, 5.851563);
+            cr.ClosePath();
+            cr.MoveTo(65.015625, 48.53125);
+            cr.CurveTo(64.214844, 55.808594, 60.527344, 62.390625, 56.339844, 68.273438);
+            cr.CurveTo(52.449219, 73.757813, 40.984375, 82.832031, 35.101563, 71.566406);
+            cr.CurveTo(34.898438, 71.265625, 34.5, 71.167969, 34.300781, 71.367188);
+            cr.CurveTo(33.902344, 71.066406, 33.304688, 71.066406, 33.105469, 71.566406);
+            cr.CurveTo(27.621094, 80.738281, 15.953125, 72.164063, 11.964844, 67.378906);
+            cr.CurveTo(6.28125, 60.398438, 3.789063, 52.320313, 5.984375, 43.445313);
+            cr.CurveTo(8.078125, 35.367188, 13.960938, 26.695313, 23.234375, 27.09375);
+            cr.CurveTo(27.921875, 27.292969, 31.308594, 30.085938, 34.300781, 33.375);
+            cr.CurveTo(36.097656, 35.367188, 41.78125, 41.75, 44.375, 42.546875);
+            cr.CurveTo(44.972656, 42.746094, 40.882813, 36.964844, 40.285156, 36.664063);
+            cr.CurveTo(39.785156, 36.464844, 39.289063, 36.167969, 38.890625, 35.867188);
+            cr.CurveTo(37.492188, 34.96875, 37.59375, 32.875, 38.890625, 31.878906);
+            cr.CurveTo(43.875, 28.191406, 48.5625, 25.097656, 55.441406, 28.289063);
+            cr.CurveTo(63.019531, 31.878906, 65.8125, 40.554688, 65.015625, 48.53125);
+            cr.ClosePath();
+            cr.MoveTo(65.015625, 48.53125);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(0.997151, 0, 0, 0.997151, 0, 0.368946);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
+
+
+
+        public void Drawhealth_svg(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 98;
+            float h = 98;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 8;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(94, 58);
+            cr.LineTo(58, 58);
+            cr.LineTo(58, 94);
+            cr.LineTo(40, 94);
+            cr.LineTo(40, 58);
+            cr.LineTo(4, 58);
+            cr.LineTo(4, 40);
+            cr.LineTo(40, 40);
+            cr.LineTo(40, 4);
+            cr.LineTo(58, 4);
+            cr.LineTo(58, 40);
+            cr.LineTo(94, 40);
+            cr.ClosePath();
+            cr.MoveTo(94, 58);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
+
+
+
+
+        public void Drawoffhand_svg(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 450;
+            float h = 450;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(226.101563, 50.898438);
+            cr.LineTo(163.101563, 100.199219);
+            cr.LineTo(169.300781, 108.101563);
+            cr.LineTo(145.699219, 126.601563);
+            cr.LineTo(151.898438, 134.5);
+            cr.LineTo(136, 146.699219);
+            cr.LineTo(142.199219, 154.601563);
+            cr.LineTo(134.300781, 160.800781);
+            cr.LineTo(140.5, 168.699219);
+            cr.LineTo(124.699219, 181);
+            cr.LineTo(130.898438, 188.898438);
+            cr.LineTo(123, 195.101563);
+            cr.LineTo(129.199219, 203);
+            cr.LineTo(121.300781, 209.199219);
+            cr.LineTo(127.5, 217.101563);
+            cr.LineTo(119.601563, 223.300781);
+            cr.LineTo(125.800781, 231.199219);
+            cr.LineTo(117.898438, 237.398438);
+            cr.LineTo(124.101563, 245.300781);
+            cr.LineTo(116.199219, 251.5);
+            cr.LineTo(122.398438, 259.398438);
+            cr.LineTo(114.5, 265.601563);
+            cr.LineTo(120.699219, 273.5);
+            cr.LineTo(112.800781, 279.699219);
+            cr.LineTo(119, 287.601563);
+            cr.LineTo(111.101563, 293.800781);
+            cr.LineTo(117.300781, 301.699219);
+            cr.LineTo(109.398438, 307.898438);
+            cr.LineTo(115.601563, 315.800781);
+            cr.LineTo(107.699219, 322);
+            cr.LineTo(113.898438, 329.898438);
+            cr.LineTo(106, 336.101563);
+            cr.LineTo(112.199219, 344);
+            cr.LineTo(104.300781, 350.199219);
+            cr.LineTo(110.5, 358.101563);
+            cr.LineTo(102.601563, 364.300781);
+            cr.LineTo(127.199219, 395.800781);
+            cr.LineTo(135.101563, 389.601563);
+            cr.LineTo(141.300781, 397.5);
+            cr.LineTo(149.199219, 391.300781);
+            cr.LineTo(155.398438, 399.199219);
+            cr.LineTo(163.300781, 393);
+            cr.LineTo(169.5, 400.898438);
+            cr.LineTo(177.398438, 394.699219);
+            cr.LineTo(183.601563, 402.601563);
+            cr.LineTo(230.898438, 365.699219);
+            cr.LineTo(224.699219, 357.800781);
+            cr.LineTo(232.601563, 351.601563);
+            cr.LineTo(226.398438, 343.699219);
+            cr.LineTo(234.300781, 337.5);
+            cr.LineTo(228.101563, 329.601563);
+            cr.LineTo(236, 323.398438);
+            cr.LineTo(229.800781, 315.5);
+            cr.LineTo(237.699219, 309.300781);
+            cr.LineTo(231.5, 301.398438);
+            cr.LineTo(239.398438, 295.199219);
+            cr.LineTo(245.601563, 303.101563);
+            cr.LineTo(253.5, 296.898438);
+            cr.LineTo(259.699219, 304.800781);
+            cr.LineTo(267.601563, 298.601563);
+            cr.LineTo(273.800781, 306.5);
+            cr.LineTo(289.601563, 294.199219);
+            cr.LineTo(295.800781, 302.101563);
+            cr.LineTo(327.300781, 277.5);
+            cr.LineTo(321.101563, 269.601563);
+            cr.LineTo(329, 263.398438);
+            cr.LineTo(322.800781, 255.5);
+            cr.LineTo(330.699219, 249.300781);
+            cr.LineTo(312.199219, 225.699219);
+            cr.LineTo(304.300781, 231.898438);
+            cr.LineTo(298.101563, 224);
+            cr.LineTo(313.898438, 211.699219);
+            cr.LineTo(332.398438, 235.300781);
+            cr.LineTo(371.800781, 204.5);
+            cr.LineTo(365.601563, 196.601563);
+            cr.LineTo(381.398438, 184.300781);
+            cr.LineTo(375.199219, 176.398438);
+            cr.LineTo(383.101563, 170.199219);
+            cr.LineTo(376.898438, 162.300781);
+            cr.LineTo(384.800781, 156.101563);
+            cr.LineTo(378.601563, 148.199219);
+            cr.LineTo(386.5, 142);
+            cr.LineTo(368, 118.398438);
+            cr.LineTo(375.898438, 112.199219);
+            cr.LineTo(332.800781, 57);
+            cr.LineTo(324.898438, 63.199219);
+            cr.LineTo(318.699219, 55.300781);
+            cr.LineTo(310.800781, 61.5);
+            cr.LineTo(304.601563, 53.601563);
+            cr.LineTo(296.699219, 59.800781);
+            cr.LineTo(290.5, 51.898438);
+            cr.LineTo(282.601563, 58.101563);
+            cr.LineTo(276.398438, 50.199219);
+            cr.LineTo(268.5, 56.398438);
+            cr.LineTo(262.300781, 48.5);
+            cr.LineTo(254.398438, 54.699219);
+            cr.LineTo(248.199219, 46.800781);
+            cr.LineTo(232.398438, 59.101563);
+            cr.ClosePath();
+            cr.MoveTo(175.398438, 115.898438);
+            cr.LineTo(246.300781, 60.5);
+            cr.LineTo(252.5, 68.398438);
+            cr.LineTo(260.398438, 62.199219);
+            cr.LineTo(266.601563, 70.101563);
+            cr.LineTo(274.5, 63.898438);
+            cr.LineTo(280.699219, 71.800781);
+            cr.LineTo(272.800781, 78);
+            cr.LineTo(279, 85.898438);
+            cr.LineTo(294.800781, 73.601563);
+            cr.LineTo(301, 81.5);
+            cr.LineTo(308.898438, 75.300781);
+            cr.LineTo(315.101563, 83.199219);
+            cr.LineTo(323, 77);
+            cr.LineTo(335.300781, 92.800781);
+            cr.LineTo(343.199219, 86.601563);
+            cr.LineTo(355.5, 102.398438);
+            cr.LineTo(347.601563, 108.601563);
+            cr.LineTo(341.398438, 100.699219);
+            cr.LineTo(333.5, 106.898438);
+            cr.LineTo(327.300781, 99);
+            cr.LineTo(319.398438, 105.199219);
+            cr.LineTo(313.199219, 97.300781);
+            cr.LineTo(297.398438, 109.601563);
+            cr.LineTo(303.601563, 117.5);
+            cr.LineTo(311.5, 111.300781);
+            cr.LineTo(317.699219, 119.199219);
+            cr.LineTo(325.601563, 113);
+            cr.LineTo(331.800781, 120.898438);
+            cr.LineTo(339.699219, 114.699219);
+            cr.LineTo(345.898438, 122.601563);
+            cr.LineTo(353.800781, 116.398438);
+            cr.LineTo(366.101563, 132.199219);
+            cr.LineTo(350, 144.398438);
+            cr.LineTo(368.5, 168);
+            cr.LineTo(337, 192.601563);
+            cr.LineTo(330.800781, 184.699219);
+            cr.LineTo(322.898438, 190.898438);
+            cr.LineTo(316.699219, 183);
+            cr.LineTo(277.300781, 213.800781);
+            cr.LineTo(283.5, 221.699219);
+            cr.LineTo(259.898438, 240.199219);
+            cr.LineTo(266.101563, 248.101563);
+            cr.LineTo(250.300781, 260.398438);
+            cr.LineTo(256.5, 268.300781);
+            cr.LineTo(264.398438, 262.101563);
+            cr.LineTo(270.601563, 270);
+            cr.LineTo(302.101563, 245.398438);
+            cr.LineTo(314.398438, 261.199219);
+            cr.LineTo(282.898438, 285.800781);
+            cr.LineTo(276.699219, 277.898438);
+            cr.LineTo(268.800781, 284.101563);
+            cr.LineTo(262.601563, 276.199219);
+            cr.LineTo(254.699219, 282.398438);
+            cr.LineTo(248.5, 274.5);
+            cr.LineTo(240.601563, 280.699219);
+            cr.LineTo(234.398438, 272.800781);
+            cr.LineTo(218.699219, 285);
+            cr.LineTo(224.898438, 292.898438);
+            cr.LineTo(185.5, 323.699219);
+            cr.LineTo(179.300781, 315.800781);
+            cr.LineTo(171.398438, 322);
+            cr.LineTo(165.199219, 314.101563);
+            cr.LineTo(157.300781, 320.300781);
+            cr.LineTo(145, 304.5);
+            cr.LineTo(137.101563, 310.699219);
+            cr.LineTo(130.898438, 302.800781);
+            cr.LineTo(138.800781, 296.601563);
+            cr.LineTo(132.601563, 288.699219);
+            cr.LineTo(140.5, 282.5);
+            cr.LineTo(134.300781, 274.601563);
+            cr.LineTo(142.199219, 268.398438);
+            cr.LineTo(136, 260.5);
+            cr.LineTo(143.898438, 254.300781);
+            cr.LineTo(162.398438, 277.898438);
+            cr.LineTo(170.300781, 271.699219);
+            cr.LineTo(139.5, 232.300781);
+            cr.LineTo(147.398438, 226.101563);
+            cr.LineTo(166, 250.101563);
+            cr.LineTo(173.898438, 243.898438);
+            cr.LineTo(143.101563, 204.5);
+            cr.LineTo(151, 198.300781);
+            cr.LineTo(169.5, 222);
+            cr.LineTo(177.398438, 215.800781);
+            cr.LineTo(146.601563, 176.398438);
+            cr.LineTo(162.398438, 164.101563);
+            cr.LineTo(156.199219, 156.199219);
+            cr.LineTo(164.101563, 150);
+            cr.LineTo(157.898438, 142.101563);
+            cr.LineTo(181.5, 123.601563);
+            cr.ClosePath();
+            cr.MoveTo(133.800781, 338.699219);
+            cr.LineTo(141.699219, 332.5);
+            cr.LineTo(154, 348.300781);
+            cr.LineTo(161.898438, 342.101563);
+            cr.LineTo(168.101563, 350);
+            cr.LineTo(176, 343.800781);
+            cr.LineTo(182.199219, 351.699219);
+            cr.LineTo(213.699219, 327.101563);
+            cr.LineTo(219.898438, 335);
+            cr.LineTo(204, 347.398438);
+            cr.LineTo(210.199219, 355.300781);
+            cr.LineTo(178.699219, 379.898438);
+            cr.LineTo(172.5, 372);
+            cr.LineTo(164.601563, 378.199219);
+            cr.LineTo(158.398438, 370.300781);
+            cr.LineTo(150.5, 376.5);
+            cr.LineTo(132, 352.898438);
+            cr.LineTo(139.898438, 346.699219);
+            cr.ClosePath();
+            cr.MoveTo(133.800781, 338.699219);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(266.5, 70.101563);
+            cr.LineTo(258.601563, 76.199219);
+            cr.LineTo(264.699219, 84.101563);
+            cr.LineTo(272.601563, 77.898438);
+            cr.ClosePath();
+            cr.MoveTo(266.5, 70.101563);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(291.101563, 101.601563);
+            cr.LineTo(275.300781, 113.898438);
+            cr.LineTo(281.5, 121.800781);
+            cr.LineTo(297.300781, 109.5);
+            cr.ClosePath();
+            cr.MoveTo(291.101563, 101.601563);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(307.898438, 139.199219);
+            cr.LineTo(284.300781, 157.699219);
+            cr.LineTo(290.5, 165.601563);
+            cr.LineTo(306.300781, 153.300781);
+            cr.LineTo(312.5, 161.199219);
+            cr.LineTo(328.300781, 148.898438);
+            cr.LineTo(334.5, 156.800781);
+            cr.LineTo(350.300781, 144.5);
+            cr.LineTo(344.101563, 136.601563);
+            cr.LineTo(336.199219, 142.800781);
+            cr.LineTo(330, 134.898438);
+            cr.LineTo(314, 147.101563);
+            cr.ClosePath();
+            cr.MoveTo(307.898438, 139.199219);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
 
 
 
@@ -3790,8 +4298,6 @@ namespace Vintagestory.API.Client
         }
 
 
-
-
         public void Drawdice_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -3958,7 +4464,6 @@ namespace Vintagestory.API.Client
         }
 
 
-
         public void Drawright_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -4034,10 +4539,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
-
-
+        
         public void Drawnecklace_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -4226,7 +4728,6 @@ namespace Vintagestory.API.Client
 
             cr.Restore();
         }
-
 
 
         public void Drawbasket_svg(Context cr, int x, int y, float width, float height, double[] rgba)
@@ -4968,6 +5469,7 @@ namespace Vintagestory.API.Client
 
             cr.Restore();
         }
+
 
         public void Drawbelt_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
@@ -6018,8 +6520,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
+        
         public void Drawmedal_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -7360,8 +7861,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
+        
         public void Drawring_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -8007,8 +8507,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
+        
         public void Drawcape_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -8935,8 +9434,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
+        
         public void Drawshirt_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -12328,9 +12826,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
-
+        
         public void Drawhat_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -14441,9 +14937,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
-
+        
         public void DrawArrowRight(Context cr, double lineWidth = 5, bool strokeOrFill = true, bool defaultPattern = true)
         {
             Pattern pattern;
@@ -14474,6 +14968,7 @@ namespace Vintagestory.API.Client
             if (strokeOrFill) cr.Stroke(); else cr.Fill();
             
         }
+
 
         public void DrawFlame(Context cr, double lineWidth = 3, bool strokeOrFill = true, bool defaultPattern = true)
         {
@@ -14616,6 +15111,7 @@ namespace Vintagestory.API.Client
             }
         }
 
+
         public void Drawmenuicon_svg(Context cr, double x, double y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -14716,8 +15212,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
+        
         public void DrawMapPlayer(Context cr, int x, int y, float width, float height, double[] rgba)
         {
             Pattern pattern = null;
@@ -14817,9 +15312,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-
-
-
+        
         public void DrawCross(Context ctx, double x, double y, double lineWidth, double size, bool preserverePath = false)
         {
             ctx.LineWidth = lineWidth;
@@ -14842,6 +15335,7 @@ namespace Vintagestory.API.Client
             }        
         }
 
+
         public void DrawPen(Context ctx, double x, double y, double lineWidth, double size)
         {
             ctx.LineWidth = lineWidth;
@@ -14861,6 +15355,7 @@ namespace Vintagestory.API.Client
             ctx.ClosePath();
             ctx.Fill();
         }
+
 
         public void DrawRandomSymbol(Context ctx, double x, double y, double size, double[] color, double lineWidth, int seed, int addLines = 0)
         {

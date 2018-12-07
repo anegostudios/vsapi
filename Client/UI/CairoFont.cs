@@ -10,11 +10,20 @@ namespace Vintagestory.API.Client
     public class CairoFont : FontConfig, ICairoFont, IDisposable
     {
         static ImageSurface surface;
+        /// <summary>
+        /// The static Context for all Cairo Fonts.
+        /// </summary>
         public static Context FontMeasuringContext;
         
+        /// <summary>
+        /// Whether or not the font is rendered twice.
+        /// </summary>
         public bool RenderTwice;
 
+        public double LineHeightMultiplier = 1f;
+
         FontOptions CairoFontOptions;
+
 
         static CairoFont()
         {
@@ -22,10 +31,17 @@ namespace Vintagestory.API.Client
             FontMeasuringContext = new Context(surface);
         }
 
+        /// <summary>
+        /// Creates an empty CairoFont instance.
+        /// </summary>
         public CairoFont()
         {
         }
 
+        /// <summary>
+        /// Creates a pre-populated CairoFont instance.
+        /// </summary>
+        /// <param name="config">The configuration for the CairoFont</param>
         public CairoFont(FontConfig config)
         {
             UnscaledFontsize = config.UnscaledFontsize;
@@ -36,14 +52,37 @@ namespace Vintagestory.API.Client
             StrokeWidth = config.StrokeWidth;
         }   
 
-
+        /// <summary>
+        /// Creates a CairoFont object.
+        /// </summary>
+        /// <param name="unscaledFontSize">The size of the font before scaling is applied.</param>
+        /// <param name="fontName">The name of the font.</param>
         public CairoFont(double unscaledFontSize, string fontName)
         {
             this.UnscaledFontsize = unscaledFontSize;
             this.Fontname = fontName;
         }
 
+        public CairoFont WithLineSpacing(float lineHeight)
+        {
+            this.LineHeightMultiplier = lineHeight;
+            return this;
+        }
 
+        public CairoFont WithStroke(double[] color, double width)
+        {
+            this.StrokeColor = color;
+            this.StrokeWidth = width;
+            return this;
+        }
+
+        /// <summary>
+        /// Creates a CairoFont object
+        /// </summary>
+        /// <param name="unscaledFontSize">The size of the font before scaling is applied.</param>
+        /// <param name="fontName">The name of the font.</param>
+        /// <param name="color">The color of the font.</param>
+        /// <param name="strokeColor">The color for the stroke of the font. (Default: Null)</param>
         public CairoFont(double unscaledFontSize, string fontName, double[] color, double[] strokeColor = null)
         {
             this.UnscaledFontsize = unscaledFontSize;
@@ -56,8 +95,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adjust font size so that it fits given bounds
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="bounds"></param>
+        /// <param name="text">The text of the object.</param>
+        /// <param name="bounds">The bounds of the element where the font is displayed.</param>
         public void AutoFontSize(string text, ElementBounds bounds)
         {
             UnscaledFontsize = 50;
@@ -69,8 +108,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adjust the bounds so that it fits given text in one line
         /// </summary>
-        /// <param name="text"></param>
-        /// <param name="bounds"></param>
+        /// <param name="text">The text to adjust</param>
+        /// <param name="bounds">The bounds to adjust the text to.</param>
         /// <param name="onlyGrow">If true, the box will not be made smaller</param>
         public void AutoBoxSize(string text, ElementBounds bounds, bool onlyGrow = false)
         {
@@ -120,25 +159,39 @@ namespace Vintagestory.API.Client
             }
         }
 
-
+        /// <summary>
+        /// Sets the color of the CairoFont.
+        /// </summary>
+        /// <param name="color">The color to set.</param>
         public CairoFont WithColor(double[] color)
         {
             this.Color = color;
             return this;
         }
 
+        /// <summary>
+        /// Adds a weight to the font.
+        /// </summary>
+        /// <param name="weight">The weight of the font.</param>
         public CairoFont WithWeight(FontWeight weight)
         {
             this.FontWeight = weight;
             return this;
         }
 
+        /// <summary>
+        /// Sets the font to render twice.
+        /// </summary>
         public CairoFont WithRenderTwice()
         {
             this.RenderTwice = true;
             return this;
         }
 
+        /// <summary>
+        /// Sets up the context.  THIS MUST BE RAN IN THE MAIN THREAD! NOT THREAD SAFE!
+        /// </summary>
+        /// <param name="ctx">The context to set up the CairoFont with.</param>
         public void SetupContext(Context ctx)
         {
             if (Thread.CurrentThread.ManagedThreadId != RuntimeEnv.MainThreadId)
@@ -165,21 +218,35 @@ namespace Vintagestory.API.Client
             }
         }
 
+        /// <summary>
+        /// Gets the font's extents.
+        /// </summary>
+        /// <returns>The FontExtents for this particular font.</returns>
         public FontExtents GetFontExtents()
         {
             SetupContext(FontMeasuringContext);
             return FontMeasuringContext.FontExtents;
         }
 
+        /// <summary>
+        /// Gets the extents of the text.
+        /// </summary>
+        /// <param name="text">The text to extend.</param>
+        /// <returns>The Text extends for this font with this text.</returns>
         public TextExtents GetTextExtents(string text)
         {
             SetupContext(FontMeasuringContext);
             return FontMeasuringContext.TextExtents(text);
         }
 
+        /// <summary>
+        /// Clone function.  Creates a duplicate of this Cairofont.
+        /// </summary>
+        /// <returns>The duplicate font.</returns>
         public CairoFont Clone()
         {
             CairoFont font = (CairoFont)MemberwiseClone();
+            font.Color = new double[Color.Length];
             Array.Copy(Color, font.Color, Color.Length);
             return font;
         }
@@ -187,119 +254,158 @@ namespace Vintagestory.API.Client
 
         #region Presets
 
-       
+        /// <summary>
+        /// Sets the base size of the CairoFont.
+        /// </summary>
+        /// <param name="fontSize">The new font size</param>
         public CairoFont WithFontSize(float fontSize)
         {
             UnscaledFontsize = fontSize;
             return this;
         }
 
+        /// <summary>
+        /// Creates a Button Text preset.
+        /// </summary>
+        /// <returns>The button text preset.</returns>
         public static CairoFont ButtonText()
         {
             return new CairoFont()
             {
-                Color = ElementGeometrics.LightBrownTextColor,
+                Color = GuiStyle.LightBrownTextColor,
                 FontWeight = FontWeight.Bold,
-                Fontname = ElementGeometrics.DecorativeFontName,
+                Fontname = GuiStyle.DecorativeFontName,
                 UnscaledFontsize = 24
             };
         }
 
+        /// <summary>
+        /// Creates a text preset for when the button is pressed.
+        /// </summary>
+        /// <returns>The text preset for a pressed button.</returns>
         public static CairoFont ButtonPressedText()
         {
             return new CairoFont()
             {
-                Color = ElementGeometrics.LightBrownHoverTextColor,
+                Color = GuiStyle.LightBrownHoverTextColor,
                 FontWeight = FontWeight.Bold,
-                Fontname = ElementGeometrics.DecorativeFontName,
+                Fontname = GuiStyle.DecorativeFontName,
                 UnscaledFontsize = 24
             };
         }
 
+        /// <summary>
+        /// Creates a text preset for text input fields.
+        /// </summary>
+        /// <returns>The text field input preset.</returns>
         public static CairoFont TextInput()
         {
             return new CairoFont()
             {
                 Color = new double[] { 1, 1, 1, 0.9 },
-                Fontname = ElementGeometrics.StandardFontName,
+                Fontname = GuiStyle.StandardFontName,
                 UnscaledFontsize = 18
             };
         }
 
+        /// <summary>
+        /// Creates a text oreset for smaller text input fields.
+        /// </summary>
+        /// <returns>The smaller text input preset.</returns>
         public static CairoFont SmallTextInput()
         {
             return new CairoFont()
             {
                 Color = new double[] { 0, 0, 0, 0.9 },
-                Fontname = ElementGeometrics.StandardFontName,
-                UnscaledFontsize = ElementGeometrics.SmallFontSize
+                Fontname = GuiStyle.StandardFontName,
+                UnscaledFontsize = GuiStyle.SmallFontSize
             };
         }
 
+        /// <summary>
+        /// Creates a text for small dialogs.
+        /// </summary>
+        /// <returns>A small dialog text.</returns>
         public static CairoFont SmallDialogText()
         {
             return new CairoFont()
             {
                 Color = new double[] { 234 / 255.0, 220 / 255.0, 206 / 255.0, 1 },
-                Fontname = ElementGeometrics.DecorativeFontName,
-                UnscaledFontsize = ElementGeometrics.SmallFontSize,
+                Fontname = GuiStyle.DecorativeFontName,
+                UnscaledFontsize = GuiStyle.SmallFontSize,
                 FontWeight = FontWeight.Bold
             };
         }
 
+        /// <summary>
+        /// Creates a text for medium dialog.
+        /// </summary>
+        /// <returns>A medium dialog text.</returns>
         public static CairoFont MediumDialogText()
         {
             return new CairoFont()
             {
                 Color = new double[] { 234 / 255.0, 220 / 255.0, 206 / 255.0, 1 },
-                Fontname = ElementGeometrics.DecorativeFontName,
-                UnscaledFontsize = ElementGeometrics.SmallishFontSize,
+                Fontname = GuiStyle.DecorativeFontName,
+                UnscaledFontsize = GuiStyle.SmallishFontSize,
                 FontWeight = FontWeight.Bold
             };
         }
 
-
+        /// <summary>
+        /// Creates a white text for medium dialog.
+        /// </summary>
+        /// <returns>The white text for medium dialog.</returns>
         public static CairoFont WhiteMediumText()
         {
             return new CairoFont()
             {
-                Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.StandardFontName,
-                UnscaledFontsize = ElementGeometrics.NormalFontSize
+                Color = GuiStyle.DialogDefaultTextColor,
+                Fontname = GuiStyle.StandardFontName,
+                UnscaledFontsize = GuiStyle.NormalFontSize
             };
         }
 
-
+        /// <summary>
+        /// Creates a white text for smallish dialogs.
+        /// </summary>
+        /// <returns>The white text for small dialogs.</returns>
         public static CairoFont WhiteSmallishText()
         {
             return new CairoFont()
             {
-                Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.StandardFontName,
-                UnscaledFontsize = ElementGeometrics.SmallishFontSize
+                Color = GuiStyle.DialogDefaultTextColor,
+                Fontname = GuiStyle.StandardFontName,
+                UnscaledFontsize = GuiStyle.SmallishFontSize
             };
         }
 
-
+        /// <summary>
+        /// Creates a white text for small dialogs.
+        /// </summary>
+        /// <returns>The white text for small dialogs</returns>
         public static CairoFont WhiteSmallText()
         {
             return new CairoFont()
             {
-                Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.StandardFontName,
-                UnscaledFontsize = ElementGeometrics.SmallFontSize
+                Color = GuiStyle.DialogDefaultTextColor,
+                Fontname = GuiStyle.StandardFontName,
+                UnscaledFontsize = GuiStyle.SmallFontSize
             };
 
         }
 
-
+        /// <summary>
+        /// Creates a white text for details.
+        /// </summary>
+        /// <returns>A white text for details.</returns>
         public static CairoFont WhiteDetailText()
         {
             return new CairoFont()
             {
-                Color = ElementGeometrics.DialogDefaultTextColor,
-                Fontname = ElementGeometrics.StandardSemiBoldFontName,
-                UnscaledFontsize = ElementGeometrics.DetailFontSize
+                Color = GuiStyle.DialogDefaultTextColor,
+                Fontname = GuiStyle.StandardSemiBoldFontName,
+                UnscaledFontsize = GuiStyle.DetailFontSize
             };
 
         }

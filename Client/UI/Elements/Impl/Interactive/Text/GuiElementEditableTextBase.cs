@@ -136,7 +136,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < line.Length; i++)
             {
-                double posx = ctx.TextExtents(line.Substring(0, i)).XAdvance;
+                double posx = ctx.TextExtents(line.Substring(0, i+1)).XAdvance;
 
                 if (x - posx <= 0)
                 {
@@ -203,7 +203,7 @@ namespace Vintagestory.API.Client
         /// Sets given text, sets the cursor to the end of the text
         /// </summary>
         /// <param name="text"></param>
-        public override void SetValue(string text)
+        public void SetValue(string text)
         {
             LoadValue(text);
             SetCaretPos(lines[lines.Count - 1].Length, lines.Count - 1);
@@ -226,7 +226,9 @@ namespace Vintagestory.API.Client
 
             if (multilineMode)
             {
-                lines = Prober.InsertAutoLineBreaks(ctx, new StringBuilder(text), Bounds.InnerWidth - 2 * Bounds.absPaddingX).Split('\n').ToList();
+                TextLine[] textlines = textUtil.Lineize(Font, text, Bounds.InnerWidth - 2 * Bounds.absPaddingX);
+                lines.Clear();
+                foreach (var val in textlines) lines.Add(val.Text);
             }
             else
             {
@@ -291,12 +293,21 @@ namespace Vintagestory.API.Client
             {
                 double width = Bounds.InnerWidth - 2 * Bounds.absPaddingX - rightSpacing;
 
-                ShowMultilineText(ctx, lines.ToArray(), Bounds.absPaddingX + leftPadding, Bounds.absPaddingY, width, EnumTextOrientation.Left);
+                TextLine[] textlines = new TextLine[lines.Count];
+                for (int i = 0; i < textlines.Length; i++)
+                {
+                    textlines[i] = new TextLine()
+                    {
+                        Text = lines[i],
+                        Bounds = new LineRectangled(0, i*fontHeight, Bounds.InnerWidth, fontHeight)
+                    };
+                }
+
+                textUtil.DrawMultilineTextAt(ctx, Font, textlines, Bounds.absPaddingX + leftPadding, Bounds.absPaddingY, width, EnumTextOrientation.Left);
             } else
             {
                 this.topPadding = Math.Max(0, Bounds.OuterHeight - bottomSpacing - ctx.FontExtents.Height) / 2;
-                ctx.MoveTo(Bounds.absPaddingX + leftPadding, Bounds.absPaddingY + this.topPadding);
-                ShowTextCorrectly(ctx, displayedText);
+                textUtil.DrawTextLine(ctx, Font, displayedText, Bounds.absPaddingX + leftPadding, Bounds.absPaddingY + this.topPadding);
             }
 
 
@@ -389,9 +400,9 @@ namespace Vintagestory.API.Client
                     MoveCursor(1, args.CtrlPressed);
                 }
 
-                if (args.KeyCode == (int)GlKeys.V && args.CtrlPressed)
+                if (args.KeyCode == (int)GlKeys.V && (args.CtrlPressed || args.CommandPressed))
                 {
-                    string insert = System.Windows.Forms.Clipboard.GetText(System.Windows.Forms.TextDataFormat.UnicodeText);
+                    string insert = api.Forms.GetClipboardText();
                     insert = insert.Replace("\uFEFF", ""); // UTF-8 bom, we don't need that one, like ever
 
                     string fulltext = string.Join("\n", lines);

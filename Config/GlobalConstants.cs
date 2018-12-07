@@ -33,6 +33,11 @@ namespace Vintagestory.API.Config
         public static float DefaultAttackRange = 1.5f;
 
         /// <summary>
+        /// Multiplied to all motions and animation speeds
+        /// </summary>
+        public static float OverallSpeedMultiplier = 1f;
+
+        /// <summary>
         /// Multiplier applied to the players movement motion
         /// </summary>
         public static float BaseMoveSpeed = 1.5f;
@@ -175,7 +180,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Default Itemstack attributes that should be ignored during a stack.Collectible.Equals() comparison
         /// </summary>
-        public static string[] IgnoredStackAttributes = new string[] { "temperature", "toolMode" };
+        public static string[] IgnoredStackAttributes = new string[] { "temperature", "toolMode", "renderVariant" };
 
     }
 }

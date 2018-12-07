@@ -58,6 +58,7 @@ namespace Vintagestory.API.Common
         /// Produces a visual cue on given slot, if it's currently part of an inventory and visible to the player
         /// If called on server side, the server will send a network packet to notify the client.
         /// </summary>
+        /// <param name="player"></param>
         /// <param name="slot"></param>
         void NotifySlot(IPlayer player, ItemSlot slot);
 
@@ -108,6 +109,8 @@ namespace Vintagestory.API.Common
         /// Returns a slot that would best fit the contents of the source slot. This checks all inventories currently opened by the player.
         /// </summary>
         /// <param name="sourceSlot"></param>
+        /// <param name="onlyPlayerInventory"></param>
+        /// <param name="skipSlots"></param>
         /// <returns></returns>
         ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, List<IItemSlot> skipSlots = null);
 
@@ -117,6 +120,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="op"></param>
         /// <param name="onlyPlayerInventory">Forces to place the item only into the players personal inventory</param>
+        /// <param name="slotNotifyEffect"></param>
         /// <returns>One or more client packets that may be sent to the server for synchronisation</returns>
         object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, bool slotNotifyEffect = false);
 
@@ -171,7 +175,13 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Drops the contents of given inventory
         /// </summary>
-        /// <param name="craftingInv"></param>
+        /// <param name="inv"></param>
         void DropAllInventoryItems(IInventory inv);
+
+        /// <summary>
+        /// Server Side: Resends the hotbar slot contents to all other clients to make sure they render the correct held item
+        /// Client side: No effect
+        /// </summary>
+        void BroadcastHotbarSlot();
     }
 }

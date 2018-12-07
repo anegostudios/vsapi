@@ -45,7 +45,10 @@ namespace Vintagestory.API.Common
 
         internal void SetMat(float[] modelMatrix)
         {
-            for (int i = 0; i < 16; i++) AnimModelMatrix[i] = modelMatrix[i];
+            for (int i = 0; i < 16; i++)
+            {
+                AnimModelMatrix[i] = modelMatrix[i];
+            }
         }
     }
 }

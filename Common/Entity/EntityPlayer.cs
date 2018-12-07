@@ -9,25 +9,26 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-    public class EntityPlayer : EntityHumanoid, IEntityPlayer
+    public class EntityPlayer : EntityHumanoid
     {
         public API.Common.Action<float> PhysicsUpdateWatcher;
-
-        public BlockSelection blockSelection;
-        public EntitySelection entitySelection;
-
+        public BlockSelection BlockSelection;
+        public EntitySelection EntitySelection;
+        public DamageSource DeathReason;
         public Vec3d CameraPos = new Vec3d();
+
+        /// <summary>
+        /// The yaw the player currently wants to walk towards to. Value set by the PlayerPhysics system.
+        /// </summary>
         public float WalkYaw;
+        /// <summary>
+        /// The pitch the player currently wants to move to. Only relevant while swimming. Value set by the PlayerPhysics system.
+        /// </summary>
         public float WalkPitch;
 
-        public DamageSource DeathReason;
 
         double eyeHeightCurrent;
 
-        Vec3d IEntityPlayer.CameraPos
-        {
-            get { return CameraPos; }
-        }
 
         public override bool StoreWithChunk
         {
@@ -49,6 +50,14 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public override ItemSlot LeftHandItemSlot
+        {
+            get
+            {
+                IPlayer player = World.PlayerByUid(PlayerUID);
+                return player?.InventoryManager.GetHotbarInventory()[10];
+            }
+        }
 
         public override IInventory GearInventory
         {
@@ -62,7 +71,10 @@ namespace Vintagestory.API.Common
 
         public override byte[] LightHsv
         {
-            get { return RightHandItemSlot?.Itemstack?.Block?.LightHsv; }
+            get {
+                byte[] lightHsv = RightHandItemSlot?.Itemstack?.Block?.LightHsv;
+                return (lightHsv != null && lightHsv[2] > 0) ? lightHsv : LeftHandItemSlot?.Itemstack?.Block?.LightHsv;
+            }
         }
 
         public override bool AlwaysActive
@@ -87,7 +99,8 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                return World?.PlayerByUid(PlayerUID)?.WorldData.CurrentGameMode != EnumGameMode.Spectator;
+                IWorldPlayerData worldData = World?.PlayerByUid(PlayerUID)?.WorldData;
+                return worldData?.CurrentGameMode != EnumGameMode.Spectator && worldData?.NoClip != true;
             }
         }
 
@@ -213,8 +226,8 @@ namespace Vintagestory.API.Common
                 double diff = (newEyeheight - eyeHeightCurrent) * 5 * dt;
                 eyeHeightCurrent = diff > 0 ? Math.Min(eyeHeightCurrent + diff, newEyeheight) : Math.Max(eyeHeightCurrent + diff, newEyeheight);
 
-                diff = (newModelHeight - CollisionBox.Y2) * 5 * dt;
-                CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
+                diff = (newModelHeight - OriginCollisionBox.Y2) * 5 * dt;
+                OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
 
             }
 
@@ -295,7 +308,21 @@ namespace Vintagestory.API.Common
         {
             Alive = true;
             ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Respawn, Type = EnumDamageType.Heal }, 9999);
-            StopAnimation("die");
+            AnimManager?.StopAnimation("die");
+
+            (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, 196);
+        }
+
+
+        public override void OnReceivedServerPacket(int packetid, byte[] data)
+        {
+            if (packetid == 196)
+            {
+                AnimManager?.StopAnimation("die");
+                return;
+            }
+
+            base.OnReceivedServerPacket(packetid, data);
         }
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
@@ -373,10 +400,10 @@ namespace Vintagestory.API.Common
             {
                 if (!inv.HasOpened(player)) continue;
 
-                int q = inv.QuantitySlots;
+                int q = inv.Count;
                 for (int i = 0; i < q; i++)
                 {
-                    if (!handler(inv.GetSlot(i))) return;
+                    if (!handler(inv[i])) return;
                 }
             }
         }

@@ -190,6 +190,9 @@ namespace Vintagestory.API.Common.Entities
             return this;
         }
 
+
+        /*===== All below methods have been updated to use the x/y/z fields instead of the X/Y/Z properties for higher performance (verified by profiler to gain notable performance) =====*/
+
         /// <summary>
         /// Returns true if the entity is within given distance of the other entity
         /// </summary>
@@ -198,9 +201,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InRangeOf(EntityPos position, int squareDistance)
         {
-            double dx = X - position.X;
-            double dy = Y - position.Y;
-            double dz = Z - position.Z;
+            double dx = this.x - position.X;
+            double dy = this.y - position.Y;
+            double dz = this.z - position.Z;
 
             return dx*dx + dy*dy + dz*dz <= squareDistance;
         }
@@ -215,9 +218,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InRangeOf(int x, int y, int z, float squareDistance)
         {
-            double dx = X - x;
-            double dy = Y - y;
-            double dz = Z - z;
+            double dx = this.x - x;
+            double dy = this.y - y;
+            double dz = this.z - z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
         }
@@ -232,8 +235,8 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InHorizontalRangeOf(int x, int z, float squareDistance)
         {
-            double dx = X - x;
-            double dz = Z - z;
+            double dx = this.x - x;
+            double dz = this.z - z;
 
             return dx * dx + dz * dz <= squareDistance;
         }
@@ -248,9 +251,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InRangeOf(double x, double y, double z, float squareDistance)
         {
-            double dx = X - x;
-            double dy = Y - y;
-            double dz = Z - z;
+            double dx = this.x - x;
+            double dy = this.y - y;
+            double dz = this.z - z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
         }
@@ -263,9 +266,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InRangeOf(BlockPos pos, float squareDistance)
         {
-            double dx = X - pos.X;
-            double dy = Y - pos.Y;
-            double dz = Z - pos.Z;
+            double dx = this.x - pos.X;
+            double dy = this.y - pos.Y;
+            double dz = this.z - pos.Z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
         }
@@ -278,9 +281,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InRangeOf(Vec3f pos, float squareDistance)
         {
-            double dx = X - pos.X;
-            double dy = Y - pos.Y;
-            double dz = Z - pos.Z;
+            double dx = x - pos.X;
+            double dy = y - pos.Y;
+            double dz = z - pos.Z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
         }
@@ -294,9 +297,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InRangeOf(Vec3d position, float horRangeSq, float vertRange)
         {
-            double dx = X - position.X;
-            double dy = Y - position.Y;
-            double dz = Z - position.Z;
+            double dx = x - position.X;
+            double dy = y - position.Y;
+            double dz = z - position.Z;
 
             return dx * dx + dz * dz <= horRangeSq && Math.Abs(dy) <= vertRange;
         }
@@ -310,9 +313,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public float SquareDistanceTo(float x, float y, float z)
         {
-            double dx = X - x;
-            double dy = Y - y;
-            double dz = Z - z;
+            double dx = this.x - x;
+            double dy = this.y - y;
+            double dz = this.z - z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
         }
@@ -326,9 +329,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public float SquareDistanceTo(double x, double y, double z)
         {
-            double dx = X - x;
-            double dy = Y - y;
-            double dz = Z - z;
+            double dx = this.x - x;
+            double dy = this.y - y;
+            double dz = this.z - z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
         }
@@ -338,13 +341,13 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public float SquareDistanceTo(Vec3d pos)
+        public double SquareDistanceTo(Vec3d pos)
         {
-            double dx = X - pos.X;
-            double dy = Y - pos.Y;
-            double dz = Z - pos.Z;
+            double dx = this.x - pos.X;
+            double dy = this.y - pos.Y;
+            double dz = this.z - pos.Z;
 
-            return (float)(dx * dx + dy * dy + dz * dz);
+            return (dx * dx + dy * dy + dz * dz);
         }
 
 
@@ -355,9 +358,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public float SquareDistanceTo(EntityPos pos)
         {
-            double dx = X - pos.X;
-            double dy = Y - pos.Y;
-            double dz = Z - pos.Z;
+            double dx = x - pos.X;
+            double dy = y - pos.Y;
+            double dz = z - pos.Z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
         }

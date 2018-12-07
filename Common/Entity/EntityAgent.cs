@@ -16,8 +16,21 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// An autonomous, goal-directed entity which observes and acts upon an environment
     /// </summary>
-    public class EntityAgent : Entity, IEntityAgent
+    public class EntityAgent : Entity
     {
+        /// <summary>
+        /// The yaw of the agents head
+        /// </summary>
+        public float HeadYaw;
+        /// <summary>
+        /// The pitch of the agents head
+        /// </summary>
+        public float HeadPitch;
+        /// <summary>
+        /// The yaw of the agents body
+        /// </summary>
+        public float BodyYaw;
+
 
         /// <summary>
         /// True if all clients have to be informed about this entities death. Set to false once all clients have been notified
@@ -31,7 +44,7 @@ namespace Vintagestory.API.Common
 
         protected EntityControls controls;
         protected EntityControls servercontrols;
-        public PathTraverserBase PathTraverser;
+        
 
         public IMountable MountedOn { get; protected set; }
         public EnumEntityActivity CurrentControls;
@@ -56,6 +69,14 @@ namespace Vintagestory.API.Common
             get { return null; }
         }
 
+        public override bool ShouldDespawn
+        {
+            get { return !Alive && AllowDespawn; }
+        }
+
+        public bool AllowDespawn = true;
+
+
 
 
 
@@ -65,14 +86,14 @@ namespace Vintagestory.API.Common
             servercontrols = new EntityControls();
         }
 
-        public AnimationMetaData[] Animations;
+        protected AnimationMetaData[] Animations;
 
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
             base.Initialize(properties, api, InChunkIndex3d);
 
-            PathTraverser = new StraightLinePathTraverser(this);
+            
 
             if (properties.Client.Animations != null)
             {
@@ -105,9 +126,7 @@ namespace Vintagestory.API.Common
         {
             get { return servercontrols; }
         }
-
-        double IEntityAgent.EyeHeight => Properties.EyeHeight;
-
+        
         public bool IsEyesSubmerged()
         {
             int blockId = GetEyesBlockId();
@@ -128,7 +147,7 @@ namespace Vintagestory.API.Common
             if (MountedOn?.SuggestedAnimation != null)
             {
                 string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
-                StartAnimation(anim);
+                AnimManager?.StartAnimation(anim);
             }
 
             onmount.DidMount(this);
@@ -141,7 +160,7 @@ namespace Vintagestory.API.Common
             if (MountedOn?.SuggestedAnimation != null)
             {
                 string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
-                StopAnimation(anim);
+                AnimManager?.StopAnimation(anim);
             }
 
 
@@ -158,6 +177,13 @@ namespace Vintagestory.API.Common
             {
                 PlayEntitySound("death");
             }
+            if (reason != EnumDespawnReason.Death)
+            {
+                AllowDespawn = true;
+            }
+
+            controls.WalkVector.Set(0, 0, 0);
+            controls.FlyVector.Set(0, 0, 0);
 
             base.Die(reason, damageSourceForDeath);
         }
@@ -201,7 +227,7 @@ namespace Vintagestory.API.Common
                             tmp, tmp, 1.5f, 1f, 0.25f + (float)World.Rand.NextDouble() * 0.25f,
                             EnumParticleModel.Cube, byPlayer
                         );
-                    }   
+                    }
                 }
 
                 ReceiveDamage(new DamageSource() {
@@ -275,8 +301,6 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
-            PathTraverser.OnGameTick(dt);
-
             if (World.Side == EnumAppSide.Client)
             {
                 bool alive = Alive;
@@ -294,16 +318,19 @@ namespace Vintagestory.API.Common
                     (!alive ? EnumEntityActivity.Dead : 0)
                 ;
                 CurrentControls = CurrentControls == 0 ? EnumEntityActivity.Idle : CurrentControls;
+            }
 
-                if (this is EntityPlayer) HandleHandAnimations();
+            if (this is EntityPlayer) HandleHandAnimations();
 
+            if (World.Side == EnumAppSide.Client)
+            {
                 AnimationMetaData defaultAnim = null;
                 bool anyAverageAnimActive = false;
 
                 for (int i = 0; Animations != null && i < Animations.Length; i++)
                 {
                     AnimationMetaData anim = Animations[i];
-                    bool wasActive = ActiveAnimationsByAnimCode.ContainsKey(anim.Animation);
+                    bool wasActive = AnimManager.ActiveAnimationsByAnimCode.ContainsKey(anim.Animation);
                     bool nowActive = anim.Matches((int)CurrentControls);
 
                     anyAverageAnimActive |= nowActive && anim.BlendMode == EnumAnimationBlendMode.Average;
@@ -313,14 +340,14 @@ namespace Vintagestory.API.Common
                     if (!wasActive && nowActive)
                     {
                         anim.WasStartedFromTrigger = true;
-                        StartAnimation(anim);
+                        AnimManager.StartAnimation(anim);
              //           Console.WriteLine("start" + anim.Animation);
                     }
 
                     if (wasActive && !nowActive && anim.WasStartedFromTrigger)
                     {
                         anim.WasStartedFromTrigger = false;
-                        StopAnimation(anim.Animation);
+                        AnimManager.StopAnimation(anim.Animation);
              //           Console.WriteLine("stop" + anim.Animation);
                     }
                 }
@@ -328,8 +355,8 @@ namespace Vintagestory.API.Common
                 if (!anyAverageAnimActive && defaultAnim != null)
                 {
                     defaultAnim.WasStartedFromTrigger = true;
-          //          Console.WriteLine("start default " + defaultAnim.Animation);
-                    StartAnimation(defaultAnim);
+                    //          Console.WriteLine("start default " + defaultAnim.Animation);
+                    AnimManager.StartAnimation(defaultAnim);
                 }
             }
 
@@ -358,13 +385,13 @@ namespace Vintagestory.API.Common
             ItemStack stack = RightHandItemSlot?.Itemstack;
 
             bool nowUseStack = servercontrols.RightMouseDown;
-            bool wasUseStack = lastRunningHeldUseAnimation != null && ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
+            bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
 
             bool nowHitStack = servercontrols.LeftMouseDown;
-            bool wasHitStack = lastRunningHeldHitAnimation != null && ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
+            bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
 
             bool nowIdleStack = !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown;
-            bool wasIdleStack = lastRunningHeldIdleAnimation != null && ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldIdleAnimation);
+            bool wasIdleStack = lastRunningHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldIdleAnimation);
 
             string nowHeldUseAnim = stack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
             string nowHeldHitAnim = stack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
@@ -377,7 +404,7 @@ namespace Vintagestory.API.Common
                 StopHandAnims();
                 if (nowUseStack)
                 {
-                    StartAnimation(lastRunningHeldUseAnimation = nowHeldUseAnim);
+                    AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldUseAnim);
                 }
             }
 
@@ -386,7 +413,7 @@ namespace Vintagestory.API.Common
                 StopHandAnims();
                 if (nowHitStack)
                 {
-                    StartAnimation(lastRunningHeldHitAnimation = nowHeldHitAnim);
+                    AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldHitAnim);
                 }
             }
 
@@ -395,20 +422,20 @@ namespace Vintagestory.API.Common
                 StopHandAnims();
                 if (nowIdleStack)
                 {
-                    StartAnimation(lastRunningHeldIdleAnimation = nowHeldIdleAnim);
+                    AnimManager.StartAnimation(lastRunningHeldIdleAnimation = nowHeldIdleAnim);
                 }
             }
         }
 
         private void StopHandAnims()
         {
-            StopAnimation(lastRunningHeldUseAnimation);
+            AnimManager.StopAnimation(lastRunningHeldUseAnimation);
             lastRunningHeldUseAnimation = null;
 
-            StopAnimation(lastRunningHeldHitAnimation);
+            AnimManager.StopAnimation(lastRunningHeldHitAnimation);
             lastRunningHeldHitAnimation = null;
 
-            StopAnimation(lastRunningHeldIdleAnimation);
+            AnimManager.StopAnimation(lastRunningHeldIdleAnimation);
             lastRunningHeldIdleAnimation = null;
         }
 

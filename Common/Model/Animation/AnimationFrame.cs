@@ -11,6 +11,8 @@ namespace Vintagestory.API.Common
     // https://youtu.be/cieheqt7eqc?t=11m51s
     public class AnimationFrame
     {
+        public int FrameNumber;
+
         public float[][] animTransforms = new float[GlobalConstants.MaxAnimatedElements][];
 
         public float[] transformationMatrices = new float[16 * GlobalConstants.MaxAnimatedElements];

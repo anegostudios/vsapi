@@ -30,7 +30,7 @@ namespace Vintagestory.API.Client
             ctx.Operator = Operator.Over;
             Font.SetupContext(ctx);
             ctx.MoveTo((int)Bounds.drawX, (int)Bounds.drawY);
-            ShowTextCorrectly(ctx, text);
+            DrawTextLineAt(ctx, text, 0, 0);
         }
 
     }

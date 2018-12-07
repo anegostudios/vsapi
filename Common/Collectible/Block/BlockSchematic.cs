@@ -251,7 +251,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            EntitiesUnpacked.AddRange(world.GetEntitiesInsideCuboid(start, end));
+            EntitiesUnpacked.AddRange(world.GetEntitiesInsideCuboid(start, end, (e) => !(e is EntityPlayer)));
         }
 
 

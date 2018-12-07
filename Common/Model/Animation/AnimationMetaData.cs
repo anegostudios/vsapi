@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -75,7 +77,9 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public EnumAnimationBlendMode BlendMode = EnumAnimationBlendMode.Add;
         [JsonProperty]
-        public Dictionary<string, EnumAnimationBlendMode> ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>();
+        public Dictionary<string, EnumAnimationBlendMode> ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(StringComparer.OrdinalIgnoreCase);
+
+        
 
         int withActivitiesMerged;
         public uint CodeCrc32;
@@ -83,7 +87,7 @@ namespace Vintagestory.API.Common
 
         public float GetCurrentAnimationSpeed(float walkspeed)
         {
-            return AnimationSpeed * (MulWithWalkSpeed ? walkspeed : 1);
+            return AnimationSpeed * (MulWithWalkSpeed ? walkspeed : 1) * GlobalConstants.OverallSpeedMultiplier;
         }
 
         public AnimationMetaData Init()
@@ -95,9 +99,10 @@ namespace Vintagestory.API.Common
             }
 
             Animation = Animation.ToLowerInvariant();
-            CodeCrc32 = GameMath.Crc32(Animation);
             if (Code == null) Code = Animation;
 
+            CodeCrc32 = GameMath.Crc32(/*Animation*/Code); // why is this not Code?! This breaks proper syncing of anims from server to client
+            
             return this;
         }
 
@@ -124,7 +129,7 @@ namespace Vintagestory.API.Common
                 withActivitiesMerged = this.withActivitiesMerged,
                 CodeCrc32 = this.CodeCrc32,
                 WasStartedFromTrigger = this.WasStartedFromTrigger
-    };
+            };
         }
 
         public override bool Equals(object obj)
@@ -191,8 +196,8 @@ namespace Vintagestory.API.Common
             animdata.Animation = reader.ReadString();
             animdata.Weight = reader.ReadSingle();
 
-            int c = reader.ReadInt32();
-            for (int i = 0; i < c; i++)
+            int weightCount = reader.ReadInt32();
+            for (int i = 0; i < weightCount; i++)
             {
                 animdata.ElementWeight[reader.ReadString()] = reader.ReadSingle();
             }
@@ -201,14 +206,15 @@ namespace Vintagestory.API.Common
             animdata.EaseInSpeed = reader.ReadSingle();
             animdata.EaseOutSpeed = reader.ReadSingle();
 
-            bool b = reader.ReadBoolean();
-            if (b)
+            bool haveTrigger = reader.ReadBoolean();
+            if (haveTrigger)
             {
                 animdata.TriggeredBy = new AnimationTrigger();
                 animdata.TriggeredBy.MatchExact = reader.ReadBoolean();
-                c = reader.ReadInt32();
-                animdata.TriggeredBy.OnControls = new EnumEntityActivity[c];
-                for (int i = 0; i < c; i++)
+                weightCount = reader.ReadInt32();
+                animdata.TriggeredBy.OnControls = new EnumEntityActivity[weightCount];
+
+                for (int i = 0; i < weightCount; i++)
                 {
                     animdata.TriggeredBy.OnControls[i] = (EnumEntityActivity)reader.ReadInt32();
                 }
@@ -217,16 +223,18 @@ namespace Vintagestory.API.Common
 
             animdata.BlendMode = (EnumAnimationBlendMode)reader.ReadInt32();
 
-            c = reader.ReadInt32();
-            for (int i = 0; i < c; i++)
+            weightCount = reader.ReadInt32();
+            for (int i = 0; i < weightCount; i++)
             {
                 animdata.ElementBlendMode[reader.ReadString()] = (EnumAnimationBlendMode)reader.ReadInt32();
             }
 
             animdata.MulWithWalkSpeed = reader.ReadBoolean();
-
+            
             return animdata;
         }
+
+        
     }
 
 

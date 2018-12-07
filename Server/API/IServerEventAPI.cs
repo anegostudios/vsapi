@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.MathTools;
 using Action = Vintagestory.API.Common.Action;
 
 namespace Vintagestory.API.Server
@@ -13,11 +14,6 @@ namespace Vintagestory.API.Server
     /// </summary>
     public interface IServerEventAPI : IEventAPI
     {
-        /// <summary>
-        /// Triggered when a new entity spawned
-        /// </summary>
-        event EntityDelegate OnEntitySpawn;
-
         /// <summary>
         /// Returns the list of currently registered map chunk generator handlers for given playstyle. Returns an array of handler lists. Each element in the array represents all the handlers for one worldgenpass (see EnumWorldGenPass)       
         /// </summary>
@@ -69,6 +65,11 @@ namespace Vintagestory.API.Server
 
 
         /// <summary>
+        /// Called when a player interacts with an entity
+        /// </summary>
+        event OnInteractDelegate OnPlayerInteractEntity;
+
+        /// <summary>
         /// Called when a new player joins 
         /// </summary>
         event PlayerDelegate PlayerCreate;
@@ -109,6 +110,11 @@ namespace Vintagestory.API.Server
         event PlayerDelegate PlayerSwitchGameMode;
 
         /// <summary>
+        /// Fired when a player changes their active hotbar slot.
+        /// </summary>
+        event PlayerChangeHotbarSlot ActiveHotbarSlotChanged;
+
+        /// <summary>
         /// Triggered after the game world data has been loaded. At this point all blocks are loaded and the Map size is known.
         /// </summary>
         event Action SaveGameLoaded;
@@ -131,12 +137,6 @@ namespace Vintagestory.API.Server
         /// <param name="handler"></param>
         /// <param name="interval"></param>
         void Timer(Action handler, double interval);
-
-        /// <summary>
-        /// Registers the given method to be called each time the player changes their current hotbar slot
-        /// </summary>
-        /// <param name = "handler">Method to execute. Must have certain format: void Name(int player)</param>
-        void ChangedActiveHotbarSlot(SelectedHotbarSlotDelegate handler);
 
         /// <summary>
         /// Registers a method to be called every time a player places a block

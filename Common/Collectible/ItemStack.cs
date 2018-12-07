@@ -339,12 +339,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public string GetName()
         {
-            string name = "";
-            string type = Class == EnumItemClass.Block ? "block" : "item";
-
-            name = Lang.GetMatching(Collectible.Code?.Domain + AssetLocation.LocationSeparator + type + "-" + Collectible.Code?.Path);
-
-            return name;
+            return Collectible.GetHeldItemName(this);
         }
 
         /// <summary>

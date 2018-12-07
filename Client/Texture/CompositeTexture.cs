@@ -101,34 +101,6 @@ namespace Vintagestory.API.Client
             return ct;
         }
 
-        /// <summary>
-        /// This fills the placeholders with their final string values.
-        /// </summary>
-        /// <param name="searchReplace"></param>
-        public void FillPlaceHolders(Dictionary<string, string> searchReplace)
-        {
-            foreach (var val in searchReplace)
-            {
-                Base.Path = RegistryObject.FillPlaceHolder(Base.Path, val.Key, val.Value);
-
-                if (Overlays != null)
-                {
-                    for (int i = 0; i < Overlays.Length; i++)
-                    {
-                        Overlays[i].Path = RegistryObject.FillPlaceHolder(Overlays[i].Path, val.Key, val.Value);
-                    }
-                }
-            }
-
-            if (Alternates != null)
-            {
-                for (int i = 0; i < Alternates.Length; i++)
-                {
-                    Alternates[i].FillPlaceHolders(searchReplace);
-                }
-            }
-        }
-
 
         /// <summary>
         /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field. This method is called by the texture atlas managers.

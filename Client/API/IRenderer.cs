@@ -16,12 +16,12 @@
         /// 0.1 = Blue sky (Icosahedron)
         /// 0.2 = Night skybox
         /// 0.3 = Sun and moon
-        /// 0.35 = Cinematic camera line preview
         /// 0.37 = Terrain opaque
         /// 0.4 = Enitities
         /// 0.5 = Decals
-        /// 0.6 = particles
         /// 0.5 = Debug wireframe
+        /// 0.6 = particles
+        /// 0.7 = Cinematic camera line preview
         /// 0.8 = fp held item
         /// 0.9 = held item opaque custom renderer
         /// 
@@ -52,9 +52,9 @@
         /// 0.2 = Frame buffer debug screen
         /// 0.4 = Enitities
         /// 0.9 = held item ortho custom renderer
-        /// 0.95 = crosshair and mouse cursor
         /// 0.98 = bow/spear aiming reticle
         /// 1 = Gui manager
+        /// 1.02 = crosshair and mouse cursor
         /// 
         /// AfterFinalComposition:
         /// 2 = screenshot

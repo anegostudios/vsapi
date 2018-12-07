@@ -116,8 +116,6 @@ namespace Vintagestory.API.Client
         {
             return (GuiElementChatInput)composer.GetElement(key);
         }
-
-
-
+        
     }
 }

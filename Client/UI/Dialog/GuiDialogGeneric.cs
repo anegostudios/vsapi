@@ -24,7 +24,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The tree attributes for this dialog.
         /// </summary>
-        public virtual ITreeAttribute Attributes => null;
+        public virtual ITreeAttribute Attributes { get; protected set; } = null;
 
         /// <summary>
         /// Constructor for a generic Dialog.
@@ -91,30 +91,6 @@ namespace Vintagestory.API.Client
             }
 
             return dist <= capi.World.Player.WorldData.PickingRange + 0.5;
-        }
-
-        /// <summary>
-        /// Positions the dialogue above a given point.
-        /// </summary>
-        /// <param name="aboveHeadPos">The given point.</param>
-        public virtual void PositionDialogAbove(Vec3d aboveHeadPos)
-        {
-            EntityPlayer entityPlayer = capi.World.Player.Entity;
-            Vec3d pos = MatrixToolsd.Project(aboveHeadPos, capi.Render.PerspectiveProjectionMat, capi.Render.PerspectiveViewMat, capi.Render.FrameWidth, capi.Render.FrameHeight);
-
-            // Z negative seems to indicate that the name tag is behind us \o/
-            if (pos.Z < 0)
-            {
-                return;
-            }
-
-            SingleComposer.Bounds.Alignment = EnumDialogArea.None;
-            SingleComposer.Bounds.fixedOffsetX = 0;
-            SingleComposer.Bounds.fixedOffsetY = 0;
-            SingleComposer.Bounds.absFixedX = pos.X - SingleComposer.Bounds.OuterWidth / 2;
-            SingleComposer.Bounds.absFixedY = capi.Render.FrameHeight - pos.Y;
-            SingleComposer.Bounds.absMarginX = 0;
-            SingleComposer.Bounds.absMarginY = 0;
         }
     }
 }
