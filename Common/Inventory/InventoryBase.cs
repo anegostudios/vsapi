@@ -69,29 +69,57 @@ namespace Vintagestory.API.Common
         [Obsolete("Use indexer instead.")]
         public ItemSlot GetSlot(int slotId) => this[slotId];
 
-
+        /// <summary>
+        /// True if this inventory has to be resent to the client or when the client has to redraw them
+        /// </summary>
         public virtual bool IsDirty { get { return dirtySlots.Count > 0; } }
 
+        /// <summary>
+        /// The slots that have been modified server side and need to be resent to the client or need to be redrawn on the client
+        /// </summary>
         public HashSet<int> DirtySlots { get { return dirtySlots; } }
 
         /// <summary>
-        /// Called by item slot, if true, player cannot take items from this chest
+        /// Called by item slot, if true, player cannot take items from this inventory
         /// </summary>
         public virtual bool TakeLocked { get; set; }
 
         /// <summary>
-        /// Called by item slot, if true, player cannot take items from this chest
+        /// Called by item slot, if true, player cannot put items into this inventory
         /// </summary>
         public virtual bool PutLocked { get; set; }
 
+        /// <summary>
+        /// If true, the inventory will be removed from the list of available inventories once closed (i.e. is not a personal inventory that the player carries with him)
+        /// </summary>
         public virtual bool RemoveOnClose => true;
 
+        /// <summary>
+        /// Called whenever a slot has been modified
+        /// </summary>
         public event API.Common.Action<int> SlotModified;
+
+        /// <summary>
+        /// Called whenever a slot notification event has been fired. Is used by the slot grid gui element to visually wiggle the slot contents
+        /// </summary>
         public event API.Common.Action<int> SlotNotified;
+
+        /// <summary>
+        /// Called whenever this inventory was opened
+        /// </summary>
         public event OnInventoryOpened OnInventoryOpened;
+
+        /// <summary>
+        /// Called whenever this inventory was closed
+        /// </summary>
         public event OnInventoryClosed OnInventoryClosed;
 
-
+        /// <summary>
+        /// Create a new instance of an inventory
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="instanceID"></param>
+        /// <param name="api"></param>
         public InventoryBase(string className, string instanceID, ICoreAPI api)
         {
             openedByPlayerGUIds = new HashSet<string>();
@@ -105,6 +133,11 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Create a new instance of an inventory. InvetoryID must have the format [className]-[instanceId]  (you may choose any value for those)
+        /// </summary>
+        /// <param name="inventoryID"></param>
+        /// <param name="api"></param>
         public InventoryBase(string inventoryID, ICoreAPI api)
         {
             openedByPlayerGUIds = new HashSet<string>();
@@ -122,12 +155,12 @@ namespace Vintagestory.API.Common
                 InvNetworkUtil = api.ClassRegistry.CreateInvNetworkUtil(this, api);
             }
         }
-
-        /*public void AddSlotModifiedListener(API.Common.Action<int> handler)
-        {
-            slotModifiedListeners.Add(handler);
-        }*/
-
+        
+        /// <summary>
+        /// You can initialize an InventoryBase with null as parameters and use LateInitialize to set these values later. This is sometimes required during chunk loading.
+        /// </summary>
+        /// <param name="inventoryID"></param>
+        /// <param name="api"></param>
         public virtual void LateInitialize(string inventoryID, ICoreAPI api)
         {
             this.Api = api;
@@ -145,6 +178,7 @@ namespace Vintagestory.API.Common
 
             AfterBlocksLoaded(api.World);
         }
+
 
         public virtual void AfterBlocksLoaded(IWorldAccessor world)
         {
@@ -232,7 +266,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// How well a stack fits into this inventory. 
         /// </summary>
-        /// <param name="stack"></param>
+        /// <param name="sourceSlot"></param>
         /// <param name="targetSlot"></param>
         /// <param name="isMerge"></param>
         /// <returns></returns>
@@ -476,14 +510,7 @@ namespace Vintagestory.API.Common
         public virtual void MarkSlotDirty(int slotId)
         {
             if (slotId < 0) throw new Exception("Negative slotid?!");
-            dirtySlots.Add(slotId);
-
-            /*if (this is InventorySmelting)
-            {
-                Console.WriteLine("slot {0} dirty", slotId);
-                Console.WriteLine(Environment.StackTrace);
-            }*/
-            
+            dirtySlots.Add(slotId);           
         }
 
 

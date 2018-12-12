@@ -19,7 +19,9 @@ namespace Vintagestory.API.Common
         List<long> TickHandlers = new List<long>();
         List<long> CallbackHandlers = new List<long>();
 
-
+        /// <summary>
+        /// The core API added to the block.  Accessable after initialization.
+        /// </summary>
         public ICoreAPI api;
 
         /// <summary>

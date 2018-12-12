@@ -113,12 +113,9 @@ namespace Vintagestory.API.Common
                          string description, IEnumerable<string> authors, IEnumerable<string> contributors, string website,
                          EnumAppSide side, bool requiredOnClient, IEnumerable<ModDependency> dependencies)
         {
-            if (name == null) throw new ArgumentNullException(nameof(name));
-            if (modID == null) throw new ArgumentNullException(nameof(modID));
-
-            Type    = type;
-            Name    = name;
-            ModID   = modID;
+            Type = type;
+            Name    = name ?? throw new ArgumentNullException(nameof(name));
+            ModID   = modID ?? throw new ArgumentNullException(nameof(modID));
             Version = version ?? "";
 
             Description  = description ?? "";

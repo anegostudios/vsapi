@@ -247,6 +247,9 @@ namespace Vintagestory.API.Client
             return false;
         }
 
+        /// <summary>
+        /// Unfocuses the elements within this GUI composer.
+        /// </summary>
         public void UnfocusOwnElements()
         {
             UnfocusOwnElementsExcept(null);
@@ -563,6 +566,8 @@ namespace Vintagestory.API.Client
                     MouseOverCursor = element.MouseOverCursor;
                 }
             }
+            
+
 
 
             foreach (GuiElement element in interactiveElementsInDrawOrder)
@@ -576,24 +581,18 @@ namespace Vintagestory.API.Client
 
             if (Outlines == 1)
             {
-                Api.Render.RenderRectangle((int)bounds.renderX, (int)bounds.renderY, (int)bounds.OuterWidth, 500, (int)bounds.OuterHeight, 255 + (255 << 8) + (255 << 16) + (255 << 24));
+                Api.Render.RenderRectangle((int)bounds.renderX, (int)bounds.renderY, 500, (int)bounds.OuterWidth, (int)bounds.OuterHeight, 255 + (255 << 8) + (255 << 16) + (255 << 24));
 
-                int i = 0;
                 foreach (GuiElement elem in staticElements.Values)
                 {
                     Api.Render.RenderRectangle((int)elem.Bounds.renderX, (int)elem.Bounds.renderY, 500, (int)elem.Bounds.OuterWidth, (int)elem.Bounds.OuterHeight, elem.OutlineColor());
-
-                    i++;
                 }
             }
 
             if (Outlines == 2) { 
-                int i = 0;
                 foreach (GuiElement elem in interactiveElements.Values)
                 {
                     Api.Render.RenderRectangle((int)elem.Bounds.renderX, (int)elem.Bounds.renderY, 500, (int)elem.Bounds.OuterWidth, (int)elem.Bounds.OuterHeight, elem.OutlineColor());
-
-                    i++;
                 }
             }
         }

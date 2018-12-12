@@ -11,7 +11,8 @@ namespace Vintagestory.API.Common
         Smelt,
         Cook,
         Bake,
-        Convert
+        Convert,
+        Fired
     }
 
     /// <summary>

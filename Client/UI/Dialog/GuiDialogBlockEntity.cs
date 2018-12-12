@@ -81,7 +81,7 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The time elapsed.</param>
         public override void OnRender2D(float deltaTime)
         {
-            if (capi.Settings.Bool["floatyGuis"])
+            if (capi.Settings.Bool["immersiveMouseMode"])
             {
                 EntityPlayer entityPlayer = capi.World.Player.Entity;
                 Vec3d aboveHeadPos = new Vec3d(BlockEntityPosition.X + 0.5, BlockEntityPosition.Y + FloatyDialogPosition, BlockEntityPosition.Z + 0.5);

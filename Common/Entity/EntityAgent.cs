@@ -188,9 +188,19 @@ namespace Vintagestory.API.Common
             base.Die(reason, damageSourceForDeath);
         }
 
-        public override void OnInteract(EntityAgent byEntity, IItemSlot slot, Vec3d hitPosition, int mode)
+        public override void OnInteract(EntityAgent byEntity, IItemSlot slot, Vec3d hitPosition, EnumInteractMode mode)
         {
-            if (mode == 0)
+            EnumHandling handled = EnumHandling.NotHandled;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnInteract(byEntity, slot, hitPosition, mode, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
+
+            if (handled == EnumHandling.PreventDefault || handled == EnumHandling.PreventSubsequent) return;
+
+            if (mode == EnumInteractMode.Attack)
             {
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
                 IPlayer byPlayer = null;
@@ -236,8 +246,7 @@ namespace Vintagestory.API.Common
                     Type = EnumDamageType.BluntAttack,
                     HitPosition = hitPosition
                 }, damage);
-
-                
+ 
             }
         }
 

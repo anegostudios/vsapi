@@ -50,10 +50,19 @@ namespace Vintagestory.API.Common
         /// </summary>
         IntMap GeologicProvinceMap { get; set; }
 
-
+        /// <summary>
+        /// Holds the raw mod data.
+        /// </summary>
         Dictionary<string, byte> ModData { get; }
+
+        /// <summary>
+        /// Holds the mod mappings.
+        /// </summary>
         Dictionary<string, IntMap> ModMaps { get; }
 
+        /// <summary>
+        /// Gets the ore map for the given item.
+        /// </summary>
         Dictionary<string, IntMap> OreMaps { get; }
 
 

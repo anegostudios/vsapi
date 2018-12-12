@@ -94,7 +94,11 @@ namespace Vintagestory.API.Common
             return stack;
         }
 
-
+        /// <summary>
+        /// Loads the ItemStack from the reader.
+        /// </summary>
+        /// <param name="reader">The reader to get the ItemStack from</param>
+        /// <param name="instancer">The instancer for the ItemStack.</param>
         public virtual void FromBytes(BinaryReader reader, IClassRegistryAPI instancer)
         {
             Type = (EnumItemClass)reader.ReadInt16();
@@ -108,6 +112,10 @@ namespace Vintagestory.API.Common
             
         }
 
+        /// <summary>
+        /// Saves the ItemStack to file.
+        /// </summary>
+        /// <param name="writer">The writer to save the item to.</param>
         public virtual void ToBytes(BinaryWriter writer)
         {
             writer.Write((short)Type);

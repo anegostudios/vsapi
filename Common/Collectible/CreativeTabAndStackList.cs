@@ -12,7 +12,11 @@ namespace Vintagestory.API.Common
         public string[] Tabs;
         public JsonItemStack[] Stacks;
 
-
+        /// <summary>
+        /// Reads the blocks and items from the Json files and converts them to an array of tabs which contain those blocks and items.
+        /// </summary>
+        /// <param name="reader">The reader to read the json.</param>
+        /// <param name="registry">The registry of blocks and items.</param>
         public void FromBytes(BinaryReader reader, IClassRegistryAPI registry)
         {
             Tabs = new string[reader.ReadInt32()];
@@ -29,6 +33,11 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Writes all the data to the BinaryWriter.
+        /// </summary>
+        /// <param name="writer">The writer to write the save data</param>
+        /// <param name="registry">The registry of blocks and items.</param>
         public void ToBytes(BinaryWriter writer, IClassRegistryAPI registry)
         {
             writer.Write(Tabs.Length);

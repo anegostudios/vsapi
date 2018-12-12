@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -59,7 +60,7 @@ namespace Vintagestory.API.Common.Entities
             return null;
         }
 
-        public virtual void OnStateChanged(EnumEntityState beforeState, ref EnumHandling handled)
+        public virtual void OnStateChanged(EnumEntityState beforeState, ref EnumHandling handling)
         {
             
         }
@@ -82,6 +83,16 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnEntityDeath(DamageSource damageSourceForDeath)
         {
 
+        }
+
+        public virtual void OnInteract(EntityAgent byEntity, IItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode, ref EnumHandling handled)
+        {
+            
+        }
+
+        public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data, ref EnumHandling handled)
+        {
+            
         }
     }
 }

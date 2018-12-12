@@ -44,7 +44,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool IsTool;
         /// <summary>
-        /// When using a wildcrad in the item/block code, setting this field will limit the allowed variants
+        /// When using a wildcard in the item/block code, setting this field will limit the allowed variants
         /// </summary>
         public string[] AllowedVariants;
         /// <summary>
@@ -55,7 +55,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The itemstack made from Code, Quantity and Attributes, populated by the engine
         /// </summary>
-        public ItemStack ResolvedItemstack;
+        public ItemStack ResolvedItemstack; 
 
         /// <summary>
         /// Whether this recipe contains a wildcard, populated by the engine

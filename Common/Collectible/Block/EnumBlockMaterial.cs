@@ -140,11 +140,23 @@ namespace Vintagestory.API.Common
 
         }
 
+        /// <summary>
+        /// Calculates the blast resistance of a given material.
+        /// </summary>
+        /// <param name="blastType">The blast type the material is being it with.</param>
+        /// <param name="material">The material of the block.</param>
+        /// <returns>the resulting blast resistance.</returns>
         public static double MaterialBlastResistance(EnumBlastType blastType, EnumBlockMaterial material)
         {
             return blastResistances[(int)blastType][(int)material];
         }
 
+        /// <summary>
+        /// Calculates the blast drop chance of a given material.
+        /// </summary>
+        /// <param name="blastType">The blast type the material is being it with.</param>
+        /// <param name="material">The material of the block.</param>
+        /// <returns>the resulting drop chance.</returns>
         internal static double MaterialBlastDropChances(EnumBlastType blastType, EnumBlockMaterial material)
         {
             return blastDropChances[(int)blastType][(int)material];

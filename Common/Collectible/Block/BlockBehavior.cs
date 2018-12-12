@@ -6,8 +6,14 @@ namespace Vintagestory.API.Common
 {
     public abstract class BlockBehavior
     {
+        /// <summary>
+        /// The block for this behavior instance.
+        /// </summary>
         public Block block;
 
+        /// <summary>
+        /// The properties of this block behavior.
+        /// </summary>
         public JsonObject properties;
 
         public BlockBehavior(Block block)

@@ -611,7 +611,7 @@ namespace Vintagestory.API.Client
 
         /// <summary>
         /// Returns whether this dialog absolutely requires the mouse to be ungrabbed.
-        /// If true, prevents mouse lock (from GuiMouseLock setting) and world interactions with the mouse.
+        /// If true, prevents mouse lock (from ImmersiveMouseMode setting) and world interactions with the mouse.
         /// </summary>
         /// <returns></returns>
         public virtual bool RequiresUngrabbedMouse()

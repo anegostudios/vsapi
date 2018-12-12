@@ -51,7 +51,7 @@ namespace Vintagestory.API.Client
                     .WithAlignment(openedchests >= 3 ? EnumDialogArea.LeftMiddle : EnumDialogArea.RightMiddle)
                 ;
 
-                if (!capi.Settings.Bool["floatyGuis"])
+                if (!capi.Settings.Bool["immersiveMouseMode"])
                 {
                     if (openedchests % 3 == 1) dialogBounds.fixedOffsetY -= dialogBounds.fixedHeight + 10;
                     if (openedchests % 3 == 2) dialogBounds.fixedOffsetY += dialogBounds.fixedHeight + 10;
@@ -85,7 +85,7 @@ namespace Vintagestory.API.Client
                     .WithFixedAlignmentOffset(-GuiStyle.DialogToScreenPadding, 0)
                     .WithAlignment(openedchests >= 3 ? EnumDialogArea.LeftMiddle : EnumDialogArea.RightMiddle);
 
-                if (!capi.Settings.Bool["floatyGuis"])
+                if (!capi.Settings.Bool["immersiveMouseMode"])
                 {
                     if (openedchests % 3 == 1) dialogBounds.fixedOffsetY -= dialogBounds.fixedHeight + 10;
                     if (openedchests % 3 == 2) dialogBounds.fixedOffsetY += dialogBounds.fixedHeight + 10;

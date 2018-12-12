@@ -9,11 +9,25 @@ namespace Vintagestory.API.Client
         TextBackground defaultBackground = new TextBackground();
         ICoreClientAPI capi;
 
+        /// <summary>
+        /// Text Texture Util constructor.
+        /// </summary>
+        /// <param name="capi">The Client API.</param>
         public TextTextureUtil(ICoreClientAPI capi)
         {
             this.capi = capi;
         }
 
+        /// <summary>
+        /// Takes a string of text and applies a texture to it.
+        /// </summary>
+        /// <param name="text">The text to texture.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="width">The width of the text.</param>
+        /// <param name="height">The height of the text.</param>
+        /// <param name="background">The background of the text. (default: none/null)</param>
+        /// <param name="orientation">The orientation of the text. (default: left)</param>
+        /// <returns>The texturized text.</returns>
         public LoadedTexture GenTextTexture(string text, CairoFont font, int width, int height, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
             LoadedTexture tex = new LoadedTexture(capi);
@@ -21,6 +35,16 @@ namespace Vintagestory.API.Client
             return tex;
         }
 
+        /// <summary>
+        /// Takes a texture and applies some text to it.
+        /// </summary>
+        /// <param name="text">The text to texture.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="width">The width of the text.</param>
+        /// <param name="height">The height of the text.</param>
+        /// <param name="loadedTexture">The texture to be loaded on to.</param>
+        /// <param name="background">The background of the text. (default: none/null)</param>
+        /// <param name="orientation">The orientation of the text. (default: left)</param>
         public void GenOrUpdateTextTexture(string text, CairoFont font, int width, int height, ref LoadedTexture loadedTexture, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
             if (background == null) background = defaultBackground;
@@ -60,7 +84,15 @@ namespace Vintagestory.API.Client
             ctx.Dispose();
         }
 
-
+        /// <summary>
+        /// Takes a string of text and applies a texture to it.
+        /// </summary>
+        /// <param name="text">The text to texture.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="width">The width of the text.</param>
+        /// <param name="height">The height of the text.</param>
+        /// <param name="background">The background of the text. (default: none/null)</param>
+        /// <returns>The texturized text.</returns>
         public LoadedTexture GenTextTexture(string text, CairoFont font, int width, int height, TextBackground background = null)
         {
             if (background == null) background = defaultBackground;
@@ -135,7 +167,13 @@ namespace Vintagestory.API.Client
             };
         }
 
-        
+        /// <summary>
+        /// Takes a string of text and applies a texture to it.
+        /// </summary>
+        /// <param name="text">The text to texture.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="background">The background of the text. (default: none/null)</param>
+        /// <returns>The texturized text.</returns>
         public LoadedTexture GenTextTexture(string text, CairoFont font, TextBackground background = null)
         {
             LoadedTexture tex = new LoadedTexture(capi);
@@ -143,6 +181,14 @@ namespace Vintagestory.API.Client
             return tex;
         }
 
+
+        /// <summary>
+        /// Takes a texture and applies some text to it.
+        /// </summary>
+        /// <param name="text">The text to texture.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="loadedTexture">The texture to be loaded on to.</param>
+        /// <param name="background">The background of the text. (default: none/null)</param>
         public void GenOrUpdateTextTexture(string text, CairoFont font, ref LoadedTexture loadedTexture, TextBackground background = null)
         {
             if (background == null) background = defaultBackground;
@@ -158,7 +204,13 @@ namespace Vintagestory.API.Client
         }
 
 
-
+        /// <summary>
+        /// Generates an unscaled text texture.
+        /// </summary>
+        /// <param name="text">The text to texture.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="background">The background of the text (Default: none/null)</param>
+        /// <returns>The loaded unscaled texture.</returns>
         public LoadedTexture GenUnscaledTextTexture(string text, CairoFont font, TextBackground background = null)
         {
             if (background == null) background = defaultBackground;
@@ -181,6 +233,15 @@ namespace Vintagestory.API.Client
             return GenTextTexture(text, font, width, height, background);
         }
 
+        /// <summary>
+        /// Takes a string of text and applies a texture to it.
+        /// </summary>
+        /// <param name="text">The text to texture.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="maxWidth">The maximum width of the text.</param>
+        /// <param name="background">The background of the text. (default: none/null)</param>
+        /// <param name="orientation">The orientation of the text. (default: left)</param>
+        /// <returns>The texturized text.</returns>
         public LoadedTexture GenTextTexture(string text, CairoFont font, int maxWidth, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
             if (background == null) background = defaultBackground;

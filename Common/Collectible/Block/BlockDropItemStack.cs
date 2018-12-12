@@ -42,7 +42,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public EnumTool? Tool;
 
-
+        /// <summary>
+        /// The resulting ItemStack for this block being broken by a tool.
+        /// </summary>
         public IItemStack ResolvedItemstack;
 
         static Random random = new Random();
@@ -127,7 +129,11 @@ namespace Vintagestory.API.Common
             return stack;
         }
 
-
+        /// <summary>
+        /// Reads the contents of the block bytes and converts it into a block.
+        /// </summary>
+        /// <param name="reader">The reader of the block</param>
+        /// <param name="instancer">The block registry</param>
         public virtual void FromBytes(BinaryReader reader, IClassRegistryAPI instancer)
         {
             Type = (EnumItemClass)reader.ReadInt16();
@@ -138,6 +144,10 @@ namespace Vintagestory.API.Common
             LastDrop = reader.ReadBoolean();
         }
 
+        /// <summary>
+        /// The save data writer.
+        /// </summary>
+        /// <param name="writer">The writer to write blocks to.</param>
         public virtual void ToBytes(BinaryWriter writer)
         {
             writer.Write((short)Type);

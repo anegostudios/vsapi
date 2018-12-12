@@ -17,7 +17,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         EntityPos DefaultSpawnPosition { get; }
 
-
+        /// <summary>
+        /// Gets the frame profiler utility.
+        /// </summary>
         FrameProfilerUtil FrameProfiler { get; }
 
         /// <summary>

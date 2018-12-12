@@ -59,9 +59,17 @@ namespace Vintagestory.API.Common
         /// </summary>
         HashSet<int> LightPositions { get; set; }
         
-
+        /// <summary>
+        /// Adds an entity to the chunk.
+        /// </summary>
+        /// <param name="entity">The entity to add.</param>
         void AddEntity(Entity entity);
 
+        /// <summary>
+        /// Removes an entity from the chunk.
+        /// </summary>
+        /// <param name="entityId">the ID for the entity</param>
+        /// <returns>Whether or not the entity was removed.</returns>
         bool RemoveEntity(long entityId);
     }
 }

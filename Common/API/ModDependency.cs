@@ -16,6 +16,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         public string Version { get; }
         
+        /// <summary>
+        /// Creates a new ModDependancy object.
+        /// </summary>
+        /// <param name="modID">The ID of the required mod.</param>
+        /// <param name="version">The version of the required mod (default: empty string.)</param>
         public ModDependency(string modID, string version = "")
         {
             if (modID == null) throw new ArgumentNullException(nameof(modID));
@@ -25,6 +30,10 @@ namespace Vintagestory.API.Common
             Version = version ?? "";
         }
         
+        /// <summary>
+        /// Returns the Mod Dependancy as a string.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             if (string.IsNullOrEmpty(Version)) return ModID;

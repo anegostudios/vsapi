@@ -11,12 +11,17 @@ namespace Vintagestory.API.Common
         string OriginPath { get; }
 
         /// <summary>
-        /// 
+        /// Loads the asset into memeory.
         /// </summary>
-        /// <param name="asset"></param>
+        /// <param name="asset">The asset to be loaded</param>
         /// <returns></returns>
         void LoadAsset(IAsset asset);
 
+        /// <summary>
+        /// Attempts to load the asset.  Returns false if it fails.
+        /// </summary>
+        /// <param name="asset">The asset to be loaded.</param>
+        /// <returns></returns>
         bool TryLoadAsset(IAsset asset);
 
         /// <summary>

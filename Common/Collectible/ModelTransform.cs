@@ -40,7 +40,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Vec3f ScaleXYZ = new Vec3f(1, 1, 1);
 
-
+        /// <summary>
+        /// Gets a new model with all values set to default.
+        /// </summary>
         public static ModelTransform NoTransform {
             get
             {
@@ -48,6 +50,9 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Converts the transform into a matrix.
+        /// </summary>
         public float[] AsMatrix
         {
             get
@@ -181,6 +186,10 @@ namespace Vintagestory.API.Common
             };
         }
 
+        /// <summary>
+        /// Creates a default transform for a model that is now on the ground
+        /// </summary>
+        /// <returns></returns>
         public static ModelTransform ItemDefaultGround()
         {
             return new ModelTransform()
@@ -203,6 +212,10 @@ namespace Vintagestory.API.Common
             return this;
         }
 
+        /// <summary>
+        /// Clones this specific transform.
+        /// </summary>
+        /// <returns></returns>
         public ModelTransform Clone()
         {
             return new ModelTransform()
@@ -215,6 +228,9 @@ namespace Vintagestory.API.Common
             };
         }
 
+        /// <summary>
+        /// Clears the transformation values.
+        /// </summary>
         public void Clear()
         {
             Rotation.Set(0, 0, 0);

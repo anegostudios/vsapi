@@ -49,7 +49,8 @@ namespace Vintagestory.API.Common
 
 
                         if (fullname.Length > 0) fullname += " ";
-                        fullname += string.Join("-", mainingredients) + " soup";
+                        if (mainingredients.Count > 0) fullname += string.Join("-", mainingredients) + " soup";
+                        else fullname += "soup";
                         if (garnishnames.Count > 0) fullname += " with ";
                         fullname += prettyList(garnishnames);
 

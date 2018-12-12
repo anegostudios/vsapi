@@ -75,7 +75,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         Vec3f MoonPosition { get; }
 
-
+        /// <summary>
+        /// Returns a vector of the sun's color.
+        /// </summary>
         Vec3f SunColor { get; }
 
         /// <summary>

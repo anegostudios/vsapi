@@ -143,6 +143,10 @@ namespace Vintagestory.API.Common
                   | (lowContrast ? 1 : 0) << 13;
         }
 
+        /// <summary>
+        /// Clones this set of vertex flags.  
+        /// </summary>
+        /// <returns></returns>
         public VertexFlags Clone()
         {
             return new VertexFlags(All);

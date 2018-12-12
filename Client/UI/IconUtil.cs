@@ -65,7 +65,7 @@ namespace Vintagestory.API.Client
         /// Draws the icon.
         /// </summary>
         /// <param name="cr">The context.</param>
-        /// <param name="type">The type to draw</param>
+        /// <param name="type">The type of icon to draw</param>
         /// <param name="x">X position of the Icon.</param>
         /// <param name="y">Y position of the Icon.</param>
         /// <param name="width">Width of the Icon.</param>

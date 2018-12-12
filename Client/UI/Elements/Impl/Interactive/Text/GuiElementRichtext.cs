@@ -258,8 +258,6 @@ namespace Vintagestory.API.Client
             }
 
             ctx.Restore();
-
-            //surface.WriteToPng("richtext.png");
         }
 
 
@@ -269,6 +267,7 @@ namespace Vintagestory.API.Client
             int relx = (int)(api.Input.MouseX - Bounds.absX);
             int rely = (int)(api.Input.MouseY - Bounds.absY);
 
+            MouseOverCursor = "normal";
             for (int i = 0; i < Components.Length; i++) {
                 RichTextComponentBase comp = Components[i];
 

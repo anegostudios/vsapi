@@ -10,6 +10,12 @@ namespace Vintagestory.API.Common
 {
     public class JsonUtil
     {
+        /// <summary>
+        /// Reads a Json object, and converts it to the designated type.
+        /// </summary>
+        /// <typeparam name="T">The designated type</typeparam>
+        /// <param name="data">The json object.</param>
+        /// <returns></returns>
         public static T FromBytes<T>(byte[] data)
         {
             using (var stream = new MemoryStream(data))
@@ -21,6 +27,12 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Converts the object to json.
+        /// </summary>
+        /// <typeparam name="T">The type to convert</typeparam>
+        /// <param name="obj">The object to convert</param>
+        /// <returns></returns>
         public static byte[] ToBytes<T>(T obj)
         {
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj));
@@ -40,6 +52,14 @@ namespace Vintagestory.API.Common
             JsonConvert.PopulateObject(text, toPopulate, settings);
         }
 
+        /// <summary>
+        /// Converts a Json object to a typed object.
+        /// </summary>
+        /// <typeparam name="T">The type to convert.</typeparam>
+        /// <param name="text">The text to deserialize</param>
+        /// <param name="domain">The domain of the text.</param>
+        /// <param name="settings">The settings of the deserializer. (default: Null)</param>
+        /// <returns></returns>
         public static T ToObject<T>(string text, string domain, JsonSerializerSettings settings = null)
         {
             if (domain != "game")

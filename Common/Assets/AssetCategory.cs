@@ -61,6 +61,11 @@ namespace Vintagestory.API.Common
             return Code;
         }
 
+        /// <summary>
+        /// Gets the asset category by code name
+        /// </summary>
+        /// <param name="code">The code name for the asset category.</param>
+        /// <returns>An asset category.</returns>
         public static AssetCategory FromCode(string code)
         {
             return categories[code];

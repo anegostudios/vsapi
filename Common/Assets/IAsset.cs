@@ -18,9 +18,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         string Name { get; }
 
-        
+        /// <summary>
+        /// The AssetLocation of the asset.
+        /// </summary>
         AssetLocation Location { get; }
 
+        /// <summary>
+        /// The origin informaton of the asset.
+        /// </summary>
         IAssetOrigin Origin { get; set; }
 
         /// <summary>
@@ -31,8 +36,8 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// If the asset is a json file you can use this convenience method to turn it into an object
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="settings"></param>
+        /// <typeparam name="T">Attempts to convert the asset into the given type.</typeparam>
+        /// <param name="settings">Settings for the Json Serializer.</param>
         /// <returns></returns>
         T ToObject<T>(JsonSerializerSettings settings = null);
 
@@ -49,6 +54,10 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         BitmapRef ToBitmap(ICoreClientAPI capi);
 
+        /// <summary>
+        /// Whether or not the asset is currently loaded.
+        /// </summary>
+        /// <returns></returns>
         bool IsLoaded();
     }
 }

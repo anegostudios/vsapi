@@ -1349,19 +1349,19 @@ namespace Vintagestory.API.Common
         /// <param name="withDebugInfo"></param>
         public override void GetHeldItemInfo(ItemStack stack, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
         {
-            dsc.Append("Material: " + BlockMaterial + "\n");
+            dsc.Append(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + BlockMaterial) + "\n");
             //dsc.Append("Replaceable: " + Replaceable + "\n");
             dsc.Append((Fertility > 0 ? ("Fertility: " + Fertility + "\n") : ""));
 
             byte[] lightHsv = GetLightHsv(world.BlockAccessor, null, stack);
 
-            dsc.Append((withDebugInfo ? (lightHsv[2] > 0 ? "Light HSV: " + lightHsv[0] + ", " + lightHsv[1] + ", " + lightHsv[2] + "\n" : "") : ""));
-            dsc.Append((!withDebugInfo ? (lightHsv[2] > 0 ? "Light Level: " + lightHsv[2] + "\n" : "") : ""));
-            if (LightAbsorption > 0) dsc.Append("Light Absorption: " + LightAbsorption + "\n");
+            dsc.Append((withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-hsv") + lightHsv[0] + ", " + lightHsv[1] + ", " + lightHsv[2] + "\n" : "") : ""));
+            dsc.Append((!withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-level") + lightHsv[2] + "\n" : "") : ""));
+            if (LightAbsorption > 0) dsc.Append(Lang.Get("light-absorb") + LightAbsorption + "\n");
 
             if (WalkSpeedMultiplier != 1)
             {
-                dsc.Append("Walk Speed: x" + WalkSpeedMultiplier + "\n");
+                dsc.Append(Lang.Get("walk-multiplier") + WalkSpeedMultiplier + "\n");
             }
 
             base.GetHeldItemInfo(stack, dsc, world, withDebugInfo);

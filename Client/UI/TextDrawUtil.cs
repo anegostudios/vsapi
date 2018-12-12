@@ -33,10 +33,24 @@ namespace Vintagestory.API.Client
 
     public class TextLine
     {
+        /// <summary>
+        /// The text of the text line.
+        /// </summary>
         public string Text;
+
+        /// <summary>
+        /// The bounds of the line of text.
+        /// </summary>
         public LineRectangled Bounds;
 
+        /// <summary>
+        /// The padding to the left of the text.
+        /// </summary>
         public double PaddingLeft;
+
+        /// <summary>
+        /// The padding to the right of the text.
+        /// </summary>
         public double PaddingRight;
 
         //public double WidthWithoutTrailingSpace = 0;
@@ -89,22 +103,31 @@ namespace Vintagestory.API.Client
         public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth)
             => Lineize(font, fulltext, new TextFlowPath[] { new TextFlowPath(boxWidth) }, 0, 0);
 
-       
+
+
 
         /// <summary>
         /// Use Matrix transformation to move the draw position
         /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="font"></param>
-        /// <param name="lines"></param>
-        /// <param name="boxWidth"></param>
-        /// <param name="orientation"></param>
-        /// <param name="lineHeightMultiplier"></param>
-        /// <returns></returns>
+        /// <param name="ctx">The context of the text.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="text">The text itself.</param>
+        /// <param name="boxWidth">The width of the box containing the text.</param>
+        /// <param name="orientation">The orientation of the text.</param>
         public void AutobreakAndDrawMultilineText(Context ctx, CairoFont font, string text, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left)
             => AutobreakAndDrawMultilineText(ctx, font, text, 0, 0, new TextFlowPath[] { new TextFlowPath(boxWidth) }, orientation);
 
-
+        /// <summary>
+        /// Draws the text with matrix transformations.
+        /// </summary>
+        /// <param name="ctx">The context of the text.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="text">The text itself.</param>
+        /// <param name="posX">The X position of the text.</param>
+        /// <param name="posY">The Y position of the text.</param>
+        /// <param name="boxWidth">The width of the box containing the text.</param>
+        /// <param name="orientation">The orientation of the text.</param>
+        /// <returns>The new height of the text.</returns>
         public double AutobreakAndDrawMultilineTextAt(Context ctx, CairoFont font, string text, double posX, double posY, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
             ctx.Save();
@@ -117,6 +140,16 @@ namespace Vintagestory.API.Client
             return height;
         }
 
+        /// <summary>
+        /// Draws the text with pre-set breaks.
+        /// </summary>
+        /// <param name="ctx">The context of the text.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="lines">The lines of text.</param>
+        /// <param name="posX">The X position of the text.</param>
+        /// <param name="posY">The Y position of the text.</param>
+        /// <param name="boxWidth">The width of the box containing the text.</param>
+        /// <param name="orientation">The orientation of the text.</param>
         public void DrawMultilineTextAt(Context ctx, CairoFont font, TextLine[] lines, double posX, double posY, double boxWidth, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
             ctx.Save();
@@ -134,11 +167,24 @@ namespace Vintagestory.API.Client
 
         #region Text meta info and multiline splitting
 
+        /// <summary>
+        /// Gets the height of the font to calculate the height of the line.
+        /// </summary>
+        /// <param name="font">The font to calculate from.</param>
+        /// <returns>The height of the line.</returns>
         public double GetLineHeight(CairoFont font)
         {
             return font.GetFontExtents().Height * font.LineHeightMultiplier;
         }
 
+        /// <summary>
+        /// Gets the number of lines of text.
+        /// </summary>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="text">The text itself.</param>
+        /// <param name="flowPath">The path for the text.</param>
+        /// <param name="lineY">The height of the line</param>
+        /// <returns>The number of lines.</returns>
         public int GetQuantityTextLines(CairoFont font, string text, TextFlowPath[] flowPath, double lineY = 0)
         {
             if (text == null || text.Length == 0) return 0;
@@ -155,7 +201,14 @@ namespace Vintagestory.API.Client
             return quantityLines;
         }
 
-
+        /// <summary>
+        /// Get the final height of the text.
+        /// </summary>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="text">The text itself.</param>
+        /// <param name="flowPath">The path for the text.</param>
+        /// <param name="lineY">The height of the line</param>
+        /// <returns>The final height of the text.</returns>
         public double GetMultilineTextHeight(CairoFont font, string text, TextFlowPath[] flowPath, double lineY = 0)
         {
             return GetQuantityTextLines(font, text, flowPath, lineY) * GetLineHeight(font);
@@ -165,12 +218,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Turns the supplied text into line of text constrained by supplied flow path and starting at supplied start coordinates
         /// </summary>
-        /// <param name="font"></param>
-        /// <param name="fulltext"></param>
-        /// <param name="flowPath"></param>
-        /// <param name="lineX"></param>
-        /// <param name="lineY"></param>
-        /// <returns></returns>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="fulltext">The text of the lines.</param>
+        /// <param name="flowPath">The flow direction of text.</param>
+        /// <param name="startOffsetX">The offset start position for X</param>
+        /// <param name="startY">The offset start position for Y</param>
+        /// <returns>The text broken up into lines.</returns>
         public TextLine[] Lineize(CairoFont font, string fulltext, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0)
         {
             if (fulltext == null || fulltext.Length == 0) return new TextLine[0];
@@ -192,12 +245,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Turns the supplied text into line of text constrained by supplied flow path and starting at supplied start coordinates
         /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="text"></param>
-        /// <param name="flowPath"></param>
-        /// <param name="startOffsetX"></param>
-        /// <param name="startY"></param>
-        /// <returns></returns>
+        /// <param name="ctx">Contexts of the GUI.</param>
+        /// <param name="text">The text to be split</param>
+        /// <param name="flowPath">Sets the general flow of text.</param>
+        /// <param name="startOffsetX">The offset start position for X</param>
+        /// <param name="startY">The offset start position for Y</param>
+        /// <returns>The text broken up into lines.</returns>
         public TextLine[] Lineize(Context ctx, string text, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, double lineHeightMultiplier = 1f)
         {
             if (text == null || text.Length == 0) return new TextLine[0];
@@ -371,14 +424,10 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// lineX is set to 0 after the second line, lineY is advanced by line height for each line
         /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="lines"></param>
-        /// <param name="lineX"></param>
-        /// <param name="lineY"></param>
-        /// <param name="flowPath"></param>
-        /// <param name="orientation"></param>
-        /// <param name="lineHeightMultiplier"></param>
-        /// <returns></returns>
+        /// <param name="ctx">The context of the text.</param>
+        /// <param name="lines">The preformatted lines of the text.</param>
+        /// <param name="font">The font of the text</param>
+        /// <param name="orientation">The orientation of text (Default: Left)</param>
         public void DrawMultilineText(Context ctx, CairoFont font, TextLine[] lines, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
             double offsetX = 0;
@@ -404,7 +453,15 @@ namespace Vintagestory.API.Client
             }
         }
         
-
+        /// <summary>
+        /// Draws a line of text on the screen.
+        /// </summary>
+        /// <param name="ctx">The context of the text.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="text">The text to draw.</param>
+        /// <param name="offsetX">The X offset for the text start position. (Default: 0)</param>
+        /// <param name="offsetY">The Y offset for the text start position. (Default: 0)</param>
+        /// <param name="textPathMode">Whether or not to use TextPathMode.</param>
         public void DrawTextLine(Context ctx, CairoFont font, string text, double offsetX = 0, double offsetY = 0, bool textPathMode = false)
         {
             if (text == null || text.Length == 0) return;

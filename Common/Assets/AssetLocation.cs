@@ -13,6 +13,9 @@ namespace Vintagestory.API.Common
     [TypeConverterAttribute(typeof(StringAssetLocationConverter))]
     public class AssetLocationAndSource : AssetLocation, IEquatable<AssetLocation>
     {
+        /// <summary>
+        /// The source of a given asset.
+        /// </summary>
         public string Source;
 
         public AssetLocationAndSource(string location) : base(location)
@@ -59,13 +62,17 @@ namespace Vintagestory.API.Common
         /// Create a new AssetLocation. If no domain is prefixed, the default 'game' domain is used.
         /// </summary>
         /// <param name="domainAndPath"></param>
-        /// <param name="validated">Wether to ensure that supplied domainAndPath, and any future modifications results in syntax correct asset locations</param>
         public AssetLocation(string domainAndPath)
         {
             ResolveToDomainAndPath(domainAndPath, out domain, out path);
         }
         
-        
+        /// <summary>
+        /// Helper function to resolve path dependancies.
+        /// </summary>
+        /// <param name="domainAndPath">Full path</param>
+        /// <param name="domain">The mod domain to get</param>
+        /// <param name="path">The resulting path to get</param>
         static void ResolveToDomainAndPath(string domainAndPath, out string domain, out string path)
         {
             domainAndPath = domainAndPath.ToLowerInvariant();
@@ -144,6 +151,9 @@ namespace Vintagestory.API.Common
             return parts[posFromLeft];
         }
 
+        /// <summary>
+        /// Gets the category of the asset.
+        /// </summary>
         public AssetCategory Category
         {
             get { return AssetCategory.FromCode(FirstPathPart()); }
@@ -170,38 +180,68 @@ namespace Vintagestory.API.Common
             return this;
         }
 
+        /// <summary>
+        /// Whether or not the Asset has a domain.
+        /// </summary>
+        /// <returns></returns>
         public virtual bool HasDomain()
         {
             return domain != null;
         }
 
+        /// <summary>
+        /// Gets the name of the asset.
+        /// </summary>
+        /// <returns></returns>
         public virtual string GetName()
         {
             var index = Path.LastIndexOf('/');
             return (index >= 0) ? Path.Substring(index + 1) : Path;
         }
 
+        /// <summary>
+        /// Removes the file ending from the asset path.
+        /// </summary>
         public virtual void RemoveEnding()
         {
             path = path.Substring(0, path.LastIndexOf("."));
         }
 
+        /// <summary>
+        /// Clones this asset.
+        /// </summary>
+        /// <returns>the cloned asset.</returns>
         public virtual AssetLocation Clone()
         {
             return new AssetLocation(this.domain, this.path);
         }
 
+        /// <summary>
+        /// Makes a copy of the asset with a modified path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public virtual AssetLocation CopyWithPath(string path)
         {
             return Clone().WithPath(path);
         }
 
+        /// <summary>
+        /// Sets the path of the asset location
+        /// </summary>
+        /// <param name="path">the new path to set.</param>
+        /// <returns>The modified AssetLocation</returns>
         public virtual AssetLocation WithPath(string path)
         {
             this.Path = path;
             return this;
         }
 
+        /// <summary>
+        /// Converts a collection of paths to AssetLocations.
+        /// </summary>
+        /// <param name="names">The names of all of the locations</param>
+        /// <returns>The AssetLocations for all the names given.</returns>
         public static AssetLocation[] toLocations(string[] names)
         {
             AssetLocation[] locations = new AssetLocation[names.Length];
@@ -211,8 +251,6 @@ namespace Vintagestory.API.Common
             }
             return locations;
         }
-
-
 
         public override int GetHashCode()
         {

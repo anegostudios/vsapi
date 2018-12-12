@@ -74,9 +74,14 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Cuboidf OriginCollisionBox;
 
-
-        public bool Teleporting; // Used by the teleporter block
-        public bool IsTeleport; // Used by the server to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
+        /// <summary>
+        /// Used by the teleporter block
+        /// </summary>
+        public bool Teleporting;
+        /// <summary>
+        /// Used by the server to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
+        /// </summary>
+        public bool IsTeleport; 
 
 
         /// <summary>
@@ -161,11 +166,6 @@ namespace Vintagestory.API.Common.Entities
 
         #region Properties
 
-        /*IWorldAccessor Entity.World
-        {
-            get { return World; }
-        }*/
-
         public EntityProperties Properties { private set; get; }
 
         public EntitySidedProperties SidedProperties
@@ -210,39 +210,8 @@ namespace Vintagestory.API.Common.Entities
             get { return World.Side == EnumAppSide.Server ? ServerPos : Pos; }
         }
 
-        /*EntityPos Entity.Pos
-        {
-            get { return Pos; }
-        }
-
-        EntityPos Entity.ServerPos
-        {
-            get { return ServerPos; }
-        }
-
-        Cuboidf Entity.CollisionBox
-        {
-            get { return CollisionBox; }
-        }*/
-
         public virtual double EyeHeight { get { return Properties.EyeHeight; } }
-
-        /*long Entity.EntityId
-        {
-            get { return EntityId; }
-        }
-
-        ITreeAttribute Entity.WatchedAttributes
-        {
-            get { return WatchedAttributes; }
-        }
-
-        ITreeAttribute Entity.Attributes
-        {
-            get { return Attributes; }
-        }
-        */
-
+        
 
         /// <summary>
         /// If gravity should applied to this entity
@@ -270,17 +239,12 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// just a !Alive currently
+        /// If the entity should despawn next server tick. By default returns !Alive for non-creatures and creatures that don't have a Decay behavior
         /// </summary>
         public virtual bool ShouldDespawn
         {
             get { return !Alive; }
         }
-
-        /*EnumEntityState Entity.State
-        {
-            get { return State; }
-        }*/
 
         /// <summary>
         /// Players and whatever the player rides on will be stored seperatly
@@ -331,6 +295,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Called when the entity got hurt. On the client side, dmgSource is null
         /// </summary>
+        /// <param name="dmgSource"></param>
         /// <param name="damage"></param>
         public virtual void OnHurt(DamageSource dmgSource, float damage)
         {
@@ -341,7 +306,8 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Called when this entity got created or loaded
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="properties"></param>
+        /// <param name="api"></param>
         /// <param name="InChunkIndex3d"></param>
         public virtual void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
@@ -719,9 +685,15 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="itemslot">If being interacted with a block/item, this should be the slot the item is being held in</param>
         /// <param name="hitPosition">Relative position on the entites hitbox where the entity interacted at</param>
         /// <param name="mode">0 = attack, 1 = interact</param>
-        public virtual void OnInteract(EntityAgent byEntity, IItemSlot itemslot, Vec3d hitPosition, int mode)
+        public virtual void OnInteract(EntityAgent byEntity, IItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode)
         {
-            
+            EnumHandling handled = EnumHandling.NotHandled;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnInteract(byEntity, itemslot, hitPosition, mode, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
         }
 
         
@@ -753,10 +725,19 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="data"></param>
         public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
         {
+            EnumHandling handled = EnumHandling.NotHandled;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnReceivedClientPacket(player, packetid, data, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
         }
 
         /// <summary>
         /// Called when on the server side something called sapi.Network.SendEntityPacket()
+        /// Packetid = 1 is used for teleporting
+        /// Packetid = 2 is used for BehaviorHarvestable
         /// </summary>
         /// <param name="packetid"></param>
         /// <param name="data"></param>

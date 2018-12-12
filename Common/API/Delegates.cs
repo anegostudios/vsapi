@@ -33,6 +33,12 @@ namespace Vintagestory.API.Common
     /// <returns></returns>
     public delegate bool ActionBoolReturn();
 
+    /// <summary>
+    /// Returns true if the action/event was successfull.
+    /// </summary>
+    /// <typeparam name="T">The additional type to pass in.</typeparam>
+    /// <param name="t">The arguments for the event.</param>
+    /// <returns></returns>
     public delegate bool ActionBoolReturn<T>(T t);
 
     /// <summary>
@@ -76,8 +82,18 @@ namespace Vintagestory.API.Common
     /// <returns>The resulting string.</returns>
     public delegate string PlayerChatDelegate(IServerPlayer byPlayer, int channelId, string message, BoolRef consumed);
 
+    /// <summary>
+    /// When the player died, this delegate will fire.
+    /// </summary>
+    /// <param name="byPlayer">The player that died.</param>
+    /// <param name="damageSource">The source of the damage.</param>
     public delegate void PlayerDeathDelegate(IServerPlayer byPlayer, DamageSource damageSource);
 
+    /// <summary>
+    /// The delegate for a dialogue click.
+    /// </summary>
+    /// <param name="byPlayer">The player that clicked the dialogue.</param>
+    /// <param name="widgetId">The internal name of the Widget.</param>
     public delegate void DialogClickDelegate(IServerPlayer byPlayer, string widgetId);
 
 
