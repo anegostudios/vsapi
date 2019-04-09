@@ -1,22 +1,38 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    [ProtoContract(ImplicitFields = ImplicitFields.AllPublic)]
+    public class GeneratedStructure
+    {
+        /// <summary>
+        /// Block position of the structure
+        /// </summary>
+        public Cuboidi Location;
+
+        /// <summary>
+        /// Code as defined in the WorldGenStructure object
+        /// </summary>
+        public string Code;
+
+        /// <summary>
+        /// Group as defined in the WorldGenStructure object
+        /// </summary>
+        public string Group;
+    }
+
     /// <summary>
     /// 2D Map data for a 8x8 area of chunk columns. Holds a few maps for the chunk generation.
     /// </summary>
     public interface IMapRegion
     {
-        /// <summary>
-        /// Holds some simple perlin noise to be applied as a 2d distortion when placing deposits so they are not perfectly round
-        /// </summary>
-        IntMap DepositDistortionMap { get; set; }
-
         /// <summary>
         /// Currently unuseds
         /// </summary>
@@ -50,6 +66,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         IntMap GeologicProvinceMap { get; set; }
 
+
+        /// <summary>
+        /// Holds the rock strata noise maps
+        /// </summary>
+        IntMap[] RockStrata { get; set; }
+        
+
         /// <summary>
         /// Holds the raw mod data.
         /// </summary>
@@ -65,6 +88,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         Dictionary<string, IntMap> OreMaps { get; }
 
+        IntMap OreMapVerticalDistortTop { get; }
+        IntMap OreMapVerticalDistortBottom { get; }
+
+
+        /// <summary>
+        /// List of structures that were generated in this region
+        /// </summary>
+        List<GeneratedStructure> GeneratedStructures { get; }
 
 
         bool DirtyForSaving { get; set; }

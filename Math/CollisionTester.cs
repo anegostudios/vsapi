@@ -102,6 +102,7 @@ namespace Vintagestory.API.MathTools
                     entity,
                     CollisionBoxList.positions[i],
                     pushDirection == EnumPushDirection.Negative ? BlockFacing.UP : BlockFacing.DOWN,
+                    tmpMotion,
                     !entity.CollidedVertically
                 );
             }
@@ -129,6 +130,7 @@ namespace Vintagestory.API.MathTools
                     entity,
                     CollisionBoxList.positions[i],
                     pushDirection == EnumPushDirection.Negative ? BlockFacing.EAST : BlockFacing.WEST,
+                    tmpMotion,
                     !entity.CollidedHorizontally
                 );
             }
@@ -152,6 +154,7 @@ namespace Vintagestory.API.MathTools
                     entity,
                     CollisionBoxList.positions[i],
                     pushDirection == EnumPushDirection.Negative ? BlockFacing.SOUTH : BlockFacing.NORTH,
+                    tmpMotion,
                     !entity.CollidedHorizontally
                 );
             }

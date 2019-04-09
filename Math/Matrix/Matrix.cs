@@ -97,6 +97,14 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public Matrixf Rotate(Vec3f radians)
+        {
+            Mat4f.RotateX(Values, Values, radians.X);
+            Mat4f.RotateY(Values, Values, radians.Y);
+            Mat4f.RotateZ(Values, Values, radians.Z);
+            return this;
+        }
+
         public Matrixf RotateX(float radX)
         {
             Mat4f.RotateX(Values, Values, radX);

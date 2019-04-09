@@ -62,10 +62,24 @@ namespace Vintagestory.API.Common
 
     public class CookingRecipeIngredient
     {
+        /// <summary>
+        /// The code for the recipe ingredient.
+        /// </summary>
         public string Code;
+
+        /// <summary>
+        /// The minimum quantity required for the given ingredient.
+        /// </summary>
         public int MinQuantity;
+
+        /// <summary>
+        /// The maximum quantity required for the given ingredient.
+        /// </summary>
         public int MaxQuantity;
 
+        /// <summary>
+        /// The world accessor for the ingredient.
+        /// </summary>
         public IWorldAccessor world;
         
         public CookingRecipeStack[] ValidStacks;
@@ -127,12 +141,21 @@ namespace Vintagestory.API.Common
             return ingredient;
         }
 
+        /// <summary>
+        /// Checks to see whether or not the itemstack matches the ingredient.
+        /// </summary>
+        /// <param name="inputStack"></param>
+        /// <returns></returns>
         public bool Matches(ItemStack inputStack)
         {
             return GetMatchingStack(inputStack) != null;
         }
 
-
+        /// <summary>
+        /// Attempts to get a matching ingredient stack for the given input.
+        /// </summary>
+        /// <param name="inputStack"></param>
+        /// <returns></returns>
         public CookingRecipeStack GetMatchingStack(ItemStack inputStack)
         {
             if (inputStack == null) return null;

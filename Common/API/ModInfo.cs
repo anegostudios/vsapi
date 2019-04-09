@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
 namespace Vintagestory.API.Common
@@ -31,6 +32,12 @@ namespace Vintagestory.API.Common
         Code
     }
 
+    public enum EnumLoadType
+    {
+        AlwaysLoad,
+        Load
+    }
+
     /// <summary>
     /// Meta data for a specific mod folder, archive, source file or assembly.
     /// Either loaded from a "modinfo.json" or from the assembly's
@@ -40,7 +47,7 @@ namespace Vintagestory.API.Common
     {
         private IReadOnlyList<string> _authors = new string[0];
 
-
+        
         /// <summary> The type of this mod. Can be "Theme", "Content" or "Code". </summary>
         [JsonRequired]
         public EnumModType Type;
@@ -48,6 +55,9 @@ namespace Vintagestory.API.Common
         /// <summary> The name of this mod. For example "My Example Mod". </summary>
         [JsonRequired]
         public string Name;
+
+        [JsonProperty]
+        public EnumLoadType LoadType;
 
         /// <summary>
         /// The mod id (domain) of this mod. For example "myexamplemod".
@@ -60,8 +70,7 @@ namespace Vintagestory.API.Common
         /// <summary> The version of this mod. For example "2.10.4". (optional) </summary>
         [JsonProperty]
         public string Version = "";
-
-
+        
         /// <summary> A short description of what this mod does. (optional) </summary>
         [JsonProperty]
         public string Description = "";
@@ -90,7 +99,7 @@ namespace Vintagestory.API.Common
         /// Which side(s) this mod runs on. Can be "Server", "Client" or "Universal".
         /// (Optional. Universal (both server and client) by default.)
         /// </summary>
-        [JsonProperty]
+        [JsonProperty, JsonConverter(typeof(StringEnumConverter))]
         public EnumAppSide Side { get; set; } = EnumAppSide.Universal;
 
         /// <summary>
@@ -127,10 +136,12 @@ namespace Vintagestory.API.Common
             RequiredOnClient = requiredOnClient;
             Dependencies     = ReadOnlyCopy(dependencies);
 
+
             // Null-safe helper method which copies the specified elements into a read-only list.
             IReadOnlyList<T> ReadOnlyCopy<T>(IEnumerable<T> elements)
                 => (elements ?? Enumerable.Empty<T>()).ToList().AsReadOnly();
         }
+
 
         [OnDeserialized]
         private void OnDeserialized(StreamingContext ctx)

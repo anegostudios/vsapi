@@ -36,12 +36,20 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+        /// <summary>
+        /// Generates the voxels for the clay recipe.
+        /// </summary>
         public void GenVoxels()
         {
             int length = Pattern[0][0].Length;
             int width = Pattern[0].Length;
             int height = Pattern.Length;
-            
+             
+            if (width > 16 || height > 16 || length > 16)
+            {
+                throw new Exception(string.Format("Invalid clay forming recipe {0}! Width, height or length is beyond 16 voxels", this.Name));
+            }
+
             for (int i = 0; i < Pattern.Length; i++)
             {
                 if (Pattern[i].Length != width)
@@ -78,7 +86,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Serialized the alloy
+        /// Serialized the Clay Shape
         /// </summary>
         /// <param name="writer"></param>
         public void ToBytes(BinaryWriter writer)
@@ -105,7 +113,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Deserializes the alloy
+        /// Deserializes the Clay Shape
         /// </summary>
         /// <param name="reader"></param>
         /// <param name="resolver"></param>
@@ -195,7 +203,12 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Matches the wildcards for the clay recipe.
+        /// </summary>
+        /// <param name="wildCard"></param>
+        /// <param name="blockCode"></param>
+        /// <returns></returns>
         public static bool WildCardMatch(AssetLocation wildCard, AssetLocation blockCode)
         {
             if (blockCode == null || !wildCard.Domain.Equals(blockCode.Domain)) return false;

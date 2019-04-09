@@ -101,24 +101,28 @@ namespace Vintagestory.API.Config
                 } else
                 {
                     Inst.LangEntries[key] = val.Value;
-                }
-            }
+                }}
         }
         
 
 
         public static string Get(string key, params object[] param)
         {
+            return string.Format(GetUnformatted(key), param);
+        }
+
+        public static string GetUnformatted(string key)
+        {
             string value;
             string domainandkey = key.Contains(":") ? key : GlobalConstants.DefaultDomain + AssetLocation.LocationSeparator + key;
-            
+
 
             if (Inst.LangEntries.TryGetValue(domainandkey, out value))
             {
-                return string.Format(value, param);
+                return value;
             }
 
-            return string.Format(key, param);
+            return key;
         }
 
         public static string GetMatching(string key, params object[] param)

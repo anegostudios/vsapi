@@ -134,11 +134,13 @@ namespace Vintagestory.API.Client
         public string Code;
         public int Width = 150;
         public int Height = 30;
+        public int PaddingLeft = 0;
         public EnumDialogElementType Type;
         public EnumDialogElementMode Mode;
         public string Label;
         public string Icon;
         public string Text;
+        public string Tooltip;
         public float FontSize = 14;
 
         public string[] Icons;

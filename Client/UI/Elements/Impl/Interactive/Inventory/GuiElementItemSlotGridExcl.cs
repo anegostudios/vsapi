@@ -17,7 +17,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The Client API</param>
         /// <param name="inventory">The attached inventory.</param>
-        /// <param name="SendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
+        /// <param name="SendPacketHandler">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
         /// <param name="columns">The number of columns in the slot grid.</param>
         /// <param name="excludingSlots">The slots that have been excluded.</param>
         /// <param name="bounds">The bounds of the slot grid.</param>
@@ -36,10 +36,10 @@ namespace Vintagestory.API.Client
 
             if (excludingSlots != null)
             {
-                for (int i = 0; i < inventory.QuantitySlots; i++)
+                for (int i = 0; i < inventory.Count; i++)
                 {
                     if (excludingSlots.Contains(i)) continue;
-                    ItemSlot slot = inventory.GetSlot(i);
+                    ItemSlot slot = inventory[i];
 
                     availableSlots.Add(i, slot);
                     renderedSlots.Add(i, slot);
@@ -47,10 +47,10 @@ namespace Vintagestory.API.Client
             }
             else
             {
-                for (int i = 0; i < inventory.QuantitySlots; i++)
+                for (int i = 0; i < inventory.Count; i++)
                 {
-                    availableSlots.Add(i, inventory.GetSlot(i));
-                    renderedSlots.Add(i, inventory.GetSlot(i));
+                    availableSlots.Add(i, inventory[i]);
+                    renderedSlots.Add(i, inventory[i]);
                 }
             }
         }

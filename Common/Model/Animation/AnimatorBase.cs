@@ -114,6 +114,7 @@ namespace Vintagestory.API.Common
                     {
                         anim.Stop();
                         activeAnimationsByAnimCode.Remove(anim.Animation.Code);
+                        entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
                     }
 
                     if (anim.Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd)
@@ -136,6 +137,7 @@ namespace Vintagestory.API.Common
                     if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop)
                     {
                         activeAnimationsByAnimCode.Remove(anim.Animation.Code);
+                        entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
                     }
                     continue;
                 }

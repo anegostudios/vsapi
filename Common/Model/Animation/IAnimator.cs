@@ -36,9 +36,18 @@ namespace Vintagestory.API.Common
         /// </summary>
         int ActiveAnimationCount { get; }
 
-
+        /// <summary>
+        /// Gets the attachment point pose.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         AttachmentPointAndPose GetAttachmentPointPose(string code);
 
+        /// <summary>
+        /// The event fired on each frame.
+        /// </summary>
+        /// <param name="activeAnimationsByAnimCode"></param>
+        /// <param name="dt"></param>
         void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt);
     }
 
@@ -48,26 +57,82 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IAnimationManager
     {
+        /// <summary>
+        /// The animator for this animation manager
+        /// </summary>
         IAnimator Animator { get; set; }
+
+        /// <summary>
+        /// The head controller for this manager.
+        /// </summary>
         EntityHeadController HeadController { get; set; }
 
-        void Init(ICoreAPI api, Entity entity, Shape shape);
+        /// <summary>
+        /// Initialization call for the animation manager.
+        /// </summary>
+        /// <param name="api">The core API</param>
+        /// <param name="entity">The entity being animated.</param>
+        void Init(ICoreAPI api, Entity entity);
 
-        
+        /// <summary>
+        /// Whether or not the animation is dirty.
+        /// </summary>
         bool AnimationsDirty { get; set; }
         
+        /// <summary>
+        /// Starts an animation based on the AnimationMetaData
+        /// </summary>
+        /// <param name="animdata"></param>
+        /// <returns></returns>
         bool StartAnimation(AnimationMetaData animdata);
+
+        /// <summary>
+        /// Starts an animation based on JSON code.
+        /// </summary>
+        /// <param name="configCode">The json code.</param>
+        /// <returns></returns>
         bool StartAnimation(string configCode);
+
+        /// <summary>
+        /// Stops the animation.
+        /// </summary>
+        /// <param name="code">The code to stop the animation on</param>
         void StopAnimation(string code);
 
+        /// <summary>
+        /// Additional attributes applied to the animation
+        /// </summary>
+        /// <param name="tree"></param>
         void FromAttributes(ITreeAttribute tree);
+
+        /// <summary>
+        /// Additional attributes applied from the animation
+        /// </summary>
+        /// <param name="tree"></param>
         void ToAttributes(ITreeAttribute tree);
 
-
+        /// <summary>
+        /// Gets the AnimationMetaData for the target action.
+        /// </summary>
         Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode { get; }
 
+        /// <summary>
+        /// The event fired when the client recieves the server animations
+        /// </summary>
+        /// <param name="activeAnimations">all of active animations</param>
+        /// <param name="activeAnimationsCount">the number of the animations</param>
+        /// <param name="activeAnimationSpeeds">The speed of those animations.</param>
         void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds);
 
+        /// <summary>
+        /// Safe dispose method for classes containing IAnimator
+        /// </summary>
         void Dispose();
+
+        /// <summary>
+        /// The event fired when the animation is stopped.
+        /// </summary>
+        /// <param name="code">The code that the animation stopped with.</param>
+        void OnAnimationStopped(string code);
     }
 }

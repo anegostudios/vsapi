@@ -9,9 +9,21 @@ namespace Vintagestory.API.Common
 {
     public class AnimationJoint
     {
+        /// <summary>
+        /// The ID of the joint.
+        /// </summary>
         public int JointId;
+
+        /// <summary>
+        /// The attached ShapeElement.
+        /// </summary>
         public ShapeElement Element;
 
+        /// <summary>
+        /// Takes the transform and inverses it.
+        /// </summary>
+        /// <param name="frameModelTransform"></param>
+        /// <returns></returns>
         public float[] ApplyInverseTransform(float[] frameModelTransform)
         {
             List<ShapeElement> elems = Element.GetParentPath();

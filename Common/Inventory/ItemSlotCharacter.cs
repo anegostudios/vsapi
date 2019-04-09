@@ -35,20 +35,25 @@ namespace Vintagestory.API.Common
             this.type = type;
         }
 
-        public override bool CanTakeFrom(IItemSlot sourceSlot)
+        public override bool CanTakeFrom(ItemSlot sourceSlot)
         {
             if (!IsDressType(sourceSlot.Itemstack, type)) return false;
             return base.CanTakeFrom(sourceSlot);
         }
 
-        public override bool CanHold(IItemSlot itemstackFromSourceSlot)
+        public override bool CanHold(ItemSlot itemstackFromSourceSlot)
         {
             if (!IsDressType(itemstackFromSourceSlot.Itemstack, type)) return false;
 
             return base.CanHold(itemstackFromSourceSlot);
         }
 
-
+        /// <summary>
+        /// Checks to see what dress type the given item is.
+        /// </summary>
+        /// <param name="itemstack"></param>
+        /// <param name="dressType"></param>
+        /// <returns></returns>
         public static bool IsDressType(IItemStack itemstack, EnumCharacterDressType dressType)
         {
             if (itemstack == null || itemstack.Collectible.Attributes == null) return false;

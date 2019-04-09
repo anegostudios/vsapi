@@ -94,7 +94,7 @@ namespace Vintagestory.API.Common
         /// <param name="treeAttribute"></param>
         public override void FromTreeAttributes(ITreeAttribute treeAttribute)
         {
-            slots = SlotsFromTreeAttributes(treeAttribute);
+            slots = SlotsFromTreeAttributes(treeAttribute, slots);
         }
 
         /// <summary>

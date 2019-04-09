@@ -1,13 +1,20 @@
-﻿using Vintagestory.API.MathTools;
+﻿using System.Collections.Generic;
 
 namespace Vintagestory.API.Common
 {
+    public class Entitlement
+    {
+        public string Code;
+        public string Name;
+    }
 
     /// <summary>
     /// Represents a player
     /// </summary>
     public interface IPlayer
     {
+        List<Entitlement> Entitlements { get; }
+
         /// <summary>
         /// The block the player is currently aiming at
         /// </summary>

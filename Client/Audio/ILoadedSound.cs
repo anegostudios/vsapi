@@ -9,6 +9,16 @@ namespace Vintagestory.API.Client
     public interface ILoadedSound
     {
         /// <summary>
+        /// Length of the sound in seconds
+        /// </suummary>
+        float SoundLength { get; }
+
+        /// <summary>
+        /// Get the current playback position or set it (in seconds)
+        /// </summary>
+        float PlaybackPosition { get; set; }
+
+        /// <summary>
         /// Is the sound disposed of?
         /// </summary>
         bool IsDisposed { get; }

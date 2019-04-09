@@ -14,7 +14,7 @@ namespace Vintagestory.API.Client
 
         public static double unscaledSlotSize = 48;
 
-        IItemSlot slot;
+        ItemSlot slot;
         IInventory inventory;
 
         bool drawBackground;
@@ -29,7 +29,7 @@ namespace Vintagestory.API.Client
         /// <param name="inventory">the attached inventory for the slot.</param>
         /// <param name="slot">The slot of the slot.</param>
         /// <param name="drawBackground">Do we draw the background for this slot? (Default: true)</param>
-        public GuiElementPassiveItemSlot(ICoreClientAPI capi, ElementBounds bounds, IInventory inventory, IItemSlot slot, bool drawBackground = true) : base(capi, bounds)
+        public GuiElementPassiveItemSlot(ICoreClientAPI capi, ElementBounds bounds, IInventory inventory, ItemSlot slot, bool drawBackground = true) : base(capi, bounds)
         {
             this.slot = slot;
             this.inventory = inventory;
@@ -85,7 +85,7 @@ namespace Vintagestory.API.Client
         /// <param name="inventory">The inventory attached to the slot.</param>
         /// <param name="slot">The internal slot of the slot.</param>
         /// <param name="drawBackground">Do we draw the background for this slot? (Default: true)</param>
-        public static GuiComposer AddPassiveItemSlot(this GuiComposer composer, ElementBounds bounds, IInventory inventory, IItemSlot slot, bool drawBackground = true)
+        public static GuiComposer AddPassiveItemSlot(this GuiComposer composer, ElementBounds bounds, IInventory inventory, ItemSlot slot, bool drawBackground = true)
         {
             if (!composer.composed)
             {

@@ -21,7 +21,6 @@ namespace Vintagestory.API.Common
         /// <summary> The version of this mod. For example "2.10.4". (optional) </summary>
         public string Version { get; set; }
         
-        
         /// <summary> A short description of what this mod does. (optional) </summary>
         public string Description { get; set; }
         
@@ -33,8 +32,7 @@ namespace Vintagestory.API.Common
         
         /// <summary> Names of people contributing to this mod. (optional) </summary>
         public string[] Contributors { get; set; }
-        
-        
+
         /// <summary>
         /// Which side(s) this mod runs on. Can be "Server", "Client" or "Universal".
         /// (Optional. Universal (both server and client) by default.)
@@ -46,7 +44,8 @@ namespace Vintagestory.API.Common
         /// (Optional. True (required) by default.)
         /// </summary>
         public bool RequiredOnClient { get; set; } = true;
-        
+
+        public string WorldConfig { get; set; } = null;
         
         public ModInfoAttribute(string name, string modID)
         {

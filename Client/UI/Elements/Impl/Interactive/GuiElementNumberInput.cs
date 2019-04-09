@@ -15,6 +15,8 @@ namespace Vintagestory.API.Client
     public class GuiElementNumberInput : GuiElementTextInput
     {
         //public double Scale = 1;
+        public float Interval = 1f;
+
 
         public LoadedTexture buttonHighlightTexture;
         
@@ -45,9 +47,9 @@ namespace Vintagestory.API.Client
         {
             rightSpacing = scaled(17);
 
-            EmbossRoundRectangleElement(ctx, Bounds, true, 2, 3);
+            EmbossRoundRectangleElement(ctx, Bounds, true, 2, 1);
             ctx.SetSourceRGBA(0, 0, 0, 0.3);
-            ElementRoundRectangle(ctx, Bounds, false, 3);
+            ElementRoundRectangle(ctx, Bounds, false, 1);
             ctx.Fill();
 
             GenTextHighlightTexture();
@@ -98,24 +100,25 @@ namespace Vintagestory.API.Client
             ImageSurface surfaceHighlight = new ImageSurface(Format.Argb32, (int)(rightSpacing), (int)heightHalf);
             Context ctxHighlight = genContext(surfaceHighlight);
 
-            ctxHighlight.SetSourceRGBA(0, 0, 0, 0.2);
+            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.2);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref highlightTexture);
+            generateTexture(surfaceHighlight, ref buttonHighlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
         }
 
+    
         private void GenTextHighlightTexture()
         {
             ImageSurface surfaceHighlight = new ImageSurface(Format.Argb32, (int)(Bounds.OuterWidth - rightSpacing), (int)Bounds.OuterHeight);
             Context ctxHighlight = genContext(surfaceHighlight);
 
-            ctxHighlight.SetSourceRGBA(0, 0, 0, 0.2);
+            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.3);
             ctxHighlight.Paint();
 
-            generateTexture(surfaceHighlight, ref buttonHighlightTexture);
+            generateTexture(surfaceHighlight, ref highlightTexture);
 
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
@@ -150,6 +153,7 @@ namespace Vintagestory.API.Client
             rightSpacing = scaled(17);
 
             float size = args.deltaPrecise > 0 ? 1 : -1;
+            size *= Interval;
 
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.LShift]) size /= 10;
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
@@ -172,7 +176,7 @@ namespace Vintagestory.API.Client
             int mouseX = args.X;
             int mouseY = args.Y;
 
-            float size = 1f;
+            float size = Interval;
 
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.LShift]) size /= 10;
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;

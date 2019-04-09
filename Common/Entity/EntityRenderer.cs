@@ -29,6 +29,14 @@ namespace Vintagestory.API.Common.Entities
             this.capi = api;
         }
 
+        /// <summary>
+        /// Called when the entity is now fully either spawned or fully loaded
+        /// </summary>
+        public void OnEntityLoaded()
+        {
+
+        }
+
 
         /// <summary>
         /// Draw call with no shader initialized

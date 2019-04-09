@@ -59,13 +59,13 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(background.FillColor);
             GuiElement.RoundRectangle(ctx, 0, 0, width, height, background.Radius);
 
-            if (background.StrokeWidth > 0)
+            if (background.BorderWidth > 0)
             {
                 ctx.FillPreserve();
 
                 ctx.Operator = Operator.Atop;
-                ctx.LineWidth = background.StrokeWidth;
-                ctx.SetSourceRGBA(background.StrokeColor);
+                ctx.LineWidth = background.BorderWidth;
+                ctx.SetSourceRGBA(background.BorderColor);
                 ctx.Stroke();
                 ctx.Operator = Operator.Over;
             } else
@@ -104,13 +104,13 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(background.FillColor);
             GuiElement.RoundRectangle(ctx, 0, 0, width, height, background.Radius);
 
-            if (background.StrokeWidth > 0)
+            if (background.BorderWidth > 0)
             {
                 ctx.FillPreserve();
 
                 ctx.Operator = Operator.Atop;
-                ctx.LineWidth = background.StrokeWidth;
-                ctx.SetSourceRGBA(background.StrokeColor);
+                ctx.LineWidth = background.BorderWidth;
+                ctx.SetSourceRGBA(background.BorderColor);
                 ctx.Stroke();
                 ctx.Operator = Operator.Over;
             }
@@ -191,14 +191,21 @@ namespace Vintagestory.API.Client
         /// <param name="background">The background of the text. (default: none/null)</param>
         public void GenOrUpdateTextTexture(string text, CairoFont font, ref LoadedTexture loadedTexture, TextBackground background = null)
         {
-            if (background == null) background = defaultBackground;
+            if (background == null)
+            {
+                background = defaultBackground.Clone();
+                if (font.StrokeWidth > 0)
+                {
+                    background.Padding = (int)Math.Ceiling(font.StrokeWidth);
+                }
+            }
 
             ElementBounds bounds = new ElementBounds();
             font.AutoBoxSize(text, bounds);
 
 
-            int width = (int)GuiElement.scaled(bounds.fixedWidth + 1 + 2 * background.Padding);
-            int height = (int)GuiElement.scaled(bounds.fixedHeight + 1 + 2 * background.Padding);
+            int width = (int)Math.Ceiling(GuiElement.scaled(bounds.fixedWidth + 1 + 2 * background.Padding));
+            int height = (int)Math.Ceiling(GuiElement.scaled(bounds.fixedHeight + 1 + 2 * background.Padding));
 
             GenOrUpdateTextTexture(text, font, width, height, ref loadedTexture, background);
         }

@@ -50,6 +50,7 @@ namespace Vintagestory.API.Client
         public float WaterWaveCounter = 0f;
         public float WindWaveCounter = 0f;
         public float WindWaveIntensity = 1f;
+        public float FogWaveCounter = 0f;
 
         public float GlobalWorldWarp = 0f;
 
@@ -76,6 +77,7 @@ namespace Vintagestory.API.Client
             WaterWaveCounter += dt * 0.75f * calendar.SpeedOfTime / 60f;
 
             WindWaveCounter += 1.5f * dt * calendar.SpeedOfTime / 60f;
+            FogWaveCounter += 0.1f * dt * calendar.SpeedOfTime / 60f;
 
             if (WindWaveCounter > 2 * GameMath.TWOPI)
             {
@@ -87,6 +89,7 @@ namespace Vintagestory.API.Client
             // For godrays shader
             PlayerViewVector = EntityPos.GetViewVector(capi.Input.MousePitch, capi.Input.MouseYaw);
             
+
 
             // updated by RenderSunMoon.cs
             // SunPositionScreen, SunPosition3D

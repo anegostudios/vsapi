@@ -42,24 +42,24 @@ namespace Vintagestory.API.Client
             throw new NotImplementedException();
         }
 
-        public void Initialize(IAssetManager assetManager, ICoreClientAPI capi)
+        public void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
         {
             throw new NotImplementedException();
         }
 
 
-        public bool ShouldPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
+        public bool ShouldPlay(TrackedPlayerProperties props)
         {
             
             return false;
         }
 
-        public void BeginPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
+        public void BeginPlay(TrackedPlayerProperties props)
         {
             
         }
 
-        public bool ContinuePlay(float dt, TrackedPlayerProperties props, IMusicEngine musicEngine)
+        public bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {
             // Track should be started
             /*if (shouldStart)

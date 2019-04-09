@@ -18,6 +18,8 @@ namespace Vintagestory.API.Client
         int alarmValue; // Shows red beyond this point
 
         bool mouseDownOnSlider = false;
+        bool mouseOnSlider = false;
+
         bool triggerOnMouseUp = false;
         bool didChangeValue = false;
 
@@ -80,9 +82,9 @@ namespace Vintagestory.API.Client
             Bounds.CalcWorldBounds();
 
             ctxStatic.SetSourceRGBA(0, 0, 0, 0.2);
-            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 3);
+            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1);
             ctxStatic.Fill();
-            EmbossRoundRectangleElement(ctxStatic, Bounds, true, 1, 2);
+            EmbossRoundRectangleElement(ctxStatic, Bounds, true, 1, 1);
 
 
             double insetWidth = Bounds.InnerWidth - 2 * padding;
@@ -97,7 +99,7 @@ namespace Vintagestory.API.Client
 
                 ctxStatic.SetSourceRGBA(0.62, 0, 0, 0.4);
 
-                RoundRectangle(ctxStatic, Bounds.drawX + padding + insetWidth * alarmValueRel, Bounds.drawY + padding, insetWidth * (1 - alarmValueRel), insetHeight, 3);
+                RoundRectangle(ctxStatic, Bounds.drawX + padding + insetWidth * alarmValueRel, Bounds.drawY + padding, insetWidth * (1 - alarmValueRel), insetHeight, 1);
                 ctxStatic.Fill();
             }
 
@@ -109,7 +111,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(1, 1, 1, 0);
             ctx.Paint();
             
-            RoundRectangle(ctx, 2, 2, handleWidth, handleHeight, 3);
+            RoundRectangle(ctx, 2, 2, handleWidth, handleHeight, 1);
             fillWithPattern(api, ctx, woodTextureName, true);
 
             ctx.SetSourceRGB(43 / 255.0, 33 / 255.0, 24 / 255.0);
@@ -169,7 +171,7 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             SurfacePattern pattern = getPattern(api, waterTextureName);
-            RoundRectangle(ctx, 0, 0, surface.Width, surface.Height, 2);
+            RoundRectangle(ctx, 0, 0, surface.Width, surface.Height, 1);
             ctx.SetSource(pattern);
             ctx.Fill();           
 
@@ -198,7 +200,7 @@ namespace Vintagestory.API.Client
             api.Render.Render2DTexturePremultipliedAlpha(handleTexture.TextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
 
 
-            if (mouseDownOnSlider || Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
+            if (mouseDownOnSlider || mouseOnSlider)
             {
                 ElementBounds elemBounds = textElem.Bounds;
                 api.Render.Render2DTexturePremultipliedAlpha(
@@ -206,9 +208,14 @@ namespace Vintagestory.API.Client
                     (int)(Bounds.renderX + padding + handlePosition - elemBounds.OuterWidth / 2 + handleWidth / 2),
                     (int)(Bounds.renderY - scaled(20) - elemBounds.OuterHeight),
                     elemBounds.OuterWidthInt,
-                    elemBounds.OuterHeightInt);
+                    elemBounds.OuterHeightInt,
+                    300
+                );
             }
         }
+
+
+        
 
 
         void MakeAlarmValueTexture()
@@ -260,6 +267,8 @@ namespace Vintagestory.API.Client
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
             if (!enabled) return;
+
+            mouseOnSlider = Bounds.PointInside(api.Input.MouseX, api.Input.MouseY);
 
             if (mouseDownOnSlider)
             {

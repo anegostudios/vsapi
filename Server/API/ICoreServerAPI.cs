@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -38,6 +39,16 @@ namespace Vintagestory.API.Server
         /// </summary>
         new IServerWorldAccessor World { get; }
 
+
+
+        /// <summary>
+        /// Shows a vibrating red text in the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingameerror-' (which is recommended so that the errors are translated to the users local language)
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="errorCode"></param>
+        /// <param name="text"></param>
+        /// <param name="langparams">If text is null, these are the arguments passed into the Language translation tool</param>
+        void SendIngameError(IServerPlayer player, string errorCode, string text = null, params object[] langparams);
 
 
         /// <summary>

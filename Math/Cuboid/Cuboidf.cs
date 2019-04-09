@@ -24,6 +24,46 @@ namespace Vintagestory.API.MathTools
         public float Height { get { return Y2 - Y1; } }
         public float Length { get { return Z2 - Z1; } }
 
+        public float this[int index]
+        {
+            get
+            {
+                switch (index) {
+                    case 0: return X1;
+                    case 1: return Y1;
+                    case 2: return Z1;
+                    case 3: return X2;
+                    case 4: return Y2;
+                    case 5: return Z2;
+                }
+
+                throw new ArgumentException("Out of bounds");
+            }
+
+            set
+            {
+                switch (index)
+                {
+                    case 0: X1 = value; return;
+                    case 1: Y1 = value; return;
+                    case 2: Z1 = value; return;
+                    case 3: X2 = value; return;
+                    case 4: Y2 = value; return;
+                    case 5: Z2 = value; return;
+                }
+
+                throw new ArgumentException("Out of bounds");
+            }
+        }
+
+        /// <summary>
+        /// True when all values are 0
+        /// </summary>
+        public bool Empty
+        {
+            get { return X1 == 0 && Y1 == 0 && Z1 == 0 && X2 == 0 && Y2 == 0 && Z2 == 0; }
+        }
+
         public Vec3f Start
         {
             get { return new Vec3f(X1, Y1, Z1); }

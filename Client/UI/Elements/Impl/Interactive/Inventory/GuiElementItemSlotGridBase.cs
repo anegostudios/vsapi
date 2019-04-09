@@ -11,6 +11,7 @@ using VintagestoryAPI.Util;
 namespace Vintagestory.API.Client
 {
     public delegate bool CanClickSlotDelegate(int slotID);
+    public delegate void DrawIconDelegate(Context cr, string type, int x, int y, float width, float height, double[] rgba);
 
     /// <summary>
     /// A base class for the slot grid.  For all your slot grid needs.
@@ -56,7 +57,11 @@ namespace Vintagestory.API.Client
         ItemStack referenceDistributStack;
 
         public CanClickSlotDelegate CanClickSlot;
+        
+        IInventory hoverInv;
 
+        public DrawIconDelegate DrawIconHandler;
+        public bool AlwaysRenderIcon { get; set; } = false;
 
         public override bool Focusable
         {
@@ -75,12 +80,14 @@ namespace Vintagestory.API.Client
         {
             slotTexture = new LoadedTexture(capi);
             highlightSlotTexture = new LoadedTexture(capi);
-            prevSlotQuantity = inventory.QuantitySlots;
+            prevSlotQuantity = inventory.Count;
             this.inventory = inventory;
             cols = columns;
             SendPacketHandler = SendPacket;
 
             inventory.SlotNotified += OnSlotNotified;
+
+            DrawIconHandler = (cr, type, x, y, w, h, rgba) => api.Gui.Icons.DrawIconInt(cr, type, x, y, w, h, rgba);
         }
 
         private void OnSlotNotified(int slotid)
@@ -130,10 +137,23 @@ namespace Vintagestory.API.Client
             ImageSurface slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
             Context slotCtx = genContext(slotSurface);
 
-            slotCtx.SetSourceRGBA(GuiStyle.DialogAlternateBgColor);
+            slotCtx.SetSourceRGBA(GuiStyle.DialogSlotBackColor);
             RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
             slotCtx.Fill();
-            EmbossRoundRectangleElement(slotCtx, 0, 0, absSlotWidth, absSlotHeight, true);
+
+            slotCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
+            RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
+            slotCtx.LineWidth = scaled(4.5);
+            slotCtx.Stroke();
+            slotSurface.Blur(scaled(4), true);
+            slotSurface.Blur(scaled(4), true);
+
+            RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
+            slotCtx.LineWidth = scaled(4.5);
+            slotCtx.SetSourceRGBA(0,0,0,0.8);
+            slotCtx.Stroke();
+
+
 
             generateTexture(slotSurface, ref slotTexture, true);
 
@@ -148,12 +168,27 @@ namespace Vintagestory.API.Client
                 slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
                 slotCtx = genContext(slotSurface);
 
-                slotCtx.SetSourceRGBA(GuiStyle.DialogAlternateBgColor);
+                slotCtx.SetSourceRGBA(GuiStyle.DialogSlotBackColor);
                 RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
                 slotCtx.Fill();
-                EmbossRoundRectangleElement(slotCtx, 0, 0, absSlotWidth, absSlotHeight, true);
 
-                api.Gui.Icons.DrawIconInt(slotCtx, slot.BackgroundIcon, 2 * (int)absSlotPadding, 2 * (int)absSlotPadding, (int)(absSlotWidth - 4 * absSlotPadding), (int)(absSlotHeight - 4 * absSlotPadding), new double[] { 0, 0, 0, 0.2 });
+                slotCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
+                RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
+                slotCtx.LineWidth = scaled(4.5);
+                slotCtx.Stroke();
+                slotSurface.Blur(scaled(4), true);
+                slotSurface.Blur(scaled(4), true);
+
+                RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
+                slotCtx.LineWidth = scaled(2);
+                slotCtx.SetSourceRGBA(0, 0, 0, 0.8);
+                slotCtx.Stroke();
+
+                DrawIconHandler?.Invoke(
+                    slotCtx, slot.BackgroundIcon, 2 * (int)absSlotPadding, 2 * (int)absSlotPadding, 
+                    (int)(absSlotWidth - 4 * absSlotPadding), (int)(absSlotHeight - 4 * absSlotPadding), 
+                    new double[] { 0, 0, 0, 0.2 }
+                );
 
                 int texId = 0;
                 generateTexture(slotSurface, ref texId, true);
@@ -164,15 +199,28 @@ namespace Vintagestory.API.Client
                 slotTextureIdsByBackgroundIcon[slot.BackgroundIcon] = texId;
             }
 
-            // 3. Slot highlight
-            slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
+            // 3. Slot highlight overlay
+            slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth + 4, (int)absSlotWidth + 4);
             slotCtx = genContext(slotSurface);
+            
+            slotCtx.SetSourceRGBA(GuiStyle.ActiveSlotColor);
+            RoundRectangle(slotCtx, 0, 0, absSlotWidth + 4, absSlotHeight + 4, GuiStyle.ElementBGRadius);
+            slotCtx.LineWidth = scaled(9);
+            slotCtx.StrokePreserve();
+            slotSurface.Blur(scaled(6), true);
+            slotCtx.StrokePreserve();
+            slotSurface.Blur(scaled(6), true);
 
-            slotCtx.SetSourceRGBA(GuiStyle.DialogBlueBgColor);
-            RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
-            slotCtx.Fill();
+            slotCtx.LineWidth = scaled(3);
+            slotCtx.Stroke();
+
+            slotCtx.LineWidth = scaled(1);
+            slotCtx.SetSourceRGBA(GuiStyle.ActiveSlotColor);
+            slotCtx.Stroke();
 
             generateTexture(slotSurface, ref highlightSlotTexture);
+
+            
 
             slotCtx.Dispose();
             slotSurface.Dispose();
@@ -186,7 +234,7 @@ namespace Vintagestory.API.Client
                 double x = col * (unscaledSlotWidth + unscaledSlotPadding);
                 double y = row * (unscaledSlotHeight + unscaledSlotPadding);
 
-                IItemSlot slot = inventory.GetSlot(val.Key);
+                ItemSlot slot = inventory[val.Key];
 
                 slotBounds[i] = ElementBounds.Fixed(x, y, unscaledSlotWidth, unscaledSlotHeight).WithParent(Bounds);
                 slotBounds[i].CalcWorldBounds();
@@ -198,17 +246,16 @@ namespace Vintagestory.API.Client
         }
 
 
-        bool ComposeSlotOverlays(IItemSlot slot, int slotId)
+        bool ComposeSlotOverlays(ItemSlot slot, int slotId)
         {
             if (!availableSlots.ContainsKey(slotId)) return false;
             if (slot.Itemstack == null) return true;
 
             int slotIndex = availableSlots.IndexOfKey(slotId);
 
-            //bool drawStackSize = slot.StackSize != 1;
             bool drawItemDamage = slot.Itemstack.Collectible.ShouldDisplayItemDamage(slot.Itemstack);
 
-            if (!drawItemDamage) // && !drawStackSize)
+            if (!drawItemDamage)
             {
                 slotQuantityTextures[slotIndex].Dispose();
                 slotQuantityTextures[slotIndex] = new LoadedTexture(api);
@@ -221,11 +268,6 @@ namespace Vintagestory.API.Client
             textCtx.SetSourceRGBA(0, 0, 0, 0);
             textCtx.Paint();
 
-//            if (drawStackSize)
-            {
-                //textComposer.SetValue(slot.StackSize + "");
-                //textComposer.ComposeElements(textCtx, textSurface);
-            }
 
             if (drawItemDamage)
             {
@@ -236,7 +278,7 @@ namespace Vintagestory.API.Client
                 double height = scaled(4);
                 RoundRectangle(textCtx, x, y, width, height, 1);
                 textCtx.FillPreserve();
-                ShadePath(textCtx, 1);
+                ShadePath(textCtx, 2);
 
 
                 float[] color = ColorUtil.ToRGBAFloats(slot.Itemstack.Collectible.GetItemDamageColor(slot.Itemstack));
@@ -247,7 +289,7 @@ namespace Vintagestory.API.Client
 
                 RoundRectangle(textCtx, x, y, width, height, 1);
                 textCtx.FillPreserve();
-                ShadePath(textCtx, 1);
+                ShadePath(textCtx, 2);
             }
 
             generateTexture(textSurface, ref slotQuantityTextures[slotIndex]);
@@ -256,6 +298,7 @@ namespace Vintagestory.API.Client
 
             return true;
         }
+
 
         public override void PostRenderInteractiveElements(float deltaTime)
         {
@@ -277,9 +320,9 @@ namespace Vintagestory.API.Client
 
 
             // Just redo the whole thing if slot quantity has changed
-            if (prevSlotQuantity != inventory.QuantitySlots)
+            if (prevSlotQuantity != inventory.Count)
             {
-                prevSlotQuantity = inventory.QuantitySlots;
+                prevSlotQuantity = inventory.Count;
                 inventory.DirtySlots.Clear();
                 ComposeElements(null, null);
                 return;
@@ -291,7 +334,7 @@ namespace Vintagestory.API.Client
 
             foreach (int slotId in inventory.DirtySlots)
             {
-                IItemSlot slot = inventory.GetSlot(slotId);
+                ItemSlot slot = inventory[slotId];
 
                 if (ComposeSlotOverlays(slot, slotId))
                 {
@@ -306,16 +349,13 @@ namespace Vintagestory.API.Client
                     inventory.DirtySlots.Remove(slotId);
                 }
             }
-
-          
-            
         }
 
 
         public override void RenderInteractiveElements(float deltaTime)
         {
             (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = !isLeftMouseDownStartedInsideElem;
-
+            
             // Slot sizes
             double absSlotPadding = scaled(unscaledSlotPadding);
             double absSlotWidth = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
@@ -334,19 +374,21 @@ namespace Vintagestory.API.Client
                     ItemSlot slot = val.Value;
                     int slotId = val.Key;
 
-                    if (slot.Itemstack == null && slot.BackgroundIcon != null)
+                    if ((slot.Itemstack == null || AlwaysRenderIcon) && slot.BackgroundIcon != null)
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBackgroundIcon[slot.BackgroundIcon], slotBounds[i]);
                     } else
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(slotTexture.TextureId, slotBounds[i]);
                     }
-
                     
 
                     if (highlightSlotId == slotId || hoverSlotId == slotId || leftMouseDownDistributeSlotsBySlotid.ContainsKey(slotId))
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(highlightSlotTexture.TextureId, slotBounds[i]);
+                        ElementBounds bounds = slotBounds[i];
+                        api.Render.Render2DTexturePremultipliedAlpha(
+                            highlightSlotTexture.TextureId, (int)(bounds.renderX - 2), (int)(bounds.renderY - 2), bounds.OuterWidthInt + 4, bounds.OuterHeightInt + 4
+                        );
                     }
 
                     if (slot.Itemstack == null) { i++; continue; }
@@ -373,22 +415,16 @@ namespace Vintagestory.API.Client
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(slotQuantityTextures[i].TextureId, slotBounds[i]);
                     }
-
                 }
 
                 i++;
             }
-
-
-
-
-
         }
 
 
         public void OnGuiClosed(ICoreClientAPI api)
         {
-            if (hoverSlotId != -1) api.Input.TriggerOnMouseLeaveSlot(inventory.GetSlot(hoverSlotId));
+            if (hoverSlotId != -1) api.Input.TriggerOnMouseLeaveSlot(inventory[hoverSlotId]);
             hoverSlotId = -1;
 
             (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = true;
@@ -399,26 +435,14 @@ namespace Vintagestory.API.Client
             return (255 << 8) + (255 << 24);
         }
 
-        Dictionary<int, string> nameAndDescByItemSlotId = null;
+        
 
-        public Dictionary<int, string> SearchCache { get { return nameAndDescByItemSlotId; } set { nameAndDescByItemSlotId = value; } }
-
-        public Dictionary<int, string> CreateSearchCache()
-        {
-            nameAndDescByItemSlotId = new Dictionary<int, string>();
-
-            foreach (var val in availableSlots)
-            {
-                ItemSlot slot = inventory.GetSlot(val.Key);
-                if (slot.Itemstack == null) continue;
-
-                nameAndDescByItemSlotId[val.Key] = slot.Itemstack.GetName() + " " + slot.Itemstack.GetDescription(api.World, false);
-            }
-
-            return nameAndDescByItemSlotId;
-        }
-
-        public void FilterItemsBySearchText(string text)
+        /// <summary>
+        /// Renders only a subset of all available slots filtered by searching given text on the item name/description
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="searchCache">Can be set to increase search performance, otherwise a slow search is performed</param>
+        public void FilterItemsBySearchText(string text, Dictionary<int, string> searchCache = null)
         {
             this.searchText = text.ToLowerInvariant();
 
@@ -426,7 +450,7 @@ namespace Vintagestory.API.Client
 
             foreach (var val in availableSlots)
             {
-                ItemSlot slot = inventory.GetSlot(val.Key);
+                ItemSlot slot = inventory[val.Key];
 
                 if (slot.Itemstack == null) continue;
                 if (searchText == null || searchText.Length == 0)
@@ -436,7 +460,7 @@ namespace Vintagestory.API.Client
                 }
 
                 string cachedtext = "";
-                if (nameAndDescByItemSlotId != null && nameAndDescByItemSlotId.TryGetValue(val.Key, out cachedtext))
+                if (searchCache != null && searchCache.TryGetValue(val.Key, out cachedtext))
                 {
                     if (cachedtext.CaseInsensitiveContains(searchText)) renderedSlots.Add(val.Key, slot);
                 } else
@@ -449,7 +473,6 @@ namespace Vintagestory.API.Client
 
             this.rows = (int)Math.Ceiling(1f * renderedSlots.Count / cols);
             ComposeInteractiveElements();
-
         }
 
         
@@ -466,7 +489,6 @@ namespace Vintagestory.API.Client
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
-            //base.OnMouseDownOnElement(api, args);
 
             wasMouseDownOnSlotIndex.Clear();
             leftMouseDownDistributeSlotsBySlotid.Clear();
@@ -485,10 +507,9 @@ namespace Vintagestory.API.Client
                     wasMouseDownOnSlotIndex.Add(i);
                     if (isLeftMouseDownStartedInsideElem)
                     {
-                        //Console.WriteLine("======================");
                         referenceDistributStack = api.World.Player.InventoryManager.MouseItemSlot.Itemstack.Clone();
                         int slotid = renderedSlots.GetKeyAtIndex(i);
-                        leftMouseDownDistributeSlotsBySlotid.Add(slotid, inventory.GetSlot(slotid).StackSize);
+                        leftMouseDownDistributeSlotsBySlotid.Add(slotid, inventory[slotid].StackSize);
                     }
 
                     SlotClick(
@@ -523,7 +544,7 @@ namespace Vintagestory.API.Client
             {
                 if (hoverSlotId != -1)
                 {
-                    api.Input.TriggerOnMouseLeaveSlot(inventory.GetSlot(hoverSlotId));
+                    api.Input.TriggerOnMouseLeaveSlot(inventory[hoverSlotId]);
                 }
                 hoverSlotId = -1;
                 return;
@@ -536,7 +557,7 @@ namespace Vintagestory.API.Client
                 if (slotBounds[i].PointInside(args.X, args.Y))
                 {
                     int newHoverSlotid = renderedSlots.GetKeyAtIndex(i);
-                    ItemSlot newHoverSlot = inventory.GetSlot(newHoverSlotid);
+                    ItemSlot newHoverSlot = inventory[newHoverSlotid];
                     ItemStack stack = newHoverSlot.Itemstack;
 
                     // Cheap hax for hover-right-mouse-down slot filling
@@ -597,12 +618,12 @@ namespace Vintagestory.API.Client
                 }
             }
 
-            if (hoverSlotId != -1) api.Input.TriggerOnMouseLeaveSlot(inventory.GetSlot(hoverSlotId));
+            if (hoverSlotId != -1) api.Input.TriggerOnMouseLeaveSlot(inventory[hoverSlotId]);
             hoverSlotId = -1;
         }
 
-        IInventory hoverInv;
-        public override bool OnMouseLeaveSlot(ICoreClientAPI api, IItemSlot slot)
+        
+        public override bool OnMouseLeaveSlot(ICoreClientAPI api, ItemSlot slot)
         {
             if (slot.Inventory == hoverInv)
             {
@@ -615,22 +636,20 @@ namespace Vintagestory.API.Client
         private void RedistributeStacks(int intoSlotId)
         {
             int stacksPerSlot = referenceDistributStack.StackSize / leftMouseDownDistributeSlotsBySlotid.Count;
-            //Console.WriteLine("-----");
+            
             for (int i = 0; i < leftMouseDownDistributeSlotsBySlotid.Count - 1; i++)
             {
                 int sourceSlotid = leftMouseDownDistributeSlotsBySlotid.GetKeyAtIndex(i);
                 if (sourceSlotid == intoSlotId) continue;
 
-                ItemSlot sourceSlot = inventory.GetSlot(sourceSlotid);
+                ItemSlot sourceSlot = inventory[sourceSlotid];
 
                 int beforesize = leftMouseDownDistributeSlotsBySlotid[sourceSlotid];
                 int nowsize = sourceSlot.StackSize;
 
                 if (nowsize - beforesize > stacksPerSlot)
                 {
-                    //Console.WriteLine("Move {0} items from {1} to {2}, stackperslot={3}", nowsize - beforesize - stacksPerSlot, sourceSlotid, intoSlotId, stacksPerSlot);
-
-                    ItemSlot targetSlot = inventory.GetSlot(intoSlotId);
+                    ItemSlot targetSlot = inventory[intoSlotId];
                     ItemStackMoveOperation op = new ItemStackMoveOperation(api.World, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge);
                     op.ActingPlayer = api.World.Player;
                     op.RequestedQuantity = nowsize - beforesize - stacksPerSlot;
@@ -648,7 +667,7 @@ namespace Vintagestory.API.Client
         public virtual void SlotClick(ICoreClientAPI api, int slotId, EnumMouseButton mouseButton, bool shiftPressed, bool ctrlPressed, bool altPressed)
         {
             List<IInventory> inventories = api.World.Player.InventoryManager.OpenedInventories;
-            IInventory mouseCursorSlot = api.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.mousecursorInvClassName);
+            IInventory mouseCursorInv = api.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.mousecursorInvClassName);
             object packet = null;
 
             EnumModifierKey modifiers =
@@ -662,7 +681,7 @@ namespace Vintagestory.API.Client
 
             if (shiftPressed)
             {
-                ItemSlot sourceSlot = inventory.GetSlot(slotId);
+                ItemSlot sourceSlot = inventory[slotId];
                 op.RequestedQuantity = sourceSlot.StackSize;
 
                 object[] packets = api.World.Player.InventoryManager.TryTransferAway(sourceSlot, ref op, false);
@@ -675,20 +694,20 @@ namespace Vintagestory.API.Client
                     }
                 }
 
-                api.Input.TriggerOnMouseClickSlot(inventory.GetSlot(slotId));
+                api.Input.TriggerOnMouseClickSlot(inventory[slotId]);
 
                 return;
             }
 
             op.CurrentPriority = EnumMergePriority.DirectMerge;
-            packet = inventory.ActivateSlot(slotId,  mouseCursorSlot.GetSlot(0), ref op);
+            packet = inventory.ActivateSlot(slotId,  mouseCursorInv[0], ref op);
 
             if (packet != null)
             {
                 SendPacketHandler?.Invoke(packet);
             }
 
-            api.Input.TriggerOnMouseClickSlot(inventory.GetSlot(slotId));
+            api.Input.TriggerOnMouseClickSlot(inventory[slotId]);
         }
 
         #endregion

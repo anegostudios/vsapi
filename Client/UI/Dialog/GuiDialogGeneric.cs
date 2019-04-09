@@ -46,7 +46,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public virtual void Recompose()
         {
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.ReCompose();
             }
@@ -57,7 +57,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public virtual void UnfocusElements()
         {
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.UnfocusOwnElements();
             }

@@ -37,16 +37,16 @@ namespace Vintagestory.API.Client
 
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
         {
-            EmbossRoundRectangleElement(ctx, Bounds, true, 2, 3);
+            EmbossRoundRectangleElement(ctx, Bounds, true, 2, 1);
             ctx.SetSourceRGBA(0, 0, 0, 0.3);
-            ElementRoundRectangle(ctx, Bounds, false, 3);
+            ElementRoundRectangle(ctx, Bounds, false, 1);
             ctx.Fill();
 
             
             ImageSurface surfaceHighlight = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
             Context ctxHighlight = genContext(surfaceHighlight);
 
-            ctxHighlight.SetSourceRGBA(0, 0, 0, 0.2);
+            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.3);
             ctxHighlight.Paint();
 
             generateTexture(surfaceHighlight, ref highlightTexture);
@@ -64,6 +64,7 @@ namespace Vintagestory.API.Client
         {
             if (HasFocus)
             {
+                api.Render.GlToggleBlend(true);
                 api.Render.Render2DTexture(highlightTexture.TextureId, highlightBounds);
             }
 

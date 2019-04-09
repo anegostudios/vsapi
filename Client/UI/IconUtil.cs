@@ -100,6 +100,10 @@ namespace Vintagestory.API.Client
                     Drawerode_svg(cr, x, y, width, height, rgba);
                     break;
 
+                case "move":
+                    Drawcursor_svg(cr, x, y, width, height, rgba);
+                    break;
+
                 case "import":
                     Drawimport_svg(cr, x, y, width, height, rgba);
                     break;
@@ -138,6 +142,14 @@ namespace Vintagestory.API.Client
 
                 case "copy":
                     Drawduplicate_svg(cr, x, y, width, height, rgba);
+                    break;
+
+                case "select":
+                    Drawselect_svg(cr, x, y, width, height, rgba);
+                    break;
+
+                case "repeat":
+                    Drawrepeat_svg(cr, x, y, width, height, rgba);
                     break;
 
                 case "trousers":
@@ -15125,7 +15137,7 @@ namespace Vintagestory.API.Client
             matrix.Scale(scale, scale);
             cr.Matrix = matrix;
 
-            cr.LineWidth = 28;
+            cr.LineWidth = 20;
             cr.MiterLimit = 10;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;
@@ -15140,7 +15152,7 @@ namespace Vintagestory.API.Client
             cr.StrokePreserve();
             if (pattern != null) pattern.Dispose();
 
-            cr.LineWidth = 28;
+            cr.LineWidth = 20;
             cr.MiterLimit = 10;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;
@@ -15155,7 +15167,7 @@ namespace Vintagestory.API.Client
             cr.StrokePreserve();
             if (pattern != null) pattern.Dispose();
 
-            cr.LineWidth = 28;
+            cr.LineWidth = 20;
             cr.MiterLimit = 10;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;
@@ -15462,6 +15474,955 @@ namespace Vintagestory.API.Client
 
             cr.Restore();
         }
+
+        public void Drawcursor_svg(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 24;
+            float h = 24;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(4, 0);
+            cr.LineTo(20, 12.277344);
+            cr.LineTo(13.050781, 13.449219);
+            cr.LineTo(17.375, 22.265625);
+            cr.LineTo(13.777344, 24);
+            cr.LineTo(9.429688, 15.121094);
+            cr.LineTo(4, 19.824219);
+            cr.ClosePath();
+            cr.MoveTo(4, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
+
+
+        public void Drawrepeat_svg(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 11;
+            float h = 8;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0.566406, 1.558594);
+            cr.LineTo(3.578125, 1.558594);
+            cr.LineTo(3.578125, 6.441406);
+            cr.LineTo(0.566406, 6.441406);
+            cr.ClosePath();
+            cr.MoveTo(0.566406, 1.558594);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0.566406, 1.558594);
+            cr.LineTo(3.578125, 1.558594);
+            cr.LineTo(3.578125, 6.441406);
+            cr.LineTo(0.566406, 6.441406);
+            cr.ClosePath();
+            cr.MoveTo(0.566406, 1.558594);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1.038961, 0, 0, 1.038961, 0.0454545, 0);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(5.550781, 0);
+            cr.LineTo(5.550781, 8);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1.038961, 0, 0, 1.038961, 0.0454545, 0);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(7.421875, 1.558594);
+            cr.LineTo(10.433594, 1.558594);
+            cr.LineTo(10.433594, 6.441406);
+            cr.LineTo(7.421875, 6.441406);
+            cr.ClosePath();
+            cr.MoveTo(7.421875, 1.558594);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(7.421875, 1.558594);
+            cr.LineTo(10.433594, 1.558594);
+            cr.LineTo(10.433594, 6.441406);
+            cr.LineTo(7.421875, 6.441406);
+            cr.ClosePath();
+            cr.MoveTo(7.421875, 1.558594);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1.038961, 0, 0, 1.038961, 0.0454545, 0);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
+
+
+
+        public void Drawselect_svg(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 151;
+            float h = 151;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(31.699219, 0);
+            cr.LineTo(51, 0);
+            cr.LineTo(51, 8.800781);
+            cr.LineTo(31.699219, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(31.699219, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(31.699219, 0);
+            cr.LineTo(51, 0);
+            cr.LineTo(51, 8.800781);
+            cr.LineTo(31.699219, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(31.699219, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(65, 0);
+            cr.LineTo(88.300781, 0);
+            cr.LineTo(88.300781, 8.800781);
+            cr.LineTo(65, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(65, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(65, 0);
+            cr.LineTo(88.300781, 0);
+            cr.LineTo(88.300781, 8.800781);
+            cr.LineTo(65, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(65, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(101.5, 0);
+            cr.LineTo(120.699219, 0);
+            cr.LineTo(120.699219, 8.800781);
+            cr.LineTo(101.5, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(101.5, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(101.5, 0);
+            cr.LineTo(120.699219, 0);
+            cr.LineTo(120.699219, 8.800781);
+            cr.LineTo(101.5, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(101.5, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(132, 0);
+            cr.LineTo(151, 0);
+            cr.LineTo(151, 8.800781);
+            cr.LineTo(132, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(132, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(132, 0);
+            cr.LineTo(151, 0);
+            cr.LineTo(151, 8.800781);
+            cr.LineTo(132, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(132, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 6.300781);
+            cr.LineTo(151, 6.300781);
+            cr.LineTo(151, 19.101563);
+            cr.LineTo(141.5, 19.101563);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 6.300781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 6.300781);
+            cr.LineTo(151, 6.300781);
+            cr.LineTo(151, 19.101563);
+            cr.LineTo(141.5, 19.101563);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 6.300781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 32);
+            cr.LineTo(151, 32);
+            cr.LineTo(151, 51.5);
+            cr.LineTo(141.5, 51.5);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 32);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 32);
+            cr.LineTo(151, 32);
+            cr.LineTo(151, 51.5);
+            cr.LineTo(141.5, 51.5);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 32);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 66.300781);
+            cr.LineTo(151, 66.300781);
+            cr.LineTo(151, 89.601563);
+            cr.LineTo(141.5, 89.601563);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 66.300781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 66.300781);
+            cr.LineTo(151, 66.300781);
+            cr.LineTo(151, 89.601563);
+            cr.LineTo(141.5, 89.601563);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 66.300781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 101.800781);
+            cr.LineTo(151, 101.800781);
+            cr.LineTo(151, 120.699219);
+            cr.LineTo(141.5, 120.699219);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 101.800781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 101.800781);
+            cr.LineTo(151, 101.800781);
+            cr.LineTo(151, 120.699219);
+            cr.LineTo(141.5, 120.699219);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 101.800781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 132);
+            cr.LineTo(151, 132);
+            cr.LineTo(151, 151);
+            cr.LineTo(141.5, 151);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 132);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.5, 132);
+            cr.LineTo(151, 132);
+            cr.LineTo(151, 151);
+            cr.LineTo(141.5, 151);
+            cr.ClosePath();
+            cr.MoveTo(141.5, 132);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(132, 141.5);
+            cr.LineTo(146.300781, 141.5);
+            cr.LineTo(146.300781, 151);
+            cr.LineTo(132, 151);
+            cr.ClosePath();
+            cr.MoveTo(132, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(132, 141.5);
+            cr.LineTo(146.300781, 141.5);
+            cr.LineTo(146.300781, 151);
+            cr.LineTo(132, 151);
+            cr.ClosePath();
+            cr.MoveTo(132, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(99.5, 141.5);
+            cr.LineTo(119, 141.5);
+            cr.LineTo(119, 151);
+            cr.LineTo(99.5, 151);
+            cr.ClosePath();
+            cr.MoveTo(99.5, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(99.5, 141.5);
+            cr.LineTo(119, 141.5);
+            cr.LineTo(119, 151);
+            cr.LineTo(99.5, 151);
+            cr.ClosePath();
+            cr.MoveTo(99.5, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(63, 141.5);
+            cr.LineTo(86.5, 141.5);
+            cr.LineTo(86.5, 151);
+            cr.LineTo(63, 151);
+            cr.ClosePath();
+            cr.MoveTo(63, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(63, 141.5);
+            cr.LineTo(86.5, 141.5);
+            cr.LineTo(86.5, 151);
+            cr.LineTo(63, 151);
+            cr.ClosePath();
+            cr.MoveTo(63, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(30.300781, 141.5);
+            cr.LineTo(49.300781, 141.5);
+            cr.LineTo(49.300781, 151);
+            cr.LineTo(30.300781, 151);
+            cr.ClosePath();
+            cr.MoveTo(30.300781, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(30.300781, 141.5);
+            cr.LineTo(49.300781, 141.5);
+            cr.LineTo(49.300781, 151);
+            cr.LineTo(30.300781, 151);
+            cr.ClosePath();
+            cr.MoveTo(30.300781, 141.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 132);
+            cr.LineTo(8.800781, 132);
+            cr.LineTo(8.800781, 151);
+            cr.LineTo(0, 151);
+            cr.ClosePath();
+            cr.MoveTo(0, 132);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 132);
+            cr.LineTo(8.800781, 132);
+            cr.LineTo(8.800781, 151);
+            cr.LineTo(0, 151);
+            cr.ClosePath();
+            cr.MoveTo(0, 132);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(8.699219, 142.5);
+            cr.LineTo(19, 142.5);
+            cr.LineTo(19, 151);
+            cr.LineTo(8.699219, 151);
+            cr.ClosePath();
+            cr.MoveTo(8.699219, 142.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(8.699219, 142.5);
+            cr.LineTo(19, 142.5);
+            cr.LineTo(19, 151);
+            cr.LineTo(8.699219, 151);
+            cr.ClosePath();
+            cr.MoveTo(8.699219, 142.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 99.5);
+            cr.LineTo(8.800781, 99.5);
+            cr.LineTo(8.800781, 119.300781);
+            cr.LineTo(0, 119.300781);
+            cr.ClosePath();
+            cr.MoveTo(0, 99.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 99.5);
+            cr.LineTo(8.800781, 99.5);
+            cr.LineTo(8.800781, 119.300781);
+            cr.LineTo(0, 119.300781);
+            cr.ClosePath();
+            cr.MoveTo(0, 99.5);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 62.800781);
+            cr.LineTo(8.800781, 62.800781);
+            cr.LineTo(8.800781, 85.300781);
+            cr.LineTo(0, 85.300781);
+            cr.ClosePath();
+            cr.MoveTo(0, 62.800781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 62.800781);
+            cr.LineTo(8.800781, 62.800781);
+            cr.LineTo(8.800781, 85.300781);
+            cr.LineTo(0, 85.300781);
+            cr.ClosePath();
+            cr.MoveTo(0, 62.800781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 30.300781);
+            cr.LineTo(8.800781, 30.300781);
+            cr.LineTo(8.800781, 49.800781);
+            cr.LineTo(0, 49.800781);
+            cr.ClosePath();
+            cr.MoveTo(0, 30.300781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 30.300781);
+            cr.LineTo(8.800781, 30.300781);
+            cr.LineTo(8.800781, 49.800781);
+            cr.LineTo(0, 49.800781);
+            cr.ClosePath();
+            cr.MoveTo(0, 30.300781);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 0);
+            cr.LineTo(8.800781, 0);
+            cr.LineTo(8.800781, 19);
+            cr.LineTo(0, 19);
+            cr.ClosePath();
+            cr.MoveTo(0, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(0, 0);
+            cr.LineTo(8.800781, 0);
+            cr.LineTo(8.800781, 19);
+            cr.LineTo(0, 19);
+            cr.ClosePath();
+            cr.MoveTo(0, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(1.699219, 0);
+            cr.LineTo(19, 0);
+            cr.LineTo(19, 8.800781);
+            cr.LineTo(1.699219, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(1.699219, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 10;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(1.699219, 0);
+            cr.LineTo(19, 0);
+            cr.LineTo(19, 8.800781);
+            cr.LineTo(1.699219, 8.800781);
+            cr.ClosePath();
+            cr.MoveTo(1.699219, 0);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(1, 0, 0, 1, 230, -321);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
+
+
 
         public void Drawredo_svg(Context cr, int x, int y, float width, float height, double[] rgba)
         {

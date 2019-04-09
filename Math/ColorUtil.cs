@@ -357,7 +357,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Overlays rgb1 on top of rgb2, based on their alph values
+        /// Overlays rgb1 on top of rgb2, based on their alpha values
         /// </summary>
         /// <param name="rgb1"></param>
         /// <param name="rgb2"></param>

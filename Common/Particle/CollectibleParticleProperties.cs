@@ -60,11 +60,10 @@ namespace Vintagestory.API.Common
 
         public Vec3d RandomBlockPos(IBlockAccessor blockAccess, BlockPos pos, Block block, BlockFacing facing = null)
         {
+            Cuboidf box = block.GetParticleBreakBox(blockAccess, pos, facing);
+
             if (facing == null)
             {
-                Cuboidf[] selectionBoxes = block.GetSelectionBoxes(blockAccess, pos);
-                Cuboidf box = (selectionBoxes != null && selectionBoxes.Length > 0) ? selectionBoxes[0] : Block.DefaultCollisionBox;
-
                 return new Vec3d(
                     pos.X + box.X1 + 1 / 32f + rand.NextDouble() * (box.X2 - box.X1 - 1 / 16f),
                     pos.Y + box.Y1 + 1 / 32f + rand.NextDouble() * (box.Y2 - box.Y1 - 1 / 16f),
@@ -73,24 +72,19 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                Vec3i face = facing.Normali;
-
-                Cuboidf[] boxes = block.GetCollisionBoxes(blockAccess, pos);
-                if (boxes == null || boxes.Length == 0) boxes = block.GetSelectionBoxes(blockAccess, pos);
-                
-
-                bool haveCollisionBox = boxes != null && boxes.Length > 0;
+                bool haveBox = box != null;
+                Vec3i facev = facing.Normali;
 
                 Vec3d basepos = new Vec3d(
-                    pos.X + 0.5f + face.X / 1.9f + (haveCollisionBox && facing.Axis == EnumAxis.X ? (face.X > 0 ? boxes[0].X2 - 1 : boxes[0].X1) : 0),
-                    pos.Y + 0.5f + face.Y / 1.9f + (haveCollisionBox && facing.Axis == EnumAxis.Y ? (face.Y > 0 ? boxes[0].Y2 - 1 : boxes[0].Y1) : 0),
-                    pos.Z + 0.5f + face.Z / 1.9f + (haveCollisionBox && facing.Axis == EnumAxis.Z ? (face.Z > 0 ? boxes[0].Z2 - 1 : boxes[0].Z1) : 0)
+                    pos.X + 0.5f + facev.X / 1.9f + (haveBox && facing.Axis == EnumAxis.X ? (facev.X > 0 ? box.X2 - 1 : box.X1) : 0),
+                    pos.Y + 0.5f + facev.Y / 1.9f + (haveBox && facing.Axis == EnumAxis.Y ? (facev.Y > 0 ? box.Y2 - 1 : box.Y1) : 0),
+                    pos.Z + 0.5f + facev.Z / 1.9f + (haveBox && facing.Axis == EnumAxis.Z ? (facev.Z > 0 ? box.Z2 - 1 : box.Z1) : 0)
                 );
 
                 Vec3d posVariance = new Vec3d(
-                    1f * (1 - Math.Abs(face.X)),
-                    1f * (1 - Math.Abs(face.Y)),
-                    1f * (1 - Math.Abs(face.Z))
+                    1f * (1 - Math.Abs(facev.X)),
+                    1f * (1 - Math.Abs(facev.Y)),
+                    1f * (1 - Math.Abs(facev.Z))
                 );
 
                 return new Vec3d(

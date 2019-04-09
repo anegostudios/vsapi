@@ -36,6 +36,12 @@ namespace Vintagestory.API.Client
         Vec2i movingStartPos = new Vec2i();
         ElementBounds parentBoundsBefore = null;
 
+
+        public bool Movable
+        {
+            get { return movable; }
+        }
+
         /// <summary>
         /// Creates a new title bar.  
         /// </summary>
@@ -51,21 +57,21 @@ namespace Vintagestory.API.Client
             menuIconHoverTexture = new LoadedTexture(capi);
 
             if (bounds == null) this.Bounds = ElementStdBounds.TitleBar();
-            if (font == null) this.Font = CairoFont.SmallDialogText();
+            if (font == null) this.Font = CairoFont.WhiteSmallText();
             this.OnClose = OnClose;
 
             ElementBounds dropDownBounds = ElementBounds.Fixed(0, 0, 100, 25);
             this.Bounds.WithChild(dropDownBounds);
 
-            listMenu = new GuiElementListMenu(capi, new string[] { "auto", "manual" }, new string[] { "Fixed", "Movable" }, 0, onSelectionChanged, dropDownBounds)
+            listMenu = new GuiElementListMenu(capi, new string[] { "auto", "manual" }, new string[] { "Fixed", "Movable" }, 0, onSelectionChanged, dropDownBounds, false)
             {
-                hoveredIndex = 0
+                HoveredIndex = 0
             };
 
             baseComposer = composer;
         }
 
-        private void onSelectionChanged(string val)
+        private void onSelectionChanged(string val, bool on)
         {
             SetUpMovableState(val);
         }
@@ -134,41 +140,46 @@ namespace Vintagestory.API.Client
             }
 
             RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, GuiStyle.DialogBGRadius);
-            ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor);
+            //ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor[0], GuiStyle.DialogDefaultBgColor[1], GuiStyle.DialogDefaultBgColor[2], 1);
+            //ctx.FillPreserve();
+
+            LinearGradient gradient = new LinearGradient(0, 0, Bounds.InnerWidth, 0);
+            gradient.AddColorStop(0, new Color(GuiStyle.DialogDefaultBgColor[0] * 1.4, GuiStyle.DialogDefaultBgColor[1] * 1.4, GuiStyle.DialogDefaultBgColor[2] * 1.4, 1));
+            gradient.AddColorStop(0.5, new Color(GuiStyle.DialogDefaultBgColor[0] * 1.1, GuiStyle.DialogDefaultBgColor[1] * 1.1, GuiStyle.DialogDefaultBgColor[2] * 1.1, 1));
+            gradient.AddColorStop(1, new Color(GuiStyle.DialogDefaultBgColor[0] * 1.4, GuiStyle.DialogDefaultBgColor[1] * 1.4, GuiStyle.DialogDefaultBgColor[2] * 1.4, 1));
+            ctx.SetSource(gradient);
             ctx.FillPreserve();
+            gradient.Dispose();
+
 
             Bounds.CalcWorldBounds();
 
             double radius = GuiStyle.DialogBGRadius;
-
             ctx.NewPath();
-            ctx.MoveTo(Bounds.drawX, Bounds.drawY + Bounds.InnerHeight - 1);
+            ctx.MoveTo(Bounds.drawX, Bounds.drawY + Bounds.InnerHeight);
             ctx.LineTo(Bounds.drawX, Bounds.drawY + radius);
             ctx.Arc(Bounds.drawX + radius, Bounds.drawY + radius, radius, 180 * GameMath.DEG2RAD, 270 * GameMath.DEG2RAD);
             ctx.Arc(Bounds.drawX + Bounds.OuterWidth - radius, Bounds.drawY + radius, radius, -90 * GameMath.DEG2RAD, 0 * GameMath.DEG2RAD);
-            ctx.LineTo(Bounds.drawX + Bounds.OuterWidth, Bounds.drawY + Bounds.InnerHeight - 1);
-            ctx.ClosePath();
-
+            ctx.LineTo(Bounds.drawX + Bounds.OuterWidth, Bounds.drawY + Bounds.InnerHeight);
+            
             ctx.SetSourceRGBA(GuiStyle.TitleBarColor);
             ctx.FillPreserve();
+            
+            ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
+            ctx.LineWidth = 6;
+            ctx.Stroke();
 
-            //EmbossRoundRectangleDialog(ctx, bounds.drawX, bounds.drawY, bounds.OuterWidth, bounds.InnerHeight - 1);
-            EmbossRoundRectangleElement(ctx, Bounds.drawX, Bounds.drawY, Bounds.OuterWidth, Bounds.InnerHeight - 1);
-
-            ctx.NewPath();
-            ctx.MoveTo(Bounds.drawX, Bounds.drawY + Bounds.InnerHeight);
-            ctx.LineTo(Bounds.drawX + Bounds.OuterWidth, Bounds.drawY + Bounds.InnerHeight);
-            ctx.ClosePath();
 
             
-            ctx.MoveTo(0, 0);
+
+
             Font.SetupContext(ctx);
-            DrawTextLineAt(ctx, text, scaled(GuiStyle.ElementToDialogPadding), scaled(-1));
+            DrawTextLineAt(ctx, text.ToUpperInvariant(), scaled(GuiStyle.ElementToDialogPadding), (Bounds.InnerHeight - Font.GetFontExtents().Height) / 2 + scaled(2));
 
             double crossSize = scaled(unscaledCloseIconSize);
             double menuSize = scaled(unscaledCloseIconSize + 2);
             double crossX = Bounds.drawX + Bounds.OuterWidth - crossSize - scaled(10);
-            double iconY = Bounds.drawY + scaled(5);
+            double iconY = Bounds.drawY + scaled(7);
             double crossWidth = 2;
 
             double menuX = Bounds.drawX + Bounds.OuterWidth - crossSize - menuSize - scaled(20);
@@ -178,22 +189,22 @@ namespace Vintagestory.API.Client
 
             ctx.Operator = Operator.Over;
             ctx.SetSourceRGBA(0, 0, 0, 0.3);
-            api.Gui.Icons.DrawCross(ctx, crossX + 1, iconY + 1, crossWidth, crossSize);
+            api.Gui.Icons.DrawCross(ctx, crossX + 2, iconY + 2, crossWidth, crossSize);
             ctx.Operator = Operator.Source;
-            ctx.SetSourceRGBA(1, 1, 1, 0.7);
+            ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
             api.Gui.Icons.DrawCross(ctx, crossX, iconY, crossWidth, crossSize);
 
             ctx.Operator = Operator.Over;
-            api.Gui.Icons.Drawmenuicon_svg(ctx, (int)menuX+1, (int)iconY+2, (int)menuSize, (int)menuSize, new double[] { 0, 0, 0, 0.3 });
+            api.Gui.Icons.Drawmenuicon_svg(ctx, (int)menuX+2, (int)iconY+2, (int)menuSize, (int)menuSize, new double[] { 0, 0, 0, 0.3 });
             ctx.Operator = Operator.Source;
-            api.Gui.Icons.Drawmenuicon_svg(ctx, (int)menuX, (int)iconY+1, (int)menuSize, (int)menuSize, new double[] { 1, 1, 1, 0.7 });
+            api.Gui.Icons.Drawmenuicon_svg(ctx, (int)menuX, (int)iconY+1, (int)menuSize, (int)menuSize, GuiStyle.DialogDefaultTextColor);
 
             ctx.Operator = Operator.Over;
 
             ComposeHoverIcons();
 
 
-            listMenu.Bounds.fixedX = Bounds.absX + menuIconRect.X - Bounds.absX;
+            listMenu.Bounds.fixedX = (Bounds.absX + menuIconRect.X - Bounds.absX) / RuntimeEnv.GUIScale;
 
             listMenu.ComposeDynamicElements();
         }
@@ -208,7 +219,7 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             ctx.Operator = Operator.Source;
-            ctx.SetSourceRGBA(0.8, 0, 0, 0.9);
+            ctx.SetSourceRGBA(0.8, 0, 0, 1);
             api.Gui.Icons.DrawCross(ctx, 1.5, 1.5, crossWidth, crossSize);
             ctx.SetSourceRGBA(0.8, 0, 0, 0.6);
             api.Gui.Icons.DrawCross(ctx, 2, 2, crossWidth, crossSize);
@@ -224,7 +235,7 @@ namespace Vintagestory.API.Client
             ctx = genContext(surface);
 
             ctx.Operator = Operator.Source;
-            api.Gui.Icons.Drawmenuicon_svg(ctx, 1.5, 1.5, (int)menuSize, (int)menuSize, new double[] { 0.8, 0, 0, 0.9 });
+            api.Gui.Icons.Drawmenuicon_svg(ctx, 1.5, 1.5, (int)menuSize, (int)menuSize, new double[] { 0.8, 0, 0, 1 });
             api.Gui.Icons.Drawmenuicon_svg(ctx, 2, 2, (int)menuSize, (int)menuSize, new double[] { 0.8, 0, 0, 0.6 });
 
             generateTexture(surface, ref menuIconHoverTexture);
@@ -240,12 +251,12 @@ namespace Vintagestory.API.Client
 
             if (closeIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY))
             {
-                api.Render.Render2DTexturePremultipliedAlpha(closeIconHoverTexture.TextureId, Bounds.absX + closeIconRect.X - 3, Bounds.absY + closeIconRect.Y - 3, closeIconRect.Width + 4, closeIconRect.Height + 4, 200);
+                api.Render.Render2DTexturePremultipliedAlpha(closeIconHoverTexture.TextureId, Bounds.absX + closeIconRect.X - 3, Bounds.absY + closeIconRect.Y - 1, closeIconRect.Width + 4, closeIconRect.Height + 4, 200);
             }
             
             if (menuIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY) || listMenu.IsOpened)
             {
-                api.Render.Render2DTexturePremultipliedAlpha(menuIconHoverTexture.TextureId, Bounds.absX + menuIconRect.X - 2, Bounds.absY + menuIconRect.Y - 2, menuIconRect.Width + 6, menuIconRect.Height + 6, 200);
+                api.Render.Render2DTexturePremultipliedAlpha(menuIconHoverTexture.TextureId, Bounds.absX + menuIconRect.X - 2, Bounds.absY + menuIconRect.Y - 1, menuIconRect.Width + 6, menuIconRect.Height + 6, 200);
             }
 
             listMenu.RenderInteractiveElements(deltaTime);
@@ -269,9 +280,10 @@ namespace Vintagestory.API.Client
                 listMenu.Open();
                 //listMenu.hoveredIndex = listMenu.selectedIndex = movable ? 1 : 0;
                 return;
-            }
-            
+            }    
         }
+        
+        
 
 
 
@@ -283,6 +295,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
+            listMenu.OnMouseUp(api, args);
+
             base.OnMouseUp(api, args);
 
             if (moving)
@@ -317,7 +331,7 @@ namespace Vintagestory.API.Client
                 movingStartPos.Set(args.X, args.Y);
             }
 
-            if (!listMenu.IsPositionInside(args.X, args.Y))
+            if (!args.Handled && !listMenu.IsPositionInside(args.X, args.Y))
             {
                 listMenu.Close();
             }
@@ -383,6 +397,12 @@ namespace Vintagestory.API.Client
             }
 
             return composer;
+        }
+
+
+        public static GuiElementDialogTitleBar GetTitleBar(this GuiComposer composer, string key)
+        {
+            return (GuiElementDialogTitleBar)composer.GetElement(key);
         }
 
     }

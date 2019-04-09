@@ -29,12 +29,29 @@ namespace Vintagestory.API.Common
         /// </summary>
         protected float baseWeight = 0;
 
+        /// <summary>
+        /// The name of the class for the invnentory.
+        /// </summary>
         protected string className;
+
+        /// <summary>
+        /// the ID of the instance for the inventory.
+        /// </summary>
         protected string instanceID;
 
+        /// <summary>
+        /// The time it was last changed since the server was started.
+        /// </summary>
         public long lastChangedSinceServerStart;
-        public HashSet<string> openedByPlayerGUIds;
 
+        /// <summary>
+        /// The players that had opened the inventory.
+        /// </summary>
+        public HashSet<string> openedByPlayerGUIds;
+        
+        /// <summary>
+        /// The network utility for the inventory
+        /// </summary>
         public IInventoryNetworkUtil InvNetworkUtil;
 
         /// <summary>
@@ -42,7 +59,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         public HashSet<int> dirtySlots = new HashSet<int>();
 
+        /// <summary>
+        /// The internal name of the inventory instance.
+        /// </summary>
         public string InventoryID { get { return className + "-" + instanceID; } }
+
+        /// <summary>
+        /// The class name of the inventory.
+        /// </summary>
         public string ClassName { get { return className; } }
 
         /// <summary>
@@ -179,13 +203,18 @@ namespace Vintagestory.API.Common
             AfterBlocksLoaded(api.World);
         }
 
-
+        /// <summary>
+        /// The event fired after all the blocks have loaded.
+        /// </summary>
+        /// <param name="world"></param>
         public virtual void AfterBlocksLoaded(IWorldAccessor world)
         {
             ResolveBlocksOrItems();
         }
 
-
+        /// <summary>
+        /// Tells the invnetory to update blocks and items within the invnetory.
+        /// </summary>
         public virtual void ResolveBlocksOrItems()
         {
             foreach (var slot in this)
@@ -205,7 +234,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="slot"></param>
         /// <returns></returns>
-        public virtual int GetSlotId(IItemSlot slot)
+        public virtual int GetSlotId(ItemSlot slot)
         {
             for (int i = 0; i < Count; i++)
             {
@@ -218,8 +247,13 @@ namespace Vintagestory.API.Common
             return -1;
         }
 
-
-        public virtual WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<IItemSlot> skipSlots = null)
+        /// <summary>
+        /// Gets the best sorted slot for the given item.
+        /// </summary>
+        /// <param name="sourceSlot">The source item slot.</param>
+        /// <param name="skipSlots">The slots to skip.</param>
+        /// <returns>A weighted slot set.</returns>
+        public virtual WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<ItemSlot> skipSlots = null)
         {
             WeightedSlot bestWSlot = new WeightedSlot();
 
@@ -282,9 +316,9 @@ namespace Vintagestory.API.Common
         /// <param name="targetSlotId"></param>
         /// <param name="itemSlot"></param>
         /// <returns></returns>
-        public object TryFlipItems(int targetSlotId, IItemSlot itemSlot)
+        public object TryFlipItems(int targetSlotId, ItemSlot itemSlot)
         {
-            IItemSlot targetSlot = this[targetSlotId];
+            ItemSlot targetSlot = this[targetSlotId];
             if (targetSlot != null && targetSlot.TryFlipWith(itemSlot))
             {
                 return InvNetworkUtil.GetFlipSlotsPacket(itemSlot.Inventory, itemSlot.Inventory.GetSlotId(itemSlot), targetSlotId);
@@ -292,18 +326,30 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-
+        /// <summary>
+        /// Determines whether or not the player can access the invnetory.
+        /// </summary>
+        /// <param name="player">The player attempting access.</param>
+        /// <param name="position">The postion of the entity.</param>
         public virtual bool CanPlayerAccess(IPlayer player, EntityPos position)
         {
             return true;
         }
 
+        /// <summary>
+        /// Determines whether or not the player can modify the invnetory.
+        /// </summary>
+        /// <param name="player">The player attempting access.</param>
+        /// <param name="position">The postion of the entity.</param>
         public virtual bool CanPlayerModify(IPlayer player, EntityPos position)
         {
             return CanPlayerAccess(player, position) && HasOpened(player);
         }
 
-
+        /// <summary>
+        /// The event fired when the search is applied to the item.
+        /// </summary>
+        /// <param name="text"></param>
         public virtual void OnSearchTerm(string text) { }
 
         /// <summary>
@@ -313,7 +359,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="op"></param>
         /// <returns>The appropriate packet needed to reflect the changes on the opposing side</returns>
-        public virtual object ActivateSlot(int slotId, IItemSlot sourceSlot, ref ItemStackMoveOperation op)
+        public virtual object ActivateSlot(int slotId, ItemSlot sourceSlot, ref ItemStackMoveOperation op)
         {
             object packet = InvNetworkUtil.GetActivateSlotPacket(slotId, op);
 
@@ -327,7 +373,7 @@ namespace Vintagestory.API.Common
         /// Called when one of the containing slots has been modified
         /// </summary>
         /// <param name="slot"></param>
-        public virtual void OnItemSlotModified(IItemSlot slot)
+        public virtual void OnItemSlotModified(ItemSlot slot)
         {
 
         }
@@ -338,7 +384,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="slot"></param>
         /// <param name="extractedStack">If non null the itemstack that was taken out</param>
-        public virtual void DidModifyItemSlot(IItemSlot slot, IItemStack extractedStack = null)
+        public virtual void DidModifyItemSlot(ItemSlot slot, IItemStack extractedStack = null)
         {
             int slotId = GetSlotId(slot);
             MarkSlotDirty(slotId);
@@ -372,12 +418,18 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public abstract void ToTreeAttributes(ITreeAttribute tree);
 
-
+        /// <summary>
+        /// Attempts to flip the inventory slots.
+        /// </summary>
+        /// <param name="owningPlayer">The player owner of the invnetory slots.</param>
+        /// <param name="invIds">The IDs of the player inventory.</param>
+        /// <param name="slotIds">The IDs of the target inventory.</param>
+        /// <param name="lastChanged">The times these ids were last changed.</param>
         public virtual bool TryFlipItemStack(IPlayer owningPlayer, string[] invIds, int[] slotIds, long[] lastChanged)
         {
             // 0 = source slot
             // 1 = target slot
-            IItemSlot[] slots = getSlotsIfExists(owningPlayer, invIds, slotIds);
+            ItemSlot[] slots = getSlotsIfExists(owningPlayer, invIds, slotIds);
 
             if (slots[0] == null || slots[1] == null) return false;
 
@@ -387,12 +439,18 @@ namespace Vintagestory.API.Common
             return targetInv.TryFlipItems(slotIds[1], slots[0]) != null;
         }
 
-
+        /// <summary>
+        /// Attempts to move the item stack from the inventory to another slot.
+        /// </summary>
+        /// <param name="player">The player moving the items</param>
+        /// <param name="invIds">The player inventory IDs</param>
+        /// <param name="slotIds">The target Ids</param>
+        /// <param name="op">The operation type.</param>
         public virtual bool TryMoveItemStack(IPlayer player, string[] invIds, int[] slotIds, ref ItemStackMoveOperation op)
         {
             // 0 = source slot
             // 1 = target slot
-            IItemSlot[] slots = getSlotsIfExists(player, invIds, slotIds);
+            ItemSlot[] slots = getSlotsIfExists(player, invIds, slotIds);
 
             if (slots[0] == null || slots[1] == null) return false;
 
@@ -404,9 +462,16 @@ namespace Vintagestory.API.Common
             return op.MovedQuantity == op.RequestedQuantity;
         }
 
-        public virtual IItemSlot[] getSlotsIfExists(IPlayer player, string[] invIds, int[] slotIds)
+        /// <summary>
+        /// Attempts to get specified slots if the slots exists.
+        /// </summary>
+        /// <param name="player">The player owning the slots</param>
+        /// <param name="invIds">The inventory IDs</param>
+        /// <param name="slotIds">The slot ids</param>
+        /// <returns>The slots obtained.</returns>
+        public virtual ItemSlot[] getSlotsIfExists(IPlayer player, string[] invIds, int[] slotIds)
         {
-            IItemSlot[] slots = new IItemSlot[2];
+            ItemSlot[] slots = new ItemSlot[2];
            
             // 1. Both inventories must exist and be modifiable
             InventoryBase sourceInv = (InventoryBase)player.InventoryManager.GetInventory(invIds[0]);
@@ -426,10 +491,16 @@ namespace Vintagestory.API.Common
             return slots;
         }
 
-
-        public ItemSlot[] SlotsFromTreeAttributes(ITreeAttribute tree, ItemSlot[] slots = null, List<ItemSlot> modifiedSlots = null)
+        /// <summary>
+        /// Creates a collection of slots from a tree.
+        /// </summary>
+        /// <param name="tree">The tree to build slots from</param>
+        /// <param name="slots">pre-existing slots. (default: null)</param>
+        /// <param name="modifiedSlots">Pre-modified slots. (default: null)</param>
+        /// <returns></returns>
+        public virtual ItemSlot[] SlotsFromTreeAttributes(ITreeAttribute tree, ItemSlot[] slots = null, List<ItemSlot> modifiedSlots = null)
         {
-            if (slots == null)
+            if (slots == null || slots.Length != tree.GetInt("qslots"))
             {
                 slots = new ItemSlot[tree.GetInt("qslots")];
                 for (int i = 0; i < slots.Length; i++)
@@ -469,7 +540,11 @@ namespace Vintagestory.API.Common
             return slots;
         }
 
-
+        /// <summary>
+        /// Sets the tree attribute using the slots.
+        /// </summary>
+        /// <param name="slots"></param>
+        /// <param name="tree"></param>
         public void SlotsToTreeAttributes(ItemSlot[] slots, ITreeAttribute tree)
         {
             tree.SetInt("qslots", slots.Length);
@@ -486,7 +561,11 @@ namespace Vintagestory.API.Common
         }
         
 
-
+        /// <summary>
+        /// Gets a specified number of empty slots.
+        /// </summary>
+        /// <param name="quantity">the number of empty slots to get.</param>
+        /// <returns>The pre-specified slots.</returns>
         public ItemSlot[] GenEmptySlots(int quantity)
         {
             ItemSlot[] slots = new ItemSlot[quantity];
@@ -497,6 +576,11 @@ namespace Vintagestory.API.Common
             return slots;
         }
 
+        /// <summary>
+        /// A command to build a new empty slot.
+        /// </summary>
+        /// <param name="i">the index of the slot.</param>
+        /// <returns>An empty slot bound to this inventory.</returns>
         protected virtual ItemSlot NewSlot(int i)
         {
             return new ItemSlot(this);
@@ -513,7 +597,9 @@ namespace Vintagestory.API.Common
             dirtySlots.Add(slotId);           
         }
 
-
+        /// <summary>
+        /// Discards everything in the item slots.
+        /// </summary>
         public virtual void DiscardAll()
         {
             for (int i = 0; i < Count; i++)
@@ -527,6 +613,11 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Drops the contents of the specified slots in the world.
+        /// </summary>
+        /// <param name="pos">The position of the inventory attached to the slots.</param>
+        /// <param name="slotsIds">The slots to have their inventory drop.</param>
         public virtual void DropSlots(Vec3d pos, params int[] slotsIds)
         {
             foreach (int slotId in slotsIds)
@@ -541,6 +632,10 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Drops the contents of all the slots into the world.
+        /// </summary>
+        /// <param name="pos">Where to drop all this stuff.</param>
         public virtual void DropAll(Vec3d pos)
         {
             foreach (var slot in this)
@@ -597,7 +692,9 @@ namespace Vintagestory.API.Common
             return openedByPlayerGUIds.Contains(player.PlayerUID);
         }
 
-
+        /// <summary>
+        /// Gets the enumerator for the inventory.
+        /// </summary>
         public IEnumerator<ItemSlot> GetEnumerator()
         {
             for (int i = 0; i < Count; i++)

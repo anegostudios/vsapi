@@ -5,7 +5,7 @@ namespace Vintagestory.API.Client
 {
     public enum EnumSoundType
     {
-        Sound, Music
+        Sound, Music, Ambient
     }
 
     /// <summary>

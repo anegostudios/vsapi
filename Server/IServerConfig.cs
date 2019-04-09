@@ -54,7 +54,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// The number of blocks to sample for ticks each pass within a single chunk
         /// </summary>
-        int TickSamplesPerChunk { get; set; }
+        int RandomBlockTicksPerChunk { get; set; }
 
         /// <summary>
         /// The interval of time in ms between each execution of the random tick system
@@ -95,5 +95,10 @@ namespace Vintagestory.API.Server
         /// Whether or not fire should spread
         /// </summary>
         bool AllowFireSpread { get; set; }
+
+        /// <summary>
+        /// Whether or not falling blocks should fall (e.g. sand and gravel)
+        /// </summary>
+        bool AllowFallingBlocks { get; set; }
     }
 }

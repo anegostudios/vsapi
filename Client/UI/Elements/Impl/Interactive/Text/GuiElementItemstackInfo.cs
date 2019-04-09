@@ -86,7 +86,7 @@ namespace Vintagestory.API.Client
 
             // Height depends on the width
             double lineheight = descriptionElement.GetMultilineTextHeight();
-            currentHeight = Math.Max(lineheight, scaled(50) + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
+            currentHeight = Math.Max(lineheight, scaled(55) + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
             titleElement.Bounds.fixedHeight = currentHeight;
             descriptionElement.Bounds.fixedHeight = currentHeight;
             Bounds.fixedHeight = currentHeight / RuntimeEnv.GUIScale;
@@ -123,12 +123,41 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(backTint[0], backTint[1], backTint[2], backTint[3]);
             RoundRectangle(ctx, textBounds.bgDrawX, textBounds.bgDrawY, textBounds.OuterWidthInt, textBounds.OuterHeightInt, GuiStyle.DialogBGRadius);
             ctx.FillPreserve();
+
+            ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
+            ctx.LineWidth = 3 * 1.75;
+            ctx.StrokePreserve();
+            surface.Blur(8.2);
+
             ctx.SetSourceRGBA(backTint[0] / 2, backTint[1] / 2, backTint[2] / 2, backTint[3]);
             ctx.Stroke();
 
-            ctx.SetSourceRGBA(GuiStyle.DialogAlternateBgColor);
-            RoundRectangle(ctx, textBounds.drawX, textBounds.drawY + scaled(MarginTop), scaled(ItemStackSize) + scaled(40), scaled(ItemStackSize) + scaled(40), 0);
+
+            int w = (int)(scaled(ItemStackSize) + scaled(40));
+            int h = (int)(scaled(ItemStackSize) + scaled(40));
+
+            ImageSurface shSurface = new ImageSurface(Format.Argb32, w, h);
+            Context shCtx = genContext(shSurface);
+
+            shCtx.SetSourceRGBA(GuiStyle.DialogSlotBackColor);
+            RoundRectangle(shCtx, 0, 0, w, h, 0);
+            shCtx.FillPreserve();
+
+            shCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
+            shCtx.LineWidth = 5;
+            shCtx.Stroke();
+            shSurface.Blur(7);
+            shSurface.Blur(7);
+            shSurface.Blur(7);
+            EmbossRoundRectangleElement(shCtx, 0, 0, w, h, true);
+
+
+            ctx.SetSourceSurface(shSurface, (int)(textBounds.drawX), (int)(textBounds.drawY + scaled(MarginTop)));
+            ctx.Rectangle(textBounds.drawX, textBounds.drawY + scaled(MarginTop), w, h);
             ctx.Fill();
+
+            shCtx.Dispose();
+            shSurface.Dispose();
 
 
             titleElement.ComposeElements(ctx, surface);
@@ -206,7 +235,6 @@ namespace Vintagestory.API.Client
                 }
                 
                 Recompose();
-                //Console.WriteLine("do recomp");
             }
         }
 

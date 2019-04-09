@@ -13,6 +13,8 @@ namespace Vintagestory.API.Common
     {
         protected IPlayer player = null;
         EntityPlayer entityPlayer;
+        protected bool turnOpposite;
+        protected bool rotateTpYawNow;
 
         public PlayerHeadController(IAnimationManager animator, EntityPlayer entity, Shape entityShape) : base(animator, entity, entityShape)
         {
@@ -25,10 +27,10 @@ namespace Vintagestory.API.Common
 
             float diff = GameMath.AngleRadDistance(entity.BodyYaw, entity.Pos.Yaw);
 
-            if (Math.Abs(diff) > GameMath.PIHALF * 1.2f) opposite = true;
-            if (opposite)
+            if (Math.Abs(diff) > GameMath.PIHALF * 1.2f) turnOpposite = true;
+            if (turnOpposite)
             {
-                if (Math.Abs(diff) < GameMath.PIHALF * 0.9f) opposite = false;
+                if (Math.Abs(diff) < GameMath.PIHALF * 0.9f) turnOpposite = false;
                 else diff = 0;
             }
 
@@ -62,31 +64,20 @@ namespace Vintagestory.API.Common
     {
         public ShapeElement HeadElement;
 
-        protected bool rotateTpYawNow;
+        protected EntityAgent entity;
+        protected IAnimationManager animManager;
+
         protected float[] HeadGlobalMatrix = null;
         protected float[] HeadGlobalMatrixInverted = null;
         protected float[] HeadLocalMatrix = null;
-
-       
-        protected bool opposite;
-
-        protected EntityAgent entity;
-        
-        protected IAnimationManager animManager;
-
-        public float[] tmpMatrix = Mat4f.Create();
-        //public float[] IdentityMatrix = Mat4f.Create();
-        
+        protected float[] tmpMatrix = Mat4f.Create();
 
         public EntityHeadController(IAnimationManager animator, EntityAgent entity, Shape entityShape)
         {
             this.entity = entity;
             this.animManager = animator;
 
-            if (entityShape.Elements != null)
-            {
-                HeadElement = FindHead(entityShape.Elements);
-            }
+            HeadElement = entityShape.GetElementByName("head");
 
             HeadGlobalMatrix = Mat4f.Create();
             HeadGlobalMatrixInverted = Mat4f.Create();
@@ -102,28 +93,14 @@ namespace Vintagestory.API.Common
             }
 
             Mat4f.Mul(HeadGlobalMatrix, HeadGlobalMatrix, HeadElement.GetLocalTransformMatrix());
-
             Mat4f.Invert(HeadGlobalMatrixInverted, HeadGlobalMatrix);
         }
         
-
-
-        ShapeElement FindHead(ShapeElement[] elements)
-        {
-            foreach (ShapeElement elem in elements)
-            {
-                if (elem.Name.ToLowerInvariant() == "head") return elem;
-                if (elem.Children != null)
-                {
-                    ShapeElement foundElem = FindHead(elem.Children);
-                    if (foundElem != null) return foundElem;
-                }
-
-            }
-            return null;
-        }
-
         
+        /// <summary>
+        /// The event fired when the game ticks.
+        /// </summary>
+        /// <param name="dt"></param>
         public virtual void OnTick(float dt)
         {
             if (entity.HeadYaw != 0 || entity.HeadPitch != 0)
@@ -132,19 +109,23 @@ namespace Vintagestory.API.Common
                 Mat4f.RotateY(HeadLocalMatrix, HeadLocalMatrix, entity.HeadYaw);
                 Mat4f.RotateZ(HeadLocalMatrix, HeadLocalMatrix, entity.HeadPitch);
 
-                AddTransformToElement(HeadLocalMatrix, HeadElement);
+                ApplyTransformToElement(HeadLocalMatrix, HeadElement);
             }
         }
 
 
-
-        public virtual void AddTransformToElement(float[] matrix, ShapeElement jointElement)
+        /// <summary>
+        /// Applies the transformatuon to the head element of the entity.
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="jointElement"></param>
+        public virtual void ApplyTransformToElement(float[] matrix, ShapeElement jointElement)
         {
-            AddTransformToElements(matrix, new ShapeElement[] { jointElement }, jointElement, jointElement.JointId);
+            ApplyTransformToElements(matrix, new ShapeElement[] { jointElement }, jointElement, jointElement.JointId);
         }
 
 
-        protected virtual void AddTransformToElements(float[] matrix, ShapeElement[] forElems, ShapeElement jointElement, int jointId)
+        protected virtual void ApplyTransformToElements(float[] matrix, ShapeElement[] forElems, ShapeElement jointElement, int jointId)
         {
             float[] transformationMatrices = animManager.Animator.Matrices;
 
@@ -183,7 +164,7 @@ namespace Vintagestory.API.Common
 
                 if (elem.Children != null)
                 {
-                    AddTransformToElements(matrix, elem.Children, jointElement, jointId);
+                    ApplyTransformToElements(matrix, elem.Children, jointElement, jointId);
                 }
             }
         }

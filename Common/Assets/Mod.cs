@@ -27,6 +27,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public ModInfo Info { get; internal set; }
 
+        public ModWorldConfiguration WorldConfig { get; internal set; }
+
         /// <summary>
         /// Holds the icon of this mod. Found as "modicon.png" in the root of
         /// the mod's folder or archive. May be null.

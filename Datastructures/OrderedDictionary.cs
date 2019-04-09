@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Datastructures
@@ -172,11 +173,13 @@ namespace Vintagestory.API.Datastructures
 	
 		public bool Remove(TKey key)
 		{
-			if(null == key)
-				throw new ArgumentNullException("key");
+            if (null == key)
+            {
+                throw new ArgumentNullException("key");
+            }
 
 			int index = IndexOfKey(key);
-			if(index >= 0)
+			if (index >= 0)
 			{
 				if(Dictionary.Remove(key))
 				{
@@ -230,6 +233,14 @@ namespace Vintagestory.API.Datastructures
 				return Dictionary.Keys;
 			}
 		}
+
+        public IEnumerable<TValue> ValuesOrdered
+        {
+            get
+            {
+                return List.Select(val => val.Value);
+            }
+        }
 
 	
 		public bool TryGetValue(TKey key, out TValue value)

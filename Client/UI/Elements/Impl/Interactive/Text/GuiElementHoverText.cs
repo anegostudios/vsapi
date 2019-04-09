@@ -1,11 +1,22 @@
 ﻿using Cairo;
 using System;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
     public class GuiElementHoverText : GuiElementTextBase
     {
+        public static TextBackground DefaultBackGround = new TextBackground() {
+            Padding = 5,
+            Radius = 1,
+            FillColor = GuiStyle.DialogStrongBgColor,
+            BorderColor = GuiStyle.DialogBorderColor,
+            BorderWidth = 3,
+            Shade = true
+        };
+        
         LoadedTexture hoverTexture;
         int unscaledWidth;
         int unscaledPadding = 5;
@@ -18,6 +29,9 @@ namespace Vintagestory.API.Client
         bool followMouse = true;
         bool autoWidth = false;
         public bool fillBounds = false;
+
+        public TextBackground Background;
+
 
         public EnumTextOrientation textOrientation = EnumTextOrientation.Left;
 
@@ -44,7 +58,6 @@ namespace Vintagestory.API.Client
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            ComposeHoverElement();
         }
 
         private void ComposeHoverElement()
@@ -56,8 +69,9 @@ namespace Vintagestory.API.Client
 
                 if (autoWidth)
                 {
-                    Bounds.fixedWidth = (int)(Font.GetTextExtents(text).Width + 2 * padding + 1);
-                    Bounds.fixedHeight = (int)(Font.GetFontExtents().Height + 2 * padding + 1);
+                    double textWidth = Font.GetTextExtents(text).Width;
+                    Bounds.fixedWidth = (int)(textWidth / RuntimeEnv.GUIScale + 2 * unscaledPadding + 1);
+                    Bounds.fixedHeight = (int)(Font.GetFontExtents().Height / RuntimeEnv.GUIScale + 2 * unscaledPadding + 1);
                 }
                 else
                 {
@@ -70,8 +84,8 @@ namespace Vintagestory.API.Client
 
                 if (autoWidth)
                 {
-                    width = (int)Bounds.InnerWidth;
-                    height = (int)Bounds.InnerHeight;
+                    width = (int)Math.Ceiling(Bounds.InnerWidth);
+                    height = (int)Math.Ceiling(Bounds.InnerHeight);
                 }
 
             }
@@ -117,15 +131,30 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Paint();
 
+            if (Background?.FillColor != null)
+            {
+                ctx.SetSourceRGBA(Background.FillColor);
+                RoundRectangle(ctx, 0, 0, width, height, Background.Radius);
+                ctx.Fill();
+            }
 
-            double[] color = GuiStyle.DialogStrongBgColor;
 
-            ctx.SetSourceRGBA(color[0], color[1], color[2], color[3]);
+            if (Background?.Shade == true)
+            {
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
+                RoundRectangle(ctx, 0, 0, width, height, Background.Radius);
+                ctx.LineWidth = Background.BorderWidth * 1.75;
+                ctx.Stroke();
+                surface.Blur(8.2);
+            }
 
-            RoundRectangle(ctx, 0, 0, width, height, GuiStyle.DialogBGRadius);
-            ctx.FillPreserve();
-            ctx.SetSourceRGBA(color[0] / 2, color[1] / 2, color[2] / 2, color[3]);
-            ctx.Stroke();
+            if (Background?.BorderColor != null)
+            {
+                ctx.SetSourceRGBA(Background.BorderColor);
+                RoundRectangle(ctx, 0, 0, width, height, Background.Radius);
+                ctx.LineWidth = Background.BorderWidth;
+                ctx.Stroke();
+            }
 
             textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, text, (int)padding, (int)padding, width - 2 * padding, textOrientation);
 
@@ -137,6 +166,14 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
+            if (text.Length == 0) return;
+
+            // Compose on demand only
+            if (hoverTexture.TextureId == 0 && !hoverTexture.Disposed)
+            {
+                ComposeHoverElement();
+            }
+
             int mouseX = api.Input.MouseX;
             int mouseY = api.Input.MouseY;
 
@@ -161,7 +198,7 @@ namespace Vintagestory.API.Client
                     y -= (y + height) - api.Render.FrameHeight;
                 }
 
-                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x, (int)y, width, height);
+                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x, (int)y, width, height, 50);
             }
         }
 
@@ -236,7 +273,28 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementHoverText(composer.Api, text, font, width, bounds), key);
+                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds);
+                elem.Background = GuiElementHoverText.DefaultBackGround;
+                composer.AddInteractiveElement(elem, key);
+            }
+            return composer;
+        }
+
+        /// <summary>
+        /// Adds a hover text to the GUI.
+        /// </summary>
+        /// <param name="text">The text of the text.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="width">The width of the text.</param>
+        /// <param name="bounds">The bounds of the text.</param>
+        /// <param name="key">The name of this hover text component.</param>
+        public static GuiComposer AddHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, TextBackground background, string key = null)
+        {
+            if (!composer.composed)
+            {
+                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds);
+                elem.Background = background;
+                composer.AddInteractiveElement(elem, key);
             }
             return composer;
         }

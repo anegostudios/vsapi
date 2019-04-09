@@ -13,8 +13,10 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementRichtext : GuiElement
     {
-        RichTextComponentBase[] Components;
-        TextFlowPath[] flowPath;
+        protected RichTextComponentBase[] Components;
+        protected TextFlowPath[] flowPath;
+
+        LoadedTexture richtTextTexture;
 
         public bool Debug = false;
         
@@ -22,6 +24,34 @@ namespace Vintagestory.API.Client
         public GuiElementRichtext(ICoreClientAPI capi, RichTextComponentBase[] components, ElementBounds bounds) : base(capi, bounds)
         {
             this.Components = components;
+
+            richtTextTexture = new LoadedTexture(capi);
+        }
+
+        public override void BeforeCalcBounds()
+        {
+            CalcHeightAndPositions();
+        }
+
+
+        public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
+        {
+            // Padding seems broken, so don't even try to add padding. (also what for... using margin achieves the same effect)
+            Bounds.fixedPaddingX = 0;
+            Bounds.fixedPaddingY = 0;
+
+            Bounds.CalcWorldBounds();
+
+            ImageSurface surface = new ImageSurface(Format.ARGB32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+            Context ctx = new Context(surface);
+            ctx.SetSourceRGBA(0, 0, 0, 0);
+            ctx.Paint();
+
+            ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
+            generateTexture(surface, ref richtTextTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
         }
 
 
@@ -39,10 +69,11 @@ namespace Vintagestory.API.Client
 
             double lineHeight = 0;
             double ascentHeight = 0;
-            
+            RichTextComponentBase comp = null;
+
             for (int i = 0; i < Components.Length; i++)
             {
-                RichTextComponentBase comp = Components[i];
+                comp = Components[i];
 
                 bool didLineBreak = comp.CalcBounds(flowPathList.ToArray(), lineHeight, posX, posY);
 
@@ -52,6 +83,8 @@ namespace Vintagestory.API.Client
                 {
                     posX = 0;
                     posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + comp.MarginTop;
+                    posY = Math.Ceiling(posY);
+                    
                     currentLine.Clear();
                     lineHeight = 0;
                     ascentHeight = 0;
@@ -60,8 +93,8 @@ namespace Vintagestory.API.Client
 
                 if (didLineBreak)
                 {
-                    lineHeight = Math.Max(lineHeight, comp.BoundsPerLine[0].Height);
-                    ascentHeight = Math.Max(ascentHeight, comp.BoundsPerLine[0].AscentOrHeight);
+                    lineHeight = Math.Ceiling(Math.Max(lineHeight, comp.BoundsPerLine[0].Height));
+                    ascentHeight = Math.Ceiling(Math.Max(ascentHeight, comp.BoundsPerLine[0].AscentOrHeight));
 
                     // All previous elements in this line might need to have their Y pos adjusted due to a larger element in the line
                     foreach (int index in currentLine)
@@ -71,23 +104,23 @@ namespace Vintagestory.API.Client
                         
                         if (lineComp.VerticalAlign == EnumVerticalAlign.Bottom)
                         {
-                            lastLineBounds.Y += ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight;
+                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight);
                         }
                         if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
                         {
-                            lastLineBounds.Y += ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight / 2;
+                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight / 2);
                         }
                     }
 
                     // The current element that was still on the same line as well
+                    // Offset all lines by the gained y-offset on the first line
                     if (comp.VerticalAlign == EnumVerticalAlign.Bottom)
                     {
-                        foreach (var val in comp.BoundsPerLine) val.Y += ascentHeight - comp.BoundsPerLine[0].AscentOrHeight;
-
+                        foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight - comp.BoundsPerLine[0].AscentOrHeight);
                     }
                     if (comp.VerticalAlign == EnumVerticalAlign.Middle)
                     {
-                        foreach (var val in comp.BoundsPerLine) val.Y += ascentHeight - comp.BoundsPerLine[0].AscentOrHeight / 2;
+                        foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight - comp.BoundsPerLine[0].AscentOrHeight / 2);
                     }
                     
                     currentLine.Clear();
@@ -95,6 +128,7 @@ namespace Vintagestory.API.Client
 
                     posY += lineHeight;
                     for (int k = 1; k < comp.BoundsPerLine.Length - 1; k++) posY += comp.BoundsPerLine[k].Height;
+                    posY = Math.Ceiling(posY);
 
                     posX = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width;
                     if (comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width > 0)
@@ -123,12 +157,15 @@ namespace Vintagestory.API.Client
                     ConstrainTextFlowPath(flowPathList, posY, comp.BoundsPerLine[0], comp.Float);
                 }
             }
-
-
+            
+            if (comp != null && posX > 0 && comp.BoundsPerLine.Length > 1)
+            {
+               posY += lineHeight;
+            }
 
             if (Components.Length > 0)
             {
-                Bounds.fixedHeight = (posY + lineHeight) / RuntimeEnv.GUIScale;
+                Bounds.fixedHeight = (posY + lineHeight + 1) / RuntimeEnv.GUIScale;
             }
             
 
@@ -139,11 +176,11 @@ namespace Vintagestory.API.Client
 
                 if (lineComp.VerticalAlign == EnumVerticalAlign.Bottom)
                 {
-                    lastLineBounds.Y += ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight;
+                    lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight);
                 }
                 if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
                 {
-                    lastLineBounds.Y += ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight / 2;
+                    lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight / 2);
                 }
             }
 
@@ -219,19 +256,13 @@ namespace Vintagestory.API.Client
 
 
 
-        public override void BeforeCalcBounds()
+        public virtual void ComposeFor(ElementBounds bounds, Context ctx, ImageSurface surface)
         {
-            CalcHeightAndPositions();
-        }
-
-
-        public override void ComposeElements(Context ctx, ImageSurface surface)
-        {
-            Bounds.CalcWorldBounds();
+            bounds.CalcWorldBounds();
 
             ctx.Save();
             Matrix m = ctx.Matrix;
-            m.Translate(Bounds.drawX, Bounds.drawY);
+            m.Translate(bounds.drawX, bounds.drawY);
             ctx.Matrix = m;
 
             for (int i = 0; i < Components.Length; i++)
@@ -263,15 +294,23 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
+            api.Render.Render2DTexturePremultipliedAlpha(
+                richtTextTexture.TextureId, 
+                (int)Bounds.renderX, 
+                (int)Bounds.renderY, 
+                (int)Bounds.InnerWidth, 
+                (int)Bounds.InnerHeight
+            );
+
             bool found = false;
             int relx = (int)(api.Input.MouseX - Bounds.absX);
             int rely = (int)(api.Input.MouseY - Bounds.absY);
 
-            MouseOverCursor = "normal";
+            MouseOverCursor = null;
             for (int i = 0; i < Components.Length; i++) {
                 RichTextComponentBase comp = Components[i];
 
-                comp.RenderInteractiveElements(api, deltaTime, Bounds.renderX, Bounds.renderY);
+                comp.RenderInteractiveElements(deltaTime, Bounds.renderX, Bounds.renderY);
 
                 for (int j = 0; !found && j < comp.BoundsPerLine.Length; j++)
                 {
@@ -292,7 +331,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < Components.Length; i++)
             {
-                Components[i].OnMouseMove(api, relArgs);
+                Components[i].OnMouseMove(relArgs);
                 if (relArgs.Handled) break;
             }
 
@@ -305,7 +344,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < Components.Length; i++)
             {
-                Components[i].OnMouseDown(api, relArgs);
+                Components[i].OnMouseDown(relArgs);
                 if (relArgs.Handled) break;
             }
 
@@ -318,19 +357,51 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < Components.Length; i++)
             {
-                Components[i].OnMouseUp(api, relArgs);
+                Components[i].OnMouseUp(relArgs);
                 if (relArgs.Handled) break;
             }
 
-            args.Handled = relArgs.Handled;
+            args.Handled |= relArgs.Handled;
 
             base.OnMouseUp(api, args);
         }
 
 
+        /// <summary>
+        /// Recomposes the element for lines.
+        /// </summary>
+        public void RecomposeText()
+        {
+            CalcHeightAndPositions();
+            Bounds.CalcWorldBounds();
+
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+            Context ctx = genContext(surface);
+            ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
+
+            generateTexture(surface, ref richtTextTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
+        }
+
+        public void SetNewText(string vtmlCode, CairoFont baseFont, Common.Action<LinkTextComponent> didClickLink = null)
+        {
+            this.Components = VtmlUtil.Richtextify(api, vtmlCode, baseFont, didClickLink);
+            RecomposeText();
+        }
+
+        public void SetNewText(RichTextComponent[] comps)
+        {
+            this.Components = comps;
+            RecomposeText();
+        }
+
         public override void Dispose()
         {
             base.Dispose();
+
+            richtTextTexture?.Dispose();
 
             foreach (var val in Components)
             {
@@ -354,7 +425,24 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementRichtext(composer.Api, VtmlUtil.Richtextify(vtmlCode, baseFont), bounds), key);
+                composer.AddInteractiveElement(new GuiElementRichtext(composer.Api, VtmlUtil.Richtextify(composer.Api, vtmlCode, baseFont), bounds), key);
+            }
+
+            return composer;
+        }
+
+
+        /// <summary>
+        /// Adds a chat input to the GUI.
+        /// </summary>
+        /// <param name="bounds">The bounds of the text.</param>
+        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="key">The name of this chat component.</param>
+        public static GuiComposer AddRichtext(this GuiComposer composer, string vtmlCode, CairoFont baseFont, ElementBounds bounds, API.Common.Action<LinkTextComponent> didClickLink, string key = null)
+        {
+            if (!composer.composed)
+            {
+                composer.AddInteractiveElement(new GuiElementRichtext(composer.Api, VtmlUtil.Richtextify(composer.Api, vtmlCode, baseFont, didClickLink), bounds), key);
             }
 
             return composer;

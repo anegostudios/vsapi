@@ -46,7 +46,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the inset.</param>
         /// <param name="depth">The depth of the inset.</param>
         /// <param name="brightness">The brightness of the inset.</param>
-        public static GuiComposer AddInset(this GuiComposer composer, ElementBounds bounds, int depth, float brightness = 1f)
+        public static GuiComposer AddInset(this GuiComposer composer, ElementBounds bounds, int depth = 4, float brightness = 0.85f)
         {
             if (!composer.composed)
             {

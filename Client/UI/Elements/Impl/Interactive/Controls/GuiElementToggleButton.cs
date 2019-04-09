@@ -65,6 +65,8 @@ namespace Vintagestory.API.Client
         /// <remarks>Neither the context, nor the surface is used in this function.</remarks>
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
+            Bounds.CalcWorldBounds();
+
             ComposeReleasedButton();
             ComposePressedButton();
         }
@@ -87,11 +89,11 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, false, (int)depth);
 
             double height = GetMultilineTextHeight();
-            DrawMultilineTextAt(ctx, Bounds.absPaddingX, nonPressedYOffset = (Bounds.InnerHeight - height) / 2 - depth/2, EnumTextOrientation.Center);
+            DrawMultilineTextAt(ctx, Bounds.absPaddingX, nonPressedYOffset = (Bounds.InnerHeight - height) / 2, EnumTextOrientation.Center);
 
             if (icon != null && icon.Length > 0)
             {
-                api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + 3, Bounds.absPaddingY + 3, Bounds.InnerWidth - 6, Bounds.InnerHeight - 6, GuiStyle.DialogDefaultTextColor);
+                api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + 4, Bounds.absPaddingY + 4, Bounds.InnerWidth - 9, Bounds.InnerHeight - 9, GuiStyle.DialogDefaultTextColor);
             }
 
             generateTexture(surface, ref releasedTexture);
@@ -140,7 +142,7 @@ namespace Vintagestory.API.Client
             height = GetMultilineTextHeight();
 
             double[] prevcolor = this.Font.Color;
-            this.Font.Color = GuiStyle.LightBrownHoverTextColor;
+            this.Font.Color = GuiStyle.ActiveButtonTextColor;
 
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, 0, EnumTextOrientation.Center);
 

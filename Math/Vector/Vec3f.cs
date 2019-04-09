@@ -261,8 +261,40 @@ namespace Vintagestory.API.MathTools
         {
             return GameMath.FastSqrt(
                 (X - vec.X) * (X - vec.X) +
-                (Y - vec.X) * (Y - vec.Y) +
-                (Z - vec.X) * (Z - vec.Z)
+                (Y - vec.Y) * (Y - vec.Y) +
+                (Z - vec.Z) * (Z - vec.Z)
+            );
+        }
+
+
+        /// <summary>
+        /// Calculates the square distance the two endpoints
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public double DistanceSq(double x, double y, double z)
+        {
+            return 
+                (X - x) * (X - x) +
+                (Y - y) * (Y - y) +
+                (Z - z) * (Z - z)
+            ;
+        }
+
+
+        /// <summary>
+        /// Calculates the distance the two endpoints
+        /// </summary>
+        /// <param name="vec"></param>
+        /// <returns></returns>
+        public float Distance(Vec3d vec)
+        {
+            return (float)Math.Sqrt(
+                (X - vec.X) * (X - vec.X) +
+                (Y - vec.Y) * (Y - vec.Y) +
+                (Z - vec.Z) * (Z - vec.Z)
             );
         }
 

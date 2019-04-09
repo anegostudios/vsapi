@@ -229,6 +229,11 @@ namespace Vintagestory.API.Client
                 TextLine[] textlines = textUtil.Lineize(Font, text, Bounds.InnerWidth - 2 * Bounds.absPaddingX);
                 lines.Clear();
                 foreach (var val in textlines) lines.Add(val.Text);
+
+                if (lines.Count == 0)
+                {
+                    lines.Add("");
+                }
             }
             else
             {

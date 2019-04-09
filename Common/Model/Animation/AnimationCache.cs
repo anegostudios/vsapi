@@ -9,19 +9,43 @@ namespace Vintagestory.API.Common
 {
     public class AnimCacheEntry
     {
+        /// <summary>
+        /// Animations of this cache.
+        /// </summary>
         public Animation[] Animations;
+
+        /// <summary>
+        /// The root elements of this cache.
+        /// </summary>
         public ShapeElement[] RootElems;
+
+        /// <summary>
+        /// The poses of this cache
+        /// </summary>
         public List<ElementPose> RootPoses;
     }
 
     public static class AnimationCache
     {
+        /// <summary>
+        /// Clears the animation cache.
+        /// </summary>
+        /// <param name="api"></param>
         public static void ClearCache(ICoreAPI api)
         {
             api.ObjectCache["animCache"] = null;
         }
 
-        public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape)
+        /// <summary>
+        /// Initializes the cache to the Animation Manager then spits it back out.
+        /// </summary>
+        /// <param name="api"></param>
+        /// <param name="manager"></param>
+        /// <param name="entity"></param>
+        /// <param name="entityShape"></param>
+        /// <param name="requireJointsForElements"></param>
+        /// <returns></returns>
+        public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, params string[] requireJointsForElements)
         {
             if (entityShape == null)
             {
@@ -44,7 +68,7 @@ namespace Vintagestory.API.Common
             AnimCacheEntry cacheObj = null;
             if (animCache.TryGetValue(dictKey, out cacheObj))
             {
-                manager.Init(entity.Api, entity, entityShape);
+                manager.Init(entity.Api, entity);
 
                 animator = api.Side == EnumAppSide.Client ? 
                     new ClientAnimator(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById) :
@@ -55,7 +79,9 @@ namespace Vintagestory.API.Common
 
             } else {
 
-                manager.Init(entity.Api, entity, entityShape);
+                entityShape.ResolveAndLoadJoints(requireJointsForElements);
+
+                manager.Init(entity.Api, entity);
 
                 for (int i = 0; entityShape.Animations != null && i < entityShape.Animations.Length; i++)
                 {

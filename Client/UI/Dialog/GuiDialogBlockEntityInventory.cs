@@ -13,6 +13,7 @@ namespace Vintagestory.API.Client
     public class GuiDialogBlockEntityInventory : GuiDialogBlockEntity
     {
         int cols;
+        EnumPosFlag screenPos;
 
         public override AssetLocation OpenSound => new AssetLocation("sounds/block/chestopen");
         public override AssetLocation CloseSound => new AssetLocation("sounds/block/chestclose");
@@ -22,8 +23,8 @@ namespace Vintagestory.API.Client
         {
             if (IsDuplicate) return;
             this.cols = cols;
+
             
-            int openedchests = capi.OpenedGuis.OfType<GuiDialogBlockEntityInventory>().Count();
             double elemToDlgPad = GuiStyle.ElementToDialogPadding;
             double pad = GuiElementItemSlotGrid.unscaledSlotPadding;
             int rows = (int)Math.Ceiling(inventory.Count / (float)cols);
@@ -38,6 +39,8 @@ namespace Vintagestory.API.Client
             // 2. Around that is the 3 wide inset stroke
             ElementBounds insetBounds = slotGridBounds.ForkBoundingParent(6, 6, 6, 6);
 
+            screenPos = GetFreePos("smallblockgui");
+
             if (visibleRows < rows)
             {
                 // 2a. The scrollable bounds is also the clipping bounds. Needs it's parent to be set.
@@ -46,15 +49,14 @@ namespace Vintagestory.API.Client
 
                 // 3. Around all that is the dialog centered to screen middle, with some extra spacing right for the scrollbar
                 ElementBounds dialogBounds = insetBounds
-                    .ForkBoundingParent(elemToDlgPad, elemToDlgPad + 70, elemToDlgPad + 40, elemToDlgPad)
-                    .WithFixedAlignmentOffset(-GuiStyle.DialogToScreenPadding, 0)
-                    .WithAlignment(openedchests >= 3 ? EnumDialogArea.LeftMiddle : EnumDialogArea.RightMiddle)
+                    .ForkBoundingParent(elemToDlgPad, elemToDlgPad + 30, elemToDlgPad + 20, elemToDlgPad)
+                    .WithFixedAlignmentOffset(IsRight(screenPos) ? -GuiStyle.DialogToScreenPadding : GuiStyle.DialogToScreenPadding, 0)
+                    .WithAlignment(IsRight(screenPos) ? EnumDialogArea.RightMiddle :EnumDialogArea.LeftMiddle)
                 ;
 
                 if (!capi.Settings.Bool["immersiveMouseMode"])
                 {
-                    if (openedchests % 3 == 1) dialogBounds.fixedOffsetY -= dialogBounds.fixedHeight + 10;
-                    if (openedchests % 3 == 2) dialogBounds.fixedOffsetY += dialogBounds.fixedHeight + 10;
+                    dialogBounds.fixedOffsetY += (dialogBounds.fixedHeight + 10) * YOffsetMul(screenPos);
                 }
 
                 // 4. Right of the slot grid is the scrollbar
@@ -62,9 +64,9 @@ namespace Vintagestory.API.Client
 
                 SingleComposer = capi.Gui
                     .CreateCompo("blockentityinventory" + blockEntityPos, dialogBounds)
-                    .AddDialogBG(ElementBounds.Fill)
+                    .AddShadedDialogBG(ElementBounds.Fill)
                     .AddDialogTitleBar(dialogTitle, CloseIconPressed)
-                    .AddInset(insetBounds, 8, 0.85f)
+                    .AddInset(insetBounds)
                     .AddVerticalScrollbar(OnNewScrollbarvalue, scrollbarBounds, "scrollbar")
                     .BeginClip(clippingBounds)
                     .AddItemSlotGrid(inventory, DoSendPacket, cols, slotGridBounds, "slotgrid")
@@ -82,25 +84,38 @@ namespace Vintagestory.API.Client
                 // 3. Around all that is the dialog centered to screen middle, with some extra spacing right for the scrollbar
                 ElementBounds dialogBounds = insetBounds
                     .ForkBoundingParent(elemToDlgPad, elemToDlgPad + 20, elemToDlgPad, elemToDlgPad)
-                    .WithFixedAlignmentOffset(-GuiStyle.DialogToScreenPadding, 0)
-                    .WithAlignment(openedchests >= 3 ? EnumDialogArea.LeftMiddle : EnumDialogArea.RightMiddle);
+                    .WithFixedAlignmentOffset(IsRight(screenPos) ? -GuiStyle.DialogToScreenPadding : GuiStyle.DialogToScreenPadding, 0)
+                    .WithAlignment(IsRight(screenPos) ? EnumDialogArea.RightMiddle : EnumDialogArea.LeftMiddle)
+                ;
 
                 if (!capi.Settings.Bool["immersiveMouseMode"])
                 {
-                    if (openedchests % 3 == 1) dialogBounds.fixedOffsetY -= dialogBounds.fixedHeight + 10;
-                    if (openedchests % 3 == 2) dialogBounds.fixedOffsetY += dialogBounds.fixedHeight + 10;
+                    dialogBounds.fixedOffsetY += (dialogBounds.fixedHeight + 10) * YOffsetMul(screenPos);
                 }
 
                 SingleComposer = capi.Gui
                     .CreateCompo("blockentityinventory"+blockEntityPos, dialogBounds)
-                    .AddDialogBG(ElementBounds.Fill)
+                    .AddShadedDialogBG(ElementBounds.Fill)
                     .AddDialogTitleBar(dialogTitle, CloseIconPressed)
-                    .AddInset(insetBounds, 8, 0.85f)
+                    .AddInset(insetBounds)
                     .AddItemSlotGrid(inventory, DoSendPacket, cols, slotGridBounds, "slotgrid")
                     .Compose();
             }
 
             SingleComposer.UnfocusOwnElements();
+        }
+
+
+        public override void OnGuiClosed()
+        {
+            base.OnGuiClosed();
+            FreePos("smallblockgui", screenPos);
+        }
+
+        public override void OnGuiOpened()
+        {
+            base.OnGuiOpened();
+            OccupyPos("smallblockgui", screenPos);
         }
     }
 }

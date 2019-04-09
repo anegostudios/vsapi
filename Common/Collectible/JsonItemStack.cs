@@ -30,6 +30,9 @@ namespace Vintagestory.API.Common
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;
 
+        /// <summary>
+        /// The resolved item after conversion.
+        /// </summary>
         public ItemStack ResolvedItemstack;
         
 

@@ -17,7 +17,7 @@ namespace Vintagestory.API.Client
             protected GuiDialog dialog;
             
             /// <summary>
-            /// The values located inside the Dialogue Composers.
+            /// Returns all composers as a flat list
             /// </summary>
             public IEnumerable<GuiComposer> Values { get { return dialogComposers.Values; } }
 
@@ -54,6 +54,11 @@ namespace Vintagestory.API.Client
                 }
             }
 
+            /// <summary>
+            /// Returns the composer for given composer name
+            /// </summary>
+            /// <param name="key"></param>
+            /// <returns></returns>
             public GuiComposer this[string key]
             {
                 get {
@@ -102,15 +107,15 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The Instance of Dialogue Composer for this GUIDialogue.
         /// </summary>
-        public DlgComposers DialogComposers;
+        public DlgComposers Composers;
 
         /// <summary>
         /// A single composer for this GUIDialogue.
         /// </summary>
         public GuiComposer SingleComposer
         {
-            get { return DialogComposers["single"]; }
-            set { DialogComposers["single"] = value; }
+            get { return Composers["single"]; }
+            set { Composers["single"] = value; }
         }
 
         /// <summary>
@@ -171,7 +176,7 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The Client API.</param>
         public GuiDialog(ICoreClientAPI capi)
         {
-            DialogComposers = new DlgComposers(this);
+            Composers = new DlgComposers(this);
             this.capi = capi;
         }
 
@@ -203,7 +208,12 @@ namespace Vintagestory.API.Client
         public virtual double DrawOrder { get { return 0.1; } }
 
         /// <summary>
-        /// 0 = handle inputs first, 1 = handle inputs last.
+        /// Determines the order on which dialog receives keyboard input first when the dialog is opened. 0 = handle inputs first, 9999 = handle inputs last.
+        /// Reference list:
+        /// 0: Escape menu
+        /// 0.5 (default): tick profiler, selection box editor, macro editor, survival&creative inventory, first launch info dialog, dead dialog, character dialog, etc.
+        /// 1: hotbar
+        /// 1.1: chat dialog
         /// </summary>
         public virtual double InputOrder { get { return 0.5; } }
 
@@ -333,9 +343,9 @@ namespace Vintagestory.API.Client
         /// This runs when the dialogue is ready to render all of the components.
         /// </summary>
         /// <param name="deltaTime">The time that has elapsed.</param>
-        public virtual void OnRender2D(float deltaTime)
+        public virtual void OnRenderGUI(float deltaTime)
         {
-            foreach (var val in DialogComposers)
+            foreach (var val in Composers)
             {
                 val.Value.Render(deltaTime);
 
@@ -349,7 +359,7 @@ namespace Vintagestory.API.Client
         /// <param name="dt">The time that has elapsed.</param>
         public virtual void OnFinalizeFrame(float dt)
         {
-            foreach (var val in DialogComposers)
+            foreach (var val in Composers)
             {
                 val.Value.PostRender(dt);
             }
@@ -378,7 +388,7 @@ namespace Vintagestory.API.Client
         /// <param name="args">The key or keys that were held down.</param>
         public virtual void OnKeyDown(KeyEvent args)
         {
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.OnKeyDown(args, focused);
                 if (args.Handled)
@@ -414,7 +424,7 @@ namespace Vintagestory.API.Client
 
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.OnKeyPress(args);
                 if (args.Handled) return;
@@ -443,9 +453,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="slot">The slot the mouse entered.</param>
         /// <returns>Whether this event was handled.</returns>
-        public virtual bool OnMouseEnterSlot(IItemSlot slot) {
+        public virtual bool OnMouseEnterSlot(ItemSlot slot) {
 
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 if (composer.OnMouseEnterSlot(slot))
                 {
@@ -461,9 +471,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="itemSlot">The slot the mouse entered.</param>
         /// <returns>Whether this event was handled.</returns>
-        public virtual bool OnMouseLeaveSlot(IItemSlot itemSlot) {
+        public virtual bool OnMouseLeaveSlot(ItemSlot itemSlot) {
 
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 if (composer.OnMouseLeaveSlot(itemSlot))
                 {
@@ -489,7 +499,7 @@ namespace Vintagestory.API.Client
         {
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.OnMouseDown(args);
                 if (args.Handled)
@@ -500,7 +510,7 @@ namespace Vintagestory.API.Client
 
             if (!args.Handled)
             {
-                foreach (GuiComposer composer in DialogComposers.Values)
+                foreach (GuiComposer composer in Composers.Values)
                 {
                     if (composer.Bounds.PointInside(args.X, args.Y))
                     {
@@ -519,13 +529,13 @@ namespace Vintagestory.API.Client
         {
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.OnMouseUp(args);
                 if (args.Handled) return;
             }
 
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 if (composer.Bounds.PointInside(args.X, args.Y))
                 {
@@ -542,13 +552,13 @@ namespace Vintagestory.API.Client
         {
             if (args.Handled) return;
 
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.OnMouseMove(args);
                 if (args.Handled) return;
             }
             
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 if (composer.Bounds.PointInside(args.X, args.Y))
                 {
@@ -564,7 +574,7 @@ namespace Vintagestory.API.Client
         /// <param name="args"></param>
         public virtual void OnMouseWheel(MouseWheelEventArgs args)
         {
-            foreach (GuiComposer composer in DialogComposers.Values)
+            foreach (GuiComposer composer in Composers.Values)
             {
                 composer.OnMouseWheel(args);
                 if (args.IsHandled) return;
@@ -572,7 +582,7 @@ namespace Vintagestory.API.Client
 
             if (focused)
             {
-                foreach (GuiComposer composer in DialogComposers.Values)
+                foreach (GuiComposer composer in Composers.Values)
                 {
                     if (composer.Bounds.PointInside(capi.Input.MouseX, capi.Input.MouseY))
                     {
@@ -633,7 +643,7 @@ namespace Vintagestory.API.Client
         /// Disposes the Dialogue.
         /// </summary>
         public virtual void Dispose() {
-            DialogComposers?.Dispose();
+            Composers?.Dispose();
         }
 
         /// <summary>
@@ -641,12 +651,13 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void ClearComposers()
         {
-            DialogComposers?.ClearComposers();
+            Composers?.ClearComposers();
         }
 
         /// <summary>
         /// The key combination string that toggles this GUI object.
         /// </summary>
         public abstract string ToggleKeyCombinationCode { get; }
+
     }
 }

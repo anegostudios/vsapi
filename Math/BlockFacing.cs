@@ -8,6 +8,59 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.MathTools
 {
+    public class Cardinal
+    {
+        private static Dictionary<Vec3i, Cardinal> byNormali = new Dictionary<Vec3i, Cardinal>();
+        private static Dictionary<string, Cardinal> byInitial = new Dictionary<string, Cardinal>();
+
+        public static readonly Cardinal North = new Cardinal("north", "n", new Vec3i(0,0,-1), 0, 4);
+        public static readonly Cardinal NorthEast = new Cardinal("northeast", "ne", new Vec3i(1, 0, -1), 1, 5);
+        public static readonly Cardinal East = new Cardinal("east", "e", new Vec3i(1, 0, 0), 2, 6);
+        public static readonly Cardinal SouthEast = new Cardinal("southeast", "se", new Vec3i(1, 0, 1), 3, 7);
+        public static readonly Cardinal South = new Cardinal("south", "s", new Vec3i(0, 0, 1), 4, 0);
+        public static readonly Cardinal SouthWest = new Cardinal("southwest", "sw", new Vec3i(-1, 0, 1), 5, 1);
+        public static readonly Cardinal West = new Cardinal("west", "w", new Vec3i(-1, 0, 0), 6, 2);
+        public static readonly Cardinal NorthWest = new Cardinal("northwest", "nw", new Vec3i(-1, 0, -1), 7, 3);
+
+        //public static readonly Cardinal Up = new Cardinal(new Vec3i(0, 1, 0));
+        //public static readonly Cardinal Down = new Cardinal(new Vec3i(0, -1, 0));
+
+        public static Cardinal[] ALL = new Cardinal[] { North, NorthEast, East, SouthEast, South, SouthWest, West, NorthWest };
+
+        public Vec3i Normali {get; private set;}
+        public Cardinal Opposite { get { return ALL[OppositeIndex]; } }
+        public int Index { get; private set; }
+        public string Initial { get; private set; }
+        public string Code { get; private set; }
+
+        public int OppositeIndex { get; private set; }
+
+        public Cardinal(string code, string initial, Vec3i normali, int index, int oppositeIndex)
+        {
+            this.Code = code;
+            this.Initial = initial;
+            this.Normali = normali;
+            this.Index = index;
+            this.OppositeIndex = oppositeIndex;
+            byNormali.Add(normali, this);
+            byInitial.Add(initial, this);
+        }
+
+        public static Cardinal FromNormali(Vec3i normali)
+        {
+            Cardinal card;
+            byNormali.TryGetValue(normali, out card);
+            return card;
+        }
+
+        public static Cardinal FromInitial(string initials)
+        {
+            Cardinal card;
+            byInitial.TryGetValue(initials, out card);
+            return card;
+        }
+    }
+
     /// <summary>
     /// Represents one of the 6 faces of a cube and all it's properties. Uses a right Handed Coordinate System. See also http://www.matrix44.net/cms/notes/opengl-3d-graphics/coordinate-systems-in-opengl
     /// In short: 
@@ -23,12 +76,12 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// All horizontal blockfacing flags combined
         /// </summary>
-        public static byte HorizontalFlags = 1 | 2 | 4 | 8;
+        public static readonly byte HorizontalFlags = 1 | 2 | 4 | 8;
 
         /// <summary>
         /// All vertical blockfacing flags combined
         /// </summary>
-        public static byte VerticalFlags = 16 | 32;
+        public static readonly byte VerticalFlags = 16 | 32;
 
         
         /// <summary>
@@ -146,6 +199,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public EnumAxis Axis { get { return axis; } }
 
+
         private BlockFacing(string code, byte flag, int index, int oppositeIndex, int horizontalAngleIndex, Vec3i facingVector, Vec3f planeCenter, EnumAxis axis)
         {
             this.index = index;
@@ -196,112 +250,6 @@ namespace Vintagestory.API.MathTools
         public BlockFacing GetCCW()
         {
             return HORIZONTALS_ANGLEORDER[GameMath.Mod(horizontalAngleIndex - 1, 4)];
-        }
-
-        /// <summary>
-        /// Returns the face if code is 'north', 'east', 'south', 'west', 'north', 'up' or 'down'. Otherwise null.
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        public static BlockFacing FromCode(string code)
-        {
-            code = code?.ToLowerInvariant();
-
-            switch(code)
-            {
-                case "north": return NORTH;
-                case "south": return SOUTH;
-                case "east": return EAST;
-                case "west": return WEST;
-                case "up": return UP;
-                case "down": return DOWN;
-            }
-
-            return null;
-        }
-
-        public static BlockFacing FromFirstLetter(char code)
-        {
-            return FromFirstLetter("" + code);
-        }
-
-        /// <summary>
-        /// Returns the face if code is 'n', 'e', 's', 'w', 'n', 'u' or 'd'. Otherwise null.
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        public static BlockFacing FromFirstLetter(string code)
-        {
-            code = code.ToLowerInvariant();
-
-            switch (code)
-            {
-                case "n": return NORTH;
-                case "s": return SOUTH;
-                case "e": return EAST;
-                case "w": return WEST;
-                case "u": return UP;
-                case "d": return DOWN;
-            }
-
-            return null;
-        }
-        
-
-
-        public static BlockFacing FromVector(Vec3f vec)
-        {
-            float smallestAngle = GameMath.PI;
-            BlockFacing facing = null;
-
-            for (int i = 0; i < ALLFACES.Length; i++)
-            {
-                BlockFacing f = ALLFACES[i];
-                float angle = (float)Math.Acos(f.Normalf.Dot(vec));
-
-                if (angle < smallestAngle)
-                {
-                    smallestAngle = angle;
-                    facing = f;
-                }
-            }
-
-            return facing;
-        }
-
-
-        public static BlockFacing FromVector(double x, double y, double z)
-        {
-            float smallestAngle = GameMath.PI;
-            BlockFacing facing = null;
-
-            for (int i = 0; i < ALLFACES.Length; i++)
-            {
-                BlockFacing f = ALLFACES[i];
-                float angle = (float)Math.Acos(f.Normalf.X * x + f.Normalf.Y * y + f.Normalf.Z * z);
-
-                if (angle < smallestAngle)
-                {
-                    smallestAngle = angle;
-                    facing = f;
-                }
-            }
-
-            return facing;
-        }
-
-
-
-        /// <summary>
-        /// Returns the closest horizontal face from given angle (0 degree = east). Uses HORIZONTALS_ANGLEORDER
-        /// </summary>
-        /// <param name="radiant"></param>
-        /// <returns></returns>
-        public static BlockFacing HorizontalFromAngle(float radiant)
-        {
-            int index = GameMath.Mod(((int)(Math.Round(radiant * GameMath.RAD2DEG / 90))), 4);
-
-            return HORIZONTALS_ANGLEORDER[index];
         }
 
        
@@ -413,11 +361,137 @@ namespace Vintagestory.API.MathTools
             return brightness;
         }
 
+        
+        public bool IsAdjacent(BlockFacing facing)
+        {
+            if (IsVertical)
+            {
+                return facing.IsHorizontal;
+            }
+
+            return
+                (IsHorizontal && facing.IsVertical)
+                || (axis == EnumAxis.X && facing.axis == EnumAxis.Z)
+                || (axis == EnumAxis.Z && facing.axis == EnumAxis.X)
+            ;
+        }
+
 
         public override string ToString()
         {
             return code;
         }
+
+
+
+
+
+        /// <summary>
+        /// Returns the face if code is 'north', 'east', 'south', 'west', 'north', 'up' or 'down'. Otherwise null.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static BlockFacing FromCode(string code)
+        {
+            code = code?.ToLowerInvariant();
+
+            switch (code)
+            {
+                case "north": return NORTH;
+                case "south": return SOUTH;
+                case "east": return EAST;
+                case "west": return WEST;
+                case "up": return UP;
+                case "down": return DOWN;
+            }
+
+            return null;
+        }
+
+        public static BlockFacing FromFirstLetter(char code)
+        {
+            return FromFirstLetter("" + code);
+        }
+
+        /// <summary>
+        /// Returns the face if code is 'n', 'e', 's', 'w', 'n', 'u' or 'd'. Otherwise null.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public static BlockFacing FromFirstLetter(string code)
+        {
+            code = code.ToLowerInvariant();
+
+            switch (code)
+            {
+                case "n": return NORTH;
+                case "s": return SOUTH;
+                case "e": return EAST;
+                case "w": return WEST;
+                case "u": return UP;
+                case "d": return DOWN;
+            }
+
+            return null;
+        }
+
+
+
+        public static BlockFacing FromVector(Vec3f vec)
+        {
+            float smallestAngle = GameMath.PI;
+            BlockFacing facing = null;
+
+            for (int i = 0; i < ALLFACES.Length; i++)
+            {
+                BlockFacing f = ALLFACES[i];
+                float angle = (float)Math.Acos(f.Normalf.Dot(vec));
+
+                if (angle < smallestAngle)
+                {
+                    smallestAngle = angle;
+                    facing = f;
+                }
+            }
+
+            return facing;
+        }
+
+
+        public static BlockFacing FromVector(double x, double y, double z)
+        {
+            float smallestAngle = GameMath.PI;
+            BlockFacing facing = null;
+
+            for (int i = 0; i < ALLFACES.Length; i++)
+            {
+                BlockFacing f = ALLFACES[i];
+                float angle = (float)Math.Acos(f.Normalf.X * x + f.Normalf.Y * y + f.Normalf.Z * z);
+
+                if (angle < smallestAngle)
+                {
+                    smallestAngle = angle;
+                    facing = f;
+                }
+            }
+
+            return facing;
+        }
+
+
+
+        /// <summary>
+        /// Returns the closest horizontal face from given angle (0 degree = east). Uses HORIZONTALS_ANGLEORDER
+        /// </summary>
+        /// <param name="radiant"></param>
+        /// <returns></returns>
+        public static BlockFacing HorizontalFromAngle(float radiant)
+        {
+            int index = GameMath.Mod(((int)(Math.Round(radiant * GameMath.RAD2DEG / 90))), 4);
+
+            return HORIZONTALS_ANGLEORDER[index];
+        }
+
 
         /// <summary>
         /// Returns true if given byte flags contain given face 

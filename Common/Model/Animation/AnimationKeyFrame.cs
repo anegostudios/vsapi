@@ -10,16 +10,26 @@ namespace Vintagestory.API.Common
     [JsonObject(MemberSerialization.OptIn)]
     public class AnimationKeyFrame
     {
+        /// <summary>
+        /// The ID of the keyframe.
+        /// </summary>
         [JsonProperty]
         public int Frame;
 
+        /// <summary>
+        /// The elements of the keyframe.
+        /// </summary>
         [JsonProperty]
         public Dictionary<string, AnimationKeyFrameElement> Elements;
 
 
         Dictionary<ShapeElement, AnimationKeyFrameElement> ElementsByShapeElement = new Dictionary<ShapeElement, AnimationKeyFrameElement>();
 
-
+        /// <summary>
+        /// Resolves the keyframe animation for which elements are important.
+        /// </summary>
+        /// <param name="anim"></param>
+        /// <param name="allElements"></param>
         public void Resolve(Animation anim, ShapeElement[] allElements)
         {
             if (Elements == null) return;

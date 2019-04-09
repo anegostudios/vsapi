@@ -11,10 +11,29 @@ namespace Vintagestory.API.Common
 {
     public class EntityPlayer : EntityHumanoid
     {
-        public API.Common.Action<float> PhysicsUpdateWatcher;
+        /// <summary>
+        /// Physics update watcher for the player.
+        /// </summary>
+        public Action<float> PhysicsUpdateWatcher;
+
+        /// <summary>
+        /// The block or blocks currently selected by the player.
+        /// </summary>
         public BlockSelection BlockSelection;
+
+        /// <summary>
+        /// The entity or entities selected by the player.
+        /// </summary>
         public EntitySelection EntitySelection;
+
+        /// <summary>
+        /// The reason the player died (if the player did die)
+        /// </summary>
         public DamageSource DeathReason;
+
+        /// <summary>
+        /// The camera position of the player's view.
+        /// </summary>
         public Vec3d CameraPos = new Vec3d();
 
         /// <summary>
@@ -26,7 +45,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float WalkPitch;
 
-
+        /// <summary>
+        /// The current height of the eyes.
+        /// </summary>
         double eyeHeightCurrent;
 
 
@@ -36,6 +57,9 @@ namespace Vintagestory.API.Common
 
         }
 
+        /// <summary>
+        /// The player's internal Universal ID
+        /// </summary>
         public string PlayerUID
         {
             get { return WatchedAttributes.GetString("playerUID"); }
@@ -55,7 +79,7 @@ namespace Vintagestory.API.Common
             get
             {
                 IPlayer player = World.PlayerByUid(PlayerUID);
-                return player?.InventoryManager.GetHotbarInventory()[10];
+                return player?.InventoryManager?.GetHotbarInventory()?[10];
             }
         }
 
@@ -104,6 +128,9 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// The base player attached to this EntityPlayer.
+        /// </summary>
         public IPlayer Player
         {
             get
@@ -158,8 +185,8 @@ namespace Vintagestory.API.Common
                 }
                 else if (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.IsFlying)
                 {
-                    newEyeheight *= 0.85f;
-                    newModelHeight *= 0.85f;
+                    newEyeheight *= 0.8f;
+                    newModelHeight *= 0.8f;
                 } else if (!Alive)
                 {
                     newEyeheight *= 0.25f;
@@ -168,14 +195,14 @@ namespace Vintagestory.API.Common
 
                 bool moving = (servercontrols.TriesToMove && LocalPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
 
-                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3);
+                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (servercontrols.Sprint ? 0.9 : 1.2);
 
                 walkCounter = moving ? walkCounter + frequency : 0;
                 walkCounter = walkCounter % GameMath.TWOPI;
 
                 double sneakMul = (servercontrols.Sneak ? 1.7 : 1);
 
-                double amplitude = (FeetInLiquid ? 0.8 : 1) / (3 * sneakMul);
+                double amplitude = (FeetInLiquid ? 0.8 : 1) / (3 * sneakMul) + (servercontrols.Sprint ? 0.2 : 0);
                 double offset = -0.2 / sneakMul;
 
 
@@ -304,11 +331,9 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public virtual void Revive()
+        public override void Revive()
         {
-            Alive = true;
-            ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Respawn, Type = EnumDamageType.Heal }, 9999);
-            AnimManager?.StopAnimation("die");
+            base.Revive();
 
             (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, 196);
         }
@@ -343,21 +368,20 @@ namespace Vintagestory.API.Common
 
             if (damage != 0 && World?.Side == EnumAppSide.Server)
             {
-                string strDamage = "Lost " + (damage).ToString();
-                if (damageSource.Type == EnumDamageType.Heal) strDamage = "Gained " + damage;
+                bool heal = damageSource.Type == EnumDamageType.Heal;
 
-                string msg = Lang.Get("{0} hp through {1}", strDamage, damageSource.Type.ToString().ToLowerInvariant());// damageSource.source.ToString().ToLowerInvariant());
+                string msg = Lang.Get(heal ? "Gained {0} hp through {1}" : "Lost {0} hp through {1}", damage, damageSource.Type.ToString().ToLowerInvariant());// damageSource.source.ToString().ToLowerInvariant());
 
                 if (damageSource.Source == EnumDamageSource.Player)
                 {
                     EntityPlayer eplr = damageSource.SourceEntity as EntityPlayer;
-                    msg = Lang.Get("{0} hp by player {1}", strDamage, damageSource.Source.ToString().ToLowerInvariant(), World.PlayerByUid(eplr.PlayerUID).PlayerName);
+                    msg = Lang.Get(heal ? "Gained {0} hp by player {1}" : "Lost {0} hp by player {1}", damage, damageSource.Source.ToString().ToLowerInvariant(), World.PlayerByUid(eplr.PlayerUID).PlayerName);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Entity)
                 {
                     string creatureName = Lang.Get("prefixandcreature-" + damageSource.SourceEntity.Code.Path.Replace("-", ""));
-                    msg = Lang.Get("{0} hp by {1}", strDamage, creatureName);
+                    msg = Lang.Get(heal ? "Gained {0} hp by {1}" : "Lost {0} hp by {1}", damage, creatureName);
                 }
 
                 (World.PlayerByUid(PlayerUID) as IServerPlayer).SendMessage(GlobalConstants.DamageLogChatGroup, msg, EnumChatType.Notification);
@@ -408,6 +432,9 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Sets the current player.
+        /// </summary>
         public void SetCurrentlyControlledPlayer()
         {
             this.servercontrols = controls;
@@ -428,8 +455,10 @@ namespace Vintagestory.API.Common
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
-                sapi.World.LoadChunkColumn((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, () =>
+                sapi.WorldManager.LoadChunkColumnFast((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions()
                 {
+                    OnLoaded = () =>
+                    {
                     Pos.SetPos(x, y, z);
                     ServerPos.SetPos(x, y, z);
                     PreviousServerPos.SetPos(-99, -99, -99);
@@ -437,17 +466,34 @@ namespace Vintagestory.API.Common
                     Pos.Motion.Set(0, 0, 0);
                     if (this is EntityPlayer)
                     {
-                        sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
+                    sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
                     }
 
                     WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
 
                     Teleporting = false;
+                    }
                 });
 
             }
+        }
 
 
+        public override string GetName()
+        {
+            string name = GetBehavior<EntityBehaviorNameTag>()?.DisplayName;
+            if (name == null) return base.GetName();
+            return name;
+        }
+
+        public override string GetInfoText()
+        {
+            if (!Alive)
+            {
+                return Lang.Get(Code.Domain + ":item-dead-creature-" + Code.Path);
+            }
+
+            return Lang.Get(Code.Domain + ":item-creature-" + Code.Path);
         }
     }
 }

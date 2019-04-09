@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
     public class ClearFloatTextComponent : RichTextComponent
     {
         
-        public ClearFloatTextComponent(float marginTop = 0) : base("", CairoFont.WhiteDetailText())
+        public ClearFloatTextComponent(ICoreClientAPI api, float marginTop = 0) : base(api, "", CairoFont.WhiteDetailText())
         {
             this.Float = EnumFloat.None;
             MarginTop = marginTop;
@@ -52,7 +52,7 @@ namespace Vintagestory.API.Client
             }*/
         }
 
-        public override void RenderInteractiveElements(ICoreClientAPI api, float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
             
         }

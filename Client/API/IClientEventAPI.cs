@@ -7,11 +7,26 @@ namespace Vintagestory.API.Client
     public delegate void MouseEventDelegate(MouseEvent e);
     public delegate void KeyEventDelegate(KeyEvent e);
     public delegate void PlayerEventDelegate(IClientPlayer byPlayer);
-    
+    public delegate void FileDropDelegate(FileDropEvent e);
+
+    public delegate void IngameErrorDelegate(object sender, string errorCode, string text);
 
     public delegate void OnGamePauseResume(bool isPaused);
     public delegate void ChatLineDelegate(int groupId, string message, EnumChatType chattype, string data);
     public delegate void ClientChatLineDelegate(int groupId, ref string message);
+
+    /// <summary>
+    /// OldBlock param may be null!
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="oldBlock"></param>
+    public delegate void BlockChangedDelegate(BlockPos pos, Block oldBlock);
+
+    public class FileDropEvent
+    {
+        public string Filename;
+        public bool Handled;
+    }
 
     public class DummyRenderer : IRenderer
     {
@@ -78,15 +93,26 @@ namespace Vintagestory.API.Client
         event API.Common.Action LeaveWorld;
 
         /// <summary>
-        /// When a player block has been modified
+        /// When a player block has been modified. OldBlock param may be null!
         /// </summary>
-        event Common.Action<BlockPos> BlockChanged;
+        event BlockChangedDelegate BlockChanged;
 
         /// <summary>
-        /// Fired when the local player changes their active
-        /// hotbar slot, or has it changed by the server.
+        /// Fired before a player changes their active slot (such as selected hotbar slot).
+        /// Allows for the event to be cancelled depending on the return value.
+        /// Note: Not called when the server forcefully changes active slot.
         /// </summary>
-        event Common.Action<ActiveHotbarSlotChangedEvent> ActiveHotbarSlotChanged;
+        event Common.Func<ActiveSlotChangeEventArgs, EnumHandling> BeforeActiveSlotChanged;
+
+        /// <summary>
+        /// Fired after a player changes their active slot (such as selected hotbar slot).
+        /// </summary>
+        event Common.Action<ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
+
+        /// <summary>
+        /// Fired when somethign fires an ingame error
+        /// </summary>
+        event IngameErrorDelegate InGameError;
 
         /// <summary>
         /// Registers a rendering handler to be called during every render frame
@@ -102,6 +128,7 @@ namespace Vintagestory.API.Client
         /// <param name="renderer"></param>
         /// <param name="renderStage"></param>
         void UnregisterRenderer(IRenderer renderer, EnumRenderStage renderStage);
+        
 
         /// <summary>
         /// Called when server assetes were received and all texture atlases have been created
@@ -151,5 +178,10 @@ namespace Vintagestory.API.Client
         /// Provides low level access to the key up event. If e.Handled is set to true, the event will not be handled by the game
         /// </summary>
         event KeyEventDelegate KeyUp;
+
+        /// <summary>
+        /// Fired when the user drags&drops a file into the game window
+        /// </summary>
+        event FileDropDelegate FileDrop;
     }
 }

@@ -13,6 +13,12 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
+    public enum EnumHand
+    {
+        Left,
+        Right
+    }
+
     /// <summary>
     /// An autonomous, goal-directed entity which observes and acts upon an environment
     /// </summary>
@@ -40,7 +46,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Unique identifier for a herd
         /// </summary>
-        public long HerdId;
+        public long HerdId
+        {
+            get { return WatchedAttributes.GetLong("herdId"); }
+            set { WatchedAttributes.SetLong("herdId", value); }
+        }
 
         protected EntityControls controls;
         protected EntityControls servercontrols;
@@ -54,26 +64,41 @@ namespace Vintagestory.API.Common
             get { return true; }
         }
 
+        /// <summary>
+        /// Item in the left hand slot of the entity agent.
+        /// </summary>
         public virtual ItemSlot LeftHandItemSlot
         {
             get { return null; }
         }
 
+        /// <summary>
+        /// Item in the right hand slot of the entity agent.
+        /// </summary>
         public virtual ItemSlot RightHandItemSlot
         {
             get { return null; }
         }
 
+        /// <summary>
+        /// The inventory of the entity agent.
+        /// </summary>
         public virtual IInventory GearInventory
         {
             get { return null; }
         }
 
+        /// <summary>
+        /// Whether or not the entity should despawn.
+        /// </summary>
         public override bool ShouldDespawn
         {
             get { return !Alive && AllowDespawn; }
         }
 
+        /// <summary>
+        /// Whether or not the entity is allowed to despawn (Default: true)
+        /// </summary>
         public bool AllowDespawn = true;
 
 
@@ -117,28 +142,47 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// The controls for this entity.
+        /// </summary>
         public EntityControls Controls
         {
             get { return controls; }
         }
 
+        /// <summary>
+        /// The server controls for this entity
+        /// </summary>
         public EntityControls ServerControls
         {
             get { return servercontrols; }
         }
         
+        /// <summary>
+        /// Are the eyes of this entity submerged in liquid?
+        /// </summary>
+        /// <returns></returns>
         public bool IsEyesSubmerged()
         {
             int blockId = GetEyesBlockId();
             return World.Blocks[blockId].MatterState == EnumMatterState.Liquid;
         }
 
+        /// <summary>
+        /// Gets the ID of the block the eyes are submerged in.
+        /// </summary>
+        /// <returns></returns>
         public ushort GetEyesBlockId()
         {
             BlockPos pos = LocalPos.AsBlockPos.Add(0, (float)Properties.EyeHeight, 0);
             return World.BlockAccessor.GetBlockId(pos.X, pos.Y, pos.Z);
         }
 
+        /// <summary>
+        /// Attempts to mount the player on a target.
+        /// </summary>
+        /// <param name="onmount">The mount to mount</param>
+        /// <returns>Whether it was mounted or not.</returns>
         public bool TryMount(IMountable onmount)
         {
             this.MountedOn = onmount;
@@ -155,6 +199,10 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+        /// <summary>
+        /// Attempts to un-mount the player.
+        /// </summary>
+        /// <returns>Whether or not unmounting was successful</returns>
         public bool TryUnmount()
         {
             if (MountedOn?.SuggestedAnimation != null)
@@ -188,9 +236,9 @@ namespace Vintagestory.API.Common
             base.Die(reason, damageSourceForDeath);
         }
 
-        public override void OnInteract(EntityAgent byEntity, IItemSlot slot, Vec3d hitPosition, EnumInteractMode mode)
+        public override void OnInteract(EntityAgent byEntity, ItemSlot slot, Vec3d hitPosition, EnumInteractMode mode)
         {
-            EnumHandling handled = EnumHandling.NotHandled;
+            EnumHandling handled = EnumHandling.PassThrough;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
@@ -288,7 +336,12 @@ namespace Vintagestory.API.Common
             return ret;
         }
 
-
+        /// <summary>
+        /// Recieves the saturation from a food source.
+        /// </summary>
+        /// <param name="saturation">The amount of saturation recieved.</param>
+        /// <param name="foodCat">The cat of food... err Category of food.</param>
+        /// <param name="saturationLossDelay">The delay before the loss of saturation</param>
         public virtual void ReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
         {
             if (!Alive) return;
@@ -302,6 +355,12 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Whether or not the target should recieve saturation.
+        /// </summary>
+        /// <param name="saturation">The amount of saturation recieved.</param>
+        /// <param name="foodCat">The cat of food... err Category of food.</param>
+        /// <param name="saturationLossDelay">The delay before the loss of saturation</param>
         public virtual bool ShouldReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
         {
             return true;
@@ -350,28 +409,25 @@ namespace Vintagestory.API.Common
                     {
                         anim.WasStartedFromTrigger = true;
                         AnimManager.StartAnimation(anim);
-             //           Console.WriteLine("start" + anim.Animation);
                     }
 
                     if (wasActive && !nowActive && anim.WasStartedFromTrigger)
                     {
                         anim.WasStartedFromTrigger = false;
                         AnimManager.StopAnimation(anim.Animation);
-             //           Console.WriteLine("stop" + anim.Animation);
                     }
                 }
 
                 if (!anyAverageAnimActive && defaultAnim != null)
                 {
                     defaultAnim.WasStartedFromTrigger = true;
-                    //          Console.WriteLine("start default " + defaultAnim.Animation);
                     AnimManager.StartAnimation(defaultAnim);
                 }
             }
 
             if (Properties.RotateModelOnClimb && World.Side == EnumAppSide.Server)
             {
-                if (Controls.IsClimbing && ClimbingOnFace != null)
+                if (Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
                 {
                     ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
                 }
@@ -386,12 +442,13 @@ namespace Vintagestory.API.Common
 
 
         string lastRunningHeldUseAnimation;
-        string lastRunningHeldIdleAnimation;
+        string lastRunningRightHeldIdleAnimation;
+        string lastRunningLeftHeldIdleAnimation;
         string lastRunningHeldHitAnimation;
 
         private void HandleHandAnimations()
         {
-            ItemStack stack = RightHandItemSlot?.Itemstack;
+            ItemStack rightstack = RightHandItemSlot?.Itemstack;
 
             bool nowUseStack = servercontrols.RightMouseDown;
             bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
@@ -399,44 +456,60 @@ namespace Vintagestory.API.Common
             bool nowHitStack = servercontrols.LeftMouseDown;
             bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
 
-            bool nowIdleStack = !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown;
-            bool wasIdleStack = lastRunningHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldIdleAnimation);
+            bool nowRightIdleStack = !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown;
+            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningRightHeldIdleAnimation);
 
-            string nowHeldUseAnim = stack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
-            string nowHeldHitAnim = stack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
-            string nowHeldIdleAnim = stack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this);
+            bool nowLeftIdleStack = true;
+            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningLeftHeldIdleAnimation);
 
-            if (stack == null) nowHeldHitAnim = "breakhand";
 
-            if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldUseAnim != lastRunningHeldUseAnimation))
+            string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
+            string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
+            string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
+            string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
+
+            if (rightstack == null) nowHeldRightHitAnim = "breakhand";
+
+            if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
             {
                 StopHandAnims();
                 if (nowUseStack)
                 {
-                    AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldUseAnim);
+                    AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldRightUseAnim);
                 }
             }
 
-            if (nowHitStack != wasHitStack || (lastRunningHeldHitAnimation != null && nowHeldHitAnim != lastRunningHeldHitAnimation))
+            if (nowHitStack != wasHitStack || (lastRunningHeldHitAnimation != null && nowHeldRightHitAnim != lastRunningHeldHitAnimation))
             {
                 StopHandAnims();
                 if (nowHitStack)
                 {
-                    AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldHitAnim);
+                    AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldRightHitAnim);
                 }
             }
 
-            if (nowIdleStack != wasIdleStack || (lastRunningHeldIdleAnimation != null && nowHeldIdleAnim != lastRunningHeldIdleAnimation))
+            if (nowRightIdleStack != wasRightIdleStack || (lastRunningRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastRunningRightHeldIdleAnimation))
             {
                 StopHandAnims();
-                if (nowIdleStack)
+                if (nowRightIdleStack)
                 {
-                    AnimManager.StartAnimation(lastRunningHeldIdleAnimation = nowHeldIdleAnim);
+                    AnimManager.StartAnimation(lastRunningRightHeldIdleAnimation = nowHeldRightIdleAnim);
+                }
+            }
+
+            if (nowLeftIdleStack != wasLeftIdleStack || (lastRunningLeftHeldIdleAnimation != null && nowHeldLeftIdleAnim != lastRunningLeftHeldIdleAnimation))
+            {
+                AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
+                lastRunningLeftHeldIdleAnimation = null;
+
+                if (nowLeftIdleStack)
+                {
+                    AnimManager.StartAnimation(lastRunningLeftHeldIdleAnimation = nowHeldLeftIdleAnim);
                 }
             }
         }
 
-        private void StopHandAnims()
+        protected virtual void StopHandAnims()
         {
             AnimManager.StopAnimation(lastRunningHeldUseAnimation);
             lastRunningHeldUseAnimation = null;
@@ -444,20 +517,30 @@ namespace Vintagestory.API.Common
             AnimManager.StopAnimation(lastRunningHeldHitAnimation);
             lastRunningHeldHitAnimation = null;
 
-            AnimManager.StopAnimation(lastRunningHeldIdleAnimation);
-            lastRunningHeldIdleAnimation = null;
+            AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
+            lastRunningRightHeldIdleAnimation = null;
         }
 
-
-        public double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
+        /// <summary>
+        /// Gets the walk speed multiplier.
+        /// </summary>
+        /// <param name="groundDragFactor">The amount of drag provided by the current ground. (Default: 0.3)</param>
+        public virtual double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
             Block belowBlock = World.BlockAccessor.GetBlock((int)LocalPos.X, (int)(LocalPos.Y - 0.05f), (int)LocalPos.Z);
+            Block insideblock = World.BlockAccessor.GetBlock((int)LocalPos.X, (int)(LocalPos.Y + 0.01f), (int)LocalPos.Z);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
-
+            
             if (FeetInLiquid) multiplier /= 2.5;
+            
 
-            multiplier *= 1 + (belowBlock.WalkSpeedMultiplier - 1) / (1 - groundDragFactor);
+            if (this is EntityPlayer && (this as EntityPlayer).Player.WorldData.CurrentGameMode == EnumGameMode.Creative)
+            {
+            } else
+            {
+                multiplier *= belowBlock.WalkSpeedMultiplier * insideblock.WalkSpeedMultiplier;
+            }
 
             // Apply walk speed modifiers.
             var attribute = WatchedAttributes.GetTreeAttribute("walkSpeedModifiers");
@@ -479,7 +562,7 @@ namespace Vintagestory.API.Common
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <param name="persistent">Whether the modifier should be saved and loaded.</param>
-        public void SetWalkSpeedModifier(string key, float value, bool persistent)
+        public virtual void SetWalkSpeedModifier(string key, float value, bool persistent)
         {
             var attribute = WatchedAttributes
                 .GetOrAddTreeAttribute("walkSpeedModifiers")
@@ -493,7 +576,7 @@ namespace Vintagestory.API.Common
         /// Removes a previously set walk speed modifier. Does nothing if it doesn't exist.
         /// </summary>
         /// <param name="key"></param>
-        public void RemoveWalkSpeedModifier(string key)
+        public virtual void RemoveWalkSpeedModifier(string key)
         {
             WatchedAttributes.GetTreeAttribute("walkSpeedModifiers")
                 ?.RemoveAttribute(key);
@@ -559,7 +642,12 @@ namespace Vintagestory.API.Common
 
         
 
-
+        /// <summary>
+        /// Attempts to stop the hand  action.
+        /// </summary>
+        /// <param name="isCancel">Whether or not the action is cancelled or stopped.</param>
+        /// <param name="cancelReason">The reason for stopping the action.</param>
+        /// <returns>Whether the stop was cancelled or not.</returns>
         public virtual bool TryStopHandAction(bool isCancel, EnumItemUseCancelReason cancelReason = EnumItemUseCancelReason.ReleasedMouse)
         {
             if (controls.HandUse == EnumHandInteract.None || RightHandItemSlot?.Itemstack == null) return true;
@@ -579,6 +667,10 @@ namespace Vintagestory.API.Common
             return controls.HandUse == EnumHandInteract.None;
         }
 
+        /// <summary>
+        /// This walks the inventory for the entity agent.
+        /// </summary>
+        /// <param name="handler">the event to fire while walking the inventory.</param>
         public virtual void WalkInventory(OnInventorySlot handler)
         {
             

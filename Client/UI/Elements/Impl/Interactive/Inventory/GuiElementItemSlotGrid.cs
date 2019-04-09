@@ -17,6 +17,8 @@ namespace Vintagestory.API.Client
             this.SendPacketHandler = SendPacketHandler;
         }
 
+        
+
         /// <summary>
         /// Determines the available slots for the slot grid.
         /// </summary>
@@ -30,16 +32,16 @@ namespace Vintagestory.API.Client
             {
                 for (int i = 0; i < visibleSlots.Length; i++)
                 {
-                    availableSlots.Add(visibleSlots[i], inventory.GetSlot(visibleSlots[i]));
-                    renderedSlots.Add(visibleSlots[i], inventory.GetSlot(visibleSlots[i]));
+                    availableSlots.Add(visibleSlots[i], inventory[visibleSlots[i]]);
+                    renderedSlots.Add(visibleSlots[i], inventory[visibleSlots[i]]);
                 }
             }
             else
             {
-                for (int i = 0; i < inventory.QuantitySlots; i++)
+                for (int i = 0; i < inventory.Count; i++)
                 {
-                    availableSlots.Add(i, inventory.GetSlot(i));
-                    renderedSlots.Add(i, inventory.GetSlot(i));
+                    availableSlots.Add(i, inventory[i]);
+                    renderedSlots.Add(i, inventory[i]);
                 }
             }
         }

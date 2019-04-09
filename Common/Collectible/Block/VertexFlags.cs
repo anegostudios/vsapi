@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Special class to handle the vertex flagging in a very nicely compressed space.
+    /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class VertexFlags
     {

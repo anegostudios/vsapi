@@ -27,10 +27,10 @@ namespace Vintagestory.API.Client
         int valueWidth;
         int valueHeight;
 
-        public bool shouldFlash;
-        public float flashTime;
+        public bool ShouldFlash;
+        public float FlashTime;
+        public bool ShowValueOnHover=true;
 
-        public bool showValueOnHover=true;
         public StatbarValueDelegate onGetStatbarValue;
         public CairoFont valueFont = CairoFont.WhiteSmallText().WithStroke(ColorUtil.BlackArgbDouble, 0.75);
 
@@ -62,11 +62,11 @@ namespace Vintagestory.API.Client
 
             ctx.Operator = Operator.Over; // WTF man, somehwere within this code or within cairo the main context operator is being changed
 
-            RoundRectangle(ctx, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 3);
+            RoundRectangle(ctx, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1);
 
             ctx.SetSourceRGB(0.15, 0.15, 0.15);
             ctx.Fill();
-            EmbossRoundRectangleElement(ctx, Bounds, false, 3, 2);
+            EmbossRoundRectangleElement(ctx, Bounds, false, 3, 1);
 
             ComposeValueOverlay();
             ComposeFlashOverlay();
@@ -86,18 +86,23 @@ namespace Vintagestory.API.Client
                 double width = Bounds.OuterWidth * widthRel;
                 double x = rightToLeft ? Bounds.OuterWidth - width : 0;
 
-                RoundRectangle(ctx, x, 0, width, Bounds.OuterHeight, 2);
+                RoundRectangle(ctx, x, 0, width, Bounds.OuterHeight, 1);
                 ctx.SetSourceRGB(color[0], color[1], color[2]);
-                ctx.Fill();
+                ctx.FillPreserve();
+
+                ctx.SetSourceRGB(color[0] * 0.4, color[1] * 0.4, color[2] * 0.4);
+                ctx.LineWidth = scaled(3);
+                ctx.StrokePreserve();
+                surface.Blur(3);
 
                 width = Bounds.InnerWidth * widthRel;
                 x = rightToLeft ? Bounds.InnerWidth - width : 0;
 
-                EmbossRoundRectangleElement(ctx, x, 0, width, Bounds.InnerHeight, false, 2, 2);
+                EmbossRoundRectangleElement(ctx, x, 0, width, Bounds.InnerHeight, false, 2, 1);
             }
 
             ctx.SetSourceRGBA(0, 0, 0, 0.5);
-            ctx.LineWidth = scaled(1.8);
+            ctx.LineWidth = scaled(2.2);
 
 
             int lines = (int)((maxValue - minValue) / lineInterval);
@@ -121,12 +126,12 @@ namespace Vintagestory.API.Client
             ctx.Dispose();
             surface.Dispose();
 
-            if (showValueOnHover)
+            if (ShowValueOnHover)
             {
                 api.Gui.TextTexture.GenOrUpdateTextTexture(onGetStatbarValue(), valueFont, ref valueTexture, new TextBackground() {
                     FillColor = GuiStyle.DialogStrongBgColor,
                     Padding = 5,
-                    StrokeWidth = 2
+                    BorderWidth = 2
                 } );
             }
         }
@@ -141,12 +146,14 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0,0,0,0);
             ctx.Paint();
 
-            RoundRectangle(ctx, 12, 12, Bounds.OuterWidthInt + 4, Bounds.OuterHeightInt + 4, 2);
+            RoundRectangle(ctx, 12, 12, Bounds.OuterWidthInt + 4, Bounds.OuterHeightInt + 4, 1);
             ctx.SetSourceRGB(color[0], color[1], color[2]);
+            ctx.FillPreserve();
+            surface.Blur(3, true);
             ctx.Fill();
-            surface.Blur(11);
+            surface.Blur(2, true);
 
-            RoundRectangle(ctx, 15, 15, Bounds.OuterWidthInt - 2, Bounds.OuterHeightInt - 2, 2);
+            RoundRectangle(ctx, 15, 15, Bounds.OuterWidthInt - 2, Bounds.OuterHeightInt - 2, 1);
             ctx.Operator = Operator.Clear;
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Fill();
@@ -164,14 +171,18 @@ namespace Vintagestory.API.Client
             double y = Bounds.renderY;
 
             float alpha = 0;
-            if (shouldFlash)
+            if (ShouldFlash)
             {
-                flashTime += 6*deltaTime;
-                alpha = GameMath.Sin(flashTime);
+                FlashTime += 6*deltaTime;
+                alpha = GameMath.Sin(FlashTime);
                 if (alpha < 0)
                 {
-                    shouldFlash = false;
-                    flashTime = 0;
+                    ShouldFlash = false;
+                    FlashTime = 0;
+                }
+                if (FlashTime < GameMath.PIHALF)
+                {
+                    alpha = Math.Min(1, alpha * 3);
                 }
             }
 
@@ -182,7 +193,7 @@ namespace Vintagestory.API.Client
 
             api.Render.RenderTexture(barTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
 
-            if (showValueOnHover && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
+            if (ShowValueOnHover && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
             {
                 double tx = api.Input.MouseX + 16;
                 double ty = api.Input.MouseY + valueTexture.Height - 4;

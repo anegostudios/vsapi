@@ -303,5 +303,10 @@ namespace Vintagestory.API.MathTools
             };
         }
 
+        public bool Equals(int x, int y, int z)
+        {
+            return this.X == x && this.Y == y && this.Z == z;
+        }
+
     }
 }

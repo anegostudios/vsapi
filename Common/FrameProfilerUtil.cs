@@ -49,6 +49,7 @@ namespace Vintagestory.API.Common
         public void Mark(string elem)
         {
             if (!Enabled && !PrintSlowTicks) return;
+            if (elem == null) throw new ArgumentNullException("marker name may not be null!");
 
             long ms = 0;
             elems.TryGetValue(elem, out ms);

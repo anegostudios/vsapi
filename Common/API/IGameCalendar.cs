@@ -7,7 +7,7 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
-    public enum EnumSeaon
+    public enum EnumSeason
     {
         Spring,
         Summer,
@@ -127,7 +127,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns the current season
         /// </summary>
-        EnumSeaon Season { get; }
+        EnumSeason Season { get; }
         
 
         /// <summary>

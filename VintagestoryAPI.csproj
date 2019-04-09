@@ -86,15 +86,19 @@
     <Compile Include="Client\API\IInputAPI.cs" />
     <Compile Include="Client\API\ISettings.cs" />
     <Compile Include="Client\API\ITextureAtlasAPI.cs" />
+    <Compile Include="Client\Audio\MusicTrack.cs" />
     <Compile Include="Client\Input\EnumGlKeys.cs" />
     <Compile Include="Client\Input\EnumHotkeyType.cs" />
     <Compile Include="Client\Input\HotKey.cs" />
     <Compile Include="Client\Input\KeyCombination.cs" />
     <Compile Include="Client\Input\KeyEvent.cs" />
     <Compile Include="Client\Input\MouseEvent.cs" />
+    <Compile Include="Client\Render\IAviWriter.cs" />
     <Compile Include="Common\API\EnumBlockAccessResponse.cs" />
+    <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
+    <Compile Include="Common\API\ILandClaimAPI.cs" />
     <Compile Include="Common\Entity\EnumInteractMode.cs" />
-    <Compile Include="Common\Entity\Player\ActiveHotbarSlotChangedEvent.cs" />
+    <Compile Include="Common\Entity\Player\ActiveSlotChangeEventArgs.cs" />
     <Compile Include="Client\MeshPool\MeshDataPool.cs" />
     <Compile Include="Client\MeshPool\MeshDataPoolManager.cs" />
     <Compile Include="Client\MeshPool\MeshDataPoolMasterManager.cs" />
@@ -106,7 +110,7 @@
     <Compile Include="Client\UI\ElementBounds.cs" />
     <Compile Include="Client\UI\ElementEmptyBounds.cs" />
     <Compile Include="Client\UI\ElementStdBounds.cs" />
-    <Compile Include="Client\UI\Elements\ElementGeometrics.cs" />
+    <Compile Include="Client\UI\Elements\GuiStyle.cs" />
     <Compile Include="Client\UI\Elements\ElementSizing.cs" />
     <Compile Include="Client\UI\Elements\Impl\GuiElement.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementToggleButton.cs" />
@@ -128,7 +132,7 @@
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementNumberInput.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementStacklist.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementStatbar.cs" />
-    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTable.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementList.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTextArea.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTextInput.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementItemSlotGrid.cs" />
@@ -155,7 +159,7 @@
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementCell.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementClip.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementModCell.cs" />
-    <Compile Include="Client\UI\Elements\Impl\Misc\TableCell.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Misc\ListCellEntry.cs" />
     <Compile Include="Client\UI\Elements\Impl\Static\GuiElementCustomDraw.cs" />
     <Compile Include="Client\UI\Elements\Impl\Static\GuiElementDialogBackground.cs" />
     <Compile Include="Client\UI\Elements\Impl\Static\GuiElementEngravedText.cs" />
@@ -194,6 +198,7 @@
     <Compile Include="Common\FrameProfilerUtil.cs" />
     <Compile Include="Common\Entity\EntityProperties.cs" />
     <Compile Include="Common\Entity\SpawnConditions.cs" />
+    <Compile Include="Common\Inventory\CreativeInventoryTab.cs" />
     <Compile Include="Common\Inventory\ItemSlotOffHand.cs" />
     <Compile Include="Common\Model\Animation\AnimationCache.cs" />
     <Compile Include="Common\Model\Animation\AnimationMetaData.cs" />
@@ -214,7 +219,7 @@
     <Compile Include="Common\API\IBulkBlockAccessor.cs" />
     <Compile Include="Common\API\IEventAPI.cs" />
     <Compile Include="Common\API\IMapChunk.cs" />
-    <Compile Include="Common\Assets\JsonUtil.cs" />
+    <Compile Include="Util\JsonUtil.cs" />
     <Compile Include="Common\Assets\Mod.cs" />
     <Compile Include="Common\ByteSerializable.cs" />
     <Compile Include="Common\Collectible\Block\BlockSchematic.cs" />
@@ -227,8 +232,8 @@
     <Compile Include="Client\API\ITesselatorAPI.cs" />
     <Compile Include="Client\API\IRenderAPI.cs" />
     <Compile Include="Client\API\IRenderer.cs" />
-    <Compile Include="Client\API\ModelRef.cs" />
-    <Compile Include="Client\Audio\BasicMusicTrack.cs" />
+    <Compile Include="Client\API\MeshRef.cs" />
+    <Compile Include="Client\Audio\SurfaceMusicTrack.cs" />
     <Compile Include="Client\Audio\IMusicTrack.cs" />
     <Compile Include="Client\Audio\IMusicEngine.cs" />
     <Compile Include="Client\Audio\RainMusicTrack.cs" />
@@ -255,6 +260,7 @@
     <Compile Include="Common\Particle\EntityVoxelParticles.cs" />
     <Compile Include="Common\Platform\IPlatformUI.cs" />
     <Compile Include="Common\Playstyle\Playstyle.cs" />
+    <Compile Include="Common\Playstyle\WorldConfiguration.cs" />
     <Compile Include="Common\Registry\JsonConverters.cs" />
     <Compile Include="Common\Registry\RegistryObject.cs" />
     <Compile Include="Common\Text\VtmlParser.cs" />
@@ -274,6 +280,7 @@
     <Compile Include="Util\SerializerUtil.cs" />
     <Compile Include="Util\StringExtensions.cs" />
     <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="Util\WildcardUtil.cs" />
     <None Include="api\index.md" />
     <None Include="articles\intro.md" />
     <None Include="articles\toc.md" />
@@ -286,7 +293,7 @@
     <Compile Include="Common\Entity\EntitySelection.cs" />
     <Compile Include="Common\Entity\EnumEntityState.cs" />
     <Compile Include="Common\Entity\EnumHabitat.cs" />
-    <Compile Include="Common\Entity\Player\EnumItemUsing.cs" />
+    <Compile Include="Common\Entity\Player\EnumHandHandling.cs" />
     <Compile Include="Common\IMountable.cs" />
     <Compile Include="Common\Inventory\ItemSlotCreative.cs" />
     <Compile Include="Common\Inventory\DummySlot.cs" />
@@ -359,7 +366,6 @@
     <Compile Include="Common\Entity\EnumEntityActivity.cs" />
     <Compile Include="Datastructures\AttributeTree\Other\IAttribute.cs" />
     <Compile Include="Common\Collectible\IBlockEntityContainer.cs" />
-    <Compile Include="Common\Entity\Player\IEntityPlayer.cs" />
     <Compile Include="Datastructures\AttributeTree\ITreeAttribute.cs" />
     <Compile Include="Client\Audio\CaveMusicTrack.cs" />
     <Compile Include="Client\Audio\MusicTrackPart.cs" />
@@ -429,8 +435,6 @@
     <Compile Include="Client\Render\EnumItemRenderTarget.cs" />
     <Compile Include="Common\Particle\EnumParticleModel.cs" />
     <Compile Include="Common\Entity\Player\EnumPlayerGroupMemberShip.cs" />
-    <Compile Include="Common\Playstyle\EnumPlayStyle.cs" />
-    <Compile Include="Common\Playstyle\EnumPlayStyleFlag.cs" />
     <Compile Include="Server\Worldgen\EnumWorldgenPreset.cs" />
     <Compile Include="Server\Worldgen\IChunkProviderThread.cs" />
     <Compile Include="Client\Audio\ILoadedSound.cs" />
@@ -491,7 +495,6 @@
     <Compile Include="Common\Inventory\IInventory.cs" />
     <Compile Include="Common\Collectible\IItemStack.cs" />
     <Compile Include="Server\API\IServerChunk.cs" />
-    <Compile Include="Common\Inventory\IItemSlot.cs" />
     <Compile Include="Math\GameMath.cs" />
     <Compile Include="Math\Noise\ClampedSimplexNoise.cs" />
     <Compile Include="Math\Noise\NormalizedSimplexNoise.cs" />

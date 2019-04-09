@@ -46,7 +46,7 @@ namespace Vintagestory.API.Common
                     FogColor = WeightedFloatArray.New(new float[] { 0.725f, 0.827f, 0.929f }, 1),
                     FogDensity = WeightedFloat.New(0.0025f, 1),
                     AmbientColor = WeightedFloatArray.New(new float[] { 1, 1, 1 }, 1),
-                    CloudBrightness = WeightedFloat.New(0.95f, 1),
+                    CloudBrightness = WeightedFloat.New(1, 1),
                     CloudDensity = WeightedFloat.New(0, 0)
                 }.EnsurePopulated();
             }

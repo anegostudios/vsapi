@@ -12,28 +12,43 @@ namespace Vintagestory.API.Common
         ItemStack stack;
         public long itemSpawnedMilliseconds;
 
+        /// <summary>
+        /// The itemstack attached to this Item Entity.
+        /// </summary>
         public ItemStack Itemstack
         {
             get { return WatchedAttributes.GetItemstack("itemstack"); }
             set { WatchedAttributes.SetItemstack("itemstack", value); stack = value; }
         }
 
+        /// <summary>
+        /// The UID of the player that dropped this itemstack.
+        /// </summary>
         public string ByPlayerUid
         {
             get { return WatchedAttributes.GetString("byPlayerUid"); }
             set { WatchedAttributes.SetString("byPlayerUid", value); }
         }
 
+        /// <summary>
+        /// Returns the material density of the item.
+        /// </summary>
         public override float MaterialDensity
         {
             get { return (stack?.Collectible != null) ? stack.Collectible.MaterialDensity : 2000; }
         }
 
+        /// <summary>
+        /// Whether or not the EntityItem is interactable.
+        /// </summary>
         public override bool IsInteractable
         {
             get { return false; }
         }
 
+        /// <summary>
+        /// Get the HSV colors for the lighting.
+        /// </summary>
         public override byte[] LightHsv
         {
             get
@@ -85,7 +100,14 @@ namespace Vintagestory.API.Common
 
 
 
-
+        /// <summary>
+        /// Builds and spawns an EntityItem from a provided ItemStack.
+        /// </summary>
+        /// <param name="itemstack">The contents of the EntityItem</param>
+        /// <param name="position">The position of the EntityItem</param>
+        /// <param name="velocity">The velocity of the EntityItem</param>
+        /// <param name="world">The world the EntityItems preside in.</param>
+        /// <returns>A freshly baked EntityItem to introduce to the world.</returns>
         public static EntityItem FromItemstack(ItemStack itemstack, Vec3d position, Vec3d velocity, IWorldAccessor world)
         {
             EntityItem item = new EntityItem();

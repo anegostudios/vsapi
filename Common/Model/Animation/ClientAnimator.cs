@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -20,7 +21,7 @@ namespace Vintagestory.API.Common
         protected HashSet<int> jointsDone = new HashSet<int>();
         public Dictionary<int, AnimationJoint> jointsById;
 
-        public static int MaxConcurrentAnimations = 8;
+        public static int MaxConcurrentAnimations = 16;
 
         float[] localTransformMatrix = Mat4f.Create();
         float[] identMat = Mat4f.Create();
@@ -113,54 +114,62 @@ namespace Vintagestory.API.Common
 
         protected override void calculateMatrices(float dt)
         {
-            jointsDone.Clear();
-
-            for (int j = 0; j < curAnimCount; j++)
+            try
             {
-                RunningAnimation anim = curAnims[j];
-                weightsByAnimationAndElement[j] = anim.ElementWeights;
+                jointsDone.Clear();
 
-                AnimationFrame[] prevNextFrame = anim.Animation.PrevNextKeyFrameByFrame[(int)anim.CurrentFrame % anim.Animation.QuantityFrames];
-                transformsByAnimation[j] = prevNextFrame[0].RootElementTransforms;
-                prevFrame[j] = prevNextFrame[0].FrameNumber;
-
-                if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && (int)anim.CurrentFrame + 1 == anim.Animation.QuantityFrames)
+                for (int j = 0; j < curAnimCount; j++)
                 {
-                    nextFrameTransformsByAnimation[j] = prevNextFrame[0].RootElementTransforms;
-                    nextFrame[j] = prevNextFrame[0].FrameNumber;
-                } else
-                {
-                    nextFrameTransformsByAnimation[j] = prevNextFrame[1].RootElementTransforms;
-                    nextFrame[j] = prevNextFrame[1].FrameNumber;
-                }                
-            }
+                    RunningAnimation anim = curAnims[j];
+                    weightsByAnimationAndElement[j] = anim.ElementWeights;
 
-            calculateMatrices(
-                dt,
-                RootPoses,
-                weightsByAnimationAndElement,
-                Mat4f.Create(),
-                transformsByAnimation,
-                nextFrameTransformsByAnimation
-            );
+                    AnimationFrame[] prevNextFrame = anim.Animation.PrevNextKeyFrameByFrame[(int)anim.CurrentFrame % anim.Animation.QuantityFrames];
+                    transformsByAnimation[j] = prevNextFrame[0].RootElementTransforms;
+                    prevFrame[j] = prevNextFrame[0].FrameNumber;
 
-
-            for (int jointid = 0; jointid < GlobalConstants.MaxAnimatedElements; jointid++)
-            {
-                if (jointsById.ContainsKey(jointid)) continue;
-
-                for (int j = 0; j < 16; j++)
-                {
-                    TransformationMatrices[jointid * 16 + j] = identMat[j];
+                    if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && (int)anim.CurrentFrame + 1 == anim.Animation.QuantityFrames)
+                    {
+                        nextFrameTransformsByAnimation[j] = prevNextFrame[0].RootElementTransforms;
+                        nextFrame[j] = prevNextFrame[0].FrameNumber;
+                    }
+                    else
+                    {
+                        nextFrameTransformsByAnimation[j] = prevNextFrame[1].RootElementTransforms;
+                        nextFrame[j] = prevNextFrame[1].FrameNumber;
+                    }
                 }
-            }
 
-            foreach (var val in AttachmentPointByCode)
-            {
-                for (int i = 0; i < 16; i++)
+                calculateMatrices(
+                    dt,
+                    RootPoses,
+                    weightsByAnimationAndElement,
+                    Mat4f.Create(),
+                    transformsByAnimation,
+                    nextFrameTransformsByAnimation
+                );
+
+
+                for (int jointid = 0; jointid < GlobalConstants.MaxAnimatedElements; jointid++)
                 {
-                    val.Value.AnimModelMatrix[i] = val.Value.CachedPose.AnimModelMatrix[i];
+                    if (jointsById.ContainsKey(jointid)) continue;
+
+                    for (int j = 0; j < 16; j++)
+                    {
+                        TransformationMatrices[jointid * 16 + j] = identMat[j];
+                    }
                 }
+
+                foreach (var val in AttachmentPointByCode)
+                {
+                    for (int i = 0; i < 16; i++)
+                    {
+                        val.Value.AnimModelMatrix[i] = val.Value.CachedPose.AnimModelMatrix[i];
+                    }
+                }
+
+            } catch (Exception e)
+            {
+                entity.World.Logger.Fatal("Animation system crash. Please report this bug. curanimcount: {3}, tm-l:{0}, jbi-c: {1}, abc-c: {2}\nException: {4}", TransformationMatrices.Length, jointsById.Count, AttachmentPointByCode.Count, curAnimCount, e);
             }
         }
 

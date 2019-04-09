@@ -267,7 +267,8 @@ namespace Vintagestory.API.Datastructures
             {
                 Type t = AttributeIdMapping[attrId];
                 attr = (IAttribute)Activator.CreateInstance(t);
-                SetAttribute(path, attr);
+                attributes[path] = attr;
+                //SetAttribute(path, attr); - cant use this, causes a mark dirty and triggers modified listeners too early
             }
 
             attr.FromBytes(reader);

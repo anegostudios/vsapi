@@ -49,10 +49,7 @@ namespace Vintagestory.API.Client
             ImageSurface surfaceHighlight = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
             Context ctxHighlight = genContext(surfaceHighlight);
 
-            ctxHighlight.SetSourceRGBA(0, 0, 0, 0);
-            ctxHighlight.Paint();
-
-            ctxHighlight.SetSourceRGBA(0.5, 0.5, 0.5, 0.3);
+            ctxHighlight.SetSourceRGBA(1, 1, 1, 0.1);
             ctxHighlight.Paint();
 
             generateTexture(surfaceHighlight, ref highlightTexture);
@@ -68,9 +65,7 @@ namespace Vintagestory.API.Client
         {
             if (HasFocus)
             {
-                api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
                 api.Render.Render2DTexturePremultipliedAlpha(highlightTexture.TextureId, highlightBounds);
-                api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
             }
 
             api.Render.Render2DTexturePremultipliedAlpha(textTexture.TextureId, Bounds);

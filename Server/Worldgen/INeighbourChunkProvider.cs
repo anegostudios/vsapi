@@ -5,6 +5,8 @@ namespace Vintagestory.API.Server
 {
     public interface IChunkProvider
     {
+        ILogger Logger { get; }
+
         IWorldChunk GetChunk(int chunkX, int chunkY, int chunkZ);
 
         /// <summary>

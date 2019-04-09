@@ -20,7 +20,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.8.0";
+        public const string OverallVersion = "1.9.0";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -30,12 +30,12 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.9";
+        public const string ShortGameVersion = OverallVersion + "-pre.7";
 
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
         /// </summary>
-        public static string LongGameVersion = ShortGameVersion + " Survival Mode Edition (" + Branch + ")";
+        public static string LongGameVersion = "v" + ShortGameVersion + " (" + Branch + ")";
 
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
@@ -48,12 +48,12 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Mod API
         /// </summary>
-        public const string APIVersion = "1.6.0";
+        public const string APIVersion = "1.7.0";
 
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public static string NetworkVersion = "1.8.0";
+        public static string NetworkVersion = "1.9.1";
 
         /// <summary>
         /// Version of the savegame database

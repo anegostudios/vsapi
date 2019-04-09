@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -156,19 +157,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public bool WildCardMatch(AssetLocation wildCard)
         {
-            return WildCardMatch(wildCard, Code);
-        }
-
-
-        public static bool WildCardMatch(AssetLocation needle, AssetLocation haystack)
-        {
-            if (needle == haystack) return true;
-
-            if (haystack == null || needle.Domain != haystack.Domain) return false;
-
-            string pattern = Regex.Escape(needle.Path).Replace(@"\*", @"(.*)");
-
-            return Regex.IsMatch(haystack.Path, @"^" + pattern + @"$");
+            return WildcardUtil.Match(wildCard, Code);
         }
 
 

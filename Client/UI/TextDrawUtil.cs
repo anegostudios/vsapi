@@ -53,8 +53,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         public double PaddingRight;
 
-        //public double WidthWithoutTrailingSpace = 0;
-
         public double LeftSpace = 0;
         public double RightSpace = 0;
     }
@@ -132,7 +130,7 @@ namespace Vintagestory.API.Client
         {
             ctx.Save();
             Matrix m = ctx.Matrix;
-            m.Translate(posX, posY);
+            m.Translate((int)posX, (int)posY);
             ctx.Matrix = m;
 
             double height = AutobreakAndDrawMultilineText(ctx, font, text, 0, 0, new TextFlowPath[] { new TextFlowPath(boxWidth) }, orientation);
@@ -292,7 +290,9 @@ namespace Vintagestory.API.Client
                     lines.Add(new TextLine()
                     {
                         Text = lineTextBldr.ToString(),
-                        Bounds = new LineRectangled(currentSection.X1 + curX, curY, withoutWidth, lineheight) { Ascent = ctx.FontExtents.Ascent },
+                        Bounds = new LineRectangled(currentSection.X1 + curX, curY, withoutWidth, lineheight) {
+                            Ascent = ctx.FontExtents.Ascent
+                        },
                         LeftSpace = 0,
                         RightSpace = usableWidth - withoutWidth
                     });
@@ -318,7 +318,9 @@ namespace Vintagestory.API.Client
                     lines.Add(new TextLine()
                     {
                         Text = lineTextBldr.ToString(),
-                        Bounds = new LineRectangled(currentSection.X1 + curX, curY, withoutWidth, lineheight) { Ascent = ctx.FontExtents.Ascent },
+                        Bounds = new LineRectangled(currentSection.X1 + curX, curY, withoutWidth, lineheight) {
+                            Ascent = ctx.FontExtents.Ascent
+                        },
                         LeftSpace = 0,
                         RightSpace = usableWidth - withoutWidth
                     });
@@ -390,7 +392,7 @@ namespace Vintagestory.API.Client
                 if (chr == '\r')
                 {
                     gotLinebreak = true;
-                    if (caretPos < fulltext.Length - 1 && fulltext[caretPos] == '\n') caretPos++;
+                    if (caretPos <= fulltext.Length - 1 && fulltext[caretPos] == '\n') caretPos++;
                     break;
                 }
 
@@ -430,11 +432,11 @@ namespace Vintagestory.API.Client
         /// <param name="orientation">The orientation of text (Default: Left)</param>
         public void DrawMultilineText(Context ctx, CairoFont font, TextLine[] lines, EnumTextOrientation orientation = EnumTextOrientation.Left)
         {
-            double offsetX = 0;
-            double lineHeight = ctx.FontExtents.Height;
-
             font.SetupContext(ctx);
 
+            double offsetX = 0;
+            double lineHeight = ctx.FontExtents.Height;
+            
             for (int i = 0; i < lines.Length; i++)
             {
                 TextLine textLine = lines[i];
@@ -466,9 +468,7 @@ namespace Vintagestory.API.Client
         {
             if (text == null || text.Length == 0) return;
 
-            PointD point = ctx.CurrentPoint;
-            //ctx.MoveTo(offsetX + point.X, offsetY + point.Y + ctx.FontExtents.Ascent);
-            ctx.MoveTo(offsetX, offsetY + ctx.FontExtents.Ascent);
+            ctx.MoveTo((int)(offsetX), (int)(offsetY + ctx.FontExtents.Ascent));
 
             if (textPathMode)
             {
@@ -492,7 +492,6 @@ namespace Vintagestory.API.Client
 
                     if (font.RenderTwice)
                     {
-                        ctx.MoveTo(offsetX + point.X, offsetY + point.Y + ctx.FontExtents.Ascent);
                         ctx.ShowText(text);
                     }
 

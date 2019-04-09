@@ -78,7 +78,7 @@ namespace Vintagestory.API.Client
             GuiComposer composer =
                 capi.Gui
                .CreateCompo("cmdDlg" + settings.Code, dlgBounds)
-               .AddDialogBG(ElementStdBounds.DialogBackground().WithScale(factor).WithFixedPadding(settings.Padding), true)
+               .AddDialogBG(ElementStdBounds.DialogBackground().WithScale(factor).WithFixedPadding(settings.Padding), false)
                .BeginChildElements()
             ;
 
@@ -98,6 +98,8 @@ namespace Vintagestory.API.Client
                     DialogElement elem = row.Elements[j];
                     maxheight = Math.Max(elem.Height, maxheight);
 
+                    x += elem.PaddingLeft;
+
                     ComposeElement(composer, settings, elem, elemKey, x, y);
 
                     elemKey++;
@@ -109,7 +111,7 @@ namespace Vintagestory.API.Client
             }
 
 
-            DialogComposers["cmdDlg" + settings.Code] = composer.EndChildElements().Compose();
+            Composers["cmdDlg" + settings.Code] = composer.EndChildElements().Compose();
         }
 
         int elementNumber = 0;
@@ -131,6 +133,14 @@ namespace Vintagestory.API.Client
 
                 composer.AddStaticText(elem.Label, font, labelBounds);
                 labelWidth += 8;
+
+                if (elem.Tooltip != null)
+                {
+                    CairoFont tfont = CairoFont.WhiteSmallText();
+                    tfont.UnscaledFontsize *= factor;
+                    composer.AddHoverText(elem.Tooltip, tfont, 350, labelBounds.FlatCopy(), "tooltip-" + elem.Code);
+                    composer.GetHoverText("tooltip-" + elem.Code).SetAutoWidth(true);
+                }
             }
 
 
@@ -196,7 +206,18 @@ namespace Vintagestory.API.Client
                         composer.AddIconButton(elem.Icon, (val) => { settings.OnSet?.Invoke(elem.Code, null); }, bounds);
                     } else
                     {
-                        composer.AddButton(elem.Text, () => { settings.OnSet?.Invoke(elem.Code, null); return true; }, bounds.WithFixedPadding(10, 2));
+                        CairoFont font = CairoFont.ButtonText();
+                        font.WithFontSize(elem.FontSize);
+                        
+                        composer.AddButton(elem.Text, () => { settings.OnSet?.Invoke(elem.Code, null); return true; }, bounds.WithFixedPadding(8, 0), font);
+                    }
+
+                    if (elem.Tooltip != null && elem.Label == null)
+                    {
+                        CairoFont tfont = CairoFont.WhiteSmallText();
+                        tfont.UnscaledFontsize *= factor;
+                        composer.AddHoverText(elem.Tooltip, tfont, 350, bounds.FlatCopy(), "tooltip-"+elem.Code);
+                        composer.GetHoverText("tooltip-" + elem.Code).SetAutoWidth(true);
                     }
                     break;
 
@@ -224,7 +245,7 @@ namespace Vintagestory.API.Client
                         {
                             string key = "dropdown-" + elemKey;
                             
-                            composer.AddDropDown(values, names, selectedIndex, (newval) => { settings.OnSet?.Invoke(elem.Code, newval); }, bounds, key);
+                            composer.AddDropDown(values, names, selectedIndex, (newval, on) => { settings.OnSet?.Invoke(elem.Code, newval); }, bounds, key);
                             
                             composer.GetDropDown(key).Scale = factor;
                             
@@ -240,7 +261,7 @@ namespace Vintagestory.API.Client
 
                                 for (int i = 0; i < manybounds.Length; i++)
                                 {
-                                    manybounds[i] = bounds.FlatCopy().WithFixedHeight(elemHeight - 4).WithAddedFixedPosition(0, i * (4 + elemHeight)).WithScale(factor);
+                                    manybounds[i] = bounds.FlatCopy().WithFixedHeight(elemHeight - 4).WithFixedOffset(0, i * (4 + elemHeight)).WithScale(factor);
                                 }
 
                                 string key = "togglebuttons-" + elemKey;
@@ -284,7 +305,7 @@ namespace Vintagestory.API.Client
         {
             base.OnMouseDown(args);
 
-            foreach(GuiComposer composer in DialogComposers.Values)
+            foreach(GuiComposer composer in Composers.Values)
             {
                 if (composer.Bounds.PointInside(args.X, args.Y))
                 {
@@ -292,16 +313,20 @@ namespace Vintagestory.API.Client
                     break;
                 }   
             }
-            
-
         }
+
+        public override void OnMouseUp(MouseEvent args)
+        {
+            base.OnMouseUp(args);
+        }
+
 
         /// <summary>
         /// Reloads the values in the GUI.
         /// </summary>
         public void ReloadValues()
         {
-            GuiComposer composer = DialogComposers["cmdDlg" + settings.Code];
+            GuiComposer composer = Composers["cmdDlg" + settings.Code];
             int elemKey = 1;
 
             for (int i = 0; i < settings.Rows.Length; i++)

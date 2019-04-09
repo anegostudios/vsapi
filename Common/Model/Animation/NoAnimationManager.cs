@@ -13,32 +13,58 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A NoAnimator built off of <see cref="IAnimator"/>
+    /// </summary>
     public class NoAnimator : IAnimator
     {
+        /// <summary>
+        /// The matrices for this No-Animator
+        /// </summary>
         public float[] Matrices => null;
 
+        /// <summary>
+        /// The active animation count for this no animator.
+        /// </summary>
         public int ActiveAnimationCount => 0;
 
+        /// <summary>
+        /// Gets the attachment point for this pose.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public AttachmentPointAndPose GetAttachmentPointPose(string code)
         {
             return null;
         }
 
+        /// <summary>
+        /// The event fired when a specified frame has been hit.
+        /// </summary>
+        /// <param name="activeAnimationsByAnimCode"></param>
+        /// <param name="dt"></param>
         public void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
         {
             
         }
     }
 
+    /// <summary>
+    /// A No-Animation Manager built off of <see cref="IAnimationManager"/>.
+    /// </summary>
     public class NoAnimationManager : IAnimationManager
     {
+
         public NoAnimationManager()
         {
             Animator = new NoAnimator();
         }
 
         public IAnimator Animator { get; set; }
+
         public bool AnimationsDirty { get; set; }
+
+
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode => new Dictionary<string, AnimationMetaData>();
 
         public EntityHeadController HeadController { get; set; }
@@ -53,7 +79,12 @@ namespace Vintagestory.API.Common
             
         }
 
-        public void Init(ICoreAPI api, Entity entity, Shape shape)
+        public void Init(ICoreAPI api, Entity entity)
+        {
+            
+        }
+
+        public void OnAnimationStopped(string code)
         {
             
         }

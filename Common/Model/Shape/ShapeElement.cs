@@ -5,44 +5,106 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A shape element built from JSON data within the model.
+    /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class ShapeElement
     {
+        /// <summary>
+        /// The name of the ShapeElement
+        /// </summary>
         [JsonProperty]
         public string Name;
+
+
         [JsonProperty]
         public double[] From;
         [JsonProperty]
         public double[] To;
+
+        /// <summary>
+        /// Whether or not the shape element is shaded.
+        /// </summary>
         [JsonProperty]
         public bool Shade = true;
+
+        /// <summary>
+        /// The faces of the shape element by name.
+        /// </summary>
         [JsonProperty]
         public Dictionary<string, ShapeElementFace> Faces;
+
+        /// <summary>
+        /// The origin point for rotation.
+        /// </summary>
         [JsonProperty]
         public double[] RotationOrigin;
+
+        /// <summary>
+        /// The forward vertical rotation of the shape element.
+        /// </summary>
         [JsonProperty]
         public double RotationX;
+
+        /// <summary>
+        /// The forward vertical rotation of the shape element.
+        /// </summary>
         [JsonProperty]
         public double RotationY;
+
+        /// <summary>
+        /// The left/right tilt of the shape element
+        /// </summary>
         [JsonProperty]
         public double RotationZ;
+
+        /// <summary>
+        /// How far away are the left/right sides of the shape from the center
+        /// </summary>
         [JsonProperty]
         public double ScaleX = 1;
+
+        /// <summary>
+        /// How far away are the top/bottom sides of the shape from the center
+        /// </summary>
         [JsonProperty]
         public double ScaleY = 1;
+
+        /// <summary>
+        /// How far away are the front/back sides of the shape from the center.
+        /// </summary>
         [JsonProperty]
         public double ScaleZ = 1;
+
         [JsonProperty]
         public int TintIndex = -1;
         [JsonProperty]
         public int RenderPass = -1;
+
+        /// <summary>
+        /// The child shapes of this shape element
+        /// </summary>
         [JsonProperty]
         public ShapeElement[] Children;
+
+        /// <summary>
+        /// The attachment points for this shape.
+        /// </summary>
         [JsonProperty]
         public AttachmentPoint[] AttachmentPoints;
 
+        /// <summary>
+        /// The parent element reference for this shape.
+        /// </summary>
         public ShapeElement ParentElement;
+
+        /// <summary>
+        /// The id of the joint attached to the parent element.
+        /// </summary>
         public int JointId;
+
+
         public float[] inverseModelTransform;
 
         /// <summary>

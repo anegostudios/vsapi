@@ -43,7 +43,8 @@ namespace Vintagestory.API.Common
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-
+            JsonObject var = value as JsonObject;
+            var.Token.WriteTo(writer);
         }
     }
 }

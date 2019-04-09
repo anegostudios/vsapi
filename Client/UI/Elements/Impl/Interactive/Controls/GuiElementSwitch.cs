@@ -24,7 +24,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the element.</param>
         /// <param name="size">The size of the switch. (Default: 30)</param>
         /// <param name="padding">The padding on the outside of the switch (Default: 5)</param>
-        public GuiElementSwitch(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds, double size = 30, double padding = 5) : base(capi, bounds)
+        public GuiElementSwitch(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds, double size = 30, double padding = 4) : base(capi, bounds)
         {
             onTexture = new LoadedTexture(capi);
 
@@ -42,9 +42,9 @@ namespace Vintagestory.API.Client
             Bounds.CalcWorldBounds();
 
             ctxStatic.SetSourceRGBA(0, 0, 0, 0.2);
-            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 3);
+            RoundRectangle(ctxStatic, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1);
             ctxStatic.Fill();
-            EmbossRoundRectangleElement(ctxStatic, Bounds, true, 1, 2);
+            EmbossRoundRectangleElement(ctxStatic, Bounds, true, 1, 1);
 
             genOnTexture();
         }
@@ -56,8 +56,8 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)size, (int)size);
             Context ctx = genContext(surface);
 
-            RoundRectangle(ctx, 0, 0, size, size, 3);
-            fillWithPattern(api, ctx, waterTextureName);
+            RoundRectangle(ctx, 0, 0, size, size, 1);
+            fillWithPattern(api, ctx, waterTextureName, true);
 
             generateTexture(surface, ref onTexture);
 
@@ -116,7 +116,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">the name of the switch. (Default: null)</param>
         /// <param name="size">The size of the switch (Default: 30)</param>
         /// <param name="padding">The padding around the switch (Default: 5)</param>
-        public static GuiComposer AddSwitch(this GuiComposer composer, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null, double size = 30, double padding = 5)
+        public static GuiComposer AddSwitch(this GuiComposer composer, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null, double size = 30, double padding = 4)
         {
             if (!composer.composed)
             {

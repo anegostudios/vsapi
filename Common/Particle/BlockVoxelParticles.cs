@@ -11,9 +11,24 @@ namespace Vintagestory.API.Common
 {
     public class BlockCubeParticles : CollectibleParticleProperties
     {
+        /// <summary>
+        /// The position of the particle
+        /// </summary>
         public Vec3d particlePos;
+
+        /// <summary>
+        /// The amount of particles.
+        /// </summary>
         public int quantity;
+
+        /// <summary>
+        /// The radius of the particle emission.
+        /// </summary>
         public float radius;
+
+        /// <summary>
+        /// The scale of the particles.
+        /// </summary>
         public float scale;
 
         Block block;
@@ -116,10 +131,29 @@ namespace Vintagestory.API.Common
 
     public class StackCubeParticles : CollectibleParticleProperties
     {
+        /// <summary>
+        /// The position of the collision to create these particles.
+        /// </summary>
         public Vec3d collisionPos;
+
+        /// <summary>
+        /// The contents that the particles are built off of.
+        /// </summary>
         public ItemStack stack;
+
+        /// <summary>
+        /// The amount of particles to be released.
+        /// </summary>
         public int quantity;
+
+        /// <summary>
+        /// The radius to release the particles.
+        /// </summary>
         public float radius;
+
+        /// <summary>
+        /// The scale of the particles.
+        /// </summary>
         public float scale;
 
         public override bool DieInLiquid() { return true; }

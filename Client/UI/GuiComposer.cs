@@ -117,6 +117,17 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
+        /// Runs given method
+        /// </summary>
+        /// <param name="method"></param>
+        /// <returns></returns>
+        public GuiComposer Execute(API.Common.Action method)
+        {
+            method.Invoke();
+            return this;
+        }
+
+        /// <summary>
         /// Starts a set of child elements.
         /// </summary>
         /// <param name="bounds">The bounds for the child elements.</param>
@@ -411,7 +422,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        public bool OnMouseEnterSlot(IItemSlot slot)
+        public bool OnMouseEnterSlot(ItemSlot slot)
         {
             foreach (GuiElement element in interactiveElements.Values)
             {
@@ -421,7 +432,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        public bool OnMouseLeaveSlot(IItemSlot slot)
+        public bool OnMouseLeaveSlot(ItemSlot slot)
         {
             foreach (GuiElement element in interactiveElements.Values)
             {
@@ -556,7 +567,7 @@ namespace Vintagestory.API.Client
                 Api.Render.Render2DTexture(staticElementsTexture.TextureId, bounds, zDepth);
             }
 
-            MouseOverCursor = "normal";
+            MouseOverCursor = null;
             foreach (GuiElement element in interactiveElementsInDrawOrder)
             {
                 element.RenderInteractiveElements(deltaTime);
@@ -567,8 +578,6 @@ namespace Vintagestory.API.Client
                 }
             }
             
-
-
 
             foreach (GuiElement element in interactiveElementsInDrawOrder)
             {

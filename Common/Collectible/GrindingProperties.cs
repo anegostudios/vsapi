@@ -13,6 +13,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public JsonItemStack GrindedStack;
 
+        /// <summary>
+        /// Makes a deep copy of the properties.
+        /// </summary>
+        /// <returns></returns>
         public GrindingProperties Clone()
         {
             return new GrindingProperties()

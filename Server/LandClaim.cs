@@ -25,7 +25,6 @@ namespace Vintagestory.API.Server
     }
 
     
-
     [ProtoContract]
     public class LandClaim
     {
@@ -53,7 +52,13 @@ namespace Vintagestory.API.Server
         /// </summary>
         [ProtoMember(9)]
         public Dictionary<string, EnumBlockAccessFlags> PermittedPlayerUids = new Dictionary<string, EnumBlockAccessFlags>();
-
+        /// <summary>
+        /// Other players allowed to use this land, name of the player at the time the privilege was granted
+        /// </summary>
+        [ProtoMember(10)]
+        public Dictionary<string, string> PermittedPlayerLastKnownPlayerName = new Dictionary<string, string>();
+        [ProtoMember(11)]
+        public bool AllowUse;
 
         public BlockPos Center
         {
@@ -154,7 +159,7 @@ namespace Vintagestory.API.Server
             // Owner
             if (player.PlayerUID.Equals(OwnedByPlayerUid) || player.Groups.Any((ms) => ms.GroupUid == OwnedByPlayerGroupUid)) return true;
             // Has higher priv level
-            if (player.Role.PrivilegeLevel > ProtectionLevel) return true;
+            if (player.Role.PrivilegeLevel > ProtectionLevel && player.WorldData.CurrentGameMode == EnumGameMode.Creative) return true;
 
             EnumBlockAccessFlags flags;
             if (PermittedPlayerUids.TryGetValue(player.PlayerUID, out flags) && (flags & claimFlag) > 0)

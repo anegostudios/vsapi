@@ -25,7 +25,7 @@ namespace Vintagestory.API.Server
         /// 0 = Basic 3D Terrain (granite+rock)
         /// 0.1 = Rock Strata
         /// 0.3 = Cave generator 
-        /// 0.4 = Block layers (soil, gravel, sand, ice, etc.)
+        /// 0.4 = Block layers (soil, gravel, sand, ice, tall grass, etc.)
         /// </summary>
         Terrain = 1,
 
@@ -38,6 +38,7 @@ namespace Vintagestory.API.Server
         /// 0.2 = Deposits (Ores, Peat, Clay, etc.)
         /// 0.3 = Worldgen Structures
         /// 0.4 = Above sealevel Lakes
+        /// 0.5 = Worldgen Structures Post Pass
         /// </summary>
         TerrainFeatures = 2,
 
@@ -46,12 +47,12 @@ namespace Vintagestory.API.Server
         /// 0.5 = Block Patches, Shrubs and Trees
         /// 0.9 = Rivulets (single block water sources)
         /// 0.95 = Sunlight flooding only inside current chunk
-        /// 0.99 = Snow layer
         /// </summary>
         Vegetation = 3,
 
         /// <summary>
         /// Requires neighbour chunks. Does the lighting of the chunk.
+        /// 0 = Snow layer
         /// 0.95 = Sunlight flooding into neighbouring chunks
         /// </summary>
         NeighbourSunLightFlood = 4,

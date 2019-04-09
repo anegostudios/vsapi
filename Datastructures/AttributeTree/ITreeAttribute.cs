@@ -160,9 +160,9 @@ namespace Vintagestory.API.Datastructures
         /// Retrieves a float or defaultvalue if key is not found
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="devaultValue"></param>
+        /// <param name="defaultValue"></param>
         /// <returns></returns>
-        float GetFloat(string key, float devaultValue = 0);
+        float GetFloat(string key, float defaultValue = 0);
 
         /// <summary>
         /// Retrieves a double or null if key is not found

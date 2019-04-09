@@ -112,7 +112,7 @@ namespace Vintagestory.API.Common
         /// <param name="onlyPlayerInventory"></param>
         /// <param name="skipSlots"></param>
         /// <returns></returns>
-        ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, List<IItemSlot> skipSlots = null);
+        ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, List<ItemSlot> skipSlots = null);
 
         /// <summary>
         /// Tries to move away items from the source slot into any other slot of another inventory

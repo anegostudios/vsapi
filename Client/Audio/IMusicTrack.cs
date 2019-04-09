@@ -30,31 +30,28 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="assetManager">the global Asset Manager</param>
         /// <param name="capi">The Core Client API</param>
-        void Initialize(IAssetManager assetManager, ICoreClientAPI capi);
+        void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine);
 
         /// <summary>
         /// Should this current track play?
         /// </summary>
         /// <param name="props">Player Properties</param>
-        /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Should we play the current track?</returns>
-        bool ShouldPlay(TrackedPlayerProperties props, IMusicEngine musicEngine);
+        bool ShouldPlay(TrackedPlayerProperties props);
 
         /// <summary>
         /// Begin playing the current track.
         /// </summary>
         /// <param name="props">Player Properties</param>
-        /// <param name="musicEngine">the Music Engine.</param>
-        void BeginPlay(TrackedPlayerProperties props, IMusicEngine musicEngine);
+        void BeginPlay(TrackedPlayerProperties props);
 
         /// <summary>
         /// Is it cool for the current track to continue playing?
         /// </summary>
         /// <param name="dt">Delta Time/Change in time.</param>
         /// <param name="props">Track properties.</param>
-        /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Cool or not cool?</returns>
-        bool ContinuePlay(float dt, TrackedPlayerProperties props, IMusicEngine musicEngine);
+        bool ContinuePlay(float dt, TrackedPlayerProperties props);
 
         /// <summary>
         /// Updates the volume on the current track.

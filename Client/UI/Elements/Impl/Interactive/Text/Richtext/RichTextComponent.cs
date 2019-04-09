@@ -19,16 +19,16 @@ namespace Vintagestory.API.Client
         protected TextLine[] lines;
 
 
-        public RichTextComponent(string displayText, CairoFont font) : base()
+        public RichTextComponent(ICoreClientAPI api, string displayText, CairoFont font) : base(api)
         {
             this.displayText = displayText;
             this.font = font;
 
             if (displayText.Length > 0)
-            {
+            { 
                 // ok apparently text extents of " " is 0 on a mac? o.O
-                if (displayText[displayText.Length - 1] == ' ') PaddingRight = font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width;
-                if (displayText[0] == ' ') PaddingLeft = font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width;
+                if (displayText[displayText.Length - 1] == ' ') PaddingRight = 0.75 * (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width); // added 0.75 multiplier because there is always too much spacing o.o
+                if (displayText[0] == ' ') PaddingLeft = 0.75 * (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width);
                 displayText = displayText.Trim(new char[] { ' ' }); 
             }
             else
@@ -61,12 +61,14 @@ namespace Vintagestory.API.Client
         }
 
 
+
         /// <summary>
         /// Renders the text component.
         /// </summary>
-        /// <param name="api">The client API.</param>
-        /// <param name="deltaTime">The change in time.</param>
-        public override void RenderInteractiveElements(ICoreClientAPI api, float deltaTime, double renderX, double renderY)
+        /// <param name="deltaTime"></param>
+        /// <param name="renderX"></param>
+        /// <param name="renderY"></param>
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
             
         }
@@ -77,7 +79,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="flowPath"></param>
         /// <param name="xPos"></param>
-        /// <returns>Amount of lines passed over, if any</returns>
+        /// <returns>True when longer than 1 line</returns>
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
         {
             double lineheight = textUtil.GetLineHeight(font);

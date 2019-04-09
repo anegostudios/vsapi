@@ -51,9 +51,9 @@ namespace Vintagestory.API.Common
         /// When the server reloads mods at runtime, should this mod also be reloaded. Return false e.g. for any mod that adds blocks.
         /// </summary>
         /// <returns></returns>
-        public virtual bool AllowRuntimeReload()
+        public virtual bool AllowRuntimeReload
         {
-            return true;
+            get { return false; }
         }
 
 
@@ -90,6 +90,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="api"></param>
         public virtual void StartServerSide(ICoreServerAPI api)
+        {
+
+        }
+
+        /// <summary>
+        /// If this mod allows runtime reloading, you must implement this method to unregister any listeners / handlers
+        /// </summary>
+        public virtual void Dispose()
         {
 
         }

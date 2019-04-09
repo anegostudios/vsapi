@@ -15,7 +15,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         DefaultShaderUniforms ShaderUniforms { get; }
         
-
+        /// <summary>
+        /// Can be used to offset the position of the player camera
+        /// </summary>
         ModelTransform CameraOffset { get; }
 
         /// <summary>
@@ -92,7 +94,7 @@ namespace Vintagestory.API.Client
         /// It is recommended to use this methods in a few spots during render code to track down rendering issues in time.
         /// </summary>
         /// <param name="message"></param>
-        void CheckGlError(string messsage = "");
+        void CheckGlError(string message = "");
 
         /// <summary>
         /// The current model view.
@@ -227,14 +229,29 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Convenience method for GlScissor(). Can be turned of again with EndClipArea()
+        /// Convenience method for GlScissor(). Tells the graphics card to not render anything outside supplied bounds. Can be turned of again with EndScissor()
         /// </summary> 
         /// <param name="bounds"></param>
         void BeginScissor(ElementBounds bounds);
+
+        /// <summary>
+        /// End scissor mode. Disable any previously set render constraints
+        /// </summary>
         void EndScissor();
 
-
+        /// <summary>
+        /// Tells the graphics card to not render anything outside supplied bounds. Only sets the boundaries. Can be turned on/off with GlScissorFlag(true/false)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         void GlScissor(int x, int y, int width, int height);
+
+        /// <summary>
+        /// Whether scissor mode should be active or not
+        /// </summary>
+        /// <param name="enable"></param>
         void GlScissorFlag(bool enable);
 
 
@@ -396,7 +413,8 @@ namespace Vintagestory.API.Client
         /// <param name="rgba2Size"></param>
         /// <param name="flagsSize">Size of the render flags.</param>
         /// <param name="indicesSize">Size of the indices</param>
-        /// <param name="customFloats">Float valuse of the mesh</param>
+        /// <param name="customFloats">Float values of the mesh</param>
+        /// <param name="customInts">Float values of the mesh</param>
         /// <param name="customBytes">Byte values of the mesh</param>
         /// <param name="drawMode">The current draw mode</param>
         /// <param name="staticDraw">whether the draw should be static or dynamic.</param>
@@ -413,14 +431,14 @@ namespace Vintagestory.API.Client
         MeshRef UploadMesh(MeshData data);
 
         /// <summary>
-        /// Updates the existing mesh any non null data from updatedata
+        /// Updates the existing mesh. Updates any non null data from <paramref name="updatedata"/>
         /// </summary>
         /// <param name="meshRef"></param>
         /// <param name="updatedata"></param>
         void UpdateMesh(MeshRef meshRef, MeshData updatedata);
 
         /// <summary>
-        /// Frees up the memory on the graphics card. Should always be called at the end of the lifetime to prevent memory leaks.
+        /// Frees up the memory on the graphics card. Should always be called at the end of the lifetime to prevent memory leaks. Equivalent to calling Dispose on the meshref itself
         /// </summary>
         /// <param name="vao"></param>
         void DeleteMesh(MeshRef vao);
@@ -452,7 +470,7 @@ namespace Vintagestory.API.Client
         void RenderMesh(MeshRef meshRef, int[] indicesStarts, int[] indicesSizes, int groupCount);
 
         /// <summary>
-        /// Renders given texture into another texture. If you use the resulting texture for in-world rendering, remember to recreate the mipmaps via api.Render.GlGenerateTex2DMipmaps()
+        /// Renders given texture into another texture. If you use the resulting texture for in-world rendering, remember to recreate the mipmaps via <seealso cref="GlGenerateTex2DMipmaps"/>
         /// </summary>
         /// <param name="fromTexture"></param>
         /// <param name="sourceX"></param>
@@ -462,30 +480,32 @@ namespace Vintagestory.API.Client
         /// <param name="intoTexture"></param>
         /// <param name="targetX"></param>
         /// <param name="targetY"></param>
+        /// <param name="alphaTest">If below given threshold, the pixel is not drawn into the target texture. (Default: 0.05)</param>
         void RenderTextureIntoTexture(LoadedTexture fromTexture, float sourceX, float sourceY, float sourceWidth, float sourceHeight, LoadedTexture intoTexture, float targetX, float targetY, float alphaTest = 0.005f);
 
         /// <summary>
-        /// Renders given itemstack at given position (gui mode)
+        /// Renders given itemstack at given position (gui/orthographic mode)
         /// </summary>
         /// <param name="itemstack"></param>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <param name="size"></param>
-        /// <param name="color"></param>
-        /// <param name="shading"></param>
-        /// <param name="rotate"></param>
+        /// <param name="color">Set to <seealso cref="ColorUtil.WhiteArgb"/> for normal rendering</param> 
+        /// <param name="shading">Unused.</param>
+        /// <param name="rotate">If true, will slowly rotate the itemstack around the Y-Axis</param>
+        /// <param name="showStackSize">If true, will render a number depicting how many blocks/item are in the stack</param>
         void RenderItemstackToGui(ItemStack itemstack, double posX, double posY, double posZ, float size, int color, bool shading = true, bool rotate = false, bool showStackSize = true);
 
         /// <summary>
-        /// Renders given etnity at given position (gui mode)
+        /// Renders given entity at given position (gui/orthographic mode)
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="entity"></param>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
-        /// <param name="yawDelta"></param>
+        /// <param name="yawDelta">For rotating the entity around its y-axis</param>
         /// <param name="size"></param>
         /// <param name="color"></param>
         void RenderEntityToGui(float dt, Entity entity, double posX, double posY, double posZ, float yawDelta, float size, int color);
@@ -592,7 +612,9 @@ namespace Vintagestory.API.Client
         /// <param name="unscaledFontSize"></param>
         /// <param name="fontName"></param>
         /// <param name="color"></param>
+        /// <param name="strokeColor"></param>
         /// <returns></returns>
+        [Obsolete("Use new CairoFont(...) instead")]
         CairoFont GetFont(double unscaledFontSize, string fontName, double[] color, double[] strokeColor = null);
 
         /// <summary>

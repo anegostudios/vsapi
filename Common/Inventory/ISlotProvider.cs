@@ -8,7 +8,7 @@ namespace Vintagestory.API.Common
 {
     public interface ISlotProvider
     {
-        IItemSlot[] Slots { get; }
+        ItemSlot[] Slots { get; }
     }
 
 

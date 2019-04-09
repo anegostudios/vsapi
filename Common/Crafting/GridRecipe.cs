@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -15,6 +16,12 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class GridRecipe : ByteSerializable
     {
+        /// <summary>
+        /// Set by the recipe loader during json deserialization, if false the recipe will never be loaded.
+        /// If loaded however, you can use this field to disable recipes during runtime.
+        /// </summary>
+        public bool Enabled = true;
+
         /// <summary>
         /// The pattern of the ingredient. Order for a 3x3 recipe: 
         /// 1 2 3
@@ -139,7 +146,7 @@ namespace Vintagestory.API.Common
                     {
                         if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
 
-                        if (CraftingRecipeIngredient.WildCardMatch(val.Value.Code, world.Blocks[i].Code, val.Value.AllowedVariants))
+                        if (WildcardUtil.Match(val.Value.Code, world.Blocks[i].Code, val.Value.AllowedVariants))
                         {
                             string code = world.Blocks[i].Code.Path.Substring(wildcardStartLen);
                             string codepart = code.Substring(0, code.Length - wildcardEndLen);
@@ -153,7 +160,7 @@ namespace Vintagestory.API.Common
                     {
                         if (world.Items[i] == null || world.Items[i].IsMissing) continue;
 
-                        if (CraftingRecipeIngredient.WildCardMatch(val.Value.Code, world.Items[i].Code, val.Value.AllowedVariants))
+                        if (WildcardUtil.Match(val.Value.Code, world.Items[i].Code, val.Value.AllowedVariants))
                         {
                             string code = world.Items[i].Code.Path.Substring(wildcardStartLen);
                             string codepart = code.Substring(0, code.Length - wildcardEndLen);
@@ -177,7 +184,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="byPlayer"></param>
         /// <param name="gridWidth"></param>
-        public bool ConsumeInput(IWorldAccessor world, IPlayer byPlayer, IItemSlot[] inputSlots, int gridWidth)
+        public bool ConsumeInput(IWorldAccessor world, IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth)
         {
             if (Shapeless)
             {
@@ -203,7 +210,7 @@ namespace Vintagestory.API.Common
             return false;
         }
 
-        private bool ConsumeInputShapeLess(IWorldAccessor world, IPlayer byPlayer, IItemSlot[] inputSlots)
+        private bool ConsumeInputShapeLess(IWorldAccessor world, IPlayer byPlayer, ItemSlot[] inputSlots)
         {
             List<CraftingRecipeIngredient> exactMatchIngredients = new List<CraftingRecipeIngredient>();
             List<CraftingRecipeIngredient> wildcardIngredients = new List<CraftingRecipeIngredient>();
@@ -264,7 +271,7 @@ namespace Vintagestory.API.Common
 
                     if (
                         ingredient.Type == inStack.Class &&
-                        CraftingRecipeIngredient.WildCardMatch(ingredient.Code, inStack.Collectible.Code, ingredient.AllowedVariants) &&
+                        WildcardUtil.Match(ingredient.Code, inStack.Collectible.Code, ingredient.AllowedVariants) &&
                         inStack.StackSize >= ingredient.Quantity
                     )
                     {
@@ -294,7 +301,7 @@ namespace Vintagestory.API.Common
             return exactMatchIngredients.Count == 0;
         }
 
-        private bool ConsumeInputAt(IWorldAccessor world, IPlayer byPlayer, IItemSlot[] inputSlots, int gridWidth, int colStart, int rowStart)
+        private bool ConsumeInputAt(IWorldAccessor world, IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth, int colStart, int rowStart)
         {
             int gridHeight = inputSlots.Length / gridWidth;
 
@@ -302,7 +309,7 @@ namespace Vintagestory.API.Common
             {
                 for (int row = 0; row < gridHeight; row++)
                 {
-                    IItemSlot slot = GetElementInGrid(row, col, inputSlots, gridWidth);
+                    ItemSlot slot = GetElementInGrid(row, col, inputSlots, gridWidth);
                     CraftingRecipeIngredient ingredient = GetElementInGrid(row - rowStart, col - colStart, resolvedIngredients, Width);
 
                     if (ingredient == null) continue;
@@ -326,7 +333,7 @@ namespace Vintagestory.API.Common
         /// <param name="ingredients"></param>
         /// <param name="gridWidth"></param>
         /// <returns></returns>
-        public bool Matches(IItemSlot[] ingredients, int gridWidth)
+        public bool Matches(ItemSlot[] ingredients, int gridWidth)
         {
             if (Shapeless)
             {
@@ -348,7 +355,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        private bool MatchesShapeLess(IItemSlot[] suppliedSlots, int gridWidth)
+        private bool MatchesShapeLess(ItemSlot[] suppliedSlots, int gridWidth)
         {
             int gridHeight = suppliedSlots.Length / gridWidth;
             if (gridWidth < Width || gridHeight < Height) return false;
@@ -392,7 +399,7 @@ namespace Vintagestory.API.Common
 
                         foundw =
                             ingredient.Type == inputStack.Class &&
-                            CraftingRecipeIngredient.WildCardMatch(ingredient.Code, inputStack.Collectible.Code, ingredient.AllowedVariants) &&
+                            WildcardUtil.Match(ingredient.Code, inputStack.Collectible.Code, ingredient.AllowedVariants) &&
                             inputStack.StackSize >= ingredient.Quantity
                         ;
 
@@ -448,7 +455,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        internal bool MatchesAtPosition(int colStart, int rowStart, IItemSlot[] inputSlots, int gridWidth)
+        internal bool MatchesAtPosition(int colStart, int rowStart, ItemSlot[] inputSlots, int gridWidth)
         {
             int gridHeight = inputSlots.Length / gridWidth;
 

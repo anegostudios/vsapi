@@ -176,6 +176,14 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public Vec3d AddCopy(BlockFacing facing)
+        {
+            X += facing.Normalf.X;
+            Y += facing.Normalf.Y;
+            Z += facing.Normalf.Z;
+            return this;
+        }
+
         public Vec3d SubCopy(double x, double y, double z)
         {
             return new Vec3d(X - x, Y - y, Z - z);

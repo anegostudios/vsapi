@@ -11,7 +11,7 @@ namespace Vintagestory.API.Common
         {
         }
 
-        public override bool CanHold(IItemSlot itemstackFromSourceSlot)
+        public override bool CanHold(ItemSlot itemstackFromSourceSlot)
         {
             return false;
         }
@@ -21,7 +21,7 @@ namespace Vintagestory.API.Common
             return true;
         }
 
-        public override bool CanTakeFrom(IItemSlot sourceSlot)
+        public override bool CanTakeFrom(ItemSlot sourceSlot)
         {
             return false;
         }

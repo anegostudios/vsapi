@@ -14,6 +14,8 @@ namespace Vintagestory.API.Common
         public ushort OldBlockId;
         public ushort NewBlockId;
         public ItemStack ByStack;
+
+        public byte[] BlockEntityData;
     }
 
     /// A climate condition at a given position
@@ -130,6 +132,12 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ);
 
+        /// <summary>
+        /// Retrieve chunk at given block position
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        IWorldChunk GetChunkAtBlockPos(BlockPos pos);
 
         /// <summary>
         /// Get the block id of the block at the given world coordinate
@@ -176,6 +184,20 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         void WalkBlocks(BlockPos minPos, BlockPos maxPos, API.Common.Action<Block, BlockPos> onBlock, bool centerOrder = false);
 
+        /// <summary>
+        /// Calls given handler if it encounters one or more generated structure at given position (read from mapregions, assuming a max structure size of 256x256x256)
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="onStructure"></param>
+        void WalkStructures(BlockPos pos, API.Common.Action<GeneratedStructure> onStructure);
+
+        /// <summary>
+        /// Calls given handler if it encounters one or more generated structure that intersect any position inside minpos->maxpos (read from mapregions, assuming a max structure size of 256x256x256)
+        /// </summary>
+        /// <param name="minpos"></param>
+        /// <param name="maxpos"></param>
+        /// <param name="onStructure"></param>
+        void WalkStructures(BlockPos minpos, BlockPos maxpos, API.Common.Action<GeneratedStructure> onStructure);
 
         /// <summary>
         /// Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.

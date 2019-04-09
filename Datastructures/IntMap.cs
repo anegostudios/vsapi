@@ -84,11 +84,53 @@ namespace Vintagestory.API
             int ix = (int)x;
             int iz = (int)z;
 
-            return GameMath.BiLerp(x - ix, z - iz,
+            return GameMath.BiLerp(
                 Data[(iz + TopLeftPadding) * Size + ix + TopLeftPadding],
                 Data[(iz + TopLeftPadding) * Size + ix + 1 + TopLeftPadding],
                 Data[(iz + 1 + TopLeftPadding) * Size + ix + TopLeftPadding],
-                Data[(iz + 1 + TopLeftPadding) * Size + ix + 1 + TopLeftPadding]
+                Data[(iz + 1 + TopLeftPadding) * Size + ix + 1 + TopLeftPadding],
+                x - ix, z - iz
+            );
+        }
+
+
+        public float GetIntLerpedCorrectly(float x, float z)
+        {
+            int posXLeft = (int)Math.Floor(x - 0.5f);
+            int posXRight = posXLeft + 1;
+
+            int posZLeft = (int)Math.Floor(z - 0.5f);
+            int posZRight = posZLeft + 1;
+
+            float fx = x - (posXLeft + 0.5f);
+            float fz = z - (posZLeft + 0.5f);
+            
+            return GameMath.BiLerp(
+                Data[(posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
+                Data[(posZLeft + TopLeftPadding) * Size + posXRight + TopLeftPadding],
+                Data[(posZRight + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
+                Data[(posZRight + TopLeftPadding) * Size + posXRight + TopLeftPadding],
+                fx, fz
+            );
+        }
+
+        public int GetColorLerpedCorrectly(float x, float z)
+        {
+            int posXLeft = (int)Math.Floor(x - 0.5f);
+            int posXRight = posXLeft + 1;
+
+            int posZLeft = (int)Math.Floor(z - 0.5f);
+            int posZRight = posZLeft + 1;
+
+            float fx = x - (posXLeft + 0.5f);
+            float fz = z - (posZLeft + 0.5f);
+
+            return GameMath.BiLerpRgbColor(
+                fx, fz,
+                Data[(posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
+                Data[(posZLeft + TopLeftPadding) * Size + posXRight + TopLeftPadding],
+                Data[(posZRight + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
+                Data[(posZRight + TopLeftPadding) * Size + posXRight + TopLeftPadding]
             );
         }
 

@@ -46,6 +46,33 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        public double Noise(double x, double y, double[] thresholds)
+        {
+            double value = 0;
+
+            for (int i = 0; i < amplitudes.Length; i++)
+            {
+                double val = octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * amplitudes[i];
+                value += (val > 0 ? Math.Max(0, val - thresholds[i]) : Math.Min(0, val + thresholds[i]));
+            }
+
+            return value;
+        }
+
+        /* wtf is that supposed to be o.O
+         * public double NoiseMax0(double x, double y, double[] thresholds)
+        {
+            double value = 0;
+
+            for (int i = 0; i < amplitudes.Length; i++)
+            {
+                value += Math.Max(0, octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * amplitudes[i] - thresholds[i]);
+            }
+
+            return value;
+        }*/
+
+
 
         public virtual double Noise(double x, double y, double z)
         {

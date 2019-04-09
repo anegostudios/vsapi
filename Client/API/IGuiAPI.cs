@@ -105,14 +105,14 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="soundname">The name of the sound</param>
         /// <param name="randomizePitch">Should we randomize the Pitch?</param>
-        void PlaySound(string soundname, bool randomizePitch = false);
+        void PlaySound(string soundname, bool randomizePitch = false, float volume = 1f);
 
         /// <summary>
         /// Plays a sound, non location specific.
         /// </summary>
         /// <param name="soundname">The name of the sound</param>
         /// <param name="randomizePitch">Should we randomize the pitch?</param>
-        void PlaySound(AssetLocation soundname, bool randomizePitch = false);
+        void PlaySound(AssetLocation soundname, bool randomizePitch = false, float volume = 1f);
 
         /// <summary>
         /// Requests the given GUI to be given focus.

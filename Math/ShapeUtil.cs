@@ -148,9 +148,11 @@ namespace Vintagestory.API.MathTools
 
             List<Vec2i> points = new List<Vec2i>();
 
+            int th = 9; // Math.Max(9, r / 2); - can't, it will skip some chunks then
+
             int S = 2 * r;
-            int a = Math.Min(S, 9);
-            int b = (int)(Math.Max(0, S - 9) / Math.Sqrt(2));
+            int a = Math.Min(S, th);
+            int b = (int)Math.Ceiling(Math.Max(0, S - th) / 2.0);
 
             int a2 = (a / 2);
 

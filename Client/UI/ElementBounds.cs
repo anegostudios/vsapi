@@ -16,7 +16,7 @@ namespace Vintagestory.API.Client
     public class ElementBounds
     {
         public ElementBounds ParentBounds;
-        public List<ElementBounds> ChildBounds;
+        public List<ElementBounds> ChildBounds = new List<ElementBounds>();
 
         public EnumDialogArea Alignment;
 
@@ -92,6 +92,9 @@ namespace Vintagestory.API.Client
         /// Width including padding
         /// </summary>
         public virtual double OuterWidth { get { return absInnerWidth + 2 * absPaddingX; } }
+        /// <summary>
+        /// Height including padding
+        /// </summary>
         public virtual double OuterHeight { get { return absInnerHeight + 2 * absPaddingY; } }
 
         public virtual int OuterWidthInt { get { return (int)OuterWidth; } }
@@ -147,12 +150,12 @@ namespace Vintagestory.API.Client
         public void MarkDirtyRecursive()
         {
             Initialized = false;
-            if (ChildBounds != null)
+
+            foreach (ElementBounds child in ChildBounds)
             {
-                foreach (ElementBounds child in ChildBounds)
-                {
-                    child.MarkDirtyRecursive();
-                }
+                if (ParentBounds == child) continue;
+
+                child.MarkDirtyRecursive();
             }
         }
 
@@ -195,6 +198,13 @@ namespace Vintagestory.API.Client
                             absInnerWidth -= scaled(fixedWidth);
                         }
                         break;
+
+                    case ElementSizing.FitToChildren:
+                        absFixedX = scaled(fixedX);
+                        absPaddingX = scaled(fixedPaddingX);
+
+                        buildBoundsFromChildren();
+                        break;
                 }
 
                 switch (verticalSizing)
@@ -217,6 +227,13 @@ namespace Vintagestory.API.Client
                         }
 
                         break;
+
+                    case ElementSizing.FitToChildren:
+                        absFixedY = scaled(fixedY);
+                        absPaddingY = scaled(fixedPaddingY);
+
+                        buildBoundsFromChildren();
+                        break;
                 }
             }
 
@@ -229,16 +246,11 @@ namespace Vintagestory.API.Client
 
             Initialized = true;
 
-            if (ChildBounds != null)
+            foreach (ElementBounds child in ChildBounds)
             {
-
-                foreach (ElementBounds child in ChildBounds)
+                if (!child.Initialized)
                 {
-                    if (!child.Initialized)
-                    {
-                        child.CalcWorldBounds();
-                    }
-
+                    child.CalcWorldBounds();
                 }
             }
         }
@@ -311,7 +323,7 @@ namespace Vintagestory.API.Client
 
         void buildBoundsFromChildren()
         {
-            if (ChildBounds == null)
+            if (ChildBounds == null || ChildBounds.Count == 0)
             {
                 throw new Exception("Cant build bounds from children elements, there are no children!");
             }
@@ -345,8 +357,15 @@ namespace Vintagestory.API.Client
                 throw new Exception("Couldn't build bounds from children, there were probably no child elements using fixed sizing! (or they were size 0)");
             }
 
-            this.absInnerWidth = width;
-            this.absInnerHeight = height;
+            if (horizontalSizing != ElementSizing.Fixed)
+            {
+                this.absInnerWidth = width;
+            }
+
+            if (verticalSizing != ElementSizing.Fixed)
+            {
+                this.absInnerHeight = height;
+            }
         }
 
 
@@ -389,11 +408,6 @@ namespace Vintagestory.API.Client
 
         public ElementBounds WithChild(ElementBounds bounds)
         {
-            if (ChildBounds == null)
-            {
-                ChildBounds = new List<ElementBounds>();
-            }
-
             if (!ChildBounds.Contains(bounds))
             {
                 ChildBounds.Add(bounds);
@@ -683,24 +697,62 @@ namespace Vintagestory.API.Client
 
 
 
+        /// <summary>
+        /// Creates a new elements bounds which acts as the child bounds of the current bounds. It will also arrange the fixedX/Y and Width/Height coords of both bounds so that the parent bounds surrounds the child bounds with given spacings. Uses fixed coords only!
+        /// </summary>
+        /// <param name="leftSpacing"></param>
+        /// <param name="topSpacing"></param>
+        /// <param name="rightSpacing"></param>
+        /// <param name="bottomSpacing"></param>
+        /// <returns></returns>
+        public ElementBounds ForkContainingChild(double leftSpacing = 0, double topSpacing = 0, double rightSpacing = 0, double bottomSpacing = 0)
+        {
+            ElementBounds bounds = new ElementBounds()
+            {
+                Alignment = Alignment,
+                verticalSizing = verticalSizing,
+                horizontalSizing = horizontalSizing,
+                fixedOffsetX = fixedOffsetX,
+                fixedOffsetY = fixedOffsetY,
+                fixedWidth = fixedWidth - 2 * fixedPaddingX - leftSpacing - rightSpacing,
+                fixedHeight = fixedHeight - 2 * fixedPaddingY - topSpacing - bottomSpacing,
+                fixedX = fixedX,
+                fixedY = fixedY,
+                percentHeight = percentHeight,
+                percentWidth = percentWidth
+            };
+
+            bounds.fixedX = leftSpacing;
+            bounds.fixedY = topSpacing;
+            percentWidth = 1;
+            percentHeight = 1;
+
+            ChildBounds.Add(bounds);
+            bounds.ParentBounds = this;
+
+            return bounds;
+        }
+
+
+
         public override string ToString()
         {
             return absX + "/" + absY + " -> " + (absX + OuterWidth) + " / " + (absY + OuterHeight);
         }
 
-        public ElementBounds FixedUnder(ElementBounds bounds, double spacing)
+        public ElementBounds FixedUnder(ElementBounds bounds, double spacing = 0)
         {
             fixedY += bounds.fixedY + bounds.fixedHeight + spacing;
             return this;
         }
 
-        public ElementBounds FixedRightOf(ElementBounds leftBounds, double leftSpacing)
+        public ElementBounds FixedRightOf(ElementBounds leftBounds, double leftSpacing = 0)
         {
             fixedX = leftBounds.fixedX + leftBounds.fixedWidth + leftSpacing;
             return this;
         }
 
-        public ElementBounds FixedLeftOf(ElementBounds leftBounds, double rightSpacing)
+        public ElementBounds FixedLeftOf(ElementBounds leftBounds, double rightSpacing = 0)
         {
             fixedX = leftBounds.fixedX - leftBounds.fixedWidth - rightSpacing;
             return this;
@@ -831,7 +883,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public ElementBounds WithAddedFixedPosition(double offx, double offy)
+        public ElementBounds WithFixedOffset(double offx, double offy)
         {
             this.fixedX += offx;
             this.fixedY += offy;

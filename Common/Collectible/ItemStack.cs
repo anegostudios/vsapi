@@ -239,6 +239,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns true if both stacks exactly match
         /// </summary>
+        /// <param name="worldForResolve"></param>
         /// <param name="sourceStack"></param>
         /// <param name="ignoreAttributeSubTrees"></param>
         /// <returns></returns>
@@ -322,6 +323,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns true if searchText is found in the item/block name as supplied from GetName()
         /// </summary>
+        /// <param name="world"></param>
         /// <param name="searchText"></param>
         /// <returns></returns>
         public bool MatchesSearchText(IWorldAccessor world, string searchText)

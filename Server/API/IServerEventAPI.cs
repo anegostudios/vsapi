@@ -15,11 +15,12 @@ namespace Vintagestory.API.Server
     public interface IServerEventAPI : IEventAPI
     {
         /// <summary>
-        /// Returns the list of currently registered map chunk generator handlers for given playstyle. Returns an array of handler lists. Each element in the array represents all the handlers for one worldgenpass (see EnumWorldGenPass)       
+        /// Returns the list of currently registered map chunk generator handlers for given world type. Returns an array of handler lists. Each element in the array represents all the handlers for one worldgenpass (see EnumWorldGenPass)
+        /// When world type is null, all handlers are returned
         /// </summary>
-        /// <param name="playstyle"></param>
+        /// <param name="worldType"></param>
         /// <returns></returns>
-        IWorldGenHandler GetRegisteredWorldGenHandlers(EnumPlayStyle playstyle);
+        IWorldGenHandler GetRegisteredWorldGenHandlers(string worldType = null);
         
 
         /// <summary>
@@ -38,30 +39,37 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// If you require neighbour chunk data during world generation, you have to register to this event to receive access to the chunk generator thread. This method is only called once during server startup.
         /// </summary>
-        /// <param name="f"></param>
-        void GetWorldgenBlockAccessor(WorldGenThreadDelegate f);
+        /// <param name="handler"></param>
+        void GetWorldgenBlockAccessor(WorldGenThreadDelegate handler);
+
+        /// <summary>
+        /// Triggered before the first chunk, map chunk or map region is generated, given that the passed on world type has been selected. Called right after the save game has been loaded.
+        /// </summary>
+        /// <param name="handler"></param>
+        /// <param name="forWorldType"></param>
+        void InitWorldGenerator(API.Common.Action handler, string forWorldType);
 
         /// <summary>
         /// Event that is triggered whenever a new column of chunks is being generated. It is always called before the ChunkGenerator event
         /// </summary>
         /// <param name="handler"></param>
-        /// <param name="worldPlayStyleFlags">For which worlds to use this generator</param>
-        void MapChunkGeneration(MapChunkGeneratorDelegate handler, EnumPlayStyleFlag worldPlayStyleFlags = EnumPlayStyleFlag.WildernessSurvival | EnumPlayStyleFlag.SurviveAndAutomate | EnumPlayStyleFlag.SurviveAndBuild);
+        /// <param name="forWorldType">For which world types to use this generator</param>
+        void MapChunkGeneration(MapChunkGeneratorDelegate handler, string forWorldType);
 
         /// <summary>
         /// Event that is triggered whenever a new 8x8 section of column of chunks is being generated. It is always called before the ChunkGenerator and before the MapChunkGeneration event
         /// </summary>
         /// <param name="handler"></param>
-        /// <param name="worldPlayStyleFlags">For which worlds to use this generator</param>
-        void MapRegionGeneration(MapRegionGeneratorDelegate handler, EnumPlayStyleFlag worldPlayStyleFlags = EnumPlayStyleFlag.WildernessSurvival | EnumPlayStyleFlag.SurviveAndAutomate | EnumPlayStyleFlag.SurviveAndBuild);
+        /// <param name="forWorldType">For which world types to use this generator</param>
+        void MapRegionGeneration(MapRegionGeneratorDelegate handler, string forWorldType);
 
         /// <summary>
         /// Vintagestory uses this method to generate the basic terrain (base terrain + rock strata + caves) in full columns. Only called once in pass EnumWorldGenPass.TerrainNoise. Register to this event if you need acces to a whole chunk column during inital generation.
         /// </summary>
         /// <param name="handler"></param>
         /// <param name="pass"></param>
-        /// <param name="worldPlayStyleFlags">For which worlds to use this generator</param>
-        void ChunkColumnGeneration(ChunkColumnGenerationDelegate handler, EnumWorldGenPass pass, EnumPlayStyleFlag worldPlayStyleFlags = EnumPlayStyleFlag.WildernessSurvival | EnumPlayStyleFlag.SurviveAndAutomate | EnumPlayStyleFlag.SurviveAndBuild);
+        /// <param name="forWorldType">For which world types to use this generator</param>
+        void ChunkColumnGeneration(ChunkColumnGenerationDelegate handler, EnumWorldGenPass pass, string forWorldType);
 
 
         /// <summary>
@@ -110,14 +118,25 @@ namespace Vintagestory.API.Server
         event PlayerDelegate PlayerSwitchGameMode;
 
         /// <summary>
-        /// Fired when a player changes their active hotbar slot.
+        /// Fired before a player changes their active slot (such as selected hotbar slot).
+        /// Allows for the event to be cancelled depending on the return value.
         /// </summary>
-        event PlayerChangeHotbarSlot ActiveHotbarSlotChanged;
+        event API.Common.Func<IServerPlayer, ActiveSlotChangeEventArgs, EnumHandling> BeforeActiveSlotChanged;
+
+        /// <summary>
+        /// Fired after a player changes their active slot (such as selected hotbar slot).
+        /// </summary>
+        event API.Common.Action<IServerPlayer, ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
 
         /// <summary>
         /// Triggered after the game world data has been loaded. At this point all blocks are loaded and the Map size is known.
         /// </summary>
         event Action SaveGameLoaded;
+
+        /// <summary>
+        /// Triggered after a savegame has been created - i.e. when a new world was created
+        /// </summary>
+        event Action SaveGameCreated;
 
         /// <summary>
         /// Triggered before the game world data is being saved to disk 

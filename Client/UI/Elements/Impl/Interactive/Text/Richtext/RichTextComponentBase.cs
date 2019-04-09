@@ -24,10 +24,13 @@ namespace Vintagestory.API.Client
 
     public abstract class RichTextComponentBase
     {
-        public string MouseOverCursor { get; protected set; } = "normal";
+        public string MouseOverCursor { get; protected set; } = null;
 
-        public RichTextComponentBase()
+        protected ICoreClientAPI api;
+
+        public RichTextComponentBase(ICoreClientAPI api)
         {
+            this.api = api;
         }
 
         /// <summary>
@@ -71,9 +74,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Renders the text component.
         /// </summary>
-        /// <param name="api">The client API.</param>
         /// <param name="deltaTime">The change in time.</param>
-        public virtual void RenderInteractiveElements(ICoreClientAPI api, float deltaTime, double renderX, double renderY)
+        public virtual void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
 
         }
@@ -103,17 +105,17 @@ namespace Vintagestory.API.Client
             return null;
         }
 
-        public virtual void OnMouseMove(ICoreClientAPI api, MouseEvent args)
+        public virtual void OnMouseMove(MouseEvent args)
         {
 
         }
 
-        public virtual void OnMouseDown(ICoreClientAPI api, MouseEvent args)
+        public virtual void OnMouseDown(MouseEvent args)
         {
 
         }
 
-        public virtual void OnMouseUp(ICoreClientAPI api, MouseEvent args)
+        public virtual void OnMouseUp(MouseEvent args)
         {
 
         }

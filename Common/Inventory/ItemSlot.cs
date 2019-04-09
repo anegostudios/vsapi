@@ -1,33 +1,60 @@
 ﻿using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
-    public class ItemSlot : IItemSlot
+    public class ItemSlot
     {
+        /// <summary>
+        /// The upper holding limit of the slot itself. Standard slots are only limited by the item stacks maxstack size.
+        /// </summary>
+        public int MaxSlotStackSize = 999999;
+
         protected ItemStack itemstack;
         protected InventoryBase inventory;
         
+        /// <summary>
+        /// Gets the inventory attached to this ItemSlot.
+        /// </summary>
         public InventoryBase Inventory { get { return inventory; } }
+
+        /// <summary>
+        /// Amount of space left, independent of item MaxStacksize 
+        /// </summary>
+        public int RemainingSlotSpace => Math.Max(0, MaxSlotStackSize - StackSize);
 
         /// <summary>
         /// Icon name to be drawn in the slot background
         /// </summary>
         public string BackgroundIcon;
 
+        /// <summary>
+        /// The ItemStack contained within the slot.
+        /// </summary>
         public ItemStack Itemstack
         {
             get { return itemstack; }
             set { itemstack = (ItemStack)value; }
         }
 
+        /// <summary>
+        /// The number of items in the stack.
+        /// </summary>
         public int StackSize
         {
             get { return itemstack == null ? 0 : itemstack.StackSize; }
         }
 
+        /// <summary>
+        /// Whether or not the stack is empty.
+        /// </summary>
         public virtual bool Empty { get { return itemstack == null;  } }
+
+        /// <summary>
+        /// The storage type of this slot.
+        /// </summary>
         public virtual EnumItemStorageFlags StorageType { get; set; } = EnumItemStorageFlags.General | EnumItemStorageFlags.Agriculture | EnumItemStorageFlags.Alchemy | EnumItemStorageFlags.Jewellery | EnumItemStorageFlags.Metallurgy | EnumItemStorageFlags.Outfit;
         
         public ItemSlot(InventoryBase inventory)
@@ -37,8 +64,12 @@ namespace Vintagestory.API.Common
 
 
 
-      
-        public virtual bool CanTakeFrom(IItemSlot sourceSlot)
+      /// <summary>
+      /// Whether or not this slot can take the item from the source slot.
+      /// </summary>
+      /// <param name="sourceSlot"></param>
+      /// <returns></returns>
+        public virtual bool CanTakeFrom(ItemSlot sourceSlot)
         {
             if (inventory?.PutLocked == true) return false;
 
@@ -47,17 +78,25 @@ namespace Vintagestory.API.Common
 
             bool flagsok = (sourceStack.Collectible.GetStorageFlags(sourceStack) & StorageType) > 0;
 
-            return flagsok &&  (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack) > 0);
+            return flagsok &&  (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack) > 0) && RemainingSlotSpace > 0;
         }
 
-        public virtual bool CanHold(IItemSlot sourceSlot)
+        /// <summary>
+        /// Whether or not this slot can hold the item from the source slot.
+        /// </summary>
+        /// <param name="sourceSlot"></param>
+        /// <returns></returns>
+        public virtual bool CanHold(ItemSlot sourceSlot)
         {
             if (inventory?.PutLocked == true) return false;
 
             return sourceSlot?.Itemstack?.Collectible != null && ((sourceSlot.Itemstack.Collectible.GetStorageFlags(sourceSlot.Itemstack) & StorageType) > 0);
         }
 
-
+        /// <summary>
+        /// Whether or not this slots item can be retrieved.
+        /// </summary>
+        /// <returns></returns>
         public virtual bool CanTake()
         {
             if (inventory?.TakeLocked == true) return false;
@@ -65,7 +104,10 @@ namespace Vintagestory.API.Common
             return itemstack != null;
         }
         
-
+        /// <summary>
+        /// Gets the entire contents of the stack, setting the base stack to null.
+        /// </summary>
+        /// <returns></returns>
         public virtual ItemStack TakeOutWhole()
         {
             ItemStack stack = itemstack.Clone();
@@ -75,6 +117,11 @@ namespace Vintagestory.API.Common
             return stack;
         }
 
+        /// <summary>
+        /// Gets some of the contents of the stack.
+        /// </summary>
+        /// <param name="quantity">The amount to get from the stack.</param>
+        /// <returns></returns>
         public virtual ItemStack TakeOut(int quantity)
         {
             if (itemstack == null) return null;
@@ -88,7 +135,12 @@ namespace Vintagestory.API.Common
             return split;
         }
 
-        public virtual void TryPutInto(IWorldAccessor world, IItemSlot sinkSlot)
+        /// <summary>
+        /// Attempts to place item in this slot into the target slot.
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="sinkSlot"></param>
+        public virtual void TryPutInto(IWorldAccessor world, ItemSlot sinkSlot)
         {
             ItemStackMoveOperation op = new ItemStackMoveOperation(world, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, 1);
             TryPutInto(sinkSlot, ref op);
@@ -100,7 +152,7 @@ namespace Vintagestory.API.Common
         /// <param name="sinkSlot"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
-        public virtual void TryPutInto(IItemSlot sinkSlot, ref ItemStackMoveOperation op)
+        public virtual void TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
         {
             if (!sinkSlot.CanTakeFrom(this) || !CanTake() || itemstack == null)
             {
@@ -111,16 +163,26 @@ namespace Vintagestory.API.Common
             // Fill the destination slot with as many items as we can
             if (sinkSlot.Itemstack == null)
             {
-                sinkSlot.Itemstack = TakeOut(op.RequestedQuantity);
-                sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
-                OnItemSlotModified(sinkSlot.Itemstack);
+                int q = Math.Min(sinkSlot.RemainingSlotSpace, op.RequestedQuantity);
 
-                op.MovedQuantity = op.MovableQuantity = Math.Min(sinkSlot.StackSize, op.RequestedQuantity);
+                if (q > 0)
+                {
+                    sinkSlot.Itemstack = TakeOut(q);
+
+                    // Has to be above the modified calls because e.g. when moving stuff into the ground slot this will eject the item 
+                    // onto the ground and sinkSlot.StackSize is 0 right after
+                    op.MovedQuantity = op.MovableQuantity = Math.Min(sinkSlot.StackSize, q);
+
+                    sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
+                    OnItemSlotModified(sinkSlot.Itemstack);
+                }
+
                 return;
             }
 
             ItemStackMergeOperation mergeop = op.ToMergeOperation(sinkSlot, this);
             op = mergeop;
+            op.RequestedQuantity = Math.Min(sinkSlot.RemainingSlotSpace, op.RequestedQuantity);
 
             sinkSlot.Itemstack.Collectible.TryMergeStacks(mergeop);
 
@@ -131,8 +193,15 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Attempts to flip the ItemSlots.
+        /// </summary>
+        /// <param name="itemSlot"></param>
+        /// <returns>Whether or no the flip was successful.</returns>
         public virtual bool TryFlipWith(ItemSlot itemSlot)
         {
+            if (itemSlot.StackSize > MaxSlotStackSize) return false;
+
             bool canHoldHis = itemSlot.Empty || CanHold(itemSlot);
             bool canIExchange = canHoldHis && (Empty || CanTake());
 
@@ -151,6 +220,10 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        /// <summary>
+        /// Forces a flip with the given ItemSlot
+        /// </summary>
+        /// <param name="withSlot"></param>
         protected virtual void FlipWith(ItemSlot withSlot)
         {
             ItemStack temp = withSlot.itemstack;
@@ -158,21 +231,12 @@ namespace Vintagestory.API.Common
             itemstack = temp;
         }
 
-        public bool TryFlipWith(IItemSlot itemSlot)
-        {
-            return TryFlipWith((ItemSlot)itemSlot);
-        }
-
 
         /// <summary>
-        /// Call when a player has clicked on this slot. The source slot is the mouse cursor slot. This handles the logic of either taking, putting or exchanging items.
+        /// Called when a player has clicked on this slot.  The source slot is the mouse cursor slot.  This handles the logic of either taking, putting or exchanging items.
         /// </summary>
         /// <param name="sourceSlot"></param>
-        public void ActivateSlot(IItemSlot sourceSlot, ref ItemStackMoveOperation op)
-        {
-            ActivateSlot((ItemSlot)sourceSlot, ref op);
-        }
-
+        /// <param name="op"></param>
         public virtual void ActivateSlot(ItemSlot sourceSlot, ref ItemStackMoveOperation op)
         {
             if (Empty && sourceSlot.Empty) return;
@@ -193,14 +257,18 @@ namespace Vintagestory.API.Common
             }
         }
 
-
+        /// <summary>
+        /// Activates the left click functions of the given slot.
+        /// </summary>
+        /// <param name="sourceSlot"></param>
+        /// <param name="op"></param>
         protected virtual void ActivateSlotLeftClick(ItemSlot sourceSlot, ref ItemStackMoveOperation op)
         { 
             // 1. Current slot empty: Take items
             if (Empty) {
                 if (!CanHold(sourceSlot)) return;
 
-                itemstack = sourceSlot.TakeOutWhole();
+                itemstack = sourceSlot.TakeOut(Math.Min(sourceSlot.StackSize, MaxSlotStackSize));
                 op.MovedQuantity = itemstack.StackSize;
                 OnItemSlotModified(itemstack);
                 return;
@@ -216,7 +284,7 @@ namespace Vintagestory.API.Common
             // 3. Both slots not empty, and they are stackable: Fill slot
             int maxq = itemstack.Collectible.GetMergableQuantity(itemstack, sourceSlot.itemstack);
             if (maxq > 0) {
-                op.RequestedQuantity = Math.Min(maxq, sourceSlot.itemstack.StackSize);
+                op.RequestedQuantity = GameMath.Min(maxq, sourceSlot.itemstack.StackSize, RemainingSlotSpace);
 
                 ItemStackMergeOperation mergeop = op.ToMergeOperation(this, sourceSlot);
                 op = mergeop;
@@ -233,7 +301,11 @@ namespace Vintagestory.API.Common
             TryFlipWith(sourceSlot);
         }
 
-
+        /// <summary>
+        /// Activates the middle click functions of the given slot.
+        /// </summary>
+        /// <param name="sinkSlot"></param>
+        /// <param name="op"></param>
         protected virtual void ActivateSlotMiddleClick(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
         {
             if (Empty) return;
@@ -247,7 +319,11 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Activates the right click functions of the given slot.
+        /// </summary>
+        /// <param name="sourceSlot"></param>
+        /// <param name="op"></param>
         protected virtual void ActivateSlotRightClick(ItemSlot sourceSlot, ref ItemStackMoveOperation op)
         {
             // 1. Current slot empty: Take 1 item
@@ -279,8 +355,11 @@ namespace Vintagestory.API.Common
             TryFlipWith(sourceSlot);
         }
 
-
-        public virtual void OnItemSlotModified(IItemStack sinkStack)
+        /// <summary>
+        /// The event fired when the slot is modified.
+        /// </summary>
+        /// <param name="sinkStack"></param>
+        public virtual void OnItemSlotModified(ItemStack sinkStack)
         {
             if (inventory != null)
             {
@@ -289,6 +368,9 @@ namespace Vintagestory.API.Common
             
         }
 
+        /// <summary>
+        /// Marks the slot as dirty which  queues it up for saving and resends it to the clients. Does not sync from client to server.
+        /// </summary>
         public virtual void MarkDirty()
         {
             if (inventory != null)
@@ -297,12 +379,21 @@ namespace Vintagestory.API.Common
             }
         }
 
-
+        /// <summary>
+        /// Gets the name of the itemstack- if it exists.
+        /// </summary>
+        /// <returns>The name of the itemStack or null.</returns>
         public virtual string GetStackName()
         {
             return itemstack?.GetName();
         }
 
+        /// <summary>
+        /// Gets the StackDescription for the item.
+        /// </summary>
+        /// <param name="world">The world the item resides in.</param>
+        /// <param name="extendedDebugInfo">Whether or not we have Extended Debug Info enabled.</param>
+        /// <returns></returns>
         public virtual string GetStackDescription(IClientWorldAccessor world, bool extendedDebugInfo)
         {
             return itemstack?.GetDescription(world, extendedDebugInfo);

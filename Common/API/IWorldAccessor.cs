@@ -7,6 +7,16 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
+    public enum EnumHighlightSlot
+    {
+        Selection = 0,
+        Brush = 1,
+        Spawner = 2,
+        LandClaim = 3
+    }
+
+
+
     /// <summary>
     /// Important interface to access the game world.
     /// </summary>
@@ -26,6 +36,11 @@ namespace Vintagestory.API.Common
         /// The api interface
         /// </summary>
         ICoreAPI Api { get; }
+
+        /// <summary>
+        /// The land claiming api interface
+        /// </summary>
+        ILandClaimAPI Claims { get; }
 
         /// <summary>
         /// Returns a list all loaded chunk positions in the form of a long index. Code to turn that into x/y/z coords:
@@ -104,7 +119,7 @@ namespace Vintagestory.API.Common
         IClassRegistryAPI ClassRegistry { get; }
 
         /// <summary>
-        /// Interface to access the game calendar
+        /// Interface to access the game calendar. On the server side only available after run stage 'LoadGamePre' (before that it is null)
         /// </summary>
         IGameCalendar Calendar { get; }
 
@@ -189,6 +204,14 @@ namespace Vintagestory.API.Common
         Block GetBlock(ushort blockId);
 
         /// <summary>
+        /// Returns all blocktypes matching given wildcard
+        /// </summary>
+        /// <param name="codeBeginsWith"></param>
+        /// <param name="domain"></param>
+        /// <returns></returns>
+        Block[] SearchBlocks(AssetLocation wildcard);
+
+        /// <summary>
         /// Retrieve the item class from given item code. Will return null if the item does not exist.
         /// </summary>
         /// <param name="itemCode"></param>
@@ -196,12 +219,12 @@ namespace Vintagestory.API.Common
         Item GetItem(AssetLocation itemCode);
 
         /// <summary>
-        /// Retrieve the block class from given block code. Will return null if the block does not exist.
+        /// Retrieve the block class from given block code. Will return null if the block does not exist. Logs a warning if block does not exist
         /// </summary>
         /// <param name="blockCode"></param>
         /// <returns></returns>
         Block GetBlock(AssetLocation blockCode);
-
+        
         /// <summary>
         /// Retrieve the entity class from given entity code. Will return null if the entity does not exist.
         /// </summary>
@@ -312,7 +335,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Plays given sound at given position.
         /// </summary>
-        /// <param name="location"></param>
+        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
         /// <param name="posx"></param>
         /// <param name="posy"></param>
         /// <param name="posz"></param>
@@ -325,7 +348,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Plays given sound at given position.
         /// </summary>
-        /// <param name="location"></param>
+        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
         /// <param name="atEntity"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
         /// <param name="randomizePitch"></param>
@@ -336,7 +359,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Plays given sound at given player position.
         /// </summary>
-        /// <param name="location"></param>
+        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
         /// <param name="atPlayer"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
         /// <param name="randomizePitch"></param>
@@ -507,44 +530,26 @@ namespace Vintagestory.API.Common
 
 
 
-        /// <summary>
-        /// Checks with the permission system if given player has use or place/break permissions on supplied position. Returns always true when called on the client!
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="pos"></param>
-        /// <param name="accessFlag"></param>
-        /// <returns></returns>
-        EnumWorldAccessResponse TestAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
-
-
-        /// <summary>
-        /// Same as <see cref="TestAccessBlock(IPlayer, BlockPos, EnumBlockAccessFlags)"/> but also sends an error message to the player and executes a MarkDirty() event the block. Returns always true when called on the client!
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="pos"></param>
-        /// <param name="accessFlag"></param>
-        /// <returns></returns>
-        bool TryAccessBlock(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag);
-
-
 
         /// <summary>
         /// Sends given player a list of block positions that should be highlighted
         /// </summary>
         /// <param name="player"></param>
+        /// <param name="highlightSlotId">for multiple highlights use a different number</param>
         /// <param name="blocks"></param>
         /// <param name="mode"></param>
         /// <param name="shape">When arbitrary, the blocks list represents the blocks to be highlighted. When Cube the blocks list should contain 2 positions for start and end</param>
-        void HighlightBlocks(IPlayer player, List<BlockPos> blocks, List<int> colors, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
+        void HighlightBlocks(IPlayer player, int highlightSlotId, List<BlockPos> blocks, List<int> colors, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
 
         /// <summary>
         /// Sends given player a list of block positions that should be highlighted (using a default color)
         /// </summary>
         /// <param name="player"></param>
+        /// <param name="highlightSlotId">for multiple highlights use a different number</param>
         /// <param name="blocks"></param>
         /// <param name="mode"></param>
         /// <param name="shape">When arbitrary, the blocks list represents the blocks to be highlighted. When Cube the blocks list should contain 2 positions for start and end</param>
-        void HighlightBlocks(IPlayer player, List<BlockPos> blocks, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
+        void HighlightBlocks(IPlayer player, int highlightSlotId, List<BlockPos> blocks, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
 
     }
 }

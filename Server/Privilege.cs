@@ -53,12 +53,12 @@ namespace Vintagestory.API.Server
         public static string useblock = "useblock";
 
         /// <summary>
-        /// Place or break blocks everywhere, completely ignoring area permissons
+        /// Place or break blocks everywhere, completely ignoring area permissons. You still need to be in creative mode however.
         /// </summary>
         public static string buildblockseverywhere = "buildblockseverywhere";
 
         /// <summary>
-        /// Use blocks everywhere, completely ignoring area permissons
+        /// Use blocks everywhere, completely ignoring area permissons. You still need to be in creative mode however.
         /// </summary>
         public static string useblockseverywhere = "useblockseverywhere";
 

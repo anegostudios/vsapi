@@ -9,17 +9,25 @@ namespace Vintagestory.API.Client
     public class GuiElementCell : GuiElementTextBase, IGuiElementCell
     {
         public static double unscaledRightBoxWidth = 40;
+        static int unscaledDepth = 4;
 
         /// <summary>
         /// The table cell information.
         /// </summary>
-        public TableCell cell;
+        public ListCellEntry cellEntry;
         double titleTextheight;
 
-        bool showModifyIcons = true;
+        public bool ShowModifyIcons = true;
+
+        LoadedTexture releasedButtonTexture;
+        LoadedTexture pressedButtonTexture;
 
         LoadedTexture leftHighlightTexture;
         LoadedTexture rightHighlightTexture;
+
+        double pressedYOffset;
+        double nonPressedYOffset;
+
 
         ElementBounds IGuiElementCell.Bounds
         {
@@ -32,110 +40,141 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The Client API</param>
         /// <param name="cell">The base cell</param>
         /// <param name="bounds">The bounds of the TableCell</param>
-        public GuiElementCell(ICoreClientAPI capi, TableCell cell, ElementBounds bounds) : base(capi, "", null, bounds)
+        public GuiElementCell(ICoreClientAPI capi, ListCellEntry cell, ElementBounds bounds) : base(capi, "", null, bounds)
         {
-            this.cell = cell;
+            this.cellEntry = cell;
             leftHighlightTexture = new LoadedTexture(capi);
             rightHighlightTexture = new LoadedTexture(capi);
 
+            releasedButtonTexture = new LoadedTexture(capi);
+            pressedButtonTexture = new LoadedTexture(capi);
+
             if (cell.TitleFont == null)
             {
-                cell.TitleFont = CairoFont.MediumDialogText();
+                cell.TitleFont = CairoFont.WhiteSmallishText();
             }
 
             if (cell.DetailTextFont == null)
             {
-                cell.DetailTextFont = CairoFont.SmallDialogText();
-                cell.DetailTextFont.Color[3] *= 0.6;
+                cell.DetailTextFont = CairoFont.WhiteSmallText();
+                cell.DetailTextFont.Color[3] *= 0.8;
             }
 
         }
 
-        public override void ComposeElements(Context ctx, ImageSurface surface)
+        public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
-            double rightBoxWidth = scaled(unscaledRightBoxWidth);
+            Compose(); 
+        }
 
+        public void Compose()
+        { 
             Bounds.CalcWorldBounds();
+            
+            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
+            Context ctx = new Context(surface);
+            ComposeButton(ctx, surface, false);
+            generateTexture(surface, ref releasedButtonTexture);
 
-            if (cell.HighlightCell > 0)
+            ctx.Operator = Operator.Clear;
+            ctx.Paint();
+            ctx.Operator = Operator.Over;
+
+            ComposeButton(ctx, surface, true);
+            generateTexture(surface, ref pressedButtonTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
+
+            ComposeHover(true, ref leftHighlightTexture);
+            ComposeHover(false, ref rightHighlightTexture);
+        }
+
+
+        void ComposeButton(Context ctx, ImageSurface surface, bool pressed) {
+
+            double rightBoxWidth = scaled(unscaledRightBoxWidth);
+            pressedYOffset = 0;
+            
+            if (cellEntry.DrawAsButton)
             {
-                RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, 1);
+                RoundRectangle(ctx, 0, 0, Bounds.OuterWidthInt, Bounds.OuterHeightInt, 1);
 
                 ctx.SetSourceRGB(GuiStyle.DialogDefaultBgColor[0], GuiStyle.DialogDefaultBgColor[1], GuiStyle.DialogDefaultBgColor[2]);
                 ctx.Fill();
+
+                if (pressed)
+                {
+                    pressedYOffset = scaled(unscaledDepth) / 2;
+                }
+
+                
+          
+                EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidthInt, Bounds.OuterHeightInt, pressed, (int)scaled(unscaledDepth));
             }
 
-            Font = cell.TitleFont;
-            titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.Title, Bounds.drawX, Bounds.drawY + Bounds.absPaddingY, Bounds.InnerWidth);
+            Font = cellEntry.TitleFont;
+            titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.Title, Bounds.absPaddingX, Bounds.absPaddingY + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth);
 
-            Font = cell.DetailTextFont;
-            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.DetailText, Bounds.drawX, Bounds.drawY + titleTextheight + Bounds.absPaddingY, Bounds.InnerWidth);
+            Font = cellEntry.DetailTextFont;
+            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.DetailText, Bounds.absPaddingX, Bounds.absPaddingY + cellEntry.DetailTextOffY + titleTextheight + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth);
 
-            if (cell.RightTopText != null)
+            if (cellEntry.RightTopText != null)
             {
-                TextExtents extents = Font.GetTextExtents(cell.RightTopText);
-                textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.RightTopText, Bounds.drawX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.drawY + Bounds.absPaddingY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
+                TextExtents extents = Font.GetTextExtents(cellEntry.RightTopText);
+                textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.RightTopText, Bounds.absPaddingX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.absPaddingY + Bounds.absPaddingY + scaled(cellEntry.RightTopOffY) + pressedYOffset, extents.Width + 1, EnumTextOrientation.Right);
             }
 
-            if (cell.HighlightCell > 0)
-            {
-                EmbossRoundRectangleElement(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, false, 2);
-            }
 
-            if (showModifyIcons)
+            if (ShowModifyIcons)
             {
                 ctx.LineWidth = 1;
-
                 
                 double crossSize = scaled(20);
                 double crossWidth = scaled(5);
 
                 ctx.SetSourceRGBA(0, 0, 0, 0.4);
                 ctx.NewPath();
-                ctx.MoveTo(Bounds.bgDrawX + Bounds.InnerWidth - rightBoxWidth, Bounds.bgDrawY + 1);
-                ctx.LineTo(Bounds.bgDrawX + Bounds.InnerWidth - rightBoxWidth, Bounds.bgDrawY + Bounds.OuterHeight - 2);
+                ctx.MoveTo(Bounds.InnerWidth - rightBoxWidth, 1);
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth, Bounds.OuterHeight - 2);
                 ctx.ClosePath();
                 ctx.Stroke();
 
                 ctx.SetSourceRGBA(1, 1, 1, 0.3);
                 ctx.NewPath();
-                ctx.MoveTo(Bounds.bgDrawX + Bounds.InnerWidth - rightBoxWidth + 1, Bounds.bgDrawY + 1);
-                ctx.LineTo(Bounds.bgDrawX + Bounds.InnerWidth - rightBoxWidth + 1, Bounds.bgDrawY + Bounds.OuterHeight - 2);
+                ctx.MoveTo(Bounds.InnerWidth - rightBoxWidth + 1, 1);
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth + 1, Bounds.OuterHeight - 2);
                 ctx.ClosePath();
                 ctx.Stroke();
 
-                double crossX = Bounds.drawX + Bounds.InnerWidth - rightBoxWidth + scaled(5);
-                double crossY = Bounds.drawY;
+                double crossX = Bounds.absPaddingX + Bounds.InnerWidth - rightBoxWidth + scaled(5);
+                double crossY = Bounds.absPaddingY;
 
                 ctx.Operator = Operator.Source;
 
                 ctx.SetSourceRGBA(0, 0, 0, 0.8);
-                //api.Gui.IconsDrawCross(ctx, crossX - 1, crossY - 1 + scaled(5), crossWidth, crossSize);
                 api.Gui.Icons.DrawPen(ctx, crossX - 1, crossY - 1 + scaled(5), crossWidth, crossSize);
-
                 ctx.SetSourceRGBA(1, 1, 1, 0.5);
-                //api.Gui.IconsDrawCross(ctx, crossX + 1, crossY + 1 + scaled(5), crossWidth, crossSize);
                 api.Gui.Icons.DrawPen(ctx, crossX + 1, crossY + 1 + scaled(5), crossWidth, crossSize);
-
                 ctx.SetSourceRGBA(0, 0, 0, 0.4);
-                //api.Gui.IconsDrawCross(ctx, crossX, crossY + scaled(5), crossWidth, crossSize);
                 api.Gui.Icons.DrawPen(ctx, crossX, crossY + scaled(5), crossWidth, crossSize);
 
                 ctx.Operator = Operator.Over;
             }
+
+
+            if (cellEntry.DrawAsButton && pressed)
+            {
+                RoundRectangle(ctx, 0, 0, Bounds.OuterWidthInt, Bounds.OuterHeightInt, 1);
+                ctx.SetSourceRGBA(0, 0, 0, 0.15);
+                ctx.Fill();
+            }
+
         }
 
-        /// <summary>
-        /// Creates the dynamic parts of the cell.
-        /// </summary>
-        public void CreateDynamicParts()
-        {
-            ComposeHover(true, ref leftHighlightTexture);
-            ComposeHover(false, ref rightHighlightTexture);
-        }
 
 
-        void ComposeHover(bool left, ref LoadedTexture textureId)
+        void ComposeHover(bool left, ref LoadedTexture texture)
         {
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
             Context ctx = genContext(surface);
@@ -164,7 +203,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0, 0, 0, 0.15);
             ctx.Fill();
 
-            generateTexture(surface, ref textureId);
+            generateTexture(surface, ref texture);
 
             ctx.Dispose();
             surface.Dispose();
@@ -181,17 +220,17 @@ namespace Vintagestory.API.Client
             double unscaledPadding = Bounds.absPaddingY / RuntimeEnv.GUIScale;
             double boxwidth = Bounds.InnerWidth;
 
-            this.Font = cell.TitleFont;
-            this.text = cell.Title;
-            titleTextheight = textUtil.GetMultilineTextHeight(Font, cell.Title, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
+            this.Font = cellEntry.TitleFont;
+            this.text = cellEntry.Title;
+            titleTextheight = textUtil.GetMultilineTextHeight(Font, cellEntry.Title, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
 
-            this.Font = cell.DetailTextFont;
-            this.text = cell.DetailText;
-            double detailTextHeight = textUtil.GetMultilineTextHeight(Font, cell.DetailText, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
+            this.Font = cellEntry.DetailTextFont;
+            this.text = cellEntry.DetailText;
+            double detailTextHeight = textUtil.GetMultilineTextHeight(Font, cellEntry.DetailText, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
 
             Bounds.fixedHeight = unscaledPadding + titleTextheight + unscaledPadding + detailTextHeight + unscaledPadding;
 
-            if (showModifyIcons && Bounds.fixedHeight < 73)
+            if (ShowModifyIcons && Bounds.fixedHeight < 73)
             {
                 Bounds.fixedHeight = 73;
             }
@@ -205,6 +244,27 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The change in time.</param>
         public void OnRenderInteractiveElements(ICoreClientAPI api, ElementBounds parentBounds, float deltaTime)
         {
+            if (cellEntry.Selected)
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(
+                    pressedButtonTexture.TextureId, 
+                    (int)(parentBounds.absX + Bounds.absX),
+                    (int)(parentBounds.absY + Bounds.absY), 
+                    Bounds.OuterWidthInt, 
+                    Bounds.OuterHeightInt
+                );
+            } else
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(
+                    releasedButtonTexture.TextureId, 
+                    (int)(parentBounds.absX + Bounds.absX),
+                    (int)(parentBounds.absY + Bounds.absY), 
+                    Bounds.OuterWidthInt, 
+                    Bounds.OuterHeightInt
+                );
+            }
+            
+
             int dx = api.Input.MouseX - (int)parentBounds.absX;
             int dy = api.Input.MouseY - (int)parentBounds.absY;
             Vec2d pos = Bounds.PositionInside(dx, dy);
@@ -227,6 +287,8 @@ namespace Vintagestory.API.Client
 
             leftHighlightTexture.Dispose();
             rightHighlightTexture.Dispose();
+            releasedButtonTexture.Dispose();
+            pressedButtonTexture.Dispose();
         }
     }
 }

@@ -1,18 +1,38 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Server
 {
+    public class ChunkLoadOptions
+    {
+        /// <summary>
+        /// If true, the chunk will never get unloaded unless UnloadChunkColumn() is called
+        /// </summary>
+        public bool KeepLoaded = false;
+        /// <summary>
+        /// Callback for when the chunks are ready and loaded
+        /// </summary>
+        public API.Common.Action OnLoaded = null;
+        /// <summary>
+        /// Additional config to pass onto the world generators
+        /// </summary>
+        public ITreeAttribute ChunkLoadConfig = new TreeAttribute();
+    }
+
     /// <summary>
     /// Methods to modify the game world
     /// </summary>
     public interface IWorldManagerAPI
     {
-        // Returns a (cloned) list of all currently loaded map chunks. The key is the 2d index of the map chunk, can be turned into an x/z coord
+        /// <summary>
+        /// Returns a (cloned) list of all currently loaded map chunks. The key is the 2d index of the map chunk, can be turned into an x/z coord
+        /// </summary>
         Dictionary<long, IMapChunk> AllLoadedMapchunks { get; }
 
         /// <summary>
@@ -89,31 +109,39 @@ namespace Vintagestory.API.Server
         /// Retrieve a customized interface to access blocks in the loaded game world.
         /// </summary>
         /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
-        /// <param name="relightChunk">Whether or not to relight the whole chunk after the a call to SetBlock</param>
+        /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
         /// <param name="strict">Log an error message if GetBlock/SetBlock was called to an unloaded chunk</param>
         /// <param name="debug">If strict, crashes the server if a unloaded chunk was crashed, prints an exception and exports a png image of the current loaded chunks</param>
         /// <returns></returns>
-        IBlockAccessor GetBlockAccessor(bool synchronize, bool relightChunk, bool strict, bool debug = false);
+        IBlockAccessor GetBlockAccessor(bool synchronize, bool relight, bool strict, bool debug = false);
 
 
         /// <summary>
         /// Retrieve a customized interface to access blocks in the loaded game world. Does not to relight/sync on a SetBlock until Commit() is called. On commit all touched blocks are relit/synced at once. This method should be used when setting many blocks (e.g. tree generation, explosion, etc.).
         /// </summary>
-        /// <param name="synchronize"></param>
-        /// <param name="relightChunk"></param>
+        /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="relight">Whether or not to relight the chunk after the a call to SetBlock and the light values changed by that</param>
         /// <param name="debug"></param>
         /// <returns></returns>
-        IBlockAccessor GetBlockAccessorBulkUpdate(bool synchronize, bool relightChunk, bool debug = false);
+        IBlockAccessor GetBlockAccessorBulkUpdate(bool synchronize, bool relight, bool debug = false);
 
 
         /// <summary>
         /// Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these. 
         /// </summary>
-        /// <param name="synchronize"></param>
-        /// <param name="relightChunk"></param>
+        /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
         /// <param name="debug"></param>
         /// <returns></returns>
-        IBlockAccessorRevertable GetBlockAccessorRevertable(bool synchronize, bool relightChunk, bool debug = false);
+        IBlockAccessorRevertable GetBlockAccessorRevertable(bool synchronize, bool relight, bool debug = false);
+
+        /// <summary>
+        /// Same as GetBlockAccessor but you have to call PrefetchBlocks() before using GetBlock(). It pre-loads all blocks in given area resulting in faster GetBlock() access
+        /// </summary>
+        /// <param name="syncronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
+        /// <returns></returns>
+        IBlockAccessorPrefetch GetBlockAccessorPrefetch(bool syncronize, bool relight);
 
         #endregion
 
@@ -136,30 +164,50 @@ namespace Vintagestory.API.Server
         /// </summary>
         bool SendChunks { get; set; }
 
+
         /// <summary>
-        /// Loads/Generates a chunk independent of any nearby players and sends it to all clients ignoring whether this chunk has been sent before or not. The loading happens in a seperate thread, so it might take some time.
+        /// Asynchronly high priority load a chunk column at given coordinate. 
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
-        /// <param name="onlyIfInRange">If True will send the chunks only to clients that are in range with their viewdistance</param>
-        void ForceLoadChunkColumn(int chunkX, int chunkZ, bool onlyIfInRange);
+        /// <param name="options">Additional loading options</param>
+        void LoadChunkColumnFast(int chunkX, int chunkZ, ChunkLoadOptions options = null);
 
         /// <summary>
-        /// Forcefully (re-)sends a chunk to all connected clients ignoring whether this chunk has been sent before or not
+        /// Asynchronly high priority load an area of chunk columns at given coordinates. Make sure that X1&lt;=X2 and Z1&lt;=Z2
+        /// </summary>
+        /// <param name="chunkX1"></param>
+        /// <param name="chunkZ1"></param>
+        /// <param name="chunkX2"></param>
+        /// <param name="chunkZ2"></param>
+        /// <param name="options">Additional loading options</param>
+        void LoadChunkColumnFast(int chunkX1, int chunkZ1, int chunkX2, int chunkZ2, ChunkLoadOptions options = null);
+
+        /// <summary>
+        /// Asynchronly normal priority load a chunk column at given coordinate. No effect when already loaded.
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="keepLoaded">If true, the chunk will never get unloaded unless UnloadChunkColumn() is called</param>
+        void LoadChunkColumn(int chunkX, int chunkZ, bool keepLoaded = false);
+
+
+        /// <summary>
+        /// Send or Resend a loaded chunk to all connected players. Has no effect when the chunk is not loaded
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkY"></param>
         /// <param name="chunkZ"></param>
-        /// <param name="onlyIfInRange"></param>
-        void ForceSendChunk(int chunkX, int chunkY, int chunkZ, bool onlyIfInRange);
+        /// <param name="onlyIfInRange">If true, the chunk will not be sent to connected players that are out of range from that chunk</param>
+        void ResendChunk(int chunkX, int chunkY, int chunkZ, bool onlyIfInRange = true);
 
         /// <summary>
-        /// Forcefully (re-)sends a mapchunk to all connected clients ignoring whether this chunk has been sent before or not
+        /// Send or resent a loaded map chunk to all connected players. Has no effect when the map chunk is not loaded
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
         /// <param name="onlyIfInRange"></param>
-        void ForceSendMapChunk(int chunkX, int chunkZ, bool onlyIfInRange);
+        void ResendMapChunk(int chunkX, int chunkZ, bool onlyIfInRange);
 
 
 
@@ -171,7 +219,7 @@ namespace Vintagestory.API.Server
         void UnloadChunkColumn(int chunkX, int chunkZ);
 
         /// <summary>
-        /// Deletes a column of chunks at given coordinate from the save file. Also unloads the chunk in the same process.
+        /// Deletes a column of chunks at given coordinate from the save file. Also deletes the map chunk and map region at the same coordinate. Also unloads the chunk in the same process.
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
@@ -229,13 +277,15 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name = "name">The key to look for</param>
         /// <returns></returns>
+        [Obsolete("Use WorldManager.SaveGame.GetData() instead")]
         byte[] GetData(string name);
 
         /// <summary>
         /// Store the given data persistently to the savegame.
         /// </summary>
         /// <param name = "name">Key value</param>
-        /// <param name = "value">Data to save</param>
+        /// <param name = "data">Data to save</param>
+        [Obsolete("Use SaveGame.StoreData() instead")]
         void StoreData(string name, byte[] data);
 
       
@@ -261,28 +311,7 @@ namespace Vintagestory.API.Server
         /// <param name = "z">Z coordinate of new spawnpoint</param>
         void SetDefaultSpawnPosition(int x, int y, int z);
 
-        /// <summary>
-        /// Get the BlockType object of a certain block ID. This method causes an exception when the ID is not found
-        /// </summary>
-        /// <param name = "blockid">The block ID to search for</param>
-        /// <returns>BlockType object</returns>
-        Block GetBlockType(int blockid);
-
-        /// <summary>
-        /// Returns all loaded block types
-        /// </summary>
-        /// <value></value>
-        Block[] BlockTypes { get; }
-
-
-        /// <summary>
-        /// Returns all blocktypes starting with given string
-        /// </summary>
-        /// <param name="codeBeginsWith"></param>
-        /// <param name="domain"></param>
-        /// <returns></returns>
-        Block[] SearchBlockTypes(string codeBeginsWith, string domain = GlobalConstants.DefaultDomain);
-
+        
 
         #endregion
 

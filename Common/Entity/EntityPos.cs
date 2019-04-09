@@ -22,33 +22,53 @@ namespace Vintagestory.API.Common.Entities
 
         public Vec3d Motion = new Vec3d();
 
+        /// <summary>
+        /// The X position of the Entity.
+        /// </summary>
         public virtual double X {
             get { return x; }
             set { x = value; }
         }
         
+        /// <summary>
+        /// The Y position of the Entity.
+        /// </summary>
         public virtual double Y
         {
             get { return y; }
             set { y = value; }
         }
         
+        /// <summary>
+        /// The Z position of the Entity.
+        /// </summary>
         public virtual double Z
         {
             get { return z; }
             set { z = value; }
         }
 
+        /// <summary>
+        /// The rotation around the X axis
+        /// </summary>
         public virtual float Roll
         {
             get { return roll; }
             set { roll = value; }
         }
+
+        /// <summary>
+        /// The rotation around the Y axis.
+        /// </summary>
         public virtual float Yaw
         {
             get { return yaw; }
             set { yaw = value; } 
         }
+        
+        /// <summary>
+        /// The rotation around the Z axis.
+        /// </summary>
         public virtual float Pitch
         {
             get { return pitch; }
@@ -107,7 +127,10 @@ namespace Vintagestory.API.Common.Entities
             get { return (int)Z; }
         }
 
-
+        /// <summary>
+        /// Sets this position to a Vec3d
+        /// </summary>
+        /// <param name="pos">The Vec3d to set to.</param>
         public void SetPos(Vec3d pos)
         {
             this.x = pos.X;
@@ -134,7 +157,9 @@ namespace Vintagestory.API.Common.Entities
             this.Roll = roll;
         }
 
-
+        /// <summary>
+        /// Sets the entity position.
+        /// </summary>
         public EntityPos SetPos(int x, int y, int z)
         {
             this.X = x;
@@ -142,7 +167,9 @@ namespace Vintagestory.API.Common.Entities
             this.Z = z;
             return this;
         }
-
+        /// <summary>
+        /// Sets the entity position.
+        /// </summary>
         public EntityPos SetPos(BlockPos pos)
         {
             this.X = pos.X;
@@ -151,7 +178,9 @@ namespace Vintagestory.API.Common.Entities
             return this;
         }
 
-
+        /// <summary>
+        /// Sets the entity position.
+        /// </summary>
         public EntityPos SetPos(double x, double y, double z)
         {
             this.X = x;
@@ -160,6 +189,9 @@ namespace Vintagestory.API.Common.Entities
             return this;
         }
 
+        /// <summary>
+        /// Sets the entity position.
+        /// </summary>
         public EntityPos SetPos(EntityPos pos)
         {
             this.X = pos.X;
@@ -168,6 +200,11 @@ namespace Vintagestory.API.Common.Entities
             return this;
         }
 
+        /// <summary>
+        /// Sets the entity angles.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         public EntityPos SetAngles(EntityPos pos)
         {
             this.Roll = pos.Roll;
@@ -176,6 +213,9 @@ namespace Vintagestory.API.Common.Entities
             return this;
         }
 
+        /// <summary>
+        /// Sets the entity position.
+        /// </summary>
         public EntityPos SetAngles(float roll, float yaw, float pitch)
         {
             this.Roll = roll;
@@ -184,6 +224,11 @@ namespace Vintagestory.API.Common.Entities
             return this;
         }
 
+        /// <summary>
+        /// Sets the Yaw of this entity.
+        /// </summary>
+        /// <param name="yaw"></param>
+        /// <returns></returns>
         public EntityPos SetYaw(float yaw)
         {
             this.Yaw = yaw;

@@ -294,7 +294,26 @@ namespace Vintagestory.API.MathTools
             return ShortestDistanceFrom(vec.XAsInt, vec.YAsInt, vec.ZAsInt);
         }
 
-        
+
+        /// <summary>
+        /// Returns the shortest distance to any point between this and given cuboid
+        /// </summary>
+        public double ShortestDistanceFrom(Cuboidi cuboid)
+        {
+            double cx = cuboid.X1 - GameMath.Clamp(cuboid.X1, X1, X2);
+            double cy = cuboid.Y1 - GameMath.Clamp(cuboid.Y1, Y1, Y2);
+            double cz = cuboid.Z1 - GameMath.Clamp(cuboid.Z1, Z1, Z2);
+
+            double dx = cuboid.X2 - GameMath.Clamp(cuboid.X2, X1, X2);
+            double dy = cuboid.Y2 - GameMath.Clamp(cuboid.Y2, Y1, Y2);
+            double dz = cuboid.Z2 - GameMath.Clamp(cuboid.Z2, Z1, Z2);
+
+            return Math.Sqrt(
+                Math.Min(cx * cx, dx * dx) + Math.Min(cy * cy, dy * dy) + Math.Min(cz * cz, dz * dz)
+            );
+        }
+
+
 
         /// <summary>
         /// Returns a new x coordinate that's ensured to be outside this cuboid. Used for collision detection.
@@ -485,5 +504,9 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        public override string ToString()
+        {
+            return string.Format("X1={0},Y1={1},Z1={2},X2={3},Y2={4},Z2={5}", X1, Y1, Z1, X2, Y2, Z2);
+        }
     }
 }

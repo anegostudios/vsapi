@@ -324,15 +324,16 @@ namespace Vintagestory.API.MathTools
             int[] result = new int[outSize * outSize];
 
             int x, z;
+            int pad = map.TopLeftPadding;
 
-            for (int inX = map.TopLeftPadding; inX < innerSize; inX++)
+            for (int inX = 0; inX < innerSize; inX++)
             {
-                for (int inZ = map.TopLeftPadding; inZ < innerSize; inZ++)
-                {
-                    int leftTop = map.Data[inZ * map.Size + inX];
-                    int rightTop = map.Data[inZ * map.Size + inX + 1];
-                    int leftBottom = map.Data[(inZ + 1) * map.Size + inX];
-                    int rightBottom = map.Data[(inZ + 1) * map.Size + inX + 1];
+                for (int inZ = 0; inZ < innerSize; inZ++)
+                {                    
+                    int leftTop = map.Data[(inZ+pad) * map.Size + inX + pad];
+                    int rightTop = map.Data[(inZ+pad) * map.Size + inX + 1 + pad];
+                    int leftBottom = map.Data[(inZ + 1 + pad) * map.Size + inX + pad];
+                    int rightBottom = map.Data[(inZ + 1 + pad) * map.Size + inX + 1 + pad];
 
                     for (int dz = 0; dz < zoom; dz++)
                     {
@@ -349,7 +350,7 @@ namespace Vintagestory.API.MathTools
                                 rightTop,
                                 leftBottom,
                                 rightBottom
-                                );
+                            );
                         }
                     }
                 }
@@ -1057,6 +1058,46 @@ namespace Vintagestory.API.MathTools
                 array[n] = array[k];
                 array[k] = temp;
             }
+        }
+
+
+        /// <summary>
+        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static double R2Sequence1D(int n)
+        {
+            double g = 1.6180339887498948482;
+            double a1 = 1.0 / g;
+            return (0.5 + a1 * n) % 1;
+        }
+
+        /// <summary>
+        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static Vec2d R2Sequence2D(int n)
+        {
+            double g = 1.32471795724474602596;
+            double a1 = 1.0 / g;
+            double a2 = 1.0 / (g * g);
+            return new Vec2d((0.5 + a1 * n) % 1, (0.5 + a2 * n) % 1);
+        }
+
+        /// <summary>
+        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static Vec3d R2Sequence3D(int n)
+        {
+            double g = 1.22074408460575947536;
+            double a1 = 1.0 / g;
+            double a2 = 1.0 / (g * g);
+            double a3 = 1.0 / (g * g * g);
+            return new Vec3d((0.5 + a1 * n) % 1, (0.5 + a2 * n) % 1, (0.5 + a3 * n) % 1);
         }
 
     }

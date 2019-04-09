@@ -13,7 +13,7 @@ namespace Vintagestory.API.Common
 {
     public class VtmlUtil {
 
-        public static RichTextComponentBase[] Richtextify(string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
+        public static RichTextComponentBase[] Richtextify(ICoreClientAPI capi, string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
         {
             List<RichTextComponentBase> elems = new List<RichTextComponentBase>();
 
@@ -21,21 +21,21 @@ namespace Vintagestory.API.Common
             fontStack.Push(baseFont);
 
             VtmlToken[] tokens = VtmlParser.Tokenize(vtmlCode);
-            Richtextify(tokens, ref elems, fontStack, didClickLink);
+            Richtextify(capi, tokens, ref elems, fontStack, didClickLink);
 
             return elems.ToArray();
         }
 
-        static void Richtextify(VtmlToken[] tokens, ref List<RichTextComponentBase> elems, Stack<CairoFont> fontStack, Action<LinkTextComponent> didClickLink)
+        static void Richtextify(ICoreClientAPI capi, VtmlToken[] tokens, ref List<RichTextComponentBase> elems, Stack<CairoFont> fontStack, Action<LinkTextComponent> didClickLink)
         {
             for (int i = 0; i < tokens.Length; i++)
             {
-                Richtextify(tokens[i], ref elems, fontStack, didClickLink);
+                Richtextify(capi, tokens[i], ref elems, fontStack, didClickLink);
             }
         }
         
 
-        static void Richtextify(VtmlToken token, ref List<RichTextComponentBase> elems, Stack<CairoFont> fontStack, Common.Action<LinkTextComponent> didClickLink)
+        static void Richtextify(ICoreClientAPI capi, VtmlToken token, ref List<RichTextComponentBase> elems, Stack<CairoFont> fontStack, Common.Action<LinkTextComponent> didClickLink)
         {
             if (token is VtmlTagToken)
             {
@@ -43,8 +43,12 @@ namespace Vintagestory.API.Common
 
                 switch(tagToken.Name)
                 {
+                    case "br":
+                        elems.Add(new RichTextComponent(capi, "\r\n", fontStack.Peek()));
+                        break;
+
                     case "a":
-                        LinkTextComponent cmp = new LinkTextComponent(tagToken.ContentText, fontStack.Peek(), didClickLink);
+                        LinkTextComponent cmp = new LinkTextComponent(capi, tagToken.ContentText, fontStack.Peek(), didClickLink);
                         tagToken.Attributes.TryGetValue("href", out cmp.Href);
 
                         elems.Add(cmp);
@@ -54,21 +58,21 @@ namespace Vintagestory.API.Common
                         fontStack.Push(getFont(tagToken, fontStack));
                         foreach (var val in tagToken.ChildElements)
                         {
-                            Richtextify(val, ref elems, fontStack, didClickLink);
+                            Richtextify(capi, val, ref elems, fontStack, didClickLink);
                         }
                         fontStack.Pop();
 
                         break;
                     
                     case "clear":
-                        elems.Add(new ClearFloatTextComponent());
+                        elems.Add(new ClearFloatTextComponent(capi));
                         break;
 
                     case "strong":
                         fontStack.Push(fontStack.Peek().Clone().WithWeight(Cairo.FontWeight.Bold));
                         foreach (var val in tagToken.ChildElements)
                         {
-                            Richtextify(val, ref elems, fontStack, didClickLink);
+                            Richtextify(capi, val, ref elems, fontStack, didClickLink);
                         }
                         fontStack.Pop();
                         break;
@@ -79,7 +83,7 @@ namespace Vintagestory.API.Common
             } else
             {
                 VtmlTextToken textToken = token as VtmlTextToken;
-                elems.Add(new RichTextComponent(textToken.Text, fontStack.Peek()));
+                elems.Add(new RichTextComponent(capi, textToken.Text, fontStack.Peek()));
             }
         }
 
@@ -88,6 +92,7 @@ namespace Vintagestory.API.Common
         static CairoFont getFont(VtmlTagToken tag, Stack<CairoFont> fontStack)
         {
             double size = 0;
+            double lineHeight = 1;
             string fontName = "";
             double[] color = ColorUtil.WhiteArgbDouble;
             FontWeight weight = FontWeight.Normal;
@@ -121,9 +126,14 @@ namespace Vintagestory.API.Common
                 weight = prevFont.FontWeight;
             }
 
+            if (!tag.Attributes.ContainsKey("lineheight") || !double.TryParse(tag.Attributes["lineheight"], out lineHeight))
+            {
+                lineHeight = prevFont.LineHeightMultiplier;
+            }
+
             fontStack.Push(prevFont);
 
-            return new CairoFont(size, fontName, color).WithWeight(weight);
+            return new CairoFont(size, fontName, color).WithWeight(weight).WithLineHeightMultiplier(lineHeight);
         }
 
 
@@ -165,8 +175,8 @@ namespace Vintagestory.API.Common
                         text = text
                             .Replace("&gt;", ">")
                             .Replace("&lt;", "<")
-                            .Replace("  ", "")
-                            .Replace("  ", "")
+                            //.Replace("  ", "")
+                            //.Replace("  ", "")
                             .Replace("&nbsp;", " ")
                         ;
 
@@ -212,10 +222,27 @@ namespace Vintagestory.API.Common
 
                     VtmlTagToken tagToken;
 
+                    // <br>
+                    if (tag == "br")
+                    {
+                        tagToken = new VtmlTagToken() { Name = "br" };
+
+                        if (tokenStack.Count > 0)
+                        {
+                            tokenStack.Peek().ChildElements.Add(tagToken);
+                        }
+                        else
+                        {
+                            tokenized.Add(tagToken);
+                        }
+                        tag = "";
+                        continue;
+                    }
+
                     // <div a=b />
                     if (vtml[pos - 1] == '/')
                     {
-                        tagToken = tagToken = parseTagAttributes(tag.Substring(0, tag.Length - 1));
+                        tagToken = parseTagAttributes(tag.Substring(0, tag.Length - 1));
 
                         if (tokenStack.Count > 0)
                         {
@@ -260,6 +287,14 @@ namespace Vintagestory.API.Common
 
             if (text.Length > 0)
             {
+                text = text
+                    .Replace("&gt;", ">")
+                    .Replace("&lt;", "<")
+                    //.Replace("  ", "")
+                    //.Replace("  ", "")
+                    .Replace("&nbsp;", " ")
+                ;
+
                 tokenized.Add(new VtmlTextToken() { Text = text });
             }
 

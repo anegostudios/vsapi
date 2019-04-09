@@ -13,9 +13,24 @@ namespace Vintagestory.API.Common
         float accumulator;
         Vec3d outposition = new Vec3d();
 
+        /// <summary>
+        /// The amount of drag while travelling through water.
+        /// </summary>
         double waterDragValue = GlobalConstants.WaterDrag;
+
+        /// <summary>
+        /// The amount of drag while travelling through the air.
+        /// </summary>
         double airDragValue = GlobalConstants.AirDragAlways;
+
+        /// <summary>
+        /// The amount of drag while travelling on the ground.
+        /// </summary>
         double groundDragFactor = 0.7f;
+
+        /// <summary>
+        /// The amount of gravity applied per tick to this entity.
+        /// </summary>
         double gravityPerSecond = GlobalConstants.GravityPerSecond;
 
 
@@ -60,6 +75,11 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Performs the physics on the specified entity.
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="pos"></param>
         public void DoPhysics(float dt, EntityPos pos)
         {
             Vec3d motionBefore = pos.Motion.Clone();
@@ -86,6 +106,37 @@ namespace Vintagestory.API.Common
             {
                 pos.Motion *= (float)Math.Pow(airDragValue, dt * 33);
             }
+
+            Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z);
+
+            if (entity.FeetInLiquid)
+            {
+                string lastcodepart = inblock.LastCodePart(1);
+                if (lastcodepart != null)
+                {
+                    Vec3i normali = Cardinal.FromInitial(lastcodepart)?.Normali;
+
+                    
+
+                    if (normali != null)
+                    {
+                        float pushstrength = 0.0003f * 1000f / Math.Max(500, entity.MaterialDensity);
+
+                        pos.Motion.Add(
+                            normali.X * pushstrength,
+                            0,
+                            normali.Z * pushstrength
+                        );
+                    }
+                    else
+                    {
+                        if (lastcodepart == "d")
+                        {
+                            pos.Motion.Add(0, -0.002f, 0);
+                        }
+                    }
+                }
+            }
             
 
             // Gravity
@@ -95,14 +146,21 @@ namespace Vintagestory.API.Common
                 if (entity.Swimming)
                 {
                     Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + entity.SwimmingOffsetY + 1), (int)pos.Z);
-                    Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z);
 
                     float swimmingDepth = Math.Min(
                         1, 
                         1 - (float)(pos.Y + entity.SwimmingOffsetY) + (int)(pos.Y + entity.SwimmingOffsetY) + (aboveblock.IsLiquid() ? 1 : 0) - (1 - inblock.LiquidLevel / 7f)
                     );
 
-                    fact = 1.5f * swimmingDepth * GameMath.Clamp(entity.MaterialDensity / inblock.MaterialDensity - 1, -0.1f, 1f) + (1 - swimmingDepth) / 70f;
+                    float boyancy = GameMath.Clamp(entity.MaterialDensity / inblock.MaterialDensity - 1, -0.1f, 0.2f);
+                    
+                    fact = boyancy * (1.5f * swimmingDepth + (1 - swimmingDepth) / 70f);
+
+                    // At very shallow waters, items heavery than water do funny stuff because fact becomes <0
+                    if (entity.MaterialDensity > inblock.MaterialDensity)
+                    {
+                        fact = Math.Max(0, fact);
+                    }
                 }
 
                 pos.Motion.Y -= fact * (gravityPerSecond * dt + Math.Max(0, -0.015f * pos.Motion.Y));

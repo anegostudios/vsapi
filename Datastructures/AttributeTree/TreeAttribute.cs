@@ -76,7 +76,23 @@ namespace Vintagestory.API.Datastructures
         {
 
         }
-        
+
+        public static TreeAttribute CreateFromBytes(byte[] blockEntityData)
+        {
+            TreeAttribute tree = new TreeAttribute();
+            using (MemoryStream ms = new MemoryStream(blockEntityData))
+            {
+                using (BinaryReader reader = new BinaryReader(ms))
+                {
+                    tree.FromBytes(reader);
+                }
+            }
+
+            return tree;
+        }
+
+
+
         public virtual void FromBytes(BinaryReader stream)
         {
             if (depth > 30)
@@ -103,6 +119,19 @@ namespace Vintagestory.API.Datastructures
                 attr.FromBytes(stream);
 
                 attributes[key] = attr;
+            }
+        }
+
+        public virtual byte[] ToBytes()
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (BinaryWriter writer = new BinaryWriter(ms))
+                {
+                    ToBytes(writer);
+                }
+
+                return ms.ToArray();
             }
         }
 

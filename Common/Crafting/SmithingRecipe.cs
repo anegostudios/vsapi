@@ -33,6 +33,12 @@ namespace Vintagestory.API.Common
         public string[] Pattern;
         public bool[,] Voxels = new bool[16, 16];
 
+        /// <summary>
+        /// Resolves the recipe.
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="sourceForErrorLogging"></param>
+        /// <returns></returns>
         public override bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
         {
             if (Pattern == null || Ingredient == null || Output == null)
@@ -55,10 +61,19 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+        /// <summary>
+        /// Generates the voxels for the recipe.
+        /// </summary>
         public void GenVoxels() { 
             int width = 0;
             for (int i = 0; i < Pattern.Length; i++) width = Math.Max(width, Pattern[i].Length);
             int height = Pattern.Length;
+
+            if (width > 16 || height > 16)
+            {
+                throw new Exception(string.Format("Invalid smithing recipe {0}! Width or height is beyond 16 voxels", this.Name));
+            }
+
 
             int startX = (16 - width) / 2;
             int startY = (16 - height) / 2;
@@ -74,7 +89,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Serialized the alloy
+        /// Serialized the recipe
         /// </summary>
         /// <param name="writer"></param>
         public void ToBytes(BinaryWriter writer)
@@ -176,7 +191,12 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Checks to see whether or not the wildcard matches the smithing recipe.
+        /// </summary>
+        /// <param name="wildCard"></param>
+        /// <param name="blockCode"></param>
+        /// <returns></returns>
         public static bool WildCardMatch(AssetLocation wildCard, AssetLocation blockCode)
         {
             if (blockCode == null || !wildCard.Domain.Equals(blockCode.Domain)) return false;

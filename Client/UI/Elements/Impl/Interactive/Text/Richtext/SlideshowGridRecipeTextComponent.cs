@@ -209,7 +209,7 @@ namespace Vintagestory.API.Client
             
         }
 
-        public override void RenderInteractiveElements(ICoreClientAPI api, float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
             LineRectangled bounds = BoundsPerLine[0];
 
@@ -238,10 +238,10 @@ namespace Vintagestory.API.Client
 
                     api.Render.RenderItemstackToGui(
                         ingred.ResolvedItemstack, 
-                        rx + size * 0.5f,
-                        ry + size * 0.5f, 
-                        100, (float)size * 0.58f, ColorUtil.WhiteArgb, 
-                        true, false, false
+                        rx + size * 0.5f - 2, // no idea why the -2
+                        ry + size * 0.5f - 3, // no idea why the -3
+                        100, (float)size * 0.58f, ColorUtil.WhiteArgb,
+                        true, false, true
                     );
 
                     // Super weird coordinates, no idea why
@@ -258,7 +258,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        public override void OnMouseDown(ICoreClientAPI api, MouseEvent args)
+        public override void OnMouseDown(MouseEvent args)
         {
             GridRecipe recipe = GridRecipes[curItemIndex];
 

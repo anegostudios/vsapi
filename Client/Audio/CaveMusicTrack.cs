@@ -39,6 +39,7 @@ namespace Vintagestory.API.Client
         long cooldownUntilMs;
         ICoreClientAPI capi;
         List<string> activeTracks = new List<string>();
+        IMusicEngine musicEngine;
 
         /// <summary>
         /// The name of the music track.
@@ -95,10 +96,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="assetManager">the global Asset Manager</param>
         /// <param name="capi">The Core Client API</param>
-        public void Initialize(IAssetManager assetManager, ICoreClientAPI capi)
+        public void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
         {
             this.capi = capi;
-
+            this.musicEngine = musicEngine;
             PartsShuffled = new MusicTrackPart[Parts.Length];
 
             for (int i = 0; i < Parts.Length; i++)
@@ -114,7 +115,7 @@ namespace Vintagestory.API.Client
         /// <param name="props">The properties of the current track.</param>
         /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Do we play this track?</returns>
-        public bool ShouldPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
+        public bool ShouldPlay(TrackedPlayerProperties props)
         {
             if (props.sunSlight > 3) return false;
             if (capi.World.ElapsedMilliseconds < cooldownUntilMs) return false;
@@ -127,7 +128,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="props">The properties of the current track.</param>
         /// <param name="musicEngine">the Music Engine.</param>
-        public void BeginPlay(TrackedPlayerProperties props, IMusicEngine musicEngine)
+        public void BeginPlay(TrackedPlayerProperties props)
         {
             activeUntilMs = capi.World.ElapsedMilliseconds + (int)(SessionPlayTime * 1000);
         }
@@ -139,7 +140,7 @@ namespace Vintagestory.API.Client
         /// <param name="props">The properties of the current track.</param>
         /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Are we still playing or do we stop?</returns>
-        public bool ContinuePlay(float dt, TrackedPlayerProperties props, IMusicEngine musicEngine)
+        public bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {
             if (props.sunSlight > 3)
             {
@@ -210,7 +211,11 @@ namespace Vintagestory.API.Client
                     AssetLocation location = part.Files[rand.Next(part.Files.Length)];
                     part.NowPlayingFile = location;
                     part.Loading = true;
-                    musicEngine.StartTrack(location, (sound) => { part.Sound = sound; part.Loading = false; });
+                    musicEngine.LoadTrack(location, (sound) => {
+                        sound.Start();
+                        part.Sound = sound;
+                        part.Loading = false;
+                    });
 
                     part.StartedMs = capi.World.ElapsedMilliseconds;
                     quantityActive++;

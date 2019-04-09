@@ -100,6 +100,7 @@ namespace Vintagestory.API.Common.Entities
         /// The face the entity is climbing on. Null if the entity is not climbing
         /// </summary>
         public BlockFacing ClimbingOnFace;
+        public Cuboidf ClimbingOnCollBox;
 
         /// <summary>
         /// True if this entity is in touch with the ground
@@ -210,6 +211,9 @@ namespace Vintagestory.API.Common.Entities
             get { return World.Side == EnumAppSide.Server ? ServerPos : Pos; }
         }
 
+        /// <summary>
+        /// The height of the eyes for the given entity.
+        /// </summary>
         public virtual double EyeHeight { get { return Properties.EyeHeight; } }
         
 
@@ -223,11 +227,12 @@ namespace Vintagestory.API.Common.Entities
 
 
         /// <summary>
-        /// Determines on whether an entity floats on liquids or not. Water has a density of 1000.
+        /// Determines on whether an entity floats on liquids or not and how strongly items get pushed by water. Water has a density of 1000.
+        /// A density below 1000 means the entity floats on top of water if has a physics simulation behavior attached to it.
         /// </summary>
         public virtual float MaterialDensity
         {
-            get { return 9999; }
+            get { return 3000; }
         }
 
         /// <summary>
@@ -261,10 +266,11 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual bool Alive
         {
-            get { return WatchedAttributes.GetInt("entityDead", 0) == 0; }
-            set { WatchedAttributes.SetInt("entityDead", value ? 0 : 1); }
+            get { return alive; /* Updated every game tick. Faster than doing a dict lookup hundreds/thousands of times */ }
+            set { WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value; }
         }
-
+        private bool alive=true;
+        
         /// <summary>
         /// Used by some renderers to apply an overal color tint on the entity
         /// </summary>
@@ -317,6 +323,7 @@ namespace Vintagestory.API.Common.Entities
             this.Class = properties.Class;
             this.InChunkIndex3d = InChunkIndex3d;
 
+            alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
             WatchedAttributes.SetFloat("onHurt", 0);
             int onHurtCounter = WatchedAttributes.GetInt("onHurtCounter");
             WatchedAttributes.RegisterModifiedListener("onHurt", () => {
@@ -388,7 +395,8 @@ namespace Vintagestory.API.Common.Entities
 
             this.Properties.Initialize(this, api);
 
-            AnimManager = AnimationCache.InitManager(api, AnimManager, this, Properties.Client.LoadedShape);
+
+            AnimManager = AnimationCache.InitManager(api, AnimManager, this, Properties.Client.LoadedShape, "head");
             
             if (this is EntityPlayer)
             {
@@ -419,7 +427,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer)
         {
-            EnumHandling handled = EnumHandling.NotHandled;
+            EnumHandling handled = EnumHandling.PassThrough;
             ItemStack[] stacks = null;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
@@ -446,7 +454,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// Teleports the entity to given position
+        /// Teleports the entity to given position. Actual teleport is delayed until target chunk is loaded.
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -458,7 +466,7 @@ namespace Vintagestory.API.Common.Entities
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
-                sapi.World.LoadChunkColumn((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, () =>
+                sapi.WorldManager.LoadChunkColumnFast((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
                 {
                     IsTeleport = true;
                     Pos.SetPos(x, y, z);
@@ -466,6 +474,7 @@ namespace Vintagestory.API.Common.Entities
                     PositionBeforeFalling.Set(x, y, z);
                     Pos.Motion.Set(0, 0, 0);
                     Teleporting = false;
+                }
                 });
                 
             }
@@ -572,6 +581,8 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="dt"></param>
         public virtual void OnGameTick(float dt)
         {
+            alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
+
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnGameTick(dt);
@@ -645,7 +656,20 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// Called when the entity spawns
+        /// Called when after the got loaded from the savegame (not called during spawn)
+        /// </summary>
+        public virtual void OnEntityLoaded()
+        {
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnEntityLoaded();
+            }
+
+            Properties.Client.Renderer?.OnEntityLoaded();
+        }
+
+        /// <summary>
+        /// Called when the entity spawns (not called when loaded from the savegame).
         /// </summary>
         public virtual void OnEntitySpawn()
         {
@@ -653,6 +677,8 @@ namespace Vintagestory.API.Common.Entities
             {
                 behavior.OnEntitySpawn();
             }
+
+            Properties.Client.Renderer?.OnEntityLoaded();
         }
 
         /// <summary>
@@ -685,9 +711,9 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="itemslot">If being interacted with a block/item, this should be the slot the item is being held in</param>
         /// <param name="hitPosition">Relative position on the entites hitbox where the entity interacted at</param>
         /// <param name="mode">0 = attack, 1 = interact</param>
-        public virtual void OnInteract(EntityAgent byEntity, IItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode)
+        public virtual void OnInteract(EntityAgent byEntity, ItemSlot itemslot, Vec3d hitPosition, EnumInteractMode mode)
         {
-            EnumHandling handled = EnumHandling.NotHandled;
+            EnumHandling handled = EnumHandling.PassThrough;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
@@ -703,7 +729,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public void OnReceivedServerPos(bool isTeleport)
         {
-            EnumHandling handled = EnumHandling.NotHandled;
+            EnumHandling handled = EnumHandling.PassThrough;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
@@ -711,7 +737,7 @@ namespace Vintagestory.API.Common.Entities
                 if (handled == EnumHandling.PreventSubsequent) break;
             }
 
-            if (handled == EnumHandling.NotHandled)
+            if (handled == EnumHandling.PassThrough)
             {
                 Pos.SetFrom(ServerPos);
             }
@@ -725,7 +751,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="data"></param>
         public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
         {
-            EnumHandling handled = EnumHandling.NotHandled;
+            EnumHandling handled = EnumHandling.PassThrough;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
@@ -774,7 +800,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="beforeState"></param>
         public virtual void OnStateChanged(EnumEntityState beforeState)
         {
-            EnumHandling handled = EnumHandling.NotHandled;
+            EnumHandling handled = EnumHandling.PassThrough;
 
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
@@ -1016,6 +1042,15 @@ namespace Vintagestory.API.Common.Entities
 
 
 
+        /// <summary>
+        /// Revives the entity and heals for 9999.
+        /// </summary>
+        public virtual void Revive()
+        {
+            Alive = true;
+            ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Revive, Type = EnumDamageType.Heal }, 9999);
+            AnimManager?.StopAnimation("die");
+        }
 
 
         /// <summary>
@@ -1155,7 +1190,10 @@ namespace Vintagestory.API.Common.Entities
             PositionBeforeFalling.Z += startPos.Z;
         }
 
-
+        /// <summary>
+        /// Gets the name for this entity
+        /// </summary>
+        /// <returns></returns>
         public virtual string GetName()
         {
             if (!Alive)
@@ -1166,7 +1204,10 @@ namespace Vintagestory.API.Common.Entities
             return Lang.Get(Code.Domain + ":item-creature-" + Code.Path);
         }
 
-
+        /// <summary>
+        /// gets the info text for the entity.
+        /// </summary>
+        /// <returns></returns>
         public virtual string GetInfoText()
         {
             StringBuilder infotext = new StringBuilder();
@@ -1186,12 +1227,19 @@ namespace Vintagestory.API.Common.Entities
             return infotext.ToString();
         }
 
-
+        /// <summary>
+        /// Starts the animation for the entity.
+        /// </summary>
+        /// <param name="code"></param>
         public virtual void StartAnimation(string code)
         {
             AnimManager.StartAnimation(code);
         }
 
+        /// <summary>
+        /// stops the animation for the entity.
+        /// </summary>
+        /// <param name="code"></param>
         public virtual void StopAnimation(string code)
         {
             AnimManager.StopAnimation(code);

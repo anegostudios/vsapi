@@ -21,7 +21,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Vec3f Rotation;
         /// <summary>
-        /// Uniform Scaling
+        /// To set uniform Scaling on all Axes
         /// </summary>
         public float Scale { set { ScaleXYZ.Set(value, value, value); } }
         /// <summary>

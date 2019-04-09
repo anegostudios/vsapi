@@ -3,10 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vintagestory.API.MathTools;
 
-namespace Vintagestory.API
+namespace Vintagestory.API.MathTools
 {
+    public class HorRectanglei
+    {
+        public int X1;
+        public int Z1;
+        public int X2;
+        public int Z2;
+
+        public HorRectanglei(int x1, int z1, int x2, int z2)
+        {
+            X1 = x1;
+            Z1 = z1;
+            X2 = x2;
+            Z2 = z2;
+        }
+    }
+
     public class Rectanglei
     {
         public int X;

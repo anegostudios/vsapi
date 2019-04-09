@@ -19,18 +19,39 @@ namespace Vintagestory.API.Client
         public double Radius = 0;
 
         /// <summary>
-        /// The fill color of the background.
+        /// The fill color of the background
         /// </summary>
         public double[] FillColor = new double[] { 0, 0, 0, 0 };
 
         /// <summary>
-        /// The stroke color of the text.
+        /// The stroke color of the border
         /// </summary>
-        public double[] StrokeColor = GuiStyle.DialogBorderColor;
+        public double[] BorderColor = GuiStyle.DialogBorderColor;
 
         /// <summary>
-        /// The thickness of the text.
+        /// The thickness of the border
         /// </summary>
-        public double StrokeWidth = 0;
+        public double BorderWidth = 0;
+
+        /// <summary>
+        /// Adds a blur to the background
+        /// </summary>
+        public bool Shade = false;
+
+        public double[] ShadeColor = new double[] { GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1 };
+
+        public TextBackground Clone()
+        {
+            return new TextBackground()
+            {
+                Padding = Padding,
+                Radius = Radius,
+                FillColor = (double[])FillColor.Clone(),
+                BorderColor = (double[])BorderColor.Clone(),
+                ShadeColor = (double[])ShadeColor.Clone(),
+                Shade = Shade,
+                BorderWidth = BorderWidth
+            };
+        }
     }
 }

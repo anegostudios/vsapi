@@ -29,7 +29,7 @@ namespace Vintagestory.API.Common
         /// <returns>Whether or not the crop grew.</returns>
         public virtual bool TryGrowCrop(ICoreAPI api, IFarmlandBlockEntity farmland, double currentTotalHours, int newGrowthStage, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return false;
         }
 

@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
-    /// A faster random particularly suitable for worldgen
+    /// An lcg random generator, particularly suitable for worldgen
+    /// See also https://en.wikipedia.org/wiki/Linear_congruential_generator
     /// </summary>
-    public class FastPositionalRandom
+    public class LCGRandom
     {
         internal long worldSeed;
         internal long mapGenSeed;
@@ -19,7 +20,7 @@ namespace Vintagestory.API.MathTools
         /// Initialize random with given seed
         /// </summary>
         /// <param name="worldSeed"></param>
-        public FastPositionalRandom(long worldSeed)
+        public LCGRandom(long worldSeed)
         {
             SetWorldSeed(worldSeed);
         }
@@ -27,7 +28,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Initialize random with no seed. Use SetWorldSeed() to initialize
         /// </summary>
-        public FastPositionalRandom()
+        public LCGRandom()
         {
 
         }

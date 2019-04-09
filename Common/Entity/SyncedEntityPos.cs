@@ -74,37 +74,57 @@ namespace Vintagestory.API.Common.Entities
         }
 
 
-
+        /// <summary>
+        /// Internally sets the value of X.  This may cause desync.
+        /// </summary>
         public double XInternal
         {
             set { x = value; }
         }
 
+        /// <summary>
+        /// Internally sets the value of Y.  This may cause desync.
+        /// </summary>
         public double YInternal
         {
             set { y = value; }
         }
 
+        /// <summary>
+        /// Internally sets the value of Z.  This may cause desync.
+        /// </summary>
         public double ZInternal
         {
             set { z = value; }
         }
 
+        /// <summary>
+        /// Sets the roll of the Entity Position.  This may cause desync.
+        /// </summary>
         public float RollInternal
         {
             set { roll = value; }
         }
 
+        /// <summary>
+        /// Sets the yaw of the Entity Position.  This may cause desync.
+        /// </summary>
         public float YawInternal
         {
             set { yaw = value; }
         }
 
+        /// <summary>
+        /// Sets the pitch of the Entity Position.  This may cause desync.
+        /// </summary>
         public float PitchInternal
         {
             set { pitch = value; }
         }
 
+        /// <summary>
+        /// Sets the stance of the Entity Position.  This may cause desync.
+        /// </summary>
         public int StanceInternal
         {
             set { stance = value; }
@@ -112,13 +132,18 @@ namespace Vintagestory.API.Common.Entities
 
 
 
-
+        /// <summary>
+        /// Marks the position as dirty- requiring a refresh from the server.
+        /// </summary>
         public bool Dirty
         {
             get { return dirty; }
             set { dirty = value; }
         }
 
+        /// <summary>
+        /// Marks the position as clean- and not requiring a refresh from the server.
+        /// </summary>
         public void MarkClean()
         {
             dirty = false;

@@ -13,30 +13,75 @@ namespace Vintagestory.API.Client
     // Contains quite some ugly hacks to make the scrollbar work :<
     public class GuiElementListMenu : GuiElementTextControl
     {
-        internal string[] values;
-        internal string[] names;
+        public string[] Values { get; set; }
+        public string[] Names { get; set; }
 
-        int maxHeight = 350;
-        double expandedBoxWidth = 0;
-        double expandedBoxHeight = 0;
+        /// <summary>
+        /// Max height of the expanded list
+        /// </summary>
+        public int MaxHeight = 350;
+
+        protected double expandedBoxWidth = 0;
+        protected double expandedBoxHeight = 0;
+
+        protected double unscaledLineHeight = 30;
+
+        /// <summary>
+        /// The (first) currently selected element
+        /// </summary>
+        public int SelectedIndex {
+            get
+            {
+                if (SelectedIndices != null && SelectedIndices.Length > 0)
+                {
+                    return SelectedIndices[0];
+                }
+                return 0;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    SelectedIndices = new int[] { };
+                    return;
+                }
+
+                if (SelectedIndices != null && SelectedIndices.Length > 0)
+                {
+                    SelectedIndices[0] = value;
+                    return;
+                }
+
+                SelectedIndices = new int[] { value };
+            }
+        }
+        /// <summary>
+        /// The element the user currently has the mouse over
+        /// </summary>
+        public int HoveredIndex { get; set; }
+        /// <summary>
+        /// On multi select mode, the list of all selected elements
+        /// </summary>
+        public int[] SelectedIndices { get; set; }
+
+        // on/off on multiselect
+        GuiElementSwitch[] switches = new GuiElementSwitch[0];
 
 
-        internal int selectedIndex;
-        internal int hoveredIndex;
+        protected SelectionChangedDelegate onSelectionChanged;
 
-        API.Common.Action<string> onSelectionChanged;
+        protected LoadedTexture hoverTexture;
+        protected LoadedTexture dropDownTexture;
+        protected LoadedTexture scrollbarTexture;
 
-        LoadedTexture hoverTexture;
-        LoadedTexture dropDownTexture;
-        LoadedTexture scrollbarTexture;
+        protected bool expanded;
+        protected bool multiSelect;
 
-        bool expanded;
+        protected double scrollOffY = 0;
 
-        double scrollOffY = 0;
+        protected GuiElementCompactScrollbar scrollbar;
 
-        GuiElementCompactScrollbar scrollbar;
-
-        ElementBounds visibleBounds;
+        protected ElementBounds visibleBounds;
 
         /// <summary>
         /// Is the current menu opened?
@@ -65,20 +110,21 @@ namespace Vintagestory.API.Client
         /// <param name="selectedIndex">The default selected index.</param>
         /// <param name="onSelectionChanged">The event fired when the selection is changed.</param>
         /// <param name="bounds">The bounds of the GUI element.</param>
-        public GuiElementListMenu(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, API.Common.Action<string> onSelectionChanged, ElementBounds bounds) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
+        public GuiElementListMenu(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, bool multiSelect) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
         {
+            if (values.Length != names.Length) throw new ArgumentException("Values and Names arrays must be of the same length!");
+
             hoverTexture = new LoadedTexture(capi);
             dropDownTexture = new LoadedTexture(capi);
             scrollbarTexture = new LoadedTexture(capi);
 
-            this.values = values;
-            this.names = names;
-            this.selectedIndex = selectedIndex;
+            this.Values = values;
+            this.Names = names;
+            this.SelectedIndex = selectedIndex;
+            this.multiSelect = multiSelect;
             this.onSelectionChanged = onSelectionChanged;
-            hoveredIndex = selectedIndex;
-
-
-
+            HoveredIndex = selectedIndex;
+            
             ElementBounds scrollbarBounds = ElementBounds.Fixed(0, 0, 0, 0).WithEmptyParent();
 
             scrollbar = new GuiElementCompactScrollbar(api, OnNewScrollbarValue, scrollbarBounds);
@@ -86,7 +132,7 @@ namespace Vintagestory.API.Client
 
         private void OnNewScrollbarValue(float offY)
         {
-            scrollOffY = (int)(offY / (30 * Scale)) * 30 * Scale;
+            scrollOffY = (int)((offY / (30 * Scale)) * 30 * Scale);
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
@@ -101,44 +147,94 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
 
-            // Expandable box with list of names
-            expandedBoxWidth = Bounds.InnerWidth;
-            expandedBoxHeight = (10 + values.Length * 30) * Scale;
-            
-
-            for (int i = 0; i < values.Length; i++)
+            if (multiSelect)
             {
-                expandedBoxWidth = Math.Max(expandedBoxWidth, Font.GetTextExtents(names[i]).Width);
+                if (switches != null)
+                {
+                    foreach (var val in switches) val.Dispose();
+                }
+
+                switches = new GuiElementSwitch[Names.Length];
             }
 
-            expandedBoxWidth += 5 * Scale;
+
+            double scaleMul = Scale * RuntimeEnv.GUIScale;
+            double lineHeight = unscaledLineHeight * scaleMul;
+
+            // Expandable box with list of names
+            expandedBoxWidth = Bounds.InnerWidth;
+            expandedBoxHeight = Values.Length * lineHeight;
+            
+
+            for (int i = 0; i < Values.Length; i++)
+            {
+                expandedBoxWidth = Math.Max(expandedBoxWidth, Font.GetTextExtents(Names[i]).Width);
+            }
+
+            expandedBoxWidth += 5 * scaleMul;
 
 
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)expandedBoxHeight);
             Context ctx = genContext(surface);
 
             visibleBounds = Bounds.FlatCopy();
-            visibleBounds.fixedHeight = Math.Min(maxHeight, expandedBoxHeight);
+            visibleBounds.fixedHeight = Math.Min(MaxHeight, expandedBoxHeight / RuntimeEnv.GUIScale);
             visibleBounds.fixedWidth = expandedBoxWidth / RuntimeEnv.GUIScale;
             visibleBounds.fixedY += Bounds.InnerHeight / RuntimeEnv.GUIScale;
             visibleBounds.CalcWorldBounds();
 
             Font.SetupContext(ctx);
 
-            ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
             RoundRectangle(ctx, 0, 0, expandedBoxWidth, expandedBoxHeight, 1);
             ctx.FillPreserve();
             ctx.SetSourceRGBA(0,0,0,0.5);
             ctx.Stroke();
 
-            double height = Font.GetFontExtents().Height;
-            double offy = (30 - height) / 2;
+            double unscaledHeight = Font.GetFontExtents().Height / RuntimeEnv.GUIScale;
+            double unscaledOffY = (unscaledLineHeight - unscaledHeight) / 2;
+            double unscaledOffx = multiSelect ? unscaledHeight + 10 : 0;
+
+            double scaledHeight = unscaledHeight * scaleMul;
 
             ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
 
-            for (int i = 0; i < values.Length; i++)
+            ElementBounds switchParentBounds = Bounds.FlatCopy();
+            switchParentBounds.IsDrawingSurface = true;
+            switchParentBounds.CalcWorldBounds();
+
+            
+
+            for (int i = 0; i < Values.Length; i++)
             {
-                DrawTextLineAt(ctx, names[i], 5 * Scale, ((int)offy + i * 30) * Scale);
+                int num = i;
+                double y = ((int)unscaledOffY + i * unscaledLineHeight) * scaleMul;
+                double x = unscaledOffx + 5 * scaleMul;
+
+                double offy = (scaledHeight - Font.GetTextExtents(Names[i]).Height)/2;
+
+                if (multiSelect)
+                {
+                    double pad = 2;
+                    ElementBounds switchBounds = new ElementBounds()
+                    {
+                        ParentBounds = switchParentBounds,
+                        fixedX = 4 * Scale,
+                        fixedY = (y + offy) / RuntimeEnv.GUIScale,
+                        fixedWidth = (unscaledHeight) * Scale,
+                        fixedHeight = (unscaledHeight) * Scale,
+                        fixedPaddingX = 0,
+                        fixedPaddingY = 0
+                    };
+
+                    switches[i] = new GuiElementSwitch(api, (on) => toggled(on, num), switchBounds, switchBounds.fixedHeight, pad);
+                    switches[i].ComposeElements(ctx, surface);
+
+                    ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
+                }
+
+                
+                DrawTextLineAt(ctx, Names[i], x, y + offy);
             }
 
             generateTexture(surface, ref dropDownTexture);
@@ -148,7 +244,7 @@ namespace Vintagestory.API.Client
 
 
             // Scrollbar static stuff
-            scrollbar.Bounds.WithFixedSize(10, visibleBounds.fixedHeight - 4).WithFixedPosition(expandedBoxWidth / RuntimeEnv.GUIScale - 10, 0).WithFixedPadding(0, 2);
+            scrollbar.Bounds.WithFixedSize(10, visibleBounds.fixedHeight - 3).WithFixedPosition(expandedBoxWidth / RuntimeEnv.GUIScale - 10, 0).WithFixedPadding(0, 2);
             scrollbar.Bounds.WithEmptyParent();
             scrollbar.Bounds.CalcWorldBounds();
 
@@ -156,7 +252,7 @@ namespace Vintagestory.API.Client
             ctx = genContext(surface);
             
             scrollbar.ComposeElements(ctx, surface);
-            scrollbar.SetHeights((int)visibleBounds.InnerHeight / RuntimeEnv.GUIScale, (int)expandedBoxHeight);
+            scrollbar.SetHeights((int)visibleBounds.InnerHeight / RuntimeEnv.GUIScale, (int)expandedBoxHeight / RuntimeEnv.GUIScale);
 
             generateTexture(surface, ref scrollbarTexture);
 
@@ -165,14 +261,13 @@ namespace Vintagestory.API.Client
 
 
             // Hover bar
-
-            surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)(30 * Scale));
+            surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)(unscaledLineHeight * scaleMul));
             ctx = genContext(surface);
 
             double[] col = GuiStyle.DialogHighlightColor;
             col[3] = 0.5;
             ctx.SetSourceRGBA(col);
-            RoundRectangle(ctx, 0, 0, expandedBoxWidth, 30*Scale, 0);
+            RoundRectangle(ctx, 0, 0, expandedBoxWidth, unscaledLineHeight * scaleMul, 0);
             ctx.Fill();
             generateTexture(surface, ref hoverTexture);
 
@@ -181,11 +276,23 @@ namespace Vintagestory.API.Client
             
         }
 
+        private void toggled(bool on, int num)
+        {
+            List<int> selected = new List<int>();
+            for (int i = 0; i < switches.Length; i++)
+            {
+                if (switches[i].On) selected.Add(i);
+            }
+
+            SelectedIndices = selected.ToArray();
+        }
 
         public override void RenderInteractiveElements(float deltaTime)
         {
             if (expanded)
             {
+                double scaleMul = Scale * RuntimeEnv.GUIScale;
+
                 api.Render.BeginScissor(visibleBounds);
 
                 api.Render.Render2DTexturePremultipliedAlpha(
@@ -197,14 +304,28 @@ namespace Vintagestory.API.Client
                     110
                 );
 
-                if (hoveredIndex >= 0)
+
+                if (multiSelect)
+                {
+                    api.Render.GlPushMatrix();
+                    api.Render.GlTranslate(0, Bounds.InnerHeight - (int)scrollOffY, 100);
+                    for (int i = 0; i < switches.Length; i++)
+                    {
+                        //switches[i].Bounds.fixedOffsetY = () / RuntimeEnv.GUIScale;
+                        //switches[i].Bounds.CalcWorldBounds();
+                        switches[i].RenderInteractiveElements(deltaTime);
+                    }
+                    api.Render.GlPopMatrix();
+                }
+
+                if (HoveredIndex >= 0)
                 {
                     api.Render.Render2DTexturePremultipliedAlpha(
                         hoverTexture.TextureId, 
                         (int)Bounds.renderX, 
-                        (int)(Bounds.renderY + Bounds.InnerHeight + 30 * Scale * hoveredIndex), 
-                        (int)expandedBoxWidth - scaled(14), 
-                        (int)30 * Scale,
+                        (int)(Bounds.renderY + Bounds.InnerHeight + unscaledLineHeight * scaleMul * HoveredIndex - (int)scrollOffY), 
+                        (int)expandedBoxWidth - scaled(9), 
+                        (int)unscaledLineHeight * scaleMul,
                         111
                     );
                 }
@@ -215,8 +336,8 @@ namespace Vintagestory.API.Client
                     scrollbarTexture.TextureId,
                     (int)visibleBounds.renderX,
                     (int)visibleBounds.renderY,
-                    (int)visibleBounds.OuterWidth,
-                    (int)visibleBounds.OuterHeight,
+                    scrollbarTexture.Width,
+                    scrollbarTexture.Height,
                     116
                 );
 
@@ -238,8 +359,8 @@ namespace Vintagestory.API.Client
             if (args.KeyCode == (int)GlKeys.Enter && expanded)
             {
                 expanded = false;
-                selectedIndex = hoveredIndex;
-                onSelectionChanged?.Invoke(values[selectedIndex]);
+                SelectedIndex = HoveredIndex;
+                onSelectionChanged?.Invoke(Values[SelectedIndex], true);
                 args.Handled = true;
                 return;
             }
@@ -251,17 +372,17 @@ namespace Vintagestory.API.Client
                 if (!expanded)
                 {
                     expanded = true;
-                    hoveredIndex = selectedIndex;
+                    HoveredIndex = SelectedIndex;
                     return;
                 }
 
                 if (args.KeyCode == (int)GlKeys.Up)
                 {
-                    hoveredIndex = GameMath.Mod((hoveredIndex - 1), values.Length);
+                    HoveredIndex = GameMath.Mod((HoveredIndex - 1), Values.Length);
                 }
                 else
                 {
-                    hoveredIndex = GameMath.Mod((hoveredIndex + 1), values.Length);
+                    HoveredIndex = GameMath.Mod((HoveredIndex + 1), Values.Length);
                 }
             }
         }
@@ -273,17 +394,38 @@ namespace Vintagestory.API.Client
 
             int mouseX = api.Input.MouseX;
             int mouseY = api.Input.MouseY;
+            double scaleMul = Scale * RuntimeEnv.GUIScale;
 
-            if (mouseX >= Bounds.renderX && mouseX <= Bounds.renderX + expandedBoxWidth)
+            if (!(mouseX >= Bounds.renderX && mouseX <= Bounds.renderX + expandedBoxWidth)) return;
+
+            if (scrollbar.mouseDownOnScrollbarHandle)
             {
-                int num = (int)((mouseY - Bounds.renderY - 30 * Scale) / (30 * Scale));
-                if (num >= 0 && num < values.Length)
+                if (scrollbar.mouseDownOnScrollbarHandle || Bounds.renderX + expandedBoxWidth - args.X < scaled(10))
                 {
-                    hoveredIndex = num;
-                    args.Handled = true;
+                    scrollbar.OnMouseMove(api, args);
+                    return;
                 }
             }
+
+            int num = (int)((mouseY - Bounds.renderY - Bounds.InnerHeight + scrollOffY) / (unscaledLineHeight * scaleMul));
+            if (num >= 0 && num < Values.Length)
+            {
+                HoveredIndex = num;
+                args.Handled = true;
+            }
         }
+
+
+        public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
+        {
+            base.OnMouseUp(api, args);
+
+            if (expanded)
+            {
+                scrollbar.OnMouseUp(api, args);
+            }
+        }
+
 
         /// <summary>
         /// Opens the menu.
@@ -301,20 +443,49 @@ namespace Vintagestory.API.Client
         public override void OnMouseDown(ICoreClientAPI api, MouseEvent args)
         {
             if (!expanded) return;
+            if (!(args.X >= Bounds.renderX && args.X <= Bounds.renderX + expandedBoxWidth)) return;
 
-            if (expanded && args.X >= Bounds.renderX && args.X <= Bounds.renderX + expandedBoxWidth)
+            double scaleMul = Scale * RuntimeEnv.GUIScale;
+
+            if (Bounds.renderX + expandedBoxWidth - args.X < scaled(10))
             {
-                int selectedElement = (int)((args.Y - Bounds.renderY - 30 * Scale + scrollOffY) / (30 * Scale));
+                scrollbar.OnMouseDown(api, args);
+                return;
+            }
 
-                if (selectedElement >= 0 && selectedElement < values.Length)
+            double dy = args.Y - Bounds.renderY - unscaledLineHeight * scaleMul;
+
+            if (dy < 0)
+            {
+                expanded = false;
+                args.Handled = true;
+                api.Gui.PlaySound("menubutton");
+                return;
+            }
+
+            double selectedElementd = ((dy + scrollOffY) / (unscaledLineHeight * scaleMul));
+
+            if (selectedElementd >= 0 && selectedElementd < Values.Length)
+            {
+                int selectedElement = (int)selectedElementd;
+                if (multiSelect)
                 {
-                    selectedIndex = selectedElement;
-                    onSelectionChanged?.Invoke(values[selectedIndex]);
-                    expanded = false;
-                    args.Handled = true;
+                    switches[selectedElement].OnMouseDownOnElement(api, args);
+                    onSelectionChanged?.Invoke(Values[selectedElement], switches[selectedElement].On);
                 }
+                else
+                {
+                    SelectedIndex = selectedElement;
+                    onSelectionChanged?.Invoke(Values[SelectedIndex], true);
+                }
+
+                api.Gui.PlaySound("toggleswitch");
+
+                if (!multiSelect) expanded = false;
+                args.Handled = true;
             }
         }
+        
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
@@ -337,23 +508,41 @@ namespace Vintagestory.API.Client
         /// <param name="selectedIndex">The index to be set to.</param>
         public void SetSelectedIndex(int selectedIndex)
         {
-            this.selectedIndex = selectedIndex;
+            this.SelectedIndex = selectedIndex;
         }
         
         /// <summary>
         /// Sets the selected index to the given value.
         /// </summary>
         /// <param name="value">The value to be set to.</param>
-        public void SetSelectedValue(string value)
+        public void SetSelectedValue(params string[] value)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (value == null)
             {
-                if (values[i] == value)
+                this.SelectedIndices = new int[0];
+                return;
+            }
+
+            List<int> selectedIndices = new List<int>();
+                
+            for (int i = 0; i < Values.Length; i++)
+            {
+                if (multiSelect) switches[i].On = false;
+
+                for (int j = 0; j < value.Length; j++)
                 {
-                    SetSelectedIndex(i);
-                    return;
+                    if (Values[i] == value[j])
+                    {
+                        selectedIndices.Add(i);
+
+                        if (multiSelect) switches[i].On = true;
+                    }
                 }
             }
+
+            this.SelectedIndices = selectedIndices.ToArray();
+
+            
         }
 
         /// <summary>
@@ -363,8 +552,8 @@ namespace Vintagestory.API.Client
         /// <param name="names">The names of the values.</param>
         public void SetList(string[] values, string[] names)
         {
-            this.values = values;
-            this.names = names;
+            this.Values = values;
+            this.Names = names;
             ComposeDynamicElements();
         }
 

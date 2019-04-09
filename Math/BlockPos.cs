@@ -595,9 +595,19 @@ namespace Vintagestory.API.MathTools
             return new BlockPos(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
         }
 
+        public static BlockPos operator -(BlockPos left, BlockPos right)
+        {
+            return new BlockPos(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+        }
+
         public static BlockPos operator +(BlockPos left, int right)
         {
             return new BlockPos(left.X + right, left.Y + right, left.Z + right);
+        }
+
+        public static BlockPos operator -(BlockPos left, int right)
+        {
+            return new BlockPos(left.X - right, left.Y - right, left.Z - right);
         }
 
         public static BlockPos operator *(BlockPos left, int right)

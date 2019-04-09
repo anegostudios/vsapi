@@ -7,10 +7,24 @@ namespace Vintagestory.API.Common
 {
     public class AlloyRecipe : ByteSerializable
     {
+        /// <summary>
+        /// The ingredients for this alloy.
+        /// </summary>
         public MetalAlloyIngredient[] Ingredients;
+
+        /// <summary>
+        /// The output for the alloy.
+        /// </summary>
         public JsonItemStack Output;
+
         public bool Enabled = true;
 
+        /// <summary>
+        /// Makes a check to see if the input for the recipe is valid.
+        /// </summary>
+        /// <param name="inputStacks">The item inputs.</param>
+        /// <param name="useSmeltedWhereApplicable">Whether or not items should be considered their smelted form as opposed their raw form.</param>
+        /// <returns></returns>
         public bool Matches(ItemStack[] inputStacks, bool useSmeltedWhereApplicable = true)
         {
             List<MatchedSmeltableStackAlloy> mergedStacks = mergeAndCompareStacks(inputStacks, useSmeltedWhereApplicable);
@@ -37,6 +51,11 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+        /// <summary>
+        /// Resolves the ingredients that are used to their actual types in the world.
+        /// </summary>
+        /// <param name="world">The world accessor for data.</param>
+        /// <param name="sourceForErrorLogging"></param>
         public void Resolve(IServerWorldAccessor world, string sourceForErrorLogging)
         {
             for (int i = 0; i < Ingredients.Length; i++)
@@ -47,6 +66,12 @@ namespace Vintagestory.API.Common
             Output.Resolve(world, sourceForErrorLogging);
         }
 
+        /// <summary>
+        /// Gets the output amount of material in the resulting alloy.
+        /// </summary>
+        /// <param name="stacks"></param>
+        /// <param name="useSmeltedWhereAppicable"></param>
+        /// <returns></returns>
         public double GetTotalOutputQuantity(ItemStack[] stacks, bool useSmeltedWhereAppicable = true)
         {
             List<MatchedSmeltableStackAlloy> mergedStacks = mergeAndCompareStacks(stacks, useSmeltedWhereAppicable);

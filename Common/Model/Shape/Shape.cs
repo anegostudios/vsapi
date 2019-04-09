@@ -7,27 +7,50 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// The base shape for all json objects.
+    /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class Shape
     {
+        /// <summary>
+        /// The collection of textures in the shape.
+        /// </summary>
         [JsonProperty]
         public Dictionary<string, AssetLocation> Textures;
 
+        /// <summary>
+        /// The elements of the shape.
+        /// </summary>
         [JsonProperty]
         public ShapeElement[] Elements;
 
+        /// <summary>
+        /// The animations for the shape.
+        /// </summary>
         [JsonProperty]
         public Animation[] Animations;
 
+        /// <summary>
+        /// The width of the texture. (default: 16)
+        /// </summary>
         [JsonProperty]
         public int TextureWidth = 16;
 
+        /// <summary>
+        /// The height of the texture (default: 16) 
+        /// </summary>
         [JsonProperty]
         public int TextureHeight = 16;
 
         public Dictionary<int, AnimationJoint> JointsById = new Dictionary<int, AnimationJoint>();
         public Dictionary<string, AttachmentPoint> AttachmentPointsByCode = new Dictionary<string, AttachmentPoint>();
 
+        /// <summary>
+        /// Attempts to resolve all references within the shape.  Logging them to the errorLogger
+        /// </summary>
+        /// <param name="errorLogger"></param>
+        /// <param name="shapeName"></param>
         public void ResolveReferences(ILogger errorLogger, string shapeName)
         {
             Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>();
@@ -98,7 +121,11 @@ namespace Vintagestory.API.Common
             }
         }
 
-
+        /// <summary>
+        /// Collects all the elements in the shape recursively.
+        /// </summary>
+        /// <param name="elements"></param>
+        /// <param name="elementsByName"></param>
         public void CollectElements(ShapeElement[] elements, Dictionary<string, ShapeElement> elementsByName)
         {
             if (elements == null) return;
@@ -113,7 +140,11 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public void ResolveAndLoadJoints(ShapeElement headElement = null)
+        /// <summary>
+        /// Resolves all joints and loads them.
+        /// </summary>
+        /// <param name="requireJointsForElements"></param>
+        public void ResolveAndLoadJoints(params string[] requireJointsForElements)
         {
             if (Animations == null) return;
 
@@ -155,13 +186,21 @@ namespace Vintagestory.API.Common
                 maxDepth = Math.Max(maxDepth, elem.GetParentPath().Count);
             }
 
-            // Ensure that the head gets a jointid
-            if (headElement != null && !AnimatedElements.Contains(headElement.Name))
+            // Currently used to require a joint for the head for head control, but not really used because
+            // the player head also happens to be using in animations so it has a joint anyway
+            foreach (string elemName in requireJointsForElements)
             {
-                AnimationJoint joint = new AnimationJoint() { JointId = ++jointCount, Element = headElement };
-                JointsById[joint.JointId] = joint;
-                maxDepth = Math.Max(maxDepth, headElement.GetParentPath().Count);
+                if (!AnimatedElements.Contains(elemName))
+                {
+                    ShapeElement elem = GetElementByName(elemName);
+                    if (elem == null) continue;
+
+                    AnimationJoint joint = new AnimationJoint() { JointId = ++jointCount, Element = elem };
+                    JointsById[joint.JointId] = joint;
+                    maxDepth = Math.Max(maxDepth, elem.GetParentPath().Count);
+                }
             }
+            
 
 
             // Iteratively and recursively assigns the lowest depth to highest depth joints to all elements
@@ -174,8 +213,35 @@ namespace Vintagestory.API.Common
 
                     joint.Element.SetJointId(joint.JointId);
                 }
+            }   
+        }
+
+        /// <summary>
+        /// Gets the element by name from the shape.
+        /// </summary>
+        /// <param name="name">The name of the element to get.</param>
+        /// <returns>The named element (or null if none was found)</returns>
+        public ShapeElement GetElementByName(string name)
+        {
+            return GetElementByName(name, Elements);
+        }
+
+        ShapeElement GetElementByName(string name, ShapeElement[] elems)
+        {
+            if (elems == null) return null;
+
+            foreach (ShapeElement elem in elems)
+            {
+                if (elem.Name.ToLowerInvariant() == name) return elem;
+                if (elem.Children != null)
+                {
+                    ShapeElement foundElem = GetElementByName(name, elem.Children);
+                    if (foundElem != null) return foundElem;
+                }
             }
-            
+
+
+            return null;
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Vintagestory.API.Common
         /// <param name="handHandling"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual void OnHeldAttackStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandHandling handling)
+        public virtual void OnHeldAttackStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandHandling handling)
         {
             handHandling = EnumHandHandling.NotHandled;
         }
@@ -57,7 +57,7 @@ namespace Vintagestory.API.Common
         /// <param name="cancelReason"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackCancel(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandHandling handling)
+        public virtual bool OnHeldAttackCancel(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandHandling handling)
         {
             handling = EnumHandHandling.NotHandled;
             return false;
@@ -73,7 +73,7 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackStep(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
+        public virtual bool OnHeldAttackStep(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
         {
             handling = EnumHandHandling.NotHandled;
             return false;
@@ -88,7 +88,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSelection"></param>
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
-        public virtual void OnHeldAttackStop(float secondsPassed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
+        public virtual void OnHeldAttackStop(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
         {
             handling = EnumHandHandling.NotHandled;
         }
@@ -105,9 +105,9 @@ namespace Vintagestory.API.Common
         /// <param name="handHandling"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual void OnHeldInteractStart(IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandling handling)
+        public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
         }
 
 
@@ -121,9 +121,9 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldInteractStep(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
+        public virtual bool OnHeldInteractStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return false;
         }
 
@@ -136,9 +136,9 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
-        public virtual void OnHeldInteractStop(float secondsUsed, IItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
+        public virtual void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return;
         }
 
@@ -151,9 +151,9 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref EnumHandling handling)
+        public virtual bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return false;
         }
 
@@ -167,7 +167,7 @@ namespace Vintagestory.API.Common
         /// <param name="handling"></param>
         public virtual void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual ItemStack OnPickBlock(IWorldAccessor world, BlockPos pos, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
 
             return null;
         }
@@ -195,7 +195,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropChanceMultiplier, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
 
             return null;
         }
@@ -207,9 +207,9 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="neibpos"></param>
         /// <param name="handling"></param>
-        public virtual void OnNeighourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos, ref EnumHandling handling)
+        public virtual void OnNeighbourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool CanAttachBlockAt(IBlockAccessor world, Block block, BlockPos pos, BlockFacing blockFace, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
 
             return false;
         }
@@ -239,7 +239,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool CanCreatureSpawnOn(IBlockAccessor blockAccessor, BlockPos pos, EntityProperties type, BaseSpawnConditions sc, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
 
             return false;
         }
@@ -253,7 +253,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual AssetLocation GetRotatedBlockCode(int angle, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
 
             return null;
         }
@@ -265,7 +265,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual AssetLocation GetVerticallyFlippedBlockCode(ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return null;
         }
 
@@ -277,7 +277,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual AssetLocation GetHorizontallyFlippedBlockCode(EnumAxis axis, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return null;
         }
 
@@ -289,7 +289,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool IsReplacableBy(Block block, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
 
             return false;
         }
@@ -308,7 +308,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool ShouldReceiveClientGameTicks(IWorldAccessor world, IPlayer byPlayer, BlockPos pos, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
 
             return false;
         }
@@ -324,7 +324,7 @@ namespace Vintagestory.API.Common
         /// <param name="handling"></param>
         public virtual void OnBlockRemoved(IWorldAccessor world, BlockPos pos, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
         }
 
 
@@ -337,7 +337,7 @@ namespace Vintagestory.API.Common
         /// <param name="handled"></param>
         public virtual void OnBlockPlaced(IWorldAccessor world, BlockPos blockPos, ref EnumHandling handled)
         {
-            handled = EnumHandling.NotHandled;
+            handled = EnumHandling.PassThrough;
         }
 
         /// <summary>
@@ -350,8 +350,20 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
         {
-            handling = EnumHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return false;
+        }
+
+        /// <summary>
+        /// Called by the block info HUD for displaying additional information
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <param name="forPlayer"></param>
+        /// <returns></returns>
+        public virtual string GetPlacedBlockInfo(IWorldAccessor world, BlockPos pos, IPlayer forPlayer)
+        {
+            return "";
         }
 
         /// <summary>
@@ -364,6 +376,9 @@ namespace Vintagestory.API.Common
 
         }
 
-
+        public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+        }
     }
 }

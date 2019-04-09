@@ -15,7 +15,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The base cell.
         /// </summary>
-        public TableCell cell;
+        public ListCellEntry cell;
         IAssetManager assetManager;
         double titleTextheight;
 
@@ -42,19 +42,19 @@ namespace Vintagestory.API.Client
         /// <param name="cell">The table cell to add.</param>
         /// <param name="assetManager">The asset manager for the mod</param>
         /// <param name="bounds">The bounds of the cell</param>
-        public GuiElementModCell(ICoreClientAPI capi, TableCell cell, IAssetManager assetManager, ElementBounds bounds) : base(capi, "", null, bounds)
+        public GuiElementModCell(ICoreClientAPI capi, ListCellEntry cell, IAssetManager assetManager, ElementBounds bounds) : base(capi, "", null, bounds)
         {
             this.cell = cell;
             this.assetManager = assetManager;
 
             if (cell.TitleFont == null)
             {
-                cell.TitleFont = CairoFont.MediumDialogText();
+                cell.TitleFont = CairoFont.WhiteSmallishText();
             }
 
             if (cell.DetailTextFont == null)
             {
-                cell.DetailTextFont = CairoFont.SmallDialogText();
+                cell.DetailTextFont = CairoFont.WhiteSmallText();
                 cell.DetailTextFont.Color[3] *= 0.6;
             }
 
@@ -62,6 +62,11 @@ namespace Vintagestory.API.Client
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
+            ComposeHover(true, ref leftHighlightTextureId);
+            ComposeHover(false, ref rightHighlightTextureId);
+            genOnTexture();
+
+
             double rightBoxWidth = scaled(unscaledRightBoxWidth);
 
             Bounds.CalcWorldBounds();
@@ -69,7 +74,7 @@ namespace Vintagestory.API.Client
             var mod = (Mod)cell.Data;
             bool validMod = mod.Info != null;
 
-            if (cell.HighlightCell > 0)
+            if (cell.DrawAsButton)
             {
                 RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, 1);
 
@@ -103,7 +108,7 @@ namespace Vintagestory.API.Client
                 textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.RightTopText, Bounds.drawX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.drawY + Bounds.absPaddingY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
             }
 
-            if (cell.HighlightCell > 0)
+            if (cell.DrawAsButton)
             {
                 EmbossRoundRectangleElement(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, false, 2);
             }
@@ -131,16 +136,7 @@ namespace Vintagestory.API.Client
                 EmbossRoundRectangleElement(ctx, x, y, checkboxsize, checkboxsize, true, 1, 2);
             }
         }
-
-        /// <summary>
-        /// Builds the dynamic parts of the cell.
-        /// </summary>
-        public void CreateDynamicParts()
-        {
-            ComposeHover(true, ref leftHighlightTextureId);
-            ComposeHover(false, ref rightHighlightTextureId);
-            genOnTexture();
-        }
+        
 
         private void genOnTexture()
         {

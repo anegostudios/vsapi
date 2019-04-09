@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -60,6 +61,8 @@ namespace Vintagestory.API.Client
             capi.Gui.PlaySound(OpenSound, true);
         }
 
+
+
         /// <summary>
         /// This occurs right before the frame is pushed to the screen.
         /// </summary>
@@ -79,7 +82,7 @@ namespace Vintagestory.API.Client
         /// Render's the object in Orthographic mode.
         /// </summary>
         /// <param name="deltaTime">The time elapsed.</param>
-        public override void OnRender2D(float deltaTime)
+        public override void OnRenderGUI(float deltaTime)
         {
             if (capi.Settings.Bool["immersiveMouseMode"])
             {
@@ -99,7 +102,7 @@ namespace Vintagestory.API.Client
                 SingleComposer.Bounds.absMarginY = 0;
             }
 
-            base.OnRender2D(deltaTime);
+            base.OnRenderGUI(deltaTime);
         }
 
 
@@ -176,6 +179,71 @@ namespace Vintagestory.API.Client
         public void ReloadValues()
         {
             
+        }
+
+
+        public EnumPosFlag GetFreePos(string code)
+        {
+            var values = Enum.GetValues(typeof(EnumPosFlag));
+
+            int flags = 0;
+            posFlagDict().TryGetValue(code, out flags);
+            
+            foreach (EnumPosFlag flag in values)
+            {
+                if ((flags & (int)flag) > 0) continue;
+
+                return flag;
+            }
+
+            return 0;
+        }
+
+        public void OccupyPos(string code, EnumPosFlag pos)
+        {
+            int flags = 0;
+            posFlagDict().TryGetValue(code, out flags);
+            posFlagDict()[code] = flags | (int)pos;
+        }
+
+        public void FreePos(string code, EnumPosFlag pos)
+        {
+            int flags = 0;
+            posFlagDict().TryGetValue(code, out flags);
+            posFlagDict()[code] = flags & ~(int)pos;
+        }
+
+        Dictionary<string, int> posFlagDict()
+        {
+            object valObj;
+            capi.ObjectCache.TryGetValue("dialogCount", out valObj);
+            Dictionary<string, int> val = valObj as Dictionary<string, int>;
+            if (val == null) capi.ObjectCache["dialogCount"] = val = new Dictionary<string, int>();
+            return val;
+        }
+
+        protected bool IsRight(EnumPosFlag flag)
+        {
+            return flag == EnumPosFlag.RightBot || flag == EnumPosFlag.RightMid || flag == EnumPosFlag.RightTop;
+        }
+
+        protected float YOffsetMul(EnumPosFlag flag)
+        {
+            if (flag == EnumPosFlag.RightTop || flag == EnumPosFlag.LeftTop) return -1;
+            if (flag == EnumPosFlag.RightBot || flag == EnumPosFlag.LeftBot) return 1;
+            return 0;
+        }
+
+
+        [Flags]
+        public enum EnumPosFlag
+        {
+            RightMid = 1,
+            RightTop = 2,
+            RightBot = 4,
+            LeftMid = 8,
+            LeftTop = 16,
+            LeftBot = 32
         }
     }
 

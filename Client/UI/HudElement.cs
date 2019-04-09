@@ -26,11 +26,11 @@
             return false;
         }
 
-        public override void OnRender2D(float deltaTime)
+        public override void OnRenderGUI(float deltaTime)
         {
             capi.Render.GlPushMatrix();
             capi.Render.GlTranslate(0, 0, -150);
-            base.OnRender2D(deltaTime);
+            base.OnRenderGUI(deltaTime);
             capi.Render.GlPopMatrix();
         }
     }

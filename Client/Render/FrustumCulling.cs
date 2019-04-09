@@ -17,7 +17,7 @@ namespace Vintagestory.API.Client
     public enum EnumFrustumCullMode
     {
         NoCull,
-        CullHideDelay,
+        CullNormal,
         CullInstant
     }
 
@@ -112,6 +112,35 @@ namespace Vintagestory.API.Client
 
             return true;
         }
+
+
+        public bool SphereInFrustumAndRange(Sphere sphere)
+        {
+            float d = 0;
+
+            d = frustum00 * sphere.x + frustum01 * sphere.y + frustum02 * sphere.z + frustum03;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum10 * sphere.x + frustum11 * sphere.y + frustum12 * sphere.z + frustum13;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum20 * sphere.x + frustum21 * sphere.y + frustum22 * sphere.z + frustum23;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum30 * sphere.x + frustum31 * sphere.y + frustum32 * sphere.z + frustum33;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum40 * sphere.x + frustum41 * sphere.y + frustum42 * sphere.z + frustum43;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum50 * sphere.x + frustum51 * sphere.y + frustum52 * sphere.z + frustum53;
+            if (d <= -sphere.radius)
+                return false;
+
+
+            return playerPos.HorDistanceSqTo(sphere.x, sphere.z) < ViewDistanceSq;
+        }
+
 
         float[] tmpMat = new float[16];
 

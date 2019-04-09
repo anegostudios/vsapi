@@ -7,16 +7,23 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Just some default sizings for various ui elements
+    /// </summary>
     public static partial class ElementStdBounds
     {
+        public static int mainMenuUnscaledLogoSize = 280;
+        public static int mainMenuUnscaledLogoHorPadding = 30;
+        public static int mainMenuUnscaledLogoVerPadding = 10;
+        public static int mainMenuUnscaledWoodPlankWidth = 13;
+
         /// <summary>
         /// Quick method to create a new ElementBounds instance that uses fixed element sizing. The X/Y Coordinates are left at 0. 
         /// </summary>
         /// <param name="alignment"></param>
-        /// <param name="fixedWidth"></param>
-        /// <param name="fixedHeight"></param>
+        /// <param name="width"></param>
         /// <returns></returns>
-        internal static ElementBounds Statbar( EnumDialogArea alignment, double width)
+        public static ElementBounds Statbar( EnumDialogArea alignment, double width)
         {
             return new ElementBounds()
             {
@@ -39,11 +46,6 @@ namespace Vintagestory.API.Client
             }
         }
 
-
-        public static int mainMenuUnscaledLogoSize = 280;
-        public static int mainMenuUnscaledLogoHorPadding = 30;
-        public static int mainMenuUnscaledLogoVerPadding = 10;
-        public static int mainMenuUnscaledWoodPlankWidth = 13;
 
         /// <summary>
         /// Quick Method to create a new ElementBounds instance that draws a background for a dialog
@@ -88,6 +90,7 @@ namespace Vintagestory.API.Client
         /// Quick Method to create a new ElementBounds instance to create a menu consiting of one ore more vertically arranged and horizontally centered buttons in a grid. The y position is calculated using rowIndex * 80. 
         /// </summary>
         /// <param name="rowIndex"></param>
+        /// <param name="alignment"></param>
         /// <returns></returns>
         public static ElementBounds MenuButton(float rowIndex, EnumDialogArea alignment = EnumDialogArea.CenterFixed)
         {
@@ -106,6 +109,8 @@ namespace Vintagestory.API.Client
         /// Quick Method to create a new ElementBounds instance to create a menu consiting of one ore more vertically arranged and horizontally centered buttons in a grid. The y position is calculated using rowIndex * 80. 
         /// </summary>
         /// <param name="rowIndex"></param>
+        /// <param name="padding"></param>
+        /// <param name="alignment"></param>
         /// <returns></returns>
         public static ElementBounds Rowed(float rowIndex, double padding, EnumDialogArea alignment = EnumDialogArea.None)
         {
@@ -143,6 +148,7 @@ namespace Vintagestory.API.Client
             };
         }
 
+
         public static ElementBounds Slider(double x, double y, double width)
         {
             return new ElementBounds()
@@ -159,8 +165,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Creates a scrollbar right of given element bounds, requires the left element to be using fixed element positioning
         /// </summary>
-        /// <param name="leftBounds"></param>
-        /// <param name="height"></param>
+        /// <param name="leftElement"></param>
         /// <returns></returns>
         public static ElementBounds VerticalScrollbar(ElementBounds leftElement)
         {
@@ -170,8 +175,8 @@ namespace Vintagestory.API.Client
                 BothSizing = ElementSizing.Fixed,
                 fixedOffsetX = leftElement.fixedX + leftElement.fixedWidth + 3,
                 fixedOffsetY = leftElement.fixedY,
-                fixedPaddingX = GuiElementScrollbar.scrollbarPadding,
-                fixedWidth = GuiElementScrollbar.scrollbarWidth,
+                fixedPaddingX = GuiElementScrollbar.DeafultScrollbarPadding,
+                fixedWidth = GuiElementScrollbar.DefaultScrollbarWidth,
                 fixedHeight = leftElement.fixedHeight,
                 percentHeight = leftElement.percentHeight
             };
@@ -204,7 +209,7 @@ namespace Vintagestory.API.Client
             };
         }
 
-        internal static ElementBounds ToggleButton(double fixedX, double fixedY, double width, double height)
+        public static ElementBounds ToggleButton(double fixedX, double fixedY, double width, double height)
         {
             return new ElementBounds()
             {
@@ -218,7 +223,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        internal static ElementBounds TitleBar()
+        public static ElementBounds TitleBar()
         {
             return new ElementBounds()
             {

@@ -29,25 +29,56 @@ namespace Vintagestory.API.Common
         bool up;
         bool down;
 
+        /// <summary>
+        /// If true, the entity is either flying or swimming.
+        /// </summary>
         public bool FlyMode;  // true when flying or swimming
         
+        /// <summary>
+        /// If true, the entity has NoClip active.
+        /// </summary>
         public bool NoClip;
+
+        /// <summary>
+        /// the axis lock for the fly plane.
+        /// </summary>
         public EnumFreeMovAxisLock FlyPlaneLock;
 
+        /// <summary>
+        /// Current walking direction.
+        /// </summary>
         public Vec3d WalkVector = new Vec3d();
+
+        /// <summary>
+        /// Current flying direction
+        /// </summary>
         public Vec3d FlyVector = new Vec3d();
 
+        /// <summary>
+        /// Checks to see if the entity is attempting to move in any direction (excluding jumping)
+        /// </summary>
         public bool TriesToMove { get { return Forward || Backward || Left || Right; } }
 
-
+        /// <summary>
+        /// Whether or not the entity is flying.
+        /// </summary>
         public bool IsFlying;
+
+        /// <summary>
+        /// Whether or not the entity is climbing
+        /// </summary>
         public bool IsClimbing;
+
+        /// <summary>
+        /// Whether or not the entity is aiming
+        /// </summary>
         public bool IsAiming;
 
         /// <summary>
         /// If the player is currently using the currently held item in a special way (e.g. attacking with smithing hammer or eating an edible item)
         /// </summary>
         public EnumHandInteract HandUse;
+
         /// <summary>
         /// The block pos the player started using
         /// </summary>
@@ -59,88 +90,137 @@ namespace Vintagestory.API.Common
         public ModelTransform UsingHeldItemTransformBefore;
         public ModelTransform UsingHeldItemTransformAfter;
 
+        /// <summary>
+        /// The movement speed multiplier.
+        /// </summary>
         public float MovespeedMultiplier = 1f;
+
+        /// <summary>
+        /// Whether or not this entity is dirty.
+        /// </summary>
         public bool Dirty;
         
-
+        /// <summary>
+        /// A check for if the entity is moving in the direction it's facing.
+        /// </summary>
         public bool Forward {
             get { return forward; }
             set { forward = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check for if the entity is moving the opposite direction it's facing.
+        /// </summary>
         public bool Backward
         {
             get { return backward; }
             set { backward = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see if the entity is moving left the direction it's facing.
+        /// </summary>
         public bool Left
         {
             get { return left; }
             set { left = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see if the entity is moving right the direction it's facing.
+        /// </summary>
         public bool Right
         {
             get { return right; }
             set { right = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check whether to see if the entity is jumping.
+        /// </summary>
         public bool Jump
         {
             get { return jump; }
             set { jump = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check whether to see if the entity is sneaking.
+        /// </summary>
         public bool Sneak
         {
             get { return sneak; }
             set { sneak = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see whether the entity is sitting.
+        /// </summary>
         public bool Sitting
         {
             get { return sitting; }
             set { sitting = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see whether the entity is sitting on the floor.
+        /// </summary>
         public bool FloorSitting
         {
             get { return floorSitting; }
             set { floorSitting = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see whether the entity is sprinting.
+        /// </summary>
         public bool Sprint
         {
             get { return sprint; }
             set { sprint = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see whether the entity is moving up.
+        /// </summary>
         public bool Up
         {
             get { return up; }
             set { up = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see whether the entity is moving down.
+        /// </summary>
         public bool Down
         {
             get { return down; }
             set { down = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see if the entity is holding the left mouse button down.
+        /// </summary>
         public bool LeftMouseDown
         {
             get { return leftMouseDown; }
             set { leftMouseDown = value; Dirty = true; }
         }
 
+        /// <summary>
+        /// A check to see if the entity is holding the right mouse button down.
+        /// </summary>
         public bool RightMouseDown
         {
             get { return rightMouseDown; }
             set { rightMouseDown = value; Dirty = true; }
         }
 
-
+        /// <summary>
+        /// Calculates the movement vectors for the player.
+        /// </summary>
+        /// <param name="pos">The position of the player.</param>
+        /// <param name="dt">The change in time.</param>
         public void CalcMovementVectors(EntityPos pos, float dt)
         {
             double moveSpeed = dt * GlobalConstants.BaseMoveSpeed * MovespeedMultiplier * GlobalConstants.OverallSpeedMultiplier;
@@ -162,6 +242,8 @@ namespace Vintagestory.API.Common
                 dx * sinYaw + dz * cosYaw
             );
 
+            if (FlyPlaneLock == EnumFreeMovAxisLock.Y) { cosPitch=-1 ; }
+
             FlyVector.Set(
                 dx * cosYaw + dz * cosPitch * sinYaw,
                 - dz * sinPitch,
@@ -176,7 +258,10 @@ namespace Vintagestory.API.Common
             if (FlyPlaneLock == EnumFreeMovAxisLock.Z) { FlyVector.Z = 0; }
         }
 
-
+        /// <summary>
+        /// Copies the controls from the provided controls to this set of controls.
+        /// </summary>
+        /// <param name="controls">The controls to copy over.</param>
         public void SetFrom(EntityControls controls)
         {
             Forward = controls.Forward;
@@ -199,7 +284,11 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Updates the data from the packet.
+        /// </summary>
+        /// <param name="pressed">Whether or not the key was pressed.</param>
+        /// <param name="key">the id of the key that was pressed.</param>
         public void UpdateFromPacket(bool pressed, int key)
         {
             switch (key)
@@ -254,7 +343,9 @@ namespace Vintagestory.API.Common
             }
         }
         
-
+        /// <summary>
+        /// Forces the entity to stop all movements.
+        /// </summary>
         public void StopAllMovement()
         {
             Forward = false;
@@ -270,6 +361,10 @@ namespace Vintagestory.API.Common
             RightMouseDown = false;
         }
 
+        /// <summary>
+        /// Converts the values to a single int flag.
+        /// </summary>
+        /// <returns>the compressed integer.</returns>
         public int ToInt()
         {
             return
@@ -290,6 +385,10 @@ namespace Vintagestory.API.Common
             ;
         }
 
+        /// <summary>
+        /// Converts the int flags to movement controls.
+        /// </summary>
+        /// <param name="flags">The compressed integer.</param>
         public void FromInt(int flags)
         {
             Forward = (flags & 1) > 0;

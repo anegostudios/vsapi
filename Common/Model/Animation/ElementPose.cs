@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// The position of an element.
+    /// </summary>
     public class ElementPose
     {
+        /// <summary>
+        /// The element this positioning is for.
+        /// </summary>
         public ShapeElement ForElement;
+
+        /// <summary>
+        /// The model matrix of this element.
+        /// </summary>
         public float[] AnimModelMatrix;
 
         public List<ElementPose> ChildElementPoses = new List<ElementPose>();

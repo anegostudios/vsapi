@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -105,7 +106,11 @@ namespace Vintagestory.API.Common
             return true;
         }
 
-
+        /// <summary>
+        /// Checks whether or not the input satisfies as an ingredient for the recipe.
+        /// </summary>
+        /// <param name="inputStack"></param>
+        /// <returns></returns>
         public bool SatisfiesAsIngredient(ItemStack inputStack)
         {
             if (inputStack == null) return false;
@@ -113,7 +118,7 @@ namespace Vintagestory.API.Common
             if (IsWildCard)
             {
                 if (Type != inputStack.Class) return false;
-                if (!WildCardMatch(Code, inputStack.Collectible.Code, AllowedVariants)) return false;
+                if (!WildcardUtil.Match(Code, inputStack.Collectible.Code, AllowedVariants)) return false;
                 if (inputStack.StackSize < Quantity) return false;
             }
             else
@@ -125,27 +130,6 @@ namespace Vintagestory.API.Common
             return true;
         }
 
-
-        public static bool WildCardMatch(AssetLocation wildCard, AssetLocation blockCode, string[] allowedVariants)
-        {
-            if (blockCode == null || !wildCard.Domain.Equals(blockCode.Domain)) return false;
-            if (wildCard.Equals(blockCode)) return true;
-
-            string pattern = Regex.Escape(wildCard.Path).Replace(@"\*", @"(.*)");
-
-            if (!Regex.IsMatch(blockCode.Path, @"^" + pattern + @"$")) return false;
-
-            if (allowedVariants != null)
-            {
-                int wildcardStartLen = wildCard.Path.IndexOf("*");
-                int wildcardEndLen = wildCard.Path.Length - wildcardStartLen - 1;
-                string code = blockCode.Path.Substring(wildcardStartLen);
-                string codepart = code.Substring(0, code.Length - wildcardEndLen);
-                if (!allowedVariants.Contains(codepart)) return false;
-            }
-
-            return true;
-        }
 
 
 
@@ -176,7 +160,11 @@ namespace Vintagestory.API.Common
         }
         
 
-
+        /// <summary>
+        /// Fills in the placeholder ingredients for the crafting recipe.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
         public void FillPlaceHolder(string key, string value)
         {
             Code = Code.CopyWithPath(Code.Path.Replace("{" + key + "}", value));

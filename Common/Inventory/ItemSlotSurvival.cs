@@ -13,13 +13,13 @@ namespace Vintagestory.API.Common
 
 
 
-        public override bool CanTakeFrom(IItemSlot sourceSlot)
+        public override bool CanTakeFrom(ItemSlot sourceSlot)
         {
             if (CollectibleObject.IsBackPack(sourceSlot.Itemstack) && !CollectibleObject.IsEmptyBackPack(sourceSlot.Itemstack)) return false;
             return base.CanTakeFrom(sourceSlot);
         }
 
-        public override bool CanHold(IItemSlot itemstackFromSourceSlot)
+        public override bool CanHold(ItemSlot itemstackFromSourceSlot)
         {
             return 
                 base.CanHold(itemstackFromSourceSlot) &&

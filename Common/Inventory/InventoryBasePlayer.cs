@@ -11,6 +11,9 @@ namespace Vintagestory.API.Common
     {
         public override bool RemoveOnClose => false;
 
+        /// <summary>
+        /// The player ID for the inventory.
+        /// </summary>
         protected string playerUID;
 
         public InventoryBasePlayer(string className, string playerUID, ICoreAPI api) : base(className, playerUID, api)
@@ -35,15 +38,15 @@ namespace Vintagestory.API.Common
 
         public override void DropAll(Vec3d pos)
         {
-            for (int i = 0; i < QuantitySlots; i++)
+            for (int i = 0; i < Count; i++)
             {
-                ItemSlot slot = GetSlot(i);
+                ItemSlot slot = this[i];
 
                 if (slot.Itemstack != null)
                 {
-                    EnumHandling handling = EnumHandling.NotHandled;
+                    EnumHandling handling = EnumHandling.PassThrough;
                     slot.Itemstack.Collectible.OnHeldDropped(Api.World, Api.World.PlayerByUid(playerUID), slot, slot.Itemstack.StackSize, ref handling);
-                    if (handling != EnumHandling.NotHandled) continue;
+                    if (handling != EnumHandling.PassThrough) continue;
 
                     dirtySlots.Add(i);
                     Api.World.SpawnItemEntity(slot.Itemstack, pos);

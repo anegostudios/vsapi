@@ -7,10 +7,19 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Holds 2 dimensional data for one chunk column
+    /// </summary>
     public interface IMapChunk
     {
+        /// <summary>
+        /// The map region this map chunk resides in
+        /// </summary>
         IMapRegion MapRegion { get; }
 
+        /// <summary>
+        /// The current world generation pass this chunk column is in
+        /// </summary>
         EnumWorldGenPass CurrentPass { get; set; }
 
         /// <summary>
@@ -27,6 +36,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         byte[] GetData(string key);
 
+
+        byte[] CaveHeightDistort { get; set; }
         
         /// <summary>
         /// The position of the last block that is not rain permeable before the first airblock
@@ -42,6 +53,9 @@ namespace Vintagestory.API.Common
         /// The rock block id of the topmost rock layer
         /// </summary>
         ushort[] TopRockIdMap { get; }
+
+        ushort[] SeedimentaryThicknessMap { get; }
+
 
         /// <summary>
         /// The highest position of any non-air block

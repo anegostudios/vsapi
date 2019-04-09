@@ -13,6 +13,9 @@ namespace Vintagestory.API.Common
         public AssetLocation Hit = null;
         public AssetLocation Ambient = null;
 
+        /// <summary>
+        /// Gets the sound that occurs when a specific tool hits a block.
+        /// </summary>
         public Dictionary<EnumTool, BlockSounds> ByTool = new Dictionary<EnumTool, BlockSounds>();
 
         /// <summary>
@@ -92,15 +95,14 @@ namespace Vintagestory.API.Common
 
 
         [OnDeserialized]
-        internal void OnDeserializedMethod(StreamingContext context)
+        public void OnDeserializedMethod(StreamingContext context)
         {
-            Walk?.WithPathPrefix("sounds/");
-            Inside?.WithPathPrefix("sounds/");
-            Break?.WithPathPrefix("sounds/");
-            Place?.WithPathPrefix("sounds/");
-            Hit?.WithPathPrefix("sounds/");
-            Ambient?.WithPathPrefix("sounds/");
-            
+            Walk?.WithPathPrefixOnce("sounds/");
+            Inside?.WithPathPrefixOnce("sounds/");
+            Break?.WithPathPrefixOnce("sounds/");
+            Place?.WithPathPrefixOnce("sounds/");
+            Hit?.WithPathPrefixOnce("sounds/");
+            Ambient?.WithPathPrefixOnce("sounds/");
         }
     }
 }

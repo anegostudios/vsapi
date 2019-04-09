@@ -7,6 +7,9 @@ using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Represent a font with sizing and styling for use in rendering text
+    /// </summary>
     public class CairoFont : FontConfig, ICairoFont, IDisposable
     {
         static ImageSurface surface;
@@ -24,6 +27,7 @@ namespace Vintagestory.API.Client
 
         FontOptions CairoFontOptions;
 
+        public FontSlant Slant = FontSlant.Normal;
 
         static CairoFont()
         {
@@ -63,9 +67,9 @@ namespace Vintagestory.API.Client
             this.Fontname = fontName;
         }
 
-        public CairoFont WithLineSpacing(float lineHeight)
+        public CairoFont WithLineHeightMultiplier(double lineHeightMul)
         {
-            this.LineHeightMultiplier = lineHeight;
+            this.LineHeightMultiplier = lineHeightMul;
             return this;
         }
 
@@ -188,6 +192,12 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public CairoFont WithSlant(FontSlant slant)
+        {
+            this.Slant = slant;
+            return this;
+        }
+
         /// <summary>
         /// Sets up the context.  THIS MUST BE RAN IN THE MAIN THREAD! NOT THREAD SAFE!
         /// </summary>
@@ -200,9 +210,11 @@ namespace Vintagestory.API.Client
             }
 
             ctx.SetFontSize(GuiElement.scaled(UnscaledFontsize));
-            ctx.SelectFontFace(Fontname, FontSlant.Normal, FontWeight);
+            ctx.SelectFontFace(Fontname, Slant, FontWeight);
             CairoFontOptions = new FontOptions();
-            CairoFontOptions.Antialias = Antialias.Gray;
+
+            //Antialias.Best does not work on Linux it completely borks the font
+            CairoFontOptions.Antialias = Antialias.Subpixel;
             ctx.FontOptions = CairoFontOptions;
 
             if (Color != null)
@@ -272,7 +284,7 @@ namespace Vintagestory.API.Client
         {
             return new CairoFont()
             {
-                Color = GuiStyle.LightBrownTextColor,
+                Color = (double[])GuiStyle.ButtonTextColor.Clone(),
                 FontWeight = FontWeight.Bold,
                 Fontname = GuiStyle.DecorativeFontName,
                 UnscaledFontsize = 24
@@ -287,7 +299,7 @@ namespace Vintagestory.API.Client
         {
             return new CairoFont()
             {
-                Color = GuiStyle.LightBrownHoverTextColor,
+                Color = (double[])GuiStyle.ActiveButtonTextColor.Clone(),
                 FontWeight = FontWeight.Bold,
                 Fontname = GuiStyle.DecorativeFontName,
                 UnscaledFontsize = 24
@@ -322,35 +334,7 @@ namespace Vintagestory.API.Client
             };
         }
 
-        /// <summary>
-        /// Creates a text for small dialogs.
-        /// </summary>
-        /// <returns>A small dialog text.</returns>
-        public static CairoFont SmallDialogText()
-        {
-            return new CairoFont()
-            {
-                Color = new double[] { 234 / 255.0, 220 / 255.0, 206 / 255.0, 1 },
-                Fontname = GuiStyle.DecorativeFontName,
-                UnscaledFontsize = GuiStyle.SmallFontSize,
-                FontWeight = FontWeight.Bold
-            };
-        }
-
-        /// <summary>
-        /// Creates a text for medium dialog.
-        /// </summary>
-        /// <returns>A medium dialog text.</returns>
-        public static CairoFont MediumDialogText()
-        {
-            return new CairoFont()
-            {
-                Color = new double[] { 234 / 255.0, 220 / 255.0, 206 / 255.0, 1 },
-                Fontname = GuiStyle.DecorativeFontName,
-                UnscaledFontsize = GuiStyle.SmallishFontSize,
-                FontWeight = FontWeight.Bold
-            };
-        }
+       
 
         /// <summary>
         /// Creates a white text for medium dialog.
@@ -360,7 +344,7 @@ namespace Vintagestory.API.Client
         {
             return new CairoFont()
             {
-                Color = GuiStyle.DialogDefaultTextColor,
+                Color = (double[])GuiStyle.DialogDefaultTextColor.Clone(),
                 Fontname = GuiStyle.StandardFontName,
                 UnscaledFontsize = GuiStyle.NormalFontSize
             };
@@ -374,7 +358,7 @@ namespace Vintagestory.API.Client
         {
             return new CairoFont()
             {
-                Color = GuiStyle.DialogDefaultTextColor,
+                Color = (double[])GuiStyle.DialogDefaultTextColor.Clone(),
                 Fontname = GuiStyle.StandardFontName,
                 UnscaledFontsize = GuiStyle.SmallishFontSize
             };
@@ -388,7 +372,7 @@ namespace Vintagestory.API.Client
         {
             return new CairoFont()
             {
-                Color = GuiStyle.DialogDefaultTextColor,
+                Color = (double[])GuiStyle.DialogDefaultTextColor.Clone(),
                 Fontname = GuiStyle.StandardFontName,
                 UnscaledFontsize = GuiStyle.SmallFontSize
             };
@@ -403,7 +387,7 @@ namespace Vintagestory.API.Client
         {
             return new CairoFont()
             {
-                Color = GuiStyle.DialogDefaultTextColor,
+                Color = (double[])GuiStyle.DialogDefaultTextColor.Clone(),
                 Fontname = GuiStyle.StandardSemiBoldFontName,
                 UnscaledFontsize = GuiStyle.DetailFontSize
             };

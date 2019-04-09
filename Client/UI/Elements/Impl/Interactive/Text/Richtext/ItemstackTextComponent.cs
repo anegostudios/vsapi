@@ -53,7 +53,7 @@ namespace Vintagestory.API.Client
             ctx.Fill();*/
         }
 
-        public override void RenderInteractiveElements(ICoreClientAPI api, float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
             LineRectangled bounds = BoundsPerLine[0];
 
@@ -70,7 +70,7 @@ namespace Vintagestory.API.Client
 
 
 
-        public override void OnMouseDown(ICoreClientAPI api, MouseEvent args)
+        public override void OnMouseDown(MouseEvent args)
         {
             foreach (var val in BoundsPerLine)
             {

@@ -23,7 +23,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override void TryPutInto(IItemSlot sinkSlot, ref ItemStackMoveOperation op)
+        public override void TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
         {
             if (!sinkSlot.CanTakeFrom(this) || !CanTake() || Itemstack == null) return;
 
@@ -164,7 +164,7 @@ namespace Vintagestory.API.Common
             withslot.Itemstack = returnedStack;
         }
 
-        public override void OnItemSlotModified(IItemStack sinkStack)
+        public override void OnItemSlotModified(ItemStack sinkStack)
         {
             if (itemstack != null) itemstack.StackSize = 1;
             base.OnItemSlotModified(sinkStack);

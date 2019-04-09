@@ -7,6 +7,13 @@ using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
 {
+    public interface IBlockTextureLocationDictionary
+    {
+        void AddTextureLocation(AssetLocationAndSource textureLoc);
+
+        int this[AssetLocationAndSource textureLoc] { get; }
+    }
+    
     /// <summary>
     /// Defines a complete path to an assets, including it's domain. Includes an extra Source field for debugging.
     /// </summary>
@@ -57,6 +64,8 @@ namespace Vintagestory.API.Common
             get { return path; }
             set { path = value; }
         }
+
+        public bool IsWildCard => Path.Contains("*");
 
         /// <summary>
         /// Create a new AssetLocation. If no domain is prefixed, the default 'game' domain is used.
@@ -165,9 +174,27 @@ namespace Vintagestory.API.Common
             return this;
         }
 
+        public AssetLocation WithPathPrefixOnce(string prefix)
+        {
+            if (!path.StartsWith(prefix))
+            {
+                path = prefix + path;
+            }
+            return this;
+        }
+
         public AssetLocation WithPathAppendix(string appendix)
         {
             path += appendix;
+            return this;
+        }
+
+        public AssetLocation WithoutPathAppendix(string appendix)
+        {
+            if (path.EndsWith(appendix))
+            {
+                path = path.Substring(0, path.Length - appendix.Length);
+            }
             return this;
         }
 

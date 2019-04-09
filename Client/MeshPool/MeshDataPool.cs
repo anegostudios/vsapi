@@ -430,6 +430,8 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class ModelDataPoolLocation
     {
+        public static int visibleBufIndex;
+
         /// <summary>
         /// The ID of the pool model.
         /// </summary>
@@ -465,7 +467,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool FrustumVisible;
 
-        public BoolRef CullVisible = new BoolRef() { value = true };
+        public BoolRef[] CullVisible = new BoolRef[] { new BoolRef() { value = true }, new BoolRef() { value = true } };
 
         /// <summary>
         /// Used for models with movements (like a door).
@@ -493,10 +495,10 @@ namespace Vintagestory.API.Client
         {
             return
                 (
-                (mode == EnumFrustumCullMode.CullHideDelay && UpdateVisibleFlag(frustumCuller.SphereInFrustum(frustumCullSphere))) ||
+                (mode == EnumFrustumCullMode.CullNormal && UpdateVisibleFlag(frustumCuller.SphereInFrustumAndRange(frustumCullSphere))) ||
                 (mode == EnumFrustumCullMode.CullInstant && frustumCuller.SphereInFrustum(frustumCullSphere)) ||
                 mode == EnumFrustumCullMode.NoCull
-                ) && CullVisible.value
+                ) && CullVisible[visibleBufIndex].value
             ;
         }
     }

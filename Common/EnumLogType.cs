@@ -6,6 +6,7 @@ namespace Vintagestory.API.Common
     {
         Chat,
         Event,
+        StoryEvent,
         Build,
         VerboseDebug,
         Debug,

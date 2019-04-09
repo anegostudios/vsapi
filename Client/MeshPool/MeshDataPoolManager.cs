@@ -98,7 +98,7 @@ namespace Vintagestory.API.Client
         /// <param name="playerpos">The position of the Player</param>
         /// <param name="originUniformName"></param>
         /// <param name="frustumCullMode">The culling mode.  Default is CulHideDelay.</param>
-        public void Render(Vec3d playerpos, string originUniformName, EnumFrustumCullMode frustumCullMode = EnumFrustumCullMode.CullHideDelay)
+        public void Render(Vec3d playerpos, string originUniformName, EnumFrustumCullMode frustumCullMode = EnumFrustumCullMode.CullNormal)
         {
             for (int i = 0; i < pools.Count; i++)
             {

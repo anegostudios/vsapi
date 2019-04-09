@@ -32,7 +32,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// The servers playstyle
         /// </summary>
-        public EnumPlayStyle Playstyle;
+        public string Playstyle;
 
 
         public TrackedPlayerProperties()

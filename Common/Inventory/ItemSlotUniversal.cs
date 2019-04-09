@@ -7,6 +7,9 @@ using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A universal item slot type that can hold anything.
+    /// </summary>
     public class ItemSlotUniversal : ItemSlot
     {
         public ItemSlotUniversal(InventoryBase inventory) : base(inventory)

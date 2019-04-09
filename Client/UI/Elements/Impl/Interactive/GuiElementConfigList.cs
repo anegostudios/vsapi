@@ -25,17 +25,17 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The name of the config item.
         /// </summary>
-        public string key;
+        public string Key;
 
         /// <summary>
         /// the value of the config item.  
         /// </summary>
-        public string value;
+        public string Value;
 
         /// <summary>
         /// The code of the config item.
         /// </summary>
-        public string code;
+        public string Code;
 
         /// <summary>
         /// Has this particular config item errored?
@@ -51,6 +51,9 @@ namespace Vintagestory.API.Client
         /// The height of the config item.
         /// </summary>
         public double height;
+
+
+        public object Data;
     }
 
     public delegate void ConfigItemClickDelegate(int index, int indexWithoutTitles);
@@ -111,8 +114,8 @@ namespace Vintagestory.API.Client
             foreach (ConfigItem item in items)
             {
                 double lineHeight = Math.Max(
-                    textUtil.GetMultilineTextHeight(Font, item.key, Bounds.InnerWidth * leftWidthRel),
-                    textUtil.GetMultilineTextHeight(Font, item.value, Bounds.InnerWidth * rightWidthRel)
+                    textUtil.GetMultilineTextHeight(Font, item.Key, Bounds.InnerWidth * leftWidthRel),
+                    textUtil.GetMultilineTextHeight(Font, item.Value, Bounds.InnerWidth * rightWidthRel)
                 );
 
                 if (!first && item.Type == EnumItemType.Title) lineHeight += scaled(20);
@@ -168,8 +171,8 @@ namespace Vintagestory.API.Client
 
                 double offY = !first && item.Type == EnumItemType.Title ? scaled(20) : 0;
 
-                double leftHeight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, item.key, 0, offY + height + pad, innerBounds.InnerWidth * leftWidthRel, EnumTextOrientation.Left);
-                double rightHeight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, item.value, innerBounds.InnerWidth * (1 - rightWidthRel), offY + height + pad, innerBounds.InnerWidth * rightWidthRel, EnumTextOrientation.Left);
+                double leftHeight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, item.Key, 0, offY + height + pad, innerBounds.InnerWidth * leftWidthRel, EnumTextOrientation.Left);
+                double rightHeight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, item.Value, innerBounds.InnerWidth * (1 - rightWidthRel), offY + height + pad, innerBounds.InnerWidth * rightWidthRel, EnumTextOrientation.Left);
 
                 double itemHeight = offY + pad + Math.Max(leftHeight, rightHeight) + pad;
 

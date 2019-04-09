@@ -22,6 +22,14 @@ namespace Vintagestory.API.Client
         T this[string key] { get; set; }
 
         /// <summary>
+        /// Gets the setting with the provided key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        T Get(string key, T defaultValue = default(T));
+
+        /// <summary>
         /// Does this setting exist?
         /// </summary>
         /// <param name="key">The key to check on a setting.</param>

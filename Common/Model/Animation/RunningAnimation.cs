@@ -57,7 +57,6 @@ namespace Vintagestory.API.Common
                     intoList[i].Weight = meta.Weight;
                 }
                 
-
                 EnumAnimationBlendMode blendMode;
                 if (elementBlendMode.TryGetValue(elem.Name, out blendMode))
                 {
@@ -66,7 +65,6 @@ namespace Vintagestory.API.Common
                 {
                     intoList[i].BlendMode = meta.BlendMode;
                 }
-                
 
 
                 if (elem.Children != null)
@@ -80,15 +78,11 @@ namespace Vintagestory.API.Common
         internal void CalcBlendedWeight(float weightSum, EnumAnimationBlendMode blendMode)
         {
             BlendedWeight = GameMath.Clamp(blendMode != EnumAnimationBlendMode.Average ? EasingFactor : EasingFactor / weightSum, 0, 1);
-
-            //Console.WriteLine(Animation.Code + ": " + BlendedWeight);
         }
 
         public void Progress(float dt, float walkspeed)
         {
             dt *= meta.GetCurrentAnimationSpeed(walkspeed);
-
-           // if (Animation.Code == "walk") Console.WriteLine(Animation.Code + ": " + CurrentFrame + " / " + Animation.QuantityFrames + " / " + EasingFactor);
 
             if (Active || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
             {

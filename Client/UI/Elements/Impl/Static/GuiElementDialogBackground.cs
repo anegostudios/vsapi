@@ -6,76 +6,58 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementDialogBackground : GuiElement
     {
-        //bool hotBarLayout = false;
-        bool strongBackground;
-        double topPadding = 0;
+        public bool Shade = true;
+        bool withTitlebar;
+        double strokeWidth = 0;
 
         /// <summary>
         /// Adds a Background to the Dialog.
         /// </summary>
         /// <param name="capi">The Client API</param>
         /// <param name="bounds">The bounds of the element.</param>
-        /// <param name="strongBackground">Whether the background is strong or not.</param>
+        /// <param name="withTitlebar">Minor style adjustments to accomodate title bar</param>
         /// <param name="hotBarLayout">Whether or not the hotbar is rendered in this gui.</param>
-        /// <param name="topPadding">The top padding area of the GUI</param>
-        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool strongBackground, double topPadding = 0) : base(capi, bounds)
+        /// <param name="strokeWidth">The top padding area of the GUI</param>
+        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool withTitlebar, double strokeWidth = 0) : base(capi, bounds)
         {
-            //this.hotBarLayout = hotBarLayout;
-            this.topPadding = topPadding;
-            this.strongBackground = strongBackground;
+            this.strokeWidth = strokeWidth;
+            this.withTitlebar = withTitlebar;
         }
 
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             Bounds.CalcWorldBounds();
-            
-            /*if (hotBarLayout)
+
+            double titleBarOffY = withTitlebar ? scaled(GuiStyle.TitleBarHeight) : 0;
+
+            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + titleBarOffY, Bounds.OuterWidth, Bounds.OuterHeight - titleBarOffY, GuiStyle.DialogBGRadius);
+
+            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
+            ctx.FillPreserve();
+
+            if (Shade)
             {
-                double midBoxWidth = 0.15 * Bounds.ParentBounds.OuterWidth;
-                double midBoxHeight = 0.2 * Bounds.OuterHeight;
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
+                ctx.LineWidth = strokeWidth * 1.75;
+                ctx.StrokePreserve();
+                surface.Blur(8.2, (int)Bounds.bgDrawX, (int)(Bounds.bgDrawY + titleBarOffY), (int)(Bounds.bgDrawX + Bounds.OuterWidth), (int)(Bounds.bgDrawY + Bounds.OuterHeight - 1));
 
-                //bounds.fixedY = bounds.OuterHeight / 2;
-                //bounds.calcWorldBounds();
-
-                double radius = GuiStyle.DialogBGRadius;
-                double x = Bounds.bgDrawX;
-                double y = Bounds.bgDrawY + midBoxHeight + topPadding;
-                double width = Bounds.OuterWidth;
-                double height = Bounds.OuterHeight;
-                double degrees = Math.PI / 180.0;
-
-                ctx.Antialias = Antialias.Best;
-                ctx.NewPath();
-                ctx.Arc(x + width - radius, y + radius, radius, -90 * degrees, 0 * degrees);
-                ctx.LineTo(x + width, y + height);
-                ctx.LineTo(x, y + height);
-                ctx.Arc(x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
-
-                ctx.ArcNegative(x + width / 2 - midBoxWidth / 2 - radius, y - radius, radius, 90 * degrees, 0 * degrees);
-                ctx.Arc(x + width / 2 - midBoxWidth / 2 + radius, y - midBoxHeight + radius, radius, 180 * degrees, 270 * degrees);
-                ctx.Arc(x + width / 2 + midBoxWidth / 2 - radius, y - midBoxHeight + radius, radius, 270 * degrees, 0 * degrees);
-                ctx.ArcNegative(x + width / 2 + midBoxWidth / 2 + radius, y - radius, radius, -180 * degrees, -270 * degrees);
-
-                ctx.ClosePath();
-            }
-            else*/
-            {
-                RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + topPadding, Bounds.OuterWidth, Bounds.OuterHeight - topPadding, GuiStyle.DialogBGRadius);
-            }
-
-            if (strongBackground)
-            {
-                ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
+                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
+                ctx.LineWidth = strokeWidth;
+                ctx.Stroke();
             } else
             {
-                ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor);
+                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
+                ctx.LineWidth = 2;
+                ctx.Stroke();
             }
-            
-            ctx.FillPreserve();       
 
-            // Shadings at the rectangle border
-            ShadePath(ctx);
+            double off = strokeWidth / 2 + 1;
+            RoundRectangle(ctx, Bounds.bgDrawX + off, Bounds.bgDrawY + titleBarOffY + (titleBarOffY > 0 ? 0 : off), Bounds.OuterWidth - 2*off, Bounds.OuterHeight - titleBarOffY - off - (titleBarOffY > 0 ? 0 : off), GuiStyle.DialogBGRadius);
+            ctx.SetSourceRGBA(0, 0, 0, 0.4);
+            ctx.LineWidth = 1.5;
+            ctx.Stroke();
         }
     }
 
@@ -88,32 +70,27 @@ namespace Vintagestory.API.Client
         /// Adds a single rectangle background to the GUI.
         /// </summary>
         /// <param name="bounds">The bounds of the GUI</param>
-        /// <param name="strongBackground">Whether or not the background is strong.</param>
+        /// <param name="withTitleBar">Minor style adjustments to accomodate titlebars</param>
         /// <param name="topPadding">The amount of padding at the top of the gui.</param>
-        public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool strongBackground = false, double topPadding = 0)
+        public static GuiComposer AddShadedDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true, double strokeWidth = 5)
         {
             if (!composer.composed)
             {
-                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, strongBackground, topPadding));
+                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, withTitleBar, strokeWidth));
             }
             return composer;
         }
 
-        // Multi rectangle shape
-        /// <summary>
-        /// Adds a multi-rectangle background.
-        /// </summary>
-        /// <param name="bounds">The bounds of the GUI</param>
-        /// <param name="strongBackground">Whether or not the background is strong.</param>
-        /*public static GuiComposer AddDialogBGHotBar(this GuiComposer composer, ElementBounds bounds, bool strongBackground = false)
+        public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true)
         {
             if (!composer.composed)
             {
-                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, strongBackground, true));
+                GuiElementDialogBackground elem = new GuiElementDialogBackground(composer.Api, bounds, withTitleBar);
+                elem.Shade = false;  
+                composer.AddStaticElement(elem);
             }
             return composer;
-        }*/
-
+        }
     }
 
 }

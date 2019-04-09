@@ -9,6 +9,9 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A subclass of ExplosionSmokeParticles.
+    /// </summary>
     public class ExplosionParticles
     {
 
@@ -81,6 +84,9 @@ namespace Vintagestory.API.Common
         }
     }
 
+    /// <summary>
+    /// Handles the smoke particles of where the explosion was.
+    /// </summary>
     public class ExplosionSmokeParticles : IParticlePropertiesProvider
     {
         Random rand = new Random();

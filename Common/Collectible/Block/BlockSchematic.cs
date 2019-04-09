@@ -98,13 +98,18 @@ namespace Vintagestory.API.Common
             undergroundBlock = blockAccessor.GetBlock(new AssetLocation("meta-underground"));
         }
 
-
-        public void LoadMetaInformation(IBlockAccessor blockAccessor)
+        /// <summary>
+        /// Loads the meta information for each block in the schematic.
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        public void LoadMetaInformationAndValidate(IBlockAccessor blockAccessor, IWorldAccessor worldForResolve, string fileNameForLogging)
         {
             BlockPos curPos = new BlockPos();
 
             List<BlockPos> undergroundPositions = new List<BlockPos>();
             Queue<BlockPos> pathwayPositions = new Queue<BlockPos>();
+
+            HashSet<AssetLocation> missingBlocks = new HashSet<AssetLocation>();
 
             for (int i = 0; i < Indices.Count; i++)
             {
@@ -116,8 +121,9 @@ namespace Vintagestory.API.Common
                 int dz = (int)((index >> 10) & 0x1ff);
 
                 AssetLocation blockCode = BlockCodes[storedBlockid];
-
                 Block newBlock = blockAccessor.GetBlock(blockCode);
+
+                if (newBlock == null) missingBlocks.Add(blockCode);
 
                 if (newBlock != pathwayBlock && newBlock != undergroundBlock) continue;
                 
@@ -130,6 +136,25 @@ namespace Vintagestory.API.Common
                 {
                     undergroundPositions.Add(pos);
                 }
+            }
+
+            if (missingBlocks.Count > 0)
+            {
+                worldForResolve.Logger.Warning("Block schematic file {0} uses blocks that could no longer be found. These will turn into air blocks! (affected: {1})", fileNameForLogging, string.Join(",", missingBlocks));
+            }
+
+            HashSet<AssetLocation> missingItems = new HashSet<AssetLocation>();
+            foreach (var val in ItemCodes)
+            {
+                if (worldForResolve.GetItem(val.Value) == null)
+                {
+                    missingItems.Add(val.Value);
+                }
+            }
+
+            if (missingItems.Count > 0)
+            {
+                worldForResolve.Logger.Warning("Block schematic file {0} uses items that could no longer be found. These will turn into unknown items! (affected: {1})", fileNameForLogging, string.Join(",", missingItems));
             }
 
 
@@ -223,7 +248,12 @@ namespace Vintagestory.API.Common
 
     
 
-
+        /// <summary>
+        /// Adds an area to the schematic.
+        /// </summary>
+        /// <param name="world">The world the blocks are in</param>
+        /// <param name="start">The start position of all the blocks.</param>
+        /// <param name="end">The end position of all the blocks.</param>
         public virtual void AddArea(IWorldAccessor world, BlockPos start, BlockPos end)
         {
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
@@ -279,7 +309,7 @@ namespace Vintagestory.API.Common
 
                 if (dx >= 1024 || dy >= 1024 || dz >= 1024)
                 {
-                    Console.WriteLine("Export format does not support areas larger than 1024 blocks in any direction");
+                    world.Logger.Warning("Export format does not support areas larger than 1024 blocks in any direction. Will not pack.");
                     return false;
                 }
             }
@@ -303,6 +333,11 @@ namespace Vintagestory.API.Common
                 Indices.Add((uint)((dy << 20) | (dz << 10) | dx));
                 BlockIds.Add(val.Value);
             }
+
+            // off-by-one problem as usual. A block at x=3 and x=4 means a sizex of 2
+            SizeX++;
+            SizeY++;
+            SizeZ++;
 
             foreach(var val in BlockEntitiesUnpacked)
             {
@@ -335,8 +370,10 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Will place all blocks using the configured replace mode. Note: If you use a revertable or bulk block accessor you will have to call PlaceBlockEntities() after the Commit()
         /// </summary>
-        /// <param name="blocAccessor"></param>
+        /// <param name="blockAccessor"></param>
+        /// <param name="worldForCollectibleResolve"></param>
         /// <param name="startPos"></param>
+        /// <param name="replaceMetaBlocks"></param>
         /// <returns></returns>
         public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, bool replaceMetaBlocks = true)
         {
@@ -347,8 +384,10 @@ namespace Vintagestory.API.Common
         /// Will place all blocks using the supplied replace mode. Note: If you use a revertable or bulk block accessor you will have to call PlaceBlockEntities() after the Commit()
         /// </summary>
         /// <param name="blockAccessor"></param>
+        /// <param name="worldForCollectibleResolve"></param>
         /// <param name="startPos"></param>
         /// <param name="mode"></param>
+        /// <param name="replaceMetaBlocks"></param>
         /// <returns></returns>
         public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumReplaceMode mode, bool replaceMetaBlocks = true)
         {
@@ -399,6 +438,7 @@ namespace Vintagestory.API.Common
                 Block oldBlock = blockAccessor.GetBlock(curPos);
                 placed += handler(blockAccessor, curPos, oldBlock, newBlock);
 
+
                 if (newBlock.LightHsv[2] > 0 && blockAccessor is IWorldGenBlockAccessor)
                 {
                     int chunkSize = blockAccessor.ChunkSize;
@@ -415,7 +455,13 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Attempts to transform each block as they are placed in directions different from the schematic.
+        /// </summary>
+        /// <param name="worldForResolve"></param>
+        /// <param name="aroundOrigin"></param>
+        /// <param name="angle"></param>
+        /// <param name="flipAxis"></param>
         public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)
         {
             BlockPos curPos = new BlockPos();
@@ -438,8 +484,13 @@ namespace Vintagestory.API.Common
                 int dz = (int)((index >> 10) & 0x1ff);
 
                 AssetLocation blockCode = BlockCodes[storedBlockid];
+
                 Block newBlock = worldForResolve.GetBlock(blockCode);
-                if (newBlock == null) continue;
+                if (newBlock == null)
+                {
+                    BlockEntities.Remove(index);
+                    continue;
+                }
 
                 if (flipAxis != null)
                 {
@@ -590,7 +641,12 @@ namespace Vintagestory.API.Common
 
 
 
-
+        /// <summary>
+        /// Places all the entities and blocks in the schematic at the position.
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="worldForCollectibleResolve"></param>
+        /// <param name="startPos"></param>
         public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos)
         {
             BlockPos curPos = new BlockPos();
@@ -656,7 +712,11 @@ namespace Vintagestory.API.Common
             }
         }
 
-
+        /// <summary>
+        /// Gets just the positions of the blocks.
+        /// </summary>
+        /// <param name="origin">The origin point to start from</param>
+        /// <returns>An array containing the BlockPos of each block in the area.</returns>
         public virtual BlockPos[] GetJustPositions(BlockPos origin)
         {
             BlockPos[] positions = new BlockPos[Indices.Count];
@@ -678,12 +738,23 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Gets the starting position of the schematic.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="origin"></param>
+        /// <returns></returns>
         public virtual BlockPos GetStartPos(BlockPos pos, EnumOrigin origin)
         {
             return AdjustStartPos(pos.Copy(), origin);
         }
 
+        /// <summary>
+        /// Adjusts the starting position of the schemtic.
+        /// </summary>
+        /// <param name="startpos"></param>
+        /// <param name="origin"></param>
+        /// <returns></returns>
         public virtual BlockPos AdjustStartPos(BlockPos startpos, EnumOrigin origin)
         {
             if (origin == EnumOrigin.TopCenter)
@@ -702,8 +773,13 @@ namespace Vintagestory.API.Common
             return startpos;
         }
 
-
-        public static BlockSchematic Load(string infilepath, ref string error)
+        /// <summary>
+        /// Loads the schematic from a file.
+        /// </summary>
+        /// <param name="infilepath"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public static BlockSchematic LoadFromFile(string infilepath, ref string error)
         {
             if (!File.Exists(infilepath) && File.Exists(infilepath + ".json"))
             {
@@ -735,7 +811,30 @@ namespace Vintagestory.API.Common
             return blockdata;
         }
 
+        /// <summary>
+        /// Loads a schematic from a string.
+        /// </summary>
+        /// <param name="jsoncode"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public static BlockSchematic LoadFromString(string jsoncode, ref string error)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<BlockSchematic>(jsoncode);
+            }
+            catch (Exception e)
+            {
+                error = "Failed loading schematic from json code : " + e.Message;
+                return null;
+            }
+        }
 
+        /// <summary>
+        /// Saves a schematic to a file.
+        /// </summary>
+        /// <param name="outfilepath"></param>
+        /// <returns></returns>
         public virtual string Save(string outfilepath)
         {
             this.GameVersion = API.Config.GameVersion.ShortGameVersion;
@@ -761,9 +860,20 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-        
-        
 
+        public virtual string ToJson()
+        {
+            this.GameVersion = API.Config.GameVersion.ShortGameVersion;
+            return JsonConvert.SerializeObject(this, Formatting.None);
+        }
+
+
+
+        /// <summary>
+        /// Exports the block entity data to a string.
+        /// </summary>
+        /// <param name="be"></param>
+        /// <returns></returns>
         public virtual string EncodeBlockEntityData(BlockEntity be)
         {
             TreeAttribute tree = new TreeAttribute();
@@ -772,6 +882,11 @@ namespace Vintagestory.API.Common
             return StringEncodeTreeAttribute(tree);
         }
 
+        /// <summary>
+        /// Exports the tree attribute data to a string.
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <returns></returns>
         public virtual string StringEncodeTreeAttribute(ITreeAttribute tree)
         {
             byte[] data;
@@ -786,7 +901,11 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// Imports the tree data from a string.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public virtual TreeAttribute DecodeBlockEntityData(string data)
         {
             byte[] bedata = Ascii85.Decode(data);

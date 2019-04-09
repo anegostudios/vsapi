@@ -100,11 +100,11 @@ namespace Vintagestory.API.Client
 
         void ComposeButton(Context ctx, ImageSurface surface, bool pressed)
         {
-            double embossHeight = scaled(3);
+            double embossHeight = scaled(2.5);
 
             if (buttonStyle == EnumButtonStyle.Normal)
             {
-                embossHeight = scaled(2);
+                embossHeight = scaled(1.5);
             }
 
 
@@ -116,7 +116,7 @@ namespace Vintagestory.API.Client
             {
                 // Brown background
                 Rectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight);
-                ctx.SetSourceRGBA(69 / 255.0, 52 / 255.0, 36 / 255.0, 0.7);
+                ctx.SetSourceRGBA(69 / 255.0, 52 / 255.0, 36 / 255.0, 1);
                 ctx.Fill();
             }
 
@@ -271,7 +271,7 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                CairoFont hoverFont = buttonFont.Clone().WithColor(GuiStyle.LightBrownHoverTextColor);
+                CairoFont hoverFont = buttonFont.Clone().WithColor(GuiStyle.ActiveButtonTextColor);
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, buttonFont, hoverFont, onClick, bounds, style);
                 elem.SetOrientation(orientation);
                 composer.AddInteractiveElement(elem, key);

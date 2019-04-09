@@ -5,15 +5,15 @@ using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Text that can be changed after being composed
+    /// </summary>
     public class GuiElementDynamicText : GuiElementTextBase
     {
         EnumTextOrientation orientation;
 
         LoadedTexture textTexture;
-
-        float[] strokeRGB = new float[] { 0, 0, 0, 1 };
-        double strokeWidth = 0.5;
-
+        
         public Action OnClick;
         public bool autoHeight;
 
@@ -40,7 +40,7 @@ namespace Vintagestory.API.Client
 
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
         {
-            RecomposeMultiLine();
+            RecomposeText();
         }
 
      
@@ -57,7 +57,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Recomposes the element for lines.
         /// </summary>
-        public void RecomposeMultiLine()
+        public void RecomposeText()
         {
             if (autoHeight) AutoHeight();
             
@@ -101,21 +101,10 @@ namespace Vintagestory.API.Client
                 Bounds.CalcWorldBounds();
                 if (autoHeight) AutoHeight();
                 
-                RecomposeMultiLine();
+                RecomposeText();
             }
         }
-
-        /// <summary>
-        /// Sets the thickness and color of the text.
-        /// </summary>
-        /// <param name="rgba">the color, expected length 4 in rgba order.</param>
-        /// <param name="thickness">the thickness of the text.</param>
-        public void setStroke(float[] rgba, double thickness)
-        {
-            this.strokeRGB = rgba;
-            this.strokeWidth = thickness;
-        }
-
+        
 
         public override void Dispose()
         {
@@ -130,11 +119,13 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds dynamic text to the GUI.
         /// </summary>
-        /// <param name="text">The text of the dynamic text.</param>
-        /// <param name="font">The font of the text.</param>
-        /// <param name="orientation">the text orientation.</param>
-        /// <param name="bounds">the bounds of the </param>
-        /// <param name="key">The name of the element.</param>
+        /// <param name="composer"></param>
+        /// <param name="text"></param>
+        /// <param name="font"></param>
+        /// <param name="orientation"></param>
+        /// <param name="bounds"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static GuiComposer AddDynamicText(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)

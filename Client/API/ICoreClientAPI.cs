@@ -25,7 +25,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Platform independent ui methods and features. 
         /// </summary>
-        IXPlatFormsUI Forms { get; }
+        IXPlatformInterface Forms { get; }
 
         /// <summary>
         /// Amount of milliseconds ellapsed since client startup
@@ -176,32 +176,64 @@ namespace Vintagestory.API.Client
         void RegisterEntityRendererClass(string className, Type rendererType);
 
         /// <summary>
-        /// Shows a client side only chat message in the current chat channel
+        /// Shows a client side only chat message in the current chat channel. Uses the same code paths a server => client message takes. Does not execute client commands.
         /// </summary>
         /// <param name="message"></param>
+        void ShowChatMessage(string message);
+        
+        /// <summary>
+        /// Shows a client side only chat message in the current chat channel. Uses the same code paths a server => client message takes. Does not execute client commands.
+        /// </summary>
+        /// <param name="message"></param>
+        [Obsolete("Use ShowChatMessage() instead")]
         void ShowChatNotification(string message);
 
         /// <summary>
-        /// Shows a message to the client as if the client typed it, but without sending it to the server. This also causes client commands to get executed.
+        /// Shows a vibrating red text in the players screen
         /// </summary>
-        /// <param name="message"></param>
-        void SendMessageToClient(string message);
+        /// <param name="sender"></param>
+        /// <param name="errorCode"></param>
+        /// <param name="text"></param>
+        void TriggerIngameError(object sender, string errorCode, string text);
 
         /// <summary>
-        /// Sends a message to the server
+        /// Same as <see cref="ShowChatMessage(string)"/> but will also execute client commands if they are prefixed with a dot.
+        /// </summary>
+        /// <param name="message"></param>
+        void TriggerChatMessage(string message);
+
+        /// <summary>
+        /// Sends a chat message to the server
         /// </summary>
         /// <param name="message"></param>
         /// <param name="groupId"></param>
         /// <param name="data"></param>
-        void SendMessageToServer(string message, int groupId, string data = null);
+        void SendChatMessage(string message, int groupId, string data = null);
 
         /// <summary>
-        /// Sends a message to the server in the players currently active channel
+        /// Sends a chat message to the server in the players currently active channel
         /// </summary>
         /// <param name="message"></param>
         /// <param name="data"></param>
-        void SendMessageToServer(string message, string data = null);
+        void SendChatMessage(string message, string data = null);
+
+
+        /// <summary>
+        /// Tells the music engine to load and immediately start given track once loaded, if the priority is higher than the currently playing track. May also be stopped while playing if another track with a higher priority is started.
+        /// If you supply an onLoaded method the track is not started immediately and you can manually start it at any given time by calling sound.Start()
+        /// </summary>
+        /// <param name="soundLocation"></param>
+        /// <param name="priority"></param>
+        /// <param name="soundType"></param>
+        /// <param name="onLoaded"></param>
+        /// <returns></returns>
+        MusicTrack StartTrack(AssetLocation soundLocation, float priority, EnumSoundType soundType, API.Common.Action<ILoadedSound> onLoaded = null);
 
         
+
+        /// <summary>
+        /// Returns the currently playing music track, if any is playing
+        /// </summary>
+        IMusicTrack CurrentMusicTrack { get; }
     }
 }

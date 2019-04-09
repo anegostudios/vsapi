@@ -7,8 +7,9 @@ namespace Vintagestory.API.Client
 {
     public class GuiTab
     {
-        public int index;
-        public string name;
+        public int DataInt;
+        public string Name;
+        public double PaddingTop; // For vertical tabs
     }
 
     public class GuiElementHorizontalTabs : GuiElementTextBase
@@ -19,6 +20,7 @@ namespace Vintagestory.API.Client
 
         LoadedTexture[] hoverTextures;
         int[] tabWidths;
+        CairoFont selectedFont;
 
         public int activeElement = 0;
 
@@ -34,8 +36,9 @@ namespace Vintagestory.API.Client
         /// <param name="font">The font for the name of each tab.</param>
         /// <param name="bounds">The bounds of each tab.</param>
         /// <param name="onTabClicked">The event fired whenever the tab is clicked.</param>
-        public GuiElementHorizontalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, ElementBounds bounds, API.Common.Action<int> onTabClicked) : base(capi, "", font, bounds)
+        public GuiElementHorizontalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, CairoFont selectedFont, ElementBounds bounds, API.Common.Action<int> onTabClicked) : base(capi, "", font, bounds)
         {
+            this.selectedFont = selectedFont;
             this.tabs = tabs;
             handler = onTabClicked;
             hoverTextures = new LoadedTexture[tabs.Length];
@@ -46,7 +49,7 @@ namespace Vintagestory.API.Client
 
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
         {
-            double radius = scaled(3);
+            double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
             double padding = scaled(3);
 
@@ -57,7 +60,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < tabs.Length; i++)
             {
 
-                tabWidths[i] = (int)(ctx.TextExtents(tabs[i].name).Width + 2 * padding + 1);
+                tabWidths[i] = (int)(ctx.TextExtents(tabs[i].Name).Width + 2 * padding + 1);
                 
                 ctx.NewPath();
                 ctx.MoveTo(Bounds.drawX + xpos, Bounds.drawY + Bounds.InnerHeight);
@@ -76,7 +79,7 @@ namespace Vintagestory.API.Client
 
                 Font.SetupContext(ctx);
 
-                DrawTextLineAt(ctx, tabs[i].name, Bounds.drawX + xpos + padding, Bounds.drawY + 1);
+                DrawTextLineAt(ctx, tabs[i].Name, Bounds.drawX + xpos + padding, Bounds.drawY + 1);
 
                 xpos += tabWidths[i] + spacing;
             }
@@ -124,9 +127,9 @@ namespace Vintagestory.API.Client
                 ShadePath(ctx, 2);
 
 
-                Font.SetupContext(ctx);
+                selectedFont.SetupContext(ctx);
 
-                DrawTextLineAt(ctx, tabs[i].name, padding, 1);
+                DrawTextLineAt(ctx, tabs[i].Name, padding, 1);
 
               
                 generateTexture(surface, ref hoverTextures[i]);
@@ -201,7 +204,7 @@ namespace Vintagestory.API.Client
         /// <param name="selectedIndex">The current index of the tab.</param>
         public void SetValue(int selectedIndex)
         {
-            handler(tabs[selectedIndex].index);
+            handler(tabs[selectedIndex].DataInt);
             activeElement = selectedIndex;
         }
 
@@ -227,11 +230,11 @@ namespace Vintagestory.API.Client
         /// <param name="OnTabClicked">The event fired when the tab is clicked.</param>
         /// <param name="font">The font of the tabs.</param>
         /// <param name="key">The key for the added horizontal tabs.</param>
-        public static GuiComposer AddHorizontalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, API.Common.Action<int> OnTabClicked, CairoFont font, string key = null)
+        public static GuiComposer AddHorizontalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, API.Common.Action<int> OnTabClicked, CairoFont font, CairoFont selectedFont, string key = null)
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementHorizontalTabs(composer.Api, tabs, font, bounds, OnTabClicked), key);
+                composer.AddInteractiveElement(new GuiElementHorizontalTabs(composer.Api, tabs, font, selectedFont, bounds, OnTabClicked), key);
             }
 
             return composer;

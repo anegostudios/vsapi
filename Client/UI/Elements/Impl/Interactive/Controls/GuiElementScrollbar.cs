@@ -7,10 +7,11 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementScrollbar : GuiElementControl
     {
+        public static int DefaultScrollbarWidth = 20;
+        public static int DeafultScrollbarPadding = 2;
+
         protected API.Common.Action<float> onNewScrollbarValue;
 
-        public static int scrollbarWidth = 20;
-        public static int scrollbarPadding = 2;
 
         internal bool mouseDownOnScrollbarHandle;
         internal int mouseDownStartY;
@@ -82,17 +83,20 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)scaled(scrollbarWidth), (int)currentHandleHeight);
+            int w = (int)Bounds.InnerWidth;
+            int h = (int)currentHandleHeight;
+
+            ImageSurface surface = new ImageSurface(Format.Argb32, w, h);
             Context ctx = genContext(surface);
 
-            RoundRectangle(ctx, 0, 0, scaled(scrollbarWidth-1), currentHandleHeight, 3);
+            RoundRectangle(ctx, 0, 0, w, h, 1);
             ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
             ctx.FillPreserve();
-            ctx.SetSourceRGBA(0, 0, 0, 0.3);
+            ctx.SetSourceRGBA(0, 0, 0, 0.4);
             ctx.Fill();
 
-            EmbossRoundRectangleElement(ctx, 0, 0, scaled(scrollbarWidth-1), currentHandleHeight, false, 2, 3);
-
+            EmbossRoundRectangleElement(ctx, 0, 0, w, h, false, 2, 1);
+            
             generateTexture(surface, ref handleTexture);
 
             ctx.Dispose();
@@ -103,10 +107,10 @@ namespace Vintagestory.API.Client
         {
             api.Render.Render2DTexturePremultipliedAlpha(
                 handleTexture.TextureId,
-                (float)(Bounds.renderX + Bounds.absPaddingX),
-                (float)(Bounds.renderY + Bounds.absPaddingY + currentHandlePosition),
-                (float)(scaled(scrollbarWidth)),
-                currentHandleHeight
+                (int)(Bounds.renderX + Bounds.absPaddingX),
+                (int)(Bounds.renderY + Bounds.absPaddingY + currentHandlePosition),
+                (int)Bounds.InnerWidth,
+                (int)currentHandleHeight
             );
         }
 
@@ -272,6 +276,7 @@ namespace Vintagestory.API.Client
             }
             return composer;
         }
+        
 
         /// <summary>
         /// Gets the scrollbar by name.

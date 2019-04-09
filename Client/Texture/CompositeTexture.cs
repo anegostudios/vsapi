@@ -30,6 +30,11 @@ namespace Vintagestory.API.Client
         public BakedCompositeTexture Baked;
 
         /// <summary>
+        /// Rotation of the texture may only be a multiple of 90
+        /// </summary>
+        public int Rotation = 0;
+
+        /// <summary>
         /// Creates a new empty composite texture
         /// </summary>
         public CompositeTexture()
@@ -56,7 +61,7 @@ namespace Vintagestory.API.Client
             CompositeTexture[] alternatesClone = null;
 
             if (Alternates != null)
-            {
+            {   
                 alternatesClone = new CompositeTexture[Alternates.Length];
                 for (int i = 0; i < alternatesClone.Length; i++)
                 {
@@ -67,7 +72,8 @@ namespace Vintagestory.API.Client
             CompositeTexture ct = new CompositeTexture()
             {
                 Base = Base.Clone(),
-                Alternates = alternatesClone
+                Alternates = alternatesClone,
+                Rotation = Rotation
             };
 
             if (Overlays != null)
@@ -87,6 +93,7 @@ namespace Vintagestory.API.Client
             CompositeTexture ct = new CompositeTexture()
             {
                 Base = Base.Clone(),
+                Rotation = Rotation
             };
 
             if (Overlays != null)
@@ -211,6 +218,7 @@ namespace Vintagestory.API.Client
                 }
             }
 
+
             if (ct.Overlays != null)
             {
                 bct.TextureFilenames = new AssetLocation[ct.Overlays.Length + 1];
@@ -225,6 +233,15 @@ namespace Vintagestory.API.Client
             else
             {
                 bct.TextureFilenames = new AssetLocation[] { ct.Base.Clone() };
+            }
+
+            if (ct.Rotation != 0)
+            {
+                if (ct.Rotation != 90 && ct.Rotation != 0 && ct.Rotation != 180 && ct.Rotation != 270)
+                {
+                    throw new Exception("Texture definition " + ct.Base + " has a rotation thats not 0, 90, 180 or 270. These are the only allowed values!");
+                }
+                bct.BakedName.Path += "@" + ct.Rotation;
             }
 
             if (ct.Alternates != null)

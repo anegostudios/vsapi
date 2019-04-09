@@ -41,14 +41,5 @@ namespace Vintagestory.API.Server
         /// List of all loaded tree generators
         /// </summary>
         OrderedDictionary<AssetLocation, ITreeGenerator> TreeGenerators { get; }
-
-        /// <summary>
-        /// Loads a chunk column at given chunk position in a non-blocking way, once loaded the onloaded method is called. The onloaded Callback is executed on the main thread
-        /// If no player is nearby, this chunk will be unloaded after some time. You can prevent that by calling MarkFresh() on the map chunk every few seconds. Alternatively you can use 
-        /// the WorldManager api to force load chunks for the duration of the game.
-        /// </summary>
-        /// <param name="chunkPos"></param>
-        /// <param name="onloaded"></param>
-        void LoadChunkColumn(int chunkX, int chunkZ, API.Common.Action onloaded);
     }
 }

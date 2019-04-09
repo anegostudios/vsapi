@@ -44,11 +44,19 @@ namespace Vintagestory.API.Common
         [Obsolete("Use Count instead.")]
         int QuantitySlots { get; }
 
-
+        /// <summary>
+        /// The name of the class for the inventory
+        /// </summary>
         string ClassName { get; }
+
+        /// <summary>
+        /// The internal named id for the inventory
+        /// </summary>
         string InventoryID { get; }
 
-
+        /// <summary>
+        /// The slots marked dirty.
+        /// </summary>
         HashSet<int> DirtySlots { get; }
 
         /// <summary>
@@ -79,7 +87,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="skipSlots"></param>
         /// <returns></returns>
-        WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<IItemSlot> skipSlots = null);
+        WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<ItemSlot> skipSlots = null);
 
         /// <summary>
         /// Will place quantity items from the source slot into the best fitting slot of this inventory. Might fill several of the inventories slots.
@@ -87,7 +95,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="quantity"></param>
         /// <returns></returns>
-        //bool TryPutItemStack(IItemSlot sourceSlot, int quantity);
+        //bool TryPutItemStack(ItemSlot sourceSlot, int quantity);
 
 
         /// <summary>
@@ -97,7 +105,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="op"></param>
         /// <returns></returns>
-        object ActivateSlot(int slotId, IItemSlot sourceSlot, ref ItemStackMoveOperation op);
+        object ActivateSlot(int slotId, ItemSlot sourceSlot, ref ItemStackMoveOperation op);
 
         /// <summary>
         /// Attempts to flip the contents of both slots
@@ -105,14 +113,14 @@ namespace Vintagestory.API.Common
         /// <param name="targetSlotId"></param>
         /// <param name="sourceSlot"></param>
         /// <returns></returns>
-        object TryFlipItems(int targetSlotId, IItemSlot sourceSlot);
+        object TryFlipItems(int targetSlotId, ItemSlot sourceSlot);
 
         /// <summary>
         /// Will return -1 if the slot is not found in this inventory
         /// </summary>
         /// <param name="slot"></param>
         /// <returns></returns>
-        int GetSlotId(IItemSlot slot);
+        int GetSlotId(ItemSlot slot);
 
         /// <summary>
         /// Server Side: Will resent the slot contents to the client and mark them dirty there as well

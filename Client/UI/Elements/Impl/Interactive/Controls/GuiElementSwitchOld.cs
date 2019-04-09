@@ -20,7 +20,7 @@ namespace Vintagestory.API.Client
 
         public GuiElementSwitchOld(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds) : base(capi, "", null, bounds)
         {
-            Font = CairoFont.SmallDialogText().WithFontSize((float)GuiStyle.SubNormalFontSize);
+            Font = CairoFont.WhiteSmallText().WithFontSize((float)GuiStyle.SubNormalFontSize);
 
             handler = OnToggled;
 

@@ -14,7 +14,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Do run default and subsequent or previous behaviors
         /// </summary>
-        NotHandled,
+        PassThrough,
         /// <summary>
         /// Do not execute the default behavior, but let subsequent behaviors still execute
         /// </summary>

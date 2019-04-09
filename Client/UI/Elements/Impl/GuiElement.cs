@@ -466,12 +466,12 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="ctx">The context of the shading.</param>
         /// <param name="thickness">The thickness of the line to shade.</param>
-        public void ShadePath(Context ctx, int thickness = 3)
+        public void ShadePath(Context ctx, double thickness = 2)
         {
             ctx.Operator = Operator.Atop;
 
             ctx.SetSourceRGBA(GuiStyle.DialogBorderColor);
-            ctx.LineWidth = 2.0;
+            ctx.LineWidth = thickness;
             ctx.Stroke();
 
             ctx.Operator = Operator.Over;
@@ -488,7 +488,7 @@ namespace Vintagestory.API.Client
         /// <param name="inverse">Whether or not it goes in or out.</param>
         public void EmbossRoundRectangleDialog(Context ctx, double x, double y, double width, double height, bool inverse = false)
         {
-            EmbossRoundRectangle(ctx, x, y, width, height, GuiStyle.DialogBGRadius, 4, 0.5f, 1.5f, 0.5f, inverse, 0.25f);
+            EmbossRoundRectangle(ctx, x, y, width, height, GuiStyle.DialogBGRadius, 4, 0.5f, 0.5f, inverse, 0.25f);
         }
 
         /// <summary>
@@ -504,7 +504,7 @@ namespace Vintagestory.API.Client
         /// <param name="radius">The radius of the corner of the rectangle.</param>
         public void EmbossRoundRectangleElement(Context ctx, double x, double y, double width, double height, bool inverse = false, int depth = 2, int radius = -1)
         {
-            EmbossRoundRectangle(ctx, x, y, width, height, radius == - 1 ? GuiStyle.ElementBGRadius : radius, depth, 0.7f, 2.0f, 0.5f, inverse, 0.25f);
+            EmbossRoundRectangle(ctx, x, y, width, height, radius == - 1 ? GuiStyle.ElementBGRadius : radius, depth, 0.7f, 0.8f, inverse, 0.25f);
         }
 
         /// <summary>
@@ -517,7 +517,7 @@ namespace Vintagestory.API.Client
         /// <param name="radius">The radius of the corner of the rectangle. (default: -1)</param>
         public void EmbossRoundRectangleElement(Context ctx, ElementBounds bounds, bool inverse = false, int depth = 2, int radius = -1)
         {
-            EmbossRoundRectangle(ctx, bounds.drawX, bounds.drawY, bounds.InnerWidth, bounds.InnerHeight, radius, depth, 0.5f, 1.2f, 0.8f, inverse, 0.25f);
+            EmbossRoundRectangle(ctx, bounds.drawX, bounds.drawY, bounds.InnerWidth, bounds.InnerHeight, radius, depth, 0.7f, 0.8f, inverse, 0.25f);
         }
 
         /// <summary>
@@ -529,18 +529,18 @@ namespace Vintagestory.API.Client
         /// <param name="width">The width of the rectangle</param>
         /// <param name="height">The height of the rectangle.</param>
         /// <param name="radius">The radius of the corner of the rectangle.</param>
-        /// <param name="thickness">The thickness of the emboss. (Default: 3)</param>
+        /// <param name="depth">The thickness of the emboss. (Default: 3)</param>
         /// <param name="intensity">The intensity of the emboss. (Default: 0.4f)</param>
         /// <param name="fallOff">How quickly the effect falls off around corners (default: 2)</param>
         /// <param name="lightDarkBalance">How skewed is the light/dark balance (Default: 1)</param>
         /// <param name="inverse">Whether or not it goes in or out. (Default: false)</param>
         /// <param name="alphaOffset">The offset for the alpha part of the emboss. (Default: 0)</param>
-        protected void EmbossRoundRectangle(Context ctx, double x, double y, double width, double height, double radius, int thickness = 3, float intensity = 0.4f, float fallOff = 2, float lightDarkBalance = 1f, bool inverse = false, float alphaOffset = 0)
+        protected void EmbossRoundRectangle(Context ctx, double x, double y, double width, double height, double radius, int depth = 3, float intensity = 0.4f, float lightDarkBalance = 1f, bool inverse = false, float alphaOffset = 0)
         {
             double degrees = Math.PI / 180.0;
 
-            int i = thickness;
-            int linewidth = 1;
+            int i = depth;
+            int linewidth = 0;
             ctx.Antialias = Antialias.Best;
 
             int light = 255;
@@ -555,19 +555,17 @@ namespace Vintagestory.API.Client
 
             while (i-- > 0)
             {
-                x += 0.5f;
-                y += 0.5f;
-                width -= 1;
-                height -= 1;
-
+                
                 // Light part
                 ctx.NewPath();
 
                 ctx.Arc(x + radius, y + height - radius, radius, 135 * degrees, 180 * degrees);
                 ctx.Arc(x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
                 ctx.Arc(x + width - radius, y + radius, radius, -90 * degrees, -45 * degrees);
-                
-                double alpha = Math.Min(1, lightDarkBalance * intensity / Math.Pow(fallOff, linewidth - 1)) - alphaOffset;
+
+                float fac = intensity * (depth - linewidth) / depth;
+
+                double alpha = Math.Min(1, lightDarkBalance * fac) - alphaOffset;
                 ctx.SetSourceRGBA(light, light, light, alpha);
                 
                 ctx.LineWidth = 1;
@@ -579,13 +577,19 @@ namespace Vintagestory.API.Client
                 ctx.Arc(x + width - radius, y + height - radius, radius, 0 * degrees, 90 * degrees);
                 ctx.Arc(x + radius, y + height - radius, radius, 90 * degrees, 135 * degrees);
 
-                alpha = Math.Min(1, (2 - lightDarkBalance) * intensity / Math.Pow(fallOff, linewidth - 1)) - alphaOffset;
+                alpha = Math.Min(1, (2 - lightDarkBalance) * fac) - alphaOffset;
                 ctx.SetSourceRGBA(dark, dark, dark, alpha);
                 ctx.LineWidth = 1;
                 ctx.Stroke();
 
 
                 linewidth++;
+
+                x += 1f;
+                y += 1f;
+                width -= 2;
+                height -= 2;
+
             }
         }
 
@@ -636,12 +640,12 @@ namespace Vintagestory.API.Client
             }
         }
 
-        public virtual bool OnMouseEnterSlot(ICoreClientAPI api, IItemSlot slot)
+        public virtual bool OnMouseEnterSlot(ICoreClientAPI api, ItemSlot slot)
         {
             return false;
         }
 
-        public virtual bool OnMouseLeaveSlot(ICoreClientAPI api, IItemSlot slot)
+        public virtual bool OnMouseLeaveSlot(ICoreClientAPI api, ItemSlot slot)
         {
             return false;
         }
@@ -687,7 +691,7 @@ namespace Vintagestory.API.Client
                 InsideClipElement ? Bounds.ParentBounds.PointInside(posX, posY) : Bounds.PointInside(posX, posY);
         }
 
-        public virtual string MouseOverCursor { get; protected set; } = "normal";
+        public virtual string MouseOverCursor { get; protected set; } = null;
 
         /// <summary>
         /// The compressed version of the outline color as a single int value.

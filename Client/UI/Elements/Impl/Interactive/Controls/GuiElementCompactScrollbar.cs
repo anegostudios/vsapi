@@ -47,14 +47,14 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)scaled(Bounds.InnerWidth - 1) + 1, (int)currentHandleHeight + 1);
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth-1, (int)currentHandleHeight + 1);
             Context ctx = genContext(surface);
 
-            RoundRectangle(ctx, 0, 0, scaled(Bounds.InnerWidth - 1), currentHandleHeight, 2);
+            RoundRectangle(ctx, 0, 0, Bounds.InnerWidth - 1, currentHandleHeight, 2);
             ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor[0], GuiStyle.DialogDefaultBgColor[1], GuiStyle.DialogDefaultBgColor[2], GuiStyle.DialogDefaultBgColor[3]);
             ctx.Fill();
 
-            EmbossRoundRectangleElement(ctx, 0, 0, scaled(Bounds.InnerWidth - 1), currentHandleHeight, false, 2, 2);
+            EmbossRoundRectangleElement(ctx, 0, 0, Bounds.InnerWidth - 1, currentHandleHeight, false, 2, 2);
 
             generateTexture(surface, ref handleTexture);
 
@@ -72,9 +72,9 @@ namespace Vintagestory.API.Client
                 handleTexture.TextureId,
                 (float)(Bounds.renderX + Bounds.absPaddingX + 1),
                 (float)(Bounds.renderY + Bounds.absPaddingY + currentHandlePosition),
-                (float)scaled(Bounds.InnerWidth - 1),
+                (float)Bounds.InnerWidth-1,
                 currentHandleHeight + 1,
-                70
+                200
             );
         }
 

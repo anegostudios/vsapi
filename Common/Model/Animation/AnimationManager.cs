@@ -18,10 +18,19 @@ namespace Vintagestory.API.Common
         protected ICoreAPI api;
         ICoreClientAPI capi;
 
+        /// <summary>
+        /// Are the animations dirty in this AnimationManager?
+        /// </summary>
         public bool AnimationsDirty { get; set; }
 
+        /// <summary>
+        /// The animator for the animation manager.
+        /// </summary>
         public IAnimator Animator { get; set; }
 
+        /// <summary>
+        /// The entity head controller for this animator.
+        /// </summary>
         public EntityHeadController HeadController { get; set; }
 
         /// <summary>
@@ -31,7 +40,9 @@ namespace Vintagestory.API.Common
         Dictionary<string, AnimationMetaData> IAnimationManager.ActiveAnimationsByAnimCode => ActiveAnimationsByAnimCode;
 
         
-
+        /// <summary>
+        /// The enetity attached to this Animation Manager.
+        /// </summary>
         protected Entity entity;
         long listenerId;
         DummyRenderer renderer;
@@ -41,12 +52,15 @@ namespace Vintagestory.API.Common
             
         }
 
-
-        public virtual void Init(ICoreAPI api, Entity entity, Shape entityShape)
+        /// <summary>
+        /// Initializes the Animation Manager.
+        /// </summary>
+        /// <param name="api">The Core API.</param>
+        /// <param name="entity">The entity this manager is attached to.</param>
+        public virtual void Init(ICoreAPI api, Entity entity)
         {
             this.api = api;
             this.entity = entity;
-            entityShape.ResolveAndLoadJoints(HeadController?.HeadElement);
 
             if (api.Side == EnumAppSide.Server)
             {
@@ -110,6 +124,7 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+
         /// <summary>
         /// Stops given animation
         /// </summary>
@@ -139,7 +154,12 @@ namespace Vintagestory.API.Common
         }
 
 
-
+        /// <summary>
+        /// The event fired when the manager recieves the server animations.
+        /// </summary>
+        /// <param name="activeAnimations"></param>
+        /// <param name="activeAnimationsCount"></param>
+        /// <param name="activeAnimationSpeeds"></param>
         public virtual void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
         {
             if (entity.EntityId != (entity.World as IClientWorldAccessor).Player.Entity.EntityId)
@@ -200,16 +220,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-
-
-
-
-
-
-
-
-
-
         /// <summary>
         /// Serializes the slots contents to be stored in the SaveGame
         /// </summary>
@@ -254,16 +264,23 @@ namespace Vintagestory.API.Common
             }
         }
 
-
+        /// <summary>
+        /// The event fired at each server tick.
+        /// </summary>
+        /// <param name="dt"></param>
         public void OnServerTick(float dt)
         {
-            Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
+            Animator?.OnFrame(ActiveAnimationsByAnimCode, dt);
         }
         
+        /// <summary>
+        /// The event fired each time the client ticks.
+        /// </summary>
+        /// <param name="dt"></param>
         public void OnClientTick(float dt)
         {
             //curAnimator.FastMode = !DoRenderHeldItem && !capi.Settings.Bool["highQualityAnimations"];
-            if (capi.IsGamePaused) return;
+            if (capi.IsGamePaused || (!entity.IsRendered && entity.Alive)) return; // Too cpu intensive to run all loaded entities
             
             Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
 
@@ -273,7 +290,9 @@ namespace Vintagestory.API.Common
             }
         }
 
-
+        /// <summary>
+        /// Disposes of the animation manager.
+        /// </summary>
         public void Dispose()
         {
             if (api.Side == EnumAppSide.Server)
@@ -284,6 +303,11 @@ namespace Vintagestory.API.Common
             {
                 (api as ICoreClientAPI).Event.UnregisterRenderer(renderer, EnumRenderStage.Before);
             }
+        }
+
+        public virtual void OnAnimationStopped(string code)
+        {
+            
         }
     }
 }

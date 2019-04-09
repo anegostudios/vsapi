@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Creates a new base recipe type.  
+    /// </summary>
+    /// <typeparam name="T">The resulting recipe type.</typeparam>
     public abstract class RecipeBase<T>
     {
         public CraftingRecipeIngredient Ingredient;

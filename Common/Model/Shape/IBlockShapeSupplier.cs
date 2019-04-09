@@ -7,6 +7,10 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Adds a tesselator to your block
+    /// WARNING: please make sure whatever functions and fields you use with the OnTesselation event are THREAD SAFE!
+    /// </summary>
     public interface IBlockShapeSupplier
     {
         /// <summary>

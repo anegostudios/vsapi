@@ -13,8 +13,14 @@ namespace Vintagestory.API.Common.Entities
 {
     public class EntityProperties
     {
+        /// <summary>
+        /// The entity code in the code.
+        /// </summary>
         public AssetLocation Code;
 
+        /// <summary>
+        /// The classification of the entity.
+        /// </summary>
         public string Class;
 
         /// <summary>
@@ -22,7 +28,14 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EnumHabitat Habitat = EnumHabitat.Land;
 
+        /// <summary>
+        /// The size of the entity's hitbox (default: 0.2f/0.2f)
+        /// </summary>
         public Vec2f HitBoxSize = new Vec2f(0.2f, 0.2f);
+
+        /// <summary>
+        /// The size of the hitbox while the entity is dead.
+        /// </summary>
         public Vec2f DeadHitBoxSize = new Vec2f(0.3f, 0.3f);
 
         /// <summary>
@@ -30,6 +43,10 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public double EyeHeight;
 
+        /// <summary>
+        /// Sets the eye height of the entity.
+        /// </summary>
+        /// <param name="height"></param>
         public void SetEyeHeight(double height)
         {
             this.EyeHeight = height;
@@ -40,6 +57,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public bool CanClimb;
 
+        /// <summary>
+        /// If true the entity can climb anywhere.
+        /// </summary>
         public bool CanClimbAnywhere;
 
         /// <summary>
@@ -49,26 +69,59 @@ namespace Vintagestory.API.Common.Entities
 
         public float ClimbTouchDistance;
 
+        /// <summary>
+        /// Should the model in question rotate if climbing?
+        /// </summary>
         public bool RotateModelOnClimb;
 
+        /// <summary>
+        /// The resistance to being pushed back by an impact.
+        /// </summary>
         public float KnockbackResistance;
 
+        /// <summary>
+        /// The attributes of the entity.
+        /// </summary>
         public JsonObject Attributes;
 
+        /// <summary>
+        /// The client properties of the entity.
+        /// </summary>
         public EntityClientProperties Client;
 
+        /// <summary>
+        /// The server properties of the entity.
+        /// </summary>
         public EntityServerProperties Server;
 
+        /// <summary>
+        /// The sounds that this entity can make.
+        /// </summary>
         public Dictionary<string, AssetLocation> Sounds;
 
+        /// <summary>
+        /// The sounds this entity can make after being resolved.
+        /// </summary>
         public Dictionary<string, AssetLocation[]> ResolvedSounds = new Dictionary<string, AssetLocation[]>();
 
+        /// <summary>
+        /// The chance that an idle sound will play for the entity.
+        /// </summary>
         public float IdleSoundChance = 0.3f;
 
+        /// <summary>
+        /// The sound range for the idle sound in blocks.
+        /// </summary>
         public float IdleSoundRange = 24;
 
+        /// <summary>
+        /// The drops for the entity when they are killed.
+        /// </summary>
         public BlockDropItemStack[] Drops;
 
+        /// <summary>
+        /// The collision box they have.
+        /// </summary>
         public Cuboidf SpawnCollisionBox
         {
             get
@@ -84,6 +137,10 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        /// <summary>
+        /// Creates a copy of this object.
+        /// </summary>
+        /// <returns></returns>
         public EntityProperties Clone()
         {
             BlockDropItemStack[] DropsCopy;
@@ -138,6 +195,11 @@ namespace Vintagestory.API.Common.Entities
             };
         }
 
+        /// <summary>
+        /// Initalizes the properties for the entity.
+        /// </summary>
+        /// <param name="entity">the entity to tie this to.</param>
+        /// <param name="api">The Core API</param>
         public void Initialize(Entity entity, ICoreAPI api)
         {
             if (api.Side.IsClient())
@@ -159,6 +221,10 @@ namespace Vintagestory.API.Common.Entities
             InitSounds(api.Assets);
         }
 
+        /// <summary>
+        /// Initializes the sounds for this entity type.
+        /// </summary>
+        /// <param name="assetManager"></param>
         public void InitSounds(IAssetManager assetManager)
         {
             if (Sounds != null)
@@ -190,6 +256,9 @@ namespace Vintagestory.API.Common.Entities
 
     public abstract class EntitySidedProperties
     {
+        /// <summary>
+        /// The behaviors attached to this entity.
+        /// </summary>
         public List<EntityBehavior> Behaviors = new List<EntityBehavior>();
         internal JsonObject[] BehaviorsAsJsonObj;
 
@@ -216,6 +285,10 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        /// <summary>
+        /// Use this to make a deep copy of these properties.
+        /// </summary>
+        /// <returns></returns>
         public abstract EntitySidedProperties Clone();
     }
 
@@ -248,8 +321,14 @@ namespace Vintagestory.API.Common.Entities
             get { return (Textures == null || Textures.Count == 0) ? null : Textures.First().Value; }
         }
 
+        /// <summary>
+        /// The glow level for the entity.
+        /// </summary>
         public int GlowLevel = 0;
 
+        /// <summary>
+        /// The shape of the entity
+        /// </summary>
         public CompositeShape Shape;
 
         /// <summary>
@@ -259,8 +338,14 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Shape LoadedShape;
 
+        /// <summary>
+        /// The size of the entity (default: 1f)
+        /// </summary>
         public float Size = 1f;
 
+        /// <summary>
+        /// The animations of the entity.
+        /// </summary>
         public AnimationMetaData[] Animations;
 
         public Dictionary<string, AnimationMetaData> AnimationsByMetaCode = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
@@ -270,7 +355,12 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public CompositeTexture FirstTexture { get { return (Textures == null || Textures.Count == 0) ? null : Textures.First().Value; } }
 
-
+        /// <summary>
+        /// Loads the shape of the entity.
+        /// </summary>
+        /// <param name="entityTypeForLogging">The entity to shape</param>
+        /// <param name="api">The Core API</param>
+        /// <returns>The loaded shape.</returns>
         public Shape LoadShape(EntityProperties entityTypeForLogging, ICoreAPI api)
         {
             AssetLocation shapePath;
@@ -329,6 +419,11 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        /// <summary>
+        /// Initializes the client properties.
+        /// </summary>
+        /// <param name="entityTypeCode"></param>
+        /// <param name="world"></param>
         public void Init(AssetLocation entityTypeCode, IWorldAccessor world)
         {
             if (Animations != null)
@@ -382,10 +477,20 @@ namespace Vintagestory.API.Common.Entities
     {
         public EntityServerProperties(JsonObject[] behaviors) : base(behaviors) { }
 
+        /// <summary>
+        /// The attributes of the entity.
+        /// </summary>
         public ITreeAttribute Attributes;
 
+        /// <summary>
+        /// The conditions for spawning the entity.
+        /// </summary>
         public SpawnConditions SpawnConditions;
         
+        /// <summary>
+        /// Makes a copy of this EntiyServerProperties type
+        /// </summary>
+        /// <returns></returns>
         public override EntitySidedProperties Clone()
         {
             return new EntityServerProperties(BehaviorsAsJsonObj.Clone() as JsonObject[])

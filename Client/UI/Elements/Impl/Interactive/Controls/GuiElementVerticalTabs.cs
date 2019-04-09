@@ -7,13 +7,14 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementVerticalTabs : GuiElementTextControl
     {
-        API.Common.Action<int> handler;
+        API.Common.Action<int, GuiTab> handler;
 
         internal GuiTab[] tabs;
 
         LoadedTexture baseTexture;
         LoadedTexture[] hoverTextures;
         int[] tabWidths;
+        CairoFont selectedFont;
 
         public int activeElement = 0;
 
@@ -21,6 +22,7 @@ namespace Vintagestory.API.Client
         double unscaledTabHeight = 25;
 
         double tabHeight;
+        double textOffsetY;
 
         public override bool Focusable { get { return true; } }
 
@@ -32,8 +34,9 @@ namespace Vintagestory.API.Client
         /// <param name="font">The font for the group of them all.</param>
         /// <param name="bounds">The bounds of the tabs.</param>
         /// <param name="onTabClicked">The event fired when the tab is clicked.</param>
-        public GuiElementVerticalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, ElementBounds bounds, API.Common.Action<int> onTabClicked) : base(capi, "", font, bounds)
+        public GuiElementVerticalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, CairoFont selectedFont, ElementBounds bounds, API.Common.Action<int, GuiTab> onTabClicked) : base(capi, "", font, bounds)
         {
+            this.selectedFont = selectedFont;
             this.tabs = tabs;
             handler = onTabClicked;
             hoverTextures = new LoadedTexture[tabs.Length];
@@ -50,9 +53,8 @@ namespace Vintagestory.API.Client
 
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth+1, (int)Bounds.InnerHeight+1);
             Context ctx = new Context(surface);
-
-
-            double radius = scaled(3);
+            
+            double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
             double padding = scaled(3);
 
@@ -62,16 +64,25 @@ namespace Vintagestory.API.Client
             double ypos = 0; // bounds.drawY;
             
 
-            Font.Color[3] = 0.75;
+            Font.Color[3] = 0.85;
             Font.SetupContext(ctx);
+			textOffsetY = (tabHeight - Font.GetFontExtents().Height) / 2;
 
+            double maxWidth = 0;
+            for (int i = 0; i < tabs.Length; i++)
+            {
+                double w = (int)(ctx.TextExtents(tabs[i].Name).Width + 1 + 2 * padding);
+
+                maxWidth = Math.Max(w, maxWidth);
+            }
 
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                tabWidths[i] = (int)(ctx.TextExtents(tabs[i].name).Width + 1 + 2 * padding);
+                tabWidths[i] = (int)maxWidth+1;// (int)(ctx.TextExtents(tabs[i].name).Width + 1 + 2 * padding);
 
                 xpos = (int)Bounds.InnerWidth + 1;
+                ypos += tabs[i].PaddingTop;
 
                 ctx.NewPath();
                 ctx.MoveTo(xpos, ypos + tabHeight);
@@ -82,7 +93,7 @@ namespace Vintagestory.API.Client
                 ctx.ClosePath();
 
                 double[] color = GuiStyle.DialogDefaultBgColor;
-                ctx.SetSourceRGBA(color[0], color[1], color[2], color[3] * 0.75);
+                ctx.SetSourceRGBA(color[0], color[1], color[2], color[3]);
 
                 ctx.FillPreserve();
 
@@ -90,7 +101,7 @@ namespace Vintagestory.API.Client
 
                 Font.SetupContext(ctx);
 
-                DrawTextLineAt(ctx, tabs[i].name, xpos - tabWidths[i] + padding, ypos + 2);
+                DrawTextLineAt(ctx, tabs[i].Name, xpos - tabWidths[i] + padding, ypos + textOffsetY);
 
                 ypos += tabHeight + spacing;
             }
@@ -108,7 +119,7 @@ namespace Vintagestory.API.Client
 
         private void ComposeOverlays()
         {
-            double radius = scaled(3);
+            double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
             double padding = scaled(3);
             double width;
@@ -132,7 +143,7 @@ namespace Vintagestory.API.Client
                 ctx.ClosePath();
 
                 double[] color = GuiStyle.DialogDefaultBgColor;
-                ctx.SetSourceRGBA(color[0], color[1], color[2], color[3] * 0.75);
+                ctx.SetSourceRGBA(color[0], color[1], color[2], color[3]);
                 ctx.Fill();
 
                 ctx.NewPath();
@@ -146,9 +157,9 @@ namespace Vintagestory.API.Client
                 ShadePath(ctx, 2);
 
 
-                Font.SetupContext(ctx);
+                selectedFont.SetupContext(ctx);
 
-                DrawTextLineAt(ctx, tabs[i].name, padding+3, 2);
+                DrawTextLineAt(ctx, tabs[i].Name, padding+3, textOffsetY);
 
 
                 generateTexture(surface, ref hoverTextures[i]);
@@ -172,6 +183,8 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
+                ypos += tabs[i].PaddingTop;
+
                 if (i == activeElement || (mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
                 {
                     api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i], (int)tabHeight + 2);
@@ -211,8 +224,10 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
+                ypos += tabs[i].PaddingTop;
+
                 bool inx = mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend;
-                bool iny = mouseRelY > i * (int)(tabHeight + spacing) && mouseRelY < (i + 1) * (int)(tabHeight + spacing);
+                bool iny = mouseRelY > ypos && mouseRelY < ypos + tabHeight + spacing;
 
                 if (inx && iny)
                 {
@@ -227,22 +242,22 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Switches to a different tab.
         /// </summary>
-        /// <param name="selectedIndex">The tab to switch to.</param>
-        public void SetValue(int selectedIndex)
+        /// <param name="index">The tab to switch to.</param>
+        public void SetValue(int index)
         {
-            handler(tabs[selectedIndex].index);
-            activeElement = selectedIndex;
+            handler(index, tabs[index]);
+            activeElement = index;
         }
 
         /// <summary>
         /// Switches to a different tab.
         /// </summary>
-        /// <param name="selectedIndex">The tab to switch to.</param>
+        /// <param name="index">The tab to switch to.</param>
         /// <param name="triggerHandler">Whether or not the handler triggers.</param>
-        public void SetValue(int selectedIndex, bool triggerHandler)
+        public void SetValue(int index, bool triggerHandler)
         {
-            if (triggerHandler) handler(tabs[selectedIndex].index);
-            activeElement = selectedIndex;
+            if (triggerHandler) handler(index, tabs[index]);
+            activeElement = index;
         }
 
         public override void Dispose()
@@ -263,12 +278,13 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The boundaries of the tab group.</param>
         /// <param name="OnTabClicked">The event fired when any of the tabs are clicked.</param>
         /// <param name="key">The name of this tab group.</param>
-        public static GuiComposer AddVerticalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, API.Common.Action<int> OnTabClicked, string key = null)
+        public static GuiComposer AddVerticalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, API.Common.Action<int, GuiTab> OnTabClicked, string key = null)
         {
             if (!composer.composed)
             {
                 CairoFont font = CairoFont.WhiteDetailText().WithFontSize(17);
-                composer.AddInteractiveElement(new GuiElementVerticalTabs(composer.Api, tabs, font, bounds, OnTabClicked), key);
+                CairoFont selectedFont = CairoFont.WhiteDetailText().WithFontSize(17).WithColor(GuiStyle.ActiveButtonTextColor);
+                composer.AddInteractiveElement(new GuiElementVerticalTabs(composer.Api, tabs, font, selectedFont, bounds, OnTabClicked), key);
             }
 
             return composer;

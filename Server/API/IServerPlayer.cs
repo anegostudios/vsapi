@@ -16,6 +16,11 @@ namespace Vintagestory.API.Server
     public interface IServerPlayer : IPlayer
     {
         /// <summary>
+        /// The "radius" of chunks that the player already received. If set to 0, the server will recheck all nearby chunks if they have been sent or not and send them when necessary
+        /// </summary>
+        int CurrentChunkSentRadius { get; set; }
+
+        /// <summary>
         /// Retrieves the current connection state of the client
         /// </summary>
         EnumClientState ConnectionState { get; }
@@ -64,9 +69,15 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name = "message">Message displayed to the player</param>
         void Disconnect(string message);
+
+        /// <summary>
+        /// Shows a vibrating red text in the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingameerror-' (which is recommended so that the errors are translated to the users local language)
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="message"></param>
+        /// <param name="langparams"> If text is null, these are the arguments passed into the Language translation tool</param>
+        void SendIngameError(string code, string message = null, params object[] langparams);
         
-
-
 
         /// <summary>
         /// Sends a chat message to this player to given groupId. You can use GlobalConstants.GeneralChatGroup as groupId to send it to the players general chat.
