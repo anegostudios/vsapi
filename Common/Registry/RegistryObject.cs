@@ -17,6 +17,11 @@ namespace Vintagestory.API.Common
         public AssetLocation Code = null;
 
         /// <summary>
+        /// Variant values as resolved from blocktype/itemtype or entitytype
+        /// </summary>
+        public Dictionary<string, string> Variant = new Dictionary<string, string>();
+
+        /// <summary>
         /// The class handeling the object
         /// </summary>
         public string Class;

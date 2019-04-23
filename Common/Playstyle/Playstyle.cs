@@ -12,6 +12,8 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public string Code;
         [JsonProperty]
+        public string LangCode;
+        [JsonProperty]
         public double ListOrder;
         [JsonProperty]
         public string[] Mods;

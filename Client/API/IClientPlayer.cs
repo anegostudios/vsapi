@@ -29,5 +29,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="message"></param>
         void ShowChatNotification(string message);
+
+        /// <summary>
+        /// Tells the engine to run a first person animtion
+        /// </summary>
+        /// <param name="anim"></param>
+        void TriggerFpAnimation(EnumHandInteract anim);
     }
 }

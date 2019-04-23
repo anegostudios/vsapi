@@ -63,7 +63,7 @@ namespace Vintagestory.API.Client
             ElementBounds dropDownBounds = ElementBounds.Fixed(0, 0, 100, 25);
             this.Bounds.WithChild(dropDownBounds);
 
-            listMenu = new GuiElementListMenu(capi, new string[] { "auto", "manual" }, new string[] { "Fixed", "Movable" }, 0, onSelectionChanged, dropDownBounds, false)
+            listMenu = new GuiElementListMenu(capi, new string[] { "auto", "manual" }, new string[] { Lang.Get("Fixed"), Lang.Get("Movable") }, 0, onSelectionChanged, dropDownBounds, false)
             {
                 HoveredIndex = 0
             };

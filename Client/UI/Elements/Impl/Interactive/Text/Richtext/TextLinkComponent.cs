@@ -143,6 +143,13 @@ namespace Vintagestory.API.Client
                         }
                         else
                         {
+                            string[] parts = Href.Split(new string[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
+                            if (parts.Length > 0 && api.LinkProtocols != null && api.LinkProtocols.ContainsKey(parts[0]))
+                            {
+                                api.LinkProtocols[parts[0]].Invoke(this);
+                                return;
+                            }
+
                             System.Diagnostics.Process.Start(Href);
                         }
                     } else

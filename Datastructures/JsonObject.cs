@@ -44,7 +44,7 @@ namespace Vintagestory.API
             get { return token != null; }
         }
 
-        public JToken Token { get { return token; } }
+        public JToken Token { get { return token; } set { token = value; } }
 
         /// <summary>
         /// True if the token has an element with given key
@@ -95,23 +95,35 @@ namespace Vintagestory.API
             return GetValue<string>(defaultValue);
         }
 
+        [Obsolete("Use AsArray<string>() instead")]
+        public string[] AsStringArray(string[] defaultValue = null)
+        {
+            return AsArray<string>(defaultValue);
+        }
+
+        [Obsolete("Use AsArray<float>() instead")]
+        public float[] AsFloatArray(float[] defaultValue = null)
+        {
+            return AsArray<float>(defaultValue);
+        }
+
         /// <summary>
-        /// Turn the token into a string array
+        /// Turn the token into an array
         /// </summary>
         /// <param name="defaultValue">If the conversion fails, this value is used instead</param>
         /// <returns></returns>
-        public string[] AsStringArray(string[] defaultValue = null)
+        public T[] AsArray<T>(T[] defaultValue = null)
         {
             if (!(token is JArray)) return defaultValue;
             JArray arr = (JArray)token;
 
-            string[] objs = new string[arr.Count];
+            T[] objs = new T[arr.Count];
 
             for (int i = 0; i < objs.Length; i++)
             {
                 JToken token = arr[i];
                 if (token is JValue) {
-                    objs[i] = token.ToObject<string>();
+                    objs[i] = token.ToObject<T>();
                 } else
                 {
                     return defaultValue;
@@ -121,35 +133,7 @@ namespace Vintagestory.API
 
             return objs;
         }
-
-        /// <summary>
-        /// Turn the token into a float array
-        /// </summary>
-        /// <param name="defaultValue">If the conversion fails, this value is used instead</param>
-        /// <returns></returns>
-        public float[] AsFloatArray(float[] defaultValue = null)
-        {
-            if (!(token is JArray)) return defaultValue;
-            JArray arr = (JArray)token;
-
-            float[] objs = new float[arr.Count];
-
-            for (int i = 0; i < objs.Length; i++)
-            {
-                JToken token = arr[i];
-                if (token is JValue)
-                {
-                    objs[i] = token.ToObject<float>();
-                }
-                else
-                {
-                    return defaultValue;
-                }
-
-            }
-
-            return objs;
-        }
+        
 
         /// <summary>
         /// Turn the token into a boolean
@@ -212,7 +196,7 @@ namespace Vintagestory.API
             return defaultValue;
         }
 
-
+        
         /// <summary>
         /// Turn the token into a double
         /// </summary>

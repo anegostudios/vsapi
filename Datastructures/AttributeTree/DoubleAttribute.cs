@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -27,6 +28,16 @@ namespace Vintagestory.API.Datastructures
         public int GetAttributeId()
         {
             return 3;
+        }
+
+        public override string ToJsonToken()
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
+        }
+
+        public override string ToString()
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

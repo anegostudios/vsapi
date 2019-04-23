@@ -21,12 +21,12 @@ namespace Vintagestory.API.Client
     public interface IInputAPI
     {
         /// <summary>
-        /// The current keyboard key states
+        /// The current keyboard key states, use the <see cref="GlKeys"/> enum to get the index of an array key.
         /// </summary>
         bool[] KeyboardKeyStateRaw { get; }
 
         /// <summary>
-        /// The current keyboard key states that were not handled by a dialog or other client systems (exception: hotkeys)
+        /// The current keyboard key states that were not handled by a dialog or other client systems (exception: hotkeys), use the <see cref="GlKeys"/> enum to get the array index of a key.
         /// </summary>
         bool[] KeyboardKeyState { get; }
 

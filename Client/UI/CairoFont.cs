@@ -199,7 +199,7 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Sets up the context.  THIS MUST BE RAN IN THE MAIN THREAD! NOT THREAD SAFE!
+        /// Sets up the context. Must be executed in the main thread, as it is not thread safe.
         /// </summary>
         /// <param name="ctx">The context to set up the CairoFont with.</param>
         public void SetupContext(Context ctx)

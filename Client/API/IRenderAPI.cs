@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -10,6 +11,11 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface IRenderAPI
     {
+        /// <summary>
+        /// List of all loaded frame buffers. To get the god rays frame buffer for exampple, do <code>Framebuffers[(int)EnumFrameBuffer.GodRays]</code>
+        /// </summary>
+        List<FrameBufferRef> FrameBuffers { get; }
+
         /// <summary>
         /// A number of default shader uniforms
         /// </summary>
@@ -275,7 +281,7 @@ namespace Vintagestory.API.Client
         /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
         /// <param name="clampMode">The current clamp mode</param>
         /// <returns>The GLID for the resulting texture.</returns>
-        [Obsolete("Use LoadOrUpdateTextureFromBgra(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture); instead. This method cannot warn you of memor leaks when the texture is not properly disposed.")]
+        [Obsolete("Use LoadOrUpdateTextureFromBgra(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture); instead. This method cannot warn you of memory leaks when the texture is not properly disposed.")]
         int LoadTextureFromBgra(int[] bgraPixels, int width, int height, bool linearMag, int clampMode);
 
         /// <summary>
@@ -287,7 +293,7 @@ namespace Vintagestory.API.Client
         /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
         /// <param name="clampMode">The current clamp mode</param>
         /// <returns>The OpenGL Identifier for the resulting texture.</returns>
-        [Obsolete("Use LoadOrUpdateTextureFromRgba(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture); instead. This method cannot warn you of memor leaks when the texture is not properly disposed.")]
+        [Obsolete("Use LoadOrUpdateTextureFromRgba(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture); instead. This method cannot warn you of memory leaks when the texture is not properly disposed.")]
         int LoadTextureFromRgba(int[] rgbaPixels, int width, int height, bool linearMag, int clampMode);
 
 
@@ -297,8 +303,8 @@ namespace Vintagestory.API.Client
         /// <param name="bgraPixels">The pixel array</param>
         /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
         /// <param name="clampMode">The current clamp mode</param>
-        /// <param name="intoTexture">The target texture space it should load the pixels into. Must have width/height set accordingly</param>
-        /// <returns>The GLID for the resulting texture.</returns>
+        /// <param name="intoTexture">The target texture space it should load the pixels into. Must have width/height set accordingly. Will set the opengl textureid upon successful load</param>
+        /// <returns></returns>
         void LoadOrUpdateTextureFromBgra(int[] bgraPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture);
 
         /// <summary>
@@ -307,8 +313,8 @@ namespace Vintagestory.API.Client
         /// <param name="rgbaPixels">The pixel array</param>
         /// <param name="linearMag">Enable/Disable Linear rendering or use Nearest rendering.</param>
         /// <param name="clampMode">The current clamp mode</param>
-        /// <param name="intoTexture">The target texture space it should load the pixels into. Must have width/height set accordingly</param>
-        /// <returns>The OpenGL Identifier for the resulting texture.</returns>
+        /// <param name="intoTexture">The target texture space it should load the pixels into. Must have width/height set accordingly. Will set the opengl textureid upon successful load.</param>
+        /// <returns></returns>
         void LoadOrUpdateTextureFromRgba(int[] rgbaPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture);
 
 

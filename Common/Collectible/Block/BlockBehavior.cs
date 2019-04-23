@@ -1,4 +1,5 @@
 ﻿using System;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
@@ -379,6 +380,12 @@ namespace Vintagestory.API.Common
         public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
+        }
+
+        public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return new WorldInteraction[0];
         }
     }
 }

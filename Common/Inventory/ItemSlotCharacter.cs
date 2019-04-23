@@ -18,7 +18,7 @@ namespace Vintagestory.API.Common
 
         Neck = 6,
         Emblem = 7,
-        Ring = 8,
+        Face = 8,
         Arm = 10,
         Hand = 5,
         Waist = 9,

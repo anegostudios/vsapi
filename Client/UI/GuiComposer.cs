@@ -337,8 +337,7 @@ namespace Vintagestory.API.Client
                 interactiveElementsInDrawOrder.Insert(insertPos, element);
             }
 
-            Api.Gui.LoadOrUpdateCairoTexture(surface, true, ref staticElementsTexture);
-            
+            Api.Gui.LoadOrUpdateCairoTexture(surface, true, ref staticElementsTexture);            
 
             ctx.Dispose();
             surface.Dispose();

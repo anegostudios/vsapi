@@ -33,7 +33,6 @@ namespace Vintagestory.API.Common
             ItemStack SecondaryIngredient = null;
             List<string> OtherIngredients = new List<string>();
             List<string> MashedNames = new List<string>();
-            List<string> SprinkledNames = new List<string>();
             List<string> GarnishedNames = new List<string>();
             List<string> grainNames = new List<string>();
             string mainIngredients;
@@ -65,7 +64,7 @@ namespace Vintagestory.API.Common
                             }
                             else
                             {
-                                OtherIngredients.Add(ingredientName(val.Key));
+                                OtherIngredients.Add(ingredientName(val.Key, true));
                             }
 
                         }
@@ -100,7 +99,7 @@ namespace Vintagestory.API.Common
                                 continue;
                             }
 
-                            MashedNames.Add(ingredientName(val.Key));
+                            MashedNames.Add(ingredientName(val.Key, true));
 
                         }
                         break;
@@ -125,7 +124,7 @@ namespace Vintagestory.API.Common
                                 else if (SecondaryIngredient == null)
                                     SecondaryIngredient = val.Key;
                                 else
-                                    OtherIngredients.Add(ingredientName(val.Key));
+                                    OtherIngredients.Add(ingredientName(val.Key, true));
 
                                 max += val.Value;
 
@@ -137,7 +136,7 @@ namespace Vintagestory.API.Common
                                 continue;
                             }
 
-                            OtherIngredients.Add(ingredientName(val.Key));
+                            OtherIngredients.Add(ingredientName(val.Key, true));
                         }
 
                         recipeCode = "stew";
@@ -162,13 +161,13 @@ namespace Vintagestory.API.Common
                                 else if (SecondaryIngredient == null)
                                     SecondaryIngredient = val.Key;
                                 else
-                                    GarnishedNames.Add(ingredientName(val.Key));
+                                    GarnishedNames.Add(ingredientName(val.Key, true));
 
                                 max += val.Value;
 
                                 continue;
                             }
-                            GarnishedNames.Add(ingredientName(val.Key));
+                            GarnishedNames.Add(ingredientName(val.Key, true));
 
                         }
                         recipeCode = "stew";
@@ -202,7 +201,7 @@ namespace Vintagestory.API.Common
 
             if (SecondaryIngredient != null)
             {
-                mainIngredients = $"{getMainIngredientName(PrimaryIngredient, recipeCode)}-{getMainIngredientName(SecondaryIngredient, recipeCode, true)}";
+                mainIngredients = Lang.Get("multi-main-ingredients-format", getMainIngredientName(PrimaryIngredient, recipeCode), getMainIngredientName(PrimaryIngredient, recipeCode, true));
             }
             else
                 mainIngredients = getMainIngredientName(PrimaryIngredient, recipeCode);
@@ -255,9 +254,14 @@ namespace Vintagestory.API.Common
             return EnumFoodCategory.Dairy;
         }
 
-        private string ingredientName(ItemStack stack)
+        private string ingredientName(ItemStack stack, bool InsturmentalCase = false)
         {
-            string code = stack.Collectible.Code?.Domain + AssetLocation.LocationSeparator + "recipeingredient-" + stack.Class.ToString().ToLowerInvariant() + "-" + stack.Collectible.Code?.Path;
+            string code;
+
+            code = stack.Collectible.Code?.Domain + AssetLocation.LocationSeparator + "recipeingredient-" + stack.Class.ToString().ToLowerInvariant() + "-" + stack.Collectible.Code?.Path;
+
+            if (InsturmentalCase)
+                code += "-insturmentalcase";
 
             return Lang.GetMatching(code);
         }

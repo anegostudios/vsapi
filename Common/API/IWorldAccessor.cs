@@ -139,6 +139,11 @@ namespace Vintagestory.API.Common
         long ElapsedMilliseconds { get; }
 
         /// <summary>
+        /// List of all loaded blocks and items without placeholders
+        /// </summary>
+        CollectibleObject[] Collectibles { get; }
+
+        /// <summary>
         /// List of all loaded blocks. Some may be null or placeholders (then block.code is null).
         /// </summary>
         Block[] Blocks { get; }
@@ -506,7 +511,6 @@ namespace Vintagestory.API.Common
         /// <param name="millisecondDelay"></param>
         /// <returns>listenerId</returns>
         long RegisterCallback(Action<IWorldAccessor, BlockPos, float> OnTimePassed, BlockPos pos, int millisecondDelay);
-
 
         /// <summary>
         /// Returns true if given client has a privilege. Always returns true on the client.

@@ -102,6 +102,8 @@ namespace Vintagestory.API.Common
         /// Loads the meta information for each block in the schematic.
         /// </summary>
         /// <param name="blockAccessor"></param>
+        /// <param name="worldForResolve"></param>
+        /// <param name="fileNameForLogging"></param>
         public void LoadMetaInformationAndValidate(IBlockAccessor blockAccessor, IWorldAccessor worldForResolve, string fileNameForLogging)
         {
             BlockPos curPos = new BlockPos();

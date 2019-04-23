@@ -135,6 +135,17 @@ namespace Vintagestory.API.Datastructures
             }
         }
 
+        public virtual void FromBytes(byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                using (BinaryReader reader = new BinaryReader(ms))
+                {
+                    FromBytes(reader);
+                }
+            }
+        }
+
 
         public virtual void ToBytes(BinaryWriter stream)
         {
@@ -553,7 +564,7 @@ namespace Vintagestory.API.Datastructures
                 if (i > 0) sb.Append(", ");
                 i++;
 
-                sb.Append(val.Key + ": " + val.Value.ToJsonToken());
+                sb.Append("\"" + val.Key + "\": " + val.Value.ToJsonToken());
             }
 
             sb.Append(" }");

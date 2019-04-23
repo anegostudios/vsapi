@@ -1050,7 +1050,7 @@ namespace Vintagestory.API.Common
                 ITreeAttribute backPackTree = stack.Attributes.GetTreeAttribute("backpack");
                 if (backPackTree != null)
                 {
-                    dsc.AppendLine(Lang.Get("Contents: "));
+                    bool didPrint = false;
 
                     ITreeAttribute slotsTree = backPackTree.GetTreeAttribute("slots");
 
@@ -1060,9 +1060,19 @@ namespace Vintagestory.API.Common
                         
                         if (cstack != null && cstack.StackSize > 0)
                         {
+                            if (!didPrint)
+                            {
+                                dsc.AppendLine(Lang.Get("Contents: "));
+                                didPrint = true;
+                            }
                             cstack.ResolveBlockOrItem(world);
                             dsc.AppendLine("- " + cstack.StackSize + "x " + cstack.GetName());
                         }
+                    }
+
+                    if (!didPrint)
+                    {
+                        dsc.AppendLine(Lang.Get("Empty"));
                     }
 
                 }
@@ -1139,6 +1149,51 @@ namespace Vintagestory.API.Common
         }
 
 
+        public virtual List<ItemStack> GetHandBookStacks(ICoreClientAPI capi)
+        {
+            if (Code == null) return null;
+
+            bool inCreativeTab = CreativeInventoryTabs != null && CreativeInventoryTabs.Length > 0;
+            bool inCreativeTabStack = CreativeInventoryStacks != null && CreativeInventoryStacks.Length > 0;
+            bool explicitlyIncluded = Attributes?["handbook"]?["include"].AsBool() == true;
+            bool explicitlyExcluded = Attributes?["handbook"]?["exclude"].AsBool() == true;
+
+            if (explicitlyExcluded) return null;
+            if (!explicitlyIncluded && !inCreativeTab && !inCreativeTabStack) return null;
+
+            List<ItemStack> stacks = new List<ItemStack>();
+
+            if (inCreativeTabStack)
+            {
+                for (int i = 0; i < CreativeInventoryStacks.Length; i++)
+                {
+                    for (int j = 0; j < CreativeInventoryStacks[i].Stacks.Length; j++)
+                    {
+                        ItemStack stack = CreativeInventoryStacks[i].Stacks[j].ResolvedItemstack;
+                        stack.ResolveBlockOrItem(capi.World);
+
+                        stack = stack.Clone();
+                        stack.StackSize = stack.Collectible.MaxStackSize;
+
+                        if (!stacks.Any((stack1) => stack1.Equals(stack)))
+                        {
+                            stacks.Add(stack);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ItemStack stack = new ItemStack(this);
+                stack.StackSize = stack.Collectible.MaxStackSize;
+
+                stacks.Add(stack);
+            }
+
+            return stacks;
+        }
+
+        
 
         /// <summary>
         /// Detailed information on this block/item to be displayed in the handbook
@@ -1148,7 +1203,7 @@ namespace Vintagestory.API.Common
         /// <param name="allStacks">An itemstack for every block and item that should be considered during information display</param>
         /// <param name="openDetailPageFor">Callback when someone clicks a displayed itemstack</param>
         /// <returns></returns>
-        public virtual RichTextComponentBase[] GetHandbookInfo(ItemStack stack, ICoreClientAPI capi, ItemStack[] allStacks, Action<ItemStack> openDetailPageFor)
+        public virtual RichTextComponentBase[] GetHandbookInfo(ItemStack stack, ICoreClientAPI capi, ItemStack[] allStacks, Action<string> openDetailPageFor)
         {
             List<RichTextComponentBase> components = new List<RichTextComponentBase>();
 
@@ -1173,7 +1228,7 @@ namespace Vintagestory.API.Common
                     while (drops.Count > 0)
                     {
                         ItemStack rstack = drops.First().Value;
-                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, drops, 40, EnumFloat.Inline, openDetailPageFor);
+                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, drops, 40, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible)));
                         components.Add(comp);
                     }
 
@@ -1236,7 +1291,7 @@ namespace Vintagestory.API.Common
                 while (breakBlocks.Count > 0)
                 {
                     ItemStack rstack = breakBlocks.First().Value;
-                    SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, breakBlocks, 40, EnumFloat.Inline, openDetailPageFor);
+                    SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, breakBlocks, 40, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible)));
                     components.Add(comp);
                 }
                 haveText = true;
@@ -1251,6 +1306,78 @@ namespace Vintagestory.API.Common
                 components.Add(new RichTextComponent(capi, Lang.Get(customFoundIn), CairoFont.WhiteSmallText()));
                 haveText = true;
             }
+
+
+            if (Attributes?["hostRockFor"].Exists == true)
+            {
+                ushort[] blockids = Attributes?["hostRockFor"].AsArray<ushort>();
+
+                OrderedDictionary<string, List<ItemStack>> blocks = new OrderedDictionary<string, List<ItemStack>>();
+
+                for (int i = 0; i < blockids.Length; i++)
+                {
+                    Block block = api.World.Blocks[blockids[i]];
+
+                    string key = block.Code.ToString();
+                    if (block.Attributes?["handbook"]["groupBy"].Exists == true)
+                    {
+                        key = block.Attributes["handbook"]["groupBy"].AsArray<string>()[0];
+                    }
+
+                    if (!blocks.ContainsKey(key))
+                    {
+                        blocks[key] = new List<ItemStack>();
+                    }
+
+                    blocks[key].Add(new ItemStack(block));
+                }
+
+                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Host rock for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+
+                foreach (var val in blocks)
+                {
+                    components.Add(new SlideshowItemstackTextComponent(capi, val.Value.ToArray(), 40, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible))));
+                }
+
+                haveText = true;
+            }
+
+
+            if (Attributes?["hostRock"].Exists == true)
+            {
+                ushort[] blockids = Attributes?["hostRock"].AsArray<ushort>();
+
+                OrderedDictionary<string, List<ItemStack>> blocks = new OrderedDictionary<string, List<ItemStack>>();
+
+                for (int i = 0; i < blockids.Length; i++)
+                {
+                    Block block = api.World.Blocks[blockids[i]];
+
+                    string key = block.Code.ToString();
+                    if (block.Attributes?["handbook"]["groupBy"].Exists == true)
+                    {
+                        key = block.Attributes["handbook"]["groupBy"].AsArray<string>()[0];
+                    }
+
+                    if (!blocks.ContainsKey(key))
+                    {
+                        blocks[key] = new List<ItemStack>();
+                    }
+
+                    blocks[key].Add(new ItemStack(block));
+                }
+
+                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Occurs in host rock") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+
+                foreach (var val in blocks)
+                {
+                    components.Add(new SlideshowItemstackTextComponent(capi, val.Value.ToArray(), 40, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible))));
+                }
+
+                haveText = true;
+            }
+
+
 
             // Alloy for...
 
@@ -1272,9 +1399,17 @@ namespace Vintagestory.API.Common
                 components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Alloy for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 foreach (var val in alloyables)
                 {
-                    components.Add(new ItemstackTextComponent(capi, val.Value, 40, 10, EnumFloat.Left, openDetailPageFor));
+                    components.Add(new ItemstackTextComponent(capi, val.Value, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible))));
                 }
 
+                haveText = true;
+            }
+
+            // Smelts into
+            if (CombustibleProps?.SmeltedStack?.ResolvedItemstack != null && !CombustibleProps.SmeltedStack.ResolvedItemstack.Equals(api.World, stack, GlobalConstants.IgnoredStackAttributes))
+            {
+                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Smelts into") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                components.Add(new ItemstackTextComponent(capi, CombustibleProps.SmeltedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible))));
                 haveText = true;
             }
 
@@ -1331,7 +1466,7 @@ namespace Vintagestory.API.Common
                 while (recipestacks.Count > 0)
                 {
                     ItemStack rstack = recipestacks.First().Value;
-                    SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, recipestacks, 40, EnumFloat.Inline, openDetailPageFor);
+                    SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, recipestacks, 40, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible)));
                     components.Add(comp);
                 }
             }
@@ -1421,7 +1556,7 @@ namespace Vintagestory.API.Common
                     while (bakables.Count > 0)
                     {
                         ItemStack rstack = bakables.First().Value;
-                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, bakables, 40, EnumFloat.Inline, openDetailPageFor);
+                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, bakables, 40, EnumFloat.Inline, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible)));
                         components.Add(comp);
                     }
                 }
@@ -1431,7 +1566,7 @@ namespace Vintagestory.API.Common
                 {
                     if (knappable) components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crafting") + "\n", CairoFont.WhiteSmallText()));
 
-                    components.Add(new SlideshowGridRecipeTextComponent(capi, recipes.ToArray(), 40, EnumFloat.None, openDetailPageFor, allStacks));
+                    components.Add(new SlideshowGridRecipeTextComponent(capi, recipes.ToArray(), 40, EnumFloat.None, (cs) => openDetailPageFor(HandbookStacklistElement.PageCodeForCollectible(cs.Collectible)), allStacks));
                 }
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,16 @@ namespace Vintagestory.API.Datastructures
         public int GetAttributeId()
         {
             return 4;
+        }
+
+        public override string ToJsonToken()
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
+        }
+
+        public override string ToString()
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

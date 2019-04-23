@@ -8,6 +8,7 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -1454,6 +1455,31 @@ namespace Vintagestory.API.Common
         {
             return OnPickBlock(world, pos)?.GetName();
         }
+
+        /// <summary>
+        /// Called by the block info HUD for display the interaction help besides the crosshair
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="selection"></param>
+        /// <param name="forPlayer"></param>
+        /// <returns></returns>
+        public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer)
+        {
+            EnumHandling handled = EnumHandling.PassThrough;
+            WorldInteraction[] interactions = new WorldInteraction[0];
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                WorldInteraction[] bhi = behavior.GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handled);
+
+                interactions = interactions.Append(bhi);
+
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
+
+            return interactions;
+        }
+
 
         /// <summary>
         /// Called by the block info HUD for displaying additional information

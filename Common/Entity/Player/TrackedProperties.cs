@@ -14,6 +14,8 @@ namespace Vintagestory.API.Common.Entities
         public double FallSpeed = 0;
         public BlockPos PlayerChunkPos = new BlockPos();
 
+        public BlockPos PlayerPosDiv8 = new BlockPos();
+
         /// <summary>
         /// Relative value. bottom 0...1 sealevel, 1 .... 2 max-y
         /// </summary>

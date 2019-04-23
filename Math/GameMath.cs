@@ -189,23 +189,64 @@ namespace Vintagestory.API.MathTools
 
         #region Clamping
 
+        /// <summary>
+        /// Force val to be inside a certain range
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public static float Clamp(float val, float min, float max)
         {
             return val < min ? min : val > max ? max : val;
         }
+
+        /// <summary>
+        /// Force val to be inside a certain range
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public static int Clamp(int val, int min, int max)
         {
             return val < min ? min : val > max ? max : val;
         }
 
+        /// <summary>
+        /// Force val to be inside a certain range
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public static byte Clamp(byte val, byte min, byte max)
         {
             return val < min ? min : val > max ? max : val;
         }
 
+        /// <summary>
+        /// Force val to be inside a certain range
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         public static double Clamp(double val, double min, double max)
         {
             return val < min ? min : val > max ? max : val;
+        }
+
+        /// <summary>
+        /// Force val to be outside a certain range
+        /// </summary>
+        /// <param name="val"></param>
+        /// <param name="atLeastNeg"></param>
+        /// <param name="atLeastPos"></param>
+        /// <returns></returns>
+        public static int InverseClamp(int val, int atLeastNeg, int atLeastPos)
+        {
+            return val < atLeastPos ? atLeastPos : val > atLeastNeg ? atLeastNeg : val;
         }
 
         #endregion

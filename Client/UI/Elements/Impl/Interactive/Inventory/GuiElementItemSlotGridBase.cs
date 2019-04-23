@@ -30,7 +30,7 @@ namespace Vintagestory.API.Client
         protected int prevSlotQuantity;
         
 
-        Dictionary<string, int> slotTextureIdsByBackgroundIcon = new Dictionary<string, int>();
+        Dictionary<string, int> slotTextureIdsByBgIconAndColor = new Dictionary<string, int>();
         Dictionary<int, float> slotNotifiedZoomEffect = new Dictionary<int, float>();
 
         protected ElementBounds[] slotBounds;
@@ -161,34 +161,65 @@ namespace Vintagestory.API.Client
             slotSurface.Dispose();
 
             // 2. draw slots with backgrounds
-            foreach (ItemSlot slot in availableSlots.Values)
+            foreach (var val in availableSlots)
             {
-                if (slot.BackgroundIcon == null || slotTextureIdsByBackgroundIcon.ContainsKey(slot.BackgroundIcon)) continue;
+                ItemSlot slot = val.Value;
+                string key = slot.BackgroundIcon + "-" + slot.HexBackgroundColor;
 
+                if ((slot.BackgroundIcon == null && slot.HexBackgroundColor == null) || slotTextureIdsByBgIconAndColor.ContainsKey(key)) continue;
+
+                
                 slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
                 slotCtx = genContext(slotSurface);
 
-                slotCtx.SetSourceRGBA(GuiStyle.DialogSlotBackColor);
-                RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
-                slotCtx.Fill();
+                if (slot.HexBackgroundColor != null)
+                {
+                    double[] bgcolor = ColorUtil.Hex2Doubles(slot.HexBackgroundColor);
 
-                slotCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
-                RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
-                slotCtx.LineWidth = scaled(4.5);
-                slotCtx.Stroke();
-                slotSurface.Blur(scaled(4), true);
-                slotSurface.Blur(scaled(4), true);
+                    slotCtx.SetSourceRGBA(bgcolor);
+                    RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
+                    slotCtx.Fill();
+                    
+                    slotCtx.SetSourceRGBA(bgcolor[0] * 0.25, bgcolor[1] * 0.25, bgcolor[2] * 0.25, 1);
+                    RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
+                    slotCtx.LineWidth = scaled(4.5);
+                    slotCtx.Stroke();
+                    slotSurface.Blur(scaled(4), true);
+                    slotSurface.Blur(scaled(4), true);
 
-                RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
-                slotCtx.LineWidth = scaled(2);
-                slotCtx.SetSourceRGBA(0, 0, 0, 0.8);
-                slotCtx.Stroke();
+                    slotCtx.SetSourceRGBA(0, 0, 0, 0.8);
+                    RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
+                    slotCtx.LineWidth = scaled(4.5);
+                    slotCtx.Stroke();
+                }
+                else
+                {
+                    slotCtx.SetSourceRGBA(GuiStyle.DialogSlotBackColor);
+                    RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
+                    slotCtx.Fill();
 
-                DrawIconHandler?.Invoke(
-                    slotCtx, slot.BackgroundIcon, 2 * (int)absSlotPadding, 2 * (int)absSlotPadding, 
-                    (int)(absSlotWidth - 4 * absSlotPadding), (int)(absSlotHeight - 4 * absSlotPadding), 
-                    new double[] { 0, 0, 0, 0.2 }
-                );
+                    slotCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
+                    RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
+                    slotCtx.LineWidth = scaled(4.5);
+                    slotCtx.Stroke();
+                    slotSurface.Blur(scaled(4), true);
+                    slotSurface.Blur(scaled(4), true);
+                    
+                    RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
+                    slotCtx.LineWidth = scaled(4.5);
+                    slotCtx.SetSourceRGBA(0, 0, 0, 0.8);
+                    slotCtx.Stroke();
+                }
+
+
+                if (slot.BackgroundIcon != null)
+                {
+                    DrawIconHandler?.Invoke(
+                        slotCtx, slot.BackgroundIcon, 2 * (int)absSlotPadding, 2 * (int)absSlotPadding,
+                        (int)(absSlotWidth - 4 * absSlotPadding), (int)(absSlotHeight - 4 * absSlotPadding),
+                        new double[] { 0, 0, 0, 0.2 }
+                    );
+                }
 
                 int texId = 0;
                 generateTexture(slotSurface, ref texId, true);
@@ -196,7 +227,7 @@ namespace Vintagestory.API.Client
                 slotCtx.Dispose();
                 slotSurface.Dispose();
 
-                slotTextureIdsByBackgroundIcon[slot.BackgroundIcon] = texId;
+                slotTextureIdsByBgIconAndColor[key] = texId;
             }
 
             // 3. Slot highlight overlay
@@ -225,33 +256,33 @@ namespace Vintagestory.API.Client
             slotCtx.Dispose();
             slotSurface.Dispose();
 
-            int i = 0;
+            int slotIndex = 0;
             foreach (var val in availableSlots)
             {
-                int col = i % cols;
-                int row = i / cols;
+                int col = slotIndex % cols;
+                int row = slotIndex / cols;
 
                 double x = col * (unscaledSlotWidth + unscaledSlotPadding);
                 double y = row * (unscaledSlotHeight + unscaledSlotPadding);
 
                 ItemSlot slot = inventory[val.Key];
 
-                slotBounds[i] = ElementBounds.Fixed(x, y, unscaledSlotWidth, unscaledSlotHeight).WithParent(Bounds);
-                slotBounds[i].CalcWorldBounds();
+                slotBounds[slotIndex] = ElementBounds.Fixed(x, y, unscaledSlotWidth, unscaledSlotHeight).WithParent(Bounds);
+                slotBounds[slotIndex].CalcWorldBounds();
 
-                ComposeSlotOverlays(slot, val.Key);
+                ComposeSlotOverlays(slot, val.Key, slotIndex);
 
-                i++;
+                slotIndex++;
             }
         }
 
 
-        bool ComposeSlotOverlays(ItemSlot slot, int slotId)
+        bool ComposeSlotOverlays(ItemSlot slot, int slotId, int slotIndex)
         {
             if (!availableSlots.ContainsKey(slotId)) return false;
             if (slot.Itemstack == null) return true;
 
-            int slotIndex = availableSlots.IndexOfKey(slotId);
+            //int slotIndex = availableSlots.IndexOfKey(slotId);
 
             bool drawItemDamage = slot.Itemstack.Collectible.ShouldDisplayItemDamage(slot.Itemstack);
 
@@ -336,7 +367,7 @@ namespace Vintagestory.API.Client
             {
                 ItemSlot slot = inventory[slotId];
 
-                if (ComposeSlotOverlays(slot, slotId))
+                if (ComposeSlotOverlays(slot, slotId, availableSlots.IndexOfKey(slotId)))
                 {
                     handled.Add(slotId);
                 }
@@ -374,9 +405,10 @@ namespace Vintagestory.API.Client
                     ItemSlot slot = val.Value;
                     int slotId = val.Key;
 
-                    if ((slot.Itemstack == null || AlwaysRenderIcon) && slot.BackgroundIcon != null)
+                    if (((slot.Itemstack == null || AlwaysRenderIcon) && slot.BackgroundIcon != null)  || slot.HexBackgroundColor != null)
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBackgroundIcon[slot.BackgroundIcon], slotBounds[i]);
+                        string key = slot.BackgroundIcon + "-" + slot.HexBackgroundColor;
+                        api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBgIconAndColor[key], slotBounds[i]);
                     } else
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(slotTexture.TextureId, slotBounds[i]);

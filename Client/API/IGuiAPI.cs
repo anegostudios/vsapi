@@ -27,9 +27,9 @@ namespace Vintagestory.API.Client
         TextTextureUtil TextTexture { get; }
 
         /// <summary>
-        /// A utlity class that helps you figure out the dimensions of text
+        /// A utlity class that helps draw text
         /// </summary>
-        TextDrawUtil TextSizeProber { get; }
+        TextDrawUtil Text { get; }
 
         /// <summary>
         /// A utility class that contains a bunch of hardcoded icons

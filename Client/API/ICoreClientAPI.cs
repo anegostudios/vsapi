@@ -12,6 +12,8 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface ICoreClientAPI : ICoreAPI
     {
+        Dictionary<string, API.Common.Action<LinkTextComponent>> LinkProtocols { get; }
+
         /// <summary>
         /// The settings instance.
         /// </summary>
@@ -174,6 +176,13 @@ namespace Vintagestory.API.Client
         /// <param name="className"></param>
         /// <param name="rendererType"></param>
         void RegisterEntityRendererClass(string className, Type rendererType);
+
+        /// <summary>
+        /// Register a link protocol handler
+        /// </summary>
+        /// <param name="protocolname"></param>
+        /// <param name="onLinkClicked"></param>
+        void RegisterLinkProtocol(string protocolname, Common.Action<LinkTextComponent> onLinkClicked);
 
         /// <summary>
         /// Shows a client side only chat message in the current chat channel. Uses the same code paths a server => client message takes. Does not execute client commands.

@@ -513,11 +513,27 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        internal static int Hex2Int(string hex)
+        public static int Hex2Int(string hex)
         {
             return int.Parse(hex.Substring(1), System.Globalization.NumberStyles.HexNumber);
         }
-        
+
+        /// <summary>
+        /// Parses a hex string as an rgb(a) color and returns an array of colors normalized fom 0..1 for use with Cairo. E.g. turns #FF0000 into double[1, 0, 0, 1] and #00FF00CC into double[0, 1, 0, 0.8]
+        /// </summary>
+        /// <param name="hex"></param>
+        /// <returns></returns>
+        public static double[] Hex2Doubles(string hex)
+        {
+            int r = int.Parse(hex.Substring(1, 2), System.Globalization.NumberStyles.HexNumber);
+            int g = int.Parse(hex.Substring(3, 2), System.Globalization.NumberStyles.HexNumber);
+            int b = int.Parse(hex.Substring(5, 2), System.Globalization.NumberStyles.HexNumber);
+            int a = hex.Length < 8 ? 255 : int.Parse(hex.Substring(7, 2), System.Globalization.NumberStyles.HexNumber);
+
+            return new double[] { r / 255.0, g / 255.0, b / 255.0, a / 255.0 };
+        }
+
+
         /// <summary>
         /// Converts given RGB values into it's respective HSV Representation (all values in range of 0-255)
         /// </summary>

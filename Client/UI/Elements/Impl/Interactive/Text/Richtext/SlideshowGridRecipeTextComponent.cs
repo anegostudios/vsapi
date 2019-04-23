@@ -238,8 +238,8 @@ namespace Vintagestory.API.Client
 
                     api.Render.RenderItemstackToGui(
                         ingred.ResolvedItemstack, 
-                        rx + size * 0.5f - 2, // no idea why the -2
-                        ry + size * 0.5f - 3, // no idea why the -3
+                        rx + size * 0.5f,// - 2, // no idea why the -2
+                        ry + size * 0.5f,// - 3, // no idea why the -3
                         100, (float)size * 0.58f, ColorUtil.WhiteArgb,
                         true, false, true
                     );

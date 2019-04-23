@@ -333,6 +333,11 @@ namespace Vintagestory.API.Client
 
             foreach (ElementBounds bounds in ChildBounds)
             {
+                if (bounds == this)
+                {
+                    throw new Exception("Endless loop detected. Bounds instance is contained itself in its ChildBounds List. Fix your code please :P");
+                }
+
                 // Alignment can only happen once the max size is known, so ignore it for now
                 EnumDialogArea prevAlign = bounds.Alignment;
                 bounds.Alignment = EnumDialogArea.None;

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Text;
 
 namespace Vintagestory.API.Datastructures
@@ -40,6 +41,22 @@ namespace Vintagestory.API.Datastructures
         {
             return 12;
         }
-        
+
+        public virtual string ToJsonToken()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("[");
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (i > 0) sb.Append(", ");
+
+                sb.Append(value[i].ToString(CultureInfo.InvariantCulture));
+            }
+            sb.Append("]");
+
+            return sb.ToString();
+        }
+
     }
 }

@@ -87,7 +87,10 @@ namespace Vintagestory.API.Client
             surface.Dispose();
 
             ComposeHover(true, ref leftHighlightTexture);
-            ComposeHover(false, ref rightHighlightTexture);
+            if (ShowModifyIcons)
+            {
+                ComposeHover(false, ref rightHighlightTexture);
+            }
         }
 
 
@@ -179,24 +182,26 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
             Context ctx = genContext(surface);
 
-            double boxWidth = scaled(unscaledRightBoxWidth);
+            double rightBoxWidth = scaled(unscaledRightBoxWidth);
+
+            if (!ShowModifyIcons) rightBoxWidth = -Bounds.OuterWidth+Bounds.InnerWidth;
 
             if (left)
             {
                 ctx.NewPath();
                 ctx.LineTo(0, 0);
-                ctx.LineTo(Bounds.InnerWidth - boxWidth, 0);
-                ctx.LineTo(Bounds.InnerWidth - boxWidth, Bounds.OuterHeight);
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth, 0);
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth, Bounds.OuterHeight);
                 ctx.LineTo(0, Bounds.OuterHeight);
                 ctx.ClosePath();
             }
             else
             {
                 ctx.NewPath();
-                ctx.LineTo(Bounds.InnerWidth - boxWidth, 0);
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth, 0);
                 ctx.LineTo(Bounds.OuterWidth, 0);
                 ctx.LineTo(Bounds.OuterWidth, Bounds.OuterHeight);
-                ctx.LineTo(Bounds.InnerWidth - boxWidth, Bounds.OuterHeight);
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth, Bounds.OuterHeight);
                 ctx.ClosePath();
             }
 
@@ -269,9 +274,9 @@ namespace Vintagestory.API.Client
             int dy = api.Input.MouseY - (int)parentBounds.absY;
             Vec2d pos = Bounds.PositionInside(dx, dy);
 
-            if (pos == null) return;
+            if (pos == null || parentBounds.ParentBounds.PositionInside(api.Input.MouseX, api.Input.MouseY) == null) return;
 
-            if (pos.X > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
+            if (ShowModifyIcons && pos.X > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
             {
                 api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTexture.TextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
             }

@@ -6,17 +6,76 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Common;
 using System;
 using System.Linq;
+using VintagestoryAPI.Util;
 
 namespace Vintagestory.API.Client
 {
-    public class StacklistElement
+    public abstract class GuiListElement
+    {
+        public abstract string PageCode { get; }
+
+        public abstract void RenderTo(ICoreClientAPI capi, double x, double y);
+        public abstract void Dispose();
+        public bool Visible;
+
+        public abstract RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.Action<string> openDetailPageFor);
+        public abstract bool MatchesText(string text);
+    }
+
+    public class GroupedHandbookStacklistElement : HandbookStacklistElement
+    {
+        public List<ItemStack> Stacks = new List<ItemStack>();
+        public string Name;
+
+        public override string PageCode => Name;
+
+        public override void RenderTo(ICoreClientAPI capi, double x, double y)
+        {
+            float size = (float)GuiElement.scaled(25);
+            float pad = (float)GuiElement.scaled(10);
+
+            int index = (int)((capi.ElapsedMilliseconds / 1000) % Stacks.Count);
+
+            capi.Render.RenderItemstackToGui(Stacks[index], x + pad + size / 2, y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
+
+            if (Texture == null)
+            {
+                Texture = new TextTextureUtil(capi).GenTextTexture(Name, CairoFont.WhiteSmallText());
+            }
+
+            capi.Render.Render2DTexturePremultipliedAlpha(
+                Texture.TextureId,
+                (x + size + GuiElement.scaled(25)),
+                y + size / 4 - 3,
+                Texture.Width,
+                Texture.Height,
+                50
+            );
+        }
+
+        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.Action<string> openDetailPageFor)
+        {
+            return Stacks[0].Collectible.GetHandbookInfo(Stacks[0], capi, allStacks, openDetailPageFor);
+        }
+    }
+
+    public class HandbookStacklistElement : GuiListElement
     {
         public ItemStack Stack;
         public LoadedTexture Texture;
-        public bool Visible;
         public string TextCache;
 
-        public void RenderTo(ICoreClientAPI capi, double x, double y)
+        public int PageNumber;
+
+        public override string PageCode => PageCodeForCollectible(Stack.Collectible);
+
+
+        public static string PageCodeForCollectible(CollectibleObject collectible)
+        {
+            return (collectible is Block ? "block" : "item") + "-" + collectible.Code.ToShortString();
+        }
+
+        public override void RenderTo(ICoreClientAPI capi, double x, double y)
         {
             float size = (float)GuiElement.scaled(25);
             float pad = (float)GuiElement.scaled(10);
@@ -37,12 +96,22 @@ namespace Vintagestory.API.Client
             );
         }
 
-        public void Dispose() { Texture?.Dispose(); }
+        public override void Dispose() { Texture?.Dispose(); }
+
+        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.Action<string> openDetailPageFor)
+        {
+            return Stack.Collectible.GetHandbookInfo(Stack, capi, allStacks, openDetailPageFor);
+        }
+
+        public override bool MatchesText(string text)
+        {
+            return TextCache.CaseInsensitiveContains(text);
+        }
     }
 
-    public class GuiElementStacklist : GuiElement
+    public class GuiElementList : GuiElement
     {
-        public List<StacklistElement> Elements = new List<StacklistElement>();
+        public List<GuiListElement> Elements = new List<GuiListElement>();
 
         public int unscaledCellSpacing = 5;
         public int unscaledCellHeight = 40;
@@ -52,7 +121,7 @@ namespace Vintagestory.API.Client
         LoadedTexture hoverOverlayTexture;
         public ElementBounds insideBounds;
 
-        public GuiElementStacklist(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> onLeftClick, List<StacklistElement> elements = null) : base(capi, bounds)
+        public GuiElementList(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> onLeftClick, List<GuiListElement> elements = null) : base(capi, bounds)
         {
             hoverOverlayTexture = new LoadedTexture(capi);
 
@@ -107,7 +176,7 @@ namespace Vintagestory.API.Client
             double posY = insideBounds.absY;
 
 
-            foreach (StacklistElement element in Elements)
+            foreach (GuiListElement element in Elements)
             {
                 if (!element.Visible)
                 {
@@ -137,7 +206,7 @@ namespace Vintagestory.API.Client
 
             double posY = insideBounds.absY;
 
-            foreach (StacklistElement element in Elements)
+            foreach (GuiListElement element in Elements)
             {
                 if (!element.Visible) continue;
 
@@ -173,19 +242,19 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
-        public static GuiComposer AddStacklist(this GuiComposer composer, ElementBounds bounds, API.Common.Action<int> onleftClick = null, List<StacklistElement> stacks = null, string key = null)
+        public static GuiComposer AddList(this GuiComposer composer, ElementBounds bounds, API.Common.Action<int> onleftClick = null, List<GuiListElement> stacks = null, string key = null)
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementStacklist(composer.Api, bounds, onleftClick, stacks), key);
+                composer.AddInteractiveElement(new GuiElementList(composer.Api, bounds, onleftClick, stacks), key);
             }
 
             return composer;
         }
 
-        public static GuiElementStacklist GetStacklist(this GuiComposer composer, string key)
+        public static GuiElementList GetList(this GuiComposer composer, string key)
         {
-            return (GuiElementStacklist)composer.GetElement(key);
+            return (GuiElementList)composer.GetElement(key);
         }
     }
 

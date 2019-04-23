@@ -127,7 +127,7 @@ namespace Vintagestory.API.Client
         }
         
         // First comes KeyDown event, opens the gui, then comes KeyPress event - this one we have to ignore
-        protected bool ignoreNextKeyPress = false;
+        public bool ignoreNextKeyPress = false;
 
 
         protected bool opened;

@@ -533,14 +533,13 @@ namespace Vintagestory.API.Common
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
             
             if (FeetInLiquid) multiplier /= 2.5;
-            
 
-            if (this is EntityPlayer && (this as EntityPlayer).Player.WorldData.CurrentGameMode == EnumGameMode.Creative)
-            {
-            } else
+            IPlayer player = (this as EntityPlayer)?.Player;
+            if (player == null || player.WorldData.CurrentGameMode != EnumGameMode.Creative)
             {
                 multiplier *= belowBlock.WalkSpeedMultiplier * insideblock.WalkSpeedMultiplier;
             }
+            
 
             // Apply walk speed modifiers.
             var attribute = WatchedAttributes.GetTreeAttribute("walkSpeedModifiers");

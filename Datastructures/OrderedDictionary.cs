@@ -10,6 +10,7 @@ namespace Vintagestory.API.Datastructures
     /// <summary>
     /// Same as your normal C# Dictionary but ensures that the order in which the items are added is remembered. That way you can iterate over the dictionary with the insert order intact or set/get elements by index.
     /// Taken from http://www.codeproject.com/Articles/18615/OrderedDictionary-T-A-generic-implementation-of-IO
+    /// Please be aware that this is not a very efficient implementation, recommed use only for small sets of data.
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
@@ -147,16 +148,18 @@ namespace Vintagestory.API.Datastructures
 
 		public int IndexOfKey(TKey key)
 		{
-			if(null == key)
-				throw new ArgumentNullException("key");
+            if (null == key)
+            {
+                throw new ArgumentNullException("key");
+            }
 
-			for(int index = 0; index < List.Count; index++)
+			for (int index = 0; index < List.Count; index++)
 			{
 				KeyValuePair<TKey, TValue> entry = List[index];
 				TKey next = entry.Key;
-				if(null != _comparer)
+				if (null != _comparer)
 				{
-					if(_comparer.Equals(next, key))
+					if (_comparer.Equals(next, key))
 					{
 						return index;
 					}
@@ -181,12 +184,13 @@ namespace Vintagestory.API.Datastructures
 			int index = IndexOfKey(key);
 			if (index >= 0)
 			{
-				if(Dictionary.Remove(key))
+				if (Dictionary.Remove(key))
 				{
 					List.RemoveAt(index);
 					return true;
 				}
 			}
+
 			return false;
 		}
 
@@ -199,7 +203,7 @@ namespace Vintagestory.API.Datastructures
 			}
 			set
 			{
-				if(Dictionary.ContainsKey(key))
+				if (Dictionary.ContainsKey(key))
 				{
 					Dictionary[key] = value;
 					List[IndexOfKey(key)] = new KeyValuePair<TKey, TValue>(key, value);

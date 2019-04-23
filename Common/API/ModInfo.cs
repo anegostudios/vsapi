@@ -32,12 +32,6 @@ namespace Vintagestory.API.Common
         Code
     }
 
-    public enum EnumLoadType
-    {
-        AlwaysLoad,
-        Load
-    }
-
     /// <summary>
     /// Meta data for a specific mod folder, archive, source file or assembly.
     /// Either loaded from a "modinfo.json" or from the assembly's
@@ -55,9 +49,6 @@ namespace Vintagestory.API.Common
         /// <summary> The name of this mod. For example "My Example Mod". </summary>
         [JsonRequired]
         public string Name;
-
-        [JsonProperty]
-        public EnumLoadType LoadType;
 
         /// <summary>
         /// The mod id (domain) of this mod. For example "myexamplemod".

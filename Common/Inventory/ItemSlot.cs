@@ -31,6 +31,11 @@ namespace Vintagestory.API.Common
         public string BackgroundIcon;
 
         /// <summary>
+        /// If set will be used as the background color
+        /// </summary>
+        public string HexBackgroundColor;
+
+        /// <summary>
         /// The ItemStack contained within the slot.
         /// </summary>
         public ItemStack Itemstack
@@ -140,9 +145,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="world"></param>
         /// <param name="sinkSlot"></param>
-        public virtual void TryPutInto(IWorldAccessor world, ItemSlot sinkSlot)
+        /// <param name="quantity"></param>
+        public virtual void TryPutInto(IWorldAccessor world, ItemSlot sinkSlot, int quantity = 1)
         {
-            ItemStackMoveOperation op = new ItemStackMoveOperation(world, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, 1);
+            ItemStackMoveOperation op = new ItemStackMoveOperation(world, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, quantity);
             TryPutInto(sinkSlot, ref op);
         }
 
@@ -150,7 +156,7 @@ namespace Vintagestory.API.Common
         /// Returns the quantity of items that were not merged (left over in the source slot)
         /// </summary>
         /// <param name="sinkSlot"></param>
-        /// <param name="quantity"></param>
+        /// <param name="op"></param>
         /// <returns></returns>
         public virtual void TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
         {

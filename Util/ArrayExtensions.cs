@@ -16,6 +16,8 @@ namespace Vintagestory.API.Util
 
             if (index == 0)
             {
+                if (cut.Length == 0) return cut; // Below line seems to crash otherwise
+
                 Array.Copy(array, 0, cut, 0, 1);
             } else if (index == array.Length - 1)
             {

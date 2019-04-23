@@ -41,7 +41,7 @@ namespace Vintagestory.API.Client
 
     public delegate IGuiElementCell OnRequireCell(ListCellEntry cell, ElementBounds bounds);
 
-    public class GuiElementList : GuiElement
+    public class GuiElementCellList : GuiElement
     {
         /// <summary>
         /// The cells in the list.  See IGuiElementCell for how it's supposed to function.
@@ -88,7 +88,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnMouseDownOnCellRight">The function fired when the cell is clicked on the right side.</param>
         /// <param name="cellCreator">The event fired when a cell is requested by the gui</param>
         /// <param name="cells">The array of cells initialized with the list.</param>
-        public GuiElementList(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> OnMouseDownOnCellLeft, API.Common.Action<int> OnMouseDownOnCellRight, OnRequireCell cellCreator, List<ListCellEntry> cells = null) : base(capi, bounds)
+        public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> OnMouseDownOnCellLeft, API.Common.Action<int> OnMouseDownOnCellRight, OnRequireCell cellCreator, List<ListCellEntry> cells = null) : base(capi, bounds)
         {
             listTexture = new LoadedTexture(capi);
             this.cellcreator = cellCreator;
@@ -288,11 +288,11 @@ namespace Vintagestory.API.Client
         /// <param name="OnMouseDownOnCellRight">The event fired when the player clicks on the righthand side of the cell.</param>
         /// <param name="cells">The cells of the list.</param>
         /// <param name="key">The identifier for the list.</param>
-        public static GuiComposer AddList(this GuiComposer composer, ElementBounds bounds, OnRequireCell creallCreator, API.Common.Action<int> OnMouseDownOnCellLeft = null, API.Common.Action<int> OnMouseDownOnCellRight = null, List<ListCellEntry> cells = null, string key = null)
+        public static GuiComposer AddCellList(this GuiComposer composer, ElementBounds bounds, OnRequireCell creallCreator, API.Common.Action<int> OnMouseDownOnCellLeft = null, API.Common.Action<int> OnMouseDownOnCellRight = null, List<ListCellEntry> cells = null, string key = null)
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementList(composer.Api, bounds, OnMouseDownOnCellLeft, OnMouseDownOnCellRight, creallCreator, cells), key);
+                composer.AddInteractiveElement(new GuiElementCellList(composer.Api, bounds, OnMouseDownOnCellLeft, OnMouseDownOnCellRight, creallCreator, cells), key);
             }
 
             return composer;
@@ -303,9 +303,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="key">The name of the list to get.</param>
         /// <returns></returns>
-        public static GuiElementList GetList(this GuiComposer composer, string key)
+        public static GuiElementCellList GetCellList(this GuiComposer composer, string key)
         {
-            return (GuiElementList)composer.GetElement(key);
+            return (GuiElementCellList)composer.GetElement(key);
         }
     }
 

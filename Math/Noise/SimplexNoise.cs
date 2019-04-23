@@ -29,7 +29,31 @@ namespace Vintagestory.API.MathTools
             {
                 octaves[i] = new SimplexNoiseOctave(seed * 65599 + i);
             }
+        }
+        
 
+        /// <summary>
+        /// Generates the octaves and frequencies using following formulas 
+        /// freq[i] = baseFrequency * 2^i
+        /// amp[i] = persistence^i
+        /// </summary>
+        /// <param name="quantityOctaves"></param>
+        /// <param name="baseFrequency"></param>
+        /// <param name="persistence"></param>
+        /// <param name="seed"></param>
+        /// <returns></returns>
+        public static SimplexNoise FromDefaultOctaves(int quantityOctaves, double baseFrequency, double persistence, long seed)
+        {
+            double[] frequencies = new double[quantityOctaves];
+            double[] amplitudes = new double[quantityOctaves];
+
+            for (int i = 0; i < quantityOctaves; i++)
+            {
+                frequencies[i] = Math.Pow(2, i) * baseFrequency;
+                amplitudes[i] = Math.Pow(persistence, i);
+            }
+
+            return new SimplexNoise(amplitudes, frequencies, seed);
         }
 
 
@@ -59,18 +83,6 @@ namespace Vintagestory.API.MathTools
             return value;
         }
 
-        /* wtf is that supposed to be o.O
-         * public double NoiseMax0(double x, double y, double[] thresholds)
-        {
-            double value = 0;
-
-            for (int i = 0; i < amplitudes.Length; i++)
-            {
-                value += Math.Max(0, octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * amplitudes[i] - thresholds[i]);
-            }
-
-            return value;
-        }*/
 
 
 

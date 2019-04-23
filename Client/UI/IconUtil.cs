@@ -223,8 +223,325 @@ namespace Vintagestory.API.Client
                 case "offhand":
                     Drawoffhand_svg(cr, x, y, width, height, rgba);
                     break;
+
+                case "leftmousebutton":
+                    DrawLeftMouseButton(cr, x, y, width, height, rgba);
+                    break;
+
+                case "rightmousebutton":
+                    DrawRightMouseButton(cr, x, y, width, height, rgba);
+                    break;
             }
         }
+
+
+        public void DrawRightMouseButton(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 328;
+            float h = 388;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 25;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(234.429688, 32.785156);
+            cr.CurveTo(348.980469, 86.199219, 316.414063, 148.554688, 291.503906, 201.976563);
+            cr.LineTo(249.421875, 292.214844);
+            cr.CurveTo(229.363281, 335.230469, 179.390625, 407.363281, 81.46875, 360.8125);
+            cr.CurveTo(-1.492188, 322.125, 6.308594, 221.769531, 23.949219, 183.9375);
+            cr.LineTo(67.332031, 90.898438);
+            cr.CurveTo(90.460938, 41.300781, 119.824219, -20.65625, 234.429688, 32.785156);
+            cr.ClosePath();
+            cr.MoveTo(234.429688, 32.785156);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.605242, -122.63237);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 25;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(234.429688, 32.78125);
+            cr.LineTo(169.65625, 171.6875);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.605242, -122.63237);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 25;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(61.726563, 102.519531);
+            cr.CurveTo(61.726563, 102.519531, 93.355469, 137.152344, 169.257813, 172.546875);
+            cr.CurveTo(213.550781, 193.199219, 285.589844, 215.28125, 285.589844, 215.28125);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.605242, -122.63237);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(243.921875, 67.125);
+            cr.LineTo(201.984375, 160.421875);
+            cr.CurveTo(201.984375, 160.421875, 243.628906, 179.277344, 272.992188, 185.171875);
+            cr.CurveTo(299.121094, 133.617188, 296.421875, 96.832031, 243.921875, 67.125);
+            cr.ClosePath();
+            cr.MoveTo(243.921875, 67.125);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.605242, -122.63237);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(219.097656, 165.527344);
+            cr.CurveTo(237.675781, 173.027344, 256.894531, 179.460938, 268.761719, 182.160156);
+            cr.LineTo(272.261719, 182.957031);
+            cr.LineTo(276.113281, 173.964844);
+            cr.CurveTo(282.488281, 159.089844, 285.617188, 148.3125, 286.726563, 137.398438);
+            cr.CurveTo(288.980469, 115.261719, 280.804688, 97.152344, 261.460938, 81.414063);
+            cr.CurveTo(256.835938, 77.65625, 245.53125, 69.957031, 244.945313, 70.167969);
+            cr.CurveTo(244.621094, 70.289063, 217.152344, 131.136719, 209.398438, 148.917969);
+            cr.LineTo(204.808594, 159.445313);
+            cr.LineTo(208.546875, 161.109375);
+            cr.CurveTo(210.601563, 162.027344, 215.347656, 164.015625, 219.097656, 165.527344);
+            cr.ClosePath();
+            cr.MoveTo(219.097656, 165.527344);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 0.505076;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(219.097656, 165.527344);
+            cr.CurveTo(237.675781, 173.027344, 256.894531, 179.460938, 268.761719, 182.160156);
+            cr.LineTo(272.261719, 182.957031);
+            cr.LineTo(276.113281, 173.964844);
+            cr.CurveTo(282.488281, 159.089844, 285.617188, 148.3125, 286.726563, 137.398438);
+            cr.CurveTo(288.980469, 115.261719, 280.804688, 97.152344, 261.460938, 81.414063);
+            cr.CurveTo(256.835938, 77.65625, 245.53125, 69.957031, 244.945313, 70.167969);
+            cr.CurveTo(244.621094, 70.289063, 217.152344, 131.136719, 209.398438, 148.917969);
+            cr.LineTo(204.808594, 159.445313);
+            cr.LineTo(208.546875, 161.109375);
+            cr.CurveTo(210.601563, 162.027344, 215.347656, 164.015625, 219.097656, 165.527344);
+            cr.ClosePath();
+            cr.MoveTo(219.097656, 165.527344);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.605242, -122.63237);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
+
+
+        public void DrawLeftMouseButton(Context cr, int x, int y, float width, float height, double[] rgba)
+        {
+            Pattern pattern = null;
+            Matrix matrix = cr.Matrix;
+
+            cr.Save();
+            float w = 328;
+            float h = 388;
+            float scale = Math.Min(width / w, height / h);
+            matrix.Translate(x + Math.Max(0, (width - w * scale) / 2), y + Math.Max(0, (height - h * scale) / 2));
+            matrix.Scale(scale, scale);
+            cr.Matrix = matrix;
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 25;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(234.425781, 32.78125);
+            cr.CurveTo(348.976563, 86.199219, 316.410156, 148.554688, 291.5, 201.972656);
+            cr.LineTo(249.421875, 292.214844);
+            cr.CurveTo(229.363281, 335.226563, 179.390625, 407.359375, 81.464844, 360.808594);
+            cr.CurveTo(-1.496094, 322.125, 6.308594, 221.765625, 23.949219, 183.933594);
+            cr.LineTo(67.332031, 90.898438);
+            cr.CurveTo(90.460938, 41.300781, 119.824219, -20.65625, 234.425781, 32.78125);
+            cr.ClosePath();
+            cr.MoveTo(234.425781, 32.78125);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.606997, -122.634106);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 25;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(234.429688, 32.78125);
+            cr.LineTo(169.652344, 171.6875);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.606997, -122.634106);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 25;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(61.722656, 102.519531);
+            cr.CurveTo(61.722656, 102.519531, 93.355469, 137.152344, 169.253906, 172.542969);
+            cr.CurveTo(213.550781, 193.199219, 285.589844, 215.28125, 285.589844, 215.28125);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.606997, -122.634106);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 1;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(200.53125, 44.171875);
+            cr.LineTo(156.019531, 136.265625);
+            cr.CurveTo(156.019531, 136.265625, 114.804688, 116.484375, 91.414063, 97.78125);
+            cr.CurveTo(114.113281, 44.625, 144.027344, 23.046875, 200.53125, 44.171875);
+            cr.ClosePath();
+            cr.MoveTo(200.53125, 44.171875);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.606997, -122.634106);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.109375, 126.4375);
+            cr.CurveTo(123.417969, 117.027344, 106.136719, 106.441406, 96.441406, 99.085938);
+            cr.LineTo(93.585938, 96.914063);
+            cr.LineTo(97.996094, 88.183594);
+            cr.CurveTo(105.292969, 73.738281, 111.539063, 64.414063, 119.183594, 56.546875);
+            cr.CurveTo(134.695313, 40.59375, 153.820313, 35.214844, 178.308594, 39.921875);
+            cr.CurveTo(184.164063, 41.042969, 197.328125, 44.757813, 197.539063, 45.34375);
+            cr.CurveTo(197.660156, 45.667969, 168.703125, 105.820313, 160.066406, 123.191406);
+            cr.LineTo(154.949219, 133.476563);
+            cr.LineTo(151.273438, 131.683594);
+            cr.CurveTo(149.25, 130.699219, 144.675781, 128.335938, 141.109375, 126.4375);
+            cr.ClosePath();
+            cr.MoveTo(141.109375, 126.4375);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            cr.LineWidth = 0.505076;
+            cr.MiterLimit = 4;
+            cr.LineCap = LineCap.Butt;
+            cr.LineJoin = LineJoin.Miter;
+            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(141.109375, 126.4375);
+            cr.CurveTo(123.417969, 117.027344, 106.136719, 106.441406, 96.441406, 99.085938);
+            cr.LineTo(93.585938, 96.914063);
+            cr.LineTo(97.996094, 88.183594);
+            cr.CurveTo(105.292969, 73.738281, 111.539063, 64.414063, 119.183594, 56.546875);
+            cr.CurveTo(134.695313, 40.59375, 153.820313, 35.214844, 178.308594, 39.921875);
+            cr.CurveTo(184.164063, 41.042969, 197.328125, 44.757813, 197.539063, 45.34375);
+            cr.CurveTo(197.660156, 45.667969, 168.703125, 105.820313, 160.066406, 123.191406);
+            cr.LineTo(154.949219, 133.476563);
+            cr.LineTo(151.273438, 131.683594);
+            cr.CurveTo(149.25, 130.699219, 144.675781, 128.335938, 141.109375, 126.4375);
+            cr.ClosePath();
+            cr.MoveTo(141.109375, 126.4375);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            matrix = new Matrix(3.543307, 0, 0, 3.543307, -168.606997, -122.634106);
+            pattern.Matrix = matrix;
+            cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Restore();
+        }
+
 
 
 

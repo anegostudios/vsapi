@@ -47,6 +47,10 @@ namespace Vintagestory.API.Client
                     return "+";
                 case GlKeys.Minus:
                     return "-";
+                case GlKeys.LControl:
+                    return "Ctrl";
+                case GlKeys.LShift:
+                    return "Shift";
                 case GlKeys.Semicolon:
                     return ";";
                 case GlKeys.Comma:
