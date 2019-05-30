@@ -12,9 +12,9 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     public class LCGRandom
     {
-        internal long worldSeed;
-        internal long mapGenSeed;
-        internal long currentSeed;
+        public long worldSeed;
+        public long mapGenSeed;
+        public long currentSeed;
         
         /// <summary>
         /// Initialize random with given seed

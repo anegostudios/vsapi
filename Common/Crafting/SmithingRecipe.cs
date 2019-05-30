@@ -23,6 +23,7 @@ namespace Vintagestory.API.Common
             recipe.Ingredient = Ingredient.Clone();
             recipe.Output = Output.Clone();
             recipe.Name = Name;
+            recipe.RecipeId = RecipeId;
 
             return recipe;
         }
@@ -94,6 +95,7 @@ namespace Vintagestory.API.Common
         /// <param name="writer"></param>
         public void ToBytes(BinaryWriter writer)
         {
+            writer.Write(RecipeId);
             Ingredient.ToBytes(writer);
 
             writer.Write(Pattern.Length);
@@ -105,6 +107,7 @@ namespace Vintagestory.API.Common
             writer.Write(Name.ToShortString());
 
             Output.ToBytes(writer);
+
             
         }
 
@@ -116,6 +119,8 @@ namespace Vintagestory.API.Common
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
         {
             Ingredient = new CraftingRecipeIngredient();
+            RecipeId = reader.ReadInt32();
+
             Ingredient.FromBytes(reader, resolver);
 
             int len = reader.ReadInt32();

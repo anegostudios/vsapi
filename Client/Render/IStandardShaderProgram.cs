@@ -39,6 +39,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         float AlphaTest { set; }
 
+        float ExtraZOffset { set; }
+
         /// <summary>
         /// The color of the ambient light source.
         /// </summary>

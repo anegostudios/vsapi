@@ -33,14 +33,20 @@ namespace Vintagestory.API.Client
         /// Registers a handler for when you send a packet with given messageId
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="messageHandler"></param>
+        /// <returns></returns>
+        IClientNetworkChannel RegisterMessageType<T>();
+
+        /// <summary>
+        /// Registers a handler for when you send a packet with given messageId
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="handler"></param>
         IClientNetworkChannel SetMessageHandler<T>(NetworkServerMessageHandler<T> handler);
 
         /// <summary>
         /// Sends a packet to the server
         /// </summary>
         /// <param name="message"></param>
-        /// <param name="players"></param>
         void SendPacket<T>(T message);
     }
 

@@ -93,7 +93,7 @@ namespace Vintagestory.API.Common
                 api.Event.UnregisterCallback(handlerId);
             }
 
-            api?.World.Logger.VerboseDebug("OnBlockRemoved(): {0}@{1}", this, pos);
+            //api?.World.Logger.VerboseDebug("OnBlockRemoved(): {0}@{1}", this, pos);
         }
 
         /// <summary>

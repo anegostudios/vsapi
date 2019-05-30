@@ -21,10 +21,7 @@
         }
         
 
-        public override bool RequiresUngrabbedMouse()
-        {
-            return false;
-        }
+        public override bool PrefersUngrabbedMouse => false;
 
         public override void OnRenderGUI(float deltaTime)
         {

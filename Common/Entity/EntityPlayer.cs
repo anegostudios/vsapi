@@ -96,8 +96,21 @@ namespace Vintagestory.API.Common
         public override byte[] LightHsv
         {
             get {
-                byte[] lightHsv = RightHandItemSlot?.Itemstack?.Block?.LightHsv;
-                return (lightHsv != null && lightHsv[2] > 0) ? lightHsv : LeftHandItemSlot?.Itemstack?.Block?.LightHsv;
+                byte[] rightHsv = RightHandItemSlot?.Itemstack?.Block?.LightHsv;
+                byte[] leftHsv = LeftHandItemSlot?.Itemstack?.Block?.LightHsv;
+
+                if (rightHsv == null) return leftHsv;
+                if (leftHsv == null) return rightHsv;
+
+                float totalval = rightHsv[2] + leftHsv[2];
+                float t = leftHsv[2] / totalval;
+
+                return new byte[]
+                {
+                    (byte)(leftHsv[0] * t + rightHsv[0] * (1-t)),
+                    (byte)(leftHsv[1] * t + rightHsv[1] * (1-t)),
+                    Math.Max(leftHsv[2], rightHsv[2])
+                };
             }
         }
 
@@ -346,6 +359,11 @@ namespace Vintagestory.API.Common
                 AnimManager?.StopAnimation("die");
                 return;
             }
+            if (packetid == 1203)
+            {
+                string animation = SerializerUtil.Deserialize<string>(data);
+                StartAnimation(animation);
+            }
 
             base.OnReceivedServerPacket(packetid, data);
         }
@@ -448,6 +466,9 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+       
+        
 
         public override void TeleportToDouble(double x, double y, double z)
         {

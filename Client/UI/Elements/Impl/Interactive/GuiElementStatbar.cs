@@ -222,6 +222,11 @@ namespace Vintagestory.API.Client
             ComposeFlashOverlay();
         }
 
+        public float GetValue()
+        {
+            return this.value;
+        }
+
         /// <summary>
         /// Sets the value for the status bar as well as the minimum and maximum values.
         /// </summary>

@@ -28,8 +28,60 @@ namespace Vintagestory.API.Common
 
         float[] tmpMatrix = Mat4f.Create();
         
+        public static ClientAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
+        {
+            if (entity is EntityAgent)
+            {
+                EntityAgent entityag = entity as EntityAgent;
+                return new ClientAnimator(
+                    () => entityag.Controls.MovespeedMultiplier * entityag.GetWalkSpeedMultiplier(0.3),
+                    rootPoses,
+                    animations,
+                    rootElements,
+                    jointsById,
+                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                );
+            } else
+            {
+                return new ClientAnimator(
+                    () => 1,
+                    rootPoses,
+                    animations,
+                    rootElements,
+                    jointsById,
+                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                );
+            }
+        }
 
-        public ClientAnimator(Entity entity, List<ElementPose> rootPoses, Animation[] Animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById) : base(entity, Animations)
+        public static ClientAnimator CreateForEntity(Entity entity, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
+        {
+            if (entity is EntityAgent)
+            {
+                EntityAgent entityag = entity as EntityAgent;
+
+                return new ClientAnimator(
+                    () => entityag.Controls.MovespeedMultiplier * entityag.GetWalkSpeedMultiplier(0.3),
+                    animations,
+                    rootElements,
+                    jointsById,
+                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                );
+            } else
+            {
+                return new ClientAnimator(
+                    () => 1,
+                    animations,
+                    rootElements,
+                    jointsById,
+                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                );
+            }
+        }
+
+        
+
+        public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
             this.rootElements = rootElements;
             this.jointsById = jointsById;
@@ -37,7 +89,7 @@ namespace Vintagestory.API.Common
             LoadedAttachmentPoints(RootPoses);
         }
 
-        public ClientAnimator(Entity entity, Animation[] Animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById) : base(entity, Animations)
+        public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
             this.rootElements = rootElements;
             this.jointsById = jointsById;
@@ -57,7 +109,10 @@ namespace Vintagestory.API.Common
                     for (int j = 0; j < elem.ForElement.AttachmentPoints.Length; j++)
                     {
                         AttachmentPoint apoint = elem.ForElement.AttachmentPoints[j];
-                        AttachmentPointByCode[apoint.Code] = new AttachmentPointAndPose() { AttachPoint = apoint, CachedPose = elem };
+                        AttachmentPointByCode[apoint.Code] = new AttachmentPointAndPose() {
+                            AttachPoint = apoint,
+                            CachedPose = elem
+                        };
                     }
                 }
 
@@ -84,7 +139,10 @@ namespace Vintagestory.API.Common
                     for (int j = 0; j < elem.AttachmentPoints.Length; j++)
                     {
                         AttachmentPoint apoint = elem.AttachmentPoints[j];
-                        AttachmentPointByCode[apoint.Code] = new AttachmentPointAndPose() { AttachPoint = apoint, CachedPose = pose };
+                        AttachmentPointByCode[apoint.Code] = new AttachmentPointAndPose() {
+                            AttachPoint = apoint,
+                            CachedPose = pose
+                        };
                     }
                 }
 
@@ -167,9 +225,9 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-            } catch (Exception e)
+            } catch (Exception)
             {
-                entity.World.Logger.Fatal("Animation system crash. Please report this bug. curanimcount: {3}, tm-l:{0}, jbi-c: {1}, abc-c: {2}\nException: {4}", TransformationMatrices.Length, jointsById.Count, AttachmentPointByCode.Count, curAnimCount, e);
+                //entity.World.Logger.Fatal("Animation system crash. Please report this bug. curanimcount: {3}, tm-l:{0}, jbi-c: {1}, abc-c: {2}\nException: {4}", TransformationMatrices.Length, jointsById.Count, AttachmentPointByCode.Count, curAnimCount, e);
             }
         }
 

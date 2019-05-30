@@ -12,17 +12,17 @@ namespace Vintagestory.API.Server
     public interface IServerChunk : IWorldChunk
     {
         /// <summary>
-        /// Allows setting of arbitrary  moddata of this chunk
+        /// Allows setting of server side only moddata of this chunk
         /// </summary>
         /// <param name="key"></param>
         /// <param name="data"></param>
-        void SetModdata(string key, byte[] data);
+        void SetServerModdata(string key, byte[] data);
 
         /// <summary>
-        /// Retrieve arbitrary mod data
+        /// Retrieve server side only mod data
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        byte[] GetModdata(string key);
+        byte[] GetServerModdata(string key);
     }
 }

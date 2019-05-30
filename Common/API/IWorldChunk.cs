@@ -71,5 +71,27 @@ namespace Vintagestory.API.Common
         /// <param name="entityId">the ID for the entity</param>
         /// <returns>Whether or not the entity was removed.</returns>
         bool RemoveEntity(long entityId);
+
+
+        /// <summary>
+        /// Allows setting of arbitrary, permanantly stored moddata of this chunk. When set on the server before the chunk is sent to the client, the data will also be sent to the client.
+        /// When set on the client the data is discarded once the chunk gets unloaded
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        void SetModdata(string key, byte[] data);
+
+        /// <summary>
+        /// Removes the permanently stored data. 
+        /// </summary>
+        /// <param name="key"></param>
+        void RemoveModdata(string key);
+
+        /// <summary>
+        /// Retrieve arbitrary, permantly stored mod data
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        byte[] GetModdata(string key);
     }
 }

@@ -68,6 +68,11 @@ namespace Vintagestory.API.Datastructures
             throw new System.NotImplementedException();
         }
 
-        
+        public override int GetHashCode()
+        {
+            return value?.GetHashCode() ?? 0;
+        }
+
+
     }
 }

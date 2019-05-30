@@ -212,8 +212,11 @@ namespace Vintagestory.API.Client
                     part.NowPlayingFile = location;
                     part.Loading = true;
                     musicEngine.LoadTrack(location, (sound) => {
-                        sound.Start();
-                        part.Sound = sound;
+                        if (sound != null)
+                        {
+                            sound.Start();
+                            part.Sound = sound;
+                        }
                         part.Loading = false;
                     });
 

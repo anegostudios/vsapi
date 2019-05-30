@@ -58,7 +58,9 @@ namespace Vintagestory.API.Common
                             {
                                 max = val.Value;
                                 if (PrimaryIngredient != null)
+                                {
                                     SecondaryIngredient = PrimaryIngredient;
+                                }
                                 PrimaryIngredient = val.Key;
                                 
                             }
@@ -88,7 +90,7 @@ namespace Vintagestory.API.Common
                                 max++;
                                 if (PrimaryIngredient == null)
                                     PrimaryIngredient = val.Key;
-                                else if (SecondaryIngredient == null)
+                                else if (SecondaryIngredient == null && val.Key != PrimaryIngredient)
                                     SecondaryIngredient = val.Key;
 
                                 continue;
@@ -168,8 +170,19 @@ namespace Vintagestory.API.Common
                                 continue;
                             }
                             GarnishedNames.Add(ingredientName(val.Key, true));
-
                         }
+
+                        // Slightly ugly hack for soybean stew
+                        if (PrimaryIngredient == null)
+                        {
+                            foreach (var val in quantitiesByStack)
+                            {
+                                CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
+                                PrimaryIngredient = val.Key;
+                                max += val.Value;
+                            }
+                        }
+
                         recipeCode = "stew";
                         break;
                     }
@@ -201,7 +214,7 @@ namespace Vintagestory.API.Common
 
             if (SecondaryIngredient != null)
             {
-                mainIngredients = Lang.Get("multi-main-ingredients-format", getMainIngredientName(PrimaryIngredient, recipeCode), getMainIngredientName(PrimaryIngredient, recipeCode, true));
+                mainIngredients = Lang.Get("multi-main-ingredients-format", getMainIngredientName(PrimaryIngredient, recipeCode), getMainIngredientName(SecondaryIngredient, recipeCode, true));
             }
             else
                 mainIngredients = getMainIngredientName(PrimaryIngredient, recipeCode);

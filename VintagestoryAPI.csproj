@@ -221,6 +221,8 @@
     <Compile Include="Common\API\IBulkBlockAccessor.cs" />
     <Compile Include="Common\API\IEventAPI.cs" />
     <Compile Include="Common\API\IMapChunk.cs" />
+    <Compile Include="Common\TyronThreadPool.cs" />
+    <Compile Include="Util\IgnoreUtil.cs" />
     <Compile Include="Util\JsonUtil.cs" />
     <Compile Include="Common\Assets\Mod.cs" />
     <Compile Include="Common\ByteSerializable.cs" />
@@ -283,10 +285,8 @@
     <Compile Include="Util\SerializerUtil.cs" />
     <Compile Include="Util\StringExtensions.cs" />
     <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="Util\ThreadSafeRandom.cs" />
     <Compile Include="Util\WildcardUtil.cs" />
-    <None Include="api\index.md" />
-    <None Include="articles\intro.md" />
-    <None Include="articles\toc.md" />
     <Compile Include="Common\EntityBehavior\BehaviorPassivePhysics.cs" />
     <Compile Include="Common\Entity\EntityAgent.cs" />
     <Compile Include="Common\Entity\EntityControls.cs" />
@@ -553,6 +553,9 @@
     <Compile Include="Datastructures\JsonObject.cs" />
     <Compile Include="Util\ListExtensions.cs" />
     <Compile Include="Util\ReaderWriterExtensions.cs" />
+    <None Include="api\index.md" />
+    <None Include="articles\intro.md" />
+    <None Include="articles\toc.md" />
     <None Include="docfx.json" />
     <None Include="index.md" />
     <None Include="packages.config" />
@@ -568,13 +571,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="api\.gitignore" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\docfx.console.2.32.0\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.32.0\build\docfx.console.targets')" />
+  <Import Project="..\packages\docfx.console.2.42.0\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.42.0\build\docfx.console.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\docfx.console.2.32.0\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.32.0\build\docfx.console.targets'))" />
+    <Error Condition="!Exists('..\packages\docfx.console.2.42.0\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.42.0\build\docfx.console.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

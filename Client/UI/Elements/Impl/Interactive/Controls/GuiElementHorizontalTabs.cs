@@ -19,12 +19,16 @@ namespace Vintagestory.API.Client
         internal GuiTab[] tabs;
 
         LoadedTexture[] hoverTextures;
+        LoadedTexture[] notifyTextures;
         int[] tabWidths;
         CairoFont selectedFont;
 
         public int activeElement = 0;
 
         double unscaledTabSpacing = 5;
+
+        public bool AlarmTabs;
+        int alarmTabIndex = -1;
 
         public override bool Focusable { get { return true; } }
 
@@ -43,7 +47,24 @@ namespace Vintagestory.API.Client
             handler = onTabClicked;
             hoverTextures = new LoadedTexture[tabs.Length];
             for (int i = 0; i < tabs.Length; i++) hoverTextures[i] = new LoadedTexture(capi);
+            
             tabWidths = new int[tabs.Length];
+        }
+
+        CairoFont notifyFont;
+
+        public void SetAlarmTab(int tabIndex)
+        {
+            alarmTabIndex = tabIndex;
+        }
+
+        public void WithAlarmTabs(CairoFont notifyFont)
+        {
+            this.notifyFont = notifyFont;
+            notifyTextures = new LoadedTexture[tabs.Length];
+            for (int i = 0; i < tabs.Length; i++) notifyTextures[i] = new LoadedTexture(this.api);
+            AlarmTabs = true;
+            ComposeOverlays(true);
         }
 
 
@@ -77,7 +98,12 @@ namespace Vintagestory.API.Client
 
                 ShadePath(ctx, 2);
 
-                Font.SetupContext(ctx);
+                if (AlarmTabs)
+                {
+                    notifyFont.SetupContext(ctx);
+                } else {
+                    Font.SetupContext(ctx);
+                }
 
                 DrawTextLineAt(ctx, tabs[i].Name, Bounds.drawX + xpos + padding, Bounds.drawY + 1);
 
@@ -87,9 +113,10 @@ namespace Vintagestory.API.Client
             Font.Color[3] = 1;
 
             ComposeOverlays();
+
         }
 
-        private void ComposeOverlays()
+        private void ComposeOverlays(bool isNotifyTabs = false)
         {
             double radius = scaled(3);
             double spacing = scaled(unscaledTabSpacing);
@@ -126,13 +153,25 @@ namespace Vintagestory.API.Client
 
                 ShadePath(ctx, 2);
 
-
-                selectedFont.SetupContext(ctx);
+                if (isNotifyTabs)
+                {
+                    notifyFont.SetupContext(ctx);
+                } else
+                {
+                    selectedFont.SetupContext(ctx);
+                }
+                
 
                 DrawTextLineAt(ctx, tabs[i].Name, padding, 1);
 
-              
-                generateTexture(surface, ref hoverTextures[i]);
+                if (isNotifyTabs)
+                {
+                    generateTexture(surface, ref notifyTextures[i]);
+                } else
+                {
+                    generateTexture(surface, ref hoverTextures[i]);
+                }
+                
 
                 ctx.Dispose();
                 surface.Dispose();
@@ -153,6 +192,11 @@ namespace Vintagestory.API.Client
                 if (i == activeElement || mouseRelX > xpos && mouseRelX < xpos + tabWidths[i] && mouseRelY > 0 && mouseRelY < Bounds.InnerHeight)
                 {
                     api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
+                }
+
+                if (alarmTabIndex == i)
+                {
+                    api.Render.Render2DTexturePremultipliedAlpha(notifyTextures[i].TextureId, (int)(Bounds.renderX + xpos), (int)Bounds.renderY, tabWidths[i], (int)Bounds.InnerHeight + 1);
                 }
 
                 xpos += tabWidths[i] + spacing;
@@ -215,6 +259,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < hoverTextures.Length; i++)
             {
                 hoverTextures[i].Dispose();
+                if (notifyTextures != null) notifyTextures[i].Dispose();
             }
         }
     }

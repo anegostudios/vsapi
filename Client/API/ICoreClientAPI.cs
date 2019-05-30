@@ -4,6 +4,7 @@ using Vintagestory.API;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using static Vintagestory.API.Common.VtmlUtil;
 
 namespace Vintagestory.API.Client
 {
@@ -12,7 +13,15 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface ICoreClientAPI : ICoreAPI
     {
+        /// <summary>
+        /// Add your own link protocol here if you want to implement a custom protocol. E.g. image://url-to-picture
+        /// </summary>
         Dictionary<string, API.Common.Action<LinkTextComponent>> LinkProtocols { get; }
+
+        /// <summary>
+        /// Add your own rich text elements here. Your will need to convert a VTML tag into a RichTextComponentBase element. 
+        /// </summary>
+        Dictionary<string, Tag2RichTextDelegate> TagConverters { get; }
 
         /// <summary>
         /// The settings instance.

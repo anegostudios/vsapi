@@ -41,7 +41,7 @@ namespace Vintagestory.API.Common
 
         
         /// <summary>
-        /// The enetity attached to this Animation Manager.
+        /// The entity attached to this Animation Manager.
         /// </summary>
         protected Entity entity;
         long listenerId;
@@ -71,6 +71,16 @@ namespace Vintagestory.API.Common
                 capi = (api as ICoreClientAPI);
                 capi.Event.RegisterRenderer(renderer = new DummyRenderer() { action = OnClientTick, RenderRange = 999 }, EnumRenderStage.Before, "anim");
             }
+        }
+
+        public virtual bool IsAnimationActive(params string[] anims)
+        {
+            foreach (var val in anims)
+            {
+                if (ActiveAnimationsByAnimCode.ContainsKey(val)) return true;
+            }
+
+            return false;
         }
 
         /// <summary>

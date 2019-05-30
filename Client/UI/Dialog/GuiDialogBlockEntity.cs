@@ -168,10 +168,7 @@ namespace Vintagestory.API.Client
             capi.Gui.PlaySound(CloseSound, true);
         }
 
-        public override bool RequiresUngrabbedMouse()
-        {
-            return false;
-        }
+        public override bool PrefersUngrabbedMouse => false;
 
         /// <summary>
         /// Reloads the values of the GUI.

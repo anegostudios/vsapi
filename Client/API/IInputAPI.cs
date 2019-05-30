@@ -21,6 +21,11 @@ namespace Vintagestory.API.Client
     public interface IInputAPI
     {
         /// <summary>
+        /// Triggered when the player attempts to trigger an action, such as walking forward or sprinting
+        /// </summary>
+        event OnEntityAction InWorldAction;
+
+        /// <summary>
         /// The current keyboard key states, use the <see cref="GlKeys"/> enum to get the index of an array key.
         /// </summary>
         bool[] KeyboardKeyStateRaw { get; }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
@@ -19,7 +20,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Variant values as resolved from blocktype/itemtype or entitytype
         /// </summary>
-        public Dictionary<string, string> Variant = new Dictionary<string, string>();
+        public OrderedDictionary<string, string> Variant = new OrderedDictionary<string, string>();
 
         /// <summary>
         /// The class handeling the object
@@ -92,6 +93,26 @@ namespace Vintagestory.API.Common
             AssetLocation newCode = Code.CopyWithPath(CodeWithoutParts(components.Length));
             for (int i = 0; i < components.Length; i++) newCode.Path += "-" + components[i];
             return newCode;
+        }
+
+        public AssetLocation CodeWithVariant(string type, string value)
+        {
+            StringBuilder sb = new StringBuilder(FirstCodePart());
+
+            foreach (var val in Variant)
+            {
+                sb.Append("-");
+
+                if (val.Key == type)
+                {
+                    sb.Append(value);
+                } else
+                {
+                    sb.Append(val.Value);
+                }
+            }
+
+            return new AssetLocation(Code.Domain, sb.ToString());
         }
 
         /// <summary>
@@ -172,7 +193,7 @@ namespace Vintagestory.API.Common
         /// <param name="input"></param>
         /// <param name="searchReplace"></param>
         /// <returns></returns>
-        public static AssetLocation FillPlaceHolder(AssetLocation input, Dictionary<string, string> searchReplace)
+        public static AssetLocation FillPlaceHolder(AssetLocation input, OrderedDictionary<string, string> searchReplace)
         {
             foreach (var val in searchReplace)
             {
@@ -188,7 +209,7 @@ namespace Vintagestory.API.Common
         /// <param name="input"></param>
         /// <param name="searchReplace"></param>
         /// <returns></returns>
-        public static string FillPlaceHolder(string input, Dictionary<string, string> searchReplace)
+        public static string FillPlaceHolder(string input, OrderedDictionary<string, string> searchReplace)
         {
             foreach (var val in searchReplace)
             {

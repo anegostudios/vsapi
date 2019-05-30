@@ -18,7 +18,7 @@ namespace Vintagestory.API.Client
         /// <param name="item"></param>
         /// <param name="textureName"></param>
         /// <returns></returns>
-        TextureAtlasPosition GetPosition(Item item, string textureName = null);
+        TextureAtlasPosition GetPosition(Item item, string textureName = null, bool returnNullWhenMissing = false);
         
     }
 
@@ -33,7 +33,7 @@ namespace Vintagestory.API.Client
         /// <param name="block"></param>
         /// <param name="textureName"></param>
         /// <returns></returns>
-        TextureAtlasPosition GetPosition(Block block, string textureName);
+        TextureAtlasPosition GetPosition(Block block, string textureName, bool returnNullWhenMissing = false);
         
     }
 

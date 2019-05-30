@@ -47,11 +47,11 @@ namespace Vintagestory.API.Common
         public Dictionary<string, AttachmentPoint> AttachmentPointsByCode = new Dictionary<string, AttachmentPoint>();
 
         /// <summary>
-        /// Attempts to resolve all references within the shape.  Logging them to the errorLogger
+        /// Attempts to resolve all references within the shape. Logs missing references them to the errorLogger
         /// </summary>
         /// <param name="errorLogger"></param>
-        /// <param name="shapeName"></param>
-        public void ResolveReferences(ILogger errorLogger, string shapeName)
+        /// <param name="shapeNameForLogging"></param>
+        public void ResolveReferences(ILogger errorLogger, string shapeNameForLogging)
         {
             Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>();
             CollectElements(Elements, elementsByName);
@@ -62,7 +62,7 @@ namespace Vintagestory.API.Common
                 for (int j = 0; j < anim.KeyFrames.Length; j++)
                 {
                     AnimationKeyFrame keyframe = anim.KeyFrames[j];
-                    ResolveReferences(errorLogger, shapeName, elementsByName, keyframe);
+                    ResolveReferences(errorLogger, shapeNameForLogging, elementsByName, keyframe);
 
                     foreach (AnimationKeyFrameElement kelem in keyframe.Elements.Values)
                     {

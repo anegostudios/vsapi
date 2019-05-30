@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
@@ -103,6 +104,9 @@ namespace Vintagestory.API.Client
 
                 resolveCache.Clear();
                 this.GridRecipes = resolvedGridRecipes.ToArray();
+
+                Random fixedRand = new Random(123);
+                this.GridRecipes.Shuffle(fixedRand);
             }
         }
 
@@ -119,7 +123,8 @@ namespace Vintagestory.API.Client
                 foreach (var val in allStacks)
                 {
                     if (val.Collectible.Code == null) continue;
-                    if (val.Collectible.WildCardMatch(ingred.Code)) matches.Add(new ItemStack(val.Collectible));
+                    if (val.Class != ingred.Type) continue;
+                    if (WildcardUtil.Match(ingred.Code, val.Collectible.Code, ingred.AllowedVariants)) matches.Add(new ItemStack(val.Collectible, ingred.Quantity));
                 }
 
                 resolveCache[ingred.Code] = matches.ToArray();
@@ -132,7 +137,7 @@ namespace Vintagestory.API.Client
                 foreach (var val in world.Blocks)
                 {
                     if (val?.Code == null) continue;
-                    if (val.WildCardMatch(ingred.Code)) matches.Add(new ItemStack(val));
+                    if (WildcardUtil.Match(ingred.Code, val.Code, ingred.AllowedVariants)) matches.Add(new ItemStack(val, ingred.Quantity));
                 }
             }
             else
@@ -140,7 +145,7 @@ namespace Vintagestory.API.Client
                 foreach (var val in world.Items)
                 {
                     if (val?.Code == null) continue;
-                    if (val.WildCardMatch(ingred.Code)) matches.Add(new ItemStack(val));
+                    if (WildcardUtil.Match(ingred.Code, val.Code, ingred.AllowedVariants)) matches.Add(new ItemStack(val, ingred.Quantity));
                 }
             }
 
@@ -238,8 +243,8 @@ namespace Vintagestory.API.Client
 
                     api.Render.RenderItemstackToGui(
                         ingred.ResolvedItemstack, 
-                        rx + size * 0.5f,// - 2, // no idea why the -2
-                        ry + size * 0.5f,// - 3, // no idea why the -3
+                        rx + size * 0.5f - 1,
+                        ry + size * 0.5f,
                         100, (float)size * 0.58f, ColorUtil.WhiteArgb,
                         true, false, true
                     );

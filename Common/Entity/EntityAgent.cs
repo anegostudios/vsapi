@@ -258,7 +258,7 @@ namespace Vintagestory.API.Common
                     byPlayer = (byEntity as EntityPlayer).Player;
 
                     World.PlaySoundAt(new AssetLocation("sounds/player/slap"), ServerPos.X, ServerPos.Y, ServerPos.Z, byPlayer);
-                    slot?.Itemstack?.Collectible.OnAttackingWith(byEntity.World, byEntity, slot);
+                    slot?.Itemstack?.Collectible.OnAttackingWith(byEntity.World, byEntity, this, slot);
                 }
 
                 if (Api.Side == EnumAppSide.Client && damage > 1 && !IsActivityRunning("invulnerable") && Properties.Attributes?["spawnDamageParticles"].AsBool() == true)
@@ -342,7 +342,7 @@ namespace Vintagestory.API.Common
         /// <param name="saturation">The amount of saturation recieved.</param>
         /// <param name="foodCat">The cat of food... err Category of food.</param>
         /// <param name="saturationLossDelay">The delay before the loss of saturation</param>
-        public virtual void ReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
+        public virtual void ReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10, float nutritionGainMultiplier = 1f)
         {
             if (!Alive) return;
 
@@ -350,7 +350,7 @@ namespace Vintagestory.API.Common
             {
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)
                 {
-                    behavior.OnEntityReceiveSaturation(saturation, foodCat, saturationLossDelay);
+                    behavior.OnEntityReceiveSaturation(saturation, foodCat, saturationLossDelay, nutritionGainMultiplier);
                 }
             }
         }
@@ -361,7 +361,7 @@ namespace Vintagestory.API.Common
         /// <param name="saturation">The amount of saturation recieved.</param>
         /// <param name="foodCat">The cat of food... err Category of food.</param>
         /// <param name="saturationLossDelay">The delay before the loss of saturation</param>
-        public virtual bool ShouldReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
+        public virtual bool ShouldReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10, float nutritionGainMultiplier = 1f)
         {
             return true;
         }

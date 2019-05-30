@@ -26,6 +26,11 @@ namespace Vintagestory.API.Config
         {
             Inst.LangEntries.Clear();
 
+            if (language != "en")
+            {
+                Load(logger, manager, "en"); // Default to english phrases for missing translated ones
+            }
+
             List<IAssetOrigin> origins = manager.Origins;
             for (int i = 0; i < origins.Count; i++)
             {
@@ -66,6 +71,10 @@ namespace Vintagestory.API.Config
         public static void PreLoad(ILogger logger, string assetsPath, string language = "en")
         {
             Inst = new Lang();
+
+            if (language != "en") PreLoad(logger, assetsPath, "en"); // Default to english phrases for missing translated ones
+
+
             string filePath = Path.Combine(assetsPath, "game", "lang", language + ".json");
 
             Dictionary<string, string> langEntries = new Dictionary<string, string>();

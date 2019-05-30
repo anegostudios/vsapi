@@ -31,5 +31,10 @@ namespace Vintagestory.API.Datastructures
         {
             return value.ToString();
         }
+
+        public override int GetHashCode()
+        {
+            return value.GetHashCode();
+        }
     }
 }

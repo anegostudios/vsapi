@@ -251,9 +251,9 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
-            if (!enabled) return;
-
             mouseDownOnSlider = false;
+
+            if (!enabled) return;
 
             if (onNewSliderValue != null && didChangeValue && triggerOnMouseUp)
             {
@@ -266,9 +266,9 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
-            if (!enabled) return;
-
             mouseOnSlider = Bounds.PointInside(api.Input.MouseX, api.Input.MouseY);
+
+            if (!enabled) return;
 
             if (mouseDownOnSlider)
             {
@@ -279,6 +279,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
+            if (!enabled) return;
+
             if (!Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) return;
             args.SetHandled(true);
 

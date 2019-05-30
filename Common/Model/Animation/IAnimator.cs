@@ -12,9 +12,19 @@ namespace Vintagestory.API.Common
 {
     public class AttachmentPointAndPose
     {
+        /// <summary>
+        /// The current model matrix for this attachment point for this entity for the current animation frame.
+        /// </summary>
         public float[] AnimModelMatrix;
 
+        /// <summary>
+        /// The pose shared across all entities using the same shape. Don't use. It's used internally for calculating the animation state. Once calculated, the value is copied over to AnimModelMatrix
+        /// </summary>
         public ElementPose CachedPose;
+
+        /// <summary>
+        /// The attachment point
+        /// </summary>
         public AttachmentPoint AttachPoint;
 
         public AttachmentPointAndPose()
@@ -78,7 +88,9 @@ namespace Vintagestory.API.Common
         /// Whether or not the animation is dirty.
         /// </summary>
         bool AnimationsDirty { get; set; }
-        
+
+        bool IsAnimationActive(params string[] anims);
+
         /// <summary>
         /// Starts an animation based on the AnimationMetaData
         /// </summary>

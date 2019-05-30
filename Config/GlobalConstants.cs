@@ -140,6 +140,10 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static int DamageLogChatGroup = -5;
         /// <summary>
+        /// Channel name for the damage chat log
+        /// </summary>
+        public static int InfoLogChatGroup = -6;
+        /// <summary>
         /// Special channel key typically to reply a Command inside the same the channel the player sent it
         /// </summary>
         public static int CurrentChatGroup = -2;

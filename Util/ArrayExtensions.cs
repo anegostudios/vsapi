@@ -10,6 +10,19 @@ namespace Vintagestory.API.Util
     {
         public delegate T fillCallback<T>(int index);
 
+        public static int IndexOf<T>(this T[] array, Func<T, bool> predicate)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (predicate(array[i]))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
         public static T[] RemoveEntry<T>(this T[] array, int index)
         {
             T[] cut = new T[array.Length - 1];
@@ -44,6 +57,9 @@ namespace Vintagestory.API.Util
 
         public static T[] Append<T>(this T[] array, T[] value)
         {
+            if (array == null) return null;
+            if (value == null) return array;
+
             T[] grown = new T[array.Length + value.Length];
             Array.Copy(array, grown, array.Length);
 

@@ -1,4 +1,5 @@
-﻿using Vintagestory.API;
+﻿using System;
+using Vintagestory.API;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
@@ -47,7 +48,7 @@ namespace Vintagestory.API.Common
         {
             base.Initialize(entityType, attributes);
 
-            if (attributes["selectFromRandomName"].Exists)
+            if ((DisplayName == null || DisplayName.Length == 0) && attributes["selectFromRandomName"].Exists)
             {
                 string[] randomName = attributes["selectFromRandomName"].AsStringArray();
 

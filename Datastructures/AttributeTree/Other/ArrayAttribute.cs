@@ -81,5 +81,17 @@ namespace Vintagestory.API.Datastructures
             return sb.ToString();
         }
 
+
+        public override int GetHashCode()
+        {
+            int hashcode = 0;
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (i == 0) hashcode = value[i].GetHashCode();
+                else hashcode ^= value[i].GetHashCode();
+            }
+
+            return hashcode;
+        }
     }
 }

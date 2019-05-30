@@ -48,7 +48,7 @@ namespace Vintagestory.API.Common
     /// Defines a complete path to an assets, including it's domain
     /// </summary>
     [TypeConverterAttribute(typeof(StringAssetLocationConverter))]
-    public class AssetLocation : IEquatable<AssetLocation>
+    public class AssetLocation : IEquatable<AssetLocation>, IComparable<AssetLocation>
     {
         public const char LocationSeparator = ':';
 
@@ -298,6 +298,11 @@ namespace Vintagestory.API.Common
         public override string ToString()
         {
             return Domain + LocationSeparator + Path;
+        }
+
+        public int CompareTo(AssetLocation other)
+        {
+            return ToString().CompareTo(other.ToString());
         }
     }
 

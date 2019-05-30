@@ -106,7 +106,7 @@ namespace Vintagestory.API.Common
         /// <param name="handHandling"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandling handling)
+        public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
         }

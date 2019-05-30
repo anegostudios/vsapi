@@ -604,5 +604,25 @@ namespace Vintagestory.API.Datastructures
             else
                 attributes[key] = value;
         }
+
+
+        public override int GetHashCode()
+        {
+            int hashcode = 0;
+            int i = 0;
+            foreach (var val in attributes)
+            {
+                if (i == 0)
+                {
+                    hashcode = val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                } else
+                {
+                    hashcode ^= val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                }
+                i++;
+            }
+
+            return hashcode;
+        }
     }
 }

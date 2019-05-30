@@ -8,6 +8,7 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public delegate double WalkSpeedSupplierDelegate();
 
     /// <summary>
     /// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary 
@@ -18,8 +19,9 @@ namespace Vintagestory.API.Common
     public abstract class AnimatorBase : IAnimator
     {
         public RunningAnimation[] anims;
-        protected EntityAgent entityAgent;
-        protected Entity entity;
+
+        WalkSpeedSupplierDelegate WalkSpeedSupplier;
+        Action<string> onAnimationStoppedListener = null;
 
         public float[] TransformationMatrices = new float[16 * GlobalConstants.MaxAnimatedElements];
 
@@ -49,13 +51,10 @@ namespace Vintagestory.API.Common
         }
 
         
-        public AnimatorBase(Entity entity, Animation[] Animations)
+        public AnimatorBase(WalkSpeedSupplierDelegate WalkSpeedSupplier, Animation[] Animations, Action<string> onAnimationStoppedListener = null)
         {
-            this.entity = entity;
-            if (entity is EntityAgent)
-            {
-                entityAgent = entity as EntityAgent;
-            }
+            this.WalkSpeedSupplier = WalkSpeedSupplier;
+            this.onAnimationStoppedListener = onAnimationStoppedListener;
 
             anims = new RunningAnimation[Animations == null ? 0 : Animations.Length];
 
@@ -84,7 +83,7 @@ namespace Vintagestory.API.Common
         {
             curAnimCount = 0;
 
-            double walkSpeed = entityAgent == null ? 1f : entityAgent.Controls.MovespeedMultiplier * entityAgent.GetWalkSpeedMultiplier(0.3);
+            double walkSpeed = WalkSpeedSupplier == null ? 1f : WalkSpeedSupplier(); // entityAgent.Controls.MovespeedMultiplier * entityAgent.GetWalkSpeedMultiplier(0.3);
 
             for (int i = 0; i < anims.Length; i++)
             {
@@ -114,7 +113,8 @@ namespace Vintagestory.API.Common
                     {
                         anim.Stop();
                         activeAnimationsByAnimCode.Remove(anim.Animation.Code);
-                        entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
+                        onAnimationStoppedListener?.Invoke(anim.Animation.Code);
+                        //entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
                     }
 
                     if (anim.Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd)
@@ -123,7 +123,10 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                if (!anim.Running) continue;
+                if (!anim.Running)
+                {
+                    continue;
+                }
 
                 bool shouldStop =
                     (anim.Iterations > 0 && anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop) ||
@@ -137,7 +140,8 @@ namespace Vintagestory.API.Common
                     if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop)
                     {
                         activeAnimationsByAnimCode.Remove(anim.Animation.Code);
-                        entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
+                        onAnimationStoppedListener?.Invoke(anim.Animation.Code);
+                        //entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
                     }
                     continue;
                 }

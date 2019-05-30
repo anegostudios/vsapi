@@ -84,6 +84,11 @@ namespace Vintagestory.API.Common
             
         }
 
+        public bool IsAnimationActive(params string[] anims)
+        {
+            return false;
+        }
+
         public void OnAnimationStopped(string code)
         {
             

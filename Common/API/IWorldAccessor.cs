@@ -129,7 +129,7 @@ namespace Vintagestory.API.Common
         CollisionTester CollisionTester { get; }
 
         /// <summary>
-        /// Just a random number generator (just a new Random())
+        /// Just a random number generator. Makes use of ThreadLocal for thread safety.
         /// </summary>
         Random Rand { get; }
 
@@ -456,7 +456,7 @@ namespace Vintagestory.API.Common
         /// <param name="range"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySelection"></param>
-        /// <param name="filter">Can be used to ignore certain blocks</param>
+        /// <param name="filter">Can be used to ignore certain blocks. Return false to ignore</param>
         void RayTraceForSelection(Vec3d fromPos, float pitch, float yaw, float range, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null);
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Vintagestory.API.Common
         /// <param name="ray"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySelection"></param>
-        /// <param name="filter">Can be used to ignore certain blocks</param>
+        /// <param name="filter">Can be used to ignore certain blocks. Return false to ignore</param>
         void RayTraceForSelection(Ray ray, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null);
 
 

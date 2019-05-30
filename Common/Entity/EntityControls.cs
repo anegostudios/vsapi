@@ -7,27 +7,80 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public delegate void OnEntityAction(EnumEntityAction action, ref EnumHandling handled);
+
+    /// <summary>
+    /// A players in-world action
+    /// </summary>
+    public enum EnumEntityAction
+    {
+        /// <summary>
+        /// Walk forwards
+        /// </summary>
+        Forward = 0,
+        /// <summary>
+        /// Walk backwards
+        /// </summary>
+        Backward = 1,
+        /// <summary>
+        /// Walk sideways left
+        /// </summary>
+        Left = 2,
+        /// <summary>
+        /// Walk sideways right
+        /// </summary>
+        Right = 3,
+        /// <summary>
+        /// Jump
+        /// </summary>
+        Jump = 4, 
+        /// <summary>
+        /// Sneak
+        /// </summary>
+        Sneak = 5, 
+        /// <summary>
+        /// Sprint mode
+        /// </summary>
+        Sprint = 6,
+        /// <summary>
+        /// Sit (unused)
+        /// </summary>
+        Sit = 7,
+        /// <summary>
+        /// Sit on the ground
+        /// </summary>
+        FloorSit = 8,
+        /// <summary>
+        /// Left mouse down
+        /// </summary>
+        LeftMouseDown = 9,
+        /// <summary>
+        /// Right mouse down
+        /// </summary>
+        RightMouseDown = 10,
+        /// <summary>
+        /// Fly or swim up
+        /// </summary>
+        Up = 11,
+        /// <summary>
+        /// Fly or swim down
+        /// </summary>
+        Down = 12
+    }
+
     /// <summary>
     /// The available controls to move around a character in a game world
     /// </summary>
     public class EntityControls
     {
-        bool forward;
-        bool backward;
-        bool left;
-        bool right;
-        bool jump;
-        bool sneak;
-        bool sprint;
-        bool sitting;
-        bool floorSitting;
+        /// <summary>
+        /// To execute a call handler registered by the engine. Don't use this one, use api.Input.InWorldAction instead.
+        /// </summary>
+        public OnEntityAction OnAction = (EnumEntityAction action, ref EnumHandling handled) => { };
 
-        bool leftMouseDown;
-        bool rightMouseDown;
+        bool[] flags = new bool[13];
 
-        // When flying or swimming
-        bool up;
-        bool down;
+        public bool[] Flags => flags;
 
         /// <summary>
         /// If true, the entity is either flying or swimming.
@@ -75,6 +128,11 @@ namespace Vintagestory.API.Common
         public bool IsAiming;
 
         /// <summary>
+        /// Whether or not the entity is currently stepping up a block
+        /// </summary>
+        public bool IsStepping;
+
+        /// <summary>
         /// If the player is currently using the currently held item in a special way (e.g. attacking with smithing hammer or eating an edible item)
         /// </summary>
         public EnumHandInteract HandUse;
@@ -99,22 +157,28 @@ namespace Vintagestory.API.Common
         /// Whether or not this entity is dirty.
         /// </summary>
         public bool Dirty;
+
         
+
         /// <summary>
         /// A check for if the entity is moving in the direction it's facing.
         /// </summary>
         public bool Forward {
-            get { return forward; }
-            set { forward = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Forward]; }
+            set {
+                AttemptToggleAction(EnumEntityAction.Forward, value);
+            }
         }
+
+
 
         /// <summary>
         /// A check for if the entity is moving the opposite direction it's facing.
         /// </summary>
         public bool Backward
         {
-            get { return backward; }
-            set { backward = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Backward]; }
+            set { AttemptToggleAction(EnumEntityAction.Backward, value); }
         }
 
         /// <summary>
@@ -122,8 +186,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Left
         {
-            get { return left; }
-            set { left = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Left]; }
+            set { AttemptToggleAction(EnumEntityAction.Left, value); }
         }
 
         /// <summary>
@@ -131,8 +195,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Right
         {
-            get { return right; }
-            set { right = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Right]; }
+            set { AttemptToggleAction(EnumEntityAction.Right, value); }
         }
 
         /// <summary>
@@ -140,8 +204,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Jump
         {
-            get { return jump; }
-            set { jump = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Jump]; }
+            set { AttemptToggleAction(EnumEntityAction.Jump, value); }
         }
 
         /// <summary>
@@ -149,8 +213,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Sneak
         {
-            get { return sneak; }
-            set { sneak = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Sneak]; }
+            set { AttemptToggleAction(EnumEntityAction.Sneak, value); }
         }
 
         /// <summary>
@@ -158,8 +222,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Sitting
         {
-            get { return sitting; }
-            set { sitting = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Sit]; }
+            set { AttemptToggleAction(EnumEntityAction.Sit, value); }
         }
 
         /// <summary>
@@ -167,8 +231,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool FloorSitting
         {
-            get { return floorSitting; }
-            set { floorSitting = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.FloorSit]; }
+            set { AttemptToggleAction(EnumEntityAction.FloorSit, value); }
         }
 
         /// <summary>
@@ -176,8 +240,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Sprint
         {
-            get { return sprint; }
-            set { sprint = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Sprint]; }
+            set { AttemptToggleAction(EnumEntityAction.Sprint, value); }
         }
 
         /// <summary>
@@ -185,8 +249,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Up
         {
-            get { return up; }
-            set { up = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Up]; }
+            set { AttemptToggleAction(EnumEntityAction.Up, value); }
         }
 
         /// <summary>
@@ -194,8 +258,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Down
         {
-            get { return down; }
-            set { down = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.Down]; }
+            set { AttemptToggleAction(EnumEntityAction.Down, value); }
         }
 
         /// <summary>
@@ -203,8 +267,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool LeftMouseDown
         {
-            get { return leftMouseDown; }
-            set { leftMouseDown = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.LeftMouseDown]; }
+            set { AttemptToggleAction(EnumEntityAction.LeftMouseDown, value); }
         }
 
         /// <summary>
@@ -212,9 +276,40 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool RightMouseDown
         {
-            get { return rightMouseDown; }
-            set { rightMouseDown = value; Dirty = true; }
+            get { return flags[(int)EnumEntityAction.RightMouseDown]; }
+            set { AttemptToggleAction(EnumEntityAction.RightMouseDown, value); }
         }
+
+        public bool this[EnumEntityAction action]
+        {
+            get
+            {
+                return flags[(int)action];
+            }
+            set
+            {
+                flags[(int)action] = value;
+            }
+        }
+
+
+
+        void AttemptToggleAction(EnumEntityAction action, bool on)
+        {
+            if (on)
+            {
+                EnumHandling handling = EnumHandling.PassThrough;
+                OnAction(action, ref handling);
+                if (handling != EnumHandling.PassThrough) return;
+                flags[(int)action] = true;
+            } else
+            {
+                flags[(int)action] = false;
+            }
+
+            Dirty = true;
+        }
+
 
         /// <summary>
         /// Calculates the movement vectors for the player.
@@ -228,7 +323,7 @@ namespace Vintagestory.API.Common
             double dz = (Forward ? -moveSpeed : 0) + (Backward ? moveSpeed : 0);
             double dx = (Right ? moveSpeed : 0) + (Left ? -moveSpeed : 0);
             
-            if (sitting) { dz = 0; dx = 0; }
+            if (this.Sitting) { dz = 0; dx = 0; }
 
             double cosPitch = Math.Cos(pos.Pitch);
             double sinPitch = Math.Sin(pos.Pitch);
@@ -264,23 +359,15 @@ namespace Vintagestory.API.Common
         /// <param name="controls">The controls to copy over.</param>
         public void SetFrom(EntityControls controls)
         {
-            Forward = controls.Forward;
-            Backward = controls.Backward;
-            Left = controls.Left;
-            Right = controls.Right;
-            Jump = controls.Jump;
-            Sneak = controls.Sneak;
-            Sprint = controls.Sprint;
-            Up = controls.Up;
-            Down = controls.Down;
+            for (int i = 0; i < controls.flags.Length; i++)
+            {
+                flags[i] = controls.flags[i];
+            }
+            
             FlyMode = controls.FlyMode;
             FlyPlaneLock = controls.FlyPlaneLock;
             IsFlying = controls.IsFlying;
             NoClip = controls.NoClip;
-            sitting = controls.sitting;
-            floorSitting = controls.floorSitting;
-            leftMouseDown = controls.leftMouseDown;
-            rightMouseDown = controls.rightMouseDown;
         }
 
 
@@ -288,59 +375,10 @@ namespace Vintagestory.API.Common
         /// Updates the data from the packet.
         /// </summary>
         /// <param name="pressed">Whether or not the key was pressed.</param>
-        /// <param name="key">the id of the key that was pressed.</param>
-        public void UpdateFromPacket(bool pressed, int key)
+        /// <param name="action">the id of the key that was pressed.</param>
+        public void UpdateFromPacket(bool pressed, int action)
         {
-            switch (key)
-            {
-                case 0:
-                    Forward = pressed;
-                    break;
-
-                case 1:
-                    Backward = pressed;
-                    break;
-
-                case 2:
-                    Left = pressed;
-                    break;
-
-                case 3:
-                    Right = pressed;
-                    break;
-
-                case 4:
-                    Jump = pressed;
-                    break;
-
-                case 5:
-                    Sneak = pressed;
-                    break;
-
-                case 6:
-                    Down = pressed;
-                    break;
-
-                case 7:
-                    Sprint = pressed;
-                    break;
-
-                case 8:
-                    sitting = pressed;
-                    break;
-
-                case 9:
-                    floorSitting = pressed;
-                    break;
-
-                case 10:
-                    leftMouseDown = pressed;
-                    break;
-
-                case 11:
-                    rightMouseDown = pressed;
-                    break;
-            }
+            flags[action] = pressed;
         }
         
         /// <summary>
@@ -348,17 +386,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public void StopAllMovement()
         {
-            Forward = false;
-            Backward = false;
-            Left = false;
-            Right = false;
-            Jump = false;
-            Sneak = false;
-            Sprint = false;
-            Up = false;
-            Down = false;
-            LeftMouseDown = false;
-            RightMouseDown = false;
+            for (int i = 0; i < flags.Length; i++) flags[i] = false;
         }
 
         /// <summary>
@@ -377,10 +405,10 @@ namespace Vintagestory.API.Common
                 (Sprint ? 64 : 0) |
                 (Up ? 128 : 0) |
                 (Down ? 256 : 0) |
-                (sitting ? 512 : 0) |
-                (floorSitting ? 1024 : 0) |
-                (leftMouseDown ? 2048 : 0) |
-                (rightMouseDown ? 4096 : 0) |
+                (flags[(int)EnumEntityAction.Sit] ? 512 : 0) |
+                (flags[(int)EnumEntityAction.FloorSit] ? 1024 : 0) |
+                (flags[(int)EnumEntityAction.LeftMouseDown] ? 2048 : 0) |
+                (flags[(int)EnumEntityAction.RightMouseDown] ? 4096 : 0) |
                 (IsClimbing ? 8192 : 0)
             ;
         }
@@ -388,23 +416,25 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Converts the int flags to movement controls.
         /// </summary>
-        /// <param name="flags">The compressed integer.</param>
-        public void FromInt(int flags)
+        /// <param name="flagsInt">The compressed integer.</param>
+        public void FromInt(int flagsInt)
         {
-            Forward = (flags & 1) > 0;
-            Backward = (flags & 2) > 0;
-            Left = (flags & 4) > 0;
-            Right = (flags & 8) > 0;
-            Jump = (flags & 16) > 0;
-            Sneak = (flags & 32) > 0;
-            Sprint = (flags & 64) > 0;
-            Up = (flags & 128) > 0;
-            Down = (flags & 256) > 0;
-            sitting = (flags & 512) > 0;
-            floorSitting = (flags & 1024) > 0;
-            leftMouseDown = (flags & 2048) > 0;
-            rightMouseDown = (flags & 4096) > 0;
-            IsClimbing = (flags & 8192) > 0;
+            Forward = (flagsInt & 1) > 0;
+            Backward = (flagsInt & 2) > 0;
+            Left = (flagsInt & 4) > 0;
+            Right = (flagsInt & 8) > 0;
+            Jump = (flagsInt & 16) > 0;
+            Sneak = (flagsInt & 32) > 0;
+            Sprint = (flagsInt & 64) > 0;
+            Up = (flagsInt & 128) > 0;
+            Down = (flagsInt & 256) > 0;
+
+            flags[(int)EnumEntityAction.Sit] = (flagsInt & 512) > 0;
+            flags[(int)EnumEntityAction.FloorSit] = (flagsInt & 1024) > 0;
+            flags[(int)EnumEntityAction.LeftMouseDown] = (flagsInt & 2048) > 0;
+            flags[(int)EnumEntityAction.RightMouseDown] = (flagsInt & 4096) > 0;
+            
+            IsClimbing = (flagsInt & 8192) > 0;
         }
 
 
@@ -418,6 +448,8 @@ namespace Vintagestory.API.Common
             int flags = reader.ReadInt32();
             if (!ignoreData) FromInt(flags);
         }
+
+
     }
 
 }

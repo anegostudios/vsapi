@@ -16,6 +16,7 @@ namespace Vintagestory.API.Client
     {
         ItemStack itemstack;
         double size;
+        
 
         Common.Action<ItemStack> onStackClicked;
 
@@ -58,13 +59,14 @@ namespace Vintagestory.API.Client
             LineRectangled bounds = BoundsPerLine[0];
 
             api.Render.RenderItemstackToGui(
-                itemstack, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f, 100, (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+                itemstack, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f + offY, 100, (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);
+
             if (bounds.PointInside(relx, rely))
             {
-                RenderItemstackTooltip(itemstack, renderX + relx, renderY + rely, deltaTime);
+                RenderItemstackTooltip(itemstack, renderX + relx, renderY + rely + offY, deltaTime);
             }
         }
 

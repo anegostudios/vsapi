@@ -11,6 +11,8 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface IRenderAPI
     {
+        int TextureSize { get; }
+
         /// <summary>
         /// List of all loaded frame buffers. To get the god rays frame buffer for exampple, do <code>Framebuffers[(int)EnumFrameBuffer.GodRays]</code>
         /// </summary>
@@ -182,7 +184,12 @@ namespace Vintagestory.API.Client
         /// Disables the Depth Test.
         /// </summary>
         void GLDisableDepthTest();
- 
+
+        /// <summary>
+        /// Toggle writing to the depth buffer
+        /// </summary>
+        /// <param name="on"></param>
+        void GLDepthMask(bool on);
 
         /// <summary>
         /// Regenerates the mip maps for the currently bound texture

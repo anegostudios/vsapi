@@ -520,6 +520,25 @@ namespace Vintagestory.API.Common.Entities
             ;
         }
 
+
+        /// <summary>
+        /// Makes a "basiclly equals" check on the position, motions and angles using a small tolerance of epsilon=0.0001f. Ignores motion
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="epsilon"></param>
+        /// <returns></returns>
+        public bool BasicallySameAsIgnoreMotion(EntityPos pos, float epsilon = 0.0001f)
+        {
+            return
+                Math.Abs(X - pos.x) < epsilon &&
+                Math.Abs(Y - pos.y) < epsilon &&
+                Math.Abs(Z - pos.z) < epsilon &&
+                Math.Abs(roll - pos.roll) < epsilon &&
+                Math.Abs(yaw - pos.yaw) < epsilon &&
+                Math.Abs(pitch - pos.pitch) < epsilon
+            ;
+        }
+
         /// <summary>
         /// Makes a "basiclly equals" check on position and motions using a small tolerance of epsilon=0.0001f. Ignores the entities angles.
         /// </summary>

@@ -46,6 +46,12 @@ namespace Vintagestory.API.Common
         [JsonRequired]
         public EnumModType Type;
 
+        /// <summary>
+        /// If the mod is a texture pack that changes topsoil grass textures, define the texture size here
+        /// </summary>
+        [JsonProperty]
+        public int TextureSize = 32;
+
         /// <summary> The name of this mod. For example "My Example Mod". </summary>
         [JsonRequired]
         public string Name;

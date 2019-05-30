@@ -15,6 +15,13 @@ namespace Vintagestory.API.Client
         IClientNetworkChannel RegisterChannel(string channelName);
 
         /// <summary>
+        /// Returns true if the server sent a channel id for given channel name. In other words, a server side counterpart for this channel probably has been set up.
+        /// </summary>
+        /// <param name="channelName"></param>
+        /// <returns></returns>
+        bool DidReceiveChannelId(string channelName);
+
+        /// <summary>
         /// Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
         /// </summary>
         /// <param name="x"></param>
@@ -75,7 +82,8 @@ namespace Vintagestory.API.Client
         /// <param name="entitySelection">the currently selected Entity (if there is one)</param>
         /// <param name="beforeUseType"></param>
         /// <param name="state">The state of the hand.</param>
+        /// <param name="firstEvent">Is it the first of this events for this block? (by default the client calls the interaction every second while the player holds down the right mouse button)</param>
         /// <param name="cancelReason">The reason we cancelled the use of an item (if there is  one)</param>
-        void SendHandInteraction(int mouseButton, BlockSelection blockSelection, EntitySelection entitySelection, EnumHandInteract beforeUseType, int state, EnumItemUseCancelReason cancelReason);
+        void SendHandInteraction(int mouseButton, BlockSelection blockSelection, EntitySelection entitySelection, EnumHandInteract beforeUseType, int state, bool firstEvent, EnumItemUseCancelReason cancelReason);
     }
 }

@@ -57,7 +57,7 @@ namespace Vintagestory.API.Server
         void MapChunkGeneration(MapChunkGeneratorDelegate handler, string forWorldType);
 
         /// <summary>
-        /// Event that is triggered whenever a new 8x8 section of column of chunks is being generated. It is always called before the ChunkGenerator and before the MapChunkGeneration event
+        /// Event that is triggered whenever a new 16x16 section of column of chunks is being generated. It is always called before the ChunkGenerator and before the MapChunkGeneration event
         /// </summary>
         /// <param name="handler"></param>
         /// <param name="forWorldType">For which world types to use this generator</param>
@@ -91,6 +91,11 @@ namespace Vintagestory.API.Server
         /// Called when a player joins
         /// </summary>
         event PlayerDelegate PlayerJoin;
+
+        /// <summary>
+        /// Called when a player joins and his client is now fully loaded and ready to play
+        /// </summary>
+        event PlayerDelegate PlayerNowPlaying;
 
         /// <summary>
         /// Called when a player intentionally leaves

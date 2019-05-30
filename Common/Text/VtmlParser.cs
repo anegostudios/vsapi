@@ -11,7 +11,15 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public delegate RichTextComponentBase Tag2RichTextDelegate(ICoreClientAPI capi, VtmlTagToken token, Stack<CairoFont> fontStack, Action<LinkTextComponent> didClickLink);
+
     public class VtmlUtil {
+
+        /// <summary>
+        /// You can register your own tag converters here
+        /// </summary>
+        public static Dictionary<string, Tag2RichTextDelegate> TagConverters = new Dictionary<string, Tag2RichTextDelegate>();
+
 
         public static RichTextComponentBase[] Richtextify(ICoreClientAPI capi, string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
         {
@@ -20,7 +28,7 @@ namespace Vintagestory.API.Common
             Stack<CairoFont> fontStack = new Stack<CairoFont>();
             fontStack.Push(baseFont);
 
-            VtmlToken[] tokens = VtmlParser.Tokenize(vtmlCode);
+            VtmlToken[] tokens = VtmlParser.Tokenize(capi.Logger, vtmlCode);
             Richtextify(capi, tokens, ref elems, fontStack, didClickLink);
 
             return elems.ToArray();
@@ -78,6 +86,13 @@ namespace Vintagestory.API.Common
                         break;
 
 
+                }
+
+
+                if (TagConverters.ContainsKey(tagToken.Name))
+                {
+                    RichTextComponentBase elem = TagConverters[tagToken.Name](capi, tagToken, fontStack, didClickLink);
+                    if (elem != null) elems.Add(elem);
                 }
 
             } else
@@ -155,7 +170,7 @@ namespace Vintagestory.API.Common
 
     public class VtmlParser
     {
-        public static VtmlToken[] Tokenize(string vtml)
+        public static VtmlToken[] Tokenize(ILogger errorLogger, string vtml)
         {
             List<VtmlToken> tokenized = new List<VtmlToken>();
 
@@ -199,7 +214,8 @@ namespace Vintagestory.API.Common
                 {
                     if (!insideTag)
                     {
-                        throw new Exception("Found closing tag char > but no tag was opened at " + pos + ". Use &gt;/&lt; if you want to display them as plain characters");
+                        errorLogger.Error("Found closing tag char > but no tag was opened at " + pos + ". Use &gt;/&lt; if you want to display them as plain characters. See debug log for full text.");
+                        errorLogger.VerboseDebug(vtml);
                     }
 
                     insideTag = false;
@@ -210,9 +226,11 @@ namespace Vintagestory.API.Common
                         if (tokenStack.Count == 0 || tokenStack.Peek().Name != tag.Substring(1))
                         {
                             if (tokenStack.Count == 0)
-                                throw new Exception("Found closing tag <" + tag.Substring(1) + "> at position " + pos + " but it was never opened");
+                                errorLogger.Error("Found closing tag <" + tag.Substring(1) + "> at position " + pos + " but it was never opened. See debug log for full text.");
                             else
-                                throw new Exception("Found closing tag <" + tag.Substring(1) + "> at position " + pos + " but <"+ tokenStack.Peek().Name + "> should be closed first");
+                                errorLogger.Error("Found closing tag <" + tag.Substring(1) + "> at position " + pos + " but <"+ tokenStack.Peek().Name + "> should be closed first. See debug log for full text.");
+
+                            errorLogger.VerboseDebug(vtml);
                         }
 
                         tokenStack.Pop();

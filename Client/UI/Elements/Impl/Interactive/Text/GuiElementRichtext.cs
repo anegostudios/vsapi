@@ -16,6 +16,8 @@ namespace Vintagestory.API.Client
         protected RichTextComponentBase[] Components;
         protected TextFlowPath[] flowPath;
 
+        public static bool DebugLogging = false;
+
         LoadedTexture richtTextTexture;
 
         public bool Debug = false;
@@ -58,6 +60,11 @@ namespace Vintagestory.API.Client
         public void CalcHeightAndPositions()
         {
             Bounds.CalcWorldBounds();
+
+            if (DebugLogging)
+            {
+                api.Logger.VerboseDebug("GuiElementRichtext: before bounds: {0}/{1}  w/h = {2},{3}", Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+            }
 
             double posX = 0;
             double posY = 0;
@@ -185,6 +192,14 @@ namespace Vintagestory.API.Client
             }
 
             this.flowPath = flowPathList.ToArray();
+
+            if (DebugLogging)
+            {
+                api.Logger.VerboseDebug("GuiElementRichtext: after bounds: {0}/{1}  w/h = {2},{3}", Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Logger.VerboseDebug("GuiElementRichtext: posY = {0}", posY);
+
+                api.Logger.VerboseDebug("GuiElementRichtext: framewidth/height: {0}/{1}", api.Render.FrameWidth, api.Render.FrameHeight);
+            }
         }
 
 

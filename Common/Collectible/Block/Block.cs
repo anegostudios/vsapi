@@ -496,7 +496,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="onBlockFace"></param>
         /// <returns></returns>
-        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace)
+        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, Random worldgenRandom)
         {
             Block block = blockAccessor.GetBlock(pos);
 
@@ -602,12 +602,12 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <returns></returns>
-        public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling)
+        public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling)
         {
             EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
             WalkBehaviors(
-                (BlockBehavior bh, ref EnumHandling hd) => bh.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, ref bhHandHandling, ref hd),
-                () => base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, ref bhHandHandling)
+                (BlockBehavior bh, ref EnumHandling hd) => bh.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref bhHandHandling, ref hd),
+                () => base.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref bhHandHandling)
             );
             handHandling = bhHandHandling;
         }
@@ -722,7 +722,6 @@ namespace Vintagestory.API.Common
         }
 
 
-
         /// <summary>
         /// Called when a survival player has broken the block. This method needs to remove the block.
         /// </summary>
@@ -782,6 +781,27 @@ namespace Vintagestory.API.Common
         }
 
 
+
+
+        public virtual BlockDropItemStack[] GetDropsForHandbook(IWorldAccessor world, BlockPos pos, IPlayer byPlayer)
+        {
+            return Drops;
+        }
+
+        protected BlockDropItemStack[] GetHandbookDropsFromBreakDrops(IWorldAccessor world, BlockPos pos, IPlayer player)
+        {
+            ItemStack[] stacks = GetDrops(world, pos, player);
+            if (stacks == null) return new BlockDropItemStack[0];
+
+            BlockDropItemStack[] drops = new BlockDropItemStack[stacks.Length];
+            for (int i = 0; i < stacks.Length; i++)
+            {
+                drops[i] = new BlockDropItemStack(stacks[i]);
+            }
+
+            return drops;
+        }
+
         /// <summary>
         /// Is called before a block is broken, should return what items this block should drop. Return null or empty array for no drops.
         /// </summary>
@@ -793,18 +813,19 @@ namespace Vintagestory.API.Common
         public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f)
         {
             bool preventDefault = false;
-            ItemStack[] stacks = null;
+            List<ItemStack> dropStacks = new List<ItemStack>();
 
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 EnumHandling handled = EnumHandling.PassThrough;
 
-                stacks = behavior.GetDrops(world, pos, byPlayer, dropQuantityMultiplier, ref handled);
+                ItemStack[] stacks = behavior.GetDrops(world, pos, byPlayer, dropQuantityMultiplier, ref handled);
+                if (stacks != null) dropStacks.AddRange(stacks);
                 if (handled == EnumHandling.PreventSubsequent) return stacks;
                 if (handled == EnumHandling.PreventDefault) preventDefault = true;
             }
 
-            if (preventDefault) return stacks;
+            if (preventDefault) return dropStacks.ToArray();
 
             if (Drops == null) return null;
             List<ItemStack> todrop = new List<ItemStack>();
@@ -1492,7 +1513,8 @@ namespace Vintagestory.API.Common
                 BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
                 if (be != null)
                 {
-                    return be.GetBlockInfo(forPlayer);
+                    string text = be.GetBlockInfo(forPlayer);
+                    if (text != null) return text;
                 }
             }
 
@@ -1540,7 +1562,7 @@ namespace Vintagestory.API.Common
         {
             dsc.Append(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + BlockMaterial) + "\n");
             //dsc.Append("Replaceable: " + Replaceable + "\n");
-            dsc.Append((Fertility > 0 ? ("Fertility: " + Fertility + "\n") : ""));
+            dsc.Append((Fertility > 0 ? (Lang.Get("Fertility: ") + Fertility + "\n") : ""));
 
             byte[] lightHsv = GetLightHsv(world.BlockAccessor, null, stack);
 

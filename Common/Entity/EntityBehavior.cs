@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
@@ -83,7 +84,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="saturation">The amount of saturation recieved.</param>
         /// <param name="foodCat">The category of food recieved.</param>
         /// <param name="saturationLossDelay">The delay before the loss of saturation.</param>
-        public virtual void OnEntityReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10)
+        public virtual void OnEntityReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10, float nutritionGainMultiplier = 1f)
         {
             
         }
@@ -174,6 +175,19 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data, ref EnumHandling handled)
         {
             
+        }
+
+        /// <summary>
+        /// Called when a player looks at the entity with interaction help enabled
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="es"></param>
+        /// <param name="player"></param>
+        /// <param name="handled"></param>
+        public virtual WorldInteraction[] GetInteractionHelp(IClientWorldAccessor world, EntitySelection es, IClientPlayer player, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return null;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Vintagestory.API.Client
 
     public delegate void OnGamePauseResume(bool isPaused);
     public delegate void ChatLineDelegate(int groupId, string message, EnumChatType chattype, string data);
-    public delegate void ClientChatLineDelegate(int groupId, ref string message);
+    public delegate void ClientChatLineDelegate(int groupId, ref string message, ref EnumHandling handled);
 
     /// <summary>
     /// OldBlock param may be null!
@@ -58,7 +58,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Called before a chat message is sent to the server
         /// </summary>
-        //event ClientChatLineDelegate OnSendChatMessage;
+        event ClientChatLineDelegate OnSendChatMessage;
 
         /// <summary>
         /// Called when a player joins. The Entity of the player might be null if out of range!

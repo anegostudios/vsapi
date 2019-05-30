@@ -45,10 +45,23 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The resulting ItemStack for this block being broken by a tool.
         /// </summary>
-        public IItemStack ResolvedItemstack;
+        public ItemStack ResolvedItemstack;
 
         static Random random = new Random();
 
+
+        public BlockDropItemStack()
+        {
+
+        }
+
+        public BlockDropItemStack(ItemStack stack, float chance = 1)
+        {
+            this.Type = stack.Class;
+            this.Code = stack.Collectible.Code;
+            Quantity.avg = chance;
+            ResolvedItemstack = stack;
+        }
 
         /// <summary>
         /// Sets itemstack.block or itemstack.item

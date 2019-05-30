@@ -20,6 +20,7 @@ namespace Vintagestory.API.Common
             recipe.Ingredient = Ingredient.Clone();
             recipe.Output = Output.Clone();
             recipe.Name = Name;
+            recipe.RecipeId = RecipeId;
 
             return recipe;
         }

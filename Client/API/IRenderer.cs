@@ -48,10 +48,10 @@
         /// Shadow near done:
         /// 1 = shadow map finish
         /// Ortho:
-        /// 
         /// 0.2 = Frame buffer debug screen
         /// 0.4 = Enitities
         /// 0.9 = held item ortho custom renderer
+        /// 0.95 = sleeping overlay
         /// 0.98 = bow/spear aiming reticle
         /// 1 = Gui manager
         /// 1.02 = crosshair and mouse cursor

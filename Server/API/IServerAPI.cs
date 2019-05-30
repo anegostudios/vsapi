@@ -52,6 +52,20 @@ namespace Vintagestory.API.Server
         /// <returns></returns>
         void ShutDown();
 
+        /// <summary>
+        /// Does a blocking wait until given thread is paused. Returns true if the thread was paused within given time
+        /// </summary>
+        /// <param name="threadname"></param>
+        /// <param name="waitTimeoutMs"></param>
+        /// <returns></returns>
+        bool PauseThread(string threadname, int waitTimeoutMs = 5000);
+
+        /// <summary>
+        /// Resumes a previously paused thread
+        /// </summary>
+        /// <param name="threadname"></param>
+        void ResumeThread(string threadname);
+
 
         long TotalReceivedBytes { get; }
         long TotalSentBytes { get; }

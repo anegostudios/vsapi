@@ -620,14 +620,25 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Returns whether this dialog absolutely requires the mouse to be ungrabbed.
-        /// If true, prevents mouse lock (from ImmersiveMouseMode setting) and world interactions with the mouse.
+        /// Gets whether it is preferred for the mouse to be not grabbed while this dialog is opened.
+        /// If true (default), the Alt button needs to be held to manually grab the mouse.
         /// </summary>
-        /// <returns></returns>
+        #pragma warning disable 0618
+        public virtual bool PrefersUngrabbedMouse =>
+            RequiresUngrabbedMouse();
+        #pragma warning restore 0618
+
+        [Obsolete("Use PrefersUngrabbedMouse instead")]
         public virtual bool RequiresUngrabbedMouse()
         {
             return true;
         }
+
+        /// <summary>
+        /// Gets whether ability to grab the mouse cursor is disabled while
+        /// this dialog is opened. For example, the escape menu. (Default: false)
+        /// </summary>
+        public virtual bool DisableMouseGrab => false;
 
         // If true and gui element is opened then all keystrokes (except escape) are only received by this gui element
         /// <summary>

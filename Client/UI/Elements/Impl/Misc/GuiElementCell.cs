@@ -58,6 +58,7 @@ namespace Vintagestory.API.Client
             {
                 cell.DetailTextFont = CairoFont.WhiteSmallText();
                 cell.DetailTextFont.Color[3] *= 0.8;
+                cell.DetailTextFont.LineHeightMultiplier = 1.1;
             }
 
         }
@@ -96,7 +97,7 @@ namespace Vintagestory.API.Client
 
         void ComposeButton(Context ctx, ImageSurface surface, bool pressed) {
 
-            double rightBoxWidth = scaled(unscaledRightBoxWidth);
+            double rightBoxWidth = ShowModifyIcons ? scaled(unscaledRightBoxWidth) : 0;
             pressedYOffset = 0;
             
             if (cellEntry.DrawAsButton)
@@ -120,7 +121,7 @@ namespace Vintagestory.API.Client
             titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.Title, Bounds.absPaddingX, Bounds.absPaddingY + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth);
 
             Font = cellEntry.DetailTextFont;
-            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.DetailText, Bounds.absPaddingX, Bounds.absPaddingY + cellEntry.DetailTextOffY + titleTextheight + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth);
+            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.DetailText, Bounds.absPaddingX, Bounds.absPaddingY + cellEntry.DetailTextOffY + titleTextheight + 2 + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth);
 
             if (cellEntry.RightTopText != null)
             {

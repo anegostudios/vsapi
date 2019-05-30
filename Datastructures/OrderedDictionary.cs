@@ -7,6 +7,7 @@ using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Datastructures
 {
+
     /// <summary>
     /// Same as your normal C# Dictionary but ensures that the order in which the items are added is remembered. That way you can iterate over the dictionary with the insert order intact or set/get elements by index.
     /// Taken from http://www.codeproject.com/Articles/18615/OrderedDictionary-T-A-generic-implementation-of-IO
@@ -14,7 +15,7 @@ namespace Vintagestory.API.Datastructures
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
-	public class OrderedDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>, IEnumerable
+	public class OrderedDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>, IEnumerable, IDictionary<TKey, TValue>
 	{
 		private static readonly string _keyTypeName = typeof(TKey).FullName;
 		private static readonly string _valueTypeName = typeof(TValue).FullName;
@@ -25,7 +26,7 @@ namespace Vintagestory.API.Datastructures
 		private IEqualityComparer<TKey> _comparer;
 		private int _initialCapacity;
 
-		public OrderedDictionary() : this(0, null)
+        public OrderedDictionary() : this(0, null)
 		{
 		}
 		public OrderedDictionary(int capacity) : this(capacity, null)
@@ -44,7 +45,15 @@ namespace Vintagestory.API.Datastructures
 			_comparer = comparer;
 		}
 
-		private Dictionary<TKey, TValue> Dictionary
+        public OrderedDictionary(OrderedDictionary<TKey, TValue> variant)
+        {
+            foreach (var val in variant)
+            {
+                this[val.Key] = val.Value;
+            }
+        }
+
+        private Dictionary<TKey, TValue> Dictionary
 		{
 			get
 			{
@@ -268,6 +277,8 @@ namespace Vintagestory.API.Datastructures
 			}
 		}
 
+        public bool IsReadOnly => false;
+
         void Add(KeyValuePair<TKey, TValue> item)
 		{
 			Add(item.Key, item.Value);
@@ -303,6 +314,37 @@ namespace Vintagestory.API.Datastructures
         IEnumerator IEnumerable.GetEnumerator()
         {
             return List.GetEnumerator();
+        }
+
+
+        void IDictionary<TKey, TValue>.Add(TKey key, TValue value)
+        {
+            this.Add(key, value);
+        }
+
+        void ICollection<KeyValuePair<TKey, TValue>>.Add(KeyValuePair<TKey, TValue> item)
+        {
+            Add(item.Key, item.Value);
+        }
+
+        bool ICollection<KeyValuePair<TKey, TValue>>.Contains(KeyValuePair<TKey, TValue> item)
+        {
+            return ContainsKey(item.Key);
+        }
+
+        void ICollection<KeyValuePair<TKey, TValue>>.CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
+        {
+            int i = 0;
+            foreach (var val in _dictionary)
+            {
+                array[arrayIndex + i] = new KeyValuePair<TKey, TValue>(val.Key, val.Value);
+                i++;
+            }
+        }
+
+        bool ICollection<KeyValuePair<TKey, TValue>>.Remove(KeyValuePair<TKey, TValue> item)
+        {
+            return Remove(item.Key);
         }
     }
 }

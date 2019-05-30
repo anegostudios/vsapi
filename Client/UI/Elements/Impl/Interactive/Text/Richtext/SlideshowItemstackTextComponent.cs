@@ -58,7 +58,14 @@ namespace Vintagestory.API.Client
                 AssetLocation[] groupWildCards = new AssetLocation[groups.Length];
                 for (int i = 0; i < groups.Length; i++)
                 {
-                    groupWildCards[i] = new AssetLocation(groups[i]);
+                    if (!groups[i].Contains(":"))
+                    {
+                        groupWildCards[i] = new AssetLocation(itemstackgroup.Collectible.Code.Domain, groups[i]);
+                    } else
+                    {
+                        groupWildCards[i] = new AssetLocation(groups[i]);
+                    }
+                    
                 }
 
                 foreach (var val in allstacks)

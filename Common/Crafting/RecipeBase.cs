@@ -12,6 +12,8 @@ namespace Vintagestory.API.Common
     /// <typeparam name="T">The resulting recipe type.</typeparam>
     public abstract class RecipeBase<T>
     {
+        public int RecipeId;
+
         public CraftingRecipeIngredient Ingredient;
         public JsonItemStack Output;
         public AssetLocation Name;

@@ -30,6 +30,12 @@ namespace Vintagestory.API.Server
         /// <param name="type"></param>
         IServerNetworkChannel RegisterMessageType(Type type);
 
+        /// <summary>
+        /// Registers a handler for when you send a packet with given messageId
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        IServerNetworkChannel RegisterMessageType<T>();
 
         /// <summary>
         /// Registers a handler for when you send a packet with given messageId

@@ -21,7 +21,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Variant values as resolved from blocktype/itemtype or entitytype
         /// </summary>
-        public Dictionary<string, string> Variant = new Dictionary<string, string>();
+        public OrderedDictionary<string, string> Variant = new OrderedDictionary<string, string>();
 
         /// <summary>
         /// The classification of the entity.

@@ -29,7 +29,7 @@ namespace Vintagestory.API.Common
         public bool ShouldRewind = false;
         public bool ShouldPlayTillEnd = false;
 
-        internal float EasingFactor;
+        public float EasingFactor;
         public float BlendedWeight;
 
         public ShapeElementWeights[] ElementWeights;
@@ -102,7 +102,7 @@ namespace Vintagestory.API.Common
             
             float newValue = (CurrentFrame + 30 * (ShouldRewind ? -dt : dt));
 
-            if (Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && newValue >= Animation.QuantityFrames)
+            if (Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && newValue >= Animation.QuantityFrames - 1)
             {
                 Iterations = 1;
                 return;
@@ -115,9 +115,10 @@ namespace Vintagestory.API.Common
             if (newValue >= Animation.QuantityFrames-1)
             {
                 Iterations++;
+                //Console.WriteLine("{0} >= {1}", newValue, Animation.QuantityFrames-1);
             }
 
-            CurrentFrame = GameMath.Mod(newValue, Animation.QuantityFrames);
+            CurrentFrame = GameMath.Mod(newValue, Animation.QuantityFrames - 1); // May 22nd, Tyron: Added a -1 here because the static translocator is glitchy otherwise. Why was it not there in the first place?
 
             if (Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop && Iterations > 0)
             {
@@ -126,7 +127,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        internal void Stop()
+        public void Stop()
         {
             Active = false;
             Running = false;
@@ -135,7 +136,7 @@ namespace Vintagestory.API.Common
             EasingFactor = 0;
         }
 
-        internal void EaseOut(float dt)
+        public void EaseOut(float dt)
         {
             EasingFactor = Math.Max(0, EasingFactor - (EasingFactor - 0) * dt * meta.EaseOutSpeed);
         }

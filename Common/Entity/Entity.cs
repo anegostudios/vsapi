@@ -243,6 +243,7 @@ namespace Vintagestory.API.Common.Entities
             get { return null; }
         }
 
+
         /// <summary>
         /// If the entity should despawn next server tick. By default returns !Alive for non-creatures and creatures that don't have a Decay behavior
         /// </summary>
@@ -722,7 +723,30 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
-        
+        /// <summary>
+        /// Called when a player looks at the entity with interaction help enabled
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="es"></param>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        public virtual WorldInteraction[] GetInteractionHelp(IClientWorldAccessor world, EntitySelection es, IClientPlayer player)
+        {
+            EnumHandling handled = EnumHandling.PassThrough;
+
+            List<WorldInteraction> interactions = new List<WorldInteraction>();
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                WorldInteraction[] wis = behavior.GetInteractionHelp(world, es, player, ref handled);
+                if (wis != null) interactions.AddRange(wis);
+
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
+
+            return interactions.ToArray();
+        }
+
 
         /// <summary>
         /// Called by client when a new server pos arrived
@@ -1198,10 +1222,10 @@ namespace Vintagestory.API.Common.Entities
         {
             if (!Alive)
             {
-                return Lang.Get(Code.Domain + ":item-dead-creature-" + Code.Path);
+                return Lang.GetMatching(Code.Domain + ":item-dead-creature-" + Code.Path);
             }
 
-            return Lang.Get(Code.Domain + ":item-creature-" + Code.Path);
+            return Lang.GetMatching(Code.Domain + ":item-creature-" + Code.Path);
         }
 
         /// <summary>

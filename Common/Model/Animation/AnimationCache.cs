@@ -69,10 +69,10 @@ namespace Vintagestory.API.Common
             if (animCache.TryGetValue(dictKey, out cacheObj))
             {
                 manager.Init(entity.Api, entity);
-
+                
                 animator = api.Side == EnumAppSide.Client ? 
-                    new ClientAnimator(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById) :
-                    new ServerAnimator(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById)
+                    ClientAnimator.CreateForEntity(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById) :
+                    ServerAnimator.CreateForEntity(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById)
                 ;
 
                 manager.Animator = animator;
@@ -89,8 +89,8 @@ namespace Vintagestory.API.Common
                 }
 
                 IAnimator animatorbase = api.Side == EnumAppSide.Client ?
-                    new ClientAnimator(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById) :
-                    new ServerAnimator(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById)
+                    ClientAnimator.CreateForEntity(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById) :
+                    ServerAnimator.CreateForEntity(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById)
                 ;
 
                 manager.Animator = animatorbase;

@@ -78,6 +78,11 @@ namespace Vintagestory.API.Client
 
         internal bool IsCached;
 
+        /// <summary>
+        /// Whether or not the Tab-Key down event should be used and consumed to cycle-focus individual gui elements
+        /// </summary>
+        public bool Tabbable = true;
+
         internal GuiComposer(ICoreClientAPI api, ElementBounds bounds, string dialogName)
         {
             staticElementsTexture = new LoadedTexture(api);
@@ -479,7 +484,7 @@ namespace Vintagestory.API.Client
                 if (args.Handled) break;
             }
 
-            if (haveFocus && !args.Handled && args.KeyCode == (int)GlKeys.Tab)
+            if (haveFocus && !args.Handled && args.KeyCode == (int)GlKeys.Tab && Tabbable)
             {
                 GuiElement elem = CurrentTabIndexElement;
                 if (elem != null && MaxTabIndex > 0)

@@ -429,5 +429,17 @@ namespace Vintagestory.API.Common
             worldForNewMapping.Logger.Warning("Cannot fix itemstack mapping, item/block id {0} not found in old mapping list. Will delete stack.", Id);
             return false;
         }
+
+
+        public override int GetHashCode()
+        {
+            if (Class == EnumItemClass.Item)
+            {
+                return 0 ^ this.Id ^ Attributes.GetHashCode();
+            } else
+            {
+                return (1<<17) ^ this.Id ^ Attributes.GetHashCode();
+            }
+        }
     }
 }

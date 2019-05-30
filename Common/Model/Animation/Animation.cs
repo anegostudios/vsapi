@@ -94,6 +94,11 @@ namespace Vintagestory.API.Common
 
             if (KeyFrames.Length == 0) return;
 
+            if (jointsById.Count > 30)
+            {
+                throw new Exception("Max joint cap of 30 reached. Sorry, you'll have to simplify your model if you want it to be animated. (until some programmer finds another solution to pass on more joint data through shader uniforms)");
+            }
+
             for (int i = 0; i < resolvedKeyFrames.Length; i++)
             {
                 jointsDone.Clear();

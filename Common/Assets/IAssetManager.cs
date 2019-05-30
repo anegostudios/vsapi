@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Compression;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
@@ -58,7 +59,7 @@ namespace Vintagestory.API.Common
         IAsset TryGet(AssetLocation Location);
 
         /// <summary>
-        /// Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched.
+        /// Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched. The returned list is considered unsorted.
         /// </summary>
         /// <param name="pathBegins"></param>
         /// <param name="domain"></param>
@@ -69,6 +70,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Searches for all assets in given basepath and uses JSON.NET to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
+        /// The returned list is considered unsorted.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="logger"></param>
@@ -78,8 +80,9 @@ namespace Vintagestory.API.Common
         Dictionary<AssetLocation, T> GetMany<T>(ILogger logger, string pathBegins, string domain = null);
 
 
+
         /// <summary>
-        /// Returns all asset locations that begins with given path and domain. If no domain is specified, all domains will be searched.
+        /// Returns all asset locations that begins with given path and domain. If no domain is specified, all domains will be searched. The returned list is considered unsorted.
         /// </summary>
         /// <param name="pathBegins"></param>
         /// <param name="domain"></param>

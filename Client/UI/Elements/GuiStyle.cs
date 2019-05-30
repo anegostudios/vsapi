@@ -118,7 +118,7 @@
         /// <summary>
         /// The light background color for dialogs.
         /// </summary>
-        public static double[] DialogLightBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.35 };
+        public static double[] DialogLightBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.45 };
         /// <summary>
         /// The default background color for dialogs.
         /// </summary>
@@ -148,7 +148,7 @@
         /// <summary>
         /// The default text color for any given dialog.
         /// </summary>
-        public static double[] DialogDefaultTextColor = new double[] { 224 / 255.0, 207 / 255.0, 187 / 255.0, 1 };
+        public static double[] DialogDefaultTextColor = new double[] { 232 / 255.0, 214 / 255.0, 193 / 255.0, 1 };
         /// <summary>
         /// The color of the error text.
         /// </summary>

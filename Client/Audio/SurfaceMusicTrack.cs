@@ -224,10 +224,14 @@ namespace Vintagestory.API.Client
         {
             loading = true;
             musicEngine.LoadTrack(Location, (sound) => {
-                sound.Start();
+                if (sound != null)
+                {
+                    sound.Start();
 
-                if (!loading) { sound.Stop(); sound.Dispose(); }
-                else Sound = sound;
+                    if (!loading) { sound.Stop(); sound.Dispose(); }
+                    else Sound = sound;
+                }
+
                 loading = false;
             });
         }

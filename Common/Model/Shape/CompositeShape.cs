@@ -121,7 +121,7 @@ namespace Vintagestory.API.Common
                             Base = newLocation.Clone();
                         }
                         
-                        alternates[origLength + i] = new CompositeShape() { Base = newLocation };
+                        alternates[origLength + i] = new CompositeShape() { Base = newLocation, rotateX = rotateX, rotateY = rotateY, rotateZ=rotateZ };
 
                         i++;
                     }

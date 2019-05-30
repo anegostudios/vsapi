@@ -41,8 +41,21 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static bool DebugSoundDispose = false;
 
+        /// <summary>
+        /// If true, will print the stack trace on some of the blockaccessor if something attempts to get or set blocks outside of its available chunks
+        /// </summary>
+        public static bool DebugOutOfRangeBlockAccess = false;
+
+        /// <summary>
+        /// If true, will print allocation trace whenever a new task was enqueued to the thread pool
+        /// </summary>
+        public static bool DebugThreadPool = false;
+
+        
 
         public static int MainThreadId;
+        public static int ServerMainThreadId;
+
 
         public static float GUIScale;
 

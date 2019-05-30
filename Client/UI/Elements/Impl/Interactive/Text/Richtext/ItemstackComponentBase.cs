@@ -29,6 +29,8 @@ namespace Vintagestory.API.Client
 
         ElementBounds parentBounds;
 
+        public double offY = 0;
+
         public ItemstackComponentBase(ICoreClientAPI capi) : base(capi)
         {
             this.capi = capi;

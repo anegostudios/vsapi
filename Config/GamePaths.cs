@@ -42,6 +42,7 @@ namespace Vintagestory.API.Config
         public static string BinariesMods { get { return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Mods"); } }
 
         public static string Config { get { return DataPath; } }
+        public static string ModConfig { get { return Path.Combine(DataPath, "ModConfig"); } }
         public static string Cache { get { return Path.Combine(DataPath, "Cache"); } }
         public static string Saves { get { return Path.Combine(DataPath, "Saves"); } }
         public static string OldSaves { get { return Path.Combine(DataPath, "OldSaves"); } }
