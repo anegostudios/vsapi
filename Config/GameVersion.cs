@@ -20,7 +20,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.9.10";
+        public const string OverallVersion = "1.9.14";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -53,7 +53,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.9.10";
+        public const string NetworkVersion = "1.9.11";
 
         /// <summary>
         /// Version of the savegame database

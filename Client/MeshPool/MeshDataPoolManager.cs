@@ -73,7 +73,15 @@ namespace Vintagestory.API.Client
 
             if (location == null)
             {
-                MeshDataPool pool = MeshDataPool.AllocateNewPool(capi, defaultVertexPoolSize, defaultIndexPoolSize, maxPartsPerPool, customFloats, customBytes, customInts);
+                int vertexSize = Math.Max(modeldata.VerticesCount+1, defaultVertexPoolSize);
+                int indexSize = Math.Max(modeldata.IndicesCount+1, defaultIndexPoolSize);
+
+                if (vertexSize > defaultIndexPoolSize)
+                {
+                    capi.World.Logger.Warning("Chunk (or some other mesh source at origin: {0}) exceeds default geometric complexity maximum of {1} vertices and {2} indices. You must be loading some very complex objects (#v = {3}, #i = {4}). Adjusted Pool size accordingly.", modelOrigin, defaultVertexPoolSize, defaultIndexPoolSize, modeldata.VerticesCount, modeldata.IndicesCount);
+                }
+
+                MeshDataPool pool = MeshDataPool.AllocateNewPool(capi, vertexSize, indexSize, maxPartsPerPool, customFloats, customBytes, customInts);
                 pool.poolOrigin = modelOrigin;
 
                 masterPool.AddModelDataPool(pool);

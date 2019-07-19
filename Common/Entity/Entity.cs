@@ -610,6 +610,13 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        /// <summary>
+        /// Called when the entity collided with something solid and <see cref="Collided"/> was false before
+        /// </summary>
+        public virtual void OnCollided()
+        {
+
+        }
 
         /// <summary>
         /// Called when the entity got in touch with a liquid

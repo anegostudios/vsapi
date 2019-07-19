@@ -146,7 +146,7 @@ namespace Vintagestory.API.Common
         public EnumItemStorageFlags StorageFlags = EnumItemStorageFlags.General;
 
         /// <summary>
-        /// Determines on whether an object floats on liquids or not. Water has a density of 1000. Not yet implemented
+        /// Determines on whether an object floats on liquids or not. Water has a density of 1000
         /// </summary>
         public int MaterialDensity = 2000;
 

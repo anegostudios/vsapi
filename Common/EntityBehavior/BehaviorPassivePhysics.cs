@@ -86,6 +86,7 @@ namespace Vintagestory.API.Common
             bool feetInLiquidBefore = entity.FeetInLiquid;
             bool onGroundBefore = entity.OnGround;
             bool swimmingBefore = entity.Swimming;
+            bool onCollidedBefore = entity.Collided;
 
             Block belowBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - 0.05f), (int)pos.Z);
 
@@ -115,9 +116,7 @@ namespace Vintagestory.API.Common
                 if (lastcodepart != null)
                 {
                     Vec3i normali = Cardinal.FromInitial(lastcodepart)?.Normali;
-
                     
-
                     if (normali != null)
                     {
                         float pushstrength = 0.0003f * 1000f / Math.Max(500, entity.MaterialDensity);
@@ -216,7 +215,10 @@ namespace Vintagestory.API.Common
             block = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + entity.SwimmingOffsetY), (int)pos.Z);
             entity.Swimming = block.IsLiquid();
 
-
+            if (!onCollidedBefore && entity.Collided)
+            {
+                entity.OnCollided();
+            }
 
             if (!onGroundBefore && entity.OnGround)
             {

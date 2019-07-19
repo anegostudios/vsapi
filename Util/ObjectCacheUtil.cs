@@ -11,6 +11,15 @@ namespace Vintagestory.API.Util
 
     public static class ObjectCacheUtil
     {
+        public static T TryGet<T>(ICoreAPI api, string key)
+        {
+            object obj;
+            if (api.ObjectCache.TryGetValue(key, out obj))
+            {
+                return (T)obj;
+            }
+            return default(T);
+        }
 
         public static T GetOrCreate<T>(ICoreAPI api, string key, CreateCachableObjectDelegate<T> onRequireCreate)
         {

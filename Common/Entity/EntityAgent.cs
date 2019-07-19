@@ -327,11 +327,13 @@ namespace Vintagestory.API.Common
         public override bool ReceiveDamage(DamageSource damageSource, float damage)
         {
             bool ret = base.ReceiveDamage(damageSource, damage);
-            
-            if (ret && this is EntityPlayer && damageSource.GetSourcePosition() != null && World.Side == EnumAppSide.Server)
+
+            // What is this for? It causes players to glitch into walls when attacked and standing against a wall
+            // (according to the logs apparently something related to explosion damage fling?)
+            /*if (ret && this is EntityPlayer && damageSource.GetSourcePosition() != null && World.Side == EnumAppSide.Server)
             {
                 ((IServerPlayer)World.PlayerByUid(((EntityPlayer)this).PlayerUID)).SendPositionToClient();
-            }
+            }*/
 
             return ret;
         }
