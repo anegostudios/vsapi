@@ -24,7 +24,7 @@ namespace Vintagestory.API.Client
 
 
         GuiElementStaticText titleElement;
-        GuiElementStaticText descriptionElement;
+        GuiElementRichtext descriptionElement;
 
         LoadedTexture texture;
         double maxWidth;
@@ -44,8 +44,12 @@ namespace Vintagestory.API.Client
             texture = new LoadedTexture(capi);
 
             ElementBounds textBounds = bounds.CopyOnlySize();
+            ElementBounds descBounds = textBounds.CopyOffsetedSibling(ItemStackSize + 50, MarginTop, -ItemStackSize - 50, 0);
+            descBounds.WithParent(bounds);
 
-            descriptionElement = new GuiElementStaticText(capi, "", EnumTextOrientation.Left, textBounds.CopyOffsetedSibling(ItemStackSize + 50, MarginTop, -ItemStackSize - 50, 0), Font);
+            descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
+            //new GuiElementStaticText(capi, "", EnumTextOrientation.Left, textBounds.CopyOffsetedSibling(ItemStackSize + 50, MarginTop, -ItemStackSize - 50, 0), Font);
+            descriptionElement.zPos = 1001;
 
             CairoFont titleFont = Font.Clone();
             titleFont.FontWeight = FontWeight.Bold;
@@ -62,16 +66,10 @@ namespace Vintagestory.API.Client
 
         void RecalcBounds(string title, string desc)
         {
-            double currentWidth = 0;
-            double currentHeight = 0;
-            string[] lines = desc.Split(new char[] { '\n' });
-            
-            
+            descriptionElement.BeforeCalcBounds();
 
-            for (int i = 0; i < lines.Length; i++)
-            {
-                currentWidth = Math.Max(currentWidth, descriptionElement.Font.GetTextExtents(lines[i]).Width / RuntimeEnv.GUIScale + 10);
-            }
+            double currentWidth = descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10;
+            double currentHeight = 0;
 
             currentWidth += 40 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3;
             currentWidth = Math.Max(currentWidth, titleElement.Font.GetTextExtents(title).Width / RuntimeEnv.GUIScale + 10);
@@ -85,11 +83,11 @@ namespace Vintagestory.API.Client
             descriptionElement.Bounds.CalcWorldBounds();
 
             // Height depends on the width
-            double lineheight = descriptionElement.GetMultilineTextHeight();
-            currentHeight = Math.Max(lineheight, scaled(55) + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
+            double descTextHeight = descriptionElement.Bounds.fixedHeight;
+            currentHeight = Math.Max(descTextHeight, scaled(25) + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
             titleElement.Bounds.fixedHeight = currentHeight;
             descriptionElement.Bounds.fixedHeight = currentHeight;
-            Bounds.fixedHeight = currentHeight / RuntimeEnv.GUIScale;
+            Bounds.fixedHeight = scaled(25) + currentHeight / RuntimeEnv.GUIScale;
         }
 
 
@@ -103,7 +101,7 @@ namespace Vintagestory.API.Client
 
 
             titleElement.SetValue(title);
-            descriptionElement.SetValue(desc);
+            descriptionElement.SetNewText(desc, Font);
 
             RecalcBounds(title, desc);
 
@@ -177,10 +175,12 @@ namespace Vintagestory.API.Client
 
             api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, Bounds, 1000);
 
+            descriptionElement.RenderInteractiveElements(deltaTime);
+
             double offset = (int)scaled(30 + ItemStackSize/2);
 
             api.Render.RenderItemstackToGui(
-                curSlot.Itemstack,
+                curSlot,
                 (int)Bounds.renderX + offset,
                 (int)Bounds.renderY + offset + (int)scaled(MarginTop), 
                 1000 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 2, 
@@ -244,6 +244,8 @@ namespace Vintagestory.API.Client
             base.Dispose();
 
             texture.Dispose();
+            descriptionElement?.Dispose();
+            titleElement?.Dispose();
         }
     }
 }

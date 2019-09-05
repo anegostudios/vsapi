@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -11,11 +12,6 @@ namespace Vintagestory.API.Common
 {
     public class EntityPlayer : EntityHumanoid
     {
-        /// <summary>
-        /// Physics update watcher for the player.
-        /// </summary>
-        public Action<float> PhysicsUpdateWatcher;
-
         /// <summary>
         /// The block or blocks currently selected by the player.
         /// </summary>
@@ -226,6 +222,23 @@ namespace Vintagestory.API.Common
 
                 if (moving)
                 {
+
+                    if (FeetInLiquid)
+                    {
+                        double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
+                        double height = (CollisionBox.Y2 - CollisionBox.Y1) * 0.75f;
+
+                        EntityPos pos = LocalPos;
+                        SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y + 0, pos.Z - width / 2);
+                        SplashParticleProps.AddPos.Set(width, 0.5, width);
+
+                        SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 60f, 0, (float)pos.Motion.Z * 60f);
+                        SplashParticleProps.QuantityMul = 0.005f;
+
+                        World.SpawnParticles(SplashParticleProps);
+                    }
+
+
                     if (stepHeight > prevStepHeight)
                     {
                         if (direction == -1)
@@ -239,6 +252,8 @@ namespace Vintagestory.API.Common
                             AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
                             AssetLocation soundinside = World.Blocks[blockIdInside].Sounds?.Inside;
 
+                            Block block = World.Blocks[blockIdInside];
+
                             if (soundwalk != null)
                             {
                                 if (blockIdInside != blockIdUnder && soundinside != null)
@@ -251,12 +266,14 @@ namespace Vintagestory.API.Common
                                     World.PlaySoundAt(soundwalk, this, player, true, 12, volume);
                                 }
                             }
+
                         }
                         direction = 1;
                     }
                     else
                     {
                         direction = -1;
+                        
                     }
 
                 }
@@ -480,20 +497,29 @@ namespace Vintagestory.API.Common
                 {
                     OnLoaded = () =>
                     {
-                    Pos.SetPos(x, y, z);
-                    ServerPos.SetPos(x, y, z);
-                    PreviousServerPos.SetPos(-99, -99, -99);
-                    PositionBeforeFalling.Set(x, y, z);
-                    Pos.Motion.Set(0, 0, 0);
-                    if (this is EntityPlayer)
-                    {
-                    sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
-                    }
+                        Pos.SetPos(x, y, z);
+                        ServerPos.SetPos(x, y, z);
+                        PreviousServerPos.SetPos(-99, -99, -99);
+                        PositionBeforeFalling.Set(x, y, z);
+                        Pos.Motion.Set(0, 0, 0);
+                        if (this is EntityPlayer)
+                        {
+                            sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
+                            IServerPlayer player = (this as EntityPlayer).Player as IServerPlayer;
+                            int chunksize = World.BlockAccessor.ChunkSize;
+                            player.CurrentChunkSentRadius = 0;
+                            
+                            sapi.Event.RegisterCallback((bla) => {
+                                sapi.WorldManager.SendChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player, false);
+                                player.CurrentChunkSentRadius = 0;
+                            }, 50);
 
-                    WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+                        }
 
-                    Teleporting = false;
-                    }
+                        WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+
+                        Teleporting = false;
+                    },
                 });
 
             }
@@ -515,6 +541,34 @@ namespace Vintagestory.API.Common
             }
 
             return Lang.Get(Code.Domain + ":item-creature-" + Code.Path);
+        }
+
+        public override void FromBytes(BinaryReader reader, bool forClient)
+        {
+            base.FromBytes(reader, forClient);
+
+            lastRunningHeldUseAnimation = WatchedAttributes.GetString("lrHeldUseAnim");
+            lastRunningHeldHitAnimation = WatchedAttributes.GetString("lrHeldHitAnim");
+            lastRunningRightHeldIdleAnimation = WatchedAttributes.GetString("lrRightHeldIdleAnim");
+        }
+
+        public override void ToBytes(BinaryWriter writer, bool forClient)
+        {
+            if (lastRunningHeldUseAnimation != null)
+            {
+                WatchedAttributes.SetString("lrHeldUseAnim", lastRunningHeldUseAnimation);
+            }
+            if (lastRunningHeldHitAnimation != null)
+            {
+                WatchedAttributes.SetString("lrHeldHitAnim", lastRunningHeldHitAnimation);
+            }
+            if (lastRunningRightHeldIdleAnimation != null)
+            {
+                WatchedAttributes.SetString("lrRightHeldIdleAnim", lastRunningRightHeldIdleAnimation);
+            }
+
+
+            base.ToBytes(writer, forClient);
         }
     }
 }

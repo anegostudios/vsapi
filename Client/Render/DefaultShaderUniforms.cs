@@ -38,11 +38,14 @@ namespace Vintagestory.API.Client
 
         public Vec3f SunPositionScreen;
         public Vec3f SunPosition3D;
+        public Vec3f LightPosition3D;
+
         public Vec3f PlayerViewVector;
         public float DamageVignetting;
 
         public float FlagFogDensity;
         public float FlatFogStartYPos;
+        public int Dusk;
 
 
         public float WaterStillCounter = 0f;
@@ -55,11 +58,13 @@ namespace Vintagestory.API.Client
         public float GlobalWorldWarp = 0f;
 
         public Vec3f PlayerPos = new Vec3f();
+        internal float SkyDaylight;
 
         public DefaultShaderUniforms()
         {
             SunPositionScreen = new Vec3f();
             SunPosition3D = new Vec3f();
+            LightPosition3D = new Vec3f();
             PlayerViewVector = new Vec3f();
             DamageVignetting = 0;
             PointLightsCount = 0;
@@ -71,24 +76,29 @@ namespace Vintagestory.API.Client
         public void Update(float dt, ICoreClientAPI capi)
         {
             IGameCalendar calendar = capi.World.Calendar;
+            dt *= calendar.SpeedOfTime / 60f;
+            if (capi.IsGamePaused) dt = 0;
 
-            WaterStillCounter = (WaterStillCounter + dt / 1.5f * calendar.SpeedOfTime / 60f) % 2f;
-            WaterFlowCounter = (WaterFlowCounter + dt / 1.5f * calendar.SpeedOfTime / 60f) % 141f;
-            WaterWaveCounter += dt * 0.75f * calendar.SpeedOfTime / 60f;
+            WaterStillCounter = (WaterStillCounter + dt / 1.5f) % 2f;
+            WaterFlowCounter = (WaterFlowCounter + dt / 1.5f) % 141f;
+            WaterWaveCounter += dt * 0.75f;
 
-            WindWaveCounter += 1.5f * dt * calendar.SpeedOfTime / 60f;
-            FogWaveCounter += 0.1f * dt * calendar.SpeedOfTime / 60f;
+            WindWaveCounter += 1.5f * dt;
+            FogWaveCounter += 0.1f * dt;
 
-            if (WindWaveCounter > 2 * GameMath.TWOPI)
+            if (WindWaveCounter > 8 * GameMath.TWOPI)
             {
-                WindWaveCounter -= 2 * GameMath.TWOPI;
+                WindWaveCounter -= 8 * GameMath.TWOPI;
             }
 
-            PlayerPos.Set((float)(capi.World.Player.Entity.CameraPos.X - 300000), (float)capi.World.Player.Entity.CameraPos.Y, (float)(capi.World.Player.Entity.CameraPos.Z - 300000));
+            // This used to be Entity.CameraPos but that seems to lag behind?
+            // iirc the "-capi.World.BlockAccessor.MapSizeX / 2" is there so that the greatest accuracy is in the map middle
+            PlayerPos.Set((float)(capi.World.Player.Entity.Pos.X - capi.World.BlockAccessor.MapSizeX / 2), (float)capi.World.Player.Entity.Pos.Y, (float)(capi.World.Player.Entity.Pos.Z - capi.World.BlockAccessor.MapSizeZ / 2));
 
             // For godrays shader
             PlayerViewVector = EntityPos.GetViewVector(capi.Input.MousePitch, capi.Input.MouseYaw);
-            
+
+            Dusk = capi.World.Calendar.Dusk ? 1 : 0;
 
 
             // updated by RenderSunMoon.cs

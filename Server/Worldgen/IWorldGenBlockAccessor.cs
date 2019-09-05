@@ -18,7 +18,7 @@ namespace Vintagestory.API.Server
         /// <param name="pos"></param>
         /// <param name="oldBlockid"></param>
         /// <param name="newBlockId"></param>
-        void ScheduleBlockLightUpdate(BlockPos pos, ushort oldBlockid, ushort newBlockId);
+        void ScheduleBlockLightUpdate(BlockPos pos, int oldBlockid, int newBlockId);
 
         /// <summary>
         /// This will run all scheduled block light updates at once. Should be called after all lighting has been completed.

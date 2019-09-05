@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
-    public class KnappingRecipe : SingleLayerVoxelRecipe<KnappingRecipe>, ByteSerializable
+    public class KnappingRecipe : SingleLayerVoxelRecipe<KnappingRecipe>, IByteSerializable
     {
         /// <summary>
         /// Creates a deep copy

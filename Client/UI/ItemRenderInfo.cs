@@ -1,6 +1,7 @@
 ﻿
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
@@ -26,6 +27,7 @@ namespace Vintagestory.API.Client
         /// The texture to be used when rendering. Should probalby be the texture id of the block or item texture atlas
         /// </summary>
         public int TextureId;
+        public int TextureWidth;
         /// <summary>
         /// For discarding fragments with alpha value below this threshold
         /// </summary>
@@ -34,6 +36,20 @@ namespace Vintagestory.API.Client
         /// (Currently) not used.
         /// </summary>
         public bool HalfTransparent;
+
+        public LoadedTexture OverlayTexture;
+
+        public float OverlayOpacity;
+
+
+        public void SetRotOverlay(ICoreClientAPI capi, float opacity)
+        {
+            if (OverlayTexture == null) OverlayTexture = new LoadedTexture(capi);
+            
+            capi.Render.GetOrLoadTexture(new AssetLocation("textures/gui/rot.png"), ref OverlayTexture);
+
+            this.OverlayOpacity = opacity;
+        }
     }
 
 }

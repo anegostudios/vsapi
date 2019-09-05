@@ -14,7 +14,16 @@ namespace Vintagestory.API.Common
     {
         public int RecipeId;
 
+        /// <summary>
+        /// For recipes with only one ingredient...
+        /// </summary>
         public CraftingRecipeIngredient Ingredient;
+
+        /// <summary>
+        /// ...or alternatively for recipes with multiple ingredients
+        /// </summary>
+        public CraftingRecipeIngredient[] Ingredients;
+
         public JsonItemStack Output;
         public AssetLocation Name;
         public bool Enabled = true;

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
@@ -68,8 +69,14 @@ namespace Vintagestory.API.Common
         public float AnimationSpeed = 1f;
         [JsonProperty]
         public bool MulWithWalkSpeed = false;
+        /// <summary>
+        /// A multiplier applied to the weight value to "ease in" the animation. Choose a high value for looping animations or it will be glitchy
+        /// </summary>
         [JsonProperty]
         public float EaseInSpeed = 10f;
+        /// <summary>
+        /// A multiplier applied to the weight value to "ease out" the animation. Choose a high value for looping animations or it will be glitchy
+        /// </summary>
         [JsonProperty]
         public float EaseOutSpeed = 10f;
         [JsonProperty]
@@ -98,12 +105,25 @@ namespace Vintagestory.API.Common
                 withActivitiesMerged |= (int)TriggeredBy.OnControls[i];
             }
 
+            CodeCrc32 = GetCrc32(Code);
+
+            return this;
+        }
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(StreamingContext context)
+        {
             Animation = Animation.ToLowerInvariant();
             if (Code == null) Code = Animation;
 
-            CodeCrc32 = GameMath.Crc32(/*Animation*/Code); // why is this not Code?! This breaks proper syncing of anims from server to client
-            
-            return this;
+            CodeCrc32 = GetCrc32(Code); 
+        }
+
+
+        public static uint GetCrc32(string animcode)
+        {
+            int mask = ~(1 << 31); // Because I fail to get the sign bit transmitted correctly over the network T_T
+            return (uint)(GameMath.Crc32(animcode.ToLowerInvariant()) & mask);
         }
 
         public bool Matches(int currentActivities)
@@ -230,7 +250,9 @@ namespace Vintagestory.API.Common
             }
 
             animdata.MulWithWalkSpeed = reader.ReadBoolean();
-            
+
+            animdata.Init();
+
             return animdata;
         }
 

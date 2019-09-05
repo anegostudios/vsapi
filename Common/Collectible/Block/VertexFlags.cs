@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -14,10 +15,14 @@ namespace Vintagestory.API.Common
     public class VertexFlags
     {
         public const int GlowLevelBitMask = 0xFF;
-        public const int ZOffsetBitMask = 0x3 << 8;
-        public const int WindWaveBitMask = 1 << 11;
+        public const int ZOffsetBitMask = 0x7 << 8;
+        public const int GrassWindWaveBitMask = 1 << 11;
         public const int WaterWaveBitMask = 1 << 12;
         public const int LowContrastBitMask = 1 << 13;
+        public const int HasNormalBitMask = 1 << 14;
+        public const int NormalBitMask = 0xFFF << 15;
+        public const int LeavesWindWaveBitMask = 1 << 27;
+
 
         int all;
 
@@ -32,15 +37,100 @@ namespace Vintagestory.API.Common
             {
                 all = value;
                 GlowLevel = (byte)(value & 0xFF);
-                ZOffset = (byte)((value >> 8) & 0x3);
-                WindWave = ((value >> 11) & 1) != 0;
+                ZOffset = (byte)((value >> 8) & 0x7);
+                GrassWindWave = ((value >> 11) & 1) != 0;
                 WaterWave = ((value >> 12) & 1) != 0;
                 LowContrast = ((value >> 13) & 1) != 0;
+                hasNormal = ((value >> 14) & 1) != 0;
+                Normal = (byte)((value >> 15) & 0xFFF);
+                LeavesWindWave = ((value >> 27) & 1) != 0;
             }
         }
 
+        public int AllWithoutWaveFlags
+        {
+            get { return all & ~GrassWindWaveBitMask & ~LeavesWindWaveBitMask; }
+        }
+
         byte glowLevel, zOffset;
-        bool windWave, waterWave, lowContrast;
+        int normal;
+        bool grassWindWave, leavesWindWave, waterWave, lowContrast, hasNormal;
+
+        // Bit 15: x-sign
+        // Bit 16, 17, 18: x-value
+
+        // Bit 19: y-sign
+        // Bit 20, 21, 22: y-value
+
+        // Bit 23: z-sign
+        // Bit 24, 25, 26: z-value
+        public static int NormalToPackedInt(Vec3d normal)
+        {
+            return NormalToPackedInt(normal.X, normal.Y, normal.Z);
+        }
+
+        public static int NormalToPackedInt(double x, double y, double z)
+        {
+            int xN = (int)Math.Abs(x * 7);
+            int yN = (int)Math.Abs(y * 7);
+            int zN = (int)Math.Abs(z * 7);
+
+            return
+                (x < 0 ? 1 : 0) |
+                (xN << 1) |
+                ((y < 0 ? 1 : 0) << 4) |
+                (yN << 5) |
+                ((z < 0 ? 1 : 0) << 8) |
+                (zN << 9)
+            ;
+        }
+
+        public static int NormalToPackedInt(Vec3f normal)
+        {
+            int xN = (int)Math.Abs(normal.X * 7);
+            int yN = (int)Math.Abs(normal.Y * 7);
+            int zN = (int)Math.Abs(normal.Z * 7);
+
+            return
+                (normal.X < 0 ? 1 : 0) |
+                (xN << 1) |
+                ((normal.Y < 0 ? 1 : 0) << 4) |
+                (yN << 5) |
+                ((normal.Z < 0 ? 1 : 0) << 8) |
+                (zN << 9)
+            ;
+        }
+
+        public static void PackedIntToNormal(int packedNormal, float[] intoFloats)
+        {
+            int x = (packedNormal >> 1) & 0x7;
+            int y = (packedNormal >> 5) & 0x7;
+            int z = (packedNormal >> 9) & 0x7;
+
+            int signx = packedNormal & 1;
+            int signy = (packedNormal >> 4) & 1;
+            int signz = (packedNormal >> 8) & 1;
+
+            intoFloats[0] = (1.0f - signx * 2) * x / 7.0f;
+            intoFloats[1] = (1.0f - signy * 2) * y / 7.0f;
+            intoFloats[2] = (1.0f - signz * 2) * z / 7.0f;
+        }
+
+        public static void PackedIntToNormal(int packedNormal, double[] intoFloats)
+        {
+            int x = (packedNormal >> 1) & 0x7;
+            int y = (packedNormal >> 5) & 0x7;
+            int z = (packedNormal >> 9) & 0x7;
+
+            int signx = packedNormal & 1;
+            int signy = (packedNormal >> 4) & 1;
+            int signz = (packedNormal >> 8) & 1;
+
+            intoFloats[0] = (1.0f - signx * 2) * x / 7.0f;
+            intoFloats[1] = (1.0f - signy * 2) * y / 7.0f;
+            intoFloats[2] = (1.0f - signz * 2) * z / 7.0f;
+        }
+
 
         // Bits 0..7
         [JsonProperty]
@@ -57,7 +147,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        // Bits 8..10
+        // Bits 8, 9 and 10
         [JsonProperty]
         public byte ZOffset
         {
@@ -74,15 +164,15 @@ namespace Vintagestory.API.Common
 
         // Bit 11
         [JsonProperty]
-        public bool WindWave
+        public bool GrassWindWave
         {
             get
             {
-                return windWave;
+                return grassWindWave;
             }
             set
             {
-                windWave = value;
+                grassWindWave = value;
                 UpdateAll();
             }
         }
@@ -117,6 +207,59 @@ namespace Vintagestory.API.Common
             }
         }
 
+        // Bit 14
+        [JsonProperty]
+        public bool HasNormal
+        {
+            get
+            {
+                return hasNormal;
+            }
+            set
+            {
+                hasNormal = value;
+                UpdateAll();
+            }
+        }
+
+        // Bit 15: x-sign
+        // Bit 16, 17, 18: x-value
+
+        // Bit 19: y-sign
+        // Bit 20, 21, 22: y-value
+
+        // Bit 23: z-sign
+        // Bit 24, 25, 26: z-value
+        [JsonProperty]
+        public int Normal
+        {
+            get
+            {
+                return normal;
+            }
+            set
+            {
+                normal = value;
+                UpdateAll();
+            }
+        }
+
+        // Bit 27
+        [JsonProperty]
+        public bool LeavesWindWave
+        {
+            get
+            {
+                return leavesWindWave;
+            }
+            set
+            {
+                leavesWindWave = value;
+                UpdateAll();
+            }
+        }
+
+
         public VertexFlags()
         {
 
@@ -127,23 +270,31 @@ namespace Vintagestory.API.Common
             All = flags;
         }
 
-        public VertexFlags(byte glowLevel, byte zOffset, bool windWave, bool waterWave, bool lowContrast)
+        public VertexFlags(byte glowLevel, byte zOffset, bool grassWindWave, bool leavesWindWave, bool waterWave, bool lowContrast, bool hasNormal, int normal)
         {
             this.glowLevel = glowLevel;
             this.zOffset = zOffset;
-            this.windWave = windWave;
+            this.grassWindWave = grassWindWave;
             this.waterWave = waterWave;
             this.lowContrast = lowContrast;
+            this.normal = normal;
+            this.hasNormal = hasNormal;
+            this.leavesWindWave = leavesWindWave;
+
             UpdateAll();
         }
 
         void UpdateAll()
         {
             all = glowLevel
-                  | ((zOffset & 0x3) << 8)
-                  | (windWave ? 1 : 0) << 11
+                  | ((zOffset & 0x7) << 8)
+                  | (grassWindWave ? 1 : 0) << 11
                   | (waterWave ? 1 : 0) << 12
-                  | (lowContrast ? 1 : 0) << 13;
+                  | (lowContrast ? 1 : 0) << 13
+                  | (hasNormal ? 1 : 0) << 14
+                  | ((normal & 0xFFF) << 15)
+                  | (leavesWindWave ? 1 : 0) << 27
+            ;
         }
 
         /// <summary>

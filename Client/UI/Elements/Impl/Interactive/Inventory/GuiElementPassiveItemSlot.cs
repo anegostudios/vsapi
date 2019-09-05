@@ -69,7 +69,7 @@ namespace Vintagestory.API.Client
                 double absSlotWidth = scaled(unscaledSlotSize);
                 double absItemstackSize = scaled(unscaledItemSize);
                 double offset = absSlotWidth / 2;
-                api.Render.RenderItemstackToGui(slot.Itemstack, Bounds.renderX + offset, Bounds.renderY + offset, 450, (float)scaled(unscaledItemSize), ColorUtil.WhiteArgb);
+                api.Render.RenderItemstackToGui(slot, Bounds.renderX + offset, Bounds.renderY + offset, 450, (float)scaled(unscaledItemSize), ColorUtil.WhiteArgb);
             }
         }
     }

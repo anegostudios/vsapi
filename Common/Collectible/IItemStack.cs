@@ -79,9 +79,10 @@ namespace Vintagestory.API.Common
         /// Returns a multiline description text of the item
         /// </summary>
         /// <param name="world"></param>
+        /// <param name="InSlot"></param>
         /// <param name="debug">Whether to show additional debug info</param>
         /// <returns></returns>
-        string GetDescription(IWorldAccessor world, bool debug = false);
+        string GetDescription(IWorldAccessor world, ItemSlot inSlot, bool debug = false);
 
         /// <summary>
         /// Creates a deep copy of the itemstack

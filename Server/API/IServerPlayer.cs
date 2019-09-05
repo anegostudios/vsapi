@@ -30,6 +30,10 @@ namespace Vintagestory.API.Server
         /// </summary>
         string IpAddress { get; }
 
+        /// <summary>
+        /// The language this player is currently using
+        /// </summary>
+        string LanguageCode { get; }
 
         /// <summary>
         /// Returns the players ping time in seconds. Returns NaN if not connected or when on client side.

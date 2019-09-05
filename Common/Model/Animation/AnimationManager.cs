@@ -100,14 +100,9 @@ namespace Vintagestory.API.Common
                 throw new Exception("anim meta data code cannot be null!");
             }
 
-            if (animdata.CodeCrc32 == 0)
-            {
-                animdata.CodeCrc32 = GameMath.Crc32(animdata.Animation.ToLowerInvariant());
-            }
-
             AnimationsDirty = true;
             ActiveAnimationsByAnimCode[animdata.Animation] = animdata;
-            entity.SetDebugAnimsInfo();
+            entity.UpdateDebugAttributes();
 
             return true;
         }
@@ -160,7 +155,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            entity.SetDebugAnimsInfo();
+            entity.UpdateDebugAttributes();
         }
 
 
@@ -176,56 +171,48 @@ namespace Vintagestory.API.Common
             {
                 ActiveAnimationsByAnimCode.Clear();
             }
-
+            
+            
             string active = "";
             int mask = ~(1 << 31); // Because I fail to get the sign bit transmitted correctly over the network T_T
 
             for (int i = 0; i < activeAnimationsCount; i++)
             {
-                int crc32 = activeAnimations[i];
-                bool found = false;
+                uint crc32 = (uint)(activeAnimations[i] & mask);
 
-                foreach (var val in entity.Properties.Client.AnimationsByMetaCode)
+                AnimationMetaData animmetadata;
+                if (entity.Properties.Client.AnimationsByCrc32.TryGetValue(crc32, out animmetadata))
                 {
-                    if ((val.Value.CodeCrc32 & mask) == (crc32 & mask))
-                    {
-                        if (ActiveAnimationsByAnimCode.ContainsKey(val.Value.Code)) break;
-                        val.Value.AnimationSpeed = activeAnimationSpeeds[i];
+                    if (ActiveAnimationsByAnimCode.ContainsKey(animmetadata.Code)) break;
+                    animmetadata.AnimationSpeed = activeAnimationSpeeds[i];
 
-                        ActiveAnimationsByAnimCode[val.Value.Animation] = val.Value;
-                        found = true;
-                        break;
-
-                    }
+                    ActiveAnimationsByAnimCode[animmetadata.Animation] = animmetadata;
+                    continue;
                 }
-                if (found) continue;
 
-                for (int j = 0; j < entity.Properties.Client.LoadedShape.Animations.Length; j++)
-                {
-                    Animation anim = entity.Properties.Client.LoadedShape.Animations[j];
-                    if ((anim.CodeCrc32 & mask) == (crc32 & mask))
+                Animation anim;
+                if (entity.Properties.Client.LoadedShape.AnimationsByCrc32.TryGetValue(crc32, out anim)) {
+                    
+                    if (ActiveAnimationsByAnimCode.ContainsKey(anim.Code)) break;
+
+                    string code = anim.Code == null ? anim.Name.ToLowerInvariant() : anim.Code;
+                    active += ", " + code;
+                    AnimationMetaData animmeta = null;
+                    entity.Properties.Client.AnimationsByMetaCode.TryGetValue(code, out animmeta);
+
+                    if (animmeta == null)
                     {
-                        if (ActiveAnimationsByAnimCode.ContainsKey(anim.Code)) break;
-
-                        string code = anim.Code == null ? anim.Name.ToLowerInvariant() : anim.Code;
-                        active += ", " + code;
-                        AnimationMetaData animmeta = null;
-                        entity.Properties.Client.AnimationsByMetaCode.TryGetValue(code, out animmeta);
-
-                        if (animmeta == null)
+                        animmeta = new AnimationMetaData()
                         {
-                            animmeta = new AnimationMetaData()
-                            {
-                                Code = code,
-                                Animation = code,
-                                CodeCrc32 = anim.CodeCrc32
-                            };
-                        }
-
-                        animmeta.AnimationSpeed = activeAnimationSpeeds[i];
-
-                        ActiveAnimationsByAnimCode[anim.Code] = animmeta;
+                            Code = code,
+                            Animation = code,
+                            CodeCrc32 = anim.CodeCrc32
+                        };
                     }
+
+                    animmeta.AnimationSpeed = activeAnimationSpeeds[i];
+
+                    ActiveAnimationsByAnimCode[anim.Code] = animmeta;
                 }
             }
         }

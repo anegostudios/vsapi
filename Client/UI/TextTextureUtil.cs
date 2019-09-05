@@ -76,7 +76,7 @@ namespace Vintagestory.API.Client
 
             elTeBa.textUtil.AutobreakAndDrawMultilineTextAt(ctx, font, text, background.Padding, background.Padding, width, orientation);
 
-            int textureId = capi.Gui.LoadCairoTexture(surface, true);
+            //int textureId = capi.Gui.LoadCairoTexture(surface, true); - WTF! What was this for?!
 
             capi.Gui.LoadOrUpdateCairoTexture(surface, true, ref loadedTexture);
 

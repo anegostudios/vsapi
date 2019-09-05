@@ -142,7 +142,12 @@ namespace Vintagestory.API.Client
             }
 
 
-            textOffsetY = 0;//       (bounds.InnerHeight - normalText.Font.GetFontExtents().Height) / 2;
+            // Pretty elaborate way of vertically centering the text. Le sigh.
+            FontExtents fontex = normalText.Font.GetFontExtents();
+            TextExtents textex = normalText.Font.GetTextExtents(normalText.GetText());
+            double resetY = -fontex.Ascent - textex.YBearing;
+            textOffsetY = resetY + (normalText.Bounds.InnerHeight + textex.YBearing) / 2;
+
             normalText.Bounds.fixedY += textOffsetY;
             normalText.ComposeElements(ctx, surface);
             normalText.Bounds.fixedY -= textOffsetY;

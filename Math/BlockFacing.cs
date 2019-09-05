@@ -137,6 +137,7 @@ namespace Vintagestory.API.MathTools
         Vec3f normalf;
         byte normalb;
         int normalPacked;
+        int normalPackedFlags;
         Vec3f planeCenter;
         string code;
         EnumAxis axis;
@@ -177,6 +178,11 @@ namespace Vintagestory.API.MathTools
         /// Normalized normal vector in format GL_INT_2_10_10_10_REV
         /// </summary>
         public int NormalPacked { get { return normalPacked; } }
+
+        /// <summary>
+        /// Normalized normal vector packed into 3x4=12 bytes total and bit shifted by 13 bits, for use in meshdata flags data
+        /// </summary>
+        public int NormalPackedFlags { get { return normalPackedFlags; } }
 
         /// <summary>
         /// Returns the center position of this face
@@ -221,6 +227,9 @@ namespace Vintagestory.API.MathTools
                 | (axis == EnumAxis.X ? 1 : 0) << 4
                 | (facingVector.X < 0 ? 1 : 0) << 5
             );
+
+            normalPackedFlags = VertexFlags.NormalToPackedInt(normalf) << 15;
+
             this.planeCenter = planeCenter;
             this.axis = axis;
         }
@@ -437,10 +446,11 @@ namespace Vintagestory.API.MathTools
 
 
 
-        public static BlockFacing FromVector(Vec3f vec)
+        public static BlockFacing FromNormal(Vec3f vec)
         {
             float smallestAngle = GameMath.PI;
             BlockFacing facing = null;
+
 
             for (int i = 0; i < ALLFACES.Length; i++)
             {
@@ -462,6 +472,11 @@ namespace Vintagestory.API.MathTools
         {
             float smallestAngle = GameMath.PI;
             BlockFacing facing = null;
+
+            double len = GameMath.Sqrt(x * x + y * y + z * z);
+            x /= len;
+            y /= len;
+            z /= len;
 
             for (int i = 0; i < ALLFACES.Length; i++)
             {

@@ -32,12 +32,16 @@ namespace Vintagestory.API
         {
             Mat4d.Copy(values[count], p);
             count++;
+
+            if (count >= values.Length) throw new Exception("Stack matrix overflow");
         }
 
         public void Push()
         {
             Mat4d.Copy(values[count], Top);
             count++;
+
+            if (count >= values.Length) throw new Exception("Stack matrix overflow");
         }
 
 
@@ -45,6 +49,7 @@ namespace Vintagestory.API
         {
             double[] ret = values[count - 1];
             count--;
+            if (count < 0) throw new Exception("Stack matrix underflow");
             return ret;
         }
 

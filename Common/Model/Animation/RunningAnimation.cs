@@ -84,6 +84,7 @@ namespace Vintagestory.API.Common
         {
             dt *= meta.GetCurrentAnimationSpeed(walkspeed);
 
+            
             if (Active || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
             {
                 EasingFactor = Math.Min(1f, EasingFactor + (1f - EasingFactor) * dt * meta.EaseInSpeed);
@@ -92,34 +93,40 @@ namespace Vintagestory.API.Common
             {
                 EasingFactor = Math.Max(0, EasingFactor - (EasingFactor - 0) * dt * meta.EaseOutSpeed);
             }
+            
+            float newFrame = (CurrentFrame + 30 * (ShouldRewind ? -dt : dt));
 
-            if (!Active && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd && Iterations >= 1)
+            if (!Active && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd && (Iterations >= 1 || newFrame >= Animation.QuantityFrames - 1))
             {
                 EasingFactor = 0;
+                CurrentFrame = Animation.QuantityFrames - 1;
                 return;
+            }
+
+            if (Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && newFrame >= Animation.QuantityFrames - 1)
+            {
+                Iterations = 1;
+                CurrentFrame = Animation.QuantityFrames - 1;
+                return;
+            }
+
+
+            if (newFrame <= 0)
+            {
+                Iterations--;
+                CurrentFrame = 0;
+                return;
+            }
+
+            CurrentFrame = newFrame;
+
+            if (CurrentFrame >= Animation.QuantityFrames - 1)
+            {
+                Iterations++;
+                CurrentFrame = GameMath.Mod(newFrame, Animation.QuantityFrames - 1);
             }
 
             
-            float newValue = (CurrentFrame + 30 * (ShouldRewind ? -dt : dt));
-
-            if (Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && newValue >= Animation.QuantityFrames - 1)
-            {
-                Iterations = 1;
-                return;
-            }
-
-            if (newValue < 0)
-            {
-                Iterations--;
-            }
-            if (newValue >= Animation.QuantityFrames-1)
-            {
-                Iterations++;
-                //Console.WriteLine("{0} >= {1}", newValue, Animation.QuantityFrames-1);
-            }
-
-            CurrentFrame = GameMath.Mod(newValue, Animation.QuantityFrames - 1); // May 22nd, Tyron: Added a -1 here because the static translocator is glitchy otherwise. Why was it not there in the first place?
-
             if (Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop && Iterations > 0)
             {
                 CurrentFrame = Animation.QuantityFrames - 1;

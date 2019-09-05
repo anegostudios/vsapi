@@ -9,12 +9,12 @@ namespace Vintagestory.API.Common
 {
     public enum EnumFoodCategory
     {
-        Fruit,
-        Vegetable,
-        Protein,
-        Grain,
-        Dairy,
-        Unknown
+        Fruit = 0,
+        Vegetable = 1,
+        Protein = 2,
+        Grain = 3,
+        Dairy = 4,
+        Unknown = 5
     }
 
     public class FoodNutritionProperties
@@ -27,7 +27,14 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The saturation restored by the food.
         /// </summary>
-        public float Saturation = 0f;
+        public float Satiety = 0f;
+
+        [Obsolete("Use Satiety instead.")]
+        public float Saturation
+        {
+            get { return Satiety; }
+            set { Satiety = value; }
+        }
 
         /// <summary>
         /// The delay before that extra saturation starts to go away.
@@ -38,7 +45,7 @@ namespace Vintagestory.API.Common
         /// The health restored by the food.
         /// </summary>
         public float Health = 0f;
-
+        
         /// <summary>
         /// The item that was eaten.
         /// </summary>
@@ -53,7 +60,7 @@ namespace Vintagestory.API.Common
             return new FoodNutritionProperties()
             {
                 FoodCategory = FoodCategory,
-                Saturation = Saturation,
+                Satiety = Satiety,
                 Health = Health,
                 EatenStack = EatenStack?.Clone()
             };

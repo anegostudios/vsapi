@@ -25,6 +25,7 @@ namespace Vintagestory.API.Config
         public static void Load(ILogger logger, IAssetManager manager, string language = "en")
         {
             Inst.LangEntries.Clear();
+            Inst.LangRegexes.Clear();
 
             if (language != "en")
             {
@@ -55,7 +56,7 @@ namespace Vintagestory.API.Config
         }
 
         public Dictionary<string, string> LangEntries = new Dictionary<string, string>();
-        public Dictionary<Regex, string> LangRegexes = new Dictionary<Regex, string>();
+        public Dictionary<string, KeyValuePair<Regex, string>> LangRegexes = new Dictionary<string, KeyValuePair<Regex, string>>();
 
         /// <summary>
         /// Yes this means in a singleplayer situdation server and client share the same lang inst, but thats okay, since they use the same file anyway?
@@ -103,14 +104,17 @@ namespace Vintagestory.API.Config
                 string key = val.Key;
                 if (!val.Key.Contains(":")) key = domain + AssetLocation.LocationSeparator + key;
 
+
                 if (key.Contains("*"))
                 {
                     Regex regex = new Regex(key.Replace("*", "(.*)"), RegexOptions.Compiled);
-                    Inst.LangRegexes[regex] = val.Value;
+                    Inst.LangRegexes[key] = new KeyValuePair<Regex, string>(regex, val.Value);
                 } else
                 {
                     Inst.LangEntries[key] = val.Value;
-                }}
+                }
+            }
+
         }
         
 
@@ -144,11 +148,11 @@ namespace Vintagestory.API.Config
                 return string.Format(value, param);
             }
 
-            foreach (var val in Inst.LangRegexes)
+            foreach (var pair in Inst.LangRegexes.Values)
             {
-                if (val.Key.IsMatch(domainandkey))
+                if (pair.Key.IsMatch(domainandkey))
                 {
-                    return string.Format(val.Value, param);
+                    return string.Format(pair.Value, param);
                 }
             }
 
@@ -163,9 +167,9 @@ namespace Vintagestory.API.Config
 
             if (Inst.LangEntries.ContainsKey(domainandkey)) return true;
 
-            foreach (var val in Inst.LangRegexes)
+            foreach (var pair in Inst.LangRegexes.Values)
             {
-                if (val.Key.IsMatch(domainandkey))
+                if (pair.Key.IsMatch(domainandkey))
                 {
                     return true;
                 }

@@ -21,5 +21,4 @@ namespace Vintagestory.API.Client
         ShadowmapFar = 11,
         ShadowmapNear = 12
     }
-
 }

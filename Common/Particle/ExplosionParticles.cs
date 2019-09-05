@@ -145,6 +145,7 @@ namespace Vintagestory.API.Common
         
         public bool DieInAir() { return false; }
         public bool DieInLiquid() { return true; }
+        public bool SwimOnLiquid() { return false; }
         public byte GetGlowLevel() { return 0; }
         public float GetGravityEffect() { return -0.04f; }
         public bool TerrainCollision() { return true; }

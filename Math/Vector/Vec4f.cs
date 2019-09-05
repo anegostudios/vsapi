@@ -32,6 +32,8 @@ namespace Vintagestory.API.MathTools
         public float A { get { return W; } set { W = value; } }
 
 
+        public Vec3f XYZ { get { return new Vec3f(X, Y, Z); } }
+
         public Vec4f()
         {
 
@@ -77,6 +79,36 @@ namespace Vintagestory.API.MathTools
         public Vec4f Clone()
         {
             return new Vec4f(X, Y, Z, W);
+        }
+
+
+        /// <summary>
+        /// Turns the vector into a unit vector with length 1, but only if length is non-zero
+        /// </summary>
+        /// <returns></returns>
+        public Vec4f NormalizeXYZ()
+        {
+            float length = LengthXYZ();
+
+            if (length > 0)
+            {
+                X /= length;
+                Y /= length;
+                Z /= length;
+            }
+
+            return this;
+        }
+
+
+
+        /// <summary>
+        /// Returns the length of this vector
+        /// </summary>
+        /// <returns></returns>
+        public float LengthXYZ()
+        {
+            return GameMath.FastSqrt(X * X + Y * Y + Z * Z);
         }
     }
 }

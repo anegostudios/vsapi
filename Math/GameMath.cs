@@ -289,6 +289,16 @@ namespace Vintagestory.API.MathTools
 
         #region Interpolation
 
+        /// <summary>
+        /// Treats value as a statistical average. Example: 2.1 will turn into 2 90% of the times and into 3 10% of times.
+        /// </summary>
+        /// <param name="rand"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int RoundRandom(Random rand, float value)
+        {
+            return (int)value + ((rand.NextDouble() < (value - (int)value)) ? 1 : 0);
+        }
 
         /// <summary>
         /// Returns the shortest distance between 2 angles

@@ -150,7 +150,13 @@ namespace Vintagestory.API.Client
                                 return;
                             }
 
-                            System.Diagnostics.Process.Start(Href);
+                            if (parts.Length > 0)
+                            {
+                                if (parts[0].StartsWith("http") || parts[0].StartsWith("https"))
+                                {
+                                    api.Gui.OpenLink(Href);
+                                }
+                            }
                         }
                     } else
                     {

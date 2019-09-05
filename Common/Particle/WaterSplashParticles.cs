@@ -14,9 +14,10 @@ namespace Vintagestory.API.Common
         public Vec3f AddVelocity = new Vec3f();
         public float QuantityMul;
 
-        public override bool DieInLiquid() { return true; }
+        public override bool DieInLiquid() { return false; }
         public override float GetGravityEffect() { return 1f; }
-        public override float GetLifeLength() { return 0.25f; }
+        public override float GetLifeLength() { return 1.25f; }
+        public override bool SwimOnLiquid() { return true; }
 
         public override Vec3d GetPos()
         {
@@ -34,13 +35,13 @@ namespace Vintagestory.API.Common
                 (byte)GameMath.Clamp(110, 0, 255),
                 (byte)GameMath.Clamp(40 + rand.Next(50), 0, 255),
                 (byte)GameMath.Clamp(200 + rand.Next(30), 0, 255),
-                (byte)GameMath.Clamp(120 + rand.Next(50), 0, 255)
+                (byte)GameMath.Clamp(100 + rand.Next(40), 0, 255)
             );
         }
 
         public override float GetSize()
         {
-            return 0.25f;
+            return 0.15f;
         }
 
         public override EvolvingNatFloat GetSizeEvolve()

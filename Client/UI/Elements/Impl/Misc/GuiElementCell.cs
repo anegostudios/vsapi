@@ -26,7 +26,7 @@ namespace Vintagestory.API.Client
         LoadedTexture rightHighlightTexture;
 
         double pressedYOffset;
-        double nonPressedYOffset;
+        //double nonPressedYOffset;
 
 
         ElementBounds IGuiElementCell.Bounds

@@ -150,7 +150,7 @@ namespace Vintagestory.API.Client
             if (intoAtlas.InsertTexture(bmp, out textureSubId, out texpos))
             {
                 btex.TextureSubId = textureSubId;
-                capi.Render.DeleteTexture(btex.BakedName);
+                capi.Render.RemoveTexture(btex.BakedName);
                 return true;
             }
 
@@ -255,6 +255,12 @@ namespace Vintagestory.API.Client
             }
 
             return bct;
+        }
+
+
+        public override string ToString()
+        {
+            return Base.ToString() + "@" + Rotation;
         }
     }
 

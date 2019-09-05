@@ -6,10 +6,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-    public class SmithingRecipe : SingleLayerVoxelRecipe<SmithingRecipe>, ByteSerializable
+    public class SmithingRecipe : SingleLayerVoxelRecipe<SmithingRecipe>, IByteSerializable
     {
         /// <summary>
         /// Creates a deep copy
@@ -48,7 +49,7 @@ namespace Vintagestory.API.Common
                 return false;
             }
 
-            if (!Ingredient.Resolve(world))
+            if (!Ingredient.Resolve(world, "Smithing recipe"))
             {
                 world.Logger.Error("Recipe with output {0}: Cannot resolve ingredient in {1}.", Output, sourceForErrorLogging);
                 return false;
@@ -158,11 +159,11 @@ namespace Vintagestory.API.Common
 
             if (Ingredient.Type == EnumItemClass.Block)
             {
-                for (int i = 0; i < world.Blocks.Length; i++)
+                for (int i = 0; i < world.Blocks.Count; i++)
                 {
                     if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
 
-                    if (WildCardMatch(Ingredient.Code, world.Blocks[i].Code))
+                    if (WildcardUtil.Match(Ingredient.Code, world.Blocks[i].Code))
                     {
                         string code = world.Blocks[i].Code.Path.Substring(wildcardStartLen);
                         string codepart = code.Substring(0, code.Length - wildcardEndLen);
@@ -175,11 +176,11 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                for (int i = 0; i < world.Items.Length; i++)
+                for (int i = 0; i < world.Items.Count; i++)
                 {
                     if (world.Items[i] == null || world.Items[i].IsMissing) continue;
 
-                    if (WildCardMatch(Ingredient.Code, world.Items[i].Code))
+                    if (WildcardUtil.Match(Ingredient.Code, world.Items[i].Code))
                     {
                         string code = world.Items[i].Code.Path.Substring(wildcardStartLen);
                         string codepart = code.Substring(0, code.Length - wildcardEndLen);
@@ -195,23 +196,7 @@ namespace Vintagestory.API.Common
             return mappings;
         }
 
-
-        /// <summary>
-        /// Checks to see whether or not the wildcard matches the smithing recipe.
-        /// </summary>
-        /// <param name="wildCard"></param>
-        /// <param name="blockCode"></param>
-        /// <returns></returns>
-        public static bool WildCardMatch(AssetLocation wildCard, AssetLocation blockCode)
-        {
-            if (blockCode == null || !wildCard.Domain.Equals(blockCode.Domain)) return false;
-            if (wildCard.Equals(blockCode)) return true;
-
-            string pattern = Regex.Escape(wildCard.Path).Replace(@"\*", @"(.*)");
-
-            return Regex.IsMatch(blockCode.Path, @"^" + pattern + @"$");
-        }
-
+        
 
 
 

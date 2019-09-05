@@ -45,7 +45,7 @@ namespace Vintagestory.API.Common
         /// <param name="posZ"></param>
         /// <param name="oldBlockId"></param>
         /// <param name="newBlockId"></param>
-        void SetHistoryStateBlock(int posX, int posY, int posZ, ushort oldBlockId, ushort newBlockId);
+        void SetHistoryStateBlock(int posX, int posY, int posZ, int oldBlockId, int newBlockId);
         
     }
 }

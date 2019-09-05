@@ -17,7 +17,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         DirectMerge = 1,
         /// <summary>
-        /// Confirmed merge via dialog 
+        /// Confirmed merge via dialog. Not implemented as of v1.10
         /// </summary>
         ConfirmedMerge = 2
     }

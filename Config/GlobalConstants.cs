@@ -1,7 +1,10 @@
-﻿using Vintagestory.API.Common;
+﻿using System;
+using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Config
 {
+    public delegate float FoodSpoilageCalcDelegate(float spoilState, ItemStack stack, EntityAgent byEntity);
+
     /// <summary>
     /// Contains some global constants and static values
     /// </summary>
@@ -160,11 +163,6 @@ namespace Vintagestory.API.Config
         /// Allowed characters for a player group name
         /// </summary>
         public static string AllowedChatGroupChars = "a-z0-9A-Z_";
-
-        /// <summary>
-        /// Total amount of possible itemids
-        /// </summary>
-        public static int MaxItemTypes = 4000;
         
 
         /// <summary>
@@ -184,7 +182,23 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Default Itemstack attributes that should be ignored during a stack.Collectible.Equals() comparison
         /// </summary>
-        public static string[] IgnoredStackAttributes = new string[] { "temperature", "toolMode", "renderVariant" };
+        public static string[] IgnoredStackAttributes = new string[] { "temperature", "toolMode", "renderVariant", "transitionstate" };
 
+
+        public static float PerishSpeedModifier = 1;
+
+        public static FoodSpoilageCalcDelegate FoodSpoilHealthLossMulHandler => (spoilState, stack, byEntity) => (float)Math.Max(0f, 1f - spoilState);
+        public static FoodSpoilageCalcDelegate FoodSpoilSatLossMulHandler => (spoilState, stack, byEntity) => (float)Math.Max(0f, 1f - spoilState);
+
+
+        public static float FoodSpoilageHealthLossMul(float spoilState, ItemStack stack, EntityAgent byEntity)
+        {
+            return FoodSpoilHealthLossMulHandler(spoilState, stack, byEntity);
+        }
+
+        public static float FoodSpoilageSatLossMul(float spoilState, ItemStack stack, EntityAgent byEntity)
+        {
+            return FoodSpoilSatLossMulHandler(spoilState, stack, byEntity);
+        }
     }
 }

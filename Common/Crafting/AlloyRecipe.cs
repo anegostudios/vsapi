@@ -5,7 +5,7 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
-    public class AlloyRecipe : ByteSerializable
+    public class AlloyRecipe : IByteSerializable
     {
         /// <summary>
         /// The ingredients for this alloy.

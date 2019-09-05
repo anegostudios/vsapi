@@ -57,6 +57,17 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug + Flatworld|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="protobuf-net, Version=1.0.0.282, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -99,6 +110,10 @@
     <Compile Include="Common\API\EnumBlockAccessResponse.cs" />
     <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
     <Compile Include="Common\API\ILandClaimAPI.cs" />
+    <Compile Include="Common\Collectible\FertilizerProps.cs" />
+    <Compile Include="Common\Collectible\TransitionableProperties.cs" />
+    <Compile Include="Common\Crafting\BarrelRecipe.cs" />
+    <Compile Include="Common\Crafting\RecipeRegistry.cs" />
     <Compile Include="Common\Entity\EnumInteractMode.cs" />
     <Compile Include="Common\Entity\Player\ActiveSlotChangeEventArgs.cs" />
     <Compile Include="Client\MeshPool\MeshDataPool.cs" />
@@ -190,7 +205,6 @@
     <Compile Include="Client\UI\TextTextureUtil.cs" />
     <Compile Include="Common\API\EnumBlockAccessFlags.cs" />
     <Compile Include="Common\Collectible\Block\IBlockEntityRotatable.cs" />
-    <Compile Include="Common\Collectible\Block\IEdibleBlock.cs" />
     <Compile Include="Common\Collectible\Block\VertexFlags.cs" />
     <Compile Include="Common\Collectible\CreativeTabAndStackList.cs" />
     <Compile Include="Common\Collectible\GrindingProperties.cs" />
@@ -222,12 +236,12 @@
     <Compile Include="Common\API\IEventAPI.cs" />
     <Compile Include="Common\API\IMapChunk.cs" />
     <Compile Include="Common\TyronThreadPool.cs" />
+    <Compile Include="Server\API\IPlayerDataManager.cs" />
     <Compile Include="Util\IgnoreUtil.cs" />
     <Compile Include="Util\JsonUtil.cs" />
     <Compile Include="Common\Assets\Mod.cs" />
     <Compile Include="Common\ByteSerializable.cs" />
     <Compile Include="Common\Collectible\Block\BlockSchematic.cs" />
-    <Compile Include="Client\API\ICairoFont.cs" />
     <Compile Include="Client\API\IClientEventAPI.cs" />
     <Compile Include="Client\API\IClientNetworkAPI.cs" />
     <Compile Include="Client\API\IClientNetworkChannel.cs" />

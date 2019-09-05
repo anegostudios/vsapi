@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.MathTools
@@ -184,6 +185,7 @@ namespace Vintagestory.API.MathTools
             return Math.Sqrt(cx*cx + cy*cy + cz*cz);
         }
 
+        
         public Cuboidi ToCuboidi()
         {
             return new Cuboidi((int)X1, (int)Y1, (int)Z1, (int)X2, (int)Y2, (int)Z2);
@@ -196,6 +198,44 @@ namespace Vintagestory.API.MathTools
         public double ShortestVerticalDistanceFrom(double y)
         {
             return y - GameMath.Clamp(y, Y1, Y2);
+        }
+
+
+
+
+        /// <summary>
+        /// Returns the shortest vertical distance to any point between this and given cuboid
+        /// </summary>
+        public double ShortestVerticalDistanceFrom(Cuboidd cuboid)
+        {
+            double cy = cuboid.Y1 - GameMath.Clamp(cuboid.Y1, Y1, Y2);
+
+            double dy = cuboid.Y2 - GameMath.Clamp(cuboid.Y2, Y1, Y2);
+
+            return Math.Min(cy, dy);
+        }
+
+
+
+
+        /// <summary>
+        /// Returns the shortest distance to any point between this and given cuboid
+        /// </summary>
+        public double ShortestVerticalDistanceFrom(Cuboidf cuboid, EntityPos offset)
+        {
+            double oY1 = offset.Y + cuboid.Y1;
+
+            double oY2 = offset.Y + cuboid.Y2;
+
+
+            double cy = oY1 - GameMath.Clamp(oY1, Y1, Y2);
+
+            // Test if inside
+            if (oY1 <= Y1 && oY2 >= Y2) cy = 0;
+
+            double dy = oY2 - GameMath.Clamp(oY2, Y1, Y2);
+
+            return Math.Min(cy, dy);
         }
 
 
@@ -218,6 +258,7 @@ namespace Vintagestory.API.MathTools
                 Math.Min(cx * cx, dx * dx) + Math.Min(cy * cy, dy * dy) + Math.Min(cz * cz, dz * dz)
             );
         }
+
 
         /// <summary>
         /// Returns the shortest distance to any point between this and given cuboid
@@ -267,6 +308,23 @@ namespace Vintagestory.API.MathTools
                 Math.Min(cx * cx, dx * dx) + Math.Min(cz * cz, dz * dz)
             );
         }
+
+        /// <summary>
+        /// Returns the shortest horizontal distance to any point between this and given coordinate
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public double ShortestHorizontalDistanceFrom(double x, double z)
+        {
+            double cx = x - GameMath.Clamp(x, X1, X2);
+            double cz = z - GameMath.Clamp(z, Z1, Z2);
+
+            return Math.Sqrt(cx * cx + cz * cz);
+        }
+
+
 
 
 

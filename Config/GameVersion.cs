@@ -20,7 +20,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.9.14";
+        public const string OverallVersion = "1.10.2";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -53,12 +53,17 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.9.11";
+        public const string NetworkVersion = "1.10.1";
 
         /// <summary>
         /// Version of the savegame database
         /// </summary>
         public static int DatabaseVersion = 2;
+
+        /// <summary>
+        /// Copyright notice
+        /// </summary>
+        public const string CopyRight = "Copyright © 2016-2019 Anego Studios";
 
 
         static string[] separators = new string[] { ".", "-" };
@@ -70,8 +75,9 @@ namespace Vintagestory.API.Config
                 parts = parts.Append("2");
             } else
             {
-                if (parts[3] == "rc") parts[3] = "1";
-                else parts[3] = "0";
+                if (parts[3] == "rc") parts[3] = "2"; // -rc
+                else if (parts[3] == "pre") parts[3] = "1"; // -pre
+                else parts[3] = "0"; // -dev
             }
 
             int[] versions = new int[parts.Length];

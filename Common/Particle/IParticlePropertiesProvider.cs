@@ -26,6 +26,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         bool DieInLiquid();
 
+        bool SwimOnLiquid();
+
         /// <summary>
         /// Whether the particle should despawn when in contact with air (e.g. for water bubbles)
         /// </summary>

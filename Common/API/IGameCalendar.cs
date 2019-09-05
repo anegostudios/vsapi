@@ -142,5 +142,7 @@ namespace Vintagestory.API.Common
         double MoonPhaseExact { get; }
         float MoonBrightness { get; }
         float MoonSize { get; }
+
+        bool Dusk { get; }
     }
 }

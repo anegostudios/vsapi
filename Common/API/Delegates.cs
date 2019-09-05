@@ -113,7 +113,7 @@ namespace Vintagestory.API.Common
 
     public delegate void OnInteractDelegate(Entity entity, IPlayer byPlayer, ItemSlot slot, Vec3d hitPosition, int mode, ref EnumHandling handling);
 
-    public delegate void ChunkColumnGenerationDelegate(IServerChunk[] chunks, int chunkX, int chunkZ);
+    public delegate void ChunkColumnGenerationDelegate(IServerChunk[] chunks, int chunkX, int chunkZ, ITreeAttribute chunkGenParams = null);
 
     public delegate void ChunkGenerationPassDelegate(IServerChunk chunk, int chunkX, int chunkY, int chunkZ);
 
@@ -125,8 +125,8 @@ namespace Vintagestory.API.Common
 
 
     public delegate void BlockUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
-    public delegate void BlockBreakDelegate(IServerPlayer byPlayer, ushort oldblockId, BlockSelection blockSel);
-    public delegate void BlockPlaceDelegate(IServerPlayer byPlayer, ushort oldblockId, BlockSelection blockSel, ItemStack withItemStack);
+    public delegate void BlockBreakDelegate(IServerPlayer byPlayer, int oldblockId, BlockSelection blockSel);
+    public delegate void BlockPlaceDelegate(IServerPlayer byPlayer, int oldblockId, BlockSelection blockSel, ItemStack withItemStack);
     
     public delegate bool CanUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
     public delegate bool CanPlaceOrBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel);

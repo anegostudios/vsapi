@@ -97,6 +97,15 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public Matrixf RotateDeg(Vec3f degrees)
+        {
+            Mat4f.RotateX(Values, Values, degrees.X * GameMath.DEG2RAD);
+            Mat4f.RotateY(Values, Values, degrees.Y * GameMath.DEG2RAD);
+            Mat4f.RotateZ(Values, Values, degrees.Z * GameMath.DEG2RAD);
+            return this;
+        }
+
+
         public Matrixf Rotate(Vec3f radians)
         {
             Mat4f.RotateX(Values, Values, radians.X);
@@ -123,9 +132,46 @@ namespace Vintagestory.API.Client
             return this;
         }
 
-        public Matrixf Mul(float[] mat)
+
+
+
+
+        public Matrixf RotateXDeg(float degX)
         {
-            Mat4f.Mul(Values, Values, mat);
+            Mat4f.RotateX(Values, Values, degX * GameMath.DEG2RAD);
+            return this;
+        }
+
+        public Matrixf RotateYDeg(float degY)
+        {
+            Mat4f.RotateY(Values, Values, degY * GameMath.DEG2RAD);
+            return this;
+        }
+
+        public Matrixf RotateZDeg(float degZ)
+        {
+            Mat4f.RotateZ(Values, Values, degZ * GameMath.DEG2RAD);
+            return this;
+        }
+
+
+        public Vec4f TransformVector(Vec4f vec)
+        {
+            Vec4f outval = new Vec4f();
+            Mat4f.MulWithVec4(Values, vec, outval);
+            return outval;
+        }
+
+
+        public Matrixf Mul(float[] matrix)
+        {
+            Mat4f.Mul(Values, Values, matrix);
+            return this;
+        }
+
+        public Matrixf ReverseMul(float[] matrix)
+        {
+            Mat4f.Mul(Values, matrix, Values);
             return this;
         }
 

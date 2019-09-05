@@ -35,9 +35,9 @@ namespace Vintagestory.API.Common
         public static Cuboidf DefaultCollisionBox = new Cuboidf(0, 0, 0, 1, 1, 1);
 
         /// <summary>
-        /// Unique number of the block. This number depends on the order in which the blocks are order. The numbering is however always ensured to remain the same on a per world basis.
+        /// Unique number of the block. Same as <see cref="Id"/>. This number depends on the order in which the blocks are order. The numbering is however always ensured to remain the same on a per world basis.
         /// </summary>
-        public ushort BlockId;
+        public int BlockId;
         
         /// <summary>
         /// If not set to JSON it will use an efficient hardcoded model
@@ -283,6 +283,12 @@ namespace Vintagestory.API.Common
         public string EntityClass;
 
         /// <summary>
+        /// Entity pushing while an entity is inside this block. Read from attributes because i'm lazy.
+        /// </summary>
+        public Vec3d PushVector { get; set; }
+
+
+        /// <summary>
         /// Creates a new instance of a block with default model transforms
         /// </summary>
         public Block()
@@ -301,6 +307,8 @@ namespace Vintagestory.API.Common
         {
             base.OnLoaded(api);
 
+            PushVector = this.Attributes?["pushVector"]?.AsObject<Vec3d>();
+            
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 behavior.OnLoaded(api);
@@ -496,7 +504,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="onBlockFace"></param>
         /// <returns></returns>
-        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, Random worldgenRandom)
+        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom)
         {
             Block block = blockAccessor.GetBlock(pos);
 
@@ -783,14 +791,14 @@ namespace Vintagestory.API.Common
 
 
 
-        public virtual BlockDropItemStack[] GetDropsForHandbook(IWorldAccessor world, BlockPos pos, IPlayer byPlayer)
+        public virtual BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
         {
             return Drops;
         }
 
-        protected BlockDropItemStack[] GetHandbookDropsFromBreakDrops(IWorldAccessor world, BlockPos pos, IPlayer player)
+        protected BlockDropItemStack[] GetHandbookDropsFromBreakDrops(ItemStack handbookStack, IPlayer forPlayer)
         {
-            ItemStack[] stacks = GetDrops(world, pos, player);
+            ItemStack[] stacks = GetDrops(api.World, forPlayer.Entity.Pos.XYZ.AsBlockPos, forPlayer);
             if (stacks == null) return new BlockDropItemStack[0];
 
             BlockDropItemStack[] drops = new BlockDropItemStack[stacks.Length];
@@ -886,7 +894,15 @@ namespace Vintagestory.API.Common
 
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
-                stack = behavior.OnPickBlock(world, pos, ref handled);
+                EnumHandling bhHandled = EnumHandling.PassThrough;
+                ItemStack bhstack = behavior.OnPickBlock(world, pos, ref bhHandled);
+
+                if (bhHandled != EnumHandling.PassThrough)
+                {
+                    stack = bhstack;
+                    handled = bhHandled;
+                }
+
                 if (handled == EnumHandling.PreventSubsequent) return stack;
             }
 
@@ -1017,6 +1033,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool OnBlockInteractStep(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
         {
+            bool preventDefault = false;
+            bool result = true;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool behaviorResult = behavior.OnBlockInteractStep(secondsUsed, world, byPlayer, blockSel, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
             return false;
         }
 
@@ -1029,7 +1063,22 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         public virtual void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel)
         {
-            
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                behavior.OnBlockInteractStop(secondsUsed, world, byPlayer, blockSel, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (preventDefault) return;
+
         }
 
         /// <summary>
@@ -1039,8 +1088,27 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="byPlayer"></param>
         /// <param name="blockSel"></param>
+        /// <param name="cancelReason"></param>
         public virtual bool OnBlockInteractCancel(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, EnumItemUseCancelReason cancelReason)
         {
+            bool preventDefault = false;
+            bool result = true;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool behaviorResult = behavior.OnBlockInteractCancel(secondsUsed, world, byPlayer, blockSel, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
             return true;
         }
 
@@ -1472,7 +1540,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public virtual string GetPlacedBlockName(IClientWorldAccessor world, BlockPos pos)
+        public virtual string GetPlacedBlockName(IWorldAccessor world, BlockPos pos)
         {
             return OnPickBlock(world, pos)?.GetName();
         }
@@ -1489,9 +1557,53 @@ namespace Vintagestory.API.Common
             EnumHandling handled = EnumHandling.PassThrough;
             WorldInteraction[] interactions = new WorldInteraction[0];
 
+            for (int i = 0; i < Drops.Length; i++)
+            {
+                if (Drops[i].Tool == null) continue;
+                EnumTool tool = (EnumTool)Drops[i].Tool;
+
+                interactions = interactions.Append(new WorldInteraction()
+                {
+                    ActionLangCode = "blockhelp-collect",
+                    MouseButton = EnumMouseButton.Left,
+                    Itemstacks = ObjectCacheUtil.GetOrCreate<ItemStack[]>(api, "blockhelp-collect-withtool-" + tool, () =>
+                    {
+                        List<ItemStack> stacks = new List<ItemStack>();
+                        foreach (var obj in api.World.Collectibles)
+                        {
+                            if (obj.Tool == tool)
+                            {
+                                stacks.Add(new ItemStack(obj));
+                            }
+                        }
+                        return stacks.ToArray();
+                    })
+                });
+            }
+
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 WorldInteraction[] bhi = behavior.GetPlacedBlockInteractionHelp(world, selection, forPlayer, ref handled);
+
+                interactions = interactions.Append(bhi);
+
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
+
+            return interactions;
+        }
+
+
+        public override WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot)
+        {
+            WorldInteraction[] interactions = base.GetHeldInteractionHelp(inSlot);
+            if (interactions == null) interactions = new WorldInteraction[0];
+
+            EnumHandling handled = EnumHandling.PassThrough;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                WorldInteraction[] bhi = behavior.GetHeldInteractionHelp(inSlot, ref handled);
 
                 interactions = interactions.Append(bhi);
 
@@ -1554,12 +1666,14 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called by the inventory system when you hover over an item stack. This is the text that is getting displayed.
         /// </summary>
-        /// <param name="stack"></param>
+        /// <param name="inSlot"></param>
         /// <param name="dsc"></param>
         /// <param name="world"></param>
         /// <param name="withDebugInfo"></param>
-        public override void GetHeldItemInfo(ItemStack stack, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+        public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
         {
+            ItemStack stack = inSlot.Itemstack;
+
             dsc.Append(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + BlockMaterial) + "\n");
             //dsc.Append("Replaceable: " + Replaceable + "\n");
             dsc.Append((Fertility > 0 ? (Lang.Get("Fertility: ") + Fertility + "\n") : ""));
@@ -1575,7 +1689,7 @@ namespace Vintagestory.API.Common
                 dsc.Append(Lang.Get("walk-multiplier") + WalkSpeedMultiplier + "\n");
             }
 
-            base.GetHeldItemInfo(stack, dsc, world, withDebugInfo);
+            base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
         }
 
         /// <summary>

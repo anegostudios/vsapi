@@ -131,5 +131,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="guiDialog">The dialogue to be closed.</param>
         void TriggerDialogClosed(GuiDialog guiDialog);
+
+        /// <summary>
+        /// Opens up a confirm dialog asking the player if he wants to open an external link
+        /// </summary>
+        /// <param name="href"></param>
+        void OpenLink(string href);
     }
 }

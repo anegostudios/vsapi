@@ -119,5 +119,6 @@ namespace Vintagestory.API.Client
         Celestialobject = 34,
         Guitopsoil = 35,
         Entityanimatedtransparent = 36,
+        Colorgrade = 37,
     }
 }

@@ -379,6 +379,31 @@ namespace Vintagestory.API.MathTools
             return Vec4.Dot(a, b);
         }
 
+
+        public static float[] ToEulerAngles(double[] quat)
+        {
+            float[] angles = new float[3];
+
+            // roll (x-axis rotation)
+            double sinr_cosp = +2.0 * (quat[3] * quat[0] + quat[1] * quat[2]);
+            double cosr_cosp = +1.0 - 2.0 * (quat[0] * quat[0] + quat[1] * quat[1]);
+            angles[2] = (float)Math.Atan2(sinr_cosp, cosr_cosp);
+
+            // pitch (y-axis rotation)
+            double sinp = +2.0 * (quat[3] * quat[1] - quat[2] * quat[0]);
+            if (Math.Abs(sinp) >= 1)
+                angles[1] = (float)Math.PI / 2 * Math.Sign(sinp); // use 90 degrees if out of range
+            else
+                angles[1] = (float)Math.Asin(sinp);
+
+            // yaw (z-axis rotation)
+            double siny_cosp = +2.0 * (quat[3] * quat[2] + quat[0] * quat[1]);
+            double cosy_cosp = +1.0 - 2.0 * (quat[1] * quat[1] + quat[2] * quat[2]);
+            angles[0] = (float)Math.Atan2(siny_cosp, cosy_cosp);
+
+            return angles;
+        }
+
         ///**
         // * Performs a linear interpolation between two quat's
         // *

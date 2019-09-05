@@ -72,7 +72,7 @@ namespace Vintagestory.API.Common
 
             if (block.IsLiquid())
             {
-                distanceVector.Y += 5f;
+                distanceVector.Y += 4f;
             }
 
             return distanceVector;

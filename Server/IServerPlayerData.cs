@@ -32,6 +32,5 @@ namespace Vintagestory.API.Server
         /// Extra land claim areas (beyond whats granted by the role)
         /// </summary>
         int ExtraLandClaimAreas { get; set; }
-
     }
 }

@@ -263,7 +263,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// A check to see if the entity is holding the left mouse button down.
+        /// A check to see if the entity is holding the in-world rleft mouse button down.
         /// </summary>
         public bool LeftMouseDown
         {
@@ -272,7 +272,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// A check to see if the entity is holding the right mouse button down.
+        /// A check to see if the entity is holding the in-world right mouse button down.
         /// </summary>
         public bool RightMouseDown
         {

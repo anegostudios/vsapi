@@ -33,6 +33,7 @@ namespace Vintagestory.API.Common
 
         public bool ShouldDieInAir;
         public bool ShouldDieInLiquid;
+        public bool ShouldSwimOnLiquid;
         public bool WithTerrainCollision = true;
 
         public EvolvingNatFloat OpacityEvolve;
@@ -79,6 +80,11 @@ namespace Vintagestory.API.Common
         public bool DieInLiquid()
         {
             return ShouldDieInLiquid;
+        }
+
+        public bool SwimOnLiquid()
+        {
+            return ShouldSwimOnLiquid;
         }
 
         public float GetQuantity()

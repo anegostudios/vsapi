@@ -89,7 +89,7 @@ namespace Vintagestory.API.Common
                 }
 
 
-                if (TagConverters.ContainsKey(tagToken.Name))
+                if (tagToken.Name != null && TagConverters.ContainsKey(tagToken.Name))
                 {
                     RichTextComponentBase elem = TagConverters[tagToken.Name](capi, tagToken, fontStack, didClickLink);
                     if (elem != null) elems.Add(elem);
@@ -221,7 +221,7 @@ namespace Vintagestory.API.Common
                     insideTag = false;
 
                     // </div>
-                    if (tag[0] == '/')
+                    if (tag.Length > 0 && tag[0] == '/')
                     {
                         if (tokenStack.Count == 0 || tokenStack.Peek().Name != tag.Substring(1))
                         {

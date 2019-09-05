@@ -65,7 +65,8 @@ namespace Vintagestory.API.Datastructures
 
         public string ToJsonToken()
         {
-            throw new System.NotImplementedException();
+            return "not implemented";
+//            throw new System.NotImplementedException();
         }
 
         public override int GetHashCode()

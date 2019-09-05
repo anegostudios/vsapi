@@ -11,8 +11,8 @@ namespace Vintagestory.API.Common
     public class BlockUpdate
     {
         public BlockPos Pos;
-        public ushort OldBlockId;
-        public ushort NewBlockId;
+        public int OldBlockId;
+        public int NewBlockId;
         public ItemStack ByStack;
 
         public byte[] BlockEntityData;
@@ -146,14 +146,14 @@ namespace Vintagestory.API.Common
         /// <param name = "y">y coordinate</param>
         /// <param name = "z">z coordinate</param>
         /// <returns>ID of the block at the given position. Returns 0 for Airblocks or invalid/unloaded coordinates</returns>
-        ushort GetBlockId(int x, int y, int z);
+        int GetBlockId(int x, int y, int z);
 
         /// <summary>
         /// Get the block id of the block at the given world coordinate
         /// </summary>
         /// <param name="pos"></param>
         /// <returns>ID of the block at the given position. Returns 0 for Airblocks or invalid/unloaded coordinates</returns>
-        ushort GetBlockId(BlockPos pos);
+        int GetBlockId(BlockPos pos);
 
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="blockId"></param>
         /// <param name="pos"></param>
-        void SetBlock(ushort blockId, BlockPos pos);
+        void SetBlock(int blockId, BlockPos pos);
 
         /// <summary>
         /// Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
@@ -212,12 +212,12 @@ namespace Vintagestory.API.Common
         /// <param name="blockId"></param>
         /// <param name="pos"></param>
         /// <param name="byItemstack">If set then it will be passed onto the block.OnBlockPlaced method</param>
-        void SetBlock(ushort blockId, BlockPos pos, ItemStack byItemstack);
+        void SetBlock(int blockId, BlockPos pos, ItemStack byItemstack);
 
         /// <summary>
         /// Set a block at the given position without calling OnBlockRemoved or OnBlockPlaced, which prevents any block entity from being removed or placed. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
         /// </summary>
-        void ExchangeBlock(ushort blockId, BlockPos pos);
+        void ExchangeBlock(int blockId, BlockPos pos);
 
 
         /// <summary>
@@ -396,7 +396,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns the map chunk at given chunk position
         /// </summary>
-        /// <param name="pos"></param>
+        /// <param name="chunkPos"></param>
         /// <returns></returns>
         IMapChunk GetMapChunk(Vec2i chunkPos);
 

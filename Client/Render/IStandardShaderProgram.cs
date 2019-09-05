@@ -41,6 +41,8 @@ namespace Vintagestory.API.Client
 
         float ExtraZOffset { set; }
 
+        float ExtraGodray { set; }
+
         /// <summary>
         /// The color of the ambient light source.
         /// </summary>
@@ -116,5 +118,13 @@ namespace Vintagestory.API.Client
         int DontWarpVertices { set; }
 
         int AddRenderFlags { set; }
+
+
+        int Tex2dOverlay2D { set; }
+        float OverlayOpacity { set; }
+        float OverlayTextureSize { set; }
+        float BaseTextureSize { set; }
+        Vec2f BaseUvOrigin { set; }
+
     }
 }

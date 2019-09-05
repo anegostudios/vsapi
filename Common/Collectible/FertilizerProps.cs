@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
-    public interface IByteSerializable
+    public class FertilizerProps
     {
-        void ToBytes(BinaryWriter writer);
-
-        void FromBytes(BinaryReader reader, IWorldAccessor resolver);
+        public float N;
+        public float P;
+        public float K;
     }
+
+
 }

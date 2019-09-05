@@ -67,6 +67,16 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Removes a registered game tick listener from the game.
+        /// </summary>
+        /// <param name="listinerId">the ID of the listener to unregister.</param>
+        protected virtual void UnregisterGameTickListener(long listinerId)
+        {
+            api.Event.UnregisterGameTickListener(listinerId);
+            TickHandlers.Remove(listinerId);
+        }
+
+        /// <summary>
         /// Registers a delayed callback that does the disposing for you when the Block is removed
         /// </summary>
         /// <param name="OnDelayedCallbackTick"></param>
@@ -77,6 +87,16 @@ namespace Vintagestory.API.Common
             long listenerId = api.Event.RegisterCallback(OnDelayedCallbackTick, millisecondInterval);
             CallbackHandlers.Add(listenerId);
             return listenerId;
+        }
+
+        /// <summary>
+        /// Unregisters a callback.  This is usually done automatically.
+        /// </summary>
+        /// <param name="listenerId">The ID of the callback listiner.</param>
+        protected virtual void UnregisterDelayedCallback(long listenerId)
+        {
+            api.Event.UnregisterCallback(listenerId);
+            CallbackHandlers.Remove(listenerId);
         }
 
         /// <summary>

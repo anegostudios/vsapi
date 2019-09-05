@@ -15,9 +15,6 @@ namespace Vintagestory.API.Client
         int cols;
         EnumPosFlag screenPos;
 
-        public override AssetLocation OpenSound => new AssetLocation("sounds/block/chestopen");
-        public override AssetLocation CloseSound => new AssetLocation("sounds/block/chestclose");
-
         public GuiDialogBlockEntityInventory(string dialogTitle, InventoryBase inventory, BlockPos blockEntityPos, int cols, ICoreClientAPI capi)
             : base(dialogTitle, inventory, blockEntityPos, capi)
         {

@@ -141,53 +141,59 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// List of all loaded blocks and items without placeholders
         /// </summary>
-        CollectibleObject[] Collectibles { get; }
+        List<CollectibleObject> Collectibles { get; }
 
         /// <summary>
         /// List of all loaded blocks. Some may be null or placeholders (then block.code is null).
         /// </summary>
-        Block[] Blocks { get; }
+        List<Block> Blocks { get; }
 
         /// <summary>
         /// List of all loaded items. Some may be null or placeholders (then item.code is null)
         /// </summary>
-        Item[] Items { get; }
+        List<Item> Items { get; }
 
         /// <summary>
         /// List of all loaded entity types. 
         /// </summary>
-        EntityProperties[] EntityTypes { get; }
+        List<EntityProperties> EntityTypes { get; }
 
         /// <summary>
         /// List of all loaded crafting recipes
         /// </summary>
-        GridRecipe[] GridRecipes { get; }
+        List<GridRecipe> GridRecipes { get; }
 
         /// <summary>
         /// List of all loaded metal alloys
         /// </summary>
-        AlloyRecipe[] Alloys { get; }
+        List<AlloyRecipe> Alloys { get; }
 
         /// <summary>
         /// List of all loaded cooking recipes
         /// </summary>
-        CookingRecipe[] CookingRecipes { get; }
-
+        List<CookingRecipe> CookingRecipes { get; }
 
         /// <summary>
         /// List of all loaded smithing recipes
         /// </summary>
-        SmithingRecipe[] SmithingRecipes { get; }
+        List<SmithingRecipe> SmithingRecipes { get; }
 
         /// <summary>
         /// List of all loaded knapping recipes
         /// </summary>
-        KnappingRecipe[] KnappingRecipes { get; }
+        List<KnappingRecipe> KnappingRecipes { get; }
 
         /// <summary>
         /// List of all loaded clay forming recipes
         /// </summary>
-        ClayFormingRecipe[] ClayFormingRecipes { get; }
+        List<ClayFormingRecipe> ClayFormingRecipes { get; }
+
+        /// <summary>
+        /// List of all loaded barrel recipes
+        /// </summary>
+        List<BarrelRecipe> BarrelRecipes { get; }
+
+
 
         /// <summary>
         /// The range in blocks within a client will receive regular updates for an entity
@@ -206,7 +212,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="blockId"></param>
         /// <returns></returns>
-        Block GetBlock(ushort blockId);
+        Block GetBlock(int blockId);
 
         /// <summary>
         /// Returns all blocktypes matching given wildcard
@@ -371,6 +377,16 @@ namespace Vintagestory.API.Common
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
         void PlaySoundAt(AssetLocation location, IPlayer atPlayer, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+
+        /// <summary>
+        /// Plays given sound only for given player. Useful when called server side, for the client side there is no difference over using PlaySoundAt or PlaySoundFor
+        /// </summary>
+        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
+        /// <param name="forPlayer"></param>
+        /// <param name="randomizePitch"></param>
+        /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
+        /// <param name="volume"></param>
+        void PlaySoundFor(AssetLocation location, IPlayer forPlayer, bool randomizePitch = true, float range = 32, float volume = 1f);
 
 
         /// <summary>

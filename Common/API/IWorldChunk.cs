@@ -3,6 +3,14 @@ using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Common
 {
+    public interface IChunkBlocks
+    {
+        int this[int index3d] { get; set; }
+
+        int Length { get; }
+    }
+
+
     public interface IWorldChunk
     {
         /// <summary>
@@ -13,7 +21,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Holds all the blockids for each coordinate, access via index: (y * chunksize + z) * chunksize + x
         /// </summary>
-        ushort[] Blocks { get; set; }
+        IChunkBlocks Blocks { get; }
 
         /// <summary>
         /// Lowest 5 bits: Sun brightness, Next 5 bits: Block brightness, Highest 6 bits: Block hue 
@@ -94,4 +102,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         byte[] GetModdata(string key);
     }
+
+
+
 }

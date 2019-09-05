@@ -24,5 +24,10 @@ namespace Vintagestory.API.Server
         /// <param name="key"></param>
         /// <returns></returns>
         byte[] GetServerModdata(string key);
+
+        /// <summary>
+        /// The game version where this chunk was created. Please note that this is not the version at which this chunk was complete. Chunks can linger around in a half complete state for a long time. 
+        /// </summary>
+        string GameVersionCreated { get; }
     }
 }

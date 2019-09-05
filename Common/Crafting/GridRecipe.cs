@@ -14,7 +14,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Represents a crafting recipe
     /// </summary>
-    public class GridRecipe : ByteSerializable
+    public class GridRecipe : IByteSerializable
     {
         /// <summary>
         /// Set by the recipe loader during json deserialization, if false the recipe will never be loaded.
@@ -104,7 +104,7 @@ namespace Vintagestory.API.Common
                     return false;
                 }
 
-                if (!Ingredients[code].Resolve(world))
+                if (!Ingredients[code].Resolve(world, "Grid recipe"))
                 {
                     world.Logger.Error("Grid Recipe with output {0} contains an ingredient that cannot be resolved: {1}", Output, Ingredients[code]);
                     return false;
@@ -113,7 +113,7 @@ namespace Vintagestory.API.Common
                 resolvedIngredients[i] = Ingredients[code];
             }
 
-            if (!Output.Resolve(world))
+            if (!Output.Resolve(world, "Grid recipe"))
             {
                 world.Logger.Error("Grid Recipe '{0}': Output {1} cannot be resolved", Name, Output);
                 return false;
@@ -142,7 +142,7 @@ namespace Vintagestory.API.Common
                 List<string> codes = new List<string>();
                 if (val.Value.Type == EnumItemClass.Block)
                 {
-                    for (int i = 0; i < world.Blocks.Length; i++)
+                    for (int i = 0; i < world.Blocks.Count; i++)
                     {
                         if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
 
@@ -156,7 +156,7 @@ namespace Vintagestory.API.Common
                 }
                 else
                 {
-                    for (int i = 0; i < world.Items.Length; i++)
+                    for (int i = 0; i < world.Items.Count; i++)
                     {
                         if (world.Items[i] == null || world.Items[i].IsMissing) continue;
 

@@ -24,7 +24,7 @@ namespace Vintagestory.API.Common
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
-        ushort GetStagedBlockId(int posX, int posY, int posZ);
+        int GetStagedBlockId(int posX, int posY, int posZ);
 
         /// <summary>
         /// Gets the block for a not yet commited block. If no block has been staged for this pos the original block is returned
@@ -33,7 +33,7 @@ namespace Vintagestory.API.Common
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
-        ushort GetStagedBlockId(BlockPos pos);
+        int GetStagedBlockId(BlockPos pos);
 
     }
 }

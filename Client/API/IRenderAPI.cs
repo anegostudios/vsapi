@@ -86,8 +86,16 @@ namespace Vintagestory.API.Client
         /// <param name="itemstack"></param>
         /// <param name="ground"></param>
         /// <returns></returns>
+        [Obsolete("Use GetItemStackRenderInfo(inSlot, ...) instead")]
         ItemRenderInfo GetItemStackRenderInfo(ItemStack itemstack, EnumItemRenderTarget ground);
 
+        /// <summary>
+        /// Returns you a render info object of given item stack. Can be used to render held items onto a creature.
+        /// </summary>
+        /// <param name="inSlot"></param>
+        /// <param name="ground"></param>
+        /// <returns></returns>
+        ItemRenderInfo GetItemStackRenderInfo(ItemSlot inSlot, EnumItemRenderTarget ground);
 
 
         #region OpenGL
@@ -345,26 +353,35 @@ namespace Vintagestory.API.Client
         void BindTexture2d(int textureid);
 
         /// <summary>
-        /// Loads given texture through the assets managers and loads it onto the graphics card. Will return a cached version on every subsequent call to this method. Returns a textureid ready to be used in BindTexture2d
+        /// Loads given texture through the assets managers and loads it onto the graphics card. Will return a cached version on every subsequent call to this method. 
         /// </summary>
         /// <param name="name">the location of the texture as it exists within the game or mod directory.</param>
-        /// <returns>The OpenGL Identifier ID for the given asset available for binding.</returns>
+        /// <returns>The texture id</returns>
         int GetOrLoadTexture(AssetLocation name);
 
         /// <summary>
-        /// Loads the texture supplied by the bitmap, uploads it to the graphics card and keeps a cached version under given name. Will return that cached version on every subsequent call to this method. Returns a textureid ready to be used in BindTexture2d
+        /// Loads given texture through the assets managers and loads it onto the graphics card. Will return a cached version on every subsequent call to this method. 
+        /// </summary>
+        /// <param name="name">the location of the texture as it exists within the game or mod directory.</param>
+        /// <param name="intoTexture">the texture object to be populated. If it already is populated it will be disposed first</param>
+        /// <returns></returns>
+        void GetOrLoadTexture(AssetLocation name, ref LoadedTexture intoTexture);
+
+        /// <summary>
+        /// Loads the texture supplied by the bitmap, uploads it to the graphics card and keeps a cached version under given name. Will return that cached version on every subsequent call to this method. 
         /// </summary>
         /// <param name="name">the location of the texture as it exists within the game or mod directory.</param>
         /// <param name="bmp">The referenced bitmap</param>
-        /// <returns>The OpenGL Identifier ID for the given asset available for binding.</returns>
-        int GetOrLoadTexture(AssetLocation name, BitmapRef bmp);
+        /// <param name="intoTexture">the texture object to be populated. If it already is populated it will be disposed first</param>
+        /// <returns></returns>
+        void GetOrLoadTexture(AssetLocation name, BitmapRef bmp, ref LoadedTexture intoTexture);
 
         /// <summary>
         /// Removes given texture from the cache and from graphics card memory
         /// </summary>
         /// <param name="name">the location of the texture as it exists within the game or mod directory.</param>
         /// <returns>whether the operation was successful or not.</returns>
-        bool DeleteTexture(AssetLocation name);
+        bool RemoveTexture(AssetLocation name);
 
         #endregion
 
@@ -508,7 +525,27 @@ namespace Vintagestory.API.Client
         /// <param name="shading">Unused.</param>
         /// <param name="rotate">If true, will slowly rotate the itemstack around the Y-Axis</param>
         /// <param name="showStackSize">If true, will render a number depicting how many blocks/item are in the stack</param>
+        [Obsolete("Use RenderItemstackToGui(inSlot, ....) instead")]
         void RenderItemstackToGui(ItemStack itemstack, double posX, double posY, double posZ, float size, int color, bool shading = true, bool rotate = false, bool showStackSize = true);
+
+        /// <summary>
+        /// Renders given itemstack in slot at given position (gui/orthographic mode)
+        /// </summary>
+        /// <param name="inSlot"></param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <param name="size"></param>
+        /// <param name="color"></param>
+        /// <param name="shading"></param>
+        /// <param name="rotate"></param>
+        /// <param name="showStackSize"></param>
+        void RenderItemstackToGui(ItemSlot inSlot, double posX, double posY, double posZ, float size, int color, bool shading = true, bool rotate = false, bool showStackSize = true);
+
+        /// <summary>
+        /// Returns the first TextureAtlasPosition it can find for given block or item in itemstack. 
+        /// </summary>
+        TextureAtlasPosition GetTextureAtlasPosition(ItemStack itemstack);
 
         /// <summary>
         /// Renders given entity at given position (gui/orthographic mode)

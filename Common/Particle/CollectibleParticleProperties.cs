@@ -17,6 +17,7 @@ namespace Vintagestory.API.Common
         public Random rand = new Random();
 
         public virtual bool DieInLiquid() { return false; }
+        public virtual bool SwimOnLiquid() { return false; }
         public virtual bool DieInAir() { return false; }
         public abstract float GetQuantity();
         public abstract Vec3d GetPos();
@@ -75,23 +76,19 @@ namespace Vintagestory.API.Common
                 bool haveBox = box != null;
                 Vec3i facev = facing.Normali;
 
-                Vec3d basepos = new Vec3d(
+                Vec3d outpos = new Vec3d(
                     pos.X + 0.5f + facev.X / 1.9f + (haveBox && facing.Axis == EnumAxis.X ? (facev.X > 0 ? box.X2 - 1 : box.X1) : 0),
                     pos.Y + 0.5f + facev.Y / 1.9f + (haveBox && facing.Axis == EnumAxis.Y ? (facev.Y > 0 ? box.Y2 - 1 : box.Y1) : 0),
                     pos.Z + 0.5f + facev.Z / 1.9f + (haveBox && facing.Axis == EnumAxis.Z ? (facev.Z > 0 ? box.Z2 - 1 : box.Z1) : 0)
                 );
 
-                Vec3d posVariance = new Vec3d(
-                    1f * (1 - Math.Abs(facev.X)),
-                    1f * (1 - Math.Abs(facev.Y)),
-                    1f * (1 - Math.Abs(facev.Z))
+                outpos.Add(
+                    (rand.NextDouble() - 0.5) * (1 - Math.Abs(facev.X)),
+                    (rand.NextDouble() - 0.5) * (1 - Math.Abs(facev.Y)) - (facing == BlockFacing.DOWN ? 0.1f : 0f),
+                    (rand.NextDouble() - 0.5) * (1 - Math.Abs(facev.Z))
                 );
 
-                return new Vec3d(
-                    basepos.X + (rand.NextDouble() - 0.5) * posVariance.X,
-                    basepos.Y + (rand.NextDouble() - 0.5) * posVariance.Y - (facing == BlockFacing.DOWN ? 0.1f : 0f),
-                    basepos.Z + (rand.NextDouble() - 0.5) * posVariance.Z
-                );
+                return outpos;
             }
         }
 

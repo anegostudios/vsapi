@@ -28,7 +28,11 @@ namespace Vintagestory.API.Common.Entities
         public IWorldAccessor World;
 
         public ICoreAPI Api;
-        
+
+        /// <summary>
+        /// The vanilla physics systems will call this method if a physics behavior was assigned to it. The game client for example requires this to be called for the current player to properly render the player
+        /// </summary>
+        public Action<float> PhysicsUpdateWatcher;
 
         /// <summary>
         /// Server simulated animations. Only takes care of stopping animations once they're done
@@ -468,14 +472,14 @@ namespace Vintagestory.API.Common.Entities
             if (sapi != null)
             {
                 sapi.WorldManager.LoadChunkColumnFast((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
-                {
-                    IsTeleport = true;
-                    Pos.SetPos(x, y, z);
-                    ServerPos.SetPos(x, y, z);
-                    PositionBeforeFalling.Set(x, y, z);
-                    Pos.Motion.Set(0, 0, 0);
-                    Teleporting = false;
-                }
+                    {
+                        IsTeleport = true;
+                        Pos.SetPos(x, y, z);
+                        ServerPos.SetPos(x, y, z);
+                        PositionBeforeFalling.Set(x, y, z);
+                        Pos.Motion.Set(0, 0, 0);
+                        Teleporting = false;
+                    }
                 });
                 
             }
@@ -642,24 +646,23 @@ namespace Vintagestory.API.Common.Entities
 
             splashStrength = Math.Min(10, splashStrength);
 
+            float qmod = GameMath.Sqrt(width * height);
+
             World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.Y, (float)pos.Z, null);
-            World.SpawnCubeParticles(pos.AsBlockPos, pos.XYZ, CollisionBox.X2 - CollisionBox.X1, (int)(4 * splashStrength));
+            BlockPos blockpos = pos.AsBlockPos;
+            Vec3d aboveBlockPos = new Vec3d(Pos.X, blockpos.Y + 1.02, Pos.Z);
+            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.X2 - CollisionBox.X1, (int)(qmod * 8 * splashStrength), 0.75f);
+            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.X2 - CollisionBox.X1, (int)(qmod * 8 * splashStrength), 0.25f);
 
             if (splashStrength >= 2)
             {
-                ////return new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
-
-                SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y, pos.Z - width / 2);
-                SplashParticleProps.AddPos.Set(width, 0.3, width);
+                SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y - 0.75, pos.Z - width / 2);
+                SplashParticleProps.AddPos.Set(width, 0.75, width);
 
                 SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
-                SplashParticleProps.QuantityMul = (float)splashStrength - 1;
+                SplashParticleProps.QuantityMul = (float)(splashStrength - 1) * qmod / 1.5f;
 
                 World.SpawnParticles(SplashParticleProps);
-
-                /*AirBubbleParticleProps.BasePos.Set(pos.X, pos.Y - 0.75f, pos.Z);
-                AirBubbleParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
-                World.SpawnParticles(AirBubbleParticleProps);*/
             }
         }
 
@@ -953,12 +956,13 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Updates the DebugAttributes tree
         /// </summary>
-        public void SetDebugAnimsInfo()
+        public virtual void UpdateDebugAttributes()
         {
             if (World.Side != EnumAppSide.Client) return;
 
             DebugAttributes.SetString("Entity Id", ""+EntityId);
             
+
             string anims = "";
             int i = 0;
             foreach (string anim in AnimManager.ActiveAnimationsByAnimCode.Keys)
@@ -1067,6 +1071,17 @@ namespace Vintagestory.API.Common.Entities
             }
 
 
+            // Upgrade to 1500 sat
+            if (GameVersion.IsLowerVersionThan(version, "1.10-dev.2") && this is EntityPlayer)
+            {
+                ITreeAttribute hungerTree = WatchedAttributes.GetTreeAttribute("hunger");
+                if (hungerTree != null)
+                {
+                    hungerTree.SetFloat("maxsaturation", 1500);
+                }
+            }
+
+
             // Any new data loading added here should not be loaded if below version 1.8 or 
             // you might get corrupt data from old binary animation data
         }
@@ -1104,6 +1119,20 @@ namespace Vintagestory.API.Common.Entities
 
                 AnimManager.ActiveAnimationsByAnimCode.Clear();
                 AnimManager.StartAnimation("die");
+
+                if (reason == EnumDespawnReason.Death && damageSourceForDeath != null && World.Side == EnumAppSide.Server) {
+                    WatchedAttributes.SetInt("deathReason", (int)damageSourceForDeath.Source);
+                    Entity byEntity = damageSourceForDeath.SourceEntity;
+                    if (byEntity != null)
+                    {
+                        WatchedAttributes.SetString("deathByEntity", "prefixandcreature-" + byEntity.Code.Path.Replace("-", ""));
+                    }
+                    if (byEntity is EntityPlayer)
+                    {
+                        WatchedAttributes.SetString("deathByPlayer", (byEntity as EntityPlayer).Player?.PlayerName);
+                    }
+                }
+                
 
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)
                 {
@@ -1252,6 +1281,13 @@ namespace Vintagestory.API.Common.Entities
             if (generation > 0)
             {
                 infotext.AppendLine(Lang.Get("Generation: {0}", generation));
+            }
+
+            if (!Alive)
+            {
+                if (WatchedAttributes.HasAttribute("deathByPlayer")) {
+                    infotext.AppendLine(Lang.Get("Killed by Player: {0}", WatchedAttributes.GetString("deathByPlayer")));
+                }
             }
 
 

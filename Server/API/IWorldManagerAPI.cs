@@ -22,7 +22,25 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Additional config to pass onto the world generators
         /// </summary>
-        public ITreeAttribute ChunkLoadConfig = new TreeAttribute();
+        public ITreeAttribute ChunkGenParams = new TreeAttribute();
+    }
+
+    public delegate void OnChunkPeekedDelegate(Dictionary<Vec2i, IServerChunk[]> columnsByChunkCoordinate);
+
+    public class ChunkPeekOptions
+    {
+        /// <summary>
+        /// Until which world gen pass to generate the chunk (default: Done)
+        /// </summary>
+        public EnumWorldGenPass UntilPass = EnumWorldGenPass.Done;
+        /// <summary>
+        /// Callback for when the chunks are ready and loaded
+        /// </summary>
+        public OnChunkPeekedDelegate OnGenerated = null;
+        /// <summary>
+        /// Additional config to pass onto the world generators
+        /// </summary>
+        public ITreeAttribute ChunkGenParams = new TreeAttribute();
     }
 
     /// <summary>
@@ -152,7 +170,7 @@ namespace Vintagestory.API.Server
         /// Returns a number that is guaranteed to be unique for the current world every time it is called. Curently use for entity herding behavior.
         /// </summary>
         /// <returns></returns>
-        long GetNextHerdId();
+        long GetNextUniqueId();
 
         /// <summary>
         /// Completely disables automatic generation of chunks that normally builds up a radius of chunks around the player. 
@@ -191,6 +209,22 @@ namespace Vintagestory.API.Server
         /// <param name="keepLoaded">If true, the chunk will never get unloaded unless UnloadChunkColumn() is called</param>
         void LoadChunkColumn(int chunkX, int chunkZ, bool keepLoaded = false);
 
+        /// <summary>
+        /// Generates chunk at given coordinate, completely bypassing any existing world data and caching methods, in other words generates, a chunk from scratch without keeping it in the list of loaded chunks
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        void PeekChunkColumn(int chunkX, int chunkZ, ChunkPeekOptions options);
+
+        /// <summary>
+        /// Asynchrounly checks if this chunk is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <returns></returns>
+        void TestChunkExists(int chunkX, int chunkY, int chunkZ, API.Common.Action<bool> onTested);
 
         /// <summary>
         /// Send or Resend a loaded chunk to all connected players. Has no effect when the chunk is not loaded
@@ -199,7 +233,17 @@ namespace Vintagestory.API.Server
         /// <param name="chunkY"></param>
         /// <param name="chunkZ"></param>
         /// <param name="onlyIfInRange">If true, the chunk will not be sent to connected players that are out of range from that chunk</param>
-        void ResendChunk(int chunkX, int chunkY, int chunkZ, bool onlyIfInRange = true);
+        void BroadcastChunk(int chunkX, int chunkY, int chunkZ, bool onlyIfInRange = true);
+
+        /// <summary>
+        /// Send or Resend a loaded chunk to a connected player. Has no effect when the chunk is not loaded
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkY"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="onlyIfInRange">If true, the chunk will not be sent to connected players that are out of range from that chunk</param>
+        void SendChunk(int chunkX, int chunkY, int chunkZ, IServerPlayer player, bool onlyIfInRange = true);
+
 
         /// <summary>
         /// Send or resent a loaded map chunk to all connected players. Has no effect when the map chunk is not loaded
@@ -272,23 +316,6 @@ namespace Vintagestory.API.Server
 
         
 
-        /// <summary>
-        /// Gets a previously saved object from the savegame. Returns null if no such data under this key was previously set.
-        /// </summary>
-        /// <param name = "name">The key to look for</param>
-        /// <returns></returns>
-        [Obsolete("Use WorldManager.SaveGame.GetData() instead")]
-        byte[] GetData(string name);
-
-        /// <summary>
-        /// Store the given data persistently to the savegame.
-        /// </summary>
-        /// <param name = "name">Key value</param>
-        /// <param name = "data">Data to save</param>
-        [Obsolete("Use SaveGame.StoreData() instead")]
-        void StoreData(string name, byte[] data);
-
-      
         
 
         /// <summary>
@@ -323,7 +350,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name = "name">Name of the BlockType</param>
         /// <returns>ID of the BlockType</returns>
-        ushort GetBlockId(AssetLocation name);
+        int GetBlockId(AssetLocation name);
 
         
         #endregion

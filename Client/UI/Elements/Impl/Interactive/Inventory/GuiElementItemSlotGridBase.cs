@@ -434,8 +434,9 @@ namespace Vintagestory.API.Client
                         dy = 4 * (float)api.World.Rand.NextDouble() - 2f;
                     }
 
+                    
                     api.Render.RenderItemstackToGui(
-                        slot.Itemstack,
+                        slot,
                         slotBounds[i].renderX + offset + dy,
                         slotBounds[i].renderY + offset + dx,
                         90,

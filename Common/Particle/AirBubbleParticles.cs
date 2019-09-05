@@ -40,13 +40,20 @@ namespace Vintagestory.API.Common
         /// Whether or not the bubbles die in air.
         /// </summary>
         /// <returns>Yes they die in air.</returns>
-        public bool DieInAir() { return true; }
+        public bool DieInAir() { return false; }
 
         /// <summary>
         /// Whether or not the bubbles die in liquid.
         /// </summary>
         /// <returns>They don't.</returns>
         public bool DieInLiquid() { return false; }
+
+        /// <summary>
+        /// Whether or not the bubbles die in liquid.
+        /// </summary>
+        /// <returns>They don't.</returns>
+        public bool SwimOnLiquid() { return true; }
+
 
         /// <summary>
         /// Gets the glow level of the bubbles.
@@ -58,7 +65,7 @@ namespace Vintagestory.API.Common
         /// Gets the gravity applied to the particle.
         /// </summary>
         /// <returns>None.</returns>
-        public float GetGravityEffect() { return 0f; }
+        public float GetGravityEffect() { return 0.1f; }
 
         /// <summary>
         /// Whether or not the bubble collides with the terrain.

@@ -8,6 +8,12 @@ namespace Vintagestory.API.Common
     public class ItemSlot
     {
         /// <summary>
+        /// Can be used to interecept marked dirty calls. 
+        /// </summary>
+        public event API.Common.ActionConsumable MarkedDirty;
+
+
+        /// <summary>
         /// The upper holding limit of the slot itself. Standard slots are only limited by the item stacks maxstack size.
         /// </summary>
         public int MaxSlotStackSize = 999999;
@@ -146,10 +152,10 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="sinkSlot"></param>
         /// <param name="quantity"></param>
-        public virtual void TryPutInto(IWorldAccessor world, ItemSlot sinkSlot, int quantity = 1)
+        public virtual int TryPutInto(IWorldAccessor world, ItemSlot sinkSlot, int quantity = 1)
         {
             ItemStackMoveOperation op = new ItemStackMoveOperation(world, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, quantity);
-            TryPutInto(sinkSlot, ref op);
+            return TryPutInto(sinkSlot, ref op);
         }
 
         /// <summary>
@@ -157,12 +163,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="sinkSlot"></param>
         /// <param name="op"></param>
-        /// <returns></returns>
-        public virtual void TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
+        /// <returns>Amount of moved items</returns>
+        public virtual int TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
         {
             if (!sinkSlot.CanTakeFrom(this) || !CanTake() || itemstack == null)
             {
-                return;
+                return 0;
             }
             
 
@@ -183,7 +189,7 @@ namespace Vintagestory.API.Common
                     OnItemSlotModified(sinkSlot.Itemstack);
                 }
 
-                return;
+                return op.MovedQuantity;
             }
 
             ItemStackMergeOperation mergeop = op.ToMergeOperation(sinkSlot, this);
@@ -197,6 +203,8 @@ namespace Vintagestory.API.Common
                 sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
                 OnItemSlotModified(sinkSlot.Itemstack);
             }
+
+            return mergeop.MovedQuantity;
         }
 
         /// <summary>
@@ -370,8 +378,13 @@ namespace Vintagestory.API.Common
             if (inventory != null)
             {
                 inventory.DidModifyItemSlot(this, sinkStack);
+
+                if (itemstack?.Collectible != null)
+                {
+                    itemstack.Collectible.UpdateAndGetTransitionStates(inventory.Api.World, this);
+                }
             }
-            
+
         }
 
         /// <summary>
@@ -379,9 +392,22 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void MarkDirty()
         {
+            if (MarkedDirty != null)
+            {
+                if (MarkedDirty.Invoke())
+                {
+                    return;
+                }
+            }
+
             if (inventory != null)
             {
                 inventory.DidModifyItemSlot(this);
+
+                if (itemstack?.Collectible != null)
+                {
+                    itemstack.Collectible.UpdateAndGetTransitionStates(inventory.Api.World, this);
+                }
             }
         }
 
@@ -402,7 +428,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetStackDescription(IClientWorldAccessor world, bool extendedDebugInfo)
         {
-            return itemstack?.GetDescription(world, extendedDebugInfo);
+            return itemstack?.GetDescription(world, this, extendedDebugInfo);
         }
 
     }

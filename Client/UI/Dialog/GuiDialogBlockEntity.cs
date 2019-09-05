@@ -22,12 +22,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the opening sound for the dialog being opened, or null if none.
         /// </summary>
-        public virtual AssetLocation OpenSound => null;
+        public virtual AssetLocation OpenSound { get; set; } = null;
 
         /// <summary>
         /// Gets the opening sound for the dialog being opened, or null if none.
         /// </summary>
-        public virtual AssetLocation CloseSound => null;
+        public virtual AssetLocation CloseSound { get; set; } = null;
 
 
         /// <summary>
@@ -56,9 +56,6 @@ namespace Vintagestory.API.Client
 
             Inventory = inventory;
             BlockEntityPosition = blockEntityPos;
-
-            capi.World.Player.InventoryManager.OpenInventory(inventory);
-            capi.Gui.PlaySound(OpenSound, true);
         }
 
 
@@ -143,6 +140,8 @@ namespace Vintagestory.API.Client
         public override void OnGuiOpened()
         {
             Inventory.Open(capi.World.Player);
+            capi.World.Player.InventoryManager.OpenInventory(Inventory);
+            capi.Gui.PlaySound(OpenSound, true);
         }
 
         /// <summary>

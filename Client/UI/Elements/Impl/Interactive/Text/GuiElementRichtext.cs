@@ -15,6 +15,7 @@ namespace Vintagestory.API.Client
     {
         protected RichTextComponentBase[] Components;
         protected TextFlowPath[] flowPath;
+        public float zPos = 50;
 
         public static bool DebugLogging = false;
 
@@ -22,6 +23,22 @@ namespace Vintagestory.API.Client
 
         public bool Debug = false;
         
+
+        public double MaxLineWidth
+        {
+            get
+            {
+                if (flowPath == null) return 0;
+
+                double x = 0;
+                foreach (var val in flowPath)
+                {
+                    x = Math.Max(x, val.X2);
+                }
+
+                return x;
+            }
+        }
 
         public GuiElementRichtext(ICoreClientAPI capi, RichTextComponentBase[] components, ElementBounds bounds) : base(capi, bounds)
         {
@@ -84,6 +101,13 @@ namespace Vintagestory.API.Client
 
                 bool didLineBreak = comp.CalcBounds(flowPathList.ToArray(), lineHeight, posX, posY);
 
+                if (DebugLogging)
+                {
+                    api.Logger.VerboseDebug("GuiElementRichtext, add comp {0}, posY={1}, lineHeight={2}", i, posY, lineHeight);
+                    api.Logger.VerboseDebug("GuiElementRichtext, Comp bounds 0 w/h: {0}/{1}", comp.BoundsPerLine[0].Width, comp.BoundsPerLine[0].Height);
+                }
+
+
                 posX += comp.PaddingLeft;
 
                 if (comp.Float == EnumFloat.None)
@@ -133,9 +157,11 @@ namespace Vintagestory.API.Client
                     currentLine.Clear();
                     currentLine.Add(i);
 
+                    
                     posY += lineHeight;
                     for (int k = 1; k < comp.BoundsPerLine.Length - 1; k++) posY += comp.BoundsPerLine[k].Height;
                     posY = Math.Ceiling(posY);
+
 
                     posX = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width;
                     if (comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width > 0)
@@ -164,15 +190,22 @@ namespace Vintagestory.API.Client
                     ConstrainTextFlowPath(flowPathList, posY, comp.BoundsPerLine[0], comp.Float);
                 }
             }
-            
-            if (comp != null && posX > 0 && comp.BoundsPerLine.Length > 1)
+
+
+            if (DebugLogging)
+            {
+                api.Logger.VerboseDebug("GuiElementRichtext: after loop. posY = {0}", posY);
+            }
+
+
+            if (comp != null && posX > 0 && comp.BoundsPerLine.Length > 0)
             {
                posY += lineHeight;
             }
 
             if (Components.Length > 0)
             {
-                Bounds.fixedHeight = (posY + lineHeight + 1) / RuntimeEnv.GUIScale;
+                Bounds.fixedHeight = (posY + 1) / RuntimeEnv.GUIScale;
             }
             
 
@@ -314,7 +347,8 @@ namespace Vintagestory.API.Client
                 (int)Bounds.renderX, 
                 (int)Bounds.renderY, 
                 (int)Bounds.InnerWidth, 
-                (int)Bounds.InnerHeight
+                (int)Bounds.InnerHeight,
+                zPos
             );
 
             bool found = false;
@@ -402,6 +436,14 @@ namespace Vintagestory.API.Client
 
         public void SetNewText(string vtmlCode, CairoFont baseFont, Common.Action<LinkTextComponent> didClickLink = null)
         {
+            if (this.Components != null)
+            {
+                foreach (var val in Components)
+                {
+                    val?.Dispose();
+                }
+            }
+
             this.Components = VtmlUtil.Richtextify(api, vtmlCode, baseFont, didClickLink);
             RecomposeText();
         }

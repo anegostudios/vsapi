@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
@@ -70,10 +71,14 @@ namespace Vintagestory.API.Common
 
         protected HashSet<int> jointsDone = new HashSet<int>();
 
-        public void GenCrc32()
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(StreamingContext context)
         {
-            CodeCrc32 = GameMath.Crc32(Code.ToLowerInvariant());
+            if (Code == null) Code = Name;
+            CodeCrc32 = AnimationMetaData.GetCrc32(Code);
         }
+
 
         /// <summary>
         /// Compiles the animation into a bunch of matrices, 31 matrices per frame.
@@ -83,8 +88,6 @@ namespace Vintagestory.API.Common
         /// <param name="recursive">When false, will only do root elements</param>
         public void GenerateAllFrames(ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, bool recursive = true)
         {
-            GenCrc32();
-            
             AnimationFrame[] resolvedKeyFrames = new AnimationFrame[KeyFrames.Length];
 
             for (int i = 0; i < resolvedKeyFrames.Length; i++)

@@ -26,7 +26,7 @@ namespace Vintagestory.API.Client
         public string HotKeyCode;
 
         /// <summary>
-        /// The text to show, will be used in the form of Lang.Get("help-" + ActionLangCode);
+        /// The text to show, will be used in the form of Lang.Get(ActionLangCode); 
         /// </summary>
         [JsonProperty]
         public string ActionLangCode;

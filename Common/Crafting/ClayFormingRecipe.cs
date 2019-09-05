@@ -9,7 +9,7 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
-    public class ClayFormingRecipe : RecipeBase<ClayFormingRecipe>, ByteSerializable
+    public class ClayFormingRecipe : RecipeBase<ClayFormingRecipe>, IByteSerializable
     {
         public string[][] Pattern;
         public bool[,,] Voxels = new bool[16, 16, 16];
@@ -22,7 +22,7 @@ namespace Vintagestory.API.Common
                 return false;
             }
 
-            if (!Ingredient.Resolve(world))
+            if (!Ingredient.Resolve(world, "Clayforming recipe"))
             {
                 world.Logger.Error("Recipe with output {0}: Cannot resolve ingredient in {1}.", Output, sourceForErrorLogging);
                 return false;
@@ -167,7 +167,7 @@ namespace Vintagestory.API.Common
 
             if (Ingredient.Type == EnumItemClass.Block)
             {
-                for (int i = 0; i < world.Blocks.Length; i++)
+                for (int i = 0; i < world.Blocks.Count; i++)
                 {
                     if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
 
@@ -184,7 +184,7 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                for (int i = 0; i < world.Items.Length; i++)
+                for (int i = 0; i < world.Items.Count; i++)
                 {
                     if (world.Items[i] == null || world.Items[i].IsMissing) continue;
 

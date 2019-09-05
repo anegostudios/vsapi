@@ -371,8 +371,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Fires the OnMouseDown events.
         /// </summary>
-        /// <param name="mouse">The mouse information.</param>
-        public void OnMouseDown(MouseEvent mouse)
+        /// <param name="mouseArgs">The mouse information.</param>
+        public void OnMouseDown(MouseEvent mouseArgs)
         {
             bool beforeHandled = false;
             bool nowHandled = false;
@@ -380,8 +380,8 @@ namespace Vintagestory.API.Client
             {
                 if (!beforeHandled)
                 {
-                    element.OnMouseDown(Api, mouse);
-                    nowHandled = mouse.Handled;
+                    element.OnMouseDown(Api, mouseArgs);
+                    nowHandled = mouseArgs.Handled;
                 }
 
                 if (!beforeHandled && nowHandled)

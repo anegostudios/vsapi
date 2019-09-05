@@ -54,7 +54,8 @@ namespace Vintagestory.API.Common
 
         protected EntityControls controls;
         protected EntityControls servercontrols;
-        
+
+
 
         public IMountable MountedOn { get; protected set; }
         public EnumEntityActivity CurrentControls;
@@ -111,16 +112,15 @@ namespace Vintagestory.API.Common
             servercontrols = new EntityControls();
         }
 
-        protected AnimationMetaData[] Animations;
+        //protected AnimationMetaData[] Animations;
 
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
             base.Initialize(properties, api, InChunkIndex3d);
 
-            
-
-            if (properties.Client.Animations != null)
+            // why the eff are these cloned?! properties are already cloned for each individual entity
+            /*if (properties.Client.Animations != null)
             {
                 Animations = new AnimationMetaData[properties.Client.Animations.Length];
                 for(int i = 0; i < Animations.Length; i++)
@@ -128,7 +128,7 @@ namespace Vintagestory.API.Common
                     Animations[i] = properties.Client.Animations[i].Clone();
                     Animations[i].Init();
                 }
-            }
+            }*/
 
             if (World.Side == EnumAppSide.Server)
             {
@@ -172,7 +172,7 @@ namespace Vintagestory.API.Common
         /// Gets the ID of the block the eyes are submerged in.
         /// </summary>
         /// <returns></returns>
-        public ushort GetEyesBlockId()
+        public int GetEyesBlockId()
         {
             BlockPos pos = LocalPos.AsBlockPos.Add(0, (float)Properties.EyeHeight, 0);
             return World.BlockAccessor.GetBlockId(pos.X, pos.Y, pos.Z);
@@ -232,6 +232,7 @@ namespace Vintagestory.API.Common
 
             controls.WalkVector.Set(0, 0, 0);
             controls.FlyVector.Set(0, 0, 0);
+            ClimbingOnFace = null;
 
             base.Die(reason, damageSourceForDeath);
         }
@@ -288,16 +289,35 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                ReceiveDamage(new DamageSource() {
+                DamageSource dmgSource = new DamageSource()
+                {
                     Source = EnumDamageSource.Entity,
-                    SourceEntity = (Entity)byEntity,
+                    SourceEntity = byEntity,
                     Type = EnumDamageType.BluntAttack,
                     HitPosition = hitPosition
-                }, damage);
+                };
+
+                if (ReceiveDamage(dmgSource, damage))
+                {
+                    byEntity.DidAttack(dmgSource, this);
+                }
  
             }
         }
 
+
+        public virtual void DidAttack(DamageSource source, EntityAgent targetEntity)
+        {
+            EnumHandling handled = EnumHandling.PassThrough;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.DidAttack(source, targetEntity, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
+
+            if (handled == EnumHandling.PreventDefault || handled == EnumHandling.PreventSubsequent) return;
+        }
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
         {
@@ -397,15 +417,20 @@ namespace Vintagestory.API.Common
                 AnimationMetaData defaultAnim = null;
                 bool anyAverageAnimActive = false;
 
-                for (int i = 0; Animations != null && i < Animations.Length; i++)
+                AnimationMetaData[] animations = Properties.Client.Animations;
+                for (int i = 0; animations != null && i < animations.Length; i++)
                 {
-                    AnimationMetaData anim = Animations[i];
+                    AnimationMetaData anim = animations[i];
                     bool wasActive = AnimManager.ActiveAnimationsByAnimCode.ContainsKey(anim.Animation);
                     bool nowActive = anim.Matches((int)CurrentControls);
+                    bool isDefaultAnim = anim?.TriggeredBy?.DefaultAnim == true;
 
                     anyAverageAnimActive |= nowActive && anim.BlendMode == EnumAnimationBlendMode.Average;
-
-                    if (anim?.TriggeredBy?.DefaultAnim == true) defaultAnim = anim;
+                    
+                    if (isDefaultAnim)
+                    {
+                        defaultAnim = anim;
+                    }
 
                     if (!wasActive && nowActive)
                     {
@@ -413,7 +438,7 @@ namespace Vintagestory.API.Common
                         AnimManager.StartAnimation(anim);
                     }
 
-                    if (wasActive && !nowActive && anim.WasStartedFromTrigger)
+                    if (wasActive && !nowActive && (anim.WasStartedFromTrigger || isDefaultAnim))
                     {
                         anim.WasStartedFromTrigger = false;
                         AnimManager.StopAnimation(anim.Animation);
@@ -429,7 +454,7 @@ namespace Vintagestory.API.Common
 
             if (Properties.RotateModelOnClimb && World.Side == EnumAppSide.Server)
             {
-                if (Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
+                if (Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
                 {
                     ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
                 }
@@ -438,15 +463,16 @@ namespace Vintagestory.API.Common
                     ServerPos.Pitch = 0;
                 }
             }
-
+            
+            
             base.OnGameTick(dt);
         }
 
 
-        string lastRunningHeldUseAnimation;
-        string lastRunningRightHeldIdleAnimation;
-        string lastRunningLeftHeldIdleAnimation;
-        string lastRunningHeldHitAnimation;
+        protected string lastRunningHeldUseAnimation;
+        protected string lastRunningRightHeldIdleAnimation;
+        protected string lastRunningLeftHeldIdleAnimation;
+        protected string lastRunningHeldHitAnimation;
 
         private void HandleHandAnimations()
         {
@@ -511,7 +537,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        protected virtual void StopHandAnims()
+        public virtual void StopHandAnims()
         {
             AnimManager.StopAnimation(lastRunningHeldUseAnimation);
             lastRunningHeldUseAnimation = null;
@@ -675,6 +701,14 @@ namespace Vintagestory.API.Common
         public virtual void WalkInventory(OnInventorySlot handler)
         {
             
+        }
+
+
+        public override void UpdateDebugAttributes()
+        {
+            base.UpdateDebugAttributes();
+
+            DebugAttributes.SetString("Herd Id", "" + HerdId);
         }
 
     }

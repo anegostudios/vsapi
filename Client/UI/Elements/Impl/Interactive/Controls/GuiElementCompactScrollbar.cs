@@ -8,7 +8,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The padding around the scrollbar.
         /// </summary>
-        public static new int scrollbarPadding = 2;
+        public static int scrollbarPadding = 2;
 
         /// <summary>
         /// Can this GUIElement be focusable? (default: true).

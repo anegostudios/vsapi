@@ -387,5 +387,28 @@ namespace Vintagestory.API.Common
             handled = EnumHandling.PassThrough;
             return new WorldInteraction[0];
         }
+
+        public virtual WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return new WorldInteraction[0];
+        }
+
+        public virtual void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+        }
+
+        public virtual bool OnBlockInteractStep(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return false;
+        }
+
+        public virtual bool OnBlockInteractCancel(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return false;
+        }
     }
 }

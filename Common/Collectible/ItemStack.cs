@@ -266,6 +266,21 @@ namespace Vintagestory.API.Common
             ;
         }
 
+        /// <summary>
+        /// Replace all the attributes from this item stack by given stack
+        /// </summary>
+        /// <param name="stack"></param>
+        public void SetFrom(ItemStack stack)
+        {
+            this.Id = stack.Collectible.Id;
+            this.Class = stack.Class;
+            this.item = stack.item;
+            this.block = stack.block;
+            this.stacksize = stack.stacksize;
+            this.stackAttributes = stack.stackAttributes.Clone() as TreeAttribute;
+            this.tempAttributes = stack.tempAttributes.Clone() as TreeAttribute;
+        }
+
 
         /// <summary>
         /// Turn the itemstack into a simple string representation
@@ -330,7 +345,7 @@ namespace Vintagestory.API.Common
         {
            return 
                 GetName().CaseInsensitiveContains(searchText)
-                || GetDescription(world, false).CaseInsensitiveContains(searchText)
+                || GetDescription(world, new DummySlot(this), false).CaseInsensitiveContains(searchText)
             ;
 
         }
@@ -350,10 +365,10 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="debug"></param>
         /// <returns></returns>
-        public string GetDescription(IWorldAccessor world, bool debug = false)
+        public string GetDescription(IWorldAccessor world, ItemSlot inSlot, bool debug = false)
         {
             StringBuilder dsc = new StringBuilder();
-            Collectible.GetHeldItemInfo(this, dsc, world, debug);
+            Collectible.GetHeldItemInfo(inSlot, dsc, world, debug);
             return dsc.ToString();
         }
 

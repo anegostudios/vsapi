@@ -31,5 +31,8 @@ namespace Vintagestory.API.Server
 
         Color Color { get; }
 
+        bool IsSuperior(IPlayerRole role);
+        void GrantPrivilege(params string[] privileges);
+        void RevokePrivilege(string privilege);
     }
 }

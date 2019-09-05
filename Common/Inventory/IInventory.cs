@@ -37,12 +37,7 @@ namespace Vintagestory.API.Common
         /// The setter allows for replacing slots with custom ones, though caution is advised.
         /// </summary>
         ItemSlot this[int slotId] { get; set; }
-
-        [Obsolete("Use indexer instead.")]
-        ItemSlot GetSlot(int slotId);
-
-        [Obsolete("Use Count instead.")]
-        int QuantitySlots { get; }
+        
 
         /// <summary>
         /// The name of the class for the inventory

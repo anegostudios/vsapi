@@ -34,6 +34,7 @@ namespace Vintagestory.API.Common
         double gravityPerSecond = GlobalConstants.GravityPerSecond;
 
 
+
         public EntityBehaviorPassivePhysics(Entity entity) : base(entity)
         {
 
@@ -70,6 +71,7 @@ namespace Vintagestory.API.Common
 
             while (accumulator >= dt2)
             {
+                entity.PhysicsUpdateWatcher?.Invoke(accumulator - GlobalConstants.PhysicsFrameTime);
                 DoPhysics(dt2, pos);
                 accumulator -= dt2;
             }
@@ -109,31 +111,20 @@ namespace Vintagestory.API.Common
             }
 
             Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z);
+            Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z);
 
             if (entity.FeetInLiquid)
             {
-                string lastcodepart = inblock.LastCodePart(1);
-                if (lastcodepart != null)
+                Vec3d pushvec = inblock.PushVector;
+                if (pushvec != null)
                 {
-                    Vec3i normali = Cardinal.FromInitial(lastcodepart)?.Normali;
-                    
-                    if (normali != null)
-                    {
-                        float pushstrength = 0.0003f * 1000f / Math.Max(500, entity.MaterialDensity);
+                    float pushstrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500);
 
-                        pos.Motion.Add(
-                            normali.X * pushstrength,
-                            0,
-                            normali.Z * pushstrength
-                        );
-                    }
-                    else
-                    {
-                        if (lastcodepart == "d")
-                        {
-                            pos.Motion.Add(0, -0.002f, 0);
-                        }
-                    }
+                    pos.Motion.Add(
+                        pushvec.X * pushstrength,
+                        pushvec.Y * pushstrength,
+                        pushvec.Z * pushstrength
+                    );
                 }
             }
             
@@ -141,28 +132,35 @@ namespace Vintagestory.API.Common
             // Gravity
             if (pos.Y > -100 && entity.ApplyGravity)
             {
-                float fact = 1;
+                double gravStrength = gravityPerSecond * dt + Math.Max(0, -0.015f * pos.Motion.Y);
                 if (entity.Swimming)
                 {
-                    Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + entity.SwimmingOffsetY + 1), (int)pos.Z);
 
-                    float swimmingDepth = Math.Min(
-                        1, 
-                        1 - (float)(pos.Y + entity.SwimmingOffsetY) + (int)(pos.Y + entity.SwimmingOffsetY) + (aboveblock.IsLiquid() ? 1 : 0) - (1 - inblock.LiquidLevel / 7f)
-                    );
+                    // above 0 => floats
+                    // below 0 => sinks
+                    float baseboyancy = GameMath.Clamp(1 - entity.MaterialDensity / inblock.MaterialDensity, -1, 1);
 
-                    float boyancy = GameMath.Clamp(entity.MaterialDensity / inblock.MaterialDensity - 1, -0.1f, 0.2f);
+                    float waterY = (int)pos.Y + inblock.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9/8f : 0);
                     
-                    fact = boyancy * (1.5f * swimmingDepth + (1 - swimmingDepth) / 70f);
+                    float bottomSubmergedness = waterY - (float)pos.Y;
+                    
+                    // 0 = at swim line
+                    // 1 = completely submerged
+                    float swimlineSubmergedness = GameMath.Clamp(bottomSubmergedness - (entity.CollisionBox.Y2 - (float)entity.SwimmingOffsetY), 0, 1);
 
-                    // At very shallow waters, items heavery than water do funny stuff because fact becomes <0
-                    if (entity.MaterialDensity > inblock.MaterialDensity)
-                    {
-                        fact = Math.Max(0, fact);
-                    }
+                    double boyancyStrength = GameMath.Clamp(60 * baseboyancy * swimlineSubmergedness, -1.5f, 1.5f);
+
+                    double waterDrag = GameMath.Clamp(100 * Math.Abs(pos.Motion.Y) - 0.02f, 1, 1.25f);
+
+                    pos.Motion.Y += gravStrength * (boyancyStrength - 1);
+                    pos.Motion.Y /= waterDrag;
+
+                } else
+                {
+                    pos.Motion.Y -= gravStrength;
                 }
 
-                pos.Motion.Y -= fact * (gravityPerSecond * dt + Math.Max(0, -0.015f * pos.Motion.Y));
+                
             }
 
            
@@ -209,11 +207,21 @@ namespace Vintagestory.API.Common
 
        
 
-            Block block = entity.World.BlockAccessor.GetBlock(pos.AsBlockPos);
+            Block block = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt);
+
             entity.FeetInLiquid = block.MatterState == EnumMatterState.Liquid;
 
-            block = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + entity.SwimmingOffsetY), (int)pos.Z);
-            entity.Swimming = block.IsLiquid();
+            if (entity.FeetInLiquid)
+            {
+                float waterY = (int)pos.Y + block.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9 / 8f : 0);
+                float bottomSubmergedness = waterY - (float)pos.Y;
+
+                // 0 = at swim line
+                // 1 = completely submerged
+                float swimlineSubmergedness = bottomSubmergedness - (entity.CollisionBox.Y2 - (float)entity.SwimmingOffsetY);
+
+                entity.Swimming = swimlineSubmergedness > 0;
+            }
 
             if (!onCollidedBefore && entity.Collided)
             {

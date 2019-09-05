@@ -20,6 +20,11 @@ namespace Vintagestory.API.Common
 
         }
 
+        public override float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)
+        {
+            return 0;
+        }
+
         protected override ItemSlot NewSlot(int slotId)
         {
             return new ItemSlotCreative(this);

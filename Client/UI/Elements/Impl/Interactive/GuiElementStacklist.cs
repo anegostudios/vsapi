@@ -19,7 +19,7 @@ namespace Vintagestory.API.Client
         public abstract void Dispose();
         public bool Visible;
 
-        public abstract RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.Action<string> openDetailPageFor);
+        public abstract RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.ActionConsumable<string> openDetailPageFor);
         public abstract bool MatchesText(string text);
     }
 
@@ -50,7 +50,7 @@ namespace Vintagestory.API.Client
             comps = VtmlUtil.Richtextify(capi, text, CairoFont.WhiteSmallText().WithLineHeightMultiplier(1.2));
         }
 
-        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.Action<string> openDetailPageFor)
+        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.ActionConsumable<string> openDetailPageFor)
         {
             return comps;
         }
@@ -93,6 +93,10 @@ namespace Vintagestory.API.Client
         public List<ItemStack> Stacks = new List<ItemStack>();
         public string Name;
 
+        public GuiHandbookGroupedItemstackPage(ICoreClientAPI capi, ItemStack stack) : base(capi, null)
+        {
+        }
+
         public override string PageCode => Name;
 
         public override void RenderTo(ICoreClientAPI capi, double x, double y)
@@ -102,7 +106,8 @@ namespace Vintagestory.API.Client
 
             int index = (int)((capi.ElapsedMilliseconds / 1000) % Stacks.Count);
 
-            capi.Render.RenderItemstackToGui(Stacks[index], x + pad + size / 2, y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
+            dummySlot.Itemstack = Stacks[index];
+            capi.Render.RenderItemstackToGui(dummySlot, x + pad + size / 2, y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
 
             if (Texture == null)
             {
@@ -119,9 +124,11 @@ namespace Vintagestory.API.Client
             );
         }
 
-        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.Action<string> openDetailPageFor)
+        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.ActionConsumable<string> openDetailPageFor)
         {
-            return Stacks[0].Collectible.GetHandbookInfo(Stacks[0], capi, allStacks, openDetailPageFor);
+            dummySlot.Itemstack = Stacks[0];
+
+            return Stacks[0].Collectible.GetHandbookInfo(dummySlot, capi, allStacks, openDetailPageFor);
         }
     }
 
@@ -135,20 +142,34 @@ namespace Vintagestory.API.Client
 
         public override string PageCode => PageCodeForStack(Stack);
 
+        public InventoryBase unspoilableInventory;
+        public DummySlot dummySlot;
+
+        public GuiHandbookItemStackPage(ICoreClientAPI capi, ItemStack stack)
+        {
+            this.Stack = stack;
+            unspoilableInventory = new CreativeInventoryTab(1, "not-used", null);
+            dummySlot = new DummySlot(stack, unspoilableInventory);
+
+            TextCache = stack.GetName() + " " + stack.GetDescription(capi.World, dummySlot, false);
+        }
 
         public static string PageCodeForStack(ItemStack stack)
         {
-            if (stack.Attributes != null)
+            if (stack.Attributes != null && stack.Attributes.Count > 0)
             {
                 ITreeAttribute tree = stack.Attributes.Clone();
                 foreach (var val in GlobalConstants.IgnoredStackAttributes) tree.RemoveAttribute(val);
                 tree.RemoveAttribute("durability");
 
-                return (stack.Class == EnumItemClass.Block ? "block" : "item") + "-" + stack.Collectible.Code.ToShortString() + tree.GetHashCode();
-            } else
-            {
-                return (stack.Class == EnumItemClass.Block ? "block" : "item") + "-" + stack.Collectible.Code.ToShortString();
+                if (tree.Count != 0)
+                {
+                    string treeStr = tree.ToJsonToken();
+                    return (stack.Class == EnumItemClass.Block ? "block" : "item") + "-" + stack.Collectible.Code.ToShortString() + "-" + treeStr;
+                }
             }
+
+            return (stack.Class == EnumItemClass.Block ? "block" : "item") + "-" + stack.Collectible.Code.ToShortString();
         }
 
         public void Recompose(ICoreClientAPI capi)
@@ -161,7 +182,9 @@ namespace Vintagestory.API.Client
         {
             float size = (float)GuiElement.scaled(25);
             float pad = (float)GuiElement.scaled(10);
-            capi.Render.RenderItemstackToGui(Stack, x + pad + size/2 , y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
+            
+
+            capi.Render.RenderItemstackToGui(dummySlot, x + pad + size/2 , y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
 
             if (Texture == null)
             {
@@ -183,9 +206,9 @@ namespace Vintagestory.API.Client
             Texture = null;
         }
 
-        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.Action<string> openDetailPageFor)
+        public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.ActionConsumable<string> openDetailPageFor)
         {
-            return Stack.Collectible.GetHandbookInfo(Stack, capi, allStacks, openDetailPageFor);
+            return Stack.Collectible.GetHandbookInfo(dummySlot, capi, allStacks, openDetailPageFor);
         }
 
         public override bool MatchesText(string text)

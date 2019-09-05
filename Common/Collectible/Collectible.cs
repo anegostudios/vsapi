@@ -10,6 +10,7 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -120,17 +121,22 @@ namespace Vintagestory.API.Common
         public JsonObject Attributes;
 
         /// <summary>
-        /// Information about the blocks burnable states
+        /// Information about the burnable states
         /// </summary>
         public CombustibleProperties CombustibleProps = null;
 
         /// <summary>
-        /// Information about the blocks nutrition states
+        /// Information about the nutrition states
         /// </summary>
         public FoodNutritionProperties NutritionProps = null;
 
         /// <summary>
-        /// Information about the blocks grinding properties
+        /// Information about the transitionable states
+        /// </summary>
+        public TransitionableProperties[] TransitionableProps = null;
+
+        /// <summary>
+        /// Information about the grinding properties
         /// </summary>
         public GrindingProperties GrindingProps = null;
 
@@ -243,6 +249,19 @@ namespace Vintagestory.API.Common
         {
             return NutritionProps;
         }
+
+        /// <summary>
+        /// Should return the transition properties of the item/block when in itemstack form
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="itemstack"></param>
+        /// <param name="forEntity"></param>
+        /// <returns></returns>
+        public virtual TransitionableProperties[] GetTransitionableProperties(IWorldAccessor world, ItemStack itemstack, Entity forEntity)
+        {
+            return TransitionableProps;
+        }
+
 
         /// <summary>
         /// Should return in which storage containers this item can be placed in
@@ -386,6 +405,17 @@ namespace Vintagestory.API.Common
             }
 
             return remainingResistance - GetMiningSpeed(itemslot.Itemstack, block) * dt;
+        }
+
+
+        /// <summary>
+        /// Whenever the collectible was modified while inside a slot, usually when it was moved, split or merged.  
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="slot">The slot the item is or was in</param>
+        /// <param name="extractedStack">Non null if the itemstack was removed from this slot</param>
+        public virtual void OnModifiedInInventorySlot(IWorldAccessor world, ItemSlot slot, ItemStack extractedStack = null)
+        {
         }
 
 
@@ -536,6 +566,18 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        /// <summary>
+        /// Called when a matching grid recipe has been found and an item is placed into the crafting output slot (which is still before the player clicks on the output slot to actually craft the item and consume the ingredients)
+        /// </summary>
+        /// <param name="allInputslots"></param>
+        /// <param name="outputSlot"></param>
+        /// <param name="byRecipe"></param>
+        /// <param name="byPlayer"></param>
+        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
+        {
+
+        }
 
 
         /// <summary>
@@ -929,7 +971,13 @@ namespace Vintagestory.API.Common
 
             if (byEntity.World is IServerWorldAccessor && nutriProps != null && secondsUsed >= 0.95f)
             {
-                byEntity.ReceiveSaturation(nutriProps.Saturation, nutriProps.FoodCategory);
+                TransitionState state = UpdateAndGetTransitionState(api.World, slot, EnumTransitionType.Perish);
+                float spoilState = state != null ? state.TransitionLevel : 0;
+
+                float satLossMul = GlobalConstants.FoodSpoilageSatLossMul(spoilState, slot.Itemstack, byEntity);
+                float healthLossMul = GlobalConstants.FoodSpoilageHealthLossMul(spoilState, slot.Itemstack, byEntity);
+
+                byEntity.ReceiveSaturation(nutriProps.Satiety * satLossMul, nutriProps.FoodCategory);
 
                 if (nutriProps.EatenStack != null)
                 {
@@ -944,9 +992,11 @@ namespace Vintagestory.API.Common
 
                 slot.Itemstack.StackSize--;
 
-                if (nutriProps.Health != 0)
+                float healthChange = nutriProps.Health * healthLossMul;
+
+                if (healthChange != 0)
                 {
-                    byEntity.ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = nutriProps.Health > 0 ? EnumDamageType.Heal : EnumDamageType.Poison }, Math.Abs(nutriProps.Health));
+                    byEntity.ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = healthChange > 0 ? EnumDamageType.Heal : EnumDamageType.Poison }, Math.Abs(healthChange));
                 }
 
                 slot.MarkDirty();
@@ -1000,12 +1050,14 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called by the inventory system when you hover over an item stack. This is the text that is getting displayed.
         /// </summary>
-        /// <param name="stack"></param>
+        /// <param name="inSlot"></param>
         /// <param name="dsc"></param>
         /// <param name="world"></param>
         /// <param name="withDebugInfo"></param>
-        public virtual void GetHeldItemInfo(ItemStack stack, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+        public virtual void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
         {
+            ItemStack stack = inSlot.Itemstack;
+
             string descLangCode = Code?.Domain + AssetLocation.LocationSeparator + ItemClass.ToString().ToLowerInvariant() + "desc-" + Code?.Path;
             string descText = Lang.GetMatching(descLangCode);
             if (descText == descLangCode) descText = "";
@@ -1079,34 +1131,43 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            FoodNutritionProperties nutriProps = GetNutritionProperties(world, stack, world.Side == EnumAppSide.Client ? (world as IClientWorldAccessor).Player.Entity : null);
+            EntityPlayer entity = world.Side == EnumAppSide.Client ? (world as IClientWorldAccessor).Player.Entity : null;
+
+            float spoilState = AppendPerishableInfoText(inSlot, dsc, world);
+
+            FoodNutritionProperties nutriProps = GetNutritionProperties(world, stack, entity);
             if (nutriProps != null)
             {
-                if (Math.Abs(nutriProps.Health) > 0.001f)
+                float satLossMul = GlobalConstants.FoodSpoilageSatLossMul(spoilState, stack, entity);
+                float healthLossMul = GlobalConstants.FoodSpoilageHealthLossMul(spoilState, stack, entity);
+
+                if (Math.Abs(nutriProps.Health * healthLossMul) > 0.001f)
                 {
-                    dsc.Append(Lang.Get("When eaten: {0} sat, {1} hp\n", nutriProps.Saturation, nutriProps.Health));
+                    dsc.AppendLine(Lang.Get("When eaten: {0} sat, {1} hp", Math.Round(nutriProps.Satiety * satLossMul), nutriProps.Health * healthLossMul));
                 }
                 else
                 {
-                    dsc.Append(Lang.Get("When eaten: {0} sat\n", nutriProps.Saturation));
+                    dsc.AppendLine(Lang.Get("When eaten: {0} sat", Math.Round(nutriProps.Satiety * satLossMul)));
                 }
 
-                dsc.AppendLine(Lang.Get("Food Category: {0}", nutriProps.FoodCategory));
+                dsc.AppendLine(Lang.Get("Food Category: {0}", Lang.Get("foodcategory-" + nutriProps.FoodCategory.ToString().ToLowerInvariant())));
             }
+            
+
 
             if (GrindingProps != null)
             {
-                dsc.Append(Lang.Get("When ground: Turns into {0}x {1}", GrindingProps.GrindedStack.ResolvedItemstack.StackSize, GrindingProps.GrindedStack.ResolvedItemstack.GetName()));
+                dsc.AppendLine(Lang.Get("When ground: Turns into {0}x {1}", GrindingProps.GrindedStack.ResolvedItemstack.StackSize, GrindingProps.GrindedStack.ResolvedItemstack.GetName()));
             }
 
             if (GetAttackPower(stack) > 0.5f)
             {
-                dsc.Append(Lang.Get("Attack power: -{0} hp\n", GetAttackPower(stack).ToString("0.#")));
+                dsc.AppendLine(Lang.Get("Attack power: -{0} hp", GetAttackPower(stack).ToString("0.#")));
             }
 
             if (GetAttackRange(stack) > GlobalConstants.DefaultAttackRange)
             {
-                dsc.Append(Lang.Get("Attack range: {0} m\n", GetAttackRange(stack).ToString("0.#")));
+                dsc.AppendLine(Lang.Get("Attack range: {0} m", GetAttackRange(stack).ToString("0.#")));
             }
 
             if (CombustibleProps != null)
@@ -1147,8 +1208,158 @@ namespace Vintagestory.API.Common
                 dsc.AppendLine(Lang.Get("Pigment: {0}", Lang.Get(Attributes["pigment"]["name"].AsString())));
             }
 
+
+            JsonObject obj = Attributes?["fertilizerProps"];
+            if (obj != null && obj.Exists)
+            {
+                FertilizerProps props = obj.AsObject<FertilizerProps>();
+                if (props != null)
+                {
+                    dsc.AppendLine(Lang.Get("Fertilizer: {0}% N, {1}% P, {2}% K", props.N, props.P, props.K));
+                }
+            }
+
         }
 
+
+        public virtual WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot)
+        {
+            if (GetNutritionProperties(api.World, inSlot.Itemstack, null) != null)
+            {
+                return new WorldInteraction[]
+                {
+                    new WorldInteraction()
+                    {
+                        ActionLangCode = "heldhelp-eat",
+                        MouseButton = EnumMouseButton.Right
+                    }
+                };
+            }
+
+            return null;
+        }
+
+
+        public virtual float AppendPerishableInfoText(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world)
+        {
+            float spoilState = 0;
+            TransitionState[] transitionStates = UpdateAndGetTransitionStates(api.World, inSlot);
+
+            if (transitionStates != null)
+            {
+                for (int i = 0; i < transitionStates.Length; i++)
+                {
+                    TransitionState state = transitionStates[i];
+
+                    TransitionableProperties prop = state.Props;
+                    float perishRate = GetTransitionRateMul(world, inSlot, prop.Type);
+
+                    if (perishRate <= 0) continue;
+
+                    float transitionLevel = state.TransitionLevel;
+                    float freshHoursLeft = state.FreshHoursLeft / perishRate;
+
+                    switch (prop.Type)
+                    {
+                        case EnumTransitionType.Perish:
+                            spoilState = transitionLevel;
+
+                            if (transitionLevel > 0)
+                            {
+                                dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> {0}% spoiled", (int)Math.Round(transitionLevel * 100)));
+                            }
+                            else
+                            {
+                                double hoursPerday = api.World.Calendar.HoursPerDay;
+
+                                if (freshHoursLeft / hoursPerday >= api.World.Calendar.DaysPerYear)
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> Fresh for {0} years", Math.Round(freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerYear, 1)));
+                                }
+                                /*else if (freshHoursLeft / hoursPerday >= api.World.Calendar.DaysPerMonth)  - confusing. 12 days per months and stuff..
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> Fresh for {0} months", Math.Round(freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerMonth, 1)));
+                                }*/
+                                else if (freshHoursLeft > hoursPerday)
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> Fresh for {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                                }
+                                else
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> Fresh for {0} hours", Math.Round(freshHoursLeft, 1)));
+                                }
+                            }
+                            break;
+
+                        /*case EnumTransitionType.Cure:
+                            if (transitionLevel > 0)
+                            {
+                                dsc.AppendLine(Lang.Get("<font color=\"brown\">Curable.</font> {0}% cured", (int)Math.Round(transitionLevel * 100)));
+                            }
+                            else
+                            {
+                                double hoursPerday = api.World.Calendar.HoursPerDay;
+                                if (freshHoursLeft > hoursPerday)
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"brown\">Curable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                                }
+                                else
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"brown\">Curable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                                }
+                            }
+                            break;
+
+
+                        case EnumTransitionType.Ferment:
+                            if (transitionLevel > 0)
+                            {
+                                dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> {0}% fermented", (int)Math.Round(transitionLevel * 100)));
+                            }
+                            else
+                            {
+                                double hoursPerday = api.World.Calendar.HoursPerDay;
+                                if (freshHoursLeft > hoursPerday)
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                                }
+                                else
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                                }
+                            }
+                            break;
+                            */
+
+
+                        case EnumTransitionType.Dry:
+                            if (transitionLevel > 0)
+                            {
+                                dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font> {0}% dried", (int)Math.Round(transitionLevel * 100)));
+                            }
+                            else
+                            {
+                                double hoursPerday = api.World.Calendar.HoursPerDay;
+                                if (freshHoursLeft > hoursPerday)
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                                }
+                                else
+                                {
+                                    dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                                }
+                            }
+                            break;
+
+
+
+
+                    }
+                }
+            }
+
+            return spoilState;
+        }
 
         public virtual List<ItemStack> GetHandBookStacks(ICoreClientAPI capi)
         {
@@ -1186,7 +1397,7 @@ namespace Vintagestory.API.Common
             else
             {
                 ItemStack stack = new ItemStack(this);
-                stack.StackSize = stack.Collectible.MaxStackSize;
+                //stack.StackSize = stack.Collectible.MaxStackSize; -wtf? what is this for?
 
                 stacks.Add(stack);
             }
@@ -1199,45 +1410,81 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Detailed information on this block/item to be displayed in the handbook
         /// </summary>
-        /// <param name="stack"></param>
+        /// <param name="inSlot"></param>
         /// <param name="capi"></param>
         /// <param name="allStacks">An itemstack for every block and item that should be considered during information display</param>
         /// <param name="openDetailPageFor">Callback when someone clicks a displayed itemstack</param>
         /// <returns></returns>
-        public virtual RichTextComponentBase[] GetHandbookInfo(ItemStack stack, ICoreClientAPI capi, ItemStack[] allStacks, Action<string> openDetailPageFor)
+        public virtual RichTextComponentBase[] GetHandbookInfo(ItemSlot inSlot, ICoreClientAPI capi, ItemStack[] allStacks, ActionConsumable<string> openDetailPageFor)
         {
+            ItemStack stack = inSlot.Itemstack;
+
             List<RichTextComponentBase> components = new List<RichTextComponentBase>();
 
             components.Add(new ItemstackTextComponent(capi, stack, 100, 10, EnumFloat.Left));
             components.Add(new RichTextComponent(capi, stack.GetName() + "\n", CairoFont.WhiteSmallishText()));
-            components.Add(new RichTextComponent(capi, stack.GetDescription(capi.World), CairoFont.WhiteSmallText()));
+
+            components.AddRange(VtmlUtil.Richtextify(capi, stack.GetDescription(capi.World, inSlot), CairoFont.WhiteSmallText()));
+
 
 
             components.Add(new ClearFloatTextComponent(capi, 10));
 
 
+
+            Dictionary<AssetLocation, ItemStack> breakBlocks = new Dictionary<AssetLocation, ItemStack>();
+
+            foreach (var val in allStacks)
+            {
+                if (val.Block == null) continue;
+
+                BlockDropItemStack[] stacks = val.Block.GetDropsForHandbook(val, capi.World.Player);
+                if (stacks == null) continue;
+
+                for (int i = 0; i < stacks.Length; i++)
+                {
+                    ItemStack dstack = stacks[i].ResolvedItemstack;
+
+                    if (dstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                    {
+                        breakBlocks[val.Block.Code] = new ItemStack(val.Block);
+                    }
+                }
+            }
+
+
+
+
             if (stack.Class == EnumItemClass.Block)
             {
-                BlockDropItemStack[] stacks = stack.Block.GetDropsForHandbook(capi.World, capi.World.Player.Entity.Pos.AsBlockPos, capi.World.Player);
+                BlockDropItemStack[] stacks = stack.Block.GetDropsForHandbook(stack, capi.World.Player);
 
                 if (stacks != null && stacks.Length > 0)
                 {
-                    Dictionary<AssetLocation, ItemStack> drops = new Dictionary<AssetLocation, ItemStack>();
-                    foreach (var val in stacks)
+                    if (stacks.Length == 1 && breakBlocks.Count == 1 && breakBlocks.First().Value.Equals(capi.World, stacks[0].ResolvedItemstack, GlobalConstants.IgnoredStackAttributes))
                     {
-                        if (val.ResolvedItemstack == null) continue;
-                        drops[val.ResolvedItemstack.Collectible.Code] = val.ResolvedItemstack;
+                        // No need to display the same info twice
                     }
-
-                    components.Add(new RichTextComponent(capi, Lang.Get("Drops when broken") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
-                    while (drops.Count > 0)
+                    else
                     {
-                        ItemStack rstack = drops.First().Value;
-                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, drops, 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
-                        components.Add(comp);
-                    }
 
-                    components.Add(new ClearFloatTextComponent(capi, 10));
+                        Dictionary<AssetLocation, ItemStack> drops = new Dictionary<AssetLocation, ItemStack>();
+                        foreach (var val in stacks)
+                        {
+                            if (val.ResolvedItemstack == null) continue;
+                            drops[val.ResolvedItemstack.Collectible.Code] = val.ResolvedItemstack;
+                        }
+
+                        components.Add(new RichTextComponent(capi, Lang.Get("Drops when broken") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                        while (drops.Count > 0)
+                        {
+                            ItemStack rstack = drops.First().Value;
+                            SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, rstack, drops, 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
+                            components.Add(comp);
+                        }
+
+                        components.Add(new ClearFloatTextComponent(capi, 10));
+                    }
                 }
             }
 
@@ -1261,23 +1508,6 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            Dictionary<AssetLocation, ItemStack> breakBlocks = new Dictionary<AssetLocation, ItemStack>();
-
-            foreach (var val in allStacks)
-            {
-                if (val.Block == null) continue;
-
-                ItemStack[] stacks = val.Block.GetDrops(capi.World, capi.World.Player.Entity.Pos.AsBlockPos, capi.World.Player, 1);
-                if (stacks == null) continue;
-
-                for (int i = 0; i < stacks.Length; i++)
-                {
-                    if (stacks[i].Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
-                    {
-                        breakBlocks[val.Block.Code] = new ItemStack(val.Block);
-                    }
-                }
-            }
 
             bool haveText = false;
 
@@ -1413,7 +1643,11 @@ namespace Vintagestory.API.Common
             // Smelts into
             if (CombustibleProps?.SmeltedStack?.ResolvedItemstack != null && !CombustibleProps.SmeltedStack.ResolvedItemstack.Equals(api.World, stack, GlobalConstants.IgnoredStackAttributes))
             {
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Smelts into") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                string smelttype = CombustibleProps.SmeltingType.ToString().ToLowerInvariant();
+                string title = Lang.Get("game:smeltdesc-" + smelttype + "-title");
+                    
+
+                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 components.Add(new ItemstackTextComponent(capi, CombustibleProps.SmeltedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
                 haveText = true;
             }
@@ -1500,6 +1734,20 @@ namespace Vintagestory.API.Common
                 }
             }
 
+
+            foreach (var recipe in capi.World.BarrelRecipes)
+            {
+                foreach (var ingred in recipe.Ingredients)
+                {
+                    if (ingred.SatisfiesAsIngredient(stack))
+                    {
+                        recipestacks[recipe.Output.ResolvedItemstack.Collectible.Code] = recipe.Output.ResolvedItemstack;
+                    }
+                }
+            }
+
+
+
             if (recipestacks.Count > 0)
             {
                 components.Add(new ClearFloatTextComponent(capi, 10));
@@ -1513,6 +1761,8 @@ namespace Vintagestory.API.Common
             }
 
 
+
+
             // Created by....
             // * Smithing
             // * Grid crafting:
@@ -1523,7 +1773,7 @@ namespace Vintagestory.API.Common
             bool smithable = false;
             bool knappable = false;
             bool clayformable = false;
-
+            
             foreach (var val in capi.World.SmithingRecipes)
             {
                 if (val.Output.ResolvedItemstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
@@ -1553,13 +1803,13 @@ namespace Vintagestory.API.Common
             }
 
 
-            List<GridRecipe> recipes = new List<GridRecipe>();
+            List<GridRecipe> grecipes = new List<GridRecipe>();
 
             foreach (var val in capi.World.GridRecipes)
             {
                 if (val.Output.ResolvedItemstack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
                 {
-                    recipes.Add(val);
+                    grecipes.Add(val);
                 }
             }
 
@@ -1576,12 +1826,75 @@ namespace Vintagestory.API.Common
             }
 
 
+            List<RichTextComponentBase> barrelRecipestext = new List<RichTextComponentBase>();
+            Dictionary<string, List<BarrelRecipe>> brecipesbyName = new Dictionary<string, List<BarrelRecipe>>();
+            foreach (var recipe in capi.World.BarrelRecipes)
+            {
+                ItemStack mixdStack = recipe.Output.ResolvedItemstack;
+
+                if (mixdStack != null && mixdStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
+                {
+                    List<BarrelRecipe> tmp;
+
+                    if (!brecipesbyName.TryGetValue(recipe.Code, out tmp))
+                    {
+                        brecipesbyName[recipe.Code] = tmp = new List<BarrelRecipe>();
+                    }
+
+                    tmp.Add(recipe);
+                }
+            }
+
+            
+
+            foreach (var recipes in brecipesbyName.Values)
+            {
+                int ingredientsLen = recipes[0].Ingredients.Length;
+                ItemStack[][] ingstacks = new ItemStack[ingredientsLen][];
+
+                for (int i = 0; i < recipes.Count; i++)
+                {
+                    if (recipes[i].Ingredients.Length != ingredientsLen)
+                    {
+                        throw new Exception("Barrel recipe with same name but different ingredient count! Sorry, this is not supported right now. Please make sure you choose different barrel recipe names if you have different ingredient counts.");
+                    }
+
+                    
+
+                    for (int j = 0; j < ingredientsLen; j++)
+                    {
+                        if (i == 0)
+                        {
+                            ingstacks[j] = new ItemStack[recipes.Count];
+                        }
+
+                        ingstacks[j][i] = recipes[i].Ingredients[j].ResolvedItemstack;
+                    }
+                }
+
+                for (int i = 0; i < ingredientsLen; i++)
+                {
+                    if (i > 0)
+                    {
+                        RichTextComponent cmp = new RichTextComponent(capi, "+", CairoFont.WhiteMediumText());
+                        cmp.VerticalAlign = EnumVerticalAlign.Middle;
+                        barrelRecipestext.Add(cmp);
+                    }
+
+                    SlideshowItemstackTextComponent scmp = new SlideshowItemstackTextComponent(capi, ingstacks[i], 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
+                    scmp.ShowStackSize = true;
+                    barrelRecipestext.Add(scmp);
+                }
+
+
+                barrelRecipestext.Add(new ClearFloatTextComponent(capi, 10));
+            }
 
 
             string customCreatedBy = stack.Collectible.Attributes?["handbook"]?["createdBy"]?.AsString(null);
 
 
-            if (recipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0)
+            if (grecipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0 || barrelRecipestext.Count > 0)
             {
                 components.Add(new ClearFloatTextComponent(capi, 10));
                 components.Add(new RichTextComponent(capi, Lang.Get("Created by") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
@@ -1603,11 +1916,17 @@ namespace Vintagestory.API.Common
                 }
 
 
-                if (recipes.Count > 0)
+                if (grecipes.Count > 0)
                 {
                     if (knappable) components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crafting") + "\n", CairoFont.WhiteSmallText()));
 
-                    components.Add(new SlideshowGridRecipeTextComponent(capi, recipes.ToArray(), 40, EnumFloat.None, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)), allStacks));
+                    components.Add(new SlideshowGridRecipeTextComponent(capi, grecipes.ToArray(), 40, EnumFloat.None, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)), allStacks));
+                }
+
+                if (barrelRecipestext.Count > 0)
+                {
+                    components.Add(new RichTextComponent(capi, "• " + Lang.Get("In Barrel") + "\n", CairoFont.WhiteSmallText()));
+                    components.AddRange(barrelRecipestext);
                 }
             }
 
@@ -1667,6 +1986,9 @@ namespace Vintagestory.API.Common
             if (op.MovableQuantity == 0) return;
             if (!op.SinkSlot.CanTakeFrom(op.SourceSlot)) return;
 
+            bool doTemperatureAveraging = false;
+            bool doTransitionAveraging = false;
+
             op.MovedQuantity = GameMath.Min(op.SinkSlot.RemainingSlotSpace, op.MovableQuantity, op.RequestedQuantity);
 
             if (HasTemperature(op.SinkSlot.Itemstack) || HasTemperature(op.SourceSlot.Itemstack))
@@ -1678,11 +2000,74 @@ namespace Vintagestory.API.Common
                     {
                         op.MovedQuantity = 0;
                         op.MovableQuantity = 0;
-                        op.RequiredPriority = EnumMergePriority.ConfirmedMerge;
+                        op.RequiredPriority = EnumMergePriority.DirectMerge;
                         return;
                     }
                 }
+
+                doTemperatureAveraging = true;
+            }
+
+
+            TransitionState[] sourceTransitionStates = UpdateAndGetTransitionStates(op.World, op.SourceSlot);
+            TransitionState[] targetTransitionStates = UpdateAndGetTransitionStates(op.World, op.SinkSlot);
+            Dictionary<EnumTransitionType, TransitionState> targetStatesByType=null;
+
+            if (sourceTransitionStates != null)
+            {
+                bool canDirectStack = true;
+                bool canAutoStack = true;
+
                 
+                if (targetTransitionStates == null)
+                {
+                    op.MovedQuantity = 0;
+                    op.MovableQuantity = 0;
+                    return;
+                }
+
+                targetStatesByType = new Dictionary<EnumTransitionType, TransitionState>();
+                foreach (var state in targetTransitionStates) targetStatesByType[state.Props.Type] = state;
+
+
+                foreach (var sourceState in sourceTransitionStates)
+                {
+                    TransitionState targetState = null;
+                    if (!targetStatesByType.TryGetValue(sourceState.Props.Type, out targetState))
+                    {
+                        canAutoStack = false;
+                        canDirectStack = false;
+                        break;
+                    }
+
+                    if (Math.Abs(targetState.TransitionedHours - sourceState.TransitionedHours) > 4 && Math.Abs(targetState.TransitionedHours - sourceState.TransitionedHours) / sourceState.FreshHours > 0.03f)
+                    {
+                        canAutoStack = false;
+                    }
+                }
+
+                if ((!canAutoStack && op.CurrentPriority < EnumMergePriority.DirectMerge))
+                {
+                    op.MovedQuantity = 0;
+                    op.MovableQuantity = 0;
+                    op.RequiredPriority = EnumMergePriority.DirectMerge;
+                    return;
+                }
+
+                if (!canDirectStack)
+                {
+                    op.MovedQuantity = 0;
+                    op.MovableQuantity = 0;
+                    return;
+                }
+
+                doTransitionAveraging = true;
+            }
+
+
+
+            if (doTemperatureAveraging)
+            {
                 SetTemperature(
                     op.World,
                     op.SinkSlot.Itemstack,
@@ -1690,6 +2075,16 @@ namespace Vintagestory.API.Common
                 );
             }
 
+            if (doTransitionAveraging && op.MovedQuantity > 0)
+            {
+                float t = (float)op.MovedQuantity / (op.MovedQuantity + op.SinkSlot.StackSize);
+
+                foreach (var sourceState in sourceTransitionStates)
+                {
+                    TransitionState targetState = targetStatesByType[sourceState.Props.Type];
+                    SetTransitionState(op.SinkSlot.Itemstack, sourceState.Props.Type, sourceState.TransitionedHours * t + targetState.TransitionedHours * (1-t));
+                }
+            }
 
             op.SinkSlot.Itemstack.StackSize += op.MovedQuantity;
             op.SourceSlot.Itemstack.StackSize -= op.MovedQuantity;
@@ -1699,6 +2094,8 @@ namespace Vintagestory.API.Common
                 op.SourceSlot.Itemstack = null;
             }
         }
+
+        
 
 
         /// <summary>
@@ -1757,18 +2154,37 @@ namespace Vintagestory.API.Common
         {
             if (!CanSmelt(world, cookingSlotsProvider, inputSlot.Itemstack, outputSlot.Itemstack)) return;
 
-            ItemStack smeltedStack = CombustibleProps.SmeltedStack.ResolvedItemstack;
+            ItemStack smeltedStack = CombustibleProps.SmeltedStack.ResolvedItemstack.Clone();
+
+            // Copy over spoilage values but reduce them by a bit
+            TransitionState state = UpdateAndGetTransitionState(world, new DummySlot(inputSlot.Itemstack), EnumTransitionType.Perish);
+
+            if (state != null)
+            {
+                TransitionState smeltedState = UpdateAndGetTransitionState(world, new DummySlot(smeltedStack), EnumTransitionType.Perish);
+
+                float nowTransitionedHours = (state.TransitionedHours / (state.TransitionHours + state.FreshHours)) * 0.8f * (smeltedState.TransitionHours + smeltedState.FreshHours) - 1;
+
+                smeltedStack.Collectible.SetTransitionState(smeltedStack, EnumTransitionType.Perish, Math.Max(0, nowTransitionedHours));
+            }
 
             int batchSize = 1;
 
             if (outputSlot.Itemstack == null)
             {
-                outputSlot.Itemstack = smeltedStack.Clone();
+                outputSlot.Itemstack = smeltedStack;
                 outputSlot.Itemstack.StackSize = batchSize * smeltedStack.StackSize;
             }
             else
             {
-                outputSlot.Itemstack.StackSize += batchSize * smeltedStack.StackSize;
+                smeltedStack.StackSize = batchSize * smeltedStack.StackSize;
+
+                // use TryMergeStacks to average spoilage rate and temperature
+                ItemStackMergeOperation op = new ItemStackMergeOperation(world, EnumMouseButton.Left, 0, EnumMergePriority.ConfirmedMerge, batchSize * smeltedStack.StackSize);
+                op.SourceSlot = new DummySlot(smeltedStack);
+                op.SinkSlot = new DummySlot(outputSlot.Itemstack);
+                outputSlot.Itemstack.Collectible.TryMergeStacks(op);
+                outputSlot.Itemstack = op.SinkSlot.Itemstack;
             }
 
             inputSlot.Itemstack.StackSize -= batchSize * CombustibleProps.SmeltedRatio;
@@ -1781,7 +2197,203 @@ namespace Vintagestory.API.Common
             outputSlot.MarkDirty();
         }
 
+        /// <summary>
+        /// Returns true if the stack can spoil
+        /// </summary>
+        /// <param name="itemstack"></param>
+        /// <returns></returns>
+        public virtual bool CanSpoil(ItemStack itemstack)
+        {
+            if (itemstack == null || itemstack.Attributes == null) return false;
+            return itemstack.Collectible.NutritionProps != null && itemstack.Attributes.HasAttribute("spoilstate");
+        }
 
+
+        /// <summary>
+        /// Returns the transition state of given transition type
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="inslot"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public virtual TransitionState UpdateAndGetTransitionState(IWorldAccessor world, ItemSlot inslot, EnumTransitionType type)
+        {
+            TransitionState[] states = UpdateAndGetTransitionStates(world, inslot);
+            TransitionableProperties[] propsm = GetTransitionableProperties(world, inslot.Itemstack, null);
+            if (propsm == null) return null;
+
+            for (int i = 0; i < propsm.Length; i++)
+            {
+                if (propsm[i].Type == type) return states[i];
+            }
+
+            return null;
+        }
+
+
+        public virtual void SetTransitionState(ItemStack stack, EnumTransitionType type, float transitionedHours)
+        {
+            ITreeAttribute attr = (ITreeAttribute)stack.Attributes["transitionstate"];
+
+            if (attr == null)
+            {
+                UpdateAndGetTransitionState(api.World, new DummySlot(stack), type);
+                attr = (ITreeAttribute)stack.Attributes["transitionstate"];
+            }
+
+            TransitionableProperties[] propsm = GetTransitionableProperties(api.World, stack, null);
+            for (int i = 0; i < propsm.Length; i++)
+            {
+                if (propsm[i].Type == type)
+                {        
+                    (attr["transitionedHours"] as FloatArrayAttribute).value[i] = transitionedHours;
+                    return;
+                }
+            }
+        }
+        
+
+        public virtual float GetTransitionRateMul(IWorldAccessor world, ItemSlot inSlot, EnumTransitionType transType)
+        {
+            float rate = inSlot.Inventory == null ? 1 : inSlot.Inventory.GetTransitionSpeedMul(transType, inSlot.Itemstack);
+
+            if (transType == EnumTransitionType.Perish)
+            {
+                float temp = inSlot.Itemstack.Collectible.GetTemperature(world, inSlot.Itemstack);
+                if (temp > 75)
+                {
+                    rate = 0;
+                }
+
+                rate *= GlobalConstants.PerishSpeedModifier;
+            }
+
+            return rate;
+        }
+
+        /// <summary>
+        /// Returns a list of the current transition states of this item
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="inslot"></param>
+        /// <returns></returns>
+        public virtual TransitionState[] UpdateAndGetTransitionStates(IWorldAccessor world, ItemSlot inslot)
+        {
+            ItemStack itemstack = inslot.Itemstack;
+
+            TransitionableProperties[] propsm = GetTransitionableProperties(world, inslot.Itemstack, null);
+
+            if (itemstack == null || propsm == null || propsm.Length == 0)
+            {
+                return null;
+            }
+
+            if (itemstack.Attributes == null)
+            {
+                itemstack.Attributes = new TreeAttribute();
+            }
+
+            if (!(itemstack.Attributes["transitionstate"] is ITreeAttribute))
+            {
+                itemstack.Attributes["transitionstate"] = new TreeAttribute();
+            }
+
+            ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["transitionstate"];
+
+            //TransitionableProperties[] props = itemstack.Collectible.TransitionableProps; - WTF is this here for? we already have propsm
+
+            float[] transitionedHours;
+            float[] freshHours;
+            float[] transitionHours;
+            TransitionState[] states = new TransitionState[propsm.Length];
+
+            if (!attr.HasAttribute("createdTotalHours"))
+            {
+                attr.SetDouble("createdTotalHours", world.Calendar.TotalHours);
+                attr.SetDouble("lastUpdatedTotalHours", world.Calendar.TotalHours);
+
+                freshHours = new float[propsm.Length];
+                transitionHours = new float[propsm.Length];
+                transitionedHours = new float[propsm.Length];
+
+                for (int i = 0; i < propsm.Length; i++)
+                {
+                    transitionedHours[i] = 0;
+                    freshHours[i] = propsm[i].FreshHours.nextFloat(1, world.Rand);
+                    transitionHours[i] = propsm[i].TransitionHours.nextFloat(1, world.Rand);
+                }
+
+                attr["freshHours"] = new FloatArrayAttribute(freshHours);
+                attr["transitionHours"] = new FloatArrayAttribute(transitionHours);
+                attr["transitionedHours"] = new FloatArrayAttribute(transitionedHours);
+            } else
+            {
+                freshHours = (attr["freshHours"] as FloatArrayAttribute).value;
+                transitionHours = (attr["transitionHours"] as FloatArrayAttribute).value;
+                transitionedHours = (attr["transitionedHours"] as FloatArrayAttribute).value;
+            }
+
+            double lastUpdatedTotalHours = attr.GetDouble("lastUpdatedTotalHours");
+            double nowTotalHours = world.Calendar.TotalHours;
+
+         
+            float hoursPassed = (float)(nowTotalHours - lastUpdatedTotalHours);
+
+            for (int i = 0; i < propsm.Length; i++)
+            {
+                TransitionableProperties prop = propsm[i];
+                if (prop == null) continue;
+
+                float transitionRateMul = GetTransitionRateMul(world, inslot, prop.Type);
+
+                if (hoursPassed > 0.05f) // Maybe prevents us from running into accumulating rounding errors?
+                {
+                    float hoursPassedAdjusted = hoursPassed * transitionRateMul;
+                    transitionedHours[i] += hoursPassedAdjusted;
+
+                    /*if (api.World.Side == EnumAppSide.Server && inslot.Inventory.ClassName == "chest")
+                    {
+                        Console.WriteLine(hoursPassed + " hours passed. " + inslot.Itemstack.Collectible.Code + " spoil by " + transitionRateMul + "x. Is inside " + inslot.Inventory.ClassName + " {0}/{1}", transitionedHours[i], freshHours[i]);
+                    }*/
+                }
+
+                float freshHoursLeft = Math.Max(0, freshHours[i] - transitionedHours[i]);
+                float transitionLevel = Math.Max(0, transitionedHours[i] - freshHours[i]) / transitionHours[i];
+                
+                if (transitionLevel >= 1 && world.Side == EnumAppSide.Server)
+                {
+                    ItemStack newStack = itemstack.Collectible.TransitionableProps[i].TransitionedStack.ResolvedItemstack;
+                    newStack.StackSize = GameMath.RoundRandom(world.Rand, itemstack.StackSize * itemstack.Collectible.TransitionableProps[i].TransitionRatio);
+
+                    if (newStack.StackSize <= 0)
+                    {
+                        inslot.Itemstack = null;
+                    } else {
+                        itemstack.SetFrom(newStack);
+                    }
+                    inslot.MarkDirty();
+                }
+
+                states[i] = new TransitionState()
+                {
+                    FreshHoursLeft = freshHoursLeft,
+                    TransitionLevel = Math.Min(1, transitionLevel),
+                    TransitionedHours = transitionedHours[i],
+                    TransitionHours = transitionHours[i],
+                    FreshHours = freshHours[i],
+                    Props = prop
+                };
+
+                if (transitionRateMul > 0) break; // Only do one transformation at the time (i.e. food can not cure and perish at the same time)
+            }
+
+            if (hoursPassed > 0.05f)
+            {
+                attr.SetDouble("lastUpdatedTotalHours", nowTotalHours);
+            }
+
+            return states;
+        }
 
         /// <summary>
         /// Returns true if the stack has a temperature attribute
@@ -1856,6 +2468,10 @@ namespace Vintagestory.API.Common
             attr.SetDouble("temperatureLastUpdate", nowHours);
             attr.SetFloat("temperature", temperature);
         }
+
+
+        
+
 
         /// <summary>
         /// Returns true if this stack is an empty backpack

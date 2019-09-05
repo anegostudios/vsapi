@@ -16,5 +16,14 @@ namespace Vintagestory.API.Common
         {
             this.itemstack = stack;
         }
+
+        public DummySlot() : base(null)
+        {
+        }
+
+        public DummySlot(ItemStack stack, InventoryBase inv) : base(inv)
+        {
+            this.itemstack = stack;
+        }
     }
 }

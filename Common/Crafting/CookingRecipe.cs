@@ -38,6 +38,7 @@ namespace Vintagestory.API.Common
             string mainIngredients;
             string everythingelse = "";
 
+
             switch (recipeCode)
             {
                 case "soup":
@@ -47,7 +48,7 @@ namespace Vintagestory.API.Common
                         {
                             CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
                             if (val.Key.Collectible.Code.Path.Contains("waterportion")) continue;
-                            if(ingred.Code == "topping")
+                            if (ingred.Code == "topping")
                             {
                                 topping = "honeyportion";
                                 continue;
@@ -95,7 +96,7 @@ namespace Vintagestory.API.Common
 
                                 continue;
                             }
-                            if(ingred.Code == "topping")
+                            if (ingred.Code == "topping")
                             {
                                 topping = "honeyportion";
                                 continue;
@@ -132,7 +133,7 @@ namespace Vintagestory.API.Common
 
                                 continue;
                             }
-                            if(ingred.Code == "topping")
+                            if (ingred.Code == "topping")
                             {
                                 topping = "honeyportion";
                                 continue;
@@ -177,13 +178,27 @@ namespace Vintagestory.API.Common
                         {
                             foreach (var val in quantitiesByStack)
                             {
-                                CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
+                                //CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key); - whats this for?
                                 PrimaryIngredient = val.Key;
                                 max += val.Value;
                             }
                         }
 
                         recipeCode = "stew";
+                        break;
+                    }
+
+
+                case "jam":
+                    {
+                        foreach (var val in quantitiesByStack)
+                        {
+                            if (val.Key.Collectible.NutritionProps?.FoodCategory == EnumFoodCategory.Fruit)
+                            {
+                                return Lang.Get("{0} jam", val.Key.GetName());
+                            }
+                        }
+
                         break;
                     }
 
@@ -217,8 +232,8 @@ namespace Vintagestory.API.Common
                 mainIngredients = Lang.Get("multi-main-ingredients-format", getMainIngredientName(PrimaryIngredient, recipeCode), getMainIngredientName(SecondaryIngredient, recipeCode, true));
             }
             else
-                mainIngredients = getMainIngredientName(PrimaryIngredient, recipeCode);
-            //Main ingredients are done.
+                mainIngredients = PrimaryIngredient == null ? "" : getMainIngredientName(PrimaryIngredient, recipeCode);
+            // Main ingredients are done.
 
             switch (recipeCode)
             {
@@ -307,11 +322,13 @@ namespace Vintagestory.API.Common
             {
                 ItemStack stack = stackslist[0];
                 stackslist.RemoveAt(0);
+                if (stack == null) continue;
+
                 int cnt = 1;
 
                 while (true)
                 {
-                    ItemStack foundstack = stackslist.FirstOrDefault((otherstack) => otherstack.Equals(worldForResolve, stack, GlobalConstants.IgnoredStackAttributes));
+                    ItemStack foundstack = stackslist.FirstOrDefault((otherstack) => otherstack != null && otherstack.Equals(worldForResolve, stack, GlobalConstants.IgnoredStackAttributes));
 
                     if (foundstack != null)
                     {
@@ -346,12 +363,13 @@ namespace Vintagestory.API.Common
         string GetNameForIngredients(IWorldAccessor worldForResolve, string recipeCode, ItemStack[] stacks);
     }
 
-    public class CookingRecipe : ByteSerializable
+    public class CookingRecipe : IByteSerializable
     {
         public string Code;
         public CookingRecipeIngredient[] Ingredients;
         public bool Enabled = true;
         public CompositeShape Shape;
+        public TransitionableProperties PerishableProps;
 
         public static Dictionary<string, ICookingRecipeNamingHelper> NamingRegistry = new Dictionary<string, ICookingRecipeNamingHelper>();
 
@@ -361,6 +379,7 @@ namespace Vintagestory.API.Common
             NamingRegistry["meatystew"] = new VanillaCookingRecipeNames();
             NamingRegistry["vegetablestew"] = new VanillaCookingRecipeNames();
             NamingRegistry["soup"] = new VanillaCookingRecipeNames();
+            NamingRegistry["jam"] = new VanillaCookingRecipeNames();
         }
 
         public bool Matches(ItemStack[] inputStacks)
@@ -406,7 +425,13 @@ namespace Vintagestory.API.Common
 
             return name.ToString();*/
 
-            
+            bool rotten = inputStacks.Any((stack) => stack?.Collectible.Code.Path == "rot");
+            if (rotten)
+            {
+                return Lang.Get("Rotten Food");
+            }
+
+
             ICookingRecipeNamingHelper namer = null;
             if (NamingRegistry.TryGetValue(Code, out namer))
             {
@@ -522,6 +547,8 @@ namespace Vintagestory.API.Common
             writer.Write(Shape == null);
             if (Shape != null) writer.Write(Shape.Base.ToString());
 
+            PerishableProps.ToBytes(writer);
+            
       //      CanBeServedInto.ToBytes(writer);
         }
 
@@ -548,6 +575,9 @@ namespace Vintagestory.API.Common
             {
                 Shape = new CompositeShape() { Base = new AssetLocation(reader.ReadString()) };
             }
+
+            PerishableProps = new TransitionableProperties();
+            PerishableProps.FromBytes(reader, resolver.ClassRegistry);
 
        //     CanBeServedInto = new JsonItemStack();
        //     CanBeServedInto.FromBytes(reader, resolver.ClassRegistry);

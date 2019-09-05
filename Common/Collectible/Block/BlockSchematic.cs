@@ -67,7 +67,7 @@ namespace Vintagestory.API.Common
 
 
 
-        public Dictionary<BlockPos, ushort> BlocksUnpacked = new Dictionary<BlockPos, ushort>();
+        public Dictionary<BlockPos, int> BlocksUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
         public List<Entity> EntitiesUnpacked = new List<Entity>();
 
@@ -234,7 +234,7 @@ namespace Vintagestory.API.Common
 
                 dirToMiddle.Normalize();
 
-                PathwaySides[i] = BlockFacing.FromVector(dirToMiddle);
+                PathwaySides[i] = BlockFacing.FromNormal(dirToMiddle);
                 BlockPos start = PathwayStarts[i] = pathwayslist[i][0].Copy();
 
                 PathwayOffsets[i] = new BlockPos[pathwayslist[i].Count];
@@ -268,7 +268,7 @@ namespace Vintagestory.API.Common
                     for (int z = startPos.Z; z < finalPos.Z; z++)
                     {
                         BlockPos pos = new BlockPos(x, y, z);
-                        ushort blockid = world.BlockAccessor.GetBlockId(pos);
+                        int blockid = world.BlockAccessor.GetBlockId(pos);
                         if (blockid == 0) continue;
 
                         BlocksUnpacked[pos] = blockid;

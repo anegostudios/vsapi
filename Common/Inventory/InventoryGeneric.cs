@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
@@ -14,6 +15,11 @@ namespace Vintagestory.API.Common
     {
         ItemSlot[] slots;
         NewSlotDelegate onNewSlot = null;
+
+
+        public Dictionary<EnumTransitionType, float> TransitionableSpeedMulByType { get; set; } = null;
+        public Dictionary<EnumFoodCategory, float> PerishableFactorByFoodCategory { get; set; } = null;
+
 
         /// <summary>
         /// Create a new general purpose inventory
@@ -61,7 +67,7 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                if (slotId < 0 || slotId >= Count) return null;
+                if (slotId < 0 || slotId >= Count) throw new ArgumentOutOfRangeException(nameof(slotId));
                 return slots[slotId];
             }
             set
@@ -117,5 +123,30 @@ namespace Vintagestory.API.Common
             return new ItemSlotSurvival(this);
         }
 
+
+        public override float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)
+        {
+            float baseMul = transType == EnumTransitionType.Perish ? 1 : 0;
+
+            if (transType == EnumTransitionType.Perish && PerishableFactorByFoodCategory != null && stack.Collectible.NutritionProps != null)
+            {
+                if (!PerishableFactorByFoodCategory.TryGetValue(stack.Collectible.NutritionProps.FoodCategory, out baseMul)) baseMul = transType == EnumTransitionType.Perish ? 1 : 0;
+            }
+            else
+            {
+                if (TransitionableSpeedMulByType != null)
+                {
+                    if (!TransitionableSpeedMulByType.TryGetValue(transType, out baseMul)) baseMul = transType == EnumTransitionType.Perish ? 1 : 0;
+                }
+            }
+
+            float outMul = baseMul;
+            if (OnAcquireTransitionSpeed != null)
+            {
+                outMul = OnAcquireTransitionSpeed(transType, stack, baseMul);
+            }
+
+            return outMul;
+        }
     }
 }

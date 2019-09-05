@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Represent a font with sizing and styling for use in rendering text
     /// </summary>
-    public class CairoFont : FontConfig, ICairoFont, IDisposable
+    public class CairoFont : FontConfig, IDisposable
     {
         static ImageSurface surface;
         /// <summary>

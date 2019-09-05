@@ -52,7 +52,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The rock block id of the topmost rock layer
         /// </summary>
-        ushort[] TopRockIdMap { get; }
+        int[] TopRockIdMap { get; }
 
         ushort[] SeedimentaryThicknessMap { get; }
 

@@ -23,6 +23,11 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        public virtual bool SwimOnLiquid()
+        {
+            return false;
+        }
+
         /// <summary>
         /// Whether or not the particle dies in air.
         /// </summary>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API
@@ -61,9 +62,20 @@ namespace Vintagestory.API
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T AsObject<T>()
+        public T AsObject<T>(T defaultValue = default(T), string domain = "game")
         {
-            return JsonConvert.DeserializeObject<T>(token.ToString());
+            JsonSerializerSettings settings = null;
+
+            if (domain != "game")
+            {
+                if (settings == null)
+                {
+                    settings = new JsonSerializerSettings();
+                }
+                settings.Converters.Add(new AssetLocationJsonParser(domain));
+            }
+
+            return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
         }
 
         /// <summary>

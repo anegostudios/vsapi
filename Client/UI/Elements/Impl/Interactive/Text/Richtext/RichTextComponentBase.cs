@@ -54,10 +54,10 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// When left or right, then this element can span over multiple text lines
         /// </summary>
-        public virtual EnumFloat Float { get; protected set; } = EnumFloat.Inline;
+        public virtual EnumFloat Float { get; set; } = EnumFloat.Inline;
 
 
-        public virtual EnumVerticalAlign VerticalAlign { get; protected set; } = EnumVerticalAlign.Bottom;
+        public virtual EnumVerticalAlign VerticalAlign { get; set; } = EnumVerticalAlign.Bottom;
 
         /// <summary>
         /// Composes the element.

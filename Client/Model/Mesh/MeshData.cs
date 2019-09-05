@@ -406,6 +406,18 @@ namespace Vintagestory.API.Client
                 }
             }
 
+            if (Flags != null)
+            {
+                for (int i = 0; i < Flags.Length; i++)
+                {
+                    VertexFlags.PackedIntToNormal(Flags[i] >> 15, normal);
+                    normal[3] = 0;
+                    normal = Mat4f.MulWithVec4(matrix, normal);
+
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(normal[0], normal[1], normal[2]) << 15);
+                }
+            }
+
             return this;
         }
 
@@ -507,6 +519,19 @@ namespace Vintagestory.API.Client
                     XyzFaces[i] = BlockFacing.FromVector(normalf[0], normalf[1], normalf[2]).Index;
                 }
             }
+
+            if (Flags != null)
+            {
+                for (int i = 0; i < Flags.Length; i++)
+                {
+                    VertexFlags.PackedIntToNormal(Flags[i] >> 15, normal);
+                    normal[3] = 0;
+                    normal = Mat4f.MulWithVec4(matrix, normal);
+
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(normal[0], normal[1], normal[2]) << 15);
+                }
+            }
+
             return this;
         }
 
@@ -517,8 +542,9 @@ namespace Vintagestory.API.Client
         /// <param name="matrix"></param>
         public MeshData MatrixTransform(double[] matrix)
         {
-            double[] pos = new double[] { 0, 0, 0, 1 };
-            double[] normal = new double[4];
+            double[] pos = new double[] { 0, 0, 0, 1 }; // why the 1? me no understand D:
+            double[] inVec = new double[] { 0, 0, 0, 0 };
+            double[] outVec;
 
             for (int i = 0; i < VerticesCount; i++)
             {
@@ -534,26 +560,39 @@ namespace Vintagestory.API.Client
 
                 if (Normals != null)
                 {
-                    NormalUtil.FromPackedNormal(Normals[i], ref normal);
-                    normal = Mat4d.MulWithVec4(matrix, normal);
-                    Normals[i] = NormalUtil.PackNormal(normal);
+                    NormalUtil.FromPackedNormal(Normals[i], ref inVec);
+                    outVec = Mat4d.MulWithVec4(matrix, inVec);
+                    Normals[i] = NormalUtil.PackNormal(outVec);
                 } 
             }
 
             if (XyzFaces != null)
             {
-                double[] normald = new double[4];
                 for (int i = 0; i < XyzFaces.Length; i++)
                 {
                     Vec3f normalf = BlockFacing.ALLFACES[XyzFaces[i]].Normalf;
-                    normald[0] = normalf.X;
-                    normald[1] = normalf.Y;
-                    normald[2] = normalf.Z;
-                    normald = Mat4d.MulWithVec4(matrix, normald);
+                    inVec[0] = normalf.X;
+                    inVec[1] = normalf.Y;
+                    inVec[2] = normalf.Z;
 
-                    XyzFaces[i] = BlockFacing.FromVector(normald[0], normald[1], normald[2]).Index;
+                    outVec = Mat4d.MulWithVec4(matrix, inVec);
+                    BlockFacing rotatedFacing = BlockFacing.FromVector(outVec[0], outVec[1], outVec[2]);
+                    
+                    XyzFaces[i] = rotatedFacing.Index;
                 }
             }
+
+            if (Flags != null)
+            {
+                for (int i = 0; i < Flags.Length; i++)
+                {
+                    VertexFlags.PackedIntToNormal(Flags[i] >> 15, inVec);
+                    outVec = Mat4d.MulWithVec4(matrix, inVec);
+
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(outVec[0], outVec[1], outVec[2]) << 15);
+                }
+            }
+
             return this;
         }
 
@@ -1055,7 +1094,7 @@ namespace Vintagestory.API.Client
 
             if (this.Flags != null)
             {
-                this.Flags[FlagsCount] = (ushort)flags;
+                this.Flags[FlagsCount] = flags;
             }
 
             VerticesCount++;
@@ -1105,7 +1144,7 @@ namespace Vintagestory.API.Client
 
             if (this.Flags != null)
             {
-                this.Flags[FlagsCount] = (ushort)flags;
+                this.Flags[FlagsCount] = flags;
             }
 
 

@@ -18,9 +18,9 @@ namespace Vintagestory.API.Server
         /// Returns the list of currently registered map chunk generator handlers for given world type. Returns an array of handler lists. Each element in the array represents all the handlers for one worldgenpass (see EnumWorldGenPass)
         /// When world type is null, all handlers are returned
         /// </summary>
-        /// <param name="worldType"></param>
+        /// <param name="worldType">"standard" for the vanilla world generator</param>
         /// <returns></returns>
-        IWorldGenHandler GetRegisteredWorldGenHandlers(string worldType = null);
+        IWorldGenHandler GetRegisteredWorldGenHandlers(string worldType);
         
 
         /// <summary>

@@ -14,6 +14,8 @@ namespace Vintagestory.API.Common
         public string ShapeElement;
         public string[] TextureMapping;
 
+        public JsonItemStack CookedStack;
+
         public override void FromBytes(BinaryReader reader, IClassRegistryAPI instancer)
         {
             base.FromBytes(reader, instancer);
@@ -27,6 +29,12 @@ namespace Vintagestory.API.Common
             {
                 TextureMapping = new string[] { reader.ReadString(), reader.ReadString() };
             }
+
+            if (!reader.ReadBoolean())
+            {
+                CookedStack = new JsonItemStack();
+                CookedStack.FromBytes(reader, instancer);
+            }
         }
 
         public override void ToBytes(BinaryWriter writer)
@@ -38,6 +46,9 @@ namespace Vintagestory.API.Common
 
             writer.Write(TextureMapping == null);
             if (TextureMapping != null) { writer.Write(TextureMapping[0]); writer.Write(TextureMapping[1]); }
+
+            writer.Write(CookedStack == null);
+            if (CookedStack != null) { CookedStack.ToBytes(writer); }
         }
 
         public new CookingRecipeStack Clone()
@@ -48,7 +59,8 @@ namespace Vintagestory.API.Common
                 ResolvedItemstack = ResolvedItemstack?.Clone(),
                 StackSize = StackSize,
                 Type = Type,
-                TextureMapping = (string[])TextureMapping?.Clone()
+                TextureMapping = (string[])TextureMapping?.Clone(),
+                CookedStack = CookedStack?.Clone()
             };
 
             if (Attributes != null) stack.Attributes = Attributes.Clone();
@@ -193,6 +205,8 @@ namespace Vintagestory.API.Common
                 {
                     resolvedStacks.Add(ValidStacks[i]);
                 }
+
+                ValidStacks[i].CookedStack?.Resolve(world, sourceForErrorLogging);
             }
 
             ValidStacks = resolvedStacks.ToArray();

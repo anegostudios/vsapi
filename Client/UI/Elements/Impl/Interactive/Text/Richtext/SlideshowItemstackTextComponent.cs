@@ -20,6 +20,8 @@ namespace Vintagestory.API.Client
         float secondsVisible=1;
         int curItemIndex;
 
+        public bool ShowStackSize { get; set; }
+
         /// <summary>
         /// Flips through given array of item stacks every second
         /// </summary>
@@ -45,7 +47,7 @@ namespace Vintagestory.API.Client
         {
             this.onStackClicked = onStackClicked;
 
-            string[] groups = itemstackgroup.Collectible.Attributes?["handbook"]?["groupBy"]?.AsStringArray(null);
+            string[] groups = itemstackgroup.Collectible.Attributes?["handbook"]?["groupBy"]?.AsArray<string>(null);
 
             HashSet<AssetLocation> collectibleLocs = new HashSet<AssetLocation>();
             List<ItemStack> stacks = new List<ItemStack>();
@@ -128,7 +130,7 @@ namespace Vintagestory.API.Client
             }
 
             api.Render.RenderItemstackToGui(
-                itemstack, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f, 100, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+                itemstack, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f, 100, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);

@@ -32,6 +32,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         public string[] SelectiveElements;
 
+
+        public override int GetHashCode()
+        {
+            return Base.GetHashCode() + rotateX.GetHashCode() + rotateY.GetHashCode() + rotateZ.GetHashCode();
+        }
+
         /// <summary>
         /// Creates a deep copy of the texture
         /// </summary>
@@ -68,7 +74,7 @@ namespace Vintagestory.API.Common
         {
             CompositeShape ct = new CompositeShape()
             {
-                Base = Base.Clone(),
+                Base = Base?.Clone(),
                 rotateX = rotateX,
                 rotateY = rotateY,
                 rotateZ = rotateZ, 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
@@ -21,9 +22,18 @@ namespace Vintagestory.API.Common
         /// </summary>
         public AssetLocation Code;
         /// <summary>
-        /// Quantity
+        /// Amount of items in this stacks
         /// </summary>
         public int StackSize = 1;
+        /// <summary>
+        /// Alias of <see cref="StackSize"/>
+        /// </summary>
+        public int Quantity
+        {
+            get { return StackSize;  }
+            set { StackSize = value; }
+        }
+
         /// <summary>
         /// Tree Attributes that should be attached to the resulting itemstack
         /// </summary>
@@ -76,7 +86,13 @@ namespace Vintagestory.API.Common
 
             return true;
         }
-        
+
+
+        public bool Matches(IWorldAccessor worldForResolve, ItemStack inputStack)
+        {
+            return ResolvedItemstack.Equals(worldForResolve, inputStack, GlobalConstants.IgnoredStackAttributes);
+        }
+
 
         /// <summary>
         /// Creates a deep copy of this object

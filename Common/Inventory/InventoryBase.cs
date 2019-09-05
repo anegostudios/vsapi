@@ -11,8 +11,19 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
-    public delegate void OnInventoryOpened(IPlayer player);
-    public delegate void OnInventoryClosed(IPlayer player);
+    public delegate void OnInventoryOpenedDelegate(IPlayer player);
+    public delegate void OnInventoryClosedDelegate(IPlayer player);
+
+    /// <summary>
+    /// Custom transition speed handler
+    /// </summary>
+    /// <param name="transType"></param>
+    /// <param name="stack"></param>
+    /// <param name="mulByConfig">Multiplier set by other configuration, if any, otherwise 1</param>
+    /// <returns></returns>
+    public delegate float CustomGetTransitionSpeedMulDelegate(EnumTransitionType transType, ItemStack stack, float mulByConfig);
+
+
 
     /// <summary>
     /// Basic class representing an item inventory
@@ -87,11 +98,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public abstract ItemSlot this[int slotId] { get; set; }
 
-        [Obsolete("Use Count instead.")]
-        public int QuantitySlots => Count;
-
-        [Obsolete("Use indexer instead.")]
-        public ItemSlot GetSlot(int slotId) => this[slotId];
+        
 
         /// <summary>
         /// True if this inventory has to be resent to the client or when the client has to redraw them
@@ -131,12 +138,18 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called whenever this inventory was opened
         /// </summary>
-        public event OnInventoryOpened OnInventoryOpened;
+        public event OnInventoryOpenedDelegate OnInventoryOpened;
 
         /// <summary>
         /// Called whenever this inventory was closed
         /// </summary>
-        public event OnInventoryClosed OnInventoryClosed;
+        public event OnInventoryClosedDelegate OnInventoryClosed;
+
+        /// <summary>
+        /// If set, the value is returned when GetTransitionSpeedMul() is called instead of the default value.
+        /// </summary>
+        public CustomGetTransitionSpeedMulDelegate OnAcquireTransitionSpeed;
+
 
         /// <summary>
         /// Create a new instance of an inventory
@@ -263,7 +276,7 @@ namespace Vintagestory.API.Common
             // 1. Prefer already filled slots
             foreach (var slot in this)
             {
-                if (skipSlots.Contains(slot)) continue;
+                if (skipSlots != null && skipSlots.Contains(slot)) continue;
 
                 if (slot.Itemstack != null && slot.CanTakeFrom(sourceSlot))
                 {
@@ -280,7 +293,7 @@ namespace Vintagestory.API.Common
             // 2. Otherwise use empty slots
             foreach (var slot in this)
             {
-                if (skipSlots.Contains(slot)) continue;
+                if (skipSlots != null && skipSlots.Contains(slot)) continue;
 
                 if (slot.Itemstack == null && slot.CanTakeFrom(sourceSlot))
                 {
@@ -384,12 +397,20 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="slot"></param>
         /// <param name="extractedStack">If non null the itemstack that was taken out</param>
-        public virtual void DidModifyItemSlot(ItemSlot slot, IItemStack extractedStack = null)
+        public virtual void DidModifyItemSlot(ItemSlot slot, ItemStack extractedStack = null)
         {
             int slotId = GetSlotId(slot);
+
+            if (slotId < 0)
+            {
+                throw new ArgumentException(string.Format("Supplied slot is not part of this inventory ({0})!", InventoryID));
+            }
+
             MarkSlotDirty(slotId);
             OnItemSlotModified(slot);
             SlotModified?.Invoke(slotId);
+
+            slot.Itemstack?.Collectible?.OnModifiedInInventorySlot(Api.World, slot, extractedStack);
         }
 
         /// <summary>
@@ -429,7 +450,7 @@ namespace Vintagestory.API.Common
         {
             // 0 = source slot
             // 1 = target slot
-            ItemSlot[] slots = getSlotsIfExists(owningPlayer, invIds, slotIds);
+            ItemSlot[] slots = GetSlotsIfExists(owningPlayer, invIds, slotIds);
 
             if (slots[0] == null || slots[1] == null) return false;
 
@@ -450,7 +471,7 @@ namespace Vintagestory.API.Common
         {
             // 0 = source slot
             // 1 = target slot
-            ItemSlot[] slots = getSlotsIfExists(player, invIds, slotIds);
+            ItemSlot[] slots = GetSlotsIfExists(player, invIds, slotIds);
 
             if (slots[0] == null || slots[1] == null) return false;
 
@@ -469,7 +490,7 @@ namespace Vintagestory.API.Common
         /// <param name="invIds">The inventory IDs</param>
         /// <param name="slotIds">The slot ids</param>
         /// <returns>The slots obtained.</returns>
-        public virtual ItemSlot[] getSlotsIfExists(IPlayer player, string[] invIds, int[] slotIds)
+        public virtual ItemSlot[] GetSlotsIfExists(IPlayer player, string[] invIds, int[] slotIds)
         {
             ItemSlot[] slots = new ItemSlot[2];
            
@@ -652,6 +673,23 @@ namespace Vintagestory.API.Common
             DropAll(pos);
         }
 
+
+        /// <summary>
+        /// Does this inventory speed up or slow down a transition for given itemstack? (Default: 1 for perish and 0 otherwise)
+        /// </summary>
+        /// <param name="transType"></param>
+        /// <param name="stack"></param>
+        /// <returns></returns>
+        public virtual float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)
+        {
+            float mul = transType == EnumTransitionType.Perish ? 1 : 0;
+            if (OnAcquireTransitionSpeed != null)
+            {
+                mul = OnAcquireTransitionSpeed(transType, stack, mul);
+            }
+
+            return mul;
+        }
 
         /// <summary>
         /// Marks the inventory available for interaction for this player. Returns a open inventory packet that can be sent to the server for synchronization.

@@ -3,9 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Util
 {
+    public static class ArrayUtil
+    {
+
+
+        public static T[] CreateFilled<T>(T with, int quantity)
+        {
+            T[] array = new T[quantity];
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = with;
+            }
+
+            return array;
+        }
+
+
+    }
+
+
     public static class ArrayExtensions
     {
         public delegate T fillCallback<T>(int index);
@@ -71,8 +91,6 @@ namespace Vintagestory.API.Util
             return grown;
         }
 
-
-
         public static T[] Fill<T>(this T[] originalArray, T with)
         {
             for (int i = 0; i < originalArray.Length; i++)
@@ -105,6 +123,28 @@ namespace Vintagestory.API.Util
             while (n > 1)
             {
                 int k = rand.Next(n);  // 0 <= k < n.
+                n--;                   // n is now the last pertinent index;
+                T temp = array[n];     // swap array[n] with array[k] (does nothing if k == n).
+                array[n] = array[k];
+                array[k] = temp;
+            }
+
+            return array;
+        }
+
+
+        /// <summary>
+        /// Performs a Fisher-Yates shuffle in linear time or O(n)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="rand"></param>
+        /// <param name="array"></param>
+        public static T[] Shuffle<T>(this T[] array, LCGRandom rand)
+        {
+            int n = array.Length;        // The number of items left to shuffle (loop invariant).
+            while (n > 1)
+            {
+                int k = rand.NextInt(n);  // 0 <= k < n.
                 n--;                   // n is now the last pertinent index;
                 T temp = array[n];     // swap array[n] with array[k] (does nothing if k == n).
                 array[n] = array[k];

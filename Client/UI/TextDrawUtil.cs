@@ -435,7 +435,7 @@ namespace Vintagestory.API.Client
             font.SetupContext(ctx);
 
             double offsetX = 0;
-            double lineHeight = ctx.FontExtents.Height;
+            //double lineHeight = ctx.FontExtents.Height;
             
             for (int i = 0; i < lines.Length; i++)
             {

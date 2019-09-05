@@ -56,10 +56,7 @@ namespace Vintagestory.API.Client
             ComposeDialog();
         }
 
-        public override bool RequiresUngrabbedMouse()
-        {
-            return settings.DisableWorldInteract;
-        }
+        public override bool PrefersUngrabbedMouse => settings.DisableWorldInteract;
 
         /// <summary>
         /// Composes the dialogue with specifications dictated by JSON.

@@ -55,7 +55,7 @@ namespace Vintagestory.API.Client
         /// For declaring your uniforms. The index of the uniform is then later used for assigning data to them using RenderAPI.ProgramUniform()
         /// </summary>
         /// <param name="locations"></param>
-        void PrepareUniformLocations(params string[] locations);
+        //void PrepareUniformLocations(params string[] locations);
         
         /// <summary>
         /// The vertex shader of this shader program

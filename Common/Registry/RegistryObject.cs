@@ -46,7 +46,7 @@ namespace Vintagestory.API.Common
         {
             int i = Code.Path.Length;
             int index = 0;
-            while (i-- > 0 && componentsToRemove > 0)
+            while (--i > 0 && componentsToRemove > 0)
             {
                 if (Code.Path[i] == '-')
                 {
@@ -68,7 +68,7 @@ namespace Vintagestory.API.Common
         {
             int i = 0;
             int index = 0;
-            while (i++ < Code.Path.Length && componentsToRemove > 0)
+            while (++i < Code.Path.Length && componentsToRemove > 0)
             {
                 if (Code.Path[i] == '-')
                 {
@@ -107,6 +107,30 @@ namespace Vintagestory.API.Common
                 {
                     sb.Append(value);
                 } else
+                {
+                    sb.Append(val.Value);
+                }
+            }
+
+            return new AssetLocation(Code.Domain, sb.ToString());
+        }
+
+
+        public AssetLocation CodeWithVariants(Dictionary<string, string> valuesByType)
+        {
+            StringBuilder sb = new StringBuilder(FirstCodePart());
+
+            foreach (var val in Variant)
+            {
+                sb.Append("-");
+
+                string value;
+
+                if (valuesByType.TryGetValue(val.Key, out value))
+                {
+                    sb.Append(value);
+                }
+                else
                 {
                     sb.Append(val.Value);
                 }

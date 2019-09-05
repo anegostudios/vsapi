@@ -354,6 +354,7 @@ namespace Vintagestory.API.Common.Entities
         public AnimationMetaData[] Animations;
 
         public Dictionary<string, AnimationMetaData> AnimationsByMetaCode = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
+        public Dictionary<uint, AnimationMetaData> AnimationsByCrc32 = new Dictionary<uint, AnimationMetaData>();
 
         /// <summary>
         /// Returns the first texture in Textures dict
@@ -436,8 +437,17 @@ namespace Vintagestory.API.Common.Entities
                 for (int i = 0; i < Animations.Length; i++)
                 {
                     AnimationMetaData animMeta = Animations[i];
-                    if (animMeta.Animation != null) AnimationsByMetaCode[animMeta.Code] = animMeta;
                     animMeta.Init();
+
+                    if (animMeta.Animation != null)
+                    {
+                        AnimationsByMetaCode[animMeta.Code] = animMeta;
+                    }
+                    
+                    if (animMeta.Animation != null)
+                    {
+                        AnimationsByCrc32[animMeta.CodeCrc32] = animMeta;
+                    }
                 }
             }
 
@@ -460,9 +470,12 @@ namespace Vintagestory.API.Common.Entities
 
             Dictionary<string, AnimationMetaData> newAnimationsByMetaData = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
 
+            Dictionary<uint, AnimationMetaData> animsByCrc32 = new Dictionary<uint, AnimationMetaData>();
+
             foreach (var animation in AnimationsByMetaCode)
             {
                 newAnimationsByMetaData[animation.Key] = animation.Value.Clone();
+                animsByCrc32[newAnimationsByMetaData[animation.Key].CodeCrc32] = newAnimationsByMetaData[animation.Key];
             }
 
             return new EntityClientProperties(BehaviorsAsJsonObj.Clone() as JsonObject[])
@@ -473,7 +486,8 @@ namespace Vintagestory.API.Common.Entities
                 Size = Size,
                 Shape = Shape?.Clone(),
                 Animations = newAnimations,
-                AnimationsByMetaCode = newAnimationsByMetaData
+                AnimationsByMetaCode = newAnimationsByMetaData,
+                AnimationsByCrc32 = animsByCrc32
             };
         }
     }

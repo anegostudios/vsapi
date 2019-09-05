@@ -17,6 +17,8 @@ namespace Vintagestory.API.Server
                 useblock,
                 buildblockseverywhere,
                 useblockseverywhere,
+                attackplayers,
+                attackcreatures,
                 freemove,
                 gamemode,
                 pickingrange,
@@ -61,6 +63,16 @@ namespace Vintagestory.API.Server
         /// Use blocks everywhere, completely ignoring area permissons. You still need to be in creative mode however.
         /// </summary>
         public static string useblockseverywhere = "useblockseverywhere";
+
+        /// <summary>
+        /// Cause damage to a player
+        /// </summary>
+        public static string attackplayers = "attackplayers";
+
+        /// <summary>
+        /// Cause damage to any non-player creature
+        /// </summary>
+        public static string attackcreatures = "attackcreatures";
 
         /// <summary>
         /// Ability to fly or change movepseed

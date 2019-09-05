@@ -23,14 +23,14 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override void TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
+        public override int TryPutInto(ItemSlot sinkSlot, ref ItemStackMoveOperation op)
         {
-            if (!sinkSlot.CanTakeFrom(this) || !CanTake() || Itemstack == null) return;
+            if (!sinkSlot.CanTakeFrom(this) || !CanTake() || Itemstack == null) return 0;
 
             // Fill up sink slot
             if (op.ShiftDown)
             {
-                if (Empty) return;
+                if (Empty) return 0;
 
                 int maxstacksize = Itemstack.Collectible.MaxStackSize;
 
@@ -50,7 +50,7 @@ namespace Vintagestory.API.Common
                 sinkSlot.Itemstack = TakeOut(op.RequestedQuantity);
                 sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
                 op.MovedQuantity = sinkSlot.StackSize;
-                return;
+                return op.MovedQuantity;
             }
 
             ItemStack ownStack = Itemstack.Clone();
@@ -64,6 +64,8 @@ namespace Vintagestory.API.Common
             Itemstack = ownStack;
 
             sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
+
+            return op.MovedQuantity;
         }
 
         protected override void ActivateSlotLeftClick(ItemSlot sinkSlot, ref ItemStackMoveOperation op)

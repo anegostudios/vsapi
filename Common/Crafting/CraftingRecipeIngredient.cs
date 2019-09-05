@@ -67,11 +67,11 @@ namespace Vintagestory.API.Common
         /// Turns Type, Code and Attributes into an IItemStack
         /// </summary>
         /// <param name="resolver"></param>
-        public bool Resolve(IWorldAccessor resolver)
+        public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging)
         {
             if (ReturnedStack != null)
             {
-                ReturnedStack.Resolve(resolver, "ConsumedStack of crafting recipe with output " + Code);
+                ReturnedStack.Resolve(resolver, sourceForErrorLogging + " recipe with output " + Code);
             }
 
             if (Code.Path.Contains("*"))

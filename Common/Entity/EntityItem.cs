@@ -9,7 +9,8 @@ namespace Vintagestory.API.Common
 {
     public class EntityItem : Entity
     {
-        ItemStack stack;
+        public ItemSlot Slot = new DummySlot();
+        
         public long itemSpawnedMilliseconds;
 
         /// <summary>
@@ -18,7 +19,7 @@ namespace Vintagestory.API.Common
         public ItemStack Itemstack
         {
             get { return WatchedAttributes.GetItemstack("itemstack"); }
-            set { WatchedAttributes.SetItemstack("itemstack", value); stack = value; }
+            set { WatchedAttributes.SetItemstack("itemstack", value); Slot.Itemstack = value; }
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public override float MaterialDensity
         {
-            get { return (stack?.Collectible != null) ? stack.Collectible.MaterialDensity : 2000; }
+            get { return (Slot.Itemstack?.Collectible != null) ? Slot.Itemstack.Collectible.MaterialDensity : 2000; }
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                return stack?.Block?.GetLightHsv(World.BlockAccessor, null, stack);
+                return Slot.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, Slot.Itemstack);
             }
         }
 
@@ -75,7 +76,11 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-
+            // If attribute was modified and resent to client, make sure we still have the resolved thing in memory
+            WatchedAttributes.RegisterModifiedListener("itemstack", () => {
+                if (Itemstack != null && Itemstack.Collectible == null) Itemstack.ResolveBlockOrItem(World);
+                Slot.Itemstack = Itemstack;
+            });
 
 
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;
@@ -138,7 +143,7 @@ namespace Vintagestory.API.Common
 
         public override ItemStack OnCollected(Entity byEntity)
         {
-            return stack;
+            return Slot.Itemstack;
         }
 
         public override void OnCollideWithLiquid()
@@ -160,12 +165,12 @@ namespace Vintagestory.API.Common
 
             if (Itemstack != null)
             {
-                stack = Itemstack;
+                Slot.Itemstack = Itemstack;
             }
 
             if (World != null)
             {
-                if (!stack.ResolveBlockOrItem(World))
+                if (!Slot.Itemstack.ResolveBlockOrItem(World))
                 {
                     this.Itemstack = null;
                     Die();
@@ -175,7 +180,7 @@ namespace Vintagestory.API.Common
 
         public override double SwimmingOffsetY
         {
-            get { return 0.25f; }
+            get { return base.SwimmingOffsetY; }
         }
     }
 }

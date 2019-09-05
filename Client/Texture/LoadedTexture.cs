@@ -32,6 +32,11 @@ namespace Vintagestory.API.Client
 
         public bool Disposed { get { return disposed; } }
 
+        /// <summary>
+        /// Set this only you really know what you're doing
+        /// </summary>
+        public bool IgnoreUndisposed { get; set; }
+
         static LoadedTexture()
         {
         }
@@ -85,7 +90,7 @@ namespace Vintagestory.API.Client
 
         ~LoadedTexture()
         {
-            if (TextureId == 0 || disposed || capi?.IsShuttingDown == true) return;
+            if (IgnoreUndisposed || TextureId == 0 || disposed || capi?.IsShuttingDown == true) return;
 
             if (trace == null)
             {

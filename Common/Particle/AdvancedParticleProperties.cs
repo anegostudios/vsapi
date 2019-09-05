@@ -39,6 +39,9 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public bool DieInLiquid = false;
 
+        [JsonProperty]
+        public bool SwimOnLiquid = false;
+
         /// <summary>
         /// The Hue/Saturation/Value/Alpha for the color of the particle.
         /// </summary>
@@ -189,6 +192,11 @@ namespace Vintagestory.API.Common
             return DieInLiquid;
         }
 
+        bool IParticlePropertiesProvider.SwimOnLiquid()
+        {
+            return SwimOnLiquid;
+        }
+
         /// <summary>
         /// Converts the color to RGBA.
         /// </summary>
@@ -301,6 +309,7 @@ namespace Vintagestory.API.Common
 
             writer.Write(DieInAir);
             writer.Write(DieInLiquid);
+            writer.Write(SwimOnLiquid);
             for (int i = 0; i < 4; i++)
             {
                 HsvaColor[i].ToBytes(writer);
@@ -380,6 +389,7 @@ namespace Vintagestory.API.Common
 
             DieInAir = reader.ReadBoolean();
             DieInLiquid = reader.ReadBoolean();
+            SwimOnLiquid = reader.ReadBoolean();
             HsvaColor = new NatFloat[] { NatFloat.createFromBytes(reader), NatFloat.createFromBytes(reader), NatFloat.createFromBytes(reader), NatFloat.createFromBytes(reader) };
             GravityEffect = NatFloat.createFromBytes(reader);
             LifeLength = NatFloat.createFromBytes(reader);
@@ -457,7 +467,7 @@ namespace Vintagestory.API.Common
             return temp;
         }
 
-        internal AdvancedParticleProperties Clone()
+        public AdvancedParticleProperties Clone()
         {
             AdvancedParticleProperties cloned = new AdvancedParticleProperties();
 

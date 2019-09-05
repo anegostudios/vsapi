@@ -151,7 +151,10 @@ namespace Vintagestory.API.Client
 
             int index = row * cols + col;
 
-            OnSlotClick?.Invoke(index);
+            if (index >= 0 && index < skillItems.Count)
+            {
+                OnSlotClick?.Invoke(index);
+            }
         }
 
         public override void Dispose()

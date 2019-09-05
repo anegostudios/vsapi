@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Vintagestory.API;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -457,6 +458,7 @@ namespace Vintagestory.API.Datastructures
 
             foreach (var val in attributes)
             {
+                if (GlobalConstants.IgnoredStackAttributes.Contains(val.Key)) continue;
                 if (!otherTree.attributes.ContainsKey(val.Key)) return false;
 
                 if (val.Value is TreeAttribute)
@@ -503,7 +505,7 @@ namespace Vintagestory.API.Datastructures
             if (!(other is TreeAttribute)) return false;
             TreeAttribute otherTree = (TreeAttribute)other;
 
-            if (ignorePaths.Length == 0 && attributes.Count != otherTree.attributes.Count) return false;
+            if ((ignorePaths == null || ignorePaths.Length == 0) && attributes.Count != otherTree.attributes.Count) return false;
             
             // Test 1 and 2: 
             // - Check for exists in a, but missing in b
@@ -511,7 +513,7 @@ namespace Vintagestory.API.Datastructures
             foreach (var val in attributes)
             {
                 string curPath = currentPath + (currentPath.Length > 0 ? "/" : "") + val.Key;
-                if (ignorePaths.Contains(curPath)) continue;
+                if (ignorePaths != null && ignorePaths.Contains(curPath)) continue;
                 if (!otherTree.attributes.ContainsKey(val.Key)) return false;
 
                 IAttribute otherAttr = otherTree.attributes[val.Key];

@@ -189,5 +189,10 @@ namespace Vintagestory.API.Common.Entities
             handled = EnumHandling.PassThrough;
             return null;
         }
+
+        public virtual void DidAttack(DamageSource source, EntityAgent targetEntity, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+        }
     }
 }

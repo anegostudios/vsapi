@@ -31,6 +31,8 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public Animation[] Animations;
 
+        public Dictionary<uint, Animation> AnimationsByCrc32 = new Dictionary<uint, Animation>();
+
         /// <summary>
         /// The width of the texture. (default: 16)
         /// </summary>
@@ -74,6 +76,8 @@ namespace Vintagestory.API.Common
                 {
                     anim.Code = anim.Name.ToLowerInvariant().Replace(" ", "");
                 }
+
+                AnimationsByCrc32[AnimationMetaData.GetCrc32(anim.Code)] = anim;
             }
 
             for (int i = 0; i < Elements.Length; i++)

@@ -111,6 +111,16 @@ namespace Vintagestory.API.Common
         }
 
 
+        public static AssetLocation Create(string domainAndPath, string defaultDomain = "game")
+        {
+            if (!domainAndPath.Contains(":"))
+            {
+                return new AssetLocation(defaultDomain, domainAndPath);
+            }
+
+            return new AssetLocation(domainAndPath);
+        }
+
         
         /// <summary>
         /// Returns true if this is a valid path. For an asset location to be valid it needs to 

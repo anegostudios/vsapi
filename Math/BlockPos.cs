@@ -383,6 +383,18 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        /// <summary>
+        /// Substract a position => you'll have the manhatten distance 
+        /// </summary>
+        /// <param name="pos"></param>
+        public BlockPos Sub(int x, int y, int z)
+        {
+            X -= x;
+            Y -= y;
+            Z -= z;
+            return this;
+        }
+
 
         /// <summary>
         /// Substract a position => you'll have the manhatten distance 

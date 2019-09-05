@@ -31,6 +31,12 @@ namespace Vintagestory.API.Client
                 Bounds.InnerWidth, 
                 orientation
             );
+
+            /*TextExtents bla = Font.GetTextExtents(text);
+            
+            RoundRectangle(ctx, (int)(offsetX + Bounds.drawX + (orientation == EnumTextOrientation.Center ? ((Bounds.InnerWidth - bla.Width) / 2) : 0)), (int)(offsetY + Bounds.drawY + Font.GetFontExtents().Ascent - bla.Height), bla.Width, Font.GetFontExtents().Ascent, 0);
+            ctx.SetSourceRGB(1, 0, 0);
+            ctx.Stroke();*/
         }
         
 
