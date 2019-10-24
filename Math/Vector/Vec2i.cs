@@ -18,6 +18,8 @@ namespace Vintagestory.API.MathTools
         [ProtoMember(2)]
         public int Y;
 
+        public static Vec2i Zero => new Vec2i(0, 0);
+
         public Vec2i()
         {
 

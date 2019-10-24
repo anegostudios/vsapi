@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Common;
+﻿using System.Collections.Generic;
+using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
@@ -161,9 +162,10 @@ namespace Vintagestory.API.Client
         /// Returns the texture source from given entity. This can be used to obtain the positions of the textures in the entity texture atlas.
         /// </summary>
         /// <param name="entity"></param>
+        /// <param name="extraTextures"></param>
         /// <param name="altTextureNumber"></param>
         /// <param name="returnNullWhenMissing"></param>
         /// <returns></returns>
-        ITexPositionSource GetTextureSource(Entity entity, int altTextureNumber = 0, bool returnNullWhenMissing = false);
+        ITexPositionSource GetTextureSource(Entity entity, Dictionary<string, CompositeTexture> extraTextures = null, int altTextureNumber = 0, bool returnNullWhenMissing = false);
     }
 }

@@ -116,15 +116,11 @@ namespace Vintagestory.API.Client
         ITesselatorManager TesselatorManager { get; }
 
         /// <summary>
-        /// API for Meshing in the Mainthread
+        /// API for Meshing in the Mainthread. Thread safe.
         /// </summary>
         ITesselatorAPI Tesselator { get; }
 
-        /// <summary>
-        /// API for Meshing in a background thread. This getter returns you a new, thread safe instance of the tesselator system, so if you have to tesselate a lot, just retrieve it once
-        /// </summary>
-        ITesselatorAPI TesselatorThreadSafe { get; }
-
+        
         /// <summary>
         /// API for the Block Texture Atlas
         /// </summary>

@@ -63,7 +63,7 @@ namespace Vintagestory.API.Client
 
         public override bool MatchesText(string text)
         {
-            return text.CaseInsensitiveContains(text);
+            return this.text.CaseInsensitiveContains(text);
         }
 
         public override void RenderTo(ICoreClientAPI capi, double x, double y)
@@ -217,7 +217,7 @@ namespace Vintagestory.API.Client
         }
     }
 
-    public class GuiElementList : GuiElement
+    public class GuiElementHandbookList : GuiElement
     {
         public List<GuiHandbookPage> Elements = new List<GuiHandbookPage>();
 
@@ -229,7 +229,7 @@ namespace Vintagestory.API.Client
         LoadedTexture hoverOverlayTexture;
         public ElementBounds insideBounds;
 
-        public GuiElementList(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> onLeftClick, List<GuiHandbookPage> elements = null) : base(capi, bounds)
+        public GuiElementHandbookList(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> onLeftClick, List<GuiHandbookPage> elements = null) : base(capi, bounds)
         {
             hoverOverlayTexture = new LoadedTexture(capi);
 
@@ -350,19 +350,19 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
 
-        public static GuiComposer AddList(this GuiComposer composer, ElementBounds bounds, API.Common.Action<int> onleftClick = null, List<GuiHandbookPage> stacks = null, string key = null)
+        public static GuiComposer AddHandbookStackList(this GuiComposer composer, ElementBounds bounds, API.Common.Action<int> onleftClick = null, List<GuiHandbookPage> stacks = null, string key = null)
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementList(composer.Api, bounds, onleftClick, stacks), key);
+                composer.AddInteractiveElement(new GuiElementHandbookList(composer.Api, bounds, onleftClick, stacks), key);
             }
 
             return composer;
         }
 
-        public static GuiElementList GetList(this GuiComposer composer, string key)
+        public static GuiElementHandbookList GetHandbookStackList(this GuiComposer composer, string key)
         {
-            return (GuiElementList)composer.GetElement(key);
+            return (GuiElementHandbookList)composer.GetElement(key);
         }
     }
 

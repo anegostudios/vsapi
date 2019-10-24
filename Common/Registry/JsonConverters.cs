@@ -17,6 +17,8 @@ namespace Vintagestory.API.Common
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
+            if (reader.Value == null) return new JsonObject(null);
+
             return new JsonObject(JObject.Load(reader));
         }
 

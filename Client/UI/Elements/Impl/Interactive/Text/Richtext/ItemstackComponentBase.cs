@@ -18,24 +18,30 @@ namespace Vintagestory.API.Client
         static int tooltipOffsetX = 10;
         static int tooltipOffsetY = 40;
 
-        ItemSlot renderedTooltipSlot;
-        GuiElementItemstackInfo stackInfo;
-        ICoreClientAPI capi;
+        protected ItemSlot renderedTooltipSlot;
+        protected GuiElementItemstackInfo stackInfo;
+        protected ICoreClientAPI capi;
 
         bool bottomOverlap = false;
         bool rightOverlap = false;
         bool recalcAlignmentOffset = false;
-        ElementBounds stackInfoBounds;
+        protected ElementBounds stackInfoBounds;
 
-        ElementBounds parentBounds;
+        protected ElementBounds parentBounds;
 
         public double offY = 0;
+        protected DummyInventory dummyInv;
 
         public ItemstackComponentBase(ICoreClientAPI capi) : base(capi)
         {
             this.capi = capi;
 
-            renderedTooltipSlot = new DummySlot(null);
+            dummyInv = new DummyInventory(capi);
+            dummyInv.OnAcquireTransitionSpeed = (transType, stack, mul) =>
+            {
+                return 0;
+            };
+            renderedTooltipSlot = new DummySlot(null, dummyInv);
 
             stackInfoBounds =
                 ElementBounds
@@ -58,13 +64,13 @@ namespace Vintagestory.API.Client
             return slot.GetStackDescription(capi.World, false);
         }
 
-        public void RenderItemstackTooltip(ItemStack stack, double renderX, double renderY, float dt)
+        public void RenderItemstackTooltip(ItemSlot slot, double renderX, double renderY, float dt)
         {
             parentBounds.fixedX = renderX / RuntimeEnv.GUIScale;
             parentBounds.fixedY = renderY / RuntimeEnv.GUIScale;
             parentBounds.CalcWorldBounds();
 
-            renderedTooltipSlot.Itemstack = stack;
+            renderedTooltipSlot.Itemstack = slot.Itemstack;
             stackInfo.SetSourceSlot(renderedTooltipSlot);
 
             bool newRightOverlap = capi.Input.MouseX + stackInfoBounds.OuterWidth > capi.Render.FrameWidth - 5;

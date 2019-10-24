@@ -13,14 +13,14 @@ namespace Vintagestory.API.MathTools
         private static Dictionary<Vec3i, Cardinal> byNormali = new Dictionary<Vec3i, Cardinal>();
         private static Dictionary<string, Cardinal> byInitial = new Dictionary<string, Cardinal>();
 
-        public static readonly Cardinal North = new Cardinal("north", "n", new Vec3i(0,0,-1), 0, 4);
-        public static readonly Cardinal NorthEast = new Cardinal("northeast", "ne", new Vec3i(1, 0, -1), 1, 5);
-        public static readonly Cardinal East = new Cardinal("east", "e", new Vec3i(1, 0, 0), 2, 6);
-        public static readonly Cardinal SouthEast = new Cardinal("southeast", "se", new Vec3i(1, 0, 1), 3, 7);
-        public static readonly Cardinal South = new Cardinal("south", "s", new Vec3i(0, 0, 1), 4, 0);
-        public static readonly Cardinal SouthWest = new Cardinal("southwest", "sw", new Vec3i(-1, 0, 1), 5, 1);
-        public static readonly Cardinal West = new Cardinal("west", "w", new Vec3i(-1, 0, 0), 6, 2);
-        public static readonly Cardinal NorthWest = new Cardinal("northwest", "nw", new Vec3i(-1, 0, -1), 7, 3);
+        public static readonly Cardinal North = new Cardinal("north", "n", new Vec3i(0,0,-1), 0, 4, false);
+        public static readonly Cardinal NorthEast = new Cardinal("northeast", "ne", new Vec3i(1, 0, -1), 1, 5, true);
+        public static readonly Cardinal East = new Cardinal("east", "e", new Vec3i(1, 0, 0), 2, 6, false);
+        public static readonly Cardinal SouthEast = new Cardinal("southeast", "se", new Vec3i(1, 0, 1), 3, 7, true);
+        public static readonly Cardinal South = new Cardinal("south", "s", new Vec3i(0, 0, 1), 4, 0, false);
+        public static readonly Cardinal SouthWest = new Cardinal("southwest", "sw", new Vec3i(-1, 0, 1), 5, 1, true);
+        public static readonly Cardinal West = new Cardinal("west", "w", new Vec3i(-1, 0, 0), 6, 2, false);
+        public static readonly Cardinal NorthWest = new Cardinal("northwest", "nw", new Vec3i(-1, 0, -1), 7, 3, true);
 
         //public static readonly Cardinal Up = new Cardinal(new Vec3i(0, 1, 0));
         //public static readonly Cardinal Down = new Cardinal(new Vec3i(0, -1, 0));
@@ -33,14 +33,17 @@ namespace Vintagestory.API.MathTools
         public string Initial { get; private set; }
         public string Code { get; private set; }
 
+        public bool IsDiagnoal { get; private set; }
+
         public int OppositeIndex { get; private set; }
 
-        public Cardinal(string code, string initial, Vec3i normali, int index, int oppositeIndex)
+        public Cardinal(string code, string initial, Vec3i normali, int index, int oppositeIndex, bool isDiagonal)
         {
             this.Code = code;
             this.Initial = initial;
             this.Normali = normali;
             this.Index = index;
+            this.IsDiagnoal = isDiagonal;
             this.OppositeIndex = oppositeIndex;
             byNormali.Add(normali, this);
             byInitial.Add(initial, this);

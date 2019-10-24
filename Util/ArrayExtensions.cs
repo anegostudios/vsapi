@@ -43,6 +43,41 @@ namespace Vintagestory.API.Util
             return -1;
         }
 
+        public static int IndexOf<T>(this T[] array, T value)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (object.Equals(value, array[i]))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+
+        public static bool Contains<T>(this T[] array, T value)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (Object.Equals(array[i], value))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static T[] Remove<T>(this T[] array, T value)
+        {
+            List<T> elems = new List<T>(array);
+            elems.Remove(value);
+
+            return elems.ToArray();
+        }
+
         public static T[] RemoveEntry<T>(this T[] array, int index)
         {
             T[] cut = new T[array.Length - 1];

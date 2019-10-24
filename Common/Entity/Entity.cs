@@ -1009,7 +1009,12 @@ namespace Vintagestory.API.Common.Entities
             }
 
             TreeAttribute tree = new TreeAttribute();
-            AnimManager?.ToAttributes(tree);
+            // Tyron 19.oct 2019. Don't write animations to the savegame. I think it causes that some animations start but never stop
+            // if we want to save the creatures current state to disk, we would also need to save the current AI state!
+            if (forClient)
+            {
+                AnimManager?.ToAttributes(tree);
+            }
             tree.ToBytes(writer);
         }
 

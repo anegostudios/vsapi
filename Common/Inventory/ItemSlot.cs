@@ -5,6 +5,9 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// The default item slot to item stacks
+    /// </summary>
     public class ItemSlot
     {
         /// <summary>
@@ -68,6 +71,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual EnumItemStorageFlags StorageType { get; set; } = EnumItemStorageFlags.General | EnumItemStorageFlags.Agriculture | EnumItemStorageFlags.Alchemy | EnumItemStorageFlags.Jewellery | EnumItemStorageFlags.Metallurgy | EnumItemStorageFlags.Outfit;
         
+        /// <summary>
+        /// Create a new instance of an item slot
+        /// </summary>
+        /// <param name="inventory"></param>
         public ItemSlot(InventoryBase inventory)
         {
             this.inventory = inventory;

@@ -202,6 +202,11 @@ namespace Vintagestory.API.MathTools
             return channels[0] | (channels[1] << 8) | (channels[2] << 16) | (channels[3] << 24);
         }
 
+        public static int ColorFromRgba(int r, int g, int b, int a)
+        {
+            return r | (g << 8) | (b << 16) | (a << 24);
+        }
+
 
         /// <summary>
         /// Returns a 4 element rgb double with values between 0..1
@@ -271,6 +276,23 @@ namespace Vintagestory.API.MathTools
                 (int)((color & 0xff) * multiplier)
             ;
         }
+
+        /// <summary>
+        /// Multiplies a float value to the rgb color channels, leaves alpha channel unchanged. Makes sure the multiplied value stays within the 0..255 range
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
+        public static int ColorMultiply3Clamped(int color, float multiplier)
+        {
+            return
+                (int)(color & 0xff000000) |
+                ((int)GameMath.Clamp(((color >> 16) & 0xff) * multiplier, 0, 255) << 16) |
+                ((int)GameMath.Clamp(((color >> 8) & 0xff) * multiplier, 0, 255) << 8) |
+                (int)GameMath.Clamp((color & 0xff) * multiplier, 0, 255)
+            ;
+        }
+
 
 
 

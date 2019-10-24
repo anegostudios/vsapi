@@ -17,12 +17,13 @@ namespace Vintagestory.API.Common
         Perish,
         /// <summary>
         /// Can be dried
-       /// </summary>
+        /// </summary>
         Dry,
         /// <summary>
         /// Can be burned to a crisp :D
         /// </summary>
         Burn,
+        Cure,
         /// <summary>
         /// something else o.O
         /// </summary>

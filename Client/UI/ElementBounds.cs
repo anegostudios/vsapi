@@ -135,11 +135,11 @@ namespace Vintagestory.API.Client
         }
 
 
-        public virtual double renderX { get { return absFixedX + absMarginX + absOffsetX + ParentBounds.absPaddingX + ParentBounds.renderX; } }
-        public virtual double renderY { get { return absFixedY + absMarginY + absOffsetY + ParentBounds.absPaddingY + ParentBounds.renderY; } }
+        public virtual double renderX { get { return absFixedX + absMarginX + absOffsetX + ParentBounds.absPaddingX + ParentBounds.renderX + renderOffsetX; } }
+        public virtual double renderY { get { return absFixedY + absMarginY + absOffsetY + ParentBounds.absPaddingY + ParentBounds.renderY + renderOffsetY; } }
 
 
-
+        public double renderOffsetX, renderOffsetY;
 
         public ElementBounds()
         {
@@ -154,6 +154,10 @@ namespace Vintagestory.API.Client
             foreach (ElementBounds child in ChildBounds)
             {
                 if (ParentBounds == child) continue;
+                if (this == child)
+                {
+                    throw new Exception(string.Format("Fatal: Element bounds {0} self reference itself in child bounds, this would cause a stack overflow.", this));
+                }
 
                 child.MarkDirtyRecursive();
             }

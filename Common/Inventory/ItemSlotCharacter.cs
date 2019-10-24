@@ -22,6 +22,10 @@ namespace Vintagestory.API.Common
         Arm = 10,
         Hand = 5,
         Waist = 9,
+
+        ArmorHead = 12,
+        ArmorBody = 13,
+        ArmorLegs = 14
     }
 
     public class ItemSlotCharacter : ItemSlot
@@ -60,7 +64,7 @@ namespace Vintagestory.API.Common
 
             string stackDressType = itemstack.Collectible.Attributes["clothescategory"].AsString();
 
-            return stackDressType != null && dressType.ToString().ToLowerInvariant().Equals(stackDressType);
+            return stackDressType != null && dressType.ToString().Equals(stackDressType, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

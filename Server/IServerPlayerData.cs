@@ -13,6 +13,35 @@ namespace Vintagestory.API.Server
     public interface IServerPlayerData
     {
         /// <summary>
+        /// The players unique identifier
+        /// </summary>
+        string PlayerUID { get; }
+        /// <summary>
+        /// The players role code
+        /// </summary>
+        string RoleCode { get; }
+        /// <summary>
+        /// Privilige explicitly granted to this player
+        /// </summary>
+        HashSet<string> PermaPrivileges { get; }
+        /// <summary>
+        /// Privilige explicitly revoked from this player
+        /// </summary>
+        HashSet<string> DeniedPrivileges { get; }
+        /// <summary>
+        /// List of groups the player is a member off
+        /// </summary>
+        Dictionary<int, PlayerGroupMembership> PlayerGroupMemberShips { get; }
+        /// <summary>
+        /// Whether or not this player wants to receive group invites
+        /// </summary>
+        bool AllowInvite { get; }
+        /// <summary>
+        /// The players last known player name. This may have changed since the last log in.
+        /// </summary>
+        string LastKnownPlayername { get; }
+
+        /// <summary>
         /// Returns all player groups which this player is part of
         /// </summary>
         /// <returns></returns>

@@ -106,10 +106,12 @@
     <Compile Include="Client\Input\MouseEvent.cs" />
     <Compile Include="Client\Render\EnumFrameBuffer.cs" />
     <Compile Include="Client\Render\IAviWriter.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementContainer.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementCustomRender.cs" />
     <Compile Include="Common\API\EnumBlockAccessResponse.cs" />
     <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
     <Compile Include="Common\API\ILandClaimAPI.cs" />
+    <Compile Include="Common\Collectible\Block\BlockEntityBehavior.cs" />
     <Compile Include="Common\Collectible\FertilizerProps.cs" />
     <Compile Include="Common\Collectible\TransitionableProperties.cs" />
     <Compile Include="Common\Crafting\BarrelRecipe.cs" />
@@ -149,7 +151,7 @@
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementNumberInput.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementStacklist.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementStatbar.cs" />
-    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementList.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementCellList.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTextArea.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementTextInput.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Inventory\GuiElementItemSlotGrid.cs" />
@@ -215,6 +217,7 @@
     <Compile Include="Common\Entity\EntityProperties.cs" />
     <Compile Include="Common\Entity\SpawnConditions.cs" />
     <Compile Include="Common\Inventory\CreativeInventoryTab.cs" />
+    <Compile Include="Common\Inventory\DummyInventory.cs" />
     <Compile Include="Common\Inventory\ItemSlotOffHand.cs" />
     <Compile Include="Common\Model\Animation\AnimationCache.cs" />
     <Compile Include="Common\Model\Animation\AnimationMetaData.cs" />
@@ -538,7 +541,7 @@
     <Compile Include="Common\Collectible\ModelTransform.cs" />
     <Compile Include="Server\MultiplayerServerEntry.cs" />
     <Compile Include="Server\PlayerGroup.cs" />
-    <Compile Include="Server\PlayerGroupMembership.cs" />
+    <Compile Include="Common\PlayerGroupMembership.cs" />
     <Compile Include="Server\PlayerSpawn.cs" />
     <Compile Include="Server\Privilege.cs" />
     <Compile Include="Client\Model\Mesh\CustomMeshDataPartByte.cs" />

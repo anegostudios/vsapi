@@ -11,7 +11,7 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
-    public class JsonItemStack
+    public class JsonItemStack : IRecipeOutput
     {
         /// <summary>
         /// Block or Item?

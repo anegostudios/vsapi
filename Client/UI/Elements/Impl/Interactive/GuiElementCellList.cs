@@ -8,6 +8,8 @@ namespace Vintagestory.API.Client
 {
     public interface IGuiElementCell
     {
+        ElementBounds InsideClipBounds { get; set; }
+
         /// <summary>
         /// The bounds of the cell.
         /// </summary>
@@ -17,9 +19,8 @@ namespace Vintagestory.API.Client
         /// The event fired when the cell is rendered.
         /// </summary>
         /// <param name="api">The Client API</param>
-        /// <param name="bounds">The bounds of the cell</param>
         /// <param name="deltaTime">The change in time.</param>
-        void OnRenderInteractiveElements(ICoreClientAPI api, ElementBounds bounds, float deltaTime);
+        void OnRenderInteractiveElements(ICoreClientAPI api, float deltaTime);
 
         /// <summary>
         /// Called when the cell is modified and needs to be updated.
@@ -75,9 +76,22 @@ namespace Vintagestory.API.Client
 
         LoadedTexture listTexture;
 
-        ElementBounds insideBounds;
+        //ElementBounds insideBounds;
 
         OnRequireCell cellcreator;
+
+        public override ElementBounds InsideClipBounds { 
+            get => base.InsideClipBounds; 
+            set {
+                base.InsideClipBounds = value;
+
+                foreach (var val in elementCells)
+                {
+                    val.InsideClipBounds = InsideClipBounds;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Creates a new list in the current GUI.
@@ -93,8 +107,10 @@ namespace Vintagestory.API.Client
             listTexture = new LoadedTexture(capi);
             this.cellcreator = cellCreator;
 
-            insideBounds = new ElementBounds().WithFixedPadding(unscaledCellSpacing).WithEmptyParent();
-            insideBounds.CalcWorldBounds();
+            //insideBounds = new ElementBounds().WithFixedPadding(unscaledCellSpacing).WithEmptyParent();
+            //insideBounds.CalcWorldBounds();
+
+            Bounds.IsDrawingSurface = true;
 
             leftPartClick = OnMouseDownOnCellLeft;
             rightPartClick = OnMouseDownOnCellRight;
@@ -128,27 +144,41 @@ namespace Vintagestory.API.Client
             ComposeList();
         }
 
+        public override void BeforeCalcBounds()
+        {
+            CalcTotalHeight();
+        }
+
         /// <summary>
         /// Calculates the total height for the list.
         /// </summary>
         public void CalcTotalHeight()
         {
+            Bounds.CalcWorldBounds();
             double height = 0;
+            double unscaledHeight = 0;
+
             foreach (IGuiElementCell cell in elementCells)
             {
                 cell.UpdateCellHeight();
+                cell.Bounds.WithFixedPosition(0, unscaledHeight);
+                cell.Bounds.CalcWorldBounds();
+
                 height += cell.Bounds.fixedHeight + unscaledCellSpacing + 2 * UnscaledCellVerPadding;
+
+                unscaledHeight += cell.Bounds.OuterHeight / RuntimeEnv.GUIScale + unscaledCellSpacing;
             }
 
             Bounds.fixedHeight = height + unscaledCellSpacing;
+
+            
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            insideBounds = new ElementBounds().WithFixedPadding(unscaledCellSpacing).WithEmptyParent();
-            insideBounds.CalcWorldBounds();
+            //insideBounds = new ElementBounds().WithFixedPadding(unscaledCellSpacing).WithEmptyParent();
+            //insideBounds.CalcWorldBounds();
 
-            Bounds.CalcWorldBounds();
             ComposeList();
         }
 
@@ -156,22 +186,12 @@ namespace Vintagestory.API.Client
 
         void ComposeList()
         {
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
+            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt+1, Bounds.OuterHeightInt+1);
             Context ctx = genContext(surface);
             
-            CalcTotalHeight();
-            Bounds.CalcWorldBounds();
-            
-
-            double unscaledHeight = 0;
-            int i = 0;
             foreach (IGuiElementCell cell in elementCells)
-            {
-                cell.Bounds.WithFixedAlignmentOffset(0, unscaledHeight);
+            {                
                 cell.ComposeElements(ctx, surface);
-                i++;
-
-                unscaledHeight += cell.Bounds.OuterHeight / RuntimeEnv.GUIScale + unscaledCellSpacing;
             }
 
             //surface.WriteToPng("list.png");
@@ -192,12 +212,15 @@ namespace Vintagestory.API.Client
             {
                 fixedPaddingX = UnscaledCellHorPadding,
                 fixedPaddingY = UnscaledCellVerPadding,
-                fixedWidth = Bounds.fixedWidth - 2 * UnscaledCellHorPadding - 2 * unscaledCellSpacing,
+                fixedWidth = Bounds.fixedWidth - 2 * Bounds.fixedPaddingX - 2 * UnscaledCellHorPadding,
                 fixedHeight = 0,
                 BothSizing = ElementSizing.Fixed,
-            }.WithParent(insideBounds);
+            }.WithParent(Bounds);
+
+            
 
             IGuiElementCell cellElem = this.cellcreator(cell, cellBounds);
+            cellElem.InsideClipBounds = InsideClipBounds;
 
             if (afterPosition == -1)
             {    
@@ -224,13 +247,13 @@ namespace Vintagestory.API.Client
 
             int i = 0;
 
-            int dx = api.Input.MouseX - (int)Bounds.absX;
-            int dy = api.Input.MouseY - (int)Bounds.absY;
+            int mousex = api.Input.MouseX;
+            int mousey = api.Input.MouseY;
 
 
             foreach (IGuiElementCell element in elementCells)
             {
-                Vec2d pos = element.Bounds.PositionInside(dx, dy);
+                Vec2d pos = element.Bounds.PositionInside(mousex, mousey);
 
                 if (pos != null)
                 {
@@ -256,11 +279,11 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexturePremultipliedAlpha(listTexture.TextureId, Bounds);
+            api.Render.Render2DTexturePremultipliedAlpha(listTexture.TextureId, Bounds.renderX, Bounds.renderY, Bounds.OuterWidthInt + 1, Bounds.OuterHeightInt + 1);
             
             foreach (IGuiElementCell element in elementCells)
             {
-                element.OnRenderInteractiveElements(api, Bounds, deltaTime);
+                element.OnRenderInteractiveElements(api, deltaTime);
             }
         }
 

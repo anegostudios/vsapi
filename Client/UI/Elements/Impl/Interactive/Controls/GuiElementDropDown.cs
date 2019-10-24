@@ -69,6 +69,17 @@ namespace Vintagestory.API.Client
             }
         }
 
+
+        public string SelectedValue
+        {
+            get
+            {
+                if (listMenu.SelectedIndex < 0) return null;
+                return listMenu.Values[listMenu.SelectedIndex];
+            }
+        }
+
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -285,6 +296,8 @@ namespace Vintagestory.API.Client
 
             double renderX = Bounds.renderX + Bounds.InnerWidth - arrowDownButtonReleased.Width;
             double renderY = Bounds.renderY;
+
+
             if (listMenu.IsOpened)
             {
                 api.Render.Render2DTexturePremultipliedAlpha(arrowDownButtonPressed.TextureId, renderX, renderY, arrowDownButtonReleased.Width, arrowDownButtonReleased.Height);
@@ -317,6 +330,8 @@ namespace Vintagestory.API.Client
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
             listMenu.OnMouseUp(api, args);
+
+            args.Handled |= listMenu.IsPositionInside(args.X, args.Y) || IsPositionInside(args.X, args.Y);
         }
 
 

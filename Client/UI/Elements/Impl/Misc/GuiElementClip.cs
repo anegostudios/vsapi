@@ -60,7 +60,7 @@ namespace Vintagestory.API.Client
             if (!composer.composed)
             {
                 composer.AddInteractiveElement(new GuiElementClip(composer.Api, true, bounds));
-                composer.InsideClip = true;
+                composer.InsideClipBounds = bounds;
                 composer.BeginChildElements();
             }
             return composer;
@@ -74,7 +74,7 @@ namespace Vintagestory.API.Client
             if (!composer.composed)
             {
                 composer.AddInteractiveElement(new GuiElementClip(composer.Api, false, ElementBounds.Empty));
-                composer.InsideClip = false;
+                composer.InsideClipBounds = null;
                 composer.EndChildElements();
             }
             return composer;

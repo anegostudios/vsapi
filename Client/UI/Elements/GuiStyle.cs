@@ -118,7 +118,7 @@
         /// <summary>
         /// The light background color for dialogs.
         /// </summary>
-        public static double[] DialogLightBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.45 };
+        public static double[] DialogLightBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.75 };
         /// <summary>
         /// The default background color for dialogs.
         /// </summary>

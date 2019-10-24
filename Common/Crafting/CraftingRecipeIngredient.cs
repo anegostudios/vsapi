@@ -16,7 +16,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// A crafting recipe ingredient
     /// </summary>
-    public class CraftingRecipeIngredient
+    public class CraftingRecipeIngredient : IRecipeIngredient
     {
         /// <summary>
         /// Item or Block
@@ -25,11 +25,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Code of the item or block
         /// </summary>
-        public AssetLocation Code;
+        public AssetLocation Code { get; set; }
         /// <summary>
         /// Name of the class, used for filling placeholders in the output stack
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
         /// <summary>
         /// How much input items are required
         /// </summary>
@@ -133,7 +133,7 @@ namespace Vintagestory.API.Common
 
 
 
-        internal CraftingRecipeIngredient Clone()
+        public CraftingRecipeIngredient Clone()
         {
             CraftingRecipeIngredient stack = new CraftingRecipeIngredient()
             {
@@ -171,7 +171,7 @@ namespace Vintagestory.API.Common
             Attributes?.FillPlaceHolder(key, value);
         }
 
-        internal void ToBytes(BinaryWriter writer)
+        public virtual void ToBytes(BinaryWriter writer)
         {
             writer.Write(IsWildCard);
             writer.Write((int)Type);
@@ -201,7 +201,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        internal void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+        public virtual void FromBytes(BinaryReader reader, IWorldAccessor resolver)
         {
             IsWildCard = reader.ReadBoolean();
             Type = (EnumItemClass)reader.ReadInt32();

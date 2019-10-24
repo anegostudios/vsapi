@@ -29,5 +29,33 @@ namespace Vintagestory.API.Util
             }
             return cnt;
         }
+
+
+        public static bool FastStartsWith(string value, string reference)
+        {
+            if (reference.Length > value.Length) return false;
+
+            for (int i = 0; i < reference.Length; i++)
+            {
+                if (value[i] != reference[i]) return false;
+            }
+
+            return true;
+        }
+
+
+        public static bool FastStartsWith(string value, string reference, int len)
+        {
+            if (len > reference.Length) throw new ArgumentException("reference must be longer than len");
+            if (len > value.Length) return false;
+
+            for (int i = 0; i < len; i++)
+            {
+                if (value[i] != reference[i]) return false;
+            }
+
+            return true;
+        }
+
     }
 }

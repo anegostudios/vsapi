@@ -15,6 +15,8 @@ namespace Vintagestory.API.Client
     public class SlideshowItemstackTextComponent : ItemstackComponentBase
     {
         public ItemStack[] Itemstacks;
+        ItemSlot slot;
+        DummyInventory dummyInv;
         Common.Action<ItemStack> onStackClicked;
 
         float secondsVisible=1;
@@ -30,6 +32,9 @@ namespace Vintagestory.API.Client
         /// <param name="floatType"></param>
         public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double size, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
         {
+            initSlot();
+
+
             this.Itemstacks = itemstacks;
             this.Float = floatType;
             this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, size, size) };
@@ -43,16 +48,17 @@ namespace Vintagestory.API.Client
         /// <param name="itemstackgroup"></param>
         /// <param name="size"></param>
         /// <param name="floatType"></param>
-        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, Dictionary<AssetLocation, ItemStack> allstacks, double size, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double size, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
         {
+            initSlot();
             this.onStackClicked = onStackClicked;
 
             string[] groups = itemstackgroup.Collectible.Attributes?["handbook"]?["groupBy"]?.AsArray<string>(null);
 
-            HashSet<AssetLocation> collectibleLocs = new HashSet<AssetLocation>();
+            List<ItemStack> nowGroupedStacks = new List<ItemStack>();
             List<ItemStack> stacks = new List<ItemStack>();
 
-            collectibleLocs.Add(itemstackgroup.Collectible.Code);
+            nowGroupedStacks.Add(itemstackgroup);
             stacks.Add(itemstackgroup);
 
             if (groups != null)
@@ -74,17 +80,17 @@ namespace Vintagestory.API.Client
                 {
                     for (int i = 0; i < groupWildCards.Length; i++)
                     {
-                        if (val.Value.Collectible.WildCardMatch(groupWildCards[i]) && !collectibleLocs.Contains(val.Value.Collectible.Code))
+                        if (val.Collectible.WildCardMatch(groupWildCards[i]))
                         {
-                            stacks.Add(val.Value);
-                            collectibleLocs.Add(val.Value.Collectible.Code);
+                            stacks.Add(val);
+                            nowGroupedStacks.Add(val);
                             break;
                         }
                     }
                 }
             }
             
-            foreach (var val in collectibleLocs)
+            foreach (var val in nowGroupedStacks)
             {
                 allstacks.Remove(val);
             }
@@ -97,7 +103,15 @@ namespace Vintagestory.API.Client
 
 
 
-
+        void initSlot()
+        {
+            dummyInv = new DummyInventory(capi);
+            dummyInv.OnAcquireTransitionSpeed = (transType, stack, mul) =>
+            {
+                return 0;
+            };
+            slot = new DummySlot(null, dummyInv);
+        }
 
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
         {
@@ -129,14 +143,14 @@ namespace Vintagestory.API.Client
                 curItemIndex = (curItemIndex + 1) % Itemstacks.Length;
             }
 
-            api.Render.RenderItemstackToGui(
-                itemstack, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f, 100, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
+            slot.Itemstack = itemstack;
+            api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f, 100, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);
             if (bounds.PointInside(relx, rely))
             {
-                RenderItemstackTooltip(itemstack, renderX + relx, renderY + rely, deltaTime);
+                RenderItemstackTooltip(slot, renderX + relx, renderY + rely, deltaTime);
             }
         }
 

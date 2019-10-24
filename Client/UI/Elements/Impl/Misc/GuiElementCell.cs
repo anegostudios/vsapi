@@ -248,14 +248,14 @@ namespace Vintagestory.API.Client
         /// <param name="api">The Client API</param>
         /// <param name="parentBounds">The bounds of the parent table.</param>
         /// <param name="deltaTime">The change in time.</param>
-        public void OnRenderInteractiveElements(ICoreClientAPI api, ElementBounds parentBounds, float deltaTime)
+        public void OnRenderInteractiveElements(ICoreClientAPI api, float deltaTime)
         {
             if (cellEntry.Selected)
             {
                 api.Render.Render2DTexturePremultipliedAlpha(
                     pressedButtonTexture.TextureId, 
-                    (int)(parentBounds.absX + Bounds.absX),
-                    (int)(parentBounds.absY + Bounds.absY), 
+                    (int)(Bounds.absX),
+                    (int)(Bounds.absY), 
                     Bounds.OuterWidthInt, 
                     Bounds.OuterHeightInt
                 );
@@ -263,27 +263,27 @@ namespace Vintagestory.API.Client
             {
                 api.Render.Render2DTexturePremultipliedAlpha(
                     releasedButtonTexture.TextureId, 
-                    (int)(parentBounds.absX + Bounds.absX),
-                    (int)(parentBounds.absY + Bounds.absY), 
+                    (int)(Bounds.absX),
+                    (int)(Bounds.absY), 
                     Bounds.OuterWidthInt, 
                     Bounds.OuterHeightInt
                 );
             }
-            
 
-            int dx = api.Input.MouseX - (int)parentBounds.absX;
-            int dy = api.Input.MouseY - (int)parentBounds.absY;
+
+            int dx = api.Input.MouseX;// - (int)parentBounds.absX;
+            int dy = api.Input.MouseY;// - (int)parentBounds.absY;
             Vec2d pos = Bounds.PositionInside(dx, dy);
 
-            if (pos == null || parentBounds.ParentBounds.PositionInside(api.Input.MouseX, api.Input.MouseY) == null) return;
+            if (pos == null || !IsPositionInside(api.Input.MouseX, api.Input.MouseY)) return;
 
             if (ShowModifyIcons && pos.X > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
             {
-                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTexture.TextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTexture.TextureId, Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
             }
             else
             {
-                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTexture.TextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTexture.TextureId, Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
             }
         }
 

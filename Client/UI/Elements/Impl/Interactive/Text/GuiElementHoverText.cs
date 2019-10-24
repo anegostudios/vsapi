@@ -8,7 +8,7 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementHoverText : GuiElementTextBase
     {
-        public static TextBackground DefaultBackGround = new TextBackground() {
+        public static TextBackground DefaultBackground = new TextBackground() {
             Padding = 5,
             Radius = 1,
             FillColor = GuiStyle.DialogStrongBgColor,
@@ -18,11 +18,9 @@ namespace Vintagestory.API.Client
         };
         
         LoadedTexture hoverTexture;
-        int unscaledWidth;
+        int unscaledMaxWidth;
         int unscaledPadding = 5;
-
-        int width;
-        int height;
+        double hoverWidth, hoverHeight;
 
         bool autoDisplay = true;
         bool visible = false;
@@ -34,6 +32,8 @@ namespace Vintagestory.API.Client
 
 
         public EnumTextOrientation textOrientation = EnumTextOrientation.Left;
+
+        GuiElementRichtext descriptionElement;
 
         public override double DrawOrder
         {
@@ -47,85 +47,67 @@ namespace Vintagestory.API.Client
         /// <param name="text">The text of the text.</param>
         /// <remarks>For the text and the text.</remarks>
         /// <param name="font">The font of the text.</param>
-        /// <param name="width">The width of the text.</param>
+        /// <param name="maxWidth">The width of the text.</param>
         /// <param name="bounds">the bounds of the text.</param>
-        public GuiElementHoverText(ICoreClientAPI capi, string text, CairoFont font, int width, ElementBounds bounds) : base(capi, text, font, bounds)
+        public GuiElementHoverText(ICoreClientAPI capi, string text, CairoFont font, int maxWidth, ElementBounds bounds) : base(capi, text, font, bounds)
         {
-            unscaledWidth = width;
+            this.unscaledMaxWidth = maxWidth;
 
             hoverTexture = new LoadedTexture(capi);
+
+            ElementBounds descBounds = bounds.CopyOnlySize();
+            descBounds.WithParent(bounds);
+            descBounds.IsDrawingSurface = true;
+
+            descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
+            descriptionElement.zPos = 1001;
+        }
+
+        public override void BeforeCalcBounds()
+        {
+            base.BeforeCalcBounds();
+
+            descriptionElement.BeforeCalcBounds();
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
+            
         }
 
-        private void ComposeHoverElement()
+        void RecalcBounds(string desc)
         {
-            double padding = scaled(unscaledPadding);
+            descriptionElement.BeforeCalcBounds();
 
-            if (fillBounds)
-            {
+            double currentWidth = descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10;
+            double currentHeight = 0;
 
-                if (autoWidth)
-                {
-                    double textWidth = Font.GetTextExtents(text).Width;
-                    Bounds.fixedWidth = (int)(textWidth / RuntimeEnv.GUIScale + 2 * unscaledPadding + 1);
-                    Bounds.fixedHeight = (int)(Font.GetFontExtents().Height / RuntimeEnv.GUIScale + 2 * unscaledPadding + 1);
-                }
-                else
-                {
-                    width = (int)(scaled(unscaledWidth) + 1);
-                    height = (int)(textUtil.GetMultilineTextHeight(Font, text, width - 2 * padding) + 2 * padding + 1);
-                }
+            currentWidth = Math.Min(currentWidth, unscaledMaxWidth);
 
-
-                Bounds.CalcWorldBounds();
-
-                if (autoWidth)
-                {
-                    width = (int)Math.Ceiling(Bounds.InnerWidth);
-                    height = (int)Math.Ceiling(Bounds.InnerHeight);
-                }
-
-            }
-            else
-            {
-
-                if (autoWidth)
-                {
-                    string[] lines = text.Split('\n');
-                    for (int i = 0; i < lines.Length; i++)
-                    {
-                        if (i == 0)
-                        {
-                            width = (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1);
-                        }
-                        else
-                        {
-                            width = Math.Max(width, (int)(Font.GetTextExtents(lines[0]).Width + 2 * padding + 1));
-                        }
-                    }
-
-                }
-                else
-                {
-                    width = (int)(scaled(unscaledWidth) + 1);
-                }
-
-
-                height = (int)(textUtil.GetMultilineTextHeight(Font, text, width - 2 * padding) + 2 * padding + 1);
-
-                Bounds.CalcWorldBounds();
-            }
-
-
-
-
+            hoverWidth = currentWidth + Bounds.fixedPaddingX;
+            descriptionElement.Bounds.fixedWidth = currentWidth;
             
-            
+            descriptionElement.Bounds.CalcWorldBounds();
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, width, height);
+            // Height depends on the width
+            double descTextHeight = descriptionElement.Bounds.fixedHeight;
+            currentHeight = Math.Max(descTextHeight, scaled(10) + 40);
+            
+            descriptionElement.Bounds.fixedHeight = currentHeight;
+            hoverHeight = scaled(10) + currentHeight / RuntimeEnv.GUIScale;
+        }
+
+
+        void Recompose()
+        {
+            descriptionElement.SetNewText(text, Font);
+            RecalcBounds(text);
+            Bounds.CalcWorldBounds();
+
+            ElementBounds textBounds = Bounds.CopyOnlySize();
+            textBounds.CalcWorldBounds();
+
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)hoverWidth+1, (int)hoverHeight + 1);
             Context ctx = genContext(surface);
 
             ctx.SetSourceRGBA(0, 0, 0, 0);
@@ -134,15 +116,14 @@ namespace Vintagestory.API.Client
             if (Background?.FillColor != null)
             {
                 ctx.SetSourceRGBA(Background.FillColor);
-                RoundRectangle(ctx, 0, 0, width, height, Background.Radius);
+                RoundRectangle(ctx, 0, 0, hoverWidth, hoverHeight, Background.Radius);
                 ctx.Fill();
             }
-
 
             if (Background?.Shade == true)
             {
                 ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
-                RoundRectangle(ctx, 0, 0, width, height, Background.Radius);
+                RoundRectangle(ctx, 0, 0, hoverWidth, hoverHeight, Background.Radius);
                 ctx.LineWidth = Background.BorderWidth * 1.75;
                 ctx.Stroke();
                 surface.Blur(8.2);
@@ -151,12 +132,12 @@ namespace Vintagestory.API.Client
             if (Background?.BorderColor != null)
             {
                 ctx.SetSourceRGBA(Background.BorderColor);
-                RoundRectangle(ctx, 0, 0, width, height, Background.Radius);
+                RoundRectangle(ctx, 0, 0, hoverWidth, hoverHeight, Background.Radius);
                 ctx.LineWidth = Background.BorderWidth;
                 ctx.Stroke();
             }
 
-            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, text, (int)padding, (int)padding, width - 2 * padding, textOrientation);
+            descriptionElement.ComposeElements(ctx, surface);
 
             generateTexture(surface, ref hoverTexture);
 
@@ -164,21 +145,23 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
+
+
         public override void RenderInteractiveElements(float deltaTime)
         {
-            if (text.Length == 0) return;
-
-            // Compose on demand only
-            if (hoverTexture.TextureId == 0 && !hoverTexture.Disposed)
-            {
-                ComposeHoverElement();
-            }
+            if (text == null || text.Length == 0) return;
 
             int mouseX = api.Input.MouseX;
             int mouseY = api.Input.MouseY;
-
-            if ((autoDisplay && Bounds.PointInside(mouseX, mouseY)) || visible)
+            
+            if ((autoDisplay && IsPositionInside(mouseX, mouseY)) || visible)
             {
+                // Compose on demand only
+                if (hoverTexture.TextureId == 0 && !hoverTexture.Disposed)
+                {
+                    Recompose();
+                }
+
                 double x = Bounds.renderX;
                 double y = Bounds.renderY;
 
@@ -188,17 +171,23 @@ namespace Vintagestory.API.Client
                     y = mouseY + 20;
                 }
 
-                if (x + width > api.Render.FrameWidth)
+                if (x + hoverWidth > api.Render.FrameWidth)
                 {
-                    x -= (x + width) - api.Render.FrameWidth;
+                    x -= (x + hoverWidth) - api.Render.FrameWidth;
                 }
 
-                if (y+height > api.Render.FrameHeight)
+                if (y + hoverHeight > api.Render.FrameHeight)
                 {
-                    y -= (y + height) - api.Render.FrameHeight;
+                    y -= (y + hoverHeight) - api.Render.FrameHeight;
                 }
 
-                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x, (int)y, width, height, 50);
+                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x, (int)y, (int)hoverWidth + 1, (int)hoverHeight + 1, 50);
+
+                Bounds.renderOffsetX = x - Bounds.renderX;
+                Bounds.renderOffsetY = y - Bounds.renderY;
+                descriptionElement.RenderInteractiveElements(deltaTime);
+                Bounds.renderOffsetX = 0;
+                Bounds.renderOffsetY = 0;
             }
         }
 
@@ -209,7 +198,7 @@ namespace Vintagestory.API.Client
         public void SetNewText(string text)
         {
             this.text = text;
-            ComposeHoverElement();
+            Recompose();
         }
 
         /// <summary>
@@ -274,7 +263,7 @@ namespace Vintagestory.API.Client
             if (!composer.composed)
             {
                 GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds);
-                elem.Background = GuiElementHoverText.DefaultBackGround;
+                elem.Background = GuiElementHoverText.DefaultBackground;
                 composer.AddInteractiveElement(elem, key);
             }
             return composer;

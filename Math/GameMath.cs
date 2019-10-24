@@ -1046,6 +1046,51 @@ namespace Vintagestory.API.MathTools
         }
 
 
+
+
+        /// <summary>
+        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static double R2Sequence1D(int n)
+        {
+            double g = 1.6180339887498948482;
+            double a1 = 1.0 / g;
+            return (0.5 + a1 * n) % 1;
+        }
+
+        /// <summary>
+        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static Vec2d R2Sequence2D(int n)
+        {
+            double g = 1.32471795724474602596;
+            double a1 = 1.0 / g;
+            double a2 = 1.0 / (g * g);
+            return new Vec2d((0.5 + a1 * n) % 1, (0.5 + a2 * n) % 1);
+        }
+
+        /// <summary>
+        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public static Vec3d R2Sequence3D(int n)
+        {
+            double g = 1.22074408460575947536;
+            double a1 = 1.0 / g;
+            double a2 = 1.0 / (g * g);
+            double a3 = 1.0 / (g * g * g);
+            return new Vec3d((0.5 + a1 * n) % 1, (0.5 + a2 * n) % 1, (0.5 + a3 * n) % 1);
+        }
+
+
+
+
+
         #endregion
 
         /// <summary>
@@ -1112,46 +1157,98 @@ namespace Vintagestory.API.MathTools
         }
 
 
+
         /// <summary>
-        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// Plot a 3d line, see also http://members.chello.at/~easyfilter/bresenham.html
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
-        public static double R2Sequence1D(int n)
+        /// <param name="x0"></param>
+        /// <param name="y0"></param>
+        /// <param name="z0"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="z1"></param>
+        /// <param name="onPlot"></param>
+        public static void BresenHamPlotLine3d(int x0, int y0, int z0, int x1, int y1, int z1, PlotDelegate3D onPlot)
         {
-            double g = 1.6180339887498948482;
-            double a1 = 1.0 / g;
-            return (0.5 + a1 * n) % 1;
+            int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+            int dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+            int dz = Math.Abs(z1 - z0), sz = z0 < z1 ? 1 : -1;
+            int dm = GameMath.Max(dx, dy, dz), i = dm; /* maximum difference */
+            x1 = y1 = z1 = dm / 2; /* error offset */
+
+            for (; ; )
+            {  /* loop */
+                onPlot(x0, y0, z0);
+                if (i-- == 0) break;
+                x1 -= dx; if (x1 < 0) { x1 += dm; x0 += sx; }
+                y1 -= dy; if (y1 < 0) { y1 += dm; y0 += sy; }
+                z1 -= dz; if (z1 < 0) { z1 += dm; z0 += sz; }
+            }
+        }
+
+
+        /// <summary>
+        /// Plot a 3d line, see also http://members.chello.at/~easyfilter/bresenham.html
+        /// </summary>
+        /// <param name="x0"></param>
+        /// <param name="y0"></param>
+        /// <param name="z0"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="z1"></param>
+        /// <param name="onPlot"></param>
+        public static void BresenHamPlotLine3d(int x0, int y0, int z0, int x1, int y1, int z1, PlotDelegate3DBlockPos onPlot)
+        {
+            int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+            int dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+            int dz = Math.Abs(z1 - z0), sz = z0 < z1 ? 1 : -1;
+            int dm = GameMath.Max(dx, dy, dz), i = dm; /* maximum difference */
+            x1 = y1 = z1 = dm / 2; /* error offset */
+
+            BlockPos pos = new BlockPos();
+
+            for (; ; )
+            {  /* loop */
+                pos.Set(x0, y0, z0);
+                onPlot(pos);
+                if (i-- == 0) break;
+                x1 -= dx; if (x1 < 0) { x1 += dm; x0 += sx; }
+                y1 -= dy; if (y1 < 0) { y1 += dm; y0 += sy; }
+                z1 -= dz; if (z1 < 0) { z1 += dm; z0 += sz; }
+            }
         }
 
         /// <summary>
-        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
+        /// Plot a 2d line, see also http://members.chello.at/~easyfilter/bresenham.html
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
-        public static Vec2d R2Sequence2D(int n)
+        /// <param name="x0"></param>
+        /// <param name="y0"></param>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="onPlot"></param>
+        public static void BresenHamPlotLine2d(int x0, int y0, int x1, int y1, PlotDelegate2D onPlot)
         {
-            double g = 1.32471795724474602596;
-            double a1 = 1.0 / g;
-            double a2 = 1.0 / (g * g);
-            return new Vec2d((0.5 + a1 * n) % 1, (0.5 + a2 * n) % 1);
+            int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+            int dy = -Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+            int err = dx + dy, e2; /* error value e_xy */
+
+            for (; ; )
+            {  /* loop */
+                onPlot(x0, y0);
+                if (x0 == x1 && y0 == y1) break;
+                e2 = 2 * err;
+                if (e2 >= dy) { err += dy; x0 += sx; } /* e_xy+e_x > 0 */
+                if (e2 <= dx) { err += dx; y0 += sy; } /* e_xy+e_y < 0 */
+            }
         }
 
-        /// <summary>
-        /// Quasirandom sequence by Martin Roberts (http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/)
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
-        public static Vec3d R2Sequence3D(int n)
-        {
-            double g = 1.22074408460575947536;
-            double a1 = 1.0 / g;
-            double a2 = 1.0 / (g * g);
-            double a3 = 1.0 / (g * g * g);
-            return new Vec3d((0.5 + a1 * n) % 1, (0.5 + a2 * n) % 1, (0.5 + a3 * n) % 1);
-        }
 
     }
+
+
+    public delegate void PlotDelegate3D(int x, int y, int z);
+    public delegate void PlotDelegate3DBlockPos(BlockPos pos);
+    public delegate void PlotDelegate2D(int x, int z);
 
     [StructLayout(LayoutKind.Explicit)]
     internal struct FloatIntUnion

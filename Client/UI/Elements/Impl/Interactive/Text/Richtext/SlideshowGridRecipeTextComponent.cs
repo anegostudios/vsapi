@@ -23,6 +23,7 @@ namespace Vintagestory.API.Client
     {
         public GridRecipe[] GridRecipes;
         Common.Action<ItemStack> onStackClicked;
+        ItemSlot dummyslot = new DummySlot();
 
         double size;
 
@@ -240,9 +241,9 @@ namespace Vintagestory.API.Client
                     rx = renderX + bounds.X + x * (size + 3);
                     ry = renderY + bounds.Y + y * (size + 3);
 
-
+                    dummyslot.Itemstack = ingred.ResolvedItemstack;
                     api.Render.RenderItemstackToGui(
-                        ingred.ResolvedItemstack, 
+                        dummyslot, 
                         rx + size * 0.5f - 1,
                         ry + size * 0.5f,
                         100, (float)size * 0.58f, ColorUtil.WhiteArgb,
@@ -256,7 +257,7 @@ namespace Vintagestory.API.Client
 
                     if (dx >= 0 && dx <= size && dy >= 0 && dy <= size)
                     {
-                        RenderItemstackTooltip(ingred.ResolvedItemstack, rx + dx, ry + dy, deltaTime);
+                        RenderItemstackTooltip(dummyslot, rx + dx, ry + dy, deltaTime);
                     }
                 }
             }

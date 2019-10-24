@@ -57,6 +57,8 @@ namespace Vintagestory.API.Client
 
         public float GlobalWorldWarp = 0f;
 
+        public float SunsetMod = 0f;
+
         public Vec3f PlayerPos = new Vec3f();
         internal float SkyDaylight;
 

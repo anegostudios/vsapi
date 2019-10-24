@@ -199,7 +199,14 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public float MaxShrubs = 1;
 
+        /// <summary>
+        /// Won't span below minY. 0...1 is world bottom to sea level, 1...2 is sea level to world top
+        /// </summary>
         public float MinY = 0;
+
+        /// <summary>
+        /// Won't span above maxY. 0...1 is world bottom to sea level, 1...2 is sea level to world top
+        /// </summary>
         public float MaxY = 1;
 
         /// <summary>

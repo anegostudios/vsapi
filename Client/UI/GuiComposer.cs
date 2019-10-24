@@ -55,7 +55,7 @@ namespace Vintagestory.API.Client
         internal bool composed = false;
         internal bool recomposeOnRender = false;
         internal bool onlyDynamicRender = false;
-        internal bool InsideClip;
+        internal ElementBounds InsideClipBounds;
 
         public ICoreClientAPI Api;
         public float zDepth=50;
@@ -642,7 +642,12 @@ namespace Vintagestory.API.Client
                 element.TabIndex = -1;
             }
 
-            element.InsideClipElement = InsideClip;
+            element.InsideClipBounds = InsideClipBounds;
+
+            if (parentBoundsForNextElement.Peek() == element.Bounds)
+            {
+                throw new ArgumentException(string.Format("Fatal: Attempting to add a self referencing bounds->child bounds reference. This would cause a stack overflow. Make sure you don't re-use the same bounds for a parent and child element (key {0})", key));
+            }
 
             parentBoundsForNextElement.Peek().WithChild(element.Bounds);
 
@@ -669,7 +674,7 @@ namespace Vintagestory.API.Client
 
             lastAddedElementBounds = element.Bounds;
 
-            element.InsideClipElement = InsideClip;
+            element.InsideClipBounds = InsideClipBounds;
 
             return this;
         }

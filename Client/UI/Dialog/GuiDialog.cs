@@ -14,7 +14,7 @@ namespace Vintagestory.API.Client
         {
             protected Dictionary<string, GuiComposer> dialogComposers = new Dictionary<string, GuiComposer>();
             protected GuiDialog dialog;
-            
+
             /// <summary>
             /// Returns all composers as a flat list
             /// </summary>
@@ -124,7 +124,13 @@ namespace Vintagestory.API.Client
         {
             get { return GetType().Name; }
         }
-        
+
+        /// <summary>
+        /// The amount of depth required for this dialog. Default is 150. Required for correct z-ordering of dialogs.
+        /// </summary>
+        public virtual float ZSize => 150;
+
+
         // First comes KeyDown event, opens the gui, then comes KeyPress event - this one we have to ignore
         public bool ignoreNextKeyPress = false;
 

@@ -92,8 +92,8 @@ namespace Vintagestory.API.Common
         public override byte[] LightHsv
         {
             get {
-                byte[] rightHsv = RightHandItemSlot?.Itemstack?.Block?.LightHsv;
-                byte[] leftHsv = LeftHandItemSlot?.Itemstack?.Block?.LightHsv;
+                byte[] rightHsv = RightHandItemSlot?.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, RightHandItemSlot.Itemstack);
+                byte[] leftHsv = LeftHandItemSlot?.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, LeftHandItemSlot.Itemstack);
 
                 if (rightHsv == null) return leftHsv;
                 if (leftHsv == null) return rightHsv;
@@ -177,6 +177,20 @@ namespace Vintagestory.API.Common
         double prevStepHeight;
         int direction = 0;
 
+        bool lastCanStandUp;
+
+        public override double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
+        {
+            double mul = base.GetWalkSpeedMultiplier(groundDragFactor);
+
+            if (!servercontrols.Sneak && !lastCanStandUp)
+            {
+                mul *= GlobalConstants.SneakSpeedMultiplier;
+            }
+
+            return mul;
+        }
+
 
         public override void OnGameTick(float dt)
         {
@@ -184,6 +198,8 @@ namespace Vintagestory.API.Common
 
             if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
+                lastCanStandUp = !servercontrols.Sneak && canStandUp();
+
                 double newEyeheight = Properties.EyeHeight;
                 double newModelHeight = Properties.HitBoxSize.Y;
 
@@ -192,7 +208,7 @@ namespace Vintagestory.API.Common
                     newEyeheight *= 0.5f;
                     newModelHeight *= 0.55f;
                 }
-                else if (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.IsFlying)
+                else if ((servercontrols.Sneak || !lastCanStandUp) && !servercontrols.IsClimbing && !servercontrols.IsFlying)
                 {
                     newEyeheight *= 0.8f;
                     newModelHeight *= 0.8f;
@@ -226,7 +242,7 @@ namespace Vintagestory.API.Common
                     if (FeetInLiquid)
                     {
                         double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
-                        double height = (CollisionBox.Y2 - CollisionBox.Y1) * 0.75f;
+                        //double height = (CollisionBox.Y2 - CollisionBox.Y1) * 0.75f;
 
                         EntityPos pos = LocalPos;
                         SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y + 0, pos.Z - width / 2);
@@ -289,10 +305,27 @@ namespace Vintagestory.API.Common
             }
 
 
-            base.OnGameTick(dt);
-
-
+            if (!servercontrols.Sneak && !lastCanStandUp)
+            {
+                // So the sneak animation plays still
+                servercontrols.Sneak = true;
+                base.OnGameTick(dt);
+                servercontrols.Sneak = false;
+            } else
+            {
+                base.OnGameTick(dt);
+            }
         }
+
+
+        Cuboidf tmpCollBox = new Cuboidf();
+        private bool canStandUp()
+        {
+            tmpCollBox.Set(CollisionBox);
+            tmpCollBox.Y2 = Properties.HitBoxSize.Y;
+            return !World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false);
+        }
+
 
 
         public override void OnFallToGround(double motionY)

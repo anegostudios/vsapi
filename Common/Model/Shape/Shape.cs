@@ -221,25 +221,25 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Gets the element by name from the shape.
+        /// Recursively searches the element by name from the shape.
         /// </summary>
         /// <param name="name">The name of the element to get.</param>
-        /// <returns>The named element (or null if none was found)</returns>
-        public ShapeElement GetElementByName(string name)
+        /// <returns>The shape element or null if none was found</returns>
+        public ShapeElement GetElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {
-            return GetElementByName(name, Elements);
+            return GetElementByName(name, Elements, stringComparison);
         }
 
-        ShapeElement GetElementByName(string name, ShapeElement[] elems)
+        ShapeElement GetElementByName(string name, ShapeElement[] elems, StringComparison stringComparison)
         {
             if (elems == null) return null;
 
             foreach (ShapeElement elem in elems)
             {
-                if (elem.Name.ToLowerInvariant() == name) return elem;
+                if (elem.Name.Equals(name, stringComparison)) return elem;
                 if (elem.Children != null)
                 {
-                    ShapeElement foundElem = GetElementByName(name, elem.Children);
+                    ShapeElement foundElem = GetElementByName(name, elem.Children, stringComparison);
                     if (foundElem != null) return foundElem;
                 }
             }
@@ -247,5 +247,49 @@ namespace Vintagestory.API.Common
 
             return null;
         }
+
+        public bool RemoveElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        {
+            return RemoveElementByName(name, ref Elements, stringComparison);
+        }
+
+
+        bool RemoveElementByName(string name, ref ShapeElement[] elems, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        {
+            if (elems == null) return false;
+
+            for (int i = 0; i < elems.Length; i++)
+            {
+                if (elems[i].Name.Equals(name, stringComparison))
+                {
+                    elems = elems.RemoveEntry(i);
+                    return true;
+                }
+
+                if (elems[i].Children != null)
+                {
+                    if (RemoveElementByName(name, ref elems[i].Children, stringComparison))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public ShapeElement[] CloneElements()
+        {
+            ShapeElement[] elems = new ShapeElement[Elements.Length];
+
+            for (int i = 0; i < elems.Length; i++)
+            {
+                elems[i] = Elements[i].Clone();
+            }
+
+            return elems;
+        }
+
+
     }
 }

@@ -20,7 +20,12 @@ namespace Vintagestory.API.Common
         
         /// <summary> The version of this mod. For example "2.10.4". (optional) </summary>
         public string Version { get; set; }
-        
+
+        /// <summary>
+        /// The network version of this mod. Change this number when a user that has an older version of your mod should not be allowed to connected to server with a newer version. If not set, the version value is used.
+        /// </summary>
+        public string NetworkVersion { get; set; }
+
         /// <summary> A short description of what this mod does. (optional) </summary>
         public string Description { get; set; }
         

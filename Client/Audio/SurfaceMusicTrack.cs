@@ -55,7 +55,7 @@ namespace Vintagestory.API.Client
         /// Get the current sound file.
         /// </summary>
         public ILoadedSound Sound;
-        
+
         /// <summary>
         /// Is the current song actively playing or is it loading? (False if neither action.
         /// </summary>
@@ -87,15 +87,22 @@ namespace Vintagestory.API.Client
             // Rare
             new float[] { 16*60, 8*60 },
             // Sometimes
-            new float[] { 8*60, 4*60 },
+            new float[] { 7*60, 4*60 },
             // Often
-            new float[] { 4*60, 2*60 }
+            new float[] { 3*60, 2*60 }
         };
 
         /// <summary>
         /// Time before we play the same song again. First value is the minimum delay, second value is added randomness. (in seconds)
         /// </summary>
-        static readonly float[] SameSongCoolDown = new float[] { 25 * 60, 20 * 60 };
+        static readonly float[][] SameSongCoolDowns = new float[][] {
+            // Rare
+            new float[] { 25 * 60, 20 * 60 },
+            // Sometimes
+            new float[] { 20 * 60, 20 * 60 },
+            // Often
+            new float[] { 15 * 60, 15 * 60 },
+        };
 
         /// <summary>
         /// Is this track initialized?
@@ -143,6 +150,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="assetManager">the global Asset Manager</param>
         /// <param name="capi">The Core Client API</param>
+        /// <param name="musicEngine"></param>
         public void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
         {
             this.capi = capi;
@@ -289,7 +297,7 @@ namespace Vintagestory.API.Client
         {
             globalCooldownUntilMs = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (AnySongCoolDowns[MusicFrequency][0] + rand.NextDouble() * AnySongCoolDowns[MusicFrequency][1])) * multiplier);
 
-            tracksCooldownUntilMs[Name] = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (SameSongCoolDown[0] + rand.NextDouble() * SameSongCoolDown[1])) * multiplier);
+            tracksCooldownUntilMs[Name] = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (SameSongCoolDowns[MusicFrequency][0] + rand.NextDouble() * SameSongCoolDowns[MusicFrequency][1])) * multiplier);
         }
 
         /// <summary>

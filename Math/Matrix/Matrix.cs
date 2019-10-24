@@ -175,5 +175,12 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public Matrixf FollowPlayer()
+        {
+            Values[12] = 0;
+            Values[13] = 0;
+            Values[14] = 0;
+            return this;
+        }
     }
 }

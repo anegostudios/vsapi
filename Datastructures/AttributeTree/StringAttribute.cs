@@ -6,7 +6,7 @@ namespace Vintagestory.API.Datastructures
     {
         public StringAttribute()
         {
-
+            this.value = "";
         }
 
         public StringAttribute(string value)
@@ -16,6 +16,7 @@ namespace Vintagestory.API.Datastructures
 
         public void ToBytes(BinaryWriter stream)
         {
+            if (value == null) value = "";
             stream.Write(value);
         }
 

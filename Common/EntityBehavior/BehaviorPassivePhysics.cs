@@ -221,6 +221,9 @@ namespace Vintagestory.API.Common
                 float swimlineSubmergedness = bottomSubmergedness - (entity.CollisionBox.Y2 - (float)entity.SwimmingOffsetY);
 
                 entity.Swimming = swimlineSubmergedness > 0;
+            } else
+            {
+                entity.Swimming = false;
             }
 
             if (!onCollidedBefore && entity.Collided)

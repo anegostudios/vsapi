@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Config;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -14,27 +16,91 @@ namespace Vintagestory.API.Common
 
     public enum EnumDataType
     {
-        Bool, IntInput, DoubleInput, IntRange, String
+        Bool, IntInput, DoubleInput, IntRange, String, DropDown
     }
 
     public class WorldConfigurationAttribute
     {
         public EnumDataType DataType;
 
-        public JsonObject Data;
-
         public string Code;
         public double Min;
         public double Max;
+        public double Step;
 
-        public object Default;
+        public string Default;
+        public string[] Values;
+        public string[] Names;
+
+        public object stringToValue(string text)
+        {
+            switch (DataType)
+            {
+
+                case EnumDataType.Bool:
+                    bool on = false;
+                    bool.TryParse(text, out on);
+                    return on;
+
+                case EnumDataType.DoubleInput:
+                    float fval = 0;
+                    float.TryParse(text, out fval);
+                    return fval;
+                case EnumDataType.DropDown:
+                    return text;
+
+                case EnumDataType.IntInput:
+                case EnumDataType.IntRange:
+                    int val = 0;
+                    int.TryParse(text, out val);
+                    return val;
+                case EnumDataType.String:
+                    return text;
+            }
+
+            return null;
+        }
+
+        public string valueToHumanReadable(string value)
+        {
+            switch (DataType)
+            {
+                case EnumDataType.Bool:
+                    return value == "true" ? Lang.Get("On") : Lang.Get("Off");
+
+                case EnumDataType.DoubleInput:
+                    return value+"";
+                case EnumDataType.DropDown:
+                    int index = Values.IndexOf((string)value);
+                    return index >= 0 ? Names[index] : value+"";
+
+                case EnumDataType.IntInput:
+                case EnumDataType.IntRange:
+                    return value + "";
+                case EnumDataType.String:
+                    return value + "";
+            }
+
+            return null;
+        }
+
+
+        public object TypedDefault
+        {
+            get
+            {
+                return stringToValue(Default);
+            }
+        }
     }
 
-    public interface IWorldConfigurationEntry
+    public class WorldConfigurationValue
     {
-        string Code { get; }
-        JsonObject Data { get; }
-        object Value { get; }
+        public WorldConfigurationAttribute Attribute;
+        public string Code;
+        public object Value;
+
     }
+
     
 }

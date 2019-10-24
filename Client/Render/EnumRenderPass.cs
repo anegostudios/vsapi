@@ -120,5 +120,6 @@ namespace Vintagestory.API.Client
         Guitopsoil = 35,
         Entityanimatedtransparent = 36,
         Colorgrade = 37,
+        Guigear = 38,
     }
 }

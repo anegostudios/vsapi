@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -63,10 +64,20 @@ namespace Vintagestory.API.Common
         void MarkModified();
 
         /// <summary>
+        /// Marks this chunk as recently accessed. This will prevent the chunk from getting compressed by the in-memory chunk compression algorithm
+        /// </summary>
+        void MarkFresh();
+
+        /// <summary>
         /// Returns a list of a in-chunk indexed positions of all light sources in this chunk
         /// </summary>
         HashSet<int> LightPositions { get; set; }
         
+        /// <summary>
+        /// Whether this chunk got unloaded
+        /// </summary>
+        bool Disposed { get; }
+
         /// <summary>
         /// Adds an entity to the chunk.
         /// </summary>
@@ -101,8 +112,9 @@ namespace Vintagestory.API.Common
         /// <param name="key"></param>
         /// <returns></returns>
         byte[] GetModdata(string key);
+
+
+        Block GetLocalBlockAtBlockPos(IWorldAccessor world, BlockPos position);
+        BlockEntity GetLocalBlockEntityAtBlockPos(BlockPos pos);
     }
-
-
-
 }

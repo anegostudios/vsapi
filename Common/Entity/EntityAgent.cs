@@ -400,7 +400,7 @@ namespace Vintagestory.API.Common
                     (alive && Swimming && !servercontrols.FloorSitting ? EnumEntityActivity.Swim : 0) |
                     (alive && servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
                     (alive && servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting ? EnumEntityActivity.SneakMode : 0) |
-                    (alive && servercontrols.Sprint ? EnumEntityActivity.SprintMode : 0) |
+                    (alive && servercontrols.Sprint && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
                     (alive && servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
                     (alive && servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
                     (alive && servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |
@@ -555,8 +555,11 @@ namespace Vintagestory.API.Common
         /// <param name="groundDragFactor">The amount of drag provided by the current ground. (Default: 0.3)</param>
         public virtual double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
-            Block belowBlock = World.BlockAccessor.GetBlock((int)LocalPos.X, (int)(LocalPos.Y - 0.05f), (int)LocalPos.Z);
-            Block insideblock = World.BlockAccessor.GetBlock((int)LocalPos.X, (int)(LocalPos.Y + 0.01f), (int)LocalPos.Z);
+            int y1 = (int)(LocalPos.Y - 0.05f);
+            int y2 = (int)(LocalPos.Y + 0.01f);
+
+            Block belowBlock = World.BlockAccessor.GetBlock((int)LocalPos.X, y1, (int)LocalPos.Z);
+            Block insideblock = World.BlockAccessor.GetBlock((int)LocalPos.X, y2, (int)LocalPos.Z);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
             
@@ -565,7 +568,7 @@ namespace Vintagestory.API.Common
             IPlayer player = (this as EntityPlayer)?.Player;
             if (player == null || player.WorldData.CurrentGameMode != EnumGameMode.Creative)
             {
-                multiplier *= belowBlock.WalkSpeedMultiplier * insideblock.WalkSpeedMultiplier;
+                multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideblock.WalkSpeedMultiplier);
             }
             
 

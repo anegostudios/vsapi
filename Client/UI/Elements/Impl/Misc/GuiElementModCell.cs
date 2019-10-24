@@ -26,7 +26,7 @@ namespace Vintagestory.API.Client
         internal int rightHighlightTextureId;
         internal int switchOnTextureId;
 
-        internal double unscaledSwitchPadding = 5;
+        internal double unscaledSwitchPadding = 4;
         internal double unscaledSwitchSize = 30;
 
 
@@ -105,7 +105,7 @@ namespace Vintagestory.API.Client
             if (cell.RightTopText != null)
             {
                 TextExtents extents = Font.GetTextExtents(cell.RightTopText);
-                textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.RightTopText, Bounds.drawX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.drawY + Bounds.absPaddingY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
+                textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.RightTopText, Bounds.drawX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.drawY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
             }
 
             if (cell.DrawAsButton)
@@ -127,7 +127,7 @@ namespace Vintagestory.API.Client
                 double padd = scaled(unscaledSwitchPadding);
 
                 double x = Bounds.drawX + Bounds.InnerWidth - scaled(0) - checkboxsize - padd;
-                double y = Bounds.drawY + Bounds.absPaddingY + scaled(5);
+                double y = Bounds.drawY + Bounds.absPaddingY;
                 
 
                 ctx.SetSourceRGBA(0, 0, 0, 0.2);
@@ -145,7 +145,7 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)size, (int)size);
             Context ctx = genContext(surface);
 
-            RoundRectangle(ctx, 0, 0, size, size, 3);
+            RoundRectangle(ctx, 0, 0, size, size, 2);
             fillWithPattern(api, ctx, waterTextureName);
 
             generateTexture(surface, ref switchOnTextureId);
@@ -232,22 +232,22 @@ namespace Vintagestory.API.Client
         /// <param name="api">The Client API</param>
         /// <param name="parentBounds">The parent bounds of the cell.</param>
         /// <param name="deltaTime">The change in time.</param>
-        public void OnRenderInteractiveElements(ICoreClientAPI api, ElementBounds parentBounds, float deltaTime)
+        public void OnRenderInteractiveElements(ICoreClientAPI api, float deltaTime)
         {
-            int dx = api.Input.MouseX - (int)parentBounds.absX;
-            int dy = api.Input.MouseY - (int)parentBounds.absY;
-            Vec2d pos = Bounds.PositionInside(dx, dy);
+            int mx = api.Input.MouseX;
+            int my = api.Input.MouseY;
+            Vec2d pos = Bounds.PositionInside(mx, my);
 
             var mod = (Mod)cell.Data;
             if (mod.Info != null && pos != null)
             {
                 if (pos.X > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                    api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
                 }
                 else
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                    api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
                 }
             }
 
@@ -256,16 +256,16 @@ namespace Vintagestory.API.Client
                 double size = scaled(unscaledSwitchSize - 2 * unscaledSwitchPadding);
                 double padding = scaled(unscaledSwitchPadding);
 
-                double x = parentBounds.renderX + Bounds.InnerWidth - size + padding;
-                double y = parentBounds.renderY + Bounds.drawY + parentBounds.absPaddingY + Bounds.absPaddingY + scaled(4) + padding;
+                double x = Bounds.renderX + Bounds.InnerWidth - size + padding - scaled(5);
+                double y = Bounds.renderY + scaled(8) + padding;
 
 
                 api.Render.Render2DTexturePremultipliedAlpha(switchOnTextureId, x, y, (int)size, (int)size);
             }
             else
             {
-                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
-                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, parentBounds.absX + Bounds.absX, parentBounds.absY + Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, Bounds.renderX, Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, Bounds.renderX, Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
             }
         }
     }

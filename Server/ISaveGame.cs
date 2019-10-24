@@ -16,6 +16,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         bool IsNew { get; }
 
+        string CreatedGameVersion { get; }
         int Seed { get; set; }
         long TotalGameSeconds { get; set; }
         string WorldName { get; set; }

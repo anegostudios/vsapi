@@ -6,6 +6,35 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Server
 {
+    public interface IPlayerDataManager
+    {
+        /// <summary>
+        /// Retrieve a players offline, world-agnostic data by player uid
+        /// </summary>
+        /// <param name="playerUid"></param>
+        /// <returns></returns>
+        IServerPlayerData GetPlayerDataByUid(string playerUid);
+        /// <summary>
+        /// Retrieve a players offline, world-agnostic data by his last known name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        IServerPlayerData GetPlayerDataByLastKnownName(string name);
+    }
+
+    public interface IGroupManager
+    {
+        Dictionary<int, PlayerGroup> PlayerGroupsById { get; }
+
+        PlayerGroup GetPlayerGroupByName(string name);
+
+        void AddPlayerGroup(PlayerGroup group);
+
+        void RemovePlayerGroup(PlayerGroup group);
+
+
+    }
+
     public interface IPermissionManager
     {
         /// <summary>

@@ -83,7 +83,7 @@ namespace Vintagestory.API.Client
             base.OnMouseDownOnElement(api, args);
 
             On = !On;
-            handler(On);
+            handler?.Invoke(On);
             api.Gui.PlaySound("toggleswitch");
         }
 

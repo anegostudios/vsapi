@@ -183,7 +183,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines which of the 6 block neighbours should receive AO if this block is in front of them
         /// </summary>
-        public bool[] NeighbourSideAo = new bool[] { false, false, false, false, false, false };
+        public bool[] EmitSideAo = new bool[] { false, false, false, false, false, false };
 
         /// <summary>
         /// Defines what creature groups may spawn on this block
@@ -193,7 +193,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Created on the client to cache the side ao flags by blockfacing flags plus every face with every face combined (e.g. south|west). Havin these values cached speeds up chunk tesselation.
         /// </summary>
-        public bool[] SideAoByFlags;
+        public bool[] EmitSideAoByFlags;
 
 
         /// <summary>
@@ -261,6 +261,11 @@ namespace Vintagestory.API.Common
         /// Modifiers that can alter the behavior of a block, particularly when being placed or removed
         /// </summary>
         public BlockBehavior[] BlockBehaviors = new BlockBehavior[0];
+
+        /// <summary>
+        /// Modifiers that can alter the behavior of a block entity
+        /// </summary>
+        public BlockEntityBehaviorType[] BlockEntityBehaviors = new BlockEntityBehaviorType[0];
 
         /// <summary>
         /// The items that should drop from breaking this block
@@ -410,12 +415,13 @@ namespace Vintagestory.API.Common
         {
             return LiquidCode;
         }
-        
+
 
         /// <summary>
         /// Called before a decal is created.
         /// </summary>
         /// <param name="world"></param>
+        /// <param name="pos"></param>
         /// <param name="decalTexSource"></param>
         /// <param name="decalModelData">The block model which need UV values for the decal texture</param>
         /// <param name="blockModelData">The original block model</param>
@@ -464,6 +470,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockAccessor"></param>
         /// <param name="pos"></param>
         /// <param name="type"></param>
+        /// <param name="sc"></param>
         /// <returns></returns>
         public virtual bool CanCreatureSpawnOn(IBlockAccessor blockAccessor, BlockPos pos, EntityProperties type, BaseSpawnConditions sc)
         {
@@ -503,6 +510,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockAccessor"></param>
         /// <param name="pos"></param>
         /// <param name="onBlockFace"></param>
+        /// <param name="worldgenRandom"></param>
         /// <returns></returns>
         public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom)
         {
@@ -540,16 +548,6 @@ namespace Vintagestory.API.Common
         public virtual bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref string failureCode)
         {
             bool result = true;
-
-            if (byPlayer != null && !world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
-            {
-                // Probably good idea to do so, so lets do it :P
-                byPlayer.InventoryManager.ActiveHotbarSlot.MarkDirty();
-
-                failureCode = "claimed";
-                return false;
-            }
-
             bool preventDefault = false;
 
             foreach (BlockBehavior behavior in BlockBehaviors)
@@ -569,10 +567,10 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return result;
 
-            if (IsSuitablePosition(world, blockSel.Position, ref failureCode))
+
+            if (CanPlaceBlock(world, byPlayer, blockSel, ref failureCode))
             {
-                DoPlaceBlock(world, blockSel.Position, blockSel.Face, itemstack);
-                return true;
+                return DoPlaceBlock(world, byPlayer, blockSel, itemstack);
             }
 
             return false;
@@ -583,22 +581,90 @@ namespace Vintagestory.API.Common
         /// Checks if this block does not intersect with something at given position
         /// </summary>
         /// <param name="world"></param>
-        /// <param name="pos"></param>
-        public virtual bool IsSuitablePosition(IWorldAccessor world, BlockPos pos, ref string failureCode)
+        /// <param name="byPlayer"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="failureCode"></param>
+        public virtual bool CanPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref string failureCode)
         {
-            if (!world.BlockAccessor.GetBlock(pos).IsReplacableBy(this))
+            if (!world.BlockAccessor.GetBlock(blockSel.Position).IsReplacableBy(this))
             {
                 failureCode = "notreplaceable";
                 return false;
             }
-            if (world.GetIntersectingEntities(pos, this.GetCollisionBoxes(world.BlockAccessor, pos), e => !(e is EntityItem)).Length != 0)
+            if ((CollisionBoxes != null && CollisionBoxes.Length > 0) && world.GetIntersectingEntities(blockSel.Position, this.GetCollisionBoxes(world.BlockAccessor, blockSel.Position), e => !(e is EntityItem)).Length != 0)
             {
                 failureCode = "entityintersecting";
                 return false;
             }
 
+            bool result = true;
+
+            if (byPlayer != null && !world.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
+            {
+                // Probably good idea to do so, so lets do it :P
+                byPlayer.InventoryManager.ActiveHotbarSlot.MarkDirty();
+
+                failureCode = "claimed";
+                return false;
+            }
+
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+
+                bool behaviorResult = behavior.CanPlaceBlock(world, byPlayer, blockSel, ref handled, ref failureCode);
+
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
             return true;
         }
+
+
+
+        /// <summary>
+        /// Called by TryPlaceBlock if placement is possible 
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="byPlayer"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="byItemStack">Might be null</param>
+        public virtual bool DoPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ItemStack byItemStack)
+        {
+            bool result = true;
+            bool preventDefault = false;
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+
+                bool behaviorResult = behavior.DoPlaceBlock(world, byPlayer, blockSel, byItemStack, ref handled);
+
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            world.BlockAccessor.SetBlock(BlockId, blockSel.Position, byItemStack);
+            return true;
+        }
+
 
 
 
@@ -609,6 +675,8 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
+        /// <param name="firstEvent"></param>
+        /// <param name="handHandling"></param>
         /// <returns></returns>
         public override void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling)
         {
@@ -683,17 +751,6 @@ namespace Vintagestory.API.Common
         }
 
 
-        /// <summary>
-        /// Called by TryPlaceBlock if placement is possible 
-        /// </summary>
-        /// <param name="world"></param>
-        /// <param name="pos"></param>
-        /// <param name="onBlockFace"></param>
-        /// <param name="byItemStack">Might be null</param>
-        public virtual void DoPlaceBlock(IWorldAccessor world, BlockPos pos, BlockFacing onBlockFace, ItemStack byItemStack)
-        {
-            world.BlockAccessor.SetBlock(BlockId, pos, byItemStack);
-        }
 
 
 
@@ -790,13 +847,24 @@ namespace Vintagestory.API.Common
 
 
 
-
+        /// <summary>
+        /// Should return all of the blocks drops for display in the handbook
+        /// </summary>
+        /// <param name="handbookStack"></param>
+        /// <param name="forPlayer"></param>
+        /// <returns></returns>
         public virtual BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
         {
             return Drops;
         }
 
-        protected BlockDropItemStack[] GetHandbookDropsFromBreakDrops(ItemStack handbookStack, IPlayer forPlayer)
+        /// <summary>
+        /// Helper method for a number of blocks
+        /// </summary>
+        /// <param name="handbookStack"></param>
+        /// <param name="forPlayer"></param>
+        /// <returns></returns>
+        protected virtual BlockDropItemStack[] GetHandbookDropsFromBreakDrops(ItemStack handbookStack, IPlayer forPlayer)
         {
             ItemStack[] stacks = GetDrops(api.World, forPlayer.Entity.Pos.XYZ.AsBlockPos, forPlayer);
             if (stacks == null) return new BlockDropItemStack[0];
@@ -1132,6 +1200,7 @@ namespace Vintagestory.API.Common
         /// <param name="entity"></param>
         /// <param name="pos"></param>
         /// <param name="facing"></param>
+        /// <param name="collideSpeed"></param>
         /// <param name="isImpact"></param>
         public virtual void OnEntityCollide(IWorldAccessor world, Entity entity, BlockPos pos, BlockFacing facing, Vec3d collideSpeed, bool isImpact)
         {
@@ -1178,7 +1247,12 @@ namespace Vintagestory.API.Common
             return ParticleProperties != null && ParticleProperties.Length > 0;
         }
 
-
+        /// <summary>
+        /// Extra check on whether the ambient sound defined by the block should be played at this location
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         public virtual bool ShouldPlayAmbientSound(IWorldAccessor world, BlockPos pos)
         {
             return true;
@@ -1190,6 +1264,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos"></param>
+        /// <param name="secondsTicking"></param>
         public virtual void OnClientGameTick(IWorldAccessor world, BlockPos pos, float secondsTicking)
         {
             if (ParticleProperties != null && ParticleProperties.Length > 0)
@@ -1464,12 +1539,13 @@ namespace Vintagestory.API.Common
         /// Returns the blocks behavior of given type, if it has such behavior
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="withInheritance"></param>
         /// <returns></returns>
         public BlockBehavior GetBehavior(Type type, bool withInheritance)
         {
             for (int i = 0; i < BlockBehaviors.Length; i++)
             {
-                if (withInheritance && BlockBehaviors[i].GetType().IsAssignableFrom(type))
+                if (withInheritance && type.IsAssignableFrom(BlockBehaviors[i].GetType()))
                 {
                     return BlockBehaviors[i];
                 }
@@ -1494,7 +1570,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns the blocks behavior of given type, if it has such behavior
         /// </summary>
-        /// <param name="type"></param>
+        /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public T GetBehavior<T>() where T : BlockBehavior
         {
@@ -1505,7 +1581,8 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns true if the block has given behavior
         /// </summary>
-        /// <param name="type"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="withInheritance"></param>
         /// <returns></returns>
         public bool HasBehavior<T>(bool withInheritance = false) where T : BlockBehavior
         {
@@ -1516,6 +1593,7 @@ namespace Vintagestory.API.Common
         /// Returns true if the block has given behavior
         /// </summary>
         /// <param name="type"></param>
+        /// <param name="withInheritance"></param>
         /// <returns></returns>
         public override bool HasBehavior(Type type, bool withInheritance = false)
         {
@@ -1593,7 +1671,11 @@ namespace Vintagestory.API.Common
             return interactions;
         }
 
-
+        /// <summary>
+        /// Interaction help thats displayed above the hotbar, when the player puts this item/block in his active hand slot
+        /// </summary>
+        /// <param name="inSlot"></param>
+        /// <returns></returns>
         public override WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot)
         {
             WorldInteraction[] interactions = base.GetHeldInteractionHelp(inSlot);
@@ -1625,8 +1707,9 @@ namespace Vintagestory.API.Common
                 BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
                 if (be != null)
                 {
-                    string text = be.GetBlockInfo(forPlayer);
-                    if (text != null) return text;
+                    StringBuilder sb = new StringBuilder();
+                    be.GetBlockInfo(forPlayer, sb);
+                    if (sb.Length > 0) return sb.ToString();
                 }
             }
 
@@ -1676,7 +1759,7 @@ namespace Vintagestory.API.Common
 
             dsc.Append(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + BlockMaterial) + "\n");
             //dsc.Append("Replaceable: " + Replaceable + "\n");
-            dsc.Append((Fertility > 0 ? (Lang.Get("Fertility: ") + Fertility + "\n") : ""));
+            //dsc.Append((Fertility > 0 ? (Lang.Get("Fertility: ") + Fertility + "\n") : ""));
 
             byte[] lightHsv = GetLightHsv(world.BlockAccessor, null, stack);
 
@@ -1894,14 +1977,12 @@ namespace Vintagestory.API.Common
             
             return color;
         }
-        
+
         /// <summary>
         /// Should return a random pixel within the items/blocks texture
         /// </summary>
-        /// <param name="world"></param>
-        /// <param name="pos"></param>
-        /// <param name="facing"></param>
-        /// <param name="tintIndex"></param>
+        /// <param name="capi"></param>
+        /// <param name="stack"></param>
         /// <returns></returns>
         public override int GetRandomColor(ICoreClientAPI capi, ItemStack stack)
         {
@@ -1916,7 +1997,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Should return an RGB color for this block. Current use: In the world map. Default behavior: The 2 averaged pixels at 40%/40% ad 60%/60% position
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="capi"></param>
         /// <param name="pos"></param>
         public virtual int GetColor(ICoreClientAPI capi, BlockPos pos)
         {
@@ -1930,6 +2011,12 @@ namespace Vintagestory.API.Common
             return color;
         }
 
+        /// <summary>
+        /// Tint less version of GetColor. Used for map color export
+        /// </summary>
+        /// <param name="capi"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         public virtual int GetColorWithoutTint(ICoreClientAPI capi, BlockPos pos)
         {
             int? textureSubId = null;

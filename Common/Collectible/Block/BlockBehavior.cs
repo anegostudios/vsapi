@@ -144,22 +144,6 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Called when the player attempts to place this block. The default behavior calls Block.DoPlaceBlock()
-        /// </summary>
-        /// <param name="world"></param>
-        /// <param name="byPlayer"></param>
-        /// <param name="itemstack"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="handling"></param>
-        /// <returns></returns>
-        public virtual bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)
-        {
-            handling = EnumHandling.PassThrough;
-            return false;
-        }
-
-
-        /// <summary>
         /// Called when a survival player has broken the block. The default behavior removes the block and spawns the block drops.
         /// </summary>
         /// <param name="world"></param>
@@ -330,18 +314,6 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
-        /// Be aware that the vanilla OnBlockPlaced block behavior is to spawn the block entity if any is associated with this block, so this code will not get executed if you set handled to PreventDefault or Last
-        /// </summary>
-        /// <param name="world"></param>
-        /// <param name="blockPos"></param>
-        /// <param name="handled"></param>
-        public virtual void OnBlockPlaced(IWorldAccessor world, BlockPos blockPos, ref EnumHandling handled)
-        {
-            handled = EnumHandling.PassThrough;
-        }
-
-        /// <summary>
         /// When a player does a right click while targeting this placed block. Should return true if the event is handled, so that other events can occur, e.g. eating a held item if the block is not interactable with.
         /// </summary>
         /// <param name="world"></param>
@@ -377,38 +349,98 @@ namespace Vintagestory.API.Common
 
         }
 
-        public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, ref EnumHandling handled)
+        public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, ref EnumHandling handling)
         {
-            handled = EnumHandling.PassThrough;
+            handling = EnumHandling.PassThrough;
         }
 
-        public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handled)
+        public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)
         {
-            handled = EnumHandling.PassThrough;
+            handling = EnumHandling.PassThrough;
             return new WorldInteraction[0];
         }
 
-        public virtual WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handled)
+        public virtual WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handling)
         {
-            handled = EnumHandling.PassThrough;
+            handling = EnumHandling.PassThrough;
             return new WorldInteraction[0];
         }
 
-        public virtual void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handled)
+        public virtual void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
         {
-            handled = EnumHandling.PassThrough;
+            handling = EnumHandling.PassThrough;
         }
 
-        public virtual bool OnBlockInteractStep(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handled)
+        public virtual bool OnBlockInteractStep(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
         {
-            handled = EnumHandling.PassThrough;
+            handling = EnumHandling.PassThrough;
             return false;
         }
 
-        public virtual bool OnBlockInteractCancel(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handled)
+        public virtual bool OnBlockInteractCancel(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
         {
-            handled = EnumHandling.PassThrough;
+            handling = EnumHandling.PassThrough;
             return false;
         }
+
+
+        /// <summary>
+        /// Step 1: Called when the player attempts to place this block. The default behavior calls Block.DoPlaceBlock().
+        /// If returned true and default behavior has not been prevented, the game will next call CanPlaceBlock(). If that method also returns true and default behavior has not been overriden, DoPlaceBlock() will get called.
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="byPlayer"></param>
+        /// <param name="itemstack"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="handling"></param>
+        /// <param name="failureCode"></param>
+        /// <returns></returns>
+        public virtual bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)
+        {
+            handling = EnumHandling.PassThrough;
+            return false;
+        }
+
+        /// <summary>
+        /// Step 2: Test if the block can be placed
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="byPlayer"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="handling"></param>
+        /// <param name="failureCode"></param>
+        /// <returns></returns>
+        public virtual bool CanPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)
+        {
+            handling = EnumHandling.PassThrough;
+            return false;
+        }
+
+        /// <summary>
+        /// Step 3: Place the block. Return false if it cannot be placed (but you should rather return false in CanPlaceBlock).
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="byItemStack"></param>
+        /// <param name="handling"></param>
+        /// <returns></returns>
+        public virtual bool DoPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ItemStack byItemStack, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return false;
+        }
+
+        /// <summary>
+        /// Step 4: Block was placed. Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
+        /// Be aware that the vanilla OnBlockPlaced block behavior is to spawn the block entity if any is associated with this block, so this code will not get executed if you set handled to PreventDefault or Last
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="blockPos"></param>
+        /// <param name="handling"></param>
+        public virtual void OnBlockPlaced(IWorldAccessor world, BlockPos blockPos, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+        }
+
     }
 }

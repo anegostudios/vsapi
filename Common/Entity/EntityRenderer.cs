@@ -53,6 +53,9 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="isShadowPass"></param>
         public virtual void DoRender3DOpaqueBatched(float dt, bool isShadowPass) { }
 
+
+        public virtual void DoRender3DAfterOIT(float dt, bool isShadowPass) { }
+
         /// <summary>
         /// Ortho mode draw call for 2d gui stuff, like name tags. Gui shader initialized already.
         /// </summary>

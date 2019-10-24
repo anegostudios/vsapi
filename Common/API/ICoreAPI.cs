@@ -63,6 +63,13 @@ namespace Vintagestory.API.Common
         /// <param name="blockBehaviorType"></param>
         void RegisterBlockBehaviorClass(string className, Type blockBehaviorType);
 
+        /// <summary>
+        /// Register a new block entity behavior class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="blockEntityBehaviorType"></param>
+        void RegisterBlockEntityBehaviorClass(string className, Type blockEntityBehaviorType);
+
 
         /// <summary>
         /// Register a new block behavior class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.

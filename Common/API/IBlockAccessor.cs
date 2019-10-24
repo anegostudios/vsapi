@@ -66,6 +66,12 @@ namespace Vintagestory.API.Common
         MaxTimeOfDayLight
     }
 
+
+    public interface ICachingBlockAccessor : IBlockAccessor
+    {
+        void Begin();
+    }
+
     /// <summary>
     /// Provides read/write access to the blocks of a world
     /// </summary>
@@ -111,7 +117,12 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         IWorldChunk GetChunk(int chunkX, int chunkY, int chunkZ);
 
-
+        /// <summary>
+        /// Retrieve chunk at given chunk position
+        /// </summary>
+        /// <param name="chunkIndex3D"></param>
+        /// <returns></returns>
+        IWorldChunk GetChunk(long chunkIndex3D);
 
         /// <summary>
         /// Retrieves a map region at given region position
@@ -175,14 +186,23 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// A bulk block checking method. Less overhead than when calling GetBlock(pos) many times. Currently used for more efficient collision testing.
+        /// A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. Currently used for more efficient collision testing.
         /// </summary>
         /// <param name="minPos"></param>
         /// <param name="maxPos"></param>
-        /// <param name="onBlock">The method in which you want to check for the block, whatever it may be</param>
+        /// <param name="onBlock">The method in which you want to check for the block, whatever it may be.</param>
         /// <param name="centerOrder">If true, the blocks will be ordered by the distance to the center position</param>
         /// <returns></returns>
         void WalkBlocks(BlockPos minPos, BlockPos maxPos, API.Common.Action<Block, BlockPos> onBlock, bool centerOrder = false);
+
+        /// <summary>
+        /// A method to search for a given block in an area
+        /// </summary>
+        /// <param name="minPos"></param>
+        /// <param name="maxPos"></param>
+        /// <param name="onBlock">Return false to stop the search</param>
+        /// <param name="onChunkMissing">Called when a missing/unloaded chunk was encountered</param>
+        void SearchBlocks(BlockPos minPos, BlockPos maxPos, API.Common.ActionConsumable<Block, BlockPos> onBlock, API.Common.Action<int, int, int> onChunkMissing = null);
 
         /// <summary>
         /// Calls given handler if it encounters one or more generated structure at given position (read from mapregions, assuming a max structure size of 256x256x256)
@@ -394,11 +414,27 @@ namespace Vintagestory.API.Common
         int GetRainMapHeightAt(BlockPos pos);
 
         /// <summary>
+        /// Returns the topmost non-rain-permeable position at given x/z coordinate. This map is always updated after placing/removing blocks
+        /// </summary>
+        /// <param name="posX"></param>
+        /// <param name="posZ"></param>
+        /// <returns></returns>
+        int GetRainMapHeightAt(int posX, int posZ);
+
+        /// <summary>
         /// Returns the map chunk at given chunk position
         /// </summary>
         /// <param name="chunkPos"></param>
         /// <returns></returns>
         IMapChunk GetMapChunk(Vec2i chunkPos);
+
+        /// <summary>
+        /// Returns the map chunk at given chunk position
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <returns></returns>
+        IMapChunk GetMapChunk(int chunkX, int chunkZ);
 
         /// <summary>
         /// Returns the map chunk at given block position
@@ -413,5 +449,6 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <returns></returns>
         ClimateCondition GetClimateAt(BlockPos pos);
+        
     }
 }

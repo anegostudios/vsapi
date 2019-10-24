@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -16,41 +18,86 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class BlockEntity
     {
-        List<long> TickHandlers = new List<long>();
-        List<long> CallbackHandlers = new List<long>();
+        protected List<long> TickHandlers = new List<long>();
+        protected List<long> CallbackHandlers = new List<long>();
 
         /// <summary>
         /// The core API added to the block.  Accessable after initialization.
         /// </summary>
-        public ICoreAPI api;
+        public ICoreAPI Api;
 
         /// <summary>
         /// Position of the block for this block entity
         /// </summary>
-        public BlockPos pos;
+        public BlockPos Pos;
+
+        /// <summary>
+        /// The block type at the position of the block entity. This poperty is updated by the engine if ExchangeBlock is called
+        /// </summary>
+        public Block Block { get; set; }
+
+        /// <summary>
+        /// List of block entity behaviors associated with this block entity
+        /// </summary>
+        public List<BlockEntityBehavior> Behaviors = new List<BlockEntityBehavior>();
 
         
-        /// <summary>
-        /// Uniquely identifies this block entity instance within the scope of its game world
-        /// </summary>
-        //public long id;
-
         /// <summary>
         /// Creats an empty instance. Use initialize to initialize it with the api.
         /// </summary>
         public BlockEntity()
         {
         }
-        
+
+        public T GetBehavior<T>() where T : BlockEntityBehavior
+        {
+            for (int i = 0; i < Behaviors.Count; i++)
+            {
+                if (Behaviors[i] is T)
+                {
+                    return (T)Behaviors[i];
+                }
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// This method is called right after the block entity was spawned or right after it was loaded from a newly loaded chunk. You do have access to the world and its blocks at this point.
         /// However if this block entity already existed then FromTreeAttributes is called first!
         /// You should still call the base method to sets the this.api field
         /// </summary>
         /// <param name="api"></param>
+        /// <param name="block"></param>
         public virtual void Initialize(ICoreAPI api)
         {
-            this.api = api;
+            this.Api = api;
+
+            foreach (var val in Behaviors)
+            {
+                val.Initialize(api, val.properties);
+            }
+        }
+
+
+        public virtual void CreateBehaviors(Block block, IWorldAccessor worldForResolve)
+        {
+            this.Block = block;
+
+            foreach (var beht in block.BlockEntityBehaviors)
+            {
+                if (worldForResolve.ClassRegistry.GetBlockEntityBehaviorClass(beht.Name) == null)
+                {
+                    worldForResolve.Logger.Warning(Lang.Get("Block entity behavior {0} for block {1} not found", beht.Name, block.Code));
+                    continue;
+                }
+
+                if (beht.Properties == null) beht.Properties = new JsonObject(new JObject());
+                BlockEntityBehavior behavior = worldForResolve.ClassRegistry.CreateBlockEntityBehavior(this, beht.Name);
+                behavior.properties = beht.Properties;
+
+                Behaviors.Add(behavior);
+            }
         }
 
         /// <summary>
@@ -59,9 +106,9 @@ namespace Vintagestory.API.Common
         /// <param name="OnGameTick"></param>
         /// <param name="millisecondInterval"></param>
         /// <returns></returns>
-        protected virtual long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval)
+        public virtual long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval)
         {
-            long listenerId = api.Event.RegisterGameTickListener(OnGameTick, millisecondInterval);
+            long listenerId = Api.Event.RegisterGameTickListener(OnGameTick, millisecondInterval);
             TickHandlers.Add(listenerId);
             return listenerId;
         }
@@ -70,9 +117,9 @@ namespace Vintagestory.API.Common
         /// Removes a registered game tick listener from the game.
         /// </summary>
         /// <param name="listinerId">the ID of the listener to unregister.</param>
-        protected virtual void UnregisterGameTickListener(long listinerId)
+        public virtual void UnregisterGameTickListener(long listinerId)
         {
-            api.Event.UnregisterGameTickListener(listinerId);
+            Api.Event.UnregisterGameTickListener(listinerId);
             TickHandlers.Remove(listinerId);
         }
 
@@ -82,9 +129,9 @@ namespace Vintagestory.API.Common
         /// <param name="OnDelayedCallbackTick"></param>
         /// <param name="millisecondInterval"></param>
         /// <returns></returns>
-        protected virtual long RegisterDelayedCallback(Action<float> OnDelayedCallbackTick, int millisecondInterval)
+        public virtual long RegisterDelayedCallback(Action<float> OnDelayedCallbackTick, int millisecondInterval)
         {
-            long listenerId = api.Event.RegisterCallback(OnDelayedCallbackTick, millisecondInterval);
+            long listenerId = Api.Event.RegisterCallback(OnDelayedCallbackTick, millisecondInterval);
             CallbackHandlers.Add(listenerId);
             return listenerId;
         }
@@ -93,9 +140,9 @@ namespace Vintagestory.API.Common
         /// Unregisters a callback.  This is usually done automatically.
         /// </summary>
         /// <param name="listenerId">The ID of the callback listiner.</param>
-        protected virtual void UnregisterDelayedCallback(long listenerId)
+        public virtual void UnregisterDelayedCallback(long listenerId)
         {
-            api.Event.UnregisterCallback(listenerId);
+            Api.Event.UnregisterCallback(listenerId);
             CallbackHandlers.Remove(listenerId);
         }
 
@@ -105,12 +152,17 @@ namespace Vintagestory.API.Common
         public virtual void OnBlockRemoved() {
             foreach (long handlerId in TickHandlers)
             {
-                api.Event.UnregisterGameTickListener(handlerId);
+                Api.Event.UnregisterGameTickListener(handlerId);
             }
 
             foreach (long handlerId in CallbackHandlers)
             {
-                api.Event.UnregisterCallback(handlerId);
+                Api.Event.UnregisterCallback(handlerId);
+            }
+
+            foreach (var val in Behaviors)
+            {
+                val.OnBlockRemoved();
             }
 
             //api?.World.Logger.VerboseDebug("OnBlockRemoved(): {0}@{1}", this, pos);
@@ -122,6 +174,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void OnBlockBroken()
         {
+            foreach (var val in Behaviors)
+            {
+                val.OnBlockBroken();
+            }
 
         }
 
@@ -132,12 +188,17 @@ namespace Vintagestory.API.Common
         {
             foreach (long handlerId in TickHandlers)
             {
-                api.Event.UnregisterGameTickListener(handlerId);
+                Api.Event.UnregisterGameTickListener(handlerId);
             }
 
             foreach (long handlerId in CallbackHandlers)
             {
-                api.Event.UnregisterCallback(handlerId);
+                Api.Event.UnregisterCallback(handlerId);
+            }
+
+            foreach (var val in Behaviors)
+            {
+                val.OnBlockUnloaded();
             }
         }
 
@@ -146,7 +207,15 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void OnBlockPlaced(ItemStack byItemStack = null)
         {
-            
+            if (byItemStack?.Block != null)
+            {
+
+            }
+
+            foreach (var val in Behaviors)
+            {
+                val.OnBlockPlaced();
+            }
         }
 
         /// <summary>
@@ -154,9 +223,18 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="tree"></param>
         public virtual void ToTreeAttributes(ITreeAttribute tree) {
-            tree.SetInt("posx", pos.X);
-            tree.SetInt("posy", pos.Y);
-            tree.SetInt("posz", pos.Z);
+            tree.SetInt("posx", Pos.X);
+            tree.SetInt("posy", Pos.Y);
+            tree.SetInt("posz", Pos.Z);
+            if (Block != null)
+            {
+                tree.SetString("blockCode", Block.Code.ToShortString());
+            }
+
+            foreach (var val in Behaviors)
+            {
+                val.ToTreeAttributes(tree);
+            }
         }
 
         /// <summary>
@@ -166,11 +244,16 @@ namespace Vintagestory.API.Common
         /// <param name="tree"></param>
         /// <param name="worldAccessForResolve">Use this api if you need to resolve blocks/items. Not suggested for other purposes, as the residing chunk may not be loaded at this point</param>
         public virtual void FromTreeAtributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve) {
-            pos = new BlockPos(
+            Pos = new BlockPos(
                 tree.GetInt("posx"),
                 tree.GetInt("posy"),
                 tree.GetInt("posz")
             );
+
+            foreach (var val in Behaviors)
+            {
+                val.FromTreeAtributes(tree, worldAccessForResolve);
+            }
         }
 
         /// <summary>
@@ -181,6 +264,10 @@ namespace Vintagestory.API.Common
         /// <param name="data"></param>
         public virtual void OnReceivedClientPacket(IPlayer fromPlayer, int packetid, byte[] data)
         {
+            foreach (var val in Behaviors)
+            {
+                val.OnReceivedClientPacket(fromPlayer, packetid, data);
+            }
         }
 
         /// <summary>
@@ -190,6 +277,10 @@ namespace Vintagestory.API.Common
         /// <param name="data"></param>
         public virtual void OnReceivedServerPacket(int packetid, byte[] data)
         {
+            foreach (var val in Behaviors)
+            {
+                val.OnReceivedServerPacket(packetid, data);
+            }
         }
 
 
@@ -200,10 +291,12 @@ namespace Vintagestory.API.Common
         /// <param name="redrawOnClient">When true, the block is also marked dirty and thus redrawn. When called serverside a dirty block packet is sent to the client for it to be redrawn</param>
         public void MarkDirty(bool redrawOnClient = false)
         {
-            api.World.BlockAccessor.MarkBlockEntityDirty(pos);
+            if (Api == null) return;
+
+            Api.World.BlockAccessor.MarkBlockEntityDirty(Pos);
 
             if (redrawOnClient) {
-                api.World.BlockAccessor.MarkBlockDirty(pos);
+                Api.World.BlockAccessor.MarkBlockDirty(Pos);
             }
         }
 
@@ -212,9 +305,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="forPlayer"></param>
         /// <returns></returns>
-        public virtual string GetBlockInfo(IPlayer forPlayer)
+        public virtual void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
         {
-            return null;
+            foreach (var val in Behaviors)
+            {
+                val.GetBlockInfo(forPlayer, dsc);
+            }
         }
 
 
@@ -225,7 +321,10 @@ namespace Vintagestory.API.Common
         /// <param name="itemIdMapping"></param>
         public virtual void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
         {
-
+            foreach (var val in Behaviors)
+            {
+                val.OnStoreCollectibleMappings(blockIdMapping, itemIdMapping);
+            }
         }
 
         /// <summary>
@@ -236,9 +335,32 @@ namespace Vintagestory.API.Common
         /// <param name="oldItemIdMapping"></param>
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
         {
-
+            foreach (var val in Behaviors)
+            {
+                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping);
+            }
         }
 
+
+        /// <summary>
+        /// Let's you add your own meshes to a chunk. Don't reuse the meshdata instance anywhere in your code.
+        /// WARNING!
+        /// The Tesselator runs in a seperate thread, so you have to make sure the fields and methods you access inside this method are thread safe.
+        /// </summary>
+        /// <param name="mesher">The chunk mesh, add your stuff here</param>
+        /// <param name="tessThreadTesselator">If you need to tesselate something, you should use this tesselator, since using the main thread tesselator can cause race conditions and crash the game</param>
+        /// <returns>True to skip default mesh, false to also add the default mesh</returns>
+        public virtual bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator)
+        {
+            bool result = false;
+
+            for (int i = 0; i < Behaviors.Count; i++)
+            {
+                result |= Behaviors[i].OnTesselation(mesher, tessThreadTesselator);
+            }
+
+            return result;
+        }
     }
 
 }

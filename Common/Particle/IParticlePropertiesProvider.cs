@@ -62,28 +62,24 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
-        /// <param name="lifetimeLeft"></param>
         /// <returns></returns>
         EvolvingNatFloat GetOpacityEvolve();
 
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
-        /// <param name="lifetimeLeft"></param>
         /// <returns></returns>
         EvolvingNatFloat GetRedEvolve();
 
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
-        /// <param name="lifetimeLeft"></param>
         /// <returns></returns>
         EvolvingNatFloat GetGreenEvolve();
 
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
-        /// <param name="lifetimeLeft"></param>
         /// <returns></returns>
         EvolvingNatFloat GetBlueEvolve();
 

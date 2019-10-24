@@ -50,7 +50,7 @@ namespace Vintagestory.API.Common
 
             if ((DisplayName == null || DisplayName.Length == 0) && attributes["selectFromRandomName"].Exists)
             {
-                string[] randomName = attributes["selectFromRandomName"].AsStringArray();
+                string[] randomName = attributes["selectFromRandomName"].AsArray<string>();
 
                 SetName(randomName[entity.World.Rand.Next(randomName.Length)]);
             }

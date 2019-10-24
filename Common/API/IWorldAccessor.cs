@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
@@ -22,6 +23,11 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IWorldAccessor
     {
+        /// <summary>
+        /// The current world config
+        /// </summary>
+        ITreeAttribute Config { get; }
+
         /// <summary>
         /// The default spawn position as sent by the server (usually the map middle). Does not take player specific spawn point into account
         /// </summary>
@@ -217,8 +223,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns all blocktypes matching given wildcard
         /// </summary>
-        /// <param name="codeBeginsWith"></param>
-        /// <param name="domain"></param>
+        /// <param name="wildcard"></param>
         /// <returns></returns>
         Block[] SearchBlocks(AssetLocation wildcard);
 

@@ -288,6 +288,8 @@ namespace Vintagestory.API.MathTools
 
         float IVec3.ZAsFloat { get { return Z; } }
 
+        public static Vec3i Zero => new Vec3i(0, 0, 0);
+
         public Vec3i AddCopy(BlockFacing facing)
         {
             return new Vec3i(X + facing.Normali.X, Y + facing.Normali.Y, Z + facing.Normali.Z);

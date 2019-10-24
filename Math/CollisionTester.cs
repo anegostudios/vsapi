@@ -166,6 +166,9 @@ namespace Vintagestory.API.MathTools
             outposition.Set(tmpPositionVec.X + tmpMotion.X, tmpPositionVec.Y + tmpMotion.Y, tmpPositionVec.Z + tmpMotion.Z);
         }
 
+        Cuboidd tmpBox = new Cuboidd();
+        BlockPos blockPos = new BlockPos();
+        Vec3d blockPosVec = new Vec3d();
 
         /// <summary>
         /// Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
@@ -177,16 +180,18 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public bool IsColliding(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true)
         {
-            BlockPos blockPos = new BlockPos();
-            Vec3d blockPosVec = new Vec3d();
-            Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
+            Cuboidd entityBox = tmpBox.Set(entityBoxRel).Translate(pos);
 
             int minX = (int)(entityBoxRel.X1 + pos.X);
             int minY = (int)(entityBoxRel.Y1 + pos.Y - 1);  // -1 for the extra high collision box of fences
             int minZ = (int)(entityBoxRel.Z1 + pos.Z);
-            int maxX = (int)Math.Ceiling(entityBoxRel.X2 + pos.X);
+            // why the eff the ceilings?
+            /*int maxX = (int)Math.Ceiling(entityBoxRel.X2 + pos.X);
             int maxY = (int)Math.Ceiling(entityBoxRel.Y2 + pos.Y);
-            int maxZ = (int)Math.Ceiling(entityBoxRel.Z2 + pos.Z);
+            int maxZ = (int)Math.Ceiling(entityBoxRel.Z2 + pos.Z);*/
+            int maxX = (int)(entityBoxRel.X2 + pos.X);
+            int maxY = (int)(entityBoxRel.Y2 + pos.Y);
+            int maxZ = (int)(entityBoxRel.Z2 + pos.Z);
 
             for (int y = minY; y <= maxY; y++)
             {
@@ -265,6 +270,61 @@ namespace Vintagestory.API.MathTools
             return null;
         }
 
+
+
+
+
+        /// <summary>
+        /// Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="entityBoxRel"></param>
+        /// <param name="pos"></param>
+        /// <param name="alsoCheckTouch"></param>
+        /// <returns></returns>
+        public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCubuid, bool alsoCheckTouch = true)
+        {
+            BlockPos blockPos = new BlockPos();
+            Vec3d blockPosVec = new Vec3d();
+            Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
+
+            int minX = (int)(entityBoxRel.X1 + pos.X);
+            int minY = (int)(entityBoxRel.Y1 + pos.Y - 1);  // -1 for the extra high collision box of fences
+            int minZ = (int)(entityBoxRel.Z1 + pos.Z);
+            int maxX = (int)Math.Ceiling(entityBoxRel.X2 + pos.X);
+            int maxY = (int)Math.Ceiling(entityBoxRel.Y2 + pos.Y);
+            int maxZ = (int)Math.Ceiling(entityBoxRel.Z2 + pos.Z);
+
+            for (int y = minY; y <= maxY; y++)
+            {
+                for (int x = minX; x <= maxX; x++)
+                {
+                    for (int z = minZ; z <= maxZ; z++)
+                    {
+                        Block block = blockAccessor.GetBlock(x, y, z);
+                        blockPos.Set(x, y, z);
+                        blockPosVec.Set(x, y, z);
+
+                        Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
+
+                        for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
+                        {
+                            Cuboidf collBox = collisionBoxes[i];
+                            if (collBox == null) continue;
+
+                            bool colliding = alsoCheckTouch ? entityBox.IntersectsOrTouches(collBox, blockPosVec) : entityBox.Intersects(collBox, blockPosVec);
+                            if (colliding)
+                            {
+                                intoCubuid.Set(collBox).Translate(blockPos);
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
 
 
 

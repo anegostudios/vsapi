@@ -69,7 +69,6 @@ namespace Vintagestory.API.Common
                             Richtextify(capi, val, ref elems, fontStack, didClickLink);
                         }
                         fontStack.Pop();
-
                         break;
                     
                     case "clear":
@@ -130,6 +129,13 @@ namespace Vintagestory.API.Common
             if (!tag.Attributes.ContainsKey("color") || !parseHexColor(tag.Attributes["color"], out color))
             {
                 color = prevFont.Color;
+            }
+
+            double opacity;
+            if (tag.Attributes.ContainsKey("opacity") && double.TryParse(tag.Attributes["opacity"], out opacity))
+            {
+                color = (double[])color.Clone();
+                color[3] *= opacity;
             }
 
             if (tag.Attributes.ContainsKey("weight"))

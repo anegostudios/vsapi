@@ -67,7 +67,13 @@ namespace Vintagestory.API.Common
         /// <summary> The version of this mod. For example "2.10.4". (optional) </summary>
         [JsonProperty]
         public string Version = "";
-        
+
+        /// <summary>
+        /// The network version of this mod. Change this number when a user that has an older version of your mod should not be allowed to connected to server with a newer version. If not set, the version value is used.
+        /// </summary>
+        [JsonProperty]
+        public string NetworkVersion = null;
+
         /// <summary> A short description of what this mod does. (optional) </summary>
         [JsonProperty]
         public string Description = "";
@@ -147,6 +153,14 @@ namespace Vintagestory.API.Common
             ModID = ModID ?? ToModID(Name);
         }
 
+
+        public void Init()
+        {
+            if (NetworkVersion == null)
+            {
+                NetworkVersion = Version;
+            }
+        }
 
         /// <summary>
         /// Attempts to convert the specified mod name to a mod ID, stripping any
@@ -250,5 +264,6 @@ namespace Vintagestory.API.Common
                 writer.WriteEndArray();
             }
         }
+
     }
 }

@@ -542,7 +542,7 @@ namespace Vintagestory.API.Datastructures
             foreach (var val in otherTree.attributes)
             {
                 string curPath = currentPath + (currentPath.Length > 0 ? "/" : "") + val.Key;
-                if (ignorePaths.Contains(curPath)) continue;
+                if (ignorePaths != null && ignorePaths.Contains(curPath)) continue;
                 if (!attributes.ContainsKey(val.Key)) return false;
             }
 

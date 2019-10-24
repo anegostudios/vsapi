@@ -26,6 +26,12 @@ namespace Vintagestory.API.Client
         public string HotKeyCode;
 
         /// <summary>
+        /// Does it require pressing multiple keys to perform this action (if set then HotkeyCode is ignored)
+        /// </summary>
+        [JsonProperty]
+        public string[] HotKeyCodes { get; set; }
+
+        /// <summary>
         /// The text to show, will be used in the form of Lang.Get(ActionLangCode); 
         /// </summary>
         [JsonProperty]
@@ -54,6 +60,8 @@ namespace Vintagestory.API.Client
         /// Only applicable when ItemStacks is null. If set and the method returns falls, the interaction will not be displayed
         /// </summary>
         public InteractionMatcherDelegate ShouldApply;
+
+        
     }
 
     /// <summary>

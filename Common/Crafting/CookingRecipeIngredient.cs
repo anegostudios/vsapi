@@ -178,6 +178,7 @@ namespace Vintagestory.API.Common
                 bool found =
                     (isWildCard && inputStack.Collectible.WildCardMatch(ValidStacks[i].Code))
                     || (!isWildCard && inputStack.Equals(world, ValidStacks[i].ResolvedItemstack, GlobalConstants.IgnoredStackAttributes))
+                    || (ValidStacks[i].CookedStack?.ResolvedItemstack != null && inputStack.Equals(world, ValidStacks[i].CookedStack.ResolvedItemstack, GlobalConstants.IgnoredStackAttributes))
                 ;
 
                 if (found) return ValidStacks[i];

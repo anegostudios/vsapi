@@ -17,6 +17,11 @@ namespace Vintagestory.API
     {
         JToken token;
 
+        public static JsonObject FromJson(string jsonCode)
+        {
+            return new JsonObject(JToken.Parse(jsonCode));
+        }
+
         /// <summary>
         /// Create a new instance of a JsonObject
         /// </summary>
@@ -154,7 +159,19 @@ namespace Vintagestory.API
         /// <returns></returns>
         public bool AsBool(bool defaultValue = false)
         {
-            return GetValue<bool>(defaultValue);
+            if (!(token is JValue)) return defaultValue;
+
+            object value = ((JValue)token).Value;
+
+            if (value is bool) return (bool)value;
+            if (value is string)
+            {
+                bool val = defaultValue;
+                bool.TryParse("" + value, out val);
+                return val;
+            }
+
+            return defaultValue;
         }
 
 

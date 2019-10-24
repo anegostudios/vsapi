@@ -99,25 +99,36 @@ namespace Vintagestory.API.Client
 
             ImageSurface surface = new ImageSurface(Format.Argb32, width, height);
             Context ctx = new Context(surface);
-            
 
-            ctx.SetSourceRGBA(background.FillColor);
-            GuiElement.RoundRectangle(ctx, 0, 0, width, height, background.Radius);
-
-            if (background.BorderWidth > 0)
+            if (background?.FillColor != null)
             {
-                ctx.FillPreserve();
-
-                ctx.Operator = Operator.Atop;
-                ctx.LineWidth = background.BorderWidth;
-                ctx.SetSourceRGBA(background.BorderColor);
-                ctx.Stroke();
-                ctx.Operator = Operator.Over;
-            }
-            else
-            {
+                ctx.SetSourceRGBA(background.FillColor);
+                GuiElement.RoundRectangle(ctx, 0, 0, width, height, background.Radius);
                 ctx.Fill();
             }
+
+            if (background?.Shade == true)
+            {
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
+                ctx.LineWidth = 5;// background.BorderWidth * 1.75;
+                GuiElement.RoundRectangle(ctx, 0, 0, width, height, background.Radius);
+                ctx.StrokePreserve();
+                surface.Blur(6.2);
+
+                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
+                ctx.LineWidth = background.BorderWidth;
+                ctx.Stroke();
+            }
+
+            if (background?.BorderColor != null)
+            {
+                ctx.SetSourceRGBA(background.BorderColor);
+                GuiElement.RoundRectangle(ctx, 0, 0, width, height, background.Radius);
+                ctx.LineWidth = background.BorderWidth;
+                ctx.Stroke();
+            }
+
+
 
             font.SetupContext(ctx);
 

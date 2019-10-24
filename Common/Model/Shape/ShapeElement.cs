@@ -95,6 +95,12 @@ namespace Vintagestory.API.Common
         public AttachmentPoint[] AttachmentPoints;
 
         /// <summary>
+        /// The "remote" parent for this element
+        /// </summary>
+        [JsonProperty]
+        public string StepParentName;
+
+        /// <summary>
         /// The parent element reference for this shape.
         /// </summary>
         public ShapeElement ParentElement;
@@ -232,6 +238,57 @@ namespace Vintagestory.API.Common
 
             return output;
         }
-        
+
+        public ShapeElement Clone()
+        {
+            ShapeElement elem = new ShapeElement()
+            {
+                AttachmentPoints = (AttachmentPoint[])AttachmentPoints?.Clone(),
+                Faces = new Dictionary<string, ShapeElementFace>(Faces),
+                From = (double[])From?.Clone(),
+                To = (double[])To?.Clone(),
+                inverseModelTransform = (float[])inverseModelTransform?.Clone(),
+                JointId = JointId,
+                RenderPass = RenderPass,
+                RotationX = RotationX,
+                RotationY = RotationY,
+                RotationZ = RotationZ,
+                RotationOrigin = (double[])RotationOrigin?.Clone(),
+                TintIndex = TintIndex,
+                StepParentName = StepParentName,
+                Shade = Shade,
+                ScaleX = ScaleX,
+                ScaleY = ScaleY,
+                ScaleZ = ScaleZ,
+                Name = Name
+            };
+
+            if (Children != null)
+            {
+                elem.Children = new ShapeElement[Children.Length];
+                for (int i = 0; i < Children.Length; i++)
+                {
+                    elem.Children[i] = Children[i].Clone();
+                    elem.Children[i].ParentElement = elem;
+                }
+            }
+
+            return elem;
+
+        }
+
+        public void SetJointIdRecursive(int jointId)
+        {
+            this.JointId = jointId;
+            if (Children != null)
+            {
+                for (int i = 0; i < Children.Length; i++)
+                {
+                    Children[i].SetJointIdRecursive(jointId);
+                }
+            }
+
+            CacheInverseTransformMatrix();
+        }
     }
 }

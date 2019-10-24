@@ -122,6 +122,8 @@ namespace Vintagestory.API.Server
         /// <returns></returns>
         IServerChunk GetChunk(BlockPos pos);
 
+        long ChunkIndex3D(int chunkX, int chunkY, int chunkZ);
+        IServerChunk GetChunk(long index3d);
 
         /// <summary>
         /// Retrieve a customized interface to access blocks in the loaded game world.
@@ -156,10 +158,19 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Same as GetBlockAccessor but you have to call PrefetchBlocks() before using GetBlock(). It pre-loads all blocks in given area resulting in faster GetBlock() access
         /// </summary>
-        /// <param name="syncronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
         /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
         /// <returns></returns>
-        IBlockAccessorPrefetch GetBlockAccessorPrefetch(bool syncronize, bool relight);
+        IBlockAccessorPrefetch GetBlockAccessorPrefetch(bool synchronize, bool relight);
+
+        /// <summary>
+        /// Same as the normal block accessor but remembers the previous chunk that was accessed. This can give you a 10-50% performance boosts when you scan many blocks in tight loops
+        /// DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling it can cause the game to crash
+        /// </summary>
+        /// <param name="synchronize"></param>
+        /// <param name="relight"></param>
+        /// <returns></returns>
+        ICachingBlockAccessor GetCachingBlockAccessor(bool synchronize, bool relight);
 
         #endregion
 

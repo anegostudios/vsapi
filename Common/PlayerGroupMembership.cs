@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
 
-namespace Vintagestory.API.Server
+namespace Vintagestory.API.Common
 {
     public class PlayerGroupMembership
     {

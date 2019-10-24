@@ -13,6 +13,22 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IPlayer
     {
+        /// <summary>
+        /// Load the players group that he is a member of
+        /// </summary>
+        /// <returns></returns>
+        PlayerGroupMembership[] GetGroups();
+
+        /// <summary>
+        /// Returns the membership data if player is part of this group, otherwise null
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <returns></returns>
+        PlayerGroupMembership GetGroup(int groupId);
+
+        /// <summary>
+        /// List of the users entitlements, vanilla servers will list VIV and/or VS Team member entitlements
+        /// </summary>
         List<Entitlement> Entitlements { get; }
 
         /// <summary>

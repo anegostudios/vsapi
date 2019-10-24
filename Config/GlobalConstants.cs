@@ -52,7 +52,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Multiplier applied to the players sneaking motion
         /// </summary>
-        public static float SneakSpeedMultiplier = 0.375f;
+        public static float SneakSpeedMultiplier = 0.35f;
 
         /// <summary>
         /// Multiplier applied to the players sprinting motion
@@ -184,8 +184,26 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static string[] IgnoredStackAttributes = new string[] { "temperature", "toolMode", "renderVariant", "transitionstate" };
 
-
+        /// <summary>
+        /// Global modifier to change the spoil rate of foods. Can be changed during run-time. The value is multiplied to the normal spoilage rate (default: 1)
+        /// </summary>
         public static float PerishSpeedModifier = 1;
+
+        /// <summary>
+        /// Global modifier to change the rate of player hunger. Can be changed during run-time. The value is multiplied to the normal spoilage rate (default: 1)
+        /// </summary>
+        public static float HungerSpeedModifier = 1f;
+
+        /// <summary>
+        /// Global modifier to change the damage melee attacks from creatures inflict. Can be changed during run-time. The value is multiplied to the normal damage value (default: 1)
+        /// </summary>
+        public static float CreatureDamageModifier = 1;
+        /// <summary>
+        /// Global modifier to change the block breaking speed of all tools. Can be changed during run-time. The value is multiplied to the breaking speed (default: 1)
+        /// </summary>
+        public static float ToolMiningSpeedModifier = 1;
+
+
 
         public static FoodSpoilageCalcDelegate FoodSpoilHealthLossMulHandler => (spoilState, stack, byEntity) => (float)Math.Max(0f, 1f - spoilState);
         public static FoodSpoilageCalcDelegate FoodSpoilSatLossMulHandler => (spoilState, stack, byEntity) => (float)Math.Max(0f, 1f - spoilState);

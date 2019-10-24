@@ -35,7 +35,7 @@ namespace Vintagestory.API.Common
 
         public override int GetHashCode()
         {
-            return Base.GetHashCode() + rotateX.GetHashCode() + rotateY.GetHashCode() + rotateZ.GetHashCode();
+            return Base.GetHashCode() + ("@" + rotateX + "/" + rotateY + "/" + rotateZ).GetHashCode();
         }
 
         /// <summary>

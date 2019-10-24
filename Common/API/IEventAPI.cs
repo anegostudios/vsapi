@@ -16,13 +16,20 @@ namespace Vintagestory.API.Common
     /// <param name="data"></param>
     public delegate void EventBusListenerDelegate(string eventName, ref EnumHandling handling, IAttribute data);
 
+    public enum EnumChunkDirtyReason
+    {
+        NewlyCreated,
+        NewlyLoaded,
+        MarkedDirty
+    }
+
     /// <summary>
     /// For handling dirty chunks
     /// </summary>
     /// <param name="chunkCoord"></param>
     /// <param name="chunk"></param>
-    /// <param name="isNewChunk"></param>
-    public delegate void ChunkDirty(Vec3i chunkCoord, IWorldChunk chunk, bool isNewChunk);
+    /// <param name="reason"></param>
+    public delegate void ChunkDirtyDelegate(Vec3i chunkCoord, IWorldChunk chunk, EnumChunkDirtyReason reason);
 
 
     /// <summary>
@@ -41,9 +48,9 @@ namespace Vintagestory.API.Common
         event EntityDespawnDelegate OnEntityDespawn;
 
         /// <summary>
-        /// Called whenever a chunk was marked dirty (as in, its blocks or light values have been modified)
+        /// Called whenever a chunk was marked dirty (as in, its blocks or light values have been modified or it got newly loaded or newly created)
         /// </summary>
-        event ChunkDirty ChunkDirty;
+        event ChunkDirtyDelegate ChunkDirty;
 
         /// <summary>
         /// There's 2 global event busses, 1 on the client and 1 on the server. This pushes an event onto the bus.

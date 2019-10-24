@@ -55,6 +55,7 @@ namespace Vintagestory.API.Common
         /// <param name="tree"></param>
         /// <returns></returns>
         IMountable CreateMountable(TreeAttribute tree);
+        
 
         /// <summary>
         /// Creates a block behavior instance from given block class 
@@ -63,6 +64,21 @@ namespace Vintagestory.API.Common
         /// <param name="blockBehaviorName"></param>
         /// <returns></returns>
         BlockBehavior CreateBlockBehavior(Block forBlock, string blockBehaviorName);
+
+        /// <summary>
+        /// Returns the block entity behavior type if such is registered under supplied name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        Type GetBlockEntityBehaviorClass(string name);
+
+        /// <summary>
+        /// Creates a block entity behavior instance for given block entity
+        /// </summary>
+        /// <param name="blockEntity"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        BlockEntityBehavior CreateBlockEntityBehavior(BlockEntity blockEntity, string name);
 
         /// <summary>
         /// Returns the block behavior type registered for given name or null

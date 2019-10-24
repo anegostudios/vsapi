@@ -14,7 +14,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class ItemstackTextComponent : ItemstackComponentBase
     {
-        ItemStack itemstack;
+        DummySlot slot;
         double size;
         
 
@@ -22,7 +22,7 @@ namespace Vintagestory.API.Client
 
         public ItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstack, double size, double sidePadding = 0, EnumFloat floatType = EnumFloat.Left, Common.Action<ItemStack> onStackClicked = null) : base(capi)
         {
-            this.itemstack = itemstack;
+            slot = new DummySlot(itemstack);
             this.onStackClicked = onStackClicked;
             this.Float = floatType;
             this.size = size;
@@ -59,14 +59,14 @@ namespace Vintagestory.API.Client
             LineRectangled bounds = BoundsPerLine[0];
 
             api.Render.RenderItemstackToGui(
-                itemstack, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f + offY, 100, (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+                slot, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f + offY, 100, (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);
 
             if (bounds.PointInside(relx, rely))
             {
-                RenderItemstackTooltip(itemstack, renderX + relx, renderY + rely + offY, deltaTime);
+                RenderItemstackTooltip(slot, renderX + relx, renderY + rely + offY, deltaTime);
             }
         }
 
@@ -78,7 +78,7 @@ namespace Vintagestory.API.Client
             {
                 if (val.PointInside(args.X, args.Y))
                 {
-                    onStackClicked?.Invoke(itemstack);
+                    onStackClicked?.Invoke(slot.Itemstack);
                 }
             }
         }

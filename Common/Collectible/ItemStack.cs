@@ -441,7 +441,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            worldForNewMapping.Logger.Warning("Cannot fix itemstack mapping, item/block id {0} not found in old mapping list. Will delete stack.", Id);
+            worldForNewMapping.Logger.Warning("Cannot fix itemstack mapping, item/block id {0} not found in old mapping list. Will delete stack. ({1})", Id, this.Collectible);
             return false;
         }
 

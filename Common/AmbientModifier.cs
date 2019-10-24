@@ -21,6 +21,7 @@ namespace Vintagestory.API.Common
         public WeightedFloat CloudDensity;
         public WeightedFloat CloudBrightness;
         public WeightedFloat LerpSpeed;
+        public WeightedFloat SceneBrightness;
 
         public AmbientModifier Clone()
         {
@@ -34,6 +35,7 @@ namespace Vintagestory.API.Common
                 AmbientColor = AmbientColor.Clone(),
                 CloudDensity = CloudDensity.Clone(),
                 CloudBrightness = CloudBrightness.Clone(),
+                SceneBrightness = SceneBrightness.Clone(),
             };
         }
 
@@ -43,11 +45,13 @@ namespace Vintagestory.API.Common
             {
                 return new AmbientModifier()
                 {
-                    FogColor = WeightedFloatArray.New(new float[] { 0.725f, 0.827f, 0.929f }, 1),
-                    FogDensity = WeightedFloat.New(0.0025f, 1),
+                    //FogColor = WeightedFloatArray.New(new float[] { 0.725f, 0.827f, 0.929f }, 1),
+                    FogColor = WeightedFloatArray.New(new float[] { 175/255f, 201/255f, 224/255f }, 1),
+                    FogDensity = WeightedFloat.New(0.00125f, 1),
                     AmbientColor = WeightedFloatArray.New(new float[] { 1, 1, 1 }, 1),
                     CloudBrightness = WeightedFloat.New(1, 1),
-                    CloudDensity = WeightedFloat.New(0, 0)
+                    CloudDensity = WeightedFloat.New(1, 0),
+                    SceneBrightness = WeightedFloat.New(1, 0)
                 }.EnsurePopulated();
             }
         }
@@ -63,6 +67,7 @@ namespace Vintagestory.API.Common
             if (CloudDensity == null) CloudDensity = WeightedFloat.New(0, 0);
             if (CloudBrightness == null) CloudBrightness = WeightedFloat.New(0, 0);
             if (LerpSpeed == null) LerpSpeed = WeightedFloat.New(0, 0);
+            if (SceneBrightness == null) SceneBrightness = WeightedFloat.New(1, 0);
 
             return this;
         }
@@ -78,6 +83,7 @@ namespace Vintagestory.API.Common
             LerpSpeed.ToBytes(writer);
             FlatFogDensity.ToBytes(writer);
             FlatFogYPos.ToBytes(writer);
+            SceneBrightness.ToBytes(writer);
             //WeatherPattern.ToBytes(wrtier);
         }
 
@@ -92,6 +98,7 @@ namespace Vintagestory.API.Common
             LerpSpeed.FromBytes(reader);
             FlatFogDensity.FromBytes(reader);
             FlatFogYPos.FromBytes(reader);
+            SceneBrightness.FromBytes(reader);
             //WeatherPattern.FromBytes(ms);
         }
     }

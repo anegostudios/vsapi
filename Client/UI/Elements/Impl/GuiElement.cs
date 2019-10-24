@@ -11,13 +11,13 @@ namespace Vintagestory.API.Client
 {    
     public abstract class GuiElement
     {
-        internal static string dirtTextureName = "backgrounds/soil.png";
-        internal static string noisyMetalTextureName = "backgrounds/noisymetal.png";
+        internal static string dirtTextureName = "gui/backgrounds/soil.png";
+        internal static string noisyMetalTextureName = "gui/backgrounds/noisymetal.png";
         //internal static string woodTextureName = "backgrounds/wood.png";
-        internal static string woodTextureName = "backgrounds/oak.png";
-        internal static string stoneTextureName = "backgrounds/stone.png";
-        internal static string waterTextureName = "backgrounds/water.png";
-        internal static string paperTextureName = "backgrounds/signpaper.png";
+        internal static string woodTextureName = "gui/backgrounds/oak.png";
+        internal static string stoneTextureName = "gui/backgrounds/stone.png";
+        internal static string waterTextureName = "gui/backgrounds/water.png";
+        internal static string paperTextureName = "gui/backgrounds/signpaper.png";
 
         internal static Dictionary<string, KeyValuePair<SurfacePattern, ImageSurface>> cachedPatterns = new Dictionary<string, KeyValuePair<SurfacePattern, ImageSurface>>();
         
@@ -42,7 +42,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// If the element is inside a clip or not.
         /// </summary>
-        public bool InsideClipElement;
+        public virtual ElementBounds InsideClipBounds { get; set; }
 
         /// <summary>
         /// The Client API.
@@ -291,7 +291,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static ImageSurface getImageSurfaceFromAsset(ICoreClientAPI capi, string texFileName)
         {
-            byte[] pngdata = capi.Assets.Get("textures/gui/" + texFileName).Data;
+            byte[] pngdata = capi.Assets.Get("textures/" + texFileName).Data;
 
             BitmapExternal bitmap = (BitmapExternal)capi.Render.BitmapCreateFromPng(pngdata);
 
@@ -606,7 +606,6 @@ namespace Vintagestory.API.Client
             if (IsPositionInside(mouse.X, mouse.Y))
             {
                 OnMouseDownOnElement(api, mouse);
-                
             }
         }
 
@@ -687,8 +686,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public virtual bool IsPositionInside(int posX, int posY)
         {
-            return 
-                InsideClipElement ? Bounds.ParentBounds.PointInside(posX, posY) : Bounds.PointInside(posX, posY);
+            return  (InsideClipBounds == null || InsideClipBounds.PointInside(posX, posY)) && Bounds.PointInside(posX, posY);
         }
 
         public virtual string MouseOverCursor { get; protected set; } = null;

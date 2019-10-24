@@ -45,6 +45,8 @@ namespace Vintagestory.API.Common
         void RemoveTimeSpeedModifier(string name);
 
 
+        float CalendarSpeedMul { get; set; }
+
         /// <summary>
         /// Amount of hours per day
         /// </summary>

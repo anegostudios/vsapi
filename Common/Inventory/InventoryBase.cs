@@ -271,7 +271,7 @@ namespace Vintagestory.API.Common
             WeightedSlot bestWSlot = new WeightedSlot();
 
             // Useless to put the item into the same inventory
-            if (sourceSlot.Inventory == this) return bestWSlot;
+            if (PutLocked || sourceSlot.Inventory == this) return bestWSlot;
 
             // 1. Prefer already filled slots
             foreach (var slot in this)
@@ -682,13 +682,18 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)
         {
-            float mul = transType == EnumTransitionType.Perish ? 1 : 0;
+            float mul = GetDefaultTransitionSpeedMul(transType);
             if (OnAcquireTransitionSpeed != null)
             {
                 mul = OnAcquireTransitionSpeed(transType, stack, mul);
             }
 
             return mul;
+        }
+
+        protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transType)
+        {
+            return (transType == EnumTransitionType.Perish || transType == EnumTransitionType.Cure) ? 1 : 0;
         }
 
         /// <summary>

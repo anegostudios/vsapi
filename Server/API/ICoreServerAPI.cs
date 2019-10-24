@@ -35,6 +35,16 @@ namespace Vintagestory.API.Server
         IPermissionManager Permissions { get; }
 
         /// <summary>
+        /// Everything related to player groups
+        /// </summary>
+        IGroupManager Groups { get; }
+
+        /// <summary>
+        /// World-agnostic player data. You can query this information even when the player is offline
+        /// </summary>
+        IPlayerDataManager PlayerData { get; }
+
+        /// <summary>
         /// API for sending/receiving network packets
         /// </summary>
         IServerNetworkAPI Network { get; }

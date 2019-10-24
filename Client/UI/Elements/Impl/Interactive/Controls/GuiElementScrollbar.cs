@@ -153,6 +153,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
+            if (Bounds.InnerHeight <= currentHandleHeight + 0.001) return;
+
             float y = currentHandlePosition - (float)scaled(102) * args.deltaPrecise / ScrollConversionFactor;
 
             double scrollbarMoveableHeight = Bounds.InnerHeight - currentHandleHeight;
@@ -165,6 +167,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
+            if (Bounds.InnerHeight <= currentHandleHeight + 0.001) return;
+
             if (Bounds.PointInside(args.X, args.Y))
             {
                 mouseDownOnScrollbarHandle = true;

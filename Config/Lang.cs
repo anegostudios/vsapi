@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Config
 {
@@ -26,6 +27,7 @@ namespace Vintagestory.API.Config
         {
             Inst.LangEntries.Clear();
             Inst.LangRegexes.Clear();
+            Inst.LangStartsWith.Clear();
 
             if (language != "en")
             {
@@ -57,6 +59,8 @@ namespace Vintagestory.API.Config
 
         public Dictionary<string, string> LangEntries = new Dictionary<string, string>();
         public Dictionary<string, KeyValuePair<Regex, string>> LangRegexes = new Dictionary<string, KeyValuePair<Regex, string>>();
+        // Because c# regexes are slooooow
+        public Dictionary<string, string> LangStartsWith = new Dictionary<string, string>();
 
         /// <summary>
         /// Yes this means in a singleplayer situdation server and client share the same lang inst, but thats okay, since they use the same file anyway?
@@ -104,11 +108,21 @@ namespace Vintagestory.API.Config
                 string key = val.Key;
                 if (!val.Key.Contains(":")) key = domain + AssetLocation.LocationSeparator + key;
 
+                int wildCardCount = key.CountChars('*');
 
-                if (key.Contains("*"))
+                if (wildCardCount > 0)
                 {
-                    Regex regex = new Regex(key.Replace("*", "(.*)"), RegexOptions.Compiled);
-                    Inst.LangRegexes[key] = new KeyValuePair<Regex, string>(regex, val.Value);
+                    if (wildCardCount == 1 && key.EndsWith("*"))
+                    {
+                        Inst.LangStartsWith[key.TrimEnd('*')] = val.Value;
+                    }
+                    else
+                    {
+                        Regex regex = new Regex(key.Replace("*", "(.*)"), RegexOptions.Compiled);
+                        Inst.LangRegexes[key] = new KeyValuePair<Regex, string>(regex, val.Value);
+                    }
+
+                    
                 } else
                 {
                     Inst.LangEntries[key] = val.Value;
@@ -116,9 +130,34 @@ namespace Vintagestory.API.Config
             }
 
         }
-        
 
 
+        /// <summary>
+        /// Returns null if the entry does not exist
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static string GetIfExists(string key, params object[] param)
+        {
+            string value;
+            string domainandkey = key.Contains(":") ? key : GlobalConstants.DefaultDomain + AssetLocation.LocationSeparator + key;
+
+
+            if (Inst.LangEntries.TryGetValue(domainandkey, out value))
+            {
+                return value;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the key itself it the entry does not exist
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
         public static string Get(string key, params object[] param)
         {
             return string.Format(GetUnformatted(key), param);
@@ -148,6 +187,14 @@ namespace Vintagestory.API.Config
                 return string.Format(value, param);
             }
 
+            foreach (var pair in Inst.LangStartsWith)
+            {
+                if (StringUtil.FastStartsWith(key, pair.Key))
+                {
+                    return string.Format(pair.Value, param);
+                }
+            }
+
             foreach (var pair in Inst.LangRegexes.Values)
             {
                 if (pair.Key.IsMatch(domainandkey))
@@ -160,22 +207,36 @@ namespace Vintagestory.API.Config
             return string.Format(key, param);
         }
 
-
-        public static bool HasTranslation(string key)
+        public static bool HasTranslation(string key, bool findWildcarded = true)
         {
             string domainandkey = key.Contains(":") ? key : GlobalConstants.DefaultDomain + AssetLocation.LocationSeparator + key;
 
             if (Inst.LangEntries.ContainsKey(domainandkey)) return true;
 
-            foreach (var pair in Inst.LangRegexes.Values)
+            if (findWildcarded)
             {
-                if (pair.Key.IsMatch(domainandkey))
+                foreach (var pair in Inst.LangStartsWith)
                 {
-                    return true;
+                    if (StringUtil.FastStartsWith(key, pair.Key))
+                    {
+                        return true;
+                    }
+                }
+
+                foreach (var pair in Inst.LangRegexes.Values)
+                {
+                    if (pair.Key.IsMatch(domainandkey))
+                    {
+                        return true;
+                    }
                 }
             }
 
             return false;
         }
+
+
+
+
     }
 }

@@ -70,13 +70,14 @@ namespace Vintagestory.API.Client
             Sound?.Stop();
             musicEngine.StopTrack(this);
         }
-        
+
 
         /// <summary>
         /// Initialize the track.
         /// </summary>
         /// <param name="assetManager">the global Asset Manager</param>
         /// <param name="capi">The Core Client API</param>
+        /// <param name="musicEngine"></param>
         public virtual void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
         {
 
@@ -91,7 +92,6 @@ namespace Vintagestory.API.Client
         /// Should this current track play?
         /// </summary>
         /// <param name="props">Player Properties</param>
-        /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Should we play the current track?</returns>
         public virtual bool ShouldPlay(TrackedPlayerProperties props)
         {
@@ -103,7 +103,6 @@ namespace Vintagestory.API.Client
         /// Begins playing the Music track.
         /// </summary>
         /// <param name="props">Player Properties</param>
-        /// <param name="musicEngine">The Music Engine</param>
         public virtual void BeginPlay(TrackedPlayerProperties props)
         {
             loading = true;
@@ -123,7 +122,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="dt">Delta Time/Change in time.</param>
         /// <param name="props">Track properties.</param>
-        /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Cool or not cool?</returns>
         public virtual bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {

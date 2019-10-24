@@ -3,12 +3,14 @@ using Cairo;
 using Vintagestory.API.Common;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
     class GuiElementNewVersionText : GuiElementTextBase
     {
         LoadedTexture texture;
+        LoadedTexture hoverTexture;
         public bool visible;
         public double offsetY;
 
@@ -25,6 +27,8 @@ namespace Vintagestory.API.Client
         public GuiElementNewVersionText(ICoreClientAPI capi, CairoFont font, ElementBounds bounds) : base(capi, "", font, bounds)
         {
             texture = new LoadedTexture(capi);
+            hoverTexture = new LoadedTexture(capi);
+            MouseOverCursor = "linkselect";
         }
 
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
@@ -38,7 +42,7 @@ namespace Vintagestory.API.Client
         /// <param name="versionnumber">The version number of the new version.</param>
         public void RecomposeMultiLine(string versionnumber)
         {
-            text = "Version " + versionnumber + " now available \\o/\nClick here to go to the downloads page";
+            text = Lang.Get("Version {0} now available \\o/\nClick here to go to the downloads page", versionnumber);
 
             Bounds.fixedHeight = GetMultilineTextHeight() / RuntimeEnv.GUIScale;
             Bounds.CalcWorldBounds();
@@ -90,6 +94,18 @@ namespace Vintagestory.API.Client
             generateTexture(surface, ref texture);
             ctx.Dispose();
             surface.Dispose();
+
+
+            surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
+            ctx = genContext(surface);
+
+            ctx.SetSourceRGBA(1, 1, 1, 0.1);
+            ctx.Paint();
+
+            generateTexture(surface, ref hoverTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
         }
 
 
@@ -105,8 +121,14 @@ namespace Vintagestory.API.Client
             {
                 api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY + offsetY, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight + shadowHeight);
 
+                if (Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
+                {
+                    api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY + offsetY, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
+                }
+
                 offsetY = Math.Min(0, offsetY + 100 * deltaTime);
             }
+
         }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
@@ -124,7 +146,8 @@ namespace Vintagestory.API.Client
         {
             base.Dispose();
 
-            texture.Dispose();
+            texture?.Dispose();
+            hoverTexture?.Dispose();
         }
 
 

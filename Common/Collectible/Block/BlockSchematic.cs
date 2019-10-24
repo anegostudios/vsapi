@@ -292,6 +292,7 @@ namespace Vintagestory.API.Common
             Indices.Clear();
             BlockIds.Clear();
             BlockEntities.Clear();
+            Entities.Clear();
             SizeX = 0;
             SizeY = 0;
             SizeZ = 0;
@@ -469,10 +470,9 @@ namespace Vintagestory.API.Common
             BlockPos curPos = new BlockPos();
             BlockPos startPos = new BlockPos(1024, 1024, 1024);
 
-            List<uint> indicesRotated = new List<uint>();
-
             BlocksUnpacked.Clear();
             BlockEntitiesUnpacked.Clear();
+            EntitiesUnpacked.Clear();
 
             angle = GameMath.Mod(angle, 360);
 
@@ -635,6 +635,64 @@ namespace Vintagestory.API.Common
             }
 
 
+            foreach (string entityData in Entities)
+            {
+                using (MemoryStream ms = new MemoryStream(Ascii85.Decode(entityData)))
+                {
+                    BinaryReader reader = new BinaryReader(ms);
+
+                    string className = reader.ReadString();
+                    Entity entity = worldForResolve.ClassRegistry.CreateEntity(className);
+
+                    entity.FromBytes(reader, false);
+                    entity.DidImportOrExport(startPos);
+
+                    double dx = entity.ServerPos.X - startPos.X;
+                    double dy = entity.ServerPos.Y - startPos.Y;
+                    double dz = entity.ServerPos.Z - startPos.Z;
+
+                    dx -= SizeX / 2;
+                    dz -= SizeZ / 2;
+
+                    Vec3d pos = new Vec3d();
+
+                    // 90 deg:
+                    // xNew = -yOld
+                    // yNew = xOld
+
+                    // 180 deg:
+                    // xNew = -xOld
+                    // yNew = -yOld
+
+                    // 270 deg:
+                    // xNew = yOld
+                    // yNew = -xOld
+
+                    switch (angle)
+                    {
+                        case 90:
+                            pos.Set(-dz, dy, dx);
+                            break;
+                        case 180:
+                            pos.Set(-dx, dy, -dz);
+                            break;
+                        case 270:
+                            pos.Set(dz, dy, -dx);
+                            break;
+                    }
+
+                    pos.X += SizeX / 2;
+                    pos.Z += SizeZ / 2;
+
+                    entity.ServerPos.SetPos(startPos.X + pos.X, entity.ServerPos.Y, startPos.Z + pos.Z);
+                    entity.Pos.SetPos(startPos.X + pos.X, entity.Pos.Y, startPos.Z + pos.Z);
+                    entity.PositionBeforeFalling.Set(startPos.X + pos.X, entity.PositionBeforeFalling.Y, startPos.Z + pos.Z);
+
+                    EntitiesUnpacked.Add(entity);
+                }
+            }
+
+
             Pack(worldForResolve, startPos);
         }
         
@@ -685,7 +743,7 @@ namespace Vintagestory.API.Common
 
                     be.FromTreeAtributes(tree, worldForCollectibleResolve);
                     be.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes);                    
-                    be.pos = curPos.Copy();
+                    be.Pos = curPos.Copy();
                 }
             }
 

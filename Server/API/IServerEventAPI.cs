@@ -21,19 +21,6 @@ namespace Vintagestory.API.Server
         /// <param name="worldType">"standard" for the vanilla world generator</param>
         /// <returns></returns>
         IWorldGenHandler GetRegisteredWorldGenHandlers(string worldType);
-        
-
-        /// <summary>
-        /// Registers a handler to be called every time a player places a block. The methods return value determines if the player may place/break this block.
-        /// </summary>
-        /// <param name = "handler">Function to register. Required parameters: (int player, int x, int y, int z)</param>
-        void CanPlaceOrBreakBlock(CanPlaceOrBreakDelegate handler);
-
-        /// <summary>
-        /// Registers a handler to be called every time a player uses a block. The methods return value determines if the player may place/break this block.
-        /// </summary>
-        /// <param name = "handler">Function to register. Required parameters: (int player, int x, int y, int z)</param>
-        void CanUseBlock(CanUseDelegate handler);
 
 
         /// <summary>
@@ -71,6 +58,18 @@ namespace Vintagestory.API.Server
         /// <param name="forWorldType">For which world types to use this generator</param>
         void ChunkColumnGeneration(ChunkColumnGenerationDelegate handler, EnumWorldGenPass pass, string forWorldType);
 
+
+
+
+        /// <summary>
+        /// Registers a handler to be called every time a player places a block. The methods return value determines if the player may place/break this block.
+        /// </summary>
+        event CanPlaceOrBreakDelegate CanPlaceOrBreakBlock;
+
+        /// <summary>
+        /// Registers a handler to be called every time a player uses a block. The methods return value determines if the player may place/break this block.
+        /// </summary>
+        event CanUseDelegate CanUseBlock;
 
         /// <summary>
         /// Called when a player interacts with an entity

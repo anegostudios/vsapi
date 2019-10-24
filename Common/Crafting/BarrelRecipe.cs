@@ -10,12 +10,85 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-
-    public class BarrelRecipe : RecipeBase<BarrelRecipe>, IByteSerializable
+    public class BarrelRecipeIngredient : CraftingRecipeIngredient
     {
+        /// <summary>
+        /// If set, the barrel may contain more, but it gets consumed by this amount
+        /// </summary>
+        public int? ConsumeQuantity = null;
+
+        public new BarrelRecipeIngredient Clone()
+        {
+            BarrelRecipeIngredient stack = new BarrelRecipeIngredient()
+            {
+                Code = Code.Clone(),
+                Type = Type,
+                Name = Name,
+                Quantity = Quantity,
+                ConsumeQuantity = ConsumeQuantity,
+                IsWildCard = IsWildCard,
+                IsTool = IsTool,
+                AllowedVariants = AllowedVariants == null ? null : (string[])AllowedVariants.Clone(),
+                ResolvedItemstack = ResolvedItemstack?.Clone(),
+                ReturnedStack = ReturnedStack?.Clone()
+            };
+
+            if (Attributes != null) stack.Attributes = Attributes.Clone();
+
+            return stack;
+        }
+
+        public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+        {
+            base.FromBytes(reader, resolver);
+
+            bool isset = reader.ReadBoolean();
+            if (isset)
+            {
+                ConsumeQuantity = reader.ReadInt32();
+            } else
+            {
+                ConsumeQuantity = null;
+            }
+        }
+
+        public override void ToBytes(BinaryWriter writer)
+        {
+            base.ToBytes(writer);
+
+            if (ConsumeQuantity != null)
+            {
+                writer.Write(true);
+                writer.Write((int)ConsumeQuantity);
+            } else
+            {
+                writer.Write(false);
+            }
+        }
+    }
+
+    public class BarrelRecipe : IByteSerializable, IRecipeBase<BarrelRecipe>
+    {
+        public int RecipeId;
+
+        /// <summary>
+        /// ...or alternatively for recipes with multiple ingredients
+        /// </summary>
+        public BarrelRecipeIngredient[] Ingredients;
+
+        public JsonItemStack Output;
+
+        public AssetLocation Name { get; set; }
+        public bool Enabled { get; set; } = true;
+
+
         public string Code;
         public double SealHours;
-        
+
+
+        IRecipeIngredient[] IRecipeBase<BarrelRecipe>.Ingredients => (IRecipeIngredient[])Ingredients;
+        IRecipeOutput IRecipeBase<BarrelRecipe>.Output => Output;
+
 
         /// <summary>
         /// Gets the name of the output food if one exists.
@@ -30,67 +103,171 @@ namespace Vintagestory.API.Common
 
 
 
-        public bool Matches(IWorldAccessor worldForResolve, ItemStack[] inputStacks, out int outputStackSize)
+        public bool Matches(IWorldAccessor worldForResolve, ItemSlot[] inputSlots, out int outputStackSize)
         {
             outputStackSize = 0;
-            List<ItemStack> inputStacksList = new List<ItemStack>();
-            foreach (var val in inputStacks) if (val != null) inputStacksList.Add(val);
 
-            if (inputStacksList.Count != Ingredients.Length) return false;
+            List<KeyValuePair<ItemSlot, BarrelRecipeIngredient>> matched = pairInput(inputSlots);
+            if (matched == null) return false;
 
-            int outQuantityMul = -1;
+            outputStackSize = getOutputSize(matched);
 
-            
-            List<CraftingRecipeIngredient> ingredientList = new List<CraftingRecipeIngredient>(Ingredients);
+            return outputStackSize >= 0;
+        }
 
-            while (inputStacksList.Count > 0)
+
+
+        List<KeyValuePair<ItemSlot, BarrelRecipeIngredient>> pairInput(ItemSlot[] inputStacks)
+        {
+            List<BarrelRecipeIngredient> ingredientList = new List<BarrelRecipeIngredient>(Ingredients);
+
+            Queue<ItemSlot> inputSlotsList = new Queue<ItemSlot>();
+            foreach (var val in inputStacks) if (!val.Empty) inputSlotsList.Enqueue(val);
+
+            if (inputSlotsList.Count != Ingredients.Length) return null;
+
+            List<KeyValuePair<ItemSlot, BarrelRecipeIngredient>> matched = new List<KeyValuePair<ItemSlot, BarrelRecipeIngredient>>();
+
+            while (inputSlotsList.Count > 0)
             {
-                ItemStack inputStack = inputStacksList[0];
-                inputStacksList.RemoveAt(0);
-                if (inputStack == null) continue;
-
+                ItemSlot inputSlot = inputSlotsList.Dequeue();
                 bool found = false;
-                for (int i = 0; !found && i < ingredientList.Count; i++)
+
+                for (int i = 0; i < ingredientList.Count; i++)
                 {
-                    CraftingRecipeIngredient ingred = ingredientList[i];
-                    
-                    if (ingred.SatisfiesAsIngredient(inputStack))
+                    BarrelRecipeIngredient ingred = ingredientList[i];
+
+                    if (ingred.SatisfiesAsIngredient(inputSlot.Itemstack))
                     {
-                        // Input stack size must be equal or a multiple of the ingredient stack size
-                        if ((inputStack.StackSize % ingred.Quantity) != 0) return false;
-                        // All ingredients must be at the same ratio
-                        if (outQuantityMul != -1 && outQuantityMul != inputStack.StackSize / ingred.Quantity) return false;
-
-                        // First ingredient determines the desired ratio
-                        outQuantityMul = inputStack.StackSize / ingred.Quantity;
-
+                        matched.Add(new KeyValuePair<ItemSlot, BarrelRecipeIngredient>(inputSlot, ingred));
                         found = true;
                         ingredientList.RemoveAt(i);
+                        break;
                     }
                 }
 
-                // This input stack does not fit in this cooking recipe
-                if (!found) return false;
+                if (!found) return null;
             }
 
             // We're missing ingredients
             if (ingredientList.Count > 0)
             {
-                return false;
+                return null;
             }
 
-            outputStackSize = Output.StackSize * outQuantityMul;
+            return matched;
+        }
 
+        int getOutputSize(List<KeyValuePair<ItemSlot, BarrelRecipeIngredient>> matched)
+        {
+            int outQuantityMul = -1;
+
+            foreach (var val in matched)
+            {
+                ItemSlot inputSlot = val.Key;
+                BarrelRecipeIngredient ingred = val.Value;
+
+                if (ingred.ConsumeQuantity == null)
+                {
+                    outQuantityMul = inputSlot.StackSize / ingred.Quantity;
+                }
+            }
+
+            if (outQuantityMul == -1)
+            {
+                return -1;
+            }
+
+
+            foreach (var val in matched)
+            {
+                ItemSlot inputSlot = val.Key;
+                BarrelRecipeIngredient ingred = val.Value;
+
+                if (ingred.ConsumeQuantity == null)
+                {
+                    // Input stack size must be equal or a multiple of the ingredient stack size
+                    if ((inputSlot.StackSize % ingred.Quantity) != 0) return -1;
+                    
+                    // Ingredients must be at the same ratio
+                    if (outQuantityMul != inputSlot.StackSize / ingred.Quantity) return -1;
+
+                }
+                else
+                {
+                    // Must have same or more than the total crafted amount
+                    if (inputSlot.StackSize < ingred.Quantity * outQuantityMul) return -1;
+
+                }
+            }
+
+            return Output.StackSize * outQuantityMul;
+        }
+
+
+        public bool TryCraftNow(ICoreAPI api, double nowSealedHours, ItemSlot[] inputslots)
+        {
+            if (SealHours > 0 && nowSealedHours < SealHours) return false;
+
+            var matched = pairInput(inputslots);
+
+            ItemStack mixedStack = Output.ResolvedItemstack.Clone();
+            mixedStack.StackSize = getOutputSize(matched);
+
+            if (mixedStack.StackSize < 0) return false;
+
+            // Carry over freshness
+            TransitionableProperties[] props = mixedStack.Collectible.GetTransitionableProperties(api.World, mixedStack, null);
+            TransitionableProperties perishProps = props != null && props.Length > 0 ? props[0] : null;
+
+            if (perishProps != null)
+            {
+                CollectibleObject.CarryOverFreshness(api, inputslots, new ItemStack[] { mixedStack }, perishProps);
+            }
+
+            ItemStack remainStack = null;
+            foreach (var val in matched)
+            {
+                if (val.Value.ConsumeQuantity != null)
+                {
+                    remainStack = val.Key.Itemstack;
+                    remainStack.StackSize -= val.Value.Quantity * (mixedStack.StackSize / Output.StackSize);
+                    if (remainStack.StackSize <= 0)
+                    {
+                        remainStack = null;
+                    }
+                    break;
+                }
+            }
+
+            // Slot 0: Input/Item slot
+            // Slot 1: Liquid slot
+            if (shouldBeInLiquidSlot(mixedStack))
+            {
+                inputslots[0].Itemstack = remainStack;
+                inputslots[1].Itemstack = mixedStack;
+            }
+            else
+            {
+                inputslots[1].Itemstack = remainStack;
+                inputslots[0].Itemstack = mixedStack;
+            }
+
+            inputslots[0].MarkDirty();
+            inputslots[1].MarkDirty();
 
             return true;
         }
 
-        
-        
-        
 
 
-        
+
+        // Minor Fugly hack - copied from LiquidContainer.cs
+        public bool shouldBeInLiquidSlot(ItemStack stack)
+        {
+            return stack?.ItemAttributes?["waterTightContainerProps"].Exists == true;
+        }
+
 
 
         /// <summary>
@@ -119,11 +296,11 @@ namespace Vintagestory.API.Common
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
         {
             Code = reader.ReadString();
-            Ingredients = new CraftingRecipeIngredient[reader.ReadInt32()];
+            Ingredients = new BarrelRecipeIngredient[reader.ReadInt32()];
 
             for (int i = 0; i < Ingredients.Length; i++)
             {
-                Ingredients[i] = new CraftingRecipeIngredient();
+                Ingredients[i] = new BarrelRecipeIngredient();
                 Ingredients[i].FromBytes(reader, resolver);
                 Ingredients[i].Resolve(resolver, "Barrel Recipe (FromBytes)");
             }
@@ -142,7 +319,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="world"></param>
         /// <returns></returns>
-        public override Dictionary<string, string[]> GetNameToCodeMapping(IWorldAccessor world)
+        public Dictionary<string, string[]> GetNameToCodeMapping(IWorldAccessor world)
         {
             Dictionary<string, string[]> mappings = new Dictionary<string, string[]>();
 
@@ -161,7 +338,7 @@ namespace Vintagestory.API.Common
                 {
                     for (int i = 0; i < world.Blocks.Count; i++)
                     {
-                        if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
+                        if (world.Blocks[i].Code == null || world.Blocks[i].IsMissing) continue;
 
                         if (WildcardUtil.Match(ingred.Code, world.Blocks[i].Code))
                         {
@@ -178,7 +355,7 @@ namespace Vintagestory.API.Common
                 {
                     for (int i = 0; i < world.Items.Count; i++)
                     {
-                        if (world.Items[i] == null || world.Items[i].IsMissing) continue;
+                        if (world.Items[i].Code == null || world.Items[i].IsMissing) continue;
 
                         if (WildcardUtil.Match(ingred.Code, world.Items[i].Code))
                         {
@@ -199,7 +376,7 @@ namespace Vintagestory.API.Common
 
 
 
-        public override bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
+        public bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
         {
             bool ok = true;
 
@@ -213,9 +390,9 @@ namespace Vintagestory.API.Common
             return ok;
         }
 
-        public override BarrelRecipe Clone()
+        public BarrelRecipe Clone()
         {
-            CraftingRecipeIngredient[] ingredients = new CraftingRecipeIngredient[Ingredients.Length];
+            BarrelRecipeIngredient[] ingredients = new BarrelRecipeIngredient[Ingredients.Length];
             for (int i = 0; i < Ingredients.Length; i++)
             {
                 ingredients[i] = Ingredients[i].Clone();

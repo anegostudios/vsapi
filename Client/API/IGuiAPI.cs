@@ -11,6 +11,11 @@ namespace Vintagestory.API.Client
     public interface IGuiAPI
     {
         /// <summary>
+        /// Just a default gpu-uploaded quad for 2d texture rendering, for your convenience
+        /// </summary>
+        MeshRef QuadMeshRef { get; }
+
+        /// <summary>
         /// List of all registered guis
         /// </summary>
         List<GuiDialog> LoadedGuis { get; }

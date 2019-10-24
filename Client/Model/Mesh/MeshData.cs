@@ -528,7 +528,9 @@ namespace Vintagestory.API.Client
                     normal[3] = 0;
                     normal = Mat4f.MulWithVec4(matrix, normal);
 
-                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(normal[0], normal[1], normal[2]) << 15);
+                    float len = GameMath.Sqrt(normal[0] * normal[0] + normal[1] * normal[1] + normal[2] * normal[2]);
+
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(normal[0] / len, normal[1] / len, normal[2] / len) << 15);
                 }
             }
 

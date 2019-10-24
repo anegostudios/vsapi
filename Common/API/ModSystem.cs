@@ -35,11 +35,11 @@ namespace Vintagestory.API.Common
         /// - Deposits: 0.2
         /// - Caves: 0.3
         /// - Blocklayers: 0.4
-        /// Loading
+        /// Asset Loading
         /// - Json Overrides loader: 0.05
         /// - Load hardcoded mantle block: 0.1
-        /// - Block&amp;Item Loader: 0.2
-        /// - Recipe (Smithing, Knapping, Clayforming, Grid recipes, Alloys) Loader: 1
+        /// - Block and Item Loader: 0.2
+        /// - Recipes (Smithing, Knapping, Clayforming, Grid recipes, Alloys) Loader: 1
         /// </summary>
         /// <returns></returns>
         public virtual double ExecuteOrder()

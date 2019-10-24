@@ -24,6 +24,16 @@ namespace Vintagestory.API.Server
         Overlapping
     }
 
+    public enum EnumPlayerAccessResult
+    {
+        Denied,
+        OkOwner,
+        OkGroup,
+        OkPrivilege,
+        OkGrantedPlayer,
+        OkGrantedGroup
+    }
+
     
     [ProtoContract]
     public class LandClaim
@@ -58,7 +68,7 @@ namespace Vintagestory.API.Server
         [ProtoMember(10)]
         public Dictionary<string, string> PermittedPlayerLastKnownPlayerName = new Dictionary<string, string>();
         [ProtoMember(11)]
-        public bool AllowUse;
+        public bool AllowUseEveryone;
 
         public BlockPos Center
         {
@@ -154,28 +164,40 @@ namespace Vintagestory.API.Server
             };
         }
 
-        public bool CanPlayerAccess(IServerPlayer player, EnumBlockAccessFlags claimFlag)
+        public EnumPlayerAccessResult TestPlayerAccess(IServerPlayer player, EnumBlockAccessFlags claimFlag)
         {
             // Owner
-            if (player.PlayerUID.Equals(OwnedByPlayerUid) || player.Groups.Any((ms) => ms.GroupUid == OwnedByPlayerGroupUid)) return true;
+            if (player.PlayerUID.Equals(OwnedByPlayerUid))
+            {
+                return EnumPlayerAccessResult.OkOwner;
+            }
+
+            if (OwnedByPlayerGroupUid > 0 && player.Groups.Any((ms) => ms.GroupUid == OwnedByPlayerGroupUid))
+            {
+                return EnumPlayerAccessResult.OkGroup;
+            }
+
             // Has higher priv level
-            if (player.Role.PrivilegeLevel > ProtectionLevel && player.WorldData.CurrentGameMode == EnumGameMode.Creative) return true;
+            if (player.Role.PrivilegeLevel > ProtectionLevel && player.WorldData.CurrentGameMode == EnumGameMode.Creative)
+            {
+                return EnumPlayerAccessResult.OkPrivilege;
+            }
 
             EnumBlockAccessFlags flags;
             if (PermittedPlayerUids.TryGetValue(player.PlayerUID, out flags) && (flags & claimFlag) > 0)
             {
-                return true;
+                return EnumPlayerAccessResult.OkGrantedPlayer;
             }
             
             foreach (PlayerGroupMembership group in player.Groups)
             {
                 if (PermittedPlayerGroupIds.TryGetValue(group.GroupUid, out flags) && (flags & claimFlag) > 0)
                 {
-                    return true;
+                    return EnumPlayerAccessResult.OkGrantedGroup;
                 }
             }
 
-            return false;
+            return EnumPlayerAccessResult.Denied;
         }
 
 

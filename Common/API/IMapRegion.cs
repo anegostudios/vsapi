@@ -49,6 +49,11 @@ namespace Vintagestory.API.Common
         IntMap ForestMap { get; set; }
 
         /// <summary>
+        /// Holds a beach strength map
+        /// </summary>
+        IntMap BeachMap { get; set; }
+        
+        /// <summary>
         /// Holds the landform indices
         /// </summary>
         IntMap LandformMap { get; set; }

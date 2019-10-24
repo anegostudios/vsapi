@@ -19,6 +19,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public string RightTopText;
 
+        public string HoverText;
+
         /// <summary>
         /// The y offset of the right top text
         /// </summary>

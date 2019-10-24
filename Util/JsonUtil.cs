@@ -36,6 +36,11 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public static T FromString<T>(string data)
+        {
+            return JsonConvert.DeserializeObject<T>(data);
+        }
+
         /// <summary>
         /// Converts the object to json.
         /// </summary>
@@ -45,6 +50,11 @@ namespace Vintagestory.API.Common
         public static byte[] ToBytes<T>(T obj)
         {
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj));
+        }
+
+        public static string ToString<T>(T obj)
+        {
+            return JsonConvert.SerializeObject(obj);
         }
 
 

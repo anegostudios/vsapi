@@ -359,6 +359,14 @@ namespace Vintagestory.API.MathTools
             return (float)(dx * dx + dz * dz);
         }
 
+        public float HorizontalSquareDistanceTo(double x, double z)
+        {
+            double dx = X - x;
+            double dz = Z - z;
+
+            return (float)(dx * dx + dz * dz);
+        }
+
         #region Operators
         public static Vec3d operator -(Vec3d left, Vec3d right)
         {

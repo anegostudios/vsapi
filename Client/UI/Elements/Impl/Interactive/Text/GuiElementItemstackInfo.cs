@@ -9,7 +9,7 @@ namespace Vintagestory.API.Client
 {
     public delegate string InfoTextDelegate(ItemSlot slot);
 
-    class GuiElementItemstackInfo : GuiElementTextBase
+    public class GuiElementItemstackInfo : GuiElementTextBase
     {
         public static double ItemStackSize = GuiElementPassiveItemSlot.unscaledItemSize * 2.5;
         public static int MarginTop = 24;

@@ -11,8 +11,8 @@ namespace Vintagestory.API.Common
     {
         public static Dictionary<string, AssetCategory> categories = new Dictionary<string, AssetCategory>(14);
 
-        public static AssetCategory blocktypes = new AssetCategory("blocktypes", true, EnumAppSide.Universal);
-        public static AssetCategory itemtypes = new AssetCategory("itemtypes", true, EnumAppSide.Universal);
+        public static AssetCategory blocktypes = new AssetCategory("blocktypes", true, EnumAppSide.Server);
+        public static AssetCategory itemtypes = new AssetCategory("itemtypes", true, EnumAppSide.Server);
         public static AssetCategory lang = new AssetCategory("lang", false, EnumAppSide.Universal);
         public static AssetCategory lore = new AssetCategory("journal", false, EnumAppSide.Universal);
         public static AssetCategory patches = new AssetCategory("patches", false, EnumAppSide.Universal);

@@ -46,12 +46,57 @@ namespace Vintagestory.API.MathTools
                 else W = value; }
         }
 
+        public Vec3d XYZ => new Vec3d(X, Y, Z);
+
         public void Set(double x, double y, double z, double w)
         {
             this.X = x;
             this.Y = y;
             this.Z = z;
             this.W = w;
+        }
+
+        public float SquareDistanceTo(float x, float y, float z)
+        {
+            double dx = X - x;
+            double dy = Y - y;
+            double dz = Z - z;
+
+            return (float)(dx * dx + dy * dy + dz * dz);
+        }
+
+        public float SquareDistanceTo(double x, double y, double z)
+        {
+            double dx = X - x;
+            double dy = Y - y;
+            double dz = Z - z;
+
+            return (float)(dx * dx + dy * dy + dz * dz);
+        }
+
+        public float SquareDistanceTo(Vec3d pos)
+        {
+            double dx = X - pos.X;
+            double dy = Y - pos.Y;
+            double dz = Z - pos.Z;
+
+            return (float)(dx * dx + dy * dy + dz * dz);
+        }
+
+        public float HorizontalSquareDistanceTo(Vec3d pos)
+        {
+            double dx = X - pos.X;
+            double dz = Z - pos.Z;
+
+            return (float)(dx * dx + dz * dz);
+        }
+
+        public float HorizontalSquareDistanceTo(double x, double z)
+        {
+            double dx = X - x;
+            double dz = Z - z;
+
+            return (float)(dx * dx + dz * dz);
         }
     }
 }
