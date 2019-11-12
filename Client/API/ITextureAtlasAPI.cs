@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -54,12 +55,13 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Size of one block texture atlas
         /// </summary>
-        int Size { get; }
+        Size2i Size { get; }
 
         /// <summary>
         /// As configured in the clientsettings.json divided by the texture atlas size
         /// </summary>
-        float SubPixelPadding { get; }
+        float SubPixelPaddingX { get; }
+        float SubPixelPaddingY { get; }
 
         /// <summary>
         /// Returns the default texture atlas position for all blocks, referenced  by the texturesubid
@@ -99,20 +101,18 @@ namespace Vintagestory.API.Client
         void FreeTextureSpace(int textureSubId);
         
         /// <summary>
-        /// Returns an rgba value picked randomly inside the given texture (defined by its sub-id) of given item
+        /// Returns an rgba value picked randomly inside the given texture (defined by its sub-id)
         /// </summary>
         /// <param name="textureSubId"></param>
         /// <returns></returns>
-        int GetRandomPixel(int textureSubId);
+        int GetRandomColor(int textureSubId);
 
         /// <summary>
-        /// Returns you an rgba value picked inside the texture subid of given block at given relative position inside its texture (0..1)
+        /// Returns you an average rgba value picked inside the texture subid
         /// </summary>
         /// <param name="textureSubId"></param>
-        /// <param name="px"></param>
-        /// <param name="py"></param>
         /// <returns></returns>
-        int GetPixelAt(int textureSubId, float px, float py);
+        int GetAverageColor(int textureSubId);
 
         /// <summary>
         /// Renders given texture into the texture atlas at given location

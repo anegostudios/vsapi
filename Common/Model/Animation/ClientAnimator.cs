@@ -178,7 +178,7 @@ namespace Vintagestory.API.Common
 
                 for (int j = 0; j < curAnimCount; j++)
                 {
-                    RunningAnimation anim = curAnims[j];
+                    RunningAnimation anim = CurAnims[j];
                     weightsByAnimationAndElement[j] = anim.ElementWeights;
 
                     AnimationFrame[] prevNextFrame = anim.Animation.PrevNextKeyFrameByFrame[(int)anim.CurrentFrame % anim.Animation.QuantityFrames];
@@ -262,7 +262,7 @@ namespace Vintagestory.API.Common
                 float weightSum = 0f;
                 for (int j = 0; j < curAnimCount; j++)
                 {
-                    RunningAnimation anim = curAnims[j];
+                    RunningAnimation anim = CurAnims[j];
                     ShapeElementWeights sew = weightsByAnimationAndElement[j][i];
 
                     if (sew.BlendMode != EnumAnimationBlendMode.Add)
@@ -273,9 +273,10 @@ namespace Vintagestory.API.Common
 
                 for (int j = 0; j < curAnimCount; j++)
                 {
-                    RunningAnimation anim = curAnims[j];
+                    RunningAnimation anim = CurAnims[j];
                     ShapeElementWeights sew = weightsByAnimationAndElement[j][i];
-                    anim.CalcBlendedWeight(weightSum, sew.BlendMode);
+                    //anim.CalcBlendedWeight(sew.Weight weightSum, sew.BlendMode); - that makes no sense efor element weights != 1
+                    anim.CalcBlendedWeight(weightSum / sew.Weight, sew.BlendMode);
 
                     ElementPose prevFramePoses = transformsByAnimation[j][i];
                     ElementPose nextFramePoses = nextFrameTransformsByAnimation[j][i];

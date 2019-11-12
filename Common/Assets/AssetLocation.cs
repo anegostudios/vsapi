@@ -9,7 +9,7 @@ namespace Vintagestory.API.Common
 {
     public interface IBlockTextureLocationDictionary
     {
-        void AddTextureLocation(AssetLocationAndSource textureLoc);
+        bool AddTextureLocation(AssetLocationAndSource textureLoc);
 
         int this[AssetLocationAndSource textureLoc] { get; }
     }

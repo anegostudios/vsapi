@@ -2,10 +2,12 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API
@@ -38,7 +40,7 @@ namespace Vintagestory.API
         public JsonObject this[string key] {
             get
             {
-                return new JsonObject(token == null ? null : token[key]);
+                return new JsonObject((token == null || !(token is JObject)) ? null : token[key]);
             }
         }
 
@@ -218,7 +220,7 @@ namespace Vintagestory.API
             if (value is string)
             {
                 float val = defaultValue;
-                float.TryParse(""+value, out val);
+                float.TryParse(""+value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val);
                 return val;
             }
 

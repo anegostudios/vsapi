@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Vintagestory.API.MathTools
 {
@@ -80,7 +81,7 @@ namespace Vintagestory.API.MathTools
         public EnumDistribution dist = EnumDistribution.UNIFORM;
 
 
-        static Random random = new Random();
+        static ThreadLocal<Random> threadsafeRand = new ThreadLocal<Random>(() => new Random());
 
         
 
@@ -166,12 +167,12 @@ namespace Vintagestory.API.MathTools
 
         public float nextFloat()
         {
-            return nextFloat(1f, random);
+            return nextFloat(1f, threadsafeRand.Value);
         }
 
         public float nextFloat(float multiplier)
         {
-            return nextFloat(multiplier, random);
+            return nextFloat(multiplier, threadsafeRand.Value);
         }
 
         public float nextFloat(float multiplier, Random rand)

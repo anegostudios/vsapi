@@ -12,7 +12,7 @@ namespace Vintagestory.API.Common
     public class ShapeElementWeights
     {
         public float Weight = 1f;
-        public EnumAnimationBlendMode BlendMode = EnumAnimationBlendMode.Add;
+        public EnumAnimationBlendMode BlendMode = EnumAnimationBlendMode.AddAverage;
         public ShapeElementWeights[] ChildElements;
     }
 
@@ -77,6 +77,11 @@ namespace Vintagestory.API.Common
 
         internal void CalcBlendedWeight(float weightSum, EnumAnimationBlendMode blendMode)
         {
+            if (weightSum == 0)
+            {
+                BlendedWeight = EasingFactor;
+                return;
+            }
             BlendedWeight = GameMath.Clamp(blendMode != EnumAnimationBlendMode.Average ? EasingFactor : EasingFactor / weightSum, 0, 1);
         }
 

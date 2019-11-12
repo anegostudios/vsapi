@@ -3,6 +3,29 @@
 namespace Vintagestory.API.Client
 {
     /// <summary>
+    /// The state of a network channel
+    /// </summary>
+    public enum EnumChannelState
+    {
+        /// <summary>
+        /// No such channel was registered
+        /// </summary>
+        NotFound,
+        /// <summary>
+        /// This channel has been registered but he server did not send the server channel information yet
+        /// </summary>
+        Registered,
+        /// <summary>
+        /// This channel has been registered client and server side. It is ready to send and receive messages
+        /// </summary>
+        Connected,
+        /// <summary>
+        /// This channel has been registered only client side. You cannot send data on this channel
+        /// </summary>
+        NotConnected
+    }
+
+    /// <summary>
     /// API Features to set up a network channel for custom server&lt;-&gt;client data exchange. Client side.
     /// </summary>
     public interface IClientNetworkAPI
@@ -15,11 +38,11 @@ namespace Vintagestory.API.Client
         IClientNetworkChannel RegisterChannel(string channelName);
 
         /// <summary>
-        /// Returns true if the server sent a channel id for given channel name. In other words, a server side counterpart for this channel probably has been set up.
+        /// Check in what state a channel currently is in
         /// </summary>
         /// <param name="channelName"></param>
         /// <returns></returns>
-        bool DidReceiveChannelId(string channelName);
+        EnumChannelState GetChannelState(string channelName);
 
         /// <summary>
         /// Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.

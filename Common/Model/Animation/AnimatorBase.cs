@@ -11,10 +11,7 @@ namespace Vintagestory.API.Common
     public delegate double WalkSpeedSupplierDelegate();
 
     /// <summary>
-    /// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary 
-    /// and does a quick'n'dirty calculation of all transformation matrices necessary for animations.
-    /// It does this by just taking the average matrix values of all currently active animations, this causes 
-    /// weird, undesired deformations on vertices but therefore is very fast to calculate
+    /// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts, progresses and stops animations when necessary 
     /// </summary>
     public abstract class AnimatorBase : IAnimator
     {
@@ -35,7 +32,7 @@ namespace Vintagestory.API.Common
         public Dictionary<string, AttachmentPointAndPose> AttachmentPointByCode = new Dictionary<string, AttachmentPointAndPose>();
 
         protected int curAnimCount = 0;
-        public RunningAnimation[] curAnims = new RunningAnimation[20];
+        public RunningAnimation[] CurAnims = new RunningAnimation[20];
 
 
         public float[] Matrices
@@ -83,13 +80,15 @@ namespace Vintagestory.API.Common
         {
             curAnimCount = 0;
 
-            double walkSpeed = WalkSpeedSupplier == null ? 1f : WalkSpeedSupplier(); // entityAgent.Controls.MovespeedMultiplier * entityAgent.GetWalkSpeedMultiplier(0.3);
+            double walkSpeed = WalkSpeedSupplier == null ? 1f : WalkSpeedSupplier();
+
+            //string debug = "";
 
             for (int i = 0; i < anims.Length; i++)
             {
                 RunningAnimation anim = anims[i];
 
-                AnimationMetaData animData = null;
+                AnimationMetaData animData;
                 activeAnimationsByAnimCode.TryGetValue(anim.Animation.Code, out animData);
 
                 bool wasActive = anim.Active;
@@ -114,7 +113,6 @@ namespace Vintagestory.API.Common
                         anim.Stop();
                         activeAnimationsByAnimCode.Remove(anim.Animation.Code);
                         onAnimationStoppedListener?.Invoke(anim.Animation.Code);
-                        //entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
                     }
 
                     if (anim.Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd)
@@ -141,14 +139,13 @@ namespace Vintagestory.API.Common
                     {
                         activeAnimationsByAnimCode.Remove(anim.Animation.Code);
                         onAnimationStoppedListener?.Invoke(anim.Animation.Code);
-                        //entity.AnimManager.OnAnimationStopped(anim.Animation.Code);
                     }
                     continue;
                 }
 
                // debug += anim.Animation.Code + "("+anim.BlendedWeight.ToString("#.##")+"),";
 
-                curAnims[curAnimCount] = anim;
+                CurAnims[curAnimCount] = anim;
 
                 if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && anim.Iterations != 0 && !anim.Active)
                 {
@@ -176,6 +173,8 @@ namespace Vintagestory.API.Common
         }
 
         protected abstract void calculateMatrices(float dt);
+        
+        // This is fast animation blending, but it creates broken blended states. So correctness goees above performance I guess.
         /*{
             bool first = true;
 

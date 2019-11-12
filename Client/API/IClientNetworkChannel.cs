@@ -24,6 +24,11 @@ namespace Vintagestory.API.Client
     public interface IClientNetworkChannel : INetworkChannel
     {
         /// <summary>
+        /// True if the server is listening on this channel
+        /// </summary>
+        bool Connected { get; }
+
+        /// <summary>
         /// Registers a handler for when you send a packet with given messageId
         /// </summary>
         /// <param name="type"></param>

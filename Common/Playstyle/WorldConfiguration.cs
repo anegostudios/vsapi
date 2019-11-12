@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,7 +45,7 @@ namespace Vintagestory.API.Common
 
                 case EnumDataType.DoubleInput:
                     float fval = 0;
-                    float.TryParse(text, out fval);
+                    float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out fval);
                     return fval;
                 case EnumDataType.DropDown:
                     return text;
@@ -66,7 +67,7 @@ namespace Vintagestory.API.Common
             switch (DataType)
             {
                 case EnumDataType.Bool:
-                    return value == "true" ? Lang.Get("On") : Lang.Get("Off");
+                    return value.ToLowerInvariant() == "true" ? Lang.Get("On") : Lang.Get("Off");
 
                 case EnumDataType.DoubleInput:
                     return value+"";

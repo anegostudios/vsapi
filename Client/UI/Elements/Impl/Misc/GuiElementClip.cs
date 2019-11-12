@@ -27,10 +27,10 @@ namespace Vintagestory.API.Client
         {
             if (clip)
             {
-               api.Render.BeginScissor(Bounds);
+               api.Render.PushScissor(Bounds);
             } else
             {
-                api.Render.EndScissor();
+                api.Render.PopScissor();
             }
         }
 

@@ -74,7 +74,7 @@ namespace Vintagestory.API.Common
             if (Textures == null || Textures.Count == 0) return 0;
 
             BakedCompositeTexture tex = Textures?.First().Value?.Baked;
-            return tex == null ? 0 : capi.ItemTextureAtlas.GetRandomPixel(tex.TextureSubId);
+            return tex == null ? 0 : capi.ItemTextureAtlas.GetRandomColor(tex.TextureSubId);
         }
 
         /// <summary>

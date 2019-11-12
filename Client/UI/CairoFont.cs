@@ -29,6 +29,8 @@ namespace Vintagestory.API.Client
 
         public FontSlant Slant = FontSlant.Normal;
 
+        public EnumTextOrientation Orientation = EnumTextOrientation.Left;
+
         static CairoFont()
         {
             surface = new ImageSurface(Format.Argb32, 1, 1);
@@ -204,11 +206,6 @@ namespace Vintagestory.API.Client
         /// <param name="ctx">The context to set up the CairoFont with.</param>
         public void SetupContext(Context ctx)
         {
-            if (Thread.CurrentThread.ManagedThreadId != RuntimeEnv.MainThreadId)
-            {
-                throw new Exception("Programming Error. SetupContext not called from main thread. Not a thread safe method");
-            }
-
             ctx.SetFontSize(GuiElement.scaled(UnscaledFontsize));
             ctx.SelectFontFace(Fontname, Slant, FontWeight);
             CairoFontOptions = new FontOptions();
@@ -304,6 +301,12 @@ namespace Vintagestory.API.Client
                 Fontname = GuiStyle.DecorativeFontName,
                 UnscaledFontsize = 24
             };
+        }
+
+        public CairoFont WithOrientation(EnumTextOrientation orientation)
+        {
+            this.Orientation = orientation;
+            return this;
         }
 
         /// <summary>

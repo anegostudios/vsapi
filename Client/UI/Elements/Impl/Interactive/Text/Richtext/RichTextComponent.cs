@@ -29,7 +29,7 @@ namespace Vintagestory.API.Client
                 // ok apparently text extents of " " is 0 on a mac? o.O
                 if (displayText[displayText.Length - 1] == ' ') PaddingRight = 0.75 * (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width); // added 0.75 multiplier because there is always too much spacing o.o
                 if (displayText[0] == ' ') PaddingLeft = 0.75 * (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width);
-                displayText = displayText.Trim(new char[] { ' ' }); 
+                //this.displayText = displayText.Trim(new char[] { ' ' }); 
             }
             else
             {
@@ -48,7 +48,7 @@ namespace Vintagestory.API.Client
         /// <param name="withFont">The font for the element.</param>
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            textUtil.DrawMultilineText(ctx, font, lines, EnumTextOrientation.Left);
+            textUtil.DrawMultilineText(ctx, font, lines, font.Orientation);
 
            /* ctx.LineWidth = 1f;
             ctx.SetSourceRGBA(0, 0, 0, 0.5);
@@ -82,7 +82,7 @@ namespace Vintagestory.API.Client
         /// <returns>True when longer than 1 line</returns>
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
         {
-            double lineheight = textUtil.GetLineHeight(font);
+            //double lineheight = textUtil.GetLineHeight(font);
             lines = textUtil.Lineize(font, displayText, flowPath, lineX + PaddingLeft, lineY);
 
             BoundsPerLine = new LineRectangled[lines.Length];

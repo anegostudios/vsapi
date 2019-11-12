@@ -1,11 +1,13 @@
 ﻿using Cairo;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -39,7 +41,7 @@ namespace Vintagestory.API.Client
         public float GetValue()
         {
             float val;
-            float.TryParse(GetText(), out val);
+            float.TryParse(GetText(), NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val);
             return val;
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -52,7 +54,7 @@ namespace Vintagestory.API.Datastructures
                 case EnumAttributeType.Float:
                     {
                         float val = 0;
-                        float.TryParse(value, out val);
+                        float.TryParse(value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val);
                         return new FloatAttribute(val);
                     }
 

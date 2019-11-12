@@ -19,6 +19,7 @@ namespace Vintagestory.API.Common
         Right
     }
 
+
     /// <summary>
     /// An autonomous, goal-directed entity which observes and acts upon an environment
     /// </summary>
@@ -55,6 +56,7 @@ namespace Vintagestory.API.Common
         protected EntityControls controls;
         protected EntityControls servercontrols;
 
+        
 
 
         public IMountable MountedOn { get; protected set; }
@@ -252,6 +254,8 @@ namespace Vintagestory.API.Common
             if (mode == EnumInteractMode.Attack)
             {
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
+                int damagetier = slot.Itemstack == null ? 0 : slot.Itemstack.Collectible.MiningTier;
+
                 IPlayer byPlayer = null;
 
                 if (byEntity is EntityPlayer && !IsActivityRunning("invulnerable"))
@@ -273,7 +277,7 @@ namespace Vintagestory.API.Common
 
                     for (int i = 0; i < 10; i++)
                     {
-                        int color = (Api as ICoreClientAPI).EntityTextureAtlas.GetRandomPixel(textureSubId);
+                        int color = (Api as ICoreClientAPI).EntityTextureAtlas.GetRandomColor(textureSubId);
 
                         tmp.Set(
                             1f - 2*(float)World.Rand.NextDouble(),
@@ -294,7 +298,8 @@ namespace Vintagestory.API.Common
                     Source = EnumDamageSource.Entity,
                     SourceEntity = byEntity,
                     Type = EnumDamageType.BluntAttack,
-                    HitPosition = hitPosition
+                    HitPosition = hitPosition,
+                    DamageTier = damagetier
                 };
 
                 if (ReceiveDamage(dmgSource, damage))
@@ -395,18 +400,27 @@ namespace Vintagestory.API.Common
             {
                 bool alive = Alive;
 
-                CurrentControls =
-                    (alive && (servercontrols.TriesToMove || ((servercontrols.Jump || servercontrols.Sneak) && servercontrols.IsClimbing)) ? EnumEntityActivity.Move : EnumEntityActivity.Idle) |
-                    (alive && Swimming && !servercontrols.FloorSitting ? EnumEntityActivity.Swim : 0) |
-                    (alive && servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
-                    (alive && servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting ? EnumEntityActivity.SneakMode : 0) |
-                    (alive && servercontrols.Sprint && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
-                    (alive && servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
-                    (alive && servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
-                    (alive && servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |
-                    (alive && !OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && LocalPos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0) |
-                    (!alive ? EnumEntityActivity.Dead : 0)
+                if (alive)
+                {
+                    CurrentControls =
+                        (servercontrols.TriesToMove || ((servercontrols.Jump || servercontrols.Sneak) && servercontrols.IsClimbing) ? EnumEntityActivity.Move : EnumEntityActivity.Idle) |
+                        (Swimming && !servercontrols.FloorSitting ? EnumEntityActivity.Swim : 0) |
+                        (servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
+                        (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting ? EnumEntityActivity.SneakMode : 0) |
+                        (servercontrols.Sprint && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
+                        (servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
+                        (servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
+                        (servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |
+                        (!OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && LocalPos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0)
+                    ;
+                }
+                else
+                {
+                    CurrentControls = EnumEntityActivity.Dead;
                 ;
+                }
+
+                
                 CurrentControls = CurrentControls == 0 ? EnumEntityActivity.Idle : CurrentControls;
             }
 
@@ -416,6 +430,7 @@ namespace Vintagestory.API.Common
             {
                 AnimationMetaData defaultAnim = null;
                 bool anyAverageAnimActive = false;
+                bool skipDefaultAnim = false;
 
                 AnimationMetaData[] animations = Properties.Client.Animations;
                 for (int i = 0; animations != null && i < animations.Length; i++)
@@ -425,8 +440,9 @@ namespace Vintagestory.API.Common
                     bool nowActive = anim.Matches((int)CurrentControls);
                     bool isDefaultAnim = anim?.TriggeredBy?.DefaultAnim == true;
 
-                    anyAverageAnimActive |= nowActive && anim.BlendMode == EnumAnimationBlendMode.Average;
-                    
+                    anyAverageAnimActive |= nowActive || (wasActive && !anim.WasStartedFromTrigger);
+                    skipDefaultAnim |= (nowActive || (wasActive && !anim.WasStartedFromTrigger)) && anim.SupressDefaultAnimation;
+
                     if (isDefaultAnim)
                     {
                         defaultAnim = anim;
@@ -445,10 +461,15 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                if (!anyAverageAnimActive && defaultAnim != null)
+                if (!anyAverageAnimActive && defaultAnim != null && Alive && !skipDefaultAnim)
                 {
                     defaultAnim.WasStartedFromTrigger = true;
                     AnimManager.StartAnimation(defaultAnim);
+                }
+
+                if ((!Alive || skipDefaultAnim) && defaultAnim != null)
+                {
+                    AnimManager.StopAnimation(defaultAnim.Code);
                 }
             }
 
@@ -478,7 +499,7 @@ namespace Vintagestory.API.Common
         {
             ItemStack rightstack = RightHandItemSlot?.Itemstack;
 
-            bool nowUseStack = servercontrols.RightMouseDown;
+            bool nowUseStack = servercontrols.RightMouseDown && !servercontrols.LeftMouseDown;
             bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
 
             bool nowHitStack = servercontrols.LeftMouseDown;
@@ -570,17 +591,8 @@ namespace Vintagestory.API.Common
             {
                 multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideblock.WalkSpeedMultiplier);
             }
-            
 
-            // Apply walk speed modifiers.
-            var attribute = WatchedAttributes.GetTreeAttribute("walkSpeedModifiers");
-            if (attribute?.Count > 0)
-            {
-                // Enumerate over all values in this attribute as tree attributes, then
-                // multiply their "Value" properties together with the current multiplier.
-                multiplier *= attribute.Values.Cast<ITreeAttribute>()
-                    .Aggregate(1.0F, (current, modifier) => current * modifier.GetFloat("Value"));
-            }
+            multiplier *= Stats.GetBlended("walkspeed");
 
             return multiplier;
         }
@@ -592,24 +604,20 @@ namespace Vintagestory.API.Common
         /// <param name="key"></param>
         /// <param name="value"></param>
         /// <param name="persistent">Whether the modifier should be saved and loaded.</param>
+        [Obsolete("Use entity.Stats.Set(\"walkspeed\", key, value, persistent) instead")]
         public virtual void SetWalkSpeedModifier(string key, float value, bool persistent)
         {
-            var attribute = WatchedAttributes
-                .GetOrAddTreeAttribute("walkSpeedModifiers")
-                .GetOrAddTreeAttribute(key);
-            
-            attribute.SetFloat("Value", value);
-            attribute.SetBool("Persistent", persistent);
+            Stats.Set("walkspeed", key, value, persistent);
         }
 
         /// <summary>
         /// Removes a previously set walk speed modifier. Does nothing if it doesn't exist.
         /// </summary>
         /// <param name="key"></param>
+        [Obsolete("Use entity.Stats.Remove(\"walkspeed\", key) instead")]
         public virtual void RemoveWalkSpeedModifier(string key)
         {
-            WatchedAttributes.GetTreeAttribute("walkSpeedModifiers")
-                ?.RemoveAttribute(key);
+            Stats.Remove("walkspeed", key);
         }
 
 
@@ -633,20 +641,6 @@ namespace Vintagestory.API.Common
                 
             }
 
-            var walkSpeedAttr = WatchedAttributes.GetTreeAttribute("walkSpeedModifiers");
-            if (walkSpeedAttr?.Count > 0)
-            {
-                var clone = walkSpeedAttr.Clone();
-                // Don't save any non-persistent walk speed modifiers.
-                foreach (var pair in clone)
-                {
-                    var key        = pair.Key;
-                    var persistent = ((ITreeAttribute)pair.Value).GetBool("Persistent");
-                    if (!persistent) walkSpeedAttr.RemoveAttribute(key);
-                }
-                // Restore the original values.
-                WatchedAttributes["walkSpeedModifiers"] = clone;
-            }
 
             base.ToBytes(writer, forClient);
             controls.ToBytes(writer);
@@ -663,7 +657,7 @@ namespace Vintagestory.API.Common
         {
             base.FromBytes(reader, forClient);
             controls.FromBytes(reader, LoadControlsFromServer);
-
+            
             if (!WatchedAttributes.HasAttribute("mountedOn"))
             {
                 TryUnmount();

@@ -519,6 +519,11 @@ namespace Vintagestory.API.Client
             base.OnKeyDown(api, args);
         }
 
+        public override void OnMouseDown(ICoreClientAPI api, MouseEvent mouse)
+        {
+            base.OnMouseDown(api, mouse);
+        }
+
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;

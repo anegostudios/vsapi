@@ -11,12 +11,12 @@ namespace Vintagestory.API.Common
         public EnumDamageSource Source;
 
         /// <summary>
-        /// the type of damage that was taken.
+        /// The type of damage that was taken.
         /// </summary>
         public EnumDamageType Type;
 
         /// <summary>
-        /// The hit position of the damage.
+        /// The hit position of where the damage occured.
         /// </summary>
         public Vec3d HitPosition;
 
@@ -28,20 +28,25 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The source block the damage came from. (if any)
         /// </summary>
-        public Block sourceBlock;
+        public Block SourceBlock;
 
         /// <summary>
         /// the location of the damage source.
         /// </summary>
-        public Vec3d sourcePos;
+        public Vec3d SourcePos;
 
         /// <summary>
-        /// Fetches the location of the damage source (reliable position)
+        /// Tier of the weapon used to damage the entity (if any)
+        /// </summary>
+        public int DamageTier = 0;
+
+        /// <summary>
+        /// Fetches the location of the damage source from either SourcePos or SourceEntity
         /// </summary>
         /// <returns></returns>
         public Vec3d GetSourcePosition()
         {
-            return SourceEntity == null ? sourcePos : SourceEntity.Pos.XYZ;
+            return SourceEntity == null ? SourcePos : SourceEntity.Pos.XYZ;
         }
     }
 }

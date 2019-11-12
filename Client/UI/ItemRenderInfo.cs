@@ -1,6 +1,7 @@
 ﻿
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
@@ -27,7 +28,7 @@ namespace Vintagestory.API.Client
         /// The texture to be used when rendering. Should probalby be the texture id of the block or item texture atlas
         /// </summary>
         public int TextureId;
-        public int TextureWidth;
+        public Size2i TextureSize = new Size2i();
         /// <summary>
         /// For discarding fragments with alpha value below this threshold
         /// </summary>

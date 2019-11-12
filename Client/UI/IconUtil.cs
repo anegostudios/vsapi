@@ -15544,7 +15544,7 @@ namespace Vintagestory.API.Client
         }
 
         
-        public void DrawMapPlayer(Context cr, int x, int y, float width, float height, double[] rgba)
+        public void DrawMapPlayer(Context cr, int x, int y, float width, float height, double[] strokeRgba, double[] fillRgba)
         {
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
@@ -15558,7 +15558,7 @@ namespace Vintagestory.API.Client
             cr.Matrix = matrix;
 
             cr.Operator = Operator.Over;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            pattern = new SolidPattern(fillRgba[0], fillRgba[1], fillRgba[2], fillRgba[3]);
             cr.SetSource(pattern);
 
             cr.NewPath();
@@ -15571,17 +15571,16 @@ namespace Vintagestory.API.Client
             cr.MoveTo(19.75, 14.835938);
             cr.Tolerance = 0.1;
             cr.Antialias = Antialias.Default;
-            //cr.FillRule = FillRule.Winding;
-            //cr.FillPreserve();
-            cr.Stroke();
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
             if (pattern != null) pattern.Dispose();
 
             cr.Operator = Operator.Over;
-            cr.LineWidth = 4;
+            cr.LineWidth = 2;
             cr.MiterLimit = 10;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            pattern = new SolidPattern(strokeRgba[0], strokeRgba[1], strokeRgba[2], strokeRgba[3]);
             cr.SetSource(pattern);
 
             cr.NewPath();
@@ -15600,7 +15599,7 @@ namespace Vintagestory.API.Client
             if (pattern != null) pattern.Dispose();
 
             cr.Operator = Operator.Over;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            pattern = new SolidPattern(fillRgba[0], fillRgba[1], fillRgba[2], fillRgba[3]);
             cr.SetSource(pattern);
 
             cr.NewPath();
@@ -15618,11 +15617,11 @@ namespace Vintagestory.API.Client
             if (pattern != null) pattern.Dispose();
 
             cr.Operator = Operator.Over;
-            cr.LineWidth = 4;
+            cr.LineWidth = 2;
             cr.MiterLimit = 10;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;
-            pattern = new SolidPattern(rgba[0], rgba[1], rgba[2], rgba[3]);
+            pattern = new SolidPattern(strokeRgba[0], strokeRgba[1], strokeRgba[2], strokeRgba[3]);
             cr.SetSource(pattern);
 
             cr.NewPath();
@@ -15638,6 +15637,49 @@ namespace Vintagestory.API.Client
             matrix = new Matrix(0.992366, 0, 0, 0.992366, 0, 0.148855);
             pattern.Matrix = matrix;
             cr.StrokePreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(fillRgba[0], fillRgba[1], fillRgba[2], fillRgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(11.558594, 34.703125);
+            cr.CurveTo(9.667969, 34.386719, 7.675781, 33.269531, 6.339844, 31.769531);
+            cr.CurveTo(2.125, 27.050781, 4, 19.707031, 10, 17.4375);
+            cr.CurveTo(11.214844, 16.980469, 13.53125, 16.816406, 14.878906, 17.097656);
+            cr.CurveTo(17.867188, 17.71875, 20.46875, 20.09375, 21.511719, 23.164063);
+            cr.CurveTo(21.960938, 24.472656, 22.015625, 26.71875, 21.636719, 28.167969);
+            cr.CurveTo(20.519531, 32.460938, 15.929688, 35.433594, 11.558594, 34.703125);
+            cr.ClosePath();
+            cr.MoveTo(11.558594, 34.703125);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
+            if (pattern != null) pattern.Dispose();
+
+            cr.Operator = Operator.Over;
+            pattern = new SolidPattern(fillRgba[0], fillRgba[1], fillRgba[2], fillRgba[3]);
+            cr.SetSource(pattern);
+
+            cr.NewPath();
+            cr.MoveTo(17.296875, 13.511719);
+            cr.CurveTo(17.160156, 13.433594, 16.519531, 13.253906, 15.871094, 13.105469);
+            cr.CurveTo(13.867188, 12.65625, 11.019531, 12.789063, 8.785156, 13.433594);
+            cr.LineTo(8.386719, 13.550781);
+            cr.LineTo(8.492188, 12.335938);
+            cr.CurveTo(8.722656, 9.628906, 9.820313, 6.734375, 11.15625, 5.308594);
+            cr.CurveTo(12.140625, 4.25, 12.890625, 3.988281, 13.753906, 4.398438);
+            cr.CurveTo(15.496094, 5.226563, 17.199219, 8.871094, 17.5625, 12.554688);
+            cr.CurveTo(17.621094, 13.164063, 17.640625, 13.660156, 17.605469, 13.65625);
+            cr.CurveTo(17.570313, 13.652344, 17.433594, 13.589844, 17.296875, 13.511719);
+            cr.ClosePath();
+            cr.MoveTo(17.296875, 13.511719);
+            cr.Tolerance = 0.1;
+            cr.Antialias = Antialias.Default;
+            cr.FillRule = FillRule.Winding;
+            cr.FillPreserve();
             if (pattern != null) pattern.Dispose();
 
             cr.Restore();

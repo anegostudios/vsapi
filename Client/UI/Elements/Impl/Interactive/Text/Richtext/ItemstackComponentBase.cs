@@ -66,6 +66,7 @@ namespace Vintagestory.API.Client
 
         public void RenderItemstackTooltip(ItemSlot slot, double renderX, double renderY, float dt)
         {
+
             parentBounds.fixedX = renderX / RuntimeEnv.GUIScale;
             parentBounds.fixedY = renderY / RuntimeEnv.GUIScale;
             parentBounds.CalcWorldBounds();

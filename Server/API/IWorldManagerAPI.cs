@@ -54,7 +54,7 @@ namespace Vintagestory.API.Server
         Dictionary<long, IMapChunk> AllLoadedMapchunks { get; }
 
         /// <summary>
-        /// Returns a (cloned) list of all currently loaded chunks. The key is the 3d index of the chunk, can be turned into an x/y/z coord
+        /// Returns a (cloned) list of all currently loaded chunks. The key is the 3d index of the chunk, can be turned into an x/y/z coord. Warning: This locks the loaded chunk dictionary during the clone, preventing other threads from updating it. In other words: Using this method often will have a significant performance impact.
         /// </summary>
         Dictionary<long, IServerChunk> AllLoadedChunks { get; }
 

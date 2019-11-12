@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common.Entities
@@ -594,13 +595,13 @@ namespace Vintagestory.API.Common.Entities
 
         public string OnlyPosToString()
         {
-            return X.ToString("#.##", CultureInfo.InvariantCulture) + ", " + Y.ToString("#.##", CultureInfo.InvariantCulture) + ", " + Z.ToString("#.##", CultureInfo.InvariantCulture);
+            return X.ToString("#.##", GlobalConstants.DefaultCultureInfo) + ", " + Y.ToString("#.##", GlobalConstants.DefaultCultureInfo) + ", " + Z.ToString("#.##", GlobalConstants.DefaultCultureInfo);
         }
 
 
         public string OnlyAnglesToString()
         {
-            return roll.ToString("#.##", CultureInfo.InvariantCulture) + ", " + yaw.ToString("#.##", CultureInfo.InvariantCulture) + pitch.ToString("#.##", CultureInfo.InvariantCulture);
+            return roll.ToString("#.##", GlobalConstants.DefaultCultureInfo) + ", " + yaw.ToString("#.##", GlobalConstants.DefaultCultureInfo) + pitch.ToString("#.##", GlobalConstants.DefaultCultureInfo);
         }
 
         /// <summary>

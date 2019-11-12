@@ -373,6 +373,30 @@ namespace Vintagestory.API.Common
         void PlaySoundAt(AssetLocation location, Entity atEntity, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 
         /// <summary>
+        /// Plays given sound at given position.
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="atEntity"></param>
+        /// <param name="dualCallByPlayer"></param>
+        /// <param name="pitch"></param>
+        /// <param name="range"></param>
+        /// <param name="volume"></param>
+        void PlaySoundAt(AssetLocation location, Entity atEntity, IPlayer dualCallByPlayer, float pitch, float range = 32, float volume = 1f);
+
+        /// <summary>
+        /// Plays given sound at given position.
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="posx"></param>
+        /// <param name="posy"></param>
+        /// <param name="posz"></param>
+        /// <param name="dualCallByPlayer"></param>
+        /// <param name="pitch"></param>
+        /// <param name="range"></param>
+        /// <param name="volume"></param>
+        void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer, float pitch, float range = 32, float volume = 1f);
+
+        /// <summary>
         /// Plays given sound at given player position.
         /// </summary>
         /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
@@ -392,6 +416,7 @@ namespace Vintagestory.API.Common
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
         void PlaySoundFor(AssetLocation location, IPlayer forPlayer, bool randomizePitch = true, float range = 32, float volume = 1f);
+        void PlaySoundFor(AssetLocation location, IPlayer forPlayer, float pitch, float range = 32, float volume = 1f);
 
 
         /// <summary>

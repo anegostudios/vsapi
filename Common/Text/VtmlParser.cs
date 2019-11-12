@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -113,7 +115,7 @@ namespace Vintagestory.API.Common
 
             CairoFont prevFont = fontStack.Pop();
 
-            if (!tag.Attributes.ContainsKey("size") || !double.TryParse(tag.Attributes["size"], out size))
+            if (!tag.Attributes.ContainsKey("size") || !double.TryParse(tag.Attributes["size"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out size))
             {
                 size = prevFont.UnscaledFontsize;
             }
@@ -132,7 +134,7 @@ namespace Vintagestory.API.Common
             }
 
             double opacity;
-            if (tag.Attributes.ContainsKey("opacity") && double.TryParse(tag.Attributes["opacity"], out opacity))
+            if (tag.Attributes.ContainsKey("opacity") && double.TryParse(tag.Attributes["opacity"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out opacity))
             {
                 color = (double[])color.Clone();
                 color[3] *= opacity;
@@ -147,7 +149,7 @@ namespace Vintagestory.API.Common
                 weight = prevFont.FontWeight;
             }
 
-            if (!tag.Attributes.ContainsKey("lineheight") || !double.TryParse(tag.Attributes["lineheight"], out lineHeight))
+            if (!tag.Attributes.ContainsKey("lineheight") || !double.TryParse(tag.Attributes["lineheight"], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out lineHeight))
             {
                 lineHeight = prevFont.LineHeightMultiplier;
             }
@@ -159,7 +161,7 @@ namespace Vintagestory.API.Common
 
 
 
-        private static bool parseHexColor(string colorText, out double[] color)
+        public static bool parseHexColor(string colorText, out double[] color)
         {
             System.Drawing.Color cl = ColorTranslator.FromHtml(colorText);
             if (cl == null)
@@ -170,6 +172,11 @@ namespace Vintagestory.API.Common
 
             color = new double[] { cl.R / 255.0, cl.G / 255.0, cl.B / 255.0, cl.A / 255.0 };
             return true;
+        }
+
+        public static string toHexColor(double[] color)
+        {
+            return "#" + ((int)(color[0] * 255)).ToString("X2") + ((int)(color[1] * 255)).ToString("X2") + ((int)(color[2] * 255)).ToString("X2");
         }
     }
 

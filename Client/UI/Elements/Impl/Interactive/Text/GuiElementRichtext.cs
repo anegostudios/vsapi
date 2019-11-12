@@ -19,7 +19,7 @@ namespace Vintagestory.API.Client
 
         public static bool DebugLogging = false;
 
-        LoadedTexture richtTextTexture;
+        public LoadedTexture richtTextTexture;
 
         public bool Debug = false;
         
@@ -31,12 +31,36 @@ namespace Vintagestory.API.Client
                 if (flowPath == null) return 0;
 
                 double x = 0;
-                foreach (var val in flowPath)
+                for (int i = 0; i < Components.Length; i++)
                 {
-                    x = Math.Max(x, val.X2);
+                    var cmp = Components[i];
+                    for (int j = 0; j < cmp.BoundsPerLine.Length; j++)
+                    {
+                        x = Math.Max(x, cmp.BoundsPerLine[j].X + cmp.BoundsPerLine[j].Width);
+                    }
                 }
 
                 return x;
+            }
+        }
+
+        public double TotalHeight
+        {
+            get
+            {
+                if (flowPath == null) return 0;
+
+                double y = 0;
+                for (int i = 0; i < Components.Length; i++)
+                {
+                    var cmp = Components[i];
+                    for (int j = 0; j < cmp.BoundsPerLine.Length; j++)
+                    {
+                        y = Math.Max(y, cmp.BoundsPerLine[j].Y + cmp.BoundsPerLine[j].Height);
+                    }
+                }
+
+                return y;
             }
         }
 
@@ -55,9 +79,10 @@ namespace Vintagestory.API.Client
 
         public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
-            // Padding seems broken, so don't even try to add padding. (also what for... using margin achieves the same effect)
-            Bounds.fixedPaddingX = 0;
-            Bounds.fixedPaddingY = 0;
+            ElementBounds rtbounds = Bounds.CopyOnlySize();
+            rtbounds.fixedPaddingX = 0;
+            rtbounds.fixedPaddingY = 0;
+
 
             Bounds.CalcWorldBounds();
 
@@ -66,7 +91,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Paint();
 
-            ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
+            ComposeFor(rtbounds, ctx, surface);
             generateTexture(surface, ref richtTextTexture);
 
             ctx.Dispose();
@@ -427,7 +452,7 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
             Context ctx = genContext(surface);
             ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
-
+            
             generateTexture(surface, ref richtTextTexture);
 
             ctx.Dispose();
@@ -435,6 +460,18 @@ namespace Vintagestory.API.Client
         }
 
         public void SetNewText(string vtmlCode, CairoFont baseFont, Common.Action<LinkTextComponent> didClickLink = null)
+        {
+            SetNewTextWithoutRecompose(vtmlCode, baseFont, didClickLink);
+            RecomposeText();
+        }
+
+        public void SetNewText(RichTextComponent[] comps)
+        {
+            this.Components = comps;
+            RecomposeText();
+        }
+
+        public void SetNewTextWithoutRecompose(string vtmlCode, CairoFont baseFont, Common.Action<LinkTextComponent> didClickLink = null)
         {
             if (this.Components != null)
             {
@@ -445,14 +482,14 @@ namespace Vintagestory.API.Client
             }
 
             this.Components = VtmlUtil.Richtextify(api, vtmlCode, baseFont, didClickLink);
-            RecomposeText();
         }
 
-        public void SetNewText(RichTextComponent[] comps)
+        public void RecomposeInto(ImageSurface surface, Context ctx)
         {
-            this.Components = comps;
-            RecomposeText();
+            ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
+            generateTexture(surface, ref richtTextTexture);
         }
+
 
         public override void Dispose()
         {

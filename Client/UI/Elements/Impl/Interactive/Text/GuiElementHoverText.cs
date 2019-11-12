@@ -19,7 +19,7 @@ namespace Vintagestory.API.Client
         
         LoadedTexture hoverTexture;
         int unscaledMaxWidth;
-        int unscaledPadding = 5;
+        
         double hoverWidth, hoverHeight;
 
         bool autoDisplay = true;
@@ -30,8 +30,8 @@ namespace Vintagestory.API.Client
 
         public TextBackground Background;
 
-
-        public EnumTextOrientation textOrientation = EnumTextOrientation.Left;
+        double padding;
+        
 
         GuiElementRichtext descriptionElement;
 
@@ -49,18 +49,27 @@ namespace Vintagestory.API.Client
         /// <param name="font">The font of the text.</param>
         /// <param name="maxWidth">The width of the text.</param>
         /// <param name="bounds">the bounds of the text.</param>
-        public GuiElementHoverText(ICoreClientAPI capi, string text, CairoFont font, int maxWidth, ElementBounds bounds) : base(capi, text, font, bounds)
+        public GuiElementHoverText(ICoreClientAPI capi, string text, CairoFont font, int maxWidth, ElementBounds bounds, TextBackground background = null) : base(capi, text, font, bounds)
         {
+            this.Background = background;
+            if (background == null)
+            {
+                this.Background = GuiElementHoverText.DefaultBackground;
+            }
             this.unscaledMaxWidth = maxWidth;
 
             hoverTexture = new LoadedTexture(capi);
 
+            padding = Background.Padding;
             ElementBounds descBounds = bounds.CopyOnlySize();
+            descBounds.WithFixedPadding(0);
             descBounds.WithParent(bounds);
             descBounds.IsDrawingSurface = true;
+            descBounds.fixedWidth = maxWidth;
 
             descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
             descriptionElement.zPos = 1001;
+            
         }
 
         public override void BeforeCalcBounds()
@@ -75,33 +84,25 @@ namespace Vintagestory.API.Client
             
         }
 
-        void RecalcBounds(string desc)
+        void RecalcBounds()
         {
-            descriptionElement.BeforeCalcBounds();
-
-            double currentWidth = descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10;
-            double currentHeight = 0;
-
-            currentWidth = Math.Min(currentWidth, unscaledMaxWidth);
-
-            hoverWidth = currentWidth + Bounds.fixedPaddingX;
-            descriptionElement.Bounds.fixedWidth = currentWidth;
-            
-            descriptionElement.Bounds.CalcWorldBounds();
+            double currentWidth = descriptionElement.Bounds.fixedWidth;
+            currentWidth =  Math.Min(autoWidth ? descriptionElement.MaxLineWidth : currentWidth, unscaledMaxWidth);
+            hoverWidth = currentWidth + 2 * padding;
 
             // Height depends on the width
-            double descTextHeight = descriptionElement.Bounds.fixedHeight;
-            currentHeight = Math.Max(descTextHeight, scaled(10) + 40);
+            double descTextHeight = descriptionElement.Bounds.fixedHeight + 2 * padding;
+            double currentHeight = Math.Max(descTextHeight, 20);
             
-            descriptionElement.Bounds.fixedHeight = currentHeight;
-            hoverHeight = scaled(10) + currentHeight / RuntimeEnv.GUIScale;
+            hoverHeight = scaled(currentHeight);
+            hoverWidth = scaled(hoverWidth);
         }
 
 
         void Recompose()
         {
             descriptionElement.SetNewText(text, Font);
-            RecalcBounds(text);
+            RecalcBounds();
             Bounds.CalcWorldBounds();
 
             ElementBounds textBounds = Bounds.CopyOnlySize();
@@ -137,7 +138,6 @@ namespace Vintagestory.API.Client
                 ctx.Stroke();
             }
 
-            descriptionElement.ComposeElements(ctx, surface);
 
             generateTexture(surface, ref hoverTexture);
 
@@ -162,13 +162,15 @@ namespace Vintagestory.API.Client
                     Recompose();
                 }
 
+                int pad = (int)scaled(padding);
+
                 double x = Bounds.renderX;
                 double y = Bounds.renderY;
 
                 if (followMouse)
                 {
-                    x = mouseX + 20;
-                    y = mouseY + 20;
+                    x = mouseX + 10;
+                    y = mouseY + 15;
                 }
 
                 if (x + hoverWidth > api.Render.FrameWidth)
@@ -181,10 +183,10 @@ namespace Vintagestory.API.Client
                     y -= (y + hoverHeight) - api.Render.FrameHeight;
                 }
 
-                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x, (int)y, (int)hoverWidth + 1, (int)hoverHeight + 1, 50);
+                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x + (int)Bounds.absPaddingX, (int)y + (int)Bounds.absPaddingY, (int)hoverWidth + 1, (int)hoverHeight + 1, 500);
 
-                Bounds.renderOffsetX = x - Bounds.renderX;
-                Bounds.renderOffsetY = y - Bounds.renderY;
+                Bounds.renderOffsetX = x - Bounds.renderX + pad;
+                Bounds.renderOffsetY = y - Bounds.renderY + pad;
                 descriptionElement.RenderInteractiveElements(deltaTime);
                 Bounds.renderOffsetX = 0;
                 Bounds.renderOffsetY = 0;
@@ -242,6 +244,7 @@ namespace Vintagestory.API.Client
             base.Dispose();
 
             hoverTexture.Dispose();
+            descriptionElement.Dispose();
         }
     }
 
@@ -249,7 +252,6 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a hover text to the GUI.
         /// </summary>
@@ -262,8 +264,27 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds);
-                elem.Background = GuiElementHoverText.DefaultBackground;
+                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, null);
+
+                composer.AddInteractiveElement(elem, key);
+            }
+            return composer;
+        }
+
+        /// <summary>
+        /// Adds a hover text to the GUI.
+        /// </summary>
+        /// <param name="text">The text of the text.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="width">The width of the text.</param>
+        /// <param name="bounds">The bounds of the text.</param>
+        /// <param name="key">The name of this hover text component.</param>
+        public static GuiComposer AddTranspHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, string key = null)
+        {
+            if (!composer.composed)
+            {
+                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, new TextBackground());
+                
                 composer.AddInteractiveElement(elem, key);
             }
             return composer;
@@ -281,8 +302,7 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds);
-                elem.Background = background;
+                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, background);
                 composer.AddInteractiveElement(elem, key);
             }
             return composer;

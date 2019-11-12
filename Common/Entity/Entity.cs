@@ -167,6 +167,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         protected int HurtColor = ColorUtil.ToRgba(255, 255, 100, 100);
 
+        public EntityStats Stats;
+
+
         #endregion
 
         #region Properties
@@ -275,7 +278,14 @@ namespace Vintagestory.API.Common.Entities
             set { WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value; }
         }
         private bool alive=true;
-        
+
+
+        public float IdleSoundChanceModifier
+        {
+            get { return WatchedAttributes.GetFloat("idleSoundChanceModifier", 1); }
+            set { WatchedAttributes.SetFloat("idleSoundChanceModifier", value); }
+        }
+
         /// <summary>
         /// Used by some renderers to apply an overal color tint on the entity
         /// </summary>
@@ -299,7 +309,7 @@ namespace Vintagestory.API.Common.Entities
         {
             SimulationRange = GlobalConstants.DefaultTrackingRange;
             AnimManager = new AnimationManager();
-
+            Stats = new EntityStats(this);
             WatchedAttributes.SetAttribute("animations", new TreeAttribute());
         }
 
@@ -407,6 +417,7 @@ namespace Vintagestory.API.Common.Entities
             {
                 AnimManager.HeadController = new PlayerHeadController(AnimManager, this as EntityPlayer, Properties.Client.LoadedShape);
             }
+
         }
 
 
@@ -588,16 +599,18 @@ namespace Vintagestory.API.Common.Entities
         {
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
+            //World.FrameProfiler.Mark("entity-gametick-begin");
+
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnGameTick(dt);
             }
 
-            if (World is IClientWorldAccessor && World.Rand.NextDouble() < Properties.IdleSoundChance / 100.0 && Alive)
+            if (World is IClientWorldAccessor && World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
             {
                 PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
             }
-        }
+        }   
 
 
         #region Events
@@ -1011,10 +1024,15 @@ namespace Vintagestory.API.Common.Entities
             TreeAttribute tree = new TreeAttribute();
             // Tyron 19.oct 2019. Don't write animations to the savegame. I think it causes that some animations start but never stop
             // if we want to save the creatures current state to disk, we would also need to save the current AI state!
-            if (forClient)
+            // Tyron 26 oct. Do write animations, but only the die one. 
+            // Tyron 8 nov. Do write all animations if its for the client
+            //if (forClient)
             {
-                AnimManager?.ToAttributes(tree);
+                AnimManager?.ToAttributes(tree, forClient);
             }
+
+            Stats.ToTreeAttributes(WatchedAttributes, forClient);
+
             tree.ToBytes(writer);
         }
 
@@ -1086,9 +1104,13 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
+            Stats.FromTreeAttributes(WatchedAttributes);
+
 
             // Any new data loading added here should not be loaded if below version 1.8 or 
             // you might get corrupt data from old binary animation data
+
+            
         }
 
 
@@ -1293,6 +1315,12 @@ namespace Vintagestory.API.Common.Entities
                 if (WatchedAttributes.HasAttribute("deathByPlayer")) {
                     infotext.AppendLine(Lang.Get("Killed by Player: {0}", WatchedAttributes.GetString("deathByPlayer")));
                 }
+            }
+
+            if (World.Side == EnumAppSide.Client && (World as IClientWorldAccessor).Player?.WorldData?.CurrentGameMode == EnumGameMode.Creative)
+            {
+                var healthTree = WatchedAttributes.GetTreeAttribute("health") as ITreeAttribute;
+                if (healthTree != null) infotext.AppendLine(Lang.Get("Health: {0}/{1}", healthTree.GetFloat("currenthealth"), healthTree.GetFloat("maxhealth")));
             }
 
 

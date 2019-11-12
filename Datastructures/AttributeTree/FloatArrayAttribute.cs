@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.IO;
 using System.Text;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -51,7 +52,7 @@ namespace Vintagestory.API.Datastructures
             {
                 if (i > 0) sb.Append(", ");
 
-                sb.Append(value[i].ToString(CultureInfo.InvariantCulture));
+                sb.Append(value[i].ToString(GlobalConstants.DefaultCultureInfo));
             }
             sb.Append("]");
 

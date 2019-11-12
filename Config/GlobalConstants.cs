@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Config
@@ -10,6 +13,8 @@ namespace Vintagestory.API.Config
     /// </summary>
     public class GlobalConstants
     {
+        public static CultureInfo DefaultCultureInfo = CultureInfo.InvariantCulture;
+
         /// <summary>
         /// Prefix for all default asset locations
         /// </summary>
@@ -18,7 +23,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card
         /// </summary>
-        public const int MaxAnimatedElements = 31;
+        public const int MaxAnimatedElements = 35;
 
         /// <summary>
         /// Frame time for physics simulation
@@ -130,6 +135,46 @@ namespace Vintagestory.API.Config
         public const string characterInvClassName = "character";
         public const string craftingInvClassName = "craftinggrid";
 
+
+        public static Dictionary<string, double[]> playerColorByEntitlement = new Dictionary<string, double[]>()
+        {
+            { "vsteam", new double[] { 13 / 255.0, 128 / 255.0, 62 / 255.0, 1 } },
+            { "vscontributor", new double[] { 135 / 255.0, 179 / 255.0, 148 / 255.0, 1 } },
+            { "vssupporter", new double[] { 254/255.0, 197/255.0, 0, 1 } },
+        };
+
+
+        public static Dictionary<string, TextBackground> playerTagBackgroundByEntitlement = new Dictionary<string, TextBackground>()
+        {
+            { "vsteam", new TextBackground()
+                    {
+                        FillColor = GuiStyle.DialogLightBgColor,
+                        Padding = 3,
+                        Radius = GuiStyle.ElementBGRadius,
+                        Shade = true,
+                        BorderColor = GuiStyle.DialogBorderColor,
+                        BorderWidth = 3,
+                    } },
+            { "vscontributor", new TextBackground()
+                    {
+                        FillColor = GuiStyle.DialogLightBgColor,
+                        Padding = 3,
+                        Radius = GuiStyle.ElementBGRadius,
+                        Shade = true,
+                        BorderColor = GuiStyle.DialogBorderColor,
+                        BorderWidth = 3,
+                    } },
+            { "vssupporter", new TextBackground()
+                    {
+                        FillColor = GuiStyle.DialogLightBgColor,
+                        Padding = 3,
+                        Radius = GuiStyle.ElementBGRadius,
+                        Shade = true,
+                        BorderColor = GuiStyle.DialogBorderColor,
+                        BorderWidth = 3,
+                    } },
+        };
+
         /// <summary>
         /// Channel name for the general chat
         /// </summary>
@@ -163,7 +208,11 @@ namespace Vintagestory.API.Config
         /// Allowed characters for a player group name
         /// </summary>
         public static string AllowedChatGroupChars = "a-z0-9A-Z_";
-        
+
+        /// <summary>
+        /// Bit of a helper thing for single player servers to display the correct entitlements
+        /// </summary>
+        public static string SinglePlayerEntitlements;
 
         /// <summary>
         /// The entity class used when spawning items in the world
@@ -202,8 +251,6 @@ namespace Vintagestory.API.Config
         /// Global modifier to change the block breaking speed of all tools. Can be changed during run-time. The value is multiplied to the breaking speed (default: 1)
         /// </summary>
         public static float ToolMiningSpeedModifier = 1;
-
-
 
         public static FoodSpoilageCalcDelegate FoodSpoilHealthLossMulHandler => (spoilState, stack, byEntity) => (float)Math.Max(0f, 1f - spoilState);
         public static FoodSpoilageCalcDelegate FoodSpoilSatLossMulHandler => (spoilState, stack, byEntity) => (float)Math.Max(0f, 1f - spoilState);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -17,6 +18,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// This returns the size of the atlas this texture resides in.
         /// </summary>
-        int AtlasSize { get; }
+        Size2i AtlasSize { get; }
     }
 }

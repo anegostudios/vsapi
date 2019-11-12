@@ -499,7 +499,7 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Makes a copy of the current bounds but leaves the position and padding at 0. Sets the parent to the calling bounds
+        /// Makes a copy of the current bounds but leaves the position and 0. Sets the parent to the calling bounds
         /// </summary>
         /// <returns></returns>
         public ElementBounds CopyOnlySize()

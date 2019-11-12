@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -38,12 +39,12 @@ namespace Vintagestory.API.Datastructures
 
         public override string ToJsonToken()
         {
-            return value.ToString(CultureInfo.InvariantCulture);
+            return value.ToString(GlobalConstants.DefaultCultureInfo);
         }
 
         public override string ToString()
         {
-            return value.ToString(CultureInfo.InvariantCulture);
+            return value.ToString(GlobalConstants.DefaultCultureInfo);
         }
     }
 }

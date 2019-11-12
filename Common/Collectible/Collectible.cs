@@ -1163,6 +1163,7 @@ namespace Vintagestory.API.Common
             if (GetAttackPower(stack) > 0.5f)
             {
                 dsc.AppendLine(Lang.Get("Attack power: -{0} hp", GetAttackPower(stack).ToString("0.#")));
+                dsc.AppendLine(Lang.Get("Attack tier: {0}", MiningTier));
             }
 
             if (GetAttackRange(stack) > GlobalConstants.DefaultAttackRange)
@@ -2000,6 +2001,8 @@ namespace Vintagestory.API.Common
                         SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, dstack, grindables, 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
                         components.Add(comp);
                     }
+
+                    components.Add(new RichTextComponent(capi, "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 }
 
                 if (curables.Count > 0)
@@ -2634,8 +2637,8 @@ namespace Vintagestory.API.Common
             }
 
             double nowHours = world.Calendar.TotalHours;
-            // If the colletible gets heated, retain the heat for 1.5 ingame hours
-            if (delayCooldown && attr.GetFloat("temperature") < temperature) nowHours += 1.5f;
+            // If the colletible gets heated, retain the heat for 1 ingame hour
+            if (delayCooldown && attr.GetFloat("temperature") < temperature) nowHours += 1f;
 
             attr.SetDouble("temperatureLastUpdate", nowHours);
             attr.SetFloat("temperature", temperature);

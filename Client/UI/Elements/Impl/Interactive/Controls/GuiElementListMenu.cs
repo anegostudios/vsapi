@@ -164,14 +164,16 @@ namespace Vintagestory.API.Client
             // Expandable box with list of names
             expandedBoxWidth = Bounds.InnerWidth;
             expandedBoxHeight = Values.Length * lineHeight;
-            
+
+            double scrollbarWidth = 10;
 
             for (int i = 0; i < Values.Length; i++)
             {
-                expandedBoxWidth = Math.Max(expandedBoxWidth, Font.GetTextExtents(Names[i]).Width);
+                expandedBoxWidth = Math.Max(expandedBoxWidth, Font.GetTextExtents(Names[i]).Width + scaled(scrollbarWidth + 5));
             }
+            expandedBoxWidth++;
 
-            expandedBoxWidth += 5 * scaleMul;
+            //expandedBoxWidth += 5 * scaleMul;
 
 
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)expandedBoxWidth, (int)expandedBoxHeight);
@@ -189,6 +191,7 @@ namespace Vintagestory.API.Client
             RoundRectangle(ctx, 0, 0, expandedBoxWidth, expandedBoxHeight, 1);
             ctx.FillPreserve();
             ctx.SetSourceRGBA(0,0,0,0.5);
+            ctx.LineWidth = 2;
             ctx.Stroke();
 
             double unscaledHeight = Font.GetFontExtents().Height / RuntimeEnv.GUIScale;
@@ -244,7 +247,7 @@ namespace Vintagestory.API.Client
 
 
             // Scrollbar static stuff
-            scrollbar.Bounds.WithFixedSize(10, visibleBounds.fixedHeight - 3).WithFixedPosition(expandedBoxWidth / RuntimeEnv.GUIScale - 10, 0).WithFixedPadding(0, 2);
+            scrollbar.Bounds.WithFixedSize(scrollbarWidth, visibleBounds.fixedHeight - 3).WithFixedPosition(expandedBoxWidth / RuntimeEnv.GUIScale - 10, 0).WithFixedPadding(0, 2);
             scrollbar.Bounds.WithEmptyParent();
             scrollbar.Bounds.CalcWorldBounds();
 
@@ -293,7 +296,7 @@ namespace Vintagestory.API.Client
             {
                 double scaleMul = Scale * RuntimeEnv.GUIScale;
 
-                api.Render.BeginScissor(visibleBounds);
+                api.Render.PushScissor(visibleBounds);
 
                 api.Render.Render2DTexturePremultipliedAlpha(
                     dropDownTexture.TextureId, 
@@ -322,15 +325,20 @@ namespace Vintagestory.API.Client
                 {
                     api.Render.Render2DTexturePremultipliedAlpha(
                         hoverTexture.TextureId, 
-                        (int)Bounds.renderX, 
-                        (int)(Bounds.renderY + Bounds.InnerHeight + unscaledLineHeight * scaleMul * HoveredIndex - (int)scrollOffY), 
-                        (int)expandedBoxWidth - scaled(9), 
-                        (int)unscaledLineHeight * scaleMul,
+                        (int)Bounds.renderX + 1, 
+                        (int)(Bounds.renderY + Bounds.InnerHeight + unscaledLineHeight * scaleMul * HoveredIndex - (int)scrollOffY + 1), 
+                        (int)expandedBoxWidth - scaled(10), 
+                        (int)unscaledLineHeight * scaleMul - 2,
                         111
                     );
                 }
 
-                api.Render.EndScissor();
+                api.Render.PopScissor();
+
+                if (api.Render.ScissorStack.Count > 0)
+                {
+                    api.Render.GlScissorFlag(false);
+                }
 
                 api.Render.Render2DTexturePremultipliedAlpha(
                     scrollbarTexture.TextureId,
@@ -348,6 +356,11 @@ namespace Vintagestory.API.Client
                 scrollbar.RenderInteractiveElements(deltaTime);
 
                 api.Render.GlPopMatrix();
+
+                if (api.Render.ScissorStack.Count > 0)
+                {
+                    api.Render.GlScissorFlag(true);
+                }
             }
 
         }

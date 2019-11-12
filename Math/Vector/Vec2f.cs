@@ -28,6 +28,12 @@ namespace Vintagestory.API.MathTools
             this.Y = y;
         }
 
+        public Vec2f(Size2i size)
+        {
+            this.X = size.Width;
+            this.Y = size.Height;
+        }
+
 
         #region Operators
         public static Vec2f operator -(Vec2f left, Vec2f right)

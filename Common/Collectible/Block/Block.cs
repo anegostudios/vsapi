@@ -92,6 +92,13 @@ namespace Vintagestory.API.Common
         public int LightAbsorption;
 
         /// <summary>
+        /// 0: West-East
+        /// 1: Up-Down
+        /// 2: North-South
+        /// </summary>
+        public bool[] LightTraversable = new bool[] { true, true, true };
+
+        /// <summary>
         /// A value usually between 0-9999 that indicates which blocks may be replaced with others.
         /// - Any block with replaceable value above 5000 will be washed away by water
         /// - Any block with replaceable value above 6000 will replaced when the player tries to place a block
@@ -193,7 +200,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Created on the client to cache the side ao flags by blockfacing flags plus every face with every face combined (e.g. south|west). Havin these values cached speeds up chunk tesselation.
         /// </summary>
-        public bool[] EmitSideAoByFlags;
+        public bool[] EmitSideAoOppositeByFlags;
 
 
         /// <summary>
@@ -1959,7 +1966,7 @@ namespace Vintagestory.API.Common
             }
             if (tex?.Baked == null) return 0;
 
-            int color = capi.BlockTextureAtlas.GetRandomPixel(tex.Baked.TextureSubId);
+            int color = capi.BlockTextureAtlas.GetRandomColor(tex.Baked.TextureSubId);
 
             
 
@@ -1989,7 +1996,7 @@ namespace Vintagestory.API.Common
             if (Textures == null || Textures.Count == 0) return 0;
 
             BakedCompositeTexture tex = Textures?.First().Value?.Baked;
-            return tex == null ? 0 : capi.BlockTextureAtlas.GetRandomPixel(tex.TextureSubId);
+            return tex == null ? 0 : capi.BlockTextureAtlas.GetRandomColor(tex.TextureSubId);
         }
 
 
@@ -2032,13 +2039,7 @@ namespace Vintagestory.API.Common
 
             if (textureSubId == null) return ColorUtil.WhiteArgb;
 
-            int color = ColorUtil.ReverseColorBytes(
-                ColorUtil.ColorOverlay(
-                    capi.BlockTextureAtlas.GetPixelAt((int)textureSubId, 0.4f, 0.4f),
-                    capi.BlockTextureAtlas.GetPixelAt((int)textureSubId, 0.6f, 0.6f),
-                    0.5f
-                )
-            );
+            int color = capi.BlockTextureAtlas.GetAverageColor((int)textureSubId);
 
             return color;
         }

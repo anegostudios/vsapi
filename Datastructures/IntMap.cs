@@ -48,7 +48,7 @@ namespace Vintagestory.API
         {
             return new IntMap()
             {
-                Data = new int[0],
+                Data = new int[1],
                 Size = 0
             };
         }

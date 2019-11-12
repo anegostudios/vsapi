@@ -61,7 +61,7 @@ namespace Vintagestory.API.Common
 
         public override int GetRgbaColor(ICoreClientAPI capi)
         {
-            return capi.EntityTextureAtlas.GetRandomPixel(textureSubId); ;
+            return capi.EntityTextureAtlas.GetRandomColor(textureSubId);
         }
 
         public override Vec3d GetPos()

@@ -114,7 +114,7 @@ namespace Vintagestory.API.Common
             
         }
 
-        public void ToAttributes(ITreeAttribute tree)
+        public void ToAttributes(ITreeAttribute tree, bool forClient)
         {
             
         }

@@ -363,6 +363,11 @@ namespace Vintagestory.API.Client
             ComposeWaterTexture();
         }
 
+        public void SetValue(int currentValue)
+        {
+            this.currentValue = currentValue;
+        }
+
         /// <summary>
         /// Gets the current value of the slider.
         /// </summary>

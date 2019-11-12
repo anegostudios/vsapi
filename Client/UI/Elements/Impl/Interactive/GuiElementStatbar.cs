@@ -2,6 +2,7 @@
 using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
 {
@@ -30,6 +31,7 @@ namespace Vintagestory.API.Client
         public bool ShouldFlash;
         public float FlashTime;
         public bool ShowValueOnHover=true;
+        bool valuesSet;
 
         public StatbarValueDelegate onGetStatbarValue;
         public CairoFont valueFont = CairoFont.WhiteSmallText().WithStroke(ColorUtil.BlackArgbDouble, 0.75);
@@ -51,7 +53,7 @@ namespace Vintagestory.API.Client
 
             this.color = color;
             this.rightToLeft = rightToLeft;
-            value = new Random(Guid.NewGuid().GetHashCode()).Next(100);
+            //value = new Random(Guid.NewGuid().GetHashCode()).Next(100);
 
             onGetStatbarValue = () => { return (int)value + " / " + (int)this.maxValue; };
         }
@@ -68,8 +70,29 @@ namespace Vintagestory.API.Client
             ctx.Fill();
             EmbossRoundRectangleElement(ctx, Bounds, false, 3, 1);
 
-            ComposeValueOverlay();
-            ComposeFlashOverlay();
+            if (valuesSet)
+            {
+                recomposeOverlays();
+            }
+        }
+
+        void recomposeOverlays()
+        {
+            TyronThreadPool.QueueTask(() =>
+            {
+                ComposeValueOverlay();
+                ComposeFlashOverlay();
+            });
+
+            if (ShowValueOnHover)
+            {
+                api.Gui.TextTexture.GenOrUpdateTextTexture(onGetStatbarValue(), valueFont, ref valueTexture, new TextBackground()
+                {
+                    FillColor = GuiStyle.DialogStrongBgColor,
+                    Padding = 5,
+                    BorderWidth = 2
+                });
+            }
         }
 
 
@@ -120,26 +143,19 @@ namespace Vintagestory.API.Client
                 ctx.Stroke();
             }
 
-
-            generateTexture(surface, ref barTexture);
-            
-            ctx.Dispose();
-            surface.Dispose();
-
-            if (ShowValueOnHover)
+            api.Event.EnqueueMainThreadTask(() =>
             {
-                api.Gui.TextTexture.GenOrUpdateTextTexture(onGetStatbarValue(), valueFont, ref valueTexture, new TextBackground() {
-                    FillColor = GuiStyle.DialogStrongBgColor,
-                    Padding = 5,
-                    BorderWidth = 2
-                } );
-            }
+                generateTexture(surface, ref barTexture);
+
+                ctx.Dispose();
+                surface.Dispose();
+            }, "recompstatbar");
         }
 
-        private void ComposeFlashOverlay()
+        void ComposeFlashOverlay()
         {
-            double widthRel = (double)value / (maxValue - minValue);
             valueHeight = (int)Bounds.OuterHeight + 1;
+
             ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28);
             Context ctx = new Context(surface);
 
@@ -158,10 +174,14 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Fill();
 
-            generateTexture(surface, ref flashTexture);
+            api.Event.EnqueueMainThreadTask(() =>
+            {
+                generateTexture(surface, ref flashTexture);
+                ctx.Dispose();
+                surface.Dispose();
+            }, "recompstatbar");
 
-            ctx.Dispose();
-            surface.Dispose();
+            
         }
 
 
@@ -191,7 +211,10 @@ namespace Vintagestory.API.Client
                 api.Render.RenderTexture(flashTexture.TextureId, x - 14, y - 14, Bounds.OuterWidthInt + 28, Bounds.OuterHeightInt + 28, 50, new Vec4f(1.5f, 1, 1, alpha));
             }
 
-            api.Render.RenderTexture(barTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
+            if (barTexture.TextureId > 0)
+            {
+                api.Render.RenderTexture(barTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, valueHeight);
+            }
 
             if (ShowValueOnHover && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY))
             {
@@ -218,8 +241,8 @@ namespace Vintagestory.API.Client
         public void SetValue(float value)
         {
             this.value = value;
-            ComposeValueOverlay();
-            ComposeFlashOverlay();
+            valuesSet = true;
+            recomposeOverlays();
         }
 
         public float GetValue()
@@ -235,11 +258,11 @@ namespace Vintagestory.API.Client
         /// <param name="max">The maximum value of the status bar.</param>
         public void SetValues(float value, float min, float max)
         {
+            valuesSet = true;
             this.value = value;
             minValue = min;
             maxValue = max;
-            ComposeValueOverlay();
-            ComposeFlashOverlay();
+            recomposeOverlays();
         }
 
         /// <summary>
@@ -251,8 +274,7 @@ namespace Vintagestory.API.Client
         {
             minValue = min;
             maxValue = max;
-            ComposeValueOverlay();
-            ComposeFlashOverlay();
+            recomposeOverlays();
         }
         
         public override void Dispose()

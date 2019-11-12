@@ -121,7 +121,7 @@ namespace Vintagestory.API.Common
         /// Additional attributes applied from the animation
         /// </summary>
         /// <param name="tree"></param>
-        void ToAttributes(ITreeAttribute tree);
+        void ToAttributes(ITreeAttribute tree, bool forClient);
 
         /// <summary>
         /// Gets the AnimationMetaData for the target action.

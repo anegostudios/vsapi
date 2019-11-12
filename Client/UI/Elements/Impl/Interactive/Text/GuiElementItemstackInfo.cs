@@ -68,7 +68,7 @@ namespace Vintagestory.API.Client
         {
             descriptionElement.BeforeCalcBounds();
 
-            double currentWidth = descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10;
+            double currentWidth = Math.Max(descriptionElement.MaxLineWidth, descriptionElement.Bounds.InnerWidth) / RuntimeEnv.GUIScale + 10;
             double currentHeight = 0;
 
             currentWidth += 40 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3;
@@ -216,7 +216,7 @@ namespace Vintagestory.API.Client
 
             bool recompose =
                 ((this.curStack == null) != (nowSlot?.Itemstack == null))
-                || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(curStack));
+                || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(api.World, curStack, GlobalConstants.IgnoredStackAttributes));
 
 
             if (nowSlot?.Itemstack == null)

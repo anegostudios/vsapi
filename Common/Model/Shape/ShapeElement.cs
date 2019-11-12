@@ -290,5 +290,17 @@ namespace Vintagestory.API.Common
 
             CacheInverseTransformMatrix();
         }
+
+        public void WalkRecursive(API.Common.Action<ShapeElement> onElem)
+        {
+            onElem(this);
+            if (Children != null)
+            {
+                for (int i = 0; i < Children.Length; i++)
+                {
+                    Children[i].WalkRecursive(onElem);
+                }
+            }
+        }
     }
 }

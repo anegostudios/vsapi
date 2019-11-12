@@ -6,6 +6,7 @@ using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Common
 {
+
     /// <summary>
     /// Basic interface representing an item inventory
     /// </summary>

@@ -122,8 +122,8 @@ namespace Vintagestory.API.Client
 
         int Tex2dOverlay2D { set; }
         float OverlayOpacity { set; }
-        float OverlayTextureSize { set; }
-        float BaseTextureSize { set; }
+        Vec2f OverlayTextureSize { set; }
+        Vec2f BaseTextureSize { set; }
         Vec2f BaseUvOrigin { set; }
 
     }

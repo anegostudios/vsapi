@@ -18,8 +18,8 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public string Name;
 
-        [JsonConverter(typeof(JsonObjectConverter))]
-        public JsonObject Properties = new JsonObject(new JObject());
+        [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
+        public JsonObject properties;
     }
 
     /// <summary>

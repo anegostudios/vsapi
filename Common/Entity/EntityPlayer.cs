@@ -46,6 +46,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         double eyeHeightCurrent;
 
+        /// <summary>
+        /// Set this to hook into the foot step sound creator thingy. Currently used by the armor system to create armor step sounds 
+        /// </summary>
+        public Action OnFootStep;
 
         public override bool StoreWithChunk
         {
@@ -231,7 +235,7 @@ namespace Vintagestory.API.Common
                 double offset = -0.2 / sneakMul;
 
 
-                double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(6 * walkCounter) * amplitude) + offset);
+                double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(7.325f * walkCounter) * amplitude) + offset);
                 if (World.Side == EnumAppSide.Client && (World.Api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
 
 
@@ -242,7 +246,6 @@ namespace Vintagestory.API.Common
                     if (FeetInLiquid)
                     {
                         double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
-                        //double height = (CollisionBox.Y2 - CollisionBox.Y1) * 0.75f;
 
                         EntityPos pos = LocalPos;
                         SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y + 0, pos.Z - width / 2);
@@ -268,8 +271,6 @@ namespace Vintagestory.API.Common
                             AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
                             AssetLocation soundinside = World.Blocks[blockIdInside].Sounds?.Inside;
 
-                            Block block = World.Blocks[blockIdInside];
-
                             if (soundwalk != null)
                             {
                                 if (blockIdInside != blockIdUnder && soundinside != null)
@@ -281,6 +282,8 @@ namespace Vintagestory.API.Common
                                 {
                                     World.PlaySoundAt(soundwalk, this, player, true, 12, volume);
                                 }
+
+                                OnFootStep?.Invoke();
                             }
 
                         }
@@ -301,7 +304,6 @@ namespace Vintagestory.API.Common
 
                 diff = (newModelHeight - OriginCollisionBox.Y2) * 5 * dt;
                 OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
-
             }
 
 

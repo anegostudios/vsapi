@@ -11,6 +11,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface IRenderAPI
     {
+        Stack<ElementBounds> ScissorStack { get; }
         int TextureSize { get; }
 
         /// <summary>
@@ -250,15 +251,15 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Convenience method for GlScissor(). Tells the graphics card to not render anything outside supplied bounds. Can be turned of again with EndScissor()
+        /// Convenience method for GlScissor(). Tells the graphics card to not render anything outside supplied bounds. Can be turned of again with PopScissor(). Any previously applied scissor will be restored after calling PopScissor().
         /// </summary> 
         /// <param name="bounds"></param>
-        void BeginScissor(ElementBounds bounds);
+        void PushScissor(ElementBounds bounds);
 
         /// <summary>
         /// End scissor mode. Disable any previously set render constraints
         /// </summary>
-        void EndScissor();
+        void PopScissor();
 
         /// <summary>
         /// Tells the graphics card to not render anything outside supplied bounds. Only sets the boundaries. Can be turned on/off with GlScissorFlag(true/false)

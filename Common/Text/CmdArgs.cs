@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -259,7 +261,7 @@ namespace Vintagestory.API.Common
             if (arg == null) return defaultValue;
 
             float val;
-            if (float.TryParse(arg, out val))
+            if (float.TryParse(arg, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val))
             {
                 return val;
             }

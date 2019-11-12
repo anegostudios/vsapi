@@ -85,8 +85,9 @@ namespace Vintagestory.API.Common
         public EnumAnimationBlendMode BlendMode = EnumAnimationBlendMode.Add;
         [JsonProperty]
         public Dictionary<string, EnumAnimationBlendMode> ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(StringComparer.OrdinalIgnoreCase);
+        [JsonProperty]
+        public bool SupressDefaultAnimation = false;
 
-        
 
         int withActivitiesMerged;
         public uint CodeCrc32;
@@ -187,8 +188,9 @@ namespace Vintagestory.API.Common
             if (TriggeredBy != null)
             {
                 writer.Write(TriggeredBy.MatchExact);
-                writer.Write(TriggeredBy.OnControls.Length);
-                for (int i = 0; i < TriggeredBy.OnControls.Length; i++)
+
+                writer.Write(TriggeredBy.OnControls == null ? 0 : TriggeredBy.OnControls.Length);
+                for (int i = 0; TriggeredBy.OnControls != null && i < TriggeredBy.OnControls.Length; i++)
                 {
                     writer.Write((int)TriggeredBy.OnControls[i]);
                 }

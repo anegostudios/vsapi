@@ -60,7 +60,7 @@ namespace Vintagestory.API.Client
         public void RecomposeText()
         {
             if (autoHeight) AutoHeight();
-            
+
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
             Context ctx = genContext(surface);
             DrawMultilineTextAt(ctx, 0, 0, orientation);

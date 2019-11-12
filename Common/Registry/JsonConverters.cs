@@ -5,10 +5,12 @@ using Vintagestory.API;
 
 namespace Vintagestory.API.Common
 {
+    // WTF, why does this exists twice?
     /// <summary>
     /// Implementation of JsonConverter that converts objects to an instance of a JsonObject
     /// </summary>
-    public class JsonObjectConverter : JsonConverter
+    
+    /*public class JsonObjectConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
@@ -17,7 +19,7 @@ namespace Vintagestory.API.Common
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (reader.Value == null) return new JsonObject(null);
+            //if (reader.Value == null) return new JsonObject(null);
 
             return new JsonObject(JObject.Load(reader));
         }
@@ -26,7 +28,7 @@ namespace Vintagestory.API.Common
         {
 
         }
-    }
+    }*/
 
     public class JsonAttributesConverter : JsonConverter
     {
@@ -37,8 +39,11 @@ namespace Vintagestory.API.Common
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            JToken token = JToken.ReadFrom(reader);
+            // This causes: Newtonsoft.Json.JsonSerializationException: 'Unexpected token while deserializing object: EndObject. 
+            // wtf?
+            //if (reader.Value == null) return new JsonObject(null);
 
+            JToken token = JToken.ReadFrom(reader);
             JsonObject var = new JsonObject(token);
             return var;
         }

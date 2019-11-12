@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Util
 {
@@ -17,6 +19,37 @@ namespace Vintagestory.API.Util
         public static string UcFirst(this string text)
         {
             return text.Substring(0, 1).ToUpperInvariant() + text.Substring(1);
+        }
+
+
+        public static int ToInt(this string text, int defaultValue = 0)
+        {
+            int value;
+            if (!int.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            {
+                return defaultValue;
+            }
+            return value;
+        }
+
+        public static float ToFloat(this string text, float defaultValue = 0)
+        {
+            float value;
+            if (!float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            {
+                return defaultValue;
+            }
+            return value;
+        }
+
+        public static double ToDouble(this string text, double defaultValue = 0)
+        {
+            double value;
+            if (!double.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            {
+                return defaultValue;
+            }
+            return value;
         }
 
 

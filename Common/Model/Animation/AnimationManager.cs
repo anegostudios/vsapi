@@ -221,11 +221,13 @@ namespace Vintagestory.API.Common
         /// Serializes the slots contents to be stored in the SaveGame
         /// </summary>
         /// <param name="writer"></param>
-        public virtual void ToAttributes(ITreeAttribute tree)
+        public virtual void ToAttributes(ITreeAttribute tree, bool forClient)
         {
             foreach (var val in ActiveAnimationsByAnimCode)
             {
                 if (val.Value.Code == null) val.Value.Code = val.Key; // ah wtf.
+
+                if (!forClient && val.Value.Code != "die") continue;
 
                 using (MemoryStream ms = new MemoryStream())
                 {
@@ -276,7 +278,6 @@ namespace Vintagestory.API.Common
         /// <param name="dt"></param>
         public void OnClientTick(float dt)
         {
-            //curAnimator.FastMode = !DoRenderHeldItem && !capi.Settings.Bool["highQualityAnimations"];
             if (capi.IsGamePaused || (!entity.IsRendered && entity.Alive)) return; // Too cpu intensive to run all loaded entities
             
             Animator.OnFrame(ActiveAnimationsByAnimCode, dt);

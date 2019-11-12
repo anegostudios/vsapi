@@ -92,9 +92,9 @@ namespace Vintagestory.API.Common
                     continue;
                 }
 
-                if (beht.Properties == null) beht.Properties = new JsonObject(new JObject());
+                if (beht.properties == null) beht.properties = new JsonObject(new JObject());
                 BlockEntityBehavior behavior = worldForResolve.ClassRegistry.CreateBlockEntityBehavior(this, beht.Name);
-                behavior.properties = beht.Properties;
+                behavior.properties = beht.properties;
 
                 Behaviors.Add(behavior);
             }

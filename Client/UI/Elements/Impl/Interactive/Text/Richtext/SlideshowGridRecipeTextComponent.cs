@@ -244,7 +244,7 @@ namespace Vintagestory.API.Client
                     dummyslot.Itemstack = ingred.ResolvedItemstack;
                     api.Render.RenderItemstackToGui(
                         dummyslot, 
-                        rx + size * 0.5f - 1,
+                        rx + size * 0.5f,
                         ry + size * 0.5f,
                         100, (float)size * 0.58f, ColorUtil.WhiteArgb,
                         true, false, true

@@ -20,12 +20,23 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Variant values as resolved from blocktype/itemtype or entitytype
         /// </summary>
-        public OrderedDictionary<string, string> Variant = new OrderedDictionary<string, string>();
+        public OrderedDictionary<string, string> VariantStrict = new OrderedDictionary<string, string>();
+
+        /// <summary>
+        /// Variant values as resolved from blocktype/itemtype or entitytype. Will not throw an null pointer exception when the key does not exist, but return null instead.
+        /// </summary>
+        public RelaxedReadOnlyDictionary<string, string> Variant;
 
         /// <summary>
         /// The class handeling the object
         /// </summary>
         public string Class;
+
+
+        public RegistryObject()
+        {
+            Variant = new RelaxedReadOnlyDictionary<string, string>(VariantStrict);
+        }
 
         /// <summary>
         /// Returns a new assetlocation with an equal domain and the given path

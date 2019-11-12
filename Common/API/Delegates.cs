@@ -80,7 +80,7 @@ namespace Vintagestory.API.Common
     /// <param name="message">The message from the player.</param>
     /// <param name="consumed">Was the message consumed?</param>
     /// <returns>The resulting string.</returns>
-    public delegate string PlayerChatDelegate(IServerPlayer byPlayer, int channelId, string message, BoolRef consumed);
+    public delegate void PlayerChatDelegate(IServerPlayer byPlayer, int channelId, ref string message, ref string data, BoolRef consumed);
 
     /// <summary>
     /// When the player died, this delegate will fire.

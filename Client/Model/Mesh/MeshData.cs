@@ -396,7 +396,10 @@ namespace Vintagestory.API.Client
                 float[] normalf = new float[4];
                 for (int i = 0; i < XyzFaces.Length; i++)
                 {
-                    Vec3f normalfv = BlockFacing.ALLFACES[XyzFaces[i]].Normalf;
+                    int faceIndex = XyzFaces[i];
+                    if (faceIndex < 0) continue;
+
+                    Vec3f normalfv = BlockFacing.ALLFACES[faceIndex].Normalf;
                     normalf[0] = normalfv.X;
                     normalf[1] = normalfv.Y;
                     normalf[2] = normalfv.Z;
@@ -510,7 +513,10 @@ namespace Vintagestory.API.Client
                 float[] normalf = new float[4];
                 for (int i = 0; i < XyzFaces.Length; i++)
                 {
-                    Vec3f normalfv = BlockFacing.ALLFACES[XyzFaces[i]].Normalf;
+                    int faceIndex = XyzFaces[i];
+                    if (faceIndex < 0) continue;
+
+                    Vec3f normalfv = BlockFacing.ALLFACES[faceIndex].Normalf;
                     normalf[0] = normalfv.X;
                     normalf[1] = normalfv.Y;
                     normalf[2] = normalfv.Z;
@@ -572,7 +578,10 @@ namespace Vintagestory.API.Client
             {
                 for (int i = 0; i < XyzFaces.Length; i++)
                 {
-                    Vec3f normalf = BlockFacing.ALLFACES[XyzFaces[i]].Normalf;
+                    int faceindex = XyzFaces[i];
+                    if (faceindex < 0) continue;
+
+                    Vec3f normalf = BlockFacing.ALLFACES[faceindex].Normalf;
                     inVec[0] = normalf.X;
                     inVec[1] = normalf.Y;
                     inVec[2] = normalf.Z;

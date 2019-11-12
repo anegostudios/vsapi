@@ -21,6 +21,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         public int atlasNumber;
 
+        public int AvgColor;
+        public int[] RndColors = new int[30];
+
         /// <summary>
         /// The x coordinate of the texture origin point
         /// </summary>

@@ -126,7 +126,7 @@ namespace Vintagestory.API.Client
         /// <param name="atlasSize"></param>
         /// <param name="atlasPos"></param>
         /// <returns></returns>
-        MeshData VoxelizeTexture(CompositeTexture texture, int atlasSize, TextureAtlasPosition atlasPos);
+        MeshData VoxelizeTexture(CompositeTexture texture, Size2i atlasSize, TextureAtlasPosition atlasPos);
 
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Vintagestory.API.Client
         /// <param name="atlasSize"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        MeshData VoxelizeTexture(int[] texturePixels, int width, int height, int atlasSize, TextureAtlasPosition pos);
+        MeshData VoxelizeTexture(int[] texturePixels, int width, int height, Size2i atlasSize, TextureAtlasPosition pos);
 
 
         /// <summary>
