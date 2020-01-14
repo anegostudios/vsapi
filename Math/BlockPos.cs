@@ -574,6 +574,11 @@ namespace Vintagestory.API.MathTools
             return other != null && X == other.X && Y == other.Y && Z == other.Z;
         }
 
+        public bool Equals(int x, int y, int z)
+        {
+            return X == x && Y == y && Z == z;
+        }
+
         public int GetHashCode(BlockPos obj)
         {
             int hash = 17;

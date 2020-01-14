@@ -1,9 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Client;
+using Vintagestory.API.Client.Tesselation;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -12,6 +14,14 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+    public enum EnumIgniteState
+    {
+        NotIgnitable,
+        NotIgnitablePreventDefault,
+        Ignitable,
+        IgniteNow
+    }
+
     public delegate void BehaviorDelegate(BlockBehavior behavior, ref EnumHandling handling);
 
     /// <summary>
@@ -141,6 +151,8 @@ namespace Vintagestory.API.Common
         /// If true then the block will be randomly offseted by 1/3 of a block when placed
         /// </summary>
         public bool RandomDrawOffset;
+
+        public bool RandomizeRotations;
         
         /// <summary>
         /// The block shape to be used when displayed in the inventory gui, held in hand or dropped on the ground
@@ -151,6 +163,8 @@ namespace Vintagestory.API.Common
         /// The default json block shape to be used when drawtype==JSON
         /// </summary>
         public CompositeShape Shape = new CompositeShape() { Base = new AssetLocation("block/basic/cube") };
+
+        public CompositeShape Lod0Shape;
 
         /// <summary>
         /// Particles that should spawn in regular intervals from this block
@@ -348,6 +362,15 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
+        {
+            for (int i = 0; i < BlockBehaviors.Length; i++)
+            {
+                BlockBehaviors[i].OnBeforeRender(capi, itemstack, target, ref renderinfo);
+            }
+        }
+
         /// <summary>
         /// The cuboid used to determine where to spawn particles when breaking the block
         /// </summary>
@@ -363,7 +386,6 @@ namespace Vintagestory.API.Common
                 Cuboidf box = (selectionBoxes != null && selectionBoxes.Length > 0) ? selectionBoxes[0] : Block.DefaultCollisionBox;
                 return box;
             } else {
-                Vec3i face = facing.Normali;
                 Cuboidf[] boxes = GetCollisionBoxes(blockAccess, pos);
                 if (boxes == null || boxes.Length == 0) boxes = GetSelectionBoxes(blockAccess, pos);
 
@@ -598,7 +620,7 @@ namespace Vintagestory.API.Common
                 failureCode = "notreplaceable";
                 return false;
             }
-            if ((CollisionBoxes != null && CollisionBoxes.Length > 0) && world.GetIntersectingEntities(blockSel.Position, this.GetCollisionBoxes(world.BlockAccessor, blockSel.Position), e => !(e is EntityItem)).Length != 0)
+            if ((CollisionBoxes != null && CollisionBoxes.Length > 0) && world.GetIntersectingEntities(blockSel.Position, this.GetCollisionBoxes(world.BlockAccessor, blockSel.Position), e => e.IsInteractable).Length != 0)
             {
                 failureCode = "entityintersecting";
                 return false;
@@ -759,9 +781,6 @@ namespace Vintagestory.API.Common
 
 
 
-
-
-
         /// <summary>
         /// Player is breaking this block. Has to reduce remainingResistance by the amount of time it should be broken. This method is called only client side, every 40ms during breaking.
         /// </summary>
@@ -854,6 +873,23 @@ namespace Vintagestory.API.Common
 
 
 
+        public override void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
+        {
+            bool preventDefault = false;
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+
+                behavior.OnCreatedByCrafting(allInputslots, outputSlot, byRecipe, ref handled);
+                if (handled == EnumHandling.PreventDefault) preventDefault = true;
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (preventDefault) return;
+        }
+
+
+
         /// <summary>
         /// Should return all of the blocks drops for display in the handbook
         /// </summary>
@@ -927,19 +963,17 @@ namespace Vintagestory.API.Common
             return todrop.ToArray();
         }
 
-
+        
         /// <summary>
         /// Called while the given entity attempts to ignite this block
         /// </summary>
         /// <param name="byEntity"></param>
         /// <param name="pos"></param>
         /// <param name="secondsIgniting"></param>
-        /// <param name="handling"></param>
-        /// <returns></returns>
-        public virtual bool OnTryIgniteBlock(EntityAgent byEntity, BlockPos pos, float secondsIgniting, ref EnumHandling handling)
+        /// <returns>true when this block is ignitable</returns>
+        public virtual EnumIgniteState OnTryIgniteBlock(EntityAgent byEntity, BlockPos pos, float secondsIgniting)
         {
-            handling = EnumHandling.PassThrough;
-            return false;
+            return EnumIgniteState.NotIgnitable;
         }
 
         /// <summary>
@@ -952,7 +986,6 @@ namespace Vintagestory.API.Common
         public virtual void OnTryIgniteBlockOver(EntityAgent byEntity, BlockPos pos, float secondsIgniting, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
-            
         }
 
 
@@ -1211,6 +1244,7 @@ namespace Vintagestory.API.Common
         /// <param name="isImpact"></param>
         public virtual void OnEntityCollide(IWorldAccessor world, Entity entity, BlockPos pos, BlockFacing facing, Vec3d collideSpeed, bool isImpact)
         {
+
             if (entity.Properties.CanClimb == true && (Climbable || entity.Properties.CanClimbAnywhere) && facing.IsHorizontal && entity is EntityAgent)
             {
                 EntityAgent ea = entity as EntityAgent;
@@ -1219,6 +1253,11 @@ namespace Vintagestory.API.Common
                 {
                     ea.LocalPos.Motion.Y = 0.04;
                 }
+            }
+
+            if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < 0.2)
+            {
+                OnNeighourBlockChange(world, pos, pos.UpCopy());
             }
         }
 
@@ -1231,10 +1270,14 @@ namespace Vintagestory.API.Common
         /// <param name="player"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public virtual bool ShouldReceiveClientGameTicks(IWorldAccessor world, IPlayer player, BlockPos pos)
+        public virtual bool ShouldReceiveClientParticleTicks(IWorldAccessor world, IPlayer player, BlockPos pos, out bool isWindAffected)
         {
             bool result = true;
             bool preventDefault = false;
+            isWindAffected = false;
+
+
+
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 EnumHandling handled = EnumHandling.PassThrough;
@@ -1251,7 +1294,14 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return result;
 
-            return ParticleProperties != null && ParticleProperties.Length > 0;
+
+            if (ParticleProperties != null && ParticleProperties.Length > 0)
+            {
+                for (int i = 0; i < ParticleProperties.Length; i++) isWindAffected |= ParticleProperties[0].WindAffectednes > 0;
+                return true;
+            }
+
+            return false;            
         }
 
         /// <summary>
@@ -1272,17 +1322,19 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <param name="secondsTicking"></param>
-        public virtual void OnClientGameTick(IWorldAccessor world, BlockPos pos, float secondsTicking)
+        public virtual void OnAsyncClientParticleTick(IAsyncParticleManager manager, BlockPos pos, float windAffectednessAtPos, float secondsTicking)
         {
             if (ParticleProperties != null && ParticleProperties.Length > 0)
             {
                 for (int i = 0; i < ParticleProperties.Length; i++)
                 {
                     AdvancedParticleProperties bps = ParticleProperties[i];
+                    bps.WindAffectednesAtPos = windAffectednessAtPos;
                     bps.basePos.X = pos.X + TopMiddlePos.X;
                     bps.basePos.Y = pos.Y + TopMiddlePos.Y;
                     bps.basePos.Z = pos.Z + TopMiddlePos.Z;
-                    world.SpawnParticles(bps);
+
+                    manager.Spawn(bps);
                 }
             }
         }
@@ -1322,28 +1374,83 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         public override void OnHeldIdle(ItemSlot slot, EntityAgent byEntity)
         {
-            // Would be nice, doesn't look nice :/
-            /*if (ParticleProperties != null && ParticleProperties.Length > 0 && byEntity.World is IClientWorldAccessor && byEntity.World.Rand.NextDouble() > 0.5)
-            {
-                Vec3d pos =
-                        byEntity.Pos.XYZ.Add(0, byEntity.EyeHeight() - 0.5f + FpHandTransform.Translation.Y, 0)
-                        .Ahead(0.6f, byEntity.Pos.Pitch, byEntity.Pos.Yaw)
-                        .Ahead(0.5f + FpHandTransform.Translation.X, 0, byEntity.Pos.Yaw + GameMath.PIHALF)
-                    ;
 
-                for (int i = 0; i < ParticleProperties.Length; i++)
-                {
-                    AdvancedParticleProperties bps = ParticleProperties[i];
-                    bps.basePos.X = pos.X;
-                    bps.basePos.Y = pos.Y;
-                    bps.basePos.Z = pos.Z;
-                    byEntity.World.SpawnParticles(bps);
-                }
-            }*/
 
             base.OnHeldIdle(slot, byEntity);
         }
+
+
+        public virtual void OnDecalTesselation(IWorldAccessor world, MeshData decalMesh, BlockPos pos)
+        {
+            if (VertexFlags.LeavesWindWave)
+            {
+                for (int vertexNum = 0; vertexNum < decalMesh.GetVerticesCount(); vertexNum++)
+                {
+                    decalMesh.Flags[vertexNum] |= VertexFlags.LeavesWindWaveBitMask;
+                }
+            }
+            else
+            {
+                if (VertexFlags.GrassWindWave)
+                {
+                    setGrassWaveFlags(decalMesh);
+                }
+            }
+        }
         
+        /// <summary>
+        /// If this block uses drawtype json, this method will be called. 
+        /// </summary>
+        /// <param name="sourceMesh"></param>
+        /// <param name="pos"></param>
+        /// <param name="chunkExtIds">Optional, fast way to look up a direct neighbouring block. This is an array of the current chunks block ids, including all direct neighbours, so its a 34x34x34 block id list. Use extIndex3d+TileSideEnum.MoveIndex[tileSide] to move around in the array</param>
+        /// <param name="extIndex3d"></param>
+        public virtual void OnJsonTesselation(MeshData sourceMesh, BlockPos pos, int[] chunkExtIds, int extIndex3d)
+        {
+            if (VertexFlags.LeavesWindWave)
+            {
+                for (int vertexNum = 0; vertexNum < sourceMesh.GetVerticesCount(); vertexNum++)
+                {
+                    sourceMesh.Flags[vertexNum] |= VertexFlags.LeavesWindWaveBitMask;
+                }
+            }
+            else
+            {
+                if (VertexFlags.GrassWindWave)
+                {
+                    setGrassWaveFlags(sourceMesh);
+                }
+            }
+        }
+
+
+
+
+
+        void setGrassWaveFlags(MeshData sourceMesh)
+        {
+            int grassWave = VertexFlags.FoliageWindWaveBitMask;
+            int nograssWave = ~VertexFlags.FoliageWindWaveBitMask & (~VertexFlags.GroundDistanceBitMask);
+
+            // Iterate over each element face
+            for (int vertexNum = 0; vertexNum < sourceMesh.GetVerticesCount(); vertexNum++)
+            {
+                float y = sourceMesh.xyz[vertexNum * 3 + 1];
+                if (y > 0.5f)
+                {
+                    sourceMesh.Flags[vertexNum] |= grassWave;
+                }
+                else
+                {
+                    sourceMesh.Flags[vertexNum] &= nograssWave;
+                }
+
+            }
+        }
+
+
+
+
 
         /// <summary>
         /// The origin point from which particles are being spawned
@@ -1709,20 +1816,21 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetPlacedBlockInfo(IWorldAccessor world, BlockPos pos, IPlayer forPlayer)
         {
+            StringBuilder sb = new StringBuilder();
+
             if (EntityClass != null)
             {
                 BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
                 if (be != null)
                 {
-                    StringBuilder sb = new StringBuilder();
                     be.GetBlockInfo(forPlayer, sb);
-                    if (sb.Length > 0) return sb.ToString();
                 }
             }
 
             if (Code == null)
             {
-                return "Unknown Block with ID " + BlockId;
+                sb.AppendLine("Unknown Block with ID " + BlockId);
+                return sb.ToString();
             }
 
             string descLangCode = Code.Domain + AssetLocation.LocationSeparator + ItemClass.ToString().ToLowerInvariant() + "desc-" + Code.Path;
@@ -1730,6 +1838,8 @@ namespace Vintagestory.API.Common
             string desc = Lang.GetMatching(descLangCode);
 
             desc = desc != descLangCode ? desc : "";
+
+            sb.Append(desc);
 
             string[] tiers = new string[] { Lang.Get("tier_hands"), Lang.Get("tier_stone"), Lang.Get("tier_copper"), Lang.Get("tier_bronze"), Lang.Get("tier_iron"), Lang.Get("tier_steel"), Lang.Get("tier_titanium") };
 
@@ -1742,15 +1852,15 @@ namespace Vintagestory.API.Common
                     tierName = tiers[RequiredMiningTier];
                 }
 
-                desc += "\n" + Lang.Get("Requires tool tier {0} ({1}) to break", RequiredMiningTier, tierName);
+                sb.AppendLine(Lang.Get("Requires tool tier {0} ({1}) to break", RequiredMiningTier, tierName));
             }
 
             foreach (BlockBehavior bh in BlockBehaviors)
             {
-                desc += bh.GetPlacedBlockInfo(world, pos, forPlayer);
+                sb.Append(bh.GetPlacedBlockInfo(world, pos, forPlayer));
             }
 
-            return desc;
+            return sb.ToString();
         }
 
         /// <summary>
@@ -1777,6 +1887,11 @@ namespace Vintagestory.API.Common
             if (WalkSpeedMultiplier != 1)
             {
                 dsc.Append(Lang.Get("walk-multiplier") + WalkSpeedMultiplier + "\n");
+            }
+
+            foreach (BlockBehavior bh in BlockBehaviors)
+            {
+                dsc.Append(bh.GetHeldBlockInfo(world, inSlot));
             }
 
             base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
@@ -2028,13 +2143,16 @@ namespace Vintagestory.API.Common
         {
             int? textureSubId = null;
 
-            if (Textures.ContainsKey("up"))
+            if (Textures?.ContainsKey("up") == true)
             {
                 textureSubId = Textures["up"].Baked.TextureSubId;
             }
             else
             {
-                textureSubId = Textures?.First().Value?.Baked.TextureSubId;
+                if (Textures != null && Textures.Count > 0)
+                {
+                    textureSubId = Textures.First().Value?.Baked.TextureSubId;
+                }
             }
 
             if (textureSubId == null) return ColorUtil.WhiteArgb;

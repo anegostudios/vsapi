@@ -73,14 +73,6 @@ namespace Vintagestory.API.Client
             base.RenderInteractiveElements(deltaTime);
         }
 
-        /// <summary>
-        /// Sets the number of lines in the Text Area.
-        /// </summary>
-        /// <param name="maxlines">The maximum number of lines.</param>
-        public void SetMaxLines(int maxlines)
-        {
-            this.maxlines = maxlines;
-        }
 
         public override void Dispose()
         {

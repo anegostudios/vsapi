@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
-    /// Perlin noise of supplied amplitude and frequency. 
+    /// OpenSimplex noise of supplied amplitude and frequency. 
     /// </summary>
     public class SimplexNoise
     {

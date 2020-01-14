@@ -11,7 +11,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Length of the sound in seconds
         /// </suummary>
-        float SoundLength { get; }
+        float SoundLengthSeconds { get; }
 
         /// <summary>
         /// Get the current playback position or set it (in seconds)
@@ -82,6 +82,12 @@ namespace Vintagestory.API.Client
         void SetPitch(float val);
 
         /// <summary>
+        /// Allows you to modify the pitch of the sound. May also be called while the sound is currently playing. This value is added together with the normal pitch level. This method is currently used to distort sound during low temporal stability
+        /// </summary>
+        /// <param name="val"></param>
+        void SetPitchOffset(float val);
+
+        /// <summary>
         /// Allows you to modify the volumne of the sound. May also be called while the sound is currently playing.
         /// </summary>
         /// <param name="val"></param>
@@ -97,6 +103,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="position"></param>
         void SetPosition(Vec3f position);
+        void SetPosition(float x, float y, float z);
 
         /// <summary>
         /// Fades the sounds volumne to given value
@@ -104,7 +111,7 @@ namespace Vintagestory.API.Client
         /// <param name="newVolume"></param>
         /// <param name="duration"></param>
         /// <param name="onFaded"></param>
-        void FadeTo(float newVolume, float duration, Action<ILoadedSound> onFaded);
+        void FadeTo(double newVolume, float duration, Action<ILoadedSound> onFaded);
 
         /// <summary>
         /// Causes the sound to fade out 

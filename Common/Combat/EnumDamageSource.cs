@@ -57,9 +57,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         Explosion,
 
+        Machine,
+
         /// <summary>
         /// It came from a source not identified.
         /// </summary>
-        Unknown
+        Unknown,
+
+        Weather
     }
 }

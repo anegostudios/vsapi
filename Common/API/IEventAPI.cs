@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -41,6 +42,8 @@ namespace Vintagestory.API.Common
         /// Triggered when a new entity spawned
         /// </summary>
         event EntityDelegate OnEntitySpawn;
+
+        event EntityDeathDelegate OnEntityDeath;
 
         /// <summary>
         /// Triggered when a new entity spawned
@@ -129,5 +132,6 @@ namespace Vintagestory.API.Common
         /// <param name="code">Task category identifier for the frame profiler</param>
         void EnqueueMainThreadTask(API.Common.Action action, string code);
 
+        void TriggerEntityDeath(Entity entity, DamageSource damageSourceForDeath);
     }
 }

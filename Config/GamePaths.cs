@@ -46,13 +46,14 @@ namespace Vintagestory.API.Config
         public static string Cache { get { return Path.Combine(DataPath, "Cache"); } }
         public static string Saves { get { return Path.Combine(DataPath, "Saves"); } }
         public static string OldSaves { get { return Path.Combine(DataPath, "OldSaves"); } }
+        public static string BackupSaves { get { return Path.Combine(DataPath, "BackupSaves"); } }
         public static string PlayerData { get { return Path.Combine(DataPath, "Playerdata"); } }
         public static string Backups { get { return Path.Combine(DataPath, "Backups"); } }
         public static string Logs { get { return CustomLogPath != null ? CustomLogPath : Path.Combine(DataPath, "Logs"); } }
         public static string Macros { get { return Path.Combine(DataPath, "Macros"); } }
         public static string Screenshots { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Vintagestory"); } }
         public static string Videos { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos), "Vintagestory"); } }
-        public static string Mods { get { return Path.Combine(DataPath, "Mods"); } }
+        public static string DataPathMods { get { return Path.Combine(DataPath, "Mods"); } }
 
         public static string DefaultSaveFilenameWithoutExtension = "default";
         
@@ -80,6 +81,10 @@ namespace Vintagestory.API.Config
             {
                 Directory.CreateDirectory(Saves);
             }
+            if (!Directory.Exists(BackupSaves))
+            {
+                Directory.CreateDirectory(BackupSaves);
+            }
             if (!Directory.Exists(PlayerData))
             {
                 Directory.CreateDirectory(PlayerData);
@@ -97,9 +102,9 @@ namespace Vintagestory.API.Config
                 Directory.CreateDirectory(Macros);
             }
 
-            if (!Directory.Exists(Mods))
+            if (!Directory.Exists(DataPathMods))
             {
-                Directory.CreateDirectory(Mods);
+                Directory.CreateDirectory(DataPathMods);
             }
 
         }

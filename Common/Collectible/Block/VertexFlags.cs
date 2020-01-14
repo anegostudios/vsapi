@@ -16,13 +16,15 @@ namespace Vintagestory.API.Common
     {
         public const int GlowLevelBitMask = 0xFF;
         public const int ZOffsetBitMask = 0x7 << 8;
-        public const int GrassWindWaveBitMask = 1 << 11;
+        public const int FoliageWindWaveBitMask = 1 << 11;
         public const int WaterWaveBitMask = 1 << 12;
         public const int LowContrastBitMask = 1 << 13;
         public const int HasNormalBitMask = 1 << 14;
         public const int NormalBitMask = 0xFFF << 15;
         public const int LeavesWindWaveBitMask = 1 << 27;
 
+        public const int GroundDistanceBitMask = 0x7 << 28; // 3 bits
+        public const int Lod0BitMask = 1 << 31;
 
         int all;
 
@@ -49,7 +51,7 @@ namespace Vintagestory.API.Common
 
         public int AllWithoutWaveFlags
         {
-            get { return all & ~GrassWindWaveBitMask & ~LeavesWindWaveBitMask; }
+            get { return all & ~FoliageWindWaveBitMask & ~LeavesWindWaveBitMask; }
         }
 
         byte glowLevel, zOffset;

@@ -22,26 +22,34 @@ namespace Vintagestory.API.MathTools
         public double Z2;
 
         /// <summary>
-        /// X2-X1
+        /// MaxX-MinX
         /// </summary>
-        public double Width => X2 - X1;
+        public double Width => MaxX - MinX;
         /// <summary>
-        /// Y2-Y1
+        /// MaxY-MinY
         /// </summary>
-        public double Height => Y2 - Y1;
+        public double Height => MaxY - MinY;
         /// <summary>
-        /// Z2-Z1
+        /// MaxZ-MinZ
         /// </summary>
-        public double Length => Z2 - Z1;
+        public double Length => MaxZ - MinZ;
+
+        public double MinX { get { return Math.Min(X1, X2); } }
+        public double MinY { get { return Math.Min(Y1, Y2); } }
+        public double MinZ { get { return Math.Min(Z1, Z2); } }
+        public double MaxX { get { return Math.Max(X1, X2); } }
+        public double MaxY { get { return Math.Max(Y1, Y2); } }
+        public double MaxZ { get { return Math.Max(Z1, Z2); } }
+
 
         public Vec3d Start
         {
-            get { return new Vec3d(X1, Y1, Z1); }
+            get { return new Vec3d(MinX, MinY, MinZ); }
         }
 
         public Vec3d End
         {
-            get { return new Vec3d(X2, Y2, Z2); }
+            get { return new Vec3d(MaxX, MaxY, MaxZ); }
         }
 
         public Cuboidd()
@@ -209,9 +217,7 @@ namespace Vintagestory.API.MathTools
         public double ShortestVerticalDistanceFrom(Cuboidd cuboid)
         {
             double cy = cuboid.Y1 - GameMath.Clamp(cuboid.Y1, Y1, Y2);
-
             double dy = cuboid.Y2 - GameMath.Clamp(cuboid.Y2, Y1, Y2);
-
             return Math.Min(cy, dy);
         }
 
@@ -224,9 +230,7 @@ namespace Vintagestory.API.MathTools
         public double ShortestVerticalDistanceFrom(Cuboidf cuboid, EntityPos offset)
         {
             double oY1 = offset.Y + cuboid.Y1;
-
             double oY2 = offset.Y + cuboid.Y2;
-
 
             double cy = oY1 - GameMath.Clamp(oY1, Y1, Y2);
 
@@ -339,70 +343,70 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns a new x coordinate that's ensured to be outside this cuboid. Used for collision detection.
         /// </summary>
-        public double pushOutX(Cuboidd from, double x, ref EnumPushDirection direction)
+        public double pushOutX(Cuboidd from, double motx, ref EnumPushDirection direction)
         {
             direction = EnumPushDirection.None;
             if (from.Y2 > Y1 && from.Y1 < Y2 && from.Z2 > Z1 && from.Z1 < Z2)
             {
-                if (x > 0.0D && from.X2 <= X1 && X1 - from.X2 < x)
+                if (motx > 0.0D && from.X2 <= X1 && X1 - from.X2 < motx)
                 {
                     direction = EnumPushDirection.Positive;
-                    x = X1 - from.X2;
+                    motx = X1 - from.X2;
                 }
-                else if (x < 0.0D && from.X1 >= X2 && X2 - from.X1 > x)
+                else if (motx < 0.0D && from.X1 >= X2 && X2 - from.X1 > motx)
                 {
                     direction = EnumPushDirection.Negative;
-                    x = X2 - from.X1;
+                    motx = X2 - from.X1;
                 }
             }
 
-            return x;
+            return motx;
         }
 
         /// <summary>
         /// Returns a new y coordinate that's ensured to be outside this cuboid. Used for collision detection.
         /// </summary>
-        public double pushOutY(Cuboidd from, double y, ref EnumPushDirection direction)
+        public double pushOutY(Cuboidd from, double moty, ref EnumPushDirection direction)
         {
             direction = EnumPushDirection.None;
             if (from.X2 > X1 && from.X1 < X2 && from.Z2 > Z1 && from.Z1 < Z2)
             {
-                if (y > 0.0D && from.Y2 <= Y1 && Y1 - from.Y2 < y)
+                if (moty > 0.0D && from.Y2 <= Y1 && Y1 - from.Y2 < moty)
                 {
                     direction = EnumPushDirection.Positive;
-                    y = Y1 - from.Y2;
+                    moty = Y1 - from.Y2;
                 }
-                else if (y < 0.0D && from.Y1 >= Y2 && Y2 - from.Y1 > y)
+                else if (moty < 0.0D && from.Y1 >= Y2 && Y2 - from.Y1 > moty)
                 {
                     direction = EnumPushDirection.Negative;
-                    y = Y2 - from.Y1;
+                    moty = Y2 - from.Y1;
                 }
             }
 
-            return y;
+            return moty;
         }
 
         /// <summary>
         /// Returns a new z coordinate that's ensured to be outside this cuboid. Used for collision detection.
         /// </summary>
-        public double pushOutZ(Cuboidd from, double z, ref EnumPushDirection direction)
+        public double pushOutZ(Cuboidd from, double motz, ref EnumPushDirection direction)
         {
             direction = EnumPushDirection.None;
             if (from.X2 > X1 && from.X1 < X2 && from.Y2 > Y1 && from.Y1 < Y2)
             {
-                if (z > 0.0D && from.Z2 <= Z1 && Z1 - from.Z2 < z)
+                if (motz > 0.0D && from.Z2 <= Z1 && Z1 - from.Z2 < motz)
                 {
                     direction = EnumPushDirection.Positive;
-                    z = Z1 - from.Z2;
+                    motz = Z1 - from.Z2;
                 }
-                else if (z < 0.0D && from.Z1 >= Z2 && Z2 - from.Z1 > z)
+                else if (motz < 0.0D && from.Z1 >= Z2 && Z2 - from.Z1 > motz)
                 {
                     direction = EnumPushDirection.Negative;
-                    z = Z2 - from.Z1;
+                    motz = Z2 - from.Z1;
                 }
             }
 
-            return z;
+            return motz;
         }
 
         /// <summary>

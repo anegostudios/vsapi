@@ -133,7 +133,7 @@ namespace Vintagestory.API.Client
         {
             // Released Button
             int btnWidth = (int)(scaled(20) * Scale);
-            int btnHeight = (int)(Bounds.InnerHeight - scaled(1));
+            int btnHeight = (int)(Bounds.InnerHeight);
 
             ImageSurface surface = new ImageSurface(Format.Argb32, btnWidth, btnHeight);
             Context ctx = genContext(surface);

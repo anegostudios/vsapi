@@ -112,7 +112,7 @@ namespace Vintagestory.API.Client
         Luma=27,
         Blit = 28,
         Shadowmap = 29,
-        Mainmenuparticles = 30,
+        Particlesquad2d = 30,
         Shadowmapentityanimated = 31,
         Shadowmapgeneric = 32,
         Texture2texture = 33,

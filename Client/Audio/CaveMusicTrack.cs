@@ -41,6 +41,10 @@ namespace Vintagestory.API.Client
         List<string> activeTracks = new List<string>();
         IMusicEngine musicEngine;
 
+
+        // Updated by BehaviorTemporalStabilityAffected
+        public static bool ShouldPlayCaveMusic = true;
+
         /// <summary>
         /// The name of the music track.
         /// </summary>
@@ -91,6 +95,8 @@ namespace Vintagestory.API.Client
             get { return priority; }
         }
 
+        public string PositionString => throw new NotImplementedException();
+
         /// <summary>
         /// Initializes the music track
         /// </summary>
@@ -117,7 +123,7 @@ namespace Vintagestory.API.Client
         /// <returns>Do we play this track?</returns>
         public bool ShouldPlay(TrackedPlayerProperties props)
         {
-            if (props.sunSlight > 3) return false;
+            if (props.sunSlight > 3 || !ShouldPlayCaveMusic) return false;
             if (capi.World.ElapsedMilliseconds < cooldownUntilMs) return false;
 
             return true;
@@ -142,7 +148,7 @@ namespace Vintagestory.API.Client
         /// <returns>Are we still playing or do we stop?</returns>
         public bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {
-            if (props.sunSlight > 3)
+            if (props.sunSlight > 3 || !ShouldPlayCaveMusic)
             {
                 FadeOut(3);
                 return false;
@@ -268,6 +274,11 @@ namespace Vintagestory.API.Client
                 if (part.IsPlaying) part.Sound.SetVolume();
             }
                 
+        }
+
+        public void FastForward(float seconds)
+        {
+            
         }
     }
 

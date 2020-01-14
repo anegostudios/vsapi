@@ -49,5 +49,53 @@ namespace Vintagestory.API.Common
         /// Off hand slot
         /// </summary>
         Offhand = 256,
+        /// <summary>
+        /// Reserved for vanilla
+        /// </summary>
+        Reserved1 = 512,
+        /// <summary>
+        /// Reserved for vanilla
+        /// </summary>
+        Reserved2 = 1024,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom1 = 2048,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom2 = 4096,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom3 = 8192,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom4 = 16384,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom5 = 32768,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom6 = 65536,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom7 = 131072,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom8 = 262144,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom9 = 524288,
+        /// <summary>
+        /// Custom storage flag for mods
+        /// </summary>
+        Custom10 = 1048576,
     }
 }

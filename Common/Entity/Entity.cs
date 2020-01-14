@@ -12,6 +12,8 @@ using System.Text;
 
 namespace Vintagestory.API.Common.Entities
 {
+    public delegate void PhysicsTickDelegate(float accum, Vec3d prevPos);
+
     /// <summary>
     /// The basic class for all entities in the game
     /// </summary>
@@ -32,7 +34,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// The vanilla physics systems will call this method if a physics behavior was assigned to it. The game client for example requires this to be called for the current player to properly render the player
         /// </summary>
-        public Action<float> PhysicsUpdateWatcher;
+        public PhysicsTickDelegate PhysicsUpdateWatcher;
 
         /// <summary>
         /// Server simulated animations. Only takes care of stopping animations once they're done
@@ -201,7 +203,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual double SwimmingOffsetY
         {
-            get { return CollisionBox.Y1 + CollisionBox.Y2 / 2; }
+            get { return CollisionBox.Y1 + CollisionBox.Y2 * 0.66; }
         }
 
 
@@ -311,6 +313,7 @@ namespace Vintagestory.API.Common.Entities
             AnimManager = new AnimationManager();
             Stats = new EntityStats(this);
             WatchedAttributes.SetAttribute("animations", new TreeAttribute());
+            WatchedAttributes.SetAttribute("extraInfoText", new TreeAttribute());
         }
 
         /// <summary>
@@ -475,7 +478,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        public virtual void TeleportToDouble(double x, double y, double z)
+        public virtual void TeleportToDouble(double x, double y, double z, API.Common.Action onTeleported = null)
         {
             Teleporting = true;
 
@@ -489,6 +492,7 @@ namespace Vintagestory.API.Common.Entities
                         ServerPos.SetPos(x, y, z);
                         PositionBeforeFalling.Set(x, y, z);
                         Pos.Motion.Set(0, 0, 0);
+                        onTeleported?.Invoke();
                         Teleporting = false;
                     }
                 });
@@ -529,7 +533,7 @@ namespace Vintagestory.API.Common.Entities
         /// Teleports the entity to given position
         /// </summary>
         /// <param name="position"></param>
-        public virtual void TeleportTo(EntityPos position)
+        public virtual void TeleportTo(EntityPos position, API.Common.Action onTeleported = null)
         {
             Pos.Yaw = position.Yaw;
             Pos.Pitch = position.Pitch;
@@ -538,7 +542,7 @@ namespace Vintagestory.API.Common.Entities
             ServerPos.Pitch = position.Pitch;
             ServerPos.Roll = position.Roll;
 
-            TeleportToDouble(position.X, position.Y, position.Z);
+            TeleportToDouble(position.X, position.Y, position.Z, onTeleported);
         }
 
 
@@ -606,9 +610,14 @@ namespace Vintagestory.API.Common.Entities
                 behavior.OnGameTick(dt);
             }
 
-            if (World is IClientWorldAccessor && World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
+            if (World.Side == EnumAppSide.Client && World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
             {
                 PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
+            }
+
+            if (World.Side == EnumAppSide.Server)
+            {
+                AnimManager.OnServerTick(dt);
             }
         }   
 
@@ -652,7 +661,7 @@ namespace Vintagestory.API.Common.Entities
 
             if (splashStrength < 0.4f || yDistance < 0.25f) return;
 
-            Block block = World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - CollisionBox.Y1), (int)pos.Z);
+            //Block block = World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - CollisionBox.Y1), (int)pos.Z);
 
             string[] soundsBySize = new string[] { "sounds/environment/smallsplash", "sounds/environment/mediumsplash", "sounds/environment/largesplash" };
             string sound = soundsBySize[(int)GameMath.Clamp(splashStrength / 1.6, 0, 2)];
@@ -672,9 +681,9 @@ namespace Vintagestory.API.Common.Entities
                 SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y - 0.75, pos.Z - width / 2);
                 SplashParticleProps.AddPos.Set(width, 0.75, width);
 
-                SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
-                SplashParticleProps.QuantityMul = (float)(splashStrength - 1) * qmod / 1.5f;
-
+                SplashParticleProps.AddVelocity.Set((float)GameMath.Clamp(pos.Motion.X * 30f, -10, 10), 0, (float)GameMath.Clamp(pos.Motion.Z * 30f, -10, 10));
+                SplashParticleProps.QuantityMul = (float)(splashStrength - 1) * qmod;
+                
                 World.SpawnParticles(SplashParticleProps);
             }
         }
@@ -1054,6 +1063,11 @@ namespace Vintagestory.API.Common.Entities
             EntityId = reader.ReadInt64();
             WatchedAttributes.FromBytes(reader);
 
+            if (!WatchedAttributes.HasAttribute("extraInfoText"))
+            {
+                WatchedAttributes["extraInfoText"] = new TreeAttribute();
+            }
+
             if (GameVersion.IsLowerVersionThan(version, "1.7.0") && this is EntityPlayer)
             {
                 ITreeAttribute healthTree = WatchedAttributes.GetTreeAttribute("health");
@@ -1135,7 +1149,10 @@ namespace Vintagestory.API.Common.Entities
 
             if (reason == EnumDespawnReason.Death)
             {
+                Api.Event.TriggerEntityDeath(this, damageSourceForDeath);
+
                 ItemStack[] drops = GetDrops(World, Pos.AsBlockPos, null);
+
                 if (drops != null)
                 {
                     for (int i = 0; i < drops.Length; i++)
@@ -1323,6 +1340,14 @@ namespace Vintagestory.API.Common.Entities
                 if (healthTree != null) infotext.AppendLine(Lang.Get("Health: {0}/{1}", healthTree.GetFloat("currenthealth"), healthTree.GetFloat("maxhealth")));
             }
 
+            if (WatchedAttributes.HasAttribute("extraInfoText"))
+            {
+                ITreeAttribute tree = WatchedAttributes.GetTreeAttribute("extraInfoText");
+                foreach (var val in tree)
+                {
+                    infotext.AppendLine(val.Value.ToString());
+                }
+            }
 
             return infotext.ToString();
         }

@@ -34,8 +34,7 @@ namespace Vintagestory.API.Common
         Block block;
         BlockPos blockpos;
 
-        public override bool DieInLiquid() { return true; }
-
+        public override bool DieInLiquid => true;
 
         public BlockCubeParticles() { }
 
@@ -61,10 +60,7 @@ namespace Vintagestory.API.Common
             return block.GetRandomColor(capi, blockpos, BlockFacing.UP);
         }
 
-        public override Vec3d GetPos()
-        {
-            return new Vec3d(particlePos.X + rand.NextDouble() * radius - radius / 2, particlePos.Y + 0.1f, particlePos.Z + rand.NextDouble() * radius - radius / 2);
-        }
+        public override Vec3d Pos => new Vec3d(particlePos.X + rand.NextDouble() * radius - radius / 2, particlePos.Y + 0.1f, particlePos.Z + rand.NextDouble() * radius - radius / 2);
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
@@ -80,33 +76,17 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override float GetSize()
-        {
-            return scale;
-        }
+        public override float Size => scale;
 
-        public override EnumParticleModel ParticleModel()
-        {
-            return EnumParticleModel.Cube;
-        }
+        public override EnumParticleModel ParticleModel => EnumParticleModel.Cube;
 
-        public override float GetQuantity()
-        {
-            return quantity;
-        }
+        public override float Quantity => quantity;
 
-        public override float GetLifeLength()
-        {
-            return 0.5f + (float)api.World.Rand.NextDouble() / 4f;
-        }
+        public override float LifeLength => 0.5f + (float)api.World.Rand.NextDouble() / 4f;
 
-        public override byte GetGlowLevel()
-        {
-            return block.VertexFlags.GlowLevel;
-        }
+        public override int VertexFlags => block.VertexFlags.GlowLevel;
 
-        public override IParticlePropertiesProvider[] GetSecondaryParticles() { return null; }
-
+        public override IParticlePropertiesProvider[] SecondaryParticles => null;
         public override void ToBytes(BinaryWriter writer)
         {
             particlePos.ToBytes(writer);
@@ -156,8 +136,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float scale;
 
-        public override bool DieInLiquid() { return true; }
-
+        public override bool DieInLiquid => false;
+        public override bool SwimOnLiquid => stack.Collectible.MaterialDensity < 1000;
 
         public StackCubeParticles() { }
 
@@ -175,10 +155,7 @@ namespace Vintagestory.API.Common
             return stack.Collectible.GetRandomColor(capi, stack);
         }
 
-        public override Vec3d GetPos()
-        {
-            return new Vec3d(collisionPos.X + rand.NextDouble() * radius - radius / 2, collisionPos.Y + 0.1f, collisionPos.Z + rand.NextDouble() * radius - radius / 2);
-        }
+        public override Vec3d Pos => new Vec3d(collisionPos.X + rand.NextDouble() * radius - radius / 2, collisionPos.Y + 0.1f, collisionPos.Z + rand.NextDouble() * radius - radius / 2);
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
@@ -189,33 +166,17 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override float GetSize()
-        {
-            return scale;
-        }
+        public override float Size => scale;
 
-        public override EnumParticleModel ParticleModel()
-        {
-            return EnumParticleModel.Cube;
-        }
+        public override EnumParticleModel ParticleModel => EnumParticleModel.Cube;
 
-        public override float GetQuantity()
-        {
-            return quantity;
-        }
+        public override float Quantity => quantity;
 
-        public override float GetLifeLength()
-        {
-            return 0.5f + (float)api.World.Rand.NextDouble() / 4f;
-        }
+        public override float LifeLength => 1f + (float)api.World.Rand.NextDouble() / 2f;
 
-        public override byte GetGlowLevel()
-        {
-            return stack.Class == EnumItemClass.Block ? stack.Block.VertexFlags.GlowLevel : (byte)0;
-        }
+        public override int VertexFlags => stack.Class == EnumItemClass.Block ? stack.Block.VertexFlags.GlowLevel : (byte)0;
 
-        public override IParticlePropertiesProvider[] GetSecondaryParticles() { return null; }
-
+        public override IParticlePropertiesProvider[] SecondaryParticles => null;
         public override void ToBytes(BinaryWriter writer)
         {
             collisionPos.ToBytes(writer);

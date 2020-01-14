@@ -14,6 +14,7 @@ namespace Vintagestory.API.Common
 
     public interface IWorldChunk
     {
+        bool Empty { get; set; }
         /// <summary>
         /// Holds a reference to the current map data of this chunk column
         /// </summary>

@@ -216,7 +216,8 @@ namespace Vintagestory.API.Client
 
             bool recompose =
                 ((this.curStack == null) != (nowSlot?.Itemstack == null))
-                || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(api.World, curStack, GlobalConstants.IgnoredStackAttributes));
+                || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(api.World, curStack/*, GlobalConstants.IgnoredStackAttributes - don't ingore, we want to see the changed values!*/))
+            ;
 
 
             if (nowSlot?.Itemstack == null)

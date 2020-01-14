@@ -44,6 +44,8 @@ namespace Vintagestory.API
         /// </summary>
         float BlendedFogDensity { get; }
 
+        float BlendedFogBrightness { get; }
+
         /// <summary>
         /// The blended flat fog density, calculated every frame from the list of modifiers
         /// </summary>
@@ -71,6 +73,7 @@ namespace Vintagestory.API
         /// The blended cloud density, calculated every frame from the list of modifiers
         /// </summary>
         float BlendedCloudDensity { get; }
+        float BlendedCloudYPos { get; }
 
         /// <summary>
         /// The update loop for this manager. Runs every frame.

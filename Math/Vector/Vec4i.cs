@@ -9,7 +9,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 4 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
-    public class Vec4i
+    public class Vec4i : IEquatable<Vec4i>
     {
         public int X;
         public int Y;
@@ -29,6 +29,21 @@ namespace Vintagestory.API.MathTools
             this.W = w;
         }
 
+        public bool Equals(Vec4i other)
+        {
+            return other != null && other.X == X && other.Y == Y && other.Z == Z && other.W == W;
+        }
+
+
+        public override int GetHashCode()
+        {
+            int hash = 17;
+            hash = hash * 23 + X.GetHashCode();
+            hash = hash * 23 + Y.GetHashCode();
+            hash = hash * 23 + Z.GetHashCode();
+            hash = hash * 23 + W.GetHashCode();
+            return hash;
+        }
     }
 
 

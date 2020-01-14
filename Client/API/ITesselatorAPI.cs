@@ -30,6 +30,8 @@ namespace Vintagestory.API.Client
         /// <param name="block"></param>
         /// <returns></returns>
         MeshRef GetDefaultItemMeshRef(Item block);
+
+        Shape GetCachedShape(AssetLocation location);
     }
 
     /// <summary>

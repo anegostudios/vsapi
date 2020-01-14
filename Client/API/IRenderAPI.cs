@@ -450,7 +450,7 @@ namespace Vintagestory.API.Client
         /// <param name="drawMode">The current draw mode</param>
         /// <param name="staticDraw">whether the draw should be static or dynamic.</param>
         /// <returns>the reference to the mesh</returns>
-        MeshRef AllocateEmptyMesh(int xyzSize, int normalSize, int uvSize, int rgbaSize, int rgba2Size, int flagsSize, int indicesSize, CustomMeshDataPartFloat customFloats, CustomMeshDataPartByte customBytes, CustomMeshDataPartInt customInts, EnumDrawMode drawMode = EnumDrawMode.Triangles, bool staticDraw = true);
+        MeshRef AllocateEmptyMesh(int xyzSize, int normalSize, int uvSize, int rgbaSize, int rgba2Size, int flagsSize, int indicesSize, CustomMeshDataPartFloat customFloats, CustomMeshDataPartShort customShorts, CustomMeshDataPartByte customBytes, CustomMeshDataPartInt customInts, EnumDrawMode drawMode = EnumDrawMode.Triangles, bool staticDraw = true);
 
         /// <summary>
         /// Will load your mesh into a VAO. VBO locations:

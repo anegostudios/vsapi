@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -19,6 +20,35 @@ namespace Vintagestory.API.Util
 
     public static class NetUtil
     {
+        public static void OpenUrlInBrowser(string url)
+        {
+            try
+            {
+                Process.Start(url);
+            }
+            catch
+            {
+                // hack because of this: https://github.com/dotnet/corefx/issues/10361
+                if (RuntimeEnv.OS == OS.Windows)
+                {
+                    url = url.Replace("&", "^&");
+                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                }
+                else if (RuntimeEnv.OS == OS.Linux)
+                {
+                    Process.Start("xdg-open", url);
+                }
+                else if (RuntimeEnv.OS == OS.Mac)
+                {
+                    Process.Start("open", url);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
         public static bool IsPrivateIp(string ip)
         {
             string[] parts = ip.Split('.');

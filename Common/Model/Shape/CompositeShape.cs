@@ -4,9 +4,16 @@ using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Common
 {
+    public enum EnumShapeFormat
+    {
+        VintageStory,
+        Obj
+    }
+
     public class CompositeShape
     {
         public AssetLocation Base;
+        public EnumShapeFormat Format;
 
         public float rotateX;
         public float rotateY;
@@ -16,6 +23,8 @@ namespace Vintagestory.API.Common
         /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
         /// </summary>
         public CompositeShape[] Alternates = null;
+
+        public CompositeShape[] Overlays = null;
 
         /// <summary>
         /// If true, the shape is created from a voxelized version of the first defined texture
@@ -55,10 +64,23 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            CompositeShape[] overlaysClone = null;
+
+            if (this.Overlays != null)
+            {
+                overlaysClone = new CompositeShape[Overlays.Length];
+                for (int i = 0; i < overlaysClone.Length; i++)
+                {
+                    overlaysClone[i] = Overlays[i].CloneWithoutAlternates();
+                }
+            }
+
             CompositeShape ct = new CompositeShape()
             {
                 Base = Base?.Clone(),
                 Alternates = alternatesClone,
+                Overlays = overlaysClone,
+                Format = Format,
                 VoxelizeTexture = VoxelizeTexture,
                 rotateX = rotateX,
                 rotateY = rotateY,
@@ -75,6 +97,7 @@ namespace Vintagestory.API.Common
             CompositeShape ct = new CompositeShape()
             {
                 Base = Base?.Clone(),
+                Format = Format,
                 rotateX = rotateX,
                 rotateY = rotateY,
                 rotateZ = rotateZ, 

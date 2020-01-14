@@ -16,40 +16,28 @@ namespace Vintagestory.API.Common
     {
         public Random rand = new Random();
 
-        public virtual bool DieInLiquid() { return false; }
-        public virtual bool SwimOnLiquid() { return false; }
-        public virtual bool DieInAir() { return false; }
-        public abstract float GetQuantity();
-        public abstract Vec3d GetPos();
+        public bool Bouncy { get; set; }
+        public bool DieOnRainHeightmap { get; set; }
+        public virtual bool RandomVelocityChange { get; set; }
+        public virtual bool DieInLiquid => false; public virtual bool SwimOnLiquid => false; public virtual bool DieInAir => false; public abstract float Quantity { get; }
+
+        public abstract Vec3d Pos { get; }
 
         public abstract Vec3f GetVelocity(Vec3d pos);
         public abstract int GetRgbaColor(ICoreClientAPI capi);
-        public abstract byte GetGlowLevel();
-        public abstract EnumParticleModel ParticleModel();
+        public abstract int VertexFlags { get; }
+        public abstract EnumParticleModel ParticleModel { get; }
 
         public ICoreAPI api;
 
-        public virtual bool SelfPropelled()
-        {
-            return false;
-        }
+        public virtual bool SelfPropelled => false;
 
-        public virtual bool TerrainCollision() { return true; }
+        public virtual bool TerrainCollision => true;
+        public virtual float Size => 1f;
 
-        public virtual float GetSize()
-        {
-            return 1f;
-        }
+        public virtual float GravityEffect => 1f;
 
-        public virtual float GetGravityEffect()
-        {
-            return 1f;
-        }
-
-        public virtual float GetLifeLength()
-        {
-            return 1.5f;
-        }
+        public virtual float LifeLength => 1.5f;
 
         public virtual bool UseLighting()
         {
@@ -92,20 +80,11 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public virtual EvolvingNatFloat GetOpacityEvolve()
-        {
-            return null;
-        }
+        public virtual EvolvingNatFloat OpacityEvolve => null;
 
-        public virtual EvolvingNatFloat GetRedEvolve() { return null; }
-        public virtual EvolvingNatFloat GetGreenEvolve() { return null; }
-        public virtual EvolvingNatFloat GetBlueEvolve() { return null; }
+        public virtual EvolvingNatFloat RedEvolve => null; public virtual EvolvingNatFloat GreenEvolve => null; public virtual EvolvingNatFloat BlueEvolve => null;
 
-
-        public virtual EvolvingNatFloat GetSizeEvolve()
-        {
-            return null;
-        }
+        public virtual EvolvingNatFloat SizeEvolve => null;
 
         public virtual Block ColorByBlock()
         {
@@ -124,24 +103,14 @@ namespace Vintagestory.API.Common
 
         public void BeginParticle() { }
 
-        public virtual EvolvingNatFloat[] GetVelocityEvolve()
-        {
-            return null;
-        }
+        public virtual EvolvingNatFloat[] VelocityEvolve => null;
 
-        public virtual IParticlePropertiesProvider[] GetSecondaryParticles()
-        {
-            return null;
-        }
+        public virtual IParticlePropertiesProvider[] SecondaryParticles => null;
 
-        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
+        public IParticlePropertiesProvider[] DeathParticles => null;
+        public virtual float SecondarySpawnInterval => 0.0f;
 
-        public virtual float GetSecondarySpawnInterval()
-        {
-            return 0.0f;
-        }
-
-        public virtual void PrepareForSecondarySpawn(IParticleInstance particleInstance)
+        public virtual void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {
         }
 
@@ -149,5 +118,10 @@ namespace Vintagestory.API.Common
         {
             this.api = api;
         }
+
+
+        public Vec3f ParentVelocity { get; set; } = null;
+
+        public float ParentVelocityWeight { get; set; } = 0;
     }
 }

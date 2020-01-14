@@ -14,20 +14,10 @@ namespace Vintagestory.API.Common
         public Vec3f AddVelocity = new Vec3f();
         public float QuantityMul;
 
-        public override bool DieInLiquid() { return false; }
-        public override float GetGravityEffect() { return 1f; }
-        public override float GetLifeLength() { return 1.25f; }
-        public override bool SwimOnLiquid() { return true; }
+        public override bool DieInLiquid => false; public override float GravityEffect => 1f; public override float LifeLength => 1.25f; public override bool SwimOnLiquid => true;
+        public override Vec3d Pos => new Vec3d(BasePos.X + rand.NextDouble() * AddPos.X, BasePos.Y + rand.NextDouble() * AddPos.Y, BasePos.Z + AddPos.Z * rand.NextDouble());
 
-        public override Vec3d GetPos()
-        {
-            return new Vec3d(BasePos.X + rand.NextDouble() * AddPos.X, BasePos.Y + rand.NextDouble() * AddPos.Y, BasePos.Z + AddPos.Z * rand.NextDouble());
-        }
-
-        public override float GetQuantity()
-        {
-            return 30 * QuantityMul;
-        }
+        public override float Quantity => 30 * QuantityMul;
 
         public override int GetRgbaColor(ICoreClientAPI capi)
         {
@@ -35,24 +25,15 @@ namespace Vintagestory.API.Common
                 (byte)GameMath.Clamp(110, 0, 255),
                 (byte)GameMath.Clamp(40 + rand.Next(50), 0, 255),
                 (byte)GameMath.Clamp(200 + rand.Next(30), 0, 255),
-                (byte)GameMath.Clamp(100 + rand.Next(40), 0, 255)
+                (byte)GameMath.Clamp(50 + rand.Next(40), 0, 255)
             );
         }
 
-        public override float GetSize()
-        {
-            return 0.15f;
-        }
+        public override float Size => 0.15f;
 
-        public override EvolvingNatFloat GetSizeEvolve()
-        {
-            return new EvolvingNatFloat(EnumTransformFunction.LINEAR, 0.5f);
-        }
+        public override EvolvingNatFloat SizeEvolve => new EvolvingNatFloat(EnumTransformFunction.LINEAR, 0.5f);
 
-        public override EvolvingNatFloat GetOpacityEvolve()
-        {
-            return new EvolvingNatFloat(EnumTransformFunction.QUADRATIC, -16);
-        }
+        public override EvolvingNatFloat OpacityEvolve => new EvolvingNatFloat(EnumTransformFunction.QUADRATIC, -16);
 
         public override Vec3f GetVelocity(Vec3d pos)
         {

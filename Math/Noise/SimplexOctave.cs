@@ -8,10 +8,11 @@ using System.Runtime.CompilerServices;
 
 namespace Vintagestory.API.MathTools
 {
-    /* OpenSimplex Noise in C#
-     * Ported from https://gist.github.com/KdotJPG/b1270127455a94ac5d19
-     * and heavily refactored to improve performance. */
-
+    /// <summary>
+    /// OpenSimplex Noise in C#
+    /// Ported from https://gist.github.com/KdotJPG/b1270127455a94ac5d19 by KdotJPG
+    /// and heavily refactored to improve performance.
+    /// </summary>
     public class SimplexNoiseOctave
     {
         private const double STRETCH_2D = -0.211324865405187;    //(1/Math.sqrt(2+1)-1)/2;

@@ -3,44 +3,54 @@ using System.IO;
 using Vintagestory.API.MathTools;
 using System;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class AdvancedParticleProperties : IParticlePropertiesProvider
     {
+        [JsonProperty]
+        public bool RandomVelocityChange { get; set; }
+
+        [JsonProperty]
+        public bool DieOnRainHeightmap { get; set; }
+
         /// <summary>
         /// The Secondary particles for the JsonObject.
         /// </summary>
         [JsonProperty]
-        public AdvancedParticleProperties[] SecondaryParticles;
+        public AdvancedParticleProperties[] SecondaryParticles { get; set; }
 
         /// <summary>
         /// The death particles for the JsonObject.
         /// </summary>
         [JsonProperty]
-        public AdvancedParticleProperties[] DeathParticles;
+        public AdvancedParticleProperties[] DeathParticles { get; set; }
 
         /// <summary>
         /// The inverval that the secondary particles spawn.
         /// </summary>
         [JsonProperty]
-        public NatFloat SecondarySpawnInterval = NatFloat.createUniform(0, 0);
+        public NatFloat SecondarySpawnInterval { get; set; } = NatFloat.createUniform(0, 0);
+
+        [JsonProperty]
+        public bool Bouncy { get; set; }
 
         /// <summary>
         /// Whether or not the entity dies in air.
         /// </summary>
         [JsonProperty]
-        public bool DieInAir = false;
+        public bool DieInAir { get; set; } = false;
 
         /// <summary>
         /// Whether or not the entity dies in water.
         /// </summary>
         [JsonProperty]
-        public bool DieInLiquid = false;
+        public bool DieInLiquid { get; set; } = false;
 
         [JsonProperty]
-        public bool SwimOnLiquid = false;
+        public bool SwimOnLiquid { get; set; } = false;
 
         /// <summary>
         /// The Hue/Saturation/Value/Alpha for the color of the particle.
@@ -57,43 +67,43 @@ namespace Vintagestory.API.Common
         /// Whether or not to color the particle by the block it's on.
         /// </summary>
         [JsonProperty]
-        public bool ColorByBlock = false;
+        public bool ColorByBlock { get; set; } = false;
 
         /// <summary>
         /// a transforming opacity value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat OpacityEvolve = null;
+        public EvolvingNatFloat OpacityEvolve { get; set; } = null;
 
         /// <summary>
         /// A transforming Red value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat RedEvolve = null;
+        public EvolvingNatFloat RedEvolve { get; set; } = null;
 
         /// <summary>
         /// A transforming Green value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat GreenEvolve = null;
+        public EvolvingNatFloat GreenEvolve { get; set; } = null;
 
         /// <summary>
         /// A transforming Blue value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat BlueEvolve = null;
+        public EvolvingNatFloat BlueEvolve { get; set; } = null;
 
         /// <summary>
         /// The gravity effect on the particle.
         /// </summary>
         [JsonProperty]
-        public NatFloat GravityEffect = NatFloat.createUniform(1, 0);
+        public NatFloat GravityEffect { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
         /// The life length of the particle.
         /// </summary>
         [JsonProperty]
-        public NatFloat LifeLength = NatFloat.createUniform(1, 0);
+        public NatFloat LifeLength { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
         /// Offset from the blocks hitboxes top middle position
@@ -108,25 +118,25 @@ namespace Vintagestory.API.Common
         /// The quantity of the particles given.
         /// </summary>
         [JsonProperty]
-        public NatFloat Quantity = NatFloat.createUniform(1, 0);
+        public NatFloat Quantity { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
         /// The size of the particles given.
         /// </summary>
         [JsonProperty]
-        public NatFloat Size = NatFloat.createUniform(1, 0);
+        public NatFloat Size { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
         /// a transforming Size value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat SizeEvolve = EvolvingNatFloat.createIdentical(1);
+        public EvolvingNatFloat SizeEvolve { get; set; } = EvolvingNatFloat.createIdentical(1);
 
         /// <summary>
         /// The velocity of the particles.
         /// </summary>
         [JsonProperty]
-        public NatFloat[] Velocity = new NatFloat[]
+        public NatFloat[] Velocity { get; set; } = new NatFloat[]
         {
             NatFloat.createUniform(0f, 0.5f), NatFloat.createUniform(0f, 0.5f), NatFloat.createUniform(0f, 0.5f)
         };
@@ -135,36 +145,44 @@ namespace Vintagestory.API.Common
         /// A dynamic velocity value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat[] VelocityEvolve = null;
+        public EvolvingNatFloat[] VelocityEvolve { get; set; } = null;
 
         /// <summary>
         /// Sets the base model for the particle.
         /// </summary>
         [JsonProperty]
-        public EnumParticleModel ParticleModel = EnumParticleModel.Cube;
+        public EnumParticleModel ParticleModel { get; set; } = EnumParticleModel.Cube;
 
         /// <summary>
         /// The level of glow in the particle.
         /// </summary>
         [JsonProperty]
-        public byte GlowLevel = 0;
+        public int VertexFlags { get; set; } = 0;
 
         /// <summary>
         /// Whether or not the particle is self propelled.
         /// </summary>
         [JsonProperty]
-        public bool SelfPropelled = false;
+        public bool SelfPropelled { get; set; } = false;
 
         /// <summary>
         /// Whether or not the particle collides with the terrain.
         /// </summary>
         [JsonProperty]
-        public bool TerrainCollision = true;
+        public bool TerrainCollision { get; set; } = true;
+
+
+        [JsonProperty]
+        public float WindAffectednes { get; set; } = 0;
+
 
         /// <summary>
         /// The base position for the particles.
         /// </summary>
         public Vec3d basePos = new Vec3d();
+
+
+        public Vec3f baseVelocity = new Vec3f();
 
         /// <summary>
         /// The base block for the particle.
@@ -182,20 +200,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         public int Color;
 
-        bool IParticlePropertiesProvider.DieInAir()
-        {
-            return DieInAir;
-        }
+        bool IParticlePropertiesProvider.DieInAir => DieInAir;
 
-        bool IParticlePropertiesProvider.DieInLiquid()
-        {
-            return DieInLiquid;
-        }
+        bool IParticlePropertiesProvider.DieInLiquid => DieInLiquid;
 
-        bool IParticlePropertiesProvider.SwimOnLiquid()
-        {
-            return SwimOnLiquid;
-        }
+        bool IParticlePropertiesProvider.SwimOnLiquid => SwimOnLiquid;
 
         /// <summary>
         /// Converts the color to RGBA.
@@ -221,85 +230,55 @@ namespace Vintagestory.API.Common
             return (r << 16) | (g << 8) | (b << 0) | (a << 24);
         }
 
-        /// <summary>
-        /// Gets the next gravity effect.
-        /// </summary>
-        /// <returns></returns>
-        public float GetGravityEffect()
-        {
-            return GravityEffect.nextFloat();
-        }
-
-        /// <summary>
-        /// Gets the life length of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public float GetLifeLength()
-        {
-            return LifeLength.nextFloat();
-        }
 
         /// <summary>
         /// Gets the position of the particle in world.
         /// </summary>
         /// <returns></returns>
-        public Vec3d GetPos()
+        Vec3d tmpPos = new Vec3d();
+        public Vec3d Pos
         {
-            return new Vec3d(
-                basePos.X + PosOffset[0].nextFloat(),
-                basePos.Y + PosOffset[1].nextFloat(),
-                basePos.Z + PosOffset[2].nextFloat()
-            );
+            get
+            {
+                tmpPos.Set(
+                    basePos.X + PosOffset[0].nextFloat(),
+                    basePos.Y + PosOffset[1].nextFloat(),
+                    basePos.Z + PosOffset[2].nextFloat()
+                );
+                return tmpPos;
+            }
         }
+
 
         /// <summary>
         /// gets the quantity released.
         /// </summary>
         /// <returns></returns>
-        public float GetQuantity()
-        {
-            return Quantity.nextFloat();
-        }
+        float IParticlePropertiesProvider.Quantity => Quantity.nextFloat();
 
         /// <summary>
         /// Gets the dynamic size of the particle.
         /// </summary>
-        public float GetSize()
-        {
-            return Size.nextFloat();
-        }
+        float IParticlePropertiesProvider.Size => Size.nextFloat();
 
+        Vec3f tmpVelo = new Vec3f();
         /// <summary>
         /// Gets the velocity of the particle.
         /// </summary>
         public Vec3f GetVelocity(Vec3d pos)
         {
-            return new Vec3f(Velocity[0].nextFloat(), Velocity[1].nextFloat(), Velocity[2].nextFloat());
+            tmpVelo.Set(baseVelocity.X + Velocity[0].nextFloat(), baseVelocity.Y + Velocity[1].nextFloat(), baseVelocity.Z + Velocity[2].nextFloat());
+            return tmpVelo;
         }
 
-        /// <summary>
-        /// Gets the dynamic velocity of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public EvolvingNatFloat[] GetVelocityEvolve()
-        {
-            return VelocityEvolve;
-        }
+        public Vec3f ParentVelocity { get; set; } = null;
 
-        EnumParticleModel IParticlePropertiesProvider.ParticleModel()
-        {
-            return ParticleModel;
-        }
 
-        /// <summary>
-        /// Gets the glow level of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public byte GetGlowLevel()
-        {
-            return GlowLevel;
-        }
+        public float WindAffectednesAtPos { get; set; } = 0;
 
+        public float ParentVelocityWeight { get; set; } = 0;
+
+        EnumParticleModel IParticlePropertiesProvider.ParticleModel => ParticleModel;
 
         public void ToBytes(BinaryWriter writer)
         {
@@ -327,7 +306,7 @@ namespace Vintagestory.API.Common
                 Velocity[i].ToBytes(writer);
             }
             writer.Write((byte)ParticleModel);
-            writer.Write(GlowLevel);
+            writer.Write(VertexFlags);
 
 
             writer.Write(OpacityEvolve == null);
@@ -355,7 +334,7 @@ namespace Vintagestory.API.Common
             }
 
             SecondarySpawnInterval.ToBytes(writer);
-            if(SecondaryParticles == null)
+            if (SecondaryParticles == null)
             {
                 writer.Write(0);
             }
@@ -381,6 +360,8 @@ namespace Vintagestory.API.Common
                     DeathParticles[i].ToBytes(writer);
                 }
             }
+
+            writer.Write(WindAffectednes);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -398,7 +379,7 @@ namespace Vintagestory.API.Common
             Size = NatFloat.createFromBytes(reader);
             Velocity = new NatFloat[] { NatFloat.createFromBytes(reader), NatFloat.createFromBytes(reader), NatFloat.createFromBytes(reader) };
             ParticleModel = (EnumParticleModel)reader.ReadByte();
-            GlowLevel = reader.ReadByte();
+            VertexFlags = reader.ReadInt32();
 
             if (!reader.ReadBoolean())
             {
@@ -440,10 +421,10 @@ namespace Vintagestory.API.Common
             }
             SecondarySpawnInterval = NatFloat.createFromBytes(reader);
             int secondaryPropCount = reader.ReadInt32();
-            if(secondaryPropCount > 0)
+            if (secondaryPropCount > 0)
             {
                 SecondaryParticles = new AdvancedParticleProperties[secondaryPropCount];
-                for(int i = 0; i < secondaryPropCount; i++)
+                for (int i = 0; i < secondaryPropCount; i++)
                 {
                     SecondaryParticles[i] = AdvancedParticleProperties.createFromBytes(reader, resolver);
                 }
@@ -458,6 +439,8 @@ namespace Vintagestory.API.Common
                     DeathParticles[i] = AdvancedParticleProperties.createFromBytes(reader, resolver);
                 }
             }
+
+            WindAffectednes = reader.ReadSingle();
         }
 
         public static AdvancedParticleProperties createFromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -481,102 +464,53 @@ namespace Vintagestory.API.Common
             }
 
             return cloned;
-        } 
-
-        /// <summary>
-        /// Gets the dynamic opacity of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public EvolvingNatFloat GetOpacityEvolve()
-        {
-            return OpacityEvolve;
         }
 
-        /// <summary>
-        /// Gets the dynamic red of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public virtual EvolvingNatFloat GetRedEvolve()
-        {
-            return RedEvolve;
-        }
 
-        /// <summary>
-        /// Gets the dynamic green of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public virtual EvolvingNatFloat GetGreenEvolve()
-        {
-            return GreenEvolve;
-        }
-
-        /// <summary>
-        /// Gets the dynamic blue of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public virtual EvolvingNatFloat GetBlueEvolve()
-        {
-            return BlueEvolve;
-        }
-
-        /// <summary>
-        /// Gets the dynamic size of the particle.
-        /// </summary>
-        /// <returns></returns>
-        public EvolvingNatFloat GetSizeEvolve()
-        {
-            return SizeEvolve;
-        }
-
-        bool IParticlePropertiesProvider.SelfPropelled()
-        {
-            return SelfPropelled;
-        }
+        bool IParticlePropertiesProvider.SelfPropelled => SelfPropelled;
 
         /// <summary>
         /// Begins the advanced particle.
         /// </summary>
-        public void BeginParticle() { }
-
-        /// <summary>
-        /// Gets the secondary particles.
-        /// </summary>
-        /// <returns></returns>
-        public IParticlePropertiesProvider[] GetSecondaryParticles()
-        {
-            return SecondaryParticles;
+        public void BeginParticle() {
+            if (WindAffectednes > 0)
+            {
+                ParentVelocityWeight = WindAffectednesAtPos * WindAffectednes;
+                ParentVelocity = GlobalConstants.CurrentWindSpeedClient;
+            } else
+            {
+                ParentVelocityWeight = 0;
+                ParentVelocity = null;
+            }
         }
-
-        /// <summary>
-        /// Gets the death particles.
-        /// </summary>
-        /// <returns></returns>
-        public IParticlePropertiesProvider[] GetDeathParticles() { return DeathParticles; }
 
         /// <summary>
         /// Gets the secondary spawn interval.
         /// </summary>
         /// <returns></returns>
-        public float GetSecondarySpawnInterval()
-        {
-            return SecondarySpawnInterval.nextFloat();
-        }
+        float IParticlePropertiesProvider.SecondarySpawnInterval => SecondarySpawnInterval.nextFloat();
 
         /// <summary>
         /// prepares the particle for secondary spawning.
         /// </summary>
         /// <param name="particleInstance"></param>
-        public void PrepareForSecondarySpawn(IParticleInstance particleInstance)
+        public void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {
-            Vec3d particlePos = particleInstance.GetPosition();
+            Vec3d particlePos = particleInstance.Position;
             basePos.X = particlePos.X;
             basePos.Y = particlePos.Y;
             basePos.Z = particlePos.Z;
         }
 
-        bool IParticlePropertiesProvider.TerrainCollision()
-        {
-            return TerrainCollision;
-        }
+        bool IParticlePropertiesProvider.TerrainCollision => TerrainCollision;
+
+
+        float IParticlePropertiesProvider.GravityEffect => GravityEffect.nextFloat();
+
+        float IParticlePropertiesProvider.LifeLength => LifeLength.nextFloat();
+
+        IParticlePropertiesProvider[] IParticlePropertiesProvider.SecondaryParticles => SecondaryParticles;
+
+        IParticlePropertiesProvider[] IParticlePropertiesProvider.DeathParticles => DeathParticles;
     }
 }

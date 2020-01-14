@@ -10,6 +10,8 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+    public delegate bool CanSpawnNearbyDelegate(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc);
+
     public class EntityPlayer : EntityHumanoid
     {
         /// <summary>
@@ -50,6 +52,8 @@ namespace Vintagestory.API.Common
         /// Set this to hook into the foot step sound creator thingy. Currently used by the armor system to create armor step sounds 
         /// </summary>
         public Action OnFootStep;
+        public Action OnImpact;
+        public CanSpawnNearbyDelegate OnCanSpawnNearby;
 
         public override bool StoreWithChunk
         {
@@ -235,7 +239,7 @@ namespace Vintagestory.API.Common
                 double offset = -0.2 / sneakMul;
 
 
-                double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(7.325f * walkCounter) * amplitude) + offset);
+                double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(5.5f * walkCounter) * amplitude) + offset);
                 if (World.Side == EnumAppSide.Client && (World.Api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
 
 
@@ -251,8 +255,8 @@ namespace Vintagestory.API.Common
                         SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y + 0, pos.Z - width / 2);
                         SplashParticleProps.AddPos.Set(width, 0.5, width);
 
-                        SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 60f, 0, (float)pos.Motion.Z * 60f);
-                        SplashParticleProps.QuantityMul = 0.005f;
+                        SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
+                        SplashParticleProps.QuantityMul = 0.015f;
 
                         World.SpawnParticles(SplashParticleProps);
                     }
@@ -271,7 +275,7 @@ namespace Vintagestory.API.Common
                             AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
                             AssetLocation soundinside = World.Blocks[blockIdInside].Sounds?.Inside;
 
-                            if (soundwalk != null)
+                            if (!Swimming && soundwalk != null)
                             {
                                 if (blockIdInside != blockIdUnder && soundinside != null)
                                 {
@@ -325,10 +329,20 @@ namespace Vintagestory.API.Common
         {
             tmpCollBox.Set(CollisionBox);
             tmpCollBox.Y2 = Properties.HitBoxSize.Y;
-            return !World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false);
+            tmpCollBox.Y1 += 1f; // Don't care about the bottom block
+            bool collide = World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false); ;
+            return !collide;
         }
 
+        public virtual bool CanSpawnNearby(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc)
+        {
+            if (OnCanSpawnNearby != null)
+            {
+                return OnCanSpawnNearby(type, spawnPosition, sc);
+            }
 
+            return true;
+        }
 
         public override void OnFallToGround(double motionY)
         {
@@ -338,12 +352,13 @@ namespace Vintagestory.API.Common
             {
                 int blockIdUnder = BlockUnderPlayer();
                 AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
-                if (soundwalk != null)
+                if (soundwalk != null && !Swimming)
                 {
                     World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
                 }
-            }
 
+                OnImpact?.Invoke();
+            }
 
             base.OnFallToGround(motionY);
         }
@@ -433,7 +448,7 @@ namespace Vintagestory.API.Common
         {
             if (damage > 0 && World != null && World.Side == EnumAppSide.Client && (World as IClientWorldAccessor).Player.Entity.EntityId == this.EntityId)
             {
-                (World as IClientWorldAccessor).ShakeCamera(0.3f);
+                (World as IClientWorldAccessor).AddCameraShake(0.3f);
             }
 
             if (damage != 0 && World?.Side == EnumAppSide.Server)
@@ -522,7 +537,7 @@ namespace Vintagestory.API.Common
        
         
 
-        public override void TeleportToDouble(double x, double y, double z)
+        public override void TeleportToDouble(double x, double y, double z, API.Common.Action onTeleported = null)
         {
             Teleporting = true;
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
@@ -552,6 +567,8 @@ namespace Vintagestory.API.Common
                         }
 
                         WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+
+                        onTeleported?.Invoke();
 
                         Teleporting = false;
                     },

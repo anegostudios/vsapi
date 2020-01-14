@@ -20,8 +20,31 @@ namespace Vintagestory.API.Common
         public WeightedFloatArray AmbientColor;
         public WeightedFloat CloudDensity;
         public WeightedFloat CloudBrightness;
+        public WeightedFloat CloudYPos;
         public WeightedFloat LerpSpeed;
         public WeightedFloat SceneBrightness;
+
+        public WeightedFloat FogBrightness;
+
+        public void SetLerped(AmbientModifier left, AmbientModifier right, float w)
+        {
+            FlatFogDensity.SetLerped(left.FlatFogDensity, right.FlatFogDensity, w);
+            FlatFogYPos.SetLerped(left.FlatFogYPos, right.FlatFogYPos, w);
+            FogMin.SetLerped(left.FogMin, right.FogMin, w);
+            FogDensity.SetLerped(left.FogDensity, right.FogDensity, w);
+
+            FogColor.SetLerped(left.FogColor, right.FogColor, w);
+            AmbientColor.SetLerped(left.AmbientColor, right.AmbientColor, w);
+
+            CloudDensity.SetLerped(left.CloudDensity, right.CloudDensity, w);
+            CloudBrightness.SetLerped(left.CloudBrightness, right.CloudBrightness, w);
+            CloudYPos.SetLerped(left.CloudYPos, right.CloudYPos, w);
+            LerpSpeed.SetLerped(left.LerpSpeed, right.LerpSpeed, w);
+            SceneBrightness.SetLerped(left.SceneBrightness, right.SceneBrightness, w);
+            FogBrightness.SetLerped(left.FogBrightness, right.FogBrightness, w);
+        }
+
+
 
         public AmbientModifier Clone()
         {
@@ -34,8 +57,10 @@ namespace Vintagestory.API.Common
                 FogColor = FogColor.Clone(),
                 AmbientColor = AmbientColor.Clone(),
                 CloudDensity = CloudDensity.Clone(),
+                CloudYPos = CloudYPos.Clone(),
                 CloudBrightness = CloudBrightness.Clone(),
                 SceneBrightness = SceneBrightness.Clone(),
+                FogBrightness = FogBrightness.Clone()
             };
         }
 
@@ -45,13 +70,14 @@ namespace Vintagestory.API.Common
             {
                 return new AmbientModifier()
                 {
-                    //FogColor = WeightedFloatArray.New(new float[] { 0.725f, 0.827f, 0.929f }, 1),
-                    FogColor = WeightedFloatArray.New(new float[] { 175/255f, 201/255f, 224/255f }, 1),
+                    FogColor = WeightedFloatArray.New(new float[] { 201/255f, 211/255f, 219/255f }, 1),
                     FogDensity = WeightedFloat.New(0.00125f, 1),
                     AmbientColor = WeightedFloatArray.New(new float[] { 1, 1, 1 }, 1),
                     CloudBrightness = WeightedFloat.New(1, 1),
-                    CloudDensity = WeightedFloat.New(1, 0),
-                    SceneBrightness = WeightedFloat.New(1, 0)
+                    CloudDensity = WeightedFloat.New(0, 0),
+                    CloudYPos = new WeightedFloat(1, 0),
+                    SceneBrightness = WeightedFloat.New(1, 0),
+                    FogBrightness = WeightedFloat.New(1, 0)
                 }.EnsurePopulated();
             }
         }
@@ -66,8 +92,10 @@ namespace Vintagestory.API.Common
             if (AmbientColor.Value == null) AmbientColor.Value = new float[] { 0, 0, 0 };
             if (CloudDensity == null) CloudDensity = WeightedFloat.New(0, 0);
             if (CloudBrightness == null) CloudBrightness = WeightedFloat.New(0, 0);
+            if (CloudYPos == null) CloudYPos = WeightedFloat.New(1, 0);
             if (LerpSpeed == null) LerpSpeed = WeightedFloat.New(0, 0);
             if (SceneBrightness == null) SceneBrightness = WeightedFloat.New(1, 0);
+            if (FogBrightness == null) FogBrightness = WeightedFloat.New(1, 0);
 
             return this;
         }
@@ -84,7 +112,8 @@ namespace Vintagestory.API.Common
             FlatFogDensity.ToBytes(writer);
             FlatFogYPos.ToBytes(writer);
             SceneBrightness.ToBytes(writer);
-            //WeatherPattern.ToBytes(wrtier);
+            FogBrightness.ToBytes(writer);
+            CloudYPos.ToBytes(writer);
         }
 
         public void FromBytes(BinaryReader reader)
@@ -99,7 +128,8 @@ namespace Vintagestory.API.Common
             FlatFogDensity.FromBytes(reader);
             FlatFogYPos.FromBytes(reader);
             SceneBrightness.FromBytes(reader);
-            //WeatherPattern.FromBytes(ms);
+            FogBrightness.FromBytes(reader);
+            CloudYPos.FromBytes(reader);
         }
     }
 }

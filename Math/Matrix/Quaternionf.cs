@@ -26,16 +26,16 @@ using System;
 
 namespace Vintagestory.API.MathTools
 {
-    public class Quaterniond
+    public class Quaternionf
     {
         ///**
         // * Creates a new identity quat
         // *
         // * @returns {quat} a new quaternion
         // */
-        public static double[] Create()
+        public static float[] Create()
         {
-            double[] output = new double[4];
+            float[] output = new float[4];
             output[0] = 0;
             output[1] = 0;
             output[2] = 0;
@@ -54,28 +54,28 @@ namespace Vintagestory.API.MathTools
         // * @param {vec3} b the destination vector
         // * @returns {quat} output
         // */
-        public static double[] RotationTo(double[] output, double[] a, double[] b)
+        public static float[] RotationTo(float[] output, float[] a, float[] b)
         {
-            double[] tmpvec3 = Vec3Utilsd.Create();
-            double[] xUnitVec3 = Vec3Utilsd.FromValues(1, 0, 0);
-            double[] yUnitVec3 = Vec3Utilsd.FromValues(0, 1, 0);
+            float[] tmpvec3 = Vec3Utilsf.Create();
+            float[] xUnitVec3 = Vec3Utilsf.FromValues(1, 0, 0);
+            float[] yUnitVec3 = Vec3Utilsf.FromValues(0, 1, 0);
 
             //    return function(output, a, b) {
-            double dot = Vec3Utilsd.Dot(a, b);
+            float dot = Vec3Utilsf.Dot(a, b);
 
-            double nines = 999999; // 0.999999
+            float nines = 999999; // 0.999999
             nines /= 1000000;
 
-            double epsilon = 1; // 0.000001
+            float epsilon = 1; // 0.000001
             epsilon /= 1000000;
 
             if (dot < -nines)
             {
-                Vec3Utilsd.Cross(tmpvec3, xUnitVec3, a);
-                if (Vec3Utilsd.Length_(tmpvec3) < epsilon)
-                    Vec3Utilsd.Cross(tmpvec3, yUnitVec3, a);
-                Vec3Utilsd.Normalize(tmpvec3, tmpvec3);
-                Quaterniond.SetAxisAngle(output, tmpvec3, GameMath.PI);
+                Vec3Utilsf.Cross(tmpvec3, xUnitVec3, a);
+                if (Vec3Utilsf.Length_(tmpvec3) < epsilon)
+                    Vec3Utilsf.Cross(tmpvec3, yUnitVec3, a);
+                Vec3Utilsf.Normalize(tmpvec3, tmpvec3);
+                Quaternionf.SetAxisAngle(output, tmpvec3, GameMath.PI);
                 return output;
             }
             else if (dot > nines)
@@ -88,12 +88,12 @@ namespace Vintagestory.API.MathTools
             }
             else
             {
-                Vec3Utilsd.Cross(tmpvec3, a, b);
+                Vec3Utilsf.Cross(tmpvec3, a, b);
                 output[0] = tmpvec3[0];
                 output[1] = tmpvec3[1];
                 output[2] = tmpvec3[2];
                 output[3] = 1 + dot;
-                return Quaterniond.Normalize(output, output);
+                return Quaternionf.Normalize(output, output);
             }
             //    };
         }
@@ -108,9 +108,9 @@ namespace Vintagestory.API.MathTools
         // * @param {vec3} up    the vector representing the local "up" direction
         // * @returns {quat} output
         // */
-        public static double[] SetAxes(double[] output, double[] view, double[] right, double[] up)
+        public static float[] SetAxes(float[] output, float[] view, float[] right, float[] up)
         {
-            double[] matr = Mat3d.Create();
+            float[] matr = Mat3f.Create();
 
             //    return function(output, view, right, up) {
             matr[0] = right[0];
@@ -125,7 +125,7 @@ namespace Vintagestory.API.MathTools
             matr[5] = view[1];
             matr[8] = view[2];
 
-            return Quaterniond.Normalize(output, Quaterniond.FromMat3(output, matr));
+            return Quaternionf.Normalize(output, Quaternionf.FromMat3(output, matr));
             //    };
         }
 
@@ -136,9 +136,9 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} a new quaternion
         // * @function
         // */
-        public static double[] CloneIt(double[] a)
+        public static float[] CloneIt(float[] a)
         {
-            return QVec4d.CloneIt(a);
+            return QVec4f.CloneIt(a);
         }
 
         ///**
@@ -151,9 +151,9 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} a new quaternion
         // * @function
         // */
-        public static double[] FromValues(double x, double y, double z, double w)
+        public static float[] FromValues(float x, float y, float z, float w)
         {
-            return QVec4d.FromValues(x, y, z, w);
+            return QVec4f.FromValues(x, y, z, w);
         }
 
         ///**
@@ -164,9 +164,9 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // * @function
         // */
-        public static double[] Copy(double[] output, double[] a)
+        public static float[] Copy(float[] output, float[] a)
         {
-            return QVec4d.Copy(output, a);
+            return QVec4f.Copy(output, a);
         }
 
         ///**
@@ -180,9 +180,9 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // * @function
         // */
-        public static double[] Set(double[] output, double x, double y, double z, double w)
+        public static float[] Set(float[] output, float x, float y, float z, float w)
         {
-            return QVec4d.Set(output, x, y, z, w);
+            return QVec4f.Set(output, x, y, z, w);
         }
 
         ///**
@@ -191,7 +191,7 @@ namespace Vintagestory.API.MathTools
         // * @param {quat} output the receiving quaternion
         // * @returns {quat} output
         // */
-        public static double[] Identity_(double[] output)
+        public static float[] Identity_(float[] output)
         {
             output[0] = 0;
             output[1] = 0;
@@ -209,10 +209,10 @@ namespace Vintagestory.API.MathTools
         // * @param {Number} rad the angle in radians
         // * @returns {quat} output
         // **/
-        public static double[] SetAxisAngle(double[] output, double[] axis, double rad)
+        public static float[] SetAxisAngle(float[] output, float[] axis, float rad)
         {
             rad = rad / 2;
-            double s = GameMath.Sin(rad);
+            float s = GameMath.Sin(rad);
             output[0] = s * axis[0];
             output[1] = s * axis[1];
             output[2] = s * axis[2];
@@ -229,10 +229,10 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // * @function
         // */
-        //quat.add = QVec4d.add;
-        public static double[] Add(double[] output, double[] a, double[] b)
+        //quat.add = QVec4f.add;
+        public static float[] Add(float[] output, float[] a, float[] b)
         {
-            return QVec4d.Add(output, a, b);
+            return QVec4f.Add(output, a, b);
         }
 
         ///**
@@ -243,10 +243,10 @@ namespace Vintagestory.API.MathTools
         // * @param {quat} b the second operand
         // * @returns {quat} output
         // */
-        public static double[] Multiply(double[] output, double[] a, double[] b)
+        public static float[] Multiply(float[] output, float[] a, float[] b)
         {
-            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
-            double bx = b[0]; double by = b[1]; double bz = b[2]; double bw = b[3];
+            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
+            float bx = b[0]; float by = b[1]; float bz = b[2]; float bw = b[3];
 
             output[0] = ax * bw + aw * bx + ay * bz - az * by;
             output[1] = ay * bw + aw * by + az * bx - ax * bz;
@@ -259,7 +259,7 @@ namespace Vintagestory.API.MathTools
         // * Alias for {@link quat.multiply}
         // * @function
         // */
-        public static double[] Mul(double[] output, double[] a, double[] b)
+        public static float[] Mul(float[] output, float[] a, float[] b)
         {
             return Multiply(output, a, b);
         }
@@ -273,10 +273,10 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // * @function
         // */
-        //quat.scale = QVec4d.scale;
-        public static double[] Scale(double[] output, double[] a, double b)
+        //quat.scale = QVec4f.scale;
+        public static float[] Scale(float[] output, float[] a, float b)
         {
-            return QVec4d.Scale(output, a, b);
+            return QVec4f.Scale(output, a, b);
         }
 
         ///**
@@ -287,12 +287,12 @@ namespace Vintagestory.API.MathTools
         // * @param {number} rad angle (in radians) to rotate
         // * @returns {quat} output
         // */
-        public static double[] RotateX(double[] output, double[] a, double rad)
+        public static float[] RotateX(float[] output, float[] a, float rad)
         {
             rad /= 2;
 
-            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
-            double bx = GameMath.Sin(rad); double bw = GameMath.Cos(rad);
+            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
+            float bx = GameMath.Sin(rad); float bw = GameMath.Cos(rad);
 
             output[0] = ax * bw + aw * bx;
             output[1] = ay * bw + az * bx;
@@ -309,12 +309,12 @@ namespace Vintagestory.API.MathTools
         // * @param {number} rad angle (in radians) to rotate
         // * @returns {quat} output
         // */
-        public static double[] RotateY(double[] output, double[] a, double rad)
+        public static float[] RotateY(float[] output, float[] a, float rad)
         {
             rad /= 2;
 
-            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
-            double by = GameMath.Sin(rad); double bw = GameMath.Cos(rad);
+            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
+            float by = GameMath.Sin(rad); float bw = GameMath.Cos(rad);
 
             output[0] = ax * bw - az * by;
             output[1] = ay * bw + aw * by;
@@ -331,12 +331,12 @@ namespace Vintagestory.API.MathTools
         // * @param {number} rad angle (in radians) to rotate
         // * @returns {quat} output
         // */
-        public static double[] RotateZ(double[] output, double[] a, double rad)
+        public static float[] RotateZ(float[] output, float[] a, float rad)
         {
             rad /= 2;
 
-            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
-            double bz = GameMath.Sin(rad); double bw = GameMath.Cos(rad);
+            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
+            float bz = GameMath.Sin(rad); float bw = GameMath.Cos(rad);
 
             output[0] = ax * bw + ay * bz;
             output[1] = ay * bw - ax * bz;
@@ -354,14 +354,14 @@ namespace Vintagestory.API.MathTools
         // * @param {quat} a quat to calculate W component of
         // * @returns {quat} output
         // */
-        public static double[] CalculateW(double[] output, double[] a)
+        public static float[] CalculateW(float[] output, float[] a)
         {
-            double x = a[0]; double y = a[1]; double z = a[2];
+            float x = a[0]; float y = a[1]; float z = a[2];
 
             output[0] = x;
             output[1] = y;
             output[2] = z;
-            double one = 1;
+            float one = 1;
             output[3] = -GameMath.Sqrt(Math.Abs(one - x * x - y * y - z * z));
             return output;
         }
@@ -374,31 +374,31 @@ namespace Vintagestory.API.MathTools
         // * @returns {Number} dot product of a and b
         // * @function
         // */
-        public static double Dot(double[] a, double[] b)
+        public static float Dot(float[] a, float[] b)
         {
-            return QVec4d.Dot(a, b);
+            return QVec4f.Dot(a, b);
         }
 
 
-        public static float[] ToEulerAngles(double[] quat)
+        public static float[] ToEulerAngles(float[] quat)
         {
             float[] angles = new float[3];
 
             // roll (x-axis rotation)
-            double sinr_cosp = +2.0 * (quat[3] * quat[0] + quat[1] * quat[2]);
-            double cosr_cosp = +1.0 - 2.0 * (quat[0] * quat[0] + quat[1] * quat[1]);
+            float sinr_cosp = +2.0f * (quat[3] * quat[0] + quat[1] * quat[2]);
+            float cosr_cosp = +1.0f - 2.0f * (quat[0] * quat[0] + quat[1] * quat[1]);
             angles[2] = (float)Math.Atan2(sinr_cosp, cosr_cosp);
 
             // pitch (y-axis rotation)
-            double sinp = +2.0 * (quat[3] * quat[1] - quat[2] * quat[0]);
+            float sinp = +2.0f * (quat[3] * quat[1] - quat[2] * quat[0]);
             if (Math.Abs(sinp) >= 1)
                 angles[1] = (float)Math.PI / 2 * Math.Sign(sinp); // use 90 degrees if out of range
             else
                 angles[1] = (float)Math.Asin(sinp);
 
             // yaw (z-axis rotation)
-            double siny_cosp = +2.0 * (quat[3] * quat[2] + quat[0] * quat[1]);
-            double cosy_cosp = +1.0 - 2.0 * (quat[1] * quat[1] + quat[2] * quat[2]);
+            float siny_cosp = +2.0f * (quat[3] * quat[2] + quat[0] * quat[1]);
+            float cosy_cosp = +1.0f - 2.0f * (quat[1] * quat[1] + quat[2] * quat[2]);
             angles[0] = (float)Math.Atan2(siny_cosp, cosy_cosp);
 
             return angles;
@@ -414,9 +414,9 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // * @function
         // */
-        public static double[] Lerp(double[] output, double[] a, double[] b, double t)
+        public static float[] Lerp(float[] output, float[] a, float[] b, float t)
         {
-            return QVec4d.Lerp(output, a, b, t);
+            return QVec4f.Lerp(output, a, b, t);
         }
 
         ///**
@@ -429,15 +429,15 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // */
         //quat.slerp = function (output, a, b, t) {
-        public static double[] Slerp(double[] output, double[] a, double[] b, double t)
+        public static float[] Slerp(float[] output, float[] a, float[] b, float t)
         {
             //    // benchmarks:
             //    //    http://jsperf.com/quaternion-slerp-implementations
 
-            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
-            double bx = b[0]; double by = b[1]; double bz = b[2]; double bw = b[3];
+            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
+            float bx = b[0]; float by = b[1]; float bz = b[2]; float bw = b[3];
 
-            double omega; double cosom; double sinom; double scale0; double scale1;
+            float omega; float cosom; float sinom; float scale0; float scale1;
 
             // calc cosine
             cosom = ax * bx + ay * by + az * bz + aw * bw;
@@ -450,8 +450,8 @@ namespace Vintagestory.API.MathTools
                 bz = -bz;
                 bw = -bw;
             }
-            double one = 1;
-            double epsilon = one / 1000000;
+            float one = 1;
+            float epsilon = one / 1000000;
             // calculate coefficients
             if ((one - cosom) > epsilon)
             {
@@ -484,12 +484,12 @@ namespace Vintagestory.API.MathTools
         // * @param {quat} a quat to calculate inverse of
         // * @returns {quat} output
         // */
-        public double[] Invert(double[] output, double[] a)
+        public float[] Invert(float[] output, float[] a)
         {
-            double a0 = a[0]; double a1 = a[1]; double a2 = a[2]; double a3 = a[3];
-            double dot = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
-            double one = 1;
-            double invDot = (dot != 0) ? one / dot : 0;
+            float a0 = a[0]; float a1 = a[1]; float a2 = a[2]; float a3 = a[3];
+            float dot = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
+            float one = 1;
+            float invDot = (dot != 0) ? one / dot : 0;
 
             // TODO: Would be faster to return [0,0,0,0] immediately if dot == 0
 
@@ -508,7 +508,7 @@ namespace Vintagestory.API.MathTools
         // * @param {quat} a quat to calculate conjugate of
         // * @returns {quat} output
         // */
-        public double[] Conjugate(double[] output, double[] a)
+        public float[] Conjugate(float[] output, float[] a)
         {
             output[0] = -a[0];
             output[1] = -a[1];
@@ -524,17 +524,17 @@ namespace Vintagestory.API.MathTools
         // * @returns {Number} length of a
         // * @function
         // */
-        //quat.length = QVec4d.length;
-        public static double Length_(double[] a)
+        //quat.length = QVec4f.length;
+        public static float Length_(float[] a)
         {
-            return QVec4d.Length_(a);
+            return QVec4f.Length_(a);
         }
 
         ///**
         // * Alias for {@link quat.length}
         // * @function
         // */
-        public static double Len(double[] a)
+        public static float Len(float[] a)
         {
             return Length_(a);
         }
@@ -546,16 +546,16 @@ namespace Vintagestory.API.MathTools
         // * @returns {Number} squared length of a
         // * @function
         // */
-        public static double SquaredLength(double[] a)
+        public static float SquaredLength(float[] a)
         {
-            return QVec4d.SquaredLength(a);
+            return QVec4f.SquaredLength(a);
         }
 
         ///**
         // * Alias for {@link quat.squaredLength}
         // * @function
         // */
-        public static double SqrLen(double[] a)
+        public static float SqrLen(float[] a)
         {
             return SquaredLength(a);
         }
@@ -568,9 +568,9 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // * @function
         // */
-        public static double[] Normalize(double[] output, double[] a)
+        public static float[] Normalize(float[] output, float[] a)
         {
-            return QVec4d.Normalize(output, a);
+            return QVec4f.Normalize(output, a);
         }
 
         ///**
@@ -584,16 +584,16 @@ namespace Vintagestory.API.MathTools
         // * @returns {quat} output
         // * @function
         // */
-        public static double[] FromMat3(double[] output, double[] m)
+        public static float[] FromMat3(float[] output, float[] m)
         {
             // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
             // article "Quaternion Calculus and Fast Animation".
-            double fTrace = m[0] + m[4] + m[8];
-            double fRoot;
+            float fTrace = m[0] + m[4] + m[8];
+            float fRoot;
 
-            double zero = 0;
-            double one = 1;
-            double half = one / 2;
+            float zero = 0;
+            float one = 1;
+            float half = one / 2;
             if (fTrace > zero)
             {
                 // |w| > 1/2, may as well choose w > 1/2
@@ -628,17 +628,17 @@ namespace Vintagestory.API.MathTools
     }
 
 
-    class QVec4d
+    class QVec4f
     {
         
         ///**
-        // * Creates a new, empty QVec4d
+        // * Creates a new, empty QVec4f
         // *
-        // * @returns {QVec4d} a new 4D vector
+        // * @returns {QVec4f} a new 4D vector
         // */
-        public static double[] Create()
+        public static float[] Create()
         {
-            double[] output = new double[4];
+            float[] output = new float[4];
             output[0] = 0;
             output[1] = 0;
             output[2] = 0;
@@ -647,14 +647,14 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Creates a new QVec4d initialized with values from an existing vector
+        // * Creates a new QVec4f initialized with values from an existing vector
         // *
-        // * @param {QVec4d} a vector to clone
-        // * @returns {QVec4d} a new 4D vector
+        // * @param {QVec4f} a vector to clone
+        // * @returns {QVec4f} a new 4D vector
         // */
-        public static double[] CloneIt(double[] a)
+        public static float[] CloneIt(float[] a)
         {
-            double[] output = new double[4];
+            float[] output = new float[4];
             output[0] = a[0];
             output[1] = a[1];
             output[2] = a[2];
@@ -663,17 +663,17 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Creates a new QVec4d initialized with the given values
+        // * Creates a new QVec4f initialized with the given values
         // *
         // * @param {Number} x X component
         // * @param {Number} y Y component
         // * @param {Number} z Z component
         // * @param {Number} w W component
-        // * @returns {QVec4d} a new 4D vector
+        // * @returns {QVec4f} a new 4D vector
         // */
-        public static double[] FromValues(double x, double y, double z, double w)
+        public static float[] FromValues(float x, float y, float z, float w)
         {
-            double[] output = new double[4];
+            float[] output = new float[4];
             output[0] = x;
             output[1] = y;
             output[2] = z;
@@ -682,13 +682,13 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Copy the values from one QVec4d to another
+        // * Copy the values from one QVec4f to another
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the source vector
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the source vector
+        // * @returns {QVec4f} output
         // */
-        public static double[] Copy(double[] output, double[] a)
+        public static float[] Copy(float[] output, float[] a)
         {
             output[0] = a[0];
             output[1] = a[1];
@@ -698,16 +698,16 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Set the components of a QVec4d to the given values
+        // * Set the components of a QVec4f to the given values
         // *
-        // * @param {QVec4d} output the receiving vector
+        // * @param {QVec4f} output the receiving vector
         // * @param {Number} x X component
         // * @param {Number} y Y component
         // * @param {Number} z Z component
         // * @param {Number} w W component
-        // * @returns {QVec4d} output
+        // * @returns {QVec4f} output
         // */
-        public static double[] Set(double[] output, double x, double y, double z, double w)
+        public static float[] Set(float[] output, float x, float y, float z, float w)
         {
             output[0] = x;
             output[1] = y;
@@ -717,14 +717,14 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Adds two QVec4d's
+        // * Adds two QVec4f's
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
+        // * @returns {QVec4f} output
         // */
-        public static double[] Add(double[] output, double[] a, double[] b)
+        public static float[] Add(float[] output, float[] a, float[] b)
         {
             output[0] = a[0] + b[0];
             output[1] = a[1] + b[1];
@@ -736,12 +736,12 @@ namespace Vintagestory.API.MathTools
         ///**
         // * Subtracts vector b from vector a
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
+        // * @returns {QVec4f} output
         // */
-        public static double[] Subtract(double[] output, double[] a, double[] b)
+        public static float[] Subtract(float[] output, float[] a, float[] b)
         {
             output[0] = a[0] - b[0];
             output[1] = a[1] - b[1];
@@ -751,23 +751,23 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Alias for {@link QVec4d.subtract}
+        // * Alias for {@link QVec4f.subtract}
         // * @function
         // */
-        public static double[] Sub(double[] output, double[] a, double[] b)
+        public static float[] Sub(float[] output, float[] a, float[] b)
         {
             return Subtract(output, a, b);
         }
 
         ///**
-        // * Multiplies two QVec4d's
+        // * Multiplies two QVec4f's
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
+        // * @returns {QVec4f} output
         // */
-        public static double[] Multiply(double[] output, double[] a, double[] b)
+        public static float[] Multiply(float[] output, float[] a, float[] b)
         {
             output[0] = a[0] * b[0];
             output[1] = a[1] * b[1];
@@ -777,24 +777,24 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Alias for {@link QVec4d.multiply}
+        // * Alias for {@link QVec4f.multiply}
         // * @function
         // */
-        //QVec4d.mul = QVec4d.multiply;
-        public static double[] Mul(double[] output, double[] a, double[] b)
+        //QVec4f.mul = QVec4f.multiply;
+        public static float[] Mul(float[] output, float[] a, float[] b)
         {
             return Multiply(output, a, b);
         }
 
         ///**
-        // * Divides two QVec4d's
+        // * Divides two QVec4f's
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
+        // * @returns {QVec4f} output
         // */
-        public static double[] Divide(double[] output, double[] a, double[] b)
+        public static float[] Divide(float[] output, float[] a, float[] b)
         {
             output[0] = a[0] / b[0];
             output[1] = a[1] / b[1];
@@ -804,24 +804,24 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Alias for {@link QVec4d.divide}
+        // * Alias for {@link QVec4f.divide}
         // * @function
         // */
-        //QVec4d.div = QVec4d.divide;
-        public static double[] Div(double[] output, double[] a, double[] b)
+        //QVec4f.div = QVec4f.divide;
+        public static float[] Div(float[] output, float[] a, float[] b)
         {
             return Divide(output, a, b);
         }
 
         ///**
-        // * Returns the minimum of two QVec4d's
+        // * Returns the minimum of two QVec4f's
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
+        // * @returns {QVec4f} output
         // */
-        public static double[] Min(double[] output, double[] a, double[] b)
+        public static float[] Min(float[] output, float[] a, float[] b)
         {
             output[0] = Math.Min(a[0], b[0]);
             output[1] = Math.Min(a[1], b[1]);
@@ -831,14 +831,14 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Returns the maximum of two QVec4d's
+        // * Returns the maximum of two QVec4f's
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
+        // * @returns {QVec4f} output
         // */
-        public static double[] Max(double[] output, double[] a, double[] b)
+        public static float[] Max(float[] output, float[] a, float[] b)
         {
             output[0] = Math.Max(a[0], b[0]);
             output[1] = Math.Max(a[1], b[1]);
@@ -848,14 +848,14 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Scales a QVec4d by a scalar number
+        // * Scales a QVec4f by a scalar number
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the vector to scale
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the vector to scale
         // * @param {Number} b amount to scale the vector by
-        // * @returns {QVec4d} output
+        // * @returns {QVec4f} output
         // */
-        public static double[] Scale(double[] output, double[] a, double b)
+        public static float[] Scale(float[] output, float[] a, float b)
         {
             output[0] = a[0] * b;
             output[1] = a[1] * b;
@@ -865,15 +865,15 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Adds two QVec4d's after scaling the second operand by a scalar value
+        // * Adds two QVec4f's after scaling the second operand by a scalar value
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
         // * @param {Number} scale the amount to scale b by before adding
-        // * @returns {QVec4d} output
+        // * @returns {QVec4f} output
         // */
-        public static double[] ScaleAndAdd(double[] output, double[] a, double[] b, double scale)
+        public static float[] ScaleAndAdd(float[] output, float[] a, float[] b, float scale)
         {
             output[0] = a[0] + (b[0] * scale);
             output[1] = a[1] + (b[1] * scale);
@@ -883,112 +883,112 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Calculates the euclidian distance between two QVec4d's
+        // * Calculates the euclidian distance between two QVec4f's
         // *
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
         // * @returns {Number} distance between a and b
         // */
-        public static double Distance(double[] a, double[] b)
+        public static float Distance(float[] a, float[] b)
         {
-            double x = b[0] - a[0];
-            double y = b[1] - a[1];
-            double z = b[2] - a[2];
-            double w = b[3] - a[3];
+            float x = b[0] - a[0];
+            float y = b[1] - a[1];
+            float z = b[2] - a[2];
+            float w = b[3] - a[3];
             return GameMath.Sqrt(x * x + y * y + z * z + w * w);
         }
 
         ///**
-        // * Alias for {@link QVec4d.distance}
+        // * Alias for {@link QVec4f.distance}
         // * @function
         // */
-        //QVec4d.dist = QVec4d.distance;
-        public static double Dist(double[] a, double[] b)
+        //QVec4f.dist = QVec4f.distance;
+        public static float Dist(float[] a, float[] b)
         {
             return Distance(a, b);
         }
 
         ///**
-        // * Calculates the squared euclidian distance between two QVec4d's
+        // * Calculates the squared euclidian distance between two QVec4f's
         // *
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
         // * @returns {Number} squared distance between a and b
         // */
-        public static double SquaredDistance(double[] a, double[] b)
+        public static float SquaredDistance(float[] a, float[] b)
         {
-            double x = b[0] - a[0];
-            double y = b[1] - a[1];
-            double z = b[2] - a[2];
-            double w = b[3] - a[3];
+            float x = b[0] - a[0];
+            float y = b[1] - a[1];
+            float z = b[2] - a[2];
+            float w = b[3] - a[3];
             return x * x + y * y + z * z + w * w;
         }
 
         ///**
-        // * Alias for {@link QVec4d.squaredDistance}
+        // * Alias for {@link QVec4f.squaredDistance}
         // * @function
         // */
-        public static double SqrDist(double[] a, double[] b)
+        public static float SqrDist(float[] a, float[] b)
         {
             return SquaredDistance(a, b);
         }
         ///**
-        // * Calculates the length of a QVec4d
+        // * Calculates the length of a QVec4f
         // *
-        // * @param {QVec4d} a vector to calculate length of
+        // * @param {QVec4f} a vector to calculate length of
         // * @returns {Number} length of a
         // */
-        public static double Length_(double[] a)
+        public static float Length_(float[] a)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
-            double w = a[3];
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
+            float w = a[3];
             return GameMath.Sqrt(x * x + y * y + z * z + w * w);
         }
 
         ///**
-        // * Alias for {@link QVec4d.length}
+        // * Alias for {@link QVec4f.length}
         // * @function
         // */
-        public static double Len(double[] a)
+        public static float Len(float[] a)
         {
             return Length_(a);
         }
 
         ///**
-        // * Calculates the squared length of a QVec4d
+        // * Calculates the squared length of a QVec4f
         // *
-        // * @param {QVec4d} a vector to calculate squared length of
+        // * @param {QVec4f} a vector to calculate squared length of
         // * @returns {Number} squared length of a
         // */
-        public static double SquaredLength(double[] a)
+        public static float SquaredLength(float[] a)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
-            double w = a[3];
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
+            float w = a[3];
             return x * x + y * y + z * z + w * w;
         }
 
         ///**
-        // * Alias for {@link QVec4d.squaredLength}
+        // * Alias for {@link QVec4f.squaredLength}
         // * @function
         // */
-        //QVec4d.sqrLen = QVec4d.squaredLength;
-        public static double SqrLen(double[] a)
+        //QVec4f.sqrLen = QVec4f.squaredLength;
+        public static float SqrLen(float[] a)
         {
             return SquaredLength(a);
         }
 
         ///**
-        // * Negates the components of a QVec4d
+        // * Negates the components of a QVec4f
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a vector to negate
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a vector to negate
+        // * @returns {QVec4f} output
         // */
-        public static double[] Negate(double[] output, double[] a)
+        public static float[] Negate(float[] output, float[] a)
         {
             output[0] = -a[0];
             output[1] = -a[1];
@@ -998,22 +998,22 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Normalize a QVec4d
+        // * Normalize a QVec4f
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a vector to normalize
-        // * @returns {QVec4d} output
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a vector to normalize
+        // * @returns {QVec4f} output
         // */
-        public static double[] Normalize(double[] output, double[] a)
+        public static float[] Normalize(float[] output, float[] a)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
-            double w = a[3];
-            double len = x * x + y * y + z * z + w * w;
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
+            float w = a[3];
+            float len = x * x + y * y + z * z + w * w;
             if (len > 0)
             {
-                double one = 1;
+                float one = 1;
                 len = one / GameMath.Sqrt(len);
                 output[0] = a[0] * len;
                 output[1] = a[1] * len;
@@ -1024,32 +1024,32 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Calculates the dot product of two QVec4d's
+        // * Calculates the dot product of two QVec4f's
         // *
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
         // * @returns {Number} dot product of a and b
         // */
-        public static double Dot(double[] a, double[] b)
+        public static float Dot(float[] a, float[] b)
         {
             return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
         }
 
         ///**
-        // * Performs a linear interpolation between two QVec4d's
+        // * Performs a linear interpolation between two QVec4f's
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the first operand
-        // * @param {QVec4d} b the second operand
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the first operand
+        // * @param {QVec4f} b the second operand
         // * @param {Number} t interpolation amount between the two inputs
-        // * @returns {QVec4d} output
+        // * @returns {QVec4f} output
         // */
-        public static double[] Lerp(double[] output, double[] a, double[] b, double t)
+        public static float[] Lerp(float[] output, float[] a, float[] b, float t)
         {
-            double ax = a[0];
-            double ay = a[1];
-            double az = a[2];
-            double aw = a[3];
+            float ax = a[0];
+            float ay = a[1];
+            float az = a[2];
+            float aw = a[3];
             output[0] = ax + t * (b[0] - ax);
             output[1] = ay + t * (b[1] - ay);
             output[2] = az + t * (b[2] - az);
@@ -1059,16 +1059,16 @@ namespace Vintagestory.API.MathTools
         
 
         ///**
-        // * Transforms the QVec4d with a mat4.
+        // * Transforms the QVec4f with a mat4.
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the vector to transform
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the vector to transform
         // * @param {mat4} m matrix to transform with
-        // * @returns {QVec4d} output
+        // * @returns {QVec4f} output
         // */
-        public static double[] TransformMat4(double[] output, double[] a, double[] m)
+        public static float[] TransformMat4(float[] output, float[] a, float[] m)
         {
-            double x = a[0]; double y = a[1]; double z = a[2]; double w = a[3];
+            float x = a[0]; float y = a[1]; float z = a[2]; float w = a[3];
             output[0] = m[0] * x + m[4] * y + m[8] * z + m[12] * w;
             output[1] = m[1] * x + m[5] * y + m[9] * z + m[13] * w;
             output[2] = m[2] * x + m[6] * y + m[10] * z + m[14] * w;
@@ -1077,23 +1077,23 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Transforms the QVec4d with a quat
+        // * Transforms the QVec4f with a quat
         // *
-        // * @param {QVec4d} output the receiving vector
-        // * @param {QVec4d} a the vector to transform
+        // * @param {QVec4f} output the receiving vector
+        // * @param {QVec4f} a the vector to transform
         // * @param {quat} q quaternion to transform with
-        // * @returns {QVec4d} output
+        // * @returns {QVec4f} output
         // */
-        public static double[] transformQuat(double[] output, double[] a, double[] q)
+        public static float[] transformQuat(float[] output, float[] a, float[] q)
         {
-            double x = a[0]; double y = a[1]; double z = a[2];
-            double qx = q[0]; double qy = q[1]; double qz = q[2]; double qw = q[3];
+            float x = a[0]; float y = a[1]; float z = a[2];
+            float qx = q[0]; float qy = q[1]; float qz = q[2]; float qw = q[3];
 
             // calculate quat * vec
-            double ix = qw * x + qy * z - qz * y;
-            double iy = qw * y + qz * x - qx * z;
-            double iz = qw * z + qx * y - qy * x;
-            double iw = -qx * x - qy * y - qz * z;
+            float ix = qw * x + qy * z - qz * y;
+            float iy = qw * y + qz * x - qx * z;
+            float iz = qw * z + qx * y - qy * x;
+            float iw = -qx * x - qy * y - qz * z;
 
             // calculate result * inverse quat
             output[0] = ix * qw + iw * -qx + iy * -qz - iz * -qy;
@@ -1109,13 +1109,13 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Don't use this class unless you need it to interoperate with Mat4d
     /// </summary>
-    public class Vec3Utilsd
+    public class Vec3Utilsf
     {
         /// Creates a new, empty vec3
         /// Returns {vec3} a new 3D vector.
-        public static double[] Create()
+        public static float[] Create()
         {
-            double[] output = new double[3];
+            float[] output = new float[3];
             output[0] = 0;
             output[1] = 0;
             output[2] = 0;
@@ -1124,11 +1124,11 @@ namespace Vintagestory.API.MathTools
 
         /// Creates a new vec3 initialized with values from an existing vector
         /// Returns {vec3} a new 3D vector
-        public static double[] CloneIt(
+        public static float[] CloneIt(
             /// a vector to clone
-            double[] a)
+            float[] a)
         {
-            double[] output = new double[3];
+            float[] output = new float[3];
             output[0] = a[0];
             output[1] = a[1];
             output[2] = a[2];
@@ -1137,15 +1137,15 @@ namespace Vintagestory.API.MathTools
 
         /// Creates a new vec3 initialized with the given values
         /// Returns {vec3} a new 3D vector
-        public static double[] FromValues(
+        public static float[] FromValues(
             /// X component
-            double x,
+            float x,
             /// Y component
-            double y,
+            float y,
             /// Z component
-            double z)
+            float z)
         {
-            double[] output = new double[3];
+            float[] output = new float[3];
             output[0] = x;
             output[1] = y;
             output[2] = z;
@@ -1154,11 +1154,11 @@ namespace Vintagestory.API.MathTools
 
         /// Copy the values from one vec3 to another
         ///@returns {vec3} out
-        public static double[] Copy(
+        public static float[] Copy(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the source vector
-            double[] a)
+            float[] a)
         {
             output[0] = a[0];
             output[1] = a[1];
@@ -1168,15 +1168,15 @@ namespace Vintagestory.API.MathTools
 
         ///Set the components of a vec3 to the given values
         ///@returns {vec3} out
-        public static double[] Set(
+        public static float[] Set(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {Number} x X component
-            double x,
+            float x,
             ////@param {Number} y Y component
-            double y,
+            float y,
             ////@param {Number} z Z component
-            double z)
+            float z)
         {
             output[0] = x;
             output[1] = y;
@@ -1186,13 +1186,13 @@ namespace Vintagestory.API.MathTools
 
         ///Adds two vec3's
         ///@returns {vec3} out
-        public static double[] Add(
+        public static float[] Add(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
             output[0] = a[0] + b[0];
             output[1] = a[1] + b[1];
@@ -1202,13 +1202,13 @@ namespace Vintagestory.API.MathTools
 
         ///Subtracts vector b from vector a
         ///@returns {vec3} out
-        public static double[] Substract(
+        public static float[] Substract(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
             output[0] = a[0] - b[0];
             output[1] = a[1] - b[1];
@@ -1219,20 +1219,20 @@ namespace Vintagestory.API.MathTools
         ///Alias for {@link vec3.subtract}
         ///@function
         //vec3.sub = vec3.subtract;
-        public static double[] Sub(double[] output, double[] a, double[] b)
+        public static float[] Sub(float[] output, float[] a, float[] b)
         {
             return Substract(output, a, b);
         }
 
         ///Multiplies two vec3's
         ///@returns {vec3} out
-        public static double[] Multiply(
+        public static float[] Multiply(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
             output[0] = a[0] * b[0];
             output[1] = a[1] * b[1];
@@ -1241,20 +1241,20 @@ namespace Vintagestory.API.MathTools
         }
 
         ///Alias for {@link vec3.multiply}
-        public static double[] Mul(double[] output, double[] a, double[] b)
+        public static float[] Mul(float[] output, float[] a, float[] b)
         {
             return Multiply(output, a, b);
         }
 
         ///Divides two vec3's
         ///@returns {vec3} out
-        public static double[] Divide(
+        public static float[] Divide(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
             output[0] = a[0] / b[0];
             output[1] = a[1] / b[1];
@@ -1263,20 +1263,20 @@ namespace Vintagestory.API.MathTools
         }
 
         ///Alias for {@link vec3.divide}
-        public static double[] Div(double[] output, double[] a, double[] b)
+        public static float[] Div(float[] output, float[] a, float[] b)
         {
             return Divide(output, a, b);
         }
 
         ///Returns the minimum of two vec3's
         ///@returns {vec3} out
-        public static double[] Min(
+        public static float[] Min(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
             output[0] = Math.Min(a[0], b[0]);
             output[1] = Math.Min(a[1], b[1]);
@@ -1286,13 +1286,13 @@ namespace Vintagestory.API.MathTools
 
         ///Returns the maximum of two vec3's
         ///@returns {vec3} out
-        public static double[] Max(
+        public static float[] Max(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
             output[0] = Math.Max(a[0], b[0]);
             output[1] = Math.Max(a[1], b[1]);
@@ -1302,13 +1302,13 @@ namespace Vintagestory.API.MathTools
 
         ///Scales a vec3 by a scalar number
         ///@returns {vec3} out
-        public static double[] Scale(
+        public static float[] Scale(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the vector to scale
-            double[] a,
+            float[] a,
             ////@param {Number} b amount to scale the vector by
-            double b)
+            float b)
         {
             output[0] = a[0] * b;
             output[1] = a[1] * b;
@@ -1318,15 +1318,15 @@ namespace Vintagestory.API.MathTools
 
         ///Adds two vec3's after scaling the second operand by a scalar value
         ///@returns {vec3} out
-        public static double[] ScaleAndAdd(
+        public static float[] ScaleAndAdd(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b,
+            float[] b,
             ////@param {Number} scale the amount to scale b by before adding
-            double scale)
+            float scale)
         {
             output[0] = a[0] + (b[0] * scale);
             output[1] = a[1] + (b[1] * scale);
@@ -1336,89 +1336,89 @@ namespace Vintagestory.API.MathTools
 
         ///Calculates the euclidian distance between two vec3's
         ///@returns {Number} distance between a and b
-        public static double Distance(
+        public static float Distance(
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
-            double x = b[0] - a[0];
-            double y = b[1] - a[1];
-            double z = b[2] - a[2];
+            float x = b[0] - a[0];
+            float y = b[1] - a[1];
+            float z = b[2] - a[2];
             return GameMath.Sqrt(x * x + y * y + z * z);
         }
 
         ///Alias for {@link vec3.distance}
-        public static double Dist(double[] a, double[] b)
+        public static float Dist(float[] a, float[] b)
         {
             return Distance(a, b);
         }
 
         ///Calculates the squared euclidian distance between two vec3's
         ///@returns {Number} squared distance between a and b
-        public static double SquaredDistance(
+        public static float SquaredDistance(
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
-            double x = b[0] - a[0];
-            double y = b[1] - a[1];
-            double z = b[2] - a[2];
+            float x = b[0] - a[0];
+            float y = b[1] - a[1];
+            float z = b[2] - a[2];
             return x * x + y * y + z * z;
         }
 
         ///Alias for {@link vec3.squaredDistance}
         ///@function
         //vec3.sqrDist = vec3.squaredDistance;
-        public static double SqrDist(double[] a, double[] b)
+        public static float SqrDist(float[] a, float[] b)
         {
             return SquaredDistance(a, b);
         }
 
         ///Calculates the length of a vec3
         ///@returns {Number} length of a
-        public static double Length_(
+        public static float Length_(
             ////@param {vec3} a vector to calculate length of
-            double[] a)
+            float[] a)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
             return GameMath.Sqrt(x * x + y * y + z * z);
         }
 
         ///Alias for {@link vec3.length}
-        public static double Len(double[] a)
+        public static float Len(float[] a)
         {
             return Length_(a);
         }
 
         ///Calculates the squared length of a vec3
         ///@returns {Number} squared length of a
-        public static double SquaredLength(
+        public static float SquaredLength(
             ////@param {vec3} a vector to calculate squared length of
-            double[] a)
+            float[] a)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
             return x * x + y * y + z * z;
         }
 
         ///Alias for {@link vec3.squaredLength}
-        public static double SqrLen(double[] a)
+        public static float SqrLen(float[] a)
         {
             return SquaredLength(a);
         }
 
         ///Negates the components of a vec3
         ///@returns {vec3} out
-        public static double[] Negate(
+        public static float[] Negate(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a vector to negate
-            double[] a)
+            float[] a)
         {
             output[0] = 0 - a[0];
             output[1] = 0 - a[1];
@@ -1428,20 +1428,20 @@ namespace Vintagestory.API.MathTools
 
         ///Normalize a vec3
         ///@returns {vec3} out
-        public static double[] Normalize(
+        public static float[] Normalize(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a vector to normalize
-            double[] a)
+            float[] a)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
-            double len = x * x + y * y + z * z;
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
+            float len = x * x + y * y + z * z;
             if (len > 0)
             {
                 //TODO: evaluate use of glm_invsqrt here?
-                double one = 1;
+                float one = 1;
                 len = one / GameMath.Sqrt(len);
                 output[0] = a[0] * len;
                 output[1] = a[1] * len;
@@ -1452,31 +1452,31 @@ namespace Vintagestory.API.MathTools
 
         ///Calculates the dot product of two vec3's
         ///@returns {Number} dot product of a and b
-        public static double Dot(
+        public static float Dot(
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
             return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
         }
 
         ///Computes the cross product of two vec3's
         ///@returns {vec3} out
-        public static double[] Cross(
+        public static float[] Cross(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b)
+            float[] b)
         {
-            double ax = a[0];
-            double ay = a[1];
-            double az = a[2];
-            double bx = b[0];
-            double by = b[1];
-            double bz = b[2];
+            float ax = a[0];
+            float ay = a[1];
+            float az = a[2];
+            float bx = b[0];
+            float by = b[1];
+            float bz = b[2];
 
             output[0] = ay * bz - az * by;
             output[1] = az * bx - ax * bz;
@@ -1487,19 +1487,19 @@ namespace Vintagestory.API.MathTools
 
         ///Performs a linear interpolation between two vec3's
         ///@returns {vec3} out
-        public static double[] Lerp(
+        public static float[] Lerp(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the first operand
-            double[] a,
+            float[] a,
             ////@param {vec3} b the second operand
-            double[] b,
+            float[] b,
             ////@param {Number} t interpolation amount between the two inputs
-            double t)
+            float t)
         {
-            double ax = a[0];
-            double ay = a[1];
-            double az = a[2];
+            float ax = a[0];
+            float ay = a[1];
+            float az = a[2];
             output[0] = ax + t * (b[0] - ax);
             output[1] = ay + t * (b[1] - ay);
             output[2] = az + t * (b[2] - az);
@@ -1510,17 +1510,17 @@ namespace Vintagestory.API.MathTools
         ////Transforms the vec3 with a mat4.
         ////4th vector component is implicitly '1'
         ////@returns {vec3} out
-        public static double[] TransformMat4(
+        public static float[] TransformMat4(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the vector to transform
-            double[] a,
+            float[] a,
             ////@param {mat4} m matrix to transform with
-            double[] m)
+            float[] m)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
             output[0] = m[0] * x + m[4] * y + m[8] * z + m[12];
             output[1] = m[1] * x + m[5] * y + m[9] * z + m[13];
             output[2] = m[2] * x + m[6] * y + m[10] * z + m[14];
@@ -1529,17 +1529,17 @@ namespace Vintagestory.API.MathTools
 
         ///Transforms the vec3 with a mat3.
         ///@returns {vec3} out
-        public static double[] TransformMat3(
+        public static float[] TransformMat3(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the vector to transform
-            double[] a,
+            float[] a,
             ////@param {mat4} m the 3x3 matrix to transform with
-            double[] m)
+            float[] m)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
             output[0] = x * m[0] + y * m[3] + z * m[6];
             output[1] = x * m[1] + y * m[4] + z * m[7];
             output[2] = x * m[2] + y * m[5] + z * m[8];
@@ -1549,28 +1549,28 @@ namespace Vintagestory.API.MathTools
         ///Transforms the vec3 with a quat
         ///@returns {vec3} out
         //    // benchmarks: http://jsperf.com/quaternion-transform-vec3-implementations
-        public static double[] TransformQuat(
+        public static float[] TransformQuat(
             ////@param {vec3} out the receiving vector
-            double[] output,
+            float[] output,
             ////@param {vec3} a the vector to transform
-            double[] a,
+            float[] a,
             ////@param {quat} q quaternion to transform with
-            double[] q)
+            float[] q)
         {
-            double x = a[0];
-            double y = a[1];
-            double z = a[2];
+            float x = a[0];
+            float y = a[1];
+            float z = a[2];
 
-            double qx = q[0];
-            double qy = q[1];
-            double qz = q[2];
-            double qw = q[3];
+            float qx = q[0];
+            float qy = q[1];
+            float qz = q[2];
+            float qw = q[3];
 
             // calculate quat * vec
-            double ix = qw * x + qy * z - qz * y;
-            double iy = qw * y + qz * x - qx * z;
-            double iz = qw * z + qx * y - qy * x;
-            double iw = (0 - qx) * x - qy * y - qz * z;
+            float ix = qw * x + qy * z - qz * y;
+            float iy = qw * y + qz * x - qx * z;
+            float iz = qw * z + qx * y - qy * x;
+            float iw = (0 - qx) * x - qy * y - qz * z;
 
             // calculate result * inverse quat
             output[0] = ix * qw + iw * (0 - qx) + iy * (0 - qz) - iz * (0 - qy);

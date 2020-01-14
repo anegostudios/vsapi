@@ -44,7 +44,7 @@ namespace Vintagestory.API.Common
         /// The entity attached to this Animation Manager.
         /// </summary>
         protected Entity entity;
-        long listenerId;
+        //long listenerId;
         DummyRenderer renderer;
 
         public AnimationManager()
@@ -64,7 +64,8 @@ namespace Vintagestory.API.Common
 
             if (api.Side == EnumAppSide.Server)
             {
-                listenerId = (api as ICoreServerAPI).Event.RegisterGameTickListener(OnServerTick, 25);
+                //listenerId = (api as ICoreServerAPI).Event.RegisterGameTickListener(OnServerTick, 25);
+                //api.World.Logger.Notification("AnimationManager: Register tick listener {0} for entity id {1}", listenerId, entity.EntityId);
             }
             else
             {
@@ -167,11 +168,7 @@ namespace Vintagestory.API.Common
         /// <param name="activeAnimationSpeeds"></param>
         public virtual void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
         {
-            if (entity.EntityId != (entity.World as IClientWorldAccessor).Player.Entity.EntityId)
-            {
-                ActiveAnimationsByAnimCode.Clear();
-            }
-            
+            HashSet<string> toKeep = new HashSet<string>();
             
             string active = "";
             int mask = ~(1 << 31); // Because I fail to get the sign bit transmitted correctly over the network T_T
@@ -183,7 +180,9 @@ namespace Vintagestory.API.Common
                 AnimationMetaData animmetadata;
                 if (entity.Properties.Client.AnimationsByCrc32.TryGetValue(crc32, out animmetadata))
                 {
-                    if (ActiveAnimationsByAnimCode.ContainsKey(animmetadata.Code)) break;
+                    toKeep.Add(animmetadata.Code);
+
+                    if (ActiveAnimationsByAnimCode.ContainsKey(animmetadata.Code)) continue;
                     animmetadata.AnimationSpeed = activeAnimationSpeeds[i];
 
                     ActiveAnimationsByAnimCode[animmetadata.Animation] = animmetadata;
@@ -192,12 +191,14 @@ namespace Vintagestory.API.Common
 
                 Animation anim;
                 if (entity.Properties.Client.LoadedShape.AnimationsByCrc32.TryGetValue(crc32, out anim)) {
-                    
-                    if (ActiveAnimationsByAnimCode.ContainsKey(anim.Code)) break;
+
+                    toKeep.Add(anim.Code);
+
+                    if (ActiveAnimationsByAnimCode.ContainsKey(anim.Code)) continue;
 
                     string code = anim.Code == null ? anim.Name.ToLowerInvariant() : anim.Code;
                     active += ", " + code;
-                    AnimationMetaData animmeta = null;
+                    AnimationMetaData animmeta;
                     entity.Properties.Client.AnimationsByMetaCode.TryGetValue(code, out animmeta);
 
                     if (animmeta == null)
@@ -215,12 +216,27 @@ namespace Vintagestory.API.Common
                     ActiveAnimationsByAnimCode[anim.Code] = animmeta;
                 }
             }
+
+
+            if (entity.EntityId != (entity.World as IClientWorldAccessor).Player.Entity.EntityId)
+            {
+                string[] keys = ActiveAnimationsByAnimCode.Keys.ToArray();
+                for (int i = 0; i < keys.Length; i++)
+                {
+                    if (!toKeep.Contains(keys[i]) && keys[i] != "sneakidle") // No Idea why the eff i have do this hardcoded test. If I don't looking around while sneaking and with a torch in hand causes hand jitter
+                    {
+                        ActiveAnimationsByAnimCode.Remove(keys[i]);
+                    }
+                }
+            }
+
         }
 
         /// <summary>
         /// Serializes the slots contents to be stored in the SaveGame
         /// </summary>
-        /// <param name="writer"></param>
+        /// <param name="tree"></param>
+        /// <param name="forClient"></param>
         public virtual void ToAttributes(ITreeAttribute tree, bool forClient)
         {
             foreach (var val in ActiveAnimationsByAnimCode)
@@ -246,8 +262,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Loads the entity from a stored byte array from the SaveGame
         /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="fromServer"></param>
+        /// <param name="tree"></param>
         public virtual void FromAttributes(ITreeAttribute tree)
         {
             foreach (var val in tree)
@@ -295,7 +310,8 @@ namespace Vintagestory.API.Common
         {
             if (api.Side == EnumAppSide.Server)
             {
-                (api as ICoreServerAPI).Event.UnregisterGameTickListener(listenerId);
+                //(api as ICoreServerAPI).Event.UnregisterGameTickListener(listenerId);
+                //api.World.Logger.Notification("AnimationManager: Delete tick listener {0} for entity id {1}", listenerId, entity.EntityId);
             }
             else
             {

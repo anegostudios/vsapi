@@ -215,6 +215,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
+            if (!enabled) return;
+
             base.OnMouseDownOnElement(api, args);
 
             currentlyMouseDownOnElement = true;

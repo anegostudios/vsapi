@@ -46,6 +46,7 @@ namespace Vintagestory.API.MathTools
             }*/
 
 
+
             tmpPositionVec.Set(pos);
 
             entityBox.Set(
@@ -86,7 +87,7 @@ namespace Vintagestory.API.MathTools
             tmpMotion.Set(entitypos.Motion.X, entitypos.Motion.Y, entitypos.Motion.Z);
 
 
-            //  Y - Collision (Vertical)
+            // Y - Collision (Vertical)
             bool collided = false;
 
             for (int i = 0; i < CollisionBoxList.Count; i++)

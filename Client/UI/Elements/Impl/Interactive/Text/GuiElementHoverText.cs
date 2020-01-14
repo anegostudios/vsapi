@@ -24,6 +24,7 @@ namespace Vintagestory.API.Client
 
         bool autoDisplay = true;
         bool visible = false;
+        bool isnowshown;
         bool followMouse = true;
         bool autoWidth = false;
         public bool fillBounds = false;
@@ -34,6 +35,9 @@ namespace Vintagestory.API.Client
         
 
         GuiElementRichtext descriptionElement;
+
+        public bool IsVisible => visible;
+        public bool IsNowShown => isnowshown;
 
         public override double DrawOrder
         {
@@ -151,11 +155,18 @@ namespace Vintagestory.API.Client
         {
             if (text == null || text.Length == 0) return;
 
+            if (api.Render.ScissorStack.Count > 0)
+            {
+                api.Render.GlScissorFlag(false);
+            }
+
             int mouseX = api.Input.MouseX;
             int mouseY = api.Input.MouseY;
-            
+            isnowshown = false;
+
             if ((autoDisplay && IsPositionInside(mouseX, mouseY)) || visible)
             {
+                isnowshown = true;
                 // Compose on demand only
                 if (hoverTexture.TextureId == 0 && !hoverTexture.Disposed)
                 {
@@ -190,6 +201,11 @@ namespace Vintagestory.API.Client
                 descriptionElement.RenderInteractiveElements(deltaTime);
                 Bounds.renderOffsetX = 0;
                 Bounds.renderOffsetY = 0;
+            }
+
+            if (api.Render.ScissorStack.Count > 0)
+            {
+                api.Render.GlScissorFlag(true);
             }
         }
 

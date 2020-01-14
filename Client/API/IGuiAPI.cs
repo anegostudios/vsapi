@@ -41,11 +41,16 @@ namespace Vintagestory.API.Client
         /// </summary>
         IconUtil Icons { get; }
 
+        /// <summary>
+        /// Returns a ElementBounds that is always the size of the game window
+        /// </summary>
+        ElementBounds WindowBounds { get; }
+
 
         /// <summary>
         /// If there is a currenly opened dialog or hud element, the method will return the bounds occuppying that area, otherwise null
         /// </summary>
-        /// <param name="alignment"></param>
+        /// <param name="area"></param>
         /// <returns></returns>
         List<ElementBounds> GetDialogBoundsInArea(EnumDialogArea area);
 
@@ -62,14 +67,13 @@ namespace Vintagestory.API.Client
         /// Register given dialog(s) to the gui/input event listening chain. You only need to call this if your dialog has to listen to events 
         /// even while closed. The method GuiDialog.TryOpen() also does the register if not registered already.
         /// </summary>
-        /// <param name="guiClassName"></param>
-        /// <param name="parameters"></param>
+        /// <param name="dialogs"></param>
         void RegisterDialog(params GuiDialog[] dialogs);
 
         /// <summary>
         /// Removes given texture from graphics card memory
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="textureid"></param>
         /// <returns></returns>
         void DeleteTexture(int textureid);
 
@@ -87,6 +91,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="surface"></param>
         /// <param name="linearMag"></param>
+        /// <param name="intoTexture"></param>
         /// <returns></returns>
         void LoadOrUpdateCairoTexture(Cairo.ImageSurface surface, bool linearMag, ref LoadedTexture intoTexture);
 
@@ -109,14 +114,16 @@ namespace Vintagestory.API.Client
         /// Plays a sound, non location specific
         /// </summary>
         /// <param name="soundname">The name of the sound</param>
-        /// <param name="randomizePitch">Should we randomize the Pitch?</param>
+        /// <param name="randomizePitch">If true, the pitch is slightly randomized each time</param>
+        /// <param name="volume"></param>
         void PlaySound(string soundname, bool randomizePitch = false, float volume = 1f);
 
         /// <summary>
         /// Plays a sound, non location specific.
         /// </summary>
         /// <param name="soundname">The name of the sound</param>
-        /// <param name="randomizePitch">Should we randomize the pitch?</param>
+        /// <param name="randomizePitch">If true, the pitch is slightly randomized each time</param>
+        /// <param name="volume"></param>
         void PlaySound(AssetLocation soundname, bool randomizePitch = false, float volume = 1f);
 
         /// <summary>

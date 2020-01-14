@@ -22,6 +22,20 @@ namespace Vintagestory.API.Client
     /// <param name="oldBlock"></param>
     public delegate void BlockChangedDelegate(BlockPos pos, Block oldBlock);
 
+    public interface IAsyncParticleManager
+    {
+        int Spawn(IParticlePropertiesProvider particleProperties);
+        IBlockAccessor BlockAccess { get; }
+    }
+
+    /// <summary>
+    /// Return false to stop spawning particles
+    /// </summary>
+    /// <param name="manager"></param>
+    /// <returns></returns>
+    public delegate bool ContinousParticleSpawnTaskDelegate(float dt, IAsyncParticleManager manager);
+
+
     public class FileDropEvent
     {
         public string Filename;
@@ -128,12 +142,17 @@ namespace Vintagestory.API.Client
         /// <param name="renderer"></param>
         /// <param name="renderStage"></param>
         void UnregisterRenderer(IRenderer renderer, EnumRenderStage renderStage);
-        
+
+        /// <summary>
+        /// Set up an asynchronous particle spawner. The async particle simulation does most of the work in a seperate thread and thus runs a lot faster, with the down side of not being exaclty in sync with player interactions. This method of spawning particles is best suited for ambient particles, such as rain fall.
+        /// </summary>
+        /// <param name="handler"></param>
+        void RegisterAsyncParticleSpawner(ContinousParticleSpawnTaskDelegate handler);
+
 
         /// <summary>
         /// Called when server assetes were received and all texture atlases have been created
         /// </summary>
-        /// <param name="handler"></param>
         event Common.Action BlockTexturesLoaded;
         
         /// <summary>

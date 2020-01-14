@@ -99,6 +99,11 @@ namespace Vintagestory.API.Common
             
         }
 
+        public void OnServerTick(float dt)
+        {
+            
+        }
+
         public bool StartAnimation(AnimationMetaData animdata)
         {
             return false;

@@ -20,9 +20,21 @@ namespace Vintagestory.API.MathTools
         public float Y2;
         public float Z2;
 
-        public float Width { get { return X2 - X1; } }
-        public float Height { get { return Y2 - Y1; } }
-        public float Length { get { return Z2 - Z1; } }
+        public float Width { get { return MaxX - MinX; } }
+        public float Height { get { return MaxY - MinY; } }
+        public float Length { get { return MaxZ - MinZ; } }
+
+        public float MinX {  get { return Math.Min(X1, X2); } }
+        public float MinY { get { return Math.Min(Y1, Y2); } }
+        public float MinZ { get { return Math.Min(Z1, Z2); } }
+        public float MaxX { get { return Math.Max(X1, X2); } }
+        public float MaxY { get { return Math.Max(Y1, Y2); } }
+        public float MaxZ { get { return Math.Max(Z1, Z2); } }
+
+        public float MidX { get { return (X1 + X2)/2; } }
+        public float MidY { get { return (Y1 + Y2)/2; } }
+        public float MidZ { get { return (Z1 + Z2)/2; } }
+
 
         public float this[int index]
         {
@@ -66,19 +78,30 @@ namespace Vintagestory.API.MathTools
 
         public Vec3f Start
         {
-            get { return new Vec3f(X1, Y1, Z1); }
+            get { return new Vec3f(MinX, MinY, MinZ); }
         }
 
         public Vec3f End
         {
-            get { return new Vec3f(X2, Y2, Z2); }
+            get { return new Vec3f(MaxX, MaxY, MaxZ); }
         }
 
         public Cuboidf()
         {
 
         }
-        
+
+        public Cuboidf(Vec3f start, Vec3f end)
+        {
+            this.X1 = start.X;
+            this.Y1 = start.Y;
+            this.Z1 = start.Z;
+
+            this.X2 = end.X;
+            this.Y2 = end.Y;
+            this.Z2 = end.Z;
+        }
+
         public Cuboidf(float x1, float y1, float z1, float x2, float y2, float z2)
         {
             Set(x1, y1, z1, x2, y2, z2);
@@ -348,10 +371,6 @@ namespace Vintagestory.API.MathTools
             Mat4f.RotateY(matrix, matrix, radY);
             Mat4f.RotateZ(matrix, matrix, radZ);
 
-            float[] pos = new float[] { 0, 0, 0, 1 };
-
-            //Vec3f origin = new Vec3f(0.5f, 0.5f, 0.5f);
-
             float[] min = new float[] { X1 - (float)origin.X, Y1 - (float)origin.Y, Z1 - (float)origin.Z, 1 };
             float[] max = new float[] { X2 - (float)origin.X, Y2 - (float)origin.Y, Z2 - (float)origin.Z, 1 };
 
@@ -460,19 +479,19 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Makes sure the collisionbox coords are multiples of 1/16th
         /// </summary>
-        public void RoundToFracsOf16()
+        public void RoundToFracsOfOne10thousand()
         {
-            X1 = RoundToFrac16(X1);
-            Y1 = RoundToFrac16(Y1);
-            Z1 = RoundToFrac16(Z1);
-            X2 = RoundToFrac16(X2);
-            Y2 = RoundToFrac16(Y2);
-            Z2 = RoundToFrac16(Z2);
+            X1 = RoundToOne10thousand(X1);
+            Y1 = RoundToOne10thousand(Y1);
+            Z1 = RoundToOne10thousand(Z1);
+            X2 = RoundToOne10thousand(X2);
+            Y2 = RoundToOne10thousand(Y2);
+            Z2 = RoundToOne10thousand(Z2);
         }
 
-        static float RoundToFrac16(float val)
+        static float RoundToOne10thousand(float val)
         {
-            return (float)Math.Round(val * 16) / 16;
+            return (float)Math.Round(val * 10000) / 10000;
         }
 
         public bool Equals(Cuboidf other)

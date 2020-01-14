@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -22,7 +23,7 @@ namespace Vintagestory.API.Common
             GravityEffect = NatFloat.createUniform(0.3f, 0),
             Velocity = new NatFloat[] { NatFloat.createUniform(0, 0.6f), NatFloat.createUniform(0.4f, 0), NatFloat.createUniform(0, 0.6f) },
             Quantity = NatFloat.createUniform(30, 10),
-            GlowLevel = 64,
+            VertexFlags = 64,
             SizeEvolve = EvolvingNatFloat.create(EnumTransformFunction.QUADRATIC, -0.5f),
             DieInLiquid = true,
             PosOffset = new NatFloat[] { NatFloat.createUniform(0,0.5f), NatFloat.createUniform(0, 0.5f), NatFloat.createUniform(0, 0.5f) },
@@ -41,7 +42,7 @@ namespace Vintagestory.API.Common
                     SecondarySpawnInterval = NatFloat.createUniform(0.15f, 0),
                     Velocity = new NatFloat[] { NatFloat.createUniform(0, 0.025f), NatFloat.createUniform(0.15f, 0.1f), NatFloat.createUniform(0, 0.025f) },
                     ParticleModel = EnumParticleModel.Quad,
-                    GlowLevel = 64,
+                    VertexFlags = 64,
                     
                 }
             }
@@ -80,7 +81,7 @@ namespace Vintagestory.API.Common
         {
             ExplosionFireParticles.RedEvolve = EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -255f);
             ExplosionFireParticles.OpacityEvolve = EvolvingNatFloat.create(EnumTransformFunction.QUADRATIC, -12.4f);
-            ExplosionFireParticles.addPos.Set(1, 1, 1);
+            ExplosionFireParticles.AddPos.Set(1, 1, 1);
         }
     }
 
@@ -101,6 +102,9 @@ namespace Vintagestory.API.Common
         int curParticle = -1;
         int color;
 
+        public bool Bouncy { get; set; }
+        public bool RandomVelocityChange { get; set; }
+        public bool DieOnRainHeightmap => false;
         public ExplosionSmokeParticles()
         {
             color = ColorUtil.ToRgba(50, 220, 220, 220);
@@ -122,7 +126,7 @@ namespace Vintagestory.API.Common
                 )
             };
 
-            providers[0].addPos.Set(0.1, 0.1, 0.1);
+            providers[0].AddPos.Set(0.1, 0.1, 0.1);
 
             quantityParticles += 30;
         }
@@ -140,46 +144,40 @@ namespace Vintagestory.API.Common
 
         public void BeginParticle()
         {
+            ParentVelocityWeight = 1;
+            ParentVelocity = GlobalConstants.CurrentWindSpeedClient;
+
             curParticle++;
         }
-        
-        public bool DieInAir() { return false; }
-        public bool DieInLiquid() { return true; }
-        public bool SwimOnLiquid() { return false; }
-        public byte GetGlowLevel() { return 0; }
-        public float GetGravityEffect() { return -0.04f; }
-        public bool TerrainCollision() { return true; }
-        public float GetLifeLength() { return 5f + (float)SimpleParticleProperties.rand.NextDouble(); }
 
-        public EvolvingNatFloat GetOpacityEvolve() { return EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -125f); }
-        public EvolvingNatFloat GetRedEvolve() { return null; }
-        public EvolvingNatFloat GetGreenEvolve() { return null; }
-        public EvolvingNatFloat GetBlueEvolve() { return null; }
-
-        public Vec3d GetPos()
+        public bool DieInAir => false; public bool DieInLiquid => true; public bool SwimOnLiquid => false; 
+        public int VertexFlags => 0; public float GravityEffect => -0.04f; public bool TerrainCollision => true; 
+        public float LifeLength => 5f + (float)SimpleParticleProperties.rand.NextDouble();
+        public EvolvingNatFloat OpacityEvolve => EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -125f); public EvolvingNatFloat RedEvolve => null; public EvolvingNatFloat GreenEvolve => null; public EvolvingNatFloat BlueEvolve => null;
+        public Vec3d Pos
         {
-            int index = curParticle * 3 / 3;
-
-            if (index + 2 >= offsets.Count)
+            get
             {
+                int index = curParticle * 3 / 3;
+
+                if (index + 2 >= offsets.Count)
+                {
+                    return new Vec3d(
+                        basePos.X + rand.NextDouble(),
+                        basePos.Y + rand.NextDouble(),
+                        basePos.Z + rand.NextDouble()
+                    );
+                }
+
                 return new Vec3d(
-                    basePos.X + rand.NextDouble(),
-                    basePos.Y + rand.NextDouble(),
-                    basePos.Z + rand.NextDouble()
+                    basePos.X + offsets[index + 0] + rand.NextDouble(),
+                    basePos.Y + offsets[index + 1] + rand.NextDouble(),
+                    basePos.Z + offsets[index + 2] + rand.NextDouble()
                 );
             }
-
-            return new Vec3d(
-                basePos.X + offsets[index + 0] + rand.NextDouble(), 
-                basePos.Y + offsets[index + 1] + rand.NextDouble(),
-                basePos.Z + offsets[index + 2] + rand.NextDouble()
-            );
         }
 
-        public float GetQuantity()
-        {
-            return quantityParticles;
-        }
+        public float Quantity => quantityParticles;
 
         public int GetRgbaColor(ICoreClientAPI capi)
         {
@@ -189,15 +187,9 @@ namespace Vintagestory.API.Common
             return color;
         }
 
-        public float GetSize()
-        {
-            return providers[0].GetSize();
-        }
+        public float Size => providers[0].Size;
 
-        public EvolvingNatFloat GetSizeEvolve()
-        {
-            return new EvolvingNatFloat(EnumTransformFunction.LINEAR, 8);
-        }
+        public EvolvingNatFloat SizeEvolve => new EvolvingNatFloat(EnumTransformFunction.LINEAR, 8);
 
         public Vec3f GetVelocity(Vec3d pos)
         {
@@ -216,7 +208,7 @@ namespace Vintagestory.API.Common
             float y = offsets[index + 1];
             float z = offsets[index + 2];
 
-            float length = GameMath.FastSqrt(x * x + y * y + z + z);
+            float length = Math.Max(1, GameMath.FastSqrt(x * x + y * y + z + z));
 
             return new Vec3f(
                 8f * x / length,
@@ -225,25 +217,16 @@ namespace Vintagestory.API.Common
             );
         }
 
-        public EvolvingNatFloat[] GetVelocityEvolve()
-        {
-            return new EvolvingNatFloat[] {
+        public EvolvingNatFloat[] VelocityEvolve => new EvolvingNatFloat[] {
                 EvolvingNatFloat.create(EnumTransformFunction.INVERSELINEAR, 60f),
                 EvolvingNatFloat.create(EnumTransformFunction.INVERSELINEAR, 60f),
                 EvolvingNatFloat.create(EnumTransformFunction.INVERSELINEAR, 60f)
             };
-        }
 
 
-        public EnumParticleModel ParticleModel()
-        {
-            return EnumParticleModel.Quad;
-        }
+        public EnumParticleModel ParticleModel => EnumParticleModel.Quad;
 
-        public bool SelfPropelled()
-        {
-            return false;
-        }
+        public bool SelfPropelled => false;
 
 
         public void ToBytes(BinaryWriter writer)
@@ -284,19 +267,18 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public float GetSecondarySpawnInterval()
+        public float SecondarySpawnInterval => 0;
+
+        public IParticlePropertiesProvider[] SecondaryParticles => null;
+        public IParticlePropertiesProvider[] DeathParticles => null;
+        public void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {
-            return 0;
         }
 
-        public IParticlePropertiesProvider[] GetSecondaryParticles()
-        {
-            return null;
-        }
-        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
 
-        public void PrepareForSecondarySpawn(IParticleInstance particleInstance)
-        {
-        }
+        public Vec3f ParentVelocity { get; set; }
+
+        
+        public float ParentVelocityWeight { get; set; }
     }
 }

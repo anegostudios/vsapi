@@ -28,7 +28,7 @@ namespace Vintagestory.API.Common
         /// <param name="properties"></param>
         public virtual void Initialize(JsonObject properties)
         {
-
+            this.properties = properties;
         }
 
         /// <summary>
@@ -312,6 +312,11 @@ namespace Vintagestory.API.Common
             handling = EnumHandling.PassThrough;
         }
 
+        public virtual void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
+        {
+            
+        }
+
 
         /// <summary>
         /// When a player does a right click while targeting this placed block. Should return true if the event is handled, so that other events can occur, e.g. eating a held item if the block is not interactable with.
@@ -442,5 +447,14 @@ namespace Vintagestory.API.Common
             handling = EnumHandling.PassThrough;
         }
 
+        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+        }
+
+        public virtual string GetHeldBlockInfo(IWorldAccessor world, ItemSlot inSlot)
+        {
+            return "";
+        }
     }
 }

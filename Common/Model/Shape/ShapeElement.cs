@@ -29,6 +29,9 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public bool Shade = true;
 
+        [JsonProperty]
+        public bool GradientShade = false;
+
         /// <summary>
         /// The faces of the shape element by name.
         /// </summary>
@@ -81,6 +84,10 @@ namespace Vintagestory.API.Common
         public int TintIndex = -1;
         [JsonProperty]
         public int RenderPass = -1;
+        [JsonProperty]
+        public bool FoliageWindWave;
+        [JsonProperty]
+        public bool WaterWave;
 
         /// <summary>
         /// The child shapes of this shape element
@@ -257,6 +264,7 @@ namespace Vintagestory.API.Common
                 TintIndex = TintIndex,
                 StepParentName = StepParentName,
                 Shade = Shade,
+                GradientShade = GradientShade,
                 ScaleX = ScaleX,
                 ScaleY = ScaleY,
                 ScaleZ = ScaleZ,

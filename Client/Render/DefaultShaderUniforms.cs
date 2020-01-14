@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -42,6 +43,8 @@ namespace Vintagestory.API.Client
 
         public Vec3f PlayerViewVector;
         public float DamageVignetting;
+        public float ExtraSepia;
+        public float ExtraBloom;
 
         public float FlagFogDensity;
         public float FlatFogStartYPos;
@@ -52,6 +55,8 @@ namespace Vintagestory.API.Client
         public float WaterFlowCounter = 0f;
         public float WaterWaveCounter = 0f;
         public float WindWaveCounter = 0f;
+        public float GlitchStrength = 0f;
+        public float WindSpeed = 0f;
         public float WindWaveIntensity = 1f;
         public float FogWaveCounter = 0f;
 
@@ -60,6 +65,8 @@ namespace Vintagestory.API.Client
         public float SunsetMod = 0f;
 
         public Vec3f PlayerPos = new Vec3f();
+        Vec3d playerReferencePos;
+
         internal float SkyDaylight;
 
         public DefaultShaderUniforms()
@@ -83,19 +90,32 @@ namespace Vintagestory.API.Client
 
             WaterStillCounter = (WaterStillCounter + dt / 1.5f) % 2f;
             WaterFlowCounter = (WaterFlowCounter + dt / 1.5f) % 141f;
-            WaterWaveCounter += dt * 0.75f;
+            WaterWaveCounter = (WaterWaveCounter + dt * 0.75f) % 578f;
 
-            WindWaveCounter += 1.5f * dt;
+            WindWaveCounter = (WindWaveCounter + (0.5f + 5*GlobalConstants.CurrentWindSpeedClient.X) * dt) % 578f;
+            WindSpeed = GlobalConstants.CurrentWindSpeedClient.X;
+
             FogWaveCounter += 0.1f * dt;
 
-            if (WindWaveCounter > 8 * GameMath.TWOPI)
+            // So here's an interesting piece of code.
+            // We sometimes need to know a player position for noise functions and such to be precise. However the player position is usually too large to be precise 
+            // So we can do a weird hack. If the players position moves by over 30.0000 we use that position as a new reference point
+            // This will cause a 1 frame jitter for the player, but hopefully not too noticable
+            // A proper fix would be to up the GL requirements to OpenGL 4.0 and use vec3d for double precision math.
+
+            Vec3d pos = capi.World.Player.Entity.CameraPos;
+
+            if (playerReferencePos == null)
             {
-                WindWaveCounter -= 8 * GameMath.TWOPI;
+                playerReferencePos = new Vec3d(capi.World.BlockAccessor.MapSizeX / 2, 0, capi.World.BlockAccessor.MapSizeZ / 2);
+            }
+            if (playerReferencePos.HorizontalSquareDistanceTo(pos.X, pos.Z) > 30000.0 * 30000)
+            {
+                playerReferencePos.Set((float)pos.X, 0, (float)pos.Z);
             }
 
-            // This used to be Entity.CameraPos but that seems to lag behind?
-            // iirc the "-capi.World.BlockAccessor.MapSizeX / 2" is there so that the greatest accuracy is in the map middle
-            PlayerPos.Set((float)(capi.World.Player.Entity.Pos.X - capi.World.BlockAccessor.MapSizeX / 2), (float)capi.World.Player.Entity.Pos.Y, (float)(capi.World.Player.Entity.Pos.Z - capi.World.BlockAccessor.MapSizeZ / 2));
+            
+            PlayerPos.Set((float)(pos.X - playerReferencePos.X), (float)(pos.Y - playerReferencePos.Y), (float)(pos.Z - playerReferencePos.Z));
 
             // For godrays shader
             PlayerViewVector = EntityPos.GetViewVector(capi.Input.MousePitch, capi.Input.MouseYaw);

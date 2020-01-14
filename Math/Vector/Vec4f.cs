@@ -67,6 +67,15 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public Vec4f Set(Vec4f vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+            this.W = vec.W;
+            return this;
+        }
+
         public Vec4f Set(float x, float y, float z, float w)
         {
             this.X = x;

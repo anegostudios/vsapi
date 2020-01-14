@@ -86,7 +86,15 @@ namespace Vintagestory.API.Client
 
             Bounds.CalcWorldBounds();
 
-            ImageSurface surface = new ImageSurface(Format.ARGB32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+            int wdt = (int)Bounds.InnerWidth;
+            int hgt = (int)Bounds.InnerHeight;
+            if (richtTextTexture.TextureId != 0)
+            {
+                wdt = Math.Max(1, Math.Max(wdt, richtTextTexture.Width));
+                hgt = Math.Max(1, Math.Max(hgt, richtTextTexture.Height));
+            }
+
+            ImageSurface surface = new ImageSurface(Format.ARGB32, wdt, hgt);
             Context ctx = new Context(surface);
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Paint();
@@ -371,8 +379,8 @@ namespace Vintagestory.API.Client
                 richtTextTexture.TextureId, 
                 (int)Bounds.renderX, 
                 (int)Bounds.renderY, 
-                (int)Bounds.InnerWidth, 
-                (int)Bounds.InnerHeight,
+                (int)richtTextTexture.Width,
+                (int)richtTextTexture.Height,
                 zPos
             );
 
@@ -510,11 +518,14 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
         /// <summary>
-        /// Adds a chat input to the GUI.
+        /// Adds a rich text element to the GUI
         /// </summary>
-        /// <param name="bounds">The bounds of the text.</param>
-        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
-        /// <param name="key">The name of this chat component.</param>
+        /// <param name="composer"></param>
+        /// <param name="vtmlCode"></param>
+        /// <param name="baseFont"></param>
+        /// <param name="bounds"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static GuiComposer AddRichtext(this GuiComposer composer, string vtmlCode, CairoFont baseFont, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -527,11 +538,15 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Adds a chat input to the GUI.
+        /// Adds a rich text element to the GUI
         /// </summary>
-        /// <param name="bounds">The bounds of the text.</param>
-        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
-        /// <param name="key">The name of this chat component.</param>
+        /// <param name="composer"></param>
+        /// <param name="vtmlCode"></param>
+        /// <param name="baseFont"></param>
+        /// <param name="bounds"></param>
+        /// <param name="didClickLink"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static GuiComposer AddRichtext(this GuiComposer composer, string vtmlCode, CairoFont baseFont, ElementBounds bounds, API.Common.Action<LinkTextComponent> didClickLink, string key = null)
         {
             if (!composer.composed)
@@ -543,11 +558,13 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Adds a chat input to the GUI.
+        /// Adds a rich text element to the GUI
         /// </summary>
-        /// <param name="bounds">The bounds of the text.</param>
-        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
-        /// <param name="key">The name of this chat component.</param>
+        /// <param name="composer"></param>
+        /// <param name="components"></param>
+        /// <param name="bounds"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static GuiComposer AddRichtext(this GuiComposer composer, RichTextComponentBase[] components, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
@@ -561,6 +578,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the chat input by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the chat input component.</param>
         /// <returns>The named component.</returns>
         public static GuiElementRichtext GetRichtext(this GuiComposer composer, string key)

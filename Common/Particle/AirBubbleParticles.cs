@@ -28,71 +28,56 @@ namespace Vintagestory.API.Common
         /// Gets the secondary particles
         /// </summary>
         /// <returns>null, the bubble particles don't have secondary particles.</returns>
-        public IParticlePropertiesProvider[] GetSecondaryParticles() { return null;  }
-
+        public IParticlePropertiesProvider[] SecondaryParticles => null;
         /// <summary>
         /// Gets the death particles.
         /// </summary>
         /// <returns>There are no death particles for bubbles.</returns>
-        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
+        public IParticlePropertiesProvider[] DeathParticles => null;
+
+        public bool Bouncy { get; set; }
 
         /// <summary>
         /// Whether or not the bubbles die in air.
         /// </summary>
         /// <returns>Yes they die in air.</returns>
-        public bool DieInAir() { return false; }
-
+        public bool DieInAir => false;
         /// <summary>
         /// Whether or not the bubbles die in liquid.
         /// </summary>
         /// <returns>They don't.</returns>
-        public bool DieInLiquid() { return false; }
-
+        public bool DieInLiquid => false;
         /// <summary>
         /// Whether or not the bubbles die in liquid.
         /// </summary>
         /// <returns>They don't.</returns>
-        public bool SwimOnLiquid() { return true; }
-
+        public bool SwimOnLiquid => true;
 
         /// <summary>
         /// Gets the glow level of the bubbles.
         /// </summary>
         /// <returns>No glow.</returns>
-        public byte GetGlowLevel() { return 0; }
-
+        public int VertexFlags => 0;
         /// <summary>
         /// Gets the gravity applied to the particle.
         /// </summary>
         /// <returns>None.</returns>
-        public float GetGravityEffect() { return 0.1f; }
-
+        public float GravityEffect => 0.1f;
         /// <summary>
         /// Whether or not the bubble collides with the terrain.
         /// </summary>
         /// <returns></returns>
-        public bool TerrainCollision() { return true; }
-
+        public bool TerrainCollision => true;
         /// <summary>
         /// Gets the length of life for the particle.
         /// </summary>
         /// <returns>0.25f</returns>
-        public float GetLifeLength() { return 0.25f; }
+        public float LifeLength => 0.25f;
+        public EvolvingNatFloat OpacityEvolve => null; public EvolvingNatFloat RedEvolve => null; public EvolvingNatFloat GreenEvolve => null; public EvolvingNatFloat BlueEvolve => null;
+        public bool RandomVelocityChange { get; set; }
+        public Vec3d Pos => new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
 
-        public EvolvingNatFloat GetOpacityEvolve() { return null; }
-        public EvolvingNatFloat GetRedEvolve() { return null; }
-        public EvolvingNatFloat GetGreenEvolve() { return null; }
-        public EvolvingNatFloat GetBlueEvolve() { return null; }
-
-        public Vec3d GetPos()
-        {
-            return new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
-        }
-
-        public float GetQuantity()
-        {
-            return 30;
-        }
+        public float Quantity => 30;
 
         public int GetRgbaColor(ICoreClientAPI capi)
         {
@@ -105,15 +90,9 @@ namespace Vintagestory.API.Common
 
         }
 
-        public float GetSize()
-        {
-            return (float)rand.NextDouble() * 0.2f + 0.2f;
-        }
+        public float Size => (float)rand.NextDouble() * 0.2f + 0.2f;
 
-        public EvolvingNatFloat GetSizeEvolve()
-        {
-            return new EvolvingNatFloat(EnumTransformFunction.LINEAR, 0.25f);
-        }
+        public EvolvingNatFloat SizeEvolve => new EvolvingNatFloat(EnumTransformFunction.LINEAR, 0.25f);
 
         public Vec3f GetVelocity(Vec3d pos)
         {
@@ -126,28 +105,19 @@ namespace Vintagestory.API.Common
         }
 
 
-        public EvolvingNatFloat[] GetVelocityEvolve()
-        {
-            return null;
-        }
+        public EvolvingNatFloat[] VelocityEvolve => null;
 
         /// <summary>
         /// The base model of the particle.
         /// </summary>
         /// <returns>It's a cube.</returns>
-        public EnumParticleModel ParticleModel()
-        {
-            return EnumParticleModel.Cube;
-        }
-        
+        public EnumParticleModel ParticleModel => EnumParticleModel.Cube;
+
         /// <summary>
         /// This particle is not self propelled.
         /// </summary>
         /// <returns></returns>
-        public bool SelfPropelled()
-        {
-            return false;
-        }
+        public bool SelfPropelled => false;
 
         /// <summary>
         /// This particle does not save to file.
@@ -168,13 +138,16 @@ namespace Vintagestory.API.Common
 
         public void BeginParticle() { }
 
-        public float GetSecondarySpawnInterval()
+        public float SecondarySpawnInterval => 0.0f;
+
+        public bool DieOnRainHeightmap => false;
+
+        public void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {
-            return 0.0f;
         }
 
-        public void PrepareForSecondarySpawn(IParticleInstance particleInstance)
-        {
-        }
+        public Vec3f ParentVelocity => null;
+        
+        float IParticlePropertiesProvider.ParentVelocityWeight => 0;
     }
 }

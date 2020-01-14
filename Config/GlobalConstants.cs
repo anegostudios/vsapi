@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Config
 {
@@ -28,7 +29,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Frame time for physics simulation
         /// </summary>
-        public static float PhysicsFrameTime = 1 / 75f;
+        public static float PhysicsFrameTime = 1 / 60f; //1 / 75f;
 
         /// <summary>
         /// A multiplier applied to the y motion of all particles affected by gravity.
@@ -52,7 +53,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Multiplier applied to the players jump motion
         /// </summary>
-        public static float BaseJumpForce = 9f;
+        public static float BaseJumpForce = 8.2f;
 
         /// <summary>
         /// Multiplier applied to the players sneaking motion
@@ -72,7 +73,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Multiplier applied to the players motion while on the ground or in air
         /// </summary>
-        public static float AirDragAlways = 0.98f;
+        public static float AirDragAlways = 0.983f;
 
         /// <summary>
         /// Multiplier applied to the players motion while flying (creative mode)
@@ -87,7 +88,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Amount of gravity per tick applied to all entities affected by gravity
         /// </summary>
-        public static float GravityPerSecond = 0.35f;
+        public static float GravityPerSecond = 0.37f;
         
         /// <summary>
         /// Range in blocks at which clients receive regular updates of this entity
@@ -98,6 +99,14 @@ namespace Vintagestory.API.Config
         /// Range in blocks a player can interact with blocks (break, use, place)
         /// </summary>
         public static float DefaultPickingRange = 4.5f;
+
+        /// <summary>
+        /// Set by the WeatherSimulation System in the survival mod
+        /// </summary>
+        public static Vec3f CurrentWindSpeedClient = new Vec3f();
+        public static double CurrentRainFallClient;
+        
+        public static float CurrentNearbyRelLeavesCountClient;
 
         /// <summary>
         /// Returns true if the player fell out of the world (which is map boundaries + 30 blocks in every direction)

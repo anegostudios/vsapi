@@ -21,8 +21,7 @@ namespace Vintagestory.API.Common
         int textureSubId;
         long entityId;
 
-        public override bool DieInLiquid() { return false; }
-
+        public override bool DieInLiquid => false;
 
         public EntityCubeParticles() { }
 
@@ -64,10 +63,7 @@ namespace Vintagestory.API.Common
             return capi.EntityTextureAtlas.GetRandomColor(textureSubId);
         }
 
-        public override Vec3d GetPos()
-        {
-            return new Vec3d(particlePos.X + rand.NextDouble() * radius - radius / 2, particlePos.Y + 0.1f, particlePos.Z + rand.NextDouble() * radius - radius / 2);
-        }
+        public override Vec3d Pos => new Vec3d(particlePos.X + rand.NextDouble() * radius - radius / 2, particlePos.Y + 0.1f, particlePos.Z + rand.NextDouble() * radius - radius / 2);
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
@@ -76,33 +72,17 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override float GetSize()
-        {
-            return (float)(minScale + rand.NextDouble() * (maxScale - minScale));
-        }
+        public override float Size => (float)(minScale + rand.NextDouble() * (maxScale - minScale));
 
-        public override EnumParticleModel ParticleModel()
-        {
-            return EnumParticleModel.Cube;
-        }
+        public override EnumParticleModel ParticleModel => EnumParticleModel.Cube;
 
-        public override float GetQuantity()
-        {
-            return quantity;
-        }
+        public override float Quantity => quantity;
 
-        public override float GetLifeLength()
-        {
-            return 0.75f + (float)api.World.Rand.NextDouble() / 3f;
-        }
+        public override float LifeLength => 0.75f + (float)api.World.Rand.NextDouble() / 3f;
 
-        public override byte GetGlowLevel()
-        {
-            return 0;
-        }
+        public override int VertexFlags => 0;
 
-        public override IParticlePropertiesProvider[] GetSecondaryParticles() { return null; }
-
+        public override IParticlePropertiesProvider[] SecondaryParticles => null;
         public override void ToBytes(BinaryWriter writer)
         {
             particlePos.ToBytes(writer);

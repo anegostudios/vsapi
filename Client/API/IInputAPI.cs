@@ -58,11 +58,11 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// When controlling the camera, this is the camera yaw determined by the game engine
         /// </summary>
-        float MouseYaw { get; }
+        float MouseYaw { get; set; }
         /// <summary>
         /// When controlling the camera, this is the camera pitch determined by the game engine
         /// </summary>
-        float MousePitch { get; }
+        float MousePitch { get; set; }
 
         // These should not be here. Should be part of an event bus event (someone has to code that)
         /// <summary>

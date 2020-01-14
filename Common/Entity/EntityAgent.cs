@@ -254,7 +254,7 @@ namespace Vintagestory.API.Common
             if (mode == EnumInteractMode.Attack)
             {
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
-                int damagetier = slot.Itemstack == null ? 0 : slot.Itemstack.Collectible.MiningTier;
+                int damagetier = slot.Itemstack == null ? 0 : slot.Itemstack.Collectible.ToolTier;
 
                 IPlayer byPlayer = null;
 
@@ -295,7 +295,7 @@ namespace Vintagestory.API.Common
 
                 DamageSource dmgSource = new DamageSource()
                 {
-                    Source = EnumDamageSource.Entity,
+                    Source = (byEntity as EntityPlayer).Player == null ? EnumDamageSource.Entity : EnumDamageSource.Player,
                     SourceEntity = byEntity,
                     Type = EnumDamageType.BluntAttack,
                     HitPosition = hitPosition,
@@ -505,11 +505,7 @@ namespace Vintagestory.API.Common
             bool nowHitStack = servercontrols.LeftMouseDown;
             bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
 
-            bool nowRightIdleStack = !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown;
-            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningRightHeldIdleAnimation);
 
-            bool nowLeftIdleStack = true;
-            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningLeftHeldIdleAnimation);
 
 
             string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
@@ -517,11 +513,18 @@ namespace Vintagestory.API.Common
             string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
             string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
 
+            bool nowRightIdleStack = nowHeldRightIdleAnim != null && !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown;
+            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningRightHeldIdleAnimation);
+
+            bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
+            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningLeftHeldIdleAnimation);
+
             if (rightstack == null) nowHeldRightHitAnim = "breakhand";
 
             if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
             {
                 StopHandAnims();
+                
                 if (nowUseStack)
                 {
                     AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldRightUseAnim);
@@ -531,6 +534,7 @@ namespace Vintagestory.API.Common
             if (nowHitStack != wasHitStack || (lastRunningHeldHitAnimation != null && nowHeldRightHitAnim != lastRunningHeldHitAnimation))
             {
                 StopHandAnims();
+
                 if (nowHitStack)
                 {
                     AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldRightHitAnim);
@@ -540,6 +544,7 @@ namespace Vintagestory.API.Common
             if (nowRightIdleStack != wasRightIdleStack || (lastRunningRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastRunningRightHeldIdleAnimation))
             {
                 StopHandAnims();
+
                 if (nowRightIdleStack)
                 {
                     AnimManager.StartAnimation(lastRunningRightHeldIdleAnimation = nowHeldRightIdleAnim);
@@ -549,6 +554,7 @@ namespace Vintagestory.API.Common
             if (nowLeftIdleStack != wasLeftIdleStack || (lastRunningLeftHeldIdleAnimation != null && nowHeldLeftIdleAnim != lastRunningLeftHeldIdleAnimation))
             {
                 AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
+                
                 lastRunningLeftHeldIdleAnimation = null;
 
                 if (nowLeftIdleStack)
@@ -592,7 +598,7 @@ namespace Vintagestory.API.Common
                 multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideblock.WalkSpeedMultiplier);
             }
 
-            multiplier *= Stats.GetBlended("walkspeed");
+            multiplier *= GameMath.Clamp(Stats.GetBlended("walkspeed"), 0, 999);
 
             return multiplier;
         }

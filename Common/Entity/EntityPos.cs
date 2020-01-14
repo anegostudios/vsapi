@@ -50,7 +50,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// The rotation around the X axis
+        /// The rotation around the X axis, in radians.
         /// </summary>
         public virtual float Roll
         {
@@ -59,16 +59,16 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// The rotation around the Y axis.
+        /// The rotation around the Y axis, in radians.
         /// </summary>
         public virtual float Yaw
         {
             get { return yaw; }
             set { yaw = value; } 
         }
-        
+
         /// <summary>
-        /// The rotation around the Z axis.
+        /// The rotation around the Z axis, in radians.
         /// </summary>
         public virtual float Pitch
         {

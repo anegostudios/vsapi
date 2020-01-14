@@ -81,7 +81,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Holds the raw mod data.
         /// </summary>
-        Dictionary<string, byte> ModData { get; }
+        Dictionary<string, byte[]> ModData { get; }
 
         /// <summary>
         /// Holds the mod mappings.

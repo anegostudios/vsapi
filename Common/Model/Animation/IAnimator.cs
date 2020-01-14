@@ -146,5 +146,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="code">The code that the animation stopped with.</param>
         void OnAnimationStopped(string code);
+
+        void OnServerTick(float dt);
     }
 }

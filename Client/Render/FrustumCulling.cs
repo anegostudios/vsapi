@@ -16,9 +16,10 @@ namespace Vintagestory.API.Client
 {
     public enum EnumFrustumCullMode
     {
-        NoCull,
-        CullNormal,
-        CullInstant
+        NoCull = 0,
+        CullNormal = 1,
+        CullInstant = 2,
+        CullInstantShadowPass = 3
     }
 
 
@@ -26,40 +27,43 @@ namespace Vintagestory.API.Client
     {
         public int ViewDistanceSq;
         internal BlockPos playerPos;
+        public float lodBias;
+        public double shadowRangeX;
+        public double shadowRangeZ;
 
-        float frustum00;
-        float frustum01;
-        float frustum02;
-        float frustum03;
+        double frustum00;
+        double frustum01;
+        double frustum02;
+        double frustum03;
 
-        float frustum10;
-        float frustum11;
-        float frustum12;
-        float frustum13;
+        double frustum10;
+        double frustum11;
+        double frustum12;
+        double frustum13;
 
-        float frustum20;
-        float frustum21;
-        float frustum22;
-        float frustum23;
+        double frustum20;
+        double frustum21;
+        double frustum22;
+        double frustum23;
 
-        float frustum30;
-        float frustum31;
-        float frustum32;
-        float frustum33;
+        double frustum30;
+        double frustum31;
+        double frustum32;
+        double frustum33;
 
-        float frustum40;
-        float frustum41;
-        float frustum42;
-        float frustum43;
+        double frustum40;
+        double frustum41;
+        double frustum42;
+        double frustum43;
 
-        float frustum50;
-        float frustum51;
-        float frustum52;
-        float frustum53;
+        double frustum50;
+        double frustum51;
+        double frustum52;
+        double frustum53;
 
-        public bool SphereInFrustum(float x, float y, float z, float radius)
+        public bool SphereInFrustum(double x, double y, double z, double radius)
         {
-            float d = 0;
+            double d = 0;
 
             d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
             if (d <= -radius)
@@ -83,9 +87,10 @@ namespace Vintagestory.API.Client
             return true;
         }
 
+
         public bool SphereInFrustum(Sphere sphere)
         {
-            float d = 0;
+            double d;
 
             d = frustum00 * sphere.x + frustum01 * sphere.y + frustum02 * sphere.z + frustum03;
             if (d <= -sphere.radius)
@@ -105,18 +110,41 @@ namespace Vintagestory.API.Client
             d = frustum50 * sphere.x + frustum51 * sphere.y + frustum52 * sphere.z + frustum53;
             if (d <= -sphere.radius)
                 return false;
-
-
-            //   if (playerPos.HorDistanceSqTo(sphere.x, sphere.z) > viewDistanceSq) return false;
-
 
             return true;
         }
 
 
-        public bool SphereInFrustumAndRange(Sphere sphere)
+        public bool SphereInFrustumShadowPass(Sphere sphere)
         {
-            float d = 0;
+            double d;
+
+            d = frustum00 * sphere.x + frustum01 * sphere.y + frustum02 * sphere.z + frustum03;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum10 * sphere.x + frustum11 * sphere.y + frustum12 * sphere.z + frustum13;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum20 * sphere.x + frustum21 * sphere.y + frustum22 * sphere.z + frustum23;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum30 * sphere.x + frustum31 * sphere.y + frustum32 * sphere.z + frustum33;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum40 * sphere.x + frustum41 * sphere.y + frustum42 * sphere.z + frustum43;
+            if (d <= -sphere.radius)
+                return false;
+            d = frustum50 * sphere.x + frustum51 * sphere.y + frustum52 * sphere.z + frustum53;
+            if (d <= -sphere.radius)
+                return false;
+
+            return Math.Abs(playerPos.X - sphere.x) < shadowRangeX && Math.Abs(playerPos.Z - sphere.z) < shadowRangeZ;
+        }
+
+
+        public bool SphereInFrustumAndRange(Sphere sphere, bool nowVisible, int lodLevel = 0)
+        {
+            double d;
 
             d = frustum00 * sphere.x + frustum01 * sphere.y + frustum02 * sphere.z + frustum03;
             if (d <= -sphere.radius)
@@ -138,11 +166,23 @@ namespace Vintagestory.API.Client
                 return false;
 
 
-            return playerPos.HorDistanceSqTo(sphere.x, sphere.z) < ViewDistanceSq;
+            if (lodLevel < 0) return true;
+
+
+
+            /*float dist = playerPos.HorDistanceSqTo(sphere.x, sphere.z);
+            return lodLevel == 0 ?
+                dist < ViewDistanceSq * lodBias :
+                dist > ViewDistanceSq * lodBias
+            ;*/
+
+            // Lod level 1: all stuff
+            // Lod level 0: only high detail stuff
+            return lodLevel == 1 || playerPos.HorDistanceSqTo(sphere.x, sphere.z) < ViewDistanceSq * lodBias + 24*24; // a bit of extra range so we can properly fade the lod in the shader
         }
 
 
-        float[] tmpMat = new float[16];
+        double[] tmpMat = new double[16];
 
         public void CalcFrustumEquations(BlockPos playerPos, double[] projectionMatrix, double[] cameraMatrix)
         {
@@ -150,7 +190,7 @@ namespace Vintagestory.API.Client
 
             Mat4d.Multiply(matFrustum, projectionMatrix, cameraMatrix);
 
-            for (int i = 0; i < 16; i++) tmpMat[i] = (float)matFrustum[i];
+            for (int i = 0; i < 16; i++) tmpMat[i] = matFrustum[i];
 
             CalcFrustumEquations(playerPos, tmpMat);
         }
@@ -163,14 +203,14 @@ namespace Vintagestory.API.Client
         /// calculate the frustum plane equations (Ax+By+Cz+D=0, n=(A,B,C))
         /// The equations can then be used to see on which side points are.
         /// </remarks>
-        public void CalcFrustumEquations(BlockPos playerPos, float[] frustumMatrix)
+        public void CalcFrustumEquations(BlockPos playerPos, double[] frustumMatrix)
         {
             this.playerPos = playerPos;
-            float t;
+            double t;
 
             unchecked
             {
-                float[] clip1 = frustumMatrix;
+                double[] clip1 = frustumMatrix;
 
                 // Extract the numbers for the RIGHT plane
                 frustum00 = clip1[3] - clip1[0];
@@ -179,7 +219,7 @@ namespace Vintagestory.API.Client
                 frustum03 = clip1[15] - clip1[12];
 
                 // Normalize the result
-                t = GameMath.FastSqrt(frustum00 * frustum00 + frustum01 * frustum01 + frustum02 * frustum02);
+                t = Math.Sqrt(frustum00 * frustum00 + frustum01 * frustum01 + frustum02 * frustum02);
                 frustum00 /= t;
                 frustum01 /= t;
                 frustum02 /= t;
@@ -192,7 +232,7 @@ namespace Vintagestory.API.Client
                 frustum13 = clip1[15] + clip1[12];
 
                 // Normalize the result
-                t = GameMath.FastSqrt(frustum10 * frustum10 + frustum11 * frustum11 + frustum12 * frustum12);
+                t = Math.Sqrt(frustum10 * frustum10 + frustum11 * frustum11 + frustum12 * frustum12);
                 frustum10 /= t;
                 frustum11 /= t;
                 frustum12 /= t;
@@ -205,7 +245,7 @@ namespace Vintagestory.API.Client
                 frustum23 = clip1[15] + clip1[13];
 
                 // Normalize the result
-                t = GameMath.FastSqrt(frustum20 * frustum20 + frustum21 * frustum21 + frustum22 * frustum22);
+                t = Math.Sqrt(frustum20 * frustum20 + frustum21 * frustum21 + frustum22 * frustum22);
                 frustum20 /= t;
                 frustum21 /= t;
                 frustum22 /= t;
@@ -218,7 +258,7 @@ namespace Vintagestory.API.Client
                 frustum33 = clip1[15] - clip1[13];
 
                 // Normalize the result
-                t = GameMath.FastSqrt(frustum30 * frustum30 + frustum31 * frustum31 + frustum32 * frustum32);
+                t = Math.Sqrt(frustum30 * frustum30 + frustum31 * frustum31 + frustum32 * frustum32);
                 frustum30 /= t;
                 frustum31 /= t;
                 frustum32 /= t;
@@ -231,7 +271,7 @@ namespace Vintagestory.API.Client
                 frustum43 = clip1[15] - clip1[14];
 
                 // Normalize the result
-                t = GameMath.FastSqrt(frustum40 * frustum40 + frustum41 * frustum41 + frustum42 * frustum42);
+                t = Math.Sqrt(frustum40 * frustum40 + frustum41 * frustum41 + frustum42 * frustum42);
                 frustum40 /= t;
                 frustum41 /= t;
                 frustum42 /= t;
@@ -244,7 +284,7 @@ namespace Vintagestory.API.Client
                 frustum53 = clip1[15] + clip1[14];
 
                 // Normalize the result
-                t = GameMath.FastSqrt(frustum50 * frustum50 + frustum51 * frustum51 + frustum52 * frustum52);
+                t = Math.Sqrt(frustum50 * frustum50 + frustum51 * frustum51 + frustum52 * frustum52);
                 frustum50 /= t;
                 frustum51 /= t;
                 frustum52 /= t;

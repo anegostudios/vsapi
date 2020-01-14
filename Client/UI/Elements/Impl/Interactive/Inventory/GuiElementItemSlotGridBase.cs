@@ -36,6 +36,7 @@ namespace Vintagestory.API.Client
         protected ElementBounds[] slotBounds;
 
         protected LoadedTexture slotTexture, highlightSlotTexture;
+        protected LoadedTexture crossedOutTexture;
         protected LoadedTexture[] slotQuantityTextures;
 
         protected GuiElementStaticText textComposer;
@@ -80,6 +81,8 @@ namespace Vintagestory.API.Client
         {
             slotTexture = new LoadedTexture(capi);
             highlightSlotTexture = new LoadedTexture(capi);
+            crossedOutTexture = new LoadedTexture(capi);
+
             prevSlotQuantity = inventory.Count;
             this.inventory = inventory;
             cols = columns;
@@ -230,7 +233,22 @@ namespace Vintagestory.API.Client
                 slotTextureIdsByBgIconAndColor[key] = texId;
             }
 
-            // 3. Slot highlight overlay
+            // 3. Crossed out overlay
+            int csize = (int)absSlotWidth - 4;
+            slotSurface = new ImageSurface(Format.Argb32, (int)csize, (int)csize);
+            slotCtx = genContext(slotSurface);
+
+            slotCtx.SetSourceRGBA(0, 0, 0, 0.8);
+            api.Gui.Icons.DrawCross(slotCtx, 4, 4, 7, csize - 18, true);
+            slotCtx.SetSourceRGBA(1, 0.2, 0.2, 0.8);
+            slotCtx.LineWidth = 2;
+            slotCtx.Stroke();
+            generateTexture(slotSurface, ref crossedOutTexture);
+            slotCtx.Dispose();
+            slotSurface.Dispose();
+
+
+            // 4. Slot highlight overlay
             slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth + 4, (int)absSlotWidth + 4);
             slotCtx = genContext(slotSurface);
             
@@ -386,13 +404,10 @@ namespace Vintagestory.API.Client
         public override void RenderInteractiveElements(float deltaTime)
         {
             (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = !isLeftMouseDownStartedInsideElem;
-            
+
             // Slot sizes
-            double absSlotPadding = scaled(unscaledSlotPadding);
             double absSlotWidth = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
             double absItemstackSize = scaled(GuiElementPassiveItemSlot.unscaledItemSize);
-            double absItemStackSizeAnim = scaled(80);
-            double absSlotHeight = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
 
             double offset = absSlotWidth / 2;
 
@@ -434,7 +449,7 @@ namespace Vintagestory.API.Client
                         dy = 4 * (float)api.World.Rand.NextDouble() - 2f;
                     }
 
-                    
+
                     api.Render.RenderItemstackToGui(
                         slot,
                         slotBounds[i].renderX + offset + dy,
@@ -443,6 +458,12 @@ namespace Vintagestory.API.Client
                         (float)(absItemstackSize),
                         ColorUtil.WhiteArgb
                     );
+
+                    if (slot.DrawUnavailable)
+                    {
+                        ElementBounds bounds = slotBounds[i];
+                        api.Render.Render2DTexturePremultipliedAlpha(crossedOutTexture.TextureId, (int)(bounds.renderX), (int)(bounds.renderY), crossedOutTexture.Width, crossedOutTexture.Height, 500);
+                    }
 
                     if (slotQuantityTextures[i].TextureId != 0)
                     {
@@ -457,7 +478,10 @@ namespace Vintagestory.API.Client
 
         public void OnGuiClosed(ICoreClientAPI api)
         {
-            if (hoverSlotId != -1) api.Input.TriggerOnMouseLeaveSlot(inventory[hoverSlotId]);
+            if (hoverSlotId != -1 && inventory[hoverSlotId] != null)
+            {
+                api.Input.TriggerOnMouseLeaveSlot(inventory[hoverSlotId]);
+            }
             hoverSlotId = -1;
 
             (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = true;
@@ -797,6 +821,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; slotQuantityTextures != null && i < slotQuantityTextures.Length; i++) slotQuantityTextures[i]?.Dispose();
             slotTexture.Dispose();
             highlightSlotTexture.Dispose();
+            crossedOutTexture?.Dispose();
         }
 
         

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -54,6 +55,11 @@ namespace Vintagestory.API.Server
         Dictionary<long, IMapChunk> AllLoadedMapchunks { get; }
 
         /// <summary>
+        /// Returns a (cloned) list of all currently loaded map regions. The key is the 2d index of the map region, can be turned into an x/z coord
+        /// </summary>
+        Dictionary<long, IMapRegion> AllLoadedMapRegions { get; }
+
+        /// <summary>
         /// Returns a (cloned) list of all currently loaded chunks. The key is the 3d index of the chunk, can be turned into an x/y/z coord. Warning: This locks the loaded chunk dictionary during the clone, preventing other threads from updating it. In other words: Using this method often will have a significant performance impact.
         /// </summary>
         Dictionary<long, IServerChunk> AllLoadedChunks { get; }
@@ -99,6 +105,13 @@ namespace Vintagestory.API.Server
         IMapRegion GetMapRegion(int regionX, int regionZ);
 
         /// <summary>
+        /// Gets the Server map region at given coordinate. Returns null if it's not loaded or does not exist yet
+        /// </summary>
+        /// <param name="index2d"></param>
+        /// <returns></returns>
+        IMapRegion GetMapRegion(long index2d);
+
+        /// <summary>
         /// Gets the Server map chunk at given coordinate. Returns null if it's not loaded or does not exist yet
         /// </summary>
         /// <param name="chunkX"></param>
@@ -123,6 +136,16 @@ namespace Vintagestory.API.Server
         IServerChunk GetChunk(BlockPos pos);
 
         long ChunkIndex3D(int chunkX, int chunkY, int chunkZ);
+        long MapRegionIndex2D(int regionX, int regionZ);
+        long MapRegionIndex2DByBlockPos(int posX, int posZ);
+        Vec3i MapRegionPosFromIndex2D(long index);
+
+
+        /// <summary>
+        /// Gets the Server chunk at given coordinate. Returns null if it's not loaded or does not exist yet
+        /// </summary>
+        /// <param name="index3d"></param>
+        /// <returns></returns>
         IServerChunk GetChunk(long index3d);
 
         /// <summary>

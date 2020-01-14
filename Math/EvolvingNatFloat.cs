@@ -60,6 +60,21 @@ namespace Vintagestory.API.MathTools
         [JsonProperty]
         float? maxvalue;
 
+        public float Factor
+        {
+            get { return factor; }
+        }
+
+        public float? MaxValue
+        {
+            get { return maxvalue; }
+        }
+
+        public EnumTransformFunction Transform
+        {
+            get { return transform; }
+        }
+
         public EvolvingNatFloat()
         {   
         }

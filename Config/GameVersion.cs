@@ -20,7 +20,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.11.0";
+        public const string OverallVersion = "1.12.0";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -30,7 +30,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-rc.5";
+        public const string ShortGameVersion = OverallVersion + "-pre.7";
 
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
@@ -53,7 +53,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.11.0-pre.7";
+        public const string NetworkVersion = "1.12.1";
 
         /// <summary>
         /// Version of the savegame database
@@ -63,7 +63,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// "Version" of the block and item mapping. This number gets increased by 1 when remappings are needed
         /// </summary>
-        public static int BlockItemMappingVersion = 0;
+        public static int BlockItemMappingVersion = 1;
 
 
         /// <summary>

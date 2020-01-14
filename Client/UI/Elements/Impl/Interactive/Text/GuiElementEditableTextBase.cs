@@ -16,6 +16,7 @@ namespace Vintagestory.API.Client
         internal bool hideCharacters;
         internal bool multilineMode;
         internal int maxlines = 99999;
+        internal int maxwidth = -1;
 
         internal int caretPosLine;
         internal int caretPosInLine;
@@ -49,7 +50,7 @@ namespace Vintagestory.API.Client
         internal List<string> lines;
 
 
-        internal int TextLengthWithoutLineBreaks {
+        public int TextLengthWithoutLineBreaks {
             get {
                 int length = 0;
                 for (int i = 0; i < lines.Count; i++) length += lines[i].Length;
@@ -57,7 +58,7 @@ namespace Vintagestory.API.Client
             }
         }
 
-        internal int CaretPosWithoutLineBreaks
+        public int CaretPosWithoutLineBreaks
         {
             get
             {
@@ -66,6 +67,9 @@ namespace Vintagestory.API.Client
                 return pos + caretPosInLine;
             }
         }
+
+        public int CaretPosLine => caretPosLine;
+        public int CaretPosInLine => caretPosInLine;
 
         public override bool Focusable
         {
@@ -521,11 +525,31 @@ namespace Vintagestory.API.Client
         {
             if (HasFocus)
             {
-                lines[caretPosLine] = lines[caretPosLine].Substring(0, caretPosInLine) + args.KeyChar + lines[caretPosLine].Substring(caretPosInLine, lines[caretPosLine].Length - caretPosInLine);
+                string nowline = lines[caretPosLine].Substring(0, caretPosInLine) + args.KeyChar + lines[caretPosLine].Substring(caretPosInLine, lines[caretPosLine].Length - caretPosInLine);
+                
+                if (maxwidth > 0)
+                {
+                    ImageSurface surface = new ImageSurface(Format.Argb32, 1, 1);
+                    Context ctx = new Context(surface);
+                    Font.SetupContext(ctx);
+
+                    double nowWidth = ctx.TextExtents(nowline).Width;
+                    surface.Dispose();
+                    ctx.Dispose();
+
+                    if (nowWidth > maxwidth)
+                    {
+                        args.Handled = true;
+                        api.Gui.PlaySound("tick");
+                        return;
+                    }
+                }
+
+                lines[caretPosLine] = nowline;
                 TextChanged();
                 SetCaretPos(caretPosInLine + 1, caretPosLine);
-                args.Handled = true;
 
+                args.Handled = true;
                 api.Gui.PlaySound("tick");
             }
         }
@@ -606,6 +630,21 @@ namespace Vintagestory.API.Client
         }
 
 
+
+        /// <summary>
+        /// Sets the number of lines in the Text Area.
+        /// </summary>
+        /// <param name="maxlines">The maximum number of lines.</param>
+        public void SetMaxLines(int maxlines)
+        {
+            this.maxlines = maxlines;
+        }
+
+
+        public void SetMaxWidth(int maxwidth)
+        {
+            this.maxwidth = maxwidth;
+        }
     }
 
 }

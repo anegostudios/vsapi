@@ -347,7 +347,10 @@ namespace Vintagestory.API.Common
             {
                 for (int row = 0; row <= gridHeight - Height; row++)
                 {
-                    if (MatchesAtPosition(col, row, ingredients, gridWidth)) return true;
+                    if (MatchesAtPosition(col, row, ingredients, gridWidth))
+                    {
+                        return true;
+                    }
                 }
             }
 

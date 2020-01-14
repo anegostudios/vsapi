@@ -44,7 +44,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The slot the player currently hovers over with his mouse cursor
         /// </summary>
-        ItemSlot CurrentHoveredSlot { get; }
+        ItemSlot CurrentHoveredSlot { get; set; }
 
 
         /// <summary>

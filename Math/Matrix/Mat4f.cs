@@ -1019,6 +1019,34 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+
+        public static void MulWithVec4(float[] matrix, float[] vec4, float[] output)
+        {
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    output[row] += matrix[4 * col + row] * vec4[col];
+                }
+            }
+        }
+
+
+        public static double[] MulWithVec4(float[] matrix, double[] vec4)
+        {
+            double[] output = new double[] { 0, 0, 0, 0 };
+
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    output[row] += matrix[4 * col + row] * vec4[col];
+                }
+            }
+
+            return output;
+        }
+
         /// <summary>
         /// Multiply the matrix with a vec4. Reference: http://mathinsight.org/matrix_vector_multiplication
         /// </summary>
@@ -1035,6 +1063,28 @@ namespace Vintagestory.API.MathTools
                 for (int col = 0; col < 4; col++)
                 {
                     outVal[row] += matrix[4 * col + row] * vec4[col];
+                }
+            }
+        }
+
+
+
+        /// <summary>
+        /// Multiply the matrix with a vec4. Reference: http://mathinsight.org/matrix_vector_multiplication
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="vec4"></param>
+        /// <param name="outVal"></param>
+        /// <returns></returns>
+        public static void MulWithVec4(float[] matrix, Vec4d inVal, Vec4d outVal)
+        {
+            outVal.Set(0, 0, 0, 0);
+
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    outVal[row] += matrix[4 * col + row] * inVal[col];
                 }
             }
         }

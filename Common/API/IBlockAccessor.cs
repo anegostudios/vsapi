@@ -33,6 +33,7 @@ namespace Vintagestory.API.Common
         /// Nomalized value between 0..1
         /// </summary>
         public float Fertility;
+
         /// <summary>
         /// Nomalized value between 0..1
         /// </summary>
@@ -41,6 +42,17 @@ namespace Vintagestory.API.Common
         /// Nomalized value between 0..1
         /// </summary>
         public float ShrubDensity;
+
+        public void SetLerped(ClimateCondition left, ClimateCondition right, float w)
+        {
+            Temperature = left.Temperature * (1 - w) + right.Temperature * w;
+            Rainfall = left.Rainfall * (1 - w) + right.Rainfall * w;
+            Fertility = left.Fertility * (1 - w) + right.Fertility * w;
+            ForestDensity = left.ForestDensity * (1 - w) + right.ForestDensity * w;
+            ShrubDensity = left.ShrubDensity * (1 - w) + right.ShrubDensity * w;
+        }
+
+
     }
 
     /// <summary>
@@ -320,7 +332,7 @@ namespace Vintagestory.API.Common
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
-        bool IsNotTraversable(int x, int y, int z);
+        bool IsNotTraversable(double x, double y, double z);
 
         /// <summary>
         /// Checks if this position can be traversed by a normal player (returns false for outside map or not yet loaded chunks)
@@ -382,6 +394,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         int GetLightLevel(BlockPos pos, EnumLightLevelType type);
 
+        int GetLightLevel(int x, int y, int z, EnumLightLevelType type);
+
         /// <summary>
         /// Returns the light values at given position. XYZ component = block light rgb, W component = sun light brightness
         /// </summary>
@@ -398,7 +412,16 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         Vec4f GetLightRGBs(BlockPos pos);
 
-        
+        /// <summary>
+        /// Returns the light values at given position. bit 0-23: block rgb light, bit 24-31: sun light brightness
+        /// </summary>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <param name="lightHSVCache"></param>
+        /// <returns></returns>
+        int GetLightRGBsAsInt(int posX, int posY, int posZ);
+
         /// <summary>
         /// Returns the topmost solid surface position at given x/z coordinate as it was during world generation. This map is not updated after placing/removing blocks
         /// </summary>
@@ -412,6 +435,13 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <returns></returns>
         int GetRainMapHeightAt(BlockPos pos);
+
+        /// <summary>
+        /// Returns a number of how many blocks away there is rain fall. Does a cheap 2d bfs up to 4 blocks away. Returns 99 if none was found within 4 blocks
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        int GetHorDistanceToRainFall(BlockPos pos, int searchWidth = 4);
 
         /// <summary>
         /// Returns the topmost non-rain-permeable position at given x/z coordinate. This map is always updated after placing/removing blocks

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -97,9 +98,9 @@ namespace Vintagestory.API.Common
 
             if (KeyFrames.Length == 0) return;
 
-            if (jointsById.Count > 30)
+            if (jointsById.Count > GlobalConstants.MaxAnimatedElements)
             {
-                throw new Exception("Max joint cap of 30 reached. Sorry, you'll have to simplify your model if you want it to be animated. (until some programmer finds another solution to pass on more joint data through shader uniforms)");
+                throw new Exception("Max joint cap of "+ GlobalConstants.MaxAnimatedElements + " reached. Sorry, you'll have to simplify your model if you want it to be animated. (until some programmer finds another solution to pass on more joint data through shader uniforms)");
             }
 
             for (int i = 0; i < resolvedKeyFrames.Length; i++)

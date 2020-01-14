@@ -39,6 +39,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public string BackgroundIcon;
 
+        public virtual bool DrawUnavailable { get; set; }
+
         /// <summary>
         /// If set will be used as the background color
         /// </summary>
@@ -159,6 +161,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="sinkSlot"></param>
         /// <param name="quantity"></param>
+        /// <returns>Amount of moved items</returns>
         public virtual int TryPutInto(IWorldAccessor world, ItemSlot sinkSlot, int quantity = 1)
         {
             ItemStackMoveOperation op = new ItemStackMoveOperation(world, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, quantity);

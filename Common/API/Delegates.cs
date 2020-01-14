@@ -109,7 +109,11 @@ namespace Vintagestory.API.Common
 
     public delegate void EntityDelegate(Entity entity);
 
+    public delegate bool TrySpawnEntityDelegate(ref EntityProperties properties, Vec3d spawnPosition, long herdId);
+
     public delegate void EntityDespawnDelegate(Entity entity, EntityDespawnReason reason);
+
+    public delegate void EntityDeathDelegate(Entity entity, DamageSource damageSource);
 
     public delegate void OnInteractDelegate(Entity entity, IPlayer byPlayer, ItemSlot slot, Vec3d hitPosition, int mode, ref EnumHandling handling);
 

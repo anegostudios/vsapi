@@ -90,6 +90,12 @@ namespace Vintagestory.API.MathTools
                 Value = Value
             };
         }
+
+        public void SetLerped(WeightedFloat left, WeightedFloat right, float w)
+        {
+            this.Value = left.Value * (1 - w) + right.Value * w;
+            this.Weight = left.Weight * (1 - w) + right.Weight * w;
+        }
     }
     
     public class WeightedFloatArray : WeightedValue<float[]>
@@ -129,6 +135,15 @@ namespace Vintagestory.API.MathTools
             Weight = reader.ReadSingle();
             Value = new float[reader.ReadInt32()];
             for (int i = 0; i < Value.Length; i++) Value[i] = reader.ReadSingle();
+        }
+
+        public void SetLerped(WeightedFloatArray left, WeightedFloatArray right, float w)
+        {
+            Weight = left.Weight * w + right.Weight * (1 - w);
+            for (int i = 0; i < Value.Length; i++)
+            {
+                Value[i] = left.Value[i] * w + right.Value[i] * (1 - w);
+            }
         }
     }
 }

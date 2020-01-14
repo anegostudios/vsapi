@@ -45,6 +45,10 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public int TextureHeight = 16;
 
+        [JsonProperty]
+        public Dictionary<string, int[]> TextureSizes = new Dictionary<string, int[]>();
+
+
         public Dictionary<int, AnimationJoint> JointsById = new Dictionary<int, AnimationJoint>();
         public Dictionary<string, AttachmentPoint> AttachmentPointsByCode = new Dictionary<string, AttachmentPoint>();
 

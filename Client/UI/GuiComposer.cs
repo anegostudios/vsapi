@@ -28,7 +28,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Triggered when the gui scale changed or the game window was resized
         /// </summary>
-        public event API.Common.Action OnRecomposed;
+        public event Common.Action OnRecomposed;
+        public API.Common.Action<bool> OnFocusChanged;
 
         public static int Outlines = 0;
 
@@ -37,20 +38,20 @@ namespace Vintagestory.API.Client
         internal Dictionary<string, GuiElement> staticElements = new Dictionary<string, GuiElement>();
         internal Dictionary<string, GuiElement> interactiveElements = new Dictionary<string, GuiElement>();
 
-        List<GuiElement> interactiveElementsInDrawOrder = new List<GuiElement>();
+        protected List<GuiElement> interactiveElementsInDrawOrder = new List<GuiElement>();
 
-        int currentElementKey; // Default key index if no custom key is set
-        int currentFocusableElementKey; // Default key index if no custom key is set
+        protected int currentElementKey; // Default key index if no custom key is set
+        protected int currentFocusableElementKey; // Default key index if no custom key is set
 
         internal string dialogName;
-        LoadedTexture staticElementsTexture;
+        protected LoadedTexture staticElementsTexture;
 
-        ElementBounds bounds;
+        protected ElementBounds bounds;
 
-        Stack<ElementBounds> parentBoundsForNextElement = new Stack<ElementBounds>();
-        Stack<bool> conditionalAdds = new Stack<bool>();
+        protected Stack<ElementBounds> parentBoundsForNextElement = new Stack<ElementBounds>();
+        protected Stack<bool> conditionalAdds = new Stack<bool>();
 
-        ElementBounds lastAddedElementBounds;
+        protected ElementBounds lastAddedElementBounds;
 
         internal bool composed = false;
         internal bool recomposeOnRender = false;
@@ -60,7 +61,6 @@ namespace Vintagestory.API.Client
         public ICoreClientAPI Api;
         public float zDepth=50;
 
-        public API.Common.Action<bool> OnFocusChanged;
 
         /// <summary>
         /// A unique number assigned to each element
@@ -317,7 +317,18 @@ namespace Vintagestory.API.Client
             
             bounds.IsDrawingSurface = true;
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)bounds.OuterWidth, (int)bounds.OuterHeight);
+            // So here's yet another snippet of weird code. It *seems* as if most graphics cards really don't like 
+            // when you delete and reallocate textures often (maybe causes memory fragmentation and then spends extra time defragmenting? o.O)
+            // So instead we allocate a larger space and re-use the previous texture, if we already have one that fits
+            int wdt = (int)bounds.OuterWidth;
+            int hgt = (int)bounds.OuterHeight;
+            if (staticElementsTexture.TextureId != 0)
+            {
+                wdt = Math.Max(wdt, staticElementsTexture.Width);
+                hgt = Math.Max(hgt, staticElementsTexture.Height);
+            }
+
+            ImageSurface surface = new ImageSurface(Format.Argb32, wdt, hgt);
             Context ctx = new Context(surface);
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Paint();
@@ -357,15 +368,13 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Fires the OnMouseUp events.
         /// </summary>
-        /// <param name="api">The client API.</param>
         /// <param name="mouse">The mouse information.</param>
         public void OnMouseUp(MouseEvent mouse)
         {
             foreach (GuiElement element in interactiveElements.Values)
             {
                 element.OnMouseUp(Api, mouse);
-            }
-            
+            }   
         }
 
         /// <summary>
@@ -473,7 +482,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Fires the OnKeyDown events.
         /// </summary>
-        /// <param name="api">The Client API.</param>
         /// <param name="args">The keyboard information.</param>
         /// <param name="haveFocus">Whether or not the gui has focus.</param>
         public void OnKeyDown(KeyEvent args, bool haveFocus)
@@ -514,6 +522,34 @@ namespace Vintagestory.API.Client
                 element.OnKeyPress(Api, args);
                 if (args.Handled) break;
             }
+        }
+
+        public void Clear(ElementBounds newBounds)
+        {
+            foreach (var val in interactiveElements)
+            {
+                val.Value.Dispose();
+            }
+            foreach (var val in staticElements)
+            {
+                val.Value.Dispose();
+            }
+
+            interactiveElements.Clear();
+            interactiveElementsInDrawOrder.Clear();
+            staticElements.Clear();
+            conditionalAdds.Clear();
+            parentBoundsForNextElement.Clear();
+            this.bounds = newBounds;
+            // The ultimate parent - the screen
+            if (bounds.ParentBounds == null)
+            {
+                bounds.ParentBounds = Api.Gui.WindowBounds;
+            }
+
+            parentBoundsForNextElement.Push(bounds);
+            lastAddedElementBounds = null;
+            composed = false;
         }
 
         /// <summary>
@@ -568,7 +604,9 @@ namespace Vintagestory.API.Client
 
             if (!onlyDynamicRender)
             {
-                Api.Render.Render2DTexture(staticElementsTexture.TextureId, bounds, zDepth);
+                int wdt = Math.Max(bounds.OuterWidthInt, staticElementsTexture.Width);
+                int hgt = Math.Max(bounds.OuterHeightInt, staticElementsTexture.Height);
+                Api.Render.Render2DTexture(staticElementsTexture.TextureId, (int)bounds.renderX, (int)bounds.renderY, wdt, hgt, zDepth);
             }
 
             MouseOverCursor = null;
@@ -609,7 +647,6 @@ namespace Vintagestory.API.Client
                 }
             }
         }
-
 
 
         internal static double scaled(double value)

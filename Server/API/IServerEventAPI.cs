@@ -72,6 +72,11 @@ namespace Vintagestory.API.Server
         event CanUseDelegate CanUseBlock;
 
         /// <summary>
+        /// Called when the server attempts to spawn given entity. Return false to deny spawning.
+        /// </summary>
+        event TrySpawnEntityDelegate OnTrySpawnEntity;
+
+        /// <summary>
         /// Called when a player interacts with an entity
         /// </summary>
         event OnInteractDelegate OnPlayerInteractEntity;

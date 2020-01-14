@@ -410,7 +410,7 @@ namespace Vintagestory.API.Common
         /// <param name="worldForNewMapping"></param>
         public bool FixMapping(Dictionary<int, AssetLocation> oldBlockMapping, Dictionary<int, AssetLocation> oldItemMapping, IWorldAccessor worldForNewMapping)
         {
-            AssetLocation code = null;
+            AssetLocation code;
             
             if (Class == EnumItemClass.Item)
             {

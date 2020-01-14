@@ -1,5 +1,6 @@
 ﻿using System;
 using Vintagestory.API;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -8,10 +9,11 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
-    public class EntityBehaviorPassivePhysics : EntityBehavior
+    public class EntityBehaviorPassivePhysics : EntityBehavior, IRenderer
     {
         float accumulator;
         Vec3d outposition = new Vec3d();
+        Vec3d prevPos = new Vec3d();
 
         /// <summary>
         /// The amount of drag while travelling through water.
@@ -33,11 +35,21 @@ namespace Vintagestory.API.Common
         /// </summary>
         double gravityPerSecond = GlobalConstants.GravityPerSecond;
 
+        
+        protected bool duringRenderFrame;
+        public double RenderOrder => 0;
+        public int RenderRange => 9999;
+        ICoreClientAPI capi;
 
+        
+        public override void OnEntityDespawn(EntityDespawnReason despawn)
+        {
+            (entity.World.Api as ICoreClientAPI)?.Event.UnregisterRenderer(this, EnumRenderStage.Before);
+        }
 
         public EntityBehaviorPassivePhysics(Entity entity) : base(entity)
         {
-
+            
         }
 
         public override void Initialize(EntityProperties properties, JsonObject attributes)
@@ -48,17 +60,36 @@ namespace Vintagestory.API.Common
 
             groundDragFactor = 0.3 * (float)attributes["groundDragFactor"].AsDouble(1);
 
-            gravityPerSecond = GlobalConstants.GravityPerSecond * (float)attributes["gravityFactor"].AsDouble(1f);            
+            gravityPerSecond = GlobalConstants.GravityPerSecond * (float)attributes["gravityFactor"].AsDouble(1f);
+
+            if (entity.World.Side == EnumAppSide.Client)
+            {
+                capi = (entity.World.Api as ICoreClientAPI);
+                duringRenderFrame = true;
+                capi.Event.RegisterRenderer(this, EnumRenderStage.Before, "passivephysics");
+            }
+        }
+
+        public void OnRenderFrame(float deltaTime, EnumRenderStage stage)
+        {
+            if (capi.IsGamePaused) return;
+
+            onPhysicsTick(deltaTime);
         }
 
 
         public override void OnGameTick(float deltaTime)
         {
-            EntityPos pos = entity.Pos;
-            if (entity.World is IServerWorldAccessor)
+            if (!duringRenderFrame)
             {
-                pos = entity.ServerPos;
+                onPhysicsTick(deltaTime);
             }
+        }
+
+
+        public void onPhysicsTick(float deltaTime)
+        {
+            EntityPos pos = entity.LocalPos;
 
             accumulator += deltaTime;
 
@@ -67,15 +98,16 @@ namespace Vintagestory.API.Common
                 accumulator = 1;
             }
 
-            float dt2 = 1f / 75;
-
-            while (accumulator >= dt2)
+            while (accumulator >= GlobalConstants.PhysicsFrameTime)
             {
-                entity.PhysicsUpdateWatcher?.Invoke(accumulator - GlobalConstants.PhysicsFrameTime);
-                DoPhysics(dt2, pos);
-                accumulator -= dt2;
+                prevPos.Set(pos.X, pos.Y, pos.Z);
+                DoPhysics(GlobalConstants.PhysicsFrameTime, pos);
+                accumulator -= GlobalConstants.PhysicsFrameTime;
             }
+
+            entity.PhysicsUpdateWatcher?.Invoke(accumulator, prevPos);
         }
+
 
         /// <summary>
         /// Performs the physics on the specified entity.
@@ -158,9 +190,7 @@ namespace Vintagestory.API.Common
                 } else
                 {
                     pos.Motion.Y -= gravStrength;
-                }
-
-                
+                }   
             }
 
            
@@ -273,5 +303,10 @@ namespace Vintagestory.API.Common
         {
             return "passiveentityphysics";
         }
+        public void Dispose()
+        {
+
+        }
+
     }
 }

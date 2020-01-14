@@ -20,6 +20,7 @@ namespace Vintagestory.API.Client
 
         MeshDataPoolMasterManager masterPool;
         CustomMeshDataPartFloat customFloats = null;
+        CustomMeshDataPartShort customShorts = null;
         CustomMeshDataPartByte customBytes = null;
         CustomMeshDataPartInt customInts = null;
 
@@ -41,7 +42,7 @@ namespace Vintagestory.API.Client
         /// <param name="customFloats">Additional float data</param>
         /// <param name="customBytes">Additional byte data</param>
         /// <param name="customInts">additional int data</param>
-        public MeshDataPoolManager(MeshDataPoolMasterManager masterPool, FrustumCulling frustumCuller, ICoreClientAPI capi, int defaultVertexPoolSize, int defaultIndexPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
+        public MeshDataPoolManager(MeshDataPoolMasterManager masterPool, FrustumCulling frustumCuller, ICoreClientAPI capi, int defaultVertexPoolSize, int defaultIndexPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartShort customShorts = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
         {
             this.masterPool = masterPool;
             this.frustumCuller = frustumCuller;
@@ -49,6 +50,7 @@ namespace Vintagestory.API.Client
             this.customFloats = customFloats;
             this.customBytes = customBytes;
             this.customInts = customInts;
+            this.customShorts = customShorts;
             this.defaultIndexPoolSize = defaultIndexPoolSize;
             this.defaultVertexPoolSize = defaultVertexPoolSize;
             this.maxPartsPerPool = maxPartsPerPool;
@@ -81,7 +83,7 @@ namespace Vintagestory.API.Client
                     capi.World.Logger.Warning("Chunk (or some other mesh source at origin: {0}) exceeds default geometric complexity maximum of {1} vertices and {2} indices. You must be loading some very complex objects (#v = {3}, #i = {4}). Adjusted Pool size accordingly.", modelOrigin, defaultVertexPoolSize, defaultIndexPoolSize, modeldata.VerticesCount, modeldata.IndicesCount);
                 }
 
-                MeshDataPool pool = MeshDataPool.AllocateNewPool(capi, vertexSize, indexSize, maxPartsPerPool, customFloats, customBytes, customInts);
+                MeshDataPool pool = MeshDataPool.AllocateNewPool(capi, vertexSize, indexSize, maxPartsPerPool, customFloats, customShorts, customBytes, customInts);
                 pool.poolOrigin = modelOrigin;
 
                 masterPool.AddModelDataPool(pool);
@@ -149,7 +151,7 @@ namespace Vintagestory.API.Client
             // = 114mb indices, 789mb vertices => 903mb video memory   (no custom floats)
             //                  88mb normals
 
-            long vertexSize = 12 + 8 + 4 + 4 + 4 + (customFloats == null ? 0 : customFloats.InterleaveStride) + (customBytes == null ? 0 : customBytes.InterleaveStride) + (customInts == null ? 0 : customInts.InterleaveStride);
+            long vertexSize = 12 + 8 + 4 + 4 + 4 + (customFloats == null ? 0 : customFloats.InterleaveStride) + (customShorts == null ? 0 : customShorts.InterleaveStride) + (customBytes == null ? 0 : customBytes.InterleaveStride) + (customInts == null ? 0 : customInts.InterleaveStride);
 
             for (int i = 0; i < pools.Count; i++)
             {

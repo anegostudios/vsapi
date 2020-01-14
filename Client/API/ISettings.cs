@@ -42,6 +42,14 @@ namespace Vintagestory.API.Client
         /// <param name="key">Key to the setting</param>
         /// <param name="OnValueChanged">the OnValueChanged event fired.</param>
         void AddWatcher(string key, OnSettingsChanged<T> OnValueChanged);
+
+        /// <summary>
+        /// Removes a previously assigned watcher
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="handler"></param>
+        /// <returns>True if successfully removed</returns>
+        bool RemoveWatcher(string key, OnSettingsChanged<T> handler);
     }
 
     /// <summary>

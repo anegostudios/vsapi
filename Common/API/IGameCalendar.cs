@@ -32,7 +32,7 @@ namespace Vintagestory.API.Common
         string PrettyDate();
 
         /// <summary>
-        /// This acts as a multiplier on how much faster an ingame second passes by compared to a real life second. The default is 60, hence per default a day lasts 24 minutes
+        /// This acts as a multiplier on how much faster an ingame second passes by compared to a real life second. Affects things like the motion speed of waving grass. The default is 60, hence per default a day lasts 24 minutes, but it's also multiplied by CalendarSpeedMul which is 0.5 by default so the end result is 48 minutes per day
         /// This is the sum of all modifiers
         /// </summary>
         float SpeedOfTime { get; }
@@ -78,9 +78,14 @@ namespace Vintagestory.API.Common
         Vec3f MoonPosition { get; }
 
         /// <summary>
-        /// Returns a vector of the sun's color.
+        /// Returns a normalized color of the sun
         /// </summary>
         Vec3f SunColor { get; }
+
+        /// <summary>
+        /// A horizontal offset that is applied when reading the sky glow color. Creates a greater variety of sunsets. Changes to a different value once per day (during midnight)
+        /// </summary>
+        float SunsetMod { get; }
 
         /// <summary>
         /// Returns a value between 0 (no sunlight) and 1 (full sunlight)

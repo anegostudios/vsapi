@@ -10,6 +10,9 @@ namespace Vintagestory.API.Common.Entities
         public float EyesInWaterDepth = 0;
 
         public float DayLight = 1;
+
+        
+
         public float MoonLight = 0;
         public double FallSpeed = 0;
         public BlockPos PlayerChunkPos = new BlockPos();

@@ -174,6 +174,18 @@ namespace Vintagestory.API.MathTools
             return u.f * z;
         }
 
+        public static double FastSqrt(double z)
+        {
+            if (z == 0) return 0;
+            DoubleLongUnion u;
+            u.tmp = 0;
+            double xhalf = 0.5 * z;
+            u.f = z;
+            u.tmp = 0x5f375a86 - (u.tmp >> 1);
+            u.f = u.f * (1.5 - xhalf * u.f * u.f);
+            return u.f * z;
+        }
+
 
         public static float Sqrt(float value)
         {
@@ -563,9 +575,12 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Basic Bilinear Lerp
         /// </summary>
-        /// <param name="v0"></param>
-        /// <param name="v1"></param>
-        /// <param name="t"></param>
+        /// <param name="topleft"></param>
+        /// <param name="topright"></param>
+        /// <param name="botleft"></param>
+        /// <param name="botright"></param>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
         /// <returns></returns>
         public static float BiLerp(float topleft, float topright, float botleft, float botright, float x, float z)
         {
@@ -578,15 +593,31 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Basic Bilinear Lerp
         /// </summary>
-        /// <param name="v0"></param>
-        /// <param name="v1"></param>
-        /// <param name="t"></param>
+        /// <param name="topleft"></param>
+        /// <param name="topright"></param>
+        /// <param name="botleft"></param>
+        /// <param name="botright"></param>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
         /// <returns></returns>
         public static double BiLerp(double topleft, double topright, double botleft, double botright, double x, double z)
         {
             double top = topleft + (topright - topleft) * x;
             double bot = botleft + (botright - botleft) * x;
             return top + (bot - top) * z;
+        }
+
+        /// <summary>
+        /// Same as <see cref="Lerp(float, float, float)"/>
+        /// </summary>
+        /// <param name="v0"></param>
+        /// <param name="v1"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Mix(float v0, float v1, float t)
+        {
+            return v0 + (v1 - v0) * t;
         }
 
 
@@ -665,6 +696,35 @@ namespace Vintagestory.API.MathTools
         {
             // Scale, and clamp x to 0..1 range
             x = Clamp((x - edge0) / (edge1 - edge0), 0.0f, 1.0f);
+            // Evaluate polynomial
+            return x * x * x * (x * (x * 6 - 15) + 10);
+        }
+
+        /// <summary>
+        /// Better Lerp but more CPU intensive, see also https://en.wikipedia.org/wiki/Smoothstep
+        /// </summary>
+        /// <param name="edge0"></param>
+        /// <param name="edge1"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Smootherstep(double edge0, double edge1, double x)
+        {
+            // Scale, and clamp x to 0..1 range
+            x = Clamp((x - edge0) / (edge1 - edge0), 0.0, 1.0);
+            // Evaluate polynomial
+            return x * x * x * (x * (x * 6 - 15) + 10);
+        }
+
+
+        /// <summary>
+        /// Better Lerp but more CPU intensive, see also https://en.wikipedia.org/wiki/Smoothstep. x must be in range of 0..1
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Smootherstep(double x)
+        {
             // Evaluate polynomial
             return x * x * x * (x * (x * 6 - 15) + 10);
         }
@@ -1258,5 +1318,16 @@ namespace Vintagestory.API.MathTools
 
         [FieldOffset(0)]
         public int tmp;
+    }
+
+
+    [StructLayout(LayoutKind.Explicit)]
+    internal struct DoubleLongUnion
+    {
+        [FieldOffset(0)]
+        public double f;
+
+        [FieldOffset(0)]
+        public long tmp;
     }
 }

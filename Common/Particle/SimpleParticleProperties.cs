@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -12,41 +14,46 @@ namespace Vintagestory.API.Common
     {
         public static Random rand = new Random();
 
-        public float minQuantity;
-        public float addQuantity;
+        public float MinQuantity;
+        public float AddQuantity;
+        public float WindAffectednes;
 
-        public Vec3d minPos;
-        public Vec3d addPos = new Vec3d();
-        public Vec3f minVelocity = new Vec3f();
-        public Vec3f addVelocity = new Vec3f();
+        public Vec3d MinPos;
+        public Vec3d AddPos = new Vec3d();
+        public Vec3f MinVelocity = new Vec3f();
+        public Vec3f AddVelocity = new Vec3f();
+        public Vec3f ParentVelocity { get; set; } = null;
+        public float ParentVelocityWeight { get; set; } = 0;
 
-        public float lifeLength;
+        public float LifeLength;
         public float addLifeLength;
-        public float gravityEffect;
+        public float GravityEffect { get; set; }
 
-        public float minSize = 1f;
-        public float maxSize = 1f;
+        public float MinSize = 1f;
+        public float MaxSize = 1f;
 
-        public int color;
-        public byte glowLevel;
-        public EnumParticleModel model = EnumParticleModel.Cube;
+        public int Color;
+        public int VertexFlags { get; set; }
 
-        public bool ShouldDieInAir;
-        public bool ShouldDieInLiquid;
-        public bool ShouldSwimOnLiquid;
-        public bool WithTerrainCollision = true;
+        public bool Bouncy { get; set; }
+        public bool ShouldDieInAir { get; set; }
+        public bool ShouldDieInLiquid { get; set; }
+        public bool ShouldSwimOnLiquid { get; set; }
+        public bool WithTerrainCollision { get; set; } = true;
 
-        public EvolvingNatFloat OpacityEvolve;
-        public EvolvingNatFloat RedEvolve;
-        public EvolvingNatFloat GreenEvolve;
-        public EvolvingNatFloat BlueEvolve;
+        public EvolvingNatFloat OpacityEvolve { get; set; }
+        public EvolvingNatFloat RedEvolve { get; set; }
+        public EvolvingNatFloat GreenEvolve { get; set; }
+        public EvolvingNatFloat BlueEvolve { get; set; }
 
-        public EvolvingNatFloat SizeEvolve;
+        public EvolvingNatFloat SizeEvolve { get; set; }
 
         public bool SelfPropelled;
 
         public Block ColorByBlock;
         public int TintIndex;
+
+        public bool RandomVelocityChange {get; set;}
 
         public SimpleParticleProperties()
         {
@@ -58,157 +65,105 @@ namespace Vintagestory.API.Common
 
         public SimpleParticleProperties(float minQuantity, float maxQuantity, int color, Vec3d minPos, Vec3d maxPos, Vec3f minVelocity, Vec3f maxVelocity, float lifeLength = 1f, float gravityEffect = 1f, float minSize = 1f, float maxSize = 1f, EnumParticleModel model = EnumParticleModel.Cube)
         {
-            this.minQuantity = minQuantity;
-            this.addQuantity = maxQuantity - minQuantity;
-            this.color = color;
-            this.minPos = minPos;
-            this.addPos = maxPos - minPos;
-            this.minVelocity = minVelocity;
-            this.addVelocity = maxVelocity - minVelocity;
-            this.lifeLength = lifeLength;
-            this.gravityEffect = gravityEffect;
-            this.minSize = minSize;
-            this.maxSize = maxSize;
-            this.model = model;
+            this.MinQuantity = minQuantity;
+            this.AddQuantity = maxQuantity - minQuantity;
+            this.Color = color;
+            this.MinPos = minPos;
+            this.AddPos = maxPos - minPos;
+            this.MinVelocity = minVelocity;
+            this.AddVelocity = maxVelocity - minVelocity;
+            this.LifeLength = lifeLength;
+            this.GravityEffect = gravityEffect;
+            this.MinSize = minSize;
+            this.MaxSize = maxSize;
+            this.ParticleModel = model;
         }
 
-        public bool DieInAir()
+        public bool DieInAir => ShouldDieInAir;
+
+        public bool DieInLiquid => ShouldDieInLiquid;
+
+        public bool SwimOnLiquid => ShouldSwimOnLiquid;
+
+        public float Quantity => MinQuantity + (float)rand.NextDouble() * AddQuantity;
+
+        protected Vec3d tmpPos = new Vec3d();
+        public virtual Vec3d Pos
         {
-            return ShouldDieInAir;
+            get
+            {
+                tmpPos.Set(
+                    MinPos.X + AddPos.X * rand.NextDouble(),
+                    MinPos.Y + AddPos.Y * rand.NextDouble(),
+                    MinPos.Z + AddPos.Z * rand.NextDouble()
+                );
+
+                return tmpPos;
+            }
         }
 
-        public bool DieInLiquid()
-        {
-            return ShouldDieInLiquid;
-        }
-
-        public bool SwimOnLiquid()
-        {
-            return ShouldSwimOnLiquid;
-        }
-
-        public float GetQuantity()
-        {
-            return minQuantity + (float)rand.NextDouble() * addQuantity;
-        }
-
-        public Vec3d GetPos()
-        {
-            return new Vec3d(
-                minPos.X + addPos.X * rand.NextDouble(),
-                minPos.Y + addPos.Y * rand.NextDouble(),
-                minPos.Z + addPos.Z * rand.NextDouble()
-            );
-        }
-
+        Vec3f tmpVelo = new Vec3f();
 
         public Vec3f GetVelocity(Vec3d pos)
         {
-            return new Vec3f(
-                 minVelocity.X + addVelocity.X * (float)rand.NextDouble(),
-                 minVelocity.Y + addVelocity.Y * (float)rand.NextDouble(),
-                 minVelocity.Z + addVelocity.Z * (float)rand.NextDouble()
+            tmpVelo.Set(
+                 MinVelocity.X + AddVelocity.X * (float)rand.NextDouble(),
+                 MinVelocity.Y + AddVelocity.Y * (float)rand.NextDouble(),
+                 MinVelocity.Z + AddVelocity.Z * (float)rand.NextDouble()
             );
+            return tmpVelo;
         }
 
 
-        public float GetSize()
-        {
-            return minSize + (float)rand.NextDouble() * (maxSize - minSize);
-        }
+        public float Size => MinSize + (float)rand.NextDouble() * (MaxSize - MinSize);
 
         public int GetRgbaColor(ICoreClientAPI capi)
         {
             if (ColorByBlock != null) return ColorByBlock.GetRandomColor(capi, new ItemStack(ColorByBlock));
             if (TintIndex > 0)
             {
-                return capi.ApplyColorTintOnRgba((int)TintIndex, color, (int)minPos.X, (int)minPos.Y, (int)minPos.Z);
+                return capi.ApplyColorTintOnRgba((int)TintIndex, Color, (int)MinPos.X, (int)MinPos.Y, (int)MinPos.Z);
             }
-            return color;
+            return Color;
         }
 
-        public byte GetGlowLevel()
-        {
-            return glowLevel;
-        }
+        
 
-        public float GetGravityEffect()
-        {
-            return gravityEffect;
-        }
+        
+        float IParticlePropertiesProvider.LifeLength => LifeLength + addLifeLength * (float)rand.NextDouble();
 
-        public float GetLifeLength()
-        {
-            return lifeLength + addLifeLength * (float)rand.NextDouble();
-        }
-
-        public EnumParticleModel ParticleModel()
-        {
-            return model;
-        }
+        public EnumParticleModel ParticleModel { get; set; }
 
         public bool UseLighting()
         {
             return true;
         }
 
-        public EvolvingNatFloat GetOpacityEvolve()
-        {
-            return OpacityEvolve;
-        }
+
+        public EvolvingNatFloat[] VelocityEvolve => null;
 
 
-        public virtual EvolvingNatFloat GetRedEvolve()
-        {
-            return RedEvolve;
-        }
+        bool IParticlePropertiesProvider.SelfPropelled => SelfPropelled;
 
-        public virtual EvolvingNatFloat GetGreenEvolve()
-        {
-            return GreenEvolve;
-        }
-
-        public virtual EvolvingNatFloat GetBlueEvolve()
-        {
-            return BlueEvolve;
-        }
-
-        public EvolvingNatFloat GetSizeEvolve()
-        {
-            return SizeEvolve;
-        }
-
-        public EvolvingNatFloat[] GetVelocityEvolve()
-        {
-            return null;
-        }
-
-
-        bool IParticlePropertiesProvider.SelfPropelled()
-        {
-            return SelfPropelled;
-        }
-
-        public bool TerrainCollision() { return WithTerrainCollision; }
-        
+        public bool TerrainCollision => WithTerrainCollision;
 
 
 
         public void ToBytes(BinaryWriter writer)
         {
-            writer.Write(minQuantity);
-            writer.Write(addQuantity);
-            minPos.ToBytes(writer);
-            addPos.ToBytes(writer);
-            minVelocity.Write(writer);
-            addVelocity.Write(writer);
-            writer.Write(lifeLength);
-            writer.Write(gravityEffect);
-            writer.Write(minSize);
-            writer.Write(maxSize);
-            writer.Write(color);
-            writer.Write(glowLevel);
-            writer.Write((int)model);
+            writer.Write(MinQuantity);
+            writer.Write(AddQuantity);
+            MinPos.ToBytes(writer);
+            AddPos.ToBytes(writer);
+            MinVelocity.Write(writer);
+            AddVelocity.Write(writer);
+            writer.Write(LifeLength);
+            writer.Write(GravityEffect);
+            writer.Write(MinSize);
+            writer.Write(MaxSize);
+            writer.Write(Color);
+            writer.Write(VertexFlags);
+            writer.Write((int)ParticleModel);
             writer.Write(ShouldDieInAir);
             writer.Write(ShouldDieInLiquid);
 
@@ -237,19 +192,19 @@ namespace Vintagestory.API.Common
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
         {
-            minQuantity = reader.ReadSingle();
-            addQuantity = reader.ReadSingle();
-            minPos = Vec3d.CreateFromBytes(reader);
-            addPos = Vec3d.CreateFromBytes(reader);
-            minVelocity = Vec3f.CreateFromBytes(reader);
-            addVelocity = Vec3f.CreateFromBytes(reader);
-            lifeLength = reader.ReadSingle();
-            gravityEffect = reader.ReadSingle();
-            minSize = reader.ReadSingle();
-            maxSize = reader.ReadSingle();
-            color = reader.ReadInt32();
-            glowLevel = reader.ReadByte();
-            model = (EnumParticleModel)reader.ReadInt32();
+            MinQuantity = reader.ReadSingle();
+            AddQuantity = reader.ReadSingle();
+            MinPos = Vec3d.CreateFromBytes(reader);
+            AddPos = Vec3d.CreateFromBytes(reader);
+            MinVelocity = Vec3f.CreateFromBytes(reader);
+            AddVelocity = Vec3f.CreateFromBytes(reader);
+            LifeLength = reader.ReadSingle();
+            GravityEffect = reader.ReadSingle();
+            MinSize = reader.ReadSingle();
+            MaxSize = reader.ReadSingle();
+            Color = reader.ReadInt32();
+            VertexFlags = reader.ReadInt32();
+            ParticleModel = (EnumParticleModel)reader.ReadInt32();
             ShouldDieInAir = reader.ReadBoolean();
             ShouldDieInLiquid = reader.ReadBoolean();
 
@@ -290,18 +245,46 @@ namespace Vintagestory.API.Common
             TintIndex = reader.ReadInt16();
         }
 
-        public void BeginParticle() { }
-
-        public IParticlePropertiesProvider[] GetSecondaryParticles() { return null; }
-        public IParticlePropertiesProvider[] GetDeathParticles() { return null; }
-
-        public float GetSecondarySpawnInterval()
-        {
-            return 0.0f;
+        public void BeginParticle() {
+            if (WindAffectednes > 0)
+            {
+                ParentVelocityWeight = WindAffectednes;
+                ParentVelocity = GlobalConstants.CurrentWindSpeedClient;
+            }
         }
 
-        public void PrepareForSecondarySpawn(IParticleInstance particleInstance)
+        public IParticlePropertiesProvider[] SecondaryParticles { get; set; } = null; 
+        public IParticlePropertiesProvider[] DeathParticles { get; set; } = null;
+        public float SecondarySpawnInterval => 0.0f;
+
+        public bool DieOnRainHeightmap { get; set; }
+        public bool WindAffected { get; set; }
+
+        public void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {
         }
+
+        public SimpleParticleProperties Clone(IWorldAccessor worldForResovle)
+        {
+            var cloned = new SimpleParticleProperties();
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (BinaryWriter writer = new BinaryWriter(ms))
+                {
+                    ToBytes(writer);
+                }
+                ms.Position = 0;
+                using (BinaryReader reader = new BinaryReader(ms))
+                {
+                    cloned.FromBytes(reader, worldForResovle);
+                }
+
+            }
+            
+            return cloned;
+        }
+
+        
     }
 }

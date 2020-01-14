@@ -162,6 +162,13 @@ namespace Vintagestory.API.Client
             return outval;
         }
 
+        public Vec4d TransformVector(Vec4d vec)
+        {
+            Vec4d outval = new Vec4d();
+            Mat4f.MulWithVec4(Values, vec, outval);
+            return outval;
+        }
+
 
         public Matrixf Mul(float[] matrix)
         {
@@ -181,6 +188,25 @@ namespace Vintagestory.API.Client
             Values[13] = 0;
             Values[14] = 0;
             return this;
+        }
+
+        public Matrixf Invert()
+        {
+            Mat4f.Invert(Values, Values);
+            return this;
+        }
+
+        public Matrixf Clone()
+        {
+            return new Matrixf()
+            {
+                Values = (float[])Values.Clone()
+            };
+        }
+
+        public void Translate(double v1, object p, double v2)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         Merge = 2,
 
+        MergeIce = 7,
+
         /// <summary>
         /// Culls all faces that are adjacent to opaque faces and the bottom, east or south faces adjacent to blocks of the same id
         /// This causes to still leave one single face inbetween instead of 2, eliminating any z-fighting.

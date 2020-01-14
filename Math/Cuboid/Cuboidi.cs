@@ -467,15 +467,15 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool Intersects(Cuboidi with)
         {
-            return with.MaxX > this.MinX && with.MinX < this.MaxX ? (with.MaxY > this.MinY && with.MinY < this.MaxY ? with.MaxZ > this.MinZ && with.MinZ < this.Z2 : false) : false;
+            return with.MaxX > this.MinX && with.MinX < this.MaxX ? (with.MaxY > this.MinY && with.MinY < this.MaxY ? with.MaxZ > this.MinZ && with.MinZ < this.MaxZ : false) : false;
         }
 
         /// <summary>
-        /// If the given cuboid intersects with this cubiod
+        /// If the given cuboid intersects  with or is adjacent to this cubiod
         /// </summary>
         public bool IntersectsOrTouches(Cuboidi with)
         {
-            return with.MaxX >= this.MinX && with.MinX <= this.MaxX ? (with.MaxY >= this.MinY && with.MinY <= this.MaxY ? with.MaxZ >= this.MinZ && with.MinZ <= this.Z2 : false) : false;
+            return with.MaxX >= this.MinX && with.MinX <= this.MaxX ? (with.MaxY >= this.MinY && with.MinY <= this.MaxY ? with.MaxZ >= this.MinZ && with.MinZ <= this.MaxZ : false) : false;
         }
 
 
@@ -500,7 +500,9 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         internal bool IsAdjacent(Cuboidi cuboidi)
         {
-            return !Intersects(cuboidi) && IntersectsOrTouches(cuboidi);
+            bool intersect = Intersects(cuboidi);
+            bool intersectOrTouch = IntersectsOrTouches(cuboidi);
+            return !intersect && intersectOrTouch;
         }
 
 

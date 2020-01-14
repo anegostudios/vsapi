@@ -82,8 +82,11 @@ namespace Vintagestory.API.Client
             base.RenderInteractiveElements(deltaTime);
         }
 
+        bool focusLostSinceKeyDown = false;
+
         public override void OnFocusLost()
         {
+            focusLostSinceKeyDown = true;
             base.OnFocusLost();
         }
 
@@ -94,11 +97,13 @@ namespace Vintagestory.API.Client
 
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
-            if (DeleteOnRefocusBackSpace && args.KeyCode == (int)GlKeys.BackSpace)
+            if (DeleteOnRefocusBackSpace && args.KeyCode == (int)GlKeys.BackSpace && focusLostSinceKeyDown)
             {
                 SetValue("");
                 return;
             }
+
+            focusLostSinceKeyDown = false;
 
             base.OnKeyDown(api, args);
         }

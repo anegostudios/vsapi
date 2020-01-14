@@ -104,6 +104,9 @@
     <Compile Include="Client\Input\KeyCombination.cs" />
     <Compile Include="Client\Input\KeyEvent.cs" />
     <Compile Include="Client\Input\MouseEvent.cs" />
+    <Compile Include="Client\Model\Mesh\CustomMeshDataPartShort.cs" />
+    <Compile Include="Client\Model\Tesselation\TileSide.cs" />
+    <Compile Include="Client\ParticlePhysics.cs" />
     <Compile Include="Client\Render\EnumFrameBuffer.cs" />
     <Compile Include="Client\Render\IAviWriter.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementContainer.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Common\API\ILandClaimAPI.cs" />
     <Compile Include="Common\Collectible\Block\BlockEntityBehavior.cs" />
     <Compile Include="Common\Collectible\FertilizerProps.cs" />
+    <Compile Include="Common\Collectible\HeldSounds.cs" />
     <Compile Include="Common\Collectible\TransitionableProperties.cs" />
     <Compile Include="Common\Crafting\BarrelRecipe.cs" />
     <Compile Include="Common\Crafting\RecipeRegistry.cs" />
@@ -240,6 +244,8 @@
     <Compile Include="Common\API\IEventAPI.cs" />
     <Compile Include="Common\API\IMapChunk.cs" />
     <Compile Include="Common\TyronThreadPool.cs" />
+    <Compile Include="Datastructures\FastList.cs" />
+    <Compile Include="Math\Matrix\Quaternionf.cs" />
     <Compile Include="Server\API\IPlayerDataManager.cs" />
     <Compile Include="Util\IgnoreUtil.cs" />
     <Compile Include="Util\JsonUtil.cs" />
@@ -343,7 +349,7 @@
     <Compile Include="Datastructures\AttributeTree\TreeArrayAttribute.cs" />
     <Compile Include="Datastructures\ListDictionary.cs" />
     <Compile Include="Common\Particle\ExplosionParticles.cs" />
-    <Compile Include="Common\Particle\IParticleInstance.cs" />
+    <Compile Include="Common\Particle\ParticleBase.cs" />
     <Compile Include="Common\Worldproperty\MetalProperty.cs" />
     <Compile Include="Common\Worldproperty\MetalPropertyVariant.cs" />
     <Compile Include="Datastructures\AttributeTree\ByteArrayAttribute.cs" />
@@ -415,7 +421,7 @@
     <Compile Include="Client\Texture\ITextureSource.cs" />
     <Compile Include="Server\Worldgen\IWorldGenBlockAccessor.cs" />
     <Compile Include="Math\Cuboid\Cuboidi.cs" />
-    <Compile Include="Math\FastRandom.cs" />
+    <Compile Include="Math\LCGRandom.cs" />
     <Compile Include="Common\Collectible\Collectible.cs" />
     <Compile Include="Common\Model\Animation\AnimatorBase.cs" />
     <Compile Include="Common\Entity\EntityBehavior.cs" />

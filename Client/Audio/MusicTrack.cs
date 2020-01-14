@@ -48,6 +48,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public string Name { get { return Location.ToShortString(); } }
 
+
         /// <summary>
         /// The music seed for random values.
         /// </summary>
@@ -164,6 +165,19 @@ namespace Vintagestory.API.Client
             if (Sound != null)
             {
                 Sound.SetVolume();
+            }
+        }
+
+        public void FastForward(float seconds)
+        {
+            Sound.PlaybackPosition += seconds;
+        }
+
+        public string PositionString
+        {
+            get
+            {
+                return string.Format("{0}/{1}", Sound.PlaybackPosition, Sound.SoundLengthSeconds);
             }
         }
     }

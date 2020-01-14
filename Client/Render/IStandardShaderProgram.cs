@@ -113,7 +113,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The position of the player.
         /// </summary>
-        Vec3f Playerpos { set; }
+        //Vec3f Playerpos { set; }
+
 
         int DontWarpVertices { set; }
 

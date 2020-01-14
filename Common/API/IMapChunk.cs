@@ -54,7 +54,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         int[] TopRockIdMap { get; }
 
-        ushort[] SeedimentaryThicknessMap { get; }
+        ushort[] SedimentaryThicknessMap { get; }
 
 
         /// <summary>

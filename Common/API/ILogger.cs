@@ -8,6 +8,11 @@ namespace Vintagestory.API.Common
     public interface ILogger
     {
         /// <summary>
+        /// If true, will also print to Diagnostics.Debug
+        /// </summary>
+        bool TraceLog { get; set; }
+
+        /// <summary>
         /// Fired every time a log entry has been added
         /// </summary>
         event LogEntryDelegate EntryAdded;

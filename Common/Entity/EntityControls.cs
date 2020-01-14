@@ -145,6 +145,8 @@ namespace Vintagestory.API.Common
 
         public int UsingCount;
         public long UsingBeginMS;
+        public ModelTransform LeftUsingHeldItemTransformBefore;
+
         public ModelTransform UsingHeldItemTransformBefore;
         public ModelTransform UsingHeldItemTransformAfter;
 

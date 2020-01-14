@@ -38,13 +38,16 @@ namespace Vintagestory.API.Client
         /// Earliest to play the track.
         /// </summary>
         [JsonProperty]
-        public float? MinHour = 0;
+        public float MinHour = 0;
 
         /// <summary>
         /// Latest to play the track.
         /// </summary>
         [JsonProperty]
-        public float? MaxHour = 1;
+        public float MaxHour = 24;
+
+        [JsonProperty]
+        public float Chance = 1;
 
         /// <summary>
         /// Is it loading?
@@ -104,6 +107,9 @@ namespace Vintagestory.API.Client
             new float[] { 15 * 60, 15 * 60 },
         };
 
+        // Updated by BehaviorTemporalStabilityAffected
+        public static bool ShouldPlayMusic = true;
+
         /// <summary>
         /// Is this track initialized?
         /// </summary>
@@ -112,18 +118,21 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Global cooldown until next track
         /// </summary>
-        static long globalCooldownUntilMs;
+        public static long globalCooldownUntilMs;
 
         /// <summary>
         /// Cooldown for each track by name.
         /// </summary>
-        static Dictionary<string, long> tracksCooldownUntilMs = new Dictionary<string, long>();
+        public static Dictionary<string, long> tracksCooldownUntilMs = new Dictionary<string, long>();
 
         /// <summary>
         /// Core client API.
         /// </summary>
         ICoreClientAPI capi;
         IMusicEngine musicEngine;
+
+        float nowMinHour;
+        float nowMaxHour;
 
         /// <summary>
         /// Static initializer.
@@ -145,6 +154,8 @@ namespace Vintagestory.API.Client
             get { return capi.Settings.Int["musicFrequency"]; }
         }
 
+        
+
         /// <summary>
         /// Initialize the track.
         /// </summary>
@@ -156,6 +167,8 @@ namespace Vintagestory.API.Client
             this.capi = capi;
             this.musicEngine = musicEngine;
 
+            selectMinMaxHour();
+
             Location.Path = "music/" + Location.Path.ToLowerInvariant() + ".ogg";
 
             if (!initialized)
@@ -164,11 +177,20 @@ namespace Vintagestory.API.Client
 
                 capi.Settings.Int.AddWatcher("musicFrequency", (newval) => { FrequencyChanged(newval, capi); });
 
-
                 initialized = true;
 
                 prevFrequency = MusicFrequency;
-            }   
+            }
+        }
+
+        private void selectMinMaxHour()
+        {
+            Random rnd = capi.World.Rand;
+
+            float hourRange = Math.Min(2, MaxHour - MinHour);
+            
+            nowMinHour = Math.Max(MinHour, Math.Min(MaxHour - 1, MinHour - 1 + (float)(rnd.NextDouble() * (hourRange+1))));
+            nowMaxHour = Math.Min(MaxHour, nowMinHour + hourRange);
         }
 
         /// <summary>
@@ -197,9 +219,9 @@ namespace Vintagestory.API.Client
         /// <returns>Should we play the current track?</returns>
         public bool ShouldPlay(TrackedPlayerProperties props)
         {
-            if (IsActive) return false;
+            if (IsActive || !ShouldPlayMusic) return false;
             if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return false;
-            if (Playstyle != "*" && props.Playstyle != Playstyle) return false;
+            if (Playstyle != "*" && props.Playstyle != Playstyle.ToLowerInvariant()) return false;
             if (props.sunSlight < MinSunlight) return false;
             if (musicEngine.LastPlayedTrack == this) return false;
 
@@ -207,13 +229,13 @@ namespace Vintagestory.API.Client
             tracksCooldownUntilMs.TryGetValue(Name, out trackCoolDownMs);
             if (capi.World.ElapsedMilliseconds < trackCoolDownMs)
             {
-                //world.Logger.Debug("{0}: On track cooldown ({1}s)", Name, (trackCoolDownMs - world.ElapsedMilliseconds) / 1000);
+                //capi.Logger.Debug("{0}: On track cooldown ({1}s)", Name, (trackCoolDownMs - capi.World.ElapsedMilliseconds) / 1000);
 
                 return false;
             }
 
             float hour = capi.World.Calendar.HourOfDay / 24f * capi.World.Calendar.HoursPerDay;
-            if (hour < MinHour || hour > MaxHour)
+            if (hour < nowMinHour || hour > nowMaxHour)
             {
                 //world.Logger.Debug("{0}: {1} not inside [{2},{3}]", Name, hour, MinHour, MaxHour);
                 return false;
@@ -231,6 +253,8 @@ namespace Vintagestory.API.Client
         public void BeginPlay(TrackedPlayerProperties props)
         {
             loading = true;
+            Sound?.Dispose();
+
             musicEngine.LoadTrack(Location, (sound) => {
                 if (sound != null)
                 {
@@ -258,6 +282,11 @@ namespace Vintagestory.API.Client
                 Sound = null;
                 SetCooldown(1f);
                 return false;
+            }
+
+            if (!ShouldPlayMusic)
+            {
+                FadeOut(3);
             }
 
             return true;
@@ -296,8 +325,9 @@ namespace Vintagestory.API.Client
         public void SetCooldown(float multiplier)
         {
             globalCooldownUntilMs = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (AnySongCoolDowns[MusicFrequency][0] + rand.NextDouble() * AnySongCoolDowns[MusicFrequency][1])) * multiplier);
-
             tracksCooldownUntilMs[Name] = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (SameSongCoolDowns[MusicFrequency][0] + rand.NextDouble() * SameSongCoolDowns[MusicFrequency][1])) * multiplier);
+
+            selectMinMaxHour();
         }
 
         /// <summary>
@@ -308,6 +338,24 @@ namespace Vintagestory.API.Client
             if (Sound != null)
             {
                 Sound.SetVolume();
+            }
+        }
+
+        public void FastForward(float seconds)
+        {
+            if (Sound.PlaybackPosition + seconds > Sound.SoundLengthSeconds)
+            {
+                Sound.Stop();
+            }
+
+            Sound.PlaybackPosition += seconds;
+        }
+
+        public string PositionString
+        {
+            get
+            {
+                return string.Format("{0}/{1}", (int)Sound.PlaybackPosition, (int)Sound.SoundLengthSeconds);
             }
         }
     }

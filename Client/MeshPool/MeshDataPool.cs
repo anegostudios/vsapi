@@ -101,7 +101,7 @@ namespace Vintagestory.API.Client
         /// <param name="customBytes">The custom bytes of the pool.</param>
         /// <param name="customInts">The custom ints of the pool.</param>
         /// <returns>The resulting mesh data pool.</returns>
-        public static MeshDataPool AllocateNewPool(ICoreClientAPI capi, int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
+        public static MeshDataPool AllocateNewPool(ICoreClientAPI capi, int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartShort customShorts = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
         {
             MeshDataPool pool = new MeshDataPool(verticesPoolSize, indicesPoolSize, maxPartsPerPool);
 
@@ -123,6 +123,10 @@ namespace Vintagestory.API.Client
             {
                 customFloats.SetAllocationSize(verticesPoolSize * customFloats.InterleaveStride / 4);
             }
+            if (customShorts != null)
+            {
+                customShorts.SetAllocationSize(verticesPoolSize * customShorts.InterleaveStride / 2);
+            }
             if (customBytes != null)
             {
                 customBytes.SetAllocationSize(verticesPoolSize * customBytes.InterleaveStride); 
@@ -134,13 +138,14 @@ namespace Vintagestory.API.Client
 
             pool.modelRef = capi.Render.AllocateEmptyMesh(
                 MeshData.XyzSize * verticesPoolSize,
-                0, // MeshData.NormalSize * MaxVertexSize, - normals currently not in use
+                0,
                 MeshData.UvSize * verticesPoolSize,
                 MeshData.RgbaSize * verticesPoolSize,
                 MeshData.RgbaSize * verticesPoolSize,
                 MeshData.FlagsSize * verticesPoolSize,
                 MeshData.IndexSize * indicesPoolSize,
                 customFloats,
+                customShorts,
                 customBytes,
                 customInts,
                 EnumDrawMode.Triangles,
@@ -345,7 +350,7 @@ namespace Vintagestory.API.Client
         public void FrustumCull(FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
             indicesGroupsCount = 0;
-            int tmp = 0;
+            //int tmp = 0;
             int multiplier = (IntPtr.Size == 8) ? 2 : 1;
 
             RenderedTriangles = 0;
@@ -365,7 +370,7 @@ namespace Vintagestory.API.Client
                     indicesGroupsCount++;
                 }
 
-                tmp += location.indicesEnd - location.indicesStart;
+                //tmp += location.indicesEnd - location.indicesStart;
 
                 AllocatedTris += (location.indicesEnd - location.indicesStart) / 3;
             }
@@ -469,6 +474,8 @@ namespace Vintagestory.API.Client
 
         public BoolRef[] CullVisible = new BoolRef[] { new BoolRef() { value = true }, new BoolRef() { value = true } };
 
+        public int LodLevel = 0;
+
         /// <summary>
         /// Used for models with movements (like a door).
         /// </summary>
@@ -476,33 +483,47 @@ namespace Vintagestory.API.Client
 
         private bool UpdateVisibleFlag(bool inFrustum)
         {
-            if (FrustumVisible && !inFrustum)
+            /*if (FrustumVisible && !inFrustum)
             {
-                TransitionCounter--;
-                if (TransitionCounter <= 0) FrustumVisible = false;
+                //TransitionCounter--;
+                //if (TransitionCounter <= 0)  - causes lod 0 and lod 1 to render at the same time, making water brighter. Maybe no longer needed due to double precision frustum culling now?
+                FrustumVisible = false;
             }
 
             if (!FrustumVisible && inFrustum)
             {
-                TransitionCounter = 10;
+                TransitionCounter=10;
                 FrustumVisible = true;
-            }
+            }*/
+
+            FrustumVisible = inFrustum;
 
             return FrustumVisible;
         }
 
-        internal bool IsVisible(EnumFrustumCullMode mode, FrustumCulling frustumCuller)
+
+        internal bool IsVisible(EnumFrustumCullMode mode, FrustumCulling culler)
         {
-            return
-                (
-                (mode == EnumFrustumCullMode.CullNormal && UpdateVisibleFlag(frustumCuller.SphereInFrustumAndRange(frustumCullSphere))) ||
-                (mode == EnumFrustumCullMode.CullInstant && frustumCuller.SphereInFrustum(frustumCullSphere)) ||
-                mode == EnumFrustumCullMode.NoCull
-                ) && CullVisible[visibleBufIndex].value
-            ;
+            switch (mode)
+            {
+                case EnumFrustumCullMode.CullInstant:
+                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustum(frustumCullSphere);
+
+                case EnumFrustumCullMode.CullInstantShadowPass:
+                    return CullVisible[visibleBufIndex].value && (culler.SphereInFrustumShadowPass(frustumCullSphere) || LodLevel == 1);
+
+                case EnumFrustumCullMode.CullNormal:
+                    return CullVisible[visibleBufIndex].value && UpdateVisibleFlag(culler.SphereInFrustumAndRange(frustumCullSphere, FrustumVisible, LodLevel));
+
+                default:
+                    return true;
+            }
+
         }
     }
 
+
+    public delegate bool VisibleTestDelegate(FrustumCulling culler);
 
     
 }

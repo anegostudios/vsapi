@@ -67,6 +67,11 @@ namespace Vintagestory.API.Client
         public CustomMeshDataPartInt CustomInts = null;
 
         /// <summary>
+        /// Custom shorts buffer. Can be used to upload arbitrary amounts of short values onto the graphics card
+        /// </summary>
+        public CustomMeshDataPartShort CustomShorts = null;
+
+        /// <summary>
         /// Custom bytes buffer. Can be used to upload arbitrary amounts of byte values onto the graphics card
         /// </summary>
         public CustomMeshDataPartByte CustomBytes;
@@ -193,6 +198,10 @@ namespace Vintagestory.API.Client
         /// Amount of assigned xyz face values
         /// </summary>
         public int XyzFacesCount;
+
+
+        public int IndicesPerFace = 6;
+        public int VerticesPerFace = 4;
 
         /// <summary>
         /// BlockShapeTesselator tints. Required by TerrainChunkTesselator to determine whether to color a vertex or not. Should hold VerticesCount / 4 values.
@@ -487,6 +496,7 @@ namespace Vintagestory.API.Client
         {
             float[] pos = new float[] { 0, 0, 0, 1 };
             float[] normal = new float[4];
+            float[] outpos = new float[4];
 
             for (int i = 0; i < VerticesCount; i++)
             {
@@ -494,13 +504,17 @@ namespace Vintagestory.API.Client
                 pos[1] = xyz[i * 3 + 1];
                 pos[2] = xyz[i * 3 + 2];
 
-                pos = Mat4f.MulWithVec4(matrix, pos);
+                outpos[0] = outpos[1] = outpos[2] = 0;
+                Mat4f.MulWithVec4(matrix, pos, outpos);
 
-                xyz[i * 3] = pos[0];
-                xyz[i * 3 + 1] = pos[1];
-                xyz[i * 3 + 2] = pos[2];
+                xyz[i * 3] = outpos[0];
+                xyz[i * 3 + 1] = outpos[1];
+                xyz[i * 3 + 2] = outpos[2];
+            }
 
-                if (Normals != null)
+            if (Normals != null)
+            {
+                for (int i = 0; i < VerticesCount; i++)
                 {
                     NormalUtil.FromPackedNormal(Normals[i], ref normal);
                     normal = Mat4f.MulWithVec4(matrix, normal);
@@ -520,9 +534,11 @@ namespace Vintagestory.API.Client
                     normalf[0] = normalfv.X;
                     normalf[1] = normalfv.Y;
                     normalf[2] = normalfv.Z;
-                    normalf = Mat4f.MulWithVec4(matrix, normalf);
 
-                    XyzFaces[i] = BlockFacing.FromVector(normalf[0], normalf[1], normalf[2]).Index;
+                    outpos[0] = outpos[1] = outpos[2] = 0;
+                    Mat4f.MulWithVec4(matrix, normalf, outpos);
+
+                    XyzFaces[i] = BlockFacing.FromVector(outpos[0], outpos[1], outpos[2]).Index;
                 }
             }
 
@@ -531,12 +547,14 @@ namespace Vintagestory.API.Client
                 for (int i = 0; i < Flags.Length; i++)
                 {
                     VertexFlags.PackedIntToNormal(Flags[i] >> 15, normal);
-                    normal[3] = 0;
-                    normal = Mat4f.MulWithVec4(matrix, normal);
+                    normal[3] = 0; // This is a direction, not a position
 
-                    float len = GameMath.Sqrt(normal[0] * normal[0] + normal[1] * normal[1] + normal[2] * normal[2]);
+                    outpos[0] = outpos[1] = outpos[2] = 0;
+                    Mat4f.MulWithVec4(matrix, normal, outpos);
 
-                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(normal[0] / len, normal[1] / len, normal[2] / len) << 15);
+                    float len = GameMath.Sqrt(outpos[0] * outpos[0] + outpos[1] * outpos[1] + outpos[2] * outpos[2]);
+
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(outpos[0] / len, outpos[1] / len, outpos[2] / len) << 15);
                 }
             }
 
@@ -550,7 +568,8 @@ namespace Vintagestory.API.Client
         /// <param name="matrix"></param>
         public MeshData MatrixTransform(double[] matrix)
         {
-            double[] pos = new double[] { 0, 0, 0, 1 }; // why the 1? me no understand D:
+            // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
+            double[] pos = new double[] { 0, 0, 0, 1 };
             double[] inVec = new double[] { 0, 0, 0, 0 };
             double[] outVec;
 
@@ -783,6 +802,16 @@ namespace Vintagestory.API.Client
                         }
                     }
 
+                    if (CustomShorts != null && data.CustomShorts != null)
+                    {
+                        int valsPerVertex = data.CustomShorts.InterleaveStride == 0 ? data.CustomShorts.InterleaveSizes[0] : data.CustomShorts.InterleaveStride;
+
+                        for (int j = 0; j < valsPerVertex; j++)
+                        {
+                            CustomShorts.Add(data.CustomShorts.Values[vertexNum / valsPerVertex + j]);
+                        }
+                    }
+
                     if (CustomBytes != null && data.CustomBytes != null)
                     {
                         int valsPerVertex = data.CustomBytes.InterleaveStride == 0 ? data.CustomBytes.InterleaveSizes[0] : data.CustomBytes.InterleaveStride;
@@ -899,6 +928,15 @@ namespace Vintagestory.API.Client
                 }
             }
 
+            if (CustomShorts != null && sourceMesh.CustomShorts != null)
+            {
+                for (int i = 0; i < sourceMesh.CustomShorts.Count; i++)
+                {
+                    CustomShorts.Add(sourceMesh.CustomShorts.Values[i]);
+                }
+            }
+
+
             if (CustomBytes != null && sourceMesh.CustomBytes != null)
             {
                 for (int i = 0; i < sourceMesh.CustomBytes.Count; i++)
@@ -970,6 +1008,14 @@ namespace Vintagestory.API.Client
                     for (int j = 0; j < data.CustomFloats.Count; j++)
                     {
                         CustomFloats.Add(data.CustomFloats.Values[j]);
+                    }
+                }
+
+                if (CustomShorts != null && data.CustomShorts != null)
+                {
+                    for (int j = 0; j < data.CustomShorts.Count; j++)
+                    {
+                        CustomShorts.Add(data.CustomShorts.Values[j]);
                     }
                 }
 
@@ -1468,6 +1514,70 @@ namespace Vintagestory.API.Client
             VerticesMax = VerticesMax * 2;
         }
 
+
+        /// <summary>
+        /// Resizes all buffers to tightly fit the data. Recommended to run this method for long-term in-memory storage of meshdata for meshes that won't get any new vertices added
+        /// </summary>
+        public void CompactBuffers()
+        {
+            if (xyz != null)
+            {
+                int cnt = XyzCount;
+                float[] tightXyz = new float[cnt + 1];
+                for (int i = 0; i < cnt; i++)
+                {
+                    tightXyz[i] = xyz[i];
+                }
+                xyz = tightXyz;
+            }
+
+            if (Uv != null)
+            {
+                int cnt = UvCount;
+                float[] tightUv = new float[cnt + 1];
+                for (int i = 0; i < cnt; i++)
+                {
+                    tightUv[i] = Uv[i];
+                }
+                Uv = tightUv;
+            }
+
+            if (Rgba != null)
+            {
+                int cnt = RgbaCount;
+                byte[] tightRgba = new byte[cnt + 1];
+                for (int i = 0; i < cnt; i++)
+                {
+                    tightRgba[i] = Rgba[i];
+                }
+                Rgba = tightRgba;
+            }
+
+            if (Rgba2 != null)
+            {
+                int cnt = Rgba2Count;
+                byte[] tightRgba2 = new byte[cnt + 1];
+                for (int i = 0; i < cnt; i++)
+                {
+                    tightRgba2[i] = Rgba2[i];
+                }
+                Rgba2 = tightRgba2;
+            }
+
+            if (Flags != null)
+            {
+                int cnt = FlagsCount;
+                int[] tightFlags = new int[cnt + 1];
+                for (int i = 0; i < cnt; i++)
+                {
+                    tightFlags[i] = Flags[i];
+                }
+                Flags = tightFlags;
+            }
+
+            VerticesMax = VerticesCount;
+        }
+
         /// <summary>
         /// Creates a deep copy of the mesh
         /// </summary>
@@ -1576,6 +1686,11 @@ namespace Vintagestory.API.Client
                     dest.CustomFloats = CustomFloats.Clone();
                 }
 
+                if (CustomShorts != null)
+                {
+                    dest.CustomShorts = CustomShorts.Clone();
+                }
+
                 if (CustomBytes != null)
                 {
                     dest.CustomBytes = CustomBytes.Clone();
@@ -1606,6 +1721,7 @@ namespace Vintagestory.API.Client
             NormalsCount = 0;
             if (CustomBytes != null) CustomBytes.Count = 0;
             if (CustomFloats != null) CustomFloats.Count = 0;
+            if (CustomShorts != null) CustomShorts.Count = 0;
             if (CustomInts != null) CustomInts.Count = 0;
             return this;
         }

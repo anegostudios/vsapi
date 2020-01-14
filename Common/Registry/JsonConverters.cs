@@ -39,8 +39,7 @@ namespace Vintagestory.API.Common
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            // This causes: Newtonsoft.Json.JsonSerializationException: 'Unexpected token while deserializing object: EndObject. 
-            // wtf?
+            // This causes: Newtonsoft.Json.JsonSerializationException: 'Unexpected token while deserializing object: EndObject.' wtf?
             //if (reader.Value == null) return new JsonObject(null);
 
             JToken token = JToken.ReadFrom(reader);

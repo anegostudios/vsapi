@@ -12,6 +12,7 @@ namespace Vintagestory.API.Common
         public AssetLocation Place = null;
         public AssetLocation Hit = null;
         public AssetLocation Ambient = null;
+        public float AmbientBlockCount = 10f;
 
         /// <summary>
         /// Gets the sound that occurs when a specific tool hits a block.
@@ -31,7 +32,8 @@ namespace Vintagestory.API.Common
                 Break = Break == null ? null : Break.Clone(),
                 Place = Place == null ? null : Place.Clone(),
                 Hit = Hit == null ? null : Hit.Clone(),
-                Ambient = Ambient == null ? null : Ambient.Clone()
+                Ambient = Ambient == null ? null : Ambient.Clone(),
+                AmbientBlockCount = AmbientBlockCount
             };
 
             foreach (var val in ByTool)

@@ -57,7 +57,7 @@ namespace Vintagestory.API.Common
                 Block block = resolver.GetBlock(Code);
                 if (block == null)
                 {
-                    resolver.Logger.Warning("Failed resolving block blockdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
+                    resolver.Logger.Warning("Failed resolving a blocks blockdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
                     return false;
                 }
 
@@ -69,7 +69,7 @@ namespace Vintagestory.API.Common
                 Item item = resolver.GetItem(Code);
                 if (item == null)
                 {
-                    resolver.Logger.Warning("Failed resolving block itemdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
+                    resolver.Logger.Warning("Failed resolving a blocks itemdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
                     return false;
                 }
                 ResolvedItemstack = new ItemStack(item, StackSize);

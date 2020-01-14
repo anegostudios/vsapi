@@ -22,6 +22,13 @@ namespace Vintagestory.API.Util
         }
 
 
+        public static bool ToBool(this string text, bool defaultValue = false)
+        {
+            string val = text?.ToLowerInvariant();
+            if (val == "true" || val == "yes" || val == "1") return true;
+            if (val == "false" || val == "no" || val == "0") return false;
+            return defaultValue;
+        }
         public static int ToInt(this string text, int defaultValue = 0)
         {
             int value;
@@ -65,6 +72,19 @@ namespace Vintagestory.API.Util
 
 
         public static bool FastStartsWith(string value, string reference)
+        {
+            if (reference.Length > value.Length) return false;
+
+            for (int i = 0; i < reference.Length; i++)
+            {
+                if (value[i] != reference[i]) return false;
+            }
+
+            return true;
+        }
+
+
+        public static bool StartsWithFast(this string value, string reference)
         {
             if (reference.Length > value.Length) return false;
 

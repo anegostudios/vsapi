@@ -20,31 +20,42 @@ namespace Vintagestory.API.Common
         /// </summary>
         void BeginParticle();
 
+        float ParentVelocityWeight { get; }
+
         /// <summary>
         /// Whether the particle should despawn when in contact with liquids
         /// </summary>
         /// <returns></returns>
-        bool DieInLiquid();
+        bool DieInLiquid { get; }
 
-        bool SwimOnLiquid();
+        bool SwimOnLiquid { get; }
+
+        bool Bouncy { get; }
 
         /// <summary>
         /// Whether the particle should despawn when in contact with air (e.g. for water bubbles)
         /// </summary>
         /// <returns></returns>
-        bool DieInAir();
+        bool DieInAir { get; }
+
+        /// <summary>
+        /// If true, particle dies if it falls below the rain height at its given location
+        /// </summary>
+        bool DieOnRainHeightmap { get; }
 
         /// <summary>
         /// How many particles should spawn? For every particle spawned, all of belows methods are called once. E.g. if quantity is 10, GetPos(), GetVelocity(),... is called 10 times. 
         /// </summary>
         /// <returns></returns>
-        float GetQuantity();
+        float Quantity { get; }
+
+        
 
         /// <summary>
         /// Position in the world where the particle should spawn
         /// </summary>
         /// <returns></returns>
-        Vec3d GetPos();
+        Vec3d Pos { get; }
 
         /// <summary>
         /// In what direction should the particle fly/fall
@@ -52,6 +63,9 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <returns></returns>
         Vec3f GetVelocity(Vec3d pos);
+
+        Vec3f ParentVelocity { get; }
+
 
         /// <summary>
         /// The particles Rgba Color
@@ -63,25 +77,25 @@ namespace Vintagestory.API.Common
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
         /// <returns></returns>
-        EvolvingNatFloat GetOpacityEvolve();
+        EvolvingNatFloat OpacityEvolve { get; }
 
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
         /// <returns></returns>
-        EvolvingNatFloat GetRedEvolve();
+        EvolvingNatFloat RedEvolve { get; }
 
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
         /// <returns></returns>
-        EvolvingNatFloat GetGreenEvolve();
+        EvolvingNatFloat GreenEvolve { get; }
 
         /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
         /// <returns></returns>
-        EvolvingNatFloat GetBlueEvolve();
+        EvolvingNatFloat BlueEvolve { get; }
 
 
 
@@ -89,56 +103,56 @@ namespace Vintagestory.API.Common
         /// Cube or Quad?
         /// </summary>
         /// <returns></returns>
-        EnumParticleModel ParticleModel();
+        EnumParticleModel ParticleModel { get; }
 
         /// <summary>
         /// Size of the particle
         /// </summary>
         /// <returns></returns>
-        float GetSize();
+        float Size { get; }
 
         /// <summary>
         /// Size change over time
         /// </summary>
         /// <returns></returns>
-        EvolvingNatFloat GetSizeEvolve();
+        EvolvingNatFloat SizeEvolve { get; }
 
         /// <summary>
         /// Velocity change over time (acts as a multiplier to the velocity)
         /// </summary>
         /// <returns></returns>
-        EvolvingNatFloat[] GetVelocityEvolve();
+        EvolvingNatFloat[] VelocityEvolve { get; }
 
         /// <summary>
         /// How strongly the particle is affected by gravity (0 = no gravity applied)
         /// </summary>
         /// <returns></returns>
-        float GetGravityEffect();
+        float GravityEffect { get; }
 
         /// <summary>
         /// How long the particle should live (default = 1)
         /// </summary>
         /// <returns></returns>
-        float GetLifeLength();
+        float LifeLength { get; }
 
         /// <summary>
-        /// Value between 0 and 16 to determine glowiness of the particle
+        /// Value between 0 and 255 to determine glowiness of the particle
         /// </summary>
         /// <returns></returns>
-        byte GetGlowLevel();
+        int VertexFlags { get; }
 
         /// <summary>
         /// If true, a particle will restore it's initial velocity once it's obstruction has been cleared
         /// e.g. Smokes will start flying upwards again if is currently stuck under a block and the block is removed
         /// </summary>
         /// <returns></returns>
-        bool SelfPropelled();
+        bool SelfPropelled { get; }
 
         /// <summary>
         /// If true, the particle will collide with the terrain
         /// </summary>
         /// <returns></returns>
-        bool TerrainCollision();
+        bool TerrainCollision { get; }
 
         /// <summary>
         /// For sending over the network
@@ -151,31 +165,33 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="reader"></param>
         void FromBytes(BinaryReader reader, IWorldAccessor resolver);
-        
+
         /// <summary>
         /// Determines the interval of time that must elapse during it's parent particle's lifetime before this one will spawn.
         /// This is only honored if this particle is defined as a secondary particle.
         /// </summary>
         /// <returns></returns>
-        float GetSecondarySpawnInterval();
+        float SecondarySpawnInterval { get; }
 
         /// <summary>
         /// The secondary particle properties. Secondary particles are particles that are emitted from an in-flight particle.
         /// </summary>
         /// <returns></returns>
-        IParticlePropertiesProvider[] GetSecondaryParticles();
+        IParticlePropertiesProvider[] SecondaryParticles { get; }
 
         /// <summary>
         /// The particle to spawn upon the particle death.
         /// </summary>
         /// <returns></returns>
-        IParticlePropertiesProvider[] GetDeathParticles();
+        IParticlePropertiesProvider[] DeathParticles { get; }
 
         /// <summary>
         /// Updates instance related state for secondary particles based on the given parent particle instance
         /// </summary>
         /// <param name="particleInstance">The parent IParticleInstance from which this secondary particle is being spawned</param>
-        void PrepareForSecondarySpawn(IParticleInstance particleInstance);
+        void PrepareForSecondarySpawn(ParticleBase particleInstance);
         
+
+        bool RandomVelocityChange { get; }
     }
 }

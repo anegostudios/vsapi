@@ -24,6 +24,7 @@ namespace Vintagestory.API.Client
         /// The priority of the track.
         /// </summary>
         float Priority { get; }
+        
 
         /// <summary>
         /// Initialization of the Music Track.
@@ -65,5 +66,7 @@ namespace Vintagestory.API.Client
         /// <param name="seconds"></param>
         /// <param name="onFadedOut"></param>
         void FadeOut(float seconds, Common.Action onFadedOut = null);
+        void FastForward(float seconds);
+        string PositionString { get; }
     }
 }

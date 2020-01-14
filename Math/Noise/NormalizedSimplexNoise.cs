@@ -3,7 +3,7 @@
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
-    /// It's generally pretty hard to get a neatly normalized perlin noise function due to the way perlin works (gauss curve) and how random numbers are generated. So instead of trying to find the perfect normalization factor and instead try to perform some approximate normalization this class allows a small overflow and brings it down very close to the [0, 1] range using tanh().
+    /// It's generally pretty hard to get a neatly normalized coherent noise function due to the way perlin/open simplex works (gauss curve) and how random numbers are generated. So instead of trying to find the perfect normalization factor and instead try to perform some approximate normalization this class allows a small overflow and brings it down very close to the [0, 1] range using tanh().
     /// 
     /// Returns values in a range of [0..1]
     /// </summary>

@@ -79,6 +79,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         bool AmbientParticles { get; set; }
 
+        
+
         /// <summary>
         /// Returns the player running this client instance
         /// </summary>
@@ -95,7 +97,11 @@ namespace Vintagestory.API.Client
         /// Shakes the camera view by given strength
         /// </summary>
         /// <param name="strengh"></param>
-        void ShakeCamera(float strengh);
+        void AddCameraShake(float strengh);
+
+        void SetCameraShake(float strengh);
+
+        void ReduceCameraShake(float amount);
 
         /// <summary>
         /// Makes an attempt to attack a particular entity.
