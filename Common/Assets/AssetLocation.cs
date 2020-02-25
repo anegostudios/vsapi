@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using Vintagestory.API.Config;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -297,7 +297,7 @@ namespace Vintagestory.API.Common
         public bool Equals(AssetLocation other)
         {
             if (other == null) return false;
-            return (Domain == other.Domain) && (Path == other.Path);
+            return (Domain == other.Domain) && (Path?.EqualsFast(other.Path) == true);
         }
 
         public override bool Equals(object obj)

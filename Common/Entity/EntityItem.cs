@@ -87,6 +87,7 @@ namespace Vintagestory.API.Common
             Swimming = FeetInLiquid = World.BlockAccessor.GetBlock(Pos.AsBlockPos).IsLiquid();
         }
 
+        long lastPlayedSizzlesTotalMs;
 
         public override void OnGameTick(float dt)
         {
@@ -95,6 +96,31 @@ namespace Vintagestory.API.Common
             if (Itemstack != null)
             {
                 Itemstack.Collectible.OnGroundIdle(this);
+
+                if (FeetInLiquid && !InLava)
+                {
+                    float temp = Itemstack.Collectible.GetTemperature(World, Itemstack);
+
+                    if (temp > 20)
+                    {
+                        Itemstack.Collectible.SetTemperature(World, Itemstack, Math.Max(20, temp - 5));
+
+                        if (temp > 90)
+                        {
+                            SplashParticleProps.BasePos.Set(Pos.X, Pos.Y, Pos.Z);
+                            SplashParticleProps.AddVelocity.Set(0, 0, 0);
+                            SplashParticleProps.QuantityMul = 0.1f;
+                            World.SpawnParticles(SplashParticleProps);
+                        }
+
+                        if (temp > 200 && World.Side == EnumAppSide.Client && World.ElapsedMilliseconds - lastPlayedSizzlesTotalMs > 10000)
+                        {
+                            World.PlaySoundAt(new AssetLocation("sounds/sizzle"), this, null);
+                            lastPlayedSizzlesTotalMs = World.ElapsedMilliseconds;
+                        }
+                    }
+                }
+
             }
             else Die();
         }
@@ -157,7 +183,15 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        float fireDamage;
 
+        public override bool ReceiveDamage(DamageSource damageSource, float damage)
+        {
+            if (damageSource.Source == EnumDamageSource.Internal && damageSource.Type == EnumDamageType.Fire) fireDamage += damage;
+            if (fireDamage > 4) Die();
+
+            return base.ReceiveDamage(damageSource, damage);
+        }
 
         public override void FromBytes(BinaryReader reader, bool forClient)
         {

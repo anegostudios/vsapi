@@ -40,6 +40,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public abstract EnumItemClass ItemClass { get; }
 
+
         /// <summary>
         /// Max amount of collectible that one default inventory slot can hold
         /// </summary>
@@ -370,7 +371,9 @@ namespace Vintagestory.API.Common
 
             bool cantMine = block.RequiredMiningTier > 0 && (itemslot.Itemstack.Collectible.ToolTier < block.RequiredMiningTier || !MiningSpeed.ContainsKey(block.BlockMaterial));
 
-            if ((counter % 5 == 0) && (rnd.NextDouble() < 0.12 || cantMine) && (block.BlockMaterial == EnumBlockMaterial.Stone || block.BlockMaterial == EnumBlockMaterial.Ore) && (Tool == EnumTool.Pickaxe || Tool == EnumTool.Hammer))
+            double chance = block.BlockMaterial == EnumBlockMaterial.Ore ? 0.72 : 0.12;
+
+            if ((counter % 5 == 0) && (rnd.NextDouble() < chance || cantMine) && (block.BlockMaterial == EnumBlockMaterial.Stone || block.BlockMaterial == EnumBlockMaterial.Ore) && (Tool == EnumTool.Pickaxe || Tool == EnumTool.Hammer))
             {
                 double posx = blockSel.Position.X + blockSel.HitPosition.X;
                 double posy = blockSel.Position.Y + blockSel.HitPosition.Y;
@@ -400,7 +403,7 @@ namespace Vintagestory.API.Common
                     ParticleModel = EnumParticleModel.Cube,
                     VertexFlags = 200,
                     SizeEvolve = new EvolvingNatFloat(EnumTransformFunction.LINEAR, -0.15f)
-                });
+                }, player);
             }
 
 
@@ -619,37 +622,10 @@ namespace Vintagestory.API.Common
             itemslot.MarkDirty();
         }
 
-        /// <summary>
-        /// Should return the amount of tool modes this collectible has
-        /// </summary>
-        /// <param name="slot"></param>
-        /// <param name="byPlayer"></param>
-        /// <param name="blockSelection"></param>
-        /// <returns></returns>
-        public virtual int GetQuantityToolModes(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection)
+        public virtual SkillItem[] GetToolModes(ItemSlot slot, IClientPlayer forPlayer, BlockSelection blockSel)
         {
-            return 0;
+            return null;
         }
-
-        /// <summary>
-        /// Should draw given tool mode icon
-        /// </summary>
-        /// <param name="slot"></param>
-        /// <param name="byPlayer"></param>
-        /// <param name="blockSelection"></param>
-        /// <param name="cr"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <param name="toolMode"></param>
-        /// <param name="color"></param>
-        public virtual void DrawToolModeIcon(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, Context cr, int x, int y, int width, int height, int toolMode, int color)
-        {
-
-        }
-
-
 
         /// <summary>
         /// Should return the current items tool mode.
@@ -1319,13 +1295,21 @@ namespace Vintagestory.API.Common
                             else
                             {
                                 double hoursPerday = api.World.Calendar.HoursPerDay;
+
                                 if (freshHoursLeft > hoursPerday)
                                 {
                                     dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
                                 }
                                 else
                                 {
-                                    dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                                    if (perishRate == 0)
+                                    {
+                                        dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font>"));
+                                    } else
+                                    {
+                                        dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                                    }
+                                    
                                 }
                             }
                             break;
@@ -2005,7 +1989,7 @@ namespace Vintagestory.API.Common
                 if (smithable) components.Add(new LinkTextComponent(capi, Lang.Get("Smithing") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-smithing"); }));
                 if (knappable) components.Add(new LinkTextComponent(capi, Lang.Get("Knapping") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-knapping"); }));
                 if (clayformable) components.Add(new LinkTextComponent(capi, Lang.Get("Clay forming") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-clayforming"); }));
-                if (customCreatedBy != null) components.Add(new RichTextComponent(capi, "• " + Lang.Get(customCreatedBy) + "\n", CairoFont.WhiteSmallText()));
+                if (customCreatedBy != null) components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(customCreatedBy) + "\n", CairoFont.WhiteSmallText()));
 
                 if (grindables.Count > 0)
                 {

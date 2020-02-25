@@ -187,7 +187,9 @@ namespace Vintagestory.API.Common
 
             foreach (string code in AnimatedElements)
             {
-                ShapeElement elem = elementsByName[code];
+                ShapeElement elem;
+                elementsByName.TryGetValue(code, out elem);
+                if (elem == null) continue;
                 AnimationJoint joint = new AnimationJoint() { JointId = ++jointCount, Element = elem };
                 JointsById[joint.JointId] = joint;
                 

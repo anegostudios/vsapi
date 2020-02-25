@@ -172,6 +172,7 @@ namespace Vintagestory.API.Common
 
         protected override void calculateMatrices(float dt)
         {
+            if (!CalculateMatrices) return;
             try
             {
                 jointsDone.Clear();
@@ -278,23 +279,25 @@ namespace Vintagestory.API.Common
                     //anim.CalcBlendedWeight(sew.Weight weightSum, sew.BlendMode); - that makes no sense efor element weights != 1
                     anim.CalcBlendedWeight(weightSum / sew.Weight, sew.BlendMode);
 
-                    ElementPose prevFramePoses = transformsByAnimation[j][i];
-                    ElementPose nextFramePoses = nextFrameTransformsByAnimation[j][i];
+                    ElementPose prevFramePose = transformsByAnimation[j][i];
+                    ElementPose nextFramePose = nextFrameTransformsByAnimation[j][i];
 
                     int prevFrame = this.prevFrame[j];
                     int nextFrame = this.nextFrame[j];
 
                     // May loop around, so nextFrame can be smaller than prevFrame
                     float keyFrameDist = nextFrame > prevFrame ? (nextFrame - prevFrame) : (anim.Animation.QuantityFrames - prevFrame + nextFrame);
-                    float curFrameDist = anim.CurrentFrame > prevFrame ? (anim.CurrentFrame - prevFrame) : (anim.Animation.QuantityFrames - prevFrame + anim.CurrentFrame);
+                    float curFrameDist = anim.CurrentFrame >= prevFrame ? (anim.CurrentFrame - prevFrame) : (anim.Animation.QuantityFrames - prevFrame + anim.CurrentFrame);
 
                     float lerp = curFrameDist / keyFrameDist;
 
-                    currentPose.Add(prevFramePoses, nextFramePoses, lerp, anim.BlendedWeight);
-                    childTransformsByAnimation[j] = prevFramePoses.ChildElementPoses;
+                    currentPose.Add(prevFramePose, nextFramePose, lerp, anim.BlendedWeight);
+
+
+                    childTransformsByAnimation[j] = prevFramePose.ChildElementPoses;
                     childWeightsByAnimationAndElement[j] = sew.ChildElements;
 
-                    nextFrameChildTransformsByAnimation[j] = nextFramePoses.ChildElementPoses;
+                    nextFrameChildTransformsByAnimation[j] = nextFramePose.ChildElementPoses;
                 }
 
                 elem.GetLocalTransformMatrix(localTransformMatrix, currentPose);

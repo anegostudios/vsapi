@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using Newtonsoft.Json;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 
@@ -8,13 +9,17 @@ namespace Vintagestory.API.MathTools
     /// Represents a vector of 3 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
     [ProtoContract]
+    [JsonObject(MemberSerialization.OptIn)]
     public class Vec3i : IEquatable<Vec3i>, IVec3
     {
         [ProtoMember(1)]
+        [JsonProperty]
         public int X;
         [ProtoMember(2)]
+        [JsonProperty]
         public int Y;
         [ProtoMember(3)]
+        [JsonProperty]
         public int Z;
 
         /// <summary>

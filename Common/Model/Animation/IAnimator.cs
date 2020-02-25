@@ -47,6 +47,18 @@ namespace Vintagestory.API.Common
         int ActiveAnimationCount { get; }
 
         /// <summary>
+        /// Holds data over all animations. This list always contains all animations of the creature. You have to check yourself which of them are active
+        /// </summary>
+        RunningAnimation[] RunningAnimations { get; }
+
+        RunningAnimation GetAnimationState(string code);
+
+        /// <summary>
+        /// Whether or not to calculate the animation matrices, required for GetAttachmentPointPose() to deliver correct values. Default on on the client, server side only on when the creature is dead
+        /// </summary>
+        bool CalculateMatrices { get; set; }
+
+        /// <summary>
         /// Gets the attachment point pose.
         /// </summary>
         /// <param name="code"></param>
@@ -115,7 +127,7 @@ namespace Vintagestory.API.Common
         /// Additional attributes applied to the animation
         /// </summary>
         /// <param name="tree"></param>
-        void FromAttributes(ITreeAttribute tree);
+        void FromAttributes(ITreeAttribute tree, string version);
 
         /// <summary>
         /// Additional attributes applied from the animation

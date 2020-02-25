@@ -34,6 +34,7 @@ namespace Vintagestory.API.Common
         protected int curAnimCount = 0;
         public RunningAnimation[] CurAnims = new RunningAnimation[20];
 
+        public bool CalculateMatrices { get; set; } = true;
 
         public float[] Matrices
         {
@@ -47,7 +48,23 @@ namespace Vintagestory.API.Common
             get { return curAnimCount; }
         }
 
-        
+        public RunningAnimation[] RunningAnimations => anims;
+
+        public RunningAnimation GetAnimationState(string code)
+        {
+            for (int i = 0; i < anims.Length; i++)
+            {
+                RunningAnimation anim = anims[i];
+
+                if (anim.Animation.Code == code)
+                {
+                    return anim;
+                }
+            }
+
+            return null;
+        }
+
         public AnimatorBase(WalkSpeedSupplierDelegate WalkSpeedSupplier, Animation[] Animations, Action<string> onAnimationStoppedListener = null)
         {
             this.WalkSpeedSupplier = WalkSpeedSupplier;
@@ -75,17 +92,24 @@ namespace Vintagestory.API.Common
             }
         }
 
+        float accum = 0.25f;
+        double walkSpeed;
 
         public virtual void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
         {
             curAnimCount = 0;
 
-            double walkSpeed = WalkSpeedSupplier == null ? 1f : WalkSpeedSupplier();
-
+            accum += dt;
+            if (accum > 0.25f)
+            {
+                walkSpeed = WalkSpeedSupplier == null ? 1f : WalkSpeedSupplier();
+            }
+            
             //string debug = "";
 
             for (int i = 0; i < anims.Length; i++)
             {
+                //if (true) break;
                 RunningAnimation anim = anims[i];
 
                 AnimationMetaData animData;
@@ -170,6 +194,8 @@ namespace Vintagestory.API.Common
             anim.meta = animData;
             anim.ShouldRewind = false;
             anim.ShouldPlayTillEnd = false;
+            anim.CurrentFrame = animData.StartFrameOnce;
+            animData.StartFrameOnce = 0;
         }
 
         protected abstract void calculateMatrices(float dt);

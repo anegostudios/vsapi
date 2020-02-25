@@ -37,7 +37,7 @@ namespace Vintagestory.API.Common
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
-            return new Vec3f(2 * (float)rand.NextDouble() - 1f + AddVelocity.X, 3 * (float)rand.NextDouble() + 2f + AddVelocity.Y, 2 * (float)rand.NextDouble() - 1f + AddVelocity.Z);
+            return new Vec3f(1f * (float)rand.NextDouble() - 0.5f + AddVelocity.X, 3 * (float)rand.NextDouble() + 2f + AddVelocity.Y, 1f * (float)rand.NextDouble() - 0.5f + AddVelocity.Z);
         }
     }
 }

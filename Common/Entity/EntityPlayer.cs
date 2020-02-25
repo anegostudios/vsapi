@@ -186,6 +186,8 @@ namespace Vintagestory.API.Common
         int direction = 0;
 
         bool lastCanStandUp;
+        public ClimateCondition selfClimateCond;
+        float climateCondAccum;
 
         public override double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
@@ -246,22 +248,6 @@ namespace Vintagestory.API.Common
 
                 if (moving)
                 {
-
-                    if (FeetInLiquid)
-                    {
-                        double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
-
-                        EntityPos pos = LocalPos;
-                        SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y + 0, pos.Z - width / 2);
-                        SplashParticleProps.AddPos.Set(width, 0.5, width);
-
-                        SplashParticleProps.AddVelocity.Set((float)pos.Motion.X * 30f, 0, (float)pos.Motion.Z * 30f);
-                        SplashParticleProps.QuantityMul = 0.015f;
-
-                        World.SpawnParticles(SplashParticleProps);
-                    }
-
-
                     if (stepHeight > prevStepHeight)
                     {
                         if (direction == -1)
@@ -310,6 +296,12 @@ namespace Vintagestory.API.Common
                 OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
             }
 
+            climateCondAccum += dt;
+            if (World.Side == EnumAppSide.Client && climateCondAccum > 0.5f)
+            {
+                climateCondAccum = 0;
+                selfClimateCond = Api.World.BlockAccessor.GetClimateAt(Pos.XYZ.AsBlockPos);
+            }
 
             if (!servercontrols.Sneak && !lastCanStandUp)
             {
@@ -408,6 +400,20 @@ namespace Vintagestory.API.Common
             if (Properties.Server?.Attributes?.GetBool("keepContents", false) != true)
             {
                 World.PlayerByUid(PlayerUID).InventoryManager.OnDeath();
+            }
+
+            if (Properties.Server?.Attributes?.GetBool("dropArmorOnDeath", false) == true)
+            {
+                foreach (var slot in GearInventory)
+                {
+                    if (slot.Empty) continue;
+                    if (slot.Itemstack.ItemAttributes?["protectionModifiers"].Exists == true)
+                    {
+                        Api.World.SpawnItemEntity(slot.Itemstack, ServerPos.XYZ);
+                        slot.Itemstack = null;
+                        slot.MarkDirty();
+                    }
+                }
             }
         }
 

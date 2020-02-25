@@ -38,6 +38,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool HalfTransparent;
 
+        public bool NormalShaded;
+
         public LoadedTexture OverlayTexture;
 
         public float OverlayOpacity;

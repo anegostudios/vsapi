@@ -24,6 +24,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         int ShadowMapFar2D { set; }
 
+        int NormalShaded { set; }
+
         /// <summary>
         /// The Near plane distance.
         /// </summary>
@@ -52,6 +54,11 @@ namespace Vintagestory.API.Client
         /// The color of the general light.
         /// </summary>
         Vec4f RgbaLightIn { set; }
+
+        /// <summary>
+        /// The color of the glow light.
+        /// </summary>
+        Vec4f RgbaGlowIn { set; }
 
         /// <summary>
         /// The color of the block.

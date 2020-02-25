@@ -45,7 +45,9 @@ namespace Vintagestory.API.MathTools
                 return;
             }*/
 
-
+          //  entitypos.Motion.X = GameMath.Clamp(entitypos.Motion.X, -1, 1);
+          //  entitypos.Motion.Y = GameMath.Clamp(entitypos.Motion.Y, -1, 1);
+          //  entitypos.Motion.Z = GameMath.Clamp(entitypos.Motion.Z, -1, 1);
 
             tmpPositionVec.Set(pos);
 

@@ -66,7 +66,7 @@ namespace Vintagestory.API.Client
             ElementBounds dropDownBounds = ElementBounds.Fixed(0, 0, 100, 25);
             this.Bounds.WithChild(dropDownBounds);
 
-            listMenu = new GuiElementListMenu(capi, new string[] { "auto", "manual" }, new string[] { Lang.Get("Fixed"), Lang.Get("Movable") }, 0, onSelectionChanged, dropDownBounds, false)
+            listMenu = new GuiElementListMenu(capi, new string[] { "auto", "manual" }, new string[] { Lang.Get("Fixed"), Lang.Get("Movable") }, 0, onSelectionChanged, dropDownBounds, CairoFont.WhiteSmallText(), false)
             {
                 HoveredIndex = 0
             };
@@ -181,14 +181,14 @@ namespace Vintagestory.API.Client
 
             double crossSize = scaled(unscaledCloseIconSize);
             double menuSize = scaled(unscaledCloseIconSize + 2);
-            double crossX = Bounds.drawX + Bounds.OuterWidth - crossSize - scaled(10);
+            double crossX = Bounds.drawX + Bounds.OuterWidth - crossSize - scaled(12);
             double iconY = Bounds.drawY + scaled(7);
-            double crossWidth = 2;
+            double crossWidth = scaled(2);
 
             double menuX = Bounds.drawX + Bounds.OuterWidth - crossSize - menuSize - scaled(20);
 
             menuIconRect = new Rectangled(Bounds.OuterWidth - crossSize - menuSize - scaled(20), scaled(6), crossSize, crossSize);
-            closeIconRect = new Rectangled(Bounds.OuterWidth - crossSize - scaled(10), scaled(5), menuSize, menuSize);
+            closeIconRect = new Rectangled(Bounds.OuterWidth - crossSize - scaled(12), scaled(5), menuSize, menuSize);
 
             ctx.Operator = Operator.Over;
             ctx.SetSourceRGBA(0, 0, 0, 0.3);

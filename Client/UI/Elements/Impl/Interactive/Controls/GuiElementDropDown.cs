@@ -23,7 +23,7 @@ namespace Vintagestory.API.Client
         public string SingularMoreNameCode = "+{0} more";
 
         public GuiElementListMenu listMenu;
-        
+        public GuiElementRichtext richTextElem;
         
         protected LoadedTexture highlightTexture;
         protected LoadedTexture currentValueTexture;
@@ -35,6 +35,7 @@ namespace Vintagestory.API.Client
         protected SelectionChangedDelegate onSelectionChanged;
 
         bool multiSelect;
+        
 
         /// <summary>
         /// The draw order of this GUI Element.
@@ -89,17 +90,20 @@ namespace Vintagestory.API.Client
         /// <param name="selectedIndex">The default selected index.</param>
         /// <param name="onSelectionChanged">The event that occurs when the selection is changed.</param>
         /// <param name="bounds">The bounds of the drop down.</param>
-        public GuiElementDropDown(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, bool multiSelect) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
+        public GuiElementDropDown(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, bool multiSelect) : base(capi, "", font, bounds)
         {
             highlightTexture = new LoadedTexture(capi);
             currentValueTexture = new LoadedTexture(capi);
             arrowDownButtonReleased = new LoadedTexture(capi);
             arrowDownButtonPressed = new LoadedTexture(capi);
 
-            listMenu = new GuiElementListMenu(capi, values, names, selectedIndex, didSelect, bounds, multiSelect)
+            listMenu = new GuiElementListMenu(capi, values, names, selectedIndex, didSelect, bounds, font, multiSelect)
             {
                 HoveredIndex = selectedIndex   
             };
+
+            ElementBounds textBounds = ElementBounds.Fixed(0, 0, 900, 100).WithEmptyParent();
+            richTextElem = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
 
             this.onSelectionChanged = onSelectionChanged;
             this.multiSelect = multiSelect;
@@ -233,7 +237,7 @@ namespace Vintagestory.API.Client
             double height = Font.GetFontExtents().Height;
 
             if (listMenu.SelectedIndices.Length > 1)
-            {    
+            {
                 for (int i = 0; i < listMenu.SelectedIndices.Length; i++)
                 {
                     int index = listMenu.SelectedIndices[i];
@@ -254,20 +258,32 @@ namespace Vintagestory.API.Client
                     if (Font.GetTextExtents(text + addText + Lang.Get(PluralMoreNameCode, cntleft)).Width < width)
                     {
                         text += addText;
-                    } else
+                    }
+                    else
                     {
                         text = text + moreText;
                         break;
                     }
                 }
-
-                DrawTextLineAt(ctx, text, 5, (valueHeight - height)/2);
+                
             }
-
-            if (listMenu.SelectedIndices.Length == 1)
+            else
             {
-                DrawTextLineAt(ctx, listMenu.Names[listMenu.SelectedIndex], 5, (valueHeight - height) / 2);
+
+                if (listMenu.SelectedIndices.Length == 1)
+                {
+                    text = listMenu.Names[listMenu.SelectedIndex];
+                }
             }
+
+
+            richTextElem.SetNewTextWithoutRecompose(text, Font);
+            richTextElem.BeforeCalcBounds();
+            richTextElem.Bounds.fixedX = 5;
+            richTextElem.Bounds.fixedY = (valueHeight - height) / 2;
+            richTextElem.BeforeCalcBounds();
+            richTextElem.Bounds.CalcWorldBounds();
+            richTextElem.ComposeFor(richTextElem.Bounds, ctx, surface);
 
             generateTexture(surface, ref currentValueTexture);
 
@@ -414,7 +430,7 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, true), key);
+                composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, CairoFont.WhiteSmallText(), true), key);
             }
             return composer;
         }
@@ -434,12 +450,30 @@ namespace Vintagestory.API.Client
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, false), key);
+                composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, CairoFont.WhiteSmallText(), false), key);
             }
             return composer;
         }
 
-        
+        /// <summary>
+        /// Adds a dropdown to the current GUI instance.
+        /// </summary>
+        /// <param name="values">The values of the current drodown.</param>
+        /// <param name="names">The names of those values.</param>
+        /// <param name="selectedIndex">The default selected index.</param>
+        /// <param name="onSelectionChanged">The event fired when the index is changed.</param>
+        /// <param name="bounds">The bounds of the index.</param>
+        /// <param name="key">The name of this dropdown.</param>
+        public static GuiComposer AddDropDown(this GuiComposer composer, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, string key = null)
+        {
+            if (!composer.composed)
+            {
+                composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, font, false), key);
+            }
+            return composer;
+        }
+
+
 
         /// <summary>
         /// Gets the Drop Down element from the GUIComposer by their key.

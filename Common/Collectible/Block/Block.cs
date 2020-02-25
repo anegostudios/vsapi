@@ -314,6 +314,8 @@ namespace Vintagestory.API.Common
         public Vec3d PushVector { get; set; }
 
 
+        public bool CanStep = true;
+
         /// <summary>
         /// Creates a new instance of a block with default model transforms
         /// </summary>
@@ -433,6 +435,27 @@ namespace Vintagestory.API.Common
         {
             return LightHsv;
         }
+
+        public virtual bool DoEmitSideAo(IBlockAccessor blockAccessor, BlockPos pos, int facing)
+        {
+            return EmitSideAo[facing];
+        }
+
+        public virtual bool DoEmitSideAoByFlag(IBlockAccessor blockAccessor, BlockPos pos, int flag)
+        {
+            return EmitSideAoOppositeByFlags[flag];
+        }
+
+        public virtual int GetLightAbsorption(IBlockAccessor blockAccessor, BlockPos pos)
+        {
+            return LightAbsorption;
+        }
+
+        public virtual int GetLightAbsorption(IWorldChunk chunk, BlockPos pos)
+        {
+            return LightAbsorption;
+        }
+
 
         /// <summary>
         /// If this block is or contains a liquid, it should return the code of it. Used for example by farmland to check if a nearby block is water
@@ -1405,7 +1428,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="chunkExtIds">Optional, fast way to look up a direct neighbouring block. This is an array of the current chunks block ids, including all direct neighbours, so its a 34x34x34 block id list. Use extIndex3d+TileSideEnum.MoveIndex[tileSide] to move around in the array</param>
         /// <param name="extIndex3d"></param>
-        public virtual void OnJsonTesselation(MeshData sourceMesh, BlockPos pos, int[] chunkExtIds, int extIndex3d)
+        public virtual void OnJsonTesselation(ref MeshData sourceMesh, BlockPos pos, int[] chunkExtIds, ushort[] chunkLightExt, int extIndex3d)
         {
             if (VertexFlags.LeavesWindWave)
             {
@@ -1425,7 +1448,7 @@ namespace Vintagestory.API.Common
 
 
 
-
+        public float WaveFlagMinY = 9 / 16f;
 
         void setGrassWaveFlags(MeshData sourceMesh)
         {
@@ -1436,7 +1459,7 @@ namespace Vintagestory.API.Common
             for (int vertexNum = 0; vertexNum < sourceMesh.GetVerticesCount(); vertexNum++)
             {
                 float y = sourceMesh.xyz[vertexNum * 3 + 1];
-                if (y > 0.5f)
+                if (y > WaveFlagMinY)
                 {
                     sourceMesh.Flags[vertexNum] |= grassWave;
                 }
@@ -1535,7 +1558,6 @@ namespace Vintagestory.API.Common
             double dx = byPlayer.Entity.Pos.X - (targetPos.X + blockSel.HitPosition.X);
             double dy = (float)byPlayer.Entity.Pos.Y + (float)(byPlayer.Entity.EyeHeight - (targetPos.Y + blockSel.HitPosition.Y));
             double dz = (float)byPlayer.Entity.Pos.Z - (targetPos.Z + blockSel.HitPosition.Z);
-            float radius = (float)Math.Sqrt(dx * dx + dy * dy + dz * dz);
 
             float angleHor = (float)Math.Atan2(dx, dz) + GameMath.PIHALF;
 
@@ -2262,6 +2284,23 @@ namespace Vintagestory.API.Common
             }
 
             if (executeDefault) defaultAction();
+        }
+
+        public static bool[] ResolveAoFlags(Block block, bool[] emitSideAo)
+        {
+            bool[] emitSideAoOppositeByFlags = new bool[63];
+
+            foreach (BlockFacing facing in BlockFacing.ALLFACES)
+            {
+                emitSideAoOppositeByFlags[facing.Flag] = emitSideAo[facing.GetOpposite().Index];
+
+                foreach (BlockFacing facing2 in BlockFacing.ALLFACES)
+                {
+                    emitSideAoOppositeByFlags[facing.Flag | facing2.Flag] = emitSideAo[facing.GetOpposite().Index] | emitSideAo[facing2.GetOpposite().Index];
+                }
+            }
+
+            return emitSideAoOppositeByFlags;
         }
     }
 }

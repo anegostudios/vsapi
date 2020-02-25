@@ -540,6 +540,11 @@ namespace Vintagestory.API.MathTools
             return int.Parse(hex.Substring(1), System.Globalization.NumberStyles.HexNumber);
         }
 
+        public static string Int2Hex(int color)
+        {
+            return String.Format("#{0:X2}{1:X2}{2:X2}", ColorR(color), ColorG(color), ColorB(color));
+        }
+
         /// <summary>
         /// Parses a hex string as an rgb(a) color and returns an array of colors normalized fom 0..1 for use with Cairo. E.g. turns #FF0000 into double[1, 0, 0, 1] and #00FF00CC into double[0, 1, 0, 0.8]
         /// </summary>
@@ -899,7 +904,7 @@ namespace Vintagestory.API.MathTools
                 Math.Max(0, Math.Min(255, ((temperature - 500) * 255) / 400)),
                 Math.Max(0, Math.Min(255, ((temperature - 900) * 255) / 200)),
                 Math.Max(0, Math.Min(255, ((temperature - 1100) * 255) / 200)),
-                Math.Max(0, Math.Min(96, (temperature - 525) / 2))
+                Math.Max(0, Math.Min(255, (temperature - 525) / 2))
             };
         }
 
@@ -911,7 +916,7 @@ namespace Vintagestory.API.MathTools
                 Math.Max(0f, Math.Min(1, (temperature - 500) / 400f)),
                 Math.Max(0f, Math.Min(1, (temperature - 900) / 200f)),
                 Math.Max(0f, Math.Min(1, (temperature - 1100)/ 200f)),
-                Math.Max(0f, Math.Min(0.38f, (temperature - 525) / 2f))
+                Math.Max(0f, Math.Min(1, (temperature - 525) / 2f))
             };
         }
 

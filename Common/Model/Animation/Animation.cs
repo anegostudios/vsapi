@@ -140,7 +140,6 @@ namespace Vintagestory.API.Common
                 GenerateFrameForElement(frameNumber, element, ref animTransform);
                 transforms.Add(animTransform);
 
-
                 float[] animModelMatrix = Mat4f.CloneIt(modelMatrix);
                 Mat4f.Mul(animModelMatrix, animModelMatrix, element.GetLocalTransformMatrix(null, animTransform));
 
@@ -155,7 +154,8 @@ namespace Vintagestory.API.Common
                     GenerateFrame(indexNumber, resKeyFrames, element.Children, jointsById, animModelMatrix, animTransform.ChildElementPoses);
                 }
 
-                
+
+
             }
         }
 
@@ -170,6 +170,7 @@ namespace Vintagestory.API.Common
                 getTwoKeyFramesElementForFlag(frameNumber, element, flag, out curKelem, out nextKelem);
 
                 if (curKelem == null) continue;
+
 
                 float t;
 
@@ -203,8 +204,7 @@ namespace Vintagestory.API.Common
         {
             if (prev == null && next == null) return;
 
-            int jointId = prev.ForElement.JointId;
-            ShapeElement elem = prev.ForElement;
+            t = GameMath.SmoothStep(t);
 
             // Applies the transforms in model space
             if (forFlag == 0)
@@ -228,54 +228,66 @@ namespace Vintagestory.API.Common
         }
 
 
+        
 
         protected void getTwoKeyFramesElementForFlag(int frameNumber, ShapeElement forElement, int forFlag, out AnimationKeyFrameElement left, out AnimationKeyFrameElement right)
         {
             left = null;
             right = null;
 
-            // Go left of frameNumber until we hit the first keyframe
-            int keyframeIndex = KeyFrames.Length - 1;
-            bool loopAround = false;
+            int rightKfIndex = seekRightKeyFrame(frameNumber, forElement, forFlag);
+            if (rightKfIndex == -1) return;
 
-            while (keyframeIndex >= -1)
+            right = KeyFrames[rightKfIndex].GetKeyFrameElement(forElement);
+
+            int leftKfIndex = seekLeftKeyFrame(rightKfIndex, forElement, forFlag);
+            if (leftKfIndex == -1)
             {
-                AnimationKeyFrame keyframe = KeyFrames[GameMath.Mod(keyframeIndex, KeyFrames.Length)];
-                keyframeIndex--;
-
-                if (keyframe.Frame <= frameNumber || loopAround)
-                {
-                    AnimationKeyFrameElement kelem = keyframe.GetKeyFrameElement(forElement);
-                    if (kelem != null && kelem.IsSet(forFlag))
-                    {
-                        left = kelem;
-                        break;
-                    }
-                }
-
-                if (keyframeIndex == -1) loopAround = true;
+                left = right;
+                return;
             }
-        
 
-            keyframeIndex+=2;
-            int tries = KeyFrames.Length;
-
-            while (tries-- > 0)
-            {
-                AnimationKeyFrame nextkeyframe = KeyFrames[GameMath.Mod(keyframeIndex, KeyFrames.Length)];
-
-                AnimationKeyFrameElement kelem = nextkeyframe.GetKeyFrameElement(forElement);
-                if (kelem != null && kelem.IsSet(forFlag))
-                {
-                    right = kelem;
-                    return;
-                }
-
-                keyframeIndex++;
-            }
+            left = KeyFrames[leftKfIndex].GetKeyFrameElement(forElement);
         }
 
 
+        private int seekRightKeyFrame(int aboveFrameNumber, ShapeElement forElement, int forFlag)
+        {
+            int firstIndex = -1;
+
+            for (int i = 0; i < KeyFrames.Length; i++)
+            {
+                AnimationKeyFrame keyframe = KeyFrames[i];
+                
+                AnimationKeyFrameElement kelem = keyframe.GetKeyFrameElement(forElement);
+                if (kelem != null && kelem.IsSet(forFlag))
+                {
+                    if (firstIndex == -1) firstIndex = i;
+                    if (keyframe.Frame <= aboveFrameNumber) continue;
+
+                    return i;
+                }
+            }
+
+            return firstIndex;
+        }
+
+        private int seekLeftKeyFrame(int leftOfKeyFrameIndex, ShapeElement forElement, int forFlag)
+        {
+            for (int i = 0; i < KeyFrames.Length; i++)
+            {
+                int index = GameMath.Mod(leftOfKeyFrameIndex - i - 1, KeyFrames.Length);
+                AnimationKeyFrame keyframe = KeyFrames[index];
+
+                AnimationKeyFrameElement kelem = keyframe.GetKeyFrameElement(forElement);
+                if (kelem != null && kelem.IsSet(forFlag))
+                {
+                    return index;
+                }
+            }
+
+            return -1;
+        }
 
 
         protected void getLeftRightResolvedFrame(int frameNumber, AnimationFrame[] frames, out AnimationFrame left, out AnimationFrame right)

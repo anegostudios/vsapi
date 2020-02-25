@@ -64,6 +64,13 @@ namespace Vintagestory.API.Common
                         elems.Add(cmp);
                         break;
 
+                    case "icon":
+                        string iconName;
+                        tagToken.Attributes.TryGetValue("name", out iconName);
+                        IconComponent iconcmp = new IconComponent(capi, iconName, fontStack.Peek());
+                        elems.Add(iconcmp);
+                        break;
+
                     case "font":
                         fontStack.Push(getFont(tagToken, fontStack));
                         foreach (var val in tagToken.ChildElements)

@@ -69,7 +69,7 @@ namespace Vintagestory.API.Client
             descriptionElement.BeforeCalcBounds();
 
             double currentWidth = Math.Max(descriptionElement.MaxLineWidth, descriptionElement.Bounds.InnerWidth) / RuntimeEnv.GUIScale + 10;
-            double currentHeight = 0;
+            double unscaledTotalHeight = 0;
 
             currentWidth += 40 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3;
             currentWidth = Math.Max(currentWidth, titleElement.Font.GetTextExtents(title).Width / RuntimeEnv.GUIScale + 10);
@@ -83,11 +83,11 @@ namespace Vintagestory.API.Client
             descriptionElement.Bounds.CalcWorldBounds();
 
             // Height depends on the width
-            double descTextHeight = descriptionElement.Bounds.fixedHeight;
-            currentHeight = Math.Max(descTextHeight, scaled(25) + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3);
-            titleElement.Bounds.fixedHeight = currentHeight;
-            descriptionElement.Bounds.fixedHeight = currentHeight;
-            Bounds.fixedHeight = scaled(25) + currentHeight / RuntimeEnv.GUIScale;
+            double unscaledDescTextHeight = descriptionElement.Bounds.fixedHeight;
+            unscaledTotalHeight = Math.Max(unscaledDescTextHeight, 25 + GuiElementPassiveItemSlot.unscaledItemSize * 3);
+            titleElement.Bounds.fixedHeight = unscaledTotalHeight;
+            descriptionElement.Bounds.fixedHeight = unscaledTotalHeight;
+            Bounds.fixedHeight = 25 + unscaledTotalHeight;
         }
 
 

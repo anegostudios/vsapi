@@ -20,7 +20,81 @@ namespace Vintagestory.API.Common.Entities
     public abstract class Entity : RegistryObject
     {
         public static WaterSplashParticles SplashParticleProps = new WaterSplashParticles();
+        public static AdvancedParticleProperties[] FireParticleProps = new AdvancedParticleProperties[3];
+
         public static AirBubbleParticles AirBubbleParticleProps = new AirBubbleParticles();
+        public static SimpleParticleProperties bioLumiParticles;
+        public static NormalizedSimplexNoise bioLumiNoise;
+
+        static Entity()
+        {
+            // Ember cubicles
+            FireParticleProps[0] = new AdvancedParticleProperties()
+            {
+                HsvaColor = new NatFloat[] { NatFloat.createUniform(30, 20), NatFloat.createUniform(255, 50), NatFloat.createUniform(255, 50), NatFloat.createUniform(255, 0) },
+                GravityEffect = NatFloat.createUniform(0,0),
+                Velocity = new NatFloat[] { NatFloat.createUniform(0.2f, 0.05f), NatFloat.createUniform(0.5f, 0.1f), NatFloat.createUniform(0.2f, 0.05f) },
+                Size = NatFloat.createUniform(0.25f, 0),
+                Quantity = NatFloat.createUniform(0.25f, 0),
+                VertexFlags = 128,
+                SizeEvolve = EvolvingNatFloat.create(EnumTransformFunction.QUADRATIC, -0.5f),
+                SelfPropelled = true
+
+            };
+
+            // Fire particles
+            FireParticleProps[1] = new AdvancedParticleProperties()
+            {
+                HsvaColor = new NatFloat[] { NatFloat.createUniform(30, 20), NatFloat.createUniform(255, 50), NatFloat.createUniform(255, 50), NatFloat.createUniform(255, 0) },
+                OpacityEvolve = EvolvingNatFloat.create(EnumTransformFunction.QUADRATIC, -16),
+                GravityEffect = NatFloat.createUniform(0, 0),
+                Velocity = new NatFloat[] { NatFloat.createUniform(0f, 0.02f), NatFloat.createUniform(0f, 0.02f), NatFloat.createUniform(0f, 0.02f) },
+                Size = NatFloat.createUniform(0.3f, 0.05f),
+                Quantity = NatFloat.createUniform(0.25f, 0),
+                VertexFlags = 128,
+                SizeEvolve = EvolvingNatFloat.create(EnumTransformFunction.LINEAR, 1f),
+                LifeLength = NatFloat.createUniform(0.5f, 0),
+                ParticleModel = EnumParticleModel.Quad
+            };
+
+            // Smoke particles
+            FireParticleProps[2] = new AdvancedParticleProperties()
+            {
+                HsvaColor = new NatFloat[] { NatFloat.createUniform(0, 0), NatFloat.createUniform(0, 0), NatFloat.createUniform(40, 30), NatFloat.createUniform(220, 50) },
+                OpacityEvolve = EvolvingNatFloat.create(EnumTransformFunction.QUADRATIC, -16),
+                GravityEffect = NatFloat.createUniform(0, 0),
+                Velocity = new NatFloat[] { NatFloat.createUniform(0f, 0.05f), NatFloat.createUniform(0.2f, 0.3f), NatFloat.createUniform(0f, 0.05f) },
+                Size = NatFloat.createUniform(0.3f, 0.05f),
+                Quantity = NatFloat.createUniform(0.25f, 0),
+                SizeEvolve = EvolvingNatFloat.create(EnumTransformFunction.LINEAR, 1.5f),
+                LifeLength = NatFloat.createUniform(1.5f, 0),
+                ParticleModel = EnumParticleModel.Quad,
+                SelfPropelled = true,
+            };
+
+
+            bioLumiParticles = new SimpleParticleProperties()
+            {
+                Color = ColorUtil.ToRgba(255, 0, 230, 142),
+                MinSize = 0.03f,
+                MaxSize = 0.1f,
+                MinQuantity = 1,
+                GravityEffect = 0f,
+                LifeLength = 0.5f,
+                ParticleModel = EnumParticleModel.Quad,
+                ShouldDieInAir = true,
+                VertexFlags = (byte)255,
+                MinPos = new Vec3d(),
+                AddPos = new Vec3d()
+            };
+
+            bioLumiParticles.ShouldDieInAir = true;
+            bioLumiParticles.OpacityEvolve = EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -150);
+            bioLumiParticles.MinSize = 0.03f;
+            bioLumiParticles.MaxSize = 0.1f;
+
+            bioLumiNoise = new NormalizedSimplexNoise(new double[] { 1, 0.5 }, new double[] { 5, 10 }, 097901);
+        }
 
         #region Entity Fields
 
@@ -117,6 +191,22 @@ namespace Vintagestory.API.Common.Entities
         /// True if the bottom of the collisionbox is inside a liquid
         /// </summary>
         public bool FeetInLiquid;
+
+        public bool IsOnFire
+        {
+            get
+            {
+                return WatchedAttributes.GetBool("onFire");
+            } 
+            set
+            {
+                WatchedAttributes.SetBool("onFire", value);
+            }
+        }
+        public bool InLava;
+        public long InLavaBeginTotalMs;
+
+        public long OnFireBeginTotalMs;
 
         /// <summary>
         /// True if the collisionbox is 2/3rds submerged in liquid
@@ -277,7 +367,10 @@ namespace Vintagestory.API.Common.Entities
         public virtual bool Alive
         {
             get { return alive; /* Updated every game tick. Faster than doing a dict lookup hundreds/thousands of times */ }
-            set { WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value; }
+            set {
+                WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value; 
+            }
+
         }
         private bool alive=true;
 
@@ -359,27 +452,19 @@ namespace Vintagestory.API.Common.Entities
                 }
             });
 
-            WatchedAttributes.RegisterModifiedListener("entityDead", () =>
+            WatchedAttributes.RegisterModifiedListener("onFire", () =>
             {
-                if (Alive || Properties.DeadHitBoxSize == null)
+                if (IsOnFire)
                 {
-                    SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
-                } else
-                {
-                    SetHitbox(Properties.DeadHitBoxSize.X, Properties.DeadHitBoxSize.Y);
+                    OnFireBeginTotalMs = World.ElapsedMilliseconds;
                 }
             });
 
+            WatchedAttributes.RegisterModifiedListener("entityDead", updateHitBox);
+
             if (Properties.HitBoxSize != null)
             {
-                if (Alive || Properties.DeadHitBoxSize == null)
-                {
-                    SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
-                }
-                else
-                {
-                    SetHitbox(Properties.DeadHitBoxSize.X, Properties.DeadHitBoxSize.Y);
-                }
+                updateHitBox();
             }
 
             if (AlwaysActive || api.Side == EnumAppSide.Client)
@@ -419,6 +504,25 @@ namespace Vintagestory.API.Common.Entities
             if (this is EntityPlayer)
             {
                 AnimManager.HeadController = new PlayerHeadController(AnimManager, this as EntityPlayer, Properties.Client.LoadedShape);
+            }
+
+            if (api.Side == EnumAppSide.Server)
+            {
+                AnimManager.OnServerTick(0);
+            }
+        }
+
+        private void updateHitBox()
+        {
+            bool alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
+
+            if (alive || Properties.DeadHitBoxSize == null)
+            {
+                SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
+            }
+            else
+            {
+                SetHitbox(Properties.DeadHitBoxSize.X, Properties.DeadHitBoxSize.Y);
             }
 
         }
@@ -595,6 +699,9 @@ namespace Vintagestory.API.Common.Entities
             return true;
         }
 
+        float fireDamageAccum;
+        Vec3f ownVelocity = new Vec3f();
+
         /// <summary>
         /// Called every 1/75 second
         /// </summary>
@@ -615,11 +722,76 @@ namespace Vintagestory.API.Common.Entities
                 PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
             }
 
+            if (InLava && World.Side == EnumAppSide.Server)
+            {
+                Ignite();
+            }
+
+
+            if (IsOnFire)
+            {
+                if (World.BlockAccessor.GetBlock(Pos.AsBlockPos).LiquidCode == "water" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
+                {
+                    IsOnFire = false;
+                }
+                else
+                {
+
+                    if (World.Side == EnumAppSide.Client)
+                    {
+                        int index = Math.Min(FireParticleProps.Length - 1, Api.World.Rand.Next(FireParticleProps.Length + 1));
+                        AdvancedParticleProperties particles = FireParticleProps[index];
+                        particles.basePos.Set(Pos.X, Pos.Y + (CollisionBox.Y2 - CollisionBox.Y1) / 2, Pos.Z);
+
+                        particles.PosOffset[0].var = (CollisionBox.X2 - CollisionBox.X1) / 2;
+                        particles.PosOffset[1].var = (CollisionBox.Y2 - CollisionBox.Y1) / 2;
+                        particles.PosOffset[2].var = (CollisionBox.Z2 - CollisionBox.Z1) / 2;
+                        particles.Velocity[0].avg = (float)Pos.Motion.X * 10;
+                        particles.Velocity[1].avg = (float)Pos.Motion.Y * 5;
+                        particles.Velocity[2].avg = (float)Pos.Motion.Z * 10;
+                        particles.Quantity.avg = GameMath.Sqrt(particles.PosOffset[0].var + particles.PosOffset[1].var + particles.PosOffset[2].var) * (index == 0 ? 0.5f : (index == 1 ? 3 : 1.25f));
+                        Api.World.SpawnParticles(particles);
+                    }
+                    else
+                    {
+                        fireDamageAccum += dt;
+                        if (fireDamageAccum > 1f)
+                        {
+                            ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = EnumDamageType.Fire }, 0.5f);
+                            fireDamageAccum = 0;
+                        }
+                    }
+
+                    if (!alive && InLava)
+                    {
+                        float q = GameMath.Clamp((CollisionBox.X2 - CollisionBox.X1) * (CollisionBox.Y2 - CollisionBox.Y1) * (CollisionBox.Z2 - CollisionBox.Z1) * 150, 10, 150);
+                        Api.World.SpawnParticles(
+                            q,
+                            ColorUtil.ColorFromRgba(20, 20, 20, 255),
+                            new Vec3d(ServerPos.X + CollisionBox.X1, ServerPos.Y + CollisionBox.Y1, ServerPos.Z + CollisionBox.Z1),
+                            new Vec3d(ServerPos.X + CollisionBox.X2, ServerPos.Y + CollisionBox.Y2, ServerPos.Z + CollisionBox.Z2),
+                            new Vec3f(-1f, -1f, -1f),
+                            new Vec3f(2f, 2f, 2f), 
+                            2, 1, 1, EnumParticleModel.Cube
+                        );
+
+                        Die(EnumDespawnReason.Combusted);
+                    }
+                }
+            }
+
             if (World.Side == EnumAppSide.Server)
             {
                 AnimManager.OnServerTick(dt);
             }
         }   
+
+
+
+        public void Ignite()
+        {
+            IsOnFire = true;
+        }
 
 
         #region Events
@@ -686,6 +858,43 @@ namespace Vintagestory.API.Common.Entities
                 
                 World.SpawnParticles(SplashParticleProps);
             }
+
+            SpawnWaterMovementParticles((float)Math.Min(0.25f, splashStrength / 10f), 0, -0.5f, 0);
+        }
+
+        protected virtual void SpawnWaterMovementParticles(float quantityMul, double offx=0, double offy = 0, double offz = 0)
+        {
+            if (World.Side == EnumAppSide.Server) return;
+
+            ICoreClientAPI capi = (Api as ICoreClientAPI);
+            ClimateCondition climate = capi.World.Player.Entity.selfClimateCond;
+            if (climate == null) return;
+
+            float dist = Math.Max(0, (28 - climate.Temperature)/6f) + Math.Max(0, (0.8f - climate.Rainfall) * 3f);
+
+            double noise = bioLumiNoise.Noise(LocalPos.X / 300.0, LocalPos.Z / 300.0);
+            double qmul = noise * 2 - 1 - dist;
+
+
+            if (qmul < 0) return;
+
+            // Hard coded player swim hitbox thing
+            if (this is EntityPlayer && Swimming)
+            {
+                bioLumiParticles.MinPos.Set(LocalPos.X + 2f * CollisionBox.X1, LocalPos.Y + offy + 0.5f + 1.25f * CollisionBox.Y1, LocalPos.Z + 2f * CollisionBox.Z1);
+                bioLumiParticles.AddPos.Set(3f * (CollisionBox.X2 - CollisionBox.X1), 0.5f * (CollisionBox.Y2 - CollisionBox.Y1), 3f * (CollisionBox.Z2 - CollisionBox.Z1));
+            }
+            else
+            {
+                bioLumiParticles.MinPos.Set(LocalPos.X + 1.25f * CollisionBox.X1, LocalPos.Y + offy + 1.25f * CollisionBox.Y1, LocalPos.Z + 1.25f * CollisionBox.Z1);
+                bioLumiParticles.AddPos.Set(1.5f * (CollisionBox.X2 - CollisionBox.X1), 1.5f * (CollisionBox.Y2 - CollisionBox.Y1), 1.5f * (CollisionBox.Z2 - CollisionBox.Z1));
+            }
+
+            bioLumiParticles.MinQuantity = Math.Min(500, 150 * quantityMul * (float)qmul);
+
+            bioLumiParticles.MinVelocity.Set(-0.2f + 2 * (float)Pos.Motion.X, -0.2f + 2 * (float)Pos.Motion.Y, -0.2f + 2*(float)Pos.Motion.Z);
+            bioLumiParticles.AddVelocity.Set(0.4f + 2 * (float)Pos.Motion.X, 0.4f + 2 * (float)Pos.Motion.Y, 0.4f + 2 * (float)Pos.Motion.Z);
+            World.SpawnParticles(bioLumiParticles);
         }
 
         /// <summary>
@@ -720,6 +929,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="despawn"></param>
         public virtual void OnEntityDespawn(EntityDespawnReason despawn)
         {
+            if (SidedProperties == null) return;
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnEntityDespawn(despawn);
@@ -832,6 +1042,15 @@ namespace Vintagestory.API.Common.Entities
                 this.Pos.SetPos(newPos);
                 this.ServerPos.SetPos(newPos);
                 this.World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);
+                return;
+            }
+
+            EnumHandling handled = EnumHandling.PassThrough;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnReceivedServerPacket(packetid, data, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) break;
             }
         }
 
@@ -1100,7 +1319,7 @@ namespace Vintagestory.API.Common.Entities
             {
                 TreeAttribute animTree = new TreeAttribute();
                 animTree.FromBytes(reader);
-                AnimManager?.FromAttributes(animTree);
+                AnimManager?.FromAttributes(animTree, version);
             } else
             {
                 // Should not be too bad to just ditch pre 1.8 animations
@@ -1137,6 +1356,7 @@ namespace Vintagestory.API.Common.Entities
             Alive = true;
             ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Revive, Type = EnumDamageType.Heal }, 9999);
             AnimManager?.StopAnimation("die");
+            IsOnFire = false;
         }
 
 
@@ -1145,6 +1365,8 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual void Die(EnumDespawnReason reason = EnumDespawnReason.Death, DamageSource damageSourceForDeath = null)
         {
+            if (!Alive) return;
+
             Alive = false;
 
             if (reason == EnumDespawnReason.Death)

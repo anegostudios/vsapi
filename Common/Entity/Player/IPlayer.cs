@@ -80,6 +80,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         string[] Privileges { get; }
 
+        /// <summary>
+        /// Check if a player has the given privilege
+        /// </summary>
+        /// <param name = "privilegeCode">The privilege to check</param>
+        /// <returns>true if the player has the given privilege, false otherwise</returns>
+        bool HasPrivilege(string privilegeCode);
+
 
 
         /*/// <summary>

@@ -45,6 +45,7 @@ namespace Vintagestory.API.Common
         public override void OnEntityDespawn(EntityDespawnReason despawn)
         {
             (entity.World.Api as ICoreClientAPI)?.Event.UnregisterRenderer(this, EnumRenderStage.Before);
+            Dispose();
         }
 
         public EntityBehaviorPassivePhysics(Entity entity) : base(entity)
@@ -240,7 +241,7 @@ namespace Vintagestory.API.Common
             Block block = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt);
 
             entity.FeetInLiquid = block.MatterState == EnumMatterState.Liquid;
-
+            entity.InLava = block.LiquidCode == "lava";
             if (entity.FeetInLiquid)
             {
                 float waterY = (int)pos.Y + block.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9 / 8f : 0);

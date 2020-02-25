@@ -180,7 +180,7 @@ namespace Vintagestory.API.Common
                 AnimationMetaData animmetadata;
                 if (entity.Properties.Client.AnimationsByCrc32.TryGetValue(crc32, out animmetadata))
                 {
-                    toKeep.Add(animmetadata.Code);
+                    toKeep.Add(animmetadata.Animation);
 
                     if (ActiveAnimationsByAnimCode.ContainsKey(animmetadata.Code)) continue;
                     animmetadata.AnimationSpeed = activeAnimationSpeeds[i];
@@ -245,6 +245,12 @@ namespace Vintagestory.API.Common
 
                 if (!forClient && val.Value.Code != "die") continue;
 
+                RunningAnimation anim = Animator.GetAnimationState(val.Value.Animation);
+                if (anim != null)
+                {
+                    val.Value.StartFrameOnce = anim.CurrentFrame;
+                }
+
                 using (MemoryStream ms = new MemoryStream())
                 {
                     using (BinaryWriter writer = new BinaryWriter(ms))
@@ -254,6 +260,8 @@ namespace Vintagestory.API.Common
 
                     tree[val.Key] = new ByteArrayAttribute(ms.ToArray());
                 }
+
+                val.Value.StartFrameOnce = 0;
             }
         }
 
@@ -263,7 +271,7 @@ namespace Vintagestory.API.Common
         /// Loads the entity from a stored byte array from the SaveGame
         /// </summary>
         /// <param name="tree"></param>
-        public virtual void FromAttributes(ITreeAttribute tree)
+        public virtual void FromAttributes(ITreeAttribute tree, string version)
         {
             foreach (var val in tree)
             {
@@ -272,7 +280,7 @@ namespace Vintagestory.API.Common
                 {
                     using (BinaryReader reader = new BinaryReader(ms))
                     {
-                        ActiveAnimationsByAnimCode[val.Key] = AnimationMetaData.FromBytes(reader);
+                        ActiveAnimationsByAnimCode[val.Key] = AnimationMetaData.FromBytes(reader, version);
                     }
                 }
             }
@@ -285,6 +293,7 @@ namespace Vintagestory.API.Common
         public void OnServerTick(float dt)
         {
             Animator?.OnFrame(ActiveAnimationsByAnimCode, dt);
+            Animator.CalculateMatrices = !entity.Alive;
         }
         
         /// <summary>
@@ -316,6 +325,7 @@ namespace Vintagestory.API.Common
             else
             {
                 (api as ICoreClientAPI).Event.UnregisterRenderer(renderer, EnumRenderStage.Before);
+                renderer.Dispose();
             }
         }
 

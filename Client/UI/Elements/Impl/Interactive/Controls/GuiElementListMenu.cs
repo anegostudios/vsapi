@@ -80,6 +80,7 @@ namespace Vintagestory.API.Client
         protected double scrollOffY = 0;
 
         protected GuiElementCompactScrollbar scrollbar;
+        protected GuiElementRichtext[] richtTextElem;
 
         protected ElementBounds visibleBounds;
 
@@ -110,7 +111,7 @@ namespace Vintagestory.API.Client
         /// <param name="selectedIndex">The default selected index.</param>
         /// <param name="onSelectionChanged">The event fired when the selection is changed.</param>
         /// <param name="bounds">The bounds of the GUI element.</param>
-        public GuiElementListMenu(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, bool multiSelect) : base(capi, "", CairoFont.WhiteSmallText(), bounds)
+        public GuiElementListMenu(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, bool multiSelect) : base(capi, "", font, bounds)
         {
             if (values.Length != names.Length) throw new ArgumentException("Values and Names arrays must be of the same length!");
 
@@ -128,6 +129,15 @@ namespace Vintagestory.API.Client
             ElementBounds scrollbarBounds = ElementBounds.Fixed(0, 0, 0, 0).WithEmptyParent();
 
             scrollbar = new GuiElementCompactScrollbar(api, OnNewScrollbarValue, scrollbarBounds);
+
+            
+
+            richtTextElem = new GuiElementRichtext[values.Length];
+            for (int i = 0; i < values.Length; i++)
+            {
+                ElementBounds textBounds = ElementBounds.Fixed(0, 0, 700, 100).WithEmptyParent();
+                richtTextElem[i] = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
+            }
         }
 
         private void OnNewScrollbarValue(float offY)
@@ -157,6 +167,18 @@ namespace Vintagestory.API.Client
                 switches = new GuiElementSwitch[Names.Length];
             }
 
+            for (int i = 0; i < richtTextElem.Length; i++)
+            {
+                richtTextElem[i].Dispose();
+            }
+
+            richtTextElem = new GuiElementRichtext[Values.Length];
+            for (int i = 0; i < Values.Length; i++)
+            {
+                ElementBounds textBounds = ElementBounds.Fixed(0, 0, 700, 100).WithEmptyParent();
+                richtTextElem[i] = new GuiElementRichtext(api, new RichTextComponentBase[0], textBounds);
+            }
+
 
             double scaleMul = Scale * RuntimeEnv.GUIScale;
             double lineHeight = unscaledLineHeight * scaleMul;
@@ -169,7 +191,11 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < Values.Length; i++)
             {
-                expandedBoxWidth = Math.Max(expandedBoxWidth, Font.GetTextExtents(Names[i]).Width + scaled(scrollbarWidth + 5));
+                GuiElementRichtext elem = richtTextElem[i];
+                elem.SetNewTextWithoutRecompose(Names[i], Font);
+                elem.BeforeCalcBounds();
+                
+                expandedBoxWidth = Math.Max(expandedBoxWidth, elem.MaxLineWidth + scaled(scrollbarWidth + 5));
             }
             expandedBoxWidth++;
 
@@ -236,8 +262,13 @@ namespace Vintagestory.API.Client
                     ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
                 }
 
-                
-                DrawTextLineAt(ctx, Names[i], x, y + offy);
+                GuiElementRichtext elem = richtTextElem[i];
+
+                elem.Bounds.fixedX = x;
+                elem.Bounds.fixedY = (y + offy) / RuntimeEnv.GUIScale;
+                elem.BeforeCalcBounds();
+                elem.Bounds.CalcWorldBounds();
+                elem.ComposeFor(elem.Bounds, ctx, surface);
             }
 
             generateTexture(surface, ref dropDownTexture);

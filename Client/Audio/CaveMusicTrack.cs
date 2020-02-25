@@ -119,7 +119,6 @@ namespace Vintagestory.API.Client
         /// Should the game play this track?
         /// </summary>
         /// <param name="props">The properties of the current track.</param>
-        /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Do we play this track?</returns>
         public bool ShouldPlay(TrackedPlayerProperties props)
         {
@@ -133,7 +132,6 @@ namespace Vintagestory.API.Client
         /// Starts playing the track.
         /// </summary>
         /// <param name="props">The properties of the current track.</param>
-        /// <param name="musicEngine">the Music Engine.</param>
         public void BeginPlay(TrackedPlayerProperties props)
         {
             activeUntilMs = capi.World.ElapsedMilliseconds + (int)(SessionPlayTime * 1000);
@@ -144,7 +142,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="dt">Delta time or Change in time</param>
         /// <param name="props">The properties of the current track.</param>
-        /// <param name="musicEngine">the Music Engine.</param>
         /// <returns>Are we still playing or do we stop?</returns>
         public bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {

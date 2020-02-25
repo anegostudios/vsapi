@@ -19,7 +19,8 @@ namespace Vintagestory.API.Client
         NoCull = 0,
         CullNormal = 1,
         CullInstant = 2,
-        CullInstantShadowPass = 3
+        CullInstantShadowPassNear = 3,
+        CullInstantShadowPassFar = 4
     }
 
 
@@ -138,7 +139,10 @@ namespace Vintagestory.API.Client
             if (d <= -sphere.radius)
                 return false;
 
-            return Math.Abs(playerPos.X - sphere.x) < shadowRangeX && Math.Abs(playerPos.Z - sphere.z) < shadowRangeZ;
+            double distx = Math.Abs(playerPos.X - sphere.x);
+            double distz = Math.Abs(playerPos.Z - sphere.z);
+
+            return (distx < shadowRangeX && distz < shadowRangeZ);// && lodLevel == 1) || (distx < shadowRangeX * lodBias + 24 && distz < shadowRangeZ * lodBias + 24);
         }
 
 
@@ -165,20 +169,13 @@ namespace Vintagestory.API.Client
             if (d <= -sphere.radius)
                 return false;
 
-
-            if (lodLevel < 0) return true;
-
-
-
-            /*float dist = playerPos.HorDistanceSqTo(sphere.x, sphere.z);
-            return lodLevel == 0 ?
-                dist < ViewDistanceSq * lodBias :
-                dist > ViewDistanceSq * lodBias
-            ;*/
-
             // Lod level 1: all stuff
             // Lod level 0: only high detail stuff
-            return lodLevel == 1 || playerPos.HorDistanceSqTo(sphere.x, sphere.z) < ViewDistanceSq * lodBias + 24*24; // a bit of extra range so we can properly fade the lod in the shader
+
+            
+            double distance = playerPos.HorDistanceSqTo(sphere.x, sphere.z);
+
+            return (distance < ViewDistanceSq && lodLevel == 1) || (distance < ViewDistanceSq * lodBias + 24*24); // a bit of extra range so we can properly fade the lod in the shader
         }
 
 

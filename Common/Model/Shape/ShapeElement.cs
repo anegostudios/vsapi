@@ -88,6 +88,8 @@ namespace Vintagestory.API.Common
         public bool FoliageWindWave;
         [JsonProperty]
         public bool WaterWave;
+        [JsonProperty]
+        public bool Reflective;
 
         /// <summary>
         /// The child shapes of this shape element
@@ -260,6 +262,7 @@ namespace Vintagestory.API.Common
                 RotationX = RotationX,
                 RotationY = RotationY,
                 RotationZ = RotationZ,
+                Reflective = Reflective,
                 RotationOrigin = (double[])RotationOrigin?.Clone(),
                 TintIndex = TintIndex,
                 StepParentName = StepParentName,

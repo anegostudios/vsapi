@@ -32,7 +32,19 @@ namespace Vintagestory.API.Client
         public TextBackground Background;
 
         double padding;
-        
+        public float ZPosition
+        {
+            get
+            {
+                return zPosition;
+            }
+            set
+            {
+                zPosition = value;
+                descriptionElement.zPos = value;
+            }
+        }
+        float zPosition = 500;
 
         GuiElementRichtext descriptionElement;
 
@@ -112,7 +124,7 @@ namespace Vintagestory.API.Client
             ElementBounds textBounds = Bounds.CopyOnlySize();
             textBounds.CalcWorldBounds();
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)hoverWidth+1, (int)hoverHeight + 1);
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Math.Ceiling(hoverWidth), (int)Math.Ceiling(hoverHeight));
             Context ctx = genContext(surface);
 
             ctx.SetSourceRGBA(0, 0, 0, 0);
@@ -194,7 +206,7 @@ namespace Vintagestory.API.Client
                     y -= (y + hoverHeight) - api.Render.FrameHeight;
                 }
 
-                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x + (int)Bounds.absPaddingX, (int)y + (int)Bounds.absPaddingY, (int)hoverWidth + 1, (int)hoverHeight + 1, 500);
+                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x + (int)Bounds.absPaddingX, (int)y + (int)Bounds.absPaddingY, (int)hoverWidth + 1, (int)hoverHeight + 1, zPosition);
 
                 Bounds.renderOffsetX = x - Bounds.renderX + pad;
                 Bounds.renderOffsetY = y - Bounds.renderY + pad;

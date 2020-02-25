@@ -48,6 +48,7 @@ namespace Vintagestory.API.Client
             //PaddingRight = 0;
             this.size = size;
 
+
             // Expand wild cards
             List<GridRecipe> resolvedGridRecipes = new List<GridRecipe>();
             Queue<GridRecipe> halfResolvedRecipes = new Queue<GridRecipe>(gridrecipes);
@@ -76,6 +77,11 @@ namespace Vintagestory.API.Client
                             thisResolved = false;
                             ItemStack[] stacks = ResolveWildCard(capi.World, ingred, allStacks);
 
+                            if (stacks.Length == 0)
+                            {
+                                throw new ArgumentException("Attempted to resolve the recipe ingredient wildcard " + ingred.Type + " " + ingred.Code + " but there are no such items/blocks!");
+                            }
+
                             for (int k = 0; k < stacks.Length; k++)
                             {
                                 GridRecipe cloned = toTestRecipe.Clone();
@@ -102,13 +108,15 @@ namespace Vintagestory.API.Client
                         resolvedGridRecipes.Add(toTestRecipe);
                     }
                 }
-
-                resolveCache.Clear();
-                this.GridRecipes = resolvedGridRecipes.ToArray();
-
-                Random fixedRand = new Random(123);
-                this.GridRecipes.Shuffle(fixedRand);
             }
+
+            resolveCache.Clear();
+            this.GridRecipes = resolvedGridRecipes.ToArray();
+
+            Random fixedRand = new Random(123);
+            this.GridRecipes.Shuffle(fixedRand);
+
+            if (GridRecipes.Length == 0) throw new ArgumentException("Could not resolve any of the supplied grid recipes?");
         }
 
         

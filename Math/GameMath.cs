@@ -275,6 +275,11 @@ namespace Vintagestory.API.MathTools
             return ((k %= n) < 0) ? k + n : k;
         }
 
+        public static uint Mod(uint k, uint n)
+        {
+            return ((k %= n) < 0) ? k + n : k;
+        }
+
         /// <summary>
         /// C#'s %-Operation is actually not modulo but remainder, so this is the actual modulo function that ensures positive numbers as return value
         /// </summary>
@@ -931,13 +936,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public static int oaatHash(int x)
+        public static int oaatHashMany(int x, int count)
         {
-            x += (x << 10);
-            x ^= (x >> 6);
-            x += (x << 3);
-            x ^= (x >> 11);
-            x += (x << 15);
+            for (int i = 0; i < count; i++)
+            {
+                x += (x << 10);
+                x ^= (x >> 6);
+                x += (x << 3);
+                x ^= (x >> 11);
+                x += (x << 15);
+            }
             return x;
         }
 
@@ -946,23 +954,28 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
-        public static uint oaatHashU(uint x)
+        public static uint oaatHashUMany(uint x, int count)
         {
-            x += (x << 10);
-            x ^= (x >> 6);
-            x += (x << 3);
-            x ^= (x >> 11);
-            x += (x << 15);
+            for (int i = 0; i < count; i++)
+            {
+                x += (x << 10);
+                x ^= (x >> 6);
+                x += (x << 3);
+                x ^= (x >> 11);
+                x += (x << 15);
+            }
             return x;
         }
 
+        static int OaatIterations = 3;
+
         /// <summary>
         /// Bob Jenkins' One-At-A-Time hashing algorithm. Fast, but not very random.
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int oaatHash(Vec2i v) { return oaatHash(v.X ^ oaatHash(v.Y)); }
+        public static int oaatHash(Vec2i v) { return oaatHashMany(v.X ^ oaatHashMany(v.Y, OaatIterations), OaatIterations); }
 
         /// <summary>
         /// Bob Jenkins' One-At-A-Time hashing algorithm. Fast, but not very random.
@@ -971,7 +984,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="y"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int oaatHash(int x, int y) { return oaatHash(x ^ oaatHash(y)); }
+        public static int oaatHash(int x, int y) { return oaatHashMany(x ^ oaatHashMany(y, OaatIterations), OaatIterations); }
 
         /// <summary>
         /// Bob Jenkins' One-At-A-Time hashing algorithm. Fast, but not very random.
@@ -979,17 +992,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="v"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int oaatHash(Vec3i v) { return oaatHash(v.X) ^ oaatHash(v.Y) ^ oaatHash(v.Z); }
-
-        /// <summary>
-        /// Bob Jenkins' One-At-A-Time hashing algorithm. Fast, but not very random.
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int oaatHash(int x, int y, int z) { return oaatHash(x) ^ oaatHash(y) ^ oaatHash(z); }
+        public static int oaatHash(Vec3i v) { return oaatHashMany(v.X, OaatIterations) ^ oaatHashMany(v.Y, OaatIterations) ^ oaatHashMany(v.Z, OaatIterations); }
 
         /// <summary>
         /// Bob Jenkins' One-At-A-Time hashing algorithm. Fast, but not very random.
@@ -999,7 +1002,17 @@ namespace Vintagestory.API.MathTools
         /// <param name="z"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint oaatHashU(int x, int y, int z) { return oaatHashU((uint)x) ^ oaatHashU((uint)y) ^ oaatHashU((uint)z); }
+        public static int oaatHash(int x, int y, int z) { return oaatHashMany(x, OaatIterations) ^ oaatHashMany(y, OaatIterations) ^ oaatHashMany(z, OaatIterations); }
+
+        /// <summary>
+        /// Bob Jenkins' One-At-A-Time hashing algorithm. Fast, but not very random.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static uint oaatHashU(int x, int y, int z) { return oaatHashUMany((uint)x, OaatIterations) ^ oaatHashUMany((uint)y, OaatIterations) ^ oaatHashUMany((uint)z, OaatIterations); }
 
         /// <summary>
         /// Bob Jenkins' One-At-A-Time hashing algorithm. Fast, but not very random.
@@ -1007,7 +1020,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="v"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int oaatHash(Vec4i v) { return oaatHash(v.X) ^ oaatHash(v.Y) ^ oaatHash(v.Z) ^ oaatHash(v.W); }
+        public static int oaatHash(Vec4i v) { return oaatHashMany(v.X, OaatIterations) ^ oaatHashMany(v.Y, OaatIterations) ^ oaatHashMany(v.Z, OaatIterations) ^ oaatHashMany(v.W, OaatIterations); }
 
         /// <summary>
         /// A really bad, but very fast hashing method.

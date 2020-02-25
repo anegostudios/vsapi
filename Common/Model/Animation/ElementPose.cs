@@ -60,5 +60,10 @@ namespace Vintagestory.API.Common
                 AnimModelMatrix[i] = modelMatrix[i];
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("translate: {0}/{1}/{2}, rotate: {3}/{4}/{5}, scale: {6}/{7}/{8}", translateX, translateY, translateZ, degX, degY, degZ, scaleX, scaleY, scaleZ);
+        }
     }
 }

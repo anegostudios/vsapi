@@ -18,8 +18,10 @@ namespace Vintagestory.API.Common
         public const int ZOffsetBitMask = 0x7 << 8;
         public const int FoliageWindWaveBitMask = 1 << 11;
         public const int WaterWaveBitMask = 1 << 12;
-        public const int LowContrastBitMask = 1 << 13;
-        public const int HasNormalBitMask = 1 << 14;
+
+        public const int ReflectiveBitMask = 1 << 13;
+
+        public const int WeakWaveBitMask = 1 << 14;
         public const int NormalBitMask = 0xFFF << 15;
         public const int LeavesWindWaveBitMask = 1 << 27;
 
@@ -42,8 +44,8 @@ namespace Vintagestory.API.Common
                 ZOffset = (byte)((value >> 8) & 0x7);
                 GrassWindWave = ((value >> 11) & 1) != 0;
                 WaterWave = ((value >> 12) & 1) != 0;
-                LowContrast = ((value >> 13) & 1) != 0;
-                hasNormal = ((value >> 14) & 1) != 0;
+                Reflective = ((value >> 13) & 1) != 0;
+                WeakWave = ((value >> 14) & 1) != 0;
                 Normal = (byte)((value >> 15) & 0xFFF);
                 LeavesWindWave = ((value >> 27) & 1) != 0;
             }
@@ -56,7 +58,7 @@ namespace Vintagestory.API.Common
 
         byte glowLevel, zOffset;
         int normal;
-        bool grassWindWave, leavesWindWave, waterWave, lowContrast, hasNormal;
+        bool grassWindWave, leavesWindWave, waterWave, shiny, weakWave;
 
         // Bit 15: x-sign
         // Bit 16, 17, 18: x-value
@@ -196,30 +198,30 @@ namespace Vintagestory.API.Common
 
         // Bit 13
         [JsonProperty]
-        public bool LowContrast
+        public bool Reflective
         {
             get
             {
-                return lowContrast;
+                return shiny;
             }
             set
             {
-                lowContrast = value;
+                shiny = value;
                 UpdateAll();
             }
         }
 
         // Bit 14
         [JsonProperty]
-        public bool HasNormal
+        public bool WeakWave
         {
             get
             {
-                return hasNormal;
+                return weakWave;
             }
             set
             {
-                hasNormal = value;
+                weakWave = value;
                 UpdateAll();
             }
         }
@@ -272,15 +274,15 @@ namespace Vintagestory.API.Common
             All = flags;
         }
 
-        public VertexFlags(byte glowLevel, byte zOffset, bool grassWindWave, bool leavesWindWave, bool waterWave, bool lowContrast, bool hasNormal, int normal)
+        public VertexFlags(byte glowLevel, byte zOffset, bool grassWindWave, bool leavesWindWave, bool waterWave, bool lowContrast, bool weakWave, int normal)
         {
             this.glowLevel = glowLevel;
             this.zOffset = zOffset;
             this.grassWindWave = grassWindWave;
             this.waterWave = waterWave;
-            this.lowContrast = lowContrast;
+            this.shiny = lowContrast;
             this.normal = normal;
-            this.hasNormal = hasNormal;
+            this.weakWave = weakWave;
             this.leavesWindWave = leavesWindWave;
 
             UpdateAll();
@@ -292,8 +294,8 @@ namespace Vintagestory.API.Common
                   | ((zOffset & 0x7) << 8)
                   | (grassWindWave ? 1 : 0) << 11
                   | (waterWave ? 1 : 0) << 12
-                  | (lowContrast ? 1 : 0) << 13
-                  | (hasNormal ? 1 : 0) << 14
+                  | (shiny ? 1 : 0) << 13
+                  | (weakWave ? 1 : 0) << 14
                   | ((normal & 0xFFF) << 15)
                   | (leavesWindWave ? 1 : 0) << 27
             ;

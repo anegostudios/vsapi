@@ -92,6 +92,13 @@ namespace Vintagestory.API.MathTools
         {
             return X + " / " + Y;
         }
+
+        public Vec2i Add(int dx, int dy)
+        {
+            this.X += dx;
+            this.Y += dy;
+            return this;
+        }
     }
 
 

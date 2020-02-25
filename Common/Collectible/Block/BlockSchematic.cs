@@ -35,7 +35,8 @@ namespace Vintagestory.API.Common
     {
         StartPos = 0,
         BottomCenter = 1,
-        TopCenter = 2
+        TopCenter = 2,
+        MiddleCenter = 3
     }
 
     [JsonObject(MemberSerialization.OptIn)]
@@ -96,6 +97,8 @@ namespace Vintagestory.API.Common
             fillerBlock = blockAccessor.GetBlock(new AssetLocation("meta-filler"));
             pathwayBlock = blockAccessor.GetBlock(new AssetLocation("meta-pathway"));
             undergroundBlock = blockAccessor.GetBlock(new AssetLocation("meta-underground"));
+
+            
         }
 
         /// <summary>
@@ -106,8 +109,6 @@ namespace Vintagestory.API.Common
         /// <param name="fileNameForLogging"></param>
         public void LoadMetaInformationAndValidate(IBlockAccessor blockAccessor, IWorldAccessor worldForResolve, string fileNameForLogging)
         {
-            BlockPos curPos = new BlockPos();
-
             List<BlockPos> undergroundPositions = new List<BlockPos>();
             Queue<BlockPos> pathwayPositions = new Queue<BlockPos>();
 
@@ -444,7 +445,6 @@ namespace Vintagestory.API.Common
 
                 if (newBlock.LightHsv[2] > 0 && blockAccessor is IWorldGenBlockAccessor)
                 {
-                    int chunkSize = blockAccessor.ChunkSize;
                     ((IWorldGenBlockAccessor)blockAccessor).ScheduleBlockLightUpdate(curPos.Copy(), oldBlock.BlockId, newBlock.BlockId);
                 }
             }
@@ -711,6 +711,8 @@ namespace Vintagestory.API.Common
         {
             BlockPos curPos = new BlockPos();
 
+            int schematicSeed = worldForCollectibleResolve.Rand.Next();
+
             foreach (var val in BlockEntities)
             {
                 uint index = val.Key;
@@ -722,11 +724,12 @@ namespace Vintagestory.API.Common
 
                 BlockEntity be = blockAccessor.GetBlockEntity(curPos);
 
+
                 // Block entities need to be manually initialized for world gen block access
                 if (be == null && blockAccessor is IWorldGenBlockAccessor)
                 {
                     Block block = blockAccessor.GetBlock(curPos);
-
+                    
                     if (block.EntityClass != null)
                     {
                         blockAccessor.SpawnBlockEntity(block.EntityClass, curPos);
@@ -736,13 +739,20 @@ namespace Vintagestory.API.Common
 
                 if (be != null)
                 {
+                    Block block = blockAccessor.GetBlock(curPos);
+                    if (block.EntityClass != worldForCollectibleResolve.ClassRegistry.GetBlockEntityClass(be.GetType()))
+                    {
+                        worldForCollectibleResolve.Logger.Warning("Could not import block entity data for schematic at {0}. There is already {1}, expected {2}. Probably overlapping ruins.", curPos, be.GetType(), block.EntityClass);
+                        continue;
+                    }
+
                     ITreeAttribute tree = DecodeBlockEntityData(val.Value);
                     tree.SetInt("posx", curPos.X);
                     tree.SetInt("posy", curPos.Y);
                     tree.SetInt("posz", curPos.Z);
 
                     be.FromTreeAtributes(tree, worldForCollectibleResolve);
-                    be.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes);                    
+                    be.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
                     be.Pos = curPos.Copy();
                 }
             }
@@ -784,7 +794,6 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < Indices.Count; i++)
             {
                 uint index = Indices[i];
-                int storedBlockid = BlockIds[i];
 
                 int dx = (int)(index & 0x1ff);
                 int dy = (int)((index >> 20) & 0x1ff);
@@ -827,6 +836,13 @@ namespace Vintagestory.API.Common
             if (origin == EnumOrigin.BottomCenter)
             {
                 startpos.X -= SizeX / 2;
+                startpos.Z -= SizeZ / 2;
+            }
+
+            if (origin == EnumOrigin.MiddleCenter)
+            {
+                startpos.X -= SizeX / 2;
+                startpos.Y -= SizeY / 2;
                 startpos.Z -= SizeZ / 2;
             }
 

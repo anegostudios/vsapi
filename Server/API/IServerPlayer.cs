@@ -93,13 +93,6 @@ namespace Vintagestory.API.Server
         void SendMessage(int groupId, string message, EnumChatType chatType, string data = null);
 
 
-        /// <summary>
-        /// Check if a player has the given privilege
-        /// </summary>
-        /// <param name = "privilegeCode">The privilege to check</param>
-        /// <returns>true if the player has the given privilege, false otherwise</returns>
-        bool HasPrivilege(string privilegeCode);
-
 
         /// <summary>
         /// Sets a player specific spawn position
@@ -119,7 +112,7 @@ namespace Vintagestory.API.Server
         /// If no custom spawnpoint is present this method will return the global default spawnpoint.
         /// Returns null when called on client side.
         /// </summary>
-        EntityPos SpawnPosition { get; }
+        FuzzyEntityPos SpawnPosition { get; }
 
 
         /// <summary>

@@ -70,18 +70,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Item in the left hand slot of the entity agent.
         /// </summary>
-        public virtual ItemSlot LeftHandItemSlot
-        {
-            get { return null; }
-        }
+        public virtual ItemSlot LeftHandItemSlot { get; set; }
 
         /// <summary>
         /// Item in the right hand slot of the entity agent.
         /// </summary>
-        public virtual ItemSlot RightHandItemSlot
-        {
-            get { return null; }
-        }
+        public virtual ItemSlot RightHandItemSlot { get; set; }
 
         /// <summary>
         /// The inventory of the entity agent.
@@ -216,7 +210,11 @@ namespace Vintagestory.API.Common
 
             MountedOn?.DidUnmount(this);
             this.MountedOn = null;
-            WatchedAttributes.RemoveAttribute("mountedOn");
+
+            if (WatchedAttributes.HasAttribute("mountedOn"))
+            {
+                WatchedAttributes.RemoveAttribute("mountedOn");
+            }
 
             return true;
         }
@@ -407,7 +405,7 @@ namespace Vintagestory.API.Common
                         (Swimming && !servercontrols.FloorSitting ? EnumEntityActivity.Swim : 0) |
                         (servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
                         (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting ? EnumEntityActivity.SneakMode : 0) |
-                        (servercontrols.Sprint && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
+                        (servercontrols.Sprint && !Swimming && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
                         (servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
                         (servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
                         (servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |
@@ -471,11 +469,34 @@ namespace Vintagestory.API.Common
                 {
                     AnimManager.StopAnimation(defaultAnim.Code);
                 }
+
+
+                ICoreClientAPI capi = (Api as ICoreClientAPI);
+                bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
+                EntityPos herepos = (isSelf ? Pos : ServerPos);
+                bool movinginLiquid = (FeetInLiquid || Swimming) && (herepos.Motion.LengthSq() > 0.0000) && !servercontrols.NoClip;// && !servercontrols.FlyMode && OnGround;
+
+                if (movinginLiquid)
+                {
+                    
+                    double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
+
+                    SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
+                    SplashParticleProps.AddPos.Set(width, 0.5, width);
+
+                    float mot = (float)herepos.Motion.Length();
+                    SplashParticleProps.AddVelocity.Set((float)herepos.Motion.X * 20f, 0, (float)herepos.Motion.Z * 20f);
+                    SplashParticleProps.QuantityMul = 0.15f * mot * 5;
+                    
+                    World.SpawnParticles(SplashParticleProps);
+
+                    SpawnWaterMovementParticles((float)Math.Max(Swimming ? 0.04f : 0, mot * 5));
+                }
             }
 
             if (Properties.RotateModelOnClimb && World.Side == EnumAppSide.Server)
             {
-                if (Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
+                if (!OnGround && Alive && Controls.IsClimbing && ClimbingOnFace != null && ClimbingOnCollBox.Y2 > 0.2 /* cheap hax so that locusts don't climb on very flat collision boxes */)
                 {
                     ServerPos.Pitch = ClimbingOnFace.HorizontalAngleIndex * GameMath.PIHALF;
                 }
@@ -483,6 +504,8 @@ namespace Vintagestory.API.Common
                 {
                     ServerPos.Pitch = 0;
                 }
+
+                
             }
             
             
@@ -714,5 +737,40 @@ namespace Vintagestory.API.Common
             DebugAttributes.SetString("Herd Id", "" + HerdId);
         }
 
+        public override bool TryGiveItemStack(ItemStack itemstack)
+        {
+            if (itemstack == null || itemstack.StackSize == 0) return false;
+
+            ItemSlot dummySlot = new DummySlot(null);
+            dummySlot.Itemstack = itemstack.Clone();
+
+            ItemStackMoveOperation op = new ItemStackMoveOperation(World, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, itemstack.StackSize);
+
+            if (GearInventory != null)
+            {
+                WeightedSlot wslot = GearInventory.GetBestSuitedSlot(dummySlot, new List<ItemSlot>());
+                if (wslot.weight > 0)
+                {
+                    dummySlot.TryPutInto(wslot.slot, ref op);
+                    itemstack.StackSize -= op.MovedQuantity;
+                    WatchedAttributes.MarkAllDirty();
+                    return op.MovedQuantity > 0;
+                }
+            }
+
+            if (LeftHandItemSlot?.Inventory != null)
+            {
+                WeightedSlot wslot = LeftHandItemSlot.Inventory.GetBestSuitedSlot(dummySlot, new List<ItemSlot>());
+                if (wslot.weight > 0)
+                {
+                    dummySlot.TryPutInto(wslot.slot, ref op);
+                    itemstack.StackSize -= op.MovedQuantity;
+                    WatchedAttributes.MarkAllDirty();
+                    return op.MovedQuantity > 0;
+                }
+            }
+
+            return false;
+        }
     }
 }

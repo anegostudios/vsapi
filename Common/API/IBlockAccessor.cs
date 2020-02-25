@@ -441,7 +441,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        int GetHorDistanceToRainFall(BlockPos pos, int searchWidth = 4);
+        int GetDistanceToRainFall(BlockPos pos, int horziontalSearchWidth = 4, int verticalSearchWidth = 1);
 
         /// <summary>
         /// Returns the topmost non-rain-permeable position at given x/z coordinate. This map is always updated after placing/removing blocks
@@ -450,6 +450,7 @@ namespace Vintagestory.API.Common
         /// <param name="posZ"></param>
         /// <returns></returns>
         int GetRainMapHeightAt(int posX, int posZ);
+        
 
         /// <summary>
         /// Returns the map chunk at given chunk position
@@ -479,6 +480,8 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <returns></returns>
         ClimateCondition GetClimateAt(BlockPos pos);
-        
+
+        void MarkAbsorptionChanged(int oldAbsorption, int newAbsorption, BlockPos pos);
+
     }
 }

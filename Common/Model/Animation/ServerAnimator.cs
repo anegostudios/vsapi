@@ -69,6 +69,7 @@ namespace Vintagestory.API.Common
             
         }
 
+
         public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] Animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, rootPoses, Animations, rootElements, jointsById, onAnimationStoppedListener)
         {
         }

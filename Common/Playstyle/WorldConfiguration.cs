@@ -29,6 +29,8 @@ namespace Vintagestory.API.Common
         public double Max;
         public double Step;
 
+        public bool OnCustomizeScreen = true;
+
         public string Default;
         public string[] Values;
         public string[] Names;

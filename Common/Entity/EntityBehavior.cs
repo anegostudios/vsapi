@@ -166,7 +166,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// The event fired when the client recieves a packet.
+        /// The event fired when the server receives a packet.
         /// </summary>
         /// <param name="player">The server player.</param>
         /// <param name="packetid">the packet id.</param>
@@ -175,6 +175,18 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data, ref EnumHandling handled)
         {
             
+        }
+
+        /// <summary>
+        /// The event fired when the client receives a packet.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="packetid"></param>
+        /// <param name="data"></param>
+        /// <param name="handled"></param>
+        public virtual void OnReceivedServerPacket(int packetid, byte[] data, ref EnumHandling handled)
+        {
+
         }
 
         /// <summary>

@@ -6,6 +6,17 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common.Entities
 {
+    public class FuzzyEntityPos : EntityPos
+    {
+        public float Radius;
+
+        public FuzzyEntityPos(double x, double y, double z, float heading = 0, float pitch = 0, float roll = 0) : base(x, y, z, heading, pitch, roll)
+        {
+            
+        }
+
+    }
+
     /// <summary>
     /// Represents all positional information of an entity, such as coordinates, motion and angles
     /// </summary>

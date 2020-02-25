@@ -189,7 +189,7 @@ namespace Vintagestory.API.Config
 
             foreach (var pair in Inst.LangStartsWith)
             {
-                if (StringUtil.FastStartsWith(key, pair.Key))
+                if (StringUtil.FastStartsWith(domainandkey, pair.Key))
                 {
                     return string.Format(pair.Value, param);
                 }

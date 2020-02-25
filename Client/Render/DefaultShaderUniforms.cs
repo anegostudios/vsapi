@@ -63,6 +63,14 @@ namespace Vintagestory.API.Client
         public float GlobalWorldWarp = 0f;
 
         public float SunsetMod = 0f;
+        public int SunLightTextureId;
+        public int GlowTextureId;
+        public int SkyTextureId;
+        
+        public int DitherSeed;
+        public int FrameWidth;
+        public float PlayerToSealevelOffset;
+
 
         public Vec3f PlayerPos = new Vec3f();
         Vec3d playerReferencePos;
@@ -122,6 +130,12 @@ namespace Vintagestory.API.Client
 
             Dusk = capi.World.Calendar.Dusk ? 1 : 0;
 
+            
+            PlayerToSealevelOffset = (float)capi.World.Player.Entity.Pos.Y - capi.World.SeaLevel;
+            FrameWidth = capi.Render.FrameWidth;
+
+            // updated by RenderSkyColor.cs
+            // DitherSeed, SkyTextureId, GlowTextureId, SkyDaylight
 
             // updated by RenderSunMoon.cs
             // SunPositionScreen, SunPosition3D

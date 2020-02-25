@@ -19,6 +19,10 @@ namespace Vintagestory.API.Common
         public float rotateY;
         public float rotateZ;
 
+        public float offsetX;
+        public float offsetY;
+        public float offsetZ;
+
         /// <summary>
         /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
         /// </summary>
@@ -44,7 +48,16 @@ namespace Vintagestory.API.Common
 
         public override int GetHashCode()
         {
-            return Base.GetHashCode() + ("@" + rotateX + "/" + rotateY + "/" + rotateZ).GetHashCode();
+            int hashcode = Base.GetHashCode() + ("@" + rotateX + "/" + rotateY + "/" + rotateZ + "o" + offsetX + "/" + offsetY + "/" + offsetZ).GetHashCode();
+            if (Overlays != null)
+            {
+                for (int i = 0; i < Overlays.Length; i++)
+                {
+                    hashcode ^= Overlays[i].GetHashCode();
+                }
+            }
+
+            return hashcode;
         }
 
         /// <summary>
@@ -85,6 +98,9 @@ namespace Vintagestory.API.Common
                 rotateX = rotateX,
                 rotateY = rotateY,
                 rotateZ = rotateZ,
+                offsetX = offsetX,
+                offsetY = offsetY,
+                offsetZ = offsetZ,
                 QuantityElements = QuantityElements,
                 SelectiveElements = (string[])SelectiveElements?.Clone()
             };
@@ -100,7 +116,10 @@ namespace Vintagestory.API.Common
                 Format = Format,
                 rotateX = rotateX,
                 rotateY = rotateY,
-                rotateZ = rotateZ, 
+                rotateZ = rotateZ,
+                offsetX = offsetX,
+                offsetY = offsetY,
+                offsetZ = offsetZ,
                 VoxelizeTexture = VoxelizeTexture,
                 QuantityElements = QuantityElements,
                 SelectiveElements = (string[])SelectiveElements?.Clone()

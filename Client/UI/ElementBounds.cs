@@ -578,6 +578,14 @@ namespace Vintagestory.API.Client
             };
         }
 
+        /// <summary>
+        /// Create a flat copy of the element with a fixed position offset that causes it to be right of the original element
+        /// </summary>
+        /// <param name="fixedDeltaX"></param>
+        /// <param name="fixedDeltaY"></param>
+        /// <param name="fixedDeltaWidth"></param>
+        /// <param name="fixedDeltaHeight"></param>
+        /// <returns></returns>
         public ElementBounds RightCopy(double fixedDeltaX = 0, double fixedDeltaY = 0, double fixedDeltaWidth = 0, double fixedDeltaHeight = 0)
         {
             return new ElementBounds()

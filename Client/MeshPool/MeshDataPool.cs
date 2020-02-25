@@ -509,8 +509,11 @@ namespace Vintagestory.API.Client
                 case EnumFrustumCullMode.CullInstant:
                     return CullVisible[visibleBufIndex].value && culler.SphereInFrustum(frustumCullSphere);
 
-                case EnumFrustumCullMode.CullInstantShadowPass:
-                    return CullVisible[visibleBufIndex].value && (culler.SphereInFrustumShadowPass(frustumCullSphere) || LodLevel == 1);
+                case EnumFrustumCullMode.CullInstantShadowPassNear:
+                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustumShadowPass(frustumCullSphere);
+
+                case EnumFrustumCullMode.CullInstantShadowPassFar:
+                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustumShadowPass(frustumCullSphere) && LodLevel == 1;
 
                 case EnumFrustumCullMode.CullNormal:
                     return CullVisible[visibleBufIndex].value && UpdateVisibleFlag(culler.SphereInFrustumAndRange(frustumCullSphere, FrustumVisible, LodLevel));

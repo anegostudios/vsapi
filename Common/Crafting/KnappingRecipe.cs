@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
-    public class KnappingRecipe : SingleLayerVoxelRecipe<KnappingRecipe>, IByteSerializable
+    public class KnappingRecipe : LayeredVoxelRecipe<KnappingRecipe>, IByteSerializable
     {
+        public override int QuantityLayers => 1;
+        public override string RecipeCategoryCode => "knapping";
+
+
         /// <summary>
         /// Creates a deep copy
         /// </summary>
@@ -16,7 +20,7 @@ namespace Vintagestory.API.Common
         {
             KnappingRecipe recipe = new KnappingRecipe();
 
-            recipe.Pattern = (string[])Pattern.Clone();
+            recipe.Pattern = (string[][])Pattern.Clone();
             recipe.Ingredient = Ingredient.Clone();
             recipe.Output = Output.Clone();
             recipe.Name = Name;

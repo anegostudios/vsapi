@@ -68,7 +68,6 @@ namespace Vintagestory.API.Common
         /// You should still call the base method to sets the this.api field
         /// </summary>
         /// <param name="api"></param>
-        /// <param name="block"></param>
         public virtual void Initialize(ICoreAPI api)
         {
             this.Api = api;
@@ -329,11 +328,13 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
+        /// Note: Some vanilla blocks resolve randomized contents in this method.
         /// Hint: Use itemstack.FixMapping() to do the job for you.
         /// </summary>
         /// <param name="oldBlockIdMapping"></param>
         /// <param name="oldItemIdMapping"></param>
-        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        /// <param name="schematicSeed">If you need some sort of randomness consistency accross an imported schematic, you can use this value</param>
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
         {
             foreach (var val in Behaviors)
             {
@@ -343,7 +344,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Let's you add your own meshes to a chunk. Don't reuse the meshdata instance anywhere in your code.
+        /// Let's you add your own meshes to a chunk. Don't reuse the meshdata instance anywhere in your code. Return true to skip the default mesh.
         /// WARNING!
         /// The Tesselator runs in a seperate thread, so you have to make sure the fields and methods you access inside this method are thread safe.
         /// </summary>

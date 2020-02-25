@@ -83,6 +83,7 @@ namespace Vintagestory.API.Common
                 return;
             }
             BlendedWeight = GameMath.Clamp(blendMode != EnumAnimationBlendMode.Average ? EasingFactor : EasingFactor / weightSum, 0, 1);
+            
         }
 
         public void Progress(float dt, float walkspeed)
@@ -100,7 +101,7 @@ namespace Vintagestory.API.Common
             }
             
             float newFrame = (CurrentFrame + 30 * (ShouldRewind ? -dt : dt));
-
+            
             if (!Active && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd && (Iterations >= 1 || newFrame >= Animation.QuantityFrames - 1))
             {
                 EasingFactor = 0;

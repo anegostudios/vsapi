@@ -92,7 +92,7 @@ namespace Vintagestory.API.Datastructures
 
             if (allDirty) return;
 
-            if (attributePathsDirty.Count >= 5)
+            if (attributePathsDirty.Count >= 10)
             {
                 attributePathsDirty.Clear();
                 allDirty = true;
@@ -173,6 +173,18 @@ namespace Vintagestory.API.Datastructures
             MarkPathDirty(key);
         }
 
+        public override void SetBool(string key, bool value)
+        {
+            base.SetBool(key, value);
+            MarkPathDirty(key);
+        }
+
+        public override void SetBytes(string key, byte[] value)
+        {
+            base.SetBytes(key, value);
+            MarkPathDirty(key);
+        }
+
         public override void SetDouble(string key, double value)
         {
             base.SetDouble(key, value);
@@ -242,6 +254,7 @@ namespace Vintagestory.API.Datastructures
         public override void FromBytes(BinaryReader stream)
         {
             base.FromBytes(stream);
+
             foreach (TreeModifiedListener listener in OnModified)
             {
                 listener.listener();

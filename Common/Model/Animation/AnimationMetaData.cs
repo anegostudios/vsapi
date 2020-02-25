@@ -87,7 +87,8 @@ namespace Vintagestory.API.Common
         public Dictionary<string, EnumAnimationBlendMode> ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(StringComparer.OrdinalIgnoreCase);
         [JsonProperty]
         public bool SupressDefaultAnimation = false;
-
+        
+        public float StartFrameOnce;
 
         int withActivitiesMerged;
         public uint CodeCrc32;
@@ -208,9 +209,10 @@ namespace Vintagestory.API.Common
             }
 
             writer.Write(MulWithWalkSpeed);
+            writer.Write(StartFrameOnce);
         }
 
-        public static AnimationMetaData FromBytes(BinaryReader reader)
+        public static AnimationMetaData FromBytes(BinaryReader reader, string version)
         {
             AnimationMetaData animdata = new AnimationMetaData();
 
@@ -252,6 +254,11 @@ namespace Vintagestory.API.Common
             }
 
             animdata.MulWithWalkSpeed = reader.ReadBoolean();
+
+            if (GameVersion.IsAtLeastVersion(version, "1.12.5-dev.1"))
+            {
+                animdata.StartFrameOnce = reader.ReadSingle();
+            }
 
             animdata.Init();
 

@@ -1,5 +1,4 @@
 ﻿using Cairo;
-using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
@@ -16,8 +15,8 @@ namespace Vintagestory.API.Client
         GuiElementStaticText normalText;
         GuiElementStaticText pressedText;
 
-
         LoadedTexture hoverTexture;
+        LoadedTexture disabledTexture;
         
         ActionConsumable onClick;
 
@@ -48,6 +47,7 @@ namespace Vintagestory.API.Client
         public GuiElementTextButton(ICoreClientAPI capi, string text, CairoFont font, CairoFont hoverFont, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal) : base(capi, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
+            disabledTexture = new LoadedTexture(capi);
             this.buttonStyle = style;
 
             normalText = new GuiElementStaticText(capi, text, EnumTextOrientation.Center, bounds, font);
@@ -75,26 +75,35 @@ namespace Vintagestory.API.Client
         {
             ComposeButton(ctxStatic, surfaceStatic, false);
 
-
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
-
-            Context ctx = genContext(surface);
-
-            if (buttonStyle != EnumButtonStyle.None)
+            using (var surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight))
+            using (var ctx = genContext(surface))
             {
-                ctx.SetSourceRGBA(0, 0, 0, 0.4);
-                ctx.Rectangle(0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
-                ctx.Fill();
+                if (buttonStyle != EnumButtonStyle.None)
+                {
+                    ctx.SetSourceRGBA(0, 0, 0, 0.4);
+                    ctx.Rectangle(0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
+                    ctx.Fill();
+                }
+
+                pressedText.Bounds.fixedY += textOffsetY;
+                pressedText.ComposeElements(ctx, surface);
+                pressedText.Bounds.fixedY -= textOffsetY;
+
+                generateTexture(surface, ref hoverTexture);
             }
 
-            pressedText.Bounds.fixedY += textOffsetY;
-            pressedText.ComposeElements(ctx, surface);
-            pressedText.Bounds.fixedY -= textOffsetY;
+            using (var surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight))
+            using (var ctx = genContext(surface))
+            {
+                if (buttonStyle != EnumButtonStyle.None)
+                {
+                    ctx.SetSourceRGBA(0, 0, 0, 0.4);
+                    ctx.Rectangle(0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
+                    ctx.Fill();
+                }
 
-            generateTexture(surface, ref hoverTexture);
-
-            ctx.Dispose();
-            surface.Dispose();
+                generateTexture(surface, ref disabledTexture);
+            }
         }
 
 
@@ -186,14 +195,20 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            if (isOver || currentlyMouseDownOnElement)
+            if (!enabled)
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(
+                    disabledTexture.TextureId,
+                    normalText.Bounds.renderX, normalText.Bounds.renderY,
+                    normalText.Bounds.OuterWidthInt, normalText.Bounds.OuterHeightInt
+                );
+            }
+            else if (isOver || currentlyMouseDownOnElement)
             {
                 api.Render.Render2DTexturePremultipliedAlpha(
                     hoverTexture.TextureId,
-                    normalText.Bounds.renderX,
-                    normalText.Bounds.renderY,
-                    normalText.Bounds.OuterWidthInt,
-                    normalText.Bounds.OuterHeightInt
+                    normalText.Bounds.renderX, normalText.Bounds.renderY,
+                    normalText.Bounds.OuterWidthInt, normalText.Bounds.OuterHeightInt
                 );
             }
         }

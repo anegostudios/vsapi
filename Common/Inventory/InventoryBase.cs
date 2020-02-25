@@ -91,6 +91,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public abstract int Count { get; }
 
+        public virtual int CountForNetworkPacket => Count;
+
         /// <summary>
         /// Gets or sets the slot at the given slot number.
         /// Returns null for invalid slot number (below 0 or above Count-1).

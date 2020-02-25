@@ -274,7 +274,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public Vec3i PopVec3i(Vec3i defaultValue)
+        public Vec3i PopVec3i(Vec3i defaultValue = null)
         {
             int? x = PopInt(defaultValue?.X);
             int? y = PopInt(defaultValue?.Y);
@@ -283,6 +283,18 @@ namespace Vintagestory.API.Common
             if (x == null || y == null || z == null) return defaultValue;
             return new Vec3i((int)x, (int)y, (int)z);
         }
+
+
+        public Vec3d PopVec3d(Vec3d defaultValue = null)
+        {
+            double? x = PopDouble(defaultValue?.X);
+            double? y = PopDouble(defaultValue?.Y);
+            double? z = PopDouble(defaultValue?.Z);
+
+            if (x == null || y == null || z == null) return defaultValue;
+            return new Vec3d((double)x, (double)y, (double)z);
+        }
+
 
         /// <summary>
         /// Retrieves a player position with following syntax:

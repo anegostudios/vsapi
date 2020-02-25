@@ -50,9 +50,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         Offhand = 256,
         /// <summary>
-        /// Reserved for vanilla
+        /// Arrows
         /// </summary>
-        Reserved1 = 512,
+        Arrow = 512,
         /// <summary>
         /// Reserved for vanilla
         /// </summary>

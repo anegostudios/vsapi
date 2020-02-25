@@ -28,6 +28,15 @@ namespace Vintagestory.API.Common
         /// </summary>
         public int ActiveAnimationCount => 0;
 
+        public bool CalculateMatrices { get; set; }
+
+        public RunningAnimation[] RunningAnimations => new RunningAnimation[0];
+
+        public RunningAnimation GetAnimationState(string code)
+        {
+            return null;
+        }
+
         /// <summary>
         /// Gets the attachment point for this pose.
         /// </summary>
@@ -74,7 +83,7 @@ namespace Vintagestory.API.Common
             
         }
 
-        public void FromAttributes(ITreeAttribute tree)
+        public void FromAttributes(ITreeAttribute tree, string version)
         {
             
         }

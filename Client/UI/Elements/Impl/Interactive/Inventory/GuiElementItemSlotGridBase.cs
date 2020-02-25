@@ -7,6 +7,8 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Client;
 using VintagestoryAPI.Util;
+using Vintagestory.API.Util;
+using System.Linq;
 
 namespace Vintagestory.API.Client
 {
@@ -499,11 +501,13 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="text"></param>
         /// <param name="searchCache">Can be set to increase search performance, otherwise a slow search is performed</param>
-        public void FilterItemsBySearchText(string text, Dictionary<int, string> searchCache = null)
+        public void FilterItemsBySearchText(string text, Dictionary<int, string> searchCache = null, Dictionary<int, string> searchCacheNames = null)
         {
             this.searchText = text.ToLowerInvariant();
 
             renderedSlots.Clear();
+
+            OrderedDictionary<int, WeightedSlot> wSlots = new OrderedDictionary<int, WeightedSlot>();
 
             foreach (var val in availableSlots)
             {
@@ -517,16 +521,58 @@ namespace Vintagestory.API.Client
                 }
 
                 string cachedtext = "";
+
                 if (searchCache != null && searchCache.TryGetValue(val.Key, out cachedtext))
                 {
-                    if (cachedtext.CaseInsensitiveContains(searchText)) renderedSlots.Add(val.Key, slot);
+
+                    if (searchCacheNames[val.Key].Equals(searchText, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0 });
+                        continue;
+                    }
+
+                    if (searchCacheNames[val.Key].IndexOf(searchText, StringComparison.InvariantCultureIgnoreCase) != -1)
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 1 });
+                        continue;
+                    }
+
+
+                    if (cachedtext.StartsWith(searchText, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 2 });
+                        continue;
+                    }
+
+                    if (cachedtext.CaseInsensitiveContains(searchText))
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 3 });
+                        continue;
+                    }
+
                 } else
                 {
-                    if (slot.Itemstack.MatchesSearchText(api.World, searchText)) renderedSlots.Add(val.Key, slot);
+                    if (slot.Itemstack.MatchesSearchText(api.World, searchText))
+                    {
+                        renderedSlots.Add(val.Key, slot);
+                    }
                 }
-
-                
             }
+
+            foreach (var pair in wSlots.OrderBy(pair => pair.Value.weight))
+            {
+                renderedSlots.Add(pair.Key, pair.Value.slot);
+            }
+
+
+            /*var elems = renderedSlots.ToArray().Shuffle(api.World.Rand);
+            renderedSlots.Clear();
+            foreach (var val in elems)
+            {
+                renderedSlots[val.Key] = val.Value;
+            }*/
+
+
 
             this.rows = (int)Math.Ceiling(1f * renderedSlots.Count / cols);
             ComposeInteractiveElements();

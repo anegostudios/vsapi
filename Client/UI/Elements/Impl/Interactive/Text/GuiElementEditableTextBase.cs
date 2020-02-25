@@ -258,8 +258,8 @@ namespace Vintagestory.API.Client
 
         internal virtual void TextChanged()
         {
-            RecomposeText();
             OnTextChanged?.Invoke(string.Join("\n", lines));
+            RecomposeText();
         }
 
         internal virtual void RecomposeText(double rightSpacing = 5, double bottomSpacing = 0)

@@ -479,8 +479,9 @@ namespace Vintagestory.API.Common
                 ParentVelocity = GlobalConstants.CurrentWindSpeedClient;
             } else
             {
-                ParentVelocityWeight = 0;
-                ParentVelocity = null;
+                // This makes it impossible to use ParentVelocity for other purposes. Why is this here?
+                //ParentVelocityWeight = 0;
+                //ParentVelocity = null;
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -12,7 +13,9 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class SimpleParticleProperties : IParticlePropertiesProvider
     {
-        public static Random rand = new Random();
+        public static ThreadLocal<Random> randTL = new ThreadLocal<Random>(() => new Random());
+        public static Random rand => randTL.Value;
+            
 
         public float MinQuantity;
         public float AddQuantity;

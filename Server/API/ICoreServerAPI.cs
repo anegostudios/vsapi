@@ -95,8 +95,11 @@ namespace Vintagestory.API.Server
         /// <param name="data">Custom data to a message to be received by the client</param>
         void BroadcastMessageToAllGroups(string message, EnumChatType chatType, string data = null);
 
-
-
+        /// <summary>
+        /// Injects a message or command into the server console input processing system. This lets you run commands or chat as Admin.
+        /// </summary>
+        /// <param name="message"></param>
+        void InjectConsole(string message);
 
 
         

@@ -14,6 +14,11 @@ namespace Vintagestory.API.Common
         Death,
 
         /// <summary>
+        /// Completely burned up
+        /// </summary>
+        Combusted,
+
+        /// <summary>
         /// Despawned because the player (or players) moved out of ranged.
         /// </summary>
         OutOfRange,

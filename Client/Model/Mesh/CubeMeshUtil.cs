@@ -1,5 +1,6 @@
 ﻿using System;
 using Vintagestory.API;
+using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
@@ -197,6 +198,19 @@ namespace Vintagestory.API.Client
             m.SetVerticesCount(4 * 6);
             m.SetIndices(CubeVertexIndices);
             m.SetIndicesCount(3 * 2 * 6);
+            m.Flags = new int[4 * 6];
+
+            for (int i = 0; i < 24; i+=4)
+            {
+                BlockFacing face = BlockFacing.ALLFACES[i/6];
+
+                m.Flags[i] = VertexFlags.NormalToPackedInt(face.Normalf) << 15;
+                m.Flags[i + 1] = m.Flags[i];
+                m.Flags[i + 2] = m.Flags[i];
+                m.Flags[i + 3] = m.Flags[i];
+            }
+
+
             return m;
         }
 
@@ -474,6 +488,30 @@ namespace Vintagestory.API.Client
             modelData.Rgba.Fill((byte)255);
 
             return modelData;
+        }
+
+        public static void SetXyzFacesAndPacketNormals(MeshData mesh)
+        {
+            mesh.AddXyzFace(BlockFacing.NORTH.Index);
+            mesh.AddXyzFace(BlockFacing.EAST.Index);
+            mesh.AddXyzFace(BlockFacing.SOUTH.Index);
+            mesh.AddXyzFace(BlockFacing.WEST.Index);
+            mesh.AddXyzFace(BlockFacing.UP.Index);
+            mesh.AddXyzFace(BlockFacing.DOWN.Index);
+
+            for (int i = 0; i < 6; i++)
+            {
+                BlockFacing facing = BlockFacing.ALLFACES[i];
+                
+                mesh.XyzFaces[i] = i;
+
+                int normal = (VertexFlags.NormalToPackedInt(facing.Normalf.X, facing.Normalf.Y, facing.Normalf.Z) << 15);
+                mesh.Flags[i * 4 + 0] |= normal;
+                mesh.Flags[i * 4 + 1] |= normal;
+                mesh.Flags[i * 4 + 2] |= normal;
+                mesh.Flags[i * 4 + 3] |= normal;
+
+            }
         }
     }
 
