@@ -28,6 +28,8 @@ namespace Vintagestory.API.Client
         double pressedYOffset;
         //double nonPressedYOffset;
 
+        public double MainTextWidthSub = 0;
+
 
         ElementBounds IGuiElementCell.Bounds
         {
@@ -97,7 +99,7 @@ namespace Vintagestory.API.Client
 
         void ComposeButton(Context ctx, ImageSurface surface, bool pressed) {
 
-            double rightBoxWidth = ShowModifyIcons ? scaled(unscaledRightBoxWidth) : 0;
+            double rightBoxWidth = (ShowModifyIcons ? scaled(unscaledRightBoxWidth) : 0);
             pressedYOffset = 0;
             
             if (cellEntry.DrawAsButton)
@@ -118,10 +120,10 @@ namespace Vintagestory.API.Client
             }
 
             Font = cellEntry.TitleFont;
-            titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.Title, Bounds.absPaddingX, Bounds.absPaddingY + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth);
+            titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.Title, Bounds.absPaddingX, Bounds.absPaddingY + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth - MainTextWidthSub);
 
             Font = cellEntry.DetailTextFont;
-            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.DetailText, Bounds.absPaddingX, Bounds.absPaddingY + cellEntry.DetailTextOffY + titleTextheight + 2 + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth);
+            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cellEntry.DetailText, Bounds.absPaddingX, Bounds.absPaddingY + cellEntry.DetailTextOffY + titleTextheight + 2 + Bounds.absPaddingY + scaled(cellEntry.LeftOffY) + pressedYOffset, Bounds.InnerWidth - rightBoxWidth - MainTextWidthSub);
 
             if (cellEntry.RightTopText != null)
             {
@@ -228,11 +230,11 @@ namespace Vintagestory.API.Client
 
             this.Font = cellEntry.TitleFont;
             this.text = cellEntry.Title;
-            titleTextheight = textUtil.GetMultilineTextHeight(Font, cellEntry.Title, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
+            titleTextheight = textUtil.GetMultilineTextHeight(Font, cellEntry.Title, boxwidth - MainTextWidthSub) / RuntimeEnv.GUIScale; // Need unscaled values here
 
             this.Font = cellEntry.DetailTextFont;
             this.text = cellEntry.DetailText;
-            double detailTextHeight = textUtil.GetMultilineTextHeight(Font, cellEntry.DetailText, boxwidth) / RuntimeEnv.GUIScale; // Need unscaled values here
+            double detailTextHeight = textUtil.GetMultilineTextHeight(Font, cellEntry.DetailText, boxwidth - MainTextWidthSub) / RuntimeEnv.GUIScale; // Need unscaled values here
 
             Bounds.fixedHeight = unscaledPadding + titleTextheight + unscaledPadding + detailTextHeight + unscaledPadding;
 

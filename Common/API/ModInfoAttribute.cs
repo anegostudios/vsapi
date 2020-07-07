@@ -49,6 +49,12 @@ namespace Vintagestory.API.Common
         /// (Optional. True (required) by default.)
         /// </summary>
         public bool RequiredOnClient { get; set; } = true;
+        
+        /// <summary>
+        /// If set to false and the mod is universal, the mod is not disabled
+        /// if it's not present on the server. (Optional. True by default.)
+        /// </summary>
+        public bool RequiredOnServer { get; set; } = true;
 
         public string WorldConfig { get; set; } = null;
         
@@ -59,7 +65,7 @@ namespace Vintagestory.API.Common
             if (name.Length == 0) throw new ArgumentException(
                 "name can't be empty", nameof(name));
             if (!ModInfo.IsValidModID(modID)) throw new ArgumentException(
-                $"'{ modID }' is not a valid mod ID", nameof(modID));
+                $"'{ modID }' is not a valid mod ID. Please use only lowercase letters and numbers.", nameof(modID));
             Name  = name;
             ModID = modID;
         }

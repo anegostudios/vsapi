@@ -4,6 +4,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
@@ -137,7 +138,7 @@ namespace Vintagestory.API.Client
 
             if (visible && Bounds.PointInside(args.X, args.Y))
             {
-                System.Diagnostics.Process.Start("https://account.vintagestory.at");
+                NetUtil.OpenUrlInBrowser("https://account.vintagestory.at");
             }
         }
 

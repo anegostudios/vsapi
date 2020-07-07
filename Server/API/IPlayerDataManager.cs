@@ -50,15 +50,16 @@ namespace Vintagestory.API.Server
         /// <param name="player"></param>
         /// <param name="roleCode"></param>
         void SetRole(IServerPlayer player, string roleCode);
-        
-        
+
+
         /// <summary>
         /// Registers a user privilege with the server. Is only active for the current server session and lost during a server restart/shutdown, so register it during server startup.
         /// New privileges are auto-granted to admins and the server console.
         /// </summary>
         /// <param name = "code">Privilege to register</param>
         /// <param name = "shortdescription">Short description</param>
-        void RegisterPrivilege(string code, string shortdescription);
+        /// <param name = "adminAutoGrant">By default, super users are automatically granted all privileges. Set this value to false to change that</param>
+        void RegisterPrivilege(string code, string shortdescription, bool adminAutoGrant = true);
 
         /// <summary>
         /// Grants privilege to all players connected or yet to connect. This setting is only active for the current server session and lost during a server restart/shutdown.

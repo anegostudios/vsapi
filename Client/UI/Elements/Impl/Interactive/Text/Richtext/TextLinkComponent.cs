@@ -135,35 +135,46 @@ namespace Vintagestory.API.Client
                 if (val.PointInside(args.X, args.Y))
                 {
                     args.Handled = true;
-                    if (onLinkClicked == null)
-                    {
-                        if (Href.StartsWith("hotkey://"))
-                        {
-                            api.Input.GetHotKeyByCode(Href.Substring("hotkey://".Length))?.Handler?.Invoke(null);
-                        }
-                        else
-                        {
-                            string[] parts = Href.Split(new string[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
-                            if (parts.Length > 0 && api.LinkProtocols != null && api.LinkProtocols.ContainsKey(parts[0]))
-                            {
-                                api.LinkProtocols[parts[0]].Invoke(this);
-                                return;
-                            }
-
-                            if (parts.Length > 0)
-                            {
-                                if (parts[0].StartsWith("http") || parts[0].StartsWith("https"))
-                                {
-                                    api.Gui.OpenLink(Href);
-                                }
-                            }
-                        }
-                    } else
-                    {
-                        onLinkClicked.Invoke(this);
-                    }
-                    
+                    Trigger();                    
                 }
+            }
+        }
+
+        public LinkTextComponent SetHref(string href)
+        {
+            this.Href = href;
+            return this;
+        }
+
+        public void Trigger()
+        {
+            if (onLinkClicked == null)
+            {
+                if (Href.StartsWith("hotkey://"))
+                {
+                    api.Input.GetHotKeyByCode(Href.Substring("hotkey://".Length))?.Handler?.Invoke(null);
+                }
+                else
+                {
+                    string[] parts = Href.Split(new string[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length > 0 && api.LinkProtocols != null && api.LinkProtocols.ContainsKey(parts[0]))
+                    {
+                        api.LinkProtocols[parts[0]].Invoke(this);
+                        return;
+                    }
+
+                    if (parts.Length > 0)
+                    {
+                        if (parts[0].StartsWith("http") || parts[0].StartsWith("https"))
+                        {
+                            api.Gui.OpenLink(Href);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                onLinkClicked.Invoke(this);
             }
         }
 

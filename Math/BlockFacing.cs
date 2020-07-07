@@ -133,6 +133,7 @@ namespace Vintagestory.API.MathTools
         public static readonly BlockFacing[] HORIZONTALS_ANGLEORDER = new BlockFacing[] { EAST, NORTH, WEST, SOUTH };
 
         int index;
+        byte meshDataIndex;
         int horizontalAngleIndex;
         byte flag;
         int oppositeIndex;
@@ -153,6 +154,11 @@ namespace Vintagestory.API.MathTools
         /// The index of the face (N=0, E=1, S=2, W=3, U=4, D=5)
         /// </summary>
         public int Index { get { return index; } }
+        /// <summary>
+        /// Index + 1
+        /// </summary>
+        public byte MeshDataIndex { get { return meshDataIndex; } }
+
         /// <summary>
         /// The angle index of the face (E = 0, N = 1, W = 2, S = 3)
         /// </summary>
@@ -212,6 +218,7 @@ namespace Vintagestory.API.MathTools
         private BlockFacing(string code, byte flag, int index, int oppositeIndex, int horizontalAngleIndex, Vec3i facingVector, Vec3f planeCenter, EnumAxis axis)
         {
             this.index = index;
+            this.meshDataIndex = (byte)(index + 1);
             this.horizontalAngleIndex = horizontalAngleIndex;
             this.flag = flag;
             this.code = code;

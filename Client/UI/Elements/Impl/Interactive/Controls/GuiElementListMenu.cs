@@ -400,7 +400,7 @@ namespace Vintagestory.API.Client
         {
             if (!hasFocus) return;
 
-            if (args.KeyCode == (int)GlKeys.Enter && expanded)
+            if ((args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.KeypadEnter) && expanded)
             {
                 expanded = false;
                 SelectedIndex = HoveredIndex;

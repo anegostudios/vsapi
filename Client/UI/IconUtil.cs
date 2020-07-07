@@ -17132,8 +17132,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointPlayer(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -17468,8 +17466,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointLadder(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -17750,8 +17746,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointHome(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -18002,8 +17996,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointCave(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -18100,8 +18092,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointVessel(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -18328,8 +18318,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointTrader(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -18764,8 +18752,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointStar2(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -18835,8 +18821,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointStar1(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -18902,8 +18886,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointSpiral(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -18916,7 +18898,7 @@ namespace Vintagestory.API.Client
             cr.Matrix = matrix;
 
             cr.Operator = Operator.Over;
-            cr.LineWidth = 3.865 * 2;
+            cr.LineWidth = 3.865 * 2.5;
             cr.MiterLimit = 4;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;
@@ -18944,7 +18926,7 @@ namespace Vintagestory.API.Client
             if (pattern != null) pattern.Dispose();
 
             cr.Operator = Operator.Over;
-            cr.LineWidth = 2.065 * 2;
+            cr.LineWidth = 2.065 * 2.5;
             cr.MiterLimit = 4;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Round;
@@ -18975,8 +18957,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointRuins(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -19456,8 +19436,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWaypointRocks(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 
@@ -19661,8 +19639,6 @@ namespace Vintagestory.API.Client
 
         public void DrawWayointBee(Context cr, int x, int y, float width, float height, double[] rgba)
         {
-            ImageSurface temp_surface;
-            Context old_cr;
             Pattern pattern = null;
             Matrix matrix = cr.Matrix;
 

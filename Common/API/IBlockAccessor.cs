@@ -29,6 +29,9 @@ namespace Vintagestory.API.Common
         /// Nomalized value between 0..1
         /// </summary>
         public float Rainfall;
+
+        public float RainCloudOverlay;
+
         /// <summary>
         /// Nomalized value between 0..1
         /// </summary>
@@ -75,7 +78,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Will get you max(sunlight * sunbrightness, blocklight)
         /// </summary>
-        MaxTimeOfDayLight
+        MaxTimeOfDayLight,
+        /// <summary>
+        /// Will get you sunlight * sunbrightness
+        /// </summary>
+        TimeOfDaySunLight
     }
 
 
@@ -113,6 +120,12 @@ namespace Vintagestory.API.Common
         /// Z Size of the world in blocks
         /// </summary>
         int MapSizeZ { get; }
+
+
+        int RegionMapSizeX { get; }
+        int RegionMapSizeY { get; }
+        int RegionMapSizeZ { get; }
+
 
         /// <summary>
         /// Size of the world in blocks
@@ -188,6 +201,15 @@ namespace Vintagestory.API.Common
         /// <returns>ID of the block at the given position</returns>
         Block GetBlock(int x, int y, int z);
 
+        /// <summary>
+        /// Get the block type of the block at the given world coordinate. For invalid or unloaded coordinates this method returns null.
+        /// </summary>
+        /// <param name = "x">x coordinate</param>
+        /// <param name = "y">y coordinate</param>
+        /// <param name = "z">z coordinate</param>
+        /// <returns>ID of the block at the given position</returns>
+        Block GetBlockOrNull(int x, int y, int z);
+
 
         /// <summary>
         /// Get block type at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
@@ -253,7 +275,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Removes the block at given position and calls Block.GetDrops(), Block.OnBreakBlock() and Block.OnNeighourBlockChange() for all neighbours. Drops the items that are return from Block.GetDrops()
+        /// Removes the block at given position and calls Block.GetDrops(), Block.OnBreakBlock() and Block.OnNeighbourBlockChange() for all neighbours. Drops the items that are return from Block.GetDrops()
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="byPlayer"></param>
@@ -365,14 +387,14 @@ namespace Vintagestory.API.Common
         void MarkBlockEntityDirty(BlockPos pos);
 
         /// <summary>
-        /// Server side call: Triggers the method OnNeighourBlockChange() to all neighbour blocks at given position
+        /// Server side call: Triggers the method OnNeighbourBlockChange() to all neighbour blocks at given position
         /// Client side call: No effect.
         /// </summary>
         /// <param name="pos"></param>
         void TriggerNeighbourBlockUpdate(BlockPos pos);
 
         /// <summary>
-        /// Server side: Triggers a OnNeighourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).
+        /// Server side: Triggers a OnNeighbourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).
         /// Client side: Triggers a block changed event and redraws the chunk
         /// </summary>
         /// <param name="pos"></param>
@@ -478,10 +500,29 @@ namespace Vintagestory.API.Common
         /// Returns the positions current climate conditions
         /// </summary>
         /// <param name="pos"></param>
+        /// <param name="mode">WorldGenValues = values as determined by the worldgenerator, NowValues = additionally modified to take season, day/night and hemisphere into account</param>
+        /// <param name="totalDays">When mode == ForSuppliedDateValues then supply here the date. Not used param otherwise</param>
         /// <returns></returns>
-        ClimateCondition GetClimateAt(BlockPos pos);
+        ClimateCondition GetClimateAt(BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.WorldGenValues, double totalDays = 0);
+
+        /// <summary>
+        /// Fast shortcut method for the clound renderer
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <param name="climate"></param>
+        /// <returns></returns>
+        ClimateCondition GetClimateAt(BlockPos pos, int climate);
+
 
         void MarkAbsorptionChanged(int oldAbsorption, int newAbsorption, BlockPos pos);
-
     }
+
+
+    public enum EnumGetClimateMode
+    {
+        WorldGenValues,
+        NowValues,
+        ForSuppliedDateValues
+    }
+
 }

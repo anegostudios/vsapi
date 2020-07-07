@@ -47,7 +47,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// API for sending/receiving network packets
         /// </summary>
-        IServerNetworkAPI Network { get; }
+        new IServerNetworkAPI Network { get; }
 
 
         /// <summary>
@@ -65,6 +65,17 @@ namespace Vintagestory.API.Server
         /// <param name="text"></param>
         /// <param name="langparams">If text is null, these are the arguments passed into the Language translation tool</param>
         void SendIngameError(IServerPlayer player, string errorCode, string text = null, params object[] langparams);
+
+
+
+        /// <summary>
+        /// Shows a discovery text on the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingamediscovery-' (which is recommended so that the errors are translated to the users local language)
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="errorCode"></param>
+        /// <param name="text"></param>
+        /// <param name="langparams">If text is null, these are the arguments passed into the Language translation tool</param>
+        void SendIngameDiscovery(IServerPlayer player, string discoveryCode, string text = null, params object[] langparams);
 
 
         /// <summary>
@@ -102,7 +113,6 @@ namespace Vintagestory.API.Server
         void InjectConsole(string message);
 
 
-        
 
         /// <summary>
         /// Register a new item type

@@ -88,7 +88,7 @@ namespace Vintagestory.API.Common
 
             blastResistances[blastType] = new double[materials.Length];
             blastResistances[blastType][(int)EnumBlockMaterial.Air] = 0;
-            blastResistances[blastType][(int)EnumBlockMaterial.Soil] = 3.2;
+            blastResistances[blastType][(int)EnumBlockMaterial.Soil] = 1.6;
             blastResistances[blastType][(int)EnumBlockMaterial.Gravel] = 3.2;
             blastResistances[blastType][(int)EnumBlockMaterial.Sand] = 2.4;
             blastResistances[blastType][(int)EnumBlockMaterial.Wood] = 2;

@@ -275,6 +275,7 @@ namespace Vintagestory.API.Client
             hoverTexture.Dispose();
             normalText?.Dispose();
             pressedText?.Dispose();
+            disabledTexture?.Dispose();
         }
     }
 

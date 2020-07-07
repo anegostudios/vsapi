@@ -49,14 +49,14 @@ namespace Vintagestory.API.Common
         /// <param name="Category"></param>
         /// <param name="Path"></param>
         /// <returns></returns>
-        IAsset TryGet(string Path);
+        IAsset TryGet(string Path, bool loadAsset = true);
 
         /// <summary>
         /// Retrieves an asset from given path within the assets folder. Returns null when the asset does not exist. Remember to use lower case paths.
         /// </summary>
         /// <param name="Location"></param>
         /// <returns></returns>
-        IAsset TryGet(AssetLocation Location);
+        IAsset TryGet(AssetLocation Location, bool loadAsset = true);
 
         /// <summary>
         /// Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched. The returned list is considered unsorted.

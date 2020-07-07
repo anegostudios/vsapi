@@ -25,7 +25,7 @@ namespace Vintagestory.API.Common
         {
             if (modID == null) throw new ArgumentNullException(nameof(modID));
             if (!ModInfo.IsValidModID(modID)) throw new ArgumentException(
-                $"'{ modID }' is not a valid mod ID", nameof(modID));
+                $"'{ modID }' is not a valid mod ID. Please use only lowercase letters and numbers.", nameof(modID));
             ModID   = modID;
             Version = version ?? "";
         }
@@ -61,7 +61,7 @@ namespace Vintagestory.API.Common
         {
             if (modID == null) throw new ArgumentNullException(nameof(modID));
             if (!ModInfo.IsValidModID(modID)) throw new ArgumentException(
-                $"'{ modID }' is not a valid mod ID", nameof(modID));
+                $"'{ modID }' is not a valid mod ID. Please use only lowercase letters and numbers.", nameof(modID));
             ModID   = modID;
             Version = version ?? "";
         }

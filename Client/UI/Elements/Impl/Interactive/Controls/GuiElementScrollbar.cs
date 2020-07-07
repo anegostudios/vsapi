@@ -51,6 +51,10 @@ namespace Vintagestory.API.Client
             {
                 return currentHandlePosition * ScrollConversionFactor;
             }
+            set
+            {
+                currentHandlePosition = value / ScrollConversionFactor;
+            }
         }
 
         /// <summary>
@@ -233,7 +237,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        internal void EnsureVisible(double posX, double posY)
+        public void EnsureVisible(double posX, double posY)
         {
             double startY = CurrentYPosition;
             double endY = CurrentYPosition + Bounds.InnerHeight;

@@ -65,6 +65,8 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public EnumEntityAnimationEndHandling OnAnimationEnd = EnumEntityAnimationEndHandling.Repeat;
 
+
+
         public uint CodeCrc32;
 
         public AnimationFrame[][] PrevNextKeyFrameByFrame;

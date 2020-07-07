@@ -1,16 +1,25 @@
-﻿namespace Vintagestory.API.Server
+﻿using Vintagestory.API.Common;
+
+namespace Vintagestory.API.Server
 {
     /// <summary>
     /// API Features to set up a network channel for custom server&lt;-&gt;client data exchange. Server side.
     /// </summary>
-    public interface IServerNetworkAPI
+    public interface IServerNetworkAPI : INetworkAPI
     {
         /// <summary>   
         /// Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
         /// <returns></returns>
-        IServerNetworkChannel RegisterChannel(string channelName);
+        new IServerNetworkChannel RegisterChannel(string channelName);
+
+        /// <summary>
+        /// Returns a previoulsy registered channeled, null otherwise
+        /// </summary>
+        /// <param name="channelName"></param>
+        /// <returns></returns>
+        new IServerNetworkChannel GetChannel(string channelName);
 
         /// <summary>
         /// Sends a blockentity packet to the given player. For quick an easy network communication without setting up a channel first.

@@ -59,7 +59,10 @@ namespace Vintagestory.API.Server
         void ChunkColumnGeneration(ChunkColumnGenerationDelegate handler, EnumWorldGenPass pass, string forWorldType);
 
 
-
+        /// <summary>
+        /// Called whenever the server loaded from disk or fully generated a chunkcolumn
+        /// </summary>
+        event ChunkColumnLoadedDelegate ChunkColumnLoaded;
 
         /// <summary>
         /// Registers a handler to be called every time a player places a block. The methods return value determines if the player may place/break this block.

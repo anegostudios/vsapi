@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Server
+﻿using System;
+
+namespace Vintagestory.API.Server
 {
     /// <summary>
     /// These are the stages the server goes through during launch
@@ -8,46 +10,61 @@
         /// <summary>
         /// Before anything has been initialized (you cannot receive any events at this point)
         /// </summary>
-        Start,
+        Start = 0,
 
         /// <summary>
         /// Server only stuff initialized, Serversystems instantatied, now initializing ServerSystems then Mods. Serversystem receive events at this point.
         /// </summary>
-        Initialization,
+        Initialization = 1,
 
         /// <summary>
         /// Everything initialized, now loading config
         /// </summary>
-        Configuration,
+        Configuration = 2,
 
         /// <summary>
         /// Mods will be compiled and started, AssetManager will init all origins and cache assets.
         /// </summary>
-        LoadAssets,
+        [Obsolete("Use AssetsReady")]
+        LoadAssets = 3,
+        AssetsReady = 3,
 
         /// <summary>
         /// All configs loaded, game world loaded by server. Mods receive events at this point.
         /// </summary>
-        LoadGamePre,
+        [Obsolete("Use ModsAndConfigReady")]
+        LoadGamePre = 4,
+        ModsAndConfigReady = 4,
+
+        /// <summary>
+        /// All configs loaded, spawn chunks loaded, game world loaded by server. All blocks are loaded.
+        /// </summary>
+        [Obsolete("Use GameReady")]
+        LoadGame = 5,
 
         /// <summary>
         /// All configs loaded, game world loaded by server. All blocks are loaded.
         /// </summary>
-        LoadGame,
+        GameReady = 5,
 
         /// <summary>
-        /// About to run first game world tick. Spawnchunks get loaded.
+        /// Spawn chunks now loaded.
         /// </summary>
-        RunGame,
+        WorldReady = 6,
+
+        /// <summary>
+        /// About to run first game world tick.
+        /// </summary>
+        RunGame = 7,
 
         /// <summary>
         /// Shutdown has begun
         /// </summary>
-        Shutdown,
+        Shutdown = 8,
 
         /// <summary>
         /// Shutdown complete
         /// </summary>
-        Exit 
+        Exit = 9
     }
 }

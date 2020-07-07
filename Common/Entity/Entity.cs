@@ -99,14 +99,17 @@ namespace Vintagestory.API.Common.Entities
         #region Entity Fields
 
         /// <summary>
-        /// World where the entity is spawned in
+        /// World where the entity is spawned in. Available on the game client and server.
         /// </summary>
         public IWorldAccessor World;
 
+        /// <summary>
+        /// The api, if you need it. Available on the game client and server.
+        /// </summary>
         public ICoreAPI Api;
 
         /// <summary>
-        /// The vanilla physics systems will call this method if a physics behavior was assigned to it. The game client for example requires this to be called for the current player to properly render the player
+        /// The vanilla physics systems will call this method if a physics behavior was assigned to it. The game client for example requires this to be called for the current player to properly render the player. Available on the game client and server.
         /// </summary>
         public PhysicsTickDelegate PhysicsUpdateWatcher;
 
@@ -117,7 +120,7 @@ namespace Vintagestory.API.Common.Entities
         public IAnimationManager AnimManager;
 
         /// <summary>
-        /// An uptime value running activities.
+        /// An uptime value running activities. Available on the game client and server. Not synchronized.
         /// </summary>
         public Dictionary<string, long> ActivityTimers = new Dictionary<string, long>();
         
@@ -128,29 +131,29 @@ namespace Vintagestory.API.Common.Entities
         public SyncedEntityPos Pos = new SyncedEntityPos();
 
         /// <summary>
-        /// Server simulated position. If this value differs to greatly from client pos we have to override client pos
+        /// Server simulated position. May not exactly match the client positon
         /// </summary>
         public EntityPos ServerPos = new EntityPos();
 
         /// <summary>
-        /// Server simulated position copy. Needed by Entities system to send pos updatess only if ServerPos differs noticably from PreviousServerPos
+        /// Server simulated position copy. Needed by Entities server system to send pos updatess only if ServerPos differs noticably from PreviousServerPos
         /// </summary>
         public EntityPos PreviousServerPos = new EntityPos();
 
         /// <summary>
-        /// The position where the entity last had contact with the ground
+        /// The position where the entity last had contact with the ground. Set by the game client and server.
         /// </summary>
         public Vec3d PositionBeforeFalling = new Vec3d();        
 
         public long InChunkIndex3d;
 
         /// <summary>
-        /// The entities collision box. Offseted by the animation system when necessary
+        /// The entities collision box. Offseted by the animation system when necessary. Set by the game client and server.
         /// </summary>
         public Cuboidf CollisionBox;
 
         /// <summary>
-        /// The entities collision box. Not Offseted.
+        /// The entities collision box. Not Offseted. Set by the game client and server.
         /// </summary>
         public Cuboidf OriginCollisionBox;
 
@@ -161,15 +164,13 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Used by the server to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
         /// </summary>
-        public bool IsTeleport; 
+        public bool IsTeleport;
 
 
         /// <summary>
-        /// A unique identifier for this entity
+        /// A unique identifier for this entity. Set by the game client and server.
         /// </summary>
         public long EntityId;
-
-        //AssetLocation Entity.Code => Code;
 
         /// <summary>
         /// The range in blocks the entity has to be to a client to do physics and AI. When outside range, then <seealso cref="State"/> will be set to inactive
@@ -177,18 +178,22 @@ namespace Vintagestory.API.Common.Entities
         public int SimulationRange;
 
         /// <summary>
-        /// The face the entity is climbing on. Null if the entity is not climbing
+        /// The face the entity is climbing on. Null if the entity is not climbing. Set by the game client and server.
         /// </summary>
         public BlockFacing ClimbingOnFace;
+
+        /// <summary>
+        /// Set by the game client and server.
+        /// </summary>
         public Cuboidf ClimbingOnCollBox;
 
         /// <summary>
-        /// True if this entity is in touch with the ground
+        /// True if this entity is in touch with the ground. Set by the game client and server.
         /// </summary>
         public bool OnGround;
 
         /// <summary>
-        /// True if the bottom of the collisionbox is inside a liquid
+        /// True if the bottom of the collisionbox is inside a liquid. Set by the game client and server.
         /// </summary>
         public bool FeetInLiquid;
 
@@ -209,21 +214,23 @@ namespace Vintagestory.API.Common.Entities
         public long OnFireBeginTotalMs;
 
         /// <summary>
-        /// True if the collisionbox is 2/3rds submerged in liquid
+        /// True if the collisionbox is 2/3rds submerged in liquid. Set by the game client and server.
         /// </summary>
         public bool Swimming;
 
         /// <summary>
-        /// True if the entity is in touch with something solid on the vertical axis
+        /// True if the entity is in touch with something solid on the vertical axis. Set by the game client and server.
         /// </summary>
         public bool CollidedVertically;
 
         /// <summary>
-        /// True if the entity is in touch with something solid on both horizontal axes
+        /// True if the entity is in touch with something solid on both horizontal axes. Set by the game client and server.
         /// </summary>
         public bool CollidedHorizontally;
 
-        // Stored in WatchedAttributes in from/tobytes 
+        /// <summary>
+        /// The current entity state. Stored in WatchedAttributes in from/tobytes, so available on the client and server side
+        /// </summary>
         public EnumEntityState State;
 
         public EntityDespawnReason DespawnReason;
@@ -260,7 +267,7 @@ namespace Vintagestory.API.Common.Entities
         protected int HurtColor = ColorUtil.ToRgba(255, 255, 100, 100);
 
         public EntityStats Stats;
-
+        float fireDamageAccum;
 
         #endregion
 
@@ -305,7 +312,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// ServerPos on server, Pos on client
         /// </summary>
-        public EntityPos LocalPos
+        public EntityPos SidedPos
         {
             get { return World.Side == EnumAppSide.Server ? ServerPos : Pos; }
         }
@@ -313,7 +320,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// The height of the eyes for the given entity.
         /// </summary>
-        public virtual double EyeHeight { get { return Properties.EyeHeight; } }
+        public virtual Vec3d LocalEyePos { get; set; } = new Vec3d();
         
 
         /// <summary>
@@ -510,7 +517,10 @@ namespace Vintagestory.API.Common.Entities
             {
                 AnimManager.OnServerTick(0);
             }
+
+            LocalEyePos.Y = Properties.EyeHeight;
         }
+
 
         private void updateHitBox()
         {
@@ -589,7 +599,7 @@ namespace Vintagestory.API.Common.Entities
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
-                sapi.WorldManager.LoadChunkColumnFast((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
+                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
                     {
                         IsTeleport = true;
                         Pos.SetPos(x, y, z);
@@ -699,8 +709,6 @@ namespace Vintagestory.API.Common.Entities
             return true;
         }
 
-        float fireDamageAccum;
-        Vec3f ownVelocity = new Vec3f();
 
         /// <summary>
         /// Called every 1/75 second
@@ -710,12 +718,21 @@ namespace Vintagestory.API.Common.Entities
         {
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
-            //World.FrameProfiler.Mark("entity-gametick-begin");
-
-            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            if (World.FrameProfiler.Enabled)
             {
-                behavior.OnGameTick(dt);
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                {
+                    behavior.OnGameTick(dt);
+                    World.FrameProfiler.Mark("entity-done-bh-" + behavior.PropertyName());
+                }
+            } else
+            {
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                {
+                    behavior.OnGameTick(dt);
+                }
             }
+
 
             if (World.Side == EnumAppSide.Client && World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
             {
@@ -762,7 +779,7 @@ namespace Vintagestory.API.Common.Entities
                         }
                     }
 
-                    if (!alive && InLava)
+                    if (!alive && InLava && !(this is EntityPlayer))
                     {
                         float q = GameMath.Clamp((CollisionBox.X2 - CollisionBox.X1) * (CollisionBox.Y2 - CollisionBox.Y1) * (CollisionBox.Z2 - CollisionBox.Z1) * 150, 10, 150);
                         Api.World.SpawnParticles(
@@ -797,6 +814,17 @@ namespace Vintagestory.API.Common.Entities
         #region Events
 
         /// <summary>
+        /// Called by EntityShapeRenderer.cs before tesselating the entity shape
+        /// </summary>
+        /// <param name="entityShape"></param>
+        /// <param name="shapePathForLogging"></param>
+        public virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging)
+        {
+
+        }
+
+
+        /// <summary>
         /// Called when the entity collided vertically
         /// </summary>
         /// <param name="motionY"></param>
@@ -823,7 +851,7 @@ namespace Vintagestory.API.Common.Entities
         {
             if (World.Side == EnumAppSide.Server) return;
 
-            EntityPos pos = LocalPos;
+            EntityPos pos = SidedPos;
             float yDistance = (float)Math.Abs(PositionBeforeFalling.Y - pos.Y);
 
             double width = CollisionBox.X2 - CollisionBox.X1;
@@ -872,7 +900,7 @@ namespace Vintagestory.API.Common.Entities
 
             float dist = Math.Max(0, (28 - climate.Temperature)/6f) + Math.Max(0, (0.8f - climate.Rainfall) * 3f);
 
-            double noise = bioLumiNoise.Noise(LocalPos.X / 300.0, LocalPos.Z / 300.0);
+            double noise = bioLumiNoise.Noise(SidedPos.X / 300.0, SidedPos.Z / 300.0);
             double qmul = noise * 2 - 1 - dist;
 
 
@@ -881,12 +909,12 @@ namespace Vintagestory.API.Common.Entities
             // Hard coded player swim hitbox thing
             if (this is EntityPlayer && Swimming)
             {
-                bioLumiParticles.MinPos.Set(LocalPos.X + 2f * CollisionBox.X1, LocalPos.Y + offy + 0.5f + 1.25f * CollisionBox.Y1, LocalPos.Z + 2f * CollisionBox.Z1);
+                bioLumiParticles.MinPos.Set(SidedPos.X + 2f * CollisionBox.X1, SidedPos.Y + offy + 0.5f + 1.25f * CollisionBox.Y1, SidedPos.Z + 2f * CollisionBox.Z1);
                 bioLumiParticles.AddPos.Set(3f * (CollisionBox.X2 - CollisionBox.X1), 0.5f * (CollisionBox.Y2 - CollisionBox.Y1), 3f * (CollisionBox.Z2 - CollisionBox.Z1));
             }
             else
             {
-                bioLumiParticles.MinPos.Set(LocalPos.X + 1.25f * CollisionBox.X1, LocalPos.Y + offy + 1.25f * CollisionBox.Y1, LocalPos.Z + 1.25f * CollisionBox.Z1);
+                bioLumiParticles.MinPos.Set(SidedPos.X + 1.25f * CollisionBox.X1, SidedPos.Y + offy + 1.25f * CollisionBox.Y1, SidedPos.Z + 1.25f * CollisionBox.Z1);
                 bioLumiParticles.AddPos.Set(1.5f * (CollisionBox.X2 - CollisionBox.X1), 1.5f * (CollisionBox.Y2 - CollisionBox.Y1), 1.5f * (CollisionBox.Z2 - CollisionBox.Z1));
             }
 
@@ -1379,7 +1407,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     for (int i = 0; i < drops.Length; i++)
                     {
-                        World.SpawnItemEntity(drops[i], LocalPos.XYZ.AddCopy(0, 0.25, 0));
+                        World.SpawnItemEntity(drops[i], SidedPos.XYZ.AddCopy(0, 0.25, 0));
                     }
                 }
 
@@ -1427,7 +1455,7 @@ namespace Vintagestory.API.Common.Entities
             {
                 World.PlaySoundAt(
                     locations[World.Rand.Next(locations.Length)], 
-                    (float)LocalPos.X, (float)LocalPos.Y, (float)LocalPos.Z, 
+                    (float)SidedPos.X, (float)SidedPos.Y, (float)SidedPos.Z, 
                     dualCallByPlayer, 
                     randomizePitch, 
                     range

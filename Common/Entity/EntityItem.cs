@@ -121,6 +121,34 @@ namespace Vintagestory.API.Common
                     }
                 }
 
+                /*if (!FeetInLiquid && !InLava && Api.World.Rand.NextDouble() < 0.1f && Api.World.Side == EnumAppSide.Server)
+                {
+                    // Die on rainfall
+                    WeatherSystemBase wsys;
+                    wsys = api.ModLoader.GetModSystem<WeatherSystemBase>();
+                    BlockPos tmpPos = new BlockPos(Pos.X + 0.5, Pos.Y + 0.5, Pos.Z + 0.5);
+                    double rainLevel = wsys.GetRainFall(tmpPos);
+                    if (rainLevel > 0.04 && Api.World.Rand.NextDouble() < rainLevel * 5)
+                    {
+                        if (Api.World.BlockAccessor.GetRainMapHeightAt(Pos.X, Pos.Z) > Pos.Y) return;
+
+                        Api.World.PlaySoundAt(new AssetLocation("sounds/effect/extinguish"), Pos.X + 0.5, Pos.Y, Pos.Z + 0.5, null, false, 16);
+
+                        fuelBurnTime -= (float)rainLevel / 10f;
+
+                        if (Api.World.Rand.NextDouble() < rainLevel / 5f || fuelBurnTime <= 0)
+                        {
+                            setBlockState("cold");
+                            extinguishedTotalHours = -99;
+                            canIgniteFuel = false;
+                            fuelBurnTime = 0;
+                            maxFuelBurnTime = 0;
+                        }
+
+                        MarkDirty(true);
+                    }
+                }*/
+
             }
             else Die();
         }
@@ -143,7 +171,7 @@ namespace Vintagestory.API.Common
         {
             EntityItem item = new EntityItem();
             item.Code = GlobalConstants.EntityItemTypeCode;
-            item.SimulationRange = 3 * world.BlockAccessor.ChunkSize;
+            item.SimulationRange = (int)(0.75f * GlobalConstants.DefaultTrackingRange);
             item.Itemstack = itemstack;
 
             item.ServerPos.SetPos(position);

@@ -243,11 +243,11 @@ namespace Vintagestory.API.Client
             {
                 if (pos.X > Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                    api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, (int)Bounds.absX, (int)Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
                 }
                 else
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, Bounds.absX, Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
+                    api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, (int)Bounds.absX, (int)Bounds.absY, Bounds.OuterWidth, Bounds.OuterHeight);
                 }
             }
 
@@ -264,8 +264,8 @@ namespace Vintagestory.API.Client
             }
             else
             {
-                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, Bounds.renderX, Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
-                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, Bounds.renderX, Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, (int)Bounds.renderX, (int)Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
+                api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, (int)Bounds.renderX, (int)Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
             }
         }
     }

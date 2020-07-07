@@ -1,4 +1,25 @@
-﻿using Vintagestory.API.Common;
+﻿using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+
+namespace Vintagestory.API.Common
+{
+    public interface INetworkAPI
+    {
+        /// <summary>   
+        /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+        /// </summary>
+        /// <param name="channelName">Unique channel identifier</param>
+        /// <returns></returns>
+        INetworkChannel RegisterChannel(string channelName);
+
+        /// <summary>
+        /// Returns a previoulsy registered channeled, null otherwise
+        /// </summary>
+        /// <param name="channelName"></param>
+        /// <returns></returns>
+        INetworkChannel GetChannel(string channelName);
+    }
+}
 
 namespace Vintagestory.API.Client
 {
@@ -25,17 +46,25 @@ namespace Vintagestory.API.Client
         NotConnected
     }
 
+
     /// <summary>
     /// API Features to set up a network channel for custom server&lt;-&gt;client data exchange. Client side.
     /// </summary>
-    public interface IClientNetworkAPI
+    public interface IClientNetworkAPI : INetworkAPI
     {
         /// <summary>   
         /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
         /// <returns></returns>
-        IClientNetworkChannel RegisterChannel(string channelName);
+        new IClientNetworkChannel RegisterChannel(string channelName);
+
+        /// <summary>
+        /// Returns a previoulsy registered channeled, null otherwise
+        /// </summary>
+        /// <param name="channelName"></param>
+        /// <returns></returns>
+        new IClientNetworkChannel GetChannel(string channelName);
 
         /// <summary>
         /// Check in what state a channel currently is in

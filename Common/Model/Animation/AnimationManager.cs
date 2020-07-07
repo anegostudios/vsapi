@@ -70,7 +70,7 @@ namespace Vintagestory.API.Common
             else
             {
                 capi = (api as ICoreClientAPI);
-                capi.Event.RegisterRenderer(renderer = new DummyRenderer() { action = OnClientTick, RenderRange = 999 }, EnumRenderStage.Before, "anim");
+                capi.Event.RegisterRenderer(renderer = new DummyRenderer() { action = OnClientFrame, RenderRange = 999 }, EnumRenderStage.Before, "anim");
             }
         }
 
@@ -100,6 +100,7 @@ namespace Vintagestory.API.Common
             {
                 throw new Exception("anim meta data code cannot be null!");
             }
+
 
             AnimationsDirty = true;
             ActiveAnimationsByAnimCode[animdata.Animation] = animdata;
@@ -223,8 +224,13 @@ namespace Vintagestory.API.Common
                 string[] keys = ActiveAnimationsByAnimCode.Keys.ToArray();
                 for (int i = 0; i < keys.Length; i++)
                 {
-                    if (!toKeep.Contains(keys[i]) && keys[i] != "sneakidle") // No Idea why the eff i have do this hardcoded test. If I don't looking around while sneaking and with a torch in hand causes hand jitter
+                    if (!toKeep.Contains(keys[i]))
                     {
+                        AnimationMetaData animmetadata;
+                        if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(keys[i], out animmetadata))
+                        {
+                            if (animmetadata.TriggeredBy != null && animmetadata.WasStartedFromTrigger) continue;
+                        }
                         ActiveAnimationsByAnimCode.Remove(keys[i]);
                     }
                 }
@@ -300,7 +306,7 @@ namespace Vintagestory.API.Common
         /// The event fired each time the client ticks.
         /// </summary>
         /// <param name="dt"></param>
-        public void OnClientTick(float dt)
+        public void OnClientFrame(float dt)
         {
             if (capi.IsGamePaused || (!entity.IsRendered && entity.Alive)) return; // Too cpu intensive to run all loaded entities
             
@@ -308,7 +314,7 @@ namespace Vintagestory.API.Common
 
             if (HeadController != null)
             {
-                HeadController.OnTick(dt);
+                HeadController.OnFrame(dt);
             }
         }
 

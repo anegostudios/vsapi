@@ -34,7 +34,7 @@ namespace Vintagestory.API.Common
         Block block;
         BlockPos blockpos;
 
-        public override bool DieInLiquid => true;
+        public override bool DieInLiquid => block.LiquidCode != null;
 
         public BlockCubeParticles() { }
 

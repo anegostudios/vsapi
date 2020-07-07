@@ -57,6 +57,17 @@ namespace Vintagestory.API.Common
                         elems.Add(new RichTextComponent(capi, "\r\n", fontStack.Peek()));
                         break;
 
+                    case "i":
+                        CairoFont font = fontStack.Peek().Clone();
+                        font.Slant = FontSlant.Italic;
+                        fontStack.Push(font);
+                        foreach (var val in tagToken.ChildElements)
+                        {
+                            Richtextify(capi, val, ref elems, fontStack, didClickLink);
+                        }
+                        fontStack.Pop();
+                        break;
+
                     case "a":
                         LinkTextComponent cmp = new LinkTextComponent(capi, tagToken.ContentText, fontStack.Peek(), didClickLink);
                         tagToken.Attributes.TryGetValue("href", out cmp.Href);
@@ -117,6 +128,7 @@ namespace Vintagestory.API.Common
             double size = 0;
             double lineHeight = 1;
             string fontName = "";
+            EnumTextOrientation orient = EnumTextOrientation.Left;
             double[] color = ColorUtil.WhiteArgbDouble;
             FontWeight weight = FontWeight.Normal;
 
@@ -161,9 +173,32 @@ namespace Vintagestory.API.Common
                 lineHeight = prevFont.LineHeightMultiplier;
             }
 
+            if (tag.Attributes.ContainsKey("align"))
+            {
+                switch (tag.Attributes["align"])
+                {
+                    case "left":
+                        orient = EnumTextOrientation.Left;
+                        break;
+                    case "right":
+                        orient = EnumTextOrientation.Right;
+                        break;
+                    case "center":
+                        orient = EnumTextOrientation.Center;
+                        break;
+                    case "justify":
+                        orient = EnumTextOrientation.Justify;
+                        break;
+                }
+                
+            } else
+            {
+                orient = prevFont.Orientation;
+            }
+
             fontStack.Push(prevFont);
 
-            return new CairoFont(size, fontName, color).WithWeight(weight).WithLineHeightMultiplier(lineHeight);
+            return new CairoFont(size, fontName, color).WithWeight(weight).WithLineHeightMultiplier(lineHeight).WithOrientation(orient);
         }
 
 
@@ -349,7 +384,7 @@ namespace Vintagestory.API.Common
 
             ParseState state = ParseState.ParseTagName;
 
-            int i = 0;
+            int i;
             char insideQuotedValueChar=(char)0;
             string key = "";
             string value = "";

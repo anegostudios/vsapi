@@ -19,7 +19,7 @@ namespace Vintagestory.API.Client
         /// Requires xyz, uv, rgba, indices, flags and xyzFaces to be set
         /// </summary>
         /// <param name="data"></param>
-        /// <param name="tintColor"></param>
-        void AddMeshData(MeshData data, int tintColor);
+        /// <param name="colorMapData"></param>
+        void AddMeshData(MeshData data, ColorMapData colorMapData);
     }
 }

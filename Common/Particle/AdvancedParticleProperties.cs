@@ -130,7 +130,7 @@ namespace Vintagestory.API.Common
         /// a transforming Size value.
         /// </summary>
         [JsonProperty]
-        public EvolvingNatFloat SizeEvolve { get; set; } = EvolvingNatFloat.createIdentical(1);
+        public EvolvingNatFloat SizeEvolve { get; set; } = EvolvingNatFloat.createIdentical(0);
 
         /// <summary>
         /// The velocity of the particles.
@@ -410,9 +410,9 @@ namespace Vintagestory.API.Common
             {
                 VelocityEvolve = new EvolvingNatFloat[]
                 {
-                    EvolvingNatFloat.createIdentical(1),
-                    EvolvingNatFloat.createIdentical(1),
-                    EvolvingNatFloat.createIdentical(1),
+                    EvolvingNatFloat.createIdentical(0),
+                    EvolvingNatFloat.createIdentical(0),
+                    EvolvingNatFloat.createIdentical(0),
                 };
 
                 VelocityEvolve[0].FromBytes(reader);

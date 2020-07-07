@@ -27,9 +27,14 @@ namespace Vintagestory.API.Config
         public const int MaxAnimatedElements = 35;
 
         /// <summary>
+        /// Max. amount of "bones" for color maps. Limited by max amount of shader uniforms, but depends on the gfx card
+        /// </summary>
+        public const int MaxColorMaps = 20;
+
+        /// <summary>
         /// Frame time for physics simulation
         /// </summary>
-        public static float PhysicsFrameTime = 1 / 60f; //1 / 75f;
+        public static float PhysicsFrameTime = 1 / 30f; //1 / 75f;
 
         /// <summary>
         /// A multiplier applied to the y motion of all particles affected by gravity.
@@ -93,7 +98,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Range in blocks at which clients receive regular updates of this entity
         /// </summary>
-        public const int DefaultTrackingRange = 128;
+        public static int DefaultTrackingRange = 128;
 
         /// <summary>
         /// Range in blocks a player can interact with blocks (break, use, place)
@@ -104,7 +109,7 @@ namespace Vintagestory.API.Config
         /// Set by the WeatherSimulation System in the survival mod
         /// </summary>
         public static Vec3f CurrentWindSpeedClient = new Vec3f();
-        public static double CurrentRainFallClient;
+        //public static double CurrentRainFallClient;
         
         public static float CurrentNearbyRelLeavesCountClient;
 
@@ -150,6 +155,10 @@ namespace Vintagestory.API.Config
             { "vsteam", new double[] { 13 / 255.0, 128 / 255.0, 62 / 255.0, 1 } },
             { "vscontributor", new double[] { 135 / 255.0, 179 / 255.0, 148 / 255.0, 1 } },
             { "vssupporter", new double[] { 254/255.0, 197/255.0, 0, 1 } },
+
+            { "securityresearcher", new double[] { 49/255.0, 159/255.0, 174/255.0, 1 } },
+            { "bughunter", new double[] { 174 / 255.0, 96/255.0, 49/255.0, 1 } },
+            { "chiselmaster", new double[] { 242 / 255.0, 244 / 255.0, 187 / 255.0, 1 } },
         };
 
 
@@ -174,6 +183,33 @@ namespace Vintagestory.API.Config
                         BorderWidth = 3,
                     } },
             { "vssupporter", new TextBackground()
+                    {
+                        FillColor = GuiStyle.DialogLightBgColor,
+                        Padding = 3,
+                        Radius = GuiStyle.ElementBGRadius,
+                        Shade = true,
+                        BorderColor = GuiStyle.DialogBorderColor,
+                        BorderWidth = 3,
+                    } },
+            { "securityresearcher", new TextBackground()
+                    {
+                        FillColor = GuiStyle.DialogLightBgColor,
+                        Padding = 3,
+                        Radius = GuiStyle.ElementBGRadius,
+                        Shade = true,
+                        BorderColor = GuiStyle.DialogBorderColor,
+                        BorderWidth = 3,
+                    } },
+            { "bughunter", new TextBackground()
+                    {
+                        FillColor = GuiStyle.DialogLightBgColor,
+                        Padding = 3,
+                        Radius = GuiStyle.ElementBGRadius,
+                        Shade = true,
+                        BorderColor = GuiStyle.DialogBorderColor,
+                        BorderWidth = 3,
+                    } },
+            { "chiselmaster", new TextBackground()
                     {
                         FillColor = GuiStyle.DialogLightBgColor,
                         Padding = 3,

@@ -223,19 +223,20 @@ namespace Vintagestory.API.Common
         public EnumFaceCullMode FaceCullMode;
 
         /// <summary>
-        /// 0 for no tint, 1 for plant climate tint, 2 for water climate tint
+        /// The color map for climate color mapping. Leave null for no coloring by climate
         /// </summary>
-        public int TintIndex = 0;
+        public string ClimateColorMap = null;
+
+        /// <summary>
+        /// The color map for season color mapping. Leave null for no coloring by season
+        /// </summary>
+        public string SeasonColorMap = null;
 
         /// <summary>
         /// Internal value that's set during if the block shape has any tint indexes for use in chunk tesselation and stuff O_O
         /// </summary>
-        public bool ShapeHasClimateTint;
-
-        /// <summary>
-        /// Internal value that's set during if the block shape has any tint indexes for use in chunk tesselation and stuff O_O
-        /// </summary>
-        public bool ShapeHasWaterTint;
+        public bool ShapeUsesColormap;
+        public bool LoadColorMapAnyway = false;
 
         /// <summary>
         /// Defines the area with which the player character collides with.
@@ -396,7 +397,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Returns the blocks selection boxes at this position in the world
+        /// Returns the blocks selection boxes at this position in the world.
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos"></param>
@@ -415,7 +416,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Returns the blocks collision box
+        /// Returns the blocks collision box. Warning: This method may get called by different threads, so it has to be thread safe.
         /// </summary>
         /// <returns></returns>
         public virtual Cuboidf[] GetCollisionBoxes(IBlockAccessor world, BlockPos pos)
@@ -487,12 +488,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Used by torches and other blocks to check if it can attach itself to that block
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="blockAccessor"></param>
         /// <param name="block"></param>
         /// <param name="pos"></param>
         /// <param name="blockFace"></param>
         /// <returns></returns>
-        public virtual bool CanAttachBlockAt(IBlockAccessor world, Block block, BlockPos pos, BlockFacing blockFace)
+        public virtual bool CanAttachBlockAt(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing blockFace)
         {
             bool result = true;
             bool preventDefault = false;
@@ -500,7 +501,7 @@ namespace Vintagestory.API.Common
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 EnumHandling handled = EnumHandling.PassThrough;
-                bool behaviorResult = behavior.CanAttachBlockAt(world, block, pos, blockFace, ref handled);
+                bool behaviorResult = behavior.CanAttachBlockAt(blockAccessor, block, pos, blockFace, ref handled);
                 if (handled != EnumHandling.PassThrough)
                 {
                     result &= behaviorResult;
@@ -824,12 +825,23 @@ namespace Vintagestory.API.Common
                 resistance = stack.Collectible.OnBlockBreaking(player, blockSel, itemslot, remainingResistance, dt, counter);
             }
 
-            if (counter % 5 == 0 || resistance <= 0)
+            long totalMsBreaking = 0;
+            object val;
+            if (api.ObjectCache.TryGetValue("totalMsBlockBreaking", out val))
+            {
+                totalMsBreaking = (long)val;
+            }
+
+            long nowMs = api.World.ElapsedMilliseconds;
+
+            if (nowMs - totalMsBreaking > 225 || resistance <= 0)
             {
                 double posx = blockSel.Position.X + blockSel.HitPosition.X;
                 double posy = blockSel.Position.Y + blockSel.HitPosition.Y;
                 double posz = blockSel.Position.Z + blockSel.HitPosition.Z;
                 player.Entity.World.PlaySoundAt(resistance > 0 ? Sounds.GetHitSound(player) : Sounds.GetBreakSound(player), posx, posy, posz, player, true, 16, 1);
+
+                api.ObjectCache["totalMsBlockBreaking"] = nowMs;// - ((nowMs - totalMsBreaking) % 200);
             }
 
             return resistance;
@@ -1106,7 +1118,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <param name="neibpos"></param>
-        public virtual void OnNeighourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos)
+        public virtual void OnNeighbourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos)
         {
             EnumHandling handled = EnumHandling.PassThrough;
 
@@ -1274,13 +1286,13 @@ namespace Vintagestory.API.Common
                 bool? isSneaking = ea.Controls.Sneak;
                 if (isSneaking != true)
                 {
-                    ea.LocalPos.Motion.Y = 0.04;
+                    ea.SidedPos.Motion.Y = 0.04;
                 }
             }
 
             if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < 0.2)
             {
-                OnNeighourBlockChange(world, pos, pos.UpCopy());
+                OnNeighbourBlockChange(world, pos, pos.UpCopy());
             }
         }
 
@@ -1555,9 +1567,13 @@ namespace Vintagestory.API.Common
         {
             BlockPos targetPos = blockSel.DidOffset ? blockSel.Position.AddCopy(blockSel.Face.GetOpposite()) : blockSel.Position;
 
-            double dx = byPlayer.Entity.Pos.X - (targetPos.X + blockSel.HitPosition.X);
+            /*double dx = byPlayer.Entity.Pos.X - (targetPos.X + blockSel.HitPosition.X);
             double dy = (float)byPlayer.Entity.Pos.Y + (float)(byPlayer.Entity.EyeHeight - (targetPos.Y + blockSel.HitPosition.Y));
-            double dz = (float)byPlayer.Entity.Pos.Z - (targetPos.Z + blockSel.HitPosition.Z);
+            double dz = (float)byPlayer.Entity.Pos.Z - (targetPos.Z + blockSel.HitPosition.Z);*/
+
+            double dx = byPlayer.Entity.Pos.X + byPlayer.Entity.LocalEyePos.X - (targetPos.X + blockSel.HitPosition.X);
+            double dy = byPlayer.Entity.Pos.Y + byPlayer.Entity.LocalEyePos.Y - (targetPos.Y + blockSel.HitPosition.Y);
+            double dz = byPlayer.Entity.Pos.Z + byPlayer.Entity.LocalEyePos.Z - (targetPos.Z + blockSel.HitPosition.Z);
 
             float angleHor = (float)Math.Atan2(dx, dz) + GameMath.PIHALF;
 
@@ -1582,6 +1598,52 @@ namespace Vintagestory.API.Common
         {
             return Code.Domain + AssetLocation.LocationSeparator + "block " + Code.Path + "/" + BlockId;
         }
+
+
+        /// <summary>
+        /// Called in the servers main thread
+        /// </summary>
+        /// <param name="ba"></param>
+        /// <param name="pos"></param>
+        /// <param name="newBlock">The block as returned by your GetSnowLevelUpdateBlock() method</param>
+        /// <param name="snowLevel"></param>
+        public virtual void PerformSnowLevelUpdate(IBulkBlockAccessor ba, BlockPos pos, Block newBlock, float snowLevel)
+        {
+            if (BlockMaterial == EnumBlockMaterial.Snow || BlockId == 0 || this.FirstCodePart() == newBlock.FirstCodePart())
+            {
+                ba.SetBlock(newBlock.Id, pos);
+            }
+        }
+
+        /// <summary>
+        /// Should return the snow covered block code for given snow level. Return null if snow cover is not supported for this block. If not overridden, it will check if Variant["cover"] exists and return its snow covered variant.
+        /// </summary>
+        /// <param name="snowLevel"></param>
+        /// <returns></returns>
+        public virtual Block GetSnowCoveredVariant(BlockPos pos, float snowLevel)
+        {
+            bool supportsCover = Variant["cover"] != null;
+            if (!supportsCover) return null;
+
+            if (snowLevel >= 1)
+            {
+                return api.World.GetBlock(CodeWithVariant("cover", "snow"));
+            }
+
+            if (snowLevel < 0.1)
+            {
+                return api.World.GetBlock(CodeWithVariant("cover", "free"));
+            }
+
+            return this;
+        }
+
+        public virtual float GetSnowLevel(BlockPos pos)
+        {
+            return Variant["cover"] == "snow" ? 1 : 0;
+        }
+
+
 
         /// <summary>
         /// For any block that can be rotated, this method should be implemented to return the correct rotated block code. It is used by the world edit tool for allowing block data rotations
@@ -1936,7 +1998,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="api"></param>
         /// <param name="textureDict"></param>
-        public virtual void OnCollectTextures(ICoreAPI api, IBlockTextureLocationDictionary textureDict)
+        public virtual void OnCollectTextures(ICoreAPI api, ITextureLocationDictionary textureDict)
         {
             BakeAndCollect(api, Textures, textureDict);
             BakeAndCollect(api, TexturesInventory, textureDict);
@@ -1948,7 +2010,7 @@ namespace Vintagestory.API.Common
         /// <param name="api"></param>
         /// <param name="dict"></param>
         /// <param name="textureDict"></param>
-        protected virtual void BakeAndCollect(ICoreAPI api, Dictionary<string, CompositeTexture> dict, IBlockTextureLocationDictionary textureDict)
+        protected virtual void BakeAndCollect(ICoreAPI api, Dictionary<string, CompositeTexture> dict, ITextureLocationDictionary textureDict)
         {
             foreach (var val in dict)
             {
@@ -2105,18 +2167,9 @@ namespace Vintagestory.API.Common
 
             int color = capi.BlockTextureAtlas.GetRandomColor(tex.Baked.TextureSubId);
 
-            
-
-            // TODO: FIXME
-            // We probably need to pre-generate like a list of 50 random colors per block face 
-            // not by probing the first texture but by probing all elmenent faces that are facing that block face
-            // Has to include the info if that pixel has to be biome tinted or not and then tinted as below
-            // Result:
-            // - No more white block pixels
-            // - Properly biome tinted
-            if (TintIndex > 0)
+            if (ClimateColorMap != null || SeasonColorMap != null)
             {
-                color = capi.ApplyColorTintOnRgba(TintIndex, color, pos.X, pos.Y, pos.Z);
+                color = capi.World.ApplyColorMapOnRgba(ClimateColorMap, SeasonColorMap, color, pos.X, pos.Y, pos.Z);
             }
             
             return color;
@@ -2147,9 +2200,9 @@ namespace Vintagestory.API.Common
         {
             int color = GetColorWithoutTint(capi, pos);
 
-            if (TintIndex > 0)
+            if (ClimateColorMap != null || SeasonColorMap != null)
             {
-                color = capi.ApplyColorTintOnRgba(TintIndex, color, pos.X, pos.Y, pos.Z, false);
+                color = capi.World.ApplyColorMapOnRgba(ClimateColorMap, SeasonColorMap, color, pos.X, pos.Y, pos.Z);
             }
 
             return color;

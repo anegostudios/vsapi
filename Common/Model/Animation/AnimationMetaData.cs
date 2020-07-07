@@ -87,7 +87,9 @@ namespace Vintagestory.API.Common
         public Dictionary<string, EnumAnimationBlendMode> ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(StringComparer.OrdinalIgnoreCase);
         [JsonProperty]
         public bool SupressDefaultAnimation = false;
-        
+        [JsonProperty]
+        public float HoldEyePosAfterEasein = 99f;
+
         public float StartFrameOnce;
 
         int withActivitiesMerged;
@@ -150,7 +152,10 @@ namespace Vintagestory.API.Common
                 ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(this.ElementBlendMode),
                 withActivitiesMerged = this.withActivitiesMerged,
                 CodeCrc32 = this.CodeCrc32,
-                WasStartedFromTrigger = this.WasStartedFromTrigger
+                WasStartedFromTrigger = this.WasStartedFromTrigger,
+                HoldEyePosAfterEasein = HoldEyePosAfterEasein,
+                StartFrameOnce = StartFrameOnce,
+                SupressDefaultAnimation = SupressDefaultAnimation
             };
         }
 
@@ -210,6 +215,8 @@ namespace Vintagestory.API.Common
 
             writer.Write(MulWithWalkSpeed);
             writer.Write(StartFrameOnce);
+
+            writer.Write(HoldEyePosAfterEasein);
         }
 
         public static AnimationMetaData FromBytes(BinaryReader reader, string version)
@@ -258,6 +265,10 @@ namespace Vintagestory.API.Common
             if (GameVersion.IsAtLeastVersion(version, "1.12.5-dev.1"))
             {
                 animdata.StartFrameOnce = reader.ReadSingle();
+            }
+            if (GameVersion.IsAtLeastVersion(version, "1.13.0-dev.3"))
+            {
+               animdata.HoldEyePosAfterEasein = reader.ReadSingle();
             }
 
             animdata.Init();

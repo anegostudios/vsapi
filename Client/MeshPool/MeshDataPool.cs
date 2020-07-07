@@ -116,7 +116,7 @@ namespace Vintagestory.API.Client
             
             pool.indicesSizes = new int[maxPartsPerPool];
 
-            MeshData modeldata = new MeshData(verticesPoolSize, indicesPoolSize, false);
+            //MeshData modeldata = new MeshData(verticesPoolSize, indicesPoolSize, false); - wtf?
 
             // Allocate the right amount of bytes for custom data
             if (customFloats != null)
@@ -140,7 +140,6 @@ namespace Vintagestory.API.Client
                 MeshData.XyzSize * verticesPoolSize,
                 0,
                 MeshData.UvSize * verticesPoolSize,
-                MeshData.RgbaSize * verticesPoolSize,
                 MeshData.RgbaSize * verticesPoolSize,
                 MeshData.FlagsSize * verticesPoolSize,
                 MeshData.IndexSize * indicesPoolSize,

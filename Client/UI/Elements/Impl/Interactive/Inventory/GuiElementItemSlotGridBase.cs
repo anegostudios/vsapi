@@ -524,7 +524,6 @@ namespace Vintagestory.API.Client
 
                 if (searchCache != null && searchCache.TryGetValue(val.Key, out cachedtext))
                 {
-
                     if (searchCacheNames[val.Key].Equals(searchText, StringComparison.InvariantCultureIgnoreCase))
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0 });

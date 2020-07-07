@@ -87,14 +87,14 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Cube face indices, in order: North, East, South, West, Up, Down.
         /// </summary>
-        public static int[] CubeFaceIndices =
+        public static byte[] CubeFaceIndices =
         {
-            BlockFacing.NORTH.Index,
-            BlockFacing.EAST.Index,
-            BlockFacing.SOUTH.Index,
-            BlockFacing.WEST.Index,
-            BlockFacing.UP.Index,
-            BlockFacing.DOWN.Index,
+            BlockFacing.NORTH.MeshDataIndex,
+            BlockFacing.EAST.MeshDataIndex,
+            BlockFacing.SOUTH.MeshDataIndex,
+            BlockFacing.WEST.MeshDataIndex,
+            BlockFacing.UP.MeshDataIndex,
+            BlockFacing.DOWN.MeshDataIndex,
         };
 
         /// <summary>
@@ -492,18 +492,18 @@ namespace Vintagestory.API.Client
 
         public static void SetXyzFacesAndPacketNormals(MeshData mesh)
         {
-            mesh.AddXyzFace(BlockFacing.NORTH.Index);
-            mesh.AddXyzFace(BlockFacing.EAST.Index);
-            mesh.AddXyzFace(BlockFacing.SOUTH.Index);
-            mesh.AddXyzFace(BlockFacing.WEST.Index);
-            mesh.AddXyzFace(BlockFacing.UP.Index);
-            mesh.AddXyzFace(BlockFacing.DOWN.Index);
+            mesh.AddXyzFace(BlockFacing.NORTH.MeshDataIndex);
+            mesh.AddXyzFace(BlockFacing.EAST.MeshDataIndex);
+            mesh.AddXyzFace(BlockFacing.SOUTH.MeshDataIndex);
+            mesh.AddXyzFace(BlockFacing.WEST.MeshDataIndex);
+            mesh.AddXyzFace(BlockFacing.UP.MeshDataIndex);
+            mesh.AddXyzFace(BlockFacing.DOWN.MeshDataIndex);
 
             for (int i = 0; i < 6; i++)
             {
                 BlockFacing facing = BlockFacing.ALLFACES[i];
                 
-                mesh.XyzFaces[i] = i;
+                mesh.XyzFaces[i] = facing.MeshDataIndex;
 
                 int normal = (VertexFlags.NormalToPackedInt(facing.Normalf.X, facing.Normalf.Y, facing.Normalf.Z) << 15);
                 mesh.Flags[i * 4 + 0] |= normal;

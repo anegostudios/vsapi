@@ -81,9 +81,13 @@ namespace Vintagestory.API.Common
         public double ScaleZ = 1;
 
         [JsonProperty]
-        public int TintIndex = -1;
+        public string ClimateColorMap = null;
         [JsonProperty]
-        public int RenderPass = -1;
+        public string SeasonColorMap = null;
+        [JsonProperty]
+        public short RenderPass = -1;
+        [JsonProperty]
+        public short ZOffset = 0;
         [JsonProperty]
         public bool FoliageWindWave;
         [JsonProperty]
@@ -264,7 +268,8 @@ namespace Vintagestory.API.Common
                 RotationZ = RotationZ,
                 Reflective = Reflective,
                 RotationOrigin = (double[])RotationOrigin?.Clone(),
-                TintIndex = TintIndex,
+                SeasonColorMap = SeasonColorMap,
+                ClimateColorMap = ClimateColorMap,
                 StepParentName = StepParentName,
                 Shade = Shade,
                 GradientShade = GradientShade,

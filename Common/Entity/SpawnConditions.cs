@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.MathTools;
+﻿using System;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -56,7 +57,7 @@ namespace Vintagestory.API.Common.Entities
                 MinLightLevel = MinLightLevel,
                 MaxLightLevel = MaxLightLevel,
                 LightLevelType = LightLevelType,
-                GroupSize = GroupSize?.Clone(),
+                HerdSize = HerdSize?.Clone(),
                 Companions = Companions?.Clone() as AssetLocation[],
                 InsideBlockCodes = InsideBlockCodes?.Clone() as AssetLocation[],
                 RequireSolidGround = RequireSolidGround,
@@ -93,7 +94,7 @@ namespace Vintagestory.API.Common.Entities
                 MinLightLevel = MinLightLevel,
                 MaxLightLevel = MaxLightLevel,
                 LightLevelType = LightLevelType,
-                GroupSize = GroupSize?.Clone(),
+                HerdSize = HerdSize?.Clone(),
                 Companions = Companions?.Clone() as AssetLocation[],
                 InsideBlockCodes = InsideBlockCodes?.Clone() as AssetLocation[],
                 RequireSolidGround = RequireSolidGround,
@@ -137,7 +138,10 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// the group size for the spawn.
         /// </summary>
-        public NatFloat GroupSize = NatFloat.createUniform(1, 0);
+        public NatFloat HerdSize = NatFloat.createUniform(1, 0);
+
+        [Obsolete("Use HerdSize instead")]
+        public NatFloat GroupSize { get => HerdSize; set => HerdSize = value; }
 
         /// <summary>
         /// Additional companions for the spawn.
@@ -207,7 +211,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Won't span above maxY. 0...1 is world bottom to sea level, 1...2 is sea level to world top
         /// </summary>
-        public float MaxY = 1;
+        public float MaxY = 2;
 
         /// <summary>
         /// The minimum amount of forest or shrubs for the object to spawn.

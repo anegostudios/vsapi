@@ -200,6 +200,12 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public CairoFont WithFont(string fontname)
+        {
+            this.Fontname = fontname;
+            return this;
+        }
+
         /// <summary>
         /// Sets up the context. Must be executed in the main thread, as it is not thread safe.
         /// </summary>

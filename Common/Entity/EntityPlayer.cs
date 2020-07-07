@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -15,44 +16,47 @@ namespace Vintagestory.API.Common
     public class EntityPlayer : EntityHumanoid
     {
         /// <summary>
-        /// The block or blocks currently selected by the player.
+        /// The block or blocks currently selected by the player. Set only by the game client.
         /// </summary>
         public BlockSelection BlockSelection;
 
         /// <summary>
-        /// The entity or entities selected by the player.
+        /// The entity or entities selected by the player. Set only by the game client.
         /// </summary>
         public EntitySelection EntitySelection;
 
         /// <summary>
-        /// The reason the player died (if the player did die)
+        /// The reason the player died (if the player did die). Set only by the game server.
         /// </summary>
         public DamageSource DeathReason;
 
         /// <summary>
-        /// The camera position of the player's view.
+        /// The camera position of the player's view. Set only by the game client.
         /// </summary>
         public Vec3d CameraPos = new Vec3d();
 
         /// <summary>
-        /// The yaw the player currently wants to walk towards to. Value set by the PlayerPhysics system.
+        /// The yaw the player currently wants to walk towards to. Value set by the PlayerPhysics system. Set by the game client and server.
         /// </summary>
         public float WalkYaw;
         /// <summary>
-        /// The pitch the player currently wants to move to. Only relevant while swimming. Value set by the PlayerPhysics system.
+        /// The pitch the player currently wants to move to. Only relevant while swimming. Value set by the PlayerPhysics system. Set by the game client and server.
         /// </summary>
         public float WalkPitch;
 
         /// <summary>
-        /// The current height of the eyes.
-        /// </summary>
-        double eyeHeightCurrent;
-
-        /// <summary>
-        /// Set this to hook into the foot step sound creator thingy. Currently used by the armor system to create armor step sounds 
+        /// Set this to hook into the foot step sound creator thingy. Currently used by the armor system to create armor step sounds. Called by the game client and server.
         /// </summary>
         public Action OnFootStep;
-        public Action OnImpact;
+
+        /// <summary>
+        /// Called when the player falls onto the ground. Called by the game client and server.
+        /// </summary>
+        public Action<double> OnImpact;
+
+        /// <summary>
+        /// Called whenever the game wants to spawn new creatures around the player. Called only by the game server.
+        /// </summary>
         public CanSpawnNearbyDelegate OnCanSpawnNearby;
 
         public override bool StoreWithChunk
@@ -62,13 +66,16 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// The player's internal Universal ID
+        /// The player's internal Universal ID. Available on the client and the server.
         /// </summary>
         public string PlayerUID
         {
             get { return WatchedAttributes.GetString("playerUID"); }
         }
 
+        /// <summary>
+        /// The players right hand contents. Available on the client and the server.
+        /// </summary>
         public override ItemSlot RightHandItemSlot
         {
             get
@@ -78,6 +85,9 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// The playres left hand contents. Available on the client and the server.
+        /// </summary>
         public override ItemSlot LeftHandItemSlot
         {
             get
@@ -87,6 +97,9 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// The players wearables. Available on the client and the server.
+        /// </summary>
         public override IInventory GearInventory
         {
             get
@@ -168,19 +181,6 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override double EyeHeight
-        {
-            get
-            {
-                if (MountedOn?.SuggestedAnimation == "sleep")
-                {
-                    return 0.3;
-                }
-
-                return eyeHeightCurrent;
-            }
-        }
-
         double walkCounter;
         double prevStepHeight;
         int direction = 0;
@@ -201,49 +201,107 @@ namespace Vintagestory.API.Common
             return mul;
         }
 
+        // This method is called on the client for the own entity player, because some things need to happen every frame
+        public void OnSelfBeforeRender(float dt)
+        {
+            updateEyeHeight(dt);
+        }
 
-        public override void OnGameTick(float dt)
+
+        public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
+        {
+            base.OnTesselation(ref entityShape, shapePathForLogging);
+
+            IInventory backPackInv = Player?.InventoryManager.GetOwnInventory(GlobalConstants.backpackInvClassName);
+
+            Dictionary<string, ItemSlot> uniqueGear = new Dictionary<string, ItemSlot>();
+            for (int i = 0; backPackInv != null && i < 4; i++)
+            {
+                ItemSlot slot = backPackInv[i];
+                if (slot.Empty) continue;
+                uniqueGear["" + slot.Itemstack.Class + slot.Itemstack.Collectible.Id] = slot;
+            }
+
+            foreach (var val in uniqueGear)
+            {
+                entityShape = addGearToShape(val.Value, entityShape, shapePathForLogging);
+            }
+        }
+
+        private void updateEyeHeight(float dt)
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
-
             if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
                 lastCanStandUp = !servercontrols.Sneak && canStandUp();
-
+                bool moving = (servercontrols.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
                 double newEyeheight = Properties.EyeHeight;
-                double newModelHeight = Properties.HitBoxSize.Y;
 
-                if (servercontrols.FloorSitting)
+                if (player.ImmersiveFpMode)
                 {
-                    newEyeheight *= 0.5f;
-                    newModelHeight *= 0.55f;
+                    updateLocalEyePosImmersiveFpMode();
+
+                    newEyeheight = LocalEyePos.Y;
                 }
-                else if ((servercontrols.Sneak || !lastCanStandUp) && !servercontrols.IsClimbing && !servercontrols.IsFlying)
+                else
                 {
-                    newEyeheight *= 0.8f;
-                    newModelHeight *= 0.8f;
-                } else if (!Alive)
-                {
-                    newEyeheight *= 0.25f;
-                    newModelHeight *= 0.25f;
+
+                    double newModelHeight = Properties.HitBoxSize.Y;
+
+                    if (servercontrols.FloorSitting)
+                    {
+                        newEyeheight *= 0.5f;
+                        newModelHeight *= 0.55f;
+                    }
+                    else if ((servercontrols.Sneak || !lastCanStandUp) && !servercontrols.IsClimbing && !servercontrols.IsFlying)
+                    {
+                        newEyeheight *= 0.8f;
+                        newModelHeight *= 0.8f;
+                    }
+                    else if (!Alive)
+                    {
+                        newEyeheight *= 0.25f;
+                        newModelHeight *= 0.25f;
+                    }
+
+
+                    double diff = (newEyeheight - LocalEyePos.Y) * 5 * dt;
+                    LocalEyePos.Y = diff > 0 ? Math.Min(LocalEyePos.Y + diff, newEyeheight) : Math.Max(LocalEyePos.Y + diff, newEyeheight);
+
+                    diff = (newModelHeight - OriginCollisionBox.Y2) * 5 * dt;
+                    OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
+
+                    LocalEyePos.X = 0;
+                    LocalEyePos.Z = 0;
+
+                    if (MountedOn?.SuggestedAnimation == "sleep")
+                    {
+                        LocalEyePos.Y = 0.3;
+                    }
                 }
 
-                bool moving = (servercontrols.TriesToMove && LocalPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
 
-                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (servercontrols.Sprint ? 0.9 : 1.2);
+
+                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (servercontrols.Sprint ? 0.9 : 1.2) * (servercontrols.Sneak ? 3 : 1);
 
                 walkCounter = moving ? walkCounter + frequency : 0;
                 walkCounter = walkCounter % GameMath.TWOPI;
 
-                double sneakMul = (servercontrols.Sneak ? 1.7 : 1);
+                double sneakDiv = (servercontrols.Sneak ? 3 : 1.8);
 
-                double amplitude = (FeetInLiquid ? 0.8 : 1) / (3 * sneakMul) + (servercontrols.Sprint ? 0.2 : 0);
-                double offset = -0.2 / sneakMul;
-
+                double amplitude = (FeetInLiquid ? 0.8 : 1 + (servercontrols.Sprint ? 0.07 : 0)) / (3 * sneakDiv);
+                double offset = -0.2 / sneakDiv;
 
                 double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(5.5f * walkCounter) * amplitude) + offset);
-                if (World.Side == EnumAppSide.Client && (World.Api as ICoreClientAPI).Settings.Bool["viewBobbing"]) newEyeheight += stepHeight;
 
+                if (World.Side == EnumAppSide.Client)
+                {
+                    ICoreClientAPI capi = World.Api as ICoreClientAPI;
+                    if (capi.Settings.Bool["viewBobbing"] && capi.Render.CameraType == EnumCameraMode.FirstPerson)
+                    {
+                        LocalEyePos.Y += stepHeight / 3f;
+                    }
+                }
 
 
                 if (moving)
@@ -252,7 +310,6 @@ namespace Vintagestory.API.Common
                     {
                         if (direction == -1)
                         {
-
                             float volume = controls.Sneak ? 0.5f : 1f;
 
                             int blockIdUnder = BlockUnderPlayer();
@@ -282,18 +339,20 @@ namespace Vintagestory.API.Common
                     else
                     {
                         direction = -1;
-                        
+
                     }
 
                 }
 
                 prevStepHeight = stepHeight;
+            }
+        }
 
-                double diff = (newEyeheight - eyeHeightCurrent) * 5 * dt;
-                eyeHeightCurrent = diff > 0 ? Math.Min(eyeHeightCurrent + diff, newEyeheight) : Math.Max(eyeHeightCurrent + diff, newEyeheight);
-
-                diff = (newModelHeight - OriginCollisionBox.Y2) * 5 * dt;
-                OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
+        public override void OnGameTick(float dt)
+        {
+            if (Api.Side == EnumAppSide.Server || (Api as ICoreClientAPI).World.Player.PlayerUID != PlayerUID)
+            {
+                updateEyeHeight(dt);
             }
 
             climateCondAccum += dt;
@@ -317,6 +376,53 @@ namespace Vintagestory.API.Common
 
 
         Cuboidf tmpCollBox = new Cuboidf();
+
+        void updateLocalEyePosImmersiveFpMode()
+        {
+            AttachmentPointAndPose apap = AnimManager.Animator.GetAttachmentPointPose("Eyes");
+            AttachmentPoint ap = apap.AttachPoint;
+
+            float[] ModelMat = Mat4f.Create();
+            Matrixf tmpModelMat = new Matrixf();
+
+            float bodyYaw = BodyYaw;
+            float rotX = Properties.Client.Shape != null ? Properties.Client.Shape.rotateX : 0;
+            float rotY = Properties.Client.Shape != null ? Properties.Client.Shape.rotateY : 0;
+            float rotZ = Properties.Client.Shape != null ? Properties.Client.Shape.rotateZ : 0;
+            float bodyPitch = WalkPitch;
+
+            float lookOffset = (SidedPos.Pitch - GameMath.PI) / 9f;
+
+            bool holdPosition = false;
+            for (int i = 0; i < AnimManager.Animator.RunningAnimations.Length; i++)
+            {
+                RunningAnimation anim = AnimManager.Animator.RunningAnimations[i];
+                if (anim.Running && anim.EasingFactor > anim.meta.HoldEyePosAfterEasein && !controls.TriesToMove)
+                {
+                    holdPosition = true;
+                    break;
+                }
+            }
+
+            if (holdPosition) return;
+
+            tmpModelMat
+                .Set(ModelMat)
+                .RotateX(SidedPos.Roll + rotX * GameMath.DEG2RAD)
+                .RotateY(bodyYaw + (180 + rotY) * GameMath.DEG2RAD)
+                .RotateZ(bodyPitch + rotZ * GameMath.DEG2RAD)
+                .Mul(apap.AnimModelMatrix)
+                .Scale(Properties.Client.Size, Properties.Client.Size, Properties.Client.Size)
+                .Translate(-0.5f, 0, -0.5f)
+                .Translate(ap.PosX / 16f - lookOffset, ap.PosY / 16f - lookOffset / 1.3f, ap.PosZ / 16f)
+            ;
+
+            float[] pos = new float[4] { 0, 0, 0, 1 };
+            float[] endVec = Mat4f.MulWithVec4(tmpModelMat.Values, pos);
+
+            LocalEyePos.Set(endVec[0], endVec[1], endVec[2]);
+        }
+
         private bool canStandUp()
         {
             tmpCollBox.Set(CollisionBox);
@@ -349,7 +455,7 @@ namespace Vintagestory.API.Common
                     World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
                 }
 
-                OnImpact?.Invoke();
+                OnImpact?.Invoke(motionY);
             }
 
             base.OnFallToGround(motionY);
@@ -359,7 +465,7 @@ namespace Vintagestory.API.Common
 
         internal int BlockUnderPlayer()
         {
-            EntityPos pos = LocalPos;
+            EntityPos pos = SidedPos;
             return World.BlockAccessor.GetBlockId(
                 (int)pos.X,
                 (int)(pos.Y - 0.1f),
@@ -368,7 +474,7 @@ namespace Vintagestory.API.Common
 
         internal int BlockInsidePlayer()
         {
-            EntityPos pos = LocalPos;
+            EntityPos pos = SidedPos;
 
             return World.BlockAccessor.GetBlockId(
                 (int)pos.X,
@@ -443,7 +549,7 @@ namespace Vintagestory.API.Common
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
         {
-            EnumGameMode mode = World.PlayerByUid(PlayerUID).WorldData.CurrentGameMode;
+            EnumGameMode mode = World.PlayerByUid(PlayerUID)?.WorldData?.CurrentGameMode ?? EnumGameMode.Survival;
             if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource.Type != EnumDamageType.Heal) return false;
 
             return base.ShouldReceiveDamage(damageSource, damage);
@@ -549,7 +655,7 @@ namespace Vintagestory.API.Common
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
-                sapi.WorldManager.LoadChunkColumnFast((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions()
+                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions()
                 {
                     OnLoaded = () =>
                     {
@@ -567,7 +673,11 @@ namespace Vintagestory.API.Common
                             
                             sapi.Event.RegisterCallback((bla) => {
                                 sapi.WorldManager.SendChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player, false);
-                                player.CurrentChunkSentRadius = 0;
+
+                                if (player.ConnectionState != EnumClientState.Offline) // Oherwise we get an endlessly looping exception spam and break the server
+                                {
+                                    player.CurrentChunkSentRadius = 0;
+                                }
                             }, 50);
 
                         }

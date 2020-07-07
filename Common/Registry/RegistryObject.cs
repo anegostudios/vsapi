@@ -150,6 +150,30 @@ namespace Vintagestory.API.Common
             return new AssetLocation(Code.Domain, sb.ToString());
         }
 
+        public AssetLocation CodeWithVariants(string[] types, string[] values)
+        {
+            StringBuilder sb = new StringBuilder(FirstCodePart());
+
+            foreach (var val in Variant)
+            {
+                sb.Append("-");
+
+                int index = types.IndexOf(val.Key);
+
+                if (index >= 0)
+                {
+                    sb.Append(values[index]);
+                }
+                else
+                {
+                    sb.Append(val.Value);
+                }
+            }
+
+            return new AssetLocation(Code.Domain, sb.ToString());
+        }
+
+
         /// <summary>
         /// Replaces one part from the blocks code and replaces it with components by splitting it up at every occurence of a dash ('-')
         /// </summary>

@@ -9,6 +9,9 @@ namespace Vintagestory.API.Client
 
         LoadedTexture onTexture;
 
+        /// <summary>
+        /// Wether the switch has been toggled to On
+        /// </summary>
         public bool On;
 
         internal double unscaledPadding;

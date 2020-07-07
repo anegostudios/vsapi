@@ -14,7 +14,7 @@ namespace Vintagestory.API.Common
         public static AssetCategory blocktypes = new AssetCategory("blocktypes", true, EnumAppSide.Server);
         public static AssetCategory itemtypes = new AssetCategory("itemtypes", true, EnumAppSide.Server);
         public static AssetCategory lang = new AssetCategory("lang", false, EnumAppSide.Universal);
-        public static AssetCategory lore = new AssetCategory("journal", false, EnumAppSide.Universal);
+        //public static AssetCategory lore = new AssetCategory("journal", false, EnumAppSide.Universal);
         public static AssetCategory patches = new AssetCategory("patches", false, EnumAppSide.Universal);
         public static AssetCategory config = new AssetCategory("config", false, EnumAppSide.Universal);
         public static AssetCategory worldproperties = new AssetCategory("worldproperties", true, EnumAppSide.Universal);
@@ -68,6 +68,8 @@ namespace Vintagestory.API.Common
         /// <returns>An asset category.</returns>
         public static AssetCategory FromCode(string code)
         {
+            if (!categories.ContainsKey(code)) return null;
+
             return categories[code];
         }
     }

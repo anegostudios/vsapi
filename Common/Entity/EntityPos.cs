@@ -407,6 +407,15 @@ namespace Vintagestory.API.Common.Entities
             return (dx * dx + dy * dy + dz * dz);
         }
 
+        public double DistanceTo(Vec3d pos)
+        {
+            double dx = this.x - pos.X;
+            double dy = this.y - pos.Y;
+            double dz = this.z - pos.Z;
+
+            return GameMath.Sqrt(dx * dx + dy * dy + dz * dz);
+        }
+
 
         /// <summary>
         /// Returns the squared distance of the entity to this position

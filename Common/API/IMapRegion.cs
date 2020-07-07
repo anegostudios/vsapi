@@ -36,27 +36,27 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Currently unuseds
         /// </summary>
-        IntMap FlowerMap { get; set; }
+        IntDataMap2D FlowerMap { get; set; }
 
         /// <summary>
         /// Holds a shrub density map
         /// </summary>
-        IntMap ShrubMap { get; set; }
+        IntDataMap2D ShrubMap { get; set; }
 
         /// <summary>
         /// Holds a forest density map
         /// </summary>
-        IntMap ForestMap { get; set; }
+        IntDataMap2D ForestMap { get; set; }
 
         /// <summary>
         /// Holds a beach strength map
         /// </summary>
-        IntMap BeachMap { get; set; }
+        IntDataMap2D BeachMap { get; set; }
         
         /// <summary>
         /// Holds the landform indices
         /// </summary>
-        IntMap LandformMap { get; set; }
+        IntDataMap2D LandformMap { get; set; }
 
         /// <summary>
         /// Holds temperature and rain fall.
@@ -64,18 +64,18 @@ namespace Vintagestory.API.Common
         /// 8-15 bits = Green = rain
         /// 0-7 bits = Blue = unused 
         /// </summary>
-        IntMap ClimateMap { get; set; }
+        IntDataMap2D ClimateMap { get; set; }
 
         /// <summary>
         /// Holds the geologic province indices
         /// </summary>
-        IntMap GeologicProvinceMap { get; set; }
+        IntDataMap2D GeologicProvinceMap { get; set; }
 
 
         /// <summary>
         /// Holds the rock strata noise maps
         /// </summary>
-        IntMap[] RockStrata { get; set; }
+        IntDataMap2D[] RockStrata { get; set; }
         
 
         /// <summary>
@@ -86,15 +86,15 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Holds the mod mappings.
         /// </summary>
-        Dictionary<string, IntMap> ModMaps { get; }
+        Dictionary<string, IntDataMap2D> ModMaps { get; }
 
         /// <summary>
         /// Gets the ore map for the given item.
         /// </summary>
-        Dictionary<string, IntMap> OreMaps { get; }
+        Dictionary<string, IntDataMap2D> OreMaps { get; }
 
-        IntMap OreMapVerticalDistortTop { get; }
-        IntMap OreMapVerticalDistortBottom { get; }
+        IntDataMap2D OreMapVerticalDistortTop { get; }
+        IntDataMap2D OreMapVerticalDistortBottom { get; }
 
 
         /// <summary>

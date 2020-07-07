@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -241,17 +242,11 @@ namespace Vintagestory.API.Common
             string arg = PopWord();
             if (arg == null) return defaultValue;
 
-            double val;
-            if (double.TryParse(arg, out val))
-            {
-                return val;
-            }
-
-            return defaultValue;
+            return arg.ToDoubleOrNull(defaultValue);
         }
 
         /// <summary>
-        /// Tries to retrieve arg at given index as int, or null if not enough arguments or not an integer
+        /// Tries to retrieve arg at given index as float, or null if not enough arguments or not a float
         /// </summary>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
@@ -260,13 +255,7 @@ namespace Vintagestory.API.Common
             string arg = PopWord();
             if (arg == null) return defaultValue;
 
-            float val;
-            if (float.TryParse(arg, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val))
-            {
-                return val;
-            }
-
-            return defaultValue;
+            return arg.ToFloatOrNull(defaultValue);
         }
 
         /// <summary>
@@ -352,6 +341,12 @@ namespace Vintagestory.API.Common
             }
 
             return outPos;
+        }
+
+
+        public CmdArgs Clone()
+        {
+            return new CmdArgs(args.ToArray());
         }
 
     }

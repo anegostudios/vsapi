@@ -71,7 +71,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static MeshData GetCustomQuadModelData(float x, float y, float z, float dw, float dh)
         {
-            MeshData m = new MeshData(4, 6, false, true, false, false, false);
+            MeshData m = new MeshData(4, 6, false, true, false, false);
 
             for (int i = 0; i < 4; i++)
             {

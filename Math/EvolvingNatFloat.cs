@@ -85,20 +85,16 @@ namespace Vintagestory.API.MathTools
             this.factor = factor;
         }
 
-        public static EvolvingNatFloat createIdentical(float value)
+        public static EvolvingNatFloat createIdentical(float factor)
         {
-            return new EvolvingNatFloat(EnumTransformFunction.IDENTICAL, 0f);
+            return new EvolvingNatFloat(EnumTransformFunction.IDENTICAL, factor);
         }
-
-
 
         public static EvolvingNatFloat create(EnumTransformFunction function, float factor)
         {
             return new EvolvingNatFloat(function, factor);
         }
 
-        
-      
 
         EvolvingNatFloat setMax(float? value)
         {
@@ -108,7 +104,12 @@ namespace Vintagestory.API.MathTools
 
 
 
-        // Sequence should always run from 0 to 1000
+        /// <summary>
+        /// The sequence should always run from 0 to n
+        /// </summary>
+        /// <param name="firstvalue"></param>
+        /// <param name="sequence"></param>
+        /// <returns></returns>
         public float nextFloat(float firstvalue, float sequence)
         {
             float result = transfuncs[(int)transform](firstvalue, factor, sequence);

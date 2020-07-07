@@ -7,7 +7,7 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-    public interface IBlockTextureLocationDictionary
+    public interface ITextureLocationDictionary
     {
         bool AddTextureLocation(AssetLocationAndSource textureLoc);
 

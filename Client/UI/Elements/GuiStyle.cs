@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿using Vintagestory.API.MathTools;
+
+namespace Vintagestory.API.Client
 {
     //public static class ElementGeometrics
     /// <summary>
@@ -118,37 +120,45 @@
         /// <summary>
         /// The light background color for dialogs.
         /// </summary>
-        public static double[] DialogLightBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.75 };
+        public static double[] DialogLightBgColor = ColorUtil.Hex2Doubles("#403529", 0.75);
         /// <summary>
         /// The default background color for dialogs.
         /// </summary>
-        public static double[] DialogDefaultBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 0.8 };
+        public static double[] DialogDefaultBgColor = ColorUtil.Hex2Doubles("#403529", 0.8);
         /// <summary>
         /// The strong background color for dialogs.
         /// </summary>
-        public static double[] DialogStrongBgColor = new double[] { 64 / 255.0, 53 / 255.0, 41.0 / 255.0, 1 };
+        public static double[] DialogStrongBgColor = ColorUtil.Hex2Doubles("#403529", 1);
         /// <summary>
         /// The default dialog border color
         /// </summary>
-        public static double[] DialogBorderColor = new double[] { 0, 0, 0, 0.4 };
+        public static double[] DialogBorderColor = new double[] { 0, 0, 0, 0.3 };
 
         /// <summary>
         /// The Highlight color for dialogs.
         /// </summary>
-        public static double[] DialogHighlightColor = new double[] { 168 / 255.0, 139 / 255.0, 108.0 / 255.0, 0.9 };
+        public static double[] DialogHighlightColor = ColorUtil.Hex2Doubles("#a88b6c", 0.9);
         /// <summary>
         /// The alternate background color for dialogs.
         /// </summary>
-        public static double[] DialogAlternateBgColor = new double[] { 181 / 255.0, 174 / 255.0, 166 / 255.0, 0.93 };
-        /// <summary>
-        /// A blue color for dialog backgrounds.
-        /// </summary>
-        public static double[] DialogBlueBgColor = new double[] { 52 / 255.0, 55 / 255.0, 184 / 255.0, 1 };
+        public static double[] DialogAlternateBgColor = ColorUtil.Hex2Doubles("#b5aea6", 0.93);
+
 
         /// <summary>
         /// The default text color for any given dialog.
         /// </summary>
-        public static double[] DialogDefaultTextColor = new double[] { 232 / 255.0, 214 / 255.0, 193 / 255.0, 1 };
+        public static double[] DialogDefaultTextColor = ColorUtil.Hex2Doubles("#e9ddce", 1);
+        /// <summary>
+        /// A color for a darker brown.
+        /// </summary>
+        public static double[] DarkBrownColor = ColorUtil.Hex2Doubles("#5a4530", 1);
+        /// <summary>
+        /// The color of the 1..9 numbers on the hotbar slots
+        /// </summary>
+        public static double[] HotbarNumberTextColor = ColorUtil.Hex2Doubles("#5a4530", 0.5);
+
+        public static double[] DiscoveryTextColor = ColorParchment;
+
         /// <summary>
         /// The color of the error text.
         /// </summary>
@@ -169,15 +179,7 @@
         /// The text color for a disabled object.
         /// </summary>
         public static double[] DisabledTextColor = new double[] { 1, 1, 1, 0.35 };
-        /// <summary>
-        /// A color for a darker brown.
-        /// </summary>
-        public static double[] DarkBrownColor = new double[] { 73 / 255.0, 58 / 255.0, 41 / 255.0, 1 };
 
-        /// <summary>
-        /// The color of the 1..9 numbers on the hotbar slots
-        /// </summary>
-        public static double[] HotbarNumberTextColor = new double[] { 73 / 255.0, 58 / 255.0, 41 / 255.0, 0.5 };
 
         /// <summary>
         /// The color of the actively selected slot overlay

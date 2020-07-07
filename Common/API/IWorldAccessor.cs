@@ -85,6 +85,11 @@ namespace Vintagestory.API.Common
         int Seed { get; }
 
         /// <summary>
+        /// A globally unique identifier for this savegame
+        /// </summary>
+        string SavegameIdentifier { get; }
+
+        /// <summary>
         /// The currently configured max sun light level
         /// </summary>
         int SunBrightness { get; }
@@ -110,12 +115,12 @@ namespace Vintagestory.API.Common
         EnumAppSide Side { get; }
 
         /// <summary>
-        /// Relaxed block access to the worlds block data
+        /// Access blocks and other world data from loaded chunks, fault tolerant
         /// </summary>
         IBlockAccessor BlockAccessor { get; }
 
         /// <summary>
-        /// Relaxed bulk block access to the worlds block data. Since this is a single bulk block access instance the cached data is shared for everything accessing this method, hence should only be accessed from the main thread and any changed comitted within the same game tick. You can however use the WorldManager api to get your own instance of a bulk block accessor
+        /// Fault tolerant bulk block access to the worlds block data. Since this is a single bulk block access instance the cached data is shared for everything accessing this method, hence should only be accessed from the main thread and any changed comitted within the same game tick. You can however use the WorldManager api to get your own instance of a bulk block accessor
         /// </summary>
         IBulkBlockAccessor BulkBlockAccessor { get; }
 
@@ -150,12 +155,12 @@ namespace Vintagestory.API.Common
         List<CollectibleObject> Collectibles { get; }
 
         /// <summary>
-        /// List of all loaded blocks. Some may be null or placeholders (then block.code is null).
+        /// List of all loaded blocks. The array index is the block id. Some may be null or placeholders (then block.code is null).
         /// </summary>
         List<Block> Blocks { get; }
 
         /// <summary>
-        /// List of all loaded items. Some may be null or placeholders (then item.code is null)
+        /// List of all loaded items. The array index is the item id. Some may be null or placeholders (then item.code is null)
         /// </summary>
         List<Item> Items { get; }
 
@@ -396,6 +401,8 @@ namespace Vintagestory.API.Common
         /// <param name="volume"></param>
         void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer, float pitch, float range = 32, float volume = 1f);
 
+        void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer, EnumSoundType soundType, float pitch, float range = 32, float volume = 1f);
+
         /// <summary>
         /// Plays given sound at given player position.
         /// </summary>
@@ -477,9 +484,10 @@ namespace Vintagestory.API.Common
         /// <param name="toPos"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySelection"></param>
-        /// <param name="filter">Can be used to ignore certain blocks</param>
-        void RayTraceForSelection(Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null);
-        
+        /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
+        /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
+        void RayTraceForSelection(Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null);
+
 
         /// <summary>
         /// Shoots out a virtual ray at between given positions and stops when the ray hits a block or entity intersection box supplied by given supplier. The block/entity it struck first is then returned by reference.
@@ -489,8 +497,9 @@ namespace Vintagestory.API.Common
         /// <param name="toPos"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySelection"></param>
-        /// <param name="filter">Can be used to ignore certain blocks</param>
-        void RayTraceForSelection(IWorldIntersectionSupplier supplier, Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null);
+        /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
+        /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
+        void RayTraceForSelection(IWorldIntersectionSupplier supplier, Vec3d fromPos, Vec3d toPos, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null);
 
 
         /// <summary>
@@ -502,8 +511,9 @@ namespace Vintagestory.API.Common
         /// <param name="range"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySelection"></param>
-        /// <param name="filter">Can be used to ignore certain blocks. Return false to ignore</param>
-        void RayTraceForSelection(Vec3d fromPos, float pitch, float yaw, float range, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null);
+        /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
+        /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
+        void RayTraceForSelection(Vec3d fromPos, float pitch, float yaw, float range, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter bfilter = null, EntityFilter efilter = null);
 
         /// <summary>
         /// Shoots out a given ray and stops when the ray hits a block or entity selection box. The block/entity it struck first is then returned by reference.
@@ -511,9 +521,9 @@ namespace Vintagestory.API.Common
         /// <param name="ray"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySelection"></param>
-        /// <param name="filter">Can be used to ignore certain blocks. Return false to ignore</param>
-        void RayTraceForSelection(Ray ray, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null);
-
+        /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
+        /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
+        void RayTraceForSelection(Ray ray, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null, EntityFilter efilter = null);
 
 
         /// <summary>

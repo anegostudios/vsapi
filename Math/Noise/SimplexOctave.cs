@@ -309,7 +309,7 @@ namespace Vintagestory.API.MathTools
                 (int)(inSum + yins) << 7 |
                 (int)(inSum + xins) << 9;
 
-            var c = lookup3D[hash];
+            var c = lookup3D[GameMath.Clamp(hash, 0, lookup3D.Length)];
 
             var value = 0.0;
             while (c != null)

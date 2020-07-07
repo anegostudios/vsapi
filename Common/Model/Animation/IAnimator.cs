@@ -160,5 +160,6 @@ namespace Vintagestory.API.Common
         void OnAnimationStopped(string code);
 
         void OnServerTick(float dt);
+
     }
 }

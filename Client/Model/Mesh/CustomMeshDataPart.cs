@@ -49,7 +49,7 @@ namespace Vintagestory.API.Client
         public int InterleaveStride = 0;
 
         /// <summary>
-        /// Offset in bytes for each in variable 
+        /// Offset in bytes for each variable 
         /// </summary>
         public int[] InterleaveOffsets = null;
 

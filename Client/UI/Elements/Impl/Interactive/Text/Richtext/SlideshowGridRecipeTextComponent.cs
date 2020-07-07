@@ -249,7 +249,7 @@ namespace Vintagestory.API.Client
                     rx = renderX + bounds.X + x * (size + 3);
                     ry = renderY + bounds.Y + y * (size + 3);
 
-                    dummyslot.Itemstack = ingred.ResolvedItemstack;
+                    dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
                     api.Render.RenderItemstackToGui(
                         dummyslot, 
                         rx + size * 0.5f,

@@ -69,6 +69,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AnimatedGif">
+      <HintPath>..\Lib\AnimatedGif.dll</HintPath>
+    </Reference>
     <Reference Include="protobuf-net, Version=1.0.0.282, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\protobuf-net.dll</HintPath>
@@ -82,6 +85,11 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions">
+    </Reference>
+    <Reference Include="System.Data.SQLite, Version=1.0.81.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\System.Data.SQLite.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
@@ -107,6 +115,7 @@
     <Compile Include="Client\Model\Mesh\CustomMeshDataPartShort.cs" />
     <Compile Include="Client\Model\Tesselation\TileSide.cs" />
     <Compile Include="Client\ParticlePhysics.cs" />
+    <Compile Include="Client\Render\ColorMapData.cs" />
     <Compile Include="Client\Render\EnumFrameBuffer.cs" />
     <Compile Include="Client\Render\IAviWriter.cs" />
     <Compile Include="Client\Texture\FastBitmap.cs" />
@@ -227,6 +236,7 @@
     <Compile Include="Common\Inventory\CreativeInventoryTab.cs" />
     <Compile Include="Common\Inventory\DummyInventory.cs" />
     <Compile Include="Common\Inventory\ItemSlotOffHand.cs" />
+    <Compile Include="Common\IO\SQLiteDB.cs" />
     <Compile Include="Common\Model\Animation\AnimationCache.cs" />
     <Compile Include="Common\Model\Animation\AnimationMetaData.cs" />
     <Compile Include="Common\Model\Animation\AnimationManager.cs" />
@@ -246,10 +256,13 @@
     <Compile Include="Common\API\IBulkBlockAccessor.cs" />
     <Compile Include="Common\API\IEventAPI.cs" />
     <Compile Include="Common\API\IMapChunk.cs" />
+    <Compile Include="Common\Texture\ColorMap.cs" />
     <Compile Include="Common\TyronThreadPool.cs" />
+    <Compile Include="Datastructures\FloatDataMap3D.cs" />
     <Compile Include="Datastructures\FastList.cs" />
     <Compile Include="Math\Matrix\Quaternionf.cs" />
     <Compile Include="Server\API\IPlayerDataManager.cs" />
+    <Compile Include="Util\BitmapExtensions.cs" />
     <Compile Include="Util\IgnoreUtil.cs" />
     <Compile Include="Util\JsonUtil.cs" />
     <Compile Include="Common\Assets\Mod.cs" />
@@ -500,7 +513,7 @@
     <Compile Include="Common\Text\ChatLine.cs" />
     <Compile Include="Common\Combat\DamageSource.cs" />
     <Compile Include="Common\Entity\EntityDespawn.cs" />
-    <Compile Include="Datastructures\IntMap.cs" />
+    <Compile Include="Datastructures\IntDataMap2D.cs" />
     <Compile Include="Math\ColorUtil.cs" />
     <Compile Include="Math\BlockFacing.cs" />
     <Compile Include="Math\BlockPos.cs" />

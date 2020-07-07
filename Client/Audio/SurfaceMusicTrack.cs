@@ -92,7 +92,9 @@ namespace Vintagestory.API.Client
             // Sometimes
             new float[] { 7*60, 4*60 },
             // Often
-            new float[] { 3*60, 2*60 }
+            new float[] { 3*60, 2*60 },
+            // Very Often
+            new float[] { 0*60, 0*60 }
         };
 
         /// <summary>
@@ -105,6 +107,8 @@ namespace Vintagestory.API.Client
             new float[] { 20 * 60, 20 * 60 },
             // Often
             new float[] { 15 * 60, 15 * 60 },
+            // Very Often
+            new float[] { 8 * 60, 5 * 60 },
         };
 
         // Updated by BehaviorTemporalStabilityAffected
@@ -187,7 +191,7 @@ namespace Vintagestory.API.Client
         {
             Random rnd = capi.World.Rand;
 
-            float hourRange = Math.Min(2, MaxHour - MinHour);
+            float hourRange = Math.Min(2 + Math.Max(0, prevFrequency), MaxHour - MinHour);
             
             nowMinHour = Math.Max(MinHour, Math.Min(MaxHour - 1, MinHour - 1 + (float)(rnd.NextDouble() * (hourRange+1))));
             nowMaxHour = Math.Min(MaxHour, nowMinHour + hourRange);
@@ -234,12 +238,25 @@ namespace Vintagestory.API.Client
                 return false;
             }
 
-            float hour = capi.World.Calendar.HourOfDay / 24f * capi.World.Calendar.HoursPerDay;
-            if (hour < nowMinHour || hour > nowMaxHour)
+            if (prevFrequency == 3)
             {
-                //world.Logger.Debug("{0}: {1} not inside [{2},{3}]", Name, hour, MinHour, MaxHour);
-                return false;
+                float hour = capi.World.Calendar.HourOfDay / 24f * capi.World.Calendar.HoursPerDay;
+                if (hour < MinHour || hour > MaxHour)
+                {
+                    //world.Logger.Debug("{0}: {1} not inside [{2},{3}]", Name, hour, MinHour, MaxHour);
+                    return false;
+                }
+
+            } else
+            {
+                float hour = capi.World.Calendar.HourOfDay / 24f * capi.World.Calendar.HoursPerDay;
+                if (hour < nowMinHour || hour > nowMaxHour)
+                {
+                    //world.Logger.Debug("{0}: {1} not inside [{2},{3}]", Name, hour, MinHour, MaxHour);
+                    return false;
+                }
             }
+            
 
             //world.Logger.Debug("{0}: {1} is inside [{2},{3}]!", Name, hour, MinHour, MaxHour);
 

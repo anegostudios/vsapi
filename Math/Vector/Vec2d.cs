@@ -25,5 +25,48 @@ namespace Vintagestory.API.MathTools
             this.X = x;
             this.Y = y;
         }
+
+        public Vec2d Set(double x, double z)
+        {
+            this.X = x;
+            this.Y = z;
+            return this;
+        }
+
+
+        public double Dot(Vec2d a)
+        {
+            return X * a.X + Y * a.Y;
+        }
+
+        public double Dot(double x, double y)
+        {
+            return X * x + Y * y;
+        }
+
+
+        public double Length()
+        {
+            return GameMath.Sqrt(X * X + Y * Y);
+        }
+
+        public double LengthSq()
+        {
+            return X * X + Y * Y;
+        }
+
+        public Vec2d Normalize()
+        {
+            double length = Length();
+            if (length > 0)
+            {
+                X /= length;
+                Y /= length;
+            }
+
+            return this;
+        }
+
+
     }
 }

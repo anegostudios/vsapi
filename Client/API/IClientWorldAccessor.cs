@@ -69,6 +69,39 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface IClientWorldAccessor : IWorldAccessor
     {
+
+        /// <summary>
+        /// Interface to access the game calendar
+        /// </summary>
+        new IClientGameCalendar Calendar { get; }
+
+        /// <summary>
+        /// Loads the rgb climate and season color map value at given position and multiplies it byte-wise with supplied color
+        /// </summary>
+        /// <param name="climateColorMap"></param>
+        /// <param name="seasonColorMap"></param>
+        /// <param name="color"></param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <param name="flipRb"></param>
+        /// <returns></returns>
+        int ApplyColorMapOnRgba(string climateColorMap, string seasonColorMap, int color, int posX, int posY, int posZ, bool flipRb = true);
+
+
+        /// <summary>
+        /// Loads the rgb climate and season color map value for given rain and temp value and multiplies it byte-wise with supplied color
+        /// </summary>
+        /// <param name="climateColorMap"></param>
+        /// <param name="seasonColorMap"></param>
+        /// <param name="color"></param>
+        /// <param name="rain"></param>
+        /// <param name="temp"></param>
+        /// <param name="flipRb"></param>
+        /// <returns></returns>
+        int ApplyColorMapOnRgba(string climateColorMap, string seasonColorMap, int color, int rain, int temp, bool flipRb = true);
+
+
         /// <summary>
         /// Whether the player can select liquids
         /// </summary>

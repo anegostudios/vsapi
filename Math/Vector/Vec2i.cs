@@ -99,6 +99,17 @@ namespace Vintagestory.API.MathTools
             this.Y += dy;
             return this;
         }
+
+
+        /// <summary>
+        /// 27 lowest bits for X Coordinate, then 27 bits for Z coordinate
+        /// </summary>
+        /// <returns></returns>
+        public ulong ToChunkIndex()
+        {
+            return ((ulong)Y << 27) | (uint)X;
+        }
+
     }
 
 

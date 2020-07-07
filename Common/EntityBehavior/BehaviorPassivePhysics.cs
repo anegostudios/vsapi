@@ -14,6 +14,8 @@ namespace Vintagestory.API.Common
         float accumulator;
         Vec3d outposition = new Vec3d();
         Vec3d prevPos = new Vec3d();
+        Vec3d moveDelta = new Vec3d();
+        Vec3d nextPosition = new Vec3d();
 
         /// <summary>
         /// The amount of drag while travelling through water.
@@ -90,7 +92,12 @@ namespace Vintagestory.API.Common
 
         public void onPhysicsTick(float deltaTime)
         {
-            EntityPos pos = entity.LocalPos;
+            if (entity.State == EnumEntityState.Inactive)
+            {
+                return;
+            }
+
+            EntityPos pos = entity.SidedPos;
 
             accumulator += deltaTime;
 
@@ -122,6 +129,8 @@ namespace Vintagestory.API.Common
             bool onGroundBefore = entity.OnGround;
             bool swimmingBefore = entity.Swimming;
             bool onCollidedBefore = entity.Collided;
+
+            float dtFac = 60 * dt;
 
             Block belowBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - 0.05f), (int)pos.Z);
 
@@ -165,10 +174,10 @@ namespace Vintagestory.API.Common
             // Gravity
             if (pos.Y > -100 && entity.ApplyGravity)
             {
-                double gravStrength = gravityPerSecond * dt + Math.Max(0, -0.015f * pos.Motion.Y);
+                double gravStrength = gravityPerSecond / 60f + Math.Max(0, -0.015f * pos.Motion.Y);
+
                 if (entity.Swimming)
                 {
-
                     // above 0 => floats
                     // below 0 => sinks
                     float baseboyancy = GameMath.Clamp(1 - entity.MaterialDensity / inblock.MaterialDensity, -1, 1);
@@ -194,25 +203,27 @@ namespace Vintagestory.API.Common
                 }   
             }
 
-           
-            Vec3d nextPosition = pos.XYZ + pos.Motion;
+
+            moveDelta.Set(pos.Motion.X * dtFac, pos.Motion.Y * dtFac, pos.Motion.Z * dtFac);
+            nextPosition.Set(pos.X + moveDelta.X, pos.Y + moveDelta.Y, pos.Z + moveDelta.Z);
+
 
             bool falling = pos.Motion.Y < 0;
 
-            entity.World.CollisionTester.ApplyTerrainCollision(entity, pos, ref outposition, true);
+            entity.World.CollisionTester.ApplyTerrainCollision(entity, pos, dtFac, ref outposition);
 
             
 
 
-            if (entity.World.BlockAccessor.IsNotTraversable((int)(pos.X + pos.Motion.X), (int)pos.Y, (int)pos.Z))
+            if (entity.World.BlockAccessor.IsNotTraversable((int)(pos.X + moveDelta.X), (int)pos.Y, (int)pos.Z))
             {
                 outposition.X = pos.X;
             }
-            if (entity.World.BlockAccessor.IsNotTraversable((int)pos.X, (int)(pos.Y + pos.Motion.Y), (int)pos.Z))
+            if (entity.World.BlockAccessor.IsNotTraversable((int)pos.X, (int)(pos.Y + moveDelta.Y), (int)pos.Z))
             {
                 outposition.Y = pos.Y;
             }
-            if (entity.World.BlockAccessor.IsNotTraversable((int)pos.X, (int)pos.Y, (int)(pos.Z + pos.Motion.Z)))
+            if (entity.World.BlockAccessor.IsNotTraversable((int)pos.X, (int)pos.Y, (int)(pos.Z + moveDelta.Z)))
             {
                 outposition.Z = pos.Z;
             }

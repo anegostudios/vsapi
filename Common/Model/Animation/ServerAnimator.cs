@@ -13,6 +13,8 @@ namespace Vintagestory.API.Common
 {
     public class ServerAnimator : ClientAnimator
     {
+        public bool loadFully;
+
         public new static ServerAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
         {
             if (entity is EntityAgent)
@@ -50,7 +52,8 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    (code) => entity.AnimManager.OnAnimationStopped(code),
+                    entity is EntityPlayer
                 );
             } else {
                 return new ServerAnimator(
@@ -64,19 +67,35 @@ namespace Vintagestory.API.Common
         }
 
 
-        public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] Animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, Animations, rootElements, jointsById, onAnimationStoppedListener)
+        public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null, bool loadFully = false) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
-            
+            this.rootElements = rootElements;
+            this.jointsById = jointsById;
+            this.loadFully = loadFully;
+
+            RootPoses = new List<ElementPose>();
+            LoadPosesAndAttachmentPoints(rootElements, RootPoses);
         }
 
 
-        public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] Animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, rootPoses, Animations, rootElements, jointsById, onAnimationStoppedListener)
+        public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null, bool loadFully = false) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
+            this.rootElements = rootElements;
+            this.jointsById = jointsById;
+            this.RootPoses = rootPoses;
+            this.loadFully = loadFully;
+
+            LoadAttachmentPoints(RootPoses);
         }
 
-        protected override void LoadedPosesAndAttachmentPoints(ShapeElement[] elements, List<ElementPose> intoPoses)
+        protected override void LoadPosesAndAttachmentPoints(ShapeElement[] elements, List<ElementPose> intoPoses)
         {
             // Only load root pose and only the ones that have attachment points
+            if (loadFully)
+            {
+                base.LoadPosesAndAttachmentPoints(elements, intoPoses);
+                return;
+            }
 
             ElementPose pose;
             for (int i = 0; i < elements.Length; i++)

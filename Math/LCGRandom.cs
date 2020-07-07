@@ -71,6 +71,30 @@ namespace Vintagestory.API.MathTools
             currentSeed += zPos;
         }
 
+
+
+        /// <summary>
+        /// Initializes a position dependent seed, if required
+        /// </summary>
+        /// <param name="xPos"></param>
+        /// <param name="zPos"></param>
+        public void InitPositionSeed(int xPos, int yPos, int zPos)
+        {
+            currentSeed = mapGenSeed;
+            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
+            currentSeed += xPos;
+            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
+            currentSeed += yPos;
+            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
+            currentSeed += zPos;
+            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
+            currentSeed += xPos;
+            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
+            currentSeed += yPos;
+            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
+            currentSeed += zPos;
+        }
+
         /// <summary>
         /// Returns a pseudo random number from 0 - max (excluding max)
         /// </summary>

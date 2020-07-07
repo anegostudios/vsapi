@@ -54,7 +54,17 @@ namespace Vintagestory.API.Common
         public bool SelfPropelled;
 
         public Block ColorByBlock;
-        public int TintIndex;
+
+        /// <summary>
+        /// The color map for climate color mapping. Leave null for no coloring by climate
+        /// </summary>
+        public string ClimateColorMap = null;
+
+        /// <summary>
+        /// The color map for season color mapping. Leave null for no coloring by season
+        /// </summary>
+        public string SeasonColorMap = null;
+
 
         public bool RandomVelocityChange {get; set;}
 
@@ -123,9 +133,9 @@ namespace Vintagestory.API.Common
         public int GetRgbaColor(ICoreClientAPI capi)
         {
             if (ColorByBlock != null) return ColorByBlock.GetRandomColor(capi, new ItemStack(ColorByBlock));
-            if (TintIndex > 0)
+            if (SeasonColorMap != null || ClimateColorMap != null)
             {
-                return capi.ApplyColorTintOnRgba((int)TintIndex, Color, (int)MinPos.X, (int)MinPos.Y, (int)MinPos.Z);
+                return capi.World.ApplyColorMapOnRgba(ClimateColorMap, SeasonColorMap, Color, (int)MinPos.X, (int)MinPos.Y, (int)MinPos.Z);
             }
             return Color;
         }
@@ -190,7 +200,11 @@ namespace Vintagestory.API.Common
             writer.Write(ColorByBlock == null);
             if (ColorByBlock != null) writer.Write(ColorByBlock.BlockId);
 
-            writer.Write((ushort)TintIndex);
+            writer.Write(ClimateColorMap == null);
+            if (ClimateColorMap != null) writer.Write(ClimateColorMap);
+
+            writer.Write(SeasonColorMap == null);
+            if (SeasonColorMap != null) writer.Write(SeasonColorMap);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -245,7 +259,15 @@ namespace Vintagestory.API.Common
                 ColorByBlock = resolver.Blocks[reader.ReadInt16()];
             }
 
-            TintIndex = reader.ReadInt16();
+            if (!reader.ReadBoolean())
+            {
+                ClimateColorMap = reader.ReadString();
+            }
+
+            if (!reader.ReadBoolean())
+            {
+                SeasonColorMap = reader.ReadString();
+            }            
         }
 
         public void BeginParticle() {

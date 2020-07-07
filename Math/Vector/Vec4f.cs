@@ -76,6 +76,15 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public Vec4f Mul(Vec4f vec)
+        {
+            this.X *= vec.X;
+            this.Y *= vec.Y;
+            this.Z *= vec.Z;
+            this.W *= vec.W;
+            return this;
+        }
+
         public Vec4f Set(float x, float y, float z, float w)
         {
             this.X = x;
@@ -117,7 +126,64 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public float LengthXYZ()
         {
-            return GameMath.FastSqrt(X * X + Y * Y + Z * Z);
+            return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
         }
+
+
+        #region Operators
+        public static Vec4f operator -(Vec4f left, Vec4f right)
+        {
+            return new Vec4f(left.X - right.X, left.Y - right.Y, left.Z - right.Z, left.W - right.W);
+        }
+
+        public static Vec4f operator +(Vec4f left, Vec4f right)
+        {
+            return new Vec4f(left.X + right.X, left.Y + right.Y, left.Z + right.Z, left.W + right.W);
+        }
+
+        public static Vec4f operator +(Vec4f left, Vec4i right)
+        {
+            return new Vec4f(left.X + right.X, left.Y + right.Y, left.Z + right.Z, left.W + right.W);
+        }
+
+        public static Vec4f operator -(Vec4f left, float right)
+        {
+            return new Vec4f(left.X - right, left.Y - right, left.Z - right, left.W - right);
+        }
+
+
+        public static Vec4f operator -(float left, Vec4f right)
+        {
+            return new Vec4f(left - right.X, left - right.Y, left - right.Z, left - right.W);
+        }
+
+        public static Vec4f operator +(Vec4f left, float right)
+        {
+            return new Vec4f(left.X + right, left.Y + right, left.Z + right, left.W + right);
+        }
+
+
+        public static Vec4f operator *(Vec4f left, float right)
+        {
+            return new Vec4f(left.X * right, left.Y * right, left.Z * right, left.W * right);
+        }
+
+        public static Vec4f operator *(float left, Vec4f right)
+        {
+            return new Vec4f(left * right.X, left * right.Y, left * right.Z, left * right.W);
+        }
+
+        public static double operator *(Vec4f left, Vec4f right)
+        {
+            return left.X * right.X + left.Y * right.Y + left.Z * right.Z + left.W * right.W;
+        }
+
+        public static Vec4f operator /(Vec4f left, float right)
+        {
+            return new Vec4f(left.X / right, left.Y / right, left.Z / right, left.W / right);
+        }
+
+        #endregion
+
     }
 }

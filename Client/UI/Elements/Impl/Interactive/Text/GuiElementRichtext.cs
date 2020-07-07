@@ -22,6 +22,8 @@ namespace Vintagestory.API.Client
         public LoadedTexture richtTextTexture;
 
         public bool Debug = false;
+
+        public Vec4f RenderColor;
         
 
         public double MaxLineWidth
@@ -375,13 +377,14 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexturePremultipliedAlpha(
+            Render2DTexture(
                 richtTextTexture.TextureId, 
                 (int)Bounds.renderX, 
                 (int)Bounds.renderY, 
                 (int)richtTextTexture.Width,
                 (int)richtTextTexture.Height,
-                zPos
+                zPos,
+                RenderColor
             );
 
             bool found = false;
@@ -401,6 +404,7 @@ namespace Vintagestory.API.Client
                     if (rec.PointInside(relx, rely))
                     {
                         MouseOverCursor = comp.MouseOverCursor;
+                        
                         found = true;
                     }
                 }   

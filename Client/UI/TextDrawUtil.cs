@@ -440,7 +440,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < lines.Length; i++)
             {
                 TextLine textLine = lines[i];
-                if (textLine.Text.Length == 0) continue; ;
+                if (textLine.Text.Length == 0) continue;
 
                 if (orientation == EnumTextOrientation.Center)
                 {
