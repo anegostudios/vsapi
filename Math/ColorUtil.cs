@@ -560,6 +560,15 @@ namespace Vintagestory.API.MathTools
             return new double[] { r / 255.0, g / 255.0, b / 255.0, a / 255.0 };
         }
 
+        public static double[] Hex2Doubles(string hex, double opacityRel)
+        {
+            int r = int.Parse(hex.Substring(1, 2), System.Globalization.NumberStyles.HexNumber);
+            int g = int.Parse(hex.Substring(3, 2), System.Globalization.NumberStyles.HexNumber);
+            int b = int.Parse(hex.Substring(5, 2), System.Globalization.NumberStyles.HexNumber);
+
+            return new double[] { r / 255.0, g / 255.0, b / 255.0, opacityRel };
+        }
+
 
         /// <summary>
         /// Converts given RGB values into it's respective HSV Representation (all values in range of 0-255)

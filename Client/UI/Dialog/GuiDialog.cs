@@ -294,7 +294,7 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Focuses the dialogue.
+        /// Focuses the dialog
         /// </summary>
         public virtual void Focus() {
             focused = true;
@@ -513,17 +513,15 @@ namespace Vintagestory.API.Client
                 }
             }
 
-            if (!args.Handled)
+            if (!IsOpened()) return;
+            foreach (GuiComposer composer in Composers.Values)
             {
-                foreach (GuiComposer composer in Composers.Values)
+                if (composer.Bounds.PointInside(args.X, args.Y))
                 {
-                    if (composer.Bounds.PointInside(args.X, args.Y))
-                    {
-                        args.Handled = true;
-                    }
+                    args.Handled = true;
+                    return;
                 }
             }
-            
         }
 
         /// <summary>
@@ -545,6 +543,7 @@ namespace Vintagestory.API.Client
                 if (composer.Bounds.PointInside(args.X, args.Y))
                 {
                     args.Handled = true;
+                    return;
                 }
             }
         }

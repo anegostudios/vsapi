@@ -52,7 +52,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// An array holding block Entities currently residing in this chunk. This array may be larger than the amount of block entities in the chunk. 
         /// </summary>
-        BlockEntity[] BlockEntities { get; set; }
+        Dictionary<BlockPos, BlockEntity> BlockEntities { get; set; }
 
         /// <summary>
         /// Blockdata and Light might be compressed, always call this method if you want to access these

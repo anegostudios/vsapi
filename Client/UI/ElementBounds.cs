@@ -18,6 +18,11 @@ namespace Vintagestory.API.Client
         public ElementBounds ParentBounds;
         public List<ElementBounds> ChildBounds = new List<ElementBounds>();
 
+        /// <summary>
+        /// For debugging purposes only
+        /// </summary>
+        public string Code;
+
         public EnumDialogArea Alignment;
 
         public ElementSizing BothSizing

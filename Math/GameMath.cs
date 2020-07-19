@@ -162,28 +162,34 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="z"></param>
         /// <returns></returns>
+        [Obsolete("Use Math.Sqrt(). Turns out FastSqrt() is actually slower :o")]
         public static float FastSqrt(float z)
         {
-            if (z == 0) return 0;
+            return (float)Math.Sqrt(z);
+
+            /*if (z == 0) return 0;
             FloatIntUnion u;
             u.tmp = 0;
             float xhalf = 0.5f * z;
             u.f = z;
             u.tmp = 0x5f375a86 - (u.tmp >> 1);
             u.f = u.f * (1.5f - xhalf * u.f * u.f);
-            return u.f * z;
+            return u.f * z;*/
         }
 
+        [Obsolete("Use Math.Sqrt(). Turns out FastSqrt() is actually slower :o")]
         public static double FastSqrt(double z)
         {
-            if (z == 0) return 0;
+            return Math.Sqrt(z);
+
+            /*if (z == 0) return 0;
             DoubleLongUnion u;
             u.tmp = 0;
             double xhalf = 0.5 * z;
             u.f = z;
             u.tmp = 0x5f375a86 - (u.tmp >> 1);
             u.f = u.f * (1.5 - xhalf * u.f * u.f);
-            return u.f * z;
+            return u.f * z;*/
         }
 
 
@@ -341,6 +347,32 @@ namespace Vintagestory.API.MathTools
             return ((((end - start) % TWOPI) + TWOPI + PI) % TWOPI) - PI;
         }
 
+
+        /// <summary>
+        /// Returns the shortest distance between 2 values that are cyclical (e.g. angles, daytime hours, etc.)
+        /// See also https://stackoverflow.com/a/14498790/1873041
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static float CyclicValueDistance(float start, float end, float period)
+        {
+            return ((((end - start) % period) + period * 1.5f) % period) - period/2;
+        }
+
+        /// <summary>
+        /// Returns the shortest distance between 2 values that are cyclical (e.g. angles, daytime hours, etc.)
+        /// See also https://stackoverflow.com/a/14498790/1873041
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static double CyclicValueDistance(double start, double end, double period)
+        {
+            return ((((end - start) % period) + period * 1.5f) % period) - period / 2;
+        }
+
+
         /// <summary>
         /// Generates a gaussian blur kernel to be used when blurring something
         /// </summary>
@@ -385,7 +417,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="map"></param>
         /// <param name="zoom"></param>
         /// <returns></returns>
-        public static int[] BiLerpColorMap(IntMap map, int zoom)
+        public static int[] BiLerpColorMap(IntDataMap2D map, int zoom)
         {
             int innerSize = map.InnerSize;
             int outSize = innerSize * zoom;
@@ -635,6 +667,19 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Lerp(float v0, float v1, float t)
+        {
+            return v0 + (v1 - v0) * t;
+        }
+
+        /// <summary>
+        /// Basic Lerp
+        /// </summary>
+        /// <param name="v0"></param>
+        /// <param name="v1"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Lerp(double v0, double v1, double t)
         {
             return v0 + (v1 - v0) * t;
         }
@@ -1315,7 +1360,32 @@ namespace Vintagestory.API.MathTools
             }
         }
 
+        public static Vec3f ToEulerAngles(Vec4f q)
+        {
+            Vec3d vec = ToEulerAngles(new Vec4d(q.X, q.Y, q.Z, q.W));
+            return new Vec3f((float)vec.X, (float)vec.Y, (float)vec.Z);
+        }
 
+        public static Vec3d ToEulerAngles(Vec4d q)
+        {
+            Vec3d angles = new Vec3d();
+
+            // roll (x-axis rotation)
+            double sinr_cosp = 2 * (q.W * q.X + q.Y * q.Z);
+            double cosr_cosp = 1 - 2 * (q.X * q.X + q.Y * q.Y);
+            angles.X = Math.Atan2(sinr_cosp, cosr_cosp);
+            // pitch (y-axis rotation)
+            double sinp = 2 * (q.W * q.Y - q.Z * q.X);
+
+            angles.Y = Math.Asin(sinp);
+
+            // yaw (z-axis rotation)
+            double siny_cosp = 2 * (q.W * q.Z + q.X * q.Y);
+            double cosy_cosp = 1 - 2 * (q.Y * q.Y + q.Z * q.Z);
+            angles.Z = Math.Atan2(siny_cosp, cosy_cosp);
+            
+            return angles;
+        }
     }
 
 

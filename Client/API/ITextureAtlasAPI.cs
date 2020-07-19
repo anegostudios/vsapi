@@ -97,6 +97,16 @@ namespace Vintagestory.API.Client
         bool InsertTexture(IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
 
         /// <summary>
+        /// Inserts a texture into the texture atlas after the atlas has been generated. Updates the in-ram texture atlas as well as the in-gpu-ram texture atlas. 
+        /// The textureSubId can be used to find the TextureAtlasPosition again in case you loose it ;-)
+        /// </summary>
+        /// <param name="bmp"></param>
+        /// <param name="textureSubId"></param>
+        /// <param name="texPos"></param>
+        /// <returns></returns>
+        bool InsertTexture(byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+
+        /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
         /// </summary>
         /// <param name="path"></param>
@@ -106,6 +116,17 @@ namespace Vintagestory.API.Client
         /// <param name="alphaTest"></param>
         /// <returns></returns>
         bool InsertTextureCached(AssetLocation path, IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+
+        /// <summary>
+        /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="bmp"></param>
+        /// <param name="textureSubId"></param>
+        /// <param name="texPos"></param>
+        /// <param name="alphaTest"></param>
+        /// <returns></returns>
+        bool InsertTextureCached(AssetLocation path, byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
 
         /// <summary>
         /// Deallocates a previously allocated texture space

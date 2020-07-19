@@ -20,7 +20,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.12.5";
+        public const string OverallVersion = "1.13.0";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -30,7 +30,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-rc.3";
+        public const string ShortGameVersion = OverallVersion + "-pre.1";
 
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
@@ -53,7 +53,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.12.6";
+        public const string NetworkVersion = "1.12.12";
 
         /// <summary>
         /// Version of the savegame database
@@ -69,7 +69,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Copyright notice
         /// </summary>
-        public const string CopyRight = "Copyright © 2016-2019 Anego Studios";
+        public const string CopyRight = "Copyright © 2016-2020 Anego Studios";
 
 
         static string[] separators = new string[] { ".", "-" };

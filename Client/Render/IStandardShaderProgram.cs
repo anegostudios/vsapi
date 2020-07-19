@@ -61,11 +61,6 @@ namespace Vintagestory.API.Client
         Vec4f RgbaGlowIn { set; }
 
         /// <summary>
-        /// The color of the block.
-        /// </summary>
-        Vec4f RgbaBlockIn { set; }
-
-        /// <summary>
         /// The color of the fog.
         /// </summary>
         Vec4f RgbaFogIn { set; }

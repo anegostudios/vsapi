@@ -61,6 +61,7 @@ namespace Vintagestory.API.Client
         public ICoreClientAPI Api;
         public float zDepth=50;
 
+        bool premultipliedAlpha = true;
 
         /// <summary>
         /// A unique number assigned to each element
@@ -101,6 +102,18 @@ namespace Vintagestory.API.Client
         {
             return new GuiComposer(api, ElementBounds.Empty, null).Compose();
         }
+
+        /// <summary>
+        /// On by default, is passed on to the gui elements as well. Disabling it means has a performance impact. Recommeded to leave enabled, but may need to be disabled to smoothly alpha blend text elements. Must be called before adding elements and before composing.
+        /// Notice! Most gui elements even yet support non-premul alpha mode
+        /// </summary>
+        /// <param name="enable"></param>
+        /// <returns></returns>
+        public GuiComposer PremultipliedAlpha(bool enable)
+        {
+            this.premultipliedAlpha = enable;
+            return this;
+        }
         
         /// <summary>
         /// Adds a condition for adding a group of items to the GUI- eg: if you have a crucible in the firepit, add those extra slots.  Should always pair with an EndIf()
@@ -128,6 +141,8 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public GuiComposer Execute(API.Common.Action method)
         {
+            if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
+
             method.Invoke();
             return this;
         }
@@ -154,6 +169,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public GuiComposer BeginChildElements()
         {
+            if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
+
             parentBoundsForNextElement.Push(lastAddedElementBounds);
             return this;
         }
@@ -163,6 +180,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public GuiComposer EndChildElements()
         {
+            if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
+
             if (parentBoundsForNextElement.Count > 1)
             {
                 parentBoundsForNextElement.Pop();
@@ -353,6 +372,11 @@ namespace Vintagestory.API.Client
                 interactiveElementsInDrawOrder.Insert(insertPos, element);
             }
 
+            if (!premultipliedAlpha)
+            {
+                surface.DemulAlpha();
+            }
+
             Api.Gui.LoadOrUpdateCairoTexture(surface, true, ref staticElementsTexture);            
 
             ctx.Dispose();
@@ -505,7 +529,7 @@ namespace Vintagestory.API.Client
             }
 
             // Hardcoded element class type :/
-            if (!args.Handled && args.KeyCode == (int)GlKeys.Enter && CurrentTabIndexElement is GuiElementEditableTextBase)
+            if (!args.Handled && (args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.KeypadEnter) && CurrentTabIndexElement is GuiElementEditableTextBase)
             {
                 UnfocusOwnElementsExcept(null);
             }
@@ -663,6 +687,8 @@ namespace Vintagestory.API.Client
         {
             if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
 
+            element.RenderAsPremultipliedAlpha = this.premultipliedAlpha;
+
             if (key == null)
             {
                 key = "element-" + (++currentElementKey);
@@ -690,6 +716,8 @@ namespace Vintagestory.API.Client
 
             lastAddedElementBounds = element.Bounds;
 
+            
+
             return this;
         }
 
@@ -701,6 +729,8 @@ namespace Vintagestory.API.Client
         public GuiComposer AddStaticElement(GuiElement element, string key = null)
         {
             if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
+
+            element.RenderAsPremultipliedAlpha = this.premultipliedAlpha;
 
             if (key == null)
             {

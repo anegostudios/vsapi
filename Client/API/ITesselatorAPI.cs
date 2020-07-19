@@ -5,6 +5,8 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+
+
     /// <summary>
     /// Manager interface for Tesselators.
     /// </summary>
@@ -87,14 +89,15 @@ namespace Vintagestory.API.Client
         void TesselateItem(Item item, out MeshData modeldata, ITexPositionSource texSource);
 
         /// <summary>
-        /// Turns a shape into a mesh data object that you can feed into the chunk tesselator or upload to the graphics card for rendering. Uses the given blocks texture configuration as texture source.
+        /// Turns a shape into a mesh data object that you can feed into the chunk tesselator or upload to the graphics card for rendering. Uses the given collectible texture configuration as texture source.
         /// </summary>
-        /// <param name="textureSourceBlock"></param>
+        /// <param name="textureSourceCollectible"></param>
         /// <param name="shape"></param>
         /// <param name="modeldata"></param>
-        /// <param name="meshRotationDeg">In degrees</param>
+        /// <param name="meshRotationDeg"></param>
         /// <param name="quantityElements"></param>
-        void TesselateShape(Block textureSourceBlock, Shape shape, out MeshData modeldata, Vec3f meshRotationDeg = null, int? quantityElements = null, string[] selectiveElements = null);
+        /// <param name="selectiveElements"></param>
+        void TesselateShape(CollectibleObject textureSourceCollectible, Shape shape, out MeshData modeldata, Vec3f meshRotationDeg = null, int? quantityElements = null, string[] selectiveElements = null);
 
         /// <summary>
         /// Turns a shape into a mesh data object that you can feed into the chunk tesselator or upload to the graphics card for rendering. Can be used to supply a custom texture source. 
@@ -107,7 +110,7 @@ namespace Vintagestory.API.Client
         /// <param name="generalGlowLevel"></param>
         /// <param name="generalTintIndex"></param>
         /// <param name="quantityElements"></param>
-        void TesselateShape(string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f meshRotationDeg = null, int generalGlowLevel = 0, int generalTintIndex = 0, int? quantityElements = null, string[] selectiveElements = null);
+        void TesselateShape(string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f meshRotationDeg = null, int generalGlowLevel = 0, byte climateColorMapId = 0, byte seasonColorMapId = 0, int? quantityElements = null, string[] selectiveElements = null);
 
 
         /// <summary>

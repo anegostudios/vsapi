@@ -16,7 +16,7 @@ namespace Vintagestory.API.Client
     {
         public ItemStack[] Itemstacks;
         ItemSlot slot;
-        DummyInventory dummyInv;
+        
         Common.Action<ItemStack> onStackClicked;
 
         float secondsVisible=1;

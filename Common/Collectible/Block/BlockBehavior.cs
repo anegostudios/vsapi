@@ -456,5 +456,10 @@ namespace Vintagestory.API.Common
         {
             return "";
         }
+
+        public virtual AssetLocation GetSnowCoveredBlockCode(float snowLevel)
+        {
+            return null;
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -56,6 +57,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public virtual EnumFloat Float { get; set; } = EnumFloat.Inline;
 
+        public virtual Vec4f RenderColor { get; set; }
 
         public virtual EnumVerticalAlign VerticalAlign { get; set; } = EnumVerticalAlign.Bottom;
 

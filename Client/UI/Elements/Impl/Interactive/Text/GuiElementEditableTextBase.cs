@@ -34,8 +34,8 @@ namespace Vintagestory.API.Client
         internal LoadedTexture textTexture;
         //internal int selectionTextureId;
 
-        internal API.Common.Action<string> OnTextChanged;
-        internal API.Common.Action<double, double> OnCursorMoved;
+        public API.Common.Action<string> OnTextChanged;
+        public API.Common.Action<double, double> OnCursorMoved;
 
         internal Action OnFocused = null;
         internal Action OnLostFocus = null;
@@ -438,7 +438,7 @@ namespace Vintagestory.API.Client
                     api.Gui.PlaySound("tick");
                 }
 
-                if (args.KeyCode == (int)GlKeys.Enter)
+                if (args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.KeypadEnter)
                 {
                     if (multilineMode)
                     {

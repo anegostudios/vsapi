@@ -82,8 +82,6 @@ namespace Vintagestory.API.Config
 
             string filePath = Path.Combine(assetsPath, "game", "lang", language + ".json");
 
-            Dictionary<string, string> langEntries = new Dictionary<string, string>();
-
             if (File.Exists(filePath))
             {
                 string langtexts = File.ReadAllText(filePath);
@@ -133,7 +131,7 @@ namespace Vintagestory.API.Config
 
 
         /// <summary>
-        /// Returns null if the entry does not exist
+        /// Get the the lang entry for given key, returns null if the entry does not exist. Exact match test.
         /// </summary>
         /// <param name="key"></param>
         /// <param name="param"></param>
@@ -146,14 +144,52 @@ namespace Vintagestory.API.Config
 
             if (Inst.LangEntries.TryGetValue(domainandkey, out value))
             {
-                return value;
+                return string.Format(value, param);
             }
 
             return null;
         }
 
+
         /// <summary>
-        /// Returns the key itself it the entry does not exist
+        /// Get the the lang entry for given key, returns null if the entry does not exist. Also finds wildcarded lang entries 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public static string GetMatchingIfExists(string key, params object[] param)
+        {
+            string value;
+            string domainandkey = key.Contains(":") ? key : GlobalConstants.DefaultDomain + AssetLocation.LocationSeparator + key;
+
+
+            if (Inst.LangEntries.TryGetValue(domainandkey, out value))
+            {
+                return value;
+            }
+
+            foreach (var pair in Inst.LangStartsWith)
+            {
+                if (StringUtil.FastStartsWith(domainandkey, pair.Key))
+                {
+                    return string.Format(pair.Value, param);
+                }
+            }
+
+            foreach (var pair in Inst.LangRegexes.Values)
+            {
+                if (pair.Key.IsMatch(domainandkey))
+                {
+                    return string.Format(pair.Value, param);
+                }
+            }
+
+            return null;
+        }
+
+
+        /// <summary>
+        /// Get the the lang entry for given key, returns the key itself it the entry does not exist
         /// </summary>
         /// <param name="key"></param>
         /// <param name="param"></param>
@@ -177,6 +213,12 @@ namespace Vintagestory.API.Config
             return key;
         }
 
+        /// <summary>
+        /// Get the the lang entry for given key, also searches through wildcarded entries. Will return key if it doesnt exist
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
         public static string GetMatching(string key, params object[] param)
         {
             string value;

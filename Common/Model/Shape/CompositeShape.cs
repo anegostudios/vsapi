@@ -7,13 +7,18 @@ namespace Vintagestory.API.Common
     public enum EnumShapeFormat
     {
         VintageStory,
-        Obj
+        Obj,
+        GltfEmbedded
     }
 
     public class CompositeShape
     {
         public AssetLocation Base;
         public EnumShapeFormat Format;
+        /// <summary>
+        /// Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.
+        /// </summary>
+        public bool InsertBakedTextures;
 
         public float rotateX;
         public float rotateY;
@@ -27,6 +32,8 @@ namespace Vintagestory.API.Common
         /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
         /// </summary>
         public CompositeShape[] Alternates = null;
+
+        public CompositeShape[] BakedAlternates = null;
 
         public CompositeShape[] Overlays = null;
 
@@ -180,21 +187,27 @@ namespace Vintagestory.API.Common
 
             if (Alternates != null)
             {
+                BakedAlternates = new CompositeShape[Alternates.Length + 1];
+                BakedAlternates[0] = this.Clone();
+                BakedAlternates[0].Alternates = null;
+
                 for (int i = 0; i < Alternates.Length; i++)
                 {
-                    if (Alternates[i].Base == null)
+                    BakedAlternates[i + 1] = Alternates[i].Clone();
+
+                    if (BakedAlternates[i + 1].Base == null)
                     {
-                        Alternates[i].Base = Base.Clone();
+                        BakedAlternates[i + 1].Base = Base.Clone();
                     }
 
-                    if (Alternates[i].QuantityElements == null)
+                    if (BakedAlternates[i + 1].QuantityElements == null)
                     {
-                        Alternates[i].QuantityElements = QuantityElements;
+                        BakedAlternates[i + 1].QuantityElements = QuantityElements;
                     }
 
-                    if (Alternates[i].SelectiveElements == null)
+                    if (BakedAlternates[i + 1].SelectiveElements == null)
                     {
-                        Alternates[i].SelectiveElements = SelectiveElements;
+                        BakedAlternates[i + 1].SelectiveElements = SelectiveElements;
                     }
                 }
             }

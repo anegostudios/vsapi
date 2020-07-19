@@ -297,5 +297,21 @@ namespace Vintagestory.API.Common
         }
 
 
+        public Shape Clone()
+        {
+            return new Shape()
+            {
+                Elements = CloneElements(),
+                Animations = Animations,
+                AnimationsByCrc32 = AnimationsByCrc32,
+                AttachmentPointsByCode = AttachmentPointsByCode,
+                JointsById = JointsById,
+                TextureWidth = TextureWidth,
+                TextureHeight = TextureHeight,
+                TextureSizes = TextureSizes,
+                Textures = Textures,
+            };
+        }
+
     }
 }

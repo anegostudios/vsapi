@@ -59,6 +59,19 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <param name="dialogTitle">The title of this dialogue. Ex: "Chest"</param>
+        /// <param name="inventory">The inventory associated with this block entity.</param>
+        /// <param name="blockEntityPos">The position of this block entity.</param>
+        /// <param name="capi">The Client API</param>
+        public GuiDialogBlockEntity(string dialogTitle, BlockPos blockEntityPos, ICoreClientAPI capi)
+            : base(dialogTitle, capi)
+        {
+            IsDuplicate = capi.OpenedGuis.FirstOrDefault(dlg => (dlg as GuiDialogBlockEntity)?.BlockEntityPosition == blockEntityPos) != null;
+            if (IsDuplicate) return;
+
+            BlockEntityPosition = blockEntityPos;
+        }
+
 
         /// <summary>
         /// This occurs right before the frame is pushed to the screen.
@@ -71,7 +84,7 @@ namespace Vintagestory.API.Client
             if (!IsInRangeOfBlock(BlockEntityPosition))
             {
                 // Because we cant do it in here
-                capi.Event.RegisterCallback((deltatime) => TryClose(), 0);
+                capi.Event.EnqueueMainThreadTask(() => TryClose(), "closedlg");
             }
         }
 
@@ -83,7 +96,6 @@ namespace Vintagestory.API.Client
         {
             if (capi.Settings.Bool["immersiveMouseMode"])
             {
-                EntityPlayer entityPlayer = capi.World.Player.Entity;
                 Vec3d aboveHeadPos = new Vec3d(BlockEntityPosition.X + 0.5, BlockEntityPosition.Y + FloatyDialogPosition, BlockEntityPosition.Z + 0.5);
                 Vec3d pos = MatrixToolsd.Project(aboveHeadPos, capi.Render.PerspectiveProjectionMat, capi.Render.PerspectiveViewMat, capi.Render.FrameWidth, capi.Render.FrameHeight);
 
@@ -139,8 +151,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         public override void OnGuiOpened()
         {
-            Inventory.Open(capi.World.Player);
-            capi.World.Player.InventoryManager.OpenInventory(Inventory);
+            if (Inventory != null)
+            {
+                Inventory.Open(capi.World.Player);
+                capi.World.Player.InventoryManager.OpenInventory(Inventory);
+            }
             capi.Gui.PlaySound(OpenSound, true);
         }
 
@@ -159,8 +174,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         public override void OnGuiClosed()
         {
-            Inventory.Close(capi.World.Player);
-            capi.World.Player.InventoryManager.CloseInventory(Inventory);
+            if (Inventory != null)
+            {
+                Inventory.Close(capi.World.Player);
+                capi.World.Player.InventoryManager.CloseInventory(Inventory);
+            }
 
             capi.Network.SendBlockEntityPacket(BlockEntityPosition.X, BlockEntityPosition.Y, BlockEntityPosition.Z, (int)EnumBlockEntityPacketId.Close);
             

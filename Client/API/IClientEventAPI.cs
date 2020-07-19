@@ -10,6 +10,7 @@ namespace Vintagestory.API.Client
     public delegate void FileDropDelegate(FileDropEvent e);
 
     public delegate void IngameErrorDelegate(object sender, string errorCode, string text);
+    public delegate void IngameDiscoveryDelegate(object sender, string discoveryCode, string text);
 
     public delegate void OnGamePauseResume(bool isPaused);
     public delegate void ChatLineDelegate(int groupId, string message, EnumChatType chattype, string data);
@@ -127,6 +128,11 @@ namespace Vintagestory.API.Client
         /// Fired when somethign fires an ingame error
         /// </summary>
         event IngameErrorDelegate InGameError;
+
+        /// <summary>
+        /// Fired when somethign fires an ingame error
+        /// </summary>
+        event IngameDiscoveryDelegate InGameDiscovery;
 
         /// <summary>
         /// Registers a rendering handler to be called during every render frame

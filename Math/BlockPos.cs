@@ -115,7 +115,7 @@ namespace Vintagestory.API.MathTools
 
         public BlockPos West()
         {
-            Z -= 1;
+            X -= 1;
             return this;
         }
 
@@ -126,19 +126,19 @@ namespace Vintagestory.API.MathTools
 
         public BlockPos North()
         {
-            X += 1;
+            Z -= 1;
             return this;
         }
 
         public BlockPos East()
         {
-            Z += 1;
+            X += 1;
             return this;
         }
 
         public BlockPos South()
         {
-            X -= 1;
+            Z += 1;
             return this;
         }
 
@@ -149,7 +149,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos WestCopy(int length = 1)
         {
-            return new BlockPos(X, Y, Z - length);
+            return new BlockPos(X - length, Y, Z);
         }
 
       
@@ -161,7 +161,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos SouthCopy(int length = 1)
         {
-            return new BlockPos(X - length, Y, Z);
+            return new BlockPos(X, Y, Z + length);
         }
 
 
@@ -172,7 +172,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos EastCopy(int length = 1)
         {
-            return new BlockPos(X, Y, Z + length);
+            return new BlockPos(X + length, Y, Z);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos NorthCopy(int length = 1)
         {
-            return new BlockPos(X + length, Y, Z);
+            return new BlockPos(X, Y, Z - length);
         }
 
         /// <summary>

@@ -37,6 +37,9 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Called by the game engine for each render frame or server tick
+        /// </summary>
         public void Begin()
         {
             if (!Enabled && !PrintSlowTicks) return;
@@ -46,18 +49,25 @@ namespace Vintagestory.API.Common
             frameStart = start;
         }
 
-        public void Mark(string elem)
+        /// <summary>
+        /// Use this method to add a frame profiling marker, will set or add the time ellapsed since the previous mark to the frame profiling reults.
+        /// </summary>
+        /// <param name="code"></param>
+        public void Mark(string code)
         {
             if (!Enabled && !PrintSlowTicks) return;
-            if (elem == null) throw new ArgumentNullException("marker name may not be null!");
+            if (code == null) throw new ArgumentNullException("marker name may not be null!");
 
             long ms = 0;
-            elems.TryGetValue(elem, out ms);
+            elems.TryGetValue(code, out ms);
 
-            elems[elem] = ms + stopwatch.ElapsedTicks - start;
+            elems[code] = ms + stopwatch.ElapsedTicks - start;
             start = stopwatch.ElapsedTicks;
         }
 
+        /// <summary>
+        /// Same as Mark(), but without actually taking note on where the time was spent
+        /// </summary>
         public void Skip()
         {
             start = stopwatch.ElapsedTicks;
@@ -70,6 +80,9 @@ namespace Vintagestory.API.Common
             elems[elem] = ellapsedTicks;
         }
 
+        /// <summary>
+        /// Called by the game engine at the end of the render frame or server tick
+        /// </summary>
         public void End()
         {
             if (!Enabled && !PrintSlowTicks) return;

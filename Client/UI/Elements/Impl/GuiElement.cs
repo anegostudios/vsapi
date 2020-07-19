@@ -6,6 +6,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Client;
 using System.Drawing;
 using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {    
@@ -48,6 +49,8 @@ namespace Vintagestory.API.Client
         /// The Client API.
         /// </summary>
         protected ICoreClientAPI api;
+
+        public bool RenderAsPremultipliedAlpha { get; set; } = true;
 
         /// <summary>
         /// Whether or not the element has focus or not.
@@ -699,6 +702,50 @@ namespace Vintagestory.API.Client
         {
             return 255 + (255 << 8) + (255 << 16) + (128 << 24);
         }
+
+
+
+
+        protected void Render2DTexture(int textureid, float posX, float posY, float width, float height, float z = 50, Vec4f color = null)
+        {
+            if (RenderAsPremultipliedAlpha)
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(textureid, posX, posY, width, height, z, color);
+            } else
+            {
+                api.Render.Render2DTexture(textureid, posX, posY, width, height, z, color);
+            }
+        }
+
+
+        protected void Render2DTexture(int textureid, double posX, double posY, double width, double height, float z = 50, Vec4f color = null)
+        {
+            if (RenderAsPremultipliedAlpha)
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(textureid, posX, posY, width, height, z, color);
+            }
+            else
+            {
+                api.Render.Render2DTexture(textureid, (float)posX, (float)posY, (float)width, (float)height, z, color);
+            }
+
+        }
+
+        protected void Render2DTexture(int textureid, ElementBounds bounds, float z = 50, Vec4f color = null)
+        {
+            if (RenderAsPremultipliedAlpha)
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(textureid, bounds, z, color);
+            }
+            else
+            {
+                api.Render.Render2DTexture(textureid, bounds, z, color);
+            }
+
+        }
+
+
+
 
         public virtual void Dispose()
         {

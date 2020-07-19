@@ -369,7 +369,7 @@ namespace Vintagestory.API.Common
             Vec3f faceVec = blockSel.Face.Normalf;
             Random rnd = player.Entity.World.Rand;
 
-            bool cantMine = block.RequiredMiningTier > 0 && (itemslot.Itemstack.Collectible.ToolTier < block.RequiredMiningTier || !MiningSpeed.ContainsKey(block.BlockMaterial));
+            bool cantMine = block.RequiredMiningTier > 0 && itemslot.Itemstack?.Collectible != null && (itemslot.Itemstack.Collectible.ToolTier < block.RequiredMiningTier || (MiningSpeed == null || !MiningSpeed.ContainsKey(block.BlockMaterial)));
 
             double chance = block.BlockMaterial == EnumBlockMaterial.Ore ? 0.72 : 0.12;
 
@@ -586,6 +586,7 @@ namespace Vintagestory.API.Common
         {
 
         }
+
 
 
         /// <summary>
@@ -909,7 +910,10 @@ namespace Vintagestory.API.Common
             
 
             Vec3d pos = byEntity.Pos.AheadCopy(0.4f).XYZ;
-            pos.Y += byEntity.EyeHeight - 0.4f;
+            pos.X += byEntity.LocalEyePos.X;
+            pos.Y += byEntity.LocalEyePos.Y - 0.4f;
+            pos.Z += byEntity.LocalEyePos.Z;
+            //pos.Y += byEntity.EyeHeight - 0.4f;
 
             if (secondsUsed > 0.5f && (int)(30 * secondsUsed) % 7 == 1)
             {
@@ -967,14 +971,15 @@ namespace Vintagestory.API.Common
 
                 byEntity.ReceiveSaturation(nutriProps.Satiety * satLossMul, nutriProps.FoodCategory);
 
+                IPlayer player = null;
+                if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
+
                 if (nutriProps.EatenStack != null)
                 {
-                    IPlayer player = null;
-                    if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
                     if (player == null || !player.InventoryManager.TryGiveItemstack(nutriProps.EatenStack.ResolvedItemstack.Clone(), true))
                     {
-                        byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack.Clone(), byEntity.LocalPos.XYZ);
+                        byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack.Clone(), byEntity.SidedPos.XYZ);
                     }
                 }
 
@@ -988,6 +993,7 @@ namespace Vintagestory.API.Common
                 }
 
                 slot.MarkDirty();
+                player.InventoryManager.BroadcastHotbarSlot();
             }
         }
 
@@ -1254,13 +1260,13 @@ namespace Vintagestory.API.Common
 
                             if (transitionLevel > 0)
                             {
-                                dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> {0}% spoiled", (int)Math.Round(transitionLevel * 100)));
+                                dsc.AppendLine(Lang.Get("itemstack-perishable-spoiling", (int)Math.Round(transitionLevel * 100)));
                             }
                             else
                             {
                                 if (perishRate <= 0)
                                 {
-                                    dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font>"));
+                                    dsc.AppendLine(Lang.Get("itemstack-perishable"));
                                 }
                                 else
                                 {
@@ -1269,7 +1275,7 @@ namespace Vintagestory.API.Common
 
                                     if (freshHoursLeft / hoursPerday >= api.World.Calendar.DaysPerYear)
                                     {
-                                        dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> Fresh for {0} years", Math.Round(freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerYear, 1)));
+                                        dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-years", Math.Round(freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerYear, 1)));
                                     }
                                     /*else if (freshHoursLeft / hoursPerday >= api.World.Calendar.DaysPerMonth)  - confusing. 12 days per months and stuff..
                                     {
@@ -1277,20 +1283,20 @@ namespace Vintagestory.API.Common
                                     }*/
                                     else if (freshHoursLeft > hoursPerday)
                                     {
-                                        dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> Fresh for {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                                        dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
                                     }
                                     else
                                     {
-                                        dsc.AppendLine(Lang.Get("<font color=\"orange\">Perishable.</font> Fresh for {0} hours", Math.Round(freshHoursLeft, 1)));
+                                        dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-hours", Math.Round(freshHoursLeft, 1)));
                                     }
                                 }
                             }
                             break;
 
                         case EnumTransitionType.Cure:
-                            if (transitionLevel > 0)
+                            if (transitionLevel > 0 || (freshHoursLeft <= 0 && perishRate > 0))
                             {
-                                dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font> {0}% cured", (int)Math.Round(transitionLevel * 100)));
+                                dsc.AppendLine(Lang.Get("itemstack-curable-curing", (int)Math.Round(transitionLevel * 100)));
                             }
                             else
                             {
@@ -1298,16 +1304,16 @@ namespace Vintagestory.API.Common
 
                                 if (freshHoursLeft > hoursPerday)
                                 {
-                                    dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                                    dsc.AppendLine(Lang.Get("itemstack-curable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
                                 }
                                 else
                                 {
                                     if (perishRate == 0)
                                     {
-                                        dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font>"));
+                                        dsc.AppendLine(Lang.Get("itemstack-curable"));
                                     } else
                                     {
-                                        dsc.AppendLine(Lang.Get("<font color=\"sienna\">Curable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                                        dsc.AppendLine(Lang.Get("itemstack-curable-duration-hours", Math.Round(freshHoursLeft, 1)));
                                     }
                                     
                                 }
@@ -1747,7 +1753,24 @@ namespace Vintagestory.API.Common
 
                     if (ingred != null && ingred.SatisfiesAsIngredient(maxstack) && !recipestacks.Any(s => s.Equals(capi.World, recval.Output.ResolvedItemstack, GlobalConstants.IgnoredStackAttributes)))
                     {
-                        recipestacks.Add(recval.Output.ResolvedItemstack);
+                        ItemStack outstack = recval.Output.ResolvedItemstack;
+                        DummySlot outSlot = new DummySlot(outstack);
+
+                        DummySlot[] inSlots = new DummySlot[recval.Width * recval.Height];
+                        for (int x = 0; x < recval.Width; x++) {
+                            for (int y = 0; y < recval.Height; y++)
+                            {
+                                CraftingRecipeIngredient inIngred = recval.GetElementInGrid(y, x, recval.resolvedIngredients, recval.Width);
+                                ItemStack ingredStack = inIngred?.ResolvedItemstack?.Clone();
+                                if (inIngred == val) ingredStack = maxstack;
+
+                                inSlots[y * recval.Width + x] = new DummySlot(ingredStack);
+                            }
+                        }
+                             
+
+                        outstack.Collectible.OnCreatedByCrafting(inSlots, outSlot, recval);
+                        recipestacks.Add(outSlot.Itemstack);
                     }
                 }
                 
@@ -1981,7 +2004,6 @@ namespace Vintagestory.API.Common
 
             string customCreatedBy = stack.Collectible.Attributes?["handbook"]?["createdBy"]?.AsString(null);
 
-
             if (grecipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0 || barrelRecipestext.Count > 0 || grindables.Count > 0 || curables.Count > 0)
             {
                 components.Add(new ClearFloatTextComponent(capi, 10));
@@ -2066,6 +2088,24 @@ namespace Vintagestory.API.Common
                     components.Add(new RichTextComponent(capi, Lang.Get(sections[i].Title) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                     components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(sections[i].Text) + "\n", CairoFont.WhiteSmallText()));
+                }
+            }
+
+            string type = stack.Class == EnumItemClass.Block ? "block" : "item";
+            string code = Code.ToShortString();
+            string langExtraSectionTitle = Lang.GetMatchingIfExists(Code.Domain + ":" + type + "-handbooktitle-" + code);
+            string langExtraSectionText = Lang.GetMatchingIfExists(Code.Domain + ":" + type + "-handbooktext-" + code);
+
+            if (langExtraSectionTitle != null || langExtraSectionText != null)
+            {
+                components.Add(new ClearFloatTextComponent(capi, 10));
+                if (langExtraSectionTitle != null)
+                {
+                    components.Add(new RichTextComponent(capi, langExtraSectionTitle + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                }
+                if (langExtraSectionText != null)
+                {
+                    components.AddRange(VtmlUtil.Richtextify(capi, langExtraSectionText + "\n", CairoFont.WhiteSmallText()));
                 }
             }
 

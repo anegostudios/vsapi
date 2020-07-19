@@ -80,6 +80,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         string[] Privileges { get; }
 
+        bool ImmersiveFpMode { get; }
+
         /// <summary>
         /// Check if a player has the given privilege
         /// </summary>

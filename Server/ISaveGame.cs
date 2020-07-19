@@ -18,9 +18,15 @@ namespace Vintagestory.API.Server
 
         string CreatedGameVersion { get; }
         int Seed { get; set; }
+
+        /// <summary>
+        /// A globally unique identifier for this savegame
+        /// </summary>
+        string SavegameIdentifier { get; }
+
         long TotalGameSeconds { get; set; }
         string WorldName { get; set; }
-        bool AllowCreativeMode { get; set; }
+        //bool AllowCreativeMode { get; set; }
         string PlayStyle { get; set; }
         string WorldType { get; set; }
         bool EntitySpawning { get; set; }

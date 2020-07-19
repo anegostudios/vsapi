@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
 
     public delegate ItemSlot NewSlotDelegate(int slotId, InventoryGeneric self);
+
+    public delegate float GetSuitabilityDelegate(ItemSlot sourceSlot, ItemSlot targetSlow, bool isMerge);
+
+    public delegate ItemSlot GetAutoPushIntoSlotDelegate(BlockFacing atBlockFace, ItemSlot fromSlot);
+
+    public delegate ItemSlot GetAutoPullFromSlotDelegate(BlockFacing atBlockFace);
 
     /// <summary>
     /// A general purpose inventory
@@ -20,6 +27,15 @@ namespace Vintagestory.API.Common
         public Dictionary<EnumTransitionType, float> TransitionableSpeedMulByType { get; set; } = null;
         public Dictionary<EnumFoodCategory, float> PerishableFactorByFoodCategory { get; set; } = null;
 
+        public GetSuitabilityDelegate OnGetSuitability;
+        public GetAutoPushIntoSlotDelegate OnGetAutoPushIntoSlot;
+        public GetAutoPullFromSlotDelegate OnGetAutoPullFromSlot;
+
+        public float BaseWeight
+        {
+            get { return baseWeight; }
+            set { baseWeight = value; }
+        }
 
         /// <summary>
         /// Create a new general purpose inventory
@@ -31,6 +47,8 @@ namespace Vintagestory.API.Common
         /// <param name="onNewSlot"></param>
         public InventoryGeneric(int quantitySlots, string className, string instanceId, ICoreAPI api, NewSlotDelegate onNewSlot = null) : base(className, instanceId, api)
         {
+            OnGetSuitability = (s, t, isMerge) => isMerge ? (baseWeight + 3) : (baseWeight + 1);
+
             this.onNewSlot = onNewSlot;
 
             slots = GenEmptySlots(quantitySlots);
@@ -45,6 +63,8 @@ namespace Vintagestory.API.Common
         /// <param name="onNewSlot"></param>
         public InventoryGeneric(int quantitySlots, string invId, ICoreAPI api, NewSlotDelegate onNewSlot = null) : base (invId, api)
         {
+            OnGetSuitability = (s, t, isMerge) => isMerge ? (baseWeight + 3) : (baseWeight + 1);
+
             this.onNewSlot = onNewSlot;
 
             slots = GenEmptySlots(quantitySlots);
@@ -92,6 +112,12 @@ namespace Vintagestory.API.Common
 
                 return true;
             }
+        }
+
+
+        public override float GetSuitability(ItemSlot sourceSlot, ItemSlot targetSlot, bool isMerge)
+        {
+            return OnGetSuitability(sourceSlot, targetSlot, isMerge);
         }
 
         /// <summary>
@@ -152,6 +178,25 @@ namespace Vintagestory.API.Common
             return outMul;
         }
 
-        
+
+        public override ItemSlot GetAutoPullFromSlot(BlockFacing atBlockFace)
+        {
+            if (OnGetAutoPullFromSlot != null)
+            {
+                return OnGetAutoPullFromSlot(atBlockFace);
+            }
+
+            return base.GetAutoPullFromSlot(atBlockFace);
+        }
+
+        public override ItemSlot GetAutoPushIntoSlot(BlockFacing atBlockFace, ItemSlot fromSlot)
+        {
+            if (OnGetAutoPushIntoSlot != null)
+            {
+                return OnGetAutoPushIntoSlot(atBlockFace, fromSlot);
+            }
+
+            return base.GetAutoPushIntoSlot(atBlockFace, fromSlot);
+        }
     }
 }

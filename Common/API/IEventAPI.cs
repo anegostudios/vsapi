@@ -32,6 +32,14 @@ namespace Vintagestory.API.Common
     /// <param name="reason"></param>
     public delegate void ChunkDirtyDelegate(Vec3i chunkCoord, IWorldChunk chunk, EnumChunkDirtyReason reason);
 
+    /// <summary>
+    /// Triggered when the server loaded a chunk column from disk or generated a new one
+    /// </summary>
+    /// <param name="chunkCoord"></param>
+    /// <param name="chunks"></param>
+    public delegate void ChunkColumnLoadedDelegate(Vec2i chunkCoord, IWorldChunk[] chunks);
+
+    
 
     /// <summary>
     /// Events that are available on the server and the client
@@ -54,6 +62,11 @@ namespace Vintagestory.API.Common
         /// Called whenever a chunk was marked dirty (as in, its blocks or light values have been modified or it got newly loaded or newly created)
         /// </summary>
         event ChunkDirtyDelegate ChunkDirty;
+
+        /// <summary>
+        /// Called whenever any method calls world.BlockAccessor.GetClimateAt(). Used by the survival mode to modify the rainfall and temperature values to adjust for seasonal and day/night temperature variations. Be sure to also register to OnGetClimateForDate.
+        /// </summary>
+        event OnGetClimateDelegate OnGetClimate;
 
         /// <summary>
         /// There's 2 global event busses, 1 on the client and 1 on the server. This pushes an event onto the bus.

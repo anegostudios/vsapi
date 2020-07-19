@@ -29,6 +29,8 @@ namespace Vintagestory.API.Datastructures
 
         public void Add(Cuboidf cuboid, BlockPos offset, Block block = null)
         {
+            if (cuboid == null) return;
+
             if (Count >= cuboids.Count)
             {
                 cuboids.Add(cuboid.OffsetCopyDouble(offset));

@@ -7,7 +7,7 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
-    public delegate void OnEntityAction(EnumEntityAction action, ref EnumHandling handled);
+    public delegate void OnEntityAction(EnumEntityAction action, bool on, ref EnumHandling handled);
 
     /// <summary>
     /// A players in-world action
@@ -68,6 +68,7 @@ namespace Vintagestory.API.Common
         Down = 12
     }
 
+
     /// <summary>
     /// The available controls to move around a character in a game world
     /// </summary>
@@ -76,7 +77,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// To execute a call handler registered by the engine. Don't use this one, use api.Input.InWorldAction instead.
         /// </summary>
-        public OnEntityAction OnAction = (EnumEntityAction action, ref EnumHandling handled) => { };
+        public OnEntityAction OnAction = (EnumEntityAction action, bool on, ref EnumHandling handled) => { };
 
         bool[] flags = new bool[13];
 
@@ -298,18 +299,14 @@ namespace Vintagestory.API.Common
 
         void AttemptToggleAction(EnumEntityAction action, bool on)
         {
-            if (on)
+            if (flags[(int)action] != on)
             {
                 EnumHandling handling = EnumHandling.PassThrough;
-                OnAction(action, ref handling);
+                OnAction(action, on, ref handling);
                 if (handling != EnumHandling.PassThrough) return;
-                flags[(int)action] = true;
-            } else
-            {
-                flags[(int)action] = false;
+                flags[(int)action] = on;
+                Dirty = true;
             }
-
-            Dirty = true;
         }
 
 

@@ -20,8 +20,8 @@ namespace Vintagestory.API.Common
         public const int WaterWaveBitMask = 1 << 12;
 
         public const int ReflectiveBitMask = 1 << 13;
-
         public const int WeakWaveBitMask = 1 << 14;
+
         public const int NormalBitMask = 0xFFF << 15;
         public const int LeavesWindWaveBitMask = 1 << 27;
 

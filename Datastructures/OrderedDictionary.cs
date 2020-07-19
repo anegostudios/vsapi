@@ -155,6 +155,11 @@ namespace Vintagestory.API.Datastructures
 		}
 
 
+		/// <summary>
+		/// Returns -1 if the key was not found
+		/// </summary>
+		/// <param name="key"></param>
+		/// <returns></returns>
 		public int IndexOfKey(TKey key)
 		{
             if (null == key)

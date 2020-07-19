@@ -7,14 +7,26 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Util
 {
+    public delegate T fillCallback<T>(int index);
+
     public static class ArrayUtil
     {
 
-
-        public static T[] CreateFilled<T>(T with, int quantity)
+        public static T[] CreateFilled<T>(int quantity, fillCallback<T> fillCallback)
         {
             T[] array = new T[quantity];
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < quantity; i++)
+            {
+                array[i] = fillCallback(i);
+            }
+
+            return array;
+        }
+
+        public static T[] CreateFilled<T>(int quantity, T with)
+        {
+            T[] array = new T[quantity];
+            for (int i = 0; i < quantity; i++)
             {
                 array[i] = with;
             }
@@ -28,8 +40,6 @@ namespace Vintagestory.API.Util
 
     public static class ArrayExtensions
     {
-        public delegate T fillCallback<T>(int index);
-
         public static int IndexOf<T>(this T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
@@ -86,7 +96,7 @@ namespace Vintagestory.API.Util
             {
                 if (cut.Length == 0) return cut; // Below line seems to crash otherwise
 
-                Array.Copy(array, 0, cut, 0, 1);
+                Array.Copy(array, 1, cut, 0, array.Length - 1);
             } else if (index == array.Length - 1)
             {
                 Array.Copy(array, cut, array.Length - 1);
@@ -145,6 +155,7 @@ namespace Vintagestory.API.Util
 
             return originalArray;
         }
+
 
         /// <summary>
         /// Performs a Fisher-Yates shuffle in linear time or O(n)

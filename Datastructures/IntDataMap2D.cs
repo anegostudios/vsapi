@@ -13,7 +13,7 @@ namespace Vintagestory.API
     /// Can be used to perfrom bilinear interpolation between individual values
     /// </summary>
     [ProtoContract]
-    public class IntMap
+    public class IntDataMap2D
     {
         [ProtoMember(1)]
         public int[] Data;
@@ -44,9 +44,9 @@ namespace Vintagestory.API
             get { return Size - TopLeftPadding - BottomRightPadding; }
         }
 
-        public static IntMap CreateEmpty()
+        public static IntDataMap2D CreateEmpty()
         {
-            return new IntMap()
+            return new IntDataMap2D()
             {
                 Data = new int[1],
                 Size = 0

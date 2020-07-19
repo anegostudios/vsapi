@@ -13,13 +13,13 @@ namespace Vintagestory.API.Util
         public static bool Match(string needle, string haystack)
         {
             if (haystack == null) throw new ArgumentNullException("Haystack cannot be null");
-            if (haystack.Equals(needle)) return true;
+            if (haystack.Equals(needle, StringComparison.InvariantCultureIgnoreCase)) return true;
 
             int wildCardIndex = -1;
             if (haystack == null || (wildCardIndex = needle.IndexOf("*")) == -1) return false;
 
             // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
-            if (wildCardIndex == needle.Length - 1)
+            if (wildCardIndex == needle.Length - 1 && needle.CountChars('*') == 1)
             {
                 return StringUtil.FastStartsWith(haystack, needle, wildCardIndex);
             }
@@ -42,7 +42,7 @@ namespace Vintagestory.API.Util
             if (haystack == null || needle.Domain != haystack.Domain || (wildCardIndex = needle.Path.IndexOf("*")) == -1) return false;
 
             // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
-            if (wildCardIndex == needle.Path.Length - 1)
+            if (wildCardIndex == needle.Path.Length - 1 && needle.Path.CountChars('*') == 1)
             {
                 return StringUtil.FastStartsWith(haystack.Path, needle.Path, wildCardIndex);
             }

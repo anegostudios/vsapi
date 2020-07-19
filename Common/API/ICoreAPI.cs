@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
@@ -12,6 +13,11 @@ namespace Vintagestory.API.Common
     {
 
         #region Register game content
+
+        /// <summary>
+        /// Registers a new color map. Typically used to color in-game blocks with a texture - i.e. climate and seasonal coloring
+        /// </summary>
+        void RegisterColorMap(ColorMap map);
 
         /// <summary>
         /// Registers a non-block entity. Be sure to register it on the client and server side.
@@ -152,6 +158,12 @@ namespace Vintagestory.API.Common
         /// API Compoment for creating instances of certain classes, such as Itemstacks
         /// </summary>
         IClassRegistryAPI ClassRegistry { get; }
+
+        /// <summary>
+        /// API for sending/receiving network packets
+        /// </summary>
+        INetworkAPI Network { get; }
+
 
         /// <summary>
         /// API Component for loading and reloading one or multiple assets at once from the assets folder

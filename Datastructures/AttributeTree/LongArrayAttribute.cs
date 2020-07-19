@@ -36,6 +36,21 @@ namespace Vintagestory.API.Datastructures
 
         }
 
+        public uint[] AsUint
+        {
+            get
+            {
+                uint[] vals = new uint[value.Length];
+                for (int i = 0; i < vals.Length; i++)
+                {
+                    vals[i] = (uint)value[i];
+                }
+                return vals;
+
+            }
+        }
+
+
         public int GetAttributeId()
         {
             return 15;

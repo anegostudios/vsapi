@@ -25,7 +25,6 @@ namespace Vintagestory.API.Common
 
         float[] localTransformMatrix = Mat4f.Create();
         float[] identMat = Mat4f.Create();
-
         float[] tmpMatrix = Mat4f.Create();
         
         public static ClientAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
@@ -79,14 +78,17 @@ namespace Vintagestory.API.Common
             }
         }
 
-        
+        public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
+        {
+
+        }
 
         public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
             this.rootElements = rootElements;
             this.jointsById = jointsById;
             this.RootPoses = rootPoses;
-            LoadedAttachmentPoints(RootPoses);
+            LoadAttachmentPoints(RootPoses);
         }
 
         public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
@@ -95,10 +97,10 @@ namespace Vintagestory.API.Common
             this.jointsById = jointsById;
 
             RootPoses = new List<ElementPose>();
-            LoadedPosesAndAttachmentPoints(rootElements, RootPoses);
+            LoadPosesAndAttachmentPoints(rootElements, RootPoses);
         }
 
-        protected virtual void LoadedAttachmentPoints(List<ElementPose> cachedPoses)
+        protected virtual void LoadAttachmentPoints(List<ElementPose> cachedPoses)
         {
             for (int i = 0; i < cachedPoses.Count; i++)
             {
@@ -118,12 +120,12 @@ namespace Vintagestory.API.Common
 
                 if (elem.ChildElementPoses != null)
                 {
-                    LoadedAttachmentPoints(elem.ChildElementPoses);
+                    LoadAttachmentPoints(elem.ChildElementPoses);
                 }
             }
         }
 
-        protected virtual void LoadedPosesAndAttachmentPoints(ShapeElement[] elements, List<ElementPose> intoPoses)
+        protected virtual void LoadPosesAndAttachmentPoints(ShapeElement[] elements, List<ElementPose> intoPoses)
         {
             ElementPose pose;
             for (int i = 0; i < elements.Length; i++)
@@ -149,7 +151,7 @@ namespace Vintagestory.API.Common
                 if (elem.Children != null)
                 {
                     pose.ChildElementPoses = new List<ElementPose>(elem.Children.Length);
-                    LoadedPosesAndAttachmentPoints(elem.Children, pose.ChildElementPoses);
+                    LoadPosesAndAttachmentPoints(elem.Children, pose.ChildElementPoses);
                 }
             }
         }

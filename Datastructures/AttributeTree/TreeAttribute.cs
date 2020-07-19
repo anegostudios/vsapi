@@ -46,6 +46,11 @@ namespace Vintagestory.API.Datastructures
             get { return attributes.Values.ToArray(); }
         }
 
+        public string[] Keys
+        {
+            get { return attributes.Keys.ToArray(); }
+        }
+
 
         static TreeAttribute()
         {

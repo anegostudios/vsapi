@@ -1,17 +1,26 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
+    public interface IServerMapChunk : IMapChunk
+    {
+        
+    }
+
     /// <summary>
     /// Holds 2 dimensional data for one chunk column
     /// </summary>
     public interface IMapChunk
     {
+        ConcurrentDictionary<BlockPos, float> SnowAccum { get; }
+
         /// <summary>
         /// The map region this map chunk resides in
         /// </summary>

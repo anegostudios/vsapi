@@ -8,6 +8,7 @@ namespace Vintagestory.API.Client
         Sound, 
         Music, 
         Ambient,
+        AmbientGlitchunaffected,
         SoundGlitchunaffected
     }
 

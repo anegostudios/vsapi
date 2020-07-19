@@ -128,7 +128,7 @@ namespace Vintagestory.API.Client
             ctx.LineWidth = scaled(2.2);
 
 
-            int lines = (int)((maxValue - minValue) / lineInterval);
+            int lines = Math.Min(50, (int)((maxValue - minValue) / lineInterval));
             
             for (int i = 1; i < lines; i++)
             {

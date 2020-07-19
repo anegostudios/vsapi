@@ -121,5 +121,6 @@ namespace Vintagestory.API.Client
         Entityanimatedtransparent = 36,
         Colorgrade = 37,
         Guigear = 38,
+        Ssao = 39
     }
 }

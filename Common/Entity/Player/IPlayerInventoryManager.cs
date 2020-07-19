@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Vintagestory.API.Common
 {
@@ -69,15 +70,16 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         string GetInventoryName(string inventoryClassName);
 
+
         /// <summary>
-        /// Same as GetInventory() with playeruid appended to the inventoryClassName
+        /// Same as GetInventory() with playeruid appended to the inventoryClassName. Returns null if not found.
         /// </summary>
         /// <param name="inventoryClassName"></param>
         /// <returns></returns>
         IInventory GetOwnInventory(string inventoryClassName);
 
         /// <summary>
-        /// Retrieve a players inventory
+        /// Retrieve a players inventory. Returns null if not found.
         /// </summary>
         /// <param name="inventoryId"></param>
         /// <returns></returns>

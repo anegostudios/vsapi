@@ -13,6 +13,11 @@ namespace Vintagestory.API.Common
     public interface IInventory : IReadOnlyCollection<ItemSlot>
     {
         /// <summary>
+        /// Convenience method to check if this inventory contains anything
+        /// </summary>
+        bool Empty { get; }
+
+        /// <summary>
         /// Wether or not to remove the inventory from the players inventory list upon closing it
         /// </summary>
         bool RemoveOnClose { get; }

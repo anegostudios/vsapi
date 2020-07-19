@@ -1,6 +1,5 @@
 ﻿using Cairo;
 using System;
-using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -30,6 +29,12 @@ namespace Vintagestory.API.Client
         public bool fillBounds = false;
 
         public TextBackground Background;
+
+        Vec4f rendercolor;
+        public Vec4f RenderColor { 
+            get { return rendercolor; }
+            set { rendercolor = value; descriptionElement.RenderColor = value; }
+        }
 
         double padding;
         public float ZPosition
@@ -103,7 +108,7 @@ namespace Vintagestory.API.Client
         void RecalcBounds()
         {
             double currentWidth = descriptionElement.Bounds.fixedWidth;
-            currentWidth =  Math.Min(autoWidth ? descriptionElement.MaxLineWidth : currentWidth, unscaledMaxWidth);
+            currentWidth =  Math.Min(autoWidth ? descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale : currentWidth, unscaledMaxWidth);
             hoverWidth = currentWidth + 2 * padding;
 
             // Height depends on the width
@@ -206,7 +211,7 @@ namespace Vintagestory.API.Client
                     y -= (y + hoverHeight) - api.Render.FrameHeight;
                 }
 
-                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, (int)x + (int)Bounds.absPaddingX, (int)y + (int)Bounds.absPaddingY, (int)hoverWidth + 1, (int)hoverHeight + 1, zPosition);
+                api.Render.Render2DTexture(hoverTexture.TextureId, (int)x + (int)Bounds.absPaddingX, (int)y + (int)Bounds.absPaddingY, (int)hoverWidth + 1, (int)hoverHeight + 1, zPosition, RenderColor);
 
                 Bounds.renderOffsetX = x - Bounds.renderX + pad;
                 Bounds.renderOffsetY = y - Bounds.renderY + pad;

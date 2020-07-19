@@ -27,9 +27,11 @@ namespace Vintagestory.API.Common
         float[] Nutrients { get; }
 
         /// <summary>
-        /// Whether the farmland has water within 3 blocks of it's position
+        /// The farmlands moisture level
         /// </summary>
-        bool IsWatered { get; }
+        float MoistureLevel { get; }
+
+        bool IsVisiblyMoist { get; }
 
         /// <summary>
         /// The fertility the soil will recover to (the soil from which the farmland was made of)

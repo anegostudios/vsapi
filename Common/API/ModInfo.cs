@@ -112,6 +112,13 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public bool RequiredOnClient { get; set; } = true;
 
+        /// <summary>
+        /// If set to false and the mod is universal, the mod is not disabled
+        /// if it's not present on the server. (Optional. True by default.)
+        /// </summary>
+        [JsonProperty]
+        public bool RequiredOnServer { get; set; } = true;
+
         /// <summary> List of mods (and versions) this mod depends on. </summary>
         [JsonProperty, JsonConverter(typeof(DependenciesConverter))]
         public IReadOnlyList<ModDependency> Dependencies { get; set; }
@@ -123,7 +130,8 @@ namespace Vintagestory.API.Common
 
         public ModInfo(EnumModType type, string name, string modID, string version,
                          string description, IEnumerable<string> authors, IEnumerable<string> contributors, string website,
-                         EnumAppSide side, bool requiredOnClient, IEnumerable<ModDependency> dependencies)
+                         EnumAppSide side, bool requiredOnClient, bool requiredOnServer,
+                         IEnumerable<ModDependency> dependencies)
         {
             Type = type;
             Name    = name ?? throw new ArgumentNullException(nameof(name));
@@ -137,8 +145,8 @@ namespace Vintagestory.API.Common
 
             Side             = side;
             RequiredOnClient = requiredOnClient;
+            RequiredOnServer = requiredOnServer;
             Dependencies     = ReadOnlyCopy(dependencies);
-
 
             // Null-safe helper method which copies the specified elements into a read-only list.
             IReadOnlyList<T> ReadOnlyCopy<T>(IEnumerable<T> elements)

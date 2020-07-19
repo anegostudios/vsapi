@@ -127,8 +127,6 @@ namespace Vintagestory.API.Client
         {
             Baked = Bake(capi.Assets, this);
 
-            List<AssetLocation> locations = new List<AssetLocation>();
-
             RuntimeInsert(capi, intoAtlas, Baked);
 
             if (Baked.BakedVariants != null)

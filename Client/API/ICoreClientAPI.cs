@@ -24,7 +24,7 @@ namespace Vintagestory.API.Client
         Dictionary<string, Tag2RichTextDelegate> TagConverters { get; }
 
         /// <summary>
-        /// The settings instance.
+        /// The clients game settings as stored in the clientsettings.json
         /// </summary>
         ISettings Settings { get; }
 
@@ -52,28 +52,6 @@ namespace Vintagestory.API.Client
         /// True if the client is currently in the process of exiting
         /// </summary>
         bool IsShuttingDown { get; }
-
-        /// <summary>
-        /// Loads the rgb (plant or water) tint value at given position and multiplies it byte-wise with supplied color
-        /// </summary>
-        /// <param name="tintIndex"></param>
-        /// <param name="color"></param>
-        /// <param name="posX"></param>
-        /// <param name="posY"></param>
-        /// <param name="posZ"></param>
-        /// <returns></returns>
-        int ApplyColorTintOnRgba(int tintIndex, int color, int posX, int posY, int posZ, bool flipRb = true);
-
-        /// <summary>
-        /// Loads the rgb (plant or water) tint value for given rain and temp value and multiplies it byte-wise with supplied color
-        /// </summary>
-        /// <param name="tintIndex"></param>
-        /// <param name="color"></param>
-        /// <param name="rain"></param>
-        /// <param name="temp"></param>
-        /// <param name="flipRb"></param>
-        /// <returns></returns>
-        int ApplyColorTintOnRgba(int tintIndex, int color, int rain, int temp, bool flipRb = true);
 
         /// <summary>
         /// True if the game is currently paused (only available in singleplayer)
@@ -144,7 +122,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// API for doing sending/receiving network packets
         /// </summary>
-        IClientNetworkAPI Network { get; }
+        new IClientNetworkAPI Network { get; }
 
         /// <summary>
         /// API for accessing anything in the game world
@@ -194,22 +172,22 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="message"></param>
         void ShowChatMessage(string message);
-        
-        /// <summary>
-        /// Shows a client side only chat message in the current chat channel. Uses the same code paths a server => client message takes. Does not execute client commands.
-        /// </summary>
-        /// <param name="message"></param>
-        [Obsolete("Use ShowChatMessage() instead")]
-        void ShowChatNotification(string message);
 
         /// <summary>
-        /// Shows a vibrating red text in the players screen
+        /// Triggers a discovery event. HudDiscoveryMessage registers to this event and fades in/out a "discovery message" on the players screen
+        /// </summary>
+        /// <param name="message"></param>
+        void TriggerIngameDiscovery(object sender, string errorCode, string text);
+
+        /// <summary>
+        /// Triggers an in-game-error event. HudIngameError registers to this event and shows a vibrating red text on the players screen
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="errorCode"></param>
         /// <param name="text"></param>
         void TriggerIngameError(object sender, string errorCode, string text);
 
+        
         /// <summary>
         /// Same as <see cref="ShowChatMessage(string)"/> but will also execute client commands if they are prefixed with a dot.
         /// </summary>

@@ -106,7 +106,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public float Length()
         {
-            return GameMath.FastSqrt(X * X + Y * Y + Z * Z);
+            return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
         }
 
         public void Negate()
@@ -259,7 +259,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public float Distance(Vec3f vec)
         {
-            return GameMath.FastSqrt(
+            return (float)Math.Sqrt(
                 (X - vec.X) * (X - vec.X) +
                 (Y - vec.Y) * (Y - vec.Y) +
                 (Z - vec.Z) * (Z - vec.Z)

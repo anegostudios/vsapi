@@ -11,30 +11,44 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {
+    public struct WeightedHandbookPage
+    {
+        public float Weight;
+        public GuiHandbookPage Page;
+    }
+
     public abstract class GuiHandbookPage
     {
         public abstract string PageCode { get; }
 
+        public abstract string CategoryCode { get; }
+
         public abstract void RenderTo(ICoreClientAPI capi, double x, double y);
         public abstract void Dispose();
-        public bool Visible;
+        public bool Visible = true;
 
         public abstract RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.ActionConsumable<string> openDetailPageFor);
-        public abstract bool MatchesText(string text);
+        public abstract float TextMatchWeight(string text);
     }
 
     public class GuiHandbookTextPage : GuiHandbookPage
     {
         public string pageCode;
-        public string title;
-        public string text;
+        public string Title;
+        public string Text;
+        public string categoryCode = "guide";
 
         public LoadedTexture Texture;
         public override string PageCode => pageCode;
-        public override void Dispose() { Texture?.Dispose(); }
+
+        public override string CategoryCode => categoryCode;
+
+        public override void Dispose() { Texture?.Dispose(); Texture = null; }
 
         RichTextComponentBase[] comps;
         public int PageNumber;
+
+        string titleCached;
 
         public GuiHandbookTextPage()
         {
@@ -43,11 +57,14 @@ namespace Vintagestory.API.Client
 
         public void Init(ICoreClientAPI capi)
         {
-            if (text.Length < 255)
+            if (Text.Length < 255)
             {
-                text = Lang.Get(text);
+                Text = Lang.Get(Text);
             }
-            comps = VtmlUtil.Richtextify(capi, text, CairoFont.WhiteSmallText().WithLineHeightMultiplier(1.2));
+            
+            comps = VtmlUtil.Richtextify(capi, Text, CairoFont.WhiteSmallText().WithLineHeightMultiplier(1.2));
+
+            titleCached = Lang.Get(Title);
         }
 
         public override RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.ActionConsumable<string> openDetailPageFor)
@@ -58,12 +75,18 @@ namespace Vintagestory.API.Client
         public void Recompose(ICoreClientAPI capi)
         {
             Texture?.Dispose();
-            Texture = new TextTextureUtil(capi).GenTextTexture(Lang.Get(title), CairoFont.WhiteSmallText());
+            Texture = new TextTextureUtil(capi).GenTextTexture(Lang.Get(Title), CairoFont.WhiteSmallText());
+
+            
         }
 
-        public override bool MatchesText(string text)
+        public override float TextMatchWeight(string searchText)
         {
-            return this.text.CaseInsensitiveContains(text);
+            if (titleCached.Equals(searchText, StringComparison.InvariantCultureIgnoreCase)) return 3;
+            if (titleCached.StartsWith(searchText, StringComparison.InvariantCultureIgnoreCase)) return 2.5f;
+            if (titleCached.CaseInsensitiveContains(searchText)) return 2;
+            if (Text.CaseInsensitiveContains(searchText)) return 1;
+            return 0;
         }
 
         public override void RenderTo(ICoreClientAPI capi, double x, double y)
@@ -145,6 +168,8 @@ namespace Vintagestory.API.Client
         public InventoryBase unspoilableInventory;
         public DummySlot dummySlot;
 
+        public override string CategoryCode => "stack";
+
         public GuiHandbookItemStackPage(ICoreClientAPI capi, ItemStack stack)
         {
             this.Stack = stack;
@@ -211,9 +236,14 @@ namespace Vintagestory.API.Client
             return Stack.Collectible.GetHandbookInfo(dummySlot, capi, allStacks, openDetailPageFor);
         }
 
-        public override bool MatchesText(string text)
+        public override float TextMatchWeight(string searchText)
         {
-            return TextCache.CaseInsensitiveContains(text);
+            string title = Stack.GetName();
+            if (title.Equals(searchText, StringComparison.InvariantCultureIgnoreCase)) return 3;
+            if (title.StartsWith(searchText, StringComparison.InvariantCultureIgnoreCase)) return 2.5f;
+            if (title.CaseInsensitiveContains(searchText)) return 2;
+            if (TextCache.CaseInsensitiveContains(searchText)) return 1;
+            return 0;
         }
     }
 

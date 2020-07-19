@@ -9,7 +9,7 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
-
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -108,23 +108,10 @@ namespace Vintagestory.API.Common
             servercontrols = new EntityControls();
         }
 
-        //protected AnimationMetaData[] Animations;
-
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
             base.Initialize(properties, api, InChunkIndex3d);
-
-            // why the eff are these cloned?! properties are already cloned for each individual entity
-            /*if (properties.Client.Animations != null)
-            {
-                Animations = new AnimationMetaData[properties.Client.Animations.Length];
-                for(int i = 0; i < Animations.Length; i++)
-                {
-                    Animations[i] = properties.Client.Animations[i].Clone();
-                    Animations[i].Init();
-                }
-            }*/
 
             if (World.Side == EnumAppSide.Server)
             {
@@ -170,7 +157,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public int GetEyesBlockId()
         {
-            BlockPos pos = LocalPos.AsBlockPos.Add(0, (float)Properties.EyeHeight, 0);
+            BlockPos pos = SidedPos.AsBlockPos.Add(0, (float)Properties.EyeHeight, 0);
             return World.BlockAccessor.GetBlockId(pos.X, pos.Y, pos.Z);
         }
 
@@ -266,7 +253,7 @@ namespace Vintagestory.API.Common
 
                 if (Api.Side == EnumAppSide.Client && damage > 1 && !IsActivityRunning("invulnerable") && Properties.Attributes?["spawnDamageParticles"].AsBool() == true)
                 {
-                    Vec3d pos = LocalPos.XYZ + hitPosition;
+                    Vec3d pos = SidedPos.XYZ + hitPosition;
                     Vec3d minPos = pos.AddCopy(-0.15, -0.15, -0.15);
                     Vec3d maxPos = pos.AddCopy(0.15, 0.15, 0.15);
 
@@ -351,13 +338,6 @@ namespace Vintagestory.API.Common
         {
             bool ret = base.ReceiveDamage(damageSource, damage);
 
-            // What is this for? It causes players to glitch into walls when attacked and standing against a wall
-            // (according to the logs apparently something related to explosion damage fling?)
-            /*if (ret && this is EntityPlayer && damageSource.GetSourcePosition() != null && World.Side == EnumAppSide.Server)
-            {
-                ((IServerPlayer)World.PlayerByUid(((EntityPlayer)this).PlayerUID)).SendPositionToClient();
-            }*/
-
             return ret;
         }
 
@@ -409,7 +389,7 @@ namespace Vintagestory.API.Common
                         (servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
                         (servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
                         (servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |
-                        (!OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && LocalPos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0)
+                        (!OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && SidedPos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0)
                     ;
                 }
                 else
@@ -522,10 +502,12 @@ namespace Vintagestory.API.Common
         {
             ItemStack rightstack = RightHandItemSlot?.Itemstack;
 
-            bool nowUseStack = servercontrols.RightMouseDown && !servercontrols.LeftMouseDown;
+            EnumHandInteract interact = servercontrols.HandUse;
+
+            bool nowUseStack = (interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract) || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
             bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
 
-            bool nowHitStack = servercontrols.LeftMouseDown;
+            bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || (servercontrols.LeftMouseDown);
             bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
 
 
@@ -536,7 +518,7 @@ namespace Vintagestory.API.Common
             string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
             string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
 
-            bool nowRightIdleStack = nowHeldRightIdleAnim != null && !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown;
+            bool nowRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack;
             bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningRightHeldIdleAnimation);
 
             bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
@@ -546,27 +528,34 @@ namespace Vintagestory.API.Common
 
             if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
             {
-                StopHandAnims();
-                
+                AnimManager.StopAnimation(lastRunningHeldUseAnimation);
+                lastRunningHeldUseAnimation = null;
+
                 if (nowUseStack)
                 {
+                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
                     AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldRightUseAnim);
                 }
             }
 
             if (nowHitStack != wasHitStack || (lastRunningHeldHitAnimation != null && nowHeldRightHitAnim != lastRunningHeldHitAnimation))
             {
-                StopHandAnims();
+                AnimManager.StopAnimation(lastRunningHeldHitAnimation);
+                lastRunningHeldHitAnimation = null;
+
 
                 if (nowHitStack)
                 {
+                    AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
+                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
                     AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldRightHitAnim);
                 }
             }
 
             if (nowRightIdleStack != wasRightIdleStack || (lastRunningRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastRunningRightHeldIdleAnimation))
             {
-                StopHandAnims();
+                AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
+                lastRunningRightHeldIdleAnimation = null;
 
                 if (nowRightIdleStack)
                 {
@@ -589,14 +578,10 @@ namespace Vintagestory.API.Common
 
         public virtual void StopHandAnims()
         {
-            AnimManager.StopAnimation(lastRunningHeldUseAnimation);
-            lastRunningHeldUseAnimation = null;
+            
 
-            AnimManager.StopAnimation(lastRunningHeldHitAnimation);
-            lastRunningHeldHitAnimation = null;
-
-            AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
-            lastRunningRightHeldIdleAnimation = null;
+            
+            
         }
 
         /// <summary>
@@ -605,11 +590,11 @@ namespace Vintagestory.API.Common
         /// <param name="groundDragFactor">The amount of drag provided by the current ground. (Default: 0.3)</param>
         public virtual double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
-            int y1 = (int)(LocalPos.Y - 0.05f);
-            int y2 = (int)(LocalPos.Y + 0.01f);
+            int y1 = (int)(SidedPos.Y - 0.05f);
+            int y2 = (int)(SidedPos.Y + 0.01f);
 
-            Block belowBlock = World.BlockAccessor.GetBlock((int)LocalPos.X, y1, (int)LocalPos.Z);
-            Block insideblock = World.BlockAccessor.GetBlock((int)LocalPos.X, y2, (int)LocalPos.Z);
+            Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
+            Block insideblock = World.BlockAccessor.GetBlock((int)SidedPos.X, y2, (int)SidedPos.Z);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
             
@@ -626,28 +611,6 @@ namespace Vintagestory.API.Common
             return multiplier;
         }
 
-        /// <summary>
-        /// Sets a walk speed modifier that affects the entity's movement speed. Overrides existing value with the same key.
-        /// Is multiplied with other modifiers like so: <code>baseMovementSpeed * mod1 * mod2 * ...</code>
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <param name="persistent">Whether the modifier should be saved and loaded.</param>
-        [Obsolete("Use entity.Stats.Set(\"walkspeed\", key, value, persistent) instead")]
-        public virtual void SetWalkSpeedModifier(string key, float value, bool persistent)
-        {
-            Stats.Set("walkspeed", key, value, persistent);
-        }
-
-        /// <summary>
-        /// Removes a previously set walk speed modifier. Does nothing if it doesn't exist.
-        /// </summary>
-        /// <param name="key"></param>
-        [Obsolete("Use entity.Stats.Remove(\"walkspeed\", key) instead")]
-        public virtual void RemoveWalkSpeedModifier(string key)
-        {
-            Stats.Remove("walkspeed", key);
-        }
 
 
         /// <summary>
@@ -735,6 +698,378 @@ namespace Vintagestory.API.Common
             base.UpdateDebugAttributes();
 
             DebugAttributes.SetString("Herd Id", "" + HerdId);
+        }
+
+
+        public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
+        {
+            addGearToShape(ref entityShape, shapePathForLogging);
+        }
+
+
+        protected Shape addGearToShape(ref Shape entityShape, string shapePathForLogging)
+        {
+            IInventory inv = GearInventory;
+
+            if (inv == null || (!(this is EntityPlayer) && inv.Empty)) return entityShape;
+
+            // Make a copy so we don't mess up the original
+            Shape newShape = entityShape.Clone();
+            newShape.ResolveAndLoadJoints("head");
+            entityShape = newShape;
+
+            foreach (var slot in inv)
+            {
+                entityShape = addGearToShape(slot, entityShape, shapePathForLogging);
+            }
+
+            return entityShape;
+        }
+
+
+        protected Dictionary<string, CompositeTexture> extraTexturesByTextureName
+        {
+            get
+            {
+                return ObjectCacheUtil.GetOrCreate(Api, "entityShapeExtraTexturesByName", () => new Dictionary<string, CompositeTexture>());
+            }
+        }
+
+        protected Dictionary<AssetLocation, BakedCompositeTexture> extraTextureByLocation
+        {
+            get
+            {
+                return ObjectCacheUtil.GetOrCreate(Api, "entityShapeExtraTexturesByLoc", () => new Dictionary<AssetLocation, BakedCompositeTexture>());
+            }
+        }
+
+        protected Shape addGearToShape(ItemSlot slot, Shape entityShape, string shapePathForLogging)
+        {
+            if (slot.Empty) return entityShape;
+            ItemStack stack = slot.Itemstack;
+            JsonObject attrObj = stack.Collectible.Attributes;
+            if (attrObj?["wearableAttachment"].Exists != true) return entityShape;
+
+            CompositeShape compArmorShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
+
+            AssetLocation shapePath = shapePath = compArmorShape.Base.CopyWithPath("shapes/" + compArmorShape.Base.Path + ".json");
+
+            string[] disableElements = attrObj["disableElements"].AsArray<string>(null);
+            if (disableElements != null)
+            {
+                foreach (var val in disableElements)
+                {
+                    entityShape.RemoveElementByName(val);
+                }
+            }
+
+            IAsset asset = Api.Assets.TryGet(shapePath);
+
+            if (asset == null)
+            {
+                Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found, was supposed to be at {3}. Armor piece will be invisible.", compArmorShape.Base, stack.Class, stack.Collectible.Code, shapePath);
+                return null;
+            }
+
+            Shape armorShape;
+
+            try
+            {
+                armorShape = asset.ToObject<Shape>();
+            }
+            catch (Exception e)
+            {
+                Api.World.Logger.Warning("Exception thrown when trying to load entity armor shape {0} defined in {1} {2}. Armor piece will be invisible. Exception: {3}", compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code, e);
+                return null;
+            }
+
+            bool added = false;
+            foreach (var val in armorShape.Elements)
+            {
+                ShapeElement elem;
+
+                if (val.StepParentName != null)
+                {
+                    elem = entityShape.GetElementByName(val.StepParentName, StringComparison.InvariantCultureIgnoreCase);
+                    if (elem == null)
+                    {
+                        Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} requires step parent element with name {3}, but no such element was found in shape {4}. Will not be visible.", compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code, val.StepParentName, shapePathForLogging);
+                        continue;
+                    }
+                }
+                else
+                {
+                    Api.World.Logger.Warning("Entity armor shape element {0} in shape {1} defined in {2} {3} did not define a step parent element. Will not be visible.", val.Name, compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code);
+                    continue;
+                }
+
+                if (elem.Children == null)
+                {
+                    elem.Children = new ShapeElement[] { val };
+                }
+                else
+                {
+                    elem.Children = elem.Children.Append(val);
+                }
+
+                val.SetJointIdRecursive(elem.JointId);
+                val.WalkRecursive((el) =>
+                {
+                    foreach (var face in el.Faces)
+                    {
+                        face.Value.Texture = "#" + stack.Collectible.Code + "-" + face.Value.Texture.TrimStart('#');
+                    }
+                });
+
+                added = true;
+            }
+
+            if (added && armorShape.Textures != null)
+            {
+                Dictionary<string, AssetLocation> newdict = new Dictionary<string, AssetLocation>();
+                foreach (var val in armorShape.Textures)
+                {
+                    newdict[stack.Collectible.Code + "-" + val.Key] = val.Value;
+                }
+
+                // Item overrides
+                var collDict = stack.Class == EnumItemClass.Block ? stack.Block.Textures : stack.Item.Textures;
+                foreach (var val in collDict)
+                {
+                    newdict[stack.Collectible.Code + "-" + val.Key] = val.Value.Base;
+                }
+
+                armorShape.Textures = newdict;
+
+                foreach (var val in armorShape.Textures)
+                {
+                    CompositeTexture ctex = new CompositeTexture() { Base = val.Value };
+
+                    entityShape.TextureSizes[val.Key] = new int[] { armorShape.TextureWidth, armorShape.TextureHeight };
+
+                    AssetLocation armorTexLoc = val.Value;
+
+                    // Weird backreference to the shaperenderer. Should be refactored.
+                    var texturesByLoc = extraTextureByLocation;
+                    var texturesByName = extraTexturesByTextureName;
+
+                    BakedCompositeTexture bakedCtex;
+
+                    ICoreClientAPI capi = Api as ICoreClientAPI;
+
+                    if (!texturesByLoc.TryGetValue(armorTexLoc, out bakedCtex))
+                    {
+                        int textureSubId = 0;
+                        TextureAtlasPosition texpos;
+
+                        IAsset texAsset = Api.Assets.TryGet(val.Value.Clone().WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png"));
+                        if (texAsset != null)
+                        {
+                            BitmapRef bmp = texAsset.ToBitmap(capi);
+                            capi.EntityTextureAtlas.InsertTexture(bmp, out textureSubId, out texpos);
+                        }
+                        else
+                        {
+                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, not no such texture found.", shapePath, val.Value);
+                        }
+
+                        ctex.Baked = new BakedCompositeTexture() { BakedName = val.Value, TextureSubId = textureSubId };
+
+                        texturesByName[val.Key] = ctex;
+                        texturesByLoc[armorTexLoc] = ctex.Baked;
+                    }
+                    else
+                    {
+                        ctex.Baked = bakedCtex;
+                        texturesByName[val.Key] = ctex;
+                    }
+                }
+
+                foreach (var val in armorShape.TextureSizes)
+                {
+                    entityShape.TextureSizes[val.Key] = val.Value;
+                }
+            }
+
+            return entityShape;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="code">Any unique Identifier</param>
+        /// <param name="cshape"></param>
+        /// <param name="entityShape"></param>
+        /// <param name="shapePathForLogging"></param>
+        /// <param name="disableElements"></param>
+        /// <returns></returns>
+        protected Shape addGearToShape(string code, CompositeShape cshape, Shape entityShape, string shapePathForLogging, string[] disableElements = null, Dictionary<string, AssetLocation> textureOverrides = null)
+        {
+            AssetLocation shapePath = shapePath = cshape.Base.CopyWithPath("shapes/" + cshape.Base.Path + ".json");
+
+            if (disableElements != null)
+            {
+                foreach (var val in disableElements)
+                {
+                    entityShape.RemoveElementByName(val);
+                }
+            }
+
+            IAsset asset = Api.Assets.TryGet(shapePath);
+
+            if (asset == null)
+            {
+                Api.World.Logger.Warning("Compositshape {0} (code: {2}) defined but not found, was supposed to be at {1}. Part will be invisible.", cshape.Base, shapePath, code);
+                return null;
+            }
+
+            Shape armorShape;
+
+            try
+            {
+                armorShape = asset.ToObject<Shape>();
+            }
+            catch (Exception e)
+            {
+                Api.World.Logger.Warning("Exception thrown when trying to load gear shape {0} (code: {2}) . Will be invisible. Exception: {1}", cshape.Base, e, code);
+                return null;
+            }
+
+            bool added = applyStepParents(null, armorShape.Elements, entityShape, code, cshape, shapePathForLogging);
+
+
+            if (added && armorShape.Textures != null)
+            {
+                Dictionary<string, AssetLocation> newdict = new Dictionary<string, AssetLocation>();
+                foreach (var val in armorShape.Textures)
+                {
+                    newdict[code + "-" + val.Key] = val.Value;
+                }
+
+                // Texture overrides
+                if (textureOverrides != null)
+                {
+                    foreach (var val in textureOverrides)
+                    {
+                        newdict[code + "-" + val.Key] = val.Value;
+                    }
+                }
+
+                armorShape.Textures = newdict;
+
+                foreach (var val in armorShape.Textures)
+                {
+                    CompositeTexture ctex = new CompositeTexture() { Base = val.Value };
+
+                    entityShape.TextureSizes[val.Key] = new int[] { armorShape.TextureWidth, armorShape.TextureHeight };
+
+                    AssetLocation armorTexLoc = val.Value;
+
+                    // Weird backreference to the shaperenderer. Should be refactored.
+                    var texturesByLoc = extraTextureByLocation;
+                    var texturesByName = extraTexturesByTextureName;
+
+                    BakedCompositeTexture bakedCtex;
+
+                    ICoreClientAPI capi = Api as ICoreClientAPI;
+
+                    if (!texturesByLoc.TryGetValue(armorTexLoc, out bakedCtex))
+                    {
+                        int textureSubId = 0;
+                        TextureAtlasPosition texpos;
+
+                        IAsset texAsset = Api.Assets.TryGet(val.Value.Clone().WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png"));
+                        if (texAsset != null)
+                        {
+                            BitmapRef bmp = texAsset.ToBitmap(capi);
+                            capi.EntityTextureAtlas.InsertTexture(bmp, out textureSubId, out texpos);
+                        }
+                        else
+                        {
+                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, not no such texture found.", shapePath, val.Value);
+                        }
+
+                        ctex.Baked = new BakedCompositeTexture() { BakedName = val.Value, TextureSubId = textureSubId };
+
+                        texturesByName[val.Key] = ctex;
+                        texturesByLoc[armorTexLoc] = ctex.Baked;
+                    }
+                    else
+                    {
+                        ctex.Baked = bakedCtex;
+                        texturesByName[val.Key] = ctex;
+                    }
+                }
+
+                foreach (var val in armorShape.TextureSizes)
+                {
+                    entityShape.TextureSizes[val.Key] = val.Value;
+                }
+            }
+
+            return entityShape;
+        }
+
+        private bool applyStepParents(ShapeElement parentElem, ShapeElement[] elements, Shape toShape, string code, CompositeShape cshape, string shapePathForLogging)
+        {
+            bool added = false;
+
+            foreach (var cElem in elements)
+            {
+                ShapeElement refelem;
+
+                if (cElem.Children != null)
+                {
+                    added |= applyStepParents(cElem, cElem.Children, toShape, code, cshape, shapePathForLogging);
+                }
+
+                if (cElem.StepParentName != null)
+                {
+                    refelem = toShape.GetElementByName(cElem.StepParentName, StringComparison.InvariantCultureIgnoreCase);
+                    if (refelem == null)
+                    {
+                        Api.World.Logger.Warning("Shape {0} requires step parent element with name {1}, but no such element was found in shape {2}. Will not be visible.", cshape.Base, cElem.StepParentName, shapePathForLogging);
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (parentElem == null)
+                    {
+                        Api.World.Logger.Warning("Entity armor shape element {0} in shape {1} did not define a step parent element. Will not be visible.", cElem.Name, cshape.Base);
+                    }
+                    continue;
+                }
+
+                if (parentElem != null)
+                {
+                    parentElem.Children = parentElem.Children.Remove(cElem);
+                }
+
+                if (refelem.Children == null)
+                {
+                    refelem.Children = new ShapeElement[] { cElem };
+                }
+                else
+                {
+                    refelem.Children = refelem.Children.Append(cElem);
+                }
+
+                cElem.SetJointIdRecursive(refelem.JointId);
+
+                cElem.WalkRecursive((el) =>
+                {
+                    foreach (var face in el.Faces)
+                    {
+                        face.Value.Texture = "#" + code + "-" + face.Value.Texture.TrimStart('#');
+                    }
+                });
+
+                added = true;
+            }
+
+            return added;
         }
 
         public override bool TryGiveItemStack(ItemStack itemstack)

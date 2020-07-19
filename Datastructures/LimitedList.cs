@@ -25,6 +25,23 @@ namespace Vintagestory.API.Datastructures
             capacity = maxCapacity;
         }
 
+        /// <summary>
+        /// Create a new list with a given maximum capacity
+        /// </summary>
+        /// <param name="maxCapacity"></param>
+        public LimitedList(int maxCapacity, IEnumerable<TElem> initialElements)
+        {
+            if (initialElements == null)
+            {
+                elems = new List<TElem>(maxCapacity);
+            } else
+            {
+                elems = new List<TElem>(initialElements);
+            }
+            
+            capacity = maxCapacity;
+        }
+
         public void Add(TElem key)
         {
             if (elems.Count >= capacity)
@@ -42,6 +59,11 @@ namespace Vintagestory.API.Datastructures
             }
         }
 
+        public void SetCapacity(int maxCapacity)
+        {
+            this.capacity = maxCapacity;
+        }
+
         public void Clear()
         {
             elems.Clear();
@@ -55,6 +77,12 @@ namespace Vintagestory.API.Datastructures
         public void RemoveAt(int i)
         {
             elems.RemoveAt(i);
+        }
+
+        public TElem LastElement()
+        {
+            if (Count == 0) return default(TElem);
+            return elems[Count - 1];
         }
 
         public bool IsFull()

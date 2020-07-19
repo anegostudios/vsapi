@@ -117,7 +117,14 @@ namespace Vintagestory.API.Server
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
         /// <returns></returns>
-        IMapChunk GetMapChunk(int chunkX, int chunkZ);
+        IServerMapChunk GetMapChunk(int chunkX, int chunkZ);
+
+        /// <summary>
+        /// Gets the Server map chunk at given coordinate index. Returns null if it's not loaded or does not exist yet
+        /// </summary>
+        /// <param name="index2d"></param>
+        /// <returns></returns>
+        IMapChunk GetMapChunk(long index2d);
 
         /// <summary>
         /// Gets the Server chunk at given coordinate. Returns null if it's not loaded or does not exist yet
@@ -138,8 +145,10 @@ namespace Vintagestory.API.Server
         long ChunkIndex3D(int chunkX, int chunkY, int chunkZ);
         long MapRegionIndex2D(int regionX, int regionZ);
         long MapRegionIndex2DByBlockPos(int posX, int posZ);
-        Vec3i MapRegionPosFromIndex2D(long index);
+        Vec3i MapRegionPosFromIndex2D(long index2d);
 
+        Vec2i MapChunkPosFromChunkIndex2D(long index2d);
+        long MapChunkIndex2D(int chunkX, int chunkZ);
 
         /// <summary>
         /// Gets the Server chunk at given coordinate. Returns null if it's not loaded or does not exist yet
@@ -223,7 +232,16 @@ namespace Vintagestory.API.Server
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
         /// <param name="options">Additional loading options</param>
+        [Obsolete("Use LoadChunkColumnPriority()")]
         void LoadChunkColumnFast(int chunkX, int chunkZ, ChunkLoadOptions options = null);
+
+        /// <summary>
+        /// Asynchronly high priority load a chunk column at given coordinate. 
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="options">Additional loading options</param>
+        void LoadChunkColumnPriority(int chunkX, int chunkZ, ChunkLoadOptions options = null);
 
         /// <summary>
         /// Asynchronly high priority load an area of chunk columns at given coordinates. Make sure that X1&lt;=X2 and Z1&lt;=Z2
@@ -233,7 +251,18 @@ namespace Vintagestory.API.Server
         /// <param name="chunkX2"></param>
         /// <param name="chunkZ2"></param>
         /// <param name="options">Additional loading options</param>
+        [Obsolete("Use LoadChunkColumnPriority()")]
         void LoadChunkColumnFast(int chunkX1, int chunkZ1, int chunkX2, int chunkZ2, ChunkLoadOptions options = null);
+
+        /// <summary>
+        /// Asynchronly high priority load an area of chunk columns at given coordinates. Make sure that X1&lt;=X2 and Z1&lt;=Z2
+        /// </summary>
+        /// <param name="chunkX1"></param>
+        /// <param name="chunkZ1"></param>
+        /// <param name="chunkX2"></param>
+        /// <param name="chunkZ2"></param>
+        /// <param name="options">Additional loading options</param>
+        void LoadChunkColumnPriority(int chunkX1, int chunkZ1, int chunkX2, int chunkZ2, ChunkLoadOptions options = null);
 
         /// <summary>
         /// Asynchronly normal priority load a chunk column at given coordinate. No effect when already loaded.

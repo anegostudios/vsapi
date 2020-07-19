@@ -59,6 +59,30 @@ namespace Vintagestory.API.Util
             return value;
         }
 
+        public static double? ToDoubleOrNull(this string text, double? defaultValue = 0)
+        {
+            double value;
+
+            if (!double.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            {
+                return defaultValue;
+            }
+            return value;
+        }
+
+
+        public static float? ToFloatOrNull(this string text, float? defaultValue = 0)
+        {
+            float value;
+
+            if (!float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            {
+                return defaultValue;
+            }
+
+            return value;
+        }
+
 
         public static int CountChars(this string text, char c)
         {

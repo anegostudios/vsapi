@@ -12,6 +12,7 @@ namespace Vintagestory.API.MathTools
 
 
     public delegate bool BlockFilter(BlockPos pos, Block block);
+    public delegate bool EntityFilter(Entity entity);
 
 
     // Based on http://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-plane-and-ray-disk-intersection

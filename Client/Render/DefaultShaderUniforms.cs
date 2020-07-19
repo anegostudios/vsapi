@@ -61,6 +61,7 @@ namespace Vintagestory.API.Client
         public float FogWaveCounter = 0f;
 
         public float GlobalWorldWarp = 0f;
+        public float SeaLevel = 0f;
 
         public float SunsetMod = 0f;
         public int SunLightTextureId;
@@ -71,11 +72,16 @@ namespace Vintagestory.API.Client
         public int FrameWidth;
         public float PlayerToSealevelOffset;
 
+        public float[] ColorMapRects4;
+        public float SeasonRel;
+
 
         public Vec3f PlayerPos = new Vec3f();
         Vec3d playerReferencePos;
+        BlockPos plrPos = new BlockPos();
 
         internal float SkyDaylight;
+
 
         public DefaultShaderUniforms()
         {
@@ -100,7 +106,7 @@ namespace Vintagestory.API.Client
             WaterFlowCounter = (WaterFlowCounter + dt / 1.5f) % 141f;
             WaterWaveCounter = (WaterWaveCounter + dt * 0.75f) % 578f;
 
-            WindWaveCounter = (WindWaveCounter + (0.5f + 5*GlobalConstants.CurrentWindSpeedClient.X) * dt) % 578f;
+            WindWaveCounter = (WindWaveCounter + (0.5f + 5*GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 578f;
             WindSpeed = GlobalConstants.CurrentWindSpeedClient.X;
 
             FogWaveCounter += 0.1f * dt;
@@ -124,6 +130,7 @@ namespace Vintagestory.API.Client
 
             
             PlayerPos.Set((float)(pos.X - playerReferencePos.X), (float)(pos.Y - playerReferencePos.Y), (float)(pos.Z - playerReferencePos.Z));
+            plrPos.Set(capi.World.Player.Entity.Pos.XInt, capi.World.Player.Entity.Pos.YInt, capi.World.Player.Entity.Pos.ZInt);
 
             // For godrays shader
             PlayerViewVector = EntityPos.GetViewVector(capi.Input.MousePitch, capi.Input.MouseYaw);
@@ -132,7 +139,16 @@ namespace Vintagestory.API.Client
 
             
             PlayerToSealevelOffset = (float)capi.World.Player.Entity.Pos.Y - capi.World.SeaLevel;
+            SeaLevel = capi.World.SeaLevel;
             FrameWidth = capi.Render.FrameWidth;
+
+
+            // We might need to do the hemisphere thing as a single bit for every vertex
+            SeasonRel = capi.World.Calendar.GetSeasonRel(plrPos);
+
+
+            // updated by ClientWorldMap.cs
+            // ColorMapRects
 
             // updated by RenderSkyColor.cs
             // DitherSeed, SkyTextureId, GlowTextureId, SkyDaylight

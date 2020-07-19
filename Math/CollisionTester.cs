@@ -22,7 +22,7 @@ namespace Vintagestory.API.MathTools
 
         // Use class level fields to reduce garbage collection
         public BlockPos tmpPos = new BlockPos();
-        public Vec3d tmpMotion = new Vec3d();
+        public Vec3d tmpPosDelta = new Vec3d();
         public Vec3d tmpPositionVec = new Vec3d();
         public Cuboidd tempCuboid = new Cuboidd();
         EnumPushDirection pushDirection = EnumPushDirection.None;
@@ -30,10 +30,12 @@ namespace Vintagestory.API.MathTools
         BlockPos minPos = new BlockPos();
         BlockPos maxPos = new BlockPos();
 
-        public void ApplyTerrainCollision(Entity entity, EntityPos entitypos, ref Vec3d outposition, bool blockWhenInside)
+        public void ApplyTerrainCollision(Entity entity, EntityPos entitypos, float dtFac, ref Vec3d outposition)
         {
             IWorldAccessor worldaccess = entity.World;
             Vec3d pos = entitypos.XYZ;
+
+            
 
             // Full stop when already inside a collisionbox, but allow a small margin of error
             // Disabled. Causes too many issues
@@ -61,18 +63,18 @@ namespace Vintagestory.API.MathTools
             );
 
             CollisionBoxList.Clear();
-            outposition.Set(tmpPositionVec.X + entitypos.Motion.X, tmpPositionVec.Y + entitypos.Motion.Y, tmpPositionVec.Z + entitypos.Motion.Z);
+            outposition.Set(tmpPositionVec.X + entitypos.Motion.X * dtFac, tmpPositionVec.Y + entitypos.Motion.Y * dtFac, tmpPositionVec.Z + entitypos.Motion.Z * dtFac);
 
             minPos.Set(
-                (int)(entityBox.X1 + Math.Min(0, entitypos.Motion.X)),
-                (int)(entityBox.Y1 + Math.Min(0, entitypos.Motion.Y) - 1), // -1 for the extra high collision box of fences
-                (int)(entityBox.Z1 + Math.Min(0, entitypos.Motion.Z))
+                (int)(entityBox.X1 + Math.Min(0, entitypos.Motion.X * dtFac)),
+                (int)(entityBox.Y1 + Math.Min(0, entitypos.Motion.Y * dtFac) - 1), // -1 for the extra high collision box of fences
+                (int)(entityBox.Z1 + Math.Min(0, entitypos.Motion.Z * dtFac))
             );
 
             maxPos.Set(
-                (int)(entityBox.X2 + Math.Max(0, entitypos.Motion.X)),
-                (int)(entityBox.Y2 + Math.Max(0, entitypos.Motion.Y)),
-                (int)(entityBox.Z2 + Math.Max(0, entitypos.Motion.Z))
+                (int)(entityBox.X2 + Math.Max(0, entitypos.Motion.X * dtFac)),
+                (int)(entityBox.Y2 + Math.Max(0, entitypos.Motion.Y * dtFac)),
+                (int)(entityBox.Z2 + Math.Max(0, entitypos.Motion.Z * dtFac))
             );
 
             worldaccess.BlockAccessor.WalkBlocks(minPos, maxPos, (block, bpos) => {
@@ -86,7 +88,7 @@ namespace Vintagestory.API.MathTools
             }, true);
 
 
-            tmpMotion.Set(entitypos.Motion.X, entitypos.Motion.Y, entitypos.Motion.Z);
+            tmpPosDelta.Set(entitypos.Motion.X * dtFac, entitypos.Motion.Y * dtFac, entitypos.Motion.Z * dtFac);
 
 
             // Y - Collision (Vertical)
@@ -94,7 +96,7 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < CollisionBoxList.Count; i++)
             {
-                tmpMotion.Y = CollisionBoxList.cuboids[i].pushOutY(entityBox, tmpMotion.Y, ref pushDirection);
+                tmpPosDelta.Y = CollisionBoxList.cuboids[i].pushOutY(entityBox, tmpPosDelta.Y, ref pushDirection);
                 if (pushDirection == EnumPushDirection.None)
                     continue;
 
@@ -105,68 +107,85 @@ namespace Vintagestory.API.MathTools
                     entity,
                     CollisionBoxList.positions[i],
                     pushDirection == EnumPushDirection.Negative ? BlockFacing.UP : BlockFacing.DOWN,
-                    tmpMotion,
+                    tmpPosDelta,
                     !entity.CollidedVertically
                 );
             }
 
             entity.CollidedVertically = collided;
-            entityBox.Translate(0, tmpMotion.Y, 0);
+            entityBox.Translate(0, tmpPosDelta.Y, 0);
 
 
-            // X - Collision (Horizontal)
-            collided = false;
-
-            for (int i = 0; i < CollisionBoxList.Count; i++)
+            var horizontalBlocked = false;
+            var entityBoxMovedXZ = entityBox.OffsetCopy(tmpPosDelta.X, 0, tmpPosDelta.Z);
+            foreach (var cuboid in CollisionBoxList.cuboids)
             {
-                tmpMotion.X = CollisionBoxList.cuboids[i].pushOutX(entityBox, tmpMotion.X, ref pushDirection);
-
-                if (pushDirection == EnumPushDirection.None)
+                if (cuboid.Intersects(entityBoxMovedXZ))
                 {
-                    continue;
+                    horizontalBlocked = true;
+                    break;
                 }
-
-                collided = true;
-
-                CollisionBoxList.blocks[i].OnEntityCollide(
-                    worldaccess,
-                    entity,
-                    CollisionBoxList.positions[i],
-                    pushDirection == EnumPushDirection.Negative ? BlockFacing.EAST : BlockFacing.WEST,
-                    tmpMotion,
-                    !entity.CollidedHorizontally
-                );
             }
 
-            entityBox.Translate(tmpMotion.X, 0, 0);
-
-            // Z - Collision (Horizontal)
-
-            for (int i = 0; i < CollisionBoxList.Count; i++)
+            // No collisions for the entity found when testing horizontally, so skip this.
+            // This allows entities to move around corners without falling down on a certain axis.
+            collided = false;
+            if (horizontalBlocked)
             {
-                tmpMotion.Z = CollisionBoxList.cuboids[i].pushOutZ(entityBox, tmpMotion.Z, ref pushDirection);
-                if (pushDirection == EnumPushDirection.None)
+
+                // X - Collision (Horizontal)
+
+                for (int i = 0; i < CollisionBoxList.Count; i++)
                 {
-                    continue;
+                    tmpPosDelta.X = CollisionBoxList.cuboids[i].pushOutX(entityBox, tmpPosDelta.X, ref pushDirection);
+
+                    if (pushDirection == EnumPushDirection.None)
+                    {
+                        continue;
+                    }
+
+                    collided = true;
+
+                    CollisionBoxList.blocks[i].OnEntityCollide(
+                        worldaccess,
+                        entity,
+                        CollisionBoxList.positions[i],
+                        pushDirection == EnumPushDirection.Negative ? BlockFacing.EAST : BlockFacing.WEST,
+                        tmpPosDelta,
+                        !entity.CollidedHorizontally
+                    );
                 }
 
-                collided = true;
+                entityBox.Translate(tmpPosDelta.X, 0, 0);
 
-                CollisionBoxList.blocks[i].OnEntityCollide(
-                    worldaccess,
-                    entity,
-                    CollisionBoxList.positions[i],
-                    pushDirection == EnumPushDirection.Negative ? BlockFacing.SOUTH : BlockFacing.NORTH,
-                    tmpMotion,
-                    !entity.CollidedHorizontally
-                );
+                // Z - Collision (Horizontal)
+
+                for (int i = 0; i < CollisionBoxList.Count; i++)
+                {
+                    tmpPosDelta.Z = CollisionBoxList.cuboids[i].pushOutZ(entityBox, tmpPosDelta.Z, ref pushDirection);
+                    if (pushDirection == EnumPushDirection.None)
+                    {
+                        continue;
+                    }
+
+                    collided = true;
+
+                    CollisionBoxList.blocks[i].OnEntityCollide(
+                        worldaccess,
+                        entity,
+                        CollisionBoxList.positions[i],
+                        pushDirection == EnumPushDirection.Negative ? BlockFacing.SOUTH : BlockFacing.NORTH,
+                        tmpPosDelta,
+                        !entity.CollidedHorizontally
+                    );
+                }
+
             }
 
             entity.CollidedHorizontally = collided;
 
 
-
-            outposition.Set(tmpPositionVec.X + tmpMotion.X, tmpPositionVec.Y + tmpMotion.Y, tmpPositionVec.Z + tmpMotion.Z);
+            outposition.Set(tmpPositionVec.X + tmpPosDelta.X, tmpPositionVec.Y + tmpPosDelta.Y, tmpPositionVec.Z + tmpPosDelta.Z);
         }
 
         Cuboidd tmpBox = new Cuboidd();
@@ -188,10 +207,7 @@ namespace Vintagestory.API.MathTools
             int minX = (int)(entityBoxRel.X1 + pos.X);
             int minY = (int)(entityBoxRel.Y1 + pos.Y - 1);  // -1 for the extra high collision box of fences
             int minZ = (int)(entityBoxRel.Z1 + pos.Z);
-            // why the eff the ceilings?
-            /*int maxX = (int)Math.Ceiling(entityBoxRel.X2 + pos.X);
-            int maxY = (int)Math.Ceiling(entityBoxRel.Y2 + pos.Y);
-            int maxZ = (int)Math.Ceiling(entityBoxRel.Z2 + pos.Z);*/
+
             int maxX = (int)(entityBoxRel.X2 + pos.X);
             int maxY = (int)(entityBoxRel.Y2 + pos.Y);
             int maxZ = (int)(entityBoxRel.Z2 + pos.Z);

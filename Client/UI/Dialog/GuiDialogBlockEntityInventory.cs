@@ -66,7 +66,7 @@ namespace Vintagestory.API.Client
                     .AddInset(insetBounds)
                     .AddVerticalScrollbar(OnNewScrollbarvalue, scrollbarBounds, "scrollbar")
                     .BeginClip(clippingBounds)
-                    .AddItemSlotGrid(inventory, DoSendPacket, cols, slotGridBounds, "slotgrid")
+                    .AddItemSlotGrid(inventory, DoSendPacket, cols, fullGridBounds, "slotgrid")
                     .EndClip()
                     .Compose();
 

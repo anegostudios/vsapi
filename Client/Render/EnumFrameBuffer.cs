@@ -19,6 +19,10 @@ namespace Vintagestory.API.Client
         BlurHorizontalLowRes = 9,
         Luma = 10,
         ShadowmapFar = 11,
-        ShadowmapNear = 12
+        ShadowmapNear = 12,
+        SSAO = 13,
+
+        SSAOBlurVertical = 14,
+        SSAOBlurHorizontal = 15
     }
 }

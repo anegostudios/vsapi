@@ -154,6 +154,21 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
+        /// Convenience method to check if this inventory contains anything
+        /// </summary>
+        public virtual bool Empty
+        {
+            get
+            {
+                foreach (ItemSlot slot in this)
+                {
+                    if (!slot.Empty) return false;
+                }
+                return true;
+            }
+        }
+
+        /// <summary>
         /// Create a new instance of an inventory
         /// </summary>
         /// <param name="className"></param>
@@ -477,8 +492,6 @@ namespace Vintagestory.API.Common
 
             if (slots[0] == null || slots[1] == null) return false;
 
-            InventoryBase targetInv = (InventoryBase)player.InventoryManager.GetInventory(invIds[1]);
-
             // 4. Try to move the item stack
             slots[0].TryPutInto(slots[1], ref op);
 
@@ -523,6 +536,11 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual ItemSlot[] SlotsFromTreeAttributes(ITreeAttribute tree, ItemSlot[] slots = null, List<ItemSlot> modifiedSlots = null)
         {
+            if (tree == null)
+            {
+                return slots;
+            }
+
             if (slots == null || slots.Length != tree.GetInt("qslots"))
             {
                 slots = new ItemSlot[tree.GetInt("qslots")];
@@ -545,10 +563,10 @@ namespace Vintagestory.API.Common
 
                 newstack?.ResolveBlockOrItem(Api.World);
 
-                bool didModify =
-                    (newstack != null && !newstack.Equals(oldstack)) ||
-                    (oldstack != null && !oldstack.Equals(newstack))
-                ;
+                bool a = (newstack != null && !newstack.Equals(Api.World, oldstack));
+                bool b = (oldstack != null && !oldstack.Equals(Api.World, newstack));
+
+                bool didModify = a || b;
 
                 slots[slotId].Itemstack = newstack;
 
@@ -751,6 +769,29 @@ namespace Vintagestory.API.Common
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+
+        /// <summary>
+        /// Return the slot where a chute may push items into. Return null if it shouldn't move items into this inventory.
+        /// </summary>
+        /// <param name="atBlockFace"></param>
+        /// <param name="fromSlot"></param>
+        /// <returns></returns>
+        public virtual ItemSlot GetAutoPushIntoSlot(BlockFacing atBlockFace, ItemSlot fromSlot)
+        {
+            WeightedSlot wslot = GetBestSuitedSlot(fromSlot);
+            return wslot.slot;
+        }
+
+        /// <summary>
+        /// Return the slot where a chute may pull items from. Return null if it is now allowed to pull any items from this inventory
+        /// </summary>
+        /// <param name="atBlockFace"></param>
+        /// <returns></returns>
+        public virtual ItemSlot GetAutoPullFromSlot(BlockFacing atBlockFace)
+        {
+            return null;
         }
     }
 }

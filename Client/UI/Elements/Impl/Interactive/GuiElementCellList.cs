@@ -279,7 +279,7 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            api.Render.Render2DTexturePremultipliedAlpha(listTexture.TextureId, Bounds.renderX, Bounds.renderY, Bounds.OuterWidthInt + 1, Bounds.OuterHeightInt + 1);
+            api.Render.Render2DTexturePremultipliedAlpha(listTexture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY, Bounds.OuterWidthInt + 1, Bounds.OuterHeightInt + 1);
             
             foreach (IGuiElementCell element in elementCells)
             {

@@ -121,20 +121,20 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Pushes a copy of the current matrix onto the games matrix stack
         /// </summary>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlPushMatrix();
 
         /// <summary>
         /// Pops the top most matrix from the games matrix stack
         /// </summary>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlPopMatrix();
 
         /// <summary>
         /// Replaces the top most matrix with given one
         /// </summary>
         /// <param name="matrix"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlLoadMatrix(double[] matrix);
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlTranslate(float x, float y, float z);
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlTranslate(double x, double y, double z);
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlScale(float x, float y, float z);
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples")]
+        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlRotate(float angle, float x, float y, float z);
 
         /// <summary>
@@ -423,7 +423,7 @@ namespace Vintagestory.API.Client
         /// <param name="posY">The position for light level reading</param>
         /// <param name="posZ">The position for light level reading</param>
         /// <returns></returns>
-        IStandardShaderProgram PreparedStandardShader(int posX, int posY, int posZ);
+        IStandardShaderProgram PreparedStandardShader(int posX, int posY, int posZ, Vec4f colorMul = null);
 
         /// <summary>
         /// Gives you a reference to the currently active shader, or null if none is active right now
@@ -441,7 +441,6 @@ namespace Vintagestory.API.Client
         /// <param name="normalSize">the size of the normals</param>
         /// <param name="uvSize">the size of the UV map.</param>
         /// <param name="rgbaSize">size of the RGBA colors.</param>
-        /// <param name="rgba2Size"></param>
         /// <param name="flagsSize">Size of the render flags.</param>
         /// <param name="indicesSize">Size of the indices</param>
         /// <param name="customFloats">Float values of the mesh</param>
@@ -450,7 +449,7 @@ namespace Vintagestory.API.Client
         /// <param name="drawMode">The current draw mode</param>
         /// <param name="staticDraw">whether the draw should be static or dynamic.</param>
         /// <returns>the reference to the mesh</returns>
-        MeshRef AllocateEmptyMesh(int xyzSize, int normalSize, int uvSize, int rgbaSize, int rgba2Size, int flagsSize, int indicesSize, CustomMeshDataPartFloat customFloats, CustomMeshDataPartShort customShorts, CustomMeshDataPartByte customBytes, CustomMeshDataPartInt customInts, EnumDrawMode drawMode = EnumDrawMode.Triangles, bool staticDraw = true);
+        MeshRef AllocateEmptyMesh(int xyzSize, int normalSize, int uvSize, int rgbaSize, int flagsSize, int indicesSize, CustomMeshDataPartFloat customFloats, CustomMeshDataPartShort customShorts, CustomMeshDataPartByte customBytes, CustomMeshDataPartInt customInts, EnumDrawMode drawMode = EnumDrawMode.Triangles, bool staticDraw = true);
 
         /// <summary>
         /// Will load your mesh into a VAO. VBO locations:
@@ -656,17 +655,6 @@ namespace Vintagestory.API.Client
         #endregion
 
         #region Util
-
-        /// <summary>
-        /// For use in GenTextTexture
-        /// </summary>
-        /// <param name="unscaledFontSize"></param>
-        /// <param name="fontName"></param>
-        /// <param name="color"></param>
-        /// <param name="strokeColor"></param>
-        /// <returns></returns>
-        [Obsolete("Use new CairoFont(...) instead")]
-        CairoFont GetFont(double unscaledFontSize, string fontName, double[] color, double[] strokeColor = null);
 
         /// <summary>
         /// The current ambient color (e.g. will return a blue tint when player is under water)
