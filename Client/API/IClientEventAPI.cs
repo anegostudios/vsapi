@@ -103,9 +103,14 @@ namespace Vintagestory.API.Client
         event OnGamePauseResume PauseResume;
 
         /// <summary>
-        /// When the player leaves the world to go back to the main menu
+        /// When the player wants to leave the world to go back to the main menu
         /// </summary>
         event API.Common.Action LeaveWorld;
+
+        /// <summary>
+        /// When the player left the world to go back to the main menu
+        /// </summary>
+        event API.Common.Action LeftWorld;
 
         /// <summary>
         /// When a player block has been modified. OldBlock param may be null!

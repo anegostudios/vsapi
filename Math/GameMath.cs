@@ -737,6 +737,14 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Better Lerp but more CPU intensive, see also https://en.wikipedia.org/wiki/Smoothstep
         /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SmoothStep(double x) { return x * x * (3.0f - 2.0f * x); }
+
+        /// <summary>
+        /// Better Lerp but more CPU intensive, see also https://en.wikipedia.org/wiki/Smoothstep
+        /// </summary>
         /// <param name="edge0"></param>
         /// <param name="edge1"></param>
         /// <param name="x"></param>

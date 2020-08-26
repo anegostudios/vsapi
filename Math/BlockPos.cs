@@ -548,25 +548,12 @@ namespace Vintagestory.API.MathTools
 
         public override bool Equals(object obj)
         {
-            BlockPos pos;
-            if (obj is BlockPos)
-            {
-                pos = (BlockPos)obj;
-            } else
-            {
-                return false;
-            }
-
-            return X == pos.X && Y == pos.Y && Z == pos.Z;
+            return (obj is BlockPos pos) && X == pos.X && Y == pos.Y && Z == pos.Z;
         }
 
         public override int GetHashCode()
         {
-            int hash = 17;
-            hash = hash * 23 + X.GetHashCode();
-            hash = hash * 23 + Y.GetHashCode();
-            hash = hash * 23 + Z.GetHashCode();
-            return hash;
+            return (X * 23 + Y) * 23 + Z;
         }
 
         public bool Equals(BlockPos other)
@@ -577,15 +564,6 @@ namespace Vintagestory.API.MathTools
         public bool Equals(int x, int y, int z)
         {
             return X == x && Y == y && Z == z;
-        }
-
-        public int GetHashCode(BlockPos obj)
-        {
-            int hash = 17;
-            hash = hash * 23 + obj.X.GetHashCode();
-            hash = hash * 23 + obj.Y.GetHashCode();
-            hash = hash * 23 + obj.Z.GetHashCode();
-            return hash;
         }
 
         int IVec3.XAsInt { get { return X; } }

@@ -44,6 +44,12 @@ namespace Vintagestory.API.Common
         /// If true, the recipe will not consume the item but reduce its durability.
         /// </summary>
         public bool IsTool;
+
+        /// <summary>
+        /// If IsTool is set, this is the durability cost
+        /// </summary>
+        public int ToolDurabilityCost = 1;
+
         /// <summary>
         /// When using a wildcard in the item/block code, setting this field will limit the allowed variants
         /// </summary>
@@ -143,6 +149,7 @@ namespace Vintagestory.API.Common
                 Quantity = Quantity,
                 IsWildCard = IsWildCard,
                 IsTool = IsTool,
+                ToolDurabilityCost = ToolDurabilityCost,
                 AllowedVariants = AllowedVariants == null ? null : (string[])AllowedVariants.Clone(),
                 ResolvedItemstack = ResolvedItemstack?.Clone(),
                 ReturnedStack = ReturnedStack?.Clone()
@@ -183,6 +190,7 @@ namespace Vintagestory.API.Common
             }
 
             writer.Write(IsTool);
+            writer.Write(ToolDurabilityCost);
 
             writer.Write(AllowedVariants != null);
             if (AllowedVariants != null)
@@ -213,6 +221,7 @@ namespace Vintagestory.API.Common
             }
 
             IsTool = reader.ReadBoolean();
+            ToolDurabilityCost = reader.ReadInt32();
 
             bool haveVariants = reader.ReadBoolean();
             if (haveVariants)

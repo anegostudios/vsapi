@@ -26,6 +26,11 @@ namespace Vintagestory.API.Common
         IChunkBlocks Blocks { get; }
 
         /// <summary>
+        /// Non blocking access to blocks at the cost of sometimes returning 0 instead of the real block. Use <see cref="Blocks"/> if you need reliable block access. Also should only be used for reading.
+        /// </summary>
+        IChunkBlocks MaybeBlocks { get; }
+
+        /// <summary>
         /// Lowest 5 bits: Sun brightness, Next 5 bits: Block brightness, Highest 6 bits: Block hue 
         /// </summary>
         ushort[] Light { get; set; }
@@ -114,8 +119,19 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         byte[] GetModdata(string key);
 
-
+        /// <summary>
+        /// Retrieve a block from this chunk, performs Unpack() and a modulo operation on the position arg to get a local position in the 0..chunksize range (its your job to pick out the right chunk before calling this method)
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="position"></param>
+        /// <returns></returns>
         Block GetLocalBlockAtBlockPos(IWorldAccessor world, BlockPos position);
+
+        /// <summary>
+        /// Retrieve a block entity from this chunk
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         BlockEntity GetLocalBlockEntityAtBlockPos(BlockPos pos);
     }
 }

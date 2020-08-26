@@ -45,7 +45,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         protected Entity entity;
         //long listenerId;
-        DummyRenderer renderer;
+        //DummyRenderer renderer;
 
         public AnimationManager()
         {
@@ -69,8 +69,10 @@ namespace Vintagestory.API.Common
             }
             else
             {
+                // Called by RenderEntities.cs
+                //capi.Event.RegisterRenderer(renderer = new DummyRenderer() { action = OnClientFrame, RenderRange = 999 }, EnumRenderStage.Before, "anim");
+
                 capi = (api as ICoreClientAPI);
-                capi.Event.RegisterRenderer(renderer = new DummyRenderer() { action = OnClientFrame, RenderRange = 999 }, EnumRenderStage.Before, "anim");
             }
         }
 
@@ -91,7 +93,7 @@ namespace Vintagestory.API.Common
         /// <param name="animdata"></param>
         public virtual bool StartAnimation(AnimationMetaData animdata)
         {
-            AnimationMetaData activeAnimdata = null;
+            AnimationMetaData activeAnimdata;
 
             // Already active, won't do anything
             if (ActiveAnimationsByAnimCode.TryGetValue(animdata.Animation, out activeAnimdata) && activeAnimdata == animdata) return false;
@@ -330,8 +332,8 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                (api as ICoreClientAPI).Event.UnregisterRenderer(renderer, EnumRenderStage.Before);
-                renderer.Dispose();
+                //(api as ICoreClientAPI).Event.UnregisterRenderer(renderer, EnumRenderStage.Before);
+                //renderer.Dispose();
             }
         }
 

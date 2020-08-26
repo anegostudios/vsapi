@@ -537,6 +537,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)
         {
+            if (ingredient.IsTool && ingredient.ToolDurabilityCost > GetDurability(inputStack)) return false;
+
             return true;
         }
 
@@ -555,7 +557,7 @@ namespace Vintagestory.API.Common
         {
             if (fromIngredient.IsTool)
             {
-                stackInSlot.Itemstack.Collectible.DamageItem(byPlayer.Entity.World, byPlayer.Entity, stackInSlot);
+                stackInSlot.Itemstack.Collectible.DamageItem(byPlayer.Entity.World, byPlayer.Entity, stackInSlot, fromIngredient.ToolDurabilityCost);
             }
             else
             {
@@ -700,7 +702,7 @@ namespace Vintagestory.API.Common
         /// <param name="entityItem"></param>
         public virtual void OnGroundIdle(EntityItem entityItem)
         {
-            if (entityItem.Swimming && api.Side == EnumAppSide.Server && Attributes?["dissolveInWater"].AsBool(false) == true && api.World.Rand.NextDouble() < 0.02)
+            if (entityItem.Swimming && api.Side == EnumAppSide.Server && Attributes?.IsTrue("dissolveInWater") == true && api.World.Rand.NextDouble() < 0.02)
             {
                 api.World.SpawnCubeParticles(entityItem.ServerPos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 80, 0.4f);
                 entityItem.Die();
@@ -2913,6 +2915,5 @@ namespace Vintagestory.API.Common
         {
             return MatterState == EnumMatterState.Liquid;
         }
-
     }
 }

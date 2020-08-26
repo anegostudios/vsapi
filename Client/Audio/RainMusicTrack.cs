@@ -50,7 +50,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        public bool ShouldPlay(TrackedPlayerProperties props)
+        public bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds)
         {
             
             return false;

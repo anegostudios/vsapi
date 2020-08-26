@@ -53,7 +53,6 @@ namespace Vintagestory.API.Common
         /// <param name="dt"></param>
         /// <param name="api"></param>
         /// <param name="physicsSim"></param>
-
         public virtual void TickFixedStep(float dt, ICoreClientAPI api, ParticlePhysics physicsSim)
         {
             accum += dt;

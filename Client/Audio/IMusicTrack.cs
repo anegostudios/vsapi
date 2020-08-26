@@ -38,7 +38,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="props">Player Properties</param>
         /// <returns>Should we play the current track?</returns>
-        bool ShouldPlay(TrackedPlayerProperties props);
+        bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds);
 
         /// <summary>
         /// Begin playing the current track.

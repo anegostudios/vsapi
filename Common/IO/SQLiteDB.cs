@@ -84,19 +84,24 @@ namespace Vintagestory.API.Common
                 return false;
             }
 
+            OnOpened();
+
             return true;
         }
 
+        public virtual void OnOpened()
+        {
+
+        }
 
 
-
-        public void Close()
+        public virtual void Close()
         {
             sqliteConn.Close();
             sqliteConn.Dispose();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Close();
         }

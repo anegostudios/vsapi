@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
@@ -10,34 +12,42 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Used for transformations applied to a block or item model
     /// </summary>
+
+    [JsonObject(MemberSerialization.OptIn)]
     public class ModelTransform
     {
         /// <summary>
         /// Offsetting
         /// </summary>
+        [JsonProperty]
         public Vec3f Translation;
         /// <summary>
         /// Rotation in degrees
         /// </summary>
+        [JsonProperty]
         public Vec3f Rotation;
         /// <summary>
         /// To set uniform Scaling on all Axes
         /// </summary>
+        [JsonProperty]
         public float Scale { set { ScaleXYZ.Set(value, value, value); } }
         /// <summary>
         /// Rotation/Scaling Origin
         /// </summary>
+        [JsonProperty]
         public Vec3f Origin = new Vec3f(0.5f, 0.5f, 0.5f);
         /// <summary>
         /// For Gui Transform: Whether to slowly spin in gui item preview 
         /// For Ground Transform: Whether to apply a random rotation to the dropped item
         /// No effect on other transforms
         /// </summary>
+        [JsonProperty]
         public bool Rotate = true;
 
         /// <summary>
         /// Scaling per axis
         /// </summary>
+        [JsonProperty]
         public Vec3f ScaleXYZ = new Vec3f(1, 1, 1);
 
         /// <summary>
@@ -237,6 +247,12 @@ namespace Vintagestory.API.Common
             Translation.Set(0, 0, 0);
             Origin.Set(0, 0, 0);
             Scale = 1f;
+        }
+
+        [OnDeserialized]
+        internal void OnDeserializedMethod(StreamingContext context)
+        {
+            EnsureDefaultValues();
         }
     }
 }

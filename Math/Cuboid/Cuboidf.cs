@@ -499,5 +499,12 @@ namespace Vintagestory.API.MathTools
             return other.X1 == X1 && other.Y1 == Y1 && other.Z1 == Z1 && other.X2 == X2 && other.Y2 == Y2 && other.Z2 == Z2;
         }
 
+        public Cuboidi ConvertToCuboidi()
+        {
+            return new Cuboidi(
+                (int)X1, (int)Y1, (int)Z1, (int)X2, (int)Y2, (int)Z2
+            );
+        }
+
     }
 }

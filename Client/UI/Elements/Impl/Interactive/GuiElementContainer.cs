@@ -134,6 +134,8 @@ namespace Vintagestory.API.Client
                 Elements.Insert(afterPosition, elem);
             }
 
+            elem.InsideClipBounds = InsideClipBounds;
+
             Bounds.WithChild(elem.Bounds);
         }
 

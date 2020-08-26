@@ -15,6 +15,8 @@ namespace Vintagestory.API.Client
         int cols;
         EnumPosFlag screenPos;
 
+        public override double DrawOrder => 0.2;
+
         public GuiDialogBlockEntityInventory(string dialogTitle, InventoryBase inventory, BlockPos blockEntityPos, int cols, ICoreClientAPI capi)
             : base(dialogTitle, inventory, blockEntityPos, capi)
         {

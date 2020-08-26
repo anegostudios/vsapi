@@ -363,7 +363,7 @@ namespace Vintagestory.API.Common
             int gridHeight = suppliedSlots.Length / gridWidth;
             if (gridWidth < Width || gridHeight < Height) return false;
 
-            List<ItemStack> ingredientStacks = new List<ItemStack>();
+            List<KeyValuePair<ItemStack, CraftingRecipeIngredient>> ingredientStacks = new List<KeyValuePair<ItemStack, CraftingRecipeIngredient>>();
             List<ItemStack> suppliedStacks = new List<ItemStack>();
 
             // Step 1: Merge all stacks from the supplied slots
@@ -384,6 +384,7 @@ namespace Vintagestory.API.Common
                     if (!found) suppliedStacks.Add(suppliedSlots[i].Itemstack.Clone());
                 }
             }
+
 
             // Step 2: Merge all stacks from the recipe reference
             for (int i = 0; i < resolvedIngredients.Length; i++)
@@ -418,15 +419,15 @@ namespace Vintagestory.API.Common
                 bool found = false;
                 for (int j = 0; j < ingredientStacks.Count; j++)
                 {
-                    if (ingredientStacks[j].Equals(world, stack, GlobalConstants.IgnoredStackAttributes))
+                    if (ingredientStacks[j].Key.Equals(world, stack, GlobalConstants.IgnoredStackAttributes))
                     {
-                        ingredientStacks[j].StackSize += stack.StackSize;
+                        ingredientStacks[j].Key.StackSize += stack.StackSize;
                         found = true;
                         break;
                     }
                 }
 
-                if (!found) ingredientStacks.Add(stack.Clone());
+                if (!found) ingredientStacks.Add(new KeyValuePair<ItemStack, CraftingRecipeIngredient>(stack.Clone(), ingredient));
             }
 
 
@@ -443,9 +444,9 @@ namespace Vintagestory.API.Common
                 for (int j = 0; !found && j < suppliedStacks.Count; j++)
                 {
                     found =
-                        ingredientStacks[i].Satisfies(suppliedStacks[j]) &&
-                        ingredientStacks[i].StackSize <= suppliedStacks[j].StackSize &&
-                        suppliedStacks[j].Collectible.MatchesForCrafting(suppliedStacks[j], this, null)
+                        ingredientStacks[i].Key.Satisfies(suppliedStacks[j]) &&
+                        ingredientStacks[i].Key.StackSize <= suppliedStacks[j].StackSize &&
+                        suppliedStacks[j].Collectible.MatchesForCrafting(suppliedStacks[j], this, ingredientStacks[i].Value)
                     ;
 
                     if (found) suppliedStacks.RemoveAt(j);

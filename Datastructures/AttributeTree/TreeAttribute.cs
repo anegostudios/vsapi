@@ -23,6 +23,8 @@ namespace Vintagestory.API.Datastructures
 
         internal OrderedDictionary<string, IAttribute> attributes = new OrderedDictionary<string, IAttribute>();
 
+        public object attributesLock = new object();
+
         public IAttribute this[string key]
         {
             get
@@ -32,7 +34,10 @@ namespace Vintagestory.API.Datastructures
 
             set
             {
-                attributes[key] = value;
+                lock (attributesLock)
+                {
+                    attributes[key] = value;
+                }
             }
         }
 
@@ -155,17 +160,20 @@ namespace Vintagestory.API.Datastructures
 
         public virtual void ToBytes(BinaryWriter stream)
         {
-            foreach (var val in attributes)
+            lock (attributesLock)
             {
-                // attrid
-                stream.Write((byte)val.Value.GetAttributeId());
-                // key
-                stream.Write(val.Key);
-                // value
-                val.Value.ToBytes(stream);
-            }
+                foreach (var val in attributes)
+                {
+                    // attrid
+                    stream.Write((byte)val.Value.GetAttributeId());
+                    // key
+                    stream.Write(val.Key);
+                    // value
+                    val.Value.ToBytes(stream);
+                }
 
-            stream.Write((byte)0);
+                stream.Write((byte)0);
+            }
         }
 
         public int GetAttributeId()
@@ -221,52 +229,82 @@ namespace Vintagestory.API.Datastructures
 
         public virtual void RemoveAttribute(string key)
         {
-            attributes.Remove(key);
+            lock (attributesLock)
+            {
+                attributes.Remove(key);
+            }
         }
 
         public virtual void SetBool(string key, bool value)
         {
-            attributes[key] = new BoolAttribute(value);
+            lock (attributesLock)
+            {
+                attributes[key] = new BoolAttribute(value);
+            }
         }
 
         public virtual void SetInt(string key, int value)
         {
-            attributes[key] = new IntAttribute(value);
+            lock (attributesLock)
+            {
+                attributes[key] = new IntAttribute(value);
+            }
         }
 
         public virtual void SetLong(string key, long value)
         {
-            attributes[key] = new LongAttribute(value);
+            lock (attributesLock)
+            {
+                attributes[key] = new LongAttribute(value);
+            }
         }
 
         public virtual void SetDouble(string key, double value)
         {
-            attributes[key] = new DoubleAttribute(value);
+            lock (attributesLock)
+            {
+                attributes[key] = new DoubleAttribute(value);
+            }
         }
 
         public virtual void SetFloat(string key, float value)
         {
-            attributes[key] = new FloatAttribute(value);
+            lock (attributesLock)
+            {
+                attributes[key] = new FloatAttribute(value);
+            }
         }
 
         public virtual void SetString(string key, string value)
         {
-            attributes[key] = new StringAttribute(value);
+            lock (attributesLock)
+            {
+                attributes[key] = new StringAttribute(value);
+            }
         }
 
         public virtual void SetBytes(string key, byte[] value)
         {
-            attributes[key] = new ByteArrayAttribute(value);
+            lock (attributesLock)
+            {
+                attributes[key] = new ByteArrayAttribute(value);
+            }
         }
 
         public virtual void SetAttribute(string key, IAttribute value)
         {
-            attributes[key] = value;
+            lock (attributesLock)
+            {
+                attributes[key] = value;
+            }
         }
 
         public void SetItemstack(string key, ItemStack itemstack)
         {
-            attributes[key] = new ItemstackAttribute(itemstack);
+            lock (attributesLock)
+            {
+                attributes[key] = new ItemstackAttribute(itemstack);
+            }
         }
 
 
@@ -581,55 +619,66 @@ namespace Vintagestory.API.Datastructures
 
         public virtual void MergeTree(ITreeAttribute tree)
         {
-            if(tree is TreeAttribute)
+            lock (attributesLock)
             {
-                foreach(var attribute in (tree as TreeAttribute).attributes)
+                if (tree is TreeAttribute)
                 {
-                    MergeAttribute(this, attribute.Key, attribute.Value);
+                    foreach (var attribute in (tree as TreeAttribute).attributes)
+                    {
+                        MergeAttribute(this, attribute.Key, attribute.Value);
+                    }
                 }
             }
+
             throw new ArgumentException("Excepted TreeAtribute but got " + tree.GetType().Name + "! " + tree.ToString() + "");
         }
 
         protected virtual void MergeAttribute(ITreeAttribute currentTree, string key, IAttribute value)
         {
-            IAttribute existing = attributes.TryGetValue(key);
-
-            if (existing == null)
-                attributes[key] = value;
-
-            if (existing.GetAttributeId() != value.GetAttributeId())
-                throw new Exception("Cannot merge attributes! Exepected attributeId " + existing.GetAttributeId().ToString() + " instead of " + value.GetAttributeId().ToString() + "! Existing: " + existing.ToString() + ", new: " + value.ToString());
-
-            if (value is ITreeAttribute)
+            lock (attributesLock)
             {
-                foreach (var attribute in (value as TreeAttribute).attributes)
+                IAttribute existing = attributes.TryGetValue(key);
+
+                if (existing == null)
+                    attributes[key] = value;
+
+                if (existing.GetAttributeId() != value.GetAttributeId())
+                    throw new Exception("Cannot merge attributes! Exepected attributeId " + existing.GetAttributeId().ToString() + " instead of " + value.GetAttributeId().ToString() + "! Existing: " + existing.ToString() + ", new: " + value.ToString());
+
+                if (value is ITreeAttribute)
                 {
-                    MergeAttribute(existing as ITreeAttribute, attribute.Key, attribute.Value);
+                    foreach (var attribute in (value as TreeAttribute).attributes)
+                    {
+                        MergeAttribute(existing as ITreeAttribute, attribute.Key, attribute.Value);
+                    }
                 }
+                else
+                    attributes[key] = value;
             }
-            else
-                attributes[key] = value;
         }
 
 
         public override int GetHashCode()
         {
-            int hashcode = 0;
-            int i = 0;
-            foreach (var val in attributes)
+            lock (attributesLock)
             {
-                if (i == 0)
+                int hashcode = 0;
+                int i = 0;
+                foreach (var val in attributes)
                 {
-                    hashcode = val.Key.GetHashCode() ^ val.Value.GetHashCode();
-                } else
-                {
-                    hashcode ^= val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                    if (i == 0)
+                    {
+                        hashcode = val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                    }
+                    else
+                    {
+                        hashcode ^= val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                    }
+                    i++;
                 }
-                i++;
-            }
 
-            return hashcode;
+                return hashcode;
+            }
         }
     }
 }

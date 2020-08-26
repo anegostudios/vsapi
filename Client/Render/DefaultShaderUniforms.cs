@@ -55,6 +55,8 @@ namespace Vintagestory.API.Client
         public float WaterFlowCounter = 0f;
         public float WaterWaveCounter = 0f;
         public float WindWaveCounter = 0f;
+        public float WindWaveCounterHighFreq = 0f;
+
         public float GlitchStrength = 0f;
         public float WindSpeed = 0f;
         public float WindWaveIntensity = 1f;
@@ -74,10 +76,11 @@ namespace Vintagestory.API.Client
 
         public float[] ColorMapRects4;
         public float SeasonRel;
-
+        public float BlockAtlasHeight;
+        public float SeasonTemperature;
 
         public Vec3f PlayerPos = new Vec3f();
-        Vec3d playerReferencePos;
+        public Vec3d playerReferencePos;
         BlockPos plrPos = new BlockPos();
 
         internal float SkyDaylight;
@@ -96,6 +99,11 @@ namespace Vintagestory.API.Client
         }
 
 
+        public static int DescaleTemperature(float temperature)
+        {
+            return (int)((temperature + 20) * 4.25f);
+        }
+
         public void Update(float dt, ICoreClientAPI capi)
         {
             IGameCalendar calendar = capi.World.Calendar;
@@ -103,33 +111,18 @@ namespace Vintagestory.API.Client
             if (capi.IsGamePaused) dt = 0;
 
             WaterStillCounter = (WaterStillCounter + dt / 1.5f) % 2f;
-            WaterFlowCounter = (WaterFlowCounter + dt / 1.5f) % 141f;
-            WaterWaveCounter = (WaterWaveCounter + dt * 0.75f) % 578f;
-
-            WindWaveCounter = (WindWaveCounter + (0.5f + 5*GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 578f;
+            WaterFlowCounter = (WaterFlowCounter + dt / 1.5f) % 6000f;
+            WaterWaveCounter = (WaterWaveCounter + dt * 0.75f) % 6000f;
+            
+            WindWaveCounter = (WindWaveCounter + (0.5f + 5 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
             WindSpeed = GlobalConstants.CurrentWindSpeedClient.X;
+
+            float freq = (0.4f + WindSpeed / 10);
+            WindWaveCounterHighFreq = (WindWaveCounterHighFreq + freq * (0.5f + 5 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
 
             FogWaveCounter += 0.1f * dt;
 
-            // So here's an interesting piece of code.
-            // We sometimes need to know a player position for noise functions and such to be precise. However the player position is usually too large to be precise 
-            // So we can do a weird hack. If the players position moves by over 30.0000 we use that position as a new reference point
-            // This will cause a 1 frame jitter for the player, but hopefully not too noticable
-            // A proper fix would be to up the GL requirements to OpenGL 4.0 and use vec3d for double precision math.
-
-            Vec3d pos = capi.World.Player.Entity.CameraPos;
-
-            if (playerReferencePos == null)
-            {
-                playerReferencePos = new Vec3d(capi.World.BlockAccessor.MapSizeX / 2, 0, capi.World.BlockAccessor.MapSizeZ / 2);
-            }
-            if (playerReferencePos.HorizontalSquareDistanceTo(pos.X, pos.Z) > 30000.0 * 30000)
-            {
-                playerReferencePos.Set((float)pos.X, 0, (float)pos.Z);
-            }
-
             
-            PlayerPos.Set((float)(pos.X - playerReferencePos.X), (float)(pos.Y - playerReferencePos.Y), (float)(pos.Z - playerReferencePos.Z));
             plrPos.Set(capi.World.Player.Entity.Pos.XInt, capi.World.Player.Entity.Pos.YInt, capi.World.Player.Entity.Pos.ZInt);
 
             // For godrays shader
@@ -141,7 +134,13 @@ namespace Vintagestory.API.Client
             PlayerToSealevelOffset = (float)capi.World.Player.Entity.Pos.Y - capi.World.SeaLevel;
             SeaLevel = capi.World.SeaLevel;
             FrameWidth = capi.Render.FrameWidth;
+            BlockAtlasHeight = capi.BlockTextureAtlas.Size.Height;
 
+            int y = plrPos.Y;
+            plrPos.Y = capi.World.SeaLevel;
+            ClimateCondition nowConds = capi.World.BlockAccessor.GetClimateAt(plrPos, EnumGetClimateMode.NowValues);
+            plrPos.Y = y;
+            SeasonTemperature = (DescaleTemperature(nowConds.Temperature) - DescaleTemperature(nowConds.WorldGenTemperature)) / 255f;
 
             // We might need to do the hemisphere thing as a single bit for every vertex
             SeasonRel = capi.World.Calendar.GetSeasonRel(plrPos);

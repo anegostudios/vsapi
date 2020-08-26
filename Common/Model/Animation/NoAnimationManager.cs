@@ -103,6 +103,11 @@ namespace Vintagestory.API.Common
             
         }
 
+        public void OnClientFrame(float dt)
+        {
+            
+        }
+
         public void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
         {
             

@@ -18,6 +18,9 @@
         TopSoil = 14,
         CrossAndSnowlayer = 15,
         JSONAndWater = 16,
-        JSONAndSnowLayer = 17
+        JSONAndSnowLayer = 17,
+        CrossAndSnowlayer_2 = 18,
+        CrossAndSnowlayer_3 = 19,
+        CrossAndSnowlayer_4 = 20,
     }
 }

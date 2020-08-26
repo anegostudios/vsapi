@@ -114,6 +114,11 @@ namespace Vintagestory.API.Common
             }
 
             entity.PhysicsUpdateWatcher?.Invoke(accumulator, prevPos);
+
+            if (pos.Y < -100)
+            {
+                entity.Die();
+            }
         }
 
 

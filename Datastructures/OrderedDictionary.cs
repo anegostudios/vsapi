@@ -26,7 +26,10 @@ namespace Vintagestory.API.Datastructures
 		private IEqualityComparer<TKey> _comparer;
 		private int _initialCapacity;
 
-        public OrderedDictionary() : this(0, null)
+
+		public Dictionary<TKey, TValue> InternalDictionary => Dictionary;
+
+		public OrderedDictionary() : this(0, null)
 		{
 		}
 		public OrderedDictionary(int capacity) : this(capacity, null)

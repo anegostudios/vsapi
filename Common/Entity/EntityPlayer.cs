@@ -231,7 +231,7 @@ namespace Vintagestory.API.Common
         private void updateEyeHeight(float dt)
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
-            if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
+            if (player != null && player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
                 lastCanStandUp = !servercontrols.Sneak && canStandUp();
                 bool moving = (servercontrols.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
@@ -299,7 +299,7 @@ namespace Vintagestory.API.Common
                     ICoreClientAPI capi = World.Api as ICoreClientAPI;
                     if (capi.Settings.Bool["viewBobbing"] && capi.Render.CameraType == EnumCameraMode.FirstPerson)
                     {
-                        LocalEyePos.Y += stepHeight / 3f;
+                        LocalEyePos.Y += stepHeight / 3f * dt * 60f;
                     }
                 }
 
@@ -549,8 +549,8 @@ namespace Vintagestory.API.Common
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
         {
-            EnumGameMode mode = World.PlayerByUid(PlayerUID)?.WorldData?.CurrentGameMode ?? EnumGameMode.Survival;
-            if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource.Type != EnumDamageType.Heal) return false;
+            EnumGameMode mode = World?.PlayerByUid(PlayerUID)?.WorldData?.CurrentGameMode ?? EnumGameMode.Survival;
+            if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource?.Type != EnumDamageType.Heal) return false;
 
             return base.ShouldReceiveDamage(damageSource, damage);
         }

@@ -242,7 +242,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public bool WildCardMatch(AssetLocation wildCard)
         {
-            return WildcardUtil.Match(wildCard, Code);
+            return Code != null && WildcardUtil.Match(wildCard, Code);
         }
 
 

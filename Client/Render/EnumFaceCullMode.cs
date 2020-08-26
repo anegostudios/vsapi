@@ -44,6 +44,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Same as CollapseMaterial but also culls faces towards opaque blocks
         /// </summary>
-        Liquid = 6
+        Liquid = 6,
+
+        MergeSnowLayer = 8
     }
 }

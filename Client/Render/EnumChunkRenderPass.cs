@@ -12,15 +12,15 @@ namespace Vintagestory.API.Client
     public enum EnumChunkRenderPass
     {
         /// <summary>
-        /// Default
+        /// Backfaced culled, no alpha testing, alpha discard
         /// </summary>
         Opaque = 0,
         /// <summary>
-        /// No backface culling
+        /// Backfaced not culled, no alpha blended but alpha discard
         /// </summary>
         OpaqueNoCull = 1,
         /// <summary>
-        /// No backface culling and alpha blending on
+        /// Backfaced not culled, alpha blended and alpha discard
         /// </summary>
         BlendNoCull = 2,
         /// <summary>

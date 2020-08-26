@@ -93,6 +93,16 @@ namespace Vintagestory.API.Client
         public static string StandardBoldFontName = "sans-serif";
 
 
+
+        /// <summary>
+        /// Set by the client, loaded from the clientsettings.json. Used by ElementBounds to add a margin for left/right aligned dialogs
+        /// </summary>
+        public static int LeftDialogMargin;
+        /// <summary>
+        /// Set by the client, loaded from the clientsettings.json. Used by ElementBounds to add a margin for left/right aligned dialogs
+        /// </summary>
+        public static int RightDialogMargin;
+
         #region VS Color Palette 
         private static double[] Time1 = new double[] { 56 / 255.0, 232 / 255.0, 183 / 255.0, 1 };
         private static double[] Time2 = new double[] { 79 / 255.0, 98 / 255.0, 94 / 255.0, 1 };

@@ -43,9 +43,23 @@ namespace Vintagestory.API.Datastructures
         public TValue this[TKey key]
         {
             get {
-                TValue val = default(TValue);
-                dictionary.TryGetValue(key, out val);
+               TValue val = default(TValue);
+               dictionary.TryGetValue(key, out val);
                return val;
+            }
+            set
+            {
+                if (!dictionary.ContainsKey(key)) {
+                    if (dictionary.Count == capacity)
+                    {
+                        var oldestKey = keys.Dequeue();
+                        dictionary.Remove(oldestKey);
+                    }
+
+                    keys.Enqueue(key);
+                }
+
+                dictionary[key] = value;
             }
         }
         

@@ -1,6 +1,7 @@
 ﻿using System;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
@@ -14,7 +15,7 @@ namespace Vintagestory.API.Client
 
         LoadedTexture textTexture;
         
-        public Action OnClick;
+        public Common.Action OnClick;
         public bool autoHeight;
 
         public int QuantityTextLines { get
@@ -57,20 +58,35 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Recomposes the element for lines.
         /// </summary>
-        public void RecomposeText()
+        public void RecomposeText(bool async = false)
         {
             if (autoHeight) AutoHeight();
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
-            Context ctx = genContext(surface);
-            DrawMultilineTextAt(ctx, 0, 0, orientation);
-            
-            generateTexture(surface, ref textTexture);
+            if (async)
+            {
+                TyronThreadPool.QueueTask(() =>
+                {
+                    ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+                    Context ctx = genContext(surface);
+                    DrawMultilineTextAt(ctx, 0, 0, orientation);
 
-           // surface.WriteToPng("bla.png");
+                    api.Event.EnqueueMainThreadTask(() =>
+                    {
+                        generateTexture(surface, ref textTexture);
+                        ctx.Dispose();
+                        surface.Dispose();
+                    }, "recompstatbar");
+                });
+            } else
+            {
+                ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+                Context ctx = genContext(surface);
+                DrawMultilineTextAt(ctx, 0, 0, orientation);
 
-            ctx.Dispose();
-            surface.Dispose();
+                generateTexture(surface, ref textTexture);
+                ctx.Dispose();
+                surface.Dispose();
+            }
         }
 
         public override void RenderInteractiveElements(float deltaTime)
@@ -84,16 +100,20 @@ namespace Vintagestory.API.Client
 
             OnClick?.Invoke();
         }
-        
 
-        
+        public void SetNewTextAsync(string text, bool autoHeight = false, bool forceRedraw = false)
+        {
+            SetNewText(text, autoHeight, forceRedraw, true);
+        }
+
+
         /// <summary>
         /// Sets the text value of the element.
         /// </summary>
         /// <param name="text">The text of the component.</param>
         /// <param name="autoHeight">Whether the height of the component should be modified.</param>
         /// <param name="forceRedraw">Whether the element should be redrawn.</param>
-        public void SetNewText(string text, bool autoHeight = false, bool forceRedraw = false)
+        public void SetNewText(string text, bool autoHeight = false, bool forceRedraw = false, bool async = false)
         {
             if (this.text != text || forceRedraw)
             {
@@ -101,7 +121,7 @@ namespace Vintagestory.API.Client
                 Bounds.CalcWorldBounds();
                 if (autoHeight) AutoHeight();
                 
-                RecomposeText();
+                RecomposeText(async);
             }
         }
         

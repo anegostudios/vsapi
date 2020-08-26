@@ -215,6 +215,8 @@ namespace Vintagestory.API.Client
 
                 Bounds.renderOffsetX = x - Bounds.renderX + pad;
                 Bounds.renderOffsetY = y - Bounds.renderY + pad;
+                descriptionElement.RenderColor = rendercolor;
+                descriptionElement.RenderAsPremultipliedAlpha = RenderAsPremultipliedAlpha;
                 descriptionElement.RenderInteractiveElements(deltaTime);
                 Bounds.renderOffsetX = 0;
                 Bounds.renderOffsetY = 0;

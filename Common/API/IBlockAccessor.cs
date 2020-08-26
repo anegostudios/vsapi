@@ -18,6 +18,16 @@ namespace Vintagestory.API.Common
         public byte[] BlockEntityData;
     }
 
+    public class BlockUpdateStruct
+    {
+        public BlockPos Pos;
+        public int OldBlockId;
+        public int NewBlockId;
+        public ItemStack ByStack;
+
+        public byte[] BlockEntityData;
+    }
+
     /// A climate condition at a given position
     public class ClimateCondition
     {
@@ -25,8 +35,19 @@ namespace Vintagestory.API.Common
         /// Between -20 and +40 degrees
         /// </summary>
         public float Temperature;
+
         /// <summary>
-        /// Nomalized value between 0..1
+        /// If you read the now values, you can still get the world gen rain fall from this value
+        /// </summary>
+        public float WorldgenRainfall;
+
+        /// <summary>
+        /// If you read the now values, you can still get the world gen temp from this value
+        /// </summary>
+        public float WorldGenTemperature;
+
+        /// <summary>
+        /// Nomalized value between 0..1. When loading the now values, this is set to the current precipitation value, otherwise to "yearly averages" or the values generated during worldgen
         /// </summary>
         public float Rainfall;
 
@@ -126,6 +147,10 @@ namespace Vintagestory.API.Common
         int RegionMapSizeY { get; }
         int RegionMapSizeZ { get; }
 
+        /// <summary>
+        /// Whether to update the snow accum map on a SetBlock()
+        /// </summary>
+        bool UpdateSnowAccumMap { get; set; }
 
         /// <summary>
         /// Size of the world in blocks
@@ -515,6 +540,13 @@ namespace Vintagestory.API.Common
 
 
         void MarkAbsorptionChanged(int oldAbsorption, int newAbsorption, BlockPos pos);
+
+        /// <summary>
+        /// Call this on OnBlockBroken() when your block entity modifies the blocks light range. That way the lighting task can still retrieve the block entity before its gone.
+        /// </summary>
+        /// <param name="oldLightHsV"></param>
+        /// <param name="pos"></param>
+        void RemoveBlockLight(byte[] oldLightHsV, BlockPos pos);
     }
 
 

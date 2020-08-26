@@ -92,6 +92,11 @@ namespace Vintagestory.API.Common
         public VertexFlags VertexFlags;
 
         /// <summary>
+        /// A bit uploaded to the shader to add a frost overlay below freezing temperature
+        /// </summary>
+        public bool Frostable;
+
+        /// <summary>
         /// For light emitting blocks: hue, saturation and brightness value
         /// </summary>
         public byte[] LightHsv = new byte[3];
@@ -316,6 +321,8 @@ namespace Vintagestory.API.Common
 
 
         public bool CanStep = true;
+        public bool AllowStepWhenStuck = false;
+
 
         /// <summary>
         /// Creates a new instance of a block with default model transforms
@@ -336,13 +343,35 @@ namespace Vintagestory.API.Common
         {
             base.OnLoaded(api);
 
-            PushVector = this.Attributes?["pushVector"]?.AsObject<Vec3d>();
-            
+            PushVector = Attributes?["pushVector"]?.AsObject<Vec3d>();
+            AllowStepWhenStuck = Attributes?["allowStepWhenStuck"]?.AsBool(false) ?? false;
+
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 behavior.OnLoaded(api);
             }
+
+            bool supportsCover = Variant["cover"] != null;
+            if (supportsCover)
+            {
+                notSnowCovered = api.World.GetBlock(CodeWithVariant("cover", "free"));
+                snowCovered1 = api.World.GetBlock(CodeWithVariant("cover", "snow"));
+                snowCovered2 = api.World.GetBlock(CodeWithVariant("cover", "snow2"));
+                snowCovered3 = api.World.GetBlock(CodeWithVariant("cover", "snow3"));
+
+                if (this == snowCovered1) snowLevel = 1;
+                if (this == snowCovered2) snowLevel = 2;
+                if (this == snowCovered3) snowLevel = 3;
+            }
         }
+
+
+
+        public Block notSnowCovered;
+        public Block snowCovered1;
+        public Block snowCovered2;
+        public Block snowCovered3;
+        public float snowLevel;
 
 
         /// <summary>
@@ -492,8 +521,9 @@ namespace Vintagestory.API.Common
         /// <param name="block"></param>
         /// <param name="pos"></param>
         /// <param name="blockFace"></param>
+        /// <param name="attachmentArea">Area of attachment of given face in voxel dimensions (0..15)</param>
         /// <returns></returns>
-        public virtual bool CanAttachBlockAt(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing blockFace)
+        public virtual bool CanAttachBlockAt(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing blockFace, Cuboidi attachmentArea = null)
         {
             bool result = true;
             bool preventDefault = false;
@@ -501,7 +531,7 @@ namespace Vintagestory.API.Common
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 EnumHandling handled = EnumHandling.PassThrough;
-                bool behaviorResult = behavior.CanAttachBlockAt(blockAccessor, block, pos, blockFace, ref handled);
+                bool behaviorResult = behavior.CanAttachBlockAt(blockAccessor, block, pos, blockFace, ref handled, attachmentArea);
                 if (handled != EnumHandling.PassThrough)
                 {
                     result &= behaviorResult;
@@ -1127,6 +1157,16 @@ namespace Vintagestory.API.Common
                 behavior.OnNeighbourBlockChange(world, pos, neibpos, ref handled);
                 if (handled == EnumHandling.PreventSubsequent) return;
             }
+
+            // Block above was placed => remove snow cover
+            if (handled == EnumHandling.PassThrough && (this == snowCovered1 || this == snowCovered2 || this == snowCovered3))
+            {
+                if (pos.X == neibpos.X && pos.Z == neibpos.Z && pos.Y + 1 == neibpos.Y && world.BlockAccessor.GetBlock(neibpos).Id != 0)
+                {
+                    world.BlockAccessor.SetBlock(notSnowCovered.Id, pos);
+                }
+                
+            }
         }
 
         /// <summary>
@@ -1388,6 +1428,16 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool ShouldReceiveServerGameTicks(IWorldAccessor world, BlockPos pos, Random offThreadRandom, out object extra)
         {
+            if (this == snowCovered1 || this == snowCovered2 || this == snowCovered3)
+            {
+                ClimateCondition conds = world.BlockAccessor.GetClimateAt(pos, EnumGetClimateMode.NowValues);
+                if (conds.Temperature > 4)
+                {
+                    extra = "melt";
+                    return true;
+                }
+            }
+
             extra = null;
             return false;
         }
@@ -1400,6 +1450,21 @@ namespace Vintagestory.API.Common
         /// <param name="extra">The value set for the 'extra' parameter when ShouldReceiveGameTicks was called.</param>
         public virtual void OnServerGameTick(IWorldAccessor world, BlockPos pos, object extra = null)
         {
+            if (extra is string && (string)extra == "melt")
+            {
+                if (this == snowCovered3)
+                {
+                    world.BlockAccessor.SetBlock(snowCovered2.Id, pos);
+                } 
+                else if (this == snowCovered2)
+                {
+                    world.BlockAccessor.SetBlock(snowCovered1.Id, pos);
+                }
+                else if (this == snowCovered1)
+                {
+                    world.BlockAccessor.SetBlock(notSnowCovered.Id, pos);
+                }
+            }
         }
 
         /// <summary>
@@ -1464,8 +1529,8 @@ namespace Vintagestory.API.Common
 
         void setGrassWaveFlags(MeshData sourceMesh)
         {
-            int grassWave = VertexFlags.FoliageWindWaveBitMask;
-            int nograssWave = ~VertexFlags.FoliageWindWaveBitMask & (~VertexFlags.GroundDistanceBitMask);
+            int grassWave = VertexFlags.All;
+            int nograssWave = ~VertexFlags.FoliageWindWaveBitMask & ~VertexFlags.LeavesWindWaveBitMask & (~VertexFlags.GroundDistanceBitMask);
 
             // Iterate over each element face
             for (int vertexNum = 0; vertexNum < sourceMesh.GetVerticesCount(); vertexNum++)
@@ -1609,7 +1674,7 @@ namespace Vintagestory.API.Common
         /// <param name="snowLevel"></param>
         public virtual void PerformSnowLevelUpdate(IBulkBlockAccessor ba, BlockPos pos, Block newBlock, float snowLevel)
         {
-            if (BlockMaterial == EnumBlockMaterial.Snow || BlockId == 0 || this.FirstCodePart() == newBlock.FirstCodePart())
+            if (newBlock.Id != Id && (BlockMaterial == EnumBlockMaterial.Snow || BlockId == 0 || this.FirstCodePart() == newBlock.FirstCodePart()))
             {
                 ba.SetBlock(newBlock.Id, pos);
             }
@@ -1622,17 +1687,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual Block GetSnowCoveredVariant(BlockPos pos, float snowLevel)
         {
-            bool supportsCover = Variant["cover"] != null;
-            if (!supportsCover) return null;
+            if (snowCovered1 == null) return null;
 
             if (snowLevel >= 1)
             {
-                return api.World.GetBlock(CodeWithVariant("cover", "snow"));
+                if (snowLevel >= 3 && snowCovered3 != null)
+                {
+                    return snowCovered3;
+                }
+                if (snowLevel >= 2 && snowCovered2 != null) {
+                    return snowCovered2;
+                }
+
+                return snowCovered1;
             }
 
             if (snowLevel < 0.1)
             {
-                return api.World.GetBlock(CodeWithVariant("cover", "free"));
+                return notSnowCovered;
             }
 
             return this;
@@ -1640,7 +1712,7 @@ namespace Vintagestory.API.Common
 
         public virtual float GetSnowLevel(BlockPos pos)
         {
-            return Variant["cover"] == "snow" ? 1 : 0;
+            return snowLevel;
         }
 
 
@@ -2145,8 +2217,11 @@ namespace Vintagestory.API.Common
                     entity.OnBlockBroken();
                 }
             }
-
         }
+
+        public virtual string ClimateColorMapForMap => ClimateColorMap;
+        public virtual string SeasonColorMapForMap => SeasonColorMap;
+
 
         /// <summary>
         /// Should return the color to be used for the block particle coloring
@@ -2167,9 +2242,9 @@ namespace Vintagestory.API.Common
 
             int color = capi.BlockTextureAtlas.GetRandomColor(tex.Baked.TextureSubId);
 
-            if (ClimateColorMap != null || SeasonColorMap != null)
+            if (ClimateColorMapForMap != null || SeasonColorMapForMap != null)
             {
-                color = capi.World.ApplyColorMapOnRgba(ClimateColorMap, SeasonColorMap, color, pos.X, pos.Y, pos.Z);
+                color = capi.World.ApplyColorMapOnRgba(ClimateColorMapForMap, SeasonColorMapForMap, color, pos.X, pos.Y, pos.Z);
             }
             
             return color;
@@ -2200,9 +2275,9 @@ namespace Vintagestory.API.Common
         {
             int color = GetColorWithoutTint(capi, pos);
 
-            if (ClimateColorMap != null || SeasonColorMap != null)
+            if (ClimateColorMapForMap != null || SeasonColorMapForMap != null)
             {
-                color = capi.World.ApplyColorMapOnRgba(ClimateColorMap, SeasonColorMap, color, pos.X, pos.Y, pos.Z);
+                color = capi.World.ApplyColorMapOnRgba(ClimateColorMapForMap, SeasonColorMapForMap, color, pos.X, pos.Y, pos.Z, false);
             }
 
             return color;

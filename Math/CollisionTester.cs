@@ -30,12 +30,10 @@ namespace Vintagestory.API.MathTools
         BlockPos minPos = new BlockPos();
         BlockPos maxPos = new BlockPos();
 
-        public void ApplyTerrainCollision(Entity entity, EntityPos entitypos, float dtFac, ref Vec3d outposition)
+        public void ApplyTerrainCollision(Entity entity, EntityPos entitypos, float dtFac, ref Vec3d outposition, float stepHeight = 1)
         {
             IWorldAccessor worldaccess = entity.World;
             Vec3d pos = entitypos.XYZ;
-
-            
 
             // Full stop when already inside a collisionbox, but allow a small margin of error
             // Disabled. Causes too many issues
@@ -71,9 +69,11 @@ namespace Vintagestory.API.MathTools
                 (int)(entityBox.Z1 + Math.Min(0, entitypos.Motion.Z * dtFac))
             );
 
+            double y2 = Math.Max(entityBox.Y1 + stepHeight, entityBox.Y2);
+
             maxPos.Set(
                 (int)(entityBox.X2 + Math.Max(0, entitypos.Motion.X * dtFac)),
-                (int)(entityBox.Y2 + Math.Max(0, entitypos.Motion.Y * dtFac)),
+                (int)(y2 + Math.Max(0, entitypos.Motion.Y * dtFac)),
                 (int)(entityBox.Z2 + Math.Max(0, entitypos.Motion.Z * dtFac))
             );
 
@@ -202,6 +202,11 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public bool IsColliding(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true)
         {
+            return GetCollidingBlock(blockAccessor, entityBoxRel, pos, alsoCheckTouch) != null;
+        }
+
+        public Block GetCollidingBlock(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true) 
+        { 
             Cuboidd entityBox = tmpBox.Set(entityBoxRel).Translate(pos);
 
             int minX = (int)(entityBoxRel.X1 + pos.X);
@@ -230,13 +235,13 @@ namespace Vintagestory.API.MathTools
                             if (collBox == null) continue;
 
                             bool colliding = alsoCheckTouch ? entityBox.IntersectsOrTouches(collBox, blockPosVec) : entityBox.Intersects(collBox, blockPosVec);
-                            if (colliding) return true;
+                            if (colliding) return block;
                         }
                     }
                 }
             }
 
-            return false;
+            return null;
         }
 
 

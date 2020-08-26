@@ -7,6 +7,7 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+
     /// <summary>
     /// Useful for setting many blocks at once efficiently
     /// </summary>

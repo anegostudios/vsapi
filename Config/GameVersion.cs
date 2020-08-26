@@ -17,10 +17,12 @@ namespace Vintagestory.API.Config
     /// </summary>
     public static class GameVersion
     {
+        // empty commit 1
+
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.13.0";
+        public const string OverallVersion = "1.14.0-dev.1";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -30,7 +32,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.1";
+        public const string ShortGameVersion = OverallVersion + "";
 
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
@@ -53,7 +55,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.12.12";
+        public const string NetworkVersion = "1.14.0";
 
         /// <summary>
         /// Version of the savegame database

@@ -142,9 +142,13 @@ namespace Vintagestory.API.Client
         /// <param name="sele"></param>
         void TryAttackEntity(EntitySelection sele);
 
+
         /// <summary>
         /// The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you *really* know what you're doing. Use SpawnEntity/DespawnEntity instead.
         /// </summary>
         Dictionary<long, Entity> LoadedEntities { get; }
+
+
+
     }
 }

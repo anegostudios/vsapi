@@ -353,6 +353,7 @@ namespace Vintagestory.API.Common
             {
                 return InvNetworkUtil.GetFlipSlotsPacket(itemSlot.Inventory, itemSlot.Inventory.GetSlotId(itemSlot), targetSlotId);
             }
+
             return null;
         }
 

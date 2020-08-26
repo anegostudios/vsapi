@@ -395,6 +395,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < Components.Length; i++) {
                 RichTextComponentBase comp = Components[i];
 
+                comp.RenderColor = RenderColor;
                 comp.RenderInteractiveElements(deltaTime, Bounds.renderX, Bounds.renderY);
 
                 for (int j = 0; !found && j < comp.BoundsPerLine.Length; j++)

@@ -50,7 +50,9 @@ namespace Vintagestory.API.Common
                 float yawDist = GameMath.AngleRadDistance(entity.BodyYaw, entity.Pos.Yaw);
                 bool ismoving = player.Entity.Controls.TriesToMove || player.Entity.ServerControls.TriesToMove;
 
-                float threshold = 1f - (ismoving ? 0.99f : 0);
+                bool attachedToClimbWall = false;// player.Entity.Controls.IsClimbing && player.Entity.Controls.IsClimbing && (entity.BodyYaw - player.Entity.ClimbingOnFace.HorizontalAngleIndex * 90 * GameMath.DEG2RAD) < 0.02;
+
+                float threshold = 1f - (ismoving ? 0.99f : 0) + (attachedToClimbWall ? 3 : 0);
                 ICoreClientAPI capi = entity.Api as ICoreClientAPI;
 
                 if (player.PlayerUID == capi.World.Player.PlayerUID && capi.Settings.Bool["immersiveFpMode"] && false)

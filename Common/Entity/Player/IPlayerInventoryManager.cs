@@ -156,6 +156,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="inventory"></param>
         object CloseInventory(IInventory inventory);
+        
+        /// <summary>
+        /// Iterates over all inventory slots, returns true if your matcher returns true
+        /// </summary>
+        /// <param name="matcher"></param>
+        /// <returns></returns>
+        bool Find(System.Func<ItemSlot, bool> matcher);
 
         /// <summary>
         /// Shorthand for Inventories.ContainsValue(inventory)

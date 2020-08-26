@@ -161,5 +161,8 @@ namespace Vintagestory.API.Common
 
         void OnServerTick(float dt);
 
+
+        void OnClientFrame(float dt);
+
     }
 }

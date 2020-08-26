@@ -23,6 +23,9 @@ namespace Vintagestory.API.Client
         SSAO = 13,
 
         SSAOBlurVertical = 14,
-        SSAOBlurHorizontal = 15
+        SSAOBlurHorizontal = 15,
+        SSAOBlurVerticalHalfRes = 16,
+        SSAOBlurHorizontalHalfRes = 17
+
     }
 }

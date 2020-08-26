@@ -50,11 +50,6 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// The music seed for random values.
-        /// </summary>
-        static Random rand = new Random();
-        
-        /// <summary>
         /// Core client API.
         /// </summary>
         ICoreClientAPI capi;
@@ -94,7 +89,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="props">Player Properties</param>
         /// <returns>Should we play the current track?</returns>
-        public virtual bool ShouldPlay(TrackedPlayerProperties props)
+        public virtual bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds)
         {
             if (IsActive) return false;
             return true;

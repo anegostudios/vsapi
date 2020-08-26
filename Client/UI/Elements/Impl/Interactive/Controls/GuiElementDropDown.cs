@@ -280,7 +280,7 @@ namespace Vintagestory.API.Client
             richTextElem.SetNewTextWithoutRecompose(text, Font);
             richTextElem.BeforeCalcBounds();
             richTextElem.Bounds.fixedX = 5;
-            richTextElem.Bounds.fixedY = (valueHeight - height) / 2;
+            richTextElem.Bounds.fixedY = (valueHeight - height) / 2 / RuntimeEnv.GUIScale;
             richTextElem.BeforeCalcBounds();
             richTextElem.Bounds.CalcWorldBounds();
             richTextElem.ComposeFor(richTextElem.Bounds, ctx, surface);
@@ -355,7 +355,7 @@ namespace Vintagestory.API.Client
         {
             listMenu.OnMouseDown(api, args);
             
-            if (!listMenu.IsOpened && listMenu.IsPositionInside(args.X, args.Y) && !args.Handled)
+            if (!listMenu.IsOpened && IsPositionInside(args.X, args.Y) && !args.Handled)
             {
                 listMenu.Open();
                 api.Gui.PlaySound("menubutton");

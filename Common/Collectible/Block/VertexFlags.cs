@@ -264,6 +264,15 @@ namespace Vintagestory.API.Common
         }
 
 
+        public bool Lod0Fade
+        {
+            get
+            {
+                return (all & Lod0BitMask) != 0;
+            }
+        }
+
+
         public VertexFlags()
         {
 

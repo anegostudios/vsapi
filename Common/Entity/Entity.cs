@@ -208,6 +208,8 @@ namespace Vintagestory.API.Common.Entities
                 WatchedAttributes.SetBool("onFire", value);
             }
         }
+        bool resetLightHsv;
+
         public bool InLava;
         public long InLavaBeginTotalMs;
 
@@ -344,10 +346,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// If set, the entity will emit dynamic light
         /// </summary>
-        public virtual byte[] LightHsv
-        {
-            get { return null; }
-        }
+        public virtual byte[] LightHsv { get; set; } = null;
 
 
         /// <summary>
@@ -461,9 +460,20 @@ namespace Vintagestory.API.Common.Entities
 
             WatchedAttributes.RegisterModifiedListener("onFire", () =>
             {
-                if (IsOnFire)
+                bool onfire = IsOnFire;
+                if (onfire)
                 {
                     OnFireBeginTotalMs = World.ElapsedMilliseconds;
+                }
+
+                if (onfire && LightHsv == null)
+                {
+                    LightHsv = new byte[] { 5, 7, 10 };
+                    resetLightHsv = true;
+                }
+                if (!onfire && resetLightHsv)
+                {
+                    LightHsv = null;
                 }
             });
 

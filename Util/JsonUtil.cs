@@ -88,7 +88,7 @@ namespace Vintagestory.API.Common
                     settings = new JsonSerializerSettings();
                 }
                 settings.Converters.Add(new AssetLocationJsonParser(domain));
-            }
+            }   
             
             return JsonConvert.DeserializeObject<T>(text, settings);
         }

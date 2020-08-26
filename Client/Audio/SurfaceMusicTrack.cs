@@ -49,6 +49,13 @@ namespace Vintagestory.API.Client
         [JsonProperty]
         public float Chance = 1;
 
+        [JsonProperty]
+        public float MaxTemperature = 99;
+
+        [JsonProperty]
+        public float MinRainFall = -99;
+
+
         /// <summary>
         /// Is it loading?
         /// </summary>
@@ -221,13 +228,15 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="props">Player Properties</param>
         /// <returns>Should we play the current track?</returns>
-        public bool ShouldPlay(TrackedPlayerProperties props)
+        public bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds)
         {
             if (IsActive || !ShouldPlayMusic) return false;
             if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return false;
             if (Playstyle != "*" && props.Playstyle != Playstyle.ToLowerInvariant()) return false;
             if (props.sunSlight < MinSunlight) return false;
             if (musicEngine.LastPlayedTrack == this) return false;
+            if (conds.Temperature > MaxTemperature) return false;
+            if (conds.Rainfall < MinRainFall) return false;
 
             long trackCoolDownMs = 0;
             tracksCooldownUntilMs.TryGetValue(Name, out trackCoolDownMs);

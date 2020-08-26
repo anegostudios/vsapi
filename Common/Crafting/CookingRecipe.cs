@@ -26,6 +26,8 @@ namespace Vintagestory.API.Common
 
             CookingRecipe recipe = worldForResolve.CookingRecipes.FirstOrDefault(rec => rec.Code == recipeCode);
 
+            if (recipeCode == null || recipe == null) return "unknown";
+
             int max = 1;
             string MealFormat = "meal";
             string topping = string.Empty;
@@ -48,7 +50,7 @@ namespace Vintagestory.API.Common
                         {
                             CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
                             if (val.Key.Collectible.Code.Path.Contains("waterportion")) continue;
-                            if (ingred.Code == "topping")
+                            if (ingred?.Code == "topping")
                             {
                                 topping = "honeyportion";
                                 continue;
@@ -96,7 +98,8 @@ namespace Vintagestory.API.Common
 
                                 continue;
                             }
-                            if (ingred.Code == "topping")
+
+                            if (ingred?.Code == "topping")
                             {
                                 topping = "honeyportion";
                                 continue;
@@ -133,7 +136,9 @@ namespace Vintagestory.API.Common
 
                                 continue;
                             }
-                            if (ingred.Code == "topping")
+
+
+                            if (ingred?.Code == "topping")
                             {
                                 topping = "honeyportion";
                                 continue;
@@ -152,8 +157,6 @@ namespace Vintagestory.API.Common
                         
                         foreach (var val in quantitiesByStack)
                         {
-                            CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
-
                             if (getFoodCat(val.Key) == EnumFoodCategory.Vegetable)
                             {
                                 if (PrimaryIngredient == val.Key || SecondaryIngredient == val.Key)

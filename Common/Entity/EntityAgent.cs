@@ -454,11 +454,20 @@ namespace Vintagestory.API.Common
                 ICoreClientAPI capi = (Api as ICoreClientAPI);
                 bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
                 EntityPos herepos = (isSelf ? Pos : ServerPos);
-                bool movinginLiquid = (FeetInLiquid || Swimming) && (herepos.Motion.LengthSq() > 0.0000) && !servercontrols.NoClip;// && !servercontrols.FlyMode && OnGround;
-
-                if (movinginLiquid)
+                bool moving = herepos.Motion.LengthSq() > 0.0000 && !servercontrols.NoClip;
+                
+                if (insideBlock?.BlockMaterial == EnumBlockMaterial.Snow && isSelf)
                 {
-                    
+                    double hormot = Pos.Motion.X * Pos.Motion.X + Pos.Motion.Z * Pos.Motion.Z;
+                    float val = (float)Math.Sqrt(hormot);
+                    if (Api.World.Rand.NextDouble() < 10 * val)
+                    {
+                        World.SpawnCubeParticles(herepos.AsBlockPos, herepos.XYZ.Add(0, 0.2, 0), 1f, 2 + (int)(Api.World.Rand.NextDouble() * val * 15));
+                    }
+                }
+
+                if ((FeetInLiquid || Swimming) && moving)
+                {
                     double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
 
                     SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
@@ -579,10 +588,15 @@ namespace Vintagestory.API.Common
         public virtual void StopHandAnims()
         {
             
-
-            
-            
         }
+
+
+
+        /// <summary>
+        /// updated by GetWalkSpeedMultiplier()
+        /// </summary>
+        Block insideBlock;
+
 
         /// <summary>
         /// Gets the walk speed multiplier.
@@ -594,7 +608,7 @@ namespace Vintagestory.API.Common
             int y2 = (int)(SidedPos.Y + 0.01f);
 
             Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
-            Block insideblock = World.BlockAccessor.GetBlock((int)SidedPos.X, y2, (int)SidedPos.Z);
+            insideBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y2, (int)SidedPos.Z);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
             
@@ -603,7 +617,7 @@ namespace Vintagestory.API.Common
             IPlayer player = (this as EntityPlayer)?.Player;
             if (player == null || player.WorldData.CurrentGameMode != EnumGameMode.Creative)
             {
-                multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideblock.WalkSpeedMultiplier);
+                multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideBlock.WalkSpeedMultiplier);
             }
 
             multiplier *= GameMath.Clamp(Stats.GetBlended("walkspeed"), 0, 999);
@@ -870,7 +884,7 @@ namespace Vintagestory.API.Common
                         }
                         else
                         {
-                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, not no such texture found.", shapePath, val.Value);
+                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, no such texture found.", shapePath, val.Value);
                         }
 
                         ctex.Baked = new BakedCompositeTexture() { BakedName = val.Value, TextureSubId = textureSubId };
