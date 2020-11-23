@@ -28,7 +28,7 @@ namespace Vintagestory.API.Client
         /// <param name="background">The background of the text. (default: none/null)</param>
         /// <param name="orientation">The orientation of the text. (default: left)</param>
         /// <returns>The texturized text.</returns>
-        public LoadedTexture GenTextTexture(string text, CairoFont font, int width, int height, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left)
+        public LoadedTexture GenTextTexture(string text, CairoFont font, int width, int height, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left, bool demulAlpha = false)
         {
             LoadedTexture tex = new LoadedTexture(capi);
             GenOrUpdateTextTexture(text, font, width, height, ref tex, background, orientation);
@@ -45,7 +45,7 @@ namespace Vintagestory.API.Client
         /// <param name="loadedTexture">The texture to be loaded on to.</param>
         /// <param name="background">The background of the text. (default: none/null)</param>
         /// <param name="orientation">The orientation of the text. (default: left)</param>
-        public void GenOrUpdateTextTexture(string text, CairoFont font, int width, int height, ref LoadedTexture loadedTexture, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left)
+        public void GenOrUpdateTextTexture(string text, CairoFont font, int width, int height, ref LoadedTexture loadedTexture, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left, bool demulAlpha = false)
         {
             if (background == null) background = defaultBackground;
 
@@ -78,6 +78,11 @@ namespace Vintagestory.API.Client
             elTeBa.textUtil.AutobreakAndDrawMultilineTextAt(ctx, font, text, background.Padding, background.Padding, width, orientation);
 
             //int textureId = capi.Gui.LoadCairoTexture(surface, true); - WTF! What was this for?!
+
+            if (demulAlpha)
+            {
+                surface.DemulAlpha();
+            }
 
             capi.Gui.LoadOrUpdateCairoTexture(surface, true, ref loadedTexture);
 

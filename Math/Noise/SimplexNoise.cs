@@ -77,12 +77,26 @@ namespace Vintagestory.API.MathTools
             for (int i = 0; i < amplitudes.Length; i++)
             {
                 double val = octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * amplitudes[i];
-                value += (val > 0 ? Math.Max(0, val - thresholds[i]) : Math.Min(0, val + thresholds[i]));
+                value += val > 0 ? Math.Max(0, val - thresholds[i]) : Math.Min(0, val + thresholds[i]);
             }
 
             return value;
         }
 
+
+        public double NoiseWithThreshold(double x, double y, double threshold)
+        {
+            double value = 0;
+
+            for (int i = 0; i < amplitudes.Length; i++)
+            {
+                double offset = threshold * amplitudes[i];
+                double val = octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * amplitudes[i];
+                value += val > 0 ? Math.Max(0, val - offset) : Math.Min(0, val + offset);
+            }
+
+            return value;
+        }
 
 
 
@@ -93,6 +107,18 @@ namespace Vintagestory.API.MathTools
             for (int i = 0; i < amplitudes.Length; i++)
             {
                 value += octaves[i].Evaluate(x * frequencies[i], y * frequencies[i], z * frequencies[i]) * amplitudes[i];
+            }
+
+            return value;
+        }
+
+        public virtual double AbsNoise(double x, double y, double z)
+        {
+            double value = 0;
+
+            for (int i = 0; i < amplitudes.Length; i++)
+            {
+                value += Math.Abs(octaves[i].Evaluate(x * frequencies[i], y * frequencies[i], z * frequencies[i]) * amplitudes[i]);
             }
 
             return value;

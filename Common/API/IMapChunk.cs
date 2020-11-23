@@ -19,7 +19,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IMapChunk
     {
-        ConcurrentDictionary<BlockPos, float> SnowAccum { get; }
+        ConcurrentDictionary<Vec2i, float> SnowAccum { get; }
 
         /// <summary>
         /// The map region this map chunk resides in

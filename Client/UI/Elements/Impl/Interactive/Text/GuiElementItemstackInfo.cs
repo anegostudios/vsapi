@@ -21,15 +21,17 @@ namespace Vintagestory.API.Client
 
         ItemSlot curSlot;
         ItemStack curStack;
+        CairoFont titleFont;
 
-
-        GuiElementStaticText titleElement;
+        GuiElementRichtext titleElement;
         GuiElementRichtext descriptionElement;
 
         LoadedTexture texture;
         double maxWidth;
 
         InfoTextDelegate OnRequireInfoText;
+
+        ElementBounds scissorBounds;
 
         /// <summary>
         /// Creates an ItemStackInfo element.
@@ -46,14 +48,18 @@ namespace Vintagestory.API.Client
             ElementBounds textBounds = bounds.CopyOnlySize();
             ElementBounds descBounds = textBounds.CopyOffsetedSibling(ItemStackSize + 50, MarginTop, -ItemStackSize - 50, 0);
             descBounds.WithParent(bounds);
+            textBounds.WithParent(bounds);
 
             descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
             //new GuiElementStaticText(capi, "", EnumTextOrientation.Left, textBounds.CopyOffsetedSibling(ItemStackSize + 50, MarginTop, -ItemStackSize - 50, 0), Font);
             descriptionElement.zPos = 1001;
+            
 
-            CairoFont titleFont = Font.Clone();
+            titleFont = Font.Clone();
             titleFont.FontWeight = FontWeight.Bold;
-            titleElement = new GuiElementStaticText(capi, "", EnumTextOrientation.Left, textBounds, titleFont);
+
+            titleElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
+            titleElement.zPos = 1001;
 
             maxWidth = bounds.fixedWidth;
         }
@@ -67,12 +73,13 @@ namespace Vintagestory.API.Client
         void RecalcBounds(string title, string desc)
         {
             descriptionElement.BeforeCalcBounds();
+            titleElement.BeforeCalcBounds();
 
             double currentWidth = Math.Max(descriptionElement.MaxLineWidth, descriptionElement.Bounds.InnerWidth) / RuntimeEnv.GUIScale + 10;
             double unscaledTotalHeight = 0;
 
             currentWidth += 40 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3;
-            currentWidth = Math.Max(currentWidth, titleElement.Font.GetTextExtents(title).Width / RuntimeEnv.GUIScale + 10);
+            currentWidth = Math.Max(currentWidth, descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10);
             currentWidth = Math.Min(currentWidth, maxWidth);
 
             double descWidth = currentWidth - scaled(ItemStackSize) - 50;
@@ -100,7 +107,7 @@ namespace Vintagestory.API.Client
             desc.TrimEnd();
 
 
-            titleElement.SetValue(title);
+            titleElement.SetNewText(title, titleFont);
             descriptionElement.SetNewText(desc, Font);
 
             RecalcBounds(title, desc);
@@ -166,6 +173,10 @@ namespace Vintagestory.API.Client
 
             ctx.Dispose();
             surface.Dispose();
+
+            double offset = (int)(30 + ItemStackSize / 2);
+            scissorBounds = ElementBounds.Fixed(4 + offset - ItemStackSize, 2 + offset + MarginTop - ItemStackSize, ItemStackSize + 38, ItemStackSize + 38).WithParent(Bounds);
+            scissorBounds.CalcWorldBounds();
         }
 
 
@@ -175,9 +186,12 @@ namespace Vintagestory.API.Client
 
             api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, Bounds, 1000);
 
+            titleElement.RenderInteractiveElements(deltaTime);
             descriptionElement.RenderInteractiveElements(deltaTime);
 
             double offset = (int)scaled(30 + ItemStackSize/2);
+
+            api.Render.PushScissor(scissorBounds);
 
             api.Render.RenderItemstackToGui(
                 curSlot,
@@ -190,6 +204,8 @@ namespace Vintagestory.API.Client
                 true,
                 false
             );
+
+            api.Render.PopScissor();
         }
 
 

@@ -37,5 +37,10 @@ namespace Vintagestory.API.Util
         }
 
 
+        public static bool Delete(ICoreAPI api, string key)
+        {
+            return api.ObjectCache.Remove(key);
+        }
+
     }
 }

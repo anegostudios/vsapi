@@ -120,7 +120,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="props">The properties of the current track.</param>
         /// <returns>Do we play this track?</returns>
-        public bool ShouldPlay(TrackedPlayerProperties props)
+        public bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
         {
             if (props.sunSlight > 3 || !ShouldPlayCaveMusic) return false;
             if (capi.World.ElapsedMilliseconds < cooldownUntilMs) return false;

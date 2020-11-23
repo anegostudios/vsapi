@@ -397,7 +397,7 @@ namespace Vintagestory.API.Client
             return new CairoFont()
             {
                 Color = (double[])GuiStyle.DialogDefaultTextColor.Clone(),
-                Fontname = GuiStyle.StandardSemiBoldFontName,
+                Fontname = GuiStyle.StandardFontName,
                 UnscaledFontsize = GuiStyle.DetailFontSize
             };
 

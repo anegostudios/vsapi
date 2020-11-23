@@ -280,7 +280,7 @@ namespace Vintagestory.API.Client
             richTextElem.SetNewTextWithoutRecompose(text, Font);
             richTextElem.BeforeCalcBounds();
             richTextElem.Bounds.fixedX = 5;
-            richTextElem.Bounds.fixedY = (valueHeight - height) / 2;
+            richTextElem.Bounds.fixedY = (valueHeight - height) / 2 / RuntimeEnv.GUIScale;
             richTextElem.BeforeCalcBounds();
             richTextElem.Bounds.CalcWorldBounds();
             richTextElem.ComposeFor(richTextElem.Bounds, ctx, surface);
@@ -305,7 +305,7 @@ namespace Vintagestory.API.Client
             api.Render.Render2DTexturePremultipliedAlpha(
                 currentValueTexture.TextureId, 
                 (int)Bounds.renderX, 
-                (int)Bounds.renderY,
+                (int)Bounds.renderY + (Bounds.InnerHeight - valueHeight) / 2,
                 valueWidth,
                 valueHeight
             );
@@ -340,6 +340,18 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
+            if (!listMenu.IsOpened)
+            {
+                if (IsPositionInside(api.Input.MouseX, api.Input.MouseY))
+                {
+                    SetSelectedIndex(GameMath.Mod(listMenu.SelectedIndex + (args.delta > 0 ? -1 : 1), listMenu.Values.Length));
+                    args.SetHandled(true);
+                    onSelectionChanged?.Invoke(SelectedValue, true);
+                }
+
+                return;
+            }
+
             listMenu.OnMouseWheel(api, args);
         }
 
@@ -347,15 +359,20 @@ namespace Vintagestory.API.Client
         {
             listMenu.OnMouseUp(api, args);
 
-            args.Handled |= listMenu.IsPositionInside(args.X, args.Y) || IsPositionInside(args.X, args.Y);
+            args.Handled |= IsPositionInside(args.X, args.Y);
         }
 
+
+        public override bool IsPositionInside(int posX, int posY)
+        {
+            return base.IsPositionInside(posX, posY) || (listMenu.IsOpened && listMenu.IsPositionInside(posX, posY));
+        }
 
         public override void OnMouseDown(ICoreClientAPI api, MouseEvent args)
         {
             listMenu.OnMouseDown(api, args);
             
-            if (!listMenu.IsOpened && listMenu.IsPositionInside(args.X, args.Y) && !args.Handled)
+            if (!listMenu.IsOpened && IsPositionInside(args.X, args.Y) && !args.Handled)
             {
                 listMenu.Open();
                 api.Gui.PlaySound("menubutton");

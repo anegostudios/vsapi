@@ -157,12 +157,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// List of all loaded blocks. The array index is the block id. Some may be null or placeholders (then block.code is null).
         /// </summary>
-        List<Block> Blocks { get; }
+        IList<Block> Blocks { get; }
 
         /// <summary>
         /// List of all loaded items. The array index is the item id. Some may be null or placeholders (then item.code is null)
         /// </summary>
-        List<Item> Items { get; }
+        IList<Item> Items { get; }
 
         /// <summary>
         /// List of all loaded entity types. 
@@ -321,6 +321,7 @@ namespace Vintagestory.API.Common
         /// <param name="matches"></param>
         /// <returns></returns>
         Entity[] GetIntersectingEntities(BlockPos basePos, Cuboidf[] collisionBoxes, ActionConsumable<Entity> matches = null);
+
 
         /// <summary>
         /// Find the nearest player to the given position
@@ -610,6 +611,62 @@ namespace Vintagestory.API.Common
         /// <param name="mode"></param>
         /// <param name="shape">When arbitrary, the blocks list represents the blocks to be highlighted. When Cube the blocks list should contain 2 positions for start and end</param>
         void HighlightBlocks(IPlayer player, int highlightSlotId, List<BlockPos> blocks, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
+
+
+
+        /// <summary>
+        /// Retrieve a customized interface to access blocks in the loaded game world.
+        /// </summary>
+        /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
+        /// <param name="strict">Log an error message if GetBlock/SetBlock was called to an unloaded chunk</param>
+        /// <param name="debug">If strict, crashes the server if a unloaded chunk was crashed, prints an exception and exports a png image of the current loaded chunks</param>
+        /// <returns></returns>
+        IBlockAccessor GetBlockAccessor(bool synchronize, bool relight, bool strict, bool debug = false);
+
+
+        /// <summary>
+        /// Retrieve a customized interface to access blocks in the loaded game world. Does not to relight/sync on a SetBlock until Commit() is called. On commit all touched blocks are relit/synced at once. This method should be used when setting many blocks (e.g. tree generation, explosion, etc.).
+        /// </summary>
+        /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="relight">Whether or not to relight the chunk after the a call to SetBlock and the light values changed by that</param>
+        /// <param name="debug"></param>
+        /// <returns></returns>
+        IBulkBlockAccessor GetBlockAccessorBulkUpdate(bool synchronize, bool relight, bool debug = false);
+
+        /// <summary>
+        /// Retrieve a customized interface to access blocks in the loaded game world. Does not relight, does not not sync, does not call OnBlockPlaced and OnBlockRemoved. On commit all touched blocks are updated at once. This method is currently used for the snow accumulation system
+        /// </summary>
+        /// <param name="debug"></param>
+        /// <returns></returns>
+        IBulkBlockAccessor GetBlockAccessorBulkMinimalUpdate(bool synchronize, bool debug = false);
+
+
+        /// <summary>
+        /// Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these. 
+        /// </summary>
+        /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
+        /// <param name="debug"></param>
+        /// <returns></returns>
+        IBlockAccessorRevertable GetBlockAccessorRevertable(bool synchronize, bool relight, bool debug = false);
+
+        /// <summary>
+        /// Same as GetBlockAccessor but you have to call PrefetchBlocks() before using GetBlock(). It pre-loads all blocks in given area resulting in faster GetBlock() access
+        /// </summary>
+        /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
+        /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
+        /// <returns></returns>
+        IBlockAccessorPrefetch GetBlockAccessorPrefetch(bool synchronize, bool relight);
+
+        /// <summary>
+        /// Same as the normal block accessor but remembers the previous chunk that was accessed. This can give you a 10-50% performance boosts when you scan many blocks in tight loops
+        /// DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling it can cause the game to crash
+        /// </summary>
+        /// <param name="synchronize"></param>
+        /// <param name="relight"></param>
+        /// <returns></returns>
+        ICachingBlockAccessor GetCachingBlockAccessor(bool synchronize, bool relight);
 
     }
 }

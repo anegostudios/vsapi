@@ -52,7 +52,10 @@ namespace Vintagestory.API
             get { return token != null; }
         }
 
-        public JToken Token { get { return token; } set { token = value; } }
+        public JToken Token { 
+            get { return token; } 
+            set { token = value; } 
+        }
 
         /// <summary>
         /// True if the token has an element with given key
@@ -84,6 +87,21 @@ namespace Vintagestory.API
 
             return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
         }
+
+        public T AsObject<T>(JsonSerializerSettings settings, T defaultValue, string domain = "game")
+        {
+            if (domain != "game")
+            {
+                if (settings == null)
+                {
+                    settings = new JsonSerializerSettings();
+                }
+                settings.Converters.Add(new AssetLocationJsonParser(domain));
+            }
+
+            return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
+        }
+
 
         /// <summary>
         /// Turn the token into an array of JsonObjects
@@ -430,6 +448,26 @@ namespace Vintagestory.API
         {
             JsonObject cloned = new JsonObject(token.DeepClone());
             return cloned;
+        }
+
+
+        /// <summary>
+        /// Returns true if this object has the named bool attribute, and it is true
+        /// </summary>
+        public bool IsTrue(String attrName)
+        {
+            if (token == null || !(token is JObject)) return false;
+            if (token[attrName] is JValue jvalue)
+            {
+                if (jvalue.Value is bool result) return result;
+                if (jvalue.Value is string boolString)
+                {
+                    bool val = false;
+                    bool.TryParse(boolString, out val);
+                    return val;
+                }
+            }
+            return false;
         }
     }
 }

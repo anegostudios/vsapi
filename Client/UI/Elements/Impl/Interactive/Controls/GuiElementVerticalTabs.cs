@@ -20,6 +20,7 @@ namespace Vintagestory.API.Client
 
         double unscaledTabSpacing = 5;
         double unscaledTabHeight = 25;
+        double unscaledTabPadding = 3;
 
         double tabHeight;
         double textOffsetY;
@@ -56,7 +57,7 @@ namespace Vintagestory.API.Client
             
             double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
-            double padding = scaled(3);
+            double padding = scaled(unscaledTabPadding);
 
             tabHeight = scaled(unscaledTabHeight);
 
@@ -66,7 +67,7 @@ namespace Vintagestory.API.Client
 
             Font.Color[3] = 0.85;
             Font.SetupContext(ctx);
-			textOffsetY = (tabHeight - Font.GetFontExtents().Height) / 2;
+			textOffsetY = (tabHeight + 1 - Font.GetFontExtents().Height) / 2;
 
             double maxWidth = 0;
             for (int i = 0; i < tabs.Length; i++)
@@ -121,12 +122,12 @@ namespace Vintagestory.API.Client
         {
             double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
-            double padding = scaled(3);
+            double padding = scaled(unscaledTabPadding);
             double width;
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                ImageSurface surface = new ImageSurface(Format.Argb32, tabWidths[i]+1, (int)tabHeight + 2);
+                ImageSurface surface = new ImageSurface(Format.Argb32, tabWidths[i]+1, (int)tabHeight + 1);
                 Context ctx = genContext(surface);
 
                 width = tabWidths[i]+1;
@@ -147,19 +148,26 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
 
                 ctx.NewPath();
-                ctx.MoveTo(width, tabHeight);
-                ctx.LineTo(width, 0);
-                ctx.LineTo(radius, 0);
-                ctx.ArcNegative(0, radius, radius, 270 * GameMath.DEG2RAD, 180 * GameMath.DEG2RAD);
-                ctx.ArcNegative(0, tabHeight - radius, radius, 180 * GameMath.DEG2RAD, 90 * GameMath.DEG2RAD);
-                ctx.Clip();
+                ctx.LineTo(1 + width, 1);
+                ctx.LineTo(1, 1);
+                ctx.LineTo(1, tabHeight - 1);
+                ctx.LineTo(1 + width, 1 + tabHeight - 1);
+                
 
-                ShadePath(ctx, 2);
+                float strokeWidth = 2;
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.6, GuiStyle.DialogStrongBgColor[1] * 1.6, GuiStyle.DialogStrongBgColor[2] * 1.6, 1);
+                ctx.LineWidth = strokeWidth * 1.75;
+                ctx.StrokePreserve();
+                surface.Blur(3, 0, 0, (int)width - 1, (int)tabHeight - 1);
+
+                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
+                ctx.LineWidth = strokeWidth;
+                ctx.Stroke();
 
 
                 selectedFont.SetupContext(ctx);
 
-                DrawTextLineAt(ctx, tabs[i].Name, padding+3, textOffsetY);
+                DrawTextLineAt(ctx, tabs[i].Name, padding+2, textOffsetY);
 
 
                 generateTexture(surface, ref hoverTextures[i]);
@@ -187,7 +195,7 @@ namespace Vintagestory.API.Client
 
                 if (i == activeElement || (mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i], (int)tabHeight + 2);
+                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i] + 1, (int)tabHeight + 1);
                 }
 
                 ypos += tabHeight + spacing;
@@ -245,6 +253,7 @@ namespace Vintagestory.API.Client
         /// <param name="index">The tab to switch to.</param>
         public void SetValue(int index)
         {
+            api.Gui.PlaySound("menubutton_wood");
             handler(index, tabs[index]);
             activeElement = index;
         }
@@ -256,7 +265,12 @@ namespace Vintagestory.API.Client
         /// <param name="triggerHandler">Whether or not the handler triggers.</param>
         public void SetValue(int index, bool triggerHandler)
         {
-            if (triggerHandler) handler(index, tabs[index]);
+            if (triggerHandler)
+            {
+                handler(index, tabs[index]);
+                api.Gui.PlaySound("menubutton_wood");
+            }
+
             activeElement = index;
         }
 

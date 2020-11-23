@@ -57,6 +57,11 @@ namespace Vintagestory.API.Common
             return JsonConvert.SerializeObject(obj);
         }
 
+        public static string ToPrettyString<T>(T obj)
+        {
+            return JsonConvert.SerializeObject(obj, Formatting.Indented);
+        }
+
 
         public static void PopulateObject(object toPopulate, string text, string domain, JsonSerializerSettings settings = null)
         {
@@ -88,7 +93,7 @@ namespace Vintagestory.API.Common
                     settings = new JsonSerializerSettings();
                 }
                 settings.Converters.Add(new AssetLocationJsonParser(domain));
-            }
+            }   
             
             return JsonConvert.DeserializeObject<T>(text, settings);
         }

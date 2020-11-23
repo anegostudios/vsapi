@@ -13,7 +13,7 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementRichtext : GuiElement
     {
-        protected RichTextComponentBase[] Components;
+        public RichTextComponentBase[] Components;
         protected TextFlowPath[] flowPath;
         public float zPos = 50;
 
@@ -238,7 +238,7 @@ namespace Vintagestory.API.Client
                posY += lineHeight;
             }
 
-            if (Components.Length > 0)
+            //if (Components.Length > 0) - what is this for?
             {
                 Bounds.fixedHeight = (posY + 1) / RuntimeEnv.GUIScale;
             }
@@ -395,6 +395,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < Components.Length; i++) {
                 RichTextComponentBase comp = Components[i];
 
+                comp.RenderColor = RenderColor;
                 comp.RenderInteractiveElements(deltaTime, Bounds.renderX, Bounds.renderY);
 
                 for (int j = 0; !found && j < comp.BoundsPerLine.Length; j++)
@@ -477,7 +478,7 @@ namespace Vintagestory.API.Client
             RecomposeText();
         }
 
-        public void SetNewText(RichTextComponent[] comps)
+        public void SetNewText(RichTextComponentBase[] comps)
         {
             this.Components = comps;
             RecomposeText();

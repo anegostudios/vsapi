@@ -18,6 +18,16 @@ namespace Vintagestory.API.Common
         public byte[] BlockEntityData;
     }
 
+    public class BlockUpdateStruct
+    {
+        public BlockPos Pos;
+        public int OldBlockId;
+        public int NewBlockId;
+        public ItemStack ByStack;
+
+        public byte[] BlockEntityData;
+    }
+
     /// A climate condition at a given position
     public class ClimateCondition
     {
@@ -25,8 +35,19 @@ namespace Vintagestory.API.Common
         /// Between -20 and +40 degrees
         /// </summary>
         public float Temperature;
+
         /// <summary>
-        /// Nomalized value between 0..1
+        /// If you read the now values, you can still get the world gen rain fall from this value
+        /// </summary>
+        public float WorldgenRainfall;
+
+        /// <summary>
+        /// If you read the now values, you can still get the world gen temp from this value
+        /// </summary>
+        public float WorldGenTemperature;
+
+        /// <summary>
+        /// Nomalized value between 0..1. When loading the now values, this is set to the current precipitation value, otherwise to "yearly averages" or the values generated during worldgen
         /// </summary>
         public float Rainfall;
 
@@ -126,6 +147,10 @@ namespace Vintagestory.API.Common
         int RegionMapSizeY { get; }
         int RegionMapSizeZ { get; }
 
+        /// <summary>
+        /// Whether to update the snow accum map on a SetBlock()
+        /// </summary>
+        bool UpdateSnowAccumMap { get; set; }
 
         /// <summary>
         /// Size of the world in blocks
@@ -279,6 +304,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="byPlayer"></param>
+        /// <param name="dropQuantityMultiplier"></param>
         void BreakBlock(BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1f);
 
 
@@ -313,6 +339,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="classname"></param>
         /// <param name="position"></param>
+        /// <param name="byItemStack"></param>
         void SpawnBlockEntity(string classname, BlockPos position, ItemStack byItemStack = null);
 
 
@@ -387,8 +414,7 @@ namespace Vintagestory.API.Common
         void MarkBlockEntityDirty(BlockPos pos);
 
         /// <summary>
-        /// Server side call: Triggers the method OnNeighbourBlockChange() to all neighbour blocks at given position
-        /// Client side call: No effect.
+        /// Triggers the method OnNeighbourBlockChange() to all neighbour blocks at given position
         /// </summary>
         /// <param name="pos"></param>
         void TriggerNeighbourBlockUpdate(BlockPos pos);
@@ -416,6 +442,14 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         int GetLightLevel(BlockPos pos, EnumLightLevelType type);
 
+        /// <summary>
+        /// Returns the light level (0..32) at given position. If the chunk at that position is not loaded this method will return the default sunlight value
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         int GetLightLevel(int x, int y, int z, EnumLightLevelType type);
 
         /// <summary>
@@ -440,7 +474,6 @@ namespace Vintagestory.API.Common
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
-        /// <param name="lightHSVCache"></param>
         /// <returns></returns>
         int GetLightRGBsAsInt(int posX, int posY, int posZ);
 
@@ -459,9 +492,11 @@ namespace Vintagestory.API.Common
         int GetRainMapHeightAt(BlockPos pos);
 
         /// <summary>
-        /// Returns a number of how many blocks away there is rain fall. Does a cheap 2d bfs up to 4 blocks away. Returns 99 if none was found within 4 blocks
+        /// Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to 4 blocks away. Returns 99 if none was found within 4 blocks
         /// </summary>
         /// <param name="pos"></param>
+        /// <param name="horziontalSearchWidth">Horizontal search distance, 4 default</param>
+        /// <param name="verticalSearchWidth">Vertical search distance, 1 default</param>
         /// <returns></returns>
         int GetDistanceToRainFall(BlockPos pos, int horziontalSearchWidth = 4, int verticalSearchWidth = 1);
 
@@ -508,20 +543,57 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Fast shortcut method for the clound renderer
         /// </summary>
-        /// <param name="mode"></param>
+        /// <param name="pos"></param>
         /// <param name="climate"></param>
         /// <returns></returns>
         ClimateCondition GetClimateAt(BlockPos pos, int climate);
 
+        /// <summary>
+        /// Retrieves the wind speed for given position
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Vec3d GetWindSpeedAt(Vec3d pos);
 
+        /// <summary>
+        /// Retrieves the wind speed for given position
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Vec3d GetWindSpeedAt(BlockPos pos);
+
+        /// <summary>
+        /// Used by the chisel block when enough chiseled have been removed and the blocks light absorption changes as a result of that
+        /// </summary>
+        /// <param name="oldAbsorption"></param>
+        /// <param name="newAbsorption"></param>
+        /// <param name="pos"></param>
         void MarkAbsorptionChanged(int oldAbsorption, int newAbsorption, BlockPos pos);
+
+        /// <summary>
+        /// Call this on OnBlockBroken() when your block entity modifies the blocks light range. That way the lighting task can still retrieve the block entity before its gone.
+        /// </summary>
+        /// <param name="oldLightHsV"></param>
+        /// <param name="pos"></param>
+        void RemoveBlockLight(byte[] oldLightHsV, BlockPos pos);
     }
 
-
+    /// <summary>
+    /// The type of climate values you wish to receive
+    /// </summary>
     public enum EnumGetClimateMode
     {
+        /// <summary>
+        /// The values generate during world generation, these are loosely considered as yearly averages
+        /// </summary>
         WorldGenValues,
+        /// <summary>
+        /// The values at the current calendar time
+        /// </summary>
         NowValues,
+        /// <summary>
+        /// The values at the supplied calendar time, supplied as additional arg
+        /// </summary>
         ForSuppliedDateValues
     }
 

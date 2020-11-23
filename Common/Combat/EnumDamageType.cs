@@ -17,6 +17,7 @@ namespace Vintagestory.API.Common
         Heal,
         Poison,
         Hunger,
-        Crushing
+        Crushing,
+        Frost
     }
 }

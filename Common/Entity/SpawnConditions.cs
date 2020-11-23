@@ -70,6 +70,7 @@ namespace Vintagestory.API.Common.Entities
                 MaxForest = MaxForest,
                 MinShrubs = MinShrubs,
                 MaxShrubs = MaxShrubs,
+                ClimateValueMode = ClimateValueMode,
                 MinForestOrShrubs = MinForestOrShrubs,
                 Chance = Chance,
                 MaxQuantity = MaxQuantity,
@@ -103,6 +104,7 @@ namespace Vintagestory.API.Common.Entities
                 MaxTemp = MaxTemp,
                 MinRain = MinRain,
                 MaxRain = MaxRain,
+                ClimateValueMode = ClimateValueMode,
                 MinForest = MinForest,
                 MaxForest = MaxForest,
                 MinShrubs = MinShrubs,
@@ -162,6 +164,11 @@ namespace Vintagestory.API.Common.Entities
         /// checks to see if the object can only spawn in the surface.
         /// </summary>
         public bool TryOnlySurface = false;
+
+        /// <summary>
+        /// Whether the rain and temperature values are referring to the worldgen values (i.e. yearly averages) or the current values at the moment of spawning
+        /// </summary>
+        public EnumGetClimateMode ClimateValueMode = EnumGetClimateMode.WorldGenValues;
 
         /// <summary>
         /// The minimum tempurature for the object to spawn.

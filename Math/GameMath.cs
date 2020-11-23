@@ -8,6 +8,19 @@ using System.Text;
 
 namespace Vintagestory.API.MathTools
 {
+    public static class Easings
+    {
+        public static double EaseOutBack(double x)
+        {
+            double c1 = 1.70158f;
+            double c3 = c1 + 1;
+
+            return 1 + c3 * Math.Pow(x - 1, 3) + c1 * Math.Pow(x - 1, 2);
+        }
+    }
+
+
+
     /// <summary>
     /// A large set of useful game mathematics functions
     /// </summary>
@@ -737,6 +750,14 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Better Lerp but more CPU intensive, see also https://en.wikipedia.org/wiki/Smoothstep
         /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SmoothStep(double x) { return x * x * (3.0f - 2.0f * x); }
+
+        /// <summary>
+        /// Better Lerp but more CPU intensive, see also https://en.wikipedia.org/wiki/Smoothstep
+        /// </summary>
         /// <param name="edge0"></param>
         /// <param name="edge1"></param>
         /// <param name="x"></param>
@@ -913,8 +934,8 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Pretty much taken directly from the string.GetHashCode() implementation, but these methods as the documentation says: "You should never persist or use a hash code outside the application domain in which it was created, [...]."
-        /// Hence, this is one basic 32bit bit implementation that can be used in a platform independent way.
+        /// Pretty much taken directly from the string.GetHashCode() implementation, but on these methods the documentation states: "You should never persist or use a hash code outside the application domain in which it was created, [...]."
+        /// Hence, this is one basic 32bit bit implementation that can be used in a platform independent, persistent way.
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>

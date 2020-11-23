@@ -208,7 +208,7 @@ namespace Vintagestory.API.Common
             float y = offsets[index + 1];
             float z = offsets[index + 2];
 
-            float length = Math.Max(1, (float)Math.Sqrt(x * x + y * y + z + z));
+            float length = Math.Max(1, (float)Math.Sqrt(x * x + y * y + z * z));
 
             return new Vec3f(
                 8f * x / length,

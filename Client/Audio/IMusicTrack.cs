@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -38,7 +39,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="props">Player Properties</param>
         /// <returns>Should we play the current track?</returns>
-        bool ShouldPlay(TrackedPlayerProperties props);
+        bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos);
 
         /// <summary>
         /// Begin playing the current track.

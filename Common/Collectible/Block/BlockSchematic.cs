@@ -751,7 +751,7 @@ namespace Vintagestory.API.Common
                     tree.SetInt("posy", curPos.Y);
                     tree.SetInt("posz", curPos.Z);
 
-                    be.FromTreeAtributes(tree, worldForCollectibleResolve);
+                    be.FromTreeAttributes(tree, worldForCollectibleResolve);
                     be.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
                     be.Pos = curPos.Copy();
                 }

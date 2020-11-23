@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
@@ -30,6 +31,8 @@ namespace Vintagestory.API.Client
         float secondsVisible = 1;
         int curItemIndex;
         Dictionary<AssetLocation, ItemStack[]> resolveCache = new Dictionary<AssetLocation, ItemStack[]>();
+
+        Dictionary<int, LoadedTexture> extraTexts = new Dictionary<int, LoadedTexture>();
 
         /// <summary>
         /// Flips through given array of grid recipes every second
@@ -115,6 +118,15 @@ namespace Vintagestory.API.Client
 
             Random fixedRand = new Random(123);
             this.GridRecipes.Shuffle(fixedRand);
+
+            for (int i = 0; i < GridRecipes.Length; i++)
+            {
+                string trait = GridRecipes[i].RequiresTrait;
+                if (trait != null)
+                {
+                    extraTexts[i] = capi.Gui.TextTexture.GenTextTexture(Lang.Get("* Requires {0} trait", trait), CairoFont.WhiteDetailText());
+                }
+            }
 
             if (GridRecipes.Length == 0) throw new ArgumentException("Could not resolve any of the supplied grid recipes?");
         }
@@ -235,6 +247,12 @@ namespace Vintagestory.API.Client
                 curItemIndex = (curItemIndex + 1) % GridRecipes.Length;
             }
 
+            LoadedTexture extraTextTexture;
+            if (extraTexts.TryGetValue(curItemIndex, out extraTextTexture))
+            {
+                capi.Render.Render2DTexturePremultipliedAlpha(extraTextTexture.TextureId, (float)(renderX + bounds.X), (float)(renderY + bounds.Y + 3 * (size + 3)), extraTextTexture.Width, extraTextTexture.Height);
+            }
+
             int mx = api.Input.MouseX;
             int my = api.Input.MouseY;
             double rx=0, ry=0;
@@ -292,6 +310,15 @@ namespace Vintagestory.API.Client
         }
 
 
+        public override void Dispose()
+        {
+            base.Dispose();
+
+            foreach (var val in extraTexts)
+            {
+                val.Value.Dispose();
+            }
+        }
 
     }
 }

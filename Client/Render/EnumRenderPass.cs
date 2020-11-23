@@ -47,7 +47,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         Helditem = 11,
         /// <summary>
-        /// Renders opaque chunk geometry
+        /// Renders opaque chunk geometry, no blend, alpha discard;
         /// </summary>
         Chunkopaque = 12,
         /// <summary>
@@ -121,6 +121,7 @@ namespace Vintagestory.API.Client
         Entityanimatedtransparent = 36,
         Colorgrade = 37,
         Guigear = 38,
-        Ssao = 39
+        Ssao = 39,
+        Bilateralblur = 40
     }
 }

@@ -82,16 +82,16 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static string StandardFontName = "sans-serif";
 
-        /// <summary>
-        /// The standard font with slight bold. "Monserrat".
-        /// </summary>
-        public static string StandardSemiBoldFontName = "sans-serif";
+
 
         /// <summary>
-        /// The standard font with bold. "Montserrat"
+        /// Set by the client, loaded from the clientsettings.json. Used by ElementBounds to add a margin for left/right aligned dialogs
         /// </summary>
-        public static string StandardBoldFontName = "sans-serif";
-
+        public static int LeftDialogMargin;
+        /// <summary>
+        /// Set by the client, loaded from the clientsettings.json. Used by ElementBounds to add a margin for left/right aligned dialogs
+        /// </summary>
+        public static int RightDialogMargin;
 
         #region VS Color Palette 
         private static double[] Time1 = new double[] { 56 / 255.0, 232 / 255.0, 183 / 255.0, 1 };
@@ -159,6 +159,9 @@ namespace Vintagestory.API.Client
 
         public static double[] DiscoveryTextColor = ColorParchment;
 
+
+        public static double[] SuccessTextColor = new double[] { 0.5, 1, 0.5, 1 };
+
         /// <summary>
         /// The color of the error text.
         /// </summary>
@@ -209,6 +212,41 @@ namespace Vintagestory.API.Client
         /// The color of the macro icon.
         /// </summary>
         public static double[] MacroIconColor = new double[] { 1, 1, 1, 1 };
-        
+
+
+        /// <summary>
+        /// A 100 step gradient from green to red, to be used to show durability, damage or any state other of decay
+        /// </summary>
+        public static int[] DamageColorGradient;
+
+
+        static GuiStyle()
+        {
+            int[] colors = new int[]
+            {
+                ColorUtil.Hex2Int("#A7251F"),
+                ColorUtil.Hex2Int("#F01700"),
+                ColorUtil.Hex2Int("#F04900"),
+                ColorUtil.Hex2Int("#F07100"),
+                ColorUtil.Hex2Int("#F0D100"),
+                ColorUtil.Hex2Int("#F0ED00"),
+                ColorUtil.Hex2Int("#E2F000"),
+                ColorUtil.Hex2Int("#AAF000"),
+                ColorUtil.Hex2Int("#71F000"),
+                ColorUtil.Hex2Int("#33F000"),
+                ColorUtil.Hex2Int("#00F06B"),
+            };
+
+            DamageColorGradient = new int[100];
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    DamageColorGradient[10 * i + j] = ColorUtil.ColorOverlay(colors[i], colors[i + 1], j / 10f);
+                }
+            }
+        }
+
+
     }
 }

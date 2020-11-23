@@ -241,6 +241,13 @@ namespace Vintagestory.API.Common
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
                 int damagetier = slot.Itemstack == null ? 0 : slot.Itemstack.Collectible.ToolTier;
 
+                damage *= byEntity.Stats.GetBlended("meleeWeaponsDamage");
+
+                if (Attributes.GetBool("isMechanical", false))
+                {
+                    damage *= byEntity.Stats.GetBlended("mechanicalsDamage");
+                }
+
                 IPlayer byPlayer = null;
 
                 if (byEntity is EntityPlayer && !IsActivityRunning("invulnerable"))
@@ -384,7 +391,7 @@ namespace Vintagestory.API.Common
                         (servercontrols.TriesToMove || ((servercontrols.Jump || servercontrols.Sneak) && servercontrols.IsClimbing) ? EnumEntityActivity.Move : EnumEntityActivity.Idle) |
                         (Swimming && !servercontrols.FloorSitting ? EnumEntityActivity.Swim : 0) |
                         (servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
-                        (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting ? EnumEntityActivity.SneakMode : 0) |
+                        (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting && !Swimming ? EnumEntityActivity.SneakMode : 0) |
                         (servercontrols.Sprint && !Swimming && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
                         (servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
                         (servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
@@ -395,10 +402,8 @@ namespace Vintagestory.API.Common
                 else
                 {
                     CurrentControls = EnumEntityActivity.Dead;
-                ;
                 }
 
-                
                 CurrentControls = CurrentControls == 0 ? EnumEntityActivity.Idle : CurrentControls;
             }
 
@@ -454,11 +459,20 @@ namespace Vintagestory.API.Common
                 ICoreClientAPI capi = (Api as ICoreClientAPI);
                 bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
                 EntityPos herepos = (isSelf ? Pos : ServerPos);
-                bool movinginLiquid = (FeetInLiquid || Swimming) && (herepos.Motion.LengthSq() > 0.0000) && !servercontrols.NoClip;// && !servercontrols.FlyMode && OnGround;
-
-                if (movinginLiquid)
+                bool moving = herepos.Motion.LengthSq() > 0.0000 && !servercontrols.NoClip;
+                
+                if (insideBlock?.BlockMaterial == EnumBlockMaterial.Snow && isSelf)
                 {
-                    
+                    double hormot = Pos.Motion.X * Pos.Motion.X + Pos.Motion.Z * Pos.Motion.Z;
+                    float val = (float)Math.Sqrt(hormot);
+                    if (Api.World.Rand.NextDouble() < 10 * val)
+                    {
+                        World.SpawnCubeParticles(herepos.AsBlockPos, herepos.XYZ.Add(0, 0.2, 0), 1f, 2 + (int)(Api.World.Rand.NextDouble() * val * 15));
+                    }
+                }
+
+                if ((FeetInLiquid || Swimming) && moving)
+                {
                     double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
 
                     SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
@@ -579,10 +593,15 @@ namespace Vintagestory.API.Common
         public virtual void StopHandAnims()
         {
             
-
-            
-            
         }
+
+
+
+        /// <summary>
+        /// updated by GetWalkSpeedMultiplier()
+        /// </summary>
+        Block insideBlock;
+
 
         /// <summary>
         /// Gets the walk speed multiplier.
@@ -594,7 +613,7 @@ namespace Vintagestory.API.Common
             int y2 = (int)(SidedPos.Y + 0.01f);
 
             Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
-            Block insideblock = World.BlockAccessor.GetBlock((int)SidedPos.X, y2, (int)SidedPos.Z);
+            insideBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y2, (int)SidedPos.Z);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
             
@@ -603,7 +622,7 @@ namespace Vintagestory.API.Common
             IPlayer player = (this as EntityPlayer)?.Player;
             if (player == null || player.WorldData.CurrentGameMode != EnumGameMode.Creative)
             {
-                multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideblock.WalkSpeedMultiplier);
+                multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideBlock.WalkSpeedMultiplier);
             }
 
             multiplier *= GameMath.Clamp(Stats.GetBlended("walkspeed"), 0, 999);
@@ -647,9 +666,17 @@ namespace Vintagestory.API.Common
         /// <param name="forClient"></param>
         public override void FromBytes(BinaryReader reader, bool forClient)
         {
-            base.FromBytes(reader, forClient);
-            controls.FromBytes(reader, LoadControlsFromServer);
-            
+            try
+            {
+                base.FromBytes(reader, forClient);
+                controls.FromBytes(reader, LoadControlsFromServer);
+
+            } catch (EndOfStreamException e)
+            {
+                Exception ex = new Exception("EndOfStreamException thrown while reading entity, you might be able to recover your savegame through repair mode", e);
+                throw ex;
+            }
+
             if (!WatchedAttributes.HasAttribute("mountedOn"))
             {
                 TryUnmount();
@@ -706,6 +733,8 @@ namespace Vintagestory.API.Common
             addGearToShape(ref entityShape, shapePathForLogging);
         }
 
+        public bool hideClothing;
+
 
         protected Shape addGearToShape(ref Shape entityShape, string shapePathForLogging)
         {
@@ -720,6 +749,11 @@ namespace Vintagestory.API.Common
 
             foreach (var slot in inv)
             {
+                if (hideClothing && !slot.Empty)
+                {
+                    continue;
+                }
+
                 entityShape = addGearToShape(slot, entityShape, shapePathForLogging);
             }
 
@@ -727,7 +761,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        protected Dictionary<string, CompositeTexture> extraTexturesByTextureName
+        public Dictionary<string, CompositeTexture> extraTexturesByTextureName
         {
             get
             {
@@ -735,7 +769,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        protected Dictionary<AssetLocation, BakedCompositeTexture> extraTextureByLocation
+        public Dictionary<AssetLocation, BakedCompositeTexture> extraTextureByLocation
         {
             get
             {
@@ -748,13 +782,9 @@ namespace Vintagestory.API.Common
             if (slot.Empty) return entityShape;
             ItemStack stack = slot.Itemstack;
             JsonObject attrObj = stack.Collectible.Attributes;
-            if (attrObj?["wearableAttachment"].Exists != true) return entityShape;
 
-            CompositeShape compArmorShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
 
-            AssetLocation shapePath = shapePath = compArmorShape.Base.CopyWithPath("shapes/" + compArmorShape.Base.Path + ".json");
-
-            string[] disableElements = attrObj["disableElements"].AsArray<string>(null);
+            string[] disableElements = attrObj?["disableElements"]?.AsArray<string>(null);
             if (disableElements != null)
             {
                 foreach (var val in disableElements)
@@ -762,6 +792,14 @@ namespace Vintagestory.API.Common
                     entityShape.RemoveElementByName(val);
                 }
             }
+
+            if (attrObj?["wearableAttachment"].Exists != true) return entityShape;
+
+            CompositeShape compArmorShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
+
+            AssetLocation shapePath = shapePath = compArmorShape.Base.CopyWithPath("shapes/" + compArmorShape.Base.Path + ".json");
+
+            
 
             IAsset asset = Api.Assets.TryGet(shapePath);
 
@@ -870,7 +908,7 @@ namespace Vintagestory.API.Common
                         }
                         else
                         {
-                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, not no such texture found.", shapePath, val.Value);
+                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, no such texture found.", shapePath, val.Value);
                         }
 
                         ctex.Baked = new BakedCompositeTexture() { BakedName = val.Value, TextureSubId = textureSubId };

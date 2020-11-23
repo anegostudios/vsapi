@@ -57,7 +57,7 @@ namespace Vintagestory.API.Client
         public InteractionStacksDelegate GetMatchingStacks;
 
         /// <summary>
-        /// Only applicable when ItemStacks is null. If set and the method returns falls, the interaction will not be displayed
+        /// Only applicable when ItemStacks is null. If set and the method returns falsee, the interaction will not be displayed
         /// </summary>
         public InteractionMatcherDelegate ShouldApply;
 

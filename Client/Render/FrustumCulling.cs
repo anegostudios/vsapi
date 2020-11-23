@@ -28,7 +28,7 @@ namespace Vintagestory.API.Client
     {
         public int ViewDistanceSq;
         internal BlockPos playerPos;
-        public float lodBias;
+        public float lodBiasSq;
         public double shadowRangeX;
         public double shadowRangeZ;
 
@@ -174,8 +174,9 @@ namespace Vintagestory.API.Client
 
             
             double distance = playerPos.HorDistanceSqTo(sphere.x, sphere.z);
+            
 
-            return (distance < ViewDistanceSq && lodLevel == 1) || (distance < ViewDistanceSq * lodBias + 24*24); // a bit of extra range so we can properly fade the lod in the shader
+            return (distance < ViewDistanceSq && lodLevel == 1) || (lodBiasSq > 0 && distance < ViewDistanceSq * lodBiasSq + 32*32);
         }
 
 

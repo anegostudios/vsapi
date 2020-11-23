@@ -70,6 +70,14 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
+        /// When the entity got revived (only for players and traders currently)
+        /// </summary>
+        public virtual void OnEntityRevive()
+        {
+
+        }
+
+        /// <summary>
         /// The event fired when the entity falls to the ground.
         /// </summary>
         /// <param name="lastTerrainContact">the point which the entity was previously on the ground.</param>

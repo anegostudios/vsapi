@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -48,11 +49,14 @@ namespace Vintagestory.API.Common
     /// Defines a complete path to an assets, including it's domain
     /// </summary>
     [TypeConverterAttribute(typeof(StringAssetLocationConverter))]
+    [ProtoContract]
     public class AssetLocation : IEquatable<AssetLocation>, IComparable<AssetLocation>
     {
         public const char LocationSeparator = ':';
 
+        [ProtoMember(1)]
         private string domain;
+        [ProtoMember(2)]
         private string path;
 
         public string Domain {
@@ -66,6 +70,12 @@ namespace Vintagestory.API.Common
         }
 
         public bool IsWildCard => Path.Contains("*");
+
+        // Needed for ProtoBuf
+        public AssetLocation()
+        {
+
+        }
 
         /// <summary>
         /// Create a new AssetLocation. If no domain is prefixed, the default 'game' domain is used.

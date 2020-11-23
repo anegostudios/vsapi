@@ -24,6 +24,8 @@ namespace Vintagestory.API.Common
 
         IAviWriter GetAviWriter(int recordingBufferSize, double framerate, string codeccode);
         AvailableCodec[] AvailableCodecs();
+
+        void DeleteFileToRecyclebin(string filepath);
     }
 
 }

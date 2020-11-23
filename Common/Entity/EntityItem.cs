@@ -85,9 +85,16 @@ namespace Vintagestory.API.Common
 
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;
             Swimming = FeetInLiquid = World.BlockAccessor.GetBlock(Pos.AsBlockPos).IsLiquid();
+
+            tmpPos.Set(Pos.XInt, Pos.YInt, Pos.ZInt);
+            windLoss = World.BlockAccessor.GetDistanceToRainFall(tmpPos) / 4f;
         }
 
         long lastPlayedSizzlesTotalMs;
+        float getWindSpeedAccum = 0.25f;
+        Vec3d windSpeed = new Vec3d();
+        BlockPos tmpPos = new BlockPos();
+        float windLoss;
 
         public override void OnGameTick(float dt)
         {
@@ -95,6 +102,27 @@ namespace Vintagestory.API.Common
 
             if (Itemstack != null)
             {
+                if (!Collided && !Swimming && World.Side == EnumAppSide.Server)
+                {
+                    getWindSpeedAccum += dt;
+                    if (getWindSpeedAccum > 0.25)
+                    {
+                        getWindSpeedAccum = 0;
+                        tmpPos.Set(Pos.XInt, Pos.YInt, Pos.ZInt);
+                        windSpeed = World.BlockAccessor.GetWindSpeedAt(tmpPos);
+                        
+                        windSpeed.X = Math.Max(0, Math.Abs(windSpeed.X) - windLoss) * Math.Sign(windSpeed.X);
+                        windSpeed.Y = Math.Max(0, Math.Abs(windSpeed.Y) - windLoss) * Math.Sign(windSpeed.Y);
+                        windSpeed.Z = Math.Max(0, Math.Abs(windSpeed.Z) - windLoss) * Math.Sign(windSpeed.Z);
+                    }
+
+                    float fac = GameMath.Clamp(1000f / Itemstack.Collectible.MaterialDensity, 1f, 10);
+
+                    SidedPos.Motion.X += windSpeed.X / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(SidedPos.Motion.X)), 0, 1);
+                    SidedPos.Motion.Y += windSpeed.Y / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(SidedPos.Motion.Y)), 0, 1);
+                    SidedPos.Motion.Z += windSpeed.Z / 1000.0 * fac * GameMath.Clamp(1f / (1 + Math.Abs(SidedPos.Motion.Z)), 0, 1);
+                }
+
                 Itemstack.Collectible.OnGroundIdle(this);
 
                 if (FeetInLiquid && !InLava)

@@ -177,7 +177,7 @@ namespace Vintagestory.API.Client
 
 
             Font.SetupContext(ctx);
-            DrawTextLineAt(ctx, text.ToUpperInvariant(), scaled(GuiStyle.ElementToDialogPadding), (Bounds.InnerHeight - Font.GetFontExtents().Height) / 2 + scaled(2));
+            DrawTextLineAt(ctx, text, scaled(GuiStyle.ElementToDialogPadding), (Bounds.InnerHeight - Font.GetFontExtents().Height) / 2 + scaled(2));
 
             double crossSize = scaled(unscaledCloseIconSize);
             double menuSize = scaled(unscaledCloseIconSize + 2);

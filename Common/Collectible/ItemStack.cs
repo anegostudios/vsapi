@@ -6,7 +6,7 @@ using System.Text;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Config;
 using System.Collections.Generic;
-using VintagestoryAPI.Util;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {

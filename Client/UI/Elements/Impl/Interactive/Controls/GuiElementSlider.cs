@@ -112,7 +112,7 @@ namespace Vintagestory.API.Client
             ctx.Paint();
             
             RoundRectangle(ctx, 2, 2, handleWidth, handleHeight, 1);
-            fillWithPattern(api, ctx, woodTextureName, true);
+            fillWithPattern(api, ctx, woodTextureName, false, true);
 
             ctx.SetSourceRGB(43 / 255.0, 33 / 255.0, 24 / 255.0);
             ctx.LineWidth = 2;

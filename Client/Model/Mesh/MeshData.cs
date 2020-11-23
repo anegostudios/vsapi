@@ -1062,6 +1062,15 @@ namespace Vintagestory.API.Client
             if (VerticesCount > 0) VerticesCount--;
         }
 
+        /// <summary>
+        /// Removes the last "count" vertices from the vertex array
+        /// </summary>
+        /// <param name="count"></param>
+        public void RemoveVertices(int count)
+        {
+            VerticesCount = Math.Max(0, VerticesCount - count);
+        }
+
 
 
         /// <summary>

@@ -341,8 +341,8 @@ namespace Vintagestory.API.Client
             {
                 CairoFont font1 = CairoFont.ButtonText();
                 CairoFont font2 = CairoFont.ButtonPressedText();
-                font1.Fontname = GuiStyle.StandardBoldFontName;
-                font2.Fontname = GuiStyle.StandardBoldFontName;
+                font1.Fontname = GuiStyle.StandardFontName;
+                font2.Fontname = GuiStyle.StandardFontName;
                 font1.FontWeight = FontWeight.Bold;
                 font2.FontWeight = FontWeight.Bold;
                 font1.UnscaledFontsize = GuiStyle.SmallFontSize;

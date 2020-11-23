@@ -51,7 +51,7 @@ namespace Vintagestory.API.Common
             {
                 VtmlTagToken tagToken = token as VtmlTagToken;
 
-                switch(tagToken.Name)
+                switch (tagToken.Name)
                 {
                     case "br":
                         elems.Add(new RichTextComponent(capi, "\r\n", fontStack.Peek()));
@@ -82,6 +82,39 @@ namespace Vintagestory.API.Common
                         elems.Add(iconcmp);
                         break;
 
+                    case "itemstack":
+                        string code;
+                        string type;
+                        float size = (float)fontStack.Peek().GetFontExtents().Height;
+                        EnumFloat floatType = EnumFloat.Inline;
+                        string floattypestr;
+                        if (tagToken.Attributes.TryGetValue("floattype", out floattypestr))
+                        {
+                            if (!Enum.TryParse(floattypestr, out floatType))
+                            {
+                                floatType = EnumFloat.Inline;
+                            }
+                        }
+
+                        tagToken.Attributes.TryGetValue("code", out code);
+                        if (!tagToken.Attributes.TryGetValue("type", out type))
+                        {
+                            type = "block";
+                        }
+
+                        ItemStack stack;
+                        if (type == "item")
+                        {
+                            stack = new ItemStack(capi.World.GetItem(new AssetLocation(code)));
+                        } else
+                        {
+                            stack = new ItemStack(capi.World.GetBlock(new AssetLocation(code)));
+                        }
+
+                        ItemstackComponentBase stckcmp = new SlideshowItemstackTextComponent(capi, new ItemStack[] { stack }, size, floatType);
+                        elems.Add(stckcmp);
+                        break;
+
                     case "font":
                         fontStack.Push(getFont(tagToken, fontStack));
                         foreach (var val in tagToken.ChildElements)
@@ -103,8 +136,6 @@ namespace Vintagestory.API.Common
                         }
                         fontStack.Pop();
                         break;
-
-
                 }
 
 
@@ -245,8 +276,6 @@ namespace Vintagestory.API.Common
                         text = text
                             .Replace("&gt;", ">")
                             .Replace("&lt;", "<")
-                            //.Replace("  ", "")
-                            //.Replace("  ", "")
                             .Replace("&nbsp;", " ")
                         ;
 
@@ -288,7 +317,10 @@ namespace Vintagestory.API.Common
                             errorLogger.VerboseDebug(vtml);
                         }
 
-                        tokenStack.Pop();
+                        if (tokenStack.Count > 0)
+                        {
+                            tokenStack.Pop();
+                        }
                         tag = "";
                         continue;
                     }

@@ -272,6 +272,7 @@ namespace Vintagestory.API.Common
                 ClimateColorMap = ClimateColorMap,
                 StepParentName = StepParentName,
                 Shade = Shade,
+                ZOffset = ZOffset,
                 GradientShade = GradientShade,
                 ScaleX = ScaleX,
                 ScaleY = ScaleY,

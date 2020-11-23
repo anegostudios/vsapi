@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VintagestoryAPI.Util
+namespace Vintagestory.API.Util
 {
     public static class BitmapUtil
     {

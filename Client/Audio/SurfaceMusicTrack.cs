@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -48,6 +49,19 @@ namespace Vintagestory.API.Client
 
         [JsonProperty]
         public float Chance = 1;
+
+        [JsonProperty]
+        public float MaxTemperature = 99;
+
+        [JsonProperty]
+        public float MinRainFall = -99;
+
+        [JsonProperty]
+        public float MinSeason;
+
+        [JsonProperty]
+        public float MaxSeason = 1;
+
 
         /// <summary>
         /// Is it loading?
@@ -221,13 +235,17 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="props">Player Properties</param>
         /// <returns>Should we play the current track?</returns>
-        public bool ShouldPlay(TrackedPlayerProperties props)
+        public bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
         {
             if (IsActive || !ShouldPlayMusic) return false;
             if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return false;
             if (Playstyle != "*" && props.Playstyle != Playstyle.ToLowerInvariant()) return false;
             if (props.sunSlight < MinSunlight) return false;
             if (musicEngine.LastPlayedTrack == this) return false;
+            if (conds.Temperature > MaxTemperature) return false;
+            if (conds.Rainfall < MinRainFall) return false;
+            float season = capi.World.Calendar.GetSeasonRel(pos);
+            if (season < MinSeason || season > MaxSeason) return false;
 
             long trackCoolDownMs = 0;
             tracksCooldownUntilMs.TryGetValue(Name, out trackCoolDownMs);

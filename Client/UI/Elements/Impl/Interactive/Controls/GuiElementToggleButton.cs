@@ -89,7 +89,8 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, false, (int)depth);
 
             double height = GetMultilineTextHeight();
-            DrawMultilineTextAt(ctx, Bounds.absPaddingX, nonPressedYOffset = (Bounds.InnerHeight - height) / 2, EnumTextOrientation.Center);
+            nonPressedYOffset = (Bounds.InnerHeight - height) / 2;
+            DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + nonPressedYOffset, EnumTextOrientation.Center);
 
             if (icon != null && icon.Length > 0)
             {
@@ -119,8 +120,9 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, true, (int)depth);
 
             double height = GetMultilineTextHeight();
+            pressedYOffset = (Bounds.InnerHeight - height) / 2 + depth / 2;
 
-            DrawMultilineTextAt(ctx, Bounds.absPaddingX, pressedYOffset = (Bounds.InnerHeight - height)/2 + depth / 2, EnumTextOrientation.Center);
+            DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + pressedYOffset, EnumTextOrientation.Center);
 
             if (icon != null && icon.Length > 0)
             {
@@ -139,10 +141,9 @@ namespace Vintagestory.API.Client
 
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Fill();
-            height = GetMultilineTextHeight();
 
             double[] prevcolor = this.Font.Color;
-            this.Font.Color = GuiStyle.ActiveButtonTextColor;
+            Font.Color = GuiStyle.ActiveButtonTextColor;
 
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, 0, EnumTextOrientation.Center);
 

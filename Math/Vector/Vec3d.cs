@@ -115,6 +115,13 @@ namespace Vintagestory.API.MathTools
             this.Z += a.Z;
             return this;
         }
+        public Vec3d Add(BlockPos a)
+        {
+            this.X += a.X;
+            this.Y += a.Y;
+            this.Z += a.Z;
+            return this;
+        }
 
         public Vec3d Add(Vec3f a)
         {
@@ -134,13 +141,6 @@ namespace Vintagestory.API.MathTools
             return new Vec3d(X + a.X, Y + a.Y, Z + a.Z);
         }
 
-        public void Mul(double val)
-        {
-            X *= val;
-            Y *= val;
-            Z *= val;
-        }
-
         public Vec3d AddCopy(float x, float y, float z)
         {
             return new Vec3d(X + x, Y + y, Z + z);
@@ -151,6 +151,22 @@ namespace Vintagestory.API.MathTools
             return new Vec3d(X + x, Y + y, Z + z);
         }
 
+        public Vec3d AddCopy(BlockFacing facing)
+        {
+            return new Vec3d(X + facing.Normalf.X, Y + facing.Normalf.Y, Z + facing.Normalf.Z);
+        }
+
+        public Vec3d AddCopy(BlockPos pos)
+        {
+            return new Vec3d(X + pos.X, Y + pos.Y, Z + pos.Z);
+        }
+
+        public void Mul(double val)
+        {
+            X *= val;
+            Y *= val;
+            Z *= val;
+        }
 
         public Vec3d Mul(double x, double y, double z)
         {
@@ -173,14 +189,6 @@ namespace Vintagestory.API.MathTools
             X -= x;
             Y -= y;
             Z -= z;
-            return this;
-        }
-
-        public Vec3d AddCopy(BlockFacing facing)
-        {
-            X += facing.Normalf.X;
-            Y += facing.Normalf.Y;
-            Z += facing.Normalf.Z;
             return this;
         }
 

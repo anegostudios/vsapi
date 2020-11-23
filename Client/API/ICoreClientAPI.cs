@@ -29,14 +29,14 @@ namespace Vintagestory.API.Client
         ISettings Settings { get; }
 
         /// <summary>
-        /// The local Logger instance.
-        /// </summary>
-        ILogger Logger { get; }
-
-        /// <summary>
         /// Platform independent ui methods and features. 
         /// </summary>
         IXPlatformInterface Forms { get; }
+
+        /// <summary>
+        /// Api to the client side macros system
+        /// </summary>
+        IMacroManager MacroManager { get; }
 
         /// <summary>
         /// Amount of milliseconds ellapsed since client startup
@@ -57,6 +57,11 @@ namespace Vintagestory.API.Client
         /// True if the game is currently paused (only available in singleplayer)
         /// </summary>
         bool IsGamePaused { get; }
+
+        /// <summary>
+        /// True if this is a singleplayer session
+        /// </summary>
+        bool IsSinglePlayer { get; }
 
         /// <summary>
         /// If true, the player is in gui-less mode (through the F4 key)

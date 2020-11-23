@@ -66,9 +66,7 @@ namespace Vintagestory.API.Client
         {
             if (hasFocus)
             {
-                api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
                 api.Render.Render2DTexturePremultipliedAlpha(highlightTexture.TextureId, highlightBounds);
-                api.Render.GlToggleBlend(true, EnumBlendMode.Standard);
             }
 
             api.Render.GlScissor((int)(Bounds.renderX), (int)(api.Render.FrameHeight - Bounds.renderY - Bounds.InnerHeight), Bounds.OuterWidthInt + 1 - (int)rightSpacing, Bounds.OuterHeightInt + 1 - (int)bottomSpacing);

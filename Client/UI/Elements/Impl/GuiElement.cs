@@ -144,7 +144,13 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The change in time.</param>
         public void RenderFocusOverlay(float deltaTime)
         {
-          //  presenter.DrawRectangle((int)bounds.renderX, (int)bounds.renderY, 800, (int)bounds.OuterWidth, (int)bounds.OuterHeight, 255 + (255 << 8) + (255 << 16) + (96 << 24));
+            ElementBounds bounds = Bounds;
+            if (InsideClipBounds != null)
+            {
+                bounds = InsideClipBounds;
+            }
+
+            api.Render.RenderRectangle((int)bounds.renderX, (int)bounds.renderY, 800, (int)bounds.OuterWidth, (int)bounds.OuterHeight, 255 + (255 << 8) + (255 << 16) + (96 << 24));
         }
 
 
@@ -332,9 +338,13 @@ namespace Vintagestory.API.Client
         /// <param name="texFileName">The name of the texture file.</param>
         /// <param name="preserve">Whether or not to preserve the aspect ratio of the texture.</param>
         /// <returns>The surface pattern filled with the given texture.</returns>
-        public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, string texFileName, bool preserve = false)
+        public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, string texFileName, bool nearestScalingFiler = false, bool preserve = false)
         {
             SurfacePattern pattern = getPattern(capi, texFileName);
+            if (nearestScalingFiler)
+            {
+                pattern.Filter = Filter.Nearest;
+            }
             ctx.SetSource(pattern);
             if (preserve)
             {

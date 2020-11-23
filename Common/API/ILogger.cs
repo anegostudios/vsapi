@@ -93,6 +93,14 @@ namespace Vintagestory.API.Common
         /// <param name="args"></param>
         void Event(string message, params object[] args);
 
+
+        /// <summary>
+        /// Adds an audit log entry. 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="args"></param>
+        void Audit(string message, params object[] args);
+
         /// <summary>
         /// Adds an story event log entry. These are showing to the player when he's starting a singpleplayer server
         /// </summary>

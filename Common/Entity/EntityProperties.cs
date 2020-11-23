@@ -58,6 +58,11 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
+        /// The mass of this type of entity in kilograms, on average - defaults to 25kg (medium-low) if not set by the asset
+        /// </summary>
+        public float Weight = 25f;
+
+        /// <summary>
         /// If true the entity can climb on walls
         /// </summary>
         public bool CanClimb;

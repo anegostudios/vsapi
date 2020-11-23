@@ -196,7 +196,7 @@ namespace Vintagestory.API.Datastructures
         byte[] GetBytes(string key, byte[] defaultValue = null);
 
         /// <summary>
-        /// Retrieves an itemstack or defaultValue if key is not found
+        /// Retrieves an itemstack or defaultValue if key is not found. Be sure to call stack.ResolveBlockOrItem() after retrieving it.
         /// </summary>
         /// <param name="key"></param>
         /// <param name="defaultValue"></param>

@@ -64,10 +64,6 @@ namespace Vintagestory.API.Server
         /// </summary>
         event ChunkColumnLoadedDelegate ChunkColumnLoaded;
 
-        /// <summary>
-        /// Registers a handler to be called every time a player places a block. The methods return value determines if the player may place/break this block.
-        /// </summary>
-        event CanPlaceOrBreakDelegate CanPlaceOrBreakBlock;
 
         /// <summary>
         /// Registers a handler to be called every time a player uses a block. The methods return value determines if the player may place/break this block.
@@ -172,17 +168,27 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Registers a method to be called every time a player places a block
         /// </summary>
-        event BlockPlaceDelegate DidPlaceBlock;
-        
+        event BlockPlacedDelegate DidPlaceBlock;
+
         /// <summary>
-        /// Registers a method to be called every time a player deletes a block
+        /// Registers a handler to be called every time a player places a block. The methods return value determines if the player may place/break this block. When returning false the client will be notified and the action reverted
         /// </summary>
-        event BlockBreakDelegate DidBreakBlock;
+        event CanPlaceOrBreakDelegate CanPlaceOrBreakBlock;
+
+        /// <summary>
+        /// Called when a block should got broken now (that has been broken by a player). Set handling to PreventDefault to handle the block breaking yourself. Otherwise the engine will break the block (= either call heldItemstack.Collectible.OnBlockBrokenWith when player holds something in his hands or block.OnBlockBroken).
+        /// </summary>
+        event BlockBreakDelegate BreakBlock;
+
+        /// <summary>
+        /// Registers a method to be called every time a player deletes a block. Called after the block was already broken
+        /// </summary>
+        event BlockBrokenDelegate DidBreakBlock;
 
         /// <summary>
         /// Registers a method to be called every time a player uses a block
         /// </summary>
-        event BlockUseDelegate DidUseBlock;
+        event BlockUsedDelegate DidUseBlock;
 
     }
 }

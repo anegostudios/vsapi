@@ -36,5 +36,7 @@ namespace Vintagestory.API
             RotatableCube cloned = (RotatableCube)MemberwiseClone();
             return cloned;
         }
+
+        
     }
 }

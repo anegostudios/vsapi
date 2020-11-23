@@ -38,14 +38,14 @@ namespace Vintagestory.API.Server
     public interface IPermissionManager
     {
         /// <summary>
-        /// Set given role for given player. Role must exist in the serverconfig.json
+        /// Set given role for given player. Role must exist in the serverconfig.json. For a list of roles, read sapi.Config.Roles
         /// </summary>
         /// <param name="player"></param>
         /// <param name="role"></param>
         void SetRole(IServerPlayer player, IPlayerRole role);
 
         /// <summary>
-        /// Set given role for given player. Role must exist in the serverconfig.json
+        /// Set given role for given player. Role must exist in the serverconfig.json. For a list of roles, read sapi.Config.Roles
         /// </summary>
         /// <param name="player"></param>
         /// <param name="roleCode"></param>

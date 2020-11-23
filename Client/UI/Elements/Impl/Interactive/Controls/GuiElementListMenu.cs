@@ -321,6 +321,18 @@ namespace Vintagestory.API.Client
             SelectedIndices = selected.ToArray();
         }
 
+        public override bool IsPositionInside(int posX, int posY)
+        {
+            if (!IsOpened) return false;
+
+            return
+                posX >= Bounds.absX &&
+                posX <= Bounds.absX + expandedBoxWidth &&
+                posY >= Bounds.absY &&
+                posY <= Bounds.absY + expandedBoxHeight
+            ;
+        }
+
         public override void RenderInteractiveElements(float deltaTime)
         {
             if (expanded)
@@ -335,7 +347,7 @@ namespace Vintagestory.API.Client
                     (int)Bounds.renderY + (int)Bounds.InnerHeight - (int)scrollOffY, 
                     (int)expandedBoxWidth, 
                     (int)expandedBoxHeight,
-                    110
+                    110 + 300
                 );
 
 

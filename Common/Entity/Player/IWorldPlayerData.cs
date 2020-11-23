@@ -73,11 +73,5 @@ namespace Vintagestory.API.Common
         /// Block selection mode
         /// </summary>
         bool AreaSelectionMode { get; set; }
-
-        /// <summary>
-        /// Client: Always false
-        /// Server: True when the player has selected his skin (one time thing when a player first times a server)
-        /// </summary>
-        bool DidSelectSkin { get; set; }
     }
 }

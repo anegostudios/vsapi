@@ -18,6 +18,8 @@ namespace Vintagestory.API.Client
         public ElementBounds ParentBounds;
         public List<ElementBounds> ChildBounds = new List<ElementBounds>();
 
+        protected bool IsWindowBounds;
+
         /// <summary>
         /// For debugging purposes only
         /// </summary>
@@ -266,6 +268,14 @@ namespace Vintagestory.API.Client
 
         void calcMarginFromAlignment(double dialogWidth, double dialogHeight)
         {
+            int leftMar = 0;
+            int rightMar = 0;
+            if (ParentBounds?.IsWindowBounds == true)
+            {
+                leftMar = GuiStyle.LeftDialogMargin;
+                rightMar = GuiStyle.RightDialogMargin;
+            }
+
             switch (Alignment)
             {
                 case EnumDialogArea.FixedTop:
@@ -294,37 +304,37 @@ namespace Vintagestory.API.Client
                     break;
 
                 case EnumDialogArea.LeftBottom:
-                    absMarginX = 0;
+                    absMarginX = leftMar;
                     absMarginY = dialogHeight - OuterHeight;
                     break;
                 case EnumDialogArea.LeftMiddle:
-                    absMarginX = 0;
+                    absMarginX = leftMar;
                     absMarginY = dialogHeight / 2 - absInnerHeight / 2;
                     break;
                 case EnumDialogArea.LeftTop:
-                    absMarginX = 0;
+                    absMarginX = leftMar;
                     absMarginY = 0;
                     break;
                 case EnumDialogArea.LeftFixed:
-                    absMarginX = 0;
+                    absMarginX = leftMar;
                     break;
 
 
                 case EnumDialogArea.RightBottom:
-                    absMarginX = dialogWidth - OuterWidth;
+                    absMarginX = dialogWidth - OuterWidth - rightMar;
                     absMarginY = dialogHeight - OuterHeight;
                     break;
                 case EnumDialogArea.RightMiddle:
-                    absMarginX = dialogWidth - OuterWidth;
+                    absMarginX = dialogWidth - OuterWidth - rightMar;
                     absMarginY = dialogHeight / 2 - OuterHeight / 2;
                     break;
                 case EnumDialogArea.RightTop:
-                    absMarginX = dialogWidth - OuterWidth;
+                    absMarginX = dialogWidth - OuterWidth - rightMar;
                     absMarginY = 0;
                     break;
 
                 case EnumDialogArea.RightFixed:
-                    absMarginX = dialogWidth - OuterWidth - 0;
+                    absMarginX = dialogWidth - OuterWidth - rightMar;
                     break;
 
             }

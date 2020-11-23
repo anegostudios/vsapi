@@ -472,12 +472,12 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static Cuboidf Default()
         {
-            return new Cuboidf(0, 0, 0, 1, 1, 1);
+            return new Cuboidf(0f, 0f, 0f, 1f, 1f, 1f);
         }
 
         
         /// <summary>
-        /// Makes sure the collisionbox coords are multiples of 1/16th
+        /// Makes sure the collisionbox coords are multiples of 0.0001
         /// </summary>
         public void RoundToFracsOfOne10thousand()
         {
@@ -491,12 +491,19 @@ namespace Vintagestory.API.MathTools
 
         static float RoundToOne10thousand(float val)
         {
-            return (float)Math.Round(val * 10000) / 10000;
+            return (int) (val * 10000f + 0.5f) / 10000f;
         }
 
         public bool Equals(Cuboidf other)
         {
             return other.X1 == X1 && other.Y1 == Y1 && other.Z1 == Z1 && other.X2 == X2 && other.Y2 == Y2 && other.Z2 == Z2;
+        }
+
+        public Cuboidi ConvertToCuboidi()
+        {
+            return new Cuboidi(
+                (int)X1, (int)Y1, (int)Z1, (int)X2, (int)Y2, (int)Z2
+            );
         }
 
     }

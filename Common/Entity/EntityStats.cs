@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
-    public class EntityStats
+    public class EntityStats : IEnumerable<KeyValuePair<string, EntityFloatStats>>, IEnumerable
     {
         Dictionary<string, EntityFloatStats> floatStats = new Dictionary<string, EntityFloatStats>();
         Entity entity;
@@ -40,6 +41,25 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public IEnumerator<KeyValuePair<string, EntityFloatStats>> GetEnumerator()
+        {
+            return floatStats.GetEnumerator();
+        }
+
+        IEnumerator<KeyValuePair<string, EntityFloatStats>> IEnumerable<KeyValuePair<string, EntityFloatStats>>.GetEnumerator()
+        {
+            return floatStats.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return floatStats.GetEnumerator();
+        }
+
+
+
+
+
         public void ToTreeAttributes(ITreeAttribute tree, bool forClient)
         {
             TreeAttribute statstree = new TreeAttribute();
@@ -67,7 +87,29 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// Set up a stat. Its not required to call this method, you can go straight to doing .Set() if your blend type is weighted sum. Also initializes a base value of 1.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="blendType"></param>
+        /// <returns></returns>
+        public EntityStats Register(string category, EnumStatBlendType blendType = EnumStatBlendType.WeightedSum)
+        {
+            EntityFloatStats stats;
+            floatStats[category] = stats = new EntityFloatStats();
+            stats.BlendType = blendType;
+            return this;
+        }
 
+
+        /// <summary>
+        /// Set a stat value, if the stat catgory does not exist, it will create a new default one. Initializes a base value of 1 when creating a new stat.
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="code"></param>
+        /// <param name="value"></param>
+        /// <param name="persistent"></param>
+        /// <returns></returns>
         public EntityStats Set(string category, string code, float value, bool persistent = false)
         {
             ignoreChange = true;
@@ -88,11 +130,17 @@ namespace Vintagestory.API.Common
             return this;
         }
 
+        /// <summary>
+        /// Remove a stat value
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public EntityStats Remove(string category, string code)
         {
             ignoreChange = true;
 
-            EntityFloatStats stats = null;
+            EntityFloatStats stats;
             if (floatStats.TryGetValue(category, out stats))
             {
                 stats.Remove(code);
@@ -107,9 +155,14 @@ namespace Vintagestory.API.Common
             return this;
         }
 
+        /// <summary>
+        /// Get the final stat value, blended by the stats blend type
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public float GetBlended(string category)
         {
-            EntityFloatStats stats = null;
+            EntityFloatStats stats;
             if (floatStats.TryGetValue(category, out stats))
             {
                 return stats.GetBlended();
@@ -119,7 +172,7 @@ namespace Vintagestory.API.Common
         }
     }
 
-    public enum EnumBlendType
+    public enum EnumStatBlendType
     {
         FlatSum,
         FlatMultiply,
@@ -129,11 +182,11 @@ namespace Vintagestory.API.Common
 
     public class EntityFloatStats
     {
-        public OrderedDictionary<string, EntityStat<float>> Stats = new OrderedDictionary<string, EntityStat<float>>();
-        public EnumBlendType BlendType = EnumBlendType.WeightedSum;
+        public OrderedDictionary<string, EntityStat<float>> ValuesByKey = new OrderedDictionary<string, EntityStat<float>>();
+        public EnumStatBlendType BlendType = EnumStatBlendType.WeightedSum;
         public EntityFloatStats()
         {
-            Stats["base"] = new EntityStat<float>() { Value = 1, Persistent = true };
+            ValuesByKey["base"] = new EntityStat<float>() { Value = 1, Persistent = true };
         }
 
         public float GetBlended()
@@ -143,8 +196,8 @@ namespace Vintagestory.API.Common
 
             switch (BlendType)
             {
-                case EnumBlendType.FlatMultiply:
-                    foreach (var stat in Stats.Values)
+                case EnumStatBlendType.FlatMultiply:
+                    foreach (var stat in ValuesByKey.Values)
                     {
                         if (first)
                         {
@@ -156,16 +209,16 @@ namespace Vintagestory.API.Common
                     }
                     break;
 
-                case EnumBlendType.FlatSum:
-                    foreach (var stat in Stats.Values) blended += stat.Value;
+                case EnumStatBlendType.FlatSum:
+                    foreach (var stat in ValuesByKey.Values) blended += stat.Value;
                     break;
 
-                case EnumBlendType.WeightedSum:
-                    foreach (var stat in Stats.Values) blended += stat.Value * stat.Weight;
+                case EnumStatBlendType.WeightedSum:
+                    foreach (var stat in ValuesByKey.Values) blended += stat.Value * stat.Weight;
                     break;
 
-                case EnumBlendType.WeightedOverlay:
-                    foreach (var stat in Stats.Values)
+                case EnumStatBlendType.WeightedOverlay:
+                    foreach (var stat in ValuesByKey.Values)
                     {
                         if (first)
                         {
@@ -183,16 +236,16 @@ namespace Vintagestory.API.Common
 
         public void Set(string code, float value, bool persistent = false)
         {
-            Stats[code] = new EntityStat<float>() { Value = value, Persistent = persistent };
+            ValuesByKey[code] = new EntityStat<float>() { Value = value, Persistent = persistent };
         }
         public void Remove(string code)
         {
-            Stats.Remove(code);
+            ValuesByKey.Remove(code);
         }
 
         public void ToTreeAttributes(ITreeAttribute tree, bool forClient)
         {
-            foreach (var stat in Stats)
+            foreach (var stat in ValuesByKey)
             {
                 if (!stat.Value.Persistent && !forClient) continue;
                 tree.SetFloat(stat.Key, stat.Value.Value);
@@ -203,7 +256,7 @@ namespace Vintagestory.API.Common
         {
             foreach (var val in tree)
             {
-                Stats[val.Key] = new EntityStat<float>()
+                ValuesByKey[val.Key] = new EntityStat<float>()
                 {
                     Value = (val.Value as FloatAttribute).value,
                     Persistent = true

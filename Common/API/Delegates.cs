@@ -129,10 +129,12 @@ namespace Vintagestory.API.Common
     public delegate void WorldGenThreadDelegate(IChunkProviderThread chunkProvider);
 
 
-    public delegate void BlockUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
-    public delegate void BlockBreakDelegate(IServerPlayer byPlayer, int oldblockId, BlockSelection blockSel);
-    public delegate void BlockPlaceDelegate(IServerPlayer byPlayer, int oldblockId, BlockSelection blockSel, ItemStack withItemStack);
-    
+    public delegate void BlockUsedDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
+    public delegate void BlockBrokenDelegate(IServerPlayer byPlayer, int oldblockId, BlockSelection blockSel);
+    public delegate void BlockPlacedDelegate(IServerPlayer byPlayer, int oldblockId, BlockSelection blockSel, ItemStack withItemStack);
+
+    public delegate void BlockBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel, ref float dropQuantityMultiplier, ref EnumHandling handling);
+
     public delegate bool CanUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
     public delegate bool CanPlaceOrBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
 
@@ -141,4 +143,6 @@ namespace Vintagestory.API.Common
     public delegate void LogEntryDelegate(EnumLogType logType, string message, params object[] args);
 
     public delegate void OnGetClimateDelegate(ref ClimateCondition climate, BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.WorldGenValues, double totalDays = 0);
+
+    public delegate void OnGetWindSpeedDelegate(Vec3d pos, ref Vec3d windSpeed);
 }

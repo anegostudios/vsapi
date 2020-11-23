@@ -40,6 +40,12 @@ namespace Vintagestory.API.Client
         internal Action OnFocused = null;
         internal Action OnLostFocus = null;
 
+        /// <summary>
+        /// Called when a keyboard key was pressed, received and handled
+        /// </summary>
+        public Action OnKeyPressed;
+
+
         internal long caretBlinkMilliseconds;
         internal bool caretDisplayed;
         internal double caretHeight;
@@ -551,6 +557,8 @@ namespace Vintagestory.API.Client
 
                 args.Handled = true;
                 api.Gui.PlaySound("tick");
+
+                OnKeyPressed?.Invoke();
             }
         }
 

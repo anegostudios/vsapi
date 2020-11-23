@@ -210,6 +210,14 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool IsVertical { get { return index >= 4; } }
         /// <summary>
+        /// True if this face is N or S
+        /// </summary>
+        public bool IsAxisNS { get { return index == 0 || index == 2; } }
+        /// <summary>
+        /// True if this face is N or S
+        /// </summary>
+        public bool IsAxisWE { get { return index == 1 || index == 3; } }
+        /// <summary>
         /// The normal axis of this vector.
         /// </summary>
         public EnumAxis Axis { get { return axis; } }
@@ -248,18 +256,12 @@ namespace Vintagestory.API.MathTools
         /// Returns the opposing face
         /// </summary>
         /// <returns></returns>
+        public BlockFacing Opposite => ALLFACES[oppositeIndex];
+
+        [Obsolete("Use Opposite property instead")]
         public BlockFacing GetOpposite()
         {
             return ALLFACES[oppositeIndex];
-        }
-
-        /// <summary>
-        /// Returns the face if current face would be horizontally clockwise rotated, only works for horizontal faces
-        /// </summary>
-        /// <returns></returns>
-        public BlockFacing GetCW()
-        {
-            return HORIZONTALS_ANGLEORDER[(horizontalAngleIndex + 1) % 4];
         }
 
         /// <summary>
@@ -267,6 +269,15 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <returns></returns>
         public BlockFacing GetCCW()
+        {
+            return HORIZONTALS_ANGLEORDER[(horizontalAngleIndex + 1) % 4];
+        }
+
+        /// <summary>
+        /// Returns the face if current face would be horizontally clockwise rotated, only works for horizontal faces
+        /// </summary>
+        /// <returns></returns>
+        public BlockFacing GetCW()
         {
             return HORIZONTALS_ANGLEORDER[GameMath.Mod(horizontalAngleIndex - 1, 4)];
         }
@@ -475,6 +486,14 @@ namespace Vintagestory.API.MathTools
             }
 
             return facing;
+        }
+
+
+        public static BlockFacing FromNormal(Vec3i vec)
+        {
+            Cardinal c = Cardinal.FromNormali(vec);
+            if (c == null) return null;
+            return FromFirstLetter(c.Initial);
         }
 
 

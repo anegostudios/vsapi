@@ -62,6 +62,7 @@ namespace Vintagestory.API.Common
             return null;
         }
 
+
         /// <summary>
         /// This method is called right after the block entity was spawned or right after it was loaded from a newly loaded chunk. You do have access to the world and its blocks at this point.
         /// However if this block entity already existed then FromTreeAttributes is called first!
@@ -115,11 +116,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Removes a registered game tick listener from the game.
         /// </summary>
-        /// <param name="listinerId">the ID of the listener to unregister.</param>
-        public virtual void UnregisterGameTickListener(long listinerId)
+        /// <param name="listenerId">the ID of the listener to unregister.</param>
+        public virtual void UnregisterGameTickListener(long listenerId)
         {
-            Api.Event.UnregisterGameTickListener(listinerId);
-            TickHandlers.Remove(listinerId);
+            Api.Event.UnregisterGameTickListener(listenerId);
+            TickHandlers.Remove(listenerId);
         }
 
         /// <summary>
@@ -238,11 +239,11 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Called when loading the world or when receiving block entity from the server. When overriding, make sure to still call the base method.
-        /// FromTreeAtributes is always called before Initialize() is called, so the this.api field is not yet set!
+        /// FromTreeAttributes is always called before Initialize() is called, so the this.api field is not yet set!
         /// </summary>
         /// <param name="tree"></param>
         /// <param name="worldAccessForResolve">Use this api if you need to resolve blocks/items. Not suggested for other purposes, as the residing chunk may not be loaded at this point</param>
-        public virtual void FromTreeAtributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve) {
+        public virtual void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve) {
             Pos = new BlockPos(
                 tree.GetInt("posx"),
                 tree.GetInt("posy"),

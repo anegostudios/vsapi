@@ -69,6 +69,11 @@ namespace Vintagestory.API.Common
         [JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;
 
+        /// <summary>
+        /// If set only players with given trait can use this recipe
+        /// </summary>
+        public string RequiresTrait;
+
 
         public CraftingRecipeIngredient[] resolvedIngredients;
 
@@ -184,11 +189,11 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="byPlayer"></param>
         /// <param name="gridWidth"></param>
-        public bool ConsumeInput(IWorldAccessor world, IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth)
+        public bool ConsumeInput(IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth)
         {
             if (Shapeless)
             {
-                return ConsumeInputShapeLess(world, byPlayer, inputSlots);
+                return ConsumeInputShapeLess(byPlayer, inputSlots);
             }
 
             int gridHeight = inputSlots.Length / gridWidth;
@@ -200,7 +205,7 @@ namespace Vintagestory.API.Common
                 {
                     if (MatchesAtPosition(col, row, inputSlots, gridWidth))
                     {
-                        return ConsumeInputAt(world, byPlayer, inputSlots, gridWidth, col, row);
+                        return ConsumeInputAt(byPlayer, inputSlots, gridWidth, col, row);
                     }
 
                     i++;
@@ -210,7 +215,7 @@ namespace Vintagestory.API.Common
             return false;
         }
 
-        private bool ConsumeInputShapeLess(IWorldAccessor world, IPlayer byPlayer, ItemSlot[] inputSlots)
+        private bool ConsumeInputShapeLess(IPlayer byPlayer, ItemSlot[] inputSlots)
         {
             List<CraftingRecipeIngredient> exactMatchIngredients = new List<CraftingRecipeIngredient>();
             List<CraftingRecipeIngredient> wildcardIngredients = new List<CraftingRecipeIngredient>();
@@ -301,7 +306,7 @@ namespace Vintagestory.API.Common
             return exactMatchIngredients.Count == 0;
         }
 
-        private bool ConsumeInputAt(IWorldAccessor world, IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth, int colStart, int rowStart)
+        private bool ConsumeInputAt(IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth, int colStart, int rowStart)
         {
             int gridHeight = inputSlots.Length / gridWidth;
 
@@ -330,11 +335,17 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Check if this recipe matches given ingredients
         /// </summary>
+        /// <param name="forPlayer">The player for trait testing. Can be null.</param>
         /// <param name="ingredients"></param>
         /// <param name="gridWidth"></param>
         /// <returns></returns>
-        public bool Matches(ItemSlot[] ingredients, int gridWidth)
+        public bool Matches(IPlayer forPlayer, ItemSlot[] ingredients, int gridWidth)
         {
+            if (!forPlayer.Entity.Api.Event.TriggerMatchesRecipe(forPlayer, this, ingredients, gridWidth))
+            {
+                return false;
+            }
+            
             if (Shapeless)
             {
                 return MatchesShapeLess(ingredients, gridWidth);
@@ -363,7 +374,7 @@ namespace Vintagestory.API.Common
             int gridHeight = suppliedSlots.Length / gridWidth;
             if (gridWidth < Width || gridHeight < Height) return false;
 
-            List<ItemStack> ingredientStacks = new List<ItemStack>();
+            List<KeyValuePair<ItemStack, CraftingRecipeIngredient>> ingredientStacks = new List<KeyValuePair<ItemStack, CraftingRecipeIngredient>>();
             List<ItemStack> suppliedStacks = new List<ItemStack>();
 
             // Step 1: Merge all stacks from the supplied slots
@@ -384,6 +395,7 @@ namespace Vintagestory.API.Common
                     if (!found) suppliedStacks.Add(suppliedSlots[i].Itemstack.Clone());
                 }
             }
+
 
             // Step 2: Merge all stacks from the recipe reference
             for (int i = 0; i < resolvedIngredients.Length; i++)
@@ -418,15 +430,15 @@ namespace Vintagestory.API.Common
                 bool found = false;
                 for (int j = 0; j < ingredientStacks.Count; j++)
                 {
-                    if (ingredientStacks[j].Equals(world, stack, GlobalConstants.IgnoredStackAttributes))
+                    if (ingredientStacks[j].Key.Equals(world, stack, GlobalConstants.IgnoredStackAttributes))
                     {
-                        ingredientStacks[j].StackSize += stack.StackSize;
+                        ingredientStacks[j].Key.StackSize += stack.StackSize;
                         found = true;
                         break;
                     }
                 }
 
-                if (!found) ingredientStacks.Add(stack.Clone());
+                if (!found) ingredientStacks.Add(new KeyValuePair<ItemStack, CraftingRecipeIngredient>(stack.Clone(), ingredient));
             }
 
 
@@ -443,9 +455,9 @@ namespace Vintagestory.API.Common
                 for (int j = 0; !found && j < suppliedStacks.Count; j++)
                 {
                     found =
-                        ingredientStacks[i].Satisfies(suppliedStacks[j]) &&
-                        ingredientStacks[i].StackSize <= suppliedStacks[j].StackSize &&
-                        suppliedStacks[j].Collectible.MatchesForCrafting(suppliedStacks[j], this, null)
+                        ingredientStacks[i].Key.Satisfies(suppliedStacks[j]) &&
+                        ingredientStacks[i].Key.StackSize <= suppliedStacks[j].StackSize &&
+                        suppliedStacks[j].Collectible.MatchesForCrafting(suppliedStacks[j], this, ingredientStacks[i].Value)
                     ;
 
                     if (found) suppliedStacks.RemoveAt(j);
@@ -524,6 +536,12 @@ namespace Vintagestory.API.Common
             {
                 writer.Write(Attributes.Token.ToString());
             }
+
+            writer.Write(RequiresTrait != null);
+            if (RequiresTrait != null)
+            {
+                writer.Write(RequiresTrait);
+            }
         }
 
         /// <summary>
@@ -553,7 +571,13 @@ namespace Vintagestory.API.Common
 
             if (!reader.ReadBoolean())
             {
-                Attributes = new JsonObject(JToken.Parse(reader.ReadString()));
+                string json = reader.ReadString();
+                Attributes = new JsonObject(JToken.Parse(json));
+            }
+
+            if (reader.ReadBoolean())
+            {
+                RequiresTrait = reader.ReadString();
             }
         }
 
@@ -589,6 +613,7 @@ namespace Vintagestory.API.Common
             recipe.Output = Output.Clone();
             recipe.Name = Name;
             recipe.Attributes = Attributes?.Clone();
+            recipe.RequiresTrait = RequiresTrait;
 
             return recipe;
         }

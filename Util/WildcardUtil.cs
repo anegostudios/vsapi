@@ -12,45 +12,15 @@ namespace Vintagestory.API.Util
     {
         public static bool Match(string needle, string haystack)
         {
-            if (haystack == null) throw new ArgumentNullException("Haystack cannot be null");
-            if (haystack.Equals(needle, StringComparison.InvariantCultureIgnoreCase)) return true;
-
-            int wildCardIndex = -1;
-            if (haystack == null || (wildCardIndex = needle.IndexOf("*")) == -1) return false;
-
-            // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
-            if (wildCardIndex == needle.Length - 1 && needle.CountChars('*') == 1)
-            {
-                return StringUtil.FastStartsWith(haystack, needle, wildCardIndex);
-            }
-            if (!StringUtil.FastStartsWith(haystack, needle, wildCardIndex)) return false;
-
-
-            string pattern = Regex.Escape(needle).Replace(@"\*", @"(.*)");
-            return Regex.IsMatch(haystack, @"^" + pattern + @"$", RegexOptions.None);
+            return fastMatch(needle, haystack);
         }
 
 
 
         public static bool Match(AssetLocation needle, AssetLocation haystack)
         {
-            if (haystack == null) throw new ArgumentNullException("Haystack cannot be null");
-
-            if (haystack.Equals(needle)) return true;
-
-            int wildCardIndex = -1;
-            if (haystack == null || needle.Domain != haystack.Domain || (wildCardIndex = needle.Path.IndexOf("*")) == -1) return false;
-
-            // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
-            if (wildCardIndex == needle.Path.Length - 1 && needle.Path.CountChars('*') == 1)
-            {
-                return StringUtil.FastStartsWith(haystack.Path, needle.Path, wildCardIndex);
-            }
-            if (!StringUtil.FastStartsWith(haystack.Path, needle.Path, wildCardIndex)) return false;
-
-            
-            string pattern = Regex.Escape(needle.Path).Replace(@"\*", @"(.*)");
-            return Regex.IsMatch(haystack.Path, @"^" + pattern + @"$", RegexOptions.None);
+            if (needle.Domain != haystack.Domain) return false;
+            return fastMatch(needle.Path, haystack.Path);
         }
 
         /// <summary>
@@ -62,10 +32,12 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static bool Match(AssetLocation wildCard, AssetLocation inCode, string[] allowedVariants)
         {
+            // Todo: Adapt some of the fastMatch methods to save some cpu cycles here
+
             if (wildCard.Equals(inCode)) return true;
 
-            int wildCardIndex = -1;
-            if (inCode == null || !wildCard.Domain.Equals(inCode.Domain) || (wildCardIndex = wildCard.Path.IndexOf("*")) == -1) return false;
+            int wildCardIndex;
+            if (inCode == null || !wildCard.Domain.Equals(inCode.Domain) || ((wildCardIndex = wildCard.Path.IndexOf("*")) == -1 && wildCard.Path.IndexOf("(") == -1)) return false;
             
 
             // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
@@ -111,5 +83,55 @@ namespace Vintagestory.API.Util
             return match.Success ? match.Groups[1].Captures[0].Value : null;
         }
 
+
+
+
+        private static bool fastMatch(string needle, string haystack)
+        {
+            if (haystack == null) throw new ArgumentNullException("Text cannot be null");
+            if (needle.Length == 0) return false;
+
+            if (needle[0] == '@')
+            {
+                return Regex.IsMatch(haystack, @"^" + needle.Substring(1) + @"$", RegexOptions.None);
+            }
+
+            int wildCardIndex = -1;
+            int i;
+            for (i = 0; i < needle.Length; i++)
+            {
+                char ch = needle[i];
+                if (ch == '*')
+                {
+                    // Two *? Ok, that needs a regex :<
+                    if (wildCardIndex >= 0)
+                    {
+                        needle = Regex.Escape(needle).Replace(@"\*", @"(.*)");
+                        return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.None);
+                    }
+
+                    wildCardIndex = i;
+                } else
+                {
+                    // No * yet? Lets make sure the string starts with all those chars
+                    if (wildCardIndex < 0 && (haystack.Length <= i || char.ToLowerInvariant(ch) != char.ToLowerInvariant(haystack[i]))) return false;
+                }
+            }
+
+            // No * wildcard? Then we're good if needle is of equal length than haystack
+            if (wildCardIndex == -1)
+            {
+                return needle.Length == haystack.Length;
+            }
+
+            // Oh, * was at the end of the pattern? We no longer need to match the rest of the text
+            if (wildCardIndex == needle.Length - 1) return true;
+            
+
+            // Otherwise fallback to full on regex matching again :<
+            needle = Regex.Escape(needle).Replace(@"\*", @"(.*)");
+            return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.None);
+        }
     }
+    
 }

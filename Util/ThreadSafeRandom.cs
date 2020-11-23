@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VintagestoryAPI.Util
+namespace Vintagestory.API.Util
 {
     public class ThreadSafeRandom : Random
     {

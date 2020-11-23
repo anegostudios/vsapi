@@ -120,6 +120,7 @@ namespace Vintagestory.API.Util
             return grown;
         }
 
+
         public static T[] Append<T>(this T[] array, T[] value)
         {
             if (array == null) return null;

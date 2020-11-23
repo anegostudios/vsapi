@@ -34,12 +34,10 @@ namespace Vintagestory.API.Client
         {
             initSlot();
 
-
             this.Itemstacks = itemstacks;
             this.Float = floatType;
             this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, size, size) };
             this.onStackClicked = onStackClicked;
-            //PaddingRight = 0;
         }
 
         /// <summary>

@@ -22,12 +22,41 @@ namespace Vintagestory.API.MathTools
         }
     }
 
+    
     public class Rectanglei
     {
         public int X;
         public int Y;
         public int Width;
         public int Height;
+
+        /// <summary>
+        /// Same as X
+        /// </summary>
+        public int X1 => X;
+
+        /// <summary>
+        /// Same as Y
+        /// </summary>
+        public int Y1 => Y;
+
+        /// <summary>
+        /// Same as X + Width
+        /// </summary>
+        public int X2
+        {
+            get { return X + Width; }
+            set { Width = value - X1; }
+        }
+
+        /// <summary>
+        /// Same as Y + Height
+        /// </summary>
+        public int Y2
+        {
+            get { return Y + Height; }
+            set { Height = value - Y1; }
+        }
 
         public int Bottom()
         {

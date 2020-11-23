@@ -535,11 +535,21 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        /// <summary>
+        /// Turn a string hex color (with #) into a single int
+        /// </summary>
+        /// <param name="hex"></param>
+        /// <returns></returns>
         public static int Hex2Int(string hex)
         {
             return int.Parse(hex.Substring(1), System.Globalization.NumberStyles.HexNumber);
         }
 
+        /// <summary>
+        /// Turn a color int into its string hex version, including preceeding #
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public static string Int2Hex(int color)
         {
             return String.Format("#{0:X2}{1:X2}{2:X2}", ColorR(color), ColorG(color), ColorB(color));

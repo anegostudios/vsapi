@@ -11,7 +11,7 @@ using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Common
 {
-    public class SQLiteDB
+    public class SQLiteDBConnection
     {
         protected SQLiteConnection sqliteConn;
         protected string databaseFileName;
@@ -21,12 +21,12 @@ namespace Vintagestory.API.Common
         public virtual string DBTypeCode => "database";
         public bool IsReadOnly { get; protected set; }
 
-        public SQLiteDB(ILogger logger)
+        public SQLiteDBConnection(ILogger logger)
         {
             this.logger = logger;
         }
 
-        public bool OpenOrCreate(string filename, ref string errorMessage, bool requireWriteAccess, bool doIntegrityCheck = true)
+        public bool OpenOrCreate(string filename, ref string errorMessage, bool requireWriteAccess, bool corruptionProtection, bool doIntegrityCheck)
         {
             databaseFileName = filename;
 
@@ -58,7 +58,15 @@ namespace Vintagestory.API.Common
                 DbConnectionStringBuilder.AppendKeyValuePair(b, "Version", "3");
                 DbConnectionStringBuilder.AppendKeyValuePair(b, "New", "True"); // Create new file if it doesnt exist 
                 DbConnectionStringBuilder.AppendKeyValuePair(b, "Compress", "True");
-                DbConnectionStringBuilder.AppendKeyValuePair(b, "Journal Mode", "Off");
+                if (corruptionProtection)
+                {
+                    DbConnectionStringBuilder.AppendKeyValuePair(b, "Journal Mode", "WAL");
+                    DbConnectionStringBuilder.AppendKeyValuePair(b, "Synchronous", "Normal");
+                } else
+                {
+                    DbConnectionStringBuilder.AppendKeyValuePair(b, "Journal Mode", "Off");
+                }
+                
                 sqliteConn = new SQLiteConnection(b.ToString());
 
                 sqliteConn.Open();
@@ -84,19 +92,24 @@ namespace Vintagestory.API.Common
                 return false;
             }
 
+            OnOpened();
+
             return true;
         }
 
+        public virtual void OnOpened()
+        {
+
+        }
 
 
-
-        public void Close()
+        public virtual void Close()
         {
             sqliteConn.Close();
             sqliteConn.Dispose();
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Close();
         }
@@ -118,7 +131,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public bool DoIntegrityCheck(SQLiteConnection sqliteConn)
+        public bool DoIntegrityCheck(SQLiteConnection sqliteConn, bool logResults = true)
         {
             bool okay = false;
             using (SQLiteCommand command = sqliteConn.CreateCommand())
@@ -127,7 +140,7 @@ namespace Vintagestory.API.Common
 
                 using (SQLiteDataReader sqlite_datareader = command.ExecuteReader())
                 {
-                    logger.Notification(string.Format("Database: {0}. Running SQLite integrity check:", sqliteConn.DataSource));
+                    if (logResults) logger.Notification(string.Format("Database: {0}. Running SQLite integrity check:", sqliteConn.DataSource));
 
                     while (sqlite_datareader.Read())
                     {

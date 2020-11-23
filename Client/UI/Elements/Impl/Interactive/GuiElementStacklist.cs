@@ -6,7 +6,7 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Common;
 using System;
 using System.Linq;
-using VintagestoryAPI.Util;
+using Vintagestory.API.Util;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
@@ -168,6 +168,8 @@ namespace Vintagestory.API.Client
         public InventoryBase unspoilableInventory;
         public DummySlot dummySlot;
 
+        ElementBounds scissorBounds;
+
         public override string CategoryCode => "stack";
 
         public GuiHandbookItemStackPage(ICoreClientAPI capi, ItemStack stack)
@@ -201,20 +203,28 @@ namespace Vintagestory.API.Client
         {
             Texture?.Dispose();
             Texture = new TextTextureUtil(capi).GenTextTexture(Stack.GetName(), CairoFont.WhiteSmallText());
+
+            scissorBounds = ElementBounds.FixedSize(50, 50);
+            scissorBounds.ParentBounds = capi.Gui.WindowBounds;
         }
 
         public override void RenderTo(ICoreClientAPI capi, double x, double y)
         {
             float size = (float)GuiElement.scaled(25);
             float pad = (float)GuiElement.scaled(10);
-            
-
-            capi.Render.RenderItemstackToGui(dummySlot, x + pad + size/2 , y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
 
             if (Texture == null)
             {
                 Recompose(capi);
             }
+
+            scissorBounds.fixedX = pad + x / RuntimeEnv.GUIScale - size/2;
+            scissorBounds.fixedY = y / RuntimeEnv.GUIScale - size / 2;
+            scissorBounds.CalcWorldBounds();
+
+            capi.Render.PushScissor(scissorBounds, true);
+            capi.Render.RenderItemstackToGui(dummySlot, x + pad + size/2 , y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
+            capi.Render.PopScissor();
 
             capi.Render.Render2DTexturePremultipliedAlpha(
                 Texture.TextureId,
@@ -302,10 +312,22 @@ namespace Vintagestory.API.Client
         }
 
 
+        bool wasMouseDownOnElement = false;
+        public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
+        {
+            if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
+            base.OnMouseDownOnElement(api, args);
+
+            wasMouseDownOnElement = true;
+        }
+
 
         public override void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args)
         {
             if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
+            if (!wasMouseDownOnElement) return;
+
+            wasMouseDownOnElement = false;
 
             int i = 0;
 
@@ -341,6 +363,7 @@ namespace Vintagestory.API.Client
         {
             int mx = api.Input.MouseX;
             int my = api.Input.MouseY;
+            bool inbounds = Bounds.ParentBounds.PointInside(mx, my);
 
             double posY = insideBounds.absY;
 
@@ -350,7 +373,7 @@ namespace Vintagestory.API.Client
 
                 float y = (float)(5 + Bounds.absY + posY);
 
-                if (mx > Bounds.absX && mx <= Bounds.absX + Bounds.InnerWidth && my >= y-8 && my <= y + scaled(unscaledCellHeight)-8)
+                if (inbounds && mx > Bounds.absX && mx <= Bounds.absX + Bounds.InnerWidth && my >= y-8 && my <= y + scaled(unscaledCellHeight)-8)
                 {
                     api.Render.Render2DLoadedTexture(hoverOverlayTexture, (float)Bounds.absX, y-8);
                 }

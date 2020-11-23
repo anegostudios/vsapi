@@ -194,6 +194,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         void GLDisableDepthTest();
 
+        float LineWidth { set; }
+
         /// <summary>
         /// Toggle writing to the depth buffer
         /// </summary>
@@ -252,9 +254,10 @@ namespace Vintagestory.API.Client
 
         /// <summary>
         /// Convenience method for GlScissor(). Tells the graphics card to not render anything outside supplied bounds. Can be turned of again with PopScissor(). Any previously applied scissor will be restored after calling PopScissor().
-        /// </summary> 
+        /// </summary>
         /// <param name="bounds"></param>
-        void PushScissor(ElementBounds bounds);
+        /// <param name="stacking">If true, also applies scissoring from the previous call to PushScissor, otherwise replaces the scissor bounds</param>
+        void PushScissor(ElementBounds bounds, bool stacking = false);
 
         /// <summary>
         /// End scissor mode. Disable any previously set render constraints

@@ -106,14 +106,25 @@ namespace Vintagestory.API.Common
                 accumulator = 1;
             }
 
-            while (accumulator >= GlobalConstants.PhysicsFrameTime)
+            float sliceTime = GlobalConstants.PhysicsFrameTime;
+
+            // Dynamically adapt physics simulation accuracy based on the velocity
+            double velo = pos.Motion.Length();
+            sliceTime /= GameMath.Clamp((float)velo * 10, 1, 10);
+
+            while (accumulator >= sliceTime)
             {
                 prevPos.Set(pos.X, pos.Y, pos.Z);
-                DoPhysics(GlobalConstants.PhysicsFrameTime, pos);
-                accumulator -= GlobalConstants.PhysicsFrameTime;
+                DoPhysics(sliceTime, pos);
+                accumulator -= sliceTime;
             }
 
             entity.PhysicsUpdateWatcher?.Invoke(accumulator, prevPos);
+
+            if (pos.Y < -100)
+            {
+                entity.Die();
+            }
         }
 
 
@@ -160,7 +171,7 @@ namespace Vintagestory.API.Common
                 Vec3d pushvec = inblock.PushVector;
                 if (pushvec != null)
                 {
-                    float pushstrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500);
+                    float pushstrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500) * dtFac;
 
                     pos.Motion.Add(
                         pushvec.X * pushstrength,
@@ -174,7 +185,7 @@ namespace Vintagestory.API.Common
             // Gravity
             if (pos.Y > -100 && entity.ApplyGravity)
             {
-                double gravStrength = gravityPerSecond / 60f + Math.Max(0, -0.015f * pos.Motion.Y);
+                double gravStrength = (gravityPerSecond / 60f * dtFac + Math.Max(0, -0.015f * pos.Motion.Y * dtFac));
 
                 if (entity.Swimming)
                 {
@@ -192,7 +203,7 @@ namespace Vintagestory.API.Common
 
                     double boyancyStrength = GameMath.Clamp(60 * baseboyancy * swimlineSubmergedness, -1.5f, 1.5f);
 
-                    double waterDrag = GameMath.Clamp(100 * Math.Abs(pos.Motion.Y) - 0.02f, 1, 1.25f);
+                    double waterDrag = GameMath.Clamp(100 * Math.Abs(pos.Motion.Y * dtFac) - 0.02f, 1, 1.25f);
 
                     pos.Motion.Y += gravStrength * (boyancyStrength - 1);
                     pos.Motion.Y /= waterDrag;

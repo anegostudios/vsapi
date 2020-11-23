@@ -29,6 +29,18 @@ namespace Vintagestory.API.Common
         /// The hit position of the entity.
         /// </summary>
         public Vec3d HitPosition;
+
+
+        public EntitySelection Clone()
+        {
+            return new EntitySelection()
+            {
+                Entity = Entity,
+                Position = Position.Clone(),
+                Face = Face,
+                HitPosition = HitPosition.Clone()
+            };
+        }
     }
 
 }

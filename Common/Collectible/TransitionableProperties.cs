@@ -27,7 +27,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// something else o.O
         /// </summary>
-        Convert
+        Convert,
+
+        /// <summary>
+        /// Cheese ripening
+        /// </summary>
+        Ripen
     }
 
 

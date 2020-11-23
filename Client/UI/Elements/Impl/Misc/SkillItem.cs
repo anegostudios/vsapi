@@ -17,6 +17,7 @@ namespace Vintagestory.API.Client
         public AssetLocation Code;
         public LoadedTexture Texture;
         public KeyCombination Hotkey;
+        public bool Linebreak = false;
 
         public RenderSkillItemDelegate RenderHandler;
 

@@ -141,7 +141,7 @@ namespace Vintagestory.API.Common
         /// Gets some of the contents of the stack.
         /// </summary>
         /// <param name="quantity">The amount to get from the stack.</param>
-        /// <returns></returns>
+        /// <returns>The stack with the quantity take out (or as much as was available)</returns>
         public virtual ItemStack TakeOut(int quantity)
         {
             if (itemstack == null) return null;

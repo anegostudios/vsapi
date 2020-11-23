@@ -36,6 +36,11 @@ namespace Vintagestory.API.Common
         public ICoreAPI Api;
 
         /// <summary>
+        /// Optional field that can be used to define in-world position of the inventory. Is set by most container block entities. Might be null!
+        /// </summary>
+        public BlockPos Pos;
+
+        /// <summary>
         /// Is this inventory generally better suited to hold items? (e.g. set to 3 for armor in armor inventory, 2 for any item in hotbar inventory, 1 for any item in normal inventory)
         /// </summary>
         protected float baseWeight = 0;
@@ -169,7 +174,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Create a new instance of an inventory
+        /// Create a new instance of an inventory. You may choose any value for className and instanceID, but if more than one of these inventories can be opened at the same time, make sure for both of them to have a different id
         /// </summary>
         /// <param name="className"></param>
         /// <param name="instanceID"></param>
@@ -188,7 +193,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Create a new instance of an inventory. InvetoryID must have the format [className]-[instanceId]  (you may choose any value for those)
+        /// Create a new instance of an inventory. InvetoryID must have the format [className]-[instanceId]. You may choose any value for className and instanceID, but if more than one of these inventories can be opened at the same time, make sure for both of them to have a different id
         /// </summary>
         /// <param name="inventoryID"></param>
         /// <param name="api"></param>
@@ -328,7 +333,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// How well a stack fits into this inventory. 
+        /// How well a stack fits into this inventory. By default 1 for new itemstacks and 3 for an itemstack merge. Chests and other stationary container also add a +1 to the suitability if the source slot is from the players inventory.
         /// </summary>
         /// <param name="sourceSlot"></param>
         /// <param name="targetSlot"></param>
@@ -353,6 +358,7 @@ namespace Vintagestory.API.Common
             {
                 return InvNetworkUtil.GetFlipSlotsPacket(itemSlot.Inventory, itemSlot.Inventory.GetSlotId(itemSlot), targetSlotId);
             }
+
             return null;
         }
 

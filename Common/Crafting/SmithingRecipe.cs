@@ -12,7 +12,7 @@ namespace Vintagestory.API.Common
 {
     public class SmithingRecipe : LayeredVoxelRecipe<SmithingRecipe>, IByteSerializable
     {
-        public override int QuantityLayers => 3;
+        public override int QuantityLayers => 6;
         public override string RecipeCategoryCode => "smithing";
         protected override bool RotateRecipe => true;
 

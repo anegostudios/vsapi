@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cairo;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -9,6 +10,14 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common
 {
+    public static class SurfaceDrawImage
+    {
+        public static void Image(this ImageSurface surface, BitmapRef bmp, int xPos, int yPos, int width, int height)
+        {
+            surface.Image(((BitmapExternal)bmp).bmp, xPos, yPos, width, height);
+        }
+    }
+
     public class BitmapExternal : BitmapRef
     {
         public Bitmap bmp;
@@ -27,7 +36,7 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                BitmapData bmp_data = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                BitmapData bmp_data = bmp.LockBits(new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
                 int[] data = new int[Width * Height];
 
@@ -55,7 +64,7 @@ namespace Vintagestory.API.Common
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public override Color GetPixel(int x, int y)
+        public override System.Drawing.Color GetPixel(int x, int y)
         {
             return bmp.GetPixel(x, y);
         }
@@ -66,7 +75,7 @@ namespace Vintagestory.API.Common
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public override Color GetPixelRel(float x, float y)
+        public override System.Drawing.Color GetPixelRel(float x, float y)
         {
             return bmp.GetPixel((int)Math.Min(bmp.Width - 1, x * bmp.Width), (int)Math.Min(bmp.Height - 1, (y * bmp.Height)));
         }

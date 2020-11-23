@@ -157,7 +157,7 @@ namespace Vintagestory.API.Common
         /// <param name="blastType">The blast type the material is being it with.</param>
         /// <param name="material">The material of the block.</param>
         /// <returns>the resulting drop chance.</returns>
-        internal static double MaterialBlastDropChances(EnumBlastType blastType, EnumBlockMaterial material)
+        public static double MaterialBlastDropChances(EnumBlastType blastType, EnumBlockMaterial material)
         {
             return blastDropChances[(int)blastType][(int)material];
         }

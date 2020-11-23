@@ -55,7 +55,6 @@ namespace Vintagestory.API.MathTools
 
         public void LoadRayAndPos(Ray ray)
         {
-            //ray.LimitToWalls(0, 0, 0, blockSelectionTester.MapSize.X - 1, blockSelectionTester.MapSize.Y - 1, blockSelectionTester.MapSize.X - 1);
             this.ray = ray;
             pos.Set(ray.origin);
         }
@@ -63,7 +62,6 @@ namespace Vintagestory.API.MathTools
         public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null)
         {
             float distanceSq = 0;
-            //if (!blockSelectionTester.IsValidPos(pos)) return null;
 
             // Get the face where our ray will exit
             BlockFacing lastExitedBlockFace = GetExitingFullBlockFace(pos, ref lastExitedBlockFacePos);
@@ -77,7 +75,6 @@ namespace Vintagestory.API.MathTools
                 if (distanceSq >= maxDistanceSq) return null;
 
                 pos.Offset(lastExitedBlockFace);
-                //if (!blockSelectionTester.IsValidPos(pos)) return null;
 
                 lastExitedBlockFace = GetExitingFullBlockFace(pos, ref lastExitedBlockFacePos);
                 if (lastExitedBlockFace == null) return null;
@@ -177,7 +174,6 @@ namespace Vintagestory.API.MathTools
                         // Does intersect this plane within the block
                         if (Math.Abs(lastExitedBlockFacePos.X) <= w / 2 && Math.Abs(lastExitedBlockFacePos.Y) <= h / 2 && Math.Abs(lastExitedBlockFacePos.Z) <= l / 2)
                         {
-                            //lastIntersectionPoint = lastExitedBlockFacePos + planeCenterPosition;
                             hitOnBlockFace = blockSideFacing;
                             return true;
                         }

@@ -137,5 +137,11 @@ namespace Vintagestory.API.Client
         /// <param name="firstEvent">Is it the first of this events for this block? (by default the client calls the interaction every second while the player holds down the right mouse button)</param>
         /// <param name="cancelReason">The reason we cancelled the use of an item (if there is  one)</param>
         void SendHandInteraction(int mouseButton, BlockSelection blockSelection, EntitySelection entitySelection, EnumHandInteract beforeUseType, int state, bool firstEvent, EnumItemUseCancelReason cancelReason);
+
+
+        /// <summary>
+        /// If any mod denies the client event IsPlayerReady, then it has to call this method once to indicate that the player is now ready to play (which switches the server side client state from Connected to Playing)
+        /// </summary>
+        void SendPlayerNowReady();
     }
 }

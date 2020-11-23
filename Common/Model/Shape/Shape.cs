@@ -52,6 +52,7 @@ namespace Vintagestory.API.Common
         public Dictionary<int, AnimationJoint> JointsById = new Dictionary<int, AnimationJoint>();
         public Dictionary<string, AttachmentPoint> AttachmentPointsByCode = new Dictionary<string, AttachmentPoint>();
 
+
         /// <summary>
         /// Attempts to resolve all references within the shape. Logs missing references them to the errorLogger
         /// </summary>
@@ -254,6 +255,12 @@ namespace Vintagestory.API.Common
             return null;
         }
 
+        /// <summary>
+        /// Removes *all* elements with given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="stringComparison"></param>
+        /// <returns></returns>
         public bool RemoveElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {
             return RemoveElementByName(name, ref Elements, stringComparison);
@@ -264,24 +271,28 @@ namespace Vintagestory.API.Common
         {
             if (elems == null) return false;
 
+            bool removed=false;
+
             for (int i = 0; i < elems.Length; i++)
             {
                 if (elems[i].Name.Equals(name, stringComparison))
                 {
                     elems = elems.RemoveEntry(i);
-                    return true;
+                    removed = true;
+                    i--;
+                    continue;
                 }
 
                 if (elems[i].Children != null)
                 {
                     if (RemoveElementByName(name, ref elems[i].Children, stringComparison))
                     {
-                        return true;
+                        removed = true;
                     }
                 }
             }
 
-            return false;
+            return removed;
         }
 
         public ShapeElement[] CloneElements()

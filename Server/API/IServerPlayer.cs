@@ -15,6 +15,8 @@ namespace Vintagestory.API.Server
     /// </summary>
     public interface IServerPlayer : IPlayer
     {
+        int ItemCollectMode { get; set; }
+
         /// <summary>
         /// The "radius" of chunks that the player already received. If set to 0, the server will recheck all nearby chunks if they have been sent or not and send them when necessary
         /// </summary>
@@ -46,10 +48,10 @@ namespace Vintagestory.API.Server
         IServerPlayerData ServerData { get; }
 
         /// <summary>
-        /// Returns the players privilege group
+        /// Returns the players privilege role
         /// </summary>
         /// <returns></returns>
-        IPlayerRole Role { get; }
+        IPlayerRole Role { get; set; }
 
 
         /// <summary>
@@ -58,9 +60,9 @@ namespace Vintagestory.API.Server
         PlayerGroupMembership[] Groups { get; }
 
         /// <summary>
-        /// Notifies all clients of given players playerdata. Useful when you modified any of the WorldData. Does nothing if this player is not connected.
+        /// Notifies all clients of given players playerdata. Useful when you modified any of the WorldData. Does nothing if this player is not connected. Also sends the player data to the player himself
         /// </summary>
-        void BroadcastPlayerData();
+        void BroadcastPlayerData(bool sendInventory = false);
 
 
         /// <summary>
@@ -93,6 +95,11 @@ namespace Vintagestory.API.Server
         void SendMessage(int groupId, string message, EnumChatType chatType, string data = null);
 
 
+        /// <summary>
+        /// Sets the players privilege role. For a list of roles, read sapi.Config.Roles
+        /// </summary>
+        /// <param name="roleCode"></param>
+        void SetRole(string roleCode);
 
         /// <summary>
         /// Sets a player specific spawn position
@@ -119,5 +126,27 @@ namespace Vintagestory.API.Server
         /// Tells the server send a position packet to the client
         /// </summary>
         void SendPositionToClient();
+
+
+
+        /// <summary>
+        /// Allows setting of arbitrary, permanantly stored moddata attached to this player. Not synced to client.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        void SetModdata(string key, byte[] data);
+
+        /// <summary>
+        /// Removes the permanently stored mod data
+        /// </summary>
+        /// <param name="key"></param>
+        void RemoveModdata(string key);
+
+        /// <summary>
+        /// Retrieve arbitrary, permantly stored mod data
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        byte[] GetModdata(string key);
     }
 }

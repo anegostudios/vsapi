@@ -9,6 +9,7 @@ namespace Vintagestory.API.Common
 {
     public enum EnumCharacterDressType
     {
+        Unknown = -1,
         Head = 0,
         Shoulder = 1,
         UpperBody = 2,

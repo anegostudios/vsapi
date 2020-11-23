@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
@@ -16,12 +17,17 @@ namespace Vintagestory.API.Common
     public class EntityPlayer : EntityHumanoid
     {
         /// <summary>
-        /// The block or blocks currently selected by the player. Set only by the game client.
+        /// The block position previously selected by the player
+        /// </summary>
+        public BlockPos PreviousBlockSelection;
+
+        /// <summary>
+        /// The block or blocks currently selected by the player
         /// </summary>
         public BlockSelection BlockSelection;
 
         /// <summary>
-        /// The entity or entities selected by the player. Set only by the game client.
+        /// The entity or entities selected by the player
         /// </summary>
         public EntitySelection EntitySelection;
 
@@ -172,11 +178,40 @@ namespace Vintagestory.API.Common
 
         public EntityPlayer() : base()
         {
+            Stats
+                .Register("healingeffectivness")
+                //.Register("maxhealthMul")
+                .Register("maxhealthExtraPoints")
+                .Register("walkspeed")
+                .Register("hungerrate")
+                .Register("rangedWeaponsAcc")
+                .Register("rangedWeaponsSpeed")
+
+                .Register("rangedWeaponsDamage")
+                .Register("meleeWeaponsDamage")
+                .Register("mechanicalsDamage")
+                .Register("animalLootDropRate")
+                .Register("forageDropRate")
+                .Register("wildCropDropRate")
+                
+                .Register("vesselContentsDropRate")
+                .Register("oreDropRate")
+                .Register("rustyGearDropRate")
+                .Register("miningSpeed")
+                .Register("animalSeekingRange")
+                .Register("armorDurabilityLoss")
+                .Register("bowDrawingStrength")
+                .Register("wholeVesselLootChance", EnumStatBlendType.FlatSum)
+                .Register("temporalGearTLRepairCost", EnumStatBlendType.FlatSum)
+                .Register("animalHarvestingSpeed")
+            ;
 
         }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
         {
+            controls.StopAllMovement();
+
             base.Initialize(properties, api, chunkindex3d);
         }
 
@@ -231,7 +266,7 @@ namespace Vintagestory.API.Common
         private void updateEyeHeight(float dt)
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
-            if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
+            if (player != null && player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
                 lastCanStandUp = !servercontrols.Sneak && canStandUp();
                 bool moving = (servercontrols.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
@@ -299,7 +334,7 @@ namespace Vintagestory.API.Common
                     ICoreClientAPI capi = World.Api as ICoreClientAPI;
                     if (capi.Settings.Bool["viewBobbing"] && capi.Render.CameraType == EnumCameraMode.FirstPerson)
                     {
-                        LocalEyePos.Y += stepHeight / 3f;
+                        LocalEyePos.Y += stepHeight / 3f * dt * 60f;
                     }
                 }
 
@@ -549,8 +584,8 @@ namespace Vintagestory.API.Common
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
         {
-            EnumGameMode mode = World.PlayerByUid(PlayerUID)?.WorldData?.CurrentGameMode ?? EnumGameMode.Survival;
-            if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource.Type != EnumDamageType.Heal) return false;
+            EnumGameMode mode = World?.PlayerByUid(PlayerUID)?.WorldData?.CurrentGameMode ?? EnumGameMode.Survival;
+            if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource?.Type != EnumDamageType.Heal) return false;
 
             return base.ShouldReceiveDamage(damageSource, damage);
         }
@@ -672,7 +707,10 @@ namespace Vintagestory.API.Common
                             player.CurrentChunkSentRadius = 0;
                             
                             sapi.Event.RegisterCallback((bla) => {
-                                sapi.WorldManager.SendChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player, false);
+                                if (!sapi.WorldManager.HasChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player))
+                                {
+                                    sapi.WorldManager.SendChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player, false);
+                                }
 
                                 if (player.ConnectionState != EnumClientState.Offline) // Oherwise we get an endlessly looping exception spam and break the server
                                 {
@@ -683,6 +721,7 @@ namespace Vintagestory.API.Common
                         }
 
                         WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+
 
                         onTeleported?.Invoke();
 
@@ -703,12 +742,25 @@ namespace Vintagestory.API.Common
 
         public override string GetInfoText()
         {
+            StringBuilder sb = new StringBuilder();
+
             if (!Alive)
             {
-                return Lang.Get(Code.Domain + ":item-dead-creature-" + Code.Path);
+                sb.AppendLine(Lang.Get(Code.Domain + ":item-dead-creature-" + Code.Path));
+            }
+            else
+            {
+                sb.AppendLine(Lang.Get(Code.Domain + ":item-creature-" + Code.Path));
             }
 
-            return Lang.Get(Code.Domain + ":item-creature-" + Code.Path);
+            string charClass = WatchedAttributes.GetString("characterClass");
+
+            if (Lang.HasTranslation("characterclass-" + charClass))
+            {
+                sb.AppendLine(Lang.Get("characterclass-" + charClass));
+            }
+
+            return sb.ToString();
         }
 
         public override void FromBytes(BinaryReader reader, bool forClient)

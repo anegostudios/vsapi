@@ -208,6 +208,8 @@ namespace Vintagestory.API.Common.Entities
                 WatchedAttributes.SetBool("onFire", value);
             }
         }
+        bool resetLightHsv;
+
         public bool InLava;
         public long InLavaBeginTotalMs;
 
@@ -344,10 +346,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// If set, the entity will emit dynamic light
         /// </summary>
-        public virtual byte[] LightHsv
-        {
-            get { return null; }
-        }
+        public virtual byte[] LightHsv { get; set; } = null;
 
 
         /// <summary>
@@ -461,9 +460,20 @@ namespace Vintagestory.API.Common.Entities
 
             WatchedAttributes.RegisterModifiedListener("onFire", () =>
             {
-                if (IsOnFire)
+                bool onfire = IsOnFire;
+                if (onfire)
                 {
                     OnFireBeginTotalMs = World.ElapsedMilliseconds;
+                }
+
+                if (onfire && LightHsv == null)
+                {
+                    LightHsv = new byte[] { 5, 7, 10 };
+                    resetLightHsv = true;
+                }
+                if (!onfire && resetLightHsv)
+                {
+                    LightHsv = null;
                 }
             });
 
@@ -574,9 +584,20 @@ namespace Vintagestory.API.Common.Entities
             if (Properties.Drops == null) return null;
             List<ItemStack> todrop = new List<ItemStack>();
 
+            float dropMul = 1;
+
+            if (!Attributes.GetBool("isMechanical", false) && byPlayer != null)
+            {
+                dropMul = 1 + byPlayer.Entity.Stats.GetBlended("animalLootDropRate");
+            }
+
             for (int i = 0; i < Properties.Drops.Length; i++)
             {
-                ItemStack stack = Properties.Drops[i].GetNextItemStack();
+                BlockDropItemStack bdStack = Properties.Drops[i];
+                float extraMul = 1f;
+                if (bdStack.Code.Path == "gear-rusty" && byPlayer != null) extraMul = byPlayer.Entity.Stats.GetBlended("rustyGearDropRate");
+
+                ItemStack stack = Properties.Drops[i].GetNextItemStack(dropMul * extraMul);
                 if (stack == null) continue;
 
                 todrop.Add(stack);
@@ -716,6 +737,11 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="dt"></param>
         public virtual void OnGameTick(float dt)
         {
+            if (World.EntityDebugMode) {
+                UpdateDebugAttributes();
+                DebugAttributes.MarkAllDirty();
+            }
+
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
             if (World.FrameProfiler.Enabled)
@@ -1167,6 +1193,16 @@ namespace Vintagestory.API.Common.Entities
             return false;
         }
 
+        public virtual bool HasBehavior<T>() where T : EntityBehavior
+        {
+            for (int i = 0; i < SidedProperties.Behaviors.Count; i++)
+            {
+                if (SidedProperties.Behaviors[i] is T) return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Returns the behavior instance for given entity. Returns null if it doesn't exist.
         /// </summary>
@@ -1385,6 +1421,11 @@ namespace Vintagestory.API.Common.Entities
             ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Revive, Type = EnumDamageType.Heal }, 9999);
             AnimManager?.StopAnimation("die");
             IsOnFire = false;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnEntityRevive();
+            }
         }
 
 
@@ -1450,7 +1491,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="range"></param>
         public virtual void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
         {
-            AssetLocation[] locations = null;
+            AssetLocation[] locations;
             if (Properties.ResolvedSounds != null && Properties.ResolvedSounds.TryGetValue(type, out locations) && locations.Length > 0)
             {
                 World.PlaySoundAt(

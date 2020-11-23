@@ -14,9 +14,9 @@ namespace Vintagestory.API.Client
         protected TextDrawUtil textUtil;
         
         protected string displayText;
-        protected CairoFont font;
+        public CairoFont font;
 
-        protected TextLine[] lines;
+        public TextLine[] lines;
 
 
         public RichTextComponent(ICoreClientAPI api, string displayText, CairoFont font) : base(api)

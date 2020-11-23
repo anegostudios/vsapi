@@ -13,6 +13,7 @@ namespace Vintagestory.API.Common
         Notification,
         Warning,
         Error,
-        Fatal
+        Fatal,
+        Audit
     }
 }

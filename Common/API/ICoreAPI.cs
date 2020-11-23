@@ -135,6 +135,11 @@ namespace Vintagestory.API.Common
     public interface ICoreAPI : ICoreAPICommon
     {
         /// <summary>
+        /// The local Logger instance.
+        /// </summary>
+        ILogger Logger { get; }
+
+        /// <summary>
         /// The command line arguments that were used to start the client or server application
         /// </summary>
         string[] CmdlArguments { get; }

@@ -178,7 +178,7 @@ namespace Vintagestory.API.Common
         /// <param name="dropChanceMultiplier"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropChanceMultiplier, ref EnumHandling handling)
+        public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropChanceMultiplier, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
 
@@ -206,7 +206,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockFace"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool CanAttachBlockAt(IBlockAccessor world, Block block, BlockPos pos, BlockFacing blockFace, ref EnumHandling handling)
+        public virtual bool CanAttachBlockAt(IBlockAccessor world, Block block, BlockPos pos, BlockFacing blockFace, ref EnumHandling handling, Cuboidi attachmentArea = null)
         {
             handling = EnumHandling.PassThrough;
 

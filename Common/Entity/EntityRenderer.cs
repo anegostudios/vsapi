@@ -32,7 +32,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Called when the entity is now fully either spawned or fully loaded
         /// </summary>
-        public void OnEntityLoaded()
+        public virtual void OnEntityLoaded()
         {
 
         }
@@ -112,5 +112,7 @@ namespace Vintagestory.API.Common.Entities
         {
             
         }
+
+        
     }
 }

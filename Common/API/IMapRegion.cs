@@ -29,7 +29,7 @@ namespace Vintagestory.API.Common
     }
 
     /// <summary>
-    /// 2D Map data for a 8x8 area of chunk columns. Holds a few maps for the chunk generation.
+    /// 2D Map data for a 16x16 area of chunk columns. Holds a few maps for the chunk generation.
     /// </summary>
     public interface IMapRegion
     {

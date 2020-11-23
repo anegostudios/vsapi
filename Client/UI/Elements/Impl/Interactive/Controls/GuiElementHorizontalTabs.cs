@@ -18,6 +18,7 @@ namespace Vintagestory.API.Client
 
         internal GuiTab[] tabs;
 
+        LoadedTexture baseTexture;
         LoadedTexture[] hoverTextures;
         LoadedTexture[] notifyTextures;
         int[] tabWidths;
@@ -25,7 +26,8 @@ namespace Vintagestory.API.Client
 
         public int activeElement = 0;
 
-        double unscaledTabSpacing = 5;
+        public double unscaledTabSpacing = 5;
+        public double unscaledTabPadding = 3;
 
         public bool AlarmTabs;
         int alarmTabIndex = -1;
@@ -49,6 +51,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < tabs.Length; i++) hoverTextures[i] = new LoadedTexture(capi);
             
             tabWidths = new int[tabs.Length];
+            baseTexture = new LoadedTexture(capi);
         }
 
         CairoFont notifyFont;
@@ -68,11 +71,17 @@ namespace Vintagestory.API.Client
         }
 
 
-        public override void ComposeTextElements(Context ctx, ImageSurface surface)
+        public override void ComposeTextElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
+
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
+            Context ctx = new Context(surface);
+
+            Font.SetupContext(ctx);
+
             double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
-            double padding = scaled(3);
+            double padding = scaled(unscaledTabPadding);
 
             double xpos = spacing;
 
@@ -84,11 +93,11 @@ namespace Vintagestory.API.Client
                 tabWidths[i] = (int)(ctx.TextExtents(tabs[i].Name).Width + 2 * padding + 1);
                 
                 ctx.NewPath();
-                ctx.MoveTo(Bounds.drawX + xpos, Bounds.drawY + Bounds.InnerHeight);
-                ctx.LineTo(Bounds.drawX + xpos, Bounds.drawY + radius);
-                ctx.Arc(Bounds.drawX + xpos + radius, Bounds.drawY + radius, radius, 180 * GameMath.DEG2RAD, 270 * GameMath.DEG2RAD);
-                ctx.Arc(Bounds.drawX + xpos + tabWidths[i] - radius, Bounds.drawY + radius, radius, -90 * GameMath.DEG2RAD, 0 * GameMath.DEG2RAD);
-                ctx.LineTo(Bounds.drawX + xpos + tabWidths[i], Bounds.drawY + Bounds.InnerHeight);
+                ctx.MoveTo(xpos, Bounds.InnerHeight);
+                ctx.LineTo(xpos, radius);
+                ctx.Arc(xpos + radius, radius, radius, 180 * GameMath.DEG2RAD, 270 * GameMath.DEG2RAD);
+                ctx.Arc(xpos + tabWidths[i] - radius, radius, radius, -90 * GameMath.DEG2RAD, 0 * GameMath.DEG2RAD);
+                ctx.LineTo(xpos + tabWidths[i], Bounds.InnerHeight);
                 ctx.ClosePath();
 
                 double[] color = GuiStyle.DialogDefaultBgColor;
@@ -105,7 +114,7 @@ namespace Vintagestory.API.Client
                     Font.SetupContext(ctx);
                 }
 
-                DrawTextLineAt(ctx, tabs[i].Name, Bounds.drawX + xpos + padding, Bounds.drawY + 1);
+                DrawTextLineAt(ctx, tabs[i].Name, xpos + padding, 1);
 
                 xpos += tabWidths[i] + spacing;
             }
@@ -114,13 +123,18 @@ namespace Vintagestory.API.Client
 
             ComposeOverlays();
 
+            generateTexture(surface, ref baseTexture);
+
+
+            ctx.Dispose();
+            surface.Dispose();
         }
 
         private void ComposeOverlays(bool isNotifyTabs = false)
         {
-            double radius = scaled(3);
+            double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
-            double padding = scaled(3);
+            double padding = scaled(unscaledTabPadding);
 
             for (int i = 0; i < tabs.Length; i++)
             {
@@ -180,6 +194,8 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
+            api.Render.Render2DTexture(baseTexture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
+
             double spacing = scaled(unscaledTabSpacing);
 
             int mouseRelX = api.Input.MouseX - (int)Bounds.absX;
@@ -246,9 +262,14 @@ namespace Vintagestory.API.Client
         /// Sets the current tab to the given index.
         /// </summary>
         /// <param name="selectedIndex">The current index of the tab.</param>
-        public void SetValue(int selectedIndex)
+        public void SetValue(int selectedIndex, bool callhandler=true)
         {
-            handler(tabs[selectedIndex].DataInt);
+            if (callhandler)
+            {
+                handler(tabs[selectedIndex].DataInt);
+                api.Gui.PlaySound("menubutton_wood");
+            }
+
             activeElement = selectedIndex;
         }
 
@@ -256,6 +277,7 @@ namespace Vintagestory.API.Client
         {
             base.Dispose();
 
+            baseTexture?.Dispose();
             for (int i = 0; i < hoverTextures.Length; i++)
             {
                 hoverTextures[i].Dispose();

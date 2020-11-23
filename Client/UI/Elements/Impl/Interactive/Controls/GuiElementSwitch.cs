@@ -60,7 +60,7 @@ namespace Vintagestory.API.Client
             Context ctx = genContext(surface);
 
             RoundRectangle(ctx, 0, 0, size, size, 1);
-            fillWithPattern(api, ctx, waterTextureName, true);
+            fillWithPattern(api, ctx, waterTextureName, false, true);
 
             generateTexture(surface, ref onTexture);
 

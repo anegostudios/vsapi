@@ -7,6 +7,9 @@ namespace Vintagestory.API.Client
     public delegate void MouseEventDelegate(MouseEvent e);
     public delegate void KeyEventDelegate(KeyEvent e);
     public delegate void PlayerEventDelegate(IClientPlayer byPlayer);
+
+    public delegate bool IsPlayerReadyDelegate(ref EnumHandling handling);
+
     public delegate void FileDropDelegate(FileDropEvent e);
 
     public delegate void IngameErrorDelegate(object sender, string errorCode, string text);
@@ -85,6 +88,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         event PlayerEventDelegate PlayerLeave;
 
+        /// <summary>
+        /// Fired when a player is ready to join but awaits any potential mod-user interaction, such as a character selection screen
+        /// </summary>
+        event IsPlayerReadyDelegate IsPlayerReady;
 
         /// <summary>
         /// Called when a players entity got in range
@@ -103,9 +110,14 @@ namespace Vintagestory.API.Client
         event OnGamePauseResume PauseResume;
 
         /// <summary>
-        /// When the player leaves the world to go back to the main menu
+        /// When the player wants to leave the world to go back to the main menu
         /// </summary>
         event API.Common.Action LeaveWorld;
+
+        /// <summary>
+        /// When the player left the world to go back to the main menu
+        /// </summary>
+        event API.Common.Action LeftWorld;
 
         /// <summary>
         /// When a player block has been modified. OldBlock param may be null!

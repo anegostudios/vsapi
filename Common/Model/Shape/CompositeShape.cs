@@ -102,6 +102,7 @@ namespace Vintagestory.API.Common
                 Overlays = overlaysClone,
                 Format = Format,
                 VoxelizeTexture = VoxelizeTexture,
+                InsertBakedTextures = InsertBakedTextures,
                 rotateX = rotateX,
                 rotateY = rotateY,
                 rotateZ = rotateZ,
@@ -121,6 +122,7 @@ namespace Vintagestory.API.Common
             {
                 Base = Base?.Clone(),
                 Format = Format,
+                InsertBakedTextures = InsertBakedTextures,
                 rotateX = rotateX,
                 rotateY = rotateY,
                 rotateZ = rotateZ,

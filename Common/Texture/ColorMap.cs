@@ -18,6 +18,8 @@ namespace Vintagestory.API.Common
         // Loaded by the game engine client
         public int[] Pixels;
         public Size2i OuterSize;
-        internal int BlockAtlasTextureSubId;
+        public int BlockAtlasTextureSubId;
+        public int RectIndex;
+
     }
 }

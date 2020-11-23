@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class GuiElementSkillItemGrid : GuiElement
     {
-        Dictionary<int, SkillItem> skillItems;
+        List<SkillItem> skillItems;
         int cols;
         int rows;
 
@@ -35,7 +35,7 @@ namespace Vintagestory.API.Client
         /// <param name="rows">The Rows of the Item Grid.</param>
         /// <param name="OnSlotClick">The event fired when the slot is clicked.</param>
         /// <param name="bounds">The bounds of the Item Grid.</param>
-        public GuiElementSkillItemGrid(ICoreClientAPI capi, Dictionary<int, SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds) : base(capi, bounds)
+        public GuiElementSkillItemGrid(ICoreClientAPI capi, List<SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds) : base(capi, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
 
@@ -122,9 +122,10 @@ namespace Vintagestory.API.Client
                     if (over) OnSlotOver?.Invoke(i);
                 }
 
-                SkillItem skillItem = null;
-                skillItems.TryGetValue(i, out skillItem);
-                if (skillItem == null) { continue; }
+                if (skillItems.Count <= i) continue;
+                SkillItem skillItem = skillItems[i];
+
+                if (skillItem == null) continue;
 
                 if (skillItem.Texture != null)
                 {
@@ -178,7 +179,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnSlotClick">The effect when a slot is clicked.</param>
         /// <param name="bounds">The bounds of the item grid.</param>
         /// <param name="key">The name of the item grid to add.</param>
-        public static GuiComposer AddSkillItemGrid(this GuiComposer composer, Dictionary<int, SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds, string key = null)
+        public static GuiComposer AddSkillItemGrid(this GuiComposer composer, List<SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {

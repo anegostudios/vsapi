@@ -39,6 +39,9 @@ namespace Vintagestory.API.Common
     /// <param name="chunks"></param>
     public delegate void ChunkColumnLoadedDelegate(Vec2i chunkCoord, IWorldChunk[] chunks);
 
+
+    public delegate bool MatchGridRecipeDelegate(IPlayer player, GridRecipe recipe, ItemSlot[] ingredients, int gridWidth);
+
     
 
     /// <summary>
@@ -64,9 +67,19 @@ namespace Vintagestory.API.Common
         event ChunkDirtyDelegate ChunkDirty;
 
         /// <summary>
-        /// Called whenever any method calls world.BlockAccessor.GetClimateAt(). Used by the survival mode to modify the rainfall and temperature values to adjust for seasonal and day/night temperature variations. Be sure to also register to OnGetClimateForDate.
+        /// Called whenever any method calls world.BlockAccessor.GetClimateAt(). Used by the survival mod to modify the rainfall and temperature values to adjust for seasonal and day/night temperature variations. Be sure to also register to OnGetClimateForDate.
         /// </summary>
         event OnGetClimateDelegate OnGetClimate;
+
+        /// <summary>
+        /// Called whenever any method calls world.BlockAccessor.GetWindSpeedAt(). Used by the survival mod to set the wind speed
+        /// </summary>
+        event OnGetWindSpeedDelegate OnGetWindSpeed;
+
+        /// <summary>
+        /// Called when a player tries to gridcraft something 
+        /// </summary>
+        event MatchGridRecipeDelegate MatchesGridRecipe;
 
         /// <summary>
         /// There's 2 global event busses, 1 on the client and 1 on the server. This pushes an event onto the bus.
@@ -146,5 +159,6 @@ namespace Vintagestory.API.Common
         void EnqueueMainThreadTask(API.Common.Action action, string code);
 
         void TriggerEntityDeath(Entity entity, DamageSource damageSourceForDeath);
+        bool TriggerMatchesRecipe(IPlayer forPlayer, GridRecipe gridRecipe, ItemSlot[] ingredients, int gridWidth);
     }
 }

@@ -103,6 +103,7 @@ namespace Vintagestory.API.Common
             if (accum > 0.25f)
             {
                 walkSpeed = WalkSpeedSupplier == null ? 1f : WalkSpeedSupplier();
+                accum = 0;
             }
             
             //string debug = "";
@@ -144,7 +145,7 @@ namespace Vintagestory.API.Common
                         anim.ShouldPlayTillEnd = true;
                     }
                 }
-
+                
                 if (!anim.Running)
                 {
                     continue;

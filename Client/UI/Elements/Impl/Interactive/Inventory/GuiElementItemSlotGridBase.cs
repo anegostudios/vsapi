@@ -6,7 +6,6 @@ using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Client;
-using VintagestoryAPI.Util;
 using Vintagestory.API.Util;
 using System.Linq;
 
@@ -36,6 +35,7 @@ namespace Vintagestory.API.Client
         Dictionary<int, float> slotNotifiedZoomEffect = new Dictionary<int, float>();
 
         protected ElementBounds[] slotBounds;
+        protected ElementBounds[] scissorBounds;
 
         protected LoadedTexture slotTexture, highlightSlotTexture;
         protected LoadedTexture crossedOutTexture;
@@ -110,6 +110,7 @@ namespace Vintagestory.API.Client
         void ComposeInteractiveElements()
         { 
             slotBounds = new ElementBounds[availableSlots.Count];
+            scissorBounds = new ElementBounds[availableSlots.Count];
             slotQuantityTextures = new LoadedTexture[availableSlots.Count];
             for (int k = 0; k < slotQuantityTextures.Length; k++) slotQuantityTextures[k] = new LoadedTexture(this.api);
 
@@ -290,6 +291,9 @@ namespace Vintagestory.API.Client
                 slotBounds[slotIndex] = ElementBounds.Fixed(x, y, unscaledSlotWidth, unscaledSlotHeight).WithParent(Bounds);
                 slotBounds[slotIndex].CalcWorldBounds();
 
+                scissorBounds[slotIndex] = ElementBounds.Fixed(x + 2, y + 2, unscaledSlotWidth - 4, unscaledSlotHeight - 4).WithParent(Bounds);
+                scissorBounds[slotIndex].CalcWorldBounds();
+
                 ComposeSlotOverlays(slot, val.Key, slotIndex);
 
                 slotIndex++;
@@ -334,7 +338,9 @@ namespace Vintagestory.API.Client
 
                 float[] color = ColorUtil.ToRGBAFloats(slot.Itemstack.Collectible.GetItemDamageColor(slot.Itemstack));
                 textCtx.SetSourceRGB(color[0], color[1], color[2]);
-                float health = (float)slot.Itemstack.Attributes.GetInt("durability", slot.Itemstack.Collectible.Durability) / slot.Itemstack.Collectible.Durability;
+
+                int dura = slot.Itemstack.Collectible.GetDurability(slot.Itemstack);
+                float health = (float)slot.Itemstack.Attributes.GetInt("durability", dura) / dura;
 
                 width = health * (slotBounds[slotIndex].InnerWidth - scaled(8));
 
@@ -403,6 +409,8 @@ namespace Vintagestory.API.Client
         }
 
 
+        ElementBounds scBounds = new ElementBounds();
+
         public override void RenderInteractiveElements(float deltaTime)
         {
             (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = !isLeftMouseDownStartedInsideElem;
@@ -416,8 +424,10 @@ namespace Vintagestory.API.Client
             int i = 0;
             foreach (var val in renderedSlots)
             {
+                ElementBounds bounds = slotBounds[i];
+
                 // Don't need to render stuff completely outside, saves us many render calls (~down to 100 draw calls instead of 600 for creative inventory)
-                if (slotBounds[i].PartiallyInside(Bounds.ParentBounds))
+                if (bounds.PartiallyInside(Bounds.ParentBounds))
                 {
                     ItemSlot slot = val.Value;
                     int slotId = val.Key;
@@ -425,16 +435,15 @@ namespace Vintagestory.API.Client
                     if (((slot.Itemstack == null || AlwaysRenderIcon) && slot.BackgroundIcon != null)  || slot.HexBackgroundColor != null)
                     {
                         string key = slot.BackgroundIcon + "-" + slot.HexBackgroundColor;
-                        api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBgIconAndColor[key], slotBounds[i]);
+                        api.Render.Render2DTexturePremultipliedAlpha(slotTextureIdsByBgIconAndColor[key], bounds);
                     } else
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(slotTexture.TextureId, slotBounds[i]);
+                        api.Render.Render2DTexturePremultipliedAlpha(slotTexture.TextureId, bounds);
                     }
                     
 
                     if (highlightSlotId == slotId || hoverSlotId == slotId || leftMouseDownDistributeSlotsBySlotid.ContainsKey(slotId))
                     {
-                        ElementBounds bounds = slotBounds[i];
                         api.Render.Render2DTexturePremultipliedAlpha(
                             highlightSlotTexture.TextureId, (int)(bounds.renderX - 2), (int)(bounds.renderY - 2), bounds.OuterWidthInt + 4, bounds.OuterHeightInt + 4
                         );
@@ -451,6 +460,7 @@ namespace Vintagestory.API.Client
                         dy = 4 * (float)api.World.Rand.NextDouble() - 2f;
                     }
 
+                    api.Render.PushScissor(scissorBounds[i], true);
 
                     api.Render.RenderItemstackToGui(
                         slot,
@@ -461,10 +471,11 @@ namespace Vintagestory.API.Client
                         ColorUtil.WhiteArgb
                     );
 
+                    api.Render.PopScissor();
+
                     if (slot.DrawUnavailable)
                     {
-                        ElementBounds bounds = slotBounds[i];
-                        api.Render.Render2DTexturePremultipliedAlpha(crossedOutTexture.TextureId, (int)(bounds.renderX), (int)(bounds.renderY), crossedOutTexture.Width, crossedOutTexture.Height, 500);
+                        api.Render.Render2DTexturePremultipliedAlpha(crossedOutTexture.TextureId, (int)(bounds.renderX), (int)(bounds.renderY), crossedOutTexture.Width, crossedOutTexture.Height, 250);
                     }
 
                     if (slotQuantityTextures[i].TextureId != 0)
@@ -485,6 +496,7 @@ namespace Vintagestory.API.Client
                 api.Input.TriggerOnMouseLeaveSlot(inventory[hoverSlotId]);
             }
             hoverSlotId = -1;
+            tabbedSlotId = -1;
 
             (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = true;
         }
@@ -577,15 +589,54 @@ namespace Vintagestory.API.Client
             ComposeInteractiveElements();
         }
 
-        
+
 
         #endregion
 
         #region Keyboard, Mouse
 
+        int tabbedSlotId=-1;
+
+        public bool KeyboardControlEnabled = true;
+
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
             base.OnKeyDown(api, args);
+
+            if (!HasFocus) return;
+
+            if (KeyboardControlEnabled)
+            {
+                if (args.KeyCode == (int)GlKeys.Up)
+                {
+                    tabbedSlotId = Math.Max(-1, tabbedSlotId - cols);
+                    highlightSlotId = tabbedSlotId >= 0 ? renderedSlots.GetKeyAtIndex(tabbedSlotId) : -1;
+                }
+
+                if (args.KeyCode == (int)GlKeys.Down)
+                {
+                    tabbedSlotId = Math.Min(renderedSlots.Count - 1, tabbedSlotId + cols);
+                    highlightSlotId = renderedSlots.GetKeyAtIndex(tabbedSlotId);
+                }
+
+                if (args.KeyCode == (int)GlKeys.Right)
+                {
+                    tabbedSlotId = Math.Min(renderedSlots.Count - 1, tabbedSlotId + 1);
+                    highlightSlotId = renderedSlots.GetKeyAtIndex(tabbedSlotId);
+                }
+                if (args.KeyCode == (int)GlKeys.Left)
+                {
+                    tabbedSlotId = Math.Max(-1, tabbedSlotId - 1);
+                    highlightSlotId = tabbedSlotId >= 0 ? renderedSlots.GetKeyAtIndex(tabbedSlotId) : -1;
+                }
+                if (args.KeyCode == (int)GlKeys.Enter)
+                {
+                    if (highlightSlotId >= 0)
+                    {
+                        SlotClick(api, highlightSlotId, EnumMouseButton.Left, true, false, false);
+                    }
+                }
+            }
         }
 
         public override void OnMouseDown(ICoreClientAPI api, MouseEvent mouse)
@@ -718,6 +769,11 @@ namespace Vintagestory.API.Client
                     {
                         api.Input.TriggerOnMouseEnterSlot(newHoverSlot);
                         hoverInv = newHoverSlot.Inventory;
+                    }
+
+                    if (newHoverSlotid != hoverSlotId)
+                    {
+                        tabbedSlotId = -1;
                     }
 
                     hoverSlotId = newHoverSlotid;

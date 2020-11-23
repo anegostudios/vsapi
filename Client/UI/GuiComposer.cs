@@ -84,6 +84,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool Tabbable = true;
 
+        bool renderFocusHighlight;
+
         internal GuiComposer(ICoreClientAPI api, ElementBounds bounds, string dialogName)
         {
             staticElementsTexture = new LoadedTexture(api);
@@ -409,6 +411,8 @@ namespace Vintagestory.API.Client
         {
             bool beforeHandled = false;
             bool nowHandled = false;
+            renderFocusHighlight = false;
+
             foreach (GuiElement element in interactiveElements.Values)
             {
                 if (!beforeHandled)
@@ -485,9 +489,14 @@ namespace Vintagestory.API.Client
         /// <param name="mouse">The mouse wheel information.</param>
         public void OnMouseWheel(MouseWheelEventArgs mouse) {
             // Prefer an element that is currently hovered 
-            foreach (GuiElement element in interactiveElements.Values)
+            foreach (var val in interactiveElements)
             {
+                GuiElement element = val.Value;
+                
+
                 if (element.IsPositionInside(Api.Input.MouseX, Api.Input.MouseY)) {
+                    
+
                     element.OnMouseWheel(Api, mouse);
                 }
                 
@@ -502,6 +511,8 @@ namespace Vintagestory.API.Client
             }
         }
 
+
+        
         
         /// <summary>
         /// Fires the OnKeyDown events.
@@ -518,6 +529,7 @@ namespace Vintagestory.API.Client
 
             if (haveFocus && !args.Handled && args.KeyCode == (int)GlKeys.Tab && Tabbable)
             {
+                renderFocusHighlight = true;
                 GuiElement elem = CurrentTabIndexElement;
                 if (elem != null && MaxTabIndex > 0)
                 {
@@ -648,7 +660,7 @@ namespace Vintagestory.API.Client
             foreach (GuiElement element in interactiveElementsInDrawOrder)
             {
                 // Seperate due to clipping
-                if (element.HasFocus)
+                if (element.HasFocus && renderFocusHighlight)
                 {
                     element.RenderFocusOverlay(deltaTime);
                 }
