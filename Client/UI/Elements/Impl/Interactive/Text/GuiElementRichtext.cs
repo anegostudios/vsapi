@@ -81,6 +81,17 @@ namespace Vintagestory.API.Client
 
         public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
+            Compose();
+        }
+
+
+        ImageSurface surface;
+        Context ctx;
+
+        public bool HalfComposed;
+
+        public void Compose(bool genTextureLater = false)
+        {
             ElementBounds rtbounds = Bounds.CopyOnlySize();
             rtbounds.fixedPaddingX = 0;
             rtbounds.fixedPaddingY = 0;
@@ -96,18 +107,37 @@ namespace Vintagestory.API.Client
                 hgt = Math.Max(1, Math.Max(hgt, richtTextTexture.Height));
             }
 
-            ImageSurface surface = new ImageSurface(Format.ARGB32, wdt, hgt);
-            Context ctx = new Context(surface);
+            surface = new ImageSurface(Format.ARGB32, wdt, hgt);
+            ctx = new Context(surface);
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Paint();
 
-            ComposeFor(rtbounds, ctx, surface);
+            if (!genTextureLater)
+            {
+                ComposeFor(rtbounds, ctx, surface);
+                generateTexture(surface, ref richtTextTexture);
+
+                ctx.Dispose();
+                surface.Dispose();
+                ctx = null;
+                surface = null;
+            } else
+            {
+                HalfComposed = true;
+            }
+        }
+
+
+        public void genTexture()
+        {
             generateTexture(surface, ref richtTextTexture);
 
             ctx.Dispose();
             surface.Dispose();
+            ctx = null;
+            surface = null;
+            HalfComposed = false;
         }
-
 
         public void CalcHeightAndPositions()
         {

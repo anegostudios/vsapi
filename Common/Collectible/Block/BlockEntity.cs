@@ -186,14 +186,17 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void OnBlockUnloaded()
         {
-            foreach (long handlerId in TickHandlers)
+            if (Api != null)
             {
-                Api.Event.UnregisterGameTickListener(handlerId);
-            }
+                foreach (long handlerId in TickHandlers)
+                {
+                    Api.Event.UnregisterGameTickListener(handlerId);
+                }
 
-            foreach (long handlerId in CallbackHandlers)
-            {
-                Api.Event.UnregisterCallback(handlerId);
+                foreach (long handlerId in CallbackHandlers)
+                {
+                    Api.Event.UnregisterCallback(handlerId);
+                }
             }
 
             foreach (var val in Behaviors)

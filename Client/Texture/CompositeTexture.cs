@@ -225,7 +225,7 @@ namespace Vintagestory.API.Client
                 for (int i = 0; i < ct.Overlays.Length; i++)
                 {
                     bct.TextureFilenames[i + 1] = ct.Overlays[i].Clone();
-                    bct.BakedName.Path += "++" + ct.Overlays[i].Path;
+                    bct.BakedName.Path += "++" + ct.Overlays[i].ToShortString();
                 }
             }
             else

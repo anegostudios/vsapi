@@ -236,7 +236,16 @@ namespace Vintagestory.API.Common
 
         public static bool parseHexColor(string colorText, out double[] color)
         {
-            System.Drawing.Color cl = ColorTranslator.FromHtml(colorText);
+            System.Drawing.Color cl;
+            try
+            {
+                cl = ColorTranslator.FromHtml(colorText);
+            } catch (Exception)
+            {
+                color = new double[] { 0, 0, 0, 1 };
+                return false;
+            }
+
             if (cl == null)
             {
                 color = null;

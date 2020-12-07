@@ -97,10 +97,13 @@ namespace Vintagestory.API.Client
             Bounds.fixedHeight = 25 + unscaledTotalHeight;
         }
 
+        bool readyToRender = false;
 
         void Recompose()
         {
             if (curSlot?.Itemstack == null) return;
+
+            readyToRender = false;
 
             string title = curSlot.GetStackName();
             string desc = OnRequireInfoText(curSlot);
@@ -118,71 +121,84 @@ namespace Vintagestory.API.Client
             ElementBounds textBounds = Bounds.CopyOnlySize();
             textBounds.CalcWorldBounds();
 
+            TyronThreadPool.QueueTask(() =>
+            {
+                /*int i = 0;
+                while (i < 5 && titleElement.HalfComposed) System.Threading.Thread.Sleep(5);*/
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
-            Context ctx = genContext(surface);
+                ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
+                Context ctx = genContext(surface);
 
-            ctx.SetSourceRGBA(0, 0, 0, 0);
-            ctx.Paint();
+                ctx.SetSourceRGBA(0, 0, 0, 0);
+                ctx.Paint();
 
-            ctx.SetSourceRGBA(backTint[0], backTint[1], backTint[2], backTint[3]);
-            RoundRectangle(ctx, textBounds.bgDrawX, textBounds.bgDrawY, textBounds.OuterWidthInt, textBounds.OuterHeightInt, GuiStyle.DialogBGRadius);
-            ctx.FillPreserve();
+                ctx.SetSourceRGBA(backTint[0], backTint[1], backTint[2], backTint[3]);
+                RoundRectangle(ctx, textBounds.bgDrawX, textBounds.bgDrawY, textBounds.OuterWidthInt, textBounds.OuterHeightInt, GuiStyle.DialogBGRadius);
+                ctx.FillPreserve();
 
-            ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
-            ctx.LineWidth = 3 * 1.75;
-            ctx.StrokePreserve();
-            surface.Blur(8.2);
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
+                ctx.LineWidth = 3 * 1.75;
+                ctx.StrokePreserve();
+                surface.Blur(8.2);
 
-            ctx.SetSourceRGBA(backTint[0] / 2, backTint[1] / 2, backTint[2] / 2, backTint[3]);
-            ctx.Stroke();
-
-
-            int w = (int)(scaled(ItemStackSize) + scaled(40));
-            int h = (int)(scaled(ItemStackSize) + scaled(40));
-
-            ImageSurface shSurface = new ImageSurface(Format.Argb32, w, h);
-            Context shCtx = genContext(shSurface);
-
-            shCtx.SetSourceRGBA(GuiStyle.DialogSlotBackColor);
-            RoundRectangle(shCtx, 0, 0, w, h, 0);
-            shCtx.FillPreserve();
-
-            shCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
-            shCtx.LineWidth = 5;
-            shCtx.Stroke();
-            shSurface.Blur(7);
-            shSurface.Blur(7);
-            shSurface.Blur(7);
-            EmbossRoundRectangleElement(shCtx, 0, 0, w, h, true);
+                ctx.SetSourceRGBA(backTint[0] / 2, backTint[1] / 2, backTint[2] / 2, backTint[3]);
+                ctx.Stroke();
 
 
-            ctx.SetSourceSurface(shSurface, (int)(textBounds.drawX), (int)(textBounds.drawY + scaled(MarginTop)));
-            ctx.Rectangle(textBounds.drawX, textBounds.drawY + scaled(MarginTop), w, h);
-            ctx.Fill();
+                int w = (int)(scaled(ItemStackSize) + scaled(40));
+                int h = (int)(scaled(ItemStackSize) + scaled(40));
 
-            shCtx.Dispose();
-            shSurface.Dispose();
+                ImageSurface shSurface = new ImageSurface(Format.Argb32, w, h);
+                Context shCtx = genContext(shSurface);
+
+                shCtx.SetSourceRGBA(GuiStyle.DialogSlotBackColor);
+                RoundRectangle(shCtx, 0, 0, w, h, 0);
+                shCtx.FillPreserve();
+
+                shCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
+                shCtx.LineWidth = 5;
+                shCtx.Stroke();
+                shSurface.Blur(7);
+                shSurface.Blur(7);
+                shSurface.Blur(7);
+                EmbossRoundRectangleElement(shCtx, 0, 0, w, h, true);
 
 
-            titleElement.ComposeElements(ctx, surface);
+                ctx.SetSourceSurface(shSurface, (int)(textBounds.drawX), (int)(textBounds.drawY + scaled(MarginTop)));
+                ctx.Rectangle(textBounds.drawX, textBounds.drawY + scaled(MarginTop), w, h);
+                ctx.Fill();
 
-            descriptionElement.ComposeElements(ctx, surface);
+                shCtx.Dispose();
+                shSurface.Dispose();
 
-            generateTexture(surface, ref texture);
 
-            ctx.Dispose();
-            surface.Dispose();
+                api.Event.EnqueueMainThreadTask(() =>
+                {
+                    //titleElement.genTexture();
+                    //descriptionElement.genTexture();
 
-            double offset = (int)(30 + ItemStackSize / 2);
-            scissorBounds = ElementBounds.Fixed(4 + offset - ItemStackSize, 2 + offset + MarginTop - ItemStackSize, ItemStackSize + 38, ItemStackSize + 38).WithParent(Bounds);
-            scissorBounds.CalcWorldBounds();
+                    titleElement.Compose(false);
+                    descriptionElement.Compose(false);
+
+                    generateTexture(surface, ref texture);
+
+                    ctx.Dispose();
+                    surface.Dispose();
+
+                    double offset = (int)(30 + ItemStackSize / 2);
+                    scissorBounds = ElementBounds.Fixed(4 + offset - ItemStackSize, 2 + offset + MarginTop - ItemStackSize, ItemStackSize + 38, ItemStackSize + 38).WithParent(Bounds);
+                    scissorBounds.CalcWorldBounds();
+
+                    readyToRender = true;
+
+                }, "genstackinfotexture");
+            });
         }
 
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            if (curSlot?.Itemstack == null) return;
+            if (curSlot?.Itemstack == null || !readyToRender) return;
 
             api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, Bounds, 1000);
 

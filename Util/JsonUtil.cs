@@ -102,7 +102,7 @@ namespace Vintagestory.API.Common
         /// Converts a Json token to a typed object.
         /// </summary>
         /// <typeparam name="T">The type to convert.</typeparam>
-        /// <param name="text">The text to deserialize</param>
+        /// <param name="token">The token to deserialize</param>
         /// <param name="domain">The domain of the text.</param>
         /// <param name="settings">The settings of the deserializer. (default: Null)</param>
         /// <returns></returns>

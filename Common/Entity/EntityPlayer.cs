@@ -197,13 +197,13 @@ namespace Vintagestory.API.Common
                 .Register("vesselContentsDropRate")
                 .Register("oreDropRate")
                 .Register("rustyGearDropRate")
-                .Register("miningSpeed")
+                .Register("miningSpeedMul")
                 .Register("animalSeekingRange")
                 .Register("armorDurabilityLoss")
                 .Register("bowDrawingStrength")
                 .Register("wholeVesselLootChance", EnumStatBlendType.FlatSum)
                 .Register("temporalGearTLRepairCost", EnumStatBlendType.FlatSum)
-                .Register("animalHarvestingSpeed")
+                .Register("animalHarvestingTime")
             ;
 
         }
@@ -317,7 +317,7 @@ namespace Vintagestory.API.Common
 
 
 
-                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (servercontrols.Sprint ? 0.9 : 1.2) * (servercontrols.Sneak ? 3 : 1);
+                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (servercontrols.Sprint ? 0.9 : 1.2) * (servercontrols.Sneak ? 1.2f : 1);
 
                 walkCounter = moving ? walkCounter + frequency : 0;
                 walkCounter = walkCounter % GameMath.TWOPI;
@@ -411,6 +411,9 @@ namespace Vintagestory.API.Common
 
 
         Cuboidf tmpCollBox = new Cuboidf();
+        bool holdPosition = false;
+        
+        float[] prevAnimModelMatrix;
 
         void updateLocalEyePosImmersiveFpMode()
         {
@@ -428,25 +431,30 @@ namespace Vintagestory.API.Common
 
             float lookOffset = (SidedPos.Pitch - GameMath.PI) / 9f;
 
-            bool holdPosition = false;
+            bool wasHoldPos = holdPosition;
+            holdPosition = false;
+            
             for (int i = 0; i < AnimManager.Animator.RunningAnimations.Length; i++)
             {
                 RunningAnimation anim = AnimManager.Animator.RunningAnimations[i];
-                if (anim.Running && anim.EasingFactor > anim.meta.HoldEyePosAfterEasein && !controls.TriesToMove)
+                if (anim.Running && anim.EasingFactor > anim.meta.HoldEyePosAfterEasein)
                 {
+                    if (!wasHoldPos)
+                    {
+                        prevAnimModelMatrix = (float[])apap.AnimModelMatrix.Clone();
+                    }
                     holdPosition = true;
                     break;
                 }
             }
 
-            if (holdPosition) return;
 
             tmpModelMat
                 .Set(ModelMat)
                 .RotateX(SidedPos.Roll + rotX * GameMath.DEG2RAD)
                 .RotateY(bodyYaw + (180 + rotY) * GameMath.DEG2RAD)
                 .RotateZ(bodyPitch + rotZ * GameMath.DEG2RAD)
-                .Mul(apap.AnimModelMatrix)
+                .Mul(holdPosition ? prevAnimModelMatrix : apap.AnimModelMatrix)
                 .Scale(Properties.Client.Size, Properties.Client.Size, Properties.Client.Size)
                 .Translate(-0.5f, 0, -0.5f)
                 .Translate(ap.PosX / 16f - lookOffset, ap.PosY / 16f - lookOffset / 1.3f, ap.PosZ / 16f)
@@ -457,6 +465,7 @@ namespace Vintagestory.API.Common
 
             LocalEyePos.Set(endVec[0], endVec[1], endVec[2]);
         }
+
 
         private bool canStandUp()
         {
@@ -537,25 +546,30 @@ namespace Vintagestory.API.Common
             DeadNotify = true;
             TryStopHandAction(true, EnumItemUseCancelReason.Death);
             TryUnmount();
-
-            if (Properties.Server?.Attributes?.GetBool("keepContents", false) != true)
+            
+            // Execute this one frame later so that in case right after this method some other code still returns an item (e.g. BlockMeal), it is also ditched
+            Api.Event.EnqueueMainThreadTask(() =>
             {
-                World.PlayerByUid(PlayerUID).InventoryManager.OnDeath();
-            }
-
-            if (Properties.Server?.Attributes?.GetBool("dropArmorOnDeath", false) == true)
-            {
-                foreach (var slot in GearInventory)
+                if (Properties.Server?.Attributes?.GetBool("keepContents", false) != true)
                 {
-                    if (slot.Empty) continue;
-                    if (slot.Itemstack.ItemAttributes?["protectionModifiers"].Exists == true)
+                    World.PlayerByUid(PlayerUID).InventoryManager.OnDeath();
+                }
+
+                if (Properties.Server?.Attributes?.GetBool("dropArmorOnDeath", false) == true)
+                {
+                    foreach (var slot in GearInventory)
                     {
-                        Api.World.SpawnItemEntity(slot.Itemstack, ServerPos.XYZ);
-                        slot.Itemstack = null;
-                        slot.MarkDirty();
+                        if (slot.Empty) continue;
+                        if (slot.Itemstack.ItemAttributes?["protectionModifiers"].Exists == true)
+                        {
+                            Api.World.SpawnItemEntity(slot.Itemstack, ServerPos.XYZ);
+                            slot.Itemstack = null;
+                            slot.MarkDirty();
+                        }
                     }
                 }
-            }
+            }, "dropinventoryondeath");
+
         }
 
         public override void Revive()
@@ -702,20 +716,21 @@ namespace Vintagestory.API.Common
                         if (this is EntityPlayer)
                         {
                             sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
-                            IServerPlayer player = (this as EntityPlayer).Player as IServerPlayer;
+                            IServerPlayer player = this.Player as IServerPlayer;
                             int chunksize = World.BlockAccessor.ChunkSize;
                             player.CurrentChunkSentRadius = 0;
                             
                             sapi.Event.RegisterCallback((bla) => {
+                                if (player.ConnectionState == EnumClientState.Offline) return;
+
                                 if (!sapi.WorldManager.HasChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player))
                                 {
                                     sapi.WorldManager.SendChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player, false);
                                 }
 
-                                if (player.ConnectionState != EnumClientState.Offline) // Oherwise we get an endlessly looping exception spam and break the server
-                                {
-                                    player.CurrentChunkSentRadius = 0;
-                                }
+                                // Oherwise we get an endlessly looping exception spam and break the server
+                                player.CurrentChunkSentRadius = 0;
+
                             }, 50);
 
                         }

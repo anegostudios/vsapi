@@ -16,7 +16,16 @@ namespace Vintagestory.API.Server
         /// </summary>
         bool IsNew { get; }
 
+        /// <summary>
+        /// The game version under which this savegame was created
+        /// </summary>
         string CreatedGameVersion { get; }
+
+        /// <summary>
+        /// The game version under which this savegame was last saved
+        /// </summary>
+        string LastSavedGameVersion { get; }
+
         int Seed { get; set; }
 
         /// <summary>

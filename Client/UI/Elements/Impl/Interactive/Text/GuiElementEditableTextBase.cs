@@ -516,10 +516,15 @@ namespace Vintagestory.API.Client
                 {
                     int posInLine = lines[caretPosLine - 1].Length;
 
-                    lines[caretPosLine - 1] += lines[caretPosLine];
-                    lines.RemoveAt(caretPosLine);
+                    double nowWidth = Font.GetTextExtents(lines[caretPosLine - 1] + lines[caretPosLine]).Width;
 
-                    SetCaretPos(posInLine, caretPosLine - 1);
+                    if (nowWidth <= maxwidth)
+                    {
+                        lines[caretPosLine - 1] += lines[caretPosLine];
+                        lines.RemoveAt(caretPosLine);
+
+                        SetCaretPos(posInLine, caretPosLine - 1);
+                    }
                 }
             }
 
@@ -535,13 +540,7 @@ namespace Vintagestory.API.Client
                 
                 if (maxwidth > 0)
                 {
-                    ImageSurface surface = new ImageSurface(Format.Argb32, 1, 1);
-                    Context ctx = new Context(surface);
-                    Font.SetupContext(ctx);
-
-                    double nowWidth = ctx.TextExtents(nowline).Width;
-                    surface.Dispose();
-                    ctx.Dispose();
+                    double nowWidth = Font.GetTextExtents(nowline).Width;
 
                     if (nowWidth > maxwidth)
                     {
@@ -561,6 +560,7 @@ namespace Vintagestory.API.Client
                 OnKeyPressed?.Invoke();
             }
         }
+
 
 
         #endregion

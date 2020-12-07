@@ -30,7 +30,12 @@ namespace Vintagestory.API.Client
 
         public ColorMapData(byte seasonMapIndex, byte climateMapIndex, byte temperature, byte rainFall, bool frostable)
         {
-            Value = (int)(seasonMapIndex | ((climateMapIndex & 0xf) << 8) | (temperature << 16) | (rainFall << 24)) | (frostable ? 1 << 12 : 0);
+            Value = (seasonMapIndex | ((climateMapIndex & 0xf) << 8) | (temperature << 16) | (rainFall << 24)) | (frostable ? 1 << 12 : 0);
+        }
+
+        public ColorMapData(int seasonMapIndex, int climateMapIndex, int temperature, int rainFall, bool frostable)
+        {
+            Value = (seasonMapIndex | ((climateMapIndex & 0xf) << 8) | (temperature << 16) | (rainFall << 24)) | (frostable ? 1 << 12 : 0);
         }
 
         public static int FromValues(byte seasonMapIndex, byte climateMapIndex, byte temperature, byte rainFall, bool frostable)

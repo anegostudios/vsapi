@@ -222,6 +222,8 @@ namespace Vintagestory.API.Client
             scissorBounds.fixedY = y / RuntimeEnv.GUIScale - size / 2;
             scissorBounds.CalcWorldBounds();
 
+            if (scissorBounds.InnerWidth <= 0 || scissorBounds.InnerHeight <= 0) return;
+
             capi.Render.PushScissor(scissorBounds, true);
             capi.Render.RenderItemstackToGui(dummySlot, x + pad + size/2 , y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
             capi.Render.PopScissor();

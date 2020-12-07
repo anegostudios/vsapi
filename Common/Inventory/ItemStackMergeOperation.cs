@@ -9,7 +9,7 @@ namespace Vintagestory.API.Common
     public enum EnumMergePriority
     {
         /// <summary>
-        /// Automatic merge operation
+        /// Automatic merge operation, when a player did not specifically request a merge, e.g. with shift + left click, or when collected from the ground
         /// </summary>
         AutoMerge = 0,
         /// <summary>
@@ -17,7 +17,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         DirectMerge = 1,
         /// <summary>
-        /// Confirmed merge via dialog. Not implemented as of v1.10
+        /// Confirmed merge via dialog. Not implemented as of v1.14
         /// </summary>
         ConfirmedMerge = 2
     }

@@ -19,7 +19,7 @@ namespace Vintagestory.API
         public int[] Data;
 
         /// <summary>
-        /// Width and Length of the map (square)
+        /// Full Width and Length of the map (square)
         /// </summary>
         [ProtoMember(2)]
         public int Size;

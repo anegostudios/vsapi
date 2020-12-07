@@ -39,6 +39,12 @@ namespace Vintagestory.API.Common
     /// <param name="chunks"></param>
     public delegate void ChunkColumnLoadedDelegate(Vec2i chunkCoord, IWorldChunk[] chunks);
 
+    /// <summary>
+    /// Triggered just before a chunk column gets unloaded
+    /// </summary>
+    /// <param name="chunkCoord">chunkX and chunkZ of the column (multiply with chunksize to get position). The Y component is zero</param>
+    public delegate void ChunkColumnUnloadDelegate(Vec3i chunkCoord);
+
 
     public delegate bool MatchGridRecipeDelegate(IPlayer player, GridRecipe recipe, ItemSlot[] ingredients, int gridWidth);
 

@@ -311,7 +311,7 @@ namespace Vintagestory.API.Common
         public void OnClientFrame(float dt)
         {
             if (capi.IsGamePaused || (!entity.IsRendered && entity.Alive)) return; // Too cpu intensive to run all loaded entities
-            
+
             Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
 
             if (HeadController != null)

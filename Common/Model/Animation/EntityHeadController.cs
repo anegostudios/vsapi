@@ -96,11 +96,13 @@ namespace Vintagestory.API.Common
             this.animManager = animator;
 
             HeadElement = entityShape.GetElementByName("head");
+            NeckElement = entityShape.GetElementByName("neck");
 
             HeadGlobalMatrix = Mat4f.Create();
             HeadGlobalMatrixInverted = Mat4f.Create();
             HeadLocalMatrix = Mat4f.Create();
 
+            // Head
             List<ShapeElement> elems = HeadElement.GetParentPath();
 
             for (int i = 0; i < elems.Count; i++)
@@ -112,6 +114,7 @@ namespace Vintagestory.API.Common
 
             Mat4f.Mul(HeadGlobalMatrix, HeadGlobalMatrix, HeadElement.GetLocalTransformMatrix());
             Mat4f.Invert(HeadGlobalMatrixInverted, HeadGlobalMatrix);
+
 
         }
         

@@ -155,7 +155,7 @@ namespace Vintagestory.API.Server
         public static string time = "time";
 
         /// <summary>
-        /// Ability to add/remove players to player groups and ability to grant/revoke individual privileges. A player can only grant the same or a lower level group and the same or less privileges.
+        /// Ability to set player role and ability to grant/revoke individual privileges. A player can only grant the same or a lower level group and the same or less privileges.
         /// </summary>
         public static string grantrevoke = "grantrevoke";
 

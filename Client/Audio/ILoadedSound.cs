@@ -44,6 +44,11 @@ namespace Vintagestory.API.Client
         bool HasStopped { get; }
 
         /// <summary>
+        /// Amount of audio channels this sound has
+        /// </summary>
+        int Channels { get; }
+
+        /// <summary>
         /// The params the sound was created with.
         /// </summary>
         SoundParams Params { get; }

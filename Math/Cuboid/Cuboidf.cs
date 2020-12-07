@@ -506,5 +506,10 @@ namespace Vintagestory.API.MathTools
             );
         }
 
+        public override string ToString()
+        {
+            return "[" + X1 + ", " + Y1 + ", " + Z1 + " - " + X2 + ", " + Y2 + ", " + Z2 + "]";
+        }
+
     }
 }

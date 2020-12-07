@@ -229,11 +229,7 @@ namespace Vintagestory.API.MathTools
 
         public override int GetHashCode()
         {
-            int hash = 17;
-            hash = hash * 23 + X.GetHashCode();
-            hash = hash * 23 + Y.GetHashCode();
-            hash = hash * 23 + Z.GetHashCode();
-            return hash;
+            return ((17 * 23 + X) * 23 + Y) * 23 + Z;
         }
 
         public override string ToString()

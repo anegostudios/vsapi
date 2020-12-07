@@ -40,10 +40,10 @@ namespace Vintagestory.API.Common
             this.type = type;
         }
 
-        public override bool CanTakeFrom(ItemSlot sourceSlot)
+        public override bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
             if (!IsDressType(sourceSlot.Itemstack, type)) return false;
-            return base.CanTakeFrom(sourceSlot);
+            return base.CanTakeFrom(sourceSlot, priority);
         }
 
         public override bool CanHold(ItemSlot itemstackFromSourceSlot)

@@ -114,6 +114,13 @@ namespace Vintagestory.API.Config
         public static float CurrentNearbyRelLeavesCountClient;
 
         /// <summary>
+        /// Set by the weather simulation system to determine if snowed variants of blocks should melt. Used a static var to improve performance and reduce memory usage
+        /// </summary>
+        public static bool MeltingFreezingEnabled;
+
+
+
+        /// <summary>
         /// Returns true if the player fell out of the world (which is map boundaries + 30 blocks in every direction)
         /// </summary>
         /// <param name="x"></param>

@@ -142,9 +142,14 @@ namespace Vintagestory.API.Common
         public TransitionableProperties[] TransitionableProps = null;
 
         /// <summary>
-        /// Information about the grinding properties
+        /// If set, the collectible can be ground into something else
         /// </summary>
         public GrindingProperties GrindingProps = null;
+
+        /// <summary>
+        /// If set, the collectible can be crushed into something else
+        /// </summary>
+        public CrushingProperties CrushingProps = null;
 
         /// <summary>
         /// Particles that should spawn in regular intervals from this block or item when held in hands
@@ -449,7 +454,7 @@ namespace Vintagestory.API.Common
             float traitRate = 1f;
 
             if (block.BlockMaterial == EnumBlockMaterial.Ore || block.BlockMaterial == EnumBlockMaterial.Stone) {
-                traitRate = forPlayer.Entity.Stats.GetBlended("miningSpeed");
+                traitRate = forPlayer.Entity.Stats.GetBlended("miningSpeedMul");
             }
 
             if (MiningSpeed == null || !MiningSpeed.ContainsKey(block.BlockMaterial)) return traitRate;
@@ -693,10 +698,19 @@ namespace Vintagestory.API.Common
         /// <param name="entityItem"></param>
         public virtual void OnGroundIdle(EntityItem entityItem)
         {
-            if (entityItem.Swimming && api.Side == EnumAppSide.Server && Attributes?.IsTrue("dissolveInWater") == true && api.World.Rand.NextDouble() < 0.02)
+            if (entityItem.Swimming && api.Side == EnumAppSide.Server && Attributes?.IsTrue("dissolveInWater") == true)
             {
-                api.World.SpawnCubeParticles(entityItem.ServerPos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 80, 0.4f);
-                entityItem.Die();
+                if (api.World.Rand.NextDouble() < 0.01)
+                {
+                    api.World.SpawnCubeParticles(entityItem.ServerPos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 80, 0.3f);
+                    entityItem.Die();
+                } else
+                {
+                    if (api.World.Rand.NextDouble() < 0.2)
+                    {
+                        api.World.SpawnCubeParticles(entityItem.ServerPos.XYZ, entityItem.Itemstack.Clone(), 0.1f, 2, 0.2f + (float)api.World.Rand.NextDouble() / 5f);
+                    }
+                }
             }
         }
 
@@ -1143,6 +1157,12 @@ namespace Vintagestory.API.Common
                 dsc.AppendLine(Lang.Get("When ground: Turns into {0}x {1}", GrindingProps.GroundStack.ResolvedItemstack.StackSize, GrindingProps.GroundStack.ResolvedItemstack.GetName()));
             }
 
+            if (CrushingProps != null)
+            {
+                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0}x {1}", CrushingProps.CrushedStack.ResolvedItemstack.StackSize, CrushingProps.CrushedStack.ResolvedItemstack.GetName()));
+                dsc.AppendLine(Lang.Get("Requires Pulverizer tier: {0}", CrushingProps.HardnessTier));
+            }
+
             if (GetAttackPower(stack) > 0.5f)
             {
                 dsc.AppendLine(Lang.Get("Attack power: -{0} hp", GetAttackPower(stack).ToString("0.#")));
@@ -1203,12 +1223,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            if (Attributes?["crushedOutput"].Exists == true)
-            {
-                JsonItemStack jstack = Attributes?["crushedOutput"].AsObject<JsonItemStack>();
-                jstack.Resolve(api.World, "pulverizedvariant");
-                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0}x {1}", jstack.ResolvedItemstack.StackSize, jstack.ResolvedItemstack.GetName()));
-            }
+            
 
 
             float temp = GetTemperature(world, stack);
@@ -1709,6 +1724,16 @@ namespace Vintagestory.API.Common
                 haveText = true;
             }
 
+            // Pulverizes into
+            if (CrushingProps?.CrushedStack?.ResolvedItemstack != null && !CrushingProps.CrushedStack.ResolvedItemstack.Equals(api.World, stack, GlobalConstants.IgnoredStackAttributes))
+            {
+                string title = Lang.Get("game:pulverizesdesc-title");
+
+                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                components.Add(new ItemstackTextComponent(capi, CrushingProps.CrushedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                haveText = true;
+            }
+
 
             // Grinds into
             if (GrindingProps?.GroundStack?.ResolvedItemstack != null && !GrindingProps.GroundStack.ResolvedItemstack.Equals(api.World, stack, GlobalConstants.IgnoredStackAttributes))
@@ -1933,6 +1958,7 @@ namespace Vintagestory.API.Common
 
             List<ItemStack> bakables = new List<ItemStack>();
             List<ItemStack> grindables = new List<ItemStack>();
+            List<ItemStack> crushables = new List<ItemStack>();
             List<ItemStack> curables = new List<ItemStack>();
             List<ItemStack> ripenables = new List<ItemStack>();
 
@@ -1948,6 +1974,12 @@ namespace Vintagestory.API.Common
                 if (groundStack != null && groundStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes) && !grindables.Any(s => s.Equals(capi.World, groundStack, GlobalConstants.IgnoredStackAttributes)))
                 {
                     grindables.Add(val);
+                }
+
+                ItemStack crushedStack = val.Collectible.CrushingProps?.CrushedStack.ResolvedItemstack;
+                if (crushedStack != null && crushedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes) && !crushables.Any(s => s.Equals(capi.World, crushedStack, GlobalConstants.IgnoredStackAttributes)))
+                {
+                    crushables.Add(val);
                 }
 
                 TransitionableProperties[] oprops = val.Collectible.GetTransitionableProperties(api.World, val, null);
@@ -2057,7 +2089,7 @@ namespace Vintagestory.API.Common
 
             string customCreatedBy = stack.Collectible.Attributes?["handbook"]?["createdBy"]?.AsString(null);
 
-            if (grecipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0 || barrelRecipestext.Count > 0 || grindables.Count > 0 || curables.Count > 0 || ripenables.Count > 0)
+            if (grecipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0 || barrelRecipestext.Count > 0 || grindables.Count > 0 || curables.Count > 0 || ripenables.Count > 0 || crushables.Count > 0)
             {
                 components.Add(new ClearFloatTextComponent(capi, 10));
                 components.Add(new RichTextComponent(capi, Lang.Get("Created by") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
@@ -2100,6 +2132,24 @@ namespace Vintagestory.API.Common
 
                     components.Add(new RichTextComponent(capi, "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 }
+
+                if (crushables.Count > 0)
+                {
+                    components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crushing") + "\n", CairoFont.WhiteSmallText()));
+
+                    while (crushables.Count > 0)
+                    {
+                        ItemStack dstack = crushables[0];
+                        crushables.RemoveAt(0);
+                        if (dstack == null) continue;
+
+                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, dstack, crushables, 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
+                        components.Add(comp);
+                    }
+
+                    components.Add(new RichTextComponent(capi, "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                }
+
 
                 if (curables.Count > 0)
                 {
@@ -2222,7 +2272,7 @@ namespace Vintagestory.API.Common
         /// <param name="sinkStack"></param>
         /// <param name="sourceStack"></param>
         /// <returns></returns>
-        public virtual int GetMergableQuantity(ItemStack sinkStack, ItemStack sourceStack)
+        public virtual int GetMergableQuantity(ItemStack sinkStack, ItemStack sourceStack, EnumMergePriority priority)
         {
             if (Equals(sinkStack, sourceStack, GlobalConstants.IgnoredStackAttributes) && sinkStack.StackSize < MaxStackSize)
             {
@@ -2238,7 +2288,7 @@ namespace Vintagestory.API.Common
         /// <param name="op"></param>
         public virtual void TryMergeStacks(ItemStackMergeOperation op)
         {
-            op.MovableQuantity = GetMergableQuantity(op.SinkSlot.Itemstack, op.SourceSlot.Itemstack);
+            op.MovableQuantity = GetMergableQuantity(op.SinkSlot.Itemstack, op.SourceSlot.Itemstack, op.CurrentPriority);
             if (op.MovableQuantity == 0) return;
             if (!op.SinkSlot.CanTakeFrom(op.SourceSlot)) return;
 
@@ -2395,7 +2445,7 @@ namespace Vintagestory.API.Common
                 smeltedStack != null
                 && inputStack.StackSize >= CombustibleProps.SmeltedRatio
                 && CombustibleProps.MeltingPoint > 0
-                && (outputStack == null || outputStack.Collectible.GetMergableQuantity(outputStack, smeltedStack) >= smeltedStack.StackSize)
+                && (outputStack == null || outputStack.Collectible.GetMergableQuantity(outputStack, smeltedStack, EnumMergePriority.AutoMerge) >= smeltedStack.StackSize)
             ;
         }
 

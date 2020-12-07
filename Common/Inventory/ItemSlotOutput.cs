@@ -21,7 +21,7 @@ namespace Vintagestory.API.Common
             return true;
         }
 
-        public override bool CanTakeFrom(ItemSlot sourceSlot)
+        public override bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
             return false;
         }
@@ -32,7 +32,7 @@ namespace Vintagestory.API.Common
             if (Empty) return;
             if (sourceSlot.CanHold(this))
             {
-                if (sourceSlot.Itemstack != null && sourceSlot.Itemstack != null && sourceSlot.Itemstack.Collectible.GetMergableQuantity(sourceSlot.Itemstack, itemstack) < itemstack.StackSize) return;
+                if (sourceSlot.Itemstack != null && sourceSlot.Itemstack != null && sourceSlot.Itemstack.Collectible.GetMergableQuantity(sourceSlot.Itemstack, itemstack, op.CurrentPriority) < itemstack.StackSize) return;
 
                 op.RequestedQuantity = StackSize;
 

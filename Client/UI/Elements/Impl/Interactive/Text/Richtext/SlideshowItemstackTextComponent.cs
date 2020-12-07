@@ -142,7 +142,18 @@ namespace Vintagestory.API.Client
             }
 
             slot.Itemstack = itemstack;
+
+            ElementBounds scibounds = ElementBounds.FixedSize((int)bounds.Width, (int)bounds.Height);
+            scibounds.ParentBounds = capi.Gui.WindowBounds;
+            scibounds.CalcWorldBounds();
+            scibounds.absFixedX = renderX + bounds.X;
+            scibounds.absFixedY = renderY + bounds.Y;
+
+            api.Render.PushScissor(scibounds);
+
             api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f, 100, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
+
+            api.Render.PopScissor();
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);

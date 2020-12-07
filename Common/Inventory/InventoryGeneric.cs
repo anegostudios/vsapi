@@ -20,7 +20,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class InventoryGeneric : InventoryBase
     {
-        ItemSlot[] slots;
+        protected ItemSlot[] slots;
         NewSlotDelegate onNewSlot = null;
 
 
@@ -93,8 +93,7 @@ namespace Vintagestory.API.Common
             set
             {
                 if (slotId < 0 || slotId >= Count) throw new ArgumentOutOfRangeException(nameof(slotId));
-                if (value == null) throw new ArgumentNullException(nameof(value));
-                slots[slotId] = value;
+                slots[slotId] = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
 

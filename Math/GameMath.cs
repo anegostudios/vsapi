@@ -227,6 +227,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="min"></param>
         /// <param name="max"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Clamp(float val, float min, float max)
         {
             return val < min ? min : val > max ? max : val;
@@ -239,6 +240,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="min"></param>
         /// <param name="max"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int Clamp(int val, int min, int max)
         {
             return val < min ? min : val > max ? max : val;
@@ -251,6 +253,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="min"></param>
         /// <param name="max"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static byte Clamp(byte val, byte min, byte max)
         {
             return val < min ? min : val > max ? max : val;
@@ -263,6 +266,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="min"></param>
         /// <param name="max"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static double Clamp(double val, double min, double max)
         {
             return val < min ? min : val > max ? max : val;
@@ -668,6 +672,21 @@ namespace Vintagestory.API.MathTools
         public static float Mix(float v0, float v1, float t)
         {
             return v0 + (v1 - v0) * t;
+        }
+
+
+
+        /// <summary>
+        /// Same as <see cref="Lerp(float, float, float)"/>
+        /// </summary>
+        /// <param name="v0"></param>
+        /// <param name="v1"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int Mix(int v0, int v1, float t)
+        {
+            return (int)(v0 + (v1 - v0) * t);
         }
 
 
@@ -1127,61 +1146,38 @@ namespace Vintagestory.API.MathTools
             const uint c2 = 0x1b873593;
 
             uint h1 = murmurseed;
-            uint k1 = (uint)x;
+            uint k1;
 
-            k1 = (uint)x;
             /* bitmagic hash */
-            k1 *= c1;
-            k1 = rotl32(k1, 15);
-            k1 *= c2;
+            k1 = rotl32((uint)x * c1, 15) * c2;
+            h1 = rotl32(h1 ^ k1, 13) * 5 + 0xe6546b64;
 
-            h1 ^= k1;
-            h1 = rotl32(h1, 13);
-            h1 = h1 * 5 + 0xe6546b64;
-
-            k1 = (uint)y;
             /* bitmagic hash */
-            k1 *= c1;
-            k1 = rotl32(k1, 15);
-            k1 *= c2;
+            k1 = rotl32((uint)y * c1, 15) * c2;
+            h1 = rotl32(h1 ^ k1, 13) * 5 + 0xe6546b64;
 
-            h1 ^= k1;
-            h1 = rotl32(h1, 13);
-            h1 = h1 * 5 + 0xe6546b64;
-
-            k1 = (uint)z;
             /* bitmagic hash */
-            k1 *= c1;
-            k1 = rotl32(k1, 15);
-            k1 *= c2;
-
-            h1 ^= k1;
-            h1 = rotl32(h1, 13);
-            h1 = h1 * 5 + 0xe6546b64;
+            k1 = rotl32((uint)z * c1, 15) * c2;
+            h1 = rotl32(h1 ^ k1, 13) * 5 + 0xe6546b64;
 
             // finalization, magic chants to wrap it all up
-            h1 ^= 3;
-            h1 = fmix(h1);
-
             unchecked //ignore overflow
             {
-                return (int)h1;
+                return (int)fmix(h1 ^ 3);
             }
         }
 
-        private static uint rotl32(uint x, byte r)
+        private static uint rotl32(uint x, int r)
         {
-            return (x << r) | (x >> (32 - r));
+            return x << r | x >> 32 - r;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static uint fmix(uint h)
         {
-            h ^= h >> 16;
-            h *= 0x85ebca6b;
-            h ^= h >> 13;
-            h *= 0xc2b2ae35;
-            h ^= h >> 16;
-            return h;
+            h = (h ^ h >> 16) * 0x85ebca6b;
+            h = (h ^ h >> 13) * 0xc2b2ae35;
+            return h ^ h >> 16;
         }
 
 

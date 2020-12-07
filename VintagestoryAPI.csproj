@@ -44,7 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>..\bin\Release\VintagestoryAPI.XML</DocumentationFile>
+    <DocumentationFile>..\bin\Release\VintagestoryAPI.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -119,16 +119,20 @@
     <Compile Include="Client\Render\EnumFrameBuffer.cs" />
     <Compile Include="Client\Render\IAviWriter.cs" />
     <Compile Include="Client\Texture\FastBitmap.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementColorListPicker.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementContainer.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Text\Richtext\IconComponent.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementCustomRender.cs" />
     <Compile Include="Common\API\EnumBlockAccessResponse.cs" />
     <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
     <Compile Include="Common\API\ILandClaimAPI.cs" />
+    <Compile Include="Client\API\IMacroManager.cs" />
     <Compile Include="Common\Collectible\Block\BlockEntityBehavior.cs" />
     <Compile Include="Common\Collectible\FertilizerProps.cs" />
+    <Compile Include="Common\Collectible\CrushingProperties.cs" />
     <Compile Include="Common\Collectible\HeldSounds.cs" />
     <Compile Include="Common\Collectible\TransitionableProperties.cs" />
+    <Compile Include="Common\Combat\EnumMemberAttribute.cs" />
     <Compile Include="Common\Crafting\BarrelRecipe.cs" />
     <Compile Include="Common\Crafting\LayeredVoxelRecipe.cs" />
     <Compile Include="Common\Crafting\RecipeRegistry.cs" />
@@ -235,8 +239,9 @@
     <Compile Include="Common\Entity\SpawnConditions.cs" />
     <Compile Include="Common\Inventory\CreativeInventoryTab.cs" />
     <Compile Include="Common\Inventory\DummyInventory.cs" />
+    <Compile Include="Common\Inventory\InventoryDisplayed.cs" />
     <Compile Include="Common\Inventory\ItemSlotOffHand.cs" />
-    <Compile Include="Common\IO\SQLiteDB.cs" />
+    <Compile Include="Common\IO\SQLiteDBConnection.cs" />
     <Compile Include="Common\Model\Animation\AnimationCache.cs" />
     <Compile Include="Common\Model\Animation\AnimationMetaData.cs" />
     <Compile Include="Common\Model\Animation\AnimationManager.cs" />
@@ -256,12 +261,15 @@
     <Compile Include="Common\API\IBulkBlockAccessor.cs" />
     <Compile Include="Common\API\IEventAPI.cs" />
     <Compile Include="Common\API\IMapChunk.cs" />
+    <Compile Include="Common\MultiblockStructure.cs" />
     <Compile Include="Common\Texture\ColorMap.cs" />
     <Compile Include="Common\TyronThreadPool.cs" />
     <Compile Include="Datastructures\FloatDataMap3D.cs" />
     <Compile Include="Datastructures\FastList.cs" />
+    <Compile Include="Datastructures\RingArray.cs" />
     <Compile Include="Math\Matrix\Quaternionf.cs" />
     <Compile Include="Server\API\IPlayerDataManager.cs" />
+    <Compile Include="Server\EnumPlayerJoinBehavior.cs" />
     <Compile Include="Util\BitmapExtensions.cs" />
     <Compile Include="Util\IgnoreUtil.cs" />
     <Compile Include="Util\JsonUtil.cs" />
@@ -416,7 +424,7 @@
     <Compile Include="Datastructures\AttributeTree\Other\EnumAttributeType.cs" />
     <Compile Include="Client\EnumCameraType.cs" />
     <Compile Include="Client\Render\EnumFaceCullMode.cs" />
-    <Compile Include="Common\EnumHandled.cs" />
+    <Compile Include="Common\EnumHandling.cs" />
     <Compile Include="Common\Collectible\Item\EnumItemStorageFlags.cs" />
     <Compile Include="Common\Controls\EnumLockFlyPlaneMode.cs" />
     <Compile Include="Common\EnumHighlightShape.cs" />

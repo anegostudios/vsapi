@@ -64,6 +64,11 @@ namespace Vintagestory.API.Server
         /// </summary>
         event ChunkColumnLoadedDelegate ChunkColumnLoaded;
 
+        /// <summary>
+        /// Called just before a chunk column is about to get unloaded
+        /// </summary>
+        event ChunkColumnUnloadDelegate ChunkColumnUnloaded;
+
 
         /// <summary>
         /// Registers a handler to be called every time a player uses a block. The methods return value determines if the player may place/break this block.

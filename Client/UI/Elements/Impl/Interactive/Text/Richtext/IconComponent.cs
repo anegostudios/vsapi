@@ -34,7 +34,7 @@ namespace Vintagestory.API.Client
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            capi.Gui.Icons.DrawIcon(ctx, iconName, 0, 0, GuiElement.scaled(font.UnscaledFontsize), GuiElement.scaled(font.UnscaledFontsize), font.Color);
+            capi.Gui.Icons.DrawIcon(ctx, iconName, BoundsPerLine[0].X, BoundsPerLine[0].Y, GuiElement.scaled(font.UnscaledFontsize), GuiElement.scaled(font.UnscaledFontsize), font.Color);
         }
 
 

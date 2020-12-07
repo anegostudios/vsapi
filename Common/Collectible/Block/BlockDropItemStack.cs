@@ -47,6 +47,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         public ItemStack ResolvedItemstack;
 
+        /// <summary>
+        /// If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code)
+        /// </summary>
+        public string DropModbyStat;
+
+
         static Random random = new Random();
 
 
@@ -106,6 +112,7 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+
         /// <summary>
         /// Returns an itemstack with random quantity as configured via the Quantity field
         /// </summary>
@@ -138,7 +145,8 @@ namespace Vintagestory.API.Common
                 Type = Type,
                 LastDrop = LastDrop,
                 Tool = Tool,
-                ResolvedItemstack = ResolvedItemstack
+                ResolvedItemstack = ResolvedItemstack,
+                DropModbyStat = DropModbyStat
             };
 
             if (Attributes != null) stack.Attributes = Attributes.Clone();
@@ -159,6 +167,10 @@ namespace Vintagestory.API.Common
             Quantity.FromBytes(reader);
             ResolvedItemstack = new ItemStack(reader);
             LastDrop = reader.ReadBoolean();
+            if (reader.ReadBoolean())
+            {
+                DropModbyStat = reader.ReadString();
+            }
         }
 
         /// <summary>
@@ -172,6 +184,11 @@ namespace Vintagestory.API.Common
             Quantity.ToBytes(writer);
             ResolvedItemstack.ToBytes(writer);
             writer.Write(LastDrop);
+            writer.Write(DropModbyStat != null);
+            if (DropModbyStat != null)
+            {
+                writer.Write(DropModbyStat);
+            }
         }
     }
 }

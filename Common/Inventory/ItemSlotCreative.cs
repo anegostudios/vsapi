@@ -84,7 +84,7 @@ namespace Vintagestory.API.Common
             }
 
             // 3. Both slots not empty, and they are stackable: Fill source slot
-            int maxq = Itemstack.Collectible.GetMergableQuantity(sinkSlot.Itemstack, Itemstack);
+            int maxq = Itemstack.Collectible.GetMergableQuantity(sinkSlot.Itemstack, Itemstack, op.CurrentPriority);
             if (maxq > 0)
             {
                 op.RequestedQuantity = 1;

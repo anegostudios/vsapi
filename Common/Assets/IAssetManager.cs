@@ -118,6 +118,9 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         List<IAssetOrigin> Origins { get; }
 
+
+        [Obsolete("Use AddModOrigin")]
         void AddPathOrigin(string domain, string fullPath);
+        void AddModOrigin(string domain, string fullPath);
     }
 }

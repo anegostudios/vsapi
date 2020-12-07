@@ -14,6 +14,11 @@ namespace Vintagestory.API.MathTools
             return (int)((y * sizez + z) * sizex + x);
         }
 
+        public static int Index3d(int x, int y, int z, int sizex, int sizez)
+        {
+            return (y * sizez + z) * sizex + x;
+        }
+
         public static int Index2d(int x, int y, int sizex)
         {
             return y * sizex + x;

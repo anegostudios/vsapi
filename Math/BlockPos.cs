@@ -522,6 +522,15 @@ namespace Vintagestory.API.MathTools
             return Math.Abs(X - x) + Math.Abs(Y - y) + Math.Abs(Z - z);
         }
 
+        /// <summary>
+        /// Returns true if the specified x,z is within a box the specified range around this position
+        /// </summary>
+        public bool InRangeHorizontally(int x, int z, int range)
+        {
+            return Math.Abs(X - x) <= range && Math.Abs(Z - z) <= range;
+        }
+
+
         #endregion
 
         /// <summary>
@@ -561,8 +570,9 @@ namespace Vintagestory.API.MathTools
 
         public override int GetHashCode()
         {
-            return (X * 23 + Y) * 23 + Z;
+            return ((17 * 23 + X) * 23 + Y) * 23 + Z;
         }
+        
 
         public bool Equals(BlockPos other)
         {

@@ -226,11 +226,13 @@ namespace Vintagestory.API.Common
         /// The color map for climate color mapping. Leave null for no coloring by climate
         /// </summary>
         public string ClimateColorMap = null;
+        public ColorMap ClimateColorMapResolved = null;
 
         /// <summary>
         /// The color map for season color mapping. Leave null for no coloring by season
         /// </summary>
         public string SeasonColorMap = null;
+        public ColorMap SeasonColorMapResolved = null;
 
         /// <summary>
         /// Internal value that's set during if the block shape has any tint indexes for use in chunk tesselation and stuff O_O
@@ -1029,11 +1031,16 @@ namespace Vintagestory.API.Common
 
             for (int i = 0; i < Drops.Length; i++)
             {
-                if (Drops[i].Tool != null && (byPlayer == null || Drops[i].Tool != byPlayer.InventoryManager.ActiveTool)) continue;
+                BlockDropItemStack dstack = Drops[i];
+                if (dstack.Tool != null && (byPlayer == null || dstack.Tool != byPlayer.InventoryManager.ActiveTool)) continue;
 
                 float extraMul = 1f;
-                if (Drops[i].Code?.Path == "gear-rusty") extraMul = byPlayer.Entity.Stats.GetBlended("rustyGearDropRate");
-
+                if (dstack.DropModbyStat != null)
+                {
+                    // If the stat does not exist, then GetBlended returns 1 \o/
+                    extraMul = byPlayer.Entity.Stats.GetBlended(dstack.DropModbyStat);
+                }
+               
                 ItemStack stack = Drops[i].GetNextItemStack(dropQuantityMultiplier * extraMul);
                 if (stack == null) continue;
                 
@@ -1458,7 +1465,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool ShouldReceiveServerGameTicks(IWorldAccessor world, BlockPos pos, Random offThreadRandom, out object extra)
         {
-            if (this == snowCovered1 || this == snowCovered2 || this == snowCovered3)
+            if (GlobalConstants.MeltingFreezingEnabled && (this == snowCovered1 || this == snowCovered2 || this == snowCovered3))
             {
                 ClimateCondition conds = world.BlockAccessor.GetClimateAt(pos, EnumGetClimateMode.NowValues);
                 if (conds.Temperature > 4)

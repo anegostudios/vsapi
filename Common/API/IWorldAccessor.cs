@@ -261,11 +261,12 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Spawns a dropped itemstack at given position. Will immediately disappear if stacksize==0
+        /// Returns the entity spawned (may be null!)
         /// </summary>
         /// <param name="itemstack"></param>
         /// <param name="position"></param>
         /// <param name="velocity"></param>
-        void SpawnItemEntity(ItemStack itemstack, Vec3d position, Vec3d velocity = null);
+        Entity SpawnItemEntity(ItemStack itemstack, Vec3d position, Vec3d velocity = null);
 
         /// <summary>
         /// Creates a new entity. It's the responsibility of the given Entity to call set it's EntityType.

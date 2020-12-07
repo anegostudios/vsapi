@@ -14,6 +14,8 @@ namespace Vintagestory.API.Client
         Stack<ElementBounds> ScissorStack { get; }
         int TextureSize { get; }
 
+        FrustumCulling DefaultFrustumCuller { get; }
+
         /// <summary>
         /// List of all loaded frame buffers. To get the god rays frame buffer for exampple, do <code>Framebuffers[(int)EnumFrameBuffer.GodRays]</code>
         /// </summary>

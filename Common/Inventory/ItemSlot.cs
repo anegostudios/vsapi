@@ -89,7 +89,7 @@ namespace Vintagestory.API.Common
       /// </summary>
       /// <param name="sourceSlot"></param>
       /// <returns></returns>
-        public virtual bool CanTakeFrom(ItemSlot sourceSlot)
+        public virtual bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
             if (inventory?.PutLocked == true) return false;
 
@@ -98,7 +98,7 @@ namespace Vintagestory.API.Common
 
             bool flagsok = (sourceStack.Collectible.GetStorageFlags(sourceStack) & StorageType) > 0;
 
-            return flagsok &&  (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack) > 0) && RemainingSlotSpace > 0;
+            return flagsok &&  (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack, priority) > 0) && RemainingSlotSpace > 0;
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace Vintagestory.API.Common
             }
             
             // 3. Both slots not empty, and they are stackable: Fill slot
-            int maxq = itemstack.Collectible.GetMergableQuantity(itemstack, sourceSlot.itemstack);
+            int maxq = itemstack.Collectible.GetMergableQuantity(itemstack, sourceSlot.itemstack, op.CurrentPriority);
             if (maxq > 0) {
                 op.RequestedQuantity = GameMath.Min(maxq, sourceSlot.itemstack.StackSize, RemainingSlotSpace);
 

@@ -43,6 +43,9 @@ namespace Vintagestory.API.Common
         public int RenderRange => 9999;
         ICoreClientAPI capi;
 
+        public float clientPhysicsTickTimeThreshold = 0f;
+        float accum = 0;
+
         
         public override void OnEntityDespawn(EntityDespawnReason despawn)
         {
@@ -77,7 +80,13 @@ namespace Vintagestory.API.Common
         {
             if (capi.IsGamePaused) return;
 
-            onPhysicsTick(deltaTime);
+            // Graceful degradation of the simulation quality instead of heavily lagging the game
+            accum += deltaTime;
+            if (accum > clientPhysicsTickTimeThreshold)
+            {
+                onPhysicsTick(deltaTime);
+                accum = 0f;
+            }
         }
 
 
@@ -127,6 +136,8 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        double swimAccel;
 
         /// <summary>
         /// Performs the physics on the specified entity.
@@ -185,7 +196,7 @@ namespace Vintagestory.API.Common
             // Gravity
             if (pos.Y > -100 && entity.ApplyGravity)
             {
-                double gravStrength = (gravityPerSecond / 60f * dtFac + Math.Max(0, -0.015f * pos.Motion.Y * dtFac));
+                double gravStrength = gravityPerSecond / 60f * dtFac + Math.Max(0, -0.015f * pos.Motion.Y * dtFac);
 
                 if (entity.Swimming)
                 {
@@ -194,21 +205,21 @@ namespace Vintagestory.API.Common
                     float baseboyancy = GameMath.Clamp(1 - entity.MaterialDensity / inblock.MaterialDensity, -1, 1);
 
                     float waterY = (int)pos.Y + inblock.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9/8f : 0);
-                    
+
                     float bottomSubmergedness = waterY - (float)pos.Y;
                     
                     // 0 = at swim line
                     // 1 = completely submerged
                     float swimlineSubmergedness = GameMath.Clamp(bottomSubmergedness - (entity.CollisionBox.Y2 - (float)entity.SwimmingOffsetY), 0, 1);
 
-                    double boyancyStrength = GameMath.Clamp(60 * baseboyancy * swimlineSubmergedness, -1.5f, 1.5f);
+                    double boyancyStrength = GameMath.Clamp(60 * baseboyancy * swimlineSubmergedness, -1.5f, 1.5f) - 1;
 
                     double waterDrag = GameMath.Clamp(100 * Math.Abs(pos.Motion.Y * dtFac) - 0.02f, 1, 1.25f);
 
-                    pos.Motion.Y += gravStrength * (boyancyStrength - 1);
+                    pos.Motion.Y += gravStrength * boyancyStrength;
                     pos.Motion.Y /= waterDrag;
-
-                } else
+                }
+                else
                 {
                     pos.Motion.Y -= gravStrength;
                 }   

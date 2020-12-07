@@ -586,7 +586,7 @@ namespace Vintagestory.API.Common.Entities
 
             float dropMul = 1;
 
-            if (!Attributes.GetBool("isMechanical", false) && byPlayer != null)
+            if (Attributes?.GetBool("isMechanical", false) != true && byPlayer?.Entity != null)
             {
                 dropMul = 1 + byPlayer.Entity.Stats.GetBlended("animalLootDropRate");
             }
@@ -594,14 +594,19 @@ namespace Vintagestory.API.Common.Entities
             for (int i = 0; i < Properties.Drops.Length; i++)
             {
                 BlockDropItemStack bdStack = Properties.Drops[i];
-                float extraMul = 1f;
-                if (bdStack.Code.Path == "gear-rusty" && byPlayer != null) extraMul = byPlayer.Entity.Stats.GetBlended("rustyGearDropRate");
 
-                ItemStack stack = Properties.Drops[i].GetNextItemStack(dropMul * extraMul);
+                float extraMul = 1f;
+                if (bdStack.DropModbyStat != null && byPlayer?.Entity != null)
+                {
+                    // If the stat does not exist, then GetBlended returns 1 \o/
+                    extraMul = byPlayer.Entity.Stats.GetBlended(bdStack.DropModbyStat);
+                }
+
+                ItemStack stack = bdStack.GetNextItemStack(dropMul * extraMul);
                 if (stack == null) continue;
 
                 todrop.Add(stack);
-                if (Properties.Drops[i].LastDrop) break;
+                if (bdStack.LastDrop) break;
             }
 
             return todrop.ToArray();
@@ -1457,6 +1462,7 @@ namespace Vintagestory.API.Common.Entities
 
                 if (reason == EnumDespawnReason.Death && damageSourceForDeath != null && World.Side == EnumAppSide.Server) {
                     WatchedAttributes.SetInt("deathReason", (int)damageSourceForDeath.Source);
+                    WatchedAttributes.SetInt("deathDamageType", (int)damageSourceForDeath.Type);
                     Entity byEntity = damageSourceForDeath.SourceEntity;
                     if (byEntity != null)
                     {

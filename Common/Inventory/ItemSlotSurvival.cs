@@ -13,10 +13,10 @@ namespace Vintagestory.API.Common
 
 
 
-        public override bool CanTakeFrom(ItemSlot sourceSlot)
+        public override bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
             if (CollectibleObject.IsBackPack(sourceSlot.Itemstack) && !CollectibleObject.IsEmptyBackPack(sourceSlot.Itemstack)) return false;
-            return base.CanTakeFrom(sourceSlot);
+            return base.CanTakeFrom(sourceSlot, priority);
         }
 
         public override bool CanHold(ItemSlot itemstackFromSourceSlot)

@@ -65,6 +65,11 @@ namespace Vintagestory.API.Server
         Dictionary<long, IServerChunk> AllLoadedChunks { get; }
 
         /// <summary>
+        /// Amount of chunk columns currently in the generating queue
+        /// </summary>
+        int CurrentGeneratingChunkCount { get; }
+
+        /// <summary>
         /// The worlds savegame object. If you change these values they will be permanently stored
         /// </summary>
         ISaveGame SaveGame { get; }

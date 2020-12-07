@@ -30,6 +30,8 @@ namespace Vintagestory.API.Client
     {
         int Spawn(IParticlePropertiesProvider particleProperties);
         IBlockAccessor BlockAccess { get; }
+
+        int ParticlesAlive(EnumParticleModel model);
     }
 
     /// <summary>
