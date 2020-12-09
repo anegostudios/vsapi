@@ -116,7 +116,7 @@ namespace Vintagestory.API.Config
                     }
                     else
                     {
-                        Regex regex = new Regex("^" + key.Replace("*", "(.*)") + "$", RegexOptions.Compiled);
+                        Regex regex = new Regex(key.Replace("*", "(.*)"), RegexOptions.Compiled);
                         Inst.LangRegexes[key] = new KeyValuePair<Regex, string>(regex, val.Value);
                     }
 

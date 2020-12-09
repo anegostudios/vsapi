@@ -251,6 +251,11 @@ namespace Vintagestory.API.Common
         public Cuboidf[] SelectionBoxes = new Cuboidf[] { DefaultCollisionBox.Clone() };
 
         /// <summary>
+        /// Defines the area with which particles collide with (if null, will be the same as CollisionBoxes).
+        /// </summary>
+        public Cuboidf[] ParticleCollisionBoxes = null;
+
+        /// <summary>
         /// Used for ladders. If true, walking against this blocks collisionbox will make the player climb
         /// </summary>
         public bool Climbable;
@@ -450,6 +455,17 @@ namespace Vintagestory.API.Common
         public virtual Cuboidf[] GetCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos)
         {
             return CollisionBoxes;
+        }
+
+        /// <summary>
+        /// Returns the blocks particle collision box. Warning: This method may get called by different threads, so it has to be thread safe.
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual Cuboidf[] GetParticleCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos)
+        {
+            return ParticleCollisionBoxes ?? CollisionBoxes;
         }
 
         /// <summary>
@@ -1542,7 +1558,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="chunkExtIds">Optional, fast way to look up a direct neighbouring block. This is an array of the current chunks block ids, including all direct neighbours, so its a 34x34x34 block id list. Use extIndex3d+TileSideEnum.MoveIndex[tileSide] to move around in the array</param>
         /// <param name="extIndex3d"></param>
-        public virtual void OnJsonTesselation(ref MeshData sourceMesh, BlockPos pos, int[] chunkExtIds, ushort[] chunkLightExt, int extIndex3d)
+        public virtual void OnJsonTesselation(ref MeshData sourceMesh, ref int[] lightRgbsByCorner, BlockPos pos, int[] chunkExtIds, ushort[] chunkLightExt, int extIndex3d)
         {
             if (VertexFlags.LeavesWindWave)
             {
@@ -1597,13 +1613,14 @@ namespace Vintagestory.API.Common
         {
             if (CollisionBoxes != null && CollisionBoxes.Length > 0)
             {
-                TopMiddlePos.X = (CollisionBoxes[0].X1 + CollisionBoxes[0].X2) / 2;
-                TopMiddlePos.Y = CollisionBoxes[0].Y2;
-                TopMiddlePos.Z = (CollisionBoxes[0].Z1 + CollisionBoxes[0].Z2) / 2;
+                Cuboidf mainBox = CollisionBoxes[0];
+                TopMiddlePos.X = (mainBox.X1 + mainBox.X2) / 2;
+                TopMiddlePos.Y = mainBox.Y2;
+                TopMiddlePos.Z = (mainBox.Z1 + mainBox.Z2) / 2;
 
                 for (int i = 1; i < CollisionBoxes.Length; i++)
                 {
-                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, CollisionBoxes[0].Y2);
+                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, CollisionBoxes[i].Y2);
                 }
 
                 return;
@@ -1611,13 +1628,14 @@ namespace Vintagestory.API.Common
 
             if (SelectionBoxes != null && SelectionBoxes.Length > 0)
             {
-                TopMiddlePos.X = (SelectionBoxes[0].X1 + SelectionBoxes[0].X2) / 2;
-                TopMiddlePos.Y = SelectionBoxes[0].Y2;
-                TopMiddlePos.Z = (SelectionBoxes[0].Z1 + SelectionBoxes[0].Z2) / 2;
+                Cuboidf mainBox = SelectionBoxes[0];
+                TopMiddlePos.X = (mainBox.X1 + mainBox.X2) / 2;
+                TopMiddlePos.Y = mainBox.Y2;
+                TopMiddlePos.Z = (mainBox.Z1 + mainBox.Z2) / 2;
 
                 for (int i = 1; i < SelectionBoxes.Length; i++)
                 {
-                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, SelectionBoxes[0].Y2);
+                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, SelectionBoxes[i].Y2);
                 }
 
                 return;
