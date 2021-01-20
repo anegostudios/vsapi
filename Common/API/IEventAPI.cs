@@ -63,7 +63,7 @@ namespace Vintagestory.API.Common
         event EntityDeathDelegate OnEntityDeath;
 
         /// <summary>
-        /// Triggered when a new entity spawned
+        /// Triggered when a new entity despawned
         /// </summary>
         event EntityDespawnDelegate OnEntityDespawn;
 

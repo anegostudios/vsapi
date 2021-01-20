@@ -36,6 +36,16 @@ namespace Vintagestory.API.Common
         ushort[] Light { get; set; }
 
         /// <summary>
+        /// Used to access light which may be buffered, in ChunkIlluminator 
+        /// </summary>
+        ushort[] Light_Buffered { get; }
+
+        /// <summary>
+        /// Second Light buffer used for double-buffering in ChunkIlluminator 
+        /// </summary>
+        ushort[] Light_SecondBuffer { get; }
+
+        /// <summary>
         /// Holds 3 saturation bits, the other upper 5 bits are unused. 
         /// Useful applications for the unused bits: 
         /// - 3 bits for water level for water permissible blocks, like fences: http://www.minecraftforum.net/forums/minecraft-discussion/suggestions/67465-water-should-flow-through-fences
@@ -65,7 +75,7 @@ namespace Vintagestory.API.Common
         void Unpack();
 
         /// <summary>
-        /// Marks this chunk as modified. If called on server side it will be stored to disk on the next autosave or during shutdown, if called on client it will be redrawn
+        /// Marks this chunk as modified. If called on server side it will be stored to disk on the next autosave or during shutdown, if called on client not much happens (but it will be preserved from packing for next ~8 seconds)
         /// </summary>
         void MarkModified();
 
@@ -133,5 +143,10 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <returns></returns>
         BlockEntity GetLocalBlockEntityAtBlockPos(BlockPos pos);
+
+        /// <summary>
+        /// Only to be implemented client side
+        /// </summary>
+        void FinishLightDoubleBuffering();
     }
 }

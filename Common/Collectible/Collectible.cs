@@ -2692,6 +2692,10 @@ namespace Vintagestory.API.Common
                     }
 
                     inslot.MarkDirty();
+
+                    // Only do one transformation, then do the next one next update
+                    // This does fully not respect time-fast-forward, so that should be fixed some day
+                    break;
                 }
 
                 states[i] = new TransitionState()
@@ -2712,7 +2716,7 @@ namespace Vintagestory.API.Common
                 attr.SetDouble("lastUpdatedTotalHours", nowTotalHours);
             }
 
-            return states.OrderBy(s => (int)s.Props.Type).ToArray();
+            return states.Where(s => s != null).OrderBy(s => (int)s.Props.Type).ToArray();
         }
 
 
@@ -3100,7 +3104,8 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Returns true if this blocks matterstate is liquid
+        /// Returns true if this blocks matterstate is liquid.
+        /// NOTE: Liquid blocks should also implement IBlockFlowing
         /// </summary>
         /// <returns></returns>
         public virtual bool IsLiquid()

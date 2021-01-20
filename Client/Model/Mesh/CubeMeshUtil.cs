@@ -204,7 +204,7 @@ namespace Vintagestory.API.Client
             {
                 BlockFacing face = BlockFacing.ALLFACES[i/6];
 
-                m.Flags[i] = VertexFlags.NormalToPackedInt(face.Normalf) << 15;
+                m.Flags[i] = face.NormalPackedFlags;
                 m.Flags[i + 1] = m.Flags[i];
                 m.Flags[i + 2] = m.Flags[i];
                 m.Flags[i + 3] = m.Flags[i];
@@ -505,7 +505,7 @@ namespace Vintagestory.API.Client
                 
                 mesh.XyzFaces[i] = facing.MeshDataIndex;
 
-                int normal = (VertexFlags.NormalToPackedInt(facing.Normalf.X, facing.Normalf.Y, facing.Normalf.Z) << 15);
+                int normal = BlockFacing.AllVertexFlagsNormals[facing.Index];
                 mesh.Flags[i * 4 + 0] |= normal;
                 mesh.Flags[i * 4 + 1] |= normal;
                 mesh.Flags[i * 4 + 2] |= normal;

@@ -104,7 +104,6 @@ namespace Vintagestory.API.Config
         /// Range in blocks a player can interact with blocks (break, use, place)
         /// </summary>
         public static float DefaultPickingRange = 4.5f;
-
         /// <summary>
         /// Set by the WeatherSimulation System in the survival mod
         /// </summary>
@@ -240,7 +239,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static int DamageLogChatGroup = -5;
         /// <summary>
-        /// Channel name for the damage chat log
+        /// Channel name for the info chat log
         /// </summary>
         public static int InfoLogChatGroup = -6;
         /// <summary>

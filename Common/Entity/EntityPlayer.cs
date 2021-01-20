@@ -164,6 +164,8 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public override double LadderFixDelta { get { return Properties.SpawnCollisionBox.Y2 - CollisionBox.YSize; } }
+
         /// <summary>
         /// The base player attached to this EntityPlayer.
         /// </summary>

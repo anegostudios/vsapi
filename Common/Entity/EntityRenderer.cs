@@ -73,9 +73,8 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="size"></param>
         /// <param name="meshRef"></param>
         /// <param name="modelviewMatrix"></param>
-        public virtual void PrepareForGuiRender(float dt, double posX, double posY, double posZ, float yawDelta, float size, out MeshRef meshRef, out float[] modelviewMatrix) {
-            meshRef = null;
-            modelviewMatrix = null;
+        public virtual void RenderToGui(float dt, double posX, double posY, double posZ, float yawDelta, float size) {
+            
         }
 
         /// <summary>

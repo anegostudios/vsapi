@@ -100,5 +100,7 @@ namespace Vintagestory.API.Server
         /// Whether or not falling blocks should fall (e.g. sand and gravel)
         /// </summary>
         bool AllowFallingBlocks { get; set; }
+
+        bool HostedMode { get; set; }
     }
 }

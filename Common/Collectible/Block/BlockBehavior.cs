@@ -15,7 +15,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The properties of this block behavior.
         /// </summary>
-        public JsonObject properties;
+        public string propertiesAtString;
+
+        /// <summary>
+        /// If true, this behavior is not required on the client. This is here because copygirl doesn't stop asking for it. Probably breaks things. If it breaks things, complain to copygirl please :p
+        /// </summary>
+        public virtual bool ClientSideOptional => false;
 
         public BlockBehavior(Block block)
         {
@@ -23,12 +28,12 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Called right after the block behavior was created
+        /// Called right after the block behavior was created, must call base method
         /// </summary>
         /// <param name="properties"></param>
         public virtual void Initialize(JsonObject properties)
         {
-            this.properties = properties;
+            this.propertiesAtString = properties.ToString();
         }
 
         /// <summary>

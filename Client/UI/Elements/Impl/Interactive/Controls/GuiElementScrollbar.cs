@@ -160,7 +160,6 @@ namespace Vintagestory.API.Client
             if (Bounds.InnerHeight <= currentHandleHeight + 0.001) return;
 
             float y = currentHandlePosition - (float)scaled(102) * args.deltaPrecise / ScrollConversionFactor;
-
             double scrollbarMoveableHeight = Bounds.InnerHeight - currentHandleHeight;
             currentHandlePosition = (float)GameMath.Clamp(y, 0, scrollbarMoveableHeight);
             TriggerChanged();
@@ -195,6 +194,23 @@ namespace Vintagestory.API.Client
             {
                 UpdateHandlePositionAbs(args.Y - (int)Bounds.renderY - mouseDownStartY);
             }
+        }
+
+        public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
+        {
+            if (hasFocus)
+            {
+                if (args.KeyCode == (int)GlKeys.Down || args.KeyCode == (int)GlKeys.Up)
+                {
+                    float movey = args.KeyCode == (int)GlKeys.Down ? -0.5f : 0.5f;
+
+                    float y = currentHandlePosition - (float)scaled(102) * movey / ScrollConversionFactor;
+                    double scrollbarMoveableHeight = Bounds.InnerHeight - currentHandleHeight;
+                    currentHandlePosition = (float)GameMath.Clamp(y, 0, scrollbarMoveableHeight);
+                    TriggerChanged();
+                }
+            }
+
         }
 
         void UpdateHandlePositionAbs(float y)

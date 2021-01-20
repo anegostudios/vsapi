@@ -29,6 +29,7 @@ namespace Vintagestory.API.Client
 
         public float ShadowZExtendNear;
         public float ShadowZExtendFar;
+        
 
         public float[] ToShadowMapSpaceMatrixFar = new float[16];
         public float[] ToShadowMapSpaceMatrixNear = new float[16];

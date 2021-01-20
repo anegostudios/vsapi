@@ -347,7 +347,7 @@ namespace Vintagestory.API.Client
                     (int)Bounds.renderY + (int)Bounds.InnerHeight - (int)scrollOffY, 
                     (int)expandedBoxWidth, 
                     (int)expandedBoxHeight,
-                    110 + 300
+                    110
                 );
 
 

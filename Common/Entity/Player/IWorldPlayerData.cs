@@ -73,5 +73,26 @@ namespace Vintagestory.API.Common
         /// Block selection mode
         /// </summary>
         bool AreaSelectionMode { get; set; }
+
+
+        /// <summary>
+        /// Allows setting of arbitrary, permanantly stored moddata attached to this player. Not synced to client.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        void SetModdata(string key, byte[] data);
+
+        /// <summary>
+        /// Removes the permanently stored mod data
+        /// </summary>
+        /// <param name="key"></param>
+        void RemoveModdata(string key);
+
+        /// <summary>
+        /// Retrieve arbitrary, permantly stored mod data
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        byte[] GetModdata(string key);
     }
 }

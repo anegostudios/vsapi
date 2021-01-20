@@ -17,6 +17,9 @@ namespace Vintagestory.API.Client.Tesselation
 
         public const int SideCount = 6;
 
+        /// <summary>
+        /// This can also be done algorithmically as (i ^ (2 - i / 4))
+        /// </summary>
         public static int[] Opposites = new int[]
         {
             2, 3, 0, 1, 5, 4

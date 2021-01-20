@@ -26,6 +26,8 @@ namespace Vintagestory.API.Common
         AvailableCodec[] AvailableCodecs();
 
         void DeleteFileToRecyclebin(string filepath);
+
+        void FocusWindow();
     }
 
 }

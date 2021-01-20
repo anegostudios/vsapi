@@ -111,7 +111,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public float Length()
         {
-            return (float)Math.Sqrt(X * X + Y * Y + Z * Z);
+            return GameMath.RootSumOfSquares(X, Y, Z);
         }
 
         public void Negate()
@@ -129,6 +129,10 @@ namespace Vintagestory.API.MathTools
         /// <param name="a"></param>
         /// <returns></returns>
         public float Dot(Vec3f a)
+        {
+            return X * a.X + Y * a.Y + Z * a.Z;
+        }
+        public float Dot(FastVec3f a)
         {
             return X * a.X + Y * a.Y + Z * a.Z;
         }

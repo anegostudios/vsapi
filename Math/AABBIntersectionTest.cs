@@ -144,7 +144,7 @@ namespace Vintagestory.API.MathTools
             double h = selectionBox.Y2 - selectionBox.Y1;
             double l = selectionBox.Z2 - selectionBox.Z1;
 
-            for (int i = 0; i < BlockFacing.ALLFACES.Length; i++)
+            for (int i = 0; i < BlockFacing.NumberOfFaces; i++)
             {
                 BlockFacing blockSideFacing = BlockFacing.ALLFACES[i];
                 Vec3i planeNormal = blockSideFacing.Normali;
@@ -212,7 +212,7 @@ namespace Vintagestory.API.MathTools
 
         private BlockFacing GetExitingFullBlockFace(BlockPos pos, ref Vec3d exitPos)
         {
-            for (int i = 0; i < BlockFacing.ALLFACES.Length; i++)
+            for (int i = 0; i < BlockFacing.NumberOfFaces; i++)
             {
                 BlockFacing blockSideFacing = BlockFacing.ALLFACES[i];
                 Vec3i planeNormal = blockSideFacing.Normali;

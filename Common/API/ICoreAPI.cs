@@ -119,7 +119,9 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
-        /// Recommendation: Surround this call with a try/catch in case the user made a type while changing the configuration
+        /// Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+        /// Returns null if the file does not exist
+        /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="filename"></param>

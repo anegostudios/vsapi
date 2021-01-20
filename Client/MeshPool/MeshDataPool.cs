@@ -307,7 +307,7 @@ namespace Vintagestory.API.Client
 
             if (!poolLocations.Remove(location))
             {    
-                throw new InvalidOperationException("Tried to remove mesh that does not exist. This shouldnn't happen");
+                throw new InvalidOperationException("Tried to remove mesh that does not exist. This shouldn't happen");
             }
 
             // Last location?

@@ -111,6 +111,25 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
+        /// Adds the same value to the buffer 4 times - coded for performance.
+        /// </summary>
+        /// <param name="value">The value to add.</param>
+        public void Add4(T value)
+        {
+            int count = Count;
+            if (count + 4 > BufferSize)
+            {
+                GrowBuffer();
+            }
+            T[] values = this.Values;
+            values[count++] = value;
+            values[count++] = value;
+            values[count++] = value;
+            values[count++] = value;
+            this.Count = count;
+        }
+
+        /// <summary>
         /// Adds multiple values to the buffer.
         /// </summary>
         /// <param name="values">The values being added.</param>

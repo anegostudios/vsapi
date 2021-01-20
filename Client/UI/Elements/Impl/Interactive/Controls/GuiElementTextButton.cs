@@ -259,6 +259,19 @@ namespace Vintagestory.API.Client
             currentlyMouseDownOnElement = false;
         }
 
+        public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
+        {
+            if (hasFocus && args.KeyCode == (int)GlKeys.Enter)
+            {
+                if (PlaySound)
+                {
+                    api.Gui.PlaySound("menubutton_press");
+                }
+                args.Handled = onClick();
+            }
+        }
+
+
         /// <summary>
         /// Sets the button as active or inactive.
         /// </summary>

@@ -831,7 +831,7 @@ namespace Vintagestory.API.Client
         {
             List<IInventory> inventories = api.World.Player.InventoryManager.OpenedInventories;
             IInventory mouseCursorInv = api.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.mousecursorInvClassName);
-            object packet = null;
+            object packet;
 
             EnumModifierKey modifiers =
                 (shiftPressed ? EnumModifierKey.SHIFT : 0) |
@@ -846,28 +846,27 @@ namespace Vintagestory.API.Client
             {
                 ItemSlot sourceSlot = inventory[slotId];
                 op.RequestedQuantity = sourceSlot.StackSize;
+                packet = inventory.ActivateSlot(slotId, sourceSlot, ref op);
+            }
+            else
+            {
+                op.CurrentPriority = EnumMergePriority.DirectMerge;
+                packet = inventory.ActivateSlot(slotId, mouseCursorInv[0], ref op);
+            }
 
-                object[] packets = api.World.Player.InventoryManager.TryTransferAway(sourceSlot, ref op, false);
-
-                if (packets != null)
+            if (packet != null)
+            {
+                if (packet is object[] packets)
                 {
                     for (int i = 0; i < packets.Length; i++)
                     {
                         SendPacketHandler(packets[i]);
                     }
+                } else
+                {
+                    SendPacketHandler?.Invoke(packet);
                 }
-
-                api.Input.TriggerOnMouseClickSlot(inventory[slotId]);
-
-                return;
-            }
-
-            op.CurrentPriority = EnumMergePriority.DirectMerge;
-            packet = inventory.ActivateSlot(slotId,  mouseCursorInv[0], ref op);
-
-            if (packet != null)
-            {
-                SendPacketHandler?.Invoke(packet);
+                
             }
 
             api.Input.TriggerOnMouseClickSlot(inventory[slotId]);

@@ -46,6 +46,10 @@ namespace Vintagestory.API.Common
         public float clientPhysicsTickTimeThreshold = 0f;
         float accum = 0;
 
+        /// <summary>
+        /// If set, will test for entity collision every tick (expensive)
+        /// </summary>
+        public Action<float> OnPhysicsTickCallback;
         
         public override void OnEntityDespawn(EntityDespawnReason despawn)
         {
@@ -137,7 +141,6 @@ namespace Vintagestory.API.Common
         }
 
 
-        double swimAccel;
 
         /// <summary>
         /// Performs the physics on the specified entity.
@@ -330,6 +333,8 @@ namespace Vintagestory.API.Common
                     }
                 }
             }
+
+            OnPhysicsTickCallback?.Invoke(dtFac);
         }
 
 

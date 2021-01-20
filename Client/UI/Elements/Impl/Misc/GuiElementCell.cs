@@ -65,10 +65,6 @@ namespace Vintagestory.API.Client
 
         }
 
-        public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
-        {
-            Compose(); 
-        }
 
         public void Compose()
         { 
@@ -252,6 +248,11 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The change in time.</param>
         public void OnRenderInteractiveElements(ICoreClientAPI api, float deltaTime)
         {
+            if (pressedButtonTexture.TextureId == 0)
+            {
+                Compose();
+            }
+
             if (cellEntry.Selected)
             {
                 api.Render.Render2DTexturePremultipliedAlpha(
@@ -273,8 +274,8 @@ namespace Vintagestory.API.Client
             }
 
 
-            int dx = api.Input.MouseX;// - (int)parentBounds.absX;
-            int dy = api.Input.MouseY;// - (int)parentBounds.absY;
+            int dx = api.Input.MouseX;
+            int dy = api.Input.MouseY;
             Vec2d pos = Bounds.PositionInside(dx, dy);
 
             if (pos == null || !IsPositionInside(api.Input.MouseX, api.Input.MouseY)) return;

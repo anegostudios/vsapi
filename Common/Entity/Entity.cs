@@ -400,8 +400,13 @@ namespace Vintagestory.API.Common.Entities
             }
         }
 
+        /// <summary>
+        /// A small offset used to prevent players from clipping through the blocks above ladders: relevant if the entity's collision box is sometimes adjusted by the game code
+        /// </summary>
+        public virtual double LadderFixDelta { get { return 0D; } }
+
         #endregion
-        
+
 
         /// <summary>
         /// Creates a new instance of an entity
@@ -789,11 +794,11 @@ namespace Vintagestory.API.Common.Entities
                     {
                         int index = Math.Min(FireParticleProps.Length - 1, Api.World.Rand.Next(FireParticleProps.Length + 1));
                         AdvancedParticleProperties particles = FireParticleProps[index];
-                        particles.basePos.Set(Pos.X, Pos.Y + (CollisionBox.Y2 - CollisionBox.Y1) / 2, Pos.Z);
+                        particles.basePos.Set(Pos.X, Pos.Y + CollisionBox.YSize / 2, Pos.Z);
 
-                        particles.PosOffset[0].var = (CollisionBox.X2 - CollisionBox.X1) / 2;
-                        particles.PosOffset[1].var = (CollisionBox.Y2 - CollisionBox.Y1) / 2;
-                        particles.PosOffset[2].var = (CollisionBox.Z2 - CollisionBox.Z1) / 2;
+                        particles.PosOffset[0].var = CollisionBox.XSize / 2;
+                        particles.PosOffset[1].var = CollisionBox.YSize / 2;
+                        particles.PosOffset[2].var = CollisionBox.ZSize / 2;
                         particles.Velocity[0].avg = (float)Pos.Motion.X * 10;
                         particles.Velocity[1].avg = (float)Pos.Motion.Y * 5;
                         particles.Velocity[2].avg = (float)Pos.Motion.Z * 10;
@@ -812,7 +817,7 @@ namespace Vintagestory.API.Common.Entities
 
                     if (!alive && InLava && !(this is EntityPlayer))
                     {
-                        float q = GameMath.Clamp((CollisionBox.X2 - CollisionBox.X1) * (CollisionBox.Y2 - CollisionBox.Y1) * (CollisionBox.Z2 - CollisionBox.Z1) * 150, 10, 150);
+                        float q = GameMath.Clamp(CollisionBox.XSize * CollisionBox.YSize * CollisionBox.ZSize * 150, 10, 150);
                         Api.World.SpawnParticles(
                             q,
                             ColorUtil.ColorFromRgba(20, 20, 20, 255),
@@ -885,8 +890,8 @@ namespace Vintagestory.API.Common.Entities
             EntityPos pos = SidedPos;
             float yDistance = (float)Math.Abs(PositionBeforeFalling.Y - pos.Y);
 
-            double width = CollisionBox.X2 - CollisionBox.X1;
-            double height = CollisionBox.Y2 - CollisionBox.Y1;
+            double width = CollisionBox.XSize;
+            double height = CollisionBox.YSize;
 
             double splashStrength = 2 * GameMath.Sqrt(width * height) + pos.Motion.Length() * 10;
 
@@ -904,8 +909,8 @@ namespace Vintagestory.API.Common.Entities
             World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.Y, (float)pos.Z, null);
             BlockPos blockpos = pos.AsBlockPos;
             Vec3d aboveBlockPos = new Vec3d(Pos.X, blockpos.Y + 1.02, Pos.Z);
-            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.X2 - CollisionBox.X1, (int)(qmod * 8 * splashStrength), 0.75f);
-            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.X2 - CollisionBox.X1, (int)(qmod * 8 * splashStrength), 0.25f);
+            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.XSize, (int)(qmod * 8 * splashStrength), 0.75f);
+            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.XSize, (int)(qmod * 8 * splashStrength), 0.25f);
 
             if (splashStrength >= 2)
             {
@@ -941,12 +946,12 @@ namespace Vintagestory.API.Common.Entities
             if (this is EntityPlayer && Swimming)
             {
                 bioLumiParticles.MinPos.Set(SidedPos.X + 2f * CollisionBox.X1, SidedPos.Y + offy + 0.5f + 1.25f * CollisionBox.Y1, SidedPos.Z + 2f * CollisionBox.Z1);
-                bioLumiParticles.AddPos.Set(3f * (CollisionBox.X2 - CollisionBox.X1), 0.5f * (CollisionBox.Y2 - CollisionBox.Y1), 3f * (CollisionBox.Z2 - CollisionBox.Z1));
+                bioLumiParticles.AddPos.Set(3f * CollisionBox.XSize, 0.5f * CollisionBox.YSize, 3f * CollisionBox.ZSize);
             }
             else
             {
                 bioLumiParticles.MinPos.Set(SidedPos.X + 1.25f * CollisionBox.X1, SidedPos.Y + offy + 1.25f * CollisionBox.Y1, SidedPos.Z + 1.25f * CollisionBox.Z1);
-                bioLumiParticles.AddPos.Set(1.5f * (CollisionBox.X2 - CollisionBox.X1), 1.5f * (CollisionBox.Y2 - CollisionBox.Y1), 1.5f * (CollisionBox.Z2 - CollisionBox.Z1));
+                bioLumiParticles.AddPos.Set(1.5f * CollisionBox.XSize, 1.5f * CollisionBox.YSize, 1.5f * CollisionBox.ZSize);
             }
 
             bioLumiParticles.MinQuantity = Math.Min(500, 150 * quantityMul * (float)qmul);

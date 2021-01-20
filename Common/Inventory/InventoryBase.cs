@@ -399,11 +399,19 @@ namespace Vintagestory.API.Common
         {
             object packet = InvNetworkUtil.GetActivateSlotPacket(slotId, op);
 
-            this[slotId].ActivateSlot((ItemSlot)sourceSlot, ref op);
+            if (op.ShiftDown)
+            {
+                sourceSlot = this[slotId];
+                op.RequestedQuantity = sourceSlot.StackSize;
+                op.ActingPlayer.InventoryManager.TryTransferAway(sourceSlot, ref op, false);
+            }
+            else
+            {
+                this[slotId].ActivateSlot(sourceSlot, ref op);
+            }
 
             return packet;
         }
-
 
         /// <summary>
         /// Called when one of the containing slots has been modified

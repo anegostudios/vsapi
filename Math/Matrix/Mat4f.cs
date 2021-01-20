@@ -39,23 +39,11 @@ namespace Vintagestory.API.MathTools
         /// <returns>{mat4} a new 4x4 matrix</returns>
         public static float[] Create()
         {
-            float[] output = new float[16];
-            output[0] = 1;
-            output[1] = 0;
-            output[2] = 0;
-            output[3] = 0;
-            output[4] = 0;
-            output[5] = 1;
-            output[6] = 0;
-            output[7] = 0;
-            output[8] = 0;
-            output[9] = 0;
-            output[10] = 1;
-            output[11] = 0;
-            output[12] = 0;
-            output[13] = 0;
-            output[14] = 0;
-            output[15] = 1;
+            float[] output = new float[16];  // a new array is automatically initialised to the default float value of 0f
+            output[0] = 1f;
+            output[5] = 1f;
+            output[10] = 1f;
+            output[15] = 1f;
             return output;
         }
 
@@ -1020,15 +1008,103 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        public static void MulWithVec4(float[] matrix, float[] vec4, float[] output)
+        public static void MulWithVec4(float[] matrix, float[] vec, float[] output)
         {
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    output[row] += matrix[4 * col + row] * vec4[col];
-                }
-            }
+            float vx = vec[0];
+            float vy = vec[1];
+            float vz = vec[2];
+            float va = vec[3];
+            output[0] = matrix[0] * vx + matrix[4] * vy + matrix[8] * vz + matrix[12] * va;
+            output[1] = matrix[1] * vx + matrix[5] * vy + matrix[9] * vz + matrix[13] * va;
+            output[2] = matrix[2] * vx + matrix[6] * vy + matrix[10] * vz + matrix[14] * va;
+            output[3] = matrix[3] * vx + matrix[7] * vy + matrix[11] * vz + matrix[15] * va;
+        }
+
+
+        /// <summary>
+        /// Used for vec3 representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
+        /// </summary>
+        public static void MulWithVec3(float[] matrix, float[] vec, float[] output)
+        {
+            float x = vec[0];
+            float y = vec[1];
+            float z = vec[2];
+            output[0] = matrix[0] * x + matrix[4] * y + matrix[8] * z;
+            output[1] = matrix[1] * x + matrix[5] * y + matrix[9] * z;
+            output[2] = matrix[2] * x + matrix[6] * y + matrix[10] * z;
+        }
+
+        /// <summary>
+        /// Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
+        /// The offset is used to index within the original and output arrays - e.g. in MeshData.xyz
+        /// </summary>
+        public static void MulWithVec3_Position(float[] matrix, float[] vec, float[] output, int offset)
+        {
+            float x = vec[offset + 0];
+            float y = vec[offset + 1];
+            float z = vec[offset + 2];
+            output[offset + 0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output[offset + 1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output[offset + 2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+        }
+
+
+        /// <summary>
+        /// Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
+        /// The offset is used to index within the original and output arrays - e.g. in MeshData.xyz
+        /// The origin is the origin for the rotation
+        /// </summary>
+        public static void MulWithVec3_Position_WithOrigin(float[] matrix, float[] vec, float[] output, int offset, Vec3f origin)
+        {
+            float vx = vec[offset + 0] - origin.X;
+            float vy = vec[offset + 1] - origin.Y;
+            float vz = vec[offset + 2] - origin.Z;
+            output[offset + 0] = origin.X + matrix[0] * vx + matrix[4] * vy + matrix[8] * vz + matrix[12];
+            output[offset + 1] = origin.Y + matrix[1] * vx + matrix[5] * vy + matrix[9] * vz + matrix[13];
+            output[offset + 2] = origin.Z + matrix[2] * vx + matrix[6] * vy + matrix[10] * vz + matrix[14];
+        }
+
+
+        /// <summary>
+        /// Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
+        /// </summary>
+        public static void MulWithVec3_Position(float[] matrix, float x, float y, float z, Vec3f output)
+        {
+            output.X = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output.Y = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output.Z = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+        }
+
+
+        /// <summary>
+        /// Used for Vec3f representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
+        /// </summary>
+        public static void MulWithVec3(float[] matrix, Vec3f vec, Vec3f output)
+        {
+            output.X = matrix[0] * vec.X + matrix[4] * vec.Y + matrix[8] * vec.Z;
+            output.Y = matrix[1] * vec.X + matrix[5] * vec.Y + matrix[9] * vec.Z;
+            output.Z = matrix[2] * vec.X + matrix[6] * vec.Y + matrix[10] * vec.Z;
+        }
+
+
+        /// <summary>
+        /// Used for x,y,z representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
+        /// </summary>
+        public static FastVec3f MulWithVec3(float[] matrix, float x, float y, float z)
+        {
+            float xOut = matrix[0] * x + matrix[4] * y + matrix[8] * z;
+            float yOut = matrix[1] * x + matrix[5] * y + matrix[9] * z;
+            float zOut = matrix[2] * x + matrix[6] * y + matrix[10] * z;
+            return new FastVec3f(xOut, yOut, zOut);
+        }
+
+
+        public static BlockFacing MulWithVec3_BlockFacing(float[] matrix, Vec3f vec)
+        {
+            float x = matrix[0] * vec.X + matrix[4] * vec.Y + matrix[8] * vec.Z;
+            float y = matrix[1] * vec.X + matrix[5] * vec.Y + matrix[9] * vec.Z;
+            float z = matrix[2] * vec.X + matrix[6] * vec.Y + matrix[10] * vec.Z;
+            return BlockFacing.FromVector(x, y, z);
         }
 
 

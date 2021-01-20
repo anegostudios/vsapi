@@ -285,13 +285,10 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
         /// <summary>
-        /// Adds a List to the current GUI.
+        /// Adds a container to the current GUI. Can be used to add any gui element within a scrollable window.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the cell.</param>
-        /// <param name="creallCreator">the event fired when the cell is requested by the GUI</param>
-        /// <param name="OnMouseDownOnCellLeft">The event fired when the player clicks on the lefthand side of the cell.</param>
-        /// <param name="OnMouseDownOnCellRight">The event fired when the player clicks on the righthand side of the cell.</param>
-        /// <param name="cells">The cells of the list.</param>
         /// <param name="key">The identifier for the list.</param>
         public static GuiComposer AddContainer(this GuiComposer composer, ElementBounds bounds, string key = null)
         {
@@ -304,8 +301,9 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Gets the list by name.
+        /// Gets the container by key
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the list to get.</param>
         /// <returns></returns>
         public static GuiElementContainer GetContainer(this GuiComposer composer, string key)

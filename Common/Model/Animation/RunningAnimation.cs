@@ -126,10 +126,10 @@ namespace Vintagestory.API.Common
 
             CurrentFrame = newFrame;
 
-            if (CurrentFrame >= Animation.QuantityFrames - 1)
+            if (CurrentFrame >= Animation.QuantityFrames) // here and in the modulo used to be a -1 but that skips the last frame (tyron 10dec2020)
             {
                 Iterations++;
-                CurrentFrame = GameMath.Mod(newFrame, Animation.QuantityFrames - 1);
+                CurrentFrame = GameMath.Mod(newFrame, Animation.QuantityFrames);
             }
 
             

@@ -75,64 +75,58 @@ namespace Vintagestory.API.Common
 
         public static int NormalToPackedInt(double x, double y, double z)
         {
-            int xN = (int)Math.Abs(x * 7);
-            int yN = (int)Math.Abs(y * 7);
-            int zN = (int)Math.Abs(z * 7);
+            int xN = (int)(x * 7.000001) * 2;  //a small bump up for rounding, as the x, y, z values may be 1/7th fractions rounded down in binary
+            int yN = (int)(y * 7.000001) * 2;
+            int zN = (int)(z * 7.000001) * 2;  //can be any even number between -14 and +14
 
             return
-                (x < 0 ? 1 : 0) |
-                (xN << 1) |
-                ((y < 0 ? 1 : 0) << 4) |
-                (yN << 5) |
-                ((z < 0 ? 1 : 0) << 8) |
-                (zN << 9)
+                (xN < 0 ? 1 - xN : xN) |
+                (yN < 0 ? 1 - yN : yN) << 4 |
+                (zN < 0 ? 1 - zN : zN) << 8
             ;
         }
 
         public static int NormalToPackedInt(Vec3f normal)
         {
-            int xN = (int)Math.Abs(normal.X * 7);
-            int yN = (int)Math.Abs(normal.Y * 7);
-            int zN = (int)Math.Abs(normal.Z * 7);
+            int xN = (int)(normal.X * 7.000001f) * 2;  //a small bump up for rounding, as the x, y, z values may be 1/7th fractions rounded down in binary
+            int yN = (int)(normal.Y * 7.000001f) * 2;
+            int zN = (int)(normal.Z * 7.000001f) * 2;  //can be any even number between -14 and +14
 
             return
-                (normal.X < 0 ? 1 : 0) |
-                (xN << 1) |
-                ((normal.Y < 0 ? 1 : 0) << 4) |
-                (yN << 5) |
-                ((normal.Z < 0 ? 1 : 0) << 8) |
-                (zN << 9)
+                (xN < 0 ? 1 - xN : xN) |
+                (yN < 0 ? 1 - yN : yN) << 4 |
+                (zN < 0 ? 1 - zN : zN) << 8
             ;
         }
 
         public static void PackedIntToNormal(int packedNormal, float[] intoFloats)
         {
-            int x = (packedNormal >> 1) & 0x7;
-            int y = (packedNormal >> 5) & 0x7;
-            int z = (packedNormal >> 9) & 0x7;
+            int x = packedNormal & 0x00E;
+            int y = packedNormal & 0x0E0;
+            int z = packedNormal & 0xE00;
 
-            int signx = packedNormal & 1;
-            int signy = (packedNormal >> 4) & 1;
-            int signz = (packedNormal >> 8) & 1;
+            int signx = 1 - ((packedNormal << 1) & 2);
+            int signy = 1 - ((packedNormal >> 3) & 2);
+            int signz = 1 - ((packedNormal >> 7) & 2);
 
-            intoFloats[0] = (1.0f - signx * 2) * x / 7.0f;
-            intoFloats[1] = (1.0f - signy * 2) * y / 7.0f;
-            intoFloats[2] = (1.0f - signz * 2) * z / 7.0f;
+            intoFloats[0] = signx * x / 14f;   // 7 * 2
+            intoFloats[1] = signy * y / 224f;  // this is 7 * 2 * 16
+            intoFloats[2] = signz * z / 3584f; // this is 7 * 2 * 256
         }
 
-        public static void PackedIntToNormal(int packedNormal, double[] intoFloats)
+        public static void PackedIntToNormal(int packedNormal, double[] intoDouble)
         {
-            int x = (packedNormal >> 1) & 0x7;
-            int y = (packedNormal >> 5) & 0x7;
-            int z = (packedNormal >> 9) & 0x7;
+            int x = packedNormal & 0x00E;
+            int y = packedNormal & 0x0E0;
+            int z = packedNormal & 0xE00;
 
-            int signx = packedNormal & 1;
-            int signy = (packedNormal >> 4) & 1;
-            int signz = (packedNormal >> 8) & 1;
+            int signx = 1 - ((packedNormal << 1) & 2);
+            int signy = 1 - ((packedNormal >> 3) & 2);
+            int signz = 1 - ((packedNormal >> 7) & 2);
 
-            intoFloats[0] = (1.0f - signx * 2) * x / 7.0f;
-            intoFloats[1] = (1.0f - signy * 2) * y / 7.0f;
-            intoFloats[2] = (1.0f - signz * 2) * z / 7.0f;
+            intoDouble[0] = signx * x / 14.0;   // 7 * 2
+            intoDouble[1] = signy * y / 224.0;  // this is 7 * 2 * 16
+            intoDouble[2] = signz * z / 3584.0; // this is 7 * 2 * 256
         }
 
 

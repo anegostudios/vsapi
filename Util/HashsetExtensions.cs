@@ -8,7 +8,7 @@ namespace Vintagestory.API.Util
 {
     public static class HashsetExtensions
     {
-        public static void AddRange<T>(this HashSet<T> hashset, List<T> elements)
+        public static void AddRange<T>(this HashSet<T> hashset, IEnumerable<T> elements)
         {
             foreach (T elem in elements) hashset.Add(elem);
         }

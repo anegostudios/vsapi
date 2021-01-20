@@ -473,7 +473,7 @@ namespace Vintagestory.API.Common
 
                 if ((FeetInLiquid || Swimming) && moving)
                 {
-                    double width = (CollisionBox.X2 - CollisionBox.X1) * 0.75f;
+                    double width = CollisionBox.XSize * 0.75f;
 
                     SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
                     SplashParticleProps.AddPos.Set(width, 0.5, width);

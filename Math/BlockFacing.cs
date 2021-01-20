@@ -76,6 +76,14 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     public class BlockFacing
     {
+        public const int NumberOfFaces = 6;
+        public const int indexNORTH = 0;
+        public const int indexEAST = 1;
+        public const int indexSOUTH = 2;
+        public const int indexWEST = 3;
+        public const int indexUP = 4;
+        public const int indexDOWN = 5;
+
         /// <summary>
         /// All horizontal blockfacing flags combined
         /// </summary>
@@ -117,6 +125,16 @@ namespace Vintagestory.API.MathTools
         /// All block faces in the order of N, E, S, W, U, D
         /// </summary>
         public static readonly BlockFacing[] ALLFACES = new BlockFacing[] { NORTH, EAST, SOUTH, WEST, UP, DOWN };
+
+        /// <summary>
+        /// All block faces in the order of N, E, S, W, U, D
+        /// </summary>
+        public static readonly Vec3i[] ALLNORMALI = new Vec3i[] { NORTH.normali, EAST.normali, SOUTH.normali, WEST.normali, UP.normali, DOWN.normali };
+
+        /// <summary>
+        /// Packed ints representing the normal flags, left-shifted by 15 for easy inclusion in VertexFlags
+        /// </summary>
+        public static readonly int[] AllVertexFlagsNormals = new int[] { NORTH.normalPackedFlags, EAST.normalPackedFlags, SOUTH.normalPackedFlags, WEST.normalPackedFlags, UP.normalPackedFlags, DOWN.normalPackedFlags };
 
         /// <summary>
         /// Array of horizontal faces (N, E, S, W)
@@ -189,7 +207,7 @@ namespace Vintagestory.API.MathTools
         public int NormalPacked { get { return normalPacked; } }
 
         /// <summary>
-        /// Normalized normal vector packed into 3x4=12 bytes total and bit shifted by 13 bits, for use in meshdata flags data
+        /// Normalized normal vector packed into 3x4=12 bytes total and bit shifted by 15 bits, for use in meshdata flags data
         /// </summary>
         public int NormalPackedFlags { get { return normalPackedFlags; } }
 
@@ -222,7 +240,6 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public EnumAxis Axis { get { return axis; } }
 
-
         private BlockFacing(string code, byte flag, int index, int oppositeIndex, int horizontalAngleIndex, Vec3i facingVector, Vec3f planeCenter, EnumAxis axis)
         {
             this.index = index;
@@ -234,7 +251,7 @@ namespace Vintagestory.API.MathTools
             this.normali = facingVector;
             this.normalf = new Vec3f(facingVector.X, facingVector.Y, facingVector.Z);
 
-            normalPacked = NormalUtil.PackNormal(new float[] { normalf.X, normalf.Y, normalf.Z, 0 });
+            normalPacked = NormalUtil.PackNormal(normalf.X, normalf.Y, normalf.Z);
             normalb = (byte)(
                 (axis == EnumAxis.Z ? 1 : 0) << 0
                 | (facingVector.Z < 0 ? 1 : 0) << 1
@@ -335,8 +352,7 @@ namespace Vintagestory.API.MathTools
             Mat4f.RotateY(matrix, matrix, radY);
             Mat4f.RotateZ(matrix, matrix, radZ);
 
-            float[] pos = new float[] { Normalf.X, Normalf.Y, Normalf.Z, 1 };
-            pos = Mat4f.MulWithVec4(matrix, pos);
+            FastVec3f pos = Mat4f.MulWithVec3(matrix, Normalf.X, Normalf.Y, Normalf.Z);
 
             float brightness = 0;
 

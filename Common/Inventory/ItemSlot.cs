@@ -131,6 +131,7 @@ namespace Vintagestory.API.Common
         public virtual ItemStack TakeOutWhole()
         {
             ItemStack stack = itemstack.Clone();
+            itemstack.StackSize = 0;
             itemstack = null;
             OnItemSlotModified(stack);
 
@@ -439,6 +440,17 @@ namespace Vintagestory.API.Common
         public virtual string GetStackDescription(IClientWorldAccessor world, bool extendedDebugInfo)
         {
             return itemstack?.GetDescription(world, this, extendedDebugInfo);
+        }
+
+
+        public override string ToString()
+        {
+            if (Empty) {
+                return base.ToString();
+            } else
+            {
+                return base.ToString() + " (" + itemstack.ToString() + ")";
+            }
         }
 
     }

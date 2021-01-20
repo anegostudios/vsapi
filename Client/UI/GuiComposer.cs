@@ -63,6 +63,8 @@ namespace Vintagestory.API.Client
 
         bool premultipliedAlpha = true;
 
+        public Vec4f Color = null;
+
         /// <summary>
         /// A unique number assigned to each element
         /// </summary>
@@ -642,7 +644,7 @@ namespace Vintagestory.API.Client
             {
                 int wdt = Math.Max(bounds.OuterWidthInt, staticElementsTexture.Width);
                 int hgt = Math.Max(bounds.OuterHeightInt, staticElementsTexture.Height);
-                Api.Render.Render2DTexture(staticElementsTexture.TextureId, (int)bounds.renderX, (int)bounds.renderY, wdt, hgt, zDepth);
+                Api.Render.Render2DTexture(staticElementsTexture.TextureId, (int)bounds.renderX, (int)bounds.renderY, wdt, hgt, zDepth, Color);
             }
 
             MouseOverCursor = null;

@@ -192,7 +192,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// BlockShapeTesselator xyz faces. Required by TerrainChunkTesselator to determine vertex lightness. Should hold VerticesCount / 4 values. Set to 0 for no face, set to 1..8 for faces 0..7
         /// </summary>
-        public byte[] XyzFaces = new byte[0];
+        public byte[] XyzFaces;
 
         /// <summary>
         /// Amount of assigned xyz face values
@@ -206,16 +206,16 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// BlockShapeTesselator climate colormap ids. Required by TerrainChunkTesselator to determine whether to color a vertex by a color map or not. Should hold VerticesCount / 4 values. Set to 0 for no color mapping, set 1..n for color map 0..n-1
         /// </summary>
-        public byte[] ClimateColorMapIds = new byte[0];
+        public byte[] ClimateColorMapIds;
         /// <summary>
         /// BlockShapeTesselator season colormap ids. Required by TerrainChunkTesselator to determine whether to color a vertex by a color map or not. Should hold VerticesCount / 4 values. Set to 0 for no color mapping, set 1..n for color map 0..n-1
         /// </summary>
-        public byte[] SeasonColorMapIds = new byte[0];
+        public byte[] SeasonColorMapIds;
 
         /// <summary>
         /// BlockShapeTesselator renderpass. Required by TerrainChunkTesselator to determine in which mesh data pool each quad should land in. Should hold VerticesCount / 4 values.
         /// </summary>
-        public short[] RenderPasses = new short[0];
+        public short[] RenderPasses;
 
         /// <summary>
         /// Amount of assigned tint values
@@ -378,61 +378,7 @@ namespace Vintagestory.API.Client
             Mat4f.RotateY(matrix, matrix, radY);
             Mat4f.RotateZ(matrix, matrix, radZ);
 
-            float[] normal = new float[4];
-            float[] pos = new float[] { 0, 0, 0, 1 };
-
-            for (int i = 0; i < VerticesCount; i++)
-            {
-                pos[0] = xyz[i * 3] - origin.X;
-                pos[1] = xyz[i * 3 + 1] - origin.Y;
-                pos[2] = xyz[i * 3 + 2] - origin.Z;
-
-                pos = Mat4f.MulWithVec4(matrix, pos);
-
-                xyz[i * 3] = pos[0] + origin.X;
-                xyz[i * 3 + 1] = pos[1] + origin.Y;
-                xyz[i * 3 + 2] = pos[2] + origin.Z;
-
-                if (Normals != null)
-                {
-                    NormalUtil.FromPackedNormal(Normals[i], ref normal);
-                    normal = Mat4f.MulWithVec4(matrix, normal);
-                    Normals[i] = NormalUtil.PackNormal(normal);
-                }
-            }
-
-
-            if (XyzFaces != null)
-            {
-                float[] normalf = new float[4];
-                for (int i = 0; i < XyzFaces.Length; i++)
-                {
-                    byte meshFaceIndex = XyzFaces[i];
-                    if (meshFaceIndex == 0) continue;
-
-                    Vec3f normalfv = BlockFacing.ALLFACES[meshFaceIndex - 1].Normalf;
-                    normalf[0] = normalfv.X;
-                    normalf[1] = normalfv.Y;
-                    normalf[2] = normalfv.Z;
-                    normalf = Mat4f.MulWithVec4(matrix, normalf);
-
-                    XyzFaces[i] = BlockFacing.FromVector(normalf[0], normalf[1], normalf[2]).MeshDataIndex;
-                }
-            }
-
-            if (Flags != null)
-            {
-                for (int i = 0; i < Flags.Length; i++)
-                {
-                    VertexFlags.PackedIntToNormal(Flags[i] >> 15, normal);
-                    normal[3] = 0;
-                    normal = Mat4f.MulWithVec4(matrix, normal);
-
-                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(normal[0], normal[1], normal[2]) << 15);
-                }
-            }
-
-            return this;
+            return MatrixTransform(matrix, new float[4], origin);
         }
 
 
@@ -448,19 +394,9 @@ namespace Vintagestory.API.Client
             float[] matrix = Mat4f.Create();
             Mat4f.Scale(matrix, matrix, new float[] { scaleX, scaleY, scaleZ });
 
-            float[] pos = new float[] { 0, 0, 0, 1 };
-
             for (int i = 0; i < VerticesCount; i++)
             {
-                pos[0] = xyz[i * 3] - origin.X;
-                pos[1] = xyz[i * 3 + 1] - origin.Y;
-                pos[2] = xyz[i * 3 + 2] - origin.Z;
-
-                pos = Mat4f.MulWithVec4(matrix, pos);
-
-                xyz[i * 3] = pos[0] + origin.X;
-                xyz[i * 3 + 1] = pos[1] + origin.Y;
-                xyz[i * 3 + 2] = pos[2] + origin.Z;
+                Mat4f.MulWithVec3_Position_WithOrigin(matrix, xyz, xyz, i * 3, origin);
             }
             return this;
         }
@@ -473,9 +409,10 @@ namespace Vintagestory.API.Client
         {
             float[] matrix = Mat4f.Create();
 
-            Mat4f.Translate(matrix, matrix, transform.Translation.X, transform.Translation.Y, transform.Translation.Z);
-
-            Mat4f.Translate(matrix, matrix, transform.Origin.X, transform.Origin.Y, transform.Origin.Z);
+            float dx = transform.Translation.X + transform.Origin.X;
+            float dy = transform.Translation.Y + transform.Origin.Y;
+            float dz = transform.Translation.Z + transform.Origin.Z;
+            Mat4f.Translate(matrix, matrix, dx, dy, dz);
 
             Mat4f.RotateX(matrix, matrix, transform.Rotation.X * GameMath.DEG2RAD);
             Mat4f.RotateY(matrix, matrix, transform.Rotation.Y * GameMath.DEG2RAD);
@@ -496,51 +433,50 @@ namespace Vintagestory.API.Client
         /// <param name="matrix"></param>
         public MeshData MatrixTransform(float[] matrix)
         {
-            float[] pos = new float[] { 0, 0, 0, 1 };
-            float[] normal = new float[4];
-            float[] outpos = new float[4];
+            return MatrixTransform(matrix, new float[4]);
+        }
 
-            for (int i = 0; i < VerticesCount; i++)
+        /// <summary>
+        /// Apply given transformation on the mesh - specifying two temporary vectors to work in (these can then be re-used for performance reasons)
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="vec">a re-usable float[4], values unimportant</param>
+        public MeshData MatrixTransform(float[] matrix, float[] vec, Vec3f origin = null)
+        {
+            if (origin == null)
             {
-                pos[0] = xyz[i * 3];
-                pos[1] = xyz[i * 3 + 1];
-                pos[2] = xyz[i * 3 + 2];
-
-                outpos[0] = outpos[1] = outpos[2] = 0;
-                Mat4f.MulWithVec4(matrix, pos, outpos);
-
-                xyz[i * 3] = outpos[0];
-                xyz[i * 3 + 1] = outpos[1];
-                xyz[i * 3 + 2] = outpos[2];
+                for (int i = 0; i < VerticesCount; i++)
+                {
+                    Mat4f.MulWithVec3_Position(matrix, xyz, xyz, i * 3);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < VerticesCount; i++)
+                {
+                    Mat4f.MulWithVec3_Position_WithOrigin(matrix, xyz, xyz, i * 3, origin);
+                }
             }
 
             if (Normals != null)
             {
                 for (int i = 0; i < VerticesCount; i++)
                 {
-                    NormalUtil.FromPackedNormal(Normals[i], ref normal);
-                    normal = Mat4f.MulWithVec4(matrix, normal);
-                    Normals[i] = NormalUtil.PackNormal(normal);
+                    NormalUtil.FromPackedNormal(Normals[i], ref vec);
+                    Mat4f.MulWithVec4(matrix, vec, vec);
+                    Normals[i] = NormalUtil.PackNormal(vec);
                 }
             }
 
             if (XyzFaces != null)
             {
-                float[] normalf = new float[4];
                 for (int i = 0; i < XyzFaces.Length; i++)
                 {
                     byte meshFaceIndex = XyzFaces[i];
                     if (meshFaceIndex == 0) continue;
 
                     Vec3f normalfv = BlockFacing.ALLFACES[meshFaceIndex - 1].Normalf;
-                    normalf[0] = normalfv.X;
-                    normalf[1] = normalfv.Y;
-                    normalf[2] = normalfv.Z;
-
-                    outpos[0] = outpos[1] = outpos[2] = 0;
-                    Mat4f.MulWithVec4(matrix, normalf, outpos);
-
-                    XyzFaces[i] = BlockFacing.FromVector(outpos[0], outpos[1], outpos[2]).MeshDataIndex;
+                    XyzFaces[i] = Mat4f.MulWithVec3_BlockFacing(matrix, normalfv).MeshDataIndex;
                 }
             }
 
@@ -548,15 +484,13 @@ namespace Vintagestory.API.Client
             {
                 for (int i = 0; i < Flags.Length; i++)
                 {
-                    VertexFlags.PackedIntToNormal(Flags[i] >> 15, normal);
-                    normal[3] = 0; // This is a direction, not a position
+                    VertexFlags.PackedIntToNormal(Flags[i] >> 15, vec);
 
-                    outpos[0] = outpos[1] = outpos[2] = 0;
-                    Mat4f.MulWithVec4(matrix, normal, outpos);
+                    Mat4f.MulWithVec3(matrix, vec, vec);
 
-                    float len = GameMath.Sqrt(outpos[0] * outpos[0] + outpos[1] * outpos[1] + outpos[2] * outpos[2]);
+                    float len = GameMath.RootSumOfSquares(vec[0], vec[1], vec[2]);
 
-                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(outpos[0] / len, outpos[1] / len, outpos[2] / len) << 15);
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(vec[0] / len, vec[1] / len, vec[2] / len) << 15);
                 }
             }
 
@@ -631,9 +565,15 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Creates a new mesh data instance with no components initialized.
         /// </summary>
-        public MeshData()
+        public MeshData(bool initialiseArrays = true)
         {
-
+            if (initialiseArrays)
+            {
+                XyzFaces = new byte[0];
+                ClimateColorMapIds = new byte[0];
+                SeasonColorMapIds = new byte[0];
+                RenderPasses = new short[0];
+            }
         }
 
         /// <summary>
@@ -649,6 +589,10 @@ namespace Vintagestory.API.Client
         /// <param name="withFlags"></param>
         public MeshData(int capacityVertices, int capacityIndices, bool withNormals = false, bool withUv = true, bool withRgba = true, bool withFlags = true)
         {
+            XyzFaces = new byte[0];
+            ClimateColorMapIds = new byte[0];
+            SeasonColorMapIds = new byte[0];
+            RenderPasses = new short[0];
             xyz = new float[capacityVertices * 3];
 
             if (withNormals)
@@ -1051,7 +995,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void RemoveIndex()
         {
-            if (VerticesCount > 0) VerticesCount--;
+            if (IndicesCount > 0) IndicesCount--;
         }
 
         /// <summary>
@@ -1082,15 +1026,18 @@ namespace Vintagestory.API.Client
         /// <param name="color"></param>
         public void AddVertex(float x, float y, float z, int color)
         {
-            if (VerticesCount >= VerticesMax)
+            int count = VerticesCount;
+            if (count >= VerticesMax)
             {
                 GrowVertexBuffer();
             }
 
-            xyz[XyzCount + 0] = x;
-            xyz[XyzCount + 1] = y;
-            xyz[XyzCount + 2] = z;
-            
+            float[] xyz = this.xyz;
+
+            int xyzCount = count * 3;
+            xyz[xyzCount + 0] = x;
+            xyz[xyzCount + 1] = y;
+            xyz[xyzCount + 2] = z;
 
             // Write int color into byte array
             unsafe
@@ -1098,11 +1045,11 @@ namespace Vintagestory.API.Client
                 fixed (byte* rgbaByte = Rgba)
                 {
                     int* rgbaInt = (int*)rgbaByte;
-                    rgbaInt[RgbaCount / 4] = color;
+                    rgbaInt[count] = color;
                 }
             }
 
-            VerticesCount++;
+            VerticesCount = count + 1;
         }
 
         /// <summary>
@@ -1131,38 +1078,42 @@ namespace Vintagestory.API.Client
         /// <param name="flags"></param>
         public void AddWithFlagsVertex(float x, float y, float z, float u, float v, int color, int flags)
         {
-            if (VerticesCount >= VerticesMax)
+            int count = VerticesCount;
+            if (count >= VerticesMax)
             {
                 GrowVertexBuffer();
             }
 
-            xyz[XyzCount + 0] = x;
-            xyz[XyzCount + 1] = y;
-            xyz[XyzCount + 2] = z;
-            
+            float[] xyz = this.xyz;
+            float[] Uv = this.Uv;
 
-            Uv[UvCount + 0] = u;
-            Uv[UvCount + 1] = v;
+            int xyzCount = count * 3;
+            xyz[xyzCount + 0] = x;
+            xyz[xyzCount + 1] = y;
+            xyz[xyzCount + 2] = z;
 
-            if (this.Rgba != null)
-            {
-                // Write int color into byte array
-                unsafe
-                {
-                    fixed (byte* rgbaByte = Rgba)
-                    {
-                        int* rgbaInt = (int*)rgbaByte;
-                        rgbaInt[RgbaCount / 4] = color;
-                    }
-                }
-            }
+            int uvCount = count * 2;
+            Uv[uvCount + 0] = u;
+            Uv[uvCount + 1] = v;
 
             if (this.Flags != null)
             {
-                this.Flags[FlagsCount] = flags;
+                this.Flags[count] = flags;
             }
 
-            VerticesCount++;
+
+            // Write int color into byte array
+            unsafe
+            {
+                fixed (byte* rgbaByte = Rgba)
+                {
+                    int* rgbaInt = (int*)rgbaByte;
+                    rgbaInt[count] = color;
+                }
+            }
+
+
+            VerticesCount = count + 1;
         }
 
 
@@ -1175,25 +1126,31 @@ namespace Vintagestory.API.Client
         /// <param name="u"></param>
         /// <param name="v"></param>
         /// <param name="color"></param>
-        /// <param name="color2"></param>
+        ///// <param name="color2"></param>
         /// <param name="flags"></param>
         public void AddVertexWithFlags(float x, float y, float z, float u, float v, int color, int flags)
         {
-            if (VerticesCount >= VerticesMax)
+            int count = VerticesCount;
+            if (count >= VerticesMax)
             {
                 GrowVertexBuffer();
             }
 
-            xyz[XyzCount + 0] = x;
-            xyz[XyzCount + 1] = y;
-            xyz[XyzCount + 2] = z;
+            float[] xyz = this.xyz;
+            float[] Uv = this.Uv;
 
-            Uv[UvCount + 0] = u;
-            Uv[UvCount + 1] = v;
+            int xyzCount = count * 3;
+            xyz[xyzCount + 0] = x;
+            xyz[xyzCount + 1] = y;
+            xyz[xyzCount + 2] = z;
+
+            int uvCount = count * 2;
+            Uv[uvCount + 0] = u;
+            Uv[uvCount + 1] = v;
 
             if (this.Flags != null)
             {
-                this.Flags[FlagsCount] = flags;
+                this.Flags[count] = flags;
             }
 
 
@@ -1203,7 +1160,7 @@ namespace Vintagestory.API.Client
                 fixed (byte* rgbaByte = Rgba)
                 {
                     int* rgbaInt = (int*)rgbaByte;
-                    rgbaInt[RgbaCount / 4] = color;
+                    rgbaInt[count] = color;
                 }
             }
 
@@ -1214,11 +1171,11 @@ namespace Vintagestory.API.Client
                 fixed (byte* rgbaByte2 = Rgba2)
                 {
                     int* rgbaInt2 = (int*)rgbaByte2;
-                    rgbaInt2[Rgba2Count / 4] = color2;
+                    rgbaInt2[count] = color2;
                 }
             }*/
 
-            VerticesCount++;
+            VerticesCount = count + 1;
         }
 
         /// <summary>
@@ -1231,20 +1188,25 @@ namespace Vintagestory.API.Client
         /// <param name="v"></param>
         public void AddVertex(float x, float y, float z, float u, float v)
         {
-            if (VerticesCount >= VerticesMax)
+            int count = VerticesCount;
+            if (count >= VerticesMax)
             {
                 GrowVertexBuffer();
             }
 
-            xyz[XyzCount + 0] = x;
-            xyz[XyzCount + 1] = y;
-            xyz[XyzCount + 2] = z;
-            
+            float[] xyz = this.xyz;
+            float[] Uv = this.Uv;
 
-            Uv[UvCount + 0] = u;
-            Uv[UvCount + 1] = v;
+            int xyzCount = count * 3;
+            xyz[xyzCount + 0] = x;
+            xyz[xyzCount + 1] = y;
+            xyz[xyzCount + 2] = z;
 
-            VerticesCount++;
+            int uvCount = count * 2;
+            Uv[uvCount + 0] = u;
+            Uv[uvCount + 1] = v;
+
+            VerticesCount = count + 1;
         }
 
 
@@ -1259,24 +1221,32 @@ namespace Vintagestory.API.Client
         /// <param name="color"></param>
         public void AddVertex(float x, float y, float z, float u, float v, byte[] color)
         {
-            if (VerticesCount >= VerticesMax)
+            int count = VerticesCount;
+            if (count >= VerticesMax)
             {
                 GrowVertexBuffer();
             }
 
-            xyz[XyzCount + 0] = x;
-            xyz[XyzCount + 1] = y;
-            xyz[XyzCount + 2] = z;
+            float[] xyz = this.xyz;
+            float[] Uv = this.Uv;
+            byte[] Rgba = this.Rgba;
 
-            Uv[UvCount + 0] = u;
-            Uv[UvCount + 1] = v;
+            int xyzCount = count * 3;
+            xyz[xyzCount + 0] = x;
+            xyz[xyzCount + 1] = y;
+            xyz[xyzCount + 2] = z;
 
-            Rgba[RgbaCount + 0] = color[0];
-            Rgba[RgbaCount + 1] = color[1];
-            Rgba[RgbaCount + 2] = color[2];
-            Rgba[RgbaCount + 3] = color[3];
+            int uvCount = count * 2;
+            Uv[uvCount + 0] = u;
+            Uv[uvCount + 1] = v;
 
-            VerticesCount++;
+            int rgbaCount = count * 4;
+            Rgba[rgbaCount + 0] = color[0];
+            Rgba[rgbaCount + 1] = color[1];
+            Rgba[rgbaCount + 2] = color[2];
+            Rgba[rgbaCount + 3] = color[3];
+
+            VerticesCount = count + 1;
         }
 
         /// <summary>
@@ -1341,7 +1311,7 @@ namespace Vintagestory.API.Client
         {
             if (NormalsCount >= Normals.Length) GrowNormalsBuffer();
 
-            Normals[NormalsCount++] = NormalUtil.PackNormal(facing.Normalf.X, facing.Normalf.Y, facing.Normalf.Z);
+            Normals[NormalsCount++] = facing.NormalPacked;
         }
 
         public void AddColorMapIndex(byte climateMapIndex, byte seasonMapIndex)
@@ -1387,29 +1357,51 @@ namespace Vintagestory.API.Client
             Indices[IndicesCount++] = index;
         }
 
+        public void AddIndices(int i1, int i2, int i3, int i4, int i5, int i6)
+        {
+            int count = IndicesCount;
+            if (count + 6 > IndicesMax)
+            {
+                GrowIndexBuffer(6);
+            }
+            int[] currentIndices = this.Indices;
+
+            currentIndices[count++] = i1;
+            currentIndices[count++] = i2;
+            currentIndices[count++] = i3;
+            currentIndices[count++] = i4;
+            currentIndices[count++] = i5;
+            currentIndices[count++] = i6;
+            IndicesCount = count;
+        }
+
         public void AddIndices(int[] indices)
         {
-            for (int i = 0; i < indices.Length; i++)
+            int length = indices.Length;
+            int count = IndicesCount;
+            if (count + length > IndicesMax)
             {
-                if (IndicesCount >= IndicesMax)
-                {
-                    GrowIndexBuffer();
-                }
-
-                this.Indices[IndicesCount++] = indices[i];
+                GrowIndexBuffer(length);
             }
+            int[] currentIndices = this.Indices;
+
+            for (int i = 0; i < length; i++)
+            {
+                currentIndices[count++] = indices[i];
+            }
+            IndicesCount = count;
         }
 
         public void GrowIndexBuffer()
         {
-            int[] largerIndices = new int[IndicesCount * 2];
-            for (int i = 0; i < IndicesCount; i++)
+            int i = IndicesCount;
+            int[] largerIndices = new int[IndicesMax = i * 2];  //there was previously a potential bug if this was ever called with IndicesCount < IndicesMax (it never was!)
+
+            int[] currentIndices = this.Indices;
+            while (--i >= 0)
             {
-                largerIndices[i] = Indices[i];
+                largerIndices[i] = currentIndices[i];
             }
-
-            IndicesMax = IndicesMax * 2;
-
             Indices = largerIndices;
         }
 
@@ -1417,14 +1409,14 @@ namespace Vintagestory.API.Client
         public void GrowIndexBuffer(int byAtLeastQuantity)
         {
             int newSize = Math.Max(IndicesCount * 2, IndicesCount + byAtLeastQuantity);
-            int[] largerIndices = new int[newSize];
-            for (int i = 0; i < Indices.Length; i++)
+            int[] largerIndices = new int[IndicesMax = newSize];
+
+            int[] currentIndices = this.Indices;
+            int i = IndicesCount;
+            while (--i >= 0)
             {
-                largerIndices[i] = Indices[i];
+                largerIndices[i] = currentIndices[i];
             }
-
-            IndicesMax = newSize;
-
             Indices = largerIndices;
         }
 
@@ -1434,10 +1426,12 @@ namespace Vintagestory.API.Client
         {
             if (Normals != null)
             {
-                int[] largerNormals = new int[Normals.Length * 2];
-                for (int i = 0; i < Normals.Length; i++)
+                int i = Normals.Length;
+                int[] largerNormals = new int[i * 2];
+                int[] currentNormals = this.Normals;
+                while (--i >= 0)
                 {
-                    largerNormals[i] = Normals[i];
+                    largerNormals[i] = currentNormals[i];
                 }
                 Normals = largerNormals;
             }
@@ -1452,22 +1446,24 @@ namespace Vintagestory.API.Client
             {
                 int xyzCount = XyzCount;
                 float[] largerXyz = new float[xyzCount * 2];
-                for (int i = 0; i < xyz.Length; i++)
+                float[] currentXyz = xyz;
+                int i = currentXyz.Length;
+                while (--i >= 0)
                 {
-                    largerXyz[i] = xyz[i];
+                    largerXyz[i] = currentXyz[i];
                 }
                 xyz = largerXyz;
             }
-
-           
 
             if (Uv != null)
             {
                 int uvCount = UvCount;
                 float[] largerUv = new float[uvCount * 2];
-                for (int i = 0; i < Uv.Length; i++)
+                float[] currentUv = Uv;
+                int i = currentUv.Length;
+                while (--i >= 0)
                 {
-                    largerUv[i] = Uv[i];
+                    largerUv[i] = currentUv[i];
                 }
                 Uv = largerUv;
             }
@@ -1476,9 +1472,11 @@ namespace Vintagestory.API.Client
             {
                 int rgbaCount = RgbaCount;
                 byte[] largerRgba = new byte[rgbaCount * 2];
-                for (int i = 0; i < Rgba.Length; i++)
+                byte[] currentRgba = Rgba;
+                int i = currentRgba.Length;
+                while (--i >= 0)
                 {
-                    largerRgba[i] = Rgba[i];
+                    largerRgba[i] = currentRgba[i];
                 }
                 Rgba = largerRgba;
             }
@@ -1498,9 +1496,11 @@ namespace Vintagestory.API.Client
             {
                 int flagsCount = FlagsCount;
                 int[] largerFlags = new int[flagsCount * 2];
-                for (int i = 0; i < Flags.Length; i++)
+                int[] currentFlags = Flags;
+                int i = currentFlags.Length;
+                while (--i >= 0)
                 {
-                    largerFlags[i] = Flags[i];
+                    largerFlags[i] = currentFlags[i];
                 }
                 Flags = largerFlags;
             }
@@ -1518,10 +1518,7 @@ namespace Vintagestory.API.Client
             {
                 int cnt = XyzCount;
                 float[] tightXyz = new float[cnt + 1];
-                for (int i = 0; i < cnt; i++)
-                {
-                    tightXyz[i] = xyz[i];
-                }
+                Array.Copy(xyz, 0, tightXyz, 0, cnt);
                 xyz = tightXyz;
             }
 
@@ -1529,10 +1526,7 @@ namespace Vintagestory.API.Client
             {
                 int cnt = UvCount;
                 float[] tightUv = new float[cnt + 1];
-                for (int i = 0; i < cnt; i++)
-                {
-                    tightUv[i] = Uv[i];
-                }
+                Array.Copy(Uv, 0, tightUv, 0, cnt);
                 Uv = tightUv;
             }
 
@@ -1540,10 +1534,7 @@ namespace Vintagestory.API.Client
             {
                 int cnt = RgbaCount;
                 byte[] tightRgba = new byte[cnt + 1];
-                for (int i = 0; i < cnt; i++)
-                {
-                    tightRgba[i] = Rgba[i];
-                }
+                Array.Copy(Rgba, 0, tightRgba, 0, cnt);
                 Rgba = tightRgba;
             }
 
@@ -1562,10 +1553,7 @@ namespace Vintagestory.API.Client
             {
                 int cnt = FlagsCount;
                 int[] tightFlags = new int[cnt + 1];
-                for (int i = 0; i < cnt; i++)
-                {
-                    tightFlags[i] = Flags[i];
-                }
+                Array.Copy(Flags, 0, tightFlags, 0, cnt);
                 Flags = tightFlags;
             }
 
@@ -1578,62 +1566,92 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public MeshData Clone()
         {
-            MeshData dest = new MeshData();
+            MeshData dest = new MeshData(false);
             unchecked
             {
-                dest.xyz = new float[XyzCount];
-                for (int i = 0; i < XyzCount; i++)
+                int i;
+
+                float[] destXYZ = dest.xyz = new float[i = XyzCount];
+                if (i > 127) Array.Copy(xyz, 0, destXYZ, 0, i);
+                else
                 {
-                    dest.xyz[i] = xyz[i];
+                    float[] sourceXYZ = this.xyz;
+                    while (--i >= 0)
+                    {
+                        destXYZ[i] = sourceXYZ[i];
+                    }
                 }
 
                 if (Normals != null)
                 {
-                    dest.Normals = new int[Normals.Length];
-                    for (int i = 0; i < Normals.Length; i++)
+                    int[] destNormals = dest.Normals = new int[i = Normals.Length];
+                    if (i > 127) Array.Copy(Normals, 0, destNormals, 0, i);
+                    else
                     {
-                        dest.Normals[i] = Normals[i];
+                        int[] sourceNormals = this.Normals;
+                        while (--i >= 0)
+                        {
+                            destNormals[i] = sourceNormals[i];
+                        }
                     }
                 }
 
                 if (XyzFaces != null)
                 {
-                    dest.XyzFaces = new byte[XyzFaces.Length];
-                    for (int i = 0; i < XyzFaces.Length; i++)
+                    byte[] destXyzFaces = dest.XyzFaces = new byte[i = XyzFaces.Length];
+                    if (i > 127) Array.Copy(XyzFaces, 0, destXyzFaces, 0, i);
+                    else
                     {
-                        dest.XyzFaces[i] = XyzFaces[i];
+                        byte[] sourceXyzFaces = this.XyzFaces;
+                        while (--i >= 0)
+                        {
+                            destXyzFaces[i] = sourceXyzFaces[i];
+                        }
                     }
                     dest.XyzFacesCount = XyzFacesCount;
-
                 }
-
 
                 if (ClimateColorMapIds != null)
                 {
-                    dest.ClimateColorMapIds = new byte[ClimateColorMapIds.Length];
-                    for (int i = 0; i < ClimateColorMapIds.Length; i++)
+                    byte[] destClimateColorMapIds = dest.ClimateColorMapIds = new byte[i = ClimateColorMapIds.Length];
+                    if (i > 127) Array.Copy(ClimateColorMapIds, 0, destClimateColorMapIds, 0, i);
+                    else
                     {
-                        dest.ClimateColorMapIds[i] = ClimateColorMapIds[i];
+                        byte[] sourceClimateColorMapIds = this.ClimateColorMapIds;
+                        while (--i >= 0)
+                        {
+                            destClimateColorMapIds[i] = sourceClimateColorMapIds[i];
+                        }
                     }
                     dest.ColorMapIdsCount = ColorMapIdsCount;
                 }
 
                 if (SeasonColorMapIds != null)
                 {
-                    dest.SeasonColorMapIds = new byte[SeasonColorMapIds.Length];
-                    for (int i = 0; i < SeasonColorMapIds.Length; i++)
+                    byte[] destSeasonColorMapIds = dest.SeasonColorMapIds = new byte[i = SeasonColorMapIds.Length];
+                    if (i > 127) Array.Copy(SeasonColorMapIds, 0, destSeasonColorMapIds, 0, i);
+                    else
                     {
-                        dest.SeasonColorMapIds[i] = SeasonColorMapIds[i];
+                        byte[] sourceSeasonColorMapIds = this.SeasonColorMapIds;
+                        while (--i >= 0)
+                        {
+                            destSeasonColorMapIds[i] = sourceSeasonColorMapIds[i];
+                        }
                     }
                     dest.ColorMapIdsCount = ColorMapIdsCount;
                 }
 
                 if (RenderPasses != null)
                 {
-                    dest.RenderPasses = new short[RenderPasses.Length];
-                    for (int i = 0; i < RenderPasses.Length; i++)
+                    short[] destRenderPasses = dest.RenderPasses = new short[i = RenderPasses.Length];
+                    if (i > 127) Array.Copy(RenderPasses, 0, destRenderPasses, 0, i);
+                    else
                     {
-                        dest.RenderPasses[i] = RenderPasses[i];
+                        short[] sourceRenderPasses = this.RenderPasses;
+                        while (--i >= 0)
+                        {
+                            destRenderPasses[i] = sourceRenderPasses[i];
+                        }
                     }
                     dest.RenderPassCount = RenderPassCount;
                 }
@@ -1641,22 +1659,32 @@ namespace Vintagestory.API.Client
 
                 if (Uv != null)
                 {
-                    dest.Uv = new float[UvCount];
-                    for (int i = 0; i < UvCount; i++)
+                    float[] destUV = dest.Uv = new float[i = UvCount];
+                    if (i > 127) Array.Copy(Uv, 0, destUV, 0, i);
+                    else
                     {
-                        dest.Uv[i] = Uv[i];
+                        float[] sourceUV = this.Uv;
+                        while (--i >= 0)
+                        {
+                            destUV[i] = sourceUV[i];
+                        }
                     }
                 }
 
                 if (Rgba != null)
                 {
-                    dest.Rgba = new byte[RgbaCount];
-                    for (int i = 0; i < RgbaCount; i++)
+                    byte[] destRGBA = dest.Rgba = new byte[i = RgbaCount];
+                    if (i > 127) Array.Copy(Rgba, 0, destRGBA, 0, i);
+                    else
                     {
-                        dest.Rgba[i] = Rgba[i];
+                        byte[] sourceRGBA = this.Rgba;
+                        while (--i >= 0)
+                        {
+                            destRGBA[i] = sourceRGBA[i];
+                        }
                     }
                 }
-                
+
 
                 /*
                 {
@@ -1669,18 +1697,28 @@ namespace Vintagestory.API.Client
 
                 if (Flags != null)
                 {
-                    dest.Flags = new int[FlagsCount];
-                    for (int i = 0; i < FlagsCount; i++)
+                    int[] destFlags = dest.Flags = new int[i = FlagsCount];
+                    if (i > 127) Array.Copy(Flags, 0, destFlags, 0, i);
+                    else
                     {
-                        dest.Flags[i] = Flags[i];
+                        int[] sourceFlags = this.Flags;
+                        while (--i >= 0)
+                        {
+                            destFlags[i] = sourceFlags[i];
+                        }
                     }
                 }
 
 
-                dest.Indices = new int[GetIndicesCount()];
-                for (int i = 0; i < GetIndicesCount(); i++)
+                int[] destIndices = dest.Indices = new int[i = GetIndicesCount()];
+                if (i > 127) Array.Copy(Indices, 0, destIndices, 0, i);
+                else
                 {
-                    dest.Indices[i] = Indices[i];
+                    int[] sourceIndices = this.Indices;
+                    while (--i >= 0)
+                    {
+                        destIndices[i] = sourceIndices[i];
+                    }
                 }
                 dest.SetVerticesCount(GetVerticesCount());
                 dest.SetIndicesCount(GetIndicesCount());
@@ -1768,11 +1806,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void SetTexPos(TextureAtlasPosition texPos)
         {
+            float x = texPos.x2 - texPos.x1;
+            float y = texPos.y2 - texPos.y1;
+
             for (int i = 0; i < this.Uv.Length; i++)
             {
-                float x = texPos.x2 - texPos.x1;
-                float y = texPos.y2 - texPos.y1;
-
                 this.Uv[i] = i % 2 == 0 ? (this.Uv[i] * x) + texPos.x1 : (this.Uv[i] * y) + texPos.y1;
             }
         }

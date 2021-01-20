@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -28,15 +29,15 @@ namespace Vintagestory.API.Client
         /// Flips through given array of item stacks every second
         /// </summary>
         /// <param name="itemstacks"></param>
-        /// <param name="size"></param>
+        /// <param name="unscaleSize"></param>
         /// <param name="floatType"></param>
-        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double size, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double unscaleSize, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();
 
             this.Itemstacks = itemstacks;
             this.Float = floatType;
-            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, size, size) };
+            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, GuiElement.scaled(unscaleSize), GuiElement.scaled(unscaleSize)) };
             this.onStackClicked = onStackClicked;
         }
 
@@ -44,9 +45,9 @@ namespace Vintagestory.API.Client
         /// Looks at the collectibles handbook groupBy attribute and makes a list of itemstacks from that
         /// </summary>
         /// <param name="itemstackgroup"></param>
-        /// <param name="size"></param>
+        /// <param name="unscaleSize"></param>
         /// <param name="floatType"></param>
-        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double size, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double unscaleSize, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();
             this.onStackClicked = onStackClicked;
@@ -95,7 +96,7 @@ namespace Vintagestory.API.Client
 
             this.Itemstacks = stacks.ToArray();
             this.Float = floatType;
-            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, size, size) };
+            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, GuiElement.scaled(unscaleSize), GuiElement.scaled(unscaleSize)) };
             //PaddingRight = 0;
         }
 
@@ -143,7 +144,7 @@ namespace Vintagestory.API.Client
 
             slot.Itemstack = itemstack;
 
-            ElementBounds scibounds = ElementBounds.FixedSize((int)bounds.Width, (int)bounds.Height);
+            ElementBounds scibounds = ElementBounds.FixedSize((int)(bounds.Width / RuntimeEnv.GUIScale), (int)(bounds.Height / RuntimeEnv.GUIScale));
             scibounds.ParentBounds = capi.Gui.WindowBounds;
             scibounds.CalcWorldBounds();
             scibounds.absFixedX = renderX + bounds.X;

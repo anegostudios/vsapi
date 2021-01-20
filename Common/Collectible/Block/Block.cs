@@ -155,7 +155,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// If true then the block will be randomly offseted by 1/3 of a block when placed
         /// </summary>
-        public bool RandomDrawOffset;
+        public int RandomDrawOffset;
 
         public bool RandomizeRotations;
         
@@ -175,6 +175,12 @@ namespace Vintagestory.API.Common
         /// Default textures to be used for this block
         /// </summary>
         public Dictionary<string, CompositeTexture> Textures = new Dictionary<string, CompositeTexture>();
+
+        /// <summary>
+        /// Fast array of texture variants, for use by cube (or similar) tesselators if the block has alternate shapes
+        /// The outer array is indexed based on the 6 BlockFacing.Index numerals; the inner array is the variants
+        /// </summary>
+        public BakedCompositeTexture[][] FastTextureVariants;
 
         /// <summary>
         /// Textures to be used for this block in the inventory gui, held in hand or dropped on the ground
@@ -249,11 +255,6 @@ namespace Vintagestory.API.Common
         /// Defines the area which the players mouse pointer collides with for selection.
         /// </summary>
         public Cuboidf[] SelectionBoxes = new Cuboidf[] { DefaultCollisionBox.Clone() };
-
-        /// <summary>
-        /// Defines the area with which particles collide with (if null, will be the same as CollisionBoxes).
-        /// </summary>
-        public Cuboidf[] ParticleCollisionBoxes = null;
 
         /// <summary>
         /// Used for ladders. If true, walking against this blocks collisionbox will make the player climb
@@ -405,6 +406,20 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        /// <summary>
+        /// Used only when rendering ice: the same type of ice should return true 
+        /// </summary>
+        /// <param name="facingIndex">The index of the BlockFacing face of this block being tested</param>
+        /// <param name="neighbourIce">The neighbouring ice block, probably LakeIce or Glacier</param>
+        /// <param name="intraChunkIndex3d">The position index within the chunk (z * 32 * 32 + y * 32 + x): the BlockEntity can be obtained using this if necessary</param>
+        /// <returns></returns>
+        public virtual bool MergeFaceNeighbouringIce(int facingIndex, Block neighbourIce, int intraChunkIndex3d)
+        {
+            return this == neighbourIce;
+        }
+
+
         /// <summary>
         /// The cuboid used to determine where to spawn particles when breaking the block
         /// </summary>
@@ -435,10 +450,10 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual Cuboidf[] GetSelectionBoxes(IBlockAccessor blockAccessor, BlockPos pos)
         {
-            if (RandomDrawOffset)
+            if (RandomDrawOffset != 0)
             {
-                float x = (GameMath.oaatHash(pos.X, 0, pos.Z) % 12) / 36f;
-                float z = (GameMath.oaatHash(pos.X, 1, pos.Z) % 12) / 36f;
+                float x = (GameMath.oaatHash(pos.X, 0, pos.Z) % 12) / (24f + 12f * RandomDrawOffset);
+                float z = (GameMath.oaatHash(pos.X, 1, pos.Z) % 12) / (24f + 12f * RandomDrawOffset);
 
                 return new Cuboidf[] { SelectionBoxes[0].OffsetCopy(x, 0, z) };
             }
@@ -455,17 +470,6 @@ namespace Vintagestory.API.Common
         public virtual Cuboidf[] GetCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos)
         {
             return CollisionBoxes;
-        }
-
-        /// <summary>
-        /// Returns the blocks particle collision box. Warning: This method may get called by different threads, so it has to be thread safe.
-        /// </summary>
-        /// <param name="blockAccessor"></param>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        public virtual Cuboidf[] GetParticleCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos)
-        {
-            return ParticleCollisionBoxes ?? CollisionBoxes;
         }
 
         /// <summary>
@@ -1556,9 +1560,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="sourceMesh"></param>
         /// <param name="pos"></param>
-        /// <param name="chunkExtIds">Optional, fast way to look up a direct neighbouring block. This is an array of the current chunks block ids, including all direct neighbours, so its a 34x34x34 block id list. Use extIndex3d+TileSideEnum.MoveIndex[tileSide] to move around in the array</param>
-        /// <param name="extIndex3d"></param>
-        public virtual void OnJsonTesselation(ref MeshData sourceMesh, ref int[] lightRgbsByCorner, BlockPos pos, int[] chunkExtIds, ushort[] chunkLightExt, int extIndex3d)
+        /// <param name="chunkExtIds">Optional, fast way to look up a direct neighbouring block. This is an array of the current chunk's block ids, also including all direct neighbours, so it's a 34x34x34 block id list. extIndex3d is the index of the current Block in this array. Use extIndex3d+TileSideEnum.MoveIndex[tileSide] to move around in the array. Block positions in this array for other chunk blocks which are not direct neighbours of the current Block - e.g. diagonal neighbours - are invalid if AOandSmoothLighting is disabled for performance.</param>
+        /// <param name="extIndex3d"></param>See description of chunkExtIds!
+        public virtual void OnJsonTesselation(ref MeshData sourceMesh, BlockPos pos, int[] chunkExtIds, ushort[] chunkLightExt, int extIndex3d)
         {
             if (VertexFlags.LeavesWindWave)
             {
@@ -1613,14 +1617,13 @@ namespace Vintagestory.API.Common
         {
             if (CollisionBoxes != null && CollisionBoxes.Length > 0)
             {
-                Cuboidf mainBox = CollisionBoxes[0];
-                TopMiddlePos.X = (mainBox.X1 + mainBox.X2) / 2;
-                TopMiddlePos.Y = mainBox.Y2;
-                TopMiddlePos.Z = (mainBox.Z1 + mainBox.Z2) / 2;
+                TopMiddlePos.X = (CollisionBoxes[0].X1 + CollisionBoxes[0].X2) / 2;
+                TopMiddlePos.Y = CollisionBoxes[0].Y2;
+                TopMiddlePos.Z = (CollisionBoxes[0].Z1 + CollisionBoxes[0].Z2) / 2;
 
                 for (int i = 1; i < CollisionBoxes.Length; i++)
                 {
-                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, CollisionBoxes[i].Y2);
+                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, CollisionBoxes[0].Y2);
                 }
 
                 return;
@@ -1628,14 +1631,13 @@ namespace Vintagestory.API.Common
 
             if (SelectionBoxes != null && SelectionBoxes.Length > 0)
             {
-                Cuboidf mainBox = SelectionBoxes[0];
-                TopMiddlePos.X = (mainBox.X1 + mainBox.X2) / 2;
-                TopMiddlePos.Y = mainBox.Y2;
-                TopMiddlePos.Z = (mainBox.Z1 + mainBox.Z2) / 2;
+                TopMiddlePos.X = (SelectionBoxes[0].X1 + SelectionBoxes[0].X2) / 2;
+                TopMiddlePos.Y = SelectionBoxes[0].Y2;
+                TopMiddlePos.Z = (SelectionBoxes[0].Z1 + SelectionBoxes[0].Z2) / 2;
 
                 for (int i = 1; i < SelectionBoxes.Length; i++)
                 {
-                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, SelectionBoxes[i].Y2);
+                    TopMiddlePos.Y = Math.Max(TopMiddlePos.Y, SelectionBoxes[0].Y2);
                 }
 
                 return;
@@ -1763,6 +1765,25 @@ namespace Vintagestory.API.Common
         public virtual float GetSnowLevel(BlockPos pos)
         {
             return snowLevel;
+        }
+
+        /// <summary>
+        /// Return a positive integer if the block retains heat (for warm rooms or greenhouses) or a negative integer if it preserves cool (for cellars)
+        /// </summary>
+        /// <param name="facing"></param>
+        /// <returns></returns>
+        public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing)
+        {
+            if (SideSolid[facing.Opposite.Index] || SideSolid[facing.Index])
+            {
+                if (BlockMaterial == EnumBlockMaterial.Ore || BlockMaterial == EnumBlockMaterial.Stone || BlockMaterial == EnumBlockMaterial.Soil || BlockMaterial == EnumBlockMaterial.Ceramic)
+                {
+                    return -1;
+                }
+                return 1;
+            }
+
+            return 0;
         }
 
 

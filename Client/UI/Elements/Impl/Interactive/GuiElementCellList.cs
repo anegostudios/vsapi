@@ -3,6 +3,7 @@ using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
+using System;
 
 namespace Vintagestory.API.Client
 {
@@ -28,13 +29,6 @@ namespace Vintagestory.API.Client
         void UpdateCellHeight();
 
         /// <summary>
-        /// Composes the elements of the cell.
-        /// </summary>
-        /// <param name="ctx">The context for the cell</param>
-        /// <param name="surface">The surface of the cell area.</param>
-        void ComposeElements(Context ctx, ImageSurface surface);
-
-        /// <summary>
         /// cleans up and gets rid of the cell in a neat and orderly fashion.
         /// </summary>
         void Dispose();
@@ -48,6 +42,8 @@ namespace Vintagestory.API.Client
         /// The cells in the list.  See IGuiElementCell for how it's supposed to function.
         /// </summary>
         public List<IGuiElementCell> elementCells = new List<IGuiElementCell>();
+
+        List<IGuiElementCell> visibleCells = new List<IGuiElementCell>();
 
         /// <summary>
         /// the space between the cells.  Default: 10
@@ -74,7 +70,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public API.Common.Action<int> rightPartClick;
 
-        LoadedTexture listTexture;
+        
 
         //ElementBounds insideBounds;
 
@@ -104,11 +100,7 @@ namespace Vintagestory.API.Client
         /// <param name="cells">The array of cells initialized with the list.</param>
         public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> OnMouseDownOnCellLeft, API.Common.Action<int> OnMouseDownOnCellRight, OnRequireCell cellCreator, List<ListCellEntry> cells = null) : base(capi, bounds)
         {
-            listTexture = new LoadedTexture(capi);
             this.cellcreator = cellCreator;
-
-            //insideBounds = new ElementBounds().WithFixedPadding(unscaledCellSpacing).WithEmptyParent();
-            //insideBounds.CalcWorldBounds();
 
             Bounds.IsDrawingSurface = true;
 
@@ -121,6 +113,9 @@ namespace Vintagestory.API.Client
                 {
                     AddCell(cell);
                 }
+
+                visibleCells.Clear();
+                visibleCells.AddRange(elementCells);
             }
 
             CalcTotalHeight();
@@ -140,8 +135,10 @@ namespace Vintagestory.API.Client
                 AddCell(cell);
             }
 
+            visibleCells.Clear();
+            visibleCells.AddRange(elementCells);
+
             CalcTotalHeight();
-            ComposeList();
         }
 
         public override void BeforeCalcBounds()
@@ -158,7 +155,7 @@ namespace Vintagestory.API.Client
             double height = 0;
             double unscaledHeight = 0;
 
-            foreach (IGuiElementCell cell in elementCells)
+            foreach (IGuiElementCell cell in visibleCells)
             {
                 cell.UpdateCellHeight();
                 cell.Bounds.WithFixedPosition(0, unscaledHeight);
@@ -170,35 +167,31 @@ namespace Vintagestory.API.Client
             }
 
             Bounds.fixedHeight = height + unscaledCellSpacing;
-
-            
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            //insideBounds = new ElementBounds().WithFixedPadding(unscaledCellSpacing).WithEmptyParent();
-            //insideBounds.CalcWorldBounds();
-
-            ComposeList();
         }
 
-        
 
-        void ComposeList()
+        Func<IGuiElementCell, bool> cellFilter;
+
+
+        internal void FilterCells(Func<IGuiElementCell, bool> onFilter)
         {
-            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt+1, Bounds.OuterHeightInt+1);
-            Context ctx = genContext(surface);
-            
-            foreach (IGuiElementCell cell in elementCells)
-            {                
-                cell.ComposeElements(ctx, surface);
+            this.cellFilter = onFilter;
+
+            visibleCells.Clear();
+            foreach (IGuiElementCell elem in elementCells)
+            {
+                if (cellFilter(elem))
+                {
+                    visibleCells.Add(elem);
+                }
             }
 
-            //surface.WriteToPng("list.png");
-            generateTexture(surface, ref listTexture);
 
-            ctx.Dispose();
-            surface.Dispose();
+            CalcTotalHeight();
         }
 
         /// <summary>
@@ -206,7 +199,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="cell">The cell to add.</param>
         /// <param name="afterPosition">The position of the cell to add after.  (Default: -1)</param>
-        public void AddCell(ListCellEntry cell, int afterPosition = -1)
+        protected void AddCell(ListCellEntry cell, int afterPosition = -1)
         {
             ElementBounds cellBounds = new ElementBounds()
             {
@@ -217,15 +210,16 @@ namespace Vintagestory.API.Client
                 BothSizing = ElementSizing.Fixed,
             }.WithParent(Bounds);
 
-            
+
 
             IGuiElementCell cellElem = this.cellcreator(cell, cellBounds);
             cellElem.InsideClipBounds = InsideClipBounds;
 
             if (afterPosition == -1)
-            {    
+            {
                 elementCells.Add(cellElem);
-            } else
+            }
+            else
             {
                 elementCells.Insert(afterPosition, cellElem);
             }
@@ -235,7 +229,7 @@ namespace Vintagestory.API.Client
         /// Removes a cell at a specified position.
         /// </summary>
         /// <param name="position">The position of the cell to remove.</param>
-        public void RemoveCell(int position)
+        protected void RemoveCell(int position)
         {
             elementCells.RemoveAt(position);
         }
@@ -251,7 +245,7 @@ namespace Vintagestory.API.Client
             int mousey = api.Input.MouseY;
 
 
-            foreach (IGuiElementCell element in elementCells)
+            foreach (IGuiElementCell element in visibleCells)
             {
                 Vec2d pos = element.Bounds.PositionInside(mousex, mousey);
 
@@ -261,13 +255,13 @@ namespace Vintagestory.API.Client
 
                     if (pos.X > element.Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
                     {
-                        rightPartClick?.Invoke(i);
+                        rightPartClick?.Invoke(elementCells.IndexOf(element));
                         args.Handled = true;
                         return;
                     }
                     else
                     {
-                        leftPartClick?.Invoke(i);
+                        leftPartClick?.Invoke(elementCells.IndexOf(element));
                         args.Handled = true;
                         return;
                     }
@@ -278,19 +272,19 @@ namespace Vintagestory.API.Client
         }
 
         public override void RenderInteractiveElements(float deltaTime)
-        {
-            api.Render.Render2DTexturePremultipliedAlpha(listTexture.TextureId, (int)Bounds.renderX, (int)Bounds.renderY, Bounds.OuterWidthInt + 1, Bounds.OuterHeightInt + 1);
-            
-            foreach (IGuiElementCell element in elementCells)
+        {            
+            foreach (IGuiElementCell element in visibleCells)
             {
-                element.OnRenderInteractiveElements(api, deltaTime);
+                if (element.Bounds.PartiallyInside(Bounds.ParentBounds))
+                {
+                    element.OnRenderInteractiveElements(api, deltaTime);
+                }
             }
         }
 
         public override void Dispose()
         {
             base.Dispose();
-            listTexture.Dispose();
 
             foreach (var val in elementCells)
             {

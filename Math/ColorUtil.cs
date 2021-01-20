@@ -202,6 +202,11 @@ namespace Vintagestory.API.MathTools
             return channels[0] | (channels[1] << 8) | (channels[2] << 16) | (channels[3] << 24);
         }
 
+        public static int ColorFromRgba(Vec4f colorRel)
+        {
+            return (int)(colorRel.R * 255) | ((int)(colorRel.G * 255) << 8) | ((int)(colorRel.B * 255) << 16) | ((int)(colorRel.A * 255) << 24);
+        }
+
         public static int ColorFromRgba(int r, int g, int b, int a)
         {
             return r | (g << 8) | (b << 16) | (a << 24);
@@ -582,38 +587,41 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Converts given RGB values into it's respective HSV Representation (all values in range of 0-255)
+        /// In the result, V is the MOST significant byte
         /// </summary>
         /// <param name="r"></param>
         /// <param name="g"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static int Rgb2Hsv(int r, int g, int b)
+        public static int Rgb2Hsv(float r, float g, float b)
         {
             float K = 0f;
 
             if (g < b)
             {
-                int tmp = g; g = b; b = tmp;
+                float tmp = g; g = b; b = tmp;
                 K = -1f;
             }
 
             if (r < g)
             {
-                int tmp = r; r = g; g = tmp;
+                float tmp = r; r = g; g = tmp;
                 K = -2f / 6f - K;
             }
 
             float chroma = r - Math.Min(g, b);
             return
-                255 * (int)Math.Abs(K + (g - b) / (6f * chroma + 1e-20f)) << 16 |
-                255 * (int)(chroma / (r + 1e-20f)) << 8 |
-                r
+                (int)(255 * Math.Abs(K + (g - b) / (6f * chroma + 1.0e-20f))) |
+                (int)(255 * chroma / (r + 1.0e-20f)) << 8 |
+                (int)r << 16
             ;
         }
 
 
         /// <summary>
         /// Converts given RGB value into it's respective HSV Representation (all values in range of 0-255)
+        /// In the parameter, R is the most significant byte i.e. this is for RGB
+        /// In the result, V is the LEAST significant byte
         /// </summary>
         /// <param name="rgb"></param>
         /// <returns></returns>
@@ -639,8 +647,8 @@ namespace Vintagestory.API.MathTools
 
             float chroma = r - Math.Min(g, b);
             return
-                (int)(255 * Math.Abs(K + (g - b) / (6.0 * chroma + 1.0e-20))) << 16 |
-                (int)(255 * chroma / (r + 1.0e-20)) << 8 |
+                (int)(255 * Math.Abs(K + (g - b) / (6f * chroma + 1.0e-20f))) << 16 |
+                (int)(255 * chroma / (r + 1.0e-20f)) << 8 |
                 r
             ;
         }
@@ -671,8 +679,8 @@ namespace Vintagestory.API.MathTools
 
             float chroma = r - Math.Min(g, b);
             return new int[] {
-                (int)(255 * Math.Abs(K + (g - b) / (6.0 * chroma + 1.0e-20))),
-                (int)(255 * chroma / (r + 1.0e-20)),
+                (int)(255 * Math.Abs(K + (g - b) / (6f * chroma + 1.0e-20f))),  //this small non-zero value is OK as a float, smallest non-zero float is around 1.2e-38
+                (int)(255 * chroma / (r + 1.0e-20f)),
                 r
             };
         }
@@ -680,6 +688,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Converts given HSV value into it's respective RGB Representation (all values in range of 0-255)
+        /// R is the most significant byte i.e. this is RGB
         /// </summary>
         /// <param name="hsv"></param>
         /// <returns></returns>
@@ -688,14 +697,15 @@ namespace Vintagestory.API.MathTools
             int region, p, q, t;
             int remainder;
 
-            int h = (hsv >> 16) & 0xff;
-            int s = (hsv >> 8) & 0xff;
             int v = hsv & 0xff;
+            if (v == 0) return 0;
 
+            int s = (hsv >> 8) & 0xff;
             if (s == 0)
             {
                 return v << 16 | v << 8 | v;
             }
+            int h = (hsv >> 16) & 0xff;
 
             region = h / 43;
             remainder = (h - (region * 43)) * 6;
@@ -723,6 +733,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Converts given HSV values into it's respective RGB Representation (all values in range of 0-255)
+        /// R is the most significant byte i.e. this is RGB
         /// </summary>
         /// <param name="h"></param>
         /// <param name="s"></param>
@@ -733,6 +744,7 @@ namespace Vintagestory.API.MathTools
             int region, p, q, t;
             int remainder;
 
+            if (v == 0) return 0;
             if (s == 0)
             {
                 return v << 16 | v << 8 | v;
@@ -774,6 +786,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Converts given HSB values into it's respective ARGB Representation (all values in range of 0-255, alpha always 255)
+        /// R is the LEAST significant byte i.e. the result is BGR
         /// </summary>
         /// <param name="h"></param>
         /// <param name="s"></param>
@@ -786,7 +799,8 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Converts given HSB values into it's respective ARGB Representation (all values in range of 0-255)
+        /// Converts given HSV values into its respective ARGB Representation (all values in range of 0-255)
+        /// R is the LEAST significant byte i.e. the result is BGR
         /// </summary>
         /// <param name="h"></param>
         /// <param name="s"></param>
@@ -794,13 +808,14 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int HsvToRgba(int h, int s, int v, int a)
         {
-            int region, p, q, t;
-            int remainder;
-
+            if (v == 0) return a << 24;
             if (s == 0)
             {
                 return a << 24 | v << 16 | v << 8 | v;
             }
+
+            int region, p, q, t;
+            int remainder;
 
             region = h / 43;
             remainder = (h - (region * 43)) * 6;
@@ -827,7 +842,8 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Converts given HSB values into it's respective HSV Representation (all values in range of 0-255)
+        /// Converts given HSV values into its respective RGB representation (all values in range of 0-255)
+        /// R is the first byte in the resulting array
         /// </summary>
         /// <param name="h"></param>
         /// <param name="s"></param>
@@ -838,7 +854,7 @@ namespace Vintagestory.API.MathTools
             int region, p, q, t;
             int remainder;
 
-            if (s == 0)
+            if (s == 0 || v == 0)
             {
                 return new int[] { v, v, v };
             }
@@ -868,7 +884,8 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Converts given HSVA values into it's respective RGBA Representation (all values in range of 0-255)
+        /// Converts given HSVA values into its respective RGBA Representation (all values in range of 0-255)
+        /// R is the first byte in the resulting array
         /// </summary>
         /// <param name="hsva"></param>
         /// <returns></returns>
@@ -883,9 +900,9 @@ namespace Vintagestory.API.MathTools
             int v = hsva[2];
 
 
-            if (v == 0)
+            if (s == 0 || v == 0)
             {
-                return new byte[] { hsva[2], hsva[2], hsva[2], hsva[3] };
+                return new byte[] { (byte)v, (byte)v, (byte)v, hsva[3] };
             }
 
             region = h / 43;

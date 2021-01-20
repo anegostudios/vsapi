@@ -204,9 +204,5 @@ namespace Vintagestory.API.Client
             };
         }
 
-        public void Translate(double v1, object p, double v2)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

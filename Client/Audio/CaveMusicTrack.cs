@@ -110,7 +110,13 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < Parts.Length; i++)
             {
+                AssetLocation[] filesbefore = (AssetLocation[])Parts[i].Files.Clone();
                 Parts[i].ExpandFiles(assetManager);
+                if (filesbefore.Length > 0 && Parts[i].Files.Length == 0)
+                {
+                    capi.Logger.Warning("No files for cave music track part? Will not play anything (first file = {0}).", filesbefore[0]);
+                }
+
                 PartsShuffled[i] = Parts[i];
             }
         }
@@ -179,6 +185,8 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < PartsShuffled.Length; i++)
             {
                 MusicTrackPart part = PartsShuffled[i];
+                if (part.Files.Length == 0) continue;
+
                 bool isPlaying = part.IsPlaying;
                 bool shouldPlay = part.Applicable(capi.World, props);
 

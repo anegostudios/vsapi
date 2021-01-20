@@ -111,7 +111,7 @@ namespace Vintagestory.API.Common
                             stack = new ItemStack(capi.World.GetBlock(new AssetLocation(code)));
                         }
 
-                        ItemstackComponentBase stckcmp = new SlideshowItemstackTextComponent(capi, new ItemStack[] { stack }, size, floatType);
+                        ItemstackComponentBase stckcmp = new SlideshowItemstackTextComponent(capi, new ItemStack[] { stack }, size / RuntimeEnv.GUIScale, floatType);
                         elems.Add(stckcmp);
                         break;
 

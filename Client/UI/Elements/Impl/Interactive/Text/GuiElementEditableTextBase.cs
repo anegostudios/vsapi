@@ -6,6 +6,7 @@ using Cairo;
 using Vintagestory.API.MathTools;
 using Action = Vintagestory.API.Common.Action;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -206,7 +207,7 @@ namespace Vintagestory.API.Client
         /// <param name="value">The value to add to the text.</param>
         public void SetValue(float value)
         {
-            SetValue(value + "");
+            SetValue(value.ToString(GlobalConstants.DefaultCultureInfo));
         }
 
         /// <summary>

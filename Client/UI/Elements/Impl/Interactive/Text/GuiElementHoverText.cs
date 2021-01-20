@@ -306,6 +306,18 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        public static GuiComposer AddAutoSizeHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, string key = null)
+        {
+            if (!composer.composed)
+            {
+                GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, null);
+                elem.SetAutoWidth(true);
+
+                composer.AddInteractiveElement(elem, key);
+            }
+            return composer;
+        }
+
         /// <summary>
         /// Adds a hover text to the GUI.
         /// </summary>

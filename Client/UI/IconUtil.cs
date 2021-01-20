@@ -15631,7 +15631,7 @@ namespace Vintagestory.API.Client
             if (pattern != null) pattern.Dispose();
 
             cr.Operator = Operator.Over;
-            cr.LineWidth = 2;
+            cr.LineWidth = 4;
             cr.MiterLimit = 10;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;
@@ -15672,7 +15672,7 @@ namespace Vintagestory.API.Client
             if (pattern != null) pattern.Dispose();
 
             cr.Operator = Operator.Over;
-            cr.LineWidth = 2;
+            cr.LineWidth = 4;
             cr.MiterLimit = 10;
             cr.LineCap = LineCap.Butt;
             cr.LineJoin = LineJoin.Miter;

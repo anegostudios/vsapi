@@ -184,6 +184,11 @@ namespace Vintagestory.API.MathTools
 
             entity.CollidedHorizontally = collided;
 
+            //fix for player on ladder clipping into block above issue  (caused by the .CollisionBox not always having height precisely 1.85)
+            if (entity.CollidedVertically && tmpPosDelta.Y > 0)
+            {
+                tmpPosDelta.Y -= entity.LadderFixDelta;
+            }
 
             outposition.Set(tmpPositionVec.X + tmpPosDelta.X, tmpPositionVec.Y + tmpPosDelta.Y, tmpPositionVec.Z + tmpPosDelta.Z);
         }

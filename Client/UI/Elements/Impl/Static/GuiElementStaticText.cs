@@ -22,6 +22,11 @@ namespace Vintagestory.API.Client
             this.orientation = orientation;
         }
 
+        public double GetTextHeight()
+        {
+            return textUtil.GetMultilineTextHeight(Font, text, Bounds.InnerWidth);
+        }
+
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
         {
             Bounds.CalcWorldBounds();

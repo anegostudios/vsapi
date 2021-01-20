@@ -29,6 +29,7 @@ namespace Vintagestory.API.Client
         internal double unscaledSwitchPadding = 4;
         internal double unscaledSwitchSize = 30;
 
+        LoadedTexture modcellTexture;
 
         ElementBounds IGuiElementCell.Bounds
         {
@@ -58,14 +59,19 @@ namespace Vintagestory.API.Client
                 cell.DetailTextFont.Color[3] *= 0.6;
             }
 
+            modcellTexture = new LoadedTexture(capi);
+
         }
 
-        public override void ComposeElements(Context ctx, ImageSurface surface)
-        {
+
+        void Compose() 
+        { 
             ComposeHover(true, ref leftHighlightTextureId);
             ComposeHover(false, ref rightHighlightTextureId);
             genOnTexture();
 
+            ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
+            Context ctx = new Context(surface);
 
             double rightBoxWidth = scaled(unscaledRightBoxWidth);
 
@@ -76,7 +82,7 @@ namespace Vintagestory.API.Client
 
             if (cell.DrawAsButton)
             {
-                RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, 1);
+                RoundRectangle(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, 0);
 
                 ctx.SetSourceRGB(GuiStyle.DialogDefaultBgColor[0], GuiStyle.DialogDefaultBgColor[1], GuiStyle.DialogDefaultBgColor[2]);
                 ctx.Fill();
@@ -90,33 +96,33 @@ namespace Vintagestory.API.Client
                 textOffset = imageSize + 10;
 
                 Bitmap bmp = mod.Icon;
-                surface.Image(bmp, (int)Bounds.drawX + 5, (int)Bounds.drawY + 5, imageSize, imageSize);
+                surface.Image(bmp, (int)Bounds.absPaddingX + 5, (int)Bounds.absPaddingY + 5, imageSize, imageSize);
                 
                 
                 bmp.Dispose();
             }
 
             Font = cell.TitleFont;
-            titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.Title, Bounds.drawX + textOffset, Bounds.drawY, Bounds.InnerWidth - textOffset);
+            titleTextheight = textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.Title, Bounds.absPaddingX + textOffset, Bounds.absPaddingY, Bounds.InnerWidth - textOffset);
 
             Font = cell.DetailTextFont;
-            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.DetailText, Bounds.drawX + textOffset, Bounds.drawY + titleTextheight + Bounds.absPaddingY, Bounds.InnerWidth - textOffset);
+            textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.DetailText, Bounds.absPaddingX + textOffset, Bounds.absPaddingY + titleTextheight + Bounds.absPaddingY, Bounds.InnerWidth - textOffset);
 
             if (cell.RightTopText != null)
             {
                 TextExtents extents = Font.GetTextExtents(cell.RightTopText);
-                textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.RightTopText, Bounds.drawX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.drawY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
+                textUtil.AutobreakAndDrawMultilineTextAt(ctx, Font, cell.RightTopText, Bounds.absPaddingX + Bounds.InnerWidth - extents.Width - rightBoxWidth - scaled(10), Bounds.absPaddingY + scaled(cell.RightTopOffY), extents.Width + 1, EnumTextOrientation.Right);
             }
 
             if (cell.DrawAsButton)
             {
-                EmbossRoundRectangleElement(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, false, 2);
+                EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, false, 4, 0);
             }
 
             if (!validMod)
             {
                 ctx.SetSourceRGBA(0, 0, 0, 0.5);
-                RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, 1);
+                RoundRectangle(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, 1);
 
                 ctx.Fill();
             }
@@ -126,8 +132,8 @@ namespace Vintagestory.API.Client
                 double checkboxsize = scaled(unscaledSwitchSize);
                 double padd = scaled(unscaledSwitchPadding);
 
-                double x = Bounds.drawX + Bounds.InnerWidth - scaled(0) - checkboxsize - padd;
-                double y = Bounds.drawY + Bounds.absPaddingY;
+                double x = Bounds.absPaddingX + Bounds.InnerWidth - scaled(0) - checkboxsize - padd;
+                double y = Bounds.absPaddingY + Bounds.absPaddingY;
                 
 
                 ctx.SetSourceRGBA(0, 0, 0, 0.2);
@@ -135,6 +141,11 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
                 EmbossRoundRectangleElement(ctx, x, y, checkboxsize, checkboxsize, true, 1, 2);
             }
+
+            generateTexture(surface, ref modcellTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
         }
         
 
@@ -197,7 +208,6 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
 
-            double padding = Bounds.absPaddingY;
             double unscaledPadding = Bounds.absPaddingY / RuntimeEnv.GUIScale;
             double boxwidth = Bounds.InnerWidth;
 
@@ -234,6 +244,19 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The change in time.</param>
         public void OnRenderInteractiveElements(ICoreClientAPI api, float deltaTime)
         {
+            if (modcellTexture.TextureId == 0)
+            {
+                Compose();
+            }
+
+            api.Render.Render2DTexturePremultipliedAlpha(
+                modcellTexture.TextureId,
+                (int)(Bounds.absX),
+                (int)(Bounds.absY),
+                Bounds.OuterWidthInt,
+                Bounds.OuterHeightInt
+            );
+
             int mx = api.Input.MouseX;
             int my = api.Input.MouseY;
             Vec2d pos = Bounds.PositionInside(mx, my);
@@ -267,6 +290,16 @@ namespace Vintagestory.API.Client
                 api.Render.Render2DTexturePremultipliedAlpha(rightHighlightTextureId, (int)Bounds.renderX, (int)Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
                 api.Render.Render2DTexturePremultipliedAlpha(leftHighlightTextureId, (int)Bounds.renderX, (int)Bounds.renderY, Bounds.OuterWidth, Bounds.OuterHeight);
             }
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            modcellTexture?.Dispose();
+
+            api.Render.GLDeleteTexture(leftHighlightTextureId);
+            api.Render.GLDeleteTexture(rightHighlightTextureId);
+            api.Render.GLDeleteTexture(switchOnTextureId);
         }
     }
 }

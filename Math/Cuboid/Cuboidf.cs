@@ -20,6 +20,19 @@ namespace Vintagestory.API.MathTools
         public float Y2;
         public float Z2;
 
+        /// <summary>
+        /// This is equivalent to width so long as X2 > X1, but could in theory be a negative number if the box has its corners the wrong way around
+        /// </summary>
+        public float XSize { get { return X2 - X1; } }
+        /// <summary>
+        /// This is equivalent to height so long as Y2 > Y1, but could in theory be a negative number if the box has its corners the wrong way around
+        /// </summary>
+        public float YSize { get { return Y2 - Y1; } }
+        /// <summary>
+        /// This is equivalent to length so long as Z2 > Z1, but could in theory be a negative number if the box has its corners the wrong way around
+        /// </summary>
+        public float ZSize { get { return Z2 - Z1; } }
+
         public float Width { get { return MaxX - MinX; } }
         public float Height { get { return MaxY - MinY; } }
         public float Length { get { return MaxZ - MinZ; } }
