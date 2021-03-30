@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Server;
@@ -10,8 +9,21 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-    public class VanillaCookingRecipeNames : ICookingRecipeNamingHelper
+    public abstract class VanillaCookingRecipe : CookingRecipe
     {
+        protected class CookingIngredientState
+        {
+            public int max = 1;
+            public string topping = string.Empty;
+            public ItemStack PrimaryIngredient = null;
+            public ItemStack SecondaryIngredient = null;
+            public List<string> OtherIngredients = new List<string>();
+            public List<string> MashedNames = new List<string>();
+            public List<string> GarnishedNames = new List<string>();
+            public List<string> grainNames = new List<string>();
+            public string mainIngredients;
+        }
+
         /// <summary>
         /// Gets the name for ingredients in regards to food.
         /// </summary>
@@ -19,263 +31,50 @@ namespace Vintagestory.API.Common
         /// <param name="recipeCode">The recipe code.</param>
         /// <param name="stacks">The stacks of items to add.</param>
         /// <returns>The name of the food type.</returns>
-        public string GetNameForIngredients(IWorldAccessor worldForResolve, string recipeCode, ItemStack[] stacks)
+        public override string GetNameForIngredients(IWorldAccessor worldForResolve, string recipeCode, ItemStack[] stacks)
         {
-            OrderedDictionary<ItemStack, int> quantitiesByStack = new OrderedDictionary<ItemStack, int>();
-            quantitiesByStack = mergeStacks(worldForResolve, stacks);
+            OrderedDictionary<ItemStack, int> quantitiesByStack = mergeStacks(worldForResolve, stacks);
+            string mealFormat = "meal";
+            var state = GetCookingIngredientsState(quantitiesByStack);
 
-            CookingRecipe recipe = worldForResolve.CookingRecipes.FirstOrDefault(rec => rec.Code == recipeCode);
-
-            if (recipeCode == null || recipe == null) return "unknown";
-
-            int max = 1;
-            string MealFormat = "meal";
-            string topping = string.Empty;
-            ItemStack PrimaryIngredient = null;
-            ItemStack SecondaryIngredient = null;
-            List<string> OtherIngredients = new List<string>();
-            List<string> MashedNames = new List<string>();
-            List<string> GarnishedNames = new List<string>();
-            List<string> grainNames = new List<string>();
-            string mainIngredients;
-            string everythingelse = "";
-
-
-            switch (recipeCode)
-            {
-                case "soup":
-                    {
-                        max = 0;
-                        foreach (var val in quantitiesByStack)
-                        {
-                            CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
-                            if (val.Key.Collectible.Code.Path.Contains("waterportion")) continue;
-                            if (ingred?.Code == "topping")
-                            {
-                                topping = "honeyportion";
-                                continue;
-                            }
-
-
-                            if (max < val.Value)
-                            {
-                                max = val.Value;
-                                if (PrimaryIngredient != null)
-                                {
-                                    SecondaryIngredient = PrimaryIngredient;
-                                }
-                                PrimaryIngredient = val.Key;
-                                
-                            }
-                            else
-                            {
-                                OtherIngredients.Add(ingredientName(val.Key, true));
-                            }
-
-                        }
-
-                        if (max == 2) max = 3;
-                        else if (max == 3) max = 4;
-                        else max = 2;
-
-                        break;
-                       
-                    }
-
-                case "porridge":
-                    {
-                        max = 0;
-                        foreach (var val in quantitiesByStack)
-                        {
-                            CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
-                            if (getFoodCat(val.Key) == EnumFoodCategory.Grain)
-                            {
-                                max++;
-                                if (PrimaryIngredient == null)
-                                    PrimaryIngredient = val.Key;
-                                else if (SecondaryIngredient == null && val.Key != PrimaryIngredient)
-                                    SecondaryIngredient = val.Key;
-
-                                continue;
-                            }
-
-                            if (ingred?.Code == "topping")
-                            {
-                                topping = "honeyportion";
-                                continue;
-                            }
-
-                            MashedNames.Add(ingredientName(val.Key, true));
-
-                        }
-                        break;
-                    }
-
-                case "meatystew":
-                    {
-                        max = 0;
-                        foreach (var val in quantitiesByStack)
-                        {
-                            CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key);
-                            
-                            EnumFoodCategory foodCat = getFoodCat(val.Key);
-
-                            if (foodCat == EnumFoodCategory.Protein)
-                            {
-                                if (PrimaryIngredient == val.Key || SecondaryIngredient == val.Key)
-                                    continue;
-
-                                if (PrimaryIngredient == null)
-                                    PrimaryIngredient = val.Key;
-                                else if (SecondaryIngredient == null)
-                                    SecondaryIngredient = val.Key;
-                                else
-                                    OtherIngredients.Add(ingredientName(val.Key, true));
-
-                                max += val.Value;
-
-                                continue;
-                            }
-
-
-                            if (ingred?.Code == "topping")
-                            {
-                                topping = "honeyportion";
-                                continue;
-                            }
-
-                            OtherIngredients.Add(ingredientName(val.Key, true));
-                        }
-
-                        recipeCode = "stew";
-                        break;
-                    }
-
-                case "vegetablestew":
-                    {
-                        max = 0;
-                        
-                        foreach (var val in quantitiesByStack)
-                        {
-                            if (getFoodCat(val.Key) == EnumFoodCategory.Vegetable)
-                            {
-                                if (PrimaryIngredient == val.Key || SecondaryIngredient == val.Key)
-                                    continue;
-
-                                if (PrimaryIngredient == null)
-                                    PrimaryIngredient = val.Key;
-                                else if (SecondaryIngredient == null)
-                                    SecondaryIngredient = val.Key;
-                                else
-                                    GarnishedNames.Add(ingredientName(val.Key, true));
-
-                                max += val.Value;
-
-                                continue;
-                            }
-                            GarnishedNames.Add(ingredientName(val.Key, true));
-                        }
-
-                        // Slightly ugly hack for soybean stew
-                        if (PrimaryIngredient == null)
-                        {
-                            foreach (var val in quantitiesByStack)
-                            {
-                                //CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key); - whats this for?
-                                PrimaryIngredient = val.Key;
-                                max += val.Value;
-                            }
-                        }
-
-                        recipeCode = "stew";
-                        break;
-                    }
-
-
-                case "jam":
-                    {
-                        foreach (var val in quantitiesByStack)
-                        {
-                            if (val.Key.Collectible.NutritionProps?.FoodCategory == EnumFoodCategory.Fruit)
-                            {
-                                return Lang.Get("{0} jam", val.Key.GetName());
-                            }
-                        }
-
-                        break;
-                    }
-
-            }
-
-
-            
-            switch(max)
+            switch(state.max)
             {
                 case 3:
-                    MealFormat += "-hearty-" + recipeCode;
+                    mealFormat += "-hearty-" + recipeCode;
                     break;
                 case 4:
-                    MealFormat += "-hefty-" + recipeCode;
+                    mealFormat += "-hefty-" + recipeCode;
                     break;
                 default:
-                    MealFormat += "-normal-" + recipeCode;
+                    mealFormat += "-normal-" + recipeCode;
                     break;
             }
 
-            if (topping == "honeyportion")
+            if (state.topping == "honeyportion")
             {
-                MealFormat += "-honey";
+                mealFormat += "-honey";
             }
             //mealformat is done.  Time to do the main inredients.
 
-
-
-            if (SecondaryIngredient != null)
+            if (state.SecondaryIngredient != null)
             {
-                mainIngredients = Lang.Get("multi-main-ingredients-format", getMainIngredientName(PrimaryIngredient, recipeCode), getMainIngredientName(SecondaryIngredient, recipeCode, true));
+                state.mainIngredients = Lang.Get("multi-main-ingredients-format", getMainIngredientName(state.PrimaryIngredient, recipeCode), getMainIngredientName(state.SecondaryIngredient, recipeCode, true));
             }
             else
-                mainIngredients = PrimaryIngredient == null ? "" : getMainIngredientName(PrimaryIngredient, recipeCode);
+                state.mainIngredients = state.PrimaryIngredient == null ? "" : getMainIngredientName(state.PrimaryIngredient, recipeCode);
             // Main ingredients are done.
 
-            switch (recipeCode)
-            {
-                case "porridge":
-                    if (MashedNames.Count > 0)
-                    {
-                        everythingelse = getMealAddsString("meal-adds-porridge-mashed", MashedNames);
-                    } else
-                    {
-                        everythingelse = "";
-                    }
-                    break;
-                case "stew":
-                    if (OtherIngredients.Count > 0)
-                    {
-                        everythingelse = getMealAddsString("meal-adds-meatystew-boiled", OtherIngredients);
-                    }
-                    else if (GarnishedNames.Count > 0)
-                    {
-                        everythingelse = getMealAddsString("meal-adds-vegetablestew-garnish", GarnishedNames);
-                    }
-                    else
-                    {
-                        everythingelse = "";
-                    }
-                    break;
-                case "soup":
-                    if(OtherIngredients.Count > 0)
-                    {
-                        everythingelse = getMealAddsString("meal-adds-generic", OtherIngredients);
-                    }
-                    break;
-            }
-            //everything else is done.
-
-            return Lang.Get(MealFormat, mainIngredients, everythingelse).Trim().UcFirst();
+            return Lang.Get(mealFormat, state.mainIngredients, GetMealAdditions(state)).Trim().UcFirst();
         }
 
-        private EnumFoodCategory getFoodCat(ItemStack stack)
+        protected abstract CookingIngredientState GetCookingIngredientsState(OrderedDictionary<ItemStack, int> quantitiesByStack);
+
+        protected virtual string GetMealAdditions(CookingIngredientState state)
+        {
+            return "";
+        }
+
+        protected EnumFoodCategory getFoodCat(ItemStack stack)
         {
             FoodNutritionProperties props = stack.Collectible.NutritionProps;
             if (props == null) props = stack.Collectible.CombustibleProps?.SmeltedStack?.ResolvedItemstack?.Collectible?.NutritionProps;
@@ -285,7 +84,7 @@ namespace Vintagestory.API.Common
             return EnumFoodCategory.Dairy;
         }
 
-        private string ingredientName(ItemStack stack, bool InsturmentalCase = false)
+        protected string ingredientName(ItemStack stack, bool InsturmentalCase = false)
         {
             string code;
 
@@ -297,76 +96,224 @@ namespace Vintagestory.API.Common
             return Lang.GetMatching(code);
         }
 
-        private string getMainIngredientName(ItemStack itemstack, string code, bool secondary = false)
+        protected string getMainIngredientName(ItemStack itemstack, string code, bool secondary = false)
         { 
             if(secondary)
                 return Lang.Get($"meal-ingredient-{code}-secondary-{getInternalName(itemstack)}");
             return Lang.Get($"meal-ingredient-{code}-primary-{getInternalName(itemstack)}");
         }
 
-        private string getInternalName(ItemStack itemstack)
+        protected string getInternalName(ItemStack itemstack)
         {
             return itemstack.Collectible.Code.Path;
         }
 
-        private string getMealAddsString(string code, List<string> ingredients1, List<string> ingredients2 = null)
+        protected string getMealAddsString(string code, List<string> ingredients1, List<string> ingredients2 = null)
         {
             if (ingredients2 == null)
                 return Lang.Get(code, Lang.Get($"meal-ingredientlist-{ingredients1.Count}", ingredients1.ToArray()));
             return Lang.Get(code, Lang.Get($"meal-ingredientlist-{ingredients1.Count}", ingredients1.ToArray()), Lang.Get($"meal-ingredientlist-{ingredients2.Count}", ingredients2.ToArray()));
         }
+    }
 
-        private OrderedDictionary<ItemStack, int> mergeStacks(IWorldAccessor worldForResolve, ItemStack[] stacks)
+    public class JamCookingRecipe : CookingRecipe
+    {
+
+        public override string GetNameForIngredients(IWorldAccessor worldForResolve, string recipeCode, ItemStack[] stacks)
         {
-            OrderedDictionary<ItemStack, int> dict = new OrderedDictionary<ItemStack, int>();
-
-            List<ItemStack> stackslist = new List<ItemStack>(stacks);
-            while (stackslist.Count > 0)
+            var quantitiesByStack = mergeStacks(worldForResolve, stacks);
+            foreach (var val in quantitiesByStack)
             {
-                ItemStack stack = stackslist[0];
-                stackslist.RemoveAt(0);
-                if (stack == null) continue;
-
-                int cnt = 1;
-
-                while (true)
+                if (val.Key.Collectible.NutritionProps?.FoodCategory == EnumFoodCategory.Fruit)
                 {
-                    ItemStack foundstack = stackslist.FirstOrDefault((otherstack) => otherstack != null && otherstack.Equals(worldForResolve, stack, GlobalConstants.IgnoredStackAttributes));
+                    return Lang.Get("{0} jam", val.Key.GetName());
+                }
+            }
 
-                    if (foundstack != null)
+            return "unknown";
+        }
+    }
+
+    public class SoupCookingRecipe : VanillaCookingRecipe
+    {
+        protected override CookingIngredientState GetCookingIngredientsState(OrderedDictionary<ItemStack, int> quantitiesByStack)
+        {
+            var state = new CookingIngredientState();
+            state.max = 0;
+            foreach (var val in quantitiesByStack)
+            {
+                CookingRecipeIngredient ingred = GetIngrendientFor(val.Key);
+                if (val.Key.Collectible.Code.Path.Contains("waterportion")) continue;
+                if (ingred?.Code == "topping")
+                {
+                    state.topping = "honeyportion";
+                    continue;
+                }
+
+
+                if (state.max < val.Value)
+                {
+                    state.max = val.Value;
+                    if (state.PrimaryIngredient != null)
                     {
-                        stackslist.Remove(foundstack);
-                        cnt++;
+                        state.SecondaryIngredient = state.PrimaryIngredient;
+                    }
+                    state.PrimaryIngredient = val.Key;
+                                
+                }
+                else
+                {
+                    state.OtherIngredients.Add(ingredientName(val.Key, true));
+                }
+
+            }
+
+            if (state.max == 2) state.max = 3;
+            else if (state.max == 3) state.max = 4;
+            else state.max = 2;
+            return state;
+        }
+
+        protected override string GetMealAdditions(CookingIngredientState state)
+        {
+            return state.OtherIngredients.Count > 0 ? getMealAddsString("meal-adds-generic", state.OtherIngredients) : "";
+        }
+    }
+
+    public class StewCookingRecipe : VanillaCookingRecipe
+    {
+        protected override CookingIngredientState GetCookingIngredientsState(OrderedDictionary<ItemStack, int> quantitiesByStack)
+        {
+            var state = new CookingIngredientState();
+            if (Code == "meatystew")
+            {
+                state.max = 0;
+                foreach (var val in quantitiesByStack)
+                {
+                    CookingRecipeIngredient ingred = GetIngrendientFor(val.Key);
+                            
+                    EnumFoodCategory foodCat = getFoodCat(val.Key);
+
+                    if (foodCat == EnumFoodCategory.Protein)
+                    {
+                        if (state.PrimaryIngredient == val.Key || state.SecondaryIngredient == val.Key)
+                            continue;
+
+                        if (state.PrimaryIngredient == null)
+                            state.PrimaryIngredient = val.Key;
+                        else if (state.SecondaryIngredient == null)
+                            state.SecondaryIngredient = val.Key;
+                        else
+                            state.OtherIngredients.Add(ingredientName(val.Key, true));
+
+                        state.max += val.Value;
+
                         continue;
                     }
 
-                    break;
+                    if (ingred?.Code == "topping")
+                    {
+                        state.topping = "honeyportion";
+                        continue;
+                    }
+
+                    state.OtherIngredients.Add(ingredientName(val.Key, true));
+                }
+            }
+            else
+            {
+                state.max = 0;
+                        
+                foreach (var val in quantitiesByStack)
+                {
+                    if (getFoodCat(val.Key) == EnumFoodCategory.Vegetable)
+                    {
+                        if (state.PrimaryIngredient == val.Key || state.SecondaryIngredient == val.Key)
+                            continue;
+
+                        if (state.PrimaryIngredient == null)
+                            state.PrimaryIngredient = val.Key;
+                        else if (state.SecondaryIngredient == null)
+                            state.SecondaryIngredient = val.Key;
+                        else
+                            state.GarnishedNames.Add(ingredientName(val.Key, true));
+                        state.max += val.Value;
+
+                        continue;
+                    }
+                    state.GarnishedNames.Add(ingredientName(val.Key, true));
                 }
 
-                dict[stack] = cnt;
+                // Slightly ugly hack for soybean stew
+                if (state.PrimaryIngredient == null)
+                {
+                    foreach (var val in quantitiesByStack)
+                    {
+                        //CookingRecipeIngredient ingred = recipe.GetIngrendientFor(val.Key); - whats this for?
+                        state.PrimaryIngredient = val.Key;
+                        state.max += val.Value;
+                    }
+                }   
             }
 
-            return dict;
+            return state;
         }
 
+        protected override string GetMealAdditions(CookingIngredientState state)
+        {
+            if (state.OtherIngredients.Count > 0)
+            {
+                return getMealAddsString("meal-adds-meatystew-boiled", state.OtherIngredients);
+            }
+            if (state.GarnishedNames.Count > 0)
+            {
+                return getMealAddsString("meal-adds-vegetablestew-garnish", state.GarnishedNames);
+            }
+            return "";
+        }
     }
 
-    /// <summary>
-    /// Interface for a helper for cooking various food in game.
-    /// </summary>
-    public interface ICookingRecipeNamingHelper
+    public class PorridgeCookingRecipe : VanillaCookingRecipe
     {
-        /// <summary>
-        /// Gets the name for ingredients in regards to food.
-        /// </summary>
-        /// <param name="worldForResolve">The world to resolve in.</param>
-        /// <param name="recipeCode">The recipe code.</param>
-        /// <param name="stacks">The stacks of items to add.</param>
-        /// <returns>The name of the food type.</returns>
-        string GetNameForIngredients(IWorldAccessor worldForResolve, string recipeCode, ItemStack[] stacks);
+        protected override CookingIngredientState GetCookingIngredientsState(OrderedDictionary<ItemStack, int> quantitiesByStack)
+        {
+            var cookingState = new CookingIngredientState();
+            cookingState.max = 0;
+            foreach (var val in quantitiesByStack)
+            {
+                CookingRecipeIngredient ingred = GetIngrendientFor(val.Key);
+                if (getFoodCat(val.Key) == EnumFoodCategory.Grain)
+                {
+                    cookingState.max++;
+                    if (cookingState.PrimaryIngredient == null)
+                        cookingState.PrimaryIngredient = val.Key;
+                    else if (cookingState.SecondaryIngredient == null && val.Key != cookingState.PrimaryIngredient)
+                        cookingState.SecondaryIngredient = val.Key;
+
+                    continue;
+                }
+                if (ingred?.Code == "topping")
+                {
+                    cookingState.topping = "honeyportion";
+                    continue;
+                }
+                cookingState.MashedNames.Add(ingredientName(val.Key, true));
+            }
+
+            return cookingState;
+        }
+
+        protected override string GetMealAdditions(CookingIngredientState state)
+        {
+            if (state.MashedNames.Count > 0)
+            {
+                return getMealAddsString("meal-adds-porridge-mashed", state.MashedNames);
+            }
+            return "";
+        }
     }
 
-    public class CookingRecipe : IByteSerializable
+    public abstract class CookingRecipe : IByteSerializable
     {
         public string Code;
         public CookingRecipeIngredient[] Ingredients;
@@ -374,16 +321,23 @@ namespace Vintagestory.API.Common
         public CompositeShape Shape;
         public TransitionableProperties PerishableProps;
 
-        public static Dictionary<string, ICookingRecipeNamingHelper> NamingRegistry = new Dictionary<string, ICookingRecipeNamingHelper>();
+        // public static Dictionary<string, ICookingRecipeNamingHelper> NamingRegistry = new Dictionary<string, ICookingRecipeNamingHelper>();
 
-        static CookingRecipe()
-        {
-            NamingRegistry["porridge"] = new VanillaCookingRecipeNames();
-            NamingRegistry["meatystew"] = new VanillaCookingRecipeNames();
-            NamingRegistry["vegetablestew"] = new VanillaCookingRecipeNames();
-            NamingRegistry["soup"] = new VanillaCookingRecipeNames();
-            NamingRegistry["jam"] = new VanillaCookingRecipeNames();
-        }
+        // static CookingRecipe()
+        // {
+        //     // TODO These have to be registered in the essentials project with
+        //     api.RegisterCookingRecipe("porridge", typeof(PorridgeCookingRecipe));
+        //     api.RegisterCookingRecipe("stew", typeof(StewCookingRecipe));
+        //     api.RegisterCookingRecipe("soup", typeof(SoupCookingRecipe));
+        //     api.RegisterCookingRecipe("jam", typeof(JamCookingRecipe));
+        //     TODO END
+        //     // These we will register instead because why else look for them
+        //     NamingRegistry["porridge"] = new VanillaCookingRecipeNames();
+        //     NamingRegistry["meatystew"] = new VanillaCookingRecipeNames();
+        //     NamingRegistry["vegetablestew"] = new VanillaCookingRecipeNames();
+        //     NamingRegistry["soup"] = new VanillaCookingRecipeNames();
+        //     NamingRegistry["jam"] = new VanillaCookingRecipeNames();
+        // }
 
         public bool Matches(ItemStack[] inputStacks)
         {
@@ -406,45 +360,14 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public string GetOutputName(IWorldAccessor worldForResolve, ItemStack[] inputStacks)
         {
-            /*StringBuilder name = new StringBuilder();
-            for (int i = 0; i < NameComponentOrder.Length; i++)
-            {
-                int index = NameComponentOrder[i];
-
-                CookingRecipeIngredient ingred = Ingredients[index];
-                for (int j = 0; j < inputStacks.Length; j++)
-                {
-                    CookingRecipeStack crstack = ingred.GetMatchingStack(inputStacks[j]);
-                    if (crstack != null)
-                    {
-                        if (name.Length > 0) name.Append(" ");
-                        string namecomp = crstack.NameComponent.Replace("{stackcode}", inputStacks[j].Collectible.Code.Path);
-                        name.Append(Lang.Get(namecomp));
-                        break;
-                    }
-                }
-
-            }
-
-            return name.ToString();*/
-
-            bool rotten = inputStacks.Any((stack) => stack?.Collectible.Code.Path == "rot");
+            bool rotten = inputStacks.Any(stack => stack?.Collectible.Code.Path == "rot");
             if (rotten)
             {
                 return Lang.Get("Rotten Food");
             }
-
-
-            ICookingRecipeNamingHelper namer = null;
-            if (NamingRegistry.TryGetValue(Code, out namer))
-            {
-                return namer.GetNameForIngredients(worldForResolve, Code, inputStacks);
-            }
-
-            return Lang.Get("unknown");
+            CookingRecipe recipe = worldForResolve.CookingRecipes.FirstOrDefault(rec => rec.Code == Code);
+            return recipe != null ? GetNameForIngredients(worldForResolve, Code, inputStacks) : Lang.Get("unknown");
         }
-
-
 
         public bool Matches(ItemStack[] inputStacks, ref int quantityServings)
         {
@@ -500,8 +423,14 @@ namespace Vintagestory.API.Common
             return true;
         }
 
-        
-        
+        /// <summary>
+        /// Gets the name for ingredients in regards to food.
+        /// </summary>
+        /// <param name="worldForResolve">The world to resolve in.</param>
+        /// <param name="recipeCode">The recipe code.</param>
+        /// <param name="stacks">The stacks of items to add.</param>
+        /// <returns>The name of the food type.</returns>
+        public abstract string GetNameForIngredients(IWorldAccessor worldForResolve, string recipeCode, ItemStack[] stacks);
 
         public CookingRecipeIngredient GetIngrendientFor(ItemStack stack, params CookingRecipeIngredient[] ingredsToskip)
         {
@@ -585,6 +514,39 @@ namespace Vintagestory.API.Common
        //     CanBeServedInto = new JsonItemStack();
        //     CanBeServedInto.FromBytes(reader, resolver.ClassRegistry);
        //     CanBeServedInto.Resolve(resolver, "[FromBytes]");
+        }
+
+        protected OrderedDictionary<ItemStack, int> mergeStacks(IWorldAccessor worldForResolve, ItemStack[] stacks)
+        {
+            OrderedDictionary<ItemStack, int> dict = new OrderedDictionary<ItemStack, int>();
+
+            List<ItemStack> stackslist = new List<ItemStack>(stacks);
+            while (stackslist.Count > 0)
+            {
+                ItemStack stack = stackslist[0];
+                stackslist.RemoveAt(0);
+                if (stack == null) continue;
+
+                int cnt = 1;
+
+                while (true)
+                {
+                    ItemStack foundstack = stackslist.FirstOrDefault((otherstack) => otherstack != null && otherstack.Equals(worldForResolve, stack, GlobalConstants.IgnoredStackAttributes));
+
+                    if (foundstack != null)
+                    {
+                        stackslist.Remove(foundstack);
+                        cnt++;
+                        continue;
+                    }
+
+                    break;
+                }
+
+                dict[stack] = cnt;
+            }
+
+            return dict;
         }
 
     }
