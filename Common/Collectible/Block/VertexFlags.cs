@@ -23,10 +23,18 @@ namespace Vintagestory.API.Common
         public const int WeakWaveBitMask = 1 << 14;
 
         public const int NormalBitMask = 0xFFF << 15;
-        public const int LeavesWindWaveBitMask = 1 << 27;
+        public const int LeavesWindWaveBitMask = 1 << 27;   // if both Foliage and Leaves Wind Wave are 1, it means Wind Sway
 
-        public const int GroundDistanceBitMask = 0x7 << 28; // 3 bits
+        public const int GroundDistanceBitsShift = 28;
+        public const int GroundDistanceBitMask = 0x7 << GroundDistanceBitsShift; // 3 bits - means Ground Distance for Leaves wind wave, Special Wave for Foliage wind wave (e.g. for specific crops such as Pineapple)
         public const int Lod0BitMask = 1 << 31;
+
+        public const int clearWaveBits = (~FoliageWindWaveBitMask) & (~LeavesWindWaveBitMask) & (~GroundDistanceBitMask);
+        public const int clearWaveFlagsOnly = (~FoliageWindWaveBitMask) & (~LeavesWindWaveBitMask);
+        public const int clearZOffset = ~0x700;
+
+        public const int clearNormalBits = ~NormalBitMask;
+
 
         int all;
 
@@ -39,26 +47,28 @@ namespace Vintagestory.API.Common
             }
             set
             {
+                glowLevel = (byte)(value & 0xFF);
+                zOffset = (byte)((value >> 8) & 0x7);
+                grassWindWave = ((value >> 11) & 1) != 0;
+                waterWave = ((value >> 12) & 1) != 0;
+                shiny = ((value >> 13) & 1) != 0;
+                weakWave = ((value >> 14) & 1) != 0;
+                normal = (byte)((value >> 15) & 0xFFF);
+                leavesWindWave = ((value >> 27) & 1) != 0;
+                foliageWaveSpecial = ((value >> GroundDistanceBitsShift) & 7);
                 all = value;
-                GlowLevel = (byte)(value & 0xFF);
-                ZOffset = (byte)((value >> 8) & 0x7);
-                GrassWindWave = ((value >> 11) & 1) != 0;
-                WaterWave = ((value >> 12) & 1) != 0;
-                Reflective = ((value >> 13) & 1) != 0;
-                WeakWave = ((value >> 14) & 1) != 0;
-                Normal = (byte)((value >> 15) & 0xFFF);
-                LeavesWindWave = ((value >> 27) & 1) != 0;
             }
         }
 
         public int AllWithoutWaveFlags
         {
-            get { return all & ~FoliageWindWaveBitMask & ~LeavesWindWaveBitMask; }
+            get { return all & clearWaveBits; }
         }
 
         byte glowLevel, zOffset;
         int normal;
         bool grassWindWave, leavesWindWave, waterWave, shiny, weakWave;
+        int foliageWaveSpecial;
 
         // Bit 15: x-sign
         // Bit 16, 17, 18: x-value
@@ -257,6 +267,41 @@ namespace Vintagestory.API.Common
             }
         }
 
+        [JsonProperty]
+        public bool WindSway
+        {
+            get
+            {
+                return leavesWindWave && grassWindWave;
+            }
+            set
+            {
+                leavesWindWave |= value;
+                grassWindWave |= value;
+                UpdateAll();
+            }
+        }
+
+        /// <summary>
+        /// 0 = default
+        /// 1 = On weak wave, also have only low frequency jiggle
+        /// 2 = unused
+        /// 3 = Solid fruit and Stalk, rotate with origin
+        /// 4 = Fruit underleaves
+        /// </summary>
+        [JsonProperty]
+        public short FoliageWaveSpecial
+        {
+            get
+            {
+                return (short) foliageWaveSpecial;
+            }
+            set
+            {
+                foliageWaveSpecial = value;
+                UpdateAll();
+            }
+        }
 
         public bool Lod0Fade
         {
@@ -301,6 +346,7 @@ namespace Vintagestory.API.Common
                   | (weakWave ? 1 : 0) << 14
                   | ((normal & 0xFFF) << 15)
                   | (leavesWindWave ? 1 : 0) << 27
+                  | foliageWaveSpecial << GroundDistanceBitsShift;
             ;
         }
 

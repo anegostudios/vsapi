@@ -553,6 +553,22 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+        public static void Scale(double[] matrix, double x, double y, double z)
+        {
+            matrix[0] *= x;
+            matrix[1] *= x;
+            matrix[2] *= x;
+            matrix[3] *= x;
+            matrix[4] *= y;
+            matrix[5] *= y;
+            matrix[6] *= y;
+            matrix[7] *= y;
+            matrix[8] *= z;
+            matrix[9] *= z;
+            matrix[10] *= z;
+            matrix[11] *= z;
+        }
+
         /// <summary>
         /// Rotates a mat4 by the given angle
         /// </summary>

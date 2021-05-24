@@ -47,9 +47,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Padding that is used when a richtextcomponent came before and needs some left spacing to it
         /// </summary>
-        public virtual double PaddingRight { get; protected set; } = 0;
+        public virtual double PaddingRight { get; set; } = 0;
 
-        public virtual double PaddingLeft { get; protected set; } = 0;
+        public virtual double PaddingLeft { get; set; } = 0;
 
 
         /// <summary>

@@ -75,6 +75,11 @@ namespace Vintagestory.API.Common
         void Unpack();
 
         /// <summary>
+        /// Like Unpack(), except it must be used readonly: the calling code promises not to write any changes to this chunk's blocks or lighting
+        /// </summary>
+        bool Unpack_ReadOnly();
+
+        /// <summary>
         /// Marks this chunk as modified. If called on server side it will be stored to disk on the next autosave or during shutdown, if called on client not much happens (but it will be preserved from packing for next ~8 seconds)
         /// </summary>
         void MarkModified();
@@ -143,6 +148,20 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <returns></returns>
         BlockEntity GetLocalBlockEntityAtBlockPos(BlockPos pos);
+
+        /// <summary>
+        /// Add a decor block to the side of an existing block in the chunk<br/>
+        /// Returns true if successful; false if there was already a decor block in this position
+        /// </summary>
+        bool AddDecor(IBlockAccessor blockAccessor, BlockPos pos, int faceIndex, Block block);
+
+        /// <summary>
+        /// Remove and drop decor blocks at the corresponding index3d
+        /// </summary>
+        void RemoveDecor(int index3d, IWorldAccessor world, BlockPos pos);
+
+        bool GetDecors(IBlockAccessor blockAccessor, BlockPos pos, Block[] result);
+        Cuboidf[] AdjustSelectionBoxForDecor(IBlockAccessor blockAccessor, BlockPos pos, Cuboidf[] orig);
 
         /// <summary>
         /// Only to be implemented client side

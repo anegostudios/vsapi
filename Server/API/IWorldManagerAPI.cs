@@ -75,6 +75,11 @@ namespace Vintagestory.API.Server
         ISaveGame SaveGame { get; }
 
         /// <summary>
+        /// The currently selected playstyle
+        /// </summary>
+        PlayStyle CurrentPlayStyle { get; }
+
+        /// <summary>
         /// Allows setting a 32 float array that defines the brightness of each block light level. Has to be set before any players join or any chunks are generated.
         /// </summary>
         /// <param name="lightLevels"></param>

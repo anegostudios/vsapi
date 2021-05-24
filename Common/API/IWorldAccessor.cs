@@ -642,6 +642,10 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         IBulkBlockAccessor GetBlockAccessorBulkMinimalUpdate(bool synchronize, bool debug = false);
 
+        /// <summary>
+        /// Retrieve a special Bulk blockaccessor which can have the chunks it accesses directly provided to it from a loading mapchunk. On commit all touched blocks are updated at once. This method is currently used for the snow accumulation system
+        /// </summary>
+        IBulkBlockAccessor GetBlockAccessorMapChunkLoading(bool synchronize, bool debug = false);
 
         /// <summary>
         /// Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these. 
@@ -668,6 +672,13 @@ namespace Vintagestory.API.Common
         /// <param name="relight"></param>
         /// <returns></returns>
         ICachingBlockAccessor GetCachingBlockAccessor(bool synchronize, bool relight);
+
+
+        /// <summary>
+        /// This block accessor is *read only* and does not use lock() or chunk.Unpack() in order to make it very fast. This comes at the cost of sometimes reading invalid data (block id = 0) when the chunk is packed or being packed.
+        /// </summary>
+        /// <returns></returns>
+        IBlockAccessor GetLockFreeBlockAccessor();
 
     }
 }

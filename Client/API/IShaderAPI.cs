@@ -36,11 +36,18 @@
         int RegisterMemoryShaderProgram(string name, IShaderProgram program);
 
         /// <summary>
-        /// Returns the loaded shaders for use in rendering
+        /// Returns the loaded shader for use in rendering
         /// </summary>
         /// <param name="renderPass"></param>
         /// <returns></returns>
         IShaderProgram GetProgram(int renderPass);
+
+        /// <summary>
+        /// Returns the loaded shader for use in rendering
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        IShaderProgram GetProgramByName(string name);
 
         /// <summary>
         /// Discards all currently compiled shaders and recompiles them. Returns true if all shaders compiled without errors.

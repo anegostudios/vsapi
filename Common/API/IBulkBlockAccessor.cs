@@ -36,5 +36,9 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         int GetStagedBlockId(BlockPos pos);
 
+        /// <summary>
+        /// Implemented only by BlockAccessorMapChunkLoading
+        /// </summary>
+        void SetChunks(Vec2i chunkCoord, IWorldChunk[] chunksCol);
     }
 }

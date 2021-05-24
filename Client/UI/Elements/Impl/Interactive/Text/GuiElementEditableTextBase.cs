@@ -269,11 +269,8 @@ namespace Vintagestory.API.Client
             RecomposeText();
         }
 
-        internal virtual void RecomposeText(double rightSpacing = 5, double bottomSpacing = 0)
+        internal virtual void RecomposeText()
         {
-            this.rightSpacing = rightSpacing;
-            this.bottomSpacing = bottomSpacing;
-
             Bounds.CalcWorldBounds();
 
 

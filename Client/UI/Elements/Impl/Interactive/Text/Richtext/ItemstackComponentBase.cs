@@ -57,6 +57,7 @@ namespace Vintagestory.API.Client
             stackInfo = new GuiElementItemstackInfo(capi, stackInfoBounds, OnRequireInfoText);
             stackInfo.SetSourceSlot(renderedTooltipSlot);
             stackInfo.ComposeElements(null, null);
+            stackInfo.RecompCheckIgnoredStackAttributes = GlobalConstants.IgnoredStackAttributes;
         }
 
         private string OnRequireInfoText(ItemSlot slot)

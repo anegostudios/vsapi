@@ -4,6 +4,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
@@ -66,11 +67,21 @@ namespace Vintagestory.API.Common
         {
             waterDragValue = 1 - (1 - GlobalConstants.WaterDrag) * (float)attributes["waterDragFactor"].AsDouble(1);
 
-            airDragValue = 1 - (1 - GlobalConstants.AirDragAlways) * (float)attributes["airDragFallingFactor"].AsDouble(1);
+            double airDrag = attributes["airDragFactor"].Exists ? attributes["airDragFactor"].AsDouble(1) : attributes["airDragFallingFactor"].AsDouble(1); // airDragFallingFactor is pre1.15
+            airDragValue = 1 - (1 - GlobalConstants.AirDragAlways) * airDrag;
+
+            if (entity.WatchedAttributes.HasAttribute("airDragFactor"))
+            {
+                airDragValue = 1 - (1 - GlobalConstants.AirDragAlways) * (float)entity.WatchedAttributes.GetDouble("airDragFactor");
+            }
 
             groundDragFactor = 0.3 * (float)attributes["groundDragFactor"].AsDouble(1);
 
             gravityPerSecond = GlobalConstants.GravityPerSecond * (float)attributes["gravityFactor"].AsDouble(1f);
+            if (entity.WatchedAttributes.HasAttribute("gravityFactor"))
+            {
+                gravityPerSecond = GlobalConstants.GravityPerSecond * (float)entity.WatchedAttributes.GetDouble("gravityFactor");
+            }
 
             if (entity.World.Side == EnumAppSide.Client)
             {

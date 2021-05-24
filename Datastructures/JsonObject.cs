@@ -10,7 +10,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 
-namespace Vintagestory.API
+namespace Vintagestory.API.Datastructures
 {
     /// <summary>
     /// Elegant, yet somewhat inefficently designed (because wasteful with heap objects) wrapper class to abstract away the type-casting nightmare of JToken O.O
@@ -68,29 +68,38 @@ namespace Vintagestory.API
         }
 
         /// <summary>
-        /// Deserialize the token to an object
+        /// Deserialize the token to an object of the specified type T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T AsObject<T>(T defaultValue = default(T), string domain = "game")
+        public T AsObject<T>(T defaultValue = default(T))
         {
             JsonSerializerSettings settings = null;
 
-            if (domain != "game")
+            return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
+        }
+
+        /// <summary>
+        /// Deserialize the token to an object of the specified type T, with the specified domain for any AssetLocation which needs to be parsed
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T AsObject<T>(T defaultValue, string domain)
+        {
+            JsonSerializerSettings settings = null;
+
+            if (domain != GlobalConstants.DefaultDomain)
             {
-                if (settings == null)
-                {
-                    settings = new JsonSerializerSettings();
-                }
+                settings = new JsonSerializerSettings();
                 settings.Converters.Add(new AssetLocationJsonParser(domain));
             }
 
             return token == null ? defaultValue : JsonConvert.DeserializeObject<T>(token.ToString(), settings);
         }
 
-        public T AsObject<T>(JsonSerializerSettings settings, T defaultValue, string domain = "game")
+        public T AsObject<T>(JsonSerializerSettings settings, T defaultValue, string domain = GlobalConstants.DefaultDomain)
         {
-            if (domain != "game")
+            if (domain != GlobalConstants.DefaultDomain)
             {
                 if (settings == null)
                 {
@@ -186,8 +195,11 @@ namespace Vintagestory.API
             if (value is bool) return (bool)value;
             if (value is string)
             {
-                bool val = defaultValue;
-                bool.TryParse("" + value, out val);
+                bool val;
+                if (!bool.TryParse("" + value, out val))
+                {
+                    val = defaultValue;
+                }
                 return val;
             }
 
@@ -212,8 +224,11 @@ namespace Vintagestory.API
             if (value is double) return (int)((double)value);
             if (value is string)
             {
-                int val = defaultValue;
-                int.TryParse("" + value, out val);
+                int val;
+                if (!int.TryParse("" + value, out val))
+                {
+                    val = defaultValue;
+                }
                 return val;
             }
 
@@ -237,8 +252,11 @@ namespace Vintagestory.API
             if (value is double) return (float)((double)value);
             if (value is string)
             {
-                float val = defaultValue;
-                float.TryParse(""+value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val);
+                float val;
+                if (!float.TryParse(""+value, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out val))
+                {
+                    val = defaultValue;
+                }
                 return val;
             }
 
@@ -262,8 +280,11 @@ namespace Vintagestory.API
             if (value is double) return (double)value;
             if (value is string)
             {
-                double val = defaultValue;
-                double.TryParse("" + value, out val);
+                double val;
+                if (!double.TryParse("" + value, out val))
+                {
+                    val = defaultValue;
+                }
                 return val;
             }
             return defaultValue;
@@ -300,7 +321,8 @@ namespace Vintagestory.API
         }
 
         /// <summary>
-        /// Turns the token into an IAttribute with all its child elements, if it has any
+        /// Turns the token into an IAttribute with all its child elements, if it has any. 
+        /// Note: If you converting this to a tree attribute, a subsequent call to tree.GetInt() might not work because Newtonsoft.JSON seems to load integers as long, so use GetDecimal() or GetLong() instead. Similar things might happen with float<->double
         /// </summary>
         /// <returns></returns>
         public IAttribute ToAttribute()

@@ -330,7 +330,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual bool ApplyGravity
         {
-            get { return Properties.Habitat == EnumHabitat.Land || (Properties.Habitat == EnumHabitat.Sea && !Swimming); }
+            get { return Properties.Habitat == EnumHabitat.Land || (Properties.Habitat == EnumHabitat.Sea || Properties.Habitat == EnumHabitat.Underwater) && !Swimming; }
         }
 
 
@@ -483,6 +483,18 @@ namespace Vintagestory.API.Common.Entities
             });
 
             WatchedAttributes.RegisterModifiedListener("entityDead", updateHitBox);
+
+            WatchedAttributes.RegisterModifiedListener("grow", () =>
+            {
+                if (World.Side == EnumAppSide.Client)
+                {
+                    float factor = Properties.Client.SizeGrowthFactor;
+                    if (factor != 0)
+                    {
+                        Properties.Client.Size = 1f + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
+                    }
+                }
+            });
 
             if (Properties.HitBoxSize != null)
             {

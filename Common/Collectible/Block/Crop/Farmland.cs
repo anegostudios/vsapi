@@ -36,7 +36,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The fertility the soil will recover to (the soil from which the farmland was made of)
         /// </summary>
-        int OriginalFertility { get; }
+        int[] OriginalFertility { get; }
 
         /// <summary>
         /// The position of the farmland

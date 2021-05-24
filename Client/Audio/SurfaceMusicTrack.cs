@@ -27,7 +27,9 @@ namespace Vintagestory.API.Client
         /// The current play style of the track
         /// </summary>
         [JsonProperty]
-        public string Playstyle = "*";
+        public string OnPlayList = "*";
+
+        public string[] OnPlayLists;
 
         /// <summary>
         /// Minimum sunlight to play the track.
@@ -57,11 +59,16 @@ namespace Vintagestory.API.Client
         public float MinRainFall = -99;
 
         [JsonProperty]
-        public float MinSeason;
+        public float MinSeason = 0;
 
         [JsonProperty]
         public float MaxSeason = 1;
 
+        [JsonProperty]
+        public float MinLatitude = 0;
+
+        [JsonProperty]
+        public float MaxLatitude = 90;
 
         /// <summary>
         /// Is it loading?
@@ -185,6 +192,9 @@ namespace Vintagestory.API.Client
             this.capi = capi;
             this.musicEngine = musicEngine;
 
+            OnPlayLists = OnPlayList.Split('|');
+            for (int i = 0; i < OnPlayLists.Length; i++) OnPlayLists[i] = OnPlayLists[i].ToLowerInvariant();
+
             selectMinMaxHour();
 
             Location.Path = "music/" + Location.Path.ToLowerInvariant() + ".ogg";
@@ -234,12 +244,14 @@ namespace Vintagestory.API.Client
         /// Should this current track play?
         /// </summary>
         /// <param name="props">Player Properties</param>
+        /// <param name="conds"><param>
+        /// <param name="pos"/></param>
         /// <returns>Should we play the current track?</returns>
         public bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
         {
             if (IsActive || !ShouldPlayMusic) return false;
             if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return false;
-            if (Playstyle != "*" && props.Playstyle != Playstyle.ToLowerInvariant()) return false;
+            if (OnPlayList != "*" && !OnPlayLists.Contains(props.PlayListCode)) return false;
             if (props.sunSlight < MinSunlight) return false;
             if (musicEngine.LastPlayedTrack == this) return false;
             if (conds.Temperature > MaxTemperature) return false;
@@ -247,12 +259,14 @@ namespace Vintagestory.API.Client
             float season = capi.World.Calendar.GetSeasonRel(pos);
             if (season < MinSeason || season > MaxSeason) return false;
 
-            long trackCoolDownMs = 0;
+            float latitude = (float)Math.Abs(capi.World.Calendar.OnGetLatitude(pos.Z));
+            if (latitude < MinLatitude || latitude > MaxLatitude) return false;
+
+            long trackCoolDownMs;
             tracksCooldownUntilMs.TryGetValue(Name, out trackCoolDownMs);
             if (capi.World.ElapsedMilliseconds < trackCoolDownMs)
             {
                 //capi.Logger.Debug("{0}: On track cooldown ({1}s)", Name, (trackCoolDownMs - capi.World.ElapsedMilliseconds) / 1000);
-
                 return false;
             }
 

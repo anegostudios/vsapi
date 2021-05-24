@@ -474,6 +474,22 @@ namespace Vintagestory.API.MathTools
             return (float)(dx * dx + dy * dy + dz * dz);
         }
 
+
+        /// <summary>
+        /// Returns the squared Euclidean distance between the nearer edge of this blockpos (assumed 1 x 0.75 x 1 cube) and given position
+        /// The 0.75 offset is because the "heat source" is likely to be above the base position of this block: it's approximate
+        /// </summary>
+        public double DistanceSqToNearerEdge(double x, double y, double z)
+        {
+            double dx = x - X;
+            double dy = y - Y - 0.75;
+            double dz = z - Z;
+            if (dx > 0) dx = dx <= 1 ? 0 : dx - 1;
+            if (dz > 0) dz = dz <= 1 ? 0 : dz - 1;
+
+            return dx * dx + dy * dy + dz * dz;
+        }
+
         /// <summary>
         /// Returns the squared Euclidean horizontal distance to between this and given position
         /// </summary>

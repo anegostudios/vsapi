@@ -111,6 +111,9 @@ namespace Vintagestory.API.Common
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
+            // Temporary code for VS 1.15 dev team to remove previously created "land" salmon which don't have the correct entity
+            if (properties.Habitat == EnumHabitat.Underwater && !(this.GetType().Name == "EntityFish")) this.Alive = false;
+
             base.Initialize(properties, api, InChunkIndex3d);
 
             if (World.Side == EnumAppSide.Server)
@@ -461,7 +464,7 @@ namespace Vintagestory.API.Common
                 EntityPos herepos = (isSelf ? Pos : ServerPos);
                 bool moving = herepos.Motion.LengthSq() > 0.0000 && !servercontrols.NoClip;
                 
-                if (insideBlock?.BlockMaterial == EnumBlockMaterial.Snow && isSelf)
+                if (insideBlock?.GetBlockMaterial(capi.World.BlockAccessor, insidePos) == EnumBlockMaterial.Snow && isSelf)
                 {
                     double hormot = Pos.Motion.X * Pos.Motion.X + Pos.Motion.Z * Pos.Motion.Z;
                     float val = (float)Math.Sqrt(hormot);
@@ -601,7 +604,10 @@ namespace Vintagestory.API.Common
         /// updated by GetWalkSpeedMultiplier()
         /// </summary>
         Block insideBlock;
-
+        /// <summary>
+        /// updated by GetWalkSpeedMultiplier()
+        /// </summary>
+        BlockPos insidePos = new BlockPos();
 
         /// <summary>
         /// Gets the walk speed multiplier.
@@ -613,7 +619,9 @@ namespace Vintagestory.API.Common
             int y2 = (int)(SidedPos.Y + 0.01f);
 
             Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
-            insideBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y2, (int)SidedPos.Z);
+
+            insidePos.Set((int)SidedPos.X, y2, (int)SidedPos.Z);
+            insideBlock = World.BlockAccessor.GetBlock(insidePos);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
             
@@ -904,7 +912,7 @@ namespace Vintagestory.API.Common
                         if (texAsset != null)
                         {
                             BitmapRef bmp = texAsset.ToBitmap(capi);
-                            capi.EntityTextureAtlas.InsertTexture(bmp, out textureSubId, out texpos);
+                            capi.EntityTextureAtlas.InsertTextureCached(val.Value, bmp, out textureSubId, out texpos);
                         }
                         else
                         {

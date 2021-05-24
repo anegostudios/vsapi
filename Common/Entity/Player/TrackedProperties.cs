@@ -39,6 +39,8 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public string Playstyle;
 
+        public string PlayListCode;
+
 
         public TrackedPlayerProperties()
         {

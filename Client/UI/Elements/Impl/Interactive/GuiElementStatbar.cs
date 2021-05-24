@@ -53,9 +53,8 @@ namespace Vintagestory.API.Client
 
             this.color = color;
             this.rightToLeft = rightToLeft;
-            //value = new Random(Guid.NewGuid().GetHashCode()).Next(100);
 
-            onGetStatbarValue = () => { return (int)value + " / " + (int)this.maxValue; };
+            onGetStatbarValue = () => { return (float)Math.Round((float)value, 1) + " / " + (int)this.maxValue; };
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)

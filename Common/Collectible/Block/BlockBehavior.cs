@@ -1,152 +1,24 @@
 ﻿using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
-    public abstract class BlockBehavior
+    public abstract class BlockBehavior : CollectibleBehavior
     {
         /// <summary>
         /// The block for this behavior instance.
         /// </summary>
         public Block block;
 
-        /// <summary>
-        /// The properties of this block behavior.
-        /// </summary>
-        public string propertiesAtString;
 
-        /// <summary>
-        /// If true, this behavior is not required on the client. This is here because copygirl doesn't stop asking for it. Probably breaks things. If it breaks things, complain to copygirl please :p
-        /// </summary>
-        public virtual bool ClientSideOptional => false;
-
-        public BlockBehavior(Block block)
+        public BlockBehavior(Block block) : base(block)
         {
             this.block = block;
         }
 
-        /// <summary>
-        /// Called right after the block behavior was created, must call base method
-        /// </summary>
-        /// <param name="properties"></param>
-        public virtual void Initialize(JsonObject properties)
-        {
-            this.propertiesAtString = properties.ToString();
-        }
-
-        /// <summary>
-        /// When the player has begun using this item for attacking (left mouse click). Return true to play a custom action.
-        /// </summary>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="handHandling"></param>
-        /// <param name="handling"></param>
-        /// <returns></returns>
-        public virtual void OnHeldAttackStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandHandling handling)
-        {
-            handHandling = EnumHandHandling.NotHandled;
-        }
-
-
-        /// <summary>
-        /// When the player has canceled a custom attack action. Return false to deny action cancellation.
-        /// </summary>
-        /// <param name="secondsPassed"></param>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSelection"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="cancelReason"></param>
-        /// <param name="handling"></param>
-        /// <returns></returns>
-        public virtual bool OnHeldAttackCancel(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandHandling handling)
-        {
-            handling = EnumHandHandling.NotHandled;
-            return false;
-        }
-
-        /// <summary>
-        /// Called continously when a custom attack action is playing. Return false to stop the action.
-        /// </summary>
-        /// <param name="secondsPassed"></param>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSelection"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="handling"></param>
-        /// <returns></returns>
-        public virtual bool OnHeldAttackStep(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
-        {
-            handling = EnumHandHandling.NotHandled;
-            return false;
-        }
-
-        /// <summary>
-        /// Called when a custom attack action is finished
-        /// </summary>
-        /// <param name="secondsPassed"></param>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSelection"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="handling"></param>
-        public virtual void OnHeldAttackStop(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
-        {
-            handling = EnumHandHandling.NotHandled;
-        }
-
-
-
-        /// <summary>
-        /// Called when the player right clicks while holding this block/item in his hands
-        /// </summary>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="handHandling"></param>
-        /// <param name="handling"></param>
-        /// <returns></returns>
-        public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling, ref EnumHandling handling)
-        {
-            handling = EnumHandling.PassThrough;
-        }
-
-
-        /// <summary>
-        /// Called every frame while the player is using this collectible
-        /// </summary>
-        /// <param name="secondsUsed"></param>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="handling"></param>
-        /// <returns></returns>
-        public virtual bool OnHeldInteractStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
-        {
-            handling = EnumHandling.PassThrough;
-            return false;
-        }
-
-        /// <summary>
-        /// Called when the player successfully completed the using action, not called when successfully cancelled
-        /// </summary>
-        /// <param name="secondsUsed"></param>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="handling"></param>
-        public virtual void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandling handling)
-        {
-            handling = EnumHandling.PassThrough;
-            return;
-        }
 
         /// <summary>
         /// Called when a survival player has broken the block. The default behavior removes the block and spawns the block drops.
@@ -317,11 +189,7 @@ namespace Vintagestory.API.Common
             handling = EnumHandling.PassThrough;
         }
 
-        public virtual void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
-        {
-            
-        }
-
+        
 
         /// <summary>
         /// When a player does a right click while targeting this placed block. Should return true if the event is handled, so that other events can occur, e.g. eating a held item if the block is not interactable with.
@@ -349,15 +217,7 @@ namespace Vintagestory.API.Common
             return "";
         }
 
-        /// <summary>
-        /// Server Side: Called once the collectible has been registered
-        /// Client Side: Called once the collectible has been loaded from server packet
-        /// </summary>
-        /// <param name="api"></param>
-        public virtual void OnLoaded(ICoreAPI api)
-        {
-
-        }
+        
 
         public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, ref EnumHandling handling)
         {
@@ -370,11 +230,6 @@ namespace Vintagestory.API.Common
             return new WorldInteraction[0];
         }
 
-        public virtual WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot, ref EnumHandling handling)
-        {
-            handling = EnumHandling.PassThrough;
-            return new WorldInteraction[0];
-        }
 
         public virtual void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)
         {
@@ -430,6 +285,7 @@ namespace Vintagestory.API.Common
         /// Step 3: Place the block. Return false if it cannot be placed (but you should rather return false in CanPlaceBlock).
         /// </summary>
         /// <param name="world"></param>
+        /// <param name="byPlayer"></param>
         /// <param name="blockSel"></param>
         /// <param name="byItemStack"></param>
         /// <param name="handling"></param>

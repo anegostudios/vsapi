@@ -1,5 +1,6 @@
 ﻿using Cairo;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -7,7 +8,8 @@ namespace Vintagestory.API.Client
     {
         None,
         MainMenu,
-        Normal
+        Normal,
+        Small
     }
 
     public class GuiElementTextButton : GuiElementControl
@@ -111,7 +113,7 @@ namespace Vintagestory.API.Client
         {
             double embossHeight = scaled(2.5);
 
-            if (buttonStyle == EnumButtonStyle.Normal)
+            if (buttonStyle == EnumButtonStyle.Normal || buttonStyle == EnumButtonStyle.Small)
             {
                 embossHeight = scaled(1.5);
             }
@@ -137,7 +139,7 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
             }
 
-            if (buttonStyle == EnumButtonStyle.Normal)
+            if (buttonStyle == EnumButtonStyle.Normal || buttonStyle == EnumButtonStyle.Small)
             {
                 // Top shine
                 Rectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth - embossHeight, embossHeight);
@@ -155,7 +157,7 @@ namespace Vintagestory.API.Client
             FontExtents fontex = normalText.Font.GetFontExtents();
             TextExtents textex = normalText.Font.GetTextExtents(normalText.GetText());
             double resetY = -fontex.Ascent - textex.YBearing;
-            textOffsetY = resetY + (normalText.Bounds.InnerHeight + textex.YBearing) / 2;
+            textOffsetY = (resetY + (normalText.Bounds.InnerHeight + textex.YBearing) / 2) / RuntimeEnv.GUIScale;
 
             normalText.Bounds.fixedY += textOffsetY;
             normalText.ComposeElements(ctx, surface);
@@ -172,7 +174,7 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
             }
 
-            if (buttonStyle == EnumButtonStyle.Normal)
+            if (buttonStyle == EnumButtonStyle.Normal || buttonStyle == EnumButtonStyle.Small)
             {
                 // Bottom shade
                 Rectangle(ctx, Bounds.bgDrawX + embossHeight, Bounds.bgDrawY + Bounds.OuterHeight - embossHeight, Bounds.OuterWidth - 2*embossHeight, embossHeight);
@@ -186,7 +188,7 @@ namespace Vintagestory.API.Client
             }
             
 
-            if (buttonStyle == EnumButtonStyle.Normal)
+            if (buttonStyle == EnumButtonStyle.Normal || buttonStyle == EnumButtonStyle.Small)
             {
                 //EmbossRoundRectangleElement(ctx, bounds.bgDrawX, bounds.bgDrawY, bounds.OuterWidth, bounds.OuterHeight, false, 2);
             }
@@ -356,8 +358,15 @@ namespace Vintagestory.API.Client
                 CairoFont font2 = CairoFont.ButtonPressedText();
                 font1.Fontname = GuiStyle.StandardFontName;
                 font2.Fontname = GuiStyle.StandardFontName;
-                font1.FontWeight = FontWeight.Bold;
-                font2.FontWeight = FontWeight.Bold;
+                if (style != EnumButtonStyle.Small)
+                {
+                    font1.FontWeight = FontWeight.Bold;
+                    font2.FontWeight = FontWeight.Bold;
+                } else
+                {
+                    font1.FontWeight = FontWeight.Normal;
+                    font2.FontWeight = FontWeight.Normal;
+                }
                 font1.UnscaledFontsize = GuiStyle.SmallFontSize;
                 font2.UnscaledFontsize = GuiStyle.SmallFontSize;
 

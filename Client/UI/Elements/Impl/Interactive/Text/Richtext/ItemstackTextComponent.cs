@@ -22,6 +22,9 @@ namespace Vintagestory.API.Client
 
         public ItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstack, double size, double sidePadding = 0, EnumFloat floatType = EnumFloat.Left, Common.Action<ItemStack> onStackClicked = null) : base(capi)
         {
+            size = GuiElement.scaled(size);
+            sidePadding = GuiElement.scaled(sidePadding);
+
             slot = new DummySlot(itemstack);
             this.onStackClicked = onStackClicked;
             this.Float = floatType;

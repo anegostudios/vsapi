@@ -349,7 +349,6 @@ namespace Vintagestory.API.Client
         public void FrustumCull(FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
             indicesGroupsCount = 0;
-            //int tmp = 0;
             int multiplier = (IntPtr.Size == 8) ? 2 : 1;
 
             RenderedTriangles = 0;
@@ -359,19 +358,18 @@ namespace Vintagestory.API.Client
             {
                 ModelDataPoolLocation location = poolLocations[i];
 
+                int size = location.indicesEnd - location.indicesStart;
                 if (location.IsVisible(frustumCullMode, frustumCuller))
                 {
                     indicesStartsByte[indicesGroupsCount * multiplier] = location.indicesStart * 4; // Offset in bytes, not ints
-                    indicesSizes[indicesGroupsCount] = location.indicesEnd - location.indicesStart;
+                    indicesSizes[indicesGroupsCount] = size;
 
-                    RenderedTriangles += (location.indicesEnd - location.indicesStart) / 3;
+                    RenderedTriangles += size / 3;
 
                     indicesGroupsCount++;
                 }
 
-                //tmp += location.indicesEnd - location.indicesStart;
-
-                AllocatedTris += (location.indicesEnd - location.indicesStart) / 3;
+                AllocatedTris += size / 3;
             }
         }
 
@@ -512,7 +510,7 @@ namespace Vintagestory.API.Client
                     return CullVisible[visibleBufIndex].value && culler.SphereInFrustumShadowPass(frustumCullSphere);
 
                 case EnumFrustumCullMode.CullInstantShadowPassFar:
-                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustumShadowPass(frustumCullSphere) && LodLevel == 1;
+                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustumShadowPass(frustumCullSphere) && LodLevel >= 1;
 
                 case EnumFrustumCullMode.CullNormal:
                     return CullVisible[visibleBufIndex].value && UpdateVisibleFlag(culler.SphereInFrustumAndRange(frustumCullSphere, FrustumVisible, LodLevel));

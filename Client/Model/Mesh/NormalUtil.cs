@@ -54,14 +54,14 @@ namespace Vintagestory.API.Client
             bool yNeg = normal.Y < 0;
             bool zNeg = normal.Z < 0;
 
-            int normalX = (int)(normal.X * 512);
-            int normalY = (int)(normal.Y * 512);
-            int normalZ = (int)(normal.Z * 512);
+            int normalX = (int)Math.Abs(normal.X * 511);
+            int normalY = (int)Math.Abs(normal.Y * 511);
+            int normalZ = (int)Math.Abs(normal.Z * 511);
 
             return
-               ((xNeg ? NegBit | (~normalX & tenBitMask) : normalX) << 0) |
-               ((yNeg ? NegBit | (~normalY & tenBitMask) : normalY) << 10) |
-               ((zNeg ? NegBit | (~normalZ & tenBitMask) : normalZ) << 20) |
+               ((xNeg ? NegBit | (~normalX & nineBitMask) : normalX) << 0) |
+               ((yNeg ? NegBit | (~normalY & nineBitMask) : normalY) << 10) |
+               ((zNeg ? NegBit | (~normalZ & nineBitMask) : normalZ) << 20) |
                ((int)normal.W << 30)
             ;
         }
@@ -69,26 +69,15 @@ namespace Vintagestory.API.Client
 
         public static int PackNormal(float x, float y, float z)
         {
-            // Normalize
-            /*float len = GameMath.Sqrt(x * x + y * y + z * z);
-            x /= len;
-            y /= len;
-            z /= len;*/
-
             bool xNeg = x < 0;
             bool yNeg = y < 0;
             bool zNeg = z < 0;
 
-            int normalX = (int)(x * 512);
-            int normalY = (int)(y * 512);
-            int normalZ = (int)(z * 512);
+            int normalX = xNeg ? (NegBit | ~(int)Math.Abs(x * 511) & nineBitMask) : ((int)(x * 511) & nineBitMask);
+            int normalY = yNeg ? (NegBit | ~(int)Math.Abs(y * 511) & nineBitMask) : ((int)(y * 511) & nineBitMask);
+            int normalZ = zNeg ? (NegBit | ~(int)Math.Abs(z * 511) & nineBitMask) : ((int)(z * 511) & nineBitMask);
 
-            return
-               ((xNeg ? NegBit | (~normalX & tenBitMask) : normalX) << 0) |
-               ((yNeg ? NegBit | (~normalY & tenBitMask) : normalY) << 10) |
-               ((zNeg ? NegBit | (~normalZ & tenBitMask) : normalZ) << 20) |
-               0
-            ;
+            return (normalX << 0) | (normalY << 10) | (normalZ << 20);
         }
 
 
@@ -98,14 +87,14 @@ namespace Vintagestory.API.Client
             bool yNeg = normal[1] < 0;
             bool zNeg = normal[2] < 0;
 
-            int normalX = (int)(normal[0] * 512);
-            int normalY = (int)(normal[1] * 512);
-            int normalZ = (int)(normal[2] * 512);
+            int normalX = (int)Math.Abs(normal[0] * 511);
+            int normalY = (int)Math.Abs(normal[1] * 511);
+            int normalZ = (int)Math.Abs(normal[2] * 511);
 
             return
-               ((xNeg ? NegBit | (~normalX & tenBitMask) : normalX) << 0) |
-               ((yNeg ? NegBit | (~normalY & tenBitMask) : normalY) << 10) |
-               ((zNeg ? NegBit | (~normalZ & tenBitMask) : normalZ) << 20) |
+               ((xNeg ? NegBit | (~normalX & nineBitMask) : normalX) << 0) |
+               ((yNeg ? NegBit | (~normalY & nineBitMask) : normalY) << 10) |
+               ((zNeg ? NegBit | (~normalZ & nineBitMask) : normalZ) << 20) |
                ((int)normal[3] << 30)
             ;
         }
@@ -132,9 +121,9 @@ namespace Vintagestory.API.Client
             bool yNeg = normal[1] < 0;
             bool zNeg = normal[2] < 0;
 
-            int normalX = (int)(normal[0] * 512);
-            int normalY = (int)(normal[1] * 512);
-            int normalZ = (int)(normal[2] * 512);
+            int normalX = (int)Math.Abs(normal[0] * 512);
+            int normalY = (int)Math.Abs(normal[1] * 512);
+            int normalZ = (int)Math.Abs(normal[2] * 512);
 
             return
                ((xNeg ? NegBit | (~normalX & tenBitMask) : normalX) << 0) |

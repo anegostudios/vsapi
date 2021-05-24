@@ -15,7 +15,7 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Creates a drop-down list of items.
     /// </summary>
-    public class GuiElementDropDown : GuiElementTextControl
+    public class GuiElementDropDown : GuiElementTextBase
     {
         public string SingularNameCode = "{0} item";
         public string PluralNameCode = "{0} items";
@@ -77,6 +77,19 @@ namespace Vintagestory.API.Client
             {
                 if (listMenu.SelectedIndex < 0) return null;
                 return listMenu.Values[listMenu.SelectedIndex];
+            }
+        }
+
+
+        public override bool Enabled { 
+            get => base.Enabled;
+            set
+            {
+                if (enabled != value && currentValueTexture != null)
+                {
+                    ComposeCurrentValue();
+                }
+                base.Enabled = value;
             }
         }
 
@@ -210,7 +223,8 @@ namespace Vintagestory.API.Client
             surfaceHighlight.Dispose();
 
             highlightBounds = Bounds.CopyOffsetedSibling().WithFixedPadding(0, 0).FixedGrow(2 * Bounds.absPaddingX, 2 * Bounds.absPaddingY);
-            highlightBounds.fixedWidth -= btnWidth;
+            highlightBounds.fixedWidth -= btnWidth / RuntimeEnv.GUIScale;
+
             highlightBounds.CalcWorldBounds();
 
             ComposeCurrentValue();
@@ -230,8 +244,14 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, valueWidth, valueHeight);
             Context ctx = genContext(surface);
 
+            if (!enabled)
+            {
+                Font.Color[3] = 0.5f;
+            }
+
             Font.SetupContext(ctx);
             ctx.SetSourceRGBA(GuiStyle.DialogDefaultTextColor);
+
 
             string text = "";
             double height = Font.GetFontExtents().Height;
@@ -304,7 +324,7 @@ namespace Vintagestory.API.Client
 
             api.Render.Render2DTexturePremultipliedAlpha(
                 currentValueTexture.TextureId, 
-                (int)Bounds.renderX, 
+                (int)Bounds.renderX,
                 (int)Bounds.renderY + (Bounds.InnerHeight - valueHeight) / 2,
                 valueWidth,
                 valueHeight
@@ -340,6 +360,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
+            if (!enabled) return;
+
             if (!listMenu.IsOpened)
             {
                 if (IsPositionInside(api.Input.MouseX, api.Input.MouseY))
@@ -370,6 +392,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDown(ICoreClientAPI api, MouseEvent args)
         {
+            if (!enabled) return;
+
             listMenu.OnMouseDown(api, args);
             
             if (!listMenu.IsOpened && IsPositionInside(args.X, args.Y) && !args.Handled)

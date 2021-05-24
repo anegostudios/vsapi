@@ -88,12 +88,31 @@ namespace Vintagestory.API.Common
         public short RenderPass = -1;
         [JsonProperty]
         public short ZOffset = 0;
+        /// <summary>
+        /// This will set the FoliageWindWave flag in the sourceMesh when the shape is originally tesselated, but note that all/most Block.OnJsonTesselation methods will reset this flag in the sourceMesh using VertexFlags.clearbits (and always reset if the block is rendered underground or indoors with windwave off)
+        /// </summary>
         [JsonProperty]
         public bool FoliageWindWave;
+        [JsonProperty]
+        public bool WeakWave;
         [JsonProperty]
         public bool WaterWave;
         [JsonProperty]
         public bool Reflective;
+        /// <summary>
+        /// Set this to true to disable randomDrawOffset and randomRotations on this specific element (e.g. used for the ice element of Coopers Reeds in Ice)
+        /// </summary>
+        [JsonProperty]
+        public bool DisableRandomDrawOffset;
+        /// <summary>
+        /// Only meaningful if the block or element applies the FoliageWindWave flag.  This uses the GroundDistance bits (otherwise only used by LeavesWindWave) to ask the shader for a special form of FoliageWindWave.<br/>
+        ///   0: standard foliage wave<br/>
+        ///   1: stiffer foliage, lower frequency wave<br/>
+        ///   3: sway and bend (rotate) in the wind but do not change shape - e.g. used for pineapple crop central stalk and fruit - note the rotation origin is hard-coded to (x,z) = (0.5, 0.5)<br/>
+        ///   4: move laterally with the sway/bend motion in 3, but apply leaf shimmer as well - e.g. used for pineapple crop flower and calyx (leaves below fruit)
+        /// </summary>
+        [JsonProperty]
+        public short FoliageWaveSpecial = 0;
 
         /// <summary>
         /// The child shapes of this shape element
@@ -272,6 +291,11 @@ namespace Vintagestory.API.Common
                 ClimateColorMap = ClimateColorMap,
                 StepParentName = StepParentName,
                 Shade = Shade,
+                FoliageWaveSpecial = FoliageWaveSpecial,
+                FoliageWindWave = FoliageWindWave,
+                WaterWave = WaterWave,
+                WeakWave = WeakWave,
+                DisableRandomDrawOffset = DisableRandomDrawOffset,
                 ZOffset = ZOffset,
                 GradientShade = GradientShade,
                 ScaleX = ScaleX,

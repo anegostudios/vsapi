@@ -26,9 +26,15 @@ namespace Vintagestory.API.Client
 
     public class FrustumCulling
     {
+        /// <summary>
+        /// If distance squared is above this fraction of ViewDistanceSq, switch to LOD2.  This corresponds to distances beyond around 67% of the player's view distance
+        /// To put this another way: approximately 55% of the total rendered chunks will use LOD2.
+        /// </summary>
+        private const double LOD2_DISTANCESQCUTOFF = 0.45;
+
         public int ViewDistanceSq;
         internal BlockPos playerPos;
-        public float lodBiasSq;
+        public float lod0BiasSq;
         public double shadowRangeX;
         public double shadowRangeZ;
 
@@ -62,6 +68,11 @@ namespace Vintagestory.API.Client
         double frustum52;
         double frustum53;
 
+        public void UpdateViewDistance(int newValue)
+        {
+            ViewDistanceSq = newValue * newValue + 20 * 20;
+        }
+
         public bool SphereInFrustum(double x, double y, double z, double radius)
         {
             double d = 0;
@@ -92,24 +103,28 @@ namespace Vintagestory.API.Client
         public bool SphereInFrustum(Sphere sphere)
         {
             double d;
+            float x = sphere.x;
+            float y = sphere.y;
+            float z = sphere.z;
+            float radius = sphere.radius;
 
-            d = frustum00 * sphere.x + frustum01 * sphere.y + frustum02 * sphere.z + frustum03;
-            if (d <= -sphere.radius)
+            d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
+            if (d <= -radius)
                 return false;
-            d = frustum10 * sphere.x + frustum11 * sphere.y + frustum12 * sphere.z + frustum13;
-            if (d <= -sphere.radius)
+            d = frustum10 * x + frustum11 * y + frustum12 * z + frustum13;
+            if (d <= -radius)
                 return false;
-            d = frustum20 * sphere.x + frustum21 * sphere.y + frustum22 * sphere.z + frustum23;
-            if (d <= -sphere.radius)
+            d = frustum20 * x + frustum21 * y + frustum22 * z + frustum23;
+            if (d <= -radius)
                 return false;
-            d = frustum30 * sphere.x + frustum31 * sphere.y + frustum32 * sphere.z + frustum33;
-            if (d <= -sphere.radius)
+            d = frustum30 * x + frustum31 * y + frustum32 * z + frustum33;
+            if (d <= -radius)
                 return false;
-            d = frustum40 * sphere.x + frustum41 * sphere.y + frustum42 * sphere.z + frustum43;
-            if (d <= -sphere.radius)
+            d = frustum40 * x + frustum41 * y + frustum42 * z + frustum43;
+            if (d <= -radius)
                 return false;
-            d = frustum50 * sphere.x + frustum51 * sphere.y + frustum52 * sphere.z + frustum53;
-            if (d <= -sphere.radius)
+            d = frustum50 * x + frustum51 * y + frustum52 * z + frustum53;
+            if (d <= -radius)
                 return false;
 
             return true;
@@ -119,28 +134,32 @@ namespace Vintagestory.API.Client
         public bool SphereInFrustumShadowPass(Sphere sphere)
         {
             double d;
+            float x = sphere.x;
+            float y = sphere.y;
+            float z = sphere.z;
+            float radius = sphere.radius;
 
-            d = frustum00 * sphere.x + frustum01 * sphere.y + frustum02 * sphere.z + frustum03;
-            if (d <= -sphere.radius)
+            d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
+            if (d <= -radius)
                 return false;
-            d = frustum10 * sphere.x + frustum11 * sphere.y + frustum12 * sphere.z + frustum13;
-            if (d <= -sphere.radius)
+            d = frustum10 * x + frustum11 * y + frustum12 * z + frustum13;
+            if (d <= -radius)
                 return false;
-            d = frustum20 * sphere.x + frustum21 * sphere.y + frustum22 * sphere.z + frustum23;
-            if (d <= -sphere.radius)
+            d = frustum20 * x + frustum21 * y + frustum22 * z + frustum23;
+            if (d <= -radius)
                 return false;
-            d = frustum30 * sphere.x + frustum31 * sphere.y + frustum32 * sphere.z + frustum33;
-            if (d <= -sphere.radius)
+            d = frustum30 * x + frustum31 * y + frustum32 * z + frustum33;
+            if (d <= -radius)
                 return false;
-            d = frustum40 * sphere.x + frustum41 * sphere.y + frustum42 * sphere.z + frustum43;
-            if (d <= -sphere.radius)
+            d = frustum40 * x + frustum41 * y + frustum42 * z + frustum43;
+            if (d <= -radius)
                 return false;
-            d = frustum50 * sphere.x + frustum51 * sphere.y + frustum52 * sphere.z + frustum53;
-            if (d <= -sphere.radius)
+            d = frustum50 * x + frustum51 * y + frustum52 * z + frustum53;
+            if (d <= -radius)
                 return false;
 
-            double distx = Math.Abs(playerPos.X - sphere.x);
-            double distz = Math.Abs(playerPos.Z - sphere.z);
+            double distx = Math.Abs(playerPos.X - x);
+            double distz = Math.Abs(playerPos.Z - z);
 
             return (distx < shadowRangeX && distz < shadowRangeZ);// && lodLevel == 1) || (distx < shadowRangeX * lodBias + 24 && distz < shadowRangeZ * lodBias + 24);
         }
@@ -149,34 +168,51 @@ namespace Vintagestory.API.Client
         public bool SphereInFrustumAndRange(Sphere sphere, bool nowVisible, int lodLevel = 0)
         {
             double d;
+            float x = sphere.x;
+            float y = sphere.y;
+            float z = sphere.z;
+            float radius = sphere.radius;
 
-            d = frustum00 * sphere.x + frustum01 * sphere.y + frustum02 * sphere.z + frustum03;
-            if (d <= -sphere.radius)
+            d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
+            if (d <= -radius)
                 return false;
-            d = frustum10 * sphere.x + frustum11 * sphere.y + frustum12 * sphere.z + frustum13;
-            if (d <= -sphere.radius)
+            d = frustum10 * x + frustum11 * y + frustum12 * z + frustum13;
+            if (d <= -radius)
                 return false;
-            d = frustum20 * sphere.x + frustum21 * sphere.y + frustum22 * sphere.z + frustum23;
-            if (d <= -sphere.radius)
+            d = frustum20 * x + frustum21 * y + frustum22 * z + frustum23;
+            if (d <= -radius)
                 return false;
-            d = frustum30 * sphere.x + frustum31 * sphere.y + frustum32 * sphere.z + frustum33;
-            if (d <= -sphere.radius)
+            d = frustum30 * x + frustum31 * y + frustum32 * z + frustum33;
+            if (d <= -radius)
                 return false;
-            d = frustum40 * sphere.x + frustum41 * sphere.y + frustum42 * sphere.z + frustum43;
-            if (d <= -sphere.radius)
+            d = frustum40 * x + frustum41 * y + frustum42 * z + frustum43;
+            if (d <= -radius)
                 return false;
-            d = frustum50 * sphere.x + frustum51 * sphere.y + frustum52 * sphere.z + frustum53;
-            if (d <= -sphere.radius)
+            d = frustum50 * x + frustum51 * y + frustum52 * z + frustum53;
+            if (d <= -radius)
                 return false;
 
-            // Lod level 1: all stuff
+            // Lod level 3: implements Lod2: this is the mesh drawn at long distance  (may be empty)
+            // Lod level 2: implements Lod2: this is the mesh drawn at short and medium view distance
+            // Lod level 1: drawn at all view distance
             // Lod level 0: only high detail stuff
 
-            
-            double distance = playerPos.HorDistanceSqTo(sphere.x, sphere.z);
-            
 
-            return (distance < ViewDistanceSq && lodLevel == 1) || (lodBiasSq > 0 && distance < ViewDistanceSq * lodBiasSq + 32*32);
+            double distance = playerPos.HorDistanceSqTo(x, z);
+
+            switch (lodLevel)
+            {
+                case 0:
+                    return lod0BiasSq > 0 && distance < ViewDistanceSq * lod0BiasSq + 32 * 32;
+                case 1:
+                    return distance < ViewDistanceSq;
+                case 2:
+                    return distance <= ViewDistanceSq * LOD2_DISTANCESQCUTOFF;
+                case 3:
+                    return distance > ViewDistanceSq * LOD2_DISTANCESQCUTOFF && distance < ViewDistanceSq;
+                default:
+                    return false;
+            }
         }
 
 
@@ -289,5 +325,14 @@ namespace Vintagestory.API.Client
                 frustum53 /= t;
             }
         }
+
+    }
+
+    public class EnumLodPool
+    {
+        public const int NearbyDetail = 0;
+        public const int Everywhere = 1;
+        public const int EverywhereExceptFar = 2;
+        public const int FarDistanceOnly = 3;
     }
 }

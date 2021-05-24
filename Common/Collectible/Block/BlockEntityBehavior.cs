@@ -78,7 +78,7 @@ namespace Vintagestory.API.Common
             
         }
 
-        public virtual void FromTreeAtributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
+        public virtual void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)
         {
             
         }

@@ -110,7 +110,8 @@ namespace Vintagestory.API.Client
         /// <param name="frustumCullMode">The culling mode.  Default is CulHideDelay.</param>
         public void Render(Vec3d playerpos, string originUniformName, EnumFrustumCullMode frustumCullMode = EnumFrustumCullMode.CullNormal)
         {
-            for (int i = 0; i < pools.Count; i++)
+            int count = pools.Count;
+            for (int i = 0; i < count; i++)
             {
                 MeshDataPool pool = pools[i];
                 pool.FrustumCull(frustumCuller, frustumCullMode);

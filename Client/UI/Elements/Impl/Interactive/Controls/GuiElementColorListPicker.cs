@@ -20,6 +20,14 @@ namespace Vintagestory.API.Client
 
         int color;
 
+        public bool ShowToolTip;
+        public string TooltipText
+        {
+            set { hoverText.SetNewText(value); }
+        }
+
+        GuiElementHoverText hoverText;
+
 
         /// <summary>
         /// Is this element capable of being in the focus?
@@ -39,6 +47,11 @@ namespace Vintagestory.API.Client
 
             this.color = color;
             handler = OnToggled;
+
+            hoverText = new GuiElementHoverText(capi, "", CairoFont.WhiteSmallText(), 200, Bounds.CopyOnlySize());
+            hoverText.Bounds.ParentBounds = bounds;
+            hoverText.SetAutoWidth(true);
+            bounds.ChildBounds.Add(hoverText.Bounds);
         }
 
         /// <summary>
@@ -56,6 +69,8 @@ namespace Vintagestory.API.Client
             ctx.Fill();
 
             ComposeActiveButton();
+
+            hoverText.ComposeElements(ctx, surface);
         }
 
         void ComposeActiveButton()
@@ -85,6 +100,11 @@ namespace Vintagestory.API.Client
         {
             if (On) {
                 api.Render.Render2DTexturePremultipliedAlpha(activeTexture.TextureId, Bounds.renderX - 3, Bounds.renderY - 3, activeTexture.Width, activeTexture.Height);
+            }
+
+            if (ShowToolTip)
+            {
+                hoverText.RenderInteractiveElements(deltaTime);
             }
         }
 

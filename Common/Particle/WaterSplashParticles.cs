@@ -21,12 +21,7 @@ namespace Vintagestory.API.Common
 
         public override int GetRgbaColor(ICoreClientAPI capi)
         {
-            return ColorUtil.HsvToRgba(
-                (byte)GameMath.Clamp(110, 0, 255),
-                (byte)GameMath.Clamp(40 + rand.Next(50), 0, 255),
-                (byte)GameMath.Clamp(200 + rand.Next(30), 0, 255),
-                (byte)GameMath.Clamp(50 + rand.Next(40), 0, 255)
-            );
+            return ColorUtil.HsvToRgba(110, 40 + rand.Next(50), 200 + rand.Next(30), 50 + rand.Next(40));
         }
 
         public override float Size => 0.15f;

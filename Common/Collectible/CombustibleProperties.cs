@@ -26,7 +26,7 @@ namespace Vintagestory.API.Common
         public int BurnTemperature;
 
         /// <summary>
-        /// For how long it burns
+        /// For how long it burns in real life seconds
         /// </summary>
         public float BurnDuration;
 

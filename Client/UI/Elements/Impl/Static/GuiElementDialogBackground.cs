@@ -10,6 +10,8 @@ namespace Vintagestory.API.Client
         bool withTitlebar;
         double strokeWidth = 0;
 
+        public float Alpha = 1;
+
         /// <summary>
         /// Adds a Background to the Dialog.
         /// </summary>
@@ -33,22 +35,22 @@ namespace Vintagestory.API.Client
 
             RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + titleBarOffY, Bounds.OuterWidth, Bounds.OuterHeight - titleBarOffY, GuiStyle.DialogBGRadius);
 
-            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
+            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor[0], GuiStyle.DialogStrongBgColor[1], GuiStyle.DialogStrongBgColor[2], GuiStyle.DialogStrongBgColor[3] * Alpha);
             ctx.FillPreserve();
 
             if (Shade)
             {
-                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.6, GuiStyle.DialogStrongBgColor[1] * 1.6, GuiStyle.DialogStrongBgColor[2] * 1.6, 1);
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.6, GuiStyle.DialogStrongBgColor[1] * 1.6, GuiStyle.DialogStrongBgColor[2] * 1.6, Alpha);
                 ctx.LineWidth = strokeWidth * 1.75;
                 ctx.StrokePreserve();
                 surface.Blur(5.2, (int)Bounds.bgDrawX, (int)(Bounds.bgDrawY + titleBarOffY), (int)(Bounds.bgDrawX + Bounds.OuterWidth), (int)(Bounds.bgDrawY + Bounds.OuterHeight - 1));
 
-                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
+                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, Alpha*Alpha });
                 ctx.LineWidth = strokeWidth;
                 ctx.Stroke();
             } else
             {
-                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
+                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, Alpha });
                 ctx.LineWidth = 2;
                 ctx.Stroke();
             }

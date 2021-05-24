@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Text;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -88,29 +89,19 @@ namespace Vintagestory.API.Datastructures
 
         public void AddInt(params int[] val)
         {
-            int len = 0;
             if (value == null || value.Length == 0)
             {
                 value = val;
             } else
             {
-                len = value.Length + val.Length;
-
-                int[] newvalues = new int[len];
-                for (int i = 0; i < value.Length; i++)
-                {
-                    newvalues[i] = value[i];
-                }
-                for (int i = 0; i < val.Length; i++)
-                {
-                    newvalues[value.Length + i] = val[i];
-                }
-
-                value = newvalues;
+                value = value.Append(val);
             }
         }
-        
 
+        public void RemoveInt(int val)
+        {
+            value = value.Remove(val);
+        }
 
     }
 }

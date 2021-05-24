@@ -43,6 +43,22 @@ namespace Vintagestory.API.Util
         }
 
         /// <summary>
+        /// Uses ProtoBuf.Net to deserialize bytes into existing object T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static T DeserializeInto<T>(T instance, byte[] data)
+        {
+            using (MemoryStream ms = new MemoryStream(data))
+            {
+                return Serializer.Merge(ms, instance);
+            }
+        }
+
+
+        /// <summary>
         /// Uses ProtoBuf.Net to deserialize bytes into T. Returns the default value if data is null
         /// </summary>
         /// <typeparam name="T"></typeparam>

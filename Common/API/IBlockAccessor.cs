@@ -206,6 +206,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         IWorldChunk GetChunkAtBlockPos(BlockPos pos);
 
+        void MarkChunkDecorsModified(BlockPos pos);
+
         /// <summary>
         /// Get the block id of the block at the given world coordinate
         /// </summary>
@@ -413,7 +415,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Server side call: Resends the block entity data (if present) to all clients. Triggers a block changed event on the client once received , but will not redraw the chunk. Marks also the chunk dirty so that it gets saved to disk during shutdown or next autosave.
+        /// Server side call: Resends the block entity data (if present) to all clients. Triggers a block changed event on the client once received , but will not redraw the chunk. Marks also the chunk dirty so that it gets saved to disk during shutdown or next autosave.<br/>
         /// Client side call: No effect
         /// </summary>
         /// <param name="pos"></param>
@@ -426,14 +428,21 @@ namespace Vintagestory.API.Common
         void TriggerNeighbourBlockUpdate(BlockPos pos);
 
         /// <summary>
-        /// Server side: Triggers a OnNeighbourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).
+        /// Server side: Triggers a OnNeighbourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).<br/>
         /// Client side: Triggers a block changed event and redraws the chunk
         /// </summary>
         /// <param name="pos"></param>
-        void MarkBlockDirty(BlockPos pos);
+        void MarkBlockDirty(BlockPos pos, IPlayer skipPlayer = null);
 
         /// <summary>
-        /// Server Side: Same as MarkBlockDirty()
+        /// Server side: Triggers a OnNeighbourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).<br/>
+        /// Client side: Triggers a block changed event and redraws the chunk. Deletes and re-create block entities
+        /// </summary>
+        /// <param name="pos"></param>
+        void MarkBlockModified(BlockPos pos);
+
+        /// <summary>
+        /// Server Side: Same as MarkBlockDirty()<br/>
         /// Client Side: Same as MarkBlockDirty(), but also calls supplied delegate after the chunk has been re-retesselated. This can be used i.e. for block entities to dynamically switch between static models and dynamic models at exactly the right timing
         /// </summary>
         /// <param name="pos"></param>

@@ -6,7 +6,7 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Creates a toggle button for the GUI.
     /// </summary>
-    public class GuiElementToggleButton : GuiElementTextControl
+    public class GuiElementToggleButton : GuiElementTextBase
     {
         Common.Action<bool> handler;
 
@@ -94,7 +94,7 @@ namespace Vintagestory.API.Client
 
             if (icon != null && icon.Length > 0)
             {
-                api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + 4, Bounds.absPaddingY + 4, Bounds.InnerWidth - 9, Bounds.InnerHeight - 9, GuiStyle.DialogDefaultTextColor);
+                api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + scaled(4), Bounds.absPaddingY + scaled(4), Bounds.InnerWidth - scaled(9), Bounds.InnerHeight - scaled(9), GuiStyle.DialogDefaultTextColor);
             }
 
             generateTexture(surface, ref releasedTexture);

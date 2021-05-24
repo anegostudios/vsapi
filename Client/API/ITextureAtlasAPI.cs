@@ -108,6 +108,7 @@ namespace Vintagestory.API.Client
 
         /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
+        /// A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="bmp"></param>
@@ -119,6 +120,7 @@ namespace Vintagestory.API.Client
 
         /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
+        /// A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="bmp"></param>

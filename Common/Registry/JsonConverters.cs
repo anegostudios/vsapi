@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using Vintagestory.API;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {

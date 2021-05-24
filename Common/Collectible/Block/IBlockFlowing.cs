@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VintagestoryAPI.Common.Collectible.Block
+namespace Vintagestory.API.Common
 {
     public interface IBlockFlowing
     {
         string Flow { get; set; }
-        Vintagestory.API.MathTools.Vec3i FlowNormali { get; set; }
+        MathTools.Vec3i FlowNormali { get; set; }
         bool IsLava { get; }
     }
 }

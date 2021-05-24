@@ -205,6 +205,7 @@ namespace Vintagestory.API.Common
 
             ItemStackMergeOperation mergeop = op.ToMergeOperation(sinkSlot, this);
             op = mergeop;
+            int origRequestedQuantity = op.RequestedQuantity;
             op.RequestedQuantity = Math.Min(sinkSlot.RemainingSlotSpace, op.RequestedQuantity);
 
             sinkSlot.Itemstack.Collectible.TryMergeStacks(mergeop);
@@ -215,6 +216,7 @@ namespace Vintagestory.API.Common
                 OnItemSlotModified(sinkSlot.Itemstack);
             }
 
+            op.RequestedQuantity = origRequestedQuantity; //ensures op.NotMovedQuantity will be correct in calling code if used with slots with limited slot maxStackSize, e.g. InventorySmelting with a cooking container has slots with maxStackSize == 6
             return mergeop.MovedQuantity;
         }
 
@@ -309,6 +311,7 @@ namespace Vintagestory.API.Common
             // 3. Both slots not empty, and they are stackable: Fill slot
             int maxq = itemstack.Collectible.GetMergableQuantity(itemstack, sourceSlot.itemstack, op.CurrentPriority);
             if (maxq > 0) {
+                int origRequestedQuantity = op.RequestedQuantity;
                 op.RequestedQuantity = GameMath.Min(maxq, sourceSlot.itemstack.StackSize, RemainingSlotSpace);
 
                 ItemStackMergeOperation mergeop = op.ToMergeOperation(this, sourceSlot);
@@ -319,6 +322,7 @@ namespace Vintagestory.API.Common
                 sourceSlot.OnItemSlotModified(itemstack);
                 OnItemSlotModified(itemstack);
 
+                op.RequestedQuantity = origRequestedQuantity; //ensures op.NotMovedQuantity will be correct in calling code if used with slots with limited slot maxStackSize, e.g. InventorySmelting with a cooking container has slots with maxStackSize == 6
                 return;
             }
 

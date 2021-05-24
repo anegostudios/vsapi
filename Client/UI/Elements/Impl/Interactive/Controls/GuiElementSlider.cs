@@ -2,6 +2,7 @@
 using Cairo;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {

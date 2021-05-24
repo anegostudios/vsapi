@@ -65,7 +65,7 @@ namespace Vintagestory.API.Client
 
         public CachedCuboidList CollisionBoxList = new CachedCuboidList();
 
-        public void HandleBoyancy(Vec3d pos, Vec3f velocity, bool boyant, float gravityStrength, float deltatime, float height)
+        public void HandleBoyancy(Vec3d pos, Vec3d velocity, bool boyant, float gravityStrength, float deltatime, float height)
         {
             int xPrev = (int)pos.X;
             int yPrev = (int)pos.Y;
@@ -131,9 +131,9 @@ namespace Vintagestory.API.Client
                 }
 
             }
-
-
         }
+
+        public float MotionCap = 2;
 
         /// <summary>
         /// Updates the velocity vector according to the amount of passed time, gravity and terrain collision.
@@ -141,19 +141,18 @@ namespace Vintagestory.API.Client
         /// <param name="pos"></param>
         /// <param name="motion"></param>
         /// <param name="blockAccessor"></param>
-        /// <param name="gravityStrength"></param>
-        /// <param name="deltatime"></param>
+        /// <param name="size"></param>
         /// <returns></returns>
-        public EnumCollideFlags UpdateMotion(Vec3d pos, Vec3d motion, float height)
+        public EnumCollideFlags UpdateMotion(Vec3d pos, Vec3d motion, float size)
         {
             particleCollBox.Set(
-                pos.X - height / 2, pos.Y - 0/2, pos.Z - height / 2, 
-                pos.X + height / 2, pos.Y + height/2, pos.Z + height / 2
+                pos.X - size / 2, pos.Y - 0/2, pos.Z - size / 2, 
+                pos.X + size / 2, pos.Y + size/2, pos.Z + size / 2
             );
 
-            motion.X = Math.Min(2, Math.Abs(motion.X)) * Math.Sign(motion.X);
-            motion.Y = Math.Min(2, Math.Abs(motion.Y)) * Math.Sign(motion.Y);
-            motion.Z = Math.Min(2, Math.Abs(motion.Z)) * Math.Sign(motion.Z);
+            motion.X = Math.Min(MotionCap, Math.Abs(motion.X)) * Math.Sign(motion.X);
+            motion.Y = Math.Min(MotionCap, Math.Abs(motion.Y)) * Math.Sign(motion.Y);
+            motion.Z = Math.Min(MotionCap, Math.Abs(motion.Z)) * Math.Sign(motion.Z);
 
             EnumCollideFlags flags=0;
 

@@ -4,7 +4,7 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
-    public class GuiElementTextBase : GuiElement
+    public class GuiElementTextBase : GuiElementControl
     {
         public TextDrawUtil textUtil;
 

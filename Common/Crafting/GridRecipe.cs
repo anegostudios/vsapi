@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
@@ -47,6 +48,11 @@ namespace Vintagestory.API.Common
         /// Required grid height for crafting this recipe 
         /// </summary>
         public int Height = 3;
+
+        /// <summary>
+        /// Info used by the handbook. Allows you to split grid recipe previews into multiple.
+        /// </summary>
+        public int RecipeGroup = 0;
 
         /// <summary>
         /// The resulting Stack
@@ -542,6 +548,8 @@ namespace Vintagestory.API.Common
             {
                 writer.Write(RequiresTrait);
             }
+
+            writer.Write(RecipeGroup);
         }
 
         /// <summary>
@@ -579,6 +587,8 @@ namespace Vintagestory.API.Common
             {
                 RequiresTrait = reader.ReadString();
             }
+
+            RecipeGroup = reader.ReadInt32();
         }
 
         /// <summary>
@@ -589,6 +599,7 @@ namespace Vintagestory.API.Common
         {
             GridRecipe recipe = new GridRecipe();
 
+            recipe.RecipeGroup = RecipeGroup;
             recipe.Width = Width;
             recipe.Height = Height;
             recipe.IngredientPattern = IngredientPattern;

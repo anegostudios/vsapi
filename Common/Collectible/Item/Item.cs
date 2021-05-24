@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -64,10 +65,8 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Should return a random pixel within the items/blocks texture
         /// </summary>
-        /// <param name="world"></param>
-        /// <param name="pos"></param>
-        /// <param name="facing"></param>
-        /// <param name="tintIndex"></param>
+        /// <param name="capi"></param>
+        /// <param name="stack"></param>
         /// <returns></returns>
         public override int GetRandomColor(ICoreClientAPI capi, ItemStack stack)
         {
@@ -120,6 +119,30 @@ namespace Vintagestory.API.Common
             }
 
             return cloned;
+        }
+
+        internal void CheckTextures(ILogger logger)
+        {
+            List<string> toRemove = null;
+            int i = 0;
+            foreach (var val in Textures)
+            {
+                if (val.Value.Base == null)
+                {
+                    logger.Error("The texture definition {0} for #{2} in item with code {1} is invalid. The base property is null. Will skip.", i, Code, val.Key);
+                    if (toRemove == null) toRemove = new List<string>();
+                    toRemove.Add(val.Key);
+                }
+                i++;
+            }
+
+            if (toRemove != null)
+            {
+                foreach (var val in toRemove)
+                {
+                    Textures.Remove(val);
+                }
+            }
         }
     }
 }

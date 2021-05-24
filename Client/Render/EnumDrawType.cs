@@ -22,5 +22,6 @@
         CrossAndSnowlayer_2 = 18,
         CrossAndSnowlayer_3 = 19,
         CrossAndSnowlayer_4 = 20,
+        SurfaceLayer = 21
     }
 }

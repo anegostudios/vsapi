@@ -21,6 +21,12 @@ namespace Vintagestory.API.MathTools
         public float Z2;
 
         /// <summary>
+        /// The offset to the BlockPos, to find the block which produced this selection box.  Normally null.  Used by Decor system
+        /// (Could be developed in future for other blocks with selection boxes outside their own 1x1x1 block space e.g. opened gate?)
+        /// </summary>
+        public Vec3i posAdjust;
+
+        /// <summary>
         /// This is equivalent to width so long as X2 > X1, but could in theory be a negative number if the box has its corners the wrong way around
         /// </summary>
         public float XSize { get { return X2 - X1; } }
@@ -463,6 +469,21 @@ namespace Vintagestory.API.MathTools
             return OffsetCopyDouble(vec.XAsDouble, vec.YAsDouble, vec.ZAsDouble);
         }
 
+        /// <summary>
+        /// Expands this in the given direction by amount d
+        /// </summary>
+        public void Expand(BlockFacing face, float d)
+        {
+            switch (face.Index)
+            {
+                case BlockFacing.indexNORTH: Z1 -= d; break;
+                case BlockFacing.indexEAST: X2 += d; break;
+                case BlockFacing.indexSOUTH: Z2 += d; break;
+                case BlockFacing.indexWEST: X1 -= d; break;
+                case BlockFacing.indexUP: Y2 += d; break;
+                case BlockFacing.indexDOWN: Y1 -= d; break;
+            }
+        }
 
 
         /// <summary>
@@ -521,7 +542,7 @@ namespace Vintagestory.API.MathTools
 
         public override string ToString()
         {
-            return "[" + X1 + ", " + Y1 + ", " + Z1 + " - " + X2 + ", " + Y2 + ", " + Z2 + "]";
+            return "[" + X1 + ", " + Y1 + ", " + Z1 + " => " + X2 + ", " + Y2 + ", " + Z2 + "]";
         }
 
     }

@@ -5,7 +5,7 @@ using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
-    public class GuiElementVerticalTabs : GuiElementTextControl
+    public class GuiElementVerticalTabs : GuiElementTextBase
     {
         API.Common.Action<int, GuiTab> handler;
 

@@ -39,7 +39,7 @@ namespace Vintagestory.API.Common
         /// Returns the current velocity of the particle
         /// </summary>
         /// <returns></returns>
-        public Vec3f Velocity = new Vec3f();
+        public Vec3d Velocity = new Vec3d();
 
 
         public int lightrgbs;
@@ -61,6 +61,11 @@ namespace Vintagestory.API.Common
             PrevPosition.X += dx * step;
             PrevPosition.Y += dy * step;
             PrevPosition.Z += dz * step;
+
+            if (accum > 1)
+            {
+                accum = 1;
+            }
 
             if (accum >= physicsSim.PhysicsTickTime)
             {

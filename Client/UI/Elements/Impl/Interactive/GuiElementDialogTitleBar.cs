@@ -3,6 +3,7 @@ using Cairo;
 using Vintagestory.API;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Action = Vintagestory.API.Common.Action;
 

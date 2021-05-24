@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
 
-namespace Vintagestory.API
+namespace Vintagestory.API.Datastructures
 {
     /// <summary>
     /// A datastructure to hold 3 dimensional data in the form of floats 

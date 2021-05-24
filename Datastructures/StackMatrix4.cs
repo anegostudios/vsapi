@@ -1,7 +1,7 @@
 ﻿using System;
 using Vintagestory.API.MathTools;
 
-namespace Vintagestory.API
+namespace Vintagestory.API.Datastructures
 {
     public class StackMatrix4
     {
@@ -71,20 +71,12 @@ namespace Vintagestory.API
 
         public void Translate(double x, double y, double z)
         {
-            triple[0] = x;
-            triple[1] = y;
-            triple[2] = z;
-
-            Mat4d.Translate(Top, Top, triple);
+            Mat4d.Translate(Top, Top, x, y, z);
         }
 
         public void Scale(double x, double y, double z)
         {
-            triple[0] = x;
-            triple[1] = y;
-            triple[2] = z;
-
-            Mat4d.Scale(Top, Top, triple);
+            Mat4d.Scale(Top, x, y, z);
         }
 
         public void Translate(double[] rotationOrigin)

@@ -691,12 +691,27 @@ namespace Vintagestory.API.Common
         /// Drops the contents of all the slots into the world.
         /// </summary>
         /// <param name="pos">Where to drop all this stuff.</param>
-        public virtual void DropAll(Vec3d pos)
+        /// <param name="maxStackSize">If non-zero, will split up the stacks into stacks of give max stack size</param>
+        public virtual void DropAll(Vec3d pos, int maxStackSize = 0)
         {
             foreach (var slot in this)
             {
                 if (slot.Itemstack == null) continue;
-                Api.World.SpawnItemEntity(slot.Itemstack, pos);
+
+                if (maxStackSize > 0)
+                {
+                    while (slot.StackSize > 0)
+                    {
+                        ItemStack split = slot.TakeOut(GameMath.Clamp(slot.StackSize, 1, maxStackSize));
+                        Api.World.SpawnItemEntity(split, pos);
+                    }
+                }
+                else
+                {
+
+                    Api.World.SpawnItemEntity(slot.Itemstack, pos);
+                }
+
                 slot.Itemstack = null;
                 slot.MarkDirty();
             }
@@ -727,7 +742,7 @@ namespace Vintagestory.API.Common
 
         protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transType)
         {
-            return (transType == EnumTransitionType.Perish || transType == EnumTransitionType.Cure) ? 1 : 0;
+            return (transType == EnumTransitionType.Perish || transType == EnumTransitionType.Cure || transType == EnumTransitionType.Dry) ? 1 : 0;
         }
 
         /// <summary>

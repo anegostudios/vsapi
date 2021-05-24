@@ -60,6 +60,11 @@ namespace Vintagestory.API.Server
 
 
         /// <summary>
+        /// Called when just loaded (or generated) a full chunkcolumn
+        /// </summary>
+        event ChunkColumnSnowUpdateDelegate ChunkColumnSnowUpdate;
+
+        /// <summary>
         /// Called whenever the server loaded from disk or fully generated a chunkcolumn
         /// </summary>
         event ChunkColumnLoadedDelegate ChunkColumnLoaded;
@@ -68,6 +73,18 @@ namespace Vintagestory.API.Server
         /// Called just before a chunk column is about to get unloaded
         /// </summary>
         event ChunkColumnUnloadDelegate ChunkColumnUnloaded;
+
+
+
+        /// <summary>
+        /// Called whenever the server loaded from disk or newly generated a map region
+        /// </summary>
+        event MapRegionLoadedDelegate MapRegionLoaded;
+
+        /// <summary>
+        /// Called just before a map region is about to get unloaded
+        /// </summary>
+        event MapRegionUnloadDelegate MapRegionUnloaded;
 
 
         /// <summary>

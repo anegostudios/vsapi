@@ -105,24 +105,32 @@ namespace Vintagestory.API.MathTools
             if (selectionBoxes == null) return false;
 
             bool intersects = false;
+            bool wasDecor = false;
 
             for (int i = 0; i < selectionBoxes.Length; i++)
             {
                 tmpCuboidd.Set(selectionBoxes[i]).Translate(pos.X, pos.Y, pos.Z);
                 if (RayIntersectsWithCuboid(tmpCuboidd, ref hitOnBlockFaceTmp, ref hitPositionTmp))
                 {
-                    if (intersects && hitPosition.SquareDistanceTo(ray.origin) <= hitPositionTmp.SquareDistanceTo(ray.origin))
+                    bool isDecor = selectionBoxes[i].posAdjust != null;
+                    if (intersects && (!wasDecor || isDecor) && hitPosition.SquareDistanceTo(ray.origin) <= hitPositionTmp.SquareDistanceTo(ray.origin))
                     {
                         continue;
                     }
 
                     hitOnSelectionBox = i;
                     intersects = true;
+                    wasDecor = isDecor;
                     hitOnBlockFace = hitOnBlockFaceTmp;
                     hitPosition.Set(hitPositionTmp);
                 }
             }
 
+            if (intersects)
+            {
+                Vec3i posAdjust = selectionBoxes[hitOnSelectionBox].posAdjust;
+                if (posAdjust != null) pos.Add(posAdjust);
+            }
             return intersects;
         }
 

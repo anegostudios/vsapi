@@ -27,10 +27,12 @@ namespace Vintagestory.API.Client
         public int activeElement = 0;
 
         public double unscaledTabSpacing = 5;
-        public double unscaledTabPadding = 3;
+        public double unscaledTabPadding = 4;
 
         public bool AlarmTabs;
         int alarmTabIndex = -1;
+
+        float fontHeight;
 
         public override bool Focusable { get { return true; } }
 
@@ -73,11 +75,12 @@ namespace Vintagestory.API.Client
 
         public override void ComposeTextElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
-
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth + 1, (int)Bounds.InnerHeight + 1);
             Context ctx = new Context(surface);
 
             Font.SetupContext(ctx);
+
+            fontHeight = (float)Font.GetFontExtents().Height;
 
             double radius = scaled(1);
             double spacing = scaled(unscaledTabSpacing);
@@ -89,7 +92,6 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
-
                 tabWidths[i] = (int)(ctx.TextExtents(tabs[i].Name).Width + 2 * padding + 1);
                 
                 ctx.NewPath();
@@ -114,7 +116,7 @@ namespace Vintagestory.API.Client
                     Font.SetupContext(ctx);
                 }
 
-                DrawTextLineAt(ctx, tabs[i].Name, xpos + padding, 1);
+                DrawTextLineAt(ctx, tabs[i].Name, xpos + padding, (surface.Height - fontHeight) / 2);
 
                 xpos += tabWidths[i] + spacing;
             }
@@ -151,12 +153,21 @@ namespace Vintagestory.API.Client
                 ctx.LineTo(0, radius);
                 ctx.Arc(radius, radius, radius, 180 * degrees, 270 * degrees);
                 ctx.Arc(tabWidths[i] - radius, radius, radius, -90 * degrees, 0 * degrees);
-                ctx.LineTo(tabWidths[i], Bounds.InnerHeight + 1);
+                ctx.LineTo(tabWidths[i], surface.Height);
                 ctx.ClosePath();
 
                 double[] color = GuiStyle.DialogDefaultBgColor;
                 ctx.SetSourceRGBA(color[0], color[1], color[2], color[3] * 0.75);
-                ctx.Fill();
+                ctx.FillPreserve();
+
+                ctx.SetSourceRGBA(color[0] * 1.6, color[1] * 1.6, color[2] * 1.6, 1);
+                ctx.LineWidth = 2 * 1.75;
+                ctx.StrokePreserve();
+                surface.Blur(5.2, 0, 0, surface.Width, surface.Height);
+
+                ctx.SetSourceRGBA(color[0], color[1], color[2], color[3] * 0.75);
+                ctx.LineWidth = 1;
+                ctx.StrokePreserve();
 
                 ctx.NewPath();
                 ctx.MoveTo(0, Bounds.InnerHeight);
@@ -174,9 +185,13 @@ namespace Vintagestory.API.Client
                 {
                     selectedFont.SetupContext(ctx);
                 }
-                
 
-                DrawTextLineAt(ctx, tabs[i].Name, padding, 1);
+                ctx.Operator = Operator.Clear;
+                ctx.Rectangle(0, surface.Height - 1, surface.Width, 1);
+                ctx.Fill();
+                ctx.Operator = Operator.Over;
+
+                DrawTextLineAt(ctx, tabs[i].Name, padding, (surface.Height - fontHeight) / 2);
 
                 if (isNotifyTabs)
                 {

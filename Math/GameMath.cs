@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.MathTools
 {
@@ -167,44 +168,6 @@ namespace Vintagestory.API.MathTools
         #endregion
 
         #region Fast and Slow Sqrts
-
-        // http://blog.wouldbetheologian.com/2011/11/fast-approximate-sqrt-method-in-c.html
-        // http://www.lomont.org/Math/Papers/2003/InvSqrt.pdf
-        /// <summary>
-        /// Faster square root but at the cost of lower accuracy
-        /// </summary>
-        /// <param name="z"></param>
-        /// <returns></returns>
-        [Obsolete("Use Math.Sqrt(). Turns out FastSqrt() is actually slower :o")]
-        public static float FastSqrt(float z)
-        {
-            return (float)Math.Sqrt(z);
-
-            /*if (z == 0) return 0;
-            FloatIntUnion u;
-            u.tmp = 0;
-            float xhalf = 0.5f * z;
-            u.f = z;
-            u.tmp = 0x5f375a86 - (u.tmp >> 1);
-            u.f = u.f * (1.5f - xhalf * u.f * u.f);
-            return u.f * z;*/
-        }
-
-        [Obsolete("Use Math.Sqrt(). Turns out FastSqrt() is actually slower :o")]
-        public static double FastSqrt(double z)
-        {
-            return Math.Sqrt(z);
-
-            /*if (z == 0) return 0;
-            DoubleLongUnion u;
-            u.tmp = 0;
-            double xhalf = 0.5 * z;
-            u.f = z;
-            u.tmp = 0x5f375a86 - (u.tmp >> 1);
-            u.f = u.f * (1.5 - xhalf * u.f * u.f);
-            return u.f * z;*/
-        }
-
 
         public static float Sqrt(float value)
         {
@@ -1176,26 +1139,20 @@ namespace Vintagestory.API.MathTools
 
             /* bitmagic hash */
             h1 ^= rotl32((uint)x * c1, 15) * c2;
-            h1 = rotl32(h1, 13);
-            h1 = h1 * 5 + 0xe6546b64;
+            h1 = rotl32(h1, 13) * 5 + 0xe6546b64;
 
             /* bitmagic hash */
             h1 ^= rotl32((uint)y * c1, 15) * c2;
-            h1 = rotl32(h1, 13);
-            h1 = h1 * 5 + 0xe6546b64;
+            h1 = rotl32(h1, 13) * 5 + 0xe6546b64;
 
             /* bitmagic hash */
             h1 ^= rotl32((uint)z * c1, 15) * c2;
-            h1 = rotl32(h1, 13);
-            h1 = h1 * 5 + 0xe6546b64;
+            h1 = rotl32(h1, 13) * 5 + 0xe6546b64;
 
             // finalization, magic chants to wrap it all up
-            h1 ^= 3;
-            h1 = fmix(h1);
-
             unchecked //ignore overflow
             {
-                return (int)h1;
+                return (int)fmix(h1 ^ 3);
             }
         }
 
@@ -1435,6 +1392,37 @@ namespace Vintagestory.API.MathTools
             
             return angles;
         }
+
+        public static int IntFromBools(int[] intBools)
+        {
+            int result = 0;
+            int i = intBools.Length;
+            while (i-- != 0)
+            {
+                if (intBools[i] != 0) result += 1 << i;
+            }
+            return result;
+        }
+
+        public static int IntFromBools(bool[] bools)
+        {
+            int result = 0;
+            int i = bools.Length;
+            while (i-- != 0)
+            {
+                if (bools[i]) result += 1 << i;
+            }
+            return result;
+        }
+
+        public static void BoolsFromInt(bool[] bools, int v)
+        {
+            int i = bools.Length;
+            while (i-- != 0)
+            {
+                bools[i] = (v & (1 << i)) != 0;
+            }
+        }
     }
 
 
@@ -1462,4 +1450,5 @@ namespace Vintagestory.API.MathTools
         [FieldOffset(0)]
         public long tmp;
     }
+
 }

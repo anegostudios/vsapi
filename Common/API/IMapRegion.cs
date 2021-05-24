@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -81,6 +82,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Holds the raw mod data.
         /// </summary>
+        [Obsolete("Use Get/Set/RemoveModData instead")]
         Dictionary<string, byte[]> ModData { get; }
 
         /// <summary>
@@ -104,5 +106,27 @@ namespace Vintagestory.API.Common
 
 
         bool DirtyForSaving { get; set; }
+
+
+        /// <summary>
+        /// Allows setting of arbitrary, permanantly stored moddata of this chunk. When set on the server before the chunk is sent to the client, the data will also be sent to the client.
+        /// When set on the client the data is discarded once the chunk gets unloaded
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        void SetModdata(string key, byte[] data);
+
+        /// <summary>
+        /// Removes the permanently stored data. 
+        /// </summary>
+        /// <param name="key"></param>
+        void RemoveModdata(string key);
+
+        /// <summary>
+        /// Retrieve arbitrary, permantly stored mod data
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        byte[] GetModdata(string key);
     }
 }

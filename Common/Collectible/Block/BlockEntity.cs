@@ -255,7 +255,7 @@ namespace Vintagestory.API.Common
 
             foreach (var val in Behaviors)
             {
-                val.FromTreeAtributes(tree, worldAccessForResolve);
+                val.FromTreeAttributes(tree, worldAccessForResolve);
             }
         }
 
@@ -292,14 +292,14 @@ namespace Vintagestory.API.Common
         /// When called on Client: Triggers a block changed event on the client, but will not redraw the block unless specified.
         /// </summary>
         /// <param name="redrawOnClient">When true, the block is also marked dirty and thus redrawn. When called serverside a dirty block packet is sent to the client for it to be redrawn</param>
-        public void MarkDirty(bool redrawOnClient = false)
+        public void MarkDirty(bool redrawOnClient = false, IPlayer skipPlayer = null)
         {
             if (Api == null) return;
 
             Api.World.BlockAccessor.MarkBlockEntityDirty(Pos);
 
             if (redrawOnClient) {
-                Api.World.BlockAccessor.MarkBlockDirty(Pos);
+                Api.World.BlockAccessor.MarkBlockDirty(Pos, skipPlayer);
             }
         }
 

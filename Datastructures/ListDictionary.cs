@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vintagestory.API
+namespace Vintagestory.API.Datastructures
 {
     public class ListDictionary<TKey, TValue> : Dictionary<TKey, List<TValue>>
     {

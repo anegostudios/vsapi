@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
@@ -35,18 +30,20 @@ namespace Vintagestory.API.Common
         public string[] Values;
         public string[] Names;
 
+        public bool OnlyDuringWorldCreate = false;
+
         public object stringToValue(string text)
         {
             switch (DataType)
             {
 
                 case EnumDataType.Bool:
-                    bool on = false;
+                    bool on;
                     bool.TryParse(text, out on);
                     return on;
 
                 case EnumDataType.DoubleInput:
-                    float fval = 0;
+                    float fval;
                     float.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out fval);
                     return fval;
                 case EnumDataType.DropDown:
@@ -54,7 +51,7 @@ namespace Vintagestory.API.Common
 
                 case EnumDataType.IntInput:
                 case EnumDataType.IntRange:
-                    int val = 0;
+                    int val;
                     int.TryParse(text, out val);
                     return val;
                 case EnumDataType.String:
@@ -97,13 +94,12 @@ namespace Vintagestory.API.Common
         }
     }
 
+
+
     public class WorldConfigurationValue
     {
         public WorldConfigurationAttribute Attribute;
         public string Code;
         public object Value;
-
     }
-
-    
 }

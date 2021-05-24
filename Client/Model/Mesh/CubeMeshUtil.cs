@@ -210,6 +210,8 @@ namespace Vintagestory.API.Client
                 m.Flags[i + 3] = m.Flags[i];
             }
 
+            m.VerticesMax = m.VerticesCount;
+
 
             return m;
         }

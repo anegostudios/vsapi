@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
@@ -11,6 +12,8 @@ namespace Vintagestory.API.Common
     {
         [JsonProperty]
         public string Code;
+        [JsonProperty]
+        public string PlayListCode;
         [JsonProperty]
         public string LangCode;
         [JsonProperty]

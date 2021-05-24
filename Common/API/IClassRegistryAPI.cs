@@ -12,7 +12,9 @@ namespace Vintagestory.API.Common
     {
         Dictionary<string, Type> BlockClassToTypeMapping { get; }
         Dictionary<string, Type> ItemClassToTypeMapping { get; }
+
         string GetBlockBehaviorClassName(Type blockBehaviorType);
+        string GetCollectibleBehaviorClassName(Type blockBehaviorType);
 
         /// <summary>
         /// Creates a block instance from given block class 
@@ -58,12 +60,20 @@ namespace Vintagestory.API.Common
         
 
         /// <summary>
-        /// Creates a block behavior instance from given block class 
+        /// Creates a block behavior instance from given behavior code
         /// </summary>
         /// <param name="forBlock"></param>
-        /// <param name="blockBehaviorName"></param>
+        /// <param name="code"></param>
         /// <returns></returns>
-        BlockBehavior CreateBlockBehavior(Block forBlock, string blockBehaviorName);
+        BlockBehavior CreateBlockBehavior(Block forBlock, string code);
+
+        /// <summary>
+        /// Creates a collectible behavior instance from given behavior code
+        /// </summary>
+        /// <param name="forCollectible"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        CollectibleBehavior CreateCollectibleBehavior(CollectibleObject forCollectible, string code);
 
         /// <summary>
         /// Returns the block entity behavior type if such is registered under supplied name
@@ -83,9 +93,16 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns the block behavior type registered for given name or null
         /// </summary>
-        /// <param name="blockclass"></param>
+        /// <param name="code"></param>
         /// <returns></returns>
-        Type GetBlockBehaviorClass(string blockclass);
+        Type GetBlockBehaviorClass(string code);
+
+        /// <summary>
+        /// Returns the collectible behavior type registered for given name or null
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        Type GetCollectibleBehaviorClass(string code);
 
         /// <summary>
         /// Creates a block behavior instance from given block class 
@@ -94,6 +111,9 @@ namespace Vintagestory.API.Common
         /// <param name="entityBehaviorName"></param>
         /// <returns></returns>
         EntityBehavior CreateEntityBehavior(Entity forEntity, string entityBehaviorName);
+
+        Type GetEntityBehaviorClass(string entityBehaviorName);
+
 
         IInventoryNetworkUtil CreateInvNetworkUtil(InventoryBase inv, ICoreAPI api);
 

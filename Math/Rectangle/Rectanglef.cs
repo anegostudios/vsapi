@@ -1,4 +1,4 @@
-﻿namespace Vintagestory.API
+﻿namespace Vintagestory.API.Datastructures
 {
     public class Rectanglef
     {

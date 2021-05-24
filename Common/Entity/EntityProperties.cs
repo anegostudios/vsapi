@@ -189,6 +189,7 @@ namespace Vintagestory.API.Common.Entities
                 HitBoxSize = HitBoxSize.Clone(),
                 DeadHitBoxSize = DeadHitBoxSize.Clone(),
                 CanClimb = CanClimb,
+                Weight = Weight,
                 CanClimbAnywhere = CanClimbAnywhere,
                 FallDamage = FallDamage,
                 ClimbTouchDistance = ClimbTouchDistance,
@@ -288,9 +289,15 @@ namespace Vintagestory.API.Common.Entities
                 string code = BehaviorsAsJsonObj[i]["code"].AsString();
                 if (code == null) continue;
 
-                EntityBehavior behavior = world.ClassRegistry.CreateEntityBehavior(entity, code);
-                Behaviors.Add(behavior);
-                behavior.Initialize(properties, BehaviorsAsJsonObj[i]);
+                if (world.ClassRegistry.GetEntityBehaviorClass(code) != null)
+                {
+                    EntityBehavior behavior = world.ClassRegistry.CreateEntityBehavior(entity, code);
+                    Behaviors.Add(behavior);
+                    behavior.Initialize(properties, BehaviorsAsJsonObj[i]);
+                } else
+                {
+                    world.Logger.Notification("Entity behavior {0} for entity {1} not found, will not load it.", code, properties.Code);
+                }
             }
         }
 
@@ -351,6 +358,11 @@ namespace Vintagestory.API.Common.Entities
         /// The size of the entity (default: 1f)
         /// </summary>
         public float Size = 1f;
+
+        /// <summary>
+        /// The rate at which the entity's size grows with age - used for chicks and other small baby animals
+        /// </summary>
+        public float SizeGrowthFactor = 0f;
 
         /// <summary>
         /// The animations of the entity.
@@ -488,6 +500,7 @@ namespace Vintagestory.API.Common.Entities
                 RendererName = RendererName,
                 GlowLevel = GlowLevel,
                 Size = Size,
+                SizeGrowthFactor = SizeGrowthFactor,
                 Shape = Shape?.Clone(),
                 Animations = newAnimations,
                 AnimationsByMetaCode = newAnimationsByMetaData,

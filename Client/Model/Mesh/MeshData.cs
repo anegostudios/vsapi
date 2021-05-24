@@ -212,10 +212,17 @@ namespace Vintagestory.API.Client
         /// </summary>
         public byte[] SeasonColorMapIds;
 
+
+        [Obsolete("Use RenderPassesAndExtraBits instead")]
+        public short[] RenderPasses => RenderPassesAndExtraBits;
+
         /// <summary>
-        /// BlockShapeTesselator renderpass. Required by TerrainChunkTesselator to determine in which mesh data pool each quad should land in. Should hold VerticesCount / 4 values.
+        /// BlockShapeTesselator renderpass. Required by TerrainChunkTesselator to determine in which mesh data pool each quad should land in. Should hold VerticesCount / 4 values.<br/>
+        /// Lower 10 bits = render pass<br/>
+        /// Upper 6 bits = extra bits for tesselators<br/>
+        ///    Bit 10: DisableRandomDrawOffset
         /// </summary>
-        public short[] RenderPasses;
+        public short[] RenderPassesAndExtraBits;
 
         /// <summary>
         /// Amount of assigned tint values
@@ -572,7 +579,7 @@ namespace Vintagestory.API.Client
                 XyzFaces = new byte[0];
                 ClimateColorMapIds = new byte[0];
                 SeasonColorMapIds = new byte[0];
-                RenderPasses = new short[0];
+                RenderPassesAndExtraBits = new short[0];
             }
         }
 
@@ -592,7 +599,7 @@ namespace Vintagestory.API.Client
             XyzFaces = new byte[0];
             ClimateColorMapIds = new byte[0];
             SeasonColorMapIds = new byte[0];
-            RenderPasses = new short[0];
+            RenderPassesAndExtraBits = new short[0];
             xyz = new float[capacityVertices * 3];
 
             if (withNormals)
@@ -647,7 +654,18 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public MeshData WithRenderpasses()
         {
-            RenderPasses = new short[VerticesMax / 4];
+            RenderPassesAndExtraBits = new short[VerticesMax / 4];
+            return this;
+        }
+
+
+        /// <summary>
+        /// Sets up the renderPasses array for holding render pass info
+        /// </summary>
+        /// <returns></returns>
+        public MeshData WithNormals()
+        {
+            Normals = new int[VerticesMax];
             return this;
         }
 
@@ -667,7 +685,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < data.VerticesCount / 4; i++)
             {
-                if (data.RenderPasses[i] != renderPassInt && (data.RenderPasses[i] !=-1 || filterByRenderPass != EnumChunkRenderPass.Opaque))
+                if (data.RenderPassesAndExtraBits[i] != renderPassInt && (data.RenderPassesAndExtraBits[i] !=-1 || filterByRenderPass != EnumChunkRenderPass.Opaque))
                 {
                     di += 6;
                     continue;
@@ -852,7 +870,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < sourceMesh.RenderPassCount; i++)
             {
-                AddRenderPass(sourceMesh.RenderPasses[i]);
+                AddRenderPass(sourceMesh.RenderPassesAndExtraBits[i]);
             }
 
             if (CustomInts != null && sourceMesh.CustomInts != null)
@@ -1024,7 +1042,7 @@ namespace Vintagestory.API.Client
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <param name="color"></param>
-        public void AddVertex(float x, float y, float z, int color)
+        public void AddVertex(float x, float y, float z, int color = ColorUtil.WhiteArgb)
         {
             int count = VerticesCount;
             if (count >= VerticesMax)
@@ -1328,12 +1346,12 @@ namespace Vintagestory.API.Client
 
         public void AddRenderPass(short renderPass)
         {
-            if (RenderPassCount >= RenderPasses.Length)
+            if (RenderPassCount >= RenderPassesAndExtraBits.Length)
             {
-                Array.Resize(ref RenderPasses, RenderPasses.Length + 32);
+                Array.Resize(ref RenderPassesAndExtraBits, RenderPassesAndExtraBits.Length + 32);
             }
 
-            RenderPasses[RenderPassCount++] = renderPass;
+            RenderPassesAndExtraBits[RenderPassCount++] = renderPass;
         }
 
 
@@ -1641,13 +1659,13 @@ namespace Vintagestory.API.Client
                     dest.ColorMapIdsCount = ColorMapIdsCount;
                 }
 
-                if (RenderPasses != null)
+                if (RenderPassesAndExtraBits != null)
                 {
-                    short[] destRenderPasses = dest.RenderPasses = new short[i = RenderPasses.Length];
-                    if (i > 127) Array.Copy(RenderPasses, 0, destRenderPasses, 0, i);
+                    short[] destRenderPasses = dest.RenderPassesAndExtraBits = new short[i = RenderPassesAndExtraBits.Length];
+                    if (i > 127) Array.Copy(RenderPassesAndExtraBits, 0, destRenderPasses, 0, i);
                     else
                     {
-                        short[] sourceRenderPasses = this.RenderPasses;
+                        short[] sourceRenderPasses = this.RenderPassesAndExtraBits;
                         while (--i >= 0)
                         {
                             destRenderPasses[i] = sourceRenderPasses[i];
@@ -1779,7 +1797,7 @@ namespace Vintagestory.API.Client
                 (ClimateColorMapIds == null ? 0 : ClimateColorMapIds.Length * 1) +
                 (SeasonColorMapIds == null ? 0 : SeasonColorMapIds.Length * 1) +
                 (XyzFaces == null ? 0 : XyzFaces.Length * 1) +
-                (RenderPasses == null ? 0 : RenderPasses.Length * 2) +
+                (RenderPassesAndExtraBits == null ? 0 : RenderPassesAndExtraBits.Length * 2) +
                 (Normals == null ? 0 : Normals.Length * 4) +
                 (Flags == null ? 0 : Flags.Length * 4) +
                 (Uv == null ? 0 : Uv.Length * 4) +

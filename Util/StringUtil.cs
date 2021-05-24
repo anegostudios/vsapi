@@ -99,7 +99,8 @@ namespace Vintagestory.API.Util
         {
             if (reference.Length > value.Length) return false;
 
-            for (int i = 0; i < reference.Length; i++)
+            // search from the right end of the reference string, as the right end is more likely to be unique
+            for (int i = reference.Length - 1; i >= 0; i--)
             {
                 if (value[i] != reference[i]) return false;
             }
@@ -112,7 +113,8 @@ namespace Vintagestory.API.Util
         {
             if (reference.Length > value.Length) return false;
 
-            for (int i = 0; i < reference.Length; i++)
+            // search from the right end of the reference string, as the right end is more likely to be unique
+            for (int i = reference.Length - 1; i >= 0; i--)
             {
                 if (value[i] != reference[i]) return false;
             }
@@ -125,7 +127,8 @@ namespace Vintagestory.API.Util
         {
             if (reference.Length != value.Length) return false;
 
-            for (int i = 0; i < reference.Length; i++)
+            // search from the right end of the reference string, as the right end is more likely to be unique
+            for (int i = reference.Length - 1; i >= 0; i--)
             {
                 if (value[i] != reference[i]) return false;
             }

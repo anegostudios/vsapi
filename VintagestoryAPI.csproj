@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VintagestoryAPI</RootNamespace>
     <AssemblyName>VintagestoryAPI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>
@@ -68,6 +68,17 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PerfTest|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE;PERFTEST</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AnimatedGif">
       <HintPath>..\Lib\AnimatedGif.dll</HintPath>
@@ -118,7 +129,9 @@
     <Compile Include="Client\Render\ColorMapData.cs" />
     <Compile Include="Client\Render\EnumFrameBuffer.cs" />
     <Compile Include="Client\Render\IAviWriter.cs" />
+    <Compile Include="Client\Texture\TextureDictionary.cs" />
     <Compile Include="Client\Texture\FastBitmap.cs" />
+    <Compile Include="Client\UI\Dialog\GuiDialogCharacterBase.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementColorListPicker.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementContainer.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Text\Richtext\IconComponent.cs" />
@@ -127,8 +140,11 @@
     <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
     <Compile Include="Common\API\ILandClaimAPI.cs" />
     <Compile Include="Client\API\IMacroManager.cs" />
+    <Compile Include="Common\Collectible\CollectibleBehavior.cs" />
     <Compile Include="Common\Collectible\Block\BlockEntityBehavior.cs" />
+    <Compile Include="Common\Collectible\Block\IGeometryTester.cs" />
     <Compile Include="Common\Collectible\Block\IBlockFlowing.cs" />
+    <Compile Include="Common\Collectible\DecorFlags.cs" />
     <Compile Include="Common\Collectible\FertilizerProps.cs" />
     <Compile Include="Common\Collectible\CrushingProperties.cs" />
     <Compile Include="Common\Collectible\HeldSounds.cs" />
@@ -269,6 +285,7 @@
     <Compile Include="Datastructures\FastList.cs" />
     <Compile Include="Datastructures\RingArray.cs" />
     <Compile Include="Math\Matrix\Quaternionf.cs" />
+    <Compile Include="Math\Vector\Vec3iAndFacingFlags.cs" />
     <Compile Include="Math\Vector\FastVec3f.cs" />
     <Compile Include="Server\API\IPlayerDataManager.cs" />
     <Compile Include="Server\EnumPlayerJoinBehavior.cs" />
@@ -336,6 +353,7 @@
     <Compile Include="Util\SerializerUtil.cs" />
     <Compile Include="Util\StringExtensions.cs" />
     <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="Common\Entity\EntityTalkUtil.cs" />
     <Compile Include="Util\ThreadSafeRandom.cs" />
     <Compile Include="Util\WildcardUtil.cs" />
     <Compile Include="Common\EntityBehavior\BehaviorPassivePhysics.cs" />
@@ -609,11 +627,11 @@
     <None Include="articles\toc.md" />
     <None Include="docfx.json" />
     <None Include="index.md" />
-    <None Include="packages.config" />
-    <None Include="toc.yml" />
     <Compile Include="Common\API\ModInfo.cs" />
     <Compile Include="Common\API\ModInfoAttribute.cs" />
     <Compile Include="Common\API\ModDependency.cs" />
+    <None Include="packages.config" />
+    <None Include="toc.yml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cairo\Cairo.csproj">
@@ -622,17 +640,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include=".gitignore" />
-    <Content Include="api\.gitignore" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\docfx.console.2.42.0\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.42.0\build\docfx.console.targets')" />
+  <Import Project="..\packages\docfx.console.2.56.6\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.56.6\build\docfx.console.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\docfx.console.2.42.0\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.42.0\build\docfx.console.targets'))" />
+    <Error Condition="!Exists('..\packages\docfx.console.2.56.6\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.56.6\build\docfx.console.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

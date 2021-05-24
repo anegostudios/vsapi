@@ -10,6 +10,7 @@ namespace Vintagestory.API.Common
     {
         Sea,
         Land,
-        Air
+        Air,
+        Underwater
     }
 }

@@ -7,7 +7,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
-namespace Vintagestory.API
+namespace Vintagestory.API.Common
 {
     /// <summary>
     /// This is the system that manages the worlds ambient settings, such as fog color/density and clouds.

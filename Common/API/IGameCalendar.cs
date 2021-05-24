@@ -49,6 +49,8 @@ namespace Vintagestory.API.Common
         South = 2
     }
 
+    public delegate double GetLatitudeDelegate(double posZ);
+
     public interface IClientGameCalendar : IGameCalendar
     {
         /// <summary>
@@ -120,9 +122,17 @@ namespace Vintagestory.API.Common
         HemisphereDelegate OnGetHemisphere { get; set; }
 
         /// <summary>
-        /// Assigned by the survival mod. The calendar uses this method to determine the solar altitude at given location and time. If set to null, the calendar uses a default value of about 0.9
+        /// Assigned by the survival mod. The calendar uses this method to determine the solar altitude at given location and time. If not set, the calendar uses a default value of about 0.75
         /// </summary>
         SolarAltitudeDelegate OnGetSolarAltitude { get; set; }
+
+        /// <summary>
+        /// Assigned by the survival mod. Must return the latitude for given position. If not set, the calendar uses a default value of 0.5<br/>
+        /// -1 for south pole, 0 for equater, 1 for north pole
+        /// </summary>
+        GetLatitudeDelegate OnGetLatitude { get; set; }
+
+
 
         /// <summary>
         /// Retrieve the current daylight strength at given coordinates
@@ -226,7 +236,7 @@ namespace Vintagestory.API.Common
         EnumSeason GetSeason(BlockPos pos);
 
         /// <summary>
-        /// Returns the season at given position between 0..1
+        /// Returns the season at given position between 0..1, respects hemisphere
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>

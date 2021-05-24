@@ -14,6 +14,7 @@ namespace Vintagestory.API.Common
         public CompositeTexture Texture;
         public int Padding;
         public bool LoadIntoBlockTextureAtlas;
+        public int ExtraFlags;
 
         // Loaded by the game engine client
         public int[] Pixels;

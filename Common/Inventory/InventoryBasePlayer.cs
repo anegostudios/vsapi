@@ -16,6 +16,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         protected string playerUID;
 
+        /// <summary>
+        /// The owning player of this inventory
+        /// </summary>
+        public IPlayer Player => Api.World.PlayerByUid(playerUID);
+
+
         public InventoryBasePlayer(string className, string playerUID, ICoreAPI api) : base(className, playerUID, api)
         {
             this.playerUID = playerUID;
@@ -36,7 +42,7 @@ namespace Vintagestory.API.Common
             return player.PlayerUID == playerUID || base.HasOpened(player);
         }
 
-        public override void DropAll(Vec3d pos)
+        public override void DropAll(Vec3d pos, int maxStackSize = 0)
         {
             for (int i = 0; i < Count; i++)
             {
@@ -49,7 +55,23 @@ namespace Vintagestory.API.Common
                     if (handling != EnumHandling.PassThrough) continue;
 
                     dirtySlots.Add(i);
-                    Api.World.SpawnItemEntity(slot.Itemstack, pos);
+
+                    if (maxStackSize > 0)
+                    {
+                        while (slot.StackSize > 0)
+                        {
+                            ItemStack split = slot.TakeOut(GameMath.Clamp(slot.StackSize, 1, maxStackSize));
+                            Api.World.SpawnItemEntity(split, pos);
+                        }
+                    }
+                    else
+                    {
+
+                        Api.World.SpawnItemEntity(slot.Itemstack, pos);
+                    }
+                    
+
+
                     slot.Itemstack = null;
                 }
             }

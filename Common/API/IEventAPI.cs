@@ -33,6 +33,13 @@ namespace Vintagestory.API.Common
     public delegate void ChunkDirtyDelegate(Vec3i chunkCoord, IWorldChunk chunk, EnumChunkDirtyReason reason);
 
     /// <summary>
+    /// Triggered immediately when the server loads a chunk column from disk or generates a new one, in the SupplyChunks thread (not the main thread)
+    /// </summary>
+    /// <param name="chunkCoord"></param>
+    /// <param name="chunks"></param>
+    public delegate void ChunkColumnSnowUpdateDelegate(IServerMapChunk mapChunk, int chunkX, int chunkZ, IWorldChunk[] chunks);
+
+    /// <summary>
     /// Triggered when the server loaded a chunk column from disk or generated a new one
     /// </summary>
     /// <param name="chunkCoord"></param>
@@ -44,6 +51,22 @@ namespace Vintagestory.API.Common
     /// </summary>
     /// <param name="chunkCoord">chunkX and chunkZ of the column (multiply with chunksize to get position). The Y component is zero</param>
     public delegate void ChunkColumnUnloadDelegate(Vec3i chunkCoord);
+
+
+
+    /// <summary>
+    /// Triggered when the server loaded a map region from disk or generated a new one
+    /// </summary>
+    /// <param name="mapCoord">regionX and regionZ (multiply with region size to get block position)</param>
+    /// <param name="region"></param>
+    public delegate void MapRegionLoadedDelegate(Vec2i mapCoord, IMapRegion region);
+
+    /// <summary>
+    /// Triggered just before a map region gets unloaded
+    /// </summary>
+    /// <param name="mapCoord">regionX and regionZ (multiply with region size to get block position)</param>
+    public delegate void MapRegionUnloadDelegate(Vec2i mapCoord, IMapRegion region);
+
 
 
     public delegate bool MatchGridRecipeDelegate(IPlayer player, GridRecipe recipe, ItemSlot[] ingredients, int gridWidth);
@@ -158,7 +181,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Can be used to execute supplied method a frame later or can be called from a seperate thread to ensure some code is executed in the main thread
+        /// Can be used to execute supplied method a frame later or can be called from a seperate thread to ensure some code is executed in the main thread. Calling this method is thread safe.
         /// </summary>
         /// <param name="action"></param>
         /// <param name="code">Task category identifier for the frame profiler</param>

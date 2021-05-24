@@ -45,6 +45,7 @@ namespace Vintagestory.API.Client
             return val;
         }
 
+
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
         {
             rightSpacing = scaled(17);
@@ -62,13 +63,16 @@ namespace Vintagestory.API.Client
             highlightBounds = Bounds.CopyOffsetedSibling().WithFixedPadding(0, 0).FixedGrow(2 * Bounds.absPaddingX, 2 * Bounds.absPaddingY);
             highlightBounds.CalcWorldBounds();
 
-            RecomposeText(rightSpacing, 0);
+            RecomposeText();
 
             double heightHalf = Bounds.OuterHeight / 2 - 1;
 
+            // Arrow up
             ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
             RoundRectangle(ctx, Bounds.drawX + Bounds.InnerWidth - scaled(17 + 1) * Scale, Bounds.drawY, rightSpacing * Scale, heightHalf, 1);
             ctx.Fill();
+
+            EmbossRoundRectangleElement(ctx, Bounds.drawX + Bounds.InnerWidth - scaled(17 + 1) * Scale, Bounds.drawY, rightSpacing * Scale, heightHalf, false, 2, 1);
 
             ctx.NewPath();
             ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(9) * Scale, Bounds.drawY + scaled(4) * Scale);
@@ -79,9 +83,12 @@ namespace Vintagestory.API.Client
             ctx.Fill();
 
 
+            // Arrow down
             ctx.SetSourceRGBA(GuiStyle.DialogHighlightColor);
             RoundRectangle(ctx, Bounds.drawX + Bounds.InnerWidth - (rightSpacing + scaled(1)) * Scale, Bounds.drawY + heightHalf + scaled(1) * Scale, rightSpacing * Scale, heightHalf, 1);
             ctx.Fill();
+
+            EmbossRoundRectangleElement(ctx, Bounds.drawX + Bounds.InnerWidth - (rightSpacing + scaled(1)) * Scale, Bounds.drawY + heightHalf + scaled(1) * Scale, rightSpacing * Scale, heightHalf, false, 2, 1);
 
             ctx.NewPath();
             ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(14) * Scale, Bounds.drawY + scaled(19) * Scale);
@@ -91,7 +98,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(1, 1, 1, 0.4);
             ctx.Fill();
 
-            highlightBounds.fixedWidth -= rightSpacing;
+            highlightBounds.fixedWidth -= rightSpacing / RuntimeEnv.GUIScale;
             highlightBounds.CalcWorldBounds();
         }
 
@@ -133,8 +140,12 @@ namespace Vintagestory.API.Client
             int mouseX = api.Input.MouseX;
             int mouseY = api.Input.MouseY;
 
-            if (mouseX >= Bounds.absX + Bounds.OuterWidth - rightSpacing && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)
+            MouseOverCursor = "textselect";
+
+            if (mouseX >= Bounds.absX + Bounds.InnerWidth - scaled(21) && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)
             {
+                MouseOverCursor = null;
+
                 double heightHalf = Bounds.OuterHeight / 2 - 1;
 
                 if (mouseY > Bounds.absY + heightHalf + 1)

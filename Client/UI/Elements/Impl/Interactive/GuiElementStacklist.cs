@@ -192,11 +192,11 @@ namespace Vintagestory.API.Client
                 if (tree.Count != 0)
                 {
                     string treeStr = tree.ToJsonToken();
-                    return (stack.Class == EnumItemClass.Block ? "block" : "item") + "-" + stack.Collectible.Code.ToShortString() + "-" + treeStr;
+                    return (stack.Class.Name()) + "-" + stack.Collectible.Code.ToShortString() + "-" + treeStr;
                 }
             }
 
-            return (stack.Class == EnumItemClass.Block ? "block" : "item") + "-" + stack.Collectible.Code.ToShortString();
+            return (stack.Class.Name()) + "-" + stack.Collectible.Code.ToShortString();
         }
 
         public void Recompose(ICoreClientAPI capi)
@@ -218,8 +218,8 @@ namespace Vintagestory.API.Client
                 Recompose(capi);
             }
 
-            scissorBounds.fixedX = pad + x / RuntimeEnv.GUIScale - size/2;
-            scissorBounds.fixedY = y / RuntimeEnv.GUIScale - size / 2;
+            scissorBounds.fixedX = (pad + x - size / 2) / RuntimeEnv.GUIScale;
+            scissorBounds.fixedY = (y - size / 2) / RuntimeEnv.GUIScale;
             scissorBounds.CalcWorldBounds();
 
             if (scissorBounds.InnerWidth <= 0 || scissorBounds.InnerHeight <= 0) return;
@@ -231,7 +231,7 @@ namespace Vintagestory.API.Client
             capi.Render.Render2DTexturePremultipliedAlpha(
                 Texture.TextureId,
                 (x + size + GuiElement.scaled(25)), 
-                y + size / 4 - 3,
+                y + size / 4 - GuiElement.scaled(3),
                 Texture.Width,
                 Texture.Height,
                 50
@@ -265,6 +265,7 @@ namespace Vintagestory.API.Client
 
         public int unscaledCellSpacing = 5;
         public int unscaledCellHeight = 40;
+        public int unscalledYPad = 8;
 
         public API.Common.Action<int> onLeftClick;
 
@@ -348,7 +349,9 @@ namespace Vintagestory.API.Client
 
                 float y = (float)(5 + Bounds.absY + posY);
 
-                if (mx > Bounds.absX && mx <= Bounds.absX + Bounds.InnerWidth && my >= y - 8 && my <= y + scaled(unscaledCellHeight) - 8)
+                double ypad = GuiElement.scaled(unscalledYPad);
+
+                if (mx > Bounds.absX && mx <= Bounds.absX + Bounds.InnerWidth && my >= y - ypad && my <= y + scaled(unscaledCellHeight) - ypad)
                 {
                     api.Gui.PlaySound("menubutton_press");
                     onLeftClick?.Invoke(i);
@@ -368,16 +371,18 @@ namespace Vintagestory.API.Client
             bool inbounds = Bounds.ParentBounds.PointInside(mx, my);
 
             double posY = insideBounds.absY;
+            double ypad = GuiElement.scaled(unscalledYPad);
 
             foreach (GuiHandbookPage element in Elements)
             {
                 if (!element.Visible) continue;
 
                 float y = (float)(5 + Bounds.absY + posY);
+                
 
-                if (inbounds && mx > Bounds.absX && mx <= Bounds.absX + Bounds.InnerWidth && my >= y-8 && my <= y + scaled(unscaledCellHeight)-8)
+                if (inbounds && mx > Bounds.absX && mx <= Bounds.absX + Bounds.InnerWidth && my >= y-ypad && my <= y + scaled(unscaledCellHeight)- ypad)
                 {
-                    api.Render.Render2DLoadedTexture(hoverOverlayTexture, (float)Bounds.absX, y-8);
+                    api.Render.Render2DLoadedTexture(hoverOverlayTexture, (float)Bounds.absX, y - (float)ypad);
                 }
 
                 if (posY > -50 && posY < Bounds.OuterHeight + 50)

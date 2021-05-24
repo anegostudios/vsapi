@@ -24,6 +24,10 @@ namespace Vintagestory.API.MathTools
 
         public BlockPos AsBlockPos { get { return new BlockPos((int)X, (int)Y, (int)Z); } }
 
+        public int XInt => (int)X;
+        public int YInt => (int)Y;
+        public int ZInt => (int)Z;
+
         public static Vec3d Zero { get { return new Vec3d(); } }
 
 
@@ -161,11 +165,12 @@ namespace Vintagestory.API.MathTools
             return new Vec3d(X + pos.X, Y + pos.Y, Z + pos.Z);
         }
 
-        public void Mul(double val)
+        public Vec3d Mul(double val)
         {
             X *= val;
             Y *= val;
             Z *= val;
+            return this;
         }
 
         public Vec3d Mul(double x, double y, double z)
@@ -215,7 +220,7 @@ namespace Vintagestory.API.MathTools
 
         public double Length()
         {
-            return GameMath.Sqrt(X * X + Y * Y + Z * Z);
+            return Math.Sqrt(X * X + Y * Y + Z * Z);
         }
 
         public double LengthSq()
@@ -241,11 +246,12 @@ namespace Vintagestory.API.MathTools
             return (Vec3d)MemberwiseClone();
         }
 
-        public void Sub(Vec3d vec)
+        public Vec3d Sub(Vec3d vec)
         {
             X -= vec.X;
             Y -= vec.Y;
             Z -= vec.Z;
+            return this;
         }
 
         public Vec3d Add(double value)
@@ -301,6 +307,14 @@ namespace Vintagestory.API.MathTools
         }
 
         public Vec3d Set(Vec3i pos)
+        {
+            this.X = pos.X;
+            this.Y = pos.Y;
+            this.Z = pos.Z;
+            return this;
+        }
+
+        public Vec3d Set(Vec3f pos)
         {
             this.X = pos.X;
             this.Y = pos.Y;

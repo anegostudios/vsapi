@@ -44,8 +44,9 @@ namespace Vintagestory.API.Common
         {
             if (!Enabled && !PrintSlowTicks) return;
 
-            elems["begin"] = stopwatch.ElapsedTicks - start;
-            start = stopwatch.ElapsedTicks;
+            long ticks = stopwatch.ElapsedTicks;
+            elems["begin"] = ticks - start;
+            start = ticks;
             frameStart = start;
         }
 
@@ -61,8 +62,9 @@ namespace Vintagestory.API.Common
             long ms = 0;
             elems.TryGetValue(code, out ms);
 
-            elems[code] = ms + stopwatch.ElapsedTicks - start;
-            start = stopwatch.ElapsedTicks;
+            long ticks = stopwatch.ElapsedTicks;
+            elems[code] = ms + ticks - start;
+            start = ticks;
         }
 
         /// <summary>
@@ -87,8 +89,9 @@ namespace Vintagestory.API.Common
         {
             if (!Enabled && !PrintSlowTicks) return;
 
-            elems["end"] = stopwatch.ElapsedTicks - start;
-            start = stopwatch.ElapsedTicks;
+            long ticks = stopwatch.ElapsedTicks;
+            elems["end"] = ticks - start;
+            start = ticks;
 
             elemsPrevFrame = elems;
 

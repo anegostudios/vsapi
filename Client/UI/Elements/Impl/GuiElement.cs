@@ -289,6 +289,11 @@ namespace Vintagestory.API.Client
 
             if (doCache) cachedPatterns[texFileName] = new KeyValuePair<SurfacePattern, ImageSurface>(pattern, patternSurface);
 
+            Matrix m = new Matrix();
+            m.Scale(1f / RuntimeEnv.GUIScale, 1f / RuntimeEnv.GUIScale);
+
+            pattern.Matrix = m;
+
             return pattern;
         }
 

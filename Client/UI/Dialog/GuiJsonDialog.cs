@@ -126,7 +126,7 @@ namespace Vintagestory.API.Client
                 labelWidth = extents.Width / factor / RuntimeEnv.GUIScale + 1;
                 FontExtents fext = font.GetFontExtents();
 
-                ElementBounds labelBounds = ElementBounds.Fixed(x, y + Math.Max(0, (elem.Height * factor - fext.Height) / 2), labelWidth, elem.Height).WithScale(factor);
+                ElementBounds labelBounds = ElementBounds.Fixed(x, y + Math.Max(0, (elem.Height * factor - fext.Height / RuntimeEnv.GUIScale) / 2), labelWidth, elem.Height).WithScale(factor);
 
                 composer.AddStaticText(elem.Label, font, labelBounds);
                 labelWidth += 8;

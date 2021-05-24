@@ -6,6 +6,7 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -59,6 +60,10 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public List<int> BlockIds = new List<int>();
         [JsonProperty]
+        public List<uint> DecorIndices = new List<uint>();
+        [JsonProperty]
+        public List<int> DecorIds = new List<int>();
+        [JsonProperty]
         public Dictionary<uint, string> BlockEntities = new Dictionary<uint, string>();
         [JsonProperty]
         public List<string> Entities = new List<string>();
@@ -71,6 +76,7 @@ namespace Vintagestory.API.Common
         public Dictionary<BlockPos, int> BlocksUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
         public List<Entity> EntitiesUnpacked = new List<Entity>();
+        public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
 
 
 
@@ -139,6 +145,14 @@ namespace Vintagestory.API.Common
                 {
                     undergroundPositions.Add(pos);
                 }
+            }
+
+            for (int i = 0; i < DecorIds.Count; i++)
+            {
+                int storedBlockid = DecorIds[i] & 0xFFFFFF;
+                AssetLocation blockCode = BlockCodes[storedBlockid];
+                Block newBlock = blockAccessor.GetBlock(blockCode);
+                if (newBlock == null) missingBlocks.Add(blockCode);
             }
 
             if (missingBlocks.Count > 0)
@@ -262,6 +276,7 @@ namespace Vintagestory.API.Common
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
             BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z));
 
+            Block[] decorsTmp = new Block[6];
             for (int x = startPos.X; x < finalPos.X; x++)
             {
                 for (int y = startPos.Y; y < finalPos.Y; y++)
@@ -280,6 +295,16 @@ namespace Vintagestory.API.Common
                             BlockEntitiesUnpacked[pos] = EncodeBlockEntityData(be);
                             be.OnStoreCollectibleMappings(BlockCodes, ItemCodes);
                         }
+
+                        if (world.BlockAccessor.GetChunkAtBlockPos(pos).GetDecors(world.BlockAccessor, pos, decorsTmp))
+                        {
+                            Block[] ints = new Block[6];
+                            for (int i = 0; i < 6; i++)
+                            {
+                                ints[i] = decorsTmp[i];
+                            }
+                            DecorsUnpacked[pos] = ints;
+                        }
                     }
                 }
             }
@@ -294,6 +319,8 @@ namespace Vintagestory.API.Common
             BlockIds.Clear();
             BlockEntities.Clear();
             Entities.Clear();
+            DecorIndices.Clear();
+            DecorIds.Clear();
             SizeX = 0;
             SizeY = 0;
             SizeZ = 0;
@@ -336,6 +363,29 @@ namespace Vintagestory.API.Common
 
                 Indices.Add((uint)((dy << 20) | (dz << 10) | dx));
                 BlockIds.Add(val.Value);
+            }
+
+            foreach (var val in DecorsUnpacked)
+            {
+                // Store relative position and the block id
+                int dx = val.Key.X - minX;
+                int dy = val.Key.Y - minY;
+                int dz = val.Key.Z - minZ;
+
+                SizeX = Math.Max(dx, SizeX);
+                SizeY = Math.Max(dy, SizeY);
+                SizeZ = Math.Max(dz, SizeZ);
+
+                for (int i = 0; i < 6; i++)
+                {
+                    // Store a block mapping
+                    Block b = val.Value[i];
+                    if (b == null) continue;
+
+                    BlockCodes[b.BlockId] = b.Code;
+                    DecorIndices.Add((uint)((dy << 20) | (dz << 10) | dx));
+                    DecorIds.Add((i << 24) + b.BlockId);
+                }
             }
 
             // off-by-one problem as usual. A block at x=3 and x=4 means a sizex of 2
@@ -381,7 +431,9 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, bool replaceMetaBlocks = true)
         {
-            return Place(blockAccessor, worldForCollectibleResolve, startPos, ReplaceMode, replaceMetaBlocks);
+            int result = Place(blockAccessor, worldForCollectibleResolve, startPos, ReplaceMode, replaceMetaBlocks);
+            PlaceDecors(blockAccessor, startPos, false);
+            return result;
         }
 
         /// <summary>
@@ -457,6 +509,37 @@ namespace Vintagestory.API.Common
             return placed;
         }
 
+        public virtual void PlaceDecors(IBlockAccessor blockAccessor, BlockPos startPos, bool synchronize)
+        {
+            BlockPos curPos = new BlockPos();
+            for (int i = 0; i < DecorIndices.Count; i++)
+            {
+                uint index = DecorIndices[i];
+                int storedBlockid = DecorIds[i];
+                byte faceIndex = (byte)(storedBlockid >> 24);
+                if (faceIndex > 5) continue;
+                BlockFacing face = BlockFacing.ALLFACES[faceIndex];
+                storedBlockid &= 0xFFFFFF;
+
+                int dx = (int)(index & 0x1ff);
+                int dy = (int)((index >> 20) & 0x1ff);
+                int dz = (int)((index >> 10) & 0x1ff);
+
+                AssetLocation blockCode = BlockCodes[storedBlockid];
+
+                Block newBlock = blockAccessor.GetBlock(blockCode);
+
+                if (newBlock == null) continue;
+
+                curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
+
+                IWorldChunk c = blockAccessor.GetChunkAtBlockPos(curPos);
+                if (c == null) continue;
+                if (synchronize) blockAccessor.MarkChunkDecorsModified(curPos);
+                c.AddDecor(blockAccessor, curPos, face.Index, newBlock);
+                c.MarkModified();
+            }
+        }
 
         /// <summary>
         /// Attempts to transform each block as they are placed in directions different from the schematic.
@@ -472,6 +555,7 @@ namespace Vintagestory.API.Common
 
             BlocksUnpacked.Clear();
             BlockEntitiesUnpacked.Clear();
+            DecorsUnpacked.Clear();
             EntitiesUnpacked.Clear();
 
             angle = GameMath.Mod(angle, 360);
@@ -567,9 +651,116 @@ namespace Vintagestory.API.Common
                     pos.Z += SizeZ / 2;
                 }
 
-                curPos.Set(pos.X + startPos.X, pos.Y + startPos.Y, pos.Z + startPos.Z);
-
                 BlocksUnpacked[pos] = newBlock.BlockId;
+            }
+
+
+            for (int i = 0; i < DecorIndices.Count; i++)
+            {
+                uint index = DecorIndices[i];
+                int storedBlockid = DecorIds[i];
+                byte faceIndex = (byte)(storedBlockid >> 24);
+                if (faceIndex > 5) continue;
+                BlockFacing face = BlockFacing.ALLFACES[faceIndex];
+
+                int dx = (int)(index & 0x1ff);
+                int dy = (int)((index >> 20) & 0x1ff);
+                int dz = (int)((index >> 10) & 0x1ff);
+
+                AssetLocation blockCode = BlockCodes[storedBlockid & 0xFFFFFF];
+
+                Block newBlock = worldForResolve.GetBlock(blockCode);
+                if (newBlock == null)
+                {
+                    continue;
+                }
+
+                if (flipAxis != null)
+                {
+                    if (flipAxis == EnumAxis.Y)
+                    {
+                        dy = SizeY - dy;
+
+                        AssetLocation newCode = newBlock.GetVerticallyFlippedBlockCode();
+                        newBlock = worldForResolve.GetBlock(newCode);
+                        if (face.IsVertical) face = face.Opposite; 
+                    }
+
+                    if (flipAxis == EnumAxis.X)
+                    {
+                        dx = SizeX - dx;
+
+                        AssetLocation newCode = newBlock.GetHorizontallyFlippedBlockCode((EnumAxis)flipAxis);
+                        newBlock = worldForResolve.GetBlock(newCode);
+                        if (face.IsAxisWE) face = face.Opposite;
+                    }
+
+                    if (flipAxis == EnumAxis.Z)
+                    {
+                        dz = SizeZ - dz;
+
+                        AssetLocation newCode = newBlock.GetHorizontallyFlippedBlockCode((EnumAxis)flipAxis);
+                        newBlock = worldForResolve.GetBlock(newCode);
+                        if (face.IsAxisNS) face = face.Opposite;
+                    }
+
+                }
+
+                if (angle != 0)
+                {
+                    AssetLocation newCode = newBlock.GetRotatedBlockCode(angle);
+                    newBlock = worldForResolve.GetBlock(newCode);
+                }
+
+                if (aroundOrigin != EnumOrigin.StartPos)
+                {
+                    dx -= SizeX / 2;
+                    dz -= SizeZ / 2;
+                }
+
+                BlockPos pos = new BlockPos(dx, dy, dz);
+
+                // 90 deg:
+                // xNew = -yOld
+                // yNew = xOld
+
+                // 180 deg:
+                // xNew = -xOld
+                // yNew = -yOld
+
+                // 270 deg:
+                // xNew = yOld
+                // yNew = -xOld
+
+                switch (angle)
+                {
+                    case 90:
+                        pos.Set(-dz, dy, dx);
+                        if (face.IsHorizontal) face = face.GetCW();
+                        break;
+                    case 180:
+                        pos.Set(-dx, dy, -dz);
+                        if (face.IsHorizontal) face = face.Opposite;
+                        break;
+                    case 270:
+                        pos.Set(dz, dy, -dx);
+                        if (face.IsHorizontal) face = face.GetCCW();
+                        break;
+                }
+
+                if (aroundOrigin != EnumOrigin.StartPos)
+                {
+                    pos.X += SizeX / 2;
+                    pos.Z += SizeZ / 2;
+                }
+
+                DecorsUnpacked.TryGetValue(pos, out Block[] decorsTmp);
+                if (decorsTmp == null)
+                {
+                    decorsTmp = new Block[6];
+                    DecorsUnpacked[pos] = decorsTmp;
+                }
+                decorsTmp[face.Index] = newBlock;
             }
 
 

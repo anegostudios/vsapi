@@ -28,6 +28,17 @@ namespace Vintagestory.API.MathTools
         public static readonly Vec3i[] DirectAndIndirectNeighbours;
 
 
+        /// <summary>
+        /// Returns the n-th coordinate
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public int this[int index]
+        {
+            get { return index == 0 ? X : (index == 1 ? Y : Z); }
+            set { if (index == 0) X = value; else if (index == 1) Y = value; else Z = value; }
+        }
+
         static Vec3i()
         {
             List<Vec3i> allNeighbours = new List<Vec3i>();

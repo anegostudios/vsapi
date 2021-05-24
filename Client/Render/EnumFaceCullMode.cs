@@ -23,7 +23,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         Merge = 2,
 
-        MergeIce = 7,
+        /// <summary>
+        /// Calls method Block.ShouldMergeFace() to determine whether to cull the face or not
+        /// </summary>
+        Callback = 7,
 
         /// <summary>
         /// Culls all faces that are adjacent to opaque faces and the bottom, east or south faces adjacent to blocks of the same id
@@ -46,6 +49,16 @@ namespace Vintagestory.API.Client
         /// </summary>
         Liquid = 6,
 
-        MergeSnowLayer = 8
+        MergeSnowLayer = 8,
+
+        /// <summary>
+        /// /// Used for blocks similar to Farmland or StonePath, which are not themselves opaque except on the base, but can cull horizontal sides if adjacent block is opaque (or the same id)
+        /// </summary>
+        FlushExceptTop = 9,
+
+        /// <summary>
+        /// Culls non-opaque faces if the same block is adjacent e.g. a wide staircase made from several Stairs blocks side-by-side  (caution: in future this cull mode will not work with corner stairs shapes)
+        /// </summary>
+        Stairs = 10
     }
 }

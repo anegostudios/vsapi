@@ -56,6 +56,14 @@ namespace Vintagestory.API.Common
         bool DropMouseSlotItems(bool dropAll);
 
         /// <summary>
+        /// Drops the current contents of given slot onto the ground
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <param name="fullStack"></param>
+        /// <returns></returns>
+        bool DropItem(ItemSlot slot, bool fullStack);
+
+        /// <summary>
         /// Produces a visual cue on given slot, if it's currently part of an inventory and visible to the player
         /// If called on server side, the server will send a network packet to notify the client.
         /// </summary>

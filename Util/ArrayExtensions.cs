@@ -80,6 +80,13 @@ namespace Vintagestory.API.Util
             return false;
         }
 
+        /// <summary>
+        /// Creates a new copy of the array with <paramref name="value"/> removed
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static T[] Remove<T>(this T[] array, T value)
         {
             List<T> elems = new List<T>(array);
@@ -110,6 +117,13 @@ namespace Vintagestory.API.Util
             return cut;
         }
 
+        /// <summary>
+        /// Creates a new copy of the array with <paramref name="value"/> appened to the end of the array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static T[] Append<T>(this T[] array, T value)
         {
             T[] grown = new T[array.Length + 1];
@@ -120,7 +134,13 @@ namespace Vintagestory.API.Util
             return grown;
         }
 
-
+        /// <summary>
+        /// Creates a new copy of the array with <paramref name="value"/> appended to the end of the array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static T[] Append<T>(this T[] array, T[] value)
         {
             if (array == null) return null;

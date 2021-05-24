@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
 {
@@ -65,7 +66,7 @@ namespace Vintagestory.API.Common
 
         public static void PopulateObject(object toPopulate, string text, string domain, JsonSerializerSettings settings = null)
         {
-            if (domain != "game")
+            if (domain != GlobalConstants.DefaultDomain)
             {
                 if (settings == null)
                 {
@@ -86,7 +87,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public static T ToObject<T>(string text, string domain, JsonSerializerSettings settings = null)
         {
-            if (domain != "game")
+            if (domain != GlobalConstants.DefaultDomain)
             {
                 if (settings == null)
                 {
@@ -108,7 +109,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public static T ToObject<T>(this JToken token, string domain, JsonSerializerSettings settings = null)
         {
-            if (domain != "game")
+            if (domain != GlobalConstants.DefaultDomain)
             {
                 if (settings == null)
                 {
@@ -139,12 +140,7 @@ namespace Vintagestory.API.Common
         {
             if (reader.Value is string)
             {
-                AssetLocation location = new AssetLocation(reader.Value as string);
-                if (!location.HasDomain())
-                {
-                    location.Domain = domain;
-                }
-                return location;
+                return AssetLocation.Create(reader.Value as string, domain);
             }
             return null;
         }

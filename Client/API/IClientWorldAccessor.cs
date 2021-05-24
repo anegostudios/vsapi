@@ -87,6 +87,7 @@ namespace Vintagestory.API.Client
         /// <param name="flipRb"></param>
         /// <returns></returns>
         int ApplyColorMapOnRgba(string climateColorMap, string seasonColorMap, int color, int posX, int posY, int posZ, bool flipRb = true);
+        int ApplyColorMapOnRgba(ColorMap climateColorMap, ColorMap seasonColorMap, int color, int posX, int posY, int posZ, bool flipRb = true);
 
 
         /// <summary>

@@ -7,9 +7,19 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public class EntityItemSlot : DummySlot
+    {
+        public EntityItem Ei;
+
+        public EntityItemSlot(EntityItem ei)
+        {
+            this.Ei = ei;
+        }
+    }
+
     public class EntityItem : Entity
     {
-        public ItemSlot Slot = new DummySlot();
+        public EntityItemSlot Slot;
         
         public long itemSpawnedMilliseconds;
 
@@ -62,7 +72,7 @@ namespace Vintagestory.API.Common
 
         public EntityItem() : base()
         {
-            
+            Slot = new EntityItemSlot(this);
         }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
@@ -81,6 +91,15 @@ namespace Vintagestory.API.Common
                 if (Itemstack != null && Itemstack.Collectible == null) Itemstack.ResolveBlockOrItem(World);
                 Slot.Itemstack = Itemstack;
             });
+
+            if (Itemstack.Collectible.Attributes?["gravityFactor"].Exists == true)
+            {
+                WatchedAttributes.SetDouble("gravityFactor", Itemstack.Collectible.Attributes["gravityFactor"].AsDouble(1));
+            }
+            if (Itemstack.Collectible.Attributes?["airDragFactor"].Exists == true)
+            {
+                WatchedAttributes.SetDouble("airDragFactor", Itemstack.Collectible.Attributes["airDragFactor"].AsDouble(1));
+            }
 
 
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;

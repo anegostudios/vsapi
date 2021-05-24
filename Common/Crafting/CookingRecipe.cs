@@ -198,6 +198,9 @@ namespace Vintagestory.API.Common
                         {
                             if (val.Key.Collectible.NutritionProps?.FoodCategory == EnumFoodCategory.Fruit)
                             {
+                                string jamName = val.Key.Collectible.LastCodePart() + "-jam";
+                                string jamNameLocalised = Lang.Get(jamName);
+                                if (jamName != jamNameLocalised) return jamNameLocalised;
                                 return Lang.Get("{0} jam", val.Key.GetName());
                             }
                         }

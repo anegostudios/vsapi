@@ -113,6 +113,19 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public ItemSlot FirstNonEmptySlot
+        {
+            get
+            {
+                for (int i = 0; i < slots.Length; i++)
+                {
+                    if (!slots[i].Empty) return slots[i];
+                }
+
+                return null;
+            }
+        }
+
 
         public override float GetSuitability(ItemSlot sourceSlot, ItemSlot targetSlot, bool isMerge)
         {

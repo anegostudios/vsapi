@@ -69,6 +69,11 @@ namespace Vintagestory.API.Client
         bool HideGuis { get; }
 
         /// <summary>
+        /// True if all SendPlayerNowReady() was sent, signalling the player is now ready (called by the character selector upon submit)
+        /// </summary>
+        bool PlayerReadyFired { get; }
+
+        /// <summary>
         /// API Component to control the clients ambient values
         /// </summary>
         IAmbientManager Ambient { get; }

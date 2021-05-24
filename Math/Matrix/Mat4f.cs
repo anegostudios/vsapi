@@ -1049,6 +1049,27 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        public static void MulWithVec3_Position_AndScale(float[] matrix, float[] vec, float[] output, int offset, float scaleFactor)
+        {
+            float x = (vec[offset + 0] - 0.5f) * scaleFactor + 0.5f;
+            float y = vec[offset + 1] * scaleFactor;
+            float z = (vec[offset + 2] - 0.5f) *scaleFactor + 0.5f;
+            output[offset + 0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output[offset + 1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output[offset + 2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+        }
+
+
+        public static void MulWithVec3_Position_AndScaleXY(float[] matrix, float[] vec, float[] output, int offset, float scaleFactor)
+        {
+            float x = (vec[offset + 0] - 0.5f) * scaleFactor + 0.5f;
+            float y = vec[offset + 1];
+            float z = (vec[offset + 2] - 0.5f) * scaleFactor + 0.5f;
+            output[offset + 0] = matrix[0] * x + matrix[4] * y + matrix[8] * z + matrix[12];
+            output[offset + 1] = matrix[1] * x + matrix[5] * y + matrix[9] * z + matrix[13];
+            output[offset + 2] = matrix[2] * x + matrix[6] * y + matrix[10] * z + matrix[14];
+        }
+
         /// <summary>
         /// Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
         /// The offset is used to index within the original and output arrays - e.g. in MeshData.xyz

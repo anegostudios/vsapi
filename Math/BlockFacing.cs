@@ -199,7 +199,7 @@ namespace Vintagestory.API.MathTools
         /// bit 4: 1 if north or south
         /// bit 5: sign bit 
         /// </summary>
-        public byte NormalByte { get { return NormalByte; } }
+        public byte NormalByte { get { return normalb; } }
 
         /// <summary>
         /// Normalized normal vector in format GL_INT_2_10_10_10_REV
@@ -536,6 +536,21 @@ namespace Vintagestory.API.MathTools
             }
 
             return facing;
+        }
+
+        public static BlockFacing FromFlag(int flag)
+        {
+            switch (flag)
+            {
+                case 1: return NORTH;
+                case 4: return SOUTH;
+                case 2: return EAST;
+                case 8: return WEST;
+                case 16: return UP;
+                case 32: return DOWN;
+            }
+
+            return null;
         }
 
 

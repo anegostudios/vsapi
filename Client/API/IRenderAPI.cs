@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -656,6 +657,17 @@ namespace Vintagestory.API.Client
         void RenderRectangle(float posX, float posY, float posZ, float width, float height, int color);
 
 
+        /// <summary>
+        /// Inefficiently renders a line between 2 points 
+        /// </summary>
+        /// <param name="posX1"></param>
+        /// <param name="posY1"></param>
+        /// <param name="posZ1"></param>
+        /// <param name="posX2"></param>
+        /// <param name="posY2"></param>
+        /// <param name="posZ2"></param>
+        /// <param name="color"></param>
+        void RenderLine(BlockPos origin, float posX1, float posY1, float posZ1, float posX2, float posY2, float posZ2, int color);
 
         #endregion
 

@@ -73,10 +73,8 @@ namespace Vintagestory.API.Client
         {
             if (On)
             {
-                double size = scaled(unscaledSize - 2 * unscaledPadding);
                 double padding = scaled(unscaledPadding);
-
-                api.Render.Render2DTexturePremultipliedAlpha(onTexture.TextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)size, (int)size);
+                api.Render.Render2DLoadedTexture(onTexture, (int)(Bounds.renderX + padding), (int)(Bounds.renderY + padding));
             }
             
         }

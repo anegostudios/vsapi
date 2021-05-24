@@ -65,6 +65,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public CanSpawnNearbyDelegate OnCanSpawnNearby;
 
+        public EntityTalkUtil talkUtil;
+
         public override bool StoreWithChunk
         {
             get { return false; }
@@ -213,6 +215,13 @@ namespace Vintagestory.API.Common
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
         {
             controls.StopAllMovement();
+
+            if (api.Side == EnumAppSide.Client)
+            {
+                talkUtil = new EntityTalkUtil(api as ICoreClientAPI, this);
+                talkUtil.soundName = new AssetLocation("sounds/voice/altoflute");
+                talkUtil.idleTalkChance = 0f;
+            }
 
             base.Initialize(properties, api, chunkindex3d);
         }
@@ -387,6 +396,11 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
+            if (World.Side == EnumAppSide.Client)
+            {
+                talkUtil.OnGameTick(dt);
+            }
+
             if (Api.Side == EnumAppSide.Server || (Api as ICoreClientAPI).World.Player.PlayerUID != PlayerUID)
             {
                 updateEyeHeight(dt);
@@ -581,6 +595,37 @@ namespace Vintagestory.API.Common
             (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, 196);
         }
 
+        public override void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
+        {
+            if (type == "hurt")
+            {
+                if (World.Side == EnumAppSide.Server)
+                {
+                    (World.Api as ICoreServerAPI).Network.BroadcastEntityPacket(this.EntityId, 1001);
+                } else
+                {
+                    talkUtil.Talk(EnumTalkType.Hurt2);
+                }
+                
+                return;
+            }
+            if (type == "death")
+            {
+                if (World.Side == EnumAppSide.Server)
+                {
+                    (World.Api as ICoreServerAPI).Network.BroadcastEntityPacket(this.EntityId, 1002);
+                } else
+                {
+                    talkUtil.Talk(EnumTalkType.Death);
+                }
+
+                
+                return;
+            }
+
+            base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range);
+        }
+
 
         public override void OnReceivedServerPacket(int packetid, byte[] data)
         {
@@ -593,6 +638,16 @@ namespace Vintagestory.API.Common
             {
                 string animation = SerializerUtil.Deserialize<string>(data);
                 StartAnimation(animation);
+            }
+
+            if (packetid == 1001)
+            {
+                if (!Alive) return;
+                talkUtil.Talk(EnumTalkType.Hurt2);
+            }
+            if (packetid == 1002)
+            {
+                talkUtil.Talk(EnumTalkType.Death);
             }
 
             base.OnReceivedServerPacket(packetid, data);

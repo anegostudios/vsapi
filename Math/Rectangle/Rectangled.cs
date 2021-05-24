@@ -1,4 +1,4 @@
-﻿namespace Vintagestory.API
+﻿namespace Vintagestory.API.Datastructures
 {
 
 
@@ -43,8 +43,8 @@
             return
                 x >= this.X &&
                 y >= this.Y &&
-                x <= this.X + this.Width &&
-                y <= this.Y + this.Height
+                x < this.X + this.Width &&
+                y < this.Y + this.Height
             ;
         }
     }

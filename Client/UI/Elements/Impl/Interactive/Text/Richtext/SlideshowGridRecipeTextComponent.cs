@@ -45,6 +45,8 @@ namespace Vintagestory.API.Client
         /// <param name="allStacks">If set, will resolve wildcards based on this list, otherwise will search all available blocks/items</param>
         public SlideshowGridRecipeTextComponent(ICoreClientAPI capi, GridRecipe[] gridrecipes, double size, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null, ItemStack[] allStacks = null) : base(capi)
         {
+            size = GuiElement.scaled(size);
+
             this.onStackClicked = onStackClicked;
             this.Float = floatType;
             this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, 3 * (size + 3), 3 * (size + 3)) };
@@ -153,21 +155,9 @@ namespace Vintagestory.API.Client
             }
 
 
-            if (ingred.Type == EnumItemClass.Block)
+            foreach (var val in world.Collectibles)
             {
-                foreach (var val in world.Blocks)
-                {
-                    if (val?.Code == null) continue;
-                    if (WildcardUtil.Match(ingred.Code, val.Code, ingred.AllowedVariants)) matches.Add(new ItemStack(val, ingred.Quantity));
-                }
-            }
-            else
-            {
-                foreach (var val in world.Items)
-                {
-                    if (val?.Code == null) continue;
-                    if (WildcardUtil.Match(ingred.Code, val.Code, ingred.AllowedVariants)) matches.Add(new ItemStack(val, ingred.Quantity));
-                }
+                if (WildcardUtil.Match(ingred.Code, val.Code, ingred.AllowedVariants)) matches.Add(new ItemStack(val, ingred.Quantity));
             }
 
             resolveCache[ingred.Code] = matches.ToArray();
@@ -228,7 +218,7 @@ namespace Vintagestory.API.Client
             {
                 for (int y = 0; y < 3; y++)
                 {
-                    ctx.Rectangle(BoundsPerLine[0].X + x*(size+3), BoundsPerLine[0].Y + y*(size+3), size, size);
+                    ctx.Rectangle(BoundsPerLine[0].X + x*(size+GuiElement.scaled(3)), BoundsPerLine[0].Y + y*(size+ GuiElement.scaled(3)), size, size);
                     ctx.Fill();
                 }
             }
@@ -257,6 +247,8 @@ namespace Vintagestory.API.Client
             int my = api.Input.MouseY;
             double rx=0, ry=0;
 
+            
+
             for (int x = 0; x < 3; x++)
             {
                 for (int y = 0; y < 3; y++)
@@ -264,10 +256,13 @@ namespace Vintagestory.API.Client
                     CraftingRecipeIngredient ingred = recipe.GetElementInGrid(y, x, recipe.resolvedIngredients, recipe.Width);
                     if (ingred == null) continue;
 
-                    rx = renderX + bounds.X + x * (size + 3);
-                    ry = renderY + bounds.Y + y * (size + 3);
+                    rx = renderX + bounds.X + x * (size + GuiElement.scaled(3));
+                    ry = renderY + bounds.Y + y * (size + GuiElement.scaled(3));
 
                     dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
+                    
+
+                    //api.Render.PushScissor(scissorBounds, true);
                     api.Render.RenderItemstackToGui(
                         dummyslot, 
                         rx + size * 0.5f,
@@ -275,13 +270,14 @@ namespace Vintagestory.API.Client
                         100, (float)size * 0.58f, ColorUtil.WhiteArgb,
                         true, false, true
                     );
+                    //api.Render.PopScissor();
 
                     // Super weird coordinates, no idea why
 
-                    double dx = mx - rx;
-                    double dy = my - ry;
+                    double dx = mx - rx + 1;
+                    double dy = my - ry + 2;
 
-                    if (dx >= 0 && dx <= size && dy >= 0 && dy <= size)
+                    if (dx >= 0 && dx < size && dy >= 0 && dy < size)
                     {
                         RenderItemstackTooltip(dummyslot, rx + dx, ry + dy, deltaTime);
                     }

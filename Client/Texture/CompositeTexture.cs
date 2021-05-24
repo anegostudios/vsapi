@@ -115,7 +115,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void Bake(IAssetManager assetManager)
         {
-            Baked = Bake(assetManager, this);
+            // Some CompositeTextures are re-used multiple times in the same Block (e.g. if a blocktype specified a texture for key "all") so no need to re-bake
+            if (Baked == null) Baked = Bake(assetManager, this);
         }
 
         /// <summary>
@@ -168,22 +169,20 @@ namespace Vintagestory.API.Client
 
             bct.BakedName = ct.Base.Clone();
              
-            if (ct.Base.Path.EndsWith("*"))
+            if (ct.Base.HasAlternates)
             {
                 List<IAsset> assets = assetManager.GetMany("textures/" + bct.BakedName.Path.Substring(0, bct.BakedName.Path.Length - 1), bct.BakedName.Domain);
                 if (assets.Count == 0)
                 {
                     ct.Base = bct.BakedName = new AssetLocation("unknown");
                 }
-
+                else
                 if (assets.Count == 1)
                 {
-                    ct.Base = assets[0].Location.Clone();
-                    ct.Base.Path = assets[0].Location.Path.Substring("textures/".Length);
-                    ct.Base.RemoveEnding();
+                    ct.Base = assets[0].Location.CloneWithoutPrefixAndEnding("textures/".Length);
                     bct.BakedName = ct.Base.Clone();
                 }
-
+                else
                 if (assets.Count > 1)
                 {
                     int origLength = (ct.Alternates == null ? 0 : ct.Alternates.Length);
@@ -196,15 +195,14 @@ namespace Vintagestory.API.Client
                     int i = 0;
                     foreach (IAsset asset in assets)
                     {
-                        AssetLocation newLocation = assets[0].Location.Clone();
-                        newLocation.Path = asset.Location.Path.Substring("textures/".Length);
-                        newLocation.RemoveEnding();
+                        AssetLocation newLocation = asset.Location.CloneWithoutPrefixAndEnding("textures/".Length);
 
                         if (i == 0)
                         {
                             ct.Base = newLocation;
-                            bct.BakedName = ct.Base;
-                        } else
+                            bct.BakedName = newLocation.Clone();
+                        }
+                        else
                         {
                             alternates[origLength + i - 1] = new CompositeTexture(newLocation);
                         }
@@ -235,7 +233,7 @@ namespace Vintagestory.API.Client
 
             if (ct.Rotation != 0)
             {
-                if (ct.Rotation != 90 && ct.Rotation != 0 && ct.Rotation != 180 && ct.Rotation != 270)
+                if (ct.Rotation != 90 && ct.Rotation != 180 && ct.Rotation != 270)
                 {
                     throw new Exception("Texture definition " + ct.Base + " has a rotation thats not 0, 90, 180 or 270. These are the only allowed values!");
                 }

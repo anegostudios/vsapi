@@ -27,7 +27,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// If you need mods to be executed in a certain order, adjust this methods return value.
-        /// The server will call each Mods Start() method the ascending order of each mods execute order value. And thus, as long as every mod registers it's event handlers in the Start() method, all event handlers will be called in the same execution order.
+        /// The server will call each Mods StartPre() & Start() methods in ascending order of each mods execute order value. And thus, as long as every mod registers it's event handlers in the Start() method, all event handlers will be called in the same execution order.
         /// Default execute order of some survival mod parts
         /// Worldgen:
         /// - GenTerra: 0 

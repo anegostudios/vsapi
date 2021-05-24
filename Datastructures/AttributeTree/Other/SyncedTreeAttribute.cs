@@ -33,12 +33,12 @@ namespace Vintagestory.API.Datastructures
 
         public void UnregisterListener(Action listener)
         {
-            foreach (var val in OnModified)
+            // Iterate over a copy, we might have the same listener on several paths
+            foreach (var val in new List<TreeModifiedListener>(OnModified))
             {
                 if (val.listener == listener)
                 {
                     OnModified.Remove(val);
-                    return;
                 }
             }
         }
@@ -231,6 +231,7 @@ namespace Vintagestory.API.Datastructures
 
             for (int i = 0; i < paths.Length; i++)
             {
+                if (paths[i] == null) continue;
                 IAttribute attr = GetAttributeByPath(paths[i]);
                 if (attr == null) continue;
 

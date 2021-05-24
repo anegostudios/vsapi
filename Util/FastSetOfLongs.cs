@@ -6,14 +6,22 @@ namespace Vintagestory.API.Util
 {
     public class FastSetOfLongs : IEnumerable<long>
     {
-        int maxSize = 27;
+        int arraySize = 27;
         int size = 0;
         long[] set;
         long last = long.MinValue;
 
+        public int Count { get { return size; } }
+
+        public void Clear()
+        {
+            size = 0;
+            last = long.MinValue;
+        }
+
         public FastSetOfLongs()
         {
-            set = new long[maxSize];
+            set = new long[arraySize];
         }
 
         /// <summary>
@@ -34,7 +42,7 @@ namespace Vintagestory.API.Util
             }
 
             // now actually add the value
-            if (size + 1 >= maxSize) expandArray();
+            if (size + 1 >= arraySize) expandArray();
             set[size++] = value;
             return true;
 
@@ -43,10 +51,11 @@ namespace Vintagestory.API.Util
 
         private void expandArray()
         {
-            int newSize = maxSize * 3 / 2 + 1;
+            int newSize = arraySize * 3 / 2 + 1;
             long[] newArray = new long[newSize];
             for (int i = 0; i < size; i++) newArray[i] = set[i];
             set = newArray;
+            arraySize = newSize;
         }
 
 

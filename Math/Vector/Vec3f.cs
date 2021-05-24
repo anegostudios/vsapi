@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ProtoBuf;
 using System;
 using System.IO;
 using Vintagestory.API.MathTools;
@@ -9,6 +10,7 @@ namespace Vintagestory.API.MathTools
     /// Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
+    [ProtoContract]
     public class Vec3f : IVec3
     {
         public static Vec3f Zero { get { return new Vec3f(); } }
@@ -17,16 +19,19 @@ namespace Vintagestory.API.MathTools
         /// The X-Component of the vector
         /// </summary>
         [JsonProperty]
+        [ProtoMember(1)]
         public float X;
         /// <summary>
         /// The Y-Component of the vector
         /// </summary>
         [JsonProperty]
+        [ProtoMember(2)]
         public float Y;
         /// <summary>
         /// The Z-Component of the vector
         /// </summary>
         [JsonProperty]
+        [ProtoMember(3)]
         public float Z;
 
 

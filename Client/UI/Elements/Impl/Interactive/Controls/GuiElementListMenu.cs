@@ -11,7 +11,7 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
     // Contains quite some ugly hacks to make the scrollbar work :<
-    public class GuiElementListMenu : GuiElementTextControl
+    public class GuiElementListMenu : GuiElementTextBase
     {
         public string[] Values { get; set; }
         public string[] Names { get; set; }
@@ -286,7 +286,7 @@ namespace Vintagestory.API.Client
             ctx = genContext(surface);
             
             scrollbar.ComposeElements(ctx, surface);
-            scrollbar.SetHeights((int)visibleBounds.InnerHeight / RuntimeEnv.GUIScale, (int)expandedBoxHeight / RuntimeEnv.GUIScale);
+            scrollbar.SetHeights((int)visibleBounds.InnerHeight , (int)expandedBoxHeight);
 
             generateTexture(surface, ref scrollbarTexture);
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
@@ -13,6 +14,37 @@ namespace Vintagestory.API.Common
         bool AddTextureLocation(AssetLocationAndSource textureLoc);
 
         int this[AssetLocationAndSource textureLoc] { get; }
+
+        bool ContainsKey(AssetLocation loc);
+        void AddTextureLocation_Checked(AssetLocationAndSource assetLocationAndSource);
+    }
+
+    /// <summary>
+    /// For performance, don't build and store new concatenated strings for every block variant, item and entity, when these will only be used (if ever) for error logging
+    /// </summary>
+    public struct SourceStringComponents
+    {
+        private readonly string text;
+        private readonly string domain;
+        private readonly string path;
+        private readonly int alternate;
+
+        /// <summary>
+        /// Store references to the source strings, to be able to build a logging string later if necessary
+        /// </summary>
+        public SourceStringComponents(string message, string sourceDomain, string sourcePath, int sourceAlt)
+        {
+            text = message;
+            domain = sourceDomain;
+            path = sourcePath;
+            alternate = sourceAlt;
+        }
+
+        public override string ToString()
+        {
+            if (alternate >= 0) return text + domain + AssetLocation.LocationSeparator + path + " alternate:" + alternate;
+            return text + domain + AssetLocation.LocationSeparator + path;
+        }
     }
     
     /// <summary>
@@ -24,7 +56,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The source of a given asset.
         /// </summary>
-        public string Source;
+        public SourceStringComponents Source;
 
         public AssetLocationAndSource(string location) : base(location)
         {
@@ -34,14 +66,36 @@ namespace Vintagestory.API.Common
         {
         }
 
-        public AssetLocationAndSource(AssetLocation loc, string source) : base(loc.Domain, loc.Path)
+        public AssetLocationAndSource(AssetLocation loc, string message, AssetLocation sourceLoc, int alternateNo = -1) : base(loc.Domain, loc.Path)
+        {
+            this.Source = new SourceStringComponents(message, sourceLoc.Domain, sourceLoc.Path, alternateNo);
+        }
+
+        public AssetLocationAndSource(string domain, string path, string message, string sourceDomain, string sourcePath, int alternateNo = -1) : base(domain, path)
+        {
+            this.Source = new SourceStringComponents(message, sourceDomain, sourcePath, alternateNo);
+        }
+
+        public AssetLocationAndSource(AssetLocation loc, SourceStringComponents source) : base(loc.Domain, loc.Path)
         {
             this.Source = source;
         }
 
-        public AssetLocationAndSource(string domain, string path, string source) : base(domain, path)
+        public AssetLocationAndSource(string domain, string path, SourceStringComponents source) : base(domain, path)
         {
             this.Source = source;
+        }
+
+        [Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(loc, message, sourceAssetLoc)", false)]
+        public AssetLocationAndSource(AssetLocation loc, string oldStyleSource) : base(loc.Domain, loc.Path)
+        {
+            this.Source = new SourceStringComponents(oldStyleSource, "", "", -1);
+        }
+
+        [Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(domain, path, message, sourceAssetLoc)", false)]
+        public AssetLocationAndSource(string domain, string path, string oldStyleSource) : base(domain, path)
+        {
+            this.Source = new SourceStringComponents(oldStyleSource, "", "", -1);
         }
     }
 
@@ -60,8 +114,8 @@ namespace Vintagestory.API.Common
         private string path;
 
         public string Domain {
-            get { return domain ?? "game"; }
-            set { domain = value; }
+            get { return domain ?? GlobalConstants.DefaultDomain; }
+            set { domain = value == null ? null : string.Intern(value.ToLowerInvariant()); }
         }
 
         public string Path {
@@ -69,7 +123,8 @@ namespace Vintagestory.API.Common
             set { path = value; }
         }
 
-        public bool IsWildCard => Path.Contains("*");
+        public bool IsWildCard => Path.IndexOf('*') >= 0;
+        public bool HasAlternates => path.Length > 1 && path[path.Length - 1] == '*';
 
         // Needed for ProtoBuf
         public AssetLocation()
@@ -78,7 +133,8 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Create a new AssetLocation. If no domain is prefixed, the default 'game' domain is used.
+        /// Create a new AssetLocation from a single string (e.g. when parsing an AssetLocation in a JSON file). If no domain is prefixed, the default 'game' domain is used.
+        /// This ensures the domain and path in the created AssetLocation are lowercase (as the input string could have any case)
         /// </summary>
         /// <param name="domainAndPath"></param>
         public AssetLocation(string domainAndPath)
@@ -104,33 +160,49 @@ namespace Vintagestory.API.Common
             }
             else
             {
-                domain = domainAndPath.Substring(0, colonIndex);
+                domain = string.Intern(domainAndPath.Substring(0, colonIndex));
                 path = domainAndPath.Substring(colonIndex + 1);
             }
         }
 
         /// <summary>
-        /// Create a new AssetLocation with given domain
+        /// Create a new AssetLocation with given domain and path: for efficiency it is the responsibility of calling code to ensure these are lowercase
         /// </summary>
-        /// <param name="domain"></param>
-        /// <param name="path"></param>
         public AssetLocation(string domain, string path)
         {
-            this.domain = domain?.ToLowerInvariant();
-            this.path   = path.ToLowerInvariant();
+            this.domain = domain == null ? null : string.Intern(domain);
+            this.path   = path;
+#if PERFTEST
+            if (this.domain != domain?.ToLowerInvariant() || this.path != path.ToLowerInvariant())
+            {
+                //breakpoint to detect any non-lowercase AssetLocation
+            }
+#endif
         }
 
 
-        public static AssetLocation Create(string domainAndPath, string defaultDomain = "game")
+        /// <summary>
+        /// Create an Asset Location from a string which may optionally have no prefixed domain: - in which case the defaultDomain is used.
+        /// This may be used to create an AssetLocation from any string (e.g. from custom Attributes in a JSON file).  For safety and consistency it ensures the domainAndPath string is lowercase.
+        /// BUT: the calling code has the responsibility to ensure the defaultDomain parameter is lowercase (normally the defaultDomain will be taken from another existing AssetLocation, in which case it should already be lowercase).
+        /// </summary>
+        public static AssetLocation Create(string domainAndPath, string defaultDomain = GlobalConstants.DefaultDomain)
         {
             if (!domainAndPath.Contains(":"))
             {
-                return new AssetLocation(defaultDomain, domainAndPath);
+                return new AssetLocation(defaultDomain, domainAndPath.ToLowerInvariant());
             }
 
             return new AssetLocation(domainAndPath);
         }
 
+        /// <summary>
+        /// For internal use when the newDomain is known to be a lowercase, interned string (e.g the domain taken from another existing AssetLocation)
+        /// </summary>
+        public void SetDomain_Checked(string newDomain)
+        {
+            this.domain = newDomain;
+        }
         
         /// <summary>
         /// Returns true if this is a valid path. For an asset location to be valid it needs to 
@@ -149,23 +221,28 @@ namespace Vintagestory.API.Common
 
         public virtual bool IsChild(AssetLocation Location)
         {
-            return Location.Domain.Equals(Domain) && Location.Path.StartsWith(Path);
+            return Location.Domain.Equals(Domain) && Location.path.StartsWithFast(path);
         }
 
 
         public virtual bool BeginsWith(string domain, string partialPath)
         {
-            return domain.Equals(Domain) && Path.StartsWith(partialPath);
+            return path.StartsWithFast(partialPath) && (domain == null || domain.Equals(Domain));
         }
 
         public string ToShortString()
         {
-            if (Domain != "game")
+            if (domain == null || domain.Equals(GlobalConstants.DefaultDomain))
             {
-                return ToString();
+                return path;
             }
 
-            return Path;
+            return ToString();
+        }
+
+        public string ShortDomain()
+        {
+            return (domain == null || domain.Equals(GlobalConstants.DefaultDomain)) ? "" : domain;
         }
 
 
@@ -176,7 +253,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public string FirstPathPart(int posFromLeft = 0)
         {
-            string[] parts = Path.Split('/');
+            string[] parts = path.Split('/');
             return parts[posFromLeft];
         }
 
@@ -196,7 +273,7 @@ namespace Vintagestory.API.Common
 
         public AssetLocation WithPathPrefixOnce(string prefix)
         {
-            if (!path.StartsWith(prefix))
+            if (!path.StartsWithFast(prefix))
             {
                 path = prefix + path;
             }
@@ -251,7 +328,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void RemoveEnding()
         {
-            path = path.Substring(0, path.LastIndexOf("."));
+            path = path.Substring(0, path.LastIndexOf('.'));
         }
 
         /// <summary>
@@ -263,6 +340,13 @@ namespace Vintagestory.API.Common
             return new AssetLocation(this.domain, this.path);
         }
 
+        public virtual AssetLocation CloneWithoutPrefixAndEnding(int prefixLength)
+        {
+            int i = path.LastIndexOf('.');
+            string newPath = i >= prefixLength ? path.Substring(prefixLength, i - prefixLength) : path.Substring(prefixLength);
+            return new AssetLocation(this.domain, newPath);
+        }
+
         /// <summary>
         /// Makes a copy of the asset with a modified path.
         /// </summary>
@@ -270,7 +354,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual AssetLocation CopyWithPath(string path)
         {
-            return Clone().WithPath(path);
+            return new AssetLocation(this.domain, path);
         }
 
         /// <summary>
@@ -301,13 +385,13 @@ namespace Vintagestory.API.Common
 
         public override int GetHashCode()
         {
-            return Domain.GetHashCode() ^ Path.GetHashCode();
+            return Domain.GetHashCode() ^ path.GetHashCode();
         }
 
         public bool Equals(AssetLocation other)
         {
             if (other == null) return false;
-            return (Domain == other.Domain) && (Path?.EqualsFast(other.Path) == true);
+            return path.EqualsFast(other.path) && Domain.Equals(other.Domain);
         }
 
         public override bool Equals(object obj)

@@ -69,7 +69,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// White opaque argb color
         /// </summary>
-        public static readonly int WhiteArgb = ToRgba(255, 255, 255, 255);
+        public const int WhiteArgb = ~0;
         /// <summary>
         /// White opaque AHSV color
         /// </summary>
@@ -89,7 +89,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// White opaque color as normalized float values (0..1)
         /// </summary>
-        public static readonly double[] BlackArgbDouble = new double[] { 0,0,0, 1 };
+        public static readonly double[] BlackArgbDouble = new double[] { 0, 0, 0, 1 };
 
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Vintagestory.API.MathTools
                 ((color & 0xff) << 16)
             ;
         }
-        
+
         /// <summary>
         /// Splits up a 32bit int color into 4 1 byte components, in BGRA order (Alpha channel at the highest 8 bits)
         /// </summary>
@@ -207,6 +207,9 @@ namespace Vintagestory.API.MathTools
             return (int)(colorRel.R * 255) | ((int)(colorRel.G * 255) << 8) | ((int)(colorRel.B * 255) << 16) | ((int)(colorRel.A * 255) << 24);
         }
 
+        /// <summary>
+        /// Care: the returned value is in true RGBA order, not BGRA as used for example by VS particle system.  Therefore, depending on use, calling code may need to exchange the r and b parameters to see correct colors rendered in-game.
+        /// </summary>
         public static int ColorFromRgba(int r, int g, int b, int a)
         {
             return r | (g << 8) | (b << 16) | (a << 24);
@@ -397,7 +400,7 @@ namespace Vintagestory.API.MathTools
             if (a1 == 0 && a2 == 0) return 0;
 
             return
-                ((int)(255*(a1 + a2 * (1 - a1))) << 24) |
+                ((int)(255 * (a1 + a2 * (1 - a1))) << 24) |
                 (ValueOverlay((rgb1 >> 16) & 0xff, a1, (rgb2 >> 16) & 0xff, a2) << 16) |
                 (ValueOverlay((rgb1 >> 8) & 0xff, a1, (rgb2 >> 8) & 0xff, a2) << 8) |
                 ValueOverlay(rgb1 & 0xff, a1, rgb2 & 0xff, a2)
@@ -406,7 +409,7 @@ namespace Vintagestory.API.MathTools
 
         public static int ValueOverlay(int c1, float a1, int c2, float a2)
         {
-            return (int) (
+            return (int)(
                 (c1 * a1 + c2 * a2 * (1 - a1)) /
                 (a1 + a2 * (1 - a1))
             );
@@ -956,6 +959,64 @@ namespace Vintagestory.API.MathTools
             };
         }
 
+        /// <summary>
+        /// Converts HSV (extracted from light and lightSat) to RGBA
+        /// </summary>
+        public class LightUtil
+        {
+            readonly float[] blockLightlevels;
+            readonly float[] sunLightlevels;
+            readonly byte[] hueLevels;
+            readonly byte[] satLevels;
+
+            public LightUtil(float[] blockLights, float[] sunLights, byte[] hues, byte[] sats)
+            {
+                this.blockLightlevels = blockLights;
+                this.sunLightlevels = sunLights;
+                this.hueLevels = hues;
+                this.satLevels = sats;
+            }
+
+            public int ToRgba(ushort light, ushort lightSat)
+            {
+                byte v = (byte)(blockLightlevels[(light >> 5) & 31] * 255.999f);
+                byte a = (byte)(sunLightlevels[light & 31] * 255.999f);
+
+                if (lightSat == 0)
+                {
+                    return a << 24 | v << 16 | v << 8 | v;
+                }
+
+                byte h = hueLevels[light >> 10];
+                byte s = satLevels[lightSat & 7];
+
+                int region, p, q, t;
+                int remainder;
+
+                region = h / 43;
+                remainder = (h - (region * 43)) * 6;
+
+                p = (v * (255 - s)) >> 8;
+                q = (v * (255 - ((s * remainder) >> 8))) >> 8;
+                t = (v * (255 - ((s * (255 - remainder)) >> 8))) >> 8;
+
+                switch (region)
+                {
+                    case 0:
+                        return a << 24 | p << 16 | t << 8 | v;
+                    case 1:
+                        return a << 24 | p << 16 | v << 8 | q;
+                    case 2:
+                        return a << 24 | t << 16 | v << 8 | p;
+                    case 3:
+                        return a << 24 | v << 16 | q << 8 | p;
+                    case 4:
+                        return a << 24 | v << 16 | p << 8 | t;
+                    default:
+                        return a << 24 | q << 16 | p << 8 | v;
+                }
+            }
+        }
     }
 }
 

@@ -33,6 +33,8 @@ namespace Vintagestory.API.Client
 
         ElementBounds scissorBounds;
 
+        public string[] RecompCheckIgnoredStackAttributes;
+
         /// <summary>
         /// Creates an ItemStackInfo element.
         /// </summary>
@@ -198,7 +200,10 @@ namespace Vintagestory.API.Client
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            if (curSlot?.Itemstack == null || !readyToRender) return;
+            if (curSlot?.Itemstack == null || !readyToRender)
+            {
+                return;
+            }
 
             api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, Bounds, 1000);
 
@@ -244,13 +249,10 @@ namespace Vintagestory.API.Client
         /// <param name="nowSlot"></param>
         public void SetSourceSlot(ItemSlot nowSlot)
         {
-            //bool recompose = this.curStack == null || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(curStack));
-
             bool recompose =
                 ((this.curStack == null) != (nowSlot?.Itemstack == null))
-                || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(api.World, curStack/*, GlobalConstants.IgnoredStackAttributes - don't ingore, we want to see the changed values!*/))
+                || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(api.World, curStack, RecompCheckIgnoredStackAttributes))
             ;
-
 
             if (nowSlot?.Itemstack == null)
             {

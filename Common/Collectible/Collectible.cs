@@ -14,6 +14,9 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+
+    public delegate void CollectibleBehaviorDelegate(CollectibleBehavior behavior, ref EnumHandling handling);
+
     /// <summary>
     /// Contains all properties shared by Blocks and Items
     /// </summary>
@@ -206,6 +209,11 @@ namespace Vintagestory.API.Common
         protected ICoreAPI api;
 
 
+        /// <summary>
+        /// Modifiers that can alter the behavior of the item or block, mostly for held interaction
+        /// </summary>
+        public CollectibleBehavior[] CollectibleBehaviors = new CollectibleBehavior[0];
+
 
         // Non overridable so people don't accidently forget to call the base method for assigning the api in OnLoaded
         public void OnLoadedNative(ICoreAPI api)
@@ -306,7 +314,10 @@ namespace Vintagestory.API.Common
         /// <param name="renderinfo"></param>
         public virtual void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo)
         {
-
+            for (int i = 0; i < CollectibleBehaviors.Length; i++)
+            {
+                CollectibleBehaviors[i].OnBeforeRender(capi, itemstack, target, ref renderinfo);
+            }
         }
 
 
@@ -355,15 +366,16 @@ namespace Vintagestory.API.Common
         public virtual float OnBlockBreaking(IPlayer player, BlockSelection blockSel, ItemSlot itemslot, float remainingResistance, float dt, int counter)
         {
             Block block = player.Entity.World.BlockAccessor.GetBlock(blockSel.Position);
+            var mat = block.GetBlockMaterial(api.World.BlockAccessor, blockSel.Position);
 
             Vec3f faceVec = blockSel.Face.Normalf;
             Random rnd = player.Entity.World.Rand;
 
-            bool cantMine = block.RequiredMiningTier > 0 && itemslot.Itemstack?.Collectible != null && (itemslot.Itemstack.Collectible.ToolTier < block.RequiredMiningTier || (MiningSpeed == null || !MiningSpeed.ContainsKey(block.BlockMaterial)));
+            bool cantMine = block.RequiredMiningTier > 0 && itemslot.Itemstack?.Collectible != null && (itemslot.Itemstack.Collectible.ToolTier < block.RequiredMiningTier || (MiningSpeed == null || !MiningSpeed.ContainsKey(mat)));
 
-            double chance = block.BlockMaterial == EnumBlockMaterial.Ore ? 0.72 : 0.12;
+            double chance = mat == EnumBlockMaterial.Ore ? 0.72 : 0.12;
 
-            if ((counter % 5 == 0) && (rnd.NextDouble() < chance || cantMine) && (block.BlockMaterial == EnumBlockMaterial.Stone || block.BlockMaterial == EnumBlockMaterial.Ore) && (Tool == EnumTool.Pickaxe || Tool == EnumTool.Hammer))
+            if ((counter % 5 == 0) && (rnd.NextDouble() < chance || cantMine) && (mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Ore) && (Tool == EnumTool.Pickaxe || Tool == EnumTool.Hammer))
             {
                 double posx = blockSel.Position.X + blockSel.HitPosition.X;
                 double posy = blockSel.Position.Y + blockSel.HitPosition.Y;
@@ -402,7 +414,7 @@ namespace Vintagestory.API.Common
                 return remainingResistance;
             }
 
-            return remainingResistance - GetMiningSpeed(itemslot.Itemstack, block, player) * dt;
+            return remainingResistance - GetMiningSpeed(itemslot.Itemstack, blockSel, block, player) * dt;
         }
 
 
@@ -449,17 +461,19 @@ namespace Vintagestory.API.Common
         /// <param name="itemstack"></param>
         /// <param name="block"></param>
         /// <returns></returns>
-        public virtual float GetMiningSpeed(IItemStack itemstack, Block block, IPlayer forPlayer)
+        public virtual float GetMiningSpeed(IItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer)
         {
             float traitRate = 1f;
 
-            if (block.BlockMaterial == EnumBlockMaterial.Ore || block.BlockMaterial == EnumBlockMaterial.Stone) {
+            var mat = block.GetBlockMaterial(api.World.BlockAccessor, blockSel.Position);
+
+            if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone) {
                 traitRate = forPlayer.Entity.Stats.GetBlended("miningSpeedMul");
             }
 
-            if (MiningSpeed == null || !MiningSpeed.ContainsKey(block.BlockMaterial)) return traitRate;
+            if (MiningSpeed == null || !MiningSpeed.ContainsKey(mat)) return traitRate;
 
-            return MiningSpeed[block.BlockMaterial] * GlobalConstants.ToolMiningSpeedModifier * traitRate;
+            return MiningSpeed[mat] * GlobalConstants.ToolMiningSpeedModifier * traitRate;
         }
 
 
@@ -513,6 +527,7 @@ namespace Vintagestory.API.Common
         /// An entity used this collectibe to attack something
         /// </summary>
         /// <param name="world"></param>
+        /// <param name="byEntity"></param>
         /// <param name="attackedEntity"></param>
         /// <param name="itemslot"></param>
         public virtual void OnAttackingWith(IWorldAccessor world, Entity byEntity, Entity attackedEntity, ItemSlot itemslot)
@@ -533,7 +548,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)
         {
-            if (ingredient.IsTool && ingredient.ToolDurabilityCost > GetDurability(inputStack)) return false;
+            if (ingredient.IsTool && ingredient.ToolDurabilityCost > inputStack.Attributes.GetInt("durability", GetDurability(inputStack))) return false;
 
             return true;
         }
@@ -579,7 +594,6 @@ namespace Vintagestory.API.Common
         /// <param name="allInputslots"></param>
         /// <param name="outputSlot"></param>
         /// <param name="byRecipe"></param>
-        /// <param name="byPlayer"></param>
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
         {
 
@@ -606,6 +620,11 @@ namespace Vintagestory.API.Common
             {
                 itemslot.Itemstack = null;
 
+                if (byEntity is EntityAgent && Tool != null)
+                {
+                    RefillSlotIfEmpty(itemslot, byEntity as EntityAgent, (stack) => stack.Collectible.Tool == Tool);
+                }
+
                 if (byEntity is EntityPlayer)
                 {
                     IPlayer player = world.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
@@ -614,12 +633,37 @@ namespace Vintagestory.API.Common
                 {
                     world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), byEntity.Pos.X, byEntity.Pos.Y, byEntity.Pos.Z);
                 }
-
-
             }
 
             itemslot.MarkDirty();
         }
+
+
+
+        protected virtual void RefillSlotIfEmpty(ItemSlot slot, EntityAgent byEntity, ActionConsumable<ItemStack> matcher)
+        {
+            if (!slot.Empty) return;
+
+            byEntity.WalkInventory((invslot) =>
+            {
+                if (invslot is ItemSlotCreative) return true;
+
+                InventoryBase inv = invslot.Inventory;
+                if (!(inv is InventoryBasePlayer) && !inv.HasOpened((byEntity as EntityPlayer).Player)) return true;
+
+                if (invslot.Itemstack != null && matcher(invslot.Itemstack))
+                {
+                    invslot.TryPutInto(byEntity.World, slot);
+                    invslot.Inventory.PerformNotifySlot(invslot.Inventory.GetSlotId(invslot));
+                    slot.Inventory.PerformNotifySlot(slot.Inventory.GetSlotId(slot));
+
+                    return false;
+                }
+
+                return true;
+            });
+        }
+
 
         public virtual SkillItem[] GetToolModes(ItemSlot slot, IClientPlayer forPlayer, BlockSelection blockSel)
         {
@@ -734,6 +778,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
         /// <param name="useType"></param>
+        /// <param name="firstEvent">True on first mouse down</param>
         /// <param name="handling">Whether or not to do any subsequent actions. If not set or set to NotHandled, the action will not called on the server.</param>
         /// <returns></returns>
         public void OnHeldUseStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType, bool firstEvent, ref EnumHandHandling handling)
@@ -881,6 +926,103 @@ namespace Vintagestory.API.Common
         /// <returns>True if an interaction should happen (makes it sync to the server), false if no sync to server is required</returns>
         public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
         {
+            EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => bh.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref bhHandHandling, ref hd),
+                () => tryEatBegin(slot, byEntity, ref bhHandHandling)
+            );
+            handling = bhHandHandling;
+        }
+
+
+        /// <summary>
+        /// Called every frame while the player is using this collectible. Return false to stop the interaction.
+        /// </summary>
+        /// <param name="secondsUsed"></param>
+        /// <param name="slot"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="entitySel"></param>
+        /// <returns>False if the interaction should be stopped. True if the interaction should continue</returns>
+        public virtual bool OnHeldInteractStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        {
+            bool result = true;
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+
+                bool behaviorResult = behavior.OnHeldInteractStep(secondsUsed, slot, byEntity, blockSel, entitySel, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            return tryEatStep(secondsUsed, slot, byEntity);
+        }
+
+
+        /// <summary>
+        /// Called when the player successfully completed the using action, always called once an interaction is over
+        /// </summary>
+        /// <param name="secondsUsed"></param>
+        /// <param name="slot"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="entitySel"></param>
+        public virtual void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        {
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+
+                behavior.OnHeldInteractStop(secondsUsed, slot, byEntity, blockSel, entitySel, ref handled);
+                if (handled != EnumHandling.PassThrough) preventDefault = true;
+
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (preventDefault) return;
+
+            tryEatStop(secondsUsed, slot, byEntity);
+        }
+
+
+
+        /// <summary>
+        /// When the player released the right mouse button. Return false to deny the cancellation (= will keep using the item until OnHeldInteractStep returns false).
+        /// </summary>
+        /// <param name="secondsUsed"></param>
+        /// <param name="slot"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="entitySel"></param>
+        /// <param name="cancelReason"></param>
+        /// <returns></returns>
+        public virtual bool OnHeldInteractCancel(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
+        {
+            return true;
+        }
+
+
+
+        /// <summary>
+        /// Tries to eat the contents in the slot, first call
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="handling"></param>
+        protected virtual void tryEatBegin(ItemSlot slot, EntityAgent byEntity, ref EnumHandHandling handling)
+        {
             if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) != null)
             {
                 byEntity.World.RegisterCallback((dt) =>
@@ -900,21 +1042,16 @@ namespace Vintagestory.API.Common
             }
         }
 
-
         /// <summary>
-        /// Called every frame while the player is using this collectible. Return false to stop the interaction.
+        /// Tries to eat the contents in the slot, eat step call
         /// </summary>
         /// <param name="secondsUsed"></param>
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="entitySel"></param>
-        /// <returns>False if the interaction should be stopped. True if the interaction should continue</returns>
-        public virtual bool OnHeldInteractStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        protected virtual bool tryEatStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity)
         {
             if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) == null) return false;
 
-            
 
             Vec3d pos = byEntity.Pos.AheadCopy(0.4f).XYZ;
             pos.X += byEntity.LocalEyePos.X;
@@ -957,14 +1094,12 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Called when the player successfully completed the using action, always called once an interaction is over
+        /// Finished eating the contents in the slot, final call
         /// </summary>
         /// <param name="secondsUsed"></param>
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="entitySel"></param>
-        public virtual void OnHeldInteractStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel)
+        protected virtual void tryEatStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity)
         {
             FoodNutritionProperties nutriProps = GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity);
 
@@ -1004,20 +1139,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        /// <summary>
-        /// When the player released the right mouse button. Return false to deny the cancellation (= will keep using the item until OnHeldInteractStep returns false).
-        /// </summary>
-        /// <param name="secondsUsed"></param>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        /// <param name="blockSel"></param>
-        /// <param name="entitySel"></param>
-        /// <param name="cancelReason"></param>
-        /// <returns></returns>
-        public virtual bool OnHeldInteractCancel(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
-        {
-            return true;
-        }
 
 
         /// <summary>
@@ -1042,7 +1163,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldItemName(ItemStack itemStack)
         {
-            string type = ItemClass == EnumItemClass.Block ? "block" : "item";
+            string type = ItemClass.Name();
 
             return Lang.GetMatching(Code?.Domain + AssetLocation.LocationSeparator + type + "-" + Code?.Path);
         }
@@ -1231,17 +1352,21 @@ namespace Vintagestory.API.Common
             {
                 dsc.AppendLine(Lang.Get("Temperature: {0}°C", (int)temp));
             }
-
-
-
         }
 
 
+        /// <summary>
+        /// Interaction help thats displayed above the hotbar, when the player puts this item/block in his active hand slot
+        /// </summary>
+        /// <param name="inSlot"></param>
+        /// <returns></returns>
         public virtual WorldInteraction[] GetHeldInteractionHelp(ItemSlot inSlot)
         {
+            WorldInteraction[] interactions;
+
             if (GetNutritionProperties(api.World, inSlot.Itemstack, null) != null)
             {
-                return new WorldInteraction[]
+                interactions = new WorldInteraction[]
                 {
                     new WorldInteraction()
                     {
@@ -1249,10 +1374,25 @@ namespace Vintagestory.API.Common
                         MouseButton = EnumMouseButton.Right
                     }
                 };
+            } else
+            {
+                interactions = new WorldInteraction[0];
             }
 
-            return null;
+            EnumHandling handled = EnumHandling.PassThrough;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                WorldInteraction[] bhi = behavior.GetHeldInteractionHelp(inSlot, ref handled);
+
+                interactions = interactions.Append(bhi);
+
+                if (handled == EnumHandling.PreventSubsequent) break;
+            }
+
+            return interactions;
         }
+
 
 
         public virtual float AppendPerishableInfoText(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world)
@@ -1270,6 +1410,7 @@ namespace Vintagestory.API.Common
 
                     TransitionableProperties prop = state.Props;
                     float perishRate = GetTransitionRateMul(world, inSlot, prop.Type);
+                    if (inSlot.Inventory is CreativeInventoryTab) perishRate = 1f;
                     float transitionLevel = state.TransitionLevel;
                     float freshHoursLeft = state.FreshHoursLeft / perishRate;
 
@@ -1292,11 +1433,19 @@ namespace Vintagestory.API.Common
                                 else
                                 {
 
-                                    double hoursPerday = api.World.Calendar.HoursPerDay;
+                                    float hoursPerday = api.World.Calendar.HoursPerDay;
+                                    float years = freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerYear;
 
-                                    if (freshHoursLeft / hoursPerday >= api.World.Calendar.DaysPerYear)
+                                    if (years >= 1.0f)
                                     {
-                                        dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-years", Math.Round(freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerYear, 1)));
+                                        if (years <= 1.05f)
+                                        {
+                                            dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-one-year"));
+                                        }
+                                        else
+                                        {
+                                            dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-years", Math.Round(years, 1)));
+                                        }
                                     }
                                     /*else if (freshHoursLeft / hoursPerday >= api.World.Calendar.DaysPerMonth)  - confusing. 12 days per months and stuff..
                                     {
@@ -1712,6 +1861,14 @@ namespace Vintagestory.API.Common
                 haveText = true;
             }
 
+            // Bakes into
+            if (Attributes?["bakingResultCode"].AsString() is string bakingResult)
+            {
+                string title = Lang.Get("smeltdesc-bake-title");
+                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                components.Add(new ItemstackTextComponent(capi, new ItemStack(capi.World.GetItem(new AssetLocation(bakingResult))), 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+            }
+            else
             // Smelts into
             if (CombustibleProps?.SmeltedStack?.ResolvedItemstack != null && !CombustibleProps.SmeltedStack.ResolvedItemstack.Equals(api.World, stack, GlobalConstants.IgnoredStackAttributes))
             {
@@ -1745,29 +1902,34 @@ namespace Vintagestory.API.Common
 
             TransitionableProperties[] props = GetTransitionableProperties(api.World, stack, null);
 
-            foreach (var prop in props)
+            if (props != null)
             {
-                switch (prop.Type)
+                foreach (var prop in props)
                 {
-                    case EnumTransitionType.Cure:
-                        components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours, cures into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
-                        components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
-                        break;
+                    switch (prop.Type)
+                    {
+                        case EnumTransitionType.Cure:
+                            components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours, cures into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                            components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                            break;
 
-                    case EnumTransitionType.Ripen:
-                        components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours of open storage, ripens into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
-                        components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
-                        break;
+                        case EnumTransitionType.Ripen:
+                            components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours of open storage, ripens into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                            components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                            break;
 
-                    case EnumTransitionType.Dry:
-                        break;
+                        case EnumTransitionType.Dry:
+                            components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours of open storage, dries into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                            components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                            break;
 
-                    case EnumTransitionType.Convert:
-                        break;
+                        case EnumTransitionType.Convert:
+                            break;
 
-                    case EnumTransitionType.Perish:
-                        break;
+                        case EnumTransitionType.Perish:
+                            break;
 
+                    }
                 }
             }
 
@@ -1888,7 +2050,7 @@ namespace Vintagestory.API.Common
 
             if (recipestacks.Count > 0)
             {
-                components.Add(new ClearFloatTextComponent(capi, 10));
+                components.Add(new ClearFloatTextComponent(capi, 16));
                 components.Add(new RichTextComponent(capi, Lang.Get("Ingredient for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                 while (recipestacks.Count > 0)
@@ -1961,6 +2123,7 @@ namespace Vintagestory.API.Common
             List<ItemStack> crushables = new List<ItemStack>();
             List<ItemStack> curables = new List<ItemStack>();
             List<ItemStack> ripenables = new List<ItemStack>();
+            List<ItemStack> dryables = new List<ItemStack>();
 
             foreach (var val in allStacks)
             {
@@ -1983,36 +2146,43 @@ namespace Vintagestory.API.Common
                 }
 
                 TransitionableProperties[] oprops = val.Collectible.GetTransitionableProperties(api.World, val, null);
-                foreach (var prop in oprops)
+                if (oprops != null)
                 {
-                    ItemStack transitionedStack = prop.TransitionedStack?.ResolvedItemstack;
-
-                    switch (prop.Type)
+                    foreach (var prop in oprops)
                     {
-                        case EnumTransitionType.Cure:
-                            if (transitionedStack != null && transitionedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes) && !curables.Any(s => s.Equals(capi.World, transitionedStack, GlobalConstants.IgnoredStackAttributes)))
-                            {
-                                curables.Add(val);
-                            }
-                            break;
+                        ItemStack transitionedStack = prop.TransitionedStack?.ResolvedItemstack;
 
-                        case EnumTransitionType.Ripen:
-                            if (transitionedStack != null && transitionedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes) && !curables.Any(s => s.Equals(capi.World, transitionedStack, GlobalConstants.IgnoredStackAttributes)))
-                            {
-                                ripenables.Add(val);
-                            }
-                            break;
+                        switch (prop.Type)
+                        {
+                            case EnumTransitionType.Cure:
+                                if (transitionedStack != null && transitionedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes) && !curables.Any(s => s.Equals(capi.World, transitionedStack, GlobalConstants.IgnoredStackAttributes)))
+                                {
+                                    curables.Add(val);
+                                }
+                                break;
+
+                            case EnumTransitionType.Ripen:
+                                if (transitionedStack != null && transitionedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes) && !curables.Any(s => s.Equals(capi.World, transitionedStack, GlobalConstants.IgnoredStackAttributes)))
+                                {
+                                    ripenables.Add(val);
+                                }
+                                break;
 
 
-                        case EnumTransitionType.Dry:
-                            break;
+                            case EnumTransitionType.Dry:
+                                if (transitionedStack != null && transitionedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes) && !curables.Any(s => s.Equals(capi.World, transitionedStack, GlobalConstants.IgnoredStackAttributes)))
+                                {
+                                    dryables.Add(val);
+                                }
+                                break;
 
-                        case EnumTransitionType.Convert:
-                            break;
+                            case EnumTransitionType.Convert:
+                                break;
 
-                        case EnumTransitionType.Perish:
-                            break;
+                            case EnumTransitionType.Perish:
+                                break;
 
+                        }
                     }
                 }
 
@@ -2088,36 +2258,42 @@ namespace Vintagestory.API.Common
 
 
             string customCreatedBy = stack.Collectible.Attributes?["handbook"]?["createdBy"]?.AsString(null);
+            string bakingInitialIngredient = Attributes?["bakingInitialCode"].AsString();
 
-            if (grecipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0 || barrelRecipestext.Count > 0 || grindables.Count > 0 || curables.Count > 0 || ripenables.Count > 0 || crushables.Count > 0)
+            if (grecipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0 || barrelRecipestext.Count > 0 || grindables.Count > 0 || curables.Count > 0 || ripenables.Count > 0 || dryables.Count > 0 || crushables.Count > 0 || bakingInitialIngredient != null)
             {
-                components.Add(new ClearFloatTextComponent(capi, 10));
+                components.Add(new ClearFloatTextComponent(capi, 16));
                 components.Add(new RichTextComponent(capi, Lang.Get("Created by") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
 
                 if (smithable)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.Add(new LinkTextComponent(capi, Lang.Get("Smithing") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-smithing"); }));
                 }
                 if (knappable)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.Add(new LinkTextComponent(capi, Lang.Get("Knapping") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-knapping"); }));
                 }
                 if (clayformable)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.Add(new LinkTextComponent(capi, Lang.Get("Clay forming") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-clayforming"); }));
                 }
                 if (customCreatedBy != null)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(customCreatedBy) + "\n", CairoFont.WhiteSmallText()));
                 }
 
                 if (grindables.Count > 0)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Grinding") + "\n", CairoFont.WhiteSmallText()));
 
                     while (grindables.Count > 0)
@@ -2135,6 +2311,7 @@ namespace Vintagestory.API.Common
 
                 if (crushables.Count > 0)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crushing") + "\n", CairoFont.WhiteSmallText()));
 
                     while (crushables.Count > 0)
@@ -2153,6 +2330,7 @@ namespace Vintagestory.API.Common
 
                 if (curables.Count > 0)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Curing") + "\n", CairoFont.WhiteSmallText()));
 
                     while (curables.Count > 0)
@@ -2170,6 +2348,7 @@ namespace Vintagestory.API.Common
 
                 if (ripenables.Count > 0)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Ripening") + "\n", CairoFont.WhiteSmallText()));
 
                     while (ripenables.Count > 0)
@@ -2185,9 +2364,28 @@ namespace Vintagestory.API.Common
                     components.Add(new RichTextComponent(capi, "\n", CairoFont.WhiteSmallText()));
                 }
 
+                if (dryables.Count > 0)
+                {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new RichTextComponent(capi, "• " + Lang.Get("Drying") + "\n", CairoFont.WhiteSmallText()));
+
+                    while (dryables.Count > 0)
+                    {
+                        ItemStack dstack = dryables[0];
+                        dryables.RemoveAt(0);
+                        if (dstack == null) continue;
+
+                        SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, dstack, dryables, 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
+                        components.Add(comp);
+                    }
+
+                    components.Add(new RichTextComponent(capi, "\n", CairoFont.WhiteSmallText()));
+                }
+
 
                 if (bakables.Count > 0)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Cooking/Smelting/Baking") + "\n", CairoFont.WhiteSmallText()));
 
                     while (bakables.Count > 0)
@@ -2204,15 +2402,43 @@ namespace Vintagestory.API.Common
                 }
 
 
+                if (bakingInitialIngredient != null)
+                {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new RichTextComponent(capi, "• " + Lang.Get("Baking (in oven)") + "\n", CairoFont.WhiteSmallText()));
+                    components.Add(new ItemstackTextComponent(capi, new ItemStack(capi.World.GetItem(new AssetLocation(bakingInitialIngredient))), 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                }
+
+
                 if (grecipes.Count > 0)
                 {
-                    /*if (knappable) - whats this for? o.O */ components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crafting") + "\n", CairoFont.WhiteSmallText()));
+                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    /*if (knappable) - whats this for? o.O */
+                    components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crafting") + "\n", CairoFont.WhiteSmallText()));
 
-                    components.Add(new SlideshowGridRecipeTextComponent(capi, grecipes.ToArray(), 40, EnumFloat.None, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)), allStacks));
+                    Dictionary<int, List<GridRecipe>> grouped = new Dictionary<int, List<GridRecipe>>();
+                    foreach (var recipe in grecipes)
+                    {
+                        List<GridRecipe> list;
+                        if (!grouped.TryGetValue(recipe.RecipeGroup, out list))
+                        {
+                            grouped[recipe.RecipeGroup] = list = new List<GridRecipe>();
+                        }
+                        list.Add(recipe);
+                    }
+
+                    foreach (var val in grouped)
+                    {
+                        var comp = new SlideshowGridRecipeTextComponent(capi, val.Value.ToArray(), 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)), allStacks);
+                        comp.PaddingLeft = 10;
+                        components.Add(comp);
+                    }
+                    
                 }
 
                 if (barrelRecipestext.Count > 0)
                 {
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("In Barrel") + "\n", CairoFont.WhiteSmallText()));
                     components.AddRange(barrelRecipestext);
                 }
@@ -2224,24 +2450,25 @@ namespace Vintagestory.API.Common
                 ExtraSection[] sections = obj?.AsObject<ExtraSection[]>();
                 for (int i = 0; i < sections.Length; i++)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 10));
+                    components.Add(new ClearFloatTextComponent(capi, 16));
                     components.Add(new RichTextComponent(capi, Lang.Get(sections[i].Title) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                     components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(sections[i].Text) + "\n", CairoFont.WhiteSmallText()));
                 }
             }
 
-            string type = stack.Class == EnumItemClass.Block ? "block" : "item";
+            string type = stack.Class.Name();
             string code = Code.ToShortString();
             string langExtraSectionTitle = Lang.GetMatchingIfExists(Code.Domain + ":" + type + "-handbooktitle-" + code);
             string langExtraSectionText = Lang.GetMatchingIfExists(Code.Domain + ":" + type + "-handbooktext-" + code);
 
             if (langExtraSectionTitle != null || langExtraSectionText != null)
             {
-                components.Add(new ClearFloatTextComponent(capi, 10));
+                components.Add(new ClearFloatTextComponent(capi, 16));
                 if (langExtraSectionTitle != null)
                 {
                     components.Add(new RichTextComponent(capi, langExtraSectionTitle + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                    components.Add(new ClearFloatTextComponent(capi, 4));
                 }
                 if (langExtraSectionText != null)
                 {
@@ -2290,7 +2517,7 @@ namespace Vintagestory.API.Common
         {
             op.MovableQuantity = GetMergableQuantity(op.SinkSlot.Itemstack, op.SourceSlot.Itemstack, op.CurrentPriority);
             if (op.MovableQuantity == 0) return;
-            if (!op.SinkSlot.CanTakeFrom(op.SourceSlot)) return;
+            if (!op.SinkSlot.CanTakeFrom(op.SourceSlot, op.CurrentPriority)) return;
 
             bool doTemperatureAveraging = false;
             bool doTransitionAveraging = false;
@@ -2606,7 +2833,6 @@ namespace Vintagestory.API.Common
 
             ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["transitionstate"];
 
-            //TransitionableProperties[] props = itemstack.Collectible.TransitionableProps; - WTF is this here for? we already have propsm
 
             float[] transitionedHours;
             float[] freshHours;
@@ -3058,37 +3284,6 @@ namespace Vintagestory.API.Common
 
         }
 
-        /// <summary>
-        /// Returns true if the block has given behavior
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="withInheritance"></param>
-        /// <returns></returns>
-        public virtual bool HasBehavior(Type type, bool withInheritance)
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Returns true if the block has given behavior
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public bool HasBehavior(Type type)
-        {
-            return HasBehavior(type, false);
-        }
-
-        /// <summary>
-        /// Returns true if the block has given behavior
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="classRegistry"></param>
-        /// <returns></returns>
-        public virtual bool HasBehavior(string type, IClassRegistryAPI classRegistry)
-        {
-            return false;
-        }
 
         /// <summary>
         /// Should return a random pixel within the items/blocks texture
@@ -3112,5 +3307,124 @@ namespace Vintagestory.API.Common
         {
             return MatterState == EnumMatterState.Liquid;
         }
+
+
+        void WalkBehaviors(CollectibleBehaviorDelegate onBehavior, Action defaultAction)
+        {
+            bool executeDefault = true;
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handling = EnumHandling.PassThrough;
+                onBehavior(behavior, ref handling);
+
+                if (handling == EnumHandling.PreventSubsequent) return;
+                if (handling == EnumHandling.PreventDefault) executeDefault = false;
+            }
+
+            if (executeDefault) defaultAction();
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Returns the blocks behavior of given type, if it has such behavior
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="withInheritance"></param>
+        /// <returns></returns>
+        public CollectibleBehavior GetCollectibleBehavior(Type type, bool withInheritance)
+        {
+            return GetBehavior(CollectibleBehaviors, type, withInheritance);
+        }
+
+        protected virtual CollectibleBehavior GetBehavior(CollectibleBehavior[] fromList, Type type, bool withInheritance)
+        {
+            if (withInheritance)
+            {
+                for (int i = 0; i < fromList.Length; i++)
+                {
+                    Type testType = fromList[i].GetType();
+                    if (testType == type || type.IsAssignableFrom(testType))
+                    {
+                        return fromList[i];
+                    }
+                }
+                return null;
+            }
+
+            // simpler loop if withInheritance is false
+            for (int i = 0; i < fromList.Length; i++)
+            {
+                if (fromList[i].GetType() == type)
+                {
+                    return fromList[i];
+                }
+            }
+            return null;
+        }
+
+
+        /// <summary>
+        /// Returns true if the block has given behavior
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="withInheritance"></param>
+        /// <returns></returns>
+        public virtual bool HasBehavior<T>(bool withInheritance = false) where T : CollectibleBehavior
+        {
+            return (T)GetCollectibleBehavior(typeof(T), withInheritance) != null;
+        }
+
+
+        /// <summary>
+        /// Returns true if the block has given behavior
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="withInheritance"></param>
+        /// <returns></returns>
+        public virtual bool HasBehavior(Type type, bool withInheritance = false)
+        {
+            return GetCollectibleBehavior(type, withInheritance) != null;
+        }
+
+
+
+        /// <summary>
+        /// Returns true if the block has given behavior
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="classRegistry"></param>
+        /// <returns></returns>
+        public virtual bool HasBehavior(string type, IClassRegistryAPI classRegistry)
+        {
+            return GetBehavior(classRegistry.GetBlockBehaviorClass(type)) != null;
+        }
+
+
+        /// <summary>
+        /// Returns the blocks behavior of given type, if it has such behavior
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public CollectibleBehavior GetBehavior(Type type)
+        {
+            return GetCollectibleBehavior(type, false);
+        }
+
+        /// <summary>
+        /// Returns the blocks behavior of given type, if it has such behavior
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public T GetBehavior<T>() where T : CollectibleBehavior
+        {
+            return (T)GetCollectibleBehavior(typeof(T), false);
+        }
+
+
     }
 }

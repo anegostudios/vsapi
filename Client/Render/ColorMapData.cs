@@ -15,10 +15,10 @@ namespace Vintagestory.API.Client
         // 8 bits rainfall
         public int Value;
         
-        public byte SeasonMapIndex => (byte)(Value & 0xff);
+        public byte SeasonMapIndex => (byte)Value;
         public byte ClimateMapIndex => (byte)((Value >> 8) & 0xf);
-        public byte Temperature => (byte)((Value >> 16) & 0xff);
-        public byte Rainfall => (byte)((Value >> 24) & 0xff);
+        public byte Temperature => (byte)(Value >> 16);
+        public byte Rainfall => (byte)(Value >> 24);
 
         public byte FrostableBit => (byte)((Value >> 12) & 0x1);
 

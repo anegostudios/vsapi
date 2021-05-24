@@ -41,9 +41,9 @@ namespace Vintagestory.API.Common
         void RegisterBlockClass(string className, Type blockType);
 
         /// <summary>
-        /// 
+        /// Register a new crop behavior
         /// </summary>
-        /// <param name="v"></param>
+        /// <param name="className"></param>
         /// <param name="type"></param>
         void RegisterCropBehavior(string className, Type type);
 
@@ -61,6 +61,14 @@ namespace Vintagestory.API.Common
         /// <param name="className"></param>
         /// <param name="itemType"></param>
         void RegisterItemClass(string className, Type itemType);
+
+        /// <summary>
+        /// Registers a new collectible behavior class, which can be used for items or for blocks. 
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="blockBehaviorType"></param>
+        void RegisterCollectibleBehaviorClass(string className, Type blockBehaviorType);
+
 
         /// <summary>
         /// Register a new block behavior class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
@@ -82,7 +90,7 @@ namespace Vintagestory.API.Common
         /// Make your your delegate also set tree.SetString("className", "[your className]");
         /// </summary>
         /// <param name="className"></param>
-        /// <param name="blockBehaviorType"></param>
+        /// <param name="mountableInstancer"></param>
         void RegisterMountable(string className, GetMountableDelegate mountableInstancer);
 
 
