@@ -10,20 +10,27 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+
     /// <summary>
     /// Draws multiple itemstacks
     /// </summary>
     public class SlideshowItemstackTextComponent : ItemstackComponentBase
     {
-        public ItemStack[] Itemstacks;
-        ItemSlot slot;
-        
-        Common.Action<ItemStack> onStackClicked;
+        public bool ShowTooltip = true;
 
-        float secondsVisible=1;
-        int curItemIndex;
+        public ItemStack[] Itemstacks;
+        protected ItemSlot slot;
+
+        protected Common.Action<ItemStack> onStackClicked;
+
+        protected float secondsVisible =1;
+        protected int curItemIndex;
 
         public bool ShowStackSize { get; set; }
+
+        public string ExtraTooltipText;
+
+        public Vec3f renderOffset = new Vec3f();
 
         /// <summary>
         /// Flips through given array of item stacks every second
@@ -60,38 +67,42 @@ namespace Vintagestory.API.Client
             nowGroupedStacks.Add(itemstackgroup);
             stacks.Add(itemstackgroup);
 
-            if (groups != null)
+            if (allstacks != null)
             {
-                AssetLocation[] groupWildCards = new AssetLocation[groups.Length];
-                for (int i = 0; i < groups.Length; i++)
+                if (groups != null)
                 {
-                    if (!groups[i].Contains(":"))
+                    AssetLocation[] groupWildCards = new AssetLocation[groups.Length];
+                    for (int i = 0; i < groups.Length; i++)
                     {
-                        groupWildCards[i] = new AssetLocation(itemstackgroup.Collectible.Code.Domain, groups[i]);
-                    } else
-                    {
-                        groupWildCards[i] = new AssetLocation(groups[i]);
-                    }
-                    
-                }
-
-                foreach (var val in allstacks)
-                {
-                    for (int i = 0; i < groupWildCards.Length; i++)
-                    {
-                        if (val.Collectible.WildCardMatch(groupWildCards[i]))
+                        if (!groups[i].Contains(":"))
                         {
-                            stacks.Add(val);
-                            nowGroupedStacks.Add(val);
-                            break;
+                            groupWildCards[i] = new AssetLocation(itemstackgroup.Collectible.Code.Domain, groups[i]);
+                        }
+                        else
+                        {
+                            groupWildCards[i] = new AssetLocation(groups[i]);
+                        }
+
+                    }
+
+                    foreach (var val in allstacks)
+                    {
+                        for (int i = 0; i < groupWildCards.Length; i++)
+                        {
+                            if (val.Collectible.WildCardMatch(groupWildCards[i]))
+                            {
+                                stacks.Add(val);
+                                nowGroupedStacks.Add(val);
+                                break;
+                            }
                         }
                     }
                 }
-            }
-            
-            foreach (var val in nowGroupedStacks)
-            {
-                allstacks.Remove(val);
+
+                foreach (var val in nowGroupedStacks)
+                {
+                    allstacks.Remove(val);
+                }
             }
 
             this.Itemstacks = stacks.ToArray();
@@ -130,6 +141,11 @@ namespace Vintagestory.API.Client
             ctx.Fill();*/
         }
 
+        protected override string OnRequireInfoText(ItemSlot slot)
+        {
+            return base.OnRequireInfoText(slot) + ExtraTooltipText;
+        }
+
         public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
             LineRectangled bounds = BoundsPerLine[0];
@@ -146,19 +162,21 @@ namespace Vintagestory.API.Client
 
             ElementBounds scibounds = ElementBounds.FixedSize((int)(bounds.Width / RuntimeEnv.GUIScale), (int)(bounds.Height / RuntimeEnv.GUIScale));
             scibounds.ParentBounds = capi.Gui.WindowBounds;
+            
             scibounds.CalcWorldBounds();
-            scibounds.absFixedX = renderX + bounds.X;
-            scibounds.absFixedY = renderY + bounds.Y;
+            scibounds.absFixedX = renderX + bounds.X + renderOffset.X;
+            scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y;
 
             api.Render.PushScissor(scibounds);
 
-            api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f, 100, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
+            api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X, renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y, 100 + renderOffset.Z, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
 
             api.Render.PopScissor();
 
-            int relx = (int)(api.Input.MouseX - renderX);
-            int rely = (int)(api.Input.MouseY - renderY);
-            if (bounds.PointInside(relx, rely))
+            int relx = (int)(api.Input.MouseX - renderX + renderOffset.X);
+            int rely = (int)(api.Input.MouseY - renderY + renderOffset.Y);
+
+            if (bounds.PointInside(relx, rely) && ShowTooltip)
             {
                 RenderItemstackTooltip(slot, renderX + relx, renderY + rely, deltaTime);
             }

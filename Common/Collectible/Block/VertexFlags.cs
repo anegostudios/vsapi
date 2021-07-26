@@ -109,6 +109,19 @@ namespace Vintagestory.API.Common
             ;
         }
 
+        public static int NormalToPackedInt(Vec3i normal)
+        {
+            int xN = (int)(normal.X * 7.000001f) * 2;  //a small bump up for rounding, as the x, y, z values may be 1/7th fractions rounded down in binary
+            int yN = (int)(normal.Y * 7.000001f) * 2;
+            int zN = (int)(normal.Z * 7.000001f) * 2;  //can be any even number between -14 and +14
+
+            return
+                (xN < 0 ? 1 - xN : xN) |
+                (yN < 0 ? 1 - yN : yN) << 4 |
+                (zN < 0 ? 1 - zN : zN) << 8
+            ;
+        }
+
         public static void PackedIntToNormal(int packedNormal, float[] intoFloats)
         {
             int x = packedNormal & 0x00E;

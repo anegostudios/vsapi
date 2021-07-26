@@ -308,7 +308,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public override string ToString()
         {
-            return token.ToString();
+            return token?.ToString();
         }
 
         /// <summary>

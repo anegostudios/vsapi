@@ -174,12 +174,12 @@ namespace Vintagestory.API.Client
                 }
 
 
-                posX += comp.PaddingLeft;
+                posX += scaled(comp.PaddingLeft);
 
                 if (comp.Float == EnumFloat.None)
                 {
                     posX = 0;
-                    posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + comp.MarginTop;
+                    posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + (didLineBreak ? GuiElement.scaled(comp.UnscaledMarginTop) : 0);
                     posY = Math.Ceiling(posY);
                     
                     currentLine.Clear();
@@ -226,10 +226,11 @@ namespace Vintagestory.API.Client
                     
                     posY += lineHeight;
                     for (int k = 1; k < comp.BoundsPerLine.Length - 1; k++) posY += comp.BoundsPerLine[k].Height;
+                    posY += scaled(comp.UnscaledMarginTop);
                     posY = Math.Ceiling(posY);
 
 
-                    posX = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width;
+                    posX = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width; // + GuiElement.scaled(comp.PaddingLeft); - this adds too much padding when there is a line break inside a rich text compoment and afterwards there comes a link
                     if (comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width > 0)
                     {
                         lineHeight = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Height;
@@ -253,7 +254,7 @@ namespace Vintagestory.API.Client
 
                 if (comp.Float != EnumFloat.Inline)
                 {
-                    ConstrainTextFlowPath(flowPathList, posY, comp.BoundsPerLine[0], comp.Float);
+                    ConstrainTextFlowPath(flowPathList, posY, comp);
                 }
             }
 
@@ -269,10 +270,7 @@ namespace Vintagestory.API.Client
                posY += lineHeight;
             }
 
-            //if (Components.Length > 0) - what is this for?
-            {
-                Bounds.fixedHeight = (posY + 1) / RuntimeEnv.GUIScale;
-            }
+            Bounds.fixedHeight = (posY + 1) / RuntimeEnv.GUIScale;
             
 
             foreach (int index in currentLine)
@@ -303,22 +301,14 @@ namespace Vintagestory.API.Client
 
 
 
-        private double getLeftIndentAt(List<TextFlowPath> flowPath, double posY)
+
+        private void ConstrainTextFlowPath(List<TextFlowPath> flowPath, double posY, RichTextComponentBase comp)
         {
-            for (int i = 0; i < flowPath.Count; i++)
-            {
-                TextFlowPath tfp = flowPath[i];
-                if (tfp.Y1 <= posY && tfp.Y2 >= posY) return tfp.X1;
-            }
+            Rectangled rect = comp.BoundsPerLine[0];
+            EnumFloat elementFloat = comp.Float;
 
-            return 0;
-        }
-
-
-        private void ConstrainTextFlowPath(List<TextFlowPath> flowPath, double posY, Rectangled rect, EnumFloat elementFloat)
-        {
-            double x1 = elementFloat == EnumFloat.Left ? rect.Width : 0;
-            double x2 = elementFloat == EnumFloat.Right ? Bounds.InnerWidth - rect.Width : Bounds.InnerWidth;
+            double x1 = elementFloat == EnumFloat.Left ? rect.Width + comp.PaddingRight : 0;
+            double x2 = elementFloat == EnumFloat.Right ? Bounds.InnerWidth - rect.Width - comp.PaddingLeft : Bounds.InnerWidth;
 
             double remainingHeight = rect.Height;
 

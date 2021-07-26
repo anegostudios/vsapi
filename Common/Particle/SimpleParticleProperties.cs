@@ -168,8 +168,8 @@ namespace Vintagestory.API.Common
             writer.Write(AddQuantity);
             MinPos.ToBytes(writer);
             AddPos.ToBytes(writer);
-            MinVelocity.Write(writer);
-            AddVelocity.Write(writer);
+            MinVelocity.ToBytes(writer);
+            AddVelocity.ToBytes(writer);
             writer.Write(LifeLength);
             writer.Write(GravityEffect);
             writer.Write(MinSize);

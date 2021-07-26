@@ -97,6 +97,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool AltDown { get { return (Modifiers & EnumModifierKey.ALT) > 0; } }
 
+        public int WheelDir = 0;
+
 
         public ItemStackMoveOperation(IWorldAccessor world, EnumMouseButton mouseButton, EnumModifierKey modifiers, EnumMergePriority currentPriority, int requestedQuantity = 0)
         {

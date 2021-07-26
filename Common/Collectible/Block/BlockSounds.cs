@@ -6,18 +6,20 @@ namespace Vintagestory.API.Common
 {
     public class BlockSounds
     {
-        public AssetLocation Walk = null;
-        public AssetLocation Inside = null;
-        public AssetLocation Break = null;
-        public AssetLocation Place = null;
-        public AssetLocation Hit = null;
+        public virtual AssetLocation Walk { get; set; } = null;
+        public virtual AssetLocation Inside { get; set; } = null;
+        public virtual AssetLocation Break { get; set; } = null;
+        public virtual AssetLocation Place { get; set; } = null;
+        public virtual AssetLocation Hit { get; set; } = null;
+
         public AssetLocation Ambient = null;
+
         public float AmbientBlockCount = 10f;
 
         /// <summary>
         /// Gets the sound that occurs when a specific tool hits a block.
         /// </summary>
-        public Dictionary<EnumTool, BlockSounds> ByTool = new Dictionary<EnumTool, BlockSounds>();
+        public virtual Dictionary<EnumTool, BlockSounds> ByTool { get; set; } = new Dictionary<EnumTool, BlockSounds>();
 
         /// <summary>
         /// Clones the block sounds.

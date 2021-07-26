@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <BuildDocFx Condition=" '$(Configuration)'=='Debug' ">false</BuildDocFx>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -25,6 +26,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <BuildDocFx>false</BuildDocFx>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -37,6 +39,7 @@
     <LangVersion>7</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <BuildDocFx>false</BuildDocFx>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
@@ -58,6 +61,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug + Flatworld|AnyCPU'">
+    <BuildDocFx>false</BuildDocFx>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -69,6 +73,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PerfTest|AnyCPU'">
+    <BuildDocFx>false</BuildDocFx>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\bin\Release\</OutputPath>
@@ -140,6 +145,8 @@
     <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
     <Compile Include="Common\API\ILandClaimAPI.cs" />
     <Compile Include="Client\API\IMacroManager.cs" />
+    <Compile Include="Common\Collectible\Block\IDrawYAdjustable.cs" />
+    <Compile Include="Common\Collectible\DecorSelectionBox.cs" />
     <Compile Include="Common\Collectible\CollectibleBehavior.cs" />
     <Compile Include="Common\Collectible\Block\BlockEntityBehavior.cs" />
     <Compile Include="Common\Collectible\Block\IGeometryTester.cs" />
@@ -285,6 +292,7 @@
     <Compile Include="Datastructures\FastList.cs" />
     <Compile Include="Datastructures\RingArray.cs" />
     <Compile Include="Math\Matrix\Quaternionf.cs" />
+    <Compile Include="Math\Size\Size3.cs" />
     <Compile Include="Math\Vector\Vec3iAndFacingFlags.cs" />
     <Compile Include="Math\Vector\FastVec3f.cs" />
     <Compile Include="Server\API\IPlayerDataManager.cs" />
@@ -343,13 +351,14 @@
     <Compile Include="Math\Noise\SimplexNoise.cs" />
     <Compile Include="Math\Rectangle\Rectanglei.cs" />
     <Compile Include="Datastructures\SemVer.cs" />
-    <Compile Include="Math\Size\Size2d.cs" />
+    <Compile Include="Math\Size\Size2.cs" />
     <Compile Include="Server\ISaveGame.cs" />
     <Compile Include="Server\IServerConfig.cs" />
     <Compile Include="Server\LandClaim.cs" />
     <Compile Include="Util\EqualityUtil.cs" />
     <Compile Include="Util\NetUtil.cs" />
     <Compile Include="Util\ObjectCacheUtil.cs" />
+    <Compile Include="Util\PosUtil.cs" />
     <Compile Include="Util\SerializerUtil.cs" />
     <Compile Include="Util\StringExtensions.cs" />
     <Compile Include="Util\StringUtil.cs" />

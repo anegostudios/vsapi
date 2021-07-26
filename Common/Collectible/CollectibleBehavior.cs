@@ -47,6 +47,11 @@ namespace Vintagestory.API.Common
 
         }
 
+        public virtual void OnUnloaded(ICoreAPI api)
+        {
+
+        }
+
         /// <summary>
         /// When the player has begun using this item for attacking (left mouse click). Return true to play a custom action.
         /// </summary>
@@ -184,5 +189,27 @@ namespace Vintagestory.API.Common
             return new WorldInteraction[0];
         }
 
+        /// <summary>
+        /// Called when the tool mode (F) key is pressed to generate the GUI
+        /// </summary>
+        public virtual SkillItem[] GetToolModes(ItemSlot slot, IClientPlayer forPlayer, BlockSelection blockSel)
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Should return the current items tool mode.
+        /// </summary>
+        public virtual int GetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection)
+        {
+            return 0;
+        }
+
+        /// <summary>
+        /// Should set given toolmode
+        /// </summary>
+        public virtual void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int toolMode)
+        {
+        }
     }
 }

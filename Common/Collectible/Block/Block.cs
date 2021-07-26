@@ -80,11 +80,9 @@ namespace Vintagestory.API.Common
         public bool PartialSelection;
 
         /// <summary>
-        /// The sounds played for this block during step, break, build and walk
+        /// The sounds played for this block during step, break, build and walk. Use GetSounds() to query if not performance critical.
         /// </summary>
         public BlockSounds Sounds;
-
-
 
         /// <summary>
         /// Data thats passed on to the graphics card for every vertex of the blocks model
@@ -138,12 +136,12 @@ namespace Vintagestory.API.Common
         public int RequiredMiningTier;
 
         /// <summary>
-        /// How long it takes to break this block in seconds
+        /// How long it takes to break this block in seconds. Use GetResistance() to query if not performance critical.
         /// </summary>
         public float Resistance = 2f;
 
         /// <summary>
-        /// A way to categorize blocks. Used for getting the mining speed for each tool type, amongst other things
+        /// A way to categorize blocks. Used for getting the mining speed for each tool type, amongst other things. Use GetBlockMaterial() to query if not performance critical.
         /// </summary>
         public EnumBlockMaterial BlockMaterial = EnumBlockMaterial.Stone;        
 
@@ -349,11 +347,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Used to adjust selection box of parent block
         /// </summary>
-        public float decorThickness;
+        public float DecorThickness;
 
-        [ThreadStatic]
-        protected static Block[] decorsTmp;
+        public float InteractionHelpYOffset = 0.9f;
 
+        public int TextureSubIdForBlockColor = -1;
 
         /// <summary>
         /// Creates a new instance of a block with default model transforms
@@ -372,15 +370,10 @@ namespace Vintagestory.API.Common
         /// <param name="api"></param>
         public override void OnLoaded(ICoreAPI api)
         {
-            base.OnLoaded(api);
-
             PushVector = Attributes?["pushVector"]?.AsObject<Vec3d>();
             AllowStepWhenStuck = Attributes?["allowStepWhenStuck"]?.AsBool(false) ?? false;
 
-            foreach (BlockBehavior behavior in BlockBehaviors)
-            {
-                behavior.OnLoaded(api);
-            }
+            base.OnLoaded(api);
 
             bool supportsCover = Variant["cover"] != null;
             if (supportsCover)
@@ -393,6 +386,40 @@ namespace Vintagestory.API.Common
                 if (this == snowCovered1) snowLevel = 1;
                 if (this == snowCovered2) snowLevel = 2;
                 if (this == snowCovered3) snowLevel = 3;
+            }
+
+            if (api.Side == EnumAppSide.Client)
+            {
+                LoadTextureSubIdForBlockColor();
+            }
+        }
+
+        public virtual void LoadTextureSubIdForBlockColor()
+        {
+            string code = Attributes?["textureCodeForBlockColor"].AsString(null);
+
+            TextureSubIdForBlockColor = -1;
+
+            CompositeTexture compoTex = null;
+            if (code != null && Textures?.TryGetValue(code, out compoTex) == true)
+            {
+                TextureSubIdForBlockColor = compoTex.Baked.TextureSubId;
+            }
+
+            if (TextureSubIdForBlockColor < 0)
+            {
+                if (Textures?.ContainsKey("up") == true)
+                {
+                    TextureSubIdForBlockColor = Textures["up"].Baked.TextureSubId;
+                }
+                else
+                {
+                    if (Textures != null && Textures.Count > 0)
+                    {
+                        var tex = Textures.First();
+                        TextureSubIdForBlockColor = tex.Value?.Baked?.TextureSubId ?? 0;
+                    }
+                }
             }
         }
 
@@ -471,7 +498,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual Cuboidf[] GetSelectionBoxes(IBlockAccessor blockAccessor, BlockPos pos)
         {
-            if (RandomDrawOffset != 0)
+            if (RandomDrawOffset != 0 && SelectionBoxes?.Length >= 1)
             {
                 float x = (GameMath.oaatHash(pos.X, 0, pos.Z) % 12) / (24f + 12f * RandomDrawOffset);
                 float z = (GameMath.oaatHash(pos.X, 1, pos.Z) % 12) / (24f + 12f * RandomDrawOffset);
@@ -530,6 +557,29 @@ namespace Vintagestory.API.Common
         public virtual EnumBlockMaterial GetBlockMaterial(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
         {
             return BlockMaterial;
+        }
+
+        /// <summary>
+        /// Should return the blocks resistance to breaking
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual float GetResistance(IBlockAccessor blockAccessor, BlockPos pos)
+        {
+            return Resistance;
+        }
+
+        /// <summary>
+        /// Should returns the blocks sounds
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos">May be null and therfore stack is non-null</param>
+        /// <param name="stack"></param>
+        /// <returns></returns>
+        public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
+        {
+            return Sounds;
         }
 
         public virtual bool DoEmitSideAo(IGeometryTester caller, BlockFacing facing)
@@ -843,7 +893,19 @@ namespace Vintagestory.API.Common
         public virtual float OnGettingBroken(IPlayer player, BlockSelection blockSel, ItemSlot itemslot, float remainingResistance, float dt, int counter)
         {
             IItemStack stack = player.InventoryManager.ActiveHotbarSlot.Itemstack;
-            float resistance = RequiredMiningTier == 0 ? remainingResistance - dt : remainingResistance;
+            float resistance = remainingResistance;
+            if (RequiredMiningTier == 0)
+            {
+                if (dt > 0)
+                {
+                    foreach (BlockBehavior behavior in BlockBehaviors)
+                    {
+                        dt *= behavior.GetMiningSpeedModifier(api.World, blockSel.Position, player);
+                        // This will also affect tool mining speed if stack != null, and that's OK
+                    }
+                }
+                resistance -= dt;
+            }
 
             if (stack != null)
             {
@@ -864,7 +926,10 @@ namespace Vintagestory.API.Common
                 double posx = blockSel.Position.X + blockSel.HitPosition.X;
                 double posy = blockSel.Position.Y + blockSel.HitPosition.Y;
                 double posz = blockSel.Position.Z + blockSel.HitPosition.Z;
-                player.Entity.World.PlaySoundAt(resistance > 0 ? Sounds.GetHitSound(player) : Sounds.GetBreakSound(player), posx, posy, posz, player, RandomSoundPitch(api.World), 16, 1);
+
+                BlockSounds sounds = GetSounds(api.World.BlockAccessor, blockSel.Position);
+
+                player.Entity.World.PlaySoundAt(resistance > 0 ? sounds.GetHitSound(player) : sounds.GetBreakSound(player), posx, posy, posz, player, RandomSoundPitch(api.World), 16, 1);
 
                 api.ObjectCache["totalMsBlockBreaking"] = nowMs;
             }
@@ -1597,6 +1662,7 @@ namespace Vintagestory.API.Common
 
 
         public float WaveFlagMinY = 9 / 16f;
+        
 
         void setGrassWaveFlags(MeshData sourceMesh)
         {
@@ -2013,24 +2079,27 @@ namespace Vintagestory.API.Common
             string descLangCode = Code.Domain + AssetLocation.LocationSeparator + ItemClass.ToString().ToLowerInvariant() + "desc-" + Code.Path;
 
             string desc = Lang.GetMatching(descLangCode);
-
             desc = desc != descLangCode ? desc : "";
-
             sb.Append(desc);
 
-            if (decorsTmp == null) decorsTmp = new Block[6];
-            if (world.BlockAccessor.GetChunkAtBlockPos(pos)?.GetDecors(world.BlockAccessor, pos, decorsTmp) == true)
+            var decors = world.BlockAccessor.GetDecors(pos);
+            List<string> decorLangCodes = new List<string>();
+            for (int i = 0; decors != null && i < 6; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    Block b = decorsTmp[i];
-                    if (b == null) continue;
-                    descLangCode = ItemClass.ToString().ToLowerInvariant() + "-" + b.Code.ToShortString();
-                    desc = Lang.GetMatching(descLangCode);
+                if (decors[i] == null) continue;
 
-                    sb.AppendLine(Lang.Get("with {0}", desc));
-                }
+                decorLangCodes.Add(ItemClass.ToString().ToLowerInvariant() + "-" + decors[i].Code.ToShortString());
             }
+
+            List<string> decorLangLines = new List<string>();
+            foreach (var langCode in decorLangCodes) 
+            { 
+                string decorBlockName = Lang.GetMatching(langCode);
+                decorLangLines.Add(Lang.Get("with {0}", decorBlockName));
+            }
+
+            sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
+
 
             string[] tiers = new string[] { Lang.Get("tier_hands"), Lang.Get("tier_stone"), Lang.Get("tier_copper"), Lang.Get("tier_bronze"), Lang.Get("tier_iron"), Lang.Get("tier_steel"), Lang.Get("tier_titanium") };
 
@@ -2264,10 +2333,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public override int GetRandomColor(ICoreClientAPI capi, ItemStack stack)
         {
-            if (Textures == null || Textures.Count == 0) return 0;
-
-            BakedCompositeTexture tex = Textures?.First().Value?.Baked;
-            return tex == null ? 0 : capi.BlockTextureAtlas.GetRandomColor(tex.TextureSubId);
+            if (TextureSubIdForBlockColor < 0) return ColorUtil.WhiteArgb;
+            return capi.BlockTextureAtlas.GetRandomColor(TextureSubIdForBlockColor);
         }
 
 
@@ -2297,25 +2364,8 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetColorWithoutTint(ICoreClientAPI capi, BlockPos pos)
         {
-            int? textureSubId = null;
-
-            if (Textures?.ContainsKey("up") == true)
-            {
-                textureSubId = Textures["up"].Baked.TextureSubId;
-            }
-            else
-            {
-                if (Textures != null && Textures.Count > 0)
-                {
-                    textureSubId = Textures.First().Value?.Baked.TextureSubId;
-                }
-            }
-
-            if (textureSubId == null) return ColorUtil.WhiteArgb;
-
-            int color = capi.BlockTextureAtlas.GetAverageColor((int)textureSubId);
-
-            return color;
+            if (TextureSubIdForBlockColor < 0) return ColorUtil.WhiteArgb;
+            return capi.BlockTextureAtlas.GetAverageColor(TextureSubIdForBlockColor);
         }
         
 

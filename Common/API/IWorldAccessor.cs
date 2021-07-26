@@ -315,6 +315,13 @@ namespace Vintagestory.API.Common
         Entity GetNearestEntity(Vec3d position, float horRange, float vertRange, ActionConsumable<Entity> matches = null);
 
         /// <summary>
+        /// Retrieve an entity by its unique id, returns null if no such entity exists or hasn't been loaded
+        /// </summary>
+        /// <param name="entityId"></param>
+        /// <returns></returns>
+        Entity GetEntityById(long entityId);
+
+        /// <summary>
         /// Retrieves the first found entity that intersects any of the supplied collisionboxes offseted by basePos. This is a helper method for you to determine if you can place a block at given position. You can also implement it yourself with intersection testing and GetEntitiesAround()
         /// </summary>
         /// <param name="collisionBoxes"></param>
@@ -462,7 +469,7 @@ namespace Vintagestory.API.Common
         /// <param name="quantity"></param>
         /// <param name="scale"></param>
         /// <param name="dualCallByPlayer"></param>
-        void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null);
+        void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
 
 
         /// <summary>
@@ -474,7 +481,7 @@ namespace Vintagestory.API.Common
         /// <param name="quantity"></param>
         /// <param name="scale"></param>
         /// <param name="dualCallByPlayer"></param>
-        void SpawnCubeParticles(Vec3d pos, ItemStack item, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null);
+        void SpawnCubeParticles(Vec3d pos, ItemStack item, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
 
 
 

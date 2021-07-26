@@ -464,13 +464,18 @@ namespace Vintagestory.API.Common
                 EntityPos herepos = (isSelf ? Pos : ServerPos);
                 bool moving = herepos.Motion.LengthSq() > 0.0000 && !servercontrols.NoClip;
                 
+                // Snow particles
                 if (insideBlock?.GetBlockMaterial(capi.World.BlockAccessor, insidePos) == EnumBlockMaterial.Snow && isSelf)
                 {
                     double hormot = Pos.Motion.X * Pos.Motion.X + Pos.Motion.Z * Pos.Motion.Z;
                     float val = (float)Math.Sqrt(hormot);
                     if (Api.World.Rand.NextDouble() < 10 * val)
                     {
-                        World.SpawnCubeParticles(herepos.AsBlockPos, herepos.XYZ.Add(0, 0.2, 0), 1f, 2 + (int)(Api.World.Rand.NextDouble() * val * 15));
+                        var rand = capi.World.Rand;
+                        Vec3f velo = new Vec3f(1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.X * 15, -5, 5), 0.5f + 3.5f * (float)rand.NextDouble(), 1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.Z * 15, -5, 5));
+                        float radius = Math.Min(CollisionBox.XSize, CollisionBox.ZSize) * 0.9f;
+
+                        World.SpawnCubeParticles(herepos.AsBlockPos, herepos.XYZ.Add(0, 0, 0), radius, 2 + (int)(rand.NextDouble() * val * 5), 0.5f + (float)rand.NextDouble() * 0.5f, null, velo);
                     }
                 }
 
@@ -528,8 +533,6 @@ namespace Vintagestory.API.Common
             bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
 
 
-
-
             string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
             string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
             string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
@@ -541,7 +544,11 @@ namespace Vintagestory.API.Common
             bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
             bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningLeftHeldIdleAnimation);
 
-            if (rightstack == null) nowHeldRightHitAnim = "breakhand";
+            if (rightstack == null)
+            {
+                nowHeldRightHitAnim = "breakhand";
+                nowHeldRightUseAnim = "interactstatic";
+            }
 
             if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
             {

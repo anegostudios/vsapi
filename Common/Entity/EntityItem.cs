@@ -118,6 +118,8 @@ namespace Vintagestory.API.Common
         public override void OnGameTick(float dt)
         {
             base.OnGameTick(dt);
+            
+            if (!this.Alive) return;
 
             if (Itemstack != null)
             {

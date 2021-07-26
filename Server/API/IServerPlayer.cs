@@ -119,7 +119,9 @@ namespace Vintagestory.API.Server
         /// If no custom spawnpoint is present this method will return the global default spawnpoint.
         /// Returns null when called on client side.
         /// </summary>
-        FuzzyEntityPos SpawnPosition { get; }
+        /// <param name="consumeSpawnUse">If true, and this spawn point is use limited, will consume one use of it</param>
+        /// <returns></returns>
+        FuzzyEntityPos GetSpawnPosition(bool consumeSpawnUse);
 
 
         /// <summary>

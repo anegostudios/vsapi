@@ -217,6 +217,20 @@ namespace Vintagestory.API.Client
             base.OnMouseUp(api, args);
         }
 
+        public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
+        {
+            if (!HasFocus) return;
+            if (args.KeyCode == (int)GlKeys.Enter)
+            {
+                args.Handled = true;
+                On = !On;
+                handler?.Invoke(On);
+                api.Gui.PlaySound("toggleswitch");
+            }
+        }
+
+
+
         /// <summary>
         /// Sets the value of the button.
         /// </summary>

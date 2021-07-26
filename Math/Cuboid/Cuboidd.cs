@@ -507,7 +507,7 @@ namespace Vintagestory.API.MathTools
                 X2 <= other.X1 + offset.X ||
                 X1 >= other.X2 + offset.X ||
                 Y2 <= other.Y1 + offset.Y ||
-                Y1 >= other.Y2 + offset.Y ||
+                Y1 >= Math.Round(other.Y2 + offset.Y, 5) || // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
                 Z2 <= other.Z1 + offset.Z ||
                 Z1 >= other.Z2 + offset.Z
             ;
@@ -543,7 +543,7 @@ namespace Vintagestory.API.MathTools
                 X2 < other.X1 + offset.X ||
                 X1 > other.X2 + offset.X ||
                 Y2 < other.Y1 + offset.Y ||
-                Y1 > other.Y2 + offset.Y ||
+                Y1 > Math.Round(other.Y2 + offset.Y, 5) || // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
                 Z2 < other.Z1 + offset.Z ||
                 Z1 > other.Z2 + offset.Z
             ;

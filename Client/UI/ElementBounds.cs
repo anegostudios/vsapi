@@ -27,6 +27,9 @@ namespace Vintagestory.API.Client
 
         public EnumDialogArea Alignment;
 
+        /// <summary>
+        /// Set the vertical and horizontal sizing, see also <see cref="ElementSizing"/>. Setting this is equal to calling <see cref="WithSizing(ElementSizing)"/>
+        /// </summary>
         public ElementSizing BothSizing
         {
             set { verticalSizing = value; horizontalSizing = value; }
@@ -772,24 +775,48 @@ namespace Vintagestory.API.Client
             return absX + "/" + absY + " -> " + (absX + OuterWidth) + " / " + (absY + OuterHeight);
         }
 
-        public ElementBounds FixedUnder(ElementBounds bounds, double spacing = 0)
+        /// <summary>
+        /// Set the fixed y-position to "refBounds.fixedY + refBounds.fixedHeight + spacing" so that the bounds will be under the reference bounds
+        /// </summary>
+        /// <param name="refBounds"></param>
+        /// <param name="spacing"></param>
+        /// <returns></returns>
+        public ElementBounds FixedUnder(ElementBounds refBounds, double spacing = 0)
         {
-            fixedY += bounds.fixedY + bounds.fixedHeight + spacing;
+            fixedY += refBounds.fixedY + refBounds.fixedHeight + spacing;
             return this;
         }
 
-        public ElementBounds FixedRightOf(ElementBounds leftBounds, double leftSpacing = 0)
+        /// <summary>
+        /// Set the fixed x-position to "refBounds.fixedX + refBounds.fixedWidth + leftSpacing" so that the bounds will be right of reference bounds
+        /// </summary>
+        /// <param name="refBounds"></param>
+        /// <param name="leftSpacing"></param>
+        /// <returns></returns>
+        public ElementBounds FixedRightOf(ElementBounds refBounds, double leftSpacing = 0)
         {
-            fixedX = leftBounds.fixedX + leftBounds.fixedWidth + leftSpacing;
+            fixedX = refBounds.fixedX + refBounds.fixedWidth + leftSpacing;
             return this;
         }
 
-        public ElementBounds FixedLeftOf(ElementBounds leftBounds, double rightSpacing = 0)
+        /// <summary>
+        /// Set the fixed x-position to "refBounds.fixedX - fixedWith - rightSpacing" so that the element will be left of reference bounds
+        /// </summary>
+        /// <param name="refBounds"></param>
+        /// <param name="rightSpacing"></param>
+        /// <returns></returns>
+        public ElementBounds FixedLeftOf(ElementBounds refBounds, double rightSpacing = 0)
         {
-            fixedX = leftBounds.fixedX - leftBounds.fixedWidth - rightSpacing;
+            fixedX = refBounds.fixedX - fixedWidth - rightSpacing;
             return this;
         }
 
+        /// <summary>
+        /// Set the fixed width and fixed height values
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
         public ElementBounds WithFixedSize(double width, double height)
         {
             fixedWidth = width;
@@ -797,25 +824,45 @@ namespace Vintagestory.API.Client
             return this;
         }
 
-
+        /// <summary>
+        /// Set the width property
+        /// </summary>
+        /// <param name="width"></param>
+        /// <returns></returns>
         public ElementBounds WithFixedWidth(double width)
         {
             fixedWidth = width;
             return this;
         }
 
+
+        /// <summary>
+        /// Set the height property
+        /// </summary>
+        /// <param name="height"></param>
+        /// <returns></returns>
         public ElementBounds WithFixedHeight(double height)
         {
             fixedHeight = height;
             return this;
         }
 
+        /// <summary>
+        /// Set the alignment property
+        /// </summary>
+        /// <param name="alignment"></param>
+        /// <returns></returns>
         public ElementBounds WithAlignment(EnumDialogArea alignment)
         {
             this.Alignment = alignment;
             return this;
         }
 
+        /// <summary>
+        /// Set the vertical and horizontal sizing property to the same value. See also <seealso cref="ElementSizing"/>.
+        /// </summary>
+        /// <param name="sizing"></param>
+        /// <returns></returns>
         public ElementBounds WithSizing(ElementSizing sizing)
         {
             this.verticalSizing = sizing;
@@ -823,6 +870,12 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        /// <summary>
+        /// Set the vertical and horizontal sizing properties individually. See also <seealso cref="ElementSizing"/>.
+        /// </summary>
+        /// <param name="horizontalSizing"></param>
+        /// <param name="verticalSizing"></param>
+        /// <returns></returns>
         public ElementBounds WithSizing(ElementSizing horizontalSizing, ElementSizing verticalSizing)
         {
             this.verticalSizing = verticalSizing;
@@ -985,6 +1038,12 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Create a new ElementBounds instance with given fixed x/y position and width/height 0
+        /// </summary>
+        /// <param name="fixedX"></param>
+        /// <param name="fixedY"></param>
+        /// <returns></returns>
         public static ElementBounds Fixed(int fixedX, int fixedY)
         {
             return Fixed(fixedX, fixedY, 0, 0);
@@ -1131,6 +1190,9 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Create a special instance of type <see cref="ElementEmptyBounds"/> whose position is 0 and size 1. It's often used for other bounds that need a static, unchanging parent bounds
+        /// </summary>
         public static ElementBounds Empty
         {
             get

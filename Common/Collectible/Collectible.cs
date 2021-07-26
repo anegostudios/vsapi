@@ -55,6 +55,11 @@ namespace Vintagestory.API.Common
         public int Durability = 1;
 
         /// <summary>
+        /// Physical size of this collectible, 0.5 x 0.5 x 0.5 meters by default
+        /// </summary>
+        public Size3f Dimensions = new Size3f(0.5f, 0.5f, 0.5f);
+
+        /// <summary>
         /// When true, liquids become selectable to the player when being held in hands
         /// </summary>
         public bool LiquidSelectable;
@@ -228,6 +233,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void OnLoaded(ICoreAPI api)
         {
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                behavior.OnLoaded(api);
+            }
         }
 
         /// <summary>
@@ -236,7 +245,10 @@ namespace Vintagestory.API.Common
         /// <param name="api"></param>
         public virtual void OnUnloaded(ICoreAPI api)
         {
-
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                behavior.OnUnloaded(api);
+            }
         }
 
         /// <summary>
@@ -582,7 +594,11 @@ namespace Vintagestory.API.Common
 
                 if (fromIngredient.ReturnedStack != null)
                 {
-                    byPlayer.InventoryManager.TryGiveItemstack(fromIngredient.ReturnedStack.ResolvedItemstack.Clone(), true);
+                    var returnedStack = fromIngredient.ReturnedStack.ResolvedItemstack.Clone();
+                    if (!byPlayer.InventoryManager.TryGiveItemstack(returnedStack, true))
+                    {
+                        api.World.SpawnItemEntity(returnedStack, byPlayer.Entity.Pos.XYZ);
+                    }
                 }
             }
         }
@@ -610,7 +626,7 @@ namespace Vintagestory.API.Common
         /// <param name="amount">Amount of damage</param>
         public virtual void DamageItem(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, int amount = 1)
         {
-            IItemStack itemstack = itemslot.Itemstack;
+            ItemStack itemstack = itemslot.Itemstack;
 
             int leftDurability = itemstack.Attributes.GetInt("durability", GetDurability(itemstack));
             leftDurability -= amount;
@@ -620,19 +636,32 @@ namespace Vintagestory.API.Common
             {
                 itemslot.Itemstack = null;
 
-                if (byEntity is EntityAgent && Tool != null)
-                {
-                    RefillSlotIfEmpty(itemslot, byEntity as EntityAgent, (stack) => stack.Collectible.Tool == Tool);
-                }
+                IPlayer player = (byEntity as EntityPlayer)?.Player;
 
-                if (byEntity is EntityPlayer)
+                if (player != null)
                 {
-                    IPlayer player = world.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
-                    world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), player, player);
+                    if (Tool != null)
+                    {
+                        string ident = Attributes?["slotRefillIdentifier"].ToString();
+                        RefillSlotIfEmpty(itemslot, byEntity as EntityAgent, (stack) => {
+                            return ident != null ? stack.ItemAttributes?["slotRefillIdentifier"]?.ToString() == ident : stack.Collectible.Tool == Tool;
+                        });
+                    }
+
+                    if (itemslot.Itemstack != null && !itemslot.Itemstack.Attributes.HasAttribute("durability"))
+                    {
+                        itemstack = itemslot.Itemstack;
+                        itemstack.Attributes.SetInt("durability", itemstack.Collectible.GetDurability(itemstack));
+                        // This forces update of durability when slot is marked dirty (otherwise the durability attribute would be unset, therefore not updated, for a new item)
+                    }
+
+                    world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), player, null);
                 } else
                 {
-                    world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), byEntity.Pos.X, byEntity.Pos.Y, byEntity.Pos.Z);
+                    world.PlaySoundAt(new AssetLocation("sounds/effect/toolbreak"), byEntity.SidedPos.X, byEntity.SidedPos.Y, byEntity.SidedPos.Z, null, 1, 16);
                 }
+
+                world.SpawnCubeParticles(byEntity.SidedPos.XYZ.Add(byEntity.CollisionBox.Y2 / 2), itemstack, 0.25f, 30, 1, player);
             }
 
             itemslot.MarkDirty();
@@ -654,8 +683,11 @@ namespace Vintagestory.API.Common
                 if (invslot.Itemstack != null && matcher(invslot.Itemstack))
                 {
                     invslot.TryPutInto(byEntity.World, slot);
-                    invslot.Inventory.PerformNotifySlot(invslot.Inventory.GetSlotId(invslot));
-                    slot.Inventory.PerformNotifySlot(slot.Inventory.GetSlotId(slot));
+                    invslot.Inventory?.PerformNotifySlot(invslot.Inventory.GetSlotId(invslot));
+                    slot.Inventory?.PerformNotifySlot(slot.Inventory.GetSlotId(slot));
+
+                    slot.MarkDirty();
+                    invslot.MarkDirty();
 
                     return false;
                 }
@@ -667,6 +699,11 @@ namespace Vintagestory.API.Common
 
         public virtual SkillItem[] GetToolModes(ItemSlot slot, IClientPlayer forPlayer, BlockSelection blockSel)
         {
+            for (int i = 0; i < CollectibleBehaviors.Length; i++)
+            {
+                SkillItem[] result = CollectibleBehaviors[i].GetToolModes(slot, forPlayer, blockSel);
+                if (result != null) return result;
+            }
             return null;
         }
 
@@ -679,6 +716,11 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection)
         {
+            for (int i = 0; i < CollectibleBehaviors.Length; i++)
+            {
+                int result = CollectibleBehaviors[i].GetToolMode(slot, byPlayer, blockSelection);
+                if (result != 0) return result;
+            }
             return 0;
         }
 
@@ -691,7 +733,10 @@ namespace Vintagestory.API.Common
         /// <param name="toolMode"></param>
         public virtual void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int toolMode)
         {
-
+            for (int i = 0; i < CollectibleBehaviors.Length; i++)
+            {
+                CollectibleBehaviors[i].SetToolMode(slot, byPlayer, blockSelection, toolMode);
+            }
         }
 
         /// <summary>
@@ -767,6 +812,16 @@ namespace Vintagestory.API.Common
         {
 
         }
+
+        /// <summary>
+        /// Called when this item was collected by an entity
+        /// </summary>
+        /// <param name="entity"></param>
+        public virtual void OnCollected(ItemStack stack, Entity entity)
+        {
+            
+        }
+
 
 
 
@@ -1297,17 +1352,25 @@ namespace Vintagestory.API.Common
 
             if (CombustibleProps != null)
             {
-                if (CombustibleProps.BurnTemperature > 0)
-                {
-                    dsc.AppendLine(Lang.Get("Burn temperature: {0}°C", CombustibleProps.BurnTemperature));
-                    dsc.AppendLine(Lang.Get("Burn duration: {0}s", CombustibleProps.BurnDuration));
-                }
-
-
                 string smelttype = CombustibleProps.SmeltingType.ToString().ToLowerInvariant();
-                if (CombustibleProps.MeltingPoint > 0)
+                if (smelttype == "fire")
                 {
-                    dsc.AppendLine(Lang.Get("game:smeltpoint-" + smelttype, CombustibleProps.MeltingPoint));
+                    // Custom for clay items - do not show firing temperature as that is irrelevant to Pit kilns
+
+                    dsc.AppendLine(Lang.Get("itemdesc-fireinkiln"));
+                }
+                else
+                {
+                    if (CombustibleProps.BurnTemperature > 0)
+                    {
+                        dsc.AppendLine(Lang.Get("Burn temperature: {0}°C", CombustibleProps.BurnTemperature));
+                        dsc.AppendLine(Lang.Get("Burn duration: {0}s", CombustibleProps.BurnDuration));
+                    }
+
+                    if (CombustibleProps.MeltingPoint > 0)
+                    {
+                        dsc.AppendLine(Lang.Get("game:smeltpoint-" + smelttype, CombustibleProps.MeltingPoint));
+                    }
                 }
 
                 if (CombustibleProps.SmeltedStack?.ResolvedItemstack != null)
@@ -1635,18 +1698,18 @@ namespace Vintagestory.API.Common
             List<RichTextComponentBase> components = new List<RichTextComponentBase>();
 
             components.Add(new ItemstackTextComponent(capi, stack, 100, 10, EnumFloat.Left));
-            components.Add(new RichTextComponent(capi, stack.GetName() + "\n", CairoFont.WhiteSmallishText()));
+            components.AddRange(VtmlUtil.Richtextify(capi, stack.GetName() + "\n", CairoFont.WhiteSmallishText()));
 
             components.AddRange(VtmlUtil.Richtextify(capi, stack.GetDescription(capi.World, inSlot), CairoFont.WhiteSmallText()));
 
+            float marginTop = 7;
+            float marginBottom = 3;
 
 
-            components.Add(new ClearFloatTextComponent(capi, 10));
+            components.Add(new ClearFloatTextComponent(capi, marginTop));
 
 
             List<ItemStack> breakBlocks = new List<ItemStack>();
-
-            //Dictionary<AssetLocation, ItemStack> breakBlocks = new Dictionary<AssetLocation, ItemStack>();
 
             foreach (var blockStack in allStacks)
             {
@@ -1657,13 +1720,12 @@ namespace Vintagestory.API.Common
 
                 for (int i = 0; i < droppedStacks.Length; i++)
                 {
+                    BlockDropItemStack dstack = droppedStacks[i];
                     ItemStack droppedStack = droppedStacks[i].ResolvedItemstack;
 
                     if (droppedStack.Equals(capi.World, stack, GlobalConstants.IgnoredStackAttributes))
                     {
-                        //breakBlocks[val.Block.Code] = new ItemStack(val.Block); - why val.Block? It breaks lantern textures
                         breakBlocks.Add(blockStack);
-                        //breakBlocks[blockStack.Block.Code] = droppedStack;
                     }
                 }
             }
@@ -1674,10 +1736,32 @@ namespace Vintagestory.API.Common
             if (stack.Class == EnumItemClass.Block)
             {
                 BlockDropItemStack[] blockdropStacks = stack.Block.GetDropsForHandbook(stack, capi.World.Player);
+                List<ItemStack[]> breakBlocksWithToolStacks = new List<ItemStack[]>();
+                List<EnumTool?> tools = new List<EnumTool?>();
+
                 List<ItemStack> dropsStacks = new List<ItemStack>();
-                foreach (var val in blockdropStacks)
+                if (blockdropStacks != null)
                 {
-                    dropsStacks.Add(val.ResolvedItemstack);
+                    foreach (var val in blockdropStacks)
+                    {
+                        dropsStacks.Add(val.ResolvedItemstack);
+
+                        ItemStack[] toolStacks = val.Tool == null ? null : ObjectCacheUtil.GetOrCreate<ItemStack[]>(api, "blockhelp-collect-withtool-" + val.Tool, () =>
+                        {
+                            List<ItemStack> tstacks = new List<ItemStack>();
+                            foreach (var colobj in api.World.Collectibles)
+                            {
+                                if (colobj.Tool == val.Tool)
+                                {
+                                    tstacks.Add(new ItemStack(colobj));
+                                }
+                            }
+                            return tstacks.ToArray();
+                        });
+
+                        tools.Add(val.Tool);
+                        breakBlocksWithToolStacks.Add(toolStacks);
+                    }
                 }
 
                 if (dropsStacks != null && dropsStacks.Count > 0)
@@ -1689,17 +1773,37 @@ namespace Vintagestory.API.Common
                     else
                     {
                         components.Add(new RichTextComponent(capi, Lang.Get("Drops when broken") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                        int i = 0;
                         while (dropsStacks.Count > 0)
                         {
                             ItemStack dstack = dropsStacks[0];
+                            EnumTool? tool = tools[i];
+                            ItemStack[] toolStacks = breakBlocksWithToolStacks[i++];
                             dropsStacks.RemoveAt(0);
+                            
                             if (dstack == null) continue;
 
                             SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, dstack, dropsStacks, 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
+                            if (toolStacks != null)
+                            {
+                                comp.ExtraTooltipText = "\n\n<font color=\"orange\">" + Lang.Get("break-requires-tool-" + tool.ToString().ToLowerInvariant()) + "</font>";
+                            }
                             components.Add(comp);
+
+                            if (toolStacks != null)
+                            {
+                                comp = new SlideshowItemstackTextComponent(capi, toolStacks, 24, EnumFloat.Left, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
+                                comp.renderOffset.X = -(float)GuiElement.scaled(17);
+                                comp.renderOffset.Z = 100;
+                                
+                                comp.ShowTooltip = false;
+                                components.Add(comp);
+                            }
+
+                            
                         }
 
-                        components.Add(new ClearFloatTextComponent(capi, 10));
+                        components.Add(new ClearFloatTextComponent(capi, marginTop));
                     }
                 }
             }
@@ -1738,7 +1842,8 @@ namespace Vintagestory.API.Common
 
             if (breakBlocks.Count > 0)
             {
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Obtained by breaking") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, Lang.Get("Obtained by breaking") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                 while (breakBlocks.Count > 0)
                 {
@@ -1758,7 +1863,8 @@ namespace Vintagestory.API.Common
             string customFoundIn = stack.Collectible.Attributes?["handbook"]?["foundIn"]?.AsString(null);
             if (customFoundIn != null)
             {
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Found in") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, Lang.Get("Found in") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 components.Add(new RichTextComponent(capi, Lang.Get(customFoundIn), CairoFont.WhiteSmallText()));
                 haveText = true;
             }
@@ -1788,7 +1894,8 @@ namespace Vintagestory.API.Common
                     blocks[key].Add(new ItemStack(block));
                 }
 
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Host rock for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, Lang.Get("Host rock for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                 foreach (var val in blocks)
                 {
@@ -1823,7 +1930,8 @@ namespace Vintagestory.API.Common
                     blocks[key].Add(new ItemStack(block));
                 }
 
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Occurs in host rock") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, Lang.Get("Occurs in host rock") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                 foreach (var val in blocks)
                 {
@@ -1852,7 +1960,8 @@ namespace Vintagestory.API.Common
 
             if (alloyables.Count > 0)
             {
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Alloy for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, Lang.Get("Alloy for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 foreach (var val in alloyables)
                 {
                     components.Add(new ItemstackTextComponent(capi, val.Value, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
@@ -1862,11 +1971,14 @@ namespace Vintagestory.API.Common
             }
 
             // Bakes into
-            if (Attributes?["bakingResultCode"].AsString() is string bakingResult)
+            if (Attributes?["bakingProperties"]?.AsObject<BakingProperties>() is BakingProperties bp && bp.ResultCode != null)
             {
                 string title = Lang.Get("smeltdesc-bake-title");
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
-                components.Add(new ItemstackTextComponent(capi, new ItemStack(capi.World.GetItem(new AssetLocation(bakingResult))), 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                components.Add(new ItemstackTextComponent(capi, new ItemStack(capi.World.GetItem(new AssetLocation(bp.ResultCode))), 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                components.Add(new ClearFloatTextComponent(capi, marginBottom));  //nice margin below the item graphic
+                haveText = true;
             }
             else
             // Smelts into
@@ -1874,10 +1986,12 @@ namespace Vintagestory.API.Common
             {
                 string smelttype = CombustibleProps.SmeltingType.ToString().ToLowerInvariant();
                 string title = Lang.Get("game:smeltdesc-" + smelttype + "-title");
-                    
 
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 components.Add(new ItemstackTextComponent(capi, CombustibleProps.SmeltedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                components.Add(new ClearFloatTextComponent(capi, marginBottom));  //nice margin below the item graphic
                 haveText = true;
             }
 
@@ -1886,8 +2000,10 @@ namespace Vintagestory.API.Common
             {
                 string title = Lang.Get("game:pulverizesdesc-title");
 
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 components.Add(new ItemstackTextComponent(capi, CrushingProps.CrushedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                components.Add(new ClearFloatTextComponent(capi, marginBottom));  //nice margin below the item graphic
                 haveText = true;
             }
 
@@ -1895,8 +2011,10 @@ namespace Vintagestory.API.Common
             // Grinds into
             if (GrindingProps?.GroundStack?.ResolvedItemstack != null && !GrindingProps.GroundStack.ResolvedItemstack.Equals(api.World, stack, GlobalConstants.IgnoredStackAttributes))
             {
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Grinds into") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, Lang.Get("Grinds into") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 components.Add(new ItemstackTextComponent(capi, GrindingProps.GroundStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                components.Add(new ClearFloatTextComponent(capi, marginBottom));  //nice margin below the item graphic
                 haveText = true;
             }
 
@@ -1904,22 +2022,32 @@ namespace Vintagestory.API.Common
 
             if (props != null)
             {
+                bool addedItemStack = false;
                 foreach (var prop in props)
                 {
                     switch (prop.Type)
                     {
                         case EnumTransitionType.Cure:
-                            components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours, cures into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                            if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                            haveText = true;
+                            addedItemStack = true;
+                            components.Add(new RichTextComponent(capi, Lang.Get("After {0} hours, cures into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                             components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
                             break;
 
                         case EnumTransitionType.Ripen:
-                            components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours of open storage, ripens into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                            if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                            haveText = true;
+                            addedItemStack = true;
+                            components.Add(new RichTextComponent(capi, Lang.Get("After {0} hours of open storage, ripens into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                             components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
                             break;
 
                         case EnumTransitionType.Dry:
-                            components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("After {0} hours of open storage, dries into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                            if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                            haveText = true;
+                            addedItemStack = true;
+                            components.Add(new RichTextComponent(capi, Lang.Get("After {0} hours of open storage, dries into", prop.TransitionHours.avg) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                             components.Add(new ItemstackTextComponent(capi, prop.TransitionedStack.ResolvedItemstack, 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
                             break;
 
@@ -1931,7 +2059,9 @@ namespace Vintagestory.API.Common
 
                     }
                 }
+                if (addedItemStack) components.Add(new ClearFloatTextComponent(capi, marginBottom));  //nice margin below the item graphic
             }
+
 
 
             // Alloyable from
@@ -1949,7 +2079,8 @@ namespace Vintagestory.API.Common
 
             if (alloyableFrom.Count > 0)
             {
-                components.Add(new RichTextComponent(capi, (haveText ? "\n" : "") + Lang.Get("Alloyed from") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new RichTextComponent(capi, Lang.Get("Alloyed from") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
                 foreach (var val in alloyableFrom)
                 {
                     foreach (var ingred in val.Value) {
@@ -1972,7 +2103,7 @@ namespace Vintagestory.API.Common
             // Pickaxe
             // Axe
             ItemStack maxstack = stack.Clone();
-            maxstack.StackSize = maxstack.Collectible.MaxStackSize; // because SatisfiesAsIngredient() tests for stacksize
+            maxstack.StackSize = maxstack.Collectible.MaxStackSize * 10; // because SatisfiesAsIngredient() tests for stacksize. Times 10 because liquid portion oddities
 
             List<ItemStack> recipestacks = new List<ItemStack>();
 
@@ -2050,7 +2181,7 @@ namespace Vintagestory.API.Common
 
             if (recipestacks.Count > 0)
             {
-                components.Add(new ClearFloatTextComponent(capi, 16));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
                 components.Add(new RichTextComponent(capi, Lang.Get("Ingredient for") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                 while (recipestacks.Count > 0)
@@ -2062,6 +2193,8 @@ namespace Vintagestory.API.Common
                     SlideshowItemstackTextComponent comp = new SlideshowItemstackTextComponent(capi, dstack, recipestacks, 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)));
                     components.Add(comp);
                 }
+
+                haveText = true;
             }
 
 
@@ -2258,42 +2391,43 @@ namespace Vintagestory.API.Common
 
 
             string customCreatedBy = stack.Collectible.Attributes?["handbook"]?["createdBy"]?.AsString(null);
-            string bakingInitialIngredient = Attributes?["bakingInitialCode"].AsString();
+            string bakingInitialIngredient = Attributes?["bakingProperties"]?.AsObject<BakingProperties>()?.InitialCode;
 
             if (grecipes.Count > 0 || smithable || knappable || clayformable || customCreatedBy != null || bakables.Count > 0 || barrelRecipestext.Count > 0 || grindables.Count > 0 || curables.Count > 0 || ripenables.Count > 0 || dryables.Count > 0 || crushables.Count > 0 || bakingInitialIngredient != null)
             {
-                components.Add(new ClearFloatTextComponent(capi, 16));
+                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                haveText = true;
                 components.Add(new RichTextComponent(capi, Lang.Get("Created by") + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
 
                 if (smithable)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.Add(new LinkTextComponent(capi, Lang.Get("Smithing") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-smithing"); }));
                 }
                 if (knappable)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.Add(new LinkTextComponent(capi, Lang.Get("Knapping") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-knapping"); }));
                 }
                 if (clayformable)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.Add(new LinkTextComponent(capi, Lang.Get("Clay forming") + "\n", CairoFont.WhiteSmallText(), (cs) => { openDetailPageFor("craftinginfo-clayforming"); }));
                 }
                 if (customCreatedBy != null)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• ", CairoFont.WhiteSmallText()));
                     components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(customCreatedBy) + "\n", CairoFont.WhiteSmallText()));
                 }
 
                 if (grindables.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Grinding") + "\n", CairoFont.WhiteSmallText()));
 
                     while (grindables.Count > 0)
@@ -2311,7 +2445,7 @@ namespace Vintagestory.API.Common
 
                 if (crushables.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crushing") + "\n", CairoFont.WhiteSmallText()));
 
                     while (crushables.Count > 0)
@@ -2330,7 +2464,7 @@ namespace Vintagestory.API.Common
 
                 if (curables.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Curing") + "\n", CairoFont.WhiteSmallText()));
 
                     while (curables.Count > 0)
@@ -2348,7 +2482,7 @@ namespace Vintagestory.API.Common
 
                 if (ripenables.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Ripening") + "\n", CairoFont.WhiteSmallText()));
 
                     while (ripenables.Count > 0)
@@ -2366,7 +2500,7 @@ namespace Vintagestory.API.Common
 
                 if (dryables.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Drying") + "\n", CairoFont.WhiteSmallText()));
 
                     while (dryables.Count > 0)
@@ -2385,7 +2519,7 @@ namespace Vintagestory.API.Common
 
                 if (bakables.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Cooking/Smelting/Baking") + "\n", CairoFont.WhiteSmallText()));
 
                     while (bakables.Count > 0)
@@ -2404,7 +2538,7 @@ namespace Vintagestory.API.Common
 
                 if (bakingInitialIngredient != null)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Baking (in oven)") + "\n", CairoFont.WhiteSmallText()));
                     components.Add(new ItemstackTextComponent(capi, new ItemStack(capi.World.GetItem(new AssetLocation(bakingInitialIngredient))), 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
                 }
@@ -2412,8 +2546,7 @@ namespace Vintagestory.API.Common
 
                 if (grecipes.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
-                    /*if (knappable) - whats this for? o.O */
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("Crafting") + "\n", CairoFont.WhiteSmallText()));
 
                     Dictionary<int, List<GridRecipe>> grouped = new Dictionary<int, List<GridRecipe>>();
@@ -2430,7 +2563,8 @@ namespace Vintagestory.API.Common
                     foreach (var val in grouped)
                     {
                         var comp = new SlideshowGridRecipeTextComponent(capi, val.Value.ToArray(), 40, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs)), allStacks);
-                        comp.PaddingLeft = 10;
+                        comp.PaddingLeft = 8;
+                        comp.UnscaledMarginTop = 8;
                         components.Add(comp);
                     }
                     
@@ -2438,7 +2572,7 @@ namespace Vintagestory.API.Common
 
                 if (barrelRecipestext.Count > 0)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                     components.Add(new RichTextComponent(capi, "• " + Lang.Get("In Barrel") + "\n", CairoFont.WhiteSmallText()));
                     components.AddRange(barrelRecipestext);
                 }
@@ -2450,7 +2584,7 @@ namespace Vintagestory.API.Common
                 ExtraSection[] sections = obj?.AsObject<ExtraSection[]>();
                 for (int i = 0; i < sections.Length; i++)
                 {
-                    components.Add(new ClearFloatTextComponent(capi, 16));
+                    components.Add(new ClearFloatTextComponent(capi, 16 ));
                     components.Add(new RichTextComponent(capi, Lang.Get(sections[i].Title) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
                     components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(sections[i].Text) + "\n", CairoFont.WhiteSmallText()));
@@ -2464,11 +2598,11 @@ namespace Vintagestory.API.Common
 
             if (langExtraSectionTitle != null || langExtraSectionText != null)
             {
-                components.Add(new ClearFloatTextComponent(capi, 16));
+                components.Add(new ClearFloatTextComponent(capi, marginTop));
                 if (langExtraSectionTitle != null)
                 {
                     components.Add(new RichTextComponent(capi, langExtraSectionTitle + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
-                    components.Add(new ClearFloatTextComponent(capi, 4));
+                    components.Add(new ClearFloatTextComponent(capi, marginTop));
                 }
                 if (langExtraSectionText != null)
                 {
@@ -2522,7 +2656,7 @@ namespace Vintagestory.API.Common
             bool doTemperatureAveraging = false;
             bool doTransitionAveraging = false;
 
-            op.MovedQuantity = GameMath.Min(op.SinkSlot.RemainingSlotSpace, op.MovableQuantity, op.RequestedQuantity);
+            op.MovedQuantity = GameMath.Min(op.SinkSlot.GetRemainingSlotSpace(op.SourceSlot.Itemstack), op.MovableQuantity, op.RequestedQuantity);
 
             if (HasTemperature(op.SinkSlot.Itemstack) || HasTemperature(op.SourceSlot.Itemstack))
             {
@@ -2544,6 +2678,7 @@ namespace Vintagestory.API.Common
 
             TransitionState[] sourceTransitionStates = UpdateAndGetTransitionStates(op.World, op.SourceSlot);
             TransitionState[] targetTransitionStates = UpdateAndGetTransitionStates(op.World, op.SinkSlot);
+
             Dictionary<EnumTransitionType, TransitionState> targetStatesByType=null;
 
             if (sourceTransitionStates != null)
@@ -2597,6 +2732,18 @@ namespace Vintagestory.API.Common
                 doTransitionAveraging = true;
             }
 
+            if (op.SourceSlot.Itemstack == null)   //The earlier UpdateAndGetTransitionStates() may have set the Itemstack to null, e.g. if it was a 50% probability Rot producing item
+            {
+                op.MovedQuantity = 0;
+                return;
+            }
+
+            if (op.MovedQuantity <= 0) return;  //Some of the following code could error (e.g. divide by zero) if this is 0 and the sinkSlot.stackSize is also 0
+
+            if (op.SinkSlot.Itemstack == null)   //The earlier UpdateAndGetTransitionStates() may have set the Itemstack to null, as above: in this case create a dummy Itemstack so that no NPE in the following code
+            {
+                op.SinkSlot.Itemstack = new ItemStack(op.SourceSlot.Itemstack.Collectible, 0);
+            }
 
 
             if (doTemperatureAveraging)
@@ -2608,7 +2755,7 @@ namespace Vintagestory.API.Common
                 );
             }
 
-            if (doTransitionAveraging && op.MovedQuantity > 0)
+            if (doTransitionAveraging)
             {
                 float t = (float)op.MovedQuantity / (op.MovedQuantity + op.SinkSlot.StackSize);
 
@@ -2657,7 +2804,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Should return true if this collectible is smeltable
+        /// Should return true if this collectible is smeltable in an open fire
         /// </summary>
         /// <param name="world"></param>
         /// <param name="cookingSlotsProvider"></param>
@@ -2672,6 +2819,7 @@ namespace Vintagestory.API.Common
                 smeltedStack != null
                 && inputStack.StackSize >= CombustibleProps.SmeltedRatio
                 && CombustibleProps.MeltingPoint > 0
+                && (CombustibleProps.SmeltingType != EnumSmeltType.Fire || world.Config.GetString("allowOpenFireFiring").ToBool(false))
                 && (outputStack == null || outputStack.Collectible.GetMergableQuantity(outputStack, smeltedStack, EnumMergePriority.AutoMerge) >= smeltedStack.StackSize)
             ;
         }
@@ -2805,13 +2953,24 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Returns a list of the current transition states of this item
+        /// Returns a list of the current transition states of this item, redirects to UpdateAndGetTransitionStatesNative
         /// </summary>
         /// <param name="world"></param>
         /// <param name="inslot"></param>
         /// <returns></returns>
         public virtual TransitionState[] UpdateAndGetTransitionStates(IWorldAccessor world, ItemSlot inslot)
         {
+            return UpdateAndGetTransitionStatesNative(world, inslot);
+        }
+
+        /// <summary>
+        /// Returns a list of the current transition states of this item. Seperate from UpdateAndGetTransitionStates() so that you can call still call this methods several inheritances down, i.e. there is no base.base.Method() syntax in C#
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="inslot"></param>
+        /// <returns></returns>
+        protected virtual TransitionState[] UpdateAndGetTransitionStatesNative(IWorldAccessor world, ItemSlot inslot) 
+        { 
             ItemStack itemstack = inslot.Itemstack;
 
             TransitionableProperties[] propsm = GetTransitionableProperties(world, inslot.Itemstack, null);
@@ -2971,7 +3130,7 @@ namespace Vintagestory.API.Common
             {
                 ItemSlot slot = inputSlots[i];
                 if (slot.Empty) continue;
-                TransitionState state = slot.Itemstack.Collectible.UpdateAndGetTransitionState(api.World, slot, EnumTransitionType.Perish);
+                TransitionState state = slot.Itemstack?.Collectible?.UpdateAndGetTransitionState(api.World, slot, EnumTransitionType.Perish);
                 if (state == null) continue;
 
                 quantity++;
@@ -2989,6 +3148,8 @@ namespace Vintagestory.API.Common
 
             for (int i = 0; i < outStacks.Length; i++)
             {
+                if (outStacks[i] == null) continue;
+
                 if (!(outStacks[i].Attributes["transitionstate"] is ITreeAttribute))
                 {
                     outStacks[i].Attributes["transitionstate"] = new TreeAttribute();

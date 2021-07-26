@@ -121,7 +121,7 @@ namespace Vintagestory.API.Client
             CalcTotalHeight();
         }
 
-        internal void ReloadCells(List<ListCellEntry> cells)
+        public void ReloadCells(List<ListCellEntry> cells)
         {
             foreach (var val in elementCells)
             {

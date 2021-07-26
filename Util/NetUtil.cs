@@ -52,6 +52,8 @@ namespace Vintagestory.API.Util
         public static bool IsPrivateIp(string ip)
         {
             string[] parts = ip.Split('.');
+            if (parts.Length < 2) return false;
+
             int secondnum = 0;
             int.TryParse(parts[1], out secondnum);
 

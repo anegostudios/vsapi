@@ -35,6 +35,12 @@ namespace Vintagestory.API.Client
         public int Rotation = 0;
 
         /// <summary>
+        /// Can be used to modify the opacity of the texture
+        /// </summary>
+        public int Alpha = 100;
+
+
+        /// <summary>
         /// Creates a new empty composite texture
         /// </summary>
         public CompositeTexture()
@@ -73,7 +79,8 @@ namespace Vintagestory.API.Client
             {
                 Base = Base.Clone(),
                 Alternates = alternatesClone,
-                Rotation = Rotation
+                Rotation = Rotation,
+                Alpha = Alpha
             };
 
             if (Overlays != null)
@@ -93,7 +100,8 @@ namespace Vintagestory.API.Client
             CompositeTexture ct = new CompositeTexture()
             {
                 Base = Base.Clone(),
-                Rotation = Rotation
+                Rotation = Rotation,
+                Alpha = Alpha
             };
 
             if (Overlays != null)
@@ -240,6 +248,16 @@ namespace Vintagestory.API.Client
                 bct.BakedName.Path += "@" + ct.Rotation;
             }
 
+            if (ct.Alpha != 100)
+            {
+                if (ct.Alpha < 0 || ct.Alpha > 100)
+                {
+                    throw new Exception("Texture definition " + ct.Base + " has a alpha value outside the 0..100 range.");
+                }
+
+                bct.BakedName.Path += "å" + ct.Alpha;
+            }
+
             if (ct.Alternates != null)
             {
                 bct.BakedVariants = new BakedCompositeTexture[ct.Alternates.Length + 1];
@@ -256,7 +274,7 @@ namespace Vintagestory.API.Client
 
         public override string ToString()
         {
-            return Base.ToString() + "@" + Rotation;
+            return Base.ToString() + "@" + Rotation + "a" + Alpha;
         }
     }
 

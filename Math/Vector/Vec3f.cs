@@ -13,6 +13,9 @@ namespace Vintagestory.API.MathTools
     [ProtoContract]
     public class Vec3f : IVec3
     {
+        /// <summary>
+        /// Create a new instance with x/y/z set to 0
+        /// </summary>
         public static Vec3f Zero { get { return new Vec3f(); } }
 
         /// <summary>
@@ -477,7 +480,7 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        public void Write(BinaryWriter writer)
+        public void ToBytes(BinaryWriter writer)
         {
             writer.Write(X);
             writer.Write(Y);

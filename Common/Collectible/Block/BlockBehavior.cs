@@ -322,5 +322,13 @@ namespace Vintagestory.API.Common
         {
             return null;
         }
+
+        /// <summary>
+        /// If this is less than 1.0, will slow down mining of the given block  (e.g. used for reinforced blocks)
+        /// </summary>
+        public virtual float GetMiningSpeedModifier(IWorldAccessor world, BlockPos pos, IPlayer byPlayer)
+        {
+            return 1.0f;
+        }
     }
 }

@@ -33,18 +33,20 @@ namespace Vintagestory.API.Common
 
         Block block;
         BlockPos blockpos;
+        public Vec3f velocity;
 
         public override bool DieInLiquid => block.LiquidCode != null;
 
         public BlockCubeParticles() { }
 
-        public BlockCubeParticles(IWorldAccessor world, BlockPos blockpos, Vec3d particlePos, float radius, int quantity, float scale)
+        public BlockCubeParticles(IWorldAccessor world, BlockPos blockpos, Vec3d particlePos, float radius, int quantity, float scale, Vec3f velocity = null)
         {
             this.particlePos = particlePos;
             this.blockpos = blockpos;
             this.quantity = quantity;
             this.radius = radius;
             this.scale = scale;
+            this.velocity = velocity;
             block = world.BlockAccessor.GetBlock(blockpos);
         }
 
@@ -64,6 +66,8 @@ namespace Vintagestory.API.Common
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
+            if (velocity != null) return velocity;
+
             Vec3f distanceVector = new Vec3f(1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble());
 
             if (block.IsLiquid())
@@ -94,6 +98,8 @@ namespace Vintagestory.API.Common
             writer.Write(quantity);
             writer.Write(radius);
             writer.Write(scale);
+            writer.Write(velocity != null);
+            if (velocity != null) velocity.ToBytes(writer);
         }
 
         public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -103,6 +109,10 @@ namespace Vintagestory.API.Common
             quantity = reader.ReadInt32();
             radius = reader.ReadSingle();
             scale = reader.ReadSingle();
+            if (reader.ReadBoolean())
+            {
+                velocity = Vec3f.CreateFromBytes(reader);
+            }
         }
 
     }
@@ -136,18 +146,21 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float scale;
 
+        public Vec3f velocity;
+
         public override bool DieInLiquid => false;
         public override bool SwimOnLiquid => stack.Collectible.MaterialDensity < 1000;
 
         public StackCubeParticles() { }
 
-        public StackCubeParticles(Vec3d collisionPos, ItemStack stack, float radius, int quantity, float scale)
+        public StackCubeParticles(Vec3d collisionPos, ItemStack stack, float radius, int quantity, float scale, Vec3f velocity = null)
         {
             this.collisionPos = collisionPos;
             this.stack = stack;
             this.quantity = quantity;
             this.radius = radius;
             this.scale = scale;
+            this.velocity = velocity;
         }
 
         public override int GetRgbaColor(ICoreClientAPI capi)
@@ -159,6 +172,8 @@ namespace Vintagestory.API.Common
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
+            if (velocity != null) return velocity;
+
             Vec3f distanceVector = new Vec3f(1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble());
 
             return distanceVector;
@@ -184,6 +199,8 @@ namespace Vintagestory.API.Common
             writer.Write(quantity);
             writer.Write(radius);
             writer.Write(scale);
+            writer.Write(velocity != null);
+            if (velocity != null) velocity.ToBytes(writer);
         }
 
         public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -195,6 +212,10 @@ namespace Vintagestory.API.Common
             quantity = reader.ReadInt32();
             radius = reader.ReadSingle();
             scale = reader.ReadSingle();
+            if (reader.ReadBoolean())
+            {
+                velocity = Vec3f.CreateFromBytes(reader);
+            }
         }
 
 

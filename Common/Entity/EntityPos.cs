@@ -9,6 +9,7 @@ namespace Vintagestory.API.Common.Entities
     public class FuzzyEntityPos : EntityPos
     {
         public float Radius;
+        public int UsesLeft;
 
         public FuzzyEntityPos(double x, double y, double z, float heading = 0, float pitch = 0, float roll = 0) : base(x, y, z, heading, pitch, roll)
         {

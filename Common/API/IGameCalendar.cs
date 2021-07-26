@@ -100,7 +100,7 @@ namespace Vintagestory.API.Common
 
 
     /// <summary>
-    /// Should return the suns vertical position in the sky from 0..1
+    /// Should return sin(solar altitude angle). i.e. -1 for 90 degrees far below horizon, 0 for horizon and 1 for vertical
     /// </summary>
     /// <param name="posX">World x coordinate</param>
     /// <param name="posZ">World z coordinate</param>
@@ -135,7 +135,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Retrieve the current daylight strength at given coordinates
+        /// Retrieve the current daylight strength at given coordinates, the values are roughly beween 0 and 1.2f
         /// </summary>
         /// <param name="x"></param>
         /// <param name="z"></param>
@@ -222,7 +222,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         int DayOfYear { get; }
 
-        
+        /// <summary>
+        /// The current day of the year (goes from 0 to DaysPerYear)
+        /// </summary>
+        float DayOfYearf { get; }
+
+
         /// <summary>
         /// Returns the year. Every game begins with 1386
         /// </summary>

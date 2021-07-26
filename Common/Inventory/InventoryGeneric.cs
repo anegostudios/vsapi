@@ -97,35 +97,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        /// <summary>
-        /// True if all slots are empty
-        /// </summary>
-        public bool IsEmpty
-        {
-            get
-            {
-                for (int i = 0; i < slots.Length; i++)
-                {
-                    if (slots[i].Itemstack != null) return false;
-                }
-
-                return true;
-            }
-        }
-
-        public ItemSlot FirstNonEmptySlot
-        {
-            get
-            {
-                for (int i = 0; i < slots.Length; i++)
-                {
-                    if (!slots[i].Empty) return slots[i];
-                }
-
-                return null;
-            }
-        }
-
 
         public override float GetSuitability(ItemSlot sourceSlot, ItemSlot targetSlot, bool isMerge)
         {

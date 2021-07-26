@@ -13,7 +13,7 @@ namespace Vintagestory.API.Common
 
         int[] Pixels { get; }
 
-        int[] GetPixelsRotated(int rot = 0);
+        int[] GetPixelsTransformed(int rot = 0, int alpha = 100);
     }
 
     public class BakedBitmap: IBitmap
@@ -48,7 +48,7 @@ namespace Vintagestory.API.Common
             return Color.FromArgb(TexturePixels[Width * (int)(y * Height) + (int)(x * Width)]);
         }
 
-        public int[] GetPixelsRotated(int rot = 0)
+        public int[] GetPixelsTransformed(int rot = 0, int alpha = 100)
         {
             int[] bmpPixels = new int[Width * Height];
 
@@ -94,6 +94,20 @@ namespace Vintagestory.API.Common
                     break;
             }
 
+            if (alpha != 100)
+            {
+                float af = alpha / 100f;
+                int clearAlpha = ~(0xff << 24);
+                for (int i = 0; i < bmpPixels.Length; i++)
+                {
+                    int col = bmpPixels[i];
+                    int a = (col >> 24) & 0xff;
+                    col &= clearAlpha;
+
+                    bmpPixels[i] = col | ((int)(a * af) << 24);
+                }
+            }
+
             return bmpPixels;
         }
     }
@@ -108,7 +122,7 @@ namespace Vintagestory.API.Common
         public abstract Color GetPixel(int x, int y);
         public abstract Color GetPixelRel(float x, float y);
         
-        public abstract int[] GetPixelsRotated(int rot = 0);
+        public abstract int[] GetPixelsTransformed(int rot = 0, int alpha = 100);
         public abstract void Save(string filename);
         
     }

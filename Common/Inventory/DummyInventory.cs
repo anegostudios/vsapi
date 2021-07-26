@@ -15,10 +15,15 @@ namespace Vintagestory.API.Common
     {
         static int dummyId = 1;
         ItemSlot[] slots;
+        int quantitySlots = 1;
 
-        public DummyInventory(ICoreAPI api) : this("dummy-" + (dummyId++), api)
+        public ItemSlot[] Slots => slots;
+
+        public DummyInventory(ICoreAPI api, int quantitySlots = 1) : this("dummy-" + (dummyId++), api)
         {
-            slots = new ItemSlot[] { new ItemSlot(this) };
+            this.quantitySlots = quantitySlots;
+
+            slots = GenEmptySlots(quantitySlots);
         }
 
         private DummyInventory(string inventoryID, ICoreAPI api) : base(inventoryID, api)
@@ -30,7 +35,7 @@ namespace Vintagestory.API.Common
         }
 
         public override ItemSlot this[int slotId] { get => slots[slotId]; set => slots[slotId] = value; }
-        public override int Count => 1;
+        public override int Count => quantitySlots;
 
         public override void FromTreeAttributes(ITreeAttribute tree)
         {

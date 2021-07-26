@@ -7,6 +7,7 @@ using ProtoBuf;
 
 namespace Vintagestory.API.MathTools
 {
+
     /// <summary>
     /// A useful data structure when operating with block postions.<br/>
     /// Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A common pitfall is writing code like: BlockPos abovePos = pos.Up(); - with this code abovePos and pos will reference to the same object!

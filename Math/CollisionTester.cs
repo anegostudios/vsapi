@@ -264,6 +264,8 @@ namespace Vintagestory.API.MathTools
             BlockPos blockPos = new BlockPos();
             Vec3d blockPosVec = new Vec3d();
             Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
+            
+            entityBox.Y1 = Math.Round(entityBox.Y1, 5); // Fix float/double rounding errors. Only need to fix the vertical because gravity.
 
             int minX = (int)(entityBoxRel.X1 + pos.X);
             int minY = (int)(entityBoxRel.Y1 + pos.Y - 1);  // -1 for the extra high collision box of fences
@@ -290,7 +292,10 @@ namespace Vintagestory.API.MathTools
                             if (collBox == null) continue;
 
                             bool colliding = alsoCheckTouch ? entityBox.IntersectsOrTouches(collBox, blockPosVec) : entityBox.Intersects(collBox, blockPosVec);
-                            if (colliding) return collBox.ToDouble().Translate(blockPos);
+                            if (colliding)
+                            {
+                                return collBox.ToDouble().Translate(blockPos);
+                            }
                         }
                     }
                 }

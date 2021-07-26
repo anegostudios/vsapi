@@ -144,6 +144,12 @@ namespace Vintagestory.API.Client
         public virtual bool Focused { get { return focused; } }
 
         /// <summary>
+        /// Can this dialog be focused?
+        /// </summary>
+        public virtual bool Focusable => true;
+
+
+        /// <summary>
         /// Is this dialogue a dialogue or a HUD object?
         /// </summary>
         public virtual EnumDialogType DialogType { get { return EnumDialogType.Dialog; } }
@@ -297,6 +303,8 @@ namespace Vintagestory.API.Client
         /// Focuses the dialog
         /// </summary>
         public virtual void Focus() {
+            if (!Focusable) return;
+
             focused = true;
         }
 

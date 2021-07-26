@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -27,8 +28,8 @@ namespace Vintagestory.API.Client
             if (displayText.Length > 0)
             { 
                 // ok apparently text extents of " " is 0 on a mac? o.O
-                if (displayText[displayText.Length - 1] == ' ') PaddingRight = 0.75 * (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width); // added 0.75 multiplier because there is always too much spacing o.o
-                if (displayText[0] == ' ') PaddingLeft = 0.75 * (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width);
+                if (displayText[displayText.Length - 1] == ' ') PaddingRight = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
+                if (displayText[0] == ' ') PaddingLeft = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
                 //this.displayText = displayText.Trim(new char[] { ' ' }); 
             }
             else
@@ -70,6 +71,11 @@ namespace Vintagestory.API.Client
         /// <param name="renderY"></param>
         public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                //var bounds = lines[i].Bounds;
+                //api.Render.RenderRectangle((float)renderX + (float)bounds.X, (float)renderY + (float)bounds.Y, 50, (float)bounds.Width, (float)bounds.Height, ColorUtil.ColorFromRgba(200, 255, 255, 128));
+            }
             
         }
 
@@ -83,7 +89,7 @@ namespace Vintagestory.API.Client
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
         {
             //double lineheight = textUtil.GetLineHeight(font);
-            lines = textUtil.Lineize(font, displayText, flowPath, lineX + PaddingLeft, lineY);
+            lines = textUtil.Lineize(font, displayText, flowPath, lineX + GuiElement.scaled(PaddingLeft), lineY);
 
             BoundsPerLine = new LineRectangled[lines.Length];
             for (int i = 0; i < lines.Length; i++)
@@ -93,7 +99,7 @@ namespace Vintagestory.API.Client
             }
 
             if (lines.Length > 0) {
-                lines[0].PaddingLeft = PaddingLeft;
+                lines[0].PaddingLeft = GuiElement.scaled(PaddingLeft);
                 lines[lines.Length - 1].PaddingRight = PaddingRight;
                 lines[lines.Length - 1].Bounds.Width += PaddingRight;
             }

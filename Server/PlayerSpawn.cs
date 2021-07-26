@@ -26,6 +26,9 @@ namespace Vintagestory.API.Server
         [ProtoMember(6)]
         public float? roll;
 
+        [ProtoMember(7)]
+        public int RemainingUses = -1;
+
 
         public PlayerSpawnPos()
         {

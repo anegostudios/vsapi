@@ -16,22 +16,19 @@ namespace Vintagestory.API.Client
     {
         DummySlot slot;
         double size;
-        
 
         Common.Action<ItemStack> onStackClicked;
 
-        public ItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstack, double size, double sidePadding = 0, EnumFloat floatType = EnumFloat.Left, Common.Action<ItemStack> onStackClicked = null) : base(capi)
+        public ItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstack, double size, double rightSidePadding = 0, EnumFloat floatType = EnumFloat.Left, Common.Action<ItemStack> onStackClicked = null) : base(capi)
         {
             size = GuiElement.scaled(size);
-            sidePadding = GuiElement.scaled(sidePadding);
 
             slot = new DummySlot(itemstack);
             this.onStackClicked = onStackClicked;
             this.Float = floatType;
             this.size = size;
-            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, size + sidePadding, size) };
-            //PaddingRight = 0;
-
+            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, size, size) };
+            PaddingRight = GuiElement.scaled(rightSidePadding);
         }
 
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
@@ -62,7 +59,7 @@ namespace Vintagestory.API.Client
             LineRectangled bounds = BoundsPerLine[0];
 
             api.Render.RenderItemstackToGui(
-                slot, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f + offY, 100, (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+                slot, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);

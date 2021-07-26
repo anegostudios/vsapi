@@ -488,7 +488,6 @@ namespace Vintagestory.API.MathTools
             float smallestAngle = GameMath.PI;
             BlockFacing facing = null;
 
-
             for (int i = 0; i < ALLFACES.Length; i++)
             {
                 BlockFacing f = ALLFACES[i];
@@ -507,9 +506,13 @@ namespace Vintagestory.API.MathTools
 
         public static BlockFacing FromNormal(Vec3i vec)
         {
-            Cardinal c = Cardinal.FromNormali(vec);
-            if (c == null) return null;
-            return FromFirstLetter(c.Initial);
+            for (int i = 0; i < ALLFACES.Length; i++)
+            {
+                BlockFacing f = ALLFACES[i];
+                if (f.normali.Equals(vec)) return f;
+            }
+
+            return null;
         }
 
 

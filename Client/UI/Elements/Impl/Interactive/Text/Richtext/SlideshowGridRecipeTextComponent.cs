@@ -17,12 +17,19 @@ namespace Vintagestory.API.Client
         public AssetLocation WildCard;
     }
 
+    public class GridRecipeAndUnnamedIngredients
+    {
+        public GridRecipe Recipe;
+        public Dictionary<int, ItemStack[]> unnamedIngredients;
+    }
+
     /// <summary>
     /// Draws multiple itemstacks
     /// </summary>
     public class SlideshowGridRecipeTextComponent : ItemstackComponentBase
     {
-        public GridRecipe[] GridRecipes;
+        public GridRecipeAndUnnamedIngredients[] GridRecipesAndUnIn;
+
         Common.Action<ItemStack> onStackClicked;
         ItemSlot dummyslot = new DummySlot();
 
@@ -53,9 +60,10 @@ namespace Vintagestory.API.Client
             //PaddingRight = 0;
             this.size = size;
 
+            Random fixedRand = new Random(123);
 
             // Expand wild cards
-            List<GridRecipe> resolvedGridRecipes = new List<GridRecipe>();
+            List<GridRecipeAndUnnamedIngredients> resolvedGridRecipes = new List<GridRecipeAndUnnamedIngredients>();
             Queue<GridRecipe> halfResolvedRecipes = new Queue<GridRecipe>(gridrecipes);
 
             bool allResolved = false;
@@ -69,6 +77,7 @@ namespace Vintagestory.API.Client
                 while (cnt-- > 0)
                 {
                     GridRecipe toTestRecipe = halfResolvedRecipes.Dequeue();
+                    Dictionary<int, ItemStack[]> unnamedIngredients=null;
 
                     bool thisResolved = true;
 
@@ -81,6 +90,14 @@ namespace Vintagestory.API.Client
                             allResolved = false;
                             thisResolved = false;
                             ItemStack[] stacks = ResolveWildCard(capi.World, ingred, allStacks);
+
+                            if (ingred.Name == null)
+                            {
+                                if (unnamedIngredients == null) unnamedIngredients = new Dictionary<int, ItemStack[]>();
+                                unnamedIngredients[j] = stacks.Shuffle(fixedRand);
+                                thisResolved = true;
+                                continue;
+                            }
 
                             if (stacks.Length == 0)
                             {
@@ -104,33 +121,34 @@ namespace Vintagestory.API.Client
 
                                 halfResolvedRecipes.Enqueue(cloned);
                             }
+
                             break;
                         }
                     }
 
                     if (thisResolved)
                     {
-                        resolvedGridRecipes.Add(toTestRecipe);
+                        resolvedGridRecipes.Add(new GridRecipeAndUnnamedIngredients() { Recipe = toTestRecipe, unnamedIngredients = unnamedIngredients });
                     }
                 }
             }
 
             resolveCache.Clear();
-            this.GridRecipes = resolvedGridRecipes.ToArray();
+            this.GridRecipesAndUnIn = resolvedGridRecipes.ToArray();
 
-            Random fixedRand = new Random(123);
-            this.GridRecipes.Shuffle(fixedRand);
+            
+            this.GridRecipesAndUnIn.Shuffle(fixedRand);
 
-            for (int i = 0; i < GridRecipes.Length; i++)
+            for (int i = 0; i < GridRecipesAndUnIn.Length; i++)
             {
-                string trait = GridRecipes[i].RequiresTrait;
+                string trait = GridRecipesAndUnIn[i].Recipe.RequiresTrait;
                 if (trait != null)
                 {
                     extraTexts[i] = capi.Gui.TextTexture.GenTextTexture(Lang.Get("* Requires {0} trait", trait), CairoFont.WhiteDetailText());
                 }
             }
 
-            if (GridRecipes.Length == 0) throw new ArgumentException("Could not resolve any of the supplied grid recipes?");
+            if (GridRecipesAndUnIn.Length == 0) throw new ArgumentException("Could not resolve any of the supplied grid recipes?");
         }
 
         
@@ -205,7 +223,7 @@ namespace Vintagestory.API.Client
             bool requireLinebreak = lineX + BoundsPerLine[0].Width > curfp.X2;
 
             this.BoundsPerLine[0].X = requireLinebreak ? 0 : lineX;
-            this.BoundsPerLine[0].Y = lineY + (requireLinebreak ? currentLineHeight : 0);
+            this.BoundsPerLine[0].Y = lineY + (requireLinebreak ? currentLineHeight + GuiElement.scaled(UnscaledMarginTop) : 0);
 
             return requireLinebreak;
         }
@@ -222,19 +240,21 @@ namespace Vintagestory.API.Client
                     ctx.Fill();
                 }
             }
-            
         }
+
+        int secondCounter = 0;
 
         public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
             LineRectangled bounds = BoundsPerLine[0];
 
-            GridRecipe recipe = GridRecipes[curItemIndex];
+            GridRecipeAndUnnamedIngredients recipeunin = GridRecipesAndUnIn[curItemIndex];
 
             if ((secondsVisible -= deltaTime) <= 0)
             {
                 secondsVisible = 1;
-                curItemIndex = (curItemIndex + 1) % GridRecipes.Length;
+                curItemIndex = (curItemIndex + 1) % GridRecipesAndUnIn.Length;
+                secondCounter++;
             }
 
             LoadedTexture extraTextTexture;
@@ -253,13 +273,26 @@ namespace Vintagestory.API.Client
             {
                 for (int y = 0; y < 3; y++)
                 {
-                    CraftingRecipeIngredient ingred = recipe.GetElementInGrid(y, x, recipe.resolvedIngredients, recipe.Width);
+                    CraftingRecipeIngredient ingred = recipeunin.Recipe.GetElementInGrid(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
+
+                    int index = recipeunin.Recipe.GetGridIndex(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
+
                     if (ingred == null) continue;
 
                     rx = renderX + bounds.X + x * (size + GuiElement.scaled(3));
                     ry = renderY + bounds.Y + y * (size + GuiElement.scaled(3));
 
-                    dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
+                    ItemStack[] unnamedWildcardStacklist = null;
+                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true)
+                    {
+                        dummyslot.Itemstack = unnamedWildcardStacklist[secondCounter % unnamedWildcardStacklist.Length];
+                        dummyslot.Itemstack.StackSize = ingred.Quantity;
+                    } else
+                    {
+                        dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
+                    }
+                    
+                    
                     
 
                     //api.Render.PushScissor(scissorBounds, true);
@@ -288,7 +321,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDown(MouseEvent args)
         {
-            GridRecipe recipe = GridRecipes[curItemIndex];
+            GridRecipeAndUnnamedIngredients recipeunin = GridRecipesAndUnIn[curItemIndex];
+            GridRecipe recipe = recipeunin.Recipe;
 
             foreach (var val in BoundsPerLine)
             {
@@ -300,7 +334,16 @@ namespace Vintagestory.API.Client
                     CraftingRecipeIngredient ingred = recipe.GetElementInGrid(y, x, recipe.resolvedIngredients, recipe.Width);
                     if (ingred == null) return;
 
-                    onStackClicked?.Invoke(ingred.ResolvedItemstack);
+                    int index = recipe.GetGridIndex(y, x, recipe.resolvedIngredients, recipe.Width);
+                    ItemStack[] unnamedWildcardStacklist = null;
+                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true)
+                    {
+                        onStackClicked?.Invoke(unnamedWildcardStacklist[secondCounter % unnamedWildcardStacklist.Length]);
+                    }
+                    else
+                    {
+                        onStackClicked?.Invoke(ingred.ResolvedItemstack);
+                    }
                 }
             }
         }

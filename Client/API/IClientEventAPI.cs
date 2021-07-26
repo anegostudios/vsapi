@@ -139,12 +139,12 @@ namespace Vintagestory.API.Client
         event Common.Action<ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
 
         /// <summary>
-        /// Fired when somethign fires an ingame error
+        /// Fired when something fires an ingame error
         /// </summary>
         event IngameErrorDelegate InGameError;
 
         /// <summary>
-        /// Fired when somethign fires an ingame error
+        /// Fired when something triggers a discovery event, such as the lore system
         /// </summary>
         event IngameDiscoveryDelegate InGameDiscovery;
 

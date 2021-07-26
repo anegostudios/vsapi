@@ -20,12 +20,12 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.15.0-pre.1";
+        public const string OverallVersion = "1.15.2"; 
 
         /// <summary>
         /// Whether this is a stable or unstable version
         /// </summary>
-        public const EnumGameBranch Branch = EnumGameBranch.Unstable;
+        public const EnumGameBranch Branch = EnumGameBranch.Stable;
 
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
@@ -53,7 +53,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.15.0-dev-0";
+        public const string NetworkVersion = "1.15.0";
 
         /// <summary>
         /// Version of the savegame database
@@ -78,7 +78,7 @@ namespace Vintagestory.API.Config
             string[] parts = version.Split(separators, StringSplitOptions.None);
             if (parts.Length <= 3)
             {
-                parts = parts.Append("2");
+                parts = parts.Append("3");
             } else
             {
                 if (parts[3] == "rc") parts[3] = "2"; // -rc

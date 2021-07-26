@@ -128,6 +128,34 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+
+        /// <summary>
+        /// Set a mat4 to the identity matrix with a scale applied
+        /// </summary>
+        /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <returns>{mat4} out</returns>
+        public static float[] Identity_Scaled(float[] output, float scale)
+        {
+            output[0] = scale;
+            output[1] = 0;
+            output[2] = 0;
+            output[3] = 0;
+            output[4] = 0;
+            output[5] = scale;
+            output[6] = 0;
+            output[7] = 0;
+            output[8] = 0;
+            output[9] = 0;
+            output[10] = scale;
+            output[11] = 0;
+            output[12] = 0;
+            output[13] = 0;
+            output[14] = 0;
+            output[15] = 1;
+            return output;
+        }
+
+
         /// <summary>
         /// Transpose the values of a mat4
         /// </summary>

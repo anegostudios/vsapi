@@ -12,13 +12,13 @@ namespace Vintagestory.API.Client
 {    
     public abstract class GuiElement
     {
-        internal static string dirtTextureName = "gui/backgrounds/soil.png";
-        internal static string noisyMetalTextureName = "gui/backgrounds/noisymetal.png";
+        public static string dirtTextureName = "gui/backgrounds/soil.png";
+        public static string noisyMetalTextureName = "gui/backgrounds/noisymetal.png";
         //internal static string woodTextureName = "backgrounds/wood.png";
-        internal static string woodTextureName = "gui/backgrounds/oak.png";
-        internal static string stoneTextureName = "gui/backgrounds/stone.png";
-        internal static string waterTextureName = "gui/backgrounds/water.png";
-        internal static string paperTextureName = "gui/backgrounds/signpaper.png";
+        public static string woodTextureName = "gui/backgrounds/oak.png";
+        public static string stoneTextureName = "gui/backgrounds/stone.png";
+        public static string waterTextureName = "gui/backgrounds/water.png";
+        public static string paperTextureName = "gui/backgrounds/signpaper.png";
 
         internal static Dictionary<string, KeyValuePair<SurfacePattern, ImageSurface>> cachedPatterns = new Dictionary<string, KeyValuePair<SurfacePattern, ImageSurface>>();
         
@@ -182,13 +182,23 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Changes the scale of the GUIElement by the GUIScale factor.
+        /// Changes the scale of given value by the GUIScale factor.
         /// </summary>
-        /// <param name="value">The base scale value.</param>
-        /// <returns>The modified scale value based on the GUIScale.</returns>
+        /// <param name="value"></param>
+        /// <returns>The scaled value based</returns>
         public static double scaled(double value)
         {
             return value * RuntimeEnv.GUIScale;
+        }
+
+        /// <summary>
+        /// Changes the scale of given value by the GUIScale factor
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Scaled value type cast to int</returns>
+        public static int scaledi(double value)
+        {
+            return (int)(value * RuntimeEnv.GUIScale);
         }
 
         /// <summary>

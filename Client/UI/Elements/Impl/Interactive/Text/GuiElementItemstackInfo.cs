@@ -13,7 +13,7 @@ namespace Vintagestory.API.Client
     {
         public static double ItemStackSize = GuiElementPassiveItemSlot.unscaledItemSize * 2.5;
         public static int MarginTop = 24;
-        public static int BoxWidth = 400;
+        public static int BoxWidth = 415;
         public static int MinBoxHeight = 80;
 
         static double[] backTint = GuiStyle.DialogStrongBgColor;
@@ -53,7 +53,6 @@ namespace Vintagestory.API.Client
             textBounds.WithParent(bounds);
 
             descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
-            //new GuiElementStaticText(capi, "", EnumTextOrientation.Left, textBounds.CopyOffsetedSibling(ItemStackSize + 50, MarginTop, -ItemStackSize - 50, 0), Font);
             descriptionElement.zPos = 1001;
             
 
@@ -84,7 +83,7 @@ namespace Vintagestory.API.Client
             currentWidth = Math.Max(currentWidth, descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10);
             currentWidth = Math.Min(currentWidth, maxWidth);
 
-            double descWidth = currentWidth - scaled(ItemStackSize) - 50;
+            double descWidth = currentWidth - ItemStackSize - 50;
 
             Bounds.fixedWidth = currentWidth;
             descriptionElement.Bounds.fixedWidth = descWidth;
@@ -125,9 +124,6 @@ namespace Vintagestory.API.Client
 
             TyronThreadPool.QueueTask(() =>
             {
-                /*int i = 0;
-                while (i < 5 && titleElement.HalfComposed) System.Threading.Thread.Sleep(5);*/
-
                 ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
                 Context ctx = genContext(surface);
 
@@ -176,9 +172,6 @@ namespace Vintagestory.API.Client
 
                 api.Event.EnqueueMainThreadTask(() =>
                 {
-                    //titleElement.genTexture();
-                    //descriptionElement.genTexture();
-
                     titleElement.Compose(false);
                     descriptionElement.Compose(false);
 

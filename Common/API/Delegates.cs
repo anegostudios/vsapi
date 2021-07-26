@@ -145,4 +145,13 @@ namespace Vintagestory.API.Common
     public delegate void OnGetClimateDelegate(ref ClimateCondition climate, BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.WorldGenValues, double totalDays = 0);
 
     public delegate void OnGetWindSpeedDelegate(Vec3d pos, ref Vec3d windSpeed);
+
+    public delegate EnumSuspendState SuspendServerDelegate();
+    public delegate void ResumeServerDelegate();
+}
+
+public enum EnumSuspendState
+{
+    Wait,
+    Ready
 }

@@ -27,7 +27,7 @@ namespace Vintagestory.API.Client
         /// Removes the models with the given locations.
         /// </summary>
         /// <param name="locations">The locations of the model data.</param>
-        public void RemoveModelData(ModelDataPoolLocation[] locations)
+        public void RemoveDataPoolLocations(ModelDataPoolLocation[] locations)
         {
             for (int i = 0; i < locations.Length; i++)
             {

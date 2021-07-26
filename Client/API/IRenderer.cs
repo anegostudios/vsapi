@@ -6,67 +6,67 @@
     public interface IRenderer
     {
         /// <summary>
-        /// 0 = drawn first, 1 = drawn last
-        /// Default render orders by render stage:
-        /// Before:
-        /// 0 = Ambient Manager
-        /// 0 = Camera
-        /// 
-        /// Opaque:
-        /// 0.1 = Blue sky (Icosahedron)
-        /// 0.2 = Night skybox
-        /// 0.3 = Sun and moon
-        /// 0.37 = Terrain opaque
-        /// 0.4 = Enitities
-        /// 0.5 = Decals
-        /// 0.5 = Debug wireframe
-        /// 0.6 = particles
-        /// 0.7 = Cinematic camera line preview
-        /// 0.8 = fp held item
-        /// 0.9 = held item opaque custom renderer
-        /// 
-        /// OIT:
-        /// 0.2 = Frame buffer debug screen
-        /// 0.37 = Terrain oit
-        /// 0.4 = Enitities
-        /// 0.6 = particles
-        /// 0.9 = held item oit custom renderer
-        /// 
-        /// Shadow far:
-        /// 0 = shadow map init
-        /// 0.37 = Terrain shadow far
-        /// 0.4 = Enitities
-        /// 
-        /// Shadow far done:
-        /// 1 = shadow map finish
-        /// 
-        /// Shadow near:
-        /// 0 = shadow map init
-        /// 0.37 = Terrain shadow near
-        /// 0.4 = Enitities
-        /// 
-        /// Shadow near done:
-        /// 1 = shadow map finish
-        /// Ortho:
-        /// 0.2 = Frame buffer debug screen
-        /// 0.4 = Enitities
-        /// 0.9 = held item ortho custom renderer
-        /// 0.95 = sleeping overlay
-        /// 0.98 = bow/spear aiming reticle
-        /// 1 = Gui manager
-        /// 1.02 = crosshair and mouse cursor
-        /// 
-        /// AfterFinalComposition:
-        /// 2 = screenshot
-        /// 
-        /// Done:
-        /// 0.1 = gui manager
-        /// 2 = screenshot
-        /// 
-        /// 0.98 = Cinematic camera camera advancing and frame capture when recording
-        /// 0.99 = Chunk Tesselator Manager (uploads new/modified chunk meshes)
-        /// 0.999 = Compress chunks scan
-        /// 1 = video recorder
+        /// 0 = drawn first, 1 = drawn last<br/>
+        /// Default render orders by render stage:<br/>
+        /// Before:<br/>
+        /// 0 = Ambient Manager<br/>
+        /// 0 = Camera<br/>
+        /// <br/>
+        /// Opaque:<br/>
+        /// 0.1 = Blue sky (Icosahedron)<br/>
+        /// 0.2 = Night skybox<br/>
+        /// 0.3 = Sun and moon<br/>
+        /// 0.37 = Terrain opaque<br/>
+        /// 0.4 = Enitities<br/>
+        /// 0.5 = Decals<br/>
+        /// 0.5 = Debug wireframe<br/>
+        /// 0.6 = particles<br/>
+        /// 0.7 = Cinematic camera line preview<br/>
+        /// 0.8 = fp held item<br/>
+        /// 0.9 = held item opaque custom renderer<br/>
+        /// <br/>
+        /// OIT:<br/>
+        /// 0.2 = Frame buffer debug screen<br/>
+        /// 0.37 = Terrain oit<br/>
+        /// 0.4 = Enitities<br/>
+        /// 0.6 = particles<br/>
+        /// 0.9 = held item oit custom renderer<br/>
+        /// <br/>
+        /// Shadow far:<br/>
+        /// 0 = shadow map init<br/>
+        /// 0.37 = Terrain shadow far<br/>
+        /// 0.4 = Enitities<br/>
+        /// <br/>
+        /// Shadow far done:<br/>
+        /// 1 = shadow map finish<br/>
+        /// <br/>
+        /// Shadow near:<br/>
+        /// 0 = shadow map init<br/>
+        /// 0.37 = Terrain shadow near<br/>
+        /// 0.4 = Enitities<br/>
+        /// <br/>
+        /// Shadow near done:<br/>
+        /// 1 = shadow map finish<br/>
+        /// Ortho:<br/>
+        /// 0.2 = Frame buffer debug screen<br/>
+        /// 0.4 = Enitities<br/>
+        /// 0.9 = held item ortho custom renderer<br/>
+        /// 0.95 = sleeping overlay<br/>
+        /// 0.98 = bow/spear aiming reticle<br/>
+        /// 1 = Gui manager<br/>
+        /// 1.02 = crosshair and mouse cursor<br/>
+        /// <br/>
+        /// AfterFinalComposition:<br/>
+        /// 2 = screenshot<br/>
+        /// <br/>
+        /// Done:<br/>
+        /// 0.1 = gui manager<br/>
+        /// 2 = screenshot<br/>
+        /// <br/>
+        /// 0.98 = Cinematic camera camera advancing and frame capture when recording<br/>
+        /// 0.99 = Chunk Tesselator Manager (uploads new/modified chunk meshes)<br/>
+        /// 0.999 = Compress chunks scan<br/>
+        /// 1 = video recorder<br/>
         /// </summary>
         double RenderOrder { get; }
 

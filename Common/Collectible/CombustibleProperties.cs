@@ -12,7 +12,7 @@ namespace Vintagestory.API.Common
         Cook,
         Bake,
         Convert,
-        Fired
+        Fire
     }
 
     /// <summary>
@@ -105,4 +105,34 @@ namespace Vintagestory.API.Common
         }
 
     }
+
+
+    public class BakingProperties
+    {
+        public float? Temp;
+        public float LevelFrom;
+        public float LevelTo;
+        public float StartScaleY;
+        public float EndScaleY;
+        public string ResultCode;
+        public string InitialCode;
+        public bool LargeItem;
+
+        public static BakingProperties ReadFrom(ItemStack stack)
+        {
+            if (stack == null) return null;
+
+            BakingProperties result = stack.Collectible?.Attributes?["bakingProperties"]?.AsObject<BakingProperties>();
+            if (result == null) return null;
+
+            if (result.Temp == null || result.Temp == 0)
+            {
+                CombustibleProperties props = stack.Collectible.CombustibleProps;
+                if (props != null) result.Temp = props.MeltingPoint - 40;
+            }
+            return result;
+        }
+    }
+
+
 }

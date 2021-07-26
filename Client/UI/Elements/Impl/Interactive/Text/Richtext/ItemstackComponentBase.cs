@@ -60,14 +60,13 @@ namespace Vintagestory.API.Client
             stackInfo.RecompCheckIgnoredStackAttributes = GlobalConstants.IgnoredStackAttributes;
         }
 
-        private string OnRequireInfoText(ItemSlot slot)
+        protected virtual string OnRequireInfoText(ItemSlot slot)
         {
             return slot.GetStackDescription(capi.World, false);
         }
 
         public void RenderItemstackTooltip(ItemSlot slot, double renderX, double renderY, float dt)
         {
-
             parentBounds.fixedX = renderX / RuntimeEnv.GUIScale;
             parentBounds.fixedY = renderY / RuntimeEnv.GUIScale;
             parentBounds.CalcWorldBounds();

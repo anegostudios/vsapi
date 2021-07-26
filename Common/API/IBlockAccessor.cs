@@ -206,8 +206,6 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         IWorldChunk GetChunkAtBlockPos(BlockPos pos);
 
-        void MarkChunkDecorsModified(BlockPos pos);
-
         /// <summary>
         /// Get the block id of the block at the given world coordinate
         /// </summary>
@@ -591,6 +589,52 @@ namespace Vintagestory.API.Common
         /// <param name="oldLightHsV"></param>
         /// <param name="pos"></param>
         void RemoveBlockLight(byte[] oldLightHsV, BlockPos pos);
+
+
+        #region Decor system
+
+        /// <summary>
+        /// Add a decor block to the side of an existing block in the chunk<br/>
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="onFace"></param>
+        /// <param name="block"></param>
+        /// <returns>False if this chunk is not loaded or there already exists a block in this position and facing</returns>
+        bool AddDecor(Block block, BlockPos position, BlockFacing onFace);
+
+        /// <summary>
+        /// Add a decor block to a specific sub-position on the side of an existing block in the chunk<br/>
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="block"></param>
+        /// <returns>False if this chunk is not loaded or there already exists a block in this position and facing</returns>
+        bool AddDecor(Block block, BlockPos position, int faceAndSubposition);
+
+        /// <summary>
+        /// Get a list of all decors at this position
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="position"></param>
+        /// <returns>Always a 6 element long list of decor blocks, any of which may be null if not set</returns>
+        Block[] GetDecors(BlockPos position);
+
+        /// <summary>
+        /// Removes a decor block from given position
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <param name="side">If null, all the decor blocks on all sides are removed</param>
+        void BreakDecor(BlockPos pos, BlockFacing side = null);
+
+        /// <summary>
+        /// Server: Marks this position as required for resending to the client
+        /// Client: No effect
+        /// </summary>
+        /// <param name="pos"></param>
+        void MarkChunkDecorsModified(BlockPos pos);
+
+        #endregion
+
     }
 
     /// <summary>

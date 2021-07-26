@@ -10,10 +10,10 @@ namespace Vintagestory.API.Client
     public class ClearFloatTextComponent : RichTextComponent
     {
         
-        public ClearFloatTextComponent(ICoreClientAPI api, float marginTop = 0) : base(api, "", CairoFont.WhiteDetailText())
+        public ClearFloatTextComponent(ICoreClientAPI api, float unScaleMarginTop = 0) : base(api, "", CairoFont.WhiteDetailText())
         {
             this.Float = EnumFloat.None;
-            MarginTop = marginTop;
+            UnscaledMarginTop = unScaleMarginTop;
         }
 
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)

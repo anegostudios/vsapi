@@ -128,7 +128,7 @@ namespace Vintagestory.API.Client
             );
         }
 
-        public override void OnMouseDown(MouseEvent args)
+        public override void OnMouseUp(MouseEvent args)
         {
             foreach (var val in BoundsPerLine)
             {

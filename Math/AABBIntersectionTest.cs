@@ -112,7 +112,7 @@ namespace Vintagestory.API.MathTools
                 tmpCuboidd.Set(selectionBoxes[i]).Translate(pos.X, pos.Y, pos.Z);
                 if (RayIntersectsWithCuboid(tmpCuboidd, ref hitOnBlockFaceTmp, ref hitPositionTmp))
                 {
-                    bool isDecor = selectionBoxes[i].posAdjust != null;
+                    bool isDecor = selectionBoxes[i] is DecorSelectionBox;
                     if (intersects && (!wasDecor || isDecor) && hitPosition.SquareDistanceTo(ray.origin) <= hitPositionTmp.SquareDistanceTo(ray.origin))
                     {
                         continue;
@@ -126,11 +126,12 @@ namespace Vintagestory.API.MathTools
                 }
             }
 
-            if (intersects)
+            if (intersects && selectionBoxes[hitOnSelectionBox] is DecorSelectionBox dsb)
             {
-                Vec3i posAdjust = selectionBoxes[hitOnSelectionBox].posAdjust;
+                Vec3i posAdjust = dsb.PosAdjust;
                 if (posAdjust != null) pos.Add(posAdjust);
             }
+
             return intersects;
         }
 

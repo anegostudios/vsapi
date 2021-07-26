@@ -40,15 +40,18 @@ namespace Vintagestory.API.Client
         public virtual LineRectangled[] BoundsPerLine { get; protected set; }
 
         /// <summary>
-        /// When !IsInline this will be the Y-Advance into the next line
+        /// This will be the Y-Advance into the next line. Unscaled value.
         /// </summary>
-        public virtual double MarginTop { get; protected set; } = 10;
+        public virtual double UnscaledMarginTop { get; set; } = 0;
 
         /// <summary>
-        /// Padding that is used when a richtextcomponent came before and needs some left spacing to it
+        /// Padding that is used when a richtextcomponent came before and needs some left spacing to it. Unscaled value
         /// </summary>
         public virtual double PaddingRight { get; set; } = 0;
 
+        /// <summary>
+        /// Unscaled value
+        /// </summary>
         public virtual double PaddingLeft { get; set; } = 0;
 
 

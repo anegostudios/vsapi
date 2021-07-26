@@ -76,11 +76,11 @@ namespace Vintagestory.API.Common.Entities
             bioLumiParticles = new SimpleParticleProperties()
             {
                 Color = ColorUtil.ToRgba(255, 0, 230, 142),
-                MinSize = 0.03f,
-                MaxSize = 0.1f,
+                MinSize = 0.02f,
+                MaxSize = 0.07f,
                 MinQuantity = 1,
                 GravityEffect = 0f,
-                LifeLength = 0.5f,
+                LifeLength = 1f,
                 ParticleModel = EnumParticleModel.Quad,
                 ShouldDieInAir = true,
                 VertexFlags = (byte)255,
@@ -90,8 +90,8 @@ namespace Vintagestory.API.Common.Entities
 
             bioLumiParticles.ShouldDieInAir = true;
             bioLumiParticles.OpacityEvolve = EvolvingNatFloat.create(EnumTransformFunction.LINEAR, -150);
-            bioLumiParticles.MinSize = 0.03f;
-            bioLumiParticles.MaxSize = 0.1f;
+            bioLumiParticles.MinSize = 0.02f;
+            bioLumiParticles.MaxSize = 0.07f;
 
             bioLumiNoise = new NormalizedSimplexNoise(new double[] { 1, 0.5 }, new double[] { 5, 10 }, 097901);
         }
@@ -853,7 +853,7 @@ namespace Vintagestory.API.Common.Entities
 
 
 
-        public void Ignite()
+        public virtual void Ignite()
         {
             IsOnFire = true;
         }
@@ -966,8 +966,8 @@ namespace Vintagestory.API.Common.Entities
                 bioLumiParticles.AddPos.Set(1.5f * CollisionBox.XSize, 1.5f * CollisionBox.YSize, 1.5f * CollisionBox.ZSize);
             }
 
-            bioLumiParticles.MinQuantity = Math.Min(500, 150 * quantityMul * (float)qmul);
-
+            bioLumiParticles.MinQuantity = Math.Min(200, 100 * quantityMul * (float)qmul);
+            
             bioLumiParticles.MinVelocity.Set(-0.2f + 2 * (float)Pos.Motion.X, -0.2f + 2 * (float)Pos.Motion.Y, -0.2f + 2*(float)Pos.Motion.Z);
             bioLumiParticles.AddVelocity.Set(0.4f + 2 * (float)Pos.Motion.X, 0.4f + 2 * (float)Pos.Motion.Y, 0.4f + 2 * (float)Pos.Motion.Z);
             World.SpawnParticles(bioLumiParticles);

@@ -458,8 +458,9 @@ namespace Vintagestory.API.Client
         MeshRef AllocateEmptyMesh(int xyzSize, int normalSize, int uvSize, int rgbaSize, int flagsSize, int indicesSize, CustomMeshDataPartFloat customFloats, CustomMeshDataPartShort customShorts, CustomMeshDataPartByte customBytes, CustomMeshDataPartInt customInts, EnumDrawMode drawMode = EnumDrawMode.Triangles, bool staticDraw = true);
 
         /// <summary>
-        /// Will load your mesh into a VAO. VBO locations:
-        /// xyz=0, uv=1, rgba=2, rgba2=3, flags=4, customFloats=5, customInts=6, customBytes=7  (indices do not get their own data location)
+        /// Uploads your mesh onto the graphics card for rendering (= load into a <see href="https://www.khronos.org/opengl/wiki/Vertex_Specification#Vertex_Array_Object">VAO</see>).<br/><br/>
+        /// If you use a custom shader, these are the VBO locations:
+        /// xyz=0, uv=1, rgba=2, rgba2=3, flags=4, customFloats=5, customInts=6, customBytes=7  (indices do not get their own data location)<br/>
         /// If any of them are null, the vbo location is not consumed and all used location numbers shift by -1
         /// </summary>
         /// <param name="data"></param>
@@ -474,7 +475,7 @@ namespace Vintagestory.API.Client
         void UpdateMesh(MeshRef meshRef, MeshData updatedata);
 
         /// <summary>
-        /// Frees up the memory on the graphics card. Should always be called at the end of the lifetime to prevent memory leaks. Equivalent to calling Dispose on the meshref itself
+        /// Frees up the memory on the graphics card. Should always be called at the end of a meshes lifetime to prevent memory leaks. Equivalent to calling Dispose on the meshref itself
         /// </summary>
         /// <param name="vao"></param>
         void DeleteMesh(MeshRef vao);
@@ -626,7 +627,21 @@ namespace Vintagestory.API.Client
         /// <param name="color"></param>
         void Render2DTexture(int textureid, float posX, float posY, float width, float height, float z = 50, Vec4f color = null);
 
-        
+
+
+        /// <summary>
+        /// Renders given texture onto the screen, uses supplied quad for rendering (gui mode)
+        /// </summary>
+        /// <param name="textureid"></param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="z"></param>
+        /// <param name="color"></param>
+        void Render2DTexture(MeshRef quadModel, int textureid, float posX, float posY, float width, float height, float z = 50);
+
+
         /// <summary>
         /// Renders given texture onto the screen, uses a simple quad for rendering (gui mode)
         /// </summary>

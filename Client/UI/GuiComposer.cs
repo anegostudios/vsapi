@@ -238,6 +238,22 @@ namespace Vintagestory.API.Client
             }
         }
 
+        public GuiElement FirstTabbableElement
+        {
+            get
+            {
+                foreach (GuiElement element in interactiveElements.Values)
+                {
+                    if (element.Focusable)
+                    {
+                        return element;
+                    }
+                }
+
+                return null;
+            }
+        }
+
         /// <summary>
         /// Gets the maximum tab index of the components.
         /// </summary>
@@ -538,6 +554,11 @@ namespace Vintagestory.API.Client
                     int dir = args.ShiftPressed ? -1 : 1;
                     int tb = GameMath.Mod(elem.TabIndex + dir, MaxTabIndex+1);
                     FocusElement(tb);
+                    args.Handled = true;
+                }
+                else if (MaxTabIndex > 0)
+                {
+                    FocusElement(args.ShiftPressed ? GameMath.Mod(-1, MaxTabIndex + 1) : 0);
                     args.Handled = true;
                 }
             }

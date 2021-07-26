@@ -19,7 +19,9 @@ namespace Vintagestory.API.Util
         Death,
         Purchase,
         Complain,
-        Goodbye
+        Goodbye,
+        IdleShort,
+        Laugh
     }
 
     public class SlidingPitchSound
@@ -163,18 +165,33 @@ namespace Vintagestory.API.Util
                             }
 
                         case EnumTalkType.Idle:
+                        case EnumTalkType.IdleShort:
                             {
                                 float startPitch = 0.75f + 0.25f * (float)Rand.NextDouble();
                                 float endPitch = 0.75f + 0.25f * (float)Rand.NextDouble();
                                 PlaySound(startPitch, endPitch, 0.7f);
+
+
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
                                     chordDelay = 0.55f * talkSpeedModifier;
                                     currentLetterInWord = 0;
                                 }
+                                break;
+                            }
 
+                        case EnumTalkType.Laugh:
+                            {
+                                float rnd = (float)Rand.NextDouble() * 0.1f;
+                                float pfac = (float)Math.Pow(Math.Min(1, 1 / pitchModifier), 2);
 
+                                float startPitch = rnd + 1.3f - currentLetterInWord / (15f / pfac);
+                                float endPitch = startPitch - 0.2f;
+                                PlaySound(startPitch, endPitch, 0.8f);
+
+                                chordDelay = 0.23f * talkSpeedModifier * pfac;
+                                
                                 break;
                             }
 
@@ -291,6 +308,16 @@ namespace Vintagestory.API.Util
                 lettersLeftToTalk = 3 + world.Rand.Next(12);
             }
 
+            if (talkType == EnumTalkType.IdleShort)
+            {
+                lettersLeftToTalk = 3 + world.Rand.Next(4);
+            }
+
+            if (talkType == EnumTalkType.Laugh)
+            {
+                lettersLeftToTalk = (int)((3 + world.Rand.Next(3)) * Math.Max(1, pitchModifier));
+            }
+
             if (talkType == EnumTalkType.Purchase)
             {
                 lettersLeftToTalk = 2 + world.Rand.Next(2);
@@ -322,6 +349,8 @@ namespace Vintagestory.API.Util
                 { EnumTalkType.Meet, 0.13f },
                 { EnumTalkType.Death, 0.3f },
                 { EnumTalkType.Idle, 0.2f },
+                { EnumTalkType.IdleShort, 0.2f },
+                { EnumTalkType.Laugh, 0.2f },
                 { EnumTalkType.Hurt, 0.07f },
                 { EnumTalkType.Hurt2, 0.07f },
                 { EnumTalkType.Goodbye, 0.07f },

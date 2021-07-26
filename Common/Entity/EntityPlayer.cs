@@ -231,7 +231,7 @@ namespace Vintagestory.API.Common
         double prevStepHeight;
         int direction = 0;
 
-        bool lastCanStandUp;
+        public bool PrevFrameCanStandUp;
         public ClimateCondition selfClimateCond;
         float climateCondAccum;
 
@@ -239,7 +239,7 @@ namespace Vintagestory.API.Common
         {
             double mul = base.GetWalkSpeedMultiplier(groundDragFactor);
 
-            if (!servercontrols.Sneak && !lastCanStandUp)
+            if (!servercontrols.Sneak && !PrevFrameCanStandUp)
             {
                 mul *= GlobalConstants.SneakSpeedMultiplier;
             }
@@ -277,9 +277,11 @@ namespace Vintagestory.API.Common
         private void updateEyeHeight(float dt)
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
+            PrevFrameCanStandUp = true;
+
             if (player != null && player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
-                lastCanStandUp = !servercontrols.Sneak && canStandUp();
+                PrevFrameCanStandUp = !servercontrols.Sneak && canStandUp();
                 bool moving = (servercontrols.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
                 double newEyeheight = Properties.EyeHeight;
 
@@ -299,7 +301,7 @@ namespace Vintagestory.API.Common
                         newEyeheight *= 0.5f;
                         newModelHeight *= 0.55f;
                     }
-                    else if ((servercontrols.Sneak || !lastCanStandUp) && !servercontrols.IsClimbing && !servercontrols.IsFlying)
+                    else if ((servercontrols.Sneak || !PrevFrameCanStandUp) && !servercontrols.IsClimbing && !servercontrols.IsFlying)
                     {
                         newEyeheight *= 0.8f;
                         newModelHeight *= 0.8f;
@@ -358,11 +360,12 @@ namespace Vintagestory.API.Common
                         {
                             float volume = controls.Sneak ? 0.5f : 1f;
 
-                            int blockIdUnder = BlockUnderPlayer();
-                            int blockIdInside = BlockInsidePlayer();
+                            EntityPos pos = SidedPos;
+                            int blockIdUnder = BlockUnderPlayer(pos);
+                            int blockIdInside = BlockInsidePlayer(pos);
 
-                            AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
-                            AssetLocation soundinside = World.Blocks[blockIdInside].Sounds?.Inside;
+                            AssetLocation soundwalk = World.Blocks[blockIdUnder].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z))?.Walk;
+                            AssetLocation soundinside = World.Blocks[blockIdInside].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z))?.Inside;
 
                             if (!Swimming && soundwalk != null)
                             {
@@ -413,7 +416,7 @@ namespace Vintagestory.API.Common
                 selfClimateCond = Api.World.BlockAccessor.GetClimateAt(Pos.XYZ.AsBlockPos);
             }
 
-            if (!servercontrols.Sneak && !lastCanStandUp)
+            if (!servercontrols.Sneak && !PrevFrameCanStandUp)
             {
                 // So the sneak animation plays still
                 servercontrols.Sneak = true;
@@ -508,8 +511,9 @@ namespace Vintagestory.API.Common
 
             if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
-                int blockIdUnder = BlockUnderPlayer();
-                AssetLocation soundwalk = World.Blocks[blockIdUnder].Sounds?.Walk;
+                EntityPos pos = SidedPos;
+                int blockIdUnder = BlockUnderPlayer(pos);
+                AssetLocation soundwalk = World.Blocks[blockIdUnder].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z))?.Walk;
                 if (soundwalk != null && !Swimming)
                 {
                     World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
@@ -523,19 +527,16 @@ namespace Vintagestory.API.Common
 
 
 
-        internal int BlockUnderPlayer()
+        internal int BlockUnderPlayer(EntityPos pos)
         {
-            EntityPos pos = SidedPos;
             return World.BlockAccessor.GetBlockId(
                 (int)pos.X,
                 (int)(pos.Y - 0.1f),
                 (int)pos.Z);
         }
 
-        internal int BlockInsidePlayer()
+        internal int BlockInsidePlayer(EntityPos pos)
         {
-            EntityPos pos = SidedPos;
-
             return World.BlockAccessor.GetBlockId(
                 (int)pos.X,
                 (int)(pos.Y + 0.1f),
@@ -597,6 +598,8 @@ namespace Vintagestory.API.Common
 
         public override void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
         {
+            ICoreClientAPI capi = Api as ICoreClientAPI;
+
             if (type == "hurt")
             {
                 if (World.Side == EnumAppSide.Server)
@@ -604,6 +607,8 @@ namespace Vintagestory.API.Common
                     (World.Api as ICoreServerAPI).Network.BroadcastEntityPacket(this.EntityId, 1001);
                 } else
                 {
+                    if (!capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
+
                     talkUtil.Talk(EnumTalkType.Hurt2);
                 }
                 
@@ -616,6 +621,8 @@ namespace Vintagestory.API.Common
                     (World.Api as ICoreServerAPI).Network.BroadcastEntityPacket(this.EntityId, 1002);
                 } else
                 {
+                    if (!capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
+
                     talkUtil.Talk(EnumTalkType.Death);
                 }
 
@@ -634,20 +641,61 @@ namespace Vintagestory.API.Common
                 AnimManager?.StopAnimation("die");
                 return;
             }
+
+            ICoreClientAPI capi = Api as ICoreClientAPI;
+
             if (packetid == 1203)
             {
                 string animation = SerializerUtil.Deserialize<string>(data);
                 StartAnimation(animation);
+
+                if (capi.Settings.Bool["newSeraphVoices"])
+                {
+
+                    switch (animation)
+                    {
+                        case "wave":
+                            talkUtil?.Talk(EnumTalkType.Meet);
+                            break;
+
+                        case "nod":
+                            talkUtil?.Talk(EnumTalkType.Purchase);
+                            break;
+
+                        case "rage":
+                            talkUtil?.Talk(EnumTalkType.Complain);
+                            break;
+
+                        case "shrug":
+                            talkUtil?.Talk(EnumTalkType.Goodbye);
+                            break;
+
+                        case "facepalm":
+                            talkUtil?.Talk(EnumTalkType.IdleShort);
+                            break;
+
+                        case "laugh":
+                            talkUtil?.Talk(EnumTalkType.Laugh);
+                            break;
+                    }
+                }
             }
 
-            if (packetid == 1001)
+            if (capi.Settings.Bool["newSeraphVoices"])
             {
-                if (!Alive) return;
-                talkUtil.Talk(EnumTalkType.Hurt2);
-            }
-            if (packetid == 1002)
+                if (packetid == 1001)
+                {
+                    if (!Alive) return;
+                    talkUtil.Talk(EnumTalkType.Hurt2);
+                }
+                if (packetid == 1002)
+                {
+                    talkUtil.Talk(EnumTalkType.Death);
+                }
+            } else
             {
-                talkUtil.Talk(EnumTalkType.Death);
+                if (packetid == 1002) base.PlayEntitySound("death", null, true, 24);
+                if (packetid == 1001) base.PlayEntitySound("hurt", null, true, 24);
             }
 
             base.OnReceivedServerPacket(packetid, data);
@@ -659,6 +707,14 @@ namespace Vintagestory.API.Common
             if ((mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) && damageSource?.Type != EnumDamageType.Heal) return false;
 
             return base.ShouldReceiveDamage(damageSource, damage);
+        }
+
+        public override void Ignite()
+        {
+            EnumGameMode mode = World?.PlayerByUid(PlayerUID)?.WorldData?.CurrentGameMode ?? EnumGameMode.Survival;
+            if (mode == EnumGameMode.Creative || mode == EnumGameMode.Spectator) return;
+
+            base.Ignite();
         }
 
 

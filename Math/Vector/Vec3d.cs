@@ -28,6 +28,9 @@ namespace Vintagestory.API.MathTools
         public int YInt => (int)Y;
         public int ZInt => (int)Z;
 
+        /// <summary>
+        /// Create a new instance with x/y/z set to 0
+        /// </summary>
         public static Vec3d Zero { get { return new Vec3d(); } }
 
 

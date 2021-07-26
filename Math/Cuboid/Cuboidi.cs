@@ -100,7 +100,14 @@ namespace Vintagestory.API.MathTools
                 return new Vec3i((X1 + X2) / 2, (Y1 + Y2) / 2, (Z1 + Z2) / 2);
             }
         }
-        
+
+        public int Volume
+        {
+            get
+            {
+                return SizeX * SizeY * SizeZ;
+            }
+        }
 
         public Cuboidi()
         {
@@ -274,6 +281,17 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public Cuboidi GrowBy(int dx, int dy, int dz)
+        {
+            X1 -= dx;
+            X2 += dx;
+            Y1 -= dy;
+            Y2 += dy;
+            Z1 -= dz;
+            Z2 += dz;
+            return this;
+        }
+
         /// <summary>
         /// Returns the shortest distance between given point and any point inside the cuboid
         /// </summary>
@@ -397,10 +415,6 @@ namespace Vintagestory.API.MathTools
             Mat4d.RotateX(matrix, matrix, radX);
             Mat4d.RotateY(matrix, matrix, radY);
             Mat4d.RotateZ(matrix, matrix, radZ);
-
-            double[] pos = new double[] { 0, 0, 0, 1 };
-
-            //Vec3d origin = new Vec3d(0.5, 0.5, 0.5);
 
             double[] min = new double[] { X1 - origin.X, Y1 - origin.Y, Z1 - origin.Z, 1 };
             double[] max = new double[] { X2 - origin.X, Y2 - origin.Y, Z2 - origin.Z, 1 };

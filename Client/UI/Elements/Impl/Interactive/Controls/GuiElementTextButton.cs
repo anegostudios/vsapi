@@ -216,6 +216,25 @@ namespace Vintagestory.API.Client
         }
 
 
+
+        public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
+        {
+            if (!HasFocus) return;
+            if (args.KeyCode == (int)GlKeys.Enter)
+            {
+                args.Handled = true;
+                if (enabled)
+                {
+                    if (PlaySound)
+                    {
+                        api.Gui.PlaySound("menubutton_press");
+                    }
+                    args.Handled = onClick();
+                }
+            }
+        }
+
+
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
             if ((enabled && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) || active)
@@ -261,17 +280,6 @@ namespace Vintagestory.API.Client
             currentlyMouseDownOnElement = false;
         }
 
-        public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
-        {
-            if (hasFocus && args.KeyCode == (int)GlKeys.Enter)
-            {
-                if (PlaySound)
-                {
-                    api.Gui.PlaySound("menubutton_press");
-                }
-                args.Handled = onClick();
-            }
-        }
 
 
         /// <summary>

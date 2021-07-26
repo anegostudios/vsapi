@@ -25,13 +25,13 @@ namespace Vintagestory.API.Server
     public interface IServerNetworkChannel : INetworkChannel
     {
         /// <summary>
-        /// Registers a handler for when you send a packet with given messageId
+        /// Registers a handler for when you send a packet with given messageId. Must be registered in the same order as on the server.
         /// </summary>
         /// <param name="type"></param>
         new IServerNetworkChannel RegisterMessageType(Type type);
 
         /// <summary>
-        /// Registers a handler for when you send a packet with given messageId
+        /// Registers a handler for when you send a packet with given messageId. Must be registered in the same order as on the server.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>

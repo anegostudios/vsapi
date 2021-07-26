@@ -599,6 +599,55 @@ namespace Vintagestory.API.Client
 
         public bool KeyboardControlEnabled = true;
 
+
+        public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
+        {
+            base.OnMouseWheel(api, args);
+
+            bool ctrl = api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft] || api.Input.KeyboardKeyState[(int)GlKeys.ControlRight];
+            if (ctrl && KeyboardControlEnabled && IsPositionInside(api.Input.MouseX, api.Input.MouseY))
+            {
+                for (int i = 0; i < slotBounds.Length; i++)
+                {
+                    if (i >= renderedSlots.Count) break;
+
+                    if (slotBounds[i].PointInside(api.Input.MouseX, api.Input.MouseY))
+                    {
+                        SlotMouseWheel(renderedSlots.GetKeyAtIndex(i), args.delta);
+                        args.SetHandled(true);
+                    }
+                }
+            }
+        }
+
+        private void SlotMouseWheel(int slotId, int wheelDelta)
+        {
+            ItemStackMoveOperation op = new ItemStackMoveOperation(api.World, EnumMouseButton.Wheel, 0, EnumMergePriority.AutoMerge, 1);
+            op.WheelDir = wheelDelta > 0 ? 1 : -1;
+            op.ActingPlayer = api.World.Player;
+            IInventory mouseCursorInv = api.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.mousecursorInvClassName);
+
+            IInventory targetInv = inventory;
+            ItemSlot sourceSlot = mouseCursorInv[0];
+
+            var packet = targetInv.ActivateSlot(slotId, sourceSlot, ref op);
+
+            if (packet != null)
+            {
+                if (packet is object[] packets)
+                {
+                    for (int i = 0; i < packets.Length; i++)
+                    {
+                        SendPacketHandler(packets[i]);
+                    }
+                }
+                else
+                {
+                    SendPacketHandler?.Invoke(packet);
+                }
+            }
+        }
+
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
             base.OnKeyDown(api, args);

@@ -21,12 +21,6 @@ namespace Vintagestory.API.MathTools
         public float Z2;
 
         /// <summary>
-        /// The offset to the BlockPos, to find the block which produced this selection box.  Normally null.  Used by Decor system
-        /// (Could be developed in future for other blocks with selection boxes outside their own 1x1x1 block space e.g. opened gate?)
-        /// </summary>
-        public Vec3i posAdjust;
-
-        /// <summary>
         /// This is equivalent to width so long as X2 > X1, but could in theory be a negative number if the box has its corners the wrong way around
         /// </summary>
         public float XSize { get { return X2 - X1; } }

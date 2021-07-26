@@ -88,6 +88,19 @@ namespace Vintagestory.API.Client
             api.Gui.PlaySound("toggleswitch");
         }
 
+
+        public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
+        {
+            if (!HasFocus) return;
+            if (args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.Space)
+            {
+                args.Handled = true;
+                On = !On;
+                handler?.Invoke(On);
+                api.Gui.PlaySound("toggleswitch");
+            }
+        }
+
         /// <summary>
         /// Sets the value of the switch on or off.
         /// </summary>

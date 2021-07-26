@@ -197,7 +197,6 @@ namespace Vintagestory.API.Common
                 {
                     // Must have same or more than the total crafted amount
                     if (inputSlot.StackSize < ingred.Quantity * outQuantityMul) return -1;
-
                 }
             }
 
@@ -231,7 +230,7 @@ namespace Vintagestory.API.Common
                 if (val.Value.ConsumeQuantity != null)
                 {
                     remainStack = val.Key.Itemstack;
-                    remainStack.StackSize -= val.Value.Quantity * (mixedStack.StackSize / Output.StackSize);
+                    remainStack.StackSize -= (int)val.Value.ConsumeQuantity * (mixedStack.StackSize / Output.StackSize);
                     if (remainStack.StackSize <= 0)
                     {
                         remainStack = null;

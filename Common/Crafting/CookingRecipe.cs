@@ -192,20 +192,52 @@ namespace Vintagestory.API.Common
                     }
 
 
+
+                case "scrambledeggs":
+                    {
+                        max = 0;
+
+                        foreach (var val in quantitiesByStack)
+                        {
+                            if (val.Key.Collectible.FirstCodePart() == "egg")
+                            {
+                                PrimaryIngredient = val.Key;
+                                max += val.Value;
+                                continue;
+                            }
+                            
+                            GarnishedNames.Add(ingredientName(val.Key, true));
+                        }
+
+
+                        recipeCode = "scrambledeggs";
+                        break;
+                    }
+
+
                 case "jam":
                     {
+                        ItemStack[] fruits = new ItemStack[2];
+                        int i = 0;
                         foreach (var val in quantitiesByStack)
                         {
                             if (val.Key.Collectible.NutritionProps?.FoodCategory == EnumFoodCategory.Fruit)
                             {
-                                string jamName = val.Key.Collectible.LastCodePart() + "-jam";
-                                string jamNameLocalised = Lang.Get(jamName);
-                                if (jamName != jamNameLocalised) return jamNameLocalised;
-                                return Lang.Get("{0} jam", val.Key.GetName());
+                                fruits[i++] = val.Key;
+                                if (i == 2) break;
                             }
                         }
 
-                        break;
+                        if (fruits[1] != null)
+                        {
+                            return Lang.Get("mealname-mixedjam", fruits[0].GetName(), fruits[1].GetName());
+                        } else
+                        {
+                            string jamName = fruits[0].Collectible.LastCodePart() + "-jam";
+                            string jamNameLocalised = Lang.Get(jamName);
+                            if (jamName != jamNameLocalised) return jamNameLocalised;
+                            return Lang.Get("mealname-singlejam", fruits[0].GetName());
+                        }
                     }
 
             }
@@ -233,13 +265,15 @@ namespace Vintagestory.API.Common
 
 
 
-            if (SecondaryIngredient != null)
+            if (SecondaryIngredient != null && recipeCode != "scrambledeggs")
             {
                 mainIngredients = Lang.Get("multi-main-ingredients-format", getMainIngredientName(PrimaryIngredient, recipeCode), getMainIngredientName(SecondaryIngredient, recipeCode, true));
             }
             else
+            {
                 mainIngredients = PrimaryIngredient == null ? "" : getMainIngredientName(PrimaryIngredient, recipeCode);
-            // Main ingredients are done.
+            }
+
 
             switch (recipeCode)
             {
@@ -266,6 +300,12 @@ namespace Vintagestory.API.Common
                         everythingelse = "";
                     }
                     break;
+                case "scrambledeggs":
+                    if (GarnishedNames.Count > 0)
+                    {
+                        everythingelse = getMealAddsString("meal-adds-vegetablestew-garnish", GarnishedNames);
+                    }
+                    return Lang.Get(MealFormat, everythingelse).Trim().UcFirst();
                 case "soup":
                     if(OtherIngredients.Count > 0)
                     {
@@ -386,6 +426,7 @@ namespace Vintagestory.API.Common
             NamingRegistry["vegetablestew"] = new VanillaCookingRecipeNames();
             NamingRegistry["soup"] = new VanillaCookingRecipeNames();
             NamingRegistry["jam"] = new VanillaCookingRecipeNames();
+            NamingRegistry["scrambledeggs"] = new VanillaCookingRecipeNames();
         }
 
         public bool Matches(ItemStack[] inputStacks)

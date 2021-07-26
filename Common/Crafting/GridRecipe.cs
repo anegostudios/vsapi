@@ -476,7 +476,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        internal bool MatchesAtPosition(int colStart, int rowStart, ItemSlot[] inputSlots, int gridWidth)
+        public bool MatchesAtPosition(int colStart, int rowStart, ItemSlot[] inputSlots, int gridWidth)
         {
             int gridHeight = inputSlots.Length / gridWidth;
 
@@ -502,12 +502,20 @@ namespace Vintagestory.API.Common
 
 
 
-        internal T GetElementInGrid<T>(int row, int col, T[] stacks, int gridwidth)
+        public T GetElementInGrid<T>(int row, int col, T[] stacks, int gridwidth)
         {
             int gridHeight = stacks.Length / gridwidth;
             if (row < 0 || col < 0 || row >= gridHeight || col >= gridwidth) return default(T);
 
             return stacks[row * gridwidth + col];
+        }
+
+        public int GetGridIndex<T>(int row, int col, T[] stacks, int gridwidth)
+        {
+            int gridHeight = stacks.Length / gridwidth;
+            if (row < 0 || col < 0 || row >= gridHeight || col >= gridwidth) return -1;
+
+            return row * gridwidth + col;
         }
 
 

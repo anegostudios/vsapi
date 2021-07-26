@@ -19,7 +19,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The upper holding limit of the slot itself. Standard slots are only limited by the item stacks maxstack size.
         /// </summary>
-        public int MaxSlotStackSize = 999999;
+        public virtual int MaxSlotStackSize { get; set; } = 999999;
 
         protected ItemStack itemstack;
         protected InventoryBase inventory;
@@ -29,10 +29,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         public InventoryBase Inventory { get { return inventory; } }
 
-        /// <summary>
-        /// Amount of space left, independent of item MaxStacksize 
-        /// </summary>
-        public int RemainingSlotSpace => Math.Max(0, MaxSlotStackSize - StackSize);
 
         /// <summary>
         /// Icon name to be drawn in the slot background
@@ -82,13 +78,20 @@ namespace Vintagestory.API.Common
             this.inventory = inventory;
         }
 
+        /// <summary>
+        /// Amount of space left, independent of item MaxStacksize 
+        /// </summary>
+        public virtual int GetRemainingSlotSpace(ItemStack forItemstack)
+        {
+            return Math.Max(0, MaxSlotStackSize - StackSize);
+        }
 
 
-      /// <summary>
-      /// Whether or not this slot can take the item from the source slot.
-      /// </summary>
-      /// <param name="sourceSlot"></param>
-      /// <returns></returns>
+        /// <summary>
+        /// Whether or not this slot can take the item from the source slot.
+        /// </summary>
+        /// <param name="sourceSlot"></param>
+        /// <returns></returns>
         public virtual bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
             if (inventory?.PutLocked == true) return false;
@@ -98,7 +101,7 @@ namespace Vintagestory.API.Common
 
             bool flagsok = (sourceStack.Collectible.GetStorageFlags(sourceStack) & StorageType) > 0;
 
-            return flagsok &&  (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack, priority) > 0) && RemainingSlotSpace > 0;
+            return flagsok &&  (itemstack == null || itemstack.Collectible.GetMergableQuantity(itemstack, sourceStack, priority) > 0) && GetRemainingSlotSpace(sourceStack) > 0;
         }
 
         /// <summary>
@@ -110,7 +113,11 @@ namespace Vintagestory.API.Common
         {
             if (inventory?.PutLocked == true) return false;
 
-            return sourceSlot?.Itemstack?.Collectible != null && ((sourceSlot.Itemstack.Collectible.GetStorageFlags(sourceSlot.Itemstack) & StorageType) > 0);
+            return 
+                sourceSlot?.Itemstack?.Collectible != null 
+                && ((sourceSlot.Itemstack.Collectible.GetStorageFlags(sourceSlot.Itemstack) & StorageType) > 0)
+                && inventory.CanContain(this, sourceSlot)
+            ;
         }
 
         /// <summary>
@@ -181,12 +188,14 @@ namespace Vintagestory.API.Common
             {
                 return 0;
             }
+
+            if (sinkSlot.inventory?.CanContain(sinkSlot, this) == false) return 0;
             
 
             // Fill the destination slot with as many items as we can
             if (sinkSlot.Itemstack == null)
             {
-                int q = Math.Min(sinkSlot.RemainingSlotSpace, op.RequestedQuantity);
+                int q = Math.Min(sinkSlot.GetRemainingSlotSpace(itemstack), op.RequestedQuantity);
 
                 if (q > 0)
                 {
@@ -206,7 +215,7 @@ namespace Vintagestory.API.Common
             ItemStackMergeOperation mergeop = op.ToMergeOperation(sinkSlot, this);
             op = mergeop;
             int origRequestedQuantity = op.RequestedQuantity;
-            op.RequestedQuantity = Math.Min(sinkSlot.RemainingSlotSpace, op.RequestedQuantity);
+            op.RequestedQuantity = Math.Min(sinkSlot.GetRemainingSlotSpace(itemstack), op.RequestedQuantity);
 
             sinkSlot.Itemstack.Collectible.TryMergeStacks(mergeop);
 
@@ -281,6 +290,17 @@ namespace Vintagestory.API.Common
                 case EnumMouseButton.Right:
                     ActivateSlotRightClick(sourceSlot, ref op);
                     return;
+
+                case EnumMouseButton.Wheel:
+                    if (op.WheelDir > 0)
+                    {
+                        sourceSlot.TryPutInto(this, ref op);
+                    }
+                    else
+                    {
+                        TryPutInto(sourceSlot, ref op);
+                    }
+                    return;
             }
         }
 
@@ -312,7 +332,7 @@ namespace Vintagestory.API.Common
             int maxq = itemstack.Collectible.GetMergableQuantity(itemstack, sourceSlot.itemstack, op.CurrentPriority);
             if (maxq > 0) {
                 int origRequestedQuantity = op.RequestedQuantity;
-                op.RequestedQuantity = GameMath.Min(maxq, sourceSlot.itemstack.StackSize, RemainingSlotSpace);
+                op.RequestedQuantity = GameMath.Min(maxq, sourceSlot.itemstack.StackSize, GetRemainingSlotSpace(sourceSlot.itemstack));
 
                 ItemStackMergeOperation mergeop = op.ToMergeOperation(this, sourceSlot);
                 op = mergeop;

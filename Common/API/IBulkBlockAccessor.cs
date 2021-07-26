@@ -40,5 +40,6 @@ namespace Vintagestory.API.Common
         /// Implemented only by BlockAccessorMapChunkLoading
         /// </summary>
         void SetChunks(Vec2i chunkCoord, IWorldChunk[] chunksCol);
+        void SetDecorsBulk(long chunkIndex, Dictionary<int, Block> newDecors);
     }
 }

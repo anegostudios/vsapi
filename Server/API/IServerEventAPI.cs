@@ -70,10 +70,9 @@ namespace Vintagestory.API.Server
         event ChunkColumnLoadedDelegate ChunkColumnLoaded;
 
         /// <summary>
-        /// Called just before a chunk column is about to get unloaded
+        /// Called just before a chunk column is about to get unloaded. On shutdown this method is called for all loaded chunks, so this method can get called tens of thousands of times there, beware
         /// </summary>
         event ChunkColumnUnloadDelegate ChunkColumnUnloaded;
-
 
 
         /// <summary>
@@ -82,7 +81,7 @@ namespace Vintagestory.API.Server
         event MapRegionLoadedDelegate MapRegionLoaded;
 
         /// <summary>
-        /// Called just before a map region is about to get unloaded
+        /// Called just before a map region is about to get unloaded. On shutdown this method is called for all loaded map regions.
         /// </summary>
         event MapRegionUnloadDelegate MapRegionUnloaded;
 
@@ -172,6 +171,16 @@ namespace Vintagestory.API.Server
         /// Triggered before the game world data is being saved to disk 
         /// </summary>
         event Action GameWorldSave;
+
+        /// <summary>
+        /// Called when something wants to pause the server, e.g. the autosave system. This method will be called every 50ms until all delegates return Ready state. Timeout is 60 seconds.
+        /// </summary>
+        event SuspendServerDelegate ServerSuspend;
+
+        /// <summary>
+        /// Called when something wants to resume execution of the server, e.g. the autosave system
+        /// </summary>
+        event ResumeServerDelegate ServerResume;
 
         /// <summary>
         /// Triggered whenever the server enters a new run phase. Since mods are only loaded during run phase "LoadGamePre" registering to any earlier event will get triggered.

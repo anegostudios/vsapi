@@ -10,7 +10,7 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
     /// <summary>
-    /// A bit fat data structure that can be used to upload mesh information onto the graphics card
+    /// A data structure that can be used to upload mesh information onto the graphics card
     /// Please note, all arrays are used as a buffer. They do not tightly fit the data but are always sized as a multiple of 2 from the initial size.
     /// </summary>
     public class MeshData
@@ -1194,6 +1194,19 @@ namespace Vintagestory.API.Client
             }*/
 
             VerticesCount = count + 1;
+        }
+
+        /// <summary>
+        /// Applies a vertex flag to an existing MeshData (uses binary OR)
+        /// </summary>
+        public void SetVertexFlags(int flag)
+        {
+            if (this.Flags != null)
+            {
+                int count = VerticesCount;
+                for (int i = 0; i < count; i++)
+                    this.Flags[i] |= flag;
+            }
         }
 
         /// <summary>

@@ -93,7 +93,6 @@ namespace Vintagestory.API.Client
         {
             float size = (float)GuiElement.scaled(25);
             float pad = (float)GuiElement.scaled(10);
-            //capi.Render.RenderItemstackToGui(Stack, x + pad + size / 2, y + size / 2, 100, size, ColorUtil.WhiteArgb, true, false, false);
 
             if (Texture == null)
             {

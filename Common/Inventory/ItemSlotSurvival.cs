@@ -19,11 +19,12 @@ namespace Vintagestory.API.Common
             return base.CanTakeFrom(sourceSlot, priority);
         }
 
-        public override bool CanHold(ItemSlot itemstackFromSourceSlot)
+        public override bool CanHold(ItemSlot sourceSlot)
         {
             return 
-                base.CanHold(itemstackFromSourceSlot) &&
-               (!CollectibleObject.IsBackPack(itemstackFromSourceSlot.Itemstack) || CollectibleObject.IsEmptyBackPack(itemstackFromSourceSlot.Itemstack))
+                base.CanHold(sourceSlot) &&
+               (!CollectibleObject.IsBackPack(sourceSlot.Itemstack) || CollectibleObject.IsEmptyBackPack(sourceSlot.Itemstack))
+               && inventory.CanContain(this, sourceSlot)
             ;
         }
     }

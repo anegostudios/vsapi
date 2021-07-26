@@ -26,7 +26,7 @@ namespace Vintagestory.API.Common
         IChunkBlocks Blocks { get; }
 
         /// <summary>
-        /// Non blocking access to blocks at the cost of sometimes returning 0 instead of the real block. Use <see cref="Blocks"/> if you need reliable block access. Also should only be used for reading.
+        /// Faster (non-blocking) access to blocks at the cost of sometimes returning 0 instead of the real block. Use <see cref="Blocks"/> if you need reliable block access. Also should only be used for reading. Currently used for the particle system.
         /// </summary>
         IChunkBlocks MaybeBlocks { get; }
 
@@ -78,6 +78,18 @@ namespace Vintagestory.API.Common
         /// Like Unpack(), except it must be used readonly: the calling code promises not to write any changes to this chunk's blocks or lighting
         /// </summary>
         bool Unpack_ReadOnly();
+
+        /// <summary>
+        /// Like Unpack_ReadOnly(), except it actually reads and returns the block ID at index<br/>
+        /// (Returns 0 if the chunk was disposed)
+        /// </summary>
+        int Unpack_AndReadBlock(int index);
+
+        /// <summary>
+        /// Like Unpack_ReadOnly(), except it actually reads and returns the Light at index<br/>
+        /// (Returns 0 if the chunk was disposed)
+        /// </summary>
+        ushort Unpack_AndReadLight(int index);
 
         /// <summary>
         /// Marks this chunk as modified. If called on server side it will be stored to disk on the next autosave or during shutdown, if called on client not much happens (but it will be preserved from packing for next ~8 seconds)
@@ -151,16 +163,62 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Add a decor block to the side of an existing block in the chunk<br/>
-        /// Returns true if successful; false if there was already a decor block in this position
         /// </summary>
-        bool AddDecor(IBlockAccessor blockAccessor, BlockPos pos, int faceIndex, Block block);
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <param name="onFace"></param>
+        /// <param name="block"></param>
+        /// <returns>False if there already exists a block in this position and facing</returns>
+        bool AddDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing onFace);
 
         /// <summary>
-        /// Remove and drop decor blocks at the corresponding index3d
+        /// Add a decor block to a specific sub-position on the side of an existing block in the chunk<br/>
         /// </summary>
-        void RemoveDecor(int index3d, IWorldAccessor world, BlockPos pos);
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <param name="onFace"></param>
+        /// <param name="block"></param>
+        /// <returns>False if there already exists a block in this position and facing</returns>
+        bool AddDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, int faceAndSubposition);
 
-        bool GetDecors(IBlockAccessor blockAccessor, BlockPos pos, Block[] result);
+
+        /// <summary>
+        /// Removes a decor block from given position
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <param name="side">If null, all the decor blocks on all sides are removed</param>
+        void BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null);
+
+        /// <summary>
+        /// Removes a decor block from given position, saves a few cpu cycles by not calculating index3d
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <param name="index3d"></param>
+        void BreakAllDecorFast(IWorldAccessor world, BlockPos pos, int index3d);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block[] GetDecors(IBlockAccessor blockAccessor, BlockPos pos);
+
+        /// <summary>
+        /// Set entire Decors for a chunk - used in Server->Client updates
+        /// </summary>
+        /// <param name="newDecors"></param>
+        void SetDecors(Dictionary<int, Block> newDecors);
+
+        /// <summary>
+        /// Adds extra selection boxes in case a decor block is attached at given position
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <param name="orig"></param>
+        /// <returns></returns>
         Cuboidf[] AdjustSelectionBoxForDecor(IBlockAccessor blockAccessor, BlockPos pos, Cuboidf[] orig);
 
         /// <summary>

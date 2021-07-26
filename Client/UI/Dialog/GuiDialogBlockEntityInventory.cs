@@ -114,7 +114,11 @@ namespace Vintagestory.API.Client
         public override void OnGuiOpened()
         {
             base.OnGuiOpened();
-            OccupyPos("smallblockgui", screenPos);
+
+            if (capi.Gui.GetDialogPosition(SingleComposer.dialogName) == null)
+            {
+                OccupyPos("smallblockgui", screenPos);
+            }
         }
     }
 }

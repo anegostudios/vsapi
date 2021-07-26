@@ -81,7 +81,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override int[] GetPixelsRotated(int rot = 0)
+        public override int[] GetPixelsTransformed(int rot = 0, int alpha = 100)
         {
             int[] bmpPixels = new int[Width * Height];
             int width = bmp.Width;
@@ -131,6 +131,21 @@ namespace Vintagestory.API.Common
                         }
                     }
                     break;
+            }
+
+
+            if (alpha != 100)
+            {
+                float af = alpha / 100f;
+                int clearAlpha = ~(0xff << 24);
+                for (int i = 0; i < bmpPixels.Length; i++)
+                {
+                    int col = bmpPixels[i];
+                    int a = (col >> 24) & 0xff;
+                    col &= clearAlpha;
+
+                    bmpPixels[i] = col | ((int)(a * af) << 24);
+                }
             }
 
 

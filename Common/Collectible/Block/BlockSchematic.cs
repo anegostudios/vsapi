@@ -276,7 +276,6 @@ namespace Vintagestory.API.Common
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
             BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z));
 
-            Block[] decorsTmp = new Block[6];
             for (int x = startPos.X; x < finalPos.X; x++)
             {
                 for (int y = startPos.Y; y < finalPos.Y; y++)
@@ -296,14 +295,10 @@ namespace Vintagestory.API.Common
                             be.OnStoreCollectibleMappings(BlockCodes, ItemCodes);
                         }
 
-                        if (world.BlockAccessor.GetChunkAtBlockPos(pos).GetDecors(world.BlockAccessor, pos, decorsTmp))
+                        Block[] decors = world.BlockAccessor.GetDecors(pos);
+                        if (decors != null)
                         {
-                            Block[] ints = new Block[6];
-                            for (int i = 0; i < 6; i++)
-                            {
-                                ints[i] = decorsTmp[i];
-                            }
-                            DecorsUnpacked[pos] = ints;
+                            DecorsUnpacked[pos] = decors;
                         }
                     }
                 }
@@ -533,11 +528,11 @@ namespace Vintagestory.API.Common
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
 
-                IWorldChunk c = blockAccessor.GetChunkAtBlockPos(curPos);
-                if (c == null) continue;
+                IWorldChunk chunk = blockAccessor.GetChunkAtBlockPos(curPos);
+                if (chunk == null) continue;
                 if (synchronize) blockAccessor.MarkChunkDecorsModified(curPos);
-                c.AddDecor(blockAccessor, curPos, face.Index, newBlock);
-                c.MarkModified();
+                chunk.AddDecor(blockAccessor, newBlock, curPos, face);
+                chunk.MarkModified();
             }
         }
 

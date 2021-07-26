@@ -41,6 +41,11 @@ namespace Vintagestory.API.Common
         public BlockPos Pos;
 
         /// <summary>
+        /// Optional field, if set, will check against the collectible dimensions and deny placecment if too large
+        /// </summary>
+        public virtual Size3f MaxContentDimensions { get; set; } = null;
+
+        /// <summary>
         /// Is this inventory generally better suited to hold items? (e.g. set to 3 for armor in armor inventory, 2 for any item in hotbar inventory, 1 for any item in normal inventory)
         /// </summary>
         protected float baseWeight = 0;
@@ -86,7 +91,7 @@ namespace Vintagestory.API.Common
         public string ClassName { get { return className; } }
 
         /// <summary>
-        /// Milliseconds since server startup when the inventory was last changed (not used currently)
+        /// Milliseconds since server startup when the inventory was last changed
         /// </summary>
         public long LastChanged { get { return lastChangedSinceServerStart; } }
 
@@ -97,6 +102,8 @@ namespace Vintagestory.API.Common
         public abstract int Count { get; }
 
         public virtual int CountForNetworkPacket => Count;
+
+        
 
         /// <summary>
         /// Gets or sets the slot at the given slot number.
@@ -172,6 +179,23 @@ namespace Vintagestory.API.Common
                 return true;
             }
         }
+
+        /// <summary>
+        /// Returns the first slot that is not empty or null
+        /// </summary>
+        public ItemSlot FirstNonEmptySlot
+        {
+            get
+            {
+                foreach (ItemSlot slot in this)
+                {
+                    if (!slot.Empty) return slot;
+                }
+
+                return null;
+            }
+        }
+
 
         /// <summary>
         /// Create a new instance of an inventory. You may choose any value for className and instanceID, but if more than one of these inventories can be opened at the same time, make sure for both of them to have a different id
@@ -344,6 +368,10 @@ namespace Vintagestory.API.Common
             return isMerge ? (baseWeight + 3) : (baseWeight + 1);
         }
 
+        public virtual bool CanContain(ItemSlot sinkSlot, ItemSlot sourceSlot)
+        {
+            return MaxContentDimensions?.CanContain(sourceSlot.Itemstack.Collectible.Dimensions) ?? true;
+        }
 
         /// <summary>
         /// Attempts to flip the contents of both slots

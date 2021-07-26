@@ -26,15 +26,12 @@ namespace Vintagestory.API.Client
 
     public class FrustumCulling
     {
-        /// <summary>
-        /// If distance squared is above this fraction of ViewDistanceSq, switch to LOD2.  This corresponds to distances beyond around 67% of the player's view distance
-        /// To put this another way: approximately 55% of the total rendered chunks will use LOD2.
-        /// </summary>
-        private const double LOD2_DISTANCESQCUTOFF = 0.45;
 
         public int ViewDistanceSq;
         internal BlockPos playerPos;
         public float lod0BiasSq;
+        /// <summary>If distance squared is above this fraction of ViewDistanceSq, switch to LOD2.  Default value corresponds to distances beyond around 67% of the player's view distance.   At default, approximately 55% of the total rendered chunks will use LOD2.</summary>
+        public double lod2BiasSq = 0.45;
         public double shadowRangeX;
         public double shadowRangeZ;
 
@@ -207,9 +204,9 @@ namespace Vintagestory.API.Client
                 case 1:
                     return distance < ViewDistanceSq;
                 case 2:
-                    return distance <= ViewDistanceSq * LOD2_DISTANCESQCUTOFF;
+                    return distance <= ViewDistanceSq * lod2BiasSq;
                 case 3:
-                    return distance > ViewDistanceSq * LOD2_DISTANCESQCUTOFF && distance < ViewDistanceSq;
+                    return distance > ViewDistanceSq * lod2BiasSq && distance < ViewDistanceSq;
                 default:
                     return false;
             }

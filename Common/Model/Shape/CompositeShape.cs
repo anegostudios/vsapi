@@ -28,6 +28,8 @@ namespace Vintagestory.API.Common
         public float offsetY;
         public float offsetZ;
 
+        public float Scale = 1f;
+
         /// <summary>
         /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
         /// </summary>
@@ -109,6 +111,7 @@ namespace Vintagestory.API.Common
                 offsetX = offsetX,
                 offsetY = offsetY,
                 offsetZ = offsetZ,
+                Scale = Scale,
                 QuantityElements = QuantityElements,
                 SelectiveElements = (string[])SelectiveElements?.Clone()
             };
@@ -129,6 +132,7 @@ namespace Vintagestory.API.Common
                 offsetX = offsetX,
                 offsetY = offsetY,
                 offsetZ = offsetZ,
+                Scale = Scale,
                 VoxelizeTexture = VoxelizeTexture,
                 QuantityElements = QuantityElements,
                 SelectiveElements = (string[])SelectiveElements?.Clone()

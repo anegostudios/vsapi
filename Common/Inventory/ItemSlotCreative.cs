@@ -27,6 +27,8 @@ namespace Vintagestory.API.Common
         {
             if (!sinkSlot.CanTakeFrom(this) || !CanTake() || Itemstack == null) return 0;
 
+            if (sinkSlot.Inventory?.CanContain(sinkSlot, this) == false) return 0;
+
             // Fill up sink slot
             if (op.ShiftDown)
             {
@@ -47,7 +49,9 @@ namespace Vintagestory.API.Common
             // Fill the destination slot with as many items as we can
             if (sinkSlot.Itemstack == null)
             {
-                sinkSlot.Itemstack = TakeOut(op.RequestedQuantity);
+                int q = Math.Min(sinkSlot.GetRemainingSlotSpace(itemstack), op.RequestedQuantity);
+
+                sinkSlot.Itemstack = TakeOut(q);
                 sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
                 op.MovedQuantity = sinkSlot.StackSize;
                 return op.MovedQuantity;
@@ -57,14 +61,20 @@ namespace Vintagestory.API.Common
 
             ItemStackMergeOperation mergeop = op.ToMergeOperation(sinkSlot, this);
             op = mergeop;
+            int origRequestedQuantity = op.RequestedQuantity;
+            op.RequestedQuantity = Math.Min(sinkSlot.GetRemainingSlotSpace(itemstack), op.RequestedQuantity);
 
             sinkSlot.Itemstack.Collectible.TryMergeStacks(mergeop);
 
             // Ignore any changes made to our slot
             Itemstack = ownStack;
 
-            sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
+            if (mergeop.MovedQuantity > 0)
+            {
+                sinkSlot.OnItemSlotModified(sinkSlot.Itemstack);
+            }
 
+            op.RequestedQuantity = origRequestedQuantity; //ensures op.NotMovedQuantity will be correct in calling code if used with slots with limited slot maxStackSize, e.g. InventorySmelting with a cooking container has slots with maxStackSize == 6
             return op.MovedQuantity;
         }
 

@@ -21,6 +21,8 @@ namespace Vintagestory.API.Common
         Button9 = 11,
         LastButton = 12,
 
+        Wheel = 13,
+
         None = 255,
     }
 }
