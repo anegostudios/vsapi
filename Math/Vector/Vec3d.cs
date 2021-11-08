@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using Newtonsoft.Json;
+using ProtoBuf;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,10 +23,14 @@ namespace Vintagestory.API.MathTools
         [ProtoMember(3)]
         public double Z;
 
+        [JsonIgnore]
         public BlockPos AsBlockPos { get { return new BlockPos((int)X, (int)Y, (int)Z); } }
 
+        [JsonIgnore]
         public int XInt => (int)X;
+        [JsonIgnore]
         public int YInt => (int)Y;
+        [JsonIgnore]
         public int ZInt => (int)Z;
 
         /// <summary>

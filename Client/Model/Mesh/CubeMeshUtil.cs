@@ -347,26 +347,43 @@ namespace Vintagestory.API.Client
         }
 
 
-        
+
 
         /// <summary>
         /// Same as GetCubeModelData but can define scale and translation. Scale is applied first.
         /// </summary>
-        /// <param name="scaleH"></param>
-        /// <param name="scaleV"></param>
+        /// <param name="scaleX"></param>
+        /// <param name="scaleY"></param>
+        /// <param name="scaleZ"></param>
         /// <param name="translate"></param>
         /// <returns></returns>
         public static MeshData GetCube(float scaleX, float scaleY, float scaleZ, Vec3f translate)
         {
             MeshData modelData = GetCube();
-            
+            modelData.Rgba.Fill((byte)255);
+            return ScaleCubeMesh(modelData, scaleX, scaleY, scaleZ, translate);
+        }
+        
+        /// <summary>
+        /// Scales a mesh retrieced by GetCube()
+        /// </summary>
+        /// <param name="modelData"></param>
+        /// <param name="scaleX"></param>
+        /// <param name="scaleY"></param>
+        /// <param name="scaleZ"></param>
+        /// <param name="translate"></param>
+        /// <returns></returns>
+        public static MeshData ScaleCubeMesh(MeshData modelData, float scaleX, float scaleY, float scaleZ, Vec3f translate)
+        { 
             float[] uScaleByAxis = new float[] { scaleZ, scaleX, scaleX };
             float[] vScaleByAxis = new float[] { scaleY, scaleZ, scaleY };
 
             float[] uOffsetByAxis = new float[] { translate.Z, translate.X, translate.X };
             float[] vOffsetByAxis = new float[] { translate.Y, translate.Z, translate.Y };
 
-            for (int i = 0; i < modelData.GetVerticesCount(); i++)
+            int verticesCount = modelData.GetVerticesCount();
+
+            for (int i = 0; i < verticesCount; i++)
             {
                 modelData.xyz[3 * i + 0] *= scaleX;
                 modelData.xyz[3 * i + 1] *= scaleY;
@@ -409,8 +426,6 @@ namespace Vintagestory.API.Client
                         break;
                 }
             }
-
-            modelData.Rgba.Fill((byte)255);
 
             return modelData;
         }

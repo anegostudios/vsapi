@@ -87,6 +87,11 @@ namespace Vintagestory.API.Client
 
                     foreach (var val in allstacks)
                     {
+                        if (val.Collectible.Attributes?["handbook"]?["isDuplicate"].AsBool(false) == true)
+                        {
+                            nowGroupedStacks.Add(val);
+                            continue;
+                        }
                         for (int i = 0; i < groupWildCards.Length; i++)
                         {
                             if (val.Collectible.WildCardMatch(groupWildCards[i]))
@@ -167,7 +172,7 @@ namespace Vintagestory.API.Client
             scibounds.absFixedX = renderX + bounds.X + renderOffset.X;
             scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y;
 
-            api.Render.PushScissor(scibounds);
+            api.Render.PushScissor(scibounds, true);
 
             api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X, renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y, 100 + renderOffset.Z, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
 

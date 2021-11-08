@@ -57,7 +57,6 @@ namespace Vintagestory.API.Client
             this.onStackClicked = onStackClicked;
             this.Float = floatType;
             this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, 3 * (size + 3), 3 * (size + 3)) };
-            //PaddingRight = 0;
             this.size = size;
 
             Random fixedRand = new Random(123);
@@ -94,7 +93,7 @@ namespace Vintagestory.API.Client
                             if (ingred.Name == null)
                             {
                                 if (unnamedIngredients == null) unnamedIngredients = new Dictionary<int, ItemStack[]>();
-                                unnamedIngredients[j] = stacks.Shuffle(fixedRand);
+                                unnamedIngredients[j] = ((ItemStack[])stacks.Clone()).Shuffle(fixedRand);
                                 thisResolved = true;
                                 continue;
                             }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -225,5 +227,33 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public float MinForestOrShrubs = 0;
 
+        protected HashSet<Block> InsideBlockCodesResolved = null;
+
+        public bool CanSpawnInside(Block testBlock)
+        {
+            return InsideBlockCodesResolved.Contains(testBlock) == true;
+        }
+
+        public void Initialise(IServerWorldAccessor server, string entityName)
+        {
+            if (InsideBlockCodes != null && InsideBlockCodes.Length > 0)
+            {
+                bool anyBlockOk = false;
+                foreach (var val in InsideBlockCodes)
+                {
+                    Block[] foundBlocks = server.SearchBlocks(val);
+                    foreach (Block b in foundBlocks)
+                    {
+                        if (InsideBlockCodesResolved == null) InsideBlockCodesResolved = new HashSet<Block>();
+                        InsideBlockCodesResolved.Add(b);
+                    }
+                    anyBlockOk |= foundBlocks.Length > 0;
+                }
+                if (!anyBlockOk)
+                {
+                    server.Logger.Warning("Entity with code {0} has defined InsideBlockCodes for its spawn conditions, but none of these blocks exists, entity is unlikely to spawn.", entityName);
+                }
+            }
+        }
     }
 }

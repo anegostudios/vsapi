@@ -110,7 +110,6 @@ namespace Vintagestory.API.Common
 
             for (int i = 0; i < anims.Length; i++)
             {
-                //if (true) break;
                 RunningAnimation anim = anims[i];
 
                 AnimationMetaData animData;

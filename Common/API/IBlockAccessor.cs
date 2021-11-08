@@ -545,13 +545,18 @@ namespace Vintagestory.API.Common
         IMapChunk GetMapChunkAtBlockPos(BlockPos pos);
 
         /// <summary>
-        /// Returns the positions current climate conditions
+        /// Returns the position's current climate conditions
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="mode">WorldGenValues = values as determined by the worldgenerator, NowValues = additionally modified to take season, day/night and hemisphere into account</param>
         /// <param name="totalDays">When mode == ForSuppliedDateValues then supply here the date. Not used param otherwise</param>
         /// <returns></returns>
         ClimateCondition GetClimateAt(BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.WorldGenValues, double totalDays = 0);
+
+        /// <summary>
+        /// Returns the position's climate conditions at specified date, making use of previously obtained worldgen climate conditions
+        /// </summary>
+        ClimateCondition GetClimateAt(BlockPos pos, ClimateCondition baseClimate, EnumGetClimateMode mode, double totalDays);
 
         /// <summary>
         /// Fast shortcut method for the clound renderer
@@ -618,6 +623,8 @@ namespace Vintagestory.API.Common
         /// <returns>Always a 6 element long list of decor blocks, any of which may be null if not set</returns>
         Block[] GetDecors(BlockPos position);
 
+        Block GetDecor(BlockPos pos, int faceAndSubposition);
+
         /// <summary>
         /// Removes a decor block from given position
         /// </summary>
@@ -625,6 +632,8 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="side">If null, all the decor blocks on all sides are removed</param>
         void BreakDecor(BlockPos pos, BlockFacing side = null);
+
+        bool BreakDecorPart(BlockPos pos, BlockFacing side, int faceAndSubposition);
 
         /// <summary>
         /// Server: Marks this position as required for resending to the client
@@ -653,7 +662,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The values at the supplied calendar time, supplied as additional arg
         /// </summary>
-        ForSuppliedDateValues
+        ForSuppliedDateValues,
+        /// <summary>
+        /// The values at the supplied calendar time, ignoring rainfall etc
+        /// </summary>
+        ForSuppliedDate_TemperatureOnly
     }
 
 }

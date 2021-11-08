@@ -55,7 +55,7 @@ namespace Vintagestory.API.Common
             string dictKey = entity.Code + "-" + entity.Properties.Client.Shape.Base.ToString();
 
             object animCacheObj;
-            Dictionary<string, AnimCacheEntry> animCache = null;
+            Dictionary<string, AnimCacheEntry> animCache;
             entity.Api.ObjectCache.TryGetValue("animCache", out animCacheObj);
             animCache = animCacheObj as Dictionary<string, AnimCacheEntry>;
             if (animCache == null)
@@ -65,7 +65,7 @@ namespace Vintagestory.API.Common
 
             IAnimator animator;
 
-            AnimCacheEntry cacheObj = null;
+            AnimCacheEntry cacheObj;
             if (animCache.TryGetValue(dictKey, out cacheObj))
             {
                 manager.Init(entity.Api, entity);

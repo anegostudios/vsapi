@@ -169,6 +169,11 @@ namespace Vintagestory.API.Client
             Sound.PlaybackPosition += seconds;
         }
 
+        public virtual void BeginSort()
+        {
+            
+        }
+
         public string PositionString
         {
             get
@@ -176,5 +181,7 @@ namespace Vintagestory.API.Client
                 return string.Format("{0}/{1}", Sound.PlaybackPosition, Sound.SoundLengthSeconds);
             }
         }
+
+        public virtual float StartPriority => Priority;
     }
 }

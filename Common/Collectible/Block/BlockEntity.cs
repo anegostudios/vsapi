@@ -206,7 +206,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Called when the block entity just got placed, not called when it was previously placed and the chunk is loaded
+        /// Called when the block entity just got placed, not called when it was previously placed and the chunk is loaded. Always called after Initialize()
         /// </summary>
         public virtual void OnBlockPlaced(ItemStack byItemStack = null)
         {

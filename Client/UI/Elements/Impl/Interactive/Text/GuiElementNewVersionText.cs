@@ -43,7 +43,7 @@ namespace Vintagestory.API.Client
         /// <param name="versionnumber">The version number of the new version.</param>
         public void RecomposeMultiLine(string versionnumber)
         {
-            text = Lang.Get("Version {0} now available \\o/\nClick here to go to the downloads page", versionnumber);
+            text = Lang.Get("versionavailable", versionnumber);
 
             Bounds.fixedHeight = GetMultilineTextHeight() / RuntimeEnv.GUIScale;
             Bounds.CalcWorldBounds();

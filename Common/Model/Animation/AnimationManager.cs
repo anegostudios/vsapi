@@ -103,7 +103,6 @@ namespace Vintagestory.API.Common
                 throw new Exception("anim meta data code cannot be null!");
             }
 
-
             AnimationsDirty = true;
             ActiveAnimationsByAnimCode[animdata.Animation] = animdata;
             entity.UpdateDebugAttributes();
@@ -159,7 +158,10 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            entity.UpdateDebugAttributes();
+            if (entity.World.EntityDebugMode)
+            {
+                entity.UpdateDebugAttributes();
+            }
         }
 
 

@@ -31,6 +31,8 @@ namespace Vintagestory.API.Config
         /// </summary>
         public const int MaxColorMaps = 20;
 
+        public static int CaveArtColsPerRow = 6;
+
         /// <summary>
         /// Frame time for physics simulation
         /// </summary>
@@ -225,6 +227,8 @@ namespace Vintagestory.API.Config
                         BorderWidth = 3,
                     } },
         };
+
+        public static int[] DefaultChatGroups = new int[] { GeneralChatGroup, ServerInfoChatGroup, DamageLogChatGroup, InfoLogChatGroup, ConsoleGroup };
 
         /// <summary>
         /// Channel name for the general chat

@@ -14,6 +14,16 @@ namespace Vintagestory.API.Client
         List<MeshDataPool> modelPools = new List<MeshDataPool>();
         ICoreClientAPI capi;
 
+
+        /// <summary>
+        /// If true, RemoveLocation() only actually removes the location after 3 frames. Need to call OnFrame() to achieve that
+        /// </summary>
+        public bool DelayedPoolLocationRemoval;
+
+        Queue<ModelDataPoolLocation[]>[] removalQueue = new Queue<ModelDataPoolLocation[]>[] { new Queue<ModelDataPoolLocation[]>(), new Queue<ModelDataPoolLocation[]>(), new Queue<ModelDataPoolLocation[]>(), new Queue<ModelDataPoolLocation[]>() };
+
+
+
         /// <summary>
         /// Initializes the master mesh data pool.
         /// </summary>
@@ -29,15 +39,54 @@ namespace Vintagestory.API.Client
         /// <param name="locations">The locations of the model data.</param>
         public void RemoveDataPoolLocations(ModelDataPoolLocation[] locations)
         {
+            if (DelayedPoolLocationRemoval)
+            {
+                for (int i = 0; i < locations.Length; i++)
+                {
+                    locations[i].Hide = true;
+                }
+                removalQueue[0].Enqueue(locations);
+                return;
+            }
+
+            RemoveLocationsNow(locations);
+        }
+
+
+        public void OnFrame()
+        {
+            while (removalQueue[3].Count > 0)
+            {
+                RemoveLocationsNow(removalQueue[3].Dequeue());
+            }
+
+            while (removalQueue[2].Count > 0)
+            {
+                removalQueue[3].Enqueue(removalQueue[2].Dequeue());
+            }
+
+            while (removalQueue[1].Count > 0)
+            {
+                removalQueue[2].Enqueue(removalQueue[1].Dequeue());
+            }
+
+            while (removalQueue[0].Count > 0)
+            {
+                removalQueue[1].Enqueue(removalQueue[0].Dequeue());
+            }
+        }
+
+        private void RemoveLocationsNow(ModelDataPoolLocation[] locations)
+        {
             for (int i = 0; i < locations.Length; i++)
             {
-                if (locations[i] == null || modelPools[locations[i].poolId] == null)
+                if (locations[i] == null || modelPools[locations[i].PoolId] == null)
                 {
                     capi.World.Logger.Error("Could not remove model data from the master pool. Something wonky is happening. Ignoring for now.");
                     continue;
                 }
 
-                modelPools[locations[i].poolId].RemoveLocation(locations[i]);
+                modelPools[locations[i].PoolId].RemoveLocation(locations[i]);
             }
         }
 

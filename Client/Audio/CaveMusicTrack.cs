@@ -95,7 +95,9 @@ namespace Vintagestory.API.Client
             get { return priority; }
         }
 
-        public string PositionString => throw new NotImplementedException();
+        public string PositionString => "?";
+
+        public float StartPriority => priority;
 
         /// <summary>
         /// Initializes the music track
@@ -282,6 +284,11 @@ namespace Vintagestory.API.Client
         }
 
         public void FastForward(float seconds)
+        {
+            
+        }
+
+        public void BeginSort()
         {
             
         }

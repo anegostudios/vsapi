@@ -84,6 +84,7 @@ namespace Vintagestory.API.Client
         public int AllocatedTris;
 
 
+        
         private MeshDataPool(int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool) {
             this.MaxPartsPerPool = maxPartsPerPool;
             this.IndicesPoolSize = indicesPoolSize;
@@ -115,8 +116,6 @@ namespace Vintagestory.API.Client
             }
             
             pool.indicesSizes = new int[maxPartsPerPool];
-
-            //MeshData modeldata = new MeshData(verticesPoolSize, indicesPoolSize, false); - wtf?
 
             // Allocate the right amount of bytes for custom data
             if (customFloats != null)
@@ -190,13 +189,13 @@ namespace Vintagestory.API.Client
             {
                 ModelDataPoolLocation location = poolLocations[i];
 
-                if (location.indicesStart - curIndexPos > modeldata.IndicesCount && location.verticesStart - curVertexPos > modeldata.VerticesCount)
+                if (location.IndicesStart - curIndexPos > modeldata.IndicesCount && location.VerticesStart - curVertexPos > modeldata.VerticesCount)
                 {
                     return InsertAt(capi, modeldata, modelOrigin, frustumCullSphere, curIndexPos, curVertexPos, i);
                 }
 
-                curIndexPos = location.indicesEnd + 1;
-                curVertexPos = location.verticesEnd + 1;
+                curIndexPos = location.IndicesEnd + 1;
+                curVertexPos = location.VerticesEnd + 1;
 
             }
 
@@ -272,12 +271,12 @@ namespace Vintagestory.API.Client
             // Assign a location to it
             ModelDataPoolLocation poolLocation = new ModelDataPoolLocation()
             {
-                indicesStart = indexPosition,
-                indicesEnd = indexPosition + modeldata.IndicesCount,
-                verticesStart = vertexPosition,
-                verticesEnd = vertexPosition + modeldata.VerticesCount,
-                poolId = poolId,
-                frustumCullSphere = frustumCullSphere
+                IndicesStart = indexPosition,
+                IndicesEnd = indexPosition + modeldata.IndicesCount,
+                VerticesStart = vertexPosition,
+                VerticesEnd = vertexPosition + modeldata.VerticesCount,
+                PoolId = poolId,
+                FrustumCullSphere = frustumCullSphere
             };
             
             // Maintain correct ordering
@@ -300,7 +299,7 @@ namespace Vintagestory.API.Client
         /// <param name="location">The location of the model data.</param>
         public void RemoveLocation(ModelDataPoolLocation location)
         {
-            if (location.poolId != poolId)
+            if (location.PoolId != poolId)
             {
                 throw new Exception("invalid call");
             }
@@ -318,10 +317,10 @@ namespace Vintagestory.API.Client
             } else
             {
                 // Location at the end of the buffer?
-                if (location.indicesEnd == indicesPosition && location.verticesEnd == verticesPosition)
+                if (location.IndicesEnd == indicesPosition && location.VerticesEnd == verticesPosition)
                 {
-                    indicesPosition = poolLocations[poolLocations.Count - 1].indicesEnd;
-                    verticesPosition = poolLocations[poolLocations.Count - 1].verticesEnd;
+                    indicesPosition = poolLocations[poolLocations.Count - 1].IndicesEnd;
+                    verticesPosition = poolLocations[poolLocations.Count - 1].VerticesEnd;
                 }
             }
 
@@ -358,10 +357,10 @@ namespace Vintagestory.API.Client
             {
                 ModelDataPoolLocation location = poolLocations[i];
 
-                int size = location.indicesEnd - location.indicesStart;
+                int size = location.IndicesEnd - location.IndicesStart;
                 if (location.IsVisible(frustumCullMode, frustumCuller))
                 {
-                    indicesStartsByte[indicesGroupsCount * multiplier] = location.indicesStart * 4; // Offset in bytes, not ints
+                    indicesStartsByte[indicesGroupsCount * multiplier] = location.IndicesStart * 4; // Offset in bytes, not ints
                     indicesSizes[indicesGroupsCount] = size;
 
                     RenderedTriangles += size / 3;
@@ -408,9 +407,9 @@ namespace Vintagestory.API.Client
 
             foreach (ModelDataPoolLocation location in poolLocations)
             {
-                UsedVertices += location.verticesEnd - location.verticesStart;
-                unusedVertices += Math.Max(0, location.verticesStart - curPos);
-                curPos = location.verticesEnd + 1;
+                UsedVertices += location.VerticesEnd - location.VerticesStart;
+                unusedVertices += Math.Max(0, location.VerticesStart - curPos);
+                curPos = location.VerticesEnd + 1;
             }
 
             CurrentFragmentation = (float)unusedVertices / verticesPosition;
@@ -432,37 +431,37 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class ModelDataPoolLocation
     {
-        public static int visibleBufIndex;
+        public static int VisibleBufIndex;
 
         /// <summary>
         /// The ID of the pool model.
         /// </summary>
-        public int poolId;
+        public int PoolId;
 
         /// <summary>
         /// Where the indices of the model start.
         /// </summary>
-        public int indicesStart;
+        public int IndicesStart;
 
         /// <summary>
         /// Where the indices of the model end.
         /// </summary>
-        public int indicesEnd;
+        public int IndicesEnd;
 
         /// <summary>
         /// Where the vertices start.
         /// </summary>
-        public int verticesStart;
+        public int VerticesStart;
 
         /// <summary>
         /// Where the vertices end.
         /// </summary>
-        public int verticesEnd;
+        public int VerticesEnd;
 
         /// <summary>
         /// The culling sphere.
         /// </summary>
-        public Sphere frustumCullSphere;
+        public Sphere FrustumCullSphere;
 
         /// <summary>
         /// Whether this model is visible or not.
@@ -473,6 +472,8 @@ namespace Vintagestory.API.Client
 
         public int LodLevel = 0;
 
+        public bool Hide;
+
         /// <summary>
         /// Used for models with movements (like a door).
         /// </summary>
@@ -480,43 +481,29 @@ namespace Vintagestory.API.Client
 
         private bool UpdateVisibleFlag(bool inFrustum)
         {
-            /*if (FrustumVisible && !inFrustum)
-            {
-                //TransitionCounter--;
-                //if (TransitionCounter <= 0)  - causes lod 0 and lod 1 to render at the same time, making water brighter. Maybe no longer needed due to double precision frustum culling now?
-                FrustumVisible = false;
-            }
-
-            if (!FrustumVisible && inFrustum)
-            {
-                TransitionCounter=10;
-                FrustumVisible = true;
-            }*/
-
             FrustumVisible = inFrustum;
-
             return FrustumVisible;
         }
 
 
-        internal bool IsVisible(EnumFrustumCullMode mode, FrustumCulling culler)
+        public bool IsVisible(EnumFrustumCullMode mode, FrustumCulling culler)
         {
             switch (mode)
             {
                 case EnumFrustumCullMode.CullInstant:
-                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustum(frustumCullSphere);
+                    return !Hide && CullVisible[VisibleBufIndex].value && culler.SphereInFrustum(FrustumCullSphere);
 
                 case EnumFrustumCullMode.CullInstantShadowPassNear:
-                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustumShadowPass(frustumCullSphere);
+                    return !Hide && CullVisible[VisibleBufIndex].value && culler.SphereInFrustumShadowPass(FrustumCullSphere);
 
                 case EnumFrustumCullMode.CullInstantShadowPassFar:
-                    return CullVisible[visibleBufIndex].value && culler.SphereInFrustumShadowPass(frustumCullSphere) && LodLevel >= 1;
+                    return !Hide && CullVisible[VisibleBufIndex].value && culler.SphereInFrustumShadowPass(FrustumCullSphere) && LodLevel >= 1;
 
                 case EnumFrustumCullMode.CullNormal:
-                    return CullVisible[visibleBufIndex].value && UpdateVisibleFlag(culler.SphereInFrustumAndRange(frustumCullSphere, FrustumVisible, LodLevel));
+                    return !Hide && CullVisible[VisibleBufIndex].value && UpdateVisibleFlag(culler.SphereInFrustumAndRange(FrustumCullSphere, FrustumVisible, LodLevel));
 
                 default:
-                    return true;
+                    return !Hide;
             }
 
         }

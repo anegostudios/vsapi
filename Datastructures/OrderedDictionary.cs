@@ -48,13 +48,21 @@ namespace Vintagestory.API.Datastructures
 			_comparer = comparer;
 		}
 
-        public OrderedDictionary(OrderedDictionary<TKey, TValue> variant)
+        public OrderedDictionary(OrderedDictionary<TKey, TValue> initialData)
         {
-            foreach (var val in variant)
+            foreach (var val in initialData)
             {
                 this[val.Key] = val.Value;
             }
         }
+
+        public OrderedDictionary(Dictionary<TKey, TValue> initialData)
+        {
+			foreach (var val in initialData)
+			{
+				this[val.Key] = val.Value;
+			}
+		}
 
         private Dictionary<TKey, TValue> Dictionary
 		{
@@ -353,6 +361,11 @@ namespace Vintagestory.API.Datastructures
         bool ICollection<KeyValuePair<TKey, TValue>>.Remove(KeyValuePair<TKey, TValue> item)
         {
             return Remove(item.Key);
+        }
+
+        public bool ContainsValue(TValue value)
+        {
+			return Dictionary.ContainsValue(value);
         }
     }
 }

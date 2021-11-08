@@ -512,13 +512,15 @@ namespace Vintagestory.API.Client
         public MeshData MatrixTransform(double[] matrix)
         {
             // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
-            double[] pos = new double[] { 0, 0, 0, 1 };
+
             double[] inVec = new double[] { 0, 0, 0, 0 };
             double[] outVec;
 
             for (int i = 0; i < VerticesCount; i++)
             {
-                pos[0] = xyz[i * 3];
+                // Keep this code - it's more readable than below inlined method. It's worth inlining because this method is called during Shape tesselation, which has *a lot* of shapes to load
+                //double[] pos = new double[] { 0, 0, 0, 1 };
+                /*pos[0] = xyz[i * 3];
                 pos[1] = xyz[i * 3 + 1];
                 pos[2] = xyz[i * 3 + 2];
 
@@ -526,14 +528,23 @@ namespace Vintagestory.API.Client
 
                 xyz[i * 3] = (float)pos[0];
                 xyz[i * 3 + 1] = (float)pos[1];
-                xyz[i * 3 + 2] = (float)pos[2];
+                xyz[i * 3 + 2] = (float)pos[2];*/
+
+                // Inlined version of above code
+                float x = xyz[i * 3];
+                float y = xyz[i * 3 + 1];
+                float z = xyz[i * 3 + 2];
+                xyz[i * 3 + 0] = (float)(matrix[4 * 0 + 0] * x + matrix[4 * 1 + 0] * y + matrix[4 * 2 + 0] * z + matrix[4 * 3 + 0] * 1);
+                xyz[i * 3 + 1] = (float)(matrix[4 * 0 + 1] * x + matrix[4 * 1 + 1] * y + matrix[4 * 2 + 1] * z + matrix[4 * 3 + 1] * 1);
+                xyz[i * 3 + 2] = (float)(matrix[4 * 0 + 2] * x + matrix[4 * 1 + 2] * y + matrix[4 * 2 + 2] * z + matrix[4 * 3 + 2] * 1);
+
 
                 if (Normals != null)
                 {
                     NormalUtil.FromPackedNormal(Normals[i], ref inVec);
                     outVec = Mat4d.MulWithVec4(matrix, inVec);
                     Normals[i] = NormalUtil.PackNormal(outVec);
-                } 
+                }
             }
 
             if (XyzFaces != null)
@@ -543,14 +554,21 @@ namespace Vintagestory.API.Client
                     byte meshFaceIndex = XyzFaces[i];
                     if (meshFaceIndex == 0) continue;
 
-                    Vec3f normalf = BlockFacing.ALLFACES[meshFaceIndex - 1].Normalf;
-                    inVec[0] = normalf.X;
+                    Vec3d normald = BlockFacing.ALLFACES[meshFaceIndex - 1].Normald;
+                    /*inVec[0] = normalf.X;
                     inVec[1] = normalf.Y;
                     inVec[2] = normalf.Z;
 
                     outVec = Mat4d.MulWithVec4(matrix, inVec);
-                    BlockFacing rotatedFacing = BlockFacing.FromVector(outVec[0], outVec[1], outVec[2]);
-                    
+                    BlockFacing rotatedFacing = BlockFacing.FromVector(outVec[0], outVec[1], outVec[2]);*/
+
+                    // Inlined version of above code
+                    double ox = matrix[4 * 0 + 0] * normald.X + matrix[4 * 1 + 0] * normald.Y + matrix[4 * 2 + 0] * normald.Z;
+                    double oy = matrix[4 * 0 + 1] * normald.X + matrix[4 * 1 + 1] * normald.Y + matrix[4 * 2 + 1] * normald.Z;
+                    double oz = matrix[4 * 0 + 2] * normald.X + matrix[4 * 1 + 2] * normald.Y + matrix[4 * 2 + 2] * normald.Z;
+
+                    BlockFacing rotatedFacing = BlockFacing.FromVector(ox, oy, oz);
+
                     XyzFaces[i] = rotatedFacing.MeshDataIndex;
                 }
             }
@@ -560,9 +578,15 @@ namespace Vintagestory.API.Client
                 for (int i = 0; i < Flags.Length; i++)
                 {
                     VertexFlags.PackedIntToNormal(Flags[i] >> 15, inVec);
-                    outVec = Mat4d.MulWithVec4(matrix, inVec);
 
-                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(outVec[0], outVec[1], outVec[2]) << 15);
+                    //outVec = Mat4d.MulWithVec4(matrix, inVec);
+
+                    // Inlined version of above code
+                    double ox = matrix[4 * 0 + 0] * inVec[0] + matrix[4 * 1 + 0] * inVec[1] + matrix[4 * 2 + 0] * inVec[2];
+                    double oy = matrix[4 * 0 + 1] * inVec[0] + matrix[4 * 1 + 1] * inVec[1] + matrix[4 * 2 + 1] * inVec[2];
+                    double oz = matrix[4 * 0 + 2] * inVec[0] + matrix[4 * 1 + 2] * inVec[1] + matrix[4 * 2 + 2] * inVec[2];
+
+                    Flags[i] = (Flags[i] & ~VertexFlags.NormalBitMask) | (VertexFlags.NormalToPackedInt(ox, oy, oz) << 15);
                 }
             }
 
@@ -685,7 +709,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < data.VerticesCount / 4; i++)
             {
-                if (data.RenderPassesAndExtraBits[i] != renderPassInt && (data.RenderPassesAndExtraBits[i] !=-1 || filterByRenderPass != EnumChunkRenderPass.Opaque))
+                if (data.RenderPassesAndExtraBits[i] != renderPassInt && (data.RenderPassesAndExtraBits[i] != -1 || filterByRenderPass != EnumChunkRenderPass.Opaque))
                 {
                     di += 6;
                     continue;
@@ -696,7 +720,7 @@ namespace Vintagestory.API.Client
                 // 4 vertices
                 for (int k = 0; k < 4; k++)
                 {
-                    vertexNum = i*4 + k;
+                    vertexNum = i * 4 + k;
 
                     if (VerticesCount >= VerticesMax)
                     {
@@ -784,7 +808,7 @@ namespace Vintagestory.API.Client
                     }
 
                     VerticesCount++;
-                    
+
                 }
 
 
@@ -850,7 +874,7 @@ namespace Vintagestory.API.Client
 
                 VerticesCount++;
             }
-        
+
             int start = IndicesCount > 0 ? (mode == EnumDrawMode.Triangles ? Indices[IndicesCount - 1] + 1 : Indices[IndicesCount - 2] + 1) : 0;
 
             for (int i = 0; i < sourceMesh.IndicesCount; i++)
@@ -1846,5 +1870,5 @@ namespace Vintagestory.API.Client
             }
         }
     }
-    
+
 }

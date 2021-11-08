@@ -271,6 +271,12 @@ namespace Vintagestory.API.Common.Entities
         public EntityStats Stats;
         float fireDamageAccum;
 
+
+        // Used by EntityBehaviorRepulseAgents. Added here to increase performance, as its one of the most perf heavy operations
+        public double touchDistanceSq;
+        public Vec3d ownPosRepulse = new Vec3d();
+        public bool hasRepulseBehavior = false;
+
         #endregion
 
         #region Properties
@@ -562,6 +568,8 @@ namespace Vintagestory.API.Common.Entities
                 SetHitbox(Properties.DeadHitBoxSize.X, Properties.DeadHitBoxSize.Y);
             }
 
+            double touchdist = Math.Max(0.001f, CollisionBox.XSize / 2);
+            touchDistanceSq = touchdist * touchdist;
         }
 
 
@@ -849,6 +857,12 @@ namespace Vintagestory.API.Common.Entities
             {
                 AnimManager.OnServerTick(dt);
             }
+
+            ownPosRepulse.Set(
+                SidedPos.X + (CollisionBox.X2 - OriginCollisionBox.X2),
+                SidedPos.Y + (CollisionBox.Y2 - OriginCollisionBox.Y2),
+                SidedPos.Z + (CollisionBox.Z2 - OriginCollisionBox.Z2)
+            );
         }   
 
 

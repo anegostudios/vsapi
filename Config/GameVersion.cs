@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Reflection;
+using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Config
@@ -20,7 +24,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.15.2"; 
+        public const string OverallVersion = "1.15.9"; 
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -53,7 +57,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.15.0";
+        public const string NetworkVersion = "1.15.4";
 
         /// <summary>
         /// Version of the savegame database
@@ -186,6 +190,24 @@ namespace Vintagestory.API.Config
             }
 
             return false;
+        }
+
+
+        public static void EnsureEqualVersionOrKillExecutable(ICoreAPI api, string version, string reference, string modName)
+        {
+            if (version != reference)
+            {              
+                if (api.Side == EnumAppSide.Server)
+                {
+                    Exception e = new Exception(Lang.Get("versionmismatch-server", modName + ".dll"));
+                    ((ICoreServerAPI)api).Server.ShutDown();
+                    throw e;
+                } else
+                {
+                    Exception e = new Exception(Lang.Get("versionmismatch-client", modName + ".dll"));
+                    ((ICoreClientAPI)api).Event.EnqueueMainThreadTask(() => throw e, "killgame");
+                }
+            }
         }
 
     }

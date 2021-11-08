@@ -52,7 +52,7 @@ namespace Vintagestory.API.Common
         /// Returns a list all loaded chunk positions in the form of a long index. Code to turn that into x/y/z coords:
         /// Vec3i coords = new Vec3i(
         ///    (int)(chunkIndex3d % ChunkMapSizeX),
-        ///    (int)(chunkIndex3d / (ChunkMapSizeX * ChunkMapSizeZ)),
+        ///    (int)(chunkIndex3d / ((long)ChunkMapSizeX * ChunkMapSizeZ)),
         ///    (int)((chunkIndex3d / ChunkMapSizeX) % ChunkMapSizeZ)
         /// );
         /// Retrieving the list is not a very fast process, not suggested to be called every frame

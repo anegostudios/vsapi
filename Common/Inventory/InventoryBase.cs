@@ -430,8 +430,13 @@ namespace Vintagestory.API.Common
             if (op.ShiftDown)
             {
                 sourceSlot = this[slotId];
+
+                string stackName = sourceSlot.Itemstack?.GetName();
+
                 op.RequestedQuantity = sourceSlot.StackSize;
                 op.ActingPlayer.InventoryManager.TryTransferAway(sourceSlot, ref op, false);
+
+                Api.World.Logger.VerboseDebug("{0} shift clicked slot {1} in {2}. Moved {3}x{4}", op.ActingPlayer?.PlayerName, slotId, sourceSlot.Inventory.InventoryID, op.MovedQuantity, stackName);
             }
             else
             {
@@ -784,6 +789,9 @@ namespace Vintagestory.API.Common
             openedByPlayerGUIds.Add(player.PlayerUID);
 
             OnInventoryOpened?.Invoke(player);
+
+            Api.World.Logger.Audit("{0} opened inventory {1}", player.PlayerName, InventoryID);
+
             return packet;
         }
 
@@ -798,6 +806,8 @@ namespace Vintagestory.API.Common
             openedByPlayerGUIds.Remove(player.PlayerUID);
 
             OnInventoryClosed?.Invoke(player);
+
+            Api.World.Logger.Audit("{0} closed inventory {1}", player.PlayerName, InventoryID);
 
             return packet;
         }

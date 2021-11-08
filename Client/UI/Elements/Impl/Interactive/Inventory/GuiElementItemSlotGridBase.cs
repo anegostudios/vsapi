@@ -56,7 +56,12 @@ namespace Vintagestory.API.Client
         bool isLeftMouseDownStartedInsideElem;
         
         HashSet<int> wasMouseDownOnSlotIndex = new HashSet<int>();
-        OrderedDictionary<int, int> leftMouseDownDistributeSlotsBySlotid = new OrderedDictionary<int, int>();
+
+        
+        OrderedDictionary<int, int> distributeStacksPrevStackSizeBySlotId = new OrderedDictionary<int, int>();
+        OrderedDictionary<int, int> distributeStacksAddedStackSizeBySlotId = new OrderedDictionary<int, int>();
+
+
         ItemStack referenceDistributStack;
 
         public CanClickSlotDelegate CanClickSlot;
@@ -409,13 +414,10 @@ namespace Vintagestory.API.Client
         }
 
 
-        ElementBounds scBounds = new ElementBounds();
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = !isLeftMouseDownStartedInsideElem;
 
-            // Slot sizes
             double absSlotWidth = scaled(GuiElementPassiveItemSlot.unscaledSlotSize);
             double absItemstackSize = scaled(GuiElementPassiveItemSlot.unscaledItemSize);
 
@@ -442,7 +444,7 @@ namespace Vintagestory.API.Client
                     }
                     
 
-                    if (highlightSlotId == slotId || hoverSlotId == slotId || leftMouseDownDistributeSlotsBySlotid.ContainsKey(slotId))
+                    if (highlightSlotId == slotId || hoverSlotId == slotId || distributeStacksPrevStackSizeBySlotId.ContainsKey(slotId))
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(
                             highlightSlotTexture.TextureId, (int)(bounds.renderX - 2), (int)(bounds.renderY - 2), bounds.OuterWidthInt + 4, bounds.OuterHeightInt + 4
@@ -498,7 +500,8 @@ namespace Vintagestory.API.Client
             hoverSlotId = -1;
             tabbedSlotId = -1;
 
-            (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = true;
+            (inventory as InventoryBase).InvNetworkUtil.PauseInventoryUpdates = false;
+            api.World.Player.InventoryManager.MouseItemSlot.Inventory.InvNetworkUtil.PauseInventoryUpdates = false;
         }
 
         public override int OutlineColor()
@@ -515,7 +518,7 @@ namespace Vintagestory.API.Client
         /// <param name="searchCache">Can be set to increase search performance, otherwise a slow search is performed</param>
         public void FilterItemsBySearchText(string text, Dictionary<int, string> searchCache = null, Dictionary<int, string> searchCacheNames = null)
         {
-            this.searchText = text.ToLowerInvariant();
+            searchText = text.ToLowerInvariant();
 
             renderedSlots.Clear();
 
@@ -575,17 +578,7 @@ namespace Vintagestory.API.Client
                 renderedSlots.Add(pair.Key, pair.Value.slot);
             }
 
-
-            /*var elems = renderedSlots.ToArray().Shuffle(api.World.Rand);
-            renderedSlots.Clear();
-            foreach (var val in elems)
-            {
-                renderedSlots[val.Key] = val.Value;
-            }*/
-
-
-
-            this.rows = (int)Math.Ceiling(1f * renderedSlots.Count / cols);
+            rows = (int)Math.Ceiling(1f * renderedSlots.Count / cols);
             ComposeInteractiveElements();
         }
 
@@ -698,7 +691,8 @@ namespace Vintagestory.API.Client
             if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
 
             wasMouseDownOnSlotIndex.Clear();
-            leftMouseDownDistributeSlotsBySlotid.Clear();
+            distributeStacksPrevStackSizeBySlotId.Clear();
+            distributeStacksAddedStackSizeBySlotId.Clear();
 
             for (int i = 0; i < slotBounds.Length; i++)
             {
@@ -712,11 +706,13 @@ namespace Vintagestory.API.Client
                     isLeftMouseDownStartedInsideElem = args.Button == EnumMouseButton.Left && api.World.Player.InventoryManager.MouseItemSlot.Itemstack != null;
                     
                     wasMouseDownOnSlotIndex.Add(i);
+                    int slotid = renderedSlots.GetKeyAtIndex(i);
+                    int prevStackSize = inventory[slotid].StackSize;
+
                     if (isLeftMouseDownStartedInsideElem)
                     {
                         referenceDistributStack = api.World.Player.InventoryManager.MouseItemSlot.Itemstack.Clone();
-                        int slotid = renderedSlots.GetKeyAtIndex(i);
-                        leftMouseDownDistributeSlotsBySlotid.Add(slotid, inventory[slotid].StackSize);
+                        distributeStacksPrevStackSizeBySlotId.Add(slotid, inventory[slotid].StackSize);
                     }
 
                     SlotClick(
@@ -727,6 +723,13 @@ namespace Vintagestory.API.Client
                         api.Input.KeyboardKeyState[(int)GlKeys.LControl],
                         api.Input.KeyboardKeyState[(int)GlKeys.LAlt]
                     );
+
+                    (inventory as InventoryBase).InvNetworkUtil.PauseInventoryUpdates = isLeftMouseDownStartedInsideElem;
+                    api.World.Player.InventoryManager.MouseItemSlot.Inventory.InvNetworkUtil.PauseInventoryUpdates = isLeftMouseDownStartedInsideElem;
+
+
+                    distributeStacksAddedStackSizeBySlotId[slotid] = inventory[slotid].StackSize - prevStackSize;
+
                     args.Handled = true;
 
                     break;
@@ -740,8 +743,10 @@ namespace Vintagestory.API.Client
             isRightMouseDownStartedInsideElem = false;
             isLeftMouseDownStartedInsideElem = false;
             wasMouseDownOnSlotIndex.Clear();
-            leftMouseDownDistributeSlotsBySlotid.Clear();
-            (inventory as InventoryBase).InvNetworkUtil.AcceptServerUpdates = true;
+            distributeStacksPrevStackSizeBySlotId.Clear();
+            distributeStacksAddedStackSizeBySlotId.Clear();
+			(inventory as InventoryBase).InvNetworkUtil.PauseInventoryUpdates = false;
+            api.World.Player.InventoryManager.MouseItemSlot.Inventory.InvNetworkUtil.PauseInventoryUpdates = false;
             base.OnMouseUp(api, args);
         }
 
@@ -763,9 +768,9 @@ namespace Vintagestory.API.Client
 
                 if (slotBounds[i].PointInside(args.X, args.Y))
                 {
-                    int newHoverSlotid = renderedSlots.GetKeyAtIndex(i);
-                    ItemSlot newHoverSlot = inventory[newHoverSlotid];
-                    ItemStack stack = newHoverSlot.Itemstack;
+                    int nowHoverSlotid = renderedSlots.GetKeyAtIndex(i);
+                    ItemSlot nowHoverSlot = inventory[nowHoverSlotid];
+                    ItemStack stack = nowHoverSlot.Itemstack;
 
                     // Cheap hax for hover-right-mouse-down slot filling
                     if (isRightMouseDownStartedInsideElem && !wasMouseDownOnSlotIndex.Contains(i))
@@ -776,7 +781,7 @@ namespace Vintagestory.API.Client
                         {
                             SlotClick(
                                 api,
-                                newHoverSlotid,
+                                nowHoverSlotid,
                                 EnumMouseButton.Right,
                                 api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft],
                                 api.Input.KeyboardKeyState[(int)GlKeys.LControl],
@@ -791,13 +796,13 @@ namespace Vintagestory.API.Client
                         if (stack == null || stack.Equals(api.World, referenceDistributStack, GlobalConstants.IgnoredStackAttributes))
                         {
                             wasMouseDownOnSlotIndex.Add(i);
-                            leftMouseDownDistributeSlotsBySlotid.Add(newHoverSlotid, stack == null ? 0 : stack.StackSize);
+                            distributeStacksPrevStackSizeBySlotId.Add(nowHoverSlotid, nowHoverSlot.StackSize);
 
                             if (api.World.Player.InventoryManager.MouseItemSlot.StackSize > 0)
                             {
                                 SlotClick(
                                     api,
-                                    newHoverSlotid,
+                                    nowHoverSlotid,
                                     EnumMouseButton.Left,
                                     api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft],
                                     api.Input.KeyboardKeyState[(int)GlKeys.LControl],
@@ -807,25 +812,25 @@ namespace Vintagestory.API.Client
 
                             if (api.World.Player.InventoryManager.MouseItemSlot.StackSize <= 0)
                             {
-                                RedistributeStacks(newHoverSlotid);
+                                RedistributeStacks(nowHoverSlotid);
                             }
                         }
                     }
 
 
 
-                    if (newHoverSlotid != hoverSlotId && newHoverSlot != null)
+                    if (nowHoverSlotid != hoverSlotId && nowHoverSlot != null)
                     {
-                        api.Input.TriggerOnMouseEnterSlot(newHoverSlot);
-                        hoverInv = newHoverSlot.Inventory;
+                        api.Input.TriggerOnMouseEnterSlot(nowHoverSlot);
+                        hoverInv = nowHoverSlot.Inventory;
                     }
 
-                    if (newHoverSlotid != hoverSlotId)
+                    if (nowHoverSlotid != hoverSlotId)
                     {
                         tabbedSlotId = -1;
                     }
 
-                    hoverSlotId = newHoverSlotid;
+                    hoverSlotId = nowHoverSlotid;
                     return;
                 }
             }
@@ -847,26 +852,40 @@ namespace Vintagestory.API.Client
 
         private void RedistributeStacks(int intoSlotId)
         {
-            int stacksPerSlot = referenceDistributStack.StackSize / leftMouseDownDistributeSlotsBySlotid.Count;
+            int stacksPerSlot = referenceDistributStack.StackSize / distributeStacksPrevStackSizeBySlotId.Count;
             
-            for (int i = 0; i < leftMouseDownDistributeSlotsBySlotid.Count - 1; i++)
+            for (int i = 0; i < distributeStacksPrevStackSizeBySlotId.Count - 1; i++)
             {
-                int sourceSlotid = leftMouseDownDistributeSlotsBySlotid.GetKeyAtIndex(i);
+                int sourceSlotid = distributeStacksPrevStackSizeBySlotId.GetKeyAtIndex(i);
                 if (sourceSlotid == intoSlotId) continue;
 
                 ItemSlot sourceSlot = inventory[sourceSlotid];
 
-                int beforesize = leftMouseDownDistributeSlotsBySlotid[sourceSlotid];
-                int nowsize = sourceSlot.StackSize;
+                distributeStacksAddedStackSizeBySlotId.TryGetValue(sourceSlotid, out int addedSrcSize);
 
-                if (nowsize - beforesize > stacksPerSlot)
+                if (addedSrcSize > stacksPerSlot)
                 {
+                    int beforeSrcSize = distributeStacksPrevStackSizeBySlotId[sourceSlotid];
+                    int nowSrcSize = beforeSrcSize + addedSrcSize;
+
                     ItemSlot targetSlot = inventory[intoSlotId];
                     ItemStackMoveOperation op = new ItemStackMoveOperation(api.World, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge);
                     op.ActingPlayer = api.World.Player;
-                    op.RequestedQuantity = nowsize - beforesize - stacksPerSlot;
+                    op.RequestedQuantity = nowSrcSize - beforeSrcSize - stacksPerSlot;
+
+                    int moved = nowSrcSize - beforeSrcSize - stacksPerSlot;
 
                     object packet = api.World.Player.InventoryManager.TryTransferTo(sourceSlot, targetSlot, ref op);
+
+
+                    distributeStacksAddedStackSizeBySlotId.TryGetValue(intoSlotId, out int addedBefore);
+                    distributeStacksAddedStackSizeBySlotId[intoSlotId] = addedBefore + op.MovedQuantity;
+
+                    distributeStacksAddedStackSizeBySlotId[sourceSlotid] -= op.MovedQuantity;
+
+                    //Console.WriteLine(distributeStacksPrevStackSizeBySlotId.Count + " client side redist stack. Move {0}-{4}-{5} from {1} to {2}, slot has now {3}x", nowSrcSize, sourceSlotid, intoSlotId, distributeStacksAddedStackSizeBySlotId[intoSlotId] + distributeStacksPrevStackSizeBySlotId[intoSlotId], beforeSrcSize, stacksPerSlot);
+
+
 
                     if (packet != null)
                     {
@@ -878,6 +897,8 @@ namespace Vintagestory.API.Client
 
         public virtual void SlotClick(ICoreClientAPI api, int slotId, EnumMouseButton mouseButton, bool shiftPressed, bool ctrlPressed, bool altPressed)
         {
+            //Console.WriteLine("client side slot click on " + slotId);
+
             List<IInventory> inventories = api.World.Player.InventoryManager.OpenedInventories;
             IInventory mouseCursorInv = api.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.mousecursorInvClassName);
             object packet;

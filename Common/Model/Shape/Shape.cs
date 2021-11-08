@@ -92,8 +92,6 @@ namespace Vintagestory.API.Common
 
                 CollectAttachmentPoints(elem);
             }
-
-            
         }
 
         private void CollectAttachmentPoints(ShapeElement elem)
@@ -308,6 +306,10 @@ namespace Vintagestory.API.Common
         }
 
 
+        /// <summary>
+        /// Creates a deep copy of the shape
+        /// </summary>
+        /// <returns></returns>
         public Shape Clone()
         {
             return new Shape()

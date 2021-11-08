@@ -212,15 +212,15 @@ namespace Vintagestory.API.MathTools
 
         public Block GetCollidingBlock(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true) 
         { 
-            Cuboidd entityBox = tmpBox.Set(entityBoxRel).Translate(pos);
+            Cuboidd entityBox = tmpBox.SetAndTranslate(entityBoxRel, pos);
 
-            int minX = (int)(entityBoxRel.X1 + pos.X);
-            int minY = (int)(entityBoxRel.Y1 + pos.Y - 1);  // -1 for the extra high collision box of fences
-            int minZ = (int)(entityBoxRel.Z1 + pos.Z);
+            int minX = (int)(entityBox.X1);
+            int minY = (int)(entityBox.Y1) - 1;  // -1 for the extra high collision box of fences
+            int minZ = (int)(entityBox.Z1);
 
-            int maxX = (int)(entityBoxRel.X2 + pos.X);
-            int maxY = (int)(entityBoxRel.Y2 + pos.Y);
-            int maxZ = (int)(entityBoxRel.Z2 + pos.Z);
+            int maxX = (int)(entityBox.X2);
+            int maxY = (int)(entityBox.Y2);
+            int maxZ = (int)(entityBox.Z2);
 
             for (int y = minY; y <= maxY; y++)
             {
@@ -230,17 +230,17 @@ namespace Vintagestory.API.MathTools
                     {
                         Block block = blockAccessor.GetBlock(x, y, z);
                         blockPos.Set(x, y, z);
-                        blockPosVec.Set(x, y, z);
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
+                        if (collisionBoxes == null || collisionBoxes.Length == 0) continue;
 
-                        for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
+                        blockPosVec.Set(x, y, z);
+                        for (int i = 0; i < collisionBoxes.Length; i++)
                         {
                             Cuboidf collBox = collisionBoxes[i];
                             if (collBox == null) continue;
 
-                            bool colliding = alsoCheckTouch ? entityBox.IntersectsOrTouches(collBox, blockPosVec) : entityBox.Intersects(collBox, blockPosVec);
-                            if (colliding) return block;
+                            if (alsoCheckTouch ? entityBox.IntersectsOrTouches(collBox, blockPosVec) : entityBox.Intersects(collBox, blockPosVec)) return block;
                         }
                     }
                 }

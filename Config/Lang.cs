@@ -25,6 +25,7 @@ namespace Vintagestory.API.Config
         /// <param name="language"></param>
         public static void Load(ILogger logger, IAssetManager manager, string language = "en")
         {
+
             Inst.LangEntries.Clear();
             Inst.LangRegexes.Clear();
             Inst.LangStartsWith.Clear();
@@ -33,6 +34,8 @@ namespace Vintagestory.API.Config
             {
                 Load(logger, manager, "en"); // Default to english phrases for missing translated ones
             }
+
+            CurrentLanguage = language;
 
             List<IAssetOrigin> origins = manager.Origins;
             for (int i = 0; i < origins.Count; i++)
@@ -67,6 +70,8 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static Lang Inst;
 
+        public static string CurrentLanguage;
+
         /// <summary>
         /// This will load the vanilla json file, without taking care of mods or resourcepacks.
         /// </summary>
@@ -79,6 +84,7 @@ namespace Vintagestory.API.Config
 
             if (language != "en") PreLoad(logger, assetsPath, "en"); // Default to english phrases for missing translated ones
 
+            CurrentLanguage = language;
 
             string filePath = Path.Combine(assetsPath, "game", "lang", language + ".json");
 

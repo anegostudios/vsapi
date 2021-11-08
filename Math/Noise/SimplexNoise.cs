@@ -106,7 +106,8 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < amplitudes.Length; i++)
             {
-                value += octaves[i].Evaluate(x * frequencies[i], y * frequencies[i], z * frequencies[i]) * amplitudes[i];
+                double frequency = frequencies[i];
+                value += octaves[i].Evaluate(x * frequency, y * frequency, z * frequency) * amplitudes[i];
             }
 
             return value;

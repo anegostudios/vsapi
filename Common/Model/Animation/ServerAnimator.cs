@@ -75,6 +75,7 @@ namespace Vintagestory.API.Common
 
             RootPoses = new List<ElementPose>();
             LoadPosesAndAttachmentPoints(rootElements, RootPoses);
+            initFields();
         }
 
 
@@ -86,6 +87,7 @@ namespace Vintagestory.API.Common
             this.loadFully = loadFully;
 
             LoadAttachmentPoints(RootPoses);
+            initFields();
         }
 
         protected override void LoadPosesAndAttachmentPoints(ShapeElement[] elements, List<ElementPose> intoPoses)

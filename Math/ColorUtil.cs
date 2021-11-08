@@ -969,18 +969,33 @@ namespace Vintagestory.API.MathTools
             readonly byte[] hueLevels;
             readonly byte[] satLevels;
 
+            readonly byte[] blockLightlevelsByte;
+            readonly byte[] sunLightlevelsByte;
+
             public LightUtil(float[] blockLights, float[] sunLights, byte[] hues, byte[] sats)
             {
                 this.blockLightlevels = blockLights;
                 this.sunLightlevels = sunLights;
                 this.hueLevels = hues;
                 this.satLevels = sats;
+
+                blockLightlevelsByte = new byte[blockLightlevels.Length];
+                for (int i = 0; i < blockLightlevels.Length; i++)
+                {
+                    blockLightlevelsByte[i] = (byte)(blockLightlevels[i] * 255.999f);
+                }
+
+                sunLightlevelsByte = new byte[sunLightlevels.Length];
+                for (int i = 0; i < sunLightlevels.Length; i++)
+                {
+                    sunLightlevelsByte[i] = (byte)(sunLightlevels[i] * 255.999f);
+                }
             }
 
             public int ToRgba(ushort light, ushort lightSat)
             {
-                byte v = (byte)(blockLightlevels[(light >> 5) & 31] * 255.999f);
-                byte a = (byte)(sunLightlevels[light & 31] * 255.999f);
+                byte v = blockLightlevelsByte[(light >> 5) & 31];
+                byte a = sunLightlevelsByte[light & 31];
 
                 if (lightSat == 0)
                 {

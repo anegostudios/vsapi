@@ -88,7 +88,6 @@ namespace Vintagestory.API.Client
         /// <returns>True when longer than 1 line</returns>
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
         {
-            //double lineheight = textUtil.GetLineHeight(font);
             lines = textUtil.Lineize(font, displayText, flowPath, lineX + GuiElement.scaled(PaddingLeft), lineY);
 
             BoundsPerLine = new LineRectangled[lines.Length];

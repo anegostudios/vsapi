@@ -106,7 +106,7 @@ namespace Vintagestory.API.Util
                     // Two *? Ok, that needs a regex :<
                     if (wildCardIndex >= 0)
                     {
-                        needle = Regex.Escape(needle).Replace(@"\*", @"(.*)");
+                        needle = Regex.Escape(needle).Replace(@"\*", @".*");
                         return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.None);
                     }
 
@@ -129,7 +129,7 @@ namespace Vintagestory.API.Util
             
 
             // Otherwise fallback to full on regex matching again :<
-            needle = Regex.Escape(needle).Replace(@"\*", @"(.*)");
+            needle = Regex.Escape(needle).Replace(@"\*", @".*");
             return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.None);
         }
     }

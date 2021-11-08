@@ -152,7 +152,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and moves the position by the given length to the west
+        /// Creates a copy of this blocks position with the x-position adjusted by -<paramref name="length"/>
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
@@ -161,10 +161,10 @@ namespace Vintagestory.API.MathTools
             return new BlockPos(X - length, Y, Z);
         }
 
-      
+
 
         /// <summary>
-        /// Creates a copy of this block positions and moves the position by the given length to the south
+        /// Creates a copy of this blocks position with the z-position adjusted by +<paramref name="length"/>
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
@@ -175,7 +175,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Creates a copy of this block positions and moves the position by the given length to the east
+        /// Creates a copy of this blocks position with the x-position adjusted by +<paramref name="length"/>
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
@@ -185,7 +185,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and moves the position by the given length to the north
+        /// Creates a copy of this blocks position with the z-position adjusted by -<paramref name="length"/>
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
@@ -195,7 +195,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and moves the position by the given length down
+        /// Creates a copy of this blocks position with the y-position adjusted by -<paramref name="length"/>
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
@@ -205,7 +205,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and moves the position by the given length up
+        /// Creates a copy of this blocks position with the y-position adjusted by +<paramref name="length"/>
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
@@ -216,7 +216,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Creates a copy of this block positions
+        /// Creates a copy of this blocks position
         /// </summary>
         /// <returns></returns>
         public BlockPos Copy()
@@ -314,7 +314,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and offsets it by given xyz
+        /// Creates a copy of this blocks position and offsets it by given xyz
         /// </summary>
         /// <param name="dx"></param>
         /// <param name="dy"></param>
@@ -326,7 +326,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and offsets it by given xyz
+        /// Creates a copy of this blocks position and offsets it by given xyz
         /// </summary>
         /// <param name="dx"></param>
         /// <param name="dy"></param>
@@ -338,7 +338,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and offsets it by given xyz
+        /// Creates a copy of this blocks position and offsets it by given xyz
         /// </summary>
         /// <param name="xyz"></param>
         /// <returns></returns>
@@ -349,7 +349,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Creates a copy of this block positions and offsets it by given xyz
+        /// Creates a copy of this blocks position and offsets it by given xyz
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
@@ -359,7 +359,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and offsets it in the direction of given block face
+        /// Creates a copy of this blocks position and offsets it in the direction of given block face
         /// </summary>
         /// <param name="facing"></param>
         /// <returns></returns>
@@ -369,7 +369,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a copy of this block positions and offsets it in the direction of given block face
+        /// Creates a copy of this blocks position and offsets it in the direction of given block face
         /// </summary>
         /// <param name="facing"></param>
         /// <param name="length"></param>
@@ -416,7 +416,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Creates a copy of this block positions and divides it by given factor
+        /// Creates a copy of this blocks position and divides it by given factor
         /// </summary>
         /// <param name="factor"></param>
         /// <returns></returns>

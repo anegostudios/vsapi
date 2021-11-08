@@ -22,6 +22,11 @@ namespace Vintagestory.API.Common
         public Dictionary<int, AnimationJoint> jointsById;
 
         public static int MaxConcurrentAnimations = 16;
+        int maxDepth;
+        List<ElementPose>[][] transformsByAnimation;
+        List<ElementPose>[][] nextFrameTransformsByAnimation;
+        ShapeElementWeights[][][] weightsByAnimationAndElement;
+
 
         float[] localTransformMatrix = Mat4f.Create();
         float[] identMat = Mat4f.Create();
@@ -80,7 +85,7 @@ namespace Vintagestory.API.Common
 
         public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
-
+            initFields();
         }
 
         public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
@@ -89,6 +94,7 @@ namespace Vintagestory.API.Common
             this.jointsById = jointsById;
             this.RootPoses = rootPoses;
             LoadAttachmentPoints(RootPoses);
+            initFields();
         }
 
         public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
@@ -98,6 +104,23 @@ namespace Vintagestory.API.Common
 
             RootPoses = new List<ElementPose>();
             LoadPosesAndAttachmentPoints(rootElements, RootPoses);
+            initFields();
+        }
+
+        protected virtual void initFields()
+        {
+            maxDepth = 2 + (RootPoses == null ? 0 : getMaxDepth(RootPoses, 1));
+
+            transformsByAnimation = new List<ElementPose>[maxDepth][];
+            nextFrameTransformsByAnimation = new List<ElementPose>[maxDepth][];
+            weightsByAnimationAndElement = new ShapeElementWeights[maxDepth][][];
+
+            for (int i = 0; i < maxDepth; i++)
+            {
+                transformsByAnimation[i] = new List<ElementPose>[MaxConcurrentAnimations];
+                nextFrameTransformsByAnimation[i] = new List<ElementPose>[MaxConcurrentAnimations];
+                weightsByAnimationAndElement[i] = new ShapeElementWeights[MaxConcurrentAnimations][];
+            }
         }
 
         protected virtual void LoadAttachmentPoints(List<ElementPose> cachedPoses)
@@ -156,6 +179,20 @@ namespace Vintagestory.API.Common
             }
         }
 
+        private int getMaxDepth(List<ElementPose> poses, int depth)
+        {
+            for (int i = 0; i < poses.Count; i++)
+            {
+                var pose = poses[i];
+
+                if (pose.ChildElementPoses != null)
+                {
+                    depth = getMaxDepth(pose.ChildElementPoses, depth);
+                }
+            }
+
+            return depth + 1;
+        }
 
         protected override void AnimNowActive(RunningAnimation anim, AnimationMetaData animData)
         {
@@ -164,9 +201,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        List<ElementPose>[] transformsByAnimation = new List<ElementPose>[MaxConcurrentAnimations];
-        List<ElementPose>[] nextFrameTransformsByAnimation = new List<ElementPose>[MaxConcurrentAnimations];
-        ShapeElementWeights[][] weightsByAnimationAndElement = new ShapeElementWeights[MaxConcurrentAnimations][];
+        
 
         int[] prevFrame = new int[MaxConcurrentAnimations];
         int[] nextFrame = new int[MaxConcurrentAnimations];
@@ -182,20 +217,20 @@ namespace Vintagestory.API.Common
                 for (int j = 0; j < curAnimCount; j++)
                 {
                     RunningAnimation anim = CurAnims[j];
-                    weightsByAnimationAndElement[j] = anim.ElementWeights;
+                    weightsByAnimationAndElement[0][j] = anim.ElementWeights;
 
                     AnimationFrame[] prevNextFrame = anim.Animation.PrevNextKeyFrameByFrame[(int)anim.CurrentFrame % anim.Animation.QuantityFrames];
-                    transformsByAnimation[j] = prevNextFrame[0].RootElementTransforms;
+                    transformsByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
                     prevFrame[j] = prevNextFrame[0].FrameNumber;
 
                     if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && (int)anim.CurrentFrame + 1 == anim.Animation.QuantityFrames)
                     {
-                        nextFrameTransformsByAnimation[j] = prevNextFrame[0].RootElementTransforms;
+                        nextFrameTransformsByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
                         nextFrame[j] = prevNextFrame[0].FrameNumber;
                     }
                     else
                     {
-                        nextFrameTransformsByAnimation[j] = prevNextFrame[1].RootElementTransforms;
+                        nextFrameTransformsByAnimation[0][j] = prevNextFrame[1].RootElementTransforms;
                         nextFrame[j] = prevNextFrame[1].FrameNumber;
                     }
                 }
@@ -203,10 +238,11 @@ namespace Vintagestory.API.Common
                 calculateMatrices(
                     dt,
                     RootPoses,
-                    weightsByAnimationAndElement,
+                    weightsByAnimationAndElement[0],
                     Mat4f.Create(),
-                    transformsByAnimation,
-                    nextFrameTransformsByAnimation
+                    transformsByAnimation[0],
+                    nextFrameTransformsByAnimation[0],
+                    0
                 );
 
 
@@ -243,13 +279,14 @@ namespace Vintagestory.API.Common
             ShapeElementWeights[][] weightsByAnimationAndElement,
             float[] modelMatrix,
             List<ElementPose>[] transformsByAnimation,
-            List<ElementPose>[] nextFrameTransformsByAnimation
+            List<ElementPose>[] nextFrameTransformsByAnimation,
+            int depth
         )
         {
-
-            List<ElementPose>[] childTransformsByAnimation = new List<ElementPose>[MaxConcurrentAnimations];
-            List<ElementPose>[] nextFrameChildTransformsByAnimation = new List<ElementPose>[MaxConcurrentAnimations];
-            ShapeElementWeights[][] childWeightsByAnimationAndElement = new ShapeElementWeights[MaxConcurrentAnimations][];
+            depth++;
+            List<ElementPose>[] childTransformsByAnimation = this.transformsByAnimation[depth];
+            List<ElementPose>[] nextFrameChildTransformsByAnimation = this.nextFrameTransformsByAnimation[depth];
+            ShapeElementWeights[][] childWeightsByAnimationAndElement = this.weightsByAnimationAndElement[depth];
 
 
             for (int i = 0; i < currentPoses.Count; i++)
@@ -325,7 +362,8 @@ namespace Vintagestory.API.Common
                         childWeightsByAnimationAndElement,
                         currentPose.AnimModelMatrix,
                         childTransformsByAnimation,
-                        nextFrameChildTransformsByAnimation
+                        nextFrameChildTransformsByAnimation,
+                        depth
                     );
                 }
             }

@@ -29,6 +29,8 @@ namespace Vintagestory.API.Client
 
         public abstract RichTextComponentBase[] GetPageText(ICoreClientAPI capi, ItemStack[] allStacks, Common.ActionConsumable<string> openDetailPageFor);
         public abstract float TextMatchWeight(string text);
+
+        public abstract bool IsDuplicate { get; }
     }
 
     public class GuiHandbookTextPage : GuiHandbookPage
@@ -49,6 +51,7 @@ namespace Vintagestory.API.Client
         public int PageNumber;
 
         string titleCached;
+        public override bool IsDuplicate => false;
 
         public GuiHandbookTextPage()
         {
@@ -170,6 +173,8 @@ namespace Vintagestory.API.Client
         ElementBounds scissorBounds;
 
         public override string CategoryCode => "stack";
+        public override bool IsDuplicate => isDuplicate;
+        private bool isDuplicate;
 
         public GuiHandbookItemStackPage(ICoreClientAPI capi, ItemStack stack)
         {
@@ -178,6 +183,7 @@ namespace Vintagestory.API.Client
             dummySlot = new DummySlot(stack, unspoilableInventory);
 
             TextCache = stack.GetName() + " " + stack.GetDescription(capi.World, dummySlot, false);
+            isDuplicate = stack.Collectible.Attributes?["handbook"]?["isDuplicate"].AsBool(false) == true;
         }
 
         public static string PageCodeForStack(ItemStack stack)

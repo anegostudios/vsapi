@@ -139,7 +139,7 @@ namespace Vintagestory.API.Common
             
             if (Class == EnumItemClass.Block)
             {
-                block = resolver.GetBlock((ushort)this.Id);
+                block = resolver.GetBlock(this.Id);
             } else
             {
                 item = resolver.GetItem(Id);
@@ -165,7 +165,7 @@ namespace Vintagestory.API.Common
             FromBytes(reader);
             if (Class == EnumItemClass.Block)
             {
-                block = resolver.GetBlock((ushort)this.Id);
+                block = resolver.GetBlock(this.Id);
             }
             else
             {
@@ -183,7 +183,7 @@ namespace Vintagestory.API.Common
         {
             if (collectible == null)
             {
-                throw new Exception("Can't create itemstack without collectible!");
+                throw new ArgumentNullException("Can't create itemstack without collectible!");
             }
 
             if (collectible is Block)
@@ -210,7 +210,7 @@ namespace Vintagestory.API.Common
         {
             if (item == null)
             {
-                throw new Exception("Can't create itemstack without item!");
+                throw new ArgumentNullException("Can't create itemstack without item!");
             }
             Class = EnumItemClass.Item;
             Id = item.ItemId;
@@ -325,7 +325,7 @@ namespace Vintagestory.API.Common
         {
             if (Class == EnumItemClass.Block)
             {
-                block = resolver.GetBlock((ushort)Id);
+                block = resolver.GetBlock(Id);
                 if (block == null) return false;
             } else
             {

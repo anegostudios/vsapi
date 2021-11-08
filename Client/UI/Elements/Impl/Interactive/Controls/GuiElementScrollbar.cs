@@ -13,8 +13,8 @@ namespace Vintagestory.API.Client
         protected API.Common.Action<float> onNewScrollbarValue;
 
 
-        internal bool mouseDownOnScrollbarHandle;
-        internal int mouseDownStartY;
+        public bool mouseDownOnScrollbarHandle;
+        public int mouseDownStartY;
 
         protected float visibleHeight;
         protected float totalHeight;
@@ -83,7 +83,7 @@ namespace Vintagestory.API.Client
             RecomposeHandle();
         }
 
-        internal virtual void RecomposeHandle()
+        public virtual void RecomposeHandle()
         {
             Bounds.CalcWorldBounds();
 
@@ -148,7 +148,7 @@ namespace Vintagestory.API.Client
             RecomposeHandle();
         }
 
-        internal void SetScrollbarPosition(int pos)
+        public void SetScrollbarPosition(int pos)
         {
             currentHandlePosition = pos;
             onNewScrollbarValue(0);

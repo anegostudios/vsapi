@@ -4,11 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
+    public enum EnumLinebreakBehavior
+    {
+        /// <summary>
+        /// Language specific default setting
+        /// </summary>
+        Default,
+        /// <summary>
+        /// After every word
+        /// </summary>
+        AfterWord,
+        /// <summary>
+        /// After any character
+        /// </summary>
+        AfterCharacter
+    }
+
     public class TextFlowPath
     {
         public double X1, Y1, X2, Y2;
@@ -260,16 +277,17 @@ namespace Vintagestory.API.Client
             List<TextLine> lines = new List<TextLine>();
 
             caretPos = 0;
-            int previousCaretPos = 0;
             
             double lineheight = ctx.FontExtents.Height * lineHeightMultiplier;
 
             double curX = startOffsetX;
             double curY = startY;
             double usableWidth;
-            TextFlowPath currentSection = null;
+            TextFlowPath currentSection;
 
-            while ((word = getNextWord(text)) != null)
+            var linebreak = Lang.CurrentLanguage == "ja" ? EnumLinebreakBehavior.AfterCharacter : EnumLinebreakBehavior.AfterWord;
+
+            while ((word = getNextWord(text, linebreak)) != null)
             {
                 double width = ctx.TextExtents(lineTextBldr + (gotLinebreak || caretPos >= text.Length ? "" : " ") + word).Width;
 
@@ -330,8 +348,6 @@ namespace Vintagestory.API.Client
                     curY += lineheight;
                     curX = 0;
                 }
-
-                previousCaretPos = caretPos;
             }
 
             currentSection = GetCurrentFlowPathSection(flowPath, curY);
@@ -365,7 +381,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        private string getNextWord(string fulltext)
+        private string getNextWord(string fulltext, EnumLinebreakBehavior linebreak)
         {
             if (caretPos >= fulltext.Length) return null;
 
@@ -404,7 +420,11 @@ namespace Vintagestory.API.Client
                 }
 
                 word.Append(chr);
-                
+
+                if (linebreak == EnumLinebreakBehavior.AfterCharacter)
+                {
+                    break;
+                }
             }
 
             return word.ToString();
@@ -436,7 +456,6 @@ namespace Vintagestory.API.Client
             font.SetupContext(ctx);
 
             double offsetX = 0;
-            //double lineHeight = ctx.FontExtents.Height;
             
             for (int i = 0; i < lines.Length; i++)
             {

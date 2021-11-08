@@ -25,6 +25,8 @@ namespace Vintagestory.API.Client
         double tabHeight;
         double textOffsetY;
 
+        public bool right;
+
         public override bool Focusable { get { return true; } }
 
         /// <summary>
@@ -80,19 +82,35 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                tabWidths[i] = (int)maxWidth+1;// (int)(ctx.TextExtents(tabs[i].name).Width + 1 + 2 * padding);
+                tabWidths[i] = (int)maxWidth+1;
 
-                xpos = (int)Bounds.InnerWidth + 1;
-                ypos += tabs[i].PaddingTop;
+                if (right)
+                {
+                    xpos = 1;
+                    ypos += tabs[i].PaddingTop;
 
-                ctx.NewPath();
-                ctx.MoveTo(xpos, ypos + tabHeight);
-                ctx.LineTo(xpos, ypos);
-                ctx.LineTo(xpos - tabWidths[i] + radius, ypos);
-                ctx.ArcNegative(xpos - tabWidths[i], ypos + radius, radius, 270 * GameMath.DEG2RAD, 180 * GameMath.DEG2RAD);
-                ctx.ArcNegative(xpos - tabWidths[i], ypos - radius + tabHeight, radius, 180 * GameMath.DEG2RAD, 90 * GameMath.DEG2RAD);
+                    ctx.NewPath();
+                    ctx.MoveTo(xpos, ypos + tabHeight);
+                    ctx.LineTo(xpos, ypos);
+                    ctx.LineTo(xpos + tabWidths[i] + radius, ypos);
+                    ctx.ArcNegative(xpos + tabWidths[i], ypos + radius, radius, 270 * GameMath.DEG2RAD, 180 * GameMath.DEG2RAD);
+                    ctx.ArcNegative(xpos + tabWidths[i], ypos - radius + tabHeight, radius, 180 * GameMath.DEG2RAD, 90 * GameMath.DEG2RAD);
+
+                } else {
+
+                    xpos = (int)Bounds.InnerWidth + 1;
+                    ypos += tabs[i].PaddingTop;
+
+                    ctx.NewPath();
+                    ctx.MoveTo(xpos, ypos + tabHeight);
+                    ctx.LineTo(xpos, ypos);
+                    ctx.LineTo(xpos - tabWidths[i] + radius, ypos);
+                    ctx.ArcNegative(xpos - tabWidths[i], ypos + radius, radius, 270 * GameMath.DEG2RAD, 180 * GameMath.DEG2RAD);
+                    ctx.ArcNegative(xpos - tabWidths[i], ypos - radius + tabHeight, radius, 180 * GameMath.DEG2RAD, 90 * GameMath.DEG2RAD);
+
+                }
+
                 ctx.ClosePath();
-
                 double[] color = GuiStyle.DialogDefaultBgColor;
                 ctx.SetSourceRGBA(color[0], color[1], color[2], color[3]);
 
@@ -102,7 +120,7 @@ namespace Vintagestory.API.Client
 
                 Font.SetupContext(ctx);
 
-                DrawTextLineAt(ctx, tabs[i].Name, xpos - tabWidths[i] + padding, ypos + textOffsetY);
+                DrawTextLineAt(ctx, tabs[i].Name, xpos - (right ? 0 : tabWidths[i]) + padding, ypos + textOffsetY);
 
                 ypos += tabHeight + spacing;
             }
@@ -121,7 +139,6 @@ namespace Vintagestory.API.Client
         private void ComposeOverlays()
         {
             double radius = scaled(1);
-            double spacing = scaled(unscaledTabSpacing);
             double padding = scaled(unscaledTabPadding);
             double width;
 
@@ -148,10 +165,20 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
 
                 ctx.NewPath();
-                ctx.LineTo(1 + width, 1);
-                ctx.LineTo(1, 1);
-                ctx.LineTo(1, tabHeight - 1);
-                ctx.LineTo(1 + width, 1 + tabHeight - 1);
+                if (right)
+                {
+                    ctx.LineTo(1, 1);
+                    ctx.LineTo(width, 1);
+                    ctx.LineTo(width, 1 + tabHeight - 1);
+                    ctx.LineTo(1, tabHeight - 1);
+                } else
+                {
+                    ctx.LineTo(1 + width, 1);
+                    ctx.LineTo(1, 1);
+                    ctx.LineTo(1, tabHeight - 1);
+                    ctx.LineTo(1 + width, 1 + tabHeight - 1);
+                }
+                
                 
 
                 float strokeWidth = 2;
@@ -193,10 +220,21 @@ namespace Vintagestory.API.Client
             {
                 ypos += tabs[i].PaddingTop;
 
-                if (i == activeElement || (mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
+                if (right)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i] + 1, (int)tabHeight + 1);
+                    if (i == activeElement || (mouseRelX >= 0 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
+                    {
+                        api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)Bounds.renderX, (int)(Bounds.renderY + ypos), tabWidths[i] + 1, (int)tabHeight + 1);
+                    }
+                } else
+                {
+                    if (i == activeElement || (mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
+                    {
+                        api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i] + 1, (int)tabHeight + 1);
+                    }
                 }
+
+                
 
                 ypos += tabHeight + spacing;
             }

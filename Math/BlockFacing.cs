@@ -157,6 +157,7 @@ namespace Vintagestory.API.MathTools
         int oppositeIndex;
         Vec3i normali;
         Vec3f normalf;
+        Vec3d normald;
         byte normalb;
         int normalPacked;
         int normalPackedFlags;
@@ -189,6 +190,8 @@ namespace Vintagestory.API.MathTools
         /// Returns a normal vector of this face
         /// </summary>
         public Vec3f Normalf { get { return normalf; } }
+
+        public Vec3d Normald { get { return normald; } }
 
         /// <summary>
         /// Returns a normal vector of this face encoded in 6 bits/
@@ -250,6 +253,7 @@ namespace Vintagestory.API.MathTools
             this.oppositeIndex = oppositeIndex;
             this.normali = facingVector;
             this.normalf = new Vec3f(facingVector.X, facingVector.Y, facingVector.Z);
+            this.normald = new Vec3d((double)facingVector.X, (double)facingVector.Y, (double)facingVector.Z);
 
             normalPacked = NormalUtil.PackNormal(normalf.X, normalf.Y, normalf.Z);
             normalb = (byte)(
@@ -367,6 +371,40 @@ namespace Vintagestory.API.MathTools
             }
 
             return brightness;
+        }
+
+
+        /// <summary>
+        /// Successive calls to this when looping through the standard six BlockFacings will set pos to the relevant facing offset from the original position<br/>
+        /// NOTE: this modifies the fields of the pos parameter
+        /// </summary>
+        public void IterateThruFacingOffsets(BlockPos pos)
+        {
+            switch (this.index)
+            {
+                case 0:
+                    pos.Z--;
+                    break;
+                case 1:
+                    pos.Z++;
+                    pos.X++;
+                    break;
+                case 2:
+                    pos.X--;
+                    pos.Z++;
+                    break;
+                case 3:
+                    pos.Z--;
+                    pos.X--;
+                    break;
+                case 4:
+                    pos.X++;
+                    pos.Y++;
+                    break;
+                case 5:
+                    pos.Y -= 2;
+                    break;
+            }
         }
 
 

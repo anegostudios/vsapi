@@ -43,7 +43,7 @@ namespace Vintagestory.API.Client
             RecomposeHandle();
         }
 
-        internal override void RecomposeHandle()
+        public override void RecomposeHandle()
         {
             Bounds.CalcWorldBounds();
 

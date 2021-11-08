@@ -140,7 +140,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="motion"></param>
-        /// <param name="blockAccessor"></param>
         /// <param name="size"></param>
         /// <returns></returns>
         public EnumCollideFlags UpdateMotion(Vec3d pos, Vec3d motion, float size)

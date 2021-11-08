@@ -39,6 +39,14 @@ namespace Vintagestory.API.Common
         public abstract int Id { get; }
 
         /// <summary>
+        /// For blocks and items, the hashcode is the id - useful when building HashSets
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return Id;
+        }
+
+        /// <summary>
         /// Block or Item?
         /// </summary>
         public abstract EnumItemClass ItemClass { get; }
@@ -612,7 +620,47 @@ namespace Vintagestory.API.Common
         /// <param name="byRecipe"></param>
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
         {
+            float pSum = 0f;
+            float q = 0;
 
+            var ingreds = byRecipe.resolvedIngredients;
+
+            foreach (ItemSlot slot in allInputslots)
+            {
+                if (slot.Empty) continue;
+                ItemStack stack = slot.Itemstack;
+
+                int maxDurability = stack.Collectible.GetDurability(stack);
+                if (maxDurability == 0)
+                {
+                    // An item with no durability only improves the average by 12.5%
+                    pSum += 0.125f;
+                    q += 0.125f;
+                    continue;
+                }
+
+                bool skip = false;
+                foreach (var ingred in ingreds)
+                {
+                    if (ingred != null && ingred.IsTool && ingred.SatisfiesAsIngredient(stack))
+                    {
+                        skip = true;
+                        break;
+                    }
+                }
+                if (skip) continue;
+
+                q++;
+                int leftDurability = stack.Attributes.GetInt("durability", maxDurability);
+                pSum += (float)leftDurability / maxDurability;
+                
+            }
+
+            float pFinal = pSum / q;
+            if (pFinal < 1)
+            {
+                outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetDurability(outputSlot.Itemstack)));
+            }
         }
 
 
@@ -1973,12 +2021,16 @@ namespace Vintagestory.API.Common
             // Bakes into
             if (Attributes?["bakingProperties"]?.AsObject<BakingProperties>() is BakingProperties bp && bp.ResultCode != null)
             {
-                string title = Lang.Get("smeltdesc-bake-title");
-                if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
-                components.Add(new RichTextComponent(capi, title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
-                components.Add(new ItemstackTextComponent(capi, new ItemStack(capi.World.GetItem(new AssetLocation(bp.ResultCode))), 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
-                components.Add(new ClearFloatTextComponent(capi, marginBottom));  //nice margin below the item graphic
-                haveText = true;
+                var item = capi.World.GetItem(new AssetLocation(bp.ResultCode));
+                if (item != null)
+                {
+                    string title = Lang.Get("smeltdesc-bake-title");
+                    if (haveText) components.Add(new ClearFloatTextComponent(capi, marginTop));
+                    components.Add(new RichTextComponent(capi, title + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                    components.Add(new ItemstackTextComponent(capi, new ItemStack(item), 40, 10, EnumFloat.Inline, (cs) => openDetailPageFor(GuiHandbookItemStackPage.PageCodeForStack(cs))));
+                    components.Add(new ClearFloatTextComponent(capi, marginBottom));  //nice margin below the item graphic
+                    haveText = true;
+                }
             }
             else
             // Smelts into
@@ -3189,15 +3241,21 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool IsReasonablyFresh(IWorldAccessor world, ItemStack itemstack)
         {
+            if (GetDurability(itemstack) > 1)
+            {
+                int leftDurability = itemstack.Attributes.GetInt("durability", GetDurability(itemstack));
+                float p = (float)leftDurability / GetDurability(itemstack);
+                if (p < 0.95f) return false;
+            }
+
             if (itemstack == null) return true;
             TransitionableProperties[] propsm = GetTransitionableProperties(world, itemstack, null);
             if (propsm == null) return true;
             ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["transitionstate"];
             if (attr == null) return true;
-            float[] freshHours = new float[propsm.Length];
-            float[] transitionedHours = new float[propsm.Length];
-            freshHours = (attr["freshHours"] as FloatArrayAttribute).value;
-            transitionedHours = (attr["transitionedHours"] as FloatArrayAttribute).value;
+            
+            float[] freshHours = (attr["freshHours"] as FloatArrayAttribute).value;
+            float[] transitionedHours = (attr["transitionedHours"] as FloatArrayAttribute).value;
             for (int i = 0; i < propsm.Length; i++)
             {
                 TransitionableProperties prop = propsm[i];

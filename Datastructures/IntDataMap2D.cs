@@ -15,7 +15,7 @@ namespace Vintagestory.API.Datastructures
     [ProtoContract]
     public class IntDataMap2D
     {
-        [ProtoMember(1)]
+        [ProtoMember(1, IsPacked = true)]
         public int[] Data;
 
         /// <summary>

@@ -272,7 +272,7 @@ namespace Vintagestory.API.Common.Entities
         public List<EntityBehavior> Behaviors = new List<EntityBehavior>();
         internal JsonObject[] BehaviorsAsJsonObj;
 
-
+        
         public EntitySidedProperties(JsonObject[] behaviors)
         {
             this.BehaviorsAsJsonObj = behaviors;

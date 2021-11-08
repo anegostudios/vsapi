@@ -315,7 +315,10 @@ namespace Vintagestory.API.Common
             if (Empty) {
                 if (!CanHold(sourceSlot)) return;
 
-                itemstack = sourceSlot.TakeOut(Math.Min(sourceSlot.StackSize, MaxSlotStackSize));
+                int q = Math.Min(sourceSlot.StackSize, MaxSlotStackSize);
+                q = Math.Min(q, GetRemainingSlotSpace(sourceSlot.itemstack));
+
+                itemstack = sourceSlot.TakeOut(q);
                 op.MovedQuantity = itemstack.StackSize;
                 OnItemSlotModified(itemstack);
                 return;

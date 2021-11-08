@@ -68,7 +68,22 @@ namespace Vintagestory.API.Client
         public float MinLatitude = 0;
 
         [JsonProperty]
-        public float MaxLatitude = 90;
+        public float MaxLatitude = 1;
+
+        /// <summary>
+        /// The current song's priority. If higher than 1, will stop other tracks and start this one
+        /// </summary>
+        [JsonProperty]
+        public float Priority { get; set; } = 1;
+
+
+        /// <summary>
+        /// The songs starting priority. If higher than 1, then it will be started first. But does not interrupt already running tracks. When reading a songs start priority the maximum of start priority and priority is used
+        /// </summary>
+        [JsonProperty("StartPriority")]
+        public NatFloat StartPriorityRnd { get; set; } = NatFloat.One;
+
+        public float StartPriority { get; set; }
 
         /// <summary>
         /// Is it loading?
@@ -89,10 +104,6 @@ namespace Vintagestory.API.Client
             }
         }
 
-        /// <summary>
-        /// The current song's priority.
-        /// </summary>
-        public float Priority { get { return 1f; } }
 
         /// <summary>
         /// The name of the track.
@@ -209,6 +220,11 @@ namespace Vintagestory.API.Client
 
                 prevFrequency = MusicFrequency;
             }
+        }
+
+        public void BeginSort()
+        {
+            StartPriority = Math.Max(1, StartPriorityRnd.nextFloat(1, rand));
         }
 
         private void selectMinMaxHour()

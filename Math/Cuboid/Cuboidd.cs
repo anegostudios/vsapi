@@ -100,6 +100,20 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Sets the cuboid to the selectionBox, translated by vec
+        /// </summary>
+        public Cuboidd SetAndTranslate(Cuboidf selectionBox, Vec3d vec)
+        {
+            this.X1 = selectionBox.X1 + vec.X;
+            this.Y1 = selectionBox.Y1 + vec.Y;
+            this.Z1 = selectionBox.Z1 + vec.Z;
+            this.X2 = selectionBox.X2 + vec.X;
+            this.Y2 = selectionBox.Y2 + vec.Y;
+            this.Z2 = selectionBox.Z2 + vec.Z;
+            return this;
+        }
+
+        /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
         public Cuboidd Translate(IVec3 vec)
@@ -486,16 +500,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool Intersects(Cuboidd other)
         {
-            bool isOutSide =
-                X2 <= other.X1 ||
-                X1 >= other.X2 ||
-                Y2 <= other.Y1 ||
-                Y1 >= other.Y2 ||
-                Z2 <= other.Z1 ||
-                Z1 >= other.Z2
-            ;
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            if (X2 > other.X1 &&
+                X1 < other.X2 &&
+                Y2 > other.Y1 &&
+                Y1 < other.Y2 &&
+                Z2 > other.Z1 &&
+                Z1 < other.Z2
+            ) return true;
 
-            return !isOutSide;
+            return false;
         }
 
         /// <summary>
@@ -503,16 +517,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool Intersects(Cuboidf other, Vec3d offset)
         {
-            bool isOutSide =
-                X2 <= other.X1 + offset.X ||
-                X1 >= other.X2 + offset.X ||
-                Y2 <= other.Y1 + offset.Y ||
-                Y1 >= Math.Round(other.Y2 + offset.Y, 5) || // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
-                Z2 <= other.Z1 + offset.Z ||
-                Z1 >= other.Z2 + offset.Z
-            ;
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            if (X2 > other.X1 + offset.X &&
+                X1 < other.X2 + offset.X &&
+                Z2 > other.Z1 + offset.Z &&
+                Z1 < other.Z2 + offset.Z &&
+                Y2 > other.Y1 + offset.Y &&
+                Y1 < Math.Round(other.Y2 + offset.Y, 5) // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
+            ) return true;
 
-            return !isOutSide;
+            return false;
         }
 
 
@@ -521,16 +535,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool IntersectsOrTouches(Cuboidd other)
         {
-            bool isOutSide =
-                X2 < other.X1 ||
-                X1 > other.X2 ||
-                Y2 < other.Y1 ||
-                Y1 > other.Y2 ||
-                Z2 < other.Z1 ||
-                Z1 > other.Z2
-            ;
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            if (X2 >= other.X1 &&
+                X1 <= other.X2 &&
+                Y2 >= other.Y1 &&
+                Y1 <= other.Y2 &&
+                Z2 >= other.Z1 &&
+                Z1 <= other.Z2
+            ) return true;
 
-            return !isOutSide;
+            return false;
         }
 
 
@@ -539,16 +553,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool IntersectsOrTouches(Cuboidf other, Vec3d offset)
         {
-            bool isOutSide =
-                X2 < other.X1 + offset.X ||
-                X1 > other.X2 + offset.X ||
-                Y2 < other.Y1 + offset.Y ||
-                Y1 > Math.Round(other.Y2 + offset.Y, 5) || // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
-                Z2 < other.Z1 + offset.Z ||
-                Z1 > other.Z2 + offset.Z
-            ;
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            if (X2 >= other.X1 + offset.X &&
+                X1 <= other.X2 + offset.X &&
+                Z2 >= other.Z1 + offset.Z &&
+                Z1 <= other.Z2 + offset.Z &&
+                Y2 >= other.Y1 + offset.Y &&
+                Y1 <= Math.Round(other.Y2 + offset.Y, 5) // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
+            ) return true;
 
-            return !isOutSide;
+            return false;
         }
 
         /// <summary>

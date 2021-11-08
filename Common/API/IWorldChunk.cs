@@ -12,6 +12,15 @@ namespace Vintagestory.API.Common
     }
 
 
+    public interface IClientChunk : IWorldChunk
+    {
+        /// <summary>
+        /// True if fully initialized
+        /// </summary>
+        bool LoadedFromServer { get; }
+    }
+
+
     public interface IWorldChunk
     {
         bool Empty { get; set; }
@@ -190,6 +199,10 @@ namespace Vintagestory.API.Common
         /// <param name="side">If null, all the decor blocks on all sides are removed</param>
         void BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null);
 
+        
+
+        bool BreakDecorPart(IWorldAccessor world, BlockPos pos, BlockFacing side, int faceAndSubposition);
+
         /// <summary>
         /// Removes a decor block from given position, saves a few cpu cycles by not calculating index3d
         /// </summary>
@@ -205,6 +218,8 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <returns></returns>
         Block[] GetDecors(IBlockAccessor blockAccessor, BlockPos pos);
+
+        Block GetDecor(IBlockAccessor blockAccessor, BlockPos pos, int faceAndSubposition);
 
         /// <summary>
         /// Set entire Decors for a chunk - used in Server->Client updates

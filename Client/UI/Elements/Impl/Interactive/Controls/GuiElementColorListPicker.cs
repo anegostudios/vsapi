@@ -160,6 +160,7 @@ namespace Vintagestory.API.Client
             base.Dispose();
 
             activeTexture.Dispose();
+            hoverText?.Dispose();
         }
     }
 

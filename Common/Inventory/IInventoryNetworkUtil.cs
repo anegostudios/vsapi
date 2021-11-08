@@ -47,7 +47,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         object DidClose(IPlayer player);
 
-        bool AcceptServerUpdates { get; set; }
+        bool PauseInventoryUpdates { get; set; }
 
     }
 }

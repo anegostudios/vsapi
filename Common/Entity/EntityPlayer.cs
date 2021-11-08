@@ -6,6 +6,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
@@ -67,6 +68,23 @@ namespace Vintagestory.API.Common
 
         public EntityTalkUtil talkUtil;
 
+        public double LastReviveTotalHours
+        {
+            get
+            {
+                if (!WatchedAttributes.attributes.TryGetValue("lastReviveTotalHours", out IAttribute hrsAttr))
+                {
+                    return -9999;
+                }
+
+                return (hrsAttr as DoubleAttribute).value;
+            }
+            set
+            {
+                WatchedAttributes.SetDouble("lastReviveTotalHours", value);
+            }
+        }
+
         public override bool StoreWithChunk
         {
             get { return false; }
@@ -118,11 +136,41 @@ namespace Vintagestory.API.Common
         }
 
 
+        bool newSpawnGlow;
+
+
         public override byte[] LightHsv
         {
             get {
                 byte[] rightHsv = RightHandItemSlot?.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, RightHandItemSlot.Itemstack);
                 byte[] leftHsv = LeftHandItemSlot?.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, LeftHandItemSlot.Itemstack);
+
+                if ((rightHsv == null || rightHsv[2] == 0) && (leftHsv == null || leftHsv[2] == 0))
+                {
+                    double hoursAlive = Api.World.Calendar.TotalHours - LastReviveTotalHours;
+
+                    if (hoursAlive < 2f)
+                    {
+                        newSpawnGlow = true;
+                        Properties.Client.GlowLevel = (int)GameMath.Clamp((100 * (2f - hoursAlive)), 0, 255);
+                    }
+
+                    if (hoursAlive < 1.5f)
+                    {
+                        newSpawnGlow = true;
+                        return new byte[]
+                        {
+                            33, 7, (byte)Math.Min(10, (11 * (1.5f - hoursAlive)))
+                        };
+                    }
+                } else
+                {
+                    if (newSpawnGlow) // Don't repeatedly set glowlevel to 0, but only once after our respawn glow expired.
+                    {
+                        Properties.Client.GlowLevel = 0; 
+                        newSpawnGlow = false;
+                    }
+                }
 
                 if (rightHsv == null) return leftHsv;
                 if (leftHsv == null) return rightHsv;
@@ -224,6 +272,12 @@ namespace Vintagestory.API.Common
             }
 
             base.Initialize(properties, api, chunkindex3d);
+
+            if (api.Side == EnumAppSide.Server && !WatchedAttributes.attributes.ContainsKey("lastReviveTotalHours"))
+            {
+                double hrs = Api.World.Calendar.GetDayLightStrength(ServerPos.X, ServerPos.Z) < 0.5 ? Api.World.Calendar.TotalHours : -9999;
+                WatchedAttributes.SetDouble("lastReviveTotalHours", hrs);
+            }
         }
 
 
@@ -593,6 +647,8 @@ namespace Vintagestory.API.Common
         {
             base.Revive();
 
+            LastReviveTotalHours = Api.World.Calendar.TotalHours;
+
             (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, 196);
         }
 
@@ -728,19 +784,26 @@ namespace Vintagestory.API.Common
             if (damage != 0 && World?.Side == EnumAppSide.Server)
             {
                 bool heal = damageSource.Type == EnumDamageType.Heal;
+                string msg;
 
-                string msg = Lang.Get(heal ? "Gained {0} hp through {1}" : "Lost {0} hp through {1}", damage, damageSource.Type.ToString().ToLowerInvariant());// damageSource.source.ToString().ToLowerInvariant());
+                if (damageSource.Type == EnumDamageType.BluntAttack || damageSource.Type == EnumDamageType.PiercingAttack || damageSource.Type == EnumDamageType.SlashingAttack)
+                {
+                    msg = Lang.Get(heal ? "Gained {0:0.##} hp through {1}" : "Lost {0:0.##} hp through {1} (source: {2})", damage, damageSource.Type.ToString().ToLowerInvariant(), damageSource.Source);
+                } else
+                {
+                    msg = Lang.Get(heal ? "Gained {0:0.##} hp through {1}" : "Lost {0:0.##} hp through {1}", damage, damageSource.Type.ToString().ToLowerInvariant());
+                }
 
                 if (damageSource.Source == EnumDamageSource.Player)
                 {
                     EntityPlayer eplr = damageSource.SourceEntity as EntityPlayer;
-                    msg = Lang.Get(heal ? "Gained {0} hp by player {1}" : "Lost {0} hp by player {1}", damage, damageSource.Source.ToString().ToLowerInvariant(), World.PlayerByUid(eplr.PlayerUID).PlayerName);
+                    msg = Lang.Get(heal ? "Gained {0:0.##} hp by player {1}" : "Lost {0:0.##} hp by player {1}", damage, damageSource.Source.ToString().ToLowerInvariant(), World.PlayerByUid(eplr.PlayerUID).PlayerName);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Entity)
                 {
                     string creatureName = Lang.Get("prefixandcreature-" + damageSource.SourceEntity.Code.Path.Replace("-", ""));
-                    msg = Lang.Get(heal ? "Gained {0} hp by {1}" : "Lost {0} hp by {1}", damage, creatureName);
+                    msg = Lang.Get(heal ? "Gained {0:0.##} hp by {1}" : "Lost {0:0.##} hp by {1} (source: {2})", damage, creatureName, damageSource.Source);
                 }
 
                 (World.PlayerByUid(PlayerUID) as IServerPlayer).SendMessage(GlobalConstants.DamageLogChatGroup, msg, EnumChatType.Notification);

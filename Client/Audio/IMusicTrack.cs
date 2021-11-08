@@ -22,10 +22,19 @@ namespace Vintagestory.API.Client
         bool IsActive { get; }
 
         /// <summary>
-        /// The priority of the track.
+        /// The priority of the track. A higher priority will cancel active tracks.
         /// </summary>
         float Priority { get; }
-        
+
+        /// <summary>
+        /// The start priority of the track. A higher priority will leave active tracks playing.
+        /// </summary>
+        float StartPriority { get; }
+
+        /// <summary>
+        /// Called before sorting by start priority happens
+        /// </summary>
+        void BeginSort();
 
         /// <summary>
         /// Initialization of the Music Track.

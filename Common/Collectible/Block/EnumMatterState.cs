@@ -23,7 +23,7 @@
         Plasma,
 
         /// <summary>
-        /// The state of becomming Quantum Jelly.
+        /// The state of becoming Quantum Jelly.
         /// </summary>
         BoseEinsteinCondensate
     }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -279,11 +278,6 @@ namespace Vintagestory.API.Common
         /// Will be used for not rendering rain below this block
         /// </summary>
         public bool RainPermeable;
-
-        /// <summary>
-        /// Whether snow may rest on top of this block
-        /// </summary>
-        public bool? SnowCoverage = null;
 
         /// <summary>
         /// Value between 0..7 for Liquids to determine the height of the liquid
@@ -2095,7 +2089,7 @@ namespace Vintagestory.API.Common
             foreach (var langCode in decorLangCodes) 
             { 
                 string decorBlockName = Lang.GetMatching(langCode);
-                decorLangLines.Add(Lang.Get("with {0}", decorBlockName));
+                decorLangLines.Add(Lang.Get("block-with-decorname", decorBlockName));
             }
 
             sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
@@ -2120,7 +2114,7 @@ namespace Vintagestory.API.Common
                 sb.Append(bh.GetPlacedBlockInfo(world, pos, forPlayer));
             }
 
-            return sb.ToString();
+            return sb.ToString().TrimEnd();
         }
 
         /// <summary>
@@ -2367,7 +2361,11 @@ namespace Vintagestory.API.Common
             if (TextureSubIdForBlockColor < 0) return ColorUtil.WhiteArgb;
             return capi.BlockTextureAtlas.GetAverageColor(TextureSubIdForBlockColor);
         }
-        
+
+        public virtual bool AllowSnowCoverage(IWorldAccessor world, BlockPos blockPos)
+        {
+            return SideSolid[BlockFacing.UP.Index];
+        }
 
 
         /// <summary>
@@ -2513,5 +2511,6 @@ namespace Vintagestory.API.Common
                 }
             }
         }
+
     }
 }

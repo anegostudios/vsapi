@@ -116,6 +116,11 @@ namespace Vintagestory.API.Client
                 MeshDataPool pool = pools[i];
                 pool.FrustumCull(frustumCuller, frustumCullMode);
 
+                if (pool.indicesGroupsCount == 0)
+                {
+                    continue;
+                }
+
                 capi.Render.CurrentActiveShader.Uniform(originUniformName, tmp.Set(
                     (float)(pool.poolOrigin.X - playerpos.X),
                     (float)(pool.poolOrigin.Y - playerpos.Y),

@@ -40,6 +40,8 @@ namespace Vintagestory.API.Client
 
         public string PositionString => throw new NotImplementedException();
 
+        public float StartPriority => throw new NotImplementedException();
+
         public void FadeOut(float seconds, Common.Action<ILoadedSound> onFadedOut)
         {
             throw new NotImplementedException();
@@ -101,6 +103,11 @@ namespace Vintagestory.API.Client
         }
 
         public void FastForward(float seconds)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void BeginSort()
         {
             throw new NotImplementedException();
         }
