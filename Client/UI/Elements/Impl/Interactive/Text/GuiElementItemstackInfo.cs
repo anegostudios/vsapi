@@ -115,7 +115,7 @@ namespace Vintagestory.API.Client
 
         
 
-        void Recompose()
+        public void Recompose()
         {
             if (curSlot?.Itemstack == null) return;
 

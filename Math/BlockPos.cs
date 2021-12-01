@@ -107,6 +107,14 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public BlockPos Set(float x, float y, float z)
+        {
+            X = (int)x;
+            Y = (int)y;
+            Z = (int)z;
+            return this;
+        }
+
         public BlockPos Set(BlockPos blockPos)
         {
             X = blockPos.X;

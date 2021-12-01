@@ -16,7 +16,7 @@ namespace Vintagestory.API.Client
         /// <param name="onLoaded"></param>
         /// <param name="volume"></param>
         /// <param name="pitch"></param>
-        void LoadTrack(AssetLocation location, API.Common.Action<ILoadedSound> onLoaded, float volume = 1f, float pitch = 1f);
+        void LoadTrack(AssetLocation location, Action<ILoadedSound> onLoaded, float volume = 1f, float pitch = 1f);
 
         /// <summary>
         /// The currently playing track

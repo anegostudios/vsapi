@@ -75,7 +75,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        public void WalkMatchingBlocks(IWorldAccessor world, BlockPos centerPos, API.Common.Action<Block, BlockPos> onBlock)
+        public void WalkMatchingBlocks(IWorldAccessor world, BlockPos centerPos, Action<Block, BlockPos> onBlock)
         {
             if (TransformedOffsets == null)
             {

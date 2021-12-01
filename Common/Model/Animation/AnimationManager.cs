@@ -195,7 +195,7 @@ namespace Vintagestory.API.Common
                 }
 
                 Animation anim;
-                if (entity.Properties.Client.LoadedShape.AnimationsByCrc32.TryGetValue(crc32, out anim)) {
+                if (entity.Properties.Client.LoadedShapeForEntity.AnimationsByCrc32.TryGetValue(crc32, out anim)) {
 
                     toKeep.Add(anim.Code);
 

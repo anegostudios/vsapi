@@ -104,6 +104,7 @@ namespace Vintagestory.API.Client
     {
         int caretPos = 0;
         bool gotLinebreak = false;
+        bool gotSpace = false;
 
         #region Shorthand methods for simple box constrained multiline text
 
@@ -285,11 +286,13 @@ namespace Vintagestory.API.Client
             double usableWidth;
             TextFlowPath currentSection;
 
-            var linebreak = Lang.CurrentLanguage == "ja" ? EnumLinebreakBehavior.AfterCharacter : EnumLinebreakBehavior.AfterWord;
+            var linebreak = Lang.CurrentLocale == "ja" ? EnumLinebreakBehavior.AfterCharacter : EnumLinebreakBehavior.AfterWord;
 
             while ((word = getNextWord(text, linebreak)) != null)
             {
-                double width = ctx.TextExtents(lineTextBldr + (gotLinebreak || caretPos >= text.Length ? "" : " ") + word).Width;
+                string spc = (gotLinebreak || caretPos >= text.Length || !gotSpace ? "" : " ");
+
+                double nextWidth = ctx.TextExtents(lineTextBldr + word + spc).Width;
 
                 currentSection = GetCurrentFlowPathSection(flowPath, curY);
 
@@ -302,13 +305,14 @@ namespace Vintagestory.API.Client
 
                 usableWidth = currentSection.X2 - currentSection.X1 - curX;
 
-                if (width >= usableWidth)
+                if (nextWidth >= usableWidth)
                 {
-                    double withoutWidth = ctx.TextExtents(lineTextBldr.ToString()).Width;
+                    string linetext = lineTextBldr.ToString();
+                    double withoutWidth = ctx.TextExtents(linetext).Width;
 
                     lines.Add(new TextLine()
                     {
-                        Text = lineTextBldr.ToString(),
+                        Text = linetext,
                         Bounds = new LineRectangled(currentSection.X1 + curX, curY, withoutWidth, lineheight) {
                             Ascent = ctx.FontExtents.Ascent
                         },
@@ -323,20 +327,17 @@ namespace Vintagestory.API.Client
                     if (gotLinebreak) currentSection = GetCurrentFlowPathSection(flowPath, curY);
                 }
 
-                if (lineTextBldr.Length > 0)
-                {
-                    lineTextBldr.Append(" ");
-                }
-
                 lineTextBldr.Append(word);
+                if (gotSpace && word.Length > 0) lineTextBldr.Append(" ");
 
                 if (gotLinebreak)
                 {
-                    double withoutWidth = ctx.TextExtents(lineTextBldr.ToString()).Width;
+                    string linetext = lineTextBldr.ToString();
+                    double withoutWidth = ctx.TextExtents(linetext).Width;
 
                     lines.Add(new TextLine()
                     {
-                        Text = lineTextBldr.ToString(),
+                        Text = linetext,
                         Bounds = new LineRectangled(currentSection.X1 + curX, curY, withoutWidth, lineheight) {
                             Ascent = ctx.FontExtents.Ascent
                         },
@@ -389,6 +390,7 @@ namespace Vintagestory.API.Client
 
             char chr;
             gotLinebreak = false;
+            gotSpace = false;
 
             while (caretPos < fulltext.Length)
             {
@@ -397,6 +399,7 @@ namespace Vintagestory.API.Client
 
                 if (chr == ' ')
                 {
+                    gotSpace = true;
                     break;
                 }
 

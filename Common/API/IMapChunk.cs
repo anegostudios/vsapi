@@ -31,19 +31,65 @@ namespace Vintagestory.API.Common
         /// </summary>
         EnumWorldGenPass CurrentPass { get; set; }
 
+        [Obsolete("Use SetModData instead")]
         /// <summary>
-        /// Can be used to store custom data along with the map chunk
+        /// Server: Can be used to store custom data along with the map chunk
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
         /// <param name="data"></param>
         void SetData(string key, byte[] data);
 
+        [Obsolete("Use GetModData instead")]
         /// <summary>
-        /// Can be used to retrieve custom data from the map chunk (as previously set by SetModdata)
+        /// Server: Can be used to retrieve custom data from the map chunk (as previously set by SetModdata)
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         byte[] GetData(string key);
+
+
+        /// <summary>
+        /// Server: Allows setting of arbitrary, permanently stored moddata of this map chunk.
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        void SetModdata(string key, byte[] data);
+
+        /// <summary>
+        /// Server: Removes the permanently stored data. 
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
+        /// </summary>
+        /// <param name="key"></param>
+        void RemoveModdata(string key);
+
+        /// <summary>
+        /// Server: Retrieve arbitrary, permanently stored mod data
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        byte[] GetModdata(string key);
+
+        /// <summary>
+        /// Server: Allows setting of arbitrary, permanantly stored moddata of this map chunk.
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+
+        void SetModdata<T>(string key, T data);
+        /// <summary>
+        /// Server: Retrieve arbitrary, permantly stored mod data
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        T GetModdata<T>(string key);
 
 
         byte[] CaveHeightDistort { get; set; }

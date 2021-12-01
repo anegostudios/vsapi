@@ -8,35 +8,158 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public enum EnumWindBitMode
+    {
+        /// <summary>
+        /// Not affected by wind
+        /// </summary>
+        NoWind = 0,
+        /// <summary>
+        /// Slightly affected by wind. Wiggle + Height bend based on ground distance.
+        /// </summary>
+        WeakWind = 1,
+        /// <summary>
+        /// Normally affected by wind. Wiggle + Height bend based on ground distance.
+        /// </summary>
+        NormalWind = 2,
+        /// <summary>
+        /// Same as normal wind, but with some special behavior for leaves. Wiggle + Height bend based on ground distance.
+        /// </summary>
+        Leaves = 3,
+        /// <summary>
+        /// Same as normal wind, but no wiggle. Weak height bend based on ground distance.
+        /// </summary>
+        Bend = 4,
+        /// <summary>
+        /// Bend behavior for tall plants
+        /// </summary>
+        TallBend = 5,
+        /// <summary>
+        /// Vertical wiggle
+        /// </summary>
+        Water = 6,
+        ExtraWeakWind = 7,
+        Fruit = 8
+    }
+
+    public static class EnumWindBitModeMask
+    {
+        /// <summary>
+        /// Slightly affected by wind. Wiggle + Height bend based on ground distance.<br/>
+        /// </summary>
+        public const int WeakWind = 1 << VertexFlags.WindModeBitsPos;
+        /// <summary>
+        /// Normally affected by wind. Wiggle + Height bend based on ground distance.
+        /// </summary>
+        public const int NormalWind = 2 << VertexFlags.WindModeBitsPos;
+        /// <summary>
+        /// Same as normal wind, but with some special behavior for leaves. Wiggle + Height bend based on ground distance.
+        /// </summary>
+        public const int Leaves = 3 << VertexFlags.WindModeBitsPos;
+        /// <summary>
+        /// Same as weak wind, but no wiggle. Height bend based on ground distance.
+        /// </summary>
+        public const int Bend = 4 << VertexFlags.WindModeBitsPos;
+        /// <summary>
+        /// Bend behavior for tall plants
+        /// </summary> 
+        public const int TallBend = 5 << VertexFlags.WindModeBitsPos;
+        /// <summary>
+        /// Vertical wiggle
+        /// </summary>
+        public const int Water = 6 << VertexFlags.WindModeBitsPos;
+        /// <summary>
+        /// Vertical wiggle
+        /// </summary>
+        public const int ExtraWeakWind = 7 << VertexFlags.WindModeBitsPos;
+
+        public const int Fruit = 8 << VertexFlags.WindModeBitsPos;
+
+        public const int WeakWindNoBend = 9 << VertexFlags.WindModeBitsPos;
+    }
+
     /// <summary>
-    /// Special class to handle the vertex flagging in a very nicely compressed space.
+    /// Special class to handle the vertex flagging in a very nicely compressed space.<br/>
+    /// Bit 0-7: Glow level<br/>
+    /// Bit 8-10: Z-Offset<br/>
+    /// Bit 11: Reflective bit<br/>
+    /// Bit 12: Lod 0 Bit<br/>
+    /// Bit 13-24: X/Y/Z Normals<br/>
+    /// Bit 25, 26, 27, 28: Wind mode<br/>
+    /// Bit 29, 30, 31: Wind data<br/>
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class VertexFlags
     {
+        /// <summary>
+        /// Bit 0..7
+        /// </summary>
         public const int GlowLevelBitMask = 0xFF;
-        public const int ZOffsetBitMask = 0x7 << 8;
-        public const int FoliageWindWaveBitMask = 1 << 11;
-        public const int WaterWaveBitMask = 1 << 12;
 
-        public const int ReflectiveBitMask = 1 << 13;
-        public const int WeakWaveBitMask = 1 << 14;
+        public const int ZOffsetBitPos = 8;
+        /// <summary>
+        /// Bit 8..10
+        /// </summary>
+        public const int ZOffsetBitMask = 0x7 << ZOffsetBitPos;
 
-        public const int NormalBitMask = 0xFFF << 15;
-        public const int LeavesWindWaveBitMask = 1 << 27;   // if both Foliage and Leaves Wind Wave are 1, it means Wind Sway
+        /// <summary>
+        /// Bit 11
+        /// </summary>
+        public const int ReflectiveBitMask = 1 << 11;
+        /// <summary>
+        /// Bit 12
+        /// </summary>
+        public const int Lod0BitMask = 1 << 12;
 
-        public const int GroundDistanceBitsShift = 28;
-        public const int GroundDistanceBitMask = 0x7 << GroundDistanceBitsShift; // 3 bits - means Ground Distance for Leaves wind wave, Special Wave for Foliage wind wave (e.g. for specific crops such as Pineapple)
-        public const int Lod0BitMask = 1 << 31;
+        public const int NormalBitPos = 13;
+        /// <summary>
+        /// Bit 13..25
+        /// </summary>
+        public const int NormalBitMask = 0xFFF << NormalBitPos;
 
-        public const int clearWaveBits = (~FoliageWindWaveBitMask) & (~LeavesWindWaveBitMask) & (~GroundDistanceBitMask);
-        public const int clearWaveFlagsOnly = (~FoliageWindWaveBitMask) & (~LeavesWindWaveBitMask);
-        public const int clearZOffset = ~0x700;
+        /// <summary>
+        /// Bit 25..28
+        /// </summary>
+        public const int WindModeBitsMask = 0xF << 25;
 
-        public const int clearNormalBits = ~NormalBitMask;
+        public const int WindModeBitsPos = 25;
+
+        /// <summary>
+        /// Bit 29..31
+        /// </summary>
+        public const int WindDataBitsMask = 0x7 << 29;
+
+        public const int WindDataBitsPos = 29;
+
+        /// <summary>
+        /// Bit 26..31
+        /// </summary>
+        public const int WindBitsMask = WindModeBitsMask | WindDataBitsMask;
+
+
+        // Bit 25..28
+        public const int LiquidWaterModeBitMask = 0x7 << 25;
+        // Bit 29
+        public const int LiquidExposedToSkyBitMask = 1 << 29;
+
+
+
+        public const int ClearWindBitsMask = ~WindBitsMask;
+        public const int ClearWindModeBitsMask = ~WindModeBitsMask;
+        public const int ClearWindDataBitsMask = ~WindDataBitsMask;
+        public const int ClearZOffsetMask = ~ZOffsetBitMask;
+        public const int ClearNormalBitMask = ~NormalBitMask;
 
 
         int all;
+
+        byte glowLevel, zOffset;
+        bool reflective;
+        bool lod0;
+        short normal;
+        EnumWindBitMode windMode;
+        byte windData;
+
 
         [JsonProperty]
         public int All
@@ -49,111 +172,129 @@ namespace Vintagestory.API.Common
             {
                 glowLevel = (byte)(value & 0xFF);
                 zOffset = (byte)((value >> 8) & 0x7);
-                grassWindWave = ((value >> 11) & 1) != 0;
-                waterWave = ((value >> 12) & 1) != 0;
-                shiny = ((value >> 13) & 1) != 0;
-                weakWave = ((value >> 14) & 1) != 0;
-                normal = (byte)((value >> 15) & 0xFFF);
-                leavesWindWave = ((value >> 27) & 1) != 0;
-                foliageWaveSpecial = ((value >> GroundDistanceBitsShift) & 7);
+                reflective = ((value >> 11) & 1) != 0;
+                lod0 = ((value >> 12) & 1) != 0;
+                normal = (short)((value >> 13) & 0xFFF);
+                windMode = (EnumWindBitMode)((value >> 25) & 0xF);
+                windData = (byte)((value >> 29) & 0x7);
                 all = value;
             }
         }
 
-        public int AllWithoutWaveFlags
+        #region Normal stuff
+
+        /// <summary>
+        /// Creates an already bit shifted normal
+        /// </summary>
+        /// <param name="normal"></param>
+        /// <returns></returns>
+        public static int PackNormal(Vec3d normal)
         {
-            get { return all & clearWaveBits; }
+            return PackNormal(normal.X, normal.Y, normal.Z);
         }
 
-        byte glowLevel, zOffset;
-        int normal;
-        bool grassWindWave, leavesWindWave, waterWave, shiny, weakWave;
-        int foliageWaveSpecial;
-
-        // Bit 15: x-sign
-        // Bit 16, 17, 18: x-value
-
-        // Bit 19: y-sign
-        // Bit 20, 21, 22: y-value
-
-        // Bit 23: z-sign
-        // Bit 24, 25, 26: z-value
-        public static int NormalToPackedInt(Vec3d normal)
-        {
-            return NormalToPackedInt(normal.X, normal.Y, normal.Z);
-        }
-
-        public static int NormalToPackedInt(double x, double y, double z)
+        /// <summary>
+        /// Creates an already bit shifted normal
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static int PackNormal(double x, double y, double z)
         {
             int xN = (int)(x * 7.000001) * 2;  //a small bump up for rounding, as the x, y, z values may be 1/7th fractions rounded down in binary
             int yN = (int)(y * 7.000001) * 2;
             int zN = (int)(z * 7.000001) * 2;  //can be any even number between -14 and +14
 
             return
-                (xN < 0 ? 1 - xN : xN) |
-                (yN < 0 ? 1 - yN : yN) << 4 |
-                (zN < 0 ? 1 - zN : zN) << 8
+                (xN < 0 ? 1 - xN : xN) << NormalBitPos |
+                (yN < 0 ? 1 - yN : yN) << (NormalBitPos + 4) |
+                (zN < 0 ? 1 - zN : zN) << (NormalBitPos + 8)
             ;
         }
 
-        public static int NormalToPackedInt(Vec3f normal)
+        /// <summary>
+        /// Creates an already bit shifted normal
+        /// </summary>
+        /// <param name="normal"></param>
+        /// <returns></returns>
+        public static int PackNormal(Vec3f normal)
         {
             int xN = (int)(normal.X * 7.000001f) * 2;  //a small bump up for rounding, as the x, y, z values may be 1/7th fractions rounded down in binary
             int yN = (int)(normal.Y * 7.000001f) * 2;
             int zN = (int)(normal.Z * 7.000001f) * 2;  //can be any even number between -14 and +14
 
             return
-                (xN < 0 ? 1 - xN : xN) |
-                (yN < 0 ? 1 - yN : yN) << 4 |
-                (zN < 0 ? 1 - zN : zN) << 8
+                (xN < 0 ? 1 - xN : xN) << NormalBitPos |
+                (yN < 0 ? 1 - yN : yN) << (NormalBitPos + 4) |
+                (zN < 0 ? 1 - zN : zN) << (NormalBitPos + 8)
             ;
         }
 
-        public static int NormalToPackedInt(Vec3i normal)
+        /// <summary>
+        /// Creates an already bit shifted normal
+        /// </summary>
+        /// <param name="normal"></param>
+        /// <returns></returns>
+        public static int PackNormal(Vec3i normal)
         {
-            int xN = (int)(normal.X * 7.000001f) * 2;  //a small bump up for rounding, as the x, y, z values may be 1/7th fractions rounded down in binary
+            int xN = (int)(normal.X * 7.000001f) * 2;  // A small bump up for rounding, as the x, y, z values may be 1/7th fractions rounded down in binary
             int yN = (int)(normal.Y * 7.000001f) * 2;
             int zN = (int)(normal.Z * 7.000001f) * 2;  //can be any even number between -14 and +14
-
+            
             return
-                (xN < 0 ? 1 - xN : xN) |
-                (yN < 0 ? 1 - yN : yN) << 4 |
-                (zN < 0 ? 1 - zN : zN) << 8
+                (xN < 0 ? 1 - xN : xN) << NormalBitPos |
+                (yN < 0 ? 1 - yN : yN) << (NormalBitPos+4) |
+                (zN < 0 ? 1 - zN : zN) << (NormalBitPos+8)
             ;
         }
 
-        public static void PackedIntToNormal(int packedNormal, float[] intoFloats)
+
+        const int nValueBitMask = 0b1110;
+        const int nXValueBitMask = nValueBitMask << (NormalBitPos);
+        const int nYValueBitMask = nValueBitMask << (NormalBitPos + 4);
+        const int nZValueBitMask = nValueBitMask << (NormalBitPos + 8);
+
+        const int nXSignBitPos = NormalBitPos - 1;
+        const int nYSignBitPos = NormalBitPos + 3;
+        const int nZSignBitPos = NormalBitPos + 7;
+
+        
+        public static void UnpackNormal(int vertexFlags, float[] intoFloats)
         {
-            int x = packedNormal & 0x00E;
-            int y = packedNormal & 0x0E0;
-            int z = packedNormal & 0xE00;
+            // Trick to save one multiplication: Instead of bitshifting x/y/z we divide it at the end, as we have to divide by 14 anyway.
+            // To get the sign bit to be 0 or 2, we bit shift it to the right by one
+            int x = vertexFlags & nXValueBitMask;
+            int y = vertexFlags & nYValueBitMask;
+            int z = vertexFlags & nZValueBitMask;
 
-            int signx = 1 - ((packedNormal << 1) & 2);
-            int signy = 1 - ((packedNormal >> 3) & 2);
-            int signz = 1 - ((packedNormal >> 7) & 2);
+            int signx = 1 - ((vertexFlags >> nXSignBitPos) & 2);
+            int signy = 1 - ((vertexFlags >> nYSignBitPos) & 2);
+            int signz = 1 - ((vertexFlags >> nZSignBitPos) & 2);
 
-            intoFloats[0] = signx * x / 14f;   // 7 * 2
-            intoFloats[1] = signy * y / 224f;  // this is 7 * 2 * 16
-            intoFloats[2] = signz * z / 3584f; // this is 7 * 2 * 256
+            intoFloats[0] = signx * x / (14f * (1 << NormalBitPos));
+            intoFloats[1] = signy * y / (14f * 16 * (1 << NormalBitPos));
+            intoFloats[2] = signz * z / (14f * 256 * (1 << NormalBitPos));
         }
 
-        public static void PackedIntToNormal(int packedNormal, double[] intoDouble)
+        public static void UnpackNormal(int vertexFlags, double[] intoDouble)
         {
-            int x = packedNormal & 0x00E;
-            int y = packedNormal & 0x0E0;
-            int z = packedNormal & 0xE00;
+            int x = vertexFlags & nXValueBitMask;
+            int y = vertexFlags & nYValueBitMask;
+            int z = vertexFlags & nZValueBitMask;
 
-            int signx = 1 - ((packedNormal << 1) & 2);
-            int signy = 1 - ((packedNormal >> 3) & 2);
-            int signz = 1 - ((packedNormal >> 7) & 2);
+            int signx = 1 - ((vertexFlags >> nXSignBitPos) & 2);
+            int signy = 1 - ((vertexFlags >> nYSignBitPos) & 2);
+            int signz = 1 - ((vertexFlags >> nZSignBitPos) & 2);
 
-            intoDouble[0] = signx * x / 14.0;   // 7 * 2
-            intoDouble[1] = signy * y / 224.0;  // this is 7 * 2 * 16
-            intoDouble[2] = signz * z / 3584.0; // this is 7 * 2 * 256
+            intoDouble[0] = signx * x / (14f * (1 << NormalBitPos));
+            intoDouble[1] = signy * y / (14f * 16 * (1 << NormalBitPos));
+            intoDouble[2] = signz * z / (14f * 256 * (1 << NormalBitPos));
         }
 
+        #endregion
 
-        // Bits 0..7
+
         [JsonProperty]
         public byte GlowLevel
         {
@@ -168,7 +309,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        // Bits 8, 9 and 10
         [JsonProperty]
         public byte ZOffset
         {
@@ -183,76 +323,36 @@ namespace Vintagestory.API.Common
             }
         }
 
-        // Bit 11
-        [JsonProperty]
-        public bool GrassWindWave
-        {
-            get
-            {
-                return grassWindWave;
-            }
-            set
-            {
-                grassWindWave = value;
-                UpdateAll();
-            }
-        }
-
-        // Bit 12
-        [JsonProperty]
-        public bool WaterWave
-        {
-            get
-            {
-                return waterWave;
-            }
-            set
-            {
-                waterWave = value;
-                UpdateAll();
-            }
-        }
-
-        // Bit 13
         [JsonProperty]
         public bool Reflective
         {
             get
             {
-                return shiny;
+                return reflective;
             }
             set
             {
-                shiny = value;
+                reflective = value;
                 UpdateAll();
             }
         }
 
-        // Bit 14
         [JsonProperty]
-        public bool WeakWave
+        public bool Lod0
         {
             get
             {
-                return weakWave;
+                return lod0;
             }
             set
             {
-                weakWave = value;
+                lod0 = value;
                 UpdateAll();
             }
         }
 
-        // Bit 15: x-sign
-        // Bit 16, 17, 18: x-value
-
-        // Bit 19: y-sign
-        // Bit 20, 21, 22: y-value
-
-        // Bit 23: z-sign
-        // Bit 24, 25, 26: z-value
         [JsonProperty]
-        public int Normal
+        public short Normal
         {
             get
             {
@@ -265,64 +365,28 @@ namespace Vintagestory.API.Common
             }
         }
 
-        // Bit 27
         [JsonProperty]
-        public bool LeavesWindWave
+        public EnumWindBitMode WindMode
         {
             get
             {
-                return leavesWindWave;
+                return windMode;
             }
             set
             {
-                leavesWindWave = value;
+                windMode = value;
                 UpdateAll();
             }
         }
 
         [JsonProperty]
-        public bool WindSway
+        public byte WindData
         {
-            get
-            {
-                return leavesWindWave && grassWindWave;
-            }
-            set
-            {
-                leavesWindWave |= value;
-                grassWindWave |= value;
-                UpdateAll();
-            }
+            get { return windData; }
+            set { windData = value; UpdateAll(); }
         }
 
-        /// <summary>
-        /// 0 = default
-        /// 1 = On weak wave, also have only low frequency jiggle
-        /// 2 = unused
-        /// 3 = Solid fruit and Stalk, rotate with origin
-        /// 4 = Fruit underleaves
-        /// </summary>
-        [JsonProperty]
-        public short FoliageWaveSpecial
-        {
-            get
-            {
-                return (short) foliageWaveSpecial;
-            }
-            set
-            {
-                foliageWaveSpecial = value;
-                UpdateAll();
-            }
-        }
 
-        public bool Lod0Fade
-        {
-            get
-            {
-                return (all & Lod0BitMask) != 0;
-            }
-        }
 
 
         public VertexFlags()
@@ -335,31 +399,15 @@ namespace Vintagestory.API.Common
             All = flags;
         }
 
-        public VertexFlags(byte glowLevel, byte zOffset, bool grassWindWave, bool leavesWindWave, bool waterWave, bool lowContrast, bool weakWave, int normal)
-        {
-            this.glowLevel = glowLevel;
-            this.zOffset = zOffset;
-            this.grassWindWave = grassWindWave;
-            this.waterWave = waterWave;
-            this.shiny = lowContrast;
-            this.normal = normal;
-            this.weakWave = weakWave;
-            this.leavesWindWave = leavesWindWave;
-
-            UpdateAll();
-        }
-
         void UpdateAll()
         {
             all = glowLevel
                   | ((zOffset & 0x7) << 8)
-                  | (grassWindWave ? 1 : 0) << 11
-                  | (waterWave ? 1 : 0) << 12
-                  | (shiny ? 1 : 0) << 13
-                  | (weakWave ? 1 : 0) << 14
-                  | ((normal & 0xFFF) << 15)
-                  | (leavesWindWave ? 1 : 0) << 27
-                  | foliageWaveSpecial << GroundDistanceBitsShift;
+                  | (reflective ? 1 : 0) << 11
+                  | (Lod0 ? 1 : 0) << 12
+                  | ((normal & 0xFFF) << 13)
+                  | (((int)windMode & 0xF) << 25)
+                  | ((windData & 0x7) << 29)
             ;
         }
 
@@ -371,5 +419,14 @@ namespace Vintagestory.API.Common
         {
             return new VertexFlags(All);
         }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "Glow: {0}, ZOffset: {1}, Reflective: {2}, Lod0: {3}, Normal: {4}, WindMode: {5}, WindData: {6}", 
+                glowLevel, ZOffset, reflective, lod0, normal, WindMode, windData
+            );
+        }
     }
 }
+

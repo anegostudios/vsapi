@@ -232,6 +232,13 @@ namespace Vintagestory.API.Client
                     DrawRightMouseButton(cr, x, y, width, height, rgba);
                     break;
 
+                case "wpCross":
+                    cr.SetSourceRGBA(0.8, 0.2, 0.2, 0.7);
+                    DrawCross(cr, x, y, width, height);
+                    cr.SetSourceRGBA(0.8, 0.2, 0.2, 0.5);
+                    cr.Fill();
+                    break;
+
                 case "wpBee":
                     DrawWayointBee(cr, x, y, width, height, rgba);
                     break;

@@ -72,7 +72,7 @@ namespace Vintagestory.API.Server
         /// Shows a discovery text on the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingamediscovery-' (which is recommended so that the errors are translated to the users local language)
         /// </summary>
         /// <param name="player"></param>
-        /// <param name="errorCode"></param>
+        /// <param name="discoveryCode"></param>
         /// <param name="text"></param>
         /// <param name="langparams">If text is null, these are the arguments passed into the Language translation tool</param>
         void SendIngameDiscovery(IServerPlayer player, string discoveryCode, string text = null, params object[] langparams);
@@ -112,6 +112,13 @@ namespace Vintagestory.API.Server
         /// <param name="message"></param>
         void InjectConsole(string message);
 
+        /// <summary>
+        /// Calls a command as if given player called it
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="message"></param>
+        void HandleCommand(IServerPlayer player, string message);
+
 
 
         /// <summary>
@@ -141,7 +148,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Registers a new cooking recipe. These are sent to the client during connect, so only need to register them on the server side.
         /// </summary>
-        /// <param name="alloy"></param>
+        /// <param name="recipe"></param>
         void RegisterCookingRecipe(CookingRecipe recipe);
 
         /// <summary>

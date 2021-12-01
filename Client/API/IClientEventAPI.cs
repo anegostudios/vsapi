@@ -26,6 +26,24 @@ namespace Vintagestory.API.Client
     /// <param name="oldBlock"></param>
     public delegate void BlockChangedDelegate(BlockPos pos, Block oldBlock);
 
+
+    /// <summary>
+    /// A custom itemstack render handler. This method is called after Collectible.OnBeforeRender(). For render target gui, the gui shader and its uniforms are already fully prepared, you may only call RenderMesh() and ignore the modelMat, position and size values - stack sizes however, are not covered by this.
+    /// </summary>
+    /// <param name="inSlot">The slot in which the itemstack resides in</param>
+    /// <param name="renderInfo">The render info for this stack, you can choose to ignore these values</param>
+    /// <param name="modelMat">The model transformation matrix with position and size already preapplied, you can choose to ignore this value</param>
+    /// <param name="posX">The center x-position where the stack has to be rendered</param>
+    /// <param name="posY">The center y-position where the stack has to be rendered</param>
+    /// <param name="posZ">The depth position. Higher values might be required for very large models, which can cause them to poke through dialogs in front of them, however</param>
+    /// <param name="size">The size of the stack that has to be rendered</param>
+    /// <param name="color">The requested color, usually always white</param>
+    /// <param name="rotate">Whether or not to rotate it (some parts of the game have this on or off)</param>
+    /// <param name="showStackSize">Whether or not to show the stack size (some parts of the game have this on or off)</param>
+    public delegate void ItemRenderDelegate(ItemSlot inSlot, ItemRenderInfo renderInfo, Matrixf modelMat, double posX, double posY, double posZ, float size, int color, bool rotate = false, bool showStackSize = true);
+
+
+
     public interface IAsyncParticleManager
     {
         int Spawn(IParticlePropertiesProvider particleProperties);
@@ -91,6 +109,11 @@ namespace Vintagestory.API.Client
         event PlayerEventDelegate PlayerLeave;
 
         /// <summary>
+        /// Called when the player dies
+        /// </summary>
+        event PlayerEventDelegate PlayerDeath;
+
+        /// <summary>
         /// Fired when a player is ready to join but awaits any potential mod-user interaction, such as a character selection screen
         /// </summary>
         event IsPlayerReadyDelegate IsPlayerReady;
@@ -114,12 +137,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// When the player wants to leave the world to go back to the main menu
         /// </summary>
-        event API.Common.Action LeaveWorld;
+        event Action LeaveWorld;
 
         /// <summary>
         /// When the player left the world to go back to the main menu
         /// </summary>
-        event API.Common.Action LeftWorld;
+        event Action LeftWorld;
 
         /// <summary>
         /// When a player block has been modified. OldBlock param may be null!
@@ -136,7 +159,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Fired after a player changes their active slot (such as selected hotbar slot).
         /// </summary>
-        event Common.Action<ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
+        event Action<ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
 
         /// <summary>
         /// Fired when something fires an ingame error
@@ -164,6 +187,21 @@ namespace Vintagestory.API.Client
         void UnregisterRenderer(IRenderer renderer, EnumRenderStage renderStage);
 
         /// <summary>
+        /// Registers a custom itemstack renderer for given collectible object. If none is registered, the default renderer is used. For render target gui, the gui shader and its uniforms are already fully prepared, you may only call RenderMesh() and ignore the modelMat, position and size values - stack sizes however, are not covered by this.
+        /// </summary>
+        /// <param name="rendererDelegate"></param>
+        /// <param name="target"></param>
+        void RegisterItemstackRenderer(CollectibleObject forObj, ItemRenderDelegate rendererDelegate, EnumItemRenderTarget target);
+
+        /// <summary>
+        /// Removes a previously registered itemstack renderer
+        /// </summary>
+        /// <param name="forObj"></param>
+        void UnregisterItemstackRenderer(CollectibleObject forObj, EnumItemRenderTarget target);
+
+
+
+        /// <summary>
         /// Set up an asynchronous particle spawner. The async particle simulation does most of the work in a seperate thread and thus runs a lot faster, with the down side of not being exaclty in sync with player interactions. This method of spawning particles is best suited for ambient particles, such as rain fall.
         /// </summary>
         /// <param name="handler"></param>
@@ -173,7 +211,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Called when server assetes were received and all texture atlases have been created
         /// </summary>
-        event Common.Action BlockTexturesLoaded;
+        event Action BlockTexturesLoaded;
         
         /// <summary>
         /// Fired when the player tries to reload the shaders (happens when graphics settings are changed)
@@ -182,17 +220,17 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Called when textures got reloaded
         /// </summary>
-        event Common.Action ReloadTextures;
+        event Action ReloadTextures;
 
         /// <summary>
         /// Called when the client received the level finalize packet from the server
         /// </summary>
-        event Common.Action LevelFinalize;
+        event Action LevelFinalize;
 
         /// <summary>
         /// Called when shapes got reloaded
         /// </summary>
-        event Common.Action ReloadShapes;
+        event Action ReloadShapes;
 
 
 

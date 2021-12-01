@@ -102,6 +102,8 @@ namespace Vintagestory.API.Common
         int curParticle = -1;
         int color;
 
+        public bool Async => true;
+
         public bool Bouncy { get; set; }
         public bool RandomVelocityChange { get; set; }
         public bool DieOnRainHeightmap => false;
@@ -139,7 +141,7 @@ namespace Vintagestory.API.Common
             offsets.Add((sbyte)(pos.Y + 0.5 - basePos.Y));
             offsets.Add((sbyte)(pos.Z + 0.5 - basePos.Z));
 
-            quantityParticles += 4;
+            quantityParticles += 3;
         }
 
         public void BeginParticle()

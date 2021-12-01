@@ -142,9 +142,9 @@ namespace Vintagestory.API.Datastructures
         }
 
         [Obsolete("Use AsArray<string>() instead")]
-        public string[] AsStringArray(string[] defaultValue = null)
+        public string[] AsStringArray(string[] defaultValue = null, string defaultDomain = null)
         {
-            return AsArray<string>(defaultValue);
+            return AsArray<string>(defaultValue, defaultDomain);
         }
 
         [Obsolete("Use AsArray<float>() instead")]
@@ -158,7 +158,7 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         /// <param name="defaultValue">If the conversion fails, this value is used instead</param>
         /// <returns></returns>
-        public T[] AsArray<T>(T[] defaultValue = null)
+        public T[] AsArray<T>(T[] defaultValue = null, string defaultDomain = null)
         {
             if (!(token is JArray)) return defaultValue;
             JArray arr = (JArray)token;
@@ -169,7 +169,7 @@ namespace Vintagestory.API.Datastructures
             {
                 JToken token = arr[i];
                 if (token is JValue) {
-                    objs[i] = token.ToObject<T>();
+                    objs[i] = token.ToObject<T>(defaultDomain);
                 } else
                 {
                     return defaultValue;

@@ -106,9 +106,9 @@ namespace Vintagestory.API.Common
         /// <param name="OnGameTick"></param>
         /// <param name="millisecondInterval"></param>
         /// <returns></returns>
-        public virtual long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval)
+        public virtual long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
         {
-            long listenerId = Api.Event.RegisterGameTickListener(OnGameTick, millisecondInterval);
+            long listenerId = Api.Event.RegisterGameTickListener(OnGameTick, millisecondInterval, initialDelayOffsetMs);
             TickHandlers.Add(listenerId);
             return listenerId;
         }
@@ -172,11 +172,11 @@ namespace Vintagestory.API.Common
         /// Called when the block was broken in survival mode or through explosions and similar. Generally in situations where you probably want 
         /// to drop the block entity contents, if it has any
         /// </summary>
-        public virtual void OnBlockBroken()
+        public virtual void OnBlockBroken(IPlayer byPlayer = null)
         {
             foreach (var val in Behaviors)
             {
-                val.OnBlockBroken();
+                val.OnBlockBroken(byPlayer);
             }
 
         }
@@ -210,11 +210,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void OnBlockPlaced(ItemStack byItemStack = null)
         {
-            if (byItemStack?.Block != null)
-            {
-
-            }
-
             foreach (var val in Behaviors)
             {
                 val.OnBlockPlaced();

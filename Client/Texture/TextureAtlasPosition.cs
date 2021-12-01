@@ -19,7 +19,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// A sequential number in which atlas this position is in. Atlasses for a given type are sequentially numbered if more than one atlas was required to hold all the textures
         /// </summary>
-        public int atlasNumber;
+        public byte atlasNumber;
+
+        /// <summary>
+        /// A sequential number that goes up with every texture atlas reload, used to see if this texpos is still fresh
+        /// </summary>
+        public short reloadIteration;
 
         public int AvgColor;
         public int[] RndColors = new int[30];

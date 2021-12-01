@@ -5,7 +5,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Action = Vintagestory.API.Common.Action;
+
 
 namespace Vintagestory.API.Client
 {
@@ -144,8 +144,6 @@ namespace Vintagestory.API.Client
             }
 
             RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, GuiStyle.DialogBGRadius);
-            //ctx.SetSourceRGBA(GuiStyle.DialogDefaultBgColor[0], GuiStyle.DialogDefaultBgColor[1], GuiStyle.DialogDefaultBgColor[2], 1);
-            //ctx.FillPreserve();
 
             LinearGradient gradient = new LinearGradient(0, 0, Bounds.InnerWidth, 0);
             gradient.AddColorStop(0, new Color(GuiStyle.DialogDefaultBgColor[0] * 1.4, GuiStyle.DialogDefaultBgColor[1] * 1.4, GuiStyle.DialogDefaultBgColor[2] * 1.4, 1));
@@ -298,7 +296,6 @@ namespace Vintagestory.API.Client
             if (menuIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY))
             {
                 listMenu.Open();
-                //listMenu.hoveredIndex = listMenu.selectedIndex = movable ? 1 : 0;
                 return;
             }    
         }
@@ -333,8 +330,8 @@ namespace Vintagestory.API.Client
 
             if (moving)
             {
-                Bounds.ParentBounds.fixedX += args.X - movingStartPos.X;
-                Bounds.ParentBounds.fixedY += args.Y - movingStartPos.Y;
+                Bounds.ParentBounds.fixedX += (args.X - movingStartPos.X) / RuntimeEnv.GUIScale;
+                Bounds.ParentBounds.fixedY += (args.Y - movingStartPos.Y) / RuntimeEnv.GUIScale;
                 movingStartPos.Set(args.X, args.Y);
                 Bounds.ParentBounds.CalcWorldBounds();
             }

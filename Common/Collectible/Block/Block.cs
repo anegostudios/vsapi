@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Client;
+using Vintagestory.API.Client.Tesselation;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -988,7 +989,7 @@ namespace Vintagestory.API.Common
                 BlockEntity entity = world.BlockAccessor.GetBlockEntity(pos);
                 if (entity != null)
                 {
-                    entity.OnBlockBroken();
+                    entity.OnBlockBroken(byPlayer);
                 }
             }
 
@@ -1589,24 +1590,25 @@ namespace Vintagestory.API.Common
 
         public virtual void OnDecalTesselation(IWorldAccessor world, MeshData decalMesh, BlockPos pos)
         {
-            if (VertexFlags.LeavesWindWave)
+            if (VertexFlags.WindMode == EnumWindBitMode.Leaves)
             {
-                for (int vertexNum = 0; vertexNum < decalMesh.GetVerticesCount(); vertexNum++)
+                int cnt = decalMesh.VerticesCount;
+                for (int vertexNum = 0; vertexNum < cnt; vertexNum++)
                 {
-                    decalMesh.Flags[vertexNum] |= VertexFlags.LeavesWindWaveBitMask;
+                    decalMesh.Flags[vertexNum] |= EnumWindBitModeMask.Leaves;
                 }
             }
             else
             {
-                if (VertexFlags.GrassWindWave)
+                if (VertexFlags.WindMode == EnumWindBitMode.NormalWind)
                 {
-                    setGrassWaveFlags(decalMesh);
+                    SetWindFlag(decalMesh);
                 }
             }
         }
 
         /// <summary>
-        /// If this block uses drawtype json, this method will be called. 
+        /// If this block uses drawtype json, this method will be called everytime a chunk containing this block is tesselated. 
         /// </summary>
         /// <param name="sourceMesh"></param>
         /// <param name="lightRgbsByCorner">Emitted light from this block</param>
@@ -1615,71 +1617,98 @@ namespace Vintagestory.API.Common
         /// <param name="extIndex3d">See description of chunkExtBlocks</param>
         public virtual void OnJsonTesselation(ref MeshData sourceMesh, ref int[] lightRgbsByCorner, BlockPos pos, Block[] chunkExtBlocks, int extIndex3d)
         {
-            if (VertexFlags.LeavesWindWave)
+            if (VertexFlags.WindMode == EnumWindBitMode.Leaves)
             {
-                int verticesCount = sourceMesh.GetVerticesCount();
+                int verticesCount = sourceMesh.VerticesCount;
                 for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
                 {
-                    sourceMesh.Flags[vertexNum] |= VertexFlags.LeavesWindWaveBitMask;
+                    sourceMesh.Flags[vertexNum] |= EnumWindBitModeMask.Leaves;
                 }
             }
             else
             {
-                if (VertexFlags.GrassWindWave)
+                if (VertexFlags.WindMode == EnumWindBitMode.NormalWind)
                 {
-                    setGrassWaveFlags(sourceMesh);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Deprecated!  Instead please implement Block.OnJsonTesselation(ref MeshData sourceMesh, ref int[] lightRgbsByCorner, BlockPos pos, Block[] chunkExtBlocks, int extIndex3d)
-        /// </summary>
-        [Obsolete("This overload of OnJsonTesselation() is deprecated since 1.15, and will NOT be called on rendering. Please implement/override the new overload instead")]
-        public virtual void OnJsonTesselation(ref MeshData sourceMesh, BlockPos pos, int[] chunkExtIds, ushort[] chunkLightExt, int extIndex3d)
-        {
-            if (VertexFlags.LeavesWindWave)
-            {
-                for (int vertexNum = 0; vertexNum < sourceMesh.GetVerticesCount(); vertexNum++)
-                {
-                    sourceMesh.Flags[vertexNum] |= VertexFlags.LeavesWindWaveBitMask;
-                }
-            }
-            else
-            {
-                if (VertexFlags.GrassWindWave)
-                {
-                    setGrassWaveFlags(sourceMesh);
+                    SetWindFlag(sourceMesh);
                 }
             }
         }
 
 
         public float WaveFlagMinY = 9 / 16f;
-        
 
-        void setGrassWaveFlags(MeshData sourceMesh)
+        /// <summary>
+        /// Sets given flag if vertex y > WaveFlagMinY, otherwise it clears all wind mode bits
+        /// </summary>
+        /// <param name="sourceMesh"></param>
+        /// <param name="flag"></param>
+        protected virtual void SetWindFlag(MeshData sourceMesh, int flag = EnumWindBitModeMask.NormalWind)
         {
-            int grassWave = VertexFlags.FoliageWindWaveBitMask;
-            int nograssWave = VertexFlags.clearWaveBits;
-
-            // Iterate over each element face
-            int verticesCount = sourceMesh.GetVerticesCount();
-            for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
+            int verticesCount = sourceMesh.VerticesCount;
+            for (int i = 0; i < verticesCount; i++)
             {
-                float y = sourceMesh.xyz[vertexNum * 3 + 1];
+                float y = sourceMesh.xyz[i * 3 + 1];
+
                 if (y > WaveFlagMinY)
                 {
-                    sourceMesh.Flags[vertexNum] |= grassWave;
+                    sourceMesh.Flags[i] |= flag;
                 }
                 else
                 {
-                    sourceMesh.Flags[vertexNum] &= nograssWave;
+                    sourceMesh.Flags[i] &= VertexFlags.ClearWindModeBitsMask;
                 }
-
             }
         }
 
+        protected virtual void ClearWindFlags(MeshData sourceMesh)
+        {
+            int verticesCount = sourceMesh.VerticesCount;
+            for (int i = 0; i < verticesCount; i++)
+            {
+                sourceMesh.Flags[i] &= VertexFlags.ClearWindModeBitsMask;
+            }
+        }
+
+        public static void ToggleWindModeSetWindData(MeshData sourceMesh, int leavesNoWaveTileSide, bool enableWind, int groundOffsetTop, int[] origFlags)
+        {
+            if (origFlags == null) origFlags = sourceMesh.Flags;
+            int clearFlags = VertexFlags.ClearWindBitsMask;
+            int verticesCount = sourceMesh.VerticesCount;
+
+            if (!enableWind)
+            {
+                // Shorter return path, and no need to test off in every iteration of the loop in the other code path
+                for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
+                {
+                    sourceMesh.Flags[vertexNum] &= clearFlags;
+                }
+                return;
+            }
+
+            for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
+            {
+                int flag = sourceMesh.Flags[vertexNum] & clearFlags;
+
+                float fx = sourceMesh.xyz[vertexNum * 3 + 0];
+                float fz = sourceMesh.xyz[vertexNum * 3 + 2];
+
+                // The calculation (int)(x - 1.5f) will be either -2, -1 or 0 - this works reliably unless a vertex is positioned greater than +40/16 or less than -24/16 in which case this code may produce surprising waves (but no leaf block vertex is anywhere close to these limits, even if rotated: a basic leaf model is the widest I know of, some vertices are at coordinates 24/16 or -8/16)
+                // The arithmetic right bit shift converts -2 to -1, while also preserving -1 -> -1 and leaving a value of 0 unchanged: a useful performance trick to avoid conditional jumps.
+
+                int x = (int)(fx - 1.5f) >> 1;
+                int y = (int)(sourceMesh.xyz[vertexNum * 3 + 1] - 1.5f) >> 1;
+                int z = (int)(fz - 1.5f) >> 1;
+
+                int sidesToCheckMask = 1 << TileSideEnum.Up - y | 4 + z * 4 | 2 - x * 6;
+
+                if ((leavesNoWaveTileSide & sidesToCheckMask) == 0)
+                {
+                    flag |= origFlags[vertexNum] | ((groundOffsetTop == 8 ? 7 : groundOffsetTop + y) << VertexFlags.WindDataBitsPos );
+                }
+
+                sourceMesh.Flags[vertexNum] = flag;
+            }
+        }
 
 
 
@@ -2299,7 +2328,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="facing"></param>
         /// <returns></returns>
-        public virtual int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing)
+        public virtual int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing, int rndIndex = -1)
         {
             if (Textures == null || Textures.Count == 0) return 0;
             CompositeTexture tex;
@@ -2309,7 +2338,7 @@ namespace Vintagestory.API.Common
             }
             if (tex?.Baked == null) return 0;
 
-            int color = capi.BlockTextureAtlas.GetRandomColor(tex.Baked.TextureSubId);
+            int color = capi.BlockTextureAtlas.GetRandomColor(tex.Baked.TextureSubId, rndIndex);
 
             if (ClimateColorMapResolved != null || SeasonColorMapResolved != null)
             {

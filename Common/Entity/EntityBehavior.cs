@@ -199,6 +199,15 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
+        /// Fired when the pathfinder does not find a path to given target
+        /// </summary>
+        /// <param name="target"></param>
+        public virtual void OnNoPath(Vec3d target)
+        {
+            
+        }
+
+        /// <summary>
         /// Called when a player looks at the entity with interaction help enabled
         /// </summary>
         /// <param name="world"></param>

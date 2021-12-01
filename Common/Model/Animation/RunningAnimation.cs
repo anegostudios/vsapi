@@ -90,7 +90,6 @@ namespace Vintagestory.API.Common
         {
             dt *= meta.GetCurrentAnimationSpeed(walkspeed);
 
-            
             if (Active || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
             {
                 EasingFactor = Math.Min(1f, EasingFactor + (1f - EasingFactor) * dt * meta.EaseInSpeed);

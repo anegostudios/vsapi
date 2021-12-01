@@ -38,6 +38,7 @@ namespace Vintagestory.API.Common
         public int Color;
         public int VertexFlags { get; set; }
 
+        public bool Async => false;
         public bool Bouncy { get; set; }
         public bool ShouldDieInAir { get; set; }
         public bool ShouldDieInLiquid { get; set; }
@@ -256,7 +257,7 @@ namespace Vintagestory.API.Common
 
             if (!reader.ReadBoolean())
             {
-                ColorByBlock = resolver.Blocks[reader.ReadInt16()];
+                ColorByBlock = resolver.Blocks[reader.ReadInt32()];
             }
 
             if (!reader.ReadBoolean())
@@ -284,6 +285,8 @@ namespace Vintagestory.API.Common
 
         public bool DieOnRainHeightmap { get; set; }
         public bool WindAffected { get; set; }
+
+        
 
         public void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {

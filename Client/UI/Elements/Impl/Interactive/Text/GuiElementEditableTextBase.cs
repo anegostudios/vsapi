@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using Cairo;
 using Vintagestory.API.MathTools;
-using Action = Vintagestory.API.Common.Action;
-using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
@@ -35,8 +33,8 @@ namespace Vintagestory.API.Client
         internal LoadedTexture textTexture;
         //internal int selectionTextureId;
 
-        public API.Common.Action<string> OnTextChanged;
-        public API.Common.Action<double, double> OnCursorMoved;
+        public Action<string> OnTextChanged;
+        public Action<double, double> OnCursorMoved;
 
         internal Action OnFocused = null;
         internal Action OnLostFocus = null;

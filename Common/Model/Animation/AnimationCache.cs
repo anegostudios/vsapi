@@ -52,7 +52,7 @@ namespace Vintagestory.API.Common
                 return new NoAnimationManager();
             }
 
-            string dictKey = entity.Code + "-" + entity.Properties.Client.Shape.Base.ToString();
+            string dictKey = entity.Code + "-" + entity.Properties.Client.ShapeForEntity.Base.ToString();
 
             object animCacheObj;
             Dictionary<string, AnimCacheEntry> animCache;

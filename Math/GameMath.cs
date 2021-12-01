@@ -1283,6 +1283,27 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
+        /// Performs a Fisher-Yates shuffle in linear time or O(n)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="rand"></param>
+        /// <param name="array"></param>
+        public static void Shuffle<T>(LCGRandom rand, List<T> array)
+        {
+            int n = array.Count;        // The number of items left to shuffle (loop invariant).
+            while (n > 1)
+            {
+                int k = rand.NextInt(n);  // 0 <= k < n.
+                n--;                   // n is now the last pertinent index;
+                T temp = array[n];     // swap array[n] with array[k] (does nothing if k == n).
+                array[n] = array[k];
+                array[k] = temp;
+            }
+        }
+
+
+
+        /// <summary>
         /// Plot a 3d line, see also http://members.chello.at/~easyfilter/bresenham.html
         /// </summary>
         /// <param name="x0"></param>

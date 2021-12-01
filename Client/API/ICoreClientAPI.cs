@@ -16,7 +16,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Add your own link protocol here if you want to implement a custom protocol. E.g. image://url-to-picture
         /// </summary>
-        Dictionary<string, API.Common.Action<LinkTextComponent>> LinkProtocols { get; }
+        Dictionary<string, Action<LinkTextComponent>> LinkProtocols { get; }
 
         /// <summary>
         /// Add your own rich text elements here. Your will need to convert a VTML tag into a RichTextComponentBase element. 
@@ -175,7 +175,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="protocolname"></param>
         /// <param name="onLinkClicked"></param>
-        void RegisterLinkProtocol(string protocolname, Common.Action<LinkTextComponent> onLinkClicked);
+        void RegisterLinkProtocol(string protocolname, Action<LinkTextComponent> onLinkClicked);
 
         /// <summary>
         /// Shows a client side only chat message in the current chat channel. Uses the same code paths a server => client message takes. Does not execute client commands.
@@ -229,7 +229,7 @@ namespace Vintagestory.API.Client
         /// <param name="soundType"></param>
         /// <param name="onLoaded"></param>
         /// <returns></returns>
-        MusicTrack StartTrack(AssetLocation soundLocation, float priority, EnumSoundType soundType, API.Common.Action<ILoadedSound> onLoaded = null);
+        MusicTrack StartTrack(AssetLocation soundLocation, float priority, EnumSoundType soundType, Action<ILoadedSound> onLoaded = null);
 
         
 

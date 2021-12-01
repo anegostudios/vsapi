@@ -35,7 +35,7 @@ namespace Vintagestory.API.Server
         /// <param name="blastType"></param>
         /// <param name="destructionRadius"></param>
         /// <param name="injureRadius"></param>
-        void CreateExplosion(BlockPos pos, EnumBlastType blastType, double destructionRadius, double injureRadius);
+        void CreateExplosion(BlockPos pos, EnumBlastType blastType, double destructionRadius, double injureRadius, float blockDropChanceMultiplier = 1);
 
         /// <summary>
         /// List of all loaded tree generators

@@ -122,9 +122,12 @@ namespace Vintagestory.API.Common
         public abstract Color GetPixel(int x, int y);
         public abstract Color GetPixelRel(float x, float y);
         
-        public abstract int[] GetPixelsTransformed(int rot = 0, int alpha = 100);
+        public abstract int[] GetPixelsTransformed(int rot = 0, int mulalpha = 255);
         public abstract void Save(string filename);
-        
+
+        public abstract void MulAlpha(int alpha = 255);
+
+
     }
 
 }

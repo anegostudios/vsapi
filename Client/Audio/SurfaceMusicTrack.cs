@@ -362,7 +362,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="seconds">The duration of the fade out in seconds.</param>
         /// <param name="onFadedOut">What to have happen after the track has faded out.</param>
-        public void FadeOut(float seconds, Common.Action onFadedOut = null)
+        public void FadeOut(float seconds, Action onFadedOut = null)
         {
             loading = false;
 

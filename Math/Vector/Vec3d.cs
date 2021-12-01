@@ -381,6 +381,15 @@ namespace Vintagestory.API.MathTools
             return (float)(dx * dx + dy * dy + dz * dz);
         }
 
+        public float DistanceTo(Vec3d pos)
+        {
+            double dx = X - pos.X;
+            double dy = Y - pos.Y;
+            double dz = Z - pos.Z;
+
+            return (float)Math.Sqrt(dx * dx + dy * dy + dz * dz);
+        }
+
         public float HorizontalSquareDistanceTo(Vec3d pos)
         {
             double dx = X - pos.X;
@@ -540,6 +549,15 @@ namespace Vintagestory.API.MathTools
             Z -= cosPitch * cosYaw * offset;
 
             return this;
+        }
+
+        public bool Equals(Vec3d other, double epsilon)
+        {
+            return
+                Math.Abs(this.X - other.X) < epsilon &&
+                Math.Abs(this.Y - other.Y) < epsilon &&
+                Math.Abs(this.Z - other.Z) < epsilon
+            ;
         }
 
 

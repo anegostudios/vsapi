@@ -37,22 +37,22 @@ namespace Vintagestory.API.Client
     }
 
     /// <summary>
-    /// Interface that allows custom model model meshing for items, blocks and entities
-    /// Texturing crash course:
-    /// 1. Block, Item and Entity textures are loaded from json files in the form of a CompositeTexture instance
-    /// 2. After connecting to a game server, the client inserts all of these textures into their type-respective texture atlasses
-    /// 3. After insertion a "texture sub-id" is left behind in the CompositeTexture.Baked Property
-    /// 4. You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key)
-    /// 
-    /// Shape Tesselation crash course:
-    /// 1. Block and Item shapes are loaded from json files in the form of a CompositeShape instance
-    /// 2. A CompositeShape instance hold some block/item specific information as well as an identifier to a Shape instance
-    /// 4. After connecting to a game server, the client loads all shapes from the shape folder then finds each blocks/items shape by its shape identifier 
-    /// 5. Result is a MeshData instance that holds all vertices, UV coords, colors and etc. for each block
-    /// 6. That meshdata instance is 
-    ///    a) Held as-is in memory for using during chunk tesselation (you can get a reference to it through getDefaultBlockMesh())
-    ///    b) "Compiled" to a Model for use during rendering in the gui. 
-    ///       Model Compilation means all it's mesh data is uploaded onto the graphcis through a VAO and a ModelRef instance is left behind which
+    /// Interface that allows custom model model meshing for items, blocks and entities<br/>
+    /// Texturing crash course:<br/>
+    /// 1. Block, Item and Entity textures are loaded from json files in the form of a CompositeTexture instance<br/>
+    /// 2. After connecting to a game server, the client inserts all of these textures into their type-respective texture atlasses<br/>
+    /// 3. After insertion a "texture sub-id" is left behind in the CompositeTexture.Baked Property<br/>
+    /// 4. You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key)<br/>
+    /// <br/>
+    /// Shape Tesselation crash course:<br/>
+    /// 1. Block and Item shapes are loaded from json files in the form of a CompositeShape instance<br/>
+    /// 2. A CompositeShape instance hold some block/item specific information as well as an identifier to a Shape instance<br/>
+    /// 4. After connecting to a game server, the client loads all shapes from the shape folder then finds each blocks/items shape by its shape identifier <br/>
+    /// 5. Result is a MeshData instance that holds all vertices, UV coords, colors and etc. for each block<br/>
+    /// 6. That meshdata instance is <br/>
+    ///    a) Held as-is in memory for using during chunk tesselation (you can get a reference to it through getDefaultBlockMesh())<br/>
+    ///    b) "Compiled" to a Model for use during rendering in the gui. <br/>
+    ///       Model Compilation means all it's mesh data is uploaded onto the graphcis through a VAO and a ModelRef instance is left behind which<br/>
     ///       can be used by the RenderAPI to render it.
     /// </summary>
     public interface ITesselatorAPI

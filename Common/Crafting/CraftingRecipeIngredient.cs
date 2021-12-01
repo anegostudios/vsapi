@@ -141,7 +141,12 @@ namespace Vintagestory.API.Common
 
         public CraftingRecipeIngredient Clone()
         {
-            CraftingRecipeIngredient stack = new CraftingRecipeIngredient()
+            return CloneTo<CraftingRecipeIngredient>();
+        }
+
+        public T CloneTo<T>() where T:CraftingRecipeIngredient, new()
+        {
+            T stack = new T()
             {
                 Code = Code.Clone(),
                 Type = Type,
@@ -159,7 +164,6 @@ namespace Vintagestory.API.Common
 
             return stack;
         }
-
 
         public override string ToString()
         {

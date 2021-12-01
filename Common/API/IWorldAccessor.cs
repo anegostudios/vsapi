@@ -541,7 +541,7 @@ namespace Vintagestory.API.Common
         /// <param name="OnGameTick"></param>
         /// <param name="millisecondInterval"></param>
         /// <returns>listenerId</returns>
-        long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval);
+        long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval, int initialDelayOffsetMs = 0);
 
         /// <summary>
         /// Removes a game tick listener

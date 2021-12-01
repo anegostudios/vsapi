@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
         public static int DefaultScrollbarWidth = 20;
         public static int DeafultScrollbarPadding = 2;
 
-        protected API.Common.Action<float> onNewScrollbarValue;
+        protected Action<float> onNewScrollbarValue;
 
 
         public bool mouseDownOnScrollbarHandle;
@@ -63,7 +63,7 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The client API.</param>
         /// <param name="onNewScrollbarValue">The event that fires when the scrollbar is changed.</param>
         /// <param name="bounds">The bounds of the scrollbar.</param>
-        public GuiElementScrollbar(ICoreClientAPI capi, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds) : base(capi, bounds)
+        public GuiElementScrollbar(ICoreClientAPI capi, Action<float> onNewScrollbarValue, ElementBounds bounds) : base(capi, bounds)
         {
             handleTexture = new LoadedTexture(capi);
 
@@ -292,7 +292,7 @@ namespace Vintagestory.API.Client
         /// <param name="onNewScrollbarValue">The action when the scrollbar changes.</param>
         /// <param name="bounds">The bounds of the scrollbar.</param>
         /// <param name="key">The name of the scrollbar.</param>
-        public static GuiComposer AddVerticalScrollbar(this GuiComposer composer, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds, string key = null)
+        public static GuiComposer AddVerticalScrollbar(this GuiComposer composer, Action<float> onNewScrollbarValue, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {

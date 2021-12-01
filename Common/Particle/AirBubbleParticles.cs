@@ -7,6 +7,8 @@ namespace Vintagestory.API.Common
 {
     public class AirBubbleParticles : IParticlePropertiesProvider
     {
+        public bool Async => false;
+
         Random rand = new Random();
         /// <summary>
         /// The base position of the bubble particle.

@@ -28,8 +28,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Triggered when the gui scale changed or the game window was resized
         /// </summary>
-        public event Common.Action OnRecomposed;
-        public API.Common.Action<bool> OnFocusChanged;
+        public event Action OnRecomposed;
+        public Action<bool> OnFocusChanged;
 
         public static int Outlines = 0;
 
@@ -143,7 +143,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="method"></param>
         /// <returns></returns>
-        public GuiComposer Execute(API.Common.Action method)
+        public GuiComposer Execute(Action method)
         {
             if (conditionalAdds.Count > 0 && !conditionalAdds.Peek()) return this;
 
@@ -567,6 +567,20 @@ namespace Vintagestory.API.Client
             if (!args.Handled && (args.KeyCode == (int)GlKeys.Enter || args.KeyCode == (int)GlKeys.KeypadEnter) && CurrentTabIndexElement is GuiElementEditableTextBase)
             {
                 UnfocusOwnElementsExcept(null);
+            }
+        }
+
+        /// <summary>
+        /// Fires the OnKeyDown events.
+        /// </summary>
+        /// <param name="args">The keyboard information.</param>
+        /// <param name="haveFocus">Whether or not the gui has focus.</param>
+        public void OnKeyUp(KeyEvent args)
+        {
+            foreach (GuiElement element in interactiveElements.Values)
+            {
+                element.OnKeyUp(Api, args);
+                if (args.Handled) break;
             }
         }
 

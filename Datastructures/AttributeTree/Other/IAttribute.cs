@@ -24,5 +24,6 @@ namespace Vintagestory.API.Datastructures
 
         bool Equals(IWorldAccessor worldForResolve, IAttribute attr);
 
+
     }
 }

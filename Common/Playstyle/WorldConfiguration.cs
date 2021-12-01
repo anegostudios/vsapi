@@ -19,6 +19,7 @@ namespace Vintagestory.API.Common
     {
         public EnumDataType DataType;
 
+        public string Category;
         public string Code;
         public double Min;
         public double Max;

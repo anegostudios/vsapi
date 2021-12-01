@@ -21,6 +21,7 @@ namespace Vintagestory.API.Common
         Hoe,
         Saw,
         Chisel,
-        Scythe
+        Scythe,
+        Sling
     }
 }

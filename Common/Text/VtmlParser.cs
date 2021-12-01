@@ -53,7 +53,7 @@ namespace Vintagestory.API.Common
         }
         
 
-        static void Richtextify(ICoreClientAPI capi, VtmlToken token, ref List<RichTextComponentBase> elems, Stack<CairoFont> fontStack, Common.Action<LinkTextComponent> didClickLink)
+        static void Richtextify(ICoreClientAPI capi, VtmlToken token, ref List<RichTextComponentBase> elems, Stack<CairoFont> fontStack, Action<LinkTextComponent> didClickLink)
         {
             if (token is VtmlTagToken)
             {

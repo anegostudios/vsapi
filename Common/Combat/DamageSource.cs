@@ -41,12 +41,17 @@ namespace Vintagestory.API.Common
         public int DamageTier = 0;
 
         /// <summary>
+        /// The amount of knockback this damage will incur
+        /// </summary>
+        public float KnockbackStrength = 1f;
+
+        /// <summary>
         /// Fetches the location of the damage source from either SourcePos or SourceEntity
         /// </summary>
         /// <returns></returns>
         public Vec3d GetSourcePosition()
         {
-            return SourceEntity == null ? SourcePos : SourceEntity.Pos.XYZ;
+            return SourceEntity == null ? SourcePos : SourceEntity.SidedPos.XYZ;
         }
     }
 }

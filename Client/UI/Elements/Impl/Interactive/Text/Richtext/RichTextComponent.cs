@@ -14,7 +14,7 @@ namespace Vintagestory.API.Client
     {
         protected TextDrawUtil textUtil;
         
-        protected string displayText;
+        public string displayText;
         public CairoFont font;
 
         public TextLine[] lines;
@@ -30,7 +30,6 @@ namespace Vintagestory.API.Client
                 // ok apparently text extents of " " is 0 on a mac? o.O
                 if (displayText[displayText.Length - 1] == ' ') PaddingRight = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
                 if (displayText[0] == ' ') PaddingLeft = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
-                //this.displayText = displayText.Trim(new char[] { ' ' }); 
             }
             else
             {

@@ -10,6 +10,8 @@ namespace Vintagestory.API.Common
     [JsonObject(MemberSerialization.OptIn)]
     public class AdvancedParticleProperties : IParticlePropertiesProvider
     {
+        public bool Async => false;
+
         [JsonProperty]
         public bool RandomVelocityChange { get; set; }
 

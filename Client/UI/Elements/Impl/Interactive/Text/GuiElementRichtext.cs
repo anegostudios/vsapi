@@ -271,7 +271,15 @@ namespace Vintagestory.API.Client
             }
 
             Bounds.fixedHeight = (posY + 1) / RuntimeEnv.GUIScale;
-            
+
+
+            double maxHeight = 0;
+            foreach (int index in currentLine)
+            {
+                RichTextComponentBase lineComp = Components[index];
+                Rectangled lastLineBounds = lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1];
+                maxHeight = Math.Max(maxHeight, lastLineBounds.Height);
+            }
 
             foreach (int index in currentLine)
             {
@@ -284,7 +292,7 @@ namespace Vintagestory.API.Client
                 }
                 if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
                 {
-                    lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight / 2);
+                    lastLineBounds.Y = (maxHeight - lastLineBounds.Height) / 2f;
                 }
             }
 
@@ -493,7 +501,7 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
-        public void SetNewText(string vtmlCode, CairoFont baseFont, Common.Action<LinkTextComponent> didClickLink = null)
+        public void SetNewText(string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
         {
             SetNewTextWithoutRecompose(vtmlCode, baseFont, didClickLink);
             RecomposeText();
@@ -505,7 +513,7 @@ namespace Vintagestory.API.Client
             RecomposeText();
         }
 
-        public void SetNewTextWithoutRecompose(string vtmlCode, CairoFont baseFont, Common.Action<LinkTextComponent> didClickLink = null)
+        public void SetNewTextWithoutRecompose(string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
         {
             if (this.Components != null)
             {
@@ -573,7 +581,7 @@ namespace Vintagestory.API.Client
         /// <param name="didClickLink"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static GuiComposer AddRichtext(this GuiComposer composer, string vtmlCode, CairoFont baseFont, ElementBounds bounds, API.Common.Action<LinkTextComponent> didClickLink, string key = null)
+        public static GuiComposer AddRichtext(this GuiComposer composer, string vtmlCode, CairoFont baseFont, ElementBounds bounds, Action<LinkTextComponent> didClickLink, string key = null)
         {
             if (!composer.composed)
             {

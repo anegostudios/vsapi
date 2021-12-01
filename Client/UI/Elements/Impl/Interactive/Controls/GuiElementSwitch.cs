@@ -1,11 +1,12 @@
 ﻿using Cairo;
+using System;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
     public class GuiElementSwitch : GuiElementControl
     {
-        API.Common.Action<bool> handler;
+        Action<bool> handler;
 
         LoadedTexture onTexture;
 
@@ -27,7 +28,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the element.</param>
         /// <param name="size">The size of the switch. (Default: 30)</param>
         /// <param name="padding">The padding on the outside of the switch (Default: 5)</param>
-        public GuiElementSwitch(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds, double size = 30, double padding = 4) : base(capi, bounds)
+        public GuiElementSwitch(ICoreClientAPI capi, Action<bool> OnToggled, ElementBounds bounds, double size = 30, double padding = 4) : base(capi, bounds)
         {
             onTexture = new LoadedTexture(capi);
 
@@ -130,7 +131,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">the name of the switch. (Default: null)</param>
         /// <param name="size">The size of the switch (Default: 30)</param>
         /// <param name="padding">The padding around the switch (Default: 5)</param>
-        public static GuiComposer AddSwitch(this GuiComposer composer, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null, double size = 30, double padding = 4)
+        public static GuiComposer AddSwitch(this GuiComposer composer, Action<bool> onToggle, ElementBounds bounds, string key = null, double size = 30, double padding = 4)
         {
             if (!composer.composed)
             {

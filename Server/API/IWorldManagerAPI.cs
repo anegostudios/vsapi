@@ -19,7 +19,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Callback for when the chunks are ready and loaded
         /// </summary>
-        public API.Common.Action OnLoaded = null;
+        public Action OnLoaded = null;
         /// <summary>
         /// Additional config to pass onto the world generators
         /// </summary>
@@ -251,7 +251,7 @@ namespace Vintagestory.API.Server
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
         /// <returns></returns>
-        void TestChunkExists(int chunkX, int chunkY, int chunkZ, API.Common.Action<bool> onTested);
+        void TestChunkExists(int chunkX, int chunkY, int chunkZ, Action<bool> onTested);
 
         /// <summary>
         /// Send or Resend a loaded chunk to all connected players. Has no effect when the chunk is not loaded
@@ -300,7 +300,7 @@ namespace Vintagestory.API.Server
         void UnloadChunkColumn(int chunkX, int chunkZ);
 
         /// <summary>
-        /// Deletes a column of chunks at given coordinate from the save file. Also deletes the map chunk and map region at the same coordinate. Also unloads the chunk in the same process.
+        /// Deletes a column of chunks at given coordinate from the save file. Also deletes the map chunk and map region at the same coordinate. Also unloads the chunk in the same process. Also deletes all entities in this chunk
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>

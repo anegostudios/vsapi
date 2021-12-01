@@ -17,6 +17,7 @@ namespace Vintagestory.API.Client
         GuiElementStaticText normalText;
         GuiElementStaticText pressedText;
 
+        LoadedTexture normalTexture;
         LoadedTexture hoverTexture;
         LoadedTexture disabledTexture;
         
@@ -34,6 +35,8 @@ namespace Vintagestory.API.Client
 
         double textOffsetY;
 
+        public bool Visible = true;
+
         public override bool Focusable { get { return true; } }
 
         /// <summary>
@@ -49,14 +52,14 @@ namespace Vintagestory.API.Client
         public GuiElementTextButton(ICoreClientAPI capi, string text, CairoFont font, CairoFont hoverFont, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal) : base(capi, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
+            normalTexture = new LoadedTexture(capi);
             disabledTexture = new LoadedTexture(capi);
             this.buttonStyle = style;
 
-            normalText = new GuiElementStaticText(capi, text, EnumTextOrientation.Center, bounds, font);
+            normalText = new GuiElementStaticText(capi, text, EnumTextOrientation.Center, bounds.CopyOnlySize(), font);
             normalText.AutoBoxSize(true);
 
             pressedText = new GuiElementStaticText(capi, text, EnumTextOrientation.Center, bounds.CopyOnlySize(), hoverFont);
-            bounds = normalText.Bounds;
 
             this.onClick = onClick;
         }
@@ -71,45 +74,66 @@ namespace Vintagestory.API.Client
             pressedText.orientation = orientation;
         }
 
+        public override void BeforeCalcBounds()
+        {
+            normalText.AutoBoxSize(true);
+            Bounds.fixedWidth = normalText.Bounds.fixedWidth;
+            Bounds.fixedHeight = normalText.Bounds.fixedHeight;
 
+            pressedText.Bounds = normalText.Bounds.CopyOnlySize();
+        }
 
         public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
-            ComposeButton(ctxStatic, surfaceStatic, false);
+            Bounds.CalcWorldBounds();
+            normalText.Bounds.CalcWorldBounds();
 
-            using (var surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight))
-            using (var ctx = genContext(surface))
+            var surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
+            var ctx = genContext(surface);
+
+            // 1. Normal button
+            ComposeButton(ctx, surface);
+            generateTexture(surface, ref normalTexture);
+            ctx.Clear();
+
+
+            // 2. Hover button
+            if (buttonStyle != EnumButtonStyle.None)
             {
-                if (buttonStyle != EnumButtonStyle.None)
-                {
-                    ctx.SetSourceRGBA(0, 0, 0, 0.4);
-                    ctx.Rectangle(0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
-                    ctx.Fill();
-                }
-
-                pressedText.Bounds.fixedY += textOffsetY;
-                pressedText.ComposeElements(ctx, surface);
-                pressedText.Bounds.fixedY -= textOffsetY;
-
-                generateTexture(surface, ref hoverTexture);
+                ctx.SetSourceRGBA(0, 0, 0, 0.4);
+                ctx.Rectangle(0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
+                ctx.Fill();
             }
 
-            using (var surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight))
-            using (var ctx = genContext(surface))
-            {
-                if (buttonStyle != EnumButtonStyle.None)
-                {
-                    ctx.SetSourceRGBA(0, 0, 0, 0.4);
-                    ctx.Rectangle(0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
-                    ctx.Fill();
-                }
+            pressedText.Bounds.fixedY += textOffsetY;
+            pressedText.ComposeElements(ctx, surface);
+            pressedText.Bounds.fixedY -= textOffsetY;
 
-                generateTexture(surface, ref disabledTexture);
+            generateTexture(surface, ref hoverTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
+
+
+            // 3. Disabled button
+            surface = new ImageSurface(Format.Argb32, 2, 2);
+            ctx = genContext(surface);
+
+            if (buttonStyle != EnumButtonStyle.None)
+            {
+                ctx.SetSourceRGBA(0, 0, 0, 0.4);
+                ctx.Rectangle(0, 0, 2, 2);
+                ctx.Fill();
             }
+
+            generateTexture(surface, ref disabledTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
         }
 
 
-        void ComposeButton(Context ctx, ImageSurface surface, bool pressed)
+        void ComposeButton(Context ctx, ImageSurface surface)
         {
             double embossHeight = scaled(2.5);
 
@@ -119,14 +143,10 @@ namespace Vintagestory.API.Client
             }
 
 
-            Bounds.CalcWorldBounds();
-            normalText.AutoBoxSize(true);
-            pressedText.Bounds = normalText.Bounds.CopyOnlySize();
-
             if (buttonStyle != EnumButtonStyle.None)
             {
                 // Brown background
-                Rectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight);
+                Rectangle(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
                 ctx.SetSourceRGBA(69 / 255.0, 52 / 255.0, 36 / 255.0, 1);
                 ctx.Fill();
             }
@@ -134,7 +154,7 @@ namespace Vintagestory.API.Client
             if (buttonStyle == EnumButtonStyle.MainMenu)
             {
                 // Top shine
-                Rectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, embossHeight);
+                Rectangle(ctx, 0, 0, Bounds.OuterWidth, embossHeight);
                 ctx.SetSourceRGBA(1, 1, 1, 0.15);
                 ctx.Fill();
             }
@@ -142,12 +162,12 @@ namespace Vintagestory.API.Client
             if (buttonStyle == EnumButtonStyle.Normal || buttonStyle == EnumButtonStyle.Small)
             {
                 // Top shine
-                Rectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth - embossHeight, embossHeight);
+                Rectangle(ctx, 0, 0, Bounds.OuterWidth - embossHeight, embossHeight);
                 ctx.SetSourceRGBA(1, 1, 1, 0.15);
                 ctx.Fill();
 
                 // Left shine
-                Rectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + embossHeight, embossHeight, Bounds.OuterHeight - embossHeight);
+                Rectangle(ctx, 0, 0 + embossHeight, embossHeight, Bounds.OuterHeight - embossHeight);
                 ctx.SetSourceRGBA(1, 1, 1, 0.15);
                 ctx.Fill();
             }
@@ -169,7 +189,7 @@ namespace Vintagestory.API.Client
             if (buttonStyle == EnumButtonStyle.MainMenu)
             {
                 // Bottom shade
-                Rectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + Bounds.OuterHeight - embossHeight, Bounds.OuterWidth, embossHeight);
+                Rectangle(ctx, 0, 0 + Bounds.OuterHeight - embossHeight, Bounds.OuterWidth, embossHeight);
                 ctx.SetSourceRGBA(0, 0, 0, 0.2);
                 ctx.Fill();
             }
@@ -177,41 +197,31 @@ namespace Vintagestory.API.Client
             if (buttonStyle == EnumButtonStyle.Normal || buttonStyle == EnumButtonStyle.Small)
             {
                 // Bottom shade
-                Rectangle(ctx, Bounds.bgDrawX + embossHeight, Bounds.bgDrawY + Bounds.OuterHeight - embossHeight, Bounds.OuterWidth - 2*embossHeight, embossHeight);
+                Rectangle(ctx, 0 + embossHeight, 0 + Bounds.OuterHeight - embossHeight, Bounds.OuterWidth - 2*embossHeight, embossHeight);
                 ctx.SetSourceRGBA(0, 0, 0, 0.2);
                 ctx.Fill();
 
                 // Right shade
-                Rectangle(ctx, Bounds.bgDrawX + Bounds.OuterWidth - embossHeight, Bounds.bgDrawY, embossHeight, Bounds.OuterHeight);
+                Rectangle(ctx, 0 + Bounds.OuterWidth - embossHeight, 0, embossHeight, Bounds.OuterHeight);
                 ctx.SetSourceRGBA(0, 0, 0, 0.2);
                 ctx.Fill();
-            }
-            
-
-            if (buttonStyle == EnumButtonStyle.Normal || buttonStyle == EnumButtonStyle.Small)
-            {
-                //EmbossRoundRectangleElement(ctx, bounds.bgDrawX, bounds.bgDrawY, bounds.OuterWidth, bounds.OuterHeight, false, 2);
             }
         }
 
 
         public override void RenderInteractiveElements(float deltaTime)
         {
+            if (!Visible) return;
+
+            api.Render.Render2DTexturePremultipliedAlpha(normalTexture.TextureId, Bounds);
+
             if (!enabled)
             {
-                api.Render.Render2DTexturePremultipliedAlpha(
-                    disabledTexture.TextureId,
-                    normalText.Bounds.renderX, normalText.Bounds.renderY,
-                    normalText.Bounds.OuterWidthInt, normalText.Bounds.OuterHeightInt
-                );
+                api.Render.Render2DTexturePremultipliedAlpha(disabledTexture.TextureId, Bounds);
             }
             else if (isOver || currentlyMouseDownOnElement)
             {
-                api.Render.Render2DTexturePremultipliedAlpha(
-                    hoverTexture.TextureId,
-                    normalText.Bounds.renderX, normalText.Bounds.renderY,
-                    normalText.Bounds.OuterWidthInt, normalText.Bounds.OuterHeightInt
-                );
+                api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, Bounds);
             }
         }
 
@@ -219,6 +229,7 @@ namespace Vintagestory.API.Client
 
         public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)
         {
+            if (!Visible) return;
             if (!HasFocus) return;
             if (args.KeyCode == (int)GlKeys.Enter)
             {
@@ -237,6 +248,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
+            if (!Visible) return;
             if ((enabled && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) || active)
             {
                 if (!isOver && PlaySound) api.Gui.PlaySound("menubutton");
@@ -251,6 +263,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
+            if (!Visible) return;
             if (!enabled) return;
 
             base.OnMouseDownOnElement(api, args);
@@ -260,6 +273,8 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
+            if (!Visible) return;
+
             base.OnMouseUp(api, args);
 
             currentlyMouseDownOnElement = false;
@@ -299,6 +314,7 @@ namespace Vintagestory.API.Client
             normalText?.Dispose();
             pressedText?.Dispose();
             disabledTexture?.Dispose();
+            normalTexture?.Dispose();
         }
     }
 

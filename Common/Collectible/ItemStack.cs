@@ -183,7 +183,7 @@ namespace Vintagestory.API.Common
         {
             if (collectible == null)
             {
-                throw new ArgumentNullException("Can't create itemstack without collectible!");
+                throw new Exception("Can't create itemstack without collectible!");
             }
 
             if (collectible is Block)
@@ -210,7 +210,7 @@ namespace Vintagestory.API.Common
         {
             if (item == null)
             {
-                throw new ArgumentNullException("Can't create itemstack without item!");
+                throw new Exception("Can't create itemstack without item!");
             }
             Class = EnumItemClass.Item;
             Id = item.ItemId;
@@ -267,7 +267,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Replace all the attributes from this item stack by given stack
+        /// Replace all the properties (id, class, attributes, stacksize, etc...) from this item stack by given stack
         /// </summary>
         /// <param name="stack"></param>
         public void SetFrom(ItemStack stack)
@@ -448,12 +448,18 @@ namespace Vintagestory.API.Common
 
         public override int GetHashCode()
         {
+            return GetHashCode(null);
+        }
+
+        public int GetHashCode(string[] ignoredAttributes)
+        {
             if (Class == EnumItemClass.Item)
             {
-                return 0 ^ this.Id ^ Attributes.GetHashCode();
-            } else
+                return 0 ^ this.Id ^ Attributes.GetHashCode(ignoredAttributes);
+            }
+            else
             {
-                return (1<<17) ^ this.Id ^ Attributes.GetHashCode();
+                return (1 << 17) ^ this.Id ^ Attributes.GetHashCode(ignoredAttributes);
             }
         }
     }

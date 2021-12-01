@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Vintagestory.API.Common
 {
@@ -133,6 +134,8 @@ namespace Vintagestory.API.Common
         /// <param name="slotNotifyEffect"></param>
         /// <returns>One or more client packets that may be sent to the server for synchronisation</returns>
         object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, bool slotNotifyEffect = false);
+
+        object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, StringBuilder shiftClickDebugText, bool slotNotifyEffect = false);
 
         /// <summary>
         /// Tries to move items from source slot to target slot (useful for client side inventory utilities)

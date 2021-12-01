@@ -21,7 +21,7 @@ namespace Vintagestory.API.Client
         public ItemStack[] Itemstacks;
         protected ItemSlot slot;
 
-        protected Common.Action<ItemStack> onStackClicked;
+        protected Action<ItemStack> onStackClicked;
 
         protected float secondsVisible =1;
         protected int curItemIndex;
@@ -38,7 +38,7 @@ namespace Vintagestory.API.Client
         /// <param name="itemstacks"></param>
         /// <param name="unscaleSize"></param>
         /// <param name="floatType"></param>
-        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double unscaleSize, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double unscaleSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();
 
@@ -54,7 +54,7 @@ namespace Vintagestory.API.Client
         /// <param name="itemstackgroup"></param>
         /// <param name="unscaleSize"></param>
         /// <param name="floatType"></param>
-        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double unscaleSize, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null) : base(capi)
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double unscaleSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();
             this.onStackClicked = onStackClicked;

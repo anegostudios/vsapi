@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
     public class GuiElementItemSlotGrid : GuiElementItemSlotGridBase
     {
 
-        public GuiElementItemSlotGrid(ICoreClientAPI capi, IInventory inventory, API.Common.Action<object> SendPacketHandler, int cols, int[] visibleSlots, ElementBounds bounds) : base(capi, inventory, SendPacketHandler, cols, bounds)
+        public GuiElementItemSlotGrid(ICoreClientAPI capi, IInventory inventory, Action<object> SendPacketHandler, int cols, int[] visibleSlots, ElementBounds bounds) : base(capi, inventory, SendPacketHandler, cols, bounds)
         {
             DetermineAvailableSlots(visibleSlots);
 
@@ -60,7 +60,7 @@ namespace Vintagestory.API.Client
         /// <param name="columns">The number of columns in the slot grid.</param>
         /// <param name="bounds">the bounds of the slot grid.</param>
         /// <param name="key">The key for this particular slot grid.</param>
-        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, API.Common.Action<object> SendPacket, int columns, ElementBounds bounds, string key=null)
+        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, ElementBounds bounds, string key=null)
         {
             if (!composer.composed)
             {
@@ -79,7 +79,7 @@ namespace Vintagestory.API.Client
         /// <param name="selectiveSlots">The slots within the inventory that are currently accessible.</param>
         /// <param name="bounds">the bounds of the slot grid.</param>
         /// <param name="key">The key for this particular slot grid.</param>
-        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, API.Common.Action<object> SendPacket, int columns, int[] selectiveSlots, ElementBounds bounds, string key = null)
+        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, int[] selectiveSlots, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {

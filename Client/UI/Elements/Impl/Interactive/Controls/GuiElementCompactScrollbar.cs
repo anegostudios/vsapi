@@ -1,4 +1,5 @@
-﻿using Cairo;
+﻿using System;
+using Cairo;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
@@ -21,7 +22,7 @@ namespace Vintagestory.API.Client
         /// <param name="capi">Client API</param>
         /// <param name="onNewScrollbarValue">Event for the changing of the scrollbar or scrolling of the mousewheel.</param>
         /// <param name="bounds">the bounding box of the scrollbar.</param>
-        public GuiElementCompactScrollbar(ICoreClientAPI capi, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds) : base(capi, onNewScrollbarValue, bounds) {
+        public GuiElementCompactScrollbar(ICoreClientAPI capi, Action<float> onNewScrollbarValue, ElementBounds bounds) : base(capi, onNewScrollbarValue, bounds) {
 
         }
 
@@ -91,7 +92,7 @@ namespace Vintagestory.API.Client
         /// <param name="onNewScrollbarValue">The event fired for the change in the scrollbar.</param>
         /// <param name="bounds">the bounds of the scrollbar.</param>
         /// <param name="key">the internal name of the scrollbar.</param>
-        public static GuiComposer AddCompactVerticalScrollbar(this GuiComposer composer, API.Common.Action<float> onNewScrollbarValue, ElementBounds bounds, string key = null)
+        public static GuiComposer AddCompactVerticalScrollbar(this GuiComposer composer, Action<float> onNewScrollbarValue, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {

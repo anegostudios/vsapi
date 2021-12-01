@@ -233,5 +233,7 @@ namespace Vintagestory.API.Datastructures
 
         bool Equals(IWorldAccessor worldForResolve, IAttribute attr, params string[] ignoreSubTrees);
         bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other);
+
+        int GetHashCode(string[] ignoredAttributes);
     }
 }

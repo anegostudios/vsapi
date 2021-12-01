@@ -5,7 +5,6 @@ using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
-using Action = Vintagestory.API.Common.Action;
 
 namespace Vintagestory.API.Server
 {
@@ -34,7 +33,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name="handler"></param>
         /// <param name="forWorldType"></param>
-        void InitWorldGenerator(API.Common.Action handler, string forWorldType);
+        void InitWorldGenerator(Action handler, string forWorldType);
 
         /// <summary>
         /// Event that is triggered whenever a new column of chunks is being generated. It is always called before the ChunkGenerator event
@@ -155,7 +154,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Fired after a player changes their active slot (such as selected hotbar slot).
         /// </summary>
-        event API.Common.Action<IServerPlayer, ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
+        event Action<IServerPlayer, ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
 
         /// <summary>
         /// Triggered after the game world data has been loaded. At this point all blocks are loaded and the Map size is known.

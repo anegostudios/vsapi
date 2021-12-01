@@ -30,7 +30,7 @@ namespace Vintagestory.API.Client
     {
         public GridRecipeAndUnnamedIngredients[] GridRecipesAndUnIn;
 
-        Common.Action<ItemStack> onStackClicked;
+        Action<ItemStack> onStackClicked;
         ItemSlot dummyslot = new DummySlot();
 
         double size;
@@ -50,7 +50,7 @@ namespace Vintagestory.API.Client
         /// <param name="floatType"></param>
         /// <param name="onStackClicked"></param>
         /// <param name="allStacks">If set, will resolve wildcards based on this list, otherwise will search all available blocks/items</param>
-        public SlideshowGridRecipeTextComponent(ICoreClientAPI capi, GridRecipe[] gridrecipes, double size, EnumFloat floatType, Common.Action<ItemStack> onStackClicked = null, ItemStack[] allStacks = null) : base(capi)
+        public SlideshowGridRecipeTextComponent(ICoreClientAPI capi, GridRecipe[] gridrecipes, double size, EnumFloat floatType, Action<ItemStack> onStackClicked = null, ItemStack[] allStacks = null) : base(capi)
         {
             size = GuiElement.scaled(size);
 
@@ -290,19 +290,9 @@ namespace Vintagestory.API.Client
                     {
                         dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
                     }
-                    
-                    
-                    
 
-                    //api.Render.PushScissor(scissorBounds, true);
-                    api.Render.RenderItemstackToGui(
-                        dummyslot, 
-                        rx + size * 0.5f,
-                        ry + size * 0.5f,
-                        100, (float)size * 0.58f, ColorUtil.WhiteArgb,
-                        true, false, true
-                    );
-                    //api.Render.PopScissor();
+                    dummyslot.Itemstack.Collectible.OnHandbookRecipeRender(capi, recipeunin.Recipe, dummyslot, rx + size * 0.5f, ry + size * 0.5f, size);
+                    
 
                     // Super weird coordinates, no idea why
 

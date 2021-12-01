@@ -59,6 +59,9 @@ namespace Vintagestory.API.MathTools
 
         }
 
+
+        public bool IsZero => X == 0 && Y == 0 && Z == 0;
+
         /// <summary>
         /// Create a new vector with given coordinates
         /// </summary>

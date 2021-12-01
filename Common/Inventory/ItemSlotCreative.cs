@@ -1,5 +1,6 @@
 ﻿using System;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
 {
@@ -93,9 +94,8 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-            // 3. Both slots not empty, and they are stackable: Fill source slot
-            int maxq = Itemstack.Collectible.GetMergableQuantity(sinkSlot.Itemstack, Itemstack, op.CurrentPriority);
-            if (maxq > 0)
+            // 3. Both slots not empty, and they are the same: Fill source slot
+            if (sinkSlot.Itemstack.Equals(op.World, Itemstack, GlobalConstants.IgnoredStackAttributes))
             {
                 op.RequestedQuantity = 1;
                 ItemStackMergeOperation mergeop = op.ToMergeOperation(sinkSlot, this);

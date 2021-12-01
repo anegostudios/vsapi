@@ -13,7 +13,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Can be used to interecept marked dirty calls. 
         /// </summary>
-        public event API.Common.ActionConsumable MarkedDirty;
+        public event ActionConsumable MarkedDirty;
 
 
         /// <summary>

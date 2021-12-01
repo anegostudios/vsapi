@@ -42,7 +42,7 @@ namespace Vintagestory.API.Client
 
         public float StartPriority => throw new NotImplementedException();
 
-        public void FadeOut(float seconds, Common.Action<ILoadedSound> onFadedOut)
+        public void FadeOut(float seconds, Action<ILoadedSound> onFadedOut)
         {
             throw new NotImplementedException();
         }
@@ -97,7 +97,7 @@ namespace Vintagestory.API.Client
             throw new NotImplementedException();
         }
 
-        public void FadeOut(float seconds, Common.Action onFadedOut = null)
+        public void FadeOut(float seconds, Action onFadedOut = null)
         {
             throw new NotImplementedException();
         }

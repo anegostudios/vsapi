@@ -36,12 +36,22 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// The size of the entity's hitbox (default: 0.2f/0.2f)
         /// </summary>
-        public Vec2f HitBoxSize = new Vec2f(0.2f, 0.2f);
+        public Vec2f CollisionBoxSize = new Vec2f(0.2f, 0.2f);
 
         /// <summary>
         /// The size of the hitbox while the entity is dead.
         /// </summary>
-        public Vec2f DeadHitBoxSize = new Vec2f(0.3f, 0.3f);
+        public Vec2f DeadCollisionBoxSize = new Vec2f(0.3f, 0.3f);
+
+        /// <summary>
+        /// The size of the entity's hitbox (default: null, i.e. same as collision box)
+        /// </summary>
+        public Vec2f SelectionBoxSize = null;
+
+        /// <summary>
+        /// The size of the hitbox while the entity is dead.  (default: null, i.e. same as dead collision box)
+        /// </summary>
+        public Vec2f DeadSelectionBoxSize = null;
 
         /// <summary>
         /// How high the camera should be placed if this entity were to be controlled by the player
@@ -138,11 +148,11 @@ namespace Vintagestory.API.Common.Entities
             {
                 return new Cuboidf()
                 {
-                    X1 = -HitBoxSize.X / 2,
-                    Z1 = -HitBoxSize.X / 2,
-                    X2 = HitBoxSize.X / 2,
-                    Z2 = HitBoxSize.X / 2,
-                    Y2 = HitBoxSize.Y
+                    X1 = -CollisionBoxSize.X / 2,
+                    Z1 = -CollisionBoxSize.X / 2,
+                    X2 = CollisionBoxSize.X / 2,
+                    Z2 = CollisionBoxSize.X / 2,
+                    Y2 = CollisionBoxSize.Y
                 };
             }
         }
@@ -186,8 +196,10 @@ namespace Vintagestory.API.Common.Entities
                 Code = Code.Clone(),
                 Class = Class,
                 Habitat = Habitat,
-                HitBoxSize = HitBoxSize.Clone(),
-                DeadHitBoxSize = DeadHitBoxSize.Clone(),
+                CollisionBoxSize = CollisionBoxSize.Clone(),
+                DeadCollisionBoxSize = DeadCollisionBoxSize.Clone(),
+                SelectionBoxSize = SelectionBoxSize?.Clone(),
+                DeadSelectionBoxSize = DeadSelectionBoxSize?.Clone(),
                 CanClimb = CanClimb,
                 Weight = Weight,
                 CanClimbAnywhere = CanClimbAnywhere,
@@ -343,6 +355,11 @@ namespace Vintagestory.API.Common.Entities
         public int GlowLevel = 0;
 
         /// <summary>
+        /// Makes entities pitch forward and backwards when stepping
+        /// </summary>
+        public bool PitchStep = true;
+
+        /// <summary>
         /// The shape of the entity
         /// </summary>
         public CompositeShape Shape;
@@ -353,6 +370,14 @@ namespace Vintagestory.API.Common.Entities
         /// On the server by the EntitySimulation system
         /// </summary>
         public Shape LoadedShape;
+
+        public Shape[] LoadedAlternateShapes;
+
+        /// <summary>
+        /// The shape for this particular entity who owns this properties object
+        /// </summary>
+        public Shape LoadedShapeForEntity;
+        public CompositeShape ShapeForEntity;
 
         /// <summary>
         /// The size of the entity (default: 1f)
@@ -377,39 +402,76 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public CompositeTexture FirstTexture { get { return (Textures == null || Textures.Count == 0) ? null : Textures.First().Value; } }
 
+
+        public void DetermineLoadedShape(long forEntityId)
+        {
+            if (LoadedAlternateShapes != null && LoadedAlternateShapes.Length > 0)
+            {
+                int index = GameMath.MurmurHash3Mod(0, 0, (int)forEntityId, 1 + LoadedAlternateShapes.Length);
+                if (index == 0)
+                {
+                    LoadedShapeForEntity = LoadedShape;
+                    ShapeForEntity = Shape;
+                }
+                else
+                {
+                    LoadedShapeForEntity = LoadedAlternateShapes[index - 1];
+                    ShapeForEntity = Shape.Alternates[index - 1];
+                }
+                return;
+            }
+
+            LoadedShapeForEntity = LoadedShape;
+            ShapeForEntity = Shape;
+        }
+
         /// <summary>
         /// Loads the shape of the entity.
         /// </summary>
         /// <param name="entityTypeForLogging">The entity to shape</param>
         /// <param name="api">The Core API</param>
         /// <returns>The loaded shape.</returns>
-        public Shape LoadShape(EntityProperties entityTypeForLogging, ICoreAPI api)
+        public void LoadShape(EntityProperties entityTypeForLogging, ICoreAPI api)
+        {
+            LoadedShape = LoadShape(Shape, entityTypeForLogging, api);
+
+            if (Shape?.Alternates != null)
+            {
+                LoadedAlternateShapes = new Shape[Shape.Alternates.Length];
+                for (int i = 0; i < Shape.Alternates.Length; i++)
+                {
+                    LoadedAlternateShapes[i] = LoadShape(Shape.Alternates[i], entityTypeForLogging, api);
+                }
+            }
+        }
+
+        public static Shape LoadShape(CompositeShape cShape, EntityProperties entityTypeForLogging, ICoreAPI api)
         {
             AssetLocation shapePath;
-            Shape entityShape = null;
+            Shape entityShape;
 
             // Not using a shape, it seems, so whatev ^_^
-            if (Shape == null) return null;
+            if (cShape == null) return null;
 
-            if (Shape?.Base == null || Shape.Base.Path.Length == 0)
+            if (cShape?.Base == null || cShape.Base.Path.Length == 0)
             {
                 shapePath = new AssetLocation("shapes/block/basic/cube.json");
-                if (Shape?.VoxelizeTexture != true)
+                if (cShape?.VoxelizeTexture != true)
                 {
                     api.World.Logger.Warning("No entity shape supplied for entity {0}, using cube shape", entityTypeForLogging.Code);
                 }
-                Shape.Base = new AssetLocation("block/basic/cube");
+                cShape.Base = new AssetLocation("block/basic/cube");
             }
             else
             {
-                shapePath = Shape.Base.CopyWithPath("shapes/" + Shape.Base.Path + ".json");
+                shapePath = cShape.Base.CopyWithPath("shapes/" + cShape.Base.Path + ".json");
             }
 
             IAsset asset = api.Assets.TryGet(shapePath);
 
             if (asset == null)
             {
-                api.World.Logger.Error("Entity shape {0} for entity {1} not found, was supposed to be at {2}. Entity will be invisible!", Shape, entityTypeForLogging.Code, shapePath);
+                api.World.Logger.Error("Entity shape {0} for entity {1} not found, was supposed to be at {2}. Entity will be invisible!", cShape, entityTypeForLogging.Code, shapePath);
                 return null;
             }
 
@@ -419,18 +481,18 @@ namespace Vintagestory.API.Common.Entities
             }
             catch (Exception e)
             {
-                api.World.Logger.Error("Exception thrown when trying to load entity shape {0} for entity {1}. Entity will be invisible! Exception: {2}", Shape, entityTypeForLogging.Code, e);
+                api.World.Logger.Error("Exception thrown when trying to load entity shape {0} for entity {1}. Entity will be invisible! Exception: {2}", cShape, entityTypeForLogging.Code, e);
                 return null;
             }
 
-            entityShape.ResolveReferences(api.World.Logger, Shape.Base.ToString());
+            entityShape.ResolveReferences(api.World.Logger, cShape.Base.ToString());
             CacheInvTransforms(entityShape.Elements);
 
             return entityShape;
         }
 
 
-        private void CacheInvTransforms(ShapeElement[] elements)
+        private static void CacheInvTransforms(ShapeElement[] elements)
         {
             if (elements == null) return;
 
@@ -467,11 +529,14 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            LoadedShape = world.EntityTypes.FirstOrDefault(et => et.Code.Equals(entityTypeCode))?.Client?.LoadedShape;
+
+            var cprop = world.EntityTypes.FirstOrDefault(et => et.Code.Equals(entityTypeCode))?.Client;          
+            LoadedShape = cprop?.LoadedShape;
+            LoadedAlternateShapes = cprop?.LoadedAlternateShapes;
         }
         
         /// <summary>
-        /// Does not clone textures and shapes
+        /// Does not clone textures, but does clone shapes
         /// </summary>
         /// <returns></returns>
         public override EntitySidedProperties Clone()
@@ -494,14 +559,26 @@ namespace Vintagestory.API.Common.Entities
                 animsByCrc32[newAnimationsByMetaData[animation.Key].CodeCrc32] = newAnimationsByMetaData[animation.Key];
             }
 
+            Shape[] alternatesCloned = null;
+            if (LoadedAlternateShapes != null)
+            {
+                alternatesCloned = new Shape[LoadedAlternateShapes.Length];
+                for (int i = 0; i < alternatesCloned.Length; i++)
+                {
+                    alternatesCloned[i] = LoadedAlternateShapes[i].Clone();
+                }
+            }
+
             return new EntityClientProperties(BehaviorsAsJsonObj.Clone() as JsonObject[])
             {
                 Textures = Textures,
                 RendererName = RendererName,
                 GlowLevel = GlowLevel,
+                PitchStep = PitchStep,
                 Size = Size,
                 SizeGrowthFactor = SizeGrowthFactor,
                 Shape = Shape?.Clone(),
+                LoadedAlternateShapes = alternatesCloned,
                 Animations = newAnimations,
                 AnimationsByMetaCode = newAnimationsByMetaData,
                 AnimationsByCrc32 = animsByCrc32

@@ -1,4 +1,5 @@
 ﻿using Cairo;
+using System;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
@@ -14,7 +15,7 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The client API</param>
         /// <param name="bounds">The bounds of the chat input.</param>
         /// <param name="OnTextChanged">The event fired when the text is altered.</param>
-        public GuiElementChatInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged) : base(capi, null, bounds)
+        public GuiElementChatInput(ICoreClientAPI capi, ElementBounds bounds, Action<string> OnTextChanged) : base(capi, null, bounds)
         {
             highlightTexture = new LoadedTexture(capi);
             this.OnTextChanged = OnTextChanged;
@@ -95,7 +96,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the text.</param>
         /// <param name="OnTextChanged">The event fired when the text is changed.</param>
         /// <param name="key">The name of this chat component.</param>
-        public static GuiComposer AddChatInput(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, string key = null)
+        public static GuiComposer AddChatInput(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, string key = null)
         {
             if (!composer.composed)
             {

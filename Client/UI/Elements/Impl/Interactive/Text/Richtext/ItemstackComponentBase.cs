@@ -30,6 +30,7 @@ namespace Vintagestory.API.Client
         protected ElementBounds parentBounds;
 
         public double offY = 0;
+        public double offX = 0;
         protected DummyInventory dummyInv;
 
         public ItemstackComponentBase(ICoreClientAPI capi) : base(capi)
@@ -93,9 +94,17 @@ namespace Vintagestory.API.Client
                 recalcAlignmentOffset = false;
             }
 
-            capi.Render.GlScissorFlag(false);
-            stackInfo.RenderInteractiveElements(dt);
-            capi.Render.GlScissorFlag(true);
+            if (capi.Render.ScissorStack.Count > 0)
+            {
+                capi.Render.GlScissorFlag(false);
+                stackInfo.RenderInteractiveElements(dt);
+                capi.Render.GlScissorFlag(true);
+            } else
+            {
+                stackInfo.RenderInteractiveElements(dt);
+            }
+
+            
         }
 
 

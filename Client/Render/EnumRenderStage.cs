@@ -47,17 +47,21 @@ namespace Vintagestory.API.Client
         /// </summary>
         AfterPostProcessing = 8,
         /// <summary>
+        /// Scene has been rendered onto the default frame buffer, but not yet rendered UIs
+        /// </summary>
+        AfterBlit = 9,
+        /// <summary>
         /// Ortho mode for rendering GUIs and everything 2D
         /// </summary>
-        Ortho = 9,
+        Ortho = 10,
         /// <summary>
         /// The post processing passes are merged with all 3d geometry and the scene is color graded
         /// </summary>
-        AfterFinalComposition = 10,
+        AfterFinalComposition = 11,
         /// <summary>
         /// Scene is blitted onto the default frame buffer, buffers not yet swapped though so can still render to default FB
         /// </summary>
-        Done = 11
+        Done = 12
         
     }
 }

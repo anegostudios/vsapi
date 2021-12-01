@@ -48,7 +48,7 @@ namespace Vintagestory.API.Client
 
         protected string searchText;
 
-        protected API.Common.Action<object> SendPacketHandler;
+        protected Action<object> SendPacketHandler;
 
         bool isLastSlotGridInComposite;
 
@@ -84,7 +84,7 @@ namespace Vintagestory.API.Client
         /// <param name="SendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
         /// <param name="columns">The number of columns in the GUI.</param>
         /// <param name="bounds">The bounds of the slot grid.</param>
-        public GuiElementItemSlotGridBase(ICoreClientAPI capi, IInventory inventory, API.Common.Action<object> SendPacket, int columns, ElementBounds bounds) : base(capi, bounds)
+        public GuiElementItemSlotGridBase(ICoreClientAPI capi, IInventory inventory, Action<object> SendPacket, int columns, ElementBounds bounds) : base(capi, bounds)
         {
             slotTexture = new LoadedTexture(capi);
             highlightSlotTexture = new LoadedTexture(capi);
@@ -423,10 +423,19 @@ namespace Vintagestory.API.Client
 
             double offset = absSlotWidth / 2;
 
+            //double visibleStartY = InsideClipBounds?.absFixedY ?? 0;
+            //double visibleEndY = visibleStartY + (InsideClipBounds?.OuterHeight ?? 0);
+
             int i = 0;
             foreach (var val in renderedSlots)
             {
                 ElementBounds bounds = slotBounds[i];
+
+                double slotStartY = bounds.absFixedY;
+                double slotEndY = slotStartY + bounds.OuterHeight;
+
+                // The partially inside test is actually very expensive when done 5000+ times a frame, so we do a much quicker pretest here
+                //if (InsideClipBounds != null && (slotEndY < visibleStartY || slotStartY > visibleEndY)) { i++; continue; }
 
                 // Don't need to render stuff completely outside, saves us many render calls (~down to 100 draw calls instead of 600 for creative inventory)
                 if (bounds.PartiallyInside(Bounds.ParentBounds))
@@ -747,6 +756,7 @@ namespace Vintagestory.API.Client
             distributeStacksAddedStackSizeBySlotId.Clear();
 			(inventory as InventoryBase).InvNetworkUtil.PauseInventoryUpdates = false;
             api.World.Player.InventoryManager.MouseItemSlot.Inventory.InvNetworkUtil.PauseInventoryUpdates = false;
+
             base.OnMouseUp(api, args);
         }
 

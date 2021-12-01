@@ -54,12 +54,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Set this to hook into the foot step sound creator thingy. Currently used by the armor system to create armor step sounds. Called by the game client and server.
         /// </summary>
-        public Action OnFootStep;
+        public event Action OnFootStep;
 
         /// <summary>
         /// Called when the player falls onto the ground. Called by the game client and server.
         /// </summary>
-        public Action<double> OnImpact;
+        public event Action<double> OnImpact;
 
         /// <summary>
         /// Called whenever the game wants to spawn new creatures around the player. Called only by the game server.
@@ -252,6 +252,7 @@ namespace Vintagestory.API.Common
                 .Register("miningSpeedMul")
                 .Register("animalSeekingRange")
                 .Register("armorDurabilityLoss")
+                .Register("armorWalkSpeedAffectedness")
                 .Register("bowDrawingStrength")
                 .Register("wholeVesselLootChance", EnumStatBlendType.FlatSum)
                 .Register("temporalGearTLRepairCost", EnumStatBlendType.FlatSum)
@@ -348,7 +349,7 @@ namespace Vintagestory.API.Common
                 else
                 {
 
-                    double newModelHeight = Properties.HitBoxSize.Y;
+                    double newModelHeight = Properties.CollisionBoxSize.Y;
 
                     if (servercontrols.FloorSitting)
                     {
@@ -543,7 +544,7 @@ namespace Vintagestory.API.Common
         private bool canStandUp()
         {
             tmpCollBox.Set(CollisionBox);
-            tmpCollBox.Y2 = Properties.HitBoxSize.Y;
+            tmpCollBox.Y2 = Properties.CollisionBoxSize.Y;
             tmpCollBox.Y1 += 1f; // Don't care about the bottom block
             bool collide = World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false); ;
             return !collide;
@@ -871,10 +872,9 @@ namespace Vintagestory.API.Common
         }
 
 
-       
-        
 
-        public override void TeleportToDouble(double x, double y, double z, API.Common.Action onTeleported = null)
+
+        public override void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
         {
             Teleporting = true;
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;

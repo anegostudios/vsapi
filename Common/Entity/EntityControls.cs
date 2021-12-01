@@ -166,7 +166,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check for if the entity is moving in the direction it's facing.
         /// </summary>
-        public bool Forward {
+        public virtual bool Forward {
             get { return flags[(int)EnumEntityAction.Forward]; }
             set {
                 AttemptToggleAction(EnumEntityAction.Forward, value);
@@ -178,7 +178,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check for if the entity is moving the opposite direction it's facing.
         /// </summary>
-        public bool Backward
+        public virtual bool Backward
         {
             get { return flags[(int)EnumEntityAction.Backward]; }
             set { AttemptToggleAction(EnumEntityAction.Backward, value); }
@@ -187,7 +187,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see if the entity is moving left the direction it's facing.
         /// </summary>
-        public bool Left
+        public virtual bool Left
         {
             get { return flags[(int)EnumEntityAction.Left]; }
             set { AttemptToggleAction(EnumEntityAction.Left, value); }
@@ -196,7 +196,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see if the entity is moving right the direction it's facing.
         /// </summary>
-        public bool Right
+        public virtual bool Right
         {
             get { return flags[(int)EnumEntityAction.Right]; }
             set { AttemptToggleAction(EnumEntityAction.Right, value); }
@@ -205,7 +205,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check whether to see if the entity is jumping.
         /// </summary>
-        public bool Jump
+        public virtual bool Jump
         {
             get { return flags[(int)EnumEntityAction.Jump]; }
             set { AttemptToggleAction(EnumEntityAction.Jump, value); }
@@ -214,7 +214,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check whether to see if the entity is sneaking.
         /// </summary>
-        public bool Sneak
+        public virtual bool Sneak
         {
             get { return flags[(int)EnumEntityAction.Sneak]; }
             set { AttemptToggleAction(EnumEntityAction.Sneak, value); }
@@ -223,7 +223,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see whether the entity is sitting.
         /// </summary>
-        public bool Sitting
+        public virtual bool Sitting
         {
             get { return flags[(int)EnumEntityAction.Sit]; }
             set { AttemptToggleAction(EnumEntityAction.Sit, value); }
@@ -232,7 +232,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see whether the entity is sitting on the floor.
         /// </summary>
-        public bool FloorSitting
+        public virtual bool FloorSitting
         {
             get { return flags[(int)EnumEntityAction.FloorSit]; }
             set { AttemptToggleAction(EnumEntityAction.FloorSit, value); }
@@ -241,7 +241,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see whether the entity is sprinting.
         /// </summary>
-        public bool Sprint
+        public virtual bool Sprint
         {
             get { return flags[(int)EnumEntityAction.Sprint]; }
             set { AttemptToggleAction(EnumEntityAction.Sprint, value); }
@@ -250,7 +250,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see whether the entity is moving up.
         /// </summary>
-        public bool Up
+        public virtual bool Up
         {
             get { return flags[(int)EnumEntityAction.Up]; }
             set { AttemptToggleAction(EnumEntityAction.Up, value); }
@@ -259,7 +259,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see whether the entity is moving down.
         /// </summary>
-        public bool Down
+        public virtual bool Down
         {
             get { return flags[(int)EnumEntityAction.Down]; }
             set { AttemptToggleAction(EnumEntityAction.Down, value); }
@@ -268,7 +268,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see if the entity is holding the in-world rleft mouse button down.
         /// </summary>
-        public bool LeftMouseDown
+        public virtual bool LeftMouseDown
         {
             get { return flags[(int)EnumEntityAction.LeftMouseDown]; }
             set { AttemptToggleAction(EnumEntityAction.LeftMouseDown, value); }
@@ -277,13 +277,13 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A check to see if the entity is holding the in-world right mouse button down.
         /// </summary>
-        public bool RightMouseDown
+        public virtual bool RightMouseDown
         {
             get { return flags[(int)EnumEntityAction.RightMouseDown]; }
             set { AttemptToggleAction(EnumEntityAction.RightMouseDown, value); }
         }
 
-        public bool this[EnumEntityAction action]
+        public virtual bool this[EnumEntityAction action]
         {
             get
             {
@@ -297,7 +297,7 @@ namespace Vintagestory.API.Common
 
 
 
-        void AttemptToggleAction(EnumEntityAction action, bool on)
+        protected virtual void AttemptToggleAction(EnumEntityAction action, bool on)
         {
             if (flags[(int)action] != on)
             {
@@ -315,7 +315,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pos">The position of the player.</param>
         /// <param name="dt">The change in time.</param>
-        public void CalcMovementVectors(EntityPos pos, float dt)
+        public virtual void CalcMovementVectors(EntityPos pos, float dt)
         {
             double moveSpeed = dt * GlobalConstants.BaseMoveSpeed * MovespeedMultiplier * GlobalConstants.OverallSpeedMultiplier;
             
@@ -356,7 +356,7 @@ namespace Vintagestory.API.Common
         /// Copies the controls from the provided controls to this set of controls.
         /// </summary>
         /// <param name="controls">The controls to copy over.</param>
-        public void SetFrom(EntityControls controls)
+        public virtual void SetFrom(EntityControls controls)
         {
             for (int i = 0; i < controls.flags.Length; i++)
             {
@@ -375,15 +375,19 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pressed">Whether or not the key was pressed.</param>
         /// <param name="action">the id of the key that was pressed.</param>
-        public void UpdateFromPacket(bool pressed, int action)
+        public virtual void UpdateFromPacket(bool pressed, int action)
         {
-            flags[action] = pressed;
+            if (flags[action] != pressed)
+            {
+                AttemptToggleAction((EnumEntityAction)action, pressed);
+            }
+            
         }
         
         /// <summary>
-        /// Forces the entity to stop all movements.
+        /// Forces the entity to stop all movements, resets all flags to false
         /// </summary>
-        public void StopAllMovement()
+        public virtual void StopAllMovement()
         {
             for (int i = 0; i < flags.Length; i++) flags[i] = false;
         }
@@ -392,7 +396,7 @@ namespace Vintagestory.API.Common
         /// Converts the values to a single int flag.
         /// </summary>
         /// <returns>the compressed integer.</returns>
-        public int ToInt()
+        public virtual int ToInt()
         {
             return
                 (Forward ? 1 : 0) |
@@ -416,7 +420,7 @@ namespace Vintagestory.API.Common
         /// Converts the int flags to movement controls.
         /// </summary>
         /// <param name="flagsInt">The compressed integer.</param>
-        public void FromInt(int flagsInt)
+        public virtual void FromInt(int flagsInt)
         {
             Forward = (flagsInt & 1) > 0;
             Backward = (flagsInt & 2) > 0;
@@ -437,12 +441,12 @@ namespace Vintagestory.API.Common
         }
 
 
-        internal void ToBytes(BinaryWriter writer)
+        public virtual void ToBytes(BinaryWriter writer)
         {
             writer.Write(ToInt());
         }
 
-        internal void FromBytes(BinaryReader reader, bool ignoreData)
+        public virtual void FromBytes(BinaryReader reader, bool ignoreData)
         {
             int flags = reader.ReadInt32();
             if (!ignoreData) FromInt(flags);

@@ -14,7 +14,9 @@ namespace Vintagestory.API.Common
         
         /// <summary> The name of this mod. For example "My Example Mod". </summary>
         public string Name { get; }
-        
+
+        public string IconPath { get; set; }
+
         /// <summary> The mod ID (domain) of this mod. For example "myexamplemod". </summary>
         public string ModID { get; }
         
@@ -28,6 +30,7 @@ namespace Vintagestory.API.Common
 
         /// <summary> A short description of what this mod does. (optional) </summary>
         public string Description { get; set; }
+
         
         /// <summary> Location of the website or project site of this mod. (optional) </summary>
         public string Website { get; set; }

@@ -111,7 +111,6 @@ namespace Vintagestory.API.Client
                 elem.ComposeElements(ctx, surface);
             }
 
-            //surface.WriteToPng("list.png");
             generateTexture(surface, ref listTexture);
 
             ctx.Dispose();

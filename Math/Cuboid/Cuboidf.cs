@@ -99,6 +99,16 @@ namespace Vintagestory.API.MathTools
             get { return new Vec3f(MaxX, MaxY, MaxZ); }
         }
 
+        public Vec3d Startd
+        {
+            get { return new Vec3d(MinX, MinY, MinZ); }
+        }
+
+        public Vec3d Endd
+        {
+            get { return new Vec3d(MaxX, MaxY, MaxZ); }
+        }
+
         public Cuboidf()
         {
 

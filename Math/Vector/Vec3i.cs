@@ -27,6 +27,8 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public static readonly Vec3i[] DirectAndIndirectNeighbours;
 
+        public bool IsZero => X == 0 && Y == 0 && Z == 0;
+        
 
         /// <summary>
         /// Returns the n-th coordinate
@@ -103,11 +105,11 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
-        public Vec3i Add(BlockFacing towardsFace)
+        public Vec3i Add(BlockFacing towardsFace, int length = 1)
         {
-            X += towardsFace.Normali.X;
-            Y += towardsFace.Normali.Y;
-            Z += towardsFace.Normali.Z;
+            X += towardsFace.Normali.X * length;
+            Y += towardsFace.Normali.Y * length;
+            Z += towardsFace.Normali.Z * length;
             return this;
         }
 
@@ -173,20 +175,6 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        public static Vec3i operator *(Vec3i left, int right)
-        {
-            return new Vec3i(left.X * right, left.Y * right, left.Z * right);
-        }
-
-        public static Vec3i operator *(int left, Vec3i right)
-        {
-            return new Vec3i(left * right.X, left * right.Y, left * right.Z);
-        }
-
-        public static Vec3i operator /(Vec3i left, int right)
-        {
-            return new Vec3i(left.X / right, left.Y / right, left.Z / right);
-        }
 
         public Vec3i Set(int positionX, int positionY, int positionZ)
         {
@@ -255,7 +243,7 @@ namespace Vintagestory.API.MathTools
                 X, Y, Z
             };
         }
-        
+
         /// <summary>
         /// 27 lowest bits for X Coordinate, then 27 bits for Z coordinate and the highest 10 bits for Y coordinate
         /// </summary>
@@ -267,7 +255,7 @@ namespace Vintagestory.API.MathTools
 
         static ulong chunkMask = 134217728 - 1;   // 2^27 - 1
 
-        
+
         public static Vec3i FromChunkIndex(ulong index)
         {
             return new Vec3i(
@@ -291,7 +279,7 @@ namespace Vintagestory.API.MathTools
         double IVec3.XAsDouble { get { return X; } }
 
         double IVec3.YAsDouble { get { return Y; } }
-        
+
         double IVec3.ZAsDouble { get { return Z; } }
 
         float IVec3.XAsFloat { get { return X; } }
@@ -321,6 +309,55 @@ namespace Vintagestory.API.MathTools
         {
             return this.X == x && this.Y == y && this.Z == z;
         }
+
+
+
+        public static Vec3i operator *(Vec3i left, int right)
+        {
+            return new Vec3i(left.X * right, left.Y * right, left.Z * right);
+        }
+
+        public static Vec3i operator *(int left, Vec3i right)
+        {
+            return new Vec3i(left * right.X, left * right.Y, left * right.Z);
+        }
+
+        public static Vec3i operator /(Vec3i left, int right)
+        {
+            return new Vec3i(left.X / right, left.Y / right, left.Z / right);
+        }
+
+        public static Vec3i operator +(Vec3i left, Vec3i right)
+        {
+            return new Vec3i(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+        }
+
+        public static Vec3i operator -(Vec3i left, Vec3i right)
+        {
+            return new Vec3i(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+        }
+
+        public static Vec3i operator -(Vec3i vec)
+        {
+            return new Vec3i(-vec.X, -vec.Y, -vec.Z);
+        }
+
+        public static bool operator ==(Vec3i left, Vec3i right)
+        {
+            if (object.ReferenceEquals(left, null))
+            {
+                return object.ReferenceEquals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+
+        public static bool operator !=(Vec3i left, Vec3i right)
+        {
+            return !(left == right);
+        }
+
 
     }
 }

@@ -53,6 +53,7 @@ namespace Vintagestory.API.Client.Tesselation
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int GetOpposite(int tileSide)
         {
+            // This piece of maths is equivalent to BlockFacing.ALLFACES[tileSide].Opposite.Index
             return tileSide ^ (2 - tileSide / 4);
         }
 

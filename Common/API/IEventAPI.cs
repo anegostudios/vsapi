@@ -133,7 +133,7 @@ namespace Vintagestory.API.Common
         /// <param name="OnGameTick"></param>
         /// <param name="millisecondInterval"></param>
         /// <returns>listenerId</returns>
-        long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval);
+        long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval, int initialDelayOffsetMs = 0);
 
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="millisecondInterval"></param>
         /// <returns>listenerId</returns>
-        long RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float> OnGameTick, BlockPos pos, int millisecondInterval);
+        long RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float> OnGameTick, BlockPos pos, int millisecondInterval, int initialDelayOffsetMs = 0);
 
 
 
@@ -185,7 +185,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="action"></param>
         /// <param name="code">Task category identifier for the frame profiler</param>
-        void EnqueueMainThreadTask(API.Common.Action action, string code);
+        void EnqueueMainThreadTask(Action action, string code);
 
         void TriggerEntityDeath(Entity entity, DamageSource damageSourceForDeath);
         bool TriggerMatchesRecipe(IPlayer forPlayer, GridRecipe gridRecipe, ItemSlot[] ingredients, int gridWidth);

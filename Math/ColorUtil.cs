@@ -407,7 +407,7 @@ namespace Vintagestory.API.MathTools
             ;
         }
 
-        public static int ValueOverlay(int c1, float a1, int c2, float a2)
+        private static int ValueOverlay(int c1, float a1, int c2, float a2)
         {
             return (int)(
                 (c1 * a1 + c2 * a2 * (1 - a1)) /

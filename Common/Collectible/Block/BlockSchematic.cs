@@ -531,7 +531,7 @@ namespace Vintagestory.API.Common
                 IWorldChunk chunk = blockAccessor.GetChunkAtBlockPos(curPos);
                 if (chunk == null) continue;
                 if (synchronize) blockAccessor.MarkChunkDecorsModified(curPos);
-                chunk.AddDecor(blockAccessor, newBlock, curPos, face);
+                chunk.SetDecor(blockAccessor, newBlock, curPos, face);
                 chunk.MarkModified();
             }
         }
@@ -687,7 +687,7 @@ namespace Vintagestory.API.Common
 
                         AssetLocation newCode = newBlock.GetHorizontallyFlippedBlockCode((EnumAxis)flipAxis);
                         newBlock = worldForResolve.GetBlock(newCode);
-                        if (face.IsAxisWE) face = face.Opposite;
+                        if (face.Axis == EnumAxis.X) face = face.Opposite;
                     }
 
                     if (flipAxis == EnumAxis.Z)
@@ -696,7 +696,7 @@ namespace Vintagestory.API.Common
 
                         AssetLocation newCode = newBlock.GetHorizontallyFlippedBlockCode((EnumAxis)flipAxis);
                         newBlock = worldForResolve.GetBlock(newCode);
-                        if (face.IsAxisNS) face = face.Opposite;
+                        if (face.Axis == EnumAxis.Z) face = face.Opposite;
                     }
 
                 }

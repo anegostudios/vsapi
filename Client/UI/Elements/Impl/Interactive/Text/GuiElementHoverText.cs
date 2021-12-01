@@ -197,8 +197,8 @@ namespace Vintagestory.API.Client
 
                 if (followMouse)
                 {
-                    x = mouseX + 10;
-                    y = mouseY + 15;
+                    x = mouseX + GuiElement.scaled(10);
+                    y = mouseY + GuiElement.scaled(15);
                 }
 
                 if (x + hoverWidth > api.Render.FrameWidth)

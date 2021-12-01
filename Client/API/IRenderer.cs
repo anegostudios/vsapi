@@ -1,5 +1,8 @@
-﻿namespace Vintagestory.API.Client
+﻿using Vintagestory.API.Common;
+
+namespace Vintagestory.API.Client
 {
+
     /// <summary>
     /// Interface to render something on to the clients screens. Used for block entitites.
     /// </summary>

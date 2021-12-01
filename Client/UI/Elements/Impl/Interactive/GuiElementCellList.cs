@@ -32,11 +32,18 @@ namespace Vintagestory.API.Client
         /// cleans up and gets rid of the cell in a neat and orderly fashion.
         /// </summary>
         void Dispose();
+        void OnMouseUpOnElement(MouseEvent args, int elementIndex);
+
+        void OnMouseDownOnElement(MouseEvent args, int elementIndex);
+
+        void OnMouseMoveOnElement(MouseEvent args, int elementIndex);
+
+        string MouseOverCursor { get; }
     }
 
-    public delegate IGuiElementCell OnRequireCell(ListCellEntry cell, ElementBounds bounds);
+    public delegate IGuiElementCell OnRequireCell<T>(T cell, ElementBounds bounds);
 
-    public class GuiElementCellList : GuiElement
+    public class GuiElementCellList<T> : GuiElement
     {
         /// <summary>
         /// The cells in the list.  See IGuiElementCell for how it's supposed to function.
@@ -60,21 +67,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         public int UnscaledCellHorPadding = 7;
 
-        /// <summary>
-        /// The delegate fired when the left part of the cell is clicked.
-        /// </summary>
-        public API.Common.Action<int> leftPartClick;
-
-        /// <summary>
-        /// The delegate fired when the right part of the cell is clicked.
-        /// </summary>
-        public API.Common.Action<int> rightPartClick;
-
         
 
-        //ElementBounds insideBounds;
-
-        OnRequireCell cellcreator;
+        Func<IGuiElementCell, bool> cellFilter;
+        OnRequireCell<T> cellcreator;
+        bool didInitialize;
 
         public override ElementBounds InsideClipBounds { 
             get => base.InsideClipBounds; 
@@ -88,28 +85,28 @@ namespace Vintagestory.API.Client
             }
         }
 
+        List<T> cellsTmp = null;
+
 
         /// <summary>
         /// Creates a new list in the current GUI.
         /// </summary>
         /// <param name="capi">The Client API.</param>
         /// <param name="bounds">The bounds of the list.</param>
-        /// <param name="OnMouseDownOnCellLeft">The function fired when the cell is clicked on the left side.</param>
-        /// <param name="OnMouseDownOnCellRight">The function fired when the cell is clicked on the right side.</param>
         /// <param name="cellCreator">The event fired when a cell is requested by the gui</param>
         /// <param name="cells">The array of cells initialized with the list.</param>
-        public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<int> OnMouseDownOnCellLeft, API.Common.Action<int> OnMouseDownOnCellRight, OnRequireCell cellCreator, List<ListCellEntry> cells = null) : base(capi, bounds)
+        public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, OnRequireCell<T> cellCreator, List<T> cells = null) : base(capi, bounds)
         {
             this.cellcreator = cellCreator;
-
+            this.cellsTmp = cells;
             Bounds.IsDrawingSurface = true;
+        }
 
-            leftPartClick = OnMouseDownOnCellLeft;
-            rightPartClick = OnMouseDownOnCellRight;
-
-            if (cells != null)
+        void Initialize()
+        {
+            if (cellsTmp != null)
             {
-                foreach (ListCellEntry cell in cells)
+                foreach (T cell in cellsTmp)
                 {
                     AddCell(cell);
                 }
@@ -119,10 +116,12 @@ namespace Vintagestory.API.Client
             }
 
             CalcTotalHeight();
+            didInitialize = true;
         }
 
-        public void ReloadCells(List<ListCellEntry> cells)
+        public void ReloadCells(List<T> cells)
         {
+            
             foreach (var val in elementCells)
             {
                 val?.Dispose();
@@ -130,7 +129,7 @@ namespace Vintagestory.API.Client
 
             elementCells.Clear();
 
-            foreach (ListCellEntry cell in cells)
+            foreach (T cell in cells)
             {
                 AddCell(cell);
             }
@@ -143,7 +142,8 @@ namespace Vintagestory.API.Client
 
         public override void BeforeCalcBounds()
         {
-            CalcTotalHeight();
+            if (!didInitialize) Initialize();
+            else CalcTotalHeight();
         }
 
         /// <summary>
@@ -174,9 +174,6 @@ namespace Vintagestory.API.Client
         }
 
 
-        Func<IGuiElementCell, bool> cellFilter;
-
-
         internal void FilterCells(Func<IGuiElementCell, bool> onFilter)
         {
             this.cellFilter = onFilter;
@@ -190,7 +187,6 @@ namespace Vintagestory.API.Client
                 }
             }
 
-
             CalcTotalHeight();
         }
 
@@ -199,7 +195,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="cell">The cell to add.</param>
         /// <param name="afterPosition">The position of the cell to add after.  (Default: -1)</param>
-        protected void AddCell(ListCellEntry cell, int afterPosition = -1)
+        protected void AddCell(T cell, int afterPosition = -1)
         {
             ElementBounds cellBounds = new ElementBounds()
             {
@@ -209,8 +205,6 @@ namespace Vintagestory.API.Client
                 fixedHeight = 0,
                 BothSizing = ElementSizing.Fixed,
             }.WithParent(Bounds);
-
-
 
             IGuiElementCell cellElem = this.cellcreator(cell, cellBounds);
             cellElem.InsideClipBounds = InsideClipBounds;
@@ -239,11 +233,8 @@ namespace Vintagestory.API.Client
         {
             if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
 
-            int i = 0;
-
             int mousex = api.Input.MouseX;
             int mousey = api.Input.MouseY;
-
 
             foreach (IGuiElementCell element in visibleCells)
             {
@@ -251,33 +242,60 @@ namespace Vintagestory.API.Client
 
                 if (pos != null)
                 {
-                    api.Gui.PlaySound("menubutton_press");
-
-                    if (pos.X > element.Bounds.InnerWidth - scaled(GuiElementCell.unscaledRightBoxWidth))
-                    {
-                        rightPartClick?.Invoke(elementCells.IndexOf(element));
-                        args.Handled = true;
-                        return;
-                    }
-                    else
-                    {
-                        leftPartClick?.Invoke(elementCells.IndexOf(element));
-                        args.Handled = true;
-                        return;
-                    }
+                    element.OnMouseUpOnElement(args, elementCells.IndexOf(element));
                 }
+            }
+        }
 
-                i++;
+        public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
+        {
+            if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
+
+            int mousex = api.Input.MouseX;
+            int mousey = api.Input.MouseY;
+
+            foreach (IGuiElementCell element in visibleCells)
+            {
+                Vec2d pos = element.Bounds.PositionInside(mousex, mousey);
+
+                if (pos != null)
+                {
+                    element.OnMouseDownOnElement(args, elementCells.IndexOf(element));
+                }
+            }
+        }
+
+        public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
+        {
+            if (!Bounds.ParentBounds.PointInside(args.X, args.Y)) return;
+
+            int mousex = api.Input.MouseX;
+            int mousey = api.Input.MouseY;
+
+            foreach (IGuiElementCell element in visibleCells)
+            {
+                Vec2d pos = element.Bounds.PositionInside(mousex, mousey);
+
+                if (pos != null)
+                {
+                    element.OnMouseMoveOnElement(args, elementCells.IndexOf(element));
+                }
             }
         }
 
         public override void RenderInteractiveElements(float deltaTime)
-        {            
+        {
+            MouseOverCursor = null;
+
             foreach (IGuiElementCell element in visibleCells)
             {
                 if (element.Bounds.PartiallyInside(Bounds.ParentBounds))
                 {
                     element.OnRenderInteractiveElements(api, deltaTime);
+                    if (element.MouseOverCursor != null)
+                    {
+                        MouseOverCursor = element.MouseOverCursor;
+                    }
                 }
             }
         }
@@ -300,16 +318,14 @@ namespace Vintagestory.API.Client
         /// Adds a List to the current GUI.
         /// </summary>
         /// <param name="bounds">The bounds of the cell.</param>
-        /// <param name="creallCreator">the event fired when the cell is requested by the GUI</param>
-        /// <param name="OnMouseDownOnCellLeft">The event fired when the player clicks on the lefthand side of the cell.</param>
-        /// <param name="OnMouseDownOnCellRight">The event fired when the player clicks on the righthand side of the cell.</param>
+        /// <param name="cellCreator">the event fired when the cell is requested by the GUI</param>
         /// <param name="cells">The cells of the list.</param>
         /// <param name="key">The identifier for the list.</param>
-        public static GuiComposer AddCellList(this GuiComposer composer, ElementBounds bounds, OnRequireCell creallCreator, API.Common.Action<int> OnMouseDownOnCellLeft = null, API.Common.Action<int> OnMouseDownOnCellRight = null, List<ListCellEntry> cells = null, string key = null)
+        public static GuiComposer AddCellList<T>(this GuiComposer composer, ElementBounds bounds, OnRequireCell<T> cellCreator, List<T> cells = null, string key = null)
         {
             if (!composer.composed)
             {
-                composer.AddInteractiveElement(new GuiElementCellList(composer.Api, bounds, OnMouseDownOnCellLeft, OnMouseDownOnCellRight, creallCreator, cells), key);
+                composer.AddInteractiveElement(new GuiElementCellList<T>(composer.Api, bounds, cellCreator, cells), key);
             }
 
             return composer;
@@ -320,9 +336,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="key">The name of the list to get.</param>
         /// <returns></returns>
-        public static GuiElementCellList GetCellList(this GuiComposer composer, string key)
+        public static GuiElementCellList<T> GetCellList<T>(this GuiComposer composer, string key)
         {
-            return (GuiElementCellList)composer.GetElement(key);
+            return (GuiElementCellList<T>)composer.GetElement(key);
         }
     }
 

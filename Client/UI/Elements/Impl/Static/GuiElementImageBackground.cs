@@ -1,11 +1,12 @@
 ﻿using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
 {
     class GuiElementImageBackground : GuiElement
     {
-        string textureName;
+        AssetLocation textureLoc;
         float brightness;
 
         /// <summary>
@@ -13,11 +14,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The Client API</param>
         /// <param name="bounds">The bounds of the element.</param>
-        /// <param name="textureName">The name of the texture.</param>
+        /// <param name="textureLoc">The name of the texture.</param>
         /// <param name="brightness">The brightness of the texture. (Default: 1f)</param>
-        public GuiElementImageBackground(ICoreClientAPI capi, ElementBounds bounds, string textureName, float brightness = 1f) : base(capi, bounds)
+        public GuiElementImageBackground(ICoreClientAPI capi, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f) : base(capi, bounds)
         {
-            this.textureName = textureName;
+            this.textureLoc = textureLoc;
             this.brightness = brightness;
         }
 
@@ -26,7 +27,7 @@ namespace Vintagestory.API.Client
             Bounds.CalcWorldBounds();
 
             // Stone bg
-            SurfacePattern pattern = getPattern(api, textureName);
+            SurfacePattern pattern = getPattern(api, textureLoc);
             ctx.SetSource(pattern);
             ElementRoundRectangle(ctx, Bounds);
             
@@ -51,13 +52,13 @@ namespace Vintagestory.API.Client
         /// Adds a background to the current GUI
         /// </summary>
         /// <param name="bounds">The bounds of the background</param>
-        /// <param name="textureName">The name of the background texture.</param>
+        /// <param name="textureLoc">The name of the background texture.</param>
         /// <param name="brightness">The brightness of the texture (default: 1f)</param>
-        public static GuiComposer AddImageBG(this GuiComposer composer, ElementBounds bounds, string textureName, float brightness = 1f)
+        public static GuiComposer AddImageBG(this GuiComposer composer, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f)
         {
             if (!composer.composed)
             {
-                composer.AddStaticElement(new GuiElementImageBackground(composer.Api, bounds, textureName, brightness));
+                composer.AddStaticElement(new GuiElementImageBackground(composer.Api, bounds, textureLoc, brightness));
             }
             return composer;
         }

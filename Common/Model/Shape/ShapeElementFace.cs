@@ -14,6 +14,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float[] Uv;
 
+
+        public sbyte[] WindMode;
+
+        public sbyte[] WindData;
+
         /// <summary>
         /// The rotation of the face.
         /// </summary>

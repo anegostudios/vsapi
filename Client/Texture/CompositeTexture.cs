@@ -37,7 +37,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Can be used to modify the opacity of the texture
         /// </summary>
-        public int Alpha = 100;
+        public int Alpha = 255;
 
 
         /// <summary>
@@ -248,11 +248,11 @@ namespace Vintagestory.API.Client
                 bct.BakedName.Path += "@" + ct.Rotation;
             }
 
-            if (ct.Alpha != 100)
+            if (ct.Alpha != 255)
             {
-                if (ct.Alpha < 0 || ct.Alpha > 100)
+                if (ct.Alpha < 0 || ct.Alpha > 255)
                 {
-                    throw new Exception("Texture definition " + ct.Base + " has a alpha value outside the 0..100 range.");
+                    throw new Exception("Texture definition " + ct.Base + " has a alpha value outside the 0..255 range.");
                 }
 
                 bct.BakedName.Path += "å" + ct.Alpha;

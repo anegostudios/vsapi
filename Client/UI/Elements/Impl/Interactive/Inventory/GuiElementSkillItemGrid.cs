@@ -106,6 +106,8 @@ namespace Vintagestory.API.Client
             int dx = api.Input.MouseX - (int)Bounds.absX;
             int dy = api.Input.MouseY - (int)Bounds.absY;
 
+            
+
             for (int i = 0; i < rows*cols; i++)
             {
                 int row = i / cols;
@@ -118,7 +120,7 @@ namespace Vintagestory.API.Client
 
                 if (over || i == selectedIndex)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, Bounds.renderX + posX, Bounds.renderY + posY, slotWidth, slotHeight);
+                    api.Render.Render2DTexture(hoverTexture.TextureId, (float)(Bounds.renderX + posX),(float)(Bounds.renderY + posY), (float)slotWidth, (float)slotHeight);
                     if (over) OnSlotOver?.Invoke(i);
                 }
 
@@ -129,7 +131,14 @@ namespace Vintagestory.API.Client
 
                 if (skillItem.Texture != null)
                 {
-                    api.Render.Render2DTexturePremultipliedAlpha(skillItem.Texture.TextureId, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1, slotWidth, slotHeight);
+                    if (skillItem.TexturePremultipliedAlpha)
+                    {
+                        api.Render.Render2DTexturePremultipliedAlpha(skillItem.Texture.TextureId, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1, slotWidth, slotHeight); 
+                    } else
+                    {
+                        api.Render.Render2DTexture(skillItem.Texture.TextureId, (float)(Bounds.renderX + posX + 1), (float)(Bounds.renderY + posY + 1), (float)slotWidth, (float)slotHeight);
+                    }
+                    
                 }
 
                 skillItem.RenderHandler?.Invoke(skillItem.Code, deltaTime, Bounds.renderX + posX + 1, Bounds.renderY + posY + 1);

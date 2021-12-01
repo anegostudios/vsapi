@@ -360,7 +360,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)
         {
-            if (!enabled) return;
+            if (!enabled || !HasFocus) return;
 
             if (!listMenu.IsOpened)
             {
@@ -369,9 +369,8 @@ namespace Vintagestory.API.Client
                     SetSelectedIndex(GameMath.Mod(listMenu.SelectedIndex + (args.delta > 0 ? -1 : 1), listMenu.Values.Length));
                     args.SetHandled(true);
                     onSelectionChanged?.Invoke(SelectedValue, true);
+                    return;
                 }
-
-                return;
             }
 
             listMenu.OnMouseWheel(api, args);

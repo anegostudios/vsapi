@@ -152,9 +152,9 @@ namespace Vintagestory.API.Common
 
                 if (assets.Count == 0)  
                 {
-                    Base = new AssetLocation("block/basic/cube");
                     logger.Warning("Could not find any variants for shape {0}, will use standard cube shape.", Base.Path);
-                }   
+                    Base = new AssetLocation("block/basic/cube");
+                }
 
                 if (assets.Count == 1)
                 {

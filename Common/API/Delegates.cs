@@ -51,18 +51,7 @@ namespace Vintagestory.API.Common
     /// <returns></returns>
     public delegate bool ActionConsumable<T1, T2>(T1 t1, T2 t2);
 
-    /// <summary>
-    /// A parameterless method
-    /// </summary>
-    public delegate void Action();
-    
-    public delegate void Action<T>(T t1);
-    public delegate void Action<T1, T2>(T1 t1, T2 t2);
-    public delegate void Action<T1, T2, T3>(T1 t1, T2 t2, T3 t3);
-    public delegate void Action<T1, T2, T3, T4>(T1 t1, T2 t2, T3 t3, T4 t4);
-    public delegate void Action<T1, T2, T3, T4, T5>(T1 p1, T2 p2, T3 p3, T4 p4, T5 p5);
-    public delegate void Action<T1, T2, T3, T4, T5, T6>(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6);
-    public delegate void Action<T1, T2, T3, T4, T5, T6, T7>(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7);
+
 
     public delegate TResult Func<TResult>();
     public delegate TResult Func<T1, TResult>(T1 t1);

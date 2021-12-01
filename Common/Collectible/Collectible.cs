@@ -16,6 +16,7 @@ namespace Vintagestory.API.Common
 {
 
     public delegate void CollectibleBehaviorDelegate(CollectibleBehavior behavior, ref EnumHandling handling);
+    public class ExtraHandbookSection { public string Title = null; public string Text = null; public string[] TextParts; }
 
     /// <summary>
     /// Contains all properties shared by Blocks and Items
@@ -227,12 +228,19 @@ namespace Vintagestory.API.Common
         /// </summary>
         public CollectibleBehavior[] CollectibleBehaviors = new CollectibleBehavior[0];
 
+        public ExtraHandbookSection[] ExtraHandBookSections = null;
 
         // Non overridable so people don't accidently forget to call the base method for assigning the api in OnLoaded
         public void OnLoadedNative(ICoreAPI api)
         {
             this.api = api;
             OnLoaded(api);
+
+            JsonObject obj = Attributes?["handbook"]?["extraSections"];
+            if (obj != null && obj.Exists)
+            {
+                ExtraHandBookSections = obj?.AsObject<ExtraHandbookSection[]>();
+            }
         }
 
         /// <summary>
@@ -623,43 +631,56 @@ namespace Vintagestory.API.Common
             float pSum = 0f;
             float q = 0;
 
-            var ingreds = byRecipe.resolvedIngredients;
-
-            foreach (ItemSlot slot in allInputslots)
+            if (byRecipe.AverageDurability)
             {
-                if (slot.Empty) continue;
-                ItemStack stack = slot.Itemstack;
 
-                int maxDurability = stack.Collectible.GetDurability(stack);
-                if (maxDurability == 0)
-                {
-                    // An item with no durability only improves the average by 12.5%
-                    pSum += 0.125f;
-                    q += 0.125f;
-                    continue;
-                }
+                var ingreds = byRecipe.resolvedIngredients;
 
-                bool skip = false;
-                foreach (var ingred in ingreds)
+                foreach (ItemSlot slot in allInputslots)
                 {
-                    if (ingred != null && ingred.IsTool && ingred.SatisfiesAsIngredient(stack))
+                    if (slot.Empty) continue;
+                    ItemStack stack = slot.Itemstack;
+
+                    int maxDurability = stack.Collectible.GetDurability(stack);
+                    if (maxDurability == 0)
                     {
-                        skip = true;
-                        break;
+                        // An item with no durability only improves the average by 12.5%
+                        pSum += 0.125f;
+                        q += 0.125f;
+                        continue;
                     }
-                }
-                if (skip) continue;
 
-                q++;
-                int leftDurability = stack.Attributes.GetInt("durability", maxDurability);
-                pSum += (float)leftDurability / maxDurability;
-                
+                    bool skip = false;
+                    foreach (var ingred in ingreds)
+                    {
+                        if (ingred != null && ingred.IsTool && ingred.SatisfiesAsIngredient(stack))
+                        {
+                            skip = true;
+                            break;
+                        }
+                    }
+                    if (skip) continue;
+
+                    q++;
+                    int leftDurability = stack.Attributes.GetInt("durability", maxDurability);
+                    pSum += (float)leftDurability / maxDurability;
+
+                }
+
+                float pFinal = pSum / q;
+                if (pFinal < 1)
+                {
+                    outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetDurability(outputSlot.Itemstack)));
+                }
             }
 
-            float pFinal = pSum / q;
-            if (pFinal < 1)
+
+            TransitionableProperties[] tprops = outputSlot.Itemstack.Collectible.GetTransitionableProperties(api.World, outputSlot.Itemstack, null);
+            var perishProps = tprops?.FirstOrDefault(p => p.Type == EnumTransitionType.Perish);
+            if (perishProps != null)
             {
-                outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetDurability(outputSlot.Itemstack)));
+                perishProps.TransitionedStack.Resolve(api.World, "oncrafted perished stack");
+                CarryOverFreshness(api, allInputslots, new ItemStack[] { outputSlot.Itemstack }, perishProps);
             }
         }
 
@@ -1124,24 +1145,32 @@ namespace Vintagestory.API.Common
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
         /// <param name="handling"></param>
-        protected virtual void tryEatBegin(ItemSlot slot, EntityAgent byEntity, ref EnumHandHandling handling)
+        protected virtual void tryEatBegin(ItemSlot slot, EntityAgent byEntity, ref EnumHandHandling handling, string eatSound = "eat", int eatSoundRepeats = 1)
         {
-            if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) != null)
+            if (!slot.Empty && GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity) != null)
             {
-                byEntity.World.RegisterCallback((dt) =>
-                {
-                    if (byEntity.Controls.HandUse == EnumHandInteract.HeldItemInteract)
-                    {
-                        IPlayer player = null;
-                        if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
-
-                        byEntity.PlayEntitySound("eat", player);
-                    }
-                }, 500);
+                byEntity.World.RegisterCallback((dt) => playEatSound(byEntity, eatSound, eatSoundRepeats), 500);
 
                 byEntity.AnimManager?.StartAnimation("eat");
 
                 handling = EnumHandHandling.PreventDefault;
+            }
+        }
+
+
+        protected void playEatSound(EntityAgent byEntity, string eatSound = "eat", int eatSoundRepeats = 1)
+        {
+            if (byEntity.Controls.HandUse != EnumHandInteract.HeldItemInteract) return;
+            
+            IPlayer player = null;
+            if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
+
+            byEntity.PlayEntitySound(eatSound, player);
+
+            eatSoundRepeats--;
+            if (eatSoundRepeats > 0)
+            {
+                byEntity.World.RegisterCallback((dt) => playEatSound(byEntity, eatSound, eatSoundRepeats), 300);
             }
         }
 
@@ -1153,14 +1182,13 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         protected virtual bool tryEatStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity)
         {
-            if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity) == null) return false;
+            if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity) == null) return false;
 
 
             Vec3d pos = byEntity.Pos.AheadCopy(0.4f).XYZ;
             pos.X += byEntity.LocalEyePos.X;
             pos.Y += byEntity.LocalEyePos.Y - 0.4f;
             pos.Z += byEntity.LocalEyePos.Z;
-            //pos.Y += byEntity.EyeHeight - 0.4f;
 
             if (secondsUsed > 0.5f && (int)(30 * secondsUsed) % 7 == 1)
             {
@@ -1204,7 +1232,7 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         protected virtual void tryEatStop(float secondsUsed, ItemSlot slot, EntityAgent byEntity)
         {
-            FoodNutritionProperties nutriProps = GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity as Entity);
+            FoodNutritionProperties nutriProps = GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity);
 
             if (byEntity.World is IServerWorldAccessor && nutriProps != null && secondsUsed >= 0.95f)
             {
@@ -1219,18 +1247,27 @@ namespace Vintagestory.API.Common
                 IPlayer player = null;
                 if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
+                slot.TakeOut(1);
+
                 if (nutriProps.EatenStack != null)
                 {
-
-                    if (player == null || !player.InventoryManager.TryGiveItemstack(nutriProps.EatenStack.ResolvedItemstack.Clone(), true))
+                    if (slot.Empty)
                     {
-                        byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack.Clone(), byEntity.SidedPos.XYZ);
+                        slot.Itemstack = nutriProps.EatenStack.ResolvedItemstack.Clone();
+                    }
+                    else
+                    {
+                        if (player == null || !player.InventoryManager.TryGiveItemstack(nutriProps.EatenStack.ResolvedItemstack.Clone(), true))
+                        {
+                            byEntity.World.SpawnItemEntity(nutriProps.EatenStack.ResolvedItemstack.Clone(), byEntity.SidedPos.XYZ);
+                        }
                     }
                 }
 
-                slot.Itemstack.StackSize--;
-
                 float healthChange = nutriProps.Health * healthLossMul;
+
+                float intox = byEntity.WatchedAttributes.GetFloat("intoxication");
+                byEntity.WatchedAttributes.SetFloat("intoxication", Math.Min(1.1f, intox + nutriProps.Intoxication));
 
                 if (healthChange != 0)
                 {
@@ -1320,7 +1357,7 @@ namespace Vintagestory.API.Common
 
             if (IsBackPack(stack))
             {
-                dsc.AppendLine(Lang.Get("Quantity Slots: {0}", QuantityBackPackSlots(stack)));
+                dsc.AppendLine(Lang.Get("Storage Slots: {0}", QuantityBackPackSlots(stack)));
                 ITreeAttribute backPackTree = stack.Attributes.GetTreeAttribute("backpack");
                 if (backPackTree != null)
                 {
@@ -1685,6 +1722,21 @@ namespace Vintagestory.API.Common
             return spoilState;
         }
 
+        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot dummyslot, double x, double y, double size)
+        {
+            //api.Render.PushScissor(scissorBounds, true);
+            capi.Render.RenderItemstackToGui(
+                dummyslot,
+                x,
+                y,
+                100, (float)size * 0.58f, ColorUtil.WhiteArgb,
+                true, false, true
+            );
+            //api.Render.PopScissor();
+        }
+
+
+
         public virtual List<ItemStack> GetHandBookStacks(ICoreClientAPI capi)
         {
             if (Code == null) return null;
@@ -1721,8 +1773,6 @@ namespace Vintagestory.API.Common
             else
             {
                 ItemStack stack = new ItemStack(this);
-                //stack.StackSize = stack.Collectible.MaxStackSize; -wtf? what is this for?
-
                 stacks.Add(stack);
             }
 
@@ -1747,7 +1797,6 @@ namespace Vintagestory.API.Common
 
             components.Add(new ItemstackTextComponent(capi, stack, 100, 10, EnumFloat.Left));
             components.AddRange(VtmlUtil.Richtextify(capi, stack.GetName() + "\n", CairoFont.WhiteSmallishText()));
-
             components.AddRange(VtmlUtil.Richtextify(capi, stack.GetDescription(capi.World, inSlot), CairoFont.WhiteSmallText()));
 
             float marginTop = 7;
@@ -2630,16 +2679,21 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            JsonObject obj = stack.Collectible.Attributes?["handbook"]?["extraSections"];
-            if (obj != null && obj.Exists)
+            if (ExtraHandBookSections != null)
             {
-                ExtraSection[] sections = obj?.AsObject<ExtraSection[]>();
-                for (int i = 0; i < sections.Length; i++)
+                for (int i = 0; i < ExtraHandBookSections.Length; i++)
                 {
                     components.Add(new ClearFloatTextComponent(capi, 16 ));
-                    components.Add(new RichTextComponent(capi, Lang.Get(sections[i].Title) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
+                    components.Add(new RichTextComponent(capi, Lang.Get(ExtraHandBookSections[i].Title) + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
 
-                    components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(sections[i].Text) + "\n", CairoFont.WhiteSmallText()));
+                    if (ExtraHandBookSections[i].TextParts != null)
+                    {
+                        components.AddRange(VtmlUtil.Richtextify(capi, string.Join(", ", ExtraHandBookSections[i].TextParts) + "\n", CairoFont.WhiteSmallText()));
+                    } else
+                    {
+                        components.AddRange(VtmlUtil.Richtextify(capi, Lang.Get(ExtraHandBookSections[i].Text) + "\n", CairoFont.WhiteSmallText()));
+                    }
+                    
                 }
             }
 
@@ -2650,7 +2704,7 @@ namespace Vintagestory.API.Common
 
             if (langExtraSectionTitle != null || langExtraSectionText != null)
             {
-                components.Add(new ClearFloatTextComponent(capi, marginTop));
+                components.Add(new ClearFloatTextComponent(capi, marginTop * 4));
                 if (langExtraSectionTitle != null)
                 {
                     components.Add(new RichTextComponent(capi, langExtraSectionTitle + "\n", CairoFont.WhiteSmallText().WithWeight(FontWeight.Bold)));
@@ -2666,7 +2720,7 @@ namespace Vintagestory.API.Common
         }
 
 
-        class ExtraSection { public string Title=null; public string Text=null; }
+        
 
         /// <summary>
         /// Should return true if the stack can be placed into given slot

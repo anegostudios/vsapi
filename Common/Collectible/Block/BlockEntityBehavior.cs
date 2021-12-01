@@ -63,7 +63,7 @@ namespace Vintagestory.API.Common
             
         }
 
-        public virtual void OnBlockBroken()
+        public virtual void OnBlockBroken(IPlayer byPlayer = null)
         {
             
         }

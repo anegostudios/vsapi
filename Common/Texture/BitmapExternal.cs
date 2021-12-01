@@ -80,8 +80,28 @@ namespace Vintagestory.API.Common
             return bmp.GetPixel((int)Math.Min(bmp.Width - 1, x * bmp.Width), (int)Math.Min(bmp.Height - 1, (y * bmp.Height)));
         }
 
+        public override void MulAlpha(int alpha = 255)
+        {
+            BitmapData bmp_data = bmp.LockBits(new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
-        public override int[] GetPixelsTransformed(int rot = 0, int alpha = 100)
+            int len = Width * Height;
+            float af = alpha / 255f;
+
+            unsafe {
+                byte* colp = (byte*)bmp_data.Scan0.ToPointer();
+
+                for (int i = 0; i < len; i++)
+                {
+                    int a = colp[3];
+                    colp[3] = (byte)(a * af);
+                    colp+=4;
+                }
+            }
+
+            bmp.UnlockBits(bmp_data);
+        }
+
+        public override int[] GetPixelsTransformed(int rot = 0, int mulAlpha = 255)
         {
             int[] bmpPixels = new int[Width * Height];
             int width = bmp.Width;
@@ -134,9 +154,9 @@ namespace Vintagestory.API.Common
             }
 
 
-            if (alpha != 100)
+            if (mulAlpha != 255)
             {
-                float af = alpha / 100f;
+                float af = mulAlpha / 255f;
                 int clearAlpha = ~(0xff << 24);
                 for (int i = 0; i < bmpPixels.Length; i++)
                 {

@@ -9,6 +9,7 @@ namespace Vintagestory.API.Common
 {
     public enum EnumFoodCategory
     {
+        NoNutrition = -1,
         Fruit = 0,
         Vegetable = 1,
         Protein = 2,
@@ -34,6 +35,11 @@ namespace Vintagestory.API.Common
         {
             get { return Satiety; }
             set { Satiety = value; }
+        }
+
+        public float Intoxication
+        {
+            get; set;
         }
 
         /// <summary>
@@ -62,6 +68,7 @@ namespace Vintagestory.API.Common
                 FoodCategory = FoodCategory,
                 Satiety = Satiety,
                 Health = Health,
+                Intoxication = Intoxication,
                 EatenStack = EatenStack?.Clone()
             };
         }

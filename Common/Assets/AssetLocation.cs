@@ -172,12 +172,6 @@ namespace Vintagestory.API.Common
         {
             this.domain = domain == null ? null : string.Intern(domain);
             this.path   = path;
-#if PERFTEST
-            if (this.domain != domain?.ToLowerInvariant() || this.path != path.ToLowerInvariant())
-            {
-                //breakpoint to detect any non-lowercase AssetLocation
-            }
-#endif
         }
 
 
@@ -196,14 +190,7 @@ namespace Vintagestory.API.Common
             return new AssetLocation(domainAndPath);
         }
 
-        /// <summary>
-        /// For internal use when the newDomain is known to be a lowercase, interned string (e.g the domain taken from another existing AssetLocation)
-        /// </summary>
-        public void SetDomain_Checked(string newDomain)
-        {
-            this.domain = newDomain;
-        }
-        
+
         /// <summary>
         /// Returns true if this is a valid path. For an asset location to be valid it needs to 
         /// have any string as domain, any string as path, the domain may not contain slashes, and the path may not contain 2 consecutive slashes

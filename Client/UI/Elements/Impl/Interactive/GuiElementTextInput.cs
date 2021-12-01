@@ -23,7 +23,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the text input.</param>
         /// <param name="OnTextChanged">The event fired when the text is changed.</param>
         /// <param name="font">The font of the text.</param>
-        public GuiElementTextInput(ICoreClientAPI capi, ElementBounds bounds, Common.Action<string>OnTextChanged, CairoFont font) : base(capi, font, bounds)
+        public GuiElementTextInput(ICoreClientAPI capi, ElementBounds bounds, Action<string>OnTextChanged, CairoFont font) : base(capi, font, bounds)
         {
             MouseOverCursor = "textselect";
             this.OnTextChanged = OnTextChanged;
@@ -154,7 +154,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnTextChanged">The event fired when the text is changed.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="key">The name of this text component.</param>
-        public static GuiComposer AddTextInput(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font = null, string key = null)
+        public static GuiComposer AddTextInput(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
             {

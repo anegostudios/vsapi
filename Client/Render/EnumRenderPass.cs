@@ -51,9 +51,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         Chunkopaque = 12,
         /// <summary>
-        /// Debug shader for testing multitexturing
+        /// Debug shader
         /// </summary>
-        Multitexturetest = 13,
+        MultiTextureTest = 13,
         /// <summary>
         /// Renders liquid chunk geometry
         /// </summary>

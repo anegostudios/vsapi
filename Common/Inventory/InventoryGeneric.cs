@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -109,7 +110,14 @@ namespace Vintagestory.API.Common
         /// <param name="treeAttribute"></param>
         public override void FromTreeAttributes(ITreeAttribute treeAttribute)
         {
+            int cnt = slots.Length;
             slots = SlotsFromTreeAttributes(treeAttribute, slots);
+
+            int add = cnt - slots.Length;
+            while (add-- > 0)
+            {
+                slots = slots.Append(NewSlot(slots.Length));
+            }
         }
 
         /// <summary>

@@ -16,6 +16,7 @@ namespace Vintagestory.API.Common
     {
         public Random rand = new Random();
 
+        public bool Async => false;
         public bool Bouncy { get; set; }
         public bool DieOnRainHeightmap { get; set; }
         public virtual bool RandomVelocityChange { get; set; }

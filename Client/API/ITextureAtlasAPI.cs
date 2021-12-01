@@ -130,6 +130,8 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         bool InsertTextureCached(AssetLocation path, byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
 
+        bool InsertTextureCached(CompositeTexture texture, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+
         /// <summary>
         /// Deallocates a previously allocated texture space
         /// </summary>
@@ -142,6 +144,20 @@ namespace Vintagestory.API.Client
         /// <param name="textureSubId"></param>
         /// <returns></returns>
         int GetRandomColor(int textureSubId);
+
+        /// <summary>
+        /// Regenerates the mipmaps for one of the atlas textures, given by its array index
+        /// </summary>
+        /// <param name="atlasIndex"></param>
+        void RegenMipMaps(int atlasIndex);
+
+        /// <summary>
+        /// Returns one of 30 random rgba values inside the given texture (defined by its sub-id)
+        /// </summary>
+        /// <param name="textureSubId"></param>
+        /// <param name="rndIndex">0..29 for a specific random pixel, or -1 to randomize, which is the same as calling GetRandomColor without the rndIndex argument</param>
+        /// <returns></returns>
+        int GetRandomColor(int textureSubId, int rndIndex);
 
         /// <summary>
         /// Returns you an average rgba value picked inside the texture subid

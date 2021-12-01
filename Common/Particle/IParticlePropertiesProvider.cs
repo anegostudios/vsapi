@@ -10,6 +10,11 @@ namespace Vintagestory.API.Common
     public interface IParticlePropertiesProvider
     {
         /// <summary>
+        /// If true, will be be spawned in the async particle system, which does not affect main game performance, recommended for large quantities of particles, slightly less optimal for particles that spawn very often
+        /// </summary>
+        bool Async { get; }
+
+        /// <summary>
         /// Called before the particle provider is used for particle creation
         /// </summary>
         /// <param name="api"></param>
@@ -193,5 +198,6 @@ namespace Vintagestory.API.Common
         
 
         bool RandomVelocityChange { get; }
+        
     }
 }

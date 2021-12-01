@@ -22,7 +22,7 @@ namespace Vintagestory.API.Client
         public RenderSkillItemDelegate RenderHandler;
 
         public object Data;
-
+        public bool TexturePremultipliedAlpha = true;
 
         public SkillItem WithIcon(ICoreClientAPI capi, DrawSkillIconDelegate onDrawIcon)
         {
@@ -33,6 +33,13 @@ namespace Vintagestory.API.Client
 
             return this;
         }
+
+        public SkillItem WithIcon(ICoreClientAPI capi, LoadedTexture texture)
+        {
+            Texture = texture;
+            return this;
+        }
+
 
         public void Dispose()
         {

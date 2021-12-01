@@ -17,9 +17,10 @@ namespace Vintagestory.API.Client
         DummySlot slot;
         double size;
 
-        Common.Action<ItemStack> onStackClicked;
+        Action<ItemStack> onStackClicked;
+        
 
-        public ItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstack, double size, double rightSidePadding = 0, EnumFloat floatType = EnumFloat.Left, Common.Action<ItemStack> onStackClicked = null) : base(capi)
+        public ItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstack, double size, double rightSidePadding = 0, EnumFloat floatType = EnumFloat.Left, Action<ItemStack> onStackClicked = null) : base(capi)
         {
             size = GuiElement.scaled(size);
 
@@ -59,14 +60,14 @@ namespace Vintagestory.API.Client
             LineRectangled bounds = BoundsPerLine[0];
 
             api.Render.RenderItemstackToGui(
-                slot, renderX + bounds.X + bounds.Width * 0.5f, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+                slot, renderX + bounds.X + bounds.Width * 0.5f + offX, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);
 
             if (bounds.PointInside(relx, rely))
             {
-                RenderItemstackTooltip(slot, renderX + relx, renderY + rely + offY, deltaTime);
+                RenderItemstackTooltip(slot, renderX + relx + offX, renderY + rely + offY, deltaTime);
             }
         }
 

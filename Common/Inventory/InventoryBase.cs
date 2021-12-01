@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -142,12 +143,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called whenever a slot has been modified
         /// </summary>
-        public event API.Common.Action<int> SlotModified;
+        public event Action<int> SlotModified;
 
         /// <summary>
         /// Called whenever a slot notification event has been fired. Is used by the slot grid gui element to visually wiggle the slot contents
         /// </summary>
-        public event API.Common.Action<int> SlotNotified;
+        public event Action<int> SlotNotified;
 
         /// <summary>
         /// Called whenever this inventory was opened
@@ -430,13 +431,15 @@ namespace Vintagestory.API.Common
             if (op.ShiftDown)
             {
                 sourceSlot = this[slotId];
-
                 string stackName = sourceSlot.Itemstack?.GetName();
+                string sourceInv = sourceSlot.Inventory?.InventoryID;
+
+                StringBuilder shiftClickDebugText = new StringBuilder();
 
                 op.RequestedQuantity = sourceSlot.StackSize;
-                op.ActingPlayer.InventoryManager.TryTransferAway(sourceSlot, ref op, false);
+                op.ActingPlayer.InventoryManager.TryTransferAway(sourceSlot, ref op, false, shiftClickDebugText);
 
-                Api.World.Logger.VerboseDebug("{0} shift clicked slot {1} in {2}. Moved {3}x{4}", op.ActingPlayer?.PlayerName, slotId, sourceSlot.Inventory.InventoryID, op.MovedQuantity, stackName);
+                Api.World.Logger.Audit("{0} shift clicked slot {1} in {2}. Moved {3}x{4} to ({5})", op.ActingPlayer?.PlayerName, slotId, sourceInv, op.MovedQuantity, stackName, shiftClickDebugText.ToString());
             }
             else
             {

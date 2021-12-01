@@ -75,6 +75,8 @@ namespace Vintagestory.API.Common
         bool AreaSelectionMode { get; set; }
 
 
+        int Deaths { get; }
+
         /// <summary>
         /// Allows setting of arbitrary, permanantly stored moddata attached to this player. Not synced to client.
         /// </summary>

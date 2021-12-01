@@ -246,7 +246,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="seconds">Seconds to fade out across.</param>
         /// <param name="onFadedOut">Delegate to have happen once the fade-out is done.</param>
-        public void FadeOut(float seconds, Common.Action onFadedOut = null)
+        public void FadeOut(float seconds, Action onFadedOut = null)
         {
             bool wasInterupted = false;
 

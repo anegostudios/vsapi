@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {
@@ -12,7 +13,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public class DlgComposers : IEnumerable<KeyValuePair<string, GuiComposer>>
         {
-            protected Dictionary<string, GuiComposer> dialogComposers = new Dictionary<string, GuiComposer>();
+            protected OrderedDictionary<string, GuiComposer> dialogComposers = new OrderedDictionary<string, GuiComposer>();
             protected GuiDialog dialog;
 
             /// <summary>
@@ -157,12 +158,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The event fired when this dialogue is opened.
         /// </summary>
-        public event Common.Action OnOpened;
+        public event Action OnOpened;
 
         /// <summary>
         /// The event fired when this dialogue is closed.
         /// </summary>
-        public event Common.Action OnClosed;
+        public event Action OnClosed;
 
 
         protected ICoreClientAPI capi;
@@ -449,7 +450,16 @@ namespace Vintagestory.API.Client
         /// Fires when the keys are released.
         /// </summary>
         /// <param name="args">the key or keys that were released.</param>
-        public virtual void OnKeyUp(KeyEvent args) { }
+        public virtual void OnKeyUp(KeyEvent args) {
+            foreach (GuiComposer composer in Composers.Values)
+            {
+                composer.OnKeyUp(args);
+                if (args.Handled)
+                {
+                    return;
+                }
+            }
+        }
 
         /// <summary>
         /// Fires explicitly when the Escape key is pressed and attempts to close the dialogue.

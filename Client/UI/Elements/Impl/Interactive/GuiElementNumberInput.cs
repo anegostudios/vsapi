@@ -29,7 +29,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the GUI.</param>
         /// <param name="OnTextChanged">The event fired when the number is changed.</param>
         /// <param name="font">The font of the numbers.</param>
-        public GuiElementNumberInput(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font) : base(capi, bounds, OnTextChanged, font)
+        public GuiElementNumberInput(ICoreClientAPI capi, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font) : base(capi, bounds, OnTextChanged, font)
         {
             buttonHighlightTexture = new LoadedTexture(capi);
         }
@@ -238,7 +238,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnTextChanged">The event fired when the number is changed.</param>
         /// <param name="font">The font for the numbers.</param>
         /// <param name="key">The name for this GuiElementNumberInput</param>
-        public static GuiComposer AddNumberInput(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font = null, string key = null)
+        public static GuiComposer AddNumberInput(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
             {

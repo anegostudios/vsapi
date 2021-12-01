@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
     {
 
         public abstract List<GuiTab> Tabs { get; }
-        public abstract List<API.Common.Action<GuiComposer>> RenderTabHandlers { get; }
+        public abstract List<Action<GuiComposer>> RenderTabHandlers { get; }
 
 
         public GuiDialogCharacterBase(ICoreClientAPI capi) : base(capi) { }
@@ -22,8 +22,8 @@ namespace Vintagestory.API.Client
         }
 
 
-        public abstract event Common.Action ComposeExtraGuis;
+        public abstract event Action ComposeExtraGuis;
 
-        public abstract event Common.Action<int> TabClicked;
+        public abstract event Action<int> TabClicked;
     }
 }

@@ -75,7 +75,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="seconds"></param>
         /// <param name="onFadedOut"></param>
-        void FadeOut(float seconds, Common.Action onFadedOut = null);
+        void FadeOut(float seconds, Action onFadedOut = null);
         void FastForward(float seconds);
         string PositionString { get; }
     }

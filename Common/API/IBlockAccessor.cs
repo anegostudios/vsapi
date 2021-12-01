@@ -258,7 +258,7 @@ namespace Vintagestory.API.Common
         /// <param name="onBlock">The method in which you want to check for the block, whatever it may be.</param>
         /// <param name="centerOrder">If true, the blocks will be ordered by the distance to the center position</param>
         /// <returns></returns>
-        void WalkBlocks(BlockPos minPos, BlockPos maxPos, API.Common.Action<Block, BlockPos> onBlock, bool centerOrder = false);
+        void WalkBlocks(BlockPos minPos, BlockPos maxPos, Action<Block, BlockPos> onBlock, bool centerOrder = false);
 
         /// <summary>
         /// A method to search for a given block in an area
@@ -267,14 +267,14 @@ namespace Vintagestory.API.Common
         /// <param name="maxPos"></param>
         /// <param name="onBlock">Return false to stop the search</param>
         /// <param name="onChunkMissing">Called when a missing/unloaded chunk was encountered</param>
-        void SearchBlocks(BlockPos minPos, BlockPos maxPos, API.Common.ActionConsumable<Block, BlockPos> onBlock, API.Common.Action<int, int, int> onChunkMissing = null);
+        void SearchBlocks(BlockPos minPos, BlockPos maxPos, ActionConsumable<Block, BlockPos> onBlock, Action<int, int, int> onChunkMissing = null);
 
         /// <summary>
         /// Calls given handler if it encounters one or more generated structure at given position (read from mapregions, assuming a max structure size of 256x256x256)
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="onStructure"></param>
-        void WalkStructures(BlockPos pos, API.Common.Action<GeneratedStructure> onStructure);
+        void WalkStructures(BlockPos pos, Action<GeneratedStructure> onStructure);
 
         /// <summary>
         /// Calls given handler if it encounters one or more generated structure that intersect any position inside minpos->maxpos (read from mapregions, assuming a max structure size of 256x256x256)
@@ -282,7 +282,7 @@ namespace Vintagestory.API.Common
         /// <param name="minpos"></param>
         /// <param name="maxpos"></param>
         /// <param name="onStructure"></param>
-        void WalkStructures(BlockPos minpos, BlockPos maxpos, API.Common.Action<GeneratedStructure> onStructure);
+        void WalkStructures(BlockPos minpos, BlockPos maxpos, Action<GeneratedStructure> onStructure);
 
         /// <summary>
         /// Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
@@ -445,7 +445,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="OnRetesselated"></param>
-        void MarkBlockDirty(BlockPos pos, Common.Action OnRetesselated);
+        void MarkBlockDirty(BlockPos pos, Action OnRetesselated);
 
         /// <summary>
         /// Returns the light level (0..32) at given position. If the chunk at that position is not loaded this method will return the default sunlight value
@@ -599,21 +599,22 @@ namespace Vintagestory.API.Common
         #region Decor system
 
         /// <summary>
-        /// Add a decor block to the side of an existing block in the chunk<br/>
+        /// Add a decor block to the side of an existing block. Use air block (id 0) to remove a decor.<br/>
         /// </summary>
         /// <param name="position"></param>
         /// <param name="onFace"></param>
         /// <param name="block"></param>
-        /// <returns>False if this chunk is not loaded or there already exists a block in this position and facing</returns>
-        bool AddDecor(Block block, BlockPos position, BlockFacing onFace);
+        /// <returns>True if the decor was sucessfully set</returns>
+        bool SetDecor(Block block, BlockPos position, BlockFacing onFace);
 
         /// <summary>
-        /// Add a decor block to a specific sub-position on the side of an existing block in the chunk<br/>
+        /// Add a decor block to a specific sub-position on the side of an existing block. Use air block (id 0) to remove a decor.<br/>
         /// </summary>
         /// <param name="position"></param>
         /// <param name="block"></param>
-        /// <returns>False if this chunk is not loaded or there already exists a block in this position and facing</returns>
-        bool AddDecor(Block block, BlockPos position, int faceAndSubposition);
+        /// <param name="faceAndSubposition">You can get this value via <see cref="CollectibleBehaviorArtPigment.BlockSelectionToSubPosition()"/></param></param>
+        /// <returns>True if the decor was sucessfully set</returns>
+        bool SetDecor(Block block, BlockPos position, int faceAndSubposition);
 
         /// <summary>
         /// Get a list of all decors at this position
@@ -623,17 +624,25 @@ namespace Vintagestory.API.Common
         /// <returns>Always a 6 element long list of decor blocks, any of which may be null if not set</returns>
         Block[] GetDecors(BlockPos position);
 
+        /// <summary>
+        /// Retrieves a single decor at given position
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="faceAndSubposition">You can get this value via <see cref="CollectibleBehaviorArtPigment.BlockSelectionToSubPosition()"/></param></param>
+        /// <returns></returns>
         Block GetDecor(BlockPos pos, int faceAndSubposition);
 
         /// <summary>
-        /// Removes a decor block from given position
+        /// Removes all decors at given position, drops items if set
         /// </summary>
-        /// <param name="world"></param>
         /// <param name="pos"></param>
-        /// <param name="side">If null, all the decor blocks on all sides are removed</param>
-        void BreakDecor(BlockPos pos, BlockFacing side = null);
+        /// <param name="side">If not null, breaks all the decor on given block face, otherwise the decor blocks on all sides are removed</param>
+        /// <param name="faceAndSubposition">If not null breaks only this part of the decor for give face. You can get this value via <see cref="CollectibleBehaviorArtPigment.BlockSelectionToSubPosition()"/></param>
+        /// <param name="drop">If true calls OnBrokenAsDecor() on all selected decors and drops the items that are returned from Block.GetDrops()</param>
+        /// <returns>True if a decor was removed</returns>
+        bool BreakDecor(BlockPos pos, BlockFacing side = null, int? faceAndSubposition = null);
 
-        bool BreakDecorPart(BlockPos pos, BlockFacing side, int faceAndSubposition);
+
 
         /// <summary>
         /// Server: Marks this position as required for resending to the client

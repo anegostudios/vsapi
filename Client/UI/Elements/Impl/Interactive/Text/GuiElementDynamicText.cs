@@ -15,7 +15,7 @@ namespace Vintagestory.API.Client
 
         LoadedTexture textTexture;
         
-        public Common.Action OnClick;
+        public Action OnClick;
         public bool autoHeight;
 
         public int QuantityTextLines { get
@@ -33,9 +33,9 @@ namespace Vintagestory.API.Client
         /// <param name="font">The font of the text.</param>
         /// <param name="orientation">The orientation of the text.</param>
         /// <param name="bounds">the bounds of the text.</param>
-        public GuiElementDynamicText(ICoreClientAPI capi, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds) : base(capi, text, font, bounds)
+        public GuiElementDynamicText(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds) : base(capi, text, font, bounds)
         {
-            this.orientation = orientation;
+            this.orientation = font.Orientation;
             textTexture = new LoadedTexture(capi);
         }
 
@@ -146,11 +146,23 @@ namespace Vintagestory.API.Client
         /// <param name="bounds"></param>
         /// <param name="key"></param>
         /// <returns></returns>
+        public static GuiComposer AddDynamicText(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
+        {
+            if (!composer.composed)
+            {
+                GuiElementDynamicText elem = new GuiElementDynamicText(composer.Api, text, font, bounds);
+                composer.AddInteractiveElement(elem, key);
+            }
+            return composer;
+        }
+
+        [Obsolete("Use AddDymiacText without orientation attribute, that can be configured through the font")]
         public static GuiComposer AddDynamicText(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {
-                GuiElementDynamicText elem = new GuiElementDynamicText(composer.Api, text, font, orientation, bounds);
+                font = font.WithOrientation(orientation);
+                GuiElementDynamicText elem = new GuiElementDynamicText(composer.Api, text, font, bounds);
                 composer.AddInteractiveElement(elem, key);
             }
             return composer;

@@ -171,7 +171,7 @@ namespace Vintagestory.API.Client
 
             CollisionBoxList.Clear();
             BlockAccess.WalkBlocks(minPos, maxPos, (cblock, bpos) => {
-                Cuboidf[] collisionBoxes = cblock.GetCollisionBoxes(BlockAccess, bpos);
+                Cuboidf[] collisionBoxes = cblock.GetParticleCollisionBoxes(BlockAccess, bpos);
 
                 for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
                 {

@@ -98,28 +98,28 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Faces towards negative Z
         /// </summary>
-        public static readonly BlockFacing NORTH = new BlockFacing("north", 1, 0, 2, 1, new Vec3i(0, 0, -1), new Vec3f(0.5f, 0.5f, 0f), EnumAxis.Z);
+        public static readonly BlockFacing NORTH = new BlockFacing("north", 1, 0, 2, 1, new Vec3i(0, 0, -1), new Vec3f(0.5f, 0.5f, 0f), EnumAxis.Z, new Cuboidf(0, 0, 0, 1, 1, 0));
         /// <summary>
         /// Faces towards positive X
         /// </summary>
-        public static readonly BlockFacing EAST = new BlockFacing("east",   2, 1, 3, 0, new Vec3i(1, 0, 0), new Vec3f(1f, 0.5f, 0.5f), EnumAxis.X);
+        public static readonly BlockFacing EAST = new BlockFacing("east",   2, 1, 3, 0, new Vec3i(1, 0, 0), new Vec3f(1f, 0.5f, 0.5f), EnumAxis.X, new Cuboidf(1, 0, 0, 1, 1, 1));
         /// <summary>
         /// Faces towards positive Z
         /// </summary>
-        public static readonly BlockFacing SOUTH = new BlockFacing("south", 4, 2, 0, 3, new Vec3i(0, 0, 1), new Vec3f(0.5f, 0.5f, 1f), EnumAxis.Z);
+        public static readonly BlockFacing SOUTH = new BlockFacing("south", 4, 2, 0, 3, new Vec3i(0, 0, 1), new Vec3f(0.5f, 0.5f, 1f), EnumAxis.Z, new Cuboidf(0, 0, 1, 1, 1, 1));
         /// <summary>
         /// Faces towards negative X
         /// </summary>
-        public static readonly BlockFacing WEST = new BlockFacing("west",   8, 3, 1, 2, new Vec3i(-1, 0, 0), new Vec3f(0, 0.5f, 0.5f), EnumAxis.X);
+        public static readonly BlockFacing WEST = new BlockFacing("west",   8, 3, 1, 2, new Vec3i(-1, 0, 0), new Vec3f(0, 0.5f, 0.5f), EnumAxis.X, new Cuboidf(0, 0, 0, 0, 1, 1));
 
         /// <summary>
         /// Faces towards positive Y
         /// </summary>
-        public static readonly BlockFacing UP = new BlockFacing("up",      16, 4, 5, -1, new Vec3i(0, 1, 0), new Vec3f(0.5f, 1, 0.5f), EnumAxis.Y);
+        public static readonly BlockFacing UP = new BlockFacing("up",      16, 4, 5, -1, new Vec3i(0, 1, 0), new Vec3f(0.5f, 1, 0.5f), EnumAxis.Y, new Cuboidf(0, 1, 0, 1, 1, 1));
         /// <summary>
         /// Faces towards negative Y
         /// </summary>
-        public static readonly BlockFacing DOWN = new BlockFacing("down",  32, 5, 4, -1, new Vec3i(0, -1, 0), new Vec3f(0.5f, 0, 0.5f), EnumAxis.Y);
+        public static readonly BlockFacing DOWN = new BlockFacing("down",  32, 5, 4, -1, new Vec3i(0, -1, 0), new Vec3f(0.5f, 0, 0.5f), EnumAxis.Y, new Cuboidf(0, 0, 0, 1, 0, 1));
 
         /// <summary>
         /// All block faces in the order of N, E, S, W, U, D
@@ -164,6 +164,7 @@ namespace Vintagestory.API.MathTools
         Vec3f planeCenter;
         string code;
         EnumAxis axis;
+        Cuboidf plane;
 
         /// <summary>
         /// The faces byte flag
@@ -194,6 +195,11 @@ namespace Vintagestory.API.MathTools
         public Vec3d Normald { get { return normald; } }
 
         /// <summary>
+        /// Returns a cuboid where either the width, height or length is zero which represents the min/max of the block 2D plane in 3D space
+        /// </summary>
+        public Cuboidf Plane { get { return plane; } }
+
+        /// <summary>
         /// Returns a normal vector of this face encoded in 6 bits/
         /// bit 0: 1 if south or west
         /// bit 1: sign bit 
@@ -222,6 +228,8 @@ namespace Vintagestory.API.MathTools
         /// Returns the string north, east, south, west, up or down
         /// </summary>
         public string Code { get { return code; } }
+
+
         /// <summary>
         /// True if this face is N,E,S or W
         /// </summary>
@@ -243,7 +251,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public EnumAxis Axis { get { return axis; } }
 
-        private BlockFacing(string code, byte flag, int index, int oppositeIndex, int horizontalAngleIndex, Vec3i facingVector, Vec3f planeCenter, EnumAxis axis)
+        private BlockFacing(string code, byte flag, int index, int oppositeIndex, int horizontalAngleIndex, Vec3i facingVector, Vec3f planeCenter, EnumAxis axis, Cuboidf plane)
         {
             this.index = index;
             this.meshDataIndex = (byte)(index + 1);
@@ -254,6 +262,7 @@ namespace Vintagestory.API.MathTools
             this.normali = facingVector;
             this.normalf = new Vec3f(facingVector.X, facingVector.Y, facingVector.Z);
             this.normald = new Vec3d((double)facingVector.X, (double)facingVector.Y, (double)facingVector.Z);
+            this.plane = plane;
 
             normalPacked = NormalUtil.PackNormal(normalf.X, normalf.Y, normalf.Z);
             normalb = (byte)(
@@ -267,7 +276,7 @@ namespace Vintagestory.API.MathTools
                 | (facingVector.X < 0 ? 1 : 0) << 5
             );
 
-            normalPackedFlags = VertexFlags.NormalToPackedInt(normalf) << 15;
+            normalPackedFlags = VertexFlags.PackNormal(normalf);
 
             this.planeCenter = planeCenter;
             this.axis = axis;

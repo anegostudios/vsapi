@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Cairo;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -21,7 +22,7 @@ namespace Vintagestory.API.Client
         /// <param name="columns">The number of columns in the slot grid.</param>
         /// <param name="excludingSlots">The slots that have been excluded.</param>
         /// <param name="bounds">The bounds of the slot grid.</param>
-        public GuiElementItemSlotGridExcl(ICoreClientAPI capi, IInventory inventory, API.Common.Action<object> SendPacketHandler, int columns, int[] excludingSlots, ElementBounds bounds) : base(capi, inventory, SendPacketHandler, columns, bounds)
+        public GuiElementItemSlotGridExcl(ICoreClientAPI capi, IInventory inventory, Action<object> SendPacketHandler, int columns, int[] excludingSlots, ElementBounds bounds) : base(capi, inventory, SendPacketHandler, columns, bounds)
         {
             this.excludingSlots = excludingSlots;
             InitDicts();
@@ -87,7 +88,7 @@ namespace Vintagestory.API.Client
         /// <param name="excludingSlots">The slots that have been excluded from the slot grid.</param>
         /// <param name="bounds">The bounds of the slot grid.</param>
         /// <param name="key">The name of the slot grid.</param>
-        public static GuiComposer AddItemSlotGridExcl(this GuiComposer composer, IInventory inventory, API.Common.Action<object> SendPacket, int columns, int[] excludingSlots, ElementBounds bounds, string key = null)
+        public static GuiComposer AddItemSlotGridExcl(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, int[] excludingSlots, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {

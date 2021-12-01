@@ -36,7 +36,7 @@ namespace Vintagestory.API.Common
         /// Gets a loaded mod system with the specified type.
         /// Returns null if no mod of that type was found.
         /// </summary>
-        T GetModSystem<T>() where T : ModSystem;
+        T GetModSystem<T>(bool withInheritance = true) where T : ModSystem;
 
         /// <summary>
         /// Returns if the mod system with the specified full name is loaded and enabled.

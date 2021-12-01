@@ -126,6 +126,17 @@ namespace Vintagestory.API.Common
                 MountedOn = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
                 if (MountedOn != null) MountedOn.DidMount(this);
             }
+
+            WatchedAttributes.RegisterModifiedListener("mountedOn", () => {
+                if (WatchedAttributes.HasAttribute("mountedOn"))
+                {
+                    MountedOn = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+                    if (MountedOn != null) MountedOn.DidMount(this);
+                } else
+                {
+                    TryUnmount();
+                }
+            });
         }
 
         /// <summary>
@@ -182,6 +193,12 @@ namespace Vintagestory.API.Common
 
             onmount.DidMount(this);
 
+            TreeAttribute mountableTree = new TreeAttribute();
+            MountedOn?.MountableToTreeAttributes(mountableTree);
+            WatchedAttributes["mountedOn"] = mountableTree;
+            WatchedAttributes.MarkPathDirty("mountedOn");
+
+
             return true;
         }
 
@@ -226,6 +243,20 @@ namespace Vintagestory.API.Common
 
             base.Die(reason, damageSourceForDeath);
         }
+        
+        /// <summary>
+        /// Called when the path finder does not find a path to given target
+        /// </summary>
+        /// <param name="target"></param>
+        public void OnNoPath(Vec3d target)
+        {
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnNoPath(target);
+            }
+        }
+
+
 
         public override void OnInteract(EntityAgent byEntity, ItemSlot slot, Vec3d hitPosition, EnumInteractMode mode)
         {
@@ -327,19 +358,6 @@ namespace Vintagestory.API.Common
             {
                 PlayEntitySound("hurt", (damageSource.SourceEntity as EntityPlayer)?.Player);
             }
-
-            /*if (damageSource.type == EnumDamageType.BluntAttack && damageSource.sourceEntity != null)
-            {
-                ServerPos.Motion.Add(
-                    GameMath.Sin(damageSource.sourceEntity.ServerPos.Yaw + GameMath.PIHALF) / 10,
-                    0.1,
-                    GameMath.Cos(damageSource.sourceEntity.ServerPos.Yaw + GameMath.PIHALF) / 10
-                );
-                if (this is EntityPlayer)
-                {
-                    ((IServerPlayer)World.PlayerByUid(((EntityPlayer)this).PlayerUID)).SendPositionToClient();
-                }
-            }*/
 
             return true;
         }
@@ -695,6 +713,9 @@ namespace Vintagestory.API.Common
             if (!WatchedAttributes.HasAttribute("mountedOn"))
             {
                 TryUnmount();
+            } else
+            {
+
             }
         }
 
@@ -1160,5 +1181,7 @@ namespace Vintagestory.API.Common
 
             return false;
         }
+
+
     }
 }

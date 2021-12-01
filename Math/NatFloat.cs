@@ -21,23 +21,23 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         TRIANGLE = 1,
         /// <summary>
-        /// Select random numbers with numbers near avg being the most commonly selected ones, following a gaussian curve
+        /// Select random numbers with numbers near avg being the more commonly selected ones, following a gaussian curve
         /// </summary>
         GAUSSIAN = 2,
         /// <summary>
-        /// Select random numbers with numbers near avg being the most commonly selected ones, following a narrow gaussian curve
+        /// Select random numbers with numbers near avg being the much more commonly selected ones, following a narrow gaussian curve
         /// </summary>
         NARROWGAUSSIAN = 3,
         /// <summary>
-        /// Select random numbers with numbers near avg being the least commonly selected ones, following an even narrower gaussian curve
+        /// Select random numbers with numbers near avg being the much much more commonly selected ones, following an even narrower gaussian curve
         /// </summary>
         VERYNARROWGAUSSIAN = 10,
         /// <summary>
-        /// Select random numbers with numbers near avg being the least commonly selected ones, following an upside down gaussian curve
+        /// Select random numbers with numbers near avg being the less commonly selected ones, following an upside down gaussian curve
         /// </summary>
         INVERSEGAUSSIAN = 4,
         /// <summary>
-        /// Select random numbers with numbers near avg being the least commonly selected ones, following an upside down gaussian curve
+        /// Select random numbers with numbers near avg being the much less commonly selected ones, following an upside down gaussian curve
         /// </summary>
         NARROWINVERSEGAUSSIAN = 5,
         /// <summary>
@@ -55,7 +55,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Select completely random numbers within avg-var until avg+var only ONCE and then always 0
         /// </summary>
-        DIRAC = 9,    
+        DIRAC = 9,
     }
 
 
@@ -393,7 +393,29 @@ namespace Vintagestory.API.MathTools
 
         }
 
-        internal static NatFloat createFromBytes(BinaryReader reader)
+
+        /// <summary>
+        /// Clamps supplied value to avg-var and avg+var
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public float ClampToRange(float value)
+        {
+            switch (dist)
+            {
+                case EnumDistribution.INVEXP:
+                case EnumDistribution.STRONGINVEXP:
+                case EnumDistribution.STRONGERINVEXP:
+                    return Math.Min(value, value + var);
+                default:
+                    float min = avg - var;
+                    float max = avg + var;
+                    return GameMath.Clamp(value, Math.Min(min, max), Math.Max(min, max));
+            }
+        }
+
+
+        public static NatFloat createFromBytes(BinaryReader reader)
         {
             NatFloat value = NatFloat.Zero;
             value.FromBytes(reader);

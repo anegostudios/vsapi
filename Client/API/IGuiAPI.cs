@@ -41,6 +41,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         IconUtil Icons { get; }
 
+
         /// <summary>
         /// Returns a ElementBounds that is always the size of the game window
         /// </summary>
@@ -77,6 +78,29 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         void DeleteTexture(int textureid);
 
+
+        /// <summary>
+        /// Loads an external .svg file into a texture. Will return null if the file is not found
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <param name="textureWidth"></param>
+        /// <param name="textureHeight"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="offX"></param>
+        /// <param name="offY"></param>
+        /// <returns></returns>
+        LoadedTexture LoadSvg(AssetLocation loc, int textureWidth, int textureHeight, int width = 0, int height = 0, int? color = 0);
+
+        /// <summary>
+        /// Loads an external .svg file into a texture. Will return null if the file is not found
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="padding"></param>
+        /// <returns></returns>
+        LoadedTexture LoadSvgWithPadding(AssetLocation loc, int textureWidth, int textureHeight, int padding = 0, int? color = 0);
 
         /// <summary>
         /// Load the contents of a cairo surface into a opengl texture. Returns the texture id

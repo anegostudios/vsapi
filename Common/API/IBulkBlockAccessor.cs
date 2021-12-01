@@ -14,6 +14,11 @@ namespace Vintagestory.API.Common
     public interface IBulkBlockAccessor : IBlockAccessor
     {
         /// <summary>
+        /// The full list of staged blocks that will get commited after calling Commit()
+        /// </summary>
+        Dictionary<BlockPos, BlockUpdate> StagedBlocks { get; }
+
+        /// <summary>
         /// If set to true, the methods GetBlock() and GetBlockId() will behave like GetStagedBlockId() until the next commit
         /// </summary>
         bool ReadFromStagedByDefault { get; set; }

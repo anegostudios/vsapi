@@ -109,24 +109,45 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Allows setting of arbitrary, permanantly stored moddata of this chunk. When set on the server before the chunk is sent to the client, the data will also be sent to the client.
-        /// When set on the client the data is discarded once the chunk gets unloaded
+        /// Server: Allows setting of arbitrary, permanently stored moddata of this map region.
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="data"></param>
+        /// <param name="data">Use SerializerUtil to encode your data to bytes</param>
         void SetModdata(string key, byte[] data);
 
         /// <summary>
-        /// Removes the permanently stored data. 
+        /// Server: Removes the permanently stored data. 
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
         void RemoveModdata(string key);
 
         /// <summary>
-        /// Retrieve arbitrary, permantly stored mod data
+        /// Server: Retrieve arbitrary, permanently stored mod data
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         byte[] GetModdata(string key);
+
+        /// <summary>
+        /// Server: Allows setting of arbitrary, permanantly stored moddata of this map region.
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+
+        void SetModdata<T>(string key, T data);
+        /// <summary>
+        /// Server: Retrieve arbitrary, permantly stored mod data
+        /// Client: Not implemented. Map chunk Moddata is not synced from server to client
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        T GetModdata<T>(string key);
+
     }
 }

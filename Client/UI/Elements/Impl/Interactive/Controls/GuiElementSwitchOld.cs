@@ -6,7 +6,7 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementSwitchOld : GuiElementTextBase
     {
-        API.Common.Action<bool> handler;
+        Action<bool> handler;
 
         internal const double unscaledWidth = 60;
         internal const double unscaledHandleWidth = 30;
@@ -18,7 +18,7 @@ namespace Vintagestory.API.Client
 
         public bool On;
 
-        public GuiElementSwitchOld(ICoreClientAPI capi, API.Common.Action<bool> OnToggled, ElementBounds bounds) : base(capi, "", null, bounds)
+        public GuiElementSwitchOld(ICoreClientAPI capi, Action<bool> OnToggled, ElementBounds bounds) : base(capi, "", null, bounds)
         {
             Font = CairoFont.WhiteSmallText().WithFontSize((float)GuiStyle.SubNormalFontSize);
 

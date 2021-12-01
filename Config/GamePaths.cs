@@ -54,6 +54,8 @@ namespace Vintagestory.API.Config
         public static string Screenshots { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Vintagestory"); } }
         public static string Videos { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos), "Vintagestory"); } }
         public static string DataPathMods { get { return Path.Combine(DataPath, "Mods"); } }
+        public static string DataPathServerMods { get { return Path.Combine(DataPath, "ModsByServer"); } }
+
 
         public static string DefaultSaveFilenameWithoutExtension = "default";
         
@@ -126,6 +128,10 @@ namespace Vintagestory.API.Config
         }
 
 
-        
+        public static string ReplaceInvalidChars(string filename)
+        {
+            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        }
+
     }
 }

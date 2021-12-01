@@ -87,6 +87,8 @@ namespace Vintagestory.API.Client
 
         void Uniform(string uniformName, Vec4f value);
 
+        void Uniforms4(string uniformName, int count, float[] values);
+
         void UniformMatrix(string uniformName, float[] matrix);
 
         void BindTexture2D(string samplerName, int textureId, int textureNumber);

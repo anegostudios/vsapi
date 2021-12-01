@@ -1,4 +1,5 @@
-﻿using Cairo;
+﻿using System;
+using Cairo;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
@@ -8,7 +9,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class GuiElementToggleButton : GuiElementTextBase
     {
-        Common.Action<bool> handler;
+        Action<bool> handler;
 
         /// <summary>
         /// Is this button toggleable?
@@ -46,7 +47,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnToggled">The action that happens when the button is toggled.</param>
         /// <param name="bounds">The bounding box of the button.</param>
         /// <param name="toggleable">Can the button be toggled on or off?</param>
-        public GuiElementToggleButton(ICoreClientAPI capi, string icon, string text, CairoFont font, Common.Action<bool> OnToggled, ElementBounds bounds, bool toggleable = false) : base(capi, text, font, bounds)
+        public GuiElementToggleButton(ICoreClientAPI capi, string icon, string text, CairoFont font, Action<bool> OnToggled, ElementBounds bounds, bool toggleable = false) : base(capi, text, font, bounds)
         {
             releasedTexture = new LoadedTexture(capi);
             pressedTexture = new LoadedTexture(capi);
@@ -275,7 +276,7 @@ namespace Vintagestory.API.Client
         /// <param name="onToggle">The event that happens once the button is toggled.</param>
         /// <param name="bounds">The bounding box of the button.</param>
         /// <param name="key">The name of the button for easy access.</param>
-        public static GuiComposer AddToggleButton(this GuiComposer composer, string text, CairoFont font, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null)
+        public static GuiComposer AddToggleButton(this GuiComposer composer, string text, CairoFont font, Action<bool> onToggle, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {
@@ -291,7 +292,7 @@ namespace Vintagestory.API.Client
         /// <param name="onToggle">The event that happens once the button is toggled.</param>
         /// <param name="bounds">The bounding box of the button.</param>
         /// <param name="key">The name of the button for easy access.</param>
-        public static GuiComposer AddIconButton(this GuiComposer composer, string icon, API.Common.Action<bool> onToggle, ElementBounds bounds, string key = null)
+        public static GuiComposer AddIconButton(this GuiComposer composer, string icon, Action<bool> onToggle, ElementBounds bounds, string key = null)
         {
             if (!composer.composed)
             {
@@ -324,7 +325,7 @@ namespace Vintagestory.API.Client
         /// <param name="onToggle">The event called when the buttons are pressed.</param>
         /// <param name="bounds">The bounds of the buttons.</param>
         /// <param name="key">The key given to the bundle of buttons.</param>
-        public static GuiComposer AddIconToggleButtons(this GuiComposer composer, string[] icons, CairoFont font, API.Common.Action<int> onToggle, ElementBounds[] bounds, string key = null)
+        public static GuiComposer AddIconToggleButtons(this GuiComposer composer, string[] icons, CairoFont font, Action<int> onToggle, ElementBounds[] bounds, string key = null)
         {
             if (!composer.composed)
             {
@@ -365,7 +366,7 @@ namespace Vintagestory.API.Client
         /// <param name="onToggle">The event fired when the button is pressed.</param>
         /// <param name="bounds">The bounds of the buttons.</param>
         /// <param name="key">The key given to the bundle of buttons.</param>
-        public static GuiComposer AddTextToggleButtons(this GuiComposer composer, string[] texts, CairoFont font, API.Common.Action<int> onToggle, ElementBounds[] bounds, string key = null)
+        public static GuiComposer AddTextToggleButtons(this GuiComposer composer, string[] texts, CairoFont font, Action<int> onToggle, ElementBounds[] bounds, string key = null)
         {
             if (!composer.composed)
             {

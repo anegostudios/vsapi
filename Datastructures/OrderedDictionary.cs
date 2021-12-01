@@ -1,8 +1,10 @@
+using ProtoBuf;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.Serialization;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Datastructures
@@ -15,6 +17,7 @@ namespace Vintagestory.API.Datastructures
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
+	[ProtoContract]
 	public class OrderedDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>, IEnumerable, IDictionary<TKey, TValue>
 	{
 		private static readonly string _keyTypeName = typeof(TKey).FullName;
@@ -25,6 +28,9 @@ namespace Vintagestory.API.Datastructures
 		private List<KeyValuePair<TKey, TValue>> _list;
 		private IEqualityComparer<TKey> _comparer;
 		private int _initialCapacity;
+
+		[ProtoMember(1)]
+		private List<KeyValuePair<TKey, TValue>> listSer;
 
 
 		public Dictionary<TKey, TValue> InternalDictionary => Dictionary;
@@ -56,7 +62,26 @@ namespace Vintagestory.API.Datastructures
             }
         }
 
-        public OrderedDictionary(Dictionary<TKey, TValue> initialData)
+		[OnDeserialized]
+		protected void OnDeserializedMethod(StreamingContext context)
+		{
+			if (listSer == null) return;
+
+			foreach (var val in listSer)
+            {
+				this[val.Key] = val.Value;
+            }
+			listSer = null;
+		}
+
+		[ProtoBeforeSerialization]
+		protected void BeforeSerialization()
+        {
+			listSer = new List<KeyValuePair<TKey, TValue>>();
+			listSer.AddRange(_list);
+        }
+
+		public OrderedDictionary(Dictionary<TKey, TValue> initialData)
         {
 			foreach (var val in initialData)
 			{

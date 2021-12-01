@@ -157,6 +157,16 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Cuboidf OriginCollisionBox;
 
+
+        /// <summary>
+        /// The entities selection box. Offseted by the animation system when necessary. Set by the game client and server.
+        /// </summary>
+        public Cuboidf SelectionBox;
+        /// <summary>
+        /// The entities selection box. Not Offseted. Set by the game client and server.
+        /// </summary>
+        public Cuboidf OriginSelectionBox;
+
         /// <summary>
         /// Used by the teleporter block
         /// </summary>
@@ -462,6 +472,11 @@ namespace Vintagestory.API.Common.Entities
                 onHurtCounter = newOnHurtCounter;
                 SetActivityRunning("invulnerable", 500);
 
+                if (Attributes.GetInt("dmgkb") == 0)
+                {
+                    Attributes.SetInt("dmgkb", 1);
+                }
+
                 // Gets already called on the server directly
                 if (World.Side == EnumAppSide.Client)
                 {
@@ -502,7 +517,7 @@ namespace Vintagestory.API.Common.Entities
                 }
             });
 
-            if (Properties.HitBoxSize != null)
+            if (Properties.CollisionBoxSize != null)
             {
                 updateHitBox();
             }
@@ -538,12 +553,12 @@ namespace Vintagestory.API.Common.Entities
 
             this.Properties.Initialize(this, api);
 
-
-            AnimManager = AnimationCache.InitManager(api, AnimManager, this, Properties.Client.LoadedShape, "head");
+            Properties.Client.DetermineLoadedShape(EntityId);
+            AnimManager = AnimationCache.InitManager(api, AnimManager, this, properties.Client.LoadedShapeForEntity, "head");
             
             if (this is EntityPlayer)
             {
-                AnimManager.HeadController = new PlayerHeadController(AnimManager, this as EntityPlayer, Properties.Client.LoadedShape);
+                AnimManager.HeadController = new PlayerHeadController(AnimManager, this as EntityPlayer, properties.Client.LoadedShapeForEntity);
             }
 
             if (api.Side == EnumAppSide.Server)
@@ -559,13 +574,19 @@ namespace Vintagestory.API.Common.Entities
         {
             bool alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
-            if (alive || Properties.DeadHitBoxSize == null)
+            if (alive || Properties.DeadCollisionBoxSize == null)
             {
-                SetHitbox(Properties.HitBoxSize.X, Properties.HitBoxSize.Y);
+                SetCollisionBox(Properties.CollisionBoxSize.X, Properties.CollisionBoxSize.Y);
+
+                var selboxs = Properties.SelectionBoxSize ?? Properties.CollisionBoxSize;
+                SetSelectionBox(selboxs.X, selboxs.Y);
             }
             else
             {
-                SetHitbox(Properties.DeadHitBoxSize.X, Properties.DeadHitBoxSize.Y);
+                SetCollisionBox(Properties.DeadCollisionBoxSize.X, Properties.DeadCollisionBoxSize.Y);
+
+                var selboxs = Properties.DeadSelectionBoxSize ?? Properties.DeadCollisionBoxSize;
+                SetSelectionBox(selboxs.X, selboxs.Y);
             }
 
             double touchdist = Math.Max(0.001f, CollisionBox.XSize / 2);
@@ -643,7 +664,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        public virtual void TeleportToDouble(double x, double y, double z, API.Common.Action onTeleported = null)
+        public virtual void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
         {
             Teleporting = true;
 
@@ -698,7 +719,7 @@ namespace Vintagestory.API.Common.Entities
         /// Teleports the entity to given position
         /// </summary>
         /// <param name="position"></param>
-        public virtual void TeleportTo(EntityPos position, API.Common.Action onTeleported = null)
+        public virtual void TeleportTo(EntityPos position, Action onTeleported = null)
         {
             Pos.Yaw = position.Yaw;
             Pos.Pitch = position.Pitch;
@@ -736,10 +757,19 @@ namespace Vintagestory.API.Common.Entities
 
                 if (damageSource.GetSourcePosition() != null)
                 {
-                    Vec3d dir = (ServerPos.XYZ - damageSource.GetSourcePosition()).Normalize();
-                    dir.Y = 0.1f;
-                    float factor = GameMath.Clamp((1 - Properties.KnockbackResistance) / 10f, 0, 2);
-                    ServerPos.Motion.Add(dir.X * factor, dir.Y * factor, dir.Z * factor);
+                    Vec3d dir = (SidedPos.XYZ - damageSource.GetSourcePosition()).Normalize();
+                    dir.Y = 0.7f;
+                    Properties.KnockbackResistance = 0;
+                    float factor = damageSource.KnockbackStrength * GameMath.Clamp((1 - Properties.KnockbackResistance) / 10f, 0, 1);
+
+                    WatchedAttributes.SetDouble("kbdirX", dir.X * factor);
+                    WatchedAttributes.SetDouble("kbdirY", dir.Y * factor);
+                    WatchedAttributes.SetDouble("kbdirZ", dir.Z * factor);
+                } else
+                {
+                    WatchedAttributes.SetDouble("kbdirX", 0);
+                    WatchedAttributes.SetDouble("kbdirY", 0);
+                    WatchedAttributes.SetDouble("kbdirZ", 0);
                 }
 
                 return true;
@@ -1182,7 +1212,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="length"></param>
         /// <param name="height"></param>
-        public virtual void SetHitbox(float length, float height)
+        public virtual void SetCollisionBox(float length, float height)
         {
             CollisionBox = new Cuboidf()
             {
@@ -1193,6 +1223,19 @@ namespace Vintagestory.API.Common.Entities
                 Y2 = height
             };
             OriginCollisionBox = CollisionBox.Clone();
+        }
+
+        public virtual void SetSelectionBox(float length, float height)
+        {
+            SelectionBox = new Cuboidf()
+            {
+                X1 = -length / 2,
+                Z1 = -length / 2,
+                X2 = length / 2,
+                Z2 = length / 2,
+                Y2 = height
+            };
+            OriginSelectionBox = SelectionBox.Clone();
         }
 
         /// <summary>
@@ -1554,6 +1597,7 @@ namespace Vintagestory.API.Common.Entities
 
 
 
+
         /// <summary>
         /// This method pings the Notify() method of all behaviors and ai tasks. Can be used to spread information to other creatures.
         /// </summary>
@@ -1565,17 +1609,6 @@ namespace Vintagestory.API.Common.Entities
             {
                 behavior.Notify(key, data);
             }
-        }
-
-        /// <summary>
-        /// True if given emotion state is currently set
-        /// </summary>
-        /// <param name="statecode"></param>
-        /// <returns></returns>
-        public virtual bool HasEmotionState(string statecode)
-        {
-            ITreeAttribute attr = Attributes.GetTreeAttribute("emotionstates");
-            return attr != null && attr.HasAttribute(statecode);
         }
 
 

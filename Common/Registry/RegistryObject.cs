@@ -10,6 +10,9 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A registerable object with variants, i.e. an item, a block or an entity
+    /// </summary>
     public abstract class RegistryObject
     {
         /// <summary>
@@ -104,6 +107,17 @@ namespace Vintagestory.API.Common
             AssetLocation newCode = Code.CopyWithPath(CodeWithoutParts(components.Length));
             for (int i = 0; i < components.Length; i++) newCode.Path += "-" + components[i];
             return newCode;
+        }
+
+        /// <summary>
+        /// More efficient version of CodeWithParts if there is only a single parameter
+        /// </summary>
+        /// <param name="component"></param>
+        public AssetLocation CodeWithParts(string component)
+        {
+            if (Code == null) return null;
+
+            return Code.CopyWithPath(CodeWithoutParts(1) + "-" + component);
         }
 
         public AssetLocation CodeWithVariant(string type, string value)

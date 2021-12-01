@@ -2,8 +2,8 @@
 {
     public enum EnumItemClass
     {
-        Block,
-        Item
+        Block = 0,
+        Item = 1
     }
 
     public static class ItemClassMethods

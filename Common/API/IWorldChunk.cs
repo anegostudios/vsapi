@@ -156,6 +156,24 @@ namespace Vintagestory.API.Common
         byte[] GetModdata(string key);
 
         /// <summary>
+        /// Allows setting of arbitrary, permanantly stored moddata of this chunk. When set on the server before the chunk is sent to the client, the data will also be sent to the client.
+        /// When set on the client the data is discarded once the chunk gets unloaded
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+
+        void SetModdata<T>(string key, T data);
+        /// <summary>
+        /// Retrieve arbitrary, permantly stored mod data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        T GetModdata<T>(string key);
+
+
+        /// <summary>
         /// Retrieve a block from this chunk, performs Unpack() and a modulo operation on the position arg to get a local position in the 0..chunksize range (its your job to pick out the right chunk before calling this method)
         /// </summary>
         /// <param name="world"></param>
@@ -171,37 +189,35 @@ namespace Vintagestory.API.Common
         BlockEntity GetLocalBlockEntityAtBlockPos(BlockPos pos);
 
         /// <summary>
-        /// Add a decor block to the side of an existing block in the chunk<br/>
+        /// Sets a decor block to the side of an existing block. Use air block (id 0) to remove a decor.<br/>
         /// </summary>
         /// <param name="blockAccessor"></param>
         /// <param name="pos"></param>
         /// <param name="onFace"></param>
         /// <param name="block"></param>
         /// <returns>False if there already exists a block in this position and facing</returns>
-        bool AddDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing onFace);
+        bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing onFace);
 
         /// <summary>
-        /// Add a decor block to a specific sub-position on the side of an existing block in the chunk<br/>
+        /// Sets a decor block to a specific sub-position on the side of an existing block. Use air block (id 0) to remove a decor.<br/>
         /// </summary>
         /// <param name="blockAccessor"></param>
         /// <param name="pos"></param>
         /// <param name="onFace"></param>
         /// <param name="block"></param>
         /// <returns>False if there already exists a block in this position and facing</returns>
-        bool AddDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, int faceAndSubposition);
+        bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, int faceAndSubposition);
 
 
         /// <summary>
-        /// Removes a decor block from given position
+        /// If allowed by a player action, removes all decors at given position and calls OnBrokenAsDecor() on all selected decors and drops the items that are returned from Block.GetDrops()
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <param name="side">If null, all the decor blocks on all sides are removed</param>
-        void BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null);
+        /// <param name="faceAndSubposition">If not null breaks only this part of the decor for give face. Requires side to be set.</param>
+        bool BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null, int? faceAndSubposition = null);
 
-        
-
-        bool BreakDecorPart(IWorldAccessor world, BlockPos pos, BlockFacing side, int faceAndSubposition);
 
         /// <summary>
         /// Removes a decor block from given position, saves a few cpu cycles by not calculating index3d

@@ -81,7 +81,13 @@ namespace Vintagestory.API.Client
 
 
         public bool Initialized;
+
+        /// <summary>
+        /// If set, bgDrawX/Y will be relative, instead of absolute
+        /// </summary>
         public bool IsDrawingSurface;
+
+
         private bool requiresrelculation = true;
         public virtual bool RequiresRecalculation { get { return requiresrelculation; } }
 
@@ -1201,5 +1207,9 @@ namespace Vintagestory.API.Client
             }
         }
 
+        public static implicit operator ElementBounds(GuiElementRichtext v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

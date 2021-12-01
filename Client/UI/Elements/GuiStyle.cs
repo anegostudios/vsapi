@@ -162,6 +162,9 @@ namespace Vintagestory.API.Client
 
         public static double[] SuccessTextColor = new double[] { 0.5, 1, 0.5, 1 };
 
+        public static string SuccessTextColorHex = "#80ff80";
+        public static string ErrorTextColorHex = "#ff8080";
+
         /// <summary>
         /// The color of the error text.
         /// </summary>

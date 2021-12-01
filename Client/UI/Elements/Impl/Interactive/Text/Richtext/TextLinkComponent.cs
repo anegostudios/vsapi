@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
 {
     public class LinkTextComponent : RichTextComponent
     {
-        Common.Action<LinkTextComponent> onLinkClicked;
+        Action<LinkTextComponent> onLinkClicked;
 
         public string Href;
 
@@ -22,7 +22,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="displayText">The text of the Text.</param>
         /// <param name="url">The link in the text.</param>
-        public LinkTextComponent(ICoreClientAPI api, string displayText, CairoFont font, Common.Action<LinkTextComponent> onLinkClicked) : base(api, displayText, font)
+        public LinkTextComponent(ICoreClientAPI api, string displayText, CairoFont font, Action<LinkTextComponent> onLinkClicked) : base(api, displayText, font)
         {
             this.onLinkClicked = onLinkClicked;
             MouseOverCursor = "linkselect";

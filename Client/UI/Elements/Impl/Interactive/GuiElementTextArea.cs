@@ -17,7 +17,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the text area.</param>
         /// <param name="OnTextChanged">The event fired when the text is changed.</param>
         /// <param name="font">The font of the text.</param>
-        public GuiElementTextArea(ICoreClientAPI capi, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font) : base(capi, font, bounds)
+        public GuiElementTextArea(ICoreClientAPI capi, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font) : base(capi, font, bounds)
         {
             highlightTexture = new LoadedTexture(capi);
             multilineMode = true;
@@ -92,7 +92,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnTextChanged">The event fired when the text is changed.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="key">The name of the text area.</param>
-        public static GuiComposer AddTextArea(this GuiComposer composer, ElementBounds bounds, API.Common.Action<string> OnTextChanged, CairoFont font = null, string key = null)
+        public static GuiComposer AddTextArea(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
             {

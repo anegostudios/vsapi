@@ -119,7 +119,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static bool MeltingFreezingEnabled;
 
-
+        public static float GuiGearRotJitter = 0f;
 
         /// <summary>
         /// Returns true if the player fell out of the world (which is map boundaries + 30 blocks in every direction)

@@ -12,6 +12,23 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+    public class GridRecipeIngredient : CraftingRecipeIngredient
+    {
+        public string PatternCode;
+
+        public override void ToBytes(BinaryWriter writer)
+        {
+            base.ToBytes(writer);
+            writer.Write(PatternCode);
+        }
+
+        public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+        {
+            base.FromBytes(reader, resolver);
+            PatternCode = reader.ReadString();
+        }
+    }
+
     /// <summary>
     /// Represents a crafting recipe
     /// </summary>
@@ -80,8 +97,18 @@ namespace Vintagestory.API.Common
         /// </summary>
         public string RequiresTrait;
 
+        /// <summary>
+        /// If true, the output item will have its durability averaged over the input items
+        /// </summary>
+        public bool AverageDurability = true;
 
-        public CraftingRecipeIngredient[] resolvedIngredients;
+        /// <summary>
+        /// If set, it will copy over the itemstack attributes from given ingredient code
+        /// </summary>
+        public string CopyAttributesFrom = null;
+
+
+        public GridRecipeIngredient[] resolvedIngredients;
 
 
         IWorldAccessor world;
@@ -103,7 +130,7 @@ namespace Vintagestory.API.Common
                 return false;
             }
 
-            resolvedIngredients = new CraftingRecipeIngredient[Width * Height];
+            resolvedIngredients = new GridRecipeIngredient[Width * Height];
             for (int i = 0; i < IngredientPattern.Length; i++)
             {
                 string code = IngredientPattern[i].ToString();
@@ -121,7 +148,8 @@ namespace Vintagestory.API.Common
                     return false;
                 }
 
-                resolvedIngredients[i] = Ingredients[code];
+                resolvedIngredients[i] = Ingredients[code].CloneTo<GridRecipeIngredient>();
+                resolvedIngredients[i].PatternCode = code;
             }
 
             if (!Output.Resolve(world, "Grid recipe"))
@@ -500,6 +528,29 @@ namespace Vintagestory.API.Common
         }
 
 
+        /// <summary>
+        /// Returns only the first matching itemstack, there may be multiple
+        /// </summary>
+        /// <param name="patternCode"></param>
+        /// <param name="inputSlots"></param>
+        /// <param name="gridWidth"></param>
+        /// <returns></returns>
+        public ItemStack GetInputStackForPatternCode(string patternCode, ItemSlot[] inputSlots)
+        {
+            var ingredient = resolvedIngredients.FirstOrDefault(ig => ig.PatternCode == patternCode);
+            if (ingredient == null) return null;
+
+            foreach (var slot in inputSlots)
+            {
+                if (slot.Empty) continue;
+                var inputStack = slot.Itemstack;
+                if (inputStack == null) continue;
+                if (ingredient.SatisfiesAsIngredient(inputStack) && inputStack.Collectible.MatchesForCrafting(inputStack, this, ingredient)) return inputStack;
+            }
+
+            return null;
+        }
+
 
 
         public T GetElementInGrid<T>(int row, int col, T[] stacks, int gridwidth)
@@ -558,6 +609,12 @@ namespace Vintagestory.API.Common
             }
 
             writer.Write(RecipeGroup);
+            writer.Write(AverageDurability);
+            writer.Write(CopyAttributesFrom != null);
+            if (CopyAttributesFrom != null)
+            {
+                writer.Write(CopyAttributesFrom);
+            }
         }
 
         /// <summary>
@@ -573,13 +630,13 @@ namespace Vintagestory.API.Common
             Output.FromBytes(reader, resolver);
             Shapeless = reader.ReadBoolean();
 
-            resolvedIngredients = new CraftingRecipeIngredient[Width * Height];
+            resolvedIngredients = new GridRecipeIngredient[Width * Height];
             for (int i = 0; i < resolvedIngredients.Length; i++)
             {
                 bool isnull = reader.ReadBoolean();
                 if (isnull) continue;
 
-                resolvedIngredients[i] = new CraftingRecipeIngredient();
+                resolvedIngredients[i] = new GridRecipeIngredient();
                 resolvedIngredients[i].FromBytes(reader, resolver);
             }
 
@@ -597,6 +654,11 @@ namespace Vintagestory.API.Common
             }
 
             RecipeGroup = reader.ReadInt32();
+            AverageDurability = reader.ReadBoolean();
+            if (reader.ReadBoolean())
+            {
+                CopyAttributesFrom = reader.ReadString();
+            }
         }
 
         /// <summary>
@@ -621,10 +683,10 @@ namespace Vintagestory.API.Common
             }
             if (resolvedIngredients != null)
             {
-                recipe.resolvedIngredients = new CraftingRecipeIngredient[resolvedIngredients.Length];
+                recipe.resolvedIngredients = new GridRecipeIngredient[resolvedIngredients.Length];
                 for (int i = 0; i < resolvedIngredients.Length; i++)
                 {
-                    recipe.resolvedIngredients[i] = resolvedIngredients[i]?.Clone();
+                    recipe.resolvedIngredients[i] = resolvedIngredients[i]?.CloneTo<GridRecipeIngredient>();
                 }
             }
 
@@ -633,6 +695,8 @@ namespace Vintagestory.API.Common
             recipe.Name = Name;
             recipe.Attributes = Attributes?.Clone();
             recipe.RequiresTrait = RequiresTrait;
+            recipe.AverageDurability = AverageDurability;
+            recipe.CopyAttributesFrom = CopyAttributesFrom;
 
             return recipe;
         }

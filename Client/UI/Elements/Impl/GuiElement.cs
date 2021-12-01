@@ -12,15 +12,14 @@ namespace Vintagestory.API.Client
 {    
     public abstract class GuiElement
     {
-        public static string dirtTextureName = "gui/backgrounds/soil.png";
-        public static string noisyMetalTextureName = "gui/backgrounds/noisymetal.png";
-        //internal static string woodTextureName = "backgrounds/wood.png";
-        public static string woodTextureName = "gui/backgrounds/oak.png";
-        public static string stoneTextureName = "gui/backgrounds/stone.png";
-        public static string waterTextureName = "gui/backgrounds/water.png";
-        public static string paperTextureName = "gui/backgrounds/signpaper.png";
+        public static AssetLocation dirtTextureName = new AssetLocation("gui/backgrounds/soil.png");
+        public static AssetLocation noisyMetalTextureName = new AssetLocation("gui/backgrounds/noisymetal.png");
+        public static AssetLocation woodTextureName = new AssetLocation("gui/backgrounds/oak.png");
+        public static AssetLocation stoneTextureName = new AssetLocation("gui/backgrounds/stone.png");
+        public static AssetLocation waterTextureName = new AssetLocation("gui/backgrounds/water.png");
+        public static AssetLocation paperTextureName = new AssetLocation("gui/backgrounds/signpaper.png");
 
-        internal static Dictionary<string, KeyValuePair<SurfacePattern, ImageSurface>> cachedPatterns = new Dictionary<string, KeyValuePair<SurfacePattern, ImageSurface>>();
+        internal static Dictionary<AssetLocation, KeyValuePair<SurfacePattern, ImageSurface>> cachedPatterns = new Dictionary<AssetLocation, KeyValuePair<SurfacePattern, ImageSurface>>();
         
         internal string lastShownText = "";
         internal ImageSurface metalNail;
@@ -282,22 +281,22 @@ namespace Vintagestory.API.Client
         /// Gets a surface pattern from a named file.
         /// </summary>
         /// <param name="capi">The Client API</param>
-        /// <param name="texFileName">The name of the file.</param>
+        /// <param name="textureLoc">The name of the file.</param>
         /// <param name="doCache">Do we cache the file?</param>
         /// <returns>The resulting surface pattern.</returns>
-        public static SurfacePattern getPattern(ICoreClientAPI capi, string texFileName, bool doCache = true)
+        public static SurfacePattern getPattern(ICoreClientAPI capi, AssetLocation textureLoc, bool doCache = true, int mulAlpha = 255)
         {
-            if (cachedPatterns.ContainsKey(texFileName) && cachedPatterns[texFileName].Key.HandleValid)
+            if (cachedPatterns.ContainsKey(textureLoc) && cachedPatterns[textureLoc].Key.HandleValid)
             {
-                return cachedPatterns[texFileName].Key;
+                return cachedPatterns[textureLoc].Key;
             }
 
-            ImageSurface patternSurface = getImageSurfaceFromAsset(capi, texFileName);
+            ImageSurface patternSurface = getImageSurfaceFromAsset(capi, textureLoc, mulAlpha);
 
             SurfacePattern pattern = new SurfacePattern(patternSurface);
             pattern.Extend = Extend.Repeat;
 
-            if (doCache) cachedPatterns[texFileName] = new KeyValuePair<SurfacePattern, ImageSurface>(pattern, patternSurface);
+            if (doCache) cachedPatterns[textureLoc] = new KeyValuePair<SurfacePattern, ImageSurface>(pattern, patternSurface);
 
             Matrix m = new Matrix();
             m.Scale(1f / RuntimeEnv.GUIScale, 1f / RuntimeEnv.GUIScale);
@@ -311,16 +310,19 @@ namespace Vintagestory.API.Client
         /// Fetches an image surface from a named file.
         /// </summary>
         /// <param name="capi">The Client API</param>
-        /// <param name="texFileName">The name of the text file.</param>
+        /// <param name="textureLoc">The name of the text file.</param>
         /// <returns></returns>
-        public static ImageSurface getImageSurfaceFromAsset(ICoreClientAPI capi, string texFileName)
+        public static ImageSurface getImageSurfaceFromAsset(ICoreClientAPI capi, AssetLocation textureLoc, int mulAlpha = 255)
         {
-            byte[] pngdata = capi.Assets.Get("textures/" + texFileName).Data;
+            byte[] pngdata = capi.Assets.Get(textureLoc.Clone().WithPathPrefixOnce("textures/")).Data;
 
-            BitmapExternal bitmap = (BitmapExternal)capi.Render.BitmapCreateFromPng(pngdata);
+            BitmapExternal bitmap = capi.Render.BitmapCreateFromPng(pngdata);
+            if (mulAlpha != 255)
+            {
+                bitmap.MulAlpha(mulAlpha);
+            }
 
             BitmapData bmp_data = bitmap.bmp.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.bmp.Width, bitmap.bmp.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-
             ImageSurface imageSurface = new ImageSurface(Format.Argb32, bitmap.bmp.Width, bitmap.bmp.Height);
 
             unsafe
@@ -350,12 +352,12 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The Client API</param>
         /// <param name="ctx">The context of the fill.</param>
-        /// <param name="texFileName">The name of the texture file.</param>
+        /// <param name="textureLoc">The name of the texture file.</param>
         /// <param name="preserve">Whether or not to preserve the aspect ratio of the texture.</param>
         /// <returns>The surface pattern filled with the given texture.</returns>
-        public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, string texFileName, bool nearestScalingFiler = false, bool preserve = false)
+        public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, AssetLocation textureLoc, bool nearestScalingFiler = false, bool preserve = false, int mulAlpha = 255)
         {
-            SurfacePattern pattern = getPattern(capi, texFileName);
+            SurfacePattern pattern = getPattern(capi, textureLoc, true, mulAlpha);
             if (nearestScalingFiler)
             {
                 pattern.Filter = Filter.Nearest;
@@ -374,22 +376,22 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Discards a pattern based off the the filename.
         /// </summary>
-        /// <param name="texFilename">The pattern to discard.</param>
-        public static void DiscardPattern(string texFilename)
+        /// <param name="textureLoc">The pattern to discard.</param>
+        public static void DiscardPattern(AssetLocation textureLoc)
         {
-            if (cachedPatterns.ContainsKey(texFilename))
+            if (cachedPatterns.ContainsKey(textureLoc))
             {
-                var val = cachedPatterns[texFilename];
+                var val = cachedPatterns[textureLoc];
                 val.Key.Dispose();
                 val.Value.Dispose();
-                cachedPatterns.Remove(texFilename);
+                cachedPatterns.Remove(textureLoc);
             }
         }
 
 
-        internal SurfacePattern paintWithPattern(ICoreClientAPI capi, Context ctx, string texFileName)
+        internal SurfacePattern paintWithPattern(ICoreClientAPI capi, Context ctx, AssetLocation textureLoc)
         {
-            SurfacePattern pattern = getPattern(capi, texFileName);
+            SurfacePattern pattern = getPattern(capi, textureLoc);
             ctx.SetSource(pattern);
             ctx.Paint();
             return pattern;
@@ -698,6 +700,13 @@ namespace Vintagestory.API.Client
         /// <param name="api">The client API</param>
         /// <param name="args">The key event arguments.</param>
         public virtual void OnKeyDown(ICoreClientAPI api, KeyEvent args) { }
+
+        /// <summary>
+        /// The event fired when a key is held down.
+        /// </summary>
+        /// <param name="api">The client API</param>
+        /// <param name="args">The key event arguments.</param>
+        public virtual void OnKeyUp(ICoreClientAPI api, KeyEvent args) { }
 
         /// <summary>
         /// The event fired the moment a key is pressed.

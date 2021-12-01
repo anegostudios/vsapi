@@ -1,4 +1,5 @@
 ﻿using Cairo;
+using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.MathTools;
 
@@ -9,7 +10,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class GuiElementColorListPicker : GuiElementControl
     {
-        Common.Action<bool> handler;
+        Action<bool> handler;
 
         /// <summary>
         /// Is this button on?
@@ -41,7 +42,7 @@ namespace Vintagestory.API.Client
         /// <param name="color"></param>
         /// <param name="OnToggled">The action that happens when the button is toggled.</param>
         /// <param name="bounds">The bounding box of the button.</param>
-        public GuiElementColorListPicker(ICoreClientAPI capi, int color, Common.Action<bool> OnToggled, ElementBounds bounds) : base(capi, bounds)
+        public GuiElementColorListPicker(ICoreClientAPI capi, int color, Action<bool> OnToggled, ElementBounds bounds) : base(capi, bounds)
         {
             activeTexture = new LoadedTexture(capi);
 
@@ -203,7 +204,7 @@ namespace Vintagestory.API.Client
         /// <param name="onToggle">The event fired when the button is pressed.</param>
         /// <param name="bounds">The bounds of the buttons.</param>
         /// <param name="key">The key given to the bundle of buttons.</param>
-        public static GuiComposer AddColorListPicker(this GuiComposer composer, int[] colors, Common.Action<int> onToggle, ElementBounds startBounds, int maxLineWidth, string key = null)
+        public static GuiComposer AddColorListPicker(this GuiComposer composer, int[] colors, Action<int> onToggle, ElementBounds startBounds, int maxLineWidth, string key = null)
         {
             if (!composer.composed)
             {

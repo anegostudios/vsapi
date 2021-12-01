@@ -795,10 +795,11 @@ namespace Vintagestory.API.Datastructures
                     {
                         MergeAttribute(this, attribute.Key, attribute.Value);
                     }
+                } else
+                {
+                    throw new ArgumentException("Excepted TreeAtribute but got " + tree.GetType().Name + "! " + tree.ToString() + "");
                 }
             }
-
-            throw new ArgumentException("Excepted TreeAtribute but got " + tree.GetType().Name + "! " + tree.ToString() + "");
         }
 
         protected virtual void MergeAttribute(ITreeAttribute currentTree, string key, IAttribute value)
@@ -808,7 +809,10 @@ namespace Vintagestory.API.Datastructures
                 IAttribute existing = attributes.TryGetValue(key);
 
                 if (existing == null)
+                {
                     attributes[key] = value;
+                    return;
+                }
 
                 if (existing.GetAttributeId() != value.GetAttributeId())
                     throw new Exception("Cannot merge attributes! Exepected attributeId " + existing.GetAttributeId().ToString() + " instead of " + value.GetAttributeId().ToString() + "! Existing: " + existing.ToString() + ", new: " + value.ToString());
@@ -821,12 +825,19 @@ namespace Vintagestory.API.Datastructures
                     }
                 }
                 else
+                {
                     attributes[key] = value;
+                }
             }
         }
 
 
         public override int GetHashCode()
+        {
+            return GetHashCode(null);
+        }
+
+        public int GetHashCode(string[] ignoredAttributes)
         {
             lock (attributesLock)
             {
@@ -834,14 +845,32 @@ namespace Vintagestory.API.Datastructures
                 int i = 0;
                 foreach (var val in attributes)
                 {
-                    if (i == 0)
+                    if (ignoredAttributes?.Contains(val.Key) == true) continue;
+
+                    var tree = val.Value as ITreeAttribute;
+                    if (tree != null)
                     {
-                        hashcode = val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                        if (i == 0)
+                        {
+                            hashcode = val.Key.GetHashCode() ^ tree.GetHashCode(ignoredAttributes);
+                        }
+                        else
+                        {
+                            hashcode ^= val.Key.GetHashCode() ^ tree.GetHashCode(ignoredAttributes);
+                        }
                     }
                     else
                     {
-                        hashcode ^= val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                        if (i == 0)
+                        {
+                            hashcode = val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                        }
+                        else
+                        {
+                            hashcode ^= val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                        }
                     }
+
                     i++;
                 }
 

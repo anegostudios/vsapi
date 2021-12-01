@@ -12,6 +12,8 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface IRenderAPI
     {
+        PerceptionEffects PerceptionEffects { get; }
+
         Stack<ElementBounds> ScissorStack { get; }
         int TextureSize { get; }
 
@@ -550,7 +552,17 @@ namespace Vintagestory.API.Client
         void RenderItemstackToGui(ItemSlot inSlot, double posX, double posY, double posZ, float size, int color, bool shading = true, bool rotate = false, bool showStackSize = true);
 
         /// <summary>
-        /// Returns the first TextureAtlasPosition it can find for given block or item in itemstack. 
+        /// Renders given itemstack into supplied texture atlas. This is a rather costly operation. Also be sure to cache the results, as each call to this method consumes more space in your texture atlas. If you call this method outside the ortho render stage, it will enqueue a render task for next frame. Rather exceptionally, this method is also thread safe. If called from another thread, the render task always gets enqueued. The call back will always be run on the main thread.
+        /// </summary>
+        /// <param name="stack"></param>
+        /// <param name="atlas"></param>
+        /// <param name="size"></param>
+        /// <param name="onComplete">Once rendered, this returns a texture subid, which you can use to retrieve the textureAtlasPosition from the atlas</param>
+        /// <returns>True if the render could complete immediatly, false if it has to wait until the next ortho render stage</returns>
+        bool RenderItemStackToAtlas(ItemStack stack, ITextureAtlasAPI atlas, int size, Action<int> onComplete, int color = ColorUtil.WhiteArgb, float sepiaLevel = 0f, float scale = 1f);
+
+        /// <summary>
+        /// Returns the first TextureAtlasPosition it can find for given block or item texture in itemstack. 
         /// </summary>
         TextureAtlasPosition GetTextureAtlasPosition(ItemStack itemstack);
 

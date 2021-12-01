@@ -14,7 +14,7 @@ namespace Vintagestory.API.Client
 
     public class GuiElementHorizontalTabs : GuiElementTextBase
     {
-        API.Common.Action<int> handler;
+        Action<int> handler;
 
         internal GuiTab[] tabs;
 
@@ -44,7 +44,7 @@ namespace Vintagestory.API.Client
         /// <param name="font">The font for the name of each tab.</param>
         /// <param name="bounds">The bounds of each tab.</param>
         /// <param name="onTabClicked">The event fired whenever the tab is clicked.</param>
-        public GuiElementHorizontalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, CairoFont selectedFont, ElementBounds bounds, API.Common.Action<int> onTabClicked) : base(capi, "", font, bounds)
+        public GuiElementHorizontalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, CairoFont selectedFont, ElementBounds bounds, Action<int> onTabClicked) : base(capi, "", font, bounds)
         {
             this.selectedFont = selectedFont;
             this.tabs = tabs;
@@ -312,7 +312,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnTabClicked">The event fired when the tab is clicked.</param>
         /// <param name="font">The font of the tabs.</param>
         /// <param name="key">The key for the added horizontal tabs.</param>
-        public static GuiComposer AddHorizontalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, API.Common.Action<int> OnTabClicked, CairoFont font, CairoFont selectedFont, string key = null)
+        public static GuiComposer AddHorizontalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int> OnTabClicked, CairoFont font, CairoFont selectedFont, string key = null)
         {
             if (!composer.composed)
             {

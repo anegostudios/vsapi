@@ -53,6 +53,8 @@ namespace Vintagestory.API.Client
         public int Dusk;
 
 
+        public float TimeCounter = 0f;
+
         public float WaterStillCounter = 0f;
         public float WaterFlowCounter = 0f;
         public float WaterWaveCounter = 0f;
@@ -82,6 +84,10 @@ namespace Vintagestory.API.Client
         public float SeasonTemperature;
         public float SunSpecularIntensity = 1;
 
+        public int PerceptionEffectId = 1;
+        public float PerceptionEffectIntensity = 1;
+
+
         public Vec3f PlayerPos = new Vec3f();
         public Vec3d playerReferencePos;
         BlockPos plrPos = new BlockPos();
@@ -101,7 +107,7 @@ namespace Vintagestory.API.Client
             PointLightColors3 = new float[3 * 100];
         }
 
-
+        
         public static int DescaleTemperature(float temperature)
         {
             return (int)((temperature + 20) * 4.25f);
@@ -122,6 +128,9 @@ namespace Vintagestory.API.Client
 
             float freq = (0.4f + WindSpeed / 10);
             WindWaveCounterHighFreq = (WindWaveCounterHighFreq + freq * (0.5f + 5 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
+
+
+            TimeCounter += dt;
 
             FogWaveCounter += 0.1f * dt;
 
