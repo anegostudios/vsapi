@@ -56,7 +56,7 @@ namespace Vintagestory.API.Client
         /// <param name="brightness">The brightness of the texture (default: 1f)</param>
         public static GuiComposer AddImageBG(this GuiComposer composer, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddStaticElement(new GuiElementImageBackground(composer.Api, bounds, textureLoc, brightness));
             }

@@ -198,6 +198,8 @@ namespace Vintagestory.API.Common
 
 
                 lerpKeyFrameElement(curKelem, nextKelem, flag, t, ref transform);
+
+                transform.RotShortestDistance = curKelem.RotShortestDistance;
             }
         }
 

@@ -6,11 +6,40 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
+
+    public interface IRandom
+    {
+        int NextInt(int max);
+        int NextInt();
+        double NextDouble();
+    }
+
+    public class NormalRandom : Random, IRandom
+    {
+        public NormalRandom()
+        {
+        }
+
+        public NormalRandom(int Seed) : base(Seed)
+        {
+        }
+
+        public int NextInt(int max)
+        {
+            return this.Next(max);
+        }
+
+        public int NextInt()
+        {
+            return this.Next();
+        }
+    }
+
     /// <summary>
     /// An lcg random generator, particularly suitable for worldgen
     /// See also https://en.wikipedia.org/wiki/Linear_congruential_generator
     /// </summary>
-    public class LCGRandom
+    public class LCGRandom : IRandom
     {
         public long worldSeed;
         public long mapGenSeed;

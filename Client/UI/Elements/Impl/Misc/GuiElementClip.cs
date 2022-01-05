@@ -57,7 +57,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the object.</param>
         public static GuiComposer BeginClip(this GuiComposer composer, ElementBounds bounds)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementClip(composer.Api, true, bounds));
                 composer.InsideClipBounds = bounds;
@@ -71,7 +71,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static GuiComposer EndClip(this GuiComposer composer)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementClip(composer.Api, false, ElementBounds.Empty));
                 composer.InsideClipBounds = null;

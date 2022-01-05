@@ -52,6 +52,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public ItemSlot InSlot;
 
+        public float dt;
+
         public void SetRotOverlay(ICoreClientAPI capi, float opacity)
         {
             if (OverlayTexture == null) OverlayTexture = new LoadedTexture(capi);

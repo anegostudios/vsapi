@@ -225,6 +225,43 @@ namespace Vintagestory.API.Common
             }   
         }
 
+
+        public void WalkElements(string wildcardpath, Action<ShapeElement> onElement)
+        {
+            walkElements(Elements, wildcardpath, onElement);
+        }
+
+        private void walkElements(ShapeElement[] elements, string wildcardpath, Action<ShapeElement> onElement)
+        {
+            if (elements == null) return;
+
+            string pathElem;
+            string subPath;
+
+            int slashIndex = wildcardpath.IndexOf('/');
+            if (slashIndex >= 0) {
+                pathElem = wildcardpath.Substring(0, slashIndex);
+                subPath = wildcardpath.Substring(slashIndex + 1);
+            } else
+            {
+                pathElem = wildcardpath;
+                subPath = "";
+                if (pathElem == "*") subPath = "*";
+            }
+
+            foreach (ShapeElement elem in elements)
+            {
+                if (pathElem == "*" || elem.Name.Equals(pathElem, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    onElement(elem);
+                    if (elem.Children != null)
+                    {
+                        walkElements(elem.Children, subPath, onElement);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Recursively searches the element by name from the shape.
         /// </summary>
@@ -248,7 +285,6 @@ namespace Vintagestory.API.Common
                     if (foundElem != null) return foundElem;
                 }
             }
-
 
             return null;
         }

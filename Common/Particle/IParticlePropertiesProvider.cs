@@ -141,7 +141,7 @@ namespace Vintagestory.API.Common
         float LifeLength { get; }
 
         /// <summary>
-        /// Value between 0 and 255 to determine glowiness of the particle
+        /// See also <see cref="VertexFlags"/>
         /// </summary>
         /// <returns></returns>
         int VertexFlags { get; }

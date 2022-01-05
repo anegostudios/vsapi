@@ -35,6 +35,11 @@ namespace Vintagestory.API.Common
     public interface IMapRegion
     {
         /// <summary>
+        /// Density maps for block patches
+        /// </summary>
+        Dictionary<string, IntDataMap2D> BlockPatchMaps { get; set; }
+
+        /// <summary>
         /// Currently unuseds
         /// </summary>
         IntDataMap2D FlowerMap { get; set; }

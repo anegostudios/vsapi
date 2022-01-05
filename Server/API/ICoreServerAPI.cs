@@ -139,23 +139,6 @@ namespace Vintagestory.API.Server
         /// <param name="recipe"></param>
         void RegisterCraftingRecipe(GridRecipe recipe);
 
-        /// <summary>
-        /// Registers a new metal alloy. These are sent to the client during connect, so only need to register them on the server side.
-        /// </summary>
-        /// <param name="alloy"></param>
-        void RegisterMetalAlloy(AlloyRecipe alloy);
-
-        /// <summary>
-        /// Registers a new cooking recipe. These are sent to the client during connect, so only need to register them on the server side.
-        /// </summary>
-        /// <param name="recipe"></param>
-        void RegisterCookingRecipe(CookingRecipe recipe);
-
-        /// <summary>
-        /// Registers a new clay forming recipe. These are sent to the client during connect, so only need to register them on the server side.
-        /// </summary>
-        /// <param name="recipe"></param>
-        void RegisterClayFormingRecipe(ClayFormingRecipe recipe);
 
         /// <summary>
         /// Registers a new tree generator
@@ -165,22 +148,12 @@ namespace Vintagestory.API.Server
         void RegisterTreeGenerator(AssetLocation generatorCode, ITreeGenerator gen);
 
         /// <summary>
-        /// Registers a new metal smithing recipe. These are sent to the client during connect, so only need to register them on the server side.
+        /// Registers a new tree generator
         /// </summary>
-        /// <param name="recipe"></param>
-        void RegisterSmithingRecipe(SmithingRecipe recipe);
+        /// <param name="generatorCode"></param>
+        /// <param name="genhandler"></param>
+        void RegisterTreeGenerator(AssetLocation generatorCode, GrowTreeDelegate genhandler);
 
-        /// <summary>
-        /// Registers a new flint knapping recipe. These are sent to the client during connect, so only need to register them on the server side.
-        /// </summary>
-        /// <param name="recipe"></param>
-        void RegisterKnappingRecipe(KnappingRecipe recipe);
-
-        /// <summary>
-        /// Registers a new barrel mixing recipe. These are sent to the client during connect, so only need to register them on the server side.
-        /// </summary>
-        /// <param name="recipe"></param>
-        void RegisterBarrelRecipe(BarrelRecipe recipe);
 
         /// <summary>
         /// Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it's a slash (/)

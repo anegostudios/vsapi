@@ -65,8 +65,18 @@ namespace Vintagestory.API.Datastructures
 
         public string ToJsonToken()
         {
-            return "not implemented";
-//            throw new System.NotImplementedException();
+            if (value?.Collectible == null)
+            {
+                return "";
+            }
+
+            if (value.Attributes == null || value.Attributes.Count == 0)
+            {
+                return string.Format("{{ \"type\": \"{0}\", code: \"{1}\"}}", value.Collectible.ItemClass, value.Collectible.Code.ToShortString());
+            } else
+            {
+                return string.Format("{{ \"type\": \"{0}\", \"code\": \"{1}\", \"attributes\": \"{2}\"}}", value.Collectible.ItemClass, value.Collectible.Code.ToShortString(), value.Attributes.ToString());
+            }
         }
 
         public override int GetHashCode()

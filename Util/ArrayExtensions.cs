@@ -37,9 +37,81 @@ namespace Vintagestory.API.Util
 
     }
 
+    public static class EnumerableExtensions
+    {
+        public static T Nearest<T>(this IEnumerable<T> array, Func<T, double> getDistance)
+        {
+            double nearestDist = double.MaxValue;
+            T nearest = default(T);
+            foreach (var val in array)
+            {
+                double d = getDistance(val);
+
+                if (d < nearestDist)
+                {
+                    nearestDist = d;
+                    nearest = val;
+                }
+            }
+
+            return nearest;
+        }
+
+
+        public static double NearestDistance<T>(this IEnumerable<T> array, Func<T, double> getDistance)
+        {
+            double nearestDist = double.MaxValue;
+            foreach (var val in array)
+            {
+                double d = getDistance(val);
+
+                if (d < nearestDist)
+                {
+                    nearestDist = d;
+                }
+            }
+
+            return nearestDist;
+        }
+    }
+
 
     public static class ArrayExtensions
     {
+        public static T Nearest<T>(this T[] array, Func<T, double> getDistance)
+        {
+            double nearestDist = double.MaxValue;
+            T nearest = default(T);
+            for (int i = 0; i < array.Length; i++)
+            {
+                double d = getDistance(array[i]);
+
+                if (d < nearestDist)
+                {
+                    nearestDist = d;
+                    nearest = array[i];
+                }
+            }
+
+            return nearest;
+        }
+
+        public static List<T> InRange<T>(this T[] array, Func<T, double> getDistance, double range)
+        {
+            List<T> found = new List<T>();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                double dist = getDistance(array[i]);
+                if (dist < range)
+                {
+                    found.Add(array[i]);
+                }
+            }
+
+            return found;
+        }
+
         public static int IndexOf<T>(this T[] array, Func<T, bool> predicate)
         {
             for (int i = 0; i < array.Length; i++)
@@ -141,7 +213,7 @@ namespace Vintagestory.API.Util
         /// <param name="array"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static T[] Append<T>(this T[] array, T[] value)
+        public static T[] Append<T>(this T[] array, params T[] value)
         {
             if (array == null) return null;
             if (value == null) return array;
@@ -156,6 +228,7 @@ namespace Vintagestory.API.Util
 
             return grown;
         }
+
 
         public static T[] Fill<T>(this T[] originalArray, T with)
         {

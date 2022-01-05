@@ -29,7 +29,6 @@ namespace Vintagestory.API.Client
         {
             texture = new LoadedTexture(capi);
             hoverTexture = new LoadedTexture(capi);
-            MouseOverCursor = "linkselect";
         }
 
         public override void ComposeTextElements(Context ctx, ImageSurface surface)
@@ -114,6 +113,7 @@ namespace Vintagestory.API.Client
         {
             visible = true;
             RecomposeMultiLine(versionnumber);
+            MouseOverCursor = "linkselect";
         }
 
         public override void RenderInteractiveElements(float deltaTime)

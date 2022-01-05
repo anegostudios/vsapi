@@ -206,7 +206,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The key given to the bundle of buttons.</param>
         public static GuiComposer AddColorListPicker(this GuiComposer composer, int[] colors, Action<int> onToggle, ElementBounds startBounds, int maxLineWidth, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 if (key == null) key = "colorlistpicker";
 

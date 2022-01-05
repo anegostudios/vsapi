@@ -72,25 +72,21 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static double SprintSpeedMultiplier = 2.0;
 
+        
         /// <summary>
-        /// Multiplier applied to the players walk vector while falling
-        /// </summary>
-        //public static float AirMovingStrength = 0.2f;
-
-        /// <summary>
-        /// Multiplier applied to the players motion while on the ground or in air
+        /// Multiplier applied to entity motion while on the ground or in air
         /// </summary>
         public static float AirDragAlways = 0.983f;
 
         /// <summary>
-        /// Multiplier applied to the players motion while flying (creative mode)
+        /// Multiplier applied to entity motion while flying (creative mode)
         /// </summary>
         public static float AirDragFlying = 0.8f;
 
         /// <summary>
-        /// Multiplier applied to the players motion while walking in water
+        /// Multiplier applied to entity motion while walking in water
         /// </summary>
-        public static float WaterDrag = 0.9f;
+        public static float WaterDrag = 0.92f;
 
         /// <summary>
         /// Amount of gravity per tick applied to all entities affected by gravity
@@ -110,7 +106,6 @@ namespace Vintagestory.API.Config
         /// Set by the WeatherSimulation System in the survival mod
         /// </summary>
         public static Vec3f CurrentWindSpeedClient = new Vec3f();
-        //public static double CurrentRainFallClient;
         
         public static float CurrentNearbyRelLeavesCountClient;
 

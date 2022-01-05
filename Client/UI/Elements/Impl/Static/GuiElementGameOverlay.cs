@@ -42,7 +42,7 @@ namespace Vintagestory.API.Client
         /// <param name="backgroundColor">The background color of the overlay.</param>
         public static GuiComposer AddGameOverlay(this GuiComposer composer, ElementBounds bounds, double[] backgroundColor = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 if (backgroundColor == null) backgroundColor = GuiStyle.DialogDefaultBgColor;
                 composer.AddStaticElement(new GuiElementGameOverlay(composer.Api, bounds, backgroundColor));

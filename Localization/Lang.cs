@@ -42,10 +42,17 @@ namespace Vintagestory.API.Config
 
             var languageFile = Path.Combine(GamePaths.AssetsPath, "game", "lang", "languages.json");
             var json = JsonObject.FromJson(File.ReadAllText(languageFile)).AsArray();
+
             foreach (var jsonObject in json)
             {
                 var languageCode = jsonObject["code"].AsString();
                 LoadLanguage(logger, assetManager, languageCode, languageCode != defaultLanguage);
+            }
+
+            if (!AvailableLanguages.ContainsKey(defaultLanguage))
+            {
+                logger.Error("Language '{0}' not found. Will default to english.", defaultLanguage);
+                CurrentLocale = "en";
             }
         }
 
@@ -88,19 +95,28 @@ namespace Vintagestory.API.Config
             CurrentLocale = defaultLanguage;
             var languageFile = Path.Combine(GamePaths.AssetsPath, "game", "lang", "languages.json");
             var json = JsonObject.FromJson(File.ReadAllText(languageFile)).AsArray();
+            bool found = false;
+
             foreach (var jsonObject in json)
             {
                 var languageCode = jsonObject["code"].AsString();
-                if (AvailableLanguages.ContainsKey(languageCode))
-                {
-                    AvailableLanguages[languageCode].PreLoad(assetsPath);
-                    return;
-                }
                 var translationService = new TranslationService(languageCode, logger);
-
                 bool lazyLoad = languageCode != defaultLanguage;
                 translationService.PreLoad(assetsPath, lazyLoad);
-                AvailableLanguages.Add(languageCode, translationService);
+                AvailableLanguages[languageCode] = translationService;
+
+                if (languageCode == defaultLanguage)
+                {
+                    AvailableLanguages[languageCode].PreLoad(assetsPath);
+                    found = true;
+                }
+            }
+
+            if (defaultLanguage != "en" && !found)
+            {
+                logger.Error("Language '{0}' not found. Will default to english.", defaultLanguage);
+                AvailableLanguages["en"].PreLoad(assetsPath);
+                CurrentLocale = "en";
             }
         }
 

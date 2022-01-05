@@ -27,6 +27,8 @@ namespace Vintagestory.API.Common
         public float scaleX = 1, scaleY = 1, scaleZ = 1;
         public float translateX, translateY, translateZ;
 
+        public bool RotShortestDistance;
+
         public void Clear()
         {
             degX = 0;
@@ -42,9 +44,23 @@ namespace Vintagestory.API.Common
 
         public void Add(ElementPose tf, ElementPose tfNext, float l, float weight)
         {
-            degX += (tf.degX * (1-l) + tfNext.degX * l) * weight;
-            degY += (tf.degY * (1 - l) + tfNext.degY * l) * weight;
-            degZ += (tf.degZ * (1 - l) + tfNext.degZ * l) * weight;
+            if (tf.RotShortestDistance)
+            {
+                float distX = MathTools.GameMath.AngleDegDistance(tf.degX, tfNext.degX);
+                float distY = MathTools.GameMath.AngleDegDistance(tf.degY, tfNext.degY);
+                float distZ = MathTools.GameMath.AngleDegDistance(tf.degZ, tfNext.degZ);
+
+                degX += (tf.degX + distX * l) * weight;
+                degY += (tf.degY + distY * l) * weight;
+                degZ += (tf.degZ + distZ * l) * weight;
+            }
+            else
+            {
+                degX += (tf.degX * (1 - l) + tfNext.degX * l) * weight;
+                degY += (tf.degY * (1 - l) + tfNext.degY * l) * weight;
+                degZ += (tf.degZ * (1 - l) + tfNext.degZ * l) * weight;
+            }
+
             scaleX += ((tf.scaleX - 1) * (1-l) + (tfNext.scaleX - 1) * l) * weight;
             scaleY += ((tf.scaleY - 1) * (1 - l) + (tfNext.scaleY - 1) * l) * weight;
             scaleZ += ((tf.scaleZ - 1) * (1 - l) + (tfNext.scaleZ - 1) * l) * weight;

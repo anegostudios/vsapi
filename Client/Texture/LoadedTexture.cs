@@ -8,7 +8,7 @@ using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
-    public class LoadedTexture
+    public class LoadedTexture : IDisposable
     {
         /// <summary>
         /// The OpenGL Texture Id

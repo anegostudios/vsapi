@@ -46,7 +46,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnDraw">The event fired when the element is drawn.</param>
         public static GuiComposer AddCustomRender(this GuiComposer composer, ElementBounds bounds, RenderDelegateWithBounds onRender)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementCustomRender(composer.Api, bounds, onRender));
             }

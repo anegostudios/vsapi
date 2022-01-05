@@ -468,7 +468,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this dropdown.</param>
         public static GuiComposer AddMultiSelectDropDown(this GuiComposer composer, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, CairoFont.WhiteSmallText(), true), key);
             }
@@ -488,7 +488,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this dropdown.</param>
         public static GuiComposer AddDropDown(this GuiComposer composer, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, CairoFont.WhiteSmallText(), false), key);
             }
@@ -506,7 +506,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this dropdown.</param>
         public static GuiComposer AddDropDown(this GuiComposer composer, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementDropDown(composer.Api, values, names, selectedIndex, onSelectionChanged, bounds, font, false), key);
             }

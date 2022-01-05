@@ -49,6 +49,7 @@ namespace Vintagestory.API.Common
             GuiTransform = ModelTransform.ItemDefaultGui();
             FpHandTransform = ModelTransform.ItemDefaultFp();
             TpHandTransform = ModelTransform.ItemDefaultTp();
+            TpOffHandTransform = ModelTransform.ItemDefaultTp();
             GroundTransform = ModelTransform.ItemDefaultGround();
         }
 

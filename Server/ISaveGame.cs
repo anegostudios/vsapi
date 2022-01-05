@@ -57,5 +57,20 @@ namespace Vintagestory.API.Server
         /// <param name = "value">Data to save</param>
         void StoreData(string name, byte[] data);
 
+
+        /// <summary>
+        /// Gets a previously saved object from the savegame. Returns null if no such data under this key was previously set.
+        /// </summary>
+        /// <param name = "name">The key to look for</param>
+        /// <returns></returns>
+        T GetData<T>(string name, T defaultValue = default(T));
+
+        /// <summary>
+        /// Store the given data persistently to the savegame.
+        /// </summary>
+        /// <param name = "name">Key value</param>
+        /// <param name = "value">Data to save</param>
+        void StoreData<T>(string name, T data);
+
     }
 }

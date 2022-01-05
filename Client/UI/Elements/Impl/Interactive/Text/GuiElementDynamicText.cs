@@ -148,7 +148,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static GuiComposer AddDynamicText(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementDynamicText elem = new GuiElementDynamicText(composer.Api, text, font, bounds);
                 composer.AddInteractiveElement(elem, key);
@@ -159,7 +159,7 @@ namespace Vintagestory.API.Client
         [Obsolete("Use AddDymiacText without orientation attribute, that can be configured through the font")]
         public static GuiComposer AddDynamicText(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 font = font.WithOrientation(orientation);
                 GuiElementDynamicText elem = new GuiElementDynamicText(composer.Api, text, font, bounds);

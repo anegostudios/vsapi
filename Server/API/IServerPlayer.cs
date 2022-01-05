@@ -15,6 +15,8 @@ namespace Vintagestory.API.Server
     /// </summary>
     public interface IServerPlayer : IPlayer
     {
+        float CameraYaw { get; set; }
+
         int ItemCollectMode { get; set; }
 
         /// <summary>

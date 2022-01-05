@@ -30,7 +30,17 @@ namespace Vintagestory.API.MathTools
         BlockPos minPos = new BlockPos();
         BlockPos maxPos = new BlockPos();
 
-        public void ApplyTerrainCollision(Entity entity, EntityPos entitypos, float dtFac, ref Vec3d outposition, float stepHeight = 1)
+
+        /// <summary>
+        /// Takes the entity positiona and motion and adds them, respecting any colliding blocks. The resulting new position is put into outposition
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="entitypos"></param>
+        /// <param name="dtFac"></param>
+        /// <param name="outposition"></param>
+        /// <param name="stepHeight"></param>
+        /// <param name="YExtra">Default 1 for the extra high collision boxes of fences</param>
+        public void ApplyTerrainCollision(Entity entity, EntityPos entitypos, float dtFac, ref Vec3d outposition, float stepHeight = 1, float YExtra = 1)
         {
             IWorldAccessor worldaccess = entity.World;
             Vec3d pos = entitypos.XYZ;
@@ -65,7 +75,7 @@ namespace Vintagestory.API.MathTools
 
             minPos.Set(
                 (int)(entityBox.X1 + Math.Min(0, entitypos.Motion.X * dtFac)),
-                (int)(entityBox.Y1 + Math.Min(0, entitypos.Motion.Y * dtFac) - 1), // -1 for the extra high collision box of fences
+                (int)(entityBox.Y1 + Math.Min(0, entitypos.Motion.Y * dtFac) - YExtra), // YExtra for the extra high collision box of fences
                 (int)(entityBox.Z1 + Math.Min(0, entitypos.Motion.Z * dtFac))
             );
 

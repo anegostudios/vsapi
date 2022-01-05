@@ -124,7 +124,7 @@ namespace Vintagestory.API.Common
         }
 
         public bool IsWildCard => Path.IndexOf('*') >= 0;
-        public bool HasAlternates => path.Length > 1 && path[path.Length - 1] == '*';
+        public bool EndsWithWildCard => path.Length > 1 && path[path.Length - 1] == '*';
 
         // Needed for ProtoBuf
         public AssetLocation()

@@ -285,6 +285,7 @@ namespace Vintagestory.API.Client
             double curY = startY;
             double usableWidth;
             TextFlowPath currentSection;
+            int i = 0;
 
             var linebreak = Lang.CurrentLocale == "ja" ? EnumLinebreakBehavior.AfterCharacter : EnumLinebreakBehavior.AfterWord;
 
@@ -305,7 +306,7 @@ namespace Vintagestory.API.Client
 
                 usableWidth = currentSection.X2 - currentSection.X1 - curX;
 
-                if (nextWidth >= usableWidth)
+                if (nextWidth >= usableWidth && i > 0)
                 {
                     string linetext = lineTextBldr.ToString();
                     double withoutWidth = ctx.TextExtents(linetext).Width;
@@ -326,6 +327,8 @@ namespace Vintagestory.API.Client
 
                     if (gotLinebreak) currentSection = GetCurrentFlowPathSection(flowPath, curY);
                 }
+
+                i++;
 
                 lineTextBldr.Append(word);
                 if (gotSpace && word.Length > 0) lineTextBldr.Append(" ");

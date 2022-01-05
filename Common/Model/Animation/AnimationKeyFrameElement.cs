@@ -35,7 +35,8 @@ namespace Vintagestory.API.Common
         public double? OriginY = null;
         [JsonProperty]
         public double? OriginZ = null;
-
+        [JsonProperty]
+        public bool RotShortestDistance = false;
 
         internal int Frame;
         public ShapeElement ForElement;

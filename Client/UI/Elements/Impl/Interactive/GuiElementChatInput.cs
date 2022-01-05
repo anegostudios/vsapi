@@ -98,7 +98,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this chat component.</param>
         public static GuiComposer AddChatInput(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementChatInput(composer.Api, bounds, OnTextChanged), key);
             }

@@ -59,8 +59,20 @@ namespace Vintagestory.API.Client
         {
             LineRectangled bounds = BoundsPerLine[0];
 
+            ElementBounds scibounds = ElementBounds.FixedSize((int)(bounds.Width / API.Config.RuntimeEnv.GUIScale), (int)(bounds.Height / API.Config.RuntimeEnv.GUIScale));
+            scibounds.ParentBounds = capi.Gui.WindowBounds;
+
+            scibounds.CalcWorldBounds();
+            scibounds.absFixedX = renderX + bounds.X;
+            scibounds.absFixedY = renderY + bounds.Y;
+
+            api.Render.PushScissor(scibounds, true);
+
             api.Render.RenderItemstackToGui(
                 slot, renderX + bounds.X + bounds.Width * 0.5f + offX, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+
+            api.Render.PopScissor();
+
 
             int relx = (int)(api.Input.MouseX - renderX);
             int rely = (int)(api.Input.MouseY - renderY);

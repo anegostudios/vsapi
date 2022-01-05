@@ -80,6 +80,11 @@ namespace Vintagestory.API.Common
         public bool PartialSelection;
 
         /// <summary>
+        /// If ture, when the player holds the sneak key and right clicks this block, calls the blocks OnBlockInteractStart first, the items OnHeldInteractStart second. Without it the order is reversed.
+        /// </summary>
+        public bool PriorityInteract;
+
+        /// <summary>
         /// The sounds played for this block during step, break, build and walk. Use GetSounds() to query if not performance critical.
         /// </summary>
         public BlockSounds Sounds;
@@ -356,6 +361,7 @@ namespace Vintagestory.API.Common
             GuiTransform = ModelTransform.BlockDefaultGui();
             FpHandTransform = ModelTransform.BlockDefaultFp();
             TpHandTransform = ModelTransform.BlockDefaultTp();
+            TpOffHandTransform = ModelTransform.BlockDefaultTp();
             GroundTransform = ModelTransform.BlockDefaultGround();
         }
 
@@ -1636,6 +1642,7 @@ namespace Vintagestory.API.Common
 
 
         public float WaveFlagMinY = 9 / 16f;
+        
 
         /// <summary>
         /// Sets given flag if vertex y > WaveFlagMinY, otherwise it clears all wind mode bits
@@ -2188,6 +2195,22 @@ namespace Vintagestory.API.Common
         public virtual bool DoParticalSelection(IWorldAccessor world, BlockPos pos)
         {
             return PartialSelection;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual Vec4f GetSelectionColor(ICoreClientAPI capi, BlockPos pos)
+        {
+            if (DrawType != EnumDrawType.Cube) return new Vec4f(0, 0, 0, 0.5f);
+
+            int col = GetColor(capi, pos);
+            float b = ((col & 0xff) + ((col >> 8) & 0xff) + ((col >> 16) & 0xff)) / 3f;
+            if (b < 0.2 * 255) return new Vec4f(0.8f, 0.8f, 0.8f, 0.5f);
+            return new Vec4f(0, 0, 0, 0.5f);
         }
 
 

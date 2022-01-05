@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -210,6 +211,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void SetToolMode(ItemSlot slot, IPlayer byPlayer, BlockSelection blockSelection, int toolMode)
         {
+        }
+
+
+        public virtual void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo)
+        {
+
         }
     }
 }

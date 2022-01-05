@@ -296,7 +296,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The internal name of the stat bar.</param>
         public static GuiComposer AddStatbar(this GuiComposer composer, ElementBounds bounds, double[] color, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementStatbar(composer.Api, bounds, color, false), key);
             }
@@ -311,7 +311,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The internal name of the stat bar.</param>
         public static GuiComposer AddInvStatbar(this GuiComposer composer, ElementBounds bounds, double[] color, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementStatbar(composer.Api, bounds, color, true), key);
             }

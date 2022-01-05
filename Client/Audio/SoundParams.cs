@@ -67,7 +67,7 @@ namespace Vintagestory.API.Client
         float volume = 1f;
         
         /// <summary>
-        /// The sounds initial range
+        /// The sounds initial range (default is 32)
         /// </summary>
         public float Range = 32;
 

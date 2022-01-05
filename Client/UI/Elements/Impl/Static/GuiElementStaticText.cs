@@ -62,7 +62,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the component.</param>
         public static GuiComposer AddStaticText(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddStaticElement(new GuiElementStaticText(composer.Api, text, EnumTextOrientation.Left, bounds, font), key);
             }
@@ -79,7 +79,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the component.</param>
         public static GuiComposer AddStaticText(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddStaticElement(new GuiElementStaticText(composer.Api, text, orientation, bounds, font), key);
             }
@@ -96,7 +96,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the component.</param>
         public static GuiComposer AddStaticTextAutoBoxSize(this GuiComposer composer, string text, CairoFont font, EnumTextOrientation orientation, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementStaticText elem = new GuiElementStaticText(composer.Api, text, orientation, bounds, font);
                 composer.AddStaticElement(elem, key);

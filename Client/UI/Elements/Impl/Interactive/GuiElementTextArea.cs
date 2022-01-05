@@ -99,7 +99,7 @@ namespace Vintagestory.API.Client
                 font = CairoFont.SmallTextInput();
             }
 
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementTextArea(composer.Api, bounds, OnTextChanged, font), key);
             }

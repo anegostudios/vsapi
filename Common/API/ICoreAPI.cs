@@ -15,6 +15,15 @@ namespace Vintagestory.API.Common
         #region Register game content
 
         /// <summary>
+        /// Registers a recipe registry
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="recipeRegistryCode"></param>
+        /// <returns></returns>
+        T RegisterRecipeRegistry<T>(string recipeRegistryCode) where T : RecipeRegistryBase;
+
+
+        /// <summary>
         /// Registers a new color map. Typically used to color in-game blocks with a texture - i.e. climate and seasonal coloring
         /// </summary>
         void RegisterColorMap(ColorMap map);
@@ -137,6 +146,7 @@ namespace Vintagestory.API.Common
         T LoadModConfig<T>(string filename);
 
 
+
     }
 
     /// <summary>
@@ -197,6 +207,8 @@ namespace Vintagestory.API.Common
         /// <param name="entityClassName"></param>
         /// <param name="config"></param>
         void RegisterEntityClass(string entityClassName, EntityProperties config);
+
+
 
     }
 }

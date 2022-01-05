@@ -10,7 +10,7 @@ namespace Vintagestory.API.Client
 
     public delegate void DrawSkillIconDelegate(Context cr, int x, int y, float width, float height, double[] rgba);
 
-    public class SkillItem
+    public class SkillItem : IDisposable
     {
         public string Name;
         public string Description;
@@ -18,6 +18,7 @@ namespace Vintagestory.API.Client
         public LoadedTexture Texture;
         public KeyCombination Hotkey;
         public bool Linebreak = false;
+        public bool Enabled = true;
 
         public RenderSkillItemDelegate RenderHandler;
 
@@ -29,6 +30,16 @@ namespace Vintagestory.API.Client
             Texture = capi.Gui.Icons.GenTexture(48, 48, (ctx, surface) =>
             {
                 onDrawIcon(ctx, 5, 5, 38, 38, ColorUtil.WhiteArgbDouble);
+            });
+
+            return this;
+        }
+
+        public SkillItem WithIcon(ICoreClientAPI capi, string iconCode)
+        {
+            Texture = capi.Gui.Icons.GenTexture(48, 48, (ctx, surface) =>
+            {
+                capi.Gui.Icons.DrawIcon(ctx, iconCode, 5, 5, 38, 38, ColorUtil.WhiteArgbDouble);
             });
 
             return this;

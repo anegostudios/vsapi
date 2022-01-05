@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
-    class CreativeInventoryTab : InventoryGeneric
+    public class CreativeInventoryTab : InventoryGeneric
     {
         public int TabIndex;
 

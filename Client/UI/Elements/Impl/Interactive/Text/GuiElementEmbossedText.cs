@@ -136,7 +136,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the component.</param>
         public static GuiComposer AddEmbossedText(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementEmbossedText(composer.Api, text, font, bounds), key);
             }

@@ -83,13 +83,6 @@ namespace Vintagestory.API.Common
 
                 manager.Init(entity.Api, entity);
 
-                
-
-                for (int i = 0; entityShape.Animations != null && i < entityShape.Animations.Length; i++)
-                {
-                    entityShape.Animations[i].GenerateAllFrames(entityShape.Elements, entityShape.JointsById);
-                }
-
                 IAnimator animatorbase = api.Side == EnumAppSide.Client ?
                     ClientAnimator.CreateForEntity(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById) :
                     ServerAnimator.CreateForEntity(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById)

@@ -185,7 +185,6 @@ namespace Vintagestory.API.Client
                 
                 capi.Render.ShaderUniforms.DamageVignetting = GameMath.Clamp(GameMath.Clamp(strength / 2, 0.5f, 3.5f) * ((float)val / Math.Max(1, duration)) + lowHealthness, 0, 1.5f);
 
-
                 float freezing = eplr.Entity.WatchedAttributes.GetFloat("freezingEffectStrength", 0);
 
                 curFreezingVal += (freezing - curFreezingVal) * dt;
@@ -202,11 +201,24 @@ namespace Vintagestory.API.Client
 
         private void onHurt()
         {
-            strength = capi.World.Player.Entity.WatchedAttributes.GetFloat("onHurt");
+            var eplr = capi.World.Player.Entity;
+            strength = eplr.WatchedAttributes.GetFloat("onHurt");
+            
             if (strength == 0 || capi.World.Player.Entity.RemainingActivityTime("invulnerable") <= 0) return;
 
             duration = GameMath.Clamp(200 + (int)(strength * 10), 200, 600) * 3;
             damangeVignettingUntil = capi.ElapsedMilliseconds + duration;
+                        
+            float angle = eplr.WatchedAttributes.GetFloat("onHurtDir");
+            if (angle < -99)
+            {
+                capi.Render.ShaderUniforms.DamageVignettingSide = 0;
+            }
+            else
+            {
+                float angleDist = GameMath.AngleRadDistance(eplr.Pos.Yaw - GameMath.PIHALF, angle);
+                capi.Render.ShaderUniforms.DamageVignettingSide = GameMath.Clamp(angleDist / GameMath.PIHALF, -1, 1);
+            }
         }
 
     }

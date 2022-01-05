@@ -39,7 +39,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         Water = 6,
         ExtraWeakWind = 7,
-        Fruit = 8
+        Fruit = 8,
+        WeakWindNoBend = 9,
+        WeakWindInverseBend = 10
     }
 
     public static class EnumWindBitModeMask

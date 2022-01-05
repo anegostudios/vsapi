@@ -332,7 +332,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this tab group.</param>
         public static GuiComposer AddVerticalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int, GuiTab> OnTabClicked, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 CairoFont font = CairoFont.WhiteDetailText().WithFontSize(17);
                 CairoFont selectedFont = CairoFont.WhiteDetailText().WithFontSize(17).WithColor(GuiStyle.ActiveButtonTextColor);

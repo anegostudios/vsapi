@@ -73,12 +73,13 @@ namespace Vintagestory.API.Config
                 regexCache.Clear();
                 wildcardCache.Clear();
                 var origins = assetManager.Origins;
+
                 foreach (var asset in origins.SelectMany(p => p.GetAssets(AssetCategory.lang).Where(a => a.Name.Equals($"{LanguageCode}.json"))))
 
                     try
                     {
                         var json = asset.ToText();
-                        LoadEntries(JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
+                        LoadEntries(JsonConvert.DeserializeObject<Dictionary<string, string>>(json), asset.Location.Domain);
                     }
                     catch (Exception ex)
                     {

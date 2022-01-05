@@ -291,8 +291,14 @@ namespace Vintagestory.API.Client
                         dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
                     }
 
+                    var scale = RuntimeEnv.GUIScale;
+                    ElementBounds scissorBounds = ElementBounds.Fixed(rx / scale, ry / scale, size / scale, size / scale).WithEmptyParent();
+                    scissorBounds.CalcWorldBounds();
+                    api.Render.PushScissor(scissorBounds, true);
+
                     dummyslot.Itemstack.Collectible.OnHandbookRecipeRender(capi, recipeunin.Recipe, dummyslot, rx + size * 0.5f, ry + size * 0.5f, size);
-                    
+
+                    api.Render.PopScissor();
 
                     // Super weird coordinates, no idea why
 

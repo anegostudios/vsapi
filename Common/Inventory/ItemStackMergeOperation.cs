@@ -119,7 +119,8 @@ namespace Vintagestory.API.Common
             return new ItemStackMergeOperation(World, MouseButton, Modifiers, CurrentPriority, RequestedQuantity)
             {
                 SinkSlot = SinkSlot,
-                SourceSlot = SourceSlot
+                SourceSlot = SourceSlot,
+                ActingPlayer = ActingPlayer
             };
         }
     }

@@ -245,7 +245,7 @@ namespace Vintagestory.API.Client
                 font = CairoFont.TextInput();
             }
 
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementNumberInput(composer.Api, bounds, OnTextChanged, font), key);
             }

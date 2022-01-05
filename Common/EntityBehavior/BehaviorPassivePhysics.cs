@@ -47,6 +47,8 @@ namespace Vintagestory.API.Common
         public float clientPhysicsTickTimeThreshold = 0f;
         float accum = 0;
 
+        public float collisionYExtra = 1f;
+
         /// <summary>
         /// If set, will test for entity collision every tick (expensive)
         /// </summary>
@@ -224,7 +226,7 @@ namespace Vintagestory.API.Common
                     
                     // 0 = at swim line
                     // 1 = completely submerged
-                    float swimlineSubmergedness = GameMath.Clamp(bottomSubmergedness - (entity.CollisionBox.Y2 - (float)entity.SwimmingOffsetY), 0, 1);
+                    float swimlineSubmergedness = GameMath.Clamp(bottomSubmergedness - (entity.SelectionBox.Y2 - (float)entity.SwimmingOffsetY), 0, 1);
 
                     double boyancyStrength = GameMath.Clamp(60 * baseboyancy * swimlineSubmergedness, -1.5f, 1.5f) - 1;
 
@@ -246,7 +248,7 @@ namespace Vintagestory.API.Common
 
             bool falling = pos.Motion.Y < 0;
 
-            entity.World.CollisionTester.ApplyTerrainCollision(entity, pos, dtFac, ref outposition);
+            entity.World.CollisionTester.ApplyTerrainCollision(entity, pos, dtFac, ref outposition, 0, collisionYExtra);
 
             
 
@@ -296,7 +298,7 @@ namespace Vintagestory.API.Common
 
                 // 0 = at swim line
                 // 1 = completely submerged
-                float swimlineSubmergedness = bottomSubmergedness - (entity.CollisionBox.Y2 - (float)entity.SwimmingOffsetY);
+                float swimlineSubmergedness = bottomSubmergedness - (entity.SelectionBox.Y2 - (float)entity.SwimmingOffsetY);
 
                 entity.Swimming = swimlineSubmergedness > 0;
             } else

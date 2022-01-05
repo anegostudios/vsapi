@@ -251,7 +251,7 @@ namespace Vintagestory.API.MathTools
 
         public Vec3d Clone()
         {
-            return (Vec3d)MemberwiseClone();
+            return new Vec3d(X, Y, Z);
         }
 
         public Vec3d Sub(Vec3d vec)

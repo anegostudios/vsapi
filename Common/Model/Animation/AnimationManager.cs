@@ -44,8 +44,6 @@ namespace Vintagestory.API.Common
         /// The entity attached to this Animation Manager.
         /// </summary>
         protected Entity entity;
-        //long listenerId;
-        //DummyRenderer renderer;
 
         public AnimationManager()
         {
@@ -75,6 +73,8 @@ namespace Vintagestory.API.Common
                 capi = (api as ICoreClientAPI);
             }
         }
+
+
 
         public virtual bool IsAnimationActive(params string[] anims)
         {
@@ -120,7 +120,7 @@ namespace Vintagestory.API.Common
         {
             if (configCode == null) return false;
 
-            AnimationMetaData animdata = null;
+            AnimationMetaData animdata;
 
             if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode, out animdata))
             {
@@ -313,7 +313,7 @@ namespace Vintagestory.API.Common
         public void OnClientFrame(float dt)
         {
             if (capi.IsGamePaused || (!entity.IsRendered && entity.Alive)) return; // Too cpu intensive to run all loaded entities
-
+            
             Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
 
             if (HeadController != null)

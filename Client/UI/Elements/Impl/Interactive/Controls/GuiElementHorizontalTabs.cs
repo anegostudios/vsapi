@@ -314,7 +314,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The key for the added horizontal tabs.</param>
         public static GuiComposer AddHorizontalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int> OnTabClicked, CairoFont font, CairoFont selectedFont, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementHorizontalTabs(composer.Api, tabs, font, selectedFont, bounds, OnTabClicked), key);
             }

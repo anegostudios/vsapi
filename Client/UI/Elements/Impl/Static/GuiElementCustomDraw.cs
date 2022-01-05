@@ -74,7 +74,7 @@ namespace Vintagestory.API.Client
         /// <param name="OnDraw">The event fired when the element is drawn.</param>
         public static GuiComposer AddStaticCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds OnDraw)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddStaticElement(new GuiElementCustomDraw(composer.Api, bounds, OnDraw));
             }
@@ -89,7 +89,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the element.</param>
         public static GuiComposer AddDynamicCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds OnDraw, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementCustomDraw(composer.Api, bounds, OnDraw, true), key);
             }

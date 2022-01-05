@@ -69,6 +69,8 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static readonly string EnvSearchPathName;
 
+        public static readonly string EnvPathSeperator;
+
         /// <summary>
         /// .dll for windows, .so for linux, .dylib for mac
         /// </summary>
@@ -78,6 +80,7 @@ namespace Vintagestory.API.Config
         {
             if (System.IO.Path.DirectorySeparatorChar == '\\')
             {
+                EnvPathSeperator = ";";
                 OS = OS.Windows;
                 EnvSearchPathName = "PATH";
                 LibExtension = ".dll";
@@ -88,13 +91,14 @@ namespace Vintagestory.API.Config
 				OS = OS.Mac;
 				EnvSearchPathName = "DYLD_FRAMEWORK_PATH";
 				LibExtension = ".dylib";
+                EnvPathSeperator = ":";
                 return;
             }
 
 			OS = OS.Linux;
 			EnvSearchPathName = "LD_LIBRARY_PATH";
 			LibExtension = ".so";
-
+            EnvPathSeperator = ":";
         }
 
 		[DllImport("libc")]

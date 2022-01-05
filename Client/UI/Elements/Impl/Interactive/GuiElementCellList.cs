@@ -7,7 +7,7 @@ using System;
 
 namespace Vintagestory.API.Client
 {
-    public interface IGuiElementCell
+    public interface IGuiElementCell : IDisposable
     {
         ElementBounds InsideClipBounds { get; set; }
 
@@ -323,7 +323,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The identifier for the list.</param>
         public static GuiComposer AddCellList<T>(this GuiComposer composer, ElementBounds bounds, OnRequireCell<T> cellCreator, List<T> cells = null, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementCellList<T>(composer.Api, bounds, cellCreator, cells), key);
             }

@@ -34,7 +34,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.1";
+        public const string ShortGameVersion = OverallVersion + "-rc.6";
 
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
@@ -57,7 +57,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.15.5";
+        public const string NetworkVersion = "1.16.0";
 
         /// <summary>
         /// Version of the savegame database

@@ -408,6 +408,19 @@ namespace Vintagestory.API.Common.Entities
             return (dx * dx + dy * dy + dz * dz);
         }
 
+        /// <summary>
+        /// Returns the horizontal squared distance of the entity to this position
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public double SquareHorDistanceTo(Vec3d pos)
+        {
+            double dx = this.x - pos.X;
+            double dz = this.z - pos.Z;
+
+            return (dx * dx + dz * dz);
+        }
+
         public double DistanceTo(Vec3d pos)
         {
             double dx = this.x - pos.X;
@@ -415,6 +428,14 @@ namespace Vintagestory.API.Common.Entities
             double dz = this.z - pos.Z;
 
             return GameMath.Sqrt(dx * dx + dy * dy + dz * dz);
+        }
+
+        public double HorDistanceTo(Vec3d pos)
+        {
+            double dx = this.x - pos.X;
+            double dz = this.z - pos.Z;
+
+            return GameMath.Sqrt(dx * dx + dz * dz);
         }
 
 

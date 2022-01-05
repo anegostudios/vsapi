@@ -23,7 +23,7 @@ namespace Vintagestory.API.Client
     /// The caching allows the dialog using the composer to not worry about performance and just call compose whenever it has to display a new composed dialog
     /// You add components by chaining the functions of the composer together for building the result.
     /// </summary>
-    public class GuiComposer
+    public class GuiComposer : IDisposable
     {
         /// <summary>
         /// Triggered when the gui scale changed or the game window was resized
@@ -53,7 +53,7 @@ namespace Vintagestory.API.Client
 
         protected ElementBounds lastAddedElementBounds;
 
-        internal bool composed = false;
+        public bool Composed = false;
         internal bool recomposeOnRender = false;
         internal bool onlyDynamicRender = false;
         internal ElementBounds InsideClipBounds;
@@ -208,7 +208,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void ReCompose()
         {
-            composed = false;
+            Composed = false;
             Compose(false);
 
             OnRecomposed?.Invoke();
@@ -334,7 +334,7 @@ namespace Vintagestory.API.Client
         /// <param name="focusFirstElement">Whether or not to put the first element in focus.</param>
         public GuiComposer Compose(bool focusFirstElement = true)
         {
-            if (composed)
+            if (Composed)
             {
                 if (focusFirstElement && MaxTabIndex >= 0) FocusElement(0);
                 return this;
@@ -402,7 +402,7 @@ namespace Vintagestory.API.Client
             ctx.Dispose();
             surface.Dispose();
 
-            composed = true;
+            Composed = true;
 
             if (focusFirstElement && MaxTabIndex >= 0) FocusElement(0);
 
@@ -622,7 +622,7 @@ namespace Vintagestory.API.Client
 
             parentBoundsForNextElement.Push(bounds);
             lastAddedElementBounds = null;
-            composed = false;
+            Composed = false;
         }
 
         /// <summary>
@@ -829,7 +829,7 @@ namespace Vintagestory.API.Client
 
             staticElementsTexture.Dispose();
 
-            composed = false;
+            Composed = false;
         }
     }
 }

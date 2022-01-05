@@ -4,7 +4,6 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -173,37 +172,6 @@ namespace Vintagestory.API.Common
         /// List of all loaded crafting recipes
         /// </summary>
         List<GridRecipe> GridRecipes { get; }
-
-        /// <summary>
-        /// List of all loaded metal alloys
-        /// </summary>
-        List<AlloyRecipe> Alloys { get; }
-
-        /// <summary>
-        /// List of all loaded cooking recipes
-        /// </summary>
-        List<CookingRecipe> CookingRecipes { get; }
-
-        /// <summary>
-        /// List of all loaded smithing recipes
-        /// </summary>
-        List<SmithingRecipe> SmithingRecipes { get; }
-
-        /// <summary>
-        /// List of all loaded knapping recipes
-        /// </summary>
-        List<KnappingRecipe> KnappingRecipes { get; }
-
-        /// <summary>
-        /// List of all loaded clay forming recipes
-        /// </summary>
-        List<ClayFormingRecipe> ClayFormingRecipes { get; }
-
-        /// <summary>
-        /// List of all loaded barrel recipes
-        /// </summary>
-        List<BarrelRecipe> BarrelRecipes { get; }
-
 
 
         /// <summary>

@@ -76,7 +76,7 @@ namespace Vintagestory.API.Client
         /// <param name="topPadding">The amount of padding at the top of the gui.</param>
         public static GuiComposer AddShadedDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true, double strokeWidth = 5)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, withTitleBar, strokeWidth));
             }
@@ -85,7 +85,7 @@ namespace Vintagestory.API.Client
 
         public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementDialogBackground elem = new GuiElementDialogBackground(composer.Api, bounds, withTitleBar);
                 elem.Shade = false;  

@@ -4,14 +4,79 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Vintagestory.API;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
-using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Datastructures
 {
+    public static class TreeAttributeUtil
+    {
+        public static Vec3i GetVec3i(this ITreeAttribute tree, string code, Vec3i defaultValue = null)
+        {
+            if (!tree.HasAttribute(code + "X")) return defaultValue;
+            return new Vec3i(tree.GetInt(code+"X"), tree.GetInt(code+"Y"), tree.GetInt(code+"Z"));
+        }
+        public static BlockPos GetBlockPos(this ITreeAttribute tree, string code, BlockPos defaultValue = null)
+        {
+            if (!tree.HasAttribute(code + "X")) return defaultValue;
+            return new BlockPos(tree.GetInt(code + "X"), tree.GetInt(code + "Y"), tree.GetInt(code + "Z"));
+        }
+
+
+        public static void SetVec3i(this ITreeAttribute tree, string code, Vec3i value)
+        {
+            tree.SetInt(code + "X", value.X);
+            tree.GetInt(code + "Y", value.Y);
+            tree.GetInt(code + "Z", value.Z);
+        }
+
+        public static void SetBlockPos(this ITreeAttribute tree, string code, BlockPos value)
+        {
+            tree.SetInt(code + "X", value.X);
+            tree.GetInt(code + "Y", value.Y);
+            tree.GetInt(code + "Z", value.Z);
+        }
+
+        public static Vec3i[] GetVec3is(this ITreeAttribute tree, string code, Vec3i[] defaultValue = null)
+        {
+            if (!tree.HasAttribute(code + "X")) return defaultValue;
+
+            int[] x = (tree[code + "X"] as IntArrayAttribute).value;
+            int[] y = (tree[code + "Y"] as IntArrayAttribute).value;
+            int[] z = (tree[code + "Z"] as IntArrayAttribute).value;
+
+            Vec3i[] values = new Vec3i[x.Length];
+            for (int i = 0; i < x.Length; i++)
+            {
+                values[i] = new Vec3i(x[i], y[i], z[i]);
+            }
+
+            return values;
+        }
+
+
+        public static void SetVec3is(this ITreeAttribute tree, string code, Vec3i[] value)
+        {
+            int[] x = new int[value.Length];
+            int[] y = new int[value.Length];
+            int[] z = new int[value.Length];
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                x[i] = value[i].X;
+                y[i] = value[i].Y;
+                z[i] = value[i].Z;
+            }
+
+            tree[code + "X"] = new IntArrayAttribute(x);
+            tree[code + "Y"] = new IntArrayAttribute(y);
+            tree[code + "Z"] = new IntArrayAttribute(z);
+        }
+
+    }
+
+
     /// <summary>
     /// A datastructure to hold generic data for most primitives (int, string, float, etc.). But can also hold generic data using the ByteArrayAttribute + class serialization
     /// </summary>
@@ -269,7 +334,8 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Creates an int attribute with given key and value
+        /// Creates an int attribute with given key and value<br/>
+        /// Side note: If you need this attribute to be compatible with deserialized json - use SetLong()
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
@@ -308,7 +374,8 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Creates a float attribute with given key and value
+        /// Creates a float attribute with given key and value<br/>
+        /// Side note: If you need this attribute to be compatible with deserialized json - use SetDouble()
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>

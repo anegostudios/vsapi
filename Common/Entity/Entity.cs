@@ -318,7 +318,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual double SwimmingOffsetY
         {
-            get { return CollisionBox.Y1 + CollisionBox.Y2 * 0.66; }
+            get { return SelectionBox.Y1 + SelectionBox.Y2 * 0.66; }
         }
 
 
@@ -503,7 +503,7 @@ namespace Vintagestory.API.Common.Entities
                 }
             });
 
-            WatchedAttributes.RegisterModifiedListener("entityDead", updateHitBox);
+            WatchedAttributes.RegisterModifiedListener("entityDead", updateColSelBoxes);
 
             WatchedAttributes.RegisterModifiedListener("grow", () =>
             {
@@ -517,9 +517,9 @@ namespace Vintagestory.API.Common.Entities
                 }
             });
 
-            if (Properties.CollisionBoxSize != null)
+            if (Properties.CollisionBoxSize != null || properties.SelectionBoxSize != null)
             {
-                updateHitBox();
+                updateColSelBoxes();
             }
 
             if (AlwaysActive || api.Side == EnumAppSide.Client)
@@ -570,7 +570,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
 
-        private void updateHitBox()
+        private void updateColSelBoxes()
         {
             bool alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
@@ -589,7 +589,7 @@ namespace Vintagestory.API.Common.Entities
                 SetSelectionBox(selboxs.X, selboxs.Y);
             }
 
-            double touchdist = Math.Max(0.001f, CollisionBox.XSize / 2);
+            double touchdist = Math.Max(0.001f, SelectionBox.XSize / 2);
             touchDistanceSq = touchdist * touchdist;
         }
 
@@ -743,16 +743,16 @@ namespace Vintagestory.API.Common.Entities
             if ((!Alive || IsActivityRunning("invulnerable")) && damageSource.Type != EnumDamageType.Heal) return false;
 
             if (ShouldReceiveDamage(damageSource, damage)) {
-                if (damageSource.Type != EnumDamageType.Heal)
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                {
+                    behavior.OnEntityReceiveDamage(damageSource, ref damage);
+                }
+
+                if (damageSource.Type != EnumDamageType.Heal && damage > 0)
                 {
                     WatchedAttributes.SetInt("onHurtCounter", WatchedAttributes.GetInt("onHurtCounter") + 1);
                     WatchedAttributes.SetFloat("onHurt", damage); // Causes the client to be notified
                     AnimManager.StartAnimation("hurt");
-                }
-
-                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
-                {
-                    behavior.OnEntityReceiveDamage(damageSource, damage);
                 }
 
                 if (damageSource.GetSourcePosition() != null)
@@ -762,6 +762,7 @@ namespace Vintagestory.API.Common.Entities
                     Properties.KnockbackResistance = 0;
                     float factor = damageSource.KnockbackStrength * GameMath.Clamp((1 - Properties.KnockbackResistance) / 10f, 0, 1);
 
+                    WatchedAttributes.SetFloat("onHurtDir", (float)Math.Atan2(dir.X, dir.Z));
                     WatchedAttributes.SetDouble("kbdirX", dir.X * factor);
                     WatchedAttributes.SetDouble("kbdirY", dir.Y * factor);
                     WatchedAttributes.SetDouble("kbdirZ", dir.Z * factor);
@@ -770,6 +771,7 @@ namespace Vintagestory.API.Common.Entities
                     WatchedAttributes.SetDouble("kbdirX", 0);
                     WatchedAttributes.SetDouble("kbdirY", 0);
                     WatchedAttributes.SetDouble("kbdirZ", 0);
+                    WatchedAttributes.SetFloat("onHurtDir", -999);
                 }
 
                 return true;
@@ -844,11 +846,11 @@ namespace Vintagestory.API.Common.Entities
                     {
                         int index = Math.Min(FireParticleProps.Length - 1, Api.World.Rand.Next(FireParticleProps.Length + 1));
                         AdvancedParticleProperties particles = FireParticleProps[index];
-                        particles.basePos.Set(Pos.X, Pos.Y + CollisionBox.YSize / 2, Pos.Z);
+                        particles.basePos.Set(Pos.X, Pos.Y + SelectionBox.YSize / 2, Pos.Z);
 
-                        particles.PosOffset[0].var = CollisionBox.XSize / 2;
-                        particles.PosOffset[1].var = CollisionBox.YSize / 2;
-                        particles.PosOffset[2].var = CollisionBox.ZSize / 2;
+                        particles.PosOffset[0].var = SelectionBox.XSize / 2;
+                        particles.PosOffset[1].var = SelectionBox.YSize / 2;
+                        particles.PosOffset[2].var = SelectionBox.ZSize / 2;
                         particles.Velocity[0].avg = (float)Pos.Motion.X * 10;
                         particles.Velocity[1].avg = (float)Pos.Motion.Y * 5;
                         particles.Velocity[2].avg = (float)Pos.Motion.Z * 10;
@@ -867,12 +869,12 @@ namespace Vintagestory.API.Common.Entities
 
                     if (!alive && InLava && !(this is EntityPlayer))
                     {
-                        float q = GameMath.Clamp(CollisionBox.XSize * CollisionBox.YSize * CollisionBox.ZSize * 150, 10, 150);
+                        float q = GameMath.Clamp(SelectionBox.XSize * SelectionBox.YSize * SelectionBox.ZSize * 150, 10, 150);
                         Api.World.SpawnParticles(
                             q,
                             ColorUtil.ColorFromRgba(20, 20, 20, 255),
-                            new Vec3d(ServerPos.X + CollisionBox.X1, ServerPos.Y + CollisionBox.Y1, ServerPos.Z + CollisionBox.Z1),
-                            new Vec3d(ServerPos.X + CollisionBox.X2, ServerPos.Y + CollisionBox.Y2, ServerPos.Z + CollisionBox.Z2),
+                            new Vec3d(ServerPos.X + SelectionBox.X1, ServerPos.Y + SelectionBox.Y1, ServerPos.Z + SelectionBox.Z1),
+                            new Vec3d(ServerPos.X + SelectionBox.X2, ServerPos.Y + SelectionBox.Y2, ServerPos.Z + SelectionBox.Z2),
                             new Vec3f(-1f, -1f, -1f),
                             new Vec3f(2f, 2f, 2f), 
                             2, 1, 1, EnumParticleModel.Cube
@@ -946,8 +948,8 @@ namespace Vintagestory.API.Common.Entities
             EntityPos pos = SidedPos;
             float yDistance = (float)Math.Abs(PositionBeforeFalling.Y - pos.Y);
 
-            double width = CollisionBox.XSize;
-            double height = CollisionBox.YSize;
+            double width = SelectionBox.XSize;
+            double height = SelectionBox.YSize;
 
             double splashStrength = 2 * GameMath.Sqrt(width * height) + pos.Motion.Length() * 10;
 
@@ -965,8 +967,8 @@ namespace Vintagestory.API.Common.Entities
             World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.Y, (float)pos.Z, null);
             BlockPos blockpos = pos.AsBlockPos;
             Vec3d aboveBlockPos = new Vec3d(Pos.X, blockpos.Y + 1.02, Pos.Z);
-            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.XSize, (int)(qmod * 8 * splashStrength), 0.75f);
-            World.SpawnCubeParticles(blockpos, aboveBlockPos, CollisionBox.XSize, (int)(qmod * 8 * splashStrength), 0.25f);
+            World.SpawnCubeParticles(blockpos, aboveBlockPos, SelectionBox.XSize, (int)(qmod * 8 * splashStrength), 0.75f);
+            World.SpawnCubeParticles(blockpos, aboveBlockPos, SelectionBox.XSize, (int)(qmod * 8 * splashStrength), 0.25f);
 
             if (splashStrength >= 2)
             {
@@ -1001,13 +1003,13 @@ namespace Vintagestory.API.Common.Entities
             // Hard coded player swim hitbox thing
             if (this is EntityPlayer && Swimming)
             {
-                bioLumiParticles.MinPos.Set(SidedPos.X + 2f * CollisionBox.X1, SidedPos.Y + offy + 0.5f + 1.25f * CollisionBox.Y1, SidedPos.Z + 2f * CollisionBox.Z1);
-                bioLumiParticles.AddPos.Set(3f * CollisionBox.XSize, 0.5f * CollisionBox.YSize, 3f * CollisionBox.ZSize);
+                bioLumiParticles.MinPos.Set(SidedPos.X + 2f * SelectionBox.X1, SidedPos.Y + offy + 0.5f + 1.25f * SelectionBox.Y1, SidedPos.Z + 2f * SelectionBox.Z1);
+                bioLumiParticles.AddPos.Set(3f * SelectionBox.XSize, 0.5f * SelectionBox.YSize, 3f * SelectionBox.ZSize);
             }
             else
             {
-                bioLumiParticles.MinPos.Set(SidedPos.X + 1.25f * CollisionBox.X1, SidedPos.Y + offy + 1.25f * CollisionBox.Y1, SidedPos.Z + 1.25f * CollisionBox.Z1);
-                bioLumiParticles.AddPos.Set(1.5f * CollisionBox.XSize, 1.5f * CollisionBox.YSize, 1.5f * CollisionBox.ZSize);
+                bioLumiParticles.MinPos.Set(SidedPos.X + 1.25f * SelectionBox.X1, SidedPos.Y + offy + 1.25f * SelectionBox.Y1, SidedPos.Z + 1.25f * SelectionBox.Z1);
+                bioLumiParticles.AddPos.Set(1.5f * SelectionBox.XSize, 1.5f * SelectionBox.YSize, 1.5f * SelectionBox.ZSize);
             }
 
             bioLumiParticles.MinQuantity = Math.Min(200, 100 * quantityMul * (float)qmul);
@@ -1355,7 +1357,19 @@ namespace Vintagestory.API.Common.Entities
                 anims += anim;
             }
 
+            i = 0;
+            StringBuilder runninganims = new StringBuilder();
+            foreach (var anim in AnimManager.Animator.RunningAnimations)
+            {
+                if (!anim.Active) continue;
+
+                if (i++ > 0) runninganims.Append(",");
+                runninganims.Append(anim.Animation.Code);
+            }
+
             DebugAttributes.SetString("Active Animations", anims.Length > 0 ? anims : "-");
+            DebugAttributes.SetString("Running Animations", runninganims.Length > 0 ? runninganims.ToString() : "-");
+
         }
 
 
@@ -1577,7 +1591,7 @@ namespace Vintagestory.API.Common.Entities
                 World.PlaySoundAt(
                     locations[World.Rand.Next(locations.Length)], 
                     (float)SidedPos.X, (float)SidedPos.Y, (float)SidedPos.Z, 
-                    dualCallByPlayer, 
+                    dualCallByPlayer,
                     randomizePitch, 
                     range
                 );

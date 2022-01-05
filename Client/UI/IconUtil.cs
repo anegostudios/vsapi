@@ -232,6 +232,11 @@ namespace Vintagestory.API.Client
                     DrawRightMouseButton(cr, x, y, width, height, rgba);
                     break;
 
+                case "plus":
+                    float lineWidth = width / 8f;
+                    DrawPlus(cr, x, y, width, height, rgba, lineWidth);
+                    break;
+
                 case "wpCross":
                     cr.SetSourceRGBA(0.8, 0.2, 0.2, 0.7);
                     DrawCross(cr, x, y, width, height);
@@ -15747,7 +15752,25 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
-        
+        public void DrawPlus(Context ctx, int x, int y, float width, float height, double[] strokeRgba, double lineWidth)
+        {
+            ctx.LineWidth = lineWidth;
+
+            ctx.SetSourceRGBA(strokeRgba);
+
+            ctx.NewPath();
+            ctx.MoveTo(x, y + height / 2);
+            ctx.LineTo(x + width, y + height / 2);
+
+            ctx.MoveTo(x + width / 2, y);
+            ctx.LineTo(x + width / 2, y + height);
+
+            ctx.ClosePath();
+
+            ctx.Stroke();
+        }
+
+
         public void DrawCross(Context ctx, double x, double y, double lineWidth, double size, bool preserverePath = false)
         {
             ctx.LineWidth = lineWidth;

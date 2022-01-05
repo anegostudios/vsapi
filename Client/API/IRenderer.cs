@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Common;
+﻿using System;
+using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
 {
@@ -6,7 +7,7 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Interface to render something on to the clients screens. Used for block entitites.
     /// </summary>
-    public interface IRenderer
+    public interface IRenderer : IDisposable
     {
         /// <summary>
         /// 0 = drawn first, 1 = drawn last<br/>

@@ -63,7 +63,7 @@ namespace Vintagestory.API.Client
 
         protected virtual string OnRequireInfoText(ItemSlot slot)
         {
-            return slot.GetStackDescription(capi.World, false);
+            return slot.GetStackDescription(capi.World, capi.Settings.Bool["extendedDebugInfo"]);
         }
 
         public void RenderItemstackTooltip(ItemSlot slot, double renderX, double renderY, float dt)
@@ -103,8 +103,6 @@ namespace Vintagestory.API.Client
             {
                 stackInfo.RenderInteractiveElements(dt);
             }
-
-            
         }
 
 

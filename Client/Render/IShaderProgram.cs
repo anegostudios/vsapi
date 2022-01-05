@@ -34,7 +34,7 @@ namespace Vintagestory.API.Client
         string Code { get; set; }
     }
 
-    public interface IShaderProgram
+    public interface IShaderProgram : IDisposable
     {
         /// <summary>
         /// A uniqe shader pass number assigned to each shader program

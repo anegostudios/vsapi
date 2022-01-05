@@ -7,7 +7,7 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Represents a loaded game sound 
     /// </summary>
-    public interface ILoadedSound
+    public interface ILoadedSound : IDisposable
     {
         /// <summary>
         /// Length of the sound in seconds

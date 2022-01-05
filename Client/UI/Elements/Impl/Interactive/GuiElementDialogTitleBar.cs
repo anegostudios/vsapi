@@ -388,7 +388,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the title bar.</param>
         public static GuiComposer AddDialogTitleBar(this GuiComposer composer, string text, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementDialogTitleBar(composer.Api, text, composer, OnClose, font, bounds));
             }
@@ -406,7 +406,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the title bar.</param>
         public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementDialogTitleBar elem = new GuiElementDialogTitleBar(composer.Api, text, composer, OnClose, font, bounds);
                 elem.drawBg = true;

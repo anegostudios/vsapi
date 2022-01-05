@@ -27,59 +27,47 @@ namespace Vintagestory.API.Common
         public float SecondsAlive = 0;
         public bool Alive;
 
-        /// <summary>
-        /// Returns the current position of the particle
-        /// </summary>
-        /// <returns></returns>
+        public Vec3f Velocity = new Vec3f();
         public Vec3d Position = new Vec3d();
-        public Vec3d PrevPosition = new Vec3d();
-        protected double dx, dy, dz;
 
-        /// <summary>
-        /// Returns the current velocity of the particle
-        /// </summary>
-        /// <returns></returns>
-        public Vec3d Velocity = new Vec3d();
+        public float prevPosDeltaX, prevPosDeltaY, prevPosDeltaZ;
+        public float prevPosAdvance;
 
 
         public int lightrgbs;
-        protected float accum;
-        protected int slowTick;
+        public float accum;
+        protected byte slowTick;
 
 
         /// <summary>
-        /// Dt will never be above PhysicsTickTime
+        /// Advances the physics simulation of the particle if "physicsSim.PhysicsTickTime" seconds have passed by, otherwise
+        /// it will only advance PrevPosition by the particles velocity.
         /// </summary>
-        /// <param name="dt"></param>
+        /// <param name="dt">Will never be above PhysicsTickTime</param>
         /// <param name="api"></param>
         /// <param name="physicsSim"></param>
         public virtual void TickFixedStep(float dt, ICoreClientAPI api, ParticlePhysics physicsSim)
         {
             accum += dt;
-
-            float step = dt / physicsSim.PhysicsTickTime;
-            PrevPosition.X += dx * step;
-            PrevPosition.Y += dy * step;
-            PrevPosition.Z += dz * step;
-
-            if (accum > 1)
-            {
-                accum = 1;
-            }
+            prevPosAdvance += dt / physicsSim.PhysicsTickTime;
 
             if (accum >= physicsSim.PhysicsTickTime)
             {
                 dt = physicsSim.PhysicsTickTime;
                 accum = 0;
+                prevPosAdvance = 0;
 
-                PrevPosition.Set(Position);
+                double x = Position.X;
+                double y = Position.Y;
+                double z = Position.Z;
+
                 TickNow(dt, dt, api, physicsSim);
 
                 SecondsAlive += dt - physicsSim.PhysicsTickTime;
 
-                dx = Position.X - PrevPosition.X;
-                dy = Position.Y - PrevPosition.Y;
-                dz = Position.Z - PrevPosition.Z;
+                prevPosDeltaX = (float)(Position.X - x);
+                prevPosDeltaY = (float)(Position.Y - y);
+                prevPosDeltaZ = (float)(Position.Z - z);
             }
             else
             {

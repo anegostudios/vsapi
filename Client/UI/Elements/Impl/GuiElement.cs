@@ -10,7 +10,7 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {    
-    public abstract class GuiElement
+    public abstract class GuiElement : IDisposable
     {
         public static AssetLocation dirtTextureName = new AssetLocation("gui/backgrounds/soil.png");
         public static AssetLocation noisyMetalTextureName = new AssetLocation("gui/backgrounds/noisymetal.png");

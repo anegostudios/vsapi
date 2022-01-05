@@ -545,28 +545,64 @@ namespace Vintagestory.API.Client
                 }
 
                 string cachedtext = "";
+                var name = searchCacheNames[val.Key];
 
                 if (searchCache != null && searchCache.TryGetValue(val.Key, out cachedtext))
                 {
-                    if (searchCacheNames[val.Key].Equals(searchText, StringComparison.InvariantCultureIgnoreCase))
+                    int index = name.IndexOf(searchText, StringComparison.InvariantCultureIgnoreCase);
+
+                    // First prio: Exact match on name
+                    if (index == 0 && name.Length == searchText.Length)
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0 });
                         continue;
                     }
 
-                    if (searchCacheNames[val.Key].IndexOf(searchText, StringComparison.InvariantCultureIgnoreCase) != -1)
+                    // 1.5th prio: Starts with word
+                    if (index == 0 && name.Length > searchText.Length && name[searchText.Length] == ' ')
                     {
-                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 1 });
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.125f });
                         continue;
                     }
 
 
+                    // 2nd prio: ends with this word
+                    if (index > 0 && name[index - 1] == ' ' && index + searchText.Length == name.Length)
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.25f });
+                        continue;
+                    }
+
+                    // 3rd prio: exact mach of a word
+                    if (index > 0 && name[index-1] == ' ')
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.5f });
+                        continue;
+                    }
+
+                    // 4th prio: Starts with
+                    if (index == 0)
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.75f });
+                        continue;
+                    }
+
+
+                    // 5th prio: cotained in the word
+                    if (index > 0)
+                    {
+                        wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 1f });
+                        continue;
+                    }
+
+                    // 6th prio: Starts with in the description
                     if (cachedtext.StartsWith(searchText, StringComparison.InvariantCultureIgnoreCase))
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 2 });
                         continue;
                     }
 
+                    // 7th prio: Contained anywhere in the description
                     if (cachedtext.CaseInsensitiveContains(searchText))
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 3 });

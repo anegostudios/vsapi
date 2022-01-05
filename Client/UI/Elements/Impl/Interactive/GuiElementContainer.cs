@@ -291,7 +291,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The identifier for the list.</param>
         public static GuiComposer AddContainer(this GuiComposer composer, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementContainer(composer.Api, bounds), key);
             }

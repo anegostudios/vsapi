@@ -232,6 +232,38 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Adds given x/y/z coordinates to the vector
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public Vec3f Add(Vec3f vec)
+        {
+            this.X += vec.X;
+            this.Y += vec.Y;
+            this.Z += vec.Z;
+            return this;
+        }
+
+
+        /// <summary>
+        /// Substracts given x/y/z coordinates to the vector
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public Vec3f Sub(Vec3f vec)
+        {
+            this.X -= vec.X;
+            this.Y -= vec.Y;
+            this.Z -= vec.Z;
+            return this;
+        }
+
+
+        /// <summary>
         /// Multiplies each coordinate with given multiplier
         /// </summary>
         /// <param name="multiplier"></param>

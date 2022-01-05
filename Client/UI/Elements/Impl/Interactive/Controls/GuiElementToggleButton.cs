@@ -278,7 +278,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the button for easy access.</param>
         public static GuiComposer AddToggleButton(this GuiComposer composer, string text, CairoFont font, Action<bool> onToggle, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementToggleButton(composer.Api, "", text, font, onToggle, bounds, true), key);
             }
@@ -294,7 +294,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the button for easy access.</param>
         public static GuiComposer AddIconButton(this GuiComposer composer, string icon, Action<bool> onToggle, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementToggleButton(composer.Api, icon, "", CairoFont.WhiteDetailText(), onToggle, bounds, false), key);
             }
@@ -327,7 +327,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The key given to the bundle of buttons.</param>
         public static GuiComposer AddIconToggleButtons(this GuiComposer composer, string[] icons, CairoFont font, Action<int> onToggle, ElementBounds[] bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 int quantityButtons = icons.Length;
 
@@ -368,7 +368,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The key given to the bundle of buttons.</param>
         public static GuiComposer AddTextToggleButtons(this GuiComposer composer, string[] texts, CairoFont font, Action<int> onToggle, ElementBounds[] bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 int quantityButtons = texts.Length;
 

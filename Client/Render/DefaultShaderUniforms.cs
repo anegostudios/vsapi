@@ -44,6 +44,10 @@ namespace Vintagestory.API.Client
 
         public Vec3f PlayerViewVector;
         public float DamageVignetting;
+        /// <summary>
+        /// 0..1 (0 for left, 0.5 for left&right, 1 for right)
+        /// </summary>
+        public float DamageVignettingSide;
         public float FrostVignetting;
         public float ExtraSepia;
         public float ExtraBloom;

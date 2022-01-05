@@ -48,7 +48,7 @@ namespace Vintagestory.API.Client
         /// <param name="brightness">The brightness of the inset.</param>
         public static GuiComposer AddInset(this GuiComposer composer, ElementBounds bounds, int depth = 4, float brightness = 0.85f)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddStaticElement(new GuiElementInset(composer.Api, bounds, depth, brightness));
             }

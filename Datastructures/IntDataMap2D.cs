@@ -78,6 +78,16 @@ namespace Vintagestory.API.Datastructures
             );
         }
 
+        public float GetUnpaddedIntLerpedForBlockPos(int x, int z, int regionSize)
+        {
+            int noiseSize = InnerSize;
+
+            // Weird type casting is required to not loose precision on very large coordinates
+            float posXInRegionMap = (float)(((double)x / regionSize - x / regionSize) * noiseSize);
+            float posZInRegionMap= (float)(((double)z / regionSize - z / regionSize) * noiseSize);
+
+            return GetUnpaddedColorLerped(posXInRegionMap, posZInRegionMap);
+        }
 
         public float GetUnpaddedIntLerped(float x, float z)
         {

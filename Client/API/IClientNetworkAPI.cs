@@ -1,5 +1,6 @@
 ﻿using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -84,6 +85,14 @@ namespace Vintagestory.API.Client
         void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null);
 
         /// <summary>
+        /// Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="packetId"></param>
+        /// <param name="data"></param>
+        void SendBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null);
+
+        /// <summary>
         /// Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
         /// </summary>
         /// <param name="x"></param>
@@ -143,5 +152,17 @@ namespace Vintagestory.API.Client
         /// If any mod denies the client event IsPlayerReady, then it has to call this method once to indicate that the player is now ready to play (which switches the server side client state from Connected to Playing)
         /// </summary>
         void SendPlayerNowReady();
+
+
+
+        /// <summary>
+        /// Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first. Uses Protobuf.net to serialize your data
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pos"></param>
+        /// <param name="packetId"></param>
+        /// <param name="data"></param>
+        void SendBlockEntityPacket<T>(BlockPos pos, int packetId, T data = default(T));
+
     }
 }

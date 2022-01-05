@@ -65,7 +65,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="damageSource">The source of the damage</param>
         /// <param name="damage">The amount of the damage.</param>
-        public virtual void OnEntityReceiveDamage(DamageSource damageSource, float damage)
+        public virtual void OnEntityReceiveDamage(DamageSource damageSource, ref float damage)
         {
             
         }

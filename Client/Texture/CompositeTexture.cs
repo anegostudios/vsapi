@@ -177,7 +177,7 @@ namespace Vintagestory.API.Client
 
             bct.BakedName = ct.Base.Clone();
              
-            if (ct.Base.HasAlternates)
+            if (ct.Base.EndsWithWildCard)
             {
                 List<IAsset> assets = assetManager.GetMany("textures/" + bct.BakedName.Path.Substring(0, bct.BakedName.Path.Length - 1), bct.BakedName.Domain);
                 if (assets.Count == 0)
@@ -200,9 +200,9 @@ namespace Vintagestory.API.Client
                         Array.Copy(ct.Alternates, alternates, ct.Alternates.Length);
                     }
 
-                    int i = 0;
-                    foreach (IAsset asset in assets)
+                    for (int i = 0; i < assets.Count; i++)
                     {
+                        IAsset asset = assets[i];
                         AssetLocation newLocation = asset.Location.CloneWithoutPrefixAndEnding("textures/".Length);
 
                         if (i == 0)
@@ -212,10 +212,10 @@ namespace Vintagestory.API.Client
                         }
                         else
                         {
-                            alternates[origLength + i - 1] = new CompositeTexture(newLocation);
+                            var act = alternates[origLength + i - 1] = new CompositeTexture(newLocation);
+                            act.Rotation = ct.Rotation;
+                            act.Alpha = ct.Alpha;
                         }
-
-                        i++;
                     }
                     
                     ct.Alternates = alternates;

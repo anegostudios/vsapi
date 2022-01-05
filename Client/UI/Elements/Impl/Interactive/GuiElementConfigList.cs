@@ -271,7 +271,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the config list.</param>
         public static GuiComposer AddConfigList(this GuiComposer composer, List<ConfigItem> items, ConfigItemClickDelegate OnItemClick, CairoFont font, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementConfigList element = new GuiElementConfigList(composer.Api, items, OnItemClick, font, bounds);
 

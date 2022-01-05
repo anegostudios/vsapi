@@ -94,7 +94,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">the internal name of the scrollbar.</param>
         public static GuiComposer AddCompactVerticalScrollbar(this GuiComposer composer, Action<float> onNewScrollbarValue, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementCompactScrollbar(composer.Api, onNewScrollbarValue, bounds), key);
             }

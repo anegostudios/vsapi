@@ -65,7 +65,7 @@ namespace Vintagestory.API.Client
 
         public CachedCuboidList CollisionBoxList = new CachedCuboidList();
 
-        public void HandleBoyancy(Vec3d pos, Vec3d velocity, bool boyant, float gravityStrength, float deltatime, float height)
+        public void HandleBoyancy(Vec3d pos, Vec3f velocity, bool boyant, float gravityStrength, float deltatime, float height)
         {
             int xPrev = (int)pos.X;
             int yPrev = (int)pos.Y;
@@ -142,7 +142,7 @@ namespace Vintagestory.API.Client
         /// <param name="motion"></param>
         /// <param name="size"></param>
         /// <returns></returns>
-        public EnumCollideFlags UpdateMotion(Vec3d pos, Vec3d motion, float size)
+        public EnumCollideFlags UpdateMotion(Vec3d pos, Vec3f motion, float size)
         {
             particleCollBox.Set(
                 pos.X - size / 2, pos.Y - 0/2, pos.Z - size / 2, 
@@ -188,7 +188,7 @@ namespace Vintagestory.API.Client
             {
                 blockCollBox = CollisionBoxList.cuboids[i];
 
-                motion.Y = blockCollBox.pushOutY(particleCollBox, motion.Y, ref pushDirection);
+                motion.Y = (float)blockCollBox.pushOutY(particleCollBox, motion.Y, ref pushDirection);
 
                 if (pushDirection != EnumPushDirection.None)
                 {

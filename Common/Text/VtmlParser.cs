@@ -23,6 +23,14 @@ namespace Vintagestory.API.Common
     /// <returns></returns>
     public delegate RichTextComponentBase Tag2RichTextDelegate(ICoreClientAPI capi, VtmlTagToken token, Stack<CairoFont> fontStack, Action<LinkTextComponent> didClickLink);
 
+    public static class VtmlUtilApiAdditions
+    {
+        public static void RegisterVtmlTagConverter(this ICoreAPI api, string tagName, Tag2RichTextDelegate converterHandler)
+        {
+            VtmlUtil.TagConverters[tagName] = converterHandler;
+        }
+    }
+
     public class VtmlUtil {
 
         /// <summary>

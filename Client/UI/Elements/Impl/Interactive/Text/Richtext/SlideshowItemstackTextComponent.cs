@@ -113,7 +113,6 @@ namespace Vintagestory.API.Client
             this.Itemstacks = stacks.ToArray();
             this.Float = floatType;
             this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, GuiElement.scaled(unscaleSize), GuiElement.scaled(unscaleSize)) };
-            //PaddingRight = 0;
         }
 
 

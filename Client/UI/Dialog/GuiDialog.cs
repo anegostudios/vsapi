@@ -6,7 +6,7 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {
-    public abstract class GuiDialog
+    public abstract class GuiDialog : IDisposable
     {
         /// <summary>
         /// Dialogue Composer for the GUIDialogue.
@@ -215,7 +215,18 @@ namespace Vintagestory.API.Client
         public virtual void OnOwnPlayerDataReceived() { }
 
         /// <summary>
-        /// 0 = draw first, 1 = draw last. Used to enforce tooltips and held itemstack always drawn last to be visible.
+        /// 0 = draw first, 1 = draw last. Used to enforce tooltips and held itemstack always drawn last to be visible.<br>
+        /// Vanilla dialogs draw order:
+        /// Name tags: -0.1
+        /// Chat dialog: 0
+        /// Block Interaction help: 0.05
+        /// Worldmap HUD: 0.07
+        /// Default value for most other dialogs: 0.1
+        /// Worldmap Dialog: 0.11
+        /// Player and Chest inventories: 0.2
+        /// Various config/edit dialogs: 0.2
+        /// Handbook: 0.2
+        /// Escape menu: 0.89
         /// </summary>
         public virtual double DrawOrder { get { return 0.1; } }
 

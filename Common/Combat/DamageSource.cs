@@ -16,7 +16,7 @@ namespace Vintagestory.API.Common
         public EnumDamageType Type;
 
         /// <summary>
-        /// The hit position of where the damage occured.
+        /// The relative hit position of where the damage occured.
         /// </summary>
         public Vec3d HitPosition;
 

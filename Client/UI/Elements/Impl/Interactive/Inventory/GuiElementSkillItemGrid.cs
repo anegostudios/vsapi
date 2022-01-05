@@ -190,7 +190,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of the item grid to add.</param>
         public static GuiComposer AddSkillItemGrid(this GuiComposer composer, List<SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementSkillItemGrid(composer.Api, skillItems, columns, rows, OnSlotClick, bounds), key);
             }

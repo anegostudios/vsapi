@@ -89,14 +89,22 @@ namespace Vintagestory.API.Common
             if (Type == EnumItemClass.Block)
             {
                 Block block = resolver.GetBlock(Code);
-                if (block == null || block.IsMissing) return false;
+                if (block == null || block.IsMissing)
+                {
+                    resolver.Logger.Warning("Failed resolving crafting recipe ingredient with code {0} in {1}", Code, sourceForErrorLogging);
+                    return false;
+                }
 
                 ResolvedItemstack = new ItemStack(block, Quantity);
             }
             else
             {
                 Item item = resolver.GetItem(Code);
-                if (item == null || item.IsMissing) return false;
+                if (item == null || item.IsMissing)
+                {
+                    resolver.Logger.Warning("Failed resolving crafting recipe ingredient with code {0} in {1}", Code, sourceForErrorLogging);
+                    return false;
+                }
                 ResolvedItemstack = new ItemStack(item, Quantity);
             }
 

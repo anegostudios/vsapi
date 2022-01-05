@@ -214,7 +214,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public override double LadderFixDelta { get { return Properties.SpawnCollisionBox.Y2 - CollisionBox.YSize; } }
+        public override double LadderFixDelta { get { return Properties.SpawnCollisionBox.Y2 - SelectionBox.YSize; } }
 
         /// <summary>
         /// The base player attached to this EntityPlayer.
@@ -348,7 +348,6 @@ namespace Vintagestory.API.Common
                 }
                 else
                 {
-
                     double newModelHeight = Properties.CollisionBoxSize.Y;
 
                     if (servercontrols.FloorSitting)
@@ -370,6 +369,9 @@ namespace Vintagestory.API.Common
 
                     double diff = (newEyeheight - LocalEyePos.Y) * 5 * dt;
                     LocalEyePos.Y = diff > 0 ? Math.Min(LocalEyePos.Y + diff, newEyeheight) : Math.Max(LocalEyePos.Y + diff, newEyeheight);
+
+                    diff = (newModelHeight - OriginSelectionBox.Y2) * 5 * dt;
+                    OriginSelectionBox.Y2 = SelectionBox.Y2 = (float)(diff > 0 ? Math.Min(SelectionBox.Y2 + diff, newModelHeight) : Math.Max(SelectionBox.Y2 + diff, newModelHeight));
 
                     diff = (newModelHeight - OriginCollisionBox.Y2) * 5 * dt;
                     OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
@@ -543,7 +545,7 @@ namespace Vintagestory.API.Common
 
         private bool canStandUp()
         {
-            tmpCollBox.Set(CollisionBox);
+            tmpCollBox.Set(SelectionBox);
             tmpCollBox.Y2 = Properties.CollisionBoxSize.Y;
             tmpCollBox.Y1 += 1f; // Don't care about the bottom block
             bool collide = World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false); ;
@@ -618,7 +620,8 @@ namespace Vintagestory.API.Common
             DeadNotify = true;
             TryStopHandAction(true, EnumItemUseCancelReason.Death);
             TryUnmount();
-            
+            WatchedAttributes.SetFloat("intoxication", 0);
+
             // Execute this one frame later so that in case right after this method some other code still returns an item (e.g. BlockMeal), it is also ditched
             Api.Event.EnqueueMainThreadTask(() =>
             {
@@ -804,7 +807,7 @@ namespace Vintagestory.API.Common
                 if (damageSource.Source == EnumDamageSource.Entity)
                 {
                     string creatureName = Lang.Get("prefixandcreature-" + damageSource.SourceEntity.Code.Path.Replace("-", ""));
-                    msg = Lang.Get(heal ? "Gained {0:0.##} hp by {1}" : "Lost {0:0.##} hp by {1} (source: {2})", damage, creatureName, damageSource.Source);
+                    msg = Lang.Get(heal ? "Gained {0:0.##} hp by {1}" : "Lost {0:0.##} hp by {1} (Creature)", damage, creatureName);
                 }
 
                 (World.PlayerByUid(PlayerUID) as IServerPlayer).SendMessage(GlobalConstants.DamageLogChatGroup, msg, EnumChatType.Notification);
@@ -845,6 +848,7 @@ namespace Vintagestory.API.Common
 
             foreach (InventoryBase inv in player.InventoryManager.Inventories.Values)
             {
+                if (inv.ClassName == "creative") continue;
                 if (!inv.HasOpened(player)) continue;
 
                 int q = inv.Count;

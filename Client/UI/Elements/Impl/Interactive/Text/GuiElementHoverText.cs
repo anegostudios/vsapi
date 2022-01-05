@@ -297,7 +297,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this hover text component.</param>
         public static GuiComposer AddHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, null);
 
@@ -308,7 +308,7 @@ namespace Vintagestory.API.Client
 
         public static GuiComposer AddAutoSizeHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, null);
                 elem.SetAutoWidth(true);
@@ -328,7 +328,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this hover text component.</param>
         public static GuiComposer AddTranspHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, new TextBackground());
                 
@@ -347,7 +347,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The name of this hover text component.</param>
         public static GuiComposer AddHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, TextBackground background, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementHoverText elem = new GuiElementHoverText(composer.Api, text, font, width, bounds, background);
                 composer.AddInteractiveElement(elem, key);

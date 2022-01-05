@@ -333,7 +333,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The internal name of the button.</param>
         public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, CairoFont buttonFont, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 CairoFont hoverFont = buttonFont.Clone().WithColor(GuiStyle.ActiveButtonTextColor);
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, buttonFont, hoverFont, onClick, bounds, style);
@@ -355,7 +355,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The internal name of the button.</param>
         public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, CairoFont.ButtonText(), CairoFont.ButtonPressedText(), onClick, bounds, style);
                 elem.SetOrientation(orientation);
@@ -376,7 +376,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The internal name of the button.</param>
         public static GuiComposer AddSmallButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 CairoFont font1 = CairoFont.ButtonText();
                 CairoFont font2 = CairoFont.ButtonPressedText();

@@ -11,7 +11,7 @@ using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Common
 {
-    public class SQLiteDBConnection
+    public class SQLiteDBConnection : IDisposable
     {
         protected SQLiteConnection sqliteConn;
         protected string databaseFileName;

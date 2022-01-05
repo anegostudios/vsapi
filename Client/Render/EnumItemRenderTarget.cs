@@ -24,6 +24,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         HandTp,
         /// <summary>
+        /// Rendered in the players off hand, third person mode
+        /// </summary>
+        HandTpOff,
+        /// <summary>
         /// Rendered when dropped on the ground
         /// </summary>
         Ground

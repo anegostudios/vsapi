@@ -98,6 +98,17 @@ namespace Vintagestory.API.Common
         bool Dusk { get; }
     }
 
+    public struct SolarSphericalCoords
+    {
+        public float ZenithAngle;
+        public float AzimuthAngle;
+
+        public SolarSphericalCoords(float zenithAngle, float azimuthAngle)
+        {
+            ZenithAngle = zenithAngle;
+            AzimuthAngle = azimuthAngle;
+        }
+    }
 
     /// <summary>
     /// Should return sin(solar altitude angle). i.e. -1 for 90 degrees far below horizon, 0 for horizon and 1 for vertical
@@ -107,7 +118,7 @@ namespace Vintagestory.API.Common
     /// <param name="yearRel">Current year progress, from 0..1</param>
     /// <param name="dayRel">Current day progress, from 0..1</param>
     /// <returns></returns>
-    public delegate float SolarAltitudeDelegate(double posX, double posZ, float yearRel, float dayRel);
+    public delegate SolarSphericalCoords SolarSphericalCoordsDelegate(double posX, double posZ, float yearRel, float dayRel);
 
     public delegate EnumHemisphere HemisphereDelegate(double posX, double posZ);
 
@@ -124,7 +135,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Assigned by the survival mod. The calendar uses this method to determine the solar altitude at given location and time. If not set, the calendar uses a default value of about 0.75
         /// </summary>
-        SolarAltitudeDelegate OnGetSolarAltitude { get; set; }
+        SolarSphericalCoordsDelegate OnGetSolarSphericalCoords { get; set; }
 
         /// <summary>
         /// Assigned by the survival mod. Must return the latitude for given position. If not set, the calendar uses a default value of 0.5<br/>

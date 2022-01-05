@@ -1,4 +1,5 @@
 ﻿using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Server
 {
@@ -78,5 +79,25 @@ namespace Vintagestory.API.Server
         /// <param name="data"></param>
         /// <param name="exceptPlayers"></param>
         void BroadcastArbitraryPacket(byte[] data, params IServerPlayer[] exceptPlayers);
+
+
+        /// <summary>
+        /// Sends a blockentity packet to the given player. For quick an easy network communication without setting up a channel first. Uses ProtoBuf.net to serialize the data.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="player"></param>
+        /// <param name="pos"></param>
+        /// <param name="packetId"></param>
+        /// <param name="data"></param>
+        void SendBlockEntityPacket<T>(IServerPlayer player, BlockPos pos, int packetId, T data = default(T));
+
+        /// <summary>
+        /// Broadcasts a blockentity packet to all connected players. For quick an easy network communication without setting up a channel first. Uses ProtoBuf.net to serialize the data.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pos"></param>
+        /// <param name="packetId"></param>
+        /// <param name="data"></param>
+        void BroadcastBlockEntityPacket<T>(BlockPos pos, int packetId, T data = default(T));
     }
 }

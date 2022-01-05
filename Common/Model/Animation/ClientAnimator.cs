@@ -197,6 +197,12 @@ namespace Vintagestory.API.Common
         protected override void AnimNowActive(RunningAnimation anim, AnimationMetaData animData)
         {
             base.AnimNowActive(anim, animData);
+
+            if (anim.Animation.PrevNextKeyFrameByFrame == null)
+            {
+                anim.Animation.GenerateAllFrames(rootElements, jointsById);
+            }
+
             anim.LoadWeights(rootElements);
         }
 
@@ -315,7 +321,7 @@ namespace Vintagestory.API.Common
                 {
                     RunningAnimation anim = CurAnims[j];
                     ShapeElementWeights sew = weightsByAnimationAndElement[j][i];
-                    //anim.CalcBlendedWeight(sew.Weight weightSum, sew.BlendMode); - that makes no sense efor element weights != 1
+                    //anim.CalcBlendedWeight(sew.Weight weightSum, sew.BlendMode); - that makes no sense for element weights != 1
                     anim.CalcBlendedWeight(weightSum / sew.Weight, sew.BlendMode);
 
                     ElementPose prevFramePose = transformsByAnimation[j][i];

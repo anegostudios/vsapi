@@ -67,9 +67,13 @@ namespace Vintagestory.API.Client
             if (slot.Itemstack != null)
             {
                 double absSlotWidth = scaled(unscaledSlotSize);
-                double absItemstackSize = scaled(unscaledItemSize);
                 double offset = absSlotWidth / 2;
+
+                api.Render.PushScissor(Bounds, true);
+
                 api.Render.RenderItemstackToGui(slot, Bounds.renderX + offset, Bounds.renderY + offset, 450, (float)scaled(unscaledItemSize), ColorUtil.WhiteArgb);
+
+                api.Render.PopScissor();
             }
         }
     }
@@ -87,7 +91,7 @@ namespace Vintagestory.API.Client
         /// <param name="drawBackground">Do we draw the background for this slot? (Default: true)</param>
         public static GuiComposer AddPassiveItemSlot(this GuiComposer composer, ElementBounds bounds, IInventory inventory, ItemSlot slot, bool drawBackground = true)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementPassiveItemSlot(composer.Api, bounds, inventory, slot, drawBackground));
             }

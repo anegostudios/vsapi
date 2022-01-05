@@ -73,11 +73,7 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
             }
 
-            //ctx.Antialias = Antialias.Subpixel;
-
             elTeBa.textUtil.AutobreakAndDrawMultilineTextAt(ctx, font, text, background.Padding, background.Padding, width, orientation);
-
-            //int textureId = capi.Gui.LoadCairoTexture(surface, true); - WTF! What was this for?!
 
             if (demulAlpha)
             {
@@ -85,8 +81,6 @@ namespace Vintagestory.API.Client
             }
 
             capi.Gui.LoadOrUpdateCairoTexture(surface, true, ref loadedTexture);
-
-            //surface.WriteToPng("test.png");
 
             surface.Dispose();
             ctx.Dispose();

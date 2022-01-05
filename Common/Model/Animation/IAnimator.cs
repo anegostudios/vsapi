@@ -77,7 +77,7 @@ namespace Vintagestory.API.Common
     /// Everything needed for allowing animations the <see cref="Entity"/> class holds a reference to an IAnimator. 
     /// Currently implemented by <see cref="ServerAnimator"/>
     /// </summary>
-    public interface IAnimationManager
+    public interface IAnimationManager : IDisposable
     {
         /// <summary>
         /// The animator for this animation manager

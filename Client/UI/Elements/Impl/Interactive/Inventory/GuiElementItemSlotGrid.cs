@@ -62,7 +62,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The key for this particular slot grid.</param>
         public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, ElementBounds bounds, string key=null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementItemSlotGrid(composer.Api, inventory, SendPacket, columns, null, bounds), key);
                 GuiElementItemSlotGridBase.UpdateLastSlotGridFlag(composer);
@@ -81,7 +81,7 @@ namespace Vintagestory.API.Client
         /// <param name="key">The key for this particular slot grid.</param>
         public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, int[] selectiveSlots, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementItemSlotGrid(composer.Api, inventory, SendPacket, columns, selectiveSlots, bounds), key);
                 GuiElementItemSlotGridBase.UpdateLastSlotGridFlag(composer);

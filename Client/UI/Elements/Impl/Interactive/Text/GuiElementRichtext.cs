@@ -404,6 +404,26 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Recomposes the element for lines.
+        /// </summary>
+        public void RecomposeText()
+        {
+            CalcHeightAndPositions();
+            Bounds.CalcWorldBounds();
+
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+            Context ctx = genContext(surface);
+            ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
+
+            generateTexture(surface, ref richtTextTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
+        }
+
+
+
         public override void RenderInteractiveElements(float deltaTime)
         {
             Render2DTexture(
@@ -483,23 +503,6 @@ namespace Vintagestory.API.Client
         }
 
 
-        /// <summary>
-        /// Recomposes the element for lines.
-        /// </summary>
-        public void RecomposeText()
-        {
-            CalcHeightAndPositions();
-            Bounds.CalcWorldBounds();
-
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
-            Context ctx = genContext(surface);
-            ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
-            
-            generateTexture(surface, ref richtTextTexture);
-
-            ctx.Dispose();
-            surface.Dispose();
-        }
 
         public void SetNewText(string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
         {
@@ -513,7 +516,7 @@ namespace Vintagestory.API.Client
             RecomposeText();
         }
 
-        public void SetNewTextWithoutRecompose(string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
+        public void SetNewTextWithoutRecompose(string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null, bool recalcBounds = false)
         {
             if (this.Components != null)
             {
@@ -524,6 +527,12 @@ namespace Vintagestory.API.Client
             }
 
             this.Components = VtmlUtil.Richtextify(api, vtmlCode, baseFont, didClickLink);
+
+            if (recalcBounds)
+            {
+                CalcHeightAndPositions();
+                Bounds.CalcWorldBounds();
+            }
         }
 
         public void RecomposeInto(ImageSurface surface, Context ctx)
@@ -562,7 +571,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static GuiComposer AddRichtext(this GuiComposer composer, string vtmlCode, CairoFont baseFont, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementRichtext(composer.Api, VtmlUtil.Richtextify(composer.Api, vtmlCode, baseFont), bounds), key);
             }
@@ -583,7 +592,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static GuiComposer AddRichtext(this GuiComposer composer, string vtmlCode, CairoFont baseFont, ElementBounds bounds, Action<LinkTextComponent> didClickLink, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementRichtext(composer.Api, VtmlUtil.Richtextify(composer.Api, vtmlCode, baseFont, didClickLink), bounds), key);
             }
@@ -601,7 +610,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static GuiComposer AddRichtext(this GuiComposer composer, RichTextComponentBase[] components, ElementBounds bounds, string key = null)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementRichtext(composer.Api, components, bounds), key);
             }

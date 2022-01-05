@@ -170,7 +170,7 @@ namespace Vintagestory.API.Common
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
         /// <returns></returns>
-        T GetModdata<T>(string key);
+        T GetModdata<T>(string key, T defaultValue = default(T));
 
 
         /// <summary>

@@ -133,7 +133,7 @@ namespace Vintagestory.API.Client
         /// <param name="padding">The padding around the switch (Default: 5)</param>
         public static GuiComposer AddSwitch(this GuiComposer composer, Action<bool> onToggle, ElementBounds bounds, string key = null, double size = 30, double padding = 4)
         {
-            if (!composer.composed)
+            if (!composer.Composed)
             {
                 composer.AddInteractiveElement(new GuiElementSwitch(composer.Api, onToggle, bounds, size, padding), key);
             }

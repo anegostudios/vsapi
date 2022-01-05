@@ -13,7 +13,11 @@ namespace Vintagestory.API.Client
 
     public class GuiElementItemstackInfo : GuiElementTextBase
     {
-        class BufferedElements { public GuiElementRichtext titleElement; public GuiElementRichtext descriptionElement; public LoadedTexture texture; }
+        public bool Dirty;
+        public bool Render = true;
+        public GuiElementRichtext titleElement; 
+        public GuiElementRichtext descriptionElement; 
+        public LoadedTexture texture;
 
         public static double ItemStackSize = GuiElementPassiveItemSlot.unscaledItemSize * 2.5;
         public static int MarginTop = 24;
@@ -21,17 +25,10 @@ namespace Vintagestory.API.Client
         public static int MinBoxHeight = 80;
 
         static double[] backTint = GuiStyle.DialogStrongBgColor;
-        static double[] textTint = GuiStyle.DialogDefaultTextColor;
 
         ItemSlot curSlot;
         ItemStack curStack;
         CairoFont titleFont;
-
-        // Recomposing often is expensive, so we do it in a seperate thread. Then however we need double buffering to not flicker during recompose
-        BufferedElements[] eles = new BufferedElements[] { new BufferedElements(), new BufferedElements() };
-        int readyBufferIndex = 0;
-
-        int compBufIndex => 1 - readyBufferIndex;
 
         double maxWidth;
 
@@ -51,29 +48,21 @@ namespace Vintagestory.API.Client
         {
             this.OnRequireInfoText = OnRequireInfoText;
 
-            eles[0].texture = new LoadedTexture(capi);
-            eles[1].texture = new LoadedTexture(capi);
+            texture = new LoadedTexture(capi);
 
             ElementBounds textBounds = bounds.CopyOnlySize();
             ElementBounds descBounds = textBounds.CopyOffsetedSibling(ItemStackSize + 50, MarginTop, -ItemStackSize - 50, 0);
             descBounds.WithParent(bounds);
             textBounds.WithParent(bounds);
 
-            eles[0].descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
-            eles[0].descriptionElement.zPos = 1001;
-
-            eles[1].descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
-            eles[1].descriptionElement.zPos = 1001;
-
+            descriptionElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], descBounds);
+            descriptionElement.zPos = 1001;
 
             titleFont = Font.Clone();
             titleFont.FontWeight = FontWeight.Bold;
 
-            eles[0].titleElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
-            eles[0].titleElement.zPos = 1001;
-
-            eles[1].titleElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
-            eles[1].titleElement.zPos = 1001;
+            titleElement = new GuiElementRichtext(capi, new RichTextComponentBase[0], textBounds);
+            titleElement.zPos = 1001;
 
             maxWidth = bounds.fixedWidth;
         }
@@ -81,57 +70,52 @@ namespace Vintagestory.API.Client
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            Recompose();
+            //Recompose();
         }
 
-        void RecalcBounds(string title, string desc)
+        void RecalcBounds()
         {
-            var buf = eles[compBufIndex];
+            descriptionElement.BeforeCalcBounds();
+            titleElement.BeforeCalcBounds();
 
-            buf.descriptionElement.BeforeCalcBounds();
-            buf.titleElement.BeforeCalcBounds();
-
-            double currentWidth = Math.Max(buf.descriptionElement.MaxLineWidth, buf.descriptionElement.Bounds.InnerWidth) / RuntimeEnv.GUIScale + 10;
+            double currentWidth = Math.Max(descriptionElement.MaxLineWidth, descriptionElement.Bounds.InnerWidth) / RuntimeEnv.GUIScale + 10;
             double unscaledTotalHeight;
 
             currentWidth += 40 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3;
-            currentWidth = Math.Max(currentWidth, buf.descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10);
+            currentWidth = Math.Max(currentWidth, descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10);
             currentWidth = Math.Min(currentWidth, maxWidth);
 
             double descWidth = currentWidth - ItemStackSize - 50;
 
             Bounds.fixedWidth = currentWidth;
-            buf.descriptionElement.Bounds.fixedWidth = descWidth;
-            buf.titleElement.Bounds.fixedWidth = currentWidth;
-            buf.descriptionElement.Bounds.CalcWorldBounds();
+            descriptionElement.Bounds.fixedWidth = descWidth;
+            titleElement.Bounds.fixedWidth = currentWidth;
+            descriptionElement.Bounds.CalcWorldBounds();
 
             // Height depends on the width
-            double unscaledDescTextHeight = buf.descriptionElement.Bounds.fixedHeight;
+            double unscaledDescTextHeight = descriptionElement.Bounds.fixedHeight;
             unscaledTotalHeight = Math.Max(unscaledDescTextHeight, 25 + GuiElementPassiveItemSlot.unscaledItemSize * 3);
-            buf.titleElement.Bounds.fixedHeight = unscaledTotalHeight;
-            buf.descriptionElement.Bounds.fixedHeight = unscaledTotalHeight;
+            titleElement.Bounds.fixedHeight = unscaledTotalHeight;
+            descriptionElement.Bounds.fixedHeight = unscaledTotalHeight;
             Bounds.fixedHeight = 25 + unscaledTotalHeight;
         }
 
         
 
-        public void Recompose()
+        public void AsyncRecompose()
         {
             if (curSlot?.Itemstack == null) return;
 
-            var buf = eles[compBufIndex];
+            Dirty = true;
 
             string title = curSlot.GetStackName();
             string desc = OnRequireInfoText(curSlot);
             desc.TrimEnd();
 
+            titleElement.SetNewTextWithoutRecompose(title, titleFont, null, true);
+            descriptionElement.SetNewTextWithoutRecompose(desc, Font, null, true);
 
-            buf.titleElement.SetNewText(title, titleFont);
-            buf.descriptionElement.SetNewText(desc, Font);
-
-            RecalcBounds(title, desc);
-
-
+            RecalcBounds();
             Bounds.CalcWorldBounds();
 
             ElementBounds textBounds = Bounds.CopyOnlySize();
@@ -184,13 +168,12 @@ namespace Vintagestory.API.Client
                 shCtx.Dispose();
                 shSurface.Dispose();
 
-
                 api.Event.EnqueueMainThreadTask(() =>
                 {
-                    buf.titleElement.Compose(false);
-                    buf.descriptionElement.Compose(false);
+                    titleElement.Compose(false);
+                    descriptionElement.Compose(false);
 
-                    generateTexture(surface, ref buf.texture);
+                    generateTexture(surface, ref texture);
 
                     ctx.Dispose();
                     surface.Dispose();
@@ -199,30 +182,24 @@ namespace Vintagestory.API.Client
                     scissorBounds = ElementBounds.Fixed(4 + offset - ItemStackSize, 2 + offset + MarginTop - ItemStackSize, ItemStackSize + 38, ItemStackSize + 38).WithParent(Bounds);
                     scissorBounds.CalcWorldBounds();
 
-                    SwapBuffers();
+                    Dirty = false;
 
                 }, "genstackinfotexture");
             });
         }
 
-        private void SwapBuffers()
-        {
-            readyBufferIndex = 1 - readyBufferIndex;
-        }
 
         public override void RenderInteractiveElements(float deltaTime)
         {
-            if (curSlot?.Itemstack == null)
+            if (curSlot?.Itemstack == null || Dirty || !Render)
             {
                 return;
             }
 
-            var buf = eles[readyBufferIndex];
+            api.Render.Render2DTexturePremultipliedAlpha(texture.TextureId, Bounds, 1000);
 
-            api.Render.Render2DTexturePremultipliedAlpha(buf.texture.TextureId, Bounds, 1000);
-
-            buf.titleElement.RenderInteractiveElements(deltaTime);
-            buf.descriptionElement.RenderInteractiveElements(deltaTime);
+            titleElement.RenderInteractiveElements(deltaTime);
+            descriptionElement.RenderInteractiveElements(deltaTime);
 
             double offset = (int)scaled(30 + ItemStackSize/2);
 
@@ -261,7 +238,7 @@ namespace Vintagestory.API.Client
         /// Sets the source slot for stacks.
         /// </summary>
         /// <param name="nowSlot"></param>
-        public void SetSourceSlot(ItemSlot nowSlot)
+        public bool SetSourceSlot(ItemSlot nowSlot)
         {
             bool recompose =
                 ((this.curStack == null) != (nowSlot?.Itemstack == null))
@@ -283,21 +260,19 @@ namespace Vintagestory.API.Client
                     Bounds.fixedHeight = 0;
                 }
                 
-                Recompose();
+                AsyncRecompose();
             }
+
+            return recompose;
         }
 
 
         public override void Dispose()
         {
             base.Dispose();
-
-            eles[0].texture.Dispose();
-            eles[1].texture.Dispose();
-            eles[0].descriptionElement?.Dispose();
-            eles[1].descriptionElement?.Dispose();
-            eles[0].titleElement?.Dispose();
-            eles[1].titleElement?.Dispose();
+            texture.Dispose();
+            descriptionElement?.Dispose();
+            titleElement?.Dispose();
         }
     }
 }

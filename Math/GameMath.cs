@@ -27,8 +27,17 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     public class GameMath
     {
+        /// <summary>
+        /// 360°
+        /// </summary>
         public const float TWOPI = (float)Math.PI * 2;
+        /// <summary>
+        /// 180°
+        /// </summary>
         public const float PI = (float)Math.PI;
+        /// <summary>
+        /// 90°
+        /// </summary>
         public const float PIHALF = (float)Math.PI / 2;
 
         public const float DEG2RAD = (float)Math.PI / 180.0f;

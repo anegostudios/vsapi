@@ -354,11 +354,6 @@ namespace Vintagestory.API.Common
         {
             if (!Alive) return false;
 
-            if (damageSource.Type != EnumDamageType.Heal)
-            {
-                PlayEntitySound("hurt", (damageSource.SourceEntity as EntityPlayer)?.Player);
-            }
-
             return true;
         }
 
@@ -491,7 +486,7 @@ namespace Vintagestory.API.Common
                     {
                         var rand = capi.World.Rand;
                         Vec3f velo = new Vec3f(1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.X * 15, -5, 5), 0.5f + 3.5f * (float)rand.NextDouble(), 1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.Z * 15, -5, 5));
-                        float radius = Math.Min(CollisionBox.XSize, CollisionBox.ZSize) * 0.9f;
+                        float radius = Math.Min(SelectionBox.XSize, SelectionBox.ZSize) * 0.9f;
 
                         World.SpawnCubeParticles(herepos.AsBlockPos, herepos.XYZ.Add(0, 0, 0), radius, 2 + (int)(rand.NextDouble() * val * 5), 0.5f + (float)rand.NextDouble() * 0.5f, null, velo);
                     }
@@ -499,14 +494,15 @@ namespace Vintagestory.API.Common
 
                 if ((FeetInLiquid || Swimming) && moving)
                 {
-                    double width = CollisionBox.XSize * 0.75f;
+                    double width = SelectionBox.XSize * 0.75f;
 
                     SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
                     SplashParticleProps.AddPos.Set(width, 0.5, width);
 
                     float mot = (float)herepos.Motion.Length();
                     SplashParticleProps.AddVelocity.Set((float)herepos.Motion.X * 20f, 0, (float)herepos.Motion.Z * 20f);
-                    SplashParticleProps.QuantityMul = 0.15f * mot * 5;
+                    float f = Properties.Attributes?["extraSplashParticlesMul"].AsFloat(1) ?? 1;
+                    SplashParticleProps.QuantityMul = 0.15f * mot * 5 * 2 * f;
                     
                     World.SpawnParticles(SplashParticleProps);
 
@@ -649,8 +645,12 @@ namespace Vintagestory.API.Common
             insideBlock = World.BlockAccessor.GetBlock(insidePos);
 
             double multiplier = (servercontrols.Sneak ? GlobalConstants.SneakSpeedMultiplier : 1.0) * (servercontrols.Sprint ? GlobalConstants.SprintSpeedMultiplier : 1.0);
+
+            if (FeetInLiquid)
+            {
+                multiplier /= 2.5;
+            }
             
-            if (FeetInLiquid) multiplier /= 2.5;
 
             IPlayer player = (this as EntityPlayer)?.Player;
             if (player == null || player.WorldData.CurrentGameMode != EnumGameMode.Creative)
