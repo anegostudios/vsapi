@@ -32,6 +32,8 @@ namespace Vintagestory.API.Client
 
         public Vec3f renderOffset = new Vec3f();
 
+        public float renderSize = 0.58f;
+
         /// <summary>
         /// Flips through given array of item stacks every second
         /// </summary>
@@ -170,10 +172,12 @@ namespace Vintagestory.API.Client
             scibounds.CalcWorldBounds();
             scibounds.absFixedX = renderX + bounds.X + renderOffset.X;
             scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y;
+            scibounds.absInnerWidth *= renderSize / 0.58f;
+            scibounds.absInnerHeight *= renderSize / 0.58f;
 
             api.Render.PushScissor(scibounds, true);
 
-            api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X, renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y, 100 + renderOffset.Z, (float)bounds.Width * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStackSize);
+            api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X + offX, renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY, 100 + renderOffset.Z, (float)bounds.Width * renderSize, ColorUtil.WhiteArgb, true, false, ShowStackSize);
 
             api.Render.PopScissor();
 

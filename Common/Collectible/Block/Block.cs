@@ -2200,16 +2200,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="capi"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
         public virtual Vec4f GetSelectionColor(ICoreClientAPI capi, BlockPos pos)
         {
-            if (DrawType != EnumDrawType.Cube) return new Vec4f(0, 0, 0, 0.5f);
-
-            int col = GetColor(capi, pos);
-            float b = ((col & 0xff) + ((col >> 8) & 0xff) + ((col >> 16) & 0xff)) / 3f;
-            if (b < 0.2 * 255) return new Vec4f(0.8f, 0.8f, 0.8f, 0.5f);
             return new Vec4f(0, 0, 0, 0.5f);
         }
 

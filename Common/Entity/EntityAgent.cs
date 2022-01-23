@@ -124,18 +124,28 @@ namespace Vintagestory.API.Common
             if (WatchedAttributes["mountedOn"] != null)
             {
                 MountedOn = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
-                if (MountedOn != null) MountedOn.DidMount(this);
+                if (MountedOn != null)
+                {
+                    TryMount(MountedOn);
+                }
             }
 
+            bool ignoreupdates = false;
             WatchedAttributes.RegisterModifiedListener("mountedOn", () => {
+                if (ignoreupdates) return;
+                ignoreupdates = true;
                 if (WatchedAttributes.HasAttribute("mountedOn"))
                 {
-                    MountedOn = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
-                    if (MountedOn != null) MountedOn.DidMount(this);
+                    var mountable = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+                    if (mountable != null)
+                    {
+                        TryMount(mountable);
+                    }
                 } else
                 {
                     TryUnmount();
                 }
+                ignoreupdates = false;
             });
         }
 
@@ -213,7 +223,6 @@ namespace Vintagestory.API.Common
                 string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
                 AnimManager?.StopAnimation(anim);
             }
-
 
             MountedOn?.DidUnmount(this);
             this.MountedOn = null;
@@ -710,12 +719,9 @@ namespace Vintagestory.API.Common
                 throw ex;
             }
 
-            if (!WatchedAttributes.HasAttribute("mountedOn"))
+            if (!WatchedAttributes.HasAttribute("mountedOn") && MountedOn != null)
             {
                 TryUnmount();
-            } else
-            {
-
             }
         }
 

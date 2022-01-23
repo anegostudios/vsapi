@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -127,7 +128,19 @@ namespace Vintagestory.API.Common
                             stack = new ItemStack(capi.World.GetBlock(new AssetLocation(code)));
                         }
 
-                        ItemstackComponentBase stckcmp = new SlideshowItemstackTextComponent(capi, new ItemStack[] { stack }, size / RuntimeEnv.GUIScale, floatType);
+                        float sizemul = 1f;
+                        if (tagToken.Attributes.TryGetValue("rsize", out var sizemulstr))
+                        {
+                            sizemul = sizemulstr.ToFloat();
+                        }
+
+                        SlideshowItemstackTextComponent stckcmp = new SlideshowItemstackTextComponent(capi, new ItemStack[] { stack }, size / RuntimeEnv.GUIScale, floatType);
+                        stckcmp.renderSize *= sizemul;
+                        stckcmp.VerticalAlign = EnumVerticalAlign.Middle;
+
+                        if (tagToken.Attributes.TryGetValue("offx", out var offxstr)) stckcmp.offX = GuiElement.scaled(offxstr.ToFloat(0));
+                        if (tagToken.Attributes.TryGetValue("offy", out var offystr)) stckcmp.offY = GuiElement.scaled(offystr.ToFloat(0));
+
                         elems.Add(stckcmp);
                         break;
 

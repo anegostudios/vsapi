@@ -62,7 +62,7 @@ namespace Vintagestory.API.Common
         protected string instanceID;
 
         /// <summary>
-        /// The time it was last changed since the server was started.
+        /// (Not implemented!) The time it was last changed since the server was started.
         /// </summary>
         public long lastChangedSinceServerStart;
 

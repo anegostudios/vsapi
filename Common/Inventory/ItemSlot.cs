@@ -48,7 +48,7 @@ namespace Vintagestory.API.Common
         public ItemStack Itemstack
         {
             get { return itemstack; }
-            set { itemstack = (ItemStack)value; }
+            set { itemstack = value; }
         }
 
         /// <summary>

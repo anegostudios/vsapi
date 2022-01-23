@@ -76,6 +76,8 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static readonly string LibExtension;
 
+        public static string LoadedModsForCrashReporter;
+
         static RuntimeEnv()
         {
             if (System.IO.Path.DirectorySeparatorChar == '\\')

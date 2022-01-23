@@ -285,7 +285,7 @@ namespace Vintagestory.API.Client
             double curY = startY;
             double usableWidth;
             TextFlowPath currentSection;
-            int i = 0;
+            int i = startOffsetX > 0 ? 1 : 0;
 
             var linebreak = Lang.CurrentLocale == "ja" ? EnumLinebreakBehavior.AfterCharacter : EnumLinebreakBehavior.AfterWord;
 

@@ -87,7 +87,7 @@ namespace Vintagestory.API.Common
         public AssetLocation Name;
 
         /// <summary>
-        /// Optional attributes
+        /// Optional attribute data that you can attach any data to
         /// </summary>
         [JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;

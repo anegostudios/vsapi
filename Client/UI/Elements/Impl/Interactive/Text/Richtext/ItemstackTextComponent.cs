@@ -64,7 +64,7 @@ namespace Vintagestory.API.Client
 
             scibounds.CalcWorldBounds();
             scibounds.absFixedX = renderX + bounds.X;
-            scibounds.absFixedY = renderY + bounds.Y;
+            scibounds.absFixedY = renderY + bounds.Y + offY;
 
             api.Render.PushScissor(scibounds, true);
 

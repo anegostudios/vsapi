@@ -142,7 +142,6 @@ namespace Vintagestory.API.MathTools
             collided = false;
             if (horizontalBlocked)
             {
-
                 // X - Collision (Horizontal)
 
                 for (int i = 0; i < CollisionBoxList.Count; i++)

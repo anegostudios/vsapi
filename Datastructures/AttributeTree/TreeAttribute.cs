@@ -27,15 +27,15 @@ namespace Vintagestory.API.Datastructures
         public static void SetVec3i(this ITreeAttribute tree, string code, Vec3i value)
         {
             tree.SetInt(code + "X", value.X);
-            tree.GetInt(code + "Y", value.Y);
-            tree.GetInt(code + "Z", value.Z);
+            tree.SetInt(code + "Y", value.Y);
+            tree.SetInt(code + "Z", value.Z);
         }
 
         public static void SetBlockPos(this ITreeAttribute tree, string code, BlockPos value)
         {
             tree.SetInt(code + "X", value.X);
-            tree.GetInt(code + "Y", value.Y);
-            tree.GetInt(code + "Z", value.Z);
+            tree.SetInt(code + "Y", value.Y);
+            tree.SetInt(code + "Z", value.Z);
         }
 
         public static Vec3i[] GetVec3is(this ITreeAttribute tree, string code, Vec3i[] defaultValue = null)

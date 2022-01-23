@@ -308,7 +308,7 @@ namespace Vintagestory.API.MathTools
         #region Interpolation
 
         /// <summary>
-        /// Treats value as a statistical average. Example: 2.1 will turn into 2 90% of the times and into 3 10% of times.
+        /// Treats given value as a statistical average. Example: 2.1 will turn into 2 90% of the times and into 3 10% of times.
         /// </summary>
         /// <param name="rand"></param>
         /// <param name="value"></param>
@@ -332,7 +332,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns the shortest distance between 2 angles
-        /// See also https://stackoverflow.com/a/14498790/1873041
+        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041"/>https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
@@ -345,7 +345,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns the shortest distance between 2 values that are cyclical (e.g. angles, daytime hours, etc.)
-        /// See also https://stackoverflow.com/a/14498790/1873041
+        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041"/>https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
@@ -357,7 +357,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns the shortest distance between 2 values that are cyclical (e.g. angles, daytime hours, etc.)
-        /// See also https://stackoverflow.com/a/14498790/1873041
+        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041"/>https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>

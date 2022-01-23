@@ -132,6 +132,9 @@ namespace Vintagestory.API.Server
         void SendPositionToClient();
 
 
+        void SetModData<T>(string key, T data);
+        T GetModData<T>(string key, T defaultValue = default(T));
+
 
         /// <summary>
         /// Allows setting of arbitrary, permanantly stored moddata attached to this player. Not synced to client.

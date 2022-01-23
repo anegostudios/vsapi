@@ -157,6 +157,7 @@ namespace Vintagestory.API.Client
             ClimateCondition nowConds = capi.World.BlockAccessor.GetClimateAt(plrPos, EnumGetClimateMode.NowValues);
             plrPos.Y = y;
             SeasonTemperature = (DescaleTemperature(nowConds.Temperature) - DescaleTemperature(nowConds.WorldGenTemperature)) / 255f;
+            //Console.WriteLine(SeasonTemperature);
 
             // We might need to do the hemisphere thing as a single bit for every vertex
             SeasonRel = capi.World.Calendar.GetSeasonRel(plrPos);

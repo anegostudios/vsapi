@@ -347,7 +347,7 @@ namespace Vintagestory.API.Client
                     (int)Bounds.renderY + (int)Bounds.InnerHeight - (int)scrollOffY, 
                     (int)expandedBoxWidth, 
                     (int)expandedBoxHeight,
-                    110
+                    110 + 200
                 );
 
 
@@ -372,7 +372,7 @@ namespace Vintagestory.API.Client
                         (int)(Bounds.renderY + Bounds.InnerHeight + unscaledLineHeight * scaleMul * HoveredIndex - (int)scrollOffY + 1), 
                         (int)expandedBoxWidth - scaled(10), 
                         (int)unscaledLineHeight * scaleMul - 2,
-                        111
+                        111 + 200
                     );
                 }
 
@@ -389,7 +389,7 @@ namespace Vintagestory.API.Client
                     (int)visibleBounds.renderY,
                     scrollbarTexture.Width,
                     scrollbarTexture.Height,
-                    116
+                    116 + 200
                 );
 
                 api.Render.GlPushMatrix();

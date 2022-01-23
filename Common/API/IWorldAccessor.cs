@@ -201,6 +201,13 @@ namespace Vintagestory.API.Common
         Block[] SearchBlocks(AssetLocation wildcard);
 
         /// <summary>
+        /// Returns all item types matching given wildcard
+        /// </summary>
+        /// <param name="wildcard"></param>
+        /// <returns></returns>
+        Item[] SearchItems(AssetLocation wildcard);
+
+        /// <summary>
         /// Retrieve the item class from given item code. Will return null if the item does not exist.
         /// </summary>
         /// <param name="itemCode"></param>

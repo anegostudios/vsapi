@@ -184,38 +184,6 @@ namespace Vintagestory.API.Client
 
 
 
-        // Takes n lists of properties and returns every unique n-tuple 
-        // through a 2 dimensional array blockvariants[i, ni] 
-        // where i = n-tuple index and ni = index of current element in the n-tuple
-        ItemStack[,] MultiplyProperties(ItemStack[][] variants)
-        {
-            int resultingQuantiy = 1;
-
-            for (int i = 0; i < variants.Length; i++)
-            {
-                resultingQuantiy *= variants[i].Length;
-            }
-
-            ItemStack[,] multipliedProperties = new ItemStack[resultingQuantiy, variants.Length];
-
-            for (int i = 0; i < resultingQuantiy; i++)
-            {
-                int div = 1;
-
-                for (int j = 0; j < variants.Length; j++)
-                {
-                    ItemStack variant = variants[j][(i / div) % variants[j].Length];
-
-                    multipliedProperties[i, j] = new ItemStack(variant.Collectible);
-
-                    div *= variants[j].Length;
-                }
-            }
-
-            return multipliedProperties;
-        }
-
-
         public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
@@ -272,9 +240,10 @@ namespace Vintagestory.API.Client
             {
                 for (int y = 0; y < 3; y++)
                 {
+                    int index = recipeunin.Recipe.GetGridIndex(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
+
                     CraftingRecipeIngredient ingred = recipeunin.Recipe.GetElementInGrid(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
 
-                    int index = recipeunin.Recipe.GetGridIndex(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
 
                     if (ingred == null) continue;
 
@@ -296,12 +265,15 @@ namespace Vintagestory.API.Client
                     scissorBounds.CalcWorldBounds();
                     api.Render.PushScissor(scissorBounds, true);
 
+                    // 1.16.0: Fugly (but backwards compatible) hack: We temporarily store the ingredient code in an unused field of ItemSlot so that OnHandbookRecipeRender() has access to that number. Proper solution would be to alter the method signature to pass on this value.
+                    dummyslot.BackgroundIcon = index + "";
                     dummyslot.Itemstack.Collectible.OnHandbookRecipeRender(capi, recipeunin.Recipe, dummyslot, rx + size * 0.5f, ry + size * 0.5f, size);
+                    dummyslot.BackgroundIcon = null;
+
 
                     api.Render.PopScissor();
 
                     // Super weird coordinates, no idea why
-
                     double dx = mx - rx + 1;
                     double dy = my - ry + 2;
 

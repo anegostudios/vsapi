@@ -759,7 +759,6 @@ namespace Vintagestory.API.Common.Entities
                 {
                     Vec3d dir = (SidedPos.XYZ - damageSource.GetSourcePosition()).Normalize();
                     dir.Y = 0.7f;
-                    Properties.KnockbackResistance = 0;
                     float factor = damageSource.KnockbackStrength * GameMath.Clamp((1 - Properties.KnockbackResistance) / 10f, 0, 1);
 
                     WatchedAttributes.SetFloat("onHurtDir", (float)Math.Atan2(dir.X, dir.Z));
@@ -954,8 +953,6 @@ namespace Vintagestory.API.Common.Entities
             double splashStrength = 2 * GameMath.Sqrt(width * height) + pos.Motion.Length() * 10;
 
             if (splashStrength < 0.4f || yDistance < 0.25f) return;
-
-            //Block block = World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - CollisionBox.Y1), (int)pos.Z);
 
             string[] soundsBySize = new string[] { "sounds/environment/smallsplash", "sounds/environment/mediumsplash", "sounds/environment/largesplash" };
             string sound = soundsBySize[(int)GameMath.Clamp(splashStrength / 1.6, 0, 2)];

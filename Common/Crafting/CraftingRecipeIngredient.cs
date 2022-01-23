@@ -39,6 +39,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;
+
+        /// <summary>
+        /// Optional attribute data that you can attach any data to
+        /// </summary>
+        [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
+        public JsonObject RecipeAttributes;
+
         /// <summary>
         /// Whether this crafting recipe ingredient should be regarded as a tool required to build this item.
         /// If true, the recipe will not consume the item but reduce its durability.

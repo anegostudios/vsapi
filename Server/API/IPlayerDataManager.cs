@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Vintagestory.API.Server
 {
+    public enum EnumServerResponse
+    {
+        Good,
+        Bad,
+        Offline
+    }
+
+
     public interface IPlayerDataManager
     {
         /// <summary>
@@ -20,6 +28,13 @@ namespace Vintagestory.API.Server
         /// <param name="name"></param>
         /// <returns></returns>
         IServerPlayerData GetPlayerDataByLastKnownName(string name);
+
+        /// <summary>
+        /// Resolves a player name to a player uid, indepent on whether this player is online, offline or never even joined the server. This is done by contacting the auth server, so please use this method sparingly.
+        /// </summary>
+        /// <param name="playername"></param>
+        /// <param name="onPlayerReceived"></param>
+        void ResolvePlayerName(string playername, Action<EnumServerResponse, string> onPlayerReceived);
     }
 
     public interface IGroupManager
@@ -31,8 +46,6 @@ namespace Vintagestory.API.Server
         void AddPlayerGroup(PlayerGroup group);
 
         void RemovePlayerGroup(PlayerGroup group);
-
-
     }
 
     public interface IPermissionManager
