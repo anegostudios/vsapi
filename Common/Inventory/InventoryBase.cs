@@ -752,7 +752,17 @@ namespace Vintagestory.API.Common
                 slot.MarkDirty();
             }
         }
-    
+
+        /// <summary>
+        /// Deletes the contents of all the slots
+        /// </summary>
+        public void Clear()
+        {
+            foreach (var slot in this) slot.Itemstack = null;
+        }
+
+
+
         public virtual void OnOwningEntityDeath(Vec3d pos)
         {
             DropAll(pos);

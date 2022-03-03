@@ -59,6 +59,19 @@ namespace Vintagestory.API.MathTools
             pos.Set(ray.origin);
         }
 
+        public BlockSelection GetSelectedBlock(Vec3d from, Vec3d to, BlockFilter filter = null)
+        {
+            LoadRayAndPos(new Line3D()
+            {
+                Start = new double[] { from.X, from.Y, from.Z },
+                End = new double[] { to.X, to.Y, to.Z }
+            });
+
+            float maxDistance = from.DistanceTo(to);
+
+            return GetSelectedBlock(maxDistance, filter);
+        }
+
         public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null)
         {
             float distanceSq = 0;

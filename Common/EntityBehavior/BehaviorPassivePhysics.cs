@@ -127,9 +127,9 @@ namespace Vintagestory.API.Common
 
             accumulator += deltaTime;
 
-            if (accumulator > 1)
+            if (accumulator > 0.4f)
             {
-                accumulator = 1;
+                accumulator = 0.4f;
             }
 
             float sliceTime = GlobalConstants.PhysicsFrameTime;

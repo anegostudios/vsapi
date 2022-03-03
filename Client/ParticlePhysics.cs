@@ -134,6 +134,8 @@ namespace Vintagestory.API.Client
         }
 
         public float MotionCap = 2;
+        BlockPos minPos = new BlockPos();
+        BlockPos maxPos = new BlockPos();
 
         /// <summary>
         /// Updates the velocity vector according to the amount of passed time, gravity and terrain collision.
@@ -149,14 +151,12 @@ namespace Vintagestory.API.Client
                 pos.X + size / 2, pos.Y + size/2, pos.Z + size / 2
             );
 
-            motion.X = Math.Min(MotionCap, Math.Abs(motion.X)) * Math.Sign(motion.X);
-            motion.Y = Math.Min(MotionCap, Math.Abs(motion.Y)) * Math.Sign(motion.Y);
-            motion.Z = Math.Min(MotionCap, Math.Abs(motion.Z)) * Math.Sign(motion.Z);
+            motion.X = GameMath.Clamp(motion.X, -MotionCap, MotionCap);
+            motion.Y = GameMath.Clamp(motion.Y, -MotionCap, MotionCap);
+            motion.Z = GameMath.Clamp(motion.Z, -MotionCap, MotionCap);
 
             EnumCollideFlags flags=0;
 
-            BlockPos minPos = new BlockPos();
-            BlockPos maxPos = new BlockPos();
             minPos.Set(
                 (int)(particleCollBox.X1 + Math.Min(0, motion.X)),
                 (int)(particleCollBox.Y1 + Math.Min(0, motion.Y) - 1), // -1 for the extra high collision box of fences

@@ -85,6 +85,7 @@ namespace Vintagestory.API.Common
             blastType = (int)EnumBlastType.OreBlast;
             blastDropChances[blastType] = new double[materials.Length];
             blastDropChances[blastType].Fill(0.25);
+            blastDropChances[blastType][(int)EnumBlockMaterial.Ore] = 0.9;
 
             blastResistances[blastType] = new double[materials.Length];
             blastResistances[blastType][(int)EnumBlockMaterial.Air] = 0;
@@ -94,7 +95,6 @@ namespace Vintagestory.API.Common
             blastResistances[blastType][(int)EnumBlockMaterial.Wood] = 2;
             blastResistances[blastType][(int)EnumBlockMaterial.Leaves] = 0.4;
             blastResistances[blastType][(int)EnumBlockMaterial.Stone] = 3;
-            blastDropChances[blastType][(int)EnumBlockMaterial.Ore] = 0.9;
             blastResistances[blastType][(int)EnumBlockMaterial.Liquid] = 4;
             blastResistances[blastType][(int)EnumBlockMaterial.Snow] = 0.4;
             blastResistances[blastType][(int)EnumBlockMaterial.Ice] = 2;

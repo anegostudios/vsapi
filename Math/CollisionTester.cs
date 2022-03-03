@@ -27,8 +27,8 @@ namespace Vintagestory.API.MathTools
         public Cuboidd tempCuboid = new Cuboidd();
         EnumPushDirection pushDirection = EnumPushDirection.None;
 
-        BlockPos minPos = new BlockPos();
-        BlockPos maxPos = new BlockPos();
+        protected BlockPos minPos = new BlockPos();
+        protected BlockPos maxPos = new BlockPos();
 
 
         /// <summary>
@@ -70,35 +70,14 @@ namespace Vintagestory.API.MathTools
                 entity.CollisionBox.Z2 + tmpPositionVec.Z
             );
 
-            CollisionBoxList.Clear();
-            outposition.Set(tmpPositionVec.X + entitypos.Motion.X * dtFac, tmpPositionVec.Y + entitypos.Motion.Y * dtFac, tmpPositionVec.Z + entitypos.Motion.Z * dtFac);
+            double motionX = entitypos.Motion.X * dtFac;
+            double motionY = entitypos.Motion.Y * dtFac;
+            double motionZ = entitypos.Motion.Z * dtFac;
+            outposition.Set(tmpPositionVec.X + motionX, tmpPositionVec.Y + motionY, tmpPositionVec.Z + motionZ);
 
-            minPos.Set(
-                (int)(entityBox.X1 + Math.Min(0, entitypos.Motion.X * dtFac)),
-                (int)(entityBox.Y1 + Math.Min(0, entitypos.Motion.Y * dtFac) - YExtra), // YExtra for the extra high collision box of fences
-                (int)(entityBox.Z1 + Math.Min(0, entitypos.Motion.Z * dtFac))
-            );
+            GenerateCollisionBoxList(worldaccess.BlockAccessor, motionX, motionY, motionZ, stepHeight, YExtra);
 
-            double y2 = Math.Max(entityBox.Y1 + stepHeight, entityBox.Y2);
-
-            maxPos.Set(
-                (int)(entityBox.X2 + Math.Max(0, entitypos.Motion.X * dtFac)),
-                (int)(y2 + Math.Max(0, entitypos.Motion.Y * dtFac)),
-                (int)(entityBox.Z2 + Math.Max(0, entitypos.Motion.Z * dtFac))
-            );
-
-            worldaccess.BlockAccessor.WalkBlocks(minPos, maxPos, (block, bpos) => {
-                Cuboidf[] collisionBoxes = block.GetCollisionBoxes(worldaccess.BlockAccessor, bpos);
-
-                for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
-                {
-                    CollisionBoxList.Add(collisionBoxes[i], bpos, block);
-                }
-
-            }, true);
-
-
-            tmpPosDelta.Set(entitypos.Motion.X * dtFac, entitypos.Motion.Y * dtFac, entitypos.Motion.Z * dtFac);
+            tmpPosDelta.Set(motionX, motionY, motionZ);
 
 
             // Y - Collision (Vertical)
@@ -128,7 +107,7 @@ namespace Vintagestory.API.MathTools
 
             var horizontalBlocked = false;
             var entityBoxMovedXZ = entityBox.OffsetCopy(tmpPosDelta.X, 0, tmpPosDelta.Z);
-            foreach (var cuboid in CollisionBoxList.cuboids)
+            foreach (var cuboid in CollisionBoxList)
             {
                 if (cuboid.Intersects(entityBoxMovedXZ))
                 {
@@ -200,6 +179,37 @@ namespace Vintagestory.API.MathTools
             }
 
             outposition.Set(tmpPositionVec.X + tmpPosDelta.X, tmpPositionVec.Y + tmpPosDelta.Y, tmpPositionVec.Z + tmpPosDelta.Z);
+        }
+
+        protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra)
+        {
+            minPos.Set(
+                (int)(entityBox.X1 + Math.Min(0, motionX)),
+                (int)(entityBox.Y1 + Math.Min(0, motionY) - yExtra), // yExtra for the extra high collision box of fences
+                (int)(entityBox.Z1 + Math.Min(0, motionZ))
+            );
+
+            double y2 = Math.Max(entityBox.Y1 + stepHeight, entityBox.Y2);
+
+            maxPos.Set(
+                (int)(entityBox.X2 + Math.Max(0, motionX)),
+                (int)(y2 + Math.Max(0, motionY)),
+                (int)(entityBox.Z2 + Math.Max(0, motionZ))
+            );
+
+            CollisionBoxList.Clear();
+            blockAccessor.WalkBlocks(minPos, maxPos, (block, bpos) => {
+                Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, bpos);
+
+                if (collisionBoxes != null)
+                {
+                    for (int i = 0; i < collisionBoxes.Length; i++)
+                    {
+                        CollisionBoxList.Add(collisionBoxes[i], bpos, block);
+                    }
+                }
+
+            }, true);
         }
 
         Cuboidd tmpBox = new Cuboidd();
@@ -433,5 +443,51 @@ namespace Vintagestory.API.MathTools
             return EnumIntersect.NoIntersect;
         }
 
+    }
+
+    /// <summary>
+    /// Special version of CollisionTester for BehaviorControlledPhysics, which does not re-do the WalkBlocks() call and re-generate the CollisionBoxList more than once in the same entity tick
+    /// </summary>
+    public class CachingCollisionTester : CollisionTester
+    {
+        public void NewTick()
+        {
+            minPos.Set(int.MinValue, int.MinValue, int.MinValue);
+        }
+
+        protected override void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra)
+        {
+            bool minPosIsUnchanged = minPos.SetAndEquals(
+                (int)(entityBox.X1 + Math.Min(0, motionX)),
+                (int)(entityBox.Y1 + Math.Min(0, motionY) - yExtra), // yExtra for the extra high collision box of fences
+                (int)(entityBox.Z1 + Math.Min(0, motionZ))
+            );
+            double y2 = Math.Max(entityBox.Y1 + stepHeight, entityBox.Y2);
+
+            bool maxPosIsUnchanged = maxPos.SetAndEquals(
+                (int)(entityBox.X2 + Math.Max(0, motionX)),
+                (int)(y2 + Math.Max(0, motionY)),
+                (int)(entityBox.Z2 + Math.Max(0, motionZ))
+            );
+
+            if (minPosIsUnchanged && maxPosIsUnchanged)
+            {
+                return;
+            }
+
+            CollisionBoxList.Clear();
+            blockAccessor.WalkBlocks(minPos, maxPos, (block, bpos) => {
+                Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, bpos);
+
+                if (collisionBoxes != null)
+                {
+                    for (int i = 0; i < collisionBoxes.Length; i++)
+                    {
+                        CollisionBoxList.Add(collisionBoxes[i], bpos, block);
+                    }
+                }
+
+            }, true);
+        }
     }
 }

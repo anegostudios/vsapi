@@ -102,5 +102,7 @@ namespace Vintagestory.API.Server
         bool AllowFallingBlocks { get; set; }
 
         bool HostedMode { get; set; }
+
+        float SpawnCapPlayerScaling { get; set; }
     }
 }

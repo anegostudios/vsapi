@@ -27,6 +27,8 @@ namespace Vintagestory.API.Common
 
         void DeleteFileToRecyclebin(string filepath);
 
+        long GetFreeDiskSpace(string filepath);
+
         void FocusWindow();
     }
 

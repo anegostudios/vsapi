@@ -121,6 +121,8 @@ namespace Vintagestory.API.Common
                 servercontrols = controls;
             }
 
+            WatchedAttributes.RegisterModifiedListener("mountedOn", updateMountedState);
+
             if (WatchedAttributes["mountedOn"] != null)
             {
                 MountedOn = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
@@ -130,24 +132,9 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            bool ignoreupdates = false;
-            WatchedAttributes.RegisterModifiedListener("mountedOn", () => {
-                if (ignoreupdates) return;
-                ignoreupdates = true;
-                if (WatchedAttributes.HasAttribute("mountedOn"))
-                {
-                    var mountable = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
-                    if (mountable != null)
-                    {
-                        TryMount(mountable);
-                    }
-                } else
-                {
-                    TryUnmount();
-                }
-                ignoreupdates = false;
-            });
+            
         }
+
 
         /// <summary>
         /// The controls for this entity.
@@ -192,24 +179,46 @@ namespace Vintagestory.API.Common
         /// <returns>Whether it was mounted or not.</returns>
         public bool TryMount(IMountable onmount)
         {
-            this.MountedOn = onmount;
-            controls.StopAllMovement();
-
-            if (MountedOn?.SuggestedAnimation != null)
+            if (MountedOn != onmount)
             {
-                string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
-                AnimManager?.StartAnimation(anim);
+                if (!TryUnmount()) return false;
             }
 
-            onmount.DidMount(this);
-
             TreeAttribute mountableTree = new TreeAttribute();
-            MountedOn?.MountableToTreeAttributes(mountableTree);
+            onmount?.MountableToTreeAttributes(mountableTree);
             WatchedAttributes["mountedOn"] = mountableTree;
-            WatchedAttributes.MarkPathDirty("mountedOn");
-
-
+            WatchedAttributes.MarkPathDirty("mountedOn"); // -> this calls updateMountedState()
             return true;
+        }
+
+        protected virtual void updateMountedState()
+        {
+            if (WatchedAttributes.HasAttribute("mountedOn"))
+            {
+                var mountable = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+
+                this.MountedOn = mountable;
+                controls.StopAllMovement();
+
+                if (mountable == null)
+                {
+                    WatchedAttributes.RemoveAttribute("mountedOn");
+                    return;
+                }
+                
+                if (MountedOn?.SuggestedAnimation != null)
+                {
+                    string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
+                    AnimManager?.StartAnimation(anim);
+                }
+
+                mountable.DidMount(this);
+            }
+            else
+            {
+                TryUnmount();
+            }
+
         }
 
         /// <summary>
@@ -432,7 +441,7 @@ namespace Vintagestory.API.Common
                 CurrentControls = CurrentControls == 0 ? EnumEntityActivity.Idle : CurrentControls;
             }
 
-            if (this is EntityPlayer) HandleHandAnimations();
+            HandleHandAnimations();
 
             if (World.Side == EnumAppSide.Client)
             {
@@ -538,89 +547,10 @@ namespace Vintagestory.API.Common
         }
 
 
-        protected string lastRunningHeldUseAnimation;
-        protected string lastRunningRightHeldIdleAnimation;
-        protected string lastRunningLeftHeldIdleAnimation;
-        protected string lastRunningHeldHitAnimation;
 
-        private void HandleHandAnimations()
+        protected virtual void HandleHandAnimations()
         {
-            ItemStack rightstack = RightHandItemSlot?.Itemstack;
 
-            EnumHandInteract interact = servercontrols.HandUse;
-
-            bool nowUseStack = (interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract) || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
-            bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
-
-            bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || (servercontrols.LeftMouseDown);
-            bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
-
-
-            string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
-            string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
-            string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
-            string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
-
-            bool nowRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack;
-            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningRightHeldIdleAnimation);
-
-            bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
-            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningLeftHeldIdleAnimation);
-
-            if (rightstack == null)
-            {
-                nowHeldRightHitAnim = "breakhand";
-                nowHeldRightUseAnim = "interactstatic";
-            }
-
-            if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
-            {
-                AnimManager.StopAnimation(lastRunningHeldUseAnimation);
-                lastRunningHeldUseAnimation = null;
-
-                if (nowUseStack)
-                {
-                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
-                    AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldRightUseAnim);
-                }
-            }
-
-            if (nowHitStack != wasHitStack || (lastRunningHeldHitAnimation != null && nowHeldRightHitAnim != lastRunningHeldHitAnimation))
-            {
-                AnimManager.StopAnimation(lastRunningHeldHitAnimation);
-                lastRunningHeldHitAnimation = null;
-
-
-                if (nowHitStack)
-                {
-                    AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
-                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
-                    AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldRightHitAnim);
-                }
-            }
-
-            if (nowRightIdleStack != wasRightIdleStack || (lastRunningRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastRunningRightHeldIdleAnimation))
-            {
-                AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
-                lastRunningRightHeldIdleAnimation = null;
-
-                if (nowRightIdleStack)
-                {
-                    AnimManager.StartAnimation(lastRunningRightHeldIdleAnimation = nowHeldRightIdleAnim);
-                }
-            }
-
-            if (nowLeftIdleStack != wasLeftIdleStack || (lastRunningLeftHeldIdleAnimation != null && nowHeldLeftIdleAnim != lastRunningLeftHeldIdleAnimation))
-            {
-                AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
-                
-                lastRunningLeftHeldIdleAnimation = null;
-
-                if (nowLeftIdleStack)
-                {
-                    AnimManager.StartAnimation(lastRunningLeftHeldIdleAnimation = nowHeldLeftIdleAnim);
-                }
-            }
         }
 
         public virtual void StopHandAnims()

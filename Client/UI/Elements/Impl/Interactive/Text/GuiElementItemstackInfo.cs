@@ -70,7 +70,6 @@ namespace Vintagestory.API.Client
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            //Recompose();
         }
 
         void RecalcBounds()
@@ -78,11 +77,11 @@ namespace Vintagestory.API.Client
             descriptionElement.BeforeCalcBounds();
             titleElement.BeforeCalcBounds();
 
-            double currentWidth = Math.Max(descriptionElement.MaxLineWidth, descriptionElement.Bounds.InnerWidth) / RuntimeEnv.GUIScale + 10;
-            double unscaledTotalHeight;
+            double currentWidth = 
+                descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10
+                + 40 + GuiElementPassiveItemSlot.unscaledItemSize * 3
+            ;
 
-            currentWidth += 40 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3;
-            currentWidth = Math.Max(currentWidth, descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10);
             currentWidth = Math.Min(currentWidth, maxWidth);
 
             double descWidth = currentWidth - ItemStackSize - 50;
@@ -94,7 +93,7 @@ namespace Vintagestory.API.Client
 
             // Height depends on the width
             double unscaledDescTextHeight = descriptionElement.Bounds.fixedHeight;
-            unscaledTotalHeight = Math.Max(unscaledDescTextHeight, 25 + GuiElementPassiveItemSlot.unscaledItemSize * 3);
+            double unscaledTotalHeight = Math.Max(unscaledDescTextHeight, 25 + GuiElementPassiveItemSlot.unscaledItemSize * 3);
             titleElement.Bounds.fixedHeight = unscaledTotalHeight;
             descriptionElement.Bounds.fixedHeight = unscaledTotalHeight;
             Bounds.fixedHeight = 25 + unscaledTotalHeight;
@@ -111,6 +110,11 @@ namespace Vintagestory.API.Client
             string title = curSlot.GetStackName();
             string desc = OnRequireInfoText(curSlot);
             desc.TrimEnd();
+
+            titleElement.Bounds.fixedWidth = maxWidth - scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3 - 10;
+            descriptionElement.Bounds.fixedWidth = maxWidth - 40 - scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3 - 10;
+            descriptionElement.Bounds.CalcWorldBounds();
+            titleElement.Bounds.CalcWorldBounds();
 
             titleElement.SetNewTextWithoutRecompose(title, titleFont, null, true);
             descriptionElement.SetNewTextWithoutRecompose(desc, Font, null, true);

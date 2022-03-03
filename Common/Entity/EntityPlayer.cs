@@ -543,13 +543,107 @@ namespace Vintagestory.API.Common
         }
 
 
+
+        protected string lastRunningHeldUseAnimation;
+        protected string lastRunningRightHeldIdleAnimation;
+        protected string lastRunningLeftHeldIdleAnimation;
+        protected string lastRunningHeldHitAnimation;
+
+        protected override void HandleHandAnimations()
+        {
+            // Prevent this method from getting called for other players on the client side because it has incomplete information (servercontrols&interact are not synced to client)
+            // It's also not necessary to call this method because the server will sync the animations to the client
+            if (Api is ICoreClientAPI capi && capi.World.Player.PlayerUID != PlayerUID) return;
+
+            ItemStack rightstack = RightHandItemSlot?.Itemstack;
+
+            EnumHandInteract interact = servercontrols.HandUse;
+
+            bool nowUseStack = (interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract) || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
+            bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
+
+            bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || (servercontrols.LeftMouseDown);
+            bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
+
+
+            string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
+            string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
+            string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
+            string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
+
+            bool nowRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack;
+            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningRightHeldIdleAnimation);
+
+            bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
+            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningLeftHeldIdleAnimation);
+
+            if (rightstack == null)
+            {
+                nowHeldRightHitAnim = "breakhand";
+                nowHeldRightUseAnim = "interactstatic";
+            }
+
+            if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
+            {
+                AnimManager.StopAnimation(lastRunningHeldUseAnimation);
+                lastRunningHeldUseAnimation = null;
+
+                if (nowUseStack)
+                {
+                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
+                    AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldRightUseAnim);
+                }
+            }
+
+            if (nowHitStack != wasHitStack || (lastRunningHeldHitAnimation != null && nowHeldRightHitAnim != lastRunningHeldHitAnimation))
+            {
+                AnimManager.StopAnimation(lastRunningHeldHitAnimation);
+                lastRunningHeldHitAnimation = null;
+
+
+                if (nowHitStack)
+                {
+                    AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
+                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
+                    AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldRightHitAnim);
+                }
+            }
+
+            if (nowRightIdleStack != wasRightIdleStack || (lastRunningRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastRunningRightHeldIdleAnimation))
+            {
+                AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
+                lastRunningRightHeldIdleAnimation = null;
+
+                if (nowRightIdleStack)
+                {
+                    AnimManager.StartAnimation(lastRunningRightHeldIdleAnimation = nowHeldRightIdleAnim);
+                }
+            }
+
+            if (nowLeftIdleStack != wasLeftIdleStack || (lastRunningLeftHeldIdleAnimation != null && nowHeldLeftIdleAnim != lastRunningLeftHeldIdleAnimation))
+            {
+                AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
+
+                lastRunningLeftHeldIdleAnimation = null;
+
+                if (nowLeftIdleStack)
+                {
+                    AnimManager.StartAnimation(lastRunningLeftHeldIdleAnimation = nowHeldLeftIdleAnim);
+                }
+            }
+        }
+
         private bool canStandUp()
         {
             tmpCollBox.Set(SelectionBox);
+
+            bool collideSneaking = World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false);
+
             tmpCollBox.Y2 = Properties.CollisionBoxSize.Y;
             tmpCollBox.Y1 += 1f; // Don't care about the bottom block
-            bool collide = World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false); ;
-            return !collide;
+            bool collideStanding = World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false);
+            
+            return !collideStanding || collideSneaking;
         }
 
         public virtual bool CanSpawnNearby(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc)

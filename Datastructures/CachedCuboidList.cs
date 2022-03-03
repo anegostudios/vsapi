@@ -56,12 +56,13 @@ namespace Vintagestory.API.Datastructures
 
         public IEnumerator<Cuboidd> GetEnumerator()
         {
-            return cuboids.GetEnumerator();
+            for (int i = 0; i < Count; i++)
+                yield return cuboids[i];
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return cuboids.GetEnumerator();
+            return GetEnumerator();
         }
     }
 }

@@ -191,6 +191,7 @@ namespace Vintagestory.API.Common.Entities
         /// The face the entity is climbing on. Null if the entity is not climbing. Set by the game client and server.
         /// </summary>
         public BlockFacing ClimbingOnFace;
+        public BlockFacing ClimbingIntoFace;
 
         /// <summary>
         /// Set by the game client and server.
@@ -1055,6 +1056,8 @@ namespace Vintagestory.API.Common.Entities
             }
 
             AnimManager.Dispose();
+
+            WatchedAttributes.OnModified.Clear();
         }
 
 

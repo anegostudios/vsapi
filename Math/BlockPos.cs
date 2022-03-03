@@ -123,6 +123,22 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        /// <summary>
+        /// Sets this BlockPos to the x,y,z values given, and returns a boolean stating if the existing values were already equal to x,y,z
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns>Returns true if the BlockPos already held these exact x, y, z values (the .Set operation has not changed anything)<br/>Returns false if the .Set operation caused a change to the BlockPos</returns>
+        public bool SetAndEquals(int x, int y, int z)
+        {
+            if (X == x && Z == z && Y == y) return true;
+            X = x;
+            Y = y;
+            Z = z;
+            return false;
+        }
+
         public void ToBytes(BinaryWriter writer)
         {
             writer.Write(X);

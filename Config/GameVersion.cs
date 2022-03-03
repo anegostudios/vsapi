@@ -24,7 +24,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.16.1";
+        public const string OverallVersion = "1.16.4";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -57,12 +57,17 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.16.2";
+        public const string NetworkVersion = "1.16.5";
 
         /// <summary>
         /// Version of the savegame database
         /// </summary>
         public static int DatabaseVersion = 2;
+
+        /// <summary>
+        /// Version of the chunkdata compression for individual WorldChunks (0 is Deflate; 1 is ZSTD)
+        /// </summary>
+        public const int ChunkdataVersion = 0;
 
         /// <summary>
         /// "Version" of the block and item mapping. This number gets increased by 1 when remappings are needed

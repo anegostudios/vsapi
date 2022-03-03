@@ -85,7 +85,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Whether the entity should take fall damage
         /// </summary>
-        public bool FallDamage;
+        public bool FallDamage = true;
 
         public float ClimbTouchDistance;
 

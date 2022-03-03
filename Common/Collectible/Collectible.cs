@@ -1547,10 +1547,10 @@ namespace Vintagestory.API.Common
                     TransitionState state = transitionStates[i];
 
                     TransitionableProperties prop = state.Props;
-                    float perishRate = GetTransitionRateMul(world, inSlot, prop.Type);
-                    if (inSlot.Inventory is CreativeInventoryTab) perishRate = 1f;
+                    float transitionRate = GetTransitionRateMul(world, inSlot, prop.Type);
+                    if (inSlot.Inventory is CreativeInventoryTab) transitionRate = 1f;
                     float transitionLevel = state.TransitionLevel;
-                    float freshHoursLeft = state.FreshHoursLeft / perishRate;
+                    float freshHoursLeft = state.FreshHoursLeft / transitionRate;
 
                     switch (prop.Type)
                     {
@@ -1564,7 +1564,7 @@ namespace Vintagestory.API.Common
                             }
                             else
                             {
-                                if (perishRate <= 0)
+                                if (transitionRate <= 0)
                                 {
                                     dsc.AppendLine(Lang.Get("itemstack-perishable"));
                                 }
@@ -1600,7 +1600,7 @@ namespace Vintagestory.API.Common
                         case EnumTransitionType.Cure:
                             if (nowSpoiling) break;
 
-                            if (transitionLevel > 0 || (freshHoursLeft <= 0 && perishRate > 0))
+                            if (transitionLevel > 0 || (freshHoursLeft <= 0 && transitionRate > 0))
                             {
                                 dsc.AppendLine(Lang.Get("itemstack-curable-curing", (int)Math.Round(transitionLevel * 100)));
                             }
@@ -1608,7 +1608,7 @@ namespace Vintagestory.API.Common
                             {
                                 double hoursPerday = api.World.Calendar.HoursPerDay;
 
-                                if (perishRate <= 0)
+                                if (transitionRate <= 0)
                                 {
                                     dsc.AppendLine(Lang.Get("itemstack-curable"));
                                 }
@@ -1651,7 +1651,7 @@ namespace Vintagestory.API.Common
                         case EnumTransitionType.Ripen:
                             if (nowSpoiling) break;
 
-                            if (transitionLevel > 0 || (freshHoursLeft <= 0 && perishRate > 0))
+                            if (transitionLevel > 0 || (freshHoursLeft <= 0 && transitionRate > 0))
                             {
                                 dsc.AppendLine(Lang.Get("itemstack-ripenable-ripening", (int)Math.Round(transitionLevel * 100)));
                             }
@@ -1659,7 +1659,7 @@ namespace Vintagestory.API.Common
                             {
                                 double hoursPerday = api.World.Calendar.HoursPerDay;
 
-                                if (perishRate <= 0)
+                                if (transitionRate <= 0)
                                 {
                                     dsc.AppendLine(Lang.Get("itemstack-ripenable"));
                                 }
@@ -1683,12 +1683,13 @@ namespace Vintagestory.API.Common
                             if (transitionLevel > 0)
                             {
                                 dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font> {0}% dried", (int)Math.Round(transitionLevel * 100)));
+                                dsc.AppendLine(Lang.Get("Drying rate in this container: {0:0.##}x", transitionRate));
                             }
                             else
                             {
                                 double hoursPerday = api.World.Calendar.HoursPerDay;
 
-                                if (perishRate <= 0)
+                                if (transitionRate <= 0)
                                 {
                                     dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font>"));
                                 }

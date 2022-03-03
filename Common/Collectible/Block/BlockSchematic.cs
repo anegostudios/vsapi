@@ -446,11 +446,23 @@ namespace Vintagestory.API.Common
             int placed = 0;
 
             PlaceBlockDelegate handler = null;
-            switch (ReplaceMode)
+            switch (mode)
             {
                 case EnumReplaceMode.ReplaceAll:
                     if (replaceMetaBlocks) handler = PlaceReplaceAllReplaceMeta;
                     else handler = PlaceReplaceAllKeepMeta;
+
+                    for (int dx = 0; dx < SizeX; dx++)
+                    {
+                        for (int dy = 0; dy < SizeY; dy++)
+                        {
+                            for (int dz = 0; dz < SizeZ; dz++)
+                            {
+                                curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
+                                blockAccessor.SetBlock(0, curPos);
+                            }
+                        }
+                    }
                     break;
 
                 case EnumReplaceMode.Replaceable:

@@ -16,6 +16,8 @@ namespace Vintagestory.API.Client
     public class ElementBounds
     {
         public ElementBounds ParentBounds;
+        public ElementBounds LeftOfBounds;
+
         public List<ElementBounds> ChildBounds = new List<ElementBounds>();
 
         protected bool IsWindowBounds;
@@ -203,6 +205,8 @@ namespace Vintagestory.API.Client
                 {
                     case ElementSizing.Fixed:
                         absFixedX = scaled(fixedX);
+                        if (LeftOfBounds != null) absFixedX += LeftOfBounds.absFixedX + LeftOfBounds.OuterWidth;
+
                         absInnerWidth = scaled(fixedWidth);
                         absPaddingX = scaled(fixedPaddingX);
                         break;
@@ -452,6 +456,13 @@ namespace Vintagestory.API.Client
                 bounds.ParentBounds = this;
             }
 
+            return this;
+        }
+
+        public ElementBounds RightOf(ElementBounds leftBounds, double leftMargin = 0)
+        {
+            this.LeftOfBounds = leftBounds;
+            this.fixedX = leftMargin;
             return this;
         }
 

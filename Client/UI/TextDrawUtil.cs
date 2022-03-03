@@ -331,7 +331,7 @@ namespace Vintagestory.API.Client
                 i++;
 
                 lineTextBldr.Append(word);
-                if (gotSpace && word.Length > 0) lineTextBldr.Append(" ");
+                if (gotSpace/* && word.Length > 0*/) lineTextBldr.Append(" ");
 
                 if (gotLinebreak)
                 {

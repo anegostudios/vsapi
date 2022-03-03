@@ -1508,8 +1508,9 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called evey 25ms if the block is in range (32 blocks) and block returned true on ShouldReceiveClientGameTicks(). Takes a few seconds for the game to register the block.
         /// </summary>
-        /// <param name="world"></param>
+        /// <param name="manager"></param>
         /// <param name="pos"></param>
+        /// <param name="windAffectednessAtPos"></param>
         /// <param name="secondsTicking"></param>
         public virtual void OnAsyncClientParticleTick(IAsyncParticleManager manager, BlockPos pos, float windAffectednessAtPos, float secondsTicking)
         {
@@ -2301,7 +2302,8 @@ namespace Vintagestory.API.Common
 
             if (handled == EnumHandling.PreventDefault) return;
 
-            
+            // The explosion code uses the bulk block accessor for greater performance
+            world.BulkBlockAccessor.SetBlock(0, pos);
 
             double dropChancce = ExplosionDropChance(world, pos, blastType);
 
