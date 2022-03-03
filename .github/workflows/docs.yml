@@ -2,7 +2,8 @@ name: Build Docs
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   docs:
@@ -20,6 +21,7 @@ jobs:
       name: Build Documentation
       with:
         args: docfx.json
+        DOCFX_SOURCE_BRANCH_NAME: master
 
     - name: Deploy Docs
       uses: JamesIves/github-pages-deploy-action@v4.2.5
