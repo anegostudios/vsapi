@@ -1,0 +1,1799 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GuiDialog
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GuiDialog
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.GuiDialog">
+  
+  
+  <h1 id="Vintagestory_API_Client_GuiDialog" data-uid="Vintagestory.API.Client.GuiDialog" class="text-break">Class GuiDialog
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">GuiDialog</span></div>
+      <div class="level2"><a class="xref" href="Vintagestory.API.Client.GuiDialogCharacterBase.html">GuiDialogCharacterBase</a></div>
+      <div class="level2"><a class="xref" href="Vintagestory.API.Client.GuiDialogGeneric.html">GuiDialogGeneric</a></div>
+      <div class="level2"><a class="xref" href="Vintagestory.API.Client.HudElement.html">HudElement</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_GuiDialog_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class GuiDialog : IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog__ctor_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.%23ctor(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L189">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog__ctor_" data-uid="Vintagestory.API.Client.GuiDialog.#ctor*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog__ctor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Client.GuiDialog.#ctor(Vintagestory.API.Client.ICoreClientAPI)">GuiDialog(ICoreClientAPI)</h4>
+  <div class="markdown level1 summary"><p>Constructor for the GUIDialogue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiDialog(ICoreClientAPI capi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The Client API.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_capi.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.capi%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L169">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_capi" data-uid="Vintagestory.API.Client.GuiDialog.capi">capi</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ICoreClientAPI capi</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_Composers.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.Composers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L110">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_Composers" data-uid="Vintagestory.API.Client.GuiDialog.Composers">Composers</h4>
+  <div class="markdown level1 summary"><p>The Instance of Dialogue Composer for this GUIDialogue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiDialog.DlgComposers Composers</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiDialog.DlgComposers.html">GuiDialog.DlgComposers</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_focused.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.focused%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L140">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_focused" data-uid="Vintagestory.API.Client.GuiDialog.focused">focused</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool focused</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_ignoreNextKeyPress.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.ignoreNextKeyPress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L136">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_ignoreNextKeyPress" data-uid="Vintagestory.API.Client.GuiDialog.ignoreNextKeyPress">ignoreNextKeyPress</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ignoreNextKeyPress</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_MouseOverCursor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.MouseOverCursor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L365">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_MouseOverCursor" data-uid="Vintagestory.API.Client.GuiDialog.MouseOverCursor">MouseOverCursor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MouseOverCursor</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_opened.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.opened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L139">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_opened" data-uid="Vintagestory.API.Client.GuiDialog.opened">opened</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool opened</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_DebugName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.DebugName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L124">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_DebugName_" data-uid="Vintagestory.API.Client.GuiDialog.DebugName*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_DebugName" data-uid="Vintagestory.API.Client.GuiDialog.DebugName">DebugName</h4>
+  <div class="markdown level1 summary"><p>Debug name.  For debugging purposes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string DebugName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_DialogType.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.DialogType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L156">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_DialogType_" data-uid="Vintagestory.API.Client.GuiDialog.DialogType*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_DialogType" data-uid="Vintagestory.API.Client.GuiDialog.DialogType">DialogType</h4>
+  <div class="markdown level1 summary"><p>Is this dialogue a dialogue or a HUD object?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual EnumDialogType DialogType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumDialogType.html">EnumDialogType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_DisableMouseGrab.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.DisableMouseGrab%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L674">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_DisableMouseGrab_" data-uid="Vintagestory.API.Client.GuiDialog.DisableMouseGrab*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_DisableMouseGrab" data-uid="Vintagestory.API.Client.GuiDialog.DisableMouseGrab">DisableMouseGrab</h4>
+  <div class="markdown level1 summary"><p>Gets whether ability to grab the mouse cursor is disabled while
+this dialog is opened. For example, the escape menu. (Default: false)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool DisableMouseGrab { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_DrawOrder.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.DrawOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L231">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_DrawOrder_" data-uid="Vintagestory.API.Client.GuiDialog.DrawOrder*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_DrawOrder" data-uid="Vintagestory.API.Client.GuiDialog.DrawOrder">DrawOrder</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual double DrawOrder { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_Focusable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.Focusable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L150">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_Focusable_" data-uid="Vintagestory.API.Client.GuiDialog.Focusable*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_Focusable" data-uid="Vintagestory.API.Client.GuiDialog.Focusable">Focusable</h4>
+  <div class="markdown level1 summary"><p>Can this dialog be focused?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Focusable { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_Focused.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.Focused%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L145">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_Focused_" data-uid="Vintagestory.API.Client.GuiDialog.Focused*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_Focused" data-uid="Vintagestory.API.Client.GuiDialog.Focused">Focused</h4>
+  <div class="markdown level1 summary"><p>Is the dialogue currently in focus?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Focused { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_InputOrder.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.InputOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L241">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_InputOrder_" data-uid="Vintagestory.API.Client.GuiDialog.InputOrder*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_InputOrder" data-uid="Vintagestory.API.Client.GuiDialog.InputOrder">InputOrder</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual double InputOrder { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_PrefersUngrabbedMouse.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.PrefersUngrabbedMouse%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L660">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_PrefersUngrabbedMouse_" data-uid="Vintagestory.API.Client.GuiDialog.PrefersUngrabbedMouse*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_PrefersUngrabbedMouse" data-uid="Vintagestory.API.Client.GuiDialog.PrefersUngrabbedMouse">PrefersUngrabbedMouse</h4>
+  <div class="markdown level1 summary"><p>Gets whether it is preferred for the mouse to be not grabbed while this dialog is opened.
+If true (default), the Alt button needs to be held to manually grab the mouse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool PrefersUngrabbedMouse { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_SingleComposer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.SingleComposer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L115">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_SingleComposer_" data-uid="Vintagestory.API.Client.GuiDialog.SingleComposer*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_SingleComposer" data-uid="Vintagestory.API.Client.GuiDialog.SingleComposer">SingleComposer</h4>
+  <div class="markdown level1 summary"><p>A single composer for this GUIDialogue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer SingleComposer { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_ToggleKeyCombinationCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.ToggleKeyCombinationCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L704">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_ToggleKeyCombinationCode_" data-uid="Vintagestory.API.Client.GuiDialog.ToggleKeyCombinationCode*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_ToggleKeyCombinationCode" data-uid="Vintagestory.API.Client.GuiDialog.ToggleKeyCombinationCode">ToggleKeyCombinationCode</h4>
+  <div class="markdown level1 summary"><p>The key combination string that toggles this GUI object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string ToggleKeyCombinationCode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_UnregisterOnClose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.UnregisterOnClose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L246">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_UnregisterOnClose_" data-uid="Vintagestory.API.Client.GuiDialog.UnregisterOnClose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_UnregisterOnClose" data-uid="Vintagestory.API.Client.GuiDialog.UnregisterOnClose">UnregisterOnClose</h4>
+  <div class="markdown level1 summary"><p>Should this dialogue de-register itself once it&apos;s closed? (Defaults to no)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool UnregisterOnClose { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_ZSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.ZSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L132">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_ZSize_" data-uid="Vintagestory.API.Client.GuiDialog.ZSize*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_ZSize" data-uid="Vintagestory.API.Client.GuiDialog.ZSize">ZSize</h4>
+  <div class="markdown level1 summary"><p>The amount of depth required for this dialog. Default is 150. Required for correct z-ordering of dialogs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual float ZSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_CaptureAllInputs.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.CaptureAllInputs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L681">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_CaptureAllInputs_" data-uid="Vintagestory.API.Client.GuiDialog.CaptureAllInputs*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_CaptureAllInputs" data-uid="Vintagestory.API.Client.GuiDialog.CaptureAllInputs">CaptureAllInputs()</h4>
+  <div class="markdown level1 summary"><p>Should this dialogue capture all the keyboard events (IE: textbox) except for escape.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CaptureAllInputs()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_ClearComposers.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.ClearComposers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L696">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_ClearComposers_" data-uid="Vintagestory.API.Client.GuiDialog.ClearComposers*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_ClearComposers" data-uid="Vintagestory.API.Client.GuiDialog.ClearComposers">ClearComposers()</h4>
+  <div class="markdown level1 summary"><p>Clears the composers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ClearComposers()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L689">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_Dispose_" data-uid="Vintagestory.API.Client.GuiDialog.Dispose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_Dispose" data-uid="Vintagestory.API.Client.GuiDialog.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disposes the Dialogue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_Focus.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.Focus%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L317">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_Focus_" data-uid="Vintagestory.API.Client.GuiDialog.Focus*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_Focus" data-uid="Vintagestory.API.Client.GuiDialog.Focus">Focus()</h4>
+  <div class="markdown level1 summary"><p>Focuses the dialog</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Focus()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_IsOpened.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.IsOpened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L341">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_IsOpened_" data-uid="Vintagestory.API.Client.GuiDialog.IsOpened*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_IsOpened" data-uid="Vintagestory.API.Client.GuiDialog.IsOpened">IsOpened()</h4>
+  <div class="markdown level1 summary"><p>Is this dialogue opened?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsOpened()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether this dialogue is opened or not.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_IsOpened_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.IsOpened(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L351">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_IsOpened_" data-uid="Vintagestory.API.Client.GuiDialog.IsOpened*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_IsOpened_System_String_" data-uid="Vintagestory.API.Client.GuiDialog.IsOpened(System.String)">IsOpened(String)</h4>
+  <div class="markdown level1 summary"><p>Is this dialogue opened in the given context?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsOpened(string dialogComposerName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">dialogComposerName</span></td>
+        <td><p>The composer context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether this dialogue was opened or not within the given context.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L360">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_" data-uid="Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_System_Single_" data-uid="Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(System.Single)">OnBeforeRenderFrame3D(Single)</h4>
+  <div class="markdown level1 summary"><p>This runs before the render.  Local update method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnBeforeRenderFrame3D(float deltaTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The time that has elapsed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L198">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded_" data-uid="Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded" data-uid="Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded">OnBlockTexturesLoaded()</h4>
+  <div class="markdown level1 summary"><p>Makes this gui pop up once a pre-set given key combination is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockTexturesLoaded()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnEscapePressed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnEscapePressed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L479">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnEscapePressed_" data-uid="Vintagestory.API.Client.GuiDialog.OnEscapePressed*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnEscapePressed" data-uid="Vintagestory.API.Client.GuiDialog.OnEscapePressed">OnEscapePressed()</h4>
+  <div class="markdown level1 summary"><p>Fires explicitly when the Escape key is pressed and attempts to close the dialogue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool OnEscapePressed()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether the dialogue was closed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnFinalizeFrame_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnFinalizeFrame(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L385">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnFinalizeFrame_" data-uid="Vintagestory.API.Client.GuiDialog.OnFinalizeFrame*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnFinalizeFrame_System_Single_" data-uid="Vintagestory.API.Client.GuiDialog.OnFinalizeFrame(System.Single)">OnFinalizeFrame(Single)</h4>
+  <div class="markdown level1 summary"><p>This runs when the dialogue is finalizing and cleaning up all of the components.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnFinalizeFrame(float dt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dt</span></td>
+        <td><p>The time that has elapsed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnFocusChanged_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnFocusChanged(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L171">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnFocusChanged_" data-uid="Vintagestory.API.Client.GuiDialog.OnFocusChanged*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnFocusChanged_System_Boolean_" data-uid="Vintagestory.API.Client.GuiDialog.OnFocusChanged(System.Boolean)">OnFocusChanged(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnFocusChanged(bool on)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">on</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnGuiClosed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnGuiClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L258">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnGuiClosed_" data-uid="Vintagestory.API.Client.GuiDialog.OnGuiClosed*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnGuiClosed" data-uid="Vintagestory.API.Client.GuiDialog.OnGuiClosed">OnGuiClosed()</h4>
+  <div class="markdown level1 summary"><p>Fires when the GUI is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnGuiClosed()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnGuiOpened.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnGuiOpened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L251">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnGuiOpened_" data-uid="Vintagestory.API.Client.GuiDialog.OnGuiOpened*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnGuiOpened" data-uid="Vintagestory.API.Client.GuiDialog.OnGuiOpened">OnGuiOpened()</h4>
+  <div class="markdown level1 summary"><p>Fires when the GUI is opened.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnGuiOpened()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnKeyDown_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L414">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnKeyDown_" data-uid="Vintagestory.API.Client.GuiDialog.OnKeyDown*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnKeyDown_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)">OnKeyDown(KeyEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires when keys are held down.  </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnKeyDown(KeyEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The key or keys that were held down.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnKeyPress_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L441">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnKeyPress_" data-uid="Vintagestory.API.Client.GuiDialog.OnKeyPress*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnKeyPress_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)">OnKeyPress(KeyEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires when the keys are pressed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnKeyPress(KeyEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The key or keys that were pressed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnKeyUp_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L464">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnKeyUp_" data-uid="Vintagestory.API.Client.GuiDialog.OnKeyUp*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnKeyUp_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)">OnKeyUp(KeyEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires when the keys are released.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnKeyUp(KeyEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>the key or keys that were released.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnLevelFinalize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnLevelFinalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L210">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnLevelFinalize_" data-uid="Vintagestory.API.Client.GuiDialog.OnLevelFinalize*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnLevelFinalize" data-uid="Vintagestory.API.Client.GuiDialog.OnLevelFinalize">OnLevelFinalize()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnLevelFinalize()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L526">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseClickSlot*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)">OnMouseClickSlot(ItemSlot)</h4>
+  <div class="markdown level1 summary"><p>Fires when the mouse clicks within the slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool OnMouseClickSlot(ItemSlot itemSlot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">itemSlot</span></td>
+        <td><p>The slot that the mouse clicked in.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether this event was handled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnMouseDown_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L532">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnMouseDown_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseDown*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnMouseDown_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)">OnMouseDown(MouseEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires when a mouse button is held down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnMouseDown(MouseEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The mouse button or buttons in question.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L490">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)">OnMouseEnterSlot(ItemSlot)</h4>
+  <div class="markdown level1 summary"><p>Fires when the mouse enters the given slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool OnMouseEnterSlot(ItemSlot slot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">slot</span></td>
+        <td><p>The slot the mouse entered.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether this event was handled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L508">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)">OnMouseLeaveSlot(ItemSlot)</h4>
+  <div class="markdown level1 summary"><p>Fires when the mouse leaves the slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool OnMouseLeaveSlot(ItemSlot itemSlot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">itemSlot</span></td>
+        <td><p>The slot the mouse entered.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether this event was handled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnMouseMove_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L584">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnMouseMove_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseMove*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnMouseMove_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)">OnMouseMove(MouseEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires when the mouse is moved.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnMouseMove(MouseEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The mouse movements in question.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnMouseUp_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L560">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnMouseUp_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseUp*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnMouseUp_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)">OnMouseUp(MouseEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires when a mouse button is released.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnMouseUp(MouseEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The mouse button or buttons in question.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L608">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnMouseWheel_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseWheel*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_" data-uid="Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)">OnMouseWheel(MouseWheelEventArgs)</h4>
+  <div class="markdown level1 summary"><p>Fires when the mouse wheel is scrolled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnMouseWheel(MouseWheelEventArgs args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseWheelEventArgs.html">MouseWheelEventArgs</a></td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L215">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived_" data-uid="Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived" data-uid="Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived">OnOwnPlayerDataReceived()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnOwnPlayerDataReceived()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnRenderGUI_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnRenderGUI(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L371">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_OnRenderGUI_" data-uid="Vintagestory.API.Client.GuiDialog.OnRenderGUI*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnRenderGUI_System_Single_" data-uid="Vintagestory.API.Client.GuiDialog.OnRenderGUI(System.Single)">OnRenderGUI(Single)</h4>
+  <div class="markdown level1 summary"><p>This runs when the dialogue is ready to render all of the components.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnRenderGUI(float deltaTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The time that has elapsed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L664">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse_" data-uid="Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse" data-uid="Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse">RequiresUngrabbedMouse()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool RequiresUngrabbedMouse()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L641">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents_" data-uid="Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents" data-uid="Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents">ShouldReceiveKeyboardEvents()</h4>
+  <div class="markdown level1 summary"><p>A check for whether the dialogue should recieve keyboard events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldReceiveKeyboardEvents()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether the dialogue is focused or not.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L650">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents_" data-uid="Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents" data-uid="Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents">ShouldReceiveMouseEvents()</h4>
+  <div class="markdown level1 summary"><p>A check if the dialogue should recieve mouse events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldReceiveMouseEvents()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether the mouse events should fire.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L632">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents_" data-uid="Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents" data-uid="Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents">ShouldReceiveRenderEvents()</h4>
+  <div class="markdown level1 summary"><p>A check for whether the dialogue should recieve Render events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShouldReceiveRenderEvents()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether the dialogue is opened or not.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_Toggle.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.Toggle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L326">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_Toggle_" data-uid="Vintagestory.API.Client.GuiDialog.Toggle*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_Toggle" data-uid="Vintagestory.API.Client.GuiDialog.Toggle">Toggle()</h4>
+  <div class="markdown level1 summary"><p>If the dialogue is opened, this attempts to close it.  If the dialogue is closed, this attempts to open it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Toggle()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_TryClose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.TryClose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L295">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_TryClose_" data-uid="Vintagestory.API.Client.GuiDialog.TryClose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_TryClose" data-uid="Vintagestory.API.Client.GuiDialog.TryClose">TryClose()</h4>
+  <div class="markdown level1 summary"><p>Attempts to close this dialogue- triggering the OnCloseDialogue event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryClose()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Was this dialogue successfully closed?</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_TryOpen.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.TryOpen%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L266">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_TryOpen_" data-uid="Vintagestory.API.Client.GuiDialog.TryOpen*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_TryOpen" data-uid="Vintagestory.API.Client.GuiDialog.TryOpen">TryOpen()</h4>
+  <div class="markdown level1 summary"><p>Attempts to open this dialogue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryOpen()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Was this dialogue successfully opened?</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_UnFocus.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.UnFocus%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L310">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialog_UnFocus_" data-uid="Vintagestory.API.Client.GuiDialog.UnFocus*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialog_UnFocus" data-uid="Vintagestory.API.Client.GuiDialog.UnFocus">UnFocus()</h4>
+  <div class="markdown level1 summary"><p>Unfocuses the dialogue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void UnFocus()</code></pre>
+  </div>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnClosed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L166">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnClosed" data-uid="Vintagestory.API.Client.GuiDialog.OnClosed">OnClosed</h4>
+  <div class="markdown level1 summary"><p>The event fired when this dialogue is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action OnClosed</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog_OnOpened.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog.OnOpened%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L161">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialog_OnOpened" data-uid="Vintagestory.API.Client.GuiDialog.OnOpened">OnOpened</h4>
+  <div class="markdown level1 summary"><p>The event fired when this dialogue is opened.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action OnOpened</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialog.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialog%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialog.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

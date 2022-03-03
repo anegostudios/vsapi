@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class HudElement
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class HudElement
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.HudElement">
+  
+  
+  <h1 id="Vintagestory_API_Client_HudElement" data-uid="Vintagestory.API.Client.HudElement" class="text-break">Class HudElement
+  </h1>
+  <div class="markdown level0 summary"><p>Base class for Hud Elements.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Vintagestory.API.Client.GuiDialog.html">GuiDialog</a></div>
+    <div class="level2"><span class="xref">HudElement</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Composers">GuiDialog.Composers</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_SingleComposer">GuiDialog.SingleComposer</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DebugName">GuiDialog.DebugName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ZSize">GuiDialog.ZSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ignoreNextKeyPress">GuiDialog.ignoreNextKeyPress</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_opened">GuiDialog.opened</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_focused">GuiDialog.focused</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focused">GuiDialog.Focused</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focusable">GuiDialog.Focusable</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOpened">GuiDialog.OnOpened</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnClosed">GuiDialog.OnClosed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_capi">GuiDialog.capi</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnFocusChanged_System_Boolean_">GuiDialog.OnFocusChanged(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded">GuiDialog.OnBlockTexturesLoaded()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnLevelFinalize">GuiDialog.OnLevelFinalize()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived">GuiDialog.OnOwnPlayerDataReceived()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DrawOrder">GuiDialog.DrawOrder</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_InputOrder">GuiDialog.InputOrder</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_UnregisterOnClose">GuiDialog.UnregisterOnClose</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnGuiOpened">GuiDialog.OnGuiOpened()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnGuiClosed">GuiDialog.OnGuiClosed()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryOpen">GuiDialog.TryOpen()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryClose">GuiDialog.TryClose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_UnFocus">GuiDialog.UnFocus()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focus">GuiDialog.Focus()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Toggle">GuiDialog.Toggle()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened">GuiDialog.IsOpened()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened_System_String_">GuiDialog.IsOpened(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_System_Single_">GuiDialog.OnBeforeRenderFrame3D(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_MouseOverCursor">GuiDialog.MouseOverCursor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnFinalizeFrame_System_Single_">GuiDialog.OnFinalizeFrame(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyDown_Vintagestory_API_Client_KeyEvent_">GuiDialog.OnKeyDown(KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyPress_Vintagestory_API_Client_KeyEvent_">GuiDialog.OnKeyPress(KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyUp_Vintagestory_API_Client_KeyEvent_">GuiDialog.OnKeyUp(KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnEscapePressed">GuiDialog.OnEscapePressed()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_">GuiDialog.OnMouseEnterSlot(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_">GuiDialog.OnMouseLeaveSlot(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_Vintagestory_API_Common_ItemSlot_">GuiDialog.OnMouseClickSlot(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseDown_Vintagestory_API_Client_MouseEvent_">GuiDialog.OnMouseDown(MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseUp_Vintagestory_API_Client_MouseEvent_">GuiDialog.OnMouseUp(MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseMove_Vintagestory_API_Client_MouseEvent_">GuiDialog.OnMouseMove(MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_">GuiDialog.OnMouseWheel(MouseWheelEventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents">GuiDialog.ShouldReceiveRenderEvents()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents">GuiDialog.ShouldReceiveKeyboardEvents()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents">GuiDialog.ShouldReceiveMouseEvents()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse">GuiDialog.RequiresUngrabbedMouse()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DisableMouseGrab">GuiDialog.DisableMouseGrab</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureAllInputs">GuiDialog.CaptureAllInputs()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Dispose">GuiDialog.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ClearComposers">GuiDialog.ClearComposers()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_HudElement_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class HudElement : GuiDialog</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_HudElement__ctor_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.HudElement.%23ctor(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/HudElement.cs/#L12">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_HudElement__ctor_" data-uid="Vintagestory.API.Client.HudElement.#ctor*"></a>
+  <h4 id="Vintagestory_API_Client_HudElement__ctor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Client.HudElement.#ctor(Vintagestory.API.Client.ICoreClientAPI)">HudElement(ICoreClientAPI)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Hud Element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HudElement(ICoreClientAPI capi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The Client API</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_HudElement_DialogType.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.HudElement.DialogType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/HudElement.cs/#L16">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_HudElement_DialogType_" data-uid="Vintagestory.API.Client.HudElement.DialogType*"></a>
+  <h4 id="Vintagestory_API_Client_HudElement_DialogType" data-uid="Vintagestory.API.Client.HudElement.DialogType">DialogType</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override EnumDialogType DialogType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumDialogType.html">EnumDialogType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DialogType">GuiDialog.DialogType</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_HudElement_PrefersUngrabbedMouse.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.HudElement.PrefersUngrabbedMouse%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/HudElement.cs/#L24">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_HudElement_PrefersUngrabbedMouse_" data-uid="Vintagestory.API.Client.HudElement.PrefersUngrabbedMouse*"></a>
+  <h4 id="Vintagestory_API_Client_HudElement_PrefersUngrabbedMouse" data-uid="Vintagestory.API.Client.HudElement.PrefersUngrabbedMouse">PrefersUngrabbedMouse</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool PrefersUngrabbedMouse { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_PrefersUngrabbedMouse">GuiDialog.PrefersUngrabbedMouse</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_HudElement_ToggleKeyCombinationCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.HudElement.ToggleKeyCombinationCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/HudElement.cs/#L18">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_HudElement_ToggleKeyCombinationCode_" data-uid="Vintagestory.API.Client.HudElement.ToggleKeyCombinationCode*"></a>
+  <h4 id="Vintagestory_API_Client_HudElement_ToggleKeyCombinationCode" data-uid="Vintagestory.API.Client.HudElement.ToggleKeyCombinationCode">ToggleKeyCombinationCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToggleKeyCombinationCode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ToggleKeyCombinationCode">GuiDialog.ToggleKeyCombinationCode</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_HudElement_OnRenderGUI_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.HudElement.OnRenderGUI(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/HudElement.cs/#L26">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_HudElement_OnRenderGUI_" data-uid="Vintagestory.API.Client.HudElement.OnRenderGUI*"></a>
+  <h4 id="Vintagestory_API_Client_HudElement_OnRenderGUI_System_Single_" data-uid="Vintagestory.API.Client.HudElement.OnRenderGUI(System.Single)">OnRenderGUI(Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnRenderGUI(float deltaTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnRenderGUI_System_Single_">GuiDialog.OnRenderGUI(Single)</a></div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_HudElement.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.HudElement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/HudElement.cs/#L6" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

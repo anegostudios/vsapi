@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ServerAnimator
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ServerAnimator
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.ServerAnimator">
+  
+  
+  <h1 id="Vintagestory_API_Common_ServerAnimator" data-uid="Vintagestory.API.Common.ServerAnimator" class="text-break">Class ServerAnimator
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></div>
+    <div class="level2"><a class="xref" href="Vintagestory.API.Common.ClientAnimator.html">ClientAnimator</a></div>
+    <div class="level3"><span class="xref">ServerAnimator</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_rootElements">ClientAnimator.rootElements</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_RootPoses">ClientAnimator.RootPoses</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_jointsDone">ClientAnimator.jointsDone</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_jointsById">ClientAnimator.jointsById</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_MaxConcurrentAnimations">ClientAnimator.MaxConcurrentAnimations</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_initFields">ClientAnimator.initFields()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_LoadAttachmentPoints_List_Vintagestory_API_Common_ElementPose__">ClientAnimator.LoadAttachmentPoints(List&lt;ElementPose&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_AnimNowActive_Vintagestory_API_Common_RunningAnimation_Vintagestory_API_Common_AnimationMetaData_">ClientAnimator.AnimNowActive(RunningAnimation, AnimationMetaData)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_calculateMatrices_System_Single_">ClientAnimator.calculateMatrices(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_anims">AnimatorBase.anims</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices">AnimatorBase.TransformationMatrices</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose">AnimatorBase.TransformationMatricesDefaultPose</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_AttachmentPointByCode">AnimatorBase.AttachmentPointByCode</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_curAnimCount">AnimatorBase.curAnimCount</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CurAnims">AnimatorBase.CurAnims</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CalculateMatrices">AnimatorBase.CalculateMatrices</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices">AnimatorBase.Matrices</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_ActiveAnimationCount">AnimatorBase.ActiveAnimationCount</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RunningAnimations">AnimatorBase.RunningAnimations</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAnimationState_System_String_">AnimatorBase.GetAnimationState(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_OnFrame_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__System_Single_">AnimatorBase.OnFrame(Dictionary&lt;String, AnimationMetaData&gt;, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAttachmentPointPose_System_String_">AnimatorBase.GetAttachmentPointPose(String)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_ServerAnimator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ServerAnimator : ClientAnimator, IAnimator</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ServerAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ServerAnimator.%23ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate%2CList%7BVintagestory.API.Common.ElementPose%7D%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D%2CAction%7BSystem.String%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ServerAnimator.cs/#L82">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ServerAnimator__ctor_" data-uid="Vintagestory.API.Common.ServerAnimator.#ctor*"></a>
+  <h4 id="Vintagestory_API_Common_ServerAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__System_Boolean_" data-uid="Vintagestory.API.Common.ServerAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},Action{System.String},System.Boolean)">ServerAnimator(WalkSpeedSupplierDelegate, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;, Action&lt;String&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List&lt;ElementPose&gt; rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, Action&lt;string&gt; onAnimationStoppedListener = null, bool loadFully = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.WalkSpeedSupplierDelegate.html">WalkSpeedSupplierDelegate</a></td>
+        <td><span class="parametername">walkSpeedSupplier</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a>&gt;</td>
+        <td><span class="parametername">rootPoses</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Animation.html">Animation</a>[]</td>
+        <td><span class="parametername">animations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</td>
+        <td><span class="parametername">rootElements</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a>&gt;</td>
+        <td><span class="parametername">jointsById</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">onAnimationStoppedListener</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">loadFully</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ServerAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ServerAnimator.%23ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D%2CAction%7BSystem.String%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ServerAnimator.cs/#L70">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ServerAnimator__ctor_" data-uid="Vintagestory.API.Common.ServerAnimator.#ctor*"></a>
+  <h4 id="Vintagestory_API_Common_ServerAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__System_Boolean_" data-uid="Vintagestory.API.Common.ServerAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},Action{System.String},System.Boolean)">ServerAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;, Action&lt;String&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, Action&lt;string&gt; onAnimationStoppedListener = null, bool loadFully = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.WalkSpeedSupplierDelegate.html">WalkSpeedSupplierDelegate</a></td>
+        <td><span class="parametername">walkSpeedSupplier</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Animation.html">Animation</a>[]</td>
+        <td><span class="parametername">animations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</td>
+        <td><span class="parametername">rootElements</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a>&gt;</td>
+        <td><span class="parametername">jointsById</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">onAnimationStoppedListener</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">loadFully</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ServerAnimator_loadFully.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ServerAnimator.loadFully%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ServerAnimator.cs/#L16">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_ServerAnimator_loadFully" data-uid="Vintagestory.API.Common.ServerAnimator.loadFully">loadFully</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool loadFully</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity%2CList%7BVintagestory.API.Common.ElementPose%7D%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ServerAnimator.cs/#L18">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity*"></a>
+  <h4 id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})">CreateForEntity(Entity, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ServerAnimator CreateForEntity(Entity entity, List&lt;ElementPose&gt; rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a>&gt;</td>
+        <td><span class="parametername">rootPoses</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Animation.html">Animation</a>[]</td>
+        <td><span class="parametername">animations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</td>
+        <td><span class="parametername">rootElements</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a>&gt;</td>
+        <td><span class="parametername">jointsById</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ServerAnimator.html">ServerAnimator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ServerAnimator.cs/#L44">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity*"></a>
+  <h4 id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})">CreateForEntity(Entity, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ServerAnimator CreateForEntity(Entity entity, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Animation.html">Animation</a>[]</td>
+        <td><span class="parametername">animations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</td>
+        <td><span class="parametername">rootElements</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a>&gt;</td>
+        <td><span class="parametername">jointsById</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ServerAnimator.html">ServerAnimator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ServerAnimator_LoadPosesAndAttachmentPoints_Vintagestory_API_Common_ShapeElement___List_Vintagestory_API_Common_ElementPose__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ServerAnimator.LoadPosesAndAttachmentPoints(Vintagestory.API.Common.ShapeElement%5B%5D%2CList%7BVintagestory.API.Common.ElementPose%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ServerAnimator.cs/#L93">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ServerAnimator_LoadPosesAndAttachmentPoints_" data-uid="Vintagestory.API.Common.ServerAnimator.LoadPosesAndAttachmentPoints*"></a>
+  <h4 id="Vintagestory_API_Common_ServerAnimator_LoadPosesAndAttachmentPoints_Vintagestory_API_Common_ShapeElement___List_Vintagestory_API_Common_ElementPose__" data-uid="Vintagestory.API.Common.ServerAnimator.LoadPosesAndAttachmentPoints(Vintagestory.API.Common.ShapeElement[],List{Vintagestory.API.Common.ElementPose})">LoadPosesAndAttachmentPoints(ShapeElement[], List&lt;ElementPose&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void LoadPosesAndAttachmentPoints(ShapeElement[] elements, List&lt;ElementPose&gt; intoPoses)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</td>
+        <td><span class="parametername">elements</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a>&gt;</td>
+        <td><span class="parametername">intoPoses</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_LoadPosesAndAttachmentPoints_Vintagestory_API_Common_ShapeElement___List_Vintagestory_API_Common_ElementPose__">ClientAnimator.LoadPosesAndAttachmentPoints(ShapeElement[], List&lt;ElementPose&gt;)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ServerAnimator.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ServerAnimator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ServerAnimator.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ICollectibleOnDisplayInteractable
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ICollectibleOnDisplayInteractable
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable">
+  
+  
+  <h1 id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable" class="text-break">Interface ICollectibleOnDisplayInteractable
+  </h1>
+  <div class="markdown level0 summary"><p>A collectible object that can be placed on the ground or on shelves or in display cases, but also can still accept interactions from the player</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICollectibleOnDisplayInteractable</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumItemUseCancelReason_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel(System.Single%2CVintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.EnumItemUseCancelReason)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/ICollectibleDisplayable.cs/#L43">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractCancel_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel*"></a>
+  <h4 id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumItemUseCancelReason_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumItemUseCancelReason)">OnInteractCancel(Single, ItemSlot, IPlayer, EnumItemUseCancelReason)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool OnInteractCancel(float secondsUsed, ItemSlot inSlot, IPlayer byPlayer, EnumItemUseCancelReason cancelReason)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">secondsUsed</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">inSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">byPlayer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumItemUseCancelReason.html">EnumItemUseCancelReason</a></td>
+        <td><span class="parametername">cancelReason</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart(Vintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/ICollectibleDisplayable.cs/#L37">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStart_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart*"></a>
+  <h4 id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)">OnInteractStart(ItemSlot, IPlayer)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool OnInteractStart(ItemSlot inSlot, IPlayer byPlayer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">inSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">byPlayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep(System.Single%2CVintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/ICollectibleDisplayable.cs/#L39">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStep_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep*"></a>
+  <h4 id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)">OnInteractStep(Single, ItemSlot, IPlayer)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool OnInteractStep(float secondsUsed, ItemSlot inSlot, IPlayer byPlayer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">secondsUsed</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">inSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">byPlayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop(System.Single%2CVintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/ICollectibleDisplayable.cs/#L41">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStop_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop*"></a>
+  <h4 id="Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)">OnInteractStop(Single, ItemSlot, IPlayer)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnInteractStop(float secondsUsed, ItemSlot inSlot, IPlayer byPlayer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">secondsUsed</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">inSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">byPlayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ICollectibleOnDisplayInteractable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ICollectibleOnDisplayInteractable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/ICollectibleDisplayable.cs/#L35" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

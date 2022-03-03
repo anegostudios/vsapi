@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IServerWorldAccessor
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IServerWorldAccessor
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Server.IServerWorldAccessor">
+  
+  
+  <h1 id="Vintagestory_API_Server_IServerWorldAccessor" data-uid="Vintagestory.API.Server.IServerWorldAccessor" class="text-break">Interface IServerWorldAccessor
+  </h1>
+  <div class="markdown level0 summary"><p>The world accessor implemented by the server</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Config">IWorldAccessor.Config</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_DefaultSpawnPosition">IWorldAccessor.DefaultSpawnPosition</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_FrameProfiler">IWorldAccessor.FrameProfiler</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Api">IWorldAccessor.Api</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Claims">IWorldAccessor.Claims</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_LoadedChunkIndices">IWorldAccessor.LoadedChunkIndices</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_LoadedMapChunkIndices">IWorldAccessor.LoadedMapChunkIndices</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_BlockLightLevels">IWorldAccessor.BlockLightLevels</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SunLightLevels">IWorldAccessor.SunLightLevels</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SeaLevel">IWorldAccessor.SeaLevel</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Seed">IWorldAccessor.Seed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SavegameIdentifier">IWorldAccessor.SavegameIdentifier</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SunBrightness">IWorldAccessor.SunBrightness</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_EntityDebugMode">IWorldAccessor.EntityDebugMode</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_AssetManager">IWorldAccessor.AssetManager</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Logger">IWorldAccessor.Logger</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Side">IWorldAccessor.Side</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_BlockAccessor">IWorldAccessor.BlockAccessor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_BulkBlockAccessor">IWorldAccessor.BulkBlockAccessor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_ClassRegistry">IWorldAccessor.ClassRegistry</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Calendar">IWorldAccessor.Calendar</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_CollisionTester">IWorldAccessor.CollisionTester</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Rand">IWorldAccessor.Rand</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_ElapsedMilliseconds">IWorldAccessor.ElapsedMilliseconds</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Collectibles">IWorldAccessor.Collectibles</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Blocks">IWorldAccessor.Blocks</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Items">IWorldAccessor.Items</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_EntityTypes">IWorldAccessor.EntityTypes</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GridRecipes">IWorldAccessor.GridRecipes</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_DefaultEntityTrackingRange">IWorldAccessor.DefaultEntityTrackingRange</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetItem_System_Int32_">IWorldAccessor.GetItem(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlock_System_Int32_">IWorldAccessor.GetBlock(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SearchBlocks_Vintagestory_API_Common_AssetLocation_">IWorldAccessor.SearchBlocks(AssetLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SearchItems_Vintagestory_API_Common_AssetLocation_">IWorldAccessor.SearchItems(AssetLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetItem_Vintagestory_API_Common_AssetLocation_">IWorldAccessor.GetItem(AssetLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlock_Vintagestory_API_Common_AssetLocation_">IWorldAccessor.GetBlock(AssetLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetEntityType_Vintagestory_API_Common_AssetLocation_">IWorldAccessor.GetEntityType(AssetLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_">IWorldAccessor.SpawnItemEntity(ItemStack, Vec3d, Vec3d)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnEntity_Vintagestory_API_Common_Entities_Entity_">IWorldAccessor.SpawnEntity(Entity)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetEntitiesAround_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__">IWorldAccessor.GetEntitiesAround(Vec3d, Single, Single, ActionConsumable&lt;Entity&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetEntitiesInsideCuboid_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__">IWorldAccessor.GetEntitiesInsideCuboid(BlockPos, BlockPos, ActionConsumable&lt;Entity&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetPlayersAround_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_IPlayer__">IWorldAccessor.GetPlayersAround(Vec3d, Single, Single, ActionConsumable&lt;IPlayer&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetNearestEntity_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__">IWorldAccessor.GetNearestEntity(Vec3d, Single, Single, ActionConsumable&lt;Entity&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetEntityById_System_Int64_">IWorldAccessor.GetEntityById(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetIntersectingEntities_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Cuboidf___Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__">IWorldAccessor.GetIntersectingEntities(BlockPos, Cuboidf[], ActionConsumable&lt;Entity&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_NearestPlayer_System_Double_System_Double_System_Double_">IWorldAccessor.NearestPlayer(Double, Double, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_AllOnlinePlayers">IWorldAccessor.AllOnlinePlayers</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_AllPlayers">IWorldAccessor.AllPlayers</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlayerByUid_System_String_">IWorldAccessor.PlayerByUid(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, Double, Double, Double, IPlayer, Boolean, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, Entity, IPlayer, Boolean, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_IPlayer_System_Single_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, Entity, IPlayer, Single, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_System_Single_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, Double, Double, Double, IPlayer, Single, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_Vintagestory_API_Client_EnumSoundType_System_Single_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, Double, Double, Double, IPlayer, EnumSoundType, Single, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, IPlayer, IPlayer, Boolean, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_">IWorldAccessor.PlaySoundFor(AssetLocation, IPlayer, Boolean, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IPlayer_System_Single_System_Single_System_Single_">IWorldAccessor.PlaySoundFor(AssetLocation, IPlayer, Single, Single, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnParticles_System_Single_System_Int32_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_MathTools_Vec3f_System_Single_System_Single_System_Single_Vintagestory_API_Common_EnumParticleModel_Vintagestory_API_Common_IPlayer_">IWorldAccessor.SpawnParticles(Single, Int32, Vec3d, Vec3d, Vec3f, Vec3f, Single, Single, Single, EnumParticleModel, IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnParticles_Vintagestory_API_Common_IParticlePropertiesProvider_Vintagestory_API_Common_IPlayer_">IWorldAccessor.SpawnParticles(IParticlePropertiesProvider, IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnCubeParticles_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_System_Single_System_Int32_System_Single_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_Vec3f_">IWorldAccessor.SpawnCubeParticles(BlockPos, Vec3d, Single, Int32, Single, IPlayer, Vec3f)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnCubeParticles_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_ItemStack_System_Single_System_Int32_System_Single_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_Vec3f_">IWorldAccessor.SpawnCubeParticles(Vec3d, ItemStack, Single, Int32, Single, IPlayer, Vec3f)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_">IWorldAccessor.RayTraceForSelection(Vec3d, Vec3d, BlockSelection, EntitySelection, BlockFilter, EntityFilter)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_IWorldIntersectionSupplier_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_">IWorldAccessor.RayTraceForSelection(IWorldIntersectionSupplier, Vec3d, Vec3d, BlockSelection, EntitySelection, BlockFilter, EntityFilter)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_System_Single_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_">IWorldAccessor.RayTraceForSelection(Vec3d, Single, Single, Single, BlockSelection, EntitySelection, BlockFilter, EntityFilter)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RayTraceForSelection_Vintagestory_API_MathTools_Ray_Vintagestory_API_Common_BlockSelection__Vintagestory_API_Common_EntitySelection__Vintagestory_API_MathTools_BlockFilter_Vintagestory_API_MathTools_EntityFilter_">IWorldAccessor.RayTraceForSelection(Ray, BlockSelection, EntitySelection, BlockFilter, EntityFilter)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RegisterGameTickListener_Action_System_Single__System_Int32_System_Int32_">IWorldAccessor.RegisterGameTickListener(Action&lt;Single&gt;, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_UnregisterGameTickListener_System_Int64_">IWorldAccessor.UnregisterGameTickListener(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RegisterCallback_Action_System_Single__System_Int32_">IWorldAccessor.RegisterCallback(Action&lt;Single&gt;, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RegisterCallbackUnique_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_">IWorldAccessor.RegisterCallbackUnique(Action&lt;IWorldAccessor, BlockPos, Single&gt;, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_RegisterCallback_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_">IWorldAccessor.RegisterCallback(Action&lt;IWorldAccessor, BlockPos, Single&gt;, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlayerHasPrivilege_System_Int32_System_String_">IWorldAccessor.PlayerHasPrivilege(Int32, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_UnregisterCallback_System_Int64_">IWorldAccessor.UnregisterCallback(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_InteresectionTester">IWorldAccessor.InteresectionTester</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_HighlightBlocks_Vintagestory_API_Common_IPlayer_System_Int32_List_Vintagestory_API_MathTools_BlockPos__List_System_Int32__Vintagestory_API_Client_EnumHighlightBlocksMode_Vintagestory_API_Common_EnumHighlightShape_">IWorldAccessor.HighlightBlocks(IPlayer, Int32, List&lt;BlockPos&gt;, List&lt;Int32&gt;, EnumHighlightBlocksMode, EnumHighlightShape)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_HighlightBlocks_Vintagestory_API_Common_IPlayer_System_Int32_List_Vintagestory_API_MathTools_BlockPos__Vintagestory_API_Client_EnumHighlightBlocksMode_Vintagestory_API_Common_EnumHighlightShape_">IWorldAccessor.HighlightBlocks(IPlayer, Int32, List&lt;BlockPos&gt;, EnumHighlightBlocksMode, EnumHighlightShape)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlockAccessor_System_Boolean_System_Boolean_System_Boolean_System_Boolean_">IWorldAccessor.GetBlockAccessor(Boolean, Boolean, Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlockAccessorBulkUpdate_System_Boolean_System_Boolean_System_Boolean_">IWorldAccessor.GetBlockAccessorBulkUpdate(Boolean, Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlockAccessorBulkMinimalUpdate_System_Boolean_System_Boolean_">IWorldAccessor.GetBlockAccessorBulkMinimalUpdate(Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlockAccessorMapChunkLoading_System_Boolean_System_Boolean_">IWorldAccessor.GetBlockAccessorMapChunkLoading(Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlockAccessorRevertable_System_Boolean_System_Boolean_System_Boolean_">IWorldAccessor.GetBlockAccessorRevertable(Boolean, Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetBlockAccessorPrefetch_System_Boolean_System_Boolean_">IWorldAccessor.GetBlockAccessorPrefetch(Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetCachingBlockAccessor_System_Boolean_System_Boolean_">IWorldAccessor.GetCachingBlockAccessor(Boolean, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetLockFreeBlockAccessor">IWorldAccessor.GetLockFreeBlockAccessor()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Server.html">Vintagestory.API.Server</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Server_IServerWorldAccessor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IServerWorldAccessor : IWorldAccessor</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_LoadedEntities.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.LoadedEntities%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L22">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerWorldAccessor_LoadedEntities_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.LoadedEntities*"></a>
+  <h4 id="Vintagestory_API_Server_IServerWorldAccessor_LoadedEntities" data-uid="Vintagestory.API.Server.IServerWorldAccessor.LoadedEntities">LoadedEntities</h4>
+  <div class="markdown level1 summary"><p>The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you <em>really</em> know what you&apos;re doing. Use SpawnEntity/DespawnEntity instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ConcurrentDictionary&lt;long, Entity&gt; LoadedEntities { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ConcurrentDictionary</span>&lt;<span class="xref">System.Int64</span>, <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_TreeGenerators.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.TreeGenerators%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L43">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerWorldAccessor_TreeGenerators_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.TreeGenerators*"></a>
+  <h4 id="Vintagestory_API_Server_IServerWorldAccessor_TreeGenerators" data-uid="Vintagestory.API.Server.IServerWorldAccessor.TreeGenerators">TreeGenerators</h4>
+  <div class="markdown level1 summary"><p>List of all loaded tree generators</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">OrderedDictionary&lt;AssetLocation, ITreeGenerator&gt; TreeGenerators { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.OrderedDictionary-2.html">OrderedDictionary</a>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>, <a class="xref" href="Vintagestory.API.Server.ITreeGenerator.html">ITreeGenerator</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_System_Double_System_Double_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumBlastType%2CSystem.Double%2CSystem.Double%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L38">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion*"></a>
+  <h4 id="Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_System_Double_System_Double_System_Single_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlastType,System.Double,System.Double,System.Single)">CreateExplosion(BlockPos, EnumBlastType, Double, Double, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates an explosion at given position. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CreateExplosion(BlockPos pos, EnumBlastType blastType, double destructionRadius, double injureRadius, float blockDropChanceMultiplier = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumBlastType.html">EnumBlastType</a></td>
+        <td><span class="parametername">blastType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">destructionRadius</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">injureRadius</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">blockDropChanceMultiplier</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_DespawnEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityDespawnReason_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.DespawnEntity(Vintagestory.API.Common.Entities.Entity%2CVintagestory.API.Common.Entities.EntityDespawnReason)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L29">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerWorldAccessor_DespawnEntity_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.DespawnEntity*"></a>
+  <h4 id="Vintagestory_API_Server_IServerWorldAccessor_DespawnEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityDespawnReason_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.DespawnEntity(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityDespawnReason)">DespawnEntity(Entity, EntityDespawnReason)</h4>
+  <div class="markdown level1 summary"><p>Removes an entity from the game and the chunk it resides in</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DespawnEntity(Entity entity, EntityDespawnReason reason)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
+        <td><span class="parametername">entity</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.EntityDespawnReason.html">EntityDespawnReason</a></td>
+        <td><span class="parametername">reason</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

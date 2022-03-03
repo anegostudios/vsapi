@@ -1,0 +1,1531 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ICoreClientAPI
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ICoreClientAPI
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.ICoreClientAPI">
+  
+  
+  <h1 id="Vintagestory_API_Client_ICoreClientAPI" data-uid="Vintagestory.API.Client.ICoreClientAPI" class="text-break">Interface ICoreClientAPI
+  </h1>
+  <div class="markdown level0 summary"><p>The core api implemented by the client. The main interface for accessing the client. Contains all sub components and some miscellaneous methods.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Logger">ICoreAPI.Logger</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_CmdlArguments">ICoreAPI.CmdlArguments</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Side">ICoreAPI.Side</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ClassRegistry">ICoreAPI.ClassRegistry</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Assets">ICoreAPI.Assets</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ModLoader">ICoreAPI.ModLoader</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_">ICoreAPI.RegisterEntityClass(String, EntityProperties)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterRecipeRegistry__1_System_String_">ICoreAPICommon.RegisterRecipeRegistry&lt;T&gt;(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterColorMap_Vintagestory_API_Common_ColorMap_">ICoreAPICommon.RegisterColorMap(ColorMap)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntity_System_String_Type_">ICoreAPICommon.RegisterEntity(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntityBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterEntityBehaviorClass(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockClass_System_String_Type_">ICoreAPICommon.RegisterBlockClass(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCropBehavior_System_String_Type_">ICoreAPICommon.RegisterCropBehavior(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityClass_System_String_Type_">ICoreAPICommon.RegisterBlockEntityClass(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterItemClass_System_String_Type_">ICoreAPICommon.RegisterItemClass(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCollectibleBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterCollectibleBehaviorClass(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterBlockBehaviorClass(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterBlockEntityBehaviorClass(String, Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterMountable_System_String_Vintagestory_API_Common_GetMountableDelegate_">ICoreAPICommon.RegisterMountable(String, GetMountableDelegate)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_ObjectCache">ICoreAPICommon.ObjectCache</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_DataBasePath">ICoreAPICommon.DataBasePath</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_GetOrCreateDataPath_System_String_">ICoreAPICommon.GetOrCreateDataPath(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_">ICoreAPICommon.StoreModConfig&lt;T&gt;(T, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_">ICoreAPICommon.LoadModConfig&lt;T&gt;(String)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_ICoreClientAPI_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICoreClientAPI : ICoreAPI, ICoreAPICommon</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Ambient.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Ambient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L79">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Ambient_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Ambient*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Ambient" data-uid="Vintagestory.API.Client.ICoreClientAPI.Ambient">Ambient</h4>
+  <div class="markdown level1 summary"><p>API Component to control the clients ambient values</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAmbientManager Ambient { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IAmbientManager.html">IAmbientManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_BlockTextureAtlas.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.BlockTextureAtlas%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L115">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_BlockTextureAtlas_" data-uid="Vintagestory.API.Client.ICoreClientAPI.BlockTextureAtlas*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_BlockTextureAtlas" data-uid="Vintagestory.API.Client.ICoreClientAPI.BlockTextureAtlas">BlockTextureAtlas</h4>
+  <div class="markdown level1 summary"><p>API for the Block Texture Atlas</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBlockTextureAtlasAPI BlockTextureAtlas { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IBlockTextureAtlasAPI.html">IBlockTextureAtlasAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_CurrentMusicTrack.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.CurrentMusicTrack%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L239">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_CurrentMusicTrack_" data-uid="Vintagestory.API.Client.ICoreClientAPI.CurrentMusicTrack*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_CurrentMusicTrack" data-uid="Vintagestory.API.Client.ICoreClientAPI.CurrentMusicTrack">CurrentMusicTrack</h4>
+  <div class="markdown level1 summary"><p>Returns the currently playing music track, if any is playing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMusicTrack CurrentMusicTrack { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IMusicTrack.html">IMusicTrack</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_ElapsedMilliseconds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.ElapsedMilliseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L44">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_ElapsedMilliseconds_" data-uid="Vintagestory.API.Client.ICoreClientAPI.ElapsedMilliseconds*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_ElapsedMilliseconds" data-uid="Vintagestory.API.Client.ICoreClientAPI.ElapsedMilliseconds">ElapsedMilliseconds</h4>
+  <div class="markdown level1 summary"><p>Amount of milliseconds ellapsed since client startup</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long ElapsedMilliseconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_EntityTextureAtlas.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.EntityTextureAtlas%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L125">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_EntityTextureAtlas_" data-uid="Vintagestory.API.Client.ICoreClientAPI.EntityTextureAtlas*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_EntityTextureAtlas" data-uid="Vintagestory.API.Client.ICoreClientAPI.EntityTextureAtlas">EntityTextureAtlas</h4>
+  <div class="markdown level1 summary"><p>API for the Entity Texture Atlas</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITextureAtlasAPI EntityTextureAtlas { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html">ITextureAtlasAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Event.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Event%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L84">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Event_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Event*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Event" data-uid="Vintagestory.API.Client.ICoreClientAPI.Event">Event</h4>
+  <div class="markdown level1 summary"><p>API Component for registering to various Events</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientEventAPI Event { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IClientEventAPI.html">IClientEventAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Forms.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Forms%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L34">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Forms_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Forms*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Forms" data-uid="Vintagestory.API.Client.ICoreClientAPI.Forms">Forms</h4>
+  <div class="markdown level1 summary"><p>Platform independent ui methods and features. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IXPlatformInterface Forms { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IXPlatformInterface.html">IXPlatformInterface</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Gui.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Gui%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L94">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Gui_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Gui*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Gui" data-uid="Vintagestory.API.Client.ICoreClientAPI.Gui">Gui</h4>
+  <div class="markdown level1 summary"><p>API for GUI Related methods</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IGuiAPI Gui { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IGuiAPI.html">IGuiAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_HideGuis.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.HideGuis%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L69">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_HideGuis_" data-uid="Vintagestory.API.Client.ICoreClientAPI.HideGuis*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_HideGuis" data-uid="Vintagestory.API.Client.ICoreClientAPI.HideGuis">HideGuis</h4>
+  <div class="markdown level1 summary"><p>If true, the player is in gui-less mode (through the F4 key)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool HideGuis { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Input.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Input%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L99">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Input_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Input*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Input" data-uid="Vintagestory.API.Client.ICoreClientAPI.Input">Input</h4>
+  <div class="markdown level1 summary"><p>API for Mouse / Keyboard input related things</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IInputAPI Input { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IInputAPI.html">IInputAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_InWorldEllapsedMilliseconds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.InWorldEllapsedMilliseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L49">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_InWorldEllapsedMilliseconds_" data-uid="Vintagestory.API.Client.ICoreClientAPI.InWorldEllapsedMilliseconds*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_InWorldEllapsedMilliseconds" data-uid="Vintagestory.API.Client.ICoreClientAPI.InWorldEllapsedMilliseconds">InWorldEllapsedMilliseconds</h4>
+  <div class="markdown level1 summary"><p>Amount of milliseconds ellapsed while in a running game that is not paused</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long InWorldEllapsedMilliseconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_IsGamePaused.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.IsGamePaused%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L59">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_IsGamePaused_" data-uid="Vintagestory.API.Client.ICoreClientAPI.IsGamePaused*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_IsGamePaused" data-uid="Vintagestory.API.Client.ICoreClientAPI.IsGamePaused">IsGamePaused</h4>
+  <div class="markdown level1 summary"><p>True if the game is currently paused (only available in singleplayer)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsGamePaused { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_IsShuttingDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.IsShuttingDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L54">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_IsShuttingDown_" data-uid="Vintagestory.API.Client.ICoreClientAPI.IsShuttingDown*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_IsShuttingDown" data-uid="Vintagestory.API.Client.ICoreClientAPI.IsShuttingDown">IsShuttingDown</h4>
+  <div class="markdown level1 summary"><p>True if the client is currently in the process of exiting</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsShuttingDown { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_IsSinglePlayer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.IsSinglePlayer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L64">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_IsSinglePlayer_" data-uid="Vintagestory.API.Client.ICoreClientAPI.IsSinglePlayer*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_IsSinglePlayer" data-uid="Vintagestory.API.Client.ICoreClientAPI.IsSinglePlayer">IsSinglePlayer</h4>
+  <div class="markdown level1 summary"><p>True if this is a singleplayer session</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsSinglePlayer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_ItemTextureAtlas.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.ItemTextureAtlas%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L120">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_ItemTextureAtlas_" data-uid="Vintagestory.API.Client.ICoreClientAPI.ItemTextureAtlas*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_ItemTextureAtlas" data-uid="Vintagestory.API.Client.ICoreClientAPI.ItemTextureAtlas">ItemTextureAtlas</h4>
+  <div class="markdown level1 summary"><p>API for the Item Texture Atlas</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IItemTextureAtlasAPI ItemTextureAtlas { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IItemTextureAtlasAPI.html">IItemTextureAtlasAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_LinkProtocols.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.LinkProtocols%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L19">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_LinkProtocols_" data-uid="Vintagestory.API.Client.ICoreClientAPI.LinkProtocols*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_LinkProtocols" data-uid="Vintagestory.API.Client.ICoreClientAPI.LinkProtocols">LinkProtocols</h4>
+  <div class="markdown level1 summary"><p>Add your own link protocol here if you want to implement a custom protocol. E.g. image://url-to-picture</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;string, Action&lt;LinkTextComponent&gt;&gt; LinkProtocols { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Client.LinkTextComponent.html">LinkTextComponent</a>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_MacroManager.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.MacroManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L39">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_MacroManager_" data-uid="Vintagestory.API.Client.ICoreClientAPI.MacroManager*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_MacroManager" data-uid="Vintagestory.API.Client.ICoreClientAPI.MacroManager">MacroManager</h4>
+  <div class="markdown level1 summary"><p>Api to the client side macros system</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMacroManager MacroManager { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IMacroManager.html">IMacroManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Network.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Network%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L135">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Network_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Network*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Network" data-uid="Vintagestory.API.Client.ICoreClientAPI.Network">Network</h4>
+  <div class="markdown level1 summary"><p>API for doing sending/receiving network packets</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientNetworkAPI Network { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IClientNetworkAPI.html">IClientNetworkAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_OpenedGuis.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.OpenedGuis%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L145">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_OpenedGuis_" data-uid="Vintagestory.API.Client.ICoreClientAPI.OpenedGuis*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_OpenedGuis" data-uid="Vintagestory.API.Client.ICoreClientAPI.OpenedGuis">OpenedGuis</h4>
+  <div class="markdown level1 summary"><p>Active GUI objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;object&gt; OpenedGuis { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_PlayerReadyFired.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.PlayerReadyFired%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L74">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_PlayerReadyFired_" data-uid="Vintagestory.API.Client.ICoreClientAPI.PlayerReadyFired*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_PlayerReadyFired" data-uid="Vintagestory.API.Client.ICoreClientAPI.PlayerReadyFired">PlayerReadyFired</h4>
+  <div class="markdown level1 summary"><p>True if all SendPlayerNowReady() was sent, signalling the player is now ready (called by the character selector upon submit)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool PlayerReadyFired { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Render.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Render%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L89">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Render_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Render*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Render" data-uid="Vintagestory.API.Client.ICoreClientAPI.Render">Render</h4>
+  <div class="markdown level1 summary"><p>API for Rendering stuff onto the screen using OpenGL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IRenderAPI Render { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IRenderAPI.html">IRenderAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Settings.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Settings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L29">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Settings_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Settings*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Settings" data-uid="Vintagestory.API.Client.ICoreClientAPI.Settings">Settings</h4>
+  <div class="markdown level1 summary"><p>The clients game settings as stored in the clientsettings.json</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISettings Settings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ISettings.html">ISettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Shader.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Shader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L130">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Shader_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Shader*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Shader" data-uid="Vintagestory.API.Client.ICoreClientAPI.Shader">Shader</h4>
+  <div class="markdown level1 summary"><p>API for Rendering stuff onto the screen using OpenGL</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IShaderAPI Shader { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IShaderAPI.html">IShaderAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_TagConverters.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.TagConverters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L24">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_TagConverters_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TagConverters*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_TagConverters" data-uid="Vintagestory.API.Client.ICoreClientAPI.TagConverters">TagConverters</h4>
+  <div class="markdown level1 summary"><p>Add your own rich text elements here. Your will need to convert a VTML tag into a RichTextComponentBase element. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;string, Tag2RichTextDelegate&gt; TagConverters { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.Tag2RichTextDelegate.html">Tag2RichTextDelegate</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_Tesselator.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.Tesselator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L109">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_Tesselator_" data-uid="Vintagestory.API.Client.ICoreClientAPI.Tesselator*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_Tesselator" data-uid="Vintagestory.API.Client.ICoreClientAPI.Tesselator">Tesselator</h4>
+  <div class="markdown level1 summary"><p>API for Meshing in the Mainthread. Thread safe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITesselatorAPI Tesselator { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ITesselatorAPI.html">ITesselatorAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_TesselatorManager.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.TesselatorManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L104">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_TesselatorManager_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TesselatorManager*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_TesselatorManager" data-uid="Vintagestory.API.Client.ICoreClientAPI.TesselatorManager">TesselatorManager</h4>
+  <div class="markdown level1 summary"><p>Holds the default meshes of all blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITesselatorManager TesselatorManager { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ITesselatorManager.html">ITesselatorManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_World.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.World%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L140">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_World_" data-uid="Vintagestory.API.Client.ICoreClientAPI.World*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_World" data-uid="Vintagestory.API.Client.ICoreClientAPI.World">World</h4>
+  <div class="markdown level1 summary"><p>API for accessing anything in the game world</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientWorldAccessor World { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IClientWorldAccessor.html">IClientWorldAccessor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_RegisterCommand_System_String_System_String_System_String_Vintagestory_API_Common_ClientChatCommandDelegate_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.RegisterCommand(System.String%2CSystem.String%2CSystem.String%2CVintagestory.API.Common.ClientChatCommandDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L163">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_RegisterCommand_" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterCommand*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_RegisterCommand_System_String_System_String_System_String_Vintagestory_API_Common_ClientChatCommandDelegate_" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ClientChatCommandDelegate)">RegisterCommand(String, String, String, ClientChatCommandDelegate)</h4>
+  <div class="markdown level1 summary"><p>Registers a chat command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RegisterCommand(string command, string descriptionMsg, string syntaxMsg, ClientChatCommandDelegate handler)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">descriptionMsg</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">syntaxMsg</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ClientChatCommandDelegate.html">ClientChatCommandDelegate</a></td>
+        <td><span class="parametername">handler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_RegisterCommand_Vintagestory_API_Common_ClientChatCommand_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.RegisterCommand(Vintagestory.API.Common.ClientChatCommand)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L153">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_RegisterCommand_" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterCommand*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_RegisterCommand_Vintagestory_API_Common_ClientChatCommand_" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterCommand(Vintagestory.API.Common.ClientChatCommand)">RegisterCommand(ClientChatCommand)</h4>
+  <div class="markdown level1 summary"><p>Registers a chat command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RegisterCommand(ClientChatCommand chatcommand)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ClientChatCommand.html">ClientChatCommand</a></td>
+        <td><span class="parametername">chatcommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_RegisterEntityRendererClass_System_String_Type_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.RegisterEntityRendererClass(System.String%2CType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L171">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_RegisterEntityRendererClass_" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterEntityRendererClass*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_RegisterEntityRendererClass_System_String_Type_" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterEntityRendererClass(System.String,Type)">RegisterEntityRendererClass(String, Type)</h4>
+  <div class="markdown level1 summary"><p>Registers an entity renderer for given entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterEntityRendererClass(string className, Type rendererType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">className</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">rendererType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_RegisterLinkProtocol_System_String_Action_Vintagestory_API_Client_LinkTextComponent__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.RegisterLinkProtocol(System.String%2CAction%7BVintagestory.API.Client.LinkTextComponent%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L178">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_RegisterLinkProtocol_" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterLinkProtocol*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_RegisterLinkProtocol_System_String_Action_Vintagestory_API_Client_LinkTextComponent__" data-uid="Vintagestory.API.Client.ICoreClientAPI.RegisterLinkProtocol(System.String,Action{Vintagestory.API.Client.LinkTextComponent})">RegisterLinkProtocol(String, Action&lt;LinkTextComponent&gt;)</h4>
+  <div class="markdown level1 summary"><p>Register a link protocol handler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterLinkProtocol(string protocolname, Action&lt;LinkTextComponent&gt; onLinkClicked)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">protocolname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Client.LinkTextComponent.html">LinkTextComponent</a>&gt;</td>
+        <td><span class="parametername">onLinkClicked</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_SendChatMessage_System_String_System_Int32_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.SendChatMessage(System.String%2CSystem.Int32%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L213">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_SendChatMessage_" data-uid="Vintagestory.API.Client.ICoreClientAPI.SendChatMessage*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_SendChatMessage_System_String_System_Int32_System_String_" data-uid="Vintagestory.API.Client.ICoreClientAPI.SendChatMessage(System.String,System.Int32,System.String)">SendChatMessage(String, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Sends a chat message to the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendChatMessage(string message, int groupId, string data = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">groupId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_SendChatMessage_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.SendChatMessage(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L220">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_SendChatMessage_" data-uid="Vintagestory.API.Client.ICoreClientAPI.SendChatMessage*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_SendChatMessage_System_String_System_String_" data-uid="Vintagestory.API.Client.ICoreClientAPI.SendChatMessage(System.String,System.String)">SendChatMessage(String, String)</h4>
+  <div class="markdown level1 summary"><p>Sends a chat message to the server in the players currently active channel</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendChatMessage(string message, string data = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_ShowChatMessage_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.ShowChatMessage(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L184">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_ShowChatMessage_" data-uid="Vintagestory.API.Client.ICoreClientAPI.ShowChatMessage*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_ShowChatMessage_System_String_" data-uid="Vintagestory.API.Client.ICoreClientAPI.ShowChatMessage(System.String)">ShowChatMessage(String)</h4>
+  <div class="markdown level1 summary"><p>Shows a client side only chat message in the current chat channel. Uses the same code paths a server =&gt; client message takes. Does not execute client commands.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ShowChatMessage(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_StartTrack_Vintagestory_API_Common_AssetLocation_System_Single_Vintagestory_API_Client_EnumSoundType_Action_Vintagestory_API_Client_ILoadedSound__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Common.AssetLocation%2CSystem.Single%2CVintagestory.API.Client.EnumSoundType%2CAction%7BVintagestory.API.Client.ILoadedSound%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L232">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_StartTrack_Vintagestory_API_Common_AssetLocation_System_Single_Vintagestory_API_Client_EnumSoundType_Action_Vintagestory_API_Client_ILoadedSound__" data-uid="Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Common.AssetLocation,System.Single,Vintagestory.API.Client.EnumSoundType,Action{Vintagestory.API.Client.ILoadedSound})">StartTrack(AssetLocation, Single, EnumSoundType, Action&lt;ILoadedSound&gt;)</h4>
+  <div class="markdown level1 summary"><p>Tells the music engine to load and immediately start given track once loaded, if the priority is higher than the currently playing track. May also be stopped while playing if another track with a higher priority is started.
+If you supply an onLoaded method the track is not started immediately and you can manually start it at any given time by calling sound.Start()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">MusicTrack StartTrack(AssetLocation soundLocation, float priority, EnumSoundType soundType, Action&lt;ILoadedSound&gt; onLoaded = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
+        <td><span class="parametername">soundLocation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">priority</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumSoundType.html">EnumSoundType</a></td>
+        <td><span class="parametername">soundType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Client.ILoadedSound.html">ILoadedSound</a>&gt;</td>
+        <td><span class="parametername">onLoaded</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MusicTrack.html">MusicTrack</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_TriggerChatMessage_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.TriggerChatMessage(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L205">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_TriggerChatMessage_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TriggerChatMessage*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_TriggerChatMessage_System_String_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TriggerChatMessage(System.String)">TriggerChatMessage(String)</h4>
+  <div class="markdown level1 summary"><p>Same as <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html#Vintagestory_API_Client_ICoreClientAPI_ShowChatMessage_System_String_">ShowChatMessage(String)</a> but will also execute client commands if they are prefixed with a dot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TriggerChatMessage(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_TriggerIngameDiscovery_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.TriggerIngameDiscovery(System.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L190">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_TriggerIngameDiscovery_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TriggerIngameDiscovery*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_TriggerIngameDiscovery_System_Object_System_String_System_String_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TriggerIngameDiscovery(System.Object,System.String,System.String)">TriggerIngameDiscovery(Object, String, String)</h4>
+  <div class="markdown level1 summary"><p>Triggers a discovery event. HudDiscoveryMessage registers to this event and fades in/out a &quot;discovery message&quot; on the players screen</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TriggerIngameDiscovery(object sender, string errorCode, string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">errorCode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI_TriggerIngameError_System_Object_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI.TriggerIngameError(System.Object%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L198">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_ICoreClientAPI_TriggerIngameError_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TriggerIngameError*"></a>
+  <h4 id="Vintagestory_API_Client_ICoreClientAPI_TriggerIngameError_System_Object_System_String_System_String_" data-uid="Vintagestory.API.Client.ICoreClientAPI.TriggerIngameError(System.Object,System.String,System.String)">TriggerIngameError(Object, String, String)</h4>
+  <div class="markdown level1 summary"><p>Triggers an in-game-error event. HudIngameError registers to this event and shows a vibrating red text on the players screen</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TriggerIngameError(object sender, string errorCode, string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">errorCode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_">VtmlUtilApiAdditions.RegisterVtmlTagConverter(ICoreAPI, String, Tag2RichTextDelegate)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ICoreClientAPI.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ICoreClientAPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ICoreClientAPI.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

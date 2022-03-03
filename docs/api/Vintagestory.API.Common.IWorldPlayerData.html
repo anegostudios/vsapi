@@ -1,0 +1,653 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IWorldPlayerData
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IWorldPlayerData
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IWorldPlayerData">
+  
+  
+  <h1 id="Vintagestory_API_Common_IWorldPlayerData" data-uid="Vintagestory.API.Common.IWorldPlayerData" class="text-break">Interface IWorldPlayerData
+  </h1>
+  <div class="markdown level0 summary"><p>Some world-specific information about a connected player. If you want modify any value, also broadcast the playerdata to all connected clients.
+This is the object that stored and loaded with the save game</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IWorldPlayerData_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IWorldPlayerData</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_AreaSelectionMode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.AreaSelectionMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L75">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_AreaSelectionMode_" data-uid="Vintagestory.API.Common.IWorldPlayerData.AreaSelectionMode*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_AreaSelectionMode" data-uid="Vintagestory.API.Common.IWorldPlayerData.AreaSelectionMode">AreaSelectionMode</h4>
+  <div class="markdown level1 summary"><p>Block selection mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AreaSelectionMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_CurrentGameMode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.CurrentGameMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L44">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_CurrentGameMode_" data-uid="Vintagestory.API.Common.IWorldPlayerData.CurrentGameMode*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_CurrentGameMode" data-uid="Vintagestory.API.Common.IWorldPlayerData.CurrentGameMode">CurrentGameMode</h4>
+  <div class="markdown level1 summary"><p>The players current game mode. Will return Spectator mode while the player is connecting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumGameMode CurrentGameMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumGameMode.html">EnumGameMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_Deaths.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.Deaths%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L78">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_Deaths_" data-uid="Vintagestory.API.Common.IWorldPlayerData.Deaths*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_Deaths" data-uid="Vintagestory.API.Common.IWorldPlayerData.Deaths">Deaths</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Deaths { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_DesiredViewDistance.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.DesiredViewDistance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L39">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_DesiredViewDistance_" data-uid="Vintagestory.API.Common.IWorldPlayerData.DesiredViewDistance*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_DesiredViewDistance" data-uid="Vintagestory.API.Common.IWorldPlayerData.DesiredViewDistance">DesiredViewDistance</h4>
+  <div class="markdown level1 summary"><p>The players desired viewing distance in blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int DesiredViewDistance { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_EntityControls.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.EntityControls%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L29">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_EntityControls_" data-uid="Vintagestory.API.Common.IWorldPlayerData.EntityControls*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_EntityControls" data-uid="Vintagestory.API.Common.IWorldPlayerData.EntityControls">EntityControls</h4>
+  <div class="markdown level1 summary"><p>The controls that moves around the EntityPlayer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EntityControls EntityControls { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_EntityPlayer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.EntityPlayer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L24">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_EntityPlayer_" data-uid="Vintagestory.API.Common.IWorldPlayerData.EntityPlayer*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_EntityPlayer" data-uid="Vintagestory.API.Common.IWorldPlayerData.EntityPlayer">EntityPlayer</h4>
+  <div class="markdown level1 summary"><p>The player entity this player is currently controlling</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EntityPlayer EntityPlayer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EntityPlayer.html">EntityPlayer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_FreeMove.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.FreeMove%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L50">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_FreeMove_" data-uid="Vintagestory.API.Common.IWorldPlayerData.FreeMove*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_FreeMove" data-uid="Vintagestory.API.Common.IWorldPlayerData.FreeMove">FreeMove</h4>
+  <div class="markdown level1 summary"><p>Whether the player can freely fly around</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool FreeMove { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_FreeMovePlaneLock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.FreeMovePlaneLock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L55">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_FreeMovePlaneLock_" data-uid="Vintagestory.API.Common.IWorldPlayerData.FreeMovePlaneLock*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_FreeMovePlaneLock" data-uid="Vintagestory.API.Common.IWorldPlayerData.FreeMovePlaneLock">FreeMovePlaneLock</h4>
+  <div class="markdown level1 summary"><p>Whether the player is forcefully kept on vertical or horizontal plane during freemove</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumFreeMovAxisLock FreeMovePlaneLock { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumFreeMovAxisLock.html">EnumFreeMovAxisLock</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_LastApprovedViewDistance.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.LastApprovedViewDistance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L34">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_LastApprovedViewDistance_" data-uid="Vintagestory.API.Common.IWorldPlayerData.LastApprovedViewDistance*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_LastApprovedViewDistance" data-uid="Vintagestory.API.Common.IWorldPlayerData.LastApprovedViewDistance">LastApprovedViewDistance</h4>
+  <div class="markdown level1 summary"><p>The players viewing distance in blocks that is allowed by the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int LastApprovedViewDistance { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_MoveSpeedMultiplier.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.MoveSpeedMultiplier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L65">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_MoveSpeedMultiplier_" data-uid="Vintagestory.API.Common.IWorldPlayerData.MoveSpeedMultiplier*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_MoveSpeedMultiplier" data-uid="Vintagestory.API.Common.IWorldPlayerData.MoveSpeedMultiplier">MoveSpeedMultiplier</h4>
+  <div class="markdown level1 summary"><p>The players movement speed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float MoveSpeedMultiplier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_NoClip.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.NoClip%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L60">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_NoClip_" data-uid="Vintagestory.API.Common.IWorldPlayerData.NoClip*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_NoClip" data-uid="Vintagestory.API.Common.IWorldPlayerData.NoClip">NoClip</h4>
+  <div class="markdown level1 summary"><p>Affected by collision boxes or not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool NoClip { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_PickingRange.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.PickingRange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L70">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_PickingRange_" data-uid="Vintagestory.API.Common.IWorldPlayerData.PickingRange*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_PickingRange" data-uid="Vintagestory.API.Common.IWorldPlayerData.PickingRange">PickingRange</h4>
+  <div class="markdown level1 summary"><p>Range of selectable blox</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float PickingRange { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_PlayerUID.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.PlayerUID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L19">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_PlayerUID_" data-uid="Vintagestory.API.Common.IWorldPlayerData.PlayerUID*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_PlayerUID" data-uid="Vintagestory.API.Common.IWorldPlayerData.PlayerUID">PlayerUID</h4>
+  <div class="markdown level1 summary"><p>The players unique identifier</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string PlayerUID { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_GetModdata_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.GetModdata(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L98">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_GetModdata_" data-uid="Vintagestory.API.Common.IWorldPlayerData.GetModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_GetModdata_System_String_" data-uid="Vintagestory.API.Common.IWorldPlayerData.GetModdata(System.String)">GetModdata(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieve arbitrary, permantly stored mod data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">byte[] GetModdata(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_RemoveModdata_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.RemoveModdata(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L91">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_RemoveModdata_" data-uid="Vintagestory.API.Common.IWorldPlayerData.RemoveModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_RemoveModdata_System_String_" data-uid="Vintagestory.API.Common.IWorldPlayerData.RemoveModdata(System.String)">RemoveModdata(String)</h4>
+  <div class="markdown level1 summary"><p>Removes the permanently stored mod data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveModdata(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData_SetModdata_System_String_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData.SetModdata(System.String%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L85">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldPlayerData_SetModdata_" data-uid="Vintagestory.API.Common.IWorldPlayerData.SetModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldPlayerData_SetModdata_System_String_System_Byte___" data-uid="Vintagestory.API.Common.IWorldPlayerData.SetModdata(System.String,System.Byte[])">SetModdata(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Allows setting of arbitrary, permanantly stored moddata attached to this player. Not synced to client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetModdata(string key, byte[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldPlayerData.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldPlayerData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Player/IWorldPlayerData.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

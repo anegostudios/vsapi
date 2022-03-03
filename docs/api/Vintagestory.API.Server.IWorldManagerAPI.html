@@ -1,0 +1,2640 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IWorldManagerAPI
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IWorldManagerAPI
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Server.IWorldManagerAPI">
+  
+  
+  <h1 id="Vintagestory_API_Server_IWorldManagerAPI" data-uid="Vintagestory.API.Server.IWorldManagerAPI" class="text-break">Interface IWorldManagerAPI
+  </h1>
+  <div class="markdown level0 summary"><p>Methods to modify the game world</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Server.html">Vintagestory.API.Server</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Server_IWorldManagerAPI_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IWorldManagerAPI</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_AllLoadedChunks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.AllLoadedChunks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L65">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_AllLoadedChunks_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AllLoadedChunks*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_AllLoadedChunks" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AllLoadedChunks">AllLoadedChunks</h4>
+  <div class="markdown level1 summary"><p>Returns a (cloned) list of all currently loaded chunks. The key is the 3d index of the chunk, can be turned into an x/y/z coord. Warning: This locks the loaded chunk dictionary during the clone, preventing other threads from updating it. In other words: Using this method often will have a significant performance impact.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;long, IServerChunk&gt; AllLoadedChunks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int64</span>, <a class="xref" href="Vintagestory.API.Server.IServerChunk.html">IServerChunk</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_AllLoadedMapchunks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L55">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_AllLoadedMapchunks_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_AllLoadedMapchunks" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks">AllLoadedMapchunks</h4>
+  <div class="markdown level1 summary"><p>Returns a (cloned) list of all currently loaded map chunks. The key is the 2d index of the map chunk, can be turned into an x/z coord</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;long, IMapChunk&gt; AllLoadedMapchunks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int64</span>, <a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_AllLoadedMapRegions.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapRegions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L60">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_AllLoadedMapRegions_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapRegions*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_AllLoadedMapRegions" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapRegions">AllLoadedMapRegions</h4>
+  <div class="markdown level1 summary"><p>Returns a (cloned) list of all currently loaded map regions. The key is the 2d index of the map region, can be turned into an x/z coord</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;long, IMapRegion&gt; AllLoadedMapRegions { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int64</span>, <a class="xref" href="Vintagestory.API.Common.IMapRegion.html">IMapRegion</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_AutoGenerateChunks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.AutoGenerateChunks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L185">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_AutoGenerateChunks_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AutoGenerateChunks*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_AutoGenerateChunks" data-uid="Vintagestory.API.Server.IWorldManagerAPI.AutoGenerateChunks">AutoGenerateChunks</h4>
+  <div class="markdown level1 summary"><p>Completely disables automatic generation of chunks that normally builds up a radius of chunks around the player. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool AutoGenerateChunks { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_ChunkSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.ChunkSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L345">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_ChunkSize_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.ChunkSize*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_ChunkSize" data-uid="Vintagestory.API.Server.IWorldManagerAPI.ChunkSize">ChunkSize</h4>
+  <div class="markdown level1 summary"><p>Width/Length/Height in blocks of a chunk on the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ChunkSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_CurrentGeneratingChunkCount.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.CurrentGeneratingChunkCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L70">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_CurrentGeneratingChunkCount_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentGeneratingChunkCount*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_CurrentGeneratingChunkCount" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentGeneratingChunkCount">CurrentGeneratingChunkCount</h4>
+  <div class="markdown level1 summary"><p>Amount of chunk columns currently in the generating queue</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int CurrentGeneratingChunkCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_CurrentPlayStyle.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.CurrentPlayStyle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L80">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_CurrentPlayStyle_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentPlayStyle*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_CurrentPlayStyle" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentPlayStyle">CurrentPlayStyle</h4>
+  <div class="markdown level1 summary"><p>The currently selected playstyle</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">PlayStyle CurrentPlayStyle { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.PlayStyle.html">PlayStyle</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_CurrentWorldName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L361">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_CurrentWorldName_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldName*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_CurrentWorldName" data-uid="Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldName">CurrentWorldName</h4>
+  <div class="markdown level1 summary"><p>The current world filename</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string CurrentWorldName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_DefaultSpawnPosition.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.DefaultSpawnPosition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L368">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_DefaultSpawnPosition_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.DefaultSpawnPosition*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_DefaultSpawnPosition" data-uid="Vintagestory.API.Server.IWorldManagerAPI.DefaultSpawnPosition">DefaultSpawnPosition</h4>
+  <div class="markdown level1 summary"><p>Retrieves the default spawnpoint (x/y/z coordinate)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int[] DefaultSpawnPosition { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><p>Default spawnpoint</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapSizeX.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapSizeX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L313">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapSizeX_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapSizeX*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapSizeX" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapSizeX">MapSizeX</h4>
+  <div class="markdown level1 summary"><p>Width of the current world</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MapSizeX { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapSizeY.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapSizeY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L319">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapSizeY_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapSizeY*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapSizeY" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapSizeY">MapSizeY</h4>
+  <div class="markdown level1 summary"><p>Height of the current world</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MapSizeY { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapSizeZ.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapSizeZ%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L325">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapSizeZ_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapSizeZ*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapSizeZ" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapSizeZ">MapSizeZ</h4>
+  <div class="markdown level1 summary"><p>Length of the current world</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MapSizeZ { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_RegionSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.RegionSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L339">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_RegionSize_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.RegionSize*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_RegionSize" data-uid="Vintagestory.API.Server.IWorldManagerAPI.RegionSize">RegionSize</h4>
+  <div class="markdown level1 summary"><p>Width/Length/Height in blocks of a region on the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int RegionSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SaveGame.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SaveGame%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L75">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SaveGame_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SaveGame*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SaveGame" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SaveGame">SaveGame</h4>
+  <div class="markdown level1 summary"><p>The worlds savegame object. If you change these values they will be permanently stored</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ISaveGame SaveGame { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.ISaveGame.html">ISaveGame</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_Seed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.Seed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L352">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_Seed_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.Seed*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_Seed" data-uid="Vintagestory.API.Server.IWorldManagerAPI.Seed">Seed</h4>
+  <div class="markdown level1 summary"><p>Get the seed used to generate the current world</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Seed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The map seed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SendChunks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SendChunks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L190">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SendChunks_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SendChunks*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SendChunks" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SendChunks">SendChunks</h4>
+  <div class="markdown level1 summary"><p>Disables sending of normal chunks to all players except for force loaded ones using ForceLoadChunkColumn</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SendChunks { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_BroadcastChunk_System_Int32_System_Int32_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.BroadcastChunk(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L263">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_BroadcastChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BroadcastChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_BroadcastChunk_System_Int32_System_Int32_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BroadcastChunk(System.Int32,System.Int32,System.Int32,System.Boolean)">BroadcastChunk(Int32, Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Send or Resend a loaded chunk to all connected players. Has no effect when the chunk is not loaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void BroadcastChunk(int chunkX, int chunkY, int chunkZ, bool onlyIfInRange = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">onlyIfInRange</span></td>
+        <td><p>If true, the chunk will not be sent to connected players that are out of range from that chunk</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_ChunkIndex3D_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.ChunkIndex3D(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L155">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_ChunkIndex3D_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.ChunkIndex3D*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_ChunkIndex3D_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.ChunkIndex3D(System.Int32,System.Int32,System.Int32)">ChunkIndex3D(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long ChunkIndex3D(int chunkX, int chunkY, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_DeleteChunkColumn_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.DeleteChunkColumn(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L307">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_DeleteChunkColumn_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.DeleteChunkColumn*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_DeleteChunkColumn_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.DeleteChunkColumn(System.Int32,System.Int32)">DeleteChunkColumn(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Deletes a column of chunks at given coordinate from the save file. Also deletes the map chunk and map region at the same coordinate. Also unloads the chunk in the same process. Also deletes all entities in this chunk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DeleteChunkColumn(int chunkX, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_FullRelight_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L417">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_FullRelight_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.FullRelight*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_FullRelight_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)">FullRelight(BlockPos, BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Does a complete relighting of the cuboid deliminated by given min/max pos. Completely resends all affected chunk columns to all connected nearby clients.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FullRelight(BlockPos minPos, BlockPos maxPos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">minPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">maxPos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessor_System_Boolean_System_Boolean_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessor(System.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L435">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessor_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessor*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessor_System_Boolean_System_Boolean_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">GetBlockAccessor(Boolean, Boolean, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Retrieve a customized interface to access blocks in the loaded game world.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBlockAccessor GetBlockAccessor(bool synchronize, bool relight, bool strict, bool debug = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">synchronize</span></td>
+        <td><p>Whether or not a call to Setblock should send the update also to all connected clients</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">relight</span></td>
+        <td><p>Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">strict</span></td>
+        <td><p>Log an error message if GetBlock/SetBlock was called to an unloaded chunk</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">debug</span></td>
+        <td><p>If strict, crashes the server if a unloaded chunk was crashed, prints an exception and exports a png image of the current loaded chunks</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorBulkUpdate_System_Boolean_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorBulkUpdate(System.Boolean%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L446">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorBulkUpdate_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorBulkUpdate*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorBulkUpdate_System_Boolean_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorBulkUpdate(System.Boolean,System.Boolean,System.Boolean)">GetBlockAccessorBulkUpdate(Boolean, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Retrieve a customized interface to access blocks in the loaded game world. Does not to relight/sync on a SetBlock until Commit() is called. On commit all touched blocks are relit/synced at once. This method should be used when setting many blocks (e.g. tree generation, explosion, etc.).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBulkBlockAccessor GetBlockAccessorBulkUpdate(bool synchronize, bool relight, bool debug = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">synchronize</span></td>
+        <td><p>Whether or not a call to Setblock should send the update also to all connected clients</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">relight</span></td>
+        <td><p>Whether or not to relight the chunk after the a call to SetBlock and the light values changed by that</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">debug</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBulkBlockAccessor.html">IBulkBlockAccessor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorPrefetch_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorPrefetch(System.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L466">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorPrefetch_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorPrefetch*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorPrefetch_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorPrefetch(System.Boolean,System.Boolean)">GetBlockAccessorPrefetch(Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Same as GetBlockAccessor but you have to call PrefetchBlocks() before using GetBlock(). It pre-loads all blocks in given area resulting in faster GetBlock() access</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBlockAccessorPrefetch GetBlockAccessorPrefetch(bool synchronize, bool relight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">synchronize</span></td>
+        <td><p>Whether or not a call to Setblock should send the update also to all connected clients</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">relight</span></td>
+        <td><p>Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessorPrefetch.html">IBlockAccessorPrefetch</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorRevertable_System_Boolean_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorRevertable(System.Boolean%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L457">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorRevertable_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorRevertable*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockAccessorRevertable_System_Boolean_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorRevertable(System.Boolean,System.Boolean,System.Boolean)">GetBlockAccessorRevertable(Boolean, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IBlockAccessorRevertable GetBlockAccessorRevertable(bool synchronize, bool relight, bool debug = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">synchronize</span></td>
+        <td><p>Whether or not a call to Setblock should send the update also to all connected clients</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">relight</span></td>
+        <td><p>Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">debug</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessorRevertable.html">IBlockAccessorRevertable</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetBlockId_Vintagestory_API_Common_AssetLocation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetBlockId(Vintagestory.API.Common.AssetLocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L390">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockId_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockId*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetBlockId_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetBlockId(Vintagestory.API.Common.AssetLocation)">GetBlockId(AssetLocation)</h4>
+  <div class="markdown level1 summary"><p>Get the ID of a certain BlockType</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetBlockId(AssetLocation name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>Name of the BlockType</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>ID of the BlockType</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetCachingBlockAccessor_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetCachingBlockAccessor(System.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L476">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetCachingBlockAccessor_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetCachingBlockAccessor*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetCachingBlockAccessor_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetCachingBlockAccessor(System.Boolean,System.Boolean)">GetCachingBlockAccessor(Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Same as the normal block accessor but remembers the previous chunk that was accessed. This can give you a 10-50% performance boosts when you scan many blocks in tight loops
+DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling it can cause the game to crash</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ICachingBlockAccessor GetCachingBlockAccessor(bool synchronize, bool relight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">synchronize</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">relight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ICachingBlockAccessor.html">ICachingBlockAccessor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetChunk_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetChunk(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L146">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetChunk_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetChunk(System.Int32,System.Int32,System.Int32)">GetChunk(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the Server chunk at given coordinate. Returns null if it&apos;s not loaded or does not exist yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerChunk GetChunk(int chunkX, int chunkY, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerChunk.html">IServerChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetChunk_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetChunk(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L168">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetChunk_System_Int64_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetChunk(System.Int64)">GetChunk(Int64)</h4>
+  <div class="markdown level1 summary"><p>Gets the Server chunk at given coordinate. Returns null if it&apos;s not loaded or does not exist yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerChunk GetChunk(long index3d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerChunk.html">IServerChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetChunk_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetChunk(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L153">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetChunk_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetChunk(Vintagestory.API.MathTools.BlockPos)">GetChunk(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Gets the Server chunk at given coordinate. Returns null if it&apos;s not loaded or does not exist yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerChunk GetChunk(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerChunk.html">IServerChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetMapChunk_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetMapChunk(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L130">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetMapChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetMapChunk_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapChunk(System.Int32,System.Int32)">GetMapChunk(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the Server map chunk at given coordinate. Returns null if it&apos;s not loaded or does not exist yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerMapChunk GetMapChunk(int chunkX, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IServerMapChunk.html">IServerMapChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetMapChunk_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetMapChunk(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L137">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetMapChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetMapChunk_System_Int64_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapChunk(System.Int64)">GetMapChunk(Int64)</h4>
+  <div class="markdown level1 summary"><p>Gets the Server map chunk at given coordinate index. Returns null if it&apos;s not loaded or does not exist yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapChunk GetMapChunk(long index2d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">index2d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetMapRegion_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetMapRegion(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L115">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetMapRegion_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapRegion*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetMapRegion_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapRegion(System.Int32,System.Int32)">GetMapRegion(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the Server map region at given coordinate. Returns null if it&apos;s not loaded or does not exist yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapRegion GetMapRegion(int regionX, int regionZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regionX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regionZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapRegion.html">IMapRegion</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetMapRegion_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetMapRegion(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L122">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetMapRegion_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapRegion*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetMapRegion_System_Int64_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetMapRegion(System.Int64)">GetMapRegion(Int64)</h4>
+  <div class="markdown level1 summary"><p>Gets the Server map region at given coordinate. Returns null if it&apos;s not loaded or does not exist yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapRegion GetMapRegion(long index2d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">index2d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapRegion.html">IMapRegion</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetNextUniqueId.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetNextUniqueId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L180">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetNextUniqueId_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetNextUniqueId*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetNextUniqueId" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetNextUniqueId">GetNextUniqueId()</h4>
+  <div class="markdown level1 summary"><p>Returns a number that is guaranteed to be unique for the current world every time it is called. Curently use for entity herding behavior.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long GetNextUniqueId()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_GetSurfacePosY_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.GetSurfacePosY(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L333">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_GetSurfacePosY_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetSurfacePosY*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_GetSurfacePosY_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.GetSurfacePosY(System.Int32,System.Int32)">GetSurfacePosY(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Finds the first y position that is solid ground to stand on. Returns null if the chunk is not loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int? GetSurfacePosY(int posX, int posZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_HasChunk_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_IServerPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.HasChunk(System.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.Server.IServerPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L273">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_HasChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.HasChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_HasChunk_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_IServerPlayer_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.HasChunk(System.Int32,System.Int32,System.Int32,Vintagestory.API.Server.IServerPlayer)">HasChunk(Int32, Int32, Int32, IServerPlayer)</h4>
+  <div class="markdown level1 summary"><p>Returns true if the server sent chunk at given coords to player and has it not unloaded yet</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool HasChunk(int chunkX, int chunkY, int chunkZ, IServerPlayer player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumn_System_Int32_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumn(System.Int32%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L237">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumn_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumn*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumn_System_Int32_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumn(System.Int32,System.Int32,System.Boolean)">LoadChunkColumn(Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Asynchronly normal priority load a chunk column at given coordinate. No effect when already loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LoadChunkColumn(int chunkX, int chunkZ, bool keepLoaded = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">keepLoaded</span></td>
+        <td><p>If true, the chunk will never get unloaded unless UnloadChunkColumn() is called</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnFast_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.Server.ChunkLoadOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L218">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnFast_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnFast_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast(System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)">LoadChunkColumnFast(Int32, Int32, Int32, Int32, ChunkLoadOptions)</h4>
+  <div class="markdown level1 summary"><p>Asynchronly high priority load an area of chunk columns at given coordinates. Make sure that X1&lt;=X2 and Z1&lt;=Z2</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LoadChunkColumnFast(int chunkX1, int chunkZ1, int chunkX2, int chunkZ2, ChunkLoadOptions options = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.ChunkLoadOptions.html">ChunkLoadOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Additional loading options</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnFast_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast(System.Int32%2CSystem.Int32%2CVintagestory.API.Server.ChunkLoadOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L199">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnFast_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnFast_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast(System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)">LoadChunkColumnFast(Int32, Int32, ChunkLoadOptions)</h4>
+  <div class="markdown level1 summary"><p>Asynchronly high priority load a chunk column at given coordinate. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LoadChunkColumnFast(int chunkX, int chunkZ, ChunkLoadOptions options = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.ChunkLoadOptions.html">ChunkLoadOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Additional loading options</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnPriority_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.Server.ChunkLoadOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L229">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnPriority_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnPriority_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority(System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)">LoadChunkColumnPriority(Int32, Int32, Int32, Int32, ChunkLoadOptions)</h4>
+  <div class="markdown level1 summary"><p>Asynchronly high priority load an area of chunk columns at given coordinates. Make sure that X1&lt;=X2 and Z1&lt;=Z2</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LoadChunkColumnPriority(int chunkX1, int chunkZ1, int chunkX2, int chunkZ2, ChunkLoadOptions options = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ1</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ2</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.ChunkLoadOptions.html">ChunkLoadOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Additional loading options</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnPriority_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority(System.Int32%2CSystem.Int32%2CVintagestory.API.Server.ChunkLoadOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L208">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnPriority_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnPriority_System_Int32_System_Int32_Vintagestory_API_Server_ChunkLoadOptions_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority(System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)">LoadChunkColumnPriority(Int32, Int32, ChunkLoadOptions)</h4>
+  <div class="markdown level1 summary"><p>Asynchronly high priority load a chunk column at given coordinate. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LoadChunkColumnPriority(int chunkX, int chunkZ, ChunkLoadOptions options = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.ChunkLoadOptions.html">ChunkLoadOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td><p>Additional loading options</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapChunkIndex2D_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapChunkIndex2D(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L161">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapChunkIndex2D_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapChunkIndex2D*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapChunkIndex2D_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapChunkIndex2D(System.Int32,System.Int32)">MapChunkIndex2D(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long MapChunkIndex2D(int chunkX, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapChunkPosFromChunkIndex2D_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapChunkPosFromChunkIndex2D(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L160">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapChunkPosFromChunkIndex2D_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapChunkPosFromChunkIndex2D*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapChunkPosFromChunkIndex2D_System_Int64_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapChunkPosFromChunkIndex2D(System.Int64)">MapChunkPosFromChunkIndex2D(Int64)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vec2i MapChunkPosFromChunkIndex2D(long index2d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">index2d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapRegionIndex2D_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapRegionIndex2D(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L156">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapRegionIndex2D_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapRegionIndex2D*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapRegionIndex2D_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapRegionIndex2D(System.Int32,System.Int32)">MapRegionIndex2D(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long MapRegionIndex2D(int regionX, int regionZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regionX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regionZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapRegionIndex2DByBlockPos_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapRegionIndex2DByBlockPos(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L157">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapRegionIndex2DByBlockPos_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapRegionIndex2DByBlockPos*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapRegionIndex2DByBlockPos_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapRegionIndex2DByBlockPos(System.Int32,System.Int32)">MapRegionIndex2DByBlockPos(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long MapRegionIndex2DByBlockPos(int posX, int posZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_MapRegionPosFromIndex2D_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.MapRegionPosFromIndex2D(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L158">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_MapRegionPosFromIndex2D_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapRegionPosFromIndex2D*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_MapRegionPosFromIndex2D_System_Int64_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.MapRegionPosFromIndex2D(System.Int64)">MapRegionPosFromIndex2D(Int64)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vec3i MapRegionPosFromIndex2D(long index2d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">index2d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_PeekChunkColumn_System_Int32_System_Int32_Vintagestory_API_Server_ChunkPeekOptions_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.PeekChunkColumn(System.Int32%2CSystem.Int32%2CVintagestory.API.Server.ChunkPeekOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L246">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_PeekChunkColumn_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.PeekChunkColumn*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_PeekChunkColumn_System_Int32_System_Int32_Vintagestory_API_Server_ChunkPeekOptions_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.PeekChunkColumn(System.Int32,System.Int32,Vintagestory.API.Server.ChunkPeekOptions)">PeekChunkColumn(Int32, Int32, ChunkPeekOptions)</h4>
+  <div class="markdown level1 summary"><p>Generates chunk at given coordinate, completely bypassing any existing world data and caching methods, in other words generates, a chunk from scratch without keeping it in the list of loaded chunks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PeekChunkColumn(int chunkX, int chunkZ, ChunkPeekOptions options)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.ChunkPeekOptions.html">ChunkPeekOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_ResendMapChunk_System_Int32_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.ResendMapChunk(System.Int32%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L291">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_ResendMapChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.ResendMapChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_ResendMapChunk_System_Int32_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.ResendMapChunk(System.Int32,System.Int32,System.Boolean)">ResendMapChunk(Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Send or resent a loaded map chunk to all connected players. Has no effect when the map chunk is not loaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ResendMapChunk(int chunkX, int chunkZ, bool onlyIfInRange)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">onlyIfInRange</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SendChunk_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_IServerPlayer_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SendChunk(System.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.Server.IServerPlayer%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L282">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SendChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SendChunk*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SendChunk_System_Int32_System_Int32_System_Int32_Vintagestory_API_Server_IServerPlayer_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SendChunk(System.Int32,System.Int32,System.Int32,Vintagestory.API.Server.IServerPlayer,System.Boolean)">SendChunk(Int32, Int32, Int32, IServerPlayer, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Send or Resend a loaded chunk to a connected player. Has no effect when the chunk is not loaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendChunk(int chunkX, int chunkY, int chunkZ, IServerPlayer player, bool onlyIfInRange = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">onlyIfInRange</span></td>
+        <td><p>If true, the chunk will not be sent to connected players that are out of range from that chunk</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SetBlockLightLevels_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SetBlockLightLevels(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L86">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SetBlockLightLevels_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetBlockLightLevels*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SetBlockLightLevels_System_Single___" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetBlockLightLevels(System.Single[])">SetBlockLightLevels(Single[])</h4>
+  <div class="markdown level1 summary"><p>Allows setting a 32 float array that defines the brightness of each block light level. Has to be set before any players join or any chunks are generated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBlockLightLevels(float[] lightLevels)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">lightLevels</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SetDefaultSpawnPosition_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SetDefaultSpawnPosition(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L376">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SetDefaultSpawnPosition_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetDefaultSpawnPosition*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SetDefaultSpawnPosition_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetDefaultSpawnPosition(System.Int32,System.Int32,System.Int32)">SetDefaultSpawnPosition(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Permanently sets the default spawnpoint</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetDefaultSpawnPosition(int x, int y, int z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>X coordinate of new spawnpoint</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>Y coordinate of new spawnpoint</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">z</span></td>
+        <td><p>Z coordinate of new spawnpoint</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SetSeaLevel_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SetSeaLevel(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L104">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SetSeaLevel_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetSeaLevel*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SetSeaLevel_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetSeaLevel(System.Int32)">SetSeaLevel(Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the default sea level for the world to be generated. Currently used by the client to calculate the correct temperature/rainfall values for climate tinting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetSeaLevel(int sealevel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">sealevel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SetSunBrightness_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SetSunBrightness(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L98">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SetSunBrightness_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetSunBrightness*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SetSunBrightness_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetSunBrightness(System.Int32)">SetSunBrightness(Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the default light range of sunlight. Default is 24. Has to be set before any players join or any chunks are generated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetSunBrightness(int lightlevel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lightlevel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SetSunLightLevels_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SetSunLightLevels(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L92">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SetSunLightLevels_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetSunLightLevels*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SetSunLightLevels_System_Single___" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SetSunLightLevels(System.Single[])">SetSunLightLevels(Single[])</h4>
+  <div class="markdown level1 summary"><p>Allows setting a 32 float array that defines the brightness of each sun light level. Has to be set before any players join or any chunks are generated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetSunLightLevels(float[] lightLevels)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">lightLevels</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SunFloodChunkColumnForWorldGen_Vintagestory_API_Common_IWorldChunk___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SunFloodChunkColumnForWorldGen(Vintagestory.API.Common.IWorldChunk%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L401">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SunFloodChunkColumnForWorldGen_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SunFloodChunkColumnForWorldGen*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SunFloodChunkColumnForWorldGen_Vintagestory_API_Common_IWorldChunk___System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SunFloodChunkColumnForWorldGen(Vintagestory.API.Common.IWorldChunk[],System.Int32,System.Int32)">SunFloodChunkColumnForWorldGen(IWorldChunk[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Floods the chunk column with sunlight. Only works on full chunk columns.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SunFloodChunkColumnForWorldGen(IWorldChunk[] chunks, int chunkX, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a>[]</td>
+        <td><span class="parametername">chunks</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_SunFloodChunkColumnNeighboursForWorldGen_Vintagestory_API_Common_IWorldChunk___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.SunFloodChunkColumnNeighboursForWorldGen(Vintagestory.API.Common.IWorldChunk%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L409">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_SunFloodChunkColumnNeighboursForWorldGen_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SunFloodChunkColumnNeighboursForWorldGen*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_SunFloodChunkColumnNeighboursForWorldGen_Vintagestory_API_Common_IWorldChunk___System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.SunFloodChunkColumnNeighboursForWorldGen(Vintagestory.API.Common.IWorldChunk[],System.Int32,System.Int32)">SunFloodChunkColumnNeighboursForWorldGen(IWorldChunk[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Spreads the chunk columns light into neighbour chunks and vice versa. Only works on full chunk columns.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SunFloodChunkColumnNeighboursForWorldGen(IWorldChunk[] chunks, int chunkX, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a>[]</td>
+        <td><span class="parametername">chunks</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_TestChunkExists_System_Int32_System_Int32_System_Int32_Action_System_Boolean__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.TestChunkExists(System.Int32%2CSystem.Int32%2CSystem.Int32%2CAction%7BSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L254">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_TestChunkExists_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.TestChunkExists*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_TestChunkExists_System_Int32_System_Int32_System_Int32_Action_System_Boolean__" data-uid="Vintagestory.API.Server.IWorldManagerAPI.TestChunkExists(System.Int32,System.Int32,System.Int32,Action{System.Boolean})">TestChunkExists(Int32, Int32, Int32, Action&lt;Boolean&gt;)</h4>
+  <div class="markdown level1 summary"><p>Asynchrounly checks if this chunk is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TestChunkExists(int chunkX, int chunkY, int chunkZ, Action&lt;bool&gt; onTested)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">onTested</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI_UnloadChunkColumn_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI.UnloadChunkColumn(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L300">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_UnloadChunkColumn_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.UnloadChunkColumn*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldManagerAPI_UnloadChunkColumn_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.UnloadChunkColumn(System.Int32,System.Int32)">UnloadChunkColumn(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Unloads a column of chunks at given coordinate independent of any nearby players and sends an appropriate unload packet to the player</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UnloadChunkColumn(int chunkX, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldManagerAPI.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldManagerAPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IWorldManagerAPI.cs/#L50" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

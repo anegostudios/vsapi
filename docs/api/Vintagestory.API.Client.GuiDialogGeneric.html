@@ -1,0 +1,584 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GuiDialogGeneric
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GuiDialogGeneric
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.GuiDialogGeneric">
+  
+  
+  <h1 id="Vintagestory_API_Client_GuiDialogGeneric" data-uid="Vintagestory.API.Client.GuiDialogGeneric" class="text-break">Class GuiDialogGeneric
+  </h1>
+  <div class="markdown level0 summary"><p>Mainly used for block entity based guis</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Vintagestory.API.Client.GuiDialog.html">GuiDialog</a></div>
+    <div class="level2"><span class="xref">GuiDialogGeneric</span></div>
+      <div class="level3"><a class="xref" href="Vintagestory.API.Client.GuiDialogBlockEntity.html">GuiDialogBlockEntity</a></div>
+      <div class="level3"><a class="xref" href="Vintagestory.API.Client.GuiJsonDialog.html">GuiJsonDialog</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Composers">GuiDialog.Composers</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_SingleComposer">GuiDialog.SingleComposer</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DebugName">GuiDialog.DebugName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ZSize">GuiDialog.ZSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ignoreNextKeyPress">GuiDialog.ignoreNextKeyPress</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_opened">GuiDialog.opened</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_focused">GuiDialog.focused</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focused">GuiDialog.Focused</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focusable">GuiDialog.Focusable</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DialogType">GuiDialog.DialogType</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOpened">GuiDialog.OnOpened</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnClosed">GuiDialog.OnClosed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_capi">GuiDialog.capi</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnFocusChanged_System_Boolean_">GuiDialog.OnFocusChanged(Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded">GuiDialog.OnBlockTexturesLoaded()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnLevelFinalize">GuiDialog.OnLevelFinalize()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived">GuiDialog.OnOwnPlayerDataReceived()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DrawOrder">GuiDialog.DrawOrder</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_InputOrder">GuiDialog.InputOrder</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnGuiOpened">GuiDialog.OnGuiOpened()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnGuiClosed">GuiDialog.OnGuiClosed()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryOpen">GuiDialog.TryOpen()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryClose">GuiDialog.TryClose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_UnFocus">GuiDialog.UnFocus()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focus">GuiDialog.Focus()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Toggle">GuiDialog.Toggle()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened">GuiDialog.IsOpened()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened_System_String_">GuiDialog.IsOpened(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_System_Single_">GuiDialog.OnBeforeRenderFrame3D(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_MouseOverCursor">GuiDialog.MouseOverCursor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnRenderGUI_System_Single_">GuiDialog.OnRenderGUI(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnFinalizeFrame_System_Single_">GuiDialog.OnFinalizeFrame(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyDown_Vintagestory_API_Client_KeyEvent_">GuiDialog.OnKeyDown(KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyPress_Vintagestory_API_Client_KeyEvent_">GuiDialog.OnKeyPress(KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyUp_Vintagestory_API_Client_KeyEvent_">GuiDialog.OnKeyUp(KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnEscapePressed">GuiDialog.OnEscapePressed()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_">GuiDialog.OnMouseEnterSlot(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_">GuiDialog.OnMouseLeaveSlot(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_Vintagestory_API_Common_ItemSlot_">GuiDialog.OnMouseClickSlot(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseDown_Vintagestory_API_Client_MouseEvent_">GuiDialog.OnMouseDown(MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseUp_Vintagestory_API_Client_MouseEvent_">GuiDialog.OnMouseUp(MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseMove_Vintagestory_API_Client_MouseEvent_">GuiDialog.OnMouseMove(MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_">GuiDialog.OnMouseWheel(MouseWheelEventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents">GuiDialog.ShouldReceiveRenderEvents()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents">GuiDialog.ShouldReceiveKeyboardEvents()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents">GuiDialog.ShouldReceiveMouseEvents()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_PrefersUngrabbedMouse">GuiDialog.PrefersUngrabbedMouse</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse">GuiDialog.RequiresUngrabbedMouse()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DisableMouseGrab">GuiDialog.DisableMouseGrab</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureAllInputs">GuiDialog.CaptureAllInputs()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Dispose">GuiDialog.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ClearComposers">GuiDialog.ClearComposers()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_GuiDialogGeneric_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class GuiDialogGeneric : GuiDialog</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric__ctor_System_String_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.%23ctor(System.String%2CVintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L34">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric__ctor_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.#ctor*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric__ctor_System_String_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.#ctor(System.String,Vintagestory.API.Client.ICoreClientAPI)">GuiDialogGeneric(String, ICoreClientAPI)</h4>
+  <div class="markdown level1 summary"><p>Constructor for a generic Dialog.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiDialogGeneric(string DialogTitle, ICoreClientAPI capi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">DialogTitle</span></td>
+        <td><p>The title of the dialog.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The Client API</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_DialogTitle.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.DialogTitle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L17">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_DialogTitle" data-uid="Vintagestory.API.Client.GuiDialogGeneric.DialogTitle">DialogTitle</h4>
+  <div class="markdown level1 summary"><p>The title of the Dialog.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DialogTitle</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_Attributes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.Attributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L27">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric_Attributes_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.Attributes*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_Attributes" data-uid="Vintagestory.API.Client.GuiDialogGeneric.Attributes">Attributes</h4>
+  <div class="markdown level1 summary"><p>The tree attributes for this dialog.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ITreeAttribute Attributes { get; protected set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_ToggleKeyCombinationCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.ToggleKeyCombinationCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L39">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric_ToggleKeyCombinationCode_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.ToggleKeyCombinationCode*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_ToggleKeyCombinationCode" data-uid="Vintagestory.API.Client.GuiDialogGeneric.ToggleKeyCombinationCode">ToggleKeyCombinationCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToggleKeyCombinationCode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ToggleKeyCombinationCode">GuiDialog.ToggleKeyCombinationCode</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_UnregisterOnClose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.UnregisterOnClose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L22">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric_UnregisterOnClose_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.UnregisterOnClose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_UnregisterOnClose" data-uid="Vintagestory.API.Client.GuiDialogGeneric.UnregisterOnClose">UnregisterOnClose</h4>
+  <div class="markdown level1 summary"><p>Should this Dialog de-register itself once closed?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool UnregisterOnClose { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_UnregisterOnClose">GuiDialog.UnregisterOnClose</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_FocusElement_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.FocusElement(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L70">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric_FocusElement_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.FocusElement*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_FocusElement_System_Int32_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.FocusElement(System.Int32)">FocusElement(Int32)</h4>
+  <div class="markdown level1 summary"><p>Focuses a specific element in the single composer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FocusElement(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>Index of the element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_IsInRangeOfBlock_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L80">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric_IsInRangeOfBlock_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_IsInRangeOfBlock_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)">IsInRangeOfBlock(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Checks if the player is in range of the block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsInRangeOfBlock(BlockPos blockEntityPos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">blockEntityPos</span></td>
+        <td><p>The block&apos;s position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>In range or no?</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_Recompose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.Recompose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L47">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric_Recompose_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.Recompose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_Recompose" data-uid="Vintagestory.API.Client.GuiDialogGeneric.Recompose">Recompose()</h4>
+  <div class="markdown level1 summary"><p>Recomposes the dialog with it&apos;s set of elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Recompose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric_UnfocusElements.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L58">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiDialogGeneric_UnfocusElements_" data-uid="Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements*"></a>
+  <h4 id="Vintagestory_API_Client_GuiDialogGeneric_UnfocusElements" data-uid="Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements">UnfocusElements()</h4>
+  <div class="markdown level1 summary"><p>Unfocuses the elements in each composer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void UnfocusElements()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiDialogGeneric.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiDialogGeneric%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Dialog/GuiDialogGeneric.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

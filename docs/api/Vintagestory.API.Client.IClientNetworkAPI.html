@@ -1,0 +1,709 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IClientNetworkAPI
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IClientNetworkAPI
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.IClientNetworkAPI">
+  
+  
+  <h1 id="Vintagestory_API_Client_IClientNetworkAPI" data-uid="Vintagestory.API.Client.IClientNetworkAPI" class="text-break">Interface IClientNetworkAPI
+  </h1>
+  <div class="markdown level0 summary"><p>API Features to set up a network channel for custom server&lt;-&gt;client data exchange. Client side.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_IClientNetworkAPI_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IClientNetworkAPI : INetworkAPI</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_GetChannel_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.GetChannel(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L68">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_GetChannel_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.GetChannel*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_GetChannel_System_String_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.GetChannel(System.String)">GetChannel(String)</h4>
+  <div class="markdown level1 summary"><p>Returns a previoulsy registered channeled, null otherwise</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientNetworkChannel GetChannel(string channelName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">channelName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IClientNetworkChannel.html">IClientNetworkChannel</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_GetChannelState_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L75">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_GetChannelState_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.GetChannelState*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_GetChannelState_System_String_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(System.String)">GetChannelState(String)</h4>
+  <div class="markdown level1 summary"><p>Check in what state a channel currently is in</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumChannelState GetChannelState(string channelName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">channelName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumChannelState.html">EnumChannelState</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_RegisterChannel_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L61">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_RegisterChannel_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_RegisterChannel_System_String_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)">RegisterChannel(String)</h4>
+  <div class="markdown level1 summary"><p>Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IClientNetworkChannel RegisterChannel(string channelName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">channelName</span></td>
+        <td><p>Unique channel identifier</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IClientNetworkChannel.html">IClientNetworkChannel</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendArbitraryPacket_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L129">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendArbitraryPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendArbitraryPacket_System_Byte___" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte[])">SendArbitraryPacket(Byte[])</h4>
+  <div class="markdown level1 summary"><p>Sends given packet data to the server. This let&apos;s you mess with the raw network communication and fiddle with internal engine packets if you know the protocol. For normal network communication you probably want to register your own network channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendArbitraryPacket(byte[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_System_Int32_System_Int32_System_Int32_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L85">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_System_Int32_System_Int32_System_Int32_System_Int32_System_Byte___" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])">SendBlockEntityPacket(Int32, Int32, Int32, Int32, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">packetId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_System_Int32_System_Int32_System_Int32_System_Object_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L114">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_System_Int32_System_Int32_System_Int32_System_Object_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)">SendBlockEntityPacket(Int32, Int32, Int32, Object)</h4>
+  <div class="markdown level1 summary"><p>Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendBlockEntityPacket(int x, int y, int z, object internalPacket)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">internalPacket</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos%2CSystem.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L93">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Byte___" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])">SendBlockEntityPacket(BlockPos, Int32, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">packetId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket__1_Vintagestory_API_MathTools_BlockPos_System_Int32___0_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket%60%601(Vintagestory.API.MathTools.BlockPos%2CSystem.Int32%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L165">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket__1_Vintagestory_API_MathTools_BlockPos_System_Int32___0_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)">SendBlockEntityPacket&lt;T&gt;(BlockPos, Int32, T)</h4>
+  <div class="markdown level1 summary"><p>Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first. Uses Protobuf.net to serialize your data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendBlockEntityPacket&lt;T&gt;(BlockPos pos, int packetId, T data = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">packetId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacket_System_Int64_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64%2CSystem.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L103">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacket_System_Int64_System_Int32_System_Byte___" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Int32,System.Byte[])">SendEntityPacket(Int64, Int32, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendEntityPacket(long entityid, int packetId, byte[] data = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">entityid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">packetId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacket_System_Int64_System_Object_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L122">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacket_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacket_System_Int64_System_Object_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Object)">SendEntityPacket(Int64, Object)</h4>
+  <div class="markdown level1 summary"><p>Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendEntityPacket(long entityid, object internalPacket)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">entityid</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">internalPacket</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendHandInteraction_System_Int32_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandInteract_System_Int32_System_Boolean_Vintagestory_API_Common_EnumItemUseCancelReason_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(System.Int32%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.EntitySelection%2CVintagestory.API.Common.EnumHandInteract%2CSystem.Int32%2CSystem.Boolean%2CVintagestory.API.Common.EnumItemUseCancelReason)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L148">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendHandInteraction_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendHandInteraction_System_Int32_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandInteract_System_Int32_System_Boolean_Vintagestory_API_Common_EnumItemUseCancelReason_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(System.Int32,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandInteract,System.Int32,System.Boolean,Vintagestory.API.Common.EnumItemUseCancelReason)">SendHandInteraction(Int32, BlockSelection, EntitySelection, EnumHandInteract, Int32, Boolean, EnumItemUseCancelReason)</h4>
+  <div class="markdown level1 summary"><p>Sends the current hand interaction.  </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendHandInteraction(int mouseButton, BlockSelection blockSelection, EntitySelection entitySelection, EnumHandInteract beforeUseType, int state, bool firstEvent, EnumItemUseCancelReason cancelReason)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">mouseButton</span></td>
+        <td><p>the current mouse button press</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
+        <td><span class="parametername">blockSelection</span></td>
+        <td><p>the currently selected Block (if there is one)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EntitySelection.html">EntitySelection</a></td>
+        <td><span class="parametername">entitySelection</span></td>
+        <td><p>the currently selected Entity (if there is one)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumHandInteract.html">EnumHandInteract</a></td>
+        <td><span class="parametername">beforeUseType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The state of the hand.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">firstEvent</span></td>
+        <td><p>Is it the first of this events for this block? (by default the client calls the interaction every second while the player holds down the right mouse button)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumItemUseCancelReason.html">EnumItemUseCancelReason</a></td>
+        <td><span class="parametername">cancelReason</span></td>
+        <td><p>The reason we cancelled the use of an item (if there is  one)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendPacketClient_System_Object_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L136">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendPacketClient_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendPacketClient_System_Object_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(System.Object)">SendPacketClient(Object)</h4>
+  <div class="markdown level1 summary"><p>Sends given packet to server. For use with inventory supplied network packets only, since the packet format is not exposed to the api </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendPacketClient(object packetClient)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">packetClient</span></td>
+        <td><p>The network packet to send.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI_SendPlayerNowReady.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L154">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerNowReady_" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady*"></a>
+  <h4 id="Vintagestory_API_Client_IClientNetworkAPI_SendPlayerNowReady" data-uid="Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady">SendPlayerNowReady()</h4>
+  <div class="markdown level1 summary"><p>If any mod denies the client event IsPlayerReady, then it has to call this method once to indicate that the player is now ready to play (which switches the server side client state from Connected to Playing)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SendPlayerNowReady()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientNetworkAPI.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientNetworkAPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientNetworkAPI.cs/#L54" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

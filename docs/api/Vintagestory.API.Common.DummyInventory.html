@@ -1,0 +1,607 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DummyInventory
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DummyInventory
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.DummyInventory">
+  
+  
+  <h1 id="Vintagestory_API_Common_DummyInventory" data-uid="Vintagestory.API.Common.DummyInventory" class="text-break">Class DummyInventory
+  </h1>
+  <div class="markdown level0 summary"><p>A place holder inventory, useful, e.g., for when you want to render an itemstack and not have it spoil</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Vintagestory.API.Common.InventoryBase.html">InventoryBase</a></div>
+    <div class="level2"><span class="xref">DummyInventory</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></div>
+    <div><span class="xref">IReadOnlyCollection</span>&lt;<a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Api">InventoryBase.Api</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Pos">InventoryBase.Pos</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_MaxContentDimensions">InventoryBase.MaxContentDimensions</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_baseWeight">InventoryBase.baseWeight</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_className">InventoryBase.className</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_instanceID">InventoryBase.instanceID</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_lastChangedSinceServerStart">InventoryBase.lastChangedSinceServerStart</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_openedByPlayerGUIds">InventoryBase.openedByPlayerGUIds</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InvNetworkUtil">InventoryBase.InvNetworkUtil</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_dirtySlots">InventoryBase.dirtySlots</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InventoryID">InventoryBase.InventoryID</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ClassName">InventoryBase.ClassName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_LastChanged">InventoryBase.LastChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CountForNetworkPacket">InventoryBase.CountForNetworkPacket</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_IsDirty">InventoryBase.IsDirty</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DirtySlots">InventoryBase.DirtySlots</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TakeLocked">InventoryBase.TakeLocked</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_PutLocked">InventoryBase.PutLocked</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_RemoveOnClose">InventoryBase.RemoveOnClose</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotModified">InventoryBase.SlotModified</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotNotified">InventoryBase.SlotNotified</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnInventoryOpened">InventoryBase.OnInventoryOpened</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnInventoryClosed">InventoryBase.OnInventoryClosed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnAcquireTransitionSpeed">InventoryBase.OnAcquireTransitionSpeed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Empty">InventoryBase.Empty</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_FirstNonEmptySlot">InventoryBase.FirstNonEmptySlot</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_LateInitialize_System_String_Vintagestory_API_Common_ICoreAPI_">InventoryBase.LateInitialize(String, ICoreAPI)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_AfterBlocksLoaded_Vintagestory_API_Common_IWorldAccessor_">InventoryBase.AfterBlocksLoaded(IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ResolveBlocksOrItems">InventoryBase.ResolveBlocksOrItems()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotId_Vintagestory_API_Common_ItemSlot_">InventoryBase.GetSlotId(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_List_Vintagestory_API_Common_ItemSlot__">InventoryBase.GetBestSuitedSlot(ItemSlot, List&lt;ItemSlot&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSuitability_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_System_Boolean_">InventoryBase.GetSuitability(ItemSlot, ItemSlot, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanContain_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_">InventoryBase.CanContain(ItemSlot, ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItems_System_Int32_Vintagestory_API_Common_ItemSlot_">InventoryBase.TryFlipItems(Int32, ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_">InventoryBase.CanPlayerAccess(IPlayer, EntityPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerModify_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_">InventoryBase.CanPlayerModify(IPlayer, EntityPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnSearchTerm_System_String_">InventoryBase.OnSearchTerm(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ActivateSlot_System_Int32_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__">InventoryBase.ActivateSlot(Int32, ItemSlot, ItemStackMoveOperation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnItemSlotModified_Vintagestory_API_Common_ItemSlot_">InventoryBase.OnItemSlotModified(ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DidModifyItemSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStack_">InventoryBase.DidModifyItemSlot(ItemSlot, ItemStack)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_PerformNotifySlot_System_Int32_">InventoryBase.PerformNotifySlot(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___System_Int64___">InventoryBase.TryFlipItemStack(IPlayer, String[], Int32[], Int64[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryMoveItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___Vintagestory_API_Common_ItemStackMoveOperation__">InventoryBase.TryMoveItemStack(IPlayer, String[], Int32[], ItemStackMoveOperation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotsIfExists_Vintagestory_API_Common_IPlayer_System_String___System_Int32___">InventoryBase.GetSlotsIfExists(IPlayer, String[], Int32[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsFromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_ItemSlot___List_Vintagestory_API_Common_ItemSlot__">InventoryBase.SlotsFromTreeAttributes(ITreeAttribute, ItemSlot[], List&lt;ItemSlot&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsToTreeAttributes_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Datastructures_ITreeAttribute_">InventoryBase.SlotsToTreeAttributes(ItemSlot[], ITreeAttribute)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GenEmptySlots_System_Int32_">InventoryBase.GenEmptySlots(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_NewSlot_System_Int32_">InventoryBase.NewSlot(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_MarkSlotDirty_System_Int32_">InventoryBase.MarkSlotDirty(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DiscardAll">InventoryBase.DiscardAll()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropSlots_Vintagestory_API_MathTools_Vec3d_System_Int32___">InventoryBase.DropSlots(Vec3d, Int32[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropAll_Vintagestory_API_MathTools_Vec3d_System_Int32_">InventoryBase.DropAll(Vec3d, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Clear">InventoryBase.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnOwningEntityDeath_Vintagestory_API_MathTools_Vec3d_">InventoryBase.OnOwningEntityDeath(Vec3d)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetDefaultTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_">InventoryBase.GetDefaultTransitionSpeedMul(EnumTransitionType)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Open_Vintagestory_API_Common_IPlayer_">InventoryBase.Open(IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Close_Vintagestory_API_Common_IPlayer_">InventoryBase.Close(IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_HasOpened_Vintagestory_API_Common_IPlayer_">InventoryBase.HasOpened(IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetEnumerator">InventoryBase.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPushIntoSlot_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_ItemSlot_">InventoryBase.GetAutoPushIntoSlot(BlockFacing, ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPullFromSlot_Vintagestory_API_MathTools_BlockFacing_">InventoryBase.GetAutoPullFromSlot(BlockFacing)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_DummyInventory_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DummyInventory : InventoryBase, IInventory, IReadOnlyCollection&lt;ItemSlot&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory__ctor_Vintagestory_API_Common_ICoreAPI_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory.%23ctor(Vintagestory.API.Common.ICoreAPI%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L22">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_DummyInventory__ctor_" data-uid="Vintagestory.API.Common.DummyInventory.#ctor*"></a>
+  <h4 id="Vintagestory_API_Common_DummyInventory__ctor_Vintagestory_API_Common_ICoreAPI_System_Int32_" data-uid="Vintagestory.API.Common.DummyInventory.#ctor(Vintagestory.API.Common.ICoreAPI,System.Int32)">DummyInventory(ICoreAPI, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DummyInventory(ICoreAPI api, int quantitySlots = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
+        <td><span class="parametername">api</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">quantitySlots</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory_Count.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L38">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_DummyInventory_Count_" data-uid="Vintagestory.API.Common.DummyInventory.Count*"></a>
+  <h4 id="Vintagestory_API_Common_DummyInventory_Count" data-uid="Vintagestory.API.Common.DummyInventory.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Count">InventoryBase.Count</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory_Item_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L37">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_DummyInventory_Item_" data-uid="Vintagestory.API.Common.DummyInventory.Item*"></a>
+  <h4 id="Vintagestory_API_Common_DummyInventory_Item_System_Int32_" data-uid="Vintagestory.API.Common.DummyInventory.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override ItemSlot this[int slotId] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">slotId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Item_System_Int32_">InventoryBase.Item[Int32]</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory_Slots.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory.Slots%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L20">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_DummyInventory_Slots_" data-uid="Vintagestory.API.Common.DummyInventory.Slots*"></a>
+  <h4 id="Vintagestory_API_Common_DummyInventory_Slots" data-uid="Vintagestory.API.Common.DummyInventory.Slots">Slots</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ItemSlot[] Slots { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L40">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_DummyInventory_FromTreeAttributes_" data-uid="Vintagestory.API.Common.DummyInventory.FromTreeAttributes*"></a>
+  <h4 id="Vintagestory_API_Common_DummyInventory_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_" data-uid="Vintagestory.API.Common.DummyInventory.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)">FromTreeAttributes(ITreeAttribute)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void FromTreeAttributes(ITreeAttribute tree)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td><span class="parametername">tree</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_">InventoryBase.FromTreeAttributes(ITreeAttribute)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory_GetTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType%2CVintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L50">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_DummyInventory_GetTransitionSpeedMul_" data-uid="Vintagestory.API.Common.DummyInventory.GetTransitionSpeedMul*"></a>
+  <h4 id="Vintagestory_API_Common_DummyInventory_GetTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.DummyInventory.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack)">GetTransitionSpeedMul(EnumTransitionType, ItemStack)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumTransitionType.html">EnumTransitionType</a></td>
+        <td><span class="parametername">transType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td><span class="parametername">stack</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_">InventoryBase.GetTransitionSpeedMul(EnumTransitionType, ItemStack)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L45">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_DummyInventory_ToTreeAttributes_" data-uid="Vintagestory.API.Common.DummyInventory.ToTreeAttributes*"></a>
+  <h4 id="Vintagestory_API_Common_DummyInventory_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_" data-uid="Vintagestory.API.Common.DummyInventory.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)">ToTreeAttributes(ITreeAttribute)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ToTreeAttributes(ITreeAttribute tree)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td><span class="parametername">tree</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_">InventoryBase.ToTreeAttributes(ITreeAttribute)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a>
+  </div>
+  <div>
+      <span class="xref">IReadOnlyCollection&lt;&gt;</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_DummyInventory.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.DummyInventory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Inventory/DummyInventory.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,723 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class WaterSplashParticles
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class WaterSplashParticles
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.WaterSplashParticles">
+  
+  
+  <h1 id="Vintagestory_API_Common_WaterSplashParticles" data-uid="Vintagestory.API.Common.WaterSplashParticles" class="text-break">Class WaterSplashParticles
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html">ParticlesProviderBase</a></div>
+    <div class="level2"><span class="xref">WaterSplashParticles</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_Async">ParticlesProviderBase.Async</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_Bouncy">ParticlesProviderBase.Bouncy</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_RandomVelocityChange">ParticlesProviderBase.RandomVelocityChange</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_DieOnRainHeightmap">ParticlesProviderBase.DieOnRainHeightmap</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_DieInAir">ParticlesProviderBase.DieInAir</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_RedEvolve">ParticlesProviderBase.RedEvolve</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_GreenEvolve">ParticlesProviderBase.GreenEvolve</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_BlueEvolve">ParticlesProviderBase.BlueEvolve</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_ParticleModel">ParticlesProviderBase.ParticleModel</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_VelocityEvolve">ParticlesProviderBase.VelocityEvolve</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_VertexFlags">ParticlesProviderBase.VertexFlags</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_SelfPropelled">ParticlesProviderBase.SelfPropelled</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_TerrainCollision">ParticlesProviderBase.TerrainCollision</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_ToBytes_BinaryWriter_">ParticlesProviderBase.ToBytes(BinaryWriter)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_FromBytes_BinaryReader_Vintagestory_API_Common_IWorldAccessor_">ParticlesProviderBase.FromBytes(BinaryReader, IWorldAccessor)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_SecondarySpawnInterval">ParticlesProviderBase.SecondarySpawnInterval</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_SecondaryParticles">ParticlesProviderBase.SecondaryParticles</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_DeathParticles">ParticlesProviderBase.DeathParticles</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_BeginParticle">ParticlesProviderBase.BeginParticle()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_">ParticlesProviderBase.PrepareForSecondarySpawn(ParticleBase)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_Init_Vintagestory_API_Common_ICoreAPI_">ParticlesProviderBase.Init(ICoreAPI)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_ParentVelocity">ParticlesProviderBase.ParentVelocity</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_WindAffected">ParticlesProviderBase.WindAffected</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_ParentVelocityWeight">ParticlesProviderBase.ParentVelocityWeight</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_WaterSplashParticles_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class WaterSplashParticles : ParticlesProviderBase, IParticlePropertiesProvider</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_AddPos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.AddPos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L12">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_AddPos" data-uid="Vintagestory.API.Common.WaterSplashParticles.AddPos">AddPos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d AddPos</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_AddVelocity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.AddVelocity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L14">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_AddVelocity" data-uid="Vintagestory.API.Common.WaterSplashParticles.AddVelocity">AddVelocity</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f AddVelocity</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_BasePos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.BasePos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L11">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_BasePos" data-uid="Vintagestory.API.Common.WaterSplashParticles.BasePos">BasePos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d BasePos</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_QuantityMul.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.QuantityMul%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L15">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_QuantityMul" data-uid="Vintagestory.API.Common.WaterSplashParticles.QuantityMul">QuantityMul</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float QuantityMul</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_DieInLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.DieInLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L17">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_DieInLiquid_" data-uid="Vintagestory.API.Common.WaterSplashParticles.DieInLiquid*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_DieInLiquid" data-uid="Vintagestory.API.Common.WaterSplashParticles.DieInLiquid">DieInLiquid</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool DieInLiquid { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_DieInLiquid">ParticlesProviderBase.DieInLiquid</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_GravityEffect.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.GravityEffect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L17">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_GravityEffect_" data-uid="Vintagestory.API.Common.WaterSplashParticles.GravityEffect*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_GravityEffect" data-uid="Vintagestory.API.Common.WaterSplashParticles.GravityEffect">GravityEffect</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float GravityEffect { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_GravityEffect">ParticlesProviderBase.GravityEffect</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_LifeLength.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.LifeLength%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L17">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_LifeLength_" data-uid="Vintagestory.API.Common.WaterSplashParticles.LifeLength*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_LifeLength" data-uid="Vintagestory.API.Common.WaterSplashParticles.LifeLength">LifeLength</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float LifeLength { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_LifeLength">ParticlesProviderBase.LifeLength</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_OpacityEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.OpacityEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L31">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_OpacityEvolve_" data-uid="Vintagestory.API.Common.WaterSplashParticles.OpacityEvolve*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_OpacityEvolve" data-uid="Vintagestory.API.Common.WaterSplashParticles.OpacityEvolve">OpacityEvolve</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override EvolvingNatFloat OpacityEvolve { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_OpacityEvolve">ParticlesProviderBase.OpacityEvolve</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_Pos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.Pos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L18">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_Pos_" data-uid="Vintagestory.API.Common.WaterSplashParticles.Pos*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_Pos" data-uid="Vintagestory.API.Common.WaterSplashParticles.Pos">Pos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Vec3d Pos { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_Pos">ParticlesProviderBase.Pos</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_Quantity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.Quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L20">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_Quantity_" data-uid="Vintagestory.API.Common.WaterSplashParticles.Quantity*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_Quantity" data-uid="Vintagestory.API.Common.WaterSplashParticles.Quantity">Quantity</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float Quantity { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_Quantity">ParticlesProviderBase.Quantity</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_Size.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L27">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_Size_" data-uid="Vintagestory.API.Common.WaterSplashParticles.Size*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_Size" data-uid="Vintagestory.API.Common.WaterSplashParticles.Size">Size</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float Size { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_Size">ParticlesProviderBase.Size</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_SizeEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.SizeEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L29">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_SizeEvolve_" data-uid="Vintagestory.API.Common.WaterSplashParticles.SizeEvolve*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_SizeEvolve" data-uid="Vintagestory.API.Common.WaterSplashParticles.SizeEvolve">SizeEvolve</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override EvolvingNatFloat SizeEvolve { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_SizeEvolve">ParticlesProviderBase.SizeEvolve</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_SwimOnLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.SwimOnLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L17">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_SwimOnLiquid_" data-uid="Vintagestory.API.Common.WaterSplashParticles.SwimOnLiquid*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_SwimOnLiquid" data-uid="Vintagestory.API.Common.WaterSplashParticles.SwimOnLiquid">SwimOnLiquid</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool SwimOnLiquid { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_SwimOnLiquid">ParticlesProviderBase.SwimOnLiquid</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L22">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_GetRgbaColor_" data-uid="Vintagestory.API.Common.WaterSplashParticles.GetRgbaColor*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.WaterSplashParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)">GetRgbaColor(ICoreClientAPI)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetRgbaColor(ICoreClientAPI capi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_">ParticlesProviderBase.GetRgbaColor(ICoreClientAPI)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles_GetVelocity_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L33">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_WaterSplashParticles_GetVelocity_" data-uid="Vintagestory.API.Common.WaterSplashParticles.GetVelocity*"></a>
+  <h4 id="Vintagestory_API_Common_WaterSplashParticles_GetVelocity_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.WaterSplashParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)">GetVelocity(Vec3d)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Vec3f GetVelocity(Vec3d pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html#Vintagestory_API_Common_ParticlesProviderBase_GetVelocity_Vintagestory_API_MathTools_Vec3d_">ParticlesProviderBase.GetVelocity(Vec3d)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_WaterSplashParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.WaterSplashParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/WaterSplashParticles.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

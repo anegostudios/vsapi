@@ -1,0 +1,3343 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IBlockAccessor
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IBlockAccessor
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IBlockAccessor">
+  
+  
+  <h1 id="Vintagestory_API_Common_IBlockAccessor" data-uid="Vintagestory.API.Common.IBlockAccessor" class="text-break">Interface IBlockAccessor
+  </h1>
+  <div class="markdown level0 summary"><p>Provides read/write access to the blocks of a world</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IBlockAccessor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IBlockAccessor</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_ChunkSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.ChunkSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L129">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_ChunkSize_" data-uid="Vintagestory.API.Common.IBlockAccessor.ChunkSize*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_ChunkSize" data-uid="Vintagestory.API.Common.IBlockAccessor.ChunkSize">ChunkSize</h4>
+  <div class="markdown level1 summary"><p>Width, Length and Height of a chunk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ChunkSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MapSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MapSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L164">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MapSize_" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSize*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MapSize" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSize">MapSize</h4>
+  <div class="markdown level1 summary"><p>Size of the world in blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vec3i MapSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MapSizeX.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MapSizeX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L139">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MapSizeX_" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSizeX*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MapSizeX" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSizeX">MapSizeX</h4>
+  <div class="markdown level1 summary"><p>X Size of the world in blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MapSizeX { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MapSizeY.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MapSizeY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L144">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MapSizeY_" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSizeY*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MapSizeY" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSizeY">MapSizeY</h4>
+  <div class="markdown level1 summary"><p>Y Size of the world in blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MapSizeY { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MapSizeZ.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MapSizeZ%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L149">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MapSizeZ_" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSizeZ*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MapSizeZ" data-uid="Vintagestory.API.Common.IBlockAccessor.MapSizeZ">MapSizeZ</h4>
+  <div class="markdown level1 summary"><p>Z Size of the world in blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int MapSizeZ { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_RegionMapSizeX.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.RegionMapSizeX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L152">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_RegionMapSizeX_" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionMapSizeX*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_RegionMapSizeX" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionMapSizeX">RegionMapSizeX</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int RegionMapSizeX { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_RegionMapSizeY.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.RegionMapSizeY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L153">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_RegionMapSizeY_" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionMapSizeY*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_RegionMapSizeY" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionMapSizeY">RegionMapSizeY</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int RegionMapSizeY { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_RegionMapSizeZ.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.RegionMapSizeZ%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L154">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_RegionMapSizeZ_" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionMapSizeZ*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_RegionMapSizeZ" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionMapSizeZ">RegionMapSizeZ</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int RegionMapSizeZ { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_RegionSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.RegionSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L134">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_RegionSize_" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionSize*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_RegionSize" data-uid="Vintagestory.API.Common.IBlockAccessor.RegionSize">RegionSize</h4>
+  <div class="markdown level1 summary"><p>Width and Length of a region in blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int RegionSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_UpdateSnowAccumMap.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.UpdateSnowAccumMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L159">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_UpdateSnowAccumMap_" data-uid="Vintagestory.API.Common.IBlockAccessor.UpdateSnowAccumMap*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_UpdateSnowAccumMap" data-uid="Vintagestory.API.Common.IBlockAccessor.UpdateSnowAccumMap">UpdateSnowAccumMap</h4>
+  <div class="markdown level1 summary"><p>Whether to update the snow accum map on a SetBlock()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool UpdateSnowAccumMap { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_BreakBlock_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.BreakBlock(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.IPlayer%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L314">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_BreakBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.BreakBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_BreakBlock_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single_" data-uid="Vintagestory.API.Common.IBlockAccessor.BreakBlock(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,System.Single)">BreakBlock(BlockPos, IPlayer, Single)</h4>
+  <div class="markdown level1 summary"><p>Removes the block at given position and calls Block.GetDrops(), Block.OnBreakBlock() and Block.OnNeighbourBlockChange() for all neighbours. Drops the items that are return from Block.GetDrops()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void BreakBlock(BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1F)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">byPlayer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dropQuantityMultiplier</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_BreakDecor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.BreakDecor(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L643">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_BreakDecor_" data-uid="Vintagestory.API.Common.IBlockAccessor.BreakDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_BreakDecor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Nullable_System_Int32__" data-uid="Vintagestory.API.Common.IBlockAccessor.BreakDecor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Nullable{System.Int32})">BreakDecor(BlockPos, BlockFacing, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Removes all decors at given position, drops items if set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool BreakDecor(BlockPos pos, BlockFacing side = null, int? faceAndSubposition = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td><span class="parametername">side</span></td>
+        <td><p>If not null, breaks all the decor on given block face, otherwise the decor blocks on all sides are removed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">faceAndSubposition</span></td>
+        <td><p>If not null breaks only this part of the decor for give face. You can get this value via <see cref="!:CollectibleBehaviorArtPigment.BlockSelectionToSubPosition()"></see></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if a decor was removed</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_Commit.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.Commit%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L407">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_Commit_" data-uid="Vintagestory.API.Common.IBlockAccessor.Commit*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_Commit" data-uid="Vintagestory.API.Common.IBlockAccessor.Commit">Commit()</h4>
+  <div class="markdown level1 summary"><p>Calling this method has no effect in normal block acessors except for:</p>
+<ul>
+<li>Bulk update block accessor: Sets all blocks, relight all affected one chunks in one go and send blockupdates to clients in a packed format.</li>
+<li>World gen block accessor: To Recalculate the heightmap in of all updated blocks in one go </li>
+<li>Revertable block accessor: Same as bulk update block accessor plus stores a new history state.</li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;BlockUpdate&gt; Commit()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.BlockUpdate.html">BlockUpdate</a>&gt;</td>
+        <td><p>List of changed blocks</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_DamageBlock_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.DamageBlock(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L324">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_DamageBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.DamageBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_DamageBlock_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Single_" data-uid="Vintagestory.API.Common.IBlockAccessor.DamageBlock(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Single)">DamageBlock(BlockPos, BlockFacing, Single)</h4>
+  <div class="markdown level1 summary"><p>Client Side: Will render the block breaking decal on that block. If the remaining block resistance reaches 0, will call break block
+Server Side: Broadcasts a package to all nearby clients to update the block damage of this block for rendering the decal (note: there is currently no server side list of current block damages, these are client side only at the moemnt)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DamageBlock(BlockPos pos, BlockFacing facing, float damage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td><span class="parametername">facing</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">damage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_ExchangeBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.ExchangeBlock(System.Int32%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L305">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_ExchangeBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.ExchangeBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_ExchangeBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.ExchangeBlock(System.Int32,Vintagestory.API.MathTools.BlockPos)">ExchangeBlock(Int32, BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Set a block at the given position without calling OnBlockRemoved or OnBlockPlaced, which prevents any block entity from being removed or placed. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ExchangeBlock(int blockId, BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">blockId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L331">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32)">GetBlock(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get the Block object of a certain block ID. Returns null when not found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlock(int blockId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">blockId</span></td>
+        <td><p>The block ID to search for</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td><p>BlockType object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L233">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)">GetBlock(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you&apos;ll get a block instance with block code &quot;air&quot; and id 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlock(int x, int y, int z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>x coordinate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>y coordinate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">z</span></td>
+        <td><p>z coordinate</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td><p>ID of the block at the given position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_Common_AssetLocation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.Common.AssetLocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L339">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.Common.AssetLocation)">GetBlock(AssetLocation)</h4>
+  <div class="markdown level1 summary"><p>Get the Block object of for given block code. Returns null when not found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlock(AssetLocation code)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L250">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)">GetBlock(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Get block type at given world coordinate. Will never return null. For airblocks or invalid coordinates you&apos;ll get a block instance with block code &quot;air&quot; and id 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlock(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlockEntity_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlockEntity(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L363">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockEntity_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockEntity*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlockEntity_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockEntity(Vintagestory.API.MathTools.BlockPos)">GetBlockEntity(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Retrieve the block entity at given position. Returns null if there is no block entity at this position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">BlockEntity GetBlockEntity(BlockPos position)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L216">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockId_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockId*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)">GetBlockId(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Get the block id of the block at the given world coordinate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetBlockId(int x, int y, int z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>x coordinate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>y coordinate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">z</span></td>
+        <td><p>z coordinate</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>ID of the block at the given position. Returns 0 for Airblocks or invalid/unloaded coordinates</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlockId_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L223">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockId_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockId*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlockId_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)">GetBlockId(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Get the block id of the block at the given world coordinate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetBlockId(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>ID of the block at the given position. Returns 0 for Airblocks or invalid/unloaded coordinates</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetBlockOrNull_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L242">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockOrNull_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetBlockOrNull_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(System.Int32,System.Int32,System.Int32)">GetBlockOrNull(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Get the block type of the block at the given world coordinate. For invalid or unloaded coordinates this method returns null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlockOrNull(int x, int y, int z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>x coordinate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>y coordinate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">z</span></td>
+        <td><p>z coordinate</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td><p>ID of the block at the given position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetChunk_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L174">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetChunk_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunk*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetChunk_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int32,System.Int32,System.Int32)">GetChunk(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieve chunk at given chunk position (= divide block position by chunk size)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWorldChunk GetChunk(int chunkX, int chunkY, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetChunk_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L181">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetChunk_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunk*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetChunk_System_Int64_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int64)">GetChunk(Int64)</h4>
+  <div class="markdown level1 summary"><p>Retrieve chunk at given chunk position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWorldChunk GetChunk(long chunkIndex3D)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">chunkIndex3D</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L200">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)">GetChunkAtBlockPos(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieve chunk at given block position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L207">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)">GetChunkAtBlockPos(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Retrieve chunk at given block position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IWorldChunk GetChunkAtBlockPos(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetClimateAt(Vintagestory.API.MathTools.BlockPos%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L567">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetClimateAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetClimateAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetClimateAt(Vintagestory.API.MathTools.BlockPos,System.Int32)">GetClimateAt(BlockPos, Int32)</h4>
+  <div class="markdown level1 summary"><p>Fast shortcut method for the clound renderer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClimateCondition GetClimateAt(BlockPos pos, int climate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">climate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_Common_EnumGetClimateMode_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetClimateAt(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.ClimateCondition%2CVintagestory.API.Common.EnumGetClimateMode%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L559">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetClimateAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetClimateAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_Common_EnumGetClimateMode_System_Double_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetClimateAt(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.Common.EnumGetClimateMode,System.Double)">GetClimateAt(BlockPos, ClimateCondition, EnumGetClimateMode, Double)</h4>
+  <div class="markdown level1 summary"><p>Returns the position&apos;s climate conditions at specified date, making use of previously obtained worldgen climate conditions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClimateCondition GetClimateAt(BlockPos pos, ClimateCondition baseClimate, EnumGetClimateMode mode, double totalDays)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></td>
+        <td><span class="parametername">baseClimate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumGetClimateMode.html">EnumGetClimateMode</a></td>
+        <td><span class="parametername">mode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">totalDays</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumGetClimateMode_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetClimateAt(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumGetClimateMode%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L554">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetClimateAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetClimateAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumGetClimateMode_System_Double_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetClimateAt(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumGetClimateMode,System.Double)">GetClimateAt(BlockPos, EnumGetClimateMode, Double)</h4>
+  <div class="markdown level1 summary"><p>Returns the position&apos;s current climate conditions</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ClimateCondition GetClimateAt(BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.WorldGenValues, double totalDays = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumGetClimateMode.html">EnumGetClimateMode</a></td>
+        <td><span class="parametername">mode</span></td>
+        <td><p>WorldGenValues = values as determined by the worldgenerator, NowValues = additionally modified to take season, day/night and hemisphere into account</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">totalDays</span></td>
+        <td><p>When mode == ForSuppliedDateValues then supply here the date. Not used param otherwise</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetDecor_Vintagestory_API_MathTools_BlockPos_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetDecor(Vintagestory.API.MathTools.BlockPos%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L633">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetDecor_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetDecor_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetDecor(Vintagestory.API.MathTools.BlockPos,System.Int32)">GetDecor(BlockPos, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetDecor(BlockPos pos, int faceAndSubposition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">faceAndSubposition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetDecors_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetDecors(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L625">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetDecors_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetDecors*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetDecors_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetDecors(Vintagestory.API.MathTools.BlockPos)">GetDecors(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Get a list of all decors at this position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block[] GetDecors(BlockPos position)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>[]</td>
+        <td><p>Always a 6 element long list of decor blocks, any of which may be null if not set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetDistanceToRainFall_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetDistanceToRainFall(Vintagestory.API.MathTools.BlockPos%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L514">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetDistanceToRainFall_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetDistanceToRainFall*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetDistanceToRainFall_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetDistanceToRainFall(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)">GetDistanceToRainFall(BlockPos, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to 4 blocks away. Returns 99 if none was found within 4 blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetDistanceToRainFall(BlockPos pos, int horziontalSearchWidth = 4, int verticalSearchWidth = 1)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">horziontalSearchWidth</span></td>
+        <td><p>Horizontal search distance, 4 default</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">verticalSearchWidth</span></td>
+        <td><p>Vertical search distance, 1 default</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetLightLevel_System_Int32_System_Int32_System_Int32_Vintagestory_API_Common_EnumLightLevelType_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetLightLevel(System.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.Common.EnumLightLevelType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L466">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetLightLevel_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightLevel*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetLightLevel_System_Int32_System_Int32_System_Int32_Vintagestory_API_Common_EnumLightLevelType_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightLevel(System.Int32,System.Int32,System.Int32,Vintagestory.API.Common.EnumLightLevelType)">GetLightLevel(Int32, Int32, Int32, EnumLightLevelType)</h4>
+  <div class="markdown level1 summary"><p>Returns the light level (0..32) at given position. If the chunk at that position is not loaded this method will return the default sunlight value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetLightLevel(int x, int y, int z, EnumLightLevelType type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumLightLevelType.html">EnumLightLevelType</a></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetLightLevel_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumLightLevelType_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetLightLevel(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumLightLevelType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L456">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetLightLevel_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightLevel*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetLightLevel_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumLightLevelType_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightLevel(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumLightLevelType)">GetLightLevel(BlockPos, EnumLightLevelType)</h4>
+  <div class="markdown level1 summary"><p>Returns the light level (0..32) at given position. If the chunk at that position is not loaded this method will return the default sunlight value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetLightLevel(BlockPos pos, EnumLightLevelType type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumLightLevelType.html">EnumLightLevelType</a></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetLightRGBs(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L475">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightRGBs*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightRGBs(System.Int32,System.Int32,System.Int32)">GetLightRGBs(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns the light values at given position. XYZ component = block light rgb, W component = sun light brightness</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vec4f GetLightRGBs(int posX, int posY, int posZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetLightRGBs(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L482">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightRGBs*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightRGBs(Vintagestory.API.MathTools.BlockPos)">GetLightRGBs(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Returns the light values at given position. XYZ component = block light rgb, W component = sun light brightness</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vec4f GetLightRGBs(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetLightRGBsAsInt_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetLightRGBsAsInt(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L491">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetLightRGBsAsInt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightRGBsAsInt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetLightRGBsAsInt_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetLightRGBsAsInt(System.Int32,System.Int32,System.Int32)">GetLightRGBsAsInt(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns the light values at given position. bit 0-23: block rgb light, bit 24-31: sun light brightness</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetLightRGBsAsInt(int posX, int posY, int posZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetMapChunk_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetMapChunk(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L538">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetMapChunk_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapChunk*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetMapChunk_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapChunk(System.Int32,System.Int32)">GetMapChunk(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns the map chunk at given chunk position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapChunk GetMapChunk(int chunkX, int chunkZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">chunkZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetMapChunk_Vintagestory_API_MathTools_Vec2i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetMapChunk(Vintagestory.API.MathTools.Vec2i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L530">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetMapChunk_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapChunk*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetMapChunk_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapChunk(Vintagestory.API.MathTools.Vec2i)">GetMapChunk(Vec2i)</h4>
+  <div class="markdown level1 summary"><p>Returns the map chunk at given chunk position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapChunk GetMapChunk(Vec2i chunkPos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></td>
+        <td><span class="parametername">chunkPos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetMapChunkAtBlockPos_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetMapChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L545">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetMapChunkAtBlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapChunkAtBlockPos*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetMapChunkAtBlockPos_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)">GetMapChunkAtBlockPos(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Returns the map chunk at given block position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapChunk GetMapChunkAtBlockPos(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetMapRegion_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetMapRegion(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L189">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetMapRegion_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapRegion*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetMapRegion_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetMapRegion(System.Int32,System.Int32)">GetMapRegion(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a map region at given region position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapRegion GetMapRegion(int regionX, int regionZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regionX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">regionZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapRegion.html">IMapRegion</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L522">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt(System.Int32,System.Int32)">GetRainMapHeightAt(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns the topmost non-rain-permeable position at given x/z coordinate. This map is always updated after placing/removing blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetRainMapHeightAt(int posX, int posZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L505">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt(Vintagestory.API.MathTools.BlockPos)">GetRainMapHeightAt(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Returns the topmost non-rain-permeable position at given x/z coordinate. This map is always updated after placing/removing blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetRainMapHeightAt(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetTerrainMapheightAt_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetTerrainMapheightAt(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L498">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetTerrainMapheightAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetTerrainMapheightAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetTerrainMapheightAt_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetTerrainMapheightAt(Vintagestory.API.MathTools.BlockPos)">GetTerrainMapheightAt(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Returns the topmost solid surface position at given x/z coordinate as it was during world generation. This map is not updated after placing/removing blocks</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetTerrainMapheightAt(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L581">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt(Vintagestory.API.MathTools.BlockPos)">GetWindSpeedAt(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the wind speed for given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vec3d GetWindSpeedAt(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L574">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt(Vintagestory.API.MathTools.Vec3d)">GetWindSpeedAt(Vec3d)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the wind speed for given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Vec3d GetWindSpeedAt(Vec3d pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L390">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsNotTraversable*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double,System.Double,System.Double)">IsNotTraversable(Double, Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Checks if this position can be traversed by a normal player (returns false for outside map or not yet loaded chunks)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsNotTraversable(double x, double y, double z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L397">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsNotTraversable*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(Vintagestory.API.MathTools.BlockPos)">IsNotTraversable(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Checks if this position can be traversed by a normal player (returns false for outside map or not yet loaded chunks)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsNotTraversable(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_IsValidPos_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.IsValidPos(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L374">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_IsValidPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsValidPos*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_IsValidPos_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsValidPos(System.Int32,System.Int32,System.Int32)">IsValidPos(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Checks if the position is inside the maps boundaries</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsValidPos(int posX, int posY, int posZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">posZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_IsValidPos_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.IsValidPos(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L381">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_IsValidPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsValidPos*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_IsValidPos_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.IsValidPos(Vintagestory.API.MathTools.BlockPos)">IsValidPos(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Checks if the position is inside the maps boundaries</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsValidPos(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MarkAbsorptionChanged_System_Int32_System_Int32_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MarkAbsorptionChanged(System.Int32%2CSystem.Int32%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L589">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MarkAbsorptionChanged_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkAbsorptionChanged*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MarkAbsorptionChanged_System_Int32_System_Int32_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkAbsorptionChanged(System.Int32,System.Int32,Vintagestory.API.MathTools.BlockPos)">MarkAbsorptionChanged(Int32, Int32, BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Used by the chisel block when enough chiseled have been removed and the blocks light absorption changes as a result of that</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkAbsorptionChanged(int oldAbsorption, int newAbsorption, BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">oldAbsorption</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">newAbsorption</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_Vintagestory_API_MathTools_BlockPos_Action_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MarkBlockDirty(Vintagestory.API.MathTools.BlockPos%2CAction)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L448">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockDirty*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_Vintagestory_API_MathTools_BlockPos_Action_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockDirty(Vintagestory.API.MathTools.BlockPos,Action)">MarkBlockDirty(BlockPos, Action)</h4>
+  <div class="markdown level1 summary"><p>Server Side: Same as MarkBlockDirty()<br>
+Client Side: Same as MarkBlockDirty(), but also calls supplied delegate after the chunk has been re-retesselated. This can be used i.e. for block entities to dynamically switch between static models and dynamic models at exactly the right timing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkBlockDirty(BlockPos pos, Action OnRetesselated)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td><span class="parametername">OnRetesselated</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MarkBlockDirty(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L433">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockDirty*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockDirty(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)">MarkBlockDirty(BlockPos, IPlayer)</h4>
+  <div class="markdown level1 summary"><p>Server side: Triggers a OnNeighbourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).<br>
+Client side: Triggers a block changed event and redraws the chunk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkBlockDirty(BlockPos pos, IPlayer skipPlayer = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">skipPlayer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MarkBlockEntityDirty_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MarkBlockEntityDirty(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L420">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MarkBlockEntityDirty_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockEntityDirty*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MarkBlockEntityDirty_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockEntityDirty(Vintagestory.API.MathTools.BlockPos)">MarkBlockEntityDirty(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Server side call: Resends the block entity data (if present) to all clients. Triggers a block changed event on the client once received , but will not redraw the chunk. Marks also the chunk dirty so that it gets saved to disk during shutdown or next autosave.<br>
+Client side call: No effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkBlockEntityDirty(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MarkBlockModified_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MarkBlockModified(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L440">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MarkBlockModified_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockModified*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MarkBlockModified_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkBlockModified(Vintagestory.API.MathTools.BlockPos)">MarkBlockModified(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Server side: Triggers a OnNeighbourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).<br>
+Client side: Triggers a block changed event and redraws the chunk. Deletes and re-create block entities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkBlockModified(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_MarkChunkDecorsModified_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.MarkChunkDecorsModified(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L652">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_MarkChunkDecorsModified_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkChunkDecorsModified*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_MarkChunkDecorsModified_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.MarkChunkDecorsModified(Vintagestory.API.MathTools.BlockPos)">MarkChunkDecorsModified(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Server: Marks this position as required for resending to the client
+Client: No effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkChunkDecorsModified(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_RemoveBlockEntity_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.RemoveBlockEntity(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L356">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_RemoveBlockEntity_" data-uid="Vintagestory.API.Common.IBlockAccessor.RemoveBlockEntity*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_RemoveBlockEntity_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.RemoveBlockEntity(Vintagestory.API.MathTools.BlockPos)">RemoveBlockEntity(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Permanently removes any block entity at this postion. Does not remove it&apos;s corresponding block, you have to do this yourself. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveBlockEntity(BlockPos position)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_RemoveBlockLight_System_Byte___Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.RemoveBlockLight(System.Byte%5B%5D%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L596">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_RemoveBlockLight_" data-uid="Vintagestory.API.Common.IBlockAccessor.RemoveBlockLight*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_RemoveBlockLight_System_Byte___Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.RemoveBlockLight(System.Byte[],Vintagestory.API.MathTools.BlockPos)">RemoveBlockLight(Byte[], BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Call this on OnBlockBroken() when your block entity modifies the blocks light range. That way the lighting task can still retrieve the block entity before its gone.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveBlockLight(byte[] oldLightHsV, BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">oldLightHsV</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_Rollback.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.Rollback%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L412">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_Rollback_" data-uid="Vintagestory.API.Common.IBlockAccessor.Rollback*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_Rollback" data-uid="Vintagestory.API.Common.IBlockAccessor.Rollback">Rollback()</h4>
+  <div class="markdown level1 summary"><p>For the bulk update block accessor reverts all the SetBlocks currently called since the last Commit()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Rollback()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_SearchBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos__Action_System_Int32_System_Int32_System_Int32__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.SearchBlocks(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.ActionConsumable%7BVintagestory.API.Common.Block%2CVintagestory.API.MathTools.BlockPos%7D%2CAction%7BSystem.Int32%2CSystem.Int32%2CSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L270">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_SearchBlocks_" data-uid="Vintagestory.API.Common.IBlockAccessor.SearchBlocks*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_SearchBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos__Action_System_Int32_System_Int32_System_Int32__" data-uid="Vintagestory.API.Common.IBlockAccessor.SearchBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos},Action{System.Int32,System.Int32,System.Int32})">SearchBlocks(BlockPos, BlockPos, ActionConsumable&lt;Block, BlockPos&gt;, Action&lt;Int32, Int32, Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>A method to search for a given block in an area</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SearchBlocks(BlockPos minPos, BlockPos maxPos, ActionConsumable&lt;Block, BlockPos&gt; onBlock, Action&lt;int, int, int&gt; onChunkMissing = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">minPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">maxPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ActionConsumable-2.html">ActionConsumable</a>&lt;<a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>, <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>&gt;</td>
+        <td><span class="parametername">onBlock</span></td>
+        <td><p>Return false to stop the search</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Int32</span>, <span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">onChunkMissing</span></td>
+        <td><p>Called when a missing/unloaded chunk was encountered</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_SetBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.SetBlock(System.Int32%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L292">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_SetBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_SetBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetBlock(System.Int32,Vintagestory.API.MathTools.BlockPos)">SetBlock(Int32, BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBlock(int blockId, BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">blockId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_SetBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.SetBlock(System.Int32%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L300">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_SetBlock_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_SetBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetBlock(System.Int32,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ItemStack)">SetBlock(Int32, BlockPos, ItemStack)</h4>
+  <div class="markdown level1 summary"><p>Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBlock(int blockId, BlockPos pos, ItemStack byItemstack)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">blockId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td><span class="parametername">byItemstack</span></td>
+        <td><p>If set then it will be passed onto the block.OnBlockPlaced method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_SetDecor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.SetDecor(Vintagestory.API.Common.Block%2CVintagestory.API.MathTools.BlockPos%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L617">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_SetDecor_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_SetDecor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetDecor(Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,System.Int32)">SetDecor(Block, BlockPos, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetDecor(Block block, BlockPos position, int faceAndSubposition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td><span class="parametername">block</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">faceAndSubposition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_SetDecor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.SetDecor(Vintagestory.API.Common.Block%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L608">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_SetDecor_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_SetDecor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_" data-uid="Vintagestory.API.Common.IBlockAccessor.SetDecor(Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing)">SetDecor(Block, BlockPos, BlockFacing)</h4>
+  <div class="markdown level1 summary"><p>Add a decor block to the side of an existing block. Use air block (id 0) to remove a decor.<br></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetDecor(Block block, BlockPos position, BlockFacing onFace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td><span class="parametername">block</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td><span class="parametername">onFace</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if the decor was sucessfully set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_SpawnBlockEntity_System_String_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.SpawnBlockEntity(System.String%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L349">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_SpawnBlockEntity_" data-uid="Vintagestory.API.Common.IBlockAccessor.SpawnBlockEntity*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_SpawnBlockEntity_System_String_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.IBlockAccessor.SpawnBlockEntity(System.String,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ItemStack)">SpawnBlockEntity(String, BlockPos, ItemStack)</h4>
+  <div class="markdown level1 summary"><p>Spawn block entity at this position. Does not place it&apos;s corresponding block, you have to this yourself.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SpawnBlockEntity(string classname, BlockPos position, ItemStack byItemStack = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">classname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td><span class="parametername">byItemStack</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_TriggerNeighbourBlockUpdate_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.TriggerNeighbourBlockUpdate(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L426">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_TriggerNeighbourBlockUpdate_" data-uid="Vintagestory.API.Common.IBlockAccessor.TriggerNeighbourBlockUpdate*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_TriggerNeighbourBlockUpdate_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.TriggerNeighbourBlockUpdate(Vintagestory.API.MathTools.BlockPos)">TriggerNeighbourBlockUpdate(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Triggers the method OnNeighbourBlockChange() to all neighbour blocks at given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TriggerNeighbourBlockUpdate(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_WalkBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos__System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.WalkBlocks(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockPos%2CAction%7BVintagestory.API.Common.Block%2CVintagestory.API.MathTools.BlockPos%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L261">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_WalkBlocks_" data-uid="Vintagestory.API.Common.IBlockAccessor.WalkBlocks*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_WalkBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos__System_Boolean_" data-uid="Vintagestory.API.Common.IBlockAccessor.WalkBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Action{Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos},System.Boolean)">WalkBlocks(BlockPos, BlockPos, Action&lt;Block, BlockPos&gt;, Boolean)</h4>
+  <div class="markdown level1 summary"><p>A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. Currently used for more efficient collision testing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void WalkBlocks(BlockPos minPos, BlockPos maxPos, Action&lt;Block, BlockPos&gt; onBlock, bool centerOrder = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">minPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">maxPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>, <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>&gt;</td>
+        <td><span class="parametername">onBlock</span></td>
+        <td><p>The method in which you want to check for the block, whatever it may be.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">centerOrder</span></td>
+        <td><p>If true, the blocks will be ordered by the distance to the center position</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_WalkStructures_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_GeneratedStructure__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.WalkStructures(Vintagestory.API.MathTools.BlockPos%2CAction%7BVintagestory.API.Common.GeneratedStructure%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L277">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_WalkStructures_" data-uid="Vintagestory.API.Common.IBlockAccessor.WalkStructures*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_WalkStructures_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_GeneratedStructure__" data-uid="Vintagestory.API.Common.IBlockAccessor.WalkStructures(Vintagestory.API.MathTools.BlockPos,Action{Vintagestory.API.Common.GeneratedStructure})">WalkStructures(BlockPos, Action&lt;GeneratedStructure&gt;)</h4>
+  <div class="markdown level1 summary"><p>Calls given handler if it encounters one or more generated structure at given position (read from mapregions, assuming a max structure size of 256x256x256)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void WalkStructures(BlockPos pos, Action&lt;GeneratedStructure&gt; onStructure)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Common.GeneratedStructure.html">GeneratedStructure</a>&gt;</td>
+        <td><span class="parametername">onStructure</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor_WalkStructures_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_GeneratedStructure__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor.WalkStructures(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockPos%2CAction%7BVintagestory.API.Common.GeneratedStructure%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L285">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IBlockAccessor_WalkStructures_" data-uid="Vintagestory.API.Common.IBlockAccessor.WalkStructures*"></a>
+  <h4 id="Vintagestory_API_Common_IBlockAccessor_WalkStructures_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_GeneratedStructure__" data-uid="Vintagestory.API.Common.IBlockAccessor.WalkStructures(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Action{Vintagestory.API.Common.GeneratedStructure})">WalkStructures(BlockPos, BlockPos, Action&lt;GeneratedStructure&gt;)</h4>
+  <div class="markdown level1 summary"><p>Calls given handler if it encounters one or more generated structure that intersect any position inside minpos-&gt;maxpos (read from mapregions, assuming a max structure size of 256x256x256)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void WalkStructures(BlockPos minpos, BlockPos maxpos, Action&lt;GeneratedStructure&gt; onStructure)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">minpos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">maxpos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Common.GeneratedStructure.html">GeneratedStructure</a>&gt;</td>
+        <td><span class="parametername">onStructure</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IBlockAccessor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IBlockAccessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IBlockAccessor.cs/#L124" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
