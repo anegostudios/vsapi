@@ -9,8 +9,14 @@ jobs:
   docs:
     runs-on: ubuntu-latest
 
-    steps:
+  steps:
     - uses: actions/checkout@v2
+    - shell: bash
+      run: |
+        git config user.name "name"
+        git config user.email "<>"
+        git config push.default "current"
+        ./run
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
