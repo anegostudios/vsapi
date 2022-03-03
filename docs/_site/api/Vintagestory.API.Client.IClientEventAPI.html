@@ -1,0 +1,1194 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IClientEventAPI
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IClientEventAPI
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.IClientEventAPI">
+  
+  
+  <h1 id="Vintagestory_API_Client_IClientEventAPI" data-uid="Vintagestory.API.Client.IClientEventAPI" class="text-break">Interface IClientEventAPI
+  </h1>
+  <div class="markdown level0 summary"><p>Contains some client specific events you can hook into</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntitySpawn">IEventAPI.OnEntitySpawn</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntityDeath">IEventAPI.OnEntityDeath</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntityDespawn">IEventAPI.OnEntityDespawn</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_ChunkDirty">IEventAPI.ChunkDirty</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnGetClimate">IEventAPI.OnGetClimate</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnGetWindSpeed">IEventAPI.OnGetWindSpeed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MatchesGridRecipe">IEventAPI.MatchesGridRecipe</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_PushEvent_System_String_Vintagestory_API_Datastructures_IAttribute_">IEventAPI.PushEvent(String, IAttribute)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterEventBusListener_Vintagestory_API_Common_EventBusListenerDelegate_System_Double_System_String_">IEventAPI.RegisterEventBusListener(EventBusListenerDelegate, Double, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_Action_System_Single__System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;Single&gt;, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_">IEventAPI.RegisterGameTickListener(Action&lt;IWorldAccessor, BlockPos, Single&gt;, BlockPos, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_Action_System_Single__System_Int32_">IEventAPI.RegisterCallback(Action&lt;Single&gt;, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_RegisterCallback_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_">IEventAPI.RegisterCallback(Action&lt;IWorldAccessor, BlockPos, Single&gt;, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterCallback_System_Int64_">IEventAPI.UnregisterCallback(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_UnregisterGameTickListener_System_Int64_">IEventAPI.UnregisterGameTickListener(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_EnqueueMainThreadTask_Action_System_String_">IEventAPI.EnqueueMainThreadTask(Action, String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerEntityDeath_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_DamageSource_">IEventAPI.TriggerEntityDeath(Entity, DamageSource)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerMatchesRecipe_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot___System_Int32_">IEventAPI.TriggerMatchesRecipe(IPlayer, GridRecipe, ItemSlot[], Int32)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_IClientEventAPI_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IClientEventAPI : IEventAPI</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_RegisterAsyncParticleSpawner_Vintagestory_API_Client_ContinousParticleSpawnTaskDelegate_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.RegisterAsyncParticleSpawner(Vintagestory.API.Client.ContinousParticleSpawnTaskDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L208">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientEventAPI_RegisterAsyncParticleSpawner_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterAsyncParticleSpawner*"></a>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_RegisterAsyncParticleSpawner_Vintagestory_API_Client_ContinousParticleSpawnTaskDelegate_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterAsyncParticleSpawner(Vintagestory.API.Client.ContinousParticleSpawnTaskDelegate)">RegisterAsyncParticleSpawner(ContinousParticleSpawnTaskDelegate)</h4>
+  <div class="markdown level1 summary"><p>Set up an asynchronous particle spawner. The async particle simulation does most of the work in a seperate thread and thus runs a lot faster, with the down side of not being exaclty in sync with player interactions. This method of spawning particles is best suited for ambient particles, such as rain fall.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterAsyncParticleSpawner(ContinousParticleSpawnTaskDelegate handler)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ContinousParticleSpawnTaskDelegate.html">ContinousParticleSpawnTaskDelegate</a></td>
+        <td><span class="parametername">handler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_RegisterItemstackRenderer_Vintagestory_API_Common_CollectibleObject_Vintagestory_API_Client_ItemRenderDelegate_Vintagestory_API_Client_EnumItemRenderTarget_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.RegisterItemstackRenderer(Vintagestory.API.Common.CollectibleObject%2CVintagestory.API.Client.ItemRenderDelegate%2CVintagestory.API.Client.EnumItemRenderTarget)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L194">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientEventAPI_RegisterItemstackRenderer_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterItemstackRenderer*"></a>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_RegisterItemstackRenderer_Vintagestory_API_Common_CollectibleObject_Vintagestory_API_Client_ItemRenderDelegate_Vintagestory_API_Client_EnumItemRenderTarget_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterItemstackRenderer(Vintagestory.API.Common.CollectibleObject,Vintagestory.API.Client.ItemRenderDelegate,Vintagestory.API.Client.EnumItemRenderTarget)">RegisterItemstackRenderer(CollectibleObject, ItemRenderDelegate, EnumItemRenderTarget)</h4>
+  <div class="markdown level1 summary"><p>Registers a custom itemstack renderer for given collectible object. If none is registered, the default renderer is used. For render target gui, the gui shader and its uniforms are already fully prepared, you may only call RenderMesh() and ignore the modelMat, position and size values - stack sizes however, are not covered by this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterItemstackRenderer(CollectibleObject forObj, ItemRenderDelegate rendererDelegate, EnumItemRenderTarget target)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></td>
+        <td><span class="parametername">forObj</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ItemRenderDelegate.html">ItemRenderDelegate</a></td>
+        <td><span class="parametername">rendererDelegate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumItemRenderTarget.html">EnumItemRenderTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_RegisterRenderer_Vintagestory_API_Client_IRenderer_Vintagestory_API_Client_EnumRenderStage_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.RegisterRenderer(Vintagestory.API.Client.IRenderer%2CVintagestory.API.Client.EnumRenderStage%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L180">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientEventAPI_RegisterRenderer_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterRenderer*"></a>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_RegisterRenderer_Vintagestory_API_Client_IRenderer_Vintagestory_API_Client_EnumRenderStage_System_String_" data-uid="Vintagestory.API.Client.IClientEventAPI.RegisterRenderer(Vintagestory.API.Client.IRenderer,Vintagestory.API.Client.EnumRenderStage,System.String)">RegisterRenderer(IRenderer, EnumRenderStage, String)</h4>
+  <div class="markdown level1 summary"><p>Registers a rendering handler to be called during every render frame</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterRenderer(IRenderer renderer, EnumRenderStage renderStage, string profilingName = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IRenderer.html">IRenderer</a></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></td>
+        <td><span class="parametername">renderStage</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">profilingName</span></td>
+        <td><p>If set, the frame profile will record the frame cost for this renderer</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_UnregisterItemstackRenderer_Vintagestory_API_Common_CollectibleObject_Vintagestory_API_Client_EnumItemRenderTarget_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.UnregisterItemstackRenderer(Vintagestory.API.Common.CollectibleObject%2CVintagestory.API.Client.EnumItemRenderTarget)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L200">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientEventAPI_UnregisterItemstackRenderer_" data-uid="Vintagestory.API.Client.IClientEventAPI.UnregisterItemstackRenderer*"></a>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_UnregisterItemstackRenderer_Vintagestory_API_Common_CollectibleObject_Vintagestory_API_Client_EnumItemRenderTarget_" data-uid="Vintagestory.API.Client.IClientEventAPI.UnregisterItemstackRenderer(Vintagestory.API.Common.CollectibleObject,Vintagestory.API.Client.EnumItemRenderTarget)">UnregisterItemstackRenderer(CollectibleObject, EnumItemRenderTarget)</h4>
+  <div class="markdown level1 summary"><p>Removes a previously registered itemstack renderer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UnregisterItemstackRenderer(CollectibleObject forObj, EnumItemRenderTarget target)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></td>
+        <td><span class="parametername">forObj</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumItemRenderTarget.html">EnumItemRenderTarget</a></td>
+        <td><span class="parametername">target</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_UnregisterRenderer_Vintagestory_API_Client_IRenderer_Vintagestory_API_Client_EnumRenderStage_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.UnregisterRenderer(Vintagestory.API.Client.IRenderer%2CVintagestory.API.Client.EnumRenderStage)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L187">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IClientEventAPI_UnregisterRenderer_" data-uid="Vintagestory.API.Client.IClientEventAPI.UnregisterRenderer*"></a>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_UnregisterRenderer_Vintagestory_API_Client_IRenderer_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Client.IClientEventAPI.UnregisterRenderer(Vintagestory.API.Client.IRenderer,Vintagestory.API.Client.EnumRenderStage)">UnregisterRenderer(IRenderer, EnumRenderStage)</h4>
+  <div class="markdown level1 summary"><p>Removes a previously registered rendering handler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UnregisterRenderer(IRenderer renderer, EnumRenderStage renderStage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IRenderer.html">IRenderer</a></td>
+        <td><span class="parametername">renderer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></td>
+        <td><span class="parametername">renderStage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_AfterActiveSlotChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.AfterActiveSlotChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L162">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_AfterActiveSlotChanged" data-uid="Vintagestory.API.Client.IClientEventAPI.AfterActiveSlotChanged">AfterActiveSlotChanged</h4>
+  <div class="markdown level1 summary"><p>Fired after a player changes their active slot (such as selected hotbar slot).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;ActiveSlotChangeEventArgs&gt; AfterActiveSlotChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Common.ActiveSlotChangeEventArgs.html">ActiveSlotChangeEventArgs</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_BeforeActiveSlotChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.BeforeActiveSlotChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L157">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_BeforeActiveSlotChanged" data-uid="Vintagestory.API.Client.IClientEventAPI.BeforeActiveSlotChanged">BeforeActiveSlotChanged</h4>
+  <div class="markdown level1 summary"><p>Fired before a player changes their active slot (such as selected hotbar slot).
+Allows for the event to be cancelled depending on the return value.
+Note: Not called when the server forcefully changes active slot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Func&lt;ActiveSlotChangeEventArgs, EnumHandling&gt; BeforeActiveSlotChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Func-2.html">Func</a>&lt;<a class="xref" href="Vintagestory.API.Common.ActiveSlotChangeEventArgs.html">ActiveSlotChangeEventArgs</a>, <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_BlockChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.BlockChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L150">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_BlockChanged" data-uid="Vintagestory.API.Client.IClientEventAPI.BlockChanged">BlockChanged</h4>
+  <div class="markdown level1 summary"><p>When a player block has been modified. OldBlock param may be null!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event BlockChangedDelegate BlockChanged</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.BlockChangedDelegate.html">BlockChangedDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_BlockTexturesLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.BlockTexturesLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L214">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_BlockTexturesLoaded" data-uid="Vintagestory.API.Client.IClientEventAPI.BlockTexturesLoaded">BlockTexturesLoaded</h4>
+  <div class="markdown level1 summary"><p>Called when server assetes were received and all texture atlases have been created</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action BlockTexturesLoaded</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_ChatMessage.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.ChatMessage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L94">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_ChatMessage" data-uid="Vintagestory.API.Client.IClientEventAPI.ChatMessage">ChatMessage</h4>
+  <div class="markdown level1 summary"><p>Called when a chat message was received</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event ChatLineDelegate ChatMessage</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ChatLineDelegate.html">ChatLineDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_FileDrop.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.FileDrop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L262">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_FileDrop" data-uid="Vintagestory.API.Client.IClientEventAPI.FileDrop">FileDrop</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event FileDropDelegate FileDrop</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.FileDropDelegate.html">FileDropDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_InGameDiscovery.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.InGameDiscovery%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L172">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_InGameDiscovery" data-uid="Vintagestory.API.Client.IClientEventAPI.InGameDiscovery">InGameDiscovery</h4>
+  <div class="markdown level1 summary"><p>Fired when something triggers a discovery event, such as the lore system</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event IngameDiscoveryDelegate InGameDiscovery</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IngameDiscoveryDelegate.html">IngameDiscoveryDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_InGameError.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.InGameError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L167">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_InGameError" data-uid="Vintagestory.API.Client.IClientEventAPI.InGameError">InGameError</h4>
+  <div class="markdown level1 summary"><p>Fired when something fires an ingame error</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event IngameErrorDelegate InGameError</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IngameErrorDelegate.html">IngameErrorDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_IsPlayerReady.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.IsPlayerReady%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L119">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_IsPlayerReady" data-uid="Vintagestory.API.Client.IClientEventAPI.IsPlayerReady">IsPlayerReady</h4>
+  <div class="markdown level1 summary"><p>Fired when a player is ready to join but awaits any potential mod-user interaction, such as a character selection screen</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event IsPlayerReadyDelegate IsPlayerReady</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IsPlayerReadyDelegate.html">IsPlayerReadyDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_KeyDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.KeyDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L253">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_KeyDown" data-uid="Vintagestory.API.Client.IClientEventAPI.KeyDown">KeyDown</h4>
+  <div class="markdown level1 summary"><p>Provides low level access to the key down event. If e.Handled is set to true, the event will not be handled by the game</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event KeyEventDelegate KeyDown</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEventDelegate.html">KeyEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_KeyUp.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.KeyUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L257">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_KeyUp" data-uid="Vintagestory.API.Client.IClientEventAPI.KeyUp">KeyUp</h4>
+  <div class="markdown level1 summary"><p>Provides low level access to the key up event. If e.Handled is set to true, the event will not be handled by the game</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event KeyEventDelegate KeyUp</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEventDelegate.html">KeyEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_LeaveWorld.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.LeaveWorld%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L140">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_LeaveWorld" data-uid="Vintagestory.API.Client.IClientEventAPI.LeaveWorld">LeaveWorld</h4>
+  <div class="markdown level1 summary"><p>When the player wants to leave the world to go back to the main menu</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action LeaveWorld</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_LeftWorld.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.LeftWorld%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L145">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_LeftWorld" data-uid="Vintagestory.API.Client.IClientEventAPI.LeftWorld">LeftWorld</h4>
+  <div class="markdown level1 summary"><p>When the player left the world to go back to the main menu</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action LeftWorld</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_LevelFinalize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.LevelFinalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L228">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_LevelFinalize" data-uid="Vintagestory.API.Client.IClientEventAPI.LevelFinalize">LevelFinalize</h4>
+  <div class="markdown level1 summary"><p>Called when the client received the level finalize packet from the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action LevelFinalize</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_MouseDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.MouseDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L241">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_MouseDown" data-uid="Vintagestory.API.Client.IClientEventAPI.MouseDown">MouseDown</h4>
+  <div class="markdown level1 summary"><p>Provides low level access to the mouse down event. If e.Handled is set to true, the event will not be handled by the game</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event MouseEventDelegate MouseDown</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEventDelegate.html">MouseEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_MouseMove.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.MouseMove%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L249">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_MouseMove" data-uid="Vintagestory.API.Client.IClientEventAPI.MouseMove">MouseMove</h4>
+  <div class="markdown level1 summary"><p>Provides low level access to the mouse move event. If e.Handled is set to true, the event will not be handled by the game</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event MouseEventDelegate MouseMove</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEventDelegate.html">MouseEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_MouseUp.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.MouseUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L245">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_MouseUp" data-uid="Vintagestory.API.Client.IClientEventAPI.MouseUp">MouseUp</h4>
+  <div class="markdown level1 summary"><p>Provides low level access to the mouse up event. If e.Handled is set to true, the event will not be handled by the game</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event MouseEventDelegate MouseUp</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEventDelegate.html">MouseEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_OnSendChatMessage.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.OnSendChatMessage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L99">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_OnSendChatMessage" data-uid="Vintagestory.API.Client.IClientEventAPI.OnSendChatMessage">OnSendChatMessage</h4>
+  <div class="markdown level1 summary"><p>Called before a chat message is sent to the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event ClientChatLineDelegate OnSendChatMessage</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ClientChatLineDelegate.html">ClientChatLineDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_PauseResume.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.PauseResume%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L135">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_PauseResume" data-uid="Vintagestory.API.Client.IClientEventAPI.PauseResume">PauseResume</h4>
+  <div class="markdown level1 summary"><p>When the game was paused/resumed (only in single player)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event OnGamePauseResume PauseResume</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.OnGamePauseResume.html">OnGamePauseResume</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_PlayerDeath.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.PlayerDeath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L114">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_PlayerDeath" data-uid="Vintagestory.API.Client.IClientEventAPI.PlayerDeath">PlayerDeath</h4>
+  <div class="markdown level1 summary"><p>Called when the player dies</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event PlayerEventDelegate PlayerDeath</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.PlayerEventDelegate.html">PlayerEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_PlayerEntityDespawn.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.PlayerEntityDespawn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L129">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_PlayerEntityDespawn" data-uid="Vintagestory.API.Client.IClientEventAPI.PlayerEntityDespawn">PlayerEntityDespawn</h4>
+  <div class="markdown level1 summary"><p>Called whenever a players got out of range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event PlayerEventDelegate PlayerEntityDespawn</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.PlayerEventDelegate.html">PlayerEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_PlayerEntitySpawn.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.PlayerEntitySpawn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L124">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_PlayerEntitySpawn" data-uid="Vintagestory.API.Client.IClientEventAPI.PlayerEntitySpawn">PlayerEntitySpawn</h4>
+  <div class="markdown level1 summary"><p>Called when a players entity got in range</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event PlayerEventDelegate PlayerEntitySpawn</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.PlayerEventDelegate.html">PlayerEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_PlayerJoin.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.PlayerJoin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L104">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_PlayerJoin" data-uid="Vintagestory.API.Client.IClientEventAPI.PlayerJoin">PlayerJoin</h4>
+  <div class="markdown level1 summary"><p>Called when a player joins. The Entity of the player might be null if out of range!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event PlayerEventDelegate PlayerJoin</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.PlayerEventDelegate.html">PlayerEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_PlayerLeave.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.PlayerLeave%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L109">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_PlayerLeave" data-uid="Vintagestory.API.Client.IClientEventAPI.PlayerLeave">PlayerLeave</h4>
+  <div class="markdown level1 summary"><p>Called whenever a player disconnects (timeout, leave, disconnect, kick, etc.). The Entity of the player might be null if out of range!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event PlayerEventDelegate PlayerLeave</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.PlayerEventDelegate.html">PlayerEventDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_ReloadShader.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.ReloadShader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L218">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_ReloadShader" data-uid="Vintagestory.API.Client.IClientEventAPI.ReloadShader">ReloadShader</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event ActionBoolReturn ReloadShader</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn.html">ActionBoolReturn</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_ReloadShapes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.ReloadShapes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L233">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_ReloadShapes" data-uid="Vintagestory.API.Client.IClientEventAPI.ReloadShapes">ReloadShapes</h4>
+  <div class="markdown level1 summary"><p>Called when shapes got reloaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action ReloadShapes</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_ReloadTextures.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.ReloadTextures%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L223">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IClientEventAPI_ReloadTextures" data-uid="Vintagestory.API.Client.IClientEventAPI.ReloadTextures">ReloadTextures</h4>
+  <div class="markdown level1 summary"><p>Called when textures got reloaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action ReloadTextures</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L89" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

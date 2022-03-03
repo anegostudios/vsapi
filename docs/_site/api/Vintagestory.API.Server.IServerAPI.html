@@ -1,0 +1,963 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IServerAPI
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IServerAPI
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Server.IServerAPI">
+  
+  
+  <h1 id="Vintagestory_API_Server_IServerAPI" data-uid="Vintagestory.API.Server.IServerAPI" class="text-break">Interface IServerAPI
+  </h1>
+  <div class="markdown level0 summary"><p>API for general Server features</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Server.html">Vintagestory.API.Server</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Server_IServerAPI_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IServerAPI</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_Config.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.Config%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L20">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_Config_" data-uid="Vintagestory.API.Server.IServerAPI.Config*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_Config" data-uid="Vintagestory.API.Server.IServerAPI.Config">Config</h4>
+  <div class="markdown level1 summary"><p>The servers current configuration as configured in the serverconfig.json. You can set the values but you need to call MarkDirty() to have them saved</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerConfig Config { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerConfig.html">IServerConfig</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_CurrentRunPhase.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.CurrentRunPhase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L32">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_CurrentRunPhase_" data-uid="Vintagestory.API.Server.IServerAPI.CurrentRunPhase*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_CurrentRunPhase" data-uid="Vintagestory.API.Server.IServerAPI.CurrentRunPhase">CurrentRunPhase</h4>
+  <div class="markdown level1 summary"><p>Returns the servers current run phase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumServerRunPhase CurrentRunPhase { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.EnumServerRunPhase.html">EnumServerRunPhase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_IsDedicated.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.IsDedicated%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L38">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_IsDedicated_" data-uid="Vintagestory.API.Server.IServerAPI.IsDedicated*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_IsDedicated" data-uid="Vintagestory.API.Server.IServerAPI.IsDedicated">IsDedicated</h4>
+  <div class="markdown level1 summary"><p>Returns whether the current server a dedicated server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsDedicated { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_IsShuttingDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.IsShuttingDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L47">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_IsShuttingDown_" data-uid="Vintagestory.API.Server.IServerAPI.IsShuttingDown*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_IsShuttingDown" data-uid="Vintagestory.API.Server.IServerAPI.IsShuttingDown">IsShuttingDown</h4>
+  <div class="markdown level1 summary"><p>Determines if the server process has been asked to terminate.
+Use this when you need to save data in a method registered using RegisterOnSave() before server quits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsShuttingDown { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><em>true</em>
+      if server is about to shutdown</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_Logger.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.Logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L95">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_Logger_" data-uid="Vintagestory.API.Server.IServerAPI.Logger*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_Logger" data-uid="Vintagestory.API.Server.IServerAPI.Logger">Logger</h4>
+  <div class="markdown level1 summary"><p>Returns a logging interface to log any log level message</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ILogger Logger { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_Players.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.Players%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L15">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_Players_" data-uid="Vintagestory.API.Server.IServerAPI.Players*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_Players" data-uid="Vintagestory.API.Server.IServerAPI.Players">Players</h4>
+  <div class="markdown level1 summary"><p>All players known to the server (which joined at least once)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerPlayer[] Players { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_ServerIp.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.ServerIp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L10">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_ServerIp_" data-uid="Vintagestory.API.Server.IServerAPI.ServerIp*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_ServerIp" data-uid="Vintagestory.API.Server.IServerAPI.ServerIp">ServerIp</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ServerIp { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_ServerUptimeMilliseconds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.ServerUptimeMilliseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L83">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_ServerUptimeMilliseconds_" data-uid="Vintagestory.API.Server.IServerAPI.ServerUptimeMilliseconds*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_ServerUptimeMilliseconds" data-uid="Vintagestory.API.Server.IServerAPI.ServerUptimeMilliseconds">ServerUptimeMilliseconds</h4>
+  <div class="markdown level1 summary"><p>Server uptime in milliseconds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long ServerUptimeMilliseconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_ServerUptimeSeconds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.ServerUptimeSeconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L77">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_ServerUptimeSeconds_" data-uid="Vintagestory.API.Server.IServerAPI.ServerUptimeSeconds*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_ServerUptimeSeconds" data-uid="Vintagestory.API.Server.IServerAPI.ServerUptimeSeconds">ServerUptimeSeconds</h4>
+  <div class="markdown level1 summary"><p>Returns the number of seconds the server has been running since last restart</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ServerUptimeSeconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Server uptime in seconds</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_TotalReceivedBytes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.TotalReceivedBytes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L70">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_TotalReceivedBytes_" data-uid="Vintagestory.API.Server.IServerAPI.TotalReceivedBytes*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_TotalReceivedBytes" data-uid="Vintagestory.API.Server.IServerAPI.TotalReceivedBytes">TotalReceivedBytes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long TotalReceivedBytes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_TotalSentBytes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.TotalSentBytes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L71">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_TotalSentBytes_" data-uid="Vintagestory.API.Server.IServerAPI.TotalSentBytes*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_TotalSentBytes" data-uid="Vintagestory.API.Server.IServerAPI.TotalSentBytes">TotalSentBytes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long TotalSentBytes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_TotalWorldPlayTime.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.TotalWorldPlayTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L88">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_TotalWorldPlayTime_" data-uid="Vintagestory.API.Server.IServerAPI.TotalWorldPlayTime*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_TotalWorldPlayTime" data-uid="Vintagestory.API.Server.IServerAPI.TotalWorldPlayTime">TotalWorldPlayTime</h4>
+  <div class="markdown level1 summary"><p>Returns the number of seconds the current world has been running. This is the playtime displayed on the singleplayer world list.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int TotalWorldPlayTime { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogBuild_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogBuild(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L111">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogBuild_" data-uid="Vintagestory.API.Server.IServerAPI.LogBuild*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogBuild_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogBuild(System.String,System.Object[])">LogBuild(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.Build</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogBuild(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogChat_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogChat(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L103">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogChat_" data-uid="Vintagestory.API.Server.IServerAPI.LogChat*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogChat_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogChat(System.String,System.Object[])">LogChat(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.Chat</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogChat(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogDebug_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogDebug(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L125">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogDebug_" data-uid="Vintagestory.API.Server.IServerAPI.LogDebug*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogDebug_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogDebug(System.String,System.Object[])">LogDebug(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.Debug</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogDebug(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogError_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogError(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L146">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogError_" data-uid="Vintagestory.API.Server.IServerAPI.LogError*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogError_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogError(System.String,System.Object[])">LogError(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.Error</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogError(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogEvent_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogEvent(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L160">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogEvent_" data-uid="Vintagestory.API.Server.IServerAPI.LogEvent*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogEvent_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogEvent(System.String,System.Object[])">LogEvent(String, Object[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogEvent(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogFatal_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogFatal(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L153">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogFatal_" data-uid="Vintagestory.API.Server.IServerAPI.LogFatal*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogFatal_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogFatal(System.String,System.Object[])">LogFatal(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.Fatal</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogFatal(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogNotification_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogNotification(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L132">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogNotification_" data-uid="Vintagestory.API.Server.IServerAPI.LogNotification*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogNotification_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogNotification(System.String,System.Object[])">LogNotification(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.Notification</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogNotification(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogVerboseDebug_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogVerboseDebug(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L118">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogVerboseDebug_" data-uid="Vintagestory.API.Server.IServerAPI.LogVerboseDebug*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogVerboseDebug_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogVerboseDebug(System.String,System.Object[])">LogVerboseDebug(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.VerboseDebug</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogVerboseDebug(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_LogWarning_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.LogWarning(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L139">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_LogWarning_" data-uid="Vintagestory.API.Server.IServerAPI.LogWarning*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_LogWarning_System_String_System_Object___" data-uid="Vintagestory.API.Server.IServerAPI.LogWarning(System.String,System.Object[])">LogWarning(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Log given message with type = EnumLogType.Warning</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void LogWarning(string message, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_MarkConfigDirty.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.MarkConfigDirty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L25">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_MarkConfigDirty_" data-uid="Vintagestory.API.Server.IServerAPI.MarkConfigDirty*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_MarkConfigDirty" data-uid="Vintagestory.API.Server.IServerAPI.MarkConfigDirty">MarkConfigDirty()</h4>
+  <div class="markdown level1 summary"><p>Marks the config dirty for saving</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkConfigDirty()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_PauseThread_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.PauseThread(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L61">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_PauseThread_" data-uid="Vintagestory.API.Server.IServerAPI.PauseThread*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_PauseThread_System_String_System_Int32_" data-uid="Vintagestory.API.Server.IServerAPI.PauseThread(System.String,System.Int32)">PauseThread(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Does a blocking wait until given thread is paused. Returns true if the thread was paused within given time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool PauseThread(string threadname, int waitTimeoutMs = 5000)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">threadname</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">waitTimeoutMs</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_ResumeThread_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.ResumeThread(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L67">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_ResumeThread_" data-uid="Vintagestory.API.Server.IServerAPI.ResumeThread*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_ResumeThread_System_String_" data-uid="Vintagestory.API.Server.IServerAPI.ResumeThread(System.String)">ResumeThread(String)</h4>
+  <div class="markdown level1 summary"><p>Resumes a previously paused thread</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ResumeThread(string threadname)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">threadname</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI_ShutDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI.ShutDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L53">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IServerAPI_ShutDown_" data-uid="Vintagestory.API.Server.IServerAPI.ShutDown*"></a>
+  <h4 id="Vintagestory_API_Server_IServerAPI_ShutDown" data-uid="Vintagestory.API.Server.IServerAPI.ShutDown">ShutDown()</h4>
+  <div class="markdown level1 summary"><p>Gracefully shuts down the server</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ShutDown()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerAPI.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerAPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Server/API/IServerAPI.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

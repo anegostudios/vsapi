@@ -1,0 +1,1703 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface ITreeAttribute
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface ITreeAttribute
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Datastructures.ITreeAttribute">
+  
+  
+  <h1 id="Vintagestory_API_Datastructures_ITreeAttribute" data-uid="Vintagestory.API.Datastructures.ITreeAttribute" class="text-break">Interface ITreeAttribute
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a List of nestable Attributes</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToBytes_BinaryWriter_">IAttribute.ToBytes(BinaryWriter)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_FromBytes_BinaryReader_">IAttribute.FromBytes(BinaryReader)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetAttributeId">IAttribute.GetAttributeId()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetType">IAttribute.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetValue">IAttribute.GetValue()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToJsonToken">IAttribute.ToJsonToken()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_">IAttribute.Equals(IWorldAccessor, IAttribute)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Datastructures.html">Vintagestory.API.Datastructures</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Datastructures_ITreeAttribute_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ITreeAttribute : IAttribute, IEnumerable&lt;KeyValuePair&lt;string, IAttribute&gt;&gt;, IEnumerable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_Count.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L22">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_Count_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Count*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_Count" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Count">Count</h4>
+  <div class="markdown level1 summary"><p>Amount of elements in this Tree attribute</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_Item_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L17">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_Item_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Item*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_Item_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Item(System.String)">Item[String]</h4>
+  <div class="markdown level1 summary"><p>Will return null if given attribute does not exist</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAttribute this[string key] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html">IAttribute</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_Values.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.Values%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L27">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_Values_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Values*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_Values" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Values">Values</h4>
+  <div class="markdown level1 summary"><p>Returns all values inside this tree attributes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IAttribute[] Values { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html">IAttribute</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_Clone.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L225">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_Clone_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Clone*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_Clone" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Clone">Clone()</h4>
+  <div class="markdown level1 summary"><p>Creates a deep copy of the attribute tree</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITreeAttribute Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.Equals(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Datastructures.IAttribute%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L234">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_Equals_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Equals*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_System_String___" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute,System.String[])">Equals(IWorldAccessor, IAttribute, String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Equals(IWorldAccessor worldForResolve, IAttribute attr, params string[] ignoreSubTrees)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">worldForResolve</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html">IAttribute</a></td>
+        <td><span class="parametername">attr</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">ignoreSubTrees</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetBool_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetBool(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L112">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetBool_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetBool*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetBool_System_String_System_Boolean_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetBool(System.String,System.Boolean)">GetBool(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a bool or default value if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GetBool(string key, bool defaultValue = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetBytes_System_String_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetBytes(System.String%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L196">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetBytes_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetBytes*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetBytes_System_String_System_Byte___" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetBytes(System.String,System.Byte[])">GetBytes(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Retrieves a byte array or defaultValue if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">byte[] GetBytes(string key, byte[] defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetDecimal_System_String_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L135">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetDecimal_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetDecimal_System_String_System_Double_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)">GetDecimal(String, Double)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an int, float, long or double value. Whatever attribute is found for given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double GetDecimal(string key, double defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetDouble_System_String_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetDouble(System.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L180">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetDouble_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetDouble*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetDouble_System_String_System_Double_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetDouble(System.String,System.Double)">GetDouble(String, Double)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a double or defaultValue if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double GetDouble(string key, double defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetFloat_System_String_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetFloat(System.String%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L165">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetFloat_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetFloat*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetFloat_System_String_System_Single_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetFloat(System.String,System.Single)">GetFloat(String, Single)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a float or defaultvalue if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetFloat(string key, float defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetHashCode_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L237">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetHashCode_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetHashCode_System_String___" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode(System.String[])">GetHashCode(String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetHashCode(string[] ignoredAttributes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">ignoredAttributes</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetInt_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetInt(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L127">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetInt_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetInt*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetInt_System_String_System_Int32_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetInt(System.String,System.Int32)">GetInt(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an int or default value if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetInt(string key, int defaultValue = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetItemstack_System_String_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack(System.String%2CVintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L204">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetItemstack_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetItemstack_System_String_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack(System.String,Vintagestory.API.Common.ItemStack)">GetItemstack(String, ItemStack)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an itemstack or defaultValue if key is not found. Be sure to call stack.ResolveBlockOrItem() after retrieving it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemStack GetItemstack(string key, ItemStack defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetLong_System_String_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetLong(System.String%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L150">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetLong_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetLong*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetLong_System_String_System_Int64_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetLong(System.String,System.Int64)">GetLong(String, Int64)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a long or default value if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long GetLong(string key, long defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetOrAddTreeAttribute_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L219">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetOrAddTreeAttribute_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetOrAddTreeAttribute_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute(System.String)">GetOrAddTreeAttribute(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an attribute tree or adds it if key is not found.
+Throws an exception if the key does exist but is not a tree.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITreeAttribute GetOrAddTreeAttribute(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetString_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetString(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L188">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetString_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetString*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetString_System_String_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetString(System.String,System.String)">GetString(String, String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a string or defaultValue if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetString(string key, string defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_GetTreeAttribute_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L211">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_GetTreeAttribute_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_GetTreeAttribute_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute(System.String)">GetTreeAttribute(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an attribute tree or null if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ITreeAttribute GetTreeAttribute(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_HasAttribute_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L34">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_HasAttribute_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_HasAttribute_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute(System.String)">HasAttribute(String)</h4>
+  <div class="markdown level1 summary"><p>True if this attribute exists</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool HasAttribute(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_IsSubSetOf_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Datastructures.IAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L235">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_IsSubSetOf_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_IsSubSetOf_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)">IsSubSetOf(IWorldAccessor, IAttribute)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">worldForResolve</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.IAttribute.html">IAttribute</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_MergeTree_Vintagestory_API_Datastructures_ITreeAttribute_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.MergeTree(Vintagestory.API.Datastructures.ITreeAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L231">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_MergeTree_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.MergeTree*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_MergeTree_Vintagestory_API_Datastructures_ITreeAttribute_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.MergeTree(Vintagestory.API.Datastructures.ITreeAttribute)">MergeTree(ITreeAttribute)</h4>
+  <div class="markdown level1 summary"><p>Merges trees (it will overwrite existing values)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MergeTree(ITreeAttribute tree)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td><span class="parametername">tree</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_RemoveAttribute_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L40">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_RemoveAttribute_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_RemoveAttribute_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute(System.String)">RemoveAttribute(String)</h4>
+  <div class="markdown level1 summary"><p>Removes an attribute</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveAttribute(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetBool_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetBool(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L47">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetBool_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetBool*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetBool_System_String_System_Boolean_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetBool(System.String,System.Boolean)">SetBool(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Creates a bool attribute with given key and value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBool(string key, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetBytes_System_String_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetBytes(System.String%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L90">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetBytes_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetBytes*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetBytes_System_String_System_Byte___" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetBytes(System.String,System.Byte[])">SetBytes(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Creates a byte[] attribute with given key and value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBytes(string key, byte[] value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetDouble_System_String_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetDouble(System.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L68">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetDouble_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetDouble*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetDouble_System_String_System_Double_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetDouble(System.String,System.Double)">SetDouble(String, Double)</h4>
+  <div class="markdown level1 summary"><p>Creates a double attribute with given key and value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetDouble(string key, double value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetFloat_System_String_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetFloat(System.String%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L76">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetFloat_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetFloat*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetFloat_System_String_System_Single_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetFloat(System.String,System.Single)">SetFloat(String, Single)</h4>
+  <div class="markdown level1 summary"><p>Creates a float attribute with given key and value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetFloat(string key, float value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetInt_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetInt(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L54">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetInt_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetInt*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetInt_System_String_System_Int32_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetInt(System.String,System.Int32)">SetInt(String, Int32)</h4>
+  <div class="markdown level1 summary"><p>Creates an int attribute with given key and value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetInt(string key, int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetItemstack_System_String_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack(System.String%2CVintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L97">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetItemstack_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetItemstack_System_String_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack(System.String,Vintagestory.API.Common.ItemStack)">SetItemstack(String, ItemStack)</h4>
+  <div class="markdown level1 summary"><p>Sets given item stack with given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetItemstack(string key, ItemStack itemstack)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td><span class="parametername">itemstack</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetLong_System_String_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetLong(System.String%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L61">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetLong_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetLong*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetLong_System_String_System_Int64_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetLong(System.String,System.Int64)">SetLong(String, Int64)</h4>
+  <div class="markdown level1 summary"><p>Creates a long attribute with given key and value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetLong(string key, long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_SetString_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.SetString(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L83">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_SetString_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetString*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_SetString_System_String_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.SetString(System.String,System.String)">SetString(String, String)</h4>
+  <div class="markdown level1 summary"><p>Creates a string attribute with given key and value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetString(string key, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_TryGetBool_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L104">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetBool_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetBool_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool(System.String)">TryGetBool(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a bool or null if the key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool? TryGetBool(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_TryGetDouble_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L172">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetDouble_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetDouble_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble(System.String)">TryGetDouble(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a double or null if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double? TryGetDouble(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_TryGetFloat_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L157">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetFloat_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetFloat_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat(System.String)">TryGetFloat(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a float or null if the key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float? TryGetFloat(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_TryGetInt_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L119">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetInt_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetInt_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt(System.String)">TryGetInt(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an int or null if the key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int? TryGetInt(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute_TryGetLong_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L142">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetLong_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong*"></a>
+  <h4 id="Vintagestory_API_Datastructures_ITreeAttribute_TryGetLong_System_String_" data-uid="Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong(System.String)">TryGetLong(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a long or null value if key is not found</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long? TryGetLong(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_">TreeAttributeUtil.GetVec3i(ITreeAttribute, String, Vec3i)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_">TreeAttributeUtil.GetBlockPos(ITreeAttribute, String, BlockPos)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_">TreeAttributeUtil.SetVec3i(ITreeAttribute, String, Vec3i)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_">TreeAttributeUtil.SetBlockPos(ITreeAttribute, String, BlockPos)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___">TreeAttributeUtil.GetVec3is(ITreeAttribute, String, Vec3i[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___">TreeAttributeUtil.SetVec3is(ITreeAttribute, String, Vec3i[])</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_ITreeAttribute.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.ITreeAttribute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Datastructures/AttributeTree/ITreeAttribute.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

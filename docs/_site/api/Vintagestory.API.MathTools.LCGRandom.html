@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LCGRandom
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LCGRandom
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.MathTools.LCGRandom">
+  
+  
+  <h1 id="Vintagestory_API_MathTools_LCGRandom" data-uid="Vintagestory.API.MathTools.LCGRandom" class="text-break">Class LCGRandom
+  </h1>
+  <div class="markdown level0 summary"><p>An lcg random generator, particularly suitable for worldgen
+See also <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">https://en.wikipedia.org/wiki/Linear_congruential_generator</a></p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">LCGRandom</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Vintagestory.API.MathTools.IRandom.html">IRandom</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.MathTools.html">Vintagestory.API.MathTools</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_MathTools_LCGRandom_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class LCGRandom : object, IRandom</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom__ctor.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L60">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom__ctor_" data-uid="Vintagestory.API.MathTools.LCGRandom.#ctor*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom__ctor" data-uid="Vintagestory.API.MathTools.LCGRandom.#ctor">LCGRandom()</h4>
+  <div class="markdown level1 summary"><p>Initialize random with no seed. Use SetWorldSeed() to initialize</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LCGRandom()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom__ctor_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.%23ctor(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L52">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom__ctor_" data-uid="Vintagestory.API.MathTools.LCGRandom.#ctor*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom__ctor_System_Int64_" data-uid="Vintagestory.API.MathTools.LCGRandom.#ctor(System.Int64)">LCGRandom(Int64)</h4>
+  <div class="markdown level1 summary"><p>Initialize random with given seed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LCGRandom(long worldSeed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">worldSeed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_currentSeed.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.currentSeed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L46">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_currentSeed" data-uid="Vintagestory.API.MathTools.LCGRandom.currentSeed">currentSeed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long currentSeed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_mapGenSeed.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.mapGenSeed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L45">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_mapGenSeed" data-uid="Vintagestory.API.MathTools.LCGRandom.mapGenSeed">mapGenSeed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long mapGenSeed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_worldSeed.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.worldSeed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L44">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_worldSeed" data-uid="Vintagestory.API.MathTools.LCGRandom.worldSeed">worldSeed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long worldSeed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_InitPositionSeed_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.InitPositionSeed(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L90">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom_InitPositionSeed_" data-uid="Vintagestory.API.MathTools.LCGRandom.InitPositionSeed*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_InitPositionSeed_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.LCGRandom.InitPositionSeed(System.Int32,System.Int32)">InitPositionSeed(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a position dependent seed, if required</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitPositionSeed(int xPos, int zPos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">zPos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_InitPositionSeed_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.InitPositionSeed(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L110">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom_InitPositionSeed_" data-uid="Vintagestory.API.MathTools.LCGRandom.InitPositionSeed*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_InitPositionSeed_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.LCGRandom.InitPositionSeed(System.Int32,System.Int32,System.Int32)">InitPositionSeed(Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a position dependent seed, if required</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitPositionSeed(int xPos, int yPos, int zPos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">xPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">yPos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">zPos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_NextDouble.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.NextDouble%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L166">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom_NextDouble_" data-uid="Vintagestory.API.MathTools.LCGRandom.NextDouble*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_NextDouble" data-uid="Vintagestory.API.MathTools.LCGRandom.NextDouble">NextDouble()</h4>
+  <div class="markdown level1 summary"><p>Returns a random number from 0 - 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double NextDouble()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_NextFloat.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.NextFloat%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L157">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom_NextFloat_" data-uid="Vintagestory.API.MathTools.LCGRandom.NextFloat*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_NextFloat" data-uid="Vintagestory.API.MathTools.LCGRandom.NextFloat">NextFloat()</h4>
+  <div class="markdown level1 summary"><p>Returns a random number from 0 - 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float NextFloat()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_NextInt.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.NextInt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L148">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom_NextInt_" data-uid="Vintagestory.API.MathTools.LCGRandom.NextInt*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_NextInt" data-uid="Vintagestory.API.MathTools.LCGRandom.NextInt">NextInt()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NextInt()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_NextInt_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.NextInt(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L132">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom_NextInt_" data-uid="Vintagestory.API.MathTools.LCGRandom.NextInt*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_NextInt_System_Int32_" data-uid="Vintagestory.API.MathTools.LCGRandom.NextInt(System.Int32)">NextInt(Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns a pseudo random number from 0 - max (excluding max)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NextInt(int max)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">max</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom_SetWorldSeed_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom.SetWorldSeed(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L69">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_LCGRandom_SetWorldSeed_" data-uid="Vintagestory.API.MathTools.LCGRandom.SetWorldSeed*"></a>
+  <h4 id="Vintagestory_API_MathTools_LCGRandom_SetWorldSeed_System_Int64_" data-uid="Vintagestory.API.MathTools.LCGRandom.SetWorldSeed(System.Int64)">SetWorldSeed(Int64)</h4>
+  <div class="markdown level1 summary"><p>Sets given seed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetWorldSeed(long worldSeed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">worldSeed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.MathTools.IRandom.html">IRandom</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_LCGRandom.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.LCGRandom%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Math/LCGRandom.cs/#L42" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,888 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class MeshDataPool
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class MeshDataPool
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.MeshDataPool">
+  
+  
+  <h1 id="Vintagestory_API_Client_MeshDataPool" data-uid="Vintagestory.API.Client.MeshDataPool" class="text-break">Class MeshDataPool
+  </h1>
+  <div class="markdown level0 summary"><p>This is a modeldata pool, which can hold 400k vertices, 300k indices but not more than 900 chunks</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">MeshDataPool</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_MeshDataPool_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MeshDataPool : object</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_AllocatedTris.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.AllocatedTris%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L84">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_AllocatedTris" data-uid="Vintagestory.API.Client.MeshDataPool.AllocatedTris">AllocatedTris</h4>
+  <div class="markdown level1 summary"><p>How many triangles are allocated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AllocatedTris</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_CurrentFragmentation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.CurrentFragmentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L67">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_CurrentFragmentation" data-uid="Vintagestory.API.Client.MeshDataPool.CurrentFragmentation">CurrentFragmentation</h4>
+  <div class="markdown level1 summary"><p>The current fragmentaton.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float CurrentFragmentation</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_indicesGroupsCount.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.indicesGroupsCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L50">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_indicesGroupsCount" data-uid="Vintagestory.API.Client.MeshDataPool.indicesGroupsCount">indicesGroupsCount</h4>
+  <div class="markdown level1 summary"><p>How many index groups are there.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int indicesGroupsCount</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_IndicesPoolSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.IndicesPoolSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L27">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_IndicesPoolSize" data-uid="Vintagestory.API.Client.MeshDataPool.IndicesPoolSize">IndicesPoolSize</h4>
+  <div class="markdown level1 summary"><p>the amount of indicies for this pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int IndicesPoolSize</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_indicesPosition.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.indicesPosition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L57">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_indicesPosition" data-uid="Vintagestory.API.Client.MeshDataPool.indicesPosition">indicesPosition</h4>
+  <div class="markdown level1 summary"><p>the position of the indices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int indicesPosition</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_indicesSizes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.indicesSizes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L45">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_indicesSizes" data-uid="Vintagestory.API.Client.MeshDataPool.indicesSizes">indicesSizes</h4>
+  <div class="markdown level1 summary"><p>The size of each index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] indicesSizes</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_indicesStartsByte.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.indicesStartsByte%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L40">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_indicesStartsByte" data-uid="Vintagestory.API.Client.MeshDataPool.indicesStartsByte">indicesStartsByte</h4>
+  <div class="markdown level1 summary"><p>The starting byte for each index.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int[] indicesStartsByte</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_MaxPartsPerPool.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.MaxPartsPerPool%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L17">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_MaxPartsPerPool" data-uid="Vintagestory.API.Client.MeshDataPool.MaxPartsPerPool">MaxPartsPerPool</h4>
+  <div class="markdown level1 summary"><p>The maximum parts for this pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxPartsPerPool</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_RenderedTriangles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.RenderedTriangles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L79">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_RenderedTriangles" data-uid="Vintagestory.API.Client.MeshDataPool.RenderedTriangles">RenderedTriangles</h4>
+  <div class="markdown level1 summary"><p>How many triangles are rendered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RenderedTriangles</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_UsedVertices.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.UsedVertices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L72">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_UsedVertices" data-uid="Vintagestory.API.Client.MeshDataPool.UsedVertices">UsedVertices</h4>
+  <div class="markdown level1 summary"><p>How many of the vertices are used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UsedVertices</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_VerticesPoolSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.VerticesPoolSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L22">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_VerticesPoolSize" data-uid="Vintagestory.API.Client.MeshDataPool.VerticesPoolSize">VerticesPoolSize</h4>
+  <div class="markdown level1 summary"><p>The current vertices for this pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int VerticesPoolSize</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_verticesPosition.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.verticesPosition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L62">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_verticesPosition" data-uid="Vintagestory.API.Client.MeshDataPool.verticesPosition">verticesPosition</h4>
+  <div class="markdown level1 summary"><p>the position of the vertices.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int verticesPosition</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_AllocateNewPool_Vintagestory_API_Client_ICoreClientAPI_System_Int32_System_Int32_System_Int32_Vintagestory_API_Client_CustomMeshDataPartFloat_Vintagestory_API_Client_CustomMeshDataPartShort_Vintagestory_API_Client_CustomMeshDataPartByte_Vintagestory_API_Client_CustomMeshDataPartInt_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.AllocateNewPool(Vintagestory.API.Client.ICoreClientAPI%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.Client.CustomMeshDataPartFloat%2CVintagestory.API.Client.CustomMeshDataPartShort%2CVintagestory.API.Client.CustomMeshDataPartByte%2CVintagestory.API.Client.CustomMeshDataPartInt)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L105">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_AllocateNewPool_" data-uid="Vintagestory.API.Client.MeshDataPool.AllocateNewPool*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_AllocateNewPool_Vintagestory_API_Client_ICoreClientAPI_System_Int32_System_Int32_System_Int32_Vintagestory_API_Client_CustomMeshDataPartFloat_Vintagestory_API_Client_CustomMeshDataPartShort_Vintagestory_API_Client_CustomMeshDataPartByte_Vintagestory_API_Client_CustomMeshDataPartInt_" data-uid="Vintagestory.API.Client.MeshDataPool.AllocateNewPool(Vintagestory.API.Client.ICoreClientAPI,System.Int32,System.Int32,System.Int32,Vintagestory.API.Client.CustomMeshDataPartFloat,Vintagestory.API.Client.CustomMeshDataPartShort,Vintagestory.API.Client.CustomMeshDataPartByte,Vintagestory.API.Client.CustomMeshDataPartInt)">AllocateNewPool(ICoreClientAPI, Int32, Int32, Int32, CustomMeshDataPartFloat, CustomMeshDataPartShort, CustomMeshDataPartByte, CustomMeshDataPartInt)</h4>
+  <div class="markdown level1 summary"><p>Allocates a new pool for mesh data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MeshDataPool AllocateNewPool(ICoreClientAPI capi, int verticesPoolSize, int indicesPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartShort customShorts = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The core client API</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">verticesPoolSize</span></td>
+        <td><p>The vertices pool size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">indicesPoolSize</span></td>
+        <td><p>The index pool size.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxPartsPerPool</span></td>
+        <td><p>The maximum parts per pool.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.CustomMeshDataPartFloat.html">CustomMeshDataPartFloat</a></td>
+        <td><span class="parametername">customFloats</span></td>
+        <td><p>The custom floats of the pool.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.CustomMeshDataPartShort.html">CustomMeshDataPartShort</a></td>
+        <td><span class="parametername">customShorts</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.CustomMeshDataPartByte.html">CustomMeshDataPartByte</a></td>
+        <td><span class="parametername">customBytes</span></td>
+        <td><p>The custom bytes of the pool.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.CustomMeshDataPartInt.html">CustomMeshDataPartInt</a></td>
+        <td><span class="parametername">customInts</span></td>
+        <td><p>The custom ints of the pool.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MeshDataPool.html">MeshDataPool</a></td>
+        <td><p>The resulting mesh data pool.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_CalcFragmentation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.CalcFragmentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L396">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_CalcFragmentation_" data-uid="Vintagestory.API.Client.MeshDataPool.CalcFragmentation*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_CalcFragmentation" data-uid="Vintagestory.API.Client.MeshDataPool.CalcFragmentation">CalcFragmentation()</h4>
+  <div class="markdown level1 summary"><p>Calculates the current fragmentation of the mesh.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CalcFragmentation()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_Dispose_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.Dispose(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L388">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_Dispose_" data-uid="Vintagestory.API.Client.MeshDataPool.Dispose*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_Dispose_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Client.MeshDataPool.Dispose(Vintagestory.API.Client.ICoreClientAPI)">Dispose(ICoreClientAPI)</h4>
+  <div class="markdown level1 summary"><p>Disposes of the current mesh pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose(ICoreClientAPI capi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The core client API</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_Draw_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_FrustumCulling_Vintagestory_API_Client_EnumFrustumCullMode_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.Draw(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.FrustumCulling%2CVintagestory.API.Client.EnumFrustumCullMode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L337">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_Draw_" data-uid="Vintagestory.API.Client.MeshDataPool.Draw*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_Draw_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_FrustumCulling_Vintagestory_API_Client_EnumFrustumCullMode_" data-uid="Vintagestory.API.Client.MeshDataPool.Draw(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.FrustumCulling,Vintagestory.API.Client.EnumFrustumCullMode)">Draw(ICoreClientAPI, FrustumCulling, EnumFrustumCullMode)</h4>
+  <div class="markdown level1 summary"><p>Draw the model.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Draw(ICoreClientAPI capi, FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The core client API</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.FrustumCulling.html">FrustumCulling</a></td>
+        <td><span class="parametername">frustumCuller</span></td>
+        <td><p>The area where models can be viewed from the camera.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumFrustumCullMode.html">EnumFrustumCullMode</a></td>
+        <td><span class="parametername">frustumCullMode</span></td>
+        <td><p>The mode of the culling.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_FrustumCull_Vintagestory_API_Client_FrustumCulling_Vintagestory_API_Client_EnumFrustumCullMode_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.FrustumCull(Vintagestory.API.Client.FrustumCulling%2CVintagestory.API.Client.EnumFrustumCullMode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L348">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_FrustumCull_" data-uid="Vintagestory.API.Client.MeshDataPool.FrustumCull*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_FrustumCull_Vintagestory_API_Client_FrustumCulling_Vintagestory_API_Client_EnumFrustumCullMode_" data-uid="Vintagestory.API.Client.MeshDataPool.FrustumCull(Vintagestory.API.Client.FrustumCulling,Vintagestory.API.Client.EnumFrustumCullMode)">FrustumCull(FrustumCulling, EnumFrustumCullMode)</h4>
+  <div class="markdown level1 summary"><p>Cleans up the rendering view of the models.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FrustumCull(FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.FrustumCulling.html">FrustumCulling</a></td>
+        <td><span class="parametername">frustumCuller</span></td>
+        <td><p>The area where models can be viewed from the camera.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumFrustumCullMode.html">EnumFrustumCullMode</a></td>
+        <td><span class="parametername">frustumCullMode</span></td>
+        <td><p>The mode of the culling.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_GetFragmentation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.GetFragmentation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L422">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_GetFragmentation_" data-uid="Vintagestory.API.Client.MeshDataPool.GetFragmentation*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_GetFragmentation" data-uid="Vintagestory.API.Client.MeshDataPool.GetFragmentation">GetFragmentation()</h4>
+  <div class="markdown level1 summary"><p>Gets the current fragmentation of the pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetFragmentation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_IsEmpty.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.IsEmpty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L379">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_IsEmpty_" data-uid="Vintagestory.API.Client.MeshDataPool.IsEmpty*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_IsEmpty" data-uid="Vintagestory.API.Client.MeshDataPool.IsEmpty">IsEmpty()</h4>
+  <div class="markdown level1 summary"><p>Is this an empty pool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsEmpty()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the pool is empty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_RemoveLocation_Vintagestory_API_Client_ModelDataPoolLocation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.RemoveLocation(Vintagestory.API.Client.ModelDataPoolLocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L300">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_RemoveLocation_" data-uid="Vintagestory.API.Client.MeshDataPool.RemoveLocation*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_RemoveLocation_Vintagestory_API_Client_ModelDataPoolLocation_" data-uid="Vintagestory.API.Client.MeshDataPool.RemoveLocation(Vintagestory.API.Client.ModelDataPoolLocation)">RemoveLocation(ModelDataPoolLocation)</h4>
+  <div class="markdown level1 summary"><p>Attempts to remove the model from the pool if the model exists.  Will throw an invalid call or an InvalidOperationException if used improperly.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveLocation(ModelDataPoolLocation location)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ModelDataPoolLocation.html">ModelDataPoolLocation</a></td>
+        <td><span class="parametername">location</span></td>
+        <td><p>The location of the model data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool_TryAdd_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MeshData_Vintagestory_API_MathTools_Vec3i_Vintagestory_API_MathTools_Sphere_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool.TryAdd(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.MeshData%2CVintagestory.API.MathTools.Vec3i%2CVintagestory.API.MathTools.Sphere)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L165">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_MeshDataPool_TryAdd_" data-uid="Vintagestory.API.Client.MeshDataPool.TryAdd*"></a>
+  <h4 id="Vintagestory_API_Client_MeshDataPool_TryAdd_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MeshData_Vintagestory_API_MathTools_Vec3i_Vintagestory_API_MathTools_Sphere_" data-uid="Vintagestory.API.Client.MeshDataPool.TryAdd(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.Vec3i,Vintagestory.API.MathTools.Sphere)">TryAdd(ICoreClientAPI, MeshData, Vec3i, Sphere)</h4>
+  <div class="markdown level1 summary"><p>Attempts to add the new model.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModelDataPoolLocation TryAdd(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The core client API</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></td>
+        <td><span class="parametername">modeldata</span></td>
+        <td><p>The model to add</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
+        <td><span class="parametername">modelOrigin</span></td>
+        <td><p>The origin point of the model.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Sphere.html">Sphere</a></td>
+        <td><span class="parametername">frustumCullSphere</span></td>
+        <td><p>The culling sphere.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ModelDataPoolLocation.html">ModelDataPoolLocation</a></td>
+        <td><p>The location of the model (and the data) in the pool.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_MeshDataPool.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.MeshDataPool%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Client/MeshPool/MeshDataPool.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,884 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IInventory
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IInventory
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IInventory">
+  
+  
+  <h1 id="Vintagestory_API_Common_IInventory" data-uid="Vintagestory.API.Common.IInventory" class="text-break">Interface IInventory
+  </h1>
+  <div class="markdown level0 summary"><p>Basic interface representing an item inventory</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IInventory_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IInventory : IReadOnlyCollection&lt;ItemSlot&gt;</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_ClassName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.ClassName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L51">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_ClassName_" data-uid="Vintagestory.API.Common.IInventory.ClassName*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_ClassName" data-uid="Vintagestory.API.Common.IInventory.ClassName">ClassName</h4>
+  <div class="markdown level1 summary"><p>The name of the class for the inventory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ClassName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_DirtySlots.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.DirtySlots%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L61">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_DirtySlots_" data-uid="Vintagestory.API.Common.IInventory.DirtySlots*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_DirtySlots" data-uid="Vintagestory.API.Common.IInventory.DirtySlots">DirtySlots</h4>
+  <div class="markdown level1 summary"><p>The slots marked dirty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HashSet&lt;int&gt; DirtySlots { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HashSet</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_Empty.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.Empty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L18">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_Empty_" data-uid="Vintagestory.API.Common.IInventory.Empty*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_Empty" data-uid="Vintagestory.API.Common.IInventory.Empty">Empty</h4>
+  <div class="markdown level1 summary"><p>Convenience method to check if this inventory contains anything</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Empty { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_InventoryID.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.InventoryID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L56">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_InventoryID_" data-uid="Vintagestory.API.Common.IInventory.InventoryID*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_InventoryID" data-uid="Vintagestory.API.Common.IInventory.InventoryID">InventoryID</h4>
+  <div class="markdown level1 summary"><p>The internal named id for the inventory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string InventoryID { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_Item_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L45">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_Item_" data-uid="Vintagestory.API.Common.IInventory.Item*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_Item_System_Int32_" data-uid="Vintagestory.API.Common.IInventory.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the slot at the given slot number.
+Returns null for invalid slot number (below 0 or above Count-1).
+The setter allows for replacing slots with custom ones, though caution is advised.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemSlot this[int slotId] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">slotId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_LastChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.LastChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L38">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_LastChanged_" data-uid="Vintagestory.API.Common.IInventory.LastChanged*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_LastChanged" data-uid="Vintagestory.API.Common.IInventory.LastChanged">LastChanged</h4>
+  <div class="markdown level1 summary"><p>Milliseconds since server startup when the inventory was last changed (not used currently)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long LastChanged { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_PutLocked.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.PutLocked%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L33">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_PutLocked_" data-uid="Vintagestory.API.Common.IInventory.PutLocked*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_PutLocked" data-uid="Vintagestory.API.Common.IInventory.PutLocked">PutLocked</h4>
+  <div class="markdown level1 summary"><p>Called by item slot, if true, player cannot take items from this chest</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool PutLocked { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_RemoveOnClose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.RemoveOnClose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L23">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_RemoveOnClose_" data-uid="Vintagestory.API.Common.IInventory.RemoveOnClose*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_RemoveOnClose" data-uid="Vintagestory.API.Common.IInventory.RemoveOnClose">RemoveOnClose</h4>
+  <div class="markdown level1 summary"><p>Wether or not to remove the inventory from the players inventory list upon closing it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RemoveOnClose { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_TakeLocked.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.TakeLocked%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L28">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_TakeLocked_" data-uid="Vintagestory.API.Common.IInventory.TakeLocked*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_TakeLocked" data-uid="Vintagestory.API.Common.IInventory.TakeLocked">TakeLocked</h4>
+  <div class="markdown level1 summary"><p>Called by item slot, if true, player cannot take items from this chest</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TakeLocked { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_ActivateSlot_System_Int32_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.ActivateSlot(System.Int32%2CVintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.ItemStackMoveOperation%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L109">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_ActivateSlot_" data-uid="Vintagestory.API.Common.IInventory.ActivateSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_ActivateSlot_System_Int32_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__" data-uid="Vintagestory.API.Common.IInventory.ActivateSlot(System.Int32,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)">ActivateSlot(Int32, ItemSlot, ref ItemStackMoveOperation)</h4>
+  <div class="markdown level1 summary"><p>When the player clicks on this slot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object ActivateSlot(int slotId, ItemSlot sourceSlot, ref ItemStackMoveOperation op)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">slotId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStackMoveOperation.html">ItemStackMoveOperation</a></td>
+        <td><span class="parametername">op</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_Close_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.Close(Vintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L72">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_Close_" data-uid="Vintagestory.API.Common.IInventory.Close*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_Close_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.IInventory.Close(Vintagestory.API.Common.IPlayer)">Close(IPlayer)</h4>
+  <div class="markdown level1 summary"><p>Removes ability to interact with this inventory for this player. Returns a close inventory packet that can be sent to the server for synchronization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object Close(IPlayer player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_List_Vintagestory_API_Common_ItemSlot__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot%2CList%7BVintagestory.API.Common.ItemSlot%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L91">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_GetBestSuitedSlot_" data-uid="Vintagestory.API.Common.IInventory.GetBestSuitedSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_List_Vintagestory_API_Common_ItemSlot__" data-uid="Vintagestory.API.Common.IInventory.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,List{Vintagestory.API.Common.ItemSlot})">GetBestSuitedSlot(ItemSlot, List&lt;ItemSlot&gt;)</h4>
+  <div class="markdown level1 summary"><p>Returns the best suited slot to hold the item from the source slot. Attached is also a weight, indicating how well the item is suited for it. If no suitable slot was found, the weight will be 0 and the slot will be null. A higher weight means the slot is better suited to hold the item. This method does not check if the player is actually allowed to access or modify this inventory.</p>
+<p>Weight will be 1 for a default slot that is empty
+Weight will be 2 for a default slot that can take one or more items from the source slot
+Weight could be 10 for an empty armor slot and the source slot contains an armor itemtack</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List&lt;ItemSlot&gt; skipSlots = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>&gt;</td>
+        <td><span class="parametername">skipSlots</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.WeightedSlot.html">WeightedSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_GetSlotId_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.GetSlotId(Vintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L124">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_GetSlotId_" data-uid="Vintagestory.API.Common.IInventory.GetSlotId*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_GetSlotId_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.IInventory.GetSlotId(Vintagestory.API.Common.ItemSlot)">GetSlotId(ItemSlot)</h4>
+  <div class="markdown level1 summary"><p>Will return -1 if the slot is not found in this inventory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetSlotId(ItemSlot slot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">slot</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_HasOpened_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.HasOpened(Vintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L78">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_HasOpened_" data-uid="Vintagestory.API.Common.IInventory.HasOpened*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_HasOpened_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.IInventory.HasOpened(Vintagestory.API.Common.IPlayer)">HasOpened(IPlayer)</h4>
+  <div class="markdown level1 summary"><p>Checks if given player has this inventory currently opened</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool HasOpened(IPlayer player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_MarkSlotDirty_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.MarkSlotDirty(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L131">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_MarkSlotDirty_" data-uid="Vintagestory.API.Common.IInventory.MarkSlotDirty*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_MarkSlotDirty_System_Int32_" data-uid="Vintagestory.API.Common.IInventory.MarkSlotDirty(System.Int32)">MarkSlotDirty(Int32)</h4>
+  <div class="markdown level1 summary"><p>Server Side: Will resent the slot contents to the client and mark them dirty there as well
+Client Side: Will refresh stack size, model and stuff if this stack is currently being rendered</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkSlotDirty(int slotId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">slotId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_Open_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.Open(Vintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L67">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_Open_" data-uid="Vintagestory.API.Common.IInventory.Open*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_Open_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.IInventory.Open(Vintagestory.API.Common.IPlayer)">Open(IPlayer)</h4>
+  <div class="markdown level1 summary"><p>Marks the inventory available for interaction for this player. Returns a open inventory packet that can be sent to the server for synchronization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object Open(IPlayer player)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_TryFlipItems_System_Int32_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.TryFlipItems(System.Int32%2CVintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L117">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IInventory_TryFlipItems_" data-uid="Vintagestory.API.Common.IInventory.TryFlipItems*"></a>
+  <h4 id="Vintagestory_API_Common_IInventory_TryFlipItems_System_Int32_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.IInventory.TryFlipItems(System.Int32,Vintagestory.API.Common.ItemSlot)">TryFlipItems(Int32, ItemSlot)</h4>
+  <div class="markdown level1 summary"><p>Attempts to flip the contents of both slots</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object TryFlipItems(int targetSlotId, ItemSlot sourceSlot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">targetSlotId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_SlotModified.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.SlotModified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L136">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_IInventory_SlotModified" data-uid="Vintagestory.API.Common.IInventory.SlotModified">SlotModified</h4>
+  <div class="markdown level1 summary"><p>Event that fires when a slot was modified</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;int&gt; SlotModified</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory_SlotNotified.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory.SlotNotified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L141">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_IInventory_SlotNotified" data-uid="Vintagestory.API.Common.IInventory.SlotNotified">SlotNotified</h4>
+  <div class="markdown level1 summary"><p>Event that fires when NotifySlot was called </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;int&gt; SlotNotified</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IInventory.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IInventory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Inventory/IInventory.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2231 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BlockFacing
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BlockFacing
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.MathTools.BlockFacing">
+  
+  
+  <h1 id="Vintagestory_API_MathTools_BlockFacing" data-uid="Vintagestory.API.MathTools.BlockFacing" class="text-break">Class BlockFacing
+  </h1>
+  <div class="markdown level0 summary"><p>Represents one of the 6 faces of a cube and all it&apos;s properties. Uses a right Handed Coordinate System. See also <a href="http://www.matrix44.net/cms/notes/opengl-3d-graphics/coordinate-systems-in-opengl">http://www.matrix44.net/cms/notes/opengl-3d-graphics/coordinate-systems-in-opengl</a>
+In short: 
+North: Negative Z
+East: Positive X
+South: Positive Z
+West: Negative X
+Up: Positive Y
+Down: Negative Y</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">BlockFacing</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.MathTools.html">Vintagestory.API.MathTools</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_MathTools_BlockFacing_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BlockFacing : object</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_ALLFACES.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.ALLFACES%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L127">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_ALLFACES" data-uid="Vintagestory.API.MathTools.BlockFacing.ALLFACES">ALLFACES</h4>
+  <div class="markdown level1 summary"><p>All block faces in the order of N, E, S, W, U, D</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing[] ALLFACES</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_ALLNORMALI.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.ALLNORMALI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L132">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_ALLNORMALI" data-uid="Vintagestory.API.MathTools.BlockFacing.ALLNORMALI">ALLNORMALI</h4>
+  <div class="markdown level1 summary"><p>All block faces in the order of N, E, S, W, U, D</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly Vec3i[] ALLNORMALI</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_AllVertexFlagsNormals.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.AllVertexFlagsNormals%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L137">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_AllVertexFlagsNormals" data-uid="Vintagestory.API.MathTools.BlockFacing.AllVertexFlagsNormals">AllVertexFlagsNormals</h4>
+  <div class="markdown level1 summary"><p>Packed ints representing the normal flags, left-shifted by 15 for easy inclusion in VertexFlags</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly int[] AllVertexFlagsNormals</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_DOWN.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.DOWN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L122">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_DOWN" data-uid="Vintagestory.API.MathTools.BlockFacing.DOWN">DOWN</h4>
+  <div class="markdown level1 summary"><p>Faces towards negative Y</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing DOWN</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_EAST.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.EAST%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L105">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_EAST" data-uid="Vintagestory.API.MathTools.BlockFacing.EAST">EAST</h4>
+  <div class="markdown level1 summary"><p>Faces towards positive X</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing EAST</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_HorizontalFlags.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.HorizontalFlags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L90">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_HorizontalFlags" data-uid="Vintagestory.API.MathTools.BlockFacing.HorizontalFlags">HorizontalFlags</h4>
+  <div class="markdown level1 summary"><p>All horizontal blockfacing flags combined</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly byte HorizontalFlags</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_HORIZONTALS.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.HORIZONTALS%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L142">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_HORIZONTALS" data-uid="Vintagestory.API.MathTools.BlockFacing.HORIZONTALS">HORIZONTALS</h4>
+  <div class="markdown level1 summary"><p>Array of horizontal faces (N, E, S, W)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing[] HORIZONTALS</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_HORIZONTALS_ANGLEORDER.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.HORIZONTALS_ANGLEORDER%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L151">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_HORIZONTALS_ANGLEORDER" data-uid="Vintagestory.API.MathTools.BlockFacing.HORIZONTALS_ANGLEORDER">HORIZONTALS_ANGLEORDER</h4>
+  <div class="markdown level1 summary"><p>Array of horizontal faces in angle order (0°, 90°, 180°, 270°) =&gt; (E, N, W, S)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing[] HORIZONTALS_ANGLEORDER</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_indexDOWN.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.indexDOWN%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L85">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_indexDOWN" data-uid="Vintagestory.API.MathTools.BlockFacing.indexDOWN">indexDOWN</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int indexDOWN = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_indexEAST.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.indexEAST%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L81">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_indexEAST" data-uid="Vintagestory.API.MathTools.BlockFacing.indexEAST">indexEAST</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int indexEAST = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_indexNORTH.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.indexNORTH%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L80">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_indexNORTH" data-uid="Vintagestory.API.MathTools.BlockFacing.indexNORTH">indexNORTH</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int indexNORTH = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_indexSOUTH.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.indexSOUTH%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L82">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_indexSOUTH" data-uid="Vintagestory.API.MathTools.BlockFacing.indexSOUTH">indexSOUTH</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int indexSOUTH = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_indexUP.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.indexUP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L84">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_indexUP" data-uid="Vintagestory.API.MathTools.BlockFacing.indexUP">indexUP</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int indexUP = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_indexWEST.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.indexWEST%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L83">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_indexWEST" data-uid="Vintagestory.API.MathTools.BlockFacing.indexWEST">indexWEST</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int indexWEST = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_NORTH.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.NORTH%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L101">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_NORTH" data-uid="Vintagestory.API.MathTools.BlockFacing.NORTH">NORTH</h4>
+  <div class="markdown level1 summary"><p>Faces towards negative Z</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing NORTH</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_NumberOfFaces.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.NumberOfFaces%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L79">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_NumberOfFaces" data-uid="Vintagestory.API.MathTools.BlockFacing.NumberOfFaces">NumberOfFaces</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int NumberOfFaces = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_SOUTH.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.SOUTH%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L109">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_SOUTH" data-uid="Vintagestory.API.MathTools.BlockFacing.SOUTH">SOUTH</h4>
+  <div class="markdown level1 summary"><p>Faces towards positive Z</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing SOUTH</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_UP.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.UP%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L118">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_UP" data-uid="Vintagestory.API.MathTools.BlockFacing.UP">UP</h4>
+  <div class="markdown level1 summary"><p>Faces towards positive Y</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing UP</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_VerticalFlags.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.VerticalFlags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L95">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_VerticalFlags" data-uid="Vintagestory.API.MathTools.BlockFacing.VerticalFlags">VerticalFlags</h4>
+  <div class="markdown level1 summary"><p>All vertical blockfacing flags combined</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly byte VerticalFlags</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_VERTICALS.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.VERTICALS%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L146">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_VERTICALS" data-uid="Vintagestory.API.MathTools.BlockFacing.VERTICALS">VERTICALS</h4>
+  <div class="markdown level1 summary"><p>Array of vertical faces (U, D)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing[] VERTICALS</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_WEST.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.WEST%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L113">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_WEST" data-uid="Vintagestory.API.MathTools.BlockFacing.WEST">WEST</h4>
+  <div class="markdown level1 summary"><p>Faces towards negative X</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly BlockFacing WEST</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Axis.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Axis%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L252">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Axis_" data-uid="Vintagestory.API.MathTools.BlockFacing.Axis*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Axis" data-uid="Vintagestory.API.MathTools.BlockFacing.Axis">Axis</h4>
+  <div class="markdown level1 summary"><p>The normal axis of this vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumAxis Axis { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.EnumAxis.html">EnumAxis</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Code.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Code%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L230">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Code_" data-uid="Vintagestory.API.MathTools.BlockFacing.Code*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Code" data-uid="Vintagestory.API.MathTools.BlockFacing.Code">Code</h4>
+  <div class="markdown level1 summary"><p>Returns the string north, east, south, west, up or down</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Code { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Flag.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Flag%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L172">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Flag_" data-uid="Vintagestory.API.MathTools.BlockFacing.Flag*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Flag" data-uid="Vintagestory.API.MathTools.BlockFacing.Flag">Flag</h4>
+  <div class="markdown level1 summary"><p>The faces byte flag</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte Flag { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_HorizontalAngleIndex.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.HorizontalAngleIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L185">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_HorizontalAngleIndex_" data-uid="Vintagestory.API.MathTools.BlockFacing.HorizontalAngleIndex*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_HorizontalAngleIndex" data-uid="Vintagestory.API.MathTools.BlockFacing.HorizontalAngleIndex">HorizontalAngleIndex</h4>
+  <div class="markdown level1 summary"><p>The angle index of the face (E = 0, N = 1, W = 2, S = 3)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HorizontalAngleIndex { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Index.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Index%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L176">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Index_" data-uid="Vintagestory.API.MathTools.BlockFacing.Index*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Index" data-uid="Vintagestory.API.MathTools.BlockFacing.Index">Index</h4>
+  <div class="markdown level1 summary"><p>The index of the face (N=0, E=1, S=2, W=3, U=4, D=5)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Index { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_IsAxisNS.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.IsAxisNS%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L244">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_IsAxisNS_" data-uid="Vintagestory.API.MathTools.BlockFacing.IsAxisNS*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_IsAxisNS" data-uid="Vintagestory.API.MathTools.BlockFacing.IsAxisNS">IsAxisNS</h4>
+  <div class="markdown level1 summary"><p>True if this face is N or S</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAxisNS { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_IsAxisWE.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.IsAxisWE%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L248">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_IsAxisWE_" data-uid="Vintagestory.API.MathTools.BlockFacing.IsAxisWE*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_IsAxisWE" data-uid="Vintagestory.API.MathTools.BlockFacing.IsAxisWE">IsAxisWE</h4>
+  <div class="markdown level1 summary"><p>True if this face is N or S</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAxisWE { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_IsHorizontal.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.IsHorizontal%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L236">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_IsHorizontal_" data-uid="Vintagestory.API.MathTools.BlockFacing.IsHorizontal*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_IsHorizontal" data-uid="Vintagestory.API.MathTools.BlockFacing.IsHorizontal">IsHorizontal</h4>
+  <div class="markdown level1 summary"><p>True if this face is N,E,S or W</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsHorizontal { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_IsVertical.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.IsVertical%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L240">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_IsVertical_" data-uid="Vintagestory.API.MathTools.BlockFacing.IsVertical*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_IsVertical" data-uid="Vintagestory.API.MathTools.BlockFacing.IsVertical">IsVertical</h4>
+  <div class="markdown level1 summary"><p>True if this face is U or D</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsVertical { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_MeshDataIndex.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.MeshDataIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L180">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_MeshDataIndex_" data-uid="Vintagestory.API.MathTools.BlockFacing.MeshDataIndex*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_MeshDataIndex" data-uid="Vintagestory.API.MathTools.BlockFacing.MeshDataIndex">MeshDataIndex</h4>
+  <div class="markdown level1 summary"><p>Index + 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte MeshDataIndex { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_NormalByte.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.NormalByte%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L211">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_NormalByte_" data-uid="Vintagestory.API.MathTools.BlockFacing.NormalByte*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_NormalByte" data-uid="Vintagestory.API.MathTools.BlockFacing.NormalByte">NormalByte</h4>
+  <div class="markdown level1 summary"><p>Returns a normal vector of this face encoded in 6 bits/
+bit 0: 1 if south or west
+bit 1: sign bit 
+bit 2: 1 if up or down
+bit 3: sign bit 
+bit 4: 1 if north or south
+bit 5: sign bit </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte NormalByte { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Normald.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Normald%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L195">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Normald_" data-uid="Vintagestory.API.MathTools.BlockFacing.Normald*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Normald" data-uid="Vintagestory.API.MathTools.BlockFacing.Normald">Normald</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d Normald { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Normalf.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Normalf%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L193">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Normalf_" data-uid="Vintagestory.API.MathTools.BlockFacing.Normalf*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Normalf" data-uid="Vintagestory.API.MathTools.BlockFacing.Normalf">Normalf</h4>
+  <div class="markdown level1 summary"><p>Returns a normal vector of this face</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f Normalf { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Normali.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Normali%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L189">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Normali_" data-uid="Vintagestory.API.MathTools.BlockFacing.Normali*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Normali" data-uid="Vintagestory.API.MathTools.BlockFacing.Normali">Normali</h4>
+  <div class="markdown level1 summary"><p>Returns a normal vector of this face</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3i Normali { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_NormalPacked.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.NormalPacked%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L216">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_NormalPacked_" data-uid="Vintagestory.API.MathTools.BlockFacing.NormalPacked*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_NormalPacked" data-uid="Vintagestory.API.MathTools.BlockFacing.NormalPacked">NormalPacked</h4>
+  <div class="markdown level1 summary"><p>Normalized normal vector in format GL_INT_2_10_10_10_REV</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NormalPacked { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_NormalPackedFlags.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.NormalPackedFlags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L221">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_NormalPackedFlags_" data-uid="Vintagestory.API.MathTools.BlockFacing.NormalPackedFlags*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_NormalPackedFlags" data-uid="Vintagestory.API.MathTools.BlockFacing.NormalPackedFlags">NormalPackedFlags</h4>
+  <div class="markdown level1 summary"><p>Normalized normal vector packed into 3x4=12 bytes total and bit shifted by 15 bits, for use in meshdata flags data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NormalPackedFlags { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Opposite.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Opposite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L289">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Opposite_" data-uid="Vintagestory.API.MathTools.BlockFacing.Opposite*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Opposite" data-uid="Vintagestory.API.MathTools.BlockFacing.Opposite">Opposite</h4>
+  <div class="markdown level1 summary"><p>Returns the opposing face</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockFacing Opposite { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_Plane.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.Plane%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L200">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_Plane_" data-uid="Vintagestory.API.MathTools.BlockFacing.Plane*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_Plane" data-uid="Vintagestory.API.MathTools.BlockFacing.Plane">Plane</h4>
+  <div class="markdown level1 summary"><p>Returns a cuboid where either the width, height or length is zero which represents the min/max of the block 2D plane in 3D space</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Cuboidf Plane { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_PlaneCenter.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.PlaneCenter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L226">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_PlaneCenter_" data-uid="Vintagestory.API.MathTools.BlockFacing.PlaneCenter*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_PlaneCenter" data-uid="Vintagestory.API.MathTools.BlockFacing.PlaneCenter">PlaneCenter</h4>
+  <div class="markdown level1 summary"><p>Returns the center position of this face</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f PlaneCenter { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FaceWhenRotatedBy_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FaceWhenRotatedBy(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L323">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FaceWhenRotatedBy_" data-uid="Vintagestory.API.MathTools.BlockFacing.FaceWhenRotatedBy*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FaceWhenRotatedBy_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.BlockFacing.FaceWhenRotatedBy(System.Single,System.Single,System.Single)">FaceWhenRotatedBy(Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Applies a 3d rotation on the face and returns the face thats closest to the rotated face</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockFacing FaceWhenRotatedBy(float radX, float radY, float radZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FlagContains_System_Byte_Vintagestory_API_MathTools_BlockFacing_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FlagContains(System.Byte%2CVintagestory.API.MathTools.BlockFacing)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L627">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FlagContains_" data-uid="Vintagestory.API.MathTools.BlockFacing.FlagContains*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FlagContains_System_Byte_Vintagestory_API_MathTools_BlockFacing_" data-uid="Vintagestory.API.MathTools.BlockFacing.FlagContains(System.Byte,Vintagestory.API.MathTools.BlockFacing)">FlagContains(Byte, BlockFacing)</h4>
+  <div class="markdown level1 summary"><p>Returns true if given byte flags contain given face </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool FlagContains(byte flag, BlockFacing facing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">flag</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td><span class="parametername">facing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FlagContainsHorizontals_System_Byte_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FlagContainsHorizontals(System.Byte)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L638">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FlagContainsHorizontals_" data-uid="Vintagestory.API.MathTools.BlockFacing.FlagContainsHorizontals*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FlagContainsHorizontals_System_Byte_" data-uid="Vintagestory.API.MathTools.BlockFacing.FlagContainsHorizontals(System.Byte)">FlagContainsHorizontals(Byte)</h4>
+  <div class="markdown level1 summary"><p>Returns true if given byte flags contains a horizontal face</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool FlagContainsHorizontals(byte flag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">flag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FromCode_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FromCode(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L487">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FromCode_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromCode*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FromCode_System_String_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromCode(System.String)">FromCode(String)</h4>
+  <div class="markdown level1 summary"><p>Returns the face if code is &apos;north&apos;, &apos;east&apos;, &apos;south&apos;, &apos;west&apos;, &apos;north&apos;, &apos;up&apos; or &apos;down&apos;. Otherwise null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing FromCode(string code)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FromFirstLetter_System_Char_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FromFirstLetter(System.Char)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L504">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FromFirstLetter_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromFirstLetter*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FromFirstLetter_System_Char_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromFirstLetter(System.Char)">FromFirstLetter(Char)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing FromFirstLetter(char code)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FromFirstLetter_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FromFirstLetter(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L514">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FromFirstLetter_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromFirstLetter*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FromFirstLetter_System_String_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromFirstLetter(System.String)">FromFirstLetter(String)</h4>
+  <div class="markdown level1 summary"><p>Returns the face if code is &apos;n&apos;, &apos;e&apos;, &apos;s&apos;, &apos;w&apos;, &apos;n&apos;, &apos;u&apos; or &apos;d&apos;. Otherwise null.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing FromFirstLetter(string code)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FromFlag_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FromFlag(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L591">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FromFlag_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromFlag*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FromFlag_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromFlag(System.Int32)">FromFlag(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing FromFlag(int flag)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">flag</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FromNormal_Vintagestory_API_MathTools_Vec3f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FromNormal(Vintagestory.API.MathTools.Vec3f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L533">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FromNormal_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromNormal*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FromNormal_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromNormal(Vintagestory.API.MathTools.Vec3f)">FromNormal(Vec3f)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing FromNormal(Vec3f vec)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FromNormal_Vintagestory_API_MathTools_Vec3i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FromNormal(Vintagestory.API.MathTools.Vec3i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L554">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FromNormal_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromNormal*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FromNormal_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromNormal(Vintagestory.API.MathTools.Vec3i)">FromNormal(Vec3i)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing FromNormal(Vec3i vec)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_FromVector_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.FromVector(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L566">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_FromVector_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromVector*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_FromVector_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.BlockFacing.FromVector(System.Double,System.Double,System.Double)">FromVector(Double, Double, Double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing FromVector(double x, double y, double z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_GetCCW.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.GetCCW%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L301">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_GetCCW_" data-uid="Vintagestory.API.MathTools.BlockFacing.GetCCW*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_GetCCW" data-uid="Vintagestory.API.MathTools.BlockFacing.GetCCW">GetCCW()</h4>
+  <div class="markdown level1 summary"><p>Returns the face if current face would be horizontally counter-clockwise rotated, only works for horizontal faces</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockFacing GetCCW()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_GetCW.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.GetCW%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L310">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_GetCW_" data-uid="Vintagestory.API.MathTools.BlockFacing.GetCW*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_GetCW" data-uid="Vintagestory.API.MathTools.BlockFacing.GetCW">GetCW()</h4>
+  <div class="markdown level1 summary"><p>Returns the face if current face would be horizontally clockwise rotated, only works for horizontal faces</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockFacing GetCW()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_GetFaceBrightness_System_Double___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.GetFaceBrightness(System.Double%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L428">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_GetFaceBrightness_" data-uid="Vintagestory.API.MathTools.BlockFacing.GetFaceBrightness*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_GetFaceBrightness_System_Double___System_Single___" data-uid="Vintagestory.API.MathTools.BlockFacing.GetFaceBrightness(System.Double[],System.Single[])">GetFaceBrightness(Double[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Rotates the face by given angle and returns the interpolated brightness of this face.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetFaceBrightness(double[] matrix, float[] BlockSideBrightnessByFacing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">BlockSideBrightnessByFacing</span></td>
+        <td><p>Array of brightness values between 0 and 1 per face. In index order (N, E, S, W, U, D)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_GetFaceBrightness_System_Single_System_Single_System_Single_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.GetFaceBrightness(System.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L360">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_GetFaceBrightness_" data-uid="Vintagestory.API.MathTools.BlockFacing.GetFaceBrightness*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_GetFaceBrightness_System_Single_System_Single_System_Single_System_Single___" data-uid="Vintagestory.API.MathTools.BlockFacing.GetFaceBrightness(System.Single,System.Single,System.Single,System.Single[])">GetFaceBrightness(Single, Single, Single, Single[])</h4>
+  <div class="markdown level1 summary"><p>Rotates the face by given angle and returns the interpolated brightness of this face.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GetFaceBrightness(float radX, float radY, float radZ, float[] BlockSideBrightnessByFacing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">BlockSideBrightnessByFacing</span></td>
+        <td><p>Array of brightness values between 0 and 1 per face. In index order (N, E, S, W, U, D)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_GetOpposite.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.GetOpposite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L291">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_GetOpposite_" data-uid="Vintagestory.API.MathTools.BlockFacing.GetOpposite*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_GetOpposite" data-uid="Vintagestory.API.MathTools.BlockFacing.GetOpposite">GetOpposite()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockFacing GetOpposite()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_HorizontalFromAngle_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.HorizontalFromAngle(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L613">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_HorizontalFromAngle_" data-uid="Vintagestory.API.MathTools.BlockFacing.HorizontalFromAngle*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_HorizontalFromAngle_System_Single_" data-uid="Vintagestory.API.MathTools.BlockFacing.HorizontalFromAngle(System.Single)">HorizontalFromAngle(Single)</h4>
+  <div class="markdown level1 summary"><p>Returns the closest horizontal face from given angle (0 degree = east). Uses HORIZONTALS_ANGLEORDER</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing HorizontalFromAngle(float radiant)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">radiant</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_IsAdjacent_Vintagestory_API_MathTools_BlockFacing_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.IsAdjacent(Vintagestory.API.MathTools.BlockFacing)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L458">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_IsAdjacent_" data-uid="Vintagestory.API.MathTools.BlockFacing.IsAdjacent*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_IsAdjacent_Vintagestory_API_MathTools_BlockFacing_" data-uid="Vintagestory.API.MathTools.BlockFacing.IsAdjacent(Vintagestory.API.MathTools.BlockFacing)">IsAdjacent(BlockFacing)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAdjacent(BlockFacing facing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td><span class="parametername">facing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_IterateThruFacingOffsets_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L390">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_IterateThruFacingOffsets_" data-uid="Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_IterateThruFacingOffsets_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets(Vintagestory.API.MathTools.BlockPos)">IterateThruFacingOffsets(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Successive calls to this when looping through the standard six BlockFacings will set pos to the relevant facing offset from the original position<br>
+NOTE: this modifies the fields of the pos parameter</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void IterateThruFacingOffsets(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing_ToString.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L473">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_BlockFacing_ToString_" data-uid="Vintagestory.API.MathTools.BlockFacing.ToString*"></a>
+  <h4 id="Vintagestory_API_MathTools_BlockFacing_ToString" data-uid="Vintagestory.API.MathTools.BlockFacing.ToString">ToString()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_BlockFacing.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.BlockFacing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Math/BlockFacing.cs/#L77" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

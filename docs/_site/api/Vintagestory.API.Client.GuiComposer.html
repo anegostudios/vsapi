@@ -1,0 +1,2205 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GuiComposer
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GuiComposer
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.GuiComposer">
+  
+  
+  <h1 id="Vintagestory_API_Client_GuiComposer" data-uid="Vintagestory.API.Client.GuiComposer" class="text-break">Class GuiComposer
+  </h1>
+  <div class="markdown level0 summary"><p>Composes a dialog which are made from a set of elements
+The composed dialog is cached, so to recompose you have to Recompose All elements or instantiate a new composer with doCache set to false
+The caching allows the dialog using the composer to not worry about performance and just call compose whenever it has to display a new composed dialog
+You add components by chaining the functions of the composer together for building the result.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">GuiComposer</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_GuiComposer_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class GuiComposer : IDisposable</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Api.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Api%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L61">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Api" data-uid="Vintagestory.API.Client.GuiComposer.Api">Api</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICoreClientAPI Api</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_bounds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.bounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L49">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_bounds" data-uid="Vintagestory.API.Client.GuiComposer.bounds">bounds</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ElementBounds bounds</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Color.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Color%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L66">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Color" data-uid="Vintagestory.API.Client.GuiComposer.Color">Color</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec4f Color</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Composed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Composed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L56">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Composed" data-uid="Vintagestory.API.Client.GuiComposer.Composed">Composed</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Composed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_conditionalAdds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.conditionalAdds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L52">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_conditionalAdds" data-uid="Vintagestory.API.Client.GuiComposer.conditionalAdds">conditionalAdds</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Stack&lt;bool&gt; conditionalAdds</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stack</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_currentElementKey.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.currentElementKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L43">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_currentElementKey" data-uid="Vintagestory.API.Client.GuiComposer.currentElementKey">currentElementKey</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int currentElementKey</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_currentFocusableElementKey.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.currentFocusableElementKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L44">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_currentFocusableElementKey" data-uid="Vintagestory.API.Client.GuiComposer.currentFocusableElementKey">currentFocusableElementKey</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int currentFocusableElementKey</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_interactiveElementsInDrawOrder.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.interactiveElementsInDrawOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L41">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_interactiveElementsInDrawOrder" data-uid="Vintagestory.API.Client.GuiComposer.interactiveElementsInDrawOrder">interactiveElementsInDrawOrder</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;GuiElement&gt; interactiveElementsInDrawOrder</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_lastAddedElementBounds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.lastAddedElementBounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L54">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_lastAddedElementBounds" data-uid="Vintagestory.API.Client.GuiComposer.lastAddedElementBounds">lastAddedElementBounds</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ElementBounds lastAddedElementBounds</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_MouseOverCursor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.MouseOverCursor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L664">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_MouseOverCursor" data-uid="Vintagestory.API.Client.GuiComposer.MouseOverCursor">MouseOverCursor</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string MouseOverCursor</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnFocusChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnFocusChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L32">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnFocusChanged" data-uid="Vintagestory.API.Client.GuiComposer.OnFocusChanged">OnFocusChanged</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;bool&gt; OnFocusChanged</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Outlines.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Outlines%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L34">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Outlines" data-uid="Vintagestory.API.Client.GuiComposer.Outlines">Outlines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int Outlines</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_parentBoundsForNextElement.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.parentBoundsForNextElement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L51">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_parentBoundsForNextElement" data-uid="Vintagestory.API.Client.GuiComposer.parentBoundsForNextElement">parentBoundsForNextElement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Stack&lt;ElementBounds&gt; parentBoundsForNextElement</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stack</span>&lt;<a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_staticElementsTexture.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.staticElementsTexture%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L47">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_staticElementsTexture" data-uid="Vintagestory.API.Client.GuiComposer.staticElementsTexture">staticElementsTexture</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected LoadedTexture staticElementsTexture</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Tabbable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Tabbable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L87">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Tabbable" data-uid="Vintagestory.API.Client.GuiComposer.Tabbable">Tabbable</h4>
+  <div class="markdown level1 summary"><p>Whether or not the Tab-Key down event should be used and consumed to cycle-focus individual gui elements</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Tabbable</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_zDepth.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.zDepth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L62">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_zDepth" data-uid="Vintagestory.API.Client.GuiComposer.zDepth">zDepth</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float zDepth</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Bounds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Bounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L77">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_Bounds_" data-uid="Vintagestory.API.Client.GuiComposer.Bounds*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Bounds" data-uid="Vintagestory.API.Client.GuiComposer.Bounds">Bounds</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementBounds Bounds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_CurrentElementKey.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.CurrentElementKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L71">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_CurrentElementKey_" data-uid="Vintagestory.API.Client.GuiComposer.CurrentElementKey*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_CurrentElementKey" data-uid="Vintagestory.API.Client.GuiComposer.CurrentElementKey">CurrentElementKey</h4>
+  <div class="markdown level1 summary"><p>A unique number assigned to each element</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CurrentElementKey { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_CurrentTabIndexElement.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.CurrentTabIndexElement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L226">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_CurrentTabIndexElement_" data-uid="Vintagestory.API.Client.GuiComposer.CurrentTabIndexElement*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_CurrentTabIndexElement" data-uid="Vintagestory.API.Client.GuiComposer.CurrentTabIndexElement">CurrentTabIndexElement</h4>
+  <div class="markdown level1 summary"><p>Gets the currently tabbed index element, if there is one currently focused.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElement CurrentTabIndexElement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_FirstTabbableElement.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.FirstTabbableElement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L241">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_FirstTabbableElement_" data-uid="Vintagestory.API.Client.GuiComposer.FirstTabbableElement*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_FirstTabbableElement" data-uid="Vintagestory.API.Client.GuiComposer.FirstTabbableElement">FirstTabbableElement</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElement FirstTabbableElement { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_MaxTabIndex.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.MaxTabIndex%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L260">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_MaxTabIndex_" data-uid="Vintagestory.API.Client.GuiComposer.MaxTabIndex*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_MaxTabIndex" data-uid="Vintagestory.API.Client.GuiComposer.MaxTabIndex">MaxTabIndex</h4>
+  <div class="markdown level1 summary"><p>Gets the maximum tab index of the components.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxTabIndex { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_AddIf_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.AddIf(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L126">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_AddIf_" data-uid="Vintagestory.API.Client.GuiComposer.AddIf*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_AddIf_System_Boolean_" data-uid="Vintagestory.API.Client.GuiComposer.AddIf(System.Boolean)">AddIf(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Adds a condition for adding a group of items to the GUI- eg: if you have a crucible in the firepit, add those extra slots.  Should always pair with an EndIf()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer AddIf(bool condition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">condition</span></td>
+        <td><p>When the following slots should be added</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_AddInteractiveElement_Vintagestory_API_Client_GuiElement_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.AddInteractiveElement(Vintagestory.API.Client.GuiElement%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L735">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_AddInteractiveElement_" data-uid="Vintagestory.API.Client.GuiComposer.AddInteractiveElement*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_AddInteractiveElement_Vintagestory_API_Client_GuiElement_System_String_" data-uid="Vintagestory.API.Client.GuiComposer.AddInteractiveElement(Vintagestory.API.Client.GuiElement,System.String)">AddInteractiveElement(GuiElement, String)</h4>
+  <div class="markdown level1 summary"><p>Adds an interactive element to the composer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer AddInteractiveElement(GuiElement element, string key = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></td>
+        <td><span class="parametername">element</span></td>
+        <td><p>The element to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The name of the element. (default: null)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_AddStaticElement_Vintagestory_API_Client_GuiElement_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.AddStaticElement(Vintagestory.API.Client.GuiElement%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L778">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_AddStaticElement_" data-uid="Vintagestory.API.Client.GuiComposer.AddStaticElement*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_AddStaticElement_Vintagestory_API_Client_GuiElement_System_String_" data-uid="Vintagestory.API.Client.GuiComposer.AddStaticElement(Vintagestory.API.Client.GuiElement,System.String)">AddStaticElement(GuiElement, String)</h4>
+  <div class="markdown level1 summary"><p>Adds a static element to the composer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer AddStaticElement(GuiElement element, string key = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></td>
+        <td><span class="parametername">element</span></td>
+        <td><p>The element to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The name of the element (default: null)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_BeginChildElements.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.BeginChildElements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L174">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_BeginChildElements_" data-uid="Vintagestory.API.Client.GuiComposer.BeginChildElements*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_BeginChildElements" data-uid="Vintagestory.API.Client.GuiComposer.BeginChildElements">BeginChildElements()</h4>
+  <div class="markdown level1 summary"><p>Starts a set of child elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer BeginChildElements()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_BeginChildElements_Vintagestory_API_Client_ElementBounds_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.BeginChildElements(Vintagestory.API.Client.ElementBounds)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L158">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_BeginChildElements_" data-uid="Vintagestory.API.Client.GuiComposer.BeginChildElements*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_BeginChildElements_Vintagestory_API_Client_ElementBounds_" data-uid="Vintagestory.API.Client.GuiComposer.BeginChildElements(Vintagestory.API.Client.ElementBounds)">BeginChildElements(ElementBounds)</h4>
+  <div class="markdown level1 summary"><p>Starts a set of child elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer BeginChildElements(ElementBounds bounds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
+        <td><span class="parametername">bounds</span></td>
+        <td><p>The bounds for the child elements.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Clear_Vintagestory_API_Client_ElementBounds_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Clear(Vintagestory.API.Client.ElementBounds)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L600">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_Clear_" data-uid="Vintagestory.API.Client.GuiComposer.Clear*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Clear_Vintagestory_API_Client_ElementBounds_" data-uid="Vintagestory.API.Client.GuiComposer.Clear(Vintagestory.API.Client.ElementBounds)">Clear(ElementBounds)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear(ElementBounds newBounds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
+        <td><span class="parametername">newBounds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Compose_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Compose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L335">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_Compose_" data-uid="Vintagestory.API.Client.GuiComposer.Compose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Compose_System_Boolean_" data-uid="Vintagestory.API.Client.GuiComposer.Compose(System.Boolean)">Compose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Tells the composer to compose the gui.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer Compose(bool focusFirstElement = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">focusFirstElement</span></td>
+        <td><p>Whether or not to put the first element in focus.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_CreateEmpty_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.CreateEmpty(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L105">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_CreateEmpty_" data-uid="Vintagestory.API.Client.GuiComposer.CreateEmpty*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_CreateEmpty_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Client.GuiComposer.CreateEmpty(Vintagestory.API.Client.ICoreClientAPI)">CreateEmpty(ICoreClientAPI)</h4>
+  <div class="markdown level1 summary"><p>Creates an empty GuiComposer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GuiComposer CreateEmpty(ICoreClientAPI api)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">api</span></td>
+        <td><p>The Client API</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td><p>An empty GuiComposer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L818">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_Dispose_" data-uid="Vintagestory.API.Client.GuiComposer.Dispose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Dispose" data-uid="Vintagestory.API.Client.GuiComposer.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_EndChildElements.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.EndChildElements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L185">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_EndChildElements_" data-uid="Vintagestory.API.Client.GuiComposer.EndChildElements*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_EndChildElements" data-uid="Vintagestory.API.Client.GuiComposer.EndChildElements">EndChildElements()</h4>
+  <div class="markdown level1 summary"><p>End of the current set of child elements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer EndChildElements()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_EndIf.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.EndIf%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L135">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_EndIf_" data-uid="Vintagestory.API.Client.GuiComposer.EndIf*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_EndIf" data-uid="Vintagestory.API.Client.GuiComposer.EndIf">EndIf()</h4>
+  <div class="markdown level1 summary"><p>End of the AddIf block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer EndIf()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Execute_Action_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Execute(Action)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L146">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_Execute_" data-uid="Vintagestory.API.Client.GuiComposer.Execute*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Execute_Action_" data-uid="Vintagestory.API.Client.GuiComposer.Execute(Action)">Execute(Action)</h4>
+  <div class="markdown level1 summary"><p>Runs given method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer Execute(Action method)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td><span class="parametername">method</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_FocusElement_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.FocusElement(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L282">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_FocusElement_" data-uid="Vintagestory.API.Client.GuiComposer.FocusElement*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_FocusElement_System_Int32_" data-uid="Vintagestory.API.Client.GuiComposer.FocusElement(System.Int32)">FocusElement(Int32)</h4>
+  <div class="markdown level1 summary"><p>marks an element as in focus.  </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool FocusElement(int tabIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">tabIndex</span></td>
+        <td><p>The tab index to focus at.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether or not the focus could be done.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_GetElement_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.GetElement(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L802">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_GetElement_" data-uid="Vintagestory.API.Client.GuiComposer.GetElement*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_GetElement_System_String_" data-uid="Vintagestory.API.Client.GuiComposer.GetElement(System.String)">GetElement(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the element by name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElement GetElement(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The name of the element to get.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnKeyDown_Vintagestory_API_Client_KeyEvent_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnKeyDown(Vintagestory.API.Client.KeyEvent%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L540">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnKeyDown_" data-uid="Vintagestory.API.Client.GuiComposer.OnKeyDown*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnKeyDown_Vintagestory_API_Client_KeyEvent_System_Boolean_" data-uid="Vintagestory.API.Client.GuiComposer.OnKeyDown(Vintagestory.API.Client.KeyEvent,System.Boolean)">OnKeyDown(KeyEvent, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Fires the OnKeyDown events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnKeyDown(KeyEvent args, bool haveFocus)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The keyboard information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">haveFocus</span></td>
+        <td><p>Whether or not the gui has focus.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnKeyPress_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnKeyPress(Vintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L591">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnKeyPress_" data-uid="Vintagestory.API.Client.GuiComposer.OnKeyPress*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnKeyPress_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiComposer.OnKeyPress(Vintagestory.API.Client.KeyEvent)">OnKeyPress(KeyEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires the OnKeyPress event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnKeyPress(KeyEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The keyboard information</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnKeyUp_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnKeyUp(Vintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L578">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnKeyUp_" data-uid="Vintagestory.API.Client.GuiComposer.OnKeyUp*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnKeyUp_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiComposer.OnKeyUp(Vintagestory.API.Client.KeyEvent)">OnKeyUp(KeyEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires the OnKeyDown events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnKeyUp(KeyEvent args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The keyboard information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnlyDynamic.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnlyDynamic%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L200">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnlyDynamic_" data-uid="Vintagestory.API.Client.GuiComposer.OnlyDynamic*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnlyDynamic" data-uid="Vintagestory.API.Client.GuiComposer.OnlyDynamic">OnlyDynamic()</h4>
+  <div class="markdown level1 summary"><p>Sets the render to Dynamic components only</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer OnlyDynamic()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnMouseDown_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnMouseDown(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L428">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnMouseDown_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseDown*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnMouseDown_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseDown(Vintagestory.API.Client.MouseEvent)">OnMouseDown(MouseEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires the OnMouseDown events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnMouseDown(MouseEvent mouseArgs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
+        <td><span class="parametername">mouseArgs</span></td>
+        <td><p>The mouse information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L484">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnMouseEnterSlot_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseEnterSlot*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)">OnMouseEnterSlot(ItemSlot)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool OnMouseEnterSlot(ItemSlot slot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">slot</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L494">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnMouseLeaveSlot_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseLeaveSlot*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)">OnMouseLeaveSlot(ItemSlot)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool OnMouseLeaveSlot(ItemSlot slot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">slot</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnMouseMove_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnMouseMove(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L471">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnMouseMove_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseMove*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnMouseMove_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseMove(Vintagestory.API.Client.MouseEvent)">OnMouseMove(MouseEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires the OnMouseMove events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnMouseMove(MouseEvent mouse)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
+        <td><span class="parametername">mouse</span></td>
+        <td><p>The mouse information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnMouseUp_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnMouseUp(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L416">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnMouseUp_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseUp*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnMouseUp_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseUp(Vintagestory.API.Client.MouseEvent)">OnMouseUp(MouseEvent)</h4>
+  <div class="markdown level1 summary"><p>Fires the OnMouseUp events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnMouseUp(MouseEvent mouse)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
+        <td><span class="parametername">mouse</span></td>
+        <td><p>The mouse information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L508">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_OnMouseWheel_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseWheel*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_" data-uid="Vintagestory.API.Client.GuiComposer.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)">OnMouseWheel(MouseWheelEventArgs)</h4>
+  <div class="markdown level1 summary"><p>Fires the OnMouseWheel events.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnMouseWheel(MouseWheelEventArgs mouse)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.MouseWheelEventArgs.html">MouseWheelEventArgs</a></td>
+        <td><span class="parametername">mouse</span></td>
+        <td><p>The mouse wheel information.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_PostRender_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.PostRender(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L632">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_PostRender_" data-uid="Vintagestory.API.Client.GuiComposer.PostRender*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_PostRender_System_Single_" data-uid="Vintagestory.API.Client.GuiComposer.PostRender(System.Single)">PostRender(Single)</h4>
+  <div class="markdown level1 summary"><p>Fires the PostRender event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PostRender(float deltaTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The change in time.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_PremultipliedAlpha_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.PremultipliedAlpha(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L116">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_PremultipliedAlpha_" data-uid="Vintagestory.API.Client.GuiComposer.PremultipliedAlpha*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_PremultipliedAlpha_System_Boolean_" data-uid="Vintagestory.API.Client.GuiComposer.PremultipliedAlpha(System.Boolean)">PremultipliedAlpha(Boolean)</h4>
+  <div class="markdown level1 summary"><p>On by default, is passed on to the gui elements as well. Disabling it means has a performance impact. Recommeded to leave enabled, but may need to be disabled to smoothly alpha blend text elements. Must be called before adding elements and before composing.
+Notice! Most gui elements even yet support non-premul alpha mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiComposer PremultipliedAlpha(bool enable)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">enable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiComposer.html">GuiComposer</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_ReCompose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.ReCompose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L209">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_ReCompose_" data-uid="Vintagestory.API.Client.GuiComposer.ReCompose*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_ReCompose" data-uid="Vintagestory.API.Client.GuiComposer.ReCompose">ReCompose()</h4>
+  <div class="markdown level1 summary"><p>Rebuilds the Composed GUI.  </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReCompose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_Render_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.Render(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L670">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_Render_" data-uid="Vintagestory.API.Client.GuiComposer.Render*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_Render_System_Single_" data-uid="Vintagestory.API.Client.GuiComposer.Render(System.Single)">Render(Single)</h4>
+  <div class="markdown level1 summary"><p>Fires the render event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Render(float deltaTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td><p>The change in time.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_UnfocusOwnElements.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.UnfocusOwnElements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L308">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_UnfocusOwnElements_" data-uid="Vintagestory.API.Client.GuiComposer.UnfocusOwnElements*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_UnfocusOwnElements" data-uid="Vintagestory.API.Client.GuiComposer.UnfocusOwnElements">UnfocusOwnElements()</h4>
+  <div class="markdown level1 summary"><p>Unfocuses the elements within this GUI composer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnfocusOwnElements()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_UnfocusOwnElementsExcept_Vintagestory_API_Client_GuiElement_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.UnfocusOwnElementsExcept(Vintagestory.API.Client.GuiElement)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L317">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiComposer_UnfocusOwnElementsExcept_" data-uid="Vintagestory.API.Client.GuiComposer.UnfocusOwnElementsExcept*"></a>
+  <h4 id="Vintagestory_API_Client_GuiComposer_UnfocusOwnElementsExcept_Vintagestory_API_Client_GuiElement_" data-uid="Vintagestory.API.Client.GuiComposer.UnfocusOwnElementsExcept(Vintagestory.API.Client.GuiElement)">UnfocusOwnElementsExcept(GuiElement)</h4>
+  <div class="markdown level1 summary"><p>Unfocuses all elements except one specific element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UnfocusOwnElementsExcept(GuiElement elem)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></td>
+        <td><span class="parametername">elem</span></td>
+        <td><p>The element to remain in focus.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer_OnRecomposed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer.OnRecomposed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L31">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiComposer_OnRecomposed" data-uid="Vintagestory.API.Client.GuiComposer.OnRecomposed">OnRecomposed</h4>
+  <div class="markdown level1 summary"><p>Triggered when the gui scale changed or the game window was resized</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action OnRecomposed</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetColorListPicker_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetColorListPicker(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_ColorListPickerSetValue_Vintagestory_API_Client_GuiComposer_System_String_System_Int32_">GuiComposerHelpers.ColorListPickerSetValue(GuiComposer, String, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddColorListPicker_Vintagestory_API_Client_GuiComposer_System_Int32___Action_System_Int32__Vintagestory_API_Client_ElementBounds_System_Int32_System_String_">GuiComposerHelpers.AddColorListPicker(GuiComposer, Int32[], Action&lt;Int32&gt;, ElementBounds, Int32, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddContainer_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddContainer(GuiComposer, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetContainer_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetContainer(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCustomRender_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_RenderDelegateWithBounds_">GuiComposerHelpers.AddCustomRender(GuiComposer, ElementBounds, RenderDelegateWithBounds)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetCustomRender_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetCustomRender(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetToggleButton_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetToggleButton(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddToggleButton_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Action_System_Boolean__Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddToggleButton(GuiComposer, String, CairoFont, Action&lt;Boolean&gt;, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddIconButton_Vintagestory_API_Client_GuiComposer_System_String_Action_System_Boolean__Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddIconButton(GuiComposer, String, Action&lt;Boolean&gt;, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_ToggleButtonsSetValue_Vintagestory_API_Client_GuiComposer_System_String_System_Int32_">GuiComposerHelpers.ToggleButtonsSetValue(GuiComposer, String, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddIconToggleButtons_Vintagestory_API_Client_GuiComposer_System_String___Vintagestory_API_Client_CairoFont_Action_System_Int32__Vintagestory_API_Client_ElementBounds___System_String_">GuiComposerHelpers.AddIconToggleButtons(GuiComposer, String[], CairoFont, Action&lt;Int32&gt;, ElementBounds[], String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddTextToggleButtons_Vintagestory_API_Client_GuiComposer_System_String___Vintagestory_API_Client_CairoFont_Action_System_Int32__Vintagestory_API_Client_ElementBounds___System_String_">GuiComposerHelpers.AddTextToggleButtons(GuiComposer, String[], CairoFont, Action&lt;Int32&gt;, ElementBounds[], String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCompactVerticalScrollbar_Vintagestory_API_Client_GuiComposer_Action_System_Single__Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddCompactVerticalScrollbar(GuiComposer, Action&lt;Single&gt;, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetCompactScrollbar_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetCompactScrollbar(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddMultiSelectDropDown_Vintagestory_API_Client_GuiComposer_System_String___System_String___System_Int32_Vintagestory_API_Client_SelectionChangedDelegate_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddMultiSelectDropDown(GuiComposer, String[], String[], Int32, SelectionChangedDelegate, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddDropDown_Vintagestory_API_Client_GuiComposer_System_String___System_String___System_Int32_Vintagestory_API_Client_SelectionChangedDelegate_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddDropDown(GuiComposer, String[], String[], Int32, SelectionChangedDelegate, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddDropDown_Vintagestory_API_Client_GuiComposer_System_String___System_String___System_Int32_Vintagestory_API_Client_SelectionChangedDelegate_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_CairoFont_System_String_">GuiComposerHelpers.AddDropDown(GuiComposer, String[], String[], Int32, SelectionChangedDelegate, ElementBounds, CairoFont, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetDropDown_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetDropDown(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddHorizontalTabs_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_GuiTab___Vintagestory_API_Client_ElementBounds_Action_System_Int32__Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_CairoFont_System_String_">GuiComposerHelpers.AddHorizontalTabs(GuiComposer, GuiTab[], ElementBounds, Action&lt;Int32&gt;, CairoFont, CairoFont, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetHorizontalTabs_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetHorizontalTabs(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddVerticalScrollbar_Vintagestory_API_Client_GuiComposer_Action_System_Single__Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddVerticalScrollbar(GuiComposer, Action&lt;Single&gt;, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetScrollbar_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetScrollbar(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddSlider_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Common_ActionConsumable_System_Int32__Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddSlider(GuiComposer, ActionConsumable&lt;Int32&gt;, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetSlider_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetSlider(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddSwitch_Vintagestory_API_Client_GuiComposer_Action_System_Boolean__Vintagestory_API_Client_ElementBounds_System_String_System_Double_System_Double_">GuiComposerHelpers.AddSwitch(GuiComposer, Action&lt;Boolean&gt;, ElementBounds, String, Double, Double)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetSwitch_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetSwitch(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddButton_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_EnumButtonStyle_Vintagestory_API_Client_EnumTextOrientation_System_String_">GuiComposerHelpers.AddButton(GuiComposer, String, ActionConsumable, ElementBounds, CairoFont, EnumButtonStyle, EnumTextOrientation, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddButton_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_EnumButtonStyle_Vintagestory_API_Client_EnumTextOrientation_System_String_">GuiComposerHelpers.AddButton(GuiComposer, String, ActionConsumable, ElementBounds, EnumButtonStyle, EnumTextOrientation, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddSmallButton_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_EnumButtonStyle_Vintagestory_API_Client_EnumTextOrientation_System_String_">GuiComposerHelpers.AddSmallButton(GuiComposer, String, ActionConsumable, ElementBounds, EnumButtonStyle, EnumTextOrientation, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetButton_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetButton(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddVerticalTabs_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_GuiTab___Vintagestory_API_Client_ElementBounds_Action_System_Int32_Vintagestory_API_Client_GuiTab__System_String_">GuiComposerHelpers.AddVerticalTabs(GuiComposer, GuiTab[], ElementBounds, Action&lt;Int32, GuiTab&gt;, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetVerticalTab_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetVerticalTab(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddChatInput_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Action_System_String__System_String_">GuiComposerHelpers.AddChatInput(GuiComposer, ElementBounds, Action&lt;String&gt;, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetChatInput_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetChatInput(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddConfigList_Vintagestory_API_Client_GuiComposer_List_Vintagestory_API_Client_ConfigItem__Vintagestory_API_Client_ConfigItemClickDelegate_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddConfigList(GuiComposer, List&lt;ConfigItem&gt;, ConfigItemClickDelegate, CairoFont, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetConfigList_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetConfigList(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddDialogTitleBar_Vintagestory_API_Client_GuiComposer_System_String_Action_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_">GuiComposerHelpers.AddDialogTitleBar(GuiComposer, String, Action, CairoFont, ElementBounds)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddDialogTitleBarWithBg_Vintagestory_API_Client_GuiComposer_System_String_Action_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_">GuiComposerHelpers.AddDialogTitleBarWithBg(GuiComposer, String, Action, CairoFont, ElementBounds)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetTitleBar_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetTitleBar(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddNumberInput_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Action_System_String__Vintagestory_API_Client_CairoFont_System_String_">GuiComposerHelpers.AddNumberInput(GuiComposer, ElementBounds, Action&lt;String&gt;, CairoFont, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetNumberInput_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetNumberInput(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddStatbar_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_Double___System_String_">GuiComposerHelpers.AddStatbar(GuiComposer, ElementBounds, Double[], String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddInvStatbar_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_Double___System_String_">GuiComposerHelpers.AddInvStatbar(GuiComposer, ElementBounds, Double[], String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetStatbar_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetStatbar(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__List___0__System_String_">GuiComposerHelpers.AddCellList&lt;T&gt;(GuiComposer, ElementBounds, OnRequireCell&lt;T&gt;, List&lt;T&gt;, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetCellList__1_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetCellList&lt;T&gt;(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddTextArea_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Action_System_String__Vintagestory_API_Client_CairoFont_System_String_">GuiComposerHelpers.AddTextArea(GuiComposer, ElementBounds, Action&lt;String&gt;, CairoFont, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetTextArea_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetTextArea(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddTextInput_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Action_System_String__Vintagestory_API_Client_CairoFont_System_String_">GuiComposerHelpers.AddTextInput(GuiComposer, ElementBounds, Action&lt;String&gt;, CairoFont, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetTextInput_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetTextInput(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddItemSlotGrid_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Common_IInventory_Action_System_Object__System_Int32_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddItemSlotGrid(GuiComposer, IInventory, Action&lt;Object&gt;, Int32, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddItemSlotGrid_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Common_IInventory_Action_System_Object__System_Int32_System_Int32___Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddItemSlotGrid(GuiComposer, IInventory, Action&lt;Object&gt;, Int32, Int32[], ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetSlotGrid_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetSlotGrid(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddItemSlotGridExcl_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Common_IInventory_Action_System_Object__System_Int32_System_Int32___Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddItemSlotGridExcl(GuiComposer, IInventory, Action&lt;Object&gt;, Int32, Int32[], ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetSlotGridExcl_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetSlotGridExcl(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddPassiveItemSlot_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Common_IInventory_Vintagestory_API_Common_ItemSlot_System_Boolean_">GuiComposerHelpers.AddPassiveItemSlot(GuiComposer, ElementBounds, IInventory, ItemSlot, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddSkillItemGrid_Vintagestory_API_Client_GuiComposer_List_Vintagestory_API_Client_SkillItem__System_Int32_System_Int32_Action_System_Int32__Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddSkillItemGrid(GuiComposer, List&lt;SkillItem&gt;, Int32, Int32, Action&lt;Int32&gt;, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetSkillItemGrid_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetSkillItemGrid(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddEmbossedText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddEmbossedText(GuiComposer, String, CairoFont, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetEmbossedText_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetEmbossedText(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddHoverText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_System_Int32_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddHoverText(GuiComposer, String, CairoFont, Int32, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddAutoSizeHoverText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_System_Int32_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddAutoSizeHoverText(GuiComposer, String, CairoFont, Int32, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddTranspHoverText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_System_Int32_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddTranspHoverText(GuiComposer, String, CairoFont, Int32, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddHoverText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_System_Int32_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_TextBackground_System_String_">GuiComposerHelpers.AddHoverText(GuiComposer, String, CairoFont, Int32, ElementBounds, TextBackground, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetHoverText_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetHoverText(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddRichtext_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddRichtext(GuiComposer, String, CairoFont, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddRichtext_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_Action_Vintagestory_API_Client_LinkTextComponent__System_String_">GuiComposerHelpers.AddRichtext(GuiComposer, String, CairoFont, ElementBounds, Action&lt;LinkTextComponent&gt;, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddRichtext_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_RichTextComponentBase___Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddRichtext(GuiComposer, RichTextComponentBase[], ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetRichtext_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetRichtext(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddStaticCustomDraw_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_DrawDelegateWithBounds_">GuiComposerHelpers.AddStaticCustomDraw(GuiComposer, ElementBounds, DrawDelegateWithBounds)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddDynamicCustomDraw_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_DrawDelegateWithBounds_System_String_">GuiComposerHelpers.AddDynamicCustomDraw(GuiComposer, ElementBounds, DrawDelegateWithBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetCustomDraw_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetCustomDraw(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddShadedDialogBG_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Double_">GuiComposerHelpers.AddShadedDialogBG(GuiComposer, ElementBounds, Boolean, Double)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddDialogBG_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_Boolean_">GuiComposerHelpers.AddDialogBG(GuiComposer, ElementBounds, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddStaticText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddStaticText(GuiComposer, String, CairoFont, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddStaticText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_EnumTextOrientation_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddStaticText(GuiComposer, String, CairoFont, EnumTextOrientation, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddStaticTextAutoBoxSize_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_EnumTextOrientation_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddStaticTextAutoBoxSize(GuiComposer, String, CairoFont, EnumTextOrientation, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetStaticText_Vintagestory_API_Client_GuiComposer_System_String_">GuiComposerHelpers.GetStaticText(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementDynamicTextHelper.html#Vintagestory_API_Client_GuiElementDynamicTextHelper_AddDynamicText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_System_String_">GuiElementDynamicTextHelper.AddDynamicText(GuiComposer, String, CairoFont, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementDynamicTextHelper.html#Vintagestory_API_Client_GuiElementDynamicTextHelper_AddDynamicText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_EnumTextOrientation_Vintagestory_API_Client_ElementBounds_System_String_">GuiElementDynamicTextHelper.AddDynamicText(GuiComposer, String, CairoFont, EnumTextOrientation, ElementBounds, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementDynamicTextHelper.html#Vintagestory_API_Client_GuiElementDynamicTextHelper_GetDynamicText_Vintagestory_API_Client_GuiComposer_System_String_">GuiElementDynamicTextHelper.GetDynamicText(GuiComposer, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementClipHelpler.html#Vintagestory_API_Client_GuiElementClipHelpler_BeginClip_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_">GuiElementClipHelpler.BeginClip(GuiComposer, ElementBounds)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementClipHelpler.html#Vintagestory_API_Client_GuiElementClipHelpler_EndClip_Vintagestory_API_Client_GuiComposer_">GuiElementClipHelpler.EndClip(GuiComposer)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementGameOverlyHelper.html#Vintagestory_API_Client_GuiElementGameOverlyHelper_AddGameOverlay_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_Double___">GuiElementGameOverlyHelper.AddGameOverlay(GuiComposer, ElementBounds, Double[])</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementGrayBackgroundHelpber.html#Vintagestory_API_Client_GuiElementGrayBackgroundHelpber_AddGrayBG_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_">GuiElementGrayBackgroundHelpber.AddGrayBG(GuiComposer, ElementBounds)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementHelpers.html#Vintagestory_API_Client_GuiElementHelpers_AddImage_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Common_AssetLocation_">GuiElementHelpers.AddImage(GuiComposer, ElementBounds, AssetLocation)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementImageBackgroundHelper.html#Vintagestory_API_Client_GuiElementImageBackgroundHelper_AddImageBG_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Common_AssetLocation_System_Single_">GuiElementImageBackgroundHelper.AddImageBG(GuiComposer, ElementBounds, AssetLocation, Single)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementInsetHelper.html#Vintagestory_API_Client_GuiElementInsetHelper_AddInset_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_Int32_System_Single_">GuiElementInsetHelper.AddInset(GuiComposer, ElementBounds, Int32, Single)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiComposer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiComposer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/GuiComposer.cs/#L26" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

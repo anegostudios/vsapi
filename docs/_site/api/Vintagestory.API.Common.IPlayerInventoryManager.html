@@ -1,0 +1,1342 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IPlayerInventoryManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IPlayerInventoryManager
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IPlayerInventoryManager">
+  
+  
+  <h1 id="Vintagestory_API_Common_IPlayerInventoryManager" data-uid="Vintagestory.API.Common.IPlayerInventoryManager" class="text-break">Interface IPlayerInventoryManager
+  </h1>
+  <div class="markdown level0 summary"><p>Let&apos;s you do various interesting things with the players inventory.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IPlayerInventoryManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IPlayerInventoryManager</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlot.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L26">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlot" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot">ActiveHotbarSlot</h4>
+  <div class="markdown level1 summary"><p>Returns the currently selected hotbar slot. Might return null if there is no hotbar!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemSlot ActiveHotbarSlot { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlotNumber.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L20">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlotNumber_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlotNumber" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber">ActiveHotbarSlotNumber</h4>
+  <div class="markdown level1 summary"><p>The players currently active hot bar slot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int ActiveHotbarSlotNumber { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_ActiveTool.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L15">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_ActiveTool_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_ActiveTool" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool">ActiveTool</h4>
+  <div class="markdown level1 summary"><p>If the player currently holds a tool in his hands, this value will be set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumTool? ActiveTool { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_CurrentHoveredSlot.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L49">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_CurrentHoveredSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_CurrentHoveredSlot" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot">CurrentHoveredSlot</h4>
+  <div class="markdown level1 summary"><p>The slot the player currently hovers over with his mouse cursor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemSlot CurrentHoveredSlot { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_Inventories.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.Inventories%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L31">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_Inventories_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.Inventories*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_Inventories" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.Inventories">Inventories</h4>
+  <div class="markdown level1 summary"><p>List of inventories currently available to the player (may however not be opened)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;string, IInventory&gt; Inventories { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_MouseItemSlot.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L44">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_MouseItemSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_MouseItemSlot" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot">MouseItemSlot</h4>
+  <div class="markdown level1 summary"><p>Returns the slot that holds the currently dragged itemstack</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemSlot MouseItemSlot { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_OpenedInventories.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L36">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_OpenedInventories_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_OpenedInventories" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories">OpenedInventories</h4>
+  <div class="markdown level1 summary"><p>List of inventories currently opened by the player</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;IInventory&gt; OpenedInventories { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_BroadcastHotbarSlot.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L205">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_BroadcastHotbarSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_BroadcastHotbarSlot" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot">BroadcastHotbarSlot()</h4>
+  <div class="markdown level1 summary"><p>Server Side: Resends the hotbar slot contents to all other clients to make sure they render the correct held item
+Client side: No effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void BroadcastHotbarSlot()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_CloseInventory_Vintagestory_API_Common_IInventory_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory(Vintagestory.API.Common.IInventory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L169">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_CloseInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_CloseInventory_Vintagestory_API_Common_IInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory(Vintagestory.API.Common.IInventory)">CloseInventory(IInventory)</h4>
+  <div class="markdown level1 summary"><p>Notifies the inventory manager that the player has closed an inventory. Should always be called on both sides (client and server). After closing interaction with given inventory becomes no longer possible until reopened</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object CloseInventory(IInventory inventory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td><span class="parametername">inventory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_DiscardAll.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L188">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_DiscardAll_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_DiscardAll" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll">DiscardAll()</h4>
+  <div class="markdown level1 summary"><p>Will discard all of the players inventory contents</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DiscardAll()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_DropAllInventoryItems_Vintagestory_API_Common_IInventory_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems(Vintagestory.API.Common.IInventory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L199">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_DropAllInventoryItems_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_DropAllInventoryItems_Vintagestory_API_Common_IInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems(Vintagestory.API.Common.IInventory)">DropAllInventoryItems(IInventory)</h4>
+  <div class="markdown level1 summary"><p>Drops the contents of given inventory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void DropAllInventoryItems(IInventory inv)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td><span class="parametername">inv</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_DropItem_Vintagestory_API_Common_ItemSlot_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.DropItem(Vintagestory.API.Common.ItemSlot%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L65">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_DropItem_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DropItem*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_DropItem_Vintagestory_API_Common_ItemSlot_System_Boolean_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DropItem(Vintagestory.API.Common.ItemSlot,System.Boolean)">DropItem(ItemSlot, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Drops the current contents of given slot onto the ground</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DropItem(ItemSlot slot, bool fullStack)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">slot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">fullStack</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_DropMouseSlotItems_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L57">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_DropMouseSlotItems_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_DropMouseSlotItems_System_Boolean_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems(System.Boolean)">DropMouseSlotItems(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Drops the current contents of the mouse slot onto the ground</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool DropMouseSlotItems(bool dropAll)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">dropAll</span></td>
+        <td><p>If false, will only drop 1</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_Find_System_Func_Vintagestory_API_Common_ItemSlot_System_Boolean__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.Find(System.Func%7BVintagestory.API.Common.ItemSlot%2CSystem.Boolean%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L176">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_Find_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.Find*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_Find_System_Func_Vintagestory_API_Common_ItemSlot_System_Boolean__" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.Find(System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean})">Find(System.Func&lt;ItemSlot, Boolean&gt;)</h4>
+  <div class="markdown level1 summary"><p>Iterates over all inventory slots, returns true if your matcher returns true</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Find(System.Func&lt;ItemSlot, bool&gt; matcher)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>, <span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">matcher</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_GetBestSuitedHotbarSlot_Vintagestory_API_Common_IInventory_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedHotbarSlot(Vintagestory.API.Common.IInventory%2CVintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L111">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_GetBestSuitedHotbarSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedHotbarSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_GetBestSuitedHotbarSlot_Vintagestory_API_Common_IInventory_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedHotbarSlot(Vintagestory.API.Common.IInventory,Vintagestory.API.Common.ItemSlot)">GetBestSuitedHotbarSlot(IInventory, ItemSlot)</h4>
+  <div class="markdown level1 summary"><p>Returns a slot that would best fit the contents of the source slot. Only tries to place the itemstack into the hotbar.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemSlot GetBestSuitedHotbarSlot(IInventory sourceInventory, ItemSlot sourceSlot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td><span class="parametername">sourceInventory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_System_Boolean_List_Vintagestory_API_Common_ItemSlot__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot%2CSystem.Boolean%2CList%7BVintagestory.API.Common.ItemSlot%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L126">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_GetBestSuitedSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_System_Boolean_List_Vintagestory_API_Common_ItemSlot__" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Boolean,List{Vintagestory.API.Common.ItemSlot})">GetBestSuitedSlot(ItemSlot, Boolean, List&lt;ItemSlot&gt;)</h4>
+  <div class="markdown level1 summary"><p>Returns a slot that would best fit the contents of the source slot. This checks all inventories currently opened by the player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, List&lt;ItemSlot&gt; skipSlots = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">onlyPlayerInventory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>&gt;</td>
+        <td><span class="parametername">skipSlots</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarInventory.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L117">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarInventory" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory">GetHotbarInventory()</h4>
+  <div class="markdown level1 summary"><p>Returns the hotbar inventory object. Obvious comment is being obvious.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IInventory GetHotbarInventory()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarItemstack_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L103">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarItemstack_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarItemstack_System_Int32_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack(System.Int32)">GetHotbarItemstack(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the itemstack that in the given slot number of the players hotbar</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ItemStack GetHotbarItemstack(int slotId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">slotId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_GetInventory_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L95">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_GetInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetInventory*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_GetInventory_System_String_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String)">GetInventory(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieve a players inventory. Returns null if not found.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IInventory GetInventory(string inventoryId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inventoryId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_GetInventoryName_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L80">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_GetInventoryName_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_GetInventoryName_System_String_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName(System.String)">GetInventoryName(String)</h4>
+  <div class="markdown level1 summary"><p>Returns the full inventory id for given inventory class name, e.g. GlobalConstants.creativeInvClassName</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetInventoryName(string inventoryClassName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inventoryClassName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_GetOwnInventory_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L88">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_GetOwnInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_GetOwnInventory_System_String_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory(System.String)">GetOwnInventory(String)</h4>
+  <div class="markdown level1 summary"><p>Same as GetInventory() with playeruid appended to the inventoryClassName. Returns null if not found. You can use GlobalConstants.*ClassName to get the vanilla player inventories.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IInventory GetOwnInventory(string inventoryClassName)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">inventoryClassName</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_HasInventory_Vintagestory_API_Common_IInventory_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.HasInventory(Vintagestory.API.Common.IInventory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L183">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_HasInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.HasInventory*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_HasInventory_Vintagestory_API_Common_IInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.HasInventory(Vintagestory.API.Common.IInventory)">HasInventory(IInventory)</h4>
+  <div class="markdown level1 summary"><p>Shorthand for Inventories.ContainsValue(inventory)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool HasInventory(IInventory inventory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td><span class="parametername">inventory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_NotifySlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot(Vintagestory.API.Common.IPlayer%2CVintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L73">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_NotifySlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_NotifySlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot)">NotifySlot(IPlayer, ItemSlot)</h4>
+  <div class="markdown level1 summary"><p>Produces a visual cue on given slot, if it&apos;s currently part of an inventory and visible to the player
+If called on server side, the server will send a network packet to notify the client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void NotifySlot(IPlayer player, ItemSlot slot)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
+        <td><span class="parametername">player</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">slot</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_OnDeath.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.OnDeath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L193">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_OnDeath_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OnDeath*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_OnDeath" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OnDeath">OnDeath()</h4>
+  <div class="markdown level1 summary"><p>Will drop all of the players inventory contents</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void OnDeath()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_OpenInventory_Vintagestory_API_Common_IInventory_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory(Vintagestory.API.Common.IInventory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L163">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_OpenInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_OpenInventory_Vintagestory_API_Common_IInventory_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory(Vintagestory.API.Common.IInventory)">OpenInventory(IInventory)</h4>
+  <div class="markdown level1 summary"><p>Notifies the inventory manager that the player has opened an inventory. Should always be called on both sides (client and server).
+Only then interaction with other inventories becomes possible</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object OpenInventory(IInventory inventory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></td>
+        <td><span class="parametername">inventory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_TryGiveItemstack_Vintagestory_API_Common_ItemStack_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack(Vintagestory.API.Common.ItemStack%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L155">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_TryGiveItemstack_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_TryGiveItemstack_Vintagestory_API_Common_ItemStack_System_Boolean_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack(Vintagestory.API.Common.ItemStack,System.Boolean)">TryGiveItemstack(ItemStack, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Tries to add given itemstack to the players inventory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TryGiveItemstack(ItemStack itemstack, bool slotNotifyEffect = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
+        <td><span class="parametername">itemstack</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">slotNotifyEffect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_TryTransferAway_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__System_Boolean_StringBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.ItemStackMoveOperation%40%2CSystem.Boolean%2CStringBuilder%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L138">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_TryTransferAway_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_TryTransferAway_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__System_Boolean_StringBuilder_System_Boolean_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,StringBuilder,System.Boolean)">TryTransferAway(ItemSlot, ref ItemStackMoveOperation, Boolean, StringBuilder, Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, StringBuilder shiftClickDebugText, bool slotNotifyEffect = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStackMoveOperation.html">ItemStackMoveOperation</a></td>
+        <td><span class="parametername">op</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">onlyPlayerInventory</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">StringBuilder</span></td>
+        <td><span class="parametername">shiftClickDebugText</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">slotNotifyEffect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_TryTransferAway_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.ItemStackMoveOperation%40%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L136">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_TryTransferAway_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_TryTransferAway_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Boolean)">TryTransferAway(ItemSlot, ref ItemStackMoveOperation, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Tries to move away items from the source slot into any other slot of another inventory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, bool slotNotifyEffect = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStackMoveOperation.html">ItemStackMoveOperation</a></td>
+        <td><span class="parametername">op</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">onlyPlayerInventory</span></td>
+        <td><p>Forces to place the item only into the players personal inventory</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">slotNotifyEffect</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><p>One or more client packets that may be sent to the server for synchronisation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager_TryTransferTo_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo(Vintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.ItemStackMoveOperation%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L147">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IPlayerInventoryManager_TryTransferTo_" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo*"></a>
+  <h4 id="Vintagestory_API_Common_IPlayerInventoryManager_TryTransferTo_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__" data-uid="Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)">TryTransferTo(ItemSlot, ItemSlot, ref ItemStackMoveOperation)</h4>
+  <div class="markdown level1 summary"><p>Tries to move items from source slot to target slot (useful for client side inventory utilities)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">object TryTransferTo(ItemSlot sourceSlot, ItemSlot targetSlot, ref ItemStackMoveOperation op)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">sourceSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
+        <td><span class="parametername">targetSlot</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ItemStackMoveOperation.html">ItemStackMoveOperation</a></td>
+        <td><span class="parametername">op</span></td>
+        <td><p>If successfull, a client packet that may be sent to the server for synchronisation</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IPlayerInventoryManager.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IPlayerInventoryManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Entity/Player/IPlayerInventoryManager.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

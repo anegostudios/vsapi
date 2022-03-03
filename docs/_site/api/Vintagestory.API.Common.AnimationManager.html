@@ -1,0 +1,832 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class AnimationManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class AnimationManager
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.AnimationManager">
+  
+  
+  <h1 id="Vintagestory_API_Common_AnimationManager" data-uid="Vintagestory.API.Common.AnimationManager" class="text-break">Class AnimationManager
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">AnimationManager</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a></div>
+    <div><span class="xref">IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_AnimationManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AnimationManager : object, IAnimationManager, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager__ctor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L48">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager__ctor_" data-uid="Vintagestory.API.Common.AnimationManager.#ctor*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager__ctor" data-uid="Vintagestory.API.Common.AnimationManager.#ctor">AnimationManager()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimationManager()</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_ActiveAnimationsByAnimCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.ActiveAnimationsByAnimCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L39">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_AnimationManager_ActiveAnimationsByAnimCode" data-uid="Vintagestory.API.Common.AnimationManager.ActiveAnimationsByAnimCode">ActiveAnimationsByAnimCode</h4>
+  <div class="markdown level1 summary"><p>The list of currently active animations that should be playing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, AnimationMetaData&gt; ActiveAnimationsByAnimCode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_api.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.api%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L18">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_AnimationManager_api" data-uid="Vintagestory.API.Common.AnimationManager.api">api</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ICoreAPI api</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_entity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.entity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L46">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_AnimationManager_entity" data-uid="Vintagestory.API.Common.AnimationManager.entity">entity</h4>
+  <div class="markdown level1 summary"><p>The entity attached to this Animation Manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Entity entity</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_AnimationsDirty.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.AnimationsDirty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L24">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_AnimationsDirty_" data-uid="Vintagestory.API.Common.AnimationManager.AnimationsDirty*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_AnimationsDirty" data-uid="Vintagestory.API.Common.AnimationManager.AnimationsDirty">AnimationsDirty</h4>
+  <div class="markdown level1 summary"><p>Are the animations dirty in this AnimationManager?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AnimationsDirty { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_Animator.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.Animator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L29">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_Animator_" data-uid="Vintagestory.API.Common.AnimationManager.Animator*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_Animator" data-uid="Vintagestory.API.Common.AnimationManager.Animator">Animator</h4>
+  <div class="markdown level1 summary"><p>The animator for the animation manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IAnimator Animator { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_HeadController.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.HeadController%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L34">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_HeadController_" data-uid="Vintagestory.API.Common.AnimationManager.HeadController*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_HeadController" data-uid="Vintagestory.API.Common.AnimationManager.HeadController">HeadController</h4>
+  <div class="markdown level1 summary"><p>The entity head controller for this animator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityHeadController HeadController { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EntityHeadController.html">EntityHeadController</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L328">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_Dispose_" data-uid="Vintagestory.API.Common.AnimationManager.Dispose*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_Dispose" data-uid="Vintagestory.API.Common.AnimationManager.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disposes of the animation manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_FromAttributes_Vintagestory_API_Datastructures_ITreeAttribute_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.FromAttributes(Vintagestory.API.Datastructures.ITreeAttribute%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L284">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_FromAttributes_" data-uid="Vintagestory.API.Common.AnimationManager.FromAttributes*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_FromAttributes_Vintagestory_API_Datastructures_ITreeAttribute_System_String_" data-uid="Vintagestory.API.Common.AnimationManager.FromAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.String)">FromAttributes(ITreeAttribute, String)</h4>
+  <div class="markdown level1 summary"><p>Loads the entity from a stored byte array from the SaveGame</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FromAttributes(ITreeAttribute tree, string version)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td><span class="parametername">tree</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_Init_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.Init(Vintagestory.API.Common.ICoreAPI%2CVintagestory.API.Common.Entities.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L58">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_Init_" data-uid="Vintagestory.API.Common.AnimationManager.Init*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_Init_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.AnimationManager.Init(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity)">Init(ICoreAPI, Entity)</h4>
+  <div class="markdown level1 summary"><p>Initializes the Animation Manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Init(ICoreAPI api, Entity entity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
+        <td><span class="parametername">api</span></td>
+        <td><p>The Core API.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity this manager is attached to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_IsAnimationActive_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.IsAnimationActive(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L79">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_IsAnimationActive_" data-uid="Vintagestory.API.Common.AnimationManager.IsAnimationActive*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_IsAnimationActive_System_String___" data-uid="Vintagestory.API.Common.AnimationManager.IsAnimationActive(System.String[])">IsAnimationActive(String[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsAnimationActive(params string[] anims)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">anims</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_OnAnimationStopped_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.OnAnimationStopped(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L342">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_OnAnimationStopped_" data-uid="Vintagestory.API.Common.AnimationManager.OnAnimationStopped*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_OnAnimationStopped_System_String_" data-uid="Vintagestory.API.Common.AnimationManager.OnAnimationStopped(System.String)">OnAnimationStopped(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnAnimationStopped(string code)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_OnClientFrame_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.OnClientFrame(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L313">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_OnClientFrame_" data-uid="Vintagestory.API.Common.AnimationManager.OnClientFrame*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_OnClientFrame_System_Single_" data-uid="Vintagestory.API.Common.AnimationManager.OnClientFrame(System.Single)">OnClientFrame(Single)</h4>
+  <div class="markdown level1 summary"><p>The event fired each time the client ticks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnClientFrame(float dt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.OnReceivedServerAnimations(System.Int32%5B%5D%2CSystem.Int32%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L174">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_OnReceivedServerAnimations_" data-uid="Vintagestory.API.Common.AnimationManager.OnReceivedServerAnimations*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___" data-uid="Vintagestory.API.Common.AnimationManager.OnReceivedServerAnimations(System.Int32[],System.Int32,System.Single[])">OnReceivedServerAnimations(Int32[], Int32, Single[])</h4>
+  <div class="markdown level1 summary"><p>The event fired when the manager recieves the server animations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">activeAnimations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">activeAnimationsCount</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">activeAnimationSpeeds</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_OnServerTick_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.OnServerTick(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L303">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_OnServerTick_" data-uid="Vintagestory.API.Common.AnimationManager.OnServerTick*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_OnServerTick_System_Single_" data-uid="Vintagestory.API.Common.AnimationManager.OnServerTick(System.Single)">OnServerTick(Single)</h4>
+  <div class="markdown level1 summary"><p>The event fired at each server tick.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnServerTick(float dt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_StartAnimation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.StartAnimation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L119">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_StartAnimation_" data-uid="Vintagestory.API.Common.AnimationManager.StartAnimation*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_StartAnimation_System_String_" data-uid="Vintagestory.API.Common.AnimationManager.StartAnimation(System.String)">StartAnimation(String)</h4>
+  <div class="markdown level1 summary"><p>Start a new animation defined in the entity config file. If it&apos;s not defined, it won&apos;t play.
+Use StartAnimation(AnimationMetaData animdata) to circumvent the entity config anim data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool StartAnimation(string configCode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">configCode</span></td>
+        <td><p>Anim config code, not the animation code!</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_StartAnimation_Vintagestory_API_Common_AnimationMetaData_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.StartAnimation(Vintagestory.API.Common.AnimationMetaData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L94">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_StartAnimation_" data-uid="Vintagestory.API.Common.AnimationManager.StartAnimation*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_StartAnimation_Vintagestory_API_Common_AnimationMetaData_" data-uid="Vintagestory.API.Common.AnimationManager.StartAnimation(Vintagestory.API.Common.AnimationMetaData)">StartAnimation(AnimationMetaData)</h4>
+  <div class="markdown level1 summary"><p>Client: Starts given animation
+Server: Sends all active anims to all connected clients then purges the ActiveAnimationsByAnimCode list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool StartAnimation(AnimationMetaData animdata)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a></td>
+        <td><span class="parametername">animdata</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_StopAnimation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.StopAnimation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L140">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_StopAnimation_" data-uid="Vintagestory.API.Common.AnimationManager.StopAnimation*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_StopAnimation_System_String_" data-uid="Vintagestory.API.Common.AnimationManager.StopAnimation(System.String)">StopAnimation(String)</h4>
+  <div class="markdown level1 summary"><p>Stops given animation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void StopAnimation(string code)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">code</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_ToAttributes_Vintagestory_API_Datastructures_ITreeAttribute_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.ToAttributes(Vintagestory.API.Datastructures.ITreeAttribute%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L250">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_ToAttributes_" data-uid="Vintagestory.API.Common.AnimationManager.ToAttributes*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_ToAttributes_Vintagestory_API_Datastructures_ITreeAttribute_System_Boolean_" data-uid="Vintagestory.API.Common.AnimationManager.ToAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.Boolean)">ToAttributes(ITreeAttribute, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Serializes the slots contents to be stored in the SaveGame</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ToAttributes(ITreeAttribute tree, bool forClient)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
+        <td><span class="parametername">tree</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">forClient</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager_Vintagestory_API_Common_IAnimationManager_ActiveAnimationsByAnimCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager.Vintagestory%23API%23Common%23IAnimationManager%23ActiveAnimationsByAnimCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L40">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_AnimationManager_Vintagestory_API_Common_IAnimationManager_ActiveAnimationsByAnimCode_" data-uid="Vintagestory.API.Common.AnimationManager.Vintagestory#API#Common#IAnimationManager#ActiveAnimationsByAnimCode*"></a>
+  <h4 id="Vintagestory_API_Common_AnimationManager_Vintagestory_API_Common_IAnimationManager_ActiveAnimationsByAnimCode" data-uid="Vintagestory.API.Common.AnimationManager.Vintagestory#API#Common#IAnimationManager#ActiveAnimationsByAnimCode">IAnimationManager.ActiveAnimationsByAnimCode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;string, AnimationMetaData&gt; IAnimationManager.ActiveAnimationsByAnimCode { get; }</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a>
+  </div>
+  <div>
+      <span class="xref">IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationManager.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Common/Model/Animation/AnimationManager.cs/#L16" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

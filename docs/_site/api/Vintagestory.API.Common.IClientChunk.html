@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IClientChunk
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IClientChunk
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IClientChunk">
+  
+  
+  <h1 id="Vintagestory_API_Common_IClientChunk" data-uid="Vintagestory.API.Common.IClientChunk" class="text-break">Interface IClientChunk
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Empty">IWorldChunk.Empty</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_MapChunk">IWorldChunk.MapChunk</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Blocks">IWorldChunk.Blocks</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_MaybeBlocks">IWorldChunk.MaybeBlocks</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Light">IWorldChunk.Light</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Light_Buffered">IWorldChunk.Light_Buffered</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Light_SecondBuffer">IWorldChunk.Light_SecondBuffer</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_LightSat">IWorldChunk.LightSat</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Entities">IWorldChunk.Entities</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_EntitiesCount">IWorldChunk.EntitiesCount</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_BlockEntities">IWorldChunk.BlockEntities</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Unpack">IWorldChunk.Unpack()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Unpack_ReadOnly">IWorldChunk.Unpack_ReadOnly()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Unpack_AndReadBlock_System_Int32_">IWorldChunk.Unpack_AndReadBlock(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Unpack_AndReadLight_System_Int32_">IWorldChunk.Unpack_AndReadLight(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_MarkModified">IWorldChunk.MarkModified()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_MarkFresh">IWorldChunk.MarkFresh()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_LightPositions">IWorldChunk.LightPositions</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Disposed">IWorldChunk.Disposed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_AddEntity_Vintagestory_API_Common_Entities_Entity_">IWorldChunk.AddEntity(Entity)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_RemoveEntity_System_Int64_">IWorldChunk.RemoveEntity(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_SetModdata_System_String_System_Byte___">IWorldChunk.SetModdata(String, Byte[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_RemoveModdata_System_String_">IWorldChunk.RemoveModdata(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetModdata_System_String_">IWorldChunk.GetModdata(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_SetModdata__1_System_String___0_">IWorldChunk.SetModdata&lt;T&gt;(String, T)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetModdata__1_System_String___0_">IWorldChunk.GetModdata&lt;T&gt;(String, T)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetLocalBlockAtBlockPos_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_">IWorldChunk.GetLocalBlockAtBlockPos(IWorldAccessor, BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetLocalBlockEntityAtBlockPos_Vintagestory_API_MathTools_BlockPos_">IWorldChunk.GetLocalBlockEntityAtBlockPos(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_SetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_">IWorldChunk.SetDecor(IBlockAccessor, Block, BlockPos, BlockFacing)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_SetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_System_Int32_">IWorldChunk.SetDecor(IBlockAccessor, Block, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_BreakDecor_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Nullable_System_Int32__">IWorldChunk.BreakDecor(IWorldAccessor, BlockPos, BlockFacing, Nullable&lt;Int32&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_BreakAllDecorFast_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_">IWorldChunk.BreakAllDecorFast(IWorldAccessor, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetDecors_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_">IWorldChunk.GetDecors(IBlockAccessor, BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_">IWorldChunk.GetDecor(IBlockAccessor, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_SetDecors_Dictionary_System_Int32_Vintagestory_API_Common_Block__">IWorldChunk.SetDecors(Dictionary&lt;Int32, Block&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_AdjustSelectionBoxForDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Cuboidf___">IWorldChunk.AdjustSelectionBoxForDecor(IBlockAccessor, BlockPos, Cuboidf[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_FinishLightDoubleBuffering">IWorldChunk.FinishLightDoubleBuffering()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IClientChunk_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IClientChunk : IWorldChunk</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IClientChunk_LoadedFromServer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IClientChunk.LoadedFromServer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L20">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IClientChunk_LoadedFromServer_" data-uid="Vintagestory.API.Common.IClientChunk.LoadedFromServer*"></a>
+  <h4 id="Vintagestory_API_Common_IClientChunk_LoadedFromServer" data-uid="Vintagestory.API.Common.IClientChunk.LoadedFromServer">LoadedFromServer</h4>
+  <div class="markdown level1 summary"><p>True if fully initialized</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LoadedFromServer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IClientChunk.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IClientChunk%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L15" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

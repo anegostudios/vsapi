@@ -1,0 +1,1594 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IWorldChunk
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IWorldChunk
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IWorldChunk">
+  
+  
+  <h1 id="Vintagestory_API_Common_IWorldChunk" data-uid="Vintagestory.API.Common.IWorldChunk" class="text-break">Interface IWorldChunk
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IWorldChunk_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IWorldChunk</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_BlockEntities.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.BlockEntities%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L79">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_BlockEntities_" data-uid="Vintagestory.API.Common.IWorldChunk.BlockEntities*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_BlockEntities" data-uid="Vintagestory.API.Common.IWorldChunk.BlockEntities">BlockEntities</h4>
+  <div class="markdown level1 summary"><p>An array holding block Entities currently residing in this chunk. This array may be larger than the amount of block entities in the chunk. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;BlockPos, BlockEntity&gt; BlockEntities { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>, <a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Blocks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Blocks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L35">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Blocks_" data-uid="Vintagestory.API.Common.IWorldChunk.Blocks*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Blocks" data-uid="Vintagestory.API.Common.IWorldChunk.Blocks">Blocks</h4>
+  <div class="markdown level1 summary"><p>Holds all the blockids for each coordinate, access via index: (y * chunksize + z) * chunksize + x</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChunkBlocks Blocks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IChunkBlocks.html">IChunkBlocks</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Disposed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Disposed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L121">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Disposed_" data-uid="Vintagestory.API.Common.IWorldChunk.Disposed*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Disposed" data-uid="Vintagestory.API.Common.IWorldChunk.Disposed">Disposed</h4>
+  <div class="markdown level1 summary"><p>Whether this chunk got unloaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Disposed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Empty.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Empty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L26">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Empty_" data-uid="Vintagestory.API.Common.IWorldChunk.Empty*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Empty" data-uid="Vintagestory.API.Common.IWorldChunk.Empty">Empty</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Empty { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Entities.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Entities%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L69">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Entities_" data-uid="Vintagestory.API.Common.IWorldChunk.Entities*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Entities" data-uid="Vintagestory.API.Common.IWorldChunk.Entities">Entities</h4>
+  <div class="markdown level1 summary"><p>An array holding all Entities currently residing in this chunk. This array may be larger than the amount of entities in the chunk. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Entity[] Entities { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_EntitiesCount.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.EntitiesCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L74">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_EntitiesCount_" data-uid="Vintagestory.API.Common.IWorldChunk.EntitiesCount*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_EntitiesCount" data-uid="Vintagestory.API.Common.IWorldChunk.EntitiesCount">EntitiesCount</h4>
+  <div class="markdown level1 summary"><p>Actual count of entities in this chunk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int EntitiesCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Light.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Light%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L45">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Light_" data-uid="Vintagestory.API.Common.IWorldChunk.Light*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Light" data-uid="Vintagestory.API.Common.IWorldChunk.Light">Light</h4>
+  <div class="markdown level1 summary"><p>Lowest 5 bits: Sun brightness, Next 5 bits: Block brightness, Highest 6 bits: Block hue </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ushort[] Light { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Light_Buffered.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Light_Buffered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L50">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Light_Buffered_" data-uid="Vintagestory.API.Common.IWorldChunk.Light_Buffered*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Light_Buffered" data-uid="Vintagestory.API.Common.IWorldChunk.Light_Buffered">Light_Buffered</h4>
+  <div class="markdown level1 summary"><p>Used to access light which may be buffered, in ChunkIlluminator </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ushort[] Light_Buffered { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Light_SecondBuffer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Light_SecondBuffer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L55">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Light_SecondBuffer_" data-uid="Vintagestory.API.Common.IWorldChunk.Light_SecondBuffer*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Light_SecondBuffer" data-uid="Vintagestory.API.Common.IWorldChunk.Light_SecondBuffer">Light_SecondBuffer</h4>
+  <div class="markdown level1 summary"><p>Second Light buffer used for double-buffering in ChunkIlluminator </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ushort[] Light_SecondBuffer { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_LightPositions.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.LightPositions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L116">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_LightPositions_" data-uid="Vintagestory.API.Common.IWorldChunk.LightPositions*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_LightPositions" data-uid="Vintagestory.API.Common.IWorldChunk.LightPositions">LightPositions</h4>
+  <div class="markdown level1 summary"><p>Returns a list of a in-chunk indexed positions of all light sources in this chunk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HashSet&lt;int&gt; LightPositions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HashSet</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_LightSat.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.LightSat%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L64">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_LightSat_" data-uid="Vintagestory.API.Common.IWorldChunk.LightSat*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_LightSat" data-uid="Vintagestory.API.Common.IWorldChunk.LightSat">LightSat</h4>
+  <div class="markdown level1 summary"><p>Holds 3 saturation bits, the other upper 5 bits are unused. 
+Useful applications for the unused bits: </p>
+<ul>
+<li>3 bits for water level for water permissible blocks, like fences: <a href="http://www.minecraftforum.net/forums/minecraft-discussion/suggestions/67465-water-should-flow-through-fences">http://www.minecraftforum.net/forums/minecraft-discussion/suggestions/67465-water-should-flow-through-fences</a></li>
+<li>1-2 bits Damage value? </li>
+<li>1 bit if the player placed this block or whether it was part of worldgen</li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">byte[] LightSat { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_MapChunk.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.MapChunk%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L30">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_MapChunk_" data-uid="Vintagestory.API.Common.IWorldChunk.MapChunk*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_MapChunk" data-uid="Vintagestory.API.Common.IWorldChunk.MapChunk">MapChunk</h4>
+  <div class="markdown level1 summary"><p>Holds a reference to the current map data of this chunk column</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMapChunk MapChunk { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_MaybeBlocks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.MaybeBlocks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L40">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_MaybeBlocks_" data-uid="Vintagestory.API.Common.IWorldChunk.MaybeBlocks*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_MaybeBlocks" data-uid="Vintagestory.API.Common.IWorldChunk.MaybeBlocks">MaybeBlocks</h4>
+  <div class="markdown level1 summary"><p>Faster (non-blocking) access to blocks at the cost of sometimes returning 0 instead of the real block. Use <a class="xref" href="Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Blocks">Blocks</a> if you need reliable block access. Also should only be used for reading. Currently used for the particle system.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChunkBlocks MaybeBlocks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IChunkBlocks.html">IChunkBlocks</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_AddEntity_Vintagestory_API_Common_Entities_Entity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.AddEntity(Vintagestory.API.Common.Entities.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L127">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_AddEntity_" data-uid="Vintagestory.API.Common.IWorldChunk.AddEntity*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_AddEntity_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.IWorldChunk.AddEntity(Vintagestory.API.Common.Entities.Entity)">AddEntity(Entity)</h4>
+  <div class="markdown level1 summary"><p>Adds an entity to the chunk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddEntity(Entity entity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
+        <td><span class="parametername">entity</span></td>
+        <td><p>The entity to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_AdjustSelectionBoxForDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Cuboidf___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.AdjustSelectionBoxForDecor(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.Cuboidf%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L253">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_AdjustSelectionBoxForDecor_" data-uid="Vintagestory.API.Common.IWorldChunk.AdjustSelectionBoxForDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_AdjustSelectionBoxForDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Cuboidf___" data-uid="Vintagestory.API.Common.IWorldChunk.AdjustSelectionBoxForDecor(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Cuboidf[])">AdjustSelectionBoxForDecor(IBlockAccessor, BlockPos, Cuboidf[])</h4>
+  <div class="markdown level1 summary"><p>Adds extra selection boxes in case a decor block is attached at given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Cuboidf[] AdjustSelectionBoxForDecor(IBlockAccessor blockAccessor, BlockPos pos, Cuboidf[] orig)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
+        <td><span class="parametername">blockAccessor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</td>
+        <td><span class="parametername">orig</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_BreakAllDecorFast_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.BreakAllDecorFast(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L228">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_BreakAllDecorFast_" data-uid="Vintagestory.API.Common.IWorldChunk.BreakAllDecorFast*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_BreakAllDecorFast_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IWorldChunk.BreakAllDecorFast(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32)">BreakAllDecorFast(IWorldAccessor, BlockPos, Int32)</h4>
+  <div class="markdown level1 summary"><p>Removes a decor block from given position, saves a few cpu cycles by not calculating index3d</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void BreakAllDecorFast(IWorldAccessor world, BlockPos pos, int index3d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">world</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_BreakDecor_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.BreakDecor(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L219">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_BreakDecor_" data-uid="Vintagestory.API.Common.IWorldChunk.BreakDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_BreakDecor_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Nullable_System_Int32__" data-uid="Vintagestory.API.Common.IWorldChunk.BreakDecor(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Nullable{System.Int32})">BreakDecor(IWorldAccessor, BlockPos, BlockFacing, Nullable&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>If allowed by a player action, removes all decors at given position and calls OnBrokenAsDecor() on all selected decors and drops the items that are returned from Block.GetDrops()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null, int? faceAndSubposition = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">world</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td><span class="parametername">side</span></td>
+        <td><p>If null, all the decor blocks on all sides are removed</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">faceAndSubposition</span></td>
+        <td><p>If not null breaks only this part of the decor for give face. Requires side to be set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_FinishLightDoubleBuffering.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.FinishLightDoubleBuffering%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L258">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_FinishLightDoubleBuffering_" data-uid="Vintagestory.API.Common.IWorldChunk.FinishLightDoubleBuffering*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_FinishLightDoubleBuffering" data-uid="Vintagestory.API.Common.IWorldChunk.FinishLightDoubleBuffering">FinishLightDoubleBuffering()</h4>
+  <div class="markdown level1 summary"><p>Only to be implemented client side</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FinishLightDoubleBuffering()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_GetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.GetDecor(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L238">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_GetDecor_" data-uid="Vintagestory.API.Common.IWorldChunk.GetDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_GetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IWorldChunk.GetDecor(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32)">GetDecor(IBlockAccessor, BlockPos, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetDecor(IBlockAccessor blockAccessor, BlockPos pos, int faceAndSubposition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
+        <td><span class="parametername">blockAccessor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">faceAndSubposition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_GetDecors_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.GetDecors(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L236">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_GetDecors_" data-uid="Vintagestory.API.Common.IWorldChunk.GetDecors*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_GetDecors_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IWorldChunk.GetDecors(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)">GetDecors(IBlockAccessor, BlockPos)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block[] GetDecors(IBlockAccessor blockAccessor, BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
+        <td><span class="parametername">blockAccessor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_GetLocalBlockAtBlockPos_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.GetLocalBlockAtBlockPos(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L182">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_GetLocalBlockAtBlockPos_" data-uid="Vintagestory.API.Common.IWorldChunk.GetLocalBlockAtBlockPos*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_GetLocalBlockAtBlockPos_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IWorldChunk.GetLocalBlockAtBlockPos(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">GetLocalBlockAtBlockPos(IWorldAccessor, BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Retrieve a block from this chunk, performs Unpack() and a modulo operation on the position arg to get a local position in the 0..chunksize range (its your job to pick out the right chunk before calling this method)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetLocalBlockAtBlockPos(IWorldAccessor world, BlockPos position)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">world</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">position</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_GetLocalBlockEntityAtBlockPos_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.GetLocalBlockEntityAtBlockPos(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L189">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_GetLocalBlockEntityAtBlockPos_" data-uid="Vintagestory.API.Common.IWorldChunk.GetLocalBlockEntityAtBlockPos*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_GetLocalBlockEntityAtBlockPos_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IWorldChunk.GetLocalBlockEntityAtBlockPos(Vintagestory.API.MathTools.BlockPos)">GetLocalBlockEntityAtBlockPos(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Retrieve a block entity from this chunk</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">BlockEntity GetLocalBlockEntityAtBlockPos(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_GetModdata_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.GetModdata(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L156">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_GetModdata_" data-uid="Vintagestory.API.Common.IWorldChunk.GetModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_GetModdata_System_String_" data-uid="Vintagestory.API.Common.IWorldChunk.GetModdata(System.String)">GetModdata(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieve arbitrary, permantly stored mod data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">byte[] GetModdata(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_GetModdata__1_System_String___0_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.GetModdata%60%601(System.String%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L173">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_GetModdata_" data-uid="Vintagestory.API.Common.IWorldChunk.GetModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_GetModdata__1_System_String___0_" data-uid="Vintagestory.API.Common.IWorldChunk.GetModdata``1(System.String,``0)">GetModdata&lt;T&gt;(String, T)</h4>
+  <div class="markdown level1 summary"><p>Retrieve arbitrary, permantly stored mod data</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">T GetModdata&lt;T&gt;(string key, T defaultValue = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">defaultValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_MarkFresh.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.MarkFresh%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L111">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_MarkFresh_" data-uid="Vintagestory.API.Common.IWorldChunk.MarkFresh*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_MarkFresh" data-uid="Vintagestory.API.Common.IWorldChunk.MarkFresh">MarkFresh()</h4>
+  <div class="markdown level1 summary"><p>Marks this chunk as recently accessed. This will prevent the chunk from getting compressed by the in-memory chunk compression algorithm</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkFresh()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_MarkModified.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.MarkModified%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L106">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_MarkModified_" data-uid="Vintagestory.API.Common.IWorldChunk.MarkModified*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_MarkModified" data-uid="Vintagestory.API.Common.IWorldChunk.MarkModified">MarkModified()</h4>
+  <div class="markdown level1 summary"><p>Marks this chunk as modified. If called on server side it will be stored to disk on the next autosave or during shutdown, if called on client not much happens (but it will be preserved from packing for next ~8 seconds)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void MarkModified()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_RemoveEntity_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.RemoveEntity(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L134">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_RemoveEntity_" data-uid="Vintagestory.API.Common.IWorldChunk.RemoveEntity*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_RemoveEntity_System_Int64_" data-uid="Vintagestory.API.Common.IWorldChunk.RemoveEntity(System.Int64)">RemoveEntity(Int64)</h4>
+  <div class="markdown level1 summary"><p>Removes an entity from the chunk.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RemoveEntity(long entityId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">entityId</span></td>
+        <td><p>the ID for the entity</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>Whether or not the entity was removed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_RemoveModdata_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.RemoveModdata(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L149">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_RemoveModdata_" data-uid="Vintagestory.API.Common.IWorldChunk.RemoveModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_RemoveModdata_System_String_" data-uid="Vintagestory.API.Common.IWorldChunk.RemoveModdata(System.String)">RemoveModdata(String)</h4>
+  <div class="markdown level1 summary"><p>Removes the permanently stored data. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveModdata(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_SetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.SetDecor(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.Common.Block%2CVintagestory.API.MathTools.BlockPos%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L209">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_SetDecor_" data-uid="Vintagestory.API.Common.IWorldChunk.SetDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_SetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IWorldChunk.SetDecor(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,System.Int32)">SetDecor(IBlockAccessor, Block, BlockPos, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets a decor block to a specific sub-position on the side of an existing block. Use air block (id 0) to remove a decor.<br></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, int faceAndSubposition)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
+        <td><span class="parametername">blockAccessor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td><span class="parametername">block</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">faceAndSubposition</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>False if there already exists a block in this position and facing</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_SetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.SetDecor(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.Common.Block%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L199">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_SetDecor_" data-uid="Vintagestory.API.Common.IWorldChunk.SetDecor*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_SetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_" data-uid="Vintagestory.API.Common.IWorldChunk.SetDecor(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing)">SetDecor(IBlockAccessor, Block, BlockPos, BlockFacing)</h4>
+  <div class="markdown level1 summary"><p>Sets a decor block to the side of an existing block. Use air block (id 0) to remove a decor.<br></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing onFace)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
+        <td><span class="parametername">blockAccessor</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
+        <td><span class="parametername">block</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td><span class="parametername">onFace</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>False if there already exists a block in this position and facing</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_SetDecors_Dictionary_System_Int32_Vintagestory_API_Common_Block__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.SetDecors(Dictionary%7BSystem.Int32%2CVintagestory.API.Common.Block%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L244">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_SetDecors_" data-uid="Vintagestory.API.Common.IWorldChunk.SetDecors*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_SetDecors_Dictionary_System_Int32_Vintagestory_API_Common_Block__" data-uid="Vintagestory.API.Common.IWorldChunk.SetDecors(Dictionary{System.Int32,Vintagestory.API.Common.Block})">SetDecors(Dictionary&lt;Int32, Block&gt;)</h4>
+  <div class="markdown level1 summary"><p>Set entire Decors for a chunk - used in Server-&gt;Client updates</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetDecors(Dictionary&lt;int, Block&gt; newDecors)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>&gt;</td>
+        <td><span class="parametername">newDecors</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_SetModdata_System_String_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.SetModdata(System.String%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L143">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_SetModdata_" data-uid="Vintagestory.API.Common.IWorldChunk.SetModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_SetModdata_System_String_System_Byte___" data-uid="Vintagestory.API.Common.IWorldChunk.SetModdata(System.String,System.Byte[])">SetModdata(String, Byte[])</h4>
+  <div class="markdown level1 summary"><p>Allows setting of arbitrary, permanantly stored moddata of this chunk. When set on the server before the chunk is sent to the client, the data will also be sent to the client.
+When set on the client the data is discarded once the chunk gets unloaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetModdata(string key, byte[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_SetModdata__1_System_String___0_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.SetModdata%60%601(System.String%2C%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L166">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_SetModdata_" data-uid="Vintagestory.API.Common.IWorldChunk.SetModdata*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_SetModdata__1_System_String___0_" data-uid="Vintagestory.API.Common.IWorldChunk.SetModdata``1(System.String,``0)">SetModdata&lt;T&gt;(String, T)</h4>
+  <div class="markdown level1 summary"><p>Allows setting of arbitrary, permanantly stored moddata of this chunk. When set on the server before the chunk is sent to the client, the data will also be sent to the client.
+When set on the client the data is discarded once the chunk gets unloaded</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetModdata&lt;T&gt;(string key, T data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">data</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Unpack.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Unpack%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L84">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Unpack_" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Unpack" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack">Unpack()</h4>
+  <div class="markdown level1 summary"><p>Blockdata and Light might be compressed, always call this method if you want to access these</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Unpack()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Unpack_AndReadBlock_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Unpack_AndReadBlock(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L95">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Unpack_AndReadBlock_" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack_AndReadBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Unpack_AndReadBlock_System_Int32_" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack_AndReadBlock(System.Int32)">Unpack_AndReadBlock(Int32)</h4>
+  <div class="markdown level1 summary"><p>Like Unpack_ReadOnly(), except it actually reads and returns the block ID at index<br>
+(Returns 0 if the chunk was disposed)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Unpack_AndReadBlock(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Unpack_AndReadLight_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Unpack_AndReadLight(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L101">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Unpack_AndReadLight_" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack_AndReadLight*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Unpack_AndReadLight_System_Int32_" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack_AndReadLight(System.Int32)">Unpack_AndReadLight(Int32)</h4>
+  <div class="markdown level1 summary"><p>Like Unpack_ReadOnly(), except it actually reads and returns the Light at index<br>
+(Returns 0 if the chunk was disposed)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ushort Unpack_AndReadLight(int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk_Unpack_ReadOnly.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk.Unpack_ReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L89">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IWorldChunk_Unpack_ReadOnly_" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack_ReadOnly*"></a>
+  <h4 id="Vintagestory_API_Common_IWorldChunk_Unpack_ReadOnly" data-uid="Vintagestory.API.Common.IWorldChunk.Unpack_ReadOnly">Unpack_ReadOnly()</h4>
+  <div class="markdown level1 summary"><p>Like Unpack(), except it must be used readonly: the calling code promises not to write any changes to this chunk&apos;s blocks or lighting</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Unpack_ReadOnly()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IWorldChunk.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IWorldChunk%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IWorldChunk.cs/#L24" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
