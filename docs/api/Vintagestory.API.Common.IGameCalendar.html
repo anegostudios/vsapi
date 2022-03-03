@@ -1,0 +1,1226 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IGameCalendar
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IGameCalendar
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IGameCalendar">
+  
+  
+  <h1 id="Vintagestory_API_Common_IGameCalendar" data-uid="Vintagestory.API.Common.IGameCalendar" class="text-break">Interface IGameCalendar
+  </h1>
+  <div class="markdown level0 summary"><p>Main API for retrieving anything calender or astronomy related</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IGameCalendar_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IGameCalendar</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_CalendarSpeedMul.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L190">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_CalendarSpeedMul_" data-uid="Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_CalendarSpeedMul" data-uid="Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul">CalendarSpeedMul</h4>
+  <div class="markdown level1 summary"><p>A multiplier thats applied to the progression of the calendar. Set this to 0.1 and a day will last 10 times longer, does not affect physics.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float CalendarSpeedMul { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_DayOfYear.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.DayOfYear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L234">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_DayOfYear_" data-uid="Vintagestory.API.Common.IGameCalendar.DayOfYear*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_DayOfYear" data-uid="Vintagestory.API.Common.IGameCalendar.DayOfYear">DayOfYear</h4>
+  <div class="markdown level1 summary"><p>The current day of the year (goes from 0 to DaysPerYear)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int DayOfYear { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_DayOfYearf.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.DayOfYearf%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L239">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_DayOfYearf_" data-uid="Vintagestory.API.Common.IGameCalendar.DayOfYearf*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_DayOfYearf" data-uid="Vintagestory.API.Common.IGameCalendar.DayOfYearf">DayOfYearf</h4>
+  <div class="markdown level1 summary"><p>The current day of the year (goes from 0 to DaysPerYear)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float DayOfYearf { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_DaysPerMonth.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.DaysPerMonth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L205">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_DaysPerMonth_" data-uid="Vintagestory.API.Common.IGameCalendar.DaysPerMonth*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_DaysPerMonth" data-uid="Vintagestory.API.Common.IGameCalendar.DaysPerMonth">DaysPerMonth</h4>
+  <div class="markdown level1 summary"><p>Amount of days per month</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int DaysPerMonth { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_DaysPerYear.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.DaysPerYear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L200">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_DaysPerYear_" data-uid="Vintagestory.API.Common.IGameCalendar.DaysPerYear*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_DaysPerYear" data-uid="Vintagestory.API.Common.IGameCalendar.DaysPerYear">DaysPerYear</h4>
+  <div class="markdown level1 summary"><p>Amount of days per year</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int DaysPerYear { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_FullHourOfDay.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.FullHourOfDay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L214">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_FullHourOfDay_" data-uid="Vintagestory.API.Common.IGameCalendar.FullHourOfDay*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_FullHourOfDay" data-uid="Vintagestory.API.Common.IGameCalendar.FullHourOfDay">FullHourOfDay</h4>
+  <div class="markdown level1 summary"><p>The current hour of the day as integer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int FullHourOfDay { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_HourOfDay.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.HourOfDay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L219">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_HourOfDay_" data-uid="Vintagestory.API.Common.IGameCalendar.HourOfDay*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_HourOfDay" data-uid="Vintagestory.API.Common.IGameCalendar.HourOfDay">HourOfDay</h4>
+  <div class="markdown level1 summary"><p>The current hour of the day as decimal </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float HourOfDay { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_HoursPerDay.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.HoursPerDay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L195">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_HoursPerDay_" data-uid="Vintagestory.API.Common.IGameCalendar.HoursPerDay*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_HoursPerDay" data-uid="Vintagestory.API.Common.IGameCalendar.HoursPerDay">HoursPerDay</h4>
+  <div class="markdown level1 summary"><p>Amount of hours per day</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float HoursPerDay { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_Month.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.Month%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L208">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_Month_" data-uid="Vintagestory.API.Common.IGameCalendar.Month*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_Month" data-uid="Vintagestory.API.Common.IGameCalendar.Month">Month</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Month { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_MonthName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.MonthName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L209">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_MonthName_" data-uid="Vintagestory.API.Common.IGameCalendar.MonthName*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_MonthName" data-uid="Vintagestory.API.Common.IGameCalendar.MonthName">MonthName</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumMonth MonthName { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumMonth.html">EnumMonth</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_MoonPhase.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.MoonPhase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L282">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_MoonPhase_" data-uid="Vintagestory.API.Common.IGameCalendar.MoonPhase*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_MoonPhase" data-uid="Vintagestory.API.Common.IGameCalendar.MoonPhase">MoonPhase</h4>
+  <div class="markdown level1 summary"><p>The current moonphase</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumMoonPhase MoonPhase { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumMoonPhase.html">EnumMoonPhase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_MoonPhaseBrightness.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L290">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_MoonPhaseBrightness_" data-uid="Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_MoonPhaseBrightness" data-uid="Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness">MoonPhaseBrightness</h4>
+  <div class="markdown level1 summary"><p>The moons current brightness (higher during full moon)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float MoonPhaseBrightness { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_MoonPhaseExact.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.MoonPhaseExact%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L286">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_MoonPhaseExact_" data-uid="Vintagestory.API.Common.IGameCalendar.MoonPhaseExact*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_MoonPhaseExact" data-uid="Vintagestory.API.Common.IGameCalendar.MoonPhaseExact">MoonPhaseExact</h4>
+  <div class="markdown level1 summary"><p>The current moonphase represented by number from 0..8</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double MoonPhaseExact { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_MoonSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.MoonSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L294">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_MoonSize_" data-uid="Vintagestory.API.Common.IGameCalendar.MoonSize*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_MoonSize" data-uid="Vintagestory.API.Common.IGameCalendar.MoonSize">MoonSize</h4>
+  <div class="markdown level1 summary"><p>The moons current size (larger during full moon)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float MoonSize { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_OnGetHemisphere.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.OnGetHemisphere%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L133">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_OnGetHemisphere_" data-uid="Vintagestory.API.Common.IGameCalendar.OnGetHemisphere*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_OnGetHemisphere" data-uid="Vintagestory.API.Common.IGameCalendar.OnGetHemisphere">OnGetHemisphere</h4>
+  <div class="markdown level1 summary"><p>Assigned by the survival mod. Must return the hemisphere at give location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">HemisphereDelegate OnGetHemisphere { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.HemisphereDelegate.html">HemisphereDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_OnGetLatitude.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.OnGetLatitude%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L144">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_OnGetLatitude_" data-uid="Vintagestory.API.Common.IGameCalendar.OnGetLatitude*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_OnGetLatitude" data-uid="Vintagestory.API.Common.IGameCalendar.OnGetLatitude">OnGetLatitude</h4>
+  <div class="markdown level1 summary"><p>Assigned by the survival mod. Must return the latitude for given position. If not set, the calendar uses a default value of 0.5<br>
+-1 for south pole, 0 for equater, 1 for north pole</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">GetLatitudeDelegate OnGetLatitude { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.GetLatitudeDelegate.html">GetLatitudeDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_OnGetSolarSphericalCoords.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L138">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_OnGetSolarSphericalCoords_" data-uid="Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_OnGetSolarSphericalCoords" data-uid="Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords">OnGetSolarSphericalCoords</h4>
+  <div class="markdown level1 summary"><p>Assigned by the survival mod. The calendar uses this method to determine the solar altitude at given location and time. If not set, the calendar uses a default value of about 0.75</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">SolarSphericalCoordsDelegate OnGetSolarSphericalCoords { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.SolarSphericalCoordsDelegate.html">SolarSphericalCoordsDelegate</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_SpeedOfTime.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.SpeedOfTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L174">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_SpeedOfTime_" data-uid="Vintagestory.API.Common.IGameCalendar.SpeedOfTime*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_SpeedOfTime" data-uid="Vintagestory.API.Common.IGameCalendar.SpeedOfTime">SpeedOfTime</h4>
+  <div class="markdown level1 summary"><p>This acts as a multiplier on how much faster an ingame second passes by compared to a real life second. Affects physics, like the motion speed of waving grass. The default is 60, hence per default a day lasts 24 minutes, but it&apos;s also multiplied by CalendarSpeedMul which is 0.5 by default so the end result is 48 minutes per day
+This is the sum of all modifiers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float SpeedOfTime { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_TotalDays.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.TotalDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L229">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_TotalDays_" data-uid="Vintagestory.API.Common.IGameCalendar.TotalDays*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_TotalDays" data-uid="Vintagestory.API.Common.IGameCalendar.TotalDays">TotalDays</h4>
+  <div class="markdown level1 summary"><p>Total passed days since the game has started</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double TotalDays { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_TotalHours.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.TotalHours%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L224">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_TotalHours_" data-uid="Vintagestory.API.Common.IGameCalendar.TotalHours*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_TotalHours" data-uid="Vintagestory.API.Common.IGameCalendar.TotalHours">TotalHours</h4>
+  <div class="markdown level1 summary"><p>Total passed hours since the game has started</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">double TotalHours { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_Year.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.Year%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L245">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_Year_" data-uid="Vintagestory.API.Common.IGameCalendar.Year*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_Year" data-uid="Vintagestory.API.Common.IGameCalendar.Year">Year</h4>
+  <div class="markdown level1 summary"><p>Returns the year. Every game begins with 1386</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int Year { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_YearRel.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.YearRel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L271">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_YearRel_" data-uid="Vintagestory.API.Common.IGameCalendar.YearRel*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_YearRel" data-uid="Vintagestory.API.Common.IGameCalendar.YearRel">YearRel</h4>
+  <div class="markdown level1 summary"><p>Returns the current season in a value of 0 to 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float YearRel { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_Add_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.Add(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L277">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_Add_" data-uid="Vintagestory.API.Common.IGameCalendar.Add*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_Add_System_Single_" data-uid="Vintagestory.API.Common.IGameCalendar.Add(System.Single)">Add(Single)</h4>
+  <div class="markdown level1 summary"><p>Adds given time to the calendar</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Add(float hours)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">hours</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L154">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_" data-uid="Vintagestory.API.Common.IGameCalendar.GetDayLightStrength*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_System_Double_System_Double_" data-uid="Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)">GetDayLightStrength(Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Retrieve the current daylight strength at given coordinates, the values are roughly beween 0 and 1.2f</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetDayLightStrength(double x, double z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L161">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_" data-uid="Vintagestory.API.Common.IGameCalendar.GetDayLightStrength*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)">GetDayLightStrength(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Retrieve the current daylight strength at given coordinates. The Y-Component is ignored</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetDayLightStrength(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_GetHemisphere_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L266">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_GetHemisphere_" data-uid="Vintagestory.API.Common.IGameCalendar.GetHemisphere*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_GetHemisphere_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)">GetHemisphere(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Returns the hemisphere at given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumHemisphere GetHemisphere(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumHemisphere.html">EnumHemisphere</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_GetSeason_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L252">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_GetSeason_" data-uid="Vintagestory.API.Common.IGameCalendar.GetSeason*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_GetSeason_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)">GetSeason(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Returns the season at given position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumSeason GetSeason(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.EnumSeason.html">EnumSeason</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_GetSeasonRel_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L259">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_GetSeasonRel_" data-uid="Vintagestory.API.Common.IGameCalendar.GetSeasonRel*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_GetSeasonRel_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)">GetSeasonRel(BlockPos)</h4>
+  <div class="markdown level1 summary"><p>Returns the season at given position between 0..1, respects hemisphere</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float GetSeasonRel(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_PrettyDate.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.PrettyDate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L168">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_PrettyDate_" data-uid="Vintagestory.API.Common.IGameCalendar.PrettyDate*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_PrettyDate" data-uid="Vintagestory.API.Common.IGameCalendar.PrettyDate">PrettyDate()</h4>
+  <div class="markdown level1 summary"><p>The worlds current date, nicely formatted</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string PrettyDate()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_RemoveTimeSpeedModifier_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L185">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_RemoveTimeSpeedModifier_" data-uid="Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_RemoveTimeSpeedModifier_System_String_" data-uid="Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)">RemoveTimeSpeedModifier(String)</h4>
+  <div class="markdown level1 summary"><p>To remove a previously added time speed modifier</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemoveTimeSpeedModifier(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_SetSeasonOverride_System_Nullable_System_Single__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable%7BSystem.Single%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L300">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_SetSeasonOverride_" data-uid="Vintagestory.API.Common.IGameCalendar.SetSeasonOverride*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_SetSeasonOverride_System_Nullable_System_Single__" data-uid="Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})">SetSeasonOverride(Nullable&lt;Single&gt;)</h4>
+  <div class="markdown level1 summary"><p>If non-null, will override the value retrieved by GetSeason(). Set to null to have seasons progress normally again.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetSeasonOverride(float? seasonRel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td><span class="parametername">seasonRel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar_SetTimeSpeedModifier_System_String_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L179">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IGameCalendar_SetTimeSpeedModifier_" data-uid="Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier*"></a>
+  <h4 id="Vintagestory_API_Common_IGameCalendar_SetTimeSpeedModifier_System_String_System_Single_" data-uid="Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)">SetTimeSpeedModifier(String, Single)</h4>
+  <div class="markdown level1 summary"><p>If you want to modify the time speed, set a value here</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetTimeSpeedModifier(string name, float speed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">speed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IGameCalendar.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IGameCalendar%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Common/API/IGameCalendar.cs/#L128" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

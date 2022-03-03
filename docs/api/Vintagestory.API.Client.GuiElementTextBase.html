@@ -1,0 +1,782 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GuiElementTextBase
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GuiElementTextBase
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.GuiElementTextBase">
+  
+  
+  <h1 id="Vintagestory_API_Client_GuiElementTextBase" data-uid="Vintagestory.API.Client.GuiElementTextBase" class="text-break">Class GuiElementTextBase
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></div>
+    <div class="level2"><a class="xref" href="Vintagestory.API.Client.GuiElementControl.html">GuiElementControl</a></div>
+    <div class="level3"><span class="xref">GuiElementTextBase</span></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementConfigList.html">GuiElementConfigList</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementDialogTitleBar.html">GuiElementDialogTitleBar</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementDropDown.html">GuiElementDropDown</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementDynamicText.html">GuiElementDynamicText</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementEditableTextBase.html">GuiElementEditableTextBase</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementEmbossedText.html">GuiElementEmbossedText</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementHorizontalTabs.html">GuiElementHorizontalTabs</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementHoverText.html">GuiElementHoverText</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementImage.html">GuiElementImage</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementItemstackInfo.html">GuiElementItemstackInfo</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementListMenu.html">GuiElementListMenu</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementMainMenuCell.html">GuiElementMainMenuCell</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementStatbar.html">GuiElementStatbar</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementStaticText.html">GuiElementStaticText</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementSwitchOld.html">GuiElementSwitchOld</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementToggleButton.html">GuiElementToggleButton</a></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Client.GuiElementVerticalTabs.html">GuiElementVerticalTabs</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_enabled">GuiElementControl.enabled</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_Enabled">GuiElementControl.Enabled</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_dirtTextureName">GuiElement.dirtTextureName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_noisyMetalTextureName">GuiElement.noisyMetalTextureName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_woodTextureName">GuiElement.woodTextureName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_stoneTextureName">GuiElement.stoneTextureName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_waterTextureName">GuiElement.waterTextureName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_paperTextureName">GuiElement.paperTextureName</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Bounds">GuiElement.Bounds</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_TabIndex">GuiElement.TabIndex</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_hasFocus">GuiElement.hasFocus</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_InsideClipBounds">GuiElement.InsideClipBounds</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_api">GuiElement.api</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderAsPremultipliedAlpha">GuiElement.RenderAsPremultipliedAlpha</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_HasFocus">GuiElement.HasFocus</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DrawOrder">GuiElement.DrawOrder</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Focusable">GuiElement.Focusable</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Scale">GuiElement.Scale</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusGained">GuiElement.OnFocusGained()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusLost">GuiElement.OnFocusLost()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderInteractiveElements_System_Single_">GuiElement.RenderInteractiveElements(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_PostRenderInteractiveElements_System_Single_">GuiElement.PostRenderInteractiveElements(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderFocusOverlay_System_Single_">GuiElement.RenderFocusOverlay(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_ImageSurface_System_Int32__System_Boolean_">GuiElement.generateTexture(ImageSurface, Int32, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_ImageSurface_Vintagestory_API_Client_LoadedTexture__System_Boolean_">GuiElement.generateTexture(ImageSurface, LoadedTexture, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaled_System_Double_">GuiElement.scaled(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaledi_System_Double_">GuiElement.scaledi(Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_genContext_ImageSurface_">GuiElement.genContext(ImageSurface)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Bitmap_">GuiElement.getPattern(Bitmap)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Bitmap_">GuiElement.getImageSurfaceFromAsset(Bitmap)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Bitmap_System_Int32_System_Int32_">GuiElement.getImageSurfaceFromAsset(Bitmap, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_BeforeCalcBounds">GuiElement.BeforeCalcBounds()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_">GuiElement.getPattern(ICoreClientAPI, AssetLocation, Boolean, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Int32_">GuiElement.getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_">GuiElement.fillWithPattern(ICoreClientAPI, Context, AssetLocation, Boolean, Boolean, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DiscardPattern_Vintagestory_API_Common_AssetLocation_">GuiElement.DiscardPattern(AssetLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Lamp_Context_System_Double_System_Double_System_Single___">GuiElement.Lamp(Context, Double, Double, Single[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Context_Vintagestory_API_Client_ElementBounds_">GuiElement.Rectangle(Context, ElementBounds)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Context_System_Double_System_Double_System_Double_System_Double_">GuiElement.Rectangle(Context, Double, Double, Double, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DialogRoundRectangle_Context_Vintagestory_API_Client_ElementBounds_">GuiElement.DialogRoundRectangle(Context, ElementBounds)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ElementRoundRectangle_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Double_">GuiElement.ElementRoundRectangle(Context, ElementBounds, Boolean, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RoundRectangle_Context_System_Double_System_Double_System_Double_System_Double_System_Double_">GuiElement.RoundRectangle(Context, Double, Double, Double, Double, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ShadePath_Context_System_Double_">GuiElement.ShadePath(Context, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleDialog_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_">GuiElement.EmbossRoundRectangleDialog(Context, Double, Double, Double, Double, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_System_Int32_System_Int32_">GuiElement.EmbossRoundRectangleElement(Context, Double, Double, Double, Double, Boolean, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Int32_System_Int32_">GuiElement.EmbossRoundRectangleElement(Context, ElementBounds, Boolean, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangle_Context_System_Double_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Single_System_Single_System_Boolean_System_Single_">GuiElement.EmbossRoundRectangle(Context, Double, Double, Double, Double, Double, Int32, Single, Single, Boolean, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseDown(ICoreClientAPI, MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDownOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseDownOnElement(ICoreClientAPI, MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUpOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseUpOnElement(ICoreClientAPI, MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseUp(ICoreClientAPI, MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseEnterSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_">GuiElement.OnMouseEnterSlot(ICoreClientAPI, ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseLeaveSlot_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemSlot_">GuiElement.OnMouseLeaveSlot(ICoreClientAPI, ItemSlot)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseMove(ICoreClientAPI, MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_">GuiElement.OnMouseWheel(ICoreClientAPI, MouseWheelEventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyDown(ICoreClientAPI, KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyUp(ICoreClientAPI, KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyPress(ICoreClientAPI, KeyEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_IsPositionInside_System_Int32_System_Int32_">GuiElement.IsPositionInside(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_MouseOverCursor">GuiElement.MouseOverCursor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OutlineColor">GuiElement.OutlineColor()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Single_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(Int32, Single, Single, Single, Single, Single, Vec4f)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(Int32, Double, Double, Double, Double, Single, Vec4f)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_Vintagestory_API_Client_ElementBounds_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(Int32, ElementBounds, Single, Vec4f)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Dispose">GuiElement.Dispose()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Client_GuiElementTextBase_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class GuiElementTextBase : GuiElementControl</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.%23ctor(Vintagestory.API.Client.ICoreClientAPI%2CSystem.String%2CVintagestory.API.Client.CairoFont%2CVintagestory.API.Client.ElementBounds)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L35">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementTextBase__ctor_" data-uid="Vintagestory.API.Client.GuiElementTextBase.#ctor*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_" data-uid="Vintagestory.API.Client.GuiElementTextBase.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.String,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.ElementBounds)">GuiElementTextBase(ICoreClientAPI, String, CairoFont, ElementBounds)</h4>
+  <div class="markdown level1 summary"><p>The prober for the text size.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElementTextBase(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
+        <td><span class="parametername">capi</span></td>
+        <td><p>The Client API</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>The text of this element.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.CairoFont.html">CairoFont</a></td>
+        <td><span class="parametername">font</span></td>
+        <td><p>The font of the text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
+        <td><span class="parametername">bounds</span></td>
+        <td><p>The bounds of the element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_Font.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.Font%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L21">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_Font" data-uid="Vintagestory.API.Client.GuiElementTextBase.Font">Font</h4>
+  <div class="markdown level1 summary"><p>The font of the Text Element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CairoFont Font</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.CairoFont.html">CairoFont</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_text.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.text%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L11">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_text" data-uid="Vintagestory.API.Client.GuiElementTextBase.text">text</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string text</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_textPathMode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.textPathMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L16">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_textPathMode" data-uid="Vintagestory.API.Client.GuiElementTextBase.textPathMode">textPathMode</h4>
+  <div class="markdown level1 summary"><p>Whether or not the text path mode is active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool textPathMode</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_textUtil.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.textUtil%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L9">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_textUtil" data-uid="Vintagestory.API.Client.GuiElementTextBase.textUtil">textUtil</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextDrawUtil textUtil</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.TextDrawUtil.html">TextDrawUtil</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_ComposeElements_Context_ImageSurface_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Context%2CImageSurface)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L42">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementTextBase_ComposeElements_" data-uid="Vintagestory.API.Client.GuiElementTextBase.ComposeElements*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_ComposeElements_Context_ImageSurface_" data-uid="Vintagestory.API.Client.GuiElementTextBase.ComposeElements(Context,ImageSurface)">ComposeElements(Context, ImageSurface)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ComposeElements(Context ctx, ImageSurface surface)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Context</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ImageSurface</span></td>
+        <td><span class="parametername">surface</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ComposeElements_Context_ImageSurface_">GuiElement.ComposeElements(Context, ImageSurface)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_Context_ImageSurface_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Context%2CImageSurface)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L49">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_" data-uid="Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_Context_ImageSurface_" data-uid="Vintagestory.API.Client.GuiElementTextBase.ComposeTextElements(Context,ImageSurface)">ComposeTextElements(Context, ImageSurface)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ComposeTextElements(Context ctx, ImageSurface surface)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Context</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ImageSurface</span></td>
+        <td><span class="parametername">surface</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_Context_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Context%2CSystem.Double%2CSystem.Double%2CVintagestory.API.Client.EnumTextOrientation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L57">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_" data-uid="Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_Context_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_" data-uid="Vintagestory.API.Client.GuiElementTextBase.DrawMultilineTextAt(Context,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)">DrawMultilineTextAt(Context, Double, Double, EnumTextOrientation)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DrawMultilineTextAt(Context ctx, double posX, double posY, EnumTextOrientation orientation = EnumTextOrientation.Left)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Context</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">posY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumTextOrientation.html">EnumTextOrientation</a></td>
+        <td><span class="parametername">orientation</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_Context_System_String_System_Double_System_Double_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Context%2CSystem.String%2CSystem.Double%2CSystem.Double%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L84">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_" data-uid="Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_Context_System_String_System_Double_System_Double_System_Boolean_" data-uid="Vintagestory.API.Client.GuiElementTextBase.DrawTextLineAt(Context,System.String,System.Double,System.Double,System.Boolean)">DrawTextLineAt(Context, String, Double, Double, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Draws the line of text on a component.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DrawTextLineAt(Context ctx, string text, double posX, double posY, bool textPathMode = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Context</span></td>
+        <td><span class="parametername">ctx</span></td>
+        <td><p>The context of the text</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td><p>The text of the text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">posX</span></td>
+        <td><p>The X Position of the text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">posY</span></td>
+        <td><p>The Y position of the text.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">textPathMode</span></td>
+        <td><p>The pathing mode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_GetMultilineTextHeight.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L52">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementTextBase_GetMultilineTextHeight_" data-uid="Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_GetMultilineTextHeight" data-uid="Vintagestory.API.Client.GuiElementTextBase.GetMultilineTextHeight">GetMultilineTextHeight()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetMultilineTextHeight()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase_GetText.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase.GetText%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L93">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementTextBase_GetText_" data-uid="Vintagestory.API.Client.GuiElementTextBase.GetText*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementTextBase_GetText" data-uid="Vintagestory.API.Client.GuiElementTextBase.GetText">GetText()</h4>
+  <div class="markdown level1 summary"><p>Gets the text on the element.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual string GetText()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The text of the element.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementTextBase.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementTextBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Client/UI/Elements/Impl/Static/GuiElementTextBase.cs/#L7" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

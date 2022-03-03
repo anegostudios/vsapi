@@ -1,0 +1,716 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class TranslationService
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class TranslationService
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Config.TranslationService">
+  
+  
+  <h1 id="Vintagestory_API_Config_TranslationService" data-uid="Vintagestory.API.Config.TranslationService" class="text-break">Class TranslationService
+  </h1>
+  <div class="markdown level0 summary"><p>A service, which provides access to translated strings, based on key/value pairs read from JSON files.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">TranslationService</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Config.html">Vintagestory.API.Config</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Config_TranslationService_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TranslationService : object, ITranslationService</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService__ctor_System_String_Vintagestory_API_Common_ILogger_Vintagestory_API_Common_IAssetManager_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.%23ctor(System.String%2CVintagestory.API.Common.ILogger%2CVintagestory.API.Common.IAssetManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L48">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService__ctor_" data-uid="Vintagestory.API.Config.TranslationService.#ctor*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService__ctor_System_String_Vintagestory_API_Common_ILogger_Vintagestory_API_Common_IAssetManager_" data-uid="Vintagestory.API.Config.TranslationService.#ctor(System.String,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.IAssetManager)">TranslationService(String, ILogger, IAssetManager)</h4>
+  <div class="markdown level1 summary"><p>Initialises a new instance of the <a class="xref" href="Vintagestory.API.Config.TranslationService.html">TranslationService</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TranslationService(string languageCode, ILogger logger, IAssetManager assetManager = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">languageCode</span></td>
+        <td><p>The language code that this translation service caters for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a> instance used within the sided API.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></td>
+        <td><span class="parametername">assetManager</span></td>
+        <td><p>The <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a> instance used within the sided API.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_LanguageCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.LanguageCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L59">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_LanguageCode_" data-uid="Vintagestory.API.Config.TranslationService.LanguageCode*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_LanguageCode" data-uid="Vintagestory.API.Config.TranslationService.LanguageCode">LanguageCode</h4>
+  <div class="markdown level1 summary"><p>Gets the language code that this translation service caters for.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string LanguageCode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>A string, that contains the language code that this translation service caters for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_EnsureLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.EnsureLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L121">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_EnsureLoaded_" data-uid="Vintagestory.API.Config.TranslationService.EnsureLoaded*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_EnsureLoaded" data-uid="Vintagestory.API.Config.TranslationService.EnsureLoaded">EnsureLoaded()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void EnsureLoaded()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_Get_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.Get(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L159">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_Get_" data-uid="Vintagestory.API.Config.TranslationService.Get*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_Get_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.Get(System.String,System.Object[])">Get(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Gets a translation for a given key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Get(string key, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The arguments to interpolate into the resulting string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
+value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetAllEntries.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetAllEntries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L172">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_GetAllEntries_" data-uid="Vintagestory.API.Config.TranslationService.GetAllEntries*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_GetAllEntries" data-uid="Vintagestory.API.Config.TranslationService.GetAllEntries">GetAllEntries()</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of all translation entries within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; GetAllEntries()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><p>A dictionary of localisation entries.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetIfExists_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetIfExists(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L139">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_GetIfExists_" data-uid="Vintagestory.API.Config.TranslationService.GetIfExists*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_GetIfExists_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetIfExists(System.String,System.Object[])">GetIfExists(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetIfExists(string key, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The arguments to interpolate into the resulting string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
+value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetMatching_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetMatching(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L207">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_GetMatching_" data-uid="Vintagestory.API.Config.TranslationService.GetMatching*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_GetMatching_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetMatching(System.String,System.Object[])">GetMatching(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetMatching(string key, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The arguments to interpolate into the resulting string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
+value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetMatchingIfExists_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetMatchingIfExists(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L257">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_GetMatchingIfExists_" data-uid="Vintagestory.API.Config.TranslationService.GetMatchingIfExists*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_GetMatchingIfExists_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetMatchingIfExists(System.String,System.Object[])">GetMatchingIfExists(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetMatchingIfExists(string key, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The arguments to interpolate into the resulting string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Returns <code>null</code> as a default value, if no results are found; otherwise returns the pre-formatted,
+translated value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetUnformatted_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetUnformatted(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L189">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_GetUnformatted_" data-uid="Vintagestory.API.Config.TranslationService.GetUnformatted*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_GetUnformatted_System_String_" data-uid="Vintagestory.API.Config.TranslationService.GetUnformatted(System.String)">GetUnformatted(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the raw, unformatted translated value for the key provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetUnformatted(string key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>Returns the key as a default value, if no results are found; otherwise returns the unformatted, translated
+value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.HasTranslation(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L225">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_HasTranslation_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation(System.String,System.Boolean)">HasTranslation(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified key has a translation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasTranslation(string key, bool findWildcarded = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>The key.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">findWildcarded</span></td>
+        <td><p>if set to <code>true</code>, the scan will include any wildcarded values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the specified key has a translation; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_Load_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.Load(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L64">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_Load_" data-uid="Vintagestory.API.Config.TranslationService.Load*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_Load_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.Load(System.Boolean)">Load(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Loads translation key/value pairs from all relevant JSON files within the Asset Manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Load(bool lazyLoad = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">lazyLoad</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_PreLoad_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.PreLoad(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L95">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_PreLoad_" data-uid="Vintagestory.API.Config.TranslationService.PreLoad*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_PreLoad_System_String_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.PreLoad(System.String,System.Boolean)">PreLoad(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Loads only the vanilla JSON files, without dealing with mods, or resource-packs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PreLoad(string assetsPath, bool lazyLoad = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">assetsPath</span></td>
+        <td><p>The root assets path to load the vanilla files from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">lazyLoad</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_UseAssetManager_Vintagestory_API_Common_IAssetManager_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L243">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Config_TranslationService_UseAssetManager_" data-uid="Vintagestory.API.Config.TranslationService.UseAssetManager*"></a>
+  <h4 id="Vintagestory_API_Config_TranslationService_UseAssetManager_Vintagestory_API_Common_IAssetManager_" data-uid="Vintagestory.API.Config.TranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)">UseAssetManager(IAssetManager)</h4>
+  <div class="markdown level1 summary"><p>Specifies an asset manager to use, when the service has been lazy-loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAssetManager(IAssetManager assetManager)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></td>
+        <td><span class="parametername">assetManager</span></td>
+        <td><p>The <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a> instance used within the sided API.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Localization/TranslationService.cs/#L23" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

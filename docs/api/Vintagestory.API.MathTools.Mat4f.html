@@ -1,0 +1,2417 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Mat4f
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Mat4f
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.MathTools.Mat4f">
+  
+  
+  <h1 id="Vintagestory_API_MathTools_Mat4f" data-uid="Vintagestory.API.MathTools.Mat4f" class="text-break">Class Mat4f
+  </h1>
+  <div class="markdown level0 summary"><p>4x4 Matrix Math</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Mat4f</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.MathTools.html">Vintagestory.API.MathTools</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_MathTools_Mat4f_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Mat4f : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Adjoint_System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Adjoint(System.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L272">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Adjoint_" data-uid="Vintagestory.API.MathTools.Mat4f.Adjoint*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Adjoint_System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Adjoint(System.Single[],System.Single[])">Adjoint(Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Calculates the adjugate of a mat4   </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Adjoint(float[] output, float[] a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the source matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_CloneIt_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.CloneIt(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L56">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_CloneIt_" data-uid="Vintagestory.API.MathTools.Mat4f.CloneIt*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_CloneIt_System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.CloneIt(System.Single[])">CloneIt(Single[])</h4>
+  <div class="markdown level1 summary"><p>Creates a new mat4 initialized with values from an existing matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] CloneIt(float[] a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>a matrix to clone</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} a new 4x4 matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Copy_System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Copy(System.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L84">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Copy_" data-uid="Vintagestory.API.MathTools.Mat4f.Copy*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Copy_System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Copy(System.Single[],System.Single[])">Copy(Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Copy the values from one mat4 to another</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Copy(float[] output, float[] a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the source matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Create.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Create%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L40">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Create_" data-uid="Vintagestory.API.MathTools.Mat4f.Create*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Create" data-uid="Vintagestory.API.MathTools.Mat4f.Create">Create()</h4>
+  <div class="markdown level1 summary"><p>Creates a new identity mat4
+0 4 8  12
+1 5 9  13
+2 6 10 14
+3 7 11 15</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Create()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} a new 4x4 matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Determinant_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Determinant(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L303">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Determinant_" data-uid="Vintagestory.API.MathTools.Mat4f.Determinant*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Determinant_System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Determinant(System.Single[])">Determinant(Single[])</h4>
+  <div class="markdown level1 summary"><p>Calculates the determinant of a mat4</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float Determinant(float[] a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the source matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><p>{Number} determinant of a</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_FromQuat_System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.FromQuat(System.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L779">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_FromQuat_" data-uid="Vintagestory.API.MathTools.Mat4f.FromQuat*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_FromQuat_System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.FromQuat(System.Single[],System.Single[])">FromQuat(Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Calculates a 4x4 matrix from the given quaternion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] FromQuat(float[] output, float[] q)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out mat4 receiving operation result</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">q</span></td>
+        <td><p>{quat} q Quaternion to create matrix from</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_FromRotationTranslation_System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.FromRotationTranslation(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L735">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_FromRotationTranslation_" data-uid="Vintagestory.API.MathTools.Mat4f.FromRotationTranslation*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_FromRotationTranslation_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.FromRotationTranslation(System.Single[],System.Single[],System.Single[])">FromRotationTranslation(Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Creates a matrix from a quaternion rotation and vector translation
+This is equivalent to (but much faster than):
+mat4.identity(dest);
+mat4.translate(dest, vec);
+var quatMat = mat4.create();
+quat4.toMat4(quat, quatMat);
+mat4.multiply(dest, quatMat);</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] FromRotationTranslation(float[] output, float[] q, float[] v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out mat4 receiving operation result</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">q</span></td>
+        <td><p>{quat4} q Rotation quaternion</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">v</span></td>
+        <td><p>{vec3} v Translation vector</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Frustum_System_Single___System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Frustum(System.Single%5B%5D%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L830">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Frustum_" data-uid="Vintagestory.API.MathTools.Mat4f.Frustum*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Frustum_System_Single___System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.Frustum(System.Single[],System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">Frustum(Single[], Single, Single, Single, Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Generates a frustum matrix with the given bounds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Frustum(float[] output, float left, float right, float bottom, float top, float near, float far)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out mat4 frustum matrix will be written into</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>{Number} left Left bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>{Number} right Right bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">bottom</span></td>
+        <td><p>{Number} bottom Bottom bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">top</span></td>
+        <td><p>{Number} top Top bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">near</span></td>
+        <td><p>{Number} near Near bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">far</span></td>
+        <td><p>{Number} far Far bound of the frustum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Identity_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Identity(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L110">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Identity_" data-uid="Vintagestory.API.MathTools.Mat4f.Identity*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Identity_System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Identity(System.Single[])">Identity(Single[])</h4>
+  <div class="markdown level1 summary"><p>Set a mat4 to the identity matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Identity(float[] output)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Identity_Scaled_System_Single___System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Identity_Scaled(System.Single%5B%5D%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L137">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Identity_Scaled_" data-uid="Vintagestory.API.MathTools.Mat4f.Identity_Scaled*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Identity_Scaled_System_Single___System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.Identity_Scaled(System.Single[],System.Single)">Identity_Scaled(Single[], Single)</h4>
+  <div class="markdown level1 summary"><p>Set a mat4 to the identity matrix with a scale applied</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Identity_Scaled(float[] output, float scale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">scale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Invert_System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Invert(System.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L216">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Invert_" data-uid="Vintagestory.API.MathTools.Mat4f.Invert*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Invert_System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Invert(System.Single[],System.Single[])">Invert(Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Inverts a mat4</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Invert(float[] output, float[] a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the source matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_LookAt_System_Single___System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.LookAt(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L930">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_LookAt_" data-uid="Vintagestory.API.MathTools.Mat4f.LookAt*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_LookAt_System_Single___System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.LookAt(System.Single[],System.Single[],System.Single[],System.Single[])">LookAt(Single[], Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Generates a look-at matrix with the given eye position, focal point, and up axis</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] LookAt(float[] output, float[] eye, float[] center, float[] up)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out mat4 frustum matrix will be written into</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">eye</span></td>
+        <td><p>{vec3} eye Position of the viewer</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">center</span></td>
+        <td><p>{vec3} center Point the viewer is looking at</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">up</span></td>
+        <td><p>{vec3} up vec3 pointing up</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Mul_System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Mul(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L376">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Mul_" data-uid="Vintagestory.API.MathTools.Mat4f.Mul*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Mul_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Mul(System.Single[],System.Single[],System.Single[])">Mul(Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>mat4.multiply</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Mul(float[] output, float[] a, float[] b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Multiply_System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Multiply(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L335">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Multiply_" data-uid="Vintagestory.API.MathTools.Mat4f.Multiply*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Multiply_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Multiply(System.Single[],System.Single[],System.Single[])">Multiply(Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Multiplies two mat4&apos;s</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Multiply(float[] output, float[] a, float[] b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the first operand</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">b</span></td>
+        <td><p>{mat4} b the second operand</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_System_Single___System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single%5B%5D%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1142">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_System_Single___System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],System.Single,System.Single,System.Single)">MulWithVec3(Single[], Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Used for x,y,z representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have <em>no</em> effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec3f MulWithVec3(float[] matrix, float x, float y, float z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3f.html">FastVec3f</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1055">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],System.Single[],System.Single[])">MulWithVec3(Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Used for vec3 representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have <em>no</em> effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3(float[] matrix, float[] vec, float[] output)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_System_Single___Vintagestory_API_MathTools_Vec3f_Vintagestory_API_MathTools_Vec3f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single%5B%5D%2CVintagestory.API.MathTools.Vec3f%2CVintagestory.API.MathTools.Vec3f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1131">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_System_Single___Vintagestory_API_MathTools_Vec3f_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f)">MulWithVec3(Single[], Vec3f, Vec3f)</h4>
+  <div class="markdown level1 summary"><p>Used for Vec3f representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have <em>no</em> effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3(float[] matrix, Vec3f vec, Vec3f output)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_BlockFacing_System_Single___Vintagestory_API_MathTools_Vec3f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Single%5B%5D%2CVintagestory.API.MathTools.Vec3f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1151">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_BlockFacing_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_BlockFacing_System_Single___Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Single[],Vintagestory.API.MathTools.Vec3f)">MulWithVec3_BlockFacing(Single[], Vec3f)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing MulWithVec3_BlockFacing(float[] matrix, Vec3f vec)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_System_Single___System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec3f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single%5B%5D%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CVintagestory.API.MathTools.Vec3f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1120">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_System_Single___System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec3f)">MulWithVec3_Position(Single[], Single, Single, Single, Vec3f)</h4>
+  <div class="markdown level1 summary"><p>Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3_Position(float[] matrix, float x, float y, float z, Vec3f output)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_System_Single___System_Single___System_Single___System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1069">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_System_Single___System_Single___System_Single___System_Int32_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single[],System.Single[],System.Int32)">MulWithVec3_Position(Single[], Single[], Single[], Int32)</h4>
+  <div class="markdown level1 summary"><p>Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
+The offset is used to index within the original and output arrays - e.g. in MeshData.xyz</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3_Position(float[] matrix, float[] vec, float[] output, int offset)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_AndScale_System_Single___System_Single___System_Single___System_Int32_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScale(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Int32%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1080">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_AndScale_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScale*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_AndScale_System_Single___System_Single___System_Single___System_Int32_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScale(System.Single[],System.Single[],System.Single[],System.Int32,System.Single)">MulWithVec3_Position_AndScale(Single[], Single[], Single[], Int32, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3_Position_AndScale(float[] matrix, float[] vec, float[] output, int offset, float scaleFactor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">scaleFactor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_AndScaleXY_System_Single___System_Single___System_Single___System_Int32_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScaleXY(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Int32%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1091">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_AndScaleXY_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScaleXY*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_AndScaleXY_System_Single___System_Single___System_Single___System_Int32_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScaleXY(System.Single[],System.Single[],System.Single[],System.Int32,System.Single)">MulWithVec3_Position_AndScaleXY(Single[], Single[], Single[], Int32, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3_Position_AndScaleXY(float[] matrix, float[] vec, float[] output, int offset, float scaleFactor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">scaleFactor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_WithOrigin_System_Single___System_Single___System_Single___System_Int32_Vintagestory_API_MathTools_Vec3f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Int32%2CVintagestory.API.MathTools.Vec3f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1106">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_WithOrigin_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_WithOrigin_System_Single___System_Single___System_Single___System_Int32_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Single[],System.Single[],System.Single[],System.Int32,Vintagestory.API.MathTools.Vec3f)">MulWithVec3_Position_WithOrigin(Single[], Single[], Single[], Int32, Vec3f)</h4>
+  <div class="markdown level1 summary"><p>Used for vec3 representing an x,y,z position - as a vec4 this would have the 4th element set to 1, so that applying a matrix transform with a translation would have an effect
+The offset is used to index within the original and output arrays - e.g. in MeshData.xyz
+The origin is the origin for the rotation</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3_Position_WithOrigin(float[] matrix, float[] vec, float[] output, int offset, Vec3f origin)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
+        <td><span class="parametername">origin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1160">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Double___" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Double[])">MulWithVec4(Single[], Double[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] MulWithVec4(float[] matrix, double[] vec4)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span>[]</td>
+        <td><span class="parametername">vec4</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1023">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Single[])">MulWithVec4(Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Multiply the matrix with a vec4. Reference: <a href="http://mathinsight.org/matrix_vector_multiplication">http://mathinsight.org/matrix_vector_multiplication</a>
+Returns a new vec4 vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] MulWithVec4(float[] matrix, float[] vec4)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec4</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1039">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Single[],System.Single[])">MulWithVec4(Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec4(float[] matrix, float[] vec, float[] output)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Single___Vintagestory_API_MathTools_Vec4f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single%5B%5D%2CSystem.Single%5B%5D%2CVintagestory.API.MathTools.Vec4f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1182">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___System_Single___Vintagestory_API_MathTools_Vec4f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Single[],Vintagestory.API.MathTools.Vec4f)">MulWithVec4(Single[], Single[], Vec4f)</h4>
+  <div class="markdown level1 summary"><p>Multiply the matrix with a vec4. Reference: <a href="http://mathinsight.org/matrix_vector_multiplication">http://mathinsight.org/matrix_vector_multiplication</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec4(float[] matrix, float[] vec4, Vec4f outVal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">vec4</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></td>
+        <td><span class="parametername">outVal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___Vintagestory_API_MathTools_Vec4d_Vintagestory_API_MathTools_Vec4d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single%5B%5D%2CVintagestory.API.MathTools.Vec4d%2CVintagestory.API.MathTools.Vec4d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1204">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___Vintagestory_API_MathTools_Vec4d_Vintagestory_API_MathTools_Vec4d_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],Vintagestory.API.MathTools.Vec4d,Vintagestory.API.MathTools.Vec4d)">MulWithVec4(Single[], Vec4d, Vec4d)</h4>
+  <div class="markdown level1 summary"><p>Multiply the matrix with a vec4. Reference: <a href="http://mathinsight.org/matrix_vector_multiplication">http://mathinsight.org/matrix_vector_multiplication</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec4(float[] matrix, Vec4d inVal, Vec4d outVal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4d.html">Vec4d</a></td>
+        <td><span class="parametername">inVal</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4d.html">Vec4d</a></td>
+        <td><span class="parametername">outVal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___Vintagestory_API_MathTools_Vec4f_Vintagestory_API_MathTools_Vec4f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single%5B%5D%2CVintagestory.API.MathTools.Vec4f%2CVintagestory.API.MathTools.Vec4f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L1226">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Single___Vintagestory_API_MathTools_Vec4f_Vintagestory_API_MathTools_Vec4f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],Vintagestory.API.MathTools.Vec4f,Vintagestory.API.MathTools.Vec4f)">MulWithVec4(Single[], Vec4f, Vec4f)</h4>
+  <div class="markdown level1 summary"><p>Multiply the matrix with a vec4. Reference: <a href="http://mathinsight.org/matrix_vector_multiplication">http://mathinsight.org/matrix_vector_multiplication</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec4(float[] matrix, Vec4f inVal, Vec4f outVal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">matrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></td>
+        <td><span class="parametername">inVal</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></td>
+        <td><span class="parametername">outVal</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Ortho_System_Single___System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Ortho(System.Single%5B%5D%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L898">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Ortho_" data-uid="Vintagestory.API.MathTools.Mat4f.Ortho*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Ortho_System_Single___System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.Ortho(System.Single[],System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">Ortho(Single[], Single, Single, Single, Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Generates a orthogonal projection matrix with the given bounds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Ortho(float[] output, float left, float right, float bottom, float top, float near, float far)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out mat4 frustum matrix will be written into</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">left</span></td>
+        <td><p>{number} left Left bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">right</span></td>
+        <td><p>{number} right Right bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">bottom</span></td>
+        <td><p>{number} bottom Bottom bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">top</span></td>
+        <td><p>{number} top Top bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">near</span></td>
+        <td><p>{number} near Near bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">far</span></td>
+        <td><p>{number} far Far bound of the frustum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Perspective_System_Single___System_Single_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Perspective(System.Single%5B%5D%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L863">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Perspective_" data-uid="Vintagestory.API.MathTools.Mat4f.Perspective*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Perspective_System_Single___System_Single_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.Perspective(System.Single[],System.Single,System.Single,System.Single,System.Single)">Perspective(Single[], Single, Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Generates a perspective projection matrix with the given bounds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Perspective(float[] output, float fovy, float aspect, float near, float far)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out mat4 frustum matrix will be written into</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">fovy</span></td>
+        <td><p>{number} fovy Vertical field of view in radians</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">aspect</span></td>
+        <td><p>{number} aspect Aspect ratio. typically viewport width/height</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">near</span></td>
+        <td><p>{number} near Near bound of the frustum</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">far</span></td>
+        <td><p>{number} far Far bound of the frustum</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Rotate_System_Single___System_Single___System_Single_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Rotate(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L530">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Rotate_" data-uid="Vintagestory.API.MathTools.Mat4f.Rotate*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Rotate_System_Single___System_Single___System_Single_System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Rotate(System.Single[],System.Single[],System.Single,System.Single[])">Rotate(Single[], Single[], Single, Single[])</h4>
+  <div class="markdown level1 summary"><p>Rotates a mat4 by the given angle</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Rotate(float[] output, float[] a, float rad, float[] axis)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the matrix to rotate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">rad</span></td>
+        <td><p>{Number} rad the angle to rotate the matrix by</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">axis</span></td>
+        <td><p>{vec3} axis the axis to rotate around</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_RotateX_System_Single___System_Single___System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.RotateX(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L594">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_RotateX_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateX*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_RotateX_System_Single___System_Single___System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateX(System.Single[],System.Single[],System.Single)">RotateX(Single[], Single[], Single)</h4>
+  <div class="markdown level1 summary"><p>Rotates a matrix by the given angle around the X axis</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] RotateX(float[] output, float[] a, float rad)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the matrix to rotate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">rad</span></td>
+        <td><p>{Number} rad the angle to rotate the matrix by</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_RotateY_System_Single___System_Single___System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.RotateY(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L639">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_RotateY_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateY*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_RotateY_System_Single___System_Single___System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateY(System.Single[],System.Single[],System.Single)">RotateY(Single[], Single[], Single)</h4>
+  <div class="markdown level1 summary"><p>Rotates a matrix by the given angle around the Y axis</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] RotateY(float[] output, float[] a, float rad)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the matrix to rotate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">rad</span></td>
+        <td><p>{Number} rad the angle to rotate the matrix by</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_RotateZ_System_Single___System_Single___System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.RotateZ(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L684">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_RotateZ_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateZ*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_RotateZ_System_Single___System_Single___System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateZ(System.Single[],System.Single[],System.Single)">RotateZ(Single[], Single[], Single)</h4>
+  <div class="markdown level1 summary"><p>Rotates a matrix by the given angle around the Z axis</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] RotateZ(float[] output, float[] a, float rad)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the matrix to rotate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">rad</span></td>
+        <td><p>{Number} rad the angle to rotate the matrix by</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Scale_System_Single___System_Single___System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Scale(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L501">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Scale_" data-uid="Vintagestory.API.MathTools.Mat4f.Scale*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Scale_System_Single___System_Single___System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.Scale(System.Single[],System.Single[],System.Single,System.Single,System.Single)">Scale(Single[], Single[], Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Scales the mat4 by the dimensions in the given vec3</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Scale(float[] output, float[] a, float xScale, float yScale, float zScale)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the matrix to scale</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">xScale</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">yScale</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">zScale</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Scale_System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Scale(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L470">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Scale_" data-uid="Vintagestory.API.MathTools.Mat4f.Scale*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Scale_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Scale(System.Single[],System.Single[],System.Single[])">Scale(Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Scales the mat4 by the dimensions in the given vec3</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Scale(float[] output, float[] a, float[] v)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the matrix to scale</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">v</span></td>
+        <td><p>{vec3} v the vec3 to scale the matrix by</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Translate_System_Single___System_Single___System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Translate(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L391">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Translate_" data-uid="Vintagestory.API.MathTools.Mat4f.Translate*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Translate_System_Single___System_Single___System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.Translate(System.Single[],System.Single[],System.Single,System.Single,System.Single)">Translate(Single[], Single[], Single, Single, Single)</h4>
+  <div class="markdown level1 summary"><p>Translate a mat4 by the given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Translate(float[] output, float[] input, float x, float y, float z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">input</span></td>
+        <td><p>{mat4} a the matrix to translate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>{vec3} v vector to translate by</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Translate_System_Single___System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Translate(System.Single%5B%5D%2CSystem.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L430">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Translate_" data-uid="Vintagestory.API.MathTools.Mat4f.Translate*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Translate_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Translate(System.Single[],System.Single[],System.Single[])">Translate(Single[], Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Translate a mat4 by the given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Translate(float[] output, float[] input, float[] translate)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">input</span></td>
+        <td><p>{mat4} a the matrix to translate</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">translate</span></td>
+        <td><p>{vec3} v vector to translate by</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f_Transpose_System_Single___System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f.Transpose(System.Single%5B%5D%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L165">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_Mat4f_Transpose_" data-uid="Vintagestory.API.MathTools.Mat4f.Transpose*"></a>
+  <h4 id="Vintagestory_API_MathTools_Mat4f_Transpose_System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Transpose(System.Single[],System.Single[])">Transpose(Single[], Single[])</h4>
+  <div class="markdown level1 summary"><p>Transpose the values of a mat4</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static float[] Transpose(float[] output, float[] a)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">output</span></td>
+        <td><p>{mat4} out the receiving matrix</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">a</span></td>
+        <td><p>{mat4} a the source matrix</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><p>{mat4} out</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Mat4f.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Mat4f%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/l1ving/vsapi/blob/master/Math/Matrix/Mat4f.cs/#L30" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

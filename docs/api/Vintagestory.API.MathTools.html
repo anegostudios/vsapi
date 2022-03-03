@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace Vintagestory.API.MathTools
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace Vintagestory.API.MathTools
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.MathTools">
+  
+  <h1 id="Vintagestory_API_MathTools" data-uid="Vintagestory.API.MathTools" class="text-break">Namespace Vintagestory.API.MathTools
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.AABBIntersectionTest.html">AABBIntersectionTest</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Ascii85.html">Ascii85</a></h4>
+      <section><p>Converts between binary data and an Ascii85-encoded string.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></h4>
+      <section><p>Represents one of the 6 faces of a cube and all it&apos;s properties. Uses a right Handed Coordinate System. See also <a href="http://www.matrix44.net/cms/notes/opengl-3d-graphics/coordinate-systems-in-opengl">http://www.matrix44.net/cms/notes/opengl-3d-graphics/coordinate-systems-in-opengl</a>
+In short: 
+North: Negative Z
+East: Positive X
+South: Positive Z
+West: Negative X
+Up: Positive Y
+Down: Negative Y</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></h4>
+      <section><p>A useful data structure when operating with block postions.<br>
+Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A common pitfall is writing code like: BlockPos abovePos = pos.Up(); - with this code abovePos and pos will reference to the same object!</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Cardinal.html">Cardinal</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.ClampedSimplexNoise.html">ClampedSimplexNoise</a></h4>
+      <section><p>Perlin noise of supplied amplitude and frequency. The resulting value is clamped to 0...1</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.CollisionTester.html">CollisionTester</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.ColorUtil.html">ColorUtil</a></h4>
+      <section><p>Many utility methods and fields for working with colors</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.ColorUtil.LightUtil.html">ColorUtil.LightUtil</a></h4>
+      <section><p>Converts HSV (extracted from light and lightSat) to RGBA</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Crc32Algorithm.html">Crc32Algorithm</a></h4>
+      <section><p>Implementation of CRC-32.
+This class supports several convenient static methods returning the CRC as UInt32.
+From <a href="https://github.com/force-net/Crc32.NET">https://github.com/force-net/Crc32.NET</a></p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Cuboidd.html">Cuboidd</a></h4>
+      <section><p>Represents a three dimensional axis-aligned cuboid using two 3d coordinates. Used for collision and selection withes.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></h4>
+      <section><p>Represents a three dimensional axis-aligned cuboid using two 3d coordinates. Used for collision and selection boxes.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Cuboidi.html">Cuboidi</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Easings.html">Easings</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></h4>
+      <section><p>A number generator whose return value changes over time, parametrized by a transform function and some constants</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.GameMath.html">GameMath</a></h4>
+      <section><p>A large set of useful game mathematics functions</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.HorRectanglei.html">HorRectanglei</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.LCGRandom.html">LCGRandom</a></h4>
+      <section><p>An lcg random generator, particularly suitable for worldgen
+See also <a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">https://en.wikipedia.org/wiki/Linear_congruential_generator</a></p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Line3D.html">Line3D</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.MapUtil.html">MapUtil</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Mat22.html">Mat22</a></h4>
+      <section><p>2x2 Matrix</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Mat23.html">Mat23</a></h4>
+      <section><p>2x3 Matrix</p>
+<ul>
+<li>A mat2d contains six elements defined as:</li>
+<li><pre></pre></li>
+<li>[a, b,</li>
+<li>c, d,</li>
+<li>tx,ty]</li>
+<li></li>
+<li>This is a short form for the 3x3 matrix:</li>
+<li><pre></pre></li>
+<li>[a, b, 0</li>
+<li>c, d, 0</li>
+<li>tx,ty,1]</li>
+<li></li>
+<li>The last column is ignored so the array is shorter and operations are faster.</li>
+</ul>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Mat3d.html">Mat3d</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Mat3f.html">Mat3f</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Mat4d.html">Mat4d</a></h4>
+      <section><p>4x4 Matrix Math</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Mat4f.html">Mat4f</a></h4>
+      <section><p>4x4 Matrix Math</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></h4>
+      <section><p>A more natural random number generator (nature usually doesn&apos;t grow by the exact same numbers nor does it completely randomly)</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.NormalizedSimplexNoise.html">NormalizedSimplexNoise</a></h4>
+      <section><p>It&apos;s generally pretty hard to get a neatly normalized coherent noise function due to the way perlin/open simplex works (gauss curve) and how random numbers are generated. So instead of trying to find the perfect normalization factor and instead try to perform some approximate normalization this class allows a small overflow and brings it down very close to the [0, 1] range using tanh().</p>
+<p>Returns values in a range of [0..1]</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.NormalRandom.html">NormalRandom</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Quaterniond.html">Quaterniond</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Quaternionf.html">Quaternionf</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Rectanglei.html">Rectanglei</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.ShapeUtil.html">ShapeUtil</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.SimplexNoise.html">SimplexNoise</a></h4>
+      <section><p>OpenSimplex noise of supplied amplitude and frequency. </p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.SimplexNoiseOctave.html">SimplexNoiseOctave</a></h4>
+      <section><p>OpenSimplex Noise in C#
+Ported from <a href="https://gist.github.com/KdotJPG/b1270127455a94ac5d19">https://gist.github.com/KdotJPG/b1270127455a94ac5d19</a> by KdotJPG
+and heavily refactored to improve performance.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Size2d.html">Size2d</a></h4>
+      <section><p>Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Size2f.html">Size2f</a></h4>
+      <section><p>Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Size2i.html">Size2i</a></h4>
+      <section><p>Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Size3d.html">Size3d</a></h4>
+      <section><p>Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Size3f.html">Size3f</a></h4>
+      <section><p>Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Size3i.html">Size3i</a></h4>
+      <section><p>Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec2d.html">Vec2d</a></h4>
+      <section><p>Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></h4>
+      <section><p>Represents a vector of 2 floats. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></h4>
+      <section><p>Represents a vector of 2 ints. Go bug Tyron if you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></h4>
+      <section><p>Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></h4>
+      <section><p>Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></h4>
+      <section><p>Represents a vector of 3 ints. Go bug Tyron if you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec3Utilsd.html">Vec3Utilsd</a></h4>
+      <section><p>Don&apos;t use this class unless you need it to interoperate with Mat4d</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec3Utilsf.html">Vec3Utilsf</a></h4>
+      <section><p>Don&apos;t use this class unless you need it to interoperate with Mat4d</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4d.html">Vec4d</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4f.html">Vec4f</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4i.html">Vec4i</a></h4>
+      <section><p>Represents a vector of 4 ints. Go bug Tyron if you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4i-1.html">Vec4i&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4s.html">Vec4s</a></h4>
+      <section><p>Represents a vector of 4 shorts. Go bug Tyron if you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4s-1.html">Vec4s&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4us.html">Vec4us</a></h4>
+      <section><p>Represents a vector of 4 unsigned shorts. Go bug Tyron if you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Vec4us-1.html">Vec4us&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.WeightedFloat.html">WeightedFloat</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.WeightedFloatArray.html">WeightedFloatArray</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.WeightedInt.html">WeightedInt</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.WeightedValue-1.html">WeightedValue&lt;T&gt;</a></h4>
+      <section></section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.FastVec3f.html">FastVec3f</a></h4>
+      <section><p>Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.Sphere.html">Sphere</a></h4>
+      <section></section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.IRandom.html">IRandom</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.IVec3.html">IVec3</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.IWorldIntersectionSupplier.html">IWorldIntersectionSupplier</a></h4>
+      <section></section>
+    <h3 id="enums">Enums
+  </h3>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EnumAxis.html">EnumAxis</a></h4>
+      <section><p>Represents an axis in the cartesian coordinate system</p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EnumCombination.html">EnumCombination</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EnumDistribution.html">EnumDistribution</a></h4>
+      <section><p>The distribution of the random numbers </p>
+</section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EnumIntersect.html">EnumIntersect</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EnumPushDirection.html">EnumPushDirection</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EnumTransformFunction.html">EnumTransformFunction</a></h4>
+      <section><p>Used for EvolvingNatFloat value transforms</p>
+</section>
+    <h3 id="delegates">Delegates
+  </h3>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.EntityFilter.html">EntityFilter</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.PlotDelegate2D.html">PlotDelegate2D</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.PlotDelegate3D.html">PlotDelegate3D</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.PlotDelegate3DBlockPos.html">PlotDelegate3DBlockPos</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.MathTools.TransformFunction.html">TransformFunction</a></h4>
+      <section></section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
