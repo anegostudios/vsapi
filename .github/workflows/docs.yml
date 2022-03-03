@@ -24,6 +24,6 @@ jobs:
     - name: Deploy Docs
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
-        ACCESS_TOKEN: ${{ secrets.GH_TOKEN }}
+        TOKEN: ${{ secrets.GH_TOKEN }}
         BRANCH: master
         FOLDER: ./docs/_site
