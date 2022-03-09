@@ -15,24 +15,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ env.DotNetVersion }}
 
-    - uses: nikeee/docfx-action@v1.0.0
-      name: Build Documentation
+    - name: Build Documentation
+      uses: nikeee/docfx-action@v1.0.0
       with:
         args: docfx.json
 
-    - uses: actions/checkout@v3
-      with:
-        clean: false
-    - run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
+    - name: Commit changes
+      run: | 
+        git config user.name "github-actions [bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git add docs
         git commit -m "docs: Build for ${GITHUB_SHA}"
         git push
