@@ -537,7 +537,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public ItemStack GetInputStackForPatternCode(string patternCode, ItemSlot[] inputSlots)
         {
-            var ingredient = resolvedIngredients.FirstOrDefault(ig => ig.PatternCode == patternCode);
+            var ingredient = resolvedIngredients.FirstOrDefault(ig => ig?.PatternCode == patternCode);
             if (ingredient == null) return null;
 
             foreach (var slot in inputSlots)

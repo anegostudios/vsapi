@@ -513,7 +513,8 @@ namespace Vintagestory.API.Common.Entities
                     float factor = Properties.Client.SizeGrowthFactor;
                     if (factor != 0)
                     {
-                        Properties.Client.Size = 1f + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
+                        var origc = World.GetEntityType(this.Code).Client;
+                        Properties.Client.Size = origc.Size + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
                     }
                 }
             });

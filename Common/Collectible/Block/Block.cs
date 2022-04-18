@@ -2119,7 +2119,7 @@ namespace Vintagestory.API.Common
             {
                 if (decors[i] == null) continue;
 
-                decorLangCodes.Add(ItemClass.ToString().ToLowerInvariant() + "-" + decors[i].Code.ToShortString());
+                decorLangCodes.Add(decors[i].Code.Domain + ":" + ItemClass.ToString().ToLowerInvariant() + "-" + decors[i].Code.Path);
             }
 
             List<string> decorLangLines = new List<string>();
@@ -2311,9 +2311,7 @@ namespace Vintagestory.API.Common
             {
                 ItemStack[] drops = GetDrops(world, pos, null);
 
-                if (drops == null) return;
-                
-                for (int i = 0; i < drops.Length; i++)
+                for (int i = 0; drops != null && i < drops.Length; i++)
                 {
                     if (SplitDropStacks)
                     {
@@ -2323,6 +2321,9 @@ namespace Vintagestory.API.Common
                             stack.StackSize = 1;
                             world.SpawnItemEntity(stack, new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
                         }
+                    } else
+                    {
+                        world.SpawnItemEntity(drops[i].Clone(), new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
                     }
                 }
             }

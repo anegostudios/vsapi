@@ -77,10 +77,10 @@ namespace Vintagestory.API.Client
             descriptionElement.BeforeCalcBounds();
             titleElement.BeforeCalcBounds();
 
-            double currentWidth = 
-                descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10
-                + 40 + GuiElementPassiveItemSlot.unscaledItemSize * 3
-            ;
+            double currentWidth = Math.Max(
+                titleElement.MaxLineWidth / RuntimeEnv.GUIScale, 
+                descriptionElement.MaxLineWidth / RuntimeEnv.GUIScale + 10 + 40 + GuiElementPassiveItemSlot.unscaledItemSize * 3
+            );
 
             currentWidth = Math.Min(currentWidth, maxWidth);
 
@@ -111,7 +111,7 @@ namespace Vintagestory.API.Client
             string desc = OnRequireInfoText(curSlot);
             desc.TrimEnd();
 
-            titleElement.Bounds.fixedWidth = maxWidth - scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3 - 10;
+            titleElement.Bounds.fixedWidth = maxWidth - 10;
             descriptionElement.Bounds.fixedWidth = maxWidth - 40 - scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 3 - 10;
             descriptionElement.Bounds.CalcWorldBounds();
             titleElement.Bounds.CalcWorldBounds();
@@ -242,6 +242,7 @@ namespace Vintagestory.API.Client
         /// Sets the source slot for stacks.
         /// </summary>
         /// <param name="nowSlot"></param>
+        /// <returns>True if recomposed</returns>
         public bool SetSourceSlot(ItemSlot nowSlot)
         {
             bool recompose =
