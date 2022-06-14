@@ -32,18 +32,24 @@ namespace Vintagestory.API.Client
             PaddingRight = GuiElement.scaled(rightSidePadding);
         }
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
+        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
-            bool requireLinebreak = lineX + BoundsPerLine[0].Width > curfp.X2;
+            offsetX += GuiElement.scaled(PaddingLeft);
 
-            this.BoundsPerLine[0].X = requireLinebreak ? 0 : lineX;
+            bool requireLinebreak = offsetX + BoundsPerLine[0].Width > curfp.X2;
+
+            this.BoundsPerLine[0].X = requireLinebreak ? 0 : offsetX;
             this.BoundsPerLine[0].Y = lineY + (requireLinebreak ? currentLineHeight : 0);
 
             if (Float == EnumFloat.Right)
             {
                 BoundsPerLine[0].X = curfp.X2 - size;
             }
+
+            BoundsPerLine[0].Width = size + GuiElement.scaled(PaddingRight);
+
+            nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
 
             return requireLinebreak;
         }
@@ -59,6 +65,10 @@ namespace Vintagestory.API.Client
         {
             LineRectangled bounds = BoundsPerLine[0];
 
+            double padLeft = GuiElement.scaled(PaddingLeft);
+            double padRight = GuiElement.scaled(PaddingRight);
+            double width = bounds.Width - padLeft - padRight;
+
             ElementBounds scibounds = ElementBounds.FixedSize((int)(bounds.Width / API.Config.RuntimeEnv.GUIScale), (int)(bounds.Height / API.Config.RuntimeEnv.GUIScale));
             scibounds.ParentBounds = capi.Gui.WindowBounds;
 
@@ -69,7 +79,7 @@ namespace Vintagestory.API.Client
             api.Render.PushScissor(scibounds, true);
 
             api.Render.RenderItemstackToGui(
-                slot, renderX + bounds.X + bounds.Width * 0.5f + offX, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+                slot, renderX + bounds.X + padLeft + width * 0.5f + offX, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
 
             api.Render.PopScissor();
 

@@ -29,7 +29,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Max. amount of "bones" for color maps. Limited by max amount of shader uniforms, but depends on the gfx card
         /// </summary>
-        public const int MaxColorMaps = 20;
+        public const int MaxColorMaps = 40;
 
         public static int CaveArtColsPerRow = 6;
 
@@ -37,6 +37,12 @@ namespace Vintagestory.API.Config
         /// Frame time for physics simulation
         /// </summary>
         public static float PhysicsFrameTime = 1 / 30f; //1 / 75f;
+
+        /// <summary>
+        /// Limits the amount of world time that can be simulated by the physics engine if the server is ticking slowly: if ticks are slower than this, entities will seem to slow down (viewed on client might even jump backwards)
+        /// <br/> Recommended range 0.1f to 0.4f
+        /// </summary>
+        public static float MaxPhysicsIntervalInSlowTicks = 0.135f;
 
         /// <summary>
         /// A multiplier applied to the y motion of all particles affected by gravity.

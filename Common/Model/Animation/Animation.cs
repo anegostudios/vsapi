@@ -23,7 +23,8 @@ namespace Vintagestory.API.Common
     {
         Repeat = 0,
         Hold = 1,
-        Stop = 2
+        Stop = 2,
+        EaseOut = 3
     }
 
 

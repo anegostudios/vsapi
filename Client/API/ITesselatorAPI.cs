@@ -5,6 +5,45 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+    public class TesselationMetaData
+    {
+        public ITexPositionSource texSource;
+        public int generalGlowLevel;
+        public byte climateColorMapId;
+        public byte seasonColorMapId;
+        public int? quantityElements;
+        public string[] selectiveElements;
+        public Dictionary<string, int[]> texturesSizes;
+        public string typeForLogging;
+        public bool withJointIds;
+        public bool withDamageEffect;
+
+        public int generalWindMode;
+
+        public bool usesColorMap; // bubble up var
+        public int[] defaultTextureSize;
+
+        public TesselationMetaData Clone()
+        {
+            return new TesselationMetaData()
+            {
+                texSource = texSource,
+                generalGlowLevel = generalGlowLevel,
+                climateColorMapId = climateColorMapId,
+                seasonColorMapId = seasonColorMapId,
+                quantityElements = quantityElements,
+                selectiveElements = selectiveElements,
+                texturesSizes = texturesSizes,
+                typeForLogging = typeForLogging,
+                withJointIds = withJointIds,
+                usesColorMap = usesColorMap,
+                defaultTextureSize = defaultTextureSize,
+                generalWindMode = generalWindMode,
+                withDamageEffect = withDamageEffect
+            };
+        }
+    }
+
 
 
     /// <summary>
@@ -34,6 +73,7 @@ namespace Vintagestory.API.Client
         MeshRef GetDefaultItemMeshRef(Item block);
 
         Shape GetCachedShape(AssetLocation location);
+        void ThreadDispose();
     }
 
     /// <summary>
@@ -122,6 +162,15 @@ namespace Vintagestory.API.Client
         /// <param name="texSource"></param>
         /// <param name="rotation"></param>
         void TesselateShapeWithJointIds(string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f rotation, int? quantityElements = null, string[] selectiveElements = null);
+
+        /// <summary>
+        /// Turns a shape into a mesh data object that you can feed into the chunk tesselator or upload to the graphics card for rendering. Can be used to supply a custom texture source. Will add a customints array to the meshdata that holds each elements JointId for all its vertices (you will have to manually set the jointid for each element though)
+        /// </summary>
+        /// <param name="meta"></param>
+        /// <param name="shapeBase"></param>
+        /// <param name="modeldata"></param>
+        /// <param name="rotation"></param>
+        void TesselateShape(TesselationMetaData meta, Shape shapeBase, out MeshData modeldata, Vec3f rotation);
 
 
         /// <summary>

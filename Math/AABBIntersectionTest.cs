@@ -104,18 +104,28 @@ namespace Vintagestory.API.MathTools
                 Face = hitOnBlockFace,
                 Position = pos.Copy(),
                 HitPosition = hitPosition.SubCopy(pos.X, pos.Y, pos.Z),
-                SelectionBoxIndex = hitOnSelectionBox
+                SelectionBoxIndex = hitOnSelectionBox,
+                Block = blockIntersected
             };
         }
 
 
-        
+        Block blockIntersected;
         public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter)
         {
-            if (filter?.Invoke(pos, blockSelectionTester.GetBlock(pos)) == false) return false;
-
-            Cuboidf[] selectionBoxes = blockSelectionTester.GetBlockIntersectionBoxes(pos);
+            Cuboidf[] selectionBoxes;
+            Block block = blockSelectionTester.blockAccessor.GetLiquidBlock(pos);
+            if (block.SideSolid.Any())   // It's ice!
+            {
+                selectionBoxes = block.GetSelectionBoxes(blockSelectionTester.blockAccessor, pos);
+            }
+            else
+            {
+                block = blockSelectionTester.GetBlock(pos);
+                selectionBoxes = blockSelectionTester.GetBlockIntersectionBoxes(pos);
+            }
             if (selectionBoxes == null) return false;
+            if (filter?.Invoke(pos, block) == false) return false;
 
             bool intersects = false;
             bool wasDecor = false;
@@ -145,6 +155,7 @@ namespace Vintagestory.API.MathTools
                 if (posAdjust != null) pos.Add(posAdjust);
             }
 
+            if (intersects) blockIntersected = block;
             return intersects;
         }
 
@@ -281,6 +292,8 @@ namespace Vintagestory.API.MathTools
         bool IsValidPos(BlockPos pos);
 
         Vec3i MapSize { get; }
+
+        IBlockAccessor blockAccessor { get; }
     }
 
 }

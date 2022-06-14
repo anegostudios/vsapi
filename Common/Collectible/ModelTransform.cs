@@ -222,6 +222,12 @@ namespace Vintagestory.API.Common
             return this;
         }
 
+        public ModelTransform WithRotation(Vec3f rot)
+        {
+            Rotation = rot;
+            return this;
+        }
+
         /// <summary>
         /// Clones this specific transform.
         /// </summary>

@@ -385,11 +385,11 @@ namespace Vintagestory.API.Common.Entities
         public virtual bool AlwaysActive { get { return false; } }
 
         /// <summary>
-        /// True if the entity is in state active or inactive
+        /// True if the entity is in state active or inactive, or generally not dead (for non-living entities, 'dead' means ready to despawn)
         /// </summary>
         public virtual bool Alive
         {
-            get { return alive; /* Updated every game tick. Faster than doing a dict lookup hundreds/thousands of times */ }
+            get { return alive; /* Updated client-side from the WatchedAttributes every game tick. Updates to alive status on the server may therefore lag by up to one tick, client-side. */ }
             set {
                 WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value; 
             }
@@ -545,7 +545,7 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            if (api.Side.IsServer())
+            if (api.Side == EnumAppSide.Server)
             {
                 if (properties.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
                 {
@@ -558,11 +558,6 @@ namespace Vintagestory.API.Common.Entities
             Properties.Client.DetermineLoadedShape(EntityId);
             AnimManager = AnimationCache.InitManager(api, AnimManager, this, properties.Client.LoadedShapeForEntity, "head");
             
-            if (this is EntityPlayer)
-            {
-                AnimManager.HeadController = new PlayerHeadController(AnimManager, this as EntityPlayer, properties.Client.LoadedShapeForEntity);
-            }
-
             if (api.Side == EnumAppSide.Server)
             {
                 AnimManager.OnServerTick(0);
@@ -800,21 +795,25 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="dt"></param>
         public virtual void OnGameTick(float dt)
         {
+            World.FrameProfiler.Mark("entity-tick-specificclasses"); // " + this.GetType().Name);
             if (World.EntityDebugMode) {
                 UpdateDebugAttributes();
                 DebugAttributes.MarkAllDirty();
             }
 
-            alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
+            if (World.Side == EnumAppSide.Client) alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
             if (World.FrameProfiler.Enabled)
             {
+                World.FrameProfiler.Enter("behaviors");
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)
                 {
                     behavior.OnGameTick(dt);
-                    World.FrameProfiler.Mark("entity-done-bh-" + behavior.PropertyName());
+                    World.FrameProfiler.Mark(behavior.ProfilerName);
                 }
-            } else
+                World.FrameProfiler.Leave();
+            }
+            else
             {
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)
                 {
@@ -823,12 +822,14 @@ namespace Vintagestory.API.Common.Entities
             }
 
 
-            if (World.Side == EnumAppSide.Client && World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
+            if (World.Side == EnumAppSide.Client)
             {
-                PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
+                if (World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
+                {
+                    PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
+                }
             }
-
-            if (InLava && World.Side == EnumAppSide.Server)
+            else if (InLava)  // Serverside
             {
                 Ignite();
             }
@@ -836,7 +837,7 @@ namespace Vintagestory.API.Common.Entities
 
             if (IsOnFire)
             {
-                if (World.BlockAccessor.GetBlock(Pos.AsBlockPos).LiquidCode == "water" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
+                if (World.BlockAccessor.GetLiquidBlock(Pos.AsBlockPos).LiquidCode == "water" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
                 {
                     IsOnFire = false;
                 }
@@ -896,7 +897,8 @@ namespace Vintagestory.API.Common.Entities
                 SidedPos.Y + (CollisionBox.Y2 - OriginCollisionBox.Y2),
                 SidedPos.Z + (CollisionBox.Z2 - OriginCollisionBox.Z2)
             );
-        }   
+            World.FrameProfiler.Mark("entity-animation-ticking");
+        }
 
 
 
@@ -1370,7 +1372,6 @@ namespace Vintagestory.API.Common.Entities
 
             DebugAttributes.SetString("Active Animations", anims.Length > 0 ? anims : "-");
             DebugAttributes.SetString("Running Animations", runninganims.Length > 0 ? runninganims.ToString() : "-");
-
         }
 
 
@@ -1388,6 +1389,11 @@ namespace Vintagestory.API.Common.Entities
             }
             
             writer.Write(EntityId);
+
+            // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes for these 2 new fields
+            WatchedAttributes.SetFloat("headYaw", ServerPos.HeadYaw);
+            WatchedAttributes.SetFloat("headPitch", ServerPos.HeadPitch);
+
             WatchedAttributes.SetInt("entityState", (int)State);
             WatchedAttributes.ToBytes(writer);
             ServerPos.ToBytes(writer);
@@ -1428,11 +1434,11 @@ namespace Vintagestory.API.Common.Entities
         /// Loads the entity from a stored byte array from the SaveGame
         /// </summary>
         /// <param name="reader"></param>
-        /// <param name="fromServer"></param>
-        public virtual void FromBytes(BinaryReader reader, bool fromServer)
+        /// <param name="isSync">True if this is a sync operation, not a chunk read operation</param>
+        public virtual void FromBytes(BinaryReader reader, bool isSync)
         {
             string version = "";
-            if (!fromServer)
+            if (!isSync)
             {
                 version = reader.ReadString();
             }
@@ -1454,26 +1460,31 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            if (!fromServer)
+            if (!isSync)
             {
                 State = (EnumEntityState)WatchedAttributes.GetInt("entityState", 0);
-            }
+            }          
             
 
             ServerPos.FromBytes(reader);
+
+            // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes
+            ServerPos.HeadYaw = WatchedAttributes.GetFloat("headYaw");
+            ServerPos.HeadPitch = WatchedAttributes.GetFloat("headPitch");
+
             Pos.SetFrom(ServerPos);
             PositionBeforeFalling.X = reader.ReadDouble();
             PositionBeforeFalling.Y = reader.ReadDouble();
             PositionBeforeFalling.Z = reader.ReadDouble();
             Code = new AssetLocation(reader.ReadString());
 
-            if (!fromServer)
+            if (!isSync)
             {
                 Attributes.FromBytes(reader);
             }
 
             // In 1.8 animation data format was changed to use a TreeAttribute. 
-            if (fromServer || GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1"))
+            if (isSync || GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1"))
             {
                 TreeAttribute animTree = new TreeAttribute();
                 animTree.FromBytes(reader);
@@ -1555,7 +1566,8 @@ namespace Vintagestory.API.Common.Entities
                     Entity byEntity = damageSourceForDeath.SourceEntity;
                     if (byEntity != null)
                     {
-                        WatchedAttributes.SetString("deathByEntity", "prefixandcreature-" + byEntity.Code.Path.Replace("-", ""));
+                        WatchedAttributes.SetString("deathByEntityLangCode", "prefixandcreature-" + byEntity.Code.Path.Replace("-", ""));
+                        WatchedAttributes.SetString("deathByEntity", byEntity.Code.ToString());
                     }
                     if (byEntity is EntityPlayer)
                     {
@@ -1668,6 +1680,37 @@ namespace Vintagestory.API.Common.Entities
             PositionBeforeFalling.X += startPos.X;
             PositionBeforeFalling.Y += startPos.Y;
             PositionBeforeFalling.Z += startPos.Z;
+        }
+
+
+
+        /// <summary>
+        /// Called by the worldedit schematic exporter so that it can also export the mappings of items/blocks stored inside blockentities
+        /// </summary>
+        /// <param name="blockIdMapping"></param>
+        /// <param name="itemIdMapping"></param>
+        public virtual void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
+        {
+            foreach (var val in Properties.Server.Behaviors)
+            {
+                val.OnStoreCollectibleMappings(blockIdMapping, itemIdMapping);
+            }
+        }
+
+        /// <summary>
+        /// Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
+        /// Note: Some vanilla blocks resolve randomized contents in this method.
+        /// Hint: Use itemstack.FixMapping() to do the job for you.
+        /// </summary>
+        /// <param name="oldBlockIdMapping"></param>
+        /// <param name="oldItemIdMapping"></param>
+        /// <param name="schematicSeed">If you need some sort of randomness consistency accross an imported schematic, you can use this value</param>
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
+        {
+            foreach (var val in Properties.Server.Behaviors)
+            {
+                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping);
+            }
         }
 
         /// <summary>

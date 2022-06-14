@@ -26,18 +26,14 @@ namespace Vintagestory.API.Common
     public class EntityAgent : Entity
     {
         /// <summary>
-        /// The yaw of the agents head
-        /// </summary>
-        public float HeadYaw;
-        /// <summary>
-        /// The pitch of the agents head
-        /// </summary>
-        public float HeadPitch;
-        /// <summary>
         /// The yaw of the agents body
         /// </summary>
-        public float BodyYaw;
+        public virtual float BodyYaw { get; set; }
 
+        /// <summary>
+        /// The yaw of the agents body on the client, retrieved from the server (BehaviorInterpolatePosition lerps this value and sets BodyYaw)
+        /// </summary>
+        public virtual float BodyYawServer { get; set; }
 
         /// <summary>
         /// True if all clients have to be informed about this entities death. Set to false once all clients have been notified
@@ -441,7 +437,7 @@ namespace Vintagestory.API.Common
                 CurrentControls = CurrentControls == 0 ? EnumEntityActivity.Idle : CurrentControls;
             }
 
-            HandleHandAnimations();
+            HandleHandAnimations(dt);
 
             if (World.Side == EnumAppSide.Client)
             {
@@ -464,6 +460,8 @@ namespace Vintagestory.API.Common
                     {
                         defaultAnim = anim;
                     }
+
+                    if (onAnimControls(anim, wasActive, nowActive)) continue;
 
                     if (!wasActive && nowActive)
                     {
@@ -510,7 +508,7 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                if ((FeetInLiquid || Swimming) && moving)
+                if ((FeetInLiquid || Swimming) && moving && Properties.Habitat != EnumHabitat.Underwater)
                 {
                     double width = SelectionBox.XSize * 0.75f;
 
@@ -541,14 +539,18 @@ namespace Vintagestory.API.Common
 
                 
             }
-            
-            
+
+
+            World.FrameProfiler.Mark("entityAgent-ticking");
             base.OnGameTick(dt);
         }
 
+        protected virtual bool onAnimControls(AnimationMetaData anim, bool wasActive, bool nowActive)
+        {
+            return false;
+        }
 
-
-        protected virtual void HandleHandAnimations()
+        protected virtual void HandleHandAnimations(float dt)
         {
 
         }
@@ -755,6 +757,11 @@ namespace Vintagestory.API.Common
             ItemStack stack = slot.Itemstack;
             JsonObject attrObj = stack.Collectible.Attributes;
 
+            float damageEffect = 0;
+            if (stack.ItemAttributes?["visibleDamageEffect"].AsBool() == true)
+            {
+                damageEffect = Math.Max(0, 1 - (float)stack.Collectible.GetRemainingDurability(stack) / stack.Collectible.GetMaxDurability(stack) * 1.1f);
+            }
 
             string[] disableElements = attrObj?["disableElements"]?.AsArray<string>(null);
             if (disableElements != null)
@@ -771,25 +778,10 @@ namespace Vintagestory.API.Common
 
             AssetLocation shapePath = shapePath = compArmorShape.Base.CopyWithPath("shapes/" + compArmorShape.Base.Path + ".json");
 
-            
-
-            IAsset asset = Api.Assets.TryGet(shapePath);
-
-            if (asset == null)
+            Shape armorShape = Shape.TryGet(Api, shapePath);
+            if (armorShape == null)
             {
-                Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found, was supposed to be at {3}. Armor piece will be invisible.", compArmorShape.Base, stack.Class, stack.Collectible.Code, shapePath);
-                return null;
-            }
-
-            Shape armorShape;
-
-            try
-            {
-                armorShape = asset.ToObject<Shape>();
-            }
-            catch (Exception e)
-            {
-                Api.World.Logger.Warning("Exception thrown when trying to load entity armor shape {0} defined in {1} {2}. Armor piece will be invisible. Exception: {3}", compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code, e);
+                Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found or errored, was supposed to be at {3}. Armor piece will be invisible.", compArmorShape.Base, stack.Class, stack.Collectible.Code, shapePath);
                 return null;
             }
 
@@ -825,9 +817,11 @@ namespace Vintagestory.API.Common
                 val.SetJointIdRecursive(elem.JointId);
                 val.WalkRecursive((el) =>
                 {
-                    foreach (var face in el.Faces)
+                	el.DamageEffect = damageEffect;
+                	
+                    foreach (var face in el.FacesResolved)
                     {
-                        face.Value.Texture = "#" + stack.Collectible.Code + "-" + face.Value.Texture.TrimStart('#');
+                        if (face != null) face.Texture = stack.Collectible.Code + "-" + face.Texture;
                     }
                 });
 
@@ -916,7 +910,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         protected Shape addGearToShape(string code, CompositeShape cshape, Shape entityShape, string shapePathForLogging, string[] disableElements = null, Dictionary<string, AssetLocation> textureOverrides = null)
         {
-            AssetLocation shapePath = shapePath = cshape.Base.CopyWithPath("shapes/" + cshape.Base.Path + ".json");
+            AssetLocation shapePath = cshape.Base.CopyWithPath("shapes/" + cshape.Base.Path + ".json");
 
             if (disableElements != null)
             {
@@ -926,23 +920,10 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            IAsset asset = Api.Assets.TryGet(shapePath);
-
-            if (asset == null)
+            Shape armorShape = Shape.TryGet(Api, shapePath);
+            if (armorShape == null)
             {
-                Api.World.Logger.Warning("Compositshape {0} (code: {2}) defined but not found, was supposed to be at {1}. Part will be invisible.", cshape.Base, shapePath, code);
-                return null;
-            }
-
-            Shape armorShape;
-
-            try
-            {
-                armorShape = asset.ToObject<Shape>();
-            }
-            catch (Exception e)
-            {
-                Api.World.Logger.Warning("Exception thrown when trying to load gear shape {0} (code: {2}) . Will be invisible. Exception: {1}", cshape.Base, e, code);
+                Api.World.Logger.Warning("Compositshape {0} (code: {2}) defined but not found or errored, was supposed to be at {1}. Part will be invisible.", cshape.Base, shapePath, code);
                 return null;
             }
 
@@ -1070,9 +1051,9 @@ namespace Vintagestory.API.Common
 
                 cElem.WalkRecursive((el) =>
                 {
-                    foreach (var face in el.Faces)
+                    foreach (var face in el.FacesResolved)
                     {
-                        face.Value.Texture = "#" + code + "-" + face.Value.Texture.TrimStart('#');
+                        if (face != null) face.Texture = code + "-" + face.Texture;
                     }
                 });
 
@@ -1118,6 +1099,48 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+
+        public override void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
+        {
+            base.OnLoadCollectibleMappings(worldForResolve, oldBlockIdMapping, oldItemIdMapping, schematicSeed);
+
+            if (GearInventory != null)
+            {
+                foreach (var slot in GearInventory)
+                {
+                    if (slot.Empty) continue;
+                    if (slot.Itemstack.FixMapping(oldBlockIdMapping, oldItemIdMapping, worldForResolve) == false)
+                    {
+                        slot.Itemstack = null;
+                    }
+                }
+            }
+        }
+
+
+        public override void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
+        {
+            base.OnStoreCollectibleMappings(blockIdMapping, itemIdMapping);
+
+            if (GearInventory != null)
+            {
+                foreach (var slot in GearInventory)
+                {
+                    if (slot.Empty) continue;
+                    var stack = slot.Itemstack;
+
+                    if (stack.Class == EnumItemClass.Item)
+                    {
+                        itemIdMapping[stack.Id] = stack.Item.Code;
+                    }
+                    else
+                    {
+                        blockIdMapping[stack.Id] = stack.Block.Code;
+                    }
+                }
+                
+            }
+        }
 
     }
 }

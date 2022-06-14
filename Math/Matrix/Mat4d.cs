@@ -39,24 +39,7 @@ namespace Vintagestory.API.MathTools
         /// <returns>{mat4} a new 4x4 matrix</returns>
         public static double[] Create()
         {
-            double[] output = new double[16];
-            output[0] = 1;
-            output[1] = 0;
-            output[2] = 0;
-            output[3] = 0;
-            output[4] = 0;
-            output[5] = 1;
-            output[6] = 0;
-            output[7] = 0;
-            output[8] = 0;
-            output[9] = 0;
-            output[10] = 1;
-            output[11] = 0;
-            output[12] = 0;
-            output[13] = 0;
-            output[14] = 0;
-            output[15] = 1;
-            return output;
+            return new double[16] { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1 };
         }
 
 
@@ -116,22 +99,13 @@ namespace Vintagestory.API.MathTools
         /// <returns>{mat4} out</returns>
         public static double[] Copy(double[] output, double[] a)
         {
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            output[3] = a[3];
-            output[4] = a[4];
-            output[5] = a[5];
-            output[6] = a[6];
-            output[7] = a[7];
-            output[8] = a[8];
-            output[9] = a[9];
-            output[10] = a[10];
-            output[11] = a[11];
-            output[12] = a[12];
-            output[13] = a[13];
-            output[14] = a[14];
-            output[15] = a[15];
+            for (int i = 0; i < output.Length; i += 4)
+            {
+                output[i + 0] = a[i + 0];
+                output[i + 1] = a[i + 1];
+                output[i + 2] = a[i + 2];
+                output[i + 3] = a[i + 3];
+            }
             return output;
         }
 
@@ -580,6 +554,21 @@ namespace Vintagestory.API.MathTools
         public static double[] Rotate(double[] output, double[] a, double rad, double[] axis)
         {
             double x = axis[0]; double y = axis[1]; double z = axis[2];
+            return Rotate(output, a, rad, x, y, z);
+        }
+
+        /// <summary>
+        /// Rotates a mat4 by the given angle
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="rad"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static double[] Rotate(double[] output, double[] a, double rad, double x, double y, double z)
+        {
             double len = GameMath.Sqrt(x * x + y * y + z * z);
             double s; double c; double t;
             double a00; double a01; double a02; double a03;

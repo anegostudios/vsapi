@@ -37,15 +37,15 @@ namespace Vintagestory.API.Server
         ModsAndConfigReady = 4,
 
         /// <summary>
+        /// All configs loaded, game world loaded by server. All blocks are loaded.
+        /// </summary>
+        GameReady = 5,
+
+        /// <summary>
         /// All configs loaded, spawn chunks loaded, game world loaded by server. All blocks are loaded.
         /// </summary>
         [Obsolete("Use GameReady")]
         LoadGame = 5,
-
-        /// <summary>
-        /// All configs loaded, game world loaded by server. All blocks are loaded.
-        /// </summary>
-        GameReady = 5,
 
         /// <summary>
         /// Spawn chunks now loaded.

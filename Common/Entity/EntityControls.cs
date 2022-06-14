@@ -65,7 +65,15 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Fly or swim down
         /// </summary>
-        Down = 12
+        Down = 12,
+        /// <summary>
+        /// Holding down the Ctrl key (which might have been remapped)
+        /// </summary>
+        CtrlKey = 13,
+        /// <summary>
+        /// Holding down the Shift key (which might have been remapped)
+        /// </summary>
+        ShiftKey = 14,
     }
 
 
@@ -79,7 +87,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public OnEntityAction OnAction = (EnumEntityAction action, bool on, ref EnumHandling handled) => { };
 
-        bool[] flags = new bool[13];
+        bool[] flags = new bool[15];
 
         public bool[] Flags => flags;
 
@@ -283,6 +291,24 @@ namespace Vintagestory.API.Common
             set { AttemptToggleAction(EnumEntityAction.RightMouseDown, value); }
         }
 
+        /// <summary>
+        /// A check to see if the entity is holding down the Ctrl key (which may be the same as the Sprint key or one or other may have been remapped).
+        /// </summary>
+        public virtual bool CtrlKey
+        {
+            get { return flags[(int)EnumEntityAction.CtrlKey]; }
+            set { AttemptToggleAction(EnumEntityAction.CtrlKey, value); }
+        }
+
+        /// <summary>
+        /// A check to see if the entity is holding down the Shift key (which may be the same as the Sneak key or one or other may have been remapped).
+        /// </summary>
+        public virtual bool ShiftKey
+        {
+            get { return flags[(int)EnumEntityAction.ShiftKey]; }
+            set { AttemptToggleAction(EnumEntityAction.ShiftKey, value); }
+        }
+
         public virtual bool this[EnumEntityAction action]
         {
             get
@@ -412,7 +438,9 @@ namespace Vintagestory.API.Common
                 (flags[(int)EnumEntityAction.FloorSit] ? 1024 : 0) |
                 (flags[(int)EnumEntityAction.LeftMouseDown] ? 2048 : 0) |
                 (flags[(int)EnumEntityAction.RightMouseDown] ? 4096 : 0) |
-                (IsClimbing ? 8192 : 0)
+                (IsClimbing ? 8192 : 0) |
+                (flags[(int)EnumEntityAction.CtrlKey] ? 16384 : 0) |
+                (flags[(int)EnumEntityAction.ShiftKey] ? 32768 : 0)
             ;
         }
 
@@ -438,6 +466,9 @@ namespace Vintagestory.API.Common
             flags[(int)EnumEntityAction.RightMouseDown] = (flagsInt & 4096) > 0;
             
             IsClimbing = (flagsInt & 8192) > 0;
+
+            flags[(int)EnumEntityAction.CtrlKey] = (flagsInt & 16384) > 0;
+            flags[(int)EnumEntityAction.ShiftKey] = (flagsInt & 32768) > 0;
         }
 
 

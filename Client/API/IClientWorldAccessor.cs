@@ -20,7 +20,7 @@ namespace Vintagestory.API.Client
         public EnumMouseButton MouseButton;
 
         /// <summary>
-        /// Does it require pressing a key to perform this action (e.g. "sneak" for sneaking)
+        /// Does it require a mouse modifier key to perform this action (e.g. "shift" or "ctrl")
         /// </summary>
         [JsonProperty]
         public string HotKeyCode;

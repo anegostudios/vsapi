@@ -16,7 +16,7 @@ namespace Vintagestory.API.Client
             UnscaledMarginTop = unScaleMarginTop;
         }
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
+        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             double y2 = lineY;
 
@@ -36,6 +36,8 @@ namespace Vintagestory.API.Client
             }
 
             this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, lineY, 10, y2 - lineY + 1) };
+
+            nextOffsetX = 0;
 
             return this.Float == EnumFloat.None;
         }

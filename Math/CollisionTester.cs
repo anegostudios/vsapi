@@ -55,20 +55,13 @@ namespace Vintagestory.API.MathTools
                 return;
             }*/
 
-          //  entitypos.Motion.X = GameMath.Clamp(entitypos.Motion.X, -1, 1);
-          //  entitypos.Motion.Y = GameMath.Clamp(entitypos.Motion.Y, -1, 1);
-          //  entitypos.Motion.Z = GameMath.Clamp(entitypos.Motion.Z, -1, 1);
+            //  entitypos.Motion.X = GameMath.Clamp(entitypos.Motion.X, -1, 1);
+            //  entitypos.Motion.Y = GameMath.Clamp(entitypos.Motion.Y, -1, 1);
+            //  entitypos.Motion.Z = GameMath.Clamp(entitypos.Motion.Z, -1, 1);
 
             tmpPositionVec.Set(pos);
 
-            entityBox.Set(
-                entity.CollisionBox.X1 + tmpPositionVec.X,
-                entity.CollisionBox.Y1 + tmpPositionVec.Y,
-                entity.CollisionBox.Z1 + tmpPositionVec.Z,
-                entity.CollisionBox.X2 + tmpPositionVec.X,
-                entity.CollisionBox.Y2 + tmpPositionVec.Y,
-                entity.CollisionBox.Z2 + tmpPositionVec.Z
-            );
+            entityBox.SetAndTranslate(entity.CollisionBox, tmpPositionVec);
 
             double motionX = entitypos.Motion.X * dtFac;
             double motionY = entitypos.Motion.Y * dtFac;
@@ -185,7 +178,7 @@ namespace Vintagestory.API.MathTools
         {
             minPos.Set(
                 (int)(entityBox.X1 + Math.Min(0, motionX)),
-                (int)(entityBox.Y1 + Math.Min(0, motionY) - yExtra), // yExtra for the extra high collision box of fences
+                (int)(entityBox.Y1 + Math.Min(0, motionY) - yExtra), // yExtra looks at blocks below to allow for the extra high collision box of fences
                 (int)(entityBox.Z1 + Math.Min(0, motionZ))
             );
 
@@ -198,23 +191,18 @@ namespace Vintagestory.API.MathTools
             );
 
             CollisionBoxList.Clear();
-            blockAccessor.WalkBlocks(minPos, maxPos, (block, bpos) => {
-                Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, bpos);
-
+            blockAccessor.WalkBlocks(minPos, maxPos, (block, x, y, z) => {
+                Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, tmpPos.Set(x, y, z));
                 if (collisionBoxes != null)
                 {
-                    for (int i = 0; i < collisionBoxes.Length; i++)
-                    {
-                        CollisionBoxList.Add(collisionBoxes[i], bpos, block);
-                    }
+                    CollisionBoxList.Add(collisionBoxes, x, y, z, block);
                 }
-
             }, true);
         }
 
-        Cuboidd tmpBox = new Cuboidd();
-        BlockPos blockPos = new BlockPos();
-        Vec3d blockPosVec = new Vec3d();
+        readonly Cuboidd tmpBox = new Cuboidd();
+        readonly BlockPos blockPos = new BlockPos();
+        readonly Vec3d blockPosVec = new Vec3d();
 
         /// <summary>
         /// Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
@@ -229,8 +217,8 @@ namespace Vintagestory.API.MathTools
             return GetCollidingBlock(blockAccessor, entityBoxRel, pos, alsoCheckTouch) != null;
         }
 
-        public Block GetCollidingBlock(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true) 
-        { 
+        public Block GetCollidingBlock(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true)
+        {
             Cuboidd entityBox = tmpBox.SetAndTranslate(entityBoxRel, pos);
 
             int minX = (int)(entityBox.X1);
@@ -247,7 +235,7 @@ namespace Vintagestory.API.MathTools
                 {
                     for (int z = minZ; z <= maxZ; z++)
                     {
-                        Block block = blockAccessor.GetBlock(x, y, z);
+                        Block block = blockAccessor.GetSolidBlock(x, y, z);
                         blockPos.Set(x, y, z);
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
@@ -283,7 +271,7 @@ namespace Vintagestory.API.MathTools
             BlockPos blockPos = new BlockPos();
             Vec3d blockPosVec = new Vec3d();
             Cuboidd entityBox = entityBoxRel.ToDouble().Translate(pos);
-            
+
             entityBox.Y1 = Math.Round(entityBox.Y1, 5); // Fix float/double rounding errors. Only need to fix the vertical because gravity.
 
             int minX = (int)(entityBoxRel.X1 + pos.X);
@@ -299,7 +287,7 @@ namespace Vintagestory.API.MathTools
                 {
                     for (int z = minZ; z <= maxZ; z++)
                     {
-                        Block block = blockAccessor.GetBlock(x, y, z);
+                        Block block = blockAccessor.GetSolidBlock(x, y, z);
                         blockPos.Set(x, y, z);
                         blockPosVec.Set(x, y, z);
 
@@ -354,7 +342,7 @@ namespace Vintagestory.API.MathTools
                 {
                     for (int z = minZ; z <= maxZ; z++)
                     {
-                        Block block = blockAccessor.GetBlock(x, y, z);
+                        Block block = blockAccessor.GetSolidBlock(x, y, z);
                         blockPos.Set(x, y, z);
                         blockPosVec.Set(x, y, z);
 
@@ -388,57 +376,49 @@ namespace Vintagestory.API.MathTools
 
             return
                 x + aabb.X1 < aabb2.X2 + pos.X &&
-                y + aabb.Y1 < aabb2.Y2 + pos.Y &&
-                z + aabb.Z1 < aabb2.Z2 + pos.Z &&
                 x + aabb.X2 > aabb2.X1 + pos.X &&
-                y + aabb.Y2 > aabb2.Y1 + pos.Y &&
-                z + aabb.Z2 > aabb2.Z1 + pos.Z
+                z + aabb.Z1 < aabb2.Z2 + pos.Z &&
+                z + aabb.Z2 > aabb2.Z1 + pos.Z &&
+                y + aabb.Y1 < aabb2.Y2 + pos.Y &&
+                y + aabb.Y2 > aabb2.Y1 + pos.Y
             ;
         }
 
-        
+
 
         public static EnumIntersect AabbIntersect(Cuboidd aabb, Cuboidd aabb2, Vec3d motion)
         {
-            bool beforeIntersect = aabb.Intersects(aabb2);
-
-            if (beforeIntersect) return EnumIntersect.Stuck;
+            if (aabb.Intersects(aabb2)) return EnumIntersect.Stuck;
 
             // X
-            bool xIntersect =
+            if (
                 aabb.X1 < aabb2.X2 + motion.X &&
-                aabb.Y1 < aabb2.Y2 &&
-                aabb.Z1 < aabb2.Z2 &&
                 aabb.X2 > aabb2.X1 + motion.X &&
-                aabb.Y2 > aabb2.Y1 &&
-                aabb.Z2 > aabb2.Z1
-            ;
-
-            if (xIntersect) return EnumIntersect.IntersectX;
+                aabb.Z1 < aabb2.Z2 &&
+                aabb.Z2 > aabb2.Z1 &&
+                aabb.Y1 < aabb2.Y2 &&
+                aabb.Y2 > aabb2.Y1
+            ) return EnumIntersect.IntersectX;
 
             // Y
-            bool yIntersect =
+            if (
                 aabb.X1 < aabb2.X2 &&
-                aabb.Y1 < aabb2.Y2 + motion.Y &&
-                aabb.Z1 < aabb2.Z2 &&
                 aabb.X2 > aabb2.X1 &&
-                aabb.Y2 > aabb2.Y1 + motion.Y &&
-                aabb.Z2 > aabb2.Z1
-            ;
-
-            if (yIntersect) return EnumIntersect.IntersectY;
+                aabb.Z1 < aabb2.Z2 &&
+                aabb.Z2 > aabb2.Z1 &&
+                aabb.Y1 < aabb2.Y2 + motion.Y &&
+                aabb.Y2 > aabb2.Y1 + motion.Y
+            ) return EnumIntersect.IntersectY;
 
             // Z
-            bool zIntersect =
+            if (
                 aabb.X1 < aabb2.X2 &&
-                aabb.Y1 < aabb2.Y2 &&
-                aabb.Z1 < aabb2.Z2 + motion.Z &&
                 aabb.X2 > aabb2.X1 &&
-                aabb.Y2 > aabb2.Y1 &&
-                aabb.Z2 > aabb2.Z1 + motion.Z
-            ;
-
-            if (zIntersect) return EnumIntersect.IntersectZ;
+                aabb.Z1 < aabb2.Z2 + motion.Z &&
+                aabb.Z2 > aabb2.Z1 + motion.Z &&
+                aabb.Y1 < aabb2.Y2 &&
+                aabb.Y2 > aabb2.Y1
+            ) return EnumIntersect.IntersectZ;
 
             return EnumIntersect.NoIntersect;
         }
@@ -459,9 +439,10 @@ namespace Vintagestory.API.MathTools
         {
             bool minPosIsUnchanged = minPos.SetAndEquals(
                 (int)(entityBox.X1 + Math.Min(0, motionX)),
-                (int)(entityBox.Y1 + Math.Min(0, motionY) - yExtra), // yExtra for the extra high collision box of fences
+                (int)(entityBox.Y1 + Math.Min(0, motionY) - yExtra), // yExtra looks at blocks below to allow for the extra high collision box of fences
                 (int)(entityBox.Z1 + Math.Min(0, motionZ))
             );
+
             double y2 = Math.Max(entityBox.Y1 + stepHeight, entityBox.Y2);
 
             bool maxPosIsUnchanged = maxPos.SetAndEquals(
@@ -476,17 +457,12 @@ namespace Vintagestory.API.MathTools
             }
 
             CollisionBoxList.Clear();
-            blockAccessor.WalkBlocks(minPos, maxPos, (block, bpos) => {
-                Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, bpos);
-
+            blockAccessor.WalkBlocks(minPos, maxPos, (block, x, y, z) => {
+                Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, tmpPos.Set(x, y, z));
                 if (collisionBoxes != null)
                 {
-                    for (int i = 0; i < collisionBoxes.Length; i++)
-                    {
-                        CollisionBoxList.Add(collisionBoxes[i], bpos, block);
-                    }
+                    CollisionBoxList.Add(collisionBoxes, x, y, z, block);
                 }
-
             }, true);
         }
     }

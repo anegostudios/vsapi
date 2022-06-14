@@ -50,7 +50,7 @@ namespace Vintagestory.API.Common
 
         public AssetCategory(string code, bool AffectsGameplay, EnumAppSide SideType)
         {
-            AssetCategory.categories.Add(code, this);
+            AssetCategory.categories[code] = this;
             this.Code = code;
             this.AffectsGameplay = AffectsGameplay;
             this.SideType = SideType;

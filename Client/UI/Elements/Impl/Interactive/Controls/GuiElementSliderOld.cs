@@ -101,7 +101,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(0, 0, 0, 0.5);
             RoundRectangle(ctx, 0, 0, handleWidth, handleHeight, GuiStyle.ElementBGRadius);
             ctx.Fill();
-            surface.Blur(3);
+            surface.BlurFull(3);
 
             RoundRectangle(ctx, 0, 0, handleWidth, handleHeight, GuiStyle.ElementBGRadius);
             fillWithPattern(api, ctx, woodTextureName);

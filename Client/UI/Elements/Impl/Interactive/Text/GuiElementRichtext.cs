@@ -165,16 +165,22 @@ namespace Vintagestory.API.Client
             {
                 comp = Components[i];
 
-                bool didLineBreak = comp.CalcBounds(flowPathList.ToArray(), lineHeight, posX, posY);
+                double nextPosX;
+                bool didLineBreak = comp.CalcBounds(flowPathList.ToArray(), lineHeight, posX, posY, out nextPosX);
+
+                if (comp.Float == EnumFloat.Inline)
+                {
+                    posX = nextPosX;
+                }
 
                 if (DebugLogging)
                 {
                     api.Logger.VerboseDebug("GuiElementRichtext, add comp {0}, posY={1}, lineHeight={2}", i, posY, lineHeight);
-                    api.Logger.VerboseDebug("GuiElementRichtext, Comp bounds 0 w/h: {0}/{1}", comp.BoundsPerLine[0].Width, comp.BoundsPerLine[0].Height);
+                    if (comp.BoundsPerLine.Length > 0)
+                    {
+                        api.Logger.VerboseDebug("GuiElementRichtext, Comp bounds 0 w/h: {0}/{1}", comp.BoundsPerLine[0].Width, comp.BoundsPerLine[0].Height);
+                    }
                 }
-
-
-                posX += scaled(comp.PaddingLeft);
 
                 if (comp.Float == EnumFloat.None)
                 {
@@ -190,8 +196,9 @@ namespace Vintagestory.API.Client
 
                 if (didLineBreak)
                 {
-                    lineHeight = Math.Ceiling(Math.Max(lineHeight, comp.BoundsPerLine[0].Height));
-                    ascentHeight = Math.Ceiling(Math.Max(ascentHeight, comp.BoundsPerLine[0].AscentOrHeight));
+                    // Tyron 19Feb2022: Below 2 lines used to have Math.Ceiling() around them which caused some components being a pixel off. I'm not sure why there were there to begin with, so removed now.
+                    lineHeight = Math.Max(lineHeight, comp.BoundsPerLine[0].Height);
+                    ascentHeight = Math.Max(ascentHeight, comp.BoundsPerLine[0].AscentOrHeight);
 
                     // All previous elements in this line might need to have their Y pos adjusted due to a larger element in the line
                     foreach (int index in currentLine)
@@ -223,18 +230,21 @@ namespace Vintagestory.API.Client
                     currentLine.Clear();
                     currentLine.Add(i);
 
-                    
                     posY += lineHeight;
-                    for (int k = 1; k < comp.BoundsPerLine.Length - 1; k++) posY += comp.BoundsPerLine[k].Height;
+                    for (int k = 1; k < comp.BoundsPerLine.Length - 1; k++)
+                    {
+                        posY += comp.BoundsPerLine[k].Height;
+                    }
                     posY += scaled(comp.UnscaledMarginTop);
                     posY = Math.Ceiling(posY);
 
+                    var lastBound = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1];
 
-                    posX = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width; // + GuiElement.scaled(comp.PaddingLeft); - this adds too much padding when there is a line break inside a rich text compoment and afterwards there comes a link
-                    if (comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Width > 0)
+                    
+                    if (lastBound.Width > 0)
                     {
-                        lineHeight = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].Height;
-                        ascentHeight = comp.BoundsPerLine[comp.BoundsPerLine.Length - 1].AscentOrHeight;
+                        lineHeight = lastBound.Height;
+                        ascentHeight = lastBound.AscentOrHeight;
                     } else
                     {
                         lineHeight = 0;
@@ -245,7 +255,6 @@ namespace Vintagestory.API.Client
                 {
                     if (comp.Float == EnumFloat.Inline && comp.BoundsPerLine.Length > 0)
                     {
-                        posX += comp.BoundsPerLine[0].Width;
                         lineHeight = Math.Max(comp.BoundsPerLine[0].Height, lineHeight);
                         ascentHeight = Math.Max(comp.BoundsPerLine[0].AscentOrHeight, ascentHeight);                        
                         currentLine.Add(i);
@@ -315,8 +324,8 @@ namespace Vintagestory.API.Client
             Rectangled rect = comp.BoundsPerLine[0];
             EnumFloat elementFloat = comp.Float;
 
-            double x1 = elementFloat == EnumFloat.Left ? rect.Width + comp.PaddingRight : 0;
-            double x2 = elementFloat == EnumFloat.Right ? Bounds.InnerWidth - rect.Width - comp.PaddingLeft : Bounds.InnerWidth;
+            double x1 = elementFloat == EnumFloat.Left ? rect.Width : 0;
+            double x2 = elementFloat == EnumFloat.Right ? Bounds.InnerWidth - rect.Width : Bounds.InnerWidth;
 
             double remainingHeight = rect.Height;
 

@@ -193,7 +193,7 @@ namespace Vintagestory.API.MathTools
         private static int FastFloor(double x)
         {
             var xi = (int)x;
-            return x < xi ? xi - 1 : xi;
+            return x < 0.0 ? xi - 1 : xi;
         }
 
         public SimplexNoiseOctave()
@@ -262,8 +262,8 @@ namespace Vintagestory.API.MathTools
             {
                 var dx = dx0 + c.dx;
                 var dy = dy0 + c.dy;
-                var attn = 2 - dx * dx - dy * dy;
-                if (attn > 0)
+                var attn = 2.0 - dx * dx - dy * dy;
+                if (attn > 0.0)
                 {
                     var px = xsb + c.xsb;
                     var py = ysb + c.ysb;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -17,5 +18,10 @@ namespace Vintagestory.API.Common
         /// The class name for the inventory.
         /// </summary>
         string InventoryClassName { get; }
+
+        /// <summary>
+        /// Called by EntityBlockFalling if required
+        /// </summary>
+        void DropContents(Vec3d atPos);
     }
 }

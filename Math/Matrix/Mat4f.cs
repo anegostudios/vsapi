@@ -1036,6 +1036,22 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        public static float[] MulWithVec4(float[] matrix, float v1, float v2, float v3, float v4)
+        {
+            float[] output = new float[] { 0, 0, 0, 0 };
+
+            for (int row = 0; row < 4; row++)
+            {
+                output[row] += matrix[4 * 0 + row] * v1;
+                output[row] += matrix[4 * 1 + row] * v2;
+                output[row] += matrix[4 * 2 + row] * v3;
+                output[row] += matrix[4 * 3 + row] * v4;
+            }
+
+            return output;
+        }
+
+
         public static void MulWithVec4(float[] matrix, float[] vec, float[] output)
         {
             float vx = vec[0];

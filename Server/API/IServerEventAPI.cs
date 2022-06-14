@@ -157,7 +157,15 @@ namespace Vintagestory.API.Server
         event Action<IServerPlayer, ActiveSlotChangeEventArgs> AfterActiveSlotChanged;
 
         /// <summary>
+        /// Triggered after assets have been loaded and parsed and registered, but before they are declared to be ready - e.g. you can add more behaviors here, or make other code-based changes to properties read from JSONs
+        /// <br/>Note: modsystems should register for this in a Start() method not StartServerSide(): the AssetsFinalizer event is fired before StartServerSide() is reached
+        /// </summary>
+        event Action AssetsFinalizers;
+
+        /// <summary>
         /// Triggered after the game world data has been loaded. At this point all blocks are loaded and the Map size is known.
+        /// <br/><br/>In 1.17+ do NOT use this server event to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON).
+        /// Instead, code which needs to do that should be registered for event sapi.Event.AssetsFinalizers.  See VSSurvivalMod system BlockReinforcement.cs for an example.
         /// </summary>
         event Action SaveGameLoaded;
 

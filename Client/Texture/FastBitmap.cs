@@ -9,6 +9,8 @@ namespace Vintagestory.API.Client
         public Bitmap bmp { get; set; }
         BitmapData bmd;
 
+        public int Stride { get => bmd.Stride; }
+
         public void Lock()
         {
             if (bmd != null)
@@ -25,14 +27,25 @@ namespace Vintagestory.API.Client
 
         public int GetPixel(int x, int y)
         {
-            if (bmd == null)
-            {
-                throw new Exception();
-            }
             unsafe
             {
-                int* row = (int*)((byte*)bmd.Scan0 + (y * bmd.Stride));
+                int* row = (int*)((byte*)bmd.Scan0 + y);
                 return row[x];
+            }
+        }
+
+        internal void GetPixelRow(int width, int y, int[] bmpPixels, int baseX)
+        {
+            unsafe
+            {
+                int* row = (int*)((byte*)bmd.Scan0 + y);
+                fixed (int* target = bmpPixels)
+                {
+                    for (int x = 0; x < width; x++)
+                    {
+                        target[x + baseX] = row[x];
+                    }
+                }
             }
         }
 

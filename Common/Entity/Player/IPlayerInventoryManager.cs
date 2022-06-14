@@ -117,6 +117,15 @@ namespace Vintagestory.API.Common
         IInventory GetHotbarInventory();
 
         /// <summary>
+        /// Returns true if the invID is found, and the found IInventory value is in invFound; similar to Dictionary.TryGetValue, invFound is undefined if the result is false
+        /// </summary>
+        /// <param name="invID"></param>
+        /// <param name="invFound"></param>
+        /// <returns></returns>
+        bool GetInventory(string invID, out InventoryBase invFound);
+
+
+        /// <summary>
         /// Returns a slot that would best fit the contents of the source slot. This checks all inventories currently opened by the player.
         /// </summary>
         /// <param name="sourceSlot"></param>

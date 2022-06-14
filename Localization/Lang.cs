@@ -80,7 +80,7 @@ namespace Vintagestory.API.Config
                 return;
             }
             var translationService = new TranslationService(languageCode, logger, assetManager);
-            translationService.Load();
+            translationService.Load(lazyLoad);
             AvailableLanguages.Add(languageCode, translationService);
         }
 
@@ -220,6 +220,11 @@ namespace Vintagestory.API.Config
         public static bool HasTranslation(string key, bool findWildcarded = true)
         {
             return AvailableLanguages[CurrentLocale].HasTranslation(key, findWildcarded);
+        }
+
+        public static void InitialiseSearch()
+        {
+            AvailableLanguages[CurrentLocale].InitialiseSearch();
         }
     }
 }

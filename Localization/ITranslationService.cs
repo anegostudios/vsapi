@@ -88,5 +88,10 @@ namespace Vintagestory.API.Config
         /// </summary>
         /// <param name="assetManager">The <see cref="IAssetManager"/> instance used within the sided API.</param>
         void UseAssetManager(IAssetManager assetManager);
+
+        /// <summary>
+        ///      Used to compile the regexes, to save time on the first 'actual' wildcard search - saves about 300ms
+        /// </summary>
+        void InitialiseSearch();
     }
 }

@@ -28,28 +28,33 @@ namespace Vintagestory.API.Config
     /// </summary>
     public static class RuntimeEnv
     {
+#if DEBUG
+        private const bool debugAll = false;   // Dev team can use this to enable all these debuggers, if required
+#else
+        private const bool debugAll = false;
+#endif
         /// <summary>
         /// If TEXTURE_DEBUG_DISPOSE is set, the initial value set here will be overridden
         /// </summary>
-        public static bool DebugTextureDispose = false;
+        public static bool DebugTextureDispose = debugAll;
         /// <summary>
         /// If VAO_DEBUG_DISPOSE is set, the initial value set here will be overridden
         /// </summary>
-        public static bool DebugVAODispose = false;
+        public static bool DebugVAODispose = debugAll;
         /// <summary>
         /// Debug sound memory leaks. No ENV var
         /// </summary>
-        public static bool DebugSoundDispose = false;
+        public static bool DebugSoundDispose = debugAll;
 
         /// <summary>
         /// If true, will print the stack trace on some of the blockaccessor if something attempts to get or set blocks outside of its available chunks
         /// </summary>
-        public static bool DebugOutOfRangeBlockAccess = false;
+        public static bool DebugOutOfRangeBlockAccess = debugAll;
 
         /// <summary>
         /// If true, will print allocation trace whenever a new task was enqueued to the thread pool
         /// </summary>
-        public static bool DebugThreadPool = false;
+        public static bool DebugThreadPool = debugAll;
 
         
 

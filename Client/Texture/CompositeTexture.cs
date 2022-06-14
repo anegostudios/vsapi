@@ -39,6 +39,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         public int Alpha = 255;
 
+        [ThreadStatic]    // Lovely ThreadStatic will automatically dispose of any dictionary created on a separate thread (if the thread is disposed of)
+        public static Dictionary<AssetLocation, CompositeTexture> basicTexturesCache;
+        [ThreadStatic]
+        public static Dictionary<AssetLocation, List<IAsset>> wildcardsCache;
 
         /// <summary>
         /// Creates a new empty composite texture
@@ -116,6 +120,15 @@ namespace Vintagestory.API.Client
             return ct;
         }
 
+        /// <summary>
+        /// Tests whether this is a basic CompositeTexture with an asset location only, no rotation, alpha, alternates or overlays
+        /// </summary>
+        /// <returns></returns>
+        public bool IsBasic()
+        {
+            if (Rotation != 0 || Alpha != 255) return false;
+            return Alternates == null && Overlays == null;
+        }
 
         /// <summary>
         /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field. This method is called by the texture atlas managers.
@@ -175,23 +188,23 @@ namespace Vintagestory.API.Client
         {
             BakedCompositeTexture bct = new BakedCompositeTexture();
 
-            bct.BakedName = ct.Base.Clone();
-             
             if (ct.Base.EndsWithWildCard)
             {
-                List<IAsset> assets = assetManager.GetMany("textures/" + bct.BakedName.Path.Substring(0, bct.BakedName.Path.Length - 1), bct.BakedName.Domain);
+                if (wildcardsCache == null) wildcardsCache = new Dictionary<AssetLocation, List<IAsset>>();
+                if (!wildcardsCache.TryGetValue(ct.Base, out List<IAsset> assets)) // Saves baking the same basic texture over and over
+                {
+                    assets = wildcardsCache[ct.Base] = assetManager.GetManyInCategory("textures", ct.Base.Path.Substring(0, ct.Base.Path.Length - 1), ct.Base.Domain);
+                }
                 if (assets.Count == 0)
                 {
-                    ct.Base = bct.BakedName = new AssetLocation("unknown");
+                    ct.Base = new AssetLocation("unknown");
                 }
                 else
                 if (assets.Count == 1)
                 {
                     ct.Base = assets[0].Location.CloneWithoutPrefixAndEnding("textures/".Length);
-                    bct.BakedName = ct.Base.Clone();
                 }
                 else
-                if (assets.Count > 1)
                 {
                     int origLength = (ct.Alternates == null ? 0 : ct.Alternates.Length);
                     CompositeTexture[] alternates = new CompositeTexture[origLength + assets.Count - 1];
@@ -200,6 +213,7 @@ namespace Vintagestory.API.Client
                         Array.Copy(ct.Alternates, alternates, ct.Alternates.Length);
                     }
 
+                    if (basicTexturesCache == null) basicTexturesCache = new Dictionary<AssetLocation, CompositeTexture>(); // Initialiser needed because it's ThreadStatic
                     for (int i = 0; i < assets.Count; i++)
                     {
                         IAsset asset = assets[i];
@@ -208,13 +222,23 @@ namespace Vintagestory.API.Client
                         if (i == 0)
                         {
                             ct.Base = newLocation;
-                            bct.BakedName = newLocation.Clone();
                         }
                         else
                         {
-                            var act = alternates[origLength + i - 1] = new CompositeTexture(newLocation);
-                            act.Rotation = ct.Rotation;
-                            act.Alpha = ct.Alpha;
+                            CompositeTexture act;
+                            if (ct.Rotation == 0 && ct.Alpha == 255)
+                            {
+                                if (!basicTexturesCache.TryGetValue(newLocation, out act)) // Saves baking the same basic texture over and over
+                                {
+                                    act = basicTexturesCache[newLocation] = new CompositeTexture(newLocation);
+                                }
+                            }
+                            else {
+                                act = new CompositeTexture(newLocation);
+                                act.Rotation = ct.Rotation;
+                                act.Alpha = ct.Alpha;
+                            }
+                            alternates[origLength + i - 1] = act;
                         }
                     }
                     
@@ -222,21 +246,24 @@ namespace Vintagestory.API.Client
                 }
             }
 
+            bct.BakedName = ct.Base.Clone();
+
 
             if (ct.Overlays != null)
             {
                 bct.TextureFilenames = new AssetLocation[ct.Overlays.Length + 1];
-                bct.TextureFilenames[0] = ct.Base.Clone();
+                bct.TextureFilenames[0] = ct.Base;
 
                 for (int i = 0; i < ct.Overlays.Length; i++)
                 {
-                    bct.TextureFilenames[i + 1] = ct.Overlays[i].Clone();
-                    bct.BakedName.Path += "++" + ct.Overlays[i].ToShortString();
+                    AssetLocation loc = ct.Overlays[i];
+                    bct.TextureFilenames[i + 1] = loc;
+                    bct.BakedName.Path += "++" + loc.ToShortString();
                 }
             }
             else
             {
-                bct.TextureFilenames = new AssetLocation[] { ct.Base.Clone() };
+                bct.TextureFilenames = new AssetLocation[] { ct.Base };
             }
 
             if (ct.Rotation != 0)

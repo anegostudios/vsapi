@@ -40,6 +40,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public const float PIHALF = (float)Math.PI / 2;
 
+        public const double DEG2RAD_DOUBLE = Math.PI / 180.0;
         public const float DEG2RAD = (float)Math.PI / 180.0f;
         public const float RAD2DEG = 180.0f / (float)Math.PI;
         const uint murmurseed = 144;

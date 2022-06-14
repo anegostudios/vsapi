@@ -45,16 +45,19 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Retrieves an asset from given path within the assets folder. Returns null when the asset does not exist. Remember to use lower case paths.
+        /// <br/><br/> Mods must not call TryGet to get assets before AssetsLoaded stage in a ModSystem - do not load assets in the Start() method!  In StartClientSide() is OK though.  (Or if you absolutely have to load assets in Start(), use IAssetManager.Get(), but it will throw an exception for anything except a base asset.)
         /// </summary>
-        /// <param name="Category"></param>
         /// <param name="Path"></param>
+        /// <param name="loadAsset"></param>
         /// <returns></returns>
         IAsset TryGet(string Path, bool loadAsset = true);
 
         /// <summary>
         /// Retrieves an asset from given path within the assets folder. Returns null when the asset does not exist. Remember to use lower case paths.
+        /// <br/><br/> Mods must not call TryGet to get assets before AssetsLoaded stage in a ModSystem - do not load assets in the Start() method!  (Or if you absolutely have to load assets in Start(), use IAssetManager.Get(), but it will throw an exception for anything except a base asset.)
         /// </summary>
         /// <param name="Location"></param>
+        /// <param name="loadAsset"></param>
         /// <returns></returns>
         IAsset TryGet(AssetLocation Location, bool loadAsset = true);
 
@@ -67,6 +70,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         List<IAsset> GetMany(string pathBegins, string domain = null, bool loadAsset = true);
 
+        List<IAsset> GetManyInCategory(string categoryCode, string pathBegins, string domain = null, bool loadAsset = true);
 
         /// <summary>
         /// Searches for all assets in given basepath and uses JSON.NET to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.

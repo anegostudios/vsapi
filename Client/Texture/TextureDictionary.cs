@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.Common;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {
-    public class TextureDictionary : Dictionary<string, CompositeTexture>
+    public class TextureDictionary : FakeDictionary<string, CompositeTexture>
     {
         internal bool alreadyBaked = false;
 
-        public TextureDictionary() : base()
+        public TextureDictionary() : base(2)
         {
         }
 
@@ -30,9 +32,9 @@ namespace Vintagestory.API.Client
             {
                 ct.Bake(manager);
 
-                if (ct.Baked.BakedVariants != null)
+                BakedCompositeTexture[] bct = ct.Baked.BakedVariants;
+                if (bct != null)
                 {
-                    BakedCompositeTexture[] bct = ct.Baked.BakedVariants;
                     for (int i = 0; i < bct.Length; i++)
                     {
                         if (!mainTextureDict.ContainsKey(bct[i].BakedName))

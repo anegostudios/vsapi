@@ -77,6 +77,27 @@ namespace Vintagestory.API.Common
             JsonConvert.PopulateObject(text, toPopulate, settings);
         }
 
+        public static JsonSerializer CreateSerializerForDomain(string domain, JsonSerializerSettings settings = null)
+        {
+            if (domain != GlobalConstants.DefaultDomain)
+            {
+                if (settings == null)
+                {
+                    settings = new JsonSerializerSettings();
+                }
+                settings.Converters.Add(new AssetLocationJsonParser(domain));
+            }
+            return JsonSerializer.CreateDefault(settings);
+        }
+
+        public static void PopulateObject(object toPopulate, JToken token, JsonSerializer js)
+        {
+            using (JsonReader reader = token.CreateReader())
+            {
+                js.Populate(reader, toPopulate);
+            }
+        }
+
         /// <summary>
         /// Converts a Json object to a typed object.
         /// </summary>

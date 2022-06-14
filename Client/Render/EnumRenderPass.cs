@@ -118,10 +118,13 @@ namespace Vintagestory.API.Client
         Texture2texture = 33,
         Celestialobject = 34,
         Guitopsoil = 35,
-        Entityanimatedtransparent = 36,
         Colorgrade = 37,
         Guigear = 38,
         Ssao = 39,
-        Bilateralblur = 40
+        Bilateralblur = 40,
+        Grass = 41,
+        Flowers = 42,
+        Shadowgrass = 43,
+        Shadowflowers = 44
     }
 }

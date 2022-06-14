@@ -30,5 +30,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name="entity"></param>
         void AddEntity(Entity entity);
+
+        void BeginColumn();
     }
 }

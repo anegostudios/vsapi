@@ -87,7 +87,7 @@ namespace Vintagestory.API.Client
             DrawTextLineAt(ctxText, text, 0, 0);
 
 
-            surface.Blur(3, 0, 0, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
+            surface.BlurPartial(3, 6);
 
             ctxText.Operator = Operator.Source;
             if (enabled)

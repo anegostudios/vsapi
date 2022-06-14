@@ -34,19 +34,22 @@ namespace Vintagestory.API.Client
 
         public float renderSize = 0.58f;
 
+        double unscaledSize;
+
         /// <summary>
         /// Flips through given array of item stacks every second
         /// </summary>
         /// <param name="itemstacks"></param>
-        /// <param name="unscaleSize"></param>
+        /// <param name="unscaledSize"></param>
         /// <param name="floatType"></param>
-        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double unscaleSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : base(capi)
+        public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double unscaledSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();
 
+            this.unscaledSize = unscaledSize;
             this.Itemstacks = itemstacks;
             this.Float = floatType;
-            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, GuiElement.scaled(unscaleSize), GuiElement.scaled(unscaleSize)) };
+            this.BoundsPerLine = new LineRectangled[] { new LineRectangled(0, 0, GuiElement.scaled(unscaledSize), GuiElement.scaled(unscaledSize)) };
             this.onStackClicked = onStackClicked;
         }
 
@@ -60,6 +63,7 @@ namespace Vintagestory.API.Client
         {
             initSlot();
             this.onStackClicked = onStackClicked;
+            this.unscaledSize = unscaleSize;
 
             string[] groups = itemstackgroup.Collectible.Attributes?["handbook"]?["groupBy"]?.AsArray<string>(null);
 
@@ -129,13 +133,19 @@ namespace Vintagestory.API.Client
             slot = new DummySlot(null, dummyInv);
         }
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
+        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
-            bool requireLinebreak = lineX + BoundsPerLine[0].Width > curfp.X2;
+            offsetX += GuiElement.scaled(PaddingLeft);
 
-            this.BoundsPerLine[0].X = requireLinebreak ? 0 : lineX;
+            bool requireLinebreak = offsetX + BoundsPerLine[0].Width > curfp.X2;
+
+            this.BoundsPerLine[0].X = requireLinebreak ? 0 : offsetX;
             this.BoundsPerLine[0].Y = lineY + (requireLinebreak ? currentLineHeight : 0);
+
+            BoundsPerLine[0].Width = GuiElement.scaled(unscaledSize) + GuiElement.scaled(PaddingRight);
+
+            nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
 
             return requireLinebreak;
         }

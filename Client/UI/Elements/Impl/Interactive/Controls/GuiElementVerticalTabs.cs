@@ -185,7 +185,7 @@ namespace Vintagestory.API.Client
                 ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.6, GuiStyle.DialogStrongBgColor[1] * 1.6, GuiStyle.DialogStrongBgColor[2] * 1.6, 1);
                 ctx.LineWidth = strokeWidth * 1.75;
                 ctx.StrokePreserve();
-                surface.Blur(3, 0, 0, (int)width - 1, (int)tabHeight - 1);
+                surface.BlurPartial(8, 16);
 
                 ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
                 ctx.LineWidth = strokeWidth;

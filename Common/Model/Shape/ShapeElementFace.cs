@@ -14,6 +14,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float[] Uv;
 
+        public EnumReflectiveMode ReflectiveMode;
 
         public sbyte[] WindMode;
 
@@ -33,5 +34,6 @@ namespace Vintagestory.API.Common
         /// Whether or not the element is enabled.
         /// </summary>
         public bool Enabled = true;
+
     }
 }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using ProtoBuf;
+using Vintagestory.API.Common;
 
 namespace Vintagestory.API.MathTools
 {
@@ -176,6 +177,28 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Returns the direction moved from the other blockPos, to get to this BlockPos
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public BlockFacing FacingFrom(BlockPos other)
+        {
+            int dx = other.X - X;
+            int dy = other.Y - Y;
+            int dz = other.Z - Z;
+
+            if (dx * dx >= dz * dz)
+            {
+                if (dx * dx >= dy * dy) return dx > 0 ? BlockFacing.WEST : BlockFacing.EAST;
+            }
+            else
+            {
+                if (dz * dz >= dy * dy) return dz > 0 ? BlockFacing.NORTH : BlockFacing.SOUTH;
+            }
+            return dy > 0 ? BlockFacing.DOWN : BlockFacing.UP;
+        }
+
+        /// <summary>
         /// Creates a copy of this blocks position with the x-position adjusted by -<paramref name="length"/>
         /// </summary>
         /// <param name="length"></param>
@@ -243,7 +266,7 @@ namespace Vintagestory.API.MathTools
         /// Creates a copy of this blocks position
         /// </summary>
         /// <returns></returns>
-        public BlockPos Copy()
+        public virtual BlockPos Copy()
         {
             return new BlockPos(X, Y, Z);
         }
@@ -696,5 +719,32 @@ namespace Vintagestory.API.MathTools
 
         #endregion
 
+    }
+
+    // Exactly like BlockPos except using this class signifies the block should be looked for in the liquids layer; used for server block ticking
+    public class LiquidBlockPos : BlockPos
+    {
+        public LiquidBlockPos()
+        {
+        }
+
+        public LiquidBlockPos(int x, int y, int z)
+        {
+            this.X = x;
+            this.Y = y;
+            this.Z = z;
+        }
+
+        public LiquidBlockPos(Vec3i vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+        }
+
+        public override BlockPos Copy()
+        {
+            return new LiquidBlockPos(X, Y, Z);
+        }
     }
 }

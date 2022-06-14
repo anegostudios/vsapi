@@ -184,13 +184,20 @@ namespace Vintagestory.API.Client
 
 
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
+        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
-            bool requireLinebreak = lineX + BoundsPerLine[0].Width > curfp.X2;
 
-            this.BoundsPerLine[0].X = requireLinebreak ? 0 : lineX;
+            offsetX += GuiElement.scaled(PaddingLeft);
+
+            bool requireLinebreak = offsetX + BoundsPerLine[0].Width > curfp.X2;
+
+            this.BoundsPerLine[0].X = requireLinebreak ? 0 : offsetX;
             this.BoundsPerLine[0].Y = lineY + (requireLinebreak ? currentLineHeight + GuiElement.scaled(UnscaledMarginTop) : 0);
+
+            BoundsPerLine[0].Width = 3 * (size + 3) + GuiElement.scaled(PaddingRight);
+
+            nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
 
             return requireLinebreak;
         }

@@ -9,6 +9,116 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public class BlockDamage
+    {
+        public IPlayer ByPlayer;
+
+        public int DecalId;
+
+        public BlockPos Position;
+        public BlockFacing Facing;
+        public Block Block;
+
+        public float RemainingResistance;
+
+        //public long LastBreakMilliseconds;
+        public long LastBreakEllapsedMs;
+
+        public long BeginBreakEllapsedMs;
+
+        public EnumTool? Tool;
+    }
+
+    public class BlockBreakingParticleProps : CollectibleParticleProperties
+    {
+        internal BlockDamage blockdamage;
+        public bool boyant;
+
+        EvolvingNatFloat sizeEvolve = new EvolvingNatFloat(EnumTransformFunction.LINEAR, -0.5f);
+
+        public override int GetRgbaColor(ICoreClientAPI capi)
+        {
+            return blockdamage.Block.GetRandomColor(capi, blockdamage.Position, blockdamage.Facing);
+        }
+
+        public override Vec3d Pos => RandomBlockPos(api.World.BlockAccessor, blockdamage.Position, blockdamage.Block, blockdamage.Facing);
+
+        public override float Size => 0.5f + (float)rand.NextDouble() * 0.8f;
+
+        public override EvolvingNatFloat SizeEvolve => sizeEvolve;
+
+        public override bool SwimOnLiquid => boyant;
+
+        public override Vec3f GetVelocity(Vec3d pos)
+        {
+            Vec3i face = blockdamage.Facing.Normali;
+
+            return new Vec3f(
+                (float)(face.X == 0 ? (rand.NextDouble() - 0.5f) : (0.25f + rand.NextDouble()) * face.X),
+                (float)(face.Y == 0 ? (rand.NextDouble() - 0.25f) : (0.75f + rand.NextDouble()) * face.Y),
+                (float)(face.Z == 0 ? (rand.NextDouble() - 0.5f) : (0.25f + rand.NextDouble()) * face.Z)
+            ) * (1 + (float)rand.NextDouble() / 2);
+        }
+
+        public override EnumParticleModel ParticleModel => EnumParticleModel.Cube;
+
+        public override float Quantity => 0.5f;
+
+        public override int VertexFlags => blockdamage.Block.VertexFlags.GlowLevel;
+
+        public override float LifeLength => base.LifeLength + 0.5f + (float)rand.NextDouble() / 4f;
+
+        public override void ToBytes(BinaryWriter writer)
+        {
+            base.ToBytes(writer);
+
+            writer.Write(blockdamage.Position.X);
+            writer.Write(blockdamage.Position.Y);
+            writer.Write(blockdamage.Position.Z);
+            writer.Write(blockdamage.Facing.Index);
+            writer.Write(blockdamage.Block.Id);
+        }
+
+        public override void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+        {
+            base.FromBytes(reader, resolver);
+
+            blockdamage = new BlockDamage();
+            blockdamage.Position = new BlockPos(reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
+            blockdamage.Facing = BlockFacing.ALLFACES[reader.ReadInt32()];
+            blockdamage.Block = resolver.GetBlock(reader.ReadInt32());
+        }
+    }
+
+    public class BlockBrokenParticleProps : BlockBreakingParticleProps
+    {
+        EvolvingNatFloat sizeEvolve = new EvolvingNatFloat(EnumTransformFunction.LINEAR, -0.5f);
+
+        public override Vec3d Pos => RandomBlockPos(api.World.BlockAccessor, blockdamage.Position, blockdamage.Block, null);
+
+        public override float Size => 0.5f + (float)rand.NextDouble() * 0.8f;
+
+        public override bool SwimOnLiquid => boyant;
+
+        public override EvolvingNatFloat SizeEvolve => sizeEvolve;
+
+        public override Vec3f GetVelocity(Vec3d pos)
+        {
+            Vec3f velocity = new Vec3f(3 * (float)rand.NextDouble() - 1.5f, 4 * (float)rand.NextDouble(), 3 * (float)rand.NextDouble() - 1.5f);
+
+            return velocity * (1 + (float)rand.NextDouble() / 2);
+        }
+
+        public override float Quantity => 16 + rand.Next(32);
+
+        public override int VertexFlags => blockdamage.Block.VertexFlags.GlowLevel;
+
+        public override float LifeLength => base.LifeLength + (float)rand.NextDouble();
+
+
+    }
+
+
     /// <summary>
     /// Abstract class used for BlockVoxelParticles and ItemVoxelParticles
     /// </summary>
@@ -17,7 +127,7 @@ namespace Vintagestory.API.Common
         public Random rand = new Random();
 
         public bool Async => false;
-        public bool Bouncy { get; set; }
+        public float Bounciness { get; set; }
         public bool DieOnRainHeightmap { get; set; }
         public virtual bool RandomVelocityChange { get; set; }
         public virtual bool DieInLiquid => false; public virtual bool SwimOnLiquid => false; public virtual bool DieInAir => false; public abstract float Quantity { get; }

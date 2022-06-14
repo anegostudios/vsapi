@@ -148,7 +148,7 @@ namespace Vintagestory.API.Client
                 RoundRectangle(ctx, 0, 0, hoverWidth, hoverHeight, Background.Radius);
                 ctx.LineWidth = Background.BorderWidth * 1.75;
                 ctx.Stroke();
-                surface.Blur(8.2);
+                surface.BlurFull(8.2);
             }
 
             if (Background?.BorderColor != null)

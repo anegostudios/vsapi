@@ -29,5 +29,10 @@ namespace Vintagestory.API.Server
         /// The game version where this chunk was created. Please note that this is not the version at which this chunk was complete. Chunks can linger around in a half complete state for a long time. 
         /// </summary>
         string GameVersionCreated { get; }
+
+        /// <summary>
+        /// If true, this chunk is not at the edge of the loaded or generating map: all eight neighbouring chunks are fully loaded
+        /// </summary>
+        bool NotAtEdge { get; }
     }
 }

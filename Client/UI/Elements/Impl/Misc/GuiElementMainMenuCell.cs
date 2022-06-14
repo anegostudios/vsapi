@@ -74,14 +74,15 @@ namespace Vintagestory.API.Client
             
             ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt, Bounds.OuterHeightInt);
             Context ctx = new Context(surface);
-            ComposeButton(ctx, false);
+            ComposeButton(ctx, surface, false);
+
             generateTexture(surface, ref releasedButtonTexture);
 
             ctx.Operator = Operator.Clear;
             ctx.Paint();
             ctx.Operator = Operator.Over;
 
-            ComposeButton(ctx, true);
+            ComposeButton(ctx, surface, true);
             generateTexture(surface, ref pressedButtonTexture);
 
             ctx.Dispose();
@@ -95,7 +96,7 @@ namespace Vintagestory.API.Client
         }
 
 
-        void ComposeButton(Context ctx, bool pressed) {
+        void ComposeButton(Context ctx, ImageSurface surface, bool pressed) {
 
             double rightBoxWidth = ShowModifyIcons ? scaled(unscaledRightBoxWidth) : 0;
             pressedYOffset = 0;
@@ -112,9 +113,7 @@ namespace Vintagestory.API.Client
                     pressedYOffset = scaled(unscaledDepth) / 2;
                 }
 
-                
-          
-                EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidthInt, Bounds.OuterHeightInt, pressed, (int)scaled(unscaledDepth));
+                EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidthInt, Bounds.OuterHeightInt, pressed, (int)scaled(unscaledDepth)); 
             }
 
             Font = cellEntry.TitleFont;
@@ -132,22 +131,22 @@ namespace Vintagestory.API.Client
 
             if (ShowModifyIcons)
             {
-                ctx.LineWidth = 1;
+                ctx.LineWidth = scaled(1);
                 
                 double crossSize = scaled(20);
                 double crossWidth = scaled(5);
 
                 ctx.SetSourceRGBA(0, 0, 0, 0.4);
                 ctx.NewPath();
-                ctx.MoveTo(Bounds.InnerWidth - rightBoxWidth, 1);
-                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth, Bounds.OuterHeight - 2);
+                ctx.MoveTo(Bounds.InnerWidth - rightBoxWidth, scaled(1));
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth, Bounds.OuterHeight - scaled(2));
                 ctx.ClosePath();
                 ctx.Stroke();
 
                 ctx.SetSourceRGBA(1, 1, 1, 0.3);
                 ctx.NewPath();
-                ctx.MoveTo(Bounds.InnerWidth - rightBoxWidth + 1, 1);
-                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth + 1, Bounds.OuterHeight - 2);
+                ctx.MoveTo(Bounds.InnerWidth - rightBoxWidth + scaled(1), scaled(1));
+                ctx.LineTo(Bounds.InnerWidth - rightBoxWidth + scaled(1), Bounds.OuterHeight - scaled(2));
                 ctx.ClosePath();
                 ctx.Stroke();
 
@@ -307,7 +306,7 @@ namespace Vintagestory.API.Client
             int mousey = api.Input.MouseY;
 
             Vec2d pos = Bounds.PositionInside(mousex, mousey);
-            api.Gui.PlaySound("menubutton_press");
+            api.Gui.PlaySound("toggleswitch");
 
             if (pos.X > Bounds.InnerWidth - scaled(GuiElementMainMenuCell.unscaledRightBoxWidth))
             {

@@ -75,14 +75,14 @@ namespace Vintagestory.API.Common
         /// <param name="resolver"></param>
         /// <param name="sourceForErrorLogging"></param>
         /// <returns></returns>
-        public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging)
+        public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, AssetLocation assetLoc)
         {
             if (Type == EnumItemClass.Block)
             {
                 Block block = resolver.GetBlock(Code);
                 if (block == null)
                 {
-                    resolver.Logger.Warning("Failed resolving a blocks block drop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
+                    resolver.Logger.Warning("Failed resolving a blocks block drop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
                     return false;
                 }
 
@@ -94,7 +94,7 @@ namespace Vintagestory.API.Common
                 Item item = resolver.GetItem(Code);
                 if (item == null)
                 {
-                    resolver.Logger.Warning("Failed resolving a blocks item drop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging);
+                    resolver.Logger.Warning("Failed resolving a blocks item drop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
                     return false;
                 }
                 ResolvedItemstack = new ItemStack(item);

@@ -16,6 +16,14 @@ namespace Vintagestory.API.Config
         Unstable
     }
 
+    public enum EnumReleaseType
+    {
+        Stable,
+        Candidate,
+        Preview,
+        Development
+    }
+
     /// <summary>
     /// The games current version
     /// </summary>
@@ -24,18 +32,20 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.16.5";
+        public const string OverallVersion = "1.17.0";
 
         /// <summary>
         /// Whether this is a stable or unstable version
         /// </summary>
-        public const EnumGameBranch Branch = EnumGameBranch.Stable;
+        public const EnumGameBranch Branch = EnumGameBranch.Unstable;
 
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "";
-          
+        public const string ShortGameVersion = OverallVersion + "-pre.1";
+
+        public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
+
         /// <summary>
         /// Version number in the format: major.minor.revision [release title]
         /// </summary>
@@ -57,7 +67,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.16.5";
+        public const string NetworkVersion = "1.17.4";
 
         /// <summary>
         /// Version of the savegame database
@@ -65,9 +75,9 @@ namespace Vintagestory.API.Config
         public static int DatabaseVersion = 2;
 
         /// <summary>
-        /// Version of the chunkdata compression for individual WorldChunks (0 is Deflate; 1 is ZSTD)
+        /// Version of the chunkdata compression for individual WorldChunks (0 is Deflate; 1 is ZSTD and palettised)  Also affects compression of network packets sent
         /// </summary>
-        public const int ChunkdataVersion = 0;
+        public const int ChunkdataVersion = 2;
 
         /// <summary>
         /// "Version" of the block and item mapping. This number gets increased by 1 when remappings are needed
@@ -104,6 +114,23 @@ namespace Vintagestory.API.Config
             }
 
             return versions;
+        }
+
+        public static EnumReleaseType GetReleaseType(string version)
+        {
+            switch(splitVersionString(version)[3])
+            {
+                case 0:
+                    return EnumReleaseType.Development;
+                case 1:
+                    return EnumReleaseType.Preview;
+                case 2:
+                    return EnumReleaseType.Candidate;
+                case 3:
+                    return EnumReleaseType.Stable;
+            }
+
+            throw new ArgumentException("Unknown release type");
         }
 
         /// <summary>

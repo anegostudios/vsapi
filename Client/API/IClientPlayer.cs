@@ -9,15 +9,13 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface IClientPlayer : IPlayer
     {
-        /// <summary>
-        /// The cameras current yaw
-        /// </summary>
-        float CameraYaw { get; }
 
         /// <summary>
         /// The cameras current pitch
         /// </summary>
         float CameraPitch { get; }
+
+
 
         /// <summary>
         /// The players current camera mode

@@ -16,7 +16,7 @@ namespace Vintagestory.API.Common
     public class AnimationManager : IAnimationManager
     {
         protected ICoreAPI api;
-        ICoreClientAPI capi;
+        protected ICoreClientAPI capi;
 
         /// <summary>
         /// Are the animations dirty in this AnimationManager?
@@ -59,19 +59,7 @@ namespace Vintagestory.API.Common
         {
             this.api = api;
             this.entity = entity;
-
-            if (api.Side == EnumAppSide.Server)
-            {
-                //listenerId = (api as ICoreServerAPI).Event.RegisterGameTickListener(OnServerTick, 25);
-                //api.World.Logger.Notification("AnimationManager: Register tick listener {0} for entity id {1}", listenerId, entity.EntityId);
-            }
-            else
-            {
-                // Called by RenderEntities.cs
-                //capi.Event.RegisterRenderer(renderer = new DummyRenderer() { action = OnClientFrame, RenderRange = 999 }, EnumRenderStage.Before, "anim");
-
-                capi = (api as ICoreClientAPI);
-            }
+            capi = api as ICoreClientAPI;
         }
 
 
@@ -140,7 +128,7 @@ namespace Vintagestory.API.Common
         public virtual void StopAnimation(string code)
         {
             if (code == null) return;
-
+            
             if (entity.World.Side == EnumAppSide.Server)
             {
                 AnimationsDirty = true;
@@ -228,14 +216,21 @@ namespace Vintagestory.API.Common
                 string[] keys = ActiveAnimationsByAnimCode.Keys.ToArray();
                 for (int i = 0; i < keys.Length; i++)
                 {
-                    if (!toKeep.Contains(keys[i]))
+                    string key = keys[i];
+                    var animMeta = ActiveAnimationsByAnimCode[key];
+
+                    if (!toKeep.Contains(key) && !animMeta.ClientSide)
                     {
                         AnimationMetaData animmetadata;
-                        if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(keys[i], out animmetadata))
+                        if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(key, out animmetadata))
                         {
                             if (animmetadata.TriggeredBy != null && animmetadata.WasStartedFromTrigger) continue;
+                            var anim = entity.AnimManager.Animator;
+                            var runningAnim = anim?.GetAnimationState(animmetadata.Code);
+                            if (runningAnim != null && runningAnim.Active && runningAnim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) continue; // Let the client ease out this animation
                         }
-                        ActiveAnimationsByAnimCode.Remove(keys[i]);
+
+                        ActiveAnimationsByAnimCode.Remove(key);
                     }
                 }
             }
@@ -312,9 +307,12 @@ namespace Vintagestory.API.Common
         /// <param name="dt"></param>
         public void OnClientFrame(float dt)
         {
-            if (capi.IsGamePaused || (!entity.IsRendered && entity.Alive)) return; // Too cpu intensive to run all loaded entities
-            
-            Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
+            if (capi.IsGamePaused) return; // Too cpu intensive to run all loaded entities
+
+            if (entity.IsRendered || !entity.Alive)
+            {
+                Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
+            }
 
             if (HeadController != null)
             {

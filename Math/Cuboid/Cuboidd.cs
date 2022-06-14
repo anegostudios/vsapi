@@ -114,6 +114,21 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Sets the cuboid to the selectionBox, translated by (dX, dY, dZ)
+        /// </summary>
+        public Cuboidd SetAndTranslate(Cuboidf selectionBox, double dX, double dY, double dZ)
+        {
+            this.X1 = selectionBox.X1 + dX;
+            this.Y1 = selectionBox.Y1 + dY;
+            this.Z1 = selectionBox.Z1 + dZ;
+            this.X2 = selectionBox.X2 + dX;
+            this.Y2 = selectionBox.Y2 + dY;
+            this.Z2 = selectionBox.Z2 + dZ;
+            return this;
+        }
+
+
+        /// <summary>
         /// Adds the given offset to the cuboid
         /// </summary>
         public Cuboidd Translate(IVec3 vec)
@@ -518,6 +533,7 @@ namespace Vintagestory.API.MathTools
         public bool Intersects(Cuboidf other, Vec3d offset)
         {
             // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            // We test the X pair first, then the Z pair, then the Y pair, as it's quite easy for any given pair to test false
             if (X2 > other.X1 + offset.X &&
                 X1 < other.X2 + offset.X &&
                 Z2 > other.Z1 + offset.Z &&
@@ -536,6 +552,7 @@ namespace Vintagestory.API.MathTools
         public bool IntersectsOrTouches(Cuboidd other)
         {
             // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            // We test the X pair first, then the Z pair, then the Y pair, as it's quite easy for any given pair to test false
             if (X2 >= other.X1 &&
                 X1 <= other.X2 &&
                 Y2 >= other.Y1 &&
@@ -554,6 +571,7 @@ namespace Vintagestory.API.MathTools
         public bool IntersectsOrTouches(Cuboidf other, Vec3d offset)
         {
             // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            // We test the X pair first, then the Z pair, then the Y pair, as it's quite easy for any given pair to test false
             if (X2 >= other.X1 + offset.X &&
                 X1 <= other.X2 + offset.X &&
                 Z2 >= other.Z1 + offset.Z &&

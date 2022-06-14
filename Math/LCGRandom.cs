@@ -44,7 +44,10 @@ namespace Vintagestory.API.MathTools
         public long worldSeed;
         public long mapGenSeed;
         public long currentSeed;
-        
+
+        private const float maxIntF = (float)int.MaxValue;
+        private const double maxIntD = (double)uint.MaxValue;
+
         /// <summary>
         /// Initialize random with given seed
         /// </summary>
@@ -70,16 +73,16 @@ namespace Vintagestory.API.MathTools
         {
             this.worldSeed = worldSeed;
 
-            currentSeed = mapGenSeed;
-            currentSeed = currentSeed * 6364136223846793005L + 1442695040888963407L;
+            currentSeed = mapGenSeed * 6364136223846793005L + 1442695040888963407L;
 
-            mapGenSeed = worldSeed;
-            mapGenSeed *= worldSeed * 6364136223846793005L + 1442695040888963407L;
-            mapGenSeed += 1;
-            mapGenSeed *= worldSeed * 6364136223846793005L + 1442695040888963407L;
-            mapGenSeed += 2;
-            mapGenSeed *= worldSeed * 6364136223846793005L + 1442695040888963407L;
-            mapGenSeed += 3;
+            long seed = worldSeed;
+            seed *= worldSeed * 6364136223846793005L + 1442695040888963407L;
+            seed += 1;
+            seed *= worldSeed * 6364136223846793005L + 1442695040888963407L;
+            seed += 2;
+            seed *= worldSeed * 6364136223846793005L + 1442695040888963407L;
+            seed += 3;
+            mapGenSeed = seed;
         }
 
         /// <summary>
@@ -89,15 +92,16 @@ namespace Vintagestory.API.MathTools
         /// <param name="zPos"></param>
         public void InitPositionSeed(int xPos, int zPos)
         {
-            currentSeed = mapGenSeed;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += xPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += zPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += xPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += zPos;
+            long seed = mapGenSeed;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += xPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += zPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += xPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += zPos;
+            currentSeed = seed;
         }
 
 
@@ -106,22 +110,24 @@ namespace Vintagestory.API.MathTools
         /// Initializes a position dependent seed, if required
         /// </summary>
         /// <param name="xPos"></param>
+        /// <param name="yPos"></param>
         /// <param name="zPos"></param>
         public void InitPositionSeed(int xPos, int yPos, int zPos)
         {
-            currentSeed = mapGenSeed;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += xPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += yPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += zPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += xPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += yPos;
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += zPos;
+            long seed = mapGenSeed;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += xPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += yPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += zPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += xPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += yPos;
+            seed *= seed * 6364136223846793005L + 1442695040888963407L;
+            seed += zPos;
+            currentSeed = seed;
         }
 
         /// <summary>
@@ -131,41 +137,57 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public int NextInt(int max)
         {
-            int r = (int)((currentSeed >> 24) % max);
+            long seed = currentSeed;
+            int r = (int)((seed >> 24) % max);
 
             if (r < 0)
             {
                 r += max;
             }
 
-            currentSeed *= currentSeed * 6364136223846793005L + 1442695040888963407L;
-            currentSeed += mapGenSeed;
+            currentSeed = seed * (seed * 6364136223846793005L + 1442695040888963407L) + mapGenSeed;
 
             return r;
         }
 
 
+        /// <summary>
+        /// Returns a random number from 0 - int.MaxValue (inclusive)
+        /// </summary>
+        /// <returns></returns>
         public int NextInt()
         {
-            return NextInt(int.MaxValue);
+            long seed = currentSeed;
+            int r = (int)(seed >> 24) & int.MaxValue;   // The binary AND forces this to be positive, similar to adding MaxValue if it tests negative
+            currentSeed = seed * (seed * 6364136223846793005L + 1442695040888963407L) + mapGenSeed;
+
+            return r;
         }
 
         /// <summary>
-        /// Returns a random number from 0 - 1
+        /// Returns a random number from 0.0F - 1.0F (inclusive)
         /// </summary>
         /// <returns></returns>
         public float NextFloat()
         {
-            return (float)NextInt(int.MaxValue) / int.MaxValue;
+            long seed = currentSeed;
+            int r = (int)(seed >> 24) & int.MaxValue;   // The binary AND forces this to be positive, similar to adding MaxValue if it tests negative
+            currentSeed = seed * (seed * 6364136223846793005L + 1442695040888963407L) + mapGenSeed;
+
+            return r / maxIntF;
         }
 
         /// <summary>
-        /// Returns a random number from 0 - 1
+        /// Returns a random number from 0.0 - 1.0 (inclusive)
         /// </summary>
         /// <returns></returns>
         public double NextDouble()
         {
-            return (double)NextInt(int.MaxValue) / int.MaxValue;
+            long seed = currentSeed;
+            uint r = (uint)(seed >> 24);   // No need to generate unwanted negative numbers, let's use all the available bits in the case of a double
+            currentSeed = seed * (seed * 6364136223846793005L + 1442695040888963407L) + mapGenSeed;
+
+            return r / maxIntD;
         }
     }
 }

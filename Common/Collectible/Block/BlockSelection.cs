@@ -40,6 +40,11 @@ namespace Vintagestory.API.Common
         public bool DidOffset;
 
         /// <summary>
+        /// The block actually being looked at!
+        /// </summary>
+        public Block Block;
+
+        /// <summary>
         /// Creates a deep copy 
         /// </summary>
         /// <returns></returns>

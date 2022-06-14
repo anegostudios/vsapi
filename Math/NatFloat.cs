@@ -80,8 +80,8 @@ namespace Vintagestory.API.MathTools
         public float var = 0;
         public EnumDistribution dist = EnumDistribution.UNIFORM;
 
-
-        static ThreadLocal<Random> threadsafeRand = new ThreadLocal<Random>(() => new Random());
+        [ThreadStatic]
+        static Random threadsafeRand;
 
         
 
@@ -167,12 +167,12 @@ namespace Vintagestory.API.MathTools
 
         public float nextFloat()
         {
-            return nextFloat(1f, threadsafeRand.Value);
+            return nextFloat(1f, threadsafeRand ?? (threadsafeRand = new Random()));
         }
 
         public float nextFloat(float multiplier)
         {
-            return nextFloat(multiplier, threadsafeRand.Value);
+            return nextFloat(multiplier, threadsafeRand ?? (threadsafeRand = new Random()));
         }
 
         public float nextFloat(float multiplier, Random rand)

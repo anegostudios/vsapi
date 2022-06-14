@@ -12,6 +12,12 @@ namespace Vintagestory.API.Common
     public class ShapeElement
     {
         /// <summary>
+        /// A static reference to the logger (null on a server) - we don't want to hold a reference to the platform or api in every ShapeElement
+        /// </summary>
+        public static ILogger Logger;
+        public static object locationForLogging;
+
+        /// <summary>
         /// The name of the ShapeElement
         /// </summary>
         [JsonProperty]
@@ -33,10 +39,15 @@ namespace Vintagestory.API.Common
         public bool GradientShade = false;
 
         /// <summary>
-        /// The faces of the shape element by name.
+        /// The faces of the shape element by name (will normally be null except during object deserialization: use FacesResolved instead!)
         /// </summary>
         [JsonProperty]
+        [Obsolete("Use FacesResolved instead")]
         public Dictionary<string, ShapeElementFace> Faces;
+        /// <summary>
+        /// An array holding the faces of this shape element in BlockFacing order: North, East, South, West, Up, Down.  May be null if not present or not enabled.
+        /// </summary>
+        public ShapeElementFace[] FacesResolved = new ShapeElementFace[6];
 
         /// <summary>
         /// The origin point for rotation.
@@ -89,17 +100,6 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public short ZOffset = 0;
         /// <summary>
-        /// This will set the FoliageWindWave flag in the sourceMesh when the shape is originally tesselated, but note that all/most Block.OnJsonTesselation methods will reset this flag in the sourceMesh using VertexFlags.clearbits (and always reset if the block is rendered underground or indoors with windwave off)
-        /// </summary>
-        [JsonProperty]
-        public int WindMode;
-        [JsonProperty]
-        public int WindData;
-        [JsonProperty]
-        public bool WaterWave;
-        [JsonProperty]
-        public bool Reflective;
-        /// <summary>
         /// Set this to true to disable randomDrawOffset and randomRotations on this specific element (e.g. used for the ice element of Coopers Reeds in Ice)
         /// </summary>
         [JsonProperty]
@@ -132,7 +132,13 @@ namespace Vintagestory.API.Common
         /// The id of the joint attached to the parent element.
         /// </summary>
         public int JointId;
+       
+        /// <summary>
+        /// For entity animations
+        /// </summary>
+        public int Color = ColorUtil.WhiteArgb;
 
+        public float DamageEffect;
 
         public float[] inverseModelTransform;
 
@@ -208,11 +214,41 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            for (int i = 0; AttachmentPoints != null && i < AttachmentPoints.Length; i++)
+            if (AttachmentPoints != null)
             {
-                AttachmentPoints[i].ParentElement = this;
+                for (int i = 0; i < AttachmentPoints.Length; i++)
+                {
+                    AttachmentPoints[i].ParentElement = this;
+                }
             }
         }
+
+        internal void TrimTextureNamesAndResolveFaces()
+        {
+            if (Faces != null)
+            {
+                foreach (var val in Faces)
+                {
+                    ShapeElementFace f = val.Value;
+                    if (!f.Enabled) continue;
+                    BlockFacing facing = BlockFacing.FromFirstLetter(val.Key);
+                    if (facing == null)
+                    {
+                        Logger?.Warning("Shape element in " + locationForLogging + ": Unknown facing '" + facing.Code + "'. Ignoring face.");
+                        continue;
+                    }
+                    FacesResolved[facing.Index] = f;
+                    f.Texture = f.Texture.Substring(1);
+                }
+            }
+            Faces = null;
+
+            if (Children != null)
+            {
+                foreach (ShapeElement child in Children) child.TrimTextureNamesAndResolveFaces();
+            }
+        }
+
 
         static ElementPose noTransform = new ElementPose();
 
@@ -267,7 +303,7 @@ namespace Vintagestory.API.Common
             ShapeElement elem = new ShapeElement()
             {
                 AttachmentPoints = (AttachmentPoint[])AttachmentPoints?.Clone(),
-                Faces = new Dictionary<string, ShapeElementFace>(Faces),
+                FacesResolved = (ShapeElementFace[])FacesResolved.Clone(),
                 From = (double[])From?.Clone(),
                 To = (double[])To?.Clone(),
                 inverseModelTransform = (float[])inverseModelTransform?.Clone(),
@@ -276,15 +312,11 @@ namespace Vintagestory.API.Common
                 RotationX = RotationX,
                 RotationY = RotationY,
                 RotationZ = RotationZ,
-                Reflective = Reflective,
                 RotationOrigin = (double[])RotationOrigin?.Clone(),
                 SeasonColorMap = SeasonColorMap,
                 ClimateColorMap = ClimateColorMap,
                 StepParentName = StepParentName,
                 Shade = Shade,
-                WindMode = WindMode,
-                WindData = WindData,
-                WaterWave = WaterWave,
                 DisableRandomDrawOffset = DisableRandomDrawOffset,
                 ZOffset = ZOffset,
                 GradientShade = GradientShade,
@@ -332,6 +364,12 @@ namespace Vintagestory.API.Common
                     Children[i].WalkRecursive(onElem);
                 }
             }
+        }
+
+        internal bool HasFaces()
+        {
+            for (int i = 0; i < 6; i++) if (FacesResolved[i] != null) return true;
+            return false;
         }
     }
 }

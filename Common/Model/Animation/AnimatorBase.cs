@@ -106,8 +106,7 @@ namespace Vintagestory.API.Common
                 accum = 0;
             }
             
-            //string debug = "";
-
+            
             for (int i = 0; i < anims.Length; i++)
             {
                 RunningAnimation anim = anims[i];
@@ -144,7 +143,8 @@ namespace Vintagestory.API.Common
                         anim.ShouldPlayTillEnd = true;
                     }
                 }
-                
+
+
                 if (!anim.Running)
                 {
                     continue;
@@ -153,13 +153,14 @@ namespace Vintagestory.API.Common
                 bool shouldStop =
                     (anim.Iterations > 0 && anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop) ||
                     (anim.Iterations > 0 && !anim.Active && (anim.Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd || anim.Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.EaseOut) && anim.EasingFactor < 0.002f) ||
+                    (anim.Iterations > 0 && (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) && anim.EasingFactor < 0.002f) ||
                     (anim.Iterations < 0 && !anim.Active && anim.Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.Rewind && anim.EasingFactor < 0.002f)
                 ;
 
                 if (shouldStop)
                 {
                     anim.Stop();
-                    if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop)
+                    if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Stop || anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut)
                     {
                         activeAnimationsByAnimCode.Remove(anim.Animation.Code);
                         onAnimationStoppedListener?.Invoke(anim.Animation.Code);
@@ -167,11 +168,9 @@ namespace Vintagestory.API.Common
                     continue;
                 }
 
-               // debug += anim.Animation.Code + "("+anim.BlendedWeight.ToString("#.##")+"),";
-
                 CurAnims[curAnimCount] = anim;
 
-                if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && anim.Iterations != 0 && !anim.Active)
+                if ((anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && anim.Iterations != 0 && !anim.Active) || (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut && anim.Iterations != 0))
                 {
                     anim.EaseOut(dt);
                 }
@@ -180,6 +179,7 @@ namespace Vintagestory.API.Common
 
                 curAnimCount++;
             }
+
 
             calculateMatrices(dt);
         }

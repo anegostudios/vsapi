@@ -190,6 +190,13 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public Matrixf FollowPlayerXZ()
+        {
+            Values[12] = 0;
+            Values[14] = 0;
+            return this;
+        }
+
         public Matrixf Invert()
         {
             Mat4f.Invert(Values, Values);

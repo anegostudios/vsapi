@@ -172,6 +172,7 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
             }
 
+            surface.BlurPartial(2, 5);
 
             // Pretty elaborate way of vertically centering the text. Le sigh.
             FontExtents fontex = normalText.Font.GetFontExtents();

@@ -15,6 +15,47 @@ namespace Vintagestory.API.Common
 {
     public delegate bool CanSpawnNearbyDelegate(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc);
 
+    public class PlayerAnimationManager : AnimationManager
+    {
+        public override bool StartAnimation(AnimationMetaData animdata)
+        {
+            if (api.Side == EnumAppSide.Client && capi.World.Player.ImmersiveFpMode && !animdata.Code.EndsWith("-ifp"))
+            {
+                if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(animdata.Code + "-ifp", out var animdatafp))
+                {
+                    if (ActiveAnimationsByAnimCode.TryGetValue(animdatafp.Animation, out var activeAnimdata) && activeAnimdata == animdatafp) return false;
+                    return base.StartAnimation(animdatafp);
+                }
+            }
+
+            return base.StartAnimation(animdata);
+        }
+
+        public override void StopAnimation(string code)
+        {
+            base.StopAnimation(code);
+            base.StopAnimation(code + "-ifp");
+        }
+
+        public override bool IsAnimationActive(params string[] anims)
+        {
+            if (api.Side == EnumAppSide.Client && capi.World.Player.ImmersiveFpMode)
+            {
+                foreach (var val in anims)
+                {
+                    if (ActiveAnimationsByAnimCode.ContainsKey(val + "-ifp")) return true;
+                }
+            }
+
+            return base.IsAnimationActive(anims);
+        }
+
+        public override void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
+        {
+            base.OnReceivedServerAnimations(activeAnimations, activeAnimationsCount, activeAnimationSpeeds);
+        }
+    }
+
     public class EntityPlayer : EntityHumanoid
     {
         /// <summary>
@@ -67,6 +108,25 @@ namespace Vintagestory.API.Common
         public CanSpawnNearbyDelegate OnCanSpawnNearby;
 
         public EntityTalkUtil talkUtil;
+
+
+        public Vec2f BodyYawLimits;
+        public override float BodyYaw {
+            get
+            {
+                return base.BodyYaw;
+            }
+            set {
+                if (BodyYawLimits != null)
+                {
+                    base.BodyYaw = GameMath.Clamp(value, BodyYawLimits.X, BodyYawLimits.Y);
+                } else
+                {
+                    base.BodyYaw = value;
+                }
+                
+            }
+        }
 
         public double LastReviveTotalHours
         {
@@ -230,6 +290,8 @@ namespace Vintagestory.API.Common
 
         public EntityPlayer() : base()
         {
+            AnimManager = new PlayerAnimationManager();
+
             Stats
                 .Register("healingeffectivness")
                 //.Register("maxhealthMul")
@@ -265,11 +327,13 @@ namespace Vintagestory.API.Common
         {
             controls.StopAllMovement();
 
+            talkUtil = new EntityTalkUtil(api, this);
+
             if (api.Side == EnumAppSide.Client)
             {
-                talkUtil = new EntityTalkUtil(api as ICoreClientAPI, this);
                 talkUtil.soundName = new AssetLocation("sounds/voice/altoflute");
                 talkUtil.idleTalkChance = 0f;
+                talkUtil.AddSoundLengthChordDelay = true;
             }
 
             base.Initialize(properties, api, chunkindex3d);
@@ -278,6 +342,11 @@ namespace Vintagestory.API.Common
             {
                 double hrs = Api.World.Calendar.GetDayLightStrength(ServerPos.X, ServerPos.Z) < 0.5 ? Api.World.Calendar.TotalHours : -9999;
                 WatchedAttributes.SetDouble("lastReviveTotalHours", hrs);
+            }
+
+            if (Api.Side == EnumAppSide.Client)
+            {
+                AnimManager.HeadController = new PlayerHeadController(AnimManager, this, Properties.Client.LoadedShapeForEntity);
             }
         }
 
@@ -342,6 +411,8 @@ namespace Vintagestory.API.Common
 
                 if (player.ImmersiveFpMode)
                 {
+                    secondsDead = Alive ? 0 : secondsDead + dt;
+
                     updateLocalEyePosImmersiveFpMode();
 
                     newEyeheight = LocalEyePos.Y;
@@ -490,6 +561,9 @@ namespace Vintagestory.API.Common
         bool holdPosition = false;
         
         float[] prevAnimModelMatrix;
+        public float sidewaysSwivelAngle;
+
+        float secondsDead;
 
         void updateLocalEyePosImmersiveFpMode()
         {
@@ -506,6 +580,7 @@ namespace Vintagestory.API.Common
             float bodyPitch = WalkPitch;
 
             float lookOffset = (SidedPos.Pitch - GameMath.PI) / 9f;
+            if (!Alive) lookOffset /= secondsDead * 10;
 
             bool wasHoldPos = holdPosition;
             holdPosition = false;
@@ -513,7 +588,7 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < AnimManager.Animator.RunningAnimations.Length; i++)
             {
                 RunningAnimation anim = AnimManager.Animator.RunningAnimations[i];
-                if (anim.Running && anim.EasingFactor > anim.meta.HoldEyePosAfterEasein)
+                if (anim.Running && anim.EasingFactor >= anim.meta.HoldEyePosAfterEasein)
                 {
                     if (!wasHoldPos)
                     {
@@ -524,16 +599,19 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            
 
             tmpModelMat
                 .Set(ModelMat)
                 .RotateX(SidedPos.Roll + rotX * GameMath.DEG2RAD)
                 .RotateY(bodyYaw + (180 + rotY) * GameMath.DEG2RAD)
                 .RotateZ(bodyPitch + rotZ * GameMath.DEG2RAD)
-                .Mul(holdPosition ? prevAnimModelMatrix : apap.AnimModelMatrix)
                 .Scale(Properties.Client.Size, Properties.Client.Size, Properties.Client.Size)
                 .Translate(-0.5f, 0, -0.5f)
+                .RotateX(sidewaysSwivelAngle)
                 .Translate(ap.PosX / 16f - lookOffset, ap.PosY / 16f - lookOffset / 1.3f, ap.PosZ / 16f)
+                .Mul(holdPosition ? prevAnimModelMatrix : apap.AnimModelMatrix)
+                .Translate(0.07f, Alive ? 0.0f : 0.2f * Math.Min(1, secondsDead), 0f)
             ;
 
             float[] pos = new float[4] { 0, 0, 0, 1 };
@@ -548,9 +626,24 @@ namespace Vintagestory.API.Common
         protected string lastRunningRightHeldIdleAnimation;
         protected string lastRunningLeftHeldIdleAnimation;
         protected string lastRunningHeldHitAnimation;
+        float strongWindAccum = 0;
 
-        protected override void HandleHandAnimations()
+        protected override void HandleHandAnimations(float dt)
         {
+            if (Api?.Side == EnumAppSide.Client && AnimManager != null)
+            {
+                strongWindAccum = (GlobalConstants.CurrentWindSpeedClient.X > 0.85) ? strongWindAccum+dt : 0;
+
+                if (RightHandItemSlot?.Empty == true && strongWindAccum > 2)
+                {
+                    AnimManager.StartAnimation("protecteyes");
+                }
+                else
+                {
+                    AnimManager.StopAnimation("protecteyes");
+                }
+            }
+
             // Prevent this method from getting called for other players on the client side because it has incomplete information (servercontrols&interact are not synced to client)
             // It's also not necessary to call this method because the server will sync the animations to the client
             if (Api is ICoreClientAPI capi && capi.World.Player.PlayerUID != PlayerUID) return;
@@ -560,10 +653,10 @@ namespace Vintagestory.API.Common
             EnumHandInteract interact = servercontrols.HandUse;
 
             bool nowUseStack = (interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract) || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
-            bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldUseAnimation);
+            bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.IsAnimationActive(lastRunningHeldUseAnimation);
 
             bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || (servercontrols.LeftMouseDown);
-            bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningHeldHitAnimation);
+            bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.IsAnimationActive(lastRunningHeldHitAnimation);
 
 
             string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
@@ -572,15 +665,21 @@ namespace Vintagestory.API.Common
             string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
 
             bool nowRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack;
-            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningRightHeldIdleAnimation);
+            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.IsAnimationActive(lastRunningRightHeldIdleAnimation);
 
             bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
-            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.ActiveAnimationsByAnimCode.ContainsKey(lastRunningLeftHeldIdleAnimation);
+            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.IsAnimationActive(lastRunningLeftHeldIdleAnimation);
 
             if (rightstack == null)
             {
                 nowHeldRightHitAnim = "breakhand";
                 nowHeldRightUseAnim = "interactstatic";
+
+                if (EntitySelection != null && EntitySelection.Entity.Pos.DistanceTo(Pos) <= 1.15)
+                {
+                    if (EntitySelection.Entity.SelectionBox.Y2 > 0.8) nowHeldRightUseAnim = "petlarge";
+                    if (EntitySelection.Entity.SelectionBox.Y2 <= 0.8 && controls.Sneak) nowHeldRightUseAnim = "petsmall";
+                }
             }
 
             if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
@@ -646,6 +745,74 @@ namespace Vintagestory.API.Common
             return !collideStanding || collideSneaking;
         }
 
+        protected override bool onAnimControls(AnimationMetaData anim, bool wasActive, bool nowActive)
+        {
+            if (anim.TriggeredBy?.MatchExact == true && anim.Animation == "sitflooridle")
+            {
+                bool canDoEdgeSit = canPlayEdgeSitAnim();
+                bool edgeSitActive = this.AnimManager.IsAnimationActive("sitidle");
+                wasActive |= edgeSitActive;
+
+                if (nowActive)
+                {
+                    bool floorSitActive = this.AnimManager.IsAnimationActive(anim.Code);
+                    
+                    if (canDoEdgeSit)
+                    {
+                        if (floorSitActive)
+                        {
+                            AnimManager.StopAnimation(anim.Animation);
+                        }
+                        if (!edgeSitActive)
+                        {
+                            AnimManager.StartAnimation("sitflooredge");
+
+                            BodyYaw = (float)Math.Round(BodyYaw * GameMath.RAD2DEG / 90) * 90f * GameMath.DEG2RAD;
+                            BodyYawLimits = new Vec2f(BodyYaw - 0.2f, BodyYaw + 0.2f);
+                        }
+                        return true;
+                    }
+                    if (edgeSitActive && !canDoEdgeSit && !floorSitActive)
+                    {
+                        AnimManager.StopAnimation("sitidle");
+                        BodyYawLimits = null;
+                    }
+                }
+                else
+                {
+                    if (wasActive)
+                    {
+                        AnimManager.StopAnimation("sitidle");
+                        BodyYawLimits = null;
+                    }
+                }
+
+                return canDoEdgeSit;
+            }
+
+            return false;
+        }
+
+        protected bool canPlayEdgeSitAnim()
+        {
+            var frontPos = Pos.XYZ;
+
+            float byaw = BodyYawLimits == null ? Pos.Yaw : (BodyYawLimits.X + BodyYawLimits.Y) / 2f;
+            float cosYaw = GameMath.Cos(byaw + GameMath.PI / 2);
+            float sinYaw = GameMath.Sin(byaw + GameMath.PI / 2);
+            var backPos = new Vec3d(Pos.X + sinYaw * -0.3f, Pos.Y - 1, Pos.Z + cosYaw * -0.3f);
+            
+            var frontBelowPos = frontPos.AddCopy(0, -1, 0);
+
+            Block frontBlock = Api.World.BlockAccessor.GetBlock(frontPos.AsBlockPos);
+            Block backBlock = Api.World.BlockAccessor.GetBlock(backPos.AsBlockPos);
+            Block frontBelowBlock = Api.World.BlockAccessor.GetBlock(frontBelowPos.AsBlockPos);
+
+            return /*CollidedVertically && - always false for other players o.o */frontBlock.Replaceable > 6000 && frontBelowBlock.Replaceable > 6000 && backBlock.Replaceable < 6000;
+        }
+
+
+
         public virtual bool CanSpawnNearby(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc)
         {
             if (OnCanSpawnNearby != null)
@@ -702,7 +869,7 @@ namespace Vintagestory.API.Common
             IPlayer player = World.PlayerByUid(PlayerUID);
             if (player != null) return player.InventoryManager.TryGiveItemstack(itemstack, true);
             return false;
-        }
+        }   
 
 
         public override void Die(EnumDespawnReason reason = EnumDespawnReason.Death, DamageSource damageSourceForDeath = null)
@@ -756,31 +923,14 @@ namespace Vintagestory.API.Common
 
             if (type == "hurt")
             {
-                if (World.Side == EnumAppSide.Server)
-                {
-                    (World.Api as ICoreServerAPI).Network.BroadcastEntityPacket(this.EntityId, 1001);
-                } else
-                {
-                    if (!capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
-
-                    talkUtil.Talk(EnumTalkType.Hurt2);
-                }
-                
+                if (World.Side == EnumAppSide.Client && !capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
+                talkUtil.Talk(EnumTalkType.Hurt2);
                 return;
             }
             if (type == "death")
             {
-                if (World.Side == EnumAppSide.Server)
-                {
-                    (World.Api as ICoreServerAPI).Network.BroadcastEntityPacket(this.EntityId, 1002);
-                } else
-                {
-                    if (!capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
-
-                    talkUtil.Talk(EnumTalkType.Death);
-                }
-
-                
+                if (World.Side == EnumAppSide.Client && !capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
+                talkUtil.Talk(EnumTalkType.Death);
                 return;
             }
 
@@ -805,7 +955,6 @@ namespace Vintagestory.API.Common
 
                 if (capi.Settings.Bool["newSeraphVoices"])
                 {
-
                     switch (animation)
                     {
                         case "wave":
@@ -821,7 +970,7 @@ namespace Vintagestory.API.Common
                             break;
 
                         case "shrug":
-                            talkUtil?.Talk(EnumTalkType.Goodbye);
+                            talkUtil?.Talk(EnumTalkType.Shrug);
                             break;
 
                         case "facepalm":
@@ -835,9 +984,23 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            if (packetid == 1002)
+            {
+                TryStopHandAction(true, EnumItemUseCancelReason.Death);
+            }
+
             if (capi.Settings.Bool["newSeraphVoices"])
             {
-                if (packetid == 1001)
+                if (packetid == EntityTalkUtil.TalkPacketId)
+                {
+                    var tt = SerializerUtil.Deserialize<EnumTalkType>(data);
+
+                    if (tt != EnumTalkType.Death && !Alive) return;
+
+                    talkUtil.Talk(tt);
+                }
+
+                /*if (packetid == 1001)
                 {
                     if (!Alive) return;
                     talkUtil.Talk(EnumTalkType.Hurt2);
@@ -845,7 +1008,7 @@ namespace Vintagestory.API.Common
                 if (packetid == 1002)
                 {
                     talkUtil.Talk(EnumTalkType.Death);
-                }
+                }*/
             } else
             {
                 if (packetid == 1002) base.PlayEntitySound("death", null, true, 24);
@@ -917,15 +1080,12 @@ namespace Vintagestory.API.Common
             IPlayer player = World.PlayerByUid(PlayerUID);
             float secondsPassed = (World.ElapsedMilliseconds - controls.UsingBeginMS) / 1000f;
 
+            controls.HandUse = RightHandItemSlot.Itemstack.Collectible.OnHeldUseCancel(secondsPassed, RightHandItemSlot, this, player.CurrentBlockSelection, player.CurrentEntitySelection, cancelReason);
+
             if (forceStop)
             {
                 controls.HandUse = EnumHandInteract.None;
             }
-            else
-            {
-                controls.HandUse = RightHandItemSlot.Itemstack.Collectible.OnHeldUseCancel(secondsPassed, RightHandItemSlot, this, player.CurrentBlockSelection, player.CurrentEntitySelection, cancelReason);
-            }
-
 
             if (controls.HandUse == EnumHandInteract.None)
             {

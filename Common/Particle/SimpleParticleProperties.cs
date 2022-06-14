@@ -39,7 +39,7 @@ namespace Vintagestory.API.Common
         public int VertexFlags { get; set; }
 
         public bool Async => false;
-        public bool Bouncy { get; set; }
+        public float Bounciness { get; set; }
         public bool ShouldDieInAir { get; set; }
         public bool ShouldDieInLiquid { get; set; }
         public bool ShouldSwimOnLiquid { get; set; }
@@ -206,6 +206,8 @@ namespace Vintagestory.API.Common
 
             writer.Write(SeasonColorMap == null);
             if (SeasonColorMap != null) writer.Write(SeasonColorMap);
+
+            writer.Write(Bounciness);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -268,7 +270,9 @@ namespace Vintagestory.API.Common
             if (!reader.ReadBoolean())
             {
                 SeasonColorMap = reader.ReadString();
-            }            
+            }
+
+            Bounciness = reader.ReadSingle();
         }
 
         public void BeginParticle() {

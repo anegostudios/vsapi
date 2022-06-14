@@ -72,24 +72,15 @@ namespace Vintagestory.API.Client
             int zPrev = (int)pos.Z;
 
             tmpPos.Set(xPrev, yPrev, zPrev);
-            Block block = BlockAccess.GetBlock(tmpPos);
+            Block block = BlockAccess.GetLiquidBlock(tmpPos);
             Block prevBlock = block;
-
-            if (block == null)
-            {
-                return;
-            }
 
             if (boyant)
             {
                 if (block.IsLiquid())
                 {
                     tmpPos.Set(xPrev, (int)(pos.Y + 1), zPrev);
-                    block = BlockAccess.GetBlock(tmpPos);
-                    if (block == null)
-                    {
-                        return;
-                    }
+                    block = BlockAccess.GetLiquidBlock(tmpPos);
 
                     float waterY = (int)pos.Y + prevBlock.LiquidLevel / 8f + (block.IsLiquid() ? 9 / 8f : 0);
                     float bottomSubmergedness = waterY - (float)pos.Y;
@@ -170,12 +161,11 @@ namespace Vintagestory.API.Client
             );
 
             CollisionBoxList.Clear();
-            BlockAccess.WalkBlocks(minPos, maxPos, (cblock, bpos) => {
-                Cuboidf[] collisionBoxes = cblock.GetParticleCollisionBoxes(BlockAccess, bpos);
-
-                for (int i = 0; collisionBoxes != null && i < collisionBoxes.Length; i++)
+            BlockAccess.WalkBlocks(minPos, maxPos, (cblock, x, y, z) => {
+                Cuboidf[] collisionBoxes = cblock.GetParticleCollisionBoxes(BlockAccess, tmpPos.Set(x, y, z));
+                if (collisionBoxes != null)
                 {
-                    CollisionBoxList.Add(collisionBoxes[i], bpos, cblock);
+                    CollisionBoxList.Add(collisionBoxes, x, y, z, cblock);
                 }
 
             }, false);

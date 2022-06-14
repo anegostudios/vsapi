@@ -11,6 +11,8 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class TextureAtlasPosition
     {
+        public const int RndColorsLength = 30;
+
         /// <summary>
         /// The OpenGL textureid
         /// </summary>
@@ -27,7 +29,8 @@ namespace Vintagestory.API.Client
         public short reloadIteration;
 
         public int AvgColor;
-        public int[] RndColors = new int[30];
+
+        public int[] RndColors;
 
         /// <summary>
         /// The x coordinate of the texture origin point

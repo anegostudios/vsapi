@@ -12,6 +12,8 @@ namespace Vintagestory.API.Client
 
         public float Alpha = 1;
 
+        public bool FullBlur = false;
+
         /// <summary>
         /// Adds a Background to the Dialog.
         /// </summary>
@@ -20,10 +22,11 @@ namespace Vintagestory.API.Client
         /// <param name="withTitlebar">Minor style adjustments to accomodate title bar</param>
         /// <param name="hotBarLayout">Whether or not the hotbar is rendered in this gui.</param>
         /// <param name="strokeWidth">The top padding area of the GUI</param>
-        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool withTitlebar, double strokeWidth = 0) : base(capi, bounds)
+        public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool withTitlebar, double strokeWidth = 0, float alpha = 1) : base(capi, bounds)
         {
             this.strokeWidth = strokeWidth;
             this.withTitlebar = withTitlebar;
+            this.Alpha = alpha;
         }
 
 
@@ -33,33 +36,37 @@ namespace Vintagestory.API.Client
 
             double titleBarOffY = withTitlebar ? scaled(GuiStyle.TitleBarHeight) : 0;
 
-            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + titleBarOffY, Bounds.OuterWidth, Bounds.OuterHeight - titleBarOffY, GuiStyle.DialogBGRadius);
+            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + titleBarOffY, Bounds.OuterWidth, Bounds.OuterHeight - titleBarOffY - 1, GuiStyle.DialogBGRadius);
 
             ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor[0], GuiStyle.DialogStrongBgColor[1], GuiStyle.DialogStrongBgColor[2], GuiStyle.DialogStrongBgColor[3] * Alpha);
             ctx.FillPreserve();
-
+            
             if (Shade)
             {
-                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.6, GuiStyle.DialogStrongBgColor[1] * 1.6, GuiStyle.DialogStrongBgColor[2] * 1.6, Alpha);
-                ctx.LineWidth = strokeWidth * 1.75;
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.8, GuiStyle.DialogStrongBgColor[1] * 1.8, GuiStyle.DialogStrongBgColor[2] * 1.8, Alpha);
+                ctx.LineWidth = strokeWidth * 2;
                 ctx.StrokePreserve();
-                surface.Blur(5.2, (int)Bounds.bgDrawX, (int)(Bounds.bgDrawY + titleBarOffY), (int)(Bounds.bgDrawX + Bounds.OuterWidth), (int)(Bounds.bgDrawY + Bounds.OuterHeight - 1));
+
+                var r = scaled(7);
+                if (FullBlur)
+                {
+                    surface.BlurFull(r);
+                } else
+                {
+                    surface.BlurPartial(r, (int)(2 * r + 1), (int)Bounds.bgDrawX, (int)(Bounds.bgDrawY + titleBarOffY), (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
+                }
+                
 
                 ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, Alpha*Alpha });
                 ctx.LineWidth = strokeWidth;
                 ctx.Stroke();
-            } else
+            }
+            else
             {
                 ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, Alpha });
-                ctx.LineWidth = 2;
+                ctx.LineWidth = scaled(2);
                 ctx.Stroke();
             }
-
-            /*double off = strokeWidth / 2 + 1;
-            RoundRectangle(ctx, Bounds.bgDrawX + off, Bounds.bgDrawY + titleBarOffY + (titleBarOffY > 0 ? 0 : off), Bounds.OuterWidth - 2*off, Bounds.OuterHeight - titleBarOffY - off - (titleBarOffY > 0 ? 0 : off), GuiStyle.DialogBGRadius);
-            ctx.SetSourceRGBA(0, 0, 0, 0.4);
-            ctx.LineWidth = 1.5;
-            ctx.Stroke();*/
         }
     }
 
@@ -74,20 +81,20 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the GUI</param>
         /// <param name="withTitleBar">Minor style adjustments to accomodate titlebars</param>
         /// <param name="topPadding">The amount of padding at the top of the gui.</param>
-        public static GuiComposer AddShadedDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true, double strokeWidth = 5)
+        public static GuiComposer AddShadedDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true, double strokeWidth = 5, float alpha = 1)
         {
             if (!composer.Composed)
             {
-                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, withTitleBar, strokeWidth));
+                composer.AddStaticElement(new GuiElementDialogBackground(composer.Api, bounds, withTitleBar, strokeWidth, alpha));
             }
             return composer;
         }
 
-        public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true)
+        public static GuiComposer AddDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true, float alpha = 1)
         {
             if (!composer.Composed)
             {
-                GuiElementDialogBackground elem = new GuiElementDialogBackground(composer.Api, bounds, withTitleBar);
+                GuiElementDialogBackground elem = new GuiElementDialogBackground(composer.Api, bounds, withTitleBar, 0, alpha);
                 elem.Shade = false;  
                 composer.AddStaticElement(elem);
             }

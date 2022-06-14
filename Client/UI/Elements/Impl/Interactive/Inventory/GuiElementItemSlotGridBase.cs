@@ -156,8 +156,8 @@ namespace Vintagestory.API.Client
             RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
             slotCtx.LineWidth = scaled(4.5);
             slotCtx.Stroke();
-            slotSurface.Blur(scaled(4), true);
-            slotSurface.Blur(scaled(4), true);
+            slotSurface.BlurFull(scaled(4));
+            slotSurface.BlurFull(scaled(4));
 
             RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
             slotCtx.LineWidth = scaled(4.5);
@@ -195,8 +195,8 @@ namespace Vintagestory.API.Client
                     RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
                     slotCtx.LineWidth = scaled(4.5);
                     slotCtx.Stroke();
-                    slotSurface.Blur(scaled(4), true);
-                    slotSurface.Blur(scaled(4), true);
+                    slotSurface.BlurFull(scaled(4));
+                    slotSurface.BlurFull(scaled(4));
 
                     slotCtx.SetSourceRGBA(0, 0, 0, 0.8);
                     RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
@@ -213,8 +213,8 @@ namespace Vintagestory.API.Client
                     RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, GuiStyle.ElementBGRadius);
                     slotCtx.LineWidth = scaled(4.5);
                     slotCtx.Stroke();
-                    slotSurface.Blur(scaled(4), true);
-                    slotSurface.Blur(scaled(4), true);
+                    slotSurface.BlurFull(scaled(4));
+                    slotSurface.BlurFull(scaled(4));
                     
                     RoundRectangle(slotCtx, 0, 0, absSlotWidth, absSlotHeight, 1);
                     slotCtx.LineWidth = scaled(4.5);
@@ -264,9 +264,9 @@ namespace Vintagestory.API.Client
             RoundRectangle(slotCtx, 0, 0, absSlotWidth + 4, absSlotHeight + 4, GuiStyle.ElementBGRadius);
             slotCtx.LineWidth = scaled(9);
             slotCtx.StrokePreserve();
-            slotSurface.Blur(scaled(6), true);
+            slotSurface.BlurFull(scaled(6));
             slotCtx.StrokePreserve();
-            slotSurface.Blur(scaled(6), true);
+            slotSurface.BlurFull(scaled(6));
 
             slotCtx.LineWidth = scaled(3);
             slotCtx.Stroke();
@@ -344,8 +344,8 @@ namespace Vintagestory.API.Client
                 float[] color = ColorUtil.ToRGBAFloats(slot.Itemstack.Collectible.GetItemDamageColor(slot.Itemstack));
                 textCtx.SetSourceRGB(color[0], color[1], color[2]);
 
-                int dura = slot.Itemstack.Collectible.GetDurability(slot.Itemstack);
-                float health = (float)slot.Itemstack.Attributes.GetInt("durability", dura) / dura;
+                int dura = slot.Itemstack.Collectible.GetMaxDurability(slot.Itemstack);
+                float health = (float)slot.Itemstack.Collectible.GetRemainingDurability(slot.Itemstack) / dura;
 
                 width = health * (slotBounds[slotIndex].InnerWidth - scaled(8));
 
@@ -423,8 +423,11 @@ namespace Vintagestory.API.Client
 
             double offset = absSlotWidth / 2;
 
-            //double visibleStartY = InsideClipBounds?.absFixedY ?? 0;
-            //double visibleEndY = visibleStartY + (InsideClipBounds?.OuterHeight ?? 0);
+            double visibleStartY = InsideClipBounds?.absFixedY ?? 0;
+            double visibleEndY = visibleStartY + (InsideClipBounds?.OuterHeight ?? 0);
+
+            bool nowInside = false;
+            double parentAbsY = Bounds.ParentBounds.absY;
 
             int i = 0;
             foreach (var val in renderedSlots)
@@ -434,12 +437,13 @@ namespace Vintagestory.API.Client
                 double slotStartY = bounds.absFixedY;
                 double slotEndY = slotStartY + bounds.OuterHeight;
 
-                // The partially inside test is actually very expensive when done 5000+ times a frame, so we do a much quicker pretest here
-                //if (InsideClipBounds != null && (slotEndY < visibleStartY || slotStartY > visibleEndY)) { i++; continue; }
+                // Early exit based on y-coord only
+                if (bounds.absY + bounds.absInnerHeight < parentAbsY) { i++; continue; }
 
                 // Don't need to render stuff completely outside, saves us many render calls (~down to 100 draw calls instead of 600 for creative inventory)
                 if (bounds.PartiallyInside(Bounds.ParentBounds))
                 {
+                    nowInside = true;
                     ItemSlot slot = val.Value;
                     int slotId = val.Key;
 
@@ -493,6 +497,11 @@ namespace Vintagestory.API.Client
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(slotQuantityTextures[i].TextureId, slotBounds[i]);
                     }
+                }
+                else
+                {
+                    // No longer needed to loop through the rest
+                    if (nowInside) break;
                 }
 
                 i++;

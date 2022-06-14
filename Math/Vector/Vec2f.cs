@@ -102,6 +102,11 @@ namespace Vintagestory.API.MathTools
             return "X=" + X + ", Y=" + Y;
         }
 
+        public float Length()
+        {
+            return GameMath.Sqrt(X * X + Y * Y);
+        }
+
         public float DistanceTo(float x, float y)
         {
             float dx = X - x;

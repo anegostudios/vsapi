@@ -3,14 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public class HistoryState
+    {
+        public BlockUpdate[] BlockUpdates;
+        public object Data;
+        public BlockPos OldStartMarker;
+        public BlockPos OldEndMarker;
+
+        public BlockPos NewStartMarker;
+        public BlockPos NewEndMarker;
+    }
+
+
     /// <summary>
     /// Provides read/write access to the blocks of a world. 
     /// </summary>
     public interface IBlockAccessorRevertable : IBulkBlockAccessor
     {
+        event Action<HistoryState> OnStoreHistoryState;
+        event Action<HistoryState, int> OnRestoreHistoryState;
+
+
         /// <summary>
         /// Whether or not to do relighting on the chunk
         /// </summary>
@@ -48,6 +65,11 @@ namespace Vintagestory.API.Common
         void SetHistoryStateBlock(int posX, int posY, int posZ, int oldBlockId, int newBlockId);
 
         void CommitBlockEntityData();
+
+        void BeginMultiEdit();
+        void EndMultiEdit();
+
+        void StoreHistoryState(List<BlockUpdate> updates);
 
     }
 }

@@ -18,18 +18,30 @@ namespace Vintagestory.API.Client
         public CairoFont font;
 
         public TextLine[] lines;
-
+        EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord;
 
         public RichTextComponent(ICoreClientAPI api, string displayText, CairoFont font) : base(api)
         {
             this.displayText = displayText;
             this.font = font;
+            init();
+        }
 
+        protected void init()
+        {
             if (displayText.Length > 0)
-            { 
+            {
                 // ok apparently text extents of " " is 0 on a mac? o.O
-                if (displayText[displayText.Length - 1] == ' ') PaddingRight = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
-                if (displayText[0] == ' ') PaddingLeft = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
+                if (displayText[displayText.Length - 1] == ' ')
+                {
+                    PaddingRight = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
+                }
+                if (displayText[0] == ' ')
+                {
+                    PaddingLeft = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
+                }
+
+                this.displayText = displayText.Trim(new char[] { ' ' });
             }
             else
             {
@@ -70,11 +82,11 @@ namespace Vintagestory.API.Client
         /// <param name="renderY"></param>
         public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
         {
-            for (int i = 0; i < lines.Length; i++)
+            /*for (int i = 0; i < lines.Length; i++)
             {
-                //var bounds = lines[i].Bounds;
-                //api.Render.RenderRectangle((float)renderX + (float)bounds.X, (float)renderY + (float)bounds.Y, 50, (float)bounds.Width, (float)bounds.Height, ColorUtil.ColorFromRgba(200, 255, 255, 128));
-            }
+                var bounds = lines[i].Bounds;
+                api.Render.RenderRectangle((float)renderX + (float)bounds.X, (float)renderY + (float)bounds.Y, 50, (float)bounds.Width, (float)bounds.Height, ColorUtil.ColorFromRgba(200, 255, 255, 128));
+            }*/
             
         }
 
@@ -85,9 +97,13 @@ namespace Vintagestory.API.Client
         /// <param name="flowPath"></param>
         /// <param name="xPos"></param>
         /// <returns>True when longer than 1 line</returns>
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
+        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
-            lines = textUtil.Lineize(font, displayText, flowPath, lineX + GuiElement.scaled(PaddingLeft), lineY);
+            offsetX += GuiElement.scaled(PaddingLeft);
+
+            lines = textUtil.Lineize(font, displayText, linebreak, flowPath, offsetX, lineY);
+
+            nextOffsetX = offsetX;
 
             BoundsPerLine = new LineRectangled[lines.Length];
             for (int i = 0; i < lines.Length; i++)
@@ -96,10 +112,12 @@ namespace Vintagestory.API.Client
                 BoundsPerLine[i] = line.Bounds;
             }
 
-            if (lines.Length > 0) {
-                lines[0].PaddingLeft = GuiElement.scaled(PaddingLeft);
-                lines[lines.Length - 1].PaddingRight = PaddingRight;
-                lines[lines.Length - 1].Bounds.Width += PaddingRight;
+            if (lines.Length > 0)
+            {
+                var lbnd = BoundsPerLine[lines.Length-1];
+                lbnd.Width += GuiElement.scaled(PaddingRight);
+
+                nextOffsetX = lines[lines.Length - 1].NextOffsetX + lbnd.Width;
             }
 
             return lines.Length > 1;

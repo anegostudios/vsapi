@@ -17,6 +17,7 @@ namespace Vintagestory.API.MathTools
         /// Create a new instance with x/y/z set to 0
         /// </summary>
         public static Vec3f Zero { get { return new Vec3f(); } }
+        public static Vec3f One { get { return new Vec3f(1,1,1); } }
 
         /// <summary>
         /// The X-Component of the vector

@@ -47,6 +47,8 @@ namespace Vintagestory.API.Client
 
         public float OverlayOpacity;
 
+        public float DamageEffect = 0;
+
         /// <summary>
         /// The slot the stack is currently in
         /// </summary>

@@ -4,6 +4,8 @@ using System;
 using System.Linq;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
+using System.Runtime.Serialization;
+using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common
 {
@@ -53,6 +55,12 @@ namespace Vintagestory.API.Common
         public Dictionary<string, AttachmentPoint> AttachmentPointsByCode = new Dictionary<string, AttachmentPoint>();
 
 
+        [OnDeserialized]
+        public void TrimTextureNamesAndResolveFaces(StreamingContext context)
+        {
+            foreach (ShapeElement el in Elements) el.TrimTextureNamesAndResolveFaces();
+        }
+
         /// <summary>
         /// Attempts to resolve all references within the shape. Logs missing references them to the errorLogger
         /// </summary>
@@ -96,14 +104,21 @@ namespace Vintagestory.API.Common
 
         private void CollectAttachmentPoints(ShapeElement elem)
         {
-            for (int j = 0; elem.AttachmentPoints != null && j < elem.AttachmentPoints.Length; j++)
+            if (elem.AttachmentPoints != null)
             {
-                AttachmentPointsByCode[elem.AttachmentPoints[j].Code] = elem.AttachmentPoints[j];
+                for (int j = 0; j < elem.AttachmentPoints.Length; j++)
+                {
+                    var point = elem.AttachmentPoints[j];
+                    AttachmentPointsByCode[point.Code] = point;
+                }
             }
 
-            for (int j = 0; elem.Children != null && j < elem.Children.Length; j++)
+            if (elem.Children != null)
             {
-                CollectAttachmentPoints(elem.Children[j]);
+                for (int j = 0; j < elem.Children.Length; j++)
+                {
+                    CollectAttachmentPoints(elem.Children[j]);
+                }
             }
         }
 
@@ -225,6 +240,47 @@ namespace Vintagestory.API.Common
             }   
         }
 
+        /// <summary>
+        /// Tries to load the shape from the specified JSON file, with error logging
+        /// <br/>Returns null if the file could not be found, or if there was an error
+        /// </summary>
+        /// <param name="api"></param>
+        /// <param name="shapePath"></param>
+        /// <returns></returns>
+        public static Shape TryGet(ICoreAPI api, string shapePath)
+        {
+            ShapeElement.locationForLogging = shapePath;
+            try
+            {
+                return api.Assets.TryGet(shapePath)?.ToObject<Shape>();
+            }
+            catch (Exception e)
+            {
+                api.World.Logger.Error("Exception thrown when trying to load shape file {0}\n{1}", shapePath, e.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Tries to load the shape from the specified JSON file, with error logging
+        /// <br/>Returns null if the file could not be found, or if there was an error
+        /// </summary>
+        /// <param name="api"></param>
+        /// <param name="shapePath"></param>
+        /// <returns></returns>
+        public static Shape TryGet(ICoreAPI api, AssetLocation shapePath)
+        {
+            ShapeElement.locationForLogging = shapePath;
+            try
+            {
+                return api.Assets.TryGet(shapePath)?.ToObject<Shape>();
+            }
+            catch (Exception e)
+            {
+                api.World.Logger.Error("Exception thrown when trying to load shape file {0}\n{1}", shapePath, e.Message);
+                return null;
+            }
+        }
 
         public void WalkElements(string wildcardpath, Action<ShapeElement> onElement)
         {

@@ -310,10 +310,10 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetItemDamageColor(ItemStack itemstack)
         {
-            int maxdura = GetDurability(itemstack);
+            int maxdura = GetMaxDurability(itemstack);
             if (maxdura == 0) return 0;
 
-            int p = GameMath.Clamp(100 * itemstack.Attributes.GetInt("durability") / maxdura, 0, 99); ;
+            int p = GameMath.Clamp(100 * itemstack.Collectible.GetRemainingDurability(itemstack) / maxdura, 0, 99); ;
 
             return GuiStyle.DamageColorGradient[p];
         }
@@ -323,9 +323,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="itemstack"></param>
         /// <returns></returns>
-        public virtual bool ShouldDisplayItemDamage(IItemStack itemstack)
+        public virtual bool ShouldDisplayItemDamage(ItemStack itemstack)
         {
-            return Durability != itemstack.Attributes.GetInt("durability", GetDurability(itemstack));
+            return GetMaxDurability(itemstack) != GetRemainingDurability(itemstack);
         }
 
 
@@ -347,14 +347,22 @@ namespace Vintagestory.API.Common
         }
 
 
+        [Obsolete("Use GetMaxDurability instead")]
+        public virtual int GetDurability(IItemStack itemstack) => GetDurability(itemstack);
+
         /// <summary>
         /// Returns the items total durability
         /// </summary>
         /// <param name="itemstack"></param>
         /// <returns></returns>
-        public virtual int GetDurability(IItemStack itemstack)
+        public virtual int GetMaxDurability(ItemStack itemstack)
         {
             return Durability;
+        }
+
+        public virtual int GetRemainingDurability(ItemStack itemstack)
+        {
+            return itemstack.Attributes.GetInt("durability", GetMaxDurability(itemstack));
         }
 
         /// <summary>
@@ -468,7 +476,7 @@ namespace Vintagestory.API.Common
             IPlayer byPlayer = null;
             if (byEntity is EntityPlayer) byPlayer = world.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
-            Block block = world.BlockAccessor.GetBlock(blockSel.Position);
+            Block block = blockSel.Block ?? world.BlockAccessor.GetBlock(blockSel.Position);
             block.OnBlockBroken(world, blockSel.Position, byPlayer, dropQuantityMultiplier);
 
             if (DamagedBy != null && DamagedBy.Contains(EnumItemDamageSource.BlockBreaking))
@@ -574,7 +582,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)
         {
-            if (ingredient.IsTool && ingredient.ToolDurabilityCost > inputStack.Attributes.GetInt("durability", GetDurability(inputStack))) return false;
+            if (ingredient.IsTool && ingredient.ToolDurabilityCost > inputStack.Collectible.GetRemainingDurability(inputStack)) return false;
 
             return true;
         }
@@ -639,7 +647,7 @@ namespace Vintagestory.API.Common
                     if (slot.Empty) continue;
                     ItemStack stack = slot.Itemstack;
 
-                    int maxDurability = stack.Collectible.GetDurability(stack);
+                    int maxDurability = stack.Collectible.GetMaxDurability(stack);
                     if (maxDurability == 0)
                     {
                         // An item with no durability only improves the average by 12.5%
@@ -660,7 +668,7 @@ namespace Vintagestory.API.Common
                     if (skip) continue;
 
                     q++;
-                    int leftDurability = stack.Attributes.GetInt("durability", maxDurability);
+                    int leftDurability = stack.Collectible.GetRemainingDurability(stack);
                     pSum += (float)leftDurability / maxDurability;
 
                 }
@@ -668,7 +676,7 @@ namespace Vintagestory.API.Common
                 float pFinal = pSum / q;
                 if (pFinal < 1)
                 {
-                    outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetDurability(outputSlot.Itemstack)));
+                    outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetMaxDurability(outputSlot.Itemstack)));
                 }
             }
 
@@ -677,10 +685,24 @@ namespace Vintagestory.API.Common
             var perishProps = tprops?.FirstOrDefault(p => p.Type == EnumTransitionType.Perish);
             if (perishProps != null)
             {
-                perishProps.TransitionedStack.Resolve(api.World, "oncrafted perished stack");
+                perishProps.TransitionedStack.Resolve(api.World, "oncrafted perished stack", Code);
                 CarryOverFreshness(api, allInputslots, new ItemStack[] { outputSlot.Itemstack }, perishProps);
             }
         }
+
+        /// <summary>
+        /// Called after the player has taken out the item from the output slot
+        /// </summary>
+        /// <param name="slots"></param>
+        /// <param name="outputSlot"></param>
+        /// <param name="matchingRecipe"></param>
+        /// <returns>true to prevent default ingredient consumption</returns>
+        public virtual bool ConsumeCraftingIngredients(ItemSlot[] slots, ItemSlot outputSlot, GridRecipe matchingRecipe)
+        {
+            return false;
+        }
+
+
 
 
 
@@ -695,7 +717,7 @@ namespace Vintagestory.API.Common
         {
             ItemStack itemstack = itemslot.Itemstack;
 
-            int leftDurability = itemstack.Attributes.GetInt("durability", GetDurability(itemstack));
+            int leftDurability = itemstack.Collectible.GetRemainingDurability(itemstack);
             leftDurability -= amount;
             itemstack.Attributes.SetInt("durability", leftDurability);
 
@@ -718,7 +740,7 @@ namespace Vintagestory.API.Common
                     if (itemslot.Itemstack != null && !itemslot.Itemstack.Attributes.HasAttribute("durability"))
                     {
                         itemstack = itemslot.Itemstack;
-                        itemstack.Attributes.SetInt("durability", itemstack.Collectible.GetDurability(itemstack));
+                        itemstack.Attributes.SetInt("durability", itemstack.Collectible.GetMaxDurability(itemstack));
                         // This forces update of durability when slot is marked dirty (otherwise the durability attribute would be unset, therefore not updated, for a new item)
                     }
 
@@ -1332,11 +1354,11 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            int durability = GetDurability(stack);
+            int durability = GetMaxDurability(stack);
 
             if (durability > 1)
             {
-                dsc.AppendLine(Lang.Get("Durability: {0} / {1}", stack.Attributes.GetInt("durability", durability), durability));
+                dsc.AppendLine(Lang.Get("Durability: {0} / {1}", stack.Collectible.GetRemainingDurability(stack), durability));
             }
 
 
@@ -1682,7 +1704,7 @@ namespace Vintagestory.API.Common
 
                             if (transitionLevel > 0)
                             {
-                                dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font> {0}% dried", (int)Math.Round(transitionLevel * 100)));
+                                dsc.AppendLine(Lang.Get("itemstack-dryable-dried", (int)Math.Round(transitionLevel * 100)));
                                 dsc.AppendLine(Lang.Get("Drying rate in this container: {0:0.##}x", transitionRate));
                             }
                             else
@@ -1691,17 +1713,17 @@ namespace Vintagestory.API.Common
 
                                 if (transitionRate <= 0)
                                 {
-                                    dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font>"));
+                                    dsc.AppendLine(Lang.Get("itemstack-dryable"));
                                 }
                                 else
                                 {
                                     if (freshHoursLeft > hoursPerday)
                                     {
-                                        dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                                        dsc.AppendLine(Lang.Get("itemstack-dryable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
                                     }
                                     else
                                     {
-                                        dsc.AppendLine(Lang.Get("<font color=\"burlywood\">Dryable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                                        dsc.AppendLine(Lang.Get("itemstack-dryable-duration-hours", Math.Round(freshHoursLeft, 1)));
                                     }
                                 }
                             }
@@ -1733,24 +1755,26 @@ namespace Vintagestory.API.Common
         public virtual List<ItemStack> GetHandBookStacks(ICoreClientAPI capi)
         {
             if (Code == null) return null;
+            var handbookAttributes = Attributes?["handbook"];
+            if (handbookAttributes?["exclude"].AsBool() == true) return null;
 
             bool inCreativeTab = CreativeInventoryTabs != null && CreativeInventoryTabs.Length > 0;
             bool inCreativeTabStack = CreativeInventoryStacks != null && CreativeInventoryStacks.Length > 0;
-            bool explicitlyIncluded = Attributes?["handbook"]?["include"].AsBool() == true;
-            bool explicitlyExcluded = Attributes?["handbook"]?["exclude"].AsBool() == true;
-
-            if (explicitlyExcluded) return null;
-            if (!explicitlyIncluded && !inCreativeTab && !inCreativeTabStack) return null;
+            if (!inCreativeTab && !inCreativeTabStack)
+            {
+                if (true != handbookAttributes?["include"].AsBool()) return null;
+            }
 
             List<ItemStack> stacks = new List<ItemStack>();
 
-            if (inCreativeTabStack && Attributes?["handbook"]?["ignoreCreativeInvStacks"].AsBool() != true)
+            if (inCreativeTabStack && handbookAttributes?["ignoreCreativeInvStacks"].AsBool() != true)
             {
                 for (int i = 0; i < CreativeInventoryStacks.Length; i++)
                 {
-                    for (int j = 0; j < CreativeInventoryStacks[i].Stacks.Length; j++)
+                    JsonItemStack[] creativeStacks = CreativeInventoryStacks[i].Stacks;
+                    for (int j = 0; j < creativeStacks.Length; j++)
                     {
-                        ItemStack stack = CreativeInventoryStacks[i].Stacks[j].ResolvedItemstack;
+                        ItemStack stack = creativeStacks[j].ResolvedItemstack;
                         stack.ResolveBlockOrItem(capi.World);
 
                         stack = stack.Clone();
@@ -2370,10 +2394,10 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool IsReasonablyFresh(IWorldAccessor world, ItemStack itemstack)
         {
-            if (GetDurability(itemstack) > 1)
+            if (GetMaxDurability(itemstack) > 1)
             {
-                int leftDurability = itemstack.Attributes.GetInt("durability", GetDurability(itemstack));
-                float p = (float)leftDurability / GetDurability(itemstack);
+                int leftDurability = GetRemainingDurability(itemstack);
+                float p = (float)leftDurability / GetMaxDurability(itemstack);
                 if (p < 0.95f) return false;
             }
 
@@ -2434,17 +2458,17 @@ namespace Vintagestory.API.Common
             double lastUpdateHours = attr.GetDouble("temperatureLastUpdate");
 
             double hourDiff = nowHours - lastUpdateHours;
-
+            float temp = attr.GetFloat("temperature", 20);
             // 1.5 deg per irl second
             // 1 game hour = irl 60 seconds
-            if (hourDiff > 1/85f)
+            if (hourDiff > 1/85f && temp > 0f)
             {
-                float temp = Math.Max(0, attr.GetFloat("temperature", 20) - Math.Max(0, (float)(nowHours - lastUpdateHours) * attr.GetFloat("cooldownSpeed", 90)));
-                SetTemperature(world, itemstack, temp);
-                return temp;
+                temp = Math.Max(0, temp - Math.Max(0, (float)(nowHours - lastUpdateHours) * attr.GetFloat("cooldownSpeed", 90)));
+                attr.SetFloat("temperature", temp);
+                attr.SetDouble("temperatureLastUpdate", nowHours);
             }
 
-            return attr.GetFloat("temperature", 20);
+            return temp;
         }
 
         /// <summary>
@@ -2647,8 +2671,9 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Returns true if this blocks matterstate is liquid.
-        /// NOTE: Liquid blocks should also implement IBlockFlowing
+        /// Returns true if this blocks matterstate is liquid.  (Liquid blocks should also implement IBlockFlowing)
+        /// <br/>
+        /// IMPORTANT: Calling code should have looked up the block using IBlockAccessor.GetLiquidBlock() not IBlockAccessor.GetBlock() !!!
         /// </summary>
         /// <returns></returns>
         public virtual bool IsLiquid()

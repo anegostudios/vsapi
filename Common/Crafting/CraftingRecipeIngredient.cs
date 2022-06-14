@@ -84,7 +84,7 @@ namespace Vintagestory.API.Common
         {
             if (ReturnedStack != null)
             {
-                ReturnedStack.Resolve(resolver, sourceForErrorLogging + " recipe with output " + Code);
+                ReturnedStack.Resolve(resolver, sourceForErrorLogging + " recipe with output ", Code);
             }
 
             if (Code.Path.Contains("*"))

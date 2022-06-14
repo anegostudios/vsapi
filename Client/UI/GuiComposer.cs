@@ -28,7 +28,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Triggered when the gui scale changed or the game window was resized
         /// </summary>
-        public event Action OnRecomposed;
+        public event Action OnComposed;
         public Action<bool> OnFocusChanged;
 
         public static int Outlines = 0;
@@ -52,6 +52,8 @@ namespace Vintagestory.API.Client
         protected Stack<bool> conditionalAdds = new Stack<bool>();
 
         protected ElementBounds lastAddedElementBounds;
+
+        public ElementBounds CurParentBounds => parentBoundsForNextElement.Peek();
 
         public bool Composed = false;
         internal bool recomposeOnRender = false;
@@ -210,8 +212,6 @@ namespace Vintagestory.API.Client
         {
             Composed = false;
             Compose(false);
-
-            OnRecomposed?.Invoke();
         }
 
         internal void UnFocusElements()
@@ -351,7 +351,7 @@ namespace Vintagestory.API.Client
                 bounds.CalcWorldBounds();
             } catch (Exception e)
             {
-                Api.World.Logger.Error("Exception thrown when trying to calculate world bounds for gui composite " + dialogName + ": " + e);
+                Api.Logger.Error("Exception thrown when trying to calculate world bounds for gui composite " + dialogName + ": " + e);
             }
             
             bounds.IsDrawingSurface = true;
@@ -405,6 +405,8 @@ namespace Vintagestory.API.Client
             Composed = true;
 
             if (focusFirstElement && MaxTabIndex >= 0) FocusElement(0);
+
+            OnComposed?.Invoke();
 
             return this;
         }

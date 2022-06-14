@@ -190,8 +190,8 @@ namespace Vintagestory.API.Common
                 pos.Motion *= (float)Math.Pow(airDragValue, dt * 33);
             }
 
-            Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z);
-            Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z);
+            Block inblock = entity.World.BlockAccessor.GetLiquidBlock((int)pos.X, (int)(pos.Y), (int)pos.Z);
+            Block aboveblock = entity.World.BlockAccessor.GetLiquidBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z);
 
             if (entity.FeetInLiquid)
             {
@@ -287,10 +287,10 @@ namespace Vintagestory.API.Common
 
        
 
-            Block block = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt);
+            Block block = entity.World.BlockAccessor.GetLiquidBlock(pos.XInt, pos.YInt, pos.ZInt);
 
             entity.FeetInLiquid = block.MatterState == EnumMatterState.Liquid;
-            entity.InLava = block.LiquidCode == "lava";
+            entity.InLava = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt).LiquidCode == "lava";
             if (entity.FeetInLiquid)
             {
                 float waterY = (int)pos.Y + block.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9 / 8f : 0);
@@ -330,18 +330,23 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-            Cuboidd entityBox = entity.World.CollisionTester.entityBox;
-            for (int y = (int)entityBox.Y1; y <= (int)entityBox.Y2; y++)
+            CollisionTester collisionTester = entity.World.CollisionTester;
+            Cuboidd entityBox = collisionTester.entityBox;
+            int xMax = (int)entityBox.X2;
+            int yMax = (int)entityBox.Y2;
+            int zMax = (int)entityBox.Z2;
+            int zMin = (int)entityBox.Z1;
+            for (int y = (int)entityBox.Y1; y <= yMax; y++)
             {
-                for (int x = (int)entityBox.X1; x <= (int)entityBox.X2; x++)
+                for (int x = (int)entityBox.X1; x <= xMax; x++)
                 {
-                    for (int z = (int)entityBox.Z1; z <= (int)entityBox.Z2; z++)
+                    for (int z = zMin; z <= zMax; z++)
                     {
-                        entity.World.CollisionTester.tmpPos.Set(x, y, z);
-                        entity.World.CollisionTester.tempCuboid.Set(x, y, z, x + 1, y + 1, z + 1);
-                        if (entity.World.CollisionTester.tempCuboid.IntersectsOrTouches(entityBox))
+                        collisionTester.tmpPos.Set(x, y, z);
+                        collisionTester.tempCuboid.Set(x, y, z, x + 1, y + 1, z + 1);
+                        if (collisionTester.tempCuboid.IntersectsOrTouches(entityBox))
                         {
-                            entity.World.BlockAccessor.GetBlock(x, y, z).OnEntityInside(entity.World, entity, entity.World.CollisionTester.tmpPos);
+                            entity.World.BlockAccessor.GetBlock(x, y, z).OnEntityInside(entity.World, entity, collisionTester.tmpPos);
                         }
                     }
                 }

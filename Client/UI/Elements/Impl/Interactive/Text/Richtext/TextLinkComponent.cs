@@ -37,6 +37,7 @@ namespace Vintagestory.API.Client
         double topMostY;
 
 
+
         public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
             leftMostX = 999999;
@@ -100,8 +101,8 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < lines.Length; i++)
             {
                 TextLine line = lines[i];
-                ctx.MoveTo(line.Bounds.X + line.PaddingLeft, line.Bounds.Y + line.Bounds.AscentOrHeight + 2);
-                ctx.LineTo(line.Bounds.X + line.PaddingLeft - line.PaddingRight + line.Bounds.Width, line.Bounds.Y + line.Bounds.AscentOrHeight + 2);
+                ctx.MoveTo(line.Bounds.X, line.Bounds.Y + line.Bounds.AscentOrHeight + 2);
+                ctx.LineTo(line.Bounds.X + line.Bounds.Width, line.Bounds.Y + line.Bounds.AscentOrHeight + 2);
                 ctx.Stroke();
             }
         }

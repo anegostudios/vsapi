@@ -22,6 +22,7 @@ namespace Vintagestory.API.Common
         Saw,
         Chisel,
         Scythe,
-        Sling
+        Sling,
+        Wrench
     }
 }

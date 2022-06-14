@@ -468,7 +468,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool FrustumVisible;
 
-        public BoolRef[] CullVisible = new BoolRef[] { new BoolRef() { value = true }, new BoolRef() { value = true } };
+        public Bools CullVisible = new Bools(true, true);
 
         public int LodLevel = 0;
 
@@ -491,16 +491,16 @@ namespace Vintagestory.API.Client
             switch (mode)
             {
                 case EnumFrustumCullMode.CullInstant:
-                    return !Hide && CullVisible[VisibleBufIndex].value && culler.SphereInFrustum(FrustumCullSphere);
+                    return !Hide && CullVisible[VisibleBufIndex] && culler.SphereInFrustum(FrustumCullSphere);
 
                 case EnumFrustumCullMode.CullInstantShadowPassNear:
-                    return !Hide && CullVisible[VisibleBufIndex].value && culler.SphereInFrustumShadowPass(FrustumCullSphere);
+                    return !Hide && CullVisible[VisibleBufIndex] && culler.SphereInFrustumShadowPass(FrustumCullSphere);
 
                 case EnumFrustumCullMode.CullInstantShadowPassFar:
-                    return !Hide && CullVisible[VisibleBufIndex].value && culler.SphereInFrustumShadowPass(FrustumCullSphere) && LodLevel >= 1;
+                    return !Hide && CullVisible[VisibleBufIndex] && culler.SphereInFrustumShadowPass(FrustumCullSphere) && LodLevel >= 1;
 
                 case EnumFrustumCullMode.CullNormal:
-                    return !Hide && CullVisible[VisibleBufIndex].value && UpdateVisibleFlag(culler.SphereInFrustumAndRange(FrustumCullSphere, FrustumVisible, LodLevel));
+                    return !Hide && CullVisible[VisibleBufIndex] && UpdateVisibleFlag(culler.SphereInFrustumAndRange(FrustumCullSphere, FrustumVisible, LodLevel));
 
                 default:
                     return !Hide;

@@ -67,12 +67,6 @@ namespace Vintagestory.API.Common.Entities
             set { pitch = value; Dirty = true; }
         }
 
-        public override int Stance
-        {
-            get { return stance; }
-            set { stance = value; Dirty = true; }
-        }
-
 
         /// <summary>
         /// Internally sets the value of X.  This may cause desync.

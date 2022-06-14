@@ -73,6 +73,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         Vec3f SunColor { get; }
 
+        Vec3f ReflectColor { get; }
+
         /// <summary>
         /// A horizontal offset that is applied when reading the sky glow color at the players current location. Creates a greater variety of sunsets. Changes to a different value once per day (during midnight)
         /// </summary>

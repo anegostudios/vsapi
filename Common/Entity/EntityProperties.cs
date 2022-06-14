@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -138,6 +139,7 @@ namespace Vintagestory.API.Common.Entities
         /// The drops for the entity when they are killed.
         /// </summary>
         public BlockDropItemStack[] Drops;
+        public byte[] DropsPacket;
 
         /// <summary>
         /// The collision box they have.
@@ -256,7 +258,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     if (val.Value.Path.EndsWith("*"))
                     {
-                        List<IAsset> assets = assetManager.GetMany("sounds/" + val.Value.Path.Substring(0, val.Value.Path.Length - 1), val.Value.Domain);
+                        List<IAsset> assets = assetManager.GetManyInCategory("sounds", val.Value.Path.Substring(0, val.Value.Path.Length - 1), val.Value.Domain);
                         AssetLocation[] sounds = new AssetLocation[assets.Count];
                         int i = 0;
 
@@ -274,10 +276,34 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
         }
+
+        internal void PopulateDrops(IWorldAccessor worldForResolve)
+        {
+            using (MemoryStream ms = new MemoryStream(DropsPacket))
+            {
+                BinaryReader reader = new BinaryReader(ms);
+                int len = reader.ReadInt32();
+                BlockDropItemStack[] drops = new BlockDropItemStack[len];
+                for (int i = 0; i < drops.Length; i++)
+                {
+                    drops[i] = new BlockDropItemStack();
+                    drops[i].FromBytes(reader, worldForResolve.ClassRegistry);
+                    drops[i].Resolve(worldForResolve, "decode entity drops for ", Code);
+                }
+
+                Drops = drops;
+            }
+            DropsPacket = null;
+        }
     }
 
     public abstract class EntitySidedProperties
     {
+        /// <summary>
+        /// The attributes of the entity.
+        /// </summary>
+        public ITreeAttribute Attributes;
+
         /// <summary>
         /// The behaviors attached to this entity.
         /// </summary>
@@ -299,6 +325,12 @@ namespace Vintagestory.API.Common.Entities
             for (int i = 0; i < BehaviorsAsJsonObj.Length; i++)
             {
                 string code = BehaviorsAsJsonObj[i]["code"].AsString();
+                bool enabled = BehaviorsAsJsonObj[i]["enabled"].AsBool(true);
+
+                if (!enabled)
+                {
+                    continue;
+                }
                 if (code == null) continue;
 
                 if (world.ClassRegistry.GetEntityBehaviorClass(code) != null)
@@ -339,7 +371,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Directory of all available textures. First one will be default one
         /// </summary>
-        public Dictionary<string, CompositeTexture> Textures = new Dictionary<string, CompositeTexture>();
+        public IDictionary<string, CompositeTexture> Textures = new FakeDictionary<string, CompositeTexture>(0);
 
         /// <summary>
         /// Used by various renderers to retrieve the entities texture it should be drawn with
@@ -425,83 +457,6 @@ namespace Vintagestory.API.Common.Entities
             ShapeForEntity = Shape;
         }
 
-        /// <summary>
-        /// Loads the shape of the entity.
-        /// </summary>
-        /// <param name="entityTypeForLogging">The entity to shape</param>
-        /// <param name="api">The Core API</param>
-        /// <returns>The loaded shape.</returns>
-        public void LoadShape(EntityProperties entityTypeForLogging, ICoreAPI api)
-        {
-            LoadedShape = LoadShape(Shape, entityTypeForLogging, api);
-
-            if (Shape?.Alternates != null)
-            {
-                LoadedAlternateShapes = new Shape[Shape.Alternates.Length];
-                for (int i = 0; i < Shape.Alternates.Length; i++)
-                {
-                    LoadedAlternateShapes[i] = LoadShape(Shape.Alternates[i], entityTypeForLogging, api);
-                }
-            }
-        }
-
-        public static Shape LoadShape(CompositeShape cShape, EntityProperties entityTypeForLogging, ICoreAPI api)
-        {
-            AssetLocation shapePath;
-            Shape entityShape;
-
-            // Not using a shape, it seems, so whatev ^_^
-            if (cShape == null) return null;
-
-            if (cShape?.Base == null || cShape.Base.Path.Length == 0)
-            {
-                shapePath = new AssetLocation("shapes/block/basic/cube.json");
-                if (cShape?.VoxelizeTexture != true)
-                {
-                    api.World.Logger.Warning("No entity shape supplied for entity {0}, using cube shape", entityTypeForLogging.Code);
-                }
-                cShape.Base = new AssetLocation("block/basic/cube");
-            }
-            else
-            {
-                shapePath = cShape.Base.CopyWithPath("shapes/" + cShape.Base.Path + ".json");
-            }
-
-            IAsset asset = api.Assets.TryGet(shapePath);
-
-            if (asset == null)
-            {
-                api.World.Logger.Error("Entity shape {0} for entity {1} not found, was supposed to be at {2}. Entity will be invisible!", cShape, entityTypeForLogging.Code, shapePath);
-                return null;
-            }
-
-            try
-            {
-                entityShape = asset.ToObject<Shape>();
-            }
-            catch (Exception e)
-            {
-                api.World.Logger.Error("Exception thrown when trying to load entity shape {0} for entity {1}. Entity will be invisible! Exception: {2}", cShape, entityTypeForLogging.Code, e);
-                return null;
-            }
-
-            entityShape.ResolveReferences(api.World.Logger, cShape.Base.ToString());
-            CacheInvTransforms(entityShape.Elements);
-
-            return entityShape;
-        }
-
-
-        private static void CacheInvTransforms(ShapeElement[] elements)
-        {
-            if (elements == null) return;
-
-            for (int i = 0; i < elements.Length; i++)
-            {
-                elements[i].CacheInverseTransformMatrix();
-                CacheInvTransforms(elements[i].Children);
-            }
-        }
 
         /// <summary>
         /// Initializes the client properties.
@@ -589,11 +544,6 @@ namespace Vintagestory.API.Common.Entities
     public class EntityServerProperties : EntitySidedProperties
     {
         public EntityServerProperties(JsonObject[] behaviors) : base(behaviors) { }
-
-        /// <summary>
-        /// The attributes of the entity.
-        /// </summary>
-        public ITreeAttribute Attributes;
 
         /// <summary>
         /// The conditions for spawning the entity.

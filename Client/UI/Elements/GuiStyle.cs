@@ -170,6 +170,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         public static double[] ErrorTextColor = new double[] { 1, 0.5, 0.5, 1 };
         /// <summary>
+        /// The color of the error text.
+        /// </summary>
+        public static double[] WarningTextColor = new double[] { 242/255.0, 201/255.0, 131/255.0, 1 };
+        /// <summary>
         /// The color of the the link text.
         /// </summary>
         public static double[] LinkTextColor = new double[] { 0.5, 0.5, 1, 1 };

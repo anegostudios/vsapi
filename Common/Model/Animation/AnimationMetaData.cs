@@ -89,12 +89,18 @@ namespace Vintagestory.API.Common
         public bool SupressDefaultAnimation = false;
         [JsonProperty]
         public float HoldEyePosAfterEasein = 99f;
+        /// <summary>
+        /// If true, the server does not sync this animation
+        /// </summary>
+        [JsonProperty]
+        public bool ClientSide;
 
         public float StartFrameOnce;
 
         int withActivitiesMerged;
         public uint CodeCrc32;
         public bool WasStartedFromTrigger;
+        
 
         public float GetCurrentAnimationSpeed(float walkspeed)
         {
@@ -142,6 +148,7 @@ namespace Vintagestory.API.Common
                 Code = this.Code,
                 Animation = this.Animation,
                 Weight = this.Weight,
+                ClientSide = this.ClientSide,
                 ElementWeight = new Dictionary<string, float>(this.ElementWeight),
                 AnimationSpeed = this.AnimationSpeed,
                 MulWithWalkSpeed = this.MulWithWalkSpeed,
@@ -217,6 +224,7 @@ namespace Vintagestory.API.Common
             writer.Write(StartFrameOnce);
 
             writer.Write(HoldEyePosAfterEasein);
+            writer.Write(ClientSide);
         }
 
         public static AnimationMetaData FromBytes(BinaryReader reader, string version)
@@ -270,6 +278,11 @@ namespace Vintagestory.API.Common
             {
                animdata.HoldEyePosAfterEasein = reader.ReadSingle();
             }
+            if (GameVersion.IsAtLeastVersion(version, "1.17.0-dev.18"))
+            {
+                animdata.ClientSide = reader.ReadBoolean();
+            }
+            
 
             animdata.Init();
 

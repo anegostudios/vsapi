@@ -104,7 +104,7 @@ namespace Vintagestory.API.Common
 
         public bool Async => true;
 
-        public bool Bouncy { get; set; }
+        public float Bounciness { get; set; }
         public bool RandomVelocityChange { get; set; }
         public bool DieOnRainHeightmap => false;
         public ExplosionSmokeParticles()

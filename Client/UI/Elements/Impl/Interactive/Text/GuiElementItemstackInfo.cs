@@ -140,7 +140,7 @@ namespace Vintagestory.API.Client
                 ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.4, GuiStyle.DialogStrongBgColor[1] * 1.4, GuiStyle.DialogStrongBgColor[2] * 1.4, 1);
                 ctx.LineWidth = 3 * 1.75;
                 ctx.StrokePreserve();
-                surface.Blur(8.2);
+                surface.BlurFull(8.2);
 
                 ctx.SetSourceRGBA(backTint[0] / 2, backTint[1] / 2, backTint[2] / 2, backTint[3]);
                 ctx.Stroke();
@@ -159,9 +159,9 @@ namespace Vintagestory.API.Client
                 shCtx.SetSourceRGBA(GuiStyle.DialogSlotFrontColor);
                 shCtx.LineWidth = 5;
                 shCtx.Stroke();
-                shSurface.Blur(7);
-                shSurface.Blur(7);
-                shSurface.Blur(7);
+                shSurface.BlurFull(7);
+                shSurface.BlurFull(7);
+                shSurface.BlurFull(7);
                 EmbossRoundRectangleElement(shCtx, 0, 0, w, h, true);
 
 

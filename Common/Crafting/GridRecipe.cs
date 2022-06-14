@@ -72,6 +72,11 @@ namespace Vintagestory.API.Common
         public int RecipeGroup = 0;
 
         /// <summary>
+        /// Used by the handbook. If false, will not appear in the "Created by" section
+        /// </summary>
+        public bool ShowInCreatedBy = true;
+
+        /// <summary>
         /// The resulting Stack
         /// </summary>
         public CraftingRecipeIngredient Output;
@@ -615,6 +620,8 @@ namespace Vintagestory.API.Common
             {
                 writer.Write(CopyAttributesFrom);
             }
+
+            writer.Write(ShowInCreatedBy);
         }
 
         /// <summary>
@@ -659,6 +666,8 @@ namespace Vintagestory.API.Common
             {
                 CopyAttributesFrom = reader.ReadString();
             }
+
+            ShowInCreatedBy = reader.ReadBoolean();
         }
 
         /// <summary>
@@ -697,7 +706,7 @@ namespace Vintagestory.API.Common
             recipe.RequiresTrait = RequiresTrait;
             recipe.AverageDurability = AverageDurability;
             recipe.CopyAttributesFrom = CopyAttributesFrom;
-
+            recipe.ShowInCreatedBy = ShowInCreatedBy;
             return recipe;
         }
     }

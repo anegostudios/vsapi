@@ -30,6 +30,7 @@ namespace Vintagestory.API.Config
         private readonly Dictionary<string, KeyValuePair<Regex, string>> regexCache = new Dictionary<string, KeyValuePair<Regex, string>>();
 
         private readonly Dictionary<string, string> wildcardCache = new Dictionary<string, string>();
+        private readonly HashSet<string> notFound = new HashSet<string>();
 
         private IAssetManager assetManager;
 
@@ -158,11 +159,7 @@ namespace Vintagestory.API.Config
         /// </returns>
         public string Get(string key, params object[] args)
         {
-            lock (cacheLock)
-            {
-                EnsureLoaded();
-                return string.Format(GetUnformatted(key), args);
-            }
+              return string.Format(GetUnformatted(key), args);   // There will be a cacheLock and EnsureLoaded inside the called method GetUnformatted
         }
 
         /// <summary>
@@ -191,7 +188,9 @@ namespace Vintagestory.API.Config
             lock (cacheLock)
             {
                 EnsureLoaded();
-                return entryCache.TryGetValue(KeyWithDomain(key), out var value) ? value : key;
+                bool found = entryCache.TryGetValue(KeyWithDomain(key), out var value);
+                //if (!found) logger.VerboseDebug("Not found lang key: " + key);
+                return found ? value : key;
             }
         }
 
@@ -230,8 +229,12 @@ namespace Vintagestory.API.Config
                 var validKey = KeyWithDomain(key);
                 if (entryCache.ContainsKey(validKey)) return true;
                 if (findWildcarded)
-                    return wildcardCache.Any(pair => StringUtil.FastStartsWith(key, pair.Key))
-                           || regexCache.Values.Any(pair => pair.Key.IsMatch(validKey));
+                {
+                    bool result = wildcardCache.Any(pair => StringUtil.FastStartsWith(key, pair.Key));
+                    if (!result) result = regexCache.Values.Any(pair => pair.Key.IsMatch(validKey));
+                    if (!result && !key.Contains("desc-") && notFound.Add(key)) logger.VerboseDebug("Lang key not found: " + key.Replace("{", "{{").Replace("}", "}}"));
+                    return result;
+                }
                 return false;
             }
         }
@@ -287,6 +290,7 @@ namespace Vintagestory.API.Config
                 case 1 when key.EndsWith("*"):
                     wildcardCache[key.TrimEnd('*')] = entry.Value;
                     break;
+                    // we can probably do better here, as we have our own wildcardsearch now
                 default:
                 {
                     var regex = new Regex("^" + key.Replace("*", "(.*)") + "$", RegexOptions.Compiled);
@@ -303,6 +307,11 @@ namespace Vintagestory.API.Config
                 .Append(AssetLocation.LocationSeparator)
                 .Append(key)
                 .ToString();
+        }
+
+        public void InitialiseSearch()
+        {
+            regexCache.Values.Any(pair => pair.Key.IsMatch("nonsense_value_and_fairly_longgg"));   // Force compilation of all the regexCache keys on first use
         }
     }
 }

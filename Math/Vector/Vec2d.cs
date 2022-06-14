@@ -67,6 +67,17 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public double DistanceTo(Vec2d pos)
+        {
+            return DistanceTo(pos.X, pos.Y);
+        }
 
+        public double DistanceTo(double targetX, double targetY)
+        {
+            var dx = X - targetX;
+            var dy = Y - targetY;
+
+            return Math.Sqrt(dx * dx + dy * dy);
+        }
     }
 }

@@ -393,7 +393,7 @@ namespace Vintagestory.API.Client
                 );
 
                 api.Render.GlPushMatrix();
-                api.Render.GlTranslate(0, 0, 100);
+                api.Render.GlTranslate(0, 0, 200);
                 scrollbar.Bounds.WithParent(Bounds);
                 scrollbar.Bounds.absFixedY = Bounds.InnerHeight;
                 scrollbar.RenderInteractiveElements(deltaTime);

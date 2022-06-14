@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -30,11 +31,17 @@ namespace Vintagestory.API.Common
 
         public float Scale = 1f;
 
+        public Vec3f RotateXYZCopy => new Vec3f(rotateX, rotateY, rotateZ);
+        public Vec3f OffsetXYZCopy => new Vec3f(offsetX, offsetY, offsetZ);
+
         /// <summary>
         /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
         /// </summary>
         public CompositeShape[] Alternates = null;
 
+        /// <summary>
+        /// Includes the base shape
+        /// </summary>
         public CompositeShape[] BakedAlternates = null;
 
         public CompositeShape[] Overlays = null;
@@ -70,7 +77,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Creates a deep copy of the texture
+        /// Creates a deep copy of the composite shape
         /// </summary>
         /// <returns></returns>
         public CompositeShape Clone()
@@ -82,10 +89,22 @@ namespace Vintagestory.API.Common
                 alternatesClone = new CompositeShape[Alternates.Length];
                 for (int i = 0; i < alternatesClone.Length; i++)
                 {
-                    alternatesClone[i] = Alternates[i].CloneWithoutAlternates();
+                    alternatesClone[i] = Alternates[i].CloneWithoutAlternatesNorOverlays();
                 }
             }
 
+            CompositeShape ct = CloneWithoutAlternates();
+            ct.Alternates = alternatesClone;
+
+            return ct;
+        }
+
+        /// <summary>
+        /// Creates a deep copy of the shape, but omitting its alternates (used to populate the alternates)
+        /// </summary>
+        /// <returns></returns>
+        public CompositeShape CloneWithoutAlternates()
+        {
             CompositeShape[] overlaysClone = null;
 
             if (this.Overlays != null)
@@ -93,33 +112,17 @@ namespace Vintagestory.API.Common
                 overlaysClone = new CompositeShape[Overlays.Length];
                 for (int i = 0; i < overlaysClone.Length; i++)
                 {
-                    overlaysClone[i] = Overlays[i].CloneWithoutAlternates();
+                    overlaysClone[i] = Overlays[i].CloneWithoutAlternatesNorOverlays();
                 }
             }
 
-            CompositeShape ct = new CompositeShape()
-            {
-                Base = Base?.Clone(),
-                Alternates = alternatesClone,
-                Overlays = overlaysClone,
-                Format = Format,
-                VoxelizeTexture = VoxelizeTexture,
-                InsertBakedTextures = InsertBakedTextures,
-                rotateX = rotateX,
-                rotateY = rotateY,
-                rotateZ = rotateZ,
-                offsetX = offsetX,
-                offsetY = offsetY,
-                offsetZ = offsetZ,
-                Scale = Scale,
-                QuantityElements = QuantityElements,
-                SelectiveElements = (string[])SelectiveElements?.Clone()
-            };
+            CompositeShape ct = CloneWithoutAlternatesNorOverlays();
+            ct.Overlays = overlaysClone;
 
             return ct;
         }
 
-        internal CompositeShape CloneWithoutAlternates()
+        internal CompositeShape CloneWithoutAlternatesNorOverlays()
         {
             CompositeShape ct = new CompositeShape()
             {
@@ -142,81 +145,109 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Expands the Composite Texture to a texture atlas friendly version and populates the Baked field
+        /// Expands the Composite Shape and populates the Baked field
         /// </summary>
         public void LoadAlternates(IAssetManager assetManager, ILogger logger)
         {
+            List<CompositeShape> resolvedAlternates = new List<CompositeShape>();
+
             if (Base.Path.EndsWith("*"))
             {
-                List<IAsset> assets = assetManager.GetMany("shapes/" + Base.Path.Substring(0, Base.Path.Length - 1), Base.Domain);
-
-                if (assets.Count == 0)  
-                {
-                    logger.Warning("Could not find any variants for shape {0}, will use standard cube shape.", Base.Path);
-                    Base = new AssetLocation("block/basic/cube");
-                }
-
-                if (assets.Count == 1)
-                {
-                    Base = assets[0].Location.CopyWithPath(assets[0].Location.Path.Substring("shapes/".Length));
-                    Base.RemoveEnding();
-                }
-
-                if (assets.Count > 1)
-                {
-                    int origLength = (Alternates == null ? 0 : Alternates.Length);
-                    CompositeShape[] alternates = new CompositeShape[origLength + assets.Count];
-                    if (Alternates != null)
-                    {
-                        Array.Copy(Alternates, alternates, Alternates.Length);
-                    }
-
-                    int i = 0;
-                    foreach (IAsset asset in assets)
-                    {
-                        AssetLocation newLocation = asset.Location.CopyWithPath(asset.Location.Path.Substring("shapes/".Length));
-                        newLocation.RemoveEnding();
-
-                        if (i == 0)
-                        {
-                            Base = newLocation.Clone();
-                        }
-                        
-                        alternates[origLength + i] = new CompositeShape() { Base = newLocation, rotateX = rotateX, rotateY = rotateY, rotateZ=rotateZ };
-
-                        i++;
-                    }
-
-                    Alternates = alternates;
-                }
+                resolvedAlternates.AddRange(resolveShapeWildCards(this, assetManager, logger, true));
             }
-
+            else resolvedAlternates.Add(this);
             if (Alternates != null)
             {
-                BakedAlternates = new CompositeShape[Alternates.Length + 1];
-                BakedAlternates[0] = this.Clone();
-                BakedAlternates[0].Alternates = null;
-
-                for (int i = 0; i < Alternates.Length; i++)
+                foreach (var alt in this.Alternates)
                 {
-                    BakedAlternates[i + 1] = Alternates[i].Clone();
-
-                    if (BakedAlternates[i + 1].Base == null)
+                    if (alt.Base == null) alt.Base = Base.Clone();
+                    if (alt.Base.Path.EndsWith("*"))
                     {
-                        BakedAlternates[i + 1].Base = Base.Clone();
+                        resolvedAlternates.AddRange(resolveShapeWildCards(alt, assetManager, logger, false));
                     }
-
-                    if (BakedAlternates[i + 1].QuantityElements == null)
-                    {
-                        BakedAlternates[i + 1].QuantityElements = QuantityElements;
-                    }
-
-                    if (BakedAlternates[i + 1].SelectiveElements == null)
-                    {
-                        BakedAlternates[i + 1].SelectiveElements = SelectiveElements;
-                    }
+                    else resolvedAlternates.Add(alt);
                 }
             }
+
+            Base = resolvedAlternates[0].Base;
+
+            if (resolvedAlternates.Count == 1)
+            {
+                return;
+            }
+
+            Alternates = new CompositeShape[resolvedAlternates.Count - 1];
+
+            for (int i = 0; i < resolvedAlternates.Count - 1; i++)
+            {
+                Alternates[i] = resolvedAlternates[i + 1];
+            }
+
+            BakedAlternates = new CompositeShape[Alternates.Length + 1];
+            BakedAlternates[0] = this.CloneWithoutAlternates();
+
+            for (int i = 0; i < Alternates.Length; i++)
+            {
+                CompositeShape altCS = BakedAlternates[i + 1] = Alternates[i];
+
+                if (altCS.Base == null)
+                {
+                    altCS.Base = Base.Clone();
+                }
+
+                if (altCS.QuantityElements == null)
+                {
+                    altCS.QuantityElements = QuantityElements;
+                }
+
+                if (altCS.SelectiveElements == null)
+                {
+                    altCS.SelectiveElements = SelectiveElements;
+                }
+            }
+            
+        }
+
+
+        CompositeShape[] resolveShapeWildCards(CompositeShape shape, IAssetManager assetManager, ILogger logger, bool addCubeIfNone)
+        {
+            List<IAsset> assets = assetManager.GetManyInCategory("shapes", shape.Base.Path.Substring(0, Base.Path.Length - 1), shape.Base.Domain);
+
+            if (assets.Count == 0)
+            {
+                if (addCubeIfNone)
+                {
+                    logger.Warning("Could not find any variants for wildcard shape {0}, will use standard cube shape.", shape.Base.Path);
+                    return new CompositeShape[] { new CompositeShape() { Base = new AssetLocation("block/basic/cube") } };
+                }
+                else
+                {
+                    logger.Warning("Could not find any variants for wildcard shape {0}.", shape.Base.Path);
+                    return new CompositeShape[] { };
+                }
+            }
+
+            CompositeShape[] cshapes = new CompositeShape[assets.Count];
+            int i = 0;
+            foreach (var asset in assets)
+            {
+                AssetLocation newLocation = asset.Location.CopyWithPath(asset.Location.Path.Substring("shapes/".Length));
+                newLocation.RemoveEnding();
+
+                cshapes[i++] = new CompositeShape()
+                {
+                    Base = newLocation,
+                    rotateX = shape.rotateX,
+                    rotateY = shape.rotateY,
+                    rotateZ = shape.rotateZ,
+                    Scale = shape.Scale,
+                    QuantityElements = shape.QuantityElements,
+                    SelectiveElements = shape.SelectiveElements
+                };
+            }
+
+            return cshapes;
+
         }
     }
 }

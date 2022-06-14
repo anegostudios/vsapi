@@ -20,7 +20,7 @@ namespace Vintagestory.API.Common
         public WeightedFloatArray AmbientColor;
         public WeightedFloat CloudDensity;
         public WeightedFloat CloudBrightness;
-        public WeightedFloat CloudYPos;
+        
         public WeightedFloat LerpSpeed;
         public WeightedFloat SceneBrightness;
 
@@ -38,7 +38,6 @@ namespace Vintagestory.API.Common
 
             CloudDensity.SetLerped(left.CloudDensity, right.CloudDensity, w);
             CloudBrightness.SetLerped(left.CloudBrightness, right.CloudBrightness, w);
-            CloudYPos.SetLerped(left.CloudYPos, right.CloudYPos, w);
             LerpSpeed.SetLerped(left.LerpSpeed, right.LerpSpeed, w);
             SceneBrightness.SetLerped(left.SceneBrightness, right.SceneBrightness, w);
             FogBrightness.SetLerped(left.FogBrightness, right.FogBrightness, w);
@@ -57,7 +56,6 @@ namespace Vintagestory.API.Common
                 FogColor = FogColor.Clone(),
                 AmbientColor = AmbientColor.Clone(),
                 CloudDensity = CloudDensity.Clone(),
-                CloudYPos = CloudYPos.Clone(),
                 CloudBrightness = CloudBrightness.Clone(),
                 SceneBrightness = SceneBrightness.Clone(),
                 FogBrightness = FogBrightness.Clone()
@@ -75,7 +73,6 @@ namespace Vintagestory.API.Common
                     AmbientColor = WeightedFloatArray.New(new float[] { 1, 1, 1 }, 1),
                     CloudBrightness = WeightedFloat.New(1, 1),
                     CloudDensity = WeightedFloat.New(0, 0),
-                    CloudYPos = new WeightedFloat(1, 0),
                     SceneBrightness = WeightedFloat.New(1, 0),
                     FogBrightness = WeightedFloat.New(1, 0)
                 }.EnsurePopulated();
@@ -92,7 +89,6 @@ namespace Vintagestory.API.Common
             if (AmbientColor.Value == null) AmbientColor.Value = new float[] { 0, 0, 0 };
             if (CloudDensity == null) CloudDensity = WeightedFloat.New(0, 0);
             if (CloudBrightness == null) CloudBrightness = WeightedFloat.New(0, 0);
-            if (CloudYPos == null) CloudYPos = WeightedFloat.New(1, 0);
             if (LerpSpeed == null) LerpSpeed = WeightedFloat.New(0, 0);
             if (SceneBrightness == null) SceneBrightness = WeightedFloat.New(1, 0);
             if (FogBrightness == null) FogBrightness = WeightedFloat.New(1, 0);
@@ -113,7 +109,6 @@ namespace Vintagestory.API.Common
             FlatFogYPos.ToBytes(writer);
             SceneBrightness.ToBytes(writer);
             FogBrightness.ToBytes(writer);
-            CloudYPos.ToBytes(writer);
         }
 
         public void FromBytes(BinaryReader reader)
@@ -129,7 +124,6 @@ namespace Vintagestory.API.Common
             FlatFogYPos.FromBytes(reader);
             SceneBrightness.FromBytes(reader);
             FogBrightness.FromBytes(reader);
-            CloudYPos.FromBytes(reader);
         }
     }
 }

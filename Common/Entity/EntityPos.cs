@@ -30,7 +30,14 @@ namespace Vintagestory.API.Common.Entities
         protected float yaw; // "rotY"
         protected float pitch; // "rotZ"
         protected int stance;
-
+        /// <summary>
+        /// The yaw of the agents head
+        /// </summary>
+        public float HeadYaw;
+        /// <summary>
+        /// The pitch of the agents head
+        /// </summary>
+        public float HeadPitch;
 
 
         public Vec3d Motion = new Vec3d();
@@ -86,11 +93,6 @@ namespace Vintagestory.API.Common.Entities
         {
             get { return pitch; }
             set { pitch = value; }
-        }
-        public virtual int Stance
-        {
-            get { return stance; }
-            set { stance = value; }
         }
 
         #region Position
@@ -223,6 +225,8 @@ namespace Vintagestory.API.Common.Entities
             this.Roll = pos.Roll;
             this.Yaw = pos.Yaw;
             this.Pitch = pos.Pitch;
+            this.HeadPitch = pos.HeadPitch;
+            this.HeadYaw = pos.HeadYaw;
             return this;
         }
 
@@ -430,6 +434,15 @@ namespace Vintagestory.API.Common.Entities
             return GameMath.Sqrt(dx * dx + dy * dy + dz * dz);
         }
 
+        public double DistanceTo(EntityPos pos)
+        {
+            double dx = this.x - pos.x;
+            double dy = this.y - pos.y;
+            double dz = this.z - pos.z;
+
+            return GameMath.Sqrt(dx * dx + dy * dy + dz * dz);
+        }
+
         public double HorDistanceTo(Vec3d pos)
         {
             double dx = this.x - pos.X;
@@ -467,7 +480,8 @@ namespace Vintagestory.API.Common.Entities
                 Yaw = Yaw,
                 Pitch = Pitch,
                 Roll = Roll,
-                Stance = Stance,
+                HeadYaw = HeadYaw,
+                HeadPitch = HeadPitch,
                 Motion = new Vec3d(Motion.X, Motion.Y, Motion.Z)
             };
             
@@ -616,6 +630,8 @@ namespace Vintagestory.API.Common.Entities
             Motion.X = pos.Motion.X;
             Motion.Y = pos.Motion.Y;
             Motion.Z = pos.Motion.Z;
+            HeadYaw = pos.HeadYaw;
+            HeadPitch = pos.HeadPitch;
         }
 
         /// <summary>
@@ -647,7 +663,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// Serializes all positional information
+        /// Serializes all positional information. Does not write HeadYaw and HeadPitch.
         /// </summary>
         /// <param name="writer"></param>
         public void ToBytes(BinaryWriter writer)
@@ -665,7 +681,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// Deserializes all positional information
+        /// Deserializes all positional information. Does not read HeadYaw and HeadPitch
         /// </summary>
         /// <param name="reader"></param>
         public void FromBytes(BinaryReader reader)

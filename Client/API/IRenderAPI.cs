@@ -719,8 +719,36 @@ namespace Vintagestory.API.Client
         /// Density of the current fog. Fog is calculated as followed in the shaders: clamp(fogMin + 1 - 1 / exp(gl_FragDepth * fogDensity), 0, 1)
         /// </summary>
         float FogDensity { get; }
-        
+
 
         #endregion
+
+
+        #region Light
+
+        /// <summary>
+        /// Adds a dynamic light source to the scene. Will not be rendered if the current point light count exceeds max dynamic lights in the graphics settings
+        /// </summary>
+        /// <param name="pointlight"></param>
+        void AddPointLight(IPointLight pointlight);
+
+        /// <summary>
+        /// Removes a dynamic light source from the scene
+        /// </summary>
+        /// <param name="pointlight"></param>
+        void RemovePointLight(IPointLight pointlight);
+
+        #endregion
+
     }
+
+
+
+    public interface IPointLight
+    {
+        Vec3f Color { get; }
+        Vec3d Pos { get; }
+    }
+
 }
+

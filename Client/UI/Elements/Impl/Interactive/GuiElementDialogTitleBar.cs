@@ -143,40 +143,39 @@ namespace Vintagestory.API.Client
                 didInit = true;
             }
 
-            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, GuiStyle.DialogBGRadius);
-
-            LinearGradient gradient = new LinearGradient(0, 0, Bounds.InnerWidth, 0);
-            gradient.AddColorStop(0, new Color(GuiStyle.DialogDefaultBgColor[0] * 1.4, GuiStyle.DialogDefaultBgColor[1] * 1.4, GuiStyle.DialogDefaultBgColor[2] * 1.4, 1));
-            gradient.AddColorStop(0.5, new Color(GuiStyle.DialogDefaultBgColor[0] * 1.1, GuiStyle.DialogDefaultBgColor[1] * 1.1, GuiStyle.DialogDefaultBgColor[2] * 1.1, 1));
-            gradient.AddColorStop(1, new Color(GuiStyle.DialogDefaultBgColor[0] * 1.4, GuiStyle.DialogDefaultBgColor[1] * 1.4, GuiStyle.DialogDefaultBgColor[2] * 1.4, 1));
-            ctx.SetSource(gradient);
-            ctx.FillPreserve();
-            gradient.Dispose();
-
-
             Bounds.CalcWorldBounds();
 
-            double radius = GuiStyle.DialogBGRadius;
+            double strokeWidth = 5;
+            RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY, Bounds.OuterWidth, Bounds.OuterHeight, 0);
+
+            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor[0] * 1.2, GuiStyle.DialogStrongBgColor[1] * 1.2, GuiStyle.DialogStrongBgColor[2] * 1.2, GuiStyle.DialogStrongBgColor[3]);
+            ctx.FillPreserve();
+
+            RoundRectangle(ctx, Bounds.bgDrawX + strokeWidth, Bounds.bgDrawY + strokeWidth, Bounds.OuterWidth - 2 * strokeWidth, Bounds.OuterHeight - 2 * strokeWidth, 0);
+            ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.6, GuiStyle.DialogStrongBgColor[1] * 1.6, GuiStyle.DialogStrongBgColor[2] * 1.6, 1);
+            ctx.LineWidth = strokeWidth * 1.75;
+            ctx.StrokePreserve();
+
+            var r = GuiElement.scaled(8);
+            surface.BlurPartial(r, (int)(2 * r + 1), (int)Bounds.bgDrawX, (int)(Bounds.bgDrawY + 0), (int)Bounds.OuterWidth, (int)(Bounds.InnerHeight));
+
+            double radius = 0;
             ctx.NewPath();
             ctx.MoveTo(Bounds.drawX, Bounds.drawY + Bounds.InnerHeight);
             ctx.LineTo(Bounds.drawX, Bounds.drawY + radius);
             ctx.Arc(Bounds.drawX + radius, Bounds.drawY + radius, radius, 180 * GameMath.DEG2RAD, 270 * GameMath.DEG2RAD);
             ctx.Arc(Bounds.drawX + Bounds.OuterWidth - radius, Bounds.drawY + radius, radius, -90 * GameMath.DEG2RAD, 0 * GameMath.DEG2RAD);
             ctx.LineTo(Bounds.drawX + Bounds.OuterWidth, Bounds.drawY + Bounds.InnerHeight);
-            
-            ctx.SetSourceRGBA(GuiStyle.TitleBarColor);
-            ctx.FillPreserve();
-            
+
             ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
-            ctx.LineWidth = 6;
+            ctx.LineWidth = strokeWidth;
             ctx.Stroke();
 
 
-            
 
 
             Font.SetupContext(ctx);
-            DrawTextLineAt(ctx, text, scaled(GuiStyle.ElementToDialogPadding), (Bounds.InnerHeight - Font.GetFontExtents().Height) / 2 + scaled(2));
+            DrawTextLineAt(ctx, text, scaled(GuiStyle.ElementToDialogPadding), (Bounds.InnerHeight - Font.GetFontExtents().Height) / 2 + scaled(1));
 
             double crossSize = scaled(unscaledCloseIconSize);
             double menuSize = scaled(unscaledCloseIconSize + 2);

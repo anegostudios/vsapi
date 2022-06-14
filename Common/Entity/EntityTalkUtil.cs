@@ -7,6 +7,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Util
 {
@@ -21,19 +22,30 @@ namespace Vintagestory.API.Util
         Complain,
         Goodbye,
         IdleShort,
-        Laugh
+        Laugh,
+        Thrust,
+        Shrug
     }
 
     public class SlidingPitchSound
     {
+        public EnumTalkType TalkType;
         public ILoadedSound sound;
         public float startPitch;
         public float endPitch;
+        public float length;
         public long startMs;
+
+        public float StartVolumne;
+        public float EndVolumne;
+
+        public bool Vibrato;
     }
 
     public class EntityTalkUtil
     {
+        public const int TalkPacketId = 1231;
+
         protected int lettersLeftToTalk = 0;
         protected int totalLettersToTalk = 0;
 
@@ -42,46 +54,54 @@ namespace Vintagestory.API.Util
 
         protected float chordDelay = 0f;
 
+        protected bool LongNote;
+
         protected Dictionary<EnumTalkType, float> TalkSpeed;
 
 
         protected EnumTalkType talkType;
 
+        protected ICoreServerAPI sapi;
         protected ICoreClientAPI capi;
         protected Entity entity;
 
         public AssetLocation soundName = new AssetLocation("sounds/voice/saxophone");
+        public float soundLength;
 
         protected List<SlidingPitchSound> slidingPitchSounds = new List<SlidingPitchSound>();
         protected List<SlidingPitchSound> stoppedSlidingSounds = new List<SlidingPitchSound>();
 
-        public float talkSpeedModifier = 1;
+        public float chordDelayMul = 1;
         public float pitchModifier = 1;
         public float volumneModifier = 1;
         public float idleTalkChance = 0.0005f;
 
-        public EntityTalkUtil(ICoreClientAPI capi, Entity atEntity)
+        public bool AddSoundLengthChordDelay;
+
+        public EntityTalkUtil(ICoreAPI api, Entity atEntity)
         {
-            this.capi = capi;
+            this.sapi = api as ICoreServerAPI;
+            this.capi = api as ICoreClientAPI;
             this.entity = atEntity;
             TalkSpeed = defaultTalkSpeeds();
-        }
 
-        public virtual void SetModifiers(float talkSpeedModifier = 1, float pitchModifier = 1, float volumneModifier = 1)
-        {
-            this.talkSpeedModifier = talkSpeedModifier;
-            this.pitchModifier = pitchModifier;
-            this.volumneModifier = volumneModifier;
-            TalkSpeed = defaultTalkSpeeds();
-            foreach (var key in TalkSpeed.Keys.ToArray())
+            capi?.Event.RegisterRenderer(new DummyRenderer() { action = OnRenderTick }, EnumRenderStage.Before, "talkfasttilk");
+
+            if (api.Side == EnumAppSide.Client)
             {
-                TalkSpeed[key] = Math.Max(0.06f, TalkSpeed[key] * talkSpeedModifier);
+                SoundParams param = new SoundParams()
+                {
+                    Location = soundName,
+                    DisposeOnFinish = true,
+                    ShouldLoop = false,
+                };
+                ILoadedSound sound = capi.World.LoadSound(param);
+                soundLength = sound?.SoundLengthSeconds ?? 0.1f;
+                sound.Dispose();
             }
         }
 
-        protected virtual Random Rand { get { return capi.World.Rand; } }
-
-        public virtual void OnGameTick(float dt)
+        private void OnRenderTick(float dt)
         {
             for (int i = 0; i < slidingPitchSounds.Count; i++)
             {
@@ -93,13 +113,52 @@ namespace Vintagestory.API.Util
                 }
 
                 float secondspassed = (capi.World.ElapsedMilliseconds - sps.startMs) / 1000f;
-                float progress = GameMath.Min(1, 1 - secondspassed / sps.sound.SoundLengthSeconds);
-                float pitch = sps.endPitch + (sps.startPitch - sps.endPitch) * progress;
-                sps.sound.SetPitch(pitch);
+                float len = sps.length;
+
+                float progress = GameMath.Min(1, secondspassed / len);
+                float pitch = GameMath.Lerp(sps.startPitch, sps.endPitch, progress);
+                float volume = GameMath.Lerp(sps.StartVolumne, sps.EndVolumne, progress);
+
+                if (secondspassed > len)
+                {
+                    volume -= (secondspassed - sps.length) * 5;
+                }
+
+                sps.Vibrato = sps.TalkType == EnumTalkType.Death;
+
+                if (volume <= 0)
+                {
+                    sps.sound.FadeOutAndStop(0.0f);
+                }
+                else
+                {
+                    sps.sound.SetPitch(pitch + (sps.Vibrato ? (float)Math.Sin(secondspassed * 8) * 0.05f : 0));
+                    sps.sound.FadeTo(volume, 0.1f, (s)=> { });
+                }
             }
 
             foreach (var val in stoppedSlidingSounds) slidingPitchSounds.Remove(val);
 
+        }
+
+        public virtual void SetModifiers(float chordDelayMul = 1, float pitchModifier = 1, float volumneModifier = 1)
+        {
+            this.chordDelayMul = chordDelayMul;
+            this.pitchModifier = pitchModifier;
+            this.volumneModifier = volumneModifier;
+            TalkSpeed = defaultTalkSpeeds();
+
+            foreach (var key in TalkSpeed.Keys.ToArray())
+            {
+                TalkSpeed[key] = Math.Max(0.06f, TalkSpeed[key] * chordDelayMul);
+            }
+        }
+
+        protected virtual Random Rand { get { return capi.World.Rand; } }
+
+        public virtual void OnGameTick(float dt)
+        {
+            float soundLen = 0.1f + (float)(capi.World.Rand.NextDouble() * capi.World.Rand.NextDouble()) / 2f;
 
             if (lettersLeftToTalk > 0)
             {
@@ -107,7 +166,7 @@ namespace Vintagestory.API.Util
 
                 if (chordDelay < 0)
                 {
-                    chordDelay = TalkSpeed[talkType] * talkSpeedModifier;
+                    chordDelay = TalkSpeed[talkType];
 
                     switch (talkType)
                     {
@@ -115,49 +174,63 @@ namespace Vintagestory.API.Util
                             {
                                 float startpitch = 1.5f;
                                 float endpitch = totalLettersTalked > 0 ? 0.9f : 1.5f;
-                                PlaySound(startpitch, endpitch, 0.5f);
-                                chordDelay = 0.3f * talkSpeedModifier;
+                                PlaySound(startpitch, endpitch, 0.5f, 0.4f, soundLen);
+                                chordDelay = 0.3f * chordDelayMul;
                             }
                             break;
 
                         case EnumTalkType.Goodbye:
                             {
                                 float pitch = 1.25f - 0.6f * (float)totalLettersTalked / totalLettersToTalk;
-                                PlaySound(pitch, pitch * 0.9f, 0.25f);
-                                chordDelay = 0.25f * talkSpeedModifier;
+                                PlaySound(pitch, pitch * 0.9f, 0.35f, 0.3f, soundLen);
+                                chordDelay = 0.25f * chordDelayMul;
                             }
                             break;
 
                         case EnumTalkType.Death:
                             {
-                                float startpitch = 1.25f - 0.6f * (float)totalLettersTalked / totalLettersToTalk;
-                                PlaySound(startpitch, startpitch * 0.4f, 0.4f);
+                                soundLen = 2.3f;
+                                PlaySound(0.75f, 0.3f, 0.5f, 0.1f, soundLen);
+                                break;
                             }
 
+                        case EnumTalkType.Thrust:
+                            soundLen = 0.12f;
+                            PlaySound(1.2f, 0.8f, 1.5f, 0.25f, soundLen);
+                            break;
+
+
+                        case EnumTalkType.Shrug:
+                            soundLen = 0.6f;
+                            PlaySound(0.9f, 1.5f, 0.4f, 0.4f, soundLen);
                             break;
 
                         case EnumTalkType.Meet:
                             {
+                                
                                 float pitch = 0.75f + 0.5f * (float)Rand.NextDouble() + (float)totalLettersTalked / totalLettersToTalk / 3;
-                                PlaySound(pitch, pitch * 1.5f, 0.25f);
+                                PlaySound(pitch, pitch * 1.5f, 0.25f, 0.25f, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
-                                    chordDelay = 0.45f * talkSpeedModifier;
+                                    chordDelay = 0.15f * chordDelayMul;
                                     currentLetterInWord = 0;
                                 }
+
                                 break;
                             }
 
                         case EnumTalkType.Complain:
                             {
                                 float startPitch = 0.75f + 0.5f * (float)Rand.NextDouble();
-                                float endPitch = 0.75f + 0.5f * (float)Rand.NextDouble();
-                                PlaySound(startPitch, endPitch, 0.25f);
+                                float endPitch = startPitch + 0.15f;
+                                soundLen = 0.05f;
+
+                                PlaySound(startPitch, endPitch, startPitch, endPitch, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
-                                    chordDelay = 0.45f * talkSpeedModifier;
+                                    chordDelay = 0.45f * chordDelayMul;
                                     currentLetterInWord = 0;
                                 }
 
@@ -169,13 +242,11 @@ namespace Vintagestory.API.Util
                             {
                                 float startPitch = 0.75f + 0.25f * (float)Rand.NextDouble();
                                 float endPitch = 0.75f + 0.25f * (float)Rand.NextDouble();
-                                PlaySound(startPitch, endPitch, 0.7f);
-
-
+                                PlaySound(startPitch, endPitch, 0.5f, 0.5f, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
-                                    chordDelay = 0.55f * talkSpeedModifier;
+                                    chordDelay = 0.35f * chordDelayMul;
                                     currentLetterInWord = 0;
                                 }
                                 break;
@@ -185,12 +256,13 @@ namespace Vintagestory.API.Util
                             {
                                 float rnd = (float)Rand.NextDouble() * 0.1f;
                                 float pfac = (float)Math.Pow(Math.Min(1, 1 / pitchModifier), 2);
+                                soundLen = 0.1f;
 
-                                float startPitch = rnd + 1.3f - currentLetterInWord / (15f / pfac);
-                                float endPitch = startPitch - 0.2f;
-                                PlaySound(startPitch, endPitch, 0.8f);
+                                float startPitch = rnd + 1.5f - currentLetterInWord / (20f / pfac);
+                                float endPitch = startPitch - 0.05f;
+                                PlaySound(startPitch, endPitch, 0.6f, 0.6f, soundLen);
 
-                                chordDelay = 0.23f * talkSpeedModifier * pfac;
+                                chordDelay = 0.2f * chordDelayMul * pfac;
                                 
                                 break;
                             }
@@ -198,12 +270,14 @@ namespace Vintagestory.API.Util
                         case EnumTalkType.Hurt:
                             {
                                 float pitch = 0.75f + 0.5f * (float)Rand.NextDouble() + (1 - (float)totalLettersTalked / totalLettersToTalk);
+                                soundLen /= 4;
+                                var vol = 0.25f + (1 - (float)totalLettersTalked / totalLettersToTalk) / 2;
 
-                                PlaySound(pitch, 0.25f + (1 - (float)totalLettersTalked / totalLettersToTalk) / 2);
+                                PlaySound(pitch, pitch - 0.2f, vol, vol, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
-                                    chordDelay = 0.25f * talkSpeedModifier;
+                                    chordDelay = 0.25f * chordDelayMul;
                                     currentLetterInWord = 0;
                                 }
 
@@ -214,17 +288,24 @@ namespace Vintagestory.API.Util
                             {
                                 float pitch = 0.75f + 0.4f * (float)Rand.NextDouble() + (1 - (float)totalLettersTalked / totalLettersToTalk);
 
-                                PlaySound(pitch, 0.25f + (1 - (float)totalLettersTalked / totalLettersToTalk) / 2.5f);
+                                PlaySound(pitch, 0.25f + (1 - (float)totalLettersTalked / totalLettersToTalk) / 2.5f, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
-                                    chordDelay = 0.25f * talkSpeedModifier;
+                                    chordDelay = 0.2f * chordDelayMul;
                                     currentLetterInWord = 0;
                                 }
+
+                                chordDelay = 0;
+
                                 break;
                             }
                     }
 
+                    if (AddSoundLengthChordDelay)
+                    {
+                        chordDelay += Math.Min(soundLength, soundLen) * chordDelayMul;
+                    }
 
                     lettersLeftToTalk--;
                     currentLetterInWord++;
@@ -243,23 +324,24 @@ namespace Vintagestory.API.Util
         }
 
 
-        protected virtual void PlaySound(float startpitch, float volume)
+        protected virtual void PlaySound(float startpitch, float volume, float length)
         {
-            PlaySound(startpitch, startpitch, volume);
+            PlaySound(startpitch, startpitch, volume, volume, length);
         }
 
-        protected virtual void PlaySound(float startPitch, float endPitch, float volume)
+        protected virtual void PlaySound(float startPitch, float endPitch, float startvolume, float endvolumne, float length)
         {
             startPitch *= pitchModifier;
             endPitch *= pitchModifier;
-            volume *= volumneModifier;
+            startvolume *= volumneModifier;
+            endvolumne *= volumneModifier;
 
             SoundParams param = new SoundParams()
             {
                 Location = soundName,
                 DisposeOnFinish = true,
                 Pitch = startPitch,
-                Volume = volume,
+                Volume = startvolume,
                 Position = entity.Pos.XYZ.ToVec3f().Add(0, (float)entity.LocalEyePos.Y, 0),
                 ShouldLoop = false,
                 Range = 8,
@@ -267,17 +349,17 @@ namespace Vintagestory.API.Util
 
             ILoadedSound sound = capi.World.LoadSound(param);
 
-            if (startPitch != endPitch)
+            slidingPitchSounds.Add(new SlidingPitchSound()
             {
-                slidingPitchSounds.Add(new SlidingPitchSound()
-                {
-                    startPitch = startPitch,
-                    endPitch = endPitch,
-                    sound = sound,
-                    startMs = capi.World.ElapsedMilliseconds
-                });
-            }
-
+                TalkType = talkType,
+                startPitch = startPitch,
+                endPitch = endPitch,
+                sound = sound,
+                startMs = capi.World.ElapsedMilliseconds,
+                length = length,
+                StartVolumne = startvolume,
+                EndVolumne = endvolumne
+            });
 
             sound.Start();
         }
@@ -285,13 +367,20 @@ namespace Vintagestory.API.Util
 
         public virtual void Talk(EnumTalkType talkType)
         {
-            IClientWorldAccessor world = capi.World as IClientWorldAccessor;
+            if (sapi != null)
+            {
+                sapi.Network.BroadcastEntityPacket(entity.EntityId, TalkPacketId, SerializerUtil.Serialize(talkType));
+                return;
+            }
+
+            IClientWorldAccessor world = capi.World;
 
             this.talkType = talkType;
             totalLettersTalked = 0;
             currentLetterInWord = 0;
 
             chordDelay = TalkSpeed[talkType];
+            LongNote = false;
 
             if (talkType == EnumTalkType.Meet)
             {
@@ -300,7 +389,7 @@ namespace Vintagestory.API.Util
 
             if (talkType == EnumTalkType.Hurt || talkType == EnumTalkType.Hurt2)
             {
-                lettersLeftToTalk = 3 + world.Rand.Next(6);
+                lettersLeftToTalk = 2 + world.Rand.Next(3);
             }
 
             if (talkType == EnumTalkType.Idle)
@@ -315,7 +404,7 @@ namespace Vintagestory.API.Util
 
             if (talkType == EnumTalkType.Laugh)
             {
-                lettersLeftToTalk = (int)((3 + world.Rand.Next(3)) * Math.Max(1, pitchModifier));
+                lettersLeftToTalk = (int)((4 + world.Rand.Next(4)) * Math.Max(1, pitchModifier));
             }
 
             if (talkType == EnumTalkType.Purchase)
@@ -325,7 +414,7 @@ namespace Vintagestory.API.Util
 
             if (talkType == EnumTalkType.Complain)
             {
-                lettersLeftToTalk = 3 + world.Rand.Next(5);
+                lettersLeftToTalk = 10 + world.Rand.Next(12);
             }
 
             if (talkType == EnumTalkType.Goodbye)
@@ -335,8 +424,17 @@ namespace Vintagestory.API.Util
 
             if (talkType == EnumTalkType.Death)
             {
-                lettersLeftToTalk = 2 + world.Rand.Next(2);
+                lettersLeftToTalk = 1;
             }
+            if (talkType == EnumTalkType.Shrug)
+            {
+                lettersLeftToTalk = 1;
+            }
+            if (talkType == EnumTalkType.Thrust)
+            {
+                lettersLeftToTalk = 1;
+            }
+
 
             totalLettersToTalk = lettersLeftToTalk;
         }
@@ -348,14 +446,16 @@ namespace Vintagestory.API.Util
             {
                 { EnumTalkType.Meet, 0.13f },
                 { EnumTalkType.Death, 0.3f },
-                { EnumTalkType.Idle, 0.2f },
-                { EnumTalkType.IdleShort, 0.2f },
+                { EnumTalkType.Idle, 0.1f },
+                { EnumTalkType.IdleShort, 0.1f },
                 { EnumTalkType.Laugh, 0.2f },
                 { EnumTalkType.Hurt, 0.07f },
                 { EnumTalkType.Hurt2, 0.07f },
                 { EnumTalkType.Goodbye, 0.07f },
                 { EnumTalkType.Complain, 0.09f },
                 { EnumTalkType.Purchase, 0.15f },
+                { EnumTalkType.Thrust, 0.15f },
+                { EnumTalkType.Shrug, 0.15f },
             };
         }
     }

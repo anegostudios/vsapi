@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Vintagestory.API.Util
+namespace Vintagestory.API.Datastructures
 {
     public class FastSetOfLongs : IEnumerable<long>
     {

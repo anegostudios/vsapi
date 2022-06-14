@@ -115,7 +115,7 @@ namespace Vintagestory.API.Client
                 ctx.LineWidth = 5;// background.BorderWidth * 1.75;
                 GuiElement.RoundRectangle(ctx, 0, 0, width, height, background.Radius);
                 ctx.StrokePreserve();
-                surface.Blur(6.2);
+                surface.BlurFull(6.2);
 
                 ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 });
                 ctx.LineWidth = background.BorderWidth;
@@ -241,11 +241,11 @@ namespace Vintagestory.API.Client
             {
                 lines[i] = lines[i].TrimEnd();
 
-                TextExtents textents = ((CairoFont)font).GetTextExtents(lines[i]);
+                TextExtents textents = font.GetTextExtents(lines[i]);
                 maxwidth = Math.Max(textents.Width, maxwidth);
             }
 
-            FontExtents fextents = ((CairoFont)font).GetFontExtents();
+            FontExtents fextents = font.GetFontExtents();
 
             int width = (int)maxwidth + 1 + 2 * background.Padding;
             int height = (int)fextents.Height * lines.Length + 1 + 2 * background.Padding;
@@ -273,14 +273,14 @@ namespace Vintagestory.API.Client
             {
                 lines[i] = lines[i].TrimEnd();
 
-                TextExtents textents = ((CairoFont)font).GetTextExtents(lines[i]);
+                TextExtents textents = font.GetTextExtents(lines[i]);
                 fullTextWidth = Math.Max(textents.Width, fullTextWidth);
             }
 
             int width = (int)Math.Min(maxWidth, fullTextWidth) + 2 * background.Padding;
 
             TextDrawUtil prober = new TextDrawUtil();
-            double height = prober.GetMultilineTextHeight(font as CairoFont, text, width) + 2 * background.Padding;
+            double height = prober.GetMultilineTextHeight(font, text, width) + 2 * background.Padding;
 
             return GenTextTexture(text, font, width, (int)height + 1, background, orientation);
         }

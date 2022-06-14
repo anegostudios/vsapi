@@ -209,7 +209,7 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Called when server assetes were received and all texture atlases have been created
+        /// Fired when server assets were received and all texture atlases have been created, also all sounds loaded
         /// </summary>
         event Action BlockTexturesLoaded;
         
@@ -232,6 +232,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         event Action ReloadShapes;
 
+        /// <summary>
+        /// Called when the hotkeys are changed
+        /// </summary>
+        event Action HotkeysChanged;
 
 
 

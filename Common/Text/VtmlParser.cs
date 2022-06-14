@@ -74,6 +74,11 @@ namespace Vintagestory.API.Common
                         elems.Add(new RichTextComponent(capi, "\r\n", fontStack.Peek()));
                         break;
 
+                    case "hotkey":
+                    case "hk":
+                        elems.Add(new HotkeyComponent(capi, tagToken.ContentText, fontStack.Peek()));
+                        break;
+
                     case "i":
                         CairoFont font = fontStack.Peek().Clone();
                         font.Slant = FontSlant.Italic;

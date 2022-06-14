@@ -7,6 +7,7 @@ using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -497,7 +498,7 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Retrieves an int, float, long or double value. Whatever attribute is found for given key
+        /// Retrieves an int, float, long or double value. Whatever attribute is found for given key. If its a string its converted to double
         /// </summary>
         /// <param name="key"></param>
         /// <param name="defaultValue"></param>
@@ -509,6 +510,7 @@ namespace Vintagestory.API.Datastructures
             if (attr is FloatAttribute) return (float)attr.GetValue();
             if (attr is DoubleAttribute) return (double)attr.GetValue();
             if (attr is LongAttribute) return (long)attr.GetValue();
+            if (attr is StringAttribute) return ((string)attr.GetValue()).ToDouble();
 
             return defaultValue;
         }

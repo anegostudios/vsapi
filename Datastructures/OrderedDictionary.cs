@@ -255,7 +255,7 @@ namespace Vintagestory.API.Datastructures
 			{
 				if (Dictionary.ContainsKey(key))
 				{
-					Dictionary[key] = value;
+					Dictionary[key] = value;    // expensive
 					List[IndexOfKey(key)] = new KeyValuePair<TKey, TValue>(key, value);
 				}
 				else
@@ -304,8 +304,7 @@ namespace Vintagestory.API.Datastructures
 
         public TValue TryGetValue(TKey key)
         {
-            TValue val = default(TValue);
-            Dictionary.TryGetValue(key, out val);
+            Dictionary.TryGetValue(key, out TValue val);
             return val;
         }
 
@@ -392,6 +391,24 @@ namespace Vintagestory.API.Datastructures
         {
 			return Dictionary.ContainsValue(value);
         }
-    }
+
+		/// <summary>
+		/// Adds values, but for performance does not replace any existing values which have the same key; that's fine for asset loading
+		/// </summary>
+		/// <param name="src"></param>
+		internal void AddRange(Dictionary<TKey, TValue> src, ILogger logger)
+		{
+			foreach (KeyValuePair<TKey, TValue> val in src)
+			{
+				TKey key = val.Key;
+				if (!Dictionary.ContainsKey(key))
+				{
+					Dictionary.Add(key, val.Value);
+					List.Add(val);
+				}
+				//else logger.Warning("Duplicate key in shapes dictionary: " + key.ToString());
+			}
+		}
+	}
 }
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -10,7 +11,7 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-    public delegate int PlaceBlockDelegate(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock);
+    public delegate int PlaceBlockDelegate(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock);
 
     public enum EnumReplaceMode
     {
@@ -74,6 +75,7 @@ namespace Vintagestory.API.Common
 
 
         public Dictionary<BlockPos, int> BlocksUnpacked = new Dictionary<BlockPos, int>();
+        public Dictionary<BlockPos, int> LiquidsLayerUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
         public List<Entity> EntitiesUnpacked = new List<Entity>();
         public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
@@ -284,9 +286,12 @@ namespace Vintagestory.API.Common
                     {
                         BlockPos pos = new BlockPos(x, y, z);
                         int blockid = world.BlockAccessor.GetBlockId(pos);
-                        if (blockid == 0) continue;
+                        int liquidid = world.BlockAccessor.GetLiquidBlock(pos).BlockId;
+                        if (liquidid == blockid) blockid = 0;
+                        if (blockid == 0 && liquidid == 0) continue;
 
                         BlocksUnpacked[pos] = blockid;
+                        LiquidsLayerUnpacked[pos] = liquidid;
 
                         BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
                         if (be != null)
@@ -305,6 +310,11 @@ namespace Vintagestory.API.Common
             }
 
             EntitiesUnpacked.AddRange(world.GetEntitiesInsideCuboid(start, end, (e) => !(e is EntityPlayer)));
+
+            foreach (var entity in EntitiesUnpacked)
+            {
+                entity.OnStoreCollectibleMappings(BlockCodes, ItemCodes);
+            }
         }
 
 
@@ -342,10 +352,14 @@ namespace Vintagestory.API.Common
 
             foreach (var val in BlocksUnpacked)
             {
-                if (val.Value == 0) continue;
+                int liquidid;
+                if (!LiquidsLayerUnpacked.TryGetValue(val.Key, out liquidid)) liquidid = 0;
+                int blockid = val.Value;
+                if (blockid == 0 && liquidid == 0) continue;
 
                 // Store a block mapping
-                BlockCodes[val.Value] = world.BlockAccessor.GetBlock(val.Value).Code;
+                if (blockid != 0) BlockCodes[blockid] = world.BlockAccessor.GetBlock(blockid).Code;
+                if (liquidid != 0) BlockCodes[liquidid] = world.BlockAccessor.GetBlock(liquidid).Code;
 
                 // Store relative position and the block id
                 int dx = val.Key.X - minX;
@@ -357,7 +371,20 @@ namespace Vintagestory.API.Common
                 SizeZ = Math.Max(dz, SizeZ);
 
                 Indices.Add((uint)((dy << 20) | (dz << 10) | dx));
-                BlockIds.Add(val.Value);
+                if (liquidid == 0)
+                {
+                    BlockIds.Add(blockid);
+                }
+                else if (blockid == 0)
+                {
+                    BlockIds.Add(liquidid);
+                }
+                else   // if both block layer and liquid layer are present (non zero), add this twice;  placing code will place the liquidid blocks in the liquids layer
+                {
+                    BlockIds.Add(blockid);
+                    Indices.Add((uint)((dy << 20) | (dz << 10) | dx));
+                    BlockIds.Add(liquidid);
+                }
             }
 
             foreach (var val in DecorsUnpacked)
@@ -498,12 +525,12 @@ namespace Vintagestory.API.Common
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
 
-                Block oldBlock = blockAccessor.GetBlock(curPos);
-                placed += handler(blockAccessor, curPos, oldBlock, newBlock);
+                placed += handler(blockAccessor, curPos, newBlock);
 
 
                 if (newBlock.LightHsv[2] > 0 && blockAccessor is IWorldGenBlockAccessor)
                 {
+                    Block oldBlock = blockAccessor.GetBlock(curPos);
                     ((IWorldGenBlockAccessor)blockAccessor).ScheduleBlockLightUpdate(curPos.Copy(), oldBlock.BlockId, newBlock.BlockId);
                 }
             }
@@ -557,10 +584,10 @@ namespace Vintagestory.API.Common
         /// <param name="flipAxis"></param>
         public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)
         {
-            BlockPos curPos = new BlockPos();
             BlockPos startPos = new BlockPos(1024, 1024, 1024);
 
             BlocksUnpacked.Clear();
+            LiquidsLayerUnpacked.Clear();
             BlockEntitiesUnpacked.Clear();
             DecorsUnpacked.Clear();
             EntitiesUnpacked.Clear();
@@ -658,7 +685,14 @@ namespace Vintagestory.API.Common
                     pos.Z += SizeZ / 2;
                 }
 
-                BlocksUnpacked[pos] = newBlock.BlockId;
+                if (newBlock.ForLiquidsLayer)
+                {
+                    LiquidsLayerUnpacked[pos] = newBlock.BlockId;
+                }
+                else
+                {
+                    BlocksUnpacked[pos] = newBlock.BlockId;
+                }
             }
 
 
@@ -778,8 +812,11 @@ namespace Vintagestory.API.Common
                 int dy = (int)((index >> 20) & 0x1ff);
                 int dz = (int)((index >> 10) & 0x1ff);
 
-                dx -= SizeX / 2;
-                dz -= SizeZ / 2;
+                if (aroundOrigin != EnumOrigin.StartPos)
+                {
+                    dx -= SizeX / 2;
+                    dz -= SizeZ / 2;
+                }
 
                 BlockPos pos = new BlockPos(dx, dy, dz);
 
@@ -808,13 +845,13 @@ namespace Vintagestory.API.Common
                         break;
                 }
 
-                pos.X += SizeX / 2;
-                pos.Z += SizeZ / 2;
-
-                curPos.Set(pos.X + startPos.X, pos.Y + startPos.Y, pos.Z + startPos.Z);
+                if (aroundOrigin != EnumOrigin.StartPos)
+                {
+                    pos.X += SizeX / 2;
+                    pos.Z += SizeZ / 2;
+                }
 
                 string beData = val.Value;
-
 
                 string entityclass = worldForResolve.GetBlock(BlocksUnpacked[pos]).EntityClass;
 
@@ -843,53 +880,53 @@ namespace Vintagestory.API.Common
                     Entity entity = worldForResolve.ClassRegistry.CreateEntity(className);
 
                     entity.FromBytes(reader, false);
-                    entity.DidImportOrExport(startPos);
 
-                    double dx = entity.ServerPos.X - startPos.X;
-                    double dy = entity.ServerPos.Y - startPos.Y;
-                    double dz = entity.ServerPos.Z - startPos.Z;
+                    var pos = entity.ServerPos;
 
-                    dx -= SizeX / 2;
-                    dz -= SizeZ / 2;
+                    double offx = 0;
+                    double offz = 0;
 
-                    Vec3d pos = new Vec3d();
+                    if (aroundOrigin != EnumOrigin.StartPos)
+                    {
+                        offx = SizeX / 2.0;
+                        offz = SizeZ / 2.0;
+                    }
 
-                    // 90 deg:
-                    // xNew = -yOld
-                    // yNew = xOld
+                    pos.X -= offx;
+                    pos.Z -= offz;
 
-                    // 180 deg:
-                    // xNew = -xOld
-                    // yNew = -yOld
-
-                    // 270 deg:
-                    // xNew = yOld
-                    // yNew = -xOld
+                    var x = pos.X;
+                    var z = pos.Z;
 
                     switch (angle)
                     {
                         case 90:
-                            pos.Set(-dz, dy, dx);
+                            pos.X = -z + offz; // I have no idea why i need to add offz/offx flipped here for entities, but not for blocks (－‸ლ)
+                            pos.Z = x + offx;
                             break;
                         case 180:
-                            pos.Set(-dx, dy, -dz);
+                            pos.X = -x + offx;
+                            pos.Z = -z + offz;
                             break;
                         case 270:
-                            pos.Set(dz, dy, -dx);
+                            pos.X = z + offz;
+                            pos.Z = -x + offx;
                             break;
                     }
 
-                    pos.X += SizeX / 2;
-                    pos.Z += SizeZ / 2;
+                    pos.Yaw -= angle * GameMath.DEG2RAD;
+                    entity.Pos.Yaw -= angle * GameMath.DEG2RAD;
 
-                    entity.ServerPos.SetPos(startPos.X + pos.X, entity.ServerPos.Y, startPos.Z + pos.Z);
-                    entity.Pos.SetPos(startPos.X + pos.X, entity.Pos.Y, startPos.Z + pos.Z);
-                    entity.PositionBeforeFalling.Set(startPos.X + pos.X, entity.PositionBeforeFalling.Y, startPos.Z + pos.Z);
+                    entity.Pos.SetPos(pos);
+                    entity.PositionBeforeFalling.X = pos.X;
+                    entity.PositionBeforeFalling.Z = pos.Z;
+
+                    entity.DidImportOrExport(startPos);
+
 
                     EntitiesUnpacked.Add(entity);
                 }
             }
-
 
             Pack(worldForResolve, startPos);
         }
@@ -975,7 +1012,10 @@ namespace Vintagestory.API.Common
                     {
                         worldForCollectibleResolve.SpawnEntity(entity);
                     }
-                    
+
+                    entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
+
+
                 }
             }
         }
@@ -1199,73 +1239,75 @@ namespace Vintagestory.API.Common
 
 
 
-        protected virtual int PlaceReplaceAllKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceAllKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
-            blockAccessor.SetBlock(newBlock.BlockId, pos);
+            if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos) ; else blockAccessor.SetBlock(newBlock.BlockId, pos);
             return 1;
         }
 
-        protected virtual int PlaceReplaceableKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceableKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
-            if (oldBlock.Replaceable < newBlock.Replaceable)
+            if (newBlock.ForLiquidsLayer || blockAccessor.GetBlock(pos).Replaceable > newBlock.Replaceable)
             {
-                blockAccessor.SetBlock(newBlock.BlockId, pos);
+                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock(newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceAllNoAirKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceAllNoAirKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
             if (newBlock.BlockId != 0)
             {
-                blockAccessor.SetBlock(newBlock.BlockId, pos);
+                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock(newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceOnlyAirKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceOnlyAirKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
+            Block oldBlock = blockAccessor.GetBlock(pos);
             if (oldBlock.BlockId == 0)
             {
-                blockAccessor.SetBlock(newBlock.BlockId, pos);
+                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock(newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceAllReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceAllReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
-            blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+            if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
             return 1;
         }
 
-        protected virtual int PlaceReplaceableReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceableReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
-            if (oldBlock.Replaceable < newBlock.Replaceable)
+            if (newBlock.ForLiquidsLayer || blockAccessor.GetBlock(pos).Replaceable > newBlock.Replaceable)
             {
-                blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceAllNoAirReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceAllNoAirReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
             if (newBlock.BlockId != 0)
             {
-                blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceOnlyAirReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block oldBlock, Block newBlock)
+        protected virtual int PlaceReplaceOnlyAirReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
         {
+            Block oldBlock = blockAccessor.GetBlock(pos);
             if (oldBlock.BlockId == 0)
             {
-                blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;

@@ -11,10 +11,11 @@ namespace Vintagestory.API.Datastructures
 {
     public class CachedCuboidList : IEnumerable<Cuboidd>
     {
-        public List<Cuboidd> cuboids = new List<Cuboidd>(10);
-        public List<BlockPos> positions = new List<BlockPos>(10);
-        public List<Block> blocks = new List<Block>(10);
+        public Cuboidd[] cuboids = new Cuboidd[0];   //initialised with size 0 because cuboids.Length test and the enumerator may use this
+        public BlockPos[] positions;
+        public Block[] blocks;
         public int Count;
+        private int populatedSize = 0;
 
         public CachedCuboidList()
         {
@@ -26,28 +27,37 @@ namespace Vintagestory.API.Datastructures
             Count = 0;
         }
 
+        public void Add(Cuboidf[] cuboids, int x, int y, int z, Block block = null)
+        {
+            for (int i = 0; i < cuboids.Length; i++)
+            {
+                Add(cuboids[i], x, y, z, block);
+            }
+        }
 
-        public void Add(Cuboidf cuboid, BlockPos offset, Block block = null)
+        public void Add(Cuboidf cuboid, int x, int y, int z, Block block = null)
         {
             if (cuboid == null) return;
 
-            if (Count >= cuboids.Count)
+            if (Count >= populatedSize)
             {
-                cuboids.Add(cuboid.OffsetCopyDouble(offset));
-                positions.Add(new BlockPos(offset.X, offset.Y, offset.Z));
-                blocks.Add(block);
+                if (Count >= cuboids.Length) ExpandArrays();
+                cuboids[Count] = cuboid.OffsetCopyDouble(x, y, z);
+                positions[Count] = new BlockPos(x, y, z);
+                blocks[Count] = block;
+                populatedSize++;
             }
             else
             {
                 cuboids[Count].Set(
-                    cuboid.X1 + offset.X,
-                    cuboid.Y1 + offset.Y,
-                    cuboid.Z1 + offset.Z,
-                    cuboid.X2 + offset.X,
-                    cuboid.Y2 + offset.Y,
-                    cuboid.Z2 + offset.Z
+                    cuboid.X1 + x,
+                    cuboid.Y1 + y,
+                    cuboid.Z1 + z,
+                    cuboid.X2 + x,
+                    cuboid.Y2 + y,
+                    cuboid.Z2 + z
                 );
-                positions[Count].Set(offset.X, offset.Y, offset.Z);
+                positions[Count].Set(x, y, z);
                 blocks[Count] = block;
             }
 
@@ -63,6 +73,23 @@ namespace Vintagestory.API.Datastructures
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        private void ExpandArrays()
+        {
+            int newSize = populatedSize == 0 ? 16 : populatedSize * 3 / 2;
+            Cuboidd[] newCuboids = new Cuboidd[newSize];
+            BlockPos[] newPositions = new BlockPos[newSize];
+            Block[] newBlocks = new Block[newSize];
+            for (int i = 0; i < populatedSize; i++)
+            {
+                newCuboids[i] = cuboids[i];
+                newPositions[i] = positions[i];
+                newBlocks[i] = blocks[i];
+            }
+            cuboids = newCuboids;
+            positions = newPositions;
+            blocks = newBlocks;
         }
     }
 }

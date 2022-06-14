@@ -41,6 +41,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         float AlphaTest { set; }
 
+        float DamageEffect { set; }
+
         float ExtraZOffset { set; }
 
         float ExtraGodray { set; }

@@ -154,12 +154,12 @@ namespace Vintagestory.API.Common
         List<CollectibleObject> Collectibles { get; }
 
         /// <summary>
-        /// List of all loaded blocks. The array index is the block id. Some may be null or placeholders (then block.code is null).
+        /// List of all loaded blocks. The array index is the block id. Some may be null or placeholders (then block.code is null). Client-side none are null, what was null return as air blocks.
         /// </summary>
         IList<Block> Blocks { get; }
 
         /// <summary>
-        /// List of all loaded items. The array index is the item id. Some may be null or placeholders (then item.code is null)
+        /// List of all loaded items. The array index is the item id. Some may be placeholders (then item.code is null).  Server-side, some may be null; client-side, a check for item == null is not necessary.
         /// </summary>
         IList<Item> Items { get; }
 
@@ -220,7 +220,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockCode"></param>
         /// <returns></returns>
         Block GetBlock(AssetLocation blockCode);
-        
+
         /// <summary>
         /// Retrieve the entity class from given entity code. Will return null if the entity does not exist.
         /// </summary>
@@ -423,14 +423,14 @@ namespace Vintagestory.API.Common
         /// <param name="gravityEffect"></param>
         /// <param name="scale"></param>
         /// <param name="model"></param>
-        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
         void SpawnParticles(float quantity, int color, Vec3d minPos, Vec3d maxPos, Vec3f minVelocity, Vec3f maxVelocity, float lifeLength, float gravityEffect, float scale = 1f, EnumParticleModel model = EnumParticleModel.Quad, IPlayer dualCallByPlayer = null);
 
         /// <summary>
         /// Spawn a bunch of particles
         /// </summary>
         /// <param name="particlePropertiesProvider"></param>
-        /// <param name="dualCallByPlayer"></param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
         void SpawnParticles(IParticlePropertiesProvider particlePropertiesProvider, IPlayer dualCallByPlayer = null);
 
 
@@ -443,7 +443,7 @@ namespace Vintagestory.API.Common
         /// <param name="radius"></param>
         /// <param name="quantity"></param>
         /// <param name="scale"></param>
-        /// <param name="dualCallByPlayer"></param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
         void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
 
 
@@ -455,7 +455,7 @@ namespace Vintagestory.API.Common
         /// <param name="radius"></param>
         /// <param name="quantity"></param>
         /// <param name="scale"></param>
-        /// <param name="dualCallByPlayer"></param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
         void SpawnCubeParticles(Vec3d pos, ItemStack item, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
 
 
@@ -661,6 +661,5 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <returns></returns>
         IBlockAccessor GetLockFreeBlockAccessor();
-
     }
 }

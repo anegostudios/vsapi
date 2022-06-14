@@ -25,6 +25,15 @@ namespace Vintagestory.API.Common
         public override void OnFrame(float dt)
         {
             if (this.player == null) this.player = entityPlayer.Player;
+            
+            var capi = entity.Api as ICoreClientAPI;
+            bool isSelf = capi.World.Player.Entity.EntityId == entity.EntityId;
+
+            if (!isSelf)
+            {
+                base.OnFrame(dt);
+                return;
+            }
 
             float diff = GameMath.AngleRadDistance(entity.BodyYaw, entity.Pos.Yaw);
 
@@ -35,38 +44,66 @@ namespace Vintagestory.API.Common
                 else diff = 0;
             }
 
-            entity.HeadYaw += (diff - entity.HeadYaw) * dt * 6;
-            entity.HeadYaw = GameMath.Clamp(entity.HeadYaw, -0.75f, 0.75f);
+            bool overheadLookAtMode = capi.Settings.Bool["overheadLookAt"] && (player as IClientPlayer).CameraMode == EnumCameraMode.Overhead;
 
-            entity.HeadPitch = GameMath.Clamp((entity.Pos.Pitch - GameMath.PI) * 0.75f, -1.2f, 1.2f);
+            if (!overheadLookAtMode)
+            {
+                entity.Pos.HeadYaw += (diff - entity.Pos.HeadYaw) * dt * 6;
+                entity.Pos.HeadYaw = GameMath.Clamp(entity.Pos.HeadYaw, -0.75f, 0.75f);
 
+                entity.Pos.HeadPitch = GameMath.Clamp((entity.Pos.Pitch - GameMath.PI) * 0.75f, -1.2f, 1.2f);
+            }
 
             if (player?.Entity == null || player.Entity.MountedOn != null || (player as IClientPlayer).CameraMode == EnumCameraMode.Overhead)
             {
                 entity.BodyYaw = entity.Pos.Yaw;
+
+                if (overheadLookAtMode)
+                {
+                    float dist = -GameMath.AngleRadDistance((entity.Api as ICoreClientAPI).Input.MouseYaw, entity.Pos.Yaw);
+                    float targetHeadYaw = GameMath.PI + dist;
+                    var targetpitch = GameMath.Clamp(-entity.Pos.Pitch - GameMath.PI + GameMath.TWOPI, -1, +0.8f);
+
+                    if (targetHeadYaw > GameMath.PI) targetHeadYaw -= GameMath.TWOPI;
+
+                    if (targetHeadYaw < -1f || targetHeadYaw > 1f)
+                    {
+                        targetHeadYaw = 0;
+
+                        entity.Pos.HeadPitch += (GameMath.Clamp((entity.Pos.Pitch - GameMath.PI) * 0.75f, -1.2f, 1.2f) - entity.Pos.HeadPitch) * dt * 6;
+                    } else
+                    {
+                        entity.Pos.HeadPitch += (targetpitch - entity.Pos.HeadPitch) * dt * 6;
+                    }
+
+                    entity.Pos.HeadYaw += (targetHeadYaw - entity.Pos.HeadYaw) * dt * 6;
+                }
+
+                
             }
             else
             {
-                float yawDist = GameMath.AngleRadDistance(entity.BodyYaw, entity.Pos.Yaw);
-                bool ismoving = player.Entity.Controls.TriesToMove || player.Entity.ServerControls.TriesToMove;
-
-                bool attachedToClimbWall = false;// player.Entity.Controls.IsClimbing && player.Entity.Controls.IsClimbing && (entity.BodyYaw - player.Entity.ClimbingOnFace.HorizontalAngleIndex * 90 * GameMath.DEG2RAD) < 0.02;
-
-                float threshold = 1f - (ismoving ? 0.99f : 0) + (attachedToClimbWall ? 3 : 0);
-                ICoreClientAPI capi = entity.Api as ICoreClientAPI;
-
-                if (player.PlayerUID == capi.World.Player.PlayerUID && capi.Settings.Bool["immersiveFpMode"] && false)
+                if (player?.Entity.Alive == true)
                 {
-                    entity.BodyYaw = entity.Pos.Yaw;
-                }
-                else
-                {
+                    float yawDist = GameMath.AngleRadDistance(entity.BodyYaw, entity.Pos.Yaw);
+                    bool ismoving = player.Entity.Controls.TriesToMove || player.Entity.ServerControls.TriesToMove;
 
-                    if (Math.Abs(yawDist) > threshold || rotateTpYawNow)
+                    bool attachedToClimbWall = false;
+
+                    float threshold = 1f - (ismoving ? 0.99f : 0) + (attachedToClimbWall ? 3 : 0);
+
+                    if (player.PlayerUID == capi.World.Player.PlayerUID && capi.Settings.Bool["immersiveFpMode"] && false)
                     {
-                        float speed = 0.05f + Math.Abs(yawDist) * 3.5f;
-                        entity.BodyYaw += GameMath.Clamp(yawDist, -dt * speed, dt * speed);
-                        rotateTpYawNow = Math.Abs(yawDist) > 0.01f;
+                        entity.BodyYaw = entity.Pos.Yaw;
+                    }
+                    else
+                    {
+                        if (Math.Abs(yawDist) > threshold || rotateTpYawNow)
+                        {
+                            float speed = 0.05f + Math.Abs(yawDist) * 3.5f;
+                            entity.BodyYaw += GameMath.Clamp(yawDist, -dt * speed, dt * speed);
+                            rotateTpYawNow = Math.Abs(yawDist) > 0.01f;
+                        }
                     }
                 }
             }
@@ -88,6 +125,8 @@ namespace Vintagestory.API.Common
         protected float[] HeadGlobalMatrixInverted = null;
         protected float[] HeadLocalMatrix = null;
         protected float[] tmpMatrix = Mat4f.Create();
+
+        public float dy=0, dp = 0;
 
 
         public EntityHeadController(IAnimationManager animator, EntityAgent entity, Shape entityShape)
@@ -125,15 +164,13 @@ namespace Vintagestory.API.Common
         /// <param name="dt"></param>
         public virtual void OnFrame(float dt)
         {
-            if (entity.HeadYaw != 0 || entity.HeadPitch != 0)
+            if (entity.Pos.HeadYaw != 0 || entity.Pos.HeadPitch != 0)
             {
-
                 Mat4f.Identity(HeadLocalMatrix);
-                Mat4f.RotateY(HeadLocalMatrix, HeadLocalMatrix, entity.HeadYaw);
-                Mat4f.RotateZ(HeadLocalMatrix, HeadLocalMatrix, entity.HeadPitch);
+                Mat4f.RotateY(HeadLocalMatrix, HeadLocalMatrix, entity.Pos.HeadYaw + dy);
+                Mat4f.RotateZ(HeadLocalMatrix, HeadLocalMatrix, entity.Pos.HeadPitch + dp);
 
                 ApplyTransformToElement(HeadLocalMatrix, HeadGlobalMatrix, HeadGlobalMatrixInverted, HeadElement);
-
             }
         }
 

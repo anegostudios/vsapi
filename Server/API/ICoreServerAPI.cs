@@ -171,6 +171,10 @@ namespace Vintagestory.API.Server
         /// <param name="requiredPrivilege"></param>
         /// <returns></returns>
         bool RegisterCommand(string command, string descriptionMsg, string syntaxMsg, ServerChatCommandDelegate handler, string requiredPrivilege = null);
-        
+
+        /// <summary>
+        /// For internal use: used to remap block and item Ids, as soon as assets are loaded from disk, before recipes etc. are loaded or anything else which may occur in modsystem AssetsLoaded() methods
+        /// </summary>
+        void TriggerOnAssetsFirstLoaded();
     }
 }

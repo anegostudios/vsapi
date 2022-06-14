@@ -67,7 +67,10 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Side agnostic Start method, called after all mods received a call to StartPre().
+        /// Start method, called on both server and client after all mods already received a call to StartPre(), but before Blocks/Items/Entities/Recipes etc are loaded and some time before StartServerSide / StartClientSide.
+        /// <br/>Typically used to register for events and network packets etc
+        /// <br/>Typically also used in a mod's core to register the classes for your blocks, items, entities, blockentities, behaviors etc, prior to loading assets
+        /// <br/><br/>Do not make calls to api.Assets at this stage, the assets may not be found, resulting in errors (even if the json file exists on disk). Use AssetsLoaded() stage instead.
         /// </summary>
         /// <param name="api"></param>
         public virtual void Start(ICoreAPI api)
@@ -77,7 +80,23 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Minor convenience method to save yourself the check for/cast to ICoreClientAPI in Start()
+        /// Called on the server or the client; implementing code may need to check which side it is.
+        /// <br/>On a server, called only after all mods have called Start(), and after asset JSONs have been read from disk and patched, but before runphase ModsAndConfigReady.
+        /// <br/>Asset files are now available to load using api.Assets.TryGet() calls or similar.  It is not guaranteed that the actual in-game assets (including blocks and items) are yet registered!
+        /// <br/>If called from a modsystem, what has been registered at this stage depends on the ExecuteOrder().  After 0.2, blocks and items have been registered.  After 0.6, recipes have been registered.
+        /// <br/>If implementing this, and if your code requires that blocks, items and entities have been registered first, make sure your ModSystem has set an appropriate ExecuteOrder()!!
+        /// </summary>
+        /// <param name="api"></param>
+        public virtual void AssetsLoaded(ICoreAPI api)
+        {
+
+        }
+
+
+        /// <summary>
+        /// Full start to the mod on the client side.
+        /// <br/>Note, in multiplayer games, the server assets (blocks, items, entities, recipes) have not yet been received and so no blocks etc. are yet registered
+        /// <br/>For code that must run only after we have blocks,items,entities and recipes all registered and loaded, add your method to event BlockTexturesLoaded
         /// </summary>
         /// <param name="api"></param>
         public virtual void StartClientSide(ICoreClientAPI api)
@@ -86,7 +105,9 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Minor convenience method to save yourself the check for/cast to ICoreServerAPI in Start()
+        /// Full start to the mod on the server side
+        /// <br/><br/>In 1.17+ do NOT use this to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON).
+        /// It is already too late to do that here, it will not be seen client-side.  Instead, code which needs to do that should be registered for event sapi.Event.AssetsFinalizers.  See VSSurvivalMod system BlockReinforcement.cs for an example.
         /// </summary>
         /// <param name="api"></param>
         public virtual void StartServerSide(ICoreServerAPI api)

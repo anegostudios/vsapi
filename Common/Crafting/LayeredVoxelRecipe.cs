@@ -45,7 +45,7 @@ namespace Vintagestory.API.Common
                 return false;
             }
 
-            if (!Output.Resolve(world, sourceForErrorLogging))
+            if (!Output.Resolve(world, sourceForErrorLogging, Ingredient.Code))
             {
                 return false;
             }
@@ -155,7 +155,7 @@ namespace Vintagestory.API.Common
 
             Output = new JsonItemStack();
             Output.FromBytes(reader, resolver.ClassRegistry);
-            Output.Resolve(resolver, "[FromBytes]");
+            Output.Resolve(resolver, "[Voxel recipe FromBytes]", Ingredient.Code);
             GenVoxels();
         }
 

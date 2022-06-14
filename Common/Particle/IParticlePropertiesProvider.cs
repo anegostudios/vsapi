@@ -35,7 +35,7 @@ namespace Vintagestory.API.Common
 
         bool SwimOnLiquid { get; }
 
-        bool Bouncy { get; }
+        float Bounciness { get; }
 
         /// <summary>
         /// Whether the particle should despawn when in contact with air (e.g. for water bubbles)

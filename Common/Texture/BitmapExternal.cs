@@ -110,34 +110,35 @@ namespace Vintagestory.API.Common
             FastBitmap fastbmp = new FastBitmap();
             fastbmp.bmp = bmp;
             fastbmp.Lock();
+            int stride = fastbmp.Stride;
 
             // Could be more compact, but this is therefore more efficient
             switch (rot)
             {
                 case 0:
-                    for (int x = 0; x < width; x++)
+                    for (int y = 0; y < height; y++)
                     {
-                        for (int y = 0; y < height; y++)
-                        {
-                            bmpPixels[x + y * width] = fastbmp.GetPixel(x, y);
-                        }
+                        fastbmp.GetPixelRow(width, y * stride, bmpPixels, y * width);
                     }
                     break;
                 case 90:
                     for (int x = 0; x < width; x++)
                     {
+                        int baseY = x * width;
                         for (int y = 0; y < height; y++)
                         {
-                            bmpPixels[y + x * width] = fastbmp.GetPixel(width - x - 1, y);
+                            bmpPixels[y + baseY] = fastbmp.GetPixel(width - x - 1, y * stride);
                         }
                     }
                     break;
                 case 180:
-                    for (int x = 0; x < width; x++)
+                    for (int y = 0; y < height; y++)
                     {
-                        for (int y = 0; y < height; y++)
+                        int baseX = y * width;
+                        int yStride = (height - y - 1) * stride;
+                        for (int x = 0; x < width; x++)
                         {
-                            bmpPixels[x + y * width] = fastbmp.GetPixel(width - x - 1, height - y - 1);
+                            bmpPixels[x + baseX] = fastbmp.GetPixel(width - x - 1, yStride);
                         }
                     }
                     break;
@@ -145,9 +146,10 @@ namespace Vintagestory.API.Common
                 case 270:
                     for (int x = 0; x < width; x++)
                     {
+                        int baseY = x * width;
                         for (int y = 0; y < height; y++)
                         {
-                            bmpPixels[y + x * width] = fastbmp.GetPixel(x, height - y - 1);
+                            bmpPixels[y + baseY] = fastbmp.GetPixel(x, (height - y - 1) * stride);
                         }
                     }
                     break;

@@ -37,7 +37,7 @@ namespace Vintagestory.API.Common
         /// <returns>There are no death particles for bubbles.</returns>
         public IParticlePropertiesProvider[] DeathParticles => null;
 
-        public bool Bouncy { get; set; }
+        public float Bounciness { get; set; }
 
         /// <summary>
         /// Whether or not the bubbles die in air.

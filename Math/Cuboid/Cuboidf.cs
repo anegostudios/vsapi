@@ -282,6 +282,19 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public Cuboidf ClampTo(Vec3f min, Vec3f max)
+        {
+            X1 = Math.Max(min.X, X1);
+            Y1 = Math.Max(min.Y, Y1);
+            Z1 = Math.Max(min.Z, Z1);
+
+            X2 = Math.Min(max.X, X2);
+            Y2 = Math.Min(max.Y, Y2);
+            Z2 = Math.Min(max.Z, Z2);
+
+            return this;
+        }
+
         /// <summary>
         /// Grows the cuboid so that it includes the given block
         /// </summary>
@@ -390,44 +403,30 @@ namespace Vintagestory.API.MathTools
             float radZ = degZ * GameMath.DEG2RAD;
 
             float[] matrix = Mat4f.Create();
+            Mat4f.Translate(matrix, matrix, (float)origin.X, (float)origin.Y, (float)origin.Z);
             Mat4f.RotateX(matrix, matrix, radX);
             Mat4f.RotateY(matrix, matrix, radY);
             Mat4f.RotateZ(matrix, matrix, radZ);
+            Mat4f.Translate(matrix, matrix, -(float)origin.X, -(float)origin.Y, -(float)origin.Z);
 
-            float[] min = new float[] { X1 - (float)origin.X, Y1 - (float)origin.Y, Z1 - (float)origin.Z, 1 };
-            float[] max = new float[] { X2 - (float)origin.X, Y2 - (float)origin.Y, Z2 - (float)origin.Z, 1 };
+            float[] dcoord1 = Mat4f.MulWithVec4(matrix, X1, Y1, Z1, 1);
+            float[] dcoord2 = Mat4f.MulWithVec4(matrix, X1, Y1, Z2, 1);
+            float[] dcoord3 = Mat4f.MulWithVec4(matrix, X2, Y1, Z2, 1);
+            float[] dcoord4 = Mat4f.MulWithVec4(matrix, X2, Y1, Z1, 1);
 
-            min = Mat4f.MulWithVec4(matrix, min);
-            max = Mat4f.MulWithVec4(matrix, max);
-
-            float tmp;
-            if (max[0] < min[0])
-            {
-                tmp = max[0];
-                max[0] = min[0];
-                min[0] = tmp;
-            }
-            if (max[1] < min[1])
-            {
-                tmp = max[1];
-                max[1] = min[1];
-                min[1] = tmp;
-            }
-            if (max[2] < min[2])
-            {
-                tmp = max[2];
-                max[2] = min[2];
-                min[2] = tmp;
-            }
+            float[] ucoord1 = Mat4f.MulWithVec4(matrix, X1, Y2, Z1, 1);
+            float[] ucoord2 = Mat4f.MulWithVec4(matrix, X1, Y2, Z2, 1);
+            float[] ucoord3 = Mat4f.MulWithVec4(matrix, X2, Y2, Z2, 1);
+            float[] ucoord4 = Mat4f.MulWithVec4(matrix, X2, Y2, Z1, 1);
 
             Cuboidf cube = new Cuboidf()
             {
-                X1 = min[0] + (float)origin.X,
-                Y1 = min[1] + (float)origin.Y,
-                Z1 = min[2] + (float)origin.Z,
-                X2 = max[0] + (float)origin.X,
-                Y2 = max[1] + (float)origin.Y,
-                Z2 = max[2] + (float)origin.Z
+                X1 = GameMath.Min(dcoord1[0], dcoord2[0], dcoord3[0], dcoord4[0], ucoord1[0], ucoord2[0], ucoord3[0], ucoord4[0]),
+                Y1 = GameMath.Min(dcoord1[1], dcoord2[1], dcoord3[1], dcoord4[1], ucoord1[1], ucoord2[1], ucoord3[1], ucoord4[1]),
+                Z1 = GameMath.Min(dcoord1[2], dcoord2[2], dcoord3[2], dcoord4[2], ucoord1[2], ucoord2[2], ucoord3[2], ucoord4[2]),
+                X2 = GameMath.Max(dcoord1[0], dcoord2[0], dcoord3[0], dcoord4[0], ucoord1[0], ucoord2[0], ucoord3[0], ucoord4[0]),
+                Y2 = GameMath.Max(dcoord1[1], dcoord2[1], dcoord3[1], dcoord4[1], ucoord1[1], ucoord2[1], ucoord3[1], ucoord4[1]),
+                Z2 = GameMath.Max(dcoord1[2], dcoord2[2], dcoord3[2], dcoord4[2], ucoord1[2], ucoord2[2], ucoord3[2], ucoord4[2])
             };
 
             return cube;

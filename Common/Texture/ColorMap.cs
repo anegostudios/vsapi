@@ -10,6 +10,7 @@ namespace Vintagestory.API.Common
 {
     public class ColorMap
     {
+        public const int ColorMapLoadedFlag = 2;
         public string Code;
         public CompositeTexture Texture;
         public int Padding;
@@ -21,6 +22,5 @@ namespace Vintagestory.API.Common
         public Size2i OuterSize;
         public int BlockAtlasTextureSubId;
         public int RectIndex;
-
     }
 }

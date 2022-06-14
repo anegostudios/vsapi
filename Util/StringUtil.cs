@@ -123,6 +123,20 @@ namespace Vintagestory.API.Util
         }
 
 
+        public static bool StartsWithFast(this string value, string reference, int offset)
+        {
+            if (reference.Length + offset > value.Length) return false;
+
+            // search from the right end of the reference string, as the right end is more likely to be unique
+            for (int i = reference.Length + offset - 1; i >= offset; i--)
+            {
+                if (value[i] != reference[i - offset]) return false;
+            }
+
+            return true;
+        }
+
+
         public static bool EqualsFast(this string value, string reference)
         {
             if (reference.Length != value.Length) return false;

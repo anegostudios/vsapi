@@ -110,9 +110,20 @@ namespace Vintagestory.API.Client
         /// <param name="ctrlPressed"></param>
         /// <param name="shiftPressed"></param>
         void RegisterHotKey(string hotkeyCode, string name, GlKeys key, HotkeyType type = HotkeyType.CharacterControls, bool altPressed = false, bool ctrlPressed = false, bool shiftPressed = false);
+        /// <summary>
+        /// Same as RegisterHotKey except it inserts it at the start of the list
+        /// </summary>
+        /// <param name="hotkeyCode"></param>
+        /// <param name="name"></param>
+        /// <param name="key"></param>
+        /// <param name="type"></param>
+        /// <param name="altPressed"></param>
+        /// <param name="ctrlPressed"></param>
+        /// <param name="shiftPressed"></param>
+        void RegisterHotKeyFirst(string hotkeyCode, string name, GlKeys key, HotkeyType type = HotkeyType.CharacterControls, bool altPressed = false, bool ctrlPressed = false, bool shiftPressed = false);
 
 
-        
+
         /// <summary>
         /// Will call the handler if given hotkey has been pressed. Removes the previously assigned handler.
         /// </summary>

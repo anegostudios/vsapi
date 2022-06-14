@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cairo;
-using Vintagestory.API.Common;
-using Vintagestory.API.Config;
-using Vintagestory.API.MathTools;
+﻿using Cairo;
 
 namespace Vintagestory.API.Client
 {
@@ -38,14 +30,21 @@ namespace Vintagestory.API.Client
         }
 
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
+        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
+            TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
+            offsetX += GuiElement.scaled(PaddingLeft);
+
             BoundsPerLine = new LineRectangled[]
             {
-                new LineRectangled(lineX, lineY, GuiElement.scaled(font.UnscaledFontsize), GuiElement.scaled(font.UnscaledFontsize))
+                new LineRectangled(offsetX, lineY, GuiElement.scaled(font.UnscaledFontsize), GuiElement.scaled(font.UnscaledFontsize))
             };
 
-            return false;
+            bool requireLinebreak = offsetX + BoundsPerLine[0].Width > curfp.X2;
+
+            nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
+
+            return requireLinebreak;
         }
 
 

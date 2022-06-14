@@ -8,6 +8,36 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// On the graphics card we have only one reflective bit, but we can store the mode in the wind data bits
+    /// </summary>
+    public enum EnumReflectiveMode
+    {
+        /// <summary>
+        /// Not reflective
+        /// </summary>
+        None = 0,
+        /// <summary>
+        /// Sun-Position independent reflectivity
+        /// </summary>
+        Weak = 1,
+        /// <summary>
+        /// Sun-Position dependent weak reflectivity
+        /// </summary>
+        Medium = 2,
+        /// <summary>
+        /// Sun-Position dependent weak reflectivity
+        /// </summary>
+        Strong = 3,
+        /// <summary>
+        /// Many small sparkles
+        /// </summary>
+        Sparkly = 4,
+
+        Mild = 5,
+
+    }
+
     public enum EnumWindBitMode
     {
         /// <summary>

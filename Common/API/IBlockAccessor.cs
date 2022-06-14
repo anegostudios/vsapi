@@ -13,7 +13,14 @@ namespace Vintagestory.API.Common
         public bool ExchangeOnly;
         public BlockPos Pos;
         public int OldBlockId;
-        public int NewBlockId;
+        /// <summary>
+        /// If this value is negative, it indicates no change to the block (neither air block nor anything else) because only the liquid is being updated
+        /// </summary>
+        public int NewBlockId = -1;
+        /// <summary>
+        /// If this value is negative, it indicates no change to the liquids layer block (neither air block nor anything else) because only the solid block is being updated
+        /// </summary>
+        public int NewLiquidId = -1;
         public ItemStack ByStack;
 
         public byte[] BlockEntityData;
@@ -116,6 +123,7 @@ namespace Vintagestory.API.Common
         bool LastChunkLoaded { get; }
 
         void Begin();
+        void Dispose();
     }
 
     /// <summary>
@@ -249,6 +257,28 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         Block GetBlock(BlockPos pos);
 
+        /// <summary>
+        /// Get block type from the liquids layer at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetLiquidBlock(BlockPos pos);
+
+        /// <summary>
+        /// Get block type from the liquids layer (which can include also Lake Ice - so not necessarily a liquid!!!) at given world coordinate. Will never return null. For no liquid present you'll get a block instance with block code "air" and id 0
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetLiquidBlock(int x, int y, int z);
+
+        /// <summary>
+        /// Gets the block type from the solids layer, except when the liquids layer holds ice in which case it returns ice in priority
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        Block GetSolidBlock(int x, int y, int z);
 
         /// <summary>
         /// A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. Currently used for more efficient collision testing.
@@ -258,7 +288,7 @@ namespace Vintagestory.API.Common
         /// <param name="onBlock">The method in which you want to check for the block, whatever it may be.</param>
         /// <param name="centerOrder">If true, the blocks will be ordered by the distance to the center position</param>
         /// <returns></returns>
-        void WalkBlocks(BlockPos minPos, BlockPos maxPos, Action<Block, BlockPos> onBlock, bool centerOrder = false);
+        void WalkBlocks(BlockPos minPos, BlockPos maxPos, Action<Block, int, int, int> onBlock, bool centerOrder = false);
 
         /// <summary>
         /// A method to search for a given block in an area
@@ -268,6 +298,15 @@ namespace Vintagestory.API.Common
         /// <param name="onBlock">Return false to stop the search</param>
         /// <param name="onChunkMissing">Called when a missing/unloaded chunk was encountered</param>
         void SearchBlocks(BlockPos minPos, BlockPos maxPos, ActionConsumable<Block, BlockPos> onBlock, Action<int, int, int> onChunkMissing = null);
+
+        /// <summary>
+        /// A method to search for a given liquid block in an area
+        /// </summary>
+        /// <param name="minPos"></param>
+        /// <param name="maxPos"></param>
+        /// <param name="onBlock">Return false to stop the search</param>
+        /// <param name="onChunkMissing">Called when a missing/unloaded chunk was encountered</param>
+        void SearchLiquidBlocks(BlockPos minPos, BlockPos maxPos, ActionConsumable<Block, BlockPos> onBlock, Action<int, int, int> onChunkMissing = null);
 
         /// <summary>
         /// Calls given handler if it encounters one or more generated structure at given position (read from mapregions, assuming a max structure size of 256x256x256)
@@ -290,6 +329,13 @@ namespace Vintagestory.API.Common
         /// <param name="blockId"></param>
         /// <param name="pos"></param>
         void SetBlock(int blockId, BlockPos pos);
+
+        /// <summary>
+        /// Set a liquid block at the given position. Use id 0 to clear all liquids from the position. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
+        /// </summary>
+        /// <param name="liquidBlockId"></param>
+        /// <param name="pos"></param>
+        void SetLiquidBlock(int liquidBlockId, BlockPos pos);
 
         /// <summary>
         /// Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
@@ -347,6 +393,12 @@ namespace Vintagestory.API.Common
         /// <param name="position"></param>
         /// <param name="byItemStack"></param>
         void SpawnBlockEntity(string classname, BlockPos position, ItemStack byItemStack = null);
+
+        /// <summary>
+        /// Adds pre-initialized block entity to the world. Does not call CreateBehaviors/Initialize/OnBlockPlaced on the block entity. This is a very low level method for block entity spawning, normally you'd want to use <see cref="SpawnBlockEntity(string, BlockPos, ItemStack)"/>
+        /// </summary>
+        /// <param name="be"></param>
+        void SpawnBlockEntity(BlockEntity be);
 
 
         /// <summary>
@@ -653,6 +705,15 @@ namespace Vintagestory.API.Common
 
         #endregion
 
+        /// <summary>
+        /// Tests whether a side at the specified position is solid - testing both liquids layer (which could be ice) and solid blocks layer
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="v"></param>
+        /// <param name="z"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        bool IsSideSolid(int x, int y, int z, BlockFacing facing);
     }
 
     /// <summary>

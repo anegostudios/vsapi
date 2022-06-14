@@ -73,6 +73,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         bool PlayerReadyFired { get; }
 
+
+
         /// <summary>
         /// API Component to control the clients ambient values
         /// </summary>
@@ -231,7 +233,6 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         MusicTrack StartTrack(AssetLocation soundLocation, float priority, EnumSoundType soundType, Action<ILoadedSound> onLoaded = null);
 
-        
 
         /// <summary>
         /// Returns the currently playing music track, if any is playing

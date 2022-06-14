@@ -366,7 +366,9 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetSuitability(ItemSlot sourceSlot, ItemSlot targetSlot, bool isMerge)
         {
-            return isMerge ? (baseWeight + 3) : (baseWeight + 1);
+            float extraWeight = targetSlot is ItemSlotBackpack && (sourceSlot.Itemstack.Collectible.StorageFlags & EnumItemStorageFlags.Backpack) > 0 ? 2 : 0;
+
+            return baseWeight + extraWeight + (isMerge ? 3 : 1);
         }
 
         public virtual bool CanContain(ItemSlot sinkSlot, ItemSlot sourceSlot)
@@ -591,7 +593,7 @@ namespace Vintagestory.API.Common
                 return slots;
             }
 
-            if (slots == null || slots.Length != tree.GetInt("qslots"))
+            if (slots == null /*|| slots.Length != tree.GetInt("qslots") - wtf is this good for? The slot count from tree attr might be outdated!*/)
             {
                 slots = new ItemSlot[tree.GetInt("qslots")];
                 for (int i = 0; i < slots.Length; i++)

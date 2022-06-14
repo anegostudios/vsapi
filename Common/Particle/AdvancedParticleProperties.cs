@@ -37,7 +37,7 @@ namespace Vintagestory.API.Common
         public NatFloat SecondarySpawnInterval { get; set; } = NatFloat.createUniform(0, 0);
 
         [JsonProperty]
-        public bool Bouncy { get; set; }
+        public float Bounciness { get; set; }
 
         /// <summary>
         /// Whether or not the entity dies in air.
@@ -364,6 +364,7 @@ namespace Vintagestory.API.Common
             }
 
             writer.Write(WindAffectednes);
+            writer.Write(Bounciness);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -443,6 +444,7 @@ namespace Vintagestory.API.Common
             }
 
             WindAffectednes = reader.ReadSingle();
+            Bounciness = reader.ReadSingle();
         }
 
         public static AdvancedParticleProperties createFromBytes(BinaryReader reader, IWorldAccessor resolver)

@@ -92,8 +92,9 @@ namespace Vintagestory.API.Client
         /// <param name="flowPath"></param>
         /// <param name="xPos"></param>
         /// <returns>Amount of lines passed over, if any</returns>
-        public virtual bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)
+        public virtual bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
+            nextOffsetX = offsetX;
             return false;
         }
 

@@ -8,6 +8,8 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+    public delegate IBitmap CreateTextureDelegate();
+
     /// <summary>
     /// Item texture Atlas.
     /// </summary>
@@ -106,6 +108,20 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         bool InsertTexture(byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
 
+
+
+        /// <summary>
+        /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
+        /// A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.
+        /// </summary>
+        /// <param name="path">Used as reference for caching</param>
+        /// <param name="textureSubId"></param>
+        /// <param name="texPos"></param>
+        /// <param name="onCreate">The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <paramref name="path"/></param>
+        /// <param name="alphaTest"></param>
+        /// <returns>False if the file was not found or the insert failed</returns>
+        bool GetOrInsertTexture(AssetLocation path, out int textureSubId, out TextureAtlasPosition texPos, CreateTextureDelegate onCreate = null, float alphaTest = 0.005f);
+
         /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
         /// A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.
@@ -116,6 +132,7 @@ namespace Vintagestory.API.Client
         /// <param name="texPos"></param>
         /// <param name="alphaTest"></param>
         /// <returns></returns>
+        [Obsolete("Use GetOrInsertTexture() instead. It's more efficient to load the bmp only if the texture was not found in the cache")]
         bool InsertTextureCached(AssetLocation path, IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
 
         /// <summary>
@@ -158,6 +175,21 @@ namespace Vintagestory.API.Client
         /// <param name="rndIndex">0..29 for a specific random pixel, or -1 to randomize, which is the same as calling GetRandomColor without the rndIndex argument</param>
         /// <returns></returns>
         int GetRandomColor(int textureSubId, int rndIndex);
+
+        /// <summary>
+        /// Returns one of 30 random rgba values inside the given texture (defined by its sub-id)
+        /// </summary>
+        /// <param name="textureSubId"></param>
+        /// <param name="rndIndex">0..29 for a specific random pixel, or -1 to randomize, which is the same as calling GetRandomColor without the rndIndex argument</param>
+        /// <returns></returns>
+        int GetRandomColor(TextureAtlasPosition texPos, int rndIndex);
+
+        /// <summary>
+        /// Get the random colors array for the specified TextureAtlasPosition, creating it if necessary
+        /// </summary>
+        /// <param name="texPos"></param>
+        /// <returns></returns>
+        int[] GetRandomColors(TextureAtlasPosition texPos);
 
         /// <summary>
         /// Returns you an average rgba value picked inside the texture subid

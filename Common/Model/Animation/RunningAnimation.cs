@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -82,15 +77,15 @@ namespace Vintagestory.API.Common
                 BlendedWeight = EasingFactor;
                 return;
             }
-            BlendedWeight = GameMath.Clamp(blendMode != EnumAnimationBlendMode.Average ? EasingFactor : EasingFactor / weightSum, 0, 1);
-            
+
+            BlendedWeight = GameMath.Clamp(blendMode == EnumAnimationBlendMode.Add ? EasingFactor : EasingFactor / weightSum, 0, 1);
         }
 
         public void Progress(float dt, float walkspeed)
         {
             dt *= meta.GetCurrentAnimationSpeed(walkspeed);
 
-            if (Active || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
+            if ((Active && (Iterations == 0 || Animation.OnAnimationEnd != EnumEntityAnimationEndHandling.EaseOut)) || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
             {
                 EasingFactor = Math.Min(1f, EasingFactor + (1f - EasingFactor) * dt * meta.EaseInSpeed);
             }
@@ -108,7 +103,7 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-            if (Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && newFrame >= Animation.QuantityFrames - 1)
+            if ((Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold || Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) && newFrame >= Animation.QuantityFrames - 1)
             {
                 Iterations = 1;
                 CurrentFrame = Animation.QuantityFrames - 1;

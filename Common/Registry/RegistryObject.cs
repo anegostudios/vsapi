@@ -261,6 +261,32 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
+        /// Returns true if any given wildcard matches the blocks/items code. E.g. water-* will match all water blocks
+        /// </summary>
+        /// <param name="wildcards"></param>
+        /// <returns></returns>
+        public bool WildCardMatch(string[] wildcards)
+        {
+            foreach (string wildcard in wildcards)
+            {
+                if (WildCardMatch(wildcard)) return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true if given wildcard matches the blocks/items code. E.g. water-* will match all water blocks
+        /// </summary>
+        /// <param name="wildCard"></param>
+        /// <returns></returns>
+        public bool WildCardMatch(string wildCard)
+        {
+            return Code != null && WildcardUtil.Match(wildCard, Code.Path);
+        }
+
+
+        /// <summary>
         /// Used by the block loader to replace wildcards with their final values
         /// </summary>
         /// <param name="input"></param>

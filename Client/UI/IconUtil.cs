@@ -15855,7 +15855,7 @@ namespace Vintagestory.API.Client
             ctx.Rectangle(x, y, (int)size + 1, (int)size + 1);
             ctx.Fill();
 
-            surface.Blur(blurRadius);
+            surface.BlurFull(blurRadius);
 
             ctx.Operator = Operator.DestOver;
             ctx.Rectangle(x, y, (int)size + 1, (int)size + 1);
@@ -17139,7 +17139,7 @@ namespace Vintagestory.API.Client
             matrix = new Matrix(0.219784, 0, 0, 0.219784, 111.929039, -26.59924);
             pattern.Matrix = matrix;
             cr.StrokePreserve();
-            surface.Blur(3);
+            surface.BlurFull(3);
             //cr.StrokePreserve();
             //surface.Blur(3);
             if (pattern != null) pattern.Dispose();

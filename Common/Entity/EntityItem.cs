@@ -103,7 +103,7 @@ namespace Vintagestory.API.Common
 
 
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;
-            Swimming = FeetInLiquid = World.BlockAccessor.GetBlock(Pos.AsBlockPos).IsLiquid();
+            Swimming = FeetInLiquid = World.BlockAccessor.GetLiquidBlock(Pos.AsBlockPos).IsLiquid();
 
             tmpPos.Set(Pos.XInt, Pos.YInt, Pos.ZInt);
             windLoss = World.BlockAccessor.GetDistanceToRainFall(tmpPos) / 4f;
@@ -152,11 +152,12 @@ namespace Vintagestory.API.Common
 
                     if (temp > 20)
                     {
-                        Itemstack.Collectible.SetTemperature(World, Itemstack, Math.Max(20, temp - 5));
+                    //    Itemstack.Collectible.SetTemperature(World, Itemstack, Math.Max(20, temp - 5));
 
                         if (temp > 90)
                         {
-                            SplashParticleProps.BasePos.Set(Pos.X, Pos.Y, Pos.Z);
+                            double width = SelectionBox.XSize;
+                            SplashParticleProps.BasePos.Set(Pos.X - width / 2, Pos.Y - 0.75, Pos.Z - width / 2);
                             SplashParticleProps.AddVelocity.Set(0, 0, 0);
                             SplashParticleProps.QuantityMul = 0.1f;
                             World.SpawnParticles(SplashParticleProps);
@@ -164,7 +165,7 @@ namespace Vintagestory.API.Common
 
                         if (temp > 200 && World.Side == EnumAppSide.Client && World.ElapsedMilliseconds - lastPlayedSizzlesTotalMs > 10000)
                         {
-                            World.PlaySoundAt(new AssetLocation("sounds/sizzle"), this, null);
+                          //  World.PlaySoundAt(new AssetLocation("sounds/sizzle"), this, null);
                             lastPlayedSizzlesTotalMs = World.ElapsedMilliseconds;
                         }
                     }

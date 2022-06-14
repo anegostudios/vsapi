@@ -28,6 +28,14 @@ namespace Vintagestory.API.Datastructures
             }
         }
 
+        public void PushIdentity()
+        {
+            Mat4d.Identity(values[count]);
+            count++;
+
+            if (count >= values.Length) throw new Exception("Stack matrix overflow");
+        }
+
         public void Push(double[] p)
         {
             Mat4d.Copy(values[count], p);
@@ -58,15 +66,9 @@ namespace Vintagestory.API.Datastructures
             count = 0;
         }
 
-        double[] triple = new double[3];
-
         public void Rotate(double rad, double x, double y, double z)
         {
-            triple[0] = x;
-            triple[1] = y;
-            triple[2] = z;
-
-            Mat4d.Rotate(Top, Top, rad, triple);
+            Mat4d.Rotate(Top, Top, rad, x, y, z);
         }
 
         public void Translate(double x, double y, double z)

@@ -17,9 +17,12 @@ namespace Vintagestory.API.Common.Entities
     {
         public Entity entity;
 
+        public string ProfilerName { get; private set; }
+
         public EntityBehavior(Entity entity)
         {
             this.entity = entity;
+            ProfilerName = "done-behavior-" + PropertyName();
         }
 
         /// <summary>
@@ -29,7 +32,6 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="attributes">The attributes of this entity.</param>
         public virtual void Initialize(EntityProperties properties, JsonObject attributes)
         {
-            
         }
 
         /// <summary>
@@ -223,6 +225,16 @@ namespace Vintagestory.API.Common.Entities
         public virtual void DidAttack(DamageSource source, EntityAgent targetEntity, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
+        }
+
+        public virtual void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
+        {
+            
+        }
+
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        {
+            
         }
     }
 }

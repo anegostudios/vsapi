@@ -64,7 +64,7 @@ namespace Vintagestory.API.Client
                 keyEventargs.AltPressed == CurrentMapping.Alt &&
                 keyEventargs.CtrlPressed == CurrentMapping.Ctrl &&
                 keyEventargs.ShiftPressed == CurrentMapping.Shift &&
-                (KeyCombinationType != HotkeyType.CharacterControls || allowCharacterControls) &&
+                (KeyCombinationType != HotkeyType.CharacterControls && KeyCombinationType != HotkeyType.MovementControls || allowCharacterControls) &&
                 (keyEventargs.KeyCode2 == CurrentMapping.SecondKeyCode || CurrentMapping.SecondKeyCode == null || CurrentMapping.SecondKeyCode == 0)
             ;
         }
@@ -85,7 +85,7 @@ namespace Vintagestory.API.Client
                 !haveModifier &&
                 keyEventargs.KeyCode == CurrentMapping.KeyCode &&
                 (keyEventargs.KeyCode2 == CurrentMapping.SecondKeyCode || CurrentMapping.SecondKeyCode == null || CurrentMapping.SecondKeyCode == 0) &&
-                (KeyCombinationType != HotkeyType.CharacterControls || allowCharacterControls)
+                (KeyCombinationType != HotkeyType.CharacterControls && KeyCombinationType != HotkeyType.MovementControls || allowCharacterControls)
             ;
         }
 

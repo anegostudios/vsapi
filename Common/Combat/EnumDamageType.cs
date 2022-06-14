@@ -18,6 +18,7 @@ namespace Vintagestory.API.Common
         Poison,
         Hunger,
         Crushing,
-        Frost
+        Frost,
+        Electricity
     }
 }

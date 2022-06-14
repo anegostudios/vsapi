@@ -34,6 +34,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float TotalGrowthDays;
 
+        [ProtoMember(11)]
+        /// <summary>
+        /// Total time in ingame months required for the crop to reach full maturity assuming full nutrient levels
+        /// </summary>
+        public float TotalGrowthMonths;
+
         [ProtoMember(5)]
         /// <summary>
         /// If true, the player may harvests from the crop multiple times

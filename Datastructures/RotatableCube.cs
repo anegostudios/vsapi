@@ -21,6 +21,11 @@ namespace Vintagestory.API.Datastructures
 
         }
 
+        public Cuboidi ToHitboxCuboidi(float rotateY, Vec3d origin = null)
+        {
+            return RotatedCopy(0, rotateY, 0, origin ?? new Vec3d(8,8,8)).ConvertToCuboidi();
+        }
+
         public RotatableCube(float MinX, float MinY, float MinZ, float MaxX, float MaxY, float MaxZ) : base(MinX, MinY, MinZ, MaxX, MaxY, MaxZ)
         {
 

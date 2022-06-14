@@ -141,6 +141,10 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public static readonly BlockFacing[] HORIZONTALS = new BlockFacing[] { NORTH, EAST, SOUTH, WEST };
         /// <summary>
+        /// Array of the normals to the horizontal faces (N, E, S, W)
+        /// </summary>
+        public static readonly Vec3i[] HORIZONTAL_NORMALI = new Vec3i[] { NORTH.normali, EAST.normali, SOUTH.normali, WEST.normali };
+        /// <summary>
         /// Array of vertical faces (U, D)
         /// </summary>
         public static readonly BlockFacing[] VERTICALS = new BlockFacing[] { UP, DOWN };
@@ -513,16 +517,17 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static BlockFacing FromFirstLetter(string code)
         {
-            code = code.ToLowerInvariant();
+            if (code.Length < 1) return null;
+            char ch = char.ToLowerInvariant(code[0]);
 
-            switch (code)
+            switch (ch)
             {
-                case "n": return NORTH;
-                case "s": return SOUTH;
-                case "e": return EAST;
-                case "w": return WEST;
-                case "u": return UP;
-                case "d": return DOWN;
+                case 'n': return NORTH;
+                case 's': return SOUTH;
+                case 'e': return EAST;
+                case 'w': return WEST;
+                case 'u': return UP;
+                case 'd': return DOWN;
             }
 
             return null;

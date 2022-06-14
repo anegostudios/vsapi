@@ -163,7 +163,7 @@ namespace Vintagestory.API.Client
                 ctx.SetSourceRGBA(color[0] * 1.6, color[1] * 1.6, color[2] * 1.6, 1);
                 ctx.LineWidth = 2 * 1.75;
                 ctx.StrokePreserve();
-                surface.Blur(5.2, 0, 0, surface.Width, surface.Height);
+                surface.BlurPartial(5.2, 10);
 
                 ctx.SetSourceRGBA(color[0], color[1], color[2], color[3] * 0.75);
                 ctx.LineWidth = 1;

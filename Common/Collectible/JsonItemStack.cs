@@ -56,6 +56,49 @@ namespace Vintagestory.API.Common
         /// Sets itemstack.block or itemstack.item
         /// </summary>
         /// <param name="resolver"></param>
+        public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, AssetLocation assetLoc, bool printWarningOnError = true)
+        {
+            if (Type == EnumItemClass.Block)
+            {
+                Block block = resolver.GetBlock(Code);
+                if (block == null || block.IsMissing)
+                {
+                    if (printWarningOnError)
+                    {
+                        resolver.Logger.Warning("Failed resolving a blocks blockdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
+                    }
+                    return false;
+                }
+
+                ResolvedItemstack = new ItemStack(block, StackSize);
+
+            }
+            else
+            {
+                Item item = resolver.GetItem(Code);
+                if (item == null || item.IsMissing)
+                {
+                    if (printWarningOnError)
+                    {
+                        resolver.Logger.Warning("Failed resolving a blocks itemdrop or smeltedstack with code {0} in {1}", Code, sourceForErrorLogging + assetLoc);
+                    }
+                    return false;
+                }
+                ResolvedItemstack = new ItemStack(item, StackSize);
+            }
+
+            if (Attributes != null)
+            {
+                IAttribute attributes = Attributes.ToAttribute();
+                if (attributes is ITreeAttribute)
+                {
+                    ResolvedItemstack.Attributes = (ITreeAttribute)attributes;
+                }
+            }
+
+            return true;
+        }
+
         public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, bool printWarningOnError = true)
         {
             if (Type == EnumItemClass.Block)

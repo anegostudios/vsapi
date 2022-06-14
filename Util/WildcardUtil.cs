@@ -96,41 +96,148 @@ namespace Vintagestory.API.Util
                 return Regex.IsMatch(haystack, @"^" + needle.Substring(1) + @"$", RegexOptions.None);
             }
 
-            int wildCardIndex = -1;
-            int i;
-            for (i = 0; i < needle.Length; i++)
+            int needleLength = needle.Length;
+            for (int i = 0; i < needleLength; i++)
             {
                 char ch = needle[i];
                 if (ch == '*')
                 {
-                    // Two *? Ok, that needs a regex :<
-                    if (wildCardIndex >= 0)
+                    // Oh, * was at the end of the pattern? We no longer need to match the rest of the text
+                    int remainingChars = needleLength - 1 - i;
+                    if (remainingChars == 0) return true;
+
+                    int secondAsterisk = needle.IndexOf('*', i + 1);
+                    if (secondAsterisk >= 0)
                     {
-                        needle = Regex.Escape(needle).Replace(@"\*", @".*");
-                        return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.None);
+                        if (needle.IndexOf('*', secondAsterisk + 1) >= 0)
+                        {
+                            // Three *? Ok, that really does need a regex!!
+                            needle = Regex.Escape(needle).Replace(@"\*", @".*");
+                            return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.IgnoreCase);
+                        }
+                        if (haystack.Length < needle.Length - 2) return false;
+                        int countTailpiece = needleLength - (secondAsterisk + 1);
+                        if (!EndsWith(haystack, needle, countTailpiece)) return false;
+
+                        // First part and last part of haystack matched, middle section of haystack needs to contain the needle section between the two wildcards
+                        string needleCentreSection = needle.Substring(i + 1, secondAsterisk - (i + 1)).ToLowerInvariant();
+                        if (i == 0 && countTailpiece == 0)
+                        {
+                            return haystack.ToLowerInvariant().Contains(needleCentreSection);
+                        }
+                        return haystack.Substring(i, haystack.Length - i - countTailpiece).ToLowerInvariant().Contains(needleCentreSection);
                     }
 
-                    wildCardIndex = i;
-                } else
+                    // Otherwise see if pattern matches after the *
+                    return haystack.Length >= needle.Length - 1 && EndsWith(haystack, needle, remainingChars);
+                }
+                else
                 {
                     // No * yet? Lets make sure the string starts with all those chars
-                    if (wildCardIndex < 0 && (haystack.Length <= i || char.ToLowerInvariant(ch) != char.ToLowerInvariant(haystack[i]))) return false;
+                    if (haystack.Length <= i) return false;
+                    char h = haystack[i];
+                    if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
                 }
             }
 
             // No * wildcard? Then we're good if needle is of equal length than haystack
-            if (wildCardIndex == -1)
+            return needle.Length == haystack.Length;
+        }
+
+        private static bool EndsWith(string haystack, string needle, int endCharsCount)
+        {
+            int hEnd = haystack.Length - 1;
+            int nEnd = needle.Length - 1;
+
+            // Length of haystack has been pre-checked
+            for (int i = 0; i < endCharsCount; i++)
             {
-                return needle.Length == haystack.Length;
+                char h = haystack[hEnd - i];
+                char ch = needle[nEnd - i];
+                if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
             }
 
-            // Oh, * was at the end of the pattern? We no longer need to match the rest of the text
-            if (wildCardIndex == needle.Length - 1) return true;
-            
+            return true;
+        }
 
-            // Otherwise fallback to full on regex matching again :<
+        internal static bool fastExactMatch(string needle, string haystack)
+        {
+            // No wildcard: match all needle characters with haystack - we start at the end because end is least likely to match
+
+            if (haystack.Length != needle.Length) return false;
+
+            int lastChar = needle.Length - 1;
+            for (int i = lastChar; i >= 0; i--)
+            {
+                char ch = needle[i];
+                char h = haystack[i];
+                if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
+            }
+
+            // Everything matched
+            return true;
+        }
+
+        /// <summary>
+        /// Requires a pre-check that needle.Length is at least 1, and needleAsRegex has been pre-prepared
+        /// </summary>
+        /// <param name="needle"></param>
+        /// <param name="haystack"></param>
+        /// <param name="needleAsRegex">If it starts with '^' interpret as a regex search string; otherwise special case, it represents the tailpiece of the needle following a single asterisk</param>
+        /// <returns></returns>
+        internal static bool fastMatch(string needle, string haystack, string needleAsRegex)
+        {
+            // Pre-prepared regex string
+            int tailPieceLength = needleAsRegex.Length;
+            if (tailPieceLength > 0 && needleAsRegex[0] == '^')
+            {
+                return Regex.IsMatch(haystack, needleAsRegex, RegexOptions.IgnoreCase);   // None of our vanilla code ever actually uses this regex approach (would need two wildcards in a SearchBlocks call)
+            }
+
+            // Special case: one asterisk present, and needleAsRegex is actually the needle substring following that asterisk (which may be "" if the asterisk was at the end)
+            if (haystack.Length < needle.Length - 1) return false;
+
+            // Check the part after the asterisk
+            if (tailPieceLength != 0 && !EndsWith(haystack, needle, tailPieceLength)) return false;
+
+            // Check the part before the asterisk
+            int lengthFirstPart = needle.Length - tailPieceLength - 1;
+            for (int i = 0; i < lengthFirstPart; i++)
+            {
+                char ch = needle[i];
+                char h = haystack[i];
+                if (ch != h && char.ToLowerInvariant(ch) != char.ToLowerInvariant(h)) return false;
+            }
+
+            // Everything matched
+            return true;
+        }
+
+
+        /// <summary>
+        /// Returns the needle as a Regex string, if we are going to need to do a Regex search; alternatively returns some special case values
+        /// <br/>Special case: return value of null signifies no wildcard, look for exact matches only
+        /// <br/>Special case: return value of a non-regex string (not starting '^') represents the tailpiece part of the needle (the part following a single wildcard)
+        /// </summary>
+        /// <param name="needle"></param>
+        /// <returns></returns>
+        internal static string Prepare(string needle)
+        {
+            if (needle[0] == '@')
+            {
+                return @"^" + needle.Substring(1) + @"$";
+            }
+            int wildIndex = needle.IndexOf('*');
+            if (wildIndex == -1) return null;   // null signifies no regex required
+
+            if (needle[0] != '^')
+            {
+                // return a simple string (which may be "") to signify exactly one asterisk present; the string is the rest of the needle after that asterisk
+                if (needle.IndexOf('*', wildIndex + 1) < 0) return needle.Substring(wildIndex + 1);
+            }
+
             needle = Regex.Escape(needle).Replace(@"\*", @".*");
-            return Regex.IsMatch(haystack, @"^" + needle + @"$", RegexOptions.None);
+            return @"^" + needle + @"$";
         }
     }
     

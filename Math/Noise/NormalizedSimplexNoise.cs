@@ -164,7 +164,8 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < scaledAmplitudes3D.Length; i++)
             {
-                double val = octaves[i].Evaluate(x * frequencies[i], y * frequencies[i], z * frequencies[i]) * amplitudes[i];
+                double freq = frequencies[i];
+                double val = octaves[i].Evaluate(x * freq, y * freq, z * freq) * amplitudes[i];
                 value += 1.2 * (val > 0 ? Math.Max(0, val - thresholds[i]) : Math.Min(0, val + thresholds[i]));
             }
 

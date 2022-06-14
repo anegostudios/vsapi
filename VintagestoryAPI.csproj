@@ -50,6 +50,7 @@
     <DocumentationFile>..\bin\Release\VintagestoryAPI.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'FastBuild|AnyCPU' ">
     <OutputPath>bin\FastBuild\</OutputPath>
@@ -140,12 +141,14 @@
     <Compile Include="Client\UI\Dialog\GuiDialogCharacterBase.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementColorListPicker.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\GuiElementContainer.cs" />
+    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\Richtext\HotkeyComponent.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Text\Richtext\IconComponent.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementCustomRender.cs" />
     <Compile Include="Common\API\EnumBlockAccessResponse.cs" />
     <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
     <Compile Include="Common\API\ILandClaimAPI.cs" />
     <Compile Include="Client\API\IMacroManager.cs" />
+    <Compile Include="Common\Collectible\Block\IWithDrawnHeight.cs" />
     <Compile Include="Common\Collectible\Block\IDrawYAdjustable.cs" />
     <Compile Include="Common\Collectible\DecorSelectionBox.cs" />
     <Compile Include="Common\Collectible\CollectibleBehavior.cs" />
@@ -261,6 +264,7 @@
     <Compile Include="Common\Inventory\CreativeInventoryTab.cs" />
     <Compile Include="Common\Inventory\DummyInventory.cs" />
     <Compile Include="Common\Inventory\InventoryDisplayed.cs" />
+    <Compile Include="Common\Inventory\ItemSlotBackpack.cs" />
     <Compile Include="Common\Inventory\ItemSlotOffHand.cs" />
     <Compile Include="Common\IO\SQLiteDBConnection.cs" />
     <Compile Include="Common\Model\Animation\AnimationCache.cs" />
@@ -285,6 +289,8 @@
     <Compile Include="Common\MultiblockStructure.cs" />
     <Compile Include="Common\Texture\ColorMap.cs" />
     <Compile Include="Common\TyronThreadPool.cs" />
+    <Compile Include="Datastructures\Net\GameReleaseVersion.cs" />
+    <Compile Include="Datastructures\SmallBoolArray.cs" />
     <Compile Include="Datastructures\FloatDataMap3D.cs" />
     <Compile Include="Datastructures\FastList.cs" />
     <Compile Include="Datastructures\RingArray.cs" />
@@ -298,9 +304,12 @@
     <Compile Include="Math\Vector\Vec4s.cs" />
     <Compile Include="Server\API\IPlayerDataManager.cs" />
     <Compile Include="Server\EnumPlayerJoinBehavior.cs" />
+    <Compile Include="Server\PathfinderTask.cs" />
     <Compile Include="Util\BitmapExtensions.cs" />
     <Compile Include="Util\ExifData.cs" />
-    <Compile Include="Util\FastSetOfLongs.cs" />
+    <Compile Include="Datastructures\FakeDictionary.cs" />
+    <Compile Include="Datastructures\FastSetOfInts.cs" />
+    <Compile Include="Datastructures\FastSetOfLongs.cs" />
     <Compile Include="Util\IgnoreUtil.cs" />
     <Compile Include="Util\JsonUtil.cs" />
     <Compile Include="Common\Assets\Mod.cs" />
@@ -358,7 +367,7 @@
     <Compile Include="Util\NetUtil.cs" />
     <Compile Include="Util\ObjectCacheUtil.cs" />
     <Compile Include="Util\PosUtil.cs" />
-    <Compile Include="Util\QueueOfInt.cs" />
+    <Compile Include="Datastructures\QueueOfInt.cs" />
     <Compile Include="Util\SerializerUtil.cs" />
     <Compile Include="Util\StringExtensions.cs" />
     <Compile Include="Util\StringUtil.cs" />

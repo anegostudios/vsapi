@@ -15,7 +15,7 @@ namespace Vintagestory.API.Common
     public abstract class ParticlesProviderBase : IParticlePropertiesProvider
     {
         public bool Async => false;
-        public bool Bouncy { get; set; }
+        public float Bounciness { get; set; }
         public bool RandomVelocityChange { get; set; }
         public bool DieOnRainHeightmap { get; set; }
 

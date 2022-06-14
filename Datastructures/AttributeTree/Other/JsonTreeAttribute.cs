@@ -80,9 +80,9 @@ namespace Vintagestory.API.Datastructures
                 case EnumAttributeType.Itemstack:
                     if (elems == null) return null;
 
-                    bool haveClass = elems.ContainsKey("class") && elems["class"].type == EnumAttributeType.String;
-                    bool haveItemCode = elems.ContainsKey("code") && elems["code"].type == EnumAttributeType.String;
-                    bool haveStackSize = elems.ContainsKey("quantity") && elems["quantity"].type == EnumAttributeType.Int;
+                    bool haveClass = elems.TryGetValue("class", out var elemClass) && elemClass.type == EnumAttributeType.String;
+                    bool haveItemCode = elems.TryGetValue("code", out var elemCode) && elemCode.type == EnumAttributeType.String;
+                    bool haveStackSize = elems.TryGetValue("quantity", out var elemQuantity) && elemQuantity.type == EnumAttributeType.Int;
 
                     if (!haveClass || !haveItemCode || !haveStackSize) return null;
 
@@ -115,9 +115,9 @@ namespace Vintagestory.API.Datastructures
                         itemstack = new ItemStack(item, quantity);
                     }
 
-                    if (elems.ContainsKey("attributes"))
+                    if (elems.TryGetValue("attributes", out var jsonAttribs))
                     {
-                        IAttribute attributes = elems["attributes"].ToAttribute(resolver);
+                        IAttribute attributes = jsonAttribs.ToAttribute(resolver);
                         if (attributes is ITreeAttribute)
                         {
                             itemstack.Attributes = (ITreeAttribute)attributes;

@@ -64,7 +64,7 @@ namespace Vintagestory.API.Client
         {
             if (!composer.Composed)
             {
-                composer.AddStaticElement(new GuiElementStaticText(composer.Api, text, EnumTextOrientation.Left, bounds, font), key);
+                composer.AddStaticElement(new GuiElementStaticText(composer.Api, text, font.Orientation, bounds, font), key);
             }
             return composer;
         }

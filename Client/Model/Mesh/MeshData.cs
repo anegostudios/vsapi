@@ -516,6 +516,7 @@ namespace Vintagestory.API.Client
         /// <param name="matrix"></param>
         public MeshData MatrixTransform(double[] matrix)
         {
+            if (IsTranslationOnly(matrix)) return this;
             // http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
 
             double[] inVec = new double[] { 0, 0, 0, 0 };
@@ -588,6 +589,20 @@ namespace Vintagestory.API.Client
             }
 
             return this;
+        }
+
+        private bool IsTranslationOnly(double[] matrix)
+        {
+            // Looking for { 1, 0, 0, #,  0, 1, 0, #,  0, 0, 1, #,  #, #, #, # }
+            // We don't care about the # values, they have no effect on MeshData
+            // We also don't care about minor rounding errors in the matrix, which can sometimes happen after a few transformations especially in a deep StackMatrix
+
+            if ((float)(matrix[1] + 1) != 1f || (float)(matrix[6] + 1) != 1f) return false;   // the float conversion (+ 1) deals with rounding errors - without the +1 then a tiny non-zero double value produces a tiny non-zero float value
+            if ((float)(matrix[2] + 1) != 1f || (float)(matrix[4] + 1) != 1f) return false;
+            if ((float)(matrix[0]) != 1f || (float)(matrix[5]) != 1f || (float)(matrix[10]) != 1f) return false;   // the float conversion deals with rounding errors
+            if ((float)(matrix[8] + 1) != 1f || (float)(matrix[9] + 1) != 1f) return false;
+            Translate((float)matrix[12], (float)matrix[13], (float)matrix[14]);
+            return true;
         }
 
         /// <summary>

@@ -43,12 +43,7 @@ namespace Vintagestory.API.Client
             DrawMultilineTextAt(ctxInsetShadow, Bounds.drawX + scaled(2), Bounds.drawY + scaled(2), orientation);
 
 
-            insetShadowSurface.Blur(7,
-                (int)Math.Max(0, Bounds.drawX - 4),
-                (int)Math.Max(0, Bounds.drawY - 4),
-                (int)Math.Min(Bounds.ParentBounds.OuterWidth, Bounds.drawX + Font.GetTextExtents(text).Width + 6),
-                (int)Math.Min(Bounds.ParentBounds.OuterHeight, Bounds.drawY + ctxInsetShadow.FontExtents.Height + 6)
-            );
+            insetShadowSurface.BlurFull(7);
 
             ImageSurface surface = new ImageSurface(Format.Argb32, Bounds.ParentBounds.OuterWidthInt, Bounds.ParentBounds.OuterHeightInt);
             Context ctxText = new Context(surface);

@@ -94,6 +94,12 @@ namespace Vintagestory.API.Client
             capi.World.Player.Entity.Pos.Pitch += dp;
             capi.Input.MousePitch += dp;
             capi.Input.MouseYaw += (float)(Math.Sin(accum / 1.1) + Math.Sin(accum / 1.5f) + Math.Sin(accum / 5f) * 0.2f) * f;
+
+            var hc = capi.World.Player.Entity.AnimManager.HeadController;
+
+            hc.dy = (float)(Math.Cos(accum / 1.12) + Math.Cos(accum / 1.2f) + Math.Cos(accum / 4f) * 0.2f) * f * 60f;
+            accum /= 2;
+            hc.dp = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
         }
 
         public override void ApplyToFpHand(Matrixf modelMat)
@@ -144,46 +150,58 @@ namespace Vintagestory.API.Client
 
         public override void OnBeforeGameRender(float dt)
         {
-            if (!capi.IsGamePaused)
+            dt = Math.Min(dt, 1);
+
+            var eplr = capi.World.Player;
+
+            if (!eplr.Entity.Alive)
             {
-                var eplr = capi.World.Player;
-                ITreeAttribute healthTree = eplr.Entity.WatchedAttributes.GetTreeAttribute("health");
-                float healthRel = healthTree == null ? 1 : healthTree.GetFloat("currenthealth") / healthTree.GetFloat("maxhealth");
+                capi.Render.ShaderUniforms.ExtraSepia += (2f - capi.Render.ShaderUniforms.ExtraSepia) * Math.Min(1, dt * 5);
+                capi.Render.ShaderUniforms.DamageVignetting += (1.25f - capi.Render.ShaderUniforms.DamageVignetting) * Math.Min(1, dt * 5);
+                capi.Render.ShaderUniforms.DamageVignettingSide += (0f - capi.Render.ShaderUniforms.DamageVignettingSide) * Math.Min(1, dt * 5);
+            } else {
 
-                float f = Math.Max(0, (0.23f - healthRel) * 1 / 0.18f);
-                float lowHealthness = 0;
-
-                if (f > 0)
+                if (!capi.IsGamePaused)
                 {
-                    float ellapseSec = (float)(capi.InWorldEllapsedMilliseconds / 1000.0);
+                    ITreeAttribute healthTree = eplr.Entity.WatchedAttributes.GetTreeAttribute("health");
+                    float healthRel = healthTree == null ? 1 : healthTree.GetFloat("currenthealth") / healthTree.GetFloat("maxhealth");
 
-                    float bla = (float)noisegen.Noise(12412, ellapseSec / 2) * 0.5f + (float)Math.Pow(Math.Abs(GameMath.Sin(ellapseSec * 1 / 0.7f)), 30) * 0.5f;
-                    lowHealthness = Math.Min(f * 1.5f, 1) * (bla * 0.75f + 0.5f);
+                    float f = Math.Max(0, (0.23f - healthRel) * 1 / 0.18f);
+                    float lowHealthness = 0;
 
-                    if (eplr.Entity.Alive)
+                    if (f > 0)
                     {
-                        capi.Render.ShaderUniforms.ExtraSepia = GameMath.Clamp(f * (float)noisegen.Noise(0, ellapseSec / 3) * 1.2f, 0, 1.2f);
-                        if (capi.World.Rand.NextDouble() < 0.01)
+                        float ellapseSec = (float)(capi.InWorldEllapsedMilliseconds / 1000.0);
+
+                        float bla = (float)noisegen.Noise(12412, ellapseSec / 2) * 0.5f + (float)Math.Pow(Math.Abs(GameMath.Sin(ellapseSec * 1 / 0.7f)), 30) * 0.5f;
+                        lowHealthness = Math.Min(f * 1.5f, 1) * (bla * 0.75f + 0.5f);
+
+                        if (eplr.Entity.Alive)
                         {
-                            capi.World.AddCameraShake(0.15f * f);
+                            capi.Render.ShaderUniforms.ExtraSepia = GameMath.Clamp(f * (float)noisegen.Noise(0, ellapseSec / 3) * 1.2f, 0, 1.2f);
+                            if (capi.World.Rand.NextDouble() < 0.01)
+                            {
+                                capi.World.AddCameraShake(0.15f * f);
+                            }
+
+                            capi.Input.MouseYaw += f * (float)(noisegen.Noise(76, ellapseSec / 50) - 0.5f) * 0.003f;
+
+                            float dp = f * (float)(noisegen.Noise(ellapseSec / 50, 987) - 0.5f) * 0.003f; ;
+
+                            eplr.Entity.Pos.Pitch += dp;
+                            capi.Input.MousePitch += dp;
                         }
-
-                        capi.Input.MouseYaw += f * (float)(noisegen.Noise(76, ellapseSec / 50) - 0.5f) * 0.003f;
-
-                        float dp = f * (float)(noisegen.Noise(ellapseSec / 50, 987) - 0.5f) * 0.003f; ;
-
-                        eplr.Entity.Pos.Pitch += dp;
-                        capi.Input.MousePitch += dp;
                     }
-                }
-                else
-                {
-                    capi.Render.ShaderUniforms.ExtraSepia = 0;
+                    else
+                    {
+                        capi.Render.ShaderUniforms.ExtraSepia = 0;
+                    }
+
+                    int val = GameMath.Clamp((int)(damangeVignettingUntil - capi.ElapsedMilliseconds), 0, duration);
+
+                    capi.Render.ShaderUniforms.DamageVignetting = GameMath.Clamp(GameMath.Clamp(strength / 2, 0.5f, 3.5f) * ((float)val / Math.Max(1, duration)) + lowHealthness, 0, 1.5f);
                 }
 
-                int val = GameMath.Clamp((int)(damangeVignettingUntil - capi.ElapsedMilliseconds), 0, duration);
-                
-                capi.Render.ShaderUniforms.DamageVignetting = GameMath.Clamp(GameMath.Clamp(strength / 2, 0.5f, 3.5f) * ((float)val / Math.Max(1, duration)) + lowHealthness, 0, 1.5f);
 
                 float freezing = eplr.Entity.WatchedAttributes.GetFloat("freezingEffectStrength", 0);
 

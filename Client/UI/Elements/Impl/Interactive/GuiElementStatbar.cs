@@ -115,7 +115,7 @@ namespace Vintagestory.API.Client
                 ctx.SetSourceRGB(color[0] * 0.4, color[1] * 0.4, color[2] * 0.4);
                 ctx.LineWidth = scaled(3);
                 ctx.StrokePreserve();
-                surface.Blur(3);
+                surface.BlurFull(3);
 
                 width = Bounds.InnerWidth * widthRel;
                 x = rightToLeft ? Bounds.InnerWidth - width : 0;
@@ -164,9 +164,9 @@ namespace Vintagestory.API.Client
             RoundRectangle(ctx, 12, 12, Bounds.OuterWidthInt + 4, Bounds.OuterHeightInt + 4, 1);
             ctx.SetSourceRGB(color[0], color[1], color[2]);
             ctx.FillPreserve();
-            surface.Blur(3, true);
+            surface.BlurFull(3);
             ctx.Fill();
-            surface.Blur(2, true);
+            surface.BlurFull(2);
 
             RoundRectangle(ctx, 15, 15, Bounds.OuterWidthInt - 2, Bounds.OuterHeightInt - 2, 1);
             ctx.Operator = Operator.Clear;

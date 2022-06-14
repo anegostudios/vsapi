@@ -12,11 +12,13 @@ namespace Vintagestory.API.Common
     public interface ITextureLocationDictionary
     {
         bool AddTextureLocation(AssetLocationAndSource textureLoc);
+        int GetOrAddTextureLocation(AssetLocationAndSource textureLoc);
 
         int this[AssetLocationAndSource textureLoc] { get; }
 
         bool ContainsKey(AssetLocation loc);
         void AddTextureLocation_Checked(AssetLocationAndSource assetLocationAndSource);
+        void CollectAndBakeTexturesFromShape(Shape compositeShape, IDictionary<string, Client.CompositeTexture> targetDict, AssetLocation baseLoc);
     }
 
     /// <summary>
@@ -57,6 +59,10 @@ namespace Vintagestory.API.Common
         /// The source of a given asset.
         /// </summary>
         public SourceStringComponents Source;
+        /// <summary>
+        /// Used to avoid duplication when loading colormaps and shapes
+        /// </summary>
+        volatile public int loadedAlready;
 
         public AssetLocationAndSource(string location) : base(location)
         {
@@ -123,7 +129,7 @@ namespace Vintagestory.API.Common
             set { path = value; }
         }
 
-        public bool IsWildCard => Path.IndexOf('*') >= 0;
+        public bool IsWildCard => Path.IndexOf('*') >= 0 || Path[0] == '@';
         public bool EndsWithWildCard => path.Length > 1 && path[path.Length - 1] == '*';
 
         // Needed for ProtoBuf
@@ -217,6 +223,11 @@ namespace Vintagestory.API.Common
             return path.StartsWithFast(partialPath) && (domain == null || domain.Equals(Domain));
         }
 
+        internal virtual bool BeginsWith(string domain, string partialPath, int offset)
+        {
+            return path.StartsWithFast(partialPath, offset) && (domain == null || domain.Equals(Domain));
+        }
+
         public string ToShortString()
         {
             if (domain == null || domain.Equals(GlobalConstants.DefaultDomain))
@@ -242,6 +253,12 @@ namespace Vintagestory.API.Common
         {
             string[] parts = path.Split('/');
             return parts[posFromLeft];
+        }
+
+        public string FirstCodePart()
+        {
+            int boundary = path.IndexOf('-');
+            return boundary < 0 ? path : path.Substring(0, boundary);
         }
 
         /// <summary>
@@ -319,6 +336,17 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Returns the code of the last variant in the path, for example for a path of "water-still-7" it would return "7"
+        /// </summary>
+        public string EndVariant()
+        {
+            int i = path.LastIndexOf('-');
+            if (i < 0) return "";
+            return path.Substring(i + 1);
+        }
+
+
+        /// <summary>
         /// Clones this asset.
         /// </summary>
         /// <returns>the cloned asset.</returns>
@@ -342,6 +370,23 @@ namespace Vintagestory.API.Common
         public virtual AssetLocation CopyWithPath(string path)
         {
             return new AssetLocation(this.domain, path);
+        }
+
+        public virtual AssetLocation CopyWithPathPrefixAndAppendix(string prefix, string appendix)
+        {
+            return new AssetLocation(this.domain, prefix + path + appendix);
+        }
+
+        public virtual AssetLocation CopyWithPathPrefixAndAppendixOnce(string prefix, string appendix)
+        {
+            if (path.StartsWithFast(prefix))
+            {
+                return new AssetLocation(this.domain, path.EndsWith(appendix) ? path : path + appendix);
+            }
+            else
+            {
+                return new AssetLocation(this.domain, path.EndsWith(appendix) ? prefix + path : prefix + path + appendix);
+            }
         }
 
         /// <summary>
@@ -386,6 +431,21 @@ namespace Vintagestory.API.Common
             return Equals(obj as AssetLocation);
         }
 
+        public static bool operator ==(AssetLocation left, AssetLocation right)
+        {
+            if (object.ReferenceEquals(left, null))
+            {
+                return object.ReferenceEquals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(AssetLocation left, AssetLocation right)
+        {
+            return !(left == right);
+        }
+
         public override string ToString()
         {
             return Domain + LocationSeparator + Path;
@@ -394,6 +454,15 @@ namespace Vintagestory.API.Common
         public int CompareTo(AssetLocation other)
         {
             return ToString().CompareTo(other.ToString());
+        }
+
+        internal bool WildCardMatch(AssetLocation other, string pathAsRegex)
+        {
+            if (domain == other.domain)
+            {
+                return WildcardUtil.fastMatch(path, other.path, pathAsRegex);
+            }
+            return false;
         }
     }
 

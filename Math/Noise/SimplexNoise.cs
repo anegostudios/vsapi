@@ -63,7 +63,8 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < amplitudes.Length; i++)
             {
-                value += octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * amplitudes[i];
+                double f = frequencies[i];
+                value += octaves[i].Evaluate(x * f, y * f) * amplitudes[i];
             }
 
             return value;
@@ -76,8 +77,9 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < amplitudes.Length; i++)
             {
-                double val = octaves[i].Evaluate(x * frequencies[i], y * frequencies[i]) * amplitudes[i];
-                value += val > 0 ? Math.Max(0, val - thresholds[i]) : Math.Min(0, val + thresholds[i]);
+                double f = frequencies[i];
+                double val = octaves[i].Evaluate(x * f, y * f) * amplitudes[i];
+                value += val > 0.0 ? Math.Max(0.0, val - thresholds[i]) : Math.Min(0.0, val + thresholds[i]);
             }
 
             return value;

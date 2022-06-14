@@ -215,7 +215,7 @@ namespace Vintagestory.API.Datastructures
         public int AsInt(int defaultValue = 0)
         {
             if (!(token is JValue)) return defaultValue;
-
+            
             object value = ((JValue)token).Value;
 
             if (value is long) return (int)((long)value);

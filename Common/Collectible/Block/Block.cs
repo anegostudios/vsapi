@@ -29,6 +29,18 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class Block : CollectibleObject
     {
+        [ThreadStatic]
+        private static BlockBrokenParticleProps _psblockBrokenProps;
+
+        BlockBrokenParticleProps blockBrokenProps
+        {
+            get
+            {
+                if (_psblockBrokenProps == null) _psblockBrokenProps = new BlockBrokenParticleProps() { blockdamage = new BlockDamage() { Facing = BlockFacing.UP } };
+                return _psblockBrokenProps;
+            }
+        }
+
         /// <summary>
         /// Returns the block id
         /// </summary>
@@ -38,6 +50,16 @@ namespace Vintagestory.API.Common
         /// Returns EnumItemClass.Block
         /// </summary>
         public override EnumItemClass ItemClass { get { return EnumItemClass.Block; } }
+
+        /// <summary>
+        /// Return true if this block should be stored in the liquids layer in chunks instead of the solid blocks layer (e.g. water, flowing water, lake ice)
+        /// </summary>
+        public virtual bool ForLiquidsLayer { get { return false; } }
+
+        /// <summary>
+        /// Return non-null if this block should have water (or ice) placed in its position in the liquids layer when updating from 1.16 to 1.17
+        /// </summary>
+        public virtual string RemapToLiquidsLayer { get { return null; } }
 
         /// <summary>
         /// Default Full Block Collision Box
@@ -193,7 +215,7 @@ namespace Vintagestory.API.Common
         /// Default textures to be used for this block
         /// (may be null, on servers prior to reading blockType, on clients prior to receipt of server assets)
         /// </summary>
-        public Dictionary<string, CompositeTexture> Textures;
+        public IDictionary<string, CompositeTexture> Textures;
 
         /// <summary>
         /// Fast array of texture variants, for use by cube (or similar) tesselators if the block has alternate shapes
@@ -205,7 +227,7 @@ namespace Vintagestory.API.Common
         /// Textures to be used for this block in the inventory gui, held in hand or dropped on the ground
         /// (may be null, on servers prior to reading blockType, on clients prior to receipt of server assets)
         /// </summary>
-        public Dictionary<string, CompositeTexture> TexturesInventory;
+        public IDictionary<string, CompositeTexture> TexturesInventory;
 
         /// <summary>
         /// Returns the first textures in the TexturesInventory dictionary
@@ -220,7 +242,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Defines which of the 6 block side are solid. Used to determine if attachable blocks can be attached to this block. Also used to determine if snow can rest on top of this block.
         /// </summary>
-        public bool[] SideSolid = new bool[] { true, true, true, true, true, true };
+        public SmallBoolArray SideSolid = new SmallBoolArray(SmallBoolArray.OnAllSides);
 
         /// <summary>
         /// Defines which of the 6 block side should be shaded with ambient occlusion
@@ -376,7 +398,7 @@ namespace Vintagestory.API.Common
 
             base.OnLoaded(api);
 
-            bool supportsCover = Variant["cover"] != null;
+            bool supportsCover = Variant["cover"] != null && (Variant["cover"] == "free" || Variant["cover"].Contains("snow"));
             if (supportsCover)
             {
                 notSnowCovered = api.World.GetBlock(CodeWithVariant("cover", "free"));
@@ -397,25 +419,25 @@ namespace Vintagestory.API.Common
 
         public virtual void LoadTextureSubIdForBlockColor()
         {
-            string code = Attributes?["textureCodeForBlockColor"].AsString(null);
 
             TextureSubIdForBlockColor = -1;
+            if (Textures == null) return;
 
-            CompositeTexture compoTex = null;
-            if (code != null && Textures?.TryGetValue(code, out compoTex) == true)
+            string code = Attributes?["textureCodeForBlockColor"].AsString(null);
+            if (code != null && Textures.TryGetValue(code, out CompositeTexture compoTex))
             {
                 TextureSubIdForBlockColor = compoTex.Baked.TextureSubId;
             }
 
             if (TextureSubIdForBlockColor < 0)
             {
-                if (Textures?.ContainsKey("up") == true)
+                if (Textures.TryGetValue("up", out var upTexture))
                 {
-                    TextureSubIdForBlockColor = Textures["up"].Baked.TextureSubId;
+                    TextureSubIdForBlockColor = upTexture.Baked.TextureSubId;
                 }
                 else
                 {
-                    if (Textures != null && Textures.Count > 0)
+                    if (Textures.Count > 0)
                     {
                         var tex = Textures.First();
                         TextureSubIdForBlockColor = tex.Value?.Baked?.TextureSubId ?? 0;
@@ -509,7 +531,10 @@ namespace Vintagestory.API.Common
 
             if (SelectionBoxes?.Length != 1) return SelectionBoxes;
 
-            return blockAccessor.GetChunkAtBlockPos(pos).AdjustSelectionBoxForDecor(blockAccessor, pos, SelectionBoxes);
+            var chunk = blockAccessor.GetChunkAtBlockPos(pos);
+            if (chunk == null) return SelectionBoxes;
+
+            return chunk.AdjustSelectionBoxForDecor(blockAccessor, pos, SelectionBoxes);
         }
 
         /// <summary>
@@ -999,7 +1024,27 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            SpawnBlockBrokenParticles(pos);
             world.BlockAccessor.SetBlock(0, pos);
+        }
+
+        public void SpawnBlockBrokenParticles(BlockPos pos)
+        {
+            blockBrokenProps.Init(api);
+            blockBrokenProps.blockdamage.Block = this;
+            blockBrokenProps.blockdamage.Position = pos;
+
+            blockBrokenProps.boyant = MaterialDensity < 1000;
+
+            var plr = (api as ICoreClientAPI)?.World.Player;
+
+            api.World.SpawnParticles(blockBrokenProps, plr);
+
+            // Twice the amount in creative mode
+            if (plr?.WorldData?.CurrentGameMode == EnumGameMode.Creative)
+            {
+                api.World.SpawnParticles(blockBrokenProps, plr);
+            }
         }
 
 
@@ -1642,6 +1687,13 @@ namespace Vintagestory.API.Common
         }
 
 
+        public virtual int OnInstancedTesselation(int light, BlockPos pos, Block[] chunkExtBlocks, int extIndex3d, out int sideDisableWindwave)
+        {
+            sideDisableWindwave = 0;
+            return 0;
+        }
+
+
         public float WaveFlagMinY = 9 / 16f;
         
 
@@ -1677,7 +1729,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public static void ToggleWindModeSetWindData(MeshData sourceMesh, int leavesNoWaveTileSide, bool enableWind, int groundOffsetTop, int[] origFlags)
+        public static void ToggleWindModeSetWindData(MeshData sourceMesh, int leavesNoShearTileSide, bool enableWind, int groundOffsetTop, int[] origFlags)
         {
             if (origFlags == null) origFlags = sourceMesh.Flags;
             int clearFlags = VertexFlags.ClearWindBitsMask;
@@ -1693,9 +1745,10 @@ namespace Vintagestory.API.Common
                 return;
             }
 
+            // We add the ground offset to the winddatabits, but not if this side of the block is flagged in leavesNoShearTileSide (because against a solid block) - in that case, ground offset will remain zero
             for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
             {
-                int flag = sourceMesh.Flags[vertexNum] & clearFlags;
+                int flag = sourceMesh.Flags[vertexNum] &= VertexFlags.ClearWindDataBitsMask;
 
                 float fx = sourceMesh.xyz[vertexNum * 3 + 0];
                 float fz = sourceMesh.xyz[vertexNum * 3 + 2];
@@ -1707,11 +1760,11 @@ namespace Vintagestory.API.Common
                 int y = (int)(sourceMesh.xyz[vertexNum * 3 + 1] - 1.5f) >> 1;
                 int z = (int)(fz - 1.5f) >> 1;
 
-                int sidesToCheckMask = 1 << TileSideEnum.Up - y | 4 + z * 4 | 2 - x * 6;
-
-                if ((leavesNoWaveTileSide & sidesToCheckMask) == 0)
+                int sidesToCheckMask = 1 << TileSideEnum.Up - y | 4 + z * 3 | 2 - x * 6;     // evaluates to 32 or 16 (for y = -1 or 0)  +  1 or 4 (for z = -1 or 0)  +   8 or 2 (for x = -1 or 0)   In other words, bit flags in bit positions corresponding to TileSideFlagsEnum
+                                                                                             // Every vertex has three flags set, because all vertices are on the "outside" of a leaves block - yes, a leaves block is not a standard cube and it has probably been rotated, but this is a good enough approximation to whether this vertex is close to the solid neighbour or not
+                if ((leavesNoShearTileSide & sidesToCheckMask) == 0)
                 {
-                    flag |= origFlags[vertexNum] | ((groundOffsetTop == 8 ? 7 : groundOffsetTop + y) << VertexFlags.WindDataBitsPos );
+                    flag |= (groundOffsetTop == 8 ? 7 : groundOffsetTop + y) << VertexFlags.WindDataBitsPos;
                 }
 
                 sourceMesh.Flags[vertexNum] = flag;
@@ -2430,15 +2483,23 @@ namespace Vintagestory.API.Common
 
             if (MiningSpeed != null) cloned.MiningSpeed = new Dictionary<EnumBlockMaterial, float>(MiningSpeed);
 
-            cloned.Textures = new Dictionary<string, CompositeTexture>();
-            foreach (var var in Textures)
+            if (Textures is FakeDictionary<string, CompositeTexture> fastTextures) cloned.Textures = fastTextures.Clone();
+            else
             {
-                cloned.Textures[var.Key] = var.Value.Clone();
+                cloned.Textures = new FakeDictionary<string, CompositeTexture>(Textures.Count);
+                foreach (var var in Textures)
+                {
+                    cloned.Textures[var.Key] = var.Value.Clone();
+                }
             }
-            cloned.TexturesInventory = new Dictionary<string, CompositeTexture>();
-            foreach (var var in TexturesInventory)
+            if (TexturesInventory is FakeDictionary<string, CompositeTexture> fastInvTextures) cloned.TexturesInventory = fastInvTextures.Clone();
+            else
             {
-                cloned.TexturesInventory[var.Key] = var.Value.Clone();
+                cloned.TexturesInventory = new Dictionary<string, CompositeTexture>();
+                foreach (var var in TexturesInventory)
+                {
+                    cloned.TexturesInventory[var.Key] = var.Value.Clone();
+                }
             }
 
             cloned.Shape = Shape.Clone();
@@ -2471,10 +2532,7 @@ namespace Vintagestory.API.Common
                 cloned.SideOpaque = (bool[])SideOpaque.Clone();
             }
 
-            if (SideSolid != null)
-            {
-                cloned.SideSolid = (bool[])SideSolid.Clone();
-            }
+            cloned.SideSolid = SideSolid;
 
             if (SideAo != null)
             {

@@ -41,5 +41,7 @@ namespace Vintagestory.API.Server
         /// List of all loaded tree generators
         /// </summary>
         OrderedDictionary<AssetLocation, ITreeGenerator> TreeGenerators { get; }
+
+        bool IsFullyLoadedChunk(BlockPos pos);
     }
 }

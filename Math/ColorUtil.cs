@@ -493,10 +493,9 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        public static int ColorA(int color)
+        public static byte ColorA(int color)
         {
-            byte a = (byte)(color >> 24);
-            return a;
+            return (byte)(color >> 24);
         }
 
         /// <summary>
@@ -504,10 +503,9 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        public static int ColorR(int color)
+        public static byte ColorR(int color)
         {
-            byte r = (byte)(color >> 16);
-            return r;
+            return (byte)(color >> 16);
         }
 
         /// <summary>
@@ -515,10 +513,9 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        public static int ColorG(int color)
+        public static byte ColorG(int color)
         {
-            byte g = (byte)(color >> 8);
-            return g;
+            return (byte)(color >> 8);
         }
 
         /// <summary>
@@ -526,10 +523,9 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        public static int ColorB(int color)
+        public static byte ColorB(int color)
         {
-            byte b = (byte)(color);
-            return b;
+            return (byte)(color);
         }
 
         /// <summary>
@@ -992,7 +988,7 @@ namespace Vintagestory.API.MathTools
                 }
             }
 
-            public int ToRgba(ushort light, ushort lightSat)
+            public int ToRgba(uint light, int lightSat)
             {
                 byte v = blockLightlevelsByte[(light >> 5) & 31];
                 byte a = sunLightlevelsByte[light & 31];
@@ -1003,7 +999,7 @@ namespace Vintagestory.API.MathTools
                 }
 
                 byte h = hueLevels[light >> 10];
-                byte s = satLevels[lightSat & 7];
+                byte s = satLevels[lightSat];
 
                 int region, p, q, t;
                 int remainder;

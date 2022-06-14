@@ -149,10 +149,10 @@ namespace Vintagestory.API.Client
             model.xyz[model.XyzCount + 0] = x;
             model.xyz[model.XyzCount + 1] = y;
             model.xyz[model.XyzCount + 2] = z;
-            model.Rgba[model.RgbaCount + 0] = (byte)(ColorUtil.ColorR(color));
-            model.Rgba[model.RgbaCount + 1] = (byte)(ColorUtil.ColorG(color));
-            model.Rgba[model.RgbaCount + 2] = (byte)(ColorUtil.ColorB(color));
-            model.Rgba[model.RgbaCount + 3] = (byte)(ColorUtil.ColorA(color));
+            model.Rgba[model.RgbaCount + 0] = ColorUtil.ColorR(color);
+            model.Rgba[model.RgbaCount + 1] = ColorUtil.ColorG(color);
+            model.Rgba[model.RgbaCount + 2] = ColorUtil.ColorB(color);
+            model.Rgba[model.RgbaCount + 3] = ColorUtil.ColorA(color);
             model.VerticesCount++;
         }
     }

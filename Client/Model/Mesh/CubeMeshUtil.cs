@@ -97,17 +97,6 @@ namespace Vintagestory.API.Client
             BlockFacing.DOWN.MeshDataIndex,
         };
 
-        /// <summary>
-        /// Cube UV Rotation.
-        /// </summary>
-        public static int[] CubeUvRotation =
-        {
-            0,
-            1,
-            2,
-            3
-        };
-
 
         /// <summary>
         /// UV Coords for every Vertex in a cube
@@ -518,16 +507,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < 6; i++)
             {
-                BlockFacing facing = BlockFacing.ALLFACES[i];
-                
-                mesh.XyzFaces[i] = facing.MeshDataIndex;
-
-                int normal = BlockFacing.AllVertexFlagsNormals[facing.Index];
-                mesh.Flags[i * 4 + 0] |= normal;
-                mesh.Flags[i * 4 + 1] |= normal;
-                mesh.Flags[i * 4 + 2] |= normal;
-                mesh.Flags[i * 4 + 3] |= normal;
-
+                mesh.Flags[i * 4] = mesh.Flags[i * 4 + 1] = mesh.Flags[i * 4 + 2] = mesh.Flags[i * 4 + 3] = VertexFlags.PackNormal(BlockFacing.ALLFACES[i].Normali);
             }
         }
     }
