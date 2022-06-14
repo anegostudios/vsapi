@@ -154,7 +154,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_ClimateColorMap.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.ClimateColorMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L84">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L95">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_ClimateColorMap" data-uid="Vintagestory.API.Common.ShapeElement.ClimateColorMap">ClimateColorMap</h4>
   <div class="markdown level1 summary"></div>
@@ -174,6 +174,65 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Color.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Color%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L139">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_ShapeElement_Color" data-uid="Vintagestory.API.Common.ShapeElement.Color">Color</h4>
+  <div class="markdown level1 summary"><p>For entity animations</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Color</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_DamageEffect.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.DamageEffect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L141">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_ShapeElement_DamageEffect" data-uid="Vintagestory.API.Common.ShapeElement.DamageEffect">DamageEffect</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float DamageEffect</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -213,10 +272,10 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Faces.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Faces%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L39">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L46">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_Faces" data-uid="Vintagestory.API.Common.ShapeElement.Faces">Faces</h4>
-  <div class="markdown level1 summary"><p>The faces of the shape element by name.</p>
+  <div class="markdown level1 summary"><p>The faces of the shape element by name (will normally be null except during object deserialization: use FacesResolved instead!)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -240,10 +299,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_FacesResolved.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.FacesResolved%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L50">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_ShapeElement_FacesResolved" data-uid="Vintagestory.API.Common.ShapeElement.FacesResolved">FacesResolved</h4>
+  <div class="markdown level1 summary"><p>An array holding the faces of this shape element in BlockFacing order: North, East, South, West, Up, Down.  May be null if not present or not enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ShapeElementFace[] FacesResolved</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ShapeElementFace.html">ShapeElementFace</a>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_From.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.From%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L22">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L28">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_From" data-uid="Vintagestory.API.Common.ShapeElement.From">From</h4>
   <div class="markdown level1 summary"></div>
@@ -272,7 +361,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_GradientShade.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.GradientShade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L33">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L39">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_GradientShade" data-uid="Vintagestory.API.Common.ShapeElement.GradientShade">GradientShade</h4>
   <div class="markdown level1 summary"></div>
@@ -301,7 +390,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_inverseModelTransform.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.inverseModelTransform%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L137">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L143">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_inverseModelTransform" data-uid="Vintagestory.API.Common.ShapeElement.inverseModelTransform">inverseModelTransform</h4>
   <div class="markdown level1 summary"></div>
@@ -357,10 +446,69 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Name.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_locationForLogging.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.locationForLogging%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L18">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_ShapeElement_locationForLogging" data-uid="Vintagestory.API.Common.ShapeElement.locationForLogging">locationForLogging</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static object locationForLogging</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Logger.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L17">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_ShapeElement_Logger" data-uid="Vintagestory.API.Common.ShapeElement.Logger">Logger</h4>
+  <div class="markdown level1 summary"><p>A static reference to the logger (null on a server) - we don&apos;t want to hold a reference to the platform or api in every ShapeElement</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ILogger Logger</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Name.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L24">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_Name" data-uid="Vintagestory.API.Common.ShapeElement.Name">Name</h4>
   <div class="markdown level1 summary"><p>The name of the ShapeElement</p>
@@ -417,39 +565,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Reflective.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Reflective%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L101">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_ShapeElement_Reflective" data-uid="Vintagestory.API.Common.ShapeElement.Reflective">Reflective</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Reflective</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_RenderPass.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.RenderPass%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L88">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L99">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_RenderPass" data-uid="Vintagestory.API.Common.ShapeElement.RenderPass">RenderPass</h4>
   <div class="markdown level1 summary"></div>
@@ -478,7 +597,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_RotationOrigin.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.RotationOrigin%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L45">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L56">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_RotationOrigin" data-uid="Vintagestory.API.Common.ShapeElement.RotationOrigin">RotationOrigin</h4>
   <div class="markdown level1 summary"><p>The origin point for rotation.</p>
@@ -508,7 +627,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_RotationX.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.RotationX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L51">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L62">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_RotationX" data-uid="Vintagestory.API.Common.ShapeElement.RotationX">RotationX</h4>
   <div class="markdown level1 summary"><p>The forward vertical rotation of the shape element.</p>
@@ -538,7 +657,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_RotationY.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.RotationY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L57">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L68">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_RotationY" data-uid="Vintagestory.API.Common.ShapeElement.RotationY">RotationY</h4>
   <div class="markdown level1 summary"><p>The forward vertical rotation of the shape element.</p>
@@ -568,7 +687,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_RotationZ.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.RotationZ%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L63">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L74">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_RotationZ" data-uid="Vintagestory.API.Common.ShapeElement.RotationZ">RotationZ</h4>
   <div class="markdown level1 summary"><p>The left/right tilt of the shape element</p>
@@ -598,7 +717,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_ScaleX.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.ScaleX%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L69">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L80">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_ScaleX" data-uid="Vintagestory.API.Common.ShapeElement.ScaleX">ScaleX</h4>
   <div class="markdown level1 summary"><p>How far away are the left/right sides of the shape from the center</p>
@@ -628,7 +747,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_ScaleY.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.ScaleY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L75">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L86">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_ScaleY" data-uid="Vintagestory.API.Common.ShapeElement.ScaleY">ScaleY</h4>
   <div class="markdown level1 summary"><p>How far away are the top/bottom sides of the shape from the center</p>
@@ -658,7 +777,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_ScaleZ.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.ScaleZ%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L81">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L92">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_ScaleZ" data-uid="Vintagestory.API.Common.ShapeElement.ScaleZ">ScaleZ</h4>
   <div class="markdown level1 summary"><p>How far away are the front/back sides of the shape from the center.</p>
@@ -688,7 +807,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_SeasonColorMap.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.SeasonColorMap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L86">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L97">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_SeasonColorMap" data-uid="Vintagestory.API.Common.ShapeElement.SeasonColorMap">SeasonColorMap</h4>
   <div class="markdown level1 summary"></div>
@@ -717,7 +836,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Shade.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Shade%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L30">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L36">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_Shade" data-uid="Vintagestory.API.Common.ShapeElement.Shade">Shade</h4>
   <div class="markdown level1 summary"><p>Whether or not the shape element is shaded.</p>
@@ -777,7 +896,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_To.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.To%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L24">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L30">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_To" data-uid="Vintagestory.API.Common.ShapeElement.To">To</h4>
   <div class="markdown level1 summary"></div>
@@ -803,98 +922,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_WaterWave.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.WaterWave%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L99">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_ShapeElement_WaterWave" data-uid="Vintagestory.API.Common.ShapeElement.WaterWave">WaterWave</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool WaterWave</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_WindData.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.WindData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L97">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_ShapeElement_WindData" data-uid="Vintagestory.API.Common.ShapeElement.WindData">WindData</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int WindData</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_WindMode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.WindMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L95">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_ShapeElement_WindMode" data-uid="Vintagestory.API.Common.ShapeElement.WindMode">WindMode</h4>
-  <div class="markdown level1 summary"><p>This will set the FoliageWindWave flag in the sourceMesh when the shape is originally tesselated, but note that all/most Block.OnJsonTesselation methods will reset this flag in the sourceMesh using VertexFlags.clearbits (and always reset if the block is rendered underground or indoors with windwave off)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int WindMode</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_ZOffset.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.ZOffset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L90">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L101">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ShapeElement_ZOffset" data-uid="Vintagestory.API.Common.ShapeElement.ZOffset">ZOffset</h4>
   <div class="markdown level1 summary"></div>
@@ -925,7 +956,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_CacheInverseTransformMatrix.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.CacheInverseTransformMatrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L156">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L162">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ShapeElement_CacheInverseTransformMatrix_" data-uid="Vintagestory.API.Common.ShapeElement.CacheInverseTransformMatrix*"></a>
   <h4 id="Vintagestory_API_Common_ShapeElement_CacheInverseTransformMatrix" data-uid="Vintagestory.API.Common.ShapeElement.CacheInverseTransformMatrix">CacheInverseTransformMatrix()</h4>
@@ -940,7 +971,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_Clone.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L265">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L301">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ShapeElement_Clone_" data-uid="Vintagestory.API.Common.ShapeElement.Clone*"></a>
   <h4 id="Vintagestory_API_Common_ShapeElement_Clone" data-uid="Vintagestory.API.Common.ShapeElement.Clone">Clone()</h4>
@@ -970,7 +1001,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_GetInverseModelMatrix.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.GetInverseModelMatrix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L168">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L174">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ShapeElement_GetInverseModelMatrix_" data-uid="Vintagestory.API.Common.ShapeElement.GetInverseModelMatrix*"></a>
   <h4 id="Vintagestory_API_Common_ShapeElement_GetInverseModelMatrix" data-uid="Vintagestory.API.Common.ShapeElement.GetInverseModelMatrix">GetInverseModelMatrix()</h4>
@@ -1001,7 +1032,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_GetLocalTransformMatrix_System_Single___Vintagestory_API_Common_ElementPose_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.GetLocalTransformMatrix(System.Single%5B%5D%2CVintagestory.API.Common.ElementPose)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L219">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L255">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ShapeElement_GetLocalTransformMatrix_" data-uid="Vintagestory.API.Common.ShapeElement.GetLocalTransformMatrix*"></a>
   <h4 id="Vintagestory_API_Common_ShapeElement_GetLocalTransformMatrix_System_Single___Vintagestory_API_Common_ElementPose_" data-uid="Vintagestory.API.Common.ShapeElement.GetLocalTransformMatrix(System.Single[],Vintagestory.API.Common.ElementPose)">GetLocalTransformMatrix(Single[], ElementPose)</h4>
@@ -1053,7 +1084,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_GetParentPath.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.GetParentPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L143">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L149">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ShapeElement_GetParentPath_" data-uid="Vintagestory.API.Common.ShapeElement.GetParentPath*"></a>
   <h4 id="Vintagestory_API_Common_ShapeElement_GetParentPath" data-uid="Vintagestory.API.Common.ShapeElement.GetParentPath">GetParentPath()</h4>
@@ -1084,7 +1115,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_SetJointIdRecursive_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.SetJointIdRecursive(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L311">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L343">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ShapeElement_SetJointIdRecursive_" data-uid="Vintagestory.API.Common.ShapeElement.SetJointIdRecursive*"></a>
   <h4 id="Vintagestory_API_Common_ShapeElement_SetJointIdRecursive_System_Int32_" data-uid="Vintagestory.API.Common.ShapeElement.SetJointIdRecursive(System.Int32)">SetJointIdRecursive(Int32)</h4>
@@ -1116,7 +1147,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ShapeElement_WalkRecursive_Action_Vintagestory_API_Common_ShapeElement__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ShapeElement.WalkRecursive(Action%7BVintagestory.API.Common.ShapeElement%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L325">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Shape/ShapeElement.cs/#L357">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ShapeElement_WalkRecursive_" data-uid="Vintagestory.API.Common.ShapeElement.WalkRecursive*"></a>
   <h4 id="Vintagestory_API_Common_ShapeElement_WalkRecursive_Action_Vintagestory_API_Common_ShapeElement__" data-uid="Vintagestory.API.Common.ShapeElement.WalkRecursive(Action{Vintagestory.API.Common.ShapeElement})">WalkRecursive(Action&lt;ShapeElement&gt;)</h4>

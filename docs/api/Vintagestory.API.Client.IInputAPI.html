@@ -89,7 +89,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IInputAPI_HotKeys.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IInputAPI.HotKeys%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IInputAPI.cs/#L126">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IInputAPI.cs/#L137">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_IInputAPI_HotKeys_" data-uid="Vintagestory.API.Client.IInputAPI.HotKeys*"></a>
   <h4 id="Vintagestory_API_Client_IInputAPI_HotKeys" data-uid="Vintagestory.API.Client.IInputAPI.HotKeys">HotKeys</h4>
@@ -433,7 +433,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IInputAPI_GetHotKeyByCode_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IInputAPI.GetHotKeyByCode(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IInputAPI.cs/#L133">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IInputAPI.cs/#L144">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_IInputAPI_GetHotKeyByCode_" data-uid="Vintagestory.API.Client.IInputAPI.GetHotKeyByCode*"></a>
   <h4 id="Vintagestory_API_Client_IInputAPI_GetHotKeyByCode_System_String_" data-uid="Vintagestory.API.Client.IInputAPI.GetHotKeyByCode(System.String)">GetHotKeyByCode(String)</h4>
@@ -543,10 +543,73 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IInputAPI_RegisterHotKeyFirst_System_String_System_String_Vintagestory_API_Client_GlKeys_Vintagestory_API_Client_HotkeyType_System_Boolean_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst(System.String%2CSystem.String%2CVintagestory.API.Client.GlKeys%2CVintagestory.API.Client.HotkeyType%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IInputAPI.cs/#L123">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IInputAPI_RegisterHotKeyFirst_" data-uid="Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst*"></a>
+  <h4 id="Vintagestory_API_Client_IInputAPI_RegisterHotKeyFirst_System_String_System_String_Vintagestory_API_Client_GlKeys_Vintagestory_API_Client_HotkeyType_System_Boolean_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)">RegisterHotKeyFirst(String, String, GlKeys, HotkeyType, Boolean, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Same as RegisterHotKey except it inserts it at the start of the list</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RegisterHotKeyFirst(string hotkeyCode, string name, GlKeys key, HotkeyType type = HotkeyType.CharacterControls, bool altPressed = false, bool ctrlPressed = false, bool shiftPressed = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">hotkeyCode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.GlKeys.html">GlKeys</a></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.HotkeyType.html">HotkeyType</a></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">altPressed</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ctrlPressed</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">shiftPressed</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IInputAPI_SetHotKeyHandler_System_String_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Client_KeyCombination__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IInputAPI.SetHotKeyHandler(System.String%2CVintagestory.API.Common.ActionConsumable%7BVintagestory.API.Client.KeyCombination%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IInputAPI.cs/#L121">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IInputAPI.cs/#L132">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_IInputAPI_SetHotKeyHandler_" data-uid="Vintagestory.API.Client.IInputAPI.SetHotKeyHandler*"></a>
   <h4 id="Vintagestory_API_Client_IInputAPI_SetHotKeyHandler_System_String_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Client_KeyCombination__" data-uid="Vintagestory.API.Client.IInputAPI.SetHotKeyHandler(System.String,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination})">SetHotKeyHandler(String, ActionConsumable&lt;KeyCombination&gt;)</h4>

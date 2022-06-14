@@ -160,6 +160,289 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_ClearBlocks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.ClearBlocks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L13">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_ClearBlocks_" data-uid="Vintagestory.API.Common.IChunkBlocks.ClearBlocks*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_ClearBlocks" data-uid="Vintagestory.API.Common.IChunkBlocks.ClearBlocks">ClearBlocks()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearBlocks()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_ClearBlocksAndPrepare.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.ClearBlocksAndPrepare%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L17">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_ClearBlocksAndPrepare_" data-uid="Vintagestory.API.Common.IChunkBlocks.ClearBlocksAndPrepare*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_ClearBlocksAndPrepare" data-uid="Vintagestory.API.Common.IChunkBlocks.ClearBlocksAndPrepare">ClearBlocksAndPrepare()</h4>
+  <div class="markdown level1 summary"><p>Same as ClearBlocks but initialises the chunkdata palette, so that SetBlockUnsafe can be used  (useful in worldgen)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearBlocksAndPrepare()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_GetBlockIdUnsafe_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.GetBlockIdUnsafe(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L38">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_GetBlockIdUnsafe_" data-uid="Vintagestory.API.Common.IChunkBlocks.GetBlockIdUnsafe*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_GetBlockIdUnsafe_System_Int32_" data-uid="Vintagestory.API.Common.IChunkBlocks.GetBlockIdUnsafe(System.Int32)">GetBlockIdUnsafe(Int32)</h4>
+  <div class="markdown level1 summary"><p>Like get (i.e. this[]) but not threadsafe - only for use where setting and getting is guaranteed to be all on the same thread (e.g. during worldgen)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetBlockIdUnsafe(int index3d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_GetLiquid_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.GetLiquid(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L32">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_GetLiquid_" data-uid="Vintagestory.API.Common.IChunkBlocks.GetLiquid*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_GetLiquid_System_Int32_" data-uid="Vintagestory.API.Common.IChunkBlocks.GetLiquid(System.Int32)">GetLiquid(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int GetLiquid(int index3d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_SetBlockAir_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.SetBlockAir(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L25">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_SetBlockAir_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetBlockAir*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_SetBlockAir_System_Int32_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetBlockAir(System.Int32)">SetBlockAir(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBlockAir(int index3d)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_SetBlockBulk_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.SetBlockBulk(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L18">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_SetBlockBulk_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetBlockBulk*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_SetBlockBulk_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetBlockBulk(System.Int32,System.Int32,System.Int32,System.Int32)">SetBlockBulk(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBlockBulk(int index3d, int lenX, int lenZ, int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lenX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">lenZ</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_SetBlockUnsafe_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.SetBlockUnsafe(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L24">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_SetBlockUnsafe_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetBlockUnsafe*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_SetBlockUnsafe_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetBlockUnsafe(System.Int32,System.Int32)">SetBlockUnsafe(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Not threadsafe, used only in cases where we know that the chunk already has a palette (e.g. in worldgen when replacing rock with other blocks)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetBlockUnsafe(int index3d, int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_SetLiquid_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.SetLiquid(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L31">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_SetLiquid_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetLiquid*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_SetLiquid_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IChunkBlocks.SetLiquid(System.Int32,System.Int32)">SetLiquid(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Used to place blocks into the liquid layer instead of the solid blocks layer; calling code must do this</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetLiquid(int index3d, int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index3d</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           

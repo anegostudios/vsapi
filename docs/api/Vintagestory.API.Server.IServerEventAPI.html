@@ -389,7 +389,7 @@ When world type is null, all handlers are returned</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_ServerRunPhase_Vintagestory_API_Server_EnumServerRunPhase_Action_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.ServerRunPhase(Vintagestory.API.Server.EnumServerRunPhase%2CAction)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L189">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L197">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerEventAPI_ServerRunPhase_" data-uid="Vintagestory.API.Server.IServerEventAPI.ServerRunPhase*"></a>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_ServerRunPhase_Vintagestory_API_Server_EnumServerRunPhase_Action_" data-uid="Vintagestory.API.Server.IServerEventAPI.ServerRunPhase(Vintagestory.API.Server.EnumServerRunPhase,Action)">ServerRunPhase(EnumServerRunPhase, Action)</h4>
@@ -427,7 +427,7 @@ When world type is null, all handlers are returned</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_Timer_Action_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.Timer(Action%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L196">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L204">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerEventAPI_Timer_" data-uid="Vintagestory.API.Server.IServerEventAPI.Timer*"></a>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_Timer_Action_System_Double_" data-uid="Vintagestory.API.Server.IServerEventAPI.Timer(Action,System.Double)">Timer(Action, Double)</h4>
@@ -494,6 +494,37 @@ When world type is null, all handlers are returned</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_AssetsFinalizers.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.AssetsFinalizers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L163">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Server_IServerEventAPI_AssetsFinalizers" data-uid="Vintagestory.API.Server.IServerEventAPI.AssetsFinalizers">AssetsFinalizers</h4>
+  <div class="markdown level1 summary"><p>Triggered after assets have been loaded and parsed and registered, but before they are declared to be ready - e.g. you can add more behaviors here, or make other code-based changes to properties read from JSONs
+<br>Note: modsystems should register for this in a Start() method not StartServerSide(): the AssetsFinalizer event is fired before StartServerSide() is reached</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action AssetsFinalizers</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_BeforeActiveSlotChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.BeforeActiveSlotChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -528,7 +559,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_BreakBlock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.BreakBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L211">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L219">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_BreakBlock" data-uid="Vintagestory.API.Server.IServerEventAPI.BreakBlock">BreakBlock</h4>
   <div class="markdown level1 summary"><p>Called when a block should got broken now (that has been broken by a player). Set handling to PreventDefault to handle the block breaking yourself. Otherwise the engine will break the block (= either call heldItemstack.Collectible.OnBlockBrokenWith when player holds something in his hands or block.OnBlockBroken).</p>
@@ -558,7 +589,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_CanPlaceOrBreakBlock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.CanPlaceOrBreakBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L206">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L214">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_CanPlaceOrBreakBlock" data-uid="Vintagestory.API.Server.IServerEventAPI.CanPlaceOrBreakBlock">CanPlaceOrBreakBlock</h4>
   <div class="markdown level1 summary"><p>Registers a handler to be called every time a player places a block. The methods return value determines if the player may place/break this block. When returning false the client will be notified and the action reverted</p>
@@ -708,7 +739,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_DidBreakBlock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.DidBreakBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L216">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L224">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_DidBreakBlock" data-uid="Vintagestory.API.Server.IServerEventAPI.DidBreakBlock">DidBreakBlock</h4>
   <div class="markdown level1 summary"><p>Registers a method to be called every time a player deletes a block. Called after the block was already broken</p>
@@ -738,7 +769,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_DidPlaceBlock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.DidPlaceBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L201">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L209">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_DidPlaceBlock" data-uid="Vintagestory.API.Server.IServerEventAPI.DidPlaceBlock">DidPlaceBlock</h4>
   <div class="markdown level1 summary"><p>Registers a method to be called every time a player places a block</p>
@@ -768,7 +799,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_DidUseBlock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.DidUseBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L221">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L229">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_DidUseBlock" data-uid="Vintagestory.API.Server.IServerEventAPI.DidUseBlock">DidUseBlock</h4>
   <div class="markdown level1 summary"><p>Registers a method to be called every time a player uses a block</p>
@@ -798,7 +829,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_GameWorldSave.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.GameWorldSave%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L172">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L180">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_GameWorldSave" data-uid="Vintagestory.API.Server.IServerEventAPI.GameWorldSave">GameWorldSave</h4>
   <div class="markdown level1 summary"><p>Triggered before the game world data is being saved to disk </p>
@@ -1218,7 +1249,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_SaveGameCreated.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.SaveGameCreated%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L167">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L175">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_SaveGameCreated" data-uid="Vintagestory.API.Server.IServerEventAPI.SaveGameCreated">SaveGameCreated</h4>
   <div class="markdown level1 summary"><p>Triggered after a savegame has been created - i.e. when a new world was created</p>
@@ -1248,10 +1279,12 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_SaveGameLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.SaveGameLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L162">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L170">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_SaveGameLoaded" data-uid="Vintagestory.API.Server.IServerEventAPI.SaveGameLoaded">SaveGameLoaded</h4>
-  <div class="markdown level1 summary"><p>Triggered after the game world data has been loaded. At this point all blocks are loaded and the Map size is known.</p>
+  <div class="markdown level1 summary"><p>Triggered after the game world data has been loaded. At this point all blocks are loaded and the Map size is known.
+<br><br>In 1.17+ do NOT use this server event to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON).
+Instead, code which needs to do that should be registered for event sapi.Event.AssetsFinalizers.  See VSSurvivalMod system BlockReinforcement.cs for an example.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1278,7 +1311,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_ServerResume.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.ServerResume%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L182">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L190">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_ServerResume" data-uid="Vintagestory.API.Server.IServerEventAPI.ServerResume">ServerResume</h4>
   <div class="markdown level1 summary"><p>Called when something wants to resume execution of the server, e.g. the autosave system</p>
@@ -1308,7 +1341,7 @@ Allows for the event to be cancelled depending on the return value.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerEventAPI_ServerSuspend.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerEventAPI.ServerSuspend%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L177">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerEventAPI.cs/#L185">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Server_IServerEventAPI_ServerSuspend" data-uid="Vintagestory.API.Server.IServerEventAPI.ServerSuspend">ServerSuspend</h4>
   <div class="markdown level1 summary"><p>Called when something wants to pause the server, e.g. the autosave system. This method will be called every 50ms until all delegates return Ready state. Timeout is 60 seconds.</p>

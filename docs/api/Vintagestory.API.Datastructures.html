@@ -85,6 +85,8 @@
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.BoolRef.html">BoolRef</a></h4>
       <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Datastructures.Bools.html">Bools</a></h4>
+      <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.ByteArrayAttribute.html">ByteArrayAttribute</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.CachedCuboidList.html">CachedCuboidList</a></h4>
@@ -93,10 +95,19 @@
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.DoubleAttribute.html">DoubleAttribute</a></h4>
       <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Datastructures.FakeDictionary-2.html">FakeDictionary&lt;TKey, TValue&gt;</a></h4>
+      <section><p>A fast implementation of IDictionary using arrays.  Only suitable for small dictionaries, typically 1-20 entries.
+<br>Note that Add is implemented differently from a standard Dictionary, it does not check that the key is not already present (and does not throw an ArgumentException)
+<br>Additional methods AddIfNotPresent() and Clone() are provided for convenience.  There are also additional convenient constructors</p>
+</section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.FastList-1.html">FastList&lt;TElem&gt;</a></h4>
       <section><p>Does not clear elements in Clear(), but only sets the Count to 0</p>
 </section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.FastListEnum-1.html">FastListEnum&lt;TElem&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Datastructures.FastSetOfInts.html">FastSetOfInts</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Datastructures.FastSetOfLongs.html">FastSetOfLongs</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.FloatArrayAttribute.html">FloatArrayAttribute</a></h4>
       <section></section>
@@ -140,6 +151,8 @@ Can be used to perfrom bilinear interpolation between individual values</p>
 Taken from <a href="http://www.codeproject.com/Articles/18615/OrderedDictionary-T-A-generic-implementation-of-IO">http://www.codeproject.com/Articles/18615/OrderedDictionary-T-A-generic-implementation-of-IO</a>
 Please be aware that this is not a very efficient implementation, recommed use only for small sets of data.</p>
 </section>
+      <h4><a class="xref" href="Vintagestory.API.Datastructures.QueueOfInt.html">QueueOfInt</a></h4>
+      <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.Rectangled.html">Rectangled</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.Rectanglef.html">Rectanglef</a></h4>
@@ -169,6 +182,11 @@ Please be aware that this is not a very efficient implementation, recommed use o
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.UniqueQueue-1.html">UniqueQueue&lt;T&gt;</a></h4>
       <section><p>Same as your normal c# queue but ensures that every element is contained only once using a Hashset.</p>
+</section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="Vintagestory.API.Datastructures.SmallBoolArray.html">SmallBoolArray</a></h4>
+      <section><p>Suitable for up to 32 bool values, though normally used only for 6.  Offers most of the methods available for a bool[], so can be dropped in to existing code</p>
 </section>
     <h3 id="interfaces">Interfaces
   </h3>

@@ -984,6 +984,39 @@ You can use this matrix instead of <a class="xref" href="Vintagestory.API.Client
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IRenderAPI_AddPointLight_Vintagestory_API_Client_IPointLight_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IRenderAPI.AddPointLight(Vintagestory.API.Client.IPointLight)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IRenderAPI.cs/#L733">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IRenderAPI_AddPointLight_" data-uid="Vintagestory.API.Client.IRenderAPI.AddPointLight*"></a>
+  <h4 id="Vintagestory_API_Client_IRenderAPI_AddPointLight_Vintagestory_API_Client_IPointLight_" data-uid="Vintagestory.API.Client.IRenderAPI.AddPointLight(Vintagestory.API.Client.IPointLight)">AddPointLight(IPointLight)</h4>
+  <div class="markdown level1 summary"><p>Adds a dynamic light source to the scene. Will not be rendered if the current point light count exceeds max dynamic lights in the graphics settings</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddPointLight(IPointLight pointlight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IPointLight.html">IPointLight</a></td>
+        <td><span class="parametername">pointlight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IRenderAPI_AllocateEmptyMesh_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_Client_CustomMeshDataPartFloat_Vintagestory_API_Client_CustomMeshDataPartShort_Vintagestory_API_Client_CustomMeshDataPartByte_Vintagestory_API_Client_CustomMeshDataPartInt_Vintagestory_API_Client_EnumDrawMode_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IRenderAPI.AllocateEmptyMesh(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.Client.CustomMeshDataPartFloat%2CVintagestory.API.Client.CustomMeshDataPartShort%2CVintagestory.API.Client.CustomMeshDataPartByte%2CVintagestory.API.Client.CustomMeshDataPartInt%2CVintagestory.API.Client.EnumDrawMode%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -2644,6 +2677,39 @@ It is recommended to use this methods in a few spots during render code to track
         <td><span class="parametername">stacking</span></td>
         <td><p>If true, also applies scissoring from the previous call to PushScissor, otherwise replaces the scissor bounds</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IRenderAPI_RemovePointLight_Vintagestory_API_Client_IPointLight_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IRenderAPI.RemovePointLight(Vintagestory.API.Client.IPointLight)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IRenderAPI.cs/#L739">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IRenderAPI_RemovePointLight_" data-uid="Vintagestory.API.Client.IRenderAPI.RemovePointLight*"></a>
+  <h4 id="Vintagestory_API_Client_IRenderAPI_RemovePointLight_Vintagestory_API_Client_IPointLight_" data-uid="Vintagestory.API.Client.IRenderAPI.RemovePointLight(Vintagestory.API.Client.IPointLight)">RemovePointLight(IPointLight)</h4>
+  <div class="markdown level1 summary"><p>Removes a dynamic light source from the scene</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void RemovePointLight(IPointLight pointlight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.IPointLight.html">IPointLight</a></td>
+        <td><span class="parametername">pointlight</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

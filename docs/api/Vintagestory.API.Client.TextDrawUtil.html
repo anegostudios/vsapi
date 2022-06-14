@@ -90,18 +90,18 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_Vintagestory_API_Client_TextFlowPath___Vintagestory_API_Client_EnumTextOrientation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Context%2CVintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CSystem.Double%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CVintagestory.API.Client.EnumTextOrientation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_Vintagestory_API_Client_TextFlowPath___Vintagestory_API_Client_EnumTextOrientation_Vintagestory_API_Client_EnumLinebreakBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Context%2CVintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CSystem.Double%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CVintagestory.API.Client.EnumTextOrientation%2CVintagestory.API.Client.EnumLinebreakBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L444">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L446">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_" data-uid="Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_Vintagestory_API_Client_TextFlowPath___Vintagestory_API_Client_EnumTextOrientation_" data-uid="Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,Vintagestory.API.Client.TextFlowPath[],Vintagestory.API.Client.EnumTextOrientation)">AutobreakAndDrawMultilineText(Context, CairoFont, String, Double, Double, TextFlowPath[], EnumTextOrientation)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_Vintagestory_API_Client_TextFlowPath___Vintagestory_API_Client_EnumTextOrientation_Vintagestory_API_Client_EnumLinebreakBehavior_" data-uid="Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,Vintagestory.API.Client.TextFlowPath[],Vintagestory.API.Client.EnumTextOrientation,Vintagestory.API.Client.EnumLinebreakBehavior)">AutobreakAndDrawMultilineText(Context, CairoFont, String, Double, Double, TextFlowPath[], EnumTextOrientation, EnumLinebreakBehavior)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double AutobreakAndDrawMultilineText(Context ctx, CairoFont font, string text, double lineX, double lineY, TextFlowPath[] flowPath, EnumTextOrientation orientation = EnumTextOrientation.Left)</code></pre>
+    <pre><code class="lang-csharp hljs">public double AutobreakAndDrawMultilineText(Context ctx, CairoFont font, string text, double lineX, double lineY, TextFlowPath[] flowPath, EnumTextOrientation orientation = EnumTextOrientation.Left, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,6 +148,11 @@
         <td><span class="parametername">orientation</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -170,7 +175,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumTextOrientation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Context%2CVintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CVintagestory.API.Client.EnumTextOrientation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L134">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L136">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_" data-uid="Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText*"></a>
   <h4 id="Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineText_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumTextOrientation_" data-uid="Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineText(Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumTextOrientation)">AutobreakAndDrawMultilineText(Context, CairoFont, String, Double, EnumTextOrientation)</h4>
@@ -228,7 +233,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineTextAt_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt(Context%2CVintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CVintagestory.API.Client.EnumTextOrientation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L148">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L150">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineTextAt_" data-uid="Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt*"></a>
   <h4 id="Vintagestory_API_Client_TextDrawUtil_AutobreakAndDrawMultilineTextAt_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_" data-uid="Vintagestory.API.Client.TextDrawUtil.AutobreakAndDrawMultilineTextAt(Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)">AutobreakAndDrawMultilineTextAt(Context, CairoFont, String, Double, Double, Double, EnumTextOrientation)</h4>
@@ -314,7 +319,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_DrawMultilineText_Context_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_TextLine___Vintagestory_API_Client_EnumTextOrientation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.DrawMultilineText(Context%2CVintagestory.API.Client.CairoFont%2CVintagestory.API.Client.TextLine%5B%5D%2CVintagestory.API.Client.EnumTextOrientation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L460">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L462">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_DrawMultilineText_" data-uid="Vintagestory.API.Client.TextDrawUtil.DrawMultilineText*"></a>
   <h4 id="Vintagestory_API_Client_TextDrawUtil_DrawMultilineText_Context_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_TextLine___Vintagestory_API_Client_EnumTextOrientation_" data-uid="Vintagestory.API.Client.TextDrawUtil.DrawMultilineText(Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],Vintagestory.API.Client.EnumTextOrientation)">DrawMultilineText(Context, CairoFont, TextLine[], EnumTextOrientation)</h4>
@@ -366,7 +371,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_DrawMultilineTextAt_Context_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_TextLine___System_Double_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt(Context%2CVintagestory.API.Client.CairoFont%2CVintagestory.API.Client.TextLine%5B%5D%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CVintagestory.API.Client.EnumTextOrientation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L170">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L172">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_DrawMultilineTextAt_" data-uid="Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt*"></a>
   <h4 id="Vintagestory_API_Client_TextDrawUtil_DrawMultilineTextAt_Context_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_TextLine___System_Double_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_" data-uid="Vintagestory.API.Client.TextDrawUtil.DrawMultilineTextAt(Context,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.TextLine[],System.Double,System.Double,System.Double,Vintagestory.API.Client.EnumTextOrientation)">DrawMultilineTextAt(Context, CairoFont, TextLine[], Double, Double, Double, EnumTextOrientation)</h4>
@@ -436,7 +441,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_DrawTextLine_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.DrawTextLine(Context%2CVintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CSystem.Double%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L494">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L496">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_DrawTextLine_" data-uid="Vintagestory.API.Client.TextDrawUtil.DrawTextLine*"></a>
   <h4 id="Vintagestory_API_Client_TextDrawUtil_DrawTextLine_Context_Vintagestory_API_Client_CairoFont_System_String_System_Double_System_Double_System_Boolean_" data-uid="Vintagestory.API.Client.TextDrawUtil.DrawTextLine(Context,Vintagestory.API.Client.CairoFont,System.String,System.Double,System.Double,System.Boolean)">DrawTextLine(Context, CairoFont, String, Double, Double, Boolean)</h4>
@@ -500,7 +505,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetLineHeight_Vintagestory_API_Client_CairoFont_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetLineHeight(Vintagestory.API.Client.CairoFont)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L192">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L194">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_GetLineHeight_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetLineHeight*"></a>
   <h4 id="Vintagestory_API_Client_TextDrawUtil_GetLineHeight_Vintagestory_API_Client_CairoFont_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetLineHeight(Vintagestory.API.Client.CairoFont)">GetLineHeight(CairoFont)</h4>
@@ -547,18 +552,18 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CVintagestory.API.Client.EnumLinebreakBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L117">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L119">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,System.Double)">GetMultilineTextHeight(CairoFont, String, Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)">GetMultilineTextHeight(CairoFont, String, Double, EnumLinebreakBehavior)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double GetMultilineTextHeight(CairoFont font, string text, double boxWidth)</code></pre>
+    <pre><code class="lang-csharp hljs">public double GetMultilineTextHeight(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -585,6 +590,11 @@
         <td><span class="parametername">boxWidth</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -604,19 +614,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont%2CSystem.String%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont%2CSystem.String%2CVintagestory.API.Client.EnumLinebreakBehavior%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L229">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L231">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.TextFlowPath[],System.Double)">GetMultilineTextHeight(CairoFont, String, TextFlowPath[], Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetMultilineTextHeight_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetMultilineTextHeight(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)">GetMultilineTextHeight(CairoFont, String, EnumLinebreakBehavior, TextFlowPath[], Double)</h4>
   <div class="markdown level1 summary"><p>Get the final height of the text.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double GetMultilineTextHeight(CairoFont font, string text, TextFlowPath[] flowPath, double lineY = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public double GetMultilineTextHeight(CairoFont font, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double lineY = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -639,6 +649,11 @@
         <td><span class="parametername">text</span></td>
         <td><p>The text itself.</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="Vintagestory.API.Client.TextFlowPath.html">TextFlowPath</a>[]</td>
@@ -672,18 +687,18 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CVintagestory.API.Client.EnumLinebreakBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L114">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L116">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,System.Double)">GetQuantityTextLines(CairoFont, String, Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)">GetQuantityTextLines(CairoFont, String, Double, EnumLinebreakBehavior)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int GetQuantityTextLines(CairoFont font, string text, double boxWidth)</code></pre>
+    <pre><code class="lang-csharp hljs">public int GetQuantityTextLines(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -710,6 +725,11 @@
         <td><span class="parametername">boxWidth</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -729,19 +749,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont%2CSystem.String%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont%2CSystem.String%2CVintagestory.API.Client.EnumLinebreakBehavior%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L205">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L207">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.TextFlowPath[],System.Double)">GetQuantityTextLines(CairoFont, String, TextFlowPath[], Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_GetQuantityTextLines_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.GetQuantityTextLines(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double)">GetQuantityTextLines(CairoFont, String, EnumLinebreakBehavior, TextFlowPath[], Double)</h4>
   <div class="markdown level1 summary"><p>Gets the number of lines of text.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int GetQuantityTextLines(CairoFont font, string text, TextFlowPath[] flowPath, double lineY = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public int GetQuantityTextLines(CairoFont font, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double lineY = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -764,6 +784,11 @@
         <td><span class="parametername">text</span></td>
         <td><p>The text itself.</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="Vintagestory.API.Client.TextFlowPath.html">TextFlowPath</a>[]</td>
@@ -797,18 +822,18 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Context%2CSystem.String%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_System_Double_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Context%2CSystem.String%2CSystem.Double%2CSystem.Double%2CVintagestory.API.Client.EnumLinebreakBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L111">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L113">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_Lineize_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_System_Double_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Context,System.String,System.Double,System.Double)">Lineize(Context, String, Double, Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_System_Double_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Context,System.String,System.Double,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)">Lineize(Context, String, Double, Double, EnumLinebreakBehavior)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = null, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -840,6 +865,11 @@
         <td><span class="parametername">lineHeightMultiplier</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -859,19 +889,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Context%2CSystem.String%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Context%2CSystem.String%2CVintagestory.API.Client.EnumLinebreakBehavior%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L271">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L273">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_Lineize_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Context,System.String,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double)">Lineize(Context, String, TextFlowPath[], Double, Double, Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Context_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Context,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double)">Lineize(Context, String, EnumLinebreakBehavior, TextFlowPath[], Double, Double, Double)</h4>
   <div class="markdown level1 summary"><p>Turns the supplied text into line of text constrained by supplied flow path and starting at supplied start coordinates</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(Context ctx, string text, TextFlowPath[] flowPath, double startOffsetX = null, double startY = null, double lineHeightMultiplier = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(Context ctx, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = null, double startY = null, double lineHeightMultiplier = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -894,6 +924,11 @@
         <td><span class="parametername">text</span></td>
         <td><p>The text to be split</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="Vintagestory.API.Client.TextFlowPath.html">TextFlowPath</a>[]</td>
@@ -938,18 +973,18 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont%2CSystem.String%2CSystem.Double%2CVintagestory.API.Client.EnumLinebreakBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L120">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L122">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_Lineize_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,System.Double)">Lineize(CairoFont, String, Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_System_Double_Vintagestory_API_Client_EnumLinebreakBehavior_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,System.Double,Vintagestory.API.Client.EnumLinebreakBehavior)">Lineize(CairoFont, String, Double, EnumLinebreakBehavior)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth)</code></pre>
+    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -976,6 +1011,11 @@
         <td><span class="parametername">boxWidth</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -995,19 +1035,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont%2CSystem.String%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont%2CSystem.String%2CVintagestory.API.Client.EnumLinebreakBehavior%2CVintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L244">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L246">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_TextDrawUtil_Lineize_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize*"></a>
-  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double)">Lineize(CairoFont, String, TextFlowPath[], Double, Double)</h4>
+  <h4 id="Vintagestory_API_Client_TextDrawUtil_Lineize_Vintagestory_API_Client_CairoFont_System_String_Vintagestory_API_Client_EnumLinebreakBehavior_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_" data-uid="Vintagestory.API.Client.TextDrawUtil.Lineize(Vintagestory.API.Client.CairoFont,System.String,Vintagestory.API.Client.EnumLinebreakBehavior,Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double)">Lineize(CairoFont, String, EnumLinebreakBehavior, TextFlowPath[], Double, Double)</h4>
   <div class="markdown level1 summary"><p>Turns the supplied text into line of text constrained by supplied flow path and starting at supplied start coordinates</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(CairoFont font, string fulltext, TextFlowPath[] flowPath, double startOffsetX = null, double startY = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public TextLine[] Lineize(CairoFont font, string fulltext, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = null, double startY = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1030,6 +1070,11 @@
         <td><span class="parametername">fulltext</span></td>
         <td><p>The text of the lines.</p>
 </td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
+        <td><span class="parametername">linebreak</span></td>
+        <td></td>
       </tr>
       <tr>
         <td><a class="xref" href="Vintagestory.API.Client.TextFlowPath.html">TextFlowPath</a>[]</td>
@@ -1078,7 +1123,7 @@
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_TextDrawUtil.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.TextDrawUtil%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L103" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/TextDrawUtil.cs/#L105" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

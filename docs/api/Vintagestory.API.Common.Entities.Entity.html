@@ -138,6 +138,12 @@
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_Vintagestory_API_Common_AssetLocation_">RegistryObject.WildCardMatch(AssetLocation)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String___">RegistryObject.WildCardMatch(String[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String_">RegistryObject.WildCardMatch(String)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(AssetLocation, OrderedDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
@@ -1550,7 +1556,7 @@ Set and Called by the Entities ServerSystem</p>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_Alive_" data-uid="Vintagestory.API.Common.Entities.Entity.Alive*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_Alive" data-uid="Vintagestory.API.Common.Entities.Entity.Alive">Alive</h4>
-  <div class="markdown level1 summary"><p>True if the entity is in state active or inactive</p>
+  <div class="markdown level1 summary"><p>True if the entity is in state active or inactive, or generally not dead (for non-living entities, &apos;dead&apos; means ready to despawn)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2103,7 +2109,7 @@ A density below 1000 means the entity floats on top of water if has a physics si
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_AddBehavior_Vintagestory_API_Common_Entities_EntityBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.AddBehavior(Vintagestory.API.Common.Entities.EntityBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1248">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1250">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_AddBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.AddBehavior*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_AddBehavior_Vintagestory_API_Common_Entities_EntityBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.AddBehavior(Vintagestory.API.Common.Entities.EntityBehavior)">AddBehavior(EntityBehavior)</h4>
@@ -2136,7 +2142,7 @@ A density below 1000 means the entity floats on top of water if has a physics si
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_CanCollect_Vintagestory_API_Common_Entities_Entity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.CanCollect(Vintagestory.API.Common.Entities.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1608">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1620">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_CanCollect_" data-uid="Vintagestory.API.Common.Entities.Entity.CanCollect*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_CanCollect_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.Entities.Entity.CanCollect(Vintagestory.API.Common.Entities.Entity)">CanCollect(Entity)</h4>
@@ -2184,7 +2190,7 @@ A density below 1000 means the entity floats on top of water if has a physics si
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_DidImportOrExport_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.DidImportOrExport(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1658">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1670">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_DidImportOrExport_" data-uid="Vintagestory.API.Common.Entities.Entity.DidImportOrExport*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_DidImportOrExport_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.Entities.Entity.DidImportOrExport(Vintagestory.API.MathTools.BlockPos)">DidImportOrExport(BlockPos)</h4>
@@ -2219,7 +2225,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.Die(Vintagestory.API.Common.EnumDespawnReason%2CVintagestory.API.Common.DamageSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1529">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1540">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_Die_" data-uid="Vintagestory.API.Common.Entities.Entity.Die*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_" data-uid="Vintagestory.API.Common.Entities.Entity.Die(Vintagestory.API.Common.EnumDespawnReason,Vintagestory.API.Common.DamageSource)">Die(EnumDespawnReason, DamageSource)</h4>
@@ -2257,7 +2263,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_FromBytes_BinaryReader_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.FromBytes(BinaryReader%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1432">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1438">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_FromBytes_" data-uid="Vintagestory.API.Common.Entities.Entity.FromBytes*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_FromBytes_BinaryReader_System_Boolean_" data-uid="Vintagestory.API.Common.Entities.Entity.FromBytes(BinaryReader,System.Boolean)">FromBytes(BinaryReader, Boolean)</h4>
@@ -2266,7 +2272,7 @@ position in relation to the target position of the schematic to be imported.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void FromBytes(BinaryReader reader, bool fromServer)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void FromBytes(BinaryReader reader, bool isSync)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2285,8 +2291,9 @@ position in relation to the target position of the schematic to be imported.</p>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">fromServer</span></td>
-        <td></td>
+        <td><span class="parametername">isSync</span></td>
+        <td><p>True if this is a sync operation, not a chunk read operation</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -2295,7 +2302,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetBehavior_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetBehavior(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1293">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1295">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_GetBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.GetBehavior*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_GetBehavior_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.GetBehavior(System.String)">GetBehavior(String)</h4>
@@ -2343,7 +2350,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetBehavior__1.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetBehavior%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1302">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1304">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_GetBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.GetBehavior*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_GetBehavior__1" data-uid="Vintagestory.API.Common.Entities.Entity.GetBehavior``1">GetBehavior&lt;T&gt;()</h4>
@@ -2390,7 +2397,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetDrops(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L619">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L614">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_GetDrops_" data-uid="Vintagestory.API.Common.Entities.Entity.GetDrops*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.Entities.Entity.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)">GetDrops(IWorldAccessor, BlockPos, IPlayer)</h4>
@@ -2448,7 +2455,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetInfoText.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetInfoText%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1691">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1734">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_GetInfoText_" data-uid="Vintagestory.API.Common.Entities.Entity.GetInfoText*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_GetInfoText" data-uid="Vintagestory.API.Common.Entities.Entity.GetInfoText">GetInfoText()</h4>
@@ -2479,7 +2486,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetInteractionHelp_Vintagestory_API_Client_IClientWorldAccessor_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Client_IClientPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetInteractionHelp(Vintagestory.API.Client.IClientWorldAccessor%2CVintagestory.API.Common.EntitySelection%2CVintagestory.API.Client.IClientPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1098">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1100">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_GetInteractionHelp_" data-uid="Vintagestory.API.Common.Entities.Entity.GetInteractionHelp*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_GetInteractionHelp_Vintagestory_API_Client_IClientWorldAccessor_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Client_IClientPlayer_" data-uid="Vintagestory.API.Common.Entities.Entity.GetInteractionHelp(Vintagestory.API.Client.IClientWorldAccessor,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Client.IClientPlayer)">GetInteractionHelp(IClientWorldAccessor, EntitySelection, IClientPlayer)</h4>
@@ -2537,7 +2544,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1677">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1720">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_GetName_" data-uid="Vintagestory.API.Common.Entities.Entity.GetName*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_GetName" data-uid="Vintagestory.API.Common.Entities.Entity.GetName">GetName()</h4>
@@ -2568,7 +2575,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_HasBehavior_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.HasBehavior(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1268">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1270">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_HasBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.HasBehavior*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_HasBehavior_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.HasBehavior(System.String)">HasBehavior(String)</h4>
@@ -2616,7 +2623,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_HasBehavior__1.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.HasBehavior%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1278">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1280">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_HasBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.HasBehavior*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_HasBehavior__1" data-uid="Vintagestory.API.Common.Entities.Entity.HasBehavior``1">HasBehavior&lt;T&gt;()</h4>
@@ -2662,7 +2669,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_Ignite.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.Ignite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L903">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L905">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_Ignite_" data-uid="Vintagestory.API.Common.Entities.Entity.Ignite*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_Ignite" data-uid="Vintagestory.API.Common.Entities.Entity.Ignite">Ignite()</h4>
@@ -2720,7 +2727,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1313">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1315">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_IsActivityRunning_" data-uid="Vintagestory.API.Common.Entities.Entity.IsActivityRunning*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)">IsActivityRunning(String)</h4>
@@ -2768,7 +2775,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_Notify_System_String_System_Object_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.Notify(System.String%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1621">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1633">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_Notify_" data-uid="Vintagestory.API.Common.Entities.Entity.Notify*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_Notify_System_String_System_Object_" data-uid="Vintagestory.API.Common.Entities.Entity.Notify(System.String,System.Object)">Notify(String, Object)</h4>
@@ -2806,7 +2813,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnCollected_Vintagestory_API_Common_Entities_Entity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnCollected(Vintagestory.API.Common.Entities.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1190">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1192">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnCollected_" data-uid="Vintagestory.API.Common.Entities.Entity.OnCollected*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnCollected_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.Entities.Entity.OnCollected(Vintagestory.API.Common.Entities.Entity)">OnCollected(Entity)</h4>
@@ -2854,7 +2861,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnCollided.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnCollided%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L937">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L939">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnCollided_" data-uid="Vintagestory.API.Common.Entities.Entity.OnCollided*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnCollided" data-uid="Vintagestory.API.Common.Entities.Entity.OnCollided">OnCollided()</h4>
@@ -2870,7 +2877,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnCollideWithLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnCollideWithLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L945">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L947">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnCollideWithLiquid_" data-uid="Vintagestory.API.Common.Entities.Entity.OnCollideWithLiquid*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnCollideWithLiquid" data-uid="Vintagestory.API.Common.Entities.Entity.OnCollideWithLiquid">OnCollideWithLiquid()</h4>
@@ -2886,7 +2893,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnReason_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnReason)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1051">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1053">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnEntityDespawn_" data-uid="Vintagestory.API.Common.Entities.Entity.OnEntityDespawn*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnReason_" data-uid="Vintagestory.API.Common.Entities.Entity.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnReason)">OnEntityDespawn(EntityDespawnReason)</h4>
@@ -2919,7 +2926,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnEntityLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnEntityLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1024">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1026">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnEntityLoaded_" data-uid="Vintagestory.API.Common.Entities.Entity.OnEntityLoaded*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnEntityLoaded" data-uid="Vintagestory.API.Common.Entities.Entity.OnEntityLoaded">OnEntityLoaded()</h4>
@@ -2935,7 +2942,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnEntitySpawn.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnEntitySpawn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1037">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1039">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnEntitySpawn_" data-uid="Vintagestory.API.Common.Entities.Entity.OnEntitySpawn*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnEntitySpawn" data-uid="Vintagestory.API.Common.Entities.Entity.OnEntitySpawn">OnEntitySpawn()</h4>
@@ -2951,7 +2958,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnExitedLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnExitedLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1068">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1070">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnExitedLiquid_" data-uid="Vintagestory.API.Common.Entities.Entity.OnExitedLiquid*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnExitedLiquid" data-uid="Vintagestory.API.Common.Entities.Entity.OnExitedLiquid">OnExitedLiquid()</h4>
@@ -2967,7 +2974,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnFallToGround(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L926">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L928">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnFallToGround_" data-uid="Vintagestory.API.Common.Entities.Entity.OnFallToGround*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_" data-uid="Vintagestory.API.Common.Entities.Entity.OnFallToGround(System.Double)">OnFallToGround(Double)</h4>
@@ -3000,7 +3007,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnGameTick_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnGameTick(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L801">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L796">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnGameTick_" data-uid="Vintagestory.API.Common.Entities.Entity.OnGameTick*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnGameTick_System_Single_" data-uid="Vintagestory.API.Common.Entities.Entity.OnGameTick(System.Single)">OnGameTick(Single)</h4>
@@ -3071,7 +3078,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnInteract_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_ItemSlot_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_EnumInteractMode_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnInteract(Vintagestory.API.Common.EntityAgent%2CVintagestory.API.Common.ItemSlot%2CVintagestory.API.MathTools.Vec3d%2CVintagestory.API.Common.EnumInteractMode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1080">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1082">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnInteract_" data-uid="Vintagestory.API.Common.Entities.Entity.OnInteract*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnInteract_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_ItemSlot_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_EnumInteractMode_" data-uid="Vintagestory.API.Common.Entities.Entity.OnInteract(Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.ItemSlot,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.EnumInteractMode)">OnInteract(EntityAgent, ItemSlot, Vec3d, EnumInteractMode)</h4>
@@ -3119,10 +3126,61 @@ position in relation to the target position of the schematic to be imported.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1708">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings*"></a>
+  <h4 id="Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_" data-uid="Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)">OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;, Int32)</h4>
+  <div class="markdown level1 summary"><p>Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
+Note: Some vanilla blocks resolve randomized contents in this method.
+Hint: Use itemstack.FixMapping() to do the job for you.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">worldForNewMappings</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
+        <td><span class="parametername">oldBlockIdMapping</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
+        <td><span class="parametername">oldItemIdMapping</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">schematicSeed</span></td>
+        <td><p>If you need some sort of randomness consistency accross an imported schematic, you can use this value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnReceivedClientPacket_Vintagestory_API_Server_IServerPlayer_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnReceivedClientPacket(Vintagestory.API.Server.IServerPlayer%2CSystem.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1141">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1143">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnReceivedClientPacket_" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedClientPacket*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnReceivedClientPacket_Vintagestory_API_Server_IServerPlayer_System_Int32_System_Byte___" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedClientPacket(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Byte[])">OnReceivedClientPacket(IServerPlayer, Int32, Byte[])</h4>
@@ -3165,7 +3223,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnReceivedServerAnimations(System.Int32%5B%5D%2CSystem.Int32%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1180">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1182">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnReceivedServerAnimations_" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedServerAnimations*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedServerAnimations(System.Int32[],System.Int32,System.Single[])">OnReceivedServerAnimations(Int32[], Int32, Single[])</h4>
@@ -3207,7 +3265,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnReceivedServerPacket_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnReceivedServerPacket(System.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1159">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1161">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnReceivedServerPacket_" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedServerPacket*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnReceivedServerPacket_System_Int32_System_Byte___" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedServerPacket(System.Int32,System.Byte[])">OnReceivedServerPacket(Int32, Byte[])</h4>
@@ -3247,7 +3305,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnReceivedServerPos_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnReceivedServerPos(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1119">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1121">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnReceivedServerPos_" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedServerPos*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnReceivedServerPos_System_Boolean_" data-uid="Vintagestory.API.Common.Entities.Entity.OnReceivedServerPos(System.Boolean)">OnReceivedServerPos(Boolean)</h4>
@@ -3280,7 +3338,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnStateChanged_Vintagestory_API_Common_EnumEntityState_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnStateChanged(Vintagestory.API.Common.EnumEntityState)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1199">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1201">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnStateChanged_" data-uid="Vintagestory.API.Common.Entities.Entity.OnStateChanged*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnStateChanged_Vintagestory_API_Common_EnumEntityState_" data-uid="Vintagestory.API.Common.Entities.Entity.OnStateChanged(Vintagestory.API.Common.EnumEntityState)">OnStateChanged(EnumEntityState)</h4>
@@ -3310,10 +3368,48 @@ Packetid = 2 is used for BehaviorHarvestable</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnStoreCollectibleMappings(Dictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1692">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.Entity.OnStoreCollectibleMappings*"></a>
+  <h4 id="Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__" data-uid="Vintagestory.API.Common.Entities.Entity.OnStoreCollectibleMappings(Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})">OnStoreCollectibleMappings(Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;)</h4>
+  <div class="markdown level1 summary"><p>Called by the worldedit schematic exporter so that it can also export the mappings of items/blocks stored inside blockentities</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt; blockIdMapping, Dictionary&lt;int, AssetLocation&gt; itemIdMapping)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
+        <td><span class="parametername">blockIdMapping</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
+        <td><span class="parametername">itemIdMapping</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape%40%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L916">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L918">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_OnTesselation_" data-uid="Vintagestory.API.Common.Entities.Entity.OnTesselation*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String)">OnTesselation(ref Shape, String)</h4>
@@ -3351,7 +3447,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.PlayEntitySound(System.String%2CVintagestory.API.Common.IPlayer%2CSystem.Boolean%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1587">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1599">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_PlayEntitySound_" data-uid="Vintagestory.API.Common.Entities.Entity.PlayEntitySound*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_" data-uid="Vintagestory.API.Common.Entities.Entity.PlayEntitySound(System.String,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single)">PlayEntitySound(String, IPlayer, Boolean, Single)</h4>
@@ -3399,7 +3495,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_ReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.ReceiveDamage(Vintagestory.API.Common.DamageSource%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L743">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L738">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_ReceiveDamage_" data-uid="Vintagestory.API.Common.Entities.Entity.ReceiveDamage*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_ReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.Entities.Entity.ReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)">ReceiveDamage(DamageSource, Single)</h4>
@@ -3452,7 +3548,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_RemainingActivityTime_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.RemainingActivityTime(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1325">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1327">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_RemainingActivityTime_" data-uid="Vintagestory.API.Common.Entities.Entity.RemainingActivityTime*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_RemainingActivityTime_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.RemainingActivityTime(System.String)">RemainingActivityTime(String)</h4>
@@ -3500,7 +3596,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_RemoveBehavior_Vintagestory_API_Common_Entities_EntityBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.RemoveBehavior(Vintagestory.API.Common.Entities.EntityBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1258">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1260">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_RemoveBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.RemoveBehavior*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_RemoveBehavior_Vintagestory_API_Common_Entities_EntityBehavior_" data-uid="Vintagestory.API.Common.Entities.Entity.RemoveBehavior(Vintagestory.API.Common.Entities.EntityBehavior)">RemoveBehavior(EntityBehavior)</h4>
@@ -3533,7 +3629,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_Revive.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.Revive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1512">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1523">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_Revive_" data-uid="Vintagestory.API.Common.Entities.Entity.Revive*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_Revive" data-uid="Vintagestory.API.Common.Entities.Entity.Revive">Revive()</h4>
@@ -3549,7 +3645,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_SetActivityRunning_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.SetActivityRunning(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1337">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1339">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_SetActivityRunning_" data-uid="Vintagestory.API.Common.Entities.Entity.SetActivityRunning*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_SetActivityRunning_System_String_System_Int32_" data-uid="Vintagestory.API.Common.Entities.Entity.SetActivityRunning(System.String,System.Int32)">SetActivityRunning(String, Int32)</h4>
@@ -3587,7 +3683,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_SetCollisionBox_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.SetCollisionBox(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1218">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1220">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_SetCollisionBox_" data-uid="Vintagestory.API.Common.Entities.Entity.SetCollisionBox*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_SetCollisionBox_System_Single_System_Single_" data-uid="Vintagestory.API.Common.Entities.Entity.SetCollisionBox(System.Single,System.Single)">SetCollisionBox(Single, Single)</h4>
@@ -3625,7 +3721,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_SetSelectionBox_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.SetSelectionBox(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1231">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1233">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_SetSelectionBox_" data-uid="Vintagestory.API.Common.Entities.Entity.SetSelectionBox*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_SetSelectionBox_System_Single_System_Single_" data-uid="Vintagestory.API.Common.Entities.Entity.SetSelectionBox(System.Single,System.Single)">SetSelectionBox(Single, Single)</h4>
@@ -3662,7 +3758,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L791">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L786">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_ShouldReceiveDamage_" data-uid="Vintagestory.API.Common.Entities.Entity.ShouldReceiveDamage*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.Entities.Entity.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)">ShouldReceiveDamage(DamageSource, Single)</h4>
@@ -3715,7 +3811,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_SpawnWaterMovementParticles_System_Single_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.SpawnWaterMovementParticles(System.Single%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L986">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L988">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_SpawnWaterMovementParticles_" data-uid="Vintagestory.API.Common.Entities.Entity.SpawnWaterMovementParticles*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_SpawnWaterMovementParticles_System_Single_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.Common.Entities.Entity.SpawnWaterMovementParticles(System.Single,System.Double,System.Double,System.Double)">SpawnWaterMovementParticles(Single, Double, Double, Double)</h4>
@@ -3762,7 +3858,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_StartAnimation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.StartAnimation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1735">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1778">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_StartAnimation_" data-uid="Vintagestory.API.Common.Entities.Entity.StartAnimation*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_StartAnimation_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.StartAnimation(System.String)">StartAnimation(String)</h4>
@@ -3795,7 +3891,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_StopAnimation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.StopAnimation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1744">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1787">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_StopAnimation_" data-uid="Vintagestory.API.Common.Entities.Entity.StopAnimation*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_StopAnimation_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.StopAnimation(System.String)">StopAnimation(String)</h4>
@@ -3828,7 +3924,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_TeleportTo_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.TeleportTo(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L697">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L692">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_TeleportTo_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_TeleportTo_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo(System.Int32,System.Int32,System.Int32)">TeleportTo(Int32, Int32, Int32)</h4>
@@ -3871,7 +3967,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_Common_Entities_EntityPos_Action_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.Common.Entities.EntityPos%2CAction)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L724">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L719">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_TeleportTo_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_Common_Entities_EntityPos_Action_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.Common.Entities.EntityPos,Action)">TeleportTo(EntityPos, Action)</h4>
@@ -3909,7 +4005,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L715">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L710">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_TeleportTo_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.MathTools.BlockPos)">TeleportTo(BlockPos)</h4>
@@ -3942,7 +4038,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L706">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L701">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_TeleportTo_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.MathTools.Vec3d)">TeleportTo(Vec3d)</h4>
@@ -3975,7 +4071,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_Action_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.TeleportToDouble(System.Double%2CSystem.Double%2CSystem.Double%2CAction)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L669">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L664">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_TeleportToDouble_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportToDouble*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_Action_" data-uid="Vintagestory.API.Common.Entities.Entity.TeleportToDouble(System.Double,System.Double,System.Double,Action)">TeleportToDouble(Double, Double, Double, Action)</h4>
@@ -4023,7 +4119,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_ToBytes_BinaryWriter_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.ToBytes(BinaryWriter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1383">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1384">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_ToBytes_" data-uid="Vintagestory.API.Common.Entities.Entity.ToBytes*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_ToBytes_BinaryWriter_System_Boolean_" data-uid="Vintagestory.API.Common.Entities.Entity.ToBytes(BinaryWriter,System.Boolean)">ToBytes(BinaryWriter, Boolean)</h4>
@@ -4062,7 +4158,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_TryGiveItemStack_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.TryGiveItemStack(Vintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L604">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L599">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_TryGiveItemStack_" data-uid="Vintagestory.API.Common.Entities.Entity.TryGiveItemStack*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_TryGiveItemStack_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.Entities.Entity.TryGiveItemStack(Vintagestory.API.Common.ItemStack)">TryGiveItemStack(ItemStack)</h4>
@@ -4110,7 +4206,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_UpdateDebugAttributes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.UpdateDebugAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1346">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1348">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_UpdateDebugAttributes_" data-uid="Vintagestory.API.Common.Entities.Entity.UpdateDebugAttributes*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_UpdateDebugAttributes" data-uid="Vintagestory.API.Common.Entities.Entity.UpdateDebugAttributes">UpdateDebugAttributes()</h4>
@@ -4126,7 +4222,7 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_WillExport_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.WillExport(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1637">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1649">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_WillExport_" data-uid="Vintagestory.API.Common.Entities.Entity.WillExport*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_WillExport_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.Entities.Entity.WillExport(Vintagestory.API.MathTools.BlockPos)">WillExport(BlockPos)</h4>

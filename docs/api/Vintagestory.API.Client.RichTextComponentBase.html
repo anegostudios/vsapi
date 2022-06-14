@@ -405,19 +405,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_RichTextComponentBase_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_RichTextComponentBase_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_System_Double__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L95">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_RichTextComponentBase_CalcBounds_" data-uid="Vintagestory.API.Client.RichTextComponentBase.CalcBounds*"></a>
-  <h4 id="Vintagestory_API_Client_RichTextComponentBase_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double)">CalcBounds(TextFlowPath[], Double, Double, Double)</h4>
+  <h4 id="Vintagestory_API_Client_RichTextComponentBase_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_System_Double__" data-uid="Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Double@)">CalcBounds(TextFlowPath[], Double, Double, Double, out Double)</h4>
   <div class="markdown level1 summary"><p>Initializes the size and stuff. Return true if you had to enter the next line</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double lineX, double lineY)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -441,12 +441,17 @@
       </tr>
       <tr>
         <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">lineX</span></td>
+        <td><span class="parametername">offsetX</span></td>
         <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Double</span></td>
         <td><span class="parametername">lineY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">nextOffsetX</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -512,7 +517,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_RichTextComponentBase_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.RichTextComponentBase.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L128">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L129">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_RichTextComponentBase_Dispose_" data-uid="Vintagestory.API.Client.RichTextComponentBase.Dispose*"></a>
   <h4 id="Vintagestory_API_Client_RichTextComponentBase_Dispose" data-uid="Vintagestory.API.Client.RichTextComponentBase.Dispose">Dispose()</h4>
@@ -527,7 +532,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_RichTextComponentBase_GetCurrentFlowPathSection_Vintagestory_API_Client_TextFlowPath___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L101">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L102">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_RichTextComponentBase_GetCurrentFlowPathSection_" data-uid="Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection*"></a>
   <h4 id="Vintagestory_API_Client_RichTextComponentBase_GetCurrentFlowPathSection_Vintagestory_API_Client_TextFlowPath___System_Double_" data-uid="Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath[],System.Double)">GetCurrentFlowPathSection(TextFlowPath[], Double)</h4>
@@ -579,7 +584,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_RichTextComponentBase_OnMouseDown_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L118">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L119">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_RichTextComponentBase_OnMouseDown_" data-uid="Vintagestory.API.Client.RichTextComponentBase.OnMouseDown*"></a>
   <h4 id="Vintagestory_API_Client_RichTextComponentBase_OnMouseDown_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)">OnMouseDown(MouseEvent)</h4>
@@ -611,7 +616,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_RichTextComponentBase_OnMouseMove_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L113">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L114">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_RichTextComponentBase_OnMouseMove_" data-uid="Vintagestory.API.Client.RichTextComponentBase.OnMouseMove*"></a>
   <h4 id="Vintagestory_API_Client_RichTextComponentBase_OnMouseMove_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)">OnMouseMove(MouseEvent)</h4>
@@ -643,7 +648,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_RichTextComponentBase_OnMouseUp_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L123">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/RichTextComponentBase.cs/#L124">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_RichTextComponentBase_OnMouseUp_" data-uid="Vintagestory.API.Client.RichTextComponentBase.OnMouseUp*"></a>
   <h4 id="Vintagestory_API_Client_RichTextComponentBase_OnMouseUp_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)">OnMouseUp(MouseEvent)</h4>
