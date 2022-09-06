@@ -93,6 +93,11 @@
     <thead>
     <tbody>
       <tr>
+        <td id="Vintagestory_API_Server_EnumServerRunPhase_AssetsFinalize">AssetsFinalize</td>
+        <td><p>Final touches for loaded assets. Mods receive AssetsFinalize() call</p>
+</td>
+      </tr>
+      <tr>
         <td id="Vintagestory_API_Server_EnumServerRunPhase_AssetsReady">AssetsReady</td>
         <td></td>
       </tr>
@@ -118,7 +123,7 @@
       </tr>
       <tr>
         <td id="Vintagestory_API_Server_EnumServerRunPhase_LoadAssets">LoadAssets</td>
-        <td><p>Mods will be compiled and started, AssetManager will init all origins and cache assets.</p>
+        <td><p>Mods will be compiled and started, AssetManager will init all origins and cache assets. Mods are initialized at this point (PreStart/Start method)</p>
 </td>
       </tr>
       <tr>
@@ -128,7 +133,7 @@
       </tr>
       <tr>
         <td id="Vintagestory_API_Server_EnumServerRunPhase_LoadGamePre">LoadGamePre</td>
-        <td><p>All configs loaded, game world loaded by server. Mods receive events at this point.</p>
+        <td><p>All configs loaded, game world loaded by server. Mods receive StartClient/ServerSide and events at this point. </p>
 </td>
       </tr>
       <tr>

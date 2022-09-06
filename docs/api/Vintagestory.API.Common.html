@@ -175,6 +175,11 @@ Process</p>
 </section>
       <h4><a class="xref" href="Vintagestory.API.Common.BlockEntityBehaviorType.html">BlockEntityBehaviorType</a></h4>
       <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Common.BlockLayersAccess.html">BlockLayersAccess</a></h4>
+      <section><p>Constants used for GetBlock or GetBlockId calls throughout the engine, to guide whether the block should be read from the solid blocks layer, the fluids layer, or perhaps both.
+<br>The game engine supports different block layers in 1.17+.  Currently there is a solid blocks layer (e.g. terrain, loose stones, plants, reeds) and a fluid layer (e.g. still water, flowing water, lava, lake ice). Both layers can contain a block at the same position.
+<br>Use the .Default value for getting blocks in the general case, use the .Solid/.Fluid value to read from the solid blocks or fluid layer specifically</p>
+</section>
       <h4><a class="xref" href="Vintagestory.API.Common.BlockMaterialUtil.html">BlockMaterialUtil</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.BlockOffsetAndNumber.html">BlockOffsetAndNumber</a></h4>

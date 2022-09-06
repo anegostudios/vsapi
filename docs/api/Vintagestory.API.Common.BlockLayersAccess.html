@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BlockLayersAccess
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BlockLayersAccess
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.BlockLayersAccess">
+  
+  
+  <h1 id="Vintagestory_API_Common_BlockLayersAccess" data-uid="Vintagestory.API.Common.BlockLayersAccess" class="text-break">Class BlockLayersAccess
+  </h1>
+  <div class="markdown level0 summary"><p>Constants used for GetBlock or GetBlockId calls throughout the engine, to guide whether the block should be read from the solid blocks layer, the fluids layer, or perhaps both.
+<br>The game engine supports different block layers in 1.17+.  Currently there is a solid blocks layer (e.g. terrain, loose stones, plants, reeds) and a fluid layer (e.g. still water, flowing water, lava, lake ice). Both layers can contain a block at the same position.
+<br>Use the .Default value for getting blocks in the general case, use the .Solid/.Fluid value to read from the solid blocks or fluid layer specifically</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">BlockLayersAccess</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_BlockLayersAccess_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BlockLayersAccess : object</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockLayersAccess_Default.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockLayersAccess.Default%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/BlockLayersAccess.cs/#L23">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_BlockLayersAccess_Default" data-uid="Vintagestory.API.Common.BlockLayersAccess.Default">Default</h4>
+  <div class="markdown level1 summary"><p>GetBlock:<br>
+Returns the contents of the solid blocks layer. If the solid blocks layer is completely empty, returns the value from the fluid layer instead. Keep in mind, the fluid layer might contain ice!<br>
+If this returns air (block id 0) then it really is an air block: there is nothing in either the solid blocks layer or the fluid layer
+SetBlock:<br>
+Sets supplied block id. If that blocks property ForFluidsLayer is true, it will be placed in the fluids layer instead and the solid block layer will be cleared.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Default = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockLayersAccess_Fluid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockLayersAccess.Fluid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/BlockLayersAccess.cs/#L38">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_BlockLayersAccess_Fluid" data-uid="Vintagestory.API.Common.BlockLayersAccess.Fluid">Fluid</h4>
+  <div class="markdown level1 summary"><p>Returns a block from the fluid layer only, which might contain ice. <br>A return value of air (block id 0) signifies no fluid is present at this position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Fluid = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockLayersAccess_FluidOrSolid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockLayersAccess.FluidOrSolid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/BlockLayersAccess.cs/#L43">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_BlockLayersAccess_FluidOrSolid" data-uid="Vintagestory.API.Common.BlockLayersAccess.FluidOrSolid">FluidOrSolid</h4>
+  <div class="markdown level1 summary"><p>Returns the contents of the fluid layer, unless it is empty in which case returns the solid blocks layer - useful for generating the RainHeightMap for example</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int FluidOrSolid = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockLayersAccess_MostSolid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockLayersAccess.MostSolid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/BlockLayersAccess.cs/#L52">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_BlockLayersAccess_MostSolid" data-uid="Vintagestory.API.Common.BlockLayersAccess.MostSolid">MostSolid</h4>
+  <div class="markdown level1 summary"><p>Returns the most solid block, in the following order: <br></p>
+<ol>
+<li>Ice in the fluid layer<br></li>
+<li>Whichever block is in the solid blocks layer<br></li>
+<li>Air (block id 0) if neither is present - note this access may therefore return 0 even if liquid water or lava is present in the fluid layer.<br><br>
+Useful for block collision checks, side solid checks (can a block attach here?) and similar physics</li>
+</ol>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MostSolid = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockLayersAccess_Solid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockLayersAccess.Solid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/BlockLayersAccess.cs/#L33">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_BlockLayersAccess_Solid" data-uid="Vintagestory.API.Common.BlockLayersAccess.Solid">Solid</h4>
+  <div class="markdown level1 summary"><p>Returns a block from the solid blocks layer only. Same as <a class="xref" href="Vintagestory.API.Common.BlockLayersAccess.html#Vintagestory_API_Common_BlockLayersAccess_SolidBlocks">SolidBlocks</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int Solid = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockLayersAccess_SolidBlocks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockLayersAccess.SolidBlocks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/BlockLayersAccess.cs/#L28">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_BlockLayersAccess_SolidBlocks" data-uid="Vintagestory.API.Common.BlockLayersAccess.SolidBlocks">SolidBlocks</h4>
+  <div class="markdown level1 summary"><p>Returns a block from the solid blocks layer only.  <br>A return value of air (block id 0) signifies no solid block is present but there may still be a fluid block, for example still water</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int SolidBlocks = null</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockLayersAccess.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockLayersAccess%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/BlockLayersAccess.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

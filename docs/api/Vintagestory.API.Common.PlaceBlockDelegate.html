@@ -79,7 +79,7 @@
   <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
   <h5 id="Vintagestory_API_Common_PlaceBlockDelegate_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate int PlaceBlockDelegate(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock);</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate int PlaceBlockDelegate(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta);</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -104,6 +104,11 @@
       <tr>
         <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
         <td><span class="parametername">newBlock</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">replaceMeta</span></td>
         <td></td>
       </tr>
     </tbody>

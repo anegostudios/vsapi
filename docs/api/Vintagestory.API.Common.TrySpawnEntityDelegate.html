@@ -79,7 +79,7 @@
   <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
   <h5 id="Vintagestory_API_Common_TrySpawnEntityDelegate_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate bool TrySpawnEntityDelegate(ref EntityProperties properties, Vec3d spawnPosition, long herdId);</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate bool TrySpawnEntityDelegate(IBlockAccessor blockAccessor, ref EntityProperties properties, Vec3d spawnPosition, long herdId);</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -91,6 +91,11 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
+        <td><span class="parametername">blockAccessor</span></td>
+        <td></td>
+      </tr>
       <tr>
         <td><a class="xref" href="Vintagestory.API.Common.Entities.EntityProperties.html">EntityProperties</a></td>
         <td><span class="parametername">properties</span></td>
