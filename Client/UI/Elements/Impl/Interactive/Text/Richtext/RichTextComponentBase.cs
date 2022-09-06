@@ -80,7 +80,7 @@ namespace Vintagestory.API.Client
         /// Renders the text component.
         /// </summary>
         /// <param name="deltaTime">The change in time.</param>
-        public virtual void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
+        public virtual void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
 
         }

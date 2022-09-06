@@ -26,6 +26,8 @@ namespace Vintagestory.API.Common.Entities
         public static SimpleParticleProperties bioLumiParticles;
         public static NormalizedSimplexNoise bioLumiNoise;
 
+        public event Action OnInitialized;
+
         static Entity()
         {
             // Ember cubicles
@@ -564,6 +566,8 @@ namespace Vintagestory.API.Common.Entities
             }
 
             LocalEyePos.Y = Properties.EyeHeight;
+
+            OnInitialized?.Invoke();
         }
 
 
@@ -837,7 +841,7 @@ namespace Vintagestory.API.Common.Entities
 
             if (IsOnFire)
             {
-                if (World.BlockAccessor.GetLiquidBlock(Pos.AsBlockPos).LiquidCode == "water" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
+                if (World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid).LiquidCode == "water" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
                 {
                     IsOnFire = false;
                 }

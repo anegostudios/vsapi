@@ -108,11 +108,15 @@ namespace Vintagestory.API.Config
         /// Range in blocks a player can interact with blocks (break, use, place)
         /// </summary>
         public static float DefaultPickingRange = 4.5f;
+
         /// <summary>
-        /// Set by the WeatherSimulation System in the survival mod
+        /// Set by the WeatherSimulation System in the survival mod at the players position
         /// </summary>
         public static Vec3f CurrentWindSpeedClient = new Vec3f();
-        
+
+        /// <summary>
+        /// Set by the game client at the players position
+        /// </summary>
         public static float CurrentNearbyRelLeavesCountClient;
 
         /// <summary>

@@ -11,7 +11,7 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
-    public delegate int PlaceBlockDelegate(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock);
+    public delegate int PlaceBlockDelegate(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta);
 
     public enum EnumReplaceMode
     {
@@ -75,7 +75,7 @@ namespace Vintagestory.API.Common
 
 
         public Dictionary<BlockPos, int> BlocksUnpacked = new Dictionary<BlockPos, int>();
-        public Dictionary<BlockPos, int> LiquidsLayerUnpacked = new Dictionary<BlockPos, int>();
+        public Dictionary<BlockPos, int> FluidsLayerUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
         public List<Entity> EntitiesUnpacked = new List<Entity>();
         public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
@@ -285,13 +285,13 @@ namespace Vintagestory.API.Common
                     for (int z = startPos.Z; z < finalPos.Z; z++)
                     {
                         BlockPos pos = new BlockPos(x, y, z);
-                        int blockid = world.BlockAccessor.GetBlockId(pos);
-                        int liquidid = world.BlockAccessor.GetLiquidBlock(pos).BlockId;
-                        if (liquidid == blockid) blockid = 0;
-                        if (blockid == 0 && liquidid == 0) continue;
+                        int blockid = world.BlockAccessor.GetBlock(pos, BlockLayersAccess.Solid).BlockId;
+                        int fluidid = world.BlockAccessor.GetBlock(pos, BlockLayersAccess.Fluid).BlockId;
+                        if (fluidid == blockid) blockid = 0;
+                        if (blockid == 0 && fluidid == 0) continue;
 
                         BlocksUnpacked[pos] = blockid;
-                        LiquidsLayerUnpacked[pos] = liquidid;
+                        FluidsLayerUnpacked[pos] = fluidid;
 
                         BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
                         if (be != null)
@@ -352,14 +352,14 @@ namespace Vintagestory.API.Common
 
             foreach (var val in BlocksUnpacked)
             {
-                int liquidid;
-                if (!LiquidsLayerUnpacked.TryGetValue(val.Key, out liquidid)) liquidid = 0;
+                int fluidid;
+                if (!FluidsLayerUnpacked.TryGetValue(val.Key, out fluidid)) fluidid = 0;
                 int blockid = val.Value;
-                if (blockid == 0 && liquidid == 0) continue;
+                if (blockid == 0 && fluidid == 0) continue;
 
                 // Store a block mapping
                 if (blockid != 0) BlockCodes[blockid] = world.BlockAccessor.GetBlock(blockid).Code;
-                if (liquidid != 0) BlockCodes[liquidid] = world.BlockAccessor.GetBlock(liquidid).Code;
+                if (fluidid != 0) BlockCodes[fluidid] = world.BlockAccessor.GetBlock(fluidid).Code;
 
                 // Store relative position and the block id
                 int dx = val.Key.X - minX;
@@ -371,19 +371,19 @@ namespace Vintagestory.API.Common
                 SizeZ = Math.Max(dz, SizeZ);
 
                 Indices.Add((uint)((dy << 20) | (dz << 10) | dx));
-                if (liquidid == 0)
+                if (fluidid == 0)
                 {
                     BlockIds.Add(blockid);
                 }
                 else if (blockid == 0)
                 {
-                    BlockIds.Add(liquidid);
+                    BlockIds.Add(fluidid);
                 }
                 else   // if both block layer and liquid layer are present (non zero), add this twice;  placing code will place the liquidid blocks in the liquids layer
                 {
                     BlockIds.Add(blockid);
                     Indices.Add((uint)((dy << 20) | (dz << 10) | dx));
-                    BlockIds.Add(liquidid);
+                    BlockIds.Add(fluidid);
                 }
             }
 
@@ -476,8 +476,7 @@ namespace Vintagestory.API.Common
             switch (mode)
             {
                 case EnumReplaceMode.ReplaceAll:
-                    if (replaceMetaBlocks) handler = PlaceReplaceAllReplaceMeta;
-                    else handler = PlaceReplaceAllKeepMeta;
+                    handler = PlaceReplaceAll;
 
                     for (int dx = 0; dx < SizeX; dx++)
                     {
@@ -493,18 +492,15 @@ namespace Vintagestory.API.Common
                     break;
 
                 case EnumReplaceMode.Replaceable:
-                    if (replaceMetaBlocks) handler = PlaceReplaceableReplaceMeta;
-                    else handler = PlaceReplaceableKeepMeta;
+                    handler = PlaceReplaceable;
                     break;
 
                 case EnumReplaceMode.ReplaceAllNoAir:
-                    if (replaceMetaBlocks) handler = PlaceReplaceAllNoAirReplaceMeta;
-                    else handler = PlaceReplaceAllNoAirKeepMeta;
+                    handler = PlaceReplaceAllNoAir;
                     break;
 
                 case EnumReplaceMode.ReplaceOnlyAir:
-                    if (replaceMetaBlocks) handler = PlaceReplaceOnlyAirReplaceMeta;
-                    else handler = PlaceReplaceOnlyAirKeepMeta;
+                    handler = PlaceReplaceOnlyAir;
                     break;
             }
 
@@ -524,8 +520,7 @@ namespace Vintagestory.API.Common
                 if (newBlock == null || (replaceMetaBlocks && newBlock == undergroundBlock)) continue;
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
-
-                placed += handler(blockAccessor, curPos, newBlock);
+                placed += handler(blockAccessor, curPos, newBlock, replaceMetaBlocks);
 
 
                 if (newBlock.LightHsv[2] > 0 && blockAccessor is IWorldGenBlockAccessor)
@@ -587,7 +582,7 @@ namespace Vintagestory.API.Common
             BlockPos startPos = new BlockPos(1024, 1024, 1024);
 
             BlocksUnpacked.Clear();
-            LiquidsLayerUnpacked.Clear();
+            FluidsLayerUnpacked.Clear();
             BlockEntitiesUnpacked.Clear();
             DecorsUnpacked.Clear();
             EntitiesUnpacked.Clear();
@@ -685,9 +680,9 @@ namespace Vintagestory.API.Common
                     pos.Z += SizeZ / 2;
                 }
 
-                if (newBlock.ForLiquidsLayer)
+                if (newBlock.ForFluidsLayer)
                 {
-                    LiquidsLayerUnpacked[pos] = newBlock.BlockId;
+                    FluidsLayerUnpacked[pos] = newBlock.BlockId;
                 }
                 else
                 {
@@ -963,7 +958,7 @@ namespace Vintagestory.API.Common
                 // Block entities need to be manually initialized for world gen block access
                 if (be == null && blockAccessor is IWorldGenBlockAccessor)
                 {
-                    Block block = blockAccessor.GetBlock(curPos);
+                    Block block = blockAccessor.GetBlock(curPos, BlockLayersAccess.Solid);
                     
                     if (block.EntityClass != null)
                     {
@@ -974,7 +969,7 @@ namespace Vintagestory.API.Common
 
                 if (be != null)
                 {
-                    Block block = blockAccessor.GetBlock(curPos);
+                    Block block = blockAccessor.GetBlock(curPos, BlockLayersAccess.Solid);
                     if (block.EntityClass != worldForCollectibleResolve.ClassRegistry.GetBlockEntityClass(be.GetType()))
                     {
                         worldForCollectibleResolve.Logger.Warning("Could not import block entity data for schematic at {0}. There is already {1}, expected {2}. Probably overlapping ruins.", curPos, be.GetType(), block.EntityClass);
@@ -1008,14 +1003,12 @@ namespace Vintagestory.API.Common
                     if (blockAccessor is IWorldGenBlockAccessor)
                     {
                         (blockAccessor as IWorldGenBlockAccessor).AddEntity(entity);
+                        entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
                     } else
                     {
                         worldForCollectibleResolve.SpawnEntity(entity);
+                        entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
                     }
-
-                    entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
-
-
                 }
             }
         }
@@ -1239,80 +1232,45 @@ namespace Vintagestory.API.Common
 
 
 
-        protected virtual int PlaceReplaceAllKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
+        protected virtual int PlaceReplaceAll(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
-            if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos) ; else blockAccessor.SetBlock(newBlock.BlockId, pos);
+            blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
             return 1;
         }
 
-        protected virtual int PlaceReplaceableKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
+        protected virtual int PlaceReplaceable(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
-            if (newBlock.ForLiquidsLayer || blockAccessor.GetBlock(pos).Replaceable > newBlock.Replaceable)
+            if (newBlock.ForFluidsLayer || blockAccessor.GetBlock(pos, BlockLayersAccess.MostSolid).Replaceable > newBlock.Replaceable)
             {
-                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock(newBlock.BlockId, pos);
+                blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceAllNoAirKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
+        protected virtual int PlaceReplaceAllNoAir(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
             if (newBlock.BlockId != 0)
             {
-                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock(newBlock.BlockId, pos);
+                blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceOnlyAirKeepMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
+        protected virtual int PlaceReplaceOnlyAir(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
-            Block oldBlock = blockAccessor.GetBlock(pos);
+            Block oldBlock = blockAccessor.GetMostSolidBlock(pos);
             if (oldBlock.BlockId == 0)
             {
-                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock(newBlock.BlockId, pos);
+                blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
         }
 
-        protected virtual int PlaceReplaceAllReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
-        {
-            if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
-            return 1;
-        }
-
-        protected virtual int PlaceReplaceableReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
-        {
-            if (newBlock.ForLiquidsLayer || blockAccessor.GetBlock(pos).Replaceable > newBlock.Replaceable)
-            {
-                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
-                return 1;
-            }
-            return 0;
-        }
-
-        protected virtual int PlaceReplaceAllNoAirReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
-        {
-            if (newBlock.BlockId != 0)
-            {
-                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
-                return 1;
-            }
-            return 0;
-        }
-
-        protected virtual int PlaceReplaceOnlyAirReplaceMeta(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock)
-        {
-            Block oldBlock = blockAccessor.GetBlock(pos);
-            if (oldBlock.BlockId == 0)
-            {
-                if (newBlock.ForLiquidsLayer) blockAccessor.SetLiquidBlock(newBlock.BlockId, pos); else blockAccessor.SetBlock((newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
-                return 1;
-            }
-            return 0;
-        }
-
+        
+           
         /// <summary>
         /// Makes a deep copy of the packed schematic. Unpacked data and loaded meta information is not cloned.
         /// </summary>

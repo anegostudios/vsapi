@@ -22,6 +22,8 @@ namespace Vintagestory.API.Server
         IWorldGenHandler GetRegisteredWorldGenHandlers(string worldType);
 
 
+        bool TriggerTrySpawnEntity(IBlockAccessor blockAccessor, ref EntityProperties properties, Vec3d position, long herdId);
+
         /// <summary>
         /// If you require neighbour chunk data during world generation, you have to register to this event to receive access to the chunk generator thread. This method is only called once during server startup.
         /// </summary>
@@ -160,6 +162,7 @@ namespace Vintagestory.API.Server
         /// Triggered after assets have been loaded and parsed and registered, but before they are declared to be ready - e.g. you can add more behaviors here, or make other code-based changes to properties read from JSONs
         /// <br/>Note: modsystems should register for this in a Start() method not StartServerSide(): the AssetsFinalizer event is fired before StartServerSide() is reached
         /// </summary>
+        [Obsolete("Override Method Modsystem.AssetsFinalize instead")]
         event Action AssetsFinalizers;
 
         /// <summary>

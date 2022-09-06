@@ -28,5 +28,10 @@ namespace Vintagestory.API.Datastructures
         {
             return 1;
         }
+
+        public IAttribute Clone()
+        {
+            return new IntAttribute(value);
+        }
     }
 }

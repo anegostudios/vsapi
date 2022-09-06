@@ -1,9 +1,7 @@
-﻿using Cairo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -233,6 +231,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         public CollectibleBehavior[] CollectibleBehaviors = new CollectibleBehavior[0];
 
+        /// <summary>
+        /// For light emitting collectibles: hue, saturation and brightness value
+        /// </summary>
+        public byte[] LightHsv = new byte[3];
+
+
 
         // Non overridable so people don't accidently forget to call the base method for assigning the api in OnLoaded
         public void OnLoadedNative(ICoreAPI api)
@@ -263,6 +267,19 @@ namespace Vintagestory.API.Common
             {
                 behavior.OnUnloaded(api);
             }
+        }
+
+        /// <summary>
+        /// Should return the light HSV values. 
+        /// Warning: This method is likely to get called in a background thread. Please make sure your code in here is thread safe.
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos">May be null</param>
+        /// <param name="stack">Set if its an itemstack for which the engine wants to check the light level</param>
+        /// <returns></returns>
+        public virtual byte[] GetLightHsv(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
+        {
+            return LightHsv;
         }
 
         /// <summary>
@@ -1446,7 +1463,8 @@ namespace Vintagestory.API.Common
 
             if (CrushingProps != null)
             {
-                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0}x {1}", CrushingProps.CrushedStack.ResolvedItemstack.StackSize, CrushingProps.CrushedStack.ResolvedItemstack.GetName()));
+                float quantity = CrushingProps.Quantity.avg * CrushingProps.CrushedStack.ResolvedItemstack.StackSize;
+                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0:0.#}x {1}", quantity, CrushingProps.CrushedStack.ResolvedItemstack.GetName()));
                 dsc.AppendLine(Lang.Get("Requires Pulverizer tier: {0}", CrushingProps.HardnessTier));
             }
 
@@ -1739,13 +1757,13 @@ namespace Vintagestory.API.Common
             return spoilState;
         }
 
-        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot dummyslot, double x, double y, double size)
+        public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
         {
             capi.Render.RenderItemstackToGui(
-                dummyslot,
+                slot,
                 x,
                 y,
-                100, (float)size * 0.58f, ColorUtil.WhiteArgb,
+                z, (float)size * 0.58f, ColorUtil.WhiteArgb,
                 true, false, true
             );
         }
@@ -2151,7 +2169,9 @@ namespace Vintagestory.API.Common
         /// <param name="inslot"></param>
         /// <returns></returns>
         protected virtual TransitionState[] UpdateAndGetTransitionStatesNative(IWorldAccessor world, ItemSlot inslot) 
-        { 
+        {
+            if (inslot is ItemSlotCreative) return null;
+
             ItemStack itemstack = inslot.Itemstack;
 
             TransitionableProperties[] propsm = GetTransitionableProperties(world, inslot.Itemstack, null);
@@ -2673,7 +2693,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns true if this blocks matterstate is liquid.  (Liquid blocks should also implement IBlockFlowing)
         /// <br/>
-        /// IMPORTANT: Calling code should have looked up the block using IBlockAccessor.GetLiquidBlock() not IBlockAccessor.GetBlock() !!!
+        /// IMPORTANT: Calling code should have looked up the block using IBlockAccessor.GetBlock(pos, EnumBlockLayersAccess.LiquidOnly) !!!
         /// </summary>
         /// <returns></returns>
         public virtual bool IsLiquid()

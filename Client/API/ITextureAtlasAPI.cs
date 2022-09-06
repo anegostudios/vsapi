@@ -147,7 +147,10 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         bool InsertTextureCached(AssetLocation path, byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
 
+
+        [Obsolete("Use GetOrInsertTexture() instead. It's more efficient to load the bmp only if the texture was not found in the cache")]
         bool InsertTextureCached(CompositeTexture texture, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+
 
         /// <summary>
         /// Deallocates a previously allocated texture space

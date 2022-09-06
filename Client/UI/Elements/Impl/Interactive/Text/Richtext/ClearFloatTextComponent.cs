@@ -54,7 +54,7 @@ namespace Vintagestory.API.Client
             }*/
         }
 
-        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
             
         }

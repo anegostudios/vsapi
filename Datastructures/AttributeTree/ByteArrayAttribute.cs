@@ -36,5 +36,10 @@ namespace Vintagestory.API.Datastructures
             return 8;
         }
 
+        public IAttribute Clone()
+        {
+            return new ByteArrayAttribute((byte[])value.Clone());
+        }
+
     }
 }

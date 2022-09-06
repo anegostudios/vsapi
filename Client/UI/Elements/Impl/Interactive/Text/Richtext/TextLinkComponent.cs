@@ -27,7 +27,7 @@ namespace Vintagestory.API.Client
             this.onLinkClicked = onLinkClicked;
             MouseOverCursor = "linkselect";
 
-            this.font = this.font.Clone().WithColor(GuiStyle.ActiveButtonTextColor);
+            this.Font = this.Font.Clone().WithColor(GuiStyle.ActiveButtonTextColor);
 
             hoverText = new LoadedTexture(api);
             normalText = new LoadedTexture(api);
@@ -45,9 +45,9 @@ namespace Vintagestory.API.Client
             double rightMostX = 0;
             double bottomMostY = 0;
 
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < Lines.Length; i++)
             {
-                TextLine line = lines[i];
+                TextLine line = Lines[i];
 
                 leftMostX = Math.Min(leftMostX, line.Bounds.X);
                 topMostY = Math.Min(topMostY, line.Bounds.Y);
@@ -66,7 +66,7 @@ namespace Vintagestory.API.Client
             m.Translate((int)-leftMostX, (int)-topMostY);
             ctx.Matrix = m;
             
-            CairoFont normalFont = this.font;
+            CairoFont normalFont = this.Font;
 
             ComposeFor(ctx, surface);
             api.Gui.LoadOrUpdateCairoTexture(surface, false, ref normalText);
@@ -76,12 +76,12 @@ namespace Vintagestory.API.Client
             ctx.Paint();
             ctx.Operator = Operator.Over;
 
-            this.font = this.font.Clone();
-            this.font.Color[0] = Math.Min(1, this.font.Color[0] * 1.2);
-            this.font.Color[1] = Math.Min(1, this.font.Color[1] * 1.2);
-            this.font.Color[2] = Math.Min(1, this.font.Color[2] * 1.2);
+            this.Font = this.Font.Clone();
+            this.Font.Color[0] = Math.Min(1, this.Font.Color[0] * 1.2);
+            this.Font.Color[1] = Math.Min(1, this.Font.Color[1] * 1.2);
+            this.Font.Color[2] = Math.Min(1, this.Font.Color[2] * 1.2);
             ComposeFor(ctx, surface);
-            this.font = normalFont;
+            this.Font = normalFont;
 
             ctx.Restore();
             
@@ -93,23 +93,23 @@ namespace Vintagestory.API.Client
 
         void ComposeFor(Context ctx, ImageSurface surface)
         { 
-            textUtil.DrawMultilineText(ctx, font, lines, EnumTextOrientation.Left);
+            textUtil.DrawMultilineText(ctx, Font, Lines, EnumTextOrientation.Left);
 
             ctx.LineWidth = 1;
-            ctx.SetSourceRGBA(font.Color);
+            ctx.SetSourceRGBA(Font.Color);
 
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < Lines.Length; i++)
             {
-                TextLine line = lines[i];
+                TextLine line = Lines[i];
                 ctx.MoveTo(line.Bounds.X, line.Bounds.Y + line.Bounds.AscentOrHeight + 2);
                 ctx.LineTo(line.Bounds.X + line.Bounds.Width, line.Bounds.Y + line.Bounds.AscentOrHeight + 2);
                 ctx.Stroke();
             }
         }
 
-        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
-            base.RenderInteractiveElements(deltaTime, renderX, renderY);
+            base.RenderInteractiveElements(deltaTime, renderX, renderY, renderZ);
             bool isHover = false;
 
             foreach (var val in BoundsPerLine)
@@ -125,7 +125,7 @@ namespace Vintagestory.API.Client
                 isHover ? hoverText.TextureId : normalText.TextureId, 
                 (int)(renderX + leftMostX), 
                 (int)(renderY + topMostY), 
-                hoverText.Width, hoverText.Height, 50
+                hoverText.Width, hoverText.Height, (float)renderZ + 50
             );
         }
 

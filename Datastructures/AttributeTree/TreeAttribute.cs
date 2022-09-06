@@ -498,7 +498,18 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Retrieves an int, float, long or double value. Whatever attribute is found for given key. If its a string its converted to double
+        /// Same as (int)GetDecimal(key, defValue);
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public virtual int GetAsInt(string key, int defaultValue = 0)
+        {
+            return (int)GetDecimal(key, defaultValue);
+        }
+
+        /// <summary>
+        /// Retrieves an int, float, long or double value. Whatever attribute is found for given key, in aformentioned order. If its a string its converted to double
         /// </summary>
         /// <param name="key"></param>
         /// <param name="defaultValue"></param>
@@ -708,17 +719,21 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public virtual ITreeAttribute Clone()
         {
-            MemoryStream ms = new MemoryStream();
-            BinaryWriter writer = new BinaryWriter(ms);
-            ToBytes(writer);
-            ms.Position = 0;
+            TreeAttribute tree = new TreeAttribute();
 
-            BinaryReader reader = new BinaryReader(ms);
-            SyncedTreeAttribute tree = new SyncedTreeAttribute();
-            tree.FromBytes(reader);
+            foreach (var val in attributes)
+            {
+                tree[val.Key] = val.Value.Clone();
+            }
+
             return tree;
         }
 
+
+        IAttribute IAttribute.Clone()
+        {
+            return this.Clone();
+        }
 
         /// <summary>
         /// Returns true if given tree contains all of elements of this one, but given tree may contain also more elements. Individual node values are exactly matched.
@@ -946,5 +961,6 @@ namespace Vintagestory.API.Datastructures
                 return hashcode;
             }
         }
+
     }
 }

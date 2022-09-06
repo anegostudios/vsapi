@@ -556,6 +556,23 @@ namespace Vintagestory.API.Common
             return null;
         }
 
+        public void GenerateOutputStack(ItemSlot[] inputSlots, ItemSlot outputSlot)
+        {
+            var outstack = outputSlot.Itemstack = Output.ResolvedItemstack.Clone();
+
+            if (CopyAttributesFrom != null)
+            {
+                var instack = GetInputStackForPatternCode(CopyAttributesFrom, inputSlots);
+                if (instack != null)
+                {
+                    var attr = instack.Attributes.Clone();
+                    attr.MergeTree(outstack.Attributes);
+                    outstack.Attributes = attr;
+                }
+            }
+
+            outputSlot.Itemstack.Collectible.OnCreatedByCrafting(inputSlots, outputSlot, this);
+        }
 
 
         public T GetElementInGrid<T>(int row, int col, T[] stacks, int gridwidth)

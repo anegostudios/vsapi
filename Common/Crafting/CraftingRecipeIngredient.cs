@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -132,7 +133,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="inputStack"></param>
         /// <returns></returns>
-        public bool SatisfiesAsIngredient(ItemStack inputStack)
+        public bool SatisfiesAsIngredient(ItemStack inputStack, bool checkStacksize = true)
         {
             if (inputStack == null) return false;
 
@@ -140,12 +141,12 @@ namespace Vintagestory.API.Common
             {
                 if (Type != inputStack.Class) return false;
                 if (!WildcardUtil.Match(Code, inputStack.Collectible.Code, AllowedVariants)) return false;
-                if (inputStack.StackSize < Quantity) return false;
+                if (checkStacksize && inputStack.StackSize < Quantity) return false;
             }
             else
             {
                 if (!ResolvedItemstack.Satisfies(inputStack)) return false;
-                if (inputStack.StackSize < ResolvedItemstack.StackSize) return false;
+                if (checkStacksize && inputStack.StackSize < ResolvedItemstack.StackSize) return false;
             }
 
             return true;
@@ -172,7 +173,8 @@ namespace Vintagestory.API.Common
                 ToolDurabilityCost = ToolDurabilityCost,
                 AllowedVariants = AllowedVariants == null ? null : (string[])AllowedVariants.Clone(),
                 ResolvedItemstack = ResolvedItemstack?.Clone(),
-                ReturnedStack = ReturnedStack?.Clone()
+                ReturnedStack = ReturnedStack?.Clone(),
+                RecipeAttributes = RecipeAttributes?.Clone()
             };
 
             if (Attributes != null) stack.Attributes = Attributes.Clone();
@@ -195,6 +197,7 @@ namespace Vintagestory.API.Common
         {
             Code = Code.CopyWithPath(Code.Path.Replace("{" + key + "}", value));
             Attributes?.FillPlaceHolder(key, value);
+            RecipeAttributes?.FillPlaceHolder(key, value);
         }
 
         public virtual void ToBytes(BinaryWriter writer)
@@ -225,6 +228,15 @@ namespace Vintagestory.API.Common
             if (ReturnedStack?.ResolvedItemstack != null)
             {
                 ReturnedStack.ToBytes(writer);
+            }
+
+            if (RecipeAttributes != null)
+            {
+                writer.Write(true);
+                writer.Write(RecipeAttributes.ToString());
+            } else
+            {
+                writer.Write(false);
             }
         }
 
@@ -258,6 +270,11 @@ namespace Vintagestory.API.Common
                 ReturnedStack = new JsonItemStack();
                 ReturnedStack.FromBytes(reader, resolver.ClassRegistry);
                 ReturnedStack.ResolvedItemstack.ResolveBlockOrItem(resolver);
+            }
+
+            if (reader.ReadBoolean())
+            {
+                RecipeAttributes = new JsonObject(JToken.Parse(reader.ReadString()));
             }
         }
     }

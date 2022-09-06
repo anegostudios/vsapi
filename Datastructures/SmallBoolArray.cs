@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Datastructures
@@ -79,6 +75,11 @@ namespace Vintagestory.API.Datastructures
         public bool Any()
         {
             return bits != 0;
+        }
+
+        public bool All()
+        {
+            return bits == OnAllSides;
         }
 
         public int Value()

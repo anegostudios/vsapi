@@ -124,7 +124,9 @@ namespace Vintagestory.API.Util
                     volume -= (secondspassed - sps.length) * 5;
                 }
 
-                sps.Vibrato = sps.TalkType == EnumTalkType.Death;
+                sps.Vibrato = sps.TalkType == EnumTalkType.Death || sps.TalkType == EnumTalkType.Thrust;
+
+                if (sps.TalkType == EnumTalkType.Thrust && secondspassed > 0.15) { sps.sound.Stop(); continue; }
 
                 if (volume <= 0)
                 {
@@ -196,7 +198,7 @@ namespace Vintagestory.API.Util
 
                         case EnumTalkType.Thrust:
                             soundLen = 0.12f;
-                            PlaySound(1.2f, 0.8f, 1.5f, 0.25f, soundLen);
+                            PlaySound(0.5f, 0.8f, 0.2f, 0.5f, soundLen);
                             break;
 
 

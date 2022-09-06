@@ -40,6 +40,10 @@ namespace Vintagestory.API.Datastructures
         {
             return 16;
         }
-        
+
+        public IAttribute Clone()
+        {
+            return new BoolArrayAttribute((bool[])value.Clone());
+        }
     }
 }

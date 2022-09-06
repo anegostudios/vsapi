@@ -1,5 +1,7 @@
 ﻿using Cairo;
+using System;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -37,9 +39,13 @@ namespace Vintagestory.API.Client
                 orientation
             );
         }
-        
 
-        internal void AutoBoxSize(bool onlyGrow = false)
+
+        /// <summary>
+        /// Resize element bounds so that the text fits in one line
+        /// </summary>
+        /// <param name="onlyGrow"></param>
+        public void AutoBoxSize(bool onlyGrow = false)
         {
             Font.AutoBoxSize(text, Bounds, onlyGrow);
         }
@@ -47,6 +53,15 @@ namespace Vintagestory.API.Client
         public void SetValue(string text)
         {
             this.text = text;
+        }
+
+        /// <summary>
+        /// Resize the font so that the text fits in one line
+        /// </summary>
+        public void AutoFontSize(bool onlyShrink = true)
+        {
+            Bounds.CalcWorldBounds();
+            Font.AutoFontSize(text, Bounds, onlyShrink);
         }
     }
 
@@ -101,6 +116,26 @@ namespace Vintagestory.API.Client
                 GuiElementStaticText elem = new GuiElementStaticText(composer.Api, text, orientation, bounds, font);
                 composer.AddStaticElement(elem, key);
                 elem.AutoBoxSize();
+            }
+            return composer;
+        }
+
+
+        /// <summary>
+        /// Adds a static text component to the GUI that automatically resizes as necessary.
+        /// </summary>
+        /// <param name="text">The text of the text component.</param>
+        /// <param name="font">The font of the text.</param>
+        /// <param name="orientation">The orientation of the text.</param>
+        /// <param name="bounds">The bounds of the text container.</param>
+        /// <param name="key">The name of the component.</param>
+        public static GuiComposer AddStaticTextAutoFontSize(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
+        {
+            if (!composer.Composed)
+            {
+                GuiElementStaticText elem = new GuiElementStaticText(composer.Api, text, font.Orientation, bounds, font);
+                composer.AddStaticElement(elem, key);
+                elem.AutoFontSize();
             }
             return composer;
         }

@@ -23,6 +23,9 @@ namespace Vintagestory.API.Common
         Chisel,
         Scythe,
         Sling,
-        Wrench
+        Wrench,
+        Probe,
+        Meter,
+        Drill
     }
 }

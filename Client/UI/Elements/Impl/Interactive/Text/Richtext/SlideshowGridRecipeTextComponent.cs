@@ -41,6 +41,8 @@ namespace Vintagestory.API.Client
 
         Dictionary<int, LoadedTexture> extraTexts = new Dictionary<int, LoadedTexture>();
 
+        LoadedTexture hoverTexture;
+
         /// <summary>
         /// Flips through given array of grid recipes every second
         /// </summary>
@@ -137,6 +139,7 @@ namespace Vintagestory.API.Client
 
             
             this.GridRecipesAndUnIn.Shuffle(fixedRand);
+            bool extraline = false;
 
             for (int i = 0; i < GridRecipesAndUnIn.Length; i++)
             {
@@ -144,13 +147,50 @@ namespace Vintagestory.API.Client
                 if (trait != null)
                 {
                     extraTexts[i] = capi.Gui.TextTexture.GenTextTexture(Lang.Get("* Requires {0} trait", trait), CairoFont.WhiteDetailText());
+                    if (!extraline) BoundsPerLine[0].Height += GuiElement.scaled(20);
+                    extraline = true;
                 }
             }
 
             if (GridRecipesAndUnIn.Length == 0) throw new ArgumentException("Could not resolve any of the supplied grid recipes?");
+
+            genHover();
+
+            stackInfo.onRenderStack = () =>
+            {
+                GridRecipeAndUnnamedIngredients recipeunin = GridRecipesAndUnIn[curItemIndex];
+
+                double offset = (int)GuiElement.scaled(30 + GuiElementItemstackInfo.ItemStackSize / 2);
+                var slot = stackInfo.curSlot;
+                var stacksize = slot.StackSize;
+                slot.Itemstack.StackSize = 1;
+                slot.Itemstack.Collectible.OnHandbookRecipeRender(
+                    capi,
+                    recipeunin.Recipe,
+                    slot,
+                    (int)stackInfo.Bounds.renderX + offset,
+                    (int)stackInfo.Bounds.renderY + offset + (int)GuiElement.scaled(GuiElementItemstackInfo.MarginTop),
+                    1000 + GuiElement.scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 2,
+                    (float)GuiElement.scaled(GuiElementItemstackInfo.ItemStackSize) * 1/0.58f
+                );
+                slot.Itemstack.StackSize = stacksize;
+            };
         }
 
-        
+        private void genHover()
+        {
+            ImageSurface surface = new ImageSurface(Format.Argb32, 1, 1);
+            Context ctx = new Context(surface);
+
+            ctx.SetSourceRGBA(1, 1, 1, 0.6);
+            ctx.Paint();
+
+            hoverTexture = new LoadedTexture(capi);
+            api.Gui.LoadOrUpdateCairoTexture(surface, false, ref hoverTexture);
+
+            ctx.Dispose();
+            surface.Dispose();
+        }
 
         ItemStack[] ResolveWildCard(IWorldAccessor world, CraftingRecipeIngredient ingred, ItemStack[] allStacks = null)
         {
@@ -218,18 +258,22 @@ namespace Vintagestory.API.Client
 
         int secondCounter = 0;
 
-        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
             LineRectangled bounds = BoundsPerLine[0];
+            int relx = (int)(api.Input.MouseX - renderX);
+            int rely = (int)(api.Input.MouseY - renderY);
+            bool mouseover = bounds.PointInside(relx, rely);
 
             GridRecipeAndUnnamedIngredients recipeunin = GridRecipesAndUnIn[curItemIndex];
 
-            if ((secondsVisible -= deltaTime) <= 0)
+            if (!mouseover && (secondsVisible -= deltaTime) <= 0)
             {
                 secondsVisible = 1;
                 curItemIndex = (curItemIndex + 1) % GridRecipesAndUnIn.Length;
                 secondCounter++;
             }
+
 
             LoadedTexture extraTextTexture;
             if (extraTexts.TryGetValue(curItemIndex, out extraTextTexture))
@@ -237,11 +281,9 @@ namespace Vintagestory.API.Client
                 capi.Render.Render2DTexturePremultipliedAlpha(extraTextTexture.TextureId, (float)(renderX + bounds.X), (float)(renderY + bounds.Y + 3 * (size + 3)), extraTextTexture.Width, extraTextTexture.Height);
             }
 
+            double rx=0, ry=0;
             int mx = api.Input.MouseX;
             int my = api.Input.MouseY;
-            double rx=0, ry=0;
-
-            
 
             for (int x = 0; x < 3; x++)
             {
@@ -249,13 +291,22 @@ namespace Vintagestory.API.Client
                 {
                     int index = recipeunin.Recipe.GetGridIndex(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
 
-                    CraftingRecipeIngredient ingred = recipeunin.Recipe.GetElementInGrid(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
-
-
-                    if (ingred == null) continue;
-
                     rx = renderX + bounds.X + x * (size + GuiElement.scaled(3));
                     ry = renderY + bounds.Y + y * (size + GuiElement.scaled(3));
+
+                    var scale = RuntimeEnv.GUIScale;
+                    ElementBounds scissorBounds = ElementBounds.Fixed(rx / scale, ry / scale, size / scale, size / scale).WithEmptyParent();
+                    scissorBounds.CalcWorldBounds();
+
+                    if (mouseover)
+                    {
+                        capi.Render.Render2DTexture(hoverTexture.TextureId, (float)(scissorBounds.renderX), (float)(scissorBounds.renderY), (float)scissorBounds.InnerWidth, (float)scissorBounds.InnerHeight, (float)renderZ);
+                    }
+
+                    CraftingRecipeIngredient ingred = recipeunin.Recipe.GetElementInGrid(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);
+                    if (ingred == null) continue;
+
+                    api.Render.PushScissor(scissorBounds, true);
 
                     ItemStack[] unnamedWildcardStacklist = null;
                     if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true)
@@ -267,17 +318,11 @@ namespace Vintagestory.API.Client
                         dummyslot.Itemstack = ingred.ResolvedItemstack.Clone();
                     }
 
-                    var scale = RuntimeEnv.GUIScale;
-                    ElementBounds scissorBounds = ElementBounds.Fixed(rx / scale, ry / scale, size / scale, size / scale).WithEmptyParent();
-                    scissorBounds.CalcWorldBounds();
-                    api.Render.PushScissor(scissorBounds, true);
 
                     // 1.16.0: Fugly (but backwards compatible) hack: We temporarily store the ingredient code in an unused field of ItemSlot so that OnHandbookRecipeRender() has access to that number. Proper solution would be to alter the method signature to pass on this value.
                     dummyslot.BackgroundIcon = index + "";
-                    dummyslot.Itemstack.Collectible.OnHandbookRecipeRender(capi, recipeunin.Recipe, dummyslot, rx + size * 0.5f, ry + size * 0.5f, size);
-                    dummyslot.BackgroundIcon = null;
-
-
+                    dummyslot.Itemstack.Collectible.OnHandbookRecipeRender(capi, recipeunin.Recipe, dummyslot, rx + size * 0.5f, ry + size * 0.5f, 100, size);
+                    
                     api.Render.PopScissor();
 
                     // Super weird coordinates, no idea why
@@ -288,6 +333,8 @@ namespace Vintagestory.API.Client
                     {
                         RenderItemstackTooltip(dummyslot, rx + dx, ry + dy, deltaTime);
                     }
+
+                    dummyslot.BackgroundIcon = null;
                 }
             }
         }
@@ -331,6 +378,8 @@ namespace Vintagestory.API.Client
             {
                 val.Value.Dispose();
             }
+
+            hoverTexture?.Dispose();
         }
 
     }

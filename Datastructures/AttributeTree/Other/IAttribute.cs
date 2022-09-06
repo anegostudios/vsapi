@@ -23,7 +23,6 @@ namespace Vintagestory.API.Datastructures
         string ToJsonToken();
 
         bool Equals(IWorldAccessor worldForResolve, IAttribute attr);
-
-
+        IAttribute Clone();
     }
 }

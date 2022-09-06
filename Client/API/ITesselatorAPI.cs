@@ -7,18 +7,19 @@ namespace Vintagestory.API.Client
 {
     public class TesselationMetaData
     {
-        public ITexPositionSource texSource;
-        public int generalGlowLevel;
-        public byte climateColorMapId;
-        public byte seasonColorMapId;
-        public int? quantityElements;
-        public string[] selectiveElements;
-        public Dictionary<string, int[]> texturesSizes;
-        public string typeForLogging;
-        public bool withJointIds;
-        public bool withDamageEffect;
+        public ITexPositionSource TexSource;
+        public int GeneralGlowLevel;
+        public byte ClimateColorMapId;
+        public byte SeasonColorMapId;
+        public int? QuantityElements;
+        public string[] SelectiveElements;
+        public Dictionary<string, int[]> TexturesSizes;
+        public string TypeForLogging;
+        public bool WithJointIds;
+        public bool WithDamageEffect;
+        public Vec3f Rotation;
 
-        public int generalWindMode;
+        public int GeneralWindMode;
 
         public bool usesColorMap; // bubble up var
         public int[] defaultTextureSize;
@@ -27,19 +28,20 @@ namespace Vintagestory.API.Client
         {
             return new TesselationMetaData()
             {
-                texSource = texSource,
-                generalGlowLevel = generalGlowLevel,
-                climateColorMapId = climateColorMapId,
-                seasonColorMapId = seasonColorMapId,
-                quantityElements = quantityElements,
-                selectiveElements = selectiveElements,
-                texturesSizes = texturesSizes,
-                typeForLogging = typeForLogging,
-                withJointIds = withJointIds,
+                TexSource = TexSource,
+                GeneralGlowLevel = GeneralGlowLevel,
+                ClimateColorMapId = ClimateColorMapId,
+                SeasonColorMapId = SeasonColorMapId,
+                QuantityElements = QuantityElements,
+                SelectiveElements = SelectiveElements,
+                TexturesSizes = TexturesSizes,
+                TypeForLogging = TypeForLogging,
+                WithJointIds = WithJointIds,
                 usesColorMap = usesColorMap,
                 defaultTextureSize = defaultTextureSize,
-                generalWindMode = generalWindMode,
-                withDamageEffect = withDamageEffect
+                GeneralWindMode = GeneralWindMode,
+                WithDamageEffect = WithDamageEffect,
+                Rotation = Rotation
             };
         }
     }
@@ -150,7 +152,10 @@ namespace Vintagestory.API.Client
         /// <param name="generalGlowLevel"></param>
         /// <param name="generalTintIndex"></param>
         /// <param name="quantityElements"></param>
-        void TesselateShape(string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f meshRotationDeg = null, int generalGlowLevel = 0, byte climateColorMapId = 0, byte seasonColorMapId = 0, int? quantityElements = null, string[] selectiveElements = null);
+        void TesselateShape(
+            string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f meshRotationDeg = null, 
+            int generalGlowLevel = 0, byte climateColorMapId = 0, byte seasonColorMapId = 0, int? quantityElements = null, string[] selectiveElements = null    
+        );
 
 
         /// <summary>
@@ -169,8 +174,7 @@ namespace Vintagestory.API.Client
         /// <param name="meta"></param>
         /// <param name="shapeBase"></param>
         /// <param name="modeldata"></param>
-        /// <param name="rotation"></param>
-        void TesselateShape(TesselationMetaData meta, Shape shapeBase, out MeshData modeldata, Vec3f rotation);
+        void TesselateShape(TesselationMetaData meta, Shape shapeBase, out MeshData modeldata);
 
 
         /// <summary>

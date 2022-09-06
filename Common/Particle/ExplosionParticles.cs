@@ -121,7 +121,7 @@ namespace Vintagestory.API.Common
                     new Vec3f(-0.25f, 0.1f, -0.25f),
                     new Vec3f(0.25f, 0.1f, 0.25f),
                     1.5f,
-                    -0.075f,
+                    -0.025f,
                     0.5f,
                     1.5f,
                     EnumParticleModel.Quad

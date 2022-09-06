@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -18,6 +19,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public int HardnessTier = 1;
 
+        public NatFloat Quantity = NatFloat.One;
+
 
         /// <summary>
         /// Makes a deep copy of the properties.
@@ -28,7 +31,8 @@ namespace Vintagestory.API.Common
             return new CrushingProperties()
             {
                 CrushedStack = this.CrushedStack.Clone(),
-                HardnessTier = HardnessTier
+                HardnessTier = HardnessTier,
+                Quantity = Quantity.Clone()
             };
         }
     }

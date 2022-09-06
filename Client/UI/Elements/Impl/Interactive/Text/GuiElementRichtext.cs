@@ -161,6 +161,7 @@ namespace Vintagestory.API.Client
             double ascentHeight = 0;
             RichTextComponentBase comp = null;
 
+
             for (int i = 0; i < Components.Length; i++)
             {
                 comp = Components[i];
@@ -185,7 +186,7 @@ namespace Vintagestory.API.Client
                 if (comp.Float == EnumFloat.None)
                 {
                     posX = 0;
-                    posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + (didLineBreak ? GuiElement.scaled(comp.UnscaledMarginTop) : 0);
+                    posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + (didLineBreak ? scaled(comp.UnscaledMarginTop) : 0);
                     posY = Math.Ceiling(posY);
                     
                     currentLine.Clear();
@@ -196,6 +197,14 @@ namespace Vintagestory.API.Client
 
                 if (didLineBreak)
                 {
+                    // Tyron 27Jun2022
+                    // Text alignment challenge:
+                    // Text alignment can only happen for an entire text line. Without that, it would happen on a per-element basis which makes each text section horizontally center, disregarding its left and right neighbours
+                    // The last text element of a line shall decide what alignment is used for the entire line.
+                    // All subsequent elements of this line must then adjust its BoundsPerLine[0].RightSpace and LeftSpace to reflect the spacing of the entire line. LeftSpace is currently always 0, so lets ignore that for now.
+                    // Through that, TextDrawUtil.DrawMultilineText() should correctly offset the elements
+                    adjustLineTextAlignment(currentLine);
+
                     // Tyron 19Feb2022: Below 2 lines used to have Math.Ceiling() around them which caused some components being a pixel off. I'm not sure why there were there to begin with, so removed now.
                     lineHeight = Math.Max(lineHeight, comp.BoundsPerLine[0].Height);
                     ascentHeight = Math.Max(ascentHeight, comp.BoundsPerLine[0].AscentOrHeight);
@@ -281,6 +290,7 @@ namespace Vintagestory.API.Client
 
             Bounds.fixedHeight = (posY + 1) / RuntimeEnv.GUIScale;
 
+            adjustLineTextAlignment(currentLine);
 
             double maxHeight = 0;
             foreach (int index in currentLine)
@@ -316,8 +326,25 @@ namespace Vintagestory.API.Client
             }
         }
 
+        private void adjustLineTextAlignment(List<int> currentLine)
+        {
+            if (currentLine.Count == 0) return;
 
+            int lastIndex = currentLine[currentLine.Count - 1];
 
+            var rightSpace = (Components[lastIndex] as RichTextComponent)?.Lines[0]?.RightSpace ?? 0;
+            var orient = (Components[lastIndex] as RichTextComponent)?.Font?.Orientation ?? EnumTextOrientation.Left;
+
+            foreach (var index in currentLine)
+            {
+                var comp = Components[index];
+                if (orient == EnumTextOrientation.Center && comp is RichTextComponent rtcb)
+                {
+                    rtcb.Lines[lastIndex == index ? 0 : rtcb.Lines.Length - 1].RightSpace = rightSpace;
+                }
+            }
+
+        }
 
         private void ConstrainTextFlowPath(List<TextFlowPath> flowPath, double posY, RichTextComponentBase comp)
         {
@@ -454,7 +481,7 @@ namespace Vintagestory.API.Client
                 RichTextComponentBase comp = Components[i];
 
                 comp.RenderColor = RenderColor;
-                comp.RenderInteractiveElements(deltaTime, Bounds.renderX, Bounds.renderY);
+                comp.RenderInteractiveElements(deltaTime, Bounds.renderX, Bounds.renderY, zPos);
 
                 for (int j = 0; !found && j < comp.BoundsPerLine.Length; j++)
                 {
@@ -515,7 +542,7 @@ namespace Vintagestory.API.Client
 
         public void SetNewText(string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
         {
-            SetNewTextWithoutRecompose(vtmlCode, baseFont, didClickLink);
+            SetNewTextWithoutRecompose(vtmlCode, baseFont, didClickLink, true);
             RecomposeText();
         }
 

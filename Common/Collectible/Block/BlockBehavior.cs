@@ -168,12 +168,18 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool ShouldReceiveClientGameTicks(IWorldAccessor world, IPlayer byPlayer, BlockPos pos, ref EnumHandling handling)
+        public virtual bool ShouldReceiveClientParticleTicks(IWorldAccessor world, IPlayer byPlayer, BlockPos pos, ref EnumHandling handling)
         {
             handling = EnumHandling.PassThrough;
 
             return false;
         }
+
+
+        public virtual void OnAsyncClientParticleTick(IAsyncParticleManager manager, BlockPos pos, float windAffectednessAtPos, float secondsTicking)
+        {
+
+        }   
 
         /// <summary>
         /// Always called when a block has been removed through whatever method, except during worldgen or via ExchangeBlock()
@@ -330,5 +336,6 @@ namespace Vintagestory.API.Common
         {
             return 1.0f;
         }
+
     }
 }

@@ -75,7 +75,7 @@ namespace Vintagestory.API.Client
                 (float)(Bounds.renderY + Bounds.absPaddingY + currentHandlePosition),
                 (float)Bounds.InnerWidth-1,
                 currentHandleHeight + 1,
-                200
+                200 + zOffset
             );
         }
 

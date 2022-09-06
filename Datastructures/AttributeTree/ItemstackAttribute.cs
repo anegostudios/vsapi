@@ -72,10 +72,10 @@ namespace Vintagestory.API.Datastructures
 
             if (value.Attributes == null || value.Attributes.Count == 0)
             {
-                return string.Format("{{ \"type\": \"{0}\", code: \"{1}\"}}", value.Collectible.ItemClass, value.Collectible.Code.ToShortString());
+                return string.Format("{{ \"type\": \"{0}\", code: \"{1}\"}}", value.Collectible.ItemClass.ToString().ToLowerInvariant(), value.Collectible.Code.ToShortString());
             } else
             {
-                return string.Format("{{ \"type\": \"{0}\", \"code\": \"{1}\", \"attributes\": \"{2}\"}}", value.Collectible.ItemClass, value.Collectible.Code.ToShortString(), value.Attributes.ToString());
+                return string.Format("{{ \"type\": \"{0}\", \"code\": \"{1}\", \"attributes\": {2}}}", value.Collectible.ItemClass.ToString().ToLowerInvariant(), value.Collectible.Code.ToShortString(), value.Attributes.ToJsonToken());
             }
         }
 
@@ -84,6 +84,10 @@ namespace Vintagestory.API.Datastructures
             return value?.GetHashCode() ?? 0;
         }
 
+        public IAttribute Clone()
+        {
+            return new ItemstackAttribute(value?.Clone());
+        }
 
     }
 }

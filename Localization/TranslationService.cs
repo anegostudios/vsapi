@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Util;
 
@@ -39,28 +40,31 @@ namespace Vintagestory.API.Config
         private bool loaded = false;
         private string preLoadAssetsPath = null;
 
+        public EnumLinebreakBehavior LineBreakBehavior { get; set; }
+
 
         /// <summary>
-        ///     Initialises a new instance of the <see cref="TranslationService" /> class.
+        /// Initialises a new instance of the <see cref="TranslationService" /> class.
         /// </summary>
         /// <param name="languageCode">The language code that this translation service caters for.</param>
         /// <param name="logger">The <see cref="ILogger" /> instance used within the sided API.</param>
         /// <param name="assetManager">The <see cref="IAssetManager" /> instance used within the sided API.</param>
-        public TranslationService(string languageCode, ILogger logger, IAssetManager assetManager = null)
+        public TranslationService(string languageCode, ILogger logger, IAssetManager assetManager = null, EnumLinebreakBehavior lbBehavior = EnumLinebreakBehavior.AfterWord)
         {
             LanguageCode = languageCode;
             this.logger = logger;
             this.assetManager = assetManager;
+            this.LineBreakBehavior = lbBehavior;
         }
 
         /// <summary>
-        ///     Gets the language code that this translation service caters for.
+        /// Gets the language code that this translation service caters for.
         /// </summary>
         /// <value>A string, that contains the language code that this translation service caters for.</value>
         public string LanguageCode { get; }
 
         /// <summary>
-        ///     Loads translation key/value pairs from all relevant JSON files within the Asset Manager.
+        /// Loads translation key/value pairs from all relevant JSON files within the Asset Manager.
         /// </summary>
         public void Load(bool lazyLoad = false)
         {
@@ -90,7 +94,7 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Loads only the vanilla JSON files, without dealing with mods, or resource-packs.
+        /// Loads only the vanilla JSON files, without dealing with mods, or resource-packs.
         /// </summary>
         /// <param name="assetsPath">The root assets path to load the vanilla files from.</param>
         public void PreLoad(string assetsPath, bool lazyLoad = false)
@@ -129,7 +133,16 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
+        /// Sets the loaded flag to false, so that the next lookup causes it to reload all translation entries
+        /// </summary>
+        public void Invalidate()
+        {
+            loaded = false;
+        }
+
+
+        /// <summary>
+        /// Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
@@ -149,7 +162,7 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Gets a translation for a given key.
+        /// Gets a translation for a given key.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
@@ -163,7 +176,7 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Retrieves a list of all translation entries within the cache.
+        /// Retrieves a list of all translation entries within the cache.
         /// </summary>
         /// <returns>A dictionary of localisation entries.</returns>
         public IDictionary<string, string> GetAllEntries()
@@ -176,7 +189,7 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Gets the raw, unformatted translated value for the key provided.
+        /// Gets the raw, unformatted translated value for the key provided.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns>
@@ -195,13 +208,13 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
+        /// Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
         /// <returns>
-        ///     Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
-        ///     value.
+        /// Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
+        /// value.
         /// </returns>
         public string GetMatching(string key, params object[] args)
         {
@@ -216,7 +229,7 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Determines whether the specified key has a translation.
+        /// Determines whether the specified key has a translation.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="findWildcarded">if set to <c>true</c>, the scan will include any wildcarded values.</param>
@@ -240,7 +253,7 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Specifies an asset manager to use, when the service has been lazy-loaded.
+        /// Specifies an asset manager to use, when the service has been lazy-loaded.
         /// </summary>
         /// <param name="assetManager">The <see cref="IAssetManager" /> instance used within the sided API.</param>
         public void UseAssetManager(IAssetManager assetManager)
@@ -249,13 +262,12 @@ namespace Vintagestory.API.Config
         }
 
         /// <summary>
-        ///     Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
+        /// Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
         /// <returns>
-        ///     Returns <c>null</c> as a default value, if no results are found; otherwise returns the pre-formatted,
-        ///     translated value.
+        /// Returns <c>null</c> as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
         /// </returns>
         public string GetMatchingIfExists(string key, params object[] args)
         {

@@ -32,17 +32,17 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.17.0";
+        public const string OverallVersion = "1.17.2";
 
         /// <summary>
         /// Whether this is a stable or unstable version
         /// </summary>
-        public const EnumGameBranch Branch = EnumGameBranch.Unstable;
+        public const EnumGameBranch Branch = EnumGameBranch.Stable;
 
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.1";
+        public const string ShortGameVersion = OverallVersion + "";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
@@ -67,7 +67,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.17.4";
+        public const string NetworkVersion = "1.17.8";
 
         /// <summary>
         /// Version of the savegame database

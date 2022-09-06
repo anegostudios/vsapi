@@ -53,22 +53,28 @@ namespace Vintagestory.API.Common
 
             try
             {
-                StringBuilder b = new StringBuilder();
-                DbConnectionStringBuilder.AppendKeyValuePair(b, "Data Source", databaseFileName);
-                DbConnectionStringBuilder.AppendKeyValuePair(b, "Version", "3");
-                DbConnectionStringBuilder.AppendKeyValuePair(b, "New", "True"); // Create new file if it doesnt exist 
-                DbConnectionStringBuilder.AppendKeyValuePair(b, "Compress", "True");
+                DbConnectionStringBuilder conf = new DbConnectionStringBuilder();
+                conf.Add("Data Source", databaseFileName);
+                conf.Add("Version", "3");
+                conf.Add("New", "True"); // Create new file if it doesnt exist 
+                conf.Add("Compress", "True");
+                
                 if (corruptionProtection)
                 {
-                    DbConnectionStringBuilder.AppendKeyValuePair(b, "Journal Mode", "WAL");
-                    DbConnectionStringBuilder.AppendKeyValuePair(b, "Synchronous", "Normal");
+                    conf.Add("Journal Mode", "WAL");
+                    conf.Add("Synchronous", "Normal");
                 } else
                 {
-                    DbConnectionStringBuilder.AppendKeyValuePair(b, "Journal Mode", "Off");
+                    conf.Add("Journal Mode", "Off");
                 }
-                
-                sqliteConn = new SQLiteConnection(b.ToString());
 
+                if (!requireWriteAccess)
+                {
+                    conf.Add("read only", "True");
+                }
+
+                sqliteConn = new SQLiteConnection(conf.ToString());
+                
                 sqliteConn.Open();
 
                 if (requireWriteAccess)
@@ -105,8 +111,8 @@ namespace Vintagestory.API.Common
 
         public virtual void Close()
         {
-            sqliteConn.Close();
-            sqliteConn.Dispose();
+            sqliteConn?.Close();
+            sqliteConn?.Dispose();
         }
 
         public virtual void Dispose()
@@ -162,6 +168,11 @@ namespace Vintagestory.API.Common
 
         public static bool HaveWriteAccessFolder(string folderPath)
         {
+            if (!Directory.Exists(folderPath))
+            {
+                throw new DirectoryNotFoundException(folderPath);
+            }
+
             try
             {
                 string testfilename = Path.Combine(folderPath, "temp.txt");

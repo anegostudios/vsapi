@@ -65,9 +65,9 @@ namespace Vintagestory.API.Common
         IntDataMap2D LandformMap { get; set; }
 
         /// <summary>
-        /// Holds temperature and rain fall.
-        /// 16-23 bits = Red = temperature
-        /// 8-15 bits = Green = rain
+        /// Holds temperature and rain fall.<br/>
+        /// 16-23 bits = Red = temperature<br/>
+        /// 8-15 bits = Green = rain<br/>
         /// 0-7 bits = Blue = unused 
         /// </summary>
         IntDataMap2D ClimateMap { get; set; }

@@ -127,6 +127,14 @@ namespace Vintagestory.API.Datastructures
         int GetInt(string key, int defaultValue = 0);
 
         /// <summary>
+        /// Same as (int)<see cref="GetDecimal(string, double)"/>
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        int GetAsInt(string key, int defaultValue = 0);
+
+        /// <summary>
         /// Retrieves an int, float, long or double value. Whatever attribute is found for given key
         /// </summary>
         /// <param name="key"></param>

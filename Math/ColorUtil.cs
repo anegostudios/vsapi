@@ -559,6 +559,21 @@ namespace Vintagestory.API.MathTools
             return String.Format("#{0:X2}{1:X2}{2:X2}", ColorR(color), ColorG(color), ColorB(color));
         }
 
+        public static string Int2HexBGR(int color)
+        {
+            return String.Format("#{2:X2}{1:X2}{0:X2}", ColorR(color), ColorG(color), ColorB(color));
+        }
+
+        /// <summary>
+        /// Turn a color int into its string hex version, including preceeding #, including alpha channel
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static string Int2HexRgba(int color)
+        {
+            return String.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", ColorR(color), ColorG(color), ColorB(color), ColorA(color));
+        }
+
         /// <summary>
         /// Parses a hex string as an rgb(a) color and returns an array of colors normalized fom 0..1 for use with Cairo. E.g. turns #FF0000 into double[1, 0, 0, 1] and #00FF00CC into double[0, 1, 0, 0.8]
         /// </summary>

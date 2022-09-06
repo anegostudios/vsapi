@@ -41,6 +41,14 @@ namespace Vintagestory.API.Datastructures
         {
             return 14;
         }
-        
+
+        public IAttribute Clone()
+        {
+            var newlist = new TreeAttribute[value.Length];
+            for (int i = 0; i < newlist.Length; i++) newlist[i] = value[i].Clone() as TreeAttribute;
+
+            return new TreeArrayAttribute(newlist);
+        }
+
     }
 }

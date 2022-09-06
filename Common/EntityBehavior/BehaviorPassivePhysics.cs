@@ -190,8 +190,8 @@ namespace Vintagestory.API.Common
                 pos.Motion *= (float)Math.Pow(airDragValue, dt * 33);
             }
 
-            Block inblock = entity.World.BlockAccessor.GetLiquidBlock((int)pos.X, (int)(pos.Y), (int)pos.Z);
-            Block aboveblock = entity.World.BlockAccessor.GetLiquidBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z);
+            Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z, BlockLayersAccess.Fluid);
+            Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
 
             if (entity.FeetInLiquid)
             {
@@ -287,7 +287,7 @@ namespace Vintagestory.API.Common
 
        
 
-            Block block = entity.World.BlockAccessor.GetLiquidBlock(pos.XInt, pos.YInt, pos.ZInt);
+            Block block = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt, BlockLayersAccess.Fluid);
 
             entity.FeetInLiquid = block.MatterState == EnumMatterState.Liquid;
             entity.InLava = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt).LiquidCode == "lava";

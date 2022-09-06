@@ -39,6 +39,7 @@ namespace Vintagestory.API.Datastructures
         {
             keys[0] = key;
             values[0] = value;
+            count = 1;
         }
 
         public FakeDictionary(Dictionary<TKey, TValue> dict) : this(dict.Count)

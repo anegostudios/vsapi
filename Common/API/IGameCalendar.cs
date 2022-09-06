@@ -187,6 +187,22 @@ namespace Vintagestory.API.Common
         void RemoveTimeSpeedModifier(string name);
 
         /// <summary>
+        /// Amount of in-game seconds that have passed since the game started
+        /// </summary>
+        long ElapsedSeconds { get; }
+
+        /// <summary>
+        /// Amount of in-game hours that have passed since the game started
+        /// </summary>
+        double ElapsedHours { get; }
+
+        /// <summary>
+        /// Amount of in-game days that have passed since the game started
+        /// </summary>
+        double ElapsedDays { get; }
+
+
+        /// <summary>
         /// A multiplier thats applied to the progression of the calendar. Set this to 0.1 and a day will last 10 times longer, does not affect physics.
         /// </summary>
         float CalendarSpeedMul { get; set; }

@@ -81,13 +81,17 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Called on the server or the client; implementing code may need to check which side it is.
-        /// <br/>On a server, called only after all mods have called Start(), and after asset JSONs have been read from disk and patched, but before runphase ModsAndConfigReady.
-        /// <br/>Asset files are now available to load using api.Assets.TryGet() calls or similar.  It is not guaranteed that the actual in-game assets (including blocks and items) are yet registered!
-        /// <br/>If called from a modsystem, what has been registered at this stage depends on the ExecuteOrder().  After 0.2, blocks and items have been registered.  After 0.6, recipes have been registered.
-        /// <br/>If implementing this, and if your code requires that blocks, items and entities have been registered first, make sure your ModSystem has set an appropriate ExecuteOrder()!!
+        /// <br/>On a server, called only after all mods have received Start(), and after asset JSONs have been read from disk and patched, but before runphase ModsAndConfigReady.
+        /// <br/>Asset files are now available to load using api.Assets.TryGet() calls or similar. If your execute order is below 0.2, blocks and items are not yet registered at this point, if below 0.6 recipes are not yet registered.
         /// </summary>
         /// <param name="api"></param>
         public virtual void AssetsLoaded(ICoreAPI api)
+        {
+
+        }
+        
+
+        public virtual void AssetsFinalize(ICoreAPI api)
         {
 
         }
@@ -96,7 +100,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Full start to the mod on the client side.
         /// <br/>Note, in multiplayer games, the server assets (blocks, items, entities, recipes) have not yet been received and so no blocks etc. are yet registered
-        /// <br/>For code that must run only after we have blocks,items,entities and recipes all registered and loaded, add your method to event BlockTexturesLoaded
+        /// <br/>For code that must run only after we have blocks, items, entities and recipes all registered and loaded, add your method to event BlockTexturesLoaded
         /// </summary>
         /// <param name="api"></param>
         public virtual void StartClientSide(ICoreClientAPI api)

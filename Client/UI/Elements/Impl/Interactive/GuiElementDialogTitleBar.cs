@@ -249,16 +249,19 @@ namespace Vintagestory.API.Client
         {
             if (!firstFrameRendered && movable)
             {
+                var scale = RuntimeEnv.GUIScale;
+                double maxx = api.Render.FrameWidth - 4 - Math.Min(200, Bounds.OuterWidth);
+                double maxy = api.Render.FrameHeight - 4 - Math.Min(200, Bounds.OuterHeight);
+                
                 // In case the dialog somehow got out of bounds, make sure that its still movable by keeping it inside the window bounds
-                double x = GameMath.Clamp((int)Bounds.ParentBounds.fixedX + Bounds.ParentBounds.absOffsetX, 0, api.Render.FrameWidth - 4) - Bounds.ParentBounds.absOffsetX;
-                double y = GameMath.Clamp((int)Bounds.ParentBounds.fixedY + Bounds.ParentBounds.absOffsetY, 0, api.Render.FrameHeight - 4) - Bounds.ParentBounds.absOffsetY;
+                double x = GameMath.Clamp((int)Bounds.ParentBounds.fixedX, 0, maxx / scale);
+                double y = GameMath.Clamp((int)Bounds.ParentBounds.fixedY, 0, maxy / scale);
 
                 api.Gui.SetDialogPosition(baseComposer.dialogName, new Vec2i((int)x, (int)y));
 
                 Bounds.ParentBounds.fixedX = x;
                 Bounds.ParentBounds.fixedY = y;
                 Bounds.ParentBounds.CalcWorldBounds();
-
 
                 firstFrameRendered = true;
             }

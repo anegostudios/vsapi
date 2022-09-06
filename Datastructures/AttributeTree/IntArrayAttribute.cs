@@ -103,5 +103,10 @@ namespace Vintagestory.API.Datastructures
             value = value.Remove(val);
         }
 
+        public IAttribute Clone()
+        {
+            return new IntArrayAttribute((int[])value.Clone());
+        }
+
     }
 }

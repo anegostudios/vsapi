@@ -99,7 +99,7 @@ namespace Vintagestory.API.Common
 
     public delegate void EntityDelegate(Entity entity);
 
-    public delegate bool TrySpawnEntityDelegate(ref EntityProperties properties, Vec3d spawnPosition, long herdId);
+    public delegate bool TrySpawnEntityDelegate(IBlockAccessor blockAccessor, ref EntityProperties properties, Vec3d spawnPosition, long herdId);
 
     public delegate void EntityDespawnDelegate(Entity entity, EntityDespawnReason reason);
 

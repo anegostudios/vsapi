@@ -235,7 +235,7 @@ namespace Vintagestory.API.MathTools
                 {
                     for (int z = minZ; z <= maxZ; z++)
                     {
-                        Block block = blockAccessor.GetSolidBlock(x, y, z);
+                        Block block = blockAccessor.GetBlock(x, y, z, BlockLayersAccess.MostSolid);
                         blockPos.Set(x, y, z);
 
                         Cuboidf[] collisionBoxes = block.GetCollisionBoxes(blockAccessor, blockPos);
@@ -287,7 +287,7 @@ namespace Vintagestory.API.MathTools
                 {
                     for (int z = minZ; z <= maxZ; z++)
                     {
-                        Block block = blockAccessor.GetSolidBlock(x, y, z);
+                        Block block = blockAccessor.GetMostSolidBlock(x, y, z);
                         blockPos.Set(x, y, z);
                         blockPosVec.Set(x, y, z);
 
@@ -342,7 +342,7 @@ namespace Vintagestory.API.MathTools
                 {
                     for (int z = minZ; z <= maxZ; z++)
                     {
-                        Block block = blockAccessor.GetSolidBlock(x, y, z);
+                        Block block = blockAccessor.GetBlock(x, y, z, BlockLayersAccess.MostSolid);
                         blockPos.Set(x, y, z);
                         blockPosVec.Set(x, y, z);
 

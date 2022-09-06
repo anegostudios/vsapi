@@ -110,16 +110,16 @@ namespace Vintagestory.API.Client
 
         #region Shorthand methods for simple box constrained multiline text
 
-        public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = 1f, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)
+        public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = 1f, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
             => Lineize(ctx, text, linebreak, new TextFlowPath[] { new TextFlowPath(boxwidth) }, 0, 0, lineHeightMultiplier);
 
-        public int GetQuantityTextLines(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)
+        public int GetQuantityTextLines(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
             => GetQuantityTextLines(font, text, linebreak, new TextFlowPath[] { new TextFlowPath(boxWidth) });
 
-        public double GetMultilineTextHeight(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)
+        public double GetMultilineTextHeight(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
             => GetQuantityTextLines(font, text, boxWidth, linebreak) * GetLineHeight(font);
 
-        public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord)
+        public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
             => Lineize(font, fulltext, linebreak, new TextFlowPath[] { new TextFlowPath(boxWidth) }, 0, 0);
 
 
@@ -252,7 +252,7 @@ namespace Vintagestory.API.Client
             font.SetupContext(ctx);
 
             TextLine[] textlines = Lineize(ctx, fulltext, linebreak, flowPath, startOffsetX, startY, font.LineHeightMultiplier);
-                
+            
             ctx.Dispose();
             surface.Dispose();
 
@@ -273,6 +273,11 @@ namespace Vintagestory.API.Client
         public TextLine[] Lineize(Context ctx, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, double lineHeightMultiplier = 1f)
         {
             if (text == null || text.Length == 0) return new TextLine[0];
+
+            if (linebreak == EnumLinebreakBehavior.Default)
+            {
+                linebreak = Lang.AvailableLanguages[Lang.CurrentLocale].LineBreakBehavior;
+            }
 
             string word;
             StringBuilder lineTextBldr = new StringBuilder();
@@ -303,7 +308,6 @@ namespace Vintagestory.API.Client
                     Console.WriteLine("Flow path underflow. Something in the text flow system is incorrectly programmed.");
                     currentSection = new TextFlowPath(500);
                 }
-
 
                 usableWidth = currentSection.X2 - currentSection.X1 - curX;
 

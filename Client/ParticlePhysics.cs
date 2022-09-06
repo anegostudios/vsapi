@@ -72,7 +72,7 @@ namespace Vintagestory.API.Client
             int zPrev = (int)pos.Z;
 
             tmpPos.Set(xPrev, yPrev, zPrev);
-            Block block = BlockAccess.GetLiquidBlock(tmpPos);
+            Block block = BlockAccess.GetBlock(tmpPos, BlockLayersAccess.Fluid);
             Block prevBlock = block;
 
             if (boyant)
@@ -80,7 +80,7 @@ namespace Vintagestory.API.Client
                 if (block.IsLiquid())
                 {
                     tmpPos.Set(xPrev, (int)(pos.Y + 1), zPrev);
-                    block = BlockAccess.GetLiquidBlock(tmpPos);
+                    block = BlockAccess.GetBlock(tmpPos, BlockLayersAccess.Fluid);
 
                     float waterY = (int)pos.Y + prevBlock.LiquidLevel / 8f + (block.IsLiquid() ? 9 / 8f : 0);
                     float bottomSubmergedness = waterY - (float)pos.Y;

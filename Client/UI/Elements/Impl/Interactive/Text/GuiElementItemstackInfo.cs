@@ -9,8 +9,6 @@ namespace Vintagestory.API.Client
 {
     public delegate string InfoTextDelegate(ItemSlot slot);
 
-    
-
     public class GuiElementItemstackInfo : GuiElementTextBase
     {
         public bool Dirty;
@@ -26,7 +24,7 @@ namespace Vintagestory.API.Client
 
         static double[] backTint = GuiStyle.DialogStrongBgColor;
 
-        ItemSlot curSlot;
+        public ItemSlot curSlot;
         ItemStack curStack;
         CairoFont titleFont;
 
@@ -35,6 +33,7 @@ namespace Vintagestory.API.Client
         InfoTextDelegate OnRequireInfoText;
 
         ElementBounds scissorBounds;
+        public Action onRenderStack;
 
         public string[] RecompCheckIgnoredStackAttributes;
 
@@ -65,6 +64,22 @@ namespace Vintagestory.API.Client
             titleElement.zPos = 1001;
 
             maxWidth = bounds.fixedWidth;
+
+            onRenderStack = () =>
+            {
+                double offset = (int)scaled(30 + ItemStackSize / 2);
+                api.Render.RenderItemstackToGui(
+                    curSlot,
+                    (int)Bounds.renderX + offset,
+                    (int)Bounds.renderY + offset + (int)scaled(MarginTop),
+                    1000 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 2,
+                    (float)scaled(ItemStackSize),
+                    ColorUtil.WhiteArgb,
+                    true,
+                    true,
+                    false
+                );
+            };
         }
 
 
@@ -205,29 +220,18 @@ namespace Vintagestory.API.Client
             titleElement.RenderInteractiveElements(deltaTime);
             descriptionElement.RenderInteractiveElements(deltaTime);
 
-            double offset = (int)scaled(30 + ItemStackSize/2);
-
             api.Render.PushScissor(scissorBounds);
 
-            api.Render.RenderItemstackToGui(
-                curSlot,
-                (int)Bounds.renderX + offset,
-                (int)Bounds.renderY + offset + (int)scaled(MarginTop), 
-                1000 + scaled(GuiElementPassiveItemSlot.unscaledItemSize) * 2, 
-                (float)scaled(ItemStackSize), 
-                ColorUtil.WhiteArgb,
-                true,
-                true,
-                false
-            );
+            onRenderStack();
 
             api.Render.PopScissor();
         }
 
 
+        
 
-        
-        
+
+
 
         /// <summary>
         /// Gets the item slot for this stack info.
@@ -243,10 +247,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="nowSlot"></param>
         /// <returns>True if recomposed</returns>
-        public bool SetSourceSlot(ItemSlot nowSlot)
+        public bool SetSourceSlot(ItemSlot nowSlot, bool forceRecompose = false)
         {
-            bool recompose =
-                ((this.curStack == null) != (nowSlot?.Itemstack == null))
+            bool recompose = forceRecompose 
+                || ((this.curStack == null) != (nowSlot?.Itemstack == null))
                 || (nowSlot?.Itemstack != null && !nowSlot.Itemstack.Equals(api.World, curStack, RecompCheckIgnoredStackAttributes))
             ;
 

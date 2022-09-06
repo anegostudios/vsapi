@@ -82,24 +82,27 @@ namespace Vintagestory.API.Datastructures
         /// <param name="path"></param>
         public void MarkPathDirty(string path)
         {
-            foreach (TreeModifiedListener listener in OnModified)
+            lock (attributesLock)
             {
-                if (listener.path == null || path.StartsWith(listener.path))
+                foreach (TreeModifiedListener listener in OnModified)
                 {
-                    listener.listener();
+                    if (listener.path == null || path.StartsWith(listener.path))
+                    {
+                        listener.listener();
+                    }
                 }
+
+                if (allDirty) return;
+
+                if (attributePathsDirty.Count >= 10)
+                {
+                    attributePathsDirty.Clear();
+                    allDirty = true;
+                }
+
+
+                attributePathsDirty.Add(path);
             }
-
-            if (allDirty) return;
-
-            if (attributePathsDirty.Count >= 10)
-            {
-                attributePathsDirty.Clear();
-                allDirty = true;
-            }
-
-            
-            attributePathsDirty.Add(path);
         }
 
 

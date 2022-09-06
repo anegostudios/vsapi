@@ -162,13 +162,16 @@ namespace Vintagestory.API.Client
             return base.OnRequireInfoText(slot) + ExtraTooltipText;
         }
 
-        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
+            int relx = (int)(api.Input.MouseX - renderX + renderOffset.X);
+            int rely = (int)(api.Input.MouseY - renderY + renderOffset.Y);
             LineRectangled bounds = BoundsPerLine[0];
+            bool mouseover = bounds.PointInside(relx, rely);
 
             ItemStack itemstack = Itemstacks[curItemIndex];
 
-            if ((secondsVisible -= deltaTime) <= 0)
+            if (!mouseover && (secondsVisible -= deltaTime) <= 0)
             {
                 secondsVisible = 1;
                 curItemIndex = (curItemIndex + 1) % Itemstacks.Length;
@@ -187,14 +190,17 @@ namespace Vintagestory.API.Client
 
             api.Render.PushScissor(scibounds, true);
 
-            api.Render.RenderItemstackToGui(slot, renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X + offX, renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY, 100 + renderOffset.Z, (float)bounds.Width * renderSize, ColorUtil.WhiteArgb, true, false, ShowStackSize);
+            api.Render.RenderItemstackToGui(slot, 
+                renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X + offX, 
+                renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY, 
+                100 + renderOffset.Z, (float)bounds.Width * renderSize, 
+                ColorUtil.WhiteArgb, true, false, ShowStackSize
+            );
 
             api.Render.PopScissor();
 
-            int relx = (int)(api.Input.MouseX - renderX + renderOffset.X);
-            int rely = (int)(api.Input.MouseY - renderY + renderOffset.Y);
 
-            if (bounds.PointInside(relx, rely) && ShowTooltip)
+            if (mouseover && ShowTooltip)
             {
                 RenderItemstackTooltip(slot, renderX + relx, renderY + rely, deltaTime);
             }

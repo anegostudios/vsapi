@@ -22,6 +22,7 @@ namespace Vintagestory.API.Client
         protected float currentHandlePosition;
         protected float currentHandleHeight = 0;
 
+        public float zOffset;
 
         protected LoadedTexture handleTexture;
 
@@ -114,7 +115,8 @@ namespace Vintagestory.API.Client
                 (int)(Bounds.renderX + Bounds.absPaddingX),
                 (int)(Bounds.renderY + Bounds.absPaddingY + currentHandlePosition),
                 (int)Bounds.InnerWidth,
-                (int)currentHandleHeight
+                (int)currentHandleHeight, 
+                200+zOffset
             );
         }
 

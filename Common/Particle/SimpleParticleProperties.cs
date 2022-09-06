@@ -38,7 +38,7 @@ namespace Vintagestory.API.Common
         public int Color;
         public int VertexFlags { get; set; }
 
-        public bool Async => false;
+        public bool Async { get; set; }
         public float Bounciness { get; set; }
         public bool ShouldDieInAir { get; set; }
         public bool ShouldDieInLiquid { get; set; }
@@ -72,8 +72,6 @@ namespace Vintagestory.API.Common
         public SimpleParticleProperties()
         {
         }
-
-//        ICoreAPI api;
 
         public void Init(ICoreAPI api) {  }
 
@@ -208,6 +206,7 @@ namespace Vintagestory.API.Common
             if (SeasonColorMap != null) writer.Write(SeasonColorMap);
 
             writer.Write(Bounciness);
+            writer.Write(Async);
         }
 
         public void FromBytes(BinaryReader reader, IWorldAccessor resolver)
@@ -273,6 +272,7 @@ namespace Vintagestory.API.Common
             }
 
             Bounciness = reader.ReadSingle();
+            Async = reader.ReadBoolean();
         }
 
         public void BeginParticle() {
@@ -294,6 +294,10 @@ namespace Vintagestory.API.Common
 
         public void PrepareForSecondarySpawn(ParticleBase particleInstance)
         {
+            Vec3d particlePos = particleInstance.Position;
+            MinPos.X = particlePos.X;
+            MinPos.Y = particlePos.Y;
+            MinPos.Z = particlePos.Z;
         }
 
         public SimpleParticleProperties Clone(IWorldAccessor worldForResovle)

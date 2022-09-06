@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Cairo;
 using Vintagestory.API.Client;
 
@@ -6,9 +7,13 @@ namespace Vintagestory.API.Client
 {
     public delegate void DrawDelegate(Context ctx, ImageSurface surface);
 
+    public delegate void IconRendererDelegate(Context ctx, int x, int y, float w, float h, double[] rgba);
+
     public class IconUtil
     {
         ICoreClientAPI capi;
+
+        public Dictionary<string, IconRendererDelegate> CustomIcons = new Dictionary<string, IconRendererDelegate>();
 
         /// <summary>
         /// Creates a new IconUtil instance.
@@ -17,6 +22,8 @@ namespace Vintagestory.API.Client
         public IconUtil(ICoreClientAPI capi)
         {
             this.capi = capi;
+
+            CustomIcons["wpCross"] = (ctx, x, y, w, h, rgba) => { ctx.SetSourceRGBA(rgba); capi.Gui.Icons.DrawCross(ctx, x, y, 4, w); };
         }
 
         /// <summary>
@@ -73,6 +80,11 @@ namespace Vintagestory.API.Client
         /// <param name="rgba">The color of the icon.</param>
         public void DrawIconInt(Context cr, string type, int x, int y, float width, float height, double[] rgba)
         {
+            if (CustomIcons.TryGetValue(type, out var dele))
+            {
+                dele(cr, x, y, width, height, rgba);
+                return;
+            }
 
             switch (type)
             {
@@ -17306,7 +17318,7 @@ namespace Vintagestory.API.Client
             cr.LineWidth = 1.5;
             cr.Arc(x + width/2, y + width/2, width/2 * 0.5f, 0, 2 * Math.PI);
             cr.SetSourceRGBA(rgba);
-            cr.FillPreserve();
+            cr.Fill();
 
             cr.SetSourceRGBA(0.5, 0.5, 0.5, 1);
             cr.Stroke();

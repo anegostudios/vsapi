@@ -75,16 +75,15 @@ namespace Vintagestory.API.Client
             parentBounds.CalcWorldBounds();
 
             renderedTooltipSlot.Itemstack = slot.Itemstack;
+            renderedTooltipSlot.BackgroundIcon = slot.BackgroundIcon;
 
             if (capi.ElapsedMilliseconds - lastHoverslotInfoTextUpdateTotalMs > 1000)
             {
                 stackInfo.SetSourceSlot(null);
             }
 
-            if (stackInfo.SetSourceSlot(renderedTooltipSlot))
-            {
-                lastHoverslotInfoTextUpdateTotalMs = capi.ElapsedMilliseconds;
-            }
+            stackInfo.SetSourceSlot(renderedTooltipSlot);
+            lastHoverslotInfoTextUpdateTotalMs = capi.ElapsedMilliseconds;
 
             bool newRightOverlap = capi.Input.MouseX + stackInfoBounds.OuterWidth > capi.Render.FrameWidth - 5;
             bool newBottomOverlap = capi.Input.MouseY + stackInfoBounds.OuterHeight > capi.Render.FrameHeight - 5;

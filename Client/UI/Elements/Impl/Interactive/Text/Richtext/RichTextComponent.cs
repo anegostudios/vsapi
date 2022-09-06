@@ -13,35 +13,37 @@ namespace Vintagestory.API.Client
     public class RichTextComponent : RichTextComponentBase
     {
         protected TextDrawUtil textUtil;
-        
-        public string displayText;
-        public CairoFont font;
+        protected EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord;
 
-        public TextLine[] lines;
-        EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.AfterWord;
+        public string DisplayText;
+        public CairoFont Font;
+        public TextLine[] Lines;
+
 
         public RichTextComponent(ICoreClientAPI api, string displayText, CairoFont font) : base(api)
         {
-            this.displayText = displayText;
-            this.font = font;
+            this.DisplayText = displayText;
+            this.Font = font;
+            this.linebreak = Lang.AvailableLanguages[Lang.CurrentLocale].LineBreakBehavior;
+
             init();
         }
 
         protected void init()
         {
-            if (displayText.Length > 0)
+            if (DisplayText.Length > 0)
             {
                 // ok apparently text extents of " " is 0 on a mac? o.O
-                if (displayText[displayText.Length - 1] == ' ')
+                if (DisplayText[DisplayText.Length - 1] == ' ')
                 {
-                    PaddingRight = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
+                    PaddingRight = (Font.GetTextExtents("a b").Width - Font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
                 }
-                if (displayText[0] == ' ')
+                if (DisplayText[0] == ' ')
                 {
-                    PaddingLeft = (font.GetTextExtents("a b").Width - font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
+                    PaddingLeft = (Font.GetTextExtents("a b").Width - Font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
                 }
 
-                this.displayText = displayText.Trim(new char[] { ' ' });
+                this.DisplayText = DisplayText.Trim(new char[] { ' ' });
             }
             else
             {
@@ -60,7 +62,7 @@ namespace Vintagestory.API.Client
         /// <param name="withFont">The font for the element.</param>
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            textUtil.DrawMultilineText(ctx, font, lines, font.Orientation);
+            textUtil.DrawMultilineText(ctx, Font, Lines, Font.Orientation);
 
            /* ctx.LineWidth = 1f;
             ctx.SetSourceRGBA(0, 0, 0, 0.5);
@@ -80,7 +82,7 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime"></param>
         /// <param name="renderX"></param>
         /// <param name="renderY"></param>
-        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
             /*for (int i = 0; i < lines.Length; i++)
             {
@@ -101,26 +103,26 @@ namespace Vintagestory.API.Client
         {
             offsetX += GuiElement.scaled(PaddingLeft);
 
-            lines = textUtil.Lineize(font, displayText, linebreak, flowPath, offsetX, lineY);
+            Lines = textUtil.Lineize(Font, DisplayText, linebreak, flowPath, offsetX, lineY);
 
             nextOffsetX = offsetX;
 
-            BoundsPerLine = new LineRectangled[lines.Length];
-            for (int i = 0; i < lines.Length; i++)
+            BoundsPerLine = new LineRectangled[Lines.Length];
+            for (int i = 0; i < Lines.Length; i++)
             {
-                TextLine line = lines[i];
+                TextLine line = Lines[i];
                 BoundsPerLine[i] = line.Bounds;
             }
 
-            if (lines.Length > 0)
+            if (Lines.Length > 0)
             {
-                var lbnd = BoundsPerLine[lines.Length-1];
+                var lbnd = BoundsPerLine[Lines.Length-1];
                 lbnd.Width += GuiElement.scaled(PaddingRight);
 
-                nextOffsetX = lines[lines.Length - 1].NextOffsetX + lbnd.Width;
+                nextOffsetX = Lines[Lines.Length - 1].NextOffsetX + lbnd.Width;
             }
 
-            return lines.Length > 1;
+            return Lines.Length > 1;
         }
         
     }

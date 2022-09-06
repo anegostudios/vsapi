@@ -103,10 +103,13 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="text">The text of the object.</param>
         /// <param name="bounds">The bounds of the element where the font is displayed.</param>
-        public void AutoFontSize(string text, ElementBounds bounds)
+        public void AutoFontSize(string text, ElementBounds bounds, bool onlyShrink = true)
         {
+            var origsize = UnscaledFontsize;
             UnscaledFontsize = 50;
-            UnscaledFontsize *= bounds.InnerWidth / GetTextExtents(text).Width;
+            UnscaledFontsize *= (bounds.InnerWidth-1) / GetTextExtents(text).Width;
+
+            if (onlyShrink) UnscaledFontsize = Math.Min(UnscaledFontsize, origsize);
         }
 
 
@@ -171,7 +174,7 @@ namespace Vintagestory.API.Client
         /// <param name="color">The color to set.</param>
         public CairoFont WithColor(double[] color)
         {
-            this.Color = color;
+            this.Color = (double[])color.Clone();
             return this;
         }
 

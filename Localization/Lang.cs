@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
@@ -27,18 +29,18 @@ namespace Vintagestory.API.Config
         /// </summary>
         /// <value>A string, that contains he language code that this currently used to translate values.</value>
         public static string CurrentLocale { get; private set; }
-
         public static string DefaultLocale { get; set; } = "en";
 
+
         /// <summary>
-        /// Loads all languages.
+        /// Loads all translations
         /// </summary>
         /// <param name="logger">The <see cref="ILogger" /> instance used within the sided API.</param>
         /// <param name="assetManager">The <see cref="IAssetManager" /> instance used within the sided API.</param>
-        /// <param name="defaultLanguage">The language code to set as the default/fallback language for the game.</param>
-        public static void Load(ILogger logger, IAssetManager assetManager, string defaultLanguage = "en")
+        /// <param name="language">The desired language</param>
+        public static void Load(ILogger logger, IAssetManager assetManager, string language = "en")
         {
-            CurrentLocale = defaultLanguage;
+            CurrentLocale = language;
 
             var languageFile = Path.Combine(GamePaths.AssetsPath, "game", "lang", "languages.json");
             var json = JsonObject.FromJson(File.ReadAllText(languageFile)).AsArray();
@@ -46,12 +48,14 @@ namespace Vintagestory.API.Config
             foreach (var jsonObject in json)
             {
                 var languageCode = jsonObject["code"].AsString();
-                LoadLanguage(logger, assetManager, languageCode, languageCode != defaultLanguage);
+                EnumLinebreakBehavior lbBehavior = (EnumLinebreakBehavior)Enum.Parse(typeof(EnumLinebreakBehavior), jsonObject["linebreakBehavior"].AsString("AfterWord"));
+
+                LoadLanguage(logger, assetManager, languageCode, languageCode != CurrentLocale, lbBehavior);
             }
 
-            if (!AvailableLanguages.ContainsKey(defaultLanguage))
+            if (!AvailableLanguages.ContainsKey(language))
             {
-                logger.Error("Language '{0}' not found. Will default to english.", defaultLanguage);
+                logger.Error("Language '{0}' not found. Will default to english.", language);
                 CurrentLocale = "en";
             }
         }
@@ -71,7 +75,7 @@ namespace Vintagestory.API.Config
         /// <param name="logger">The <see cref="ILogger" /> instance used within the sided API.</param>
         /// <param name="assetManager">The <see cref="IAssetManager" /> instance used within the sided API.</param>
         /// <param name="languageCode">The language code to use as the default language.</param>
-        public static void LoadLanguage(ILogger logger, IAssetManager assetManager, string languageCode = "en", bool lazyLoad = false)
+        public static void LoadLanguage(ILogger logger, IAssetManager assetManager, string languageCode = "en", bool lazyLoad = false, EnumLinebreakBehavior lbBehavior = EnumLinebreakBehavior.AfterWord)
         {
             if (AvailableLanguages.ContainsKey(languageCode))
             {
@@ -79,7 +83,7 @@ namespace Vintagestory.API.Config
                 AvailableLanguages[languageCode].Load(lazyLoad);
                 return;
             }
-            var translationService = new TranslationService(languageCode, logger, assetManager);
+            var translationService = new TranslationService(languageCode, logger, assetManager, lbBehavior);
             translationService.Load(lazyLoad);
             AvailableLanguages.Add(languageCode, translationService);
         }
@@ -100,7 +104,9 @@ namespace Vintagestory.API.Config
             foreach (var jsonObject in json)
             {
                 var languageCode = jsonObject["code"].AsString();
-                var translationService = new TranslationService(languageCode, logger);
+                EnumLinebreakBehavior lbBehavior = (EnumLinebreakBehavior)Enum.Parse(typeof(EnumLinebreakBehavior), jsonObject["linebreakBehavior"].AsString("AfterWord"));
+
+                var translationService = new TranslationService(languageCode, logger, null, lbBehavior);
                 bool lazyLoad = languageCode != defaultLanguage;
                 translationService.PreLoad(assetsPath, lazyLoad);
                 AvailableLanguages[languageCode] = translationService;

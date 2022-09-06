@@ -75,6 +75,25 @@ namespace Vintagestory.API.Client
             get { return currentElementKey; }
         }
 
+        /// <summary>
+        /// Retrieve gui element by key. Returns null if not found.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public GuiElement this[string key]
+        {
+            get
+            {
+                GuiElement elem = null;
+                if (!interactiveElements.TryGetValue(key, out elem))
+                {
+                    staticElements.TryGetValue(key, out elem);
+                }
+
+                return elem;
+            }
+        }
+
 
         public ElementBounds Bounds
         {

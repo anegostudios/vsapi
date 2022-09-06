@@ -6,6 +6,11 @@ namespace Vintagestory.API.Common
 {
     public interface IChunkBlocks
     {
+        /// <summary>
+        /// Retrieves the first solid block, if that one is empty, retrieves the first fluid block
+        /// </summary>
+        /// <param name="index3d"></param>
+        /// <returns></returns>
         int this[int index3d] { get; set; }
 
         int Length { get; }
@@ -24,12 +29,13 @@ namespace Vintagestory.API.Common
         void SetBlockUnsafe(int index3d, int value);
         void SetBlockAir(int index3d);
         /// <summary>
-        /// Used to place blocks into the liquid layer instead of the solid blocks layer; calling code must do this
+        /// Used to place blocks into the fluid layer instead of the solid blocks layer; calling code must do this
         /// </summary>
         /// <param name="index3d"></param>
         /// <param name="value"></param>
-        void SetLiquid(int index3d, int value);
-        int GetLiquid(int index3d);
+        void SetFluid(int index3d, int value);
+        int GetBlockId(int index3d, int layer);
+        int GetFluid(int index3d);
         /// <summary>
         /// Like get (i.e. this[]) but not threadsafe - only for use where setting and getting is guaranteed to be all on the same thread (e.g. during worldgen)
         /// </summary>
@@ -72,7 +78,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Holds all the blockids for each coordinate, access via index: (y * chunksize + z) * chunksize + x
         /// </summary>
-        IChunkBlocks Blocks { get; }
+        IChunkBlocks Data { get; }
+
+		/// <summary>
+        /// Use <see cref="Data"/> instead
+        /// </summary>
+		IChunkBlocks Blocks { get; }
 
         /// <summary>
         /// Holds all the lighting data for each coordinate, access via index: (y * chunksize + z) * chunksize + x
@@ -80,7 +91,7 @@ namespace Vintagestory.API.Common
         IChunkLight Lighting { get; }
 
         /// <summary>
-        /// Faster (non-blocking) access to blocks at the cost of sometimes returning 0 instead of the real block. Use <see cref="Blocks"/> if you need reliable block access. Also should only be used for reading. Currently used for the particle system.
+        /// Faster (non-blocking) access to blocks at the cost of sometimes returning 0 instead of the real block. Use <see cref="Data"/> if you need reliable block access. Also should only be used for reading. Currently used for the particle system.
         /// </summary>
         IChunkBlocks MaybeBlocks { get; }
 
@@ -113,7 +124,7 @@ namespace Vintagestory.API.Common
         /// Like Unpack_ReadOnly(), except it actually reads and returns the block ID at index<br/>
         /// (Returns 0 if the chunk was disposed)
         /// </summary>
-        int Unpack_AndReadBlock(int index);
+        int UnpackAndReadBlock(int index, int layer);
 
         /// <summary>
         /// Like Unpack_ReadOnly(), except it actually reads and returns the Light at index<br/>
@@ -200,14 +211,7 @@ namespace Vintagestory.API.Common
         T GetModdata<T>(string key, T defaultValue = default(T));
 
 
-        /// <summary>
-        /// Retrieve a block from this chunk with priority given to the ice/water layer, performs Unpack() and a modulo operation on the position arg to get a local position in the 0..chunksize range (its your job to pick out the right chunk before calling this method)
-        /// </summary>
-        /// <param name="world"></param>
-        /// <param name="position"></param>
-        /// <returns></returns>
-        Block GetLocalLiquidOrBlockAtBlockPos(IWorldAccessor world, BlockPos position);
-
+        
         /// <summary>
         /// Retrieve a block from this chunk ignoring ice/water layer, performs Unpack() and a modulo operation on the position arg to get a local position in the 0..chunksize range (it's your job to pick out the right chunk before calling this method)
         /// </summary>
@@ -215,6 +219,8 @@ namespace Vintagestory.API.Common
         /// <param name="position"></param>
         /// <returns></returns>
         Block GetLocalBlockAtBlockPos(IWorldAccessor world, BlockPos position);
+
+        Block GetLocalBlockAtBlockPos(IWorldAccessor world, int posX, int posY, int posZ, int layer);
 
         /// <summary>
         /// Retrieve a block entity from this chunk
@@ -293,7 +299,7 @@ namespace Vintagestory.API.Common
         void FinishLightDoubleBuffering();
 
         /// <summary>
-        /// Returns the higher light absorption between solids and liquids block layers
+        /// Returns the higher light absorption between solids and fluids block layers
         /// </summary>
         /// <param name="index3d"></param>
         /// <param name="blockPos"></param>

@@ -46,5 +46,10 @@ namespace Vintagestory.API.Datastructures
         {
             return value.ToString(GlobalConstants.DefaultCultureInfo);
         }
+
+        public IAttribute Clone()
+        {
+            return new FloatAttribute(value);
+        }
     }
 }

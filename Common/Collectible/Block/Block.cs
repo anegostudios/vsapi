@@ -29,18 +29,6 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class Block : CollectibleObject
     {
-        [ThreadStatic]
-        private static BlockBrokenParticleProps _psblockBrokenProps;
-
-        BlockBrokenParticleProps blockBrokenProps
-        {
-            get
-            {
-                if (_psblockBrokenProps == null) _psblockBrokenProps = new BlockBrokenParticleProps() { blockdamage = new BlockDamage() { Facing = BlockFacing.UP } };
-                return _psblockBrokenProps;
-            }
-        }
-
         /// <summary>
         /// Returns the block id
         /// </summary>
@@ -52,12 +40,12 @@ namespace Vintagestory.API.Common
         public override EnumItemClass ItemClass { get { return EnumItemClass.Block; } }
 
         /// <summary>
-        /// Return true if this block should be stored in the liquids layer in chunks instead of the solid blocks layer (e.g. water, flowing water, lake ice)
+        /// Return true if this block should be stored in the fluids layer in chunks instead of the solid blocks layer (e.g. water, flowing water, lake ice)
         /// </summary>
-        public virtual bool ForLiquidsLayer { get { return false; } }
+        public virtual bool ForFluidsLayer { get { return false; } }
 
         /// <summary>
-        /// Return non-null if this block should have water (or ice) placed in its position in the liquids layer when updating from 1.16 to 1.17
+        /// Return non-null if this block should have water (or ice) placed in its position in the fluids layer when updating from 1.16 to 1.17
         /// </summary>
         public virtual string RemapToLiquidsLayer { get { return null; } }
 
@@ -120,11 +108,6 @@ namespace Vintagestory.API.Common
         /// A bit uploaded to the shader to add a frost overlay below freezing temperature
         /// </summary>
         public bool Frostable;
-
-        /// <summary>
-        /// For light emitting blocks: hue, saturation and brightness value
-        /// </summary>
-        public byte[] LightHsv = new byte[3];
 
         /// <summary>
         /// For light blocking blocks. Any value above 32 will completely block all light.
@@ -475,9 +458,18 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        /// <summary>
+        /// Called for example when the player places a block inside a liquid block. Needs to return true if the liquid should get removed.
+        /// </summary>
+        /// <param name="blockAccess"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual bool DisplacesLiquids(IBlockAccessor blockAccess, BlockPos pos)
+        {
+            return SideSolid.OnSidesAndBase();
+        }
         
-
-
         /// <summary>
         /// This method gets called when facecull mode is set to 'Callback'. Curently used for custom behaviors when merging ice
         /// </summary>
@@ -557,19 +549,6 @@ namespace Vintagestory.API.Common
         public virtual Cuboidf[] GetParticleCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos)
         {
             return ParticleCollisionBoxes ?? CollisionBoxes;
-        }
-
-        /// <summary>
-        /// Should return the light HSV values. 
-        /// Warning: This method is likely to get called in a background thread. Please make sure your code in here is thread safe.
-        /// </summary>
-        /// <param name="blockAccessor"></param>
-        /// <param name="pos">May be null</param>
-        /// <param name="stack">Set if its an itemstack for which the engine wants to check the light level</param>
-        /// <returns></returns>
-        public virtual byte[] GetLightHsv(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
-        {
-            return LightHsv;
         }
 
         /// <summary>
@@ -1030,6 +1009,7 @@ namespace Vintagestory.API.Common
 
         public void SpawnBlockBrokenParticles(BlockPos pos)
         {
+            var blockBrokenProps = new BlockBrokenParticleProps() { blockdamage = new BlockDamage() { Facing = BlockFacing.UP } };
             blockBrokenProps.Init(api);
             blockBrokenProps.blockdamage.Block = this;
             blockBrokenProps.blockdamage.Position = pos;
@@ -1510,13 +1490,11 @@ namespace Vintagestory.API.Common
             bool preventDefault = false;
             isWindAffected = false;
 
-
-
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 EnumHandling handled = EnumHandling.PassThrough;
 
-                bool behaviorResult = behavior.ShouldReceiveClientGameTicks(world, player, pos, ref handled);
+                bool behaviorResult = behavior.ShouldReceiveClientParticleTicks(world, player, pos, ref handled);
                 if (handled != EnumHandling.PassThrough)
                 {
                     result &= behaviorResult;
@@ -1571,6 +1549,11 @@ namespace Vintagestory.API.Common
 
                     manager.Spawn(bps);
                 }
+            }
+
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                behavior.OnAsyncClientParticleTick(manager, pos, windAffectednessAtPos, secondsTicking);
             }
         }
 
@@ -2620,5 +2603,18 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        /// <summary>
+        /// Return a decimal between 0.0 and 1.0 indicating - if this block is solid enough to block liquid flow on that side - how high the barrier is
+        /// </summary>
+        public virtual float LiquidBarrierHeightOnSide(BlockFacing face, BlockPos pos)
+        {
+            var barrier = Attributes?["liquidBarrierOnSides"].AsArray<float>(null);
+            if (barrier != null && barrier.Length > face.Index)
+            {
+                return barrier[face.Index];
+            }
+            return SideSolid.OnSide(face) ? 1f : 0f;
+        }
     }
 }

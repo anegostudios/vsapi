@@ -721,21 +721,21 @@ namespace Vintagestory.API.MathTools
 
     }
 
-    // Exactly like BlockPos except using this class signifies the block should be looked for in the liquids layer; used for server block ticking
-    public class LiquidBlockPos : BlockPos
+    // Exactly like BlockPos except using this class signifies the block should be looked for in the fluids layer; used for server block ticking
+    public class FluidBlockPos : BlockPos
     {
-        public LiquidBlockPos()
+        public FluidBlockPos()
         {
         }
 
-        public LiquidBlockPos(int x, int y, int z)
+        public FluidBlockPos(int x, int y, int z)
         {
             this.X = x;
             this.Y = y;
             this.Z = z;
         }
 
-        public LiquidBlockPos(Vec3i vec)
+        public FluidBlockPos(Vec3i vec)
         {
             this.X = vec.X;
             this.Y = vec.Y;
@@ -744,7 +744,7 @@ namespace Vintagestory.API.MathTools
 
         public override BlockPos Copy()
         {
-            return new LiquidBlockPos(X, Y, Z);
+            return new FluidBlockPos(X, Y, Z);
         }
     }
 }

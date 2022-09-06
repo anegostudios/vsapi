@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
 
@@ -13,6 +14,8 @@ namespace Vintagestory.API.Config
     /// </summary>
     public interface ITranslationService
     {
+        EnumLinebreakBehavior LineBreakBehavior { get; }
+
         /// <summary>
         ///     Gets the language code that this translation service caters for.
         /// </summary>
@@ -93,5 +96,10 @@ namespace Vintagestory.API.Config
         ///      Used to compile the regexes, to save time on the first 'actual' wildcard search - saves about 300ms
         /// </summary>
         void InitialiseSearch();
+
+        /// <summary>
+        /// Sets the loaded flag to false, so that the next lookup causes it to reload all translation entries
+        /// </summary>
+        void Invalidate();
     }
 }

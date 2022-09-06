@@ -61,7 +61,7 @@ namespace Vintagestory.API.Client
             ctx.Fill();*/
         }
 
-        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY)
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
             LineRectangled bounds = BoundsPerLine[0];
 

@@ -64,7 +64,7 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                return Slot.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, Slot.Itemstack);
+                return Slot.Itemstack?.Collectible?.GetLightHsv(World.BlockAccessor, null, Slot.Itemstack);
             }
         }
 
@@ -103,7 +103,7 @@ namespace Vintagestory.API.Common
 
 
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;
-            Swimming = FeetInLiquid = World.BlockAccessor.GetLiquidBlock(Pos.AsBlockPos).IsLiquid();
+            Swimming = FeetInLiquid = World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid).IsLiquid();
 
             tmpPos.Set(Pos.XInt, Pos.YInt, Pos.ZInt);
             windLoss = World.BlockAccessor.GetDistanceToRainFall(tmpPos) / 4f;
@@ -152,7 +152,7 @@ namespace Vintagestory.API.Common
 
                     if (temp > 20)
                     {
-                    //    Itemstack.Collectible.SetTemperature(World, Itemstack, Math.Max(20, temp - 5));
+                        Itemstack.Collectible.SetTemperature(World, Itemstack, Math.Max(20, temp - 5));
 
                         if (temp > 90)
                         {
@@ -165,7 +165,7 @@ namespace Vintagestory.API.Common
 
                         if (temp > 200 && World.Side == EnumAppSide.Client && World.ElapsedMilliseconds - lastPlayedSizzlesTotalMs > 10000)
                         {
-                          //  World.PlaySoundAt(new AssetLocation("sounds/sizzle"), this, null);
+                            World.PlaySoundAt(new AssetLocation("sounds/sizzle"), this, null);
                             lastPlayedSizzlesTotalMs = World.ElapsedMilliseconds;
                         }
                     }

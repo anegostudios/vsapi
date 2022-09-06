@@ -14,13 +14,13 @@ namespace Vintagestory.API.Common
         public BlockPos Pos;
         public int OldBlockId;
         /// <summary>
-        /// If this value is negative, it indicates no change to the block (neither air block nor anything else) because only the liquid is being updated
+        /// If this value is negative, it indicates no change to the block (neither air block nor anything else) because only the fluid is being updated
         /// </summary>
-        public int NewBlockId = -1;
+        public int NewSolidId = -1;
         /// <summary>
-        /// If this value is negative, it indicates no change to the liquids layer block (neither air block nor anything else) because only the solid block is being updated
+        /// If this value is negative, it indicates no change to the fluids layer block (neither air block nor anything else) because only the solid block is being updated
         /// </summary>
-        public int NewLiquidId = -1;
+        public int NewFluidId = -1;
         public ItemStack ByStack;
 
         public byte[] BlockEntityData;
@@ -121,7 +121,6 @@ namespace Vintagestory.API.Common
         /// True if the most recent GetBlock or SetBlock had a laoded chunk 
         /// </summary>
         bool LastChunkLoaded { get; }
-
         void Begin();
         void Dispose();
     }
@@ -214,31 +213,64 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         IWorldChunk GetChunkAtBlockPos(BlockPos pos);
 
+
         /// <summary>
         /// Get the block id of the block at the given world coordinate
         /// </summary>
-        /// <param name = "x">x coordinate</param>
-        /// <param name = "y">y coordinate</param>
-        /// <param name = "z">z coordinate</param>
-        /// <returns>ID of the block at the given position. Returns 0 for Airblocks or invalid/unloaded coordinates</returns>
-        int GetBlockId(int x, int y, int z);
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <returns></returns>
+        [Obsolete("Please use GetBlock()")]
+        int GetBlockId(int posX, int posY, int posZ);
 
         /// <summary>
         /// Get the block id of the block at the given world coordinate
         /// </summary>
         /// <param name="pos"></param>
-        /// <returns>ID of the block at the given position. Returns 0 for Airblocks or invalid/unloaded coordinates</returns>
+        /// <returns></returns>
+        [Obsolete("Please use GetBlock()")]
         int GetBlockId(BlockPos pos);
+
+        /// <summary>
+        /// Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// Same as <see cref="GetBlock(int, int, int, BlockLayersAccess.Default)"/>
+        /// </summary>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <returns></returns>
+        Block GetBlock(int posX, int posY, int posZ);
+
+        /// <summary>
+        /// Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// Same as <see cref="GetBlock(BlockPos, BlockLayersAccess.Default)"/>
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetBlock(BlockPos pos);
 
 
         /// <summary>
         /// Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// <br/>Reads the block from the specified layer(s), see <see cref="BlockLayersAccess"/> documentation for details.
         /// </summary>
         /// <param name = "x">x coordinate</param>
         /// <param name = "y">y coordinate</param>
         /// <param name = "z">z coordinate</param>
+        /// <param name = "layer">blocks layer e.g. solid, fluid etc.</param>
         /// <returns>ID of the block at the given position</returns>
-        Block GetBlock(int x, int y, int z);
+        Block GetBlock(int x, int y, int z, int layer);
+
+        /// <summary>
+        /// Get block type at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// <br/>Reads the block from the specified layer(s), see BlockLayersAccess documentation for details.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name = "layer">blocks layer e.g. solid, fluid etc.</param>
+        /// <returns></returns>
+        Block GetBlock(BlockPos pos, int layer);
+
 
         /// <summary>
         /// Get the block type of the block at the given world coordinate. For invalid or unloaded coordinates this method returns null.
@@ -247,38 +279,25 @@ namespace Vintagestory.API.Common
         /// <param name = "y">y coordinate</param>
         /// <param name = "z">z coordinate</param>
         /// <returns>ID of the block at the given position</returns>
-        Block GetBlockOrNull(int x, int y, int z);
+        Block GetBlockOrNull(int x, int y, int z, int layer = BlockLayersAccess.MostSolid);
 
 
-        /// <summary>
-        /// Get block type at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        Block GetBlock(BlockPos pos);
 
         /// <summary>
-        /// Get block type from the liquids layer at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        Block GetLiquidBlock(BlockPos pos);
-
-        /// <summary>
-        /// Get block type from the liquids layer (which can include also Lake Ice - so not necessarily a liquid!!!) at given world coordinate. Will never return null. For no liquid present you'll get a block instance with block code "air" and id 0
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        Block GetLiquidBlock(int x, int y, int z);
-
-        /// <summary>
-        /// Gets the block type from the solids layer, except when the liquids layer holds ice in which case it returns ice in priority
+        /// Same as <see cref="GetBlock(int, int, int, BlockLayersAccess.MostSolid)"/>
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
-        Block GetSolidBlock(int x, int y, int z);
+        Block GetMostSolidBlock(int x, int y, int z);
+
+        /// <summary>
+        /// Same as <see cref="GetBlock(BlockPos, BlockLayersAccess.MostSolid)"/>
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetMostSolidBlock(BlockPos pos);
 
         /// <summary>
         /// A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. Currently used for more efficient collision testing.
@@ -300,13 +319,13 @@ namespace Vintagestory.API.Common
         void SearchBlocks(BlockPos minPos, BlockPos maxPos, ActionConsumable<Block, BlockPos> onBlock, Action<int, int, int> onChunkMissing = null);
 
         /// <summary>
-        /// A method to search for a given liquid block in an area
+        /// A method to search for a given fluid block in an area
         /// </summary>
         /// <param name="minPos"></param>
         /// <param name="maxPos"></param>
         /// <param name="onBlock">Return false to stop the search</param>
         /// <param name="onChunkMissing">Called when a missing/unloaded chunk was encountered</param>
-        void SearchLiquidBlocks(BlockPos minPos, BlockPos maxPos, ActionConsumable<Block, BlockPos> onBlock, Action<int, int, int> onChunkMissing = null);
+        void SearchFluidBlocks(BlockPos minPos, BlockPos maxPos, ActionConsumable<Block, BlockPos> onBlock, Action<int, int, int> onChunkMissing = null);
 
         /// <summary>
         /// Calls given handler if it encounters one or more generated structure at given position (read from mapregions, assuming a max structure size of 256x256x256)
@@ -325,20 +344,22 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
+        /// If called with a fluid block, the fluid will automatically get set in the fluid layer, and the solid layer will be emptied.
         /// </summary>
         /// <param name="blockId"></param>
         /// <param name="pos"></param>
         void SetBlock(int blockId, BlockPos pos);
 
         /// <summary>
-        /// Set a liquid block at the given position. Use id 0 to clear all liquids from the position. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
+        /// Sets a block to given layer. Can only use "BlockLayersAccess.Solid" or "BlockLayersAccess.Liquid". Use id 0 to clear a block from given position. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
         /// </summary>
-        /// <param name="liquidBlockId"></param>
+        /// <param name="fluidBlockId"></param>
         /// <param name="pos"></param>
-        void SetLiquidBlock(int liquidBlockId, BlockPos pos);
+        void SetBlock(int blockId, BlockPos pos, int layer);
 
         /// <summary>
         /// Set a block at the given position. Use blockid 0 to clear that position from any blocks. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
+        /// If called with a fluid block, the fluid will automatically get set in the fluid layer, and the solid layer will be emptied.
         /// </summary>
         /// <param name="blockId"></param>
         /// <param name="pos"></param>
@@ -478,7 +499,7 @@ namespace Vintagestory.API.Common
         void TriggerNeighbourBlockUpdate(BlockPos pos);
 
         /// <summary>
-        /// Server side: Triggers a OnNeighbourBlockChange on that position and sends that block to the client (via bulk packet), through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).<br/>
+        /// Server side: Sends that block to the client (via bulk packet).  Through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).<br/>
         /// Client side: Triggers a block changed event and redraws the chunk
         /// </summary>
         /// <param name="pos"></param>
@@ -706,7 +727,7 @@ namespace Vintagestory.API.Common
         #endregion
 
         /// <summary>
-        /// Tests whether a side at the specified position is solid - testing both liquids layer (which could be ice) and solid blocks layer
+        /// Tests whether a side at the specified position is solid - testing both fluids layer (which could be ice) and solid blocks layer
         /// </summary>
         /// <param name="x"></param>
         /// <param name="v"></param>

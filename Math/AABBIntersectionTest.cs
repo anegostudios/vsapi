@@ -114,7 +114,7 @@ namespace Vintagestory.API.MathTools
         public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter)
         {
             Cuboidf[] selectionBoxes;
-            Block block = blockSelectionTester.blockAccessor.GetLiquidBlock(pos);
+            Block block = blockSelectionTester.blockAccessor.GetBlock(pos, BlockLayersAccess.Fluid);
             if (block.SideSolid.Any())   // It's ice!
             {
                 selectionBoxes = block.GetSelectionBoxes(blockSelectionTester.blockAccessor, pos);
@@ -152,7 +152,11 @@ namespace Vintagestory.API.MathTools
             if (intersects && selectionBoxes[hitOnSelectionBox] is DecorSelectionBox dsb)
             {
                 Vec3i posAdjust = dsb.PosAdjust;
-                if (posAdjust != null) pos.Add(posAdjust);
+                if (posAdjust != null)
+                {
+                    pos.Add(posAdjust);
+                    block = blockSelectionTester.GetBlock(pos);
+                }
             }
 
             if (intersects) blockIntersected = block;

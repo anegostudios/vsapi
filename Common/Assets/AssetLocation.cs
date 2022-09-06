@@ -284,6 +284,12 @@ namespace Vintagestory.API.Common
             return this;
         }
 
+        public AssetLocation WithLocationPrefixOnce(AssetLocation prefix)
+        {
+            Domain = prefix.Domain;
+            return WithPathPrefixOnce(prefix.Path);
+        }
+
         public AssetLocation WithPathAppendix(string appendix)
         {
             path += appendix;
@@ -458,7 +464,7 @@ namespace Vintagestory.API.Common
 
         internal bool WildCardMatch(AssetLocation other, string pathAsRegex)
         {
-            if (domain == other.domain)
+            if (Domain == other.Domain)
             {
                 return WildcardUtil.fastMatch(path, other.path, pathAsRegex);
             }
@@ -492,7 +498,7 @@ namespace Vintagestory.API.Common
         {
             if (destinationType == typeof(string))
             {
-                return (value as AssetLocation).ToShortString();
+                return (value as AssetLocation).ToString();
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
@@ -202,8 +203,8 @@ namespace Vintagestory.API.Common
         public override byte[] LightHsv
         {
             get {
-                byte[] rightHsv = RightHandItemSlot?.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, RightHandItemSlot.Itemstack);
-                byte[] leftHsv = LeftHandItemSlot?.Itemstack?.Block?.GetLightHsv(World.BlockAccessor, null, LeftHandItemSlot.Itemstack);
+                byte[] rightHsv = RightHandItemSlot?.Itemstack?.Collectible?.GetLightHsv(World.BlockAccessor, null, RightHandItemSlot.Itemstack);
+                byte[] leftHsv = LeftHandItemSlot?.Itemstack?.Collectible?.GetLightHsv(World.BlockAccessor, null, LeftHandItemSlot.Itemstack);
 
                 if ((rightHsv == null || rightHsv[2] == 0) && (leftHsv == null || leftHsv[2] == 0))
                 {
@@ -334,6 +335,7 @@ namespace Vintagestory.API.Common
                 talkUtil.soundName = new AssetLocation("sounds/voice/altoflute");
                 talkUtil.idleTalkChance = 0f;
                 talkUtil.AddSoundLengthChordDelay = true;
+                talkUtil.volumneModifier = 0.8f;
             }
 
             base.Initialize(properties, api, chunkindex3d);
@@ -495,16 +497,32 @@ namespace Vintagestory.API.Common
                             AssetLocation soundwalk = World.Blocks[blockIdUnder].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z))?.Walk;
                             AssetLocation soundinside = World.Blocks[blockIdInside].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z))?.Inside;
 
+                            bool isSelf = player.PlayerUID == (Api as ICoreClientAPI)?.World.Player?.PlayerUID;
+
                             if (!Swimming && soundwalk != null)
                             {
                                 if (blockIdInside != blockIdUnder && soundinside != null)
                                 {
-                                    World.PlaySoundAt(soundwalk, this, player, true, 12, volume * 0.5f);
-                                    World.PlaySoundAt(soundinside, this, player, true, 12, volume);
+                                    if (isSelf)
+                                    {
+                                        World.PlaySoundAt(soundwalk, 0, 0, 0, null, true, 12, volume * 0.5f);
+                                        World.PlaySoundAt(soundinside, 0, 0, 0, null, true, 12, volume);
+                                    } else
+                                    {
+                                        World.PlaySoundAt(soundwalk, this, player, true, 12, volume * 0.5f);
+                                        World.PlaySoundAt(soundinside, this, player, true, 12, volume);
+                                    }
+                                    
                                 }
                                 else
                                 {
-                                    World.PlaySoundAt(soundwalk, this, player, true, 12, volume);
+                                    if (isSelf)
+                                    {
+                                        World.PlaySoundAt(soundwalk, 0, 0, 0, null, true, 12, volume); 
+                                    } else
+                                    {
+                                        World.PlaySoundAt(soundwalk, this, player, true, 12, volume);
+                                    }
                                 }
 
                                 OnFootStep?.Invoke();
@@ -632,7 +650,7 @@ namespace Vintagestory.API.Common
         {
             if (Api?.Side == EnumAppSide.Client && AnimManager != null)
             {
-                strongWindAccum = (GlobalConstants.CurrentWindSpeedClient.X > 0.85) ? strongWindAccum+dt : 0;
+                strongWindAccum = (GlobalConstants.CurrentWindSpeedClient.X > 0.85 && !Swimming) ? strongWindAccum+dt : 0;
 
                 if (RightHandItemSlot?.Empty == true && strongWindAccum > 2)
                 {
@@ -795,20 +813,27 @@ namespace Vintagestory.API.Common
 
         protected bool canPlayEdgeSitAnim()
         {
-            var frontPos = Pos.XYZ;
+            var frontPos = Pos.XYZ.AsBlockPos;
+            frontPos.Y = (int)Math.Ceiling(Pos.Y);
 
             float byaw = BodyYawLimits == null ? Pos.Yaw : (BodyYawLimits.X + BodyYawLimits.Y) / 2f;
             float cosYaw = GameMath.Cos(byaw + GameMath.PI / 2);
             float sinYaw = GameMath.Sin(byaw + GameMath.PI / 2);
-            var backPos = new Vec3d(Pos.X + sinYaw * -0.3f, Pos.Y - 1, Pos.Z + cosYaw * -0.3f);
+            var backPos = new Vec3d(Pos.X + sinYaw * -0.3f, Pos.Y - 1, Pos.Z + cosYaw * -0.3f).AsBlockPos;
             
             var frontBelowPos = frontPos.AddCopy(0, -1, 0);
 
-            Block frontBlock = Api.World.BlockAccessor.GetBlock(frontPos.AsBlockPos);
-            Block backBlock = Api.World.BlockAccessor.GetBlock(backPos.AsBlockPos);
-            Block frontBelowBlock = Api.World.BlockAccessor.GetBlock(frontBelowPos.AsBlockPos);
+            Block frontBlock = Api.World.BlockAccessor.GetBlock(frontPos);
+            Block backBlock = Api.World.BlockAccessor.GetBlock(backPos);
+            Block frontBelowBlock = Api.World.BlockAccessor.GetBlock(frontBelowPos);
 
-            return /*CollidedVertically && - always false for other players o.o */frontBlock.Replaceable > 6000 && frontBelowBlock.Replaceable > 6000 && backBlock.Replaceable < 6000;
+            var face = BlockFacing.FromNormal(new Vec3i(backPos.X - frontPos.X, 0, backPos.Z - frontPos.Z));
+
+            var frontFree = face != null && !frontBlock.CanAttachBlockAt(Api.World.BlockAccessor, frontBlock, frontPos, face);
+            var frontBelowFree = frontBelowBlock.GetCollisionBoxes(Api.World.BlockAccessor, frontBelowPos)?.FirstOrDefault(c => c.Y2 > 0.5) == null;
+
+            return /*CollidedVertically && - always false for other players o.o */
+                frontFree && frontBelowFree && backBlock.Replaceable < 6000;
         }
 
 
@@ -924,19 +949,28 @@ namespace Vintagestory.API.Common
             if (type == "hurt")
             {
                 if (World.Side == EnumAppSide.Client && !capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
-                talkUtil.Talk(EnumTalkType.Hurt2);
+                talkUtil?.Talk(EnumTalkType.Hurt2);
                 return;
             }
             if (type == "death")
             {
                 if (World.Side == EnumAppSide.Client && !capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
-                talkUtil.Talk(EnumTalkType.Death);
+                talkUtil?.Talk(EnumTalkType.Death);
                 return;
             }
 
             base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range);
         }
 
+        protected static Dictionary<string, EnumTalkType> talkTypeByAnimation = new Dictionary<string, EnumTalkType>()
+        {
+            { "wave", EnumTalkType.Meet },
+            { "nod", EnumTalkType.Purchase },
+            { "rage", EnumTalkType.Complain },
+            { "shrug", EnumTalkType.Shrug },
+            { "facepalm", EnumTalkType.IdleShort },
+            { "laugh", EnumTalkType.Laugh },
+        };
 
         public override void OnReceivedServerPacket(int packetid, byte[] data)
         {
@@ -953,34 +987,9 @@ namespace Vintagestory.API.Common
                 string animation = SerializerUtil.Deserialize<string>(data);
                 StartAnimation(animation);
 
-                if (capi.Settings.Bool["newSeraphVoices"])
+                if (capi.Settings.Bool["newSeraphVoices"] && talkTypeByAnimation.TryGetValue(animation, out var talktype))
                 {
-                    switch (animation)
-                    {
-                        case "wave":
-                            talkUtil?.Talk(EnumTalkType.Meet);
-                            break;
-
-                        case "nod":
-                            talkUtil?.Talk(EnumTalkType.Purchase);
-                            break;
-
-                        case "rage":
-                            talkUtil?.Talk(EnumTalkType.Complain);
-                            break;
-
-                        case "shrug":
-                            talkUtil?.Talk(EnumTalkType.Shrug);
-                            break;
-
-                        case "facepalm":
-                            talkUtil?.Talk(EnumTalkType.IdleShort);
-                            break;
-
-                        case "laugh":
-                            talkUtil?.Talk(EnumTalkType.Laugh);
-                            break;
-                    }
+                    talkUtil?.Talk(talktype);
                 }
             }
 

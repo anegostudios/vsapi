@@ -129,6 +129,7 @@ namespace Vintagestory.API.Client
             ElementBounds scrollbarBounds = ElementBounds.Fixed(0, 0, 0, 0).WithEmptyParent();
 
             scrollbar = new GuiElementCompactScrollbar(api, OnNewScrollbarValue, scrollbarBounds);
+            scrollbar.zOffset = 300;
 
             
 
@@ -340,8 +341,8 @@ namespace Vintagestory.API.Client
                 double scaleMul = Scale * RuntimeEnv.GUIScale;
 
                 api.Render.PushScissor(visibleBounds);
-
-                api.Render.Render2DTexturePremultipliedAlpha(
+                
+                api.Render.Render2DTexture(
                     dropDownTexture.TextureId, 
                     (int)Bounds.renderX,
                     (int)Bounds.renderY + (int)Bounds.InnerHeight - (int)scrollOffY, 
@@ -383,6 +384,8 @@ namespace Vintagestory.API.Client
                     api.Render.GlScissorFlag(false);
                 }
 
+                api.Render.GlPushMatrix();
+                api.Render.GlTranslate(0, 0, 200);
                 api.Render.Render2DTexturePremultipliedAlpha(
                     scrollbarTexture.TextureId,
                     (int)visibleBounds.renderX,
@@ -392,8 +395,6 @@ namespace Vintagestory.API.Client
                     116 + 200
                 );
 
-                api.Render.GlPushMatrix();
-                api.Render.GlTranslate(0, 0, 200);
                 scrollbar.Bounds.WithParent(Bounds);
                 scrollbar.Bounds.absFixedY = Bounds.InnerHeight;
                 scrollbar.RenderInteractiveElements(deltaTime);

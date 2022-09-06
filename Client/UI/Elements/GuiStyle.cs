@@ -200,6 +200,12 @@ namespace Vintagestory.API.Client
         /// The color of the health bar.
         /// </summary>
         public static double[] HealthBarColor = new double[] { 0.659, 0, 0, 1 };
+
+        /// <summary>
+        /// The color of the oxygen bar
+        /// </summary>
+        public static double[] OxygenBarColor = new double[] { 0.659, 0.659, 1, 1 };
+
         /// <summary>
         /// The color of the food bar.
         /// </summary>

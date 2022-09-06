@@ -21,6 +21,9 @@ namespace Vintagestory.API.Client
         double[] color;
         bool rightToLeft = false;
 
+        public bool HideWhenFull { get; set; }
+
+        LoadedTexture baseTexture;
         LoadedTexture barTexture;
         LoadedTexture flashTexture;
         LoadedTexture valueTexture;
@@ -32,6 +35,7 @@ namespace Vintagestory.API.Client
         public float FlashTime;
         public bool ShowValueOnHover=true;
         bool valuesSet;
+        bool hideable;
 
         public StatbarValueDelegate onGetStatbarValue;
         public CairoFont valueFont = CairoFont.WhiteSmallText().WithStroke(ColorUtil.BlackArgbDouble, 0.75);
@@ -45,12 +49,15 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the stat bar.</param>
         /// <param name="color">The color of the stat bar.</param>
         /// <param name="rightToLeft">Determines the direction that the bar fills.</param>
-        public GuiElementStatbar(ICoreClientAPI capi, ElementBounds bounds, double[] color, bool rightToLeft) : base(capi, "", CairoFont.WhiteDetailText(), bounds)
+        public GuiElementStatbar(ICoreClientAPI capi, ElementBounds bounds, double[] color, bool rightToLeft, bool hideable) : base(capi, "", CairoFont.WhiteDetailText(), bounds)
         {
             barTexture = new LoadedTexture(capi);
             flashTexture = new LoadedTexture(capi);
             valueTexture = new LoadedTexture(capi);
 
+            if (hideable) baseTexture = new LoadedTexture(capi);
+
+            this.hideable = hideable;
             this.color = color;
             this.rightToLeft = rightToLeft;
 
@@ -61,17 +68,37 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
 
-            ctx.Operator = Operator.Over; // WTF man, somehwere within this code or within cairo the main context operator is being changed
+            if (hideable)
+            {
+                surface = new ImageSurface(Format.Argb32, Bounds.OuterWidthInt+1, Bounds.OuterHeightInt+1);
+                ctx = new Context(surface);
 
-            RoundRectangle(ctx, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1);
+                RoundRectangle(ctx, 0, 0, Bounds.InnerWidth, Bounds.InnerHeight, 1);
 
-            ctx.SetSourceRGB(0.15, 0.15, 0.15);
-            ctx.Fill();
-            EmbossRoundRectangleElement(ctx, Bounds, false, 3, 1);
+                ctx.SetSourceRGBA(0.15, 0.15, 0.15, 1);
+                ctx.Fill();
+                EmbossRoundRectangleElement(ctx, 0, 0, Bounds.InnerWidth, Bounds.InnerHeight, false, 3, 1);
+            } else
+            {
+                ctx.Operator = Operator.Over; // WTF man, somehwere within this code or within cairo the main context operator is being changed
+                RoundRectangle(ctx, Bounds.drawX, Bounds.drawY, Bounds.InnerWidth, Bounds.InnerHeight, 1);
+
+                ctx.SetSourceRGBA(0.15, 0.15, 0.15, 1);
+                ctx.Fill();
+                EmbossRoundRectangleElement(ctx, Bounds, false, 3, 1);
+            }
+
 
             if (valuesSet)
             {
                 recomposeOverlays();
+            }
+
+            if (hideable)
+            {
+                generateTexture(surface, ref baseTexture);
+                surface.Dispose();
+                ctx.Dispose();
             }
         }
 
@@ -189,6 +216,13 @@ namespace Vintagestory.API.Client
             double x = Bounds.renderX;
             double y = Bounds.renderY;
 
+            if (value == maxValue && HideWhenFull) return;
+
+            if (hideable)
+            {
+                api.Render.RenderTexture(baseTexture.TextureId, x, y, Bounds.OuterWidthInt + 1, Bounds.OuterHeightInt + 1);
+            }
+
             float alpha = 0;
             if (ShouldFlash)
             {
@@ -293,12 +327,22 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="bounds">The bounds of the stat bar.</param>
         /// <param name="color">The color of the stat bar.</param>
+        /// <param name="hideable">If true, the element can be fully hidden without recompose.</param>
         /// <param name="key">The internal name of the stat bar.</param>
+        public static GuiComposer AddStatbar(this GuiComposer composer, ElementBounds bounds, double[] color, bool hideable, string key = null)
+        {
+            if (!composer.Composed)
+            {
+                composer.AddInteractiveElement(new GuiElementStatbar(composer.Api, bounds, color, false, hideable), key);
+            }
+            return composer;
+        }
+
         public static GuiComposer AddStatbar(this GuiComposer composer, ElementBounds bounds, double[] color, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementStatbar(composer.Api, bounds, color, false), key);
+                composer.AddInteractiveElement(new GuiElementStatbar(composer.Api, bounds, color, false, false), key);
             }
             return composer;
         }
@@ -313,7 +357,7 @@ namespace Vintagestory.API.Client
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementStatbar(composer.Api, bounds, color, true), key);
+                composer.AddInteractiveElement(new GuiElementStatbar(composer.Api, bounds, color, true, false), key);
             }
             return composer;
         }

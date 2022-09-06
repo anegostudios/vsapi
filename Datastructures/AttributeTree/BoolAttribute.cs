@@ -34,5 +34,10 @@ namespace Vintagestory.API.Datastructures
             // Newtonsoft.Json does not like uppercase True/False o.O
             return value ? "true" : "false";
         }
+
+        public IAttribute Clone()
+        {
+            return new BoolAttribute(value);
+        }
     }
 }
