@@ -552,7 +552,7 @@ namespace Vintagestory.API.Datastructures
 
 
         /// <summary>
-        /// Retrieves a string or defaultValue if key is not found
+        /// Retrieves a string attribute or defaultValue if key is not found
         /// </summary>
         /// <param name="key"></param>
         /// <param name="defaultValue"></param>
@@ -560,6 +560,18 @@ namespace Vintagestory.API.Datastructures
         public virtual string GetString(string key, string defaultValue = null)
         {
             string val = (attributes.TryGetValue(key) as StringAttribute)?.value;
+            return val == null ? defaultValue : val;
+        }
+
+        /// <summary>
+        /// Retrieves the value of given attribute, independent of attribute type
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public virtual string GetAsString(string key, string defaultValue = null)
+        {
+            string val = attributes.TryGetValue(key).GetValue().ToString();
             return val == null ? defaultValue : val;
         }
 

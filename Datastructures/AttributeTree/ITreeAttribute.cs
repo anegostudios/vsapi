@@ -143,6 +143,14 @@ namespace Vintagestory.API.Datastructures
         double GetDecimal(string key, double defaultValue = 0);
 
         /// <summary>
+        /// Retrieves the value of given attribute, independent of attribute type
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        string GetAsString(string key, string defaultValue = null);
+
+        /// <summary>
         /// Retrieves a long or null value if key is not found
         /// </summary>
         /// <param name="key"></param>
