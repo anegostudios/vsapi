@@ -1395,8 +1395,12 @@ namespace Vintagestory.API.Common.Entities
             writer.Write(EntityId);
 
             // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes for these 2 new fields
-            WatchedAttributes.SetFloat("headYaw", ServerPos.HeadYaw);
-            WatchedAttributes.SetFloat("headPitch", ServerPos.HeadPitch);
+            lock (WatchedAttributes.attributesLock)
+            {
+                // We don't use SetFloat to avoid triggering OnModified listeners on the server. This can be called outside the mainthread and produce deadlocks.
+                WatchedAttributes["headYaw"] = new FloatAttribute(ServerPos.HeadYaw);
+                WatchedAttributes["headPitch"] = new FloatAttribute(ServerPos.HeadPitch);
+            }
 
             WatchedAttributes.SetInt("entityState", (int)State);
             WatchedAttributes.ToBytes(writer);

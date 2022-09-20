@@ -893,7 +893,7 @@ namespace Vintagestory.API.Datastructures
                     }
                 } else
                 {
-                    throw new ArgumentException("Excepted TreeAtribute but got " + tree.GetType().Name + "! " + tree.ToString() + "");
+                    throw new ArgumentException("Expected TreeAttribute but got " + tree.GetType().Name + "! " + tree.ToString() + "");
                 }
             }
         }
@@ -902,7 +902,7 @@ namespace Vintagestory.API.Datastructures
         {
             lock (attributesLock)
             {
-                IAttribute existing = attributes.TryGetValue(key);
+                IAttribute existing = (currentTree as TreeAttribute).attributes.TryGetValue(key);
 
                 if (existing == null)
                 {
@@ -911,7 +911,7 @@ namespace Vintagestory.API.Datastructures
                 }
 
                 if (existing.GetAttributeId() != value.GetAttributeId())
-                    throw new Exception("Cannot merge attributes! Exepected attributeId " + existing.GetAttributeId().ToString() + " instead of " + value.GetAttributeId().ToString() + "! Existing: " + existing.ToString() + ", new: " + value.ToString());
+                    throw new Exception("Cannot merge attributes! Expected attributeId " + existing.GetAttributeId().ToString() + " instead of " + value.GetAttributeId().ToString() + "! Existing: " + existing.ToString() + ", new: " + value.ToString());
 
                 if (value is ITreeAttribute)
                 {

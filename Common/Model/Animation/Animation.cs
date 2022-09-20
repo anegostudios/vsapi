@@ -101,7 +101,7 @@ namespace Vintagestory.API.Common
 
             if (KeyFrames.Length == 0) return;
 
-            if (jointsById.Count > GlobalConstants.MaxAnimatedElements)
+            if (jointsById.Count >= GlobalConstants.MaxAnimatedElements)
             {
                 throw new Exception("Max joint cap of "+ GlobalConstants.MaxAnimatedElements + " reached. Sorry, you'll have to simplify your model if you want it to be animated. (until some programmer finds another solution to pass on more joint data through shader uniforms)");
             }

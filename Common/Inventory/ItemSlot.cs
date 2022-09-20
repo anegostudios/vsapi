@@ -262,6 +262,12 @@ namespace Vintagestory.API.Common
         /// <param name="withSlot"></param>
         protected virtual void FlipWith(ItemSlot withSlot)
         {
+            if (withSlot.StackSize > MaxSlotStackSize)
+            {
+                if (!Empty) return;
+                this.itemstack = withSlot.TakeOut(MaxSlotStackSize);
+                return;
+            }
             ItemStack temp = withSlot.itemstack;
             withSlot.itemstack = itemstack;
             itemstack = temp;

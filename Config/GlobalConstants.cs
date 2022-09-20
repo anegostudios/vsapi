@@ -24,7 +24,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card
         /// </summary>
-        public const int MaxAnimatedElements = 35;
+        public const int MaxAnimatedElements = 36;
 
         /// <summary>
         /// Max. amount of "bones" for color maps. Limited by max amount of shader uniforms, but depends on the gfx card

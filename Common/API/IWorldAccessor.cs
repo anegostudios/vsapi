@@ -316,7 +316,7 @@ namespace Vintagestory.API.Common
         IPlayer NearestPlayer(double x, double y, double z);
 
         /// <summary>
-        /// Gets a list of all online players. 
+        /// Gets a list of all online players. Warning: Also returns currently connecting player whose player data may not have been fully initialized. Check for player.ConnectionState to avoid these.
         /// </summary>
         /// <returns>Array containing the IDs of online players</returns>
         IPlayer[] AllOnlinePlayers { get; }

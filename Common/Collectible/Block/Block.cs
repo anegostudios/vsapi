@@ -2604,17 +2604,22 @@ namespace Vintagestory.API.Common
         }
 
 
+        float[] liquidBarrierHeightonSide;
         /// <summary>
         /// Return a decimal between 0.0 and 1.0 indicating - if this block is solid enough to block liquid flow on that side - how high the barrier is
         /// </summary>
         public virtual float LiquidBarrierHeightOnSide(BlockFacing face, BlockPos pos)
         {
-            var barrier = Attributes?["liquidBarrierOnSides"].AsArray<float>(null);
-            if (barrier != null && barrier.Length > face.Index)
+            if (liquidBarrierHeightonSide == null)
             {
-                return barrier[face.Index];
+                liquidBarrierHeightonSide = new float[6];
+                for (int i = 0; i < 6; i++) liquidBarrierHeightonSide[i] = SideSolid.OnSide(BlockFacing.ALLFACES[i]) ? 1f : 0f;
+
+                var lbos = Attributes?["liquidBarrierOnSides"].AsArray<float>(null);
+                for (int i = 0; lbos != null && i < lbos.Length; i++) liquidBarrierHeightonSide[i] = lbos[i];
             }
-            return SideSolid.OnSide(face) ? 1f : 0f;
+
+            return liquidBarrierHeightonSide[face.Index];
         }
     }
 }
