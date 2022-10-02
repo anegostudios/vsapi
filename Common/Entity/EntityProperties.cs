@@ -300,15 +300,20 @@ namespace Vintagestory.API.Common.Entities
     public abstract class EntitySidedProperties
     {
         /// <summary>
-        /// The attributes of the entity.
+        /// The attributes of the entity type.
         /// </summary>
         public ITreeAttribute Attributes;
 
         /// <summary>
-        /// The behaviors attached to this entity.
+        /// Entity type behaviors
+        /// </summary>
+        public JsonObject[] BehaviorsAsJsonObj;
+
+        /// <summary>
+        /// When this property is attached to an entity - the behaviors attached of entity.
         /// </summary>
         public List<EntityBehavior> Behaviors = new List<EntityBehavior>();
-        internal JsonObject[] BehaviorsAsJsonObj;
+
 
         
         public EntitySidedProperties(JsonObject[] behaviors)

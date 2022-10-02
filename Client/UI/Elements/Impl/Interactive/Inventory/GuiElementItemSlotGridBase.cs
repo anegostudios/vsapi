@@ -483,7 +483,8 @@ namespace Vintagestory.API.Client
                         slotBounds[i].renderY + offset + dx,
                         90,
                         (float)(absItemstackSize),
-                        ColorUtil.WhiteArgb
+                        ColorUtil.WhiteArgb,
+                        deltaTime
                     );
 
                     api.Render.PopScissor();

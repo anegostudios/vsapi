@@ -109,6 +109,12 @@ namespace Vintagestory.API.Client
         bool InsertTexture(byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
 
 
+        /// <summary>
+        /// Loads a bitmap from given asset. Can use ++ syntax for texture overlay and @[int] for texture rotation
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        IBitmap LoadCompositeBitmap(AssetLocation path);
 
         /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]

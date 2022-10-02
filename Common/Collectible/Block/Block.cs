@@ -584,6 +584,17 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
         {
+            if (api is ICoreClientAPI capi)
+            {
+                var blockSel = capi.World.Player.CurrentBlockSelection;
+                if (blockSel != null)
+                {
+                    Block decorBlock = blockAccessor.GetDecor(pos, blockSel.Face.Index);
+                    if (decorBlock != null && decorBlock.Attributes?["ignoreSounds"].AsBool(false) != true) return decorBlock.Sounds;
+                }
+            }
+
+            
             return Sounds;
         }
 
@@ -986,6 +997,9 @@ namespace Vintagestory.API.Common
                                 stack.StackSize = 1;
                                 world.SpawnItemEntity(stack, new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
                             }
+                        } else
+                        {
+                            world.SpawnItemEntity(drops[i].Clone(), new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
                         }
                         
                     }

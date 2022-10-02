@@ -552,6 +552,21 @@ namespace Vintagestory.API.Client
         void RenderItemstackToGui(ItemSlot inSlot, double posX, double posY, double posZ, float size, int color, bool shading = true, bool rotate = false, bool showStackSize = true);
 
         /// <summary>
+        /// Renders given itemstack in slot at given position (gui/orthographic mode)
+        /// </summary>
+        /// <param name="inSlot"></param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <param name="size"></param>
+        /// <param name="color"></param>
+        /// <param name="dt"></param>
+        /// <param name="shading"></param>
+        /// <param name="rotate"></param>
+        /// <param name="showStackSize"></param>
+        void RenderItemstackToGui(ItemSlot inSlot, double posX, double posY, double posZ, float size, int color, float dt, bool shading = true, bool rotate = false, bool showStackSize = true);
+
+        /// <summary>
         /// Renders given itemstack into supplied texture atlas. This is a rather costly operation. Also be sure to cache the results, as each call to this method consumes more space in your texture atlas. If you call this method outside the ortho render stage, it will enqueue a render task for next frame. Rather exceptionally, this method is also thread safe. If called from another thread, the render task always gets enqueued. The call back will always be run on the main thread.
         /// </summary>
         /// <param name="stack"></param>

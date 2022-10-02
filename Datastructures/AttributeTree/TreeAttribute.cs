@@ -878,51 +878,59 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Merges trees (it will overwrite existing values)
+        /// Merges the sourceTree into the current one
         /// </summary>
-        /// <param name="tree"></param>
-        public virtual void MergeTree(ITreeAttribute tree)
+        /// <param name="sourceTree"></param>
+        public virtual void MergeTree(ITreeAttribute sourceTree)
         {
-            lock (attributesLock)
+            if (sourceTree is TreeAttribute srcTree)
             {
-                if (tree is TreeAttribute)
+                MergeTree(this, srcTree);
+            } else
+            {
+                throw new ArgumentException("Expected TreeAttribute but got " + sourceTree.GetType().Name + "! " + sourceTree.ToString() + "");
+            }
+        }
+
+        protected static void MergeTree(TreeAttribute dstTree, TreeAttribute srcTree)
+        {
+            lock (srcTree.attributesLock)
+            {
+                foreach (var srcVal in srcTree.attributes)
                 {
-                    foreach (var attribute in (tree as TreeAttribute).attributes)
-                    {
-                        MergeAttribute(this, attribute.Key, attribute.Value);
-                    }
-                } else
-                {
-                    throw new ArgumentException("Expected TreeAttribute but got " + tree.GetType().Name + "! " + tree.ToString() + "");
+                    MergeAttribute(dstTree, srcVal.Key, srcVal.Value);
                 }
             }
         }
 
-        protected virtual void MergeAttribute(ITreeAttribute currentTree, string key, IAttribute value)
+        protected static void MergeAttribute(TreeAttribute dstTree, string srcKey, IAttribute srcAttr)
         {
-            lock (attributesLock)
+            IAttribute dstAttr;
+            lock (dstTree.attributesLock)
             {
-                IAttribute existing = (currentTree as TreeAttribute).attributes.TryGetValue(key);
+                dstAttr = dstTree.attributes.TryGetValue(srcKey);
 
-                if (existing == null)
+                if (dstAttr == null)
                 {
-                    attributes[key] = value;
+                    dstTree.attributes[srcKey] = srcAttr.Clone();
                     return;
                 }
+            }
 
-                if (existing.GetAttributeId() != value.GetAttributeId())
-                    throw new Exception("Cannot merge attributes! Expected attributeId " + existing.GetAttributeId().ToString() + " instead of " + value.GetAttributeId().ToString() + "! Existing: " + existing.ToString() + ", new: " + value.ToString());
+            if (dstAttr.GetAttributeId() != srcAttr.GetAttributeId())
+            {
+                throw new Exception("Cannot merge attributes! Expected attributeId " + dstAttr.GetAttributeId().ToString() + " instead of " + srcAttr.GetAttributeId().ToString() + "! Existing: " + dstAttr.ToString() + ", new: " + srcAttr.ToString());
+            }
 
-                if (value is ITreeAttribute)
+            if (srcAttr is ITreeAttribute)
+            {
+                MergeTree(dstAttr as TreeAttribute, srcAttr as TreeAttribute);
+            }
+            else
+            {
+                lock (dstTree.attributesLock)
                 {
-                    foreach (var attribute in (value as TreeAttribute).attributes)
-                    {
-                        MergeAttribute(existing as ITreeAttribute, attribute.Key, attribute.Value);
-                    }
-                }
-                else
-                {
-                    attributes[key] = value;
+                    dstTree.attributes[srcKey] = srcAttr.Clone();
                 }
             }
         }

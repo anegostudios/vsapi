@@ -121,8 +121,8 @@ namespace Vintagestory.API.Common
         {
             if (ResolvedItemstack == null) return null;
 
-            float val = Quantity.nextFloat() * dropQuantityMultiplier;
-            int quantity = (int)val + (((val - (int)val) > random.NextDouble()) ? 1 : 0);
+            int quantity = GameMath.RoundRandom(random, Quantity.nextFloat() * dropQuantityMultiplier);
+
             if (quantity <= 0) return null;
 
             ItemStack cloned = ResolvedItemstack.Clone();

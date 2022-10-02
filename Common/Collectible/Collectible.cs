@@ -365,7 +365,7 @@ namespace Vintagestory.API.Common
 
 
         [Obsolete("Use GetMaxDurability instead")]
-        public virtual int GetDurability(IItemStack itemstack) => GetDurability(itemstack);
+        public virtual int GetDurability(IItemStack itemstack) => GetMaxDurability(itemstack as ItemStack);
 
         /// <summary>
         /// Returns the items total durability
