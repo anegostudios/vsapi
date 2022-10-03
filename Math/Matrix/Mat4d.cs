@@ -22,6 +22,8 @@
 //SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+using System;
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
@@ -413,6 +415,26 @@ namespace Vintagestory.API.MathTools
         public static double[] Mul(double[] output, float[] a, double[] b)
         {
             return Multiply(output, a, b);
+        }
+
+        /// <summary>
+        /// If we have a translation-only matrix - one with no rotation or scaling - return true.
+        /// If the matrix includes some scaling or rotation components, return false.<br/>
+        /// The identity matrix returns true here because there is no scaling or rotation, even though the translation is zero in that special case.
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns>true if a simple translation matrix was found, otherwise false</returns>
+        public static bool IsTranslationOnly(double[] matrix)
+        {
+            // Looking for { 1, 0, 0, #,  0, 1, 0, #,  0, 0, 1, #,  dX, dY, dZ, # }
+            // We don't care about the # values, they have no effect if applying this matrix to 3d vector data
+            // We also don't care about minor rounding errors in the matrix, which can sometimes happen after a few transformations especially in a deep StackMatrix
+
+            if ((float)(matrix[1] + 1) != 1f || (float)(matrix[6] + 1) != 1f) return false;   // the float conversion (+ 1) deals with rounding errors - without the +1 then a tiny non-zero double value produces a tiny non-zero float value
+            if ((float)(matrix[2] + 1) != 1f || (float)(matrix[4] + 1) != 1f) return false;
+            if ((float)(matrix[0]) != 1f || (float)(matrix[5]) != 1f || (float)(matrix[10]) != 1f) return false;   // the float conversion deals with rounding errors
+            if ((float)(matrix[8] + 1) != 1f || (float)(matrix[9] + 1) != 1f) return false;
+            return true;
         }
 
 
