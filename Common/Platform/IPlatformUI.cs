@@ -27,7 +27,18 @@ namespace Vintagestory.API.Common
 
         void DeleteFileToRecyclebin(string filepath);
 
+        /// <summary>
+        /// Total disk space in bytes
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <returns></returns>
         long GetFreeDiskSpace(string filepath);
+
+        /// <summary>
+        /// Total system ram in bytes
+        /// </summary>
+        /// <returns></returns>
+        long GetRamCapacity();
 
         void FocusWindow();
     }

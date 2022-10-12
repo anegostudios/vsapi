@@ -1234,6 +1234,9 @@ namespace Vintagestory.API.Common
 
         protected virtual int PlaceReplaceAll(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
+            // SetBlock run on liquids does not clear solid blocks, we have to clear them manually
+            if (newBlock.ForFluidsLayer) blockAccessor.SetBlock(0, pos); 
+
             blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
             return 1;
         }
@@ -1252,6 +1255,9 @@ namespace Vintagestory.API.Common
         {
             if (newBlock.BlockId != 0)
             {
+                // SetBlock run on liquids does not clear solid blocks, we have to clear them manually
+                if (newBlock.ForFluidsLayer) blockAccessor.SetBlock(0, pos);
+
                 blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }

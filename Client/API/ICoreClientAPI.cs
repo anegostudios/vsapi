@@ -63,6 +63,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         bool IsSinglePlayer { get; }
 
+        bool OpenedToLan { get; }
+
         /// <summary>
         /// If true, the player is in gui-less mode (through the F4 key)
         /// </summary>
@@ -238,5 +240,7 @@ namespace Vintagestory.API.Client
         /// Returns the currently playing music track, if any is playing
         /// </summary>
         IMusicTrack CurrentMusicTrack { get; }
+
+        void PauseGame(bool paused);
     }
 }

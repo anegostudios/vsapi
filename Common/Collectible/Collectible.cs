@@ -1580,181 +1580,180 @@ namespace Vintagestory.API.Common
 
             bool nowSpoiling = false;
 
-            if (transitionStates != null)
+            if (transitionStates == null) return 0;
+            
+            for (int i = 0; i < transitionStates.Length; i++)
             {
-                for (int i = 0; i < transitionStates.Length; i++)
-                {
-                    TransitionState state = transitionStates[i];
-
-                    TransitionableProperties prop = state.Props;
-                    float transitionRate = GetTransitionRateMul(world, inSlot, prop.Type);
-                    if (inSlot.Inventory is CreativeInventoryTab) transitionRate = 1f;
-                    float transitionLevel = state.TransitionLevel;
-                    float freshHoursLeft = state.FreshHoursLeft / transitionRate;
-
-                    switch (prop.Type)
-                    {
-                        case EnumTransitionType.Perish:
-                            spoilState = transitionLevel;
-
-                            if (transitionLevel > 0)
-                            {
-                                nowSpoiling = true;
-                                dsc.AppendLine(Lang.Get("itemstack-perishable-spoiling", (int)Math.Round(transitionLevel * 100)));
-                            }
-                            else
-                            {
-                                if (transitionRate <= 0)
-                                {
-                                    dsc.AppendLine(Lang.Get("itemstack-perishable"));
-                                }
-                                else
-                                {
-
-                                    float hoursPerday = api.World.Calendar.HoursPerDay;
-                                    float years = freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerYear;
-
-                                    if (years >= 1.0f)
-                                    {
-                                        if (years <= 1.05f)
-                                        {
-                                            dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-one-year"));
-                                        }
-                                        else
-                                        {
-                                            dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-years", Math.Round(years, 1)));
-                                        }
-                                    }
-                                    else if (freshHoursLeft > hoursPerday)
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
-                                    }
-                                    else
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-hours", Math.Round(freshHoursLeft, 1)));
-                                    }
-                                }
-                            }
-                            break;
-
-                        case EnumTransitionType.Cure:
-                            if (nowSpoiling) break;
-
-                            if (transitionLevel > 0 || (freshHoursLeft <= 0 && transitionRate > 0))
-                            {
-                                dsc.AppendLine(Lang.Get("itemstack-curable-curing", (int)Math.Round(transitionLevel * 100)));
-                            }
-                            else
-                            {
-                                double hoursPerday = api.World.Calendar.HoursPerDay;
-
-                                if (transitionRate <= 0)
-                                {
-                                    dsc.AppendLine(Lang.Get("itemstack-curable"));
-                                }
-                                else
-                                {
-
-                                    if (freshHoursLeft > hoursPerday)
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-curable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
-                                    }
-                                    else
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-curable-duration-hours", Math.Round(freshHoursLeft, 1)));
-                                    }
-                                }
-                            }
-                            break;
-                        /*
-
-                    case EnumTransitionType.Ferment:
-                        if (transitionLevel > 0)
-                        {
-                            dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> {0}% fermented", (int)Math.Round(transitionLevel * 100)));
-                        }
-                        else
-                        {
-                            double hoursPerday = api.World.Calendar.HoursPerDay;
-                            if (freshHoursLeft > hoursPerday)
-                            {
-                                dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
-                            }
-                            else
-                            {
-                                dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
-                            }
-                        }
-                        break;
-                        */
-
-                        case EnumTransitionType.Ripen:
-                            if (nowSpoiling) break;
-
-                            if (transitionLevel > 0 || (freshHoursLeft <= 0 && transitionRate > 0))
-                            {
-                                dsc.AppendLine(Lang.Get("itemstack-ripenable-ripening", (int)Math.Round(transitionLevel * 100)));
-                            }
-                            else
-                            {
-                                double hoursPerday = api.World.Calendar.HoursPerDay;
-
-                                if (transitionRate <= 0)
-                                {
-                                    dsc.AppendLine(Lang.Get("itemstack-ripenable"));
-                                }
-                                else
-                                {
-                                    if (freshHoursLeft > hoursPerday)
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-ripenable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
-                                    }
-                                    else
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-ripenable-duration-hours", Math.Round(freshHoursLeft, 1)));
-                                    }
-                                }
-                            }
-                            break;
-
-                        case EnumTransitionType.Dry:
-                            if (nowSpoiling) break;
-
-                            if (transitionLevel > 0)
-                            {
-                                dsc.AppendLine(Lang.Get("itemstack-dryable-dried", (int)Math.Round(transitionLevel * 100)));
-                                dsc.AppendLine(Lang.Get("Drying rate in this container: {0:0.##}x", transitionRate));
-                            }
-                            else
-                            {
-                                double hoursPerday = api.World.Calendar.HoursPerDay;
-
-                                if (transitionRate <= 0)
-                                {
-                                    dsc.AppendLine(Lang.Get("itemstack-dryable"));
-                                }
-                                else
-                                {
-                                    if (freshHoursLeft > hoursPerday)
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-dryable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
-                                    }
-                                    else
-                                    {
-                                        dsc.AppendLine(Lang.Get("itemstack-dryable-duration-hours", Math.Round(freshHoursLeft, 1)));
-                                    }
-                                }
-                            }
-                            break;
-
-
-
-
-                    }
-                }
+                spoilState = Math.Max(spoilState, AppendPerishableInfoText(inSlot, dsc, world, transitionStates[i], nowSpoiling));
+                nowSpoiling |= spoilState > 0;
             }
 
             return spoilState;
+        }
+
+        protected virtual float AppendPerishableInfoText(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, TransitionState state, bool nowSpoiling)
+        {
+            TransitionableProperties prop = state.Props;
+            float transitionRate = GetTransitionRateMul(world, inSlot, prop.Type);
+            if (inSlot.Inventory is CreativeInventoryTab) transitionRate = 1f;
+            float transitionLevel = state.TransitionLevel;
+            float freshHoursLeft = state.FreshHoursLeft / transitionRate;
+
+            switch (prop.Type)
+            {
+                case EnumTransitionType.Perish:
+                    if (transitionLevel > 0)
+                    {
+                        dsc.AppendLine(Lang.Get("itemstack-perishable-spoiling", (int)Math.Round(transitionLevel * 100)));
+                        return transitionLevel;
+                    }
+                    else
+                    {
+                        if (transitionRate <= 0)
+                        {
+                            dsc.AppendLine(Lang.Get("itemstack-perishable"));
+                        }
+                        else
+                        {
+
+                            float hoursPerday = api.World.Calendar.HoursPerDay;
+                            float years = freshHoursLeft / hoursPerday / api.World.Calendar.DaysPerYear;
+
+                            if (years >= 1.0f)
+                            {
+                                if (years <= 1.05f)
+                                {
+                                    dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-one-year"));
+                                }
+                                else
+                                {
+                                    dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-years", Math.Round(years, 1)));
+                                }
+                            }
+                            else if (freshHoursLeft > hoursPerday)
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                            }
+                            else
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-perishable-fresh-hours", Math.Round(freshHoursLeft, 1)));
+                            }
+                        }
+                    }
+                    break;
+
+                case EnumTransitionType.Cure:
+                    if (nowSpoiling) break;
+
+                    if (transitionLevel > 0 || (freshHoursLeft <= 0 && transitionRate > 0))
+                    {
+                        dsc.AppendLine(Lang.Get("itemstack-curable-curing", (int)Math.Round(transitionLevel * 100)));
+                    }
+                    else
+                    {
+                        double hoursPerday = api.World.Calendar.HoursPerDay;
+
+                        if (transitionRate <= 0)
+                        {
+                            dsc.AppendLine(Lang.Get("itemstack-curable"));
+                        }
+                        else
+                        {
+
+                            if (freshHoursLeft > hoursPerday)
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-curable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                            }
+                            else
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-curable-duration-hours", Math.Round(freshHoursLeft, 1)));
+                            }
+                        }
+                    }
+                    break;
+                /*
+
+            case EnumTransitionType.Ferment:
+                if (transitionLevel > 0)
+                {
+                    dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> {0}% fermented", (int)Math.Round(transitionLevel * 100)));
+                }
+                else
+                {
+                    double hoursPerday = api.World.Calendar.HoursPerDay;
+                    if (freshHoursLeft > hoursPerday)
+                    {
+                        dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> Duration: {0} days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                    }
+                    else
+                    {
+                        dsc.AppendLine(Lang.Get("<font color=\"olive\">Fermentable.</font> Duration: {0} hours", Math.Round(freshHoursLeft, 1)));
+                    }
+                }
+                break;
+                */
+
+                case EnumTransitionType.Ripen:
+                    if (nowSpoiling) break;
+
+                    if (transitionLevel > 0 || (freshHoursLeft <= 0 && transitionRate > 0))
+                    {
+                        dsc.AppendLine(Lang.Get("itemstack-ripenable-ripening", (int)Math.Round(transitionLevel * 100)));
+                    }
+                    else
+                    {
+                        double hoursPerday = api.World.Calendar.HoursPerDay;
+
+                        if (transitionRate <= 0)
+                        {
+                            dsc.AppendLine(Lang.Get("itemstack-ripenable"));
+                        }
+                        else
+                        {
+                            if (freshHoursLeft > hoursPerday)
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-ripenable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                            }
+                            else
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-ripenable-duration-hours", Math.Round(freshHoursLeft, 1)));
+                            }
+                        }
+                    }
+                    break;
+
+                case EnumTransitionType.Dry:
+                    if (nowSpoiling) break;
+
+                    if (transitionLevel > 0)
+                    {
+                        dsc.AppendLine(Lang.Get("itemstack-dryable-dried", (int)Math.Round(transitionLevel * 100)));
+                        dsc.AppendLine(Lang.Get("Drying rate in this container: {0:0.##}x", transitionRate));
+                    }
+                    else
+                    {
+                        double hoursPerday = api.World.Calendar.HoursPerDay;
+
+                        if (transitionRate <= 0)
+                        {
+                            dsc.AppendLine(Lang.Get("itemstack-dryable"));
+                        }
+                        else
+                        {
+                            if (freshHoursLeft > hoursPerday)
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-dryable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                            }
+                            else
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-dryable-duration-hours", Math.Round(freshHoursLeft, 1)));
+                            }
+                        }
+                    }
+                    break;
+            }
+
+            return 0;
         }
 
         public virtual void OnHandbookRecipeRender(ICoreClientAPI capi, GridRecipe recipe, ItemSlot slot, double x, double y, double z, double size)
