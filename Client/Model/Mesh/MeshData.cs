@@ -611,6 +611,8 @@ namespace Vintagestory.API.Client
                 ClimateColorMapIds = new byte[0];
                 SeasonColorMapIds = new byte[0];
                 RenderPassesAndExtraBits = new short[0];
+                xyz = new float[0];
+                Indices = new int[0];
             }
         }
 
@@ -623,7 +625,6 @@ namespace Vintagestory.API.Client
         /// <param name="withUv"></param>
         /// <param name="withNormals"></param>
         /// <param name="withRgba"></param>
-        /// <param name="withRgba2"></param>
         /// <param name="withFlags"></param>
         public MeshData(int capacityVertices, int capacityIndices, bool withNormals = false, bool withUv = true, bool withRgba = true, bool withFlags = true)
         {
