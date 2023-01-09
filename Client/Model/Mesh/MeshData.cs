@@ -611,8 +611,6 @@ namespace Vintagestory.API.Client
                 ClimateColorMapIds = new byte[0];
                 SeasonColorMapIds = new byte[0];
                 RenderPassesAndExtraBits = new short[0];
-                xyz = new float[0];
-                Indices = new int[0];
             }
         }
 
