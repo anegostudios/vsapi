@@ -79,7 +79,7 @@
   <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
   <h5 id="Vintagestory_API_Server_GrowTreeDelegate_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate void GrowTreeDelegate(IBlockAccessor blockAccessor, BlockPos pos, bool skipForestFloor, float sizeModifier = 1F, float vineGrowthChance = null, float otherBlockChance = 1F, int treesInChunkGenerated = 0);</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate void GrowTreeDelegate(IBlockAccessor blockAccessor, BlockPos pos, TreeGenParams treeGenParams);</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -102,28 +102,8 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">skipForestFloor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">sizeModifier</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">vineGrowthChance</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">otherBlockChance</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">treesInChunkGenerated</span></td>
+        <td><a class="xref" href="Vintagestory.API.Server.TreeGenParams.html">TreeGenParams</a></td>
+        <td><span class="parametername">treeGenParams</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -139,7 +119,7 @@
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_GrowTreeDelegate.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.GrowTreeDelegate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/ITreeGenerator.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/ITreeGenerator.cs/#L6" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

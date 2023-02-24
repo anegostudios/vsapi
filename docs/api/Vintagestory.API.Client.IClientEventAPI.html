@@ -79,6 +79,9 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnTestBlockAccess">IEventAPI.OnTestBlockAccess</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnEntitySpawn">IEventAPI.OnEntitySpawn</a>
     </div>
     <div>
@@ -89,6 +92,12 @@
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_ChunkDirty">IEventAPI.ChunkDirty</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MapRegionLoaded">IEventAPI.MapRegionLoaded</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_MapRegionUnloaded">IEventAPI.MapRegionUnloaded</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_OnGetClimate">IEventAPI.OnGetClimate</a>
@@ -496,10 +505,11 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_FileDrop.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.FileDrop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L266">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L267">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_FileDrop" data-uid="Vintagestory.API.Client.IClientEventAPI.FileDrop">FileDrop</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fired when the user drags&amp;drops a file into the game window</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -525,7 +535,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_HotkeysChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.HotkeysChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L238">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L239">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_HotkeysChanged" data-uid="Vintagestory.API.Client.IClientEventAPI.HotkeysChanged">HotkeysChanged</h4>
   <div class="markdown level1 summary"><p>Called when the hotkeys are changed</p>
@@ -645,7 +655,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_KeyDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.KeyDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L257">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L258">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_KeyDown" data-uid="Vintagestory.API.Client.IClientEventAPI.KeyDown">KeyDown</h4>
   <div class="markdown level1 summary"><p>Provides low level access to the key down event. If e.Handled is set to true, the event will not be handled by the game</p>
@@ -675,7 +685,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_KeyUp.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.KeyUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L261">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L262">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_KeyUp" data-uid="Vintagestory.API.Client.IClientEventAPI.KeyUp">KeyUp</h4>
   <div class="markdown level1 summary"><p>Provides low level access to the key up event. If e.Handled is set to true, the event will not be handled by the game</p>
@@ -765,7 +775,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_LevelFinalize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.LevelFinalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L228">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L229">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_LevelFinalize" data-uid="Vintagestory.API.Client.IClientEventAPI.LevelFinalize">LevelFinalize</h4>
   <div class="markdown level1 summary"><p>Called when the client received the level finalize packet from the server</p>
@@ -795,7 +805,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_MouseDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.MouseDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L245">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L246">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_MouseDown" data-uid="Vintagestory.API.Client.IClientEventAPI.MouseDown">MouseDown</h4>
   <div class="markdown level1 summary"><p>Provides low level access to the mouse down event. If e.Handled is set to true, the event will not be handled by the game</p>
@@ -825,7 +835,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_MouseMove.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.MouseMove%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L253">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L254">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_MouseMove" data-uid="Vintagestory.API.Client.IClientEventAPI.MouseMove">MouseMove</h4>
   <div class="markdown level1 summary"><p>Provides low level access to the mouse move event. If e.Handled is set to true, the event will not be handled by the game</p>
@@ -855,7 +865,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_MouseUp.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.MouseUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L249">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L250">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_MouseUp" data-uid="Vintagestory.API.Client.IClientEventAPI.MouseUp">MouseUp</h4>
   <div class="markdown level1 summary"><p>Provides low level access to the mouse up event. If e.Handled is set to true, the event will not be handled by the game</p>
@@ -1095,10 +1105,11 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_ReloadShader.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.ReloadShader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L218">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L219">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_ReloadShader" data-uid="Vintagestory.API.Client.IClientEventAPI.ReloadShader">ReloadShader</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Fired when the player tries to reload the shaders (happens when graphics settings are changed)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1124,7 +1135,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_ReloadShapes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.ReloadShapes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L233">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L234">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_ReloadShapes" data-uid="Vintagestory.API.Client.IClientEventAPI.ReloadShapes">ReloadShapes</h4>
   <div class="markdown level1 summary"><p>Called when shapes got reloaded</p>
@@ -1154,7 +1165,7 @@ Note: Not called when the server forcefully changes active slot.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IClientEventAPI_ReloadTextures.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IClientEventAPI.ReloadTextures%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L223">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/IClientEventAPI.cs/#L224">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IClientEventAPI_ReloadTextures" data-uid="Vintagestory.API.Client.IClientEventAPI.ReloadTextures">ReloadTextures</h4>
   <div class="markdown level1 summary"><p>Called when textures got reloaded</p>

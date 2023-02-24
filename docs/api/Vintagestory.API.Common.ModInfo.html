@@ -87,7 +87,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
   <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
   <h5 id="Vintagestory_API_Common_ModInfo_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ModInfo : object</code></pre>
+    <pre><code class="lang-csharp hljs">public class ModInfo : IComparable&lt;ModInfo&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -96,7 +96,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo__ctor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L129">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L130">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo__ctor_" data-uid="Vintagestory.API.Common.ModInfo.#ctor*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo__ctor" data-uid="Vintagestory.API.Common.ModInfo.#ctor">ModInfo()</h4>
@@ -111,7 +111,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo__ctor_Vintagestory_API_Common_EnumModType_System_String_System_String_System_String_System_String_IEnumerable_System_String__IEnumerable_System_String__System_String_Vintagestory_API_Common_EnumAppSide_System_Boolean_System_Boolean_IEnumerable_Vintagestory_API_Common_ModDependency__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.%23ctor(Vintagestory.API.Common.EnumModType%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CIEnumerable%7BSystem.String%7D%2CIEnumerable%7BSystem.String%7D%2CSystem.String%2CVintagestory.API.Common.EnumAppSide%2CSystem.Boolean%2CSystem.Boolean%2CIEnumerable%7BVintagestory.API.Common.ModDependency%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L131">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L132">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo__ctor_" data-uid="Vintagestory.API.Common.ModInfo.#ctor*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo__ctor_Vintagestory_API_Common_EnumModType_System_String_System_String_System_String_System_String_IEnumerable_System_String__IEnumerable_System_String__System_String_Vintagestory_API_Common_EnumAppSide_System_Boolean_System_Boolean_IEnumerable_Vintagestory_API_Common_ModDependency__" data-uid="Vintagestory.API.Common.ModInfo.#ctor(Vintagestory.API.Common.EnumModType,System.String,System.String,System.String,System.String,IEnumerable{System.String},IEnumerable{System.String},System.String,Vintagestory.API.Common.EnumAppSide,System.Boolean,System.Boolean,IEnumerable{Vintagestory.API.Common.ModDependency})">ModInfo(EnumModType, String, String, String, String, IEnumerable&lt;String&gt;, IEnumerable&lt;String&gt;, String, EnumAppSide, Boolean, Boolean, IEnumerable&lt;ModDependency&gt;)</h4>
@@ -200,7 +200,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Description.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L79">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L80">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ModInfo_Description" data-uid="Vintagestory.API.Common.ModInfo.Description">Description</h4>
   <div class="markdown level1 summary"><p>A short description of what this mod does. (optional) </p>
@@ -230,7 +230,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Name.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L57">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L58">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ModInfo_Name" data-uid="Vintagestory.API.Common.ModInfo.Name">Name</h4>
   <div class="markdown level1 summary"><p>The name of this mod. For example &quot;My Example Mod&quot;. </p>
@@ -260,7 +260,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_NetworkVersion.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.NetworkVersion%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L75">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L76">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ModInfo_NetworkVersion" data-uid="Vintagestory.API.Common.ModInfo.NetworkVersion">NetworkVersion</h4>
   <div class="markdown level1 summary"><p>The network version of this mod. Change this number when a user that has an older version of your mod should not be allowed to connected to server with a newer version. If not set, the version value is used.</p>
@@ -290,7 +290,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_TextureSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.TextureSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L53">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L54">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ModInfo_TextureSize" data-uid="Vintagestory.API.Common.ModInfo.TextureSize">TextureSize</h4>
   <div class="markdown level1 summary"><p>If the mod is a texture pack that changes topsoil grass textures, define the texture size here</p>
@@ -320,7 +320,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Type.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L47">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L48">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ModInfo_Type" data-uid="Vintagestory.API.Common.ModInfo.Type">Type</h4>
   <div class="markdown level1 summary"><p>The type of this mod. Can be &quot;Theme&quot;, &quot;Content&quot; or &quot;Code&quot;. </p>
@@ -350,7 +350,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Version.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L69">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L70">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ModInfo_Version" data-uid="Vintagestory.API.Common.ModInfo.Version">Version</h4>
   <div class="markdown level1 summary"><p>The version of this mod. For example &quot;2.10.4&quot;. (optional) </p>
@@ -380,7 +380,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Website.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Website%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L83">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L84">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ModInfo_Website" data-uid="Vintagestory.API.Common.ModInfo.Website">Website</h4>
   <div class="markdown level1 summary"><p>Location of the website or project site of this mod. (optional) </p>
@@ -412,7 +412,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Authors.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Authors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L86">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L87">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_Authors_" data-uid="Vintagestory.API.Common.ModInfo.Authors*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_Authors" data-uid="Vintagestory.API.Common.ModInfo.Authors">Authors</h4>
@@ -443,7 +443,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Contributors.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Contributors%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L96">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L97">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_Contributors_" data-uid="Vintagestory.API.Common.ModInfo.Contributors*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_Contributors" data-uid="Vintagestory.API.Common.ModInfo.Contributors">Contributors</h4>
@@ -474,7 +474,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Dependencies.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Dependencies%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L123">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L124">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_Dependencies_" data-uid="Vintagestory.API.Common.ModInfo.Dependencies*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_Dependencies" data-uid="Vintagestory.API.Common.ModInfo.Dependencies">Dependencies</h4>
@@ -505,7 +505,7 @@ Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_ModID.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.ModID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L64">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L65">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_ModID_" data-uid="Vintagestory.API.Common.ModInfo.ModID*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_ModID" data-uid="Vintagestory.API.Common.ModInfo.ModID">ModID</h4>
@@ -538,7 +538,7 @@ whitespace and special characters) if missing.)</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_RequiredOnClient.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.RequiredOnClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L112">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L113">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_RequiredOnClient_" data-uid="Vintagestory.API.Common.ModInfo.RequiredOnClient*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_RequiredOnClient" data-uid="Vintagestory.API.Common.ModInfo.RequiredOnClient">RequiredOnClient</h4>
@@ -570,7 +570,7 @@ to join. (Optional. True by default.)</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_RequiredOnServer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.RequiredOnServer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L119">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L120">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_RequiredOnServer_" data-uid="Vintagestory.API.Common.ModInfo.RequiredOnServer*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_RequiredOnServer" data-uid="Vintagestory.API.Common.ModInfo.RequiredOnServer">RequiredOnServer</h4>
@@ -602,7 +602,7 @@ if it&apos;s not present on the server. (Optional. True by default.)</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Side.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Side%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L105">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L106">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_Side_" data-uid="Vintagestory.API.Common.ModInfo.Side*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_Side" data-uid="Vintagestory.API.Common.ModInfo.Side">Side</h4>
@@ -633,10 +633,57 @@ if it&apos;s not present on the server. (Optional. True by default.)</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_CompareTo_Vintagestory_API_Common_ModInfo_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.CompareTo(Vintagestory.API.Common.ModInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L221">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ModInfo_CompareTo_" data-uid="Vintagestory.API.Common.ModInfo.CompareTo*"></a>
+  <h4 id="Vintagestory_API_Common_ModInfo_CompareTo_Vintagestory_API_Common_ModInfo_" data-uid="Vintagestory.API.Common.ModInfo.CompareTo(Vintagestory.API.Common.ModInfo)">CompareTo(ModInfo)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(ModInfo other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ModInfo.html">ModInfo</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_Init.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.Init%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L165">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L166">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_Init_" data-uid="Vintagestory.API.Common.ModInfo.Init*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_Init" data-uid="Vintagestory.API.Common.ModInfo.Init">Init()</h4>
@@ -651,7 +698,7 @@ if it&apos;s not present on the server. (Optional. True by default.)</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_IsValidModID_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.IsValidModID(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L206">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L207">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_IsValidModID_" data-uid="Vintagestory.API.Common.ModInfo.IsValidModID*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_IsValidModID_System_String_" data-uid="Vintagestory.API.Common.ModInfo.IsValidModID(System.String)">IsValidModID(String)</h4>
@@ -701,7 +748,7 @@ a basic lowercase letter and contains only lowercase letters and numbers.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo_ToModID_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo.ToModID(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L177">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L178">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ModInfo_ToModID_" data-uid="Vintagestory.API.Common.ModInfo.ToModID*"></a>
   <h4 id="Vintagestory_API_Common_ModInfo_ToModID_System_String_" data-uid="Vintagestory.API.Common.ModInfo.ToModID(System.String)">ToModID(String)</h4>
@@ -756,7 +803,7 @@ non-alphanumerical (including spaces and dashes) and lowercasing letters.</p>
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModInfo.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L40" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModInfo.cs/#L41" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

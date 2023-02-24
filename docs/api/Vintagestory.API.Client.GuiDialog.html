@@ -407,7 +407,19 @@ this dialog is opened. For example, the escape menu. (Default: false)</p>
   </span>
   <a id="Vintagestory_API_Client_GuiDialog_DrawOrder_" data-uid="Vintagestory.API.Client.GuiDialog.DrawOrder*"></a>
   <h4 id="Vintagestory_API_Client_GuiDialog_DrawOrder" data-uid="Vintagestory.API.Client.GuiDialog.DrawOrder">DrawOrder</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>0 = draw first, 1 = draw last. Used to enforce tooltips and held itemstack always drawn last to be visible.<br>
+Vanilla dialogs draw order:<br>
+Name tags: -0.1<br>
+Chat dialog: 0<br>
+Block Interaction help: 0.05<br>
+Worldmap HUD: 0.07<br>
+Default value for most other dialogs: 0.1<br>
+Worldmap Dialog: 0.11<br>
+Player and Chest inventories: 0.2<br>
+Various config/edit dialogs: 0.2<br>
+Handbook: 0.2<br>
+Escape menu: 0.89</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -499,7 +511,13 @@ this dialog is opened. For example, the escape menu. (Default: false)</p>
   </span>
   <a id="Vintagestory_API_Client_GuiDialog_InputOrder_" data-uid="Vintagestory.API.Client.GuiDialog.InputOrder*"></a>
   <h4 id="Vintagestory_API_Client_GuiDialog_InputOrder" data-uid="Vintagestory.API.Client.GuiDialog.InputOrder">InputOrder</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Determines the order on which dialog receives keyboard input first when the dialog is opened. 0 = handle inputs first, 9999 = handle inputs last.<br>
+Reference list:<br>
+0: Escape menu<br>
+0.5 (default): tick profiler, selection box editor, macro editor, survival&amp;creative inventory, first launch info dialog, dead dialog, character dialog, etc.<br>
+1: hotbar<br>
+1.1: chat dialog</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">

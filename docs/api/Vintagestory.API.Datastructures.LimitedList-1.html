@@ -81,11 +81,15 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">LimitedList&lt;TElem&gt;</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IEnumerable</span>&lt;TElem&gt;</div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Datastructures.html">Vintagestory.API.Datastructures</a></h6>
   <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
   <h5 id="Vintagestory_API_Datastructures_LimitedList_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class LimitedList&lt;TElem&gt; : IEnumerable</code></pre>
+    <pre><code class="lang-csharp hljs">public class LimitedList&lt;TElem&gt; : IEnumerable, IEnumerable&lt;TElem&gt;</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -487,6 +491,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IEnumerable&lt;&gt;</span>
+  </div>
 </article>
           </div>
           

@@ -75,8 +75,7 @@
   </h1>
   <div class="markdown level0 summary"><p>Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary 
 and does recursive interpolation on the rotation, position and scale value for each frame, for each element and for each active element
-this produces always correctly blended animations but is significantly more costly for the cpu when compared to the technique used by the <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a>.
-You can use this class and dynamically switch between fast and pretty mode by setting the <see cref="!:FastMode"></see> field.</p>
+this produces always correctly blended animations but is significantly more costly for the cpu when compared to the technique used by the <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -93,13 +92,16 @@ You can use this class and dynamically switch between fast and pretty mode by se
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_identMat4x3">AnimatorBase.identMat4x3</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_anims">AnimatorBase.anims</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices">AnimatorBase.TransformationMatrices</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices4x3">AnimatorBase.TransformationMatrices4x3</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose">AnimatorBase.TransformationMatricesDefaultPose</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose4x3">AnimatorBase.TransformationMatricesDefaultPose4x3</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_AttachmentPointByCode">AnimatorBase.AttachmentPointByCode</a>
@@ -114,7 +116,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CalculateMatrices">AnimatorBase.CalculateMatrices</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices">AnimatorBase.Matrices</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices4x3">AnimatorBase.Matrices4x3</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_ActiveAnimationCount">AnimatorBase.ActiveAnimationCount</a>
@@ -145,7 +147,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.%23ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate%2CList%7BVintagestory.API.Common.ElementPose%7D%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D%2CAction%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L91">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L88">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator__ctor_" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},Action{System.String})">ClientAnimator(WalkSpeedSupplierDelegate, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;, Action&lt;String&gt;)</h4>
@@ -202,7 +204,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Action_System_String__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.%23ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate%2CVintagestory.API.Common.Animation%5B%5D%2CAction%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L86">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L83">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator__ctor_" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Action_System_String__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Action{System.String})">ClientAnimator(WalkSpeedSupplierDelegate, Animation[], Action&lt;String&gt;)</h4>
@@ -244,7 +246,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.%23ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D%2CAction%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L100">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L97">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator__ctor_" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__Action_System_String__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},Action{System.String})">ClientAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;, Action&lt;String&gt;)</h4>
@@ -298,7 +300,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_jointsById.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.jointsById%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L22">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L21">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ClientAnimator_jointsById" data-uid="Vintagestory.API.Common.ClientAnimator.jointsById">jointsById</h4>
   <div class="markdown level1 summary"></div>
@@ -327,7 +329,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_jointsDone.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.jointsDone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L21">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L20">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ClientAnimator_jointsDone" data-uid="Vintagestory.API.Common.ClientAnimator.jointsDone">jointsDone</h4>
   <div class="markdown level1 summary"></div>
@@ -356,7 +358,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_MaxConcurrentAnimations.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.MaxConcurrentAnimations%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L24">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L23">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ClientAnimator_MaxConcurrentAnimations" data-uid="Vintagestory.API.Common.ClientAnimator.MaxConcurrentAnimations">MaxConcurrentAnimations</h4>
   <div class="markdown level1 summary"></div>
@@ -385,7 +387,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_rootElements.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.rootElements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L18">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L17">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ClientAnimator_rootElements" data-uid="Vintagestory.API.Common.ClientAnimator.rootElements">rootElements</h4>
   <div class="markdown level1 summary"></div>
@@ -414,7 +416,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_RootPoses.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.RootPoses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L19">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L18">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_ClientAnimator_RootPoses" data-uid="Vintagestory.API.Common.ClientAnimator.RootPoses">RootPoses</h4>
   <div class="markdown level1 summary"></div>
@@ -445,7 +447,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_AnimNowActive_Vintagestory_API_Common_RunningAnimation_Vintagestory_API_Common_AnimationMetaData_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.AnimNowActive(Vintagestory.API.Common.RunningAnimation%2CVintagestory.API.Common.AnimationMetaData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L197">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L216">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_AnimNowActive_" data-uid="Vintagestory.API.Common.ClientAnimator.AnimNowActive*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_AnimNowActive_Vintagestory_API_Common_RunningAnimation_Vintagestory_API_Common_AnimationMetaData_" data-uid="Vintagestory.API.Common.ClientAnimator.AnimNowActive(Vintagestory.API.Common.RunningAnimation,Vintagestory.API.Common.AnimationMetaData)">AnimNowActive(RunningAnimation, AnimationMetaData)</h4>
@@ -484,7 +486,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_calculateMatrices_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.calculateMatrices(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L216">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L235">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_calculateMatrices_" data-uid="Vintagestory.API.Common.ClientAnimator.calculateMatrices*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_calculateMatrices_System_Single_" data-uid="Vintagestory.API.Common.ClientAnimator.calculateMatrices(System.Single)">calculateMatrices(Single)</h4>
@@ -518,7 +520,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity%2CList%7BVintagestory.API.Common.ElementPose%7D%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L35">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L32">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_CreateForEntity_" data-uid="Vintagestory.API.Common.ClientAnimator.CreateForEntity*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__" data-uid="Vintagestory.API.Common.ClientAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})">CreateForEntity(Entity, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;)</h4>
@@ -585,7 +587,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity%2CVintagestory.API.Common.Animation%5B%5D%2CVintagestory.API.Common.ShapeElement%5B%5D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AnimationJoint%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L61">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L58">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_CreateForEntity_" data-uid="Vintagestory.API.Common.ClientAnimator.CreateForEntity*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__" data-uid="Vintagestory.API.Common.ClientAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})">CreateForEntity(Entity, Animation[], ShapeElement[], Dictionary&lt;Int32, AnimationJoint&gt;)</h4>
@@ -644,10 +646,64 @@ You can use this class and dynamically switch between fast and pretty mode by se
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_GetPosebyName_System_String_StringComparison_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.GetPosebyName(System.String%2CStringComparison)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L194">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ClientAnimator_GetPosebyName_" data-uid="Vintagestory.API.Common.ClientAnimator.GetPosebyName*"></a>
+  <h4 id="Vintagestory_API_Common_ClientAnimator_GetPosebyName_System_String_StringComparison_" data-uid="Vintagestory.API.Common.ClientAnimator.GetPosebyName(System.String,StringComparison)">GetPosebyName(String, StringComparison)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override ElementPose GetPosebyName(string name, StringComparison stringComparison = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">StringComparison</span></td>
+        <td><span class="parametername">stringComparison</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetPosebyName_System_String_StringComparison_">AnimatorBase.GetPosebyName(String, StringComparison)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_initFields.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.initFields%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L110">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L107">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_initFields_" data-uid="Vintagestory.API.Common.ClientAnimator.initFields*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_initFields" data-uid="Vintagestory.API.Common.ClientAnimator.initFields">initFields()</h4>
@@ -662,7 +718,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_LoadAttachmentPoints_List_Vintagestory_API_Common_ElementPose__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints(List%7BVintagestory.API.Common.ElementPose%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L126">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L123">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_LoadAttachmentPoints_" data-uid="Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_LoadAttachmentPoints_List_Vintagestory_API_Common_ElementPose__" data-uid="Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints(List{Vintagestory.API.Common.ElementPose})">LoadAttachmentPoints(List&lt;ElementPose&gt;)</h4>
@@ -694,7 +750,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_LoadPosesAndAttachmentPoints_Vintagestory_API_Common_ShapeElement___List_Vintagestory_API_Common_ElementPose__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.LoadPosesAndAttachmentPoints(Vintagestory.API.Common.ShapeElement%5B%5D%2CList%7BVintagestory.API.Common.ElementPose%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L151">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L148">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_LoadPosesAndAttachmentPoints_" data-uid="Vintagestory.API.Common.ClientAnimator.LoadPosesAndAttachmentPoints*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_LoadPosesAndAttachmentPoints_Vintagestory_API_Common_ShapeElement___List_Vintagestory_API_Common_ElementPose__" data-uid="Vintagestory.API.Common.ClientAnimator.LoadPosesAndAttachmentPoints(Vintagestory.API.Common.ShapeElement[],List{Vintagestory.API.Common.ElementPose})">LoadPosesAndAttachmentPoints(ShapeElement[], List&lt;ElementPose&gt;)</h4>
@@ -741,7 +797,7 @@ You can use this class and dynamically switch between fast and pretty mode by se
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L16" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

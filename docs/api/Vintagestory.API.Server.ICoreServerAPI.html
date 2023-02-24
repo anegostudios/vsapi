@@ -85,6 +85,9 @@
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_CmdlArguments">ICoreAPI.CmdlArguments</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ChatCommands">ICoreAPI.ChatCommands</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Side">ICoreAPI.Side</a>
     </div>
     <div>
@@ -148,7 +151,13 @@
       <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_">ICoreAPICommon.StoreModConfig&lt;T&gt;(T, String)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig_Vintagestory_API_Datastructures_JsonObject_System_String_">ICoreAPICommon.StoreModConfig(JsonObject, String)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_">ICoreAPICommon.LoadModConfig&lt;T&gt;(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig_System_String_">ICoreAPICommon.LoadModConfig(String)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Server.html">Vintagestory.API.Server</a></h6>
@@ -529,7 +538,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_Vintagestory_API_Common_Block_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L133">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L134">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterBlock*"></a>
   <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_Vintagestory_API_Common_Block_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)">RegisterBlock(Block)</h4>
@@ -560,13 +569,61 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_System_String_System_String_System_String_Vintagestory_API_Common_ServerChatCommandDelegate_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String%2CSystem.String%2CSystem.String%2CVintagestory.API.Common.ServerChatCommandDelegate%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_ServerChatCommand_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(ServerChatCommand)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L173">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L163">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_System_String_System_String_System_String_Vintagestory_API_Common_ServerChatCommandDelegate_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ServerChatCommandDelegate,System.String)">RegisterCommand(String, String, String, ServerChatCommandDelegate, String)</h4>
+  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_ServerChatCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(ServerChatCommand)">RegisterCommand(ServerChatCommand)</h4>
+  <div class="markdown level1 summary"><p>Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it&apos;s a slash (/)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool RegisterCommand(ServerChatCommand chatcommand)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ServerChatCommand</span></td>
+        <td><span class="parametername">chatcommand</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_System_String_System_String_System_String_ServerChatCommandDelegate_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String%2CSystem.String%2CSystem.String%2CServerChatCommandDelegate%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L175">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*"></a>
+  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_System_String_System_String_System_String_ServerChatCommandDelegate_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String,System.String,System.String,ServerChatCommandDelegate,System.String)">RegisterCommand(String, String, String, ServerChatCommandDelegate, String)</h4>
   <div class="markdown level1 summary"><p>Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it&apos;s a slash (/)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -600,7 +657,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ServerChatCommandDelegate.html">ServerChatCommandDelegate</a></td>
+        <td><span class="xref">ServerChatCommandDelegate</span></td>
         <td><span class="parametername">handler</span></td>
         <td></td>
       </tr>
@@ -628,58 +685,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_Vintagestory_API_Common_ServerChatCommand_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L162">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_Vintagestory_API_Common_ServerChatCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)">RegisterCommand(ServerChatCommand)</h4>
-  <div class="markdown level1 summary"><p>Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it&apos;s a slash (/)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool RegisterCommand(ServerChatCommand chatcommand)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ServerChatCommand.html">ServerChatCommand</a></td>
-        <td><span class="parametername">chatcommand</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_Vintagestory_API_Common_GridRecipe_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L139">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L140">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe*"></a>
   <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_Vintagestory_API_Common_GridRecipe_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)">RegisterCraftingRecipe(GridRecipe)</h4>
@@ -712,7 +721,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterItem_Vintagestory_API_Common_Item_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L127">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L128">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterItem_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterItem*"></a>
   <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterItem_Vintagestory_API_Common_Item_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)">RegisterItem(Item)</h4>
@@ -745,7 +754,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_GrowTreeDelegate_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation%2CVintagestory.API.Server.GrowTreeDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L154">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L155">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator*"></a>
   <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_GrowTreeDelegate_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.GrowTreeDelegate)">RegisterTreeGenerator(AssetLocation, GrowTreeDelegate)</h4>
@@ -783,7 +792,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_ITreeGenerator_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation%2CVintagestory.API.Server.ITreeGenerator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L147">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L148">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator*"></a>
   <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_ITreeGenerator_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.ITreeGenerator)">RegisterTreeGenerator(AssetLocation, ITreeGenerator)</h4>
@@ -1022,7 +1031,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L178">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L181">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded_" data-uid="Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded*"></a>
   <h4 id="Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded" data-uid="Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded">TriggerOnAssetsFirstLoaded()</h4>

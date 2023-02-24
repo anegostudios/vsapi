@@ -366,26 +366,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L82">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Client_ILoadedSound_Dispose_" data-uid="Vintagestory.API.Client.ILoadedSound.Dispose*"></a>
-  <h4 id="Vintagestory_API_Client_ILoadedSound_Dispose" data-uid="Vintagestory.API.Client.ILoadedSound.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Dispose the object sound. May no longer be used after disposing. </p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Dispose()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_FadeIn_System_Single_Action_Vintagestory_API_Client_ILoadedSound__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.FadeIn(System.Single%2CAction%7BVintagestory.API.Client.ILoadedSound%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L133">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L129">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_FadeIn_" data-uid="Vintagestory.API.Client.ILoadedSound.FadeIn*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_FadeIn_System_Single_Action_Vintagestory_API_Client_ILoadedSound__" data-uid="Vintagestory.API.Client.ILoadedSound.FadeIn(System.Single,Action{Vintagestory.API.Client.ILoadedSound})">FadeIn(Single, Action&lt;ILoadedSound&gt;)</h4>
@@ -414,7 +398,8 @@
       <tr>
         <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Client.ILoadedSound.html">ILoadedSound</a>&gt;</td>
         <td><span class="parametername">onFadedIn</span></td>
-        <td></td>
+        <td><p>Called when the fade in has completed. If in the meantime another FadeXXX call has been made, the method is not called</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -423,11 +408,11 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_FadeOut_System_Single_Action_Vintagestory_API_Client_ILoadedSound__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.FadeOut(System.Single%2CAction%7BVintagestory.API.Client.ILoadedSound%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L126">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L122">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_FadeOut_" data-uid="Vintagestory.API.Client.ILoadedSound.FadeOut*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_FadeOut_System_Single_Action_Vintagestory_API_Client_ILoadedSound__" data-uid="Vintagestory.API.Client.ILoadedSound.FadeOut(System.Single,Action{Vintagestory.API.Client.ILoadedSound})">FadeOut(Single, Action&lt;ILoadedSound&gt;)</h4>
-  <div class="markdown level1 summary"><p>Causes the sound to fade out </p>
+  <div class="markdown level1 summary"><p>Causes the sound to fade out</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -452,7 +437,8 @@
       <tr>
         <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Client.ILoadedSound.html">ILoadedSound</a>&gt;</td>
         <td><span class="parametername">onFadedOut</span></td>
-        <td></td>
+        <td><p>Called when the fade out has completed. If in the meantime another FadeXXX call has been made, the method is not called</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -461,7 +447,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_FadeOutAndStop_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.FadeOutAndStop(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L140">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L136">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_FadeOutAndStop_" data-uid="Vintagestory.API.Client.ILoadedSound.FadeOutAndStop*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_FadeOutAndStop_System_Single_" data-uid="Vintagestory.API.Client.ILoadedSound.FadeOutAndStop(System.Single)">FadeOutAndStop(Single)</h4>
@@ -494,7 +480,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_FadeTo_System_Double_System_Single_Action_Vintagestory_API_Client_ILoadedSound__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.FadeTo(System.Double%2CSystem.Single%2CAction%7BVintagestory.API.Client.ILoadedSound%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L120">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L115">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_FadeTo_" data-uid="Vintagestory.API.Client.ILoadedSound.FadeTo*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_FadeTo_System_Double_System_Single_Action_Vintagestory_API_Client_ILoadedSound__" data-uid="Vintagestory.API.Client.ILoadedSound.FadeTo(System.Double,System.Single,Action{Vintagestory.API.Client.ILoadedSound})">FadeTo(Double, Single, Action&lt;ILoadedSound&gt;)</h4>
@@ -528,7 +514,8 @@
       <tr>
         <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Client.ILoadedSound.html">ILoadedSound</a>&gt;</td>
         <td><span class="parametername">onFaded</span></td>
-        <td></td>
+        <td><p>Called when the fade has completed. If in the meantime another FadeXXX call has been made, the method is not called</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -553,7 +540,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_SetPitch_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.SetPitch(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L88">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L83">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_SetPitch_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPitch*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_SetPitch_System_Single_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPitch(System.Single)">SetPitch(Single)</h4>
@@ -586,7 +573,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_SetPitchOffset_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.SetPitchOffset(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L94">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L89">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_SetPitchOffset_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPitchOffset*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_SetPitchOffset_System_Single_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPitchOffset(System.Single)">SetPitchOffset(Single)</h4>
@@ -619,7 +606,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_SetPosition_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.SetPosition(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L112">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L107">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_SetPosition_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPosition*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_SetPosition_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPosition(System.Single,System.Single,System.Single)">SetPosition(Single, Single, Single)</h4>
@@ -661,7 +648,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_SetPosition_Vintagestory_API_MathTools_Vec3f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.SetPosition(Vintagestory.API.MathTools.Vec3f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L111">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L106">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_SetPosition_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPosition*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_SetPosition_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.Client.ILoadedSound.SetPosition(Vintagestory.API.MathTools.Vec3f)">SetPosition(Vec3f)</h4>
@@ -694,7 +681,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_SetVolume.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.SetVolume%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L105">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L100">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_SetVolume_" data-uid="Vintagestory.API.Client.ILoadedSound.SetVolume*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_SetVolume" data-uid="Vintagestory.API.Client.ILoadedSound.SetVolume">SetVolume()</h4>
@@ -710,7 +697,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_ILoadedSound_SetVolume_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.ILoadedSound.SetVolume(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L100">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Audio/ILoadedSound.cs/#L95">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_ILoadedSound_SetVolume_" data-uid="Vintagestory.API.Client.ILoadedSound.SetVolume*"></a>
   <h4 id="Vintagestory_API_Client_ILoadedSound_SetVolume_System_Single_" data-uid="Vintagestory.API.Client.ILoadedSound.SetVolume(System.Single)">SetVolume(Single)</h4>
