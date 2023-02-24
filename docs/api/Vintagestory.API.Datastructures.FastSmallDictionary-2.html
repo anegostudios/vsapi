@@ -1,0 +1,851 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class FastSmallDictionary&lt;TKey, TValue&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class FastSmallDictionary&lt;TKey, TValue&gt;
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2">
+  
+  
+  <h1 id="Vintagestory_API_Datastructures_FastSmallDictionary_2" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2" class="text-break">Class FastSmallDictionary&lt;TKey, TValue&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>A fast implementation of IDictionary using arrays.  Only suitable for small dictionaries, typically 1-20 entries.
+<br>Note that Add is implemented differently from a standard Dictionary, it does not check that the key is not already present (and does not throw an ArgumentException)
+<br>Additional methods AddIfNotPresent() and Clone() are provided for convenience.  There are also additional convenient constructors</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">FastSmallDictionary&lt;TKey, TValue&gt;</span></div>
+      <div class="level2"><a class="xref" href="Vintagestory.API.Client.TextureDictionary.html">TextureDictionary</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Datastructures.html">Vintagestory.API.Datastructures</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class FastSmallDictionary&lt;TKey, TValue&gt; : IDictionary&lt;TKey, TValue&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TKey</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor__0__1_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.%23ctor(%600%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L38">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.#ctor*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor__0__1_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.#ctor(`0,`1)">FastSmallDictionary(TKey, TValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastSmallDictionary(TKey key, TValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor_Dictionary__0__1__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.%23ctor(Dictionary%7B%600%2C%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L45">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.#ctor*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor_Dictionary__0__1__" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.#ctor(Dictionary{`0,`1})">FastSmallDictionary(Dictionary&lt;TKey, TValue&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastSmallDictionary(Dictionary&lt;TKey, TValue&gt; dict)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;TKey, TValue&gt;</td>
+        <td><span class="parametername">dict</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.%23ctor(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L32">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.#ctor*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2__ctor_System_Int32_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.#ctor(System.Int32)">FastSmallDictionary(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastSmallDictionary(int size)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">size</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_IsReadOnly.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.IsReadOnly%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L30">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_IsReadOnly_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.IsReadOnly*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_IsReadOnly" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.IsReadOnly">IsReadOnly</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Item__0_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Item(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L68">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Item_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Item*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Item__0_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Item(`0)">Item[TKey]</h4>
+  <div class="markdown level1 summary"><p>It is calling code&apos;s responsibility to ensure the key being searched for is not null</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TValue this[TKey key] { get; set; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Keys.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Keys%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L24">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Keys_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Keys*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Keys" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Keys">Keys</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;TKey&gt; Keys { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ICollection</span>&lt;TKey&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Values.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Values%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L26">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Values_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Values*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Values" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Values">Values</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;TValue&gt; Values { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ICollection</span>&lt;TValue&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Add__0__1_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Add(%600%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L121">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Add_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Add*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Add__0__1_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Add(`0,`1)">Add(TKey, TValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(TKey key, TValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Add_KeyValuePair__0__1__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Add(KeyValuePair%7B%600%2C%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L171">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Add_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Add*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Add_KeyValuePair__0__1__" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Add(KeyValuePair{`0,`1})">Add(KeyValuePair&lt;TKey, TValue&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Add(KeyValuePair&lt;TKey, TValue&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">KeyValuePair</span>&lt;TKey, TValue&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Clear.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Clear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L149">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Clear_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Clear*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Clear" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Clear">Clear()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Clone.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L50">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Clone_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Clone*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Clone" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Clone">Clone()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastSmallDictionary&lt;TKey, TValue&gt; Clone()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Datastructures.FastSmallDictionary-2.html">FastSmallDictionary</a>&lt;TKey, TValue&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Contains_KeyValuePair__0__1__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Contains(KeyValuePair%7B%600%2C%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L186">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Contains_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Contains*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Contains_KeyValuePair__0__1__" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Contains(KeyValuePair{`0,`1})">Contains(KeyValuePair&lt;TKey, TValue&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Contains(KeyValuePair&lt;TKey, TValue&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">KeyValuePair</span>&lt;TKey, TValue&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_ContainsKey__0_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.ContainsKey(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L111">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_ContainsKey_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.ContainsKey*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_ContainsKey__0_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.ContainsKey(`0)">ContainsKey(TKey)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ContainsKey(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_CopyTo_KeyValuePair__0__1____System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.CopyTo(KeyValuePair%7B%600%2C%601%7D%5B%5D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L246">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_CopyTo_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.CopyTo*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_CopyTo_KeyValuePair__0__1____System_Int32_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.CopyTo(KeyValuePair{`0,`1}[],System.Int32)">CopyTo(KeyValuePair&lt;TKey, TValue&gt;[], Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CopyTo(KeyValuePair&lt;TKey, TValue&gt;[] array, int arrayIndex)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">KeyValuePair</span>&lt;TKey, TValue&gt;[]</td>
+        <td><span class="parametername">array</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">arrayIndex</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_GetEnumerator.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L160">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_GetEnumerator_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.GetEnumerator*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_GetEnumerator" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;KeyValuePair&lt;TKey, TValue&gt;&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IEnumerator</span>&lt;<span class="xref">KeyValuePair</span>&lt;TKey, TValue&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_GetFirstKey.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.GetFirstKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L60">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_GetFirstKey_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.GetFirstKey*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_GetFirstKey" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.GetFirstKey">GetFirstKey()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TKey GetFirstKey()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Remove__0_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Remove(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L201">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Remove_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Remove*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Remove__0_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Remove(`0)">Remove(TKey)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(TKey key)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_Remove_KeyValuePair__0__1__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.Remove(KeyValuePair%7B%600%2C%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L215">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Remove_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Remove*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_Remove_KeyValuePair__0__1__" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.Remove(KeyValuePair{`0,`1})">Remove(KeyValuePair&lt;TKey, TValue&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Remove(KeyValuePair&lt;TKey, TValue&gt; item)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">KeyValuePair</span>&lt;TKey, TValue&gt;</td>
+        <td><span class="parametername">item</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2_TryGetValue__0__1__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602.TryGetValue(%600%2C%601%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L134">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_FastSmallDictionary_2_TryGetValue_" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.TryGetValue*"></a>
+  <h4 id="Vintagestory_API_Datastructures_FastSmallDictionary_2_TryGetValue__0__1__" data-uid="Vintagestory.API.Datastructures.FastSmallDictionary`2.TryGetValue(`0,`1@)">TryGetValue(TKey, out TValue)</h4>
+  <div class="markdown level1 summary"><p>It is the calling code&apos;s responsibility to make sure that key is not null</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetValue(TKey key, out TValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TKey</span></td>
+        <td><span class="parametername">key</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">TValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_FastSmallDictionary_2.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.FastSmallDictionary%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/Dictionary/FastSmallDictionary.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

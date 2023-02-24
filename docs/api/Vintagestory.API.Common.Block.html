@@ -82,6 +82,7 @@
     <div class="level1"><a class="xref" href="Vintagestory.API.Common.RegistryObject.html">RegistryObject</a></div>
     <div class="level2"><a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></div>
     <div class="level3"><span class="xref">Block</span></div>
+      <div class="level4"><a class="xref" href="Vintagestory.API.Common.BlockGeneric.html">BlockGeneric</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -545,10 +546,10 @@
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String_">RegistryObject.WildCardMatch(String)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_Vintagestory_API_Common_AssetLocation_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(AssetLocation, OrderedDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(AssetLocation, OrderedDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(String, OrderedDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(String, OrderedDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_System_String_System_String_">RegistryObject.FillPlaceHolder(String, String, String)</a>
@@ -3052,13 +3053,13 @@ Examples:
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Block_Activate_Vintagestory_API_Common_IWorldAccessor_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Block.Activate(Vintagestory.API.Common.IWorldAccessor%2CCaller%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Datastructures.ITreeAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Block_Activate_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Block.Activate(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.Caller%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Datastructures.ITreeAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/Block.cs/#L1327">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Block_Activate_" data-uid="Vintagestory.API.Common.Block.Activate*"></a>
-  <h4 id="Vintagestory_API_Common_Block_Activate_Vintagestory_API_Common_IWorldAccessor_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_" data-uid="Vintagestory.API.Common.Block.Activate(Vintagestory.API.Common.IWorldAccessor,Caller,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Datastructures.ITreeAttribute)">Activate(IWorldAccessor, Caller, BlockSelection, ITreeAttribute)</h4>
+  <h4 id="Vintagestory_API_Common_Block_Activate_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_" data-uid="Vintagestory.API.Common.Block.Activate(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Caller,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Datastructures.ITreeAttribute)">Activate(IWorldAccessor, Caller, BlockSelection, ITreeAttribute)</h4>
   <div class="markdown level1 summary"><p>When a Command Block, console command or (perhaps in future) non-player entity wants to activate this placed block</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -3082,7 +3083,7 @@ Examples:
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Caller</span></td>
+        <td><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></td>
         <td><span class="parametername">caller</span></td>
         <td></td>
       </tr>
