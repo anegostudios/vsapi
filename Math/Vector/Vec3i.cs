@@ -250,7 +250,10 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public ulong ToChunkIndex()
         {
-            return ((ulong)Y << 54) | ((ulong)Z << 27) | (uint)X;
+            ulong index = (ulong)X;
+            index |= (ulong)Z << 27;
+            index |= (ulong)Y << 54;
+            return index;
         }
 
         static ulong chunkMask = 134217728 - 1;   // 2^27 - 1
@@ -267,7 +270,10 @@ namespace Vintagestory.API.MathTools
 
         public static ulong ToChunkIndex(int x, int y, int z)
         {
-            return ((ulong)y << 54) | ((ulong)z << 27) | (uint)x;
+            ulong index = (ulong)x;
+            index |= (ulong)z << 27;
+            index |= (ulong)y << 54;
+            return index;
         }
 
         int IVec3.XAsInt { get { return X; } }

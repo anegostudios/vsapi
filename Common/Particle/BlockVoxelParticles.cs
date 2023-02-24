@@ -146,7 +146,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float scale;
 
-        public Vec3f velocity;
+        public Vec3f velocity = new Vec3f();
 
         public override bool DieInLiquid => false;
         public override bool SwimOnLiquid => stack.Collectible.MaterialDensity < 1000;
@@ -172,12 +172,13 @@ namespace Vintagestory.API.Common
 
         public override Vec3f GetVelocity(Vec3d pos)
         {
-            if (velocity != null) return velocity;
-
-            Vec3f distanceVector = new Vec3f(1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble());
-
-            return distanceVector;
-
+            if (velocity != null)
+            {
+                return new Vec3f(1.5f - 3 * (float)rand.NextDouble() + velocity.X, 1.5f - 3 * (float)rand.NextDouble() + velocity.Y, 1.5f - 3 * (float)rand.NextDouble() + velocity.Z);
+            } else
+            {
+                return new Vec3f(1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble(), 1.5f - 3 * (float)rand.NextDouble());
+            }
         }
 
 

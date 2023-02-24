@@ -22,8 +22,6 @@
         CrossAndSnowlayer_2 = 18,
         CrossAndSnowlayer_3 = 19,
         CrossAndSnowlayer_4 = 20,
-        SurfaceLayer = 21,
-        InstancedCross = 22,
-        InstancedFlower = 23
+        SurfaceLayer = 21
     }
 }

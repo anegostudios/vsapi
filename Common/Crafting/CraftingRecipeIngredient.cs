@@ -62,6 +62,13 @@ namespace Vintagestory.API.Common
         /// When using a wildcard in the item/block code, setting this field will limit the allowed variants
         /// </summary>
         public string[] AllowedVariants;
+
+
+        /// <summary>
+        /// When using a wildcard in the item/block code, setting this field will skip these variants
+        /// </summary>
+        public string[] SkipVariants;
+
         /// <summary>
         /// If set, the crafting recipe will give back the consumed stack to be player upon crafting
         /// </summary>
@@ -141,6 +148,7 @@ namespace Vintagestory.API.Common
             {
                 if (Type != inputStack.Class) return false;
                 if (!WildcardUtil.Match(Code, inputStack.Collectible.Code, AllowedVariants)) return false;
+                if (SkipVariants != null && WildcardUtil.Match(Code, inputStack.Collectible.Code, SkipVariants)) return false;
                 if (checkStacksize && inputStack.StackSize < Quantity) return false;
             }
             else
@@ -172,6 +180,7 @@ namespace Vintagestory.API.Common
                 IsTool = IsTool,
                 ToolDurabilityCost = ToolDurabilityCost,
                 AllowedVariants = AllowedVariants == null ? null : (string[])AllowedVariants.Clone(),
+                SkipVariants = SkipVariants == null ? null : (string[])SkipVariants.Clone(),
                 ResolvedItemstack = ResolvedItemstack?.Clone(),
                 ReturnedStack = ReturnedStack?.Clone(),
                 RecipeAttributes = RecipeAttributes?.Clone()
@@ -224,6 +233,16 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            writer.Write(SkipVariants != null);
+            if (SkipVariants != null)
+            {
+                writer.Write(SkipVariants.Length);
+                for (int i = 0; i < SkipVariants.Length; i++)
+                {
+                    writer.Write(SkipVariants[i]);
+                }
+            }
+
             writer.Write(ReturnedStack?.ResolvedItemstack != null);
             if (ReturnedStack?.ResolvedItemstack != null)
             {
@@ -261,6 +280,16 @@ namespace Vintagestory.API.Common
                 for (int i = 0; i < AllowedVariants.Length; i++)
                 {
                     AllowedVariants[i] = reader.ReadString();
+                }
+            }
+
+            bool haveSkipVariants = reader.ReadBoolean();
+            if (haveSkipVariants)
+            {
+                SkipVariants = new string[reader.ReadInt32()];
+                for (int i = 0; i < SkipVariants.Length; i++)
+                {
+                    SkipVariants[i] = reader.ReadString();
                 }
             }
 

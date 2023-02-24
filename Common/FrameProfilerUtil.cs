@@ -113,7 +113,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Same as <see cref="Mark(string, long)"/> when <see cref="Enter(string)"/> was called before.
+        /// Same as <see cref="Mark(string)"/> when <see cref="Enter(string)"/> was called before.
         /// </summary>
         public void Leave()
         {

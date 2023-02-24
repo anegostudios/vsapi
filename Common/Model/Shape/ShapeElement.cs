@@ -225,6 +225,7 @@ namespace Vintagestory.API.Common
 
         internal void TrimTextureNamesAndResolveFaces()
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             if (Faces != null)
             {
                 foreach (var val in Faces)
@@ -242,6 +243,7 @@ namespace Vintagestory.API.Common
                 }
             }
             Faces = null;
+#pragma warning restore CS0618 // Type or member is obsolete
 
             if (Children != null)
             {
@@ -270,17 +272,17 @@ namespace Vintagestory.API.Common
 
             Mat4f.Translate(output, output, origin);
 
-            if (elem.RotationX + tf.degX != 0)
+            if (elem.RotationX + tf.degX + tf.degOffX != 0)
             {
-                Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX) * GameMath.DEG2RAD);
+                Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
             }
-            if (elem.RotationY + tf.degY != 0)
+            if (elem.RotationY + tf.degY + tf.degOffY != 0)
             {
-                Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY) * GameMath.DEG2RAD);
+                Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
             }
-            if (elem.RotationZ + tf.degZ != 0)
+            if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
             {
-                Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ) * GameMath.DEG2RAD);
+                Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
             }
 
             Mat4f.Scale(output, output, new float[] { (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ });

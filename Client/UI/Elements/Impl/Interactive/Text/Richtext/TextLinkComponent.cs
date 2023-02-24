@@ -13,6 +13,18 @@ namespace Vintagestory.API.Client
         Action<LinkTextComponent> onLinkClicked;
 
         public string Href;
+        bool clickable =true;
+        public bool Clickable {
+            get
+            {
+                return clickable;
+            }
+            set
+            {
+                clickable = value;
+                MouseOverCursor = clickable ? "linkselect" : null;
+            }
+        }
 
         LoadedTexture normalText;
         LoadedTexture hoverText;
@@ -36,7 +48,10 @@ namespace Vintagestory.API.Client
         double leftMostX;
         double topMostY;
 
-
+        public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        {
+            return base.CalcBounds(flowPath, currentLineHeight, offsetX, lineY, out nextOffsetX);
+        }
 
         public override void ComposeElements(Context ctxStatic, ImageSurface surfaceStatic)
         {
@@ -107,33 +122,64 @@ namespace Vintagestory.API.Client
             }
         }
 
+        bool isHover = false;
         public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
             base.RenderInteractiveElements(deltaTime, renderX, renderY, renderZ);
-            bool isHover = false;
+            isHover = false;
 
-            foreach (var val in BoundsPerLine)
+            double offsetX = GetFontOrientOffsetX();
+
+            if (clickable)
             {
-                if (val.PointInside(api.Input.MouseX - renderX, api.Input.MouseY - renderY))
+                foreach (var val in BoundsPerLine)
                 {
-                    isHover = true;
-                    break;
+                    if (val.PointInside(api.Input.MouseX - renderX - offsetX, api.Input.MouseY - renderY))
+                    {
+                        isHover = true;
+                        break;
+                    }
                 }
             }
 
             api.Render.Render2DTexturePremultipliedAlpha(
                 isHover ? hoverText.TextureId : normalText.TextureId, 
-                (int)(renderX + leftMostX), 
+                (int)(renderX + leftMostX + offsetX), 
                 (int)(renderY + topMostY), 
                 hoverText.Width, hoverText.Height, (float)renderZ + 50
             );
         }
 
-        public override void OnMouseUp(MouseEvent args)
+        public override bool UseMouseOverCursor(ElementBounds richtextBounds)
         {
+            return isHover;
+        }
+
+        bool wasMouseDown=false;
+        public override void OnMouseDown(MouseEvent args)
+        {
+            if (!clickable) return;
+
+            double offsetX = GetFontOrientOffsetX();
+
+            wasMouseDown = false;
             foreach (var val in BoundsPerLine)
             {
-                if (val.PointInside(args.X, args.Y))
+                if (val.PointInside(args.X - offsetX, args.Y))
+                {
+                    wasMouseDown = true;
+                }
+            }
+        }
+
+        public override void OnMouseUp(MouseEvent args)
+        {
+            if (!clickable || !wasMouseDown) return;
+            double offsetX = GetFontOrientOffsetX();
+
+            foreach (var val in BoundsPerLine)
+            {
+                if (val.PointInside(args.X - offsetX, args.Y))
                 {
                     args.Handled = true;
                     Trigger();                    

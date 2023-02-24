@@ -19,9 +19,20 @@ namespace Vintagestory.API.Common
         Right
     }
 
+    public interface IWearableShapeSupplier
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stack"></param>
+        /// <param name="forEntity"></param>
+        /// <returns>null for returning back to default behavior (read shape from attributes)</returns>
+        Shape GetShape(ItemStack stack, EntityAgent forEntity);
+    }
+
 
     /// <summary>
-    /// An autonomous, goal-directed entity which observes and acts upon an environment
+    /// A goal-directed entity which observes and acts upon an environment
     /// </summary>
     public class EntityAgent : Entity
     {
@@ -72,6 +83,8 @@ namespace Vintagestory.API.Common
         /// Item in the right hand slot of the entity agent.
         /// </summary>
         public virtual ItemSlot RightHandItemSlot { get; set; }
+
+        public virtual ItemSlot ActiveHandItemSlot => RightHandItemSlot;
 
         /// <summary>
         /// The inventory of the entity agent.
@@ -154,26 +167,17 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public bool IsEyesSubmerged()
         {
-            int blockId = GetEyesBlockId();
-            return World.Blocks[blockId].MatterState == EnumMatterState.Liquid;
+            BlockPos pos = SidedPos.AsBlockPos.Add(0, (float)(Swimming ? Properties.SwimmingEyeHeight : Properties.EyeHeight), 0);
+            return World.BlockAccessor.GetBlock(pos).MatterState == EnumMatterState.Liquid;
         }
 
-        /// <summary>
-        /// Gets the ID of the block the eyes are submerged in.
-        /// </summary>
-        /// <returns></returns>
-        public int GetEyesBlockId()
-        {
-            BlockPos pos = SidedPos.AsBlockPos.Add(0, (float)Properties.EyeHeight, 0);
-            return World.BlockAccessor.GetBlockId(pos.X, pos.Y, pos.Z);
-        }
 
         /// <summary>
         /// Attempts to mount the player on a target.
         /// </summary>
         /// <param name="onmount">The mount to mount</param>
         /// <returns>Whether it was mounted or not.</returns>
-        public bool TryMount(IMountable onmount)
+        public virtual bool TryMount(IMountable onmount)
         {
             if (MountedOn != onmount)
             {
@@ -183,7 +187,10 @@ namespace Vintagestory.API.Common
             TreeAttribute mountableTree = new TreeAttribute();
             onmount?.MountableToTreeAttributes(mountableTree);
             WatchedAttributes["mountedOn"] = mountableTree;
-            WatchedAttributes.MarkPathDirty("mountedOn"); // -> this calls updateMountedState()
+
+            var mountable = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+            if (mountable != null) WatchedAttributes.MarkPathDirty("mountedOn");
+            else doMount(onmount); // ClassRegistry.CreateMountable() might not have the onmount as a loaded entity yet
             return true;
         }
 
@@ -192,29 +199,33 @@ namespace Vintagestory.API.Common
             if (WatchedAttributes.HasAttribute("mountedOn"))
             {
                 var mountable = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
-
-                this.MountedOn = mountable;
-                controls.StopAllMovement();
-
-                if (mountable == null)
-                {
-                    WatchedAttributes.RemoveAttribute("mountedOn");
-                    return;
-                }
-                
-                if (MountedOn?.SuggestedAnimation != null)
-                {
-                    string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
-                    AnimManager?.StartAnimation(anim);
-                }
-
-                mountable.DidMount(this);
+                doMount(mountable);
             }
             else
             {
                 TryUnmount();
             }
 
+        }
+
+        protected virtual void doMount(IMountable mountable)
+        {
+            this.MountedOn = mountable;
+            controls.StopAllMovement();
+
+            if (mountable == null)
+            {
+                WatchedAttributes.RemoveAttribute("mountedOn");
+                return;
+            }
+
+            if (MountedOn?.SuggestedAnimation != null)
+            {
+                string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
+                AnimManager?.StartAnimation(anim);
+            }
+
+            mountable.DidMount(this);
         }
 
         /// <summary>
@@ -423,10 +434,11 @@ namespace Vintagestory.API.Common
                         (servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
                         (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting && !Swimming ? EnumEntityActivity.SneakMode : 0) |
                         (servercontrols.Sprint && !Swimming && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
-                        (servercontrols.IsFlying ? EnumEntityActivity.Fly : 0) |
+                        (servercontrols.IsFlying ? servercontrols.Gliding ? EnumEntityActivity.Glide : EnumEntityActivity.Fly : 0) |
                         (servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
                         (servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |
-                        (!OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && SidedPos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0)
+                        (!OnGround && !Swimming && !FeetInLiquid && !servercontrols.IsClimbing && !servercontrols.IsFlying && SidedPos.Motion.Y < -0.05 ? EnumEntityActivity.Fall : 0) |
+                        (MountedOn != null ? EnumEntityActivity.Mounted : 0)
                     ;
                 }
                 else
@@ -488,41 +500,10 @@ namespace Vintagestory.API.Common
                 }
 
 
-                ICoreClientAPI capi = (Api as ICoreClientAPI);
-                bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
-                EntityPos herepos = (isSelf ? Pos : ServerPos);
-                bool moving = herepos.Motion.LengthSq() > 0.0000 && !servercontrols.NoClip;
-                
-                // Snow particles
-                if (insideBlock?.GetBlockMaterial(capi.World.BlockAccessor, insidePos) == EnumBlockMaterial.Snow && isSelf)
+                bool isSelf = (Api as ICoreClientAPI).World.Player.Entity.EntityId == EntityId;
+                if (insideBlock?.GetBlockMaterial(Api.World.BlockAccessor, insidePos) == EnumBlockMaterial.Snow && isSelf)
                 {
-                    double hormot = Pos.Motion.X * Pos.Motion.X + Pos.Motion.Z * Pos.Motion.Z;
-                    float val = (float)Math.Sqrt(hormot);
-                    if (Api.World.Rand.NextDouble() < 10 * val)
-                    {
-                        var rand = capi.World.Rand;
-                        Vec3f velo = new Vec3f(1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.X * 15, -5, 5), 0.5f + 3.5f * (float)rand.NextDouble(), 1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.Z * 15, -5, 5));
-                        float radius = Math.Min(SelectionBox.XSize, SelectionBox.ZSize) * 0.9f;
-
-                        World.SpawnCubeParticles(herepos.AsBlockPos, herepos.XYZ.Add(0, 0, 0), radius, 2 + (int)(rand.NextDouble() * val * 5), 0.5f + (float)rand.NextDouble() * 0.5f, null, velo);
-                    }
-                }
-
-                if ((FeetInLiquid || Swimming) && moving && Properties.Habitat != EnumHabitat.Underwater)
-                {
-                    double width = SelectionBox.XSize * 0.75f;
-
-                    SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
-                    SplashParticleProps.AddPos.Set(width, 0.5, width);
-
-                    float mot = (float)herepos.Motion.Length();
-                    SplashParticleProps.AddVelocity.Set((float)herepos.Motion.X * 20f, 0, (float)herepos.Motion.Z * 20f);
-                    float f = Properties.Attributes?["extraSplashParticlesMul"].AsFloat(1) ?? 1;
-                    SplashParticleProps.QuantityMul = 0.15f * mot * 5 * 2 * f;
-                    
-                    World.SpawnParticles(SplashParticleProps);
-
-                    SpawnWaterMovementParticles((float)Math.Max(Swimming ? 0.04f : 0, mot * 5));
+                    SpawnSnowStepParticles();
                 }
             }
 
@@ -535,15 +516,67 @@ namespace Vintagestory.API.Common
                 else
                 {
                     ServerPos.Pitch = 0;
-                }
-
-                
+                }   
             }
 
 
             World.FrameProfiler.Mark("entityAgent-ticking");
             base.OnGameTick(dt);
         }
+
+
+        protected virtual void SpawnSnowStepParticles()
+        {
+            ICoreClientAPI capi = Api as ICoreClientAPI;
+            bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
+            EntityPos herepos = (isSelf ? Pos : ServerPos);
+            double hormot = Pos.Motion.X * Pos.Motion.X + Pos.Motion.Z * Pos.Motion.Z;
+            float val = (float)Math.Sqrt(hormot);
+            if (Api.World.Rand.NextDouble() < 10 * val)
+            {
+                var rand = capi.World.Rand;
+                Vec3f velo = new Vec3f(1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.X * 15, -5, 5), 0.5f + 3.5f * (float)rand.NextDouble(), 1f - 2 * (float)rand.NextDouble() + GameMath.Clamp((float)Pos.Motion.Z * 15, -5, 5));
+                float radius = Math.Min(SelectionBox.XSize, SelectionBox.ZSize) * 0.9f;
+
+                World.SpawnCubeParticles(herepos.AsBlockPos, herepos.XYZ.Add(0, 0, 0), radius, 2 + (int)(rand.NextDouble() * val * 5), 0.5f + (float)rand.NextDouble() * 0.5f, null, velo);
+            }
+        }
+
+        protected virtual void SpawnFloatingSediment(IAsyncParticleManager manager)
+        {
+            ICoreClientAPI capi = (Api as ICoreClientAPI);
+            bool isSelf = capi.World.Player.Entity.EntityId == EntityId;
+            EntityPos herepos = (isSelf ? Pos : ServerPos);
+
+            double width = SelectionBox.XSize * 0.75f;
+
+            SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
+            SplashParticleProps.AddPos.Set(width, 0.5, width);
+
+            float mot = (float)herepos.Motion.Length();
+            SplashParticleProps.AddVelocity.Set((float)herepos.Motion.X * 20f, 0, (float)herepos.Motion.Z * 20f);
+            float f = Properties.Attributes?["extraSplashParticlesMul"].AsFloat(1) ?? 1;
+            SplashParticleProps.QuantityMul = 0.15f * mot * 5 * 2 * f;
+
+            World.SpawnParticles(SplashParticleProps);
+
+            SpawnWaterMovementParticles((float)Math.Max(Swimming ? 0.04f : 0, mot * 5));
+
+            FloatingSedimentParticles FloatingSedimentParticles = new FloatingSedimentParticles();
+
+            FloatingSedimentParticles.SedimentPos.Set((int)herepos.X, (int)herepos.Y - 1, (int)herepos.Z);//  = , herepos.XYZ.Add(0, 0.25, 0), 0.25f, 2
+
+            var block = FloatingSedimentParticles.SedimentBlock = World.BlockAccessor.GetBlock(FloatingSedimentParticles.SedimentPos);
+            if (insideBlock != null && (block.BlockMaterial == EnumBlockMaterial.Gravel || block.BlockMaterial == EnumBlockMaterial.Soil || block.BlockMaterial == EnumBlockMaterial.Sand))
+            {
+                FloatingSedimentParticles.BasePos.Set(SplashParticleProps.BasePos);
+                FloatingSedimentParticles.AddPos.Set(SplashParticleProps.AddPos);
+                FloatingSedimentParticles.quantity = mot * 150;
+                FloatingSedimentParticles.waterColor = insideBlock.GetColor(capi, FloatingSedimentParticles.SedimentPos);
+                manager.Spawn(FloatingSedimentParticles);
+            }
+        }
+
 
         protected virtual bool onAnimControls(AnimationMetaData anim, bool wasActive, bool nowActive)
         {
@@ -774,16 +807,25 @@ namespace Vintagestory.API.Common
 
             if (attrObj?["wearableAttachment"].Exists != true) return entityShape;
 
-            CompositeShape compArmorShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
-
-            AssetLocation shapePath = shapePath = compArmorShape.Base.CopyWithPath("shapes/" + compArmorShape.Base.Path + ".json");
-
-            Shape armorShape = Shape.TryGet(Api, shapePath);
-            if (armorShape == null)
+            Shape armorShape=null;
+            AssetLocation shapePath=null;
+            CompositeShape compArmorShape = null;
+            if (stack.Collectible is IWearableShapeSupplier iwss)
             {
-                Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found or errored, was supposed to be at {3}. Armor piece will be invisible.", compArmorShape.Base, stack.Class, stack.Collectible.Code, shapePath);
-                return null;
+                armorShape = iwss.GetShape(stack, this);
             }
+
+            if (armorShape == null) {
+                compArmorShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
+                shapePath = shapePath = compArmorShape.Base.CopyWithPath("shapes/" + compArmorShape.Base.Path + ".json");
+                armorShape = Shape.TryGet(Api, shapePath);
+                if (armorShape == null)
+                {
+                    Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found or errored, was supposed to be at {3}. Armor piece will be invisible.", compArmorShape.Base, stack.Class, stack.Collectible.Code, shapePath);
+                    return null;
+                }
+            }
+
 
             bool added = false;
             foreach (var val in armorShape.Elements)
@@ -795,13 +837,13 @@ namespace Vintagestory.API.Common
                     elem = entityShape.GetElementByName(val.StepParentName, StringComparison.InvariantCultureIgnoreCase);
                     if (elem == null)
                     {
-                        Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} requires step parent element with name {3}, but no such element was found in shape {4}. Will not be visible.", compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code, val.StepParentName, shapePathForLogging);
+                        Api.World.Logger.Warning("Entity gear shape {0} defined in {1} {2} requires step parent element with name {3}, but no such element was found in shape {4}. Will not be visible.", compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code, val.StepParentName, shapePathForLogging);
                         continue;
                     }
                 }
                 else
                 {
-                    Api.World.Logger.Warning("Entity armor shape element {0} in shape {1} defined in {2} {3} did not define a step parent element. Will not be visible.", val.Name, compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code);
+                    Api.World.Logger.Warning("Entity gear shape element {0} in shape {1} defined in {2} {3} did not define a step parent element. Will not be visible.", val.Name, compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code);
                     continue;
                 }
 
@@ -866,18 +908,19 @@ namespace Vintagestory.API.Common
                         int textureSubId = 0;
                         TextureAtlasPosition texpos;
 
-                        IAsset texAsset = Api.Assets.TryGet(val.Value.Clone().WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png"));
-                        if (texAsset != null)
+                        capi.EntityTextureAtlas.GetOrInsertTexture(armorTexLoc, out textureSubId, out texpos, () =>
                         {
-                            BitmapRef bmp = texAsset.ToBitmap(capi);
-                            capi.EntityTextureAtlas.InsertTextureCached(val.Value, bmp, out textureSubId, out texpos);
-                        }
-                        else
-                        {
-                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, no such texture found.", shapePath, val.Value);
-                        }
+                            IAsset texAsset = Api.Assets.TryGet(armorTexLoc.Clone().WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png"));
+                            if (texAsset != null)
+                            {
+                                return texAsset.ToBitmap(capi);
+                            }
 
-                        ctex.Baked = new BakedCompositeTexture() { BakedName = val.Value, TextureSubId = textureSubId };
+                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, no such texture found.", shapePath, armorTexLoc);
+                            return null;
+                        });
+
+                        ctex.Baked = new BakedCompositeTexture() { BakedName = armorTexLoc, TextureSubId = textureSubId };
 
                         texturesByName[val.Key] = ctex;
                         texturesByLoc[armorTexLoc] = ctex.Baked;

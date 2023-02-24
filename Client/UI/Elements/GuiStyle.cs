@@ -94,23 +94,23 @@ namespace Vintagestory.API.Client
         public static int RightDialogMargin;
 
         #region VS Color Palette 
-        private static double[] Time1 = new double[] { 56 / 255.0, 232 / 255.0, 183 / 255.0, 1 };
-        private static double[] Time2 = new double[] { 79 / 255.0, 98 / 255.0, 94 / 255.0, 1 };
+        public static double[] ColorTime1 = new double[] { 56 / 255.0, 232 / 255.0, 183 / 255.0, 1 };
+        public static double[] ColorTime2 = new double[] { 79 / 255.0, 98 / 255.0, 94 / 255.0, 1 };
 
-        private static double[] Rust1 = new double[] { 208 / 255.0, 91 / 255.0, 12 / 255.0, 1 };
-        private static double[] Rust2 = new double[] { 143 / 255.0, 47 / 255.0, 0 / 255.0, 1 };
-        private static double[] Rust3 = new double[] { 116 / 255.0, 49 / 255.0, 4 / 255.0, 1 };
+        public static double[] ColorRust1 = new double[] { 208 / 255.0, 91 / 255.0, 12 / 255.0, 1 };
+        public static double[] ColorRust2 = new double[] { 143 / 255.0, 47 / 255.0, 0 / 255.0, 1 };
+        public static double[] ColorRust3 = new double[] { 116 / 255.0, 49 / 255.0, 4 / 255.0, 1 };
 
-        private static double[] ColorWood = new double[] { 132 / 255.0, 92 / 255.0, 67 / 255.0, 1 };
+        public static double[] ColorWood = new double[] { 132 / 255.0, 92 / 255.0, 67 / 255.0, 1 };
 
-        private static double[] ColorParchment = new double[] { 237 / 255.0, 206 / 255.0, 152 / 255.0, 1 };
-        private static double[] ColorSchematic = new double[] { 255 / 255.0, 226 / 255.0, 194 / 255.0, 1 };
+        public static double[] ColorParchment = new double[] { 237 / 255.0, 206 / 255.0, 152 / 255.0, 1 };
+        public static double[] ColorSchematic = new double[] { 255 / 255.0, 226 / 255.0, 194 / 255.0, 1 };
 
-        private static double[] Rot1 = new double[] { 98 / 255.0, 69 / 255.0, 65 / 255.0, 1 };
-        private static double[] Rot2 = new double[] { 102 / 255.0, 110 / 255.0, 112 / 255.0, 1 };
-        private static double[] Rot3 = new double[] { 98 / 255.0, 74 / 255.0, 64 / 255.0, 1 };
-        private static double[] Rot4 = new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 };
-        private static double[] Rot5 = new double[] { 25 / 255.0, 15 / 255.0, 13 / 255.0, 1 };
+        public static double[] ColorRot1 = new double[] { 98 / 255.0, 69 / 255.0, 65 / 255.0, 1 };
+        public static double[] ColorRot2 = new double[] { 102 / 255.0, 110 / 255.0, 112 / 255.0, 1 };
+        public static double[] ColorRot3 = new double[] { 98 / 255.0, 74 / 255.0, 64 / 255.0, 1 };
+        public static double[] ColorRot4 = new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, 1 };
+        public static double[] ColorRot5 = new double[] { 25 / 255.0, 15 / 255.0, 13 / 255.0, 1 };
         #endregion
 
 

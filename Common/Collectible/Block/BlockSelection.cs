@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.MathTools;
+﻿using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -44,6 +39,23 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Block Block;
 
+        public BlockSelection()
+        {
+        }
+
+        public Vec3d FullPosition => new Vec3d(Position.X + HitPosition.X, Position.Y + HitPosition.Y, Position.Z + HitPosition.Z);
+
+        /// <summary>
+        /// Creates a basic BlockSelection from limited data
+        /// </summary>
+        public BlockSelection(BlockPos pos, BlockFacing face, Block block)
+        {
+            Position = pos;
+            Face = face;
+            HitPosition = new Vec3d(1, 1, 1).Offset(face.Normald).Scale(0.5);
+            Block = block;
+        }
+
         /// <summary>
         /// Creates a deep copy 
         /// </summary>
@@ -58,6 +70,64 @@ namespace Vintagestory.API.Common
                 Position = this.Position?.Copy(),
                 DidOffset = DidOffset
             };
+        }
+
+        /// <summary>
+        /// Returns a subposition index for use addressing decor subpositions on a block
+        /// </summary>
+        /// <returns></returns>
+        public int ToDecorIndex()
+        {
+            int x = (int)(HitPosition.X * 16);
+            int y = 15 - (int)(HitPosition.Y * 16);
+            int z = (int)(HitPosition.Z * 16);
+            return GetDecorIndex(Face, x, y, z);
+        }
+
+        /// <summary>
+        /// Turn face and local voxel position to a decor index
+        /// </summary>
+        /// <param name="face"></param>
+        /// <param name="vx">0..15</param>
+        /// <param name="vy">0..15</param>
+        /// <param name="vz">0..15</param>
+        /// <returns></returns>
+        public static int GetDecorIndex(BlockFacing face, int vx, int vy, int vz)
+        {
+            int offset = 0;
+            switch (face.Index)
+            {
+                case 0:
+                    offset = (15 - vx) + vy * 16;
+                    break;
+                case 1:
+                    offset = (15 - vz) + vy * 16;
+                    break;
+                case 2:
+                    offset = vx + vy * 16;
+                    break;
+                case 3:
+                    offset = vz + vy * 16;
+                    break;
+                case 4:
+                    offset = vx + vz * 16;
+                    break;
+                case 5:
+                    offset = vx + (15 - vz) * 16;
+                    break;
+            }
+
+            return face.Index + 6 * (1 + offset);
+        }
+
+        /// <summary>
+        /// Turn face to a decor index
+        /// </summary>
+        /// <param name="face"></param>
+        /// <returns></returns>
+        public static int GetDecorIndex(BlockFacing face)
+        {
+            return face.Index;
         }
     }
 

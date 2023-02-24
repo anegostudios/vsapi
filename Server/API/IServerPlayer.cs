@@ -15,6 +15,8 @@ namespace Vintagestory.API.Server
     /// </summary>
     public interface IServerPlayer : IPlayer
     {
+        event OnEntityAction InWorldAction;
+
         int ItemCollectMode { get; set; }
 
         /// <summary>

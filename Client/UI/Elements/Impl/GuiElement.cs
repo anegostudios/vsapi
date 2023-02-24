@@ -284,22 +284,24 @@ namespace Vintagestory.API.Client
         /// <param name="textureLoc">The name of the file.</param>
         /// <param name="doCache">Do we cache the file?</param>
         /// <returns>The resulting surface pattern.</returns>
-        public static SurfacePattern getPattern(ICoreClientAPI capi, AssetLocation textureLoc, bool doCache = true, int mulAlpha = 255)
+        public static SurfacePattern getPattern(ICoreClientAPI capi, AssetLocation textureLoc, bool doCache = true, int mulAlpha = 255, float scale = 1)
         {
-            if (cachedPatterns.ContainsKey(textureLoc) && cachedPatterns[textureLoc].Key.HandleValid)
+            AssetLocation cacheKey = textureLoc.Clone().WithPathPrefix(scale + "-").WithPathPrefix(mulAlpha + "@");
+            if (cachedPatterns.ContainsKey(cacheKey) && cachedPatterns[cacheKey].Key.HandleValid)
             {
-                return cachedPatterns[textureLoc].Key;
+                return cachedPatterns[cacheKey].Key;
             }
 
             ImageSurface patternSurface = getImageSurfaceFromAsset(capi, textureLoc, mulAlpha);
 
             SurfacePattern pattern = new SurfacePattern(patternSurface);
             pattern.Extend = Extend.Repeat;
+            pattern.Filter = Filter.Nearest;
 
-            if (doCache) cachedPatterns[textureLoc] = new KeyValuePair<SurfacePattern, ImageSurface>(pattern, patternSurface);
+            if (doCache) cachedPatterns[cacheKey] = new KeyValuePair<SurfacePattern, ImageSurface>(pattern, patternSurface);
 
             Matrix m = new Matrix();
-            m.Scale(1f / RuntimeEnv.GUIScale, 1f / RuntimeEnv.GUIScale);
+            m.Scale(scale / RuntimeEnv.GUIScale, scale / RuntimeEnv.GUIScale);
 
             pattern.Matrix = m;
 
@@ -355,9 +357,9 @@ namespace Vintagestory.API.Client
         /// <param name="textureLoc">The name of the texture file.</param>
         /// <param name="preserve">Whether or not to preserve the aspect ratio of the texture.</param>
         /// <returns>The surface pattern filled with the given texture.</returns>
-        public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, AssetLocation textureLoc, bool nearestScalingFiler = false, bool preserve = false, int mulAlpha = 255)
+        public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, AssetLocation textureLoc, bool nearestScalingFiler = false, bool preserve = false, int mulAlpha = 255, float scale = 1f)
         {
-            SurfacePattern pattern = getPattern(capi, textureLoc, true, mulAlpha);
+            SurfacePattern pattern = getPattern(capi, textureLoc, true, mulAlpha, scale);
             if (nearestScalingFiler)
             {
                 pattern.Filter = Filter.Nearest;
@@ -623,6 +625,11 @@ namespace Vintagestory.API.Client
             }
         }
 
+        public virtual void RenderBoundsDebug()
+        {
+            api.Render.RenderRectangle((int)Bounds.renderX, (int)Bounds.renderY, 500, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight, OutlineColor());
+        }
+
 
 
 
@@ -729,7 +736,7 @@ namespace Vintagestory.API.Client
         public virtual string MouseOverCursor { get; protected set; } = null;
 
         /// <summary>
-        /// The compressed version of the outline color as a single int value.
+        /// The compressed version of the debug outline color as a single int value.
         /// </summary>
         /// <returns></returns>
         public virtual int OutlineColor()

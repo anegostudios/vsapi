@@ -31,6 +31,12 @@ namespace Vintagestory.API.MathTools
             this.Y = y;
         }
 
+        public Vec2i(Vec3d pos)
+        {
+            this.X = (int)pos.X;
+            this.Y = (int)pos.Z;
+        }
+
         public bool Equals(Vec2i other)
         {
             return other != null && X == other.X && Y == other.Y;
@@ -57,6 +63,12 @@ namespace Vintagestory.API.MathTools
             hash = hash * 23 + X.GetHashCode();
             hash = hash * 23 + Y.GetHashCode();
             return hash;
+        }
+
+        public int this[int index]
+        {
+            get { return index == 0 ? X : Y; }
+            set { if (index == 0) X = value; else if (index == 1) Y = value; }
         }
 
         public int ManhattenDistance(Vec2i point)

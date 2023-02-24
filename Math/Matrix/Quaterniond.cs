@@ -256,15 +256,6 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Alias for {@link quat.multiply}
-        // * @function
-        // */
-        public static double[] Mul(double[] output, double[] a, double[] b)
-        {
-            return Multiply(output, a, b);
-        }
-
-        ///**
         // * Scales a quat by a scalar number
         // *
         // * @param {quat} output the receiving vector
@@ -531,15 +522,6 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Alias for {@link quat.length}
-        // * @function
-        // */
-        public static double Len(double[] a)
-        {
-            return Length_(a);
-        }
-
-        ///**
         // * Calculates the squared length of a quat
         // *
         // * @param {quat} a vector to calculate squared length of
@@ -551,14 +533,6 @@ namespace Vintagestory.API.MathTools
             return QVec4d.SquaredLength(a);
         }
 
-        ///**
-        // * Alias for {@link quat.squaredLength}
-        // * @function
-        // */
-        public static double SqrLen(double[] a)
-        {
-            return SquaredLength(a);
-        }
 
         ///**
         // * Normalize a quat
@@ -750,14 +724,6 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Alias for {@link QVec4d.subtract}
-        // * @function
-        // */
-        public static double[] Sub(double[] output, double[] a, double[] b)
-        {
-            return Subtract(output, a, b);
-        }
 
         ///**
         // * Multiplies two QVec4d's
@@ -776,15 +742,6 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Alias for {@link QVec4d.multiply}
-        // * @function
-        // */
-        //QVec4d.mul = QVec4d.multiply;
-        public static double[] Mul(double[] output, double[] a, double[] b)
-        {
-            return Multiply(output, a, b);
-        }
 
         ///**
         // * Divides two QVec4d's
@@ -803,15 +760,6 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///**
-        // * Alias for {@link QVec4d.divide}
-        // * @function
-        // */
-        //QVec4d.div = QVec4d.divide;
-        public static double[] Div(double[] output, double[] a, double[] b)
-        {
-            return Divide(output, a, b);
-        }
 
         ///**
         // * Returns the minimum of two QVec4d's
@@ -898,15 +846,6 @@ namespace Vintagestory.API.MathTools
             return GameMath.Sqrt(x * x + y * y + z * z + w * w);
         }
 
-        ///**
-        // * Alias for {@link QVec4d.distance}
-        // * @function
-        // */
-        //QVec4d.dist = QVec4d.distance;
-        public static double Dist(double[] a, double[] b)
-        {
-            return Distance(a, b);
-        }
 
         ///**
         // * Calculates the squared euclidian distance between two QVec4d's
@@ -925,14 +864,6 @@ namespace Vintagestory.API.MathTools
         }
 
         ///**
-        // * Alias for {@link QVec4d.squaredDistance}
-        // * @function
-        // */
-        public static double SqrDist(double[] a, double[] b)
-        {
-            return SquaredDistance(a, b);
-        }
-        ///**
         // * Calculates the length of a QVec4d
         // *
         // * @param {QVec4d} a vector to calculate length of
@@ -947,14 +878,6 @@ namespace Vintagestory.API.MathTools
             return GameMath.Sqrt(x * x + y * y + z * z + w * w);
         }
 
-        ///**
-        // * Alias for {@link QVec4d.length}
-        // * @function
-        // */
-        public static double Len(double[] a)
-        {
-            return Length_(a);
-        }
 
         ///**
         // * Calculates the squared length of a QVec4d
@@ -971,15 +894,6 @@ namespace Vintagestory.API.MathTools
             return x * x + y * y + z * z + w * w;
         }
 
-        ///**
-        // * Alias for {@link QVec4d.squaredLength}
-        // * @function
-        // */
-        //QVec4d.sqrLen = QVec4d.squaredLength;
-        public static double SqrLen(double[] a)
-        {
-            return SquaredLength(a);
-        }
 
         ///**
         // * Negates the components of a QVec4d
@@ -1122,11 +1036,12 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        /// Creates a new vec3 initialized with values from an existing vector
-        /// Returns {vec3} a new 3D vector
-        public static double[] CloneIt(
-            /// a vector to clone
-            double[] a)
+        /// <summary>
+        /// Creates a new vec3 initialized with values from an existing vector. Returns {vec3} a new 3D vector
+        /// </summary>
+        /// <param name="a">vector to clone</param>
+        /// <returns></returns>
+        public static double[] CloneIt(double[] a)
         {
             double[] output = new double[3];
             output[0] = a[0];
@@ -1135,15 +1050,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        /// Creates a new vec3 initialized with the given values
-        /// Returns {vec3} a new 3D vector
-        public static double[] FromValues(
-            /// X component
-            double x,
-            /// Y component
-            double y,
-            /// Z component
-            double z)
+        /// <summary>
+        /// Creates a new vec3 initialized with the given values. Returns {vec3} a new 3D vector
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static double[] FromValues(double x, double y, double z)
         {
             double[] output = new double[3];
             output[0] = x;
@@ -1152,13 +1066,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        /// Copy the values from one vec3 to another
-        ///@returns {vec3} out
-        public static double[] Copy(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the source vector
-            double[] a)
+        /// <summary>
+        /// Copy the values from one vec3 to another. Returns {vec3} out
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="a">the source vector</param>
+        /// <returns></returns>
+        public static double[] Copy(double[] output, double[] a)
         {
             output[0] = a[0];
             output[1] = a[1];
@@ -1166,17 +1080,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Set the components of a vec3 to the given values
-        ///@returns {vec3} out
-        public static double[] Set(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {Number} x X component
-            double x,
-            ////@param {Number} y Y component
-            double y,
-            ////@param {Number} z Z component
-            double z)
+        /// <summary>
+        /// Set the components of a vec3 to the given values. Returns {vec3} out
+        /// </summary>
+        /// <param name="output">the receiving vector</param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public static double[] Set(double[] output, double x, double y, double z)
         {
             output[0] = x;
             output[1] = y;
@@ -1184,15 +1096,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Adds two vec3's
-        ///@returns {vec3} out
-        public static double[] Add(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Adds two vec3's. returns {vec3} out
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Add(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] + b[0];
             output[1] = a[1] + b[1];
@@ -1200,15 +1111,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Subtracts vector b from vector a
-        ///@returns {vec3} out
-        public static double[] Substract(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Subtracts vector b from vector a. Returns {vec3} out
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a">the first operand</param>
+        /// <param name="b">the second operand</param>
+        /// <returns></returns>
+        public static double[] Substract(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] - b[0];
             output[1] = a[1] - b[1];
@@ -1216,23 +1126,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Alias for {@link vec3.subtract}
-        ///@function
-        //vec3.sub = vec3.subtract;
-        public static double[] Sub(double[] output, double[] a, double[] b)
-        {
-            return Substract(output, a, b);
-        }
 
-        ///Multiplies two vec3's
-        ///@returns {vec3} out
-        public static double[] Multiply(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Multiplies two vec3's
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Multiply(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] * b[0];
             output[1] = a[1] * b[1];
@@ -1240,21 +1142,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Alias for {@link vec3.multiply}
-        public static double[] Mul(double[] output, double[] a, double[] b)
-        {
-            return Multiply(output, a, b);
-        }
 
-        ///Divides two vec3's
-        ///@returns {vec3} out
-        public static double[] Divide(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Divides two vec3's
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Divide(double[] output, double[] a, double[] b)
         {
             output[0] = a[0] / b[0];
             output[1] = a[1] / b[1];
@@ -1262,21 +1158,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Alias for {@link vec3.divide}
-        public static double[] Div(double[] output, double[] a, double[] b)
-        {
-            return Divide(output, a, b);
-        }
 
-        ///Returns the minimum of two vec3's
-        ///@returns {vec3} out
-        public static double[] Min(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Returns the minimum of two vec3's
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Min(double[] output, double[] a, double[] b)
         {
             output[0] = Math.Min(a[0], b[0]);
             output[1] = Math.Min(a[1], b[1]);
@@ -1284,15 +1174,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Returns the maximum of two vec3's
-        ///@returns {vec3} out
-        public static double[] Max(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Returns the maximum of two vec3's
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Max(double[] output, double[] a, double[] b)
         {
             output[0] = Math.Max(a[0], b[0]);
             output[1] = Math.Max(a[1], b[1]);
@@ -1300,15 +1189,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Scales a vec3 by a scalar number
-        ///@returns {vec3} out
-        public static double[] Scale(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the vector to scale
-            double[] a,
-            ////@param {Number} b amount to scale the vector by
-            double b)
+        /// <summary>
+        /// Scales a vec3 by a scalar number
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Scale(double[] output, double[] a, double b)
         {
             output[0] = a[0] * b;
             output[1] = a[1] * b;
@@ -1316,17 +1204,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Adds two vec3's after scaling the second operand by a scalar value
-        ///@returns {vec3} out
-        public static double[] ScaleAndAdd(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b,
-            ////@param {Number} scale the amount to scale b by before adding
-            double scale)
+        /// <summary>
+        /// Adds two vec3's after scaling the second operand by a scalar value
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
+        public static double[] ScaleAndAdd(double[] output, double[] a, double[] b, double scale)
         {
             output[0] = a[0] + (b[0] * scale);
             output[1] = a[1] + (b[1] * scale);
@@ -1334,13 +1220,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Calculates the euclidian distance between two vec3's
-        ///@returns {Number} distance between a and b
-        public static double Distance(
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Calculates the euclidian distance between two vec3's. Returns {Number} distance between a and b
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double Distance(double[] a, double[] b)
         {
             double x = b[0] - a[0];
             double y = b[1] - a[1];
@@ -1348,19 +1234,14 @@ namespace Vintagestory.API.MathTools
             return GameMath.Sqrt(x * x + y * y + z * z);
         }
 
-        ///Alias for {@link vec3.distance}
-        public static double Dist(double[] a, double[] b)
-        {
-            return Distance(a, b);
-        }
 
-        ///Calculates the squared euclidian distance between two vec3's
-        ///@returns {Number} squared distance between a and b
-        public static double SquaredDistance(
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Calculates the squared euclidian distance between two vec3's. Returns {Number} squared distance between a and b
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double SquaredDistance(double[] a, double[] b)
         {
             double x = b[0] - a[0];
             double y = b[1] - a[1];
@@ -1368,19 +1249,13 @@ namespace Vintagestory.API.MathTools
             return x * x + y * y + z * z;
         }
 
-        ///Alias for {@link vec3.squaredDistance}
-        ///@function
-        //vec3.sqrDist = vec3.squaredDistance;
-        public static double SqrDist(double[] a, double[] b)
-        {
-            return SquaredDistance(a, b);
-        }
 
-        ///Calculates the length of a vec3
-        ///@returns {Number} length of a
-        public static double Length_(
-            ////@param {vec3} a vector to calculate length of
-            double[] a)
+        /// <summary>
+        /// Calculates the length of a vec3
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static double Length_(double[] a)
         {
             double x = a[0];
             double y = a[1];
@@ -1388,17 +1263,13 @@ namespace Vintagestory.API.MathTools
             return GameMath.Sqrt(x * x + y * y + z * z);
         }
 
-        ///Alias for {@link vec3.length}
-        public static double Len(double[] a)
-        {
-            return Length_(a);
-        }
 
-        ///Calculates the squared length of a vec3
-        ///@returns {Number} squared length of a
-        public static double SquaredLength(
-            ////@param {vec3} a vector to calculate squared length of
-            double[] a)
+        /// <summary>
+        /// Calculates the squared length of a vec3. Returns {Number} squared length of a
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static double SquaredLength(double[] a)
         {
             double x = a[0];
             double y = a[1];
@@ -1406,19 +1277,23 @@ namespace Vintagestory.API.MathTools
             return x * x + y * y + z * z;
         }
 
-        ///Alias for {@link vec3.squaredLength}
+        /// <summary>
+        /// SquaredLength()
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public static double SqrLen(double[] a)
         {
             return SquaredLength(a);
         }
 
-        ///Negates the components of a vec3
-        ///@returns {vec3} out
-        public static double[] Negate(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a vector to negate
-            double[] a)
+        /// <summary>
+        /// Negates the components of a vec3
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static double[] Negate(double[] output, double[] a)
         {
             output[0] = 0 - a[0];
             output[1] = 0 - a[1];
@@ -1426,13 +1301,13 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Normalize a vec3
-        ///@returns {vec3} out
-        public static double[] Normalize(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a vector to normalize
-            double[] a)
+        /// <summary>
+        /// Normalize a vec3
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public static double[] Normalize(double[] output, double[] a)
         {
             double x = a[0];
             double y = a[1];
@@ -1440,7 +1315,6 @@ namespace Vintagestory.API.MathTools
             double len = x * x + y * y + z * z;
             if (len > 0)
             {
-                //TODO: evaluate use of glm_invsqrt here?
                 double one = 1;
                 len = one / GameMath.Sqrt(len);
                 output[0] = a[0] * len;
@@ -1450,26 +1324,25 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Calculates the dot product of two vec3's
-        ///@returns {Number} dot product of a and b
-        public static double Dot(
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Calculates the dot product of two vec3's. Returns {Number} dot product of a and b
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double Dot(double[] a, double[] b)
         {
             return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
         }
 
-        ///Computes the cross product of two vec3's
-        ///@returns {vec3} out
-        public static double[] Cross(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b)
+        /// <summary>
+        /// Computes the cross product of two vec3's
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double[] Cross(double[] output, double[] a, double[] b)
         {
             double ax = a[0];
             double ay = a[1];
@@ -1485,17 +1358,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Performs a linear interpolation between two vec3's
-        ///@returns {vec3} out
-        public static double[] Lerp(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the first operand
-            double[] a,
-            ////@param {vec3} b the second operand
-            double[] b,
-            ////@param {Number} t interpolation amount between the two inputs
-            double t)
+        /// <summary>
+        /// Performs a linear interpolation between two vec3's
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static double[] Lerp(double[] output, double[] a, double[] b, double t)
         {
             double ax = a[0];
             double ay = a[1];
@@ -1505,18 +1376,16 @@ namespace Vintagestory.API.MathTools
             output[2] = az + t * (b[2] - az);
             return output;
         }
-        
 
-        ////Transforms the vec3 with a mat4.
-        ////4th vector component is implicitly '1'
-        ////@returns {vec3} out
-        public static double[] TransformMat4(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the vector to transform
-            double[] a,
-            ////@param {mat4} m matrix to transform with
-            double[] m)
+
+        /// <summary>
+        /// Transforms the vec3 with a mat4. 4th vector component is implicitly '1'
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="m"></param>
+        /// <returns></returns>
+        public static double[] TransformMat4(double[] output, double[] a, double[] m)
         {
             double x = a[0];
             double y = a[1];
@@ -1527,15 +1396,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Transforms the vec3 with a mat3.
-        ///@returns {vec3} out
-        public static double[] TransformMat3(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the vector to transform
-            double[] a,
-            ////@param {mat4} m the 3x3 matrix to transform with
-            double[] m)
+        /// <summary>
+        /// Transforms the vec3 with a mat3.
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a">the vector to transform</param>
+        /// <param name="m">the 3x3 matrix to transform with</param>
+        /// <returns></returns>
+        public static double[] TransformMat3(double[] output, double[] a, double[] m)
         {
             double x = a[0];
             double y = a[1];
@@ -1546,16 +1414,14 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
-        ///Transforms the vec3 with a quat
-        ///@returns {vec3} out
-        //    // benchmarks: http://jsperf.com/quaternion-transform-vec3-implementations
-        public static double[] TransformQuat(
-            ////@param {vec3} out the receiving vector
-            double[] output,
-            ////@param {vec3} a the vector to transform
-            double[] a,
-            ////@param {quat} q quaternion to transform with
-            double[] q)
+        /// <summary>
+        /// Transforms the vec3 with a quat
+        /// </summary>
+        /// <param name="output"></param>
+        /// <param name="a"></param>
+        /// <param name="q"></param>
+        /// <returns></returns>
+        public static double[] TransformQuat(double[] output, double[] a, double[] q)
         {
             double x = a[0];
             double y = a[1];

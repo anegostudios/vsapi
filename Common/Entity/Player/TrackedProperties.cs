@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.MathTools;
+﻿using System.Collections.Generic;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -29,11 +30,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public float sunSlight = 21;
 
-        /// <summary>
-        /// Weather at the players position
-        /// </summary>
-        //public float[] Weather;
-
+        
         /// <summary>
         /// The servers playstyle
         /// </summary>

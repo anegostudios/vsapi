@@ -215,6 +215,11 @@ namespace Vintagestory.API.MathTools
             return r | (g << 8) | (b << 16) | (a << 24);
         }
 
+        public static int FromRGBADoubles(double[] rgba)
+        {
+            return ColorFromRgba((int)rgba[0] * 255, (int)rgba[1] * 255, (int)rgba[2] * 255, (int)rgba[3] * 255);
+        }
+
 
         /// <summary>
         /// Returns a 4 element rgb double with values between 0..1
@@ -230,6 +235,11 @@ namespace Vintagestory.API.MathTools
                 ((color >> 0) & 0xff) / 255.0,
                 ((color >> 24) & 0xff) / 255.0
             };
+        }
+
+        public static int ColorFromRgba(double[] col)
+        {
+            return (int)(col[0] * 255) | ((int)(col[1] * 255) << 8) | ((int)(col[2] * 255) << 16) | ((int)(col[3] * 255) << 24);
         }
 
 

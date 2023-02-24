@@ -9,12 +9,8 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
-    /// <summary>
-    /// Used for transformations applied to a block or item model
-    /// </summary>
-
     [JsonObject(MemberSerialization.OptIn)]
-    public class ModelTransform
+    public class ModelTransformNoDefaults
     {
         /// <summary>
         /// Offsetting
@@ -50,15 +46,6 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public Vec3f ScaleXYZ = new Vec3f(1, 1, 1);
 
-        /// <summary>
-        /// Gets a new model with all values set to default.
-        /// </summary>
-        public static ModelTransform NoTransform {
-            get
-            {
-                return new ModelTransform().EnsureDefaultValues();
-            }
-        }
 
         /// <summary>
         /// Converts the transform into a matrix.
@@ -83,16 +70,58 @@ namespace Vintagestory.API.Common
             }
         }
 
-        
 
-        /*public float[] AsQuaternion
+        /// <summary>
+        /// Clears the transformation values.
+        /// </summary>
+        public void Clear()
+        {
+            Rotation.Set(0, 0, 0);
+            Translation.Set(0, 0, 0);
+            Origin.Set(0, 0, 0);
+            Scale = 1f;
+        }
+
+    }
+
+    /// <summary>
+    /// Used for transformations applied to a block or item model
+    /// </summary>
+
+
+    public class ModelTransform : ModelTransformNoDefaults
+    {
+        public ModelTransform(ModelTransformNoDefaults baseTf, ModelTransform defaults)
+        {
+            Rotate = baseTf.Rotate;
+
+            if (baseTf.Translation == null) Translation = defaults.Translation.Clone();
+            else Translation = baseTf.Translation.Clone();
+
+            if (baseTf.Rotation == null) Rotation = defaults.Rotation.Clone();
+            else Rotation = baseTf.Rotation.Clone();
+
+            if (baseTf.Origin == null) Origin = defaults.Origin.Clone();
+            else Origin = baseTf.Origin.Clone();
+
+            if (baseTf.ScaleXYZ == null) ScaleXYZ = defaults.ScaleXYZ.Clone();
+            else ScaleXYZ = baseTf.ScaleXYZ.Clone();
+        }
+
+        public ModelTransform()
+        {
+        }
+
+        /// <summary>
+        /// Gets a new model with all values set to default.
+        /// </summary>
+        public static ModelTransform NoTransform
         {
             get
             {
-                //double[] quat = Quaterniond.Create();
-                //Quaterniond.
+                return new ModelTransform().EnsureDefaultValues();
             }
-        }*/
+        }
 
         /// <summary>
         /// Scale = 1, No Translation, Rotation by -45 deg in Y-Axis
@@ -212,6 +241,8 @@ namespace Vintagestory.API.Common
         }
 
 
+
+
         /// <summary>
         /// Makes sure that Translation and Rotation is not null
         /// </summary>
@@ -244,16 +275,6 @@ namespace Vintagestory.API.Common
             };
         }
 
-        /// <summary>
-        /// Clears the transformation values.
-        /// </summary>
-        public void Clear()
-        {
-            Rotation.Set(0, 0, 0);
-            Translation.Set(0, 0, 0);
-            Origin.Set(0, 0, 0);
-            Scale = 1f;
-        }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(StreamingContext context)

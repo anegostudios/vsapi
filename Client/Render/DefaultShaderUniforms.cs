@@ -45,7 +45,7 @@ namespace Vintagestory.API.Client
         public Vec3f PlayerViewVector;
         public float DamageVignetting;
         /// <summary>
-        /// 0..1 (0 for left, 0.5 for left&right, 1 for right)
+        /// 0..1 (0 for left, 0.5 for left&amp;right, 1 for right)
         /// </summary>
         public float DamageVignettingSide;
         public float FrostVignetting;
@@ -68,6 +68,7 @@ namespace Vintagestory.API.Client
         public float GlitchStrength = 0f;
         public float WindSpeed = 0f;
         public float WindWaveIntensity = 1f;
+        public float WaterWaveIntensity = 1f;
         public float FogWaveCounter = 0f;
 
         public float GlobalWorldWarp = 0f;
@@ -87,6 +88,8 @@ namespace Vintagestory.API.Client
         public float BlockAtlasHeight;
         public float SeasonTemperature;
         public float SunSpecularIntensity = 1;
+
+        public float SunlightExtraBrightness = 0f;
 
         public int PerceptionEffectId = 1;
         public float PerceptionEffectIntensity = 1;
@@ -127,8 +130,10 @@ namespace Vintagestory.API.Client
             WaterFlowCounter = (WaterFlowCounter + dt / 1.5f) % 6000f;
             WaterWaveCounter = (WaterWaveCounter + dt * 0.75f) % 6000f;
             
-            WindWaveCounter = (WindWaveCounter + (0.5f + 5 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
+            WindWaveCounter = (WindWaveCounter + (0.5f + 2 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
             WindSpeed = GlobalConstants.CurrentWindSpeedClient.X;
+
+            WaterWaveIntensity = 0.75f + GlobalConstants.CurrentWindSpeedClient.X * 0.9f;
 
             float freq = (0.4f + WindSpeed / 10);
             WindWaveCounterHighFreq = (WindWaveCounterHighFreq + freq * (0.5f + 5 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;

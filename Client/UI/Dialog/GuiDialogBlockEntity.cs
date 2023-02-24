@@ -117,10 +117,9 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// We tunnel our packet through a block entity packet so the block entity can 
-        /// handle all the network stuff
+        /// We tunnel our packet through a block entity packet so the block entity can handle all the network stuff
         /// </summary>
-        /// <param name="packet"></param>
+        /// <param name="p"></param>
         protected void DoSendPacket(object p)
         {
             capi.Network.SendBlockEntityPacket(BlockEntityPosition.X, BlockEntityPosition.Y, BlockEntityPosition.Z, p);

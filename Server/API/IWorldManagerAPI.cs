@@ -69,6 +69,8 @@ namespace Vintagestory.API.Server
         /// </summary>
         int CurrentGeneratingChunkCount { get; }
 
+        int ChunkDeletionsInQueue { get; }
+
         /// <summary>
         /// The worlds savegame object. If you change these values they will be permanently stored
         /// </summary>
@@ -246,12 +248,28 @@ namespace Vintagestory.API.Server
         void PeekChunkColumn(int chunkX, int chunkZ, ChunkPeekOptions options);
 
         /// <summary>
-        /// Asynchrounly checks if this chunk is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up
+        /// Asynchrounly checks if this chunk is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up. Does not load the actual chunk data.
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
         /// <returns></returns>
         void TestChunkExists(int chunkX, int chunkY, int chunkZ, Action<bool> onTested);
+
+        /// <summary>
+        /// Asynchrounly checks if this map chunk is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up. Does not load the actual map chunk data.
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="onTested"></param>
+        void TestMapChunkExists(int chunkX, int chunkZ, Action<bool> onTested);
+
+        /// <summary>
+        /// Asynchrounly checks if this mapregion is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up. Does not load the actual map region data.
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <param name="onTested"></param>
+        void TestMapRegionExists(int regionX, int regionZ, Action<bool> onTested);
 
         /// <summary>
         /// Send or Resend a loaded chunk to all connected players. Has no effect when the chunk is not loaded

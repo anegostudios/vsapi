@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Threading;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -38,7 +36,6 @@ namespace Vintagestory.API.Client
         long activeUntilMs;
         long cooldownUntilMs;
         ICoreClientAPI capi;
-        List<string> activeTracks = new List<string>();
         IMusicEngine musicEngine;
 
 

@@ -1,13 +1,21 @@
-﻿//This is from Mark Morley's tutorial on frustum culling.
+﻿//The original sphere-based culling was from Mark Morley's tutorial on frustum culling.
 //http://www.crownandcutlass.com/features/technicaldetails/frustum.html
-//"This page and its contents are Copyright 2000 by Mark Morley
-//Unless otherwise noted, you may use any and all code examples provided herein in any way you want.
-//All other content, including but not limited to text and images, may not be reproduced without consent.
-//This file was last edited on Wednesday, 24-Jan-2001 13:24:38 PST"
+
+/*Original copyright notice on that source:
+ * 
+ * "This page and its contents are Copyright 2000 by Mark Morley
+ * Unless otherwise noted, you may use any and all code examples provided herein in any way you want.
+ * All other content, including but not limited to text and images, may not be reproduced without consent.
+ * This file was last edited on Wednesday, 24-Jan-2001 13:24:38 PST"
+*/
+
+// AABB update by radfast, February 2023
+
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
@@ -24,9 +32,55 @@ namespace Vintagestory.API.Client
     }
 
 
+    public struct Plane
+    {
+        public double normalX;
+        public double normalY;
+        public double normalZ;
+        public double D;
+        private const float SQRT3 = 1.7320508f;
+
+        /// <summary>
+        /// Creates a Plane with normalised (length 1.0) normal vector
+        /// </summary>
+        public Plane(double x, double y, double z, double d)
+        {
+            double normaliser = Math.Sqrt(x * x + y * y + z * z);
+            normalX = x / normaliser;
+            normalY = y / normaliser;
+            normalZ = z / normaliser;
+            D = d / normaliser;
+        }
+
+        public double distanceOfPoint(double x, double y, double z)
+        {
+            return normalX * x + normalY * y + normalZ * z + D;
+        }
+
+        public bool AABBisOutside(Sphere sphere)
+        {
+            // The 8 corners of the AABB can be found from the Sphere object, by adding or subtracting halfCubeSize from the centre position
+            float halfCubeSize = sphere.radius / SQRT3;    // this value is 16 if the sphere represents a chunk and chunksize is 32
+
+            // Optimised algorithm: First, figure out which of the 8 corners of the AABB we are going to test against this plane - if even the "lowest" corner (the corner in the direction most opposed to the plane normal direction) is outside (above) the plane then the whole AABB must be outside the plane
+            // X axis 
+            int sign = normalX > 0 ? 1 : -1;
+            float testX = sphere.x + sign * halfCubeSize;
+
+            sign = normalY > 0 ? 1 : -1;
+            float testY = sphere.y + sign * halfCubeSize;
+
+            sign = normalZ > 0 ? 1 : -1;
+            float testZ = sphere.z + sign * halfCubeSize;
+
+            // Now see if that test corner is "outside" the plane
+            return testX * normalX + testY * normalY + testZ * normalZ + D < 0;
+        }
+    }
+
+
     public class FrustumCulling
     {
-
         public int ViewDistanceSq;
         internal BlockPos playerPos;
         public float lod0BiasSq;
@@ -35,35 +89,10 @@ namespace Vintagestory.API.Client
         public double shadowRangeX;
         public double shadowRangeZ;
 
-        double frustum00;
-        double frustum01;
-        double frustum02;
-        double frustum03;
-
-        double frustum10;
-        double frustum11;
-        double frustum12;
-        double frustum13;
-
-        double frustum20;
-        double frustum21;
-        double frustum22;
-        double frustum23;
-
-        double frustum30;
-        double frustum31;
-        double frustum32;
-        double frustum33;
-
-        double frustum40;
-        double frustum41;
-        double frustum42;
-        double frustum43;
-
-        double frustum50;
-        double frustum51;
-        double frustum52;
-        double frustum53;
+        /// <summary>
+        /// Index order: Near 0, Left 1, Right 2, Top 3, Bottom 4, Far 5
+        /// </summary>
+        private Plane[] frustum = new Plane[6];
 
         public void UpdateViewDistance(int newValue)
         {
@@ -72,158 +101,88 @@ namespace Vintagestory.API.Client
 
         public bool SphereInFrustum(double x, double y, double z, double radius)
         {
-            double d = 0;
-
-            d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
-            if (d <= -radius)
-                return false;
-            d = frustum10 * x + frustum11 * y + frustum12 * z + frustum13;
-            if (d <= -radius)
-                return false;
-            d = frustum20 * x + frustum21 * y + frustum22 * z + frustum23;
-            if (d <= -radius)
-                return false;
-            d = frustum30 * x + frustum31 * y + frustum32 * z + frustum33;
-            if (d <= -radius)
-                return false;
-            d = frustum40 * x + frustum41 * y + frustum42 * z + frustum43;
-            if (d <= -radius)
-                return false;
-            d = frustum50 * x + frustum51 * y + frustum52 * z + frustum53;
-            if (d <= -radius)
-                return false;
+            if (frustum[0].distanceOfPoint(x, y, z) <= -radius) return false;
+            if (frustum[1].distanceOfPoint(x, y, z) <= -radius) return false;
+            if (frustum[2].distanceOfPoint(x, y, z) <= -radius) return false;
+            if (frustum[3].distanceOfPoint(x, y, z) <= -radius) return false;
+            if (frustum[4].distanceOfPoint(x, y, z) <= -radius) return false;
+            if (frustum[5].distanceOfPoint(x, y, z) <= -radius) return false;
 
             return true;
         }
 
 
-        public bool SphereInFrustum(Sphere sphere)
+        public bool InFrustum(Sphere sphere)
         {
-            double d;
-            float x = sphere.x;
-            float y = sphere.y;
-            float z = sphere.z;
-            float radius = sphere.radius;
-
-            d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
-            if (d <= -radius)
-                return false;
-            d = frustum10 * x + frustum11 * y + frustum12 * z + frustum13;
-            if (d <= -radius)
-                return false;
-            d = frustum20 * x + frustum21 * y + frustum22 * z + frustum23;
-            if (d <= -radius)
-                return false;
-            d = frustum30 * x + frustum31 * y + frustum32 * z + frustum33;
-            if (d <= -radius)
-                return false;
-            d = frustum40 * x + frustum41 * y + frustum42 * z + frustum43;
-            if (d <= -radius)
-                return false;
-            d = frustum50 * x + frustum51 * y + frustum52 * z + frustum53;
-            if (d <= -radius)
-                return false;
+            if (frustum[0].AABBisOutside(sphere)) return false;
+            if (frustum[1].AABBisOutside(sphere)) return false;
+            if (frustum[2].AABBisOutside(sphere)) return false;
+            if (frustum[3].AABBisOutside(sphere)) return false;
+            if (frustum[4].AABBisOutside(sphere)) return false;
+            if (frustum[5].AABBisOutside(sphere)) return false;
 
             return true;
         }
 
 
-        public bool SphereInFrustumShadowPass(Sphere sphere)
+        public bool InFrustumShadowPass(Sphere sphere)
         {
-            double d;
-            float x = sphere.x;
-            float y = sphere.y;
-            float z = sphere.z;
-            float radius = sphere.radius;
+            double dist = Math.Abs(playerPos.X - sphere.x);
+            if (dist >= shadowRangeX) return false;
+            dist = Math.Abs(playerPos.Z - sphere.z);
+            if (dist >= shadowRangeZ) return false;
 
-            d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
-            if (d <= -radius)
-                return false;
-            d = frustum10 * x + frustum11 * y + frustum12 * z + frustum13;
-            if (d <= -radius)
-                return false;
-            d = frustum20 * x + frustum21 * y + frustum22 * z + frustum23;
-            if (d <= -radius)
-                return false;
-            d = frustum30 * x + frustum31 * y + frustum32 * z + frustum33;
-            if (d <= -radius)
-                return false;
-            d = frustum40 * x + frustum41 * y + frustum42 * z + frustum43;
-            if (d <= -radius)
-                return false;
-            d = frustum50 * x + frustum51 * y + frustum52 * z + frustum53;
-            if (d <= -radius)
-                return false;
-
-            double distx = Math.Abs(playerPos.X - x);
-            double distz = Math.Abs(playerPos.Z - z);
-
-            return (distx < shadowRangeX && distz < shadowRangeZ);// && lodLevel == 1) || (distx < shadowRangeX * lodBias + 24 && distz < shadowRangeZ * lodBias + 24);
+            if (frustum[0].AABBisOutside(sphere)) return false;
+            if (frustum[1].AABBisOutside(sphere)) return false;
+            if (frustum[2].AABBisOutside(sphere)) return false;
+            if (frustum[3].AABBisOutside(sphere)) return false;
+            if (frustum[4].AABBisOutside(sphere)) return false;
+            if (frustum[5].AABBisOutside(sphere)) return false;
+            return true;// && lodLevel == 1) || (distx < shadowRangeX * lodBias + 24 && distz < shadowRangeZ * lodBias + 24);
         }
 
 
-        public bool SphereInFrustumAndRange(Sphere sphere, bool nowVisible, int lodLevel = 0)
+        public bool InFrustumAndRange(Sphere sphere, bool nowVisible, int lodLevel = 0)
         {
-            double d;
-            float x = sphere.x;
-            float y = sphere.y;
-            float z = sphere.z;
-            float radius = sphere.radius;
+            if (frustum[0].AABBisOutside(sphere)) return false;
+            if (frustum[1].AABBisOutside(sphere)) return false;
+            if (frustum[2].AABBisOutside(sphere)) return false;
+            if (frustum[3].AABBisOutside(sphere)) return false;
+            if (frustum[4].AABBisOutside(sphere)) return false;
+            // we do not test the Far plane as we have a range check instead  (and testing actually shows chunks are never beyond the Far plane anyhow)
 
-            d = frustum00 * x + frustum01 * y + frustum02 * z + frustum03;
-            if (d <= -radius)
-                return false;
-            d = frustum10 * x + frustum11 * y + frustum12 * z + frustum13;
-            if (d <= -radius)
-                return false;
-            d = frustum20 * x + frustum21 * y + frustum22 * z + frustum23;
-            if (d <= -radius)
-                return false;
-            d = frustum30 * x + frustum31 * y + frustum32 * z + frustum33;
-            if (d <= -radius)
-                return false;
-            d = frustum40 * x + frustum41 * y + frustum42 * z + frustum43;
-            if (d <= -radius)
-                return false;
-            d = frustum50 * x + frustum51 * y + frustum52 * z + frustum53;
-            if (d <= -radius)
-                return false;
 
             // Lod level 3: implements Lod2: this is the mesh drawn at long distance  (may be empty)
             // Lod level 2: implements Lod2: this is the mesh drawn at short and medium view distance
             // Lod level 1: drawn at all view distance
             // Lod level 0: only high detail stuff
 
-
-            double distance = playerPos.HorDistanceSqTo(x, z);
+            double distance = playerPos.HorDistanceSqTo(sphere.x, sphere.z);
 
             switch (lodLevel)
             {
                 case 0:
-                    return lod0BiasSq > 0 && distance < ViewDistanceSq * lod0BiasSq + 32 * 32;
+                    return lod0BiasSq > 0 && distance < lod0BiasSq + 32 * 32;
                 case 1:
                     return distance < ViewDistanceSq;
                 case 2:
-                    return distance <= ViewDistanceSq * lod2BiasSq;
+                    return distance <= lod2BiasSq;
                 case 3:
-                    return distance > ViewDistanceSq * lod2BiasSq && distance < ViewDistanceSq;
+                    return distance > lod2BiasSq && distance < ViewDistanceSq;
                 default:
                     return false;
             }
         }
 
-
-        double[] tmpMat = new double[16];
-
         public void CalcFrustumEquations(BlockPos playerPos, double[] projectionMatrix, double[] cameraMatrix)
         {
+            this.playerPos = playerPos;
+
             double[] matFrustum = Mat4d.Create();
 
             Mat4d.Multiply(matFrustum, projectionMatrix, cameraMatrix);
 
-            for (int i = 0; i < 16; i++) tmpMat[i] = matFrustum[i];
-
-            CalcFrustumEquations(playerPos, tmpMat);
+            CalcFrustumEquations(matFrustum);
         }
 
         /// <summary>
@@ -231,95 +190,56 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <remarks>
         /// From the current OpenGL modelview and projection matrices,
-        /// calculate the frustum plane equations (Ax+By+Cz+D=0, n=(A,B,C))
+        /// calculate the frustum plane equations (Ax+By+Cz+D=0, normal=(A,B,C))
         /// The equations can then be used to see on which side points are.
         /// </remarks>
-        public void CalcFrustumEquations(BlockPos playerPos, double[] frustumMatrix)
+        private void CalcFrustumEquations(double[] matrix)
         {
-            this.playerPos = playerPos;
-            double t;
-
             unchecked
             {
-                double[] clip1 = frustumMatrix;
+                double x, y, z, d;
 
                 // Extract the numbers for the RIGHT plane
-                frustum00 = clip1[3] - clip1[0];
-                frustum01 = clip1[7] - clip1[4];
-                frustum02 = clip1[11] - clip1[8];
-                frustum03 = clip1[15] - clip1[12];
-
-                // Normalize the result
-                t = Math.Sqrt(frustum00 * frustum00 + frustum01 * frustum01 + frustum02 * frustum02);
-                frustum00 /= t;
-                frustum01 /= t;
-                frustum02 /= t;
-                frustum03 /= t;
+                x = matrix[3] - matrix[0];
+                y = matrix[7] - matrix[4];
+                z = matrix[11] - matrix[8];
+                d = matrix[15] - matrix[12];
+                frustum[2] = new Plane(x, y, z, d);
 
                 // Extract the numbers for the LEFT plane
-                frustum10 = clip1[3] + clip1[0];
-                frustum11 = clip1[7] + clip1[4];
-                frustum12 = clip1[11] + clip1[8];
-                frustum13 = clip1[15] + clip1[12];
-
-                // Normalize the result
-                t = Math.Sqrt(frustum10 * frustum10 + frustum11 * frustum11 + frustum12 * frustum12);
-                frustum10 /= t;
-                frustum11 /= t;
-                frustum12 /= t;
-                frustum13 /= t;
+                x = matrix[3] + matrix[0];
+                y = matrix[7] + matrix[4];
+                z = matrix[11] + matrix[8];
+                d = matrix[15] + matrix[12];
+                frustum[1] = new Plane(x, y, z, d);
 
                 // Extract the BOTTOM plane
-                frustum20 = clip1[3] + clip1[1];
-                frustum21 = clip1[7] + clip1[5];
-                frustum22 = clip1[11] + clip1[9];
-                frustum23 = clip1[15] + clip1[13];
-
-                // Normalize the result
-                t = Math.Sqrt(frustum20 * frustum20 + frustum21 * frustum21 + frustum22 * frustum22);
-                frustum20 /= t;
-                frustum21 /= t;
-                frustum22 /= t;
-                frustum23 /= t;
+                x = matrix[3] + matrix[1];
+                y = matrix[7] + matrix[5];
+                z = matrix[11] + matrix[9];
+                d = matrix[15] + matrix[13];
+                frustum[4] = new Plane(x, y, z, d);
 
                 // Extract the TOP plane
-                frustum30 = clip1[3] - clip1[1];
-                frustum31 = clip1[7] - clip1[5];
-                frustum32 = clip1[11] - clip1[9];
-                frustum33 = clip1[15] - clip1[13];
-
-                // Normalize the result
-                t = Math.Sqrt(frustum30 * frustum30 + frustum31 * frustum31 + frustum32 * frustum32);
-                frustum30 /= t;
-                frustum31 /= t;
-                frustum32 /= t;
-                frustum33 /= t;
+                x = matrix[3] - matrix[1];
+                y = matrix[7] - matrix[5];
+                z = matrix[11] - matrix[9];
+                d = matrix[15] - matrix[13];
+                frustum[3] = new Plane(x, y, z, d);
 
                 // Extract the FAR plane
-                frustum40 = clip1[3] - clip1[2];
-                frustum41 = clip1[7] - clip1[6];
-                frustum42 = clip1[11] - clip1[10];
-                frustum43 = clip1[15] - clip1[14];
-
-                // Normalize the result
-                t = Math.Sqrt(frustum40 * frustum40 + frustum41 * frustum41 + frustum42 * frustum42);
-                frustum40 /= t;
-                frustum41 /= t;
-                frustum42 /= t;
-                frustum43 /= t;
+                x = matrix[3] - matrix[2];
+                y = matrix[7] - matrix[6];
+                z = matrix[11] - matrix[10];
+                d = matrix[15] - matrix[14];
+                frustum[5] = new Plane(x, y, z, d);
 
                 // Extract the NEAR plane
-                frustum50 = clip1[3] + clip1[2];
-                frustum51 = clip1[7] + clip1[6];
-                frustum52 = clip1[11] + clip1[10];
-                frustum53 = clip1[15] + clip1[14];
-
-                // Normalize the result
-                t = Math.Sqrt(frustum50 * frustum50 + frustum51 * frustum51 + frustum52 * frustum52);
-                frustum50 /= t;
-                frustum51 /= t;
-                frustum52 /= t;
-                frustum53 /= t;
+                x = matrix[3] + matrix[2];
+                y = matrix[7] + matrix[6];
+                z = matrix[11] + matrix[10];
+                d = matrix[15] + matrix[14];
+                frustum[0] = new Plane(x, y, z, d);
             }
         }
 

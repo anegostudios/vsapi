@@ -48,7 +48,7 @@ namespace Vintagestory.API.Datastructures
         {
             return new IntDataMap2D()
             {
-                Data = new int[1],
+                Data = new int[0],
                 Size = 0
             };
         }
@@ -58,6 +58,11 @@ namespace Vintagestory.API.Datastructures
         public int GetInt(int x, int z)
         {
             return Data[z * Size + x];
+        }
+
+        public void SetInt(int x, int z, int value)
+        {
+            Data[z * Size + x] = value;
         }
 
         public int GetUnpaddedInt(int x, int z)

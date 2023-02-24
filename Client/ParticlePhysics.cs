@@ -19,11 +19,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Was falling and has now collided with the terrain
         /// </summary>
-        Collided,
-        /// <summary>
-        /// Collided and is now resting on the ground
-        /// </summary>
-        //Resting
+        Collided
     }
 
     [Flags]

@@ -33,6 +33,16 @@ namespace Vintagestory.API.Common
         public BlockEntity Blockentity;
 
         /// <summary>
+        /// Alias of Blockentity.Pos
+        /// </summary>
+        public BlockPos Pos => Blockentity.Pos;
+
+        /// <summary>
+        /// Alias of BlockEntity.Block
+        /// </summary>
+        public Block Block => Blockentity.Block;
+
+        /// <summary>
         /// The properties of this block behavior.
         /// </summary>
         public JsonObject properties;
@@ -68,7 +78,7 @@ namespace Vintagestory.API.Common
             
         }
 
-        public virtual void OnBlockPlaced()
+        public virtual void OnBlockPlaced(ItemStack byItemStack = null)
         {
             
         }
@@ -103,7 +113,7 @@ namespace Vintagestory.API.Common
             
         }
 
-        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
         {
             
         }

@@ -26,20 +26,20 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// If you need mods to be executed in a certain order, adjust this methods return value.
-        /// The server will call each Mods StartPre() & Start() methods in ascending order of each mods execute order value. And thus, as long as every mod registers it's event handlers in the Start() method, all event handlers will be called in the same execution order.
-        /// Default execute order of some survival mod parts
-        /// Worldgen:
-        /// - GenTerra: 0 
-        /// - RockStrata: 0.1
-        /// - Deposits: 0.2
-        /// - Caves: 0.3
-        /// - Blocklayers: 0.4
-        /// Asset Loading
-        /// - Json Overrides loader: 0.05
-        /// - Load hardcoded mantle block: 0.1
-        /// - Block and Item Loader: 0.2
-        /// - Recipes (Smithing, Knapping, Clayforming, Grid recipes, Alloys) Loader: 1
+        /// If you need mods to be executed in a certain order, adjust this methods return value.<br/>
+        /// The server will call each Mods StartPre() and Start() methods in ascending order of each mods execute order value. And thus, as long as every mod registers it's event handlers in the Start() method, all event handlers will be called in the same execution order.<br/>
+        /// Default execute order of some survival mod parts<br/>
+        /// Worldgen:<br/>
+        /// - GenTerra: 0 <br/>
+        /// - RockStrata: 0.1<br/>
+        /// - Deposits: 0.2<br/>
+        /// - Caves: 0.3<br/>
+        /// - Blocklayers: 0.4<br/>
+        /// Asset Loading<br/>
+        /// - Json Overrides loader: 0.05<br/>
+        /// - Load hardcoded mantle block: 0.1<br/>
+        /// - Block and Item Loader: 0.2<br/>
+        /// - Recipes (Smithing, Knapping, Clayforming, Grid recipes, Alloys) Loader: 1<br/>
         /// </summary>
         /// <returns></returns>
         public virtual double ExecuteOrder()
@@ -111,7 +111,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Full start to the mod on the server side
         /// <br/><br/>In 1.17+ do NOT use this to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON).
-        /// It is already too late to do that here, it will not be seen client-side.  Instead, code which needs to do that should be registered for event sapi.Event.AssetsFinalizers.  See VSSurvivalMod system BlockReinforcement.cs for an example.
+        /// It is already too late to do that here, it will not be seen client-side. Instead, code which needs to do that should be placed in the overriden method AssetsFinalize(). See VSSurvivalMod system BlockReinforcement.cs for an example.
         /// </summary>
         /// <param name="api"></param>
         public virtual void StartServerSide(ICoreServerAPI api)

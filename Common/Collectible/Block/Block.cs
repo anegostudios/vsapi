@@ -14,14 +14,6 @@ using VintagestoryAPI.Math.Vector;
 
 namespace Vintagestory.API.Common
 {
-    public enum EnumIgniteState
-    {
-        NotIgnitable,
-        NotIgnitablePreventDefault,
-        Ignitable,
-        IgniteNow
-    }
-
     public delegate void BlockBehaviorDelegate(BlockBehavior behavior, ref EnumHandling handling);
 
     /// <summary>
@@ -358,6 +350,10 @@ namespace Vintagestory.API.Common
 
         public int TextureSubIdForBlockColor = -1;
 
+        public virtual string ClimateColorMapForMap => ClimateColorMap;
+        public virtual string SeasonColorMapForMap => SeasonColorMap;
+
+
         /// <summary>
         /// Creates a new instance of a block with default model transforms
         /// </summary>
@@ -402,7 +398,6 @@ namespace Vintagestory.API.Common
 
         public virtual void LoadTextureSubIdForBlockColor()
         {
-
             TextureSubIdForBlockColor = -1;
             if (Textures == null) return;
 
@@ -1164,33 +1159,12 @@ namespace Vintagestory.API.Common
                 if (Drops[i].LastDrop) break;
             }
 
+            todrop.AddRange(dropStacks);
+
             return todrop.ToArray();
         }
 
         
-        /// <summary>
-        /// Called while the given entity attempts to ignite this block
-        /// </summary>
-        /// <param name="byEntity"></param>
-        /// <param name="pos"></param>
-        /// <param name="secondsIgniting"></param>
-        /// <returns>true when this block is ignitable</returns>
-        public virtual EnumIgniteState OnTryIgniteBlock(EntityAgent byEntity, BlockPos pos, float secondsIgniting)
-        {
-            return EnumIgniteState.NotIgnitable;
-        }
-
-        /// <summary>
-        /// Called after the given entity has attempted to ignite this block
-        /// </summary>
-        /// <param name="byEntity"></param>
-        /// <param name="pos"></param>
-        /// <param name="secondsIgniting"></param>
-        /// <param name="handling"></param>
-        public virtual void OnTryIgniteBlockOver(EntityAgent byEntity, BlockPos pos, float secondsIgniting, ref EnumHandling handling)
-        {
-            handling = EnumHandling.PassThrough;
-        }
 
 
         /// <summary>
@@ -1344,6 +1318,26 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        /// <summary>
+        /// When a Command Block, console command or (perhaps in future) non-player entity wants to activate this placed block
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="caller"></param>
+        /// <param name="blockSelection"></param>
+        public virtual void Activate(IWorldAccessor world, Caller caller, BlockSelection blockSel, ITreeAttribute activationArgs = null)
+        {
+            
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                behavior.Activate(world, caller, blockSel, activationArgs, ref handled);
+                
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+        }
+
+
+
 
         /// <summary>
         /// Called every frame while the player is using this block. Return false to stop the interaction.
@@ -1490,13 +1484,14 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Everytime the player moves by 8 blocks (or rather leaves the current 8-grid), a scan of all blocks 32x32x32 blocks around the player is initiated
-        /// and this method is called. If the method returns true, the block is registered to a client side game ticking for spawning particles and such.
+        /// Everytime the player moves by 8 blocks (or rather leaves the current 8-grid), a scan of all blocks 32x32x32 blocks around the player is initiated<br/>
+        /// and this method is called. If the method returns true, the block is registered to a client side game ticking for spawning particles and such.<br/>
         /// This method will be called everytime the player left his current 8-grid area. 
         /// </summary>
         /// <param name="world"></param>
         /// <param name="player"></param>
         /// <param name="pos"></param>
+        /// <param name="isWindAffected"></param>
         /// <returns></returns>
         public virtual bool ShouldReceiveClientParticleTicks(IWorldAccessor world, IPlayer player, BlockPos pos, out bool isWindAffected)
         {
@@ -1588,7 +1583,7 @@ namespace Vintagestory.API.Common
             if (GlobalConstants.MeltingFreezingEnabled && (this == snowCovered1 || this == snowCovered2 || this == snowCovered3))
             {
                 ClimateCondition conds = world.BlockAccessor.GetClimateAt(pos, EnumGetClimateMode.NowValues);
-                if (conds.Temperature > 4)
+                if (conds != null && conds.Temperature > 4)
                 {
                     extra = "melt";
                     return true;
@@ -1624,19 +1619,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        /// <summary>
-        /// When the item is being held in hands without using it 
-        /// </summary>
-        /// <param name="slot"></param>
-        /// <param name="byEntity"></param>
-        public override void OnHeldIdle(ItemSlot slot, EntityAgent byEntity)
-        {
-
-
-            base.OnHeldIdle(slot, byEntity);
-        }
-
-
         public virtual void OnDecalTesselation(IWorldAccessor world, MeshData decalMesh, BlockPos pos)
         {
             if (VertexFlags.WindMode == EnumWindBitMode.Leaves)
@@ -1651,10 +1633,12 @@ namespace Vintagestory.API.Common
             {
                 if (VertexFlags.WindMode == EnumWindBitMode.NormalWind)
                 {
-                    SetWindFlag(decalMesh);
+                    decalMesh.SetWindFlag();
                 }
             }
         }
+
+        protected float waveFlagMinY = 9 / 16f;
 
         /// <summary>
         /// If this block uses drawtype json, this method will be called everytime a chunk containing this block is tesselated. 
@@ -1678,99 +1662,17 @@ namespace Vintagestory.API.Common
             {
                 if (VertexFlags.WindMode == EnumWindBitMode.NormalWind)
                 {
-                    SetWindFlag(sourceMesh);
+                    sourceMesh.SetWindFlag(waveFlagMinY);
                 }
             }
         }
-
 
         public virtual int OnInstancedTesselation(int light, BlockPos pos, Block[] chunkExtBlocks, int extIndex3d, out int sideDisableWindwave)
         {
             sideDisableWindwave = 0;
             return 0;
         }
-
-
-        public float WaveFlagMinY = 9 / 16f;
         
-
-        /// <summary>
-        /// Sets given flag if vertex y > WaveFlagMinY, otherwise it clears all wind mode bits
-        /// </summary>
-        /// <param name="sourceMesh"></param>
-        /// <param name="flag"></param>
-        protected virtual void SetWindFlag(MeshData sourceMesh, int flag = EnumWindBitModeMask.NormalWind)
-        {
-            int verticesCount = sourceMesh.VerticesCount;
-            for (int i = 0; i < verticesCount; i++)
-            {
-                float y = sourceMesh.xyz[i * 3 + 1];
-
-                if (y > WaveFlagMinY)
-                {
-                    sourceMesh.Flags[i] |= flag;
-                }
-                else
-                {
-                    sourceMesh.Flags[i] &= VertexFlags.ClearWindModeBitsMask;
-                }
-            }
-        }
-
-        protected virtual void ClearWindFlags(MeshData sourceMesh)
-        {
-            int verticesCount = sourceMesh.VerticesCount;
-            for (int i = 0; i < verticesCount; i++)
-            {
-                sourceMesh.Flags[i] &= VertexFlags.ClearWindModeBitsMask;
-            }
-        }
-
-        public static void ToggleWindModeSetWindData(MeshData sourceMesh, int leavesNoShearTileSide, bool enableWind, int groundOffsetTop, int[] origFlags)
-        {
-            if (origFlags == null) origFlags = sourceMesh.Flags;
-            int clearFlags = VertexFlags.ClearWindBitsMask;
-            int verticesCount = sourceMesh.VerticesCount;
-
-            if (!enableWind)
-            {
-                // Shorter return path, and no need to test off in every iteration of the loop in the other code path
-                for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
-                {
-                    sourceMesh.Flags[vertexNum] &= clearFlags;
-                }
-                return;
-            }
-
-            // We add the ground offset to the winddatabits, but not if this side of the block is flagged in leavesNoShearTileSide (because against a solid block) - in that case, ground offset will remain zero
-            for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
-            {
-                int flag = sourceMesh.Flags[vertexNum] &= VertexFlags.ClearWindDataBitsMask;
-
-                float fx = sourceMesh.xyz[vertexNum * 3 + 0];
-                float fz = sourceMesh.xyz[vertexNum * 3 + 2];
-
-                // The calculation (int)(x - 1.5f) will be either -2, -1 or 0 - this works reliably unless a vertex is positioned greater than +40/16 or less than -24/16 in which case this code may produce surprising waves (but no leaf block vertex is anywhere close to these limits, even if rotated: a basic leaf model is the widest I know of, some vertices are at coordinates 24/16 or -8/16)
-                // The arithmetic right bit shift converts -2 to -1, while also preserving -1 -> -1 and leaving a value of 0 unchanged: a useful performance trick to avoid conditional jumps.
-
-                int x = (int)(fx - 1.5f) >> 1;
-                int y = (int)(sourceMesh.xyz[vertexNum * 3 + 1] - 1.5f) >> 1;
-                int z = (int)(fz - 1.5f) >> 1;
-
-                int sidesToCheckMask = 1 << TileSideEnum.Up - y | 4 + z * 3 | 2 - x * 6;     // evaluates to 32 or 16 (for y = -1 or 0)  +  1 or 4 (for z = -1 or 0)  +   8 or 2 (for x = -1 or 0)   In other words, bit flags in bit positions corresponding to TileSideFlagsEnum
-                                                                                             // Every vertex has three flags set, because all vertices are on the "outside" of a leaves block - yes, a leaves block is not a standard cube and it has probably been rotated, but this is a good enough approximation to whether this vertex is close to the solid neighbour or not
-                if ((leavesNoShearTileSide & sidesToCheckMask) == 0)
-                {
-                    flag |= (groundOffsetTop == 8 ? 7 : groundOffsetTop + y) << VertexFlags.WindDataBitsPos;
-                }
-
-                sourceMesh.Flags[vertexNum] = flag;
-            }
-        }
-
-
-
-
 
         /// <summary>
         /// Used as base position for particles.
@@ -1848,10 +1750,6 @@ namespace Vintagestory.API.Common
         {
             BlockPos targetPos = blockSel.DidOffset ? blockSel.Position.AddCopy(blockSel.Face.Opposite) : blockSel.Position;
 
-            /*double dx = byPlayer.Entity.Pos.X - (targetPos.X + blockSel.HitPosition.X);
-            double dy = (float)byPlayer.Entity.Pos.Y + (float)(byPlayer.Entity.EyeHeight - (targetPos.Y + blockSel.HitPosition.Y));
-            double dz = (float)byPlayer.Entity.Pos.Z - (targetPos.Z + blockSel.HitPosition.Z);*/
-
             double dx = byPlayer.Entity.Pos.X + byPlayer.Entity.LocalEyePos.X - (targetPos.X + blockSel.HitPosition.X);
             double dy = byPlayer.Entity.Pos.Y + byPlayer.Entity.LocalEyePos.Y - (targetPos.Y + blockSel.HitPosition.Y);
             double dz = byPlayer.Entity.Pos.Z + byPlayer.Entity.LocalEyePos.Z - (targetPos.Z + blockSel.HitPosition.Z);
@@ -1871,15 +1769,6 @@ namespace Vintagestory.API.Common
         }
 
 
-        /// <summary>
-        /// Simple string representation for debugging
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return Code.Domain + AssetLocation.LocationSeparator + "block " + Code.Path + "/" + BlockId;
-        }
-
 
         /// <summary>
         /// Called in the servers main thread
@@ -1892,13 +1781,14 @@ namespace Vintagestory.API.Common
         {
             if (newBlock.Id != Id && (BlockMaterial == EnumBlockMaterial.Snow || BlockId == 0 || this.FirstCodePart() == newBlock.FirstCodePart()))
             {
-                ba.SetBlock(newBlock.Id, pos);
+                ba.ExchangeBlock(newBlock.Id, pos);
             }
         }
 
         /// <summary>
         /// Should return the snow covered block code for given snow level. Return null if snow cover is not supported for this block. If not overridden, it will check if Variant["cover"] exists and return its snow covered variant.
         /// </summary>
+        /// <param name="pos"></param>
         /// <param name="snowLevel"></param>
         /// <returns></returns>
         public virtual Block GetSnowCoveredVariant(BlockPos pos, float snowLevel)
@@ -1934,6 +1824,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Return a positive integer if the block retains heat (for warm rooms or greenhouses) or a negative integer if it preserves cool (for cellars)
         /// </summary>
+        /// <param name="pos"></param>
         /// <param name="facing"></param>
         /// <returns></returns>
         public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing)
@@ -1951,6 +1842,10 @@ namespace Vintagestory.API.Common
             return 0;
         }
 
+        public virtual bool IsClimbable(BlockPos pos)
+        {
+            return Climbable;
+        }
 
 
         /// <summary>
@@ -2075,17 +1970,6 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Called by the block info HUD for displaying the blocks name
-        /// </summary>
-        /// <param name="world"></param>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        public virtual string GetPlacedBlockName(IWorldAccessor world, BlockPos pos)
-        {
-            return OnPickBlock(world, pos)?.GetName();
-        }
-
-        /// <summary>
         /// Called by the block info HUD for display the interaction help besides the crosshair
         /// </summary>
         /// <param name="world"></param>
@@ -2133,6 +2017,27 @@ namespace Vintagestory.API.Common
             return interactions;
         }
 
+
+
+
+        /// <summary>
+        /// Called by the block info HUD for displaying the blocks name
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual string GetPlacedBlockName(IWorldAccessor world, BlockPos pos)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(OnPickBlock(world, pos)?.GetName());
+
+            foreach (BlockBehavior bh in BlockBehaviors)
+            {
+                bh.GetPlacedBlockName(sb, world, pos);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
 
         /// <summary>
         /// Called by the block info HUD for displaying additional information
@@ -2215,6 +2120,7 @@ namespace Vintagestory.API.Common
         {
             ItemStack stack = inSlot.Itemstack;
 
+            if (DrawType == EnumDrawType.SurfaceLayer) dsc.AppendLine(Lang.Get("Decor layer block"));
             dsc.Append(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + GetBlockMaterial(world.BlockAccessor, null, stack)) + "\n");
             
 
@@ -2269,43 +2175,6 @@ namespace Vintagestory.API.Common
         {
             (Textures as TextureDictionary).BakeAndCollect(api.Assets, textureDict, Code, "Baked variant of block ");
             (TexturesInventory as TextureDictionary).BakeAndCollect(api.Assets, textureDict, Code, "Baked inventory variant of block ");
-        }
-
-
-        /// <summary>
-        /// Returns a new AssetLocation with the wildcards (*) being filled with the blocks other Code parts, if the wildcard matches. 
-        /// Example this block is trapdoor-up-north. search is *-up-*, replace is *-down-*, in this case this method will return trapdoor-down-north.
-        /// </summary>
-        /// <param name="search"></param>
-        /// <param name="replace"></param>
-        /// <returns></returns>
-        public AssetLocation WildCardReplace(AssetLocation search, AssetLocation replace)
-        {
-            if (search == Code) return search;
-
-            if (Code == null || search.Domain != Code.Domain) return null;
-
-            string pattern = Regex.Escape(search.Path).Replace(@"\*", @"(.*)");
-
-            Match match = Regex.Match(Code.Path, @"^" + pattern + @"$");
-            if (!match.Success) return null;
-
-            string outCode = replace.Path;
-
-            for (int i = 1; i < match.Groups.Count; i++)
-            {
-                Group g = match.Groups[i];
-                CaptureCollection cc = g.Captures;
-                for (int j = 0; j < cc.Count; j++)
-                {
-                    Capture c = cc[j];
-
-                    int pos = outCode.IndexOf('*');
-                    outCode = outCode.Remove(pos, 1).Insert(pos, c.Value);
-                }
-            }
-
-            return new AssetLocation(Code.Domain, outCode);
         }
 
 
@@ -2388,16 +2257,13 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public virtual string ClimateColorMapForMap => ClimateColorMap;
-        public virtual string SeasonColorMapForMap => SeasonColorMap;
-
-
         /// <summary>
         /// Should return the color to be used for the block particle coloring
         /// </summary>
         /// <param name="capi"></param>
         /// <param name="pos"></param>
         /// <param name="facing"></param>
+        /// <param name="rndIndex"></param>
         /// <returns></returns>
         public virtual int GetRandomColor(ICoreClientAPI capi, BlockPos pos, BlockFacing facing, int rndIndex = -1)
         {
@@ -2458,6 +2324,9 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetColorWithoutTint(ICoreClientAPI capi, BlockPos pos)
         {
+            var block = HasBehavior("Decor", api.ClassRegistry) ? null : capi.World.BlockAccessor.GetDecor(pos, BlockFacing.UP.Index);
+            if (block != null && block != this) return block.GetColorWithoutTint(capi, pos);
+
             if (TextureSubIdForBlockColor < 0) return ColorUtil.WhiteArgb;
             return capi.BlockTextureAtlas.GetAverageColor(TextureSubIdForBlockColor);
         }
@@ -2465,6 +2334,66 @@ namespace Vintagestory.API.Common
         public virtual bool AllowSnowCoverage(IWorldAccessor world, BlockPos blockPos)
         {
             return SideSolid[BlockFacing.UP.Index];
+        }
+
+        /// <summary>
+        /// Alias of api.World.BlockAccessor.GetBlockEntity(blockSel.Position) as T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="blockSel"></param>
+        /// <returns></returns>
+        public virtual T GetBlockEntity<T>(BlockSelection blockSel) where T : BlockEntity
+        {
+            return api.World.BlockAccessor.GetBlockEntity(blockSel.Position) as T;
+        }
+
+        /// <summary>
+        /// Alias of api.World.BlockAccessor.GetBlockEntity(position) as T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        public virtual T GetBlockEntity<T>(BlockPos position) where T : BlockEntity
+        {
+            return api.World.BlockAccessor.GetBlockEntity(position) as T;
+        }
+
+        /// <summary>
+        /// Alias of api.World.BlockAccessor.GetBlockEntity(pos)?.GetBehavior&lt;T&gt;()
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual T GetBEBehavior<T>(BlockPos pos) where T : BlockEntityBehavior
+        {
+            return api.World.BlockAccessor.GetBlockEntity(pos)?.GetBehavior<T>();
+        }
+
+        /// <summary>
+        /// Returns instance of class that implements this interface in the following order<br/>
+        /// 1. Block<br/>
+        /// 2. BlockBehavior<br/>
+        /// 3. BlockEntity<br/>
+        /// 4. BlockEntityBehavior
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual T GetInterface<T>(IWorldAccessor world, BlockPos pos) where T: class
+        {
+            if (this is T blockt) return blockt;
+            var bh = GetBehavior(typeof(T), true);
+            if (bh != null) return bh as T;
+            var be = world.BlockAccessor.GetBlockEntity(pos);
+            if (be is T bet) return bet;
+
+            if (be != null)
+            {
+                var beh = be.GetBehavior<T>();
+                if (beh is T beht) return beht;
+            }
+
+            return null;
         }
 
 
@@ -2480,16 +2409,16 @@ namespace Vintagestory.API.Common
 
             if (MiningSpeed != null) cloned.MiningSpeed = new Dictionary<EnumBlockMaterial, float>(MiningSpeed);
 
-            if (Textures is FakeDictionary<string, CompositeTexture> fastTextures) cloned.Textures = fastTextures.Clone();
+            if (Textures is FastSmallDictionary<string, CompositeTexture> fastTextures) cloned.Textures = fastTextures.Clone();
             else
             {
-                cloned.Textures = new FakeDictionary<string, CompositeTexture>(Textures.Count);
+                cloned.Textures = new FastSmallDictionary<string, CompositeTexture>(Textures.Count);
                 foreach (var var in Textures)
                 {
                     cloned.Textures[var.Key] = var.Value.Clone();
                 }
             }
-            if (TexturesInventory is FakeDictionary<string, CompositeTexture> fastInvTextures) cloned.TexturesInventory = fastInvTextures.Clone();
+            if (TexturesInventory is FastSmallDictionary<string, CompositeTexture> fastInvTextures) cloned.TexturesInventory = fastInvTextures.Clone();
             else
             {
                 cloned.TexturesInventory = new Dictionary<string, CompositeTexture>();
@@ -2593,7 +2522,7 @@ namespace Vintagestory.API.Common
 
 
 
-        internal void CheckTextures(ILogger logger)
+        internal void EnsureValidTextures(ILogger logger)
         {
             List<string> toRemove = null;
             int i = 0;
@@ -2635,5 +2564,16 @@ namespace Vintagestory.API.Common
 
             return liquidBarrierHeightonSide[face.Index];
         }
+
+
+        /// <summary>
+        /// Simple string representation for debugging
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Code.Domain + AssetLocation.LocationSeparator + "block " + Code.Path + "/" + BlockId;
+        }
+
     }
 }

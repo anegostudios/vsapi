@@ -31,6 +31,7 @@ namespace Vintagestory.API.Client
         /// <br/>
         /// OIT:<br/>
         /// 0.2 = Frame buffer debug screen<br/>
+        /// 0.35 = Clouds<br/>
         /// 0.37 = Terrain oit<br/>
         /// 0.4 = Enitities<br/>
         /// 0.6 = particles<br/>
@@ -85,10 +86,5 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime"></param>
         /// <param name="stage"></param>
         void OnRenderFrame(float deltaTime, EnumRenderStage stage);
-
-        /// <summary>
-        /// Called when the renderer was unregistered. Should free up the gpu memory you reserved.
-        /// </summary>
-        void Dispose();
     }
 }

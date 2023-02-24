@@ -47,6 +47,14 @@ namespace Vintagestory.API.MathTools
 
         private const float maxIntF = (float)int.MaxValue;
         private const double maxIntD = (double)uint.MaxValue;
+        /// <summary>
+        /// Square root of int.MaxValue, used for generating floats with approximately 15 bits / 4.5 decimal digits of precision
+        /// </summary>
+        private const float semiMaxIntF = (float)46340;
+        /// <summary>
+        /// Square root of int.MaxValue, used for generating floats with approximately 15 bits / 4.5 decimal digits of precision
+        /// </summary>
+        private const int semiMaxInt = 46341;
 
         /// <summary>
         /// Initialize random with given seed
@@ -175,6 +183,20 @@ namespace Vintagestory.API.MathTools
             currentSeed = seed * (seed * 6364136223846793005L + 1442695040888963407L) + mapGenSeed;
 
             return r / maxIntF;
+        }
+
+        /// <summary>
+        /// Returns a random number from -1.0F - 1.0F (inclusive) with a bias towards the zero value (triangle graph, similar to how rolling two 6-sided dice and adding the result is most likely to yield 7)
+        /// <br/>Precise to better than 15 binary digits / better than 4 significant figures in decimal
+        /// </summary>
+        /// <returns></returns>
+        public float NextFloatMinusToPlusOne()
+        {
+            long seed = currentSeed;
+            int r = (int)(seed >> 24) & int.MaxValue;   // The binary AND forces this to be positive, similar to adding MaxValue if it tests negative
+            currentSeed = seed * (seed * 6364136223846793005L + 1442695040888963407L) + mapGenSeed;
+
+            return ((r % semiMaxInt) - (r / semiMaxInt)) / semiMaxIntF;
         }
 
         /// <summary>

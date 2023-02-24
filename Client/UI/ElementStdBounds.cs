@@ -12,7 +12,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public static partial class ElementStdBounds
     {
-        public static int mainMenuUnscaledLogoSize = 280;
+        public static int mainMenuUnscaledLogoSize = 230;
         public static int mainMenuUnscaledLogoHorPadding = 30;
         public static int mainMenuUnscaledLogoVerPadding = 10;
         public static int mainMenuUnscaledWoodPlankWidth = 13;
@@ -23,7 +23,7 @@ namespace Vintagestory.API.Client
         /// <param name="alignment"></param>
         /// <param name="width"></param>
         /// <returns></returns>
-        public static ElementBounds Statbar( EnumDialogArea alignment, double width)
+        public static ElementBounds Statbar(EnumDialogArea alignment, double width)
         {
             return new ElementBounds()
             {

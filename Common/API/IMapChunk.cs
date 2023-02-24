@@ -31,22 +31,24 @@ namespace Vintagestory.API.Common
         /// </summary>
         EnumWorldGenPass CurrentPass { get; set; }
 
-        [Obsolete("Use SetModData instead")]
+
         /// <summary>
         /// Server: Can be used to store custom data along with the map chunk
         /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
         /// <param name="data"></param>
+        [Obsolete("Use SetModData instead")]
         void SetData(string key, byte[] data);
 
-        [Obsolete("Use GetModData instead")]
+
         /// <summary>
         /// Server: Can be used to retrieve custom data from the map chunk (as previously set by SetModdata)
         /// Client: Not implemented. Map chunk Moddata is not synced from server to client
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
+        [Obsolete("Use GetModData instead")]
         byte[] GetData(string key);
 
 
@@ -88,6 +90,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
+        /// <param name="defaultValue">Default value</param>
         /// <returns></returns>
         T GetModdata<T>(string key, T defaultValue = default(T));
 

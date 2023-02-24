@@ -97,7 +97,7 @@ namespace Vintagestory.API.Util
                 };
                 ILoadedSound sound = capi.World.LoadSound(param);
                 soundLength = sound?.SoundLengthSeconds ?? 0.1f;
-                sound.Dispose();
+                sound?.Dispose();
             }
         }
 

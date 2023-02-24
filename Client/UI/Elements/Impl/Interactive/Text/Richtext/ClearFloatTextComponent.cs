@@ -16,7 +16,7 @@ namespace Vintagestory.API.Client
             UnscaledMarginTop = unScaleMarginTop;
         }
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             double y2 = lineY;
 
@@ -39,7 +39,7 @@ namespace Vintagestory.API.Client
 
             nextOffsetX = 0;
 
-            return this.Float == EnumFloat.None;
+            return this.Float == EnumFloat.None ? EnumCalcBoundsResult.Nextline : EnumCalcBoundsResult.Continue;
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)

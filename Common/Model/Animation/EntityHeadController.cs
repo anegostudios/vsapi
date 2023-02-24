@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -54,7 +49,14 @@ namespace Vintagestory.API.Common
                 entity.Pos.HeadPitch = GameMath.Clamp((entity.Pos.Pitch - GameMath.PI) * 0.75f, -1.2f, 1.2f);
             }
 
-            if (player?.Entity == null || player.Entity.MountedOn != null || (player as IClientPlayer).CameraMode == EnumCameraMode.Overhead)
+            EnumMountAngleMode angleMode = EnumMountAngleMode.Unaffected;
+            var mount = player.Entity.MountedOn;
+            if (player.Entity.MountedOn != null)
+            {
+                angleMode = mount.AngleMode;
+            }
+
+            if (player?.Entity == null || angleMode == EnumMountAngleMode.Fixate || angleMode == EnumMountAngleMode.FixateYaw || (player as IClientPlayer).CameraMode == EnumCameraMode.Overhead)
             {
                 entity.BodyYaw = entity.Pos.Yaw;
 
@@ -90,7 +92,8 @@ namespace Vintagestory.API.Common
 
                     bool attachedToClimbWall = false;
 
-                    float threshold = 1f - (ismoving ? 0.99f : 0) + (attachedToClimbWall ? 3 : 0);
+                    float threshold = 1.2f - (ismoving ? 1.19f : 0) + (attachedToClimbWall ? 3 : 0);
+                    if (entity.Controls.Gliding) threshold = 0;
 
                     if (player.PlayerUID == capi.World.Player.PlayerUID && capi.Settings.Bool["immersiveFpMode"] && false)
                     {
@@ -115,18 +118,19 @@ namespace Vintagestory.API.Common
 
     public class EntityHeadController
     {
-        public ShapeElement HeadElement;
-        public ShapeElement NeckElement;
+        public ElementPose HeadPose;
+        public ElementPose NeckPose;
+        public ElementPose UpperTorsoPose;
+        public ElementPose LowerTorsoPose;
+
+        public ElementPose UpperFootLPose;
+        public ElementPose UpperFootRPose;
+
 
         protected EntityAgent entity;
         protected IAnimationManager animManager;
 
-        protected float[] HeadGlobalMatrix = null;
-        protected float[] HeadGlobalMatrixInverted = null;
-        protected float[] HeadLocalMatrix = null;
-        protected float[] tmpMatrix = Mat4f.Create();
-
-        public float dy=0, dp = 0;
+        public float yawOffset = 0, pitchOffset = 0;
 
 
         public EntityHeadController(IAnimationManager animator, EntityAgent entity, Shape entityShape)
@@ -134,27 +138,13 @@ namespace Vintagestory.API.Common
             this.entity = entity;
             this.animManager = animator;
 
-            HeadElement = entityShape.GetElementByName("head");
-            NeckElement = entityShape.GetElementByName("neck");
+            HeadPose = animator.Animator.GetPosebyName("Head");
+            NeckPose = animator.Animator.GetPosebyName("Neck");
+            UpperTorsoPose = animator.Animator.GetPosebyName("UpperTorso");
+            LowerTorsoPose = animator.Animator.GetPosebyName("LowerTorso");
 
-            HeadGlobalMatrix = Mat4f.Create();
-            HeadGlobalMatrixInverted = Mat4f.Create();
-            HeadLocalMatrix = Mat4f.Create();
-
-            // Head
-            List<ShapeElement> elems = HeadElement.GetParentPath();
-
-            for (int i = 0; i < elems.Count; i++)
-            {
-                ShapeElement elem = elems[i];
-                float[] localTransform = elem.GetLocalTransformMatrix();
-                Mat4f.Mul(HeadGlobalMatrix, HeadGlobalMatrix, localTransform);
-            }
-
-            Mat4f.Mul(HeadGlobalMatrix, HeadGlobalMatrix, HeadElement.GetLocalTransformMatrix());
-            Mat4f.Invert(HeadGlobalMatrixInverted, HeadGlobalMatrix);
-
-
+            UpperFootRPose = animator.Animator.GetPosebyName("UpperFootR");
+            UpperFootLPose = animator.Animator.GetPosebyName("UpperFootL");
         }
         
         
@@ -164,68 +154,33 @@ namespace Vintagestory.API.Common
         /// <param name="dt"></param>
         public virtual void OnFrame(float dt)
         {
+            HeadPose.degOffY = 0;
+            HeadPose.degOffZ = 0;
+            NeckPose.degOffZ = 0;
+            UpperTorsoPose.degOffY = 0;
+            UpperTorsoPose.degOffZ = 0;
+            LowerTorsoPose.degOffZ = 0;
+            UpperFootRPose.degOffZ = 0;
+            UpperFootLPose.degOffZ = 0;
+
             if (entity.Pos.HeadYaw != 0 || entity.Pos.HeadPitch != 0)
             {
-                Mat4f.Identity(HeadLocalMatrix);
-                Mat4f.RotateY(HeadLocalMatrix, HeadLocalMatrix, entity.Pos.HeadYaw + dy);
-                Mat4f.RotateZ(HeadLocalMatrix, HeadLocalMatrix, entity.Pos.HeadPitch + dp);
+                float degoffy = (entity.Pos.HeadYaw + yawOffset) * GameMath.RAD2DEG;
+                float degoffz = (entity.Pos.HeadPitch + pitchOffset) * GameMath.RAD2DEG;
 
-                ApplyTransformToElement(HeadLocalMatrix, HeadGlobalMatrix, HeadGlobalMatrixInverted, HeadElement);
-            }
-        }
+                HeadPose.degOffY = degoffy * 0.45f;
+                HeadPose.degOffZ = degoffz * 0.35f;
+                 
+                NeckPose.degOffY = degoffy * 0.35f;
+                NeckPose.degOffZ = degoffz * 0.4f;
 
-        /// <summary>
-        /// Applies the transformation to the head element of the entity.
-        /// </summary>
-        /// <param name="matrix"></param>
-        /// <param name="jointElement"></param>
-        public virtual void ApplyTransformToElement(float[] matrix, float[] globMatrix, float[] globMatrixInverted, ShapeElement jointElement)
-        {
-            ApplyTransformToElements(matrix, globMatrix, globMatrixInverted, new ShapeElement[] { jointElement }, jointElement, jointElement.JointId);
-        }
+                UpperTorsoPose.degOffZ = degoffz * 0.3f;
+                UpperTorsoPose.degOffY = degoffy * 0.2f;
 
-
-        protected virtual void ApplyTransformToElements(float[] matrix, float[] globMatrix, float[] globMatrixInverted, ShapeElement[] forElems, ShapeElement jointElement, int jointId)
-        {
-            float[] transformationMatrices = animManager.Animator.Matrices;
-
-            for (int k = 0; k < forElems.Length; k++)
-            {
-                ShapeElement elem = forElems[k];
-
-                if (elem == jointElement || elem.JointId != jointId)
-                {
-
-                    for (int i = 0; i < 16; i++)
-                    {
-                        tmpMatrix[i] = transformationMatrices[16 * elem.JointId + i];
-                    }
-
-                    float[] origin = new float[] {
-                        (float)jointElement.RotationOrigin[0] / 16f,
-                        (float)jointElement.RotationOrigin[1] / 16f,
-                        (float)jointElement.RotationOrigin[2] / 16f
-                    };
-
-                    Mat4f.Mul(tmpMatrix, tmpMatrix, globMatrix);
-                    Mat4f.Translate(tmpMatrix, tmpMatrix, origin);
-                    Mat4f.Mul(tmpMatrix, tmpMatrix, matrix);
-                    origin[0] = -origin[0];
-                    origin[1] = -origin[1];
-                    origin[2] = -origin[2];
-                    Mat4f.Translate(tmpMatrix, tmpMatrix, origin);
-                    Mat4f.Mul(tmpMatrix, tmpMatrix, globMatrixInverted);
-
-                    for (int i = 0; i < 16; i++)
-                    {
-                        transformationMatrices[16 * elem.JointId + i] = tmpMatrix[i];
-                    }
-                }
-
-                if (elem.Children != null)
-                {
-                    ApplyTransformToElements(matrix, globMatrix, globMatrixInverted, elem.Children, jointElement, jointId);
-                }
+                var offz = degoffz * 0.1f;
+                LowerTorsoPose.degOffZ = offz;
+                UpperFootRPose.degOffZ = -offz;
+                UpperFootLPose.degOffZ = -offz;
             }
         }
     }

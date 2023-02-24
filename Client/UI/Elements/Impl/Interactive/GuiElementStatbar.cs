@@ -124,6 +124,8 @@ namespace Vintagestory.API.Client
 
         void ComposeValueOverlay()
         {
+            Bounds.CalcWorldBounds();
+
             double widthRel = (double)value / (maxValue - minValue);
             valueWidth = (int)(widthRel * Bounds.OuterWidth) + 1;
             valueHeight = (int)Bounds.OuterHeight + 1;
@@ -313,6 +315,7 @@ namespace Vintagestory.API.Client
         public override void Dispose()
         {
             base.Dispose();
+            baseTexture?.Dispose();
             barTexture.Dispose();
             flashTexture.Dispose();
             valueTexture.Dispose();

@@ -1,9 +1,24 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
+    public class BlendedOverlayTexture
+    {
+        public AssetLocation Base;
+        public EnumColorBlendMode BlendMode;
+
+        public BlendedOverlayTexture Clone()
+        {
+            return new BlendedOverlayTexture() { Base = this.Base.Clone(), BlendMode = BlendMode };
+        }
+    }
+
     /// <summary>
     /// A single block texture
     /// </summary>
@@ -15,9 +30,20 @@ namespace Vintagestory.API.Client
         public AssetLocation Base;
 
         /// <summary>
+        /// (legacy setter, used BlendedOverlays instead) The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation
+        /// </summary>
+        public AssetLocation[] Overlays
+        {
+            set
+            {
+                BlendedOverlays = value.Select(o => new BlendedOverlayTexture() { Base = o }).ToArray();
+            }
+        }
+
+        /// <summary>
         /// The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation
         /// </summary>
-        public AssetLocation[] Overlays = null;
+        public BlendedOverlayTexture[] BlendedOverlays = null;
 
         /// <summary>
         /// The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
@@ -87,12 +113,12 @@ namespace Vintagestory.API.Client
                 Alpha = Alpha
             };
 
-            if (Overlays != null)
+            if (BlendedOverlays != null)
             {
-                ct.Overlays = new AssetLocation[Overlays.Length];
-                for (int i = 0; i < ct.Overlays.Length; i++)
+                ct.BlendedOverlays = new BlendedOverlayTexture[BlendedOverlays.Length];
+                for (int i = 0; i < ct.BlendedOverlays.Length; i++)
                 {
-                    ct.Overlays[i] = Overlays[i].Clone();
+                    ct.BlendedOverlays[i] = BlendedOverlays[i].Clone();
                 }
             }
 
@@ -108,12 +134,12 @@ namespace Vintagestory.API.Client
                 Alpha = Alpha
             };
 
-            if (Overlays != null)
+            if (BlendedOverlays != null)
             {
-                ct.Overlays = new AssetLocation[Overlays.Length];
-                for (int i = 0; i < ct.Overlays.Length; i++)
+                ct.BlendedOverlays = new BlendedOverlayTexture[BlendedOverlays.Length];
+                for (int i = 0; i < ct.BlendedOverlays.Length; i++)
                 {
-                    ct.Overlays[i] = Overlays[i].Clone();
+                    ct.BlendedOverlays[i] = BlendedOverlays[i].Clone();
                 }
             }
 
@@ -127,7 +153,7 @@ namespace Vintagestory.API.Client
         public bool IsBasic()
         {
             if (Rotation != 0 || Alpha != 255) return false;
-            return Alternates == null && Overlays == null;
+            return Alternates == null && BlendedOverlays == null;
         }
 
         /// <summary>
@@ -249,16 +275,16 @@ namespace Vintagestory.API.Client
             bct.BakedName = ct.Base.Clone();
 
 
-            if (ct.Overlays != null)
+            if (ct.BlendedOverlays != null)
             {
-                bct.TextureFilenames = new AssetLocation[ct.Overlays.Length + 1];
+                bct.TextureFilenames = new AssetLocation[ct.BlendedOverlays.Length + 1];
                 bct.TextureFilenames[0] = ct.Base;
 
-                for (int i = 0; i < ct.Overlays.Length; i++)
+                for (int i = 0; i < ct.BlendedOverlays.Length; i++)
                 {
-                    AssetLocation loc = ct.Overlays[i];
-                    bct.TextureFilenames[i + 1] = loc;
-                    bct.BakedName.Path += "++" + loc.ToShortString();
+                    BlendedOverlayTexture bov = ct.BlendedOverlays[i];
+                    bct.TextureFilenames[i + 1] = bov.Base;
+                    bct.BakedName.Path += "++" + (int)bov.BlendMode + "~" + bov.Base.ToShortString();
                 }
             }
             else

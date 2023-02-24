@@ -28,8 +28,8 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Handler for processing a message
     /// </summary>
-    /// <param name="networkMessage"></param>
-    public delegate void NetworkServerMessageHandler<T>(T networkMessage);
+    /// <param name="packet"></param>
+    public delegate void NetworkServerMessageHandler<T>(T packet);
 
 
     /// <summary>

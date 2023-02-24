@@ -16,7 +16,7 @@ namespace Vintagestory.API.Server
     /// </summary>
     /// <param name="fromPlayer"></param>
     /// <param name="networkMessage"></param>
-    public delegate void NetworkClientMessageHandler<T>(IServerPlayer fromPlayer, T networkMessage);
+    public delegate void NetworkClientMessageHandler<T>(IServerPlayer fromPlayer, T packet);
 
 
     /// <summary>

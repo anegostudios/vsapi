@@ -1,9 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
@@ -36,7 +31,11 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public double? OriginZ = null;
         [JsonProperty]
-        public bool RotShortestDistance = false;
+        public bool RotShortestDistanceX = false;
+        [JsonProperty]
+        public bool RotShortestDistanceY = false;
+        [JsonProperty]
+        public bool RotShortestDistanceZ = false;
 
         internal int Frame;
         public ShapeElement ForElement;

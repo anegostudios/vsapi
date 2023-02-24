@@ -59,11 +59,19 @@ namespace Vintagestory.API.Server
         /// <param name="forWorldType">For which world types to use this generator</param>
         void ChunkColumnGeneration(ChunkColumnGenerationDelegate handler, EnumWorldGenPass pass, string forWorldType);
 
+        /// <summary>
+        /// Registers a method to be called by certain special worldgen triggers, for example Resonance Archives entrance staircase
+        /// </summary>
+        void WorldgenHook(WorldGenHookDelegate handler, string forWorldType, string hook);
+        /// <summary>
+        /// Trigger the special worldgen hook, with the name "hook", if it exists
+        /// </summary>
+        void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, AssetLocation loc);
 
         /// <summary>
         /// Called when just loaded (or generated) a full chunkcolumn
         /// </summary>
-        event ChunkColumnSnowUpdateDelegate ChunkColumnSnowUpdate;
+        event ChunkColumnBeginLoadChunkThread BeginChunkColumnLoadChunkThread;
 
         /// <summary>
         /// Called whenever the server loaded from disk or fully generated a chunkcolumn
@@ -76,16 +84,7 @@ namespace Vintagestory.API.Server
         event ChunkColumnUnloadDelegate ChunkColumnUnloaded;
 
 
-        /// <summary>
-        /// Called whenever the server loaded from disk or newly generated a map region
-        /// </summary>
-        event MapRegionLoadedDelegate MapRegionLoaded;
-
-        /// <summary>
-        /// Called just before a map region is about to get unloaded. On shutdown this method is called for all loaded map regions.
-        /// </summary>
-        event MapRegionUnloadDelegate MapRegionUnloaded;
-
+        
 
         /// <summary>
         /// Registers a handler to be called every time a player uses a block. The methods return value determines if the player may place/break this block.

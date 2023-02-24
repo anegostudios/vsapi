@@ -292,6 +292,7 @@ namespace Vintagestory.API.Client
             {
                 Color = (double[])GuiStyle.ButtonTextColor.Clone(),
                 FontWeight = FontWeight.Bold,
+                Orientation = EnumTextOrientation.Center,
                 Fontname = GuiStyle.DecorativeFontName,
                 UnscaledFontsize = 24
             };
@@ -308,6 +309,7 @@ namespace Vintagestory.API.Client
                 Color = (double[])GuiStyle.ActiveButtonTextColor.Clone(),
                 FontWeight = FontWeight.Bold,
                 Fontname = GuiStyle.DecorativeFontName,
+                Orientation = EnumTextOrientation.Center,
                 UnscaledFontsize = 24
             };
         }

@@ -87,14 +87,14 @@ namespace Vintagestory.API.Common
 
             if ((Active && (Iterations == 0 || Animation.OnAnimationEnd != EnumEntityAnimationEndHandling.EaseOut)) || (Iterations == 0 && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd))
             {
-                EasingFactor = Math.Min(1f, EasingFactor + (1f - EasingFactor) * dt * meta.EaseInSpeed);
+                EasingFactor = Math.Min(1f, EasingFactor + (1f - EasingFactor) * Math.Abs(dt) * meta.EaseInSpeed);
             }
             else
             {
-                EasingFactor = Math.Max(0, EasingFactor - (EasingFactor - 0) * dt * meta.EaseOutSpeed);
+                EasingFactor = Math.Max(0, EasingFactor - (EasingFactor - 0) * Math.Abs(dt) * meta.EaseOutSpeed);
             }
-            
-            float newFrame = (CurrentFrame + 30 * (ShouldRewind ? -dt : dt));
+
+            float newFrame = (CurrentFrame + 30 * (ShouldRewind ? -dt : dt) * (Animation.EaseAnimationSpeed ? EasingFactor : 1));
             
             if (!Active && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd && (Iterations >= 1 || newFrame >= Animation.QuantityFrames - 1))
             {
@@ -103,7 +103,14 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-            if ((Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold || Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) && newFrame >= Animation.QuantityFrames - 1)
+            if ((Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold || Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) && newFrame >= Animation.QuantityFrames - 1 && dt >= 0)
+            {
+                Iterations = 1;
+                CurrentFrame = Animation.QuantityFrames - 1;
+                return;
+            }
+
+            if ((Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) && newFrame < 0 && dt < 0)
             {
                 Iterations = 1;
                 CurrentFrame = Animation.QuantityFrames - 1;
@@ -111,7 +118,7 @@ namespace Vintagestory.API.Common
             }
 
 
-            if (newFrame <= 0)
+            if (dt>=0 && newFrame <= 0)
             {
                 Iterations--;
                 CurrentFrame = 0;
@@ -120,7 +127,12 @@ namespace Vintagestory.API.Common
 
             CurrentFrame = newFrame;
 
-            if (CurrentFrame >= Animation.QuantityFrames) // here and in the modulo used to be a -1 but that skips the last frame (tyron 10dec2020)
+            if (dt >= 0 && CurrentFrame >= Animation.QuantityFrames) // here and in the modulo used to be a -1 but that skips the last frame (tyron 10dec2020)
+            {
+                Iterations++;
+                CurrentFrame = GameMath.Mod(newFrame, Animation.QuantityFrames);
+            }
+            if (dt < 0 && CurrentFrame < 0)
             {
                 Iterations++;
                 CurrentFrame = GameMath.Mod(newFrame, Animation.QuantityFrames);

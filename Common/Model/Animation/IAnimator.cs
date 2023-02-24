@@ -39,7 +39,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The 30 pose transformation matrices that go to the shader
         /// </summary>
-        float[] Matrices { get; }
+        float[] Matrices4x3 { get; }
 
         /// <summary>
         /// Amount of currently active animations
@@ -64,6 +64,8 @@ namespace Vintagestory.API.Common
         /// <param name="code"></param>
         /// <returns></returns>
         AttachmentPointAndPose GetAttachmentPointPose(string code);
+
+        ElementPose GetPosebyName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase);
 
         /// <summary>
         /// The event fired on each frame.
@@ -148,10 +150,6 @@ namespace Vintagestory.API.Common
         /// <param name="activeAnimationSpeeds">The speed of those animations.</param>
         void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds);
 
-        /// <summary>
-        /// Safe dispose method for classes containing IAnimator
-        /// </summary>
-        void Dispose();
 
         /// <summary>
         /// The event fired when the animation is stopped.

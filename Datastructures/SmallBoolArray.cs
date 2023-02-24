@@ -91,5 +91,10 @@ namespace Vintagestory.API.Datastructures
         {
             return (bits & 0x2F) == 0x2F;
         }
+
+        public override int GetHashCode()
+        {
+            return 1537853281 + bits.GetHashCode();
+        }
     }
 }

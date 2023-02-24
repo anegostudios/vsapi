@@ -35,9 +35,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Gets the block for a not yet commited block. If no block has been staged for this pos the original block is returned
         /// </summary>
-        /// <param name="posX"></param>
-        /// <param name="posY"></param>
-        /// <param name="posZ"></param>
+        /// <param name="pos"></param>
         /// <returns></returns>
         int GetStagedBlockId(BlockPos pos);
 

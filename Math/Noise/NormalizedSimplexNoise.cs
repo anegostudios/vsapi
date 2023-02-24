@@ -165,6 +165,10 @@ namespace Vintagestory.API.MathTools
             for (int i = 0; i < scaledAmplitudes3D.Length; i++)
             {
                 double freq = frequencies[i];
+                
+                // This looks nice on the bumplands landform
+                //double val = octaves[i].Evaluate(x * freq + y / 4.0, y * freq, z * freq + y / 4.0) * amplitudes[i];
+
                 double val = octaves[i].Evaluate(x * freq, y * freq, z * freq) * amplitudes[i];
                 value += 1.2 * (val > 0 ? Math.Max(0, val - thresholds[i]) : Math.Min(0, val + thresholds[i]));
             }

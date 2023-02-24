@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// A reference to a texture that has been uploaded onto the graphics cards, if TextureId is not zero
+    /// </summary>
     public class LoadedTexture : IDisposable
     {
         /// <summary>
@@ -25,9 +23,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public int Height;
 
-        bool disposed;
-
-        string trace;
+        protected bool disposed;
+        protected string trace;
         protected ICoreClientAPI capi;
 
         public bool Disposed { get { return disposed; } }
@@ -37,9 +34,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool IgnoreUndisposed { get; set; }
 
-        static LoadedTexture()
-        {
-        }
 
         /// <summary>
         /// Creates an empty loaded texture context with the Client API.

@@ -42,6 +42,23 @@ namespace Vintagestory.API.Common
     public delegate bool ActionBoolReturn<T>(T t);
 
     /// <summary>
+    /// Returns true if the action/event was successfull.
+    /// </summary>
+    /// <typeparam name="T1">The additional type to pass in.</typeparam>
+    /// <typeparam name="T2">The additional type to pass in.</typeparam>
+    /// <returns></returns>
+    public delegate bool ActionBoolReturn<T1, T2>(T1 t1, T2 t2);
+
+    /// <summary>
+    /// Returns true if the action/event was successfull.
+    /// </summary>
+    /// <typeparam name="T1">The additional type to pass in.</typeparam>
+    /// <typeparam name="T2">The additional type to pass in.</typeparam>
+    /// <typeparam name="T3">The additional type to pass in.</typeparam>
+    /// <returns></returns>
+    public delegate bool ActionBoolReturn<T1, T2, T3>(T1 t1, T2 t2, T3 t3);
+
+    /// <summary>
     /// Return true if the action/event should be "consumed" (e.g. mark a mouse click as handled)
     /// </summary>
     /// <typeparam name="T1"></typeparam>
@@ -101,7 +118,7 @@ namespace Vintagestory.API.Common
 
     public delegate bool TrySpawnEntityDelegate(IBlockAccessor blockAccessor, ref EntityProperties properties, Vec3d spawnPosition, long herdId);
 
-    public delegate void EntityDespawnDelegate(Entity entity, EntityDespawnReason reason);
+    public delegate void EntityDespawnDelegate(Entity entity, EntityDespawnData reasonData);
 
     public delegate void EntityDeathDelegate(Entity entity, DamageSource damageSource);
 
@@ -113,9 +130,11 @@ namespace Vintagestory.API.Common
 
     public delegate void MapChunkGeneratorDelegate(IMapChunk mapChunk, int chunkX, int chunkZ);
 
-    public delegate void MapRegionGeneratorDelegate(IMapRegion mapRegion, int regionX, int regionZ);
+    public delegate void MapRegionGeneratorDelegate(IMapRegion mapRegion, int regionX, int regionZ, ITreeAttribute chunkGenParams = null);
 
     public delegate void WorldGenThreadDelegate(IChunkProviderThread chunkProvider);
+
+    public delegate void WorldGenHookDelegate(IBlockAccessor blockAccessor, BlockPos pos, AssetLocation instructions);
 
 
     public delegate void BlockUsedDelegate(IServerPlayer byPlayer, BlockSelection blockSel);

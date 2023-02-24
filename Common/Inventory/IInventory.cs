@@ -91,15 +91,6 @@ namespace Vintagestory.API.Common
         WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<ItemSlot> skipSlots = null);
 
         /// <summary>
-        /// Will place quantity items from the source slot into the best fitting slot of this inventory. Might fill several of the inventories slots.
-        /// </summary>
-        /// <param name="sourceSlot"></param>
-        /// <param name="quantity"></param>
-        /// <returns></returns>
-        //bool TryPutItemStack(ItemSlot sourceSlot, int quantity);
-
-
-        /// <summary>
         /// When the player clicks on this slot
         /// </summary>
         /// <param name="slotId"></param>

@@ -14,7 +14,7 @@ namespace Vintagestory.API.MathTools
     /// </summary>
 
     [ProtoContract]
-    public class Vec3d : IVec3
+    public class Vec3d : IVec3, IEquatable<Vec3d>
     {
         [ProtoMember(1)]
         public double X;
@@ -54,9 +54,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Create a new vector with given coordinates
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
+        /// <param name="vec"></param>
         public Vec3d(Vec4d vec)
         {
             this.X = vec.X;
@@ -296,6 +294,39 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        /// <summary>
+        /// Note: adjusts the calling Vec3d, does not make a copy
+        /// </summary>
+        public Vec3d Scale(double f)
+        {
+            X *= f;
+            Y *= f;
+            Z *= f;
+            return this;
+        }
+
+        /// <summary>
+        /// Note: adjusts the calling Vec3d, does not make a copy
+        /// </summary>
+        public Vec3d Offset(Vec3d b)
+        {
+            X += b.X;
+            Y += b.Y;
+            Z += b.Z;
+            return this;
+        }
+
+        /// <summary>
+        /// Note: adjusts the calling Vec3d, does not make a copy
+        /// </summary>
+        public Vec3d Offset(double x, double y, double z)
+        {
+            X += x;
+            Y += y;
+            Z += z;
+            return this;
+        }
+
         public Vec3d OffsetCopy(float x, float y, float z)
         {
             return new Vec3d(
@@ -407,6 +438,15 @@ namespace Vintagestory.API.MathTools
             return (float)Math.Sqrt(dx * dx + dy * dy + dz * dz);
         }
 
+        public float DistanceTo(double x, double y, double z)
+        {
+            double dx = X - x;
+            double dy = Y - y;
+            double dz = Z - z;
+
+            return (float)Math.Sqrt(dx * dx + dy * dy + dz * dz);
+        }
+
         public float HorizontalSquareDistanceTo(Vec3d pos)
         {
             double dx = X - pos.X;
@@ -486,6 +526,22 @@ namespace Vintagestory.API.MathTools
         public static Vec3d operator /(Vec3d left, float right)
         {
             return new Vec3d(left.X / right, left.Y / right, left.Z / right);
+        }
+
+
+        public static bool operator ==(Vec3d left, Vec3d right)
+        {
+            if (object.ReferenceEquals(left, null))
+            {
+                return object.ReferenceEquals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Vec3d left, Vec3d right)
+        {
+            return !(left == right);
         }
 
         #endregion
@@ -577,6 +633,25 @@ namespace Vintagestory.API.MathTools
             ;
         }
 
+        public bool Equals(Vec3d other)
+        {
+            return other != null && X == other.X && Y == other.Y && Z == other.Z;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Vec3d other)
+            {
+                return other != null && X == other.X && Y == other.Y && Z == other.Z;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ((17 * 23 + X.GetHashCode()) * 23 + Y.GetHashCode()) * 23 + Z.GetHashCode();
+        }
 
         int IVec3.XAsInt { get { return (int)X; } }
 

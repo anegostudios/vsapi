@@ -15,11 +15,18 @@ namespace Vintagestory.API.Client
         public bool Right;
     }
 
+    public delegate void OnHotKeyDelegate(string hotkeycode, KeyCombination keyComb);
+
     /// <summary>
     /// This interface manages the inputs of the player and is used mostly on the client side.  
     /// </summary>
     public interface IInputAPI
     {
+        /// <summary>
+        /// Get set clipboard text
+        /// </summary>
+        string ClipboardText { get; set; }
+
         /// <summary>
         /// Triggered when the player attempts to trigger an action, such as walking forward or sprinting
         /// </summary>
@@ -130,6 +137,8 @@ namespace Vintagestory.API.Client
         /// <param name="hotkeyCode"></param>
         /// <param name="handler"></param>
         void SetHotKeyHandler(string hotkeyCode, ActionConsumable<KeyCombination> handler);
+
+        void AddHotkeyListener(OnHotKeyDelegate handler);
 
         /// <summary>
         /// Returns a list of all currently registered hotkeys.

@@ -33,21 +33,28 @@ namespace Vintagestory.API.Client
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             Bounds.CalcWorldBounds();
-
             double titleBarOffY = withTitlebar ? scaled(GuiStyle.TitleBarHeight) : 0;
 
+            
+            
             RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + titleBarOffY, Bounds.OuterWidth, Bounds.OuterHeight - titleBarOffY - 1, GuiStyle.DialogBGRadius);
 
-            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor[0], GuiStyle.DialogStrongBgColor[1], GuiStyle.DialogStrongBgColor[2], GuiStyle.DialogStrongBgColor[3] * Alpha);
+            ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor[0] * 1, GuiStyle.DialogStrongBgColor[1] * 1, GuiStyle.DialogStrongBgColor[2] * 1, GuiStyle.DialogStrongBgColor[3] * 1);
+
+            //ctx.SetSourceRGBA(1,1,1,1);
+
             ctx.FillPreserve();
             
             if (Shade)
             {
-                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 1.8, GuiStyle.DialogStrongBgColor[1] * 1.8, GuiStyle.DialogStrongBgColor[2] * 1.8, Alpha);
+                ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 2.1, GuiStyle.DialogStrongBgColor[1] * 2.1, GuiStyle.DialogStrongBgColor[2] * 2.1, 1);
+
+                //ctx.SetSourceRGBA(0, 0, 0, 0.75);
+
                 ctx.LineWidth = strokeWidth * 2;
                 ctx.StrokePreserve();
 
-                var r = scaled(7);
+                var r = scaled(9);
                 if (FullBlur)
                 {
                     surface.BlurFull(r);
@@ -55,33 +62,45 @@ namespace Vintagestory.API.Client
                 {
                     surface.BlurPartial(r, (int)(2 * r + 1), (int)Bounds.bgDrawX, (int)(Bounds.bgDrawY + titleBarOffY), (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
                 }
-                
+            }
 
-                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, Alpha*Alpha });
+            SurfacePattern pattern = getPattern(api, dirtTextureName, true, 64, 0.125f);
+            //ctx.Operator = Operator.Multiply;
+            ctx.SetSource(pattern);
+            ctx.FillPreserve();
+
+
+            ctx.Operator = Operator.Over;
+
+            if (Shade)
+            {
+                ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, Alpha * Alpha });
                 ctx.LineWidth = strokeWidth;
                 ctx.Stroke();
-            }
-            else
+            } else
             {
                 ctx.SetSourceRGBA(new double[] { 45 / 255.0, 35 / 255.0, 33 / 255.0, Alpha });
                 ctx.LineWidth = scaled(2);
                 ctx.Stroke();
             }
+
+
         }
     }
 
 
     public static partial class GuiComposerHelpers
     {
-
-        // Single rectangle shape
         /// <summary>
-        /// Adds a single rectangle background to the GUI.
+        /// Adds shaded, slighlty dirt textured background to the GUI.
         /// </summary>
-        /// <param name="bounds">The bounds of the GUI</param>
-        /// <param name="withTitleBar">Minor style adjustments to accomodate titlebars</param>
-        /// <param name="topPadding">The amount of padding at the top of the gui.</param>
-        public static GuiComposer AddShadedDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true, double strokeWidth = 5, float alpha = 1)
+        /// <param name="composer"></param>
+        /// <param name="bounds"></param>
+        /// <param name="withTitleBar"></param>
+        /// <param name="strokeWidth"></param>
+        /// <param name="alpha"></param>
+        /// <returns></returns>
+        public static GuiComposer AddShadedDialogBG(this GuiComposer composer, ElementBounds bounds, bool withTitleBar = true, double strokeWidth = 5, float alpha = 0.75f)
         {
             if (!composer.Composed)
             {

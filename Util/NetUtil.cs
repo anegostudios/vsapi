@@ -68,8 +68,7 @@ namespace Vintagestory.API.Util
         /// Extracts hostname, port and password from given uri. Error will be non null if the uri is incorrect in some ways
         /// </summary>
         /// <param name="uri"></param>
-        /// <param name="port"></param>
-        /// <param name="password"></param>
+        /// <param name="error"></param>
         /// <returns></returns>
         public static UriInfo getUriInfo(string uri, out string error)
         {

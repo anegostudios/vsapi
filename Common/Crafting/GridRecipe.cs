@@ -129,9 +129,14 @@ namespace Vintagestory.API.Common
 
             IngredientPattern = IngredientPattern.Replace(",", "").Replace("\t", "").Replace("\r", "").Replace("\n", "");
 
-            if (IngredientPattern == null || Width * Height != IngredientPattern.Length)
+            if (IngredientPattern == null)
             {
-                world.Logger.Error("Grid Recipe with output {0} has no ingredient pattern or incorrect ingredient pattern length. Ignoring recipe.", Output);
+                world.Logger.Error("Grid Recipe with output {0} has no ingredient pattern.", Output);
+                return false;
+            }
+            if (Width * Height != IngredientPattern.Length)
+            {
+                world.Logger.Error("Grid Recipe with output {0} has and incorrect ingredient pattern length. Ignoring recipe.", Output);
                 return false;
             }
 
@@ -184,15 +189,19 @@ namespace Vintagestory.API.Common
                 int wildcardEndLen = val.Value.Code.Path.Length - wildcardStartLen - 1;
 
                 List<string> codes = new List<string>();
+
+                
                 if (val.Value.Type == EnumItemClass.Block)
                 {
                     for (int i = 0; i < world.Blocks.Count; i++)
                     {
-                        if (world.Blocks[i] == null || world.Blocks[i].IsMissing) continue;
+                        var block = world.Blocks[i];
+                        if (block?.Code == null || block.IsMissing) continue;
+                        if (val.Value.SkipVariants != null && WildcardUtil.MatchesVariants(val.Value.Code, block.Code, val.Value.SkipVariants)) continue;
 
-                        if (WildcardUtil.Match(val.Value.Code, world.Blocks[i].Code, val.Value.AllowedVariants))
+                        if (WildcardUtil.Match(val.Value.Code, block.Code, val.Value.AllowedVariants))
                         {
-                            string code = world.Blocks[i].Code.Path.Substring(wildcardStartLen);
+                            string code = block.Code.Path.Substring(wildcardStartLen);
                             string codepart = code.Substring(0, code.Length - wildcardEndLen);
                             codes.Add(codepart);
                         }
@@ -202,11 +211,13 @@ namespace Vintagestory.API.Common
                 {
                     for (int i = 0; i < world.Items.Count; i++)
                     {
-                        if (world.Items[i] == null || world.Items[i].IsMissing) continue;
+                        var item = world.Items[i];
+                        if (item?.Code == null || item.IsMissing) continue;
+                        if (val.Value.SkipVariants != null && WildcardUtil.MatchesVariants(val.Value.Code, item.Code, val.Value.SkipVariants)) continue;
 
-                        if (WildcardUtil.Match(val.Value.Code, world.Items[i].Code, val.Value.AllowedVariants))
+                        if (WildcardUtil.Match(val.Value.Code, item.Code, val.Value.AllowedVariants))
                         {
-                            string code = world.Items[i].Code.Path.Substring(wildcardStartLen);
+                            string code = item.Code.Path.Substring(wildcardStartLen);
                             string codepart = code.Substring(0, code.Length - wildcardEndLen);
                             codes.Add(codepart);
                         }
@@ -225,7 +236,6 @@ namespace Vintagestory.API.Common
         /// consumes the required items from the input slots
         /// </summary>
         /// <param name="inputSlots"></param>
-        /// <param name="world"></param>
         /// <param name="byPlayer"></param>
         /// <param name="gridWidth"></param>
         public bool ConsumeInput(IPlayer byPlayer, ItemSlot[] inputSlots, int gridWidth)
@@ -469,7 +479,7 @@ namespace Vintagestory.API.Common
                 bool found = false;
                 for (int j = 0; j < ingredientStacks.Count; j++)
                 {
-                    if (ingredientStacks[j].Key.Equals(world, stack, GlobalConstants.IgnoredStackAttributes))
+                    if (ingredientStacks[j].Key.Equals(world, stack, GlobalConstants.IgnoredStackAttributes) && ingredient.RecipeAttributes == null)
                     {
                         ingredientStacks[j].Key.StackSize += stack.StackSize;
                         found = true;

@@ -1,17 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common.Entities;
+﻿using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    public enum EnumMountAngleMode
+    {
+        /// <summary>
+        /// Don't affected the mounted entity angles
+        /// </summary>
+        Unaffected,
+        /// <summary>
+        /// Turn the player but allow him to still change its yaw
+        /// </summary>
+        PushYaw,
+        /// <summary>
+        /// Turn the player in all directions but allow him to still change its angles
+        /// </summary>
+        Push,
+        /// <summary>
+        /// Fixate the mounted entity yaw to the mount
+        /// </summary>
+        FixateYaw,
+        /// <summary>
+        /// Fixate all entity angles to the mount
+        /// </summary>
+        Fixate,
+    }
+
     public interface IMountableSupplier
     {
+        IMountable[] MountPoints { get; }
+
         bool IsMountedBy(Entity entity);
 
         Vec3f GetMountOffset(Entity entity);
@@ -20,19 +40,25 @@ namespace Vintagestory.API.Common
     public interface IMountable
     {
         /// <summary>
+        /// If this "mountable seat" is the one that controls the mountable entity/block
+        /// </summary>
+        bool CanControl { get; }
+
+        Entity MountedBy { get; }
+
+        /// <summary>
         /// Return null if you don't have a mountable supplier implementation
         /// </summary>
         IMountableSupplier MountSupplier { get; }
 
-        Vec3d MountPosition { get; }
+        EntityPos MountPosition { get; }
 
-        float? MountYaw { get; }
+        EnumMountAngleMode AngleMode { get; }
 
         string SuggestedAnimation { get; }
 
-        /// <summary>
-        /// Return non-null controls if the player can control the mountable
-        /// </summary>
+        Vec3f LocalEyePos { get; }
+
         EntityControls Controls { get; }
 
 

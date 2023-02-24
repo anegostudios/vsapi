@@ -39,7 +39,8 @@ namespace Vintagestory.API.Server
                 root,
                 commandplayer,
                 controlplayergroups,
-                manageplayergroups
+                manageplayergroups,
+                selfkill
             };
         }
 
@@ -93,6 +94,11 @@ namespace Vintagestory.API.Server
         /// Ability to chat
         /// </summary>
         public static string chat = "chat";
+
+        /// <summary>
+        /// Ability to use the /kill command
+        /// </summary>
+        public static string selfkill = "selfkill";
 
         /// <summary>
         /// Ability to kick players

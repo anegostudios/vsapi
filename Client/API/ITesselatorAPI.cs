@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -150,8 +151,10 @@ namespace Vintagestory.API.Client
         /// <param name="texSource"></param>
         /// <param name="meshRotationDeg"></param>
         /// <param name="generalGlowLevel"></param>
-        /// <param name="generalTintIndex"></param>
+        /// <param name="climateColorMapId"></param>
+        /// <param name="seasonColorMapId"></param>
         /// <param name="quantityElements"></param>
+        /// <param name="selectiveElements"></param>
         void TesselateShape(
             string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f meshRotationDeg = null, 
             int generalGlowLevel = 0, byte climateColorMapId = 0, byte seasonColorMapId = 0, int? quantityElements = null, string[] selectiveElements = null    
@@ -206,6 +209,9 @@ namespace Vintagestory.API.Client
         /// <param name="altTextureNumber"></param>
         /// <param name="returnNullWhenMissing"></param>
         /// <returns></returns>
+        ITexPositionSource GetTextureSource(Block block, int altTextureNumber = 0, bool returnNullWhenMissing = false);
+
+        [Obsolete("Use GetTextureSource instead")]
         ITexPositionSource GetTexSource(Block block, int altTextureNumber = 0, bool returnNullWhenMissing = false);
 
         /// <summary>

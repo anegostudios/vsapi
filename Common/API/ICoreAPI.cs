@@ -144,6 +144,8 @@ namespace Vintagestory.API.Common
         /// <param name="filename"></param>
         void StoreModConfig<T>(T jsonSerializeableData, string filename);
 
+        void StoreModConfig(JsonObject jobj, string filename);
+
         /// <summary>
         /// Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
         /// Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
@@ -155,8 +157,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         T LoadModConfig<T>(string filename);
 
-
-
+        JsonObject LoadModConfig(string filename);
     }
 
     /// <summary>
@@ -173,6 +174,8 @@ namespace Vintagestory.API.Common
         /// The command line arguments that were used to start the client or server application
         /// </summary>
         string[] CmdlArguments { get; }
+
+        IChatCommandApi ChatCommands { get; }
 
         /// <summary>
         /// Returns if you are currently on server or on client

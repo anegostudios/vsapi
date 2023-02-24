@@ -346,7 +346,6 @@ namespace Vintagestory.API.MathTools
         /// Returns the shortest horizontal distance to any point between this and given coordinate
         /// </summary>
         /// <param name="x"></param>
-        /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
         public double ShortestHorizontalDistanceFrom(double x, double z)

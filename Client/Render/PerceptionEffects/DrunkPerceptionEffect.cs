@@ -43,9 +43,9 @@ namespace Vintagestory.API.Client
 
             var hc = capi.World.Player.Entity.AnimManager.HeadController;
 
-            hc.dy = (float)(Math.Cos(accum / 1.12) + Math.Cos(accum / 1.2f) + Math.Cos(accum / 4f) * 0.2f) * f * 60f;
+            hc.yawOffset = (float)(Math.Cos(accum / 1.12) + Math.Cos(accum / 1.2f) + Math.Cos(accum / 4f) * 0.2f) * f * 60f;
             accum /= 2;
-            hc.dp = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
+            hc.pitchOffset = (float)(Math.Sin(accum / 1.12) + Math.Sin(accum / 1.2f) + Math.Sin(accum / 4f) * 0.2f) * f * 30f;
         }
 
         public override void ApplyToFpHand(Matrixf modelMat)

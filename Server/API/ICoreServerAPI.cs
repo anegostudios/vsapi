@@ -116,6 +116,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name="player"></param>
         /// <param name="message"></param>
+        [Obsolete("Use ChatCommand subapi instead")]
         void HandleCommand(IServerPlayer player, string message);
 
 
@@ -159,6 +160,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name="chatcommand"></param>
         /// <returns></returns>
+        [Obsolete("Use ChatCommand subapi instead")]
         bool RegisterCommand(ServerChatCommand chatcommand);
 
         /// <summary>
@@ -170,6 +172,7 @@ namespace Vintagestory.API.Server
         /// <param name="handler"></param>
         /// <param name="requiredPrivilege"></param>
         /// <returns></returns>
+        [Obsolete("Use ChatCommand subapi instead")]
         bool RegisterCommand(string command, string descriptionMsg, string syntaxMsg, ServerChatCommandDelegate handler, string requiredPrivilege = null);
 
         /// <summary>

@@ -66,7 +66,7 @@ namespace Vintagestory.API.Common
             get { return stacksize; }
             set { stacksize = value; }
         }
-        
+
 
         /// <summary>
         /// The id of the block or item
@@ -153,6 +153,21 @@ namespace Vintagestory.API.Common
         public ItemStack(BinaryReader reader)
         {
             FromBytes(reader);
+        }
+
+        /// <summary>
+        /// Create a new itemstack from a byte serialized array(without resolving the block/item)
+        /// </summary>
+        /// <param name="data"></param>
+        public ItemStack(byte[] data)
+        {
+            using (var ms = new MemoryStream(data))
+            {
+                using (var reader = new BinaryReader(ms))
+                {
+                    FromBytes(reader);
+                }
+            }
         }
 
         /// <summary>
@@ -290,7 +305,23 @@ namespace Vintagestory.API.Common
         {
             return stacksize + "x " + (Class == EnumItemClass.Block ? "Block" : "Item") + " Id " + Id + ", Code " + Collectible?.Code;
         }
-        
+
+        /// <summary>
+        /// Serializes the itemstack into a series of bytes, including its stack attributes
+        /// </summary>
+        /// <returns></returns>
+        public byte[] ToBytes()
+        {
+            using (var ms = new MemoryStream())
+            {
+                using (BinaryWriter writer = new BinaryWriter(ms))
+                {
+                    ToBytes(writer);
+                }
+
+                return ms.ToArray();
+            }
+        }
 
         /// <summary>
         /// Serializes the itemstack into a series of bytes, including its stack attributes

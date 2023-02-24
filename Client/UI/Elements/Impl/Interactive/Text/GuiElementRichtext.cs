@@ -9,6 +9,7 @@ using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
@@ -167,7 +168,7 @@ namespace Vintagestory.API.Client
                 comp = Components[i];
 
                 double nextPosX;
-                bool didLineBreak = comp.CalcBounds(flowPathList.ToArray(), lineHeight, posX, posY, out nextPosX);
+                var calcBoundResult = comp.CalcBounds(flowPathList.ToArray(), lineHeight, posX, posY, out nextPosX);
 
                 if (comp.Float == EnumFloat.Inline)
                 {
@@ -186,7 +187,7 @@ namespace Vintagestory.API.Client
                 if (comp.Float == EnumFloat.None)
                 {
                     posX = 0;
-                    posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + (didLineBreak ? scaled(comp.UnscaledMarginTop) : 0);
+                    posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + (calcBoundResult != EnumCalcBoundsResult.Continue ? scaled(comp.UnscaledMarginTop) : 0);
                     posY = Math.Ceiling(posY);
                     
                     currentLine.Clear();
@@ -195,7 +196,7 @@ namespace Vintagestory.API.Client
                     continue;
                 }
 
-                if (didLineBreak)
+                if (calcBoundResult != EnumCalcBoundsResult.Continue)
                 {
                     // Tyron 27Jun2022
                     // Text alignment challenge:
@@ -213,27 +214,30 @@ namespace Vintagestory.API.Client
                     foreach (int index in currentLine)
                     {
                         RichTextComponentBase lineComp = Components[index];
-                        Rectangled lastLineBounds = lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1];
+                        LineRectangled lastLineBounds = lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1];
                         
                         if (lineComp.VerticalAlign == EnumVerticalAlign.Bottom)
                         {
-                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight);
+                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lastLineBounds.AscentOrHeight);
                         }
                         if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
                         {
-                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight / 2);
+                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lastLineBounds.AscentOrHeight / 2);
                         }
                     }
 
                     // The current element that was still on the same line as well
                     // Offset all lines by the gained y-offset on the first line
-                    if (comp.VerticalAlign == EnumVerticalAlign.Bottom)
+                    if (calcBoundResult == EnumCalcBoundsResult.Multiline)
                     {
-                        foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight - comp.BoundsPerLine[0].AscentOrHeight);
-                    }
-                    if (comp.VerticalAlign == EnumVerticalAlign.Middle)
-                    {
-                        foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight - comp.BoundsPerLine[0].AscentOrHeight / 2);
+                        if (comp.VerticalAlign == EnumVerticalAlign.Bottom)
+                        {
+                            foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight - comp.BoundsPerLine[0].AscentOrHeight);
+                        }
+                        if (comp.VerticalAlign == EnumVerticalAlign.Middle)
+                        {
+                            foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight - comp.BoundsPerLine[0].AscentOrHeight / 2);
+                        }
                     }
                     
                     currentLine.Clear();
@@ -311,7 +315,7 @@ namespace Vintagestory.API.Client
                 }
                 if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
                 {
-                    lastLineBounds.Y = (maxHeight - lastLineBounds.Height) / 2f;
+                    lastLineBounds.Y += (maxHeight - lastLineBounds.Height) / 2f;
                 }
             }
 
@@ -472,27 +476,16 @@ namespace Vintagestory.API.Client
                 RenderColor
             );
 
-            bool found = false;
-            int relx = (int)(api.Input.MouseX - Bounds.absX);
-            int rely = (int)(api.Input.MouseY - Bounds.absY);
-
             MouseOverCursor = null;
             for (int i = 0; i < Components.Length; i++) {
                 RichTextComponentBase comp = Components[i];
 
                 comp.RenderColor = RenderColor;
                 comp.RenderInteractiveElements(deltaTime, Bounds.renderX, Bounds.renderY, zPos);
-
-                for (int j = 0; !found && j < comp.BoundsPerLine.Length; j++)
+                
+                if (comp.UseMouseOverCursor(Bounds))
                 {
-                    LineRectangled rec = comp.BoundsPerLine[j];
-
-                    if (rec.PointInside(relx, rely))
-                    {
-                        MouseOverCursor = comp.MouseOverCursor;
-                        
-                        found = true;
-                    }
+                    MouseOverCursor = comp.MouseOverCursor;
                 }   
             }
         }
@@ -549,6 +542,12 @@ namespace Vintagestory.API.Client
         public void SetNewText(RichTextComponentBase[] comps)
         {
             this.Components = comps;
+            RecomposeText();
+        }
+
+        public void AppendText(RichTextComponent[] comps)
+        {
+            this.Components = this.Components.Append(comps);
             RecomposeText();
         }
 

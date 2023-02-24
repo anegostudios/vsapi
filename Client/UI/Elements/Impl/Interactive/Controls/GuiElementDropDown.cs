@@ -80,6 +80,9 @@ namespace Vintagestory.API.Client
             }
         }
 
+        public int[] SelectedIndices => listMenu.SelectedIndices;
+        public string[] SelectedValues => listMenu.SelectedIndices.Select(index => listMenu.Values[index]).ToArray();
+
 
         public override bool Enabled { 
             get => base.Enabled;

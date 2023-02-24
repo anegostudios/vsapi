@@ -266,14 +266,14 @@ namespace Vintagestory.API.Client
             uv[0] = u;
             uv[1] = v;
 
-            uv[2] = u + u2;
+            uv[2] = u2;
             uv[3] = v;
 
-            uv[4] = u + u2;
-            uv[5] = v + v2;
+            uv[4] = u2;
+            uv[5] = v2;
 
             uv[6] = u;
-            uv[7] = v + v2;
+            uv[7] = v2;
 
             m.SetUv(uv);
 

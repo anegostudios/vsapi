@@ -58,7 +58,9 @@ namespace Vintagestory.API.Common
         /// Holds a beach strength map
         /// </summary>
         IntDataMap2D BeachMap { get; set; }
-        
+
+        IntDataMap2D UpheavelMap { get; set; }
+
         /// <summary>
         /// Holds the landform indices
         /// </summary>

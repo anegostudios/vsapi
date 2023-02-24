@@ -215,27 +215,27 @@ namespace Vintagestory.API.Client
         public virtual void OnOwnPlayerDataReceived() { }
 
         /// <summary>
-        /// 0 = draw first, 1 = draw last. Used to enforce tooltips and held itemstack always drawn last to be visible.<br>
-        /// Vanilla dialogs draw order:
-        /// Name tags: -0.1
-        /// Chat dialog: 0
-        /// Block Interaction help: 0.05
-        /// Worldmap HUD: 0.07
-        /// Default value for most other dialogs: 0.1
-        /// Worldmap Dialog: 0.11
-        /// Player and Chest inventories: 0.2
-        /// Various config/edit dialogs: 0.2
-        /// Handbook: 0.2
+        /// 0 = draw first, 1 = draw last. Used to enforce tooltips and held itemstack always drawn last to be visible.<br/>
+        /// Vanilla dialogs draw order:<br/>
+        /// Name tags: -0.1<br/>
+        /// Chat dialog: 0<br/>
+        /// Block Interaction help: 0.05<br/>
+        /// Worldmap HUD: 0.07<br/>
+        /// Default value for most other dialogs: 0.1<br/>
+        /// Worldmap Dialog: 0.11<br/>
+        /// Player and Chest inventories: 0.2<br/>
+        /// Various config/edit dialogs: 0.2<br/>
+        /// Handbook: 0.2<br/>
         /// Escape menu: 0.89
         /// </summary>
         public virtual double DrawOrder { get { return 0.1; } }
 
         /// <summary>
-        /// Determines the order on which dialog receives keyboard input first when the dialog is opened. 0 = handle inputs first, 9999 = handle inputs last.
-        /// Reference list:
-        /// 0: Escape menu
-        /// 0.5 (default): tick profiler, selection box editor, macro editor, survival&creative inventory, first launch info dialog, dead dialog, character dialog, etc.
-        /// 1: hotbar
+        /// Determines the order on which dialog receives keyboard input first when the dialog is opened. 0 = handle inputs first, 9999 = handle inputs last.<br/>
+        /// Reference list:<br/>
+        /// 0: Escape menu<br/>
+        /// 0.5 (default): tick profiler, selection box editor, macro editor, survival&amp;creative inventory, first launch info dialog, dead dialog, character dialog, etc.<br/>
+        /// 1: hotbar<br/>
         /// 1.1: chat dialog
         /// </summary>
         public virtual double InputOrder { get { return 0.5; } }

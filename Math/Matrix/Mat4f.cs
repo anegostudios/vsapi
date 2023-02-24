@@ -133,6 +133,7 @@ namespace Vintagestory.API.MathTools
         /// Set a mat4 to the identity matrix with a scale applied
         /// </summary>
         /// <param name="output">{mat4} out the receiving matrix</param>
+        /// <param name="scale"></param>
         /// <returns>{mat4} out</returns>
         public static float[] Identity_Scaled(float[] output, float scale)
         {
@@ -496,7 +497,9 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">{mat4} out the receiving matrix</param>
         /// <param name="a">{mat4} a the matrix to scale</param>
-        /// <param name="v">{vec3} v the vec3 to scale the matrix by</param>
+        /// <param name="xScale"></param>
+        /// <param name="yScale"></param>
+        /// <param name="zScale"></param>
         /// <returns>{mat4} out</returns>
         public static float[] Scale(float[] output, float[] a, float xScale, float yScale, float zScale)
         {
@@ -1214,9 +1217,8 @@ namespace Vintagestory.API.MathTools
         /// Multiply the matrix with a vec4. Reference: http://mathinsight.org/matrix_vector_multiplication
         /// </summary>
         /// <param name="matrix"></param>
-        /// <param name="vec4"></param>
+        /// <param name="inVal"></param>
         /// <param name="outVal"></param>
-        /// <returns></returns>
         public static void MulWithVec4(float[] matrix, Vec4d inVal, Vec4d outVal)
         {
             outVal.Set(0, 0, 0, 0);

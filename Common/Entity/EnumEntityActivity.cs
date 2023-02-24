@@ -22,6 +22,8 @@ namespace Vintagestory.API.Common.Entities
         FloorSitting = 512,
         Dead = 1024,
         Break = 2048,
-        Place = 4096
+        Place = 4096,
+        Glide = 8192,
+        Mounted = 8192*2
     }
 }

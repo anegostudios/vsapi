@@ -28,10 +28,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         void UpdateCellHeight();
 
-        /// <summary>
-        /// cleans up and gets rid of the cell in a neat and orderly fashion.
-        /// </summary>
-        void Dispose();
         void OnMouseUpOnElement(MouseEvent args, int elementIndex);
 
         void OnMouseDownOnElement(MouseEvent args, int elementIndex);

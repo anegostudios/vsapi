@@ -17,7 +17,7 @@ namespace Vintagestory.API.Common
         int this[AssetLocationAndSource textureLoc] { get; }
 
         bool ContainsKey(AssetLocation loc);
-        void AddTextureLocation_Checked(AssetLocationAndSource assetLocationAndSource);
+        void SetTextureLocation(AssetLocationAndSource assetLocationAndSource);
         void CollectAndBakeTexturesFromShape(Shape compositeShape, IDictionary<string, Client.CompositeTexture> targetDict, AssetLocation baseLoc);
     }
 
@@ -98,7 +98,7 @@ namespace Vintagestory.API.Common
             this.Source = new SourceStringComponents(oldStyleSource, "", "", -1);
         }
 
-        [Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(domain, path, message, sourceAssetLoc)", false)]
+        [Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(domain, path, message, sourceDomain, sourcePath)", false)]
         public AssetLocationAndSource(string domain, string path, string oldStyleSource) : base(domain, path)
         {
             this.Source = new SourceStringComponents(oldStyleSource, "", "", -1);
@@ -108,7 +108,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Defines a complete path to an assets, including it's domain
     /// </summary>
-    [TypeConverterAttribute(typeof(StringAssetLocationConverter))]
+    [TypeConverter(typeof(StringAssetLocationConverter))]
     [ProtoContract]
     public class AssetLocation : IEquatable<AssetLocation>, IComparable<AssetLocation>
     {

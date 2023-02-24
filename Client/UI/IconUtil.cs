@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Cairo;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -14,6 +16,15 @@ namespace Vintagestory.API.Client
         ICoreClientAPI capi;
 
         public Dictionary<string, IconRendererDelegate> CustomIcons = new Dictionary<string, IconRendererDelegate>();
+
+        public IconRendererDelegate SvgIconSource(AssetLocation loc)
+        {
+            var asset = capi.Assets.TryGet(loc);
+            return (ctx, x, y, w, h, rgba) =>
+            {
+                capi.Gui.DrawSvg(asset, ctx.GetTarget() as ImageSurface, x, y, (int)w, (int)h, ColorUtil.FromRGBADoubles(rgba));
+            };
+        }
 
         /// <summary>
         /// Creates a new IconUtil instance.

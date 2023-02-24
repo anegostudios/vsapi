@@ -218,5 +218,10 @@ namespace Vintagestory.API.Common
         {
 
         }
+
+        public virtual void GetHeldItemName(StringBuilder sb, ItemStack itemStack)
+        {
+            
+        }
     }
 }

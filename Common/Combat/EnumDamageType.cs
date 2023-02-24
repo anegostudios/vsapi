@@ -19,6 +19,7 @@ namespace Vintagestory.API.Common
         Hunger,
         Crushing,
         Frost,
-        Electricity
+        Electricity,
+        Heat
     }
 }

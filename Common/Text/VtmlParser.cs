@@ -38,6 +38,7 @@ namespace Vintagestory.API.Common
         /// You can register your own tag converters here
         /// </summary>
         public static Dictionary<string, Tag2RichTextDelegate> TagConverters = new Dictionary<string, Tag2RichTextDelegate>();
+        private static CairoFont monospacedFont = new CairoFont(16, "Consolas", new double[] { 1.0, 1.0, 1.0, 1.0 });   // other alternatives: Lucida Console,DejaVu Sans Mono,Cascadia Mono,Courier New
 
 
         public static RichTextComponentBase[] Richtextify(ICoreClientAPI capi, string vtmlCode, CairoFont baseFont, Action<LinkTextComponent> didClickLink = null)
@@ -76,7 +77,8 @@ namespace Vintagestory.API.Common
 
                     case "hotkey":
                     case "hk":
-                        elems.Add(new HotkeyComponent(capi, tagToken.ContentText, fontStack.Peek()));
+                        var hcmp = new HotkeyComponent(capi, tagToken.ContentText, fontStack.Peek());
+                        elems.Add(hcmp);
                         break;
 
                     case "i":
@@ -99,15 +101,23 @@ namespace Vintagestory.API.Common
 
                     case "icon":
                         string iconName;
+                        string iconPath;
                         tagToken.Attributes.TryGetValue("name", out iconName);
-                        IconComponent iconcmp = new IconComponent(capi, iconName, fontStack.Peek());
+                        tagToken.Attributes.TryGetValue("path", out iconPath);
+
+                        if (iconName == null) iconName = tagToken.ContentText;
+
+                        IconComponent iconcmp = new IconComponent(capi, iconName, iconPath, fontStack.Peek());
+                        iconcmp.BoundsPerLine[0].Ascent = fontStack.Peek().GetFontExtents().Ascent;
+
                         elems.Add(iconcmp);
                         break;
 
                     case "itemstack":
-                        string code;
+                        string codes;
                         string type;
-                        float size = (float)fontStack.Peek().GetFontExtents().Height;
+                        var fontExtents = fontStack.Peek().GetFontExtents();
+                        float size = (float)fontExtents.Height;
                         EnumFloat floatType = EnumFloat.Inline;
                         string floattypestr;
                         if (tagToken.Attributes.TryGetValue("floattype", out floattypestr))
@@ -118,30 +128,49 @@ namespace Vintagestory.API.Common
                             }
                         }
 
-                        tagToken.Attributes.TryGetValue("code", out code);
+                        tagToken.Attributes.TryGetValue("code", out codes);
                         if (!tagToken.Attributes.TryGetValue("type", out type))
                         {
                             type = "block";
                         }
 
-                        ItemStack stack;
-                        if (type == "item")
+                        if (codes == null)
                         {
-                            stack = new ItemStack(capi.World.GetItem(new AssetLocation(code)));
-                        } else
-                        {
-                            stack = new ItemStack(capi.World.GetBlock(new AssetLocation(code)));
+                            codes = tagToken.ContentText;
                         }
 
-                        float sizemul = 1f;
+                        List<ItemStack> stacks = new List<ItemStack>();
+                        
+
+                        foreach (var code in codes.Split('|'))
+                        {
+                            CollectibleObject cobj;
+                            
+                            if (type == "item")
+                            {
+                                cobj = capi.World.GetItem(new AssetLocation(code));
+                            }
+                            else
+                            {
+                                cobj = capi.World.GetBlock(new AssetLocation(code));
+                            }
+
+                            if (cobj == null) cobj = capi.World.GetBlock(0);
+
+                            stacks.Add(new ItemStack(cobj));
+                        }
+
+                        float sizemul = 1.3f;
                         if (tagToken.Attributes.TryGetValue("rsize", out var sizemulstr))
                         {
-                            sizemul = sizemulstr.ToFloat();
+                            sizemul *= sizemulstr.ToFloat();
                         }
 
-                        SlideshowItemstackTextComponent stckcmp = new SlideshowItemstackTextComponent(capi, new ItemStack[] { stack }, size / RuntimeEnv.GUIScale, floatType);
+                        SlideshowItemstackTextComponent stckcmp = new SlideshowItemstackTextComponent(capi, stacks.ToArray(), size / RuntimeEnv.GUIScale, floatType);
+                        stckcmp.Background = true;
                         stckcmp.renderSize *= sizemul;
                         stckcmp.VerticalAlign = EnumVerticalAlign.Middle;
+                        stckcmp.BoundsPerLine[0].Ascent = fontExtents.Ascent;
 
                         if (tagToken.Attributes.TryGetValue("offx", out var offxstr)) stckcmp.offX = GuiElement.scaled(offxstr.ToFloat(0));
                         if (tagToken.Attributes.TryGetValue("offy", out var offystr)) stckcmp.offY = GuiElement.scaled(offystr.ToFloat(0));
@@ -162,6 +191,23 @@ namespace Vintagestory.API.Common
                         elems.Add(new ClearFloatTextComponent(capi));
                         break;
 
+                    case "code":
+                        double[] color = fontStack.Peek().Color;
+                        int hsv = ColorUtil.Rgb2Hsv((float)color[0], (float)color[1], (float)color[2]) | -0x1000000;  // push v to maximum
+                        hsv >>= 8;
+                        int rgbint = ColorUtil.Hsv2Rgb((hsv & 0xff00) + ((hsv & 0xff) << 16) + ((hsv >> 16) & 0xff));
+                        double[] newcolor = new double[4];
+                        newcolor[3] = 1.0;
+                        newcolor[2] = (rgbint & 0xFF) / 255.0;
+                        newcolor[1] = ((rgbint >> 8) & 0xFF) / 255.0;
+                        newcolor[0] = ((rgbint >> 16) & 0xFF) / 255.0;
+                        fontStack.Push(monospacedFont.Clone().WithColor(newcolor));
+                        foreach (var val in tagToken.ChildElements)
+                        {
+                            Richtextify(capi, val, ref elems, fontStack, didClickLink);
+                        }
+                        fontStack.Pop();
+                        break;
                     case "strong":
                         fontStack.Push(fontStack.Peek().Clone().WithWeight(Cairo.FontWeight.Bold));
                         foreach (var val in tagToken.ChildElements)

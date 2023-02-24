@@ -75,7 +75,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Returns the list of currently loaded texture atlas ids
         /// </summary>
-        List<int> AtlasTextureIds { get; }
+        List<LoadedTexture> AtlasTextures { get; }
 
         /// <summary>
         /// Reserves a spot on the texture atlas. Returns true if allocation was successful.
@@ -96,7 +96,7 @@ namespace Vintagestory.API.Client
         /// <param name="textureSubId"></param>
         /// <param name="texPos"></param>
         /// <returns></returns>
-        bool InsertTexture(IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+        bool InsertTexture(IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0f);
 
         /// <summary>
         /// Inserts a texture into the texture atlas after the atlas has been generated. Updates the in-ram texture atlas as well as the in-gpu-ram texture atlas. 
@@ -106,7 +106,7 @@ namespace Vintagestory.API.Client
         /// <param name="textureSubId"></param>
         /// <param name="texPos"></param>
         /// <returns></returns>
-        bool InsertTexture(byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+        bool InsertTexture(byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0f);
 
 
         /// <summary>
@@ -123,10 +123,10 @@ namespace Vintagestory.API.Client
         /// <param name="path">Used as reference for caching</param>
         /// <param name="textureSubId"></param>
         /// <param name="texPos"></param>
-        /// <param name="onCreate">The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <paramref name="path"/></param>
+        /// <param name="onCreate">The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <paramref name="path"/> using method <see cref="LoadCompositeBitmap"/></param>
         /// <param name="alphaTest"></param>
         /// <returns>False if the file was not found or the insert failed</returns>
-        bool GetOrInsertTexture(AssetLocation path, out int textureSubId, out TextureAtlasPosition texPos, CreateTextureDelegate onCreate = null, float alphaTest = 0.005f);
+        bool GetOrInsertTexture(AssetLocation path, out int textureSubId, out TextureAtlasPosition texPos, CreateTextureDelegate onCreate = null, float alphaTest = 0f);
 
         /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
@@ -139,7 +139,7 @@ namespace Vintagestory.API.Client
         /// <param name="alphaTest"></param>
         /// <returns></returns>
         [Obsolete("Use GetOrInsertTexture() instead. It's more efficient to load the bmp only if the texture was not found in the cache")]
-        bool InsertTextureCached(AssetLocation path, IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+        bool InsertTextureCached(AssetLocation path, IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0f);
 
         /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
@@ -151,11 +151,11 @@ namespace Vintagestory.API.Client
         /// <param name="texPos"></param>
         /// <param name="alphaTest"></param>
         /// <returns></returns>
-        bool InsertTextureCached(AssetLocation path, byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+        bool InsertTextureCached(AssetLocation path, byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0f);
 
 
         [Obsolete("Use GetOrInsertTexture() instead. It's more efficient to load the bmp only if the texture was not found in the cache")]
-        bool InsertTextureCached(CompositeTexture texture, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0.005f);
+        bool InsertTextureCached(CompositeTexture texture, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0f);
 
 
         /// <summary>

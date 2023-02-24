@@ -46,31 +46,34 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Gets a previously saved object from the savegame. Returns null if no such data under this key was previously set.
         /// </summary>
-        /// <param name = "name">The key to look for</param>
+        /// <param name = "key">The key to look for</param>
         /// <returns></returns>
-        byte[] GetData(string name);
+        byte[] GetData(string key);
 
         /// <summary>
-        /// Store the given data persistently to the savegame.
+        /// Store the given data persistently to the savegame. Size limit is around 1 gigabyte for *all* data stored along with the savegame datastructure. If you need more space, you have to store it somewhere else.
         /// </summary>
-        /// <param name = "name">Key value</param>
-        /// <param name = "value">Data to save</param>
-        void StoreData(string name, byte[] data);
+        /// <param name = "key">Key value</param>
+        /// <param name = "data">Data to save</param>
+        void StoreData(string key, byte[] data);
 
 
         /// <summary>
         /// Gets a previously saved object from the savegame. Returns null if no such data under this key was previously set.
         /// </summary>
-        /// <param name = "name">The key to look for</param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
         /// <returns></returns>
-        T GetData<T>(string name, T defaultValue = default(T));
+        T GetData<T>(string key, T defaultValue = default(T));
 
         /// <summary>
-        /// Store the given data persistently to the savegame.
+        /// Store the given data persistently to the savegame. Size limit is around 1 gigabyte for *all* data stored along with the savegame datastructure. If you need more space, you have to store it somewhere else.
         /// </summary>
-        /// <param name = "name">Key value</param>
-        /// <param name = "value">Data to save</param>
-        void StoreData<T>(string name, T data);
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <param name="data"></param>
+        void StoreData<T>(string key, T data);
 
     }
 }

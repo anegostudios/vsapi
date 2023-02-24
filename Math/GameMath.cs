@@ -25,7 +25,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// A large set of useful game mathematics functions
     /// </summary>
-    public class GameMath
+    public static class GameMath
     {
         /// <summary>
         /// 360°
@@ -320,6 +320,18 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Treats given value as a statistical average. Example: 2.1 will turn into 2 90% of the times and into 3 10% of times.
+        /// </summary>
+        /// <param name="rand"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int RoundRandom(LCGRandom rand, float value)
+        {
+            return (int)value + ((rand.NextDouble() < (value - (int)value)) ? 1 : 0);
+        }
+
+
+        /// <summary>
         /// Returns the shortest distance between 2 angles
         /// See also https://stackoverflow.com/a/14498790/1873041
         /// </summary>
@@ -333,7 +345,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns the shortest distance between 2 angles
-        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041"/>https://stackoverflow.com/a/14498790/1873041</seealso>
+        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041">https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
@@ -343,13 +355,51 @@ namespace Vintagestory.API.MathTools
             return ((((end - start) % TWOPI) + TWOPI + PI) % TWOPI) - PI;
         }
 
+        /// <summary>
+        /// Returns the smallest number, ignoring the sign of either value. Examples:<br/>
+        /// Smallest(1, 3) returns 1
+        /// Smallest(-20, 3) returns 3
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double Smallest(double a, double b)
+        {
+            double ap = Math.Abs(a);
+            double bp = Math.Abs(b);
+            if (ap < bp)
+            {
+                return a;
+            }
+            return b;
+        }
+
+
+        /// <summary>
+        /// Returns the smallest number, ignoring the sign of either value
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static double Largest(double a, double b)
+        {
+            double ap = Math.Abs(a);
+            double bp = Math.Abs(b);
+            if (ap > bp)
+            {
+                return a;
+            }
+            return b;
+        }
+
 
         /// <summary>
         /// Returns the shortest distance between 2 values that are cyclical (e.g. angles, daytime hours, etc.)
-        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041"/>https://stackoverflow.com/a/14498790/1873041</seealso>
+        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041">https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
+        /// <param name="period"></param>
         /// <returns></returns>
         public static float CyclicValueDistance(float start, float end, float period)
         {
@@ -358,10 +408,11 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns the shortest distance between 2 values that are cyclical (e.g. angles, daytime hours, etc.)
-        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041"/>https://stackoverflow.com/a/14498790/1873041</seealso>
+        /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041">https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
+        /// <param name="period"></param>
         /// <returns></returns>
         public static double CyclicValueDistance(double start, double end, double period)
         {
@@ -1018,6 +1069,7 @@ namespace Vintagestory.API.MathTools
         /// A single iteration of Bob Jenkins' One-At-A-Time hashing algorithm.
         /// </summary>
         /// <param name="x"></param>
+        /// <param name="count"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int oaatHashMany(int x, int count)
@@ -1128,7 +1180,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int MurmurHash3Mod(int x, int y, int z, int mod)
         {
-            return GameMath.Mod(MurmurHash3(x, y, z), mod);
+            return Mod(MurmurHash3(x, y, z), mod);
         }
 
 

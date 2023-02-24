@@ -109,9 +109,10 @@ namespace Vintagestory.API.Common
         public CanSpawnNearbyDelegate OnCanSpawnNearby;
 
         public EntityTalkUtil talkUtil;
-
-
         public Vec2f BodyYawLimits;
+
+        string[] randomIdleAnimations;
+
         public override float BodyYaw {
             get
             {
@@ -350,6 +351,8 @@ namespace Vintagestory.API.Common
             {
                 AnimManager.HeadController = new PlayerHeadController(AnimManager, this, Properties.Client.LoadedShapeForEntity);
             }
+
+            randomIdleAnimations = properties.Attributes["randomIdleAnimations"].AsArray<string>(null);
         }
 
 
@@ -360,6 +363,7 @@ namespace Vintagestory.API.Common
         public bool PrevFrameCanStandUp;
         public ClimateCondition selfClimateCond;
         float climateCondAccum;
+        float secondsIdleAccum;
 
         public override double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
@@ -407,8 +411,10 @@ namespace Vintagestory.API.Common
 
             if (player != null && player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
-                PrevFrameCanStandUp = !servercontrols.Sneak && canStandUp();
-                bool moving = (servercontrols.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !servercontrols.NoClip && !servercontrols.FlyMode && OnGround;
+                var controls = MountedOn != null ? MountedOn.Controls : servercontrols;
+
+                PrevFrameCanStandUp = !controls.Sneak && canStandUp();
+                bool moving = (controls.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !controls.NoClip && !controls.DetachedMode && OnGround;
                 double newEyeheight = Properties.EyeHeight;
 
                 if (player.ImmersiveFpMode)
@@ -423,12 +429,12 @@ namespace Vintagestory.API.Common
                 {
                     double newModelHeight = Properties.CollisionBoxSize.Y;
 
-                    if (servercontrols.FloorSitting)
+                    if (controls.FloorSitting)
                     {
                         newEyeheight *= 0.5f;
                         newModelHeight *= 0.55f;
                     }
-                    else if ((servercontrols.Sneak || !PrevFrameCanStandUp) && !servercontrols.IsClimbing && !servercontrols.IsFlying)
+                    else if ((controls.Sneak || !PrevFrameCanStandUp) && !controls.IsClimbing && !controls.IsFlying)
                     {
                         newEyeheight *= 0.8f;
                         newModelHeight *= 0.8f;
@@ -452,22 +458,22 @@ namespace Vintagestory.API.Common
                     LocalEyePos.X = 0;
                     LocalEyePos.Z = 0;
 
-                    if (MountedOn?.SuggestedAnimation == "sleep")
+                    if (MountedOn?.LocalEyePos != null)
                     {
-                        LocalEyePos.Y = 0.3;
+                        LocalEyePos.Set(MountedOn.LocalEyePos);
                     }
                 }
 
 
 
-                double frequency = dt * servercontrols.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (servercontrols.Sprint ? 0.9 : 1.2) * (servercontrols.Sneak ? 1.2f : 1);
+                double frequency = dt * controls.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (controls.Sprint ? 0.9 : 1.2) * (controls.Sneak ? 1.2f : 1);
 
                 walkCounter = moving ? walkCounter + frequency : 0;
                 walkCounter = walkCounter % GameMath.TWOPI;
 
-                double sneakDiv = (servercontrols.Sneak ? 3 : 1.8);
+                double sneakDiv = (controls.Sneak ? 3 : 1.8);
 
-                double amplitude = (FeetInLiquid ? 0.8 : 1 + (servercontrols.Sprint ? 0.07 : 0)) / (3 * sneakDiv);
+                double amplitude = (FeetInLiquid ? 0.8 : 1 + (controls.Sprint ? 0.07 : 0)) / (3 * sneakDiv);
                 double offset = -0.2 / sneakDiv;
 
                 double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(5.5f * walkCounter) * amplitude) + offset);
@@ -491,17 +497,17 @@ namespace Vintagestory.API.Common
                             float volume = controls.Sneak ? 0.5f : 1f;
 
                             EntityPos pos = SidedPos;
-                            int blockIdUnder = BlockUnderPlayer(pos);
-                            int blockIdInside = BlockInsidePlayer(pos);
+                            var blockUnder = BlockUnderPlayer(pos);
+                            var blockInside = BlockInsidePlayer(pos);
 
-                            AssetLocation soundwalk = World.Blocks[blockIdUnder].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z))?.Walk;
-                            AssetLocation soundinside = World.Blocks[blockIdInside].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z))?.Inside;
+                            AssetLocation soundwalk = blockUnder.GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z))?.Walk;
+                            AssetLocation soundinside = blockInside.GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z))?.Inside;
 
                             bool isSelf = player.PlayerUID == (Api as ICoreClientAPI)?.World.Player?.PlayerUID;
 
                             if (!Swimming && soundwalk != null)
                             {
-                                if (blockIdInside != blockIdUnder && soundinside != null)
+                                if (blockInside.Id != blockUnder.Id && soundinside != null)
                                 {
                                     if (isSelf)
                                     {
@@ -572,6 +578,30 @@ namespace Vintagestory.API.Common
             {
                 base.OnGameTick(dt);
             }
+
+            if (!servercontrols.TriesToMove && !controls.IsFlying && !controls.Gliding && RightHandItemSlot?.Empty == true)
+            {
+                secondsIdleAccum += dt;
+                if (secondsIdleAccum > 20 && World.Rand.NextDouble() < 0.005)
+                {
+                    StartAnimation(randomIdleAnimations[World.Rand.Next(randomIdleAnimations.Length)]);
+                    secondsIdleAccum = 0;
+                }
+            }
+            else secondsIdleAccum = 0;
+        }
+
+        public override void OnAsyncParticleTick(float dt, IAsyncParticleManager manager)
+        {
+            base.OnAsyncParticleTick(dt, manager);
+
+            bool isSelf = (Api as ICoreClientAPI).World.Player.Entity.EntityId == EntityId;
+            EntityPos herepos = isSelf ? Pos : ServerPos;
+            bool moving = herepos.Motion.LengthSq() > 0.00001 && !servercontrols.NoClip;
+            if ((FeetInLiquid || Swimming) && moving && Properties.Habitat != EnumHabitat.Underwater)
+            {
+                SpawnFloatingSediment(manager);
+            }
         }
 
 
@@ -627,7 +657,7 @@ namespace Vintagestory.API.Common
                 .Scale(Properties.Client.Size, Properties.Client.Size, Properties.Client.Size)
                 .Translate(-0.5f, 0, -0.5f)
                 .RotateX(sidewaysSwivelAngle)
-                .Translate(ap.PosX / 16f - lookOffset, ap.PosY / 16f - lookOffset / 1.3f, ap.PosZ / 16f)
+                .Translate(ap.PosX / 16f - lookOffset * 1.3f, ap.PosY / 16f, ap.PosZ / 16f)
                 .Mul(holdPosition ? prevAnimModelMatrix : apap.AnimModelMatrix)
                 .Translate(0.07f, Alive ? 0.0f : 0.2f * Math.Min(1, secondsDead), 0f)
             ;
@@ -648,19 +678,7 @@ namespace Vintagestory.API.Common
 
         protected override void HandleHandAnimations(float dt)
         {
-            if (Api?.Side == EnumAppSide.Client && AnimManager != null)
-            {
-                strongWindAccum = (GlobalConstants.CurrentWindSpeedClient.X > 0.85 && !Swimming) ? strongWindAccum+dt : 0;
-
-                if (RightHandItemSlot?.Empty == true && strongWindAccum > 2)
-                {
-                    AnimManager.StartAnimation("protecteyes");
-                }
-                else
-                {
-                    AnimManager.StopAnimation("protecteyes");
-                }
-            }
+            protectedEyesFromWind(dt);
 
             // Prevent this method from getting called for other players on the client side because it has incomplete information (servercontrols&interact are not synced to client)
             // It's also not necessary to call this method because the server will sync the animations to the client
@@ -746,6 +764,28 @@ namespace Vintagestory.API.Common
                 if (nowLeftIdleStack)
                 {
                     AnimManager.StartAnimation(lastRunningLeftHeldIdleAnimation = nowHeldLeftIdleAnim);
+                }
+            }
+        }
+
+        protected void protectedEyesFromWind(float dt)
+        {
+            if (Api?.Side == EnumAppSide.Client && AnimManager != null)
+            {
+                strongWindAccum = (GlobalConstants.CurrentWindSpeedClient.Length() > 0.85 && !Swimming) ? strongWindAccum + dt : 0;
+
+                float windAngle = (float)Math.Atan2(GlobalConstants.CurrentWindSpeedClient.X, GlobalConstants.CurrentWindSpeedClient.Z);
+                float yawDiff = GameMath.AngleRadDistance(windAngle, Pos.Yaw - GameMath.PIHALF);
+                bool lookingIntoWind = Math.Abs(yawDiff) < 45 * GameMath.DEG2RAD;
+                bool isOutside = GlobalConstants.CurrentDistanceToRainfallClient < 6;
+
+                if (isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2)
+                {
+                    AnimManager.StartAnimation("protecteyes");
+                }
+                else
+                {
+                    AnimManager.StopAnimation("protecteyes");
                 }
             }
         }
@@ -855,8 +895,8 @@ namespace Vintagestory.API.Common
             if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
                 EntityPos pos = SidedPos;
-                int blockIdUnder = BlockUnderPlayer(pos);
-                AssetLocation soundwalk = World.Blocks[blockIdUnder].GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z))?.Walk;
+                var blockUnder = BlockUnderPlayer(pos);
+                AssetLocation soundwalk = blockUnder.GetSounds(Api.World.BlockAccessor, new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z))?.Walk;
                 if (soundwalk != null && !Swimming)
                 {
                     World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
@@ -870,17 +910,17 @@ namespace Vintagestory.API.Common
 
 
 
-        internal int BlockUnderPlayer(EntityPos pos)
+        internal Block BlockUnderPlayer(EntityPos pos)
         {
-            return World.BlockAccessor.GetBlockId(
+            return World.BlockAccessor.GetBlock(
                 (int)pos.X,
                 (int)(pos.Y - 0.1f),
                 (int)pos.Z);
         }
 
-        internal int BlockInsidePlayer(EntityPos pos)
+        internal Block BlockInsidePlayer(EntityPos pos)
         {
-            return World.BlockAccessor.GetBlockId(
+            return World.BlockAccessor.GetBlock(
                 (int)pos.X,
                 (int)(pos.Y + 0.1f),
                 (int)pos.Z);
@@ -894,7 +934,7 @@ namespace Vintagestory.API.Common
             IPlayer player = World.PlayerByUid(PlayerUID);
             if (player != null) return player.InventoryManager.TryGiveItemstack(itemstack, true);
             return false;
-        }   
+        }
 
 
         public override void Die(EnumDespawnReason reason = EnumDespawnReason.Death, DamageSource damageSourceForDeath = null)
@@ -931,6 +971,16 @@ namespace Vintagestory.API.Common
                 }
             }, "dropinventoryondeath");
 
+        }
+
+        public override bool TryMount(IMountable onmount)
+        {
+            bool ok = base.TryMount(onmount);
+            if (ok && Alive && Player != null)
+            {
+                Player.WorldData.FreeMove = false;
+            }
+            return ok;
         }
 
         public override void Revive()

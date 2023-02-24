@@ -81,7 +81,7 @@ namespace Vintagestory.API.Client
 
             hoverTexture = new LoadedTexture(capi);
 
-            padding = Background.Padding;
+            padding = Background.HorPadding;
             ElementBounds descBounds = bounds.CopyOnlySize();
             descBounds.WithFixedPadding(0);
             descBounds.WithParent(bounds);
@@ -103,6 +103,16 @@ namespace Vintagestory.API.Client
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             
+        }
+
+        public override int OutlineColor()
+        {
+            return 0 + (255 << 8) + (255 << 16) + (128 << 24);
+        }
+
+        public override void RenderBoundsDebug()
+        {
+            api.Render.RenderRectangle((int)Bounds.renderX, (int)Bounds.renderY, 550, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight, OutlineColor());
         }
 
         void RecalcBounds()
@@ -264,7 +274,7 @@ namespace Vintagestory.API.Client
             autoWidth = on;
         }
 
-        internal void SetFollowMouse(bool on)
+        public void SetFollowMouse(bool on)
         {
             followMouse = on;
         }

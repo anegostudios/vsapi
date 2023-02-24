@@ -37,7 +37,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     /// <param name="chunkCoord"></param>
     /// <param name="chunks"></param>
-    public delegate void ChunkColumnSnowUpdateDelegate(IServerMapChunk mapChunk, int chunkX, int chunkZ, IWorldChunk[] chunks);
+    public delegate void ChunkColumnBeginLoadChunkThread(IServerMapChunk mapChunk, int chunkX, int chunkZ, IWorldChunk[] chunks);
 
     /// <summary>
     /// Triggered when the server loaded a chunk column from disk or generated a new one
@@ -71,13 +71,19 @@ namespace Vintagestory.API.Common
 
     public delegate bool MatchGridRecipeDelegate(IPlayer player, GridRecipe recipe, ItemSlot[] ingredients, int gridWidth);
 
-    
+
+    public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, string claimant, EnumWorldAccessResponse response);
 
     /// <summary>
     /// Events that are available on the server and the client
     /// </summary>
     public interface IEventAPI
     {
+        /// <summary>
+        /// Triggered when block access is tested, allows you to override the engine response
+        /// </summary>
+        event TestBlockAccessDelegate OnTestBlockAccess;
+
         /// <summary>
         /// Triggered when a new entity spawned
         /// </summary>
@@ -94,6 +100,17 @@ namespace Vintagestory.API.Common
         /// Called whenever a chunk was marked dirty (as in, its blocks or light values have been modified or it got newly loaded or newly created)
         /// </summary>
         event ChunkDirtyDelegate ChunkDirty;
+
+        /// <summary>
+        /// Called whenever the server loaded from disk or newly generated a map region
+        /// </summary>
+        event MapRegionLoadedDelegate MapRegionLoaded;
+
+        /// <summary>
+        /// Called just before a map region is about to get unloaded. On shutdown this method is called for all loaded map regions.
+        /// </summary>
+        event MapRegionUnloadDelegate MapRegionUnloaded;
+
 
         /// <summary>
         /// Called whenever any method calls world.BlockAccessor.GetClimateAt(). Used by the survival mod to modify the rainfall and temperature values to adjust for seasonal and day/night temperature variations. Be sure to also register to OnGetClimateForDate.

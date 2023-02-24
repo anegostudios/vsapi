@@ -1,4 +1,5 @@
 ﻿using Cairo;
+using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 
@@ -38,6 +39,16 @@ namespace Vintagestory.API.Client
         public bool Visible = true;
 
         public override bool Focusable { get { return true; } }
+
+        public string Text
+        {
+            get { return normalText.GetText(); }
+            set
+            {
+                normalText.Text = value;
+                pressedText.Text = value;
+            }
+        }
 
         /// <summary>
         /// Creates a button with text.
@@ -147,7 +158,7 @@ namespace Vintagestory.API.Client
             {
                 // Brown background
                 Rectangle(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
-                ctx.SetSourceRGBA(69 / 255.0, 52 / 255.0, 36 / 255.0, 1);
+                ctx.SetSourceRGBA(69 / 255.0, 52 / 255.0, 36 / 255.0, 0.8);
                 ctx.Fill();
             }
 
@@ -322,23 +333,35 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+        [Obsolete("Use Method without orientation argument")]
+        public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, CairoFont buttonFont, EnumButtonStyle style, EnumTextOrientation orientation, string key = null)
+            => AddButton(composer, text, onClick, bounds, buttonFont, style, key);
+        [Obsolete("Use Method without orientation argument")]
+        public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style, EnumTextOrientation orientation, string key = null)
+            => AddButton(composer, text, onClick, bounds, style, key);
+        [Obsolete("Use Method without orientation argument")]
+        public static GuiComposer AddSmallButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style, EnumTextOrientation orientation, string key = null)
+            => AddSmallButton(composer, text, onClick, bounds, style, key);
+
+
         /// <summary>
-        /// Creates a button for the current GUI.
+        /// Adds a clickable button
         /// </summary>
-        /// <param name="text">The text on the button.</param>
-        /// <param name="onClick">The event fired when the button is clicked.</param>
-        /// <param name="bounds">The bounds of the button.</param>
-        /// <param name="buttonFont">The font of the button.</param>
-        /// <param name="style">The style of the button. (Default: Normal)</param>
-        /// <param name="orientation">The orientation of the text. (Default: center)</param>
-        /// <param name="key">The internal name of the button.</param>
-        public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, CairoFont buttonFont, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
+        /// <param name="composer"></param>
+        /// <param name="text">The text displayed inside the button</param>
+        /// <param name="onClick">Handler for when the button is clicked</param>
+        /// <param name="bounds"></param>
+        /// <param name="buttonFont">The font to be used for the text inside the button.</param>
+        /// <param name="style"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, CairoFont buttonFont, EnumButtonStyle style = EnumButtonStyle.Normal, string key = null)
         {
             if (!composer.Composed)
             {
                 CairoFont hoverFont = buttonFont.Clone().WithColor(GuiStyle.ActiveButtonTextColor);
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, buttonFont, hoverFont, onClick, bounds, style);
-                elem.SetOrientation(orientation);
+                elem.SetOrientation(buttonFont.Orientation);
                 composer.AddInteractiveElement(elem, key);
 
             }
@@ -346,20 +369,21 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Creates a button for the current GUI.
+        /// Adds a clickable button button with font CairoFont.ButtonText()
         /// </summary>
-        /// <param name="text">The text on the button.</param>
-        /// <param name="onClick">The event fired when the button is clicked.</param>
-        /// <param name="bounds">The bounds of the button.</param>
-        /// <param name="style">The style of the button. (Default: Normal)</param>
-        /// <param name="orientation">The orientation of the text. (Default: center)</param>
-        /// <param name="key">The internal name of the button.</param>
-        public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
+        /// <param name="composer"></param>
+        /// <param name="text">The text displayed inside the button</param>
+        /// <param name="onClick">Handler for when the button is clicked</param>
+        /// <param name="bounds"></param>
+        /// <param name="style"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static GuiComposer AddButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, string key = null)
         {
             if (!composer.Composed)
             {
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, CairoFont.ButtonText(), CairoFont.ButtonPressedText(), onClick, bounds, style);
-                elem.SetOrientation(orientation);
+                elem.SetOrientation(CairoFont.ButtonText().Orientation);
                 composer.AddInteractiveElement(elem, key);
                 
             }
@@ -367,15 +391,16 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Creates a small button for the current GUI.
+        /// Adds a small clickable button with font size GuiStyle.SmallFontSize
         /// </summary>
-        /// <param name="text">The text on the button.</param>
-        /// <param name="onClick">The event fired when the button is clicked.</param>
-        /// <param name="bounds">The bounds of the button.</param>
-        /// <param name="style">The style of the button. (Default: Normal)</param>
-        /// <param name="orientation">The orientation of the text. (Default: center)</param>
-        /// <param name="key">The internal name of the button.</param>
-        public static GuiComposer AddSmallButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, EnumTextOrientation orientation = EnumTextOrientation.Center, string key = null)
+        /// <param name="composer"></param>
+        /// <param name="text">The text displayed inside the button</param>
+        /// <param name="onClick">Handler for when the button is clicked</param>
+        /// <param name="bounds"></param>
+        /// <param name="style"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static GuiComposer AddSmallButton(this GuiComposer composer, string text, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal, string key = null)
         {
             if (!composer.Composed)
             {
@@ -396,16 +421,18 @@ namespace Vintagestory.API.Client
                 font2.UnscaledFontsize = GuiStyle.SmallFontSize;
 
                 GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, font1, font2, onClick, bounds, style);
-                elem.SetOrientation(orientation);
+                elem.SetOrientation(font1.Orientation);
                 composer.AddInteractiveElement(elem, key);
             }
             return composer;
         }
 
         /// <summary>
-        /// Gets the button by name.
+        /// Gets the button by name
         /// </summary>
-        /// <param name="key">The name of the button.</param>
+        /// <param name="composer"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static GuiElementTextButton GetButton(this GuiComposer composer, string key)
         {
             return (GuiElementTextButton)composer.GetElement(key);

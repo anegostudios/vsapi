@@ -172,10 +172,10 @@ namespace Vintagestory.API.Client
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
 
             double val;
-            double.TryParse(lines[0], out val);
+            double.TryParse(Lines[0], out val);
             val -= size;
-            lines[0] = "" + Math.Round(val, 4);
-            SetValue(lines[0]);
+            Lines[0] = "" + Math.Round(val, 4);
+            SetValue(Lines[0]);
 
             args.SetHandled(true);
         }
@@ -201,18 +201,18 @@ namespace Vintagestory.API.Client
                 if (mouseY > Bounds.absY + heightHalf + 1)
                 {
                     double val;
-                    double.TryParse(lines[0], out val);
+                    double.TryParse(Lines[0], out val);
                     val-=size;
-                    lines[0] = "" + Math.Round(val, 4);
-                    SetValue(lines[0]);
+                    Lines[0] = "" + Math.Round(val, 4);
+                    SetValue(Lines[0]);
                 }
                 else
                 {
                     double val;
-                    double.TryParse(lines[0], out val);
+                    double.TryParse(Lines[0], out val);
                     val+=size;
-                    lines[0] = "" + Math.Round(val, 4);
-                    SetValue(lines[0]);
+                    Lines[0] = "" + Math.Round(val, 4);
+                    SetValue(Lines[0]);
                 }
 
                 

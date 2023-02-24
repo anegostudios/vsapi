@@ -25,7 +25,7 @@ namespace Vintagestory.API.Common
         IAviWriter GetAviWriter(int recordingBufferSize, double framerate, string codeccode);
         AvailableCodec[] AvailableCodecs();
 
-        void DeleteFileToRecyclebin(string filepath);
+        void MoveFileToRecyclebin(string filepath);
 
         /// <summary>
         /// Total disk space in bytes

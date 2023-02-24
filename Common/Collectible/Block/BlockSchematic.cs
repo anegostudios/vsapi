@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -80,6 +81,7 @@ namespace Vintagestory.API.Common
         public List<Entity> EntitiesUnpacked = new List<Entity>();
         public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
 
+        
 
 
         protected Block fillerBlock;
@@ -102,11 +104,14 @@ namespace Vintagestory.API.Common
 
         public virtual void Init(IBlockAccessor blockAccessor)
         {
+            InitMetaBlocks(blockAccessor);
+        }
+
+        public void InitMetaBlocks(IBlockAccessor blockAccessor)
+        {
             fillerBlock = blockAccessor.GetBlock(new AssetLocation("meta-filler"));
             pathwayBlock = blockAccessor.GetBlock(new AssetLocation("meta-pathway"));
             undergroundBlock = blockAccessor.GetBlock(new AssetLocation("meta-underground"));
-
-            
         }
 
         /// <summary>
@@ -423,6 +428,7 @@ namespace Vintagestory.API.Common
                 BlockEntities[(uint)((dy << 20) | (dz << 10) | dx)] = val.Value;
             }
 
+            BlockPos minPos = new BlockPos(minX, minY, minZ);
             foreach (Entity e in EntitiesUnpacked)
             {
                 using (MemoryStream ms = new MemoryStream())
@@ -431,9 +437,9 @@ namespace Vintagestory.API.Common
 
                     writer.Write(world.ClassRegistry.GetEntityClassName(e.GetType()));
 
-                    e.WillExport(startPos);
+                    e.WillExport(minPos);
                     e.ToBytes(writer, false);
-                    e.DidImportOrExport(startPos);
+                    e.DidImportOrExport(minPos);
 
                     Entities.Add(Ascii85.Encode(ms.ToArray()));
                 }
@@ -441,7 +447,6 @@ namespace Vintagestory.API.Common
 
             return true;
         }
-
 
         /// <summary>
         /// Will place all blocks using the configured replace mode. Note: If you use a revertable or bulk block accessor you will have to call PlaceBlockEntities() after the Commit()
@@ -454,7 +459,7 @@ namespace Vintagestory.API.Common
         public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, bool replaceMetaBlocks = true)
         {
             int result = Place(blockAccessor, worldForCollectibleResolve, startPos, ReplaceMode, replaceMetaBlocks);
-            PlaceDecors(blockAccessor, startPos, false);
+            PlaceDecors(blockAccessor, startPos);
             return result;
         }
 
@@ -532,42 +537,58 @@ namespace Vintagestory.API.Common
 
             if (!(blockAccessor is IBlockAccessorRevertable))
             {
-                PlaceEntitiesAndBlockEntities(blockAccessor, worldForCollectibleResolve, startPos);
+                PlaceEntitiesAndBlockEntities(blockAccessor, worldForCollectibleResolve, startPos, BlockCodes, ItemCodes);
             }
 
             return placed;
         }
 
-        public virtual void PlaceDecors(IBlockAccessor blockAccessor, BlockPos startPos, bool synchronize)
+        public virtual void PlaceDecors(IBlockAccessor blockAccessor, BlockPos startPos)
         {
-            BlockPos curPos = new BlockPos();
             for (int i = 0; i < DecorIndices.Count; i++)
             {
                 uint index = DecorIndices[i];
+                int posX = startPos.X + (int)(index & 0x1ff);
+                int posY = startPos.Y + (int)((index >> 20) & 0x1ff);
+                int posZ = startPos.Z + (int)((index >> 10) & 0x1ff);
                 int storedBlockid = DecorIds[i];
-                byte faceIndex = (byte)(storedBlockid >> 24);
-                if (faceIndex > 5) continue;
-                BlockFacing face = BlockFacing.ALLFACES[faceIndex];
-                storedBlockid &= 0xFFFFFF;
-
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
-
-                AssetLocation blockCode = BlockCodes[storedBlockid];
-
-                Block newBlock = blockAccessor.GetBlock(blockCode);
-
-                if (newBlock == null) continue;
-
-                curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
-
-                IWorldChunk chunk = blockAccessor.GetChunkAtBlockPos(curPos);
-                if (chunk == null) continue;
-                if (synchronize) blockAccessor.MarkChunkDecorsModified(curPos);
-                chunk.SetDecor(blockAccessor, newBlock, curPos, face);
-                chunk.MarkModified();
+                PlaceOneDecor(blockAccessor, posX, posY, posZ, storedBlockid);
             }
+        }
+
+        public virtual void PlaceDecors(IBlockAccessor blockAccessor, BlockPos startPos, Rectanglei rect)
+        {
+            int i = -1;
+            foreach (uint index in DecorIndices)
+            {
+                i++;   // increment i first, because we have various continue statements
+
+                int posX = startPos.X + (int)(index & 0x1ff);
+                int posZ = startPos.Z + (int)((index >> 10) & 0x1ff);
+                if (!rect.Contains(posX, posZ)) continue;
+
+                int posY = startPos.Y + (int)((index >> 20) & 0x1ff);
+
+                int storedBlockid = DecorIds[i];
+                PlaceOneDecor(blockAccessor, posX, posY, posZ, storedBlockid);
+            }
+        }
+
+        BlockPos curPos = new BlockPos();
+        private void PlaceOneDecor(IBlockAccessor blockAccessor, int posX, int posY, int posZ, int storedBlockid)
+        {
+            byte faceIndex = (byte)(storedBlockid >> 24);
+            if (faceIndex > 5) return;
+            BlockFacing face = BlockFacing.ALLFACES[faceIndex];
+            storedBlockid &= 0xFFFFFF;
+            AssetLocation blockCode = BlockCodes[storedBlockid];
+
+            Block newBlock = blockAccessor.GetBlock(blockCode);
+
+            if (newBlock == null) return;
+
+            curPos.Set(posX, posY, posZ);
+            blockAccessor.SetDecor(newBlock, curPos, face);
         }
 
         /// <summary>
@@ -848,15 +869,19 @@ namespace Vintagestory.API.Common
 
                 string beData = val.Value;
 
-                string entityclass = worldForResolve.GetBlock(BlocksUnpacked[pos]).EntityClass;
+                var block = worldForResolve.GetBlock(BlocksUnpacked[pos]);
+                string entityclass = block.EntityClass;
 
                 if (entityclass != null)
                 {
                     BlockEntity be = worldForResolve.ClassRegistry.CreateBlockEntity(entityclass);
-                    if (be is IBlockEntityRotatable)
+                    if (be is IRotatable)
                     {
+                        be.Pos = pos;
+                        be.CreateBehaviors(block, worldForResolve);
                         ITreeAttribute tree = DecodeBlockEntityData(beData);
-                        (be as IBlockEntityRotatable).OnTransformed(tree, angle, flipAxis);
+
+                        (be as IRotatable).OnTransformed(tree, angle, flipAxis);
                         beData = StringEncodeTreeAttribute(tree);
                     }
 
@@ -937,7 +962,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockAccessor"></param>
         /// <param name="worldForCollectibleResolve"></param>
         /// <param name="startPos"></param>
-        public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos)
+        public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, Dictionary<int, AssetLocation> blockCodes, Dictionary<int, AssetLocation> itemCodes, bool replaceBlockEntities = false)
         {
             BlockPos curPos = new BlockPos();
 
@@ -954,9 +979,8 @@ namespace Vintagestory.API.Common
 
                 BlockEntity be = blockAccessor.GetBlockEntity(curPos);
 
-
                 // Block entities need to be manually initialized for world gen block access
-                if (be == null && blockAccessor is IWorldGenBlockAccessor)
+                if ((be == null || replaceBlockEntities) && blockAccessor is IWorldGenBlockAccessor)
                 {
                     Block block = blockAccessor.GetBlock(curPos, BlockLayersAccess.Solid);
                     
@@ -969,11 +993,14 @@ namespace Vintagestory.API.Common
 
                 if (be != null)
                 {
-                    Block block = blockAccessor.GetBlock(curPos, BlockLayersAccess.Solid);
-                    if (block.EntityClass != worldForCollectibleResolve.ClassRegistry.GetBlockEntityClass(be.GetType()))
+                    if (!replaceBlockEntities)
                     {
-                        worldForCollectibleResolve.Logger.Warning("Could not import block entity data for schematic at {0}. There is already {1}, expected {2}. Probably overlapping ruins.", curPos, be.GetType(), block.EntityClass);
-                        continue;
+                        Block block = blockAccessor.GetBlock(curPos, BlockLayersAccess.Solid);
+                        if (block.EntityClass != worldForCollectibleResolve.ClassRegistry.GetBlockEntityClass(be.GetType()))
+                        {
+                            worldForCollectibleResolve.Logger.Warning("Could not import block entity data for schematic at {0}. There is already {1}, expected {2}. Probably overlapping ruins.", curPos, be.GetType(), block.EntityClass);
+                            continue;
+                        }
                     }
 
                     ITreeAttribute tree = DecodeBlockEntityData(val.Value);
@@ -982,8 +1009,8 @@ namespace Vintagestory.API.Common
                     tree.SetInt("posz", curPos.Z);
 
                     be.FromTreeAttributes(tree, worldForCollectibleResolve);
-                    be.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
-                    be.Pos = curPos.Copy();
+                    be.OnLoadCollectibleMappings(worldForCollectibleResolve, blockCodes, itemCodes, schematicSeed);
+                    be.OnPlacementBySchematic(worldForCollectibleResolve.Api as ICoreServerAPI, blockAccessor, curPos);
                 }
             }
 
@@ -1281,7 +1308,7 @@ namespace Vintagestory.API.Common
         /// Makes a deep copy of the packed schematic. Unpacked data and loaded meta information is not cloned.
         /// </summary>
         /// <returns></returns>
-        public BlockSchematic ClonePacked()
+        public virtual BlockSchematic ClonePacked()
         {
             BlockSchematic cloned = new BlockSchematic();
             cloned.SizeX = SizeX;

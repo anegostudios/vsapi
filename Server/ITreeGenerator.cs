@@ -1,19 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common;
+﻿using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Server
 {
-    public delegate void GrowTreeDelegate(IBlockAccessor blockAccessor, BlockPos pos, bool skipForestFloor, float sizeModifier = 1f, float vineGrowthChance = 0, float otherBlockChance = 1f, int treesInChunkGenerated = 0);
+    public delegate void GrowTreeDelegate(IBlockAccessor blockAccessor, BlockPos pos, TreeGenParams treeGenParams);
 
     public interface ITreeGenerator
     {
-        void GrowTree(IBlockAccessor blockAccessor, BlockPos pos, bool skipForestFloor, float sizeModifier = 1f, float vineGrowthChance = 0, float otherBlockChance = 1f, int treesInChunkGenerated = 0);
+        void GrowTree(IBlockAccessor blockAccessor, BlockPos pos, TreeGenParams treeGenParams);
     }
+
+
+    public class TreeGenParams
+    {
+        public EnumHemisphere hemisphere;
+        public bool skipForestFloor;
+        public float size = 1f;
+        public float vinesGrowthChance = 0f;
+        public float mossGrowthChance = 0f;
+        public float otherBlockChance = 1f;
+        public int treesInChunkGenerated = 0;
+    }
+
 
 
 }

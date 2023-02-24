@@ -108,7 +108,7 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Will return invalid data if called when Count <= 0: it is the responsibility of the calling code to check Count > 0
+        /// Will return invalid data if called when Count &lt;= 0: it is the responsibility of the calling code to check Count > 0
         /// </summary>
         /// <returns></returns>
         public int Dequeue()
@@ -118,7 +118,7 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Will return invalid data if called when Count <= 0: it is the responsibility of the calling code to check Count > 0
+        /// Will return invalid data if called when Count &lt;= 0: it is the responsibility of the calling code to check Count > 0
         /// </summary>
         /// <returns></returns>
         public int DequeueLIFO()

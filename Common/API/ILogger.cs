@@ -36,6 +36,7 @@ namespace Vintagestory.API.Common
         /// Adds a new <see cref="EnumLogType.Chat"/> log entry with the specified format string and arguments.
         /// </summary>
         void Chat(string format, params object[] args);
+
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Chat"/> log entry with the specified message.
         /// </summary>
@@ -130,6 +131,7 @@ namespace Vintagestory.API.Common
         /// Adds a new <see cref="EnumLogType.Audit"/> log entry with the specified message.
         /// </summary>
         void Audit(string message);
+
     }
 
     /// <summary>
@@ -214,5 +216,6 @@ namespace Vintagestory.API.Common
             => Log(EnumLogType.Audit, format, args);
         public void Audit(string message)
             => Log(EnumLogType.Audit, message, _emptyArgs);
+        
     }
 }

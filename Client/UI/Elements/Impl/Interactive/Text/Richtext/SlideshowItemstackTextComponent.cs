@@ -27,6 +27,7 @@ namespace Vintagestory.API.Client
         protected int curItemIndex;
 
         public bool ShowStackSize { get; set; }
+        public bool Background { get; set; } = false;
 
         public string ExtraTooltipText;
 
@@ -133,7 +134,7 @@ namespace Vintagestory.API.Client
             slot = new DummySlot(null, dummyInv);
         }
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
             offsetX += GuiElement.scaled(PaddingLeft);
@@ -147,14 +148,17 @@ namespace Vintagestory.API.Client
 
             nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
 
-            return requireLinebreak;
+            return requireLinebreak ? EnumCalcBoundsResult.Nextline : EnumCalcBoundsResult.Continue;
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            /*ctx.SetSourceRGBA(1, 1, 1, 0.2);
-            ctx.Rectangle(BoundsPerLine[0].X, BoundsPerLine[0].Y, BoundsPerLine[0].Width, BoundsPerLine[0].Height);
-            ctx.Fill();*/
+            if (Background)
+            {
+                ctx.SetSourceRGBA(1, 1, 1, 0.2);
+                ctx.Rectangle(BoundsPerLine[0].X, BoundsPerLine[0].Y - BoundsPerLine[0].Ascent / 2 /* why /2??? */, BoundsPerLine[0].Width, BoundsPerLine[0].Height);
+                ctx.Fill();
+            }
         }
 
         protected override string OnRequireInfoText(ItemSlot slot)
@@ -184,7 +188,7 @@ namespace Vintagestory.API.Client
             
             scibounds.CalcWorldBounds();
             scibounds.absFixedX = renderX + bounds.X + renderOffset.X;
-            scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y;
+            scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y - BoundsPerLine[0].Ascent / 2;
             scibounds.absInnerWidth *= renderSize / 0.58f;
             scibounds.absInnerHeight *= renderSize / 0.58f;
 
@@ -192,7 +196,7 @@ namespace Vintagestory.API.Client
 
             api.Render.RenderItemstackToGui(slot, 
                 renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X + offX, 
-                renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY, 
+                renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY - BoundsPerLine[0].Ascent / 2, 
                 100 + renderOffset.Z, (float)bounds.Width * renderSize, 
                 ColorUtil.WhiteArgb, true, false, ShowStackSize
             );

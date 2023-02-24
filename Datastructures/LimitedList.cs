@@ -10,7 +10,7 @@ namespace Vintagestory.API.Datastructures
     /// <summary>
     /// Holds a limited amount of items, discards the lowest index item when an overflow happens
     /// </summary>
-    public class LimitedList<TElem> : IEnumerable
+    public class LimitedList<TElem> : IEnumerable, IEnumerable<TElem>
     {
         private List<TElem> elems;
         private int capacity;
@@ -98,6 +98,11 @@ namespace Vintagestory.API.Datastructures
         public TElem[] ToArray()
         {
             return elems.ToArray();
+        }
+
+        IEnumerator<TElem> IEnumerable<TElem>.GetEnumerator()
+        {
+            return elems.GetEnumerator();
         }
     }
 }

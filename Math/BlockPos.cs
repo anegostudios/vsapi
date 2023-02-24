@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using ProtoBuf;
 using Vintagestory.API.Common;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.MathTools
 {
@@ -145,6 +146,16 @@ namespace Vintagestory.API.MathTools
             writer.Write(X);
             writer.Write(Y);
             writer.Write(Z);
+        }
+
+        /// <summary>
+        /// Convert a block position to coordinates relative to the world spawn position
+        /// </summary>
+        /// <param name="api"></param>
+        /// <returns></returns>
+        public Vec3i ToLocalPosition(ICoreAPI api)
+        {
+            return new Vec3i(X - api.World.DefaultSpawnPosition.XInt, Y, Z - api.World.DefaultSpawnPosition.ZInt);
         }
 
         public BlockPos West()

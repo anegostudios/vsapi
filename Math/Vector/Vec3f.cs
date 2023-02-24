@@ -11,7 +11,7 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     [ProtoContract]
-    public class Vec3f : IVec3
+    public class Vec3f : IVec3, IEquatable<Vec3f>
     {
         /// <summary>
         /// Create a new instance with x/y/z set to 0
@@ -235,9 +235,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Adds given x/y/z coordinates to the vector
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
+        /// <param name="vec"></param>
         /// <returns></returns>
         public Vec3f Add(Vec3f vec)
         {
@@ -251,11 +249,17 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Substracts given x/y/z coordinates to the vector
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
+        /// <param name="vec"></param>
         /// <returns></returns>
         public Vec3f Sub(Vec3f vec)
+        {
+            this.X -= vec.X;
+            this.Y -= vec.Y;
+            this.Z -= vec.Z;
+            return this;
+        }
+
+        public Vec3f Sub(Vec3i vec)
         {
             this.X -= vec.X;
             this.Y -= vec.Y;
@@ -305,20 +309,6 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
-        /// <summary>
-        /// Calculates the distance the two endpoints
-        /// </summary>
-        /// <param name="vec"></param>
-        /// <returns></returns>
-        public float Distance(Vec3f vec)
-        {
-            return (float)Math.Sqrt(
-                (X - vec.X) * (X - vec.X) +
-                (Y - vec.Y) * (Y - vec.Y) +
-                (Z - vec.Z) * (Z - vec.Z)
-            );
-        }
-
 
         /// <summary>
         /// Calculates the square distance the two endpoints
@@ -342,7 +332,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="vec"></param>
         /// <returns></returns>
-        public float Distance(Vec3d vec)
+        public float DistanceTo(Vec3d vec)
+        {
+            return (float)Math.Sqrt(
+                (X - vec.X) * (X - vec.X) +
+                (Y - vec.Y) * (Y - vec.Y) +
+                (Z - vec.Z) * (Z - vec.Z)
+            );
+        }
+
+        public float DistanceTo(Vec3f vec)
         {
             return (float)Math.Sqrt(
                 (X - vec.X) * (X - vec.X) +
@@ -459,6 +458,23 @@ namespace Vintagestory.API.MathTools
         }
 
 
+
+        public static bool operator ==(Vec3f left, Vec3f right)
+        {
+            if (object.ReferenceEquals(left, null))
+            {
+                return object.ReferenceEquals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Vec3f left, Vec3f right)
+        {
+            return !(left == right);
+        }
+
+
         #endregion
 
         /// <summary>
@@ -545,5 +561,40 @@ namespace Vintagestory.API.MathTools
         float IVec3.YAsFloat { get { return Y; } }
 
         float IVec3.ZAsFloat { get { return Z; } }
+
+        public Vec4f ToVec4f(float w)
+        {
+            return new Vec4f(X, Y, Z, w);
+        }
+
+
+        public bool Equals(Vec3f other, double epsilon)
+        {
+            return
+                Math.Abs(this.X - other.X) < epsilon &&
+                Math.Abs(this.Y - other.Y) < epsilon &&
+                Math.Abs(this.Z - other.Z) < epsilon
+            ;
+        }
+
+        public bool Equals(Vec3f other)
+        {
+            return other != null && X == other.X && Y == other.Y && Z == other.Z;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Vec3f other)
+            {
+                return other != null && X == other.X && Y == other.Y && Z == other.Z;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return ((17 * 23 + X.GetHashCode()) * 23 + Y.GetHashCode()) * 23 + Z.GetHashCode();
+        }
     }
 }

@@ -126,20 +126,20 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Pushes a copy of the current matrix onto the games matrix stack
         /// </summary>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
+//        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlPushMatrix();
 
         /// <summary>
         /// Pops the top most matrix from the games matrix stack
         /// </summary>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
+//        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlPopMatrix();
 
         /// <summary>
         /// Replaces the top most matrix with given one
         /// </summary>
         /// <param name="matrix"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
+//        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlLoadMatrix(double[] matrix);
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
+ //       [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlTranslate(float x, float y, float z);
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
+ //       [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlTranslate(double x, double y, double z);
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
+//        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlScale(float x, float y, float z);
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Vintagestory.API.Client
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
+ //       [Obsolete("Use Matrix or Mat4f to perform matrix calculations, see Survival Mod Code for examples. Can still be used for GUI code since there is no alternative as of yet.")]
         void GlRotate(float angle, float x, float y, float z);
 
         /// <summary>
@@ -198,6 +198,8 @@ namespace Vintagestory.API.Client
         /// Disables the Depth Test.
         /// </summary>
         void GLDisableDepthTest();
+
+        void GlViewport(int x, int y, int width, int height);
 
         float LineWidth { set; }
 
@@ -340,6 +342,8 @@ namespace Vintagestory.API.Client
         /// <param name="intoTexture">The target texture space it should load the pixels into. Must have width/height set accordingly. Will set the opengl textureid upon successful load.</param>
         /// <returns></returns>
         void LoadOrUpdateTextureFromRgba(int[] rgbaPixels, bool linearMag, int clampMode, ref LoadedTexture intoTexture);
+
+        void LoadTexture(IBitmap bmp, ref LoadedTexture intoTexture, bool linearMag = false, int clampMode = 0, bool generateMipmaps = false);
 
 
         /// <summary>

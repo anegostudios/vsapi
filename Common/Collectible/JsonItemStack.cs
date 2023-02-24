@@ -52,6 +52,11 @@ namespace Vintagestory.API.Common
         public ItemStack ResolvedItemstack;
         
 
+        public static JsonItemStack FromString(string jsonItemstack)
+        {
+            return JsonObject.FromJson(jsonItemstack).AsObject<JsonItemStack>();
+        }
+
         /// <summary>
         /// Sets itemstack.block or itemstack.item
         /// </summary>

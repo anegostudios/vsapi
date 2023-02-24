@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Cairo;
-using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -52,6 +50,7 @@ namespace Vintagestory.API.Client
         protected Stack<bool> conditionalAdds = new Stack<bool>();
 
         protected ElementBounds lastAddedElementBounds;
+        protected GuiElement lastAddedElement;
 
         public ElementBounds CurParentBounds => parentBoundsForNextElement.Peek();
 
@@ -74,6 +73,8 @@ namespace Vintagestory.API.Client
         {
             get { return currentElementKey; }
         }
+
+        public GuiElement LastAddedElement => lastAddedElement;
 
         /// <summary>
         /// Retrieve gui element by key. Returns null if not found.
@@ -643,6 +644,7 @@ namespace Vintagestory.API.Client
 
             parentBoundsForNextElement.Push(bounds);
             lastAddedElementBounds = null;
+            lastAddedElement = null;
             Composed = false;
         }
 
@@ -730,14 +732,14 @@ namespace Vintagestory.API.Client
 
                 foreach (GuiElement elem in staticElements.Values)
                 {
-                    Api.Render.RenderRectangle((int)elem.Bounds.renderX, (int)elem.Bounds.renderY, 500, (int)elem.Bounds.OuterWidth, (int)elem.Bounds.OuterHeight, elem.OutlineColor());
+                    elem.RenderBoundsDebug();
                 }
             }
 
             if (Outlines == 2) { 
                 foreach (GuiElement elem in interactiveElements.Values)
                 {
-                    Api.Render.RenderRectangle((int)elem.Bounds.renderX, (int)elem.Bounds.renderY, 500, (int)elem.Bounds.OuterWidth, (int)elem.Bounds.OuterHeight, elem.OutlineColor());
+                    elem.RenderBoundsDebug();
                 }
             }
         }
@@ -785,8 +787,8 @@ namespace Vintagestory.API.Client
             parentBoundsForNextElement.Peek().WithChild(element.Bounds);
 
             lastAddedElementBounds = element.Bounds;
+            lastAddedElement = element;
 
-            
 
             return this;
         }
@@ -810,6 +812,7 @@ namespace Vintagestory.API.Client
             parentBoundsForNextElement.Peek().WithChild(element.Bounds);
 
             lastAddedElementBounds = element.Bounds;
+            lastAddedElement = element;
 
             element.InsideClipBounds = InsideClipBounds;
 
@@ -851,6 +854,8 @@ namespace Vintagestory.API.Client
             staticElementsTexture.Dispose();
 
             Composed = false;
+
+            lastAddedElement = null;
         }
     }
 }

@@ -21,12 +21,17 @@ namespace Vintagestory.API.Common
         public Vec3d HitPosition;
 
         /// <summary>
-        /// The source entity the damge came from. (if any)
+        /// The source entity the damge came from, if any
         /// </summary>
         public Entity SourceEntity;
 
         /// <summary>
-        /// The source block the damage came from. (if any)
+        /// The entity that caused this damage, e.g. the entity that threw the SourceEntity projectile, if any
+        /// </summary>
+        public Entity CauseEntity;
+
+        /// <summary>
+        /// The source block the damage came from, if any
         /// </summary>
         public Block SourceBlock;
 
@@ -36,7 +41,7 @@ namespace Vintagestory.API.Common
         public Vec3d SourcePos;
 
         /// <summary>
-        /// Tier of the weapon used to damage the entity (if any)
+        /// Tier of the weapon used to damage the entity, if any
         /// </summary>
         public int DamageTier = 0;
 

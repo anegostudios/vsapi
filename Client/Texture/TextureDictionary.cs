@@ -9,7 +9,7 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
 {
-    public class TextureDictionary : FakeDictionary<string, CompositeTexture>
+    public class TextureDictionary : FastSmallDictionary<string, CompositeTexture>
     {
         internal bool alreadyBaked = false;
 
@@ -38,13 +38,13 @@ namespace Vintagestory.API.Client
                     for (int i = 0; i < bct.Length; i++)
                     {
                         if (!mainTextureDict.ContainsKey(bct[i].BakedName))
-                            mainTextureDict.AddTextureLocation_Checked(new AssetLocationAndSource(bct[i].BakedName, sourceMessage, sourceCode, i + 1));
+                            mainTextureDict.SetTextureLocation(new AssetLocationAndSource(bct[i].BakedName, sourceMessage, sourceCode, i + 1));
                     }
                     continue;
                 }
 
                 if (!mainTextureDict.ContainsKey(ct.Baked.BakedName))
-                    mainTextureDict.AddTextureLocation_Checked(new AssetLocationAndSource(ct.Baked.BakedName, sourceMessage, sourceCode));
+                    mainTextureDict.SetTextureLocation(new AssetLocationAndSource(ct.Baked.BakedName, sourceMessage, sourceCode));
             }
 
             alreadyBaked = true;

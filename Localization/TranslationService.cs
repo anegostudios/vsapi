@@ -23,23 +23,15 @@ namespace Vintagestory.API.Config
     /// <seealso cref="ITranslationService" />
     public class TranslationService : ITranslationService
     {
-        private readonly Dictionary<string, string> entryCache = new Dictionary<string, string>();
-
-        // This is needed because in singleplayer the server and client access the same Lang dicts, so we need to prevent race conditions
-        private object cacheLock = new object();
-
-        private readonly Dictionary<string, KeyValuePair<Regex, string>> regexCache = new Dictionary<string, KeyValuePair<Regex, string>>();
-
-        private readonly Dictionary<string, string> wildcardCache = new Dictionary<string, string>();
-        private readonly HashSet<string> notFound = new HashSet<string>();
+        private Dictionary<string, string> entryCache = new Dictionary<string, string>();
+        private Dictionary<string, KeyValuePair<Regex, string>> regexCache = new Dictionary<string, KeyValuePair<Regex, string>>();
+        private Dictionary<string, string> wildcardCache = new Dictionary<string, string>();
+        private HashSet<string> notFound = new HashSet<string>();
 
         private IAssetManager assetManager;
-
         private readonly ILogger logger;
-
         private bool loaded = false;
         private string preLoadAssetsPath = null;
-
         public EnumLinebreakBehavior LineBreakBehavior { get; set; }
 
 
@@ -70,27 +62,32 @@ namespace Vintagestory.API.Config
         {
             preLoadAssetsPath = null;
             if (lazyLoad) return;
+            loaded = true;
 
-            lock (cacheLock)
+            // Don't work on dicts directly for thread safety (client and local server access the same dict)
+            var entryCache = new Dictionary<string, string>();
+            var regexCache = new Dictionary<string, KeyValuePair<Regex, string>>();
+            var wildcardCache = new Dictionary<string, string>();
+
+            var origins = assetManager.Origins;
+
+            foreach (var asset in origins.SelectMany(p => p.GetAssets(AssetCategory.lang).Where(a => a.Name.Equals($"{LanguageCode}.json"))))
             {
-                loaded = true;
-                entryCache.Clear();
-                regexCache.Clear();
-                wildcardCache.Clear();
-                var origins = assetManager.Origins;
 
-                foreach (var asset in origins.SelectMany(p => p.GetAssets(AssetCategory.lang).Where(a => a.Name.Equals($"{LanguageCode}.json"))))
-
-                    try
-                    {
-                        var json = asset.ToText();
-                        LoadEntries(JsonConvert.DeserializeObject<Dictionary<string, string>>(json), asset.Location.Domain);
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.Error($"Failed to load language file: {asset.Name} \n\n\t {ex}");
-                    }
+                try
+                {
+                    var json = asset.ToText();
+                    LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json), asset.Location.Domain);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error($"Failed to load language file: {asset.Name} \n\n\t {ex}");
+                }
             }
+
+            this.entryCache = entryCache;
+            this.regexCache = regexCache;
+            this.wildcardCache = wildcardCache;
         }
 
         /// <summary>
@@ -101,26 +98,35 @@ namespace Vintagestory.API.Config
         {
             preLoadAssetsPath = assetsPath;
             if (lazyLoad) return;
+            
+            loaded = true;
 
-            lock (cacheLock)
+            // Don't work on dicts directly for thread safety (client and local server access the same dict)
+            var entryCache = new Dictionary<string, string>();
+            var regexCache = new Dictionary<string, KeyValuePair<Regex, string>>();
+            var wildcardCache = new Dictionary<string, string>();
+
+
+            var assetsDirectory = new DirectoryInfo(Path.Combine(assetsPath, GlobalConstants.DefaultDomain, "lang"));
+            var files = assetsDirectory.EnumerateFiles($"{LanguageCode}.json", SearchOption.AllDirectories);
+
+            foreach (var file in files)
             {
-                loaded = true;
-                var assetsDirectory = new DirectoryInfo(Path.Combine(assetsPath, GlobalConstants.DefaultDomain, "lang"));
-                var files = assetsDirectory.EnumerateFiles($"{LanguageCode}.json", SearchOption.AllDirectories);
-
-                foreach (var file in files)
+                try
                 {
-                    try
-                    {
-                        var json = File.ReadAllText(file.FullName);
-                        LoadEntries(JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.Error($"Failed to load language file: {file.Name} \n\n\t {ex}");
-                    }
+                    var json = File.ReadAllText(file.FullName);
+                    LoadEntries(entryCache, regexCache, wildcardCache, JsonConvert.DeserializeObject<Dictionary<string, string>>(json));
+                }
+                catch (Exception ex)
+                {
+                    logger.Error($"Failed to load language file: {file.Name} \n\n\t {ex}");
                 }
             }
+
+            this.entryCache = entryCache;
+            this.regexCache = regexCache;
+            this.wildcardCache = wildcardCache;
+            
         }
 
         protected void EnsureLoaded()
@@ -152,13 +158,10 @@ namespace Vintagestory.API.Config
         /// </returns>
         public string GetIfExists(string key, params object[] args)
         {
-            lock (cacheLock)
-            {
-                EnsureLoaded();
-                return entryCache.TryGetValue(KeyWithDomain(key), out var value)
-                    ? string.Format(value, args)
-                    : null;
-            }
+            EnsureLoaded();
+            return entryCache.TryGetValue(KeyWithDomain(key), out var value)
+                ? string.Format(value, args)
+                : null;
         }
 
         /// <summary>
@@ -181,11 +184,8 @@ namespace Vintagestory.API.Config
         /// <returns>A dictionary of localisation entries.</returns>
         public IDictionary<string, string> GetAllEntries()
         {
-            lock (cacheLock)
-            {
-                EnsureLoaded();
-                return entryCache;
-            }
+            EnsureLoaded();
+            return entryCache;
         }
 
         /// <summary>
@@ -198,13 +198,9 @@ namespace Vintagestory.API.Config
         /// </returns>
         public string GetUnformatted(string key)
         {
-            lock (cacheLock)
-            {
-                EnsureLoaded();
-                bool found = entryCache.TryGetValue(KeyWithDomain(key), out var value);
-                //if (!found) logger.VerboseDebug("Not found lang key: " + key);
-                return found ? value : key;
-            }
+            EnsureLoaded();
+            bool found = entryCache.TryGetValue(KeyWithDomain(key), out var value);
+            return found ? value : key;
         }
 
         /// <summary>
@@ -218,14 +214,11 @@ namespace Vintagestory.API.Config
         /// </returns>
         public string GetMatching(string key, params object[] args)
         {
-            lock (cacheLock)
-            {
-                EnsureLoaded();
-                var value = GetMatchingIfExists(KeyWithDomain(key), args);
-                return string.IsNullOrEmpty(value)
-                    ? string.Format(key, args)
-                    : value;
-            }
+            EnsureLoaded();
+            var value = GetMatchingIfExists(KeyWithDomain(key), args);
+            return string.IsNullOrEmpty(value)
+                ? string.Format(key, args)
+                : value;
         }
 
         /// <summary>
@@ -236,20 +229,17 @@ namespace Vintagestory.API.Config
         /// <returns><c>true</c> if the specified key has a translation; otherwise, <c>false</c>.</returns>
         public bool HasTranslation(string key, bool findWildcarded = true)
         {
-            lock (cacheLock)
+            EnsureLoaded();
+            var validKey = KeyWithDomain(key);
+            if (entryCache.ContainsKey(validKey)) return true;
+            if (findWildcarded)
             {
-                EnsureLoaded();
-                var validKey = KeyWithDomain(key);
-                if (entryCache.ContainsKey(validKey)) return true;
-                if (findWildcarded)
-                {
-                    bool result = wildcardCache.Any(pair => StringUtil.FastStartsWith(key, pair.Key));
-                    if (!result) result = regexCache.Values.Any(pair => pair.Key.IsMatch(validKey));
-                    if (!result && !key.Contains("desc-") && notFound.Add(key)) logger.VerboseDebug("Lang key not found: " + key.Replace("{", "{{").Replace("}", "}}"));
-                    return result;
-                }
-                return false;
+                bool result = wildcardCache.Any(pair => StringUtil.FastStartsWith(key, pair.Key));
+                if (!result) result = regexCache.Values.Any(pair => pair.Key.IsMatch(validKey));
+                if (!result && !key.Contains("desc-") && notFound.Add(key)) logger.VerboseDebug("Lang key not found: " + key.Replace("{", "{{").Replace("}", "}}"));
+                return result;
             }
+            return false;
         }
 
         /// <summary>
@@ -286,12 +276,15 @@ namespace Vintagestory.API.Config
                 .FirstOrDefault();
         }
 
-        private void LoadEntries(Dictionary<string, string> entries, string domain = GlobalConstants.DefaultDomain)
+        private void LoadEntries(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, Dictionary<string, string> entries, string domain = GlobalConstants.DefaultDomain)
         {
-            foreach (var entry in entries) LoadEntry(entry, domain);
+            foreach (var entry in entries)
+            {
+                LoadEntry(entryCache, regexCache, wildcardCache, entry, domain);
+            }
         }
 
-        private void LoadEntry(KeyValuePair<string, string> entry, string domain = GlobalConstants.DefaultDomain)
+        private void LoadEntry(Dictionary<string, string> entryCache, Dictionary<string, KeyValuePair<Regex, string>> regexCache, Dictionary<string, string> wildcardCache, KeyValuePair<string, string> entry, string domain = GlobalConstants.DefaultDomain)
         {
             var key = KeyWithDomain(entry.Key, domain);
             switch (key.CountChars('*'))

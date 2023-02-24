@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>7</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <BuildDocFx>false</BuildDocFx>
@@ -69,7 +69,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7</LangVersion>
+    <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -122,6 +122,7 @@
     <Compile Include="Client\API\IInputAPI.cs" />
     <Compile Include="Client\API\ISettings.cs" />
     <Compile Include="Client\API\ITextureAtlasAPI.cs" />
+    <Compile Include="Client\Audio\EventMusicTrack.cs" />
     <Compile Include="Client\Audio\MusicTrack.cs" />
     <Compile Include="Client\Input\EnumGlKeys.cs" />
     <Compile Include="Client\Input\EnumHotkeyType.cs" />
@@ -130,11 +131,13 @@
     <Compile Include="Client\Input\KeyEvent.cs" />
     <Compile Include="Client\Input\MouseEvent.cs" />
     <Compile Include="Client\Model\Mesh\CustomMeshDataPartShort.cs" />
+    <Compile Include="Client\Model\Mesh\MeshUtil.cs" />
     <Compile Include="Client\Model\Tesselation\TileSide.cs" />
     <Compile Include="Client\ParticlePhysics.cs" />
     <Compile Include="Client\Render\ColorMapData.cs" />
     <Compile Include="Client\Render\EnumFrameBuffer.cs" />
     <Compile Include="Client\Render\IAviWriter.cs" />
+    <Compile Include="Client\Render\ModelCubeUtilExt.cs" />
     <Compile Include="Client\Render\PerceptionEffects\DamagedPerceptionEffect.cs" />
     <Compile Include="Client\Render\PerceptionEffects\FreezingPerceptionEffect.cs" />
     <Compile Include="Client\Render\PerceptionEffects\DrunkPerceptionEffect.cs" />
@@ -143,6 +146,7 @@
     <Compile Include="Client\Texture\TextureDictionary.cs" />
     <Compile Include="Client\Texture\FastBitmap.cs" />
     <Compile Include="Client\UI\Dialog\GuiDialogCharacterBase.cs" />
+    <Compile Include="Client\UI\Dialog\GuiDialogConfirm.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementIconListPicker.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementElementListPickerBase.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Controls\GuiElementColorListPicker.cs" />
@@ -153,10 +157,14 @@
     <Compile Include="Common\API\BlockLayersAccess.cs" />
     <Compile Include="Common\API\EnumBlockAccessResponse.cs" />
     <Compile Include="Common\API\IBlockAccessorPrefetch.cs" />
+    <Compile Include="Common\API\ChatCommand\CommandArgumentParsers.cs" />
+    <Compile Include="Common\API\ChatCommand\IChatCommandApi.cs" />
     <Compile Include="Common\API\ILandClaimAPI.cs" />
     <Compile Include="Client\API\IMacroManager.cs" />
+    <Compile Include="Common\Collectible\Block\BlockGeneric.cs" />
     <Compile Include="Common\Collectible\Block\IWithDrawnHeight.cs" />
     <Compile Include="Common\Collectible\Block\IDrawYAdjustable.cs" />
+    <Compile Include="Common\Collectible\Block\IWrenchOrientable.cs" />
     <Compile Include="Common\Collectible\DecorSelectionBox.cs" />
     <Compile Include="Common\Collectible\CollectibleBehavior.cs" />
     <Compile Include="Common\Collectible\Block\BlockEntityBehavior.cs" />
@@ -229,7 +237,6 @@
     <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementItemstackInfo.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementNewVersionText.cs" />
     <Compile Include="Client\UI\Elements\Impl\Interactive\Text\GuiElementRichtext.cs" />
-    <Compile Include="Client\UI\Elements\Impl\Interactive\Text\MultilineTextUtil.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementMainMenuCell.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\GuiElementClip.cs" />
     <Compile Include="Client\UI\Elements\Impl\Misc\SavegameCellEntry.cs" />
@@ -260,7 +267,7 @@
     <Compile Include="Client\UI\TextDrawUtil.cs" />
     <Compile Include="Client\UI\TextTextureUtil.cs" />
     <Compile Include="Common\API\EnumBlockAccessFlags.cs" />
-    <Compile Include="Common\Collectible\Block\IBlockEntityRotatable.cs" />
+    <Compile Include="Common\Collectible\Block\IRotatable.cs" />
     <Compile Include="Common\Collectible\Block\VertexFlags.cs" />
     <Compile Include="Common\Collectible\CreativeTabAndStackList.cs" />
     <Compile Include="Common\Collectible\GrindingProperties.cs" />
@@ -274,9 +281,11 @@
     <Compile Include="Common\Inventory\ItemSlotBackpack.cs" />
     <Compile Include="Common\Inventory\ItemSlotOffHand.cs" />
     <Compile Include="Common\IO\SQLiteDBConnection.cs" />
+    <Compile Include="Common\Model\Animation\AnimatableRenderer.cs" />
     <Compile Include="Common\Model\Animation\AnimationCache.cs" />
     <Compile Include="Common\Model\Animation\AnimationMetaData.cs" />
     <Compile Include="Common\Model\Animation\AnimationManager.cs" />
+    <Compile Include="Common\Model\Animation\AnimationUtil.cs" />
     <Compile Include="Common\Model\Animation\EntityHeadController.cs" />
     <Compile Include="Common\Model\Animation\ElementPose.cs" />
     <Compile Include="Common\Model\Animation\ClientAnimator.cs" />
@@ -303,6 +312,7 @@
     <Compile Include="Datastructures\RingArray.cs" />
     <Compile Include="Localization\ITranslationService.cs" />
     <Compile Include="Localization\TranslationService.cs" />
+    <Compile Include="Math\ColorBlend.cs" />
     <Compile Include="Math\Matrix\Quaternionf.cs" />
     <Compile Include="Math\Size\Size3.cs" />
     <Compile Include="Math\Vector\Vec3iAndFacingFlags.cs" />
@@ -314,7 +324,7 @@
     <Compile Include="Server\PathfinderTask.cs" />
     <Compile Include="Util\BitmapExtensions.cs" />
     <Compile Include="Util\ExifData.cs" />
-    <Compile Include="Datastructures\FakeDictionary.cs" />
+    <Compile Include="Datastructures\Dictionary\FastSmallDictionary.cs" />
     <Compile Include="Datastructures\FastSetOfInts.cs" />
     <Compile Include="Datastructures\FastSetOfLongs.cs" />
     <Compile Include="Util\IgnoreUtil.cs" />
@@ -375,6 +385,7 @@
     <Compile Include="Util\ObjectCacheUtil.cs" />
     <Compile Include="Util\PosUtil.cs" />
     <Compile Include="Datastructures\QueueOfInt.cs" />
+    <Compile Include="Datastructures\Dictionary\RelaxedReadOnlyDictionary.cs" />
     <Compile Include="Util\SerializerUtil.cs" />
     <Compile Include="Util\StringExtensions.cs" />
     <Compile Include="Util\StringUtil.cs" />
@@ -417,7 +428,7 @@
     <Compile Include="Datastructures\AttributeTree\IntArrayAttribute.cs" />
     <Compile Include="Datastructures\AttributeTree\LongArrayAttribute.cs" />
     <Compile Include="Datastructures\AttributeTree\TreeArrayAttribute.cs" />
-    <Compile Include="Datastructures\ListDictionary.cs" />
+    <Compile Include="Datastructures\Dictionary\ListDictionary.cs" />
     <Compile Include="Common\Particle\ExplosionParticles.cs" />
     <Compile Include="Common\Particle\ParticleBase.cs" />
     <Compile Include="Common\Worldproperty\MetalProperty.cs" />
@@ -455,7 +466,7 @@
     <Compile Include="Datastructures\AttributeTree\Other\SyncedTreeAttribute.cs" />
     <Compile Include="Datastructures\AttributeTree\TreeAttribute.cs" />
     <Compile Include="Datastructures\CachedCuboidList.cs" />
-    <Compile Include="Common\Text\CmdArgs.cs" />
+    <Compile Include="Common\API\ChatCommand\CmdArgs.cs" />
     <Compile Include="Common\Entity\EntityRenderer.cs" />
     <Compile Include="Common\Collectible\ItemStack.cs" />
     <Compile Include="Datastructures\AttributeTree\Other\JsonTreeAttribute.cs" />
@@ -508,15 +519,15 @@
     <Compile Include="Config\GameVersion.cs" />
     <Compile Include="Client\Render\EnumDrawMode.cs" />
     <Compile Include="Client\Render\EnumHighlightBlocksMode.cs" />
-    <Compile Include="Client\Render\EnumRenderPass.cs" />
+    <Compile Include="Client\Render\EnumShaderProgram.cs" />
     <Compile Include="Common\API\IBlockAccessorRevertable.cs" />
     <Compile Include="Client\API\IClientWorldAccessor.cs" />
     <Compile Include="Server\API\IServerWorldAccessor.cs" />
     <Compile Include="Math\Cuboid\Cuboidd.cs" />
     <Compile Include="Math\Cuboid\Cuboidf.cs" />
-    <Compile Include="Datastructures\IOrderedDictionary.cs" />
+    <Compile Include="Datastructures\Dictionary\IOrderedDictionary.cs" />
     <Compile Include="Datastructures\LimitedList.cs" />
-    <Compile Include="Datastructures\OrderedDictionary.cs" />
+    <Compile Include="Datastructures\Dictionary\OrderedDictionary.cs" />
     <Compile Include="Datastructures\UniqueQueue.cs" />
     <Compile Include="Math\Vector\Vec2d.cs" />
     <Compile Include="Math\Vector\Vec2f.cs" />
@@ -539,7 +550,7 @@
     <Compile Include="Server\Worldgen\INeighbourChunkProvider.cs" />
     <Compile Include="Common\Particle\IParticlePropertiesProvider.cs" />
     <Compile Include="Common\API\IBlockAccessor.cs" />
-    <Compile Include="Datastructures\LimitedDictionary.cs" />
+    <Compile Include="Datastructures\Dictionary\LimitedDictionary.cs" />
     <Compile Include="Common\Entity\Player\IWorldPlayerData.cs" />
     <Compile Include="Common\Entity\Player\IPlayerInventoryManager.cs" />
     <Compile Include="Server\IPlayerPrivilegeGroup.cs" />
@@ -561,7 +572,7 @@
     <Compile Include="Common\Model\Shape\CompositeShape.cs" />
     <Compile Include="Client\Texture\CompositeTexture.cs" />
     <Compile Include="Datastructures\RotatableCube.cs" />
-    <Compile Include="Common\Text\ChatCommand.cs" />
+    <Compile Include="Common\API\ChatCommand\Legacy\ChatCommand.cs" />
     <Compile Include="Common\Text\ChatLine.cs" />
     <Compile Include="Common\Combat\DamageSource.cs" />
     <Compile Include="Common\Entity\EntityDespawn.cs" />

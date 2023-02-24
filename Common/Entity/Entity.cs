@@ -12,6 +12,11 @@ using System.Text;
 
 namespace Vintagestory.API.Common.Entities
 {
+    /// <summary>
+    /// Called after a physics tick has happened
+    /// </summary>
+    /// <param name="accum">Amount of seconds left in the accumulator after physics ticking</param>
+    /// <param name="prevPos"></param>
     public delegate void PhysicsTickDelegate(float accum, Vec3d prevPos);
 
     /// <summary>
@@ -21,6 +26,7 @@ namespace Vintagestory.API.Common.Entities
     {
         public static WaterSplashParticles SplashParticleProps = new WaterSplashParticles();
         public static AdvancedParticleProperties[] FireParticleProps = new AdvancedParticleProperties[3];
+        public static FloatingSedimentParticles FloatingSedimentParticles = new FloatingSedimentParticles();
 
         public static AirBubbleParticles AirBubbleParticleProps = new AirBubbleParticles();
         public static SimpleParticleProperties bioLumiParticles;
@@ -98,6 +104,7 @@ namespace Vintagestory.API.Common.Entities
             bioLumiNoise = new NormalizedSimplexNoise(new double[] { 1, 0.5 }, new double[] { 5, 10 }, 097901);
         }
 
+        
         #region Entity Fields
 
         /// <summary>
@@ -130,7 +137,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Client position
         /// </summary>
-        public SyncedEntityPos Pos = new SyncedEntityPos();
+        public EntityPos Pos = new EntityPos();
 
         /// <summary>
         /// Server simulated position. May not exactly match the client positon
@@ -248,7 +255,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EnumEntityState State;
 
-        public EntityDespawnReason DespawnReason;
+        public EntityDespawnData DespawnReason;
 
         /// <summary>
         /// Permanently stored entity attributes that are sent to client everytime they have been changed
@@ -398,7 +405,7 @@ namespace Vintagestory.API.Common.Entities
 
         }
         private bool alive=true;
-
+        public float minRangeToClient;
 
         public float IdleSoundChanceModifier
         {
@@ -468,22 +475,26 @@ namespace Vintagestory.API.Common.Entities
             WatchedAttributes.SetFloat("onHurt", 0);
             int onHurtCounter = WatchedAttributes.GetInt("onHurtCounter");
             WatchedAttributes.RegisterModifiedListener("onHurt", () => {
-                if (WatchedAttributes.GetFloat("onHurt", 0) == 0) return;
+                float damage = WatchedAttributes.GetFloat("onHurt", 0);
+                if (damage == 0) return;
                 int newOnHurtCounter = WatchedAttributes.GetInt("onHurtCounter");
                 if (newOnHurtCounter == onHurtCounter) return;
 
                 onHurtCounter = newOnHurtCounter;
-                SetActivityRunning("invulnerable", 500);
-
+                
                 if (Attributes.GetInt("dmgkb") == 0)
                 {
                     Attributes.SetInt("dmgkb", 1);
                 }
 
-                // Gets already called on the server directly
-                if (World.Side == EnumAppSide.Client)
+                if (damage > 0.05)
                 {
-                    OnHurt(null, WatchedAttributes.GetFloat("onHurt", 0));
+                    SetActivityRunning("invulnerable", 500);
+                    // Gets already called on the server directly
+                    if (World.Side == EnumAppSide.Client)
+                    {
+                        OnHurt(null, WatchedAttributes.GetFloat("onHurt", 0));
+                    }
                 }
             });
 
@@ -739,6 +750,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         /// <param name="damageSource"></param>
         /// <param name="damage"></param>
+        /// <returns>True if the entity actually received damage</returns>
         public virtual bool ReceiveDamage(DamageSource damageSource, float damage)
         {
             if ((!Alive || IsActivityRunning("invulnerable")) && damageSource.Type != EnumDamageType.Heal) return false;
@@ -753,7 +765,10 @@ namespace Vintagestory.API.Common.Entities
                 {
                     WatchedAttributes.SetInt("onHurtCounter", WatchedAttributes.GetInt("onHurtCounter") + 1);
                     WatchedAttributes.SetFloat("onHurt", damage); // Causes the client to be notified
-                    AnimManager.StartAnimation("hurt");
+                    if (damage > 0.05f)
+                    {
+                        AnimManager.StartAnimation("hurt");
+                    }
                 }
 
                 if (damageSource.GetSourcePosition() != null)
@@ -774,7 +789,7 @@ namespace Vintagestory.API.Common.Entities
                     WatchedAttributes.SetFloat("onHurtDir", -999);
                 }
 
-                return true;
+                return damage > 0;
             }
 
             return false;
@@ -904,6 +919,10 @@ namespace Vintagestory.API.Common.Entities
             World.FrameProfiler.Mark("entity-animation-ticking");
         }
 
+        public virtual void OnAsyncParticleTick(float dt, IAsyncParticleManager manager)
+        {
+
+        }
 
 
         public virtual void Ignite()
@@ -1054,7 +1073,7 @@ namespace Vintagestory.API.Common.Entities
         /// Called when the entity despawns
         /// </summary>
         /// <param name="despawn"></param>
-        public virtual void OnEntityDespawn(EntityDespawnReason despawn)
+        public virtual void OnEntityDespawn(EntityDespawnData despawn)
         {
             if (SidedProperties == null) return;
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
@@ -1122,7 +1141,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Called by client when a new server pos arrived
         /// </summary>
-        public void OnReceivedServerPos(bool isTeleport)
+        public virtual void OnReceivedServerPos(bool isTeleport)
         {
             EnumHandling handled = EnumHandling.PassThrough;
 
@@ -1354,7 +1373,8 @@ namespace Vintagestory.API.Common.Entities
             if (World.Side != EnumAppSide.Client) return;
 
             DebugAttributes.SetString("Entity Id", ""+EntityId);
-            
+            DebugAttributes.SetString("Yaw", string.Format("{0:0.##}", Pos.Yaw));
+
 
             string anims = "";
             int i = 0;
@@ -1590,9 +1610,9 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            DespawnReason = new EntityDespawnReason() {
-                reason = reason,
-                damageSourceForDeath = damageSourceForDeath
+            DespawnReason = new EntityDespawnData() {
+                Reason = reason,
+                DamageSourceForDeath = damageSourceForDeath
             };
         }
 

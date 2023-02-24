@@ -605,26 +605,19 @@ namespace Vintagestory.API.Common
             for (int slotId = 0; slotId < slots.Length; slotId++)
             {
                 ItemStack newstack = tree.GetTreeAttribute("slots")?.GetItemstack("" + slotId);
-                ItemStack oldstack = slots[slotId].Itemstack;
-
-                if (Api?.World == null)
-                {
-                    slots[slotId].Itemstack = newstack;
-                    continue;
-                }
-
-                newstack?.ResolveBlockOrItem(Api.World);
-
-                bool a = (newstack != null && !newstack.Equals(Api.World, oldstack));
-                bool b = (oldstack != null && !oldstack.Equals(Api.World, newstack));
-
-                bool didModify = a || b;
-
                 slots[slotId].Itemstack = newstack;
 
-                if (didModify && modifiedSlots != null)
+                if (Api?.World == null) continue;
+                newstack?.ResolveBlockOrItem(Api.World);
+
+                if (modifiedSlots != null)
                 {
-                    modifiedSlots.Add(slots[slotId]);
+                    ItemStack oldstack = slots[slotId].Itemstack;
+                    bool a = (newstack != null && !newstack.Equals(Api.World, oldstack));
+                    bool b = (oldstack != null && !oldstack.Equals(Api.World, newstack));
+
+                    bool didModify = a || b;
+                    if (didModify) modifiedSlots.Add(slots[slotId]);
                 }
             }
 

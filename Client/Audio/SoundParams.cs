@@ -49,6 +49,11 @@ namespace Vintagestory.API.Client
         public float Pitch = 1f;
 
         /// <summary>
+        /// The range in which the sound does not attenuate at all
+        /// </summary>
+        public float ReferenceDistance = 3f;
+
+        /// <summary>
         /// The sounds initial volumne (0f - 1f)
         /// </summary>
         public float Volume

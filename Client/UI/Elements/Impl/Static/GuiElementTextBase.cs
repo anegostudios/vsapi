@@ -9,6 +9,7 @@ namespace Vintagestory.API.Client
         public TextDrawUtil textUtil;
 
         protected string text;
+        public string Text { get { return text; } set { text = value; } }
 
         /// <summary>
         /// Whether or not the text path mode is active.

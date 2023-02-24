@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Vintagestory.API.MathTools
 {
     [ProtoContract]
-    public class Cuboidi : ICuboid<int,Cuboidi>
+    public class Cuboidi : ICuboid<int,Cuboidi>, IEquatable<Cuboidi>
     {
         [ProtoMember(1)]
         public int X1;
@@ -129,6 +129,11 @@ namespace Vintagestory.API.MathTools
             Set(startPos.X, startPos.Y, startPos.Z, endPos.X, endPos.Y, endPos.Z);
         }
 
+        public Cuboidi(BlockPos startPos, int size)
+        {
+            Set(startPos.X, startPos.Y, startPos.Z, startPos.X + size, startPos.Y + size, startPos.Z + size);
+        }
+
         /// <summary>
         /// Sets the minimum and maximum values of the cuboid
         /// </summary>
@@ -228,6 +233,14 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns if the given point is inside the cuboid
         /// </summary>
+        public bool Contains(int x, int z)
+        {
+            return x >= MinX && x < MaxX && z >= MinZ && z < MaxZ;
+        }
+
+        /// <summary>
+        /// Returns if the given point is inside the cuboid
+        /// </summary>
         public bool Contains(BlockPos pos)
         {
             return pos.X >= MinX && pos.X < MaxX && pos.Y >= MinY && pos.Y < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
@@ -239,6 +252,11 @@ namespace Vintagestory.API.MathTools
         public bool ContainsOrTouches(int x, int y, int z)
         {
             return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY && z >= MinZ && z <= MaxZ;
+        }
+
+        public bool ContainsOrTouches(Cuboidi cuboid)
+        {
+            return ContainsOrTouches(cuboid.MinX, cuboid.MinY, cuboid.MinZ) && ContainsOrTouches(cuboid.MaxX, cuboid.MaxY, cuboid.MaxZ);
         }
 
 
@@ -256,6 +274,14 @@ namespace Vintagestory.API.MathTools
         public bool ContainsOrTouches(IVec3 vec)
         {
             return ContainsOrTouches(vec.XAsInt, vec.YAsInt, vec.ZAsInt);
+        }
+
+        /// <summary>
+        /// Returns if the given entityPos is inside the cuboid
+        /// </summary>
+        public bool ContainsOrTouches(Common.Entities.EntityPos pos)
+        {
+            return pos.X >= MinX && pos.X <= MaxX && pos.Y >= MinY && pos.Y <= MaxY && pos.Z >= MinZ && pos.Z <= MaxZ;
         }
 
         /// <summary>
@@ -507,6 +533,11 @@ namespace Vintagestory.API.MathTools
             return other.X1 == X1 && other.Y1 == Y1 && other.Z1 == Z1 && other.X2 == X2 && other.Y2 == Y2 && other.Z2 == Z2;
         }
 
+        public override bool Equals(object obj)
+        {
+            return (obj is Cuboidi cub) && Equals(cub);
+        }
+
         /// <summary>
         /// Returns true if supplied cuboid is directly adjacent to this one
         /// </summary>
@@ -523,6 +554,18 @@ namespace Vintagestory.API.MathTools
         public override string ToString()
         {
             return string.Format("X1={0},Y1={1},Z1={2},X2={3},Y2={4},Z2={5}", X1, Y1, Z1, X2, Y2, Z2);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 927660019;
+            hashCode = hashCode * -1521134295 + X1.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y1.GetHashCode();
+            hashCode = hashCode * -1521134295 + Z1.GetHashCode();
+            hashCode = hashCode * -1521134295 + X2.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y2.GetHashCode();
+            hashCode = hashCode * -1521134295 + Z2.GetHashCode();
+            return hashCode;
         }
     }
 }

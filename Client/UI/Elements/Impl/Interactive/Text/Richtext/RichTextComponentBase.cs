@@ -23,6 +23,22 @@ namespace Vintagestory.API.Client
         Bottom
     }
 
+    public enum EnumCalcBoundsResult
+    {
+        /// <summary>
+        /// Can continue on the same line
+        /// </summary>
+        Continue,
+        /// <summary>
+        /// Element was split between current and next line
+        /// </summary>
+        Multiline,
+        /// <summary>
+        /// Element was put on next line
+        /// </summary>
+        Nextline,
+    }
+
     public abstract class RichTextComponentBase
     {
         public string MouseOverCursor { get; protected set; } = null;
@@ -67,9 +83,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Composes the element.
         /// </summary>
-        /// <param name="ctx">Context of the text component.</param>
-        /// <param name="surface">The surface of the image.</param>
-        /// <param name="withFont">The font for the element.</param>
+        /// <param name="ctx"></param>
+        /// <param name="surface"></param>
         public virtual void ComposeElements(Context ctx, ImageSurface surface)
         {
 
@@ -79,7 +94,10 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Renders the text component.
         /// </summary>
-        /// <param name="deltaTime">The change in time.</param>
+        /// <param name="deltaTime"></param>
+        /// <param name="renderX"></param>
+        /// <param name="renderY"></param>
+        /// <param name="renderZ"></param>
         public virtual void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
 
@@ -90,12 +108,15 @@ namespace Vintagestory.API.Client
         /// Initializes the size and stuff. Return true if you had to enter the next line
         /// </summary>
         /// <param name="flowPath"></param>
-        /// <param name="xPos"></param>
-        /// <returns>Amount of lines passed over, if any</returns>
-        public virtual bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        /// <param name="currentLineHeight"></param>
+        /// <param name="offsetX"></param>
+        /// <param name="lineY"></param>
+        /// <param name="nextOffsetX"></param>
+        /// <returns>A</returns>
+        public virtual EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             nextOffsetX = offsetX;
-            return false;
+            return EnumCalcBoundsResult.Continue;
         }
 
 
@@ -129,6 +150,24 @@ namespace Vintagestory.API.Client
         public virtual void Dispose()
         {
 
+        }
+
+        public virtual bool UseMouseOverCursor(ElementBounds richtextBounds)
+        {
+            int relx = (int)(api.Input.MouseX - richtextBounds.absX);
+            int rely = (int)(api.Input.MouseY - richtextBounds.absY);
+
+            for (int j = 0; j < BoundsPerLine.Length; j++)
+            {
+                LineRectangled rec = BoundsPerLine[j];
+
+                if (rec.PointInside(relx, rely))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

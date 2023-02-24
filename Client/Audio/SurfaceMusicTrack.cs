@@ -2,15 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+
     /// <summary>
     /// Adds a basic music track.
     /// </summary>
@@ -164,23 +162,17 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Core client API.
         /// </summary>
-        ICoreClientAPI capi;
-        IMusicEngine musicEngine;
+        protected ICoreClientAPI capi;
+        protected IMusicEngine musicEngine;
 
-        float nowMinHour;
-        float nowMaxHour;
+        protected float nowMinHour;
+        protected float nowMaxHour;
 
-        /// <summary>
-        /// Static initializer.
-        /// </summary>
-        static SurfaceMusicTrack() {
-            
-        }
-
+        
         /// <summary>
         /// Gets the previous frequency setting.
         /// </summary>
-        static int prevFrequency;
+        protected static int prevFrequency;
 
         /// <summary>
         /// Gets the current Music Frequency setting.
@@ -198,7 +190,7 @@ namespace Vintagestory.API.Client
         /// <param name="assetManager">the global Asset Manager</param>
         /// <param name="capi">The Core Client API</param>
         /// <param name="musicEngine"></param>
-        public void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
+        public virtual void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
         {
             this.capi = capi;
             this.musicEngine = musicEngine;
@@ -222,12 +214,12 @@ namespace Vintagestory.API.Client
             }
         }
 
-        public void BeginSort()
+        public virtual void BeginSort()
         {
             StartPriority = Math.Max(1, StartPriorityRnd.nextFloat(1, rand));
         }
 
-        private void selectMinMaxHour()
+        protected virtual void selectMinMaxHour()
         {
             Random rnd = capi.World.Rand;
 
@@ -242,7 +234,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="newFreq">The new frequency</param>
         /// <param name="capi">the core client API</param>
-        private static void FrequencyChanged(int newFreq, ICoreClientAPI capi)
+        protected static void FrequencyChanged(int newFreq, ICoreClientAPI capi)
         {
             if (newFreq > prevFrequency)
             {
@@ -260,10 +252,10 @@ namespace Vintagestory.API.Client
         /// Should this current track play?
         /// </summary>
         /// <param name="props">Player Properties</param>
-        /// <param name="conds"><param>
-        /// <param name="pos"/></param>
+        /// <param name="conds"></param>
+        /// <param name="pos"></param>
         /// <returns>Should we play the current track?</returns>
-        public bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
+        public virtual bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
         {
             if (IsActive || !ShouldPlayMusic) return false;
             if (capi.World.ElapsedMilliseconds < globalCooldownUntilMs) return false;
@@ -315,7 +307,7 @@ namespace Vintagestory.API.Client
         /// Begins playing the Music track.
         /// </summary>
         /// <param name="props">Player Properties</param>
-        public void BeginPlay(TrackedPlayerProperties props)
+        public virtual void BeginPlay(TrackedPlayerProperties props)
         {
             loading = true;
             Sound?.Dispose();
@@ -339,7 +331,7 @@ namespace Vintagestory.API.Client
         /// <param name="dt">Delta Time/Change in time.</param>
         /// <param name="props">Track properties.</param>
         /// <returns>Cool or not cool?</returns>
-        public bool ContinuePlay(float dt, TrackedPlayerProperties props)
+        public virtual bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {
             if (!IsActive)
             {
@@ -362,7 +354,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="seconds">The duration of the fade out in seconds.</param>
         /// <param name="onFadedOut">What to have happen after the track has faded out.</param>
-        public void FadeOut(float seconds, Action onFadedOut = null)
+        public virtual void FadeOut(float seconds, Action onFadedOut = null)
         {
             loading = false;
 
@@ -387,7 +379,7 @@ namespace Vintagestory.API.Client
         /// Sets the cooldown of the current track.
         /// </summary>
         /// <param name="multiplier">The multiplier for the cooldown.</param>
-        public void SetCooldown(float multiplier)
+        public virtual void SetCooldown(float multiplier)
         {
             globalCooldownUntilMs = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (AnySongCoolDowns[MusicFrequency][0] + rand.NextDouble() * AnySongCoolDowns[MusicFrequency][1])) * multiplier);
             tracksCooldownUntilMs[Name] = (long)(capi.World.ElapsedMilliseconds + (long)(1000 * (SameSongCoolDowns[MusicFrequency][0] + rand.NextDouble() * SameSongCoolDowns[MusicFrequency][1])) * multiplier);
@@ -398,7 +390,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Updates the volume of the current track provided Sound is not null. (effectively calls Sound.SetVolume)
         /// </summary>
-        public void UpdateVolume()
+        public virtual void UpdateVolume()
         {
             if (Sound != null)
             {
@@ -406,7 +398,7 @@ namespace Vintagestory.API.Client
             }
         }
 
-        public void FastForward(float seconds)
+        public virtual void FastForward(float seconds)
         {
             if (Sound.PlaybackPosition + seconds > Sound.SoundLengthSeconds)
             {

@@ -21,7 +21,6 @@ namespace Vintagestory.API.Util
             return text.Substring(0, 1).ToUpperInvariant() + text.Substring(1);
         }
 
-
         public static bool ToBool(this string text, bool defaultValue = false)
         {
             string val = text?.ToLowerInvariant();

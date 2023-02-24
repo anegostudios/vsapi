@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cairo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -87,18 +88,21 @@ namespace Vintagestory.API.Client
         /// <param name="textureHeight"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
-        /// <param name="offX"></param>
-        /// <param name="offY"></param>
+        /// <param name="color"></param>
         /// <returns></returns>
         LoadedTexture LoadSvg(AssetLocation loc, int textureWidth, int textureHeight, int width = 0, int height = 0, int? color = 0);
+
+
+        void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, int posx, int posy, int width = 0, int height = 0, int? color = 0);
 
         /// <summary>
         /// Loads an external .svg file into a texture. Will return null if the file is not found
         /// </summary>
         /// <param name="loc"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="textureWidth"></param>
+        /// <param name="textureHeight"></param>
         /// <param name="padding"></param>
+        /// <param name="color"></param>
         /// <returns></returns>
         LoadedTexture LoadSvgWithPadding(AssetLocation loc, int textureWidth, int textureHeight, int padding = 0, int? color = 0);
 

@@ -93,6 +93,10 @@ namespace Vintagestory.API.Common
                 for (int i = 0; i < len; i++)
                 {
                     int a = colp[3];
+                    colp[0] = (byte)(colp[0] * af);
+                    colp[1] = (byte)(colp[1] * af);
+                    colp[2] = (byte)(colp[2] * af);
+
                     colp[3] = (byte)(a * af);
                     colp+=4;
                 }

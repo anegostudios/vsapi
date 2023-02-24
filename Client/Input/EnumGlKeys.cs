@@ -51,6 +51,10 @@ namespace Vintagestory.API.Client
                     return "Ctrl";
                 case GlKeys.LShift:
                     return "Shift";
+                case GlKeys.LAlt:
+                    return "Left Alt";
+                case GlKeys.RAlt:
+                    return "Right Alt";
                 case GlKeys.Semicolon:
                     return ";";
                 case GlKeys.Comma:

@@ -10,46 +10,46 @@ namespace Vintagestory.API.Common
     [ProtoContract]
     public class BlockCropProperties
     {
-        [ProtoMember(1)]
         /// <summary>
         /// Which nutrient category this crop requires to grow
         /// </summary>
+        [ProtoMember(1)]
         public EnumSoilNutrient RequiredNutrient;
 
-        [ProtoMember(2)]
         /// <summary>
         /// Total amount of nutrient consumed to reach full maturity. (100 is the maximum available for farmland)
         /// </summary>
+        [ProtoMember(2)]
         public float NutrientConsumption;
 
-        [ProtoMember(3)]
         /// <summary>
         /// Amount of growth stages this crop has
         /// </summary>
+        [ProtoMember(3)]
         public int GrowthStages;
 
-        [ProtoMember(4)]
         /// <summary>
         /// Total time in ingame days required for the crop to reach full maturity assuming full nutrient levels
         /// </summary>
+        [ProtoMember(4)]
         public float TotalGrowthDays;
 
-        [ProtoMember(11)]
         /// <summary>
         /// Total time in ingame months required for the crop to reach full maturity assuming full nutrient levels
         /// </summary>
+        [ProtoMember(11)]
         public float TotalGrowthMonths;
 
-        [ProtoMember(5)]
         /// <summary>
         /// If true, the player may harvests from the crop multiple times
         /// </summary>
+        [ProtoMember(5)]
         public bool MultipleHarvests;
 
-        [ProtoMember(6)]
         /// <summary>
         /// When multiple harvets is true, this is the amount of growth stages the crop should go back when harvested
         /// </summary>
+        [ProtoMember(6)]
         public int HarvestGrowthStageLoss;
 
         [ProtoMember(7)]

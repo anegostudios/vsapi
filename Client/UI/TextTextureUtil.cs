@@ -62,7 +62,6 @@ namespace Vintagestory.API.Client
             if (background.BorderWidth > 0)
             {
                 ctx.FillPreserve();
-
                 ctx.Operator = Operator.Atop;
                 ctx.LineWidth = background.BorderWidth;
                 ctx.SetSourceRGBA(background.BorderColor);
@@ -73,14 +72,14 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
             }
 
-            elTeBa.textUtil.AutobreakAndDrawMultilineTextAt(ctx, font, text, background.Padding, background.Padding, width, orientation);
+            elTeBa.textUtil.AutobreakAndDrawMultilineTextAt(ctx, font, text, background.HorPadding, background.VerPadding, width, orientation);
 
             if (demulAlpha)
             {
                 surface.DemulAlpha();
             }
 
-            capi.Gui.LoadOrUpdateCairoTexture(surface, true, ref loadedTexture);
+            capi.Gui.LoadOrUpdateCairoTexture(surface, false, ref loadedTexture);
 
             surface.Dispose();
             ctx.Dispose();
@@ -141,7 +140,7 @@ namespace Vintagestory.API.Client
             {
                 lines[i] = lines[i].TrimEnd();
 
-                ctx.MoveTo(background.Padding, background.Padding + ctx.FontExtents.Ascent + i * fontHeight);
+                ctx.MoveTo(background.HorPadding, background.VerPadding + ctx.FontExtents.Ascent + i * fontHeight);
 
                 if (font.StrokeWidth > 0)
                 {
@@ -217,8 +216,8 @@ namespace Vintagestory.API.Client
             font.AutoBoxSize(text, bounds);
 
 
-            int width = (int)Math.Ceiling(GuiElement.scaled(bounds.fixedWidth + 1 + 2 * background.Padding));
-            int height = (int)Math.Ceiling(GuiElement.scaled(bounds.fixedHeight + 1 + 2 * background.Padding));
+            int width = (int)Math.Ceiling(GuiElement.scaled(bounds.fixedWidth + 1 + 2 * background.HorPadding));
+            int height = (int)Math.Ceiling(GuiElement.scaled(bounds.fixedHeight + 1 + 2 * background.VerPadding));
 
             GenOrUpdateTextTexture(text, font, width, height, ref loadedTexture, background);
         }
@@ -247,8 +246,8 @@ namespace Vintagestory.API.Client
 
             FontExtents fextents = font.GetFontExtents();
 
-            int width = (int)maxwidth + 1 + 2 * background.Padding;
-            int height = (int)fextents.Height * lines.Length + 1 + 2 * background.Padding;
+            int width = (int)maxwidth + 1 + 2 * background.HorPadding;
+            int height = (int)fextents.Height * lines.Length + 1 + 2 * background.VerPadding;
 
             return GenTextTexture(text, font, width, height, background);
         }
@@ -277,10 +276,10 @@ namespace Vintagestory.API.Client
                 fullTextWidth = Math.Max(textents.Width, fullTextWidth);
             }
 
-            int width = (int)Math.Min(maxWidth, fullTextWidth) + 2 * background.Padding;
+            int width = (int)Math.Min(maxWidth, fullTextWidth) + 2 * background.HorPadding;
 
             TextDrawUtil prober = new TextDrawUtil();
-            double height = prober.GetMultilineTextHeight(font, text, width) + 2 * background.Padding;
+            double height = prober.GetMultilineTextHeight(font, text, width) + 2 * background.VerPadding;
 
             return GenTextTexture(text, font, width, (int)height + 1, background, orientation);
         }

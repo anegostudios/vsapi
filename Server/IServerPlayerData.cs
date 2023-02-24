@@ -42,12 +42,6 @@ namespace Vintagestory.API.Server
         string LastKnownPlayername { get; }
 
         /// <summary>
-        /// Returns all player groups which this player is part of
-        /// </summary>
-        /// <returns></returns>
-        Dictionary<int, PlayerGroupMembership> PlayerGroupMemberships { get; }
-
-        /// <summary>
         /// Store your own custom data in here if you need. Might want to serialize your data to json code first.
         /// </summary>
         Dictionary<string, string> CustomPlayerData { get; }

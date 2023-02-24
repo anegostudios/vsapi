@@ -43,9 +43,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         Sprint = 6,
         /// <summary>
-        /// Sit (unused)
+        /// Glide
         /// </summary>
-        Sit = 7,
+        Glide = 7,
         /// <summary>
         /// Sit on the ground
         /// </summary>
@@ -74,6 +74,14 @@ namespace Vintagestory.API.Common
         /// Holding down the Shift key (which might have been remapped)
         /// </summary>
         ShiftKey = 14,
+        /// <summary>
+        /// Left mouse down
+        /// </summary>
+        InWorldLeftMouseDown = 15,
+        /// <summary>
+        /// Right mouse down
+        /// </summary>
+        InWorldRightMouseDown = 16,
     }
 
 
@@ -92,9 +100,9 @@ namespace Vintagestory.API.Common
         public bool[] Flags => flags;
 
         /// <summary>
-        /// If true, the entity is either flying or swimming.
+        /// If true, the entity is either flying, gliding or swimming.
         /// </summary>
-        public bool FlyMode;  // true when flying or swimming
+        public bool DetachedMode;
         
         /// <summary>
         /// If true, the entity has NoClip active.
@@ -169,7 +177,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool Dirty;
 
-        
+        public double GlideSpeed = 0;
+
 
         /// <summary>
         /// A check for if the entity is moving in the direction it's facing.
@@ -229,12 +238,12 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// A check to see whether the entity is sitting.
+        /// A check to see whether the entity is gliding
         /// </summary>
-        public virtual bool Sitting
+        public virtual bool Gliding
         {
-            get { return flags[(int)EnumEntityAction.Sit]; }
-            set { AttemptToggleAction(EnumEntityAction.Sit, value); }
+            get { return flags[(int)EnumEntityAction.Glide]; }
+            set { AttemptToggleAction(EnumEntityAction.Glide, value); }
         }
 
         /// <summary>
@@ -348,8 +357,6 @@ namespace Vintagestory.API.Common
             double dz = (Forward ? -moveSpeed : 0) + (Backward ? moveSpeed : 0);
             double dx = (Right ? moveSpeed : 0) + (Left ? -moveSpeed : 0);
             
-            if (this.Sitting) { dz = 0; dx = 0; }
-
             double cosPitch = Math.Cos(pos.Pitch);
             double sinPitch = Math.Sin(pos.Pitch);
 
@@ -389,7 +396,7 @@ namespace Vintagestory.API.Common
                 flags[i] = controls.flags[i];
             }
             
-            FlyMode = controls.FlyMode;
+            DetachedMode = controls.DetachedMode;
             FlyPlaneLock = controls.FlyPlaneLock;
             IsFlying = controls.IsFlying;
             NoClip = controls.NoClip;
@@ -434,7 +441,7 @@ namespace Vintagestory.API.Common
                 (Sprint ? 64 : 0) |
                 (Up ? 128 : 0) |
                 (Down ? 256 : 0) |
-                (flags[(int)EnumEntityAction.Sit] ? 512 : 0) |
+                (flags[(int)EnumEntityAction.Glide] ? 512 : 0) |
                 (flags[(int)EnumEntityAction.FloorSit] ? 1024 : 0) |
                 (flags[(int)EnumEntityAction.LeftMouseDown] ? 2048 : 0) |
                 (flags[(int)EnumEntityAction.RightMouseDown] ? 4096 : 0) |
@@ -460,7 +467,7 @@ namespace Vintagestory.API.Common
             Up = (flagsInt & 128) > 0;
             Down = (flagsInt & 256) > 0;
 
-            flags[(int)EnumEntityAction.Sit] = (flagsInt & 512) > 0;
+            flags[(int)EnumEntityAction.Glide] = (flagsInt & 512) > 0;
             flags[(int)EnumEntityAction.FloorSit] = (flagsInt & 1024) > 0;
             flags[(int)EnumEntityAction.LeftMouseDown] = (flagsInt & 2048) > 0;
             flags[(int)EnumEntityAction.RightMouseDown] = (flagsInt & 4096) > 0;

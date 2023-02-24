@@ -53,7 +53,7 @@ namespace Vintagestory.API.Common
         /// Whether or not the bubbles die in liquid.
         /// </summary>
         /// <returns>They don't.</returns>
-        public bool SwimOnLiquid => true;
+        public bool SwimOnLiquid { get; set; } = true;
 
         /// <summary>
         /// Gets the glow level of the bubbles.
@@ -74,12 +74,17 @@ namespace Vintagestory.API.Common
         /// Gets the length of life for the particle.
         /// </summary>
         /// <returns>0.25f</returns>
-        public float LifeLength => 0.25f;
+        public float LifeLength { get; set; }=0.25f;
         public EvolvingNatFloat OpacityEvolve => null; public EvolvingNatFloat RedEvolve => null; public EvolvingNatFloat GreenEvolve => null; public EvolvingNatFloat BlueEvolve => null;
         public bool RandomVelocityChange { get; set; }
-        public Vec3d Pos => new Vec3d(BasePos.X + rand.NextDouble() * 0.25 - 0.125, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * 0.25 - 0.125);
+        public Vec3d Pos => new Vec3d(BasePos.X + rand.NextDouble() * Range - Range/2f, BasePos.Y + 0.1 + rand.NextDouble() * 0.2, BasePos.Z + rand.NextDouble() * Range - Range/2f);
 
-        public float Quantity => 30;
+        public float Range = 0.25f;
+
+        public float Quantity => quantity;
+
+        public float quantity = 30f;
+        public float horVelocityMul = 1f;
 
         public int GetRgbaColor(ICoreClientAPI capi)
         {
@@ -93,9 +98,9 @@ namespace Vintagestory.API.Common
         public Vec3f GetVelocity(Vec3d pos)
         {
             return new Vec3f(
-                1 * (float)rand.NextDouble() - 0.5f + AddVelocity.X, 
-                0.1f * (float)rand.NextDouble() + 0.4f + AddVelocity.Y, 
-                1 * (float)rand.NextDouble() - 0.5f + AddVelocity.Z
+                horVelocityMul * ((float)rand.NextDouble() - 0.5f + AddVelocity.X), 
+                0.1f * (float)rand.NextDouble() + 0.4f + AddVelocity.Y,
+                horVelocityMul * ((float)rand.NextDouble() - 0.5f + AddVelocity.Z)
             );
 
         }

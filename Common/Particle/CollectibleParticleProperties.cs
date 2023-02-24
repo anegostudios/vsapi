@@ -27,6 +27,8 @@ namespace Vintagestory.API.Common
         public long BeginBreakEllapsedMs;
 
         public EnumTool? Tool;
+
+        public int BreakingCounter;
     }
 
     public class BlockBreakingParticleProps : CollectibleParticleProperties

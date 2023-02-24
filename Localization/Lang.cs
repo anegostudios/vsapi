@@ -232,5 +232,33 @@ namespace Vintagestory.API.Config
         {
             AvailableLanguages[CurrentLocale].InitialiseSearch();
         }
+
+
+        public static string GetNamePlaceHolder(AssetLocation code)
+        {
+            string hint = "";
+
+            string[] parts = code.Path.Split('-');
+            for (int i = 0; i < parts.Length; i++)
+            {
+                if (parts[i] == "north" || parts[i] == "east" || parts[i] == "west" || parts[i] == "south" || parts[i] == "up" || parts[i] == "down") continue;
+
+                if (i > 0) hint += " ";
+
+                if (i > 0 && i == parts.Length - 1) hint += "(";
+                if (i == 0)
+                {
+                    hint += parts[i].First().ToString().ToUpper() + parts[i].Substring(1);
+                } else
+                {
+                    hint += parts[i];
+                }
+                
+                if (i > 0 && i == parts.Length - 1) hint += ")";
+            }
+
+            return hint;
+        }
+
     }
 }

@@ -64,11 +64,11 @@ namespace Vintagestory.API.Client
         {
             textUtil.DrawMultilineText(ctx, Font, Lines, Font.Orientation);
 
-           /* ctx.LineWidth = 1f;
+            /*ctx.LineWidth = 1f;
             ctx.SetSourceRGBA(0, 0, 0, 0.5);
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < Lines.Length; i++)
             {
-                TextLine line = lines[i];
+                TextLine line = Lines[i];
                 ctx.Rectangle(line.Bounds.X, line.Bounds.Y, line.Bounds.Width, line.Bounds.Height);
                 ctx.Stroke();
             }*/
@@ -84,12 +84,11 @@ namespace Vintagestory.API.Client
         /// <param name="renderY"></param>
         public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
-            /*for (int i = 0; i < lines.Length; i++)
+            /*for (int i = 0; i < Lines.Length; i++)
             {
-                var bounds = lines[i].Bounds;
+                var bounds = Lines[i].Bounds;
                 api.Render.RenderRectangle((float)renderX + (float)bounds.X, (float)renderY + (float)bounds.Y, 50, (float)bounds.Width, (float)bounds.Height, ColorUtil.ColorFromRgba(200, 255, 255, 128));
             }*/
-            
         }
 
 
@@ -99,7 +98,7 @@ namespace Vintagestory.API.Client
         /// <param name="flowPath"></param>
         /// <param name="xPos"></param>
         /// <returns>True when longer than 1 line</returns>
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             offsetX += GuiElement.scaled(PaddingLeft);
 
@@ -122,8 +121,24 @@ namespace Vintagestory.API.Client
                 nextOffsetX = Lines[Lines.Length - 1].NextOffsetX + lbnd.Width;
             }
 
-            return Lines.Length > 1;
+            return Lines.Length > 1 ? EnumCalcBoundsResult.Multiline : EnumCalcBoundsResult.Continue;
         }
         
+
+        protected double GetFontOrientOffsetX()
+        {
+            var textLine = Lines[Lines.Length - 1];
+            double offsetX = 0; if (Font.Orientation == EnumTextOrientation.Center)
+            {
+                offsetX = (textLine.LeftSpace + textLine.RightSpace) / 2;
+            }
+
+            if (Font.Orientation == EnumTextOrientation.Right)
+            {
+                offsetX = textLine.LeftSpace + textLine.RightSpace;
+            }
+
+            return offsetX;
+        }
     }
 }

@@ -61,16 +61,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         public LineRectangled Bounds;
 
-        /// <summary>
-        /// The padding to the left of the text.
-        /// </summary>
-        //public double PaddingLeft;
-
-        /// <summary>
-        /// The padding to the right of the text.
-        /// </summary>
-        //public double PaddingRight;
-
         public double LeftSpace = 0;
         public double RightSpace = 0;
 
@@ -110,8 +100,8 @@ namespace Vintagestory.API.Client
 
         #region Shorthand methods for simple box constrained multiline text
 
-        public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = 1f, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
-            => Lineize(ctx, text, linebreak, new TextFlowPath[] { new TextFlowPath(boxwidth) }, 0, 0, lineHeightMultiplier);
+        public TextLine[] Lineize(Context ctx, string text, double boxwidth, double lineHeightMultiplier = 1f, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default, bool keepLinebreakChar = false)
+            => Lineize(ctx, text, linebreak, new TextFlowPath[] { new TextFlowPath(boxwidth) }, 0, 0, lineHeightMultiplier, keepLinebreakChar);
 
         public int GetQuantityTextLines(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
             => GetQuantityTextLines(font, text, linebreak, new TextFlowPath[] { new TextFlowPath(boxWidth) });
@@ -119,8 +109,8 @@ namespace Vintagestory.API.Client
         public double GetMultilineTextHeight(CairoFont font, string text, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
             => GetQuantityTextLines(font, text, boxWidth, linebreak) * GetLineHeight(font);
 
-        public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default)
-            => Lineize(font, fulltext, linebreak, new TextFlowPath[] { new TextFlowPath(boxWidth) }, 0, 0);
+        public TextLine[] Lineize(CairoFont font, string fulltext, double boxWidth, EnumLinebreakBehavior linebreak = EnumLinebreakBehavior.Default, bool keepLinebreakChar = false)
+            => Lineize(font, fulltext, linebreak, new TextFlowPath[] { new TextFlowPath(boxWidth) }, 0, 0, keepLinebreakChar);
 
 
 
@@ -243,7 +233,7 @@ namespace Vintagestory.API.Client
         /// <param name="startOffsetX">The offset start position for X</param>
         /// <param name="startY">The offset start position for Y</param>
         /// <returns>The text broken up into lines.</returns>
-        public TextLine[] Lineize(CairoFont font, string fulltext, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0)
+        public TextLine[] Lineize(CairoFont font, string fulltext, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, bool keepLinebreakChar = false)
         {
             if (fulltext == null || fulltext.Length == 0) return new TextLine[0];
 
@@ -251,7 +241,7 @@ namespace Vintagestory.API.Client
             Context ctx = new Context(surface);
             font.SetupContext(ctx);
 
-            TextLine[] textlines = Lineize(ctx, fulltext, linebreak, flowPath, startOffsetX, startY, font.LineHeightMultiplier);
+            TextLine[] textlines = Lineize(ctx, fulltext, linebreak, flowPath, startOffsetX, startY, font.LineHeightMultiplier, keepLinebreakChar);
             
             ctx.Dispose();
             surface.Dispose();
@@ -270,7 +260,7 @@ namespace Vintagestory.API.Client
         /// <param name="startOffsetX">The offset start position for X</param>
         /// <param name="startY">The offset start position for Y</param>
         /// <returns>The text broken up into lines.</returns>
-        public TextLine[] Lineize(Context ctx, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, double lineHeightMultiplier = 1f)
+        public TextLine[] Lineize(Context ctx, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, double lineHeightMultiplier = 1f, bool keepLinebreakChar = false)
         {
             if (text == null || text.Length == 0) return new TextLine[0];
 
@@ -311,8 +301,23 @@ namespace Vintagestory.API.Client
 
                 usableWidth = currentSection.X2 - currentSection.X1 - curX;
 
-                if (nextWidth >= usableWidth && i > 0)
+                if (nextWidth >= usableWidth)
                 {
+                    // Hard cut-off a word if we are at the beginnign of a line
+                    if (word.Length > 0 && lineTextBldr.Length == 0 && curX == currentSection.X1)
+                    {
+                        int tries = 500;
+                        while (word.Length > 0 && nextWidth >= usableWidth && tries-- > 0)
+                        {
+                            word = word.Substring(0, word.Length - 1);
+                            nextWidth = ctx.TextExtents(lineTextBldr + word + spc).Width;
+                            caretPos--;
+                        }
+
+                        lineTextBldr.Append(word);
+                        word = "";
+                    }
+
                     string linetext = lineTextBldr.ToString();
                     double withoutWidth = ctx.TextExtents(linetext).Width;
 
@@ -340,6 +345,7 @@ namespace Vintagestory.API.Client
 
                 if (gotLinebreak)
                 {
+                    if (keepLinebreakChar) lineTextBldr.Append("\n");
                     string linetext = lineTextBldr.ToString();
                     double withoutWidth = ctx.TextExtents(linetext).Width;
 

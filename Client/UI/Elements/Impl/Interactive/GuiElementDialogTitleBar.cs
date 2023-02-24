@@ -91,7 +91,7 @@ namespace Vintagestory.API.Client
                     parentBoundsBefore = Bounds.ParentBounds.FlatCopy();
                     Bounds.ParentBounds.Alignment = EnumDialogArea.None;
                     Bounds.ParentBounds.fixedX = pos.X;
-                    Bounds.ParentBounds.fixedY = pos.Y;
+                    Bounds.ParentBounds.fixedY = Math.Max(-Bounds.ParentBounds.fixedOffsetY, pos.Y);
                     Bounds.ParentBounds.absMarginX = 0;
                     Bounds.ParentBounds.absMarginY = 0;
                     Bounds.ParentBounds.MarkDirtyRecursive();

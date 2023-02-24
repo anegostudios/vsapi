@@ -44,7 +44,7 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// XYZ Vertex postions for every vertex in a cube. Origin is the cube middle point.
+        /// XYZ Vertex positions for every vertex in a cube. Origin is the cube middle point.
         /// </summary>
         public static int[] CubeVertices = {
             // North face

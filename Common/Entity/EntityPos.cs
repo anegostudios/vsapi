@@ -15,7 +15,6 @@ namespace Vintagestory.API.Common.Entities
         {
             
         }
-
     }
 
     /// <summary>
@@ -34,6 +33,9 @@ namespace Vintagestory.API.Common.Entities
         /// The yaw of the agents head
         /// </summary>
         public float HeadYaw;
+
+        
+
         /// <summary>
         /// The pitch of the agents head
         /// </summary>
@@ -172,6 +174,14 @@ namespace Vintagestory.API.Common.Entities
             this.Roll = roll;
         }
 
+        public EntityPos Add(double x, double y, double z)
+        {
+            this.X += x;
+            this.Y += y;
+            this.Z += z;
+            return this;
+        }
+
         /// <summary>
         /// Sets the entity position.
         /// </summary>
@@ -291,7 +301,6 @@ namespace Vintagestory.API.Common.Entities
         /// Returns true if the entity is within given distance of given position
         /// </summary>
         /// <param name="x"></param>
-        /// <param name="y"></param>
         /// <param name="z"></param>
         /// <param name="squareDistance"></param>
         /// <returns></returns>
@@ -451,6 +460,14 @@ namespace Vintagestory.API.Common.Entities
             return GameMath.Sqrt(dx * dx + dz * dz);
         }
 
+        public double HorDistanceTo(EntityPos pos)
+        {
+            double dx = this.x - pos.X;
+            double dz = this.z - pos.Z;
+
+            return GameMath.Sqrt(dx * dx + dz * dz);
+        }
+
 
         /// <summary>
         /// Returns the squared distance of the entity to this position
@@ -562,7 +579,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="pos"></param>
         /// <param name="epsilon"></param>
         /// <returns></returns>
-        public bool BasicallySameAs(EntityPos pos, float epsilon = 0.0001f)
+        public bool BasicallySameAs(EntityPos pos, double epsilon = 0.0001)
         {
             return
                 Math.Abs(X - pos.x) < epsilon &&
@@ -584,7 +601,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="pos"></param>
         /// <param name="epsilon"></param>
         /// <returns></returns>
-        public bool BasicallySameAsIgnoreMotion(EntityPos pos, float epsilon = 0.0001f)
+        public bool BasicallySameAsIgnoreMotion(EntityPos pos, double epsilon = 0.0001)
         {
             return
                 Math.Abs(X - pos.x) < epsilon &&
@@ -602,7 +619,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="pos"></param>
         /// <param name="epsilon"></param>
         /// <returns></returns>
-        public bool BasicallySameAsIgnoreAngles(EntityPos pos, float epsilon = 0.0001f)
+        public bool BasicallySameAsIgnoreAngles(EntityPos pos, double epsilon = 0.0001)
         {
             return
                 Math.Abs(X - pos.x) < epsilon &&

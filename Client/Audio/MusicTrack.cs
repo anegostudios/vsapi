@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
@@ -22,6 +16,8 @@ namespace Vintagestory.API.Client
         /// Is it loading?
         /// </summary>
         public bool loading = false;
+
+        public bool ManualDispose = false;
 
         /// <summary>
         /// Get the current sound file.
@@ -53,7 +49,6 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Core client API.
         /// </summary>
-        ICoreClientAPI capi;
         IMusicEngine musicEngine;
 
         bool docontinue = true;
@@ -77,8 +72,6 @@ namespace Vintagestory.API.Client
         /// <param name="musicEngine"></param>
         public virtual void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
         {
-
-            this.capi = capi;
             this.musicEngine = musicEngine;
             Location.Path = Location.Path.ToLowerInvariant();
             if (!Location.Path.StartsWith("sounds")) Location.WithPathPrefixOnce("music/");
@@ -122,7 +115,7 @@ namespace Vintagestory.API.Client
         /// <returns>Cool or not cool?</returns>
         public virtual bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {
-            if (!IsActive)
+            if (!IsActive && !ManualDispose)
             {
                 Sound?.Dispose();
                 Sound = null;

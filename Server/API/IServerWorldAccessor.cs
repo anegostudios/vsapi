@@ -26,7 +26,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="reason"></param>
-        void DespawnEntity(Entity entity, EntityDespawnReason reason);
+        void DespawnEntity(Entity entity, EntityDespawnData reason);
 
         /// <summary>
         /// Creates an explosion at given position. 

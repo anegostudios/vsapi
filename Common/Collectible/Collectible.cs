@@ -379,7 +379,7 @@ namespace Vintagestory.API.Common
 
         public virtual int GetRemainingDurability(ItemStack itemstack)
         {
-            return itemstack.Attributes.GetInt("durability", GetMaxDurability(itemstack));
+            return (int)itemstack.Attributes.GetDecimal("durability", GetMaxDurability(itemstack));
         }
 
         /// <summary>
@@ -1084,7 +1084,6 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="firstEvent">True when the player pressed the right mouse button on this block. Every subsequent call, while the player holds right mouse down will be false, it gets called every second while right mouse is down</param>
         /// <param name="handling">Whether or not to do any subsequent actions. If not set or set to NotHandled, the action will not called on the server.</param>
-        /// <returns>True if an interaction should happen (makes it sync to the server), false if no sync to server is required</returns>
         public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
         {
             EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
@@ -1339,9 +1338,18 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldItemName(ItemStack itemStack)
         {
-            string type = ItemClass.Name();
+            if (Code == null) return "Invalid block, id " + this.Id;
 
-            return Lang.GetMatching(Code?.Domain + AssetLocation.LocationSeparator + type + "-" + Code?.Path);
+            string type = ItemClass.Name();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Lang.GetMatching(Code?.Domain + AssetLocation.LocationSeparator + type + "-" + Code?.Path));
+
+            foreach (var bh in CollectibleBehaviors)
+            {
+                bh.GetHeldItemName(sb, itemStack);
+            }
+
+            return sb.ToString();
         }
 
 
@@ -1365,7 +1373,7 @@ namespace Vintagestory.API.Common
             {
                 dsc.AppendLine("<font color=\"#bbbbbb\">Id:" + Id + "</font>");
                 dsc.AppendLine("<font color=\"#bbbbbb\">Code: " + Code + "</font>");
-                if (api.Side == EnumAppSide.Client && (api as ICoreClientAPI).Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft]) 
+                if (api?.Side == EnumAppSide.Client && (api as ICoreClientAPI).Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft])
                 {
                     dsc.AppendLine("<font color=\"#bbbbbb\">Attributes: " + inSlot.Itemstack.Attributes.ToJsonToken() + "</font>\n");
                 }
@@ -1411,7 +1419,7 @@ namespace Vintagestory.API.Common
                     foreach (var val in slotsTree)
                     {
                         ItemStack cstack = (ItemStack)val.Value?.GetValue();
-                        
+
                         if (cstack != null && cstack.StackSize > 0)
                         {
                             if (!didPrint)
@@ -1453,7 +1461,7 @@ namespace Vintagestory.API.Common
 
                 dsc.AppendLine(Lang.Get("Food Category: {0}", Lang.Get("foodcategory-" + nutriProps.FoodCategory.ToString().ToLowerInvariant())));
             }
-            
+
 
 
             if (GrindingProps != null)
@@ -1529,6 +1537,12 @@ namespace Vintagestory.API.Common
             if (temp > 20)
             {
                 dsc.AppendLine(Lang.Get("Temperature: {0}°C", (int)temp));
+            }
+
+            if (Code != null && Code.Domain != "game")
+            {
+                var mod = api.ModLoader.GetMod(Code.Domain);
+                dsc.AppendLine(Lang.Get("Mod: {0}", mod?.Info.Name ?? Code.Domain));
             }
         }
 
@@ -2510,7 +2524,7 @@ namespace Vintagestory.API.Common
 
             double nowHours = world.Calendar.TotalHours;
             // If the colletible gets heated, retain the heat for 1 ingame hour
-            if (delayCooldown && attr.GetFloat("temperature") < temperature) nowHours += 0.5f;
+            if (delayCooldown && attr.GetDecimal("temperature") < temperature) nowHours += 0.5f;
 
             attr.SetDouble("temperatureLastUpdate", nowHours);
             attr.SetFloat("temperature", temperature);
@@ -2731,6 +2745,11 @@ namespace Vintagestory.API.Common
         public CollectibleBehavior GetCollectibleBehavior(Type type, bool withInheritance)
         {
             return GetBehavior(CollectibleBehaviors, type, withInheritance);
+        }
+
+        public T GetCollectibleBehavior<T>(bool withInheritance) where T : CollectibleBehavior
+        {
+            return GetBehavior(CollectibleBehaviors, typeof(T), withInheritance) as T;
         }
 
         protected virtual CollectibleBehavior GetBehavior(CollectibleBehavior[] fromList, Type type, bool withInheritance)

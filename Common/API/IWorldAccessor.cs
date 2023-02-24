@@ -228,12 +228,6 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         EntityProperties GetEntityType(AssetLocation entityCode);
 
-
-        /// <summary>
-        /// The current weather for each weather pattern. A value of 0 denotes in active, a value of 1 denotes strongly active
-        /// </summary>
-        //float[] GetWeatherAtPosition(BlockPos pos);
-
         /// <summary>
         /// Spawns a dropped itemstack at given position. Will immediately disappear if stacksize==0
         /// Returns the entity spawned (may be null!)
@@ -581,9 +575,11 @@ namespace Vintagestory.API.Common
         /// <param name="player"></param>
         /// <param name="highlightSlotId">for multiple highlights use a different number</param>
         /// <param name="blocks"></param>
+        /// <param name="colors"></param>
         /// <param name="mode"></param>
-        /// <param name="shape">When arbitrary, the blocks list represents the blocks to be highlighted. When Cube the blocks list should contain 2 positions for start and end</param>
-        void HighlightBlocks(IPlayer player, int highlightSlotId, List<BlockPos> blocks, List<int> colors, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary);
+        /// <param name="shape"></param>
+        /// <param name="scale"></param>
+        void HighlightBlocks(IPlayer player, int highlightSlotId, List<BlockPos> blocks, List<int> colors, EnumHighlightBlocksMode mode = EnumHighlightBlocksMode.Absolute, EnumHighlightShape shape = EnumHighlightShape.Arbitrary, float scale = 1f);
 
         /// <summary>
         /// Sends given player a list of block positions that should be highlighted (using a default color)
@@ -618,7 +614,7 @@ namespace Vintagestory.API.Common
         IBulkBlockAccessor GetBlockAccessorBulkUpdate(bool synchronize, bool relight, bool debug = false);
 
         /// <summary>
-        /// Retrieve a customized interface to access blocks in the loaded game world. Does not relight, does not not sync, does not call OnBlockPlaced and OnBlockRemoved. On commit all touched blocks are updated at once. This method is currently used for the snow accumulation system
+        /// Retrieve a customized interface to access blocks in the loaded game world. Does not relight. On commit all touched blocks are updated at once. This method is currently used for the snow accumulation system
         /// </summary>
         /// <param name="debug"></param>
         /// <returns></returns>

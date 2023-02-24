@@ -9,7 +9,10 @@ namespace Vintagestory.API.Common
 {
     public class HistoryState
     {
+        public static HistoryState Empty = new HistoryState() { BlockUpdates = new BlockUpdate[0], DecorUpdates = new DecorUpdate[0] };
+
         public BlockUpdate[] BlockUpdates;
+        public DecorUpdate[] DecorUpdates;
         public object Data;
         public BlockPos OldStartMarker;
         public BlockPos OldEndMarker;
@@ -26,7 +29,6 @@ namespace Vintagestory.API.Common
     {
         event Action<HistoryState> OnStoreHistoryState;
         event Action<HistoryState, int> OnRestoreHistoryState;
-
 
         /// <summary>
         /// Whether or not to do relighting on the chunk
@@ -69,7 +71,6 @@ namespace Vintagestory.API.Common
         void BeginMultiEdit();
         void EndMultiEdit();
 
-        void StoreHistoryState(List<BlockUpdate> updates);
-
+        void StoreHistoryState(HistoryState state);
     }
 }

@@ -241,11 +241,10 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// The event fired when the interactive element is ready to be rendered.
+        /// Renders the main menu cell
         /// </summary>
-        /// <param name="api">The Client API</param>
-        /// <param name="parentBounds">The bounds of the parent table.</param>
-        /// <param name="deltaTime">The change in time.</param>
+        /// <param name="api"></param>
+        /// <param name="deltaTime"></param>
         public void OnRenderInteractiveElements(ICoreClientAPI api, float deltaTime)
         {
             if (pressedButtonTexture.TextureId == 0)

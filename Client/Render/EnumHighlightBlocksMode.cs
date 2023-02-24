@@ -12,5 +12,8 @@ namespace Vintagestory.API.Client
         CenteredToSelectedBlock = 1,
         CenteredToSelectedBlockFollowTerrain = 2,
         AttachedToSelectedBlock = 3,
+
+        CenteredToBlockSelectionIndex = 4,
+        AttachedToBlockSelectionIndex = 5
     }
 }

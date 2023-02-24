@@ -17,6 +17,11 @@ namespace Vintagestory.API.Server
     public interface IPlayerDataManager
     {
         /// <summary>
+        /// Returns a copy of the player data dictionary loaded by the server. Thats the contents of Playerdata/playerdata.json
+        /// </summary>
+        Dictionary<string, IServerPlayerData> PlayerDataByUid { get; }
+
+        /// <summary>
         /// Retrieve a players offline, world-agnostic data by player uid
         /// </summary>
         /// <param name="playerUid"></param>
@@ -51,6 +56,13 @@ namespace Vintagestory.API.Server
     public interface IPermissionManager
     {
         /// <summary>
+        /// Retrieve a role by its role code
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        IPlayerRole GetRole(string code);
+
+        /// <summary>
         /// Set given role for given player. Role must exist in the serverconfig.json. For a list of roles, read sapi.Config.Roles
         /// </summary>
         /// <param name="player"></param>
@@ -63,7 +75,7 @@ namespace Vintagestory.API.Server
         /// <param name="player"></param>
         /// <param name="roleCode"></param>
         void SetRole(IServerPlayer player, string roleCode);
-
+        
 
         /// <summary>
         /// Registers a user privilege with the server. Is only active for the current server session and lost during a server restart/shutdown, so register it during server startup.

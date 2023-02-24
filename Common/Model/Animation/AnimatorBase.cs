@@ -15,17 +15,30 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class AnimatorBase : IAnimator
     {
+        // 0 3 6 9
+        // 1 4 7 10
+        // 2 5 8 11
+        public static readonly float[] identMat4x3 = new float[] { 
+                1, 0, 0, 
+                0, 1, 0, 
+                0, 0, 1, 
+                0, 0, 0 
+            };
+
         public RunningAnimation[] anims;
 
         WalkSpeedSupplierDelegate WalkSpeedSupplier;
         Action<string> onAnimationStoppedListener = null;
 
-        public float[] TransformationMatrices = new float[16 * GlobalConstants.MaxAnimatedElements];
+        /// <summary>
+        /// We skip the last row - https://stackoverflow.com/questions/32565827/whats-the-purpose-of-magic-4-of-last-row-in-matrix-4x4-for-3d-graphics 
+        /// </summary>
+        public float[] TransformationMatrices4x3 = new float[12 * GlobalConstants.MaxAnimatedElements];
 
         /// <summary>
         /// The entities default pose. Meaning for most elements this is the identity matrix, with exception of individually controlled elements such as the head.
         /// </summary>
-        public float[] TransformationMatricesDefaultPose = new float[16 * GlobalConstants.MaxAnimatedElements];
+        public float[] TransformationMatricesDefaultPose4x3 = new float[12 * GlobalConstants.MaxAnimatedElements];
 
 
 
@@ -36,10 +49,10 @@ namespace Vintagestory.API.Common
 
         public bool CalculateMatrices { get; set; } = true;
 
-        public float[] Matrices
+        public float[] Matrices4x3
         {
             get {
-                return curAnimCount > 0 ? TransformationMatrices : TransformationMatricesDefaultPose;
+                return curAnimCount > 0 ? TransformationMatrices4x3 : TransformationMatricesDefaultPose4x3;
             }
         }
 
@@ -85,10 +98,11 @@ namespace Vintagestory.API.Common
                 };
             }
             
-            float[] identMat = Mat4f.Create();
-            for (int i = 0; i < TransformationMatricesDefaultPose.Length; i++)
+            //float[] identMat = Mat4f.Create();
+            for (int i = 0; i < TransformationMatricesDefaultPose4x3.Length; i++)
             {
-                TransformationMatricesDefaultPose[i] = identMat[i % 16];
+                //TransformationMatricesDefaultPose4x3[i] = identMat[i % 16];
+                TransformationMatricesDefaultPose4x3[i] = identMat4x3[i % 12];
             }
         }
 
@@ -250,6 +264,11 @@ namespace Vintagestory.API.Common
             AttachmentPointAndPose apap = null;
             AttachmentPointByCode.TryGetValue(code, out apap);
             return apap;
+        }
+
+        public virtual ElementPose GetPosebyName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        {
+            throw new NotImplementedException();
         }
     }
 }

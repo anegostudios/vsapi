@@ -154,6 +154,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="chatcommand"></param>
         /// <returns></returns>
+        [Obsolete("Use ChatCommand subapi instead")]
         bool RegisterCommand(ClientChatCommand chatcommand);
 
         /// <summary>
@@ -164,6 +165,7 @@ namespace Vintagestory.API.Client
         /// <param name="syntaxMsg"></param>
         /// <param name="handler"></param>
         /// <returns></returns>
+        [Obsolete("Use ChatCommand subapi instead")]
         bool RegisterCommand(string command, string descriptionMsg, string syntaxMsg, ClientChatCommandDelegate handler);
 
 

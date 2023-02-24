@@ -238,7 +238,7 @@ namespace Vintagestory.API.Datastructures
         /// Creates a deep copy of the attribute tree
         /// </summary>
         /// <returns></returns>
-        ITreeAttribute Clone();
+        new ITreeAttribute Clone();
 
         /// <summary>
         /// Merges trees (it will overwrite existing values)

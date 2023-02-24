@@ -1,9 +1,7 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Datastructures
@@ -13,8 +11,6 @@ namespace Vintagestory.API.Datastructures
         T[] elements;
         int cursor = 0;
 
-        
-        
         public RingArray(int capacity)
         {
             elements = new T[capacity];
@@ -37,7 +33,7 @@ namespace Vintagestory.API.Datastructures
             set { elements[index] = value; }
         }
 
-        public int Start => cursor;
+        public int EndPosition { get { return cursor; } set { cursor = value; } }
         public T[] Values => elements;
 
         /// <summary>
@@ -87,5 +83,21 @@ namespace Vintagestory.API.Datastructures
             cursor = 0;
         }
 
+        /// <summary>
+        /// If smaller than the old size, will discard oldest elements first
+        /// </summary>
+        /// <param name="size"></param>
+        public void ResizeTo(int size)
+        {
+            T[] elements = new T[size];
+            for (int i = 0; i < this.elements.Length; i++)
+            {
+                elements[size - 1] = this.elements[GameMath.Mod((EndPosition - i), this.elements.Length)];
+                size--;
+                if (size <= 0) break;
+            }
+
+            this.elements = elements;
+        }
     }
 }

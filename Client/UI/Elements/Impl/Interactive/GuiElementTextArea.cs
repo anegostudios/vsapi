@@ -10,6 +10,8 @@ namespace Vintagestory.API.Client
         LoadedTexture highlightTexture;
         ElementBounds highlightBounds;
 
+        public bool Autoheight = true;
+
         /// <summary>
         /// Creates a new text area.
         /// </summary>
@@ -27,7 +29,10 @@ namespace Vintagestory.API.Client
         
         internal override void TextChanged()
         {
-            Bounds.fixedHeight = Math.Max(minHeight, textUtil.GetMultilineTextHeight(Font, string.Join("\n", lines), Bounds.InnerWidth));
+            if (Autoheight)
+            {
+                Bounds.fixedHeight = Math.Max(minHeight, textUtil.GetMultilineTextHeight(Font, string.Join("\n", Lines), Bounds.InnerWidth));
+            }
             Bounds.CalcWorldBounds();
             base.TextChanged();
         }
@@ -57,7 +62,7 @@ namespace Vintagestory.API.Client
             ctxHighlight.Dispose();
             surfaceHighlight.Dispose();
 
-            highlightBounds = Bounds.FlatCopy().FixedGrow(6, 6);
+            highlightBounds = Bounds.FlatCopy();
             highlightBounds.CalcWorldBounds();
         }
 
@@ -78,6 +83,12 @@ namespace Vintagestory.API.Client
         {
             base.Dispose();
             highlightTexture.Dispose();
+        }
+
+        public void SetFont(CairoFont cairoFont)
+        {
+            this.Font = cairoFont;
+            caretHeight = cairoFont.GetFontExtents().Height;
         }
     }
 

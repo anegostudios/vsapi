@@ -77,11 +77,6 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Dispose the object sound. May no longer be used after disposing. 
-        /// </summary>
-        void Dispose();
-
-        /// <summary>
         /// Allows you to modify the pitch of the sound. May also be called while the sound is currently playing.
         /// </summary>
         /// <param name="val"></param>
@@ -116,20 +111,21 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="newVolume"></param>
         /// <param name="duration"></param>
-        /// <param name="onFaded"></param>
+        /// <param name="onFaded">Called when the fade has completed. If in the meantime another FadeXXX call has been made, the method is not called</param>
         void FadeTo(double newVolume, float duration, Action<ILoadedSound> onFaded);
 
         /// <summary>
-        /// Causes the sound to fade out 
+        /// Causes the sound to fade out
         /// </summary>
         /// <param name="seconds"></param>
+        /// <param name="onFadedOut">Called when the fade out has completed. If in the meantime another FadeXXX call has been made, the method is not called</param>
         void FadeOut(float seconds, Action<ILoadedSound> onFadedOut);
 
         /// <summary>
         /// Causes the sound to fade in
         /// </summary>
         /// <param name="seconds"></param>
-        /// <param name="onFadedIn"></param>
+        /// <param name="onFadedIn">Called when the fade in has completed. If in the meantime another FadeXXX call has been made, the method is not called</param>
         void FadeIn(float seconds, Action<ILoadedSound> onFadedIn);
 
 

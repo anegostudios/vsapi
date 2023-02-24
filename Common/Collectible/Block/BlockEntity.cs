@@ -1,12 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -49,19 +46,19 @@ namespace Vintagestory.API.Common
         {
         }
 
-        public T GetBehavior<T>() where T : BlockEntityBehavior
+        public T GetBehavior<T>() where T : class
         {
             for (int i = 0; i < Behaviors.Count; i++)
             {
                 if (Behaviors[i] is T)
                 {
-                    return (T)Behaviors[i];
+                    return Behaviors[i] as T;
                 }
             }
 
             return null;
         }
-
+        
 
         /// <summary>
         /// This method is called right after the block entity was spawned or right after it was loaded from a newly loaded chunk. You do have access to the world and its blocks at this point.
@@ -136,6 +133,7 @@ namespace Vintagestory.API.Common
             return listenerId;
         }
 
+
         /// <summary>
         /// Unregisters a callback.  This is usually done automatically.
         /// </summary>
@@ -168,6 +166,47 @@ namespace Vintagestory.API.Common
             //api?.World.Logger.VerboseDebug("OnBlockRemoved(): {0}@{1}", this, pos);
         }
 
+        //Adds/Removes block entity behaviors to reflect the new block properties. 
+        /// <summary>
+        /// Called when blockAccessor.ExchangeBlock() is used to exchange this block. Make sure to call the base method when overriding.
+        /// </summary>
+        /// <param name="block"></param>
+        public virtual void OnExchanged(Block block)
+        {
+            //var oldBlock = this.Block;
+            this.Block = block;
+            MarkDirty(true);
+
+            // Add new behaviors
+            /*foreach (var beht in block.BlockEntityBehaviors)
+            {
+                if (Api.World.ClassRegistry.GetBlockEntityBehaviorClass(beht.Name) == null)
+                {
+                    Api.World.Logger.Warning(Lang.Get("Block entity behavior {0} for block {1} not found", beht.Name, block.Code));
+                    continue;
+                }
+
+                if (Behaviors.FirstOrDefault(bh => bh.GetType() == Api.World.ClassRegistry.GetBlockEntityBehaviorClass(beht.Name)) != null) continue;
+
+                if (beht.properties == null) beht.properties = new JsonObject(new JObject());
+                BlockEntityBehavior behavior = Api.World.ClassRegistry.CreateBlockEntityBehavior(this, beht.Name);
+                behavior.properties = beht.properties;
+
+                Behaviors.Add(behavior);
+            }
+
+            // Remove old behaviors
+            foreach (var oldbh in oldBlock.BlockEntityBehaviors)
+            {
+                if (block.BlockEntityBehaviors.FirstOrDefault(bh => bh.Name == oldbh.Name) == null)
+                {
+                    var type = Api.World.ClassRegistry.GetBlockEntityBehaviorClass(oldbh.Name);
+                    this.Behaviors.RemoveAll(bh => bh.GetType() == type);
+                }
+            }*/
+            
+        }
+
         /// <summary>
         /// Called when the block was broken in survival mode or through explosions and similar. Generally in situations where you probably want 
         /// to drop the block entity contents, if it has any
@@ -178,7 +217,14 @@ namespace Vintagestory.API.Common
             {
                 val.OnBlockBroken(byPlayer);
             }
+        }
 
+        /// <summary>
+        /// Called by the undo/redo system, after calling FromTreeAttributes
+        /// </summary>
+        public virtual void HistoryStateRestore()
+        {
+            
         }
 
         /// <summary>
@@ -212,7 +258,7 @@ namespace Vintagestory.API.Common
         {
             foreach (var val in Behaviors)
             {
-                val.OnBlockPlaced();
+                val.OnBlockPlaced(byItemStack);
             }
         }
 
@@ -221,6 +267,15 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="tree"></param>
         public virtual void ToTreeAttributes(ITreeAttribute tree) {
+            if (Api?.Side != EnumAppSide.Client && Block.IsMissing)
+            {
+                foreach (var val in missingBlockTree)
+                {
+                    tree[val.Key] = val.Value;
+                }
+                return;
+            }
+
             tree.SetInt("posx", Pos.X);
             tree.SetInt("posy", Pos.Y);
             tree.SetInt("posz", Pos.Z);
@@ -252,7 +307,11 @@ namespace Vintagestory.API.Common
             {
                 val.FromTreeAttributes(tree, worldAccessForResolve);
             }
+
+            if (worldAccessForResolve.Side == EnumAppSide.Server && Block.IsMissing) missingBlockTree = tree;
         }
+
+        private ITreeAttribute missingBlockTree = null;
 
         /// <summary>
         /// Called whenever a blockentity packet at the blocks position has been received from the client
@@ -287,7 +346,7 @@ namespace Vintagestory.API.Common
         /// When called on Client: Triggers a block changed event on the client, but will not redraw the block unless specified.
         /// </summary>
         /// <param name="redrawOnClient">When true, the block is also marked dirty and thus redrawn. When called serverside a dirty block packet is sent to the client for it to be redrawn</param>
-        public void MarkDirty(bool redrawOnClient = false, IPlayer skipPlayer = null)
+        public virtual void MarkDirty(bool redrawOnClient = false, IPlayer skipPlayer = null)
         {
             if (Api == null) return;
 
@@ -337,7 +396,7 @@ namespace Vintagestory.API.Common
         {
             foreach (var val in Behaviors)
             {
-                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping);
+                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, schematicSeed);
             }
         }
 
@@ -360,6 +419,11 @@ namespace Vintagestory.API.Common
             }
 
             return result;
+        }
+
+        public virtual void OnPlacementBySchematic(Server.ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos)
+        {
+            Pos = pos.Copy();
         }
     }
 

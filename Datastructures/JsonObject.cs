@@ -40,7 +40,10 @@ namespace Vintagestory.API.Datastructures
         public JsonObject this[string key] {
             get
             {
-                return new JsonObject((token == null || !(token is JObject)) ? null : token[key]);
+                if ((token == null || !(token is JObject))) return new JsonObject(null);
+
+                (token as JObject).TryGetValue(key, StringComparison.OrdinalIgnoreCase, out var value);
+                return new JsonObject(value);
             }
         }
 
@@ -168,7 +171,7 @@ namespace Vintagestory.API.Datastructures
             for (int i = 0; i < objs.Length; i++)
             {
                 JToken token = arr[i];
-                if (token is JValue) {
+                if (token is JValue || token is JObject) {
                     objs[i] = token.ToObject<T>(defaultDomain);
                 } else
                 {
@@ -321,8 +324,8 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
-        /// Turns the token into an IAttribute with all its child elements, if it has any. 
-        /// Note: If you converting this to a tree attribute, a subsequent call to tree.GetInt() might not work because Newtonsoft.JSON seems to load integers as long, so use GetDecimal() or GetLong() instead. Similar things might happen with float<->double
+        /// Turns the token into an IAttribute with all its child elements, if it has any.<br/>
+        /// Note: If you converting this to a tree attribute, a subsequent call to tree.GetInt() might not work because Newtonsoft.JSON seems to load integers as long, so use GetDecimal() or GetLong() instead. Similar things might happen with float&lt;-&gt;double
         /// </summary>
         /// <returns></returns>
         public IAttribute ToAttribute()

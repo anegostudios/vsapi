@@ -35,6 +35,7 @@ namespace Vintagestory.API.Server
 
         /// <summary>
         /// Requires neighbour chunks. Ravines, Lakes, Boulders.  Default generators by execute order:
+        /// 0.1 = Hot springs
         /// 0.2 = Deposits (Ores, Peat, Clay, etc.)
         /// 0.3 = Worldgen Structures
         /// 0.4 = Above sealevel Lakes

@@ -16,6 +16,7 @@ namespace Vintagestory.API.Client
     {
         DummySlot slot;
         double size;
+        public bool ShowStacksize = false;
 
         Action<ItemStack> onStackClicked;
         
@@ -32,7 +33,7 @@ namespace Vintagestory.API.Client
             PaddingRight = GuiElement.scaled(rightSidePadding);
         }
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
             offsetX += GuiElement.scaled(PaddingLeft);
@@ -51,7 +52,7 @@ namespace Vintagestory.API.Client
 
             nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
 
-            return requireLinebreak;
+            return requireLinebreak ? EnumCalcBoundsResult.Nextline : EnumCalcBoundsResult.Continue;
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
@@ -79,7 +80,7 @@ namespace Vintagestory.API.Client
             api.Render.PushScissor(scibounds, true);
 
             api.Render.RenderItemstackToGui(
-                slot, renderX + bounds.X + padLeft + width * 0.5f + offX, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, false);
+                slot, renderX + bounds.X + padLeft + width * 0.5f + offX, renderY + bounds.Y + bounds.Height * 0.5f + offY, GuiElement.scaled(100), (float)size * 0.58f, ColorUtil.WhiteArgb, true, false, ShowStacksize);
 
             api.Render.PopScissor();
 

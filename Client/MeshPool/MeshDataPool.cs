@@ -491,16 +491,16 @@ namespace Vintagestory.API.Client
             switch (mode)
             {
                 case EnumFrustumCullMode.CullInstant:
-                    return !Hide && CullVisible[VisibleBufIndex] && culler.SphereInFrustum(FrustumCullSphere);
+                    return !Hide && CullVisible[VisibleBufIndex] && culler.InFrustum(FrustumCullSphere);
 
                 case EnumFrustumCullMode.CullInstantShadowPassNear:
-                    return !Hide && CullVisible[VisibleBufIndex] && culler.SphereInFrustumShadowPass(FrustumCullSphere);
+                    return !Hide && CullVisible[VisibleBufIndex] && culler.InFrustumShadowPass(FrustumCullSphere);
 
                 case EnumFrustumCullMode.CullInstantShadowPassFar:
-                    return !Hide && CullVisible[VisibleBufIndex] && culler.SphereInFrustumShadowPass(FrustumCullSphere) && LodLevel >= 1;
+                    return !Hide && CullVisible[VisibleBufIndex] && culler.InFrustumShadowPass(FrustumCullSphere) && LodLevel >= 1;
 
                 case EnumFrustumCullMode.CullNormal:
-                    return !Hide && CullVisible[VisibleBufIndex] && UpdateVisibleFlag(culler.SphereInFrustumAndRange(FrustumCullSphere, FrustumVisible, LodLevel));
+                    return !Hide && CullVisible[VisibleBufIndex] && UpdateVisibleFlag(culler.InFrustumAndRange(FrustumCullSphere, FrustumVisible, LodLevel));
 
                 default:
                     return !Hide;

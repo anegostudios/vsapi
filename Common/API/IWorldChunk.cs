@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
@@ -80,10 +81,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         IChunkBlocks Data { get; }
 
-		/// <summary>
+        /// <summary>
         /// Use <see cref="Data"/> instead
         /// </summary>
-		IChunkBlocks Blocks { get; }
+        [Obsolete("Use Data field")]
+        IChunkBlocks Blocks { get; }
 
         /// <summary>
         /// Holds all the lighting data for each coordinate, access via index: (y * chunksize + z) * chunksize + x
@@ -237,7 +239,17 @@ namespace Vintagestory.API.Common
         /// <param name="onFace"></param>
         /// <param name="block"></param>
         /// <returns>False if there already exists a block in this position and facing</returns>
-        bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing onFace);
+        bool SetDecor(Block block, int index3d, BlockFacing onFace);
+        //bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing onFace);
+
+        /// <summary>
+        /// Sets a decor block to the side of an existing block. Use air block (id 0) to remove a decor.<br/>
+        /// </summary>
+        /// <param name="block"></param>
+        /// <param name="index3d"></param>
+        /// <param name="onFace"></param>
+        /// <returns></returns>
+      //  bool SetDecor(Block block, int index3d, BlockFacing onFace);
 
         /// <summary>
         /// Sets a decor block to a specific sub-position on the side of an existing block. Use air block (id 0) to remove a decor.<br/>
@@ -247,7 +259,8 @@ namespace Vintagestory.API.Common
         /// <param name="onFace"></param>
         /// <param name="block"></param>
         /// <returns>False if there already exists a block in this position and facing</returns>
-        bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, int faceAndSubposition);
+        bool SetDecor(Block block, int index3d, int decorIndex);
+//        bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, int decorIndex);
 
 
         /// <summary>
@@ -256,8 +269,8 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <param name="side">If null, all the decor blocks on all sides are removed</param>
-        /// <param name="faceAndSubposition">If not null breaks only this part of the decor for give face. Requires side to be set.</param>
-        bool BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null, int? faceAndSubposition = null);
+        /// <param name="decorIndex">If not null breaks only this part of the decor for give face. Requires side to be set.</param>
+        bool BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null, int? decorIndex = null);
 
 
         /// <summary>
@@ -276,7 +289,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         Block[] GetDecors(IBlockAccessor blockAccessor, BlockPos pos);
 
-        Block GetDecor(IBlockAccessor blockAccessor, BlockPos pos, int faceAndSubposition);
+        Block GetDecor(IBlockAccessor blockAccessor, BlockPos pos, int decorIndex);
 
         /// <summary>
         /// Set entire Decors for a chunk - used in Server->Client updates

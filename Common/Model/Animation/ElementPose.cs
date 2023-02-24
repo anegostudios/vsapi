@@ -23,11 +23,15 @@ namespace Vintagestory.API.Common
 
         public List<ElementPose> ChildElementPoses = new List<ElementPose>();
 
+        public float degOffX, degOffY, degOffZ;
+
         public float degX, degY, degZ;
         public float scaleX = 1, scaleY = 1, scaleZ = 1;
         public float translateX, translateY, translateZ;
 
-        public bool RotShortestDistance;
+        public bool RotShortestDistanceX;
+        public bool RotShortestDistanceY;
+        public bool RotShortestDistanceZ;
 
         public void Clear()
         {
@@ -44,22 +48,36 @@ namespace Vintagestory.API.Common
 
         public void Add(ElementPose tf, ElementPose tfNext, float l, float weight)
         {
-            if (tf.RotShortestDistance)
+            if (tf.RotShortestDistanceX)
             {
                 float distX = MathTools.GameMath.AngleDegDistance(tf.degX, tfNext.degX);
-                float distY = MathTools.GameMath.AngleDegDistance(tf.degY, tfNext.degY);
-                float distZ = MathTools.GameMath.AngleDegDistance(tf.degZ, tfNext.degZ);
-
-                degX += (tf.degX + distX * l) * weight;
-                degY += (tf.degY + distY * l) * weight;
-                degZ += (tf.degZ + distZ * l) * weight;
+                degX += (tf.degX + distX * l);
             }
             else
             {
                 degX += (tf.degX * (1 - l) + tfNext.degX * l) * weight;
+            }
+
+            if (tf.RotShortestDistanceY)
+            {
+                float distY = MathTools.GameMath.AngleDegDistance(tf.degY, tfNext.degY);
+                degY += (tf.degY + distY * l);
+            }
+            else
+            {
                 degY += (tf.degY * (1 - l) + tfNext.degY * l) * weight;
+            }
+
+            if (tf.RotShortestDistanceZ)
+            {
+                float distZ = MathTools.GameMath.AngleDegDistance(tf.degZ, tfNext.degZ);
+                degZ += (tf.degZ + distZ * l);
+            }
+            else
+            {
                 degZ += (tf.degZ * (1 - l) + tfNext.degZ * l) * weight;
             }
+
 
             scaleX += ((tf.scaleX - 1) * (1-l) + (tfNext.scaleX - 1) * l) * weight;
             scaleY += ((tf.scaleY - 1) * (1 - l) + (tfNext.scaleY - 1) * l) * weight;

@@ -59,14 +59,8 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public double EyeHeight;
 
-        /// <summary>
-        /// Sets the eye height of the entity.
-        /// </summary>
-        /// <param name="height"></param>
-        public void SetEyeHeight(double height)
-        {
-            this.EyeHeight = height;
-        }
+        public double SwimmingEyeHeight;
+
 
         /// <summary>
         /// The mass of this type of entity in kilograms, on average - defaults to 25kg (medium-low) if not set by the asset
@@ -215,6 +209,7 @@ namespace Vintagestory.API.Common.Entities
                 IdleSoundRange = IdleSoundRange,
                 Drops = DropsCopy,
                 EyeHeight = EyeHeight,
+                SwimmingEyeHeight = SwimmingEyeHeight,
                 Client = Client?.Clone() as EntityClientProperties,
                 Server = Server?.Clone() as EntityServerProperties
             };
@@ -321,7 +316,7 @@ namespace Vintagestory.API.Common.Entities
             this.BehaviorsAsJsonObj = behaviors;
         }
 
-        internal void loadBehaviors(Entity entity, EntityProperties properties, IWorldAccessor world)
+        public void loadBehaviors(Entity entity, EntityProperties properties, IWorldAccessor world)
         {
             if (BehaviorsAsJsonObj == null) return;
 
@@ -376,7 +371,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Directory of all available textures. First one will be default one
         /// </summary>
-        public IDictionary<string, CompositeTexture> Textures = new FakeDictionary<string, CompositeTexture>(0);
+        public IDictionary<string, CompositeTexture> Textures = new FastSmallDictionary<string, CompositeTexture>(0);
 
         /// <summary>
         /// Used by various renderers to retrieve the entities texture it should be drawn with

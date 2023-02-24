@@ -17,6 +17,11 @@ namespace Vintagestory.API.Client
 
         int shadowHeight = 10;
 
+        public Action<string> OnClicked;
+
+        string versionnumber;
+
+
         double[] backColor = new double[] { 197 / 255.0, 137 / 255.0, 72 / 255.0, 1 };
 
         /// <summary>
@@ -42,7 +47,7 @@ namespace Vintagestory.API.Client
         /// <param name="versionnumber">The version number of the new version.</param>
         public void RecomposeMultiLine(string versionnumber)
         {
-            text = Lang.Get("versionavailable", versionnumber);
+            text = Lang.Get(RuntimeEnv.OS == OS.Windows ? "versionavailable-autoupdate" : "versionavailable-manualupdate", versionnumber);
 
             Bounds.fixedHeight = GetMultilineTextHeight() / RuntimeEnv.GUIScale;
             Bounds.CalcWorldBounds();
@@ -109,6 +114,7 @@ namespace Vintagestory.API.Client
 
         internal void Activate(string versionnumber)
         {
+            this.versionnumber = versionnumber;
             visible = true;
             RecomposeMultiLine(versionnumber);
             MouseOverCursor = "linkselect";
@@ -136,7 +142,7 @@ namespace Vintagestory.API.Client
 
             if (visible && Bounds.PointInside(args.X, args.Y))
             {
-                NetUtil.OpenUrlInBrowser("https://account.vintagestory.at");
+                OnClicked(versionnumber);
             }
         }
 

@@ -21,7 +21,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The matrices for this No-Animator
         /// </summary>
-        public float[] Matrices => null;
+        public float[] Matrices4x3 => null;
 
         /// <summary>
         /// The active animation count for this no animator.
@@ -43,6 +43,11 @@ namespace Vintagestory.API.Common
         /// <param name="code"></param>
         /// <returns></returns>
         public AttachmentPointAndPose GetAttachmentPointPose(string code)
+        {
+            return null;
+        }
+
+        public ElementPose GetPosebyName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {
             return null;
         }

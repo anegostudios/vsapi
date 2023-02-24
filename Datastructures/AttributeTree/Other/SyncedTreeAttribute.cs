@@ -121,7 +121,7 @@ namespace Vintagestory.API.Datastructures
 
                 if (attr is ITreeAttribute)
                 {
-                    attr = (ITreeAttribute)attr;
+                    treeAttr = (ITreeAttribute)attr;
                 } else
                 {
                     return null;

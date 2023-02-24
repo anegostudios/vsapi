@@ -1,4 +1,6 @@
 ﻿using Cairo;
+using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -12,39 +14,63 @@ namespace Vintagestory.API.Client
         protected ElementBounds parentBounds;
 
         public double offY = 0;
+        public double sizeMulSvg = 0.7; // no idea why
 
         protected string iconName;
+        protected string iconPath;
         protected CairoFont font;
 
-        public IconComponent(ICoreClientAPI capi, string iconName, CairoFont font) : base(capi)
+        public IconComponent(ICoreClientAPI capi, string iconName, string iconPath, CairoFont font) : base(capi)
         {
             this.capi = capi;
             this.iconName = iconName;
+            this.iconPath = iconPath;
             this.font = font;
+
+            BoundsPerLine = new LineRectangled[]
+            {
+                new LineRectangled(0, 0, GuiElement.scaled(font.UnscaledFontsize), GuiElement.scaled(font.UnscaledFontsize))
+            };
         }
 
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
-            capi.Gui.Icons.DrawIcon(ctx, iconName, BoundsPerLine[0].X, BoundsPerLine[0].Y, GuiElement.scaled(font.UnscaledFontsize), GuiElement.scaled(font.UnscaledFontsize), font.Color);
+            double size = GuiElement.scaled(font.UnscaledFontsize);
+
+            if (iconPath != null) {
+                size *= sizeMulSvg;
+                IAsset svgAsset = capi.Assets.TryGet(new AssetLocation(iconPath).WithPathPrefixOnce("textures/"), true);
+                var asc = font.GetFontExtents().Ascent;
+                capi.Gui.DrawSvg(svgAsset, surface, (int)BoundsPerLine[0].X, (int)(BoundsPerLine[0].Y + asc - (int)size)+2 /* why the 2 offset? Only god knows -_- */, (int)size, (int)size, ColorUtil.ColorFromRgba(font.Color));
+            }
+            else {
+                capi.Gui.Icons.DrawIcon(ctx, iconName, BoundsPerLine[0].X, BoundsPerLine[0].Y, size, size, font.Color);
+            }
         }
 
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
             offsetX += GuiElement.scaled(PaddingLeft);
-
-            BoundsPerLine = new LineRectangled[]
-            {
-                new LineRectangled(offsetX, lineY, GuiElement.scaled(font.UnscaledFontsize), GuiElement.scaled(font.UnscaledFontsize))
-            };
-
             bool requireLinebreak = offsetX + BoundsPerLine[0].Width > curfp.X2;
+
+            this.BoundsPerLine[0].X = requireLinebreak ? 0 : offsetX;
+            this.BoundsPerLine[0].Y = lineY + (requireLinebreak ? currentLineHeight : 0);
 
             nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
 
-            return requireLinebreak;
+            return requireLinebreak ? EnumCalcBoundsResult.Nextline : EnumCalcBoundsResult.Continue;
+        }
+
+        public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
+        {
+            /*for (int i = 0; i < BoundsPerLine.Length; i++)
+            {
+                var bounds = BoundsPerLine[i];
+                api.Render.RenderRectangle((float)renderX + (float)bounds.X, (float)renderY + (float)bounds.Y, 50, (float)bounds.Width, (float)bounds.Height, ColorUtil.ColorFromRgba(200, 255, 255, 128));
+            }*/
         }
 
 

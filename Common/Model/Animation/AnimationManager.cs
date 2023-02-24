@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
-using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -309,15 +304,17 @@ namespace Vintagestory.API.Common
         {
             if (capi.IsGamePaused) return; // Too cpu intensive to run all loaded entities
 
+            if (HeadController != null)
+            {
+                HeadController.OnFrame(dt);
+            }
+
             if (entity.IsRendered || !entity.Alive)
             {
                 Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
             }
 
-            if (HeadController != null)
-            {
-                HeadController.OnFrame(dt);
-            }
+            
         }
 
         /// <summary>
@@ -343,29 +340,3 @@ namespace Vintagestory.API.Common
         }
     }
 }
-
-
-
-
-/*if (player == api.World.Player && api.Render.CameraType == EnumCameraMode.FirstPerson)
-{
-    AttachmentPointAndPose apap = null;
-    curAnimator.AttachmentPointByCode.TryGetValue("Eyes", out apap);
-    float[] tmpMat = Mat4f.Create();
-
-    for (int i = 0; i < 16; i++) tmpMat[i] = ModelMat[i];
-    AttachmentPoint ap = apap.AttachPoint;
-
-    float[] mat = apap.Pose.AnimModelMatrix;
-    Mat4f.Mul(tmpMat, tmpMat, mat);
-
-    Mat4f.Translate(tmpMat, tmpMat, (float)ap.PosX / 16f, (float)ap.PosY / 16f, (float)ap.PosZ / 16f);
-    Mat4f.RotateX(tmpMat, tmpMat, (float)(ap.RotationX) * GameMath.DEG2RAD);
-    Mat4f.RotateY(tmpMat, tmpMat, (float)(ap.RotationY) * GameMath.DEG2RAD);
-    Mat4f.RotateZ(tmpMat, tmpMat, (float)(ap.RotationZ) * GameMath.DEG2RAD);
-    float[] vec = new float[] { 0,0,0, 0 };
-    float[] outvec = Mat4f.MulWithVec4(tmpMat, vec);
-
-    api.Render.CameraOffset.Translation.Set(outvec[0], outvec[1] + 1, outvec[2]);
-}*/
-

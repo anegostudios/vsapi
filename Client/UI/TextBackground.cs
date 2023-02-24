@@ -8,10 +8,17 @@ namespace Vintagestory.API.Client
 {
     public class TextBackground
     {
+        public int Padding
+        {
+            set { HorPadding = value; VerPadding = value; }
+        }
+
         /// <summary>
         /// The padding around the text.
         /// </summary>
-        public int Padding = 0;
+        public int HorPadding = 0;
+
+        public int VerPadding = 0;
 
         /// <summary>
         /// The radius of the text.
@@ -44,7 +51,8 @@ namespace Vintagestory.API.Client
         {
             return new TextBackground()
             {
-                Padding = Padding,
+                HorPadding = HorPadding,
+                VerPadding = VerPadding,
                 Radius = Radius,
                 FillColor = (double[])FillColor.Clone(),
                 BorderColor = (double[])BorderColor.Clone(),

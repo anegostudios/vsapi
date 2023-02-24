@@ -58,6 +58,9 @@ namespace Vintagestory.API.Common
         public string Code;
 
         [JsonProperty]
+        public bool EaseAnimationSpeed = false;
+
+        [JsonProperty]
         public AnimationKeyFrame[] KeyFrames;
 
         [JsonProperty]
@@ -200,7 +203,9 @@ namespace Vintagestory.API.Common
 
                 lerpKeyFrameElement(curKelem, nextKelem, flag, t, ref transform);
 
-                transform.RotShortestDistance = curKelem.RotShortestDistance;
+                transform.RotShortestDistanceX = curKelem.RotShortestDistanceX;
+                transform.RotShortestDistanceY = curKelem.RotShortestDistanceY;
+                transform.RotShortestDistanceZ = curKelem.RotShortestDistanceZ;
             }
         }
 
@@ -209,7 +214,7 @@ namespace Vintagestory.API.Common
         {
             if (prev == null && next == null) return;
 
-            t = GameMath.SmoothStep(t);
+            //t = GameMath.SmoothStep(t); - dafuq is this here for
 
             // Applies the transforms in model space
             if (forFlag == 0)

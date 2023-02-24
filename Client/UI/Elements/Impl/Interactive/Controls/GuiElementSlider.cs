@@ -113,7 +113,7 @@ namespace Vintagestory.API.Client
             ctx.Paint();
             
             RoundRectangle(ctx, 2, 2, handleWidth, handleHeight, 1);
-            fillWithPattern(api, ctx, woodTextureName, false, true);
+            fillWithPattern(api, ctx, woodTextureName, false, true, 255, 0.5f);
 
             ctx.SetSourceRGB(43 / 255.0, 33 / 255.0, 24 / 255.0);
             ctx.LineWidth = 2;
@@ -171,7 +171,7 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)(handlePosition + 5), (int)insetHeight);
             Context ctx = genContext(surface);
 
-            SurfacePattern pattern = getPattern(api, waterTextureName);
+            SurfacePattern pattern = getPattern(api, waterTextureName, true, 255, 0.5f);
             RoundRectangle(ctx, 0, 0, surface.Width, surface.Height, 1);
             ctx.SetSource(pattern);
             ctx.Fill();           

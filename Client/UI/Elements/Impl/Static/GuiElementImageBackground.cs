@@ -8,6 +8,8 @@ namespace Vintagestory.API.Client
     {
         AssetLocation textureLoc;
         float brightness;
+        float alpha;
+        float scale;
 
         /// <summary>
         /// Creates a new Image Background for the GUI.
@@ -16,8 +18,10 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the element.</param>
         /// <param name="textureLoc">The name of the texture.</param>
         /// <param name="brightness">The brightness of the texture. (Default: 1f)</param>
-        public GuiElementImageBackground(ICoreClientAPI capi, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f) : base(capi, bounds)
+        public GuiElementImageBackground(ICoreClientAPI capi, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f, float alpha = 1, float scale = 1f) : base(capi, bounds)
         {
+            this.alpha = alpha;
+            this.scale = scale;
             this.textureLoc = textureLoc;
             this.brightness = brightness;
         }
@@ -25,13 +29,9 @@ namespace Vintagestory.API.Client
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             Bounds.CalcWorldBounds();
-
-            // Stone bg
-            SurfacePattern pattern = getPattern(api, textureLoc);
+            SurfacePattern pattern = getPattern(api, textureLoc, true, (int)(alpha * 255), scale);
             ctx.SetSource(pattern);
             ElementRoundRectangle(ctx, Bounds);
-            
-
             ctx.Fill();
 
             if (brightness < 1)
@@ -54,11 +54,11 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the background</param>
         /// <param name="textureLoc">The name of the background texture.</param>
         /// <param name="brightness">The brightness of the texture (default: 1f)</param>
-        public static GuiComposer AddImageBG(this GuiComposer composer, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f)
+        public static GuiComposer AddImageBG(this GuiComposer composer, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f, float alpha = 1, float scale = 1f)
         {
             if (!composer.Composed)
             {
-                composer.AddStaticElement(new GuiElementImageBackground(composer.Api, bounds, textureLoc, brightness));
+                composer.AddStaticElement(new GuiElementImageBackground(composer.Api, bounds, textureLoc, brightness, alpha, scale));
             }
             return composer;
         }

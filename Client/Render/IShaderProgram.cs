@@ -52,12 +52,6 @@ namespace Vintagestory.API.Client
         bool ClampTexturesToEdge { get; set; }
         
         /// <summary>
-        /// For declaring your uniforms. The index of the uniform is then later used for assigning data to them using RenderAPI.ProgramUniform()
-        /// </summary>
-        /// <param name="locations"></param>
-        //void PrepareUniformLocations(params string[] locations);
-        
-        /// <summary>
         /// The vertex shader of this shader program
         /// </summary>
         IShader VertexShader { get; set; }
@@ -97,12 +91,14 @@ namespace Vintagestory.API.Client
 
         void UniformMatrices(string uniformName, int count, float[] matrix);
 
-        void Dispose();
+        void UniformMatrices4x3(string uniformName, int count, float[] matrix);
 
+        
         /// <summary>
         /// True if this shader has been disposed
         /// </summary>
         bool Disposed { get; }
+        bool LoadError { get; }
     }
 
 

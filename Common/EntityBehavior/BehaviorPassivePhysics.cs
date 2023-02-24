@@ -1,7 +1,5 @@
 ﻿using System;
-using Vintagestory.API;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -10,8 +8,19 @@ using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
+    
     public class EntityBehaviorPassivePhysics : EntityBehavior, IRenderer
     {
+        /// <summary>
+        /// True when theres 1000 currently loaded entities. This will cause dropped items to enter a physics dormancy state if the conditions are right. Set by ModSystemDormancyStateChecker in EntityItemRenderer.cs
+        /// </summary>
+        public static bool UsePhysicsDormancyStateClient;
+        /// <summary>
+        /// True when theres 1000 currently loaded entities. This will cause dropped items to enter a physics dormancy state if the conditions are right. Set by ModSystemDormancyStateChecker in EntityItemRenderer.cs
+        /// </summary>
+        public static bool UsePhysicsDormancyStateServer;
+
+
         float accumulator;
         Vec3d outposition = new Vec3d();
         Vec3d prevPos = new Vec3d();
@@ -46,6 +55,7 @@ namespace Vintagestory.API.Common
 
         public float clientPhysicsTickTimeThreshold = 0f;
         float accum = 0;
+        int restingCounter;
 
         public float collisionYExtra = 1f;
 
@@ -53,8 +63,11 @@ namespace Vintagestory.API.Common
         /// If set, will test for entity collision every tick (expensive)
         /// </summary>
         public Action<float> OnPhysicsTickCallback;
+
+
+        bool isMountable;
         
-        public override void OnEntityDespawn(EntityDespawnReason despawn)
+        public override void OnEntityDespawn(EntityDespawnData despawn)
         {
             (entity.World.Api as ICoreClientAPI)?.Event.UnregisterRenderer(this, EnumRenderStage.Before);
             Dispose();
@@ -62,7 +75,7 @@ namespace Vintagestory.API.Common
 
         public EntityBehaviorPassivePhysics(Entity entity) : base(entity)
         {
-            
+            isMountable = entity is IMountable || entity is IMountableSupplier;
         }
 
         public override void Initialize(EntityProperties properties, JsonObject attributes)
@@ -99,9 +112,9 @@ namespace Vintagestory.API.Common
 
             // Graceful degradation of the simulation quality instead of heavily lagging the game
             accum += deltaTime;
-            if (accum > clientPhysicsTickTimeThreshold)
+            if (accum > clientPhysicsTickTimeThreshold || isMountable)
             {
-                onPhysicsTick(deltaTime);
+                onPhysicsTick(deltaTime, UsePhysicsDormancyStateClient);
                 accum = 0f;
             }
         }
@@ -111,32 +124,44 @@ namespace Vintagestory.API.Common
         {
             if (!duringRenderFrame)
             {
-                onPhysicsTick(deltaTime);
+                onPhysicsTick(deltaTime, UsePhysicsDormancyStateServer);
             }
         }
 
 
-        public void onPhysicsTick(float deltaTime)
+        public void onPhysicsTick(float deltaTime, bool usePhysicsDormancyState)
         {
             if (entity.State == EnumEntityState.Inactive)
             {
                 return;
             }
 
-            EntityPos pos = entity.SidedPos;
-
             accumulator += deltaTime;
-
             if (accumulator > 0.4f)
             {
                 accumulator = 0.4f;
             }
 
+            EntityPos pos = entity.SidedPos;
             float sliceTime = GlobalConstants.PhysicsFrameTime;
 
-            // Dynamically adapt physics simulation accuracy based on the velocity
-            double velo = pos.Motion.Length();
-            sliceTime /= GameMath.Clamp((float)velo * 10, 1, 10);
+            if (isMountable)
+            {
+                sliceTime = 1 / 60f;
+            }
+            else
+            {
+                double velo = pos.Motion.Length();
+
+                // Tick physics 20 times slower if resting on the ground for a while and there is no player nearby
+                if (usePhysicsDormancyState && entity.OnGround && entity.minRangeToClient > 7 && velo < 0.01) restingCounter++;
+                else restingCounter = 0;
+                if (restingCounter > 150) deltaTime /= 20;
+
+                // Dynamically adapt physics simulation accuracy based on the velocity
+                sliceTime /= GameMath.Clamp((float)velo * 10, 1, 10);
+            }
+
 
             while (accumulator >= sliceTime)
             {
@@ -250,8 +275,6 @@ namespace Vintagestory.API.Common
 
             entity.World.CollisionTester.ApplyTerrainCollision(entity, pos, dtFac, ref outposition, 0, collisionYExtra);
 
-            
-
 
             if (entity.World.BlockAccessor.IsNotTraversable((int)(pos.X + moveDelta.X), (int)pos.Y, (int)pos.Z))
             {
@@ -326,7 +349,7 @@ namespace Vintagestory.API.Common
 
             if (GlobalConstants.OutsideWorld(pos.X, pos.Y, pos.Z, entity.World.BlockAccessor))
             {
-                entity.DespawnReason = new EntityDespawnReason() { reason = EnumDespawnReason.Death, damageSourceForDeath = new DamageSource() { Source = EnumDamageSource.Fall } };
+                entity.DespawnReason = new EntityDespawnData() { Reason = EnumDespawnReason.Death, DamageSourceForDeath = new DamageSource() { Source = EnumDamageSource.Fall } };
                 return;
             }
 

@@ -70,6 +70,8 @@ namespace Vintagestory.API.Client
     public interface IClientWorldAccessor : IWorldAccessor
     {
 
+        ColorMapData GetColorMapData(Block block, int posX, int posY, int posZ);
+
         /// <summary>
         /// Interface to access the game calendar
         /// </summary>
@@ -138,6 +140,20 @@ namespace Vintagestory.API.Client
         void ReduceCameraShake(float amount);
 
         /// <summary>
+        /// Same effect as when player left-click breaks a block, but will not cause actual breakage of the block
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="damage"></param>
+        void IncurBlockDamage(BlockSelection blockSelection, EnumTool? withTool, float damage);
+
+        /// <summary>
+        /// Applies the same damage overlay effect on the target as the source has
+        /// </summary>
+        /// <param name="sourcePos"></param>
+        /// <param name="targetPos"></param>
+        void CloneBlockDamage(BlockPos sourcePos, BlockPos targetPos);
+
+        /// <summary>
         /// Makes an attempt to attack a particular entity.
         /// </summary>
         /// <param name="sele"></param>
@@ -147,5 +163,7 @@ namespace Vintagestory.API.Client
         /// The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you *really* know what you're doing. Use SpawnEntity/DespawnEntity instead.
         /// </summary>
         Dictionary<long, Entity> LoadedEntities { get; }
+
+        
     }
 }

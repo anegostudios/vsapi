@@ -11,7 +11,6 @@ namespace Vintagestory.API.Common
     /// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary 
     /// and does recursive interpolation on the rotation, position and scale value for each frame, for each element and for each active element
     /// this produces always correctly blended animations but is significantly more costly for the cpu when compared to the technique used by the <see cref="AnimatorBase"/>.
-    /// You can use this class and dynamically switch between fast and pretty mode by setting the <see cref="FastMode"/> field.
     /// </summary>
     public class ClientAnimator : AnimatorBase
     {
@@ -27,9 +26,7 @@ namespace Vintagestory.API.Common
         List<ElementPose>[][] nextFrameTransformsByAnimation;
         ShapeElementWeights[][][] weightsByAnimationAndElement;
 
-
         float[] localTransformMatrix = Mat4f.Create();
-        float[] identMat = Mat4f.Create();
         float[] tmpMatrix = Mat4f.Create();
         
         public static ClientAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
@@ -194,6 +191,28 @@ namespace Vintagestory.API.Common
             return depth + 1;
         }
 
+        public override ElementPose GetPosebyName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        {
+            return getPosebyName(RootPoses, name);
+        }
+
+        private ElementPose getPosebyName(List<ElementPose> poses, string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        {
+            for (int i = 0; i < poses.Count; i++)
+            {
+                var pose = poses[i];
+                if (pose.ForElement.Name.Equals(name, stringComparison)) return pose;
+
+                if (pose.ChildElementPoses != null)
+                {
+                    var foundPose = getPosebyName(pose.ChildElementPoses, name);
+                    if (foundPose != null) return foundPose;
+                }
+            }
+
+            return null;
+        }
+
         protected override void AnimNowActive(RunningAnimation anim, AnimationMetaData animData)
         {
             base.AnimNowActive(anim, animData);
@@ -256,9 +275,9 @@ namespace Vintagestory.API.Common
                 {
                     if (jointsById.ContainsKey(jointid)) continue;
 
-                    for (int j = 0; j < 16; j++)
+                    for (int j = 0; j < 12; j++)
                     {
-                        TransformationMatrices[jointid * 16 + j] = identMat[j];
+                        TransformationMatrices4x3[jointid * 12 + j] = identMat4x3[j];
                     }
                 }
 
@@ -321,7 +340,6 @@ namespace Vintagestory.API.Common
                 {
                     RunningAnimation anim = CurAnims[j];
                     ShapeElementWeights sew = weightsByAnimationAndElement[j][i];
-                    //anim.CalcBlendedWeight(sew.Weight weightSum, sew.BlendMode); - that makes no sense for element weights != 1
                     anim.CalcBlendedWeight(weightSum / sew.Weight, sew.BlendMode);
 
                     ElementPose prevFramePose = transformsByAnimation[j][i];
@@ -338,7 +356,6 @@ namespace Vintagestory.API.Common
 
                     currentPose.Add(prevFramePose, nextFramePose, lerp, anim.BlendedWeight);
 
-
                     childTransformsByAnimation[j] = prevFramePose.ChildElementPoses;
                     childWeightsByAnimationAndElement[j] = sew.ChildElements;
 
@@ -352,10 +369,34 @@ namespace Vintagestory.API.Common
                 {
                     Mat4f.Mul(tmpMatrix, currentPose.AnimModelMatrix, elem.inverseModelTransform);
 
-                    for (int l = 0; l < 16; l++)
+                    // https://stackoverflow.com/questions/32565827/whats-the-purpose-of-magic-4-of-last-row-in-matrix-4x4-for-3d-graphics
+                    // We skip the last row
+                    // 0 4 8  12
+                    // 1 5 9  13
+                    // 2 6 10 14
+                    // 3 7 11 15
+                    // =>
+                    // 0 3 6 9
+                    // 1 4 7 10
+                    // 2 5 8 11
+                    int index = 12 * elem.JointId;
+                    TransformationMatrices4x3[index++] = tmpMatrix[0];
+                    TransformationMatrices4x3[index++] = tmpMatrix[1];
+                    TransformationMatrices4x3[index++] = tmpMatrix[2];
+                    TransformationMatrices4x3[index++] = tmpMatrix[4];
+                    TransformationMatrices4x3[index++] = tmpMatrix[5];
+                    TransformationMatrices4x3[index++] = tmpMatrix[6];
+                    TransformationMatrices4x3[index++] = tmpMatrix[8];
+                    TransformationMatrices4x3[index++] = tmpMatrix[9];
+                    TransformationMatrices4x3[index++] = tmpMatrix[10];
+                    TransformationMatrices4x3[index++] = tmpMatrix[12];
+                    TransformationMatrices4x3[index++] = tmpMatrix[13];
+                    TransformationMatrices4x3[index++] = tmpMatrix[14];
+
+                    /*for (int l = 0; l < 12; l++)
                     {
-                        TransformationMatrices[16 * elem.JointId + l] = tmpMatrix[l];
-                    }
+                        TransformationMatrices[12 * elem.JointId + l] = tmpMatrix[l];
+                    }*/
 
                     jointsDone.Add(elem.JointId);
                 }

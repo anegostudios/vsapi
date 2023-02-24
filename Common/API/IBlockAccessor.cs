@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -12,18 +8,59 @@ namespace Vintagestory.API.Common
     {
         public bool ExchangeOnly;
         public BlockPos Pos;
+        /// <summary>
+        /// Contains either liquid layer of solid layer block
+        /// </summary>
         public int OldBlockId;
         /// <summary>
         /// If this value is negative, it indicates no change to the block (neither air block nor anything else) because only the fluid is being updated
         /// </summary>
-        public int NewSolidId = -1;
+        public int NewSolidBlockId = -1;
         /// <summary>
         /// If this value is negative, it indicates no change to the fluids layer block (neither air block nor anything else) because only the solid block is being updated
         /// </summary>
-        public int NewFluidId = -1;
+        public int NewFluidBlockId = -1;
         public ItemStack ByStack;
 
-        public byte[] BlockEntityData;
+        public byte[] OldBlockEntityData;
+        public byte[] NewBlockEntityData;
+    }
+
+    public struct DecorUpdateKey : IEquatable<DecorUpdateKey>
+    {
+        public int X;
+        public int Y;
+        public int Z;
+        public int DecorIndex;
+
+        public bool Equals(DecorUpdateKey other)
+        {
+            return other.X == X && other.Y == Y && other.Z == Z && other.DecorIndex == DecorIndex;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is DecorUpdateKey key && Equals(key);
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -559056482;
+            hashCode = hashCode * -1521134295 + X.GetHashCode();
+            hashCode = hashCode * -1521134295 + Y.GetHashCode();
+            hashCode = hashCode * -1521134295 + Z.GetHashCode();
+            hashCode = hashCode * -1521134295 + DecorIndex.GetHashCode();
+            return hashCode;
+        }
+    }
+
+    public class DecorUpdate
+    {
+        public BlockPos Pos;
+        public int OldDecorId;
+        public int NewDecorId;
+        public int OldDecorIndex;
+        public int NewDecorIndex;
     }
 
     public class BlockUpdateStruct
@@ -45,7 +82,7 @@ namespace Vintagestory.API.Common
         public float Temperature;
 
         /// <summary>
-        /// If you read the now values, you can still get the world gen rain fall from this value
+        /// If you read the now values, you can still get the world gen rain fall from this value. Between 0..1
         /// </summary>
         public float WorldgenRainfall;
 
@@ -53,6 +90,11 @@ namespace Vintagestory.API.Common
         /// If you read the now values, you can still get the world gen temp from this value
         /// </summary>
         public float WorldGenTemperature;
+
+        /// <summary>
+        /// Nomalized value between 0..1. Static value determined on world generation
+        /// </summary>
+        public float GeologicActivity;
 
         /// <summary>
         /// Nomalized value between 0..1. When loading the now values, this is set to the current precipitation value, otherwise to "yearly averages" or the values generated during worldgen
@@ -181,14 +223,14 @@ namespace Vintagestory.API.Common
         IWorldChunk GetChunk(int chunkX, int chunkY, int chunkZ);
 
         /// <summary>
-        /// Retrieve chunk at given chunk position
+        /// Retrieve chunk at given chunk position, returns null if chunk is not loaded
         /// </summary>
         /// <param name="chunkIndex3D"></param>
         /// <returns></returns>
         IWorldChunk GetChunk(long chunkIndex3D);
 
         /// <summary>
-        /// Retrieves a map region at given region position
+        /// Retrieves a map region at given region position, returns null if region is not loaded
         /// </summary>
         /// <param name="regionX"></param>
         /// <param name="regionZ"></param>
@@ -198,7 +240,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Retrieve chunk at given block position
+        /// Retrieve chunk at given block position, returns null if chunk is not loaded
         /// </summary>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
@@ -207,7 +249,7 @@ namespace Vintagestory.API.Common
         IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ);
 
         /// <summary>
-        /// Retrieve chunk at given block position
+        /// Retrieve chunk at given block position, returns null if chunk is not loaded
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
@@ -221,7 +263,6 @@ namespace Vintagestory.API.Common
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
-        [Obsolete("Please use GetBlock()")]
         int GetBlockId(int posX, int posY, int posZ);
 
         /// <summary>
@@ -229,12 +270,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        [Obsolete("Please use GetBlock()")]
         int GetBlockId(BlockPos pos);
 
         /// <summary>
         /// Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// Same as <see cref="GetBlock(int, int, int, BlockLayersAccess.Default)"/>
+        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.Default as layer
         /// </summary>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
@@ -244,12 +284,23 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// Same as <see cref="GetBlock(BlockPos, BlockLayersAccess.Default)"/>
+        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.Default as layer
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
         Block GetBlock(BlockPos pos);
 
+        /// <summary>
+        /// Tries to find a object that implements an interface at given position in the following order:<br/>
+        /// 1. Block implements T
+        /// 2. BlockBehavior implements T
+        /// 3. BlockEntity implements T
+        /// 4. BlockEntityBehavior implements T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        T GetInterface<T>(BlockPos pos);
 
         /// <summary>
         /// Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
@@ -278,13 +329,14 @@ namespace Vintagestory.API.Common
         /// <param name = "x">x coordinate</param>
         /// <param name = "y">y coordinate</param>
         /// <param name = "z">z coordinate</param>
+        /// <param name="layer">Block layer</param>
         /// <returns>ID of the block at the given position</returns>
         Block GetBlockOrNull(int x, int y, int z, int layer = BlockLayersAccess.MostSolid);
 
 
 
         /// <summary>
-        /// Same as <see cref="GetBlock(int, int, int, BlockLayersAccess.MostSolid)"/>
+        /// Same as <see cref="GetBlock(int, int, int, int)"/> with BlockLayersAccess.MostSolid as layer
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -293,14 +345,14 @@ namespace Vintagestory.API.Common
         Block GetMostSolidBlock(int x, int y, int z);
 
         /// <summary>
-        /// Same as <see cref="GetBlock(BlockPos, BlockLayersAccess.MostSolid)"/>
+        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.MostSolid as layer
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
         Block GetMostSolidBlock(BlockPos pos);
 
         /// <summary>
-        /// A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. Currently used for more efficient collision testing.
+        /// A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. If there is liquids in the liquid layer, the onBlock method will be called twice. Currently used for more efficient collision testing.
         /// </summary>
         /// <param name="minPos"></param>
         /// <param name="maxPos"></param>
@@ -353,8 +405,9 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Sets a block to given layer. Can only use "BlockLayersAccess.Solid" or "BlockLayersAccess.Liquid". Use id 0 to clear a block from given position. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
         /// </summary>
-        /// <param name="fluidBlockId"></param>
+        /// <param name="blockId"></param>
         /// <param name="pos"></param>
+        /// <param name="layer"></param>
         void SetBlock(int blockId, BlockPos pos, int layer);
 
         /// <summary>
@@ -367,7 +420,7 @@ namespace Vintagestory.API.Common
         void SetBlock(int blockId, BlockPos pos, ItemStack byItemstack);
 
         /// <summary>
-        /// Set a block at the given position without calling OnBlockRemoved or OnBlockPlaced, which prevents any block entity from being removed or placed. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave.
+        /// Set a block at the given position without calling OnBlockRemoved or OnBlockPlaced, which prevents any block entity from being removed or placed. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave. Should only be used if you want to prevent any block entity deletion at this position.
         /// </summary>
         void ExchangeBlock(int blockId, BlockPos pos);
 
@@ -405,7 +458,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         Block GetBlock(AssetLocation code);
 
-
+        
 
         /// <summary>
         /// Spawn block entity at this position. Does not place it's corresponding block, you have to this yourself.
@@ -434,6 +487,14 @@ namespace Vintagestory.API.Common
         /// <param name="position"></param>
         /// <returns></returns>
         BlockEntity GetBlockEntity(BlockPos position);
+
+        /// <summary>
+        /// Retrieve the block entity at given position. Returns null if there is no block entity at this position
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        T GetBlockEntity<T>(BlockPos position) where T : BlockEntity;
 
 
 
@@ -502,6 +563,7 @@ namespace Vintagestory.API.Common
         /// Server side: Sends that block to the client (via bulk packet).  Through that packet the client will do a SetBlock on that position (which triggers a redraw if oldblockid != newblockid).<br/>
         /// Client side: Triggers a block changed event and redraws the chunk
         /// </summary>
+        /// <param name="skipPlayer">Server side: Does not send the update to this player, Client Side: No effect</param>
         /// <param name="pos"></param>
         void MarkBlockDirty(BlockPos pos, IPlayer skipPlayer = null);
 
@@ -624,7 +686,7 @@ namespace Vintagestory.API.Common
         /// <param name="mode">WorldGenValues = values as determined by the worldgenerator, NowValues = additionally modified to take season, day/night and hemisphere into account</param>
         /// <param name="totalDays">When mode == ForSuppliedDateValues then supply here the date. Not used param otherwise</param>
         /// <returns></returns>
-        ClimateCondition GetClimateAt(BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.WorldGenValues, double totalDays = 0);
+        ClimateCondition GetClimateAt(BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.NowValues, double totalDays = 0);
 
         /// <summary>
         /// Returns the position's climate conditions at specified date, making use of previously obtained worldgen climate conditions
@@ -685,14 +747,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="position"></param>
         /// <param name="block"></param>
-        /// <param name="faceAndSubposition">You can get this value via <see cref="CollectibleBehaviorArtPigment.BlockSelectionToSubPosition()"/></param></param>
+        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
         /// <returns>True if the decor was sucessfully set</returns>
-        bool SetDecor(Block block, BlockPos position, int faceAndSubposition);
+        bool SetDecor(Block block, BlockPos position, int decorIndex);
 
         /// <summary>
         /// Get a list of all decors at this position
         /// </summary>
-        /// <param name="blockAccessor"></param>
         /// <param name="position"></param>
         /// <returns>Always a 6 element long list of decor blocks, any of which may be null if not set</returns>
         Block[] GetDecors(BlockPos position);
@@ -701,19 +762,18 @@ namespace Vintagestory.API.Common
         /// Retrieves a single decor at given position
         /// </summary>
         /// <param name="pos"></param>
-        /// <param name="faceAndSubposition">You can get this value via <see cref="CollectibleBehaviorArtPigment.BlockSelectionToSubPosition()"/></param></param>
+        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
         /// <returns></returns>
-        Block GetDecor(BlockPos pos, int faceAndSubposition);
+        Block GetDecor(BlockPos pos, int decorIndex);
 
         /// <summary>
         /// Removes all decors at given position, drops items if set
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="side">If not null, breaks all the decor on given block face, otherwise the decor blocks on all sides are removed</param>
-        /// <param name="faceAndSubposition">If not null breaks only this part of the decor for give face. You can get this value via <see cref="CollectibleBehaviorArtPigment.BlockSelectionToSubPosition()"/></param>
-        /// <param name="drop">If true calls OnBrokenAsDecor() on all selected decors and drops the items that are returned from Block.GetDrops()</param>
+        /// <param name="decorIndex">If not null breaks only this part of the decor for give face. You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
         /// <returns>True if a decor was removed</returns>
-        bool BreakDecor(BlockPos pos, BlockFacing side = null, int? faceAndSubposition = null);
+        bool BreakDecor(BlockPos pos, BlockFacing side = null, int? decorIndex = null);
 
 
 
@@ -730,9 +790,9 @@ namespace Vintagestory.API.Common
         /// Tests whether a side at the specified position is solid - testing both fluids layer (which could be ice) and solid blocks layer
         /// </summary>
         /// <param name="x"></param>
-        /// <param name="v"></param>
+        /// <param name="y"></param>
         /// <param name="z"></param>
-        /// <param name="index"></param>
+        /// <param name="facing"></param>
         /// <returns></returns>
         bool IsSideSolid(int x, int y, int z, BlockFacing facing);
     }

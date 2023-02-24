@@ -7,6 +7,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
 {
@@ -37,7 +38,7 @@ namespace Vintagestory.API.Common
     /// Either loaded from a "modinfo.json" or from the assembly's
     /// <see cref="T:Vintagestory.API.Common.ModInfoAttribute"/>.
     /// </summary>
-    public class ModInfo
+    public class ModInfo : IComparable<ModInfo>
     {
         private IReadOnlyList<string> _authors = new string[0];
 
@@ -217,6 +218,15 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+        public int CompareTo(ModInfo other)
+        {
+            int r = ModID.CompareTo(other.ModID);
+            if (r != 0) return r;
+
+            if (GameVersion.IsNewerVersionThan(Version, other.Version)) return -1;
+            if (GameVersion.IsLowerVersionThan(Version, other.Version)) return 1;
+            return 0;
+        }
 
         private class DependenciesConverter : JsonConverter
         {

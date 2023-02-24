@@ -355,7 +355,7 @@ namespace Vintagestory.API.Client
                 if (multiSelect)
                 {
                     api.Render.GlPushMatrix();
-                    api.Render.GlTranslate(0, Bounds.InnerHeight - (int)scrollOffY, 100);
+                    api.Render.GlTranslate(0, Bounds.InnerHeight - (int)scrollOffY, 350);
                     for (int i = 0; i < switches.Length; i++)
                     {
                         //switches[i].Bounds.fixedOffsetY = () / RuntimeEnv.GUIScale;
@@ -512,7 +512,7 @@ namespace Vintagestory.API.Client
 
             double dy = args.Y - Bounds.renderY - unscaledLineHeight * scaleMul;
 
-            if (dy < 0)
+            if (dy < 0 || dy > visibleBounds.OuterHeight)
             {
                 expanded = false;
                 args.Handled = true;

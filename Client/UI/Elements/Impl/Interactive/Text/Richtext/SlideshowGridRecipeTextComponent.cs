@@ -224,7 +224,7 @@ namespace Vintagestory.API.Client
 
 
 
-        public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
+        public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {
             TextFlowPath curfp = GetCurrentFlowPathSection(flowPath, lineY);
 
@@ -239,7 +239,7 @@ namespace Vintagestory.API.Client
 
             nextOffsetX = (requireLinebreak ? 0 : offsetX) + BoundsPerLine[0].Width;
 
-            return requireLinebreak;
+            return requireLinebreak ? EnumCalcBoundsResult.Nextline : EnumCalcBoundsResult.Continue;
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
@@ -300,7 +300,7 @@ namespace Vintagestory.API.Client
 
                     if (mouseover)
                     {
-                        capi.Render.Render2DTexture(hoverTexture.TextureId, (float)(scissorBounds.renderX), (float)(scissorBounds.renderY), (float)scissorBounds.InnerWidth, (float)scissorBounds.InnerHeight, (float)renderZ);
+                        //capi.Render.Render2DTexture(hoverTexture.TextureId, (float)(scissorBounds.renderX), (float)(scissorBounds.renderY), (float)scissorBounds.InnerWidth, (float)scissorBounds.InnerHeight, (float)renderZ);
                     }
 
                     CraftingRecipeIngredient ingred = recipeunin.Recipe.GetElementInGrid(y, x, recipeunin.Recipe.resolvedIngredients, recipeunin.Recipe.Width);

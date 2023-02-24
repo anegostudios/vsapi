@@ -915,7 +915,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets a new fixed margin (pad = top/right/down/left margin)
         /// </summary>
-        /// <param name="pad"></param>
+        /// <param name="padH"></param>
+        /// <param name="padV"></param>
         /// <returns></returns>
         public ElementBounds WithFixedMargin(double padH, double padV)
         {
@@ -982,8 +983,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets a new fixed offset that is used during element alignment.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="offx"></param>
+        /// <param name="offy"></param>
         /// <returns></returns>
         public ElementBounds WithFixedOffset(double offx, double offy)
         {
@@ -1022,7 +1023,8 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Grows the current width/height by a fixed value
         /// </summary>
-        /// <param name="amount"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
         /// <returns></returns>
         public ElementBounds FixedGrow(double width, double height)
         {
@@ -1128,8 +1130,8 @@ namespace Vintagestory.API.Client
         /// Quick method to create new ElementsBounds instance that uses fixed element sizing.
         /// </summary>
         /// <param name="alignment"></param>
-        /// <param name="fixedX"></param>
-        /// <param name="fixedY"></param>
+        /// <param name="fixedOffsetX"></param>
+        /// <param name="fixedOffsetY"></param>
         /// <param name="fixedWidth"></param>
         /// <param name="fixedHeight"></param>
         /// <returns></returns>
@@ -1218,9 +1220,5 @@ namespace Vintagestory.API.Client
             }
         }
 
-        public static implicit operator ElementBounds(GuiElementRichtext v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

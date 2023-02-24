@@ -571,7 +571,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public virtual string GetAsString(string key, string defaultValue = null)
         {
-            string val = attributes.TryGetValue(key).GetValue().ToString();
+            string val = attributes.TryGetValue(key)?.GetValue().ToString();
             return val == null ? defaultValue : val;
         }
 

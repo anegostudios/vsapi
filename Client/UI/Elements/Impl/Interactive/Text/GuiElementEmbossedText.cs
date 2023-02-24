@@ -6,9 +6,6 @@ namespace Vintagestory.API.Client
     public class GuiElementEmbossedText : GuiElementTextBase
     {
         public static int Padding = 4;
-
-        bool enabled;
-
         LoadedTexture texture;
 
         /// <summary>

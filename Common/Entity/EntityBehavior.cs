@@ -54,7 +54,7 @@ namespace Vintagestory.API.Common.Entities
         /// The event fired when the entity is despawned.
         /// </summary>
         /// <param name="despawn">The reason the entity despawned.</param>
-        public virtual void OnEntityDespawn(EntityDespawnReason despawn) { }
+        public virtual void OnEntityDespawn(EntityDespawnData despawn) { }
 
         /// <summary>
         /// The name of the property tied to this entity behavior.

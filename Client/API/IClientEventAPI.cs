@@ -212,9 +212,10 @@ namespace Vintagestory.API.Client
         /// Fired when server assets were received and all texture atlases have been created, also all sounds loaded
         /// </summary>
         event Action BlockTexturesLoaded;
-        
+
         /// <summary>
         /// Fired when the player tries to reload the shaders (happens when graphics settings are changed)
+        /// </summary>
         event ActionBoolReturn ReloadShader;
         
         /// <summary>
@@ -261,7 +262,7 @@ namespace Vintagestory.API.Client
         event KeyEventDelegate KeyUp;
 
         /// <summary>
-        /// Fired when the user drags&drops a file into the game window
+        /// Fired when the user drags&amp;drops a file into the game window
         /// </summary>
         event FileDropDelegate FileDrop;
     }

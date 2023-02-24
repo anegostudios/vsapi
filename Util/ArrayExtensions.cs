@@ -216,7 +216,7 @@ namespace Vintagestory.API.Util
         public static T[] Append<T>(this T[] array, params T[] value)
         {
             if (array == null) return null;
-            if (value == null) return array;
+            if (value == null || value.Length == 0) return array;
 
             T[] grown = new T[array.Length + value.Length];
             Array.Copy(array, grown, array.Length);
@@ -224,6 +224,30 @@ namespace Vintagestory.API.Util
             for (int i = 0; i < value.Length; i++)
             {
                 grown[array.Length + i] = value[i];
+            }
+
+            return grown;
+        }
+
+        /// <summary>
+        /// Creates a new copy of the array with <paramref name="values"/> appended to the end of the array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public static T[] Append<T>(this T[] array, IEnumerable<T> values)
+        {
+            if (array == null) return null;
+            if (values == null) return array;
+
+            T[] grown = new T[array.Length + values.Count()];
+            Array.Copy(array, grown, array.Length);
+
+            int i = 0;
+            foreach (var val in values) 
+            {
+                grown[array.Length + i] = val;
             }
 
             return grown;

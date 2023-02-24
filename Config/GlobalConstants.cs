@@ -24,7 +24,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card
         /// </summary>
-        public static int MaxAnimatedElements = 36;
+        public const int MaxAnimatedElements = 46;
 
         /// <summary>
         /// Max. amount of "bones" for color maps. Limited by max amount of shader uniforms, but depends on the gfx card
@@ -36,7 +36,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Frame time for physics simulation
         /// </summary>
-        public static float PhysicsFrameTime = 1 / 30f;
+        public static float PhysicsFrameTime = 1 / 30f; //1 / 75f;
 
         /// <summary>
         /// Limits the amount of world time that can be simulated by the physics engine if the server is ticking slowly: if ticks are slower than this, entities will seem to slow down (viewed on client might even jump backwards)
@@ -115,6 +115,11 @@ namespace Vintagestory.API.Config
         public static Vec3f CurrentWindSpeedClient = new Vec3f();
 
         /// <summary>
+        /// Set by the SystemPlayerEnvAwarenessTracker System in the engine at the players position, once every second. 12 horizontal, 4 vertical search distance
+        /// </summary>
+        public static float CurrentDistanceToRainfallClient;
+
+        /// <summary>
         /// Set by the game client at the players position
         /// </summary>
         public static float CurrentNearbyRelLeavesCountClient;
@@ -125,6 +130,9 @@ namespace Vintagestory.API.Config
         public static bool MeltingFreezingEnabled;
 
         public static float GuiGearRotJitter = 0f;
+
+        public const int MaxViewDistanceForLodBiases = 640;
+
 
         /// <summary>
         /// Returns true if the player fell out of the world (which is map boundaries + 30 blocks in every direction)

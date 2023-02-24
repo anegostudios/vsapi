@@ -50,7 +50,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Turns the binary data into a Bitmap. Use for .png images. Does not work on other image formats.
         /// </summary>
-        /// <param name="platform"></param>
+        /// <param name="capi"></param>
         /// <returns></returns>
         BitmapRef ToBitmap(ICoreClientAPI capi);
 

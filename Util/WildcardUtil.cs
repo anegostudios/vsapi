@@ -10,12 +10,55 @@ namespace Vintagestory.API.Util
 {
     public static class WildcardUtil
     {
+        /// <summary>
+        /// Returns a new AssetLocation with the wildcards (*) being filled with the blocks other Code parts, if the wildcard matches. 
+        /// Example this block is trapdoor-up-north. search is *-up-*, replace is *-down-*, in this case this method will return trapdoor-down-north.
+        /// </summary>
+        /// <param name="search"></param>
+        /// <param name="replace"></param>
+        /// <returns></returns>
+        public static AssetLocation WildCardReplace(this AssetLocation code, AssetLocation search, AssetLocation replace)
+        {
+            if (search == code) return search;
+
+            if (code == null || search.Domain != code.Domain) return null;
+
+            string pattern = Regex.Escape(search.Path).Replace(@"\*", @"(.*)");
+
+            Match match = Regex.Match(code.Path, @"^" + pattern + @"$");
+            if (!match.Success) return null;
+
+            string outCode = replace.Path;
+
+            for (int i = 1; i < match.Groups.Count; i++)
+            {
+                Group g = match.Groups[i];
+                CaptureCollection cc = g.Captures;
+                for (int j = 0; j < cc.Count; j++)
+                {
+                    Capture c = cc[j];
+
+                    int pos = outCode.IndexOf('*');
+                    outCode = outCode.Remove(pos, 1).Insert(pos, c.Value);
+                }
+            }
+
+            return new AssetLocation(code.Domain, outCode);
+        }
+
         public static bool Match(string needle, string haystack)
         {
             return fastMatch(needle, haystack);
         }
+        public static bool Match(string[] needles, string haystack)
+        {
+            for (int i = 0; i < needles.Length; i++)
+            {
+                if (fastMatch(needles[i], haystack)) return true;
+            }
 
-
+            return false;
+        }
 
         public static bool Match(AssetLocation needle, AssetLocation haystack)
         {
@@ -54,14 +97,23 @@ namespace Vintagestory.API.Util
 
             if (allowedVariants != null)
             {
-                int wildcardStartLen = wildCard.Path.IndexOf("*");
-                int wildcardEndLen = wildCard.Path.Length - wildcardStartLen - 1;
-                string code = inCode.Path.Substring(wildcardStartLen);
-                string codepart = code.Substring(0, code.Length - wildcardEndLen);
-                if (!allowedVariants.Contains(codepart)) return false;
+                if (!MatchesVariants(wildCard, inCode, allowedVariants)) return false;
             }
 
             return true;
+        }
+
+        public static bool MatchesVariants(AssetLocation wildCard, AssetLocation inCode, string[] allowedVariants)
+        {
+            int wildcardStartLen = wildCard.Path.IndexOf("*");
+            int wildcardEndLen = wildCard.Path.Length - wildcardStartLen - 1;
+            if (inCode.Path.Length <= wildcardStartLen) return false;
+
+            string code = inCode.Path.Substring(wildcardStartLen);
+            if (code.Length - wildcardEndLen <= 0) return false;
+            string codepart = code.Substring(0, code.Length - wildcardEndLen);
+            
+            return allowedVariants.Contains(codepart);
         }
 
         /// <summary>

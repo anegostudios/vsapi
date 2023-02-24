@@ -29,10 +29,11 @@ namespace Vintagestory.API.Client
     public static partial class GuiComposerHelpers
     {
         /// <summary>
-        /// Gets the toggle button by name in the GUIComposer.
+        /// Returns the icon list picker
         /// </summary>
-        /// <param name="key">The name of the button.</param>
-        /// <returns>A button.</returns>
+        /// <param name="composer"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static GuiElementIconListPicker GetIconListPicker(this GuiComposer composer, string key)
         {
             return (GuiElementIconListPicker)composer.GetElement(key);
@@ -40,10 +41,11 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Toggles the given button.
+        /// Selects one of the clickable icons
         /// </summary>
-        /// <param name="key">The name of the button that was set.</param>
-        /// <param name="selectedIndex">the index of the button.</param>
+        /// <param name="composer"></param>
+        /// <param name="key"></param>
+        /// <param name="selectedIndex"></param>
         public static void IconListPickerSetValue(this GuiComposer composer, string key, int selectedIndex)
         {
             int i = 0;
@@ -57,13 +59,15 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Adds multiple buttons with Text.
+        /// Adds multiple clickable icons 
         /// </summary>
-        /// <param name="texts">The texts on all the buttons.</param>
-        /// <param name="font">The font for the buttons</param>
-        /// <param name="onToggle">The event fired when the button is pressed.</param>
-        /// <param name="bounds">The bounds of the buttons.</param>
-        /// <param name="key">The key given to the bundle of buttons.</param>
+        /// <param name="composer"></param>
+        /// <param name="icons"></param>
+        /// <param name="onToggle"></param>
+        /// <param name="startBounds"></param>
+        /// <param name="maxLineWidth"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public static GuiComposer AddIconListPicker(this GuiComposer composer, string[] icons, Action<int> onToggle, ElementBounds startBounds, int maxLineWidth, string key = null)
         {
             return AddElementListPicker<string>(composer, typeof(GuiElementIconListPicker), icons, onToggle, startBounds, maxLineWidth, key);
