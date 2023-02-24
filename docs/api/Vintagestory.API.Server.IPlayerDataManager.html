@@ -81,6 +81,39 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IPlayerDataManager</code></pre>
   </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IPlayerDataManager_PlayerDataByUid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IPlayerDataManager.PlayerDataByUid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IPlayerDataManager.cs/#L22">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IPlayerDataManager_PlayerDataByUid_" data-uid="Vintagestory.API.Server.IPlayerDataManager.PlayerDataByUid*"></a>
+  <h4 id="Vintagestory_API_Server_IPlayerDataManager_PlayerDataByUid" data-uid="Vintagestory.API.Server.IPlayerDataManager.PlayerDataByUid">PlayerDataByUid</h4>
+  <div class="markdown level1 summary"><p>Returns a copy of the player data dictionary loaded by the server. Thats the contents of Playerdata/playerdata.json</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;string, IServerPlayerData&gt; PlayerDataByUid { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Server.IServerPlayerData.html">IServerPlayerData</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -88,7 +121,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IPlayerDataManager_GetPlayerDataByLastKnownName_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IPlayerDataManager.GetPlayerDataByLastKnownName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IPlayerDataManager.cs/#L30">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IPlayerDataManager.cs/#L35">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IPlayerDataManager_GetPlayerDataByLastKnownName_" data-uid="Vintagestory.API.Server.IPlayerDataManager.GetPlayerDataByLastKnownName*"></a>
   <h4 id="Vintagestory_API_Server_IPlayerDataManager_GetPlayerDataByLastKnownName_System_String_" data-uid="Vintagestory.API.Server.IPlayerDataManager.GetPlayerDataByLastKnownName(System.String)">GetPlayerDataByLastKnownName(String)</h4>
@@ -136,7 +169,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IPlayerDataManager_GetPlayerDataByUid_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IPlayerDataManager.GetPlayerDataByUid(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IPlayerDataManager.cs/#L24">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IPlayerDataManager.cs/#L29">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IPlayerDataManager_GetPlayerDataByUid_" data-uid="Vintagestory.API.Server.IPlayerDataManager.GetPlayerDataByUid*"></a>
   <h4 id="Vintagestory_API_Server_IPlayerDataManager_GetPlayerDataByUid_System_String_" data-uid="Vintagestory.API.Server.IPlayerDataManager.GetPlayerDataByUid(System.String)">GetPlayerDataByUid(String)</h4>
@@ -184,7 +217,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IPlayerDataManager_ResolvePlayerName_System_String_Action_Vintagestory_API_Server_EnumServerResponse_System_String__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IPlayerDataManager.ResolvePlayerName(System.String%2CAction%7BVintagestory.API.Server.EnumServerResponse%2CSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IPlayerDataManager.cs/#L37">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IPlayerDataManager.cs/#L42">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IPlayerDataManager_ResolvePlayerName_" data-uid="Vintagestory.API.Server.IPlayerDataManager.ResolvePlayerName*"></a>
   <h4 id="Vintagestory_API_Server_IPlayerDataManager_ResolvePlayerName_System_String_Action_Vintagestory_API_Server_EnumServerResponse_System_String__" data-uid="Vintagestory.API.Server.IPlayerDataManager.ResolvePlayerName(System.String,Action{Vintagestory.API.Server.EnumServerResponse,System.String})">ResolvePlayerName(String, Action&lt;EnumServerResponse, String&gt;)</h4>

@@ -112,9 +112,6 @@
       <a class="xref" href="Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_VerticalAlign">RichTextComponentBase.VerticalAlign</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_RenderInteractiveElements_System_Single_System_Double_System_Double_System_Double_">RichTextComponentBase.RenderInteractiveElements(Single, Double, Double, Double)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_GetCurrentFlowPathSection_Vintagestory_API_Client_TextFlowPath___System_Double_">RichTextComponentBase.GetCurrentFlowPathSection(TextFlowPath[], Double)</a>
     </div>
     <div>
@@ -125,6 +122,9 @@
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseUp_Vintagestory_API_Client_MouseEvent_">RichTextComponentBase.OnMouseUp(MouseEvent)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_UseMouseOverCursor_Vintagestory_API_Client_ElementBounds_">RichTextComponentBase.UseMouseOverCursor(ElementBounds)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
@@ -137,18 +137,18 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String_Vintagestory_API_Client_CairoFont_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.%23ctor(Vintagestory.API.Client.ICoreClientAPI%2CSystem.String%2CVintagestory.API.Client.CairoFont)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String_System_String_Vintagestory_API_Client_CairoFont_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.%23ctor(Vintagestory.API.Client.ICoreClientAPI%2CSystem.String%2CSystem.String%2CVintagestory.API.Client.CairoFont)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L19">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L23">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_IconComponent__ctor_" data-uid="Vintagestory.API.Client.IconComponent.#ctor*"></a>
-  <h4 id="Vintagestory_API_Client_IconComponent__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String_Vintagestory_API_Client_CairoFont_" data-uid="Vintagestory.API.Client.IconComponent.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.String,Vintagestory.API.Client.CairoFont)">IconComponent(ICoreClientAPI, String, CairoFont)</h4>
+  <h4 id="Vintagestory_API_Client_IconComponent__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String_System_String_Vintagestory_API_Client_CairoFont_" data-uid="Vintagestory.API.Client.IconComponent.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.String,System.String,Vintagestory.API.Client.CairoFont)">IconComponent(ICoreClientAPI, String, String, CairoFont)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IconComponent(ICoreClientAPI capi, string iconName, CairoFont font)</code></pre>
+    <pre><code class="lang-csharp hljs">public IconComponent(ICoreClientAPI capi, string iconName, string iconPath, CairoFont font)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -171,6 +171,11 @@
         <td></td>
       </tr>
       <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">iconPath</span></td>
+        <td></td>
+      </tr>
+      <tr>
         <td><a class="xref" href="Vintagestory.API.Client.CairoFont.html">CairoFont</a></td>
         <td><span class="parametername">font</span></td>
         <td></td>
@@ -184,7 +189,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_capi.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.capi%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L10">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L12">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IconComponent_capi" data-uid="Vintagestory.API.Client.IconComponent.capi">capi</h4>
   <div class="markdown level1 summary"></div>
@@ -213,7 +218,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_font.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.font%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L17">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L21">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IconComponent_font" data-uid="Vintagestory.API.Client.IconComponent.font">font</h4>
   <div class="markdown level1 summary"></div>
@@ -242,7 +247,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_iconName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.iconName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L16">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L19">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IconComponent_iconName" data-uid="Vintagestory.API.Client.IconComponent.iconName">iconName</h4>
   <div class="markdown level1 summary"></div>
@@ -268,10 +273,39 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_iconPath.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.iconPath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L20">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IconComponent_iconPath" data-uid="Vintagestory.API.Client.IconComponent.iconPath">iconPath</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string iconPath</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_offY.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.offY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L14">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L16">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IconComponent_offY" data-uid="Vintagestory.API.Client.IconComponent.offY">offY</h4>
   <div class="markdown level1 summary"></div>
@@ -300,7 +334,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_parentBounds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.parentBounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L12">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L14">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Client_IconComponent_parentBounds" data-uid="Vintagestory.API.Client.IconComponent.parentBounds">parentBounds</h4>
   <div class="markdown level1 summary"></div>
@@ -324,6 +358,35 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_sizeMulSvg.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.sizeMulSvg%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L17">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_IconComponent_sizeMulSvg" data-uid="Vintagestory.API.Client.IconComponent.sizeMulSvg">sizeMulSvg</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double sizeMulSvg</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -331,7 +394,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_System_Double__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.CalcBounds(Vintagestory.API.Client.TextFlowPath%5B%5D%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L33">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L53">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_IconComponent_CalcBounds_" data-uid="Vintagestory.API.Client.IconComponent.CalcBounds*"></a>
   <h4 id="Vintagestory_API_Client_IconComponent_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_System_Double__" data-uid="Vintagestory.API.Client.IconComponent.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Double@)">CalcBounds(TextFlowPath[], Double, Double, Double, out Double)</h4>
@@ -339,7 +402,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)</code></pre>
+    <pre><code class="lang-csharp hljs">public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -388,7 +451,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Boolean</span></td>
+        <td><a class="xref" href="Vintagestory.API.Client.EnumCalcBoundsResult.html">EnumCalcBoundsResult</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -400,7 +463,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_ComposeElements_Context_ImageSurface_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.ComposeElements(Context%2CImageSurface)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L27">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L37">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_IconComponent_ComposeElements_" data-uid="Vintagestory.API.Client.IconComponent.ComposeElements*"></a>
   <h4 id="Vintagestory_API_Client_IconComponent_ComposeElements_Context_ImageSurface_" data-uid="Vintagestory.API.Client.IconComponent.ComposeElements(Context,ImageSurface)">ComposeElements(Context, ImageSurface)</h4>
@@ -439,7 +502,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L51">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L77">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_IconComponent_Dispose_" data-uid="Vintagestory.API.Client.IconComponent.Dispose*"></a>
   <h4 id="Vintagestory_API_Client_IconComponent_Dispose" data-uid="Vintagestory.API.Client.IconComponent.Dispose">Dispose()</h4>
@@ -451,6 +514,55 @@
   </div>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_Dispose">RichTextComponentBase.Dispose()</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent_RenderInteractiveElements_System_Single_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent.RenderInteractiveElements(System.Single%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L67">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_IconComponent_RenderInteractiveElements_" data-uid="Vintagestory.API.Client.IconComponent.RenderInteractiveElements*"></a>
+  <h4 id="Vintagestory_API_Client_IconComponent_RenderInteractiveElements_System_Single_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.Client.IconComponent.RenderInteractiveElements(System.Single,System.Double,System.Double,System.Double)">RenderInteractiveElements(Single, Double, Double, Double)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">deltaTime</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">renderX</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">renderY</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">renderZ</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_RenderInteractiveElements_System_Single_System_Double_System_Double_System_Double_">RichTextComponentBase.RenderInteractiveElements(Single, Double, Double, Double)</a></div>
 </article>
           </div>
           
@@ -462,7 +574,7 @@
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IconComponent.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IconComponent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/Richtext/IconComponent.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

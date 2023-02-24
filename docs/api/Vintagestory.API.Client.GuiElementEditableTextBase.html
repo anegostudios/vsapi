@@ -95,6 +95,9 @@
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_text">GuiElementTextBase.text</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_Text">GuiElementTextBase.Text</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_textPathMode">GuiElementTextBase.textPathMode</a>
     </div>
     <div>
@@ -200,13 +203,13 @@
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_BeforeCalcBounds">GuiElement.BeforeCalcBounds()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_">GuiElement.getPattern(ICoreClientAPI, AssetLocation, Boolean, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_System_Single_">GuiElement.getPattern(ICoreClientAPI, AssetLocation, Boolean, Int32, Single)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Int32_">GuiElement.getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, Int32)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_">GuiElement.fillWithPattern(ICoreClientAPI, Context, AssetLocation, Boolean, Boolean, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_System_Single_">GuiElement.fillWithPattern(ICoreClientAPI, Context, AssetLocation, Boolean, Boolean, Int32, Single)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DiscardPattern_Vintagestory_API_Common_AssetLocation_">GuiElement.DiscardPattern(AssetLocation)</a>
@@ -243,6 +246,9 @@
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangle_Context_System_Double_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Single_System_Single_System_Boolean_System_Single_">GuiElement.EmbossRoundRectangle(Context, Double, Double, Double, Double, Double, Int32, Single, Single, Boolean, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderBoundsDebug">GuiElement.RenderBoundsDebug()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseDown(ICoreClientAPI, MouseEvent)</a>
@@ -300,7 +306,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.%23ctor(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.CairoFont%2CVintagestory.API.Client.ElementBounds)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L90">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L120">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase__ctor_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.#ctor*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_CairoFont_Vintagestory_API_Client_ElementBounds_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.ElementBounds)">GuiElementEditableTextBase(ICoreClientAPI, CairoFont, ElementBounds)</h4>
@@ -343,6 +349,64 @@
   </table>
   <h3 id="fields">Fields
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_Lines.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.Lines%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L55">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_Lines" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.Lines">Lines</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Lines</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_OnCaretPositionChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.OnCaretPositionChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L35">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_OnCaretPositionChanged" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnCaretPositionChanged">OnCaretPositionChanged</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Action&lt;int, int&gt; OnCaretPositionChanged</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_OnCursorMoved.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.OnCursorMoved%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -431,6 +495,35 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_WordWrap.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.WordWrap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L57">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_WordWrap" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.WordWrap">WordWrap</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool WordWrap</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
@@ -438,7 +531,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosInLine.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosInLine%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L77">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L107">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosInLine_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosInLine*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosInLine" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosInLine">CaretPosInLine</h4>
@@ -468,7 +561,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosLine.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosLine%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L76">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L96">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosLine_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosLine*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosLine" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosLine">CaretPosLine</h4>
@@ -476,7 +569,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CaretPosLine { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int CaretPosLine { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -498,7 +591,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosWithoutLineBreaks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosWithoutLineBreaks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L66">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L68">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosWithoutLineBreaks_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosWithoutLineBreaks*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_CaretPosWithoutLineBreaks" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosWithoutLineBreaks">CaretPosWithoutLineBreaks</h4>
@@ -506,7 +599,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CaretPosWithoutLineBreaks { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int CaretPosWithoutLineBreaks { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -528,7 +621,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_Focusable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.Focusable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L79">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L109">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_Focusable_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.Focusable*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_Focusable" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.Focusable">Focusable</h4>
@@ -560,7 +653,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_TextLengthWithoutLineBreaks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.TextLengthWithoutLineBreaks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L58">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L60">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_TextLengthWithoutLineBreaks_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.TextLengthWithoutLineBreaks*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_TextLengthWithoutLineBreaks" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.TextLengthWithoutLineBreaks">TextLengthWithoutLineBreaks</h4>
@@ -592,7 +685,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L584">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L603">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_Dispose_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.Dispose*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_Dispose" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.Dispose">Dispose()</h4>
@@ -609,7 +702,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_GetText.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.GetText%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L462">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L494">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_GetText_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.GetText*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_GetText" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.GetText">GetText()</h4>
@@ -638,10 +731,57 @@
   <div><a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetText">GuiElementTextBase.GetText()</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_Lineize_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.Lineize(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L269">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementEditableTextBase_Lineize_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.Lineize*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_Lineize_System_String_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.Lineize(System.String)">Lineize(String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected List&lt;string&gt; Lineize(string text)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_LoadValue_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.LoadValue(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L225">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L257">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_LoadValue_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.LoadValue*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_LoadValue_System_String_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.LoadValue(System.String)">LoadValue(String)</h4>
@@ -674,7 +814,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_MoveCursor_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.MoveCursor(System.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L598">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L617">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_MoveCursor_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.MoveCursor*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_MoveCursor_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.MoveCursor(System.Int32,System.Boolean)">MoveCursor(Int32, Boolean)</h4>
@@ -714,7 +854,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_OnFocusGained.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.OnFocusGained%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L101">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L131">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_OnFocusGained_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnFocusGained*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_OnFocusGained" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnFocusGained">OnFocusGained()</h4>
@@ -731,7 +871,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_OnFocusLost.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.OnFocusLost%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L108">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L138">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_OnFocusLost_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnFocusLost*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_OnFocusLost" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnFocusLost">OnFocusLost()</h4>
@@ -748,7 +888,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L362">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L396">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_OnKeyDown_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnKeyDown*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">OnKeyDown(ICoreClientAPI, KeyEvent)</h4>
@@ -787,7 +927,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L531">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L555">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_OnKeyPress_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnKeyPress*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_OnKeyPress_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnKeyPress(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">OnKeyPress(ICoreClientAPI, KeyEvent)</h4>
@@ -826,7 +966,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_OnMouseDownOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L355">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L389">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_OnMouseDownOnElement_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnMouseDownOnElement*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_OnMouseDownOnElement_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)">OnMouseDownOnElement(ICoreClientAPI, MouseEvent)</h4>
@@ -865,7 +1005,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_RenderInteractiveElements_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.RenderInteractiveElements(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L565">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L587">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_RenderInteractiveElements_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.RenderInteractiveElements*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_RenderInteractiveElements_System_Single_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.RenderInteractiveElements(System.Single)">RenderInteractiveElements(Single)</h4>
@@ -899,7 +1039,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetCaretPos_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L119">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L149">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_SetCaretPos_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetCaretPos_System_Double_System_Double_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Double,System.Double)">SetCaretPos(Double, Double)</h4>
@@ -939,7 +1079,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetCaretPos_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L170">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L200">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_SetCaretPos_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetCaretPos_System_Int32_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Int32,System.Int32)">SetCaretPos(Int32, Int32)</h4>
@@ -976,10 +1116,42 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxHeight_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxHeight(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L667">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxHeight_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxHeight*"></a>
+  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxHeight_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxHeight(System.Int32)">SetMaxHeight(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetMaxHeight(int maxheight)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">maxheight</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxLines_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxLines(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L642">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L661">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxLines_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxLines*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxLines_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxLines(System.Int32)">SetMaxLines(Int32)</h4>
@@ -1010,42 +1182,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxWidth_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxWidth(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L648">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxWidth_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxWidth*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetMaxWidth_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetMaxWidth(System.Int32)">SetMaxWidth(Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetMaxWidth(int maxwidth)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">maxwidth</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetValue(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L206">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L238">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetValue*"></a>
   <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_System_Single_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetValue(System.Single)">SetValue(Single)</h4>
@@ -1076,19 +1216,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetValue(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementEditableTextBase.SetValue(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L215">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Text/GuiElementEditableTextBase.cs/#L247">View Source</a>
   </span>
   <a id="Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetValue*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_System_String_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetValue(System.String)">SetValue(String)</h4>
+  <h4 id="Vintagestory_API_Client_GuiElementEditableTextBase_SetValue_System_String_System_Boolean_" data-uid="Vintagestory.API.Client.GuiElementEditableTextBase.SetValue(System.String,System.Boolean)">SetValue(String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Sets given text, sets the cursor to the end of the text</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void SetValue(string text)</code></pre>
+    <pre><code class="lang-csharp hljs">public void SetValue(string text, bool setCaretPosToEnd = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1103,6 +1243,11 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">text</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">setCaretPosToEnd</span></td>
         <td></td>
       </tr>
     </tbody>
