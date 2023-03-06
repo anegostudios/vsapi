@@ -344,8 +344,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Returns the shortest distance between 2 angles, in a range from -PI to PI
-        /// <br/>If these are directions make sure both are calculated in the same way.  A common convention is that angle 0 is East, increasing counter-clockwise so that North is PI/2 for example
+        /// Returns the shortest distance between 2 angles
         /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041">https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>
@@ -1475,6 +1474,19 @@ namespace Vintagestory.API.MathTools
             angles.Z = Math.Atan2(siny_cosp, cosy_cosp);
             
             return angles;
+        }
+
+        /// <summary>
+        /// Calculates the angle between two specified direction vectors, in radians.  The result is clamped to the range -PI to PI
+        /// <br/>Make sure the directions are calcualted in the same way.  One convention is that angle 0 is East, increasing counter-clockwise - for example, CameraYaw.
+        /// </summary>
+        /// <returns></returns>
+        public static double AngleBetween(double a, double b)
+        {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+            double diff = b - a + Math.PI;
+            diff -= 2 * Math.PI * (int)(diff / (2 * Math.PI));    // now in range 0 - 2PI if positive, -2PI - 0 if negative
+            if (diff < 0) diff += 2 * Math.PI;    // now in range 0 - 2PI
+            return diff - Math.PI;
         }
 
         public static int IntFromBools(int[] intBools)

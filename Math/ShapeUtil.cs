@@ -199,11 +199,13 @@ namespace Vintagestory.API.MathTools
 
             for (var i = 0; i < a; i++)
             {
-                list.Add(MapUtil.Index2dL(x - i + a2, y - r, mapSizeX));
+                list.Add(MapUtil.Index2dL(x + i - a2, y - r, mapSizeX));
                 list.Add(MapUtil.Index2dL(x + i - a2, y + r, mapSizeX));
                 list.Add(MapUtil.Index2dL(x - r, y + i - a2, mapSizeX));
-                list.Add(MapUtil.Index2dL(x + r, y - i + a2, mapSizeX));
+                list.Add(MapUtil.Index2dL(x + r, y + i - a2, mapSizeX));
             }
+
+            list.Add(MapUtil.Index2dL(x + r, y + a2, mapSizeX)); // Why is this one needed?
 
             for (var i = 0; i < b; i++)
             {
