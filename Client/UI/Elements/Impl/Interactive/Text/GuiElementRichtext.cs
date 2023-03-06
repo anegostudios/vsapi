@@ -189,10 +189,12 @@ namespace Vintagestory.API.Client
                     posX = 0;
                     posY += Math.Max(lineHeight, comp.BoundsPerLine[0].Height) + (calcBoundResult != EnumCalcBoundsResult.Continue ? scaled(comp.UnscaledMarginTop) : 0);
                     posY = Math.Ceiling(posY);
-                    
-                    currentLine.Clear();
+
+                    handleVerticalAlignment(currentLine, ascentHeight);
+
                     lineHeight = 0;
                     ascentHeight = 0;
+                    currentLine.Clear();
                     continue;
                 }
 
@@ -211,20 +213,7 @@ namespace Vintagestory.API.Client
                     ascentHeight = Math.Max(ascentHeight, comp.BoundsPerLine[0].AscentOrHeight);
 
                     // All previous elements in this line might need to have their Y pos adjusted due to a larger element in the line
-                    foreach (int index in currentLine)
-                    {
-                        RichTextComponentBase lineComp = Components[index];
-                        LineRectangled lastLineBounds = lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1];
-                        
-                        if (lineComp.VerticalAlign == EnumVerticalAlign.Bottom)
-                        {
-                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lastLineBounds.AscentOrHeight);
-                        }
-                        if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
-                        {
-                            lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lastLineBounds.AscentOrHeight / 2);
-                        }
-                    }
+                    handleVerticalAlignment(currentLine, ascentHeight);
 
                     // The current element that was still on the same line as well
                     // Offset all lines by the gained y-offset on the first line
@@ -236,7 +225,7 @@ namespace Vintagestory.API.Client
                         }
                         if (comp.VerticalAlign == EnumVerticalAlign.Middle)
                         {
-                            foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight - comp.BoundsPerLine[0].AscentOrHeight / 2);
+                            foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight/2 - comp.BoundsPerLine[0].AscentOrHeight / 2);
                         }
                     }
                     
@@ -327,6 +316,25 @@ namespace Vintagestory.API.Client
                 api.Logger.VerboseDebug("GuiElementRichtext: posY = {0}", posY);
 
                 api.Logger.VerboseDebug("GuiElementRichtext: framewidth/height: {0}/{1}", api.Render.FrameWidth, api.Render.FrameHeight);
+            }
+        }
+
+        private void handleVerticalAlignment(List<int> currentLine, double ascentHeight)
+        {
+            // All previous elements in this line might need to have their Y pos adjusted due to a larger element in the line
+            foreach (int index in currentLine)
+            {
+                RichTextComponentBase lineComp = Components[index];
+                LineRectangled lastLineBounds = lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1];
+
+                if (lineComp.VerticalAlign == EnumVerticalAlign.Bottom)
+                {
+                    lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lastLineBounds.AscentOrHeight);
+                }
+                if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
+                {
+                    lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight / 2 - lastLineBounds.AscentOrHeight / 2);
+                }
             }
         }
 

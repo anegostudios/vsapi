@@ -117,7 +117,7 @@ namespace Vintagestory.API.Client
             {
                 var lbnd = BoundsPerLine[Lines.Length-1];
                 lbnd.Width += GuiElement.scaled(PaddingRight);
-
+                
                 nextOffsetX = Lines[Lines.Length - 1].NextOffsetX + lbnd.Width;
             }
 

@@ -52,6 +52,7 @@ namespace Vintagestory.API.Datastructures
             var result = new FastSmallDictionary<TKey, TValue>(count);
             result.keys = new TKey[count];
             result.values = new TValue[count];
+            result.count = count;
             Array.Copy(keys, result.keys, count);
             Array.Copy(values, result.values, count);
             return result;

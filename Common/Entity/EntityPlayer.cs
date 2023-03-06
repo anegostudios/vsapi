@@ -204,6 +204,8 @@ namespace Vintagestory.API.Common
         public override byte[] LightHsv
         {
             get {
+                if (Player?.WorldData.CurrentGameMode == EnumGameMode.Spectator) return null;
+
                 byte[] rightHsv = RightHandItemSlot?.Itemstack?.Collectible?.GetLightHsv(World.BlockAccessor, null, RightHandItemSlot.Itemstack);
                 byte[] leftHsv = LeftHandItemSlot?.Itemstack?.Collectible?.GetLightHsv(World.BlockAccessor, null, LeftHandItemSlot.Itemstack);
 
@@ -582,7 +584,7 @@ namespace Vintagestory.API.Common
             if (!servercontrols.TriesToMove && !controls.IsFlying && !controls.Gliding && RightHandItemSlot?.Empty == true)
             {
                 secondsIdleAccum += dt;
-                if (secondsIdleAccum > 20 && World.Rand.NextDouble() < 0.005)
+                if (secondsIdleAccum > 20 && World.Rand.NextDouble() < 0.004)
                 {
                     StartAnimation(randomIdleAnimations[World.Rand.Next(randomIdleAnimations.Length)]);
                     secondsIdleAccum = 0;

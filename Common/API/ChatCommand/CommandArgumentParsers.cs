@@ -848,7 +848,7 @@ namespace Vintagestory.API.Common
         public WorldPositionArgParser(string argName, ICoreAPI api, bool isMandatoryArg) : base(argName, isMandatoryArg)
         {
             this.api = api;
-            this.mapmiddlePosProvider = () => api.World.DefaultSpawnPosition.XYZ;
+            this.mapmiddlePosProvider = () => new Vec3d(api.World.DefaultSpawnPosition.X, 0, api.World.DefaultSpawnPosition.Z);
             argCount = 3;
         }
         public override string GetSyntaxExplanation()
@@ -1184,7 +1184,7 @@ namespace Vintagestory.API.Common
                     var allPlayers = api.PlayerData.PlayerDataByUid;
                     foreach (var plr in allPlayers.Values)
                     {
-                        if (matches(null, null, plr.LastKnownPlayername, plr.PlayerGroupMemberShips.Values.ToArray(), plr.RoleCode, role, name, group, namematches, null))
+                        if (matches(null, null, plr.LastKnownPlayername, plr.PlayerGroupMemberships.Values.ToArray(), plr.RoleCode, role, name, group, namematches, null))
                         {
                             players.Add(new PlayerUidName(plr.PlayerUID, plr.LastKnownPlayername));
                         }
@@ -1206,7 +1206,7 @@ namespace Vintagestory.API.Common
                     }
                     else
                     {
-                        lastErrorMessage = resp.ToString();
+                        lastErrorMessage = Lang.Get("No player with name '{0}' exists", name);
                         onReady(new AsyncParseResults() { Status = EnumParseResultStatus.Error });
                     }
                 });

@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
-using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
-using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -698,6 +694,27 @@ namespace Vintagestory.API.Common
                 this[i].Itemstack = null;
             }
         }
+
+
+        public virtual void DropSlotIfHot(ItemSlot slot, IPlayer player = null)
+        {
+            if (Api.Side == EnumAppSide.Client) return;
+            if (slot.Empty) return;
+            if (player != null && player.WorldData.CurrentGameMode == EnumGameMode.Creative) return;
+            
+            if (slot.Itemstack.Collectible.Attributes?.IsTrue("allowHotCrafting") != true && slot.Itemstack.Collectible.GetTemperature(Api.World, slot.Itemstack) > 300 && !hasHeatResistantHandGear(player))
+            {
+                player.Entity.ReceiveDamage(new DamageSource() { DamageTier = 0, Source = EnumDamageSource.Player, SourceEntity = player.Entity, Type = EnumDamageType.Fire }, 1);
+                player.InventoryManager.DropItem(slot, true);
+            }
+        }
+
+        private bool hasHeatResistantHandGear(IPlayer player)
+        {
+            if (player == null) return false;
+            return player.Entity.LeftHandItemSlot?.Itemstack?.Collectible.Attributes?.IsTrue("heatResistant") == true;
+        }
+
 
         /// <summary>
         /// Drops the contents of the specified slots in the world.

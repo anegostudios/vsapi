@@ -261,6 +261,20 @@ namespace Vintagestory.API.Common
             return boundary < 0 ? path : path.Substring(0, boundary);
         }
 
+        public string SecondCodePart()
+        {
+            int boundary1 = path.IndexOf('-') + 1;
+            int boundary2 = boundary1 <= 0 ? -1 : path.IndexOf('-', boundary1);
+            return boundary2 < 0 ? path : path.Substring(boundary1, boundary2 - boundary1);
+        }
+
+        public string CodePartsAfterSecond()
+        {
+            int boundary1 = path.IndexOf('-') + 1;
+            int boundary2 = boundary1 <= 0 ? -1 : path.IndexOf('-', boundary1);
+            return boundary2 < 0 ? path : path.Substring(boundary2 + 1);
+        }
+
         /// <summary>
         /// Gets the category of the asset.
         /// </summary>

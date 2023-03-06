@@ -30,6 +30,14 @@ namespace Vintagestory.API.Common
         bool Exists(AssetLocation location);
 
         /// <summary>
+        /// Adds a runtime asset to the game, curently used by ModCompatiblityUtil. Allows you do add an asset found at <paramref name="path"/> but loaded from path <paramref name="asset"/>.Path. 
+        /// </summary>
+        /// <param name="category"></param>
+        /// <param name="path"></param>
+        /// <param name="asset"></param>
+        void Add(AssetLocation path, IAsset asset);
+
+        /// <summary>
         /// Retrieves an asset from given path within the assets folder. Throws an exception when the asset does not exist. Remember to use lower case paths.
         /// </summary>
         /// <param name="Path"></param>

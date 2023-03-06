@@ -256,6 +256,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool ShapeUsesColormap;
         public bool LoadColorMapAnyway = false;
+        /// <summary>
+        /// Three extra color / season bits which may have meaning for specific blocks, such as leaves
+        /// </summary>
+        public int ExtraColorBits;
 
         /// <summary>
         /// Defines the area with which the player character collides with.
@@ -1452,8 +1456,7 @@ namespace Vintagestory.API.Common
         /// <param name="isImpact"></param>
         public virtual void OnEntityCollide(IWorldAccessor world, Entity entity, BlockPos pos, BlockFacing facing, Vec3d collideSpeed, bool isImpact)
         {
-
-            if (entity.Properties.CanClimb == true && (Climbable || entity.Properties.CanClimbAnywhere) && facing.IsHorizontal && entity is EntityAgent)
+            if (entity.Properties.CanClimb == true && (IsClimbable(pos) || entity.Properties.CanClimbAnywhere) && facing.IsHorizontal && entity is EntityAgent)
             {
                 EntityAgent ea = entity as EntityAgent;
                 bool? isSneaking = ea.Controls.Sneak;
@@ -2548,6 +2551,7 @@ namespace Vintagestory.API.Common
 
 
         float[] liquidBarrierHeightonSide;
+
         /// <summary>
         /// Return a decimal between 0.0 and 1.0 indicating - if this block is solid enough to block liquid flow on that side - how high the barrier is
         /// </summary>

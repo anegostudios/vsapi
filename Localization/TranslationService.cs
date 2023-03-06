@@ -146,6 +146,106 @@ namespace Vintagestory.API.Config
             loaded = false;
         }
 
+        protected string Format(string value, params object[] args)
+        {
+            if (value.ContainsFast("{p")) return PluralFormat(value, args);
+            return string.Format(value, args);
+        }
+
+        // General format: {p#:string0|string1|string2...} where # is a parameter index similar to using {0}, so zero for the first parameter etc.  That parameter should be a number, N
+        // The strings string0, string1, string2 etc. will be the actual desired output for different values of N.
+        // Most languages have different grammar rules for writing different numbers of objects, e.g. zero, one, two, more than two
+        // These strings are separated by | with no spaces (any spaces you type will be in the output)
+        // Left to right, these will be the language strings for N=0, N=1, N=2, N=3, N=4 etc.  The last one given continues to be repeated for all higher N.
+        // The number N can be itself output in the string using a standard number format, for example #.00 
+        //
+        // Examples:
+        // {p3:fish}                                                                   args[3] is N, output for different N is:  0+: fish
+        // {p0:no apples|# apple|# apples}                                             args[0] is N, output for different N is:  0: no apples, 1: 1 apple, 2: 2 apples, 3: 3 apples, ... etc
+        // {p9:no cake|a cake|a couple of cakes|a few cakes|a few cakes|many cakes}    args[9] is N, output for different N is:  0: no cake, 1: a cake, 2: a couple of cakes, 3-4: a few cakes, 5+: many cakes
+        //
+        private string PluralFormat(string value, object[] args)
+        {
+            int start = value.IndexOf("{p");
+            if (value.Length < start + 5) return string.Format(value, args);   // Fail: too short to even allow sense checks without error
+            int pluralOffset = start + 4;
+            int end = value.IndexOf("}", pluralOffset);
+
+            // Sense checks
+            char c = value[start + 2];
+            if (c < '0' || c > '9') return string.Format(value, args);   // Fail: no argument number specified
+            if (end < 0) return string.Format(value, args);   // Fail: no closing curly brace
+            int argNum = c - '0';
+            if ((c = value[start + 3]) != ':')
+            {
+                if (value[start + 4] == ':' && c >= '0' && c <= '9')
+                {
+                    argNum = argNum * 10 + c - '0';
+                    pluralOffset++;
+                }
+                else return string.Format(value, args);   // Fail: no colon in position 3 or 4
+            }
+            if (argNum >= args.Length) throw new IndexOutOfRangeException("Index out of range: Plural format {p#:...} referenced an argument " + argNum + " but only " + args.Length + " arguments were available in the code");
+            float N = 0;
+            try
+            {
+                N = float.Parse(args[argNum].ToString());
+            }
+            catch (Exception _) { }
+
+            // Separate out the different elements of this string
+
+            string before = value.Substring(0, start);
+            string plural = value.Substring(pluralOffset, end - pluralOffset);
+            string after = value.Substring(end + 1);
+
+            object[] argsBefore = new object[argNum];
+            for (int i = 0; i < argNum; i++) argsBefore[i] = args[i];
+
+            object[] argsAfter = new object[args.Length - argNum - 1];
+            for (int i = argNum + 1; i < args.Length; i++) argsAfter[i - argNum - 1] = args[i];
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append(string.Format(before, argsBefore));
+            sb.Append(BuildPluralFormat(plural, N));
+            sb.Append(Format(after, argsAfter));   // there could be further instances of {p#:...} after this
+            return sb.ToString();
+        }
+
+        private string BuildPluralFormat(string input, float n)
+        {
+            int index = (int)Math.Ceiling(n);   // this implments a rule: 0 -> 0;  0.5 -> 1;  1 -> 1;  1.5 -> 2  etc.   This may not be appropriate for all languages e.g. French.  A future extension can allow more customisation by specifying math formulae
+            string[] plurals = input.Split('|');
+            if (index < 0 || index >= plurals.Length) index = plurals.Length - 1;
+
+            string rawResult = plurals[index];
+            return WithNumberFormatting(rawResult, n);
+        }
+
+        private string WithNumberFormatting(string rawResult, float n)
+        {
+            int j = rawResult.IndexOf('#');
+            if (j < 0) return rawResult;
+
+            string partA = rawResult.Substring(0, j);
+            int k = j;
+            while (++k < rawResult.Length)
+            {
+                char c = rawResult[k];
+                if (c != '#' && c != '.' && c != '0' && c != ',') break;
+            }
+            string numberFormatting = rawResult.Substring(j, k - j);
+            string partB = rawResult.Substring(k);
+
+            string number;
+            try
+            {
+                number = n.ToString(numberFormatting);
+            }
+            catch (Exception _) { number = n.ToString(); }      // Fallback if the translators gave us a badly formatted number string
+
+            return partA + number + WithNumberFormatting(partB, n);
+        }
 
         /// <summary>
         /// Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
@@ -160,7 +260,7 @@ namespace Vintagestory.API.Config
         {
             EnsureLoaded();
             return entryCache.TryGetValue(KeyWithDomain(key), out var value)
-                ? string.Format(value, args)
+                ? Format(value, args)
                 : null;
         }
 
@@ -175,7 +275,7 @@ namespace Vintagestory.API.Config
         /// </returns>
         public string Get(string key, params object[] args)
         {
-              return string.Format(GetUnformatted(key), args);   // There will be a cacheLock and EnsureLoaded inside the called method GetUnformatted
+              return Format(GetUnformatted(key), args);   // There will be a cacheLock and EnsureLoaded inside the called method GetUnformatted
         }
 
         /// <summary>
@@ -217,7 +317,7 @@ namespace Vintagestory.API.Config
             EnsureLoaded();
             var value = GetMatchingIfExists(KeyWithDomain(key), args);
             return string.IsNullOrEmpty(value)
-                ? string.Format(key, args)
+                ? Format(key, args)
                 : value;
         }
 
@@ -234,7 +334,7 @@ namespace Vintagestory.API.Config
             if (entryCache.ContainsKey(validKey)) return true;
             if (findWildcarded)
             {
-                bool result = wildcardCache.Any(pair => StringUtil.FastStartsWith(key, pair.Key));
+                bool result = wildcardCache.Any(pair => key.StartsWithFast(pair.Key));
                 if (!result) result = regexCache.Values.Any(pair => pair.Key.IsMatch(validKey));
                 if (!result && !key.Contains("desc-") && notFound.Add(key)) logger.VerboseDebug("Lang key not found: " + key.Replace("{", "{{").Replace("}", "}}"));
                 return result;
@@ -264,15 +364,15 @@ namespace Vintagestory.API.Config
             EnsureLoaded();
             var validKey = KeyWithDomain(key);
 
-            if (entryCache.TryGetValue(validKey, out var value)) return string.Format(value, args);
+            if (entryCache.TryGetValue(validKey, out var value)) return Format(value, args);
 
             foreach (var pair in wildcardCache
-                .Where(pair => StringUtil.FastStartsWith(validKey, pair.Key)))
-                return string.Format(pair.Value, args);
+                .Where(pair => validKey.StartsWithFast(pair.Key)))
+                return Format(pair.Value, args);
 
             return regexCache.Values
                 .Where(pair => pair.Key.IsMatch(validKey))
-                .Select(pair => string.Format(pair.Value, args))
+                .Select(pair => Format(pair.Value, args))
                 .FirstOrDefault();
         }
 

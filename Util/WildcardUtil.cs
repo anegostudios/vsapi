@@ -21,7 +21,7 @@ namespace Vintagestory.API.Util
         {
             if (search == code) return search;
 
-            if (code == null || search.Domain != code.Domain) return null;
+            if (code == null || (search.Domain != "*" && search.Domain != code.Domain)) return null;
 
             string pattern = Regex.Escape(search.Path).Replace(@"\*", @"(.*)");
 
@@ -62,7 +62,7 @@ namespace Vintagestory.API.Util
 
         public static bool Match(AssetLocation needle, AssetLocation haystack)
         {
-            if (needle.Domain != haystack.Domain) return false;
+            if (needle.Domain != "*" && needle.Domain != haystack.Domain) return false;
             return fastMatch(needle.Path, haystack.Path);
         }
 
@@ -75,12 +75,10 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static bool Match(AssetLocation wildCard, AssetLocation inCode, string[] allowedVariants)
         {
-            // Todo: Adapt some of the fastMatch methods to save some cpu cycles here
-
             if (wildCard.Equals(inCode)) return true;
 
             int wildCardIndex;
-            if (inCode == null || !wildCard.Domain.Equals(inCode.Domain) || ((wildCardIndex = wildCard.Path.IndexOf("*")) == -1 && wildCard.Path.IndexOf("(") == -1)) return false;
+            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain)) || ((wildCardIndex = wildCard.Path.IndexOf("*")) == -1 && wildCard.Path.IndexOf("(") == -1)) return false;
             
 
             // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
@@ -125,7 +123,7 @@ namespace Vintagestory.API.Util
         /// <returns></returns>
         public static string GetWildcardValue(AssetLocation wildCard, AssetLocation inCode)
         {
-            if (inCode == null || !wildCard.Domain.Equals(inCode.Domain)) return null;
+            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain))) return null;
             if (!wildCard.Path.Contains("*")) return null;
 
             string pattern = Regex.Escape(wildCard.Path).Replace(@"\*", @"(.*)");

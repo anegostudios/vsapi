@@ -140,14 +140,12 @@ namespace Vintagestory.API.MathTools
         // This algo returns a point outline or shell of 
         // - A square until radius 9
         // - An octagon with only side a growing beyond radius 9
-        public static Vec2i[] GetOctagonPoints(int x, int y, int r)
+        public static IEnumerable<Vec2iImmutable> GetOctagonPoints(int x, int y, int r)
         {
             if (r == 0)
             {
-                return new Vec2i[] { new Vec2i(x, y) };
+                return new Vec2iImmutable[] { new Vec2iImmutable(x, y) };
             }
-
-            List<Vec2i> points = new List<Vec2i>();
 
             int th = 9; // Math.Max(9, r / 2); - can't, it will skip some chunks then
 
@@ -157,26 +155,27 @@ namespace Vintagestory.API.MathTools
 
             int a2 = (a / 2);
 
+            Vec2iImmutable[] points = new Vec2iImmutable[a * 4 + b * 4];
+            int index = 0;
+
             for (var i = 0; i < a; i++)
             {
-                points.Add(new Vec2i(x + i - a2, y - r));
-                points.Add(new Vec2i(x + i - a2, y + r));
-                points.Add(new Vec2i(x - r, y + i - a2));
-                points.Add(new Vec2i(x + r, y + i - a2));
+                points[index++] = new Vec2iImmutable(x - i + a2, y - r);
+                points[index++] = new Vec2iImmutable(x + i - a2, y + r);
+                points[index++] = new Vec2iImmutable(x - r, y + i - a2);
+                points[index++] = new Vec2iImmutable(x + r, y - i + a2);
             }
-
-            points.Add(new Vec2i(x + r, y + a2)); // Why is this one needed?
 
             for (var i = 0; i < b; i++)
             {
-                points.Add(new Vec2i(x + a2 + i, y - r + i));
-                points.Add(new Vec2i(x - r + i, y + a2 + i));
+                points[index++] = new Vec2iImmutable(x + a2 + i, y - r + i);
+                points[index++] = new Vec2iImmutable(x - r + i, y + a2 + i);
 
-                points.Add(new Vec2i(x - r + i, y - a2 - i));
-                points.Add(new Vec2i(x + a2 + i, y + r - i));
+                points[index++] = new Vec2iImmutable(x - r + i, y - a2 - i);
+                points[index++] = new Vec2iImmutable(x + a2 + i, y + r - i);
             }
 
-            return points.ToArray<Vec2i>();
+            return points;
         }
 
 
@@ -200,13 +199,11 @@ namespace Vintagestory.API.MathTools
 
             for (var i = 0; i < a; i++)
             {
-                list.Add(MapUtil.Index2dL(x + i - a2, y - r, mapSizeX));
+                list.Add(MapUtil.Index2dL(x - i + a2, y - r, mapSizeX));
                 list.Add(MapUtil.Index2dL(x + i - a2, y + r, mapSizeX));
                 list.Add(MapUtil.Index2dL(x - r, y + i - a2, mapSizeX));
-                list.Add(MapUtil.Index2dL(x + r, y + i - a2, mapSizeX));
+                list.Add(MapUtil.Index2dL(x + r, y - i + a2, mapSizeX));
             }
-
-            list.Add(MapUtil.Index2dL(x + r, y + a2, mapSizeX)); // Why is this one needed?
 
             for (var i = 0; i < b; i++)
             {

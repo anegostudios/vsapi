@@ -344,7 +344,8 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Returns the shortest distance between 2 angles
+        /// Returns the shortest distance between 2 angles, in a range from -PI to PI
+        /// <br/>If these are directions make sure both are calculated in the same way.  A common convention is that angle 0 is East, increasing counter-clockwise so that North is PI/2 for example
         /// See also <seealso href="https://stackoverflow.com/a/14498790/1873041">https://stackoverflow.com/a/14498790/1873041</seealso>
         /// </summary>
         /// <param name="start"></param>

@@ -93,18 +93,20 @@ namespace Vintagestory.API.Util
             return cnt;
         }
 
-
-        public static bool FastStartsWith(string value, string reference)
+        public static bool ContainsFast(this string value, string reference)
         {
             if (reference.Length > value.Length) return false;
-
-            // search from the right end of the reference string, as the right end is more likely to be unique
-            for (int i = reference.Length - 1; i >= 0; i--)
+            
+            int j = 0;
+            for (int i = 0; i < value.Length; i++)
             {
-                if (value[i] != reference[i]) return false;
+                if (value[i] == reference[j]) j++;
+                else j = 0;
+
+                if (j >= reference.Length) return true;
             }
 
-            return true;
+            return false;
         }
 
 

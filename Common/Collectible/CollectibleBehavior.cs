@@ -165,6 +165,23 @@ namespace Vintagestory.API.Common
             return;
         }
 
+
+        /// <summary>
+        /// When the player released the right mouse button. Return false to deny the cancellation (= will keep using the item until OnHeldInteractStep returns false).
+        /// </summary>
+        /// <param name="secondsUsed"></param>
+        /// <param name="slot"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="entitySel"></param>
+        /// <param name="cancelReason"></param>
+        /// <param name="handled"></param>
+        /// <returns></returns>
+        public virtual bool OnHeldInteractCancel(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandling handled)
+        {
+            return true;
+        }
+
         /// <summary>
         /// Called when the collectible is rendered in hands, inventory or on the ground
         /// </summary>
@@ -222,6 +239,39 @@ namespace Vintagestory.API.Common
         public virtual void GetHeldItemName(StringBuilder sb, ItemStack itemStack)
         {
             
+        }
+
+        /// <summary>
+        /// Player has broken a block while holding this collectible. Return false if you want to cancel the block break event.
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="byEntity"></param>
+        /// <param name="itemslot"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="dropQuantityMultiplier"></param>
+        /// <param name="bhHandling"></param>
+        public virtual bool OnBlockBrokenWith(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, BlockSelection blockSel, float dropQuantityMultiplier, ref EnumHandling bhHandling)
+        {
+            bhHandling = EnumHandling.PassThrough;
+            return true;
+        }
+
+
+        /// <summary>
+        /// Player is holding this collectible and breaks the targeted block
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="itemslot"></param>
+        /// <param name="remainingResistance"></param>
+        /// <param name="dt"></param>
+        /// <param name="counter"></param>
+        /// <param name="handled"></param>
+        /// <returns></returns>
+        public virtual float OnBlockBreaking(IPlayer player, BlockSelection blockSel, ItemSlot itemslot, float remainingResistance, float dt, int counter, ref EnumHandling handled)
+        {
+            handled = EnumHandling.PassThrough;
+            return remainingResistance;
         }
     }
 }

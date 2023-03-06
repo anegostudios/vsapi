@@ -31,7 +31,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// List of groups the player is a member off
         /// </summary>
-        Dictionary<int, PlayerGroupMembership> PlayerGroupMemberShips { get; }
+        Dictionary<int, PlayerGroupMembership> PlayerGroupMemberships { get; }
         /// <summary>
         /// Whether or not this player wants to receive group invites
         /// </summary>

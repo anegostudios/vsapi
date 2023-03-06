@@ -416,6 +416,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float OnBlockBreaking(IPlayer player, BlockSelection blockSel, ItemSlot itemslot, float remainingResistance, float dt, int counter)
         {
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                float remainingResistanceBh = behavior.OnBlockBreaking(player, blockSel, itemslot, remainingResistance, dt, counter, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    remainingResistance = remainingResistanceBh;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return remainingResistance;
+            }
+
+            if (preventDefault) return remainingResistance;
+
+
             Block block = player.Entity.World.BlockAccessor.GetBlock(blockSel.Position);
             var mat = block.GetBlockMaterial(api.World.BlockAccessor, blockSel.Position);
 
@@ -490,6 +508,25 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool OnBlockBrokenWith(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, BlockSelection blockSel, float dropQuantityMultiplier = 1)
         {
+            bool result = true;
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool behaviorResult = behavior.OnBlockBrokenWith(world, byEntity, itemslot, blockSel, dropQuantityMultiplier, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
+            
             IPlayer byPlayer = null;
             if (byEntity is EntityPlayer) byPlayer = world.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
@@ -600,7 +637,6 @@ namespace Vintagestory.API.Common
         public virtual bool MatchesForCrafting(ItemStack inputStack, GridRecipe gridRecipe, CraftingRecipeIngredient ingredient)
         {
             if (ingredient.IsTool && ingredient.ToolDurabilityCost > inputStack.Collectible.GetRemainingDurability(inputStack)) return false;
-
             return true;
         }
 
@@ -617,6 +653,8 @@ namespace Vintagestory.API.Common
         /// <param name="quantity"></param>
         public virtual void OnConsumedByCrafting(ItemSlot[] allInputSlots, ItemSlot stackInSlot, GridRecipe gridRecipe, CraftingRecipeIngredient fromIngredient, IPlayer byPlayer, int quantity)
         {
+            if (Attributes?["noConsumeOnCrafting"].AsBool(false) == true) return;
+
             if (fromIngredient.IsTool)
             {
                 stackInSlot.Itemstack.Collectible.DamageItem(byPlayer.Entity.World, byPlayer.Entity, stackInSlot, fromIngredient.ToolDurabilityCost);
@@ -775,7 +813,7 @@ namespace Vintagestory.API.Common
 
 
 
-        protected virtual void RefillSlotIfEmpty(ItemSlot slot, EntityAgent byEntity, ActionConsumable<ItemStack> matcher)
+        public virtual void RefillSlotIfEmpty(ItemSlot slot, EntityAgent byEntity, ActionConsumable<ItemStack> matcher)
         {
             if (!slot.Empty) return;
 
@@ -1170,6 +1208,25 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool OnHeldInteractCancel(float secondsUsed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
         {
+            bool result = true;
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+
+                bool behaviorResult = behavior.OnHeldInteractCancel(secondsUsed, slot, byEntity, blockSel, entitySel, cancelReason, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    result &= behaviorResult;
+                    preventDefault = true;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return result;
+            }
+
+            if (preventDefault) return result;
+
             return true;
         }
 
@@ -1989,7 +2046,6 @@ namespace Vintagestory.API.Common
         }
 
         
-
 
         /// <summary>
         /// If the item is smeltable, this is the time it takes to smelt at smelting point
