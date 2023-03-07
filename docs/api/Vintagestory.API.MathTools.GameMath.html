@@ -364,6 +364,60 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_AngleBetween_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.AngleBetween(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1484">View Source</a>
+  </span>
+  <a id="Vintagestory_API_MathTools_GameMath_AngleBetween_" data-uid="Vintagestory.API.MathTools.GameMath.AngleBetween*"></a>
+  <h4 id="Vintagestory_API_MathTools_GameMath_AngleBetween_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.AngleBetween(System.Double,System.Double)">AngleBetween(Double, Double)</h4>
+  <div class="markdown level1 summary"><p>Calculates the angle between two specified direction vectors, in radians.  The result is clamped to the range -PI to PI
+<br>Make sure the directions are calcualted in the same way.  One convention is that angle 0 is East, increasing counter-clockwise - for example, CameraYaw.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double AngleBetween(double a, double b)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">a</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">b</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_AngleDegDistance_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.AngleDegDistance(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -421,12 +475,11 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_AngleRadDistance_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.AngleRadDistance(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L354">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L353">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_AngleRadDistance_" data-uid="Vintagestory.API.MathTools.GameMath.AngleRadDistance*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_AngleRadDistance_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.AngleRadDistance(System.Single,System.Single)">AngleRadDistance(Single, Single)</h4>
-  <div class="markdown level1 summary"><p>Returns the shortest distance between 2 angles, in a range from -PI to PI
-<br>If these are directions make sure both are calculated in the same way.  A common convention is that angle 0 is East, increasing counter-clockwise so that North is PI/2 for example
+  <div class="markdown level1 summary"><p>Returns the shortest distance between 2 angles
 See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackoverflow.com/a/14498790/1873041</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -570,7 +623,7 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiLerp_System_Double_System_Double_System_Double_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiLerp(System.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L688">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L687">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiLerp_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiLerp_System_Double_System_Double_System_Double_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">BiLerp(Double, Double, Double, Double, Double, Double)</h4>
@@ -643,7 +696,7 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiLerp_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiLerp(System.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L670">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L669">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiLerp_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiLerp_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerp(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">BiLerp(Single, Single, Single, Single, Single, Single)</h4>
@@ -716,7 +769,7 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiLerpByte_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiLerpByte(System.Single%2CSystem.Single%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L522">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L521">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiLerpByte_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpByte*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiLerpByte_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpByte(System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">BiLerpByte(Single, Single, Int32, Int32, Int32, Int32, Int32)</h4>
@@ -795,7 +848,7 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiLerpColorMap_Vintagestory_API_Datastructures_IntDataMap2D_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiLerpColorMap(Vintagestory.API.Datastructures.IntDataMap2D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L468">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L467">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiLerpColorMap_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpColorMap*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiLerpColorMap_Vintagestory_API_Datastructures_IntDataMap2D_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpColorMap(Vintagestory.API.Datastructures.IntDataMap2D,System.Int32)">BiLerpColorMap(IntDataMap2D, Int32)</h4>
@@ -849,7 +902,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiLerpRgbaColor_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiLerpRgbaColor(System.Single%2CSystem.Single%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L563">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L562">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiLerpRgbaColor_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpRgbaColor*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiLerpRgbaColor_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpRgbaColor(System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32)">BiLerpRgbaColor(Single, Single, Int32, Int32, Int32, Int32)</h4>
@@ -922,7 +975,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiLerpRgbColor_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiLerpRgbColor(System.Single%2CSystem.Single%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L582">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L581">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiLerpRgbColor_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpRgbColor*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiLerpRgbColor_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BiLerpRgbColor(System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32)">BiLerpRgbColor(Single, Single, Int32, Int32, Int32, Int32)</h4>
@@ -995,7 +1048,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiSerpByte_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiSerpByte(System.Single%2CSystem.Single%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L541">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L540">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiSerpByte_" data-uid="Vintagestory.API.MathTools.GameMath.BiSerpByte*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiSerpByte_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BiSerpByte(System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">BiSerpByte(Single, Single, Int32, Int32, Int32, Int32, Int32)</h4>
@@ -1074,7 +1127,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BiSerpRgbColor_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BiSerpRgbColor(System.Single%2CSystem.Single%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L600">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L599">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BiSerpRgbColor_" data-uid="Vintagestory.API.MathTools.GameMath.BiSerpRgbColor*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BiSerpRgbColor_System_Single_System_Single_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BiSerpRgbColor(System.Single,System.Single,System.Int32,System.Int32,System.Int32,System.Int32)">BiSerpRgbColor(Single, Single, Int32, Int32, Int32, Int32)</h4>
@@ -1147,7 +1200,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BoolsFromInt_System_Boolean___System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BoolsFromInt(System.Boolean%5B%5D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1502">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1514">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BoolsFromInt_" data-uid="Vintagestory.API.MathTools.GameMath.BoolsFromInt*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BoolsFromInt_System_Boolean___System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.BoolsFromInt(System.Boolean[],System.Int32)">BoolsFromInt(Boolean[], Int32)</h4>
@@ -1184,7 +1237,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BresenHamPlotLine2d_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_PlotDelegate2D_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BresenHamPlotLine2d(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.MathTools.PlotDelegate2D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1437">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1436">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BresenHamPlotLine2d_" data-uid="Vintagestory.API.MathTools.GameMath.BresenHamPlotLine2d*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BresenHamPlotLine2d_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_PlotDelegate2D_" data-uid="Vintagestory.API.MathTools.GameMath.BresenHamPlotLine2d(System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.MathTools.PlotDelegate2D)">BresenHamPlotLine2d(Int32, Int32, Int32, Int32, PlotDelegate2D)</h4>
@@ -1237,7 +1290,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BresenHamPlotLine3d_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_PlotDelegate3D_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.MathTools.PlotDelegate3D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1379">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1378">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BresenHamPlotLine3d_" data-uid="Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BresenHamPlotLine3d_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_PlotDelegate3D_" data-uid="Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.MathTools.PlotDelegate3D)">BresenHamPlotLine3d(Int32, Int32, Int32, Int32, Int32, Int32, PlotDelegate3D)</h4>
@@ -1300,7 +1353,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_BresenHamPlotLine3d_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_PlotDelegate3DBlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CVintagestory.API.MathTools.PlotDelegate3DBlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1408">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1407">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_BresenHamPlotLine3d_" data-uid="Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_BresenHamPlotLine3d_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_PlotDelegate3DBlockPos_" data-uid="Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.MathTools.PlotDelegate3DBlockPos)">BresenHamPlotLine3d(Int32, Int32, Int32, Int32, Int32, Int32, PlotDelegate3DBlockPos)</h4>
@@ -1689,7 +1742,7 @@ The resulting map will be without any paddding (also requires at least 1 padding
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_CPCatmullRomSplineLerp_System_Double_System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.CPCatmullRomSplineLerp(System.Double%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L776">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L775">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_CPCatmullRomSplineLerp_" data-uid="Vintagestory.API.MathTools.GameMath.CPCatmullRomSplineLerp*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_CPCatmullRomSplineLerp_System_Double_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.GameMath.CPCatmullRomSplineLerp(System.Double,System.Double[],System.Double[])">CPCatmullRomSplineLerp(Double, Double[], Double[])</h4>
@@ -1754,7 +1807,7 @@ calculation. This is based on Figure 3 from
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Crc32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Crc32(System.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L981">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L980">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Crc32_" data-uid="Vintagestory.API.MathTools.GameMath.Crc32*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Crc32_System_Byte___" data-uid="Vintagestory.API.MathTools.GameMath.Crc32(System.Byte[])">Crc32(Byte[])</h4>
@@ -1801,7 +1854,7 @@ calculation. This is based on Figure 3 from
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Crc32_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Crc32(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L976">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L975">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Crc32_" data-uid="Vintagestory.API.MathTools.GameMath.Crc32*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Crc32_System_String_" data-uid="Vintagestory.API.MathTools.GameMath.Crc32(System.String)">Crc32(String)</h4>
@@ -1848,7 +1901,7 @@ calculation. This is based on Figure 3 from
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_CyclicValueDistance_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.CyclicValueDistance(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L418">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L417">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_CyclicValueDistance_" data-uid="Vintagestory.API.MathTools.GameMath.CyclicValueDistance*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_CyclicValueDistance_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.CyclicValueDistance(System.Double,System.Double,System.Double)">CyclicValueDistance(Double, Double, Double)</h4>
@@ -1907,7 +1960,7 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_CyclicValueDistance_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.CyclicValueDistance(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L405">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L404">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_CyclicValueDistance_" data-uid="Vintagestory.API.MathTools.GameMath.CyclicValueDistance*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_CyclicValueDistance_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.CyclicValueDistance(System.Single,System.Single,System.Single)">CyclicValueDistance(Single, Single, Single)</h4>
@@ -1966,7 +2019,7 @@ See also <a href="https://stackoverflow.com/a/14498790/1873041">https://stackove
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_DotNetStringHash_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.DotNetStringHash(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L992">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L991">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_DotNetStringHash_" data-uid="Vintagestory.API.MathTools.GameMath.DotNetStringHash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_DotNetStringHash_System_String_" data-uid="Vintagestory.API.MathTools.GameMath.DotNetStringHash(System.String)">DotNetStringHash(String)</h4>
@@ -2207,7 +2260,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_FlipVal_System_Double__System_Double__.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.FlipVal(System.Double%40%2CSystem.Double%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1300">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1299">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_FlipVal_" data-uid="Vintagestory.API.MathTools.GameMath.FlipVal*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_FlipVal_System_Double__System_Double__" data-uid="Vintagestory.API.MathTools.GameMath.FlipVal(System.Double@,System.Double@)">FlipVal(ref Double, ref Double)</h4>
@@ -2245,7 +2298,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_FlipVal_System_Int32__System_Int32__.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.FlipVal(System.Int32%40%2CSystem.Int32%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1288">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1287">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_FlipVal_" data-uid="Vintagestory.API.MathTools.GameMath.FlipVal*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_FlipVal_System_Int32__System_Int32__" data-uid="Vintagestory.API.MathTools.GameMath.FlipVal(System.Int32@,System.Int32@)">FlipVal(ref Int32, ref Int32)</h4>
@@ -2283,7 +2336,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_GenGaussKernel_System_Double_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.GenGaussKernel(System.Double%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L430">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L429">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_GenGaussKernel_" data-uid="Vintagestory.API.MathTools.GameMath.GenGaussKernel*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_GenGaussKernel_System_Double_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.GenGaussKernel(System.Double,System.Int32)">GenGaussKernel(Double, Int32)</h4>
@@ -2336,7 +2389,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_IntFromBools_System_Boolean___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.IntFromBools(System.Boolean%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1491">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1503">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_IntFromBools_" data-uid="Vintagestory.API.MathTools.GameMath.IntFromBools*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_IntFromBools_System_Boolean___" data-uid="Vintagestory.API.MathTools.GameMath.IntFromBools(System.Boolean[])">IntFromBools(Boolean[])</h4>
@@ -2383,7 +2436,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_IntFromBools_System_Int32___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.IntFromBools(System.Int32%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1480">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1492">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_IntFromBools_" data-uid="Vintagestory.API.MathTools.GameMath.IntFromBools*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_IntFromBools_System_Int32___" data-uid="Vintagestory.API.MathTools.GameMath.IntFromBools(System.Int32[])">IntFromBools(Int32[])</h4>
@@ -2488,7 +2541,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Largest_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Largest(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L385">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L384">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Largest_" data-uid="Vintagestory.API.MathTools.GameMath.Largest*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Largest_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.Largest(System.Double,System.Double)">Largest(Double, Double)</h4>
@@ -2541,7 +2594,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Lerp_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Lerp(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L744">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L743">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Lerp_" data-uid="Vintagestory.API.MathTools.GameMath.Lerp*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Lerp_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.Lerp(System.Double,System.Double,System.Double)">Lerp(Double, Double, Double)</h4>
@@ -2599,7 +2652,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Lerp_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Lerp(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L731">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L730">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Lerp_" data-uid="Vintagestory.API.MathTools.GameMath.Lerp*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Lerp_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.Lerp(System.Single,System.Single,System.Single)">Lerp(Single, Single, Single)</h4>
@@ -2657,7 +2710,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_LerpByte_System_Single_System_Byte_System_Byte_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.LerpByte(System.Single%2CSystem.Byte%2CSystem.Byte)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L653">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L652">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_LerpByte_" data-uid="Vintagestory.API.MathTools.GameMath.LerpByte*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_LerpByte_System_Single_System_Byte_System_Byte_" data-uid="Vintagestory.API.MathTools.GameMath.LerpByte(System.Single,System.Byte,System.Byte)">LerpByte(Single, Byte, Byte)</h4>
@@ -2715,7 +2768,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_LerpRgbaColor_System_Single_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.LerpRgbaColor(System.Single%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L635">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L634">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_LerpRgbaColor_" data-uid="Vintagestory.API.MathTools.GameMath.LerpRgbaColor*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_LerpRgbaColor_System_Single_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.LerpRgbaColor(System.Single,System.Int32,System.Int32)">LerpRgbaColor(Single, Int32, Int32)</h4>
@@ -2773,7 +2826,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_LerpRgbColor_System_Single_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.LerpRgbColor(System.Single%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L617">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L616">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_LerpRgbColor_" data-uid="Vintagestory.API.MathTools.GameMath.LerpRgbColor*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_LerpRgbColor_System_Single_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.LerpRgbColor(System.Single,System.Int32,System.Int32)">LerpRgbColor(Single, Int32, Int32)</h4>
@@ -2831,7 +2884,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Max_System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Max(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L922">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L921">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Max_" data-uid="Vintagestory.API.MathTools.GameMath.Max*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Max_System_Double___" data-uid="Vintagestory.API.MathTools.GameMath.Max(System.Double[])">Max(Double[])</h4>
@@ -2878,7 +2931,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Max_System_Int32___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Max(System.Int32%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L942">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L941">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Max_" data-uid="Vintagestory.API.MathTools.GameMath.Max*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Max_System_Int32___" data-uid="Vintagestory.API.MathTools.GameMath.Max(System.Int32[])">Max(Int32[])</h4>
@@ -2925,7 +2978,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Max_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Max(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L932">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L931">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Max_" data-uid="Vintagestory.API.MathTools.GameMath.Max*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Max_System_Single___" data-uid="Vintagestory.API.MathTools.GameMath.Max(System.Single[])">Max(Single[])</h4>
@@ -2972,7 +3025,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Md5Hash_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Md5Hash(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1027">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1026">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Md5Hash_" data-uid="Vintagestory.API.MathTools.GameMath.Md5Hash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Md5Hash_System_String_" data-uid="Vintagestory.API.MathTools.GameMath.Md5Hash(System.String)">Md5Hash(String)</h4>
@@ -3020,7 +3073,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Min_System_Int32___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Min(System.Int32%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L952">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L951">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Min_" data-uid="Vintagestory.API.MathTools.GameMath.Min*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Min_System_Int32___" data-uid="Vintagestory.API.MathTools.GameMath.Min(System.Int32[])">Min(Int32[])</h4>
@@ -3067,7 +3120,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Min_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Min(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L962">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L961">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Min_" data-uid="Vintagestory.API.MathTools.GameMath.Min*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Min_System_Single___" data-uid="Vintagestory.API.MathTools.GameMath.Min(System.Single[])">Min(Single[])</h4>
@@ -3114,7 +3167,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Mix_System_Int32_System_Int32_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Mix(System.Int32%2CSystem.Int32%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L717">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L716">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Mix_" data-uid="Vintagestory.API.MathTools.GameMath.Mix*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Mix_System_Int32_System_Int32_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.Mix(System.Int32,System.Int32,System.Single)">Mix(Int32, Int32, Single)</h4>
@@ -3172,7 +3225,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Mix_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Mix(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L702">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L701">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Mix_" data-uid="Vintagestory.API.MathTools.GameMath.Mix*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Mix_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.Mix(System.Single,System.Single,System.Single)">Mix(Single, Single, Single)</h4>
@@ -3441,7 +3494,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_MurmurHash3_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.MurmurHash3(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1196">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1195">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_MurmurHash3_" data-uid="Vintagestory.API.MathTools.GameMath.MurmurHash3*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_MurmurHash3_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.MurmurHash3(System.Int32,System.Int32,System.Int32)">MurmurHash3(Int32, Int32, Int32)</h4>
@@ -3499,7 +3552,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_MurmurHash3Mod_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.MurmurHash3Mod(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1182">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1181">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_MurmurHash3Mod_" data-uid="Vintagestory.API.MathTools.GameMath.MurmurHash3Mod*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_MurmurHash3Mod_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.MurmurHash3Mod(System.Int32,System.Int32,System.Int32,System.Int32)">MurmurHash3Mod(Int32, Int32, Int32, Int32)</h4>
@@ -3562,7 +3615,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHash_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHash(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1124">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1123">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHash_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHash_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash(System.Int32,System.Int32)">oaatHash(Int32, Int32)</h4>
@@ -3615,7 +3668,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHash_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHash(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1142">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1141">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHash_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHash_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash(System.Int32,System.Int32,System.Int32)">oaatHash(Int32, Int32, Int32)</h4>
@@ -3673,7 +3726,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHash_Vintagestory_API_MathTools_Vec2i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHash(Vintagestory.API.MathTools.Vec2i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1115">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1114">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHash_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHash_Vintagestory_API_MathTools_Vec2i_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash(Vintagestory.API.MathTools.Vec2i)">oaatHash(Vec2i)</h4>
@@ -3721,7 +3774,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHash_Vintagestory_API_MathTools_Vec3i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHash(Vintagestory.API.MathTools.Vec3i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1132">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1131">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHash_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHash_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash(Vintagestory.API.MathTools.Vec3i)">oaatHash(Vec3i)</h4>
@@ -3769,7 +3822,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHash_Vintagestory_API_MathTools_Vec4i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHash(Vintagestory.API.MathTools.Vec4i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1160">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1159">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHash_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHash_Vintagestory_API_MathTools_Vec4i_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHash(Vintagestory.API.MathTools.Vec4i)">oaatHash(Vec4i)</h4>
@@ -3817,7 +3870,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHashMany_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHashMany(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1075">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1074">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHashMany_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHashMany*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHashMany_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHashMany(System.Int32,System.Int32)">oaatHashMany(Int32, Int32)</h4>
@@ -3870,7 +3923,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHashU_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHashU(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1152">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1151">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHashU_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHashU*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHashU_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHashU(System.Int32,System.Int32,System.Int32)">oaatHashU(Int32, Int32, Int32)</h4>
@@ -3928,7 +3981,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_oaatHashUMany_System_UInt32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.oaatHashUMany(System.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1094">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1093">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_oaatHashUMany_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHashUMany*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_oaatHashUMany_System_UInt32_" data-uid="Vintagestory.API.MathTools.GameMath.oaatHashUMany(System.UInt32)">oaatHashUMany(UInt32)</h4>
@@ -3976,7 +4029,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_PrettyBadHash_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.PrettyBadHash(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1169">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1168">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_PrettyBadHash_" data-uid="Vintagestory.API.MathTools.GameMath.PrettyBadHash*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_PrettyBadHash_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.PrettyBadHash(System.Int32,System.Int32)">PrettyBadHash(Int32, Int32)</h4>
@@ -4029,7 +4082,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_R2Sequence1D_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.R2Sequence1D(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1243">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1242">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_R2Sequence1D_" data-uid="Vintagestory.API.MathTools.GameMath.R2Sequence1D*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_R2Sequence1D_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.R2Sequence1D(System.Int32)">R2Sequence1D(Int32)</h4>
@@ -4077,7 +4130,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_R2Sequence2D_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.R2Sequence2D(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1255">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1254">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_R2Sequence2D_" data-uid="Vintagestory.API.MathTools.GameMath.R2Sequence2D*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_R2Sequence2D_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.R2Sequence2D(System.Int32)">R2Sequence2D(Int32)</h4>
@@ -4125,7 +4178,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_R2Sequence3D_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.R2Sequence3D(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1268">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1267">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_R2Sequence3D_" data-uid="Vintagestory.API.MathTools.GameMath.R2Sequence3D*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_R2Sequence3D_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.R2Sequence3D(System.Int32)">R2Sequence3D(Int32)</h4>
@@ -4336,7 +4389,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Serp_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Serp(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L757">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L756">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Serp_" data-uid="Vintagestory.API.MathTools.GameMath.Serp*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Serp_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.Serp(System.Single,System.Single,System.Single)">Serp(Single, Single, Single)</h4>
@@ -4394,7 +4447,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Shuffle__1_Random___0___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Shuffle%60%601(Random%2C%60%600%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1313">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1312">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Shuffle_" data-uid="Vintagestory.API.MathTools.GameMath.Shuffle*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Shuffle__1_Random___0___" data-uid="Vintagestory.API.MathTools.GameMath.Shuffle``1(Random,``0[])">Shuffle&lt;T&gt;(Random, T[])</h4>
@@ -4447,7 +4500,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Shuffle__1_Random_List___0__.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Shuffle%60%601(Random%2CList%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1333">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1332">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Shuffle_" data-uid="Vintagestory.API.MathTools.GameMath.Shuffle*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Shuffle__1_Random_List___0__" data-uid="Vintagestory.API.MathTools.GameMath.Shuffle``1(Random,List{``0})">Shuffle&lt;T&gt;(Random, List&lt;T&gt;)</h4>
@@ -4500,7 +4553,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Shuffle__1_Vintagestory_API_MathTools_LCGRandom_List___0__.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Shuffle%60%601(Vintagestory.API.MathTools.LCGRandom%2CList%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1354">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1353">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Shuffle_" data-uid="Vintagestory.API.MathTools.GameMath.Shuffle*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Shuffle__1_Vintagestory_API_MathTools_LCGRandom_List___0__" data-uid="Vintagestory.API.MathTools.GameMath.Shuffle``1(Vintagestory.API.MathTools.LCGRandom,List{``0})">Shuffle&lt;T&gt;(LCGRandom, List&lt;T&gt;)</h4>
@@ -4647,7 +4700,7 @@ Hence, this is one basic 32bit bit implementation that can be used in a platform
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Smallest_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Smallest(System.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L367">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L366">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Smallest_" data-uid="Vintagestory.API.MathTools.GameMath.Smallest*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Smallest_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.Smallest(System.Double,System.Double)">Smallest(Double, Double)</h4>
@@ -4702,7 +4755,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Smootherstep_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Smootherstep(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L846">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L845">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Smootherstep_" data-uid="Vintagestory.API.MathTools.GameMath.Smootherstep*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Smootherstep_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.Smootherstep(System.Double)">Smootherstep(Double)</h4>
@@ -4750,7 +4803,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Smootherstep_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Smootherstep(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L831">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L830">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Smootherstep_" data-uid="Vintagestory.API.MathTools.GameMath.Smootherstep*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Smootherstep_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.Smootherstep(System.Double,System.Double,System.Double)">Smootherstep(Double, Double, Double)</h4>
@@ -4808,7 +4861,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_Smootherstep_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.Smootherstep(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L815">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L814">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_Smootherstep_" data-uid="Vintagestory.API.MathTools.GameMath.Smootherstep*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_Smootherstep_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.Smootherstep(System.Single,System.Single,System.Single)">Smootherstep(Single, Single, Single)</h4>
@@ -4866,7 +4919,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_SmoothStep_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.SmoothStep(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L805">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L804">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_SmoothStep_" data-uid="Vintagestory.API.MathTools.GameMath.SmoothStep*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_SmoothStep_System_Double_" data-uid="Vintagestory.API.MathTools.GameMath.SmoothStep(System.Double)">SmoothStep(Double)</h4>
@@ -4914,7 +4967,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_SmoothStep_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.SmoothStep(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L797">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L796">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_SmoothStep_" data-uid="Vintagestory.API.MathTools.GameMath.SmoothStep*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_SmoothStep_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.SmoothStep(System.Single)">SmoothStep(Single)</h4>
@@ -5150,7 +5203,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_ToEulerAngles_Vintagestory_API_MathTools_Vec4d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.ToEulerAngles(Vintagestory.API.MathTools.Vec4d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1459">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1458">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_ToEulerAngles_" data-uid="Vintagestory.API.MathTools.GameMath.ToEulerAngles*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_ToEulerAngles_Vintagestory_API_MathTools_Vec4d_" data-uid="Vintagestory.API.MathTools.GameMath.ToEulerAngles(Vintagestory.API.MathTools.Vec4d)">ToEulerAngles(Vec4d)</h4>
@@ -5197,7 +5250,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_ToEulerAngles_Vintagestory_API_MathTools_Vec4f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.ToEulerAngles(Vintagestory.API.MathTools.Vec4f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1453">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L1452">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_ToEulerAngles_" data-uid="Vintagestory.API.MathTools.GameMath.ToEulerAngles*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_ToEulerAngles_Vintagestory_API_MathTools_Vec4f_" data-uid="Vintagestory.API.MathTools.GameMath.ToEulerAngles(Vintagestory.API.MathTools.Vec4f)">ToEulerAngles(Vec4f)</h4>
@@ -5244,7 +5297,7 @@ Smallest(-20, 3) returns 3</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_TriangleStep_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.TriangleStep(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L869">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L868">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_TriangleStep_" data-uid="Vintagestory.API.MathTools.GameMath.TriangleStep*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_TriangleStep_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.TriangleStep(System.Int32,System.Int32,System.Int32)">TriangleStep(Int32, Int32, Int32)</h4>
@@ -5309,7 +5362,7 @@ left          right</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_TriangleStep_System_Single_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.TriangleStep(System.Single%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L892">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L891">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_TriangleStep_" data-uid="Vintagestory.API.MathTools.GameMath.TriangleStep*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_TriangleStep_System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.GameMath.TriangleStep(System.Single,System.Single,System.Single)">TriangleStep(Single, Single, Single)</h4>
@@ -5374,7 +5427,7 @@ left          right</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_GameMath_TriangleStepFast_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.GameMath.TriangleStepFast(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L908">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/GameMath.cs/#L907">View Source</a>
   </span>
   <a id="Vintagestory_API_MathTools_GameMath_TriangleStepFast_" data-uid="Vintagestory.API.MathTools.GameMath.TriangleStepFast*"></a>
   <h4 id="Vintagestory_API_MathTools_GameMath_TriangleStepFast_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.GameMath.TriangleStepFast(System.Int32,System.Int32,System.Int32)">TriangleStepFast(Int32, Int32, Int32)</h4>
