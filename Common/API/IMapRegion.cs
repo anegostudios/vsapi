@@ -59,6 +59,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         IntDataMap2D BeachMap { get; set; }
 
+        IntDataMap2D OceanMap { get; set; }
+
         IntDataMap2D UpheavelMap { get; set; }
 
         /// <summary>

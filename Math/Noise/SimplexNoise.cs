@@ -71,6 +71,20 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        public static void NoiseFairWarpVector(SimplexNoise originalWarpX, SimplexNoise originalWarpY,
+                double x, double y, out double distX, out double distY) {
+            distX = distY = 0;
+
+            for (int i = 0; i < originalWarpX.amplitudes.Length; i++) {
+                double f = originalWarpX.frequencies[i];
+                SimplexNoiseOctave.EvaluateFairWarpVector(originalWarpX.octaves[i], originalWarpY.octaves[i],
+                    x * f, y * f, out double distXHere, out double distYHere);
+                distX += distXHere * originalWarpX.amplitudes[i];
+                distY += distYHere * originalWarpX.amplitudes[i];
+            }
+        }
+
+
         public double Noise(double x, double y, double[] thresholds)
         {
             double value = 0;
