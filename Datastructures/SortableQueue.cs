@@ -37,35 +37,26 @@ namespace Vintagestory.API.Datastructures
 
         public void EnqueueOrMerge(T v)
         {
-            if (v is IMergeable<T>)
+            if (head % maxSize > tail % maxSize)
             {
-                if (head % maxSize > tail % maxSize)
+                for (int j = head % maxSize; j < maxSize; j++)
                 {
-                    for (int j = head % maxSize; j < maxSize; j++)
-                    {
-                        if (((IMergeable < T >) array[j]).MergeIfEqual(v)) return;
-                    }
-                    for (int j = 0; j < tail % maxSize; j++)
-                    {
-                        if (((IMergeable<T>)array[j]).MergeIfEqual(v)) return;
-                    }
+                    if (((IMergeable<T>)array[j]).MergeIfEqual(v)) return;
                 }
-                else
+                for (int j = 0; j < tail % maxSize; j++)
                 {
-                    for (int j = head % maxSize; j < tail % maxSize; j++)
-                    {
-                        if (((IMergeable<T>)array[j]).MergeIfEqual(v)) return;
-                    }
+                    if (((IMergeable<T>)array[j]).MergeIfEqual(v)) return;
+                }
+            }
+            else
+            {
+                for (int j = head % maxSize; j < tail % maxSize; j++)
+                {
+                    if (((IMergeable<T>)array[j]).MergeIfEqual(v)) return;
                 }
             }
 
-            if (Count == maxSize)
-            {
-                expandArray();
-            }
-
-            array[tail++ % maxSize] = v;
-            Count++;
+            Enqueue(v);
         }
 
         /// <summary>
@@ -75,9 +66,7 @@ namespace Vintagestory.API.Datastructures
         public T Dequeue()
         {
             Count--;
-            T result = array[head % maxSize];
-            array[head++ % maxSize] = default(T);  // remove references, to avoid memory leaks
-            return result;
+            return array[head++ % maxSize];
         }
 
         public void Sort()
