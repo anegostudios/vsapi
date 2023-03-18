@@ -168,5 +168,12 @@ namespace Vintagestory.API.Common
         /// <param name="cropBehaviorName"></param>
         /// <returns></returns>
         CropBehavior CreateCropBehavior(Block forBlock, string cropBehaviorName);
+
+
+        void RegisterParticlePropertyProvider(string className, Type ParticleProvider);
+        IParticlePropertiesProvider CreateParticlePropertyProvider(Type entityType);
+
+        IParticlePropertiesProvider CreateParticlePropertyProvider(string className);
+
     }
 }

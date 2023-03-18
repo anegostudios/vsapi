@@ -282,7 +282,6 @@ namespace Vintagestory.API.Client
             double curY = startY;
             double usableWidth;
             TextFlowPath currentSection;
-            int i = startOffsetX > 0 ? 1 : 0;
 
             
             while ((word = getNextWord(text, linebreak)) != null)
@@ -303,8 +302,10 @@ namespace Vintagestory.API.Client
 
                 if (nextWidth >= usableWidth)
                 {
-                    // Hard cut-off a word if we are at the beginnign of a line
-                    if (word.Length > 0 && lineTextBldr.Length == 0 && curX == currentSection.X1)
+                    // Hard cut-off a word if we are at the beginning of a line
+                    // Tyron Mar11: why only in the beginning of a line? It doesnt line break after a short word then
+                    // Tyron Mar18: Turns out perhaps it was meant to be an || because a 2nd word in a line thats oversized and already got its own line can still overflow
+                    if (word.Length > 0 && (lineTextBldr.Length == 0 || curX == currentSection.X1)) //  && curX == currentSection.X1 - why?
                     {
                         int tries = 500;
                         while (word.Length > 0 && nextWidth >= usableWidth && tries-- > 0)
@@ -314,6 +315,7 @@ namespace Vintagestory.API.Client
                             caretPos--;
                         }
 
+                        //if (gotSpace) lineTextBldr.Append(" "); - what is this good for? we already add a space further down after the word. Also why before the word? dafuq?
                         lineTextBldr.Append(word);
                         word = "";
                     }
@@ -334,13 +336,13 @@ namespace Vintagestory.API.Client
                     lineTextBldr.Clear();
                     curY += lineheight;
                     curX = 0;
+                    //gotSpace = false; - why the fuck is this here? It removes trailing spaces from the end of multiline text
 
                     if (gotLinebreak) currentSection = GetCurrentFlowPathSection(flowPath, curY);
                 }
 
-                i++;
-
                 lineTextBldr.Append(word);
+                
                 if (gotSpace /*&& word.Length > 0*/ /*- this checks breaks empty spaces in the beginning of new lines - they are completely trimmed */) lineTextBldr.Append(" ");
 
                 if (gotLinebreak)

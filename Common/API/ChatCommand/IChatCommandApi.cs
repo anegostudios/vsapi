@@ -120,6 +120,7 @@ namespace Vintagestory.API.Common
 
     public class TextCommandCallingArgs
     {
+        public string LanguageCode;
         public IChatCommand Command;
         public string SubCmdCode;
         public Caller Caller;
@@ -175,7 +176,6 @@ namespace Vintagestory.API.Common
         public string StatusMessage;
         public EnumCommandStatus Status;
         public object Data;
-        
 
         public static TextCommandResult Success(string message = "", object data = null) => new TextCommandResult() { Status = EnumCommandStatus.Success, Data = data, StatusMessage = message };
         public static TextCommandResult Error(string message, string errorCode = "") => new TextCommandResult() { Status = EnumCommandStatus.Error, StatusMessage = message, ErrorCode = errorCode };
@@ -347,21 +347,21 @@ namespace Vintagestory.API.Common
 
         
         /// <summary>
-        /// Define/Modify a subcommnad
+        /// Define/Modify a subcommnad. Returns a new subcommand instance.
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         IChatCommand BeginSubCommand(string name);
 
         /// <summary>
-        /// Define/Modify multiple subcommands
+        /// Define/Modify multiple subcommands. Returns a new subcommand instance.
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         IChatCommand BeginSubCommands(params string[] name);
 
         /// <summary>
-        /// Leave current subcommnad
+        /// Leave current subcommand. Returns parent command instance.
         /// </summary>
         /// <returns></returns>
         IChatCommand EndSubCommand();

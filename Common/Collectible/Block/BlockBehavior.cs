@@ -350,5 +350,15 @@ namespace Vintagestory.API.Common
         {
             
         }
+
+        public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing, ref EnumHandling handled)
+        {
+            return 0;
+        }
+
+        public virtual float GetLiquidBarrierHeightOnSide(BlockFacing face, BlockPos pos, ref EnumHandling handled)
+        {
+            return 0;
+        }
     }
 }

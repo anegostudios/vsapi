@@ -41,7 +41,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.6";
+        public const string ShortGameVersion = OverallVersion + "-pre.7";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
@@ -66,7 +66,12 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.18.3";
+        public const string NetworkVersion = "1.18.4";
+
+        /// <summary>
+        /// Version of the world generator - a change in version will insert a smoothed chunk between old and new version
+        /// </summary>
+        public const int WorldGenVersion = 2;
 
         /// <summary>
         /// Version of the savegame database

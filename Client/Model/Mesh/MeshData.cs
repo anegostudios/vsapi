@@ -1714,16 +1714,16 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Sets the uvs of this mesh to the specified TextureAtlasPosition
+        /// Sets the uvs of this mesh to the specified TextureAtlasPosition, assuming the initial UVs range from 0..1, as they will be scaled by the texPos
         /// </summary>
         public void SetTexPos(TextureAtlasPosition texPos)
         {
-            float x = texPos.x2 - texPos.x1;
-            float y = texPos.y2 - texPos.y1;
+            float wdt = texPos.x2 - texPos.x1;
+            float hgt = texPos.y2 - texPos.y1;
 
             for (int i = 0; i < this.Uv.Length; i++)
             {
-                this.Uv[i] = i % 2 == 0 ? (this.Uv[i] * x) + texPos.x1 : (this.Uv[i] * y) + texPos.y1;
+                this.Uv[i] = i % 2 == 0 ? (this.Uv[i] * wdt) + texPos.x1 : (this.Uv[i] * hgt) + texPos.y1;
             }
         }
     }

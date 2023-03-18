@@ -22,8 +22,6 @@ namespace Vintagestory.API.Common
     {
         protected ItemSlot[] slots;
         NewSlotDelegate onNewSlot = null;
-
-
         public Dictionary<EnumTransitionType, float> TransitionableSpeedMulByType { get; set; } = null;
         public Dictionary<EnumFoodCategory, float> PerishableFactorByFoodCategory { get; set; } = null;
 

@@ -109,7 +109,7 @@ namespace Vintagestory.API.Common
         public bool DieOnRainHeightmap => false;
         public ExplosionSmokeParticles()
         {
-            color = ColorUtil.ToRgba(50, 220, 220, 220);
+            color = ColorUtil.ToRgba(50, 180, 180, 180);
 
             providers = new SimpleParticleProperties[]
             {
@@ -122,8 +122,8 @@ namespace Vintagestory.API.Common
                     new Vec3f(0.25f, 0.1f, 0.25f),
                     1.5f,
                     -0.025f,
-                    0.5f,
-                    1.5f,
+                    1f,
+                    2.5f,
                     EnumParticleModel.Quad
                 )
             };

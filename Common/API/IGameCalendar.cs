@@ -310,6 +310,7 @@ namespace Vintagestory.API.Common
         /// The moons current size (larger during full moon)
         /// </summary>
         float MoonSize { get; }
+        float? SeasonOverride { get; set; }
 
         /// <summary>
         /// If non-null, will override the value retrieved by GetSeason(). Set to null to have seasons progress normally again.

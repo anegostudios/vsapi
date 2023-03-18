@@ -50,6 +50,7 @@ namespace Vintagestory.API.Common
 
         public DoubleArgParser OptionalDouble(string argName) => new DoubleArgParser(argName, false);
 
+        public FloatArgParser Float(string argName) => new FloatArgParser(argName, true);
         public FloatArgParser OptionalFloat(string argName) => new FloatArgParser(argName, false);
 
         public DoubleArgParser Double(string argName) => new DoubleArgParser(argName, true);
@@ -909,7 +910,7 @@ namespace Vintagestory.API.Common
             }
 
             pos = args.RawArgs.PopFlexiblePos(args.Caller.Pos, mapmiddlePosProvider());
-            if (pos == null) lastErrorMessage = Lang.Get("Invalid position");
+            if (pos == null) lastErrorMessage = Lang.Get("Invalid position, must be 3 numbers");
 
             return pos == null ? EnumParseResult.Bad : EnumParseResult.Good;
         }
@@ -990,7 +991,7 @@ namespace Vintagestory.API.Common
             }
 
             pos = args.RawArgs.PopFlexiblePos2D(args.Caller.Pos, mapmiddlePosProvider());
-            if (pos == null) lastErrorMessage = Lang.Get("Invalid position");
+            if (pos == null) lastErrorMessage = Lang.Get("Invalid position, must be 2 numbers");
 
             return pos == null ? EnumParseResult.Bad : EnumParseResult.Good;
         }
@@ -1026,7 +1027,7 @@ namespace Vintagestory.API.Common
             word = args.RawArgs.PopWord();
             if (word == null)
             {
-                lastErrorMessage = "Missing";
+                lastErrorMessage = "Argument is missing";
                 return EnumParseResult.Bad;
             }
 
@@ -1064,7 +1065,7 @@ namespace Vintagestory.API.Common
             if (!words.Contains(word))
             {
                 word = null;
-                lastErrorMessage = Lang.Get("Invalid");
+                lastErrorMessage = Lang.Get("Invalid word, not in word range");
                 return EnumParseResult.Bad;
             }
 
@@ -1261,7 +1262,7 @@ namespace Vintagestory.API.Common
             string playername = args.RawArgs.PopWord();
             if (playername == null)
             {
-                lastErrorMessage = Lang.Get("Missing");
+                lastErrorMessage = Lang.Get("Argument is missing");
                 return EnumParseResult.Bad;
             }
 

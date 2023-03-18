@@ -1832,6 +1832,24 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing)
         {
+            bool preventDefault = false;
+            int result = 0;
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                int bhresult;
+
+                EnumHandling handled = EnumHandling.PassThrough;
+                bhresult = behavior.GetHeatRetention(pos, facing, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                    result = bhresult;
+                }
+                if (handled == EnumHandling.PreventSubsequent) return bhresult;
+            }
+
+            if (preventDefault) return result;
+
             if (SideSolid[facing.Opposite.Index] || SideSolid[facing.Index])
             {
                 var mat = GetBlockMaterial(api.World.BlockAccessor, pos);
@@ -2555,8 +2573,26 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Return a decimal between 0.0 and 1.0 indicating - if this block is solid enough to block liquid flow on that side - how high the barrier is
         /// </summary>
-        public virtual float LiquidBarrierHeightOnSide(BlockFacing face, BlockPos pos)
+        public virtual float GetLiquidBarrierHeightOnSide(BlockFacing face, BlockPos pos)
         {
+            bool preventDefault = false;
+            float result = 0;
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                float bhresult;
+
+                EnumHandling handled = EnumHandling.PassThrough;
+                bhresult = behavior.GetLiquidBarrierHeightOnSide(face, pos, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                    result = bhresult;
+                }
+                if (handled == EnumHandling.PreventSubsequent) return bhresult;
+            }
+
+            if (preventDefault) return result;
+
             if (liquidBarrierHeightonSide == null)
             {
                 liquidBarrierHeightonSide = new float[6];

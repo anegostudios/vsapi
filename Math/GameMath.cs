@@ -968,6 +968,30 @@ namespace Vintagestory.API.MathTools
             return min;
         }
 
+        public static float SmoothMin(float a, float b, float smoothingFactor)
+        {
+            float falloff = Math.Max(smoothingFactor - Math.Abs(a - b), 0.0f) / smoothingFactor;
+            return Math.Min(a, b) - falloff * falloff * smoothingFactor * 0.25f;
+        }
+
+        public static float SmoothMax(float a, float b, float smoothingFactor)
+        {
+            float falloff = Math.Max(smoothingFactor - Math.Abs(a - b), 0.0f) / smoothingFactor;
+            return Math.Max(a, b) + falloff * falloff * smoothingFactor * 0.25f;
+        }
+
+        public static double SmoothMin(double a, double b, double smoothingFactor)
+        {
+            double falloff = Math.Max(smoothingFactor - Math.Abs(a - b), 0.0) / smoothingFactor;
+            return Math.Min(a, b) - falloff * falloff * smoothingFactor * 0.25;
+        }
+
+        public static double SmoothMax(double a, double b, double smoothingFactor)
+        {
+            double falloff = Math.Max(smoothingFactor - Math.Abs(a - b), 0.0) / smoothingFactor;
+            return Math.Max(a, b) + falloff * falloff * smoothingFactor * 0.25;
+        }
+
         #endregion
 
         #region Hashing

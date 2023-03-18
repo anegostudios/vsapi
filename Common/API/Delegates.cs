@@ -124,9 +124,9 @@ namespace Vintagestory.API.Common
 
     public delegate void OnInteractDelegate(Entity entity, IPlayer byPlayer, ItemSlot slot, Vec3d hitPosition, int mode, ref EnumHandling handling);
 
-    public delegate void ChunkColumnGenerationDelegate(IServerChunk[] chunks, int chunkX, int chunkZ, ITreeAttribute chunkGenParams = null);
+    public delegate void ChunkColumnGenerationDelegate(IChunkColumnGenerateRequest request);
 
-    public delegate void ChunkGenerationPassDelegate(IServerChunk chunk, int chunkX, int chunkY, int chunkZ);
+    //public delegate void ChunkGenerationPassDelegate(IServerChunk chunk, int chunkX, int chunkY, int chunkZ);
 
     public delegate void MapChunkGeneratorDelegate(IMapChunk mapChunk, int chunkX, int chunkZ);
 

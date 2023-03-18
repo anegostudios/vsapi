@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -558,16 +557,18 @@ namespace Vintagestory.API.Common
                 talkUtil.OnGameTick(dt);
             }
 
-            if (Api.Side == EnumAppSide.Server || (Api as ICoreClientAPI).World.Player.PlayerUID != PlayerUID)
+            bool isSelf = (Api as ICoreClientAPI)?.World.Player.PlayerUID == PlayerUID;
+
+            if (Api.Side == EnumAppSide.Server || !isSelf)
             {
                 updateEyeHeight(dt);
             }
 
             climateCondAccum += dt;
-            if (World.Side == EnumAppSide.Client && climateCondAccum > 0.5f)
+            if (isSelf && World.Side == EnumAppSide.Client && climateCondAccum > 0.5f)
             {
                 climateCondAccum = 0;
-                selfClimateCond = Api.World.BlockAccessor.GetClimateAt(Pos.XYZ.AsBlockPos);
+                selfClimateCond = Api.World.BlockAccessor.GetClimateAt(Pos.XYZ.AsBlockPos, EnumGetClimateMode.WorldGenValues);
             }
 
             if (!servercontrols.Sneak && !PrevFrameCanStandUp)

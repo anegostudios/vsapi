@@ -65,6 +65,24 @@ namespace Vintagestory.API.Util
             bmp.UnlockBits(bitmapData);
         }
 
+        public static void SetPixels(this Bitmap bmp, byte[] pixels, int channels)
+        {
+            if (bmp.Width * bmp.Height != pixels.Length / channels) throw new ArgumentException("Pixel array must be width*height length");
+
+            Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            var bitmapData = bmp.LockBits(rect, ImageLockMode.ReadWrite, bmp.PixelFormat);
+            int height = bmp.Height;
+            int rowSize = Math.Abs(bitmapData.Stride);
+            var scan0 = bitmapData.Scan0;
+
+            for (int y = 0; y < height; y++)
+            {
+                Marshal.Copy(IntPtr.Add(scan0, y * bitmapData.Stride), pixels, y * rowSize, rowSize);
+            }
+
+            bmp.UnlockBits(bitmapData);
+        }
+
     }
 
 
