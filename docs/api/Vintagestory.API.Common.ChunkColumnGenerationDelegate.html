@@ -79,7 +79,7 @@
   <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
   <h5 id="Vintagestory_API_Common_ChunkColumnGenerationDelegate_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate void ChunkColumnGenerationDelegate(IServerChunk[] chunks, int chunkX, int chunkZ, ITreeAttribute chunkGenParams = null);</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate void ChunkColumnGenerationDelegate(IChunkColumnGenerateRequest request);</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -92,23 +92,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerChunk.html">IServerChunk</a>[]</td>
-        <td><span class="parametername">chunks</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">chunkX</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">chunkZ</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
-        <td><span class="parametername">chunkGenParams</span></td>
+        <td><a class="xref" href="Vintagestory.API.Server.IChunkColumnGenerateRequest.html">IChunkColumnGenerateRequest</a></td>
+        <td><span class="parametername">request</span></td>
         <td></td>
       </tr>
     </tbody>
