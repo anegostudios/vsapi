@@ -80,6 +80,25 @@ namespace Vintagestory.API.MathTools
                 scaledAmplitudes3D[i] = inputAmplitudes[i] / normalizationValue3D;
             }
         }
+        
+        /// <summary>
+        /// 2D noise
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public virtual double Noise(double x, double y)
+        {
+            double value = 0;
+
+            for (int i = 0; i < scaledAmplitudes2D.Length; i++)
+            {
+                value += ValueMultiplier * NewSimplexNoiseLayer.Evaluate(octaveSeeds[i], x * frequencies[i], y * frequencies[i]) * scaledAmplitudes2D[i];
+            }
+
+            return NoiseValueCurve(value);
+        }
+
         public double Noise(double x, double y, double z, double[] amplitudes, double[] thresholds)
         {
             double value = 0;
