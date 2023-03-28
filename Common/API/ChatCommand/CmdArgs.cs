@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -32,7 +33,8 @@ namespace Vintagestory.API.Common
         /// <param name="joinedargs"></param>
         public CmdArgs(string joinedargs)
         {
-            Push(joinedargs);
+            string trimmed = Regex.Replace(joinedargs.Trim(), @"\s+", " ");
+            Push(trimmed);
         }
 
         public void Push(string joinedargs)

@@ -10,6 +10,8 @@ namespace Vintagestory.API.Client
 {
     public abstract class GuiElementEditableTextBase : GuiElementTextBase
     {
+        public delegate bool OnTryTextChangeDelegate(List<string> lines);
+
         internal float[] caretColor = new float[] { 1, 1, 1, 1 };
 
         internal bool hideCharacters;
@@ -32,6 +34,7 @@ namespace Vintagestory.API.Client
 
         public Action<int, int> OnCaretPositionChanged;
         public Action<string> OnTextChanged;
+        public OnTryTextChangeDelegate OnTryTextChangeText;
         public Action<double, double> OnCursorMoved;
 
         internal Action OnFocused = null;
@@ -50,15 +53,21 @@ namespace Vintagestory.API.Client
         internal double renderLeftOffset;
         internal Vec2i textSize = new Vec2i();
 
-        public List<string> Lines;
+        protected List<string> lines;
+        /// <summary>
+        /// Contains the same as Lines, but may momentarily have different values when an edit is being made
+        /// </summary>
+        protected List<string> linesStaging;
 
         public bool WordWrap = true;
 
 
+        public List<string> GetLines() => new List<string>(lines);
+
         public int TextLengthWithoutLineBreaks {
             get {
                 int length = 0;
-                for (int i = 0; i < Lines.Count; i++) length += Lines[i].Length;
+                for (int i = 0; i < lines.Count; i++) length += lines[i].Length;
                 return length;
             }
         }
@@ -68,16 +77,16 @@ namespace Vintagestory.API.Client
             get
             {
                 int pos = 0;
-                for (int i = 0; i < CaretPosLine; i++) pos += Lines[i].Length;
+                for (int i = 0; i < CaretPosLine; i++) pos += lines[i].Length;
                 return pos + CaretPosInLine;
             }
             set
             {
                 int sum = 0;
-                for (int i = 0; i < Lines.Count; i++) {
-                    int len = Lines[i].Length;
+                for (int i = 0; i < lines.Count; i++) {
+                    int len = lines[i].Length;
 
-                    if (sum + len >= value)
+                    if (sum + len > value)
                     {
                         SetCaretPos(value - sum, i);
                         return;
@@ -88,7 +97,7 @@ namespace Vintagestory.API.Client
 
                 if (!multilineMode) SetCaretPos(sum, 0);
                 //else SetCaretPos(value - sum, Lines.Count); - why value-sum? that makes no sense
-                else SetCaretPos(sum, Lines.Count);
+                else SetCaretPos(sum, lines.Count);
             }
         }
 
@@ -109,7 +118,7 @@ namespace Vintagestory.API.Client
         {
             get { return pcaretPosInLine; }
             set {
-                if (value > Lines[CaretPosLine].Length) throw new IndexOutOfRangeException("Caret @"+value+", cannot beyond current line length of " + pcaretPosInLine);
+                if (value > lines[CaretPosLine].Length) throw new IndexOutOfRangeException("Caret @"+value+", cannot beyond current line length of " + pcaretPosInLine);
                 pcaretPosInLine = value; 
             }
         }
@@ -130,10 +139,8 @@ namespace Vintagestory.API.Client
             caretTexture = new LoadedTexture(capi);
             textTexture = new LoadedTexture(capi);
 
-            Lines = new List<string>
-            {
-                ""
-            };
+            lines = new List<string> { "" };
+            linesStaging = new List<string> { "" };
         }
 
         public override void OnFocusGained()
@@ -165,10 +172,10 @@ namespace Vintagestory.API.Client
             if (multilineMode)
             {
                 double lineY = y / ctx.FontExtents.Height;
-                if (lineY > Lines.Count)
+                if (lineY > lines.Count)
                 {
-                    CaretPosLine = Lines.Count - 1;
-                    CaretPosInLine = Lines[CaretPosLine].Length;
+                    CaretPosLine = lines.Count - 1;
+                    CaretPosInLine = lines[CaretPosLine].Length;
 
                     ctx.Dispose();
                     surface.Dispose();
@@ -178,7 +185,7 @@ namespace Vintagestory.API.Client
                 CaretPosLine = Math.Max(0, (int)lineY);
             }
 
-            string line = Lines[CaretPosLine].TrimEnd('\r', '\n');
+            string line = lines[CaretPosLine].TrimEnd('\r', '\n');
             CaretPosInLine = line.Length;
 
             for (int i = 0; i < line.Length; i++)
@@ -210,22 +217,22 @@ namespace Vintagestory.API.Client
             caretBlinkMilliseconds = api.ElapsedMilliseconds;
             caretDisplayed = true;
 
-            CaretPosLine = GameMath.Clamp(posLine, 0, Lines.Count - 1);
-            CaretPosInLine = GameMath.Clamp(posInLine, 0, Lines[CaretPosLine].TrimEnd('\r', '\n').Length);
+            CaretPosLine = GameMath.Clamp(posLine, 0, lines.Count - 1);
+            CaretPosInLine = GameMath.Clamp(posInLine, 0, lines[CaretPosLine].TrimEnd('\r', '\n').Length);
 
 
             if (multilineMode)
             {
-                caretX = Font.GetTextExtents(Lines[CaretPosLine].Substring(0, CaretPosInLine)).XAdvance;
+                caretX = Font.GetTextExtents(lines[CaretPosLine].Substring(0, CaretPosInLine)).XAdvance;
                 caretY = Font.GetFontExtents().Height * CaretPosLine;
             }
             else
             {
-                string displayedText = Lines[0];
+                string displayedText = lines[0];
 
                 if (hideCharacters)
                 {
-                    displayedText = new StringBuilder(Lines[0]).Insert(0, "•", displayedText.Length).ToString();
+                    displayedText = new StringBuilder(lines[0]).Insert(0, "•", displayedText.Length).ToString();
                 }
 
                 caretX = Font.GetTextExtents(displayedText.Substring(0, CaretPosInLine)).XAdvance;
@@ -254,27 +261,38 @@ namespace Vintagestory.API.Client
         /// <param name="text"></param>
         public void SetValue(string text, bool setCaretPosToEnd = true)
         {
-            LoadValue(text);
-            if (setCaretPosToEnd) SetCaretPos(Lines[Lines.Count - 1].Length, Lines.Count - 1);
+            LoadValue(Lineize(text));
+
+            if (setCaretPosToEnd)
+            {
+                var endLine = lines[lines.Count - 1];
+                var endPos = endLine.Length;
+                SetCaretPos(endPos, lines.Count - 1);
+            }
         }
 
         /// <summary>
         /// Sets given texts, leaves cursor position unchanged
         /// </summary>
         /// <param name="text"></param>
-        public void LoadValue(string text)
+        public void LoadValue(List<string> newLines)
         {
-            Lines = Lineize(text);
-
-            while (Lines.Count > maxlines) {
-                Lines.RemoveAt(Lines.Count - 1);
+            // Disallow edit if prevent by event or if it adds another line beyond max lines
+            if (OnTryTextChangeText?.Invoke(newLines) == false || (newLines.Count > maxlines && newLines.Count >= lines.Count))
+            {
+                // Revert edits
+                linesStaging = new List<string>(lines);
+                return;
             }
+
+            lines = new List<string>(newLines);
+            linesStaging = new List<string>(lines);
 
             RecomposeText();
             TextChanged();
         }
 
-        protected List<string> Lineize(string text)
+        public List<string> Lineize(string text)
         {
             if (text == null) text = "";
 
@@ -307,7 +325,7 @@ namespace Vintagestory.API.Client
 
         internal virtual void TextChanged()
         {
-            OnTextChanged?.Invoke(string.Join("", Lines));
+            OnTextChanged?.Invoke(string.Join("", lines));
             RecomposeText();
         }
 
@@ -323,7 +341,7 @@ namespace Vintagestory.API.Client
                 textSize.Y = (int)(Bounds.OuterHeight - bottomSpacing);
                 
             } else {
-                displayedText = Lines[0];
+                displayedText = lines[0];
 
                 if (hideCharacters)
                 {
@@ -333,7 +351,6 @@ namespace Vintagestory.API.Client
                 textSize.X = (int)Math.Max(Bounds.InnerWidth - rightSpacing, Font.GetTextExtents(displayedText).Width);
                 textSize.Y = (int)(Bounds.InnerHeight - bottomSpacing);
             }
-
 
             surface = new ImageSurface(Format.Argb32, textSize.X, textSize.Y);
 
@@ -346,12 +363,12 @@ namespace Vintagestory.API.Client
             {
                 double width = Bounds.InnerWidth - 2 * Bounds.absPaddingX - rightSpacing;
 
-                TextLine[] textlines = new TextLine[Lines.Count];
+                TextLine[] textlines = new TextLine[lines.Count];
                 for (int i = 0; i < textlines.Length; i++)
                 {
                     textlines[i] = new TextLine()
                     {
-                        Text = Lines[i].Replace("\r\n", "").Replace("\n", ""),
+                        Text = lines[i].Replace("\r\n", "").Replace("\n", ""),
                         Bounds = new LineRectangled(0, i*fontHeight, Bounds.InnerWidth, fontHeight)
                     };
                 }
@@ -421,10 +438,10 @@ namespace Vintagestory.API.Client
             {
                 if (args.CtrlPressed)
                 {
-                    SetCaretPos(Lines[Lines.Count - 1].TrimEnd('\r', '\n').Length, Lines.Count - 1);
+                    SetCaretPos(lines[lines.Count - 1].TrimEnd('\r', '\n').Length, lines.Count - 1);
                 } else
                 {
-                    SetCaretPos(Lines[CaretPosLine].TrimEnd('\r', '\n').Length, CaretPosLine);
+                    SetCaretPos(lines[CaretPosLine].TrimEnd('\r', '\n').Length, CaretPosLine);
                 }
                     
                 api.Gui.PlaySound("tick");
@@ -458,19 +475,19 @@ namespace Vintagestory.API.Client
                 string insert = api.Forms.GetClipboardText();
                 insert = insert.Replace("\uFEFF", ""); // UTF-8 bom, we don't need that one, like ever
 
-                string fulltext = string.Join("\n", Lines);
+                string fulltext = string.Join("\n", lines);
 
                 int caretPos = CaretPosInLine;
                 for (int i = 0; i < CaretPosLine; i++)
                 {
-                    caretPos += Lines[i].Length + 1;
+                    caretPos += lines[i].Length + 1;
                 }
 
                 SetValue(fulltext.Substring(0, caretPos) + insert + fulltext.Substring(caretPos, fulltext.Length - caretPos));
                 api.Gui.PlaySound("tick");
             }
 
-            if (args.KeyCode == (int)GlKeys.Down && CaretPosLine < Lines.Count - 1)
+            if (args.KeyCode == (int)GlKeys.Down && CaretPosLine < lines.Count - 1)
             {
                 SetCaretPos(CaretPosInLine, CaretPosLine + 1);
                 api.Gui.PlaySound("tick");
@@ -501,18 +518,22 @@ namespace Vintagestory.API.Client
 
         public override string GetText()
         {
-            return string.Join("", Lines);
+            return string.Join("", lines);
         }
 
         private void OnKeyEnter()
         {
-            if (Lines.Count >= maxlines) return;
+            if (lines.Count >= maxlines) return;
 
-            string leftText = Lines[CaretPosLine].Substring(0, CaretPosInLine);
-            string rightText = Lines[CaretPosLine].Substring(CaretPosInLine);
+            string leftText = linesStaging[CaretPosLine].Substring(0, CaretPosInLine);
+            string rightText = linesStaging[CaretPosLine].Substring(CaretPosInLine);
 
-            Lines[CaretPosLine] = leftText + "\n";
-            Lines.Insert(CaretPosLine + 1, rightText);
+            linesStaging[CaretPosLine] = leftText + "\n";
+            linesStaging.Insert(CaretPosLine + 1, rightText);
+
+            if (OnTryTextChangeText?.Invoke(linesStaging) == false) return;
+
+            lines = new List<string>(linesStaging);
 
             TextChanged();
             SetCaretPos(0, CaretPosLine + 1);
@@ -521,47 +542,28 @@ namespace Vintagestory.API.Client
 
         private void OnKeyDelete()
         {
-            if (CaretPosInLine < Lines[CaretPosLine].Length)
-            {
-                Lines[CaretPosLine] = Lines[CaretPosLine].Substring(0, CaretPosInLine) + Lines[CaretPosLine].Substring(CaretPosInLine + 1, Lines[CaretPosLine].Length - (CaretPosInLine + 1));
-            }
-            else
-            {
-                if (CaretPosLine < Lines.Count - 1)
-                {
-                    Lines[CaretPosLine] += Lines[CaretPosLine + 1];
-                    Lines.RemoveAt(CaretPosLine + 1);
-                }
-            }
+            string alltext = GetText();
+            var caret = CaretPosWithoutLineBreaks;
+            if (alltext.Length == caret) return;
 
-
-            LoadValue(GetText());
+            alltext = alltext.Substring(0, caret) + alltext.Substring(caret + 1, alltext.Length - caret - 1);
+            LoadValue(Lineize(alltext));
             api.Gui.PlaySound("tick");
         }
 
         private void OnKeyBackSpace()
         {
-            if (CaretPosLine == 0 && CaretPosInLine == 0) return;
+            var caret = CaretPosWithoutLineBreaks;
+            if (caret == 0) return;
 
-            if (CaretPosInLine > 0)
-            {
-                if (CaretPosLine < Lines.Count)
-                {
-                   Lines[CaretPosLine] = Lines[CaretPosLine].Substring(0, Math.Max(0, CaretPosInLine - 1)) + Lines[CaretPosLine].Substring(CaretPosInLine, Lines[CaretPosLine].Length - CaretPosInLine);
-                }
-                SetCaretPos(CaretPosInLine - 1, CaretPosLine);
-            } else if (CaretPosLine > 0)
-            {
-                SetCaretPos(Lines[CaretPosLine - 1].Length - 1, CaretPosLine - 1);
-                Lines[CaretPosLine] = Lines[CaretPosLine].Substring(0, Lines[CaretPosLine].Length - 1);
-            }
-
+            string alltext = GetText();
+            alltext = alltext.Substring(0, caret - 1) + alltext.Substring(caret, alltext.Length - caret);
             var cpos = CaretPosWithoutLineBreaks;
-            LoadValue(GetText());
-            if (CaretPosWithoutLineBreaks > 0)
+            LoadValue(Lineize(alltext));
+            if (cpos > 0)
             {
-                CaretPosWithoutLineBreaks = cpos;
-            }
+                CaretPosWithoutLineBreaks = cpos-1;
+            }            
 
             api.Gui.PlaySound("tick");
         }
@@ -569,7 +571,7 @@ namespace Vintagestory.API.Client
         public override void OnKeyPress(ICoreClientAPI api, KeyEvent args)
         {
             if (!HasFocus) return;
-            string newline = Lines[CaretPosLine].Substring(0, CaretPosInLine) + args.KeyChar + Lines[CaretPosLine].Substring(CaretPosInLine, Lines[CaretPosLine].Length - CaretPosInLine);
+            string newline = lines[CaretPosLine].Substring(0, CaretPosInLine) + args.KeyChar + lines[CaretPosLine].Substring(CaretPosInLine, lines[CaretPosLine].Length - CaretPosInLine);
             double width = Bounds.InnerWidth - 2 * Bounds.absPaddingX - rightSpacing;
 
             if (multilineMode)
@@ -579,16 +581,16 @@ namespace Vintagestory.API.Client
                 if (lineOverFlow)
                 {
                     StringBuilder newLines = new StringBuilder();
-                    for (int i = 0; i < Lines.Count; i++) newLines.Append(i == CaretPosLine ? newline : Lines[i]);
+                    for (int i = 0; i < lines.Count; i++) newLines.Append(i == CaretPosLine ? newline : lines[i]);
 
-                    if (Lines.Count >= maxlines && Lineize(newLines.ToString()).Count >= maxlines) return;
+                    if (lines.Count >= maxlines && Lineize(newLines.ToString()).Count >= maxlines) return;
                 }
             }
-            
-            Lines[CaretPosLine] = newline;
+
+            linesStaging[CaretPosLine] = newline;
 
             var cpos = CaretPosWithoutLineBreaks;
-            LoadValue(GetText()); // Ensures word wrapping
+            LoadValue(linesStaging); // Ensures word wrapping
             CaretPosWithoutLineBreaks = cpos + 1;
 
             args.Handled = true;
@@ -635,7 +637,7 @@ namespace Vintagestory.API.Client
             bool done = false;
             bool moved = 
                 ((CaretPosInLine > 0 || CaretPosLine > 0) && dir < 0) ||
-                ((CaretPosInLine < Lines[CaretPosLine].Length || CaretPosLine < Lines.Count-1) && dir > 0)
+                ((CaretPosInLine < lines[CaretPosLine].Length || CaretPosLine < lines.Count-1) && dir > 0)
             ;
 
             int newPos = CaretPosInLine;
@@ -648,17 +650,17 @@ namespace Vintagestory.API.Client
                 {
                     if (newLine <= 0) break;
                     newLine--;
-                    newPos = Lines[newLine].TrimEnd('\r', '\n').Length;
+                    newPos = lines[newLine].TrimEnd('\r', '\n').Length;
                 } 
 
-                if (newPos > Lines[newLine].TrimEnd('\r', '\n').Length)
+                if (newPos > lines[newLine].TrimEnd('\r', '\n').Length)
                 {
-                    if (newLine >= Lines.Count - 1) break;
+                    if (newLine >= lines.Count - 1) break;
                     newPos = 0;
                     newLine++;
                 }
 
-                done = !wholeWord || (newPos > 0 && Lines[newLine][newPos - 1] == ' ');
+                done = !wholeWord || (newPos > 0 && lines[newLine][newPos - 1] == ' ');
             }
 
             if (moved)

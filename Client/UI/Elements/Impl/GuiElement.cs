@@ -730,7 +730,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public virtual bool IsPositionInside(int posX, int posY)
         {
-            return  (InsideClipBounds == null || InsideClipBounds.PointInside(posX, posY)) && Bounds.PointInside(posX, posY);
+            return (InsideClipBounds == null || InsideClipBounds.PointInside(posX, posY)) && Bounds.PointInside(posX, posY);
         }
 
         public virtual string MouseOverCursor { get; protected set; } = null;

@@ -65,7 +65,6 @@ namespace Vintagestory.API.Common
         /// All selected players
         /// </summary>
         /// <param name="argName"></param>
-        /// <param name="onResultReady"></param>
         /// <returns></returns>
         public PlayersArgParser PlayerUids(string argName) => new PlayersArgParser(argName, api, true);
 

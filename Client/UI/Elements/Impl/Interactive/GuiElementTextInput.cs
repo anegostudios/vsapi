@@ -80,7 +80,7 @@ namespace Vintagestory.API.Client
                 api.Render.Render2DTexture(highlightTexture.TextureId, highlightBounds);
             } else
             {
-                if (placeHolderTextTexture != null && (text == null || text.Length == 0) && (Lines == null || Lines.Count == 0 || Lines[0] == null || Lines[0] == ""))
+                if (placeHolderTextTexture != null && (text == null || text.Length == 0) && (lines == null || lines.Count == 0 || lines[0] == null || lines[0] == ""))
                 {
                     api.Render.GlToggleBlend(true);
                     api.Render.Render2DTexturePremultipliedAlpha(

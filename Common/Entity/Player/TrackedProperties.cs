@@ -12,6 +12,7 @@ namespace Vintagestory.API.Common.Entities
 
         public float DayLight = 1;
 
+        public float DistanceToSpawnPoint;
         
 
         public float MoonLight = 0;

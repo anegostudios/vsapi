@@ -219,7 +219,7 @@ namespace Vintagestory.API.Client
             ctx.SelectFontFace(Fontname, Slant, FontWeight);
             CairoFontOptions = new FontOptions();
 
-            //Antialias.Best does not work on Linux it completely borks the font
+            // Antialias.Best does not work on Linux it completely borks the font
             CairoFontOptions.Antialias = Antialias.Subpixel;
             ctx.FontOptions = CairoFontOptions;
 

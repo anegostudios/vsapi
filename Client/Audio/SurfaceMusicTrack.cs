@@ -68,6 +68,9 @@ namespace Vintagestory.API.Client
         [JsonProperty]
         public float MaxLatitude = 1;
 
+        [JsonProperty]
+        public float DistanceToSpawnPoint = -1;
+
         /// <summary>
         /// The current song's priority. If higher than 1, will stop other tracks and start this one
         /// </summary>
@@ -264,6 +267,7 @@ namespace Vintagestory.API.Client
             if (musicEngine.LastPlayedTrack == this) return false;
             if (conds.Temperature > MaxTemperature) return false;
             if (conds.Rainfall < MinRainFall) return false;
+            if (props.DistanceToSpawnPoint < DistanceToSpawnPoint) return false;
             float season = capi.World.Calendar.GetSeasonRel(pos);
             if (season < MinSeason || season > MaxSeason) return false;
 

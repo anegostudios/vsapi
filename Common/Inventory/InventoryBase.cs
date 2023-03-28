@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -704,6 +706,7 @@ namespace Vintagestory.API.Common
             
             if (slot.Itemstack.Collectible.Attributes?.IsTrue("allowHotCrafting") != true && slot.Itemstack.Collectible.GetTemperature(Api.World, slot.Itemstack) > 300 && !hasHeatResistantHandGear(player))
             {
+                (Api as ICoreServerAPI).SendIngameError(player as IServerPlayer, "requiretongs", Lang.Get("Requires tongs to hold"));
                 player.Entity.ReceiveDamage(new DamageSource() { DamageTier = 0, Source = EnumDamageSource.Player, SourceEntity = player.Entity, Type = EnumDamageType.Fire }, 1);
                 player.InventoryManager.DropItem(slot, true);
             }

@@ -31,7 +31,7 @@ namespace Vintagestory.API.Client
         {
             if (Autoheight)
             {
-                Bounds.fixedHeight = Math.Max(minHeight, textUtil.GetMultilineTextHeight(Font, string.Join("\n", Lines), Bounds.InnerWidth));
+                Bounds.fixedHeight = Math.Max(minHeight, textUtil.GetMultilineTextHeight(Font, string.Join("\n", lines), Bounds.InnerWidth));
             }
             Bounds.CalcWorldBounds();
             base.TextChanged();
