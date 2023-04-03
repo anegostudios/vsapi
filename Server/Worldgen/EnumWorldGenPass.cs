@@ -24,7 +24,7 @@ namespace Vintagestory.API.Server
         /// Does not require neighbour chunks to exist. Should generates 3d rock terrain mostly. Default generators by execute order:
         /// 0 = Basic 3D Terrain (granite+rock)
         /// 0.1 = Rock Strata
-        /// 0.3 = Cave generator 
+        /// 0.3 = Cave generator
         /// 0.4 = Block layers (soil, gravel, sand, ice, tall grass, etc.)
         /// </summary>
         Terrain = 1,
@@ -45,6 +45,7 @@ namespace Vintagestory.API.Server
 
         /// <summary>
         /// Requires neighbour chunks. Default generators by execute order:
+        /// 0.2 = Story structures. Creates exclusion zones for the other vegetation passes
         /// 0.5 = Block Patches, Shrubs and Trees
         /// 0.9 = Rivulets (single block water sources)
         /// 0.95 = Sunlight flooding only inside current chunk

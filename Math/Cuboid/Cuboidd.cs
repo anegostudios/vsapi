@@ -485,7 +485,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Performs a 3-dimensional rotation on the cuboid and returns a new axis-aligned cuboid resulting from this rotation. Not sure it it makes any sense to use this for other rotations than 90 degree intervals.
+        /// Performs a 3-dimensional rotation on the cuboid and returns a new axis-aligned cuboid resulting from this rotation. Not sure it makes any sense to use this for other rotations than 90 degree intervals.
         /// </summary>
         public Cuboidd RotatedCopy(IVec3 vec, Vec3d origin)
         {

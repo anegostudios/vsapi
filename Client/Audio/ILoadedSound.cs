@@ -106,6 +106,8 @@ namespace Vintagestory.API.Client
         void SetPosition(Vec3f position);
         void SetPosition(float x, float y, float z);
 
+        void SetLooping(bool on);
+
         /// <summary>
         /// Fades the sounds volumne to given value
         /// </summary>

@@ -1011,6 +1011,7 @@ namespace Vintagestory.API.Common
                     be.FromTreeAttributes(tree, worldForCollectibleResolve);
                     be.OnLoadCollectibleMappings(worldForCollectibleResolve, blockCodes, itemCodes, schematicSeed);
                     be.OnPlacementBySchematic(worldForCollectibleResolve.Api as ICoreServerAPI, blockAccessor, curPos);
+                    if (!(blockAccessor is IWorldGenBlockAccessor)) be.MarkDirty();
                 }
             }
 

@@ -337,7 +337,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Vec3d PushVector { get; set; }
 
-
+        public float TraversalCost;
         public bool CanStep = true;
         public bool AllowStepWhenStuck = false;
 
@@ -378,6 +378,7 @@ namespace Vintagestory.API.Common
         {
             PushVector = Attributes?["pushVector"]?.AsObject<Vec3d>();
             AllowStepWhenStuck = Attributes?["allowStepWhenStuck"]?.AsBool(false) ?? false;
+            CanStep = Attributes?["canStep"].AsBool(true) ?? true;
 
             base.OnLoaded(api);
 

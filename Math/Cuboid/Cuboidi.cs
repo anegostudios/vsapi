@@ -28,6 +28,8 @@ namespace Vintagestory.API.MathTools
         [ProtoMember(6)]
         public int Z2;
 
+        public int[] Coordinates => new int[] { X1, Y1, Z1, X2, Y2, Z2 };
+
         public int MinX
         {
             get { return Math.Min(X1, X2); }
@@ -112,6 +114,11 @@ namespace Vintagestory.API.MathTools
         public Cuboidi()
         {
 
+        }
+
+        public Cuboidi(int[] coordinates)
+        {
+            Set(coordinates[0], coordinates[1], coordinates[2], coordinates[3], coordinates[4], coordinates[5]);
         }
 
         public Cuboidi(int x1, int y1, int z1, int x2, int y2, int z2)

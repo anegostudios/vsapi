@@ -707,7 +707,7 @@ namespace Vintagestory.API.Common
             if (slot.Itemstack.Collectible.Attributes?.IsTrue("allowHotCrafting") != true && slot.Itemstack.Collectible.GetTemperature(Api.World, slot.Itemstack) > 300 && !hasHeatResistantHandGear(player))
             {
                 (Api as ICoreServerAPI).SendIngameError(player as IServerPlayer, "requiretongs", Lang.Get("Requires tongs to hold"));
-                player.Entity.ReceiveDamage(new DamageSource() { DamageTier = 0, Source = EnumDamageSource.Player, SourceEntity = player.Entity, Type = EnumDamageType.Fire }, 1);
+                player.Entity.ReceiveDamage(new DamageSource() { DamageTier = 0, Source = EnumDamageSource.Player, SourceEntity = player.Entity, Type = EnumDamageType.Fire }, 0.25f);
                 player.InventoryManager.DropItem(slot, true);
             }
         }
