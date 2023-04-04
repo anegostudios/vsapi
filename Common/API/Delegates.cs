@@ -144,7 +144,7 @@ namespace Vintagestory.API.Common
     public delegate void BlockBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel, ref float dropQuantityMultiplier, ref EnumHandling handling);
 
     public delegate bool CanUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
-    public delegate bool CanPlaceOrBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
+    public delegate bool CanPlaceOrBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel, out string claimant);
 
 
 

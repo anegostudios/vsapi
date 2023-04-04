@@ -292,7 +292,7 @@ namespace Vintagestory.API.Common
             string arg = PopWord()?.ToLowerInvariant();
             if (arg == null) return defaultValue;
 
-            return arg == "1" || arg == "yes" || arg == "true" || arg == trueAlias;
+            return arg == "1" || arg == "yes" || arg == "true" || arg == "on" || arg == trueAlias;
         }
 
         

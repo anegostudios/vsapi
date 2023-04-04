@@ -460,7 +460,7 @@ namespace Vintagestory.API.Client
             CalcHeightAndPositions();
             Bounds.CalcWorldBounds();
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.InnerWidth, (int)Bounds.InnerHeight);
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
             Context ctx = genContext(surface);
             ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
 
