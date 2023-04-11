@@ -215,12 +215,12 @@ namespace Vintagestory.API.Common
                 pos.Motion *= (float)Math.Pow(airDragValue, dt * 33);
             }
 
-            Block inblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z, BlockLayersAccess.Fluid);
-            Block aboveblock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
+            Block inblockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z, BlockLayersAccess.Fluid);
+            Block aboveblockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
 
             if (entity.FeetInLiquid)
             {
-                Vec3d pushvec = inblock.PushVector;
+                Vec3d pushvec = inblockFluid.PushVector;
                 if (pushvec != null)
                 {
                     float pushstrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500) * dtFac;
@@ -243,9 +243,9 @@ namespace Vintagestory.API.Common
                 {
                     // above 0 => floats
                     // below 0 => sinks
-                    float baseboyancy = GameMath.Clamp(1 - entity.MaterialDensity / inblock.MaterialDensity, -1, 1);
+                    float baseboyancy = GameMath.Clamp(1 - entity.MaterialDensity / inblockFluid.MaterialDensity, -1, 1);
 
-                    float waterY = (int)pos.Y + inblock.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9/8f : 0);
+                    float waterY = (int)pos.Y + inblockFluid.LiquidLevel / 8f + (aboveblockFluid.IsLiquid() ? 9/8f : 0);
 
                     float bottomSubmergedness = waterY - (float)pos.Y;
                     
@@ -313,10 +313,10 @@ namespace Vintagestory.API.Common
             Block block = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt, BlockLayersAccess.Fluid);
 
             entity.FeetInLiquid = block.MatterState == EnumMatterState.Liquid;
-            entity.InLava = entity.World.BlockAccessor.GetBlock(pos.XInt, pos.YInt, pos.ZInt).LiquidCode == "lava";
+            entity.InLava = block.LiquidCode == "lava";
             if (entity.FeetInLiquid)
             {
-                float waterY = (int)pos.Y + block.LiquidLevel / 8f + (aboveblock.IsLiquid() ? 9 / 8f : 0);
+                float waterY = (int)pos.Y + block.LiquidLevel / 8f + (aboveblockFluid.IsLiquid() ? 9 / 8f : 0);
                 float bottomSubmergedness = waterY - (float)pos.Y;
 
                 // 0 = at swim line

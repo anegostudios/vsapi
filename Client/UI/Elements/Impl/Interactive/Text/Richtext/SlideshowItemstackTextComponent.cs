@@ -156,7 +156,12 @@ namespace Vintagestory.API.Client
             if (Background)
             {
                 ctx.SetSourceRGBA(1, 1, 1, 0.2);
-                ctx.Rectangle(BoundsPerLine[0].X, BoundsPerLine[0].Y - BoundsPerLine[0].Ascent / 2 /* why /2??? */, BoundsPerLine[0].Width, BoundsPerLine[0].Height);
+                ctx.Rectangle(
+                    BoundsPerLine[0].X, 
+                    BoundsPerLine[0].Y,  /* - BoundsPerLine[0].Ascent / 2 */ /* why /2??? */ /* why this ascent at all???? wtf? */
+                    BoundsPerLine[0].Width, 
+                    BoundsPerLine[0].Height
+                );
                 ctx.Fill();
             }
         }
@@ -188,7 +193,7 @@ namespace Vintagestory.API.Client
             
             scibounds.CalcWorldBounds();
             scibounds.absFixedX = renderX + bounds.X + renderOffset.X;
-            scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y - BoundsPerLine[0].Ascent / 2;
+            scibounds.absFixedY = renderY + bounds.Y + renderOffset.Y /*- BoundsPerLine[0].Ascent / 2 - why???? */;
             scibounds.absInnerWidth *= renderSize / 0.58f;
             scibounds.absInnerHeight *= renderSize / 0.58f;
 
@@ -196,7 +201,7 @@ namespace Vintagestory.API.Client
 
             api.Render.RenderItemstackToGui(slot, 
                 renderX + bounds.X + bounds.Width * 0.5f + renderOffset.X + offX, 
-                renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY - BoundsPerLine[0].Ascent / 2, 
+                renderY + bounds.Y + bounds.Height * 0.5f + renderOffset.Y + offY /*- BoundsPerLine[0].Ascent / 2 - why?????*/, 
                 100 + renderOffset.Z, (float)bounds.Width * renderSize, 
                 ColorUtil.WhiteArgb, true, false, ShowStackSize
             );

@@ -83,7 +83,7 @@ namespace Vintagestory.API.Datastructures
             );
         }
 
-        public float GetUnpaddedIntLerpedForBlockPos(int x, int z, int regionSize)
+        public int GetUnpaddedIntLerpedForBlockPos(int x, int z, int regionSize)
         {
             int noiseSize = InnerSize;
 

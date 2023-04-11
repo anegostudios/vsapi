@@ -13,7 +13,11 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The cameras current pitch
         /// </summary>
-        float CameraPitch { get; }
+        float CameraPitch { get; set; }
+
+        float CameraRoll { get; set; }
+
+        float CameraYaw { get; set; }
 
 
 

@@ -895,7 +895,7 @@ namespace Vintagestory.API.Common
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
 
-            if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
+            if (player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator && motionY < -0.1)
             {
                 EntityPos pos = SidedPos;
                 var blockUnder = BlockUnderPlayer(pos);

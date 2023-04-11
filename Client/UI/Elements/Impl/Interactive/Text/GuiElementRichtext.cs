@@ -166,7 +166,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < Components.Length; i++)
             {
                 comp = Components[i];
-
+               
                 double nextPosX;
                 var calcBoundResult = comp.CalcBounds(flowPathList.ToArray(), lineHeight, posX, posY, out nextPosX);
 

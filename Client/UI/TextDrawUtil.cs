@@ -305,7 +305,8 @@ namespace Vintagestory.API.Client
                     // Tyron Mar11: Why only in the beginning of a line? It doesnt line break after a short word then
                     // Tyron Mar18: Turns out perhaps it was meant to be an || because a 2nd word in a line thats oversized and already got its own line can still overflow
                     // Tyron Mar20: || breaks normal word line breaking
-                    if (word.Length > 0 && (lineTextBldr.Length == 0/* || curX == currentSection.X1*/)) //  && curX == currentSection.X1 - why?
+                    // Tyron Apr10: This *needs* to check that we are not at the beginning of the line, i.e. startOffsetX==0, otherwise we break apart words that shouldnt be broken apart (In this case Shift -> Shif t in the tutorial)
+                    if (word.Length > 0 && (lineTextBldr.Length == 0 && startOffsetX == 0 /* || curX == currentSection.X1*/)) //  && curX == currentSection.X1 - why?
                     {
                         int tries = 500;
                         while (word.Length > 0 && nextWidth >= usableWidth && tries-- > 0)

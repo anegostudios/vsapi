@@ -369,10 +369,11 @@ namespace Vintagestory.API.Common.Entities
         public bool InRangeOf(Vec3d position, float horRangeSq, float vertRange)
         {
             double dx = x - position.X;
-            double dy = y - position.Y;
             double dz = z - position.Z;
+            if (dx * dx + dz * dz > horRangeSq) return false;
 
-            return dx * dx + dz * dz <= horRangeSq && Math.Abs(dy) <= vertRange;
+            double dy = y - position.Y;
+            return Math.Abs(dy) <= vertRange;
         }
 
         /// <summary>

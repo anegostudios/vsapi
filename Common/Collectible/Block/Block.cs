@@ -1467,7 +1467,14 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < 0.2)
+            // entity height
+            // Player: 1.85
+            // Chicken: 0.6
+            // Hare: 0.5
+            // Fox: 0.75
+            float chanceReduction = Math.Max(0, 0.75f - entity.CollisionBox.Height);
+            float triggerChance = entity.WatchedAttributes.GetFloat("impactBlockUpdateChance", 0.2f - chanceReduction);
+            if (isImpact && collideSpeed.Y < -0.05 && world.Rand.NextDouble() < triggerChance)
             {
                 OnNeighbourBlockChange(world, pos, pos.UpCopy());
             }

@@ -127,6 +127,8 @@ namespace Vintagestory.API.Client
 
         protected double GetFontOrientOffsetX()
         {
+            if (Lines.Length == 0) return 0;
+
             var textLine = Lines[Lines.Length - 1];
             double offsetX = 0; if (Font.Orientation == EnumTextOrientation.Center)
             {
