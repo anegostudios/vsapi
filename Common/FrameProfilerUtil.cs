@@ -140,25 +140,30 @@ namespace Vintagestory.API.Common
         /// <param name="code"></param>
         public void Mark(string code)
         {
-            if (!Enabled && !PrintSlowTicks || currentEntry == null) return;
+            if (!Enabled && !PrintSlowTicks) return;
             if (code == null) throw new ArgumentNullException("marker name may not be null!");
 
-            var entry = currentEntry;
-
-            if (entry.Marks == null) entry.Marks = new Dictionary<string, ProfileEntry>();
-
-            ProfileEntry ms;
-            if (!entry.Marks.TryGetValue(code, out ms))
+            try
             {
-                ms = new ProfileEntry();
-                entry.Marks[code] = ms;
+                var entry = currentEntry;
+                if (entry == null) return;
+                var marks = entry.Marks;
+                if (marks == null) entry.Marks = marks = new Dictionary<string, ProfileEntry>();
+
+                ProfileEntry ms;
+                if (!marks.TryGetValue(code, out ms))
+                {
+                    ms = new ProfileEntry();
+                    marks[code] = ms;
+                }
+
+                long ticks = stopwatch.ElapsedTicks;
+
+                ms.ElapsedTicks += (int)(ticks - entry.LastMark);
+                ms.CallCount++;
+                entry.LastMark = ticks;
             }
-
-            long ticks = stopwatch.ElapsedTicks;
-
-            ms.ElapsedTicks += (int)(ticks - entry.LastMark);
-            ms.CallCount++;
-            entry.LastMark = ticks;
+            catch (Exception _) { }
         }
 
         /// <summary>
@@ -190,36 +195,41 @@ namespace Vintagestory.API.Common
 
         void slowTicksToString(ProfileEntryRange entry, StringBuilder strib, double thresholdMs = 0.35, string indent = "")
         {
-            double timeMS = (double)entry.ElapsedTicks / Stopwatch.Frequency * 1000;
-            if (timeMS < thresholdMs) return;
+            try
+            {
+                double timeMS = (double)entry.ElapsedTicks / Stopwatch.Frequency * 1000;
+                if (timeMS < thresholdMs) return;
 
-            if (entry.CallCount > 1)
-            {
-                strib.AppendLine(
-                    indent + string.Format("{0:0.00}ms, {1:####} calls, avg {2:0.00} us/call: {3:0.00}",
-                    timeMS, entry.CallCount, (timeMS * 1000 / Math.Max(entry.CallCount, 1)), entry.Code)
-                );
-            } else
-            {
-                strib.AppendLine(
-                    indent + string.Format("{0:0.00}ms, {1:####} call : {2}",
-                    timeMS, entry.CallCount, entry.Code)
-                );
+                if (entry.CallCount > 1)
+                {
+                    strib.AppendLine(
+                        indent + string.Format("{0:0.00}ms, {1:####} calls, avg {2:0.00} us/call: {3:0.00}",
+                        timeMS, entry.CallCount, (timeMS * 1000 / Math.Max(entry.CallCount, 1)), entry.Code)
+                    );
+                }
+                else
+                {
+                    strib.AppendLine(
+                        indent + string.Format("{0:0.00}ms, {1:####} call : {2}",
+                        timeMS, entry.CallCount, entry.Code)
+                    );
+                }
+
+                List<ProfileEntryRange> profiles = new List<ProfileEntryRange>();
+
+                if (entry.Marks != null) profiles.AddRange(entry.Marks.Select(e => new ProfileEntryRange() { ElapsedTicks = e.Value.ElapsedTicks, Code = e.Key, CallCount = e.Value.CallCount }));
+                if (entry.ChildRanges != null) profiles.AddRange(entry.ChildRanges.Values);
+
+                var profsordered = profiles.OrderByDescending((prof) => prof.ElapsedTicks);
+
+                int i = 0;
+                foreach (var prof in profsordered)
+                {
+                    if (i++ > 8) return;
+                    slowTicksToString(prof, strib, thresholdMs, indent + "  ");
+                }
             }
-
-            List<ProfileEntryRange> profiles = new List<ProfileEntryRange>();
-
-            if (entry.Marks != null) profiles.AddRange(entry.Marks.Select(e => new ProfileEntryRange() { ElapsedTicks = e.Value.ElapsedTicks, Code = e.Key, CallCount = e.Value.CallCount }));
-            if (entry.ChildRanges != null) profiles.AddRange(entry.ChildRanges.Values);
-
-            var profsordered = profiles.OrderByDescending((prof) => prof.ElapsedTicks);
-
-            int i = 0;
-            foreach (var prof in profsordered)
-            {
-                if (i++ > 8) return;
-                slowTicksToString(prof, strib, thresholdMs, indent + "  ");
-            }
+            catch (Exception _) { }
         }
     }
 }
