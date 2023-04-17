@@ -20,6 +20,7 @@ namespace Vintagestory.API.Common
         Crushing,
         Frost,
         Electricity,
-        Heat
+        Heat,
+        Injury
     }
 }
