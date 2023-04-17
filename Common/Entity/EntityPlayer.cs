@@ -1111,22 +1111,22 @@ namespace Vintagestory.API.Common
 
                 if (damageSource.Type == EnumDamageType.BluntAttack || damageSource.Type == EnumDamageType.PiercingAttack || damageSource.Type == EnumDamageType.SlashingAttack)
                 {
-                    msg = Lang.Get(heal ? "Gained {0:0.##} hp through {1}" : "Lost {0:0.##} hp through {1} (source: {2})", damage, damageSource.Type.ToString().ToLowerInvariant(), damageSource.Source);
+                    msg = Lang.Get(heal ? "damagelog-heal-attack" : "damagelog-damage-attack", damage, damageSource.Type.ToString().ToLowerInvariant(), damageSource.Source);
                 } else
                 {
-                    msg = Lang.Get(heal ? "Gained {0:0.##} hp through {1}" : "Lost {0:0.##} hp through {1}", damage, damageSource.Type.ToString().ToLowerInvariant());
+                    msg = Lang.Get(heal ? "damagelog-heal" : "damagelog-damage", damage, damageSource.Type.ToString().ToLowerInvariant());
                 }
 
                 if (damageSource.Source == EnumDamageSource.Player)
                 {
                     EntityPlayer eplr = damageSource.SourceEntity as EntityPlayer;
-                    msg = Lang.Get(heal ? "Gained {0:0.##} hp by player {1}" : "Lost {0:0.##} hp by player {1}", damage, damageSource.Source.ToString().ToLowerInvariant(), World.PlayerByUid(eplr.PlayerUID).PlayerName);
+                    msg = Lang.Get(heal ? "damagelog-heal-byplayer" : "damagelog-damage-byplayer", damage, World.PlayerByUid(eplr.PlayerUID).PlayerName);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Entity)
                 {
                     string creatureName = Lang.Get("prefixandcreature-" + damageSource.SourceEntity.Code.Path.Replace("-", ""));
-                    msg = Lang.Get(heal ? "Gained {0:0.##} hp by {1}" : "Lost {0:0.##} hp by {1} (Creature)", damage, creatureName);
+                    msg = Lang.Get(heal ? "damagelog-heal-byentity" : "damagelog-damage-byentity", damage, creatureName);
                 }
 
                 (World.PlayerByUid(PlayerUID) as IServerPlayer).SendMessage(GlobalConstants.DamageLogChatGroup, msg, EnumChatType.Notification);

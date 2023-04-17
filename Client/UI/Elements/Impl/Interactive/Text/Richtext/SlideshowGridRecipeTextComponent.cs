@@ -146,7 +146,7 @@ namespace Vintagestory.API.Client
                 string trait = GridRecipesAndUnIn[i].Recipe.RequiresTrait;
                 if (trait != null)
                 {
-                    extraTexts[i] = capi.Gui.TextTexture.GenTextTexture(Lang.Get("* Requires {0} trait", trait), CairoFont.WhiteDetailText());
+                    extraTexts[i] = capi.Gui.TextTexture.GenTextTexture(Lang.Get("gridrecipe-requirestrait", trait), CairoFont.WhiteDetailText());
                     if (!extraline) BoundsPerLine[0].Height += GuiElement.scaled(20);
                     extraline = true;
                 }

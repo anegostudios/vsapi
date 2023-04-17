@@ -49,17 +49,6 @@ namespace Vintagestory.API.Server
         /// </summary>
         IServerPlayerData ServerData { get; }
 
-        /// <summary>
-        /// Returns the players privilege role
-        /// </summary>
-        /// <returns></returns>
-        IPlayerRole Role { get; set; }
-
-
-        /// <summary>
-        /// The players player group memberships
-        /// </summary>
-        PlayerGroupMembership[] Groups { get; }
 
         /// <summary>
         /// Notifies all clients of given players playerdata. Useful when you modified any of the WorldData. Does nothing if this player is not connected. Also sends the player data to the player himself

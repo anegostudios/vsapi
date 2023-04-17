@@ -216,6 +216,10 @@ namespace Vintagestory.API.Common
             => Log(EnumLogType.Audit, format, args);
         public void Audit(string message)
             => Log(EnumLogType.Audit, message, _emptyArgs);
-        
+
+        public void Worldgen(string format, params object[] args)
+            => Log(EnumLogType.Worldgen, format, args);
+        public void Worldgen(string message)
+            => Log(EnumLogType.Worldgen, message, _emptyArgs);
     }
 }

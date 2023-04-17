@@ -14,6 +14,7 @@ namespace Vintagestory.API.Common
         Warning,
         Error,
         Fatal,
-        Audit
+        Audit,
+        Worldgen
     }
 }

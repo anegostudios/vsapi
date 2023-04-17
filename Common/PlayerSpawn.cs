@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Vintagestory.API.Server
+namespace Vintagestory.API.Common
 {
 
     [ProtoContract]

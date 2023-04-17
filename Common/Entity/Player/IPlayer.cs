@@ -13,6 +13,18 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IPlayer
     {
+
+        /// <summary>
+        /// Returns the players privilege role
+        /// </summary>
+        /// <returns></returns>
+        IPlayerRole Role { get; set; }
+
+        /// <summary>
+        /// The players player group memberships
+        /// </summary>
+        PlayerGroupMembership[] Groups { get; }
+
         /// <summary>
         /// Load the players group that he is a member of
         /// </summary>

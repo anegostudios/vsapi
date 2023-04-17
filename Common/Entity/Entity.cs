@@ -297,6 +297,11 @@ namespace Vintagestory.API.Common.Entities
         public Vec3d ownPosRepulse = new Vec3d();
         public bool hasRepulseBehavior = false;
 
+        /// <summary>
+        /// Used for efficiency in multi-player servers, to avoid regenerating the packet again for each connected client
+        /// </summary>
+        public object packet;
+
         #endregion
 
         #region Properties

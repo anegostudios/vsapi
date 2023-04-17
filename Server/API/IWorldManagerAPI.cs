@@ -318,11 +318,18 @@ namespace Vintagestory.API.Server
         void UnloadChunkColumn(int chunkX, int chunkZ);
 
         /// <summary>
-        /// Deletes a column of chunks at given coordinate from the save file. Also deletes the map chunk and map region at the same coordinate. Also unloads the chunk in the same process. Also deletes all entities in this chunk
+        /// Deletes a column of chunks at given coordinate from the save file. Also deletes the map chunk at the same coordinate (but keeps the map region). Also unloads the chunk in the same process. Also deletes all entities in this chunk
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
         void DeleteChunkColumn(int chunkX, int chunkZ);
+
+        /// <summary>
+        /// Deletes a map region at given coordinate from the save file
+        /// </summary>
+        /// <param name="regionX"></param>
+        /// <param name="regionZ"></param>
+        void DeleteMapRegion(int regionX, int regionZ);
 
         /// <summary>
         /// Width of the current world

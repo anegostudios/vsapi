@@ -1,14 +1,10 @@
 ﻿using ProtoBuf;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
-namespace Vintagestory.API.Server
+namespace Vintagestory.API.Common
 {
     public enum EnumOwnerType
     {
@@ -164,7 +160,7 @@ namespace Vintagestory.API.Server
             };
         }
 
-        public EnumPlayerAccessResult TestPlayerAccess(IServerPlayer player, EnumBlockAccessFlags claimFlag)
+        public EnumPlayerAccessResult TestPlayerAccess(IPlayer player, EnumBlockAccessFlags claimFlag)
         {
             // Owner
             if (player.PlayerUID.Equals(OwnedByPlayerUid))

@@ -3,8 +3,9 @@ using System.Drawing;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
-namespace Vintagestory.API.Server
+namespace Vintagestory.API.Common
 {
+
     public interface IPlayerRole
     {
         bool AutoGrant { get; set; }

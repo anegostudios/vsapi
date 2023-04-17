@@ -149,7 +149,43 @@ namespace Vintagestory.API.Config
         protected string Format(string value, params object[] args)
         {
             if (value.ContainsFast("{p")) return PluralFormat(value, args);
-            return string.Format(value, args);
+            return TryFormat(value, args);
+        }
+
+        private string TryFormat(string value, params object[] args)
+        {
+            string result;
+            try
+            {
+                result = string.Format(value, args);
+            }
+            catch (Exception _)
+            {
+                result = value;
+                if (logger != null)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("Translation string format exception thrown for: \"");
+                    for (int i = 0; i < value.Length; i++)
+                    {
+                        char c = value[i];
+                        sb.Append(c);
+                        if (c == '{' || c == '}') sb.Append(c);   // Need to escape {0} because the logger itself uses string.Format()!!!!
+                    }
+                    sb.Append("\"\n   Args were: ");
+                    for (int i = 0; i < args.Length; i++)
+                    {
+                        if (i > 0) sb.Append(", ");
+                        sb.Append(args[i].ToString());
+                    }
+                    try
+                    {
+                        logger.Warning(sb.ToString());
+                    }
+                    catch (Exception e) { logger.Error("Exception thrown when trying to print exception message for an incorrect translation entry. Exception: " + e); }
+                }
+            }
+            return result;
         }
 
         // General format: {p#:string0|string1|string2...} where # is a parameter index similar to using {0}, so zero for the first parameter etc.  That parameter should be a number, N
@@ -167,14 +203,14 @@ namespace Vintagestory.API.Config
         private string PluralFormat(string value, object[] args)
         {
             int start = value.IndexOf("{p");
-            if (value.Length < start + 5) return string.Format(value, args);   // Fail: too short to even allow sense checks without error
+            if (value.Length < start + 5) return TryFormat(value, args);   // Fail: too short to even allow sense checks without error
             int pluralOffset = start + 4;
             int end = value.IndexOf("}", pluralOffset);
 
             // Sense checks
             char c = value[start + 2];
-            if (c < '0' || c > '9') return string.Format(value, args);   // Fail: no argument number specified
-            if (end < 0) return string.Format(value, args);   // Fail: no closing curly brace
+            if (c < '0' || c > '9') return TryFormat(value, args);   // Fail: no argument number specified
+            if (end < 0) return TryFormat(value, args);   // Fail: no closing curly brace
             int argNum = c - '0';
             if ((c = value[start + 3]) != ':')
             {
@@ -183,7 +219,7 @@ namespace Vintagestory.API.Config
                     argNum = argNum * 10 + c - '0';
                     pluralOffset++;
                 }
-                else return string.Format(value, args);   // Fail: no colon in position 3 or 4
+                else return TryFormat(value, args);   // Fail: no colon in position 3 or 4
             }
             if (argNum >= args.Length) throw new IndexOutOfRangeException("Index out of range: Plural format {p#:...} referenced an argument " + argNum + " but only " + args.Length + " arguments were available in the code");
             float N = 0;
@@ -206,9 +242,9 @@ namespace Vintagestory.API.Config
             for (int i = argNum + 1; i < args.Length; i++) argsAfter[i - argNum - 1] = args[i];
 
             StringBuilder sb = new StringBuilder();
-            sb.Append(string.Format(before, argsBefore));
+            sb.Append(TryFormat(before, argsBefore));
             sb.Append(BuildPluralFormat(plural, N));
-            sb.Append(Format(after, argsAfter));   // there could be further instances of {p#:...} after this
+            sb.Append(TryFormat(after, argsAfter));   // there could be further instances of {p#:...} after this
             return sb.ToString();
         }
 

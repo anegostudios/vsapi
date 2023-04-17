@@ -73,7 +73,7 @@ namespace Vintagestory.API.Common
                     return value+"";
                 case EnumDataType.DropDown:
                     int index = Values.IndexOf((string)value);
-                    return index >= 0 ? Names[index] : value+"";
+                    return index >= 0 ? Lang.Get("worldconfig-" + Code + "-" + Names[index]) : value+"";
 
                 case EnumDataType.IntInput:
                 case EnumDataType.IntRange:
