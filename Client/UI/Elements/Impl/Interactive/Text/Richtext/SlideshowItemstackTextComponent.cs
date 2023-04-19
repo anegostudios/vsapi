@@ -11,6 +11,9 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
 
+
+    public delegate ItemStack StackDisplayDelegate();
+
     /// <summary>
     /// Draws multiple itemstacks
     /// </summary>
@@ -36,6 +39,8 @@ namespace Vintagestory.API.Client
         public float renderSize = 0.58f;
 
         double unscaledSize;
+
+        public StackDisplayDelegate overrideCurrentItemStack;
 
         /// <summary>
         /// Flips through given array of item stacks every second
@@ -185,6 +190,8 @@ namespace Vintagestory.API.Client
                 secondsVisible = 1;
                 curItemIndex = (curItemIndex + 1) % Itemstacks.Length;
             }
+
+            if (overrideCurrentItemStack != null) itemstack = overrideCurrentItemStack();
 
             slot.Itemstack = itemstack;
 

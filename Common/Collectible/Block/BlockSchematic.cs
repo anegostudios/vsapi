@@ -73,16 +73,15 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public EnumReplaceMode ReplaceMode = EnumReplaceMode.ReplaceAllNoAir;
 
-
+        [JsonProperty]
+        public int EntranceRotation = -1;
 
         public Dictionary<BlockPos, int> BlocksUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, int> FluidsLayerUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
         public List<Entity> EntitiesUnpacked = new List<Entity>();
         public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
-
         
-
 
         protected Block fillerBlock;
         protected Block pathwayBlock;
@@ -609,6 +608,10 @@ namespace Vintagestory.API.Common
             EntitiesUnpacked.Clear();
 
             angle = GameMath.Mod(angle, 360);
+            if (EntranceRotation != -1)
+            {
+                EntranceRotation = GameMath.Mod(EntranceRotation + angle, 360);
+            }
 
             for (int i = 0; i < Indices.Count; i++)
             {

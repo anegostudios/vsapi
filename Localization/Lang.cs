@@ -197,7 +197,7 @@ namespace Vintagestory.API.Config
         /// <returns>Returns <c>null</c> as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</returns>
         public static string GetMatchingIfExists(string key, params object[] args)
         {
-            return HasTranslation(key)
+            return HasTranslation(key, true, false)
                 ? AvailableLanguages[CurrentLocale].GetMatchingIfExists(key, args)
                 : AvailableLanguages[DefaultLocale].GetMatchingIfExists(key, args);
         }
@@ -223,9 +223,9 @@ namespace Vintagestory.API.Config
         /// <param name="key">The key.</param>
         /// <param name="findWildcarded">if set to <c>true</c>, the scan will include any wildcarded values.</param>
         /// <returns><c>true</c> if the specified key has a translation; otherwise, <c>false</c>.</returns>
-        public static bool HasTranslation(string key, bool findWildcarded = true)
+        public static bool HasTranslation(string key, bool findWildcarded = true, bool logErrors = true)
         {
-            return AvailableLanguages[CurrentLocale].HasTranslation(key, findWildcarded);
+            return AvailableLanguages[CurrentLocale].HasTranslation(key, findWildcarded, logErrors);
         }
 
         public static void InitialiseSearch()

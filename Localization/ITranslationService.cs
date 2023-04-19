@@ -87,6 +87,15 @@ namespace Vintagestory.API.Config
         bool HasTranslation(string key, bool findWildcarded = true);
 
         /// <summary>
+        ///     Determines whether the specified key has a translation.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="findWildcarded">if set to <c>true</c>, the scan will include any wildcarded values.</param>
+        /// <param name="logErrors">if set to <c>true</c>, will add "Lang key not found" logging</param>
+        /// <returns><c>true</c> if the specified key has a translation; otherwise, <c>false</c>.</returns>
+        bool HasTranslation(string key, bool findWildcarded, bool logErrors);
+
+        /// <summary>
         ///     Specifies an asset manager to use, when the service has been lazy-loaded.
         /// </summary>
         /// <param name="assetManager">The <see cref="IAssetManager"/> instance used within the sided API.</param>

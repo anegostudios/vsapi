@@ -365,14 +365,27 @@ namespace Vintagestory.API.Config
         /// <returns><c>true</c> if the specified key has a translation; otherwise, <c>false</c>.</returns>
         public bool HasTranslation(string key, bool findWildcarded = true)
         {
+            return HasTranslation(key, findWildcarded, true);
+        }
+
+        /// <summary>
+        /// Determines whether the specified key has a translation.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="findWildcarded">if set to <c>true</c>, the scan will include any wildcarded values.</param>
+        /// <param name="logErrors">if set to <c>true</c>, will add "Lang key not found" logging</param>
+        /// <returns><c>true</c> if the specified key has a translation; otherwise, <c>false</c>.</returns>
+        public bool HasTranslation(string key, bool findWildcarded, bool logErrors)
+        {
             EnsureLoaded();
             var validKey = KeyWithDomain(key);
             if (entryCache.ContainsKey(validKey)) return true;
             if (findWildcarded)
             {
+                if (!key.Contains(":")) key = "game:" + key;
                 bool result = wildcardCache.Any(pair => key.StartsWithFast(pair.Key));
                 if (!result) result = regexCache.Values.Any(pair => pair.Key.IsMatch(validKey));
-                if (!result && !key.Contains("desc-") && notFound.Add(key)) logger.VerboseDebug("Lang key not found: " + key.Replace("{", "{{").Replace("}", "}}"));
+                if (!result && logErrors && !key.Contains("desc-") && notFound.Add(key)) logger.VerboseDebug("Lang key not found: " + key.Replace("{", "{{").Replace("}", "}}"));
                 return result;
             }
             return false;

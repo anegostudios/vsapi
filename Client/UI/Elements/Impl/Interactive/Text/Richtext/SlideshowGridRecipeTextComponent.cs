@@ -23,6 +23,8 @@ namespace Vintagestory.API.Client
         public Dictionary<int, ItemStack[]> unnamedIngredients;
     }
 
+    
+
     /// <summary>
     /// Draws multiple itemstacks
     /// </summary>
@@ -42,6 +44,10 @@ namespace Vintagestory.API.Client
         Dictionary<int, LoadedTexture> extraTexts = new Dictionary<int, LoadedTexture>();
 
         LoadedTexture hoverTexture;
+
+        public GridRecipeAndUnnamedIngredients CurrentVisibleRecipe;
+
+        
 
         /// <summary>
         /// Flips through given array of grid recipes every second
@@ -146,7 +152,7 @@ namespace Vintagestory.API.Client
                 string trait = GridRecipesAndUnIn[i].Recipe.RequiresTrait;
                 if (trait != null)
                 {
-                    extraTexts[i] = capi.Gui.TextTexture.GenTextTexture(Lang.Get("gridrecipe-requirestrait", trait), CairoFont.WhiteDetailText());
+                    extraTexts[i] = capi.Gui.TextTexture.GenTextTexture(Lang.Get("gridrecipe-requirestrait", Lang.Get("traitname-" + trait)), CairoFont.WhiteDetailText());
                     if (!extraline) BoundsPerLine[0].Height += GuiElement.scaled(20);
                     extraline = true;
                 }
@@ -265,7 +271,7 @@ namespace Vintagestory.API.Client
             int rely = (int)(api.Input.MouseY - renderY);
             bool mouseover = bounds.PointInside(relx, rely);
 
-            GridRecipeAndUnnamedIngredients recipeunin = GridRecipesAndUnIn[curItemIndex];
+            GridRecipeAndUnnamedIngredients recipeunin = CurrentVisibleRecipe = GridRecipesAndUnIn[curItemIndex];
 
             if (!mouseover && (secondsVisible -= deltaTime) <= 0)
             {
@@ -273,7 +279,6 @@ namespace Vintagestory.API.Client
                 curItemIndex = (curItemIndex + 1) % GridRecipesAndUnIn.Length;
                 secondCounter++;
             }
-
 
             LoadedTexture extraTextTexture;
             if (extraTexts.TryGetValue(curItemIndex, out extraTextTexture))
