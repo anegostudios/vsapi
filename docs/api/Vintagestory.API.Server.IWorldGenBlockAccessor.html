@@ -324,6 +324,39 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IWorldGenBlockAccessor : IBlockAccessor</code></pre>
   </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldGenBlockAccessor_WorldgenWorldAccessor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldGenBlockAccessor.WorldgenWorldAccessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L12">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Server_IWorldGenBlockAccessor_WorldgenWorldAccessor_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.WorldgenWorldAccessor*"></a>
+  <h4 id="Vintagestory_API_Server_IWorldGenBlockAccessor_WorldgenWorldAccessor" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.WorldgenWorldAccessor">WorldgenWorldAccessor</h4>
+  <div class="markdown level1 summary"><p>Returns a special IWorldAccessor which wraps the standard one with one difference: it returns this IWorldGenBlockAccessor as its BlockAccessor, in place of the general BlockAccessor for this world</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerWorldAccessor WorldgenWorldAccessor { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Server.IServerWorldAccessor.html">IServerWorldAccessor</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -331,7 +364,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldGenBlockAccessor_AddEntity_Vintagestory_API_Common_Entities_Entity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldGenBlockAccessor.AddEntity(Vintagestory.API.Common.Entities.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L32">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L37">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IWorldGenBlockAccessor_AddEntity_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.AddEntity*"></a>
   <h4 id="Vintagestory_API_Server_IWorldGenBlockAccessor_AddEntity_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.AddEntity(Vintagestory.API.Common.Entities.Entity)">AddEntity(Entity)</h4>
@@ -364,7 +397,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldGenBlockAccessor_BeginColumn.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldGenBlockAccessor.BeginColumn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L34">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L39">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IWorldGenBlockAccessor_BeginColumn_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.BeginColumn*"></a>
   <h4 id="Vintagestory_API_Server_IWorldGenBlockAccessor_BeginColumn" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.BeginColumn">BeginColumn()</h4>
@@ -379,7 +412,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldGenBlockAccessor_RunScheduledBlockLightUpdates.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldGenBlockAccessor.RunScheduledBlockLightUpdates%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L26">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L31">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IWorldGenBlockAccessor_RunScheduledBlockLightUpdates_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.RunScheduledBlockLightUpdates*"></a>
   <h4 id="Vintagestory_API_Server_IWorldGenBlockAccessor_RunScheduledBlockLightUpdates" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.RunScheduledBlockLightUpdates">RunScheduledBlockLightUpdates()</h4>
@@ -395,7 +428,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldGenBlockAccessor_ScheduleBlockLightUpdate_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldGenBlockAccessor.ScheduleBlockLightUpdate(Vintagestory.API.MathTools.BlockPos%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L21">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L26">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IWorldGenBlockAccessor_ScheduleBlockLightUpdate_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.ScheduleBlockLightUpdate*"></a>
   <h4 id="Vintagestory_API_Server_IWorldGenBlockAccessor_ScheduleBlockLightUpdate_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.ScheduleBlockLightUpdate(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)">ScheduleBlockLightUpdate(BlockPos, Int32, Int32)</h4>
@@ -438,7 +471,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IWorldGenBlockAccessor_ScheduleBlockUpdate_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IWorldGenBlockAccessor.ScheduleBlockUpdate(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L13">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/Worldgen/IWorldGenBlockAccessor.cs/#L18">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IWorldGenBlockAccessor_ScheduleBlockUpdate_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.ScheduleBlockUpdate*"></a>
   <h4 id="Vintagestory_API_Server_IWorldGenBlockAccessor_ScheduleBlockUpdate_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Server.IWorldGenBlockAccessor.ScheduleBlockUpdate(Vintagestory.API.MathTools.BlockPos)">ScheduleBlockUpdate(BlockPos)</h4>
