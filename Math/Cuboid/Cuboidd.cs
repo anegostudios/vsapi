@@ -374,7 +374,7 @@ namespace Vintagestory.API.MathTools
         public double pushOutX(Cuboidd from, double motx, ref EnumPushDirection direction)
         {
             direction = EnumPushDirection.None;
-            if (from.Y2 > Y1 && from.Y1 < Y2 && from.Z2 > Z1 && from.Z1 < Z2)
+            if (from.Z2 > Z1 && from.Z1 < Z2 && from.Y2 > Y1 && from.Y1 < Y2)
             {
                 if (motx > 0.0D && from.X2 <= X1 && X1 - from.X2 < motx)
                 {

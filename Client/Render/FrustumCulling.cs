@@ -60,18 +60,17 @@ namespace Vintagestory.API.Client
         public bool AABBisOutside(Sphere sphere)
         {
             // The 8 corners of the AABB can be found from the Sphere object, by adding or subtracting halfCubeSize from the centre position
-            float halfCubeSize = sphere.radius / SQRT3;    // this value is 16 if the sphere represents a chunk and chunksize is 32
 
             // Optimised algorithm: First, figure out which of the 8 corners of the AABB we are going to test against this plane - if even the "lowest" corner (the corner in the direction most opposed to the plane normal direction) is outside (above) the plane then the whole AABB must be outside the plane
             // X axis 
             int sign = normalX > 0 ? 1 : -1;
-            float testX = sphere.x + sign * halfCubeSize;
+            double testX = (double)sphere.x + sign * sphere.radius / SQRT3;   // sphere.radius is 16 if the sphere represents a chunk and chunksize is 32
 
             sign = normalY > 0 ? 1 : -1;
-            float testY = sphere.y + sign * halfCubeSize;
+            double testY = (double)sphere.y + sign * sphere.radiusY / SQRT3;
 
             sign = normalZ > 0 ? 1 : -1;
-            float testZ = sphere.z + sign * halfCubeSize;
+            double testZ = (double)sphere.z + sign * sphere.radiusZ / SQRT3;
 
             // Now see if that test corner is "outside" the plane
             return testX * normalX + testY * normalY + testZ * normalZ + D < 0;

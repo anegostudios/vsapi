@@ -524,9 +524,9 @@ namespace Vintagestory.API.Common.Entities
 
             WatchedAttributes.RegisterModifiedListener("entityDead", updateColSelBoxes);
 
-            WatchedAttributes.RegisterModifiedListener("grow", () =>
+            if (World.Side == EnumAppSide.Client && Properties.Client.SizeGrowthFactor != 0)
             {
-                if (World.Side == EnumAppSide.Client)
+                WatchedAttributes.RegisterModifiedListener("grow", () =>
                 {
                     float factor = Properties.Client.SizeGrowthFactor;
                     if (factor != 0)
@@ -534,8 +534,8 @@ namespace Vintagestory.API.Common.Entities
                         var origc = World.GetEntityType(this.Code).Client;
                         Properties.Client.Size = origc.Size + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
                     }
-                }
-            });
+                });
+            }
 
             if (Properties.CollisionBoxSize != null || properties.SelectionBoxSize != null)
             {
@@ -825,37 +825,54 @@ namespace Vintagestory.API.Common.Entities
                 DebugAttributes.MarkAllDirty();
             }
 
-            if (World.Side == EnumAppSide.Client) alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
-
-            if (World.FrameProfiler.Enabled)
-            {
-                World.FrameProfiler.Enter("behaviors");
-                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
-                {
-                    behavior.OnGameTick(dt);
-                    World.FrameProfiler.Mark(behavior.ProfilerName);
-                }
-                World.FrameProfiler.Leave();
-            }
-            else
-            {
-                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
-                {
-                    behavior.OnGameTick(dt);
-                }
-            }
-
-
             if (World.Side == EnumAppSide.Client)
             {
+                alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
+
+                if (World.FrameProfiler.Enabled)
+                {
+                    World.FrameProfiler.Enter("behaviors");
+                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    {
+                        behavior.OnGameTick(dt);
+                        World.FrameProfiler.Mark(behavior.ProfilerName);
+                    }
+                    World.FrameProfiler.Leave();
+                }
+                else
+                {
+                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    {
+                        behavior.OnGameTick(dt);
+                    }
+                }
+
                 if (World.Rand.NextDouble() < IdleSoundChanceModifier * Properties.IdleSoundChance / 100.0 && Alive)
                 {
                     PlayEntitySound("idle", null, true, Properties.IdleSoundRange);
                 }
             }
-            else if (InLava)  // Serverside
+            else   // Serverside
             {
-                Ignite();
+                if (World.FrameProfiler.Enabled)
+                {
+                    World.FrameProfiler.Enter("behaviors");
+                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    {
+                        behavior.OnGameTick(dt);
+                        World.FrameProfiler.Mark(behavior.ProfilerName);
+                    }
+                    World.FrameProfiler.Leave();
+                }
+                else
+                {
+                    foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                    {
+                        behavior.OnGameTick(dt);
+                    }
+                }
+
+                if (InLava) Ignite();
             }
 
 

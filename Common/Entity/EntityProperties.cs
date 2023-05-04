@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -14,6 +10,11 @@ namespace Vintagestory.API.Common.Entities
 {
     public class EntityProperties
     {
+        /// <summary>
+        /// Assigned on registering the entity type
+        /// </summary>
+        public int Id;
+
         /// <summary>
         /// The entity code in the code.
         /// </summary>
@@ -313,7 +314,20 @@ namespace Vintagestory.API.Common.Entities
         
         public EntitySidedProperties(JsonObject[] behaviors)
         {
-            this.BehaviorsAsJsonObj = behaviors;
+            BehaviorsAsJsonObj = new JsonObject[behaviors.Length];
+            int count = 0;
+            for (int i = 0; i < behaviors.Length; i++)
+            {
+                JsonObject jobj = behaviors[i];
+                bool enabled = jobj["enabled"].AsBool(true);
+                if (!enabled) continue;
+                string code = jobj["code"].AsString();
+                if (code == null) continue;
+                
+                BehaviorsAsJsonObj[count++] = jobj;
+            }
+
+            if (count < behaviors.Length) Array.Resize(ref BehaviorsAsJsonObj, count);
         }
 
         public void loadBehaviors(Entity entity, EntityProperties properties, IWorldAccessor world)
@@ -324,20 +338,14 @@ namespace Vintagestory.API.Common.Entities
 
             for (int i = 0; i < BehaviorsAsJsonObj.Length; i++)
             {
-                string code = BehaviorsAsJsonObj[i]["code"].AsString();
-                bool enabled = BehaviorsAsJsonObj[i]["enabled"].AsBool(true);
-
-                if (!enabled)
-                {
-                    continue;
-                }
-                if (code == null) continue;
+                JsonObject jobj = BehaviorsAsJsonObj[i];
+                string code = jobj["code"].AsString();
 
                 if (world.ClassRegistry.GetEntityBehaviorClass(code) != null)
                 {
                     EntityBehavior behavior = world.ClassRegistry.CreateEntityBehavior(entity, code);
                     Behaviors.Add(behavior);
-                    behavior.Initialize(properties, BehaviorsAsJsonObj[i]);
+                    behavior.Initialize(properties, jobj);
                 } else
                 {
                     world.Logger.Notification("Entity behavior {0} for entity {1} not found, will not load it.", code, properties.Code);
@@ -484,10 +492,12 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-
-            var cprop = world.EntityTypes.FirstOrDefault(et => et.Code.Equals(entityTypeCode))?.Client;          
-            LoadedShape = cprop?.LoadedShape;
-            LoadedAlternateShapes = cprop?.LoadedAlternateShapes;
+            if (world != null)
+            {
+                var cprop = world.EntityTypes.FirstOrDefault(et => et.Code.Equals(entityTypeCode))?.Client;
+                LoadedShape = cprop?.LoadedShape;
+                LoadedAlternateShapes = cprop?.LoadedAlternateShapes;
+            }
         }
         
         /// <summary>

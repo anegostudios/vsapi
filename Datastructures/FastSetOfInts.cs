@@ -6,7 +6,6 @@ namespace Vintagestory.API.Datastructures
 {
     public class FastSetOfInts : IEnumerable<int>
     {
-        int arraySize = 27;
         int size = 0;
         int[] set;
 
@@ -19,7 +18,7 @@ namespace Vintagestory.API.Datastructures
 
         public FastSetOfInts()
         {
-            set = new int[arraySize];
+            set = new int[27];
         }
 
         /// <summary>
@@ -50,7 +49,7 @@ namespace Vintagestory.API.Datastructures
             }
 
             // now actually add the value
-            if (size + 1 >= arraySize) expandArray();
+            if (size >= set.Length) expandArray();
             set[size++] = value;
             return true;
 
@@ -79,11 +78,10 @@ namespace Vintagestory.API.Datastructures
 
         private void expandArray()
         {
-            int newSize = arraySize * 3 / 2 + 1;
+            int newSize = set.Length * 3 / 2 + 1;
             int[] newArray = new int[newSize];
-            for (int i = 0; i < size; i++) newArray[i] = set[i];
+            for (int i = 0; i < set.Length; i++) newArray[i] = set[i];
             set = newArray;
-            arraySize = newSize;
         }
 
 

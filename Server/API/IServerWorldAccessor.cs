@@ -43,5 +43,10 @@ namespace Vintagestory.API.Server
         OrderedDictionary<AssetLocation, ITreeGenerator> TreeGenerators { get; }
 
         bool IsFullyLoadedChunk(BlockPos pos);
+
+        /// <summary>
+        /// Used for server-side entity physics ticking
+        /// </summary>
+        void AddPhysicsTick(IServerPhysicsTicker entitybehavior);
     }
 }

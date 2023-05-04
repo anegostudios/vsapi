@@ -39,6 +39,7 @@ namespace Vintagestory.API.MathTools
             this.Z = vec.Z;
         }
 
+        public long AsLong { get => ((long)Y << 52) + ((long)Z << 26) + X; }
 
         /// <summary>
         /// 0 = x, 1 = y, 2 = z

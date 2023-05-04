@@ -7,6 +7,11 @@ namespace Vintagestory.API.Server
     public interface IWorldGenBlockAccessor : IBlockAccessor
     {
         /// <summary>
+        /// Returns a special IWorldAccessor which wraps the standard one with one difference: it returns this IWorldGenBlockAccessor as its BlockAccessor, in place of the general BlockAccessor for this world
+        /// </summary>
+        IServerWorldAccessor WorldgenWorldAccessor { get; }
+
+        /// <summary>
         /// Tells the server to produce a block update at this given position once the chunk is fully generated and world ticking has begun
         /// </summary>
         /// <param name="pos"></param>

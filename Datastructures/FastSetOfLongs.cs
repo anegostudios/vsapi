@@ -6,7 +6,6 @@ namespace Vintagestory.API.Datastructures
 {
     public class FastSetOfLongs : IEnumerable<long>
     {
-        int arraySize = 27;
         int size = 0;
         long[] set;
         long last = long.MinValue;
@@ -21,7 +20,7 @@ namespace Vintagestory.API.Datastructures
 
         public FastSetOfLongs()
         {
-            set = new long[arraySize];
+            set = new long[27];
         }
 
         /// <summary>
@@ -31,7 +30,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public bool Add(long value)
         {
-            if (value == last) return false;
+            if (value == last && size > 0) return false;
             last = value;
 
             // fast search, start from the most recently added - this should be faster than any HashSet up to several hundred elements in size
@@ -42,7 +41,7 @@ namespace Vintagestory.API.Datastructures
             }
 
             // now actually add the value
-            if (size + 1 >= arraySize) expandArray();
+            if (size >= set.Length) expandArray();
             set[size++] = value;
             return true;
 
@@ -51,11 +50,10 @@ namespace Vintagestory.API.Datastructures
 
         private void expandArray()
         {
-            int newSize = arraySize * 3 / 2 + 1;
+            int newSize = set.Length * 3 / 2 + 1;
             long[] newArray = new long[newSize];
-            for (int i = 0; i < size; i++) newArray[i] = set[i];
+            for (int i = 0; i < set.Length; i++) newArray[i] = set[i];
             set = newArray;
-            arraySize = newSize;
         }
 
 

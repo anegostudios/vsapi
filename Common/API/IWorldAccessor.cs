@@ -169,6 +169,11 @@ namespace Vintagestory.API.Common
         List<EntityProperties> EntityTypes { get; }
 
         /// <summary>
+        /// List of the codes of all loaded entity types, in the AssetLocation short string format (e.g. "creature" for entities with domain game:, "domain:creature" for entities with other domains) 
+        /// </summary>
+        List<string> EntityTypeCodes { get; }
+
+        /// <summary>
         /// List of all loaded crafting recipes
         /// </summary>
         List<GridRecipe> GridRecipes { get; }

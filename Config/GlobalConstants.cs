@@ -22,6 +22,15 @@ namespace Vintagestory.API.Config
         public const string DefaultDomain = "game";
 
         /// <summary>
+        /// Hard-enforced world size limit, above this the code may break
+        /// </summary>
+        public const int MaxWorldSizeXZ = 33554432;   // 32 million equivalent in base 2  (2 to the power of 25;  we can maybe go to 64 million)
+        /// <summary>
+        /// Hard-enforced world height limit, above this the code may break
+        /// </summary>
+        public const int MaxWorldSizeY = 4096;     // If changing this, check BlockPos.AsLong
+
+        /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card
         /// </summary>
         public static int MaxAnimatedElements = 46;

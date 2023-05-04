@@ -265,11 +265,6 @@ namespace Vintagestory.API.Common
         string AdditionalInformation { get; }
 
         /// <summary>
-        /// Get a string showing how to call this command or subcommand
-        /// </summary>
-        string MethodSyntax { get; }
-
-        /// <summary>
         /// Get the examples of this command
         /// </summary>
         string[] Examples { get; }
@@ -391,6 +386,13 @@ namespace Vintagestory.API.Common
         IChatCommand IgnoreAdditionalArgs();
 
         IEnumerable<IChatCommand> Subcommands { get; }
+        Dictionary<string, IChatCommand> AllSubcommands { get; }
+
+        /// <summary>
+        /// Get a string showing how to call this command or subcommand
+        /// </summary>
+        string MethodSyntax(string name);
+
         /// <summary>
         /// Add text listing the parameters
         /// </summary>

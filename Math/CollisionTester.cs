@@ -25,7 +25,6 @@ namespace Vintagestory.API.MathTools
         public Vec3d tmpPosDelta = new Vec3d();
         public Vec3d tmpPositionVec = new Vec3d();
         public Cuboidd tempCuboid = new Cuboidd();
-        EnumPushDirection pushDirection = EnumPushDirection.None;
 
         protected BlockPos minPos = new BlockPos();
         protected BlockPos maxPos = new BlockPos();
@@ -44,6 +43,8 @@ namespace Vintagestory.API.MathTools
         {
             IWorldAccessor worldaccess = entity.World;
             Vec3d pos = entitypos.XYZ;
+            EnumPushDirection pushDirection = EnumPushDirection.None;
+            Cuboidd entityBox = this.entityBox;
 
             // Full stop when already inside a collisionbox, but allow a small margin of error
             // Disabled. Causes too many issues
@@ -70,15 +71,14 @@ namespace Vintagestory.API.MathTools
 
             GenerateCollisionBoxList(worldaccess.BlockAccessor, motionX, motionY, motionZ, stepHeight, YExtra);
 
-            tmpPosDelta.Set(motionX, motionY, motionZ);
-
 
             // Y - Collision (Vertical)
             bool collided = false;
 
-            for (int i = 0; i < CollisionBoxList.Count; i++)
+            int collisionBoxListCount = CollisionBoxList.Count;
+            for (int i = 0; i < collisionBoxListCount; i++)
             {
-                tmpPosDelta.Y = CollisionBoxList.cuboids[i].pushOutY(entityBox, tmpPosDelta.Y, ref pushDirection);
+                motionY = CollisionBoxList.cuboids[i].pushOutY(entityBox, motionY, ref pushDirection);
                 if (pushDirection == EnumPushDirection.None)
                     continue;
 
@@ -89,25 +89,27 @@ namespace Vintagestory.API.MathTools
                     entity,
                     CollisionBoxList.positions[i],
                     pushDirection == EnumPushDirection.Negative ? BlockFacing.UP : BlockFacing.DOWN,
-                    tmpPosDelta,
+                    tmpPosDelta.Set(motionX, motionY, motionZ),
                     !entity.CollidedVertically
                 );
             }
 
             entity.CollidedVertically = collided;
-            entityBox.Translate(0, tmpPosDelta.Y, 0);
+            entityBox.Translate(0, motionY, 0);
 
 
             var horizontalBlocked = false;
-            var entityBoxMovedXZ = entityBox.OffsetCopy(tmpPosDelta.X, 0, tmpPosDelta.Z);
+            entityBox.Translate(motionX, 0, motionZ);
             foreach (var cuboid in CollisionBoxList)
             {
-                if (cuboid.Intersects(entityBoxMovedXZ))
+                if (cuboid.Intersects(entityBox))
                 {
                     horizontalBlocked = true;
                     break;
                 }
             }
+            entityBox.Translate(-motionX, 0, -motionZ);  // cheaper than creating a new Cuboidd
+
 
             // No collisions for the entity found when testing horizontally, so skip this.
             // This allows entities to move around corners without falling down on a certain axis.
@@ -116,9 +118,9 @@ namespace Vintagestory.API.MathTools
             {
                 // X - Collision (Horizontal)
 
-                for (int i = 0; i < CollisionBoxList.Count; i++)
+                for (int i = 0; i < collisionBoxListCount; i++)
                 {
-                    tmpPosDelta.X = CollisionBoxList.cuboids[i].pushOutX(entityBox, tmpPosDelta.X, ref pushDirection);
+                    motionX = CollisionBoxList.cuboids[i].pushOutX(entityBox, motionX, ref pushDirection);
 
                     if (pushDirection == EnumPushDirection.None)
                     {
@@ -132,18 +134,18 @@ namespace Vintagestory.API.MathTools
                         entity,
                         CollisionBoxList.positions[i],
                         pushDirection == EnumPushDirection.Negative ? BlockFacing.EAST : BlockFacing.WEST,
-                        tmpPosDelta,
+                        tmpPosDelta.Set(motionX, motionY, motionZ),
                         !entity.CollidedHorizontally
                     );
                 }
 
-                entityBox.Translate(tmpPosDelta.X, 0, 0);
+                entityBox.Translate(motionX, 0, 0);
 
                 // Z - Collision (Horizontal)
 
-                for (int i = 0; i < CollisionBoxList.Count; i++)
+                for (int i = 0; i < collisionBoxListCount; i++)
                 {
-                    tmpPosDelta.Z = CollisionBoxList.cuboids[i].pushOutZ(entityBox, tmpPosDelta.Z, ref pushDirection);
+                    motionZ = CollisionBoxList.cuboids[i].pushOutZ(entityBox, motionZ, ref pushDirection);
                     if (pushDirection == EnumPushDirection.None)
                     {
                         continue;
@@ -156,7 +158,7 @@ namespace Vintagestory.API.MathTools
                         entity,
                         CollisionBoxList.positions[i],
                         pushDirection == EnumPushDirection.Negative ? BlockFacing.SOUTH : BlockFacing.NORTH,
-                        tmpPosDelta,
+                        tmpPosDelta.Set(motionX, motionY, motionZ),
                         !entity.CollidedHorizontally
                     );
                 }
@@ -166,12 +168,12 @@ namespace Vintagestory.API.MathTools
             entity.CollidedHorizontally = collided;
 
             //fix for player on ladder clipping into block above issue  (caused by the .CollisionBox not always having height precisely 1.85)
-            if (entity.CollidedVertically && tmpPosDelta.Y > 0)
+            if (motionY > 0 && entity.CollidedVertically)
             {
-                tmpPosDelta.Y -= entity.LadderFixDelta;
+                motionY -= entity.LadderFixDelta;
             }
 
-            outposition.Set(tmpPositionVec.X + tmpPosDelta.X, tmpPositionVec.Y + tmpPosDelta.Y, tmpPositionVec.Z + tmpPosDelta.Z);
+            outposition.Set(tmpPositionVec.X + motionX, tmpPositionVec.Y + motionY, tmpPositionVec.Z + motionZ);
         }
 
         protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra)

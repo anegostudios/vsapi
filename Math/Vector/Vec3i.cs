@@ -296,6 +296,8 @@ namespace Vintagestory.API.MathTools
 
         public static Vec3i Zero => new Vec3i(0, 0, 0);
 
+        public Vec2i XZ => new Vec2i(X, Z);
+
         public Vec3i AddCopy(BlockFacing facing)
         {
             return new Vec3i(X + facing.Normali.X, Y + facing.Normali.Y, Z + facing.Normali.Z);

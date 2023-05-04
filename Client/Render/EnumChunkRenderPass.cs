@@ -28,7 +28,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         Transparent = 3,
         /// <summary>
-        /// Same as OpaqueNoCull but with a few quirks
+        /// Used for animated liquids
         /// </summary>
         Liquid = 4,
         /// <summary>

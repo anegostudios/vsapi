@@ -233,6 +233,7 @@ namespace Vintagestory.API.Common
         /// Defines what creature groups may spawn on this block
         /// </summary>
         public string[] AllowSpawnCreatureGroups = new string[] { "*" };
+        public bool AllCreaturesAllowed;
 
         /// <summary>
         /// Determines which sides of the blocks should be rendered
@@ -707,11 +708,15 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return result;
 
-            bool allowedGroup =
+            bool allowedGroup = true;
+            if (!AllCreaturesAllowed)
+            {
+                allowedGroup =
                 AllowSpawnCreatureGroups != null &&
                 AllowSpawnCreatureGroups.Length > 0 &&
-                (AllowSpawnCreatureGroups.Contains(sc.Group) || AllowSpawnCreatureGroups.Contains("*"))
+                (AllowSpawnCreatureGroups.Contains("*") || AllowSpawnCreatureGroups.Contains(sc.Group))
             ;
+            }
 
             return allowedGroup && (!sc.RequireSolidGround || SideSolid[BlockFacing.UP.Index]);
         }
@@ -1434,7 +1439,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// When an entity is inside a block (can only occur if collision box is smaller than 1x1x1)
+        /// When an entity is inside a block 1x1x1 space, independent of of its selection box or collision box
         /// </summary>
         /// <param name="world"></param>
         /// <param name="entity"></param>

@@ -35,6 +35,13 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
+        /// Called after initializing all the behaviors in case they need to cross-refer to each other.
+        /// </summary>
+        public virtual void AfterInitialize()
+        {
+        }
+
+        /// <summary>
         /// The event fired when a game ticks over.
         /// </summary>
         /// <param name="deltaTime"></param>
