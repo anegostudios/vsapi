@@ -113,6 +113,10 @@ namespace Vintagestory.API.Common
         /// Adds a new <see cref="EnumLogType.Error"/> log entry with the specified message.
         /// </summary>
         void Error(string message);
+        /// <summary>
+        /// Convenience method for logging exceptions in try/catch blocks
+        /// </summary>
+        void Error(Exception e);
 
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Fatal"/> log entry with the specified format string and arguments.
@@ -206,6 +210,8 @@ namespace Vintagestory.API.Common
             => Log(EnumLogType.Error, format, args);
         public void Error(string message)
             => Log(EnumLogType.Error, message, _emptyArgs);
+        public void Error(Exception e)
+            => Log(EnumLogType.Error, "Exception: {0}\n{1}", new object[] { e.Message, e.StackTrace });
 
         public void Fatal(string format, params object[] args)
             => Log(EnumLogType.Fatal, format, args);
