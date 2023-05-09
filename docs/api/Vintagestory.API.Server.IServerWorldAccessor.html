@@ -344,11 +344,13 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_LoadedEntities.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.LoadedEntities%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L22">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L24">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerWorldAccessor_LoadedEntities_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.LoadedEntities*"></a>
   <h4 id="Vintagestory_API_Server_IServerWorldAccessor_LoadedEntities" data-uid="Vintagestory.API.Server.IServerWorldAccessor.LoadedEntities">LoadedEntities</h4>
-  <div class="markdown level1 summary"><p>The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you <em>really</em> know what you&apos;re doing. Use SpawnEntity/DespawnEntity instead.</p>
+  <div class="markdown level1 summary"><p>The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you <em>really</em> know what you&apos;re doing. Use SpawnEntity/DespawnEntity instead.
+<br><br>Intended to be used, for example, to search for an entity&apos;s presence, or to iterate through all loaded entities.
+<br><br>Please leave it to the game engine to add and remove entities from this dictionary.  From 1.18.2 onwards, if you really need to add or remove anything directly to/from this dictionary in your own code - which is <em>strongly</em> not recommended - then you should cast this to (CachingConcurrentDictionary) first.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -375,7 +377,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_TreeGenerators.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.TreeGenerators%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L43">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L45">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerWorldAccessor_TreeGenerators_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.TreeGenerators*"></a>
   <h4 id="Vintagestory_API_Server_IServerWorldAccessor_TreeGenerators" data-uid="Vintagestory.API.Server.IServerWorldAccessor.TreeGenerators">TreeGenerators</h4>
@@ -408,7 +410,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_AddPhysicsTick_Vintagestory_API_Server_IServerPhysicsTicker_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.AddPhysicsTick(Vintagestory.API.Server.IServerPhysicsTicker)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L50">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L52">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerWorldAccessor_AddPhysicsTick_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.AddPhysicsTick*"></a>
   <h4 id="Vintagestory_API_Server_IServerWorldAccessor_AddPhysicsTick_Vintagestory_API_Server_IServerPhysicsTicker_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.AddPhysicsTick(Vintagestory.API.Server.IServerPhysicsTicker)">AddPhysicsTick(IServerPhysicsTicker)</h4>
@@ -441,7 +443,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_System_Double_System_Double_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumBlastType%2CSystem.Double%2CSystem.Double%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L38">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L40">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion*"></a>
   <h4 id="Vintagestory_API_Server_IServerWorldAccessor_CreateExplosion_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_System_Double_System_Double_System_Single_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.CreateExplosion(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlastType,System.Double,System.Double,System.Single)">CreateExplosion(BlockPos, EnumBlastType, Double, Double, Single)</h4>
@@ -494,7 +496,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_DespawnEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityDespawnData_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.DespawnEntity(Vintagestory.API.Common.Entities.Entity%2CVintagestory.API.Common.Entities.EntityDespawnData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L29">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L31">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerWorldAccessor_DespawnEntity_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.DespawnEntity*"></a>
   <h4 id="Vintagestory_API_Server_IServerWorldAccessor_DespawnEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityDespawnData_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.DespawnEntity(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityDespawnData)">DespawnEntity(Entity, EntityDespawnData)</h4>
@@ -532,7 +534,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_IServerWorldAccessor_IsFullyLoadedChunk_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.IServerWorldAccessor.IsFullyLoadedChunk(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L45">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/IServerWorldAccessor.cs/#L47">View Source</a>
   </span>
   <a id="Vintagestory_API_Server_IServerWorldAccessor_IsFullyLoadedChunk_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.IsFullyLoadedChunk*"></a>
   <h4 id="Vintagestory_API_Server_IServerWorldAccessor_IsFullyLoadedChunk_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Server.IServerWorldAccessor.IsFullyLoadedChunk(Vintagestory.API.MathTools.BlockPos)">IsFullyLoadedChunk(BlockPos)</h4>

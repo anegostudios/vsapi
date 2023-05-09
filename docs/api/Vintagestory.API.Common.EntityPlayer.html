@@ -159,6 +159,12 @@
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_StopHandAnims">EntityAgent.StopHandAnims()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_insideBlock">EntityAgent.insideBlock</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_insidePos">EntityAgent.insidePos</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_UpdateDebugAttributes">EntityAgent.UpdateDebugAttributes()</a>
     </div>
     <div>
@@ -279,6 +285,9 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsOnFire">Entity.IsOnFire</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_resetLightHsv">Entity.resetLightHsv</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_InLava">Entity.InLava</a>
     </div>
     <div>
@@ -363,6 +372,9 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Alive">Entity.Alive</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_alive">Entity.alive</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_minRangeToClient">Entity.minRangeToClient</a>
     </div>
     <div>
@@ -370,6 +382,12 @@
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_RenderColor">Entity.RenderColor</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TriggerOnInitialized">Entity.TriggerOnInitialized()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_updateColSelBoxes">Entity.updateColSelBoxes()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_">Entity.GetDrops(IWorldAccessor, BlockPos, IPlayer)</a>
@@ -385,6 +403,12 @@
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_Common_Entities_EntityPos_Action_">Entity.TeleportTo(EntityPos, Action)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ApplyFireDamage_System_Single_">Entity.ApplyFireDamage(Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_DieInLava">Entity.DieInLava()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollided">Entity.OnCollided()</a>
@@ -553,7 +577,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer__ctor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L294">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L309">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer__ctor_" data-uid="Vintagestory.API.Common.EntityPlayer.#ctor*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer__ctor" data-uid="Vintagestory.API.Common.EntityPlayer.#ctor">EntityPlayer()</h4>
@@ -686,6 +710,36 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_entityListForPartitioning.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.entityListForPartitioning%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L116">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_EntityPlayer_entityListForPartitioning" data-uid="Vintagestory.API.Common.EntityPlayer.entityListForPartitioning">entityListForPartitioning</h4>
+  <div class="markdown level1 summary"><p>Used to assist if this EntityPlayer needs to be repartitioned</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;Entity&gt; entityListForPartitioning</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_EntitySelection.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.EntitySelection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -719,7 +773,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_lastRunningHeldHitAnimation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.lastRunningHeldHitAnimation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L679">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L709">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_lastRunningHeldHitAnimation" data-uid="Vintagestory.API.Common.EntityPlayer.lastRunningHeldHitAnimation">lastRunningHeldHitAnimation</h4>
   <div class="markdown level1 summary"></div>
@@ -748,7 +802,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_lastRunningHeldUseAnimation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.lastRunningHeldUseAnimation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L676">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L706">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_lastRunningHeldUseAnimation" data-uid="Vintagestory.API.Common.EntityPlayer.lastRunningHeldUseAnimation">lastRunningHeldUseAnimation</h4>
   <div class="markdown level1 summary"></div>
@@ -777,7 +831,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_lastRunningLeftHeldIdleAnimation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.lastRunningLeftHeldIdleAnimation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L678">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L708">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_lastRunningLeftHeldIdleAnimation" data-uid="Vintagestory.API.Common.EntityPlayer.lastRunningLeftHeldIdleAnimation">lastRunningLeftHeldIdleAnimation</h4>
   <div class="markdown level1 summary"></div>
@@ -806,7 +860,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_lastRunningRightHeldIdleAnimation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.lastRunningRightHeldIdleAnimation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L677">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L707">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_lastRunningRightHeldIdleAnimation" data-uid="Vintagestory.API.Common.EntityPlayer.lastRunningRightHeldIdleAnimation">lastRunningRightHeldIdleAnimation</h4>
   <div class="markdown level1 summary"></div>
@@ -865,7 +919,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_PrevFrameCanStandUp.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.PrevFrameCanStandUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L364">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L379">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_PrevFrameCanStandUp" data-uid="Vintagestory.API.Common.EntityPlayer.PrevFrameCanStandUp">PrevFrameCanStandUp</h4>
   <div class="markdown level1 summary"></div>
@@ -924,7 +978,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_selfClimateCond.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.selfClimateCond%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L365">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L380">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_selfClimateCond" data-uid="Vintagestory.API.Common.EntityPlayer.selfClimateCond">selfClimateCond</h4>
   <div class="markdown level1 summary"></div>
@@ -953,7 +1007,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_sidewaysSwivelAngle.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.sidewaysSwivelAngle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L615">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L645">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_sidewaysSwivelAngle" data-uid="Vintagestory.API.Common.EntityPlayer.sidewaysSwivelAngle">sidewaysSwivelAngle</h4>
   <div class="markdown level1 summary"></div>
@@ -982,7 +1036,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_talkTypeByAnimation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.talkTypeByAnimation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1018">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1048">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_EntityPlayer_talkTypeByAnimation" data-uid="Vintagestory.API.Common.EntityPlayer.talkTypeByAnimation">talkTypeByAnimation</h4>
   <div class="markdown level1 summary"></div>
@@ -1067,6 +1121,36 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_walkSpeed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.walkSpeed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L120">View Source</a>
+  </span>
+  <h4 id="Vintagestory_API_Common_EntityPlayer_walkSpeed" data-uid="Vintagestory.API.Common.EntityPlayer.walkSpeed">walkSpeed</h4>
+  <div class="markdown level1 summary"><p>This is not walkspeed per se, it is the walkspeed modifier as a result of armor and other gear.  It corresponds to Stats.GetBlended(&quot;walkspeed&quot;) and gets updated every tick</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float walkSpeed</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_WalkYaw.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.WalkYaw%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -1102,7 +1186,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_AlwaysActive.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.AlwaysActive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L253">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L268">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_AlwaysActive_" data-uid="Vintagestory.API.Common.EntityPlayer.AlwaysActive*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_AlwaysActive" data-uid="Vintagestory.API.Common.EntityPlayer.AlwaysActive">AlwaysActive</h4>
@@ -1134,7 +1218,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_BodyYaw.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.BodyYaw%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L115">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L124">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_BodyYaw_" data-uid="Vintagestory.API.Common.EntityPlayer.BodyYaw*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_BodyYaw" data-uid="Vintagestory.API.Common.EntityPlayer.BodyYaw">BodyYaw</h4>
@@ -1166,7 +1250,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_GearInventory.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.GearInventory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L190">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L205">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_GearInventory_" data-uid="Vintagestory.API.Common.EntityPlayer.GearInventory*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_GearInventory" data-uid="Vintagestory.API.Common.EntityPlayer.GearInventory">GearInventory</h4>
@@ -1199,7 +1283,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_IsInteractable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.IsInteractable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L271">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L286">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_IsInteractable_" data-uid="Vintagestory.API.Common.EntityPlayer.IsInteractable*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_IsInteractable" data-uid="Vintagestory.API.Common.EntityPlayer.IsInteractable">IsInteractable</h4>
@@ -1231,7 +1315,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_LadderFixDelta.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.LadderFixDelta%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L280">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L295">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_LadderFixDelta_" data-uid="Vintagestory.API.Common.EntityPlayer.LadderFixDelta*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_LadderFixDelta" data-uid="Vintagestory.API.Common.EntityPlayer.LadderFixDelta">LadderFixDelta</h4>
@@ -1263,7 +1347,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_LastReviveTotalHours.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.LastReviveTotalHours%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L132">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L141">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_LastReviveTotalHours_" data-uid="Vintagestory.API.Common.EntityPlayer.LastReviveTotalHours*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_LastReviveTotalHours" data-uid="Vintagestory.API.Common.EntityPlayer.LastReviveTotalHours">LastReviveTotalHours</h4>
@@ -1293,7 +1377,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_LeftHandItemSlot.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.LeftHandItemSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L178">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L193">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_LeftHandItemSlot_" data-uid="Vintagestory.API.Common.EntityPlayer.LeftHandItemSlot*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_LeftHandItemSlot" data-uid="Vintagestory.API.Common.EntityPlayer.LeftHandItemSlot">LeftHandItemSlot</h4>
@@ -1326,7 +1410,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_LightHsv.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.LightHsv%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L203">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L218">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_LightHsv_" data-uid="Vintagestory.API.Common.EntityPlayer.LightHsv*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_LightHsv" data-uid="Vintagestory.API.Common.EntityPlayer.LightHsv">LightHsv</h4>
@@ -1358,7 +1442,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_Player.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.Player%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L285">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L300">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_Player_" data-uid="Vintagestory.API.Common.EntityPlayer.Player*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_Player" data-uid="Vintagestory.API.Common.EntityPlayer.Player">Player</h4>
@@ -1389,7 +1473,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_PlayerUID.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.PlayerUID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L158">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L173">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_PlayerUID_" data-uid="Vintagestory.API.Common.EntityPlayer.PlayerUID*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_PlayerUID" data-uid="Vintagestory.API.Common.EntityPlayer.PlayerUID">PlayerUID</h4>
@@ -1420,7 +1504,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_RightHandItemSlot.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.RightHandItemSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L166">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L181">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_RightHandItemSlot_" data-uid="Vintagestory.API.Common.EntityPlayer.RightHandItemSlot*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_RightHandItemSlot" data-uid="Vintagestory.API.Common.EntityPlayer.RightHandItemSlot">RightHandItemSlot</h4>
@@ -1453,7 +1537,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_ShouldDespawn.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.ShouldDespawn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L258">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L273">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_ShouldDespawn_" data-uid="Vintagestory.API.Common.EntityPlayer.ShouldDespawn*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_ShouldDespawn" data-uid="Vintagestory.API.Common.EntityPlayer.ShouldDespawn">ShouldDespawn</h4>
@@ -1485,7 +1569,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_StoreWithChunk.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.StoreWithChunk%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L149">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L164">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_StoreWithChunk_" data-uid="Vintagestory.API.Common.EntityPlayer.StoreWithChunk*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_StoreWithChunk" data-uid="Vintagestory.API.Common.EntityPlayer.StoreWithChunk">StoreWithChunk</h4>
@@ -1519,7 +1603,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_canPlayEdgeSitAnim.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.canPlayEdgeSitAnim%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L857">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L887">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_canPlayEdgeSitAnim_" data-uid="Vintagestory.API.Common.EntityPlayer.canPlayEdgeSitAnim*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_canPlayEdgeSitAnim" data-uid="Vintagestory.API.Common.EntityPlayer.canPlayEdgeSitAnim">canPlayEdgeSitAnim()</h4>
@@ -1549,7 +1633,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_CanSpawnNearby_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_Entities_RuntimeSpawnConditions_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.CanSpawnNearby(Vintagestory.API.Common.Entities.EntityProperties%2CVintagestory.API.MathTools.Vec3d%2CVintagestory.API.Common.Entities.RuntimeSpawnConditions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L884">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L914">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_CanSpawnNearby_" data-uid="Vintagestory.API.Common.EntityPlayer.CanSpawnNearby*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_CanSpawnNearby_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_Entities_RuntimeSpawnConditions_" data-uid="Vintagestory.API.Common.EntityPlayer.CanSpawnNearby(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.Entities.RuntimeSpawnConditions)">CanSpawnNearby(EntityProperties, Vec3d, RuntimeSpawnConditions)</h4>
@@ -1606,7 +1690,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.Die(Vintagestory.API.Common.EnumDespawnReason%2CVintagestory.API.Common.DamageSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L943">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L973">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_Die_" data-uid="Vintagestory.API.Common.EntityPlayer.Die*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_" data-uid="Vintagestory.API.Common.EntityPlayer.Die(Vintagestory.API.Common.EnumDespawnReason,Vintagestory.API.Common.DamageSource)">Die(EnumDespawnReason, DamageSource)</h4>
@@ -1645,7 +1729,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_FromBytes_BinaryReader_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.FromBytes(BinaryReader%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1277">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1307">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_FromBytes_" data-uid="Vintagestory.API.Common.EntityPlayer.FromBytes*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_FromBytes_BinaryReader_System_Boolean_" data-uid="Vintagestory.API.Common.EntityPlayer.FromBytes(BinaryReader,System.Boolean)">FromBytes(BinaryReader, Boolean)</h4>
@@ -1684,7 +1768,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_GetInfoText.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.GetInfoText%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1254">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1284">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_GetInfoText_" data-uid="Vintagestory.API.Common.EntityPlayer.GetInfoText*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_GetInfoText" data-uid="Vintagestory.API.Common.EntityPlayer.GetInfoText">GetInfoText()</h4>
@@ -1716,7 +1800,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_GetName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.GetName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1247">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1277">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_GetName_" data-uid="Vintagestory.API.Common.EntityPlayer.GetName*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_GetName" data-uid="Vintagestory.API.Common.EntityPlayer.GetName">GetName()</h4>
@@ -1748,7 +1832,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_GetWalkSpeedMultiplier_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.GetWalkSpeedMultiplier(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L369">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L384">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_GetWalkSpeedMultiplier_" data-uid="Vintagestory.API.Common.EntityPlayer.GetWalkSpeedMultiplier*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_GetWalkSpeedMultiplier_System_Double_" data-uid="Vintagestory.API.Common.EntityPlayer.GetWalkSpeedMultiplier(System.Double)">GetWalkSpeedMultiplier(Double)</h4>
@@ -1797,7 +1881,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_HandleHandAnimations_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.HandleHandAnimations(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L682">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L712">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_HandleHandAnimations_" data-uid="Vintagestory.API.Common.EntityPlayer.HandleHandAnimations*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_HandleHandAnimations_System_Single_" data-uid="Vintagestory.API.Common.EntityPlayer.HandleHandAnimations(System.Single)">HandleHandAnimations(Single)</h4>
@@ -1831,7 +1915,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_Ignite.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.Ignite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1091">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1121">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_Ignite_" data-uid="Vintagestory.API.Common.EntityPlayer.Ignite*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_Ignite" data-uid="Vintagestory.API.Common.EntityPlayer.Ignite">Ignite()</h4>
@@ -1848,7 +1932,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.Initialize(Vintagestory.API.Common.Entities.EntityProperties%2CVintagestory.API.Common.ICoreAPI%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L329">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L344">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_Initialize_" data-uid="Vintagestory.API.Common.EntityPlayer.Initialize*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_" data-uid="Vintagestory.API.Common.EntityPlayer.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.ICoreAPI,System.Int64)">Initialize(EntityProperties, ICoreAPI, Int64)</h4>
@@ -1892,7 +1976,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_onAnimControls_Vintagestory_API_Common_AnimationMetaData_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.onAnimControls(Vintagestory.API.Common.AnimationMetaData%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L809">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L839">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_onAnimControls_" data-uid="Vintagestory.API.Common.EntityPlayer.onAnimControls*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_onAnimControls_Vintagestory_API_Common_AnimationMetaData_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Common.EntityPlayer.onAnimControls(Vintagestory.API.Common.AnimationMetaData,System.Boolean,System.Boolean)">onAnimControls(AnimationMetaData, Boolean, Boolean)</h4>
@@ -1951,7 +2035,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnAsyncParticleTick_System_Single_Vintagestory_API_Client_IAsyncParticleManager_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnAsyncParticleTick(System.Single%2CVintagestory.API.Client.IAsyncParticleManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L597">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L627">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnAsyncParticleTick_" data-uid="Vintagestory.API.Common.EntityPlayer.OnAsyncParticleTick*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnAsyncParticleTick_System_Single_Vintagestory_API_Client_IAsyncParticleManager_" data-uid="Vintagestory.API.Common.EntityPlayer.OnAsyncParticleTick(System.Single,Vintagestory.API.Client.IAsyncParticleManager)">OnAsyncParticleTick(Single, IAsyncParticleManager)</h4>
@@ -1990,7 +2074,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnCollideWithLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnCollideWithLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1186">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1216">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnCollideWithLiquid_" data-uid="Vintagestory.API.Common.EntityPlayer.OnCollideWithLiquid*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnCollideWithLiquid" data-uid="Vintagestory.API.Common.EntityPlayer.OnCollideWithLiquid">OnCollideWithLiquid()</h4>
@@ -2007,7 +2091,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnFallToGround_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnFallToGround(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L894">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L924">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnFallToGround_" data-uid="Vintagestory.API.Common.EntityPlayer.OnFallToGround*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnFallToGround_System_Double_" data-uid="Vintagestory.API.Common.EntityPlayer.OnFallToGround(System.Double)">OnFallToGround(Double)</h4>
@@ -2041,7 +2125,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnGameTick_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnGameTick(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L553">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L581">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnGameTick_" data-uid="Vintagestory.API.Common.EntityPlayer.OnGameTick*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnGameTick_System_Single_" data-uid="Vintagestory.API.Common.EntityPlayer.OnGameTick(System.Single)">OnGameTick(Single)</h4>
@@ -2075,7 +2159,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnHurt_Vintagestory_API_Common_DamageSource_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnHurt(Vintagestory.API.Common.DamageSource%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1100">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1130">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnHurt_" data-uid="Vintagestory.API.Common.EntityPlayer.OnHurt*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnHurt_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.EntityPlayer.OnHurt(Vintagestory.API.Common.DamageSource,System.Single)">OnHurt(DamageSource, Single)</h4>
@@ -2114,7 +2198,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnReceivedServerPacket_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnReceivedServerPacket(System.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1028">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1058">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnReceivedServerPacket_" data-uid="Vintagestory.API.Common.EntityPlayer.OnReceivedServerPacket*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnReceivedServerPacket_System_Int32_System_Byte___" data-uid="Vintagestory.API.Common.EntityPlayer.OnReceivedServerPacket(System.Int32,System.Byte[])">OnReceivedServerPacket(Int32, Byte[])</h4>
@@ -2153,7 +2237,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnSelfBeforeRender_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnSelfBeforeRender(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L382">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L410">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnSelfBeforeRender_" data-uid="Vintagestory.API.Common.EntityPlayer.OnSelfBeforeRender*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnSelfBeforeRender_System_Single_" data-uid="Vintagestory.API.Common.EntityPlayer.OnSelfBeforeRender(System.Single)">OnSelfBeforeRender(Single)</h4>
@@ -2185,7 +2269,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_OnTesselation_Vintagestory_API_Common_Shape__System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.OnTesselation(Vintagestory.API.Common.Shape%40%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L388">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L416">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_OnTesselation_" data-uid="Vintagestory.API.Common.EntityPlayer.OnTesselation*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_OnTesselation_Vintagestory_API_Common_Shape__System_String_" data-uid="Vintagestory.API.Common.EntityPlayer.OnTesselation(Vintagestory.API.Common.Shape@,System.String)">OnTesselation(ref Shape, String)</h4>
@@ -2224,7 +2308,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.PlayEntitySound(System.String%2CVintagestory.API.Common.IPlayer%2CSystem.Boolean%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L998">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1028">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_PlayEntitySound_" data-uid="Vintagestory.API.Common.EntityPlayer.PlayEntitySound*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_" data-uid="Vintagestory.API.Common.EntityPlayer.PlayEntitySound(System.String,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single)">PlayEntitySound(String, IPlayer, Boolean, Single)</h4>
@@ -2273,7 +2357,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_protectedEyesFromWind_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.protectedEyesFromWind(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L774">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L804">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_protectedEyesFromWind_" data-uid="Vintagestory.API.Common.EntityPlayer.protectedEyesFromWind*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_protectedEyesFromWind_System_Single_" data-uid="Vintagestory.API.Common.EntityPlayer.protectedEyesFromWind(System.Single)">protectedEyesFromWind(Single)</h4>
@@ -2305,7 +2389,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_Revive.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.Revive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L989">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1019">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_Revive_" data-uid="Vintagestory.API.Common.EntityPlayer.Revive*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_Revive" data-uid="Vintagestory.API.Common.EntityPlayer.Revive">Revive()</h4>
@@ -2322,7 +2406,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_SetCurrentlyControlledPlayer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.SetCurrentlyControlledPlayer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1181">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1211">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_SetCurrentlyControlledPlayer_" data-uid="Vintagestory.API.Common.EntityPlayer.SetCurrentlyControlledPlayer*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_SetCurrentlyControlledPlayer" data-uid="Vintagestory.API.Common.EntityPlayer.SetCurrentlyControlledPlayer">SetCurrentlyControlledPlayer()</h4>
@@ -2338,7 +2422,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1083">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1113">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_ShouldReceiveDamage_" data-uid="Vintagestory.API.Common.EntityPlayer.ShouldReceiveDamage*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.EntityPlayer.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)">ShouldReceiveDamage(DamageSource, Single)</h4>
@@ -2392,7 +2476,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_TeleportToDouble_System_Double_System_Double_System_Double_Action_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.TeleportToDouble(System.Double%2CSystem.Double%2CSystem.Double%2CAction)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1197">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1227">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_TeleportToDouble_" data-uid="Vintagestory.API.Common.EntityPlayer.TeleportToDouble*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_TeleportToDouble_System_Double_System_Double_System_Double_Action_" data-uid="Vintagestory.API.Common.EntityPlayer.TeleportToDouble(System.Double,System.Double,System.Double,Action)">TeleportToDouble(Double, Double, Double, Action)</h4>
@@ -2441,7 +2525,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_ToBytes_BinaryWriter_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.ToBytes(BinaryWriter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1286">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1318">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_ToBytes_" data-uid="Vintagestory.API.Common.EntityPlayer.ToBytes*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_ToBytes_BinaryWriter_System_Boolean_" data-uid="Vintagestory.API.Common.EntityPlayer.ToBytes(BinaryWriter,System.Boolean)">ToBytes(BinaryWriter, Boolean)</h4>
@@ -2480,7 +2564,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_TryGiveItemStack_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.TryGiveItemStack(Vintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L935">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L965">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_TryGiveItemStack_" data-uid="Vintagestory.API.Common.EntityPlayer.TryGiveItemStack*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_TryGiveItemStack_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.EntityPlayer.TryGiveItemStack(Vintagestory.API.Common.ItemStack)">TryGiveItemStack(ItemStack)</h4>
@@ -2529,7 +2613,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_TryMount_Vintagestory_API_Common_IMountable_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.TryMount(Vintagestory.API.Common.IMountable)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L979">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1009">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_TryMount_" data-uid="Vintagestory.API.Common.EntityPlayer.TryMount*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_TryMount_Vintagestory_API_Common_IMountable_" data-uid="Vintagestory.API.Common.EntityPlayer.TryMount(Vintagestory.API.Common.IMountable)">TryMount(IMountable)</h4>
@@ -2578,7 +2662,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_TryStopHandAction_System_Boolean_Vintagestory_API_Common_EnumItemUseCancelReason_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.TryStopHandAction(System.Boolean%2CVintagestory.API.Common.EnumItemUseCancelReason)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1138">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1168">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_TryStopHandAction_" data-uid="Vintagestory.API.Common.EntityPlayer.TryStopHandAction*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_TryStopHandAction_System_Boolean_Vintagestory_API_Common_EnumItemUseCancelReason_" data-uid="Vintagestory.API.Common.EntityPlayer.TryStopHandAction(System.Boolean,Vintagestory.API.Common.EnumItemUseCancelReason)">TryStopHandAction(Boolean, EnumItemUseCancelReason)</h4>
@@ -2629,10 +2713,25 @@
   <div><a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TryStopHandAction_System_Boolean_Vintagestory_API_Common_EnumItemUseCancelReason_">EntityAgent.TryStopHandAction(Boolean, EnumItemUseCancelReason)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_UpdatePartitioning.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.UpdatePartitioning%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L158">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_EntityPlayer_UpdatePartitioning_" data-uid="Vintagestory.API.Common.EntityPlayer.UpdatePartitioning*"></a>
+  <h4 id="Vintagestory_API_Common_EntityPlayer_UpdatePartitioning" data-uid="Vintagestory.API.Common.EntityPlayer.UpdatePartitioning">UpdatePartitioning()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UpdatePartitioning()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityPlayer_WalkInventory_Vintagestory_API_Common_OnInventorySlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityPlayer.WalkInventory(Vintagestory.API.Common.OnInventorySlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1161">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityPlayer.cs/#L1191">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntityPlayer_WalkInventory_" data-uid="Vintagestory.API.Common.EntityPlayer.WalkInventory*"></a>
   <h4 id="Vintagestory_API_Common_EntityPlayer_WalkInventory_Vintagestory_API_Common_OnInventorySlot_" data-uid="Vintagestory.API.Common.EntityPlayer.WalkInventory(Vintagestory.API.Common.OnInventorySlot)">WalkInventory(OnInventorySlot)</h4>

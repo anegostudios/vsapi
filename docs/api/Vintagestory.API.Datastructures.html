@@ -91,6 +91,11 @@
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.CachedCuboidList.html">CachedCuboidList</a></h4>
       <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Datastructures.CachingConcurrentDictionary-2.html">CachingConcurrentDictionary&lt;TKey, TValue&gt;</a></h4>
+      <section><p>Exactly like ConcurrentDictionary except that Values is cached for performance, instead of building a new List each time Values is accessed
+<br><br>The cache is only guaranteed up to date if CachedConcurrentDictionary.TryAdd, .TryRemove or [] methods are used to modify the Dictionary
+otherwise the cache will be updated next time when one of those methods is used</p>
+</section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.DoubleArrayAttribute.html">DoubleArrayAttribute</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Datastructures.DoubleAttribute.html">DoubleAttribute</a></h4>
