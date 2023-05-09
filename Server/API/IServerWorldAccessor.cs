@@ -18,6 +18,8 @@ namespace Vintagestory.API.Server
     {
         /// <summary>
         /// The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you *really* know what you're doing. Use SpawnEntity/DespawnEntity instead.
+        /// <br/><br/>Intended to be used, for example, to search for an entity's presence, or to iterate through all loaded entities.
+        /// <br/><br/>Please leave it to the game engine to add and remove entities from this dictionary.  From 1.18.2 onwards, if you really need to add or remove anything directly to/from this dictionary in your own code - which is *strongly* not recommended - then you should cast this to (CachingConcurrentDictionary) first.
         /// </summary>
         ConcurrentDictionary<long, Entity> LoadedEntities { get; }
 

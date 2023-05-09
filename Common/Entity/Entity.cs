@@ -228,7 +228,7 @@ namespace Vintagestory.API.Common.Entities
                 WatchedAttributes.SetBool("onFire", value);
             }
         }
-        bool resetLightHsv;
+        protected bool resetLightHsv;
 
         public bool InLava;
         public long InLavaBeginTotalMs;
@@ -306,7 +306,7 @@ namespace Vintagestory.API.Common.Entities
 
         #region Properties
 
-        public EntityProperties Properties { private set; get; }
+        public EntityProperties Properties { protected set; get; }
 
         public EntitySidedProperties SidedProperties
         {
@@ -409,7 +409,7 @@ namespace Vintagestory.API.Common.Entities
             }
 
         }
-        private bool alive=true;
+        protected bool alive=true;
         public float minRangeToClient;
 
         public float IdleSoundChanceModifier
@@ -448,6 +448,12 @@ namespace Vintagestory.API.Common.Entities
             AnimManager = new AnimationManager();
             Stats = new EntityStats(this);
             WatchedAttributes.SetAttribute("animations", new TreeAttribute());
+            WatchedAttributes.SetAttribute("extraInfoText", new TreeAttribute());
+        }
+
+        protected Entity(int trackingRange)
+        {
+            SimulationRange = trackingRange;
             WatchedAttributes.SetAttribute("extraInfoText", new TreeAttribute());
         }
 
@@ -553,9 +559,10 @@ namespace Vintagestory.API.Common.Entities
                 IPlayer[] players = World.AllOnlinePlayers;
                 for (int i = 0; i < players.Length; i++)
                 {
-                    if (players[i].Entity == null) continue;
+                    EntityPlayer entityPlayer = players[i].Entity;
+                    if (entityPlayer == null) continue;
 
-                    if (Pos.InRangeOf(players[i].Entity.Pos, SimulationRange * SimulationRange))
+                    if (Pos.InRangeOf(entityPlayer.Pos, SimulationRange * SimulationRange))
                     {
                         State = EnumEntityState.Active;
                         break;
@@ -583,11 +590,15 @@ namespace Vintagestory.API.Common.Entities
 
             LocalEyePos.Y = Properties.EyeHeight;
 
+            TriggerOnInitialized();
+        }
+
+        protected void TriggerOnInitialized()
+        {
             OnInitialized?.Invoke();
         }
 
-
-        private void updateColSelBoxes()
+        protected void updateColSelBoxes()
         {
             bool alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
@@ -819,7 +830,6 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="dt"></param>
         public virtual void OnGameTick(float dt)
         {
-            World.FrameProfiler.Mark("entity-tick-specificclasses"); // " + this.GetType().Name);
             if (World.EntityDebugMode) {
                 UpdateDebugAttributes();
                 DebugAttributes.MarkAllDirty();
@@ -902,28 +912,12 @@ namespace Vintagestory.API.Common.Entities
                     }
                     else
                     {
-                        fireDamageAccum += dt;
-                        if (fireDamageAccum > 1f)
-                        {
-                            ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = EnumDamageType.Fire }, 0.5f);
-                            fireDamageAccum = 0;
-                        }
+                        ApplyFireDamage(dt);
                     }
 
                     if (!alive && InLava && !(this is EntityPlayer))
                     {
-                        float q = GameMath.Clamp(SelectionBox.XSize * SelectionBox.YSize * SelectionBox.ZSize * 150, 10, 150);
-                        Api.World.SpawnParticles(
-                            q,
-                            ColorUtil.ColorFromRgba(20, 20, 20, 255),
-                            new Vec3d(ServerPos.X + SelectionBox.X1, ServerPos.Y + SelectionBox.Y1, ServerPos.Z + SelectionBox.Z1),
-                            new Vec3d(ServerPos.X + SelectionBox.X2, ServerPos.Y + SelectionBox.Y2, ServerPos.Z + SelectionBox.Z2),
-                            new Vec3f(-1f, -1f, -1f),
-                            new Vec3f(2f, 2f, 2f), 
-                            2, 1, 1, EnumParticleModel.Cube
-                        );
-
-                        Die(EnumDespawnReason.Combusted);
+                        DieInLava();
                     }
                 }
             }
@@ -939,6 +933,32 @@ namespace Vintagestory.API.Common.Entities
                 SidedPos.Z + (CollisionBox.Z2 - OriginCollisionBox.Z2)
             );
             World.FrameProfiler.Mark("entity-animation-ticking");
+        }
+
+        protected void ApplyFireDamage(float dt)
+        {
+            fireDamageAccum += dt;
+            if (fireDamageAccum > 1f)
+            {
+                ReceiveDamage(new DamageSource() { Source = EnumDamageSource.Internal, Type = EnumDamageType.Fire }, 0.5f);
+                fireDamageAccum = 0;
+            }
+        }
+
+        protected void DieInLava()
+        {
+            float q = GameMath.Clamp(SelectionBox.XSize * SelectionBox.YSize * SelectionBox.ZSize * 150, 10, 150);
+            Api.World.SpawnParticles(
+                q,
+                ColorUtil.ColorFromRgba(20, 20, 20, 255),
+                new Vec3d(ServerPos.X + SelectionBox.X1, ServerPos.Y + SelectionBox.Y1, ServerPos.Z + SelectionBox.Z1),
+                new Vec3d(ServerPos.X + SelectionBox.X2, ServerPos.Y + SelectionBox.Y2, ServerPos.Z + SelectionBox.Z2),
+                new Vec3f(-1f, -1f, -1f),
+                new Vec3f(2f, 2f, 2f),
+                2, 1, 1, EnumParticleModel.Cube
+            );
+
+            Die(EnumDespawnReason.Combusted);
         }
 
         public virtual void OnAsyncParticleTick(float dt, IAsyncParticleManager manager)

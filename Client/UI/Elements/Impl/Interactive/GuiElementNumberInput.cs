@@ -171,13 +171,16 @@ namespace Vintagestory.API.Client
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.LShift]) size /= 10;
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
 
-            double val;
-            double.TryParse(lines[0], out val);
-            val -= size;
-            lines[0] = "" + Math.Round(val, 4);
-            SetValue(lines[0]);
-
+            UpdateValue(size);
             args.SetHandled(true);
+        }
+
+        private void UpdateValue(float size)
+        {
+            double.TryParse(lines[0], NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out var val);
+            val += size;
+            lines[0] = Math.Round(val, 4).ToString(GlobalConstants.DefaultCultureInfo);
+            SetValue(lines[0]);
         }
 
 
@@ -200,22 +203,12 @@ namespace Vintagestory.API.Client
 
                 if (mouseY > Bounds.absY + heightHalf + 1)
                 {
-                    double val;
-                    double.TryParse(lines[0], out val);
-                    val-=size;
-                    lines[0] = "" + Math.Round(val, 4);
-                    SetValue(lines[0]);
+                    UpdateValue(-size);
                 }
                 else
                 {
-                    double val;
-                    double.TryParse(lines[0], out val);
-                    val+=size;
-                    lines[0] = "" + Math.Round(val, 4);
-                    SetValue(lines[0]);
+                    UpdateValue(size);
                 }
-
-                
             }
         }
 

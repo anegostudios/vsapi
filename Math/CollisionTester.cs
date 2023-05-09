@@ -23,8 +23,6 @@ namespace Vintagestory.API.MathTools
         // Use class level fields to reduce garbage collection
         public BlockPos tmpPos = new BlockPos();
         public Vec3d tmpPosDelta = new Vec3d();
-        public Vec3d tmpPositionVec = new Vec3d();
-        public Cuboidd tempCuboid = new Cuboidd();
 
         protected BlockPos minPos = new BlockPos();
         protected BlockPos maxPos = new BlockPos();
@@ -60,14 +58,16 @@ namespace Vintagestory.API.MathTools
             //  entitypos.Motion.Y = GameMath.Clamp(entitypos.Motion.Y, -1, 1);
             //  entitypos.Motion.Z = GameMath.Clamp(entitypos.Motion.Z, -1, 1);
 
-            tmpPositionVec.Set(pos);
+            double tmpPositionVecX = pos.X;
+            double tmpPositionVecY = pos.Y;
+            double tmpPositionVecZ = pos.Z;
 
-            entityBox.SetAndTranslate(entity.CollisionBox, tmpPositionVec);
+            entityBox.SetAndTranslate(entity.CollisionBox, tmpPositionVecX, tmpPositionVecY, tmpPositionVecZ);
 
             double motionX = entitypos.Motion.X * dtFac;
             double motionY = entitypos.Motion.Y * dtFac;
             double motionZ = entitypos.Motion.Z * dtFac;
-            outposition.Set(tmpPositionVec.X + motionX, tmpPositionVec.Y + motionY, tmpPositionVec.Z + motionZ);
+            outposition.Set(tmpPositionVecX + motionX, tmpPositionVecY + motionY, tmpPositionVecZ + motionZ);
 
             GenerateCollisionBoxList(worldaccess.BlockAccessor, motionX, motionY, motionZ, stepHeight, YExtra);
 
@@ -173,7 +173,7 @@ namespace Vintagestory.API.MathTools
                 motionY -= entity.LadderFixDelta;
             }
 
-            outposition.Set(tmpPositionVec.X + motionX, tmpPositionVec.Y + motionY, tmpPositionVec.Z + motionZ);
+            outposition.Set(tmpPositionVecX + motionX, tmpPositionVecY + motionY, tmpPositionVecZ + motionZ);
         }
 
         protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra)

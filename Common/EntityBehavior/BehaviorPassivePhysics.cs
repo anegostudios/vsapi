@@ -20,6 +20,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public static bool UsePhysicsDormancyStateServer;
 
+        [ThreadStatic]
+        private static CachingCollisionTester collisionTester = new CachingCollisionTester();
 
         float accumulator;
         Vec3d outposition = new Vec3d();
@@ -159,9 +161,11 @@ namespace Vintagestory.API.Common
                 if (restingCounter > 150) deltaTime /= 20;
 
                 // Dynamically adapt physics simulation accuracy based on the velocity
-                sliceTime /= GameMath.Clamp((float)velo * 10, 1, 10);
+                sliceTime /= GameMath.Clamp((float)velo * 10, 0.5f, 10);
             }
 
+            if (collisionTester == null) collisionTester = new CachingCollisionTester();
+            collisionTester.NewTick();
 
             while (accumulator >= sliceTime)
             {
@@ -187,7 +191,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         public void DoPhysics(float dt, EntityPos pos)
         {
-            Vec3d motionBefore = pos.Motion.Clone();
+            double motionBeforeY = pos.Motion.Y;
             bool feetInLiquidBefore = entity.FeetInLiquid;
             bool onGroundBefore = entity.OnGround;
             bool swimmingBefore = entity.Swimming;
@@ -195,42 +199,42 @@ namespace Vintagestory.API.Common
 
             float dtFac = 60 * dt;
 
-            Block belowBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - 0.05f), (int)pos.Z);
-
             // On ground drag
-            if (entity.OnGround) {
-                if (!entity.FeetInLiquid)
+            if (onGroundBefore) {
+                if (!feetInLiquidBefore)
                 {
+                    Block belowBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - 0.05f), (int)pos.Z, BlockLayersAccess.Solid);
                     pos.Motion.X *= (1 - groundDragFactor * belowBlock.DragMultiplier);
                     pos.Motion.Z *= (1 - groundDragFactor * belowBlock.DragMultiplier);
                 }
             }
-            
+
+            Block inblockFluid = null;
+
             // Water or air drag
-            if (entity.FeetInLiquid || entity.Swimming)
+            if (feetInLiquidBefore || swimmingBefore)
             {
                 pos.Motion *= (float)Math.Pow(waterDragValue, dt * 33);
-            } else
+                inblockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z, BlockLayersAccess.Fluid);
+
+                if (feetInLiquidBefore)
+                {
+                    Vec3d pushvec = inblockFluid.PushVector;
+                    if (pushvec != null)
+                    {
+                        float pushstrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500) * dtFac;
+
+                        pos.Motion.Add(
+                            pushvec.X * pushstrength,
+                            pushvec.Y * pushstrength,
+                            pushvec.Z * pushstrength
+                        );
+                    }
+                }
+            }
+            else
             {
                 pos.Motion *= (float)Math.Pow(airDragValue, dt * 33);
-            }
-
-            Block inblockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y), (int)pos.Z, BlockLayersAccess.Fluid);
-            Block aboveblockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
-
-            if (entity.FeetInLiquid)
-            {
-                Vec3d pushvec = inblockFluid.PushVector;
-                if (pushvec != null)
-                {
-                    float pushstrength = 0.3f * 1000f / GameMath.Clamp(entity.MaterialDensity, 750, 2500) * dtFac;
-
-                    pos.Motion.Add(
-                        pushvec.X * pushstrength,
-                        pushvec.Y * pushstrength,
-                        pushvec.Z * pushstrength
-                    );
-                }
             }
             
 
@@ -245,6 +249,7 @@ namespace Vintagestory.API.Common
                     // below 0 => sinks
                     float baseboyancy = GameMath.Clamp(1 - entity.MaterialDensity / inblockFluid.MaterialDensity, -1, 1);
 
+                    Block aboveblockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
                     float waterY = (int)pos.Y + inblockFluid.LiquidLevel / 8f + (aboveblockFluid.IsLiquid() ? 9/8f : 0);
 
                     float bottomSubmergedness = waterY - (float)pos.Y;
@@ -273,7 +278,7 @@ namespace Vintagestory.API.Common
 
             bool falling = pos.Motion.Y < 0;
 
-            entity.World.CollisionTester.ApplyTerrainCollision(entity, pos, dtFac, ref outposition, 0, collisionYExtra);
+            collisionTester.ApplyTerrainCollision(entity, pos, dtFac, ref outposition, 0, collisionYExtra);
 
 
             if (entity.World.BlockAccessor.IsNotTraversable((int)(pos.X + moveDelta.X), (int)pos.Y, (int)pos.Z))
@@ -316,6 +321,7 @@ namespace Vintagestory.API.Common
             entity.InLava = block.LiquidCode == "lava";
             if (entity.FeetInLiquid)
             {
+                Block aboveblockFluid = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
                 float waterY = (int)pos.Y + block.LiquidLevel / 8f + (aboveblockFluid.IsLiquid() ? 9 / 8f : 0);
                 float bottomSubmergedness = waterY - (float)pos.Y;
 
@@ -336,7 +342,7 @@ namespace Vintagestory.API.Common
 
             if (!onGroundBefore && entity.OnGround)
             {
-                entity.OnFallToGround(motionBefore.Y);
+                entity.OnFallToGround(motionBeforeY);
             }
             if ((!entity.Swimming && !feetInLiquidBefore && entity.FeetInLiquid) || (!entity.FeetInLiquid && !swimmingBefore && entity.Swimming))
             {
@@ -353,7 +359,6 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-            CollisionTester collisionTester = entity.World.CollisionTester;
             Cuboidd entityBox = collisionTester.entityBox;
             int xMax = (int)entityBox.X2;
             int yMax = (int)entityBox.Y2;
@@ -366,11 +371,7 @@ namespace Vintagestory.API.Common
                     for (int z = zMin; z <= zMax; z++)
                     {
                         collisionTester.tmpPos.Set(x, y, z);
-                        collisionTester.tempCuboid.Set(x, y, z, x + 1, y + 1, z + 1);
-                        if (collisionTester.tempCuboid.IntersectsOrTouches(entityBox))
-                        {
-                            entity.World.BlockAccessor.GetBlock(x, y, z).OnEntityInside(entity.World, entity, collisionTester.tmpPos);
-                        }
+                        entity.World.BlockAccessor.GetBlock(x, y, z).OnEntityInside(entity.World, entity, collisionTester.tmpPos);
                     }
                 }
             }

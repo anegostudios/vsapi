@@ -1,5 +1,7 @@
-﻿using Vintagestory.API.Common;
+﻿using System;
+using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -61,13 +63,13 @@ namespace Vintagestory.API.Common
                         while (slot.StackSize > 0)
                         {
                             ItemStack split = slot.TakeOut(GameMath.Clamp(slot.StackSize, 1, maxStackSize));
-                            Api.World.SpawnItemEntity(split, pos);
+                            spawnItemEntity(split, pos);
                         }
                     }
                     else
                     {
 
-                        Api.World.SpawnItemEntity(slot.Itemstack, pos);
+                        spawnItemEntity(slot.Itemstack, pos);
                     }
                     
 
@@ -75,6 +77,14 @@ namespace Vintagestory.API.Common
                     slot.Itemstack = null;
                 }
             }
+        }
+
+        private void spawnItemEntity(ItemStack itemstack, Vec3d pos)
+        {
+            Entity eItem = Api.World.SpawnItemEntity(itemstack, pos);
+
+            var bh = eItem.GetBehavior("timeddespawn");   // Set the despawn timer to 10 minutes for a player's despawned items, even if the despawn timer is different for other items
+            if (bh is ITimedDespawn bhDespawn) bhDespawn.SetTimer(GlobalConstants.TimeToDespawnPlayerInventoryDrops);
         }
     }
 }

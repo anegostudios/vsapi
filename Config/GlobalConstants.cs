@@ -119,6 +119,11 @@ namespace Vintagestory.API.Config
         public static float DefaultPickingRange = 4.5f;
 
         /// <summary>
+        /// Time in seconds for dropped items to remain when dropped after player death; overrides the despawn time set in item.json
+        /// </summary>
+        public static int TimeToDespawnPlayerInventoryDrops = 600;
+
+        /// <summary>
         /// Set by the WeatherSimulation System in the survival mod at the players position
         /// </summary>
         public static Vec3f CurrentWindSpeedClient = new Vec3f();

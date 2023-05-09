@@ -110,6 +110,15 @@ namespace Vintagestory.API.Common
         public EntityTalkUtil talkUtil;
         public Vec2f BodyYawLimits;
 
+        /// <summary>
+        /// Used to assist if this EntityPlayer needs to be repartitioned
+        /// </summary>
+        public List<Entity> entityListForPartitioning;
+        /// <summary>
+        /// This is not walkspeed per se, it is the walkspeed modifier as a result of armor and other gear.  It corresponds to Stats.GetBlended("walkspeed") and gets updated every tick
+        /// </summary>
+        public float walkSpeed = 1f;
+
         string[] randomIdleAnimations;
 
         public override float BodyYaw {
@@ -144,6 +153,12 @@ namespace Vintagestory.API.Common
             {
                 WatchedAttributes.SetDouble("lastReviveTotalHours", value);
             }
+        }
+
+        public void UpdatePartitioning()
+        {
+            var partitionUtil = Api.ModLoader.GetModSystem("Vintagestory.GameContent.EntityPartitioning") as IEntityPartitioning;
+            partitionUtil?.RePartitionPlayer(this);
         }
 
         public override bool StoreWithChunk
@@ -370,6 +385,19 @@ namespace Vintagestory.API.Common
         {
             double mul = base.GetWalkSpeedMultiplier(groundDragFactor);
 
+            if (Player.WorldData.CurrentGameMode == EnumGameMode.Creative)
+            {
+                // For Creative mode players, revert the normal walkspeed modifier from the block the entity is currently standing on/in
+                int y1 = (int)(SidedPos.Y - 0.05f);
+                int y2 = (int)(SidedPos.Y + 0.01f);
+                Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
+                mul /= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideBlock.WalkSpeedMultiplier);
+            }
+
+            // Apply walk speed modifiers from armor, etc
+            mul *= GameMath.Clamp(walkSpeed, 0, 999);
+
+
             if (!servercontrols.Sneak && !PrevFrameCanStandUp)
             {
                 mul *= GlobalConstants.SneakSpeedMultiplier;
@@ -552,6 +580,8 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
+            walkSpeed = Stats.GetBlended("walkspeed");   // update every tick in case this is not current with the stats value for some reason - this will then be accessed multiple times by the locomotors later in the tick
+
             if (World.Side == EnumAppSide.Client)
             {
                 talkUtil.OnGameTick(dt);
@@ -1281,6 +1311,8 @@ namespace Vintagestory.API.Common
             lastRunningHeldUseAnimation = WatchedAttributes.GetString("lrHeldUseAnim");
             lastRunningHeldHitAnimation = WatchedAttributes.GetString("lrHeldHitAnim");
             lastRunningRightHeldIdleAnimation = WatchedAttributes.GetString("lrRightHeldIdleAnim");
+
+            walkSpeed = Stats.GetBlended("walkspeed");
         }
 
         public override void ToBytes(BinaryWriter writer, bool forClient)

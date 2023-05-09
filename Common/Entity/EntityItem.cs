@@ -3,6 +3,7 @@ using System.IO;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -70,14 +71,19 @@ namespace Vintagestory.API.Common
 
 
 
-        public EntityItem() : base()
+        public EntityItem() : base(GlobalConstants.DefaultTrackingRange * 3 / 4)
         {
+            Stats = new EntityStats(this);
             Slot = new EntityItemSlot(this);
         }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
         {
-            base.Initialize(properties, api, chunkindex3d);
+            this.World = api.World;
+            this.Api = api;
+            this.Properties = properties;
+            this.Class = properties.Class;
+            this.InChunkIndex3d = chunkindex3d;
 
             if (Itemstack == null || !Itemstack.ResolveBlockOrItem(World))
             {
@@ -86,19 +92,98 @@ namespace Vintagestory.API.Common
                 return;
             }
 
+            alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
+
+            WatchedAttributes.RegisterModifiedListener("onFire", () =>
+            {
+                bool onfire = IsOnFire;
+                if (onfire)
+                {
+                    OnFireBeginTotalMs = World.ElapsedMilliseconds;
+                }
+
+                if (onfire && LightHsv == null)
+                {
+                    LightHsv = new byte[] { 5, 7, 10 };
+                    resetLightHsv = true;
+                }
+                if (!onfire && resetLightHsv)
+                {
+                    LightHsv = null;
+                }
+            });
+
+            if (World.Side == EnumAppSide.Client && Properties.Client.SizeGrowthFactor != 0)
+            {
+                WatchedAttributes.RegisterModifiedListener("grow", () =>
+                {
+                    float factor = Properties.Client.SizeGrowthFactor;
+                    if (factor != 0)
+                    {
+                        var origc = World.GetEntityType(this.Code).Client;
+                        Properties.Client.Size = origc.Size + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
+                    }
+                });
+            }
+
+            if (Properties.CollisionBoxSize != null || properties.SelectionBoxSize != null)
+            {
+                updateColSelBoxes();
+            }
+
+            if (AlwaysActive || api.Side == EnumAppSide.Client)
+            {
+                State = EnumEntityState.Active;
+            }
+            else
+            {
+                State = EnumEntityState.Inactive;
+
+                IPlayer[] players = World.AllOnlinePlayers;
+                for (int i = 0; i < players.Length; i++)
+                {
+                    Entity playerEntity = players[i].Entity;
+                    if (playerEntity == null) continue;
+
+                    if (Pos.InRangeOf(playerEntity.Pos, SimulationRange * SimulationRange))
+                    {
+                        State = EnumEntityState.Active;
+                        break;
+                    }
+                }
+            }
+
+            if (api.Side == EnumAppSide.Server)
+            {
+                if (properties.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
+                {
+                    WatchedAttributes.SetInt("textureIndex", World.Rand.Next(properties.Client.FirstTexture.Alternates.Length + 1));
+                }
+            }
+
+            this.Properties.Initialize(this, api);
+
+            Properties.Client.DetermineLoadedShape(EntityId);
+
+            LocalEyePos.Y = Properties.EyeHeight;
+
+            TriggerOnInitialized();
+
             // If attribute was modified and resent to client, make sure we still have the resolved thing in memory
             WatchedAttributes.RegisterModifiedListener("itemstack", () => {
                 if (Itemstack != null && Itemstack.Collectible == null) Itemstack.ResolveBlockOrItem(World);
                 Slot.Itemstack = Itemstack;
             });
 
-            if (Itemstack.Collectible.Attributes?["gravityFactor"].Exists == true)
+            JsonObject gravityFactor = Itemstack.Collectible.Attributes?["gravityFactor"];
+            if (gravityFactor?.Exists == true)
             {
-                WatchedAttributes.SetDouble("gravityFactor", Itemstack.Collectible.Attributes["gravityFactor"].AsDouble(1));
+                WatchedAttributes.SetDouble("gravityFactor", gravityFactor.AsDouble(1));
             }
-            if (Itemstack.Collectible.Attributes?["airDragFactor"].Exists == true)
+            JsonObject airdragFactor = Itemstack.Collectible.Attributes?["airDragFactor"];
+            if (airdragFactor?.Exists == true)
             {
-                WatchedAttributes.SetDouble("airDragFactor", Itemstack.Collectible.Attributes["airDragFactor"].AsDouble(1));
+                WatchedAttributes.SetDouble("airDragFactor", airdragFactor.AsDouble(1));
             }
 
 
@@ -115,10 +200,38 @@ namespace Vintagestory.API.Common
         BlockPos tmpPos = new BlockPos();
         float windLoss;
 
+
         public override void OnGameTick(float dt)
         {
-            base.OnGameTick(dt);
-            
+            if (World.Side == EnumAppSide.Client) base.OnGameTick(dt);
+            else
+            {
+                // simplified server tick
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                {
+                    behavior.OnGameTick(dt);
+                }
+
+                if (InLava) Ignite();
+
+                if (IsOnFire)
+                {
+                    if (World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid).LiquidCode == "water" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
+                    {
+                        IsOnFire = false;
+                    }
+                    else
+                    {
+                        ApplyFireDamage(dt);
+
+                        if (!alive && InLava)
+                        {
+                            DieInLava();
+                        }
+                    }
+                }
+            }
+
             if (!this.Alive) return;
 
             if (Itemstack != null)
@@ -201,12 +314,51 @@ namespace Vintagestory.API.Common
 
             }
             else Die();
+
+            World.FrameProfiler.Mark("entity-tick-droppeditems"); // " + this.GetType().Name);
         }
 
+        public override void OnEntityDespawn(EntityDespawnData despawn)
+        {
+            if (SidedProperties == null) return;
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.OnEntityDespawn(despawn);
+            }
 
+            WatchedAttributes.OnModified.Clear();
+        }
 
+        public override void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
+        {
+            // no animations
+        }
 
+        public override void UpdateDebugAttributes()
+        {
+            // no animations
+        }
 
+        public override void StartAnimation(string code)
+        {
+        }
+
+        public override void StopAnimation(string code)
+        {
+        }
+
+        public override void Die(EnumDespawnReason reason = EnumDespawnReason.Death, DamageSource damageSourceForDeath = null)
+        {
+            if (!Alive) return;
+
+            Alive = false;
+
+            DespawnReason = new EntityDespawnData()
+            {
+                Reason = reason,
+                DamageSourceForDeath = damageSourceForDeath
+            };
+        }
 
 
         /// <summary>

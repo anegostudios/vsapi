@@ -598,11 +598,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// updated by GetWalkSpeedMultiplier()
         /// </summary>
-        Block insideBlock;
+        protected Block insideBlock;
         /// <summary>
         /// updated by GetWalkSpeedMultiplier()
         /// </summary>
-        BlockPos insidePos = new BlockPos();
+        protected BlockPos insidePos = new BlockPos();
 
         /// <summary>
         /// Gets the walk speed multiplier.
@@ -624,15 +624,8 @@ namespace Vintagestory.API.Common
             {
                 multiplier /= 2.5;
             }
-            
 
-            IPlayer player = (this as EntityPlayer)?.Player;
-            if (player == null || player.WorldData.CurrentGameMode != EnumGameMode.Creative)
-            {
-                multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideBlock.WalkSpeedMultiplier);
-            }
-
-            multiplier *= GameMath.Clamp(Stats.GetBlended("walkspeed"), 0, 999);
+            multiplier *= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideBlock.WalkSpeedMultiplier);
 
             return multiplier;
         }
