@@ -385,7 +385,7 @@ namespace Vintagestory.API.Common
         {
             double mul = base.GetWalkSpeedMultiplier(groundDragFactor);
 
-            if (Player.WorldData.CurrentGameMode == EnumGameMode.Creative)
+            if (Player?.WorldData.CurrentGameMode == EnumGameMode.Creative)
             {
                 // For Creative mode players, revert the normal walkspeed modifier from the block the entity is currently standing on/in
                 int y1 = (int)(SidedPos.Y - 0.05f);

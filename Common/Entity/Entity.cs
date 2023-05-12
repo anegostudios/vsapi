@@ -451,6 +451,10 @@ namespace Vintagestory.API.Common.Entities
             WatchedAttributes.SetAttribute("extraInfoText", new TreeAttribute());
         }
 
+        /// <summary>
+        /// Creates a minimally populated entity with configurable tracking range, no Stats, no AnimManager and no animations attribute. Currently used by EntityItem.
+        /// </summary>
+        /// <param name="trackingRange"></param>
         protected Entity(int trackingRange)
         {
             SimulationRange = trackingRange;
@@ -509,24 +513,7 @@ namespace Vintagestory.API.Common.Entities
                 }
             });
 
-            WatchedAttributes.RegisterModifiedListener("onFire", () =>
-            {
-                bool onfire = IsOnFire;
-                if (onfire)
-                {
-                    OnFireBeginTotalMs = World.ElapsedMilliseconds;
-                }
-
-                if (onfire && LightHsv == null)
-                {
-                    LightHsv = new byte[] { 5, 7, 10 };
-                    resetLightHsv = true;
-                }
-                if (!onfire && resetLightHsv)
-                {
-                    LightHsv = null;
-                }
-            });
+            WatchedAttributes.RegisterModifiedListener("onFire", updateOnFire);
 
             WatchedAttributes.RegisterModifiedListener("entityDead", updateColSelBoxes);
 
@@ -548,27 +535,7 @@ namespace Vintagestory.API.Common.Entities
                 updateColSelBoxes();
             }
 
-            if (AlwaysActive || api.Side == EnumAppSide.Client)
-            {
-                State = EnumEntityState.Active;
-            }
-            else
-            {
-                State = EnumEntityState.Inactive;
-
-                IPlayer[] players = World.AllOnlinePlayers;
-                for (int i = 0; i < players.Length; i++)
-                {
-                    EntityPlayer entityPlayer = players[i].Entity;
-                    if (entityPlayer == null) continue;
-
-                    if (Pos.InRangeOf(entityPlayer.Pos, SimulationRange * SimulationRange))
-                    {
-                        State = EnumEntityState.Active;
-                        break;
-                    }
-                }
-            }
+            DoInitialActiveCheck(api);
 
             if (api.Side == EnumAppSide.Server)
             {
@@ -598,6 +565,31 @@ namespace Vintagestory.API.Common.Entities
             OnInitialized?.Invoke();
         }
 
+        protected void DoInitialActiveCheck(ICoreAPI api)
+        {
+            if (AlwaysActive || api.Side == EnumAppSide.Client)
+            {
+                State = EnumEntityState.Active;
+            }
+            else
+            {
+                State = EnumEntityState.Inactive;
+
+                IPlayer[] players = World.AllOnlinePlayers;
+                for (int i = 0; i < players.Length; i++)
+                {
+                    EntityPlayer entityPlayer = players[i].Entity;
+                    if (entityPlayer == null) continue;
+
+                    if (Pos.InRangeOf(entityPlayer.Pos, SimulationRange * SimulationRange))
+                    {
+                        State = EnumEntityState.Active;
+                        break;
+                    }
+                }
+            }
+        }
+
         protected void updateColSelBoxes()
         {
             bool alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
@@ -619,6 +611,25 @@ namespace Vintagestory.API.Common.Entities
 
             double touchdist = Math.Max(0.001f, SelectionBox.XSize / 2);
             touchDistanceSq = touchdist * touchdist;
+        }
+
+        protected void updateOnFire()
+        {
+            bool onfire = IsOnFire;
+            if (onfire)
+            {
+                OnFireBeginTotalMs = World.ElapsedMilliseconds;
+            }
+
+            if (onfire && LightHsv == null)
+            {
+                LightHsv = new byte[] { 5, 7, 10 };
+                resetLightHsv = true;
+            }
+            if (!onfire && resetLightHsv)
+            {
+                LightHsv = null;
+            }
         }
 
 

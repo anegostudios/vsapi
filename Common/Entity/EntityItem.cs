@@ -71,7 +71,7 @@ namespace Vintagestory.API.Common
 
 
 
-        public EntityItem() : base(GlobalConstants.DefaultTrackingRange * 3 / 4)
+        public EntityItem() : base(GlobalConstants.DefaultTrackingRange * 3 / 4)   // we call a parameterised constructor instead of the parameterless base constructor
         {
             Stats = new EntityStats(this);
             Slot = new EntityItemSlot(this);
@@ -92,82 +92,26 @@ namespace Vintagestory.API.Common
                 return;
             }
 
+            // ----- The following code is a reduced version of Entity.Initialize() -----
+
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
-            WatchedAttributes.RegisterModifiedListener("onFire", () =>
-            {
-                bool onfire = IsOnFire;
-                if (onfire)
-                {
-                    OnFireBeginTotalMs = World.ElapsedMilliseconds;
-                }
-
-                if (onfire && LightHsv == null)
-                {
-                    LightHsv = new byte[] { 5, 7, 10 };
-                    resetLightHsv = true;
-                }
-                if (!onfire && resetLightHsv)
-                {
-                    LightHsv = null;
-                }
-            });
-
-            if (World.Side == EnumAppSide.Client && Properties.Client.SizeGrowthFactor != 0)
-            {
-                WatchedAttributes.RegisterModifiedListener("grow", () =>
-                {
-                    float factor = Properties.Client.SizeGrowthFactor;
-                    if (factor != 0)
-                    {
-                        var origc = World.GetEntityType(this.Code).Client;
-                        Properties.Client.Size = origc.Size + WatchedAttributes.GetTreeAttribute("grow").GetFloat("age") * factor;
-                    }
-                });
-            }
+            WatchedAttributes.RegisterModifiedListener("onFire", updateOnFire);
 
             if (Properties.CollisionBoxSize != null || properties.SelectionBoxSize != null)
             {
                 updateColSelBoxes();
             }
 
-            if (AlwaysActive || api.Side == EnumAppSide.Client)
-            {
-                State = EnumEntityState.Active;
-            }
-            else
-            {
-                State = EnumEntityState.Inactive;
-
-                IPlayer[] players = World.AllOnlinePlayers;
-                for (int i = 0; i < players.Length; i++)
-                {
-                    Entity playerEntity = players[i].Entity;
-                    if (playerEntity == null) continue;
-
-                    if (Pos.InRangeOf(playerEntity.Pos, SimulationRange * SimulationRange))
-                    {
-                        State = EnumEntityState.Active;
-                        break;
-                    }
-                }
-            }
-
-            if (api.Side == EnumAppSide.Server)
-            {
-                if (properties.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
-                {
-                    WatchedAttributes.SetInt("textureIndex", World.Rand.Next(properties.Client.FirstTexture.Alternates.Length + 1));
-                }
-            }
+            DoInitialActiveCheck(api);
 
             this.Properties.Initialize(this, api);
-
-            Properties.Client.DetermineLoadedShape(EntityId);
 
             LocalEyePos.Y = Properties.EyeHeight;
 
             TriggerOnInitialized();
+
+            // ----- The following code is specific to Entity Item -----
 
             // If attribute was modified and resent to client, make sure we still have the resolved thing in memory
             WatchedAttributes.RegisterModifiedListener("itemstack", () => {

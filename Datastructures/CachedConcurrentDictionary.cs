@@ -20,7 +20,7 @@ namespace Vintagestory.API.Datastructures
 
         public new ICollection<TValue> Values
         {
-            get { return valuesCached ?? (valuesCached = base.Values); }
+            get { var vc = valuesCached;  return vc ?? (valuesCached = base.Values); }
         }
 
         public new bool TryAdd(TKey key, TValue value)
