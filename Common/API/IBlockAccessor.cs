@@ -818,7 +818,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The values at the supplied calendar time, ignoring rainfall etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value
         /// </summary>
-        ForSuppliedDate_TemperatureOnly
+        ForSuppliedDate_TemperatureOnly,
+        /// <summary>
+        /// The values at the supplied calendar time, ignoring forest cover etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value and no rain
+        /// </summary>
+        ForSuppliedDate_TemperatureRainfallOnly
     }
 
 }
