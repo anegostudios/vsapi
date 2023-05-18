@@ -67,7 +67,6 @@ namespace Vintagestory.API.MathTools
             double motionX = entitypos.Motion.X * dtFac;
             double motionY = entitypos.Motion.Y * dtFac;
             double motionZ = entitypos.Motion.Z * dtFac;
-            outposition.Set(tmpPositionVecX + motionX, tmpPositionVecY + motionY, tmpPositionVecZ + motionZ);
 
             GenerateCollisionBoxList(worldaccess.BlockAccessor, motionX, motionY, motionZ, stepHeight, YExtra);
 
@@ -117,7 +116,6 @@ namespace Vintagestory.API.MathTools
             if (horizontalBlocked)
             {
                 // X - Collision (Horizontal)
-
                 for (int i = 0; i < collisionBoxListCount; i++)
                 {
                     motionX = CollisionBoxList.cuboids[i].pushOutX(entityBox, motionX, ref pushDirection);

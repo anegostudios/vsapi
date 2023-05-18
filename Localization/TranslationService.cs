@@ -235,27 +235,47 @@ namespace Vintagestory.API.Config
             string plural = value.Substring(pluralOffset, end - pluralOffset);
             string after = value.Substring(end + 1);
 
-            object[] argsBefore = new object[argNum];
-            for (int i = 0; i < argNum; i++) argsBefore[i] = args[i];
-
-            object[] argsAfter = new object[args.Length - argNum - 1];
-            for (int i = argNum + 1; i < args.Length; i++) argsAfter[i - argNum - 1] = args[i];
-
             StringBuilder sb = new StringBuilder();
-            sb.Append(TryFormat(before, argsBefore));
+            sb.Append(TryFormat(before, args));
             sb.Append(BuildPluralFormat(plural, N));
-            sb.Append(TryFormat(after, argsAfter));   // there could be further instances of {p#:...} after this
+            sb.Append(TryFormat(after, args));   // there could be further instances of {p#:...} after this
             return sb.ToString();
         }
 
         private string BuildPluralFormat(string input, float n)
         {
-            int index = (int)Math.Ceiling(n);   // this implments a rule: 0 -> 0;  0.5 -> 1;  1 -> 1;  1.5 -> 2  etc.   This may not be appropriate for all languages e.g. French.  A future extension can allow more customisation by specifying math formulae
             string[] plurals = input.Split('|');
+            int round = 3;
+            if (plurals.Length >= 2)
+            {
+                string numberFormatting = getNumberFormattingFrom(plurals[1], out string _);
+                round = numberFormatting.Length - 1;
+                if (numberFormatting.IndexOf('.') > 0) round--;
+            }
+
+            int index = (int)Math.Ceiling(Math.Round(n, round));   // this implments a rule: 0 -> 0;  0.5 -> 1;  1 -> 1;  1.5 -> 2  etc.   This may not be appropriate for all languages e.g. French.  A future extension can allow more customisation by specifying math formulae
             if (index < 0 || index >= plurals.Length) index = plurals.Length - 1;
 
             string rawResult = plurals[index];
             return WithNumberFormatting(rawResult, n);
+        }
+
+        private string getNumberFormattingFrom(string rawResult, out string partB)
+        {
+            int j = rawResult.IndexOf('#');
+            if (j >= 0)
+            {
+                int k = j;
+                while (++k < rawResult.Length)
+                {
+                    char c = rawResult[k];
+                    if (c != '#' && c != '.' && c != '0' && c != ',') break;
+                }
+                partB = rawResult.Substring(k);
+                return rawResult.Substring(j, k - j);
+            }
+            partB = rawResult;
+            return "";
         }
 
         private string WithNumberFormatting(string rawResult, float n)
@@ -264,23 +284,17 @@ namespace Vintagestory.API.Config
             if (j < 0) return rawResult;
 
             string partA = rawResult.Substring(0, j);
-            int k = j;
-            while (++k < rawResult.Length)
-            {
-                char c = rawResult[k];
-                if (c != '#' && c != '.' && c != '0' && c != ',') break;
-            }
-            string numberFormatting = rawResult.Substring(j, k - j);
-            string partB = rawResult.Substring(k);
+            string numberFormatting = getNumberFormattingFrom(rawResult, out string partB);
 
             string number;
             try
             {
-                number = n.ToString(numberFormatting);
+                if (numberFormatting.Length == 1 && n == 0) number = "0";
+                else number = n.ToString(numberFormatting);
             }
-            catch (Exception _) { number = n.ToString(); }      // Fallback if the translators gave us a badly formatted number string
+            catch (Exception) { number = n.ToString(); }      // Fallback if the translators gave us a badly formatted number string
 
-            return partA + number + WithNumberFormatting(partB, n);
+            return partA + number + partB;
         }
 
         /// <summary>

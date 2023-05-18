@@ -90,6 +90,15 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public BlockPos Set(FastVec3i pos)
+        {
+            X = pos.X;
+            Y = pos.Y;
+            Z = pos.Z;
+            return this;
+        }
+
+
 
 
         /// <summary>

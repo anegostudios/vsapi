@@ -475,12 +475,12 @@ namespace Vintagestory.API.Client
                 string insert = api.Forms.GetClipboardText();
                 insert = insert.Replace("\uFEFF", ""); // UTF-8 bom, we don't need that one, like ever
 
-                string fulltext = string.Join("\n", lines);
+                string fulltext = string.Join("", lines);
 
                 int caretPos = CaretPosInLine;
                 for (int i = 0; i < CaretPosLine; i++)
                 {
-                    caretPos += lines[i].Length + 1;
+                    caretPos += lines[i].Length;
                 }
 
                 SetValue(fulltext.Substring(0, caretPos) + insert + fulltext.Substring(caretPos, fulltext.Length - caretPos));

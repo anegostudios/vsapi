@@ -584,6 +584,11 @@ namespace Vintagestory.API.MathTools
             return String.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", ColorR(color), ColorG(color), ColorB(color), ColorA(color));
         }
 
+        public static string Doubles2Hex(double[] color)
+        {
+            return String.Format("#{0:X2}{1:X2}{2:X2}", (int)(255*color[0]), (int)(255 * color[1]), (int)(255 * color[2]));
+        }
+
         /// <summary>
         /// Parses a hex string as an rgb(a) color and returns an array of colors normalized fom 0..1 for use with Cairo. E.g. turns #FF0000 into double[1, 0, 0, 1] and #00FF00CC into double[0, 1, 0, 0.8]
         /// </summary>

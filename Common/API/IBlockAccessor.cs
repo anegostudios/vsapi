@@ -421,6 +421,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Set a block at the given position without calling OnBlockRemoved or OnBlockPlaced, which prevents any block entity from being removed or placed. Marks the chunk dirty so that it gets saved to disk during shutdown or next autosave. Should only be used if you want to prevent any block entity deletion at this position.
+        /// <br/>This also, for example, does not change a block's reinforcement level, useful for openable blocks such as doors, gates etc
         /// </summary>
         void ExchangeBlock(int blockId, BlockPos pos);
 
@@ -815,7 +816,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         ForSuppliedDateValues,
         /// <summary>
-        /// The values at the supplied calendar time, ignoring rainfall etc
+        /// The values at the supplied calendar time, ignoring rainfall etc.  Calling IBlockAccessor.GetClimateAt with this mode will never return a null ClimateCondition value, if it would be null it returns a ClimateCondition with a default 4 degrees temperature value
         /// </summary>
         ForSuppliedDate_TemperatureOnly
     }

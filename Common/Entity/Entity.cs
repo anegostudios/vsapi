@@ -560,6 +560,14 @@ namespace Vintagestory.API.Common.Entities
             TriggerOnInitialized();
         }
 
+        public void AfterInitialized(bool onFirstSpawn)
+        {
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.AfterInitialized(onFirstSpawn);
+            }
+        }
+
         protected void TriggerOnInitialized()
         {
             OnInitialized?.Invoke();
@@ -1644,7 +1652,7 @@ namespace Vintagestory.API.Common.Entities
                 if (reason == EnumDespawnReason.Death && damageSourceForDeath != null && World.Side == EnumAppSide.Server) {
                     WatchedAttributes.SetInt("deathReason", (int)damageSourceForDeath.Source);
                     WatchedAttributes.SetInt("deathDamageType", (int)damageSourceForDeath.Type);
-                    Entity byEntity = damageSourceForDeath.SourceEntity;
+                    Entity byEntity = damageSourceForDeath.GetCauseEntity();
                     if (byEntity != null)
                     {
                         WatchedAttributes.SetString("deathByEntityLangCode", "prefixandcreature-" + byEntity.Code.Path.Replace("-", ""));

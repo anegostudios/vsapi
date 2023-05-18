@@ -27,8 +27,14 @@ namespace Vintagestory.API.MathTools
         {
             return new WeightedValue<T>(value, weight);
         }
+
+        public void Set(T value, float weight = 1f)
+        {
+            Value = value;
+            Weight = weight;
+        }
     }
-    
+
     public class WeightedInt : WeightedValue<int> {
         public WeightedInt() { }
 

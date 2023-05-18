@@ -1598,8 +1598,8 @@ namespace Vintagestory.API.Common
         {
             if (GlobalConstants.MeltingFreezingEnabled && (this == snowCovered1 || this == snowCovered2 || this == snowCovered3))
             {
-                ClimateCondition conds = world.BlockAccessor.GetClimateAt(pos, EnumGetClimateMode.NowValues);
-                if (conds != null && conds.Temperature > 4)
+                float temperature = world.BlockAccessor.GetClimateAt(pos, EnumGetClimateMode.ForSuppliedDate_TemperatureOnly, api.World.Calendar.TotalDays).Temperature;
+                if (temperature > 4)
                 {
                     extra = "melt";
                     return true;
@@ -2015,7 +2015,15 @@ namespace Vintagestory.API.Common
             EnumHandling handled = EnumHandling.PassThrough;
             WorldInteraction[] interactions = new WorldInteraction[0];
 
-            for (int i = 0; Drops != null && i < Drops.Length; i++)
+            bool notProtected = true;
+
+            if (world.Claims != null && world is IClientWorldAccessor clientWorld && clientWorld.Player?.WorldData.CurrentGameMode == EnumGameMode.Survival)
+            {
+                EnumWorldAccessResponse resp = world.Claims.TestAccess(clientWorld.Player, selection.Position, EnumBlockAccessFlags.BuildOrBreak);
+                if (resp != EnumWorldAccessResponse.Granted) notProtected = false;
+            }
+
+            if (notProtected) for (int i = 0; Drops != null && i < Drops.Length; i++)
             {
                 if (Drops[i].Tool == null) continue;
                 EnumTool tool = (EnumTool)Drops[i].Tool;
@@ -2156,7 +2164,7 @@ namespace Vintagestory.API.Common
 
             if (DrawType == EnumDrawType.SurfaceLayer) dsc.AppendLine(Lang.Get("Decor layer block"));
             dsc.Append(Lang.Get("Material: ") + Lang.Get("blockmaterial-" + GetBlockMaterial(world.BlockAccessor, null, stack)) + "\n");
-            
+            AddExtraHeldItemInfoPostMaterial(inSlot, dsc, world);
 
             byte[] lightHsv = GetLightHsv(world.BlockAccessor, null, stack);
 
@@ -2175,6 +2183,17 @@ namespace Vintagestory.API.Common
             }
 
             base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
+        }
+
+
+        /// <summary>
+        /// Opportunity for blocks to add additional lines to the Held Item info _prior to_ the behaviors output (such as nutrition properties or block reinforcement)
+        /// </summary>
+        /// <param name="inSlot"></param>
+        /// <param name="dsc"></param>
+        /// <param name="world"></param>
+        public virtual void AddExtraHeldItemInfoPostMaterial(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world)
+        {
         }
 
         /// <summary>

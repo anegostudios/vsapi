@@ -84,7 +84,8 @@ namespace Vintagestory.API.Common
         {
             waterDragValue = 1 - (1 - GlobalConstants.WaterDrag) * (float)attributes["waterDragFactor"].AsDouble(1);
 
-            double airDrag = attributes["airDragFactor"].Exists ? attributes["airDragFactor"].AsDouble(1) : attributes["airDragFallingFactor"].AsDouble(1); // airDragFallingFactor is pre1.15
+            JsonObject airDragFactor = attributes["airDragFactor"];
+            double airDrag = airDragFactor.Exists ? airDragFactor.AsDouble(1) : attributes["airDragFallingFactor"].AsDouble(1); // airDragFallingFactor is pre1.15
             airDragValue = 1 - (1 - GlobalConstants.AirDragAlways) * airDrag;
 
             if (entity.WatchedAttributes.HasAttribute("airDragFactor"))
@@ -138,12 +139,6 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-            accumulator += deltaTime;
-            if (accumulator > 0.4f)
-            {
-                accumulator = 0.4f;
-            }
-
             EntityPos pos = entity.SidedPos;
             float sliceTime = GlobalConstants.PhysicsFrameTime;
 
@@ -161,7 +156,13 @@ namespace Vintagestory.API.Common
                 if (restingCounter > 150) deltaTime /= 20;
 
                 // Dynamically adapt physics simulation accuracy based on the velocity
-                sliceTime /= GameMath.Clamp((float)velo * 10, 0.5f, 10);
+                sliceTime /= GameMath.Clamp((float)velo * 10, 1.0f, 10);      // Setting this divisor to less than around 1.0f, i.e. increasing sliceTime, may produce strange results - for example it can cause entities in water to drift sideways : it seems to relate to the nextposition/outposition calculation at lines 276-286 below
+            }
+
+            accumulator += deltaTime;
+            if (accumulator > 0.4f)
+            {
+                accumulator = 0.4f;
             }
 
             if (collisionTester == null) collisionTester = new CachingCollisionTester();

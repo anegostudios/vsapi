@@ -52,6 +52,14 @@ namespace Vintagestory.API.Server
         void SendPacket<T>(T message, params IServerPlayer[] players);
 
         /// <summary>
+        /// Sends a packet to given player, where the byte[] data has already been serialized
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="data"></param>
+        /// <param name="players"></param>
+        void SendPacket<T>(T message, byte[] data, params IServerPlayer[] players);
+
+        /// <summary>
         /// When called on Sends a packet to all connected player, except given players
         /// </summary>
         /// <param name="message"></param>

@@ -160,12 +160,10 @@ namespace Vintagestory.API.MathTools
             for (var i = 0; i < a; i++)
             {
                 points.Add(new Vec2i(x + i - a2, y - r));
-                points.Add(new Vec2i(x + i - a2, y + r));
-                points.Add(new Vec2i(x - r, y + i - a2));
+                points.Add(new Vec2i(x - i + a2, y + r));
+                points.Add(new Vec2i(x - r, y - i + a2));
                 points.Add(new Vec2i(x + r, y + i - a2));
             }
-
-            points.Add(new Vec2i(x + r, y + a2)); // Why is this one needed?
 
             for (var i = 0; i < b; i++)
             {
@@ -201,12 +199,10 @@ namespace Vintagestory.API.MathTools
             for (var i = 0; i < a; i++)
             {
                 list.Add(MapUtil.Index2dL(x + i - a2, y - r, mapSizeX));
-                list.Add(MapUtil.Index2dL(x + i - a2, y + r, mapSizeX));
-                list.Add(MapUtil.Index2dL(x - r, y + i - a2, mapSizeX));
+                list.Add(MapUtil.Index2dL(x - i + a2, y + r, mapSizeX));
+                list.Add(MapUtil.Index2dL(x - r, y - i + a2, mapSizeX));
                 list.Add(MapUtil.Index2dL(x + r, y + i - a2, mapSizeX));
             }
-
-            list.Add(MapUtil.Index2dL(x + r, y + a2, mapSizeX)); // Why is this one needed?
 
             for (var i = 0; i < b; i++)
             {

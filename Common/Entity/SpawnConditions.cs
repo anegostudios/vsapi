@@ -277,10 +277,36 @@ namespace Vintagestory.API.Common.Entities
 
 
         protected HashSet<Block> InsideBlockCodesResolved = null;
+        protected string[] InsideBlockCodesBeginsWith;
+        protected string[] InsideBlockCodesExact;
+        protected string InsideBlockFirstLetters = "";
 
         public bool CanSpawnInside(Block testBlock)
         {
-            return InsideBlockCodesResolved.Contains(testBlock) == true;
+            string testPath = testBlock.Code.Path;
+            if (testPath.Length < 1) return false;
+            if (InsideBlockFirstLetters.IndexOf(testPath[0]) < 0) return false;   // early exit if we don't have the first letter
+
+            if (PathMatchesInsideBlockCodes(testPath))
+            {
+                return InsideBlockCodesResolved.Contains(testBlock);    // Here we do a hashset check just to make sure, because so far we only checked the path not the domain
+            }
+            return false;
+        }
+
+        private bool PathMatchesInsideBlockCodes(string testPath)
+        {
+            for (int i = 0; i < InsideBlockCodesExact.Length; i++)
+            {
+                if (testPath == InsideBlockCodesExact[i]) return true;
+            }
+
+            for (int i = 0; i < InsideBlockCodesBeginsWith.Length; i++)
+            {
+                if (testPath.StartsWith(InsideBlockCodesBeginsWith[i])) return true;
+            }
+
+            return false;
         }
 
         public void Initialise(IServerWorldAccessor server, string entityName, Dictionary<AssetLocation, Block[]> searchCache)
@@ -307,6 +333,38 @@ namespace Vintagestory.API.Common.Entities
                 if (!anyBlockOk)
                 {
                     server.Logger.Warning("Entity with code {0} has defined InsideBlockCodes for its spawn conditions, but none of these blocks exists, entity is unlikely to spawn.", entityName);
+                }
+
+                List<string> targetEntityCodesList = new List<string>();
+                List<string> beginswith = new List<string>();
+                var codes = InsideBlockCodes;
+                for (int i = 0; i < codes.Length; i++)
+                {
+                    string code = codes[i].Path;
+                    if (code.EndsWith("*"))
+                    {
+                        beginswith.Add(code.Substring(0, code.Length - 1));
+                    }
+                    else targetEntityCodesList.Add(code);
+                }
+
+                InsideBlockCodesBeginsWith = beginswith.ToArray();
+
+                InsideBlockCodesExact = new string[targetEntityCodesList.Count];
+                int j = 0;
+                foreach (string code in targetEntityCodesList)
+                {
+                    if (code.Length == 0) continue;
+                    InsideBlockCodesExact[j++] = code;
+                    char c = code[0];
+                    if (InsideBlockFirstLetters.IndexOf(c) < 0) InsideBlockFirstLetters += c;
+                }
+
+                foreach (string code in InsideBlockCodesBeginsWith)
+                {
+                    if (code.Length == 0) continue;
+                    char c = code[0];
+                    if (InsideBlockFirstLetters.IndexOf(c) < 0) InsideBlockFirstLetters += c;
                 }
             }
         }

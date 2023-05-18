@@ -21,7 +21,7 @@ namespace Vintagestory.API.Common
         public Vec3d HitPosition;
 
         /// <summary>
-        /// The source entity the damge came from, if any
+        /// The source entity the damage came from, if any
         /// </summary>
         public Entity SourceEntity;
 
@@ -57,6 +57,16 @@ namespace Vintagestory.API.Common
         public Vec3d GetSourcePosition()
         {
             return SourceEntity == null ? SourcePos : SourceEntity.SidedPos.XYZ;
+        }
+
+        /// <summary>
+        /// Get the entity that caused the damage.
+        /// If a projectile like a stone was thrown this will return the entity that threw the stone instead of the stone.
+        /// </summary>
+        /// <returns>The entity that caused the damage</returns>
+        public Entity GetCauseEntity()
+        {
+            return CauseEntity ?? SourceEntity;
         }
     }
 }

@@ -1149,13 +1149,13 @@ namespace Vintagestory.API.Common
 
                 if (damageSource.Source == EnumDamageSource.Player)
                 {
-                    EntityPlayer eplr = damageSource.SourceEntity as EntityPlayer;
+                    EntityPlayer eplr = damageSource.GetCauseEntity() as EntityPlayer;
                     msg = Lang.Get(heal ? "damagelog-heal-byplayer" : "damagelog-damage-byplayer", damage, World.PlayerByUid(eplr.PlayerUID).PlayerName);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Entity)
                 {
-                    string creatureName = Lang.Get("prefixandcreature-" + damageSource.SourceEntity.Code.Path.Replace("-", ""));
+                    string creatureName = Lang.Get("prefixandcreature-" + damageSource.GetCauseEntity().Code.Path.Replace("-", ""));
                     msg = Lang.Get(heal ? "damagelog-heal-byentity" : "damagelog-damage-byentity", damage, creatureName);
                 }
 
