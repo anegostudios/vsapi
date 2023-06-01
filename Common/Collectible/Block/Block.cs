@@ -2125,9 +2125,7 @@ namespace Vintagestory.API.Common
                 string decorBlockName = Lang.GetMatching(langCode);
                 decorLangLines.Add(Lang.Get("block-with-decorname", decorBlockName));
             }
-
             sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
-
 
             string[] tiers = new string[] { Lang.Get("tier_hands"), Lang.Get("tier_stone"), Lang.Get("tier_copper"), Lang.Get("tier_bronze"), Lang.Get("tier_iron"), Lang.Get("tier_steel"), Lang.Get("tier_titanium") };
 

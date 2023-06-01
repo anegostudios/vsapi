@@ -179,6 +179,9 @@ namespace Vintagestory.API.Common
         /// <returns>Whether it was mounted or not.</returns>
         public virtual bool TryMount(IMountable onmount)
         {
+            // load current controls when mounting onto the mountable
+            onmount.Controls.FromInt(Controls.ToInt());
+            
             if (MountedOn != onmount)
             {
                 if (!TryUnmount()) return false;

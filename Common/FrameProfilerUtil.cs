@@ -41,24 +41,21 @@ namespace Vintagestory.API.Common
     public class FrameProfilerUtil
     {
         public bool Enabled = false;
-
         public bool PrintSlowTicks;
         public int PrintSlowTicksThreshold = 40;
         public ProfileEntryRange PrevRootEntry;
         public string summary;
+        public string OutputPrefix;
 
 
         Stopwatch stopwatch = new Stopwatch();
-        ILogger logger;
-
-
         ProfileEntryRange rootEntry;
         ProfileEntryRange currentEntry;
+        Action<string> onLogoutputHandler;
 
-        public FrameProfilerUtil(ILogger logger)
+        public FrameProfilerUtil(Action<string> onLogoutputHandler)
         {
-            this.logger = logger;
-
+            this.onLogoutputHandler = onLogoutputHandler;
             stopwatch.Start();
         }
 
@@ -182,13 +179,13 @@ namespace Vintagestory.API.Common
             if (PrintSlowTicks && ms > PrintSlowTicksThreshold)
             {
                 StringBuilder strib = new StringBuilder();
-                strib.AppendLine(string.Format("A tick took {0:0.##} ms", ms));
+                strib.AppendLine(string.Format("{0}A tick took {1:0.##} ms", OutputPrefix, ms));
 
                 slowTicksToString(rootEntry, strib);
 
                 summary = "Stopwatched total= " + ms + "ms";
 
-                logger.Notification(strib.ToString());
+                onLogoutputHandler(strib.ToString());
             }
         }
 

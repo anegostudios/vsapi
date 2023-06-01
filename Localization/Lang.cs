@@ -148,7 +148,9 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static string GetL(string langcode, string key, params object[] args)
         {
-            return AvailableLanguages[langcode].Get(key, args);
+            return AvailableLanguages[langcode].HasTranslation(key)
+                ? AvailableLanguages[langcode].Get(key, args)
+                : AvailableLanguages[DefaultLocale].Get(key, args);
         }
 
         /// <summary>

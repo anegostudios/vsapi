@@ -32,6 +32,7 @@ namespace Vintagestory.API.Datastructures
         /// <param name="key"></param>
         /// <returns></returns>
         bool HasAttribute(string key);
+        
 
         /// <summary>
         /// Removes an attribute
@@ -133,6 +134,14 @@ namespace Vintagestory.API.Datastructures
         /// <param name="defaultValue"></param>
         /// <returns></returns>
         int GetAsInt(string key, int defaultValue = 0);
+
+        /// <summary>
+        /// Returns true/false, for whatever type of attribute is found for given key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        bool GetAsBool(string key, bool defaultValue = false);
 
         /// <summary>
         /// Retrieves an int, float, long or double value. Whatever attribute is found for given key

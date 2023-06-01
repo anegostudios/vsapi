@@ -41,7 +41,7 @@ namespace Vintagestory.API.Util
 
             protected void StartWorkerThread(Action task)
             {
-                TyronThreadPool.QueueTask(() => OnWorkerThread(task));
+                TyronThreadPool.QueueTask(() => OnWorkerThread(task), "asynchelper");
             }
 
             protected void OnWorkerThread(Action task)

@@ -1326,6 +1326,9 @@ namespace Vintagestory.API.Common
             cloned.BlockEntities = new Dictionary<uint, string>(BlockEntities);
             cloned.Entities = new List<string>(Entities);
             cloned.ReplaceMode = ReplaceMode;
+            cloned.EntranceRotation = EntranceRotation;
+            cloned.DecorIndices = new List<uint>(DecorIndices);
+            cloned.DecorIds = new List<int>(DecorIds);
             return cloned;
         }
     }

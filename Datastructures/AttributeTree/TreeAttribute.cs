@@ -508,6 +508,17 @@ namespace Vintagestory.API.Datastructures
             return (int)GetDecimal(key, defaultValue);
         }
 
+        public virtual bool GetAsBool(string key, bool defaultValue = false)
+        {
+            IAttribute attr = attributes.TryGetValue(key);
+            if (attr is IntAttribute) return (int)attr.GetValue() > 0;
+            if (attr is FloatAttribute) return (float)attr.GetValue() > 0;
+            if (attr is DoubleAttribute) return (double)attr.GetValue() > 0;
+            if (attr is LongAttribute) return (long)attr.GetValue() > 0;
+            if (attr is StringAttribute) return (string)attr.GetValue() == "true" || (string)attr.GetValue() == "1";
+            return defaultValue;
+        }
+
         /// <summary>
         /// Retrieves an int, float, long or double value. Whatever attribute is found for given key, in aformentioned order. If its a string its converted to double
         /// </summary>

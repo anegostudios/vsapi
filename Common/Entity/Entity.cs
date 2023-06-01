@@ -866,6 +866,7 @@ namespace Vintagestory.API.Common.Entities
                         behavior.OnGameTick(dt);
                         World.FrameProfiler.Mark(behavior.ProfilerName);
                     }
+
                     World.FrameProfiler.Leave();
                 }
                 else

@@ -308,6 +308,19 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
+        /// Should returns true if this collectible requires UpdateAndGetTransitionStates() to be called when ticking.
+        /// <br/>Typical usage: true if this collectible itself has transitionable properties, or true for collectibles which hold other itemstacks with transitionable properties (for example, a cooked food container)
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="itemstack"></param>
+        /// <returns></returns>
+        public virtual bool RequiresTransitionableTicking(IWorldAccessor world, ItemStack itemstack)
+        {
+            return TransitionableProps != null && TransitionableProps.Length > 0;
+        }
+
+
+        /// <summary>
         /// Should return in which storage containers this item can be placed in
         /// </summary>
         /// <param name="itemstack"></param>
