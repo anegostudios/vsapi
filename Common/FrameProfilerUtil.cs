@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -47,6 +48,9 @@ namespace Vintagestory.API.Common
         public string summary;
         public string OutputPrefix;
 
+        public static ConcurrentQueue<string> offThreadProfiles = new ConcurrentQueue<string>();
+        public static bool PrintSlowTicks_Offthreads;
+        public static int PrintSlowTicksThreshold_Offthreads = 40;
 
         Stopwatch stopwatch = new Stopwatch();
         ProfileEntryRange rootEntry;
@@ -57,6 +61,15 @@ namespace Vintagestory.API.Common
         {
             this.onLogoutputHandler = onLogoutputHandler;
             stopwatch.Start();
+        }
+
+        /// <summary>
+        /// Used to create a FrameProfilerUtil on threads other than the main thread
+        /// </summary>
+        /// <param name="outputPrefix"></param>
+        public FrameProfilerUtil(string outputPrefix) : this((text) => offThreadProfiles.Enqueue(text))
+        {
+            this.OutputPrefix = outputPrefix;
         }
 
 
@@ -187,6 +200,13 @@ namespace Vintagestory.API.Common
 
                 onLogoutputHandler(strib.ToString());
             }
+        }
+
+        public void OffThreadEnd()
+        {
+            End();
+            Enabled = PrintSlowTicks = PrintSlowTicks_Offthreads;
+            PrintSlowTicksThreshold = PrintSlowTicksThreshold_Offthreads;
         }
 
 

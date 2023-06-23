@@ -19,7 +19,9 @@ namespace Vintagestory.API.Common
         public ILogger Logger;
 
         public ConcurrentDictionary<int, string> RunningTasks = new ConcurrentDictionary<int, string>();
+        public ConcurrentDictionary<string, Thread> DedicatedThreads = new ConcurrentDictionary<string, Thread>();
         int keyCounter = 0;
+        int dedicatedCounter = 0;
 
 
         public TyronThreadPool() { 
@@ -78,18 +80,30 @@ namespace Vintagestory.API.Common
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("All threads:");
-
-            ProcessThreadCollection threads = Process.GetCurrentProcess().Threads;
-            foreach (ProcessThread thread in threads)
+            foreach (var entry in DedicatedThreads)
             {
-                if (thread.ThreadState == System.Diagnostics.ThreadState.Wait) continue;
-                sb.Append(thread.StartTime);
-                sb.Append(": P ");
-                sb.Append(thread.CurrentPriority);
+                Thread t = entry.Value;
+                if (t.ThreadState == System.Threading.ThreadState.Stopped) continue;
+                sb.Append(entry.Key);
                 sb.Append(": ");
-                sb.AppendLine(thread.ThreadState.ToString());
-                sb.Append(": T ");
-                sb.Append(thread.UserProcessorTime);
+                sb.AppendLine(t.ThreadState.ToString());
+            }
+
+            if (RuntimeEnv.OS == OS.Windows)
+            {
+                sb.AppendLine("\nAll current process threads:");
+                ProcessThreadCollection threads = Process.GetCurrentProcess().Threads;
+                foreach (ProcessThread thread in threads)
+                {
+                    if (thread == null || thread.ThreadState == System.Diagnostics.ThreadState.Wait) continue;
+                    sb.Append(thread.StartTime);
+                    sb.Append(": P ");
+                    sb.Append(thread.CurrentPriority);
+                    sb.Append(": ");
+                    sb.Append(thread.ThreadState.ToString());
+                    sb.Append(": T ");
+                    sb.AppendLine(thread.UserProcessorTime.ToString());
+                }
             }
 
             return sb.ToString();
@@ -135,6 +149,23 @@ namespace Vintagestory.API.Common
             {
                 callback();
             });
+        }
+
+        public static Thread CreateDedicatedThread(ThreadStart starter, string name)
+        {
+            Thread thread = new Thread(starter);
+            thread.IsBackground = true;
+            thread.Name = name;
+            Inst.DedicatedThreads[name + "." + Inst.dedicatedCounter++] = thread;
+            return thread;
+        }
+
+        public void Dispose()
+        {
+            RunningTasks.Clear();
+            DedicatedThreads.Clear();
+            keyCounter = 0;
+            dedicatedCounter = 0;
         }
     }
 }

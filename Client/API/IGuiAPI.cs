@@ -94,6 +94,7 @@ namespace Vintagestory.API.Client
 
 
         void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, int posx, int posy, int width = 0, int height = 0, int? color = 0);
+        void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, Matrix transform, int posx, int posy, int width = 0, int height = 0, int? color = 0);
 
         /// <summary>
         /// Loads an external .svg file into a texture. Will return null if the file is not found

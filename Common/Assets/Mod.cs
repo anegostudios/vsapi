@@ -33,7 +33,7 @@ namespace Vintagestory.API.Common
         /// Holds the icon of this mod. Found as "modicon.png" in the root of
         /// the mod's folder or archive. May be null.
         /// </summary>
-        public Bitmap Icon { get; internal set; }
+        public BitmapExternal Icon { get; internal set; }
 
         /// <summary> Gets the logger associated with this mod. </summary>
         public ILogger Logger { get; internal set; }

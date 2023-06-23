@@ -1,12 +1,10 @@
 ﻿using Cairo;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Vintagestory.API.Client;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -21,6 +19,61 @@ namespace Vintagestory.API.Common
     public class BitmapExternal : BitmapRef
     {
         public Bitmap bmp;
+        BitmapData bmp_data;
+
+        public BitmapExternal()
+        {
+        }
+
+        public BitmapExternal(int width, int height)
+        {
+            bmp = new Bitmap(width, height);
+        }
+
+        public BitmapExternal(MemoryStream ms, ILogger logger, AssetLocation loc = null)
+        {
+            try
+            {
+                using (ms)
+                {
+                    bmp = new Bitmap(ms);
+                }
+
+            }
+            catch (Exception e)
+            {
+                if (loc != null)
+                {
+                    logger.Error("Failed loading bitmap from png file {0}: {1}. Will default to an empty 1x1 bitmap.", loc, e);
+                }
+                else logger.Error("Failed loading bitmap, error was: {0}. Will default to an empty 1x1 bitmap.", e);
+                bmp = new Bitmap(1, 1);
+                bmp.SetPixel(0, 0, System.Drawing.Color.Orange);
+            }
+        }
+
+        public BitmapExternal(Bitmap newBmp)
+        {
+            bmp = newBmp;
+        }
+
+        /// <summary>
+        /// Create a BitmapExternal from a path to an existing image file.  Calling code should check that the file exists
+        /// </summary>
+        /// <param name="filePath"></param>
+        public BitmapExternal(string filePath)
+        {
+            bmp = new Bitmap(filePath);
+        }
+
+        /// <summary>
+        /// Create a BitmapExternal from a stream.  Calling code should close the stream
+        /// </summary>
+        /// <param name="stream"></param>
+        public BitmapExternal(Stream stream)
+        {
+            bmp = new Bitmap(stream);
+        }
 
         public override int Height
         {
@@ -36,16 +89,29 @@ namespace Vintagestory.API.Common
         {
             get
             {
-                BitmapData bmp_data = bmp.LockBits(new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
                 int[] data = new int[Width * Height];
 
-                System.Runtime.InteropServices.Marshal.Copy(bmp_data.Scan0, data, 0, bmp.Width * bmp.Height);
+                System.Runtime.InteropServices.Marshal.Copy(PixelsPtrAndLock, data, 0, bmp.Width * bmp.Height);
 
-                bmp.UnlockBits(bmp_data);
+                PixelsUnlock();
 
                 return data;
             }
+        }
+
+
+        public IntPtr PixelsPtrAndLock
+        {
+            get
+            {
+                bmp_data = bmp.LockBits(new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+                return bmp_data.Scan0;
+            }
+        }
+        public void PixelsUnlock()
+        {
+            bmp.UnlockBits(bmp_data);
         }
 
         public override void Dispose()
@@ -56,6 +122,11 @@ namespace Vintagestory.API.Common
         public override void Save(string filename)
         {
             bmp.Save(filename);
+        }
+
+        public void SetPixels(byte[] data, int len)
+        {
+            bmp.SetPixels(data, len);
         }
 
         /// <summary>

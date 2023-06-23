@@ -89,7 +89,7 @@ namespace Vintagestory.API.Client
 
             byte[] pngdata = api.Assets.Get("textures/gui/newversion.png").Data;
             BitmapExternal bitmap = api.Render.BitmapCreateFromPng(pngdata);
-            surface.Image(bitmap.bmp, (int)(Bounds.drawX + iconX - iconSize / 2), (int)(Bounds.drawY + iconY), (int)iconSize, (int)iconSize);
+            surface.Image(bitmap, (int)(Bounds.drawX + iconX - iconSize / 2), (int)(Bounds.drawY + iconY), (int)iconSize, (int)iconSize);
             bitmap.Dispose();
 
             DrawMultilineTextAt(ctx, Bounds.drawX + iconX + 20, Bounds.drawY);

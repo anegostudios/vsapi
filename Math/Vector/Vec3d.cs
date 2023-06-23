@@ -62,6 +62,13 @@ namespace Vintagestory.API.MathTools
             this.Z = vec.Z;
         }
 
+        public Vec3d(Common.Entities.EntityPos vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+        }
+
         /// <summary>
         /// Returns the n-th coordinate
         /// </summary>

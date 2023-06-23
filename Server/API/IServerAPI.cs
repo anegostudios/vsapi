@@ -53,6 +53,13 @@ namespace Vintagestory.API.Server
         void ShutDown();
 
         /// <summary>
+        /// Allows mods to add a ServerThread.  Useful for off-thread tasks which must be run continuously (at specified intervals) while the server is running.  Calling code simply needs to implement IAsyncServerSystem
+        /// </summary>
+        /// <param name="threadname"></param>
+        /// <param name="system"></param>
+        void AddServerThread(string threadname, IAsyncServerSystem system);
+
+        /// <summary>
         /// Does a blocking wait until given thread is paused. Returns true if the thread was paused within given time
         /// </summary>
         /// <param name="threadname"></param>

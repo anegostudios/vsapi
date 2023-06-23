@@ -219,7 +219,23 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="bitmap">The provided bitmap.</param>
         /// <returns>The resulting surface pattern.</returns>
+        [Obsolete("Use getPattern(BitmapExternal bitmap) for easier update to .NET7.0")]
         public static SurfacePattern getPattern(Bitmap bitmap)
+        {
+            ImageSurface patternSurface = getImageSurfaceFromAsset(bitmap);
+
+            SurfacePattern pattern = new SurfacePattern(patternSurface);
+            pattern.Extend = Extend.Repeat;
+            return pattern;
+        }
+
+        /// <summary>
+        /// Gets a surface pattern based off the bitmap.
+        /// </summary>
+        /// <param name="bitmap">The provided bitmap.</param>
+        /// <returns>The resulting surface pattern.</returns>
+        [Obsolete("Use getPattern(BitmapExternal bitmap) for easier update to .NET7.0")]
+        public static SurfacePattern getPattern(BitmapExternal bitmap)
         {
             ImageSurface patternSurface = getImageSurfaceFromAsset(bitmap);
 
@@ -233,6 +249,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="bitmap">The provided bitmap.</param>
         /// <returns>The image surface built from the bitmap.</returns>
+        [Obsolete("Use getImageSurfaceFromAsset(BitmapExternal bitmap) for easier update to .NET7.0")]
         public static ImageSurface getImageSurfaceFromAsset(Bitmap bitmap)
         {
             BitmapData bmp_data = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
@@ -261,10 +278,52 @@ namespace Vintagestory.API.Client
         /// Gets an image surface based off the bitmap.
         /// </summary>
         /// <param name="bitmap">The provided bitmap.</param>
+        /// <returns>The image surface built from the bitmap.</returns>
+        public static ImageSurface getImageSurfaceFromAsset(BitmapExternal bitmap)
+        {
+            ImageSurface imageSurface = new ImageSurface(Format.Argb32, bitmap.Width, bitmap.Height);
+
+            unsafe
+            {
+                uint* destPixels = (uint*)imageSurface.DataPtr.ToPointer();
+                uint* sourcePixels = (uint*)bitmap.PixelsPtrAndLock.ToPointer();
+
+                int size = bitmap.Width * bitmap.Height;
+
+                for (int i = 0; i < size; i++)
+                {
+                    destPixels[i] = sourcePixels[i];
+                }
+            }
+
+            imageSurface.MarkDirty();
+            bitmap.PixelsUnlock();
+            return imageSurface;
+        }
+
+        /// <summary>
+        /// Gets an image surface based off the bitmap.
+        /// </summary>
+        /// <param name="bitmap">The provided bitmap.</param>
         /// <param name="width">The width requested.</param>
         /// <param name="height">The height requested.</param>
         /// <returns>The image surface built from the bitmap and data.</returns>
+        [Obsolete("Use getImageSurfaceFromAsset(BitmapExternal bitmap, int width, int height) for easier update to .NET7.0")]
         public static ImageSurface getImageSurfaceFromAsset(Bitmap bitmap, int width, int height)
+        {
+            ImageSurface imageSurface = new ImageSurface(Format.Argb32, width, height);
+            imageSurface.Image(bitmap, 0, 0, width, height);
+            return imageSurface;
+        }
+
+        /// <summary>
+        /// Gets an image surface based off the bitmap.
+        /// </summary>
+        /// <param name="bitmap">The provided bitmap.</param>
+        /// <param name="width">The width requested.</param>
+        /// <param name="height">The height requested.</param>
+        /// <returns>The image surface built from the bitmap and data.</returns>
+        public static ImageSurface getImageSurfaceFromAsset(BitmapExternal bitmap, int width, int height)
         {
             ImageSurface imageSurface = new ImageSurface(Format.Argb32, width, height);
             imageSurface.Image(bitmap, 0, 0, width, height);
@@ -324,15 +383,14 @@ namespace Vintagestory.API.Client
                 bitmap.MulAlpha(mulAlpha);
             }
 
-            BitmapData bmp_data = bitmap.bmp.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.bmp.Width, bitmap.bmp.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-            ImageSurface imageSurface = new ImageSurface(Format.Argb32, bitmap.bmp.Width, bitmap.bmp.Height);
+            ImageSurface imageSurface = new ImageSurface(Format.Argb32, bitmap.Width, bitmap.Height);
 
             unsafe
             {
                 uint* destPixels = (uint*)imageSurface.DataPtr.ToPointer();
-                uint* sourcePixels = (uint*)bmp_data.Scan0.ToPointer();
+                uint* sourcePixels = (uint*)bitmap.PixelsPtrAndLock.ToPointer();
 
-                int size = bitmap.bmp.Width * bitmap.bmp.Height;
+                int size = bitmap.Width * bitmap.Height;
 
                 for (int i = 0; i < size; i++)
                 {
@@ -343,7 +401,7 @@ namespace Vintagestory.API.Client
             imageSurface.MarkDirty();
 
 
-            bitmap.bmp.UnlockBits(bmp_data);
+            bitmap.PixelsUnlock();
             bitmap.Dispose();
 
             return imageSurface;
