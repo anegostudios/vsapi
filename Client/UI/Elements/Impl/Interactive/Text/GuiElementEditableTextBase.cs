@@ -288,7 +288,7 @@ namespace Vintagestory.API.Client
             lines = new List<string>(newLines);
             linesStaging = new List<string>(lines);
 
-            RecomposeText();
+            //RecomposeText(); - wtf is this here for, its alread called in TextChanged()
             TextChanged();
         }
 
@@ -573,6 +573,7 @@ namespace Vintagestory.API.Client
             if (!HasFocus) return;
             string newline = lines[CaretPosLine].Substring(0, CaretPosInLine) + args.KeyChar + lines[CaretPosLine].Substring(CaretPosInLine, lines[CaretPosLine].Length - CaretPosInLine);
             double width = Bounds.InnerWidth - 2 * Bounds.absPaddingX - rightSpacing;
+            linesStaging[CaretPosLine] = newline;
 
             if (multilineMode)
             {
@@ -583,11 +584,11 @@ namespace Vintagestory.API.Client
                     StringBuilder newLines = new StringBuilder();
                     for (int i = 0; i < lines.Count; i++) newLines.Append(i == CaretPosLine ? newline : lines[i]);
 
-                    if (lines.Count >= maxlines && Lineize(newLines.ToString()).Count >= maxlines) return;
+                    linesStaging = Lineize(newLines.ToString());
+
+                    if (lines.Count >= maxlines && linesStaging.Count >= maxlines) return;
                 }
             }
-
-            linesStaging[CaretPosLine] = newline;
 
             var cpos = CaretPosWithoutLineBreaks;
             LoadValue(linesStaging); // Ensures word wrapping
@@ -595,7 +596,6 @@ namespace Vintagestory.API.Client
 
             args.Handled = true;
             api.Gui.PlaySound("tick");
-
             OnKeyPressed?.Invoke();
         }
 
