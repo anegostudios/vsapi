@@ -251,9 +251,9 @@ namespace Vintagestory.API.Common.Entities
         public bool CollidedHorizontally;
 
         /// <summary>
-        /// The current entity state. Stored in WatchedAttributes in from/tobytes, so available on the client and server side
+        /// The current entity state. NOT stored in WatchedAttributes in from/tobytes when sending to client as always set to Active on client-side Initialize().  Server-side if saved it would likely initially be Despawned when an entity is first loaded from the save due to entities being despawned during the UnloadChunks process, so let's make it always Despawned for consistent behavior (it will be set to Active/Inactive during Initialize() anyhow)
         /// </summary>
-        public EnumEntityState State;
+        public EnumEntityState State = EnumEntityState.Despawned;
 
         public EntityDespawnData DespawnReason;
 
@@ -1476,15 +1476,8 @@ namespace Vintagestory.API.Common.Entities
             
             writer.Write(EntityId);
 
-            // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes for these 2 new fields
-            lock (WatchedAttributes.attributesLock)
-            {
-                // We don't use SetFloat to avoid triggering OnModified listeners on the server. This can be called outside the mainthread and produce deadlocks.
-                WatchedAttributes["headYaw"] = new FloatAttribute(ServerPos.HeadYaw);
-                WatchedAttributes["headPitch"] = new FloatAttribute(ServerPos.HeadPitch);
-            }
+            SetHeadPositionToWatchedAttributes();
 
-            WatchedAttributes.SetInt("entityState", (int)State);
             WatchedAttributes.ToBytes(writer);
             ServerPos.ToBytes(writer);
             writer.Write(PositionBeforeFalling.X);
@@ -1518,6 +1511,20 @@ namespace Vintagestory.API.Common.Entities
             tree.ToBytes(writer);
         }
 
+        /// <summary>
+        /// Relevant only for entities with heads, implemented in EntityAgent.  Other sub-classes of Entity (if not EntityAgent) should similarly override this if the headYaw/headPitch are relevant to them
+        /// </summary>
+        protected virtual void SetHeadPositionToWatchedAttributes()
+        {
+        }
+
+        /// <summary>
+        /// Relevant only for entities with heads, implemented in EntityAgent.  Other sub-classes of Entity (if not EntityAgent) should similarly override this if the headYaw/headPitch are relevant to them
+        /// </summary>
+        protected virtual void GetHeadPositionFromWatchedAttributes()
+        {
+        }
+
 
 
         /// <summary>
@@ -1549,18 +1556,11 @@ namespace Vintagestory.API.Common.Entities
                     healthTree.SetFloat("basemaxhealth", 15);
                 }
             }
-
-            if (!isSync)
-            {
-                State = (EnumEntityState)WatchedAttributes.GetInt("entityState", 0);
-            }          
             
 
             ServerPos.FromBytes(reader);
 
-            // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes
-            ServerPos.HeadYaw = WatchedAttributes.GetFloat("headYaw");
-            ServerPos.HeadPitch = WatchedAttributes.GetFloat("headPitch");
+            GetHeadPositionFromWatchedAttributes();
 
             Pos.SetFrom(ServerPos);
             PositionBeforeFalling.X = reader.ReadDouble();

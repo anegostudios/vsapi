@@ -27,6 +27,7 @@ namespace Vintagestory.API.Common.Entities
 
         /// <summary>
         /// Initializes the entity.
+        /// <br/>If your code modifies the supplied attributes (not recommended!), then your changes will apply to all entities of the same type.
         /// </summary>
         /// <param name="properties">The properties of this entity.</param>
         /// <param name="attributes">The attributes of this entity.</param>

@@ -43,6 +43,14 @@ namespace Vintagestory.API.Common
         /// <param name="index3d"></param>
         /// <param name="value"></param>
         int GetBlockIdUnsafe(int index3d);
+        /// <summary>
+        /// Enter a locked section for bulk block reads from this ChunkData, using Unsafe read methods
+        /// </summary>
+        void TakeBulkReadLock();
+        /// <summary>
+        /// Leave a locked section for bulk block reads from this ChunkData, using Unsafe read methods
+        /// </summary>
+        void ReleaseBulkReadLock();
     }
 
     public interface IChunkLight
@@ -225,6 +233,15 @@ namespace Vintagestory.API.Common
         Block GetLocalBlockAtBlockPos(IWorldAccessor world, int posX, int posY, int posZ, int layer);
 
         /// <summary>
+        /// As GetLocalBlockAtBlockPos except lock-free, use it inside paired LockForReading(true/false) calls
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="position"></param>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        Block GetLocalBlockAtBlockPos_LockFree(IWorldAccessor world, BlockPos position, int layer = BlockLayersAccess.Default);
+
+        /// <summary>
         /// Retrieve a block entity from this chunk
         /// </summary>
         /// <param name="pos"></param>
@@ -242,14 +259,6 @@ namespace Vintagestory.API.Common
         bool SetDecor(Block block, int index3d, BlockFacing onFace);
         //bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, BlockFacing onFace);
 
-        /// <summary>
-        /// Sets a decor block to the side of an existing block. Use air block (id 0) to remove a decor.<br/>
-        /// </summary>
-        /// <param name="block"></param>
-        /// <param name="index3d"></param>
-        /// <param name="onFace"></param>
-        /// <returns></returns>
-      //  bool SetDecor(Block block, int index3d, BlockFacing onFace);
 
         /// <summary>
         /// Sets a decor block to a specific sub-position on the side of an existing block. Use air block (id 0) to remove a decor.<br/>
@@ -319,5 +328,18 @@ namespace Vintagestory.API.Common
         /// <param name="blockTypes"></param>
         /// <returns></returns>
         int GetLightAbsorptionAt(int index3d, BlockPos blockPos, IList<Block> blockTypes);
+
+        /// <summary>
+        /// For bulk chunk GetBlock operations, allows the chunkDataLayers to be pre-locked for reading, instead of entering and releasing one lock per read
+        /// <br/>Best used mainly on the server side unless you know what you are doing.  The client-side Chunk Tesselator can need read-access to a chunk at any time so making heavy use of this would cause rendering delays on the client
+        /// <br/>Make sure always to call ReleaseBulkReadLock() when finished.  Use a try/finally block if necessary, and complete all read operations within 8 seconds
+        /// </summary>
+        void AcquireBlockReadLock();
+
+        /// <summary>
+        /// For bulk chunk GetBlock operations, allows the chunkDataLayers to be pre-locked for reading, instead of entering and releasing one lock per read
+        /// <br/>Make sure always to call ReleaseBulkReadLock() when finished.  Use a try/finally block if necessary, and complete all read operations within 8 seconds
+        /// </summary>
+        void ReleaseBlockReadLock();
     }
 }

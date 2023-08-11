@@ -39,6 +39,13 @@ namespace Vintagestory.API.MathTools
             this.Z = vec.Z;
         }
 
+        public BlockPos(Vec4i vec)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+        }
+
         public long AsLong { get => ((long)Y << 52) + ((long)Z << 26) + X; }
 
         /// <summary>
@@ -735,6 +742,8 @@ namespace Vintagestory.API.MathTools
         }
 
         #endregion
+
+        public Vec3i AsVec3i => new Vec3i((int)X, (int)Y, (int)Z);
 
     }
 

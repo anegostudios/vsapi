@@ -1,9 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Vintagestory.API.Client
 {
     public static class GlKeyNames
@@ -15,67 +9,168 @@ namespace Vintagestory.API.Client
         /// <returns>the string name of the key.</returns>
         public static string ToString(GlKeys key)
         {
-            switch (key)
+            return key switch
             {
-                case GlKeys.Number0:
-                    return "0";
-                case GlKeys.Number1:
-                    return "1";
-                case GlKeys.Number2:
-                    return "2";
-                case GlKeys.Number3:
-                    return "3";
-                case GlKeys.Number4:
-                    return "4";
-                case GlKeys.Number5:
-                    return "5";
-                case GlKeys.Number6:
-                    return "6";
-                case GlKeys.Number7:
-                    return "7";
-                case GlKeys.Number8:
-                    return "8";
-                case GlKeys.Number9:
-                    return "9";
-                case GlKeys.RBracket:
-                    return "]";
-                case GlKeys.LBracket:
-                    return "[";
-                case GlKeys.Tilde:
-                    return "`";
-                case GlKeys.Plus:
-                    return "+";
-                case GlKeys.Minus:
-                    return "-";
-                case GlKeys.LControl:
-                    return "Ctrl";
-                case GlKeys.LShift:
-                    return "Shift";
-                case GlKeys.LAlt:
-                    return "Left Alt";
-                case GlKeys.RAlt:
-                    return "Right Alt";
-                case GlKeys.Semicolon:
-                    return ";";
-                case GlKeys.Comma:
-                    return ",";
-                case GlKeys.Period:
-                    return ".";
-                case GlKeys.Slash:
-                    return "/";
-                case GlKeys.BackSlash:
-                    return "\\";
-
-
-
-            }
-
-            return key.ToString();
+                GlKeys.Number0 => "0",
+                GlKeys.Number1 => "1",
+                GlKeys.Number2 => "2",
+                GlKeys.Number3 => "3",
+                GlKeys.Number4 => "4",
+                GlKeys.Number5 => "5",
+                GlKeys.Number6 => "6",
+                GlKeys.Number7 => "7",
+                GlKeys.Number8 => "8",
+                GlKeys.Number9 => "9",
+                GlKeys.RBracket => "]",
+                GlKeys.LBracket => "[",
+                GlKeys.Tilde => "`",
+                GlKeys.Plus => "+",
+                GlKeys.Minus => "-",
+                GlKeys.LControl => "Ctrl",
+                GlKeys.LShift => "Shift",
+                GlKeys.LAlt => "Left Alt",
+                GlKeys.RAlt => "Right Alt",
+                GlKeys.Semicolon => ";",
+                GlKeys.Comma => ",",
+                GlKeys.Period => ".",
+                GlKeys.Slash => "/",
+                GlKeys.BackSlash => "\\",
+                _ => key.ToString()
+            };
+            ;
         }
-        
     }
 
-    public enum GlKeys
+    /// <summary>
+    /// Converts key code from OpenTK 4 to GlKeys
+    /// </summary>
+    public static class KeyConverter
+    {
+        public static readonly int[] NewKeysToGlKeys = new int[349];
+
+        static KeyConverter()
+        {
+            NewKeysToGlKeys[32]=(int)GlKeys.Space;
+            NewKeysToGlKeys[39]=(int)GlKeys.Quote;
+            NewKeysToGlKeys[44]=(int)GlKeys.Comma;
+            NewKeysToGlKeys[45]=(int)GlKeys.Minus;
+            NewKeysToGlKeys[46]=(int)GlKeys.Period;
+            NewKeysToGlKeys[47]=(int)GlKeys.Slash;
+            NewKeysToGlKeys[48]=(int)GlKeys.Number0;
+            NewKeysToGlKeys[49]=(int)GlKeys.Number1;
+            NewKeysToGlKeys[50]=(int)GlKeys.Number2;
+            NewKeysToGlKeys[51]=(int)GlKeys.Number3;
+            NewKeysToGlKeys[52]=(int)GlKeys.Number4;
+            NewKeysToGlKeys[53]=(int)GlKeys.Number5;
+            NewKeysToGlKeys[54]=(int)GlKeys.Number6;
+            NewKeysToGlKeys[55]=(int)GlKeys.Number7;
+            NewKeysToGlKeys[56]=(int)GlKeys.Number8;
+            NewKeysToGlKeys[57]=(int)GlKeys.Number9;
+            NewKeysToGlKeys[59]=(int)GlKeys.Semicolon;
+            NewKeysToGlKeys[61]=(int)GlKeys.Plus;
+            NewKeysToGlKeys[65]=(int)GlKeys.A;
+            NewKeysToGlKeys[66]=(int)GlKeys.B;
+            NewKeysToGlKeys[67]=(int)GlKeys.C;
+            NewKeysToGlKeys[68]=(int)GlKeys.D;
+            NewKeysToGlKeys[69]=(int)GlKeys.E;
+            NewKeysToGlKeys[70]=(int)GlKeys.F;
+            NewKeysToGlKeys[71]=(int)GlKeys.G;
+            NewKeysToGlKeys[72]=(int)GlKeys.H;
+            NewKeysToGlKeys[73]=(int)GlKeys.I;
+            NewKeysToGlKeys[74]=(int)GlKeys.J;
+            NewKeysToGlKeys[75]=(int)GlKeys.K;
+            NewKeysToGlKeys[76]=(int)GlKeys.L;
+            NewKeysToGlKeys[77]=(int)GlKeys.M;
+            NewKeysToGlKeys[78]=(int)GlKeys.N;
+            NewKeysToGlKeys[79]=(int)GlKeys.O;
+            NewKeysToGlKeys[80]=(int)GlKeys.P;
+            NewKeysToGlKeys[81]=(int)GlKeys.Q;
+            NewKeysToGlKeys[82]=(int)GlKeys.R;
+            NewKeysToGlKeys[83]=(int)GlKeys.S;
+            NewKeysToGlKeys[84]=(int)GlKeys.T;
+            NewKeysToGlKeys[85]=(int)GlKeys.U;
+            NewKeysToGlKeys[86]=(int)GlKeys.V;
+            NewKeysToGlKeys[87]=(int)GlKeys.W;
+            NewKeysToGlKeys[88]=(int)GlKeys.X;
+            NewKeysToGlKeys[89]=(int)GlKeys.Y;
+            NewKeysToGlKeys[90]=(int)GlKeys.Z;
+            NewKeysToGlKeys[91]=(int)GlKeys.BracketLeft;
+            NewKeysToGlKeys[92]=(int)GlKeys.BackSlash;
+            NewKeysToGlKeys[93]=(int)GlKeys.BracketRight;
+            NewKeysToGlKeys[96]=(int)GlKeys.Tilde;
+            NewKeysToGlKeys[256]=(int)GlKeys.Escape;
+            NewKeysToGlKeys[257]=(int)GlKeys.Enter;
+            NewKeysToGlKeys[258]=(int)GlKeys.Tab;
+            NewKeysToGlKeys[259]=(int)GlKeys.Back;
+            NewKeysToGlKeys[260]=(int)GlKeys.Insert;
+            NewKeysToGlKeys[261]=(int)GlKeys.Delete;
+            NewKeysToGlKeys[262]=(int)GlKeys.Right;
+            NewKeysToGlKeys[263]=(int)GlKeys.Left;
+            NewKeysToGlKeys[264]=(int)GlKeys.Down;
+            NewKeysToGlKeys[265]=(int)GlKeys.Up;
+            NewKeysToGlKeys[266]=(int)GlKeys.PageUp;
+            NewKeysToGlKeys[267]=(int)GlKeys.PageDown;
+            NewKeysToGlKeys[268]=(int)GlKeys.Home;
+            NewKeysToGlKeys[269]=(int)GlKeys.End;
+            NewKeysToGlKeys[280]=(int)GlKeys.CapsLock;
+            NewKeysToGlKeys[281]=(int)GlKeys.ScrollLock;
+            NewKeysToGlKeys[282]=(int)GlKeys.NumLock;
+            NewKeysToGlKeys[283]=(int)GlKeys.PrintScreen;
+            NewKeysToGlKeys[284]=(int)GlKeys.Pause;
+            NewKeysToGlKeys[290]=(int)GlKeys.F1;
+            NewKeysToGlKeys[291]=(int)GlKeys.F2;
+            NewKeysToGlKeys[292]=(int)GlKeys.F3;
+            NewKeysToGlKeys[293]=(int)GlKeys.F4;
+            NewKeysToGlKeys[294]=(int)GlKeys.F5;
+            NewKeysToGlKeys[295]=(int)GlKeys.F6;
+            NewKeysToGlKeys[296]=(int)GlKeys.F7;
+            NewKeysToGlKeys[297]=(int)GlKeys.F8;
+            NewKeysToGlKeys[298]=(int)GlKeys.F9;
+            NewKeysToGlKeys[299]=(int)GlKeys.F10;
+            NewKeysToGlKeys[300]=(int)GlKeys.F11;
+            NewKeysToGlKeys[301]=(int)GlKeys.F12;
+            NewKeysToGlKeys[302]=(int)GlKeys.F13;
+            NewKeysToGlKeys[303]=(int)GlKeys.F14;
+            NewKeysToGlKeys[304]=(int)GlKeys.F15;
+            NewKeysToGlKeys[305]=(int)GlKeys.F16;
+            NewKeysToGlKeys[306]=(int)GlKeys.F17;
+            NewKeysToGlKeys[307]=(int)GlKeys.F18;
+            NewKeysToGlKeys[308]=(int)GlKeys.F19;
+            NewKeysToGlKeys[309]=(int)GlKeys.F20;
+            NewKeysToGlKeys[310]=(int)GlKeys.F21;
+            NewKeysToGlKeys[311]=(int)GlKeys.F22;
+            NewKeysToGlKeys[312]=(int)GlKeys.F23;
+            NewKeysToGlKeys[313]=(int)GlKeys.F24;
+            NewKeysToGlKeys[314]=(int)GlKeys.F25;
+            NewKeysToGlKeys[320]=(int)GlKeys.Keypad0;
+            NewKeysToGlKeys[321]=(int)GlKeys.Keypad1;
+            NewKeysToGlKeys[322]=(int)GlKeys.Keypad2;
+            NewKeysToGlKeys[323]=(int)GlKeys.Keypad3;
+            NewKeysToGlKeys[324]=(int)GlKeys.Keypad4;
+            NewKeysToGlKeys[325]=(int)GlKeys.Keypad5;
+            NewKeysToGlKeys[326]=(int)GlKeys.Keypad6;
+            NewKeysToGlKeys[327]=(int)GlKeys.Keypad7;
+            NewKeysToGlKeys[328]=(int)GlKeys.Keypad8;
+            NewKeysToGlKeys[329]=(int)GlKeys.Keypad9;
+            NewKeysToGlKeys[330]=(int)GlKeys.KeypadDecimal;
+            NewKeysToGlKeys[331]=(int)GlKeys.KeypadDivide;
+            NewKeysToGlKeys[332]=(int)GlKeys.KeypadMultiply;
+            NewKeysToGlKeys[333]=(int)GlKeys.KeypadSubtract;
+            NewKeysToGlKeys[334]=(int)GlKeys.KeypadAdd;
+            NewKeysToGlKeys[335]=(int)GlKeys.KeypadEnter;
+            NewKeysToGlKeys[340]=(int)GlKeys.ShiftLeft;
+            NewKeysToGlKeys[341]=(int)GlKeys.ControlLeft;
+            NewKeysToGlKeys[342]=(int)GlKeys.AltLeft;
+            NewKeysToGlKeys[343]=(int)GlKeys.WinLeft;
+            NewKeysToGlKeys[344]=(int)GlKeys.ShiftRight;
+            NewKeysToGlKeys[345]=(int)GlKeys.ControlRight;
+            NewKeysToGlKeys[346]=(int)GlKeys.AltRight;
+            NewKeysToGlKeys[347]=(int)GlKeys.WinRight;
+            NewKeysToGlKeys[348]=(int)GlKeys.Menu;
+        }
+    }
+    
+     public enum GlKeys
     {
         Unknown = 0,
         LShift = 1,

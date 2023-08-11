@@ -46,7 +46,7 @@ namespace Vintagestory.API.Common
     /// Superseded by this mod's "modinfo.json" file, if available.
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-    public class ModDependencyAttribute : Attribute
+    public sealed class ModDependencyAttribute : Attribute
     {
         /// <summary> The required mod id (domain) of this dependency. </summary>
         public string ModID { get; }

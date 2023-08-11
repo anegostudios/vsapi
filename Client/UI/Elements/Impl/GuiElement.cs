@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Imaging;
 using Cairo;
+using SkiaSharp;
 using Vintagestory.API.Common;
-using Vintagestory.API.Client;
-using System.Drawing;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -220,7 +218,7 @@ namespace Vintagestory.API.Client
         /// <param name="bitmap">The provided bitmap.</param>
         /// <returns>The resulting surface pattern.</returns>
         [Obsolete("Use getPattern(BitmapExternal bitmap) for easier update to .NET7.0")]
-        public static SurfacePattern getPattern(Bitmap bitmap)
+        public static SurfacePattern getPattern(SKBitmap bitmap)
         {
             ImageSurface patternSurface = getImageSurfaceFromAsset(bitmap);
 
@@ -250,27 +248,17 @@ namespace Vintagestory.API.Client
         /// <param name="bitmap">The provided bitmap.</param>
         /// <returns>The image surface built from the bitmap.</returns>
         [Obsolete("Use getImageSurfaceFromAsset(BitmapExternal bitmap) for easier update to .NET7.0")]
-        public static ImageSurface getImageSurfaceFromAsset(Bitmap bitmap)
+        public unsafe static ImageSurface getImageSurfaceFromAsset(SKBitmap bitmap)
         {
-            BitmapData bmp_data = bitmap.LockBits(new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
-
             ImageSurface imageSurface = new ImageSurface(Format.Argb32, bitmap.Width, bitmap.Height);
-
-            unsafe
+            uint* destPixels = (uint*)imageSurface.DataPtr.ToPointer();
+            uint* sourcePixels = (uint*)bitmap.GetPixels().ToPointer();
+            int size = bitmap.Width * bitmap.Height;
+            for (int i = 0; i < size; i++)
             {
-                uint* destPixels = (uint*)imageSurface.DataPtr.ToPointer();
-                uint* sourcePixels = (uint*)bmp_data.Scan0.ToPointer();
-
-                int size = bitmap.Width * bitmap.Height;
-
-                for (int i = 0; i < size; i++)
-                {
-                    destPixels[i] = sourcePixels[i];
-                }
+                destPixels[i] = sourcePixels[i];
             }
-
             imageSurface.MarkDirty();
-            bitmap.UnlockBits(bmp_data);
             return imageSurface;
         }
 
@@ -297,7 +285,6 @@ namespace Vintagestory.API.Client
             }
 
             imageSurface.MarkDirty();
-            bitmap.PixelsUnlock();
             return imageSurface;
         }
 
@@ -309,7 +296,7 @@ namespace Vintagestory.API.Client
         /// <param name="height">The height requested.</param>
         /// <returns>The image surface built from the bitmap and data.</returns>
         [Obsolete("Use getImageSurfaceFromAsset(BitmapExternal bitmap, int width, int height) for easier update to .NET7.0")]
-        public static ImageSurface getImageSurfaceFromAsset(Bitmap bitmap, int width, int height)
+        public static ImageSurface getImageSurfaceFromAsset(SKBitmap bitmap, int width, int height)
         {
             ImageSurface imageSurface = new ImageSurface(Format.Argb32, width, height);
             imageSurface.Image(bitmap, 0, 0, width, height);
@@ -373,37 +360,31 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The Client API</param>
         /// <param name="textureLoc">The name of the text file.</param>
         /// <returns></returns>
-        public static ImageSurface getImageSurfaceFromAsset(ICoreClientAPI capi, AssetLocation textureLoc, int mulAlpha = 255)
+        public unsafe static ImageSurface getImageSurfaceFromAsset(ICoreClientAPI capi, AssetLocation textureLoc, int mulAlpha = 255)
         {
-            byte[] pngdata = capi.Assets.Get(textureLoc.Clone().WithPathPrefixOnce("textures/")).Data;
-
-            BitmapExternal bitmap = capi.Render.BitmapCreateFromPng(pngdata);
+            byte[] data = capi.Assets.Get(textureLoc.Clone().WithPathPrefixOnce("textures/")).Data;
+            BitmapExternal bitmapExternal = capi.Render.BitmapCreateFromPng(data);
             if (mulAlpha != 255)
             {
-                bitmap.MulAlpha(mulAlpha);
+                bitmapExternal.MulAlpha(mulAlpha);
             }
 
-            ImageSurface imageSurface = new ImageSurface(Format.Argb32, bitmap.Width, bitmap.Height);
+            ImageSurface imageSurface = new ImageSurface(Format.Argb32, bitmapExternal.Width, bitmapExternal.Height);
 
-            unsafe
+            uint* destPixels = (uint*)imageSurface.DataPtr.ToPointer();
+            uint* sourcePixels = (uint*)bitmapExternal.PixelsPtrAndLock.ToPointer();
+
+            int size = bitmapExternal.Width * bitmapExternal.Height;
+
+            for (int i = 0; i < size; i++)
             {
-                uint* destPixels = (uint*)imageSurface.DataPtr.ToPointer();
-                uint* sourcePixels = (uint*)bitmap.PixelsPtrAndLock.ToPointer();
-
-                int size = bitmap.Width * bitmap.Height;
-
-                for (int i = 0; i < size; i++)
-                {
-                    destPixels[i] = sourcePixels[i];
-                }
+                destPixels[i] = sourcePixels[i];
             }
 
             imageSurface.MarkDirty();
 
 
-            bitmap.PixelsUnlock();
-            bitmap.Dispose();
-
+            bitmapExternal.Dispose();
             return imageSurface;
         }
 

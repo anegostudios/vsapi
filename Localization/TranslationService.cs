@@ -227,7 +227,10 @@ namespace Vintagestory.API.Config
             {
                 N = float.Parse(args[argNum].ToString());
             }
-            catch (Exception _) { }
+            catch (Exception)
+            {
+                // ignored
+            }
 
             // Separate out the different elements of this string
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OpenTK.Windowing.GraphicsLibraryFramework;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
@@ -130,7 +126,6 @@ namespace Vintagestory.API.Client
         void RegisterHotKeyFirst(string hotkeyCode, string name, GlKeys key, HotkeyType type = HotkeyType.CharacterControls, bool altPressed = false, bool ctrlPressed = false, bool shiftPressed = false);
 
 
-
         /// <summary>
         /// Will call the handler if given hotkey has been pressed. Removes the previously assigned handler.
         /// </summary>
@@ -151,7 +146,5 @@ namespace Vintagestory.API.Client
         /// <param name="toggleKeyCombinationCode">the key combination code.</param>
         /// <returns>The registered hotkey.</returns>
         HotKey GetHotKeyByCode(string toggleKeyCombinationCode);
-
-
     }
 }

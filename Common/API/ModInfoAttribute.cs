@@ -7,7 +7,7 @@ namespace Vintagestory.API.Common
     /// about a code mod. Superseded by "modinfo.json" file, if available.
     /// </summary>
     [AttributeUsage(AttributeTargets.Assembly)]
-    public class ModInfoAttribute : Attribute
+    public sealed class ModInfoAttribute : Attribute
     {
         // Not needed. CS and DLL mods are implicitly Code mods.
         // public EnumModType Type { get; set; } = EnumModType.Code;

@@ -1,7 +1,6 @@
 ﻿using System;
 using Cairo;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
@@ -82,7 +81,7 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                tabWidths[i] = (int)maxWidth+1;
+                tabWidths[i] = (int)maxWidth + 1;
 
                 if (right)
                 {

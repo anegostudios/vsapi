@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Vintagestory.API.Client
 {
@@ -49,7 +45,7 @@ namespace Vintagestory.API.Client
             if (Alt) keys.Add("ALT");
             if (Shift) keys.Add("SHIFT");
             keys.Add("" + GlKeyNames.ToString((GlKeys)KeyCode));
-            if (SecondKeyCode != null && SecondKeyCode > 0) keys.Add("" + GlKeyNames.ToString((GlKeys)SecondKeyCode));
+            if (SecondKeyCode != null && SecondKeyCode > 0) keys.Add("" + GlKeyNames.ToString((GlKeys)SecondKeyCode.Value));
 
             return string.Join(" + ", keys.ToArray());
         }

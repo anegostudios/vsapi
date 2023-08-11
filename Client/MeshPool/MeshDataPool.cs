@@ -106,14 +106,9 @@ namespace Vintagestory.API.Client
         {
             MeshDataPool pool = new MeshDataPool(verticesPoolSize, indicesPoolSize, maxPartsPerPool);
 
-            if (IntPtr.Size == 8)
-            {
-                // 64 bit builds require 64 bit memory addresses (should be long[] really, but GL.MultiDrawElements only accepts int[])
-                pool.indicesStartsByte = new int[maxPartsPerPool * 2];
-            } else
-            {
-                pool.indicesStartsByte = new int[maxPartsPerPool];
-            }
+            // 64 bit builds require 64 bit memory addresses (should be long[] really, but GL.MultiDrawElements only accepts int[])
+            // 
+            pool.indicesStartsByte = new int[maxPartsPerPool * 2];
             
             pool.indicesSizes = new int[maxPartsPerPool];
 
@@ -348,7 +343,6 @@ namespace Vintagestory.API.Client
         public void FrustumCull(FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
             indicesGroupsCount = 0;
-            int multiplier = (IntPtr.Size == 8) ? 2 : 1;
 
             RenderedTriangles = 0;
             AllocatedTris = 0;
@@ -360,7 +354,7 @@ namespace Vintagestory.API.Client
                 int size = location.IndicesEnd - location.IndicesStart;
                 if (location.IsVisible(frustumCullMode, frustumCuller))
                 {
-                    indicesStartsByte[indicesGroupsCount * multiplier] = location.IndicesStart * 4; // Offset in bytes, not ints
+                    indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4; // Offset in bytes, not ints
                     indicesSizes[indicesGroupsCount] = size;
 
                     RenderedTriangles += size / 3;

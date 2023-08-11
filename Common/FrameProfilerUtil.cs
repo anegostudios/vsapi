@@ -46,7 +46,7 @@ namespace Vintagestory.API.Common
         public int PrintSlowTicksThreshold = 40;
         public ProfileEntryRange PrevRootEntry;
         public string summary;
-        public string OutputPrefix;
+        public string OutputPrefix = "";
 
         public static ConcurrentQueue<string> offThreadProfiles = new ConcurrentQueue<string>();
         public static bool PrintSlowTicks_Offthreads;
@@ -55,6 +55,7 @@ namespace Vintagestory.API.Common
         Stopwatch stopwatch = new Stopwatch();
         ProfileEntryRange rootEntry;
         ProfileEntryRange currentEntry;
+        string beginText;
         Action<string> onLogoutputHandler;
 
         public FrameProfilerUtil(Action<string> onLogoutputHandler)
@@ -76,10 +77,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called by the game engine for each render frame or server tick
         /// </summary>
-        public void Begin()
+        public void Begin(string beginText = null)
         {
             if (!Enabled && !PrintSlowTicks) return;
 
+            this.beginText = beginText;
             currentEntry = null;
             rootEntry = Enter("all");
         }
@@ -173,7 +175,10 @@ namespace Vintagestory.API.Common
                 ms.CallCount++;
                 entry.LastMark = ticks;
             }
-            catch (Exception _) { }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         /// <summary>
@@ -192,6 +197,7 @@ namespace Vintagestory.API.Common
             if (PrintSlowTicks && ms > PrintSlowTicksThreshold)
             {
                 StringBuilder strib = new StringBuilder();
+                if (beginText != null) strib.Append(beginText).Append(' ');
                 strib.AppendLine(string.Format("{0}A tick took {1:0.##} ms", OutputPrefix, ms));
 
                 slowTicksToString(rootEntry, strib);
@@ -246,7 +252,10 @@ namespace Vintagestory.API.Common
                     slowTicksToString(prof, strib, thresholdMs, indent + "  ");
                 }
             }
-            catch (Exception _) { }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
     }
 }

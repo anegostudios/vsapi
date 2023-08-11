@@ -15,8 +15,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public abstract class BlockEntity
     {
-        protected List<long> TickHandlers = new List<long>();
-        protected List<long> CallbackHandlers = new List<long>();
+        protected List<long> TickHandlers;
+        protected List<long> CallbackHandlers;
 
         /// <summary>
         /// The core API added to the block.  Accessable after initialization.
@@ -106,6 +106,7 @@ namespace Vintagestory.API.Common
         public virtual long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
         {
             long listenerId = Api.Event.RegisterGameTickListener(OnGameTick, millisecondInterval, initialDelayOffsetMs);
+            if (TickHandlers == null) TickHandlers = new List<long>(1);
             TickHandlers.Add(listenerId);
             return listenerId;
         }
@@ -117,7 +118,7 @@ namespace Vintagestory.API.Common
         public virtual void UnregisterGameTickListener(long listenerId)
         {
             Api.Event.UnregisterGameTickListener(listenerId);
-            TickHandlers.Remove(listenerId);
+            TickHandlers?.Remove(listenerId);
         }
 
         /// <summary>
@@ -129,6 +130,7 @@ namespace Vintagestory.API.Common
         public virtual long RegisterDelayedCallback(Action<float> OnDelayedCallbackTick, int millisecondInterval)
         {
             long listenerId = Api.Event.RegisterCallback(OnDelayedCallbackTick, millisecondInterval);
+            if (CallbackHandlers == null) CallbackHandlers = new List<long>();
             CallbackHandlers.Add(listenerId);
             return listenerId;
         }
@@ -141,19 +143,19 @@ namespace Vintagestory.API.Common
         public virtual void UnregisterDelayedCallback(long listenerId)
         {
             Api.Event.UnregisterCallback(listenerId);
-            CallbackHandlers.Remove(listenerId);
+            CallbackHandlers?.Remove(listenerId);
         }
 
         /// <summary>
         /// Called when the block at this position was removed in some way. Removes the game tick listeners, so still call the base method
         /// </summary>
         public virtual void OnBlockRemoved() {
-            foreach (long handlerId in TickHandlers)
+            if (TickHandlers != null) foreach (long handlerId in TickHandlers)
             {
                 Api.Event.UnregisterGameTickListener(handlerId);
             }
 
-            foreach (long handlerId in CallbackHandlers)
+            if (CallbackHandlers != null) foreach (long handlerId in CallbackHandlers)
             {
                 Api.Event.UnregisterCallback(handlerId);
             }
@@ -234,12 +236,12 @@ namespace Vintagestory.API.Common
         {
             if (Api != null)
             {
-                foreach (long handlerId in TickHandlers)
+                if (TickHandlers != null) foreach (long handlerId in TickHandlers)
                 {
                     Api.Event.UnregisterGameTickListener(handlerId);
                 }
 
-                foreach (long handlerId in CallbackHandlers)
+                if (CallbackHandlers != null) foreach (long handlerId in CallbackHandlers)
                 {
                     Api.Event.UnregisterCallback(handlerId);
                 }

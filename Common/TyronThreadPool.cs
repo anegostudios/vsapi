@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
@@ -23,32 +20,6 @@ namespace Vintagestory.API.Common
         int keyCounter = 0;
         int dedicatedCounter = 0;
 
-
-        public TyronThreadPool() { 
-            /*threads = new Thread[quantityThreads];
-            for (int i = 0; i < quantityThreads; i++)
-            {
-                ThreadStart ts = new ThreadStart(() =>
-                {
-                    while (true)
-                    {
-                        if (queue.Count > 0)
-                        {
-                            Action callback;
-                            if (queue.TryDequeue(out callback))
-                            {
-                                callback();
-                            }
-                        }
-                        Thread.Sleep(1);
-                    }
-                });
-
-                threads[i] = new Thread(ts);
-                threads[i].IsBackground = true;
-                threads[i].Start();
-            }*/
-        }
 
         private int MarkStarted(string caller)
         {
@@ -88,22 +59,23 @@ namespace Vintagestory.API.Common
                 sb.Append(": ");
                 sb.AppendLine(t.ThreadState.ToString());
             }
-
-            if (RuntimeEnv.OS == OS.Windows)
+            sb.AppendLine("\nAll current process threads:");
+            ProcessThreadCollection threads = Process.GetCurrentProcess().Threads;
+            foreach (ProcessThread thread in threads)
             {
-                sb.AppendLine("\nAll current process threads:");
-                ProcessThreadCollection threads = Process.GetCurrentProcess().Threads;
-                foreach (ProcessThread thread in threads)
+                if (thread == null || thread.ThreadState == System.Diagnostics.ThreadState.Wait) continue;
+                if(RuntimeEnv.OS != OS.Mac)
                 {
-                    if (thread == null || thread.ThreadState == System.Diagnostics.ThreadState.Wait) continue;
+#pragma warning disable CA1416
                     sb.Append(thread.StartTime);
-                    sb.Append(": P ");
-                    sb.Append(thread.CurrentPriority);
-                    sb.Append(": ");
-                    sb.Append(thread.ThreadState.ToString());
-                    sb.Append(": T ");
-                    sb.AppendLine(thread.UserProcessorTime.ToString());
+#pragma warning restore CA1416
                 }
+                sb.Append(": P ");
+                sb.Append(thread.CurrentPriority);
+                sb.Append(": ");
+                sb.Append(thread.ThreadState.ToString());
+                sb.Append(": T ");
+                sb.AppendLine(thread.UserProcessorTime.ToString());
             }
 
             return sb.ToString();

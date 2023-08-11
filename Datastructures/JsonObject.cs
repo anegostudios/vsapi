@@ -33,6 +33,16 @@ namespace Vintagestory.API.Datastructures
         }
 
         /// <summary>
+        /// Create a new instance of a JsonObject
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="unused">Only present so that the Constructor with a sole null parameter has an unambiguous signature</param>
+        public JsonObject(JsonObject original, bool unused)
+        {
+            this.token = original.token;
+        }
+
+        /// <summary>
         /// Access a tokens element with given key
         /// </summary>
         /// <param name="key"></param>
@@ -55,7 +65,7 @@ namespace Vintagestory.API.Datastructures
             get { return token != null; }
         }
 
-        public JToken Token { 
+        public virtual JToken Token { 
             get { return token; } 
             set { token = value; } 
         }
@@ -182,7 +192,7 @@ namespace Vintagestory.API.Datastructures
 
             return objs;
         }
-        
+
 
         /// <summary>
         /// Turn the token into a boolean
@@ -333,7 +343,7 @@ namespace Vintagestory.API.Datastructures
             return ToAttribute(token);
         }
 
-        public void FillPlaceHolder(string key, string value)
+        public virtual void FillPlaceHolder(string key, string value)
         {
             FillPlaceHolder(token, key, value);
         }

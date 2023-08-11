@@ -3,14 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
+using Color = System.Drawing.Color;
 
 namespace Vintagestory.API.Common
 {
@@ -316,7 +313,7 @@ namespace Vintagestory.API.Common
 
         public static bool parseHexColor(string colorText, out double[] color)
         {
-            System.Drawing.Color cl;
+            Color cl;
             try
             {
                 cl = ColorTranslator.FromHtml(colorText);
@@ -326,7 +323,7 @@ namespace Vintagestory.API.Common
                 return false;
             }
 
-            if (cl == null)
+            if (cl == Color.Empty)
             {
                 color = null;
                 return false;

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using System.Threading;
-using Cairo;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Net;
@@ -69,36 +64,23 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static readonly string EnvSearchPathName;
 
-        public static readonly string EnvPathSeperator;
-
-        /// <summary>
-        /// .dll for windows, .so for linux, .dylib for mac
-        /// </summary>
-        public static readonly string LibExtension;
-
         static RuntimeEnv()
         {
-            if (System.IO.Path.DirectorySeparatorChar == '\\')
+            if (Path.DirectorySeparatorChar == '\\')
             {
-                EnvPathSeperator = ";";
                 OS = OS.Windows;
                 EnvSearchPathName = "PATH";
-                LibExtension = ".dll";
                 return;
             }
 			if (IsMac())
             {
 				OS = OS.Mac;
 				EnvSearchPathName = "DYLD_FRAMEWORK_PATH";
-				LibExtension = ".dylib";
-                EnvPathSeperator = ":";
                 return;
             }
 
 			OS = OS.Linux;
 			EnvSearchPathName = "LD_LIBRARY_PATH";
-			LibExtension = ".so";
-            EnvPathSeperator = ":";
         }
 
 		[DllImport("libc")]
@@ -127,14 +109,9 @@ namespace Vintagestory.API.Config
 		}
 
         /// <summary>
-        /// Whether the game is run using the Mono framework
-        /// </summary>
-        public static readonly bool IsMono = Type.GetType("Mono.Runtime") != null;
-
-        /// <summary>
         /// Whether we are in a dev environment or not
         /// </summary>
-        public static readonly bool IsDevEnvironment = !Directory.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets"));
+        public static readonly bool IsDevEnvironment = !Directory.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "assets"));
 
 
         public static string GetLocalIpAddress()
@@ -142,71 +119,46 @@ namespace Vintagestory.API.Config
             try
             {
                 // This seems to be the preferred / more reliable way of getting the ip
-                // but it seems of of the methods are not implemented in mono so we fallback 
+                // but it seems one of the methods are not implemented in net (crossplatform) so we fallback 
                 // to a simple method if an exception is thrown
-
-                UnicastIPAddressInformation mostSuitableIp = null;
-
-                var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-
-                foreach (var network in networkInterfaces)
+                var allNetworkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+                foreach (var networkInterface in allNetworkInterfaces)
                 {
-                    if (network.OperationalStatus != OperationalStatus.Up)
+                    if (networkInterface.OperationalStatus != OperationalStatus.Up)
                     {
                         continue;
                     }
-
-                    var properties = network.GetIPProperties();
-
-                    if (properties.GatewayAddresses.Count == 0)
+                    var iPProperties = networkInterface.GetIPProperties();
+                    if (iPProperties.GatewayAddresses.Count == 0)
                     {
                         continue;
                     }
-
-                    foreach (var address in properties.UnicastAddresses)
+                    foreach (var unicastAddress in iPProperties.UnicastAddresses)
                     {
-                        if (address.Address.AddressFamily != AddressFamily.InterNetwork)
+                        if (unicastAddress.Address.AddressFamily != AddressFamily.InterNetwork ||
+                            IPAddress.IsLoopback(unicastAddress.Address))
                         {
                             continue;
                         }
 
-                        if (IPAddress.IsLoopback(address.Address))
-                        {
-                            continue;
-                        }
-
-                        if (!address.IsDnsEligible)
-                        {
-                            if (mostSuitableIp == null) mostSuitableIp = address;
-                            continue;
-                        }
-
-                        // The best IP is the IP got from DHCP server
-                        if (address.PrefixOrigin != PrefixOrigin.Dhcp)
-                        {
-                            if (mostSuitableIp == null || !mostSuitableIp.IsDnsEligible) mostSuitableIp = address;
-                            continue;
-                        }
-
-                        return address.Address.ToString();
+                        return unicastAddress.Address.ToString();
                     }
                 }
-
-                return mostSuitableIp != null ? mostSuitableIp.Address.ToString() : "";
-            } catch (Exception)
+                return "Unknown ip";
+            }
+            catch (Exception)
             {
                 try
                 {
-                    var host = Dns.GetHostEntry(Dns.GetHostName());
-                    var ipAddress = host.AddressList.FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork);
-                    return ipAddress.ToString();
-                } catch (Exception)
+                    return Dns.GetHostEntry(Dns.GetHostName()).AddressList
+                        .FirstOrDefault(ip => ip.AddressFamily == AddressFamily.InterNetwork)
+                        ?.ToString();
+                }
+                catch (Exception)
                 {
                     return "Unknown ip";
                 }
-                
             }
-            
         }
     }
 }

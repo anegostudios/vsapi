@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common

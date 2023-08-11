@@ -11,7 +11,7 @@ namespace Vintagestory.API.Client
     {
         /// <summary>
         /// Length of the sound in seconds
-        /// </suummary>
+        /// </summary>
         float SoundLengthSeconds { get; }
 
         /// <summary>

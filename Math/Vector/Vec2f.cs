@@ -35,6 +35,39 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        
+
+        public override string ToString()
+        {
+            return "X=" + X + ", Y=" + Y;
+        }
+
+        public float Length()
+        {
+            return GameMath.Sqrt(X * X + Y * Y);
+        }
+
+        public float DistanceTo(float x, float y)
+        {
+            float dx = X - x;
+            float dy = Y - y;
+            return GameMath.Sqrt(dx * dx + dy * dy);
+        }
+
+
+        public static float Distance(float x1, float y1, float x2, float y2)
+        {
+            float dx = x2 - x1;
+            float dy = y2 - y1;
+
+            return GameMath.Sqrt(dx * dx + dy * dy);
+        }
+
+        public Vec2f Clone()
+        {
+            return new Vec2f(X, Y);
+        }
+
         #region Operators
         public static Vec2f operator -(Vec2f left, Vec2f right)
         {
@@ -94,39 +127,28 @@ namespace Vintagestory.API.MathTools
             return new Vec2f(left.X / right, left.Y / right);
         }
 
+
+        public static Vec2f operator +(Vec2f left, Vec2i right)
+        {
+            return new Vec2f(left.X + right.X, left.Y + right.Y);
+        }
+
+        public static bool operator ==(Vec2f left, Vec2f right)
+        {
+            if (object.ReferenceEquals(left, null))
+            {
+                return object.ReferenceEquals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Vec2f left, Vec2f right)
+        {
+            return !(left == right);
+        }
+
         #endregion
-
-
-        public override string ToString()
-        {
-            return "X=" + X + ", Y=" + Y;
-        }
-
-        public float Length()
-        {
-            return GameMath.Sqrt(X * X + Y * Y);
-        }
-
-        public float DistanceTo(float x, float y)
-        {
-            float dx = X - x;
-            float dy = Y - y;
-            return GameMath.Sqrt(dx * dx + dy * dy);
-        }
-
-
-        public static float Distance(float x1, float y1, float x2, float y2)
-        {
-            float dx = x2 - x1;
-            float dy = y2 - y1;
-
-            return GameMath.Sqrt(dx * dx + dy * dy);
-        }
-
-        public Vec2f Clone()
-        {
-            return new Vec2f(X, Y);
-        }
     }
 
 

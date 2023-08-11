@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Collections.Generic;
+using SkiaSharp;
 
 namespace Vintagestory.API.Common
 {

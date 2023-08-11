@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
 using Cairo;
-using Vintagestory.API.MathTools;
+using System.Collections.Generic;
 
 namespace Vintagestory.API.Client
 {

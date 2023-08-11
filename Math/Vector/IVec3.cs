@@ -27,5 +27,7 @@ namespace Vintagestory.API.MathTools
 
         float ZAsFloat { get; }
 
+        Vec3i AsVec3i { get; }
+
     }
 }

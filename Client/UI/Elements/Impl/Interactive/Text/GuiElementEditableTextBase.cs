@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Cairo;
-using Vintagestory.API.MathTools;
 using Vintagestory.API.Config;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Vintagestory.API.Client
 {
     public class KeyEvent
     {
-
         /// <summary>
         /// the character for the given key.
         /// </summary>
@@ -49,5 +43,4 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool AltPressed { get; set; }
     }
-
 }

@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Drawing;
+using SkiaSharp;
 
 namespace Vintagestory.API.Common
 {
     public interface IBitmap
     {
-        Color GetPixel(int x, int y);
-        Color GetPixelRel(float x, float y);
+        SKColor GetPixel(int x, int y);
+        SKColor GetPixelRel(float x, float y);
 
         int Width { get; }
         int Height { get; }
@@ -16,36 +16,30 @@ namespace Vintagestory.API.Common
         int[] GetPixelsTransformed(int rot = 0, int alpha = 100);
     }
 
-    public class BakedBitmap: IBitmap
+    public class BakedBitmap : IBitmap
     {
         public int[] TexturePixels;
         public int Width;
         public int Height;
 
-        public int[] Pixels
-        {
-            get
-            {
-                return TexturePixels;
-            }
-        }
+        public int[] Pixels => TexturePixels;
 
         int IBitmap.Width => Width;
 
         int IBitmap.Height => Height;
 
-        public Color GetPixel(int x, int y)
+        public SKColor GetPixel(int x, int y)
         {
-            return Color.FromArgb(TexturePixels[Width * y + x]);
+            return new SKColor((uint)TexturePixels[Width * y + x]);
         }
         public int GetPixelArgb(int x, int y)
         {
             return TexturePixels[Width * y + x];
         }
 
-        public Color GetPixelRel(float x, float y)
+        public SKColor GetPixelRel(float x, float y)
         {
-            return Color.FromArgb(TexturePixels[Width * (int)(y * Height) + (int)(x * Width)]);
+            return new SKColor((uint)TexturePixels[Width * (int)(y * Height) + (int)(x * Width)]);
         }
 
         public int[] GetPixelsTransformed(int rot = 0, int alpha = 100)
@@ -96,15 +90,14 @@ namespace Vintagestory.API.Common
 
             if (alpha != 100)
             {
-                float af = alpha / 100f;
-                int clearAlpha = ~(0xff << 24);
+                var af = alpha / 100f;
+                var white = (int)(uint)SKColors.White;
                 for (int i = 0; i < bmpPixels.Length; i++)
                 {
-                    int col = bmpPixels[i];
-                    int a = (col >> 24) & 0xff;
-                    col &= clearAlpha;
-
-                    bmpPixels[i] = col | ((int)(a * af) << 24);
+                    var current = bmpPixels[i];
+                    var currAlpha = (current >> 24);
+                    current &= white;
+                    bmpPixels[i] = (current | ((int)(currAlpha * af) << 24));
                 }
             }
 
@@ -119,15 +112,12 @@ namespace Vintagestory.API.Common
         public abstract int[] Pixels { get; }
 
         public abstract void Dispose();
-        public abstract Color GetPixel(int x, int y);
-        public abstract Color GetPixelRel(float x, float y);
-        
+        public abstract SKColor GetPixel(int x, int y);
+        public abstract SKColor GetPixelRel(float x, float y);
+
         public abstract int[] GetPixelsTransformed(int rot = 0, int mulalpha = 255);
         public abstract void Save(string filename);
 
         public abstract void MulAlpha(int alpha = 255);
-
-
     }
-
 }

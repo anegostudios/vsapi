@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO.Compression;
-using Vintagestory.API.Config;
-using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {

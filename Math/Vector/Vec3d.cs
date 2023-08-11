@@ -678,5 +678,6 @@ namespace Vintagestory.API.MathTools
 
         float IVec3.ZAsFloat { get { return (float)Z; } }
 
+        public Vec3i AsVec3i => new Vec3i((int)X, (int)Y, (int)Z);
     }
 }

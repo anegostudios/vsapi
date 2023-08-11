@@ -79,5 +79,89 @@ namespace Vintagestory.API.MathTools
 
             return Math.Sqrt(dx * dx + dy * dy);
         }
+
+
+        #region Operators
+        public static Vec2d operator -(Vec2d left, Vec2d right)
+        {
+            return new Vec2d(left.X - right.X, left.Y - right.Y);
+        }
+
+        public static Vec2d operator +(Vec2d left, Vec2d right)
+        {
+            return new Vec2d(left.X + right.X, left.Y + right.Y);
+        }
+
+        public static Vec2d operator +(Vec2d left, Vec2i right)
+        {
+            return new Vec2d(left.X + right.X, left.Y + right.Y);
+        }
+
+        public static Vec2d operator -(Vec2d left, float right)
+        {
+            return new Vec2d(left.X - right, left.Y - right);
+        }
+
+
+        public static Vec2d operator -(float left, Vec2d right)
+        {
+            return new Vec2d(left - right.X, left - right.Y);
+        }
+
+        public static Vec2d operator +(Vec2d left, float right)
+        {
+            return new Vec2d(left.X + right, left.Y + right);
+        }
+
+
+        public static Vec2d operator *(Vec2d left, float right)
+        {
+            return new Vec2d(left.X * right, left.Y * right);
+        }
+
+        public static Vec2d operator *(float left, Vec2d right)
+        {
+            return new Vec2d(left * right.X, left * right.Y);
+        }
+
+        public static Vec2d operator *(Vec2d left, double right)
+        {
+            return new Vec2d(left.X * right, left.Y * right);
+        }
+
+
+        public static Vec2d operator *(double left, Vec2d right)
+        {
+            return new Vec2d(left * right.X, left * right.Y);
+        }
+
+
+        public static double operator *(Vec2d left, Vec2d right)
+        {
+            return left.X * right.X + left.Y * right.Y;
+        }
+
+        public static Vec2d operator /(Vec2d left, float right)
+        {
+            return new Vec2d(left.X / right, left.Y / right);
+        }
+
+
+        public static bool operator ==(Vec2d left, Vec2d right)
+        {
+            if (object.ReferenceEquals(left, null))
+            {
+                return object.ReferenceEquals(right, null);
+            }
+
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Vec2d left, Vec2d right)
+        {
+            return !(left == right);
+        }
+
+        #endregion
     }
 }

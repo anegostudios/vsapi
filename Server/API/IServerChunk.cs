@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Server
 {
@@ -34,5 +35,10 @@ namespace Vintagestory.API.Server
         /// If true, this chunk is not at the edge of the loaded or generating map: all eight neighbouring chunks are fully loaded
         /// </summary>
         bool NotAtEdge { get; }
+
+        /// <summary>
+        /// Remove a block entity
+        /// </summary>
+        bool RemoveBlockEntity(BlockPos pos);
     }
 }

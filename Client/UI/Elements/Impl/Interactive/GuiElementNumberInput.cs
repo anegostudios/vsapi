@@ -1,12 +1,6 @@
-﻿using Cairo;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
-using Vintagestory.API.Common;
+using Cairo;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
@@ -168,7 +162,7 @@ namespace Vintagestory.API.Client
             float size = args.deltaPrecise > 0 ? 1 : -1;
             size *= Interval;
 
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.LShift]) size /= 10;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft]) size /= 10;
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
 
             UpdateValue(size);
@@ -194,7 +188,7 @@ namespace Vintagestory.API.Client
 
             float size = Interval;
 
-            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.LShift]) size /= 10;
+            if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft]) size /= 10;
             if (api.Input.KeyboardKeyStateRaw[(int)GlKeys.ControlLeft]) size /= 100;
 
             if (mouseX >= Bounds.absX + Bounds.OuterWidth - rightSpacing && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)

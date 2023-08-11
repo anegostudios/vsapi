@@ -539,12 +539,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static byte BiSerpByte(float lx, float ly, int byteIndex, int leftTop, int rightTop, int leftBottom, int rightBottom)
         {
-            float xS = SmoothStep(lx);
-
-            byte top = LerpByte(xS, (byte)(leftTop >> (byteIndex * 8)), (byte)(rightTop >> (byteIndex * 8)));
-            byte bottom = LerpByte(xS, (byte)(leftBottom >> (byteIndex * 8)), (byte)(rightBottom >> (byteIndex * 8)));
-
-            return LerpByte(SmoothStep(ly), top, bottom);
+            return BiLerpByte(SmoothStep(lx), SmoothStep(ly), byteIndex, leftTop, rightTop, leftBottom, rightBottom);
         }
 
 
@@ -561,10 +556,9 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int BiLerpRgbaColor(float lx, float ly, int leftTop, int rightTop, int leftBottom, int rightBottom)
         {
-            int top = LerpRgbaColor(lx, leftTop, rightTop);
-            int bottom = LerpRgbaColor(lx, leftBottom, rightBottom);
-
-            return LerpRgbaColor(ly, top, bottom);
+            return BiLerpRgbColor(lx, ly, leftTop, rightTop, leftBottom, rightBottom) +
+                (BiLerpAndMask(leftTop >> 4, rightTop >> 4, leftBottom >> 4, rightBottom >> 4, lx, ly, 0xff00000) << 4)    // We can't use mask 0xff000000 as we would like to because that is a negative number
+                ;
         }
 
 
@@ -580,10 +574,17 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int BiLerpRgbColor(float lx, float ly, int leftTop, int rightTop, int leftBottom, int rightBottom)
         {
-            int top = LerpRgbColor(lx, leftTop, rightTop);
-            int bottom = LerpRgbColor(lx, leftBottom, rightBottom);
+            return
+                BiLerpAndMask(leftTop, rightTop, leftBottom, rightBottom, lx, ly, 0xff) +
+                BiLerpAndMask(leftTop, rightTop, leftBottom, rightBottom, lx, ly, 0xff00) +
+                BiLerpAndMask(leftTop, rightTop, leftBottom, rightBottom, lx, ly, 0xff0000)
+                ;
+        }
 
-            return LerpRgbColor(ly, top, bottom);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static int BiLerpAndMask(int leftTop, int rightTop, int leftBottom, int rightBottom, float lx, float ly, int mask)
+        {
+            return (int)Lerp(Lerp(leftTop & mask, rightTop & mask, lx), Lerp(leftBottom & mask, rightBottom & mask, lx), ly) & mask;
         }
 
         /// <summary>
@@ -598,12 +599,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int BiSerpRgbColor(float lx, float ly, int leftTop, int rightTop, int leftBottom, int rightBottom)
         {
-            float xS = SmoothStep(lx);
-
-            int top = LerpRgbColor(xS, leftTop, rightTop);
-            int bottom = LerpRgbColor(xS, leftBottom, rightBottom);
-
-            return LerpRgbColor(SmoothStep(ly), top, bottom);
+            return BiLerpRgbColor(SmoothStep(lx), SmoothStep(ly), leftTop, rightTop, leftBottom, rightBottom);
         }
 
         /// <summary>
@@ -618,8 +614,8 @@ namespace Vintagestory.API.MathTools
         {
             return
                 (int)((1 - lx) * (left & 0xff) + lx * (right & 0xff)) +
-                ((int)((1 - lx) * ((left >> 8) & 0xff) + lx * ((right >> 8) & 0xff)) << 8) +
-                ((int)((1 - lx) * ((left >> 16) & 0xff) + lx * ((right >> 16) & 0xff)) << 16)
+                ((int)((1 - lx) * (left & 0xff00) + lx * (right & 0xff00)) & 0xff00) +
+                ((int)((1 - lx) * (left & 0xff0000) + lx * (right & 0xff0000)) & 0xff0000)
                 ;
         }
 
@@ -636,8 +632,8 @@ namespace Vintagestory.API.MathTools
         {
             return
                 (int)((1 - lx) * (left & 0xff) + lx * (right & 0xff)) +
-                ((int)((1 - lx) * ((left >> 8) & 0xff) + lx * ((right >> 8) & 0xff)) << 8) +
-                ((int)((1 - lx) * ((left >> 16) & 0xff) + lx * ((right >> 16) & 0xff)) << 16) +
+                ((int)((1 - lx) * (left & 0xff00) + lx * (right & 0xff00)) & 0xff00) +
+                ((int)((1 - lx) * (left & 0xff0000) + lx * (right & 0xff0000)) & 0xff0000) +
                 ((int)((1 - lx) * ((left >> 24) & 0xff) + lx * ((right >> 24) & 0xff)) << 24)
                 ;
         }

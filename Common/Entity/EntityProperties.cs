@@ -96,7 +96,8 @@ namespace Vintagestory.API.Common.Entities
         public float KnockbackResistance;
 
         /// <summary>
-        /// The attributes of the entity.
+        /// The attributes of the entity.  These are the Attributes read from the entity type's JSON file.
+        /// <br/>If your code modifies these Attributes (not recommended!), the changes will apply to all entities of the same type.
         /// </summary>
         public JsonObject Attributes;
 
@@ -188,6 +189,10 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
+            // Make Attributes read-only from now on, so that there is no need to DeepClone it for every new entity spawned.  If a mod needs to change the EntityProperties Attributes, it can re-assign this to a clone
+            // Note, a JsonObject is in any case virtually read-only.   JsonObject[key] is read-only.   Exceptions are writing directly to the Token, and FillPlaceHolder (but that is only used in recipe loading)
+            if (!(Attributes is JsonObject_ReadOnly) && Attributes != null) Attributes = new JsonObject_ReadOnly(Attributes);
+
             return new EntityProperties()
             {
                 Code = Code.Clone(),
@@ -204,7 +209,7 @@ namespace Vintagestory.API.Common.Entities
                 ClimbTouchDistance = ClimbTouchDistance,
                 RotateModelOnClimb = RotateModelOnClimb,
                 KnockbackResistance = KnockbackResistance,
-                Attributes = Attributes?.Clone(),
+                Attributes = Attributes,
                 Sounds = new Dictionary<string, AssetLocation>(Sounds),
                 IdleSoundChance = IdleSoundChance,
                 IdleSoundRange = IdleSoundRange,
@@ -324,7 +329,7 @@ namespace Vintagestory.API.Common.Entities
                 string code = jobj["code"].AsString();
                 if (code == null) continue;
                 
-                BehaviorsAsJsonObj[count++] = jobj;
+                BehaviorsAsJsonObj[count++] = new JsonObject_ReadOnly(jobj);
             }
 
             if (count < behaviors.Length) Array.Resize(ref BehaviorsAsJsonObj, count);
@@ -534,7 +539,7 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            return new EntityClientProperties(BehaviorsAsJsonObj.Clone() as JsonObject[])
+            return new EntityClientProperties(BehaviorsAsJsonObj)
             {
                 Textures = Textures,
                 RendererName = RendererName,
@@ -566,10 +571,10 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public override EntitySidedProperties Clone()
         {
-            return new EntityServerProperties(BehaviorsAsJsonObj.Clone() as JsonObject[])
+            return new EntityServerProperties(BehaviorsAsJsonObj)
             {
-                Attributes = Attributes?.Clone(),
-                SpawnConditions = SpawnConditions?.Clone()
+                Attributes = Attributes,
+                SpawnConditions = SpawnConditions
             };
         }
     }

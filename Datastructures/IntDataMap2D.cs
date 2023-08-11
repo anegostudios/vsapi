@@ -74,24 +74,36 @@ namespace Vintagestory.API.Datastructures
         {
             int ix = (int)x;
             int iz = (int)z;
+            int index = (iz + TopLeftPadding) * Size + ix + TopLeftPadding;
 
+            if (index < 0 || index + Size + 1 >= Data.Length) throw new IndexOutOfRangeException("MapRegion data, index was " + (index + Size + 1) + " but length was " + Data.Length);
             return GameMath.BiLerpRgbColor(x - ix, z - iz,
-                Data[(iz + TopLeftPadding) * Size + ix + TopLeftPadding],
-                Data[(iz + TopLeftPadding) * Size + ix + 1 + TopLeftPadding],
-                Data[(iz + 1 + TopLeftPadding) * Size + ix + TopLeftPadding],
-                Data[(iz + 1 + TopLeftPadding) * Size + ix + 1 + TopLeftPadding]
+                Data[index],
+                Data[index + 1],
+                Data[index + Size],
+                Data[index + Size + 1]
             );
+        }
+
+        /// <summary>
+        /// The parameters should both be in the range 0..1.  They represent the position within the MapRegion.  Calling code may need to use the (float)((double)val % 1.0) technique to ensure enough bits of precision when taking the fractional part (% 1.0), if val is large (for example a BlockPos in a 8Mx8M world)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public int GetUnpaddedColorLerpedForNormalizedPos(float x, float z)
+        {
+            int innerSize = InnerSize;
+            return GetUnpaddedColorLerped(x * innerSize, z * innerSize);
         }
 
         public int GetUnpaddedIntLerpedForBlockPos(int x, int z, int regionSize)
         {
-            int noiseSize = InnerSize;
-
             // Weird type casting is required to not loose precision on very large coordinates
-            float posXInRegionMap = (float)(((double)x / regionSize - x / regionSize) * noiseSize);
-            float posZInRegionMap= (float)(((double)z / regionSize - z / regionSize) * noiseSize);
+            float posXInRegionMap = (float)((double)x / regionSize - x / regionSize);
+            float posZInRegionMap= (float)((double)z / regionSize - z / regionSize);
 
-            return GetUnpaddedColorLerped(posXInRegionMap, posZInRegionMap);
+            return GetUnpaddedColorLerpedForNormalizedPos(posXInRegionMap, posZInRegionMap);
         }
 
         public float GetUnpaddedIntLerped(float x, float z)
@@ -112,19 +124,17 @@ namespace Vintagestory.API.Datastructures
         public float GetIntLerpedCorrectly(float x, float z)
         {
             int posXLeft = (int)Math.Floor(x - 0.5f);
-            int posXRight = posXLeft + 1;
-
             int posZLeft = (int)Math.Floor(z - 0.5f);
-            int posZRight = posZLeft + 1;
 
             float fx = x - (posXLeft + 0.5f);
             float fz = z - (posZLeft + 0.5f);
-            
+
+            int index = (posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding;
             return GameMath.BiLerp(
-                Data[(posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
-                Data[(posZLeft + TopLeftPadding) * Size + posXRight + TopLeftPadding],
-                Data[(posZRight + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
-                Data[(posZRight + TopLeftPadding) * Size + posXRight + TopLeftPadding],
+                Data[index],
+                Data[index + 1],
+                Data[index + Size],
+                Data[index + Size + 1],
                 fx, fz
             );
         }
@@ -132,20 +142,19 @@ namespace Vintagestory.API.Datastructures
         public int GetColorLerpedCorrectly(float x, float z)
         {
             int posXLeft = (int)Math.Floor(x - 0.5f);
-            int posXRight = posXLeft + 1;
-
             int posZLeft = (int)Math.Floor(z - 0.5f);
-            int posZRight = posZLeft + 1;
 
             float fx = x - (posXLeft + 0.5f);
             float fz = z - (posZLeft + 0.5f);
 
+            int index = (posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding;
+
             return GameMath.BiLerpRgbColor(
                 fx, fz,
-                Data[(posZLeft + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
-                Data[(posZLeft + TopLeftPadding) * Size + posXRight + TopLeftPadding],
-                Data[(posZRight + TopLeftPadding) * Size + posXLeft + TopLeftPadding],
-                Data[(posZRight + TopLeftPadding) * Size + posXRight + TopLeftPadding]
+                Data[index],
+                Data[index + 1],
+                Data[index + Size],
+                Data[index + Size + 1]
             );
         }
 

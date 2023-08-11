@@ -686,7 +686,30 @@ namespace Vintagestory.API.Common
             }
         }
 
-        
+        /// <summary>
+        /// Relevant only for entities with heads, implemented in EntityAgent.  Other sub-classes of Entity (if not EntityAgent) should similarly override this if the headYaw/headPitch are relevant to them
+        /// </summary>
+        protected override void SetHeadPositionToWatchedAttributes()
+        {
+            // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes for these 2 new fields
+            lock (WatchedAttributes.attributesLock)
+            {
+                // We don't use SetFloat to avoid triggering OnModified listeners on the server. This can be called outside the mainthread and produce deadlocks.
+                WatchedAttributes["headYaw"] = new FloatAttribute(ServerPos.HeadYaw);
+                WatchedAttributes["headPitch"] = new FloatAttribute(ServerPos.HeadPitch);
+            }
+        }
+
+        /// <summary>
+        /// Relevant only for entities with heads, implemented in EntityAgent.  Other sub-classes of Entity (if not EntityAgent) should similarly override this if the headYaw/headPitch are relevant to them
+        /// </summary>
+        protected override void GetHeadPositionFromWatchedAttributes()
+        {
+            // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes
+            ServerPos.HeadYaw = WatchedAttributes.GetFloat("headYaw");
+            ServerPos.HeadPitch = WatchedAttributes.GetFloat("headPitch");
+        }
+
 
         /// <summary>
         /// Attempts to stop the hand  action.

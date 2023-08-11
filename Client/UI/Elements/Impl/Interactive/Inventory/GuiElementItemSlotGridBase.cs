@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cairo;
-using Vintagestory.API.Datastructures;
-using Vintagestory.API.MathTools;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
-using Vintagestory.API.Client;
+using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
-using System.Linq;
 
 namespace Vintagestory.API.Client
 {
@@ -775,8 +774,8 @@ namespace Vintagestory.API.Client
                         renderedSlots.GetKeyAtIndex(i), 
                         args.Button, 
                         api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft],
-                        api.Input.KeyboardKeyState[(int)GlKeys.LControl],
-                        api.Input.KeyboardKeyState[(int)GlKeys.LAlt]
+                        api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft],
+                        api.Input.KeyboardKeyState[(int)GlKeys.AltLeft]
                     );
 
                     (inventory as InventoryBase).InvNetworkUtil.PauseInventoryUpdates = isLeftMouseDownStartedInsideElem;
@@ -840,8 +839,8 @@ namespace Vintagestory.API.Client
                                 nowHoverSlotid,
                                 EnumMouseButton.Right,
                                 api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft],
-                                api.Input.KeyboardKeyState[(int)GlKeys.LControl],
-                                api.Input.KeyboardKeyState[(int)GlKeys.LAlt]
+                                api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft],
+                                api.Input.KeyboardKeyState[(int)GlKeys.AltLeft]
                             );
                         }
                     }
@@ -861,8 +860,8 @@ namespace Vintagestory.API.Client
                                     nowHoverSlotid,
                                     EnumMouseButton.Left,
                                     api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft],
-                                    api.Input.KeyboardKeyState[(int)GlKeys.LControl],
-                                    api.Input.KeyboardKeyState[(int)GlKeys.LAlt]
+                                    api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft],
+                                    api.Input.KeyboardKeyState[(int)GlKeys.AltLeft]
                                 );
                             }
 

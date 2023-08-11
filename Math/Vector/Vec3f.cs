@@ -596,5 +596,7 @@ namespace Vintagestory.API.MathTools
         {
             return ((17 * 23 + X.GetHashCode()) * 23 + Y.GetHashCode()) * 23 + Z.GetHashCode();
         }
+
+        public Vec3i AsVec3i => new Vec3i((int)X, (int)Y, (int)Z);
     }
 }

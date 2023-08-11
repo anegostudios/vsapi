@@ -21,7 +21,7 @@ namespace Vintagestory.API.Config
             }
             else
             {
-                string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData, Environment.SpecialFolderOption.DoNotVerify);
                 DataPath = Path.Combine(appdata, "VintagestoryData");
             }
 
@@ -51,8 +51,8 @@ namespace Vintagestory.API.Config
         public static string Backups { get { return Path.Combine(DataPath, "Backups"); } }
         public static string Logs { get { return CustomLogPath != null ? CustomLogPath : Path.Combine(DataPath, "Logs"); } }
         public static string Macros { get { return Path.Combine(DataPath, "Macros"); } }
-        public static string Screenshots { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Vintagestory"); } }
-        public static string Videos { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos), "Vintagestory"); } }
+        public static string Screenshots { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures, Environment.SpecialFolderOption.DoNotVerify), "Vintagestory"); } }
+        public static string Videos { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos, Environment.SpecialFolderOption.DoNotVerify), "Vintagestory"); } }
         public static string DataPathMods { get { return Path.Combine(DataPath, "Mods"); } }
         public static string DataPathServerMods { get { return Path.Combine(DataPath, "ModsByServer"); } }
 
