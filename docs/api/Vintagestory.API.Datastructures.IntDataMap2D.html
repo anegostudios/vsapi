@@ -279,7 +279,7 @@ Can be used to perfrom bilinear interpolation between individual values</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_IntDataMap2D_GetColorLerpedCorrectly_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.IntDataMap2D.GetColorLerpedCorrectly(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L132">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L142">View Source</a>
   </span>
   <a id="Vintagestory_API_Datastructures_IntDataMap2D_GetColorLerpedCorrectly_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetColorLerpedCorrectly*"></a>
   <h4 id="Vintagestory_API_Datastructures_IntDataMap2D_GetColorLerpedCorrectly_System_Single_System_Single_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetColorLerpedCorrectly(System.Single,System.Single)">GetColorLerpedCorrectly(Single, Single)</h4>
@@ -383,7 +383,7 @@ Can be used to perfrom bilinear interpolation between individual values</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_IntDataMap2D_GetIntLerpedCorrectly_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.IntDataMap2D.GetIntLerpedCorrectly(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L112">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L124">View Source</a>
   </span>
   <a id="Vintagestory_API_Datastructures_IntDataMap2D_GetIntLerpedCorrectly_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetIntLerpedCorrectly*"></a>
   <h4 id="Vintagestory_API_Datastructures_IntDataMap2D_GetIntLerpedCorrectly_System_Single_System_Single_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetIntLerpedCorrectly(System.Single,System.Single)">GetIntLerpedCorrectly(Single, Single)</h4>
@@ -484,6 +484,59 @@ Can be used to perfrom bilinear interpolation between individual values</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedColorLerpedForNormalizedPos_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedColorLerpedForNormalizedPos(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L94">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedColorLerpedForNormalizedPos_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedColorLerpedForNormalizedPos*"></a>
+  <h4 id="Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedColorLerpedForNormalizedPos_System_Single_System_Single_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedColorLerpedForNormalizedPos(System.Single,System.Single)">GetUnpaddedColorLerpedForNormalizedPos(Single, Single)</h4>
+  <div class="markdown level1 summary"><p>The parameters should both be in the range 0..1.  They represent the position within the MapRegion.  Calling code may need to use the (float)((double)val % 1.0) technique to ensure enough bits of precision when taking the fractional part (% 1.0), if val is large (for example a BlockPos in a 8Mx8M world)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetUnpaddedColorLerpedForNormalizedPos(float x, float z)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">z</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedInt_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedInt(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -539,7 +592,7 @@ Can be used to perfrom bilinear interpolation between individual values</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedIntLerped_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedIntLerped(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L97">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L109">View Source</a>
   </span>
   <a id="Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedIntLerped_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedIntLerped*"></a>
   <h4 id="Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedIntLerped_System_Single_System_Single_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedIntLerped(System.Single,System.Single)">GetUnpaddedIntLerped(Single, Single)</h4>
@@ -591,7 +644,7 @@ Can be used to perfrom bilinear interpolation between individual values</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedIntLerpedForBlockPos_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedIntLerpedForBlockPos(System.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L86">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Datastructures/IntDataMap2D.cs/#L100">View Source</a>
   </span>
   <a id="Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedIntLerpedForBlockPos_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedIntLerpedForBlockPos*"></a>
   <h4 id="Vintagestory_API_Datastructures_IntDataMap2D_GetUnpaddedIntLerpedForBlockPos_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Datastructures.IntDataMap2D.GetUnpaddedIntLerpedForBlockPos(System.Int32,System.Int32,System.Int32)">GetUnpaddedIntLerpedForBlockPos(Int32, Int32, Int32)</h4>

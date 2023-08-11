@@ -1524,7 +1524,7 @@ Set and Called by the Entities ServerSystem</p>
     <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L256">View Source</a>
   </span>
   <h4 id="Vintagestory_API_Common_Entities_Entity_State" data-uid="Vintagestory.API.Common.Entities.Entity.State">State</h4>
-  <div class="markdown level1 summary"><p>The current entity state. Stored in WatchedAttributes in from/tobytes, so available on the client and server side</p>
+  <div class="markdown level1 summary"><p>The current entity state. NOT stored in WatchedAttributes in from/tobytes when sending to client as always set to Active on client-side Initialize().  Server-side if saved it would likely initially be Despawned when an entity is first loaded from the save due to entities being despawned during the UnloadChunks process, so let&apos;s make it always Despawned for consistent behavior (it will be set to Active/Inactive during Initialize() anyhow)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2553,7 +2553,7 @@ position in relation to the target position of the schematic to be imported.</p>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_FromBytes_BinaryReader_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.FromBytes(BinaryReader%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1528">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1535">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_Entities_Entity_FromBytes_" data-uid="Vintagestory.API.Common.Entities.Entity.FromBytes*"></a>
   <h4 id="Vintagestory_API_Common_Entities_Entity_FromBytes_BinaryReader_System_Boolean_" data-uid="Vintagestory.API.Common.Entities.Entity.FromBytes(BinaryReader,System.Boolean)">FromBytes(BinaryReader, Boolean)</h4>
@@ -2740,6 +2740,22 @@ position in relation to the target position of the schematic to be imported.</p>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetHeadPositionFromWatchedAttributes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetHeadPositionFromWatchedAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1524">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_Entities_Entity_GetHeadPositionFromWatchedAttributes_" data-uid="Vintagestory.API.Common.Entities.Entity.GetHeadPositionFromWatchedAttributes*"></a>
+  <h4 id="Vintagestory_API_Common_Entities_Entity_GetHeadPositionFromWatchedAttributes" data-uid="Vintagestory.API.Common.Entities.Entity.GetHeadPositionFromWatchedAttributes">GetHeadPositionFromWatchedAttributes()</h4>
+  <div class="markdown level1 summary"><p>Relevant only for entities with heads, implemented in EntityAgent.  Other sub-classes of Entity (if not EntityAgent) should similarly override this if the headYaw/headPitch are relevant to them</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GetHeadPositionFromWatchedAttributes()</code></pre>
+  </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_GetInfoText.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.GetInfoText%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -4044,6 +4060,22 @@ Packetid = 2 is used for BehaviorHarvestable</p>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_SetHeadPositionToWatchedAttributes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.SetHeadPositionToWatchedAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/Entity.cs/#L1517">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_Entities_Entity_SetHeadPositionToWatchedAttributes_" data-uid="Vintagestory.API.Common.Entities.Entity.SetHeadPositionToWatchedAttributes*"></a>
+  <h4 id="Vintagestory_API_Common_Entities_Entity_SetHeadPositionToWatchedAttributes" data-uid="Vintagestory.API.Common.Entities.Entity.SetHeadPositionToWatchedAttributes">SetHeadPositionToWatchedAttributes()</h4>
+  <div class="markdown level1 summary"><p>Relevant only for entities with heads, implemented in EntityAgent.  Other sub-classes of Entity (if not EntityAgent) should similarly override this if the headYaw/headPitch are relevant to them</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void SetHeadPositionToWatchedAttributes()</code></pre>
+  </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_Entity_SetSelectionBox_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.Entity.SetSelectionBox(System.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
