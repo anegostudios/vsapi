@@ -1,10 +1,7 @@
 ﻿using System;
-using Vintagestory.API;
-using ProtoBuf;
 using System.IO;
 using System.Text;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.Config;
 using System.Collections.Generic;
 using Vintagestory.API.Util;
 

@@ -1,5 +1,6 @@
 using Cairo;
 using System.Collections.Generic;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -10,7 +11,8 @@ namespace Vintagestory.API.Client
 
         public HotkeyComponent(ICoreClientAPI api, string hotkeycode, CairoFont font) : base(api, hotkeycode, font)
         {
-            PaddingRight = 4;
+            PaddingLeft = 0;
+            PaddingRight = 1;
 
             if (api.Input.HotKeys.TryGetValue(hotkeycode.ToLowerInvariant(), out hotkey))
             {
@@ -19,13 +21,23 @@ namespace Vintagestory.API.Client
 
             init();
             hotkeyTexture = new LoadedTexture(api);
+
+            this.Font = Font.Clone().WithFontSize((float)Font.UnscaledFontsize * 0.9f); // * 0.8f
         }
 
-        public override void ComposeElements(Context ctxUnused, ImageSurface surfaceUnused)
+        public override void ComposeElements(Context ctx, ImageSurface surfaceUnused)
         {
             //base.ComposeElements(ctx, surface); - dont run default text generation
 
-            
+            /*ctx.LineWidth = 1f;
+            ctx.SetSourceRGBA(0, 0, 0, 0.5);
+            for (int i = 0; i < Lines.Length; i++)
+            {
+                TextLine line = Lines[i];
+                ctx.Rectangle(line.Bounds.X, line.Bounds.Y, line.Bounds.Width, line.Bounds.Height);
+                ctx.Stroke();
+            }*/
+
         }
 
         public void GenHotkeyTexture()
@@ -43,31 +55,31 @@ namespace Vintagestory.API.Client
                 parts.Add("?");
             }
 
-            CairoFont font = Font.Clone().WithFontSize((float)Font.UnscaledFontsize * 0.8f);
+            
 
             double textWidth = 0;
-            double pluswdith = font.GetTextExtents("+").Width;
+            double pluswdith = Font.GetTextExtents("+").Width;
             double symbolspacing = 3;
             double leftRightPad = 3;
             foreach (var part in parts)
             {
-                var w = font.GetTextExtents(part).Width + GuiElement.scaled(symbolspacing + 2 * leftRightPad);
+                var w = Font.GetTextExtents(part).Width + GuiElement.scaled(symbolspacing + 2 * leftRightPad);
                 if (textWidth > 0) w += GuiElement.scaled(symbolspacing) + pluswdith;
                 textWidth += w;
             }
            
-            double textHeight = font.GetFontExtents().Height;
+            double textHeight = Font.GetFontExtents().Height;
             int lineheight = (int)textHeight;
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)textWidth + 3, lineheight + 5);
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)textWidth + 1, lineheight + 5);
             Context ctx = new Context(surface);
-            font.SetupContext(ctx);
+            Font.SetupContext(ctx);
             
             double hx = 0;
             double y = 0;
             foreach (string part in parts)
             {
-                hx = DrawHotkey(api, part, hx, y, ctx, font, lineheight, textHeight, pluswdith, symbolspacing, leftRightPad, font.Color);
+                hx = DrawHotkey(api, part, hx, y, ctx, Font, lineheight, textHeight, pluswdith, symbolspacing, leftRightPad, Font.Color);
             }
 
             api.Gui.LoadOrUpdateCairoTexture(surface, true, ref hotkeyTexture);
@@ -83,8 +95,6 @@ namespace Vintagestory.API.Client
             double offsetX = GetFontOrientOffsetX();
 
             var bounds = textLine.Bounds;
-            renderY += hotkeyTexture.Height * 0.15f / 2;
-
             api.Render.Render2DTexture(hotkeyTexture.TextureId, (float)(renderX + offsetX + bounds.X), (int)(renderY + bounds.Y), hotkeyTexture.Width, hotkeyTexture.Height, (float)renderZ + 50);
         }
 
@@ -93,7 +103,12 @@ namespace Vintagestory.API.Client
         {
             GenHotkeyTexture();
 
-            return base.CalcBounds(flowPath, currentLineHeight, offsetX, lineY, out nextOffsetX);
+            var res = base.CalcBounds(flowPath, currentLineHeight, offsetX, lineY, out nextOffsetX);
+
+            BoundsPerLine[0].Width += RuntimeEnv.GUIScale * 6;
+            nextOffsetX += RuntimeEnv.GUIScale * 6;
+
+            return res;
         }
 
 
@@ -115,7 +130,7 @@ namespace Vintagestory.API.Client
 
             double width = font.GetTextExtents(keycode).Width;
 
-            GuiElement.RoundRectangle(ctx, x + 1, y + 1, width + GuiElement.scaled(leftRightPadding*2), lineheight, 3.5);
+            GuiElement.RoundRectangle(ctx, x + 1, y + 1, (int)(width + GuiElement.scaled(leftRightPadding*2)), lineheight, 3.5);
             ctx.SetSourceRGBA(color);
             ctx.LineWidth = 1.5;
             ctx.StrokePreserve();
@@ -124,9 +139,19 @@ namespace Vintagestory.API.Client
             ctx.Fill();
             ctx.SetSourceRGBA(new double[] { 1, 1, 1, 1 });
 
-            capi.Gui.Text.DrawTextLine(ctx, font, keycode, x + 1 + GuiElement.scaled(leftRightPadding), y + (lineheight - textHeight) / 2 + 2);
+            int textX = (int)(x + 1 + GuiElement.scaled(leftRightPadding));
+            int textY = (int)(y + (lineheight - textHeight) / 2 + 2);
+            
+            capi.Gui.Text.DrawTextLine(ctx, font, keycode, textX, textY);
 
-            return x + symbolspacing + width + GuiElement.scaled(leftRightPadding * 2);
+
+            /*GuiElement.RoundRectangle(ctx, textX, textY, width, lineheight, 0);
+            ctx.SetSourceRGBA(0,0,0,1);
+            ctx.LineWidth = 1.5;
+            ctx.StrokePreserve();*/
+
+
+            return (int)(x + symbolspacing + width + GuiElement.scaled(leftRightPadding * 2));
         }
 
     }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Config
 {

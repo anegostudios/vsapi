@@ -22,7 +22,7 @@ namespace Vintagestory.API.Common
 
         public static int MaxConcurrentAnimations = 16;
         int maxDepth;
-        List<ElementPose>[][] transformsByAnimation;
+        List<ElementPose>[][] frameByDepthByAnimation;
         List<ElementPose>[][] nextFrameTransformsByAnimation;
         ShapeElementWeights[][][] weightsByAnimationAndElement;
 
@@ -40,7 +40,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    entity.AnimManager.OnAnimationStopped
                 );
             } else
             {
@@ -50,7 +50,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    entity.AnimManager.OnAnimationStopped
                 );
             }
         }
@@ -66,7 +66,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    entity.AnimManager.OnAnimationStopped
                 );
             } else
             {
@@ -75,7 +75,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    entity.AnimManager.OnAnimationStopped
                 );
             }
         }
@@ -108,13 +108,13 @@ namespace Vintagestory.API.Common
         {
             maxDepth = 2 + (RootPoses == null ? 0 : getMaxDepth(RootPoses, 1));
 
-            transformsByAnimation = new List<ElementPose>[maxDepth][];
+            frameByDepthByAnimation = new List<ElementPose>[maxDepth][];
             nextFrameTransformsByAnimation = new List<ElementPose>[maxDepth][];
             weightsByAnimationAndElement = new ShapeElementWeights[maxDepth][][];
 
             for (int i = 0; i < maxDepth; i++)
             {
-                transformsByAnimation[i] = new List<ElementPose>[MaxConcurrentAnimations];
+                frameByDepthByAnimation[i] = new List<ElementPose>[MaxConcurrentAnimations];
                 nextFrameTransformsByAnimation[i] = new List<ElementPose>[MaxConcurrentAnimations];
                 weightsByAnimationAndElement[i] = new ShapeElementWeights[MaxConcurrentAnimations][];
             }
@@ -231,6 +231,19 @@ namespace Vintagestory.API.Common
         int[] prevFrame = new int[MaxConcurrentAnimations];
         int[] nextFrame = new int[MaxConcurrentAnimations];
 
+        public override void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
+        {
+            for (int j = 0; j < activeAnimCount; j++)
+            {
+                RunningAnimation anim = CurAnims[j];
+                if (anim.Animation.PrevNextKeyFrameByFrame == null && anim.Animation.KeyFrames.Length > 0)
+                {
+                    anim.Animation.GenerateAllFrames(rootElements, jointsById);
+                }
+            }
+
+            base.OnFrame(activeAnimationsByAnimCode, dt);
+        }
 
         protected override void calculateMatrices(float dt)
         {
@@ -239,13 +252,17 @@ namespace Vintagestory.API.Common
             {
                 jointsDone.Clear();
 
-                for (int j = 0; j < curAnimCount; j++)
+                int animVersion = 0;
+
+                for (int j = 0; j < activeAnimCount; j++)
                 {
                     RunningAnimation anim = CurAnims[j];
                     weightsByAnimationAndElement[0][j] = anim.ElementWeights;
 
+                    animVersion = Math.Max(animVersion, anim.Animation.Version);
+
                     AnimationFrame[] prevNextFrame = anim.Animation.PrevNextKeyFrameByFrame[(int)anim.CurrentFrame % anim.Animation.QuantityFrames];
-                    transformsByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
+                    frameByDepthByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
                     prevFrame[j] = prevNextFrame[0].FrameNumber;
 
                     if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && (int)anim.CurrentFrame + 1 == anim.Animation.QuantityFrames)
@@ -261,11 +278,12 @@ namespace Vintagestory.API.Common
                 }
 
                 calculateMatrices(
+                    animVersion,
                     dt,
                     RootPoses,
                     weightsByAnimationAndElement[0],
                     Mat4f.Create(),
-                    transformsByAnimation[0],
+                    frameByDepthByAnimation[0],
                     nextFrameTransformsByAnimation[0],
                     0
                 );
@@ -291,7 +309,7 @@ namespace Vintagestory.API.Common
 
             } catch (Exception)
             {
-                //entity.World.Logger.Fatal("Animation system crash. Please report this bug. curanimcount: {3}, tm-l:{0}, jbi-c: {1}, abc-c: {2}\nException: {4}", TransformationMatrices.Length, jointsById.Count, AttachmentPointByCode.Count, curAnimCount, e);
+               //entity.World.Logger.Fatal("Animation system crash. Please report this bug. curanimcount: {3}, tm-l:{0}, jbi-c: {1}, abc-c: {2}\nException: {4}", TransformationMatrices.Length, jointsById.Count, AttachmentPointByCode.Count, curAnimCount, e);
             }
         }
 
@@ -299,36 +317,37 @@ namespace Vintagestory.API.Common
 
         // Careful when changing around stuff in here, this is a recursively called method
         private void calculateMatrices(
+            int animVersion,
             float dt,
-            List<ElementPose> currentPoses,
+            List<ElementPose> outFrame,
             ShapeElementWeights[][] weightsByAnimationAndElement,
             float[] modelMatrix,
-            List<ElementPose>[] transformsByAnimation,
-            List<ElementPose>[] nextFrameTransformsByAnimation,
+            List<ElementPose>[] nowKeyFrameByAnimation,
+            List<ElementPose>[] nextInKeyFrameByAnimation,
             int depth
         )
         {
             depth++;
-            List<ElementPose>[] childTransformsByAnimation = this.transformsByAnimation[depth];
-            List<ElementPose>[] nextFrameChildTransformsByAnimation = this.nextFrameTransformsByAnimation[depth];
+            List<ElementPose>[] nowChildKeyFrameByAnimation = this.frameByDepthByAnimation[depth];
+            List<ElementPose>[] nextChildKeyFrameByAnimation = this.nextFrameTransformsByAnimation[depth];
             ShapeElementWeights[][] childWeightsByAnimationAndElement = this.weightsByAnimationAndElement[depth];
 
 
-            for (int i = 0; i < currentPoses.Count; i++)
+            for (int childPoseIndex = 0; childPoseIndex < outFrame.Count; childPoseIndex++)
             {
-                ElementPose currentPose = currentPoses[i];
-                ShapeElement elem = currentPose.ForElement;
+                ElementPose outFramePose = outFrame[childPoseIndex];
+                ShapeElement elem = outFramePose.ForElement;
 
-                currentPose.SetMat(modelMatrix);
+                outFramePose.SetMat(modelMatrix);
                 Mat4f.Identity(localTransformMatrix);
 
-                currentPose.Clear();
+                outFramePose.Clear();
 
                 float weightSum = 0f;
-                for (int j = 0; j < curAnimCount; j++)
+                for (int animIndex = 0; animIndex < activeAnimCount; animIndex++)
                 {
-                    RunningAnimation anim = CurAnims[j];
-                    ShapeElementWeights sew = weightsByAnimationAndElement[j][i];
+                    RunningAnimation anim = CurAnims[animIndex];
+                    ShapeElementWeights sew = weightsByAnimationAndElement[animIndex][childPoseIndex];
 
                     if (sew.BlendMode != EnumAnimationBlendMode.Add)
                     {
@@ -336,17 +355,17 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                for (int j = 0; j < curAnimCount; j++)
+                for (int animIndex = 0; animIndex < activeAnimCount; animIndex++)
                 {
-                    RunningAnimation anim = CurAnims[j];
-                    ShapeElementWeights sew = weightsByAnimationAndElement[j][i];
+                    RunningAnimation anim = CurAnims[animIndex];
+                    ShapeElementWeights sew = weightsByAnimationAndElement[animIndex][childPoseIndex];
                     anim.CalcBlendedWeight(weightSum / sew.Weight, sew.BlendMode);
 
-                    ElementPose prevFramePose = transformsByAnimation[j][i];
-                    ElementPose nextFramePose = nextFrameTransformsByAnimation[j][i];
+                    ElementPose nowFramePose = nowKeyFrameByAnimation[animIndex][childPoseIndex];
+                    ElementPose nextFramePose = nextInKeyFrameByAnimation[animIndex][childPoseIndex];
 
-                    int prevFrame = this.prevFrame[j];
-                    int nextFrame = this.nextFrame[j];
+                    int prevFrame = this.prevFrame[animIndex];
+                    int nextFrame = this.nextFrame[animIndex];
 
                     // May loop around, so nextFrame can be smaller than prevFrame
                     float keyFrameDist = nextFrame > prevFrame ? (nextFrame - prevFrame) : (anim.Animation.QuantityFrames - prevFrame + nextFrame);
@@ -354,23 +373,23 @@ namespace Vintagestory.API.Common
 
                     float lerp = curFrameDist / keyFrameDist;
 
-                    currentPose.Add(prevFramePose, nextFramePose, lerp, anim.BlendedWeight);
+                    outFramePose.Add(nowFramePose, nextFramePose, lerp, anim.BlendedWeight);
 
-                    childTransformsByAnimation[j] = prevFramePose.ChildElementPoses;
-                    childWeightsByAnimationAndElement[j] = sew.ChildElements;
+                    nowChildKeyFrameByAnimation[animIndex] = nowFramePose.ChildElementPoses;
+                    childWeightsByAnimationAndElement[animIndex] = sew.ChildElements;
 
-                    nextFrameChildTransformsByAnimation[j] = nextFramePose.ChildElementPoses;
+                    nextChildKeyFrameByAnimation[animIndex] = nextFramePose.ChildElementPoses;
                 }
 
-                elem.GetLocalTransformMatrix(localTransformMatrix, currentPose);
-                Mat4f.Mul(currentPose.AnimModelMatrix, currentPose.AnimModelMatrix, localTransformMatrix);
+                elem.GetLocalTransformMatrix(animVersion, localTransformMatrix, outFramePose);
+                Mat4f.Mul(outFramePose.AnimModelMatrix, outFramePose.AnimModelMatrix, localTransformMatrix);
 
                 if (elem.JointId > 0 && !jointsDone.Contains(elem.JointId))
                 {
-                    Mat4f.Mul(tmpMatrix, currentPose.AnimModelMatrix, elem.inverseModelTransform);
+                    Mat4f.Mul(tmpMatrix, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
 
                     // https://stackoverflow.com/questions/32565827/whats-the-purpose-of-magic-4-of-last-row-in-matrix-4x4-for-3d-graphics
-                    // We skip the last row
+                    // We skip the last row of our 4x4 matrix, because it has no useful data
                     // 0 4 8  12
                     // 1 5 9  13
                     // 2 6 10 14
@@ -393,23 +412,20 @@ namespace Vintagestory.API.Common
                     TransformationMatrices4x3[index++] = tmpMatrix[13];
                     TransformationMatrices4x3[index++] = tmpMatrix[14];
 
-                    /*for (int l = 0; l < 12; l++)
-                    {
-                        TransformationMatrices[12 * elem.JointId + l] = tmpMatrix[l];
-                    }*/
 
                     jointsDone.Add(elem.JointId);
                 }
 
-                if (currentPose.ChildElementPoses != null)
+                if (outFramePose.ChildElementPoses != null)
                 {
                     calculateMatrices(
+                        animVersion,
                         dt,
-                        currentPose.ChildElementPoses,
+                        outFramePose.ChildElementPoses,
                         childWeightsByAnimationAndElement,
-                        currentPose.AnimModelMatrix,
-                        childTransformsByAnimation,
-                        nextFrameChildTransformsByAnimation,
+                        outFramePose.AnimModelMatrix,
+                        nowChildKeyFrameByAnimation,
+                        nextChildKeyFrameByAnimation,
                         depth
                     );
                 }

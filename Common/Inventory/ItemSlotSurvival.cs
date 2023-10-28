@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.Common;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Standard survival mode slot that can hold everything except full backpacks

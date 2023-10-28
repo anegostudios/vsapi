@@ -72,25 +72,20 @@ namespace Vintagestory.API.Datastructures
             return (bits & 1 << face.Index) != 0;
         }
 
-        public bool Any()
-        {
-            return bits != 0;
-        }
+        public bool Any => bits != 0;
 
-        public bool All()
-        {
-            return bits == OnAllSides;
-        }
+        public bool All => bits == OnAllSides;
 
         public int Value()
         {
             return bits;
         }
 
-        public bool OnSidesAndBase()
-        {
-            return (bits & 0x2F) == 0x2F;
-        }
+        public bool SidesAndBase => (bits & 0x2F) == 0x2F;
+
+        public bool Horizontals => (bits & 0xF) == 0xF;
+
+        public bool Verticals => (bits & 0x30) == 0x30;
 
         public override int GetHashCode()
         {

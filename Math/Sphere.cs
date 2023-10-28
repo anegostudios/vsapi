@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.MathTools;
-
-namespace Vintagestory.API.MathTools
+﻿namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Not really a sphere, actually now an AABB centred on x,y,z, but we keep the name for API consistency

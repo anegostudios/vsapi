@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using Vintagestory.API.MathTools;
-using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 

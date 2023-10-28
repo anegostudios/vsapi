@@ -1,11 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -58,6 +54,9 @@ namespace Vintagestory.API.Common
         public string Code;
 
         [JsonProperty]
+        public int Version;
+
+        [JsonProperty]
         public bool EaseAnimationSpeed = false;
 
         [JsonProperty]
@@ -95,6 +94,11 @@ namespace Vintagestory.API.Common
         /// <param name="recursive">When false, will only do root elements</param>
         public void GenerateAllFrames(ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, bool recursive = true)
         {
+            for (int i = 0; i < rootElements.Length; i++)
+            {
+                rootElements[i].CacheInverseTransformMatrixRecursive();
+            }
+
             AnimationFrame[] resolvedKeyFrames = new AnimationFrame[KeyFrames.Length];
 
             for (int i = 0; i < resolvedKeyFrames.Length; i++)
@@ -128,6 +132,8 @@ namespace Vintagestory.API.Common
 
                 PrevNextKeyFrameByFrame[i] = new AnimationFrame[] { left, right };
             }
+
+            
         }
 
 
@@ -147,7 +153,7 @@ namespace Vintagestory.API.Common
                 transforms.Add(animTransform);
 
                 float[] animModelMatrix = Mat4f.CloneIt(modelMatrix);
-                Mat4f.Mul(animModelMatrix, animModelMatrix, element.GetLocalTransformMatrix(null, animTransform));
+                Mat4f.Mul(animModelMatrix, animModelMatrix, element.GetLocalTransformMatrix(Version, null, animTransform));
 
                 if (element.JointId > 0 && !jointsDone.Contains(element.JointId))
                 {
@@ -159,9 +165,6 @@ namespace Vintagestory.API.Common
                 {
                     GenerateFrame(indexNumber, resKeyFrames, element.Children, jointsById, animModelMatrix, animTransform.ChildElementPoses);
                 }
-
-
-
             }
         }
 
@@ -213,8 +216,6 @@ namespace Vintagestory.API.Common
         protected void lerpKeyFrameElement(AnimationKeyFrameElement prev, AnimationKeyFrameElement next, int forFlag, float t, ref ElementPose transform)
         {
             if (prev == null && next == null) return;
-
-            //t = GameMath.SmoothStep(t); - dafuq is this here for
 
             // Applies the transforms in model space
             if (forFlag == 0)
@@ -328,6 +329,35 @@ namespace Vintagestory.API.Common
             AnimationFrame nextkeyframe = frames[GameMath.Mod(keyframeIndex, frames.Length)];
             right = nextkeyframe;
             return;
+        }
+
+        public Animation Clone()
+        {
+            return new Animation()
+            {
+                Code = Code,
+                CodeCrc32 = CodeCrc32,
+                EaseAnimationSpeed = EaseAnimationSpeed,
+                jointsDone = jointsDone,
+                KeyFrames = CloneKeyFrames(),
+                Name = Name,
+                OnActivityStopped = OnActivityStopped,
+                OnAnimationEnd = OnAnimationEnd,
+                QuantityFrames = QuantityFrames,
+                Version = Version,
+            };
+        }
+
+        private AnimationKeyFrame[] CloneKeyFrames()
+        {
+            AnimationKeyFrame[] elems = new AnimationKeyFrame[KeyFrames.Length];
+
+            for (int i = 0; i < KeyFrames.Length; i++)
+            {
+                elems[i] = KeyFrames[i].Clone();
+            }
+
+            return elems;
         }
     }
 }

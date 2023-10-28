@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
     public class GrindingProperties
     {
+        public bool usedObsoleteNotation = false;
+
         /// <summary>
         /// If set, the block/item is grindable in a quern and this is the resulting itemstack once the grinding time is over.
         /// </summary>
@@ -22,6 +20,7 @@ namespace Vintagestory.API.Common
             set
             {
                 GroundStack = value;
+                usedObsoleteNotation = true;
             }
         }
 

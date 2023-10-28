@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Common
 {
@@ -88,7 +85,9 @@ namespace Vintagestory.API.Common
         /// <param name="sourceSlot"></param>
         /// <param name="skipSlots"></param>
         /// <returns></returns>
-        WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<ItemSlot> skipSlots = null);
+        WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op = null, List<ItemSlot> skipSlots = null);
+        [Obsolete("Use GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op, List<ItemSlot> skipSlots = null) instead")]
+        WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<ItemSlot> skipSlots);
 
         /// <summary>
         /// When the player clicks on this slot

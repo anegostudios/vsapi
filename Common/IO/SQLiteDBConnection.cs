@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Common
 {
@@ -94,7 +89,8 @@ namespace Vintagestory.API.Common
             }
             catch (Exception e)
             {
-                logger.Error(errorMessage = "Failed opening savegame." + e);
+                logger.Error(errorMessage = "Failed opening savegame.");
+                logger.Error(e);
                 return false;
             }
 
@@ -126,8 +122,7 @@ namespace Vintagestory.API.Common
             // Create your tables here
         }
 
-
-        public void CompactDatabase(SQLiteConnection sqliteConn)
+        public void Vacuum()
         {
             using (SQLiteCommand command = sqliteConn.CreateCommand())
             {

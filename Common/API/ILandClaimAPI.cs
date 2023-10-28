@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {

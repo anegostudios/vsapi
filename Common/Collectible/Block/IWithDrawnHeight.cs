@@ -1,7 +1,4 @@
-﻿using Vintagestory.API.MathTools;
-using VintagestoryAPI.Math.Vector;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     /// <summary>
     /// Used for blocks (e.g. tallgrass and flowers) where the drawnHeight is set in attributes

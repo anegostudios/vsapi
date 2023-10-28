@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common;
+﻿using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Client
@@ -33,6 +27,17 @@ namespace Vintagestory.API.Client
                 ct.Bake(manager);
 
                 BakedCompositeTexture[] bct = ct.Baked.BakedVariants;
+                if (bct != null)
+                {
+                    for (int i = 0; i < bct.Length; i++)
+                    {
+                        if (!mainTextureDict.ContainsKey(bct[i].BakedName))
+                            mainTextureDict.SetTextureLocation(new AssetLocationAndSource(bct[i].BakedName, sourceMessage, sourceCode, i + 1));
+                    }
+                    continue;
+                }
+
+                bct = ct.Baked.BakedTiles;
                 if (bct != null)
                 {
                     for (int i = 0; i < bct.Length; i++)

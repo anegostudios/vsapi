@@ -1,9 +1,7 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -53,6 +51,12 @@ namespace Vintagestory.API.Common
 
         }
 
+        public virtual EnumItemStorageFlags GetStorageFlags(ItemStack itemstack, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
+            return 0;
+        }
+
         /// <summary>
         /// When the player has begun using this item for attacking (left mouse click). Return true to play a custom action.
         /// </summary>
@@ -63,9 +67,9 @@ namespace Vintagestory.API.Common
         /// <param name="handHandling"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual void OnHeldAttackStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandHandling handling)
+        public virtual void OnHeldAttackStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handHandling, ref EnumHandling handling)
         {
-            handHandling = EnumHandHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
         }
 
 
@@ -80,9 +84,9 @@ namespace Vintagestory.API.Common
         /// <param name="cancelReason"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackCancel(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandHandling handling)
+        public virtual bool OnHeldAttackCancel(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason, ref EnumHandling handling)
         {
-            handling = EnumHandHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return false;
         }
 
@@ -96,9 +100,9 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
         /// <returns></returns>
-        public virtual bool OnHeldAttackStep(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
+        public virtual bool OnHeldAttackStep(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandling handling)
         {
-            handling = EnumHandHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
             return false;
         }
 
@@ -111,9 +115,9 @@ namespace Vintagestory.API.Common
         /// <param name="blockSelection"></param>
         /// <param name="entitySel"></param>
         /// <param name="handling"></param>
-        public virtual void OnHeldAttackStop(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandHandling handling)
+        public virtual void OnHeldAttackStop(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, ref EnumHandling handling)
         {
-            handling = EnumHandHandling.NotHandled;
+            handling = EnumHandling.PassThrough;
         }
 
 

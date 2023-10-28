@@ -1,6 +1,4 @@
-﻿using System;
-using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
+﻿using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -46,8 +44,8 @@ namespace Vintagestory.API.Common
 
         public override void DropAll(Vec3d pos, int maxStackSize = 0)
         {
-            var attr = Player?.Entity?.Attributes;
-            int timer = attr == null ? GlobalConstants.TimeToDespawnPlayerInventoryDrops : attr.GetInt("droppedItemsOnDeathTimer", GlobalConstants.TimeToDespawnPlayerInventoryDrops);
+            var attr = Player?.Entity?.Properties.Attributes;
+            int timer = attr == null ? GlobalConstants.TimeToDespawnPlayerInventoryDrops : attr["droppedItemsOnDeathTimer"].AsInt(GlobalConstants.TimeToDespawnPlayerInventoryDrops);
 
             for (int i = 0; i < Count; i++)
             {

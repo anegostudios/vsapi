@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
@@ -66,6 +62,18 @@ namespace Vintagestory.API.MathTools
         public Vec2f Clone()
         {
             return new Vec2f(X, Y);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Vec2f f &&
+                   X == f.X &&
+                   Y == f.Y;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
         }
 
         #region Operators

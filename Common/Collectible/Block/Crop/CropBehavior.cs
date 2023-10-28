@@ -1,5 +1,4 @@
-﻿using System;
-using Vintagestory.API.Datastructures;
+﻿using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {

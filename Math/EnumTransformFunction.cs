@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Vintagestory.API.MathTools
+﻿namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Used for EvolvingNatFloat value transforms

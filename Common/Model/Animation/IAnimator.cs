@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -162,5 +158,12 @@ namespace Vintagestory.API.Common
 
         void OnClientFrame(float dt);
 
+        /// <summary>
+        /// If given animation is running, will set its progress to the first animation frame
+        /// </summary>
+        /// <param name="beginholdAnim"></param>
+        void ResetAnimation(string beginholdAnim);
+
+        void RegisterFrameCallback(AnimFrameCallback trigger);
     }
 }

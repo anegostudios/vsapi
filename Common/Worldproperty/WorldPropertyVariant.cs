@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Common
 {

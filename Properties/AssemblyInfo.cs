@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Vintagestory.API;
 using Vintagestory.API.Config;
 
 // General Information about an assembly is controlled through the following 

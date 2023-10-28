@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Common;
@@ -50,6 +49,9 @@ namespace Vintagestory.API.Client
         /// </summary>
         public CompositeTexture[] Alternates = null;
 
+        public CompositeTexture[] Tiles = null;
+        public int TilesWidth;
+
         /// <summary>
         /// BakedCompositeTexture is an expanded, atlas friendly version of CompositeTexture. Required during texture atlas generation.
         /// </summary>
@@ -97,7 +99,7 @@ namespace Vintagestory.API.Client
             CompositeTexture[] alternatesClone = null;
 
             if (Alternates != null)
-            {   
+            {
                 alternatesClone = new CompositeTexture[Alternates.Length];
                 for (int i = 0; i < alternatesClone.Length; i++)
                 {
@@ -105,12 +107,24 @@ namespace Vintagestory.API.Client
                 }
             }
 
+            CompositeTexture[] tilesClone = null;
+            if (Tiles != null)
+            {
+                tilesClone = new CompositeTexture[Tiles.Length];
+                for (int i = 0; i < tilesClone.Length; i++)
+                {
+                    tilesClone[i] = tilesClone[i].CloneWithoutAlternates();
+                }
+            }
+
             CompositeTexture ct = new CompositeTexture()
             {
                 Base = Base.Clone(),
                 Alternates = alternatesClone,
+                Tiles = tilesClone,
                 Rotation = Rotation,
-                Alpha = Alpha
+                Alpha = Alpha,
+                TilesWidth = TilesWidth
             };
 
             if (BlendedOverlays != null)
@@ -131,7 +145,8 @@ namespace Vintagestory.API.Client
             {
                 Base = Base.Clone(),
                 Rotation = Rotation,
-                Alpha = Alpha
+                Alpha = Alpha,
+                TilesWidth = TilesWidth
             };
 
             if (BlendedOverlays != null)
@@ -140,6 +155,15 @@ namespace Vintagestory.API.Client
                 for (int i = 0; i < ct.BlendedOverlays.Length; i++)
                 {
                     ct.BlendedOverlays[i] = BlendedOverlays[i].Clone();
+                }
+            }
+
+            if (Tiles != null)
+            {
+                ct.Tiles = new CompositeTexture[Tiles.Length];
+                for (int i = 0; i < ct.Tiles.Length; i++)
+                {
+                    ct.Tiles[i] = ct.Tiles[i].CloneWithoutAlternates();
                 }
             }
 
@@ -153,7 +177,7 @@ namespace Vintagestory.API.Client
         public bool IsBasic()
         {
             if (Rotation != 0 || Alpha != 255) return false;
-            return Alternates == null && BlendedOverlays == null;
+            return Alternates == null && BlendedOverlays == null && Tiles==null;
         }
 
         /// <summary>
@@ -318,7 +342,41 @@ namespace Vintagestory.API.Client
                 for (int i = 0; i < ct.Alternates.Length; i++)
                 {
                     bct.BakedVariants[i + 1] = Bake(assetManager, ct.Alternates[i]);
+
                 }
+            }
+
+            if (ct.Tiles != null)
+            {
+                List<BakedCompositeTexture> tiles = new List<BakedCompositeTexture>();
+                
+                for (int i = 0; i < ct.Tiles.Length; i++)
+                {
+                    var tile = ct.Tiles[i];
+                    if (tile.Base.EndsWithWildCard)
+                    {
+                        var assets = wildcardsCache[ct.Base] = assetManager.GetManyInCategory("textures", ct.Base.Path.Substring(0, ct.Base.Path.Length - 1), ct.Base.Domain);
+                        var sortedassets = assets.OrderBy(asset => asset.Location.GetName().Split(".")[0].ToInt()).ToList();
+                        for (int j = 0; j < sortedassets.Count; j++)
+                        {
+                            IAsset asset = sortedassets[j];
+                            AssetLocation newLocation = asset.Location.CloneWithoutPrefixAndEnding("textures/".Length);
+                            var act = new CompositeTexture(newLocation);
+                            act.Rotation = ct.Rotation;
+                            act.Alpha = ct.Alpha;
+                            var bt = Bake(assetManager, act);
+                            bt.TilesWidth = ct.TilesWidth;
+                            tiles.Add(bt);
+                        }
+                    } else
+                    {
+                        var bt = Bake(assetManager, ct.Tiles[i]);
+                        bt.TilesWidth = ct.TilesWidth;
+                        tiles.Add(bt);
+                    }
+                }
+
+                bct.BakedTiles = tiles.ToArray();
             }
 
             return bct;
@@ -357,5 +415,12 @@ namespace Vintagestory.API.Client
         /// If non-null also contains BakedName
         /// </summary>
         public BakedCompositeTexture[] BakedVariants = null;
+
+        /// <summary>
+        /// If non-null also contains BakedName
+        /// </summary>
+        public BakedCompositeTexture[] BakedTiles = null;
+
+        public int TilesWidth;
     }
 }

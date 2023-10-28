@@ -1,11 +1,12 @@
 using System;
 using System.IO;
+using System.Runtime.Serialization;
 using ProtoBuf;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.MathTools
 {
-
     /// <summary>
     /// A useful data structure when operating with block postions.<br/>
     /// Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A common pitfall is writing code like: BlockPos abovePos = pos.Up(); - with this code abovePos and pos will reference to the same object!
@@ -16,22 +17,40 @@ namespace Vintagestory.API.MathTools
         [ProtoMember(1)]
         public int X;
         [ProtoMember(2)]
-        public int Y;
+        public int InternalY {
+            get { return Y + dimension * DimensionBoundary; }
+            set { Y = value % DimensionBoundary; dimension = value / DimensionBoundary; }
+        }
         [ProtoMember(3)]
         public int Z;
 
-        public BlockPos()
-        {
+        public int Y;
+        public int dimension;
+
+        public const int DimensionBoundary = GlobalConstants.DimensionSizeInChunks * GlobalConstants.ChunkSize;
 
 
-        }
+        public BlockPos() { }
+
+
+        [Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")]
         public BlockPos(int x, int y, int z)
+        {
+            this.X = x;
+            this.Y = y % DimensionBoundary;
+            this.Z = z;
+            this.dimension = y / DimensionBoundary;
+        }
+
+        public BlockPos(int x, int y, int z, int dim)
         {
             this.X = x;
             this.Y = y;
             this.Z = z;
+            this.dimension = dim;
         }
 
+        [Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")]
         public BlockPos(Vec3i vec)
         {
             this.X = vec.X;
@@ -39,14 +58,21 @@ namespace Vintagestory.API.MathTools
             this.Z = vec.Z;
         }
 
+        public BlockPos(Vec3i vec, int dim)
+        {
+            this.X = vec.X;
+            this.Y = vec.Y;
+            this.Z = vec.Z;
+            this.dimension = dim;
+        }
+
         public BlockPos(Vec4i vec)
         {
             this.X = vec.X;
             this.Y = vec.Y;
             this.Z = vec.Z;
+            this.dimension = vec.W;
         }
-
-        public long AsLong { get => ((long)Y << 52) + ((long)Z << 26) + X; }
 
         /// <summary>
         /// 0 = x, 1 = y, 2 = z
@@ -55,8 +81,8 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public int this[int i]
         {
-            get { return i == 0 ? X : i == 1 ? Y : Z; }
-            set { if (i == 0) X = value; else if (i == 1) Y = value; else Z = value; }
+            get { return i == 0 ? X : i == 1 ? Y : i == 2 ? Z : dimension; }
+            set { if (i == 0) X = value; else if (i == 1) Y = value; else if (i == 2) Z = value; else dimension = value; }
         }
 
         /// <summary>
@@ -138,6 +164,12 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public BlockPos SetDimension(int dim)
+        {
+            dimension = dim;
+            return this;
+        }
+
         /// <summary>
         /// Sets this BlockPos to the x,y,z values given, and returns a boolean stating if the existing values were already equal to x,y,z
         /// </summary>
@@ -159,10 +191,11 @@ namespace Vintagestory.API.MathTools
             writer.Write(X);
             writer.Write(Y);
             writer.Write(Z);
+            writer.Write(dimension);
         }
 
         /// <summary>
-        /// Convert a block position to coordinates relative to the world spawn position
+        /// Convert a block position to coordinates relative to the world spawn position. Note this is dimension unaware
         /// </summary>
         /// <param name="api"></param>
         /// <returns></returns>
@@ -179,7 +212,7 @@ namespace Vintagestory.API.MathTools
 
         public static BlockPos CreateFromBytes(BinaryReader reader)
         {
-            return new BlockPos(reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
+            return new BlockPos(reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32(), reader.ReadInt32());
         }
 
         public BlockPos North()
@@ -229,7 +262,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos WestCopy(int length = 1)
         {
-            return new BlockPos(X - length, Y, Z);
+            return new BlockPos(X - length, Y, Z, dimension);
         }
 
 
@@ -241,7 +274,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos SouthCopy(int length = 1)
         {
-            return new BlockPos(X, Y, Z + length);
+            return new BlockPos(X, Y, Z + length, dimension);
         }
 
 
@@ -252,7 +285,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos EastCopy(int length = 1)
         {
-            return new BlockPos(X + length, Y, Z);
+            return new BlockPos(X + length, Y, Z, dimension);
         }
 
         /// <summary>
@@ -262,7 +295,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos NorthCopy(int length = 1)
         {
-            return new BlockPos(X, Y, Z - length);
+            return new BlockPos(X, Y, Z - length, dimension);
         }
 
         /// <summary>
@@ -272,7 +305,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos DownCopy(int length = 1)
         {
-            return new BlockPos(X, Y - length, Z);
+            return new BlockPos(X, Y - length, Z, dimension);
         }
 
         /// <summary>
@@ -282,7 +315,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos UpCopy(int length = 1)
         {
-            return new BlockPos(X, Y + length, Z);
+            return new BlockPos(X, Y + length, Z, dimension);
         }
 
 
@@ -292,7 +325,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public virtual BlockPos Copy()
         {
-            return new BlockPos(X, Y, Z);
+            return new BlockPos(X, Y, Z, dimension);
         }
 
 
@@ -335,6 +368,19 @@ namespace Vintagestory.API.MathTools
         /// <param name="vector"></param>
         /// <returns></returns>
         public BlockPos Add(Vec3i vector)
+        {
+            X += vector.X;
+            Y += vector.Y;
+            Z += vector.Z;
+            return this;
+        }
+
+        /// <summary>
+        /// Offsets the position by given xyz vector
+        /// </summary>
+        /// <param name="vector"></param>
+        /// <returns></returns>
+        public BlockPos Add(FastVec3i vector)
         {
             X += vector.X;
             Y += vector.Y;
@@ -393,7 +439,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos AddCopy(float dx, float dy, float dz)
         {
-            return new BlockPos((int)(X + dx), (int)(Y + dy), (int)(Z + dz));
+            return new BlockPos((int)(X + dx), (int)(Y + dy), (int)(Z + dz), dimension);
         }
 
         /// <summary>
@@ -405,7 +451,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos AddCopy(int dx, int dy, int dz)
         {
-            return new BlockPos(X + dx, Y + dy, Z + dz);
+            return new BlockPos(X + dx, Y + dy, Z + dz, dimension);
         }
 
         /// <summary>
@@ -415,7 +461,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos AddCopy(int xyz)
         {
-            return new BlockPos(X + xyz, Y + xyz, Z + xyz);
+            return new BlockPos(X + xyz, Y + xyz, Z + xyz, dimension);
         }
 
 
@@ -426,7 +472,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos AddCopy(Vec3i vector)
         {
-            return new BlockPos(X + vector.X, Y + vector.Y, Z + vector.Z);
+            return new BlockPos(X + vector.X, Y + vector.Y, Z + vector.Z, dimension);
         }
 
         /// <summary>
@@ -436,7 +482,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos AddCopy(BlockFacing facing)
         {
-            return new BlockPos(X + facing.Normali.X, Y + facing.Normali.Y, Z + facing.Normali.Z);
+            return new BlockPos(X + facing.Normali.X, Y + facing.Normali.Y, Z + facing.Normali.Z, dimension);
         }
 
         /// <summary>
@@ -447,7 +493,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos AddCopy(BlockFacing facing, int length)
         {
-            return new BlockPos(X + facing.Normali.X * length, Y + facing.Normali.Y * length, Z + facing.Normali.Z * length);
+            return new BlockPos(X + facing.Normali.X * length, Y + facing.Normali.Y * length, Z + facing.Normali.Z * length, dimension);
         }
 
 
@@ -482,7 +528,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="pos"></param>
         public BlockPos SubCopy(BlockPos pos)
         {
-            return new BlockPos(X - pos.X, Y - pos.Y, Z - pos.Z);
+            return new BlockPos(X - pos.X, Y - pos.Y, Z - pos.Z, dimension);
         }
 
 
@@ -493,7 +539,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockPos DivCopy(int factor)
         {
-            return new BlockPos(X / factor, Y / factor, Z / factor);
+            return new BlockPos(X / factor, Y / factor, Z / factor, dimension);
         }
 
         #endregion
@@ -501,12 +547,13 @@ namespace Vintagestory.API.MathTools
         #region Distance
 
         /// <summary>
-        /// Returns the Euclidean distance to between this and given position
+        /// Returns the Euclidean distance to between this and given position. Note if dimensions are different returns maximum value (i.e. infinite)
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
         public float DistanceTo(BlockPos pos)
         {
+            if (pos.dimension != this.dimension) return float.MaxValue;
             double dx = pos.X - X;
             double dy = pos.Y - Y;
             double dz = pos.Z - Z;
@@ -515,7 +562,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Returns the Euclidean distance to between this and given position
+        /// Returns the Euclidean distance to between this and given position. Note this is dimension unaware
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -531,7 +578,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Returns the squared Euclidean distance to between this and given position
+        /// Returns the squared Euclidean distance to between this and given position. Note this is dimension unaware
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -550,6 +597,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns the squared Euclidean distance between the nearer edge of this blockpos (assumed 1 x 0.75 x 1 cube) and given position
         /// The 0.75 offset is because the "heat source" is likely to be above the base position of this block: it's approximate
+        /// Note this is dimension unaware
         /// </summary>
         public double DistanceSqToNearerEdge(double x, double y, double z)
         {
@@ -564,6 +612,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns the squared Euclidean horizontal distance to between this and given position
+        /// Note this is dimension unaware
         /// </summary>
         /// <param name="x"></param>
         /// <param name="z"></param>
@@ -583,6 +632,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public int HorizontalManhattenDistance(BlockPos pos)
         {
+            if (pos.dimension != this.dimension) return int.MaxValue;
             return Math.Abs(X - pos.X) + Math.Abs(Z - pos.Z);
         }
 
@@ -594,12 +644,14 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public int ManhattenDistance(BlockPos pos)
         {
+            if (pos.dimension != this.dimension) return int.MaxValue;
             return Math.Abs(X - pos.X) + Math.Abs(Y - pos.Y) + Math.Abs(Z - pos.Z);
         }
 
 
         /// <summary>
         /// Returns the manhatten distance to given position
+        /// Note this is dimension unaware
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -612,6 +664,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns true if the specified x,z is within a box the specified range around this position
+        /// Note this is dimension unaware
         /// </summary>
         public bool InRangeHorizontally(int x, int z, int range)
         {
@@ -623,6 +676,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Creates a new instance of a Vec3d initialized with this position
+        /// Note this is dimension unaware
         /// </summary>
         /// <returns></returns>
         public Vec3d ToVec3d()
@@ -632,6 +686,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Creates a new instance of a Vec3i initialized with this position
+        /// Note this is dimension unaware
         /// </summary>
         /// <returns></returns>
         public Vec3i ToVec3i()
@@ -648,23 +703,23 @@ namespace Vintagestory.API.MathTools
 
         public override string ToString()
         {
-            return X + ", " + Y + ", " + Z;
+            return X + ", " + Y + ", " + Z + (dimension > 0 ? " : " + dimension : "");
         }
 
         public override bool Equals(object obj)
         {
-            return (obj is BlockPos pos) && X == pos.X && Y == pos.Y && Z == pos.Z;
+            return (obj is BlockPos pos) && X == pos.X && Y == pos.Y && Z == pos.Z && dimension == pos.dimension;
         }
 
         public override int GetHashCode()
         {
-            return ((17 * 23 + X) * 23 + Y) * 23 + Z;
+            return ((17 * 23 + X) * 23 + Y) * 23 + Z + dimension * 269023;
         }
         
 
         public bool Equals(BlockPos other)
         {
-            return other != null && X == other.X && Y == other.Y && Z == other.Z;
+            return other != null && X == other.X && Y == other.Y && Z == other.Z && dimension == other.dimension;
         }
 
         public bool Equals(int x, int y, int z)
@@ -693,37 +748,37 @@ namespace Vintagestory.API.MathTools
         #region Operators
         public static BlockPos operator +(BlockPos left, BlockPos right)
         {
-            return new BlockPos(left.X + right.X, left.Y + right.Y, left.Z + right.Z);
+            return new BlockPos(left.X + right.X, left.Y + right.Y, left.Z + right.Z, left.dimension);
         }
 
         public static BlockPos operator -(BlockPos left, BlockPos right)
         {
-            return new BlockPos(left.X - right.X, left.Y - right.Y, left.Z - right.Z);
+            return new BlockPos(left.X - right.X, left.Y - right.Y, left.Z - right.Z, left.dimension);
         }
 
         public static BlockPos operator +(BlockPos left, int right)
         {
-            return new BlockPos(left.X + right, left.Y + right, left.Z + right);
+            return new BlockPos(left.X + right, left.Y + right, left.Z + right, left.dimension);
         }
 
         public static BlockPos operator -(BlockPos left, int right)
         {
-            return new BlockPos(left.X - right, left.Y - right, left.Z - right);
+            return new BlockPos(left.X - right, left.Y - right, left.Z - right, left.dimension);
         }
 
         public static BlockPos operator *(BlockPos left, int right)
         {
-            return new BlockPos(left.X * right, left.Y * right, left.Z * right);
+            return new BlockPos(left.X * right, left.Y * right, left.Z * right, left.dimension);
         }
 
         public static BlockPos operator *(int left, BlockPos right)
         {
-            return new BlockPos(left * right.X, left * right.Y, left * right.Z);
+            return new BlockPos(left * right.X, left * right.Y, left * right.Z, right.dimension);
         }
 
         public static BlockPos operator /(BlockPos left, int right)
         {
-            return new BlockPos(left.X / right, left.Y / right, left.Z / right);
+            return new BlockPos(left.X / right, left.Y / right, left.Z / right, left.dimension);
         }
 
         public static bool operator ==(BlockPos left, BlockPos right)
@@ -745,6 +800,28 @@ namespace Vintagestory.API.MathTools
 
         public Vec3i AsVec3i => new Vec3i((int)X, (int)Y, (int)Z);
 
+
+        public static void Walk(BlockPos startPos, BlockPos untilPos, Vec3i mapSizeForClamp, Action<int, int, int> onpos)
+        {
+            int minx = GameMath.Clamp(Math.Min(startPos.X, untilPos.X), 0, mapSizeForClamp.X);
+            int miny = GameMath.Clamp(Math.Min(startPos.Y, untilPos.Y), 0, mapSizeForClamp.Y);
+            int minz = GameMath.Clamp(Math.Min(startPos.Z, untilPos.Z), 0, mapSizeForClamp.Z);
+            int maxx = GameMath.Clamp(Math.Max(startPos.X, untilPos.X), 0, mapSizeForClamp.X);
+            int maxy = GameMath.Clamp(Math.Max(startPos.Y, untilPos.Y), 0, mapSizeForClamp.Y);
+            int maxz = GameMath.Clamp(Math.Max(startPos.Z, untilPos.Z), 0, mapSizeForClamp.Z);
+
+            for (int x = minx; x < maxx; x++)
+            {
+                for (int y = miny; y < maxy; y++)
+                {
+                    for (int z = minz; z < maxz; z++)
+                    {
+                        onpos(x, y, z);
+                    }
+                }
+            }
+        }
+
     }
 
     // Exactly like BlockPos except using this class signifies the block should be looked for in the fluids layer; used for server block ticking
@@ -754,23 +831,17 @@ namespace Vintagestory.API.MathTools
         {
         }
 
-        public FluidBlockPos(int x, int y, int z)
+        public FluidBlockPos(int x, int y, int z, int dim)
         {
             this.X = x;
             this.Y = y;
             this.Z = z;
-        }
-
-        public FluidBlockPos(Vec3i vec)
-        {
-            this.X = vec.X;
-            this.Y = vec.Y;
-            this.Z = vec.Z;
+            this.dimension = dim;
         }
 
         public override BlockPos Copy()
         {
-            return new FluidBlockPos(X, Y, Z);
+            return new FluidBlockPos(X, Y, Z, dimension);
         }
     }
 }

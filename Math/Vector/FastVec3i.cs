@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.MathTools
 {

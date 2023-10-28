@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Vintagestory.API.Common;
+﻿using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Server
@@ -40,5 +36,15 @@ namespace Vintagestory.API.Server
         /// Remove a block entity
         /// </summary>
         bool RemoveBlockEntity(BlockPos pos);
+
+        /// <summary>
+        /// Amount of (survival) player placed blocks 
+        /// </summary>
+        int BlocksPlaced { get; }
+
+        /// <summary>
+        /// Amount of (survival) player removed blocks 
+        /// </summary>
+        int BlocksRemoved { get; }
     }
 }

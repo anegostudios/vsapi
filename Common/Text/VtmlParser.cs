@@ -345,7 +345,6 @@ namespace Vintagestory.API.Common
         public static VtmlToken[] Tokenize(ILogger errorLogger, string vtml)
         {
             List<VtmlToken> tokenized = new List<VtmlToken>();
-
             Stack<VtmlTagToken> tokenStack = new Stack<VtmlTagToken>();
             string text = "";
             string tag = "";
@@ -481,8 +480,6 @@ namespace Vintagestory.API.Common
                 text = text
                     .Replace("&gt;", ">")
                     .Replace("&lt;", "<")
-                    //.Replace("  ", "")
-                    //.Replace("  ", "")
                     .Replace("&nbsp;", " ")
                 ;
 

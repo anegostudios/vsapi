@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.IO;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -96,6 +95,8 @@ namespace Vintagestory.API.Common.Entities
             get { return pitch; }
             set { pitch = value; }
         }
+
+        public int Dimension;
 
         #region Position
 

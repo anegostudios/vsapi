@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
-using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
-using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -26,7 +20,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    entity.AnimManager.OnAnimationStopped
                 );
             } else
             {
@@ -36,7 +30,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    entity.AnimManager.OnAnimationStopped
                 );
             }
         }
@@ -52,7 +46,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code),
+                    entity.AnimManager.OnAnimationStopped,
                     entity is EntityPlayer
                 );
             } else {
@@ -61,7 +55,7 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    (code) => entity.AnimManager.OnAnimationStopped(code)
+                    entity.AnimManager.OnAnimationStopped
                 );
             }
         }

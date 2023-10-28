@@ -89,22 +89,17 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Returns you a render info object of given item stack. Can be used to render held items onto a creature.
         /// </summary>
-        /// <param name="itemstack"></param>
-        /// <param name="ground"></param>
-        /// <returns></returns>
-        [Obsolete("Use GetItemStackRenderInfo(inSlot, ...) instead")]
-        ItemRenderInfo GetItemStackRenderInfo(ItemStack itemstack, EnumItemRenderTarget ground);
-
-        /// <summary>
-        /// Returns you a render info object of given item stack. Can be used to render held items onto a creature.
-        /// </summary>
         /// <param name="inSlot"></param>
         /// <param name="ground"></param>
         /// <returns></returns>
-        ItemRenderInfo GetItemStackRenderInfo(ItemSlot inSlot, EnumItemRenderTarget ground);
+        ItemRenderInfo GetItemStackRenderInfo(ItemSlot inSlot, EnumItemRenderTarget ground, float dt);
 
 
         #region OpenGL
+
+        void Reset3DProjection();
+        void Set3DProjection(float zfar, float fov);
+
         /// <summary>
         /// Returns null if no OpenGL Error happened, otherwise one of the official opengl error codes
         /// </summary>
@@ -474,6 +469,13 @@ namespace Vintagestory.API.Client
         MeshRef UploadMesh(MeshData data);
 
         /// <summary>
+        /// Same as <seealso cref="UploadMesh(MeshData)"/> but splits it into multiple MeshRefs, one for each texture
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        MultiTextureMeshRef UploadMultiTextureMesh(MeshData data);
+
+        /// <summary>
         /// Updates the existing mesh. Updates any non null data from <paramref name="updatedata"/>
         /// </summary>
         /// <param name="meshRef"></param>
@@ -488,6 +490,10 @@ namespace Vintagestory.API.Client
 
         #endregion
 
+
+
+
+
         #region Render 
 
         /// <summary>
@@ -495,6 +501,21 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="meshRef"></param>
         void RenderMesh(MeshRef meshRef);
+
+        /// <summary>
+        /// Renders given mesh onto the screen, with the mesh requiring multiple render calls for each texture, asigns the associated texture each call
+        /// </summary>
+        /// <param name="mmr"></param>
+        /// <param name="textureSampleName"></param>
+        void RenderMultiTextureMesh(MultiTextureMeshRef mmr, string textureSampleName, int textureNumber = 0);
+
+        /// <summary>
+        /// Renders given mesh onto the screen, with the mesh requiring multiple render calls for each texture, does not asign any texture
+        /// </summary>
+        /// <param name="mmr"></param>
+        /// <param name="textureSampleName"></param>
+        void RenderMultiTextureMesh(MultiTextureMeshRef mmr);
+
 
         /// <summary>
         /// Uses the graphics instanced rendering methods to efficiently render the same mesh multiple times. Use the custom mesh data parts with instanced flag on to supply custom data to each mesh.

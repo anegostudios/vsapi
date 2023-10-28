@@ -215,6 +215,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Retrieve chunk at given chunk position (= divide block position by chunk size)
+        /// <br/>For dimension awareness, chunkY would need to be based on BlockPos.InternalY / chunksize or else explicitly include the dimensionId multiplied by GlobalConstants.DimensionSizeInChunks
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkY"></param>
@@ -246,6 +247,7 @@ namespace Vintagestory.API.Common
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ);
 
         /// <summary>
@@ -263,6 +265,7 @@ namespace Vintagestory.API.Common
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         int GetBlockId(int posX, int posY, int posZ);
 
         /// <summary>
@@ -280,6 +283,7 @@ namespace Vintagestory.API.Common
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         Block GetBlock(int posX, int posY, int posZ);
 
         /// <summary>
@@ -311,6 +315,7 @@ namespace Vintagestory.API.Common
         /// <param name = "z">z coordinate</param>
         /// <param name = "layer">blocks layer e.g. solid, fluid etc.</param>
         /// <returns>ID of the block at the given position</returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         Block GetBlock(int x, int y, int z, int layer);
 
         /// <summary>
@@ -331,6 +336,7 @@ namespace Vintagestory.API.Common
         /// <param name = "z">z coordinate</param>
         /// <param name="layer">Block layer</param>
         /// <returns>ID of the block at the given position</returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         Block GetBlockOrNull(int x, int y, int z, int layer = BlockLayersAccess.MostSolid);
 
 
@@ -342,6 +348,7 @@ namespace Vintagestory.API.Common
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         Block GetMostSolidBlock(int x, int y, int z);
 
         /// <summary>
@@ -353,6 +360,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. If there is liquids in the liquid layer, the onBlock method will be called twice. Currently used for more efficient collision testing.
+        /// <br/>Currently NOT dimensionally aware
         /// </summary>
         /// <param name="minPos"></param>
         /// <param name="maxPos"></param>
@@ -363,6 +371,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// A method to search for a given block in an area
+        /// <br/>Currently NOT dimensionally aware
         /// </summary>
         /// <param name="minPos"></param>
         /// <param name="maxPos"></param>
@@ -372,6 +381,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// A method to search for a given fluid block in an area
+        /// <br/>Currently NOT dimensionally aware
         /// </summary>
         /// <param name="minPos"></param>
         /// <param name="maxPos"></param>
@@ -506,6 +516,7 @@ namespace Vintagestory.API.Common
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         bool IsValidPos(int posX, int posY, int posZ);
 
         /// <summary>
@@ -593,6 +604,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns the light level (0..32) at given position. If the chunk at that position is not loaded this method will return the default sunlight value
+        /// <br/>Note this is not currently dimensionally aware
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -603,6 +615,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns the light values at given position. XYZ component = block light rgb, W component = sun light brightness
+        /// <br/>Note this is not currently dimensionally aware
         /// </summary>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
@@ -628,6 +641,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns the topmost solid surface position at given x/z coordinate as it was during world generation. This map is not updated after placing/removing blocks
+        /// <br/>Note this is meaningless in dimensions other than the normal world
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
@@ -635,6 +649,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns the topmost non-rain-permeable position at given x/z coordinate. This map is always updated after placing/removing blocks
+        /// <br/>Note this is meaningless in dimensions other than the normal world
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
@@ -651,6 +666,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns the topmost non-rain-permeable position at given x/z coordinate. This map is always updated after placing/removing blocks
+        /// <br/>Note this is meaningless in dimensions other than the normal world
         /// </summary>
         /// <param name="posX"></param>
         /// <param name="posZ"></param>
@@ -796,6 +812,11 @@ namespace Vintagestory.API.Common
         /// <param name="facing"></param>
         /// <returns></returns>
         bool IsSideSolid(int x, int y, int z, BlockFacing facing);
+
+        /// <summary>
+        /// Used by World Edit to create previews, ships etc.
+        /// </summary>
+        IMiniDimension CreateMiniDimension(Vec3d position);
     }
 
     /// <summary>

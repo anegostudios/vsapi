@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using Vintagestory.API;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
@@ -10,7 +9,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Implementation of JsonConverter that converts objects to an instance of a JsonObject
     /// </summary>
-    
+
     /*public class JsonObjectConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)

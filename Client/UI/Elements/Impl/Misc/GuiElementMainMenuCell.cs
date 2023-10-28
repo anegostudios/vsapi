@@ -1,7 +1,6 @@
 ﻿using System;
 using Cairo;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
@@ -32,6 +31,8 @@ namespace Vintagestory.API.Client
         public Action<int> OnMouseDownOnCellLeft;
         public Action<int> OnMouseDownOnCellRight;
 
+
+        public double? FixedHeight = null;
 
         ElementBounds IGuiElementCell.Bounds
         {
@@ -220,6 +221,12 @@ namespace Vintagestory.API.Client
         public void UpdateCellHeight()
         {
             Bounds.CalcWorldBounds();
+
+            if (FixedHeight != null)
+            {
+                Bounds.fixedHeight = (double)FixedHeight;
+                return;
+            }
 
             double unscaledPadding = Bounds.absPaddingY / RuntimeEnv.GUIScale;
             double boxwidth = Bounds.InnerWidth;

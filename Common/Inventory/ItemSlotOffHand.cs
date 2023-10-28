@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.Common;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     /// <summary>
     /// A slot that only accepts collectibles designated for the off-hand slot

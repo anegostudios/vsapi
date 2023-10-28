@@ -305,13 +305,20 @@ namespace Vintagestory.API.Common
             return -1;
         }
 
+        [Obsolete("Use GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op, List<ItemSlot> skipSlots = null) instead")]
+        public WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<ItemSlot> skipSlots)
+        {
+            return GetBestSuitedSlot(sourceSlot, null, skipSlots);
+        }
+
         /// <summary>
         /// Gets the best sorted slot for the given item.
         /// </summary>
         /// <param name="sourceSlot">The source item slot.</param>
+        /// <param name="op">Can be null. If provided allows the inventory to make a better guess at suitability</param>
         /// <param name="skipSlots">The slots to skip.</param>
         /// <returns>A weighted slot set.</returns>
-        public virtual WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List<ItemSlot> skipSlots = null)
+        public virtual WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op = null, List<ItemSlot> skipSlots = null)
         {
             WeightedSlot bestWSlot = new WeightedSlot();
 
@@ -364,7 +371,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetSuitability(ItemSlot sourceSlot, ItemSlot targetSlot, bool isMerge)
         {
-            float extraWeight = targetSlot is ItemSlotBackpack && (sourceSlot.Itemstack.Collectible.StorageFlags & EnumItemStorageFlags.Backpack) > 0 ? 2 : 0;
+            float extraWeight = targetSlot is ItemSlotBackpack && (sourceSlot.Itemstack.Collectible.GetStorageFlags(sourceSlot.Itemstack) & EnumItemStorageFlags.Backpack) > 0 ? 2 : 0;
 
             return baseWeight + extraWeight + (isMerge ? 3 : 1);
         }

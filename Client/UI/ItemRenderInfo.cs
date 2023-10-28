@@ -1,9 +1,5 @@
-﻿
-using Vintagestory.API.Client;
-using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
+﻿using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
@@ -16,7 +12,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// The model to be rendered
         /// </summary>
-        public MeshRef ModelRef;
+        public MultiTextureMeshRef ModelRef;
         /// <summary>
         /// The transform to be applied when rendered
         /// </summary>

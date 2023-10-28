@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
@@ -132,10 +128,10 @@ namespace Vintagestory.API.MathTools
         {
             return new byte[]
             {
-                (byte)((color >> 0) & 0xff),
-                (byte)((color >> 8) & 0xff),
-                (byte)((color >> 16) & 0xff),
-                (byte)((color >> 24) & 0xff)
+                (byte)color,
+                (byte)(color >> 8),
+                (byte)(color >> 16),
+                (byte)(color >> 24)
             };
         }
 
@@ -148,10 +144,10 @@ namespace Vintagestory.API.MathTools
         {
             return new byte[]
             {
-                (byte)((color >> 16) & 0xff),
-                (byte)((color >> 8) & 0xff),
-                (byte)((color >> 0) & 0xff),
-                (byte)((color >> 24) & 0xff)
+                (byte)(color >> 16),
+                (byte)(color >> 8),
+                (byte)(color >> 0),
+                (byte)(color >> 24)
             };
         }
 
@@ -217,7 +213,7 @@ namespace Vintagestory.API.MathTools
 
         public static int FromRGBADoubles(double[] rgba)
         {
-            return ColorFromRgba((int)rgba[0] * 255, (int)rgba[1] * 255, (int)rgba[2] * 255, (int)rgba[3] * 255);
+            return ColorFromRgba((int)(rgba[0] * 255), (int)(rgba[1] * 255), (int)(rgba[2] * 255), (int)(rgba[3] * 255));
         }
 
 
@@ -268,13 +264,13 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int ColorMultiplyEach(int color, int color2)
         {
-            // yaaaay bracket party (o) )o( o// \o/
-            // could probably save on some bit masking
+            // yaaaay bracket party (o) )o( o// \o/  - hope you enjoyed the party guys not all brackets were necessary, operator precedence * / before << before |
+            // could probably save on some bit masking  - nope, this bit masking is essential especially when right-shifting signed ints
             return
-                (((((color >> 24) & 0xff) * ((color2 >> 24) & 0xff)) / 255) << 24) |
-                (((((color >> 16) & 0xff) * ((color2 >> 16) & 0xff)) / 255) << 16) |
-                (((((color >> 8) & 0xff) * ((color2 >> 8) & 0xff)) / 255) << 8) |
-                (((color & 0xff) * ((color2 >> 0) & 0xff)) / 255)
+                ((color >> 24) & 0xff) * ((color2 >> 24) & 0xff) / 255 << 24 |
+                ((color >> 16) & 0xff) * ((color2 >> 16) & 0xff) / 255 << 16 |
+                ((color >> 8) & 0xff) * ((color2 >> 8) & 0xff) / 255 << 8 |
+                (color & 0xff) * (color2 & 0xff) / 255
             ;
         }
 

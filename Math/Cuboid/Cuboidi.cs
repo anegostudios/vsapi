@@ -1,9 +1,5 @@
 ﻿using ProtoBuf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
@@ -227,6 +223,11 @@ namespace Vintagestory.API.MathTools
         public bool Contains(Vec3d pos)
         {
             return pos.X >= MinX && pos.X < MaxX && pos.Y >= MinY && pos.Y < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
+        }
+
+        public bool Contains(IVec3 pos)
+        {
+            return pos.XAsInt >= MinX && pos.XAsInt < MaxX && pos.YAsInt >= MinY && pos.YAsInt < MaxY && pos.ZAsInt >= MinZ && pos.ZAsInt < MaxZ;
         }
 
         /// <summary>
@@ -518,6 +519,17 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
+        /// Ignores the y-axis
+        /// </summary>
+        /// <param name="with"></param>
+        /// <returns></returns>
+        public bool Intersects(HorRectanglei with)
+        {
+            return with.MaxX > this.MinX && with.MinX < this.MaxX ? (with.MaxZ > this.MinZ && with.MinZ < this.MaxZ) : false;
+        }
+
+
+        /// <summary>
         /// If the given cuboid intersects  with or is adjacent to this cubiod
         /// </summary>
         public bool IntersectsOrTouches(Cuboidi with)
@@ -574,5 +586,6 @@ namespace Vintagestory.API.MathTools
             hashCode = hashCode * -1521134295 + Z2.GetHashCode();
             return hashCode;
         }
+
     }
 }

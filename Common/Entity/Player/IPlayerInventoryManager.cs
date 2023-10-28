@@ -108,7 +108,7 @@ namespace Vintagestory.API.Common
         /// <param name="sourceInventory"></param>
         /// <param name="sourceSlot"></param>
         /// <returns></returns>
-        ItemSlot GetBestSuitedHotbarSlot(IInventory sourceInventory, ItemSlot sourceSlot);
+        //ItemSlot GetBestSuitedHotbarSlot(IInventory sourceInventory, ItemSlot sourceSlot);
 
         /// <summary>
         /// Returns the hotbar inventory object. Obvious comment is being obvious.
@@ -132,7 +132,9 @@ namespace Vintagestory.API.Common
         /// <param name="onlyPlayerInventory"></param>
         /// <param name="skipSlots"></param>
         /// <returns></returns>
-        ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, List<ItemSlot> skipSlots = null);
+        ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, ItemStackMoveOperation op = null, List<ItemSlot> skipSlots = null);
+        [Obsolete("Use GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, ItemStackMoveOperation op, List<ItemSlot> skipSlots = null) instead")]
+        ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op, List<ItemSlot> skipSlots);
 
         /// <summary>
         /// Tries to move away items from the source slot into any other slot of another inventory

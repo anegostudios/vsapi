@@ -1,7 +1,4 @@
-﻿using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     public interface IInventoryNetworkUtil
     {

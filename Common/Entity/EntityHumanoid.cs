@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     public class EntityHumanoid : EntityAgent
     {

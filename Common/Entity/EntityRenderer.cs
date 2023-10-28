@@ -1,5 +1,4 @@
-﻿using System;
-using Vintagestory.API.Client;
+﻿using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common.Entities
 {

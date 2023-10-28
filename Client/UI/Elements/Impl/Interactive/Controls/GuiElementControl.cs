@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     /// <summary>
     /// An element that allows input and can be disabled

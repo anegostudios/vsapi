@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
@@ -44,17 +46,22 @@ namespace Vintagestory.API.Common
         public IntArgParser OptionalInt(string argName, int defaultValue = 0) => new IntArgParser(argName, defaultValue, false);
         public IntArgParser Int(string argName) => new IntArgParser(argName, 0, true);
 
+        public LongArgParser OptionalLong(string argName, int defaultValue = 0) => new LongArgParser(argName, defaultValue, false);
+        public LongArgParser Long(string argName) => new LongArgParser(argName, 0, true);
+
         public BoolArgParser Bool(string argName, string trueAlias = "on") => new BoolArgParser(argName, trueAlias, true);
 
         public BoolArgParser OptionalBool(string argName, string trueAlias = "on") => new BoolArgParser(argName, trueAlias, false);
 
-        public DoubleArgParser OptionalDouble(string argName) => new DoubleArgParser(argName, false);
+        public DoubleArgParser OptionalDouble(string argName, double defaultvalue = 0d) => new DoubleArgParser(argName, defaultvalue, false);
 
-        public FloatArgParser Float(string argName) => new FloatArgParser(argName, true);
-        public FloatArgParser OptionalFloat(string argName) => new FloatArgParser(argName, false);
+        public FloatArgParser Float(string argName) => new FloatArgParser(argName, 0f,true);
 
-        public DoubleArgParser Double(string argName) => new DoubleArgParser(argName, true);
+        public FloatArgParser OptionalFloat(string argName, float defaultvalue = 0f) => new FloatArgParser(argName, defaultvalue, false);
+
+        public DoubleArgParser Double(string argName) => new DoubleArgParser(argName, 0d, true);
         public DoubleArgParser DoubleRange(string argName, double min, double max) => new DoubleArgParser(argName, min, max, true);
+        
         /// <summary>
         /// A currently online player
         /// </summary>
@@ -74,6 +81,26 @@ namespace Vintagestory.API.Common
         /// <param name="argName"></param>
         /// <returns></returns>
         public PlayersArgParser OptionalPlayerUids(string argName) => new PlayersArgParser(argName, api, false);
+        
+        /// <summary>
+        /// Parses IPlayerRole, only works on Serverside since it needs the Serverconfig
+        /// </summary>
+        /// <param name="argName"></param>
+        /// <returns></returns>
+        public PlayerRoleArgParser PlayerRole(string argName) => new PlayerRoleArgParser(argName, api, true);
+
+        /// <summary>
+        /// Parses IPlayerRole, only works on Serverside since it needs the Serverconfig
+        /// </summary>
+        /// <param name="argName"></param>
+        /// <returns></returns>
+        public PlayerRoleArgParser OptionalPlayerRole(string argName) => new PlayerRoleArgParser(argName, api, false);
+
+        public PrivilegeArgParser Privilege(string privilege) =>
+            new PrivilegeArgParser(privilege, api, true);
+        
+        public PrivilegeArgParser OptionalPrivilege(string privilege) =>
+            new PrivilegeArgParser(privilege, api, false);
 
         public WordArgParser Word(string argName) => new WordArgParser(argName, true, null);
 
@@ -82,6 +109,20 @@ namespace Vintagestory.API.Common
         public WordRangeArgParser OptionalWordRange(string argName, params string[] words) => new WordRangeArgParser(argName, false, words);
 
         public WordArgParser Word(string argName, string[] wordSuggestions) => new WordArgParser(argName, true, wordSuggestions);
+
+        /// <summary>
+        /// Parses a string which is either a color name or a hex value as a <see cref="System.Drawing.Color"/>
+        /// </summary>
+        /// <param name="argName"></param>
+        /// <returns></returns>
+        public ColorArgParser Color(string argName) => new ColorArgParser(argName, true);
+        
+        /// <summary>
+        /// Parses a string which is either a color name or a hex value as a <see cref="System.Drawing.Color"/>
+        /// </summary>
+        /// <param name="argName"></param>
+        /// <returns></returns>
+        public ColorArgParser OptionalColor(string argName) => new ColorArgParser(argName, false);
 
         /// <summary>
         /// All remaining arguments together
@@ -100,6 +141,11 @@ namespace Vintagestory.API.Common
         public WordRangeArgParser WordRange(string argName, params string[] words) => new WordRangeArgParser(argName, true, words);
         public WorldPositionArgParser WorldPosition(string argName) => new WorldPositionArgParser(argName, api, true);
         public WorldPosition2DArgParser WorldPosition2D(string argName) => new WorldPosition2DArgParser(argName, api, true);
+        
+        public Vec3iArgParser Vec3i(string argName) => new Vec3iArgParser(argName, api, true);
+        
+        public Vec3iArgParser OptionalVec3i(string argName) => new Vec3iArgParser(argName, api, true);
+        
         public CollectibleArgParser Item(string argName) => new CollectibleArgParser(argName, api, EnumItemClass.Item, true);
         public CollectibleArgParser Block(string argName) => new CollectibleArgParser(argName, api, EnumItemClass.Block, true);
         
@@ -149,9 +195,13 @@ namespace Vintagestory.API.Common
         {
             return isMandatoryArg ? "<i>&lt;" + argName + "&gt;</i>" : "<i>[" + argName + "]</i>";
         }
-        public virtual string GetSyntaxExplanation()
+        public virtual string GetSyntaxUnformatted()
         {
-            return null;
+            return isMandatoryArg ? "&lt;" + argName + "&gt;" : "[" + argName + "]";
+        }
+        public virtual string GetSyntaxExplanation(string indent)
+        {
+            return indent + GetSyntax();
         }
 
         public virtual string GetLastError()
@@ -384,6 +434,12 @@ namespace Vintagestory.API.Common
             value = (string)data;
         }
 
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            value = default;
+        }
+
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
         {
             value = args.RawArgs.PopAll();
@@ -401,15 +457,21 @@ namespace Vintagestory.API.Common
             this.api = api;
         }
 
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is one of the registered entityTypes";
+            return indent + GetSyntax() + " is one of the registered entityTypes";
         }
 
 
         public override object GetValue()
         {
             return type;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            type = default;
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -450,15 +512,15 @@ namespace Vintagestory.API.Common
         {
             this.api = api;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is either a player name, or else one of the following selection codes:" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;s[] for self" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;l[] for the entity currently looked at" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;p[] for all players" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;e[] for all entities." +
-                "\n&nbsp;&nbsp;Inside the square brackets, one or more filters can be added, to be more selective.  Filters include name, type, class, alive, range.  For example, <code>e[type=gazelle,range=3,alive=true]</code>.  The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position." +
-                "\n&nbsp;&nbsp;This argument may be omitted if the remainder of the command makes sense, in which case it will be interpreted as self.";
+            return indent + GetSyntax() + " is either a player name, or else one of the following selection codes:\n" +
+                indent + "  s[] for self\n" +
+                indent + "  l[] for the entity currently looked at\n" +
+                indent + "  p[] for all players\n" +
+                indent + "  e[] for all entities.\n" +
+                indent + "  Inside the square brackets, one or more filters can be added, to be more selective.  Filters include name, type, class, alive, range.  For example, <code>e[type=gazelle,range=3,alive=true]</code>.  The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n" +
+                indent + "  This argument may be omitted if the remainder of the command makes sense, in which case it will be interpreted as self.";
         }
 
         public override object GetValue()
@@ -473,6 +535,7 @@ namespace Vintagestory.API.Common
 
         public override void PreProcess(TextCommandCallingArgs args)
         {
+            entities = default;
             base.PreProcess(args);
             if (IsMissing)
             {
@@ -564,45 +627,32 @@ namespace Vintagestory.API.Common
                 subargs.Remove("alive");
             }
 
+            long? id = null;
+            if (subargs.TryGetValue("id", out var strid))
+            {
+                id = strid.ToLong();
+                subargs.Remove("id");
+            }
+
             Cuboidi box = null;
             if (sourcePos != null)
             {
-                string boxParam = null;
-                if (subargs.TryGetValue("minx", out boxParam))
+                bool hasBox = false;
+                string[] codes = { "minx", "miny", "minz", "maxx", "maxy", "maxz" };
+                int[] values = new int[6];
+                for (int i = 0; i < codes.Length; i++)
                 {
-                    if (box == null) box = new Cuboidi(sourcePos.AsBlockPos, 1);
-                    box.Set(box.MinX + boxParam.ToInt(), box.MinY, box.MinZ, box.MaxX, box.MaxY, box.MaxZ);
-                    subargs.Remove("minx");
+                    if (subargs.TryGetValue(codes[i], out string val))
+                    {
+                        values[i] = val.ToInt() + i/3; // +1 for maxx, maxy and maxz
+                        subargs.Remove(codes[i]);
+                        hasBox = true;
+                    }
                 }
-                if (subargs.TryGetValue("maxx", out boxParam))
+                if (hasBox)
                 {
-                    if (box == null) box = new Cuboidi(sourcePos.AsBlockPos, 1);
-                    box.Set(box.MinX, box.MinY, box.MinZ, box.MaxX + boxParam.ToInt() - 1, box.MaxY, box.MaxZ);
-                    subargs.Remove("maxx");
-                }
-                if (subargs.TryGetValue("miny", out boxParam))
-                {
-                    if (box == null) box = new Cuboidi(sourcePos.AsBlockPos, 1);
-                    box.Set(box.MinX, box.MinY + boxParam.ToInt(), box.MinZ, box.MaxX, box.MaxY, box.MaxZ);
-                    subargs.Remove("miny");
-                }
-                if (subargs.TryGetValue("maxy", out boxParam))
-                {
-                    if (box == null) box = new Cuboidi(sourcePos.AsBlockPos, 1);
-                    box.Set(box.MinX, box.MinY, box.MinZ, box.MaxX, box.MaxY + boxParam.ToInt() - 1, box.MaxZ);
-                    subargs.Remove("maxy");
-                }
-                if (subargs.TryGetValue("minz", out boxParam))
-                {
-                    if (box == null) box = new Cuboidi(sourcePos.AsBlockPos, 1);
-                    box.Set(box.MinX, box.MinY, box.MinZ + boxParam.ToInt(), box.MaxX, box.MaxY, box.MaxZ);
-                    subargs.Remove("minz");
-                }
-                if (subargs.TryGetValue("maxz", out boxParam))
-                {
-                    if (box == null) box = new Cuboidi(sourcePos.AsBlockPos, 1);
-                    box.Set(box.MinX, box.MinY, box.MinZ, box.MaxX, box.MaxY, box.MaxZ + boxParam.ToInt() - 1);
-                    subargs.Remove("maxz");
+                    var center = sourcePos.AsBlockPos;
+                    box = new Cuboidi(values).Translate(center.X, center.Y, center.Z);
                 }
             }
 
@@ -627,7 +677,7 @@ namespace Vintagestory.API.Common
                 case 'p':
                     foreach (var plr in api.World.AllOnlinePlayers)
                     {
-                        if (entityMatches(plr.Entity, sourcePos, type, classstr, range, box, name, alive))
+                        if (entityMatches(plr.Entity, sourcePos, type, classstr, range, box, name, alive, id))
                         {
                             foundEntities.Add(plr.Entity);
                         }
@@ -646,7 +696,7 @@ namespace Vintagestory.API.Common
 
                         foreach (Entity e in entities)
                         {
-                            if (entityMatches(e, sourcePos, type, classstr, range, box, name, alive))
+                            if (entityMatches(e, sourcePos, type, classstr, range, box, name, alive, id))
                             {
                                 foundEntities.Add(e);
                             }
@@ -659,7 +709,7 @@ namespace Vintagestory.API.Common
                         float r = (float)range;
                         entities = api.World.GetEntitiesAround(sourcePos, r, r, (e) =>
                         {
-                            return entityMatches(e, sourcePos, type, classstr, range, box, name, alive);
+                            return entityMatches(e, sourcePos, type, classstr, range, box, name, alive, id);
                         });
 
                     }
@@ -681,7 +731,7 @@ namespace Vintagestory.API.Common
                     }
 
                     var lookedAtEntity = eplr.Player.CurrentEntitySelection.Entity;
-                    if (entityMatches(lookedAtEntity, sourcePos, type, classstr, range, box, name, alive))
+                    if (entityMatches(lookedAtEntity, sourcePos, type, classstr, range, box, name, alive, id))
                     {
                         this.entities = new Entity[] { lookedAtEntity }; 
                     }
@@ -693,7 +743,7 @@ namespace Vintagestory.API.Common
 
                 // Executing entity
                 case 's':
-                    if (entityMatches(callingEntity, sourcePos, type, classstr, range, box, name, alive))
+                    if (entityMatches(callingEntity, sourcePos, type, classstr, range, box, name, alive, id))
                     {
                         this.entities = new Entity[] { callingEntity }; 
                     }
@@ -709,10 +759,11 @@ namespace Vintagestory.API.Common
             }
         }
 
-        private bool entityMatches(Entity e, Vec3d sourcePos, AssetLocation type, string classstr, float? range, Cuboidi box, string name, bool? alive)
+        private bool entityMatches(Entity e, Vec3d sourcePos, AssetLocation type, string classstr, float? range, Cuboidi box, string name, bool? alive, long? id)
         {
-            if (range != null && e.Pos.DistanceTo(sourcePos) > range) return false;
-            if (box != null && !box.ContainsOrTouches(e.Pos)) return false;
+            if (id != null && e.EntityId != id) return false;
+            if (range != null && e.SidedPos.DistanceTo(sourcePos) > range) return false;
+            if (box != null && !box.ContainsOrTouches(e.SidedPos)) return false;
             if (classstr != null && classstr != e.Class.ToLowerInvariant()) return false;
             if (type != null && !WildcardUtil.Match(type, e.Code)) return false;
             if (alive != null && e.Alive != alive) return false;
@@ -734,9 +785,9 @@ namespace Vintagestory.API.Common
             this.api = api;
             this.itemclass = itemclass;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is a precise " + itemclass + " name, optionally immediately followed by braces {} containing attributes for the " + itemclass;
+            return indent + Lang.Get("{0} is a precise {1} name, optionally immediately followed by braces {{}} containing attributes for the {1}", GetSyntax(), itemclass);
         }
 
         public override string[] GetValidRange(CmdArgs args)
@@ -767,6 +818,12 @@ namespace Vintagestory.API.Common
         public override void SetValue(object data)
         {
             stack = (ItemStack)data;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            stack = default;
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -851,16 +908,16 @@ namespace Vintagestory.API.Common
             this.mapmiddlePosProvider = () => new Vec3d(api.World.DefaultSpawnPosition.X, 0, api.World.DefaultSpawnPosition.Z);
             argCount = 3;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is a world position.  A world position can be either 3 coordinates, or a target selector." +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;3 coordinates are specified as in the following examples:" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>100 150 -180</code> means 100 blocks East and 180 blocks North from the map center, with height 150 blocks" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>~-5 ~0 ~4</code> means 5 blocks West and 4 blocks South from the caller's position" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>=512100 =150 =511880</code> means the absolute x,y,z position specified (at default settings this is near the map center)" +
-                "\n&nbsp;&nbsp;&nbsp;&nbsp;A target selector is either a player's name (meaning that player's current position), or one of: <code>s[]</code> for self, <code>l[]</code> for looked-at entity or block, <code>p[]</code> for players, <code>e[]</code> for entities." +
-                "One or more filters can be specified inside the brackets.  For p[] or e[], the target will be the nearest player or entity which passes all the filters." +
-                "Filters include name, type, class, alive, range.  For example, <code>e[type=gazelle,range=3,alive=true]</code>.  The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.";
+            return indent + GetSyntax() + " is a world position.  A world position can be either 3 coordinates, or a target selector.\n" +
+                indent + "&nbsp;&nbsp;3 coordinates are specified as in the following examples:\n" +
+                indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>100 150 -180</code> means 100 blocks East and 180 blocks North from the map center, with height 150 blocks\n" +
+                indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>~-5 ~0 ~4</code> means 5 blocks West and 4 blocks South from the caller's position\n" +
+                indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>=512100 =150 =511880</code> means the absolute x,y,z position specified (at default settings this is near the map center)\n" +
+                indent + "&nbsp;&nbsp;A target selector is either a player's name (meaning that player's current position), or one of: <code>s[]</code> for self, <code>l[]</code> for looked-at entity or block, <code>p[]</code> for players, <code>e[]</code> for entities.\n" +
+                indent + "One or more filters can be specified inside the brackets.  For p[] or e[], the target will be the nearest player or entity which passes all the filters.\n" +
+                indent + "Filters include name, type, class, alive, range.  For example, <code>e[type=gazelle,range=3,alive=true]</code>.  The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n";
         }
 
         public override string[] GetValidRange(CmdArgs args)
@@ -995,6 +1052,43 @@ namespace Vintagestory.API.Common
             return pos == null ? EnumParseResult.Bad : EnumParseResult.Good;
         }
     }
+    
+    public class Vec3iArgParser : ArgumentParserBase
+    {
+        private Vec3i _vector;
+
+        public Vec3iArgParser(string argName, ICoreAPI api, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        {
+            argCount = 3;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            _vector = default;
+        }
+
+        public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
+        {
+            int? x = args.RawArgs.PopInt();
+            int? y = args.RawArgs.PopInt();
+            int? z = args.RawArgs.PopInt();
+
+            if (x != null && y != null && z != null)
+                _vector = new Vec3i((int)x, (int)y, (int)z);
+            return _vector == null ? EnumParseResult.Bad : EnumParseResult.Good;
+        }
+
+        public override object GetValue()
+        {
+            return _vector;
+        }
+
+        public override void SetValue(object data)
+        {
+            _vector = (Vec3i)data;
+        }
+    }
 
     public class WordArgParser : ArgumentParserBase
     {
@@ -1021,6 +1115,20 @@ namespace Vintagestory.API.Common
             word = (string)data;
         }
 
+        public override string GetSyntaxExplanation(string indent)
+        {
+            if(suggestions != null)
+                return indent + GetSyntax() + " here are some suggestions: " + string.Join(", ", suggestions);
+            
+            return indent + GetSyntax() + "is a string without spaces";
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            word = default;
+        }
+
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
         {
             word = args.RawArgs.PopWord();
@@ -1043,9 +1151,9 @@ namespace Vintagestory.API.Common
         {
             this.words = words;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is one of the following:" + string.Join(",", words);
+            return indent + GetSyntax() + " is one of the following: " + string.Join(", ", words);
         }
 
         public override string[] GetValidRange(CmdArgs args)
@@ -1058,13 +1166,19 @@ namespace Vintagestory.API.Common
             return word;
         }
 
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            word = default;
+        }
+
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
         {
             word = args.RawArgs.PopWord();
             if (!words.Contains(word))
             {
                 word = null;
-                lastErrorMessage = Lang.Get("Invalid word, not in word range");
+                lastErrorMessage = $"{Lang.Get("Invalid word, not in word range")} [{ string.Join(", ", words)}]";
                 return EnumParseResult.Bad;
             }
 
@@ -1101,9 +1215,9 @@ namespace Vintagestory.API.Common
             this.api = api as ICoreServerAPI;
             if (api.Side != EnumAppSide.Server) throw new InvalidOperationException("Players arg parser is only available server side");
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is the name of one player, or a selector in this format: s[] for self, o[] for online players, a[] for all players." +
+            return indent + GetSyntax() + " is the name or uid of one player, or a selector in this format: s[] for self, o[] for online players, a[] for all players." +
                 "Some filters can be specified inside the brackets, though that doesn't make much sense for s[]." +
                 "Filters include name, namematches, group, role, range.";
         }
@@ -1122,6 +1236,12 @@ namespace Vintagestory.API.Common
         public override void SetValue(object data)
         {
             players = (PlayerUidName[])data;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            players = default;
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -1188,6 +1308,10 @@ namespace Vintagestory.API.Common
                         {
                             players.Add(new PlayerUidName(plr.PlayerUID, plr.LastKnownPlayername));
                         }
+                        else if(plr.PlayerUID.Equals(name))
+                        {
+                            players.Add(new PlayerUidName(plr.PlayerUID, plr.LastKnownPlayername));
+                        }
                     }
                     break;
 
@@ -1200,14 +1324,25 @@ namespace Vintagestory.API.Common
             {
                 api.PlayerData.ResolvePlayerName(name, (resp, uid) =>
                 {
-                    if (resp == EnumServerResponse.Good)
+                    if (resp == EnumServerResponse.Good && !string.IsNullOrEmpty(uid))
                     {
-                        onReady(new AsyncParseResults() { Status = EnumParseResultStatus.Ready, Data = new PlayerUidName[] { new PlayerUidName(uid, name) } });
+                        onReady(new AsyncParseResults() { Status = EnumParseResultStatus.Ready, Data = new[] { new PlayerUidName(uid, name) } });
                     }
                     else
                     {
-                        lastErrorMessage = Lang.Get("No player with name '{0}' exists", name);
-                        onReady(new AsyncParseResults() { Status = EnumParseResultStatus.Error });
+                        // name maybe a uid
+                        api.PlayerData.ResolvePlayerUid(name, (resp, playername) =>
+                        {
+                            if (resp == EnumServerResponse.Good)
+                            {
+                                onReady(new AsyncParseResults() { Status = EnumParseResultStatus.Ready, Data = new[] { new PlayerUidName(name, playername) }});
+                            }
+                            else
+                            {
+                                lastErrorMessage = Lang.Get("No player with name or uid '{0}' exists", name);
+                                onReady(new AsyncParseResults() { Status = EnumParseResultStatus.Error });
+                            }
+                        });
                     }
                 });
 
@@ -1256,6 +1391,12 @@ namespace Vintagestory.API.Common
             player = (IPlayer)data;
         }
 
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            player = default;
+        }
+
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
         {
             string playername = args.RawArgs.PopWord();
@@ -1278,20 +1419,21 @@ namespace Vintagestory.API.Common
     public class DoubleArgParser : ArgumentParserBase
     {
         double min, max;
-        double value;
+        double value, defaultvalue;
 
         public DoubleArgParser(string argName, double min, double max, bool isMandatoryArg) : base(argName, isMandatoryArg)
         {
             this.min = min;
             this.max = max;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is a decimal number, for example 0.5";
+            return indent + Lang.Get("{0} is a decimal number, for example 0.5", GetSyntax());
         }
 
-        public DoubleArgParser(string argName, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        public DoubleArgParser(string argName, double defaultvalue, bool isMandatoryArg) : base(argName, isMandatoryArg)
         {
+            this.defaultvalue = defaultvalue;
             this.min = double.MinValue;
             this.max = double.MaxValue;
         }
@@ -1304,6 +1446,12 @@ namespace Vintagestory.API.Common
         public override object GetValue()
         {
             return value;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            value = defaultvalue;
+            base.PreProcess(args);
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -1341,21 +1489,30 @@ namespace Vintagestory.API.Common
     {
         float min, max;
         float value;
+        float defaultvalue;
 
         public FloatArgParser(string argName, float min, float max, bool isMandatoryArg) : base(argName, isMandatoryArg)
         {
             this.min = min;
             this.max = max;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is a decimal number, for example 0.5";
+            return indent + GetSyntax() + " is a decimal number, for example 0.5";
         }
 
         public FloatArgParser(string argName, bool isMandatoryArg) : base(argName, isMandatoryArg)
         {
-            this.min = float.MinValue;
-            this.max = float.MaxValue;
+            defaultvalue = 0f;
+            min = float.MinValue;
+            max = float.MaxValue;
+        }
+
+        public FloatArgParser(string argName, float defaultvalue, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        {
+            this.defaultvalue = defaultvalue;
+            min = float.MinValue;
+            max = float.MaxValue;
         }
 
         public override string[] GetValidRange(CmdArgs args)
@@ -1366,6 +1523,12 @@ namespace Vintagestory.API.Common
         public override object GetValue()
         {
             return value;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            value = defaultvalue;
+            base.PreProcess(args);
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -1407,9 +1570,9 @@ namespace Vintagestory.API.Common
         {
             this.trueAlias = trueAlias;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is a boolean, including 1 or 0, yes or no, true or false, or " + trueAlias;
+            return indent + GetSyntax() + " is a boolean, including 1 or 0, yes or no, true or false, or " + trueAlias;
         }
 
         public override object GetValue()
@@ -1420,6 +1583,12 @@ namespace Vintagestory.API.Common
         public override void SetValue(object data)
         {
             value = (bool)data;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            value = default;
+            base.PreProcess(args);
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -1448,9 +1617,9 @@ namespace Vintagestory.API.Common
             this.min = min;
             this.max = max;
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is an integer number";
+            return indent + GetSyntax() + " is an integer number";
         }
 
         public IntArgParser(string argName, int defaultValue, bool isMandatoryArg) : base(argName, isMandatoryArg)
@@ -1501,7 +1670,70 @@ namespace Vintagestory.API.Common
         }
     }
 
+    public class LongArgParser : ArgumentParserBase
+    {
+        long min, max;
+        long value;
+        long defaultValue;
 
+        public LongArgParser(string argName, long min, long max, long defaultValue, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        {
+            this.defaultValue = defaultValue;
+            this.min = min;
+            this.max = max;
+        }
+        public override string GetSyntaxExplanation(string indent)
+        {
+            return indent + GetSyntax() + " is an integer number";
+        }
+
+        public LongArgParser(string argName, long defaultValue, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        {
+            this.defaultValue = defaultValue;
+            this.min = long.MinValue;
+            this.max = long.MaxValue;
+        }
+
+        public override string[] GetValidRange(CmdArgs args)
+        {
+            return new string[] { long.MinValue+"", long.MaxValue+"" };
+        }
+
+        public override object GetValue()
+        {
+            return value;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            value = defaultValue;
+
+            base.PreProcess(args);
+        }
+
+        public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
+        {
+            var val = args.RawArgs.PopLong();
+            if (val == null)
+            {
+                lastErrorMessage = Lang.Get("Not a number");
+                return EnumParseResult.Bad;
+            }
+            if (val < min || val > max)
+            {
+                lastErrorMessage = Lang.Get("Number out of range");
+                return EnumParseResult.Bad;
+            }
+
+            this.value = (long)val;
+            return EnumParseResult.Good;
+        }
+
+        public override void SetValue(object data)
+        {
+            value = (long)data;
+        }
+    }
 
     public class DatetimeArgParser : ArgumentParserBase
     {
@@ -1511,9 +1743,9 @@ namespace Vintagestory.API.Common
         public DatetimeArgParser(string argName, bool isMandatoryArg) : base(argName, isMandatoryArg)
         {
         }
-        public override string GetSyntaxExplanation()
+        public override string GetSyntaxExplanation(string indent)
         {
-            return "&nbsp;&nbsp;<i>" + argName + "</i> is a date and time";
+            return indent + GetSyntax() + " is a date and time";
         }
 
         public override object GetValue()
@@ -1524,6 +1756,12 @@ namespace Vintagestory.API.Common
         public override void SetValue(object data)
         {
             datetime = (DateTime)data;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            datetime = default;
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -1573,6 +1811,12 @@ namespace Vintagestory.API.Common
         public override object GetValue()
         {
             return value;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            value = default;
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -1632,6 +1876,181 @@ namespace Vintagestory.API.Common
         public override void SetValue(object data)
         {
             value = (Vec3d)data;
+        }
+    }
+    
+    public class PlayerRoleArgParser : ArgumentParserBase
+    {
+        private readonly ICoreServerAPI _api;
+        private IPlayerRole _value;
+        public PlayerRoleArgParser(string argName, ICoreAPI api, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        {
+            _api = api as ICoreServerAPI;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            _value = default;
+        }
+
+        public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
+        {
+            var roleString = args.RawArgs.PopWord();
+            if (roleString == null)
+            {
+                lastErrorMessage = Lang.Get("Argument is missing");
+                return EnumParseResult.Bad;
+            }
+
+            _value = _api.Server.Config.Roles.Find(
+                grp => grp.Code.Equals(roleString, StringComparison.InvariantCultureIgnoreCase));
+            if (_value == null)
+            {
+                lastErrorMessage = Lang.Get("No such role found: " + string.Join(", ", _api.Server.Config.Roles.Select(role => role.Code)));
+            }
+            
+
+            return _value != null ? EnumParseResult.Good : EnumParseResult.Bad;
+        }
+
+        public override object GetValue()
+        {
+            return _value;
+        }
+
+        public override void SetValue(object data)
+        {
+            _value = (IPlayerRole)data;
+        }
+
+        public override string[] GetValidRange(CmdArgs args)
+        {
+            return _api.Server.Config.Roles.Select(role => role.Code).ToArray();
+        }
+    }
+
+    public class PrivilegeArgParser : ArgumentParserBase
+    {
+        private string Value;
+        private ICoreServerAPI _api;
+        public PrivilegeArgParser(string argName, ICoreAPI api, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        {
+            if (api is ICoreServerAPI serverApi)
+            {
+                _api = serverApi;
+            }
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            Value = default;
+        }
+
+        public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
+        {
+            var privilegeString = args.RawArgs.PopWord();
+            if (privilegeString == null)
+            {
+                lastErrorMessage = Lang.Get("Argument is missing");
+                return EnumParseResult.Bad;
+            }
+
+            if (_api != null)
+            {
+                var privileges = new HashSet<string>();
+                _api.Server.Config.Roles.ForEach(r =>
+                {
+                    privileges.AddRange(r.Privileges);
+                });
+                Value = privileges.First(privilege => privilege.Equals(privilegeString, StringComparison.InvariantCultureIgnoreCase));
+            }
+            else
+            {
+                Value = Privilege.AllCodes().First(
+                    privilege => privilege.Equals(privilegeString, StringComparison.InvariantCultureIgnoreCase));
+            }
+            if (Value == null)
+            {
+                lastErrorMessage = Lang.Get("No such privilege found: " + string.Join(", ", Privilege.AllCodes()));
+            }
+            
+
+            return Value != null ? EnumParseResult.Good : EnumParseResult.Bad;
+        }
+
+        public override object GetValue()
+        {
+            return Value;
+        }
+
+        public override void SetValue(object data)
+        {
+            Value = (string)data;
+        }
+
+        public override string[] GetValidRange(CmdArgs args)
+        {
+            return Privilege.AllCodes();
+        }
+    }
+    
+    public class ColorArgParser : ArgumentParserBase
+    {
+        private Color _value;
+
+        public ColorArgParser(string argName, bool isMandatoryArg) : base(argName, isMandatoryArg)
+        {
+        }
+        
+        public override string GetSyntaxExplanation(string indent)
+        {
+            return indent + GetSyntax() + " can be either a color string like (red, blue, green,.. <a href=\"https://learn.microsoft.com/en-us/dotnet/api/system.drawing.knowncolor?view=net-7.0\">See full list</a>) or a hex value like #F9D0DC";
+        }
+
+        public override object GetValue()
+        {
+            return _value;
+        }
+
+        public override void PreProcess(TextCommandCallingArgs args)
+        {
+            base.PreProcess(args);
+            _value = default;
+        }
+
+        public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
+        {
+            var colorString = args.RawArgs.PopWord();
+            if (colorString == null)
+            {
+                lastErrorMessage = Lang.Get("Not a color");
+                return EnumParseResult.Bad;
+            }
+            if (colorString.StartsWith("#"))
+            {
+                try
+                {
+                    var argb = int.Parse(colorString.Replace("#", ""), NumberStyles.HexNumber);
+                    _value = Color.FromArgb(argb);
+                }
+                catch (FormatException)
+                {
+                    lastErrorMessage = Lang.Get("command-waypoint-invalidcolor");
+                    return EnumParseResult.Bad;
+                }
+            }
+            else
+            {
+                _value = Color.FromName(colorString);
+            }
+            return EnumParseResult.Good;
+        }
+
+        public override void SetValue(object data)
+        {
+            _value = (Color)data;
         }
     }
 }

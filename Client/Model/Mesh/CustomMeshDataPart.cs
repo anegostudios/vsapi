@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.Client
 {
@@ -191,6 +187,38 @@ namespace Vintagestory.API.Client
             Instanced = meshdatapart.Instanced;
             StaticDraw = meshdatapart.StaticDraw;
             BaseOffset = meshdatapart.BaseOffset;
+        }
+
+
+        /// <summary>
+        /// Sets a value from a given mesh data part.
+        /// </summary>
+        /// <param name="meshdatapart">the mesh data part for this type.</param>
+        protected CustomMeshDataPart<T> EmptyClone(CustomMeshDataPart<T> cloned)
+        {
+            cloned.customAllocationSize = customAllocationSize;
+            cloned.allocationSize = allocationSize;
+            cloned.Count = 0;
+
+            if (Values != null)
+            {
+                cloned.GrowBuffer(Values.Length);
+            }
+            if (InterleaveSizes != null)
+            {
+                cloned.InterleaveSizes = (int[])InterleaveSizes.Clone();
+            }
+            if (InterleaveOffsets != null)
+            {
+                cloned.InterleaveOffsets = (int[])InterleaveOffsets.Clone();
+            }
+
+            cloned.InterleaveStride = InterleaveStride;
+            cloned.Instanced = Instanced;
+            cloned.StaticDraw = StaticDraw;
+            cloned.BaseOffset = BaseOffset;
+
+            return cloned;
         }
     }
 }

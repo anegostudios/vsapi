@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Server
@@ -101,8 +97,16 @@ namespace Vintagestory.API.Server
         /// Whether or not falling blocks should fall (e.g. sand and gravel)
         /// </summary>
         bool AllowFallingBlocks { get; set; }
-
+        
+        /// <summary>
+        /// Used to disable certain features in HostedMode (wgen commands, ...)
+        /// </summary>
         bool HostedMode { get; set; }
+        
+        /// <summary>
+        /// Used to enable/disable the /moddb commands in HostedMode only
+        /// </summary>
+        bool HostedModeAllowMods { get; set; }
 
         float SpawnCapPlayerScaling { get; set; }
     }

@@ -307,7 +307,60 @@ namespace Vintagestory.API.Datastructures
             return attributes.ContainsKey(key);
         }
 
+
         #region Quick access methods
+
+        public IAttribute GetAttributeByPath(string path)
+        {
+            if (!path.Contains("/")) return this[path];
+
+            string[] parts = path.Split('/');
+
+            ITreeAttribute treeAttr = this;
+
+            // Traverse down the tree hierarchy
+            for (int i = 0; i < parts.Length - 1; i++)
+            {
+                IAttribute attr = treeAttr[parts[i]];
+
+                if (attr is ITreeAttribute)
+                {
+                    treeAttr = (ITreeAttribute)attr;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            return treeAttr[parts[parts.Length - 1]];
+        }
+
+
+        public void DeleteAttributeByPath(string path)
+        {
+            string[] parts = path.Split('/');
+
+            ITreeAttribute treeAttr = this;
+
+            // Traverse down the tree hierarchy
+            for (int i = 0; i < parts.Length - 1; i++)
+            {
+                IAttribute attr = treeAttr[parts[i]];
+
+                if (attr is ITreeAttribute)
+                {
+                    attr = (ITreeAttribute)attr;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            treeAttr?.RemoveAttribute(parts[parts.Length - 1]);
+        }
+
 
         /// <summary>
         /// Removes an attribute
@@ -516,6 +569,7 @@ namespace Vintagestory.API.Datastructures
             if (attr is DoubleAttribute) return (double)attr.GetValue() > 0;
             if (attr is LongAttribute) return (long)attr.GetValue() > 0;
             if (attr is StringAttribute) return (string)attr.GetValue() == "true" || (string)attr.GetValue() == "1";
+            if (attr is BoolAttribute) return (bool)attr.GetValue();
             return defaultValue;
         }
 

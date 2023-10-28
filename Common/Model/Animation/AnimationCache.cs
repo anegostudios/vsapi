@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -37,6 +34,17 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Clears the animation cache.
+        /// </summary>
+        /// <param name="api"></param>
+        public static void ClearCache(ICoreAPI api, Entity entity)
+        {
+            var animCache = ObjectCacheUtil.GetOrCreate(api, "animCache", () => new Dictionary<string, AnimCacheEntry>());
+            string dictKey = entity.Code + "-" + entity.Properties.Client.ShapeForEntity.Base.ToString();
+            animCache.Remove(dictKey);
+        }
+
+        /// <summary>
         /// Initializes the cache to the Animation Manager then spits it back out.
         /// </summary>
         /// <param name="api"></param>
@@ -54,14 +62,7 @@ namespace Vintagestory.API.Common
 
             string dictKey = entity.Code + "-" + entity.Properties.Client.ShapeForEntity.Base.ToString();
 
-            object animCacheObj;
-            Dictionary<string, AnimCacheEntry> animCache;
-            entity.Api.ObjectCache.TryGetValue("animCache", out animCacheObj);
-            animCache = animCacheObj as Dictionary<string, AnimCacheEntry>;
-            if (animCache == null)
-            {
-                entity.Api.ObjectCache["animCache"] = animCache = new Dictionary<string, AnimCacheEntry>();
-            }
+            var animCache = ObjectCacheUtil.GetOrCreate(api, "animCache", () => new Dictionary<string, AnimCacheEntry>());
 
             IAnimator animator;
 
@@ -79,7 +80,7 @@ namespace Vintagestory.API.Common
 
             } else {
 
-                entityShape.ResolveAndLoadJoints(requireJointsForElements);
+                entityShape.ResolveAndFindJoints(api.Logger, entity.Properties.Client.ShapeForEntity.Base.ToString(), requireJointsForElements);
 
                 manager.Init(entity.Api, entity);
 

@@ -8,6 +8,11 @@ namespace Vintagestory.API.Server
     public enum EnumServerRunPhase
     {
         /// <summary>
+        /// Server is listening to sockets but nothing has been launched yet
+        /// </summary>
+        Standby = -1,
+
+        /// <summary>
         /// Before anything has been initialized (you cannot receive any events at this point)
         /// </summary>
         Start = 0,

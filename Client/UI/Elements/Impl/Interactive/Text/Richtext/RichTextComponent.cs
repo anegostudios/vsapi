@@ -1,10 +1,4 @@
 ﻿using Cairo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -31,19 +25,30 @@ namespace Vintagestory.API.Client
 
         protected void init()
         {
+            // We replace leading and trailing white spaces with padding, because these seem to not generate enough spacing between rich text components otherwise
             if (DisplayText.Length > 0)
             {
-                // ok apparently text extents of " " is 0 on a mac? o.O
-                if (DisplayText[DisplayText.Length - 1] == ' ')
+                bool done = false;
+                while (!done && DisplayText.Length > 0)
                 {
-                    PaddingRight = (Font.GetTextExtents("a b").Width - Font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
-                }
-                if (DisplayText[0] == ' ')
-                {
-                    PaddingLeft = (Font.GetTextExtents("a b").Width - Font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
-                }
+                    done = true;
 
-                this.DisplayText = DisplayText.Trim(new char[] { ' ' });
+                    // ok apparently text extents of " " is 0 on a mac? o.O
+                    if (DisplayText[DisplayText.Length - 1] == ' ')
+                    {
+                        PaddingRight += spaceWidth;
+                        done = false;
+                        DisplayText = DisplayText.Substring(0, DisplayText.Length - 1);
+                    }
+                    if (DisplayText.Length == 0) break;
+
+                    if (DisplayText[0] == ' ')
+                    {
+                        PaddingLeft += spaceWidth;
+                        DisplayText = DisplayText.Substring(1, DisplayText.Length - 1);
+                        done = false;
+                    }
+                }
             }
             else
             {
@@ -53,7 +58,17 @@ namespace Vintagestory.API.Client
 
             textUtil = new TextDrawUtil();
         }
-        
+
+        double spaceWidthCached = -99;
+        double spaceWidth
+        {
+            get
+            {
+                if (spaceWidthCached >= 0) return spaceWidthCached;
+                return spaceWidthCached = (Font.GetTextExtents("a b").Width - Font.GetTextExtents("ab").Width) / RuntimeEnv.GUIScale;
+            }
+        }
+
         /// <summary>
         /// Composes the element.
         /// </summary>

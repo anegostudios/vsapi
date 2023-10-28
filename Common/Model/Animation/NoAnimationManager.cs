@@ -1,15 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
-using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -121,6 +113,15 @@ namespace Vintagestory.API.Common
         public void OnServerTick(float dt)
         {
             
+        }
+
+        public void RegisterFrameCallback(AnimFrameCallback trigger)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResetAnimation(string beginholdAnim)
+        {
         }
 
         public bool StartAnimation(AnimationMetaData animdata)

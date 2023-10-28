@@ -163,7 +163,9 @@ namespace Vintagestory.API.Client
         /// The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you *really* know what you're doing. Use SpawnEntity/DespawnEntity instead.
         /// </summary>
         Dictionary<long, Entity> LoadedEntities { get; }
-
         
+        Dictionary<int, IMiniDimension> Dimensions { get; }
+        IMiniDimension GetOrCreateDimension(int dimId, Vec3d pos);
+        bool TryGetMiniDimension(Vec3i origin, out IMiniDimension dimension);
     }
 }

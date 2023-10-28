@@ -536,7 +536,7 @@ namespace Vintagestory.API.Client
         /// <param name="searchCache">Can be set to increase search performance, otherwise a slow search is performed</param>
         public void FilterItemsBySearchText(string text, Dictionary<int, string> searchCache = null, Dictionary<int, string> searchCacheNames = null)
         {
-            searchText = text.ToLowerInvariant();
+            searchText = text.RemoveDiacritics().ToLowerInvariant();
 
             renderedSlots.Clear();
 
@@ -560,36 +560,35 @@ namespace Vintagestory.API.Client
                 {
                     int index = name.IndexOf(searchText, StringComparison.InvariantCultureIgnoreCase);
 
-                    // First prio: Exact match on name
+                    // Prio 1: Exact match on name
                     if (index == 0 && name.Length == searchText.Length)
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0 });
                         continue;
                     }
 
-                    // 1.5th prio: Starts with word
+                    // Prio 3: Starts with word
                     if (index == 0 && name.Length > searchText.Length && name[searchText.Length] == ' ')
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.125f });
                         continue;
                     }
 
-
-                    // 2nd prio: ends with this word
+                    // Prio 4: ends with this word
                     if (index > 0 && name[index - 1] == ' ' && index + searchText.Length == name.Length)
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.25f });
                         continue;
                     }
 
-                    // 3rd prio: exact mach of a word
+                    // Prio 5: exact mach of a word
                     if (index > 0 && name[index-1] == ' ')
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.5f });
                         continue;
                     }
 
-                    // 4th prio: Starts with
+                    // Prio 6: Starts with
                     if (index == 0)
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 0.75f });
@@ -597,21 +596,21 @@ namespace Vintagestory.API.Client
                     }
 
 
-                    // 5th prio: cotained in the word
+                    // Prio 7: cotained in the word
                     if (index > 0)
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 1f });
                         continue;
                     }
 
-                    // 6th prio: Starts with in the description
+                    // Prio 8: Starts with in the description
                     if (cachedtext.StartsWith(searchText, StringComparison.InvariantCultureIgnoreCase))
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 2 });
                         continue;
                     }
 
-                    // 7th prio: Contained anywhere in the description
+                    // Prio 9: Contained anywhere in the description
                     if (cachedtext.CaseInsensitiveContains(searchText))
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 3 });

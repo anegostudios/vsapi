@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Server
 {

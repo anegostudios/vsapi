@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.Client
 {
@@ -65,6 +61,11 @@ namespace Vintagestory.API.Client
             cloned.SetFrom(this);
             cloned.Conversion = Conversion;
             return cloned;
+        }
+
+        public CustomMeshDataPartByte EmptyClone()
+        {
+            return EmptyClone(new CustomMeshDataPartByte()) as CustomMeshDataPartByte;
         }
     }
 }

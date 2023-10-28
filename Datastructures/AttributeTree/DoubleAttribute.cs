@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.IO;
+﻿using System.IO;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Datastructures

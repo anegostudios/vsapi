@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Text;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Datastructures

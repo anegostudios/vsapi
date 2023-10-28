@@ -41,19 +41,23 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                using (ms)
-                {
-                    bmp = SKBitmap.Decode(ms);
-                }
-
+                var decode = SKBitmap.Decode(ms);
+                bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, decode.Info.AlphaType);
+                using var canvas = new SKCanvas(bmp);
+                canvas.DrawBitmap(decode, 0, 0);
             }
             catch (Exception e)
             {
                 if (loc != null)
                 {
-                    logger.Error("Failed loading bitmap from png file {0}: {1}. Will default to an empty 1x1 bitmap.", loc, e);
+                    logger.Error("Failed loading bitmap from png file {0}. Will default to an empty 1x1 bitmap.", loc);
+                    logger.Error(e);
                 }
-                else logger.Error("Failed loading bitmap, error was: {0}. Will default to an empty 1x1 bitmap.", e);
+                else
+                {
+                    logger.Error("Failed loading bitmap. Will default to an empty 1x1 bitmap.");
+                    logger.Error(e);
+                }
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
             }
@@ -65,7 +69,18 @@ namespace Vintagestory.API.Common
         ///// <param name="filePath"></param>
         public BitmapExternal(string filePath)
         {
-            bmp = SKBitmap.Decode(filePath);
+            try
+            {
+                var decode = SKBitmap.Decode(filePath);
+                bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, decode.Info.AlphaType);
+                using var canvas = new SKCanvas(bmp);
+                canvas.DrawBitmap(decode, 0, 0);
+            }
+            catch (Exception ex)
+            {
+                bmp = new SKBitmap(1, 1);
+                bmp.SetPixel(0, 0, SKColors.Orange);
+            }
         }
 
         ///// <summary>
@@ -74,7 +89,18 @@ namespace Vintagestory.API.Common
         ///// <param name="stream"></param>
         public BitmapExternal(Stream stream)
         {
-            bmp = SKBitmap.Decode(stream);
+            try
+            {
+                var decode = SKBitmap.Decode(stream);
+                bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, decode.Info.AlphaType);
+                using var canvas = new SKCanvas(bmp);
+                canvas.DrawBitmap(decode, 0, 0);
+            }
+            catch (Exception ex)
+            {
+                bmp = new SKBitmap(1, 1);
+                bmp.SetPixel(0, 0, SKColors.Orange);
+            }
         }
 
         /// <summary>
@@ -89,14 +115,13 @@ namespace Vintagestory.API.Common
             {
                 var decode = SKBitmap.Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
                 bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, SKAlphaType.Unpremul);
-                using (var canvas = new SKCanvas(bmp))
-                {
-                    canvas.DrawBitmap(decode, 0, 0);
-                }
+                using var canvas = new SKCanvas(bmp);
+                canvas.DrawBitmap(decode, 0, 0);
             }
             catch (Exception ex)
             {
-                logger.Error("Failed loading bitmap from data: {0}. Will default to an empty 1x1 bitmap.", ex);
+                logger.Error("Failed loading bitmap from data. Will default to an empty 1x1 bitmap.");
+                logger.Error(ex);
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
             }
@@ -214,14 +239,16 @@ namespace Vintagestory.API.Common
 
             if (mulAlpha != 255)
             {
-                var alpaP = mulAlpha / 100f;
-                var white = (int)(uint)SKColors.White;
+                var alpaP = mulAlpha / 255f;
+                int clearAlpha = ~(0xff << 24);
+
                 for (int i = 0; i < bmpPixels.Length; i++)
                 {
-                    var current = bmpPixels[i];
-                    var currAlpha = (current >> 24);
-                    current &= white;
-                    bmpPixels[i] = (current | ((int)(currAlpha * alpaP) << 24));
+                    var col = bmpPixels[i];
+                    var curAlpha = (uint)col >> 24;
+                    col &= clearAlpha;
+
+                    bmpPixels[i] = col | ((int)(curAlpha * alpaP) << 24);
                 }
             }
 

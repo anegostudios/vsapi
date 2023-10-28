@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using Vintagestory.API.Common;
 using Vintagestory.API.Util;
 using System.Runtime.Serialization;
-using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common
 {
@@ -128,7 +126,7 @@ namespace Vintagestory.API.Common
 
             foreach (var val in kf.Elements)
             {
-                ShapeElement elem = null;
+                ShapeElement elem;
                 elementsByName.TryGetValue(val.Key, out elem);
 
                 if (elem == null)
@@ -162,11 +160,17 @@ namespace Vintagestory.API.Common
             }
         }
 
+        [Obsolete("Must call ResolveAndFindJoints(errorLogger, shapeName, joints) instead")]
+        public void ResolveAndLoadJoints(params string[] requireJointsForElements)
+        {
+            ResolveAndFindJoints(null, null, requireJointsForElements);
+        }
+
         /// <summary>
         /// Resolves all joints and loads them.
         /// </summary>
         /// <param name="requireJointsForElements"></param>
-        public void ResolveAndLoadJoints(params string[] requireJointsForElements)
+        public void ResolveAndFindJoints(ILogger errorLogger, string shapeName, params string[] requireJointsForElements)
         {
             if (Animations == null) return;
 
@@ -179,16 +183,34 @@ namespace Vintagestory.API.Common
 
             HashSet<string> AnimatedElements = new HashSet<string>();
 
+            HashSet<string> animationCodes = new HashSet<string>();
+
+            int version = -1;
+            bool errorLogged = false;
+
             for (int i = 0; i < Animations.Length; i++)
             {
                 Animation anim = Animations[i];
+
+                if (animationCodes.Contains(anim.Code))
+                {
+                    errorLogger?.Warning("Shape {0}: Two or more animations use the same code '{1}'. This will lead to undefined behavior.", shapeName, anim.Code);
+                }
+                animationCodes.Add(anim.Code);
+
+                if (version == -1) version = anim.Version;
+                else if (version != anim.Version)
+                {
+                    if (!errorLogged) errorLogger?.Error("Shape {0} has mixed animation versions. This will cause incorrect animation blending.", shapeName);
+                    errorLogged = true;
+                }
 
                 for (int j = 0; j < anim.KeyFrames.Length; j++)
                 {
                     AnimationKeyFrame kf = anim.KeyFrames[j];
                     AnimatedElements.AddRange(kf.Elements.Keys.ToArray());
 
-                    kf.Resolve(anim, allElements);
+                    kf.Resolve(allElements);
                 }
             }
 
@@ -227,7 +249,7 @@ namespace Vintagestory.API.Common
             
 
 
-            // Iteratively and recursively assigns the lowest depth to highest depth joints to all elements
+            // Iteratively and recursively assign the lowest depth to highest depth joints to all elements
             // prevents that we overwrite a child joint id with a parent joint id
             for (int depth = 0; depth <= maxDepth; depth++)
             {
@@ -256,7 +278,8 @@ namespace Vintagestory.API.Common
             }
             catch (Exception e)
             {
-                api.World.Logger.Error("Exception thrown when trying to load shape file {0}\n{1}", shapePath, e.Message);
+                api.World.Logger.Error("Exception thrown when trying to load shape file {0}", shapePath);
+                api.World.Logger.Error(e);
                 return null;
             }
         }
@@ -387,11 +410,27 @@ namespace Vintagestory.API.Common
 
         public ShapeElement[] CloneElements()
         {
+            if (Elements == null) return null;
+
             ShapeElement[] elems = new ShapeElement[Elements.Length];
 
             for (int i = 0; i < elems.Length; i++)
             {
                 elems[i] = Elements[i].Clone();
+            }
+
+            return elems;
+        }
+
+        public Animation[] CloneAnimations()
+        {
+            if (Animations == null) return null;
+
+            Animation[] elems = new Animation[Animations.Length];
+
+            for (int i = 0; i < Animations.Length; i++)
+            {
+                elems[i] = Animations[i].Clone();
             }
 
             return elems;
@@ -407,7 +446,7 @@ namespace Vintagestory.API.Common
             return new Shape()
             {
                 Elements = CloneElements(),
-                Animations = Animations,
+                Animations = CloneAnimations(),
                 AnimationsByCrc32 = AnimationsByCrc32,
                 AttachmentPointsByCode = AttachmentPointsByCode,
                 JointsById = JointsById,

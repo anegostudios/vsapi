@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using Vintagestory.API.Client;
-using Vintagestory.API.Client.Tesselation;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -82,11 +80,6 @@ namespace Vintagestory.API.Common
         public bool PartialSelection;
 
         /// <summary>
-        /// If ture, when the player holds the sneak key and right clicks this block, calls the blocks OnBlockInteractStart first, the items OnHeldInteractStart second. Without it the order is reversed.
-        /// </summary>
-        public bool PriorityInteract;
-
-        /// <summary>
         /// The sounds played for this block during step, break, build and walk. Use GetSounds() to query if not performance critical.
         /// </summary>
         public BlockSounds Sounds;
@@ -105,6 +98,12 @@ namespace Vintagestory.API.Common
         /// For light blocking blocks. Any value above 32 will completely block all light.
         /// </summary>
         public int LightAbsorption;
+
+        /// <summary>
+        /// If true, when the player holds the sneak key and right clicks this block, calls the blocks OnBlockInteractStart first, the items OnHeldInteractStart second. Without it the order is reversed.
+        /// </summary>
+        public bool PlacedPriorityInteract;
+
 
         /// <summary>
         /// 0: West-East
@@ -302,6 +301,7 @@ namespace Vintagestory.API.Common
         /// A flag set during texture block shape tesselation
         /// </summary>
         public bool HasAlternates;
+        public bool HasTiles;
 
         /// <summary>
         /// Modifiers that can alter the behavior of a block, particularly when being placed or removed
@@ -333,6 +333,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public string EntityClass;
 
+        public bool CustomBlockLayerHandler = false;
+
         /// <summary>
         /// Entity pushing while an entity is inside this block. Read from attributes because i'm lazy.
         /// </summary>
@@ -341,6 +343,7 @@ namespace Vintagestory.API.Common
         public float TraversalCost;
         public bool CanStep = true;
         public bool AllowStepWhenStuck = false;
+
 
         /// <summary>
         /// To allow Decor Behavior settings to be accessed through the Block API.  See DecorFlags class for interpretation.
@@ -468,7 +471,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool DisplacesLiquids(IBlockAccessor blockAccess, BlockPos pos)
         {
-            return SideSolid.OnSidesAndBase();
+            return SideSolid.SidesAndBase;
         }
         
         /// <summary>
@@ -1164,7 +1167,14 @@ namespace Vintagestory.API.Common
                
                 ItemStack stack = Drops[i].GetNextItemStack(dropQuantityMultiplier * extraMul);
                 if (stack == null) continue;
-                
+
+                if (stack.Collectible is IResolvableCollectible irc)
+                {
+                    var slot = new DummySlot(stack);
+                    irc.Resolve(slot, world);
+                    stack = slot.Itemstack;
+                }
+
                 todrop.Add(stack);
                 if (Drops[i].LastDrop) break;
             }
@@ -1863,7 +1873,7 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return result;
 
-            if (SideSolid[facing.Opposite.Index] || SideSolid[facing.Index])
+            if (/*SideSolid[facing.Opposite.Index] || - Tyron 24sep: Why the eff do we check the opposite side?? */ SideSolid[facing.Index])
             {
                 var mat = GetBlockMaterial(api.World.BlockAccessor, pos);
                 if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Soil || mat == EnumBlockMaterial.Ceramic)
@@ -2168,7 +2178,7 @@ namespace Vintagestory.API.Common
 
             dsc.Append((withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-hsv") + lightHsv[0] + ", " + lightHsv[1] + ", " + lightHsv[2] + "\n" : "") : ""));
             dsc.Append((!withDebugInfo ? (lightHsv[2] > 0 ? Lang.Get("light-level") + lightHsv[2] + "\n" : "") : ""));
-            if (LightAbsorption > 0 && LightAbsorption < 33) dsc.Append(Lang.Get("light-absorb") + LightAbsorption + "\n");
+            //if (LightAbsorption > 0 && LightAbsorption < 33) dsc.Append(Lang.Get("light-absorb") + LightAbsorption + "\n");
 
             if (WalkSpeedMultiplier != 1)
             {

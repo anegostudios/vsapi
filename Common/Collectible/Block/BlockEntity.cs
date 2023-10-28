@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
@@ -279,7 +278,7 @@ namespace Vintagestory.API.Common
             }
 
             tree.SetInt("posx", Pos.X);
-            tree.SetInt("posy", Pos.Y);
+            tree.SetInt("posy", Pos.InternalY);
             tree.SetInt("posz", Pos.Z);
             if (Block != null)
             {
@@ -423,7 +422,16 @@ namespace Vintagestory.API.Common
             return result;
         }
 
-        public virtual void OnPlacementBySchematic(Server.ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos)
+        /// <summary>
+        /// Called when this block entity was placed by a schematic, either through world edit or by worldgen
+        /// </summary>
+        /// <param name="api"></param>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <param name="replaceBlocks"></param>
+        /// <param name="centerrockblockid"></param>
+        /// <param name="layerBlock">If block.CustomBlockLayerHandler is true and the block is below the surface, this value is set</param>
+        public virtual void OnPlacementBySchematic(Server.ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos, Dictionary<int, Dictionary<int, int>> replaceBlocks, int centerrockblockid, Block layerBlock)
         {
             Pos = pos.Copy();
         }

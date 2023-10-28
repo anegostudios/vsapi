@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
-using OpenTK.Windowing.GraphicsLibraryFramework;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -76,6 +77,12 @@ namespace Vintagestory.API.Common
         /// How much damage this collectible deals when used as a weapon
         /// </summary>
         public float AttackPower = 0.5f;
+
+        /// <summary>
+        /// If true, when the player holds the sneak key and right clicks with this item in hand, calls OnHeldInteractStart first. Without it, the order is reversed. Takes precedence over priority interact placed blocks.
+        /// </summary>
+        public bool HeldPriorityInteract;
+
 
         /// <summary>
         /// Until how for away can you attack entities using this collectibe
@@ -213,11 +220,21 @@ namespace Vintagestory.API.Common
         /// </summary>
         public string HeldLeftTpIdleAnimation;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string HeldLeftReadyAnimation;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string HeldRightReadyAnimation;
+
 
         /// <summary>
         /// The animation to play in 3rd person mod when using this collectible
         /// </summary>
-        public string HeldTpUseAnimation = "placeblock";
+        public string HeldTpUseAnimation = "interactstatic";
 
 
         
@@ -328,10 +345,28 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual EnumItemStorageFlags GetStorageFlags(ItemStack itemstack)
         {
-            // We clear the backpack flag if the backpack is empty
-            if ((StorageFlags & EnumItemStorageFlags.Backpack) > 0 && IsEmptyBackPack(itemstack)) return EnumItemStorageFlags.General | EnumItemStorageFlags.Backpack;
+            bool preventDefault = false;
+            EnumItemStorageFlags storageFlags = StorageFlags;
 
-            return StorageFlags;
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                var bhFlags = behavior.GetStorageFlags(itemstack, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                    storageFlags = bhFlags;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return storageFlags;
+            }
+
+            if (preventDefault) return storageFlags;
+
+
+            // We clear the backpack flag if the backpack is empty
+            if ((storageFlags & EnumItemStorageFlags.Backpack) > 0 && IsEmptyBackPack(itemstack)) return EnumItemStorageFlags.General | EnumItemStorageFlags.Backpack;
+            return storageFlags;
         }
 
         /// <summary>
@@ -600,6 +635,18 @@ namespace Vintagestory.API.Common
         {
             return HeldTpHitAnimation;
         }
+
+        /// <summary>
+        /// Called when an entity holds this item in hands in 3rd person mode
+        /// </summary>
+        /// <param name="activeHotbarSlot"></param>
+        /// <param name="forEntity"></param>
+        /// <returns></returns>
+        public virtual string GetHeldReadyAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
+        {
+            return hand == EnumHand.Left ? HeldLeftReadyAnimation : HeldRightReadyAnimation;
+        }
+
 
         /// <summary>
         /// Called when an entity holds this item in hands in 3rd person mode
@@ -1078,10 +1125,18 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual void OnHeldAttackStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, ref EnumHandHandling handling)
         {
-            if (HeldSounds?.Attack != null && api.World.Side == EnumAppSide.Client)
-            {
-                api.World.PlaySoundAt(HeldSounds.Attack, 0, 0, 0, null, 0.9f + (float)api.World.Rand.NextDouble() * 0.2f);
-            }
+            EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => bh.OnHeldAttackStart(slot, byEntity, blockSel, entitySel, ref bhHandHandling, ref hd),
+                () =>
+                {
+                    if (HeldSounds?.Attack != null && api.World.Side == EnumAppSide.Client)
+                    {
+                        api.World.PlaySoundAt(HeldSounds.Attack, 0, 0, 0, null, 0.9f + (float)api.World.Rand.NextDouble() * 0.2f);
+                    }
+                }
+            );
+            handling = bhHandHandling;
         }
 
         /// <summary>
@@ -1096,7 +1151,16 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool OnHeldAttackCancel(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel, EnumItemUseCancelReason cancelReason)
         {
-            return false;
+            bool retval = false;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    var bhretval = bh.OnHeldAttackCancel(secondsPassed, slot, byEntity, blockSelection, entitySel, cancelReason, ref hd);
+                    if (hd != EnumHandling.PassThrough) retval = bhretval;
+                },
+                () => { }
+            );
+
+            return retval;
         }
 
         /// <summary>
@@ -1110,7 +1174,16 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool OnHeldAttackStep(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel)
         {
-            return false;
+            bool retval = false;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    var bhretval = bh.OnHeldAttackStep(secondsPassed, slot, byEntity, blockSelection, entitySel, ref hd);
+                    if (hd != EnumHandling.PassThrough) retval = bhretval;
+                },
+                () => { }
+            );
+
+            return retval;
         }
 
         /// <summary>
@@ -1123,7 +1196,10 @@ namespace Vintagestory.API.Common
         /// <param name="entitySel"></param>
         public virtual void OnHeldAttackStop(float secondsPassed, ItemSlot slot, EntityAgent byEntity, BlockSelection blockSelection, EntitySelection entitySel)
         {
-
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => bh.OnHeldAttackStop(secondsPassed, slot, byEntity, blockSelection, entitySel, ref hd),
+                () => { }
+            );
         }
 
 

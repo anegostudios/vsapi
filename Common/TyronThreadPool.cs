@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Linq;
 using System.Threading;
 using Vintagestory.API.Config;
 
@@ -50,21 +52,29 @@ namespace Vintagestory.API.Common
         public string ListAllThreads()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("All threads:");
+            sb.AppendLine("Server threads ("+DedicatedThreads.Count+"):");
             foreach (var entry in DedicatedThreads)
             {
                 Thread t = entry.Value;
                 if (t.ThreadState == System.Threading.ThreadState.Stopped) continue;
+                sb.Append("tid" + t.ManagedThreadId + " ");
                 sb.Append(entry.Key);
                 sb.Append(": ");
                 sb.AppendLine(t.ThreadState.ToString());
             }
-            sb.AppendLine("\nAll current process threads:");
-            ProcessThreadCollection threads = Process.GetCurrentProcess().Threads;
+            ProcessThreadCollection threadcoll = Process.GetCurrentProcess().Threads;
+            List<ProcessThread> threads = new List<ProcessThread>();
+            foreach (ProcessThread thread in threadcoll) if (thread != null) threads.Add(thread);
+            threads = threads.OrderByDescending(t => t.UserProcessorTime.Ticks).ToList();
+
+            sb.AppendLine("\nAll process threads ("+threads.Count+"):");
             foreach (ProcessThread thread in threads)
             {
-                if (thread == null || thread.ThreadState == System.Diagnostics.ThreadState.Wait) continue;
-                if(RuntimeEnv.OS != OS.Mac)
+                if (thread == null) continue;
+                sb.Append(thread.ThreadState + " ");
+                sb.Append("tid" + thread.Id + " ");
+
+                if (RuntimeEnv.OS != OS.Mac)
                 {
 #pragma warning disable CA1416
                     sb.Append(thread.StartTime);
@@ -75,7 +85,9 @@ namespace Vintagestory.API.Common
                 sb.Append(": ");
                 sb.Append(thread.ThreadState.ToString());
                 sb.Append(": T ");
-                sb.AppendLine(thread.UserProcessorTime.ToString());
+                sb.Append(thread.UserProcessorTime.ToString());
+                sb.Append(": T Total ");
+                sb.AppendLine(thread.TotalProcessorTime.ToString());
             }
 
             return sb.ToString();

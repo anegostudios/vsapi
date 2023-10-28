@@ -2,7 +2,6 @@
 using ProtoBuf;
 using System;
 using System.IO;
-using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.MathTools
 {

@@ -108,53 +108,6 @@ namespace Vintagestory.API.Datastructures
 
         #region Quick access methods
 
-        public IAttribute GetAttributeByPath(string path)
-        {
-            string[] parts = path.Split('/');
-
-            ITreeAttribute treeAttr = this;
-
-            // Traverse down the tree hierarchy
-            for (int i = 0; i < parts.Length - 1; i++)
-            {
-                IAttribute attr = treeAttr[parts[i]];
-
-                if (attr is ITreeAttribute)
-                {
-                    treeAttr = (ITreeAttribute)attr;
-                } else
-                {
-                    return null;
-                }
-            }
-
-            return treeAttr[parts[parts.Length - 1]];
-        }
-
-
-        public void DeleteAttributeByPath(string path)
-        {
-            string[] parts = path.Split('/');
-
-            ITreeAttribute treeAttr = this;
-
-            // Traverse down the tree hierarchy
-            for (int i = 0; i < parts.Length - 1; i++)
-            {
-                IAttribute attr = treeAttr[parts[i]];
-
-                if (attr is ITreeAttribute)
-                {
-                    attr = (ITreeAttribute)attr;
-                }
-                else
-                {
-                    return;
-                }
-            }
-
-            treeAttr?.RemoveAttribute(parts[parts.Length - 1]);
-        }
 
 
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -33,11 +29,11 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < elems.Count; i++)
             {
                 ShapeElement elem = elems[i];
-                float[] localTransform = elem.GetLocalTransformMatrix();
+                float[] localTransform = elem.GetLocalTransformMatrix(0);
                 Mat4f.Mul(modelTransform, modelTransform, localTransform);
             }
 
-            Mat4f.Mul(modelTransform, modelTransform, Element.GetLocalTransformMatrix());
+            Mat4f.Mul(modelTransform, modelTransform, Element.GetLocalTransformMatrix(0));
 
             float[] inverseTransformMatrix = Mat4f.Invert(Mat4f.Create(), modelTransform);
 

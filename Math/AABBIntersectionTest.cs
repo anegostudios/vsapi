@@ -115,7 +115,7 @@ namespace Vintagestory.API.MathTools
         {
             Cuboidf[] selectionBoxes;
             Block block = blockSelectionTester.blockAccessor.GetBlock(pos, BlockLayersAccess.Fluid);
-            if (block.SideSolid.Any())   // It's ice!
+            if (block.SideSolid.Any)   // It's ice!
             {
                 selectionBoxes = block.GetSelectionBoxes(blockSelectionTester.blockAccessor, pos);
             }

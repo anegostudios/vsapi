@@ -34,7 +34,8 @@ namespace Vintagestory.API.Common
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode = new Dictionary<string, AnimationMetaData>(StringComparer.OrdinalIgnoreCase);
         Dictionary<string, AnimationMetaData> IAnimationManager.ActiveAnimationsByAnimCode => ActiveAnimationsByAnimCode;
 
-        
+        public List<AnimFrameCallback> Triggers;
+
         /// <summary>
         /// The entity attached to this Animation Manager.
         /// </summary>
@@ -67,6 +68,20 @@ namespace Vintagestory.API.Common
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// If given animation is running, will set its progress to the first animation frame
+        /// </summary>
+        /// <param name="animCode"></param>
+        public virtual void ResetAnimation(string animCode)
+        {
+            var state = Animator?.GetAnimationState(animCode);
+            if (state != null)
+            {
+                state.EasingFactor = 0; 
+                state.CurrentFrame = 0;
+            }
         }
 
         /// <summary>
@@ -173,7 +188,7 @@ namespace Vintagestory.API.Common
                     if (ActiveAnimationsByAnimCode.ContainsKey(animmetadata.Code)) continue;
                     animmetadata.AnimationSpeed = activeAnimationSpeeds[i];
 
-                    ActiveAnimationsByAnimCode[animmetadata.Animation] = animmetadata;
+                    onReceivedServerAnimation(animmetadata);
                     continue;
                 }
 
@@ -201,7 +216,7 @@ namespace Vintagestory.API.Common
 
                     animmeta.AnimationSpeed = activeAnimationSpeeds[i];
 
-                    ActiveAnimationsByAnimCode[anim.Code] = animmeta;
+                    onReceivedServerAnimation(animmeta);
                 }
             }
 
@@ -232,6 +247,11 @@ namespace Vintagestory.API.Common
 
         }
 
+        protected virtual void onReceivedServerAnimation(AnimationMetaData animmetadata)
+        {
+            ActiveAnimationsByAnimCode[animmetadata.Animation] = animmetadata;
+        }
+
         /// <summary>
         /// Serializes the slots contents to be stored in the SaveGame
         /// </summary>
@@ -239,6 +259,11 @@ namespace Vintagestory.API.Common
         /// <param name="forClient"></param>
         public virtual void ToAttributes(ITreeAttribute tree, bool forClient)
         {
+            if (Animator == null) return;
+
+            ITreeAttribute animtree = new TreeAttribute();
+            tree["activeAnims"] = animtree;
+
             foreach (var val in ActiveAnimationsByAnimCode)
             {
                 if (val.Value.Code == null) val.Value.Code = val.Key; // ah wtf.
@@ -258,7 +283,7 @@ namespace Vintagestory.API.Common
                         val.Value.ToBytes(writer);
                     }
 
-                    tree[val.Key] = new ByteArrayAttribute(ms.ToArray());
+                    animtree[val.Key] = new ByteArrayAttribute(ms.ToArray());
                 }
 
                 val.Value.StartFrameOnce = 0;
@@ -273,14 +298,18 @@ namespace Vintagestory.API.Common
         /// <param name="tree"></param>
         public virtual void FromAttributes(ITreeAttribute tree, string version)
         {
-            foreach (var val in tree)
+            var animtree = tree["activeAnims"] as ITreeAttribute;
+            if (animtree != null)
             {
-                byte[] data = (val.Value as ByteArrayAttribute).value;
-                using (MemoryStream ms = new MemoryStream(data))
+                foreach (var val in animtree)
                 {
-                    using (BinaryReader reader = new BinaryReader(ms))
+                    byte[] data = (val.Value as ByteArrayAttribute).value;
+                    using (MemoryStream ms = new MemoryStream(data))
                     {
-                        ActiveAnimationsByAnimCode[val.Key] = AnimationMetaData.FromBytes(reader, version);
+                        using (BinaryReader reader = new BinaryReader(ms))
+                        {
+                            ActiveAnimationsByAnimCode[val.Key] = AnimationMetaData.FromBytes(reader, version);
+                        }
                     }
                 }
             }
@@ -290,19 +319,20 @@ namespace Vintagestory.API.Common
         /// The event fired at each server tick.
         /// </summary>
         /// <param name="dt"></param>
-        public void OnServerTick(float dt)
+        public virtual void OnServerTick(float dt)
         {
             Animator?.OnFrame(ActiveAnimationsByAnimCode, dt);
             Animator.CalculateMatrices = !entity.Alive;
+            runTriggers();
         }
         
         /// <summary>
         /// The event fired each time the client ticks.
         /// </summary>
         /// <param name="dt"></param>
-        public void OnClientFrame(float dt)
+        public virtual void OnClientFrame(float dt)
         {
-            if (capi.IsGamePaused) return; // Too cpu intensive to run all loaded entities
+            if (capi.IsGamePaused || Animator == null) return;
 
             if (HeadController != null)
             {
@@ -312,9 +342,35 @@ namespace Vintagestory.API.Common
             if (entity.IsRendered || !entity.Alive)
             {
                 Animator.OnFrame(ActiveAnimationsByAnimCode, dt);
+                runTriggers();
             }
+        }
 
-            
+        public virtual void RegisterFrameCallback(AnimFrameCallback trigger)
+        {
+            if (Triggers == null) Triggers = new List<AnimFrameCallback>();
+            Triggers.Add(trigger);
+        }
+
+        private void runTriggers()
+        {
+            if (Triggers == null) return;
+            for (int i = 0; i < Triggers.Count; i++)
+            {
+                var trigger = Triggers[i];
+                if (ActiveAnimationsByAnimCode.ContainsKey(trigger.Animation))
+                {
+                    var state = Animator.GetAnimationState(trigger.Animation);
+                    if (state.CurrentFrame >= trigger.Frame)
+                    {
+                        Console.WriteLine("{0} >= {1}", state.CurrentFrame, trigger.Frame);
+                        Triggers.RemoveAt(i);
+                        trigger.Callback();
+                        i--;
+                    }
+                }
+            }
+                
         }
 
         /// <summary>
@@ -322,16 +378,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public void Dispose()
         {
-            if (api.Side == EnumAppSide.Server)
-            {
-                //(api as ICoreServerAPI).Event.UnregisterGameTickListener(listenerId);
-                //api.World.Logger.Notification("AnimationManager: Delete tick listener {0} for entity id {1}", listenerId, entity.EntityId);
-            }
-            else
-            {
-                //(api as ICoreClientAPI).Event.UnregisterRenderer(renderer, EnumRenderStage.Before);
-                //renderer.Dispose();
-            }
+           
         }
 
         public virtual void OnAnimationStopped(string code)

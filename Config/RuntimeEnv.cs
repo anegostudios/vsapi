@@ -46,8 +46,6 @@ namespace Vintagestory.API.Config
         /// </summary>
         public static bool DebugThreadPool = false;
 
-        
-
         public static int MainThreadId;
         public static int ServerMainThreadId;
 
@@ -66,47 +64,25 @@ namespace Vintagestory.API.Config
 
         static RuntimeEnv()
         {
-            if (Path.DirectorySeparatorChar == '\\')
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 OS = OS.Windows;
                 EnvSearchPathName = "PATH";
                 return;
             }
-			if (IsMac())
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-				OS = OS.Mac;
-				EnvSearchPathName = "DYLD_FRAMEWORK_PATH";
+                OS = OS.Linux;
+                EnvSearchPathName = "LD_LIBRARY_PATH";
                 return;
+            } 
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                OS = OS.Mac;
+                EnvSearchPathName = "DYLD_FRAMEWORK_PATH";
             }
-
-			OS = OS.Linux;
-			EnvSearchPathName = "LD_LIBRARY_PATH";
         }
 
-		[DllImport("libc")]
-		static extern int uname(IntPtr buf);
-
-		static bool IsMac()
-		{
-			IntPtr buf = IntPtr.Zero;
-			try
-			{
-				buf = Marshal.AllocHGlobal(8192);
-				if (uname(buf) == 0)
-				{
-					string os = Marshal.PtrToStringAnsi(buf);
-					if (os == "Darwin") return true;
-				}
-			}
-			catch
-			{
-			}
-			finally
-			{
-				if (buf != IntPtr.Zero) Marshal.FreeHGlobal(buf);
-			}
-			return false;
-		}
 
         /// <summary>
         /// Whether we are in a dev environment or not
@@ -128,11 +104,13 @@ namespace Vintagestory.API.Config
                     {
                         continue;
                     }
+
                     var iPProperties = networkInterface.GetIPProperties();
                     if (iPProperties.GatewayAddresses.Count == 0)
                     {
                         continue;
                     }
+
                     foreach (var unicastAddress in iPProperties.UnicastAddresses)
                     {
                         if (unicastAddress.Address.AddressFamily != AddressFamily.InterNetwork ||
@@ -144,6 +122,7 @@ namespace Vintagestory.API.Config
                         return unicastAddress.Address.ToString();
                     }
                 }
+
                 return "Unknown ip";
             }
             catch (Exception)
@@ -158,6 +137,39 @@ namespace Vintagestory.API.Config
                 {
                     return "Unknown ip";
                 }
+            }
+        }
+
+        public static string GetOsString()
+        {
+            switch (OS)
+            {
+                case OS.Windows:
+                    return $"Windows {Environment.OSVersion.Version}";
+                case OS.Mac:
+                    return $"Mac {Environment.OSVersion.Version}";
+                case OS.Linux:
+                {
+                    try
+                    {
+                        if (File.Exists("/etc/os-release"))
+                        {
+                            var lines = File.ReadAllLines("/etc/os-release");
+                            var distro = lines.FirstOrDefault(line => line.StartsWith("PRETTY_NAME="))
+                                ?.Split('=').ElementAt(1)
+                                .Trim('"');
+                            return $"Linux ({distro}) [Kernel {Environment.OSVersion.Version}]";
+                        }
+                    }
+                    catch (Exception _)
+                    {
+                        // ignored
+                    }
+
+                    return $"Linux (Unknown) [Kernel {Environment.OSVersion.Version}]";
+                }
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
     }

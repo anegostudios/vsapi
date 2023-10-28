@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Vintagestory.API.Common;
+﻿using System.Collections.Generic;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common

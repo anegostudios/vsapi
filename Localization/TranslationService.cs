@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
@@ -14,7 +15,7 @@ using Vintagestory.API.Util;
 // Apache — Today at 11:45 AM
 // If you want to use it, it's under your license... I made it to be added to the game. ITranslationService is so that it can be mocked within your Test Suite, added to an IOC Container, extended via mods, etc. Interfaces should be used, in favour of concrete classes, in  most cases. Especially where you have volatile code such as IO.
 
-
+[assembly: InternalsVisibleTo("VSTests")]
 namespace Vintagestory.API.Config
 {
     /// <summary>
@@ -23,14 +24,14 @@ namespace Vintagestory.API.Config
     /// <seealso cref="ITranslationService" />
     public class TranslationService : ITranslationService
     {
-        private Dictionary<string, string> entryCache = new Dictionary<string, string>();
+        internal Dictionary<string, string> entryCache = new Dictionary<string, string>();
         private Dictionary<string, KeyValuePair<Regex, string>> regexCache = new Dictionary<string, KeyValuePair<Regex, string>>();
         private Dictionary<string, string> wildcardCache = new Dictionary<string, string>();
         private HashSet<string> notFound = new HashSet<string>();
 
         private IAssetManager assetManager;
         private readonly ILogger logger;
-        private bool loaded = false;
+        internal bool loaded = false;
         private string preLoadAssetsPath = null;
         public EnumLinebreakBehavior LineBreakBehavior { get; set; }
 
@@ -81,7 +82,8 @@ namespace Vintagestory.API.Config
                 }
                 catch (Exception ex)
                 {
-                    logger.Error($"Failed to load language file: {asset.Name} \n\n\t {ex}");
+                    logger.Error($"Failed to load language file: {asset.Name}");
+                    logger.Error(ex);
                 }
             }
 
@@ -119,7 +121,8 @@ namespace Vintagestory.API.Config
                 }
                 catch (Exception ex)
                 {
-                    logger.Error($"Failed to load language file: {file.Name} \n\n\t {ex}");
+                    logger.Error($"Failed to load language file: {file.Name}");
+                    logger.Error(ex);
                 }
             }
 
@@ -178,11 +181,17 @@ namespace Vintagestory.API.Config
                         if (i > 0) sb.Append(", ");
                         sb.Append(args[i].ToString());
                     }
+
                     try
                     {
                         logger.Warning(sb.ToString());
                     }
-                    catch (Exception e) { logger.Error("Exception thrown when trying to print exception message for an incorrect translation entry. Exception: " + e); }
+                    catch (Exception e)
+                    {
+                        logger.Error("Exception thrown when trying to print exception message for an incorrect translation entry. Exception: ");
+                        logger.Error(e);
+
+                    }
                 }
             }
             return result;
@@ -245,27 +254,40 @@ namespace Vintagestory.API.Config
             return sb.ToString();
         }
 
-        private string BuildPluralFormat(string input, float n)
+        internal static string BuildPluralFormat(string input, float n)
         {
             string[] plurals = input.Split('|');
             int round = 3;
             if (plurals.Length >= 2)
             {
-                string numberFormatting = getNumberFormattingFrom(plurals[1], out string _);
+                string numberFormatting = GetNumberFormattingFrom(plurals[1], out string _);
                 round = numberFormatting.Length - 1;
                 if (numberFormatting.IndexOf('.') > 0) round--;
             }
 
             int index = (int)Math.Ceiling(Math.Round(n, round));   // this implments a rule: 0 -> 0;  0.5 -> 1;  1 -> 1;  1.5 -> 2  etc.   This may not be appropriate for all languages e.g. French.  A future extension can allow more customisation by specifying math formulae
-            if (index < 0 || index >= plurals.Length) index = plurals.Length - 1;
-
+            if (index < 0 || index >= plurals.Length)
+                index = plurals.Length - 1;
+           
+            if (plurals.Length >= 2)
+            {
+                // if we have unit == 1 we use singular, if it is smaller than 1 we use plural ex. 0.25 liters or 0.25 hours
+                // only applies to plurals that have 3 plurals defined
+                // ReSharper disable once CompareOfFloatsByEqualityOperator
+                if(n == 1)
+                    index = 1;
+                else if(n < 1)
+                {
+                    index = 0;
+                }
+            }
             string rawResult = plurals[index];
             return WithNumberFormatting(rawResult, n);
         }
 
-        private string getNumberFormattingFrom(string rawResult, out string partB)
+        internal static string GetNumberFormattingFrom(string rawResult, out string partB)
         {
-            int j = rawResult.IndexOf('#');
+            var j = GetStartIndexOfNumberFormat(rawResult);
             if (j >= 0)
             {
                 int k = j;
@@ -281,21 +303,46 @@ namespace Vintagestory.API.Config
             return "";
         }
 
-        private string WithNumberFormatting(string rawResult, float n)
+        private static int GetStartIndexOfNumberFormat(string rawResult)
         {
-            int j = rawResult.IndexOf('#');
-            if (j < 0) return rawResult;
+            var indexHash = rawResult.IndexOf('#');
+            var indexZero = rawResult.IndexOf('0');
+            var j = -1;
+
+            if (indexHash >= 0 && indexZero >= 0)
+            {
+                j = Math.Min(indexHash, indexZero);
+            }
+            else if (indexHash >= 0)
+            {
+                j = indexHash;
+            }
+            else if (indexZero >= 0)
+            {
+                j = indexZero;
+            }
+
+            return j;
+        }
+
+        internal static string WithNumberFormatting(string rawResult, float n)
+        {
+            var j = GetStartIndexOfNumberFormat(rawResult);
+            if (j < 0)
+            {
+                return rawResult;
+            } 
 
             string partA = rawResult.Substring(0, j);
-            string numberFormatting = getNumberFormattingFrom(rawResult, out string partB);
+            string numberFormatting = GetNumberFormattingFrom(rawResult, out string partB);
 
             string number;
             try
             {
                 if (numberFormatting.Length == 1 && n == 0) number = "0";
-                else number = n.ToString(numberFormatting);
+                else number = n.ToString(numberFormatting, GlobalConstants.DefaultCultureInfo);
             }
-            catch (Exception) { number = n.ToString(); }      // Fallback if the translators gave us a badly formatted number string
+            catch (Exception) { number = n.ToString(GlobalConstants.DefaultCultureInfo); }      // Fallback if the translators gave us a badly formatted number string
 
             return partA + number + partB;
         }

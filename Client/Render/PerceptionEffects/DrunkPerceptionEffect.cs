@@ -19,7 +19,7 @@ namespace Vintagestory.API.Client
 
         public override void OnBeforeGameRender(float dt)
         {
-            if (capi.IsGamePaused) return;
+            if (capi.IsGamePaused || capi.World.Player.Entity.AnimManager.HeadController == null) return;
 
             capi.Render.ShaderUniforms.PerceptionEffectIntensity = Intensity;
 

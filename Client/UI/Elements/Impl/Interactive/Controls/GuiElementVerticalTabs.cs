@@ -6,25 +6,25 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementVerticalTabs : GuiElementTextBase
     {
-        Action<int, GuiTab> handler;
+        protected Action<int, GuiTab> handler;
+        protected GuiTab[] tabs;
+        protected LoadedTexture baseTexture;
+        protected LoadedTexture[] hoverTextures;
+        protected int[] tabWidths;
+        protected CairoFont selectedFont;
+        protected double unscaledTabSpacing = 5;
+        protected double unscaledTabHeight = 25;
+        protected double unscaledTabPadding = 3;
+        protected double tabHeight;
+        protected double textOffsetY;
 
-        internal GuiTab[] tabs;
+        public int ActiveElement = 0;
+        public bool Right;
 
-        LoadedTexture baseTexture;
-        LoadedTexture[] hoverTextures;
-        int[] tabWidths;
-        CairoFont selectedFont;
-
-        public int activeElement = 0;
-
-        double unscaledTabSpacing = 5;
-        double unscaledTabHeight = 25;
-        double unscaledTabPadding = 3;
-
-        double tabHeight;
-        double textOffsetY;
-
-        public bool right;
+        /// <summary>
+        /// If true, more than one tab can be active
+        /// </summary>
+        public bool ToggleTabs = false;
 
         public override bool Focusable { get { return true; } }
 
@@ -46,6 +46,7 @@ namespace Vintagestory.API.Client
             baseTexture = new LoadedTexture(capi);
 
             tabWidths = new int[tabs.Length];
+            if (tabs.Length > 0) tabs[0].Active = true;
         }
 
 
@@ -62,8 +63,8 @@ namespace Vintagestory.API.Client
 
             tabHeight = scaled(unscaledTabHeight);
 
-            double xpos = 0; // bounds.drawX + spacing;
-            double ypos = 0; // bounds.drawY;
+            double xpos;
+            double ypos = 0;
             
 
             Font.Color[3] = 0.85;
@@ -83,7 +84,7 @@ namespace Vintagestory.API.Client
             {
                 tabWidths[i] = (int)maxWidth + 1;
 
-                if (right)
+                if (Right)
                 {
                     xpos = 1;
                     ypos += tabs[i].PaddingTop;
@@ -119,7 +120,7 @@ namespace Vintagestory.API.Client
 
                 Font.SetupContext(ctx);
 
-                DrawTextLineAt(ctx, tabs[i].Name, xpos - (right ? 0 : tabWidths[i]) + padding, ypos + textOffsetY);
+                DrawTextLineAt(ctx, tabs[i].Name, xpos - (Right ? 0 : tabWidths[i]) + padding, ypos + textOffsetY);
 
                 ypos += tabHeight + spacing;
             }
@@ -164,7 +165,7 @@ namespace Vintagestory.API.Client
                 ctx.Fill();
 
                 ctx.NewPath();
-                if (right)
+                if (Right)
                 {
                     ctx.LineTo(1, 1);
                     ctx.LineTo(width, 1);
@@ -217,23 +218,22 @@ namespace Vintagestory.API.Client
 
             for (int i = 0; i < tabs.Length; i++)
             {
-                ypos += tabs[i].PaddingTop;
+                var tab = tabs[i];
+                ypos += tab.PaddingTop;
 
-                if (right)
+                if (Right)
                 {
-                    if (i == activeElement || (mouseRelX >= 0 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
+                    if (tab.Active || (mouseRelX >= 0 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)Bounds.renderX, (int)(Bounds.renderY + ypos), tabWidths[i] + 1, (int)tabHeight + 1);
                     }
                 } else
                 {
-                    if (i == activeElement || (mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
+                    if (tab.Active || (mouseRelX > xposend - tabWidths[i] - 3 && mouseRelX < xposend && mouseRelY > ypos && mouseRelY < ypos + tabHeight))
                     {
                         api.Render.Render2DTexturePremultipliedAlpha(hoverTextures[i].TextureId, (int)(Bounds.renderX + xposend - tabWidths[i] - 1), (int)(Bounds.renderY + ypos), tabWidths[i] + 1, (int)tabHeight + 1);
                     }
                 }
-
-                
 
                 ypos += tabHeight + spacing;
             }
@@ -246,20 +246,18 @@ namespace Vintagestory.API.Client
             if (args.KeyCode == (int)GlKeys.Down)
             {
                 args.Handled = true;
-                SetValue((activeElement + 1) % tabs.Length);
+                SetValue((ActiveElement + 1) % tabs.Length);
             }
 
             if (args.KeyCode == (int)GlKeys.Up)
             {
-                SetValue(GameMath.Mod(activeElement - 1, tabs.Length));
+                SetValue(GameMath.Mod(ActiveElement - 1, tabs.Length));
                 args.Handled = true;
             }
         }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            base.OnMouseDownOnElement(api, args);
-
             double spacing = scaled(unscaledTabSpacing);
             double xposend = Bounds.InnerWidth + 1;
             double ypos = 0;
@@ -277,6 +275,7 @@ namespace Vintagestory.API.Client
                 if (inx && iny)
                 {
                     SetValue(i);
+                    args.Handled = true;
                     break;
                 }
 
@@ -291,8 +290,12 @@ namespace Vintagestory.API.Client
         public void SetValue(int index)
         {
             api.Gui.PlaySound("menubutton_wood");
+            if (!ToggleTabs) foreach (var tab in tabs) tab.Active = false;
+            tabs[index].Active = !tabs[index].Active;
+
             handler(index, tabs[index]);
-            activeElement = index;
+            ActiveElement = index;
+
         }
 
         /// <summary>
@@ -302,13 +305,16 @@ namespace Vintagestory.API.Client
         /// <param name="triggerHandler">Whether or not the handler triggers.</param>
         public void SetValue(int index, bool triggerHandler)
         {
+            if (!ToggleTabs) foreach (var tab in tabs) tab.Active = false;
+            tabs[index].Active = !tabs[index].Active;
+
             if (triggerHandler)
             {
                 handler(index, tabs[index]);
                 api.Gui.PlaySound("menubutton_wood");
             }
 
-            activeElement = index;
+            ActiveElement = index;
         }
 
         public override void Dispose()
@@ -322,6 +328,28 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
+
+        /// <summary>
+        /// Adds multiple tabs to a group of vertical tabs.
+        /// </summary>
+        /// <param name="tabs">The tabs being added.</param>
+        /// <param name="bounds">The boundaries of the tab group.</param>
+        /// <param name="OnTabClicked">The event fired when any of the tabs are clicked.</param>
+        /// <param name="key">The name of this tab group.</param>
+        public static GuiComposer AddVerticalToggleTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int, GuiTab> OnTabClicked, string key = null)
+        {
+            if (!composer.Composed)
+            {
+                CairoFont font = CairoFont.WhiteDetailText().WithFontSize(17);
+                CairoFont selectedFont = CairoFont.WhiteDetailText().WithFontSize(17).WithColor(GuiStyle.ActiveButtonTextColor);
+                var tabsElem = new GuiElementVerticalTabs(composer.Api, tabs, font, selectedFont, bounds, OnTabClicked);
+                tabsElem.ToggleTabs = true;
+                composer.AddInteractiveElement(tabsElem, key);
+            }
+
+            return composer;
+        }
+
         /// <summary>
         /// Adds multiple tabs to a group of vertical tabs.
         /// </summary>

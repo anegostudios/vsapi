@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     public interface IMeshPoolSupplier
     {
@@ -15,6 +8,6 @@ namespace Vintagestory.API.Client
         /// <param name="forRenderPass">The given render pass.</param>
         /// <param name="lodLevel"></param>
         /// <returns>The mesh data for the render pass.</returns>
-        MeshData GetMeshPoolForPass(EnumChunkRenderPass forRenderPass, int lodLevel);
+        MeshData GetMeshPoolForPass(int textureid, EnumChunkRenderPass forRenderPass, int lodLevel);
     }
 }

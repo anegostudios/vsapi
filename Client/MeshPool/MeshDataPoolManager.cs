@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -63,13 +61,13 @@ namespace Vintagestory.API.Client
         /// <param name="modelOrigin">The origin point of the Model</param>
         /// <param name="frustumCullSphere">The culling sphere.</param>
         /// <returns>The location identifier for the pooled model.</returns>
-        public ModelDataPoolLocation AddModel(MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere)
+        public ModelDataPoolLocation AddModel(MeshData modeldata, Vec3i modelOrigin, int dimension, Sphere frustumCullSphere)
         {
             ModelDataPoolLocation location = null;
 
             for (int i = 0; i < pools.Count; i++)
             {
-                location = pools[i].TryAdd(capi, modeldata, modelOrigin, frustumCullSphere);
+                location = pools[i].TryAdd(capi, modeldata, modelOrigin, dimension, frustumCullSphere);
                 if (location != null) break;
             }
 
@@ -85,18 +83,16 @@ namespace Vintagestory.API.Client
 
                 MeshDataPool pool = MeshDataPool.AllocateNewPool(capi, vertexSize, indexSize, maxPartsPerPool, customFloats, customShorts, customBytes, customInts);
                 pool.poolOrigin = modelOrigin;
+                pool.dimensionId = dimension;
 
                 masterPool.AddModelDataPool(pool);
                 pools.Add(pool);
-                location = pool.TryAdd(capi, modeldata, modelOrigin, frustumCullSphere);
+                location = pool.TryAdd(capi, modeldata, modelOrigin, dimension, frustumCullSphere);
             }
 
             if (location == null)
             {
                 capi.World.Logger.Fatal("Can't add modeldata (probably a tesselated chunk @{0}) to the model data pool list, it exceeds the size of a single empty pool of {1} vertices and {2} indices. You must be loading some very complex objects (#v = {3}, #i = {4}). Try increasing MaxVertexSize and MaxIndexSize. The whole chunk will be invisible.", modelOrigin, defaultVertexPoolSize, defaultIndexPoolSize, modeldata.VerticesCount, modeldata.IndicesCount);
-
-                //location = new ModelDataPoolLocation() { frustumCullSphere = frustumCullSphere };
-                //pools[0].poolLocations.Add(location);
             }
 
             return location;
@@ -113,21 +109,62 @@ namespace Vintagestory.API.Client
             int count = pools.Count;
             for (int i = 0; i < count; i++)
             {
+                bool revertModelviewMatrix = false;
+                bool revertMVPMatrix = false;
                 MeshDataPool pool = pools[i];
-                pool.FrustumCull(frustumCuller, frustumCullMode);
-
-                if (pool.indicesGroupsCount == 0)
+                if (pool.dimensionId == Dimensions.MiniDimensions)
                 {
-                    continue;
+                    // Special code for movable chunks
+                    if (!capi.World.TryGetMiniDimension(pool.poolOrigin, out IMiniDimension dimension)) continue;
+
+                    pool.SetFullyVisible();
+                    if (pool.indicesGroupsCount == 0)
+                    {
+                        continue;
+                    }
+
+                    FastVec3d renderOffset = dimension.GetRenderOffset(masterPool.currentDt);
+
+                    var currShader = capi.Render.CurrentActiveShader;
+                    if (currShader.HasUniform("modelViewMatrix"))
+                    {
+                        currShader.UniformMatrix("modelViewMatrix", dimension.GetRenderTransformMatrix(masterPool.currentModelViewMatrix, playerpos));
+                        revertModelviewMatrix = true;
+                    }
+                    else if (currShader.HasUniform("mvpMatrix"))
+                    {
+                        currShader.UniformMatrix("mvpMatrix", dimension.GetRenderTransformMatrix(masterPool.shadowMVPMatrix, playerpos));
+                        revertMVPMatrix = true;
+                    }
+
+                    currShader.Uniform(originUniformName, tmp.Set(
+                        (float)(pool.poolOrigin.X + renderOffset.X - playerpos.X),
+                        (float)(pool.poolOrigin.Y + renderOffset.Y - playerpos.Y),
+                        (float)(pool.poolOrigin.Z + renderOffset.Z - playerpos.Z)
+                    ));
+                }
+                else
+                {
+                    pool.FrustumCull(frustumCuller, frustumCullMode);
+
+                    if (pool.indicesGroupsCount == 0)
+                    {
+                        continue;
+                    }
+
+                    capi.Render.CurrentActiveShader.Uniform(originUniformName, tmp.Set(
+                        (float)(pool.poolOrigin.X - playerpos.X),
+                        (float)(pool.poolOrigin.Y - playerpos.Y),
+                        (float)(pool.poolOrigin.Z - playerpos.Z)
+                    ));
                 }
 
-                capi.Render.CurrentActiveShader.Uniform(originUniformName, tmp.Set(
-                    (float)(pool.poolOrigin.X - playerpos.X),
-                    (float)(pool.poolOrigin.Y - playerpos.Y),
-                    (float)(pool.poolOrigin.Z - playerpos.Z)
-                ));
-
                 capi.Render.RenderMesh(pool.modelRef, pool.indicesStartsByte, pool.indicesSizes, pool.indicesGroupsCount);
+
+                if (revertModelviewMatrix)
+                    capi.Render.CurrentActiveShader.UniformMatrix("modelViewMatrix", masterPool.currentModelViewMatrix);
+                if (revertMVPMatrix)
+                    capi.Render.CurrentActiveShader.UniformMatrix("mvpMatrix", masterPool.shadowMVPMatrix);
             }
         }
 

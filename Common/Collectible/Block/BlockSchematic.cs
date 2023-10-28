@@ -2,13 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Vintagestory.API.Client;
-using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
-using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -81,13 +78,14 @@ namespace Vintagestory.API.Common
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
         public List<Entity> EntitiesUnpacked = new List<Entity>();
         public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
-        
+        public FastVec3i PackedOffset;
 
         protected Block fillerBlock;
         protected Block pathwayBlock;
         protected Block undergroundBlock;
 
         protected ushort empty = 0;
+        public bool OmitLiquids = false;
 
         public BlockFacing[] PathwaySides;
         /// <summary>
@@ -292,6 +290,7 @@ namespace Vintagestory.API.Common
                         int blockid = world.BlockAccessor.GetBlock(pos, BlockLayersAccess.Solid).BlockId;
                         int fluidid = world.BlockAccessor.GetBlock(pos, BlockLayersAccess.Fluid).BlockId;
                         if (fluidid == blockid) blockid = 0;
+                        if (OmitLiquids) fluidid = 0;
                         if (blockid == 0 && fluidid == 0) continue;
 
                         BlocksUnpacked[pos] = blockid;
@@ -350,6 +349,7 @@ namespace Vintagestory.API.Common
                 if (dx >= 1024 || dy >= 1024 || dz >= 1024)
                 {
                     world.Logger.Warning("Export format does not support areas larger than 1024 blocks in any direction. Will not pack.");
+                    PackedOffset = new FastVec3i(0, 0, 0);
                     return false;
                 }
             }
@@ -444,6 +444,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            PackedOffset = new FastVec3i(minX - startPos.X, minY - startPos.Y, minZ - startPos.Z);
             return true;
         }
 
@@ -544,6 +545,7 @@ namespace Vintagestory.API.Common
 
         public virtual void PlaceDecors(IBlockAccessor blockAccessor, BlockPos startPos)
         {
+            this.curPos.dimension = startPos.dimension;
             for (int i = 0; i < DecorIndices.Count; i++)
             {
                 uint index = DecorIndices[i];
@@ -656,53 +658,22 @@ namespace Vintagestory.API.Common
                         AssetLocation newCode = newBlock.GetHorizontallyFlippedBlockCode((EnumAxis)flipAxis);
                         newBlock = worldForResolve.GetBlock(newCode);
                     }
-
                 }
 
                 if (angle != 0)
                 {
                     AssetLocation newCode = newBlock.GetRotatedBlockCode(angle);
-                    newBlock = worldForResolve.GetBlock(newCode);
+                    var rotBlock = worldForResolve.GetBlock(newCode);
+                    if (rotBlock != null)
+                    {
+                        newBlock = rotBlock;
+                    } else
+                    {
+                        worldForResolve.Logger.Warning("Schematic rotate: Unable to rotate block {0} - its GetRotatedBlockCode() method call returns an invalid block code: {1}! Will use unrotated variant.", blockCode, newCode);
+                    }
                 }
 
-                if (aroundOrigin != EnumOrigin.StartPos)
-                {
-                    dx -= SizeX / 2;
-                    dz -= SizeZ / 2;
-                }
-
-                BlockPos pos = new BlockPos(dx, dy, dz);
-
-                // 90 deg:
-                // xNew = -yOld
-                // yNew = xOld
-
-                // 180 deg:
-                // xNew = -xOld
-                // yNew = -yOld
-
-                // 270 deg:
-                // xNew = yOld
-                // yNew = -xOld
-
-                switch (angle)
-                {
-                    case 90:
-                        pos.Set(-dz, dy, dx);
-                        break;
-                    case 180:
-                        pos.Set(-dx, dy, -dz);
-                        break;
-                    case 270:
-                        pos.Set(dz, dy, -dx);
-                        break;
-                }
-
-                if (aroundOrigin != EnumOrigin.StartPos)
-                {
-                    pos.X += SizeX / 2;
-                    pos.Z += SizeZ / 2;
-                }
+                BlockPos pos = getRotatedPos(aroundOrigin, angle, dx, dy, dz);
 
                 if (newBlock.ForFluidsLayer)
                 {
@@ -763,7 +734,6 @@ namespace Vintagestory.API.Common
                         newBlock = worldForResolve.GetBlock(newCode);
                         if (face.Axis == EnumAxis.Z) face = face.Opposite;
                     }
-
                 }
 
                 if (angle != 0)
@@ -772,47 +742,7 @@ namespace Vintagestory.API.Common
                     newBlock = worldForResolve.GetBlock(newCode);
                 }
 
-                if (aroundOrigin != EnumOrigin.StartPos)
-                {
-                    dx -= SizeX / 2;
-                    dz -= SizeZ / 2;
-                }
-
-                BlockPos pos = new BlockPos(dx, dy, dz);
-
-                // 90 deg:
-                // xNew = -yOld
-                // yNew = xOld
-
-                // 180 deg:
-                // xNew = -xOld
-                // yNew = -yOld
-
-                // 270 deg:
-                // xNew = yOld
-                // yNew = -xOld
-
-                switch (angle)
-                {
-                    case 90:
-                        pos.Set(-dz, dy, dx);
-                        if (face.IsHorizontal) face = face.GetCW();
-                        break;
-                    case 180:
-                        pos.Set(-dx, dy, -dz);
-                        if (face.IsHorizontal) face = face.Opposite;
-                        break;
-                    case 270:
-                        pos.Set(dz, dy, -dx);
-                        if (face.IsHorizontal) face = face.GetCCW();
-                        break;
-                }
-
-                if (aroundOrigin != EnumOrigin.StartPos)
-                {
-                    pos.X += SizeX / 2;
-                    pos.Z += SizeZ / 2;
-                }
+                BlockPos pos = getRotatedPos(aroundOrigin, angle, dx, dy, dz);
 
                 DecorsUnpacked.TryGetValue(pos, out Block[] decorsTmp);
                 if (decorsTmp == null)
@@ -831,44 +761,10 @@ namespace Vintagestory.API.Common
                 int dy = (int)((index >> 20) & 0x1ff);
                 int dz = (int)((index >> 10) & 0x1ff);
 
-                if (aroundOrigin != EnumOrigin.StartPos)
-                {
-                    dx -= SizeX / 2;
-                    dz -= SizeZ / 2;
-                }
-
-                BlockPos pos = new BlockPos(dx, dy, dz);
-
-                // 90 deg:
-                // xNew = -yOld
-                // yNew = xOld
-
-                // 180 deg:
-                // xNew = -xOld
-                // yNew = -yOld
-
-                // 270 deg:
-                // xNew = yOld
-                // yNew = -xOld
-
-                switch (angle)
-                {
-                    case 90:
-                        pos.Set(-dz, dy, dx);
-                        break;
-                    case 180:
-                        pos.Set(-dx, dy, -dz);
-                        break;
-                    case 270:
-                        pos.Set(dz, dy, -dx);
-                        break;
-                }
-
-                if (aroundOrigin != EnumOrigin.StartPos)
-                {
-                    pos.X += SizeX / 2;
-                    pos.Z += SizeZ / 2;
-                }
+                if (flipAxis == EnumAxis.Y) dy = SizeY - dy;
+                if (flipAxis == EnumAxis.X) dx = SizeX - dx;
+                if (flipAxis == EnumAxis.Z) dz = SizeZ - dz;
+                BlockPos pos = getRotatedPos(aroundOrigin, angle, dx, dy, dz);
 
                 string beData = val.Value;
 
@@ -953,7 +849,51 @@ namespace Vintagestory.API.Common
 
             Pack(worldForResolve, startPos);
         }
-        
+
+        private BlockPos getRotatedPos(EnumOrigin aroundOrigin, int angle, int dx, int dy, int dz)
+        {
+            if (aroundOrigin != EnumOrigin.StartPos)
+            {
+                dx -= SizeX / 2;
+                dz -= SizeZ / 2;
+            }
+
+            BlockPos pos = new BlockPos(dx, dy, dz);
+
+            // 90 deg:
+            // xNew = -yOld
+            // yNew = xOld
+
+            // 180 deg:
+            // xNew = -xOld
+            // yNew = -yOld
+
+            // 270 deg:
+            // xNew = yOld
+            // yNew = -xOld
+
+            switch (angle)
+            {
+                case 90:
+                    pos.Set(-dz, dy, dx);
+                    break;
+                case 180:
+                    pos.Set(-dx, dy, -dz);
+                    break;
+                case 270:
+                    pos.Set(dz, dy, -dx);
+                    break;
+            }
+
+            if (aroundOrigin != EnumOrigin.StartPos)
+            {
+                pos.X += SizeX / 2;
+                pos.Z += SizeZ / 2;
+            }
+
+            return pos;
+        }
+
 
 
 
@@ -965,9 +905,14 @@ namespace Vintagestory.API.Common
         /// <param name="blockAccessor"></param>
         /// <param name="worldForCollectibleResolve"></param>
         /// <param name="startPos"></param>
-        public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, Dictionary<int, AssetLocation> blockCodes, Dictionary<int, AssetLocation> itemCodes, bool replaceBlockEntities = false)
+        /// <param name="blockCodes"></param>
+        /// <param name="itemCodes"></param>
+        /// <param name="replaceBlockEntities"></param>
+        /// <param name="replaceBlocks"></param>
+        /// <param name="centerrockblockid"></param>
+        public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, Dictionary<int, AssetLocation> blockCodes, Dictionary<int, AssetLocation> itemCodes, bool replaceBlockEntities = false, Dictionary<int, Dictionary<int, int>> replaceBlocks = null, int centerrockblockid = 0, Dictionary<BlockPos, Block> layerBlockForBlockEntities = null)
         {
-            BlockPos curPos = new BlockPos();
+            BlockPos curPos = startPos.Copy();
 
             int schematicSeed = worldForCollectibleResolve.Rand.Next();
 
@@ -1008,12 +953,14 @@ namespace Vintagestory.API.Common
 
                     ITreeAttribute tree = DecodeBlockEntityData(val.Value);
                     tree.SetInt("posx", curPos.X);
-                    tree.SetInt("posy", curPos.Y);
+                    tree.SetInt("posy", curPos.InternalY);
                     tree.SetInt("posz", curPos.Z);
 
                     be.FromTreeAttributes(tree, worldForCollectibleResolve);
                     be.OnLoadCollectibleMappings(worldForCollectibleResolve, blockCodes, itemCodes, schematicSeed);
-                    be.OnPlacementBySchematic(worldForCollectibleResolve.Api as ICoreServerAPI, blockAccessor, curPos);
+                    Block layerBlock = null;
+                    layerBlockForBlockEntities?.TryGetValue(curPos, out layerBlock);
+                    be.OnPlacementBySchematic(worldForCollectibleResolve.Api as ICoreServerAPI, blockAccessor, curPos, replaceBlocks, centerrockblockid, layerBlock);
                     if (!(blockAccessor is IWorldGenBlockAccessor)) be.MarkDirty();
                 }
             }
@@ -1037,8 +984,11 @@ namespace Vintagestory.API.Common
                         entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
                     } else
                     {
-                        worldForCollectibleResolve.SpawnEntity(entity);
-                        entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
+                        if (entity.Properties != null) // Can be null if its a no longer existant mob type
+                        {
+                            worldForCollectibleResolve.SpawnEntity(entity);
+                            entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
+                        }
                     }
                 }
             }

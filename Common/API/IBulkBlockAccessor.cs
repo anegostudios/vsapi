@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -13,10 +10,14 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IBulkBlockAccessor : IBlockAccessor
     {
+        event Action<IBulkBlockAccessor> BeforeCommit;
+
         /// <summary>
         /// The full list of staged blocks that will get commited after calling Commit()
         /// </summary>
         Dictionary<BlockPos, BlockUpdate> StagedBlocks { get; }
+
+        Dictionary<DecorUpdateKey, DecorUpdate> StagedDecors { get; }
 
         /// <summary>
         /// If set to true, the methods GetBlock() and GetBlockId() will behave like GetStagedBlockId() until the next commit

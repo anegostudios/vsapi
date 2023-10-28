@@ -1,7 +1,5 @@
 ﻿using Cairo;
 using System;
-using Vintagestory.API.Client;
-using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client

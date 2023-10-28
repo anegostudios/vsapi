@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -93,7 +89,9 @@ namespace Vintagestory.API.Client
 
         void UniformMatrices4x3(string uniformName, int count, float[] matrix);
 
-        
+        bool HasUniform(string uniformName);
+
+
         /// <summary>
         /// True if this shader has been disposed
         /// </summary>

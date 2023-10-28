@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Vintagestory.API.Common
 {
@@ -104,7 +105,11 @@ namespace Vintagestory.API.Common
         /// Adds a new <see cref="EnumLogType.Warning"/> log entry with the specified message.
         /// </summary>
         void Warning(string message);
-
+        /// <summary>
+        /// Convenience method for logging exceptions in try/catch blocks
+        /// </summary>
+        void Warning(Exception e);
+        
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Error"/> log entry with the specified format string and arguments.
         /// </summary>
@@ -126,6 +131,10 @@ namespace Vintagestory.API.Common
         /// Adds a new <see cref="EnumLogType.Fatal"/> log entry with the specified message.
         /// </summary>
         void Fatal(string message);
+        /// <summary>
+        /// Convenience method for logging exceptions in try/catch blocks
+        /// </summary>
+        void Fatal(Exception e);
 
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Audit"/> log entry with the specified format string and arguments.
@@ -148,6 +157,22 @@ namespace Vintagestory.API.Common
         private static readonly object[] _emptyArgs = new object[0];
 
         public bool TraceLog { get; set; }
+
+        public static string SourcePath;
+
+        static LoggerBase()
+        {
+            try
+            {
+                throw new Exception("Exception for the logger to load some exception related info");
+            }
+            catch (Exception ex)
+            {
+                var stackTrace = new StackTrace(ex, true);
+                var frame = stackTrace.GetFrame(0);
+                SourcePath = frame.GetFileName().Split("VintagestoryApi")[0];
+            }
+        }
 
         public event LogEntryDelegate EntryAdded;
         public void ClearWatchers() => EntryAdded = null;
@@ -205,18 +230,32 @@ namespace Vintagestory.API.Common
             => Log(EnumLogType.Warning, format, args);
         public void Warning(string message)
             => Log(EnumLogType.Warning, message, _emptyArgs);
+        public void Warning(Exception e)
+            => Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
 
         public void Error(string format, params object[] args)
             => Log(EnumLogType.Error, format, args);
         public void Error(string message)
             => Log(EnumLogType.Error, message, _emptyArgs);
         public void Error(Exception e)
-            => Log(EnumLogType.Error, "Exception: {0}\n{1}", new object[] { e.Message, e.StackTrace });
+            => Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
+
+        /// <summary>
+        /// Remove the full path from the stacktrace of the machine that compiled the code
+        /// </summary>
+        /// <param name="stackTrace"></param>
+        /// <returns></returns>
+        public static string CleanStackTrace(string stackTrace)
+        {
+            return stackTrace.Replace(SourcePath,"");
+        }
 
         public void Fatal(string format, params object[] args)
             => Log(EnumLogType.Fatal, format, args);
         public void Fatal(string message)
             => Log(EnumLogType.Fatal, message, _emptyArgs);
+        public void Fatal(Exception e)
+            => Log(EnumLogType.Error, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
 
         public void Audit(string format, params object[] args)
             => Log(EnumLogType.Audit, format, args);
@@ -225,6 +264,8 @@ namespace Vintagestory.API.Common
 
         public void Worldgen(string format, params object[] args)
             => Log(EnumLogType.Worldgen, format, args);
+        public void Worldgen(Exception e)
+            => Log(EnumLogType.Worldgen, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
         public void Worldgen(string message)
             => Log(EnumLogType.Worldgen, message, _emptyArgs);
     }

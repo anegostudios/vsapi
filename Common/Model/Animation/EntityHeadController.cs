@@ -39,7 +39,9 @@ namespace Vintagestory.API.Common
                 else diff = 0;
             }
 
-            bool overheadLookAtMode = capi.Settings.Bool["overheadLookAt"] && (player as IClientPlayer).CameraMode == EnumCameraMode.Overhead;
+            var cameraMode = (player as IClientPlayer).CameraMode;
+
+            bool overheadLookAtMode = capi.Settings.Bool["overheadLookAt"] && cameraMode == EnumCameraMode.Overhead;
 
             if (!overheadLookAtMode)
             {
@@ -56,7 +58,7 @@ namespace Vintagestory.API.Common
                 angleMode = mount.AngleMode;
             }
 
-            if (player?.Entity == null || angleMode == EnumMountAngleMode.Fixate || angleMode == EnumMountAngleMode.FixateYaw || (player as IClientPlayer).CameraMode == EnumCameraMode.Overhead)
+            if (player?.Entity == null || angleMode == EnumMountAngleMode.Fixate || angleMode == EnumMountAngleMode.FixateYaw || cameraMode == EnumCameraMode.Overhead)
             {
                 entity.BodyYaw = entity.Pos.Yaw;
 
@@ -94,12 +96,8 @@ namespace Vintagestory.API.Common
 
                     float threshold = 1.2f - (ismoving ? 1.19f : 0) + (attachedToClimbWall ? 3 : 0);
                     if (entity.Controls.Gliding) threshold = 0;
-
-                    if (player.PlayerUID == capi.World.Player.PlayerUID && capi.Settings.Bool["immersiveFpMode"] && false)
-                    {
-                        entity.BodyYaw = entity.Pos.Yaw;
-                    }
-                    else
+                    
+                    if (player.PlayerUID == capi.World.Player.PlayerUID && !capi.Settings.Bool["immersiveFpMode"] && cameraMode != EnumCameraMode.FirstPerson)
                     {
                         if (Math.Abs(yawDist) > threshold || rotateTpYawNow)
                         {
@@ -107,6 +105,11 @@ namespace Vintagestory.API.Common
                             entity.BodyYaw += GameMath.Clamp(yawDist, -dt * speed, dt * speed);
                             rotateTpYawNow = Math.Abs(yawDist) > 0.01f;
                         }
+                        
+                    }
+                    else
+                    {
+                        entity.BodyYaw = entity.Pos.Yaw;
                     }
                 }
             }
@@ -132,6 +135,7 @@ namespace Vintagestory.API.Common
 
         public float yawOffset = 0, pitchOffset = 0;
 
+        
 
         public EntityHeadController(IAnimationManager animator, EntityAgent entity, Shape entityShape)
         {
@@ -174,13 +178,20 @@ namespace Vintagestory.API.Common
                 NeckPose.degOffY = degoffy * 0.35f;
                 NeckPose.degOffZ = degoffz * 0.4f;
 
-                UpperTorsoPose.degOffZ = degoffz * 0.3f;
-                UpperTorsoPose.degOffY = degoffy * 0.2f;
+                // Don't adjust torsoe if we are in normal fp mode
+                var capi = entity.World.Api as ICoreClientAPI;
+                var plr = (entity as EntityPlayer)?.Player;
+                var selfPlayer = capi?.World.Player.PlayerUID == plr?.PlayerUID ? plr : null;
+                if (selfPlayer?.ImmersiveFpMode == true)
+                {
+                    UpperTorsoPose.degOffZ = degoffz * 0.3f;
+                    UpperTorsoPose.degOffY = degoffy * 0.2f;
 
-                var offz = degoffz * 0.1f;
-                LowerTorsoPose.degOffZ = offz;
-                UpperFootRPose.degOffZ = -offz;
-                UpperFootLPose.degOffZ = -offz;
+                    var offz = degoffz * 0.1f;
+                    LowerTorsoPose.degOffZ = offz;
+                    UpperFootRPose.degOffZ = -offz;
+                    UpperFootLPose.degOffZ = -offz;
+                }
             }
         }
     }

@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.Client;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     class ElementEmptyBounds : ElementBounds
     {

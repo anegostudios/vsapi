@@ -180,11 +180,11 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < elems.Count; i++)
             {
                 ShapeElement elem = elems[i];
-                float[] localTransform = elem.GetLocalTransformMatrix();
+                float[] localTransform = elem.GetLocalTransformMatrix(0);
                 Mat4f.Mul(modelTransform, modelTransform, localTransform);
             }
 
-            Mat4f.Mul(modelTransform, modelTransform, GetLocalTransformMatrix());
+            Mat4f.Mul(modelTransform, modelTransform, GetLocalTransformMatrix(0));
 
             float[] inverseTransformMatrix = Mat4f.Invert(Mat4f.Create(), modelTransform);
 
@@ -254,7 +254,7 @@ namespace Vintagestory.API.Common
 
         static ElementPose noTransform = new ElementPose();
 
-        public float[] GetLocalTransformMatrix(float[] output = null, ElementPose tf = null)
+        public float[] GetLocalTransformMatrix(int animVersion, float[] output = null, ElementPose tf = null)
         {
             if (tf == null) tf = noTransform;
 
@@ -272,30 +272,59 @@ namespace Vintagestory.API.Common
 
             Mat4f.Translate(output, output, origin);
 
-            if (elem.RotationX + tf.degX + tf.degOffX != 0)
-            {
-                Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
-            }
-            if (elem.RotationY + tf.degY + tf.degOffY != 0)
-            {
-                Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
-            }
-            if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
-            {
-                Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
-            }
+            // R= rotate, S=scale, T= translate
+            // Version 0: R * S * T
+            // Version 1: T * S * R
 
-            Mat4f.Scale(output, output, new float[] { (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ });
+            if (animVersion > 0)
+            {
+                Mat4f.Translate(output, output, new float[] {
+                    (float)elem.From[0] / 16 + tf.translateX,
+                    (float)elem.From[1] / 16 + tf.translateY,
+                    (float)elem.From[2] / 16 + tf.translateZ
+                });
+
+                Mat4f.Scale(output, output, new float[] { (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ });
+
+                if (elem.RotationX + tf.degX + tf.degOffX != 0)
+                {
+                    Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
+                }
+                if (elem.RotationY + tf.degY + tf.degOffY != 0)
+                {
+                    Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
+                }
+                if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
+                {
+                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
+                }
+
+            } else 
+            {
+                if (elem.RotationX + tf.degX + tf.degOffX != 0)
+                {
+                    Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
+                }
+                if (elem.RotationY + tf.degY + tf.degOffY != 0)
+                {
+                    Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
+                }
+                if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
+                {
+                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
+                }
+
+                Mat4f.Scale(output, output, new float[] { (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ });
+
+                Mat4f.Translate(output, output, new float[] {
+                    (float)elem.From[0] / 16 + tf.translateX,
+                    (float)elem.From[1] / 16 + tf.translateY,
+                    (float)elem.From[2] / 16 + tf.translateZ
+                });
+            }
+            
 
             Mat4f.Translate(output, output, new float[] { -origin[0], -origin[1], -origin[2] });
-
-            Mat4f.Translate(output, output, new float[] {
-                (float)elem.From[0] / 16 + tf.translateX,
-                (float)elem.From[1] / 16 + tf.translateY,
-                (float)elem.From[2] / 16 + tf.translateZ
-            });
-
-
 
             return output;
         }
@@ -352,8 +381,19 @@ namespace Vintagestory.API.Common
                     Children[i].SetJointIdRecursive(jointId);
                 }
             }
+        }
 
+        public void CacheInverseTransformMatrixRecursive()
+        {
             CacheInverseTransformMatrix();
+
+            if (Children != null)
+            {
+                for (int i = 0; i < Children.Length; i++)
+                {
+                    Children[i].CacheInverseTransformMatrixRecursive();
+                }
+            }
         }
 
         public void WalkRecursive(Action<ShapeElement> onElem)

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ProtoBuf;
-using System.ComponentModel;
-
-namespace Vintagestory.API.Server
+﻿namespace Vintagestory.API.Server
 {
     // When adding a pass here, also increase the value Const.donePass
 
-    
+
     /// <summary>
     /// The stages a chunk goes through when being created
     /// </summary>

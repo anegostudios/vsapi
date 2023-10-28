@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API;
-using Vintagestory.API.Common;
+﻿using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
-using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Server
 {
@@ -85,6 +78,14 @@ namespace Vintagestory.API.Server
         /// <param name="data">Optional parameter that can be used to pass on unformated data. Just like stdin/stdout/stderr, you could see this as a separate "programming communication channel"</param>
         void SendMessage(int groupId, string message, EnumChatType chatType, string data = null);
 
+        /// <summary>
+        /// Sends a chat message (notification type) to this player, localised to the player's own language independent from the server language
+        /// <br/>The message will be string formatted - similar to Lang.Get() - with the specified optional args
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="message"></param>
+        /// <param name="args"></param>
+        void SendLocalisedMessage(int groupId, string message, params object[] args);
 
         /// <summary>
         /// Sets the players privilege role. For a list of roles, read sapi.Config.Roles

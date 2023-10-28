@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.Common;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     /// <summary>
     /// A slot from which the player can only take stuff out of, but not place anything in it

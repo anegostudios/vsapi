@@ -1,3 +1,5 @@
+using OpenTK.Windowing.GraphicsLibraryFramework;
+
 namespace Vintagestory.API.Client
 {
     public static class GlKeyNames
@@ -11,33 +13,43 @@ namespace Vintagestory.API.Client
         {
             return key switch
             {
-                GlKeys.Number0 => "0",
-                GlKeys.Number1 => "1",
-                GlKeys.Number2 => "2",
-                GlKeys.Number3 => "3",
-                GlKeys.Number4 => "4",
-                GlKeys.Number5 => "5",
-                GlKeys.Number6 => "6",
-                GlKeys.Number7 => "7",
-                GlKeys.Number8 => "8",
-                GlKeys.Number9 => "9",
-                GlKeys.RBracket => "]",
-                GlKeys.LBracket => "[",
-                GlKeys.Tilde => "`",
-                GlKeys.Plus => "+",
-                GlKeys.Minus => "-",
-                GlKeys.LControl => "Ctrl",
-                GlKeys.LShift => "Shift",
-                GlKeys.LAlt => "Left Alt",
-                GlKeys.RAlt => "Right Alt",
-                GlKeys.Semicolon => ";",
-                GlKeys.Comma => ",",
-                GlKeys.Period => ".",
-                GlKeys.Slash => "/",
-                GlKeys.BackSlash => "\\",
-                _ => key.ToString()
+                GlKeys.Keypad0 => "Keypad 0",
+                GlKeys.Keypad1 => "Keypad 1",
+                GlKeys.Keypad2 => "Keypad 2",
+                GlKeys.Keypad3 => "Keypad 3",
+                GlKeys.Keypad4 => "Keypad 4",
+                GlKeys.Keypad5 => "Keypad 5",
+                GlKeys.Keypad6 => "Keypad 6",
+                GlKeys.Keypad7 => "Keypad 7",
+                GlKeys.Keypad8 => "Keypad 8",
+                GlKeys.Keypad9 => "Keypad 9",
+                GlKeys.KeypadDivide => "Keypad Divide",
+                GlKeys.KeypadMultiply => "Keypad Multiply",
+                GlKeys.KeypadSubtract => "Keypad Subtract",
+                GlKeys.KeypadAdd => "Keypad Add",
+                GlKeys.KeypadDecimal => "Keypad Decimal",
+                GlKeys.KeypadEnter => "Keypad Enter",
+                GlKeys.Unknown => "Unknown",
+                _ => GetKeyName(key)
             };
             ;
+        }
+
+        /// <summary>
+        /// Gets the string the key would produce upon pressing it without considering any modifiers (but single keys get converted to uppercase).
+        /// So GlKeys.W on QWERTY Keyboard layout returns W, GlKeys.Space returns Space etc.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetKeyName(GlKeys key)
+        {
+            var keycode = KeyConverter.GlKeysToNew[(int)key];
+            var keyName = GLFW.GetKeyName((Keys)keycode, 0);
+            if (string.IsNullOrWhiteSpace(keyName))
+            {
+                return key.ToString();
+            }
+            return keyName.ToUpperInvariant();
         }
     }
 
@@ -47,6 +59,7 @@ namespace Vintagestory.API.Client
     public static class KeyConverter
     {
         public static readonly int[] NewKeysToGlKeys = new int[349];
+        public static readonly int[] GlKeysToNew = new int[131];
 
         static KeyConverter()
         {
@@ -167,9 +180,30 @@ namespace Vintagestory.API.Client
             NewKeysToGlKeys[346]=(int)GlKeys.AltRight;
             NewKeysToGlKeys[347]=(int)GlKeys.WinRight;
             NewKeysToGlKeys[348]=(int)GlKeys.Menu;
+
+
+            // set all to Keys.Unknown
+            for (int i = 0; i < GlKeysToNew.Length; i++)
+            {
+                GlKeysToNew[i] = -1;
+            }
+            // reverse the mapping
+            for (int i = 0; i < NewKeysToGlKeys.Length; i++)
+            {
+                if (NewKeysToGlKeys[i] != 0)
+                {
+                    GlKeysToNew[NewKeysToGlKeys[i]] = i;
+                }
+            }
         }
     }
     
+    /// <summary>
+    /// Internally the game uses OpenTK and their Keys are by default mapped to US QWERTY Keyboard layout which the GlKeys also do.
+    /// Upon typing text in a Text input field it will produce the correct characters according to your keyboard layout.
+    /// 
+    /// If you need to get the character for the current Keyboard layout use <see cref="GlKeyNames.GetKeyName"/>
+    /// </summary>
      public enum GlKeys
     {
         Unknown = 0,

@@ -1,5 +1,4 @@
-﻿using System;
-using Vintagestory.API.Client;
+﻿using Vintagestory.API.Client;
 using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
@@ -46,16 +45,6 @@ namespace Vintagestory.API.Common
         {
             return 0.1;
         }
-
-        /// <summary>
-        /// When the server reloads mods at runtime, should this mod also be reloaded. Return false e.g. for any mod that adds blocks.
-        /// </summary>
-        /// <returns></returns>
-        public virtual bool AllowRuntimeReload
-        {
-            get { return false; }
-        }
-
 
         /// <summary>
         /// Called during intial mod loading, called before any mod receives the call to Start()
@@ -110,7 +99,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Full start to the mod on the server side
-        /// <br/><br/>In 1.17+ do NOT use this to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON).
+        /// <br/><br/>In 1.17+ do NOT use this to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON). Do not register recipes either.
         /// It is already too late to do that here, it will not be seen client-side. Instead, code which needs to do that should be placed in the overriden method AssetsFinalize(). See VSSurvivalMod system BlockReinforcement.cs for an example.
         /// </summary>
         /// <param name="api"></param>

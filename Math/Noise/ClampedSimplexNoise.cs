@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vintagestory.API.MathTools
+﻿namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Perlin noise of supplied amplitude and frequency. The resulting value is clamped to 0...1

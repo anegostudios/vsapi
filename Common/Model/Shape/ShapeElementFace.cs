@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     public class ShapeElementFace
     {

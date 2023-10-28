@@ -108,6 +108,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool Tabbable = true;
 
+        public bool Enabled = true;
+
         bool renderFocusHighlight;
 
         internal GuiComposer(ICoreClientAPI api, ElementBounds bounds, string dialogName)
@@ -371,7 +373,8 @@ namespace Vintagestory.API.Client
                 bounds.CalcWorldBounds();
             } catch (Exception e)
             {
-                Api.Logger.Error("Exception thrown when trying to calculate world bounds for gui composite " + dialogName + ": " + e);
+                Api.Logger.Error("Exception thrown when trying to calculate world bounds for gui composite " + dialogName + ":");
+                Api.Logger.Error(e);
             }
             
             bounds.IsDrawingSurface = true;
@@ -437,6 +440,8 @@ namespace Vintagestory.API.Client
         /// <param name="mouse">The mouse information.</param>
         public void OnMouseUp(MouseEvent mouse)
         {
+            if (!Enabled) return;
+
             foreach (GuiElement element in interactiveElements.Values)
             {
                 element.OnMouseUp(Api, mouse);
@@ -449,6 +454,8 @@ namespace Vintagestory.API.Client
         /// <param name="mouseArgs">The mouse information.</param>
         public void OnMouseDown(MouseEvent mouseArgs)
         {
+            if (!Enabled) return;
+
             bool beforeHandled = false;
             bool nowHandled = false;
             renderFocusHighlight = false;
@@ -492,6 +499,8 @@ namespace Vintagestory.API.Client
         /// <param name="mouse">The mouse information.</param>
         public void OnMouseMove(MouseEvent mouse)
         {
+            if (!Enabled) return;
+
             foreach (GuiElement element in interactiveElements.Values)
             {
                 element.OnMouseMove(Api, mouse);
@@ -505,6 +514,8 @@ namespace Vintagestory.API.Client
 
         public bool OnMouseEnterSlot(ItemSlot slot)
         {
+            if (!Enabled) return false;
+
             foreach (GuiElement element in interactiveElements.Values)
             {
                 if (element.OnMouseEnterSlot(Api, slot)) return true;
@@ -515,6 +526,8 @@ namespace Vintagestory.API.Client
 
         public bool OnMouseLeaveSlot(ItemSlot slot)
         {
+            if (!Enabled) return false;
+
             foreach (GuiElement element in interactiveElements.Values)
             {
                 if (element.OnMouseLeaveSlot(Api, slot)) return true;
@@ -528,6 +541,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="mouse">The mouse wheel information.</param>
         public void OnMouseWheel(MouseWheelEventArgs mouse) {
+            if (!Enabled) return;
+
             // Prefer an element that is currently hovered 
             foreach (var val in interactiveElements)
             {
@@ -561,6 +576,8 @@ namespace Vintagestory.API.Client
         /// <param name="haveFocus">Whether or not the gui has focus.</param>
         public void OnKeyDown(KeyEvent args, bool haveFocus)
         {
+            if (!Enabled) return;
+
             foreach (GuiElement element in interactiveElements.Values)
             {
                 element.OnKeyDown(Api, args);
@@ -599,6 +616,8 @@ namespace Vintagestory.API.Client
         /// <param name="haveFocus">Whether or not the gui has focus.</param>
         public void OnKeyUp(KeyEvent args)
         {
+            if (!Enabled) return;
+
             foreach (GuiElement element in interactiveElements.Values)
             {
                 element.OnKeyUp(Api, args);
@@ -611,6 +630,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="args">The keyboard information</param>
         public void OnKeyPress(KeyEvent args) {
+            if (!Enabled) return;
 
             foreach (GuiElement element in interactiveElements.Values)
             {
@@ -654,6 +674,8 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The change in time.</param>
         public void PostRender(float deltaTime)
         {
+            if (!Enabled) return;
+
             // Window size goes 0 when minimized
             if (Api.Render.FrameWidth == 0 || Api.Render.FrameHeight == 0)
             {
@@ -692,6 +714,8 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The change in time.</param>
         public void Render(float deltaTime)
         {
+            if (!Enabled) return;
+
             if (recomposeOnRender)
             {
                 ReCompose();

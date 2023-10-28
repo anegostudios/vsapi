@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
@@ -422,6 +420,19 @@ namespace Vintagestory.API.Common
             return true;
         }
 
+        public enum EntityServerPacketId
+        {
+            Revive = 196,
+            Emote = 197,
+            Death = 198,
+            Hurt = 199
+        }
+        public enum EntityClientPacketId
+        {
+            SitfloorEdge = 296
+        }
+
+
 
         public override void OnGameTick(float dt)
         {
@@ -464,7 +475,7 @@ namespace Vintagestory.API.Common
                 for (int i = 0; animations != null && i < animations.Length; i++)
                 {
                     AnimationMetaData anim = animations[i];
-                    bool wasActive = AnimManager.ActiveAnimationsByAnimCode.ContainsKey(anim.Animation);
+                    bool wasActive = AnimManager.IsAnimationActive(anim.Animation);
                     bool nowActive = anim.Matches((int)CurrentControls);
                     bool isDefaultAnim = anim?.TriggeredBy?.DefaultAnim == true;
 
@@ -652,9 +663,7 @@ namespace Vintagestory.API.Common
                 {
                     WatchedAttributes.RemoveAttribute("mountedOn");
                 }
-                
             }
-
 
             base.ToBytes(writer, forClient);
             controls.ToBytes(writer);
@@ -676,8 +685,8 @@ namespace Vintagestory.API.Common
 
             } catch (EndOfStreamException e)
             {
-                Exception ex = new Exception("EndOfStreamException thrown while reading entity, you might be able to recover your savegame through repair mode", e);
-                throw ex;
+                throw new Exception("EndOfStreamException thrown while reading entity, you might be able to recover your savegame through repair mode", e);
+                
             }
 
             if (!WatchedAttributes.HasAttribute("mountedOn") && MountedOn != null)
@@ -757,6 +766,8 @@ namespace Vintagestory.API.Common
         public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
             addGearToShape(ref entityShape, shapePathForLogging);
+
+            base.OnTesselation(ref entityShape, shapePathForLogging);
         }
 
         public bool hideClothing;
@@ -768,19 +779,30 @@ namespace Vintagestory.API.Common
 
             if (inv == null || (!(this is EntityPlayer) && inv.Empty)) return entityShape;
 
-            // Make a copy so we don't mess up the original
-            Shape newShape = entityShape.Clone();
-            newShape.ResolveAndLoadJoints("head");
-            entityShape = newShape;
+            bool clearCache = false;
 
             foreach (var slot in inv)
             {
+                if (slot.Empty) continue;
                 if (hideClothing && !slot.Empty)
                 {
                     continue;
                 }
 
+                if (!clearCache)
+                {
+                    // Make a full copy so we don't mess up the original
+                    Shape newShape = entityShape.Clone();
+                    entityShape = newShape;
+                }
+
+                clearCache = true;
                 entityShape = addGearToShape(slot, entityShape, shapePathForLogging);
+            }
+
+            if (clearCache)
+            {
+                AnimationCache.ClearCache(Api, this);
             }
 
             return entityShape;
@@ -803,7 +825,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        protected Shape addGearToShape(ItemSlot slot, Shape entityShape, string shapePathForLogging)
+        protected virtual Shape addGearToShape(ItemSlot slot, Shape entityShape, string shapePathForLogging)
         {
             if (slot.Empty) return entityShape;
             ItemStack stack = slot.Itemstack;
@@ -826,28 +848,28 @@ namespace Vintagestory.API.Common
 
             if (attrObj?["wearableAttachment"].Exists != true) return entityShape;
 
-            Shape armorShape=null;
+            Shape gearShape=null;
             AssetLocation shapePath=null;
-            CompositeShape compArmorShape = null;
+            CompositeShape compGearShape = null;
             if (stack.Collectible is IWearableShapeSupplier iwss)
             {
-                armorShape = iwss.GetShape(stack, this);
+                gearShape = iwss.GetShape(stack, this);
             }
 
-            if (armorShape == null) {
-                compArmorShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
-                shapePath = shapePath = compArmorShape.Base.CopyWithPath("shapes/" + compArmorShape.Base.Path + ".json");
-                armorShape = Shape.TryGet(Api, shapePath);
-                if (armorShape == null)
+            if (gearShape == null) {
+                compGearShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
+                shapePath = shapePath = compGearShape.Base.CopyWithPath("shapes/" + compGearShape.Base.Path + ".json");
+                gearShape = Shape.TryGet(Api, shapePath);
+                if (gearShape == null)
                 {
-                    Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found or errored, was supposed to be at {3}. Armor piece will be invisible.", compArmorShape.Base, stack.Class, stack.Collectible.Code, shapePath);
+                    Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found or errored, was supposed to be at {3}. Armor piece will be invisible.", compGearShape.Base, stack.Class, stack.Collectible.Code, shapePath);
                     return null;
                 }
             }
 
 
             bool added = false;
-            foreach (var val in armorShape.Elements)
+            foreach (var val in gearShape.Elements)
             {
                 ShapeElement elem;
 
@@ -856,13 +878,13 @@ namespace Vintagestory.API.Common
                     elem = entityShape.GetElementByName(val.StepParentName, StringComparison.InvariantCultureIgnoreCase);
                     if (elem == null)
                     {
-                        Api.World.Logger.Warning("Entity gear shape {0} defined in {1} {2} requires step parent element with name {3}, but no such element was found in shape {4}. Will not be visible.", compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code, val.StepParentName, shapePathForLogging);
+                        Api.World.Logger.Warning("Entity gear shape {0} defined in {1} {2} requires step parent element with name {3}, but no such element was found in shape {4}. Will not be visible.", compGearShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code, val.StepParentName, shapePathForLogging);
                         continue;
                     }
                 }
                 else
                 {
-                    Api.World.Logger.Warning("Entity gear shape element {0} in shape {1} defined in {2} {3} did not define a step parent element. Will not be visible.", val.Name, compArmorShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code);
+                    Api.World.Logger.Warning("Entity gear shape element {0} in shape {1} defined in {2} {3} did not define a step parent element. Will not be visible.", val.Name, compGearShape.Base, slot.Itemstack.Class, slot.Itemstack.Collectible.Code);
                     continue;
                 }
 
@@ -875,7 +897,8 @@ namespace Vintagestory.API.Common
                     elem.Children = elem.Children.Append(val);
                 }
 
-                val.SetJointIdRecursive(elem.JointId);
+                val.ParentElement = elem;
+
                 val.WalkRecursive((el) =>
                 {
                 	el.DamageEffect = damageEffect;
@@ -889,10 +912,31 @@ namespace Vintagestory.API.Common
                 added = true;
             }
 
-            if (added && armorShape.Textures != null)
+            if (gearShape.Animations != null)
+            {
+                foreach (var gearAnim in gearShape.Animations)
+                {
+                    var entityAnim = entityShape.Animations.FirstOrDefault(anim => anim.Code == gearAnim.Code);
+                    if (entityAnim != null)
+                    {
+                        for (int gi = 0; gi < gearAnim.KeyFrames.Length; gi++)
+                        {
+                            var gearKeyFrame = gearAnim.KeyFrames[gi];
+                            var entityKeyFrame = getOrCreateKeyFrame(entityAnim, gearKeyFrame.Frame);
+
+                            foreach (var val in gearKeyFrame.Elements)
+                            {
+                                entityKeyFrame.Elements[val.Key] = val.Value;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (added && gearShape.Textures != null)
             {
                 Dictionary<string, AssetLocation> newdict = new Dictionary<string, AssetLocation>();
-                foreach (var val in armorShape.Textures)
+                foreach (var val in gearShape.Textures)
                 {
                     newdict[stack.Collectible.Code + "-" + val.Key] = val.Value;
                 }
@@ -904,13 +948,13 @@ namespace Vintagestory.API.Common
                     newdict[stack.Collectible.Code + "-" + val.Key] = val.Value.Base;
                 }
 
-                armorShape.Textures = newdict;
+                gearShape.Textures = newdict;
 
-                foreach (var val in armorShape.Textures)
+                foreach (var val in gearShape.Textures)
                 {
                     CompositeTexture ctex = new CompositeTexture() { Base = val.Value };
 
-                    entityShape.TextureSizes[val.Key] = new int[] { armorShape.TextureWidth, armorShape.TextureHeight };
+                    entityShape.TextureSizes[val.Key] = new int[] { gearShape.TextureWidth, gearShape.TextureHeight };
 
                     AssetLocation armorTexLoc = val.Value;
 
@@ -951,7 +995,7 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                foreach (var val in armorShape.TextureSizes)
+                foreach (var val in gearShape.TextureSizes)
                 {
                     entityShape.TextureSizes[val.Key] = val.Value;
                 }
@@ -960,170 +1004,33 @@ namespace Vintagestory.API.Common
             return entityShape;
         }
 
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="code">Any unique Identifier</param>
-        /// <param name="cshape"></param>
-        /// <param name="entityShape"></param>
-        /// <param name="shapePathForLogging"></param>
-        /// <param name="disableElements"></param>
-        /// <returns></returns>
-        protected Shape addGearToShape(string code, CompositeShape cshape, Shape entityShape, string shapePathForLogging, string[] disableElements = null, Dictionary<string, AssetLocation> textureOverrides = null)
+        private AnimationKeyFrame getOrCreateKeyFrame(Animation entityAnim, int frame)
         {
-            AssetLocation shapePath = cshape.Base.CopyWithPath("shapes/" + cshape.Base.Path + ".json");
-
-            if (disableElements != null)
+            for (int ei = 0; ei < entityAnim.KeyFrames.Length; ei++)
             {
-                foreach (var val in disableElements)
+                var entityKeyFrame = entityAnim.KeyFrames[ei];
+                if (entityKeyFrame.Frame == frame)
                 {
-                    entityShape.RemoveElementByName(val);
+                    return entityKeyFrame;
                 }
             }
 
-            Shape armorShape = Shape.TryGet(Api, shapePath);
-            if (armorShape == null)
+            for (int ei = 0; ei < entityAnim.KeyFrames.Length; ei++)
             {
-                Api.World.Logger.Warning("Compositshape {0} (code: {2}) defined but not found or errored, was supposed to be at {1}. Part will be invisible.", cshape.Base, shapePath, code);
-                return null;
-            }
-
-            bool added = applyStepParents(null, armorShape.Elements, entityShape, code, cshape, shapePathForLogging);
-
-
-            if (added && armorShape.Textures != null)
-            {
-                Dictionary<string, AssetLocation> newdict = new Dictionary<string, AssetLocation>();
-                foreach (var val in armorShape.Textures)
+                var entityKeyFrame = entityAnim.KeyFrames[ei];
+                if (entityKeyFrame.Frame > frame)
                 {
-                    newdict[code + "-" + val.Key] = val.Value;
-                }
-
-                // Texture overrides
-                if (textureOverrides != null)
-                {
-                    foreach (var val in textureOverrides)
-                    {
-                        newdict[code + "-" + val.Key] = val.Value;
-                    }
-                }
-
-                armorShape.Textures = newdict;
-
-                foreach (var val in armorShape.Textures)
-                {
-                    CompositeTexture ctex = new CompositeTexture() { Base = val.Value };
-
-                    entityShape.TextureSizes[val.Key] = new int[] { armorShape.TextureWidth, armorShape.TextureHeight };
-
-                    AssetLocation armorTexLoc = val.Value;
-
-                    // Weird backreference to the shaperenderer. Should be refactored.
-                    var texturesByLoc = extraTextureByLocation;
-                    var texturesByName = extraTexturesByTextureName;
-
-                    BakedCompositeTexture bakedCtex;
-
-                    ICoreClientAPI capi = Api as ICoreClientAPI;
-
-                    if (!texturesByLoc.TryGetValue(armorTexLoc, out bakedCtex))
-                    {
-                        int textureSubId = 0;
-                        TextureAtlasPosition texpos;
-
-                        IAsset texAsset = Api.Assets.TryGet(val.Value.Clone().WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png"));
-                        if (texAsset != null)
-                        {
-                            BitmapRef bmp = texAsset.ToBitmap(capi);
-                            capi.EntityTextureAtlas.InsertTexture(bmp, out textureSubId, out texpos);
-                        }
-                        else
-                        {
-                            capi.World.Logger.Warning("Entity armor shape {0} defined texture {1}, not no such texture found.", shapePath, val.Value);
-                        }
-
-                        ctex.Baked = new BakedCompositeTexture() { BakedName = val.Value, TextureSubId = textureSubId };
-
-                        texturesByName[val.Key] = ctex;
-                        texturesByLoc[armorTexLoc] = ctex.Baked;
-                    }
-                    else
-                    {
-                        ctex.Baked = bakedCtex;
-                        texturesByName[val.Key] = ctex;
-                    }
-                }
-
-                foreach (var val in armorShape.TextureSizes)
-                {
-                    entityShape.TextureSizes[val.Key] = val.Value;
+                    var kfm = new AnimationKeyFrame() { Frame = frame };
+                    entityAnim.KeyFrames = entityAnim.KeyFrames.InsertAt(kfm, frame);
+                    return kfm;
                 }
             }
 
-            return entityShape;
+            var kf = new AnimationKeyFrame() { Frame = frame };
+            entityAnim.KeyFrames = entityAnim.KeyFrames.InsertAt(kf, 0);
+            return kf;
         }
 
-        private bool applyStepParents(ShapeElement parentElem, ShapeElement[] elements, Shape toShape, string code, CompositeShape cshape, string shapePathForLogging)
-        {
-            bool added = false;
-
-            foreach (var cElem in elements)
-            {
-                ShapeElement refelem;
-
-                if (cElem.Children != null)
-                {
-                    added |= applyStepParents(cElem, cElem.Children, toShape, code, cshape, shapePathForLogging);
-                }
-
-                if (cElem.StepParentName != null)
-                {
-                    refelem = toShape.GetElementByName(cElem.StepParentName, StringComparison.InvariantCultureIgnoreCase);
-                    if (refelem == null)
-                    {
-                        Api.World.Logger.Warning("Shape {0} requires step parent element with name {1}, but no such element was found in shape {2}. Will not be visible.", cshape.Base, cElem.StepParentName, shapePathForLogging);
-                        continue;
-                    }
-                }
-                else
-                {
-                    if (parentElem == null)
-                    {
-                        Api.World.Logger.Warning("Entity armor shape element {0} in shape {1} did not define a step parent element. Will not be visible.", cElem.Name, cshape.Base);
-                    }
-                    continue;
-                }
-
-                if (parentElem != null)
-                {
-                    parentElem.Children = parentElem.Children.Remove(cElem);
-                }
-
-                if (refelem.Children == null)
-                {
-                    refelem.Children = new ShapeElement[] { cElem };
-                }
-                else
-                {
-                    refelem.Children = refelem.Children.Append(cElem);
-                }
-
-                cElem.SetJointIdRecursive(refelem.JointId);
-
-                cElem.WalkRecursive((el) =>
-                {
-                    foreach (var face in el.FacesResolved)
-                    {
-                        if (face != null) face.Texture = code + "-" + face.Texture;
-                    }
-                });
-
-                added = true;
-            }
-
-            return added;
-        }
 
         public override bool TryGiveItemStack(ItemStack itemstack)
         {
@@ -1136,7 +1043,7 @@ namespace Vintagestory.API.Common
 
             if (GearInventory != null)
             {
-                WeightedSlot wslot = GearInventory.GetBestSuitedSlot(dummySlot, new List<ItemSlot>());
+                WeightedSlot wslot = GearInventory.GetBestSuitedSlot(dummySlot, null, new List<ItemSlot>());
                 if (wslot.weight > 0)
                 {
                     dummySlot.TryPutInto(wslot.slot, ref op);
@@ -1148,7 +1055,7 @@ namespace Vintagestory.API.Common
 
             if (LeftHandItemSlot?.Inventory != null)
             {
-                WeightedSlot wslot = LeftHandItemSlot.Inventory.GetBestSuitedSlot(dummySlot, new List<ItemSlot>());
+                WeightedSlot wslot = LeftHandItemSlot.Inventory.GetBestSuitedSlot(dummySlot, null, new List<ItemSlot>());
                 if (wslot.weight > 0)
                 {
                     dummySlot.TryPutInto(wslot.slot, ref op);

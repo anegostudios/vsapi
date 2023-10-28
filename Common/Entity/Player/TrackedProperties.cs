@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Vintagestory.API.MathTools;
+﻿using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common.Entities
 {

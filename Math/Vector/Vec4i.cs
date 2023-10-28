@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
@@ -19,6 +15,14 @@ namespace Vintagestory.API.MathTools
         public Vec4i()
         {
 
+        }
+
+        public Vec4i(BlockPos pos, int w)
+        {
+            this.X = pos.X;
+            this.Y = pos.Y;
+            this.Z = pos.Z;
+            this.W = w;
         }
 
         public Vec4i(int x, int y, int z, int w)
@@ -44,6 +48,21 @@ namespace Vintagestory.API.MathTools
             hash = hash * 23 + W.GetHashCode();
             return hash;
         }
+
+        /// <summary>
+        /// Returns the squared Euclidean horizontal distance to between this and given position
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public float HorDistanceSqTo(double x, double z)
+        {
+            double dx = x - X;
+            double dz = z - Z;
+
+            return (float)(dx * dx + dz * dz);
+        }
+
     }
 
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     public enum EnumDamageSource
     {

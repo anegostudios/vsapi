@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
@@ -78,6 +74,18 @@ namespace Vintagestory.API.MathTools
             var dy = Y - targetY;
 
             return Math.Sqrt(dx * dx + dy * dy);
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Vec2d d &&
+                   X == d.X &&
+                   Y == d.Y;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
         }
 
 

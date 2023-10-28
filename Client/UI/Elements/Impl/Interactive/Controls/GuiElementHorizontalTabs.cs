@@ -9,6 +9,7 @@ namespace Vintagestory.API.Client
         public int DataInt;
         public string Name;
         public double PaddingTop; // For vertical tabs
+        public bool Active;
     }
 
     public class GuiElementHorizontalTabs : GuiElementTextBase

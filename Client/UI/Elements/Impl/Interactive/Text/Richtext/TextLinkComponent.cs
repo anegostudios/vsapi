@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Cairo;
-using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Client
 {
@@ -197,31 +192,37 @@ namespace Vintagestory.API.Client
         {
             if (onLinkClicked == null)
             {
-                if (Href.StartsWith("hotkey://"))
-                {
-                    api.Input.GetHotKeyByCode(Href.Substring("hotkey://".Length))?.Handler?.Invoke(null);
-                }
-                else
-                {
-                    string[] parts = Href.Split(new string[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
-                    if (parts.Length > 0 && api.LinkProtocols != null && api.LinkProtocols.ContainsKey(parts[0]))
-                    {
-                        api.LinkProtocols[parts[0]].Invoke(this);
-                        return;
-                    }
-
-                    if (parts.Length > 0)
-                    {
-                        if (parts[0].StartsWith("http") || parts[0].StartsWith("https"))
-                        {
-                            api.Gui.OpenLink(Href);
-                        }
-                    }
-                }
+                HandleLink();
             }
             else
             {
                 onLinkClicked.Invoke(this);
+            }
+        }
+
+
+        public void HandleLink()
+        {
+            if (Href.StartsWith("hotkey://"))
+            {
+                api.Input.GetHotKeyByCode(Href.Substring("hotkey://".Length))?.Handler?.Invoke(null);
+            }
+            else
+            {
+                string[] parts = Href.Split(new string[] { "://" }, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length > 0 && api.LinkProtocols != null && api.LinkProtocols.ContainsKey(parts[0]))
+                {
+                    api.LinkProtocols[parts[0]].Invoke(this);
+                    return;
+                }
+
+                if (parts.Length > 0)
+                {
+                    if (parts[0].StartsWith("http") || parts[0].StartsWith("https"))
+                    {
+                        api.Gui.OpenLink(Href);
+                    }
+                }
             }
         }
 

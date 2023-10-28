@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Vintagestory.API.Client;
-using Vintagestory.API.Common;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
-using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
     public delegate double WalkSpeedSupplierDelegate();
+
+    public class AnimFrameCallback
+    {
+        public float Frame;
+        public string Animation;
+        public Action Callback;
+    }
 
     /// <summary>
     /// Syncs every frame with entity.ActiveAnimationsByAnimCode, starts, progresses and stops animations when necessary 
@@ -44,7 +47,7 @@ namespace Vintagestory.API.Common
 
         public Dictionary<string, AttachmentPointAndPose> AttachmentPointByCode = new Dictionary<string, AttachmentPointAndPose>();
 
-        protected int curAnimCount = 0;
+        protected int activeAnimCount = 0;
         public RunningAnimation[] CurAnims = new RunningAnimation[20];
 
         public bool CalculateMatrices { get; set; } = true;
@@ -52,13 +55,13 @@ namespace Vintagestory.API.Common
         public float[] Matrices4x3
         {
             get {
-                return curAnimCount > 0 ? TransformationMatrices4x3 : TransformationMatricesDefaultPose4x3;
+                return activeAnimCount > 0 ? TransformationMatrices4x3 : TransformationMatricesDefaultPose4x3;
             }
         }
 
         public int ActiveAnimationCount
         {
-            get { return curAnimCount; }
+            get { return activeAnimCount; }
         }
 
         public RunningAnimation[] RunningAnimations => anims;
@@ -98,10 +101,8 @@ namespace Vintagestory.API.Common
                 };
             }
             
-            //float[] identMat = Mat4f.Create();
             for (int i = 0; i < TransformationMatricesDefaultPose4x3.Length; i++)
             {
-                //TransformationMatricesDefaultPose4x3[i] = identMat[i % 16];
                 TransformationMatricesDefaultPose4x3[i] = identMat4x3[i % 12];
             }
         }
@@ -111,7 +112,7 @@ namespace Vintagestory.API.Common
 
         public virtual void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
         {
-            curAnimCount = 0;
+            activeAnimCount = 0;
 
             accum += dt;
             if (accum > 0.25f)
@@ -182,7 +183,7 @@ namespace Vintagestory.API.Common
                     continue;
                 }
 
-                CurAnims[curAnimCount] = anim;
+                CurAnims[activeAnimCount] = anim;
 
                 if ((anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && anim.Iterations != 0 && !anim.Active) || (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut && anim.Iterations != 0))
                 {
@@ -191,7 +192,7 @@ namespace Vintagestory.API.Common
 
                 anim.Progress(dt, (float)walkSpeed);
 
-                curAnimCount++;
+                activeAnimCount++;
             }
 
 
@@ -214,54 +215,10 @@ namespace Vintagestory.API.Common
 
         protected abstract void calculateMatrices(float dt);
         
-        // This is fast animation blending, but it creates broken blended states. So correctness goees above performance I guess.
-        /*{
-            bool first = true;
-
-            for (int i = 0; i < curAnimCount; i++)
-            {
-                RunningAnimation anim = curAnims[i];
-
-                cheapMatrixLerp(anim, first);
-                first = false;
-            }
-        }*/
-
-
-        /*protected void cheapMatrixLerp(RunningAnimation anim, bool first)
-        {
-            try
-            {
-                AnimationFrame curFrame = anim.Animation.AllFrames[(int)anim.CurrentFrame % anim.Animation.AllFrames.Length];
-                AnimationFrame nextFrame = anim.Animation.AllFrames[((int)anim.CurrentFrame + 1) % anim.Animation.AllFrames.Length];
-
-                float l = anim.CurrentFrame - (int)anim.CurrentFrame;
-
-                if (first)
-                {
-                    for (int i = 0; i < TransformationMatrices.Length; i++)
-                    {
-                        TransformationMatrices[i] = curFrame.transformationMatrices[i] * (1 - l) + nextFrame.transformationMatrices[i] * (l);
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < TransformationMatrices.Length; i++)
-                    {
-                        TransformationMatrices[i] += curFrame.transformationMatrices[i] * (1 - l) + nextFrame.transformationMatrices[i] * (l);
-                    }
-                }
-            } catch (Exception e)
-            {
-                string str = string.Format("Something crashed while trying to calculate an animation frame for {0}. AllFrames.Length={1}, currframee={2}, tf mats length={3}. Exception: {4}", entity?.Code, anim.Animation.AllFrames.Length,  anim.CurrentFrame, TransformationMatrices.Length, e);
-                throw new Exception(str);
-            }
-        }*/
-
 
         public AttachmentPointAndPose GetAttachmentPointPose(string code)
         {
-            AttachmentPointAndPose apap = null;
+            AttachmentPointAndPose apap;
             AttachmentPointByCode.TryGetValue(code, out apap);
             return apap;
         }

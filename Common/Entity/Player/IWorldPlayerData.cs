@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
-    
+
     /// <summary>
     /// Some world-specific information about a connected player. If you want modify any value, also broadcast the playerdata to all connected clients.
     /// This is the object that stored and loaded with the save game

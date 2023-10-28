@@ -514,7 +514,6 @@ namespace Vintagestory.API.Common.Entities
             });
 
             WatchedAttributes.RegisterModifiedListener("onFire", updateOnFire);
-
             WatchedAttributes.RegisterModifiedListener("entityDead", updateColSelBoxes);
 
             if (World.Side == EnumAppSide.Client && Properties.Client.SizeGrowthFactor != 0)
@@ -548,11 +547,14 @@ namespace Vintagestory.API.Common.Entities
             this.Properties.Initialize(this, api);
 
             Properties.Client.DetermineLoadedShape(EntityId);
-            AnimManager = AnimationCache.InitManager(api, AnimManager, this, properties.Client.LoadedShapeForEntity, "head");
             
             if (api.Side == EnumAppSide.Server)
             {
+                AnimManager = AnimationCache.InitManager(api, AnimManager, this, properties.Client.LoadedShapeForEntity, "head");
                 AnimManager.OnServerTick(0);
+            } else
+            {
+                AnimManager.Init(api, this); // Fully initialized in entity.OnTesselation()
             }
 
             LocalEyePos.Y = Properties.EyeHeight;
@@ -697,6 +699,13 @@ namespace Vintagestory.API.Common.Entities
 
                 ItemStack stack = bdStack.GetNextItemStack(dropMul * extraMul);
                 if (stack == null) continue;
+
+                if (stack.Collectible is IResolvableCollectible irc)
+                {
+                    var slot = new DummySlot(stack);
+                    irc.Resolve(slot, world);
+                    stack = slot.Itemstack;
+                }
 
                 todrop.Add(stack);
                 if (bdStack.LastDrop) break;
@@ -1002,7 +1011,17 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="shapePathForLogging"></param>
         public virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
+            entityShape.ResolveReferences(Api.Logger, shapePathForLogging);
+            AnimManager = AnimationCache.InitManager(World.Api, AnimManager, this, entityShape, "head");
 
+            // Clear cached values. ClientAnimator regenerates these
+            if (entityShape.Animations != null)
+            {
+                foreach (var anim in entityShape.Animations)
+                {
+                    anim.PrevNextKeyFrameByFrame = null;
+                }
+            }
         }
 
 
@@ -1448,16 +1467,19 @@ namespace Vintagestory.API.Common.Entities
 
             i = 0;
             StringBuilder runninganims = new StringBuilder();
-            foreach (var anim in AnimManager.Animator.RunningAnimations)
+            if (AnimManager.Animator != null)
             {
-                if (!anim.Active) continue;
+                foreach (var anim in AnimManager.Animator.RunningAnimations)
+                {
+                    if (!anim.Active) continue;
 
-                if (i++ > 0) runninganims.Append(",");
-                runninganims.Append(anim.Animation.Code);
+                    if (i++ > 0) runninganims.Append(",");
+                    runninganims.Append(anim.Animation.Code);
+                }
+
+                DebugAttributes.SetString("Active Animations", anims.Length > 0 ? anims : "-");
+                DebugAttributes.SetString("Running Animations", runninganims.Length > 0 ? runninganims.ToString() : "-");
             }
-
-            DebugAttributes.SetString("Active Animations", anims.Length > 0 ? anims : "-");
-            DebugAttributes.SetString("Running Animations", runninganims.Length > 0 ? runninganims.ToString() : "-");
         }
 
 

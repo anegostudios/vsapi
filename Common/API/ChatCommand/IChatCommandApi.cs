@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
@@ -180,6 +180,12 @@ namespace Vintagestory.API.Common
 
         public static TextCommandResult Success(string message = "", object data = null) => new TextCommandResult() { Status = EnumCommandStatus.Success, Data = data, StatusMessage = message };
         public static TextCommandResult Error(string message, string errorCode = "") => new TextCommandResult() { Status = EnumCommandStatus.Error, StatusMessage = message, ErrorCode = errorCode };
+
+        internal static TextCommandResult Success(object fullSyntax)
+        {
+            throw new NotImplementedException();
+        }
+
         public static TextCommandResult Deferred => new TextCommandResult() { Status = EnumCommandStatus.Deferred };
 
         public static OnCommandDelegate DeferredHandler => (args) => Deferred;
@@ -229,7 +235,7 @@ namespace Vintagestory.API.Common
         string[] GetValidRange(CmdArgs args);
         object GetValue();
         string GetSyntax();
-        string GetSyntaxExplanation();
+        string GetSyntaxExplanation(string indent);
 
         /// <summary>
         /// Used by the async system
@@ -242,168 +248,7 @@ namespace Vintagestory.API.Common
     public delegate TextCommandResult OnCommandDelegate(TextCommandCallingArgs args);
     public delegate TextCommandResult CommandPreconditionDelegate(TextCommandCallingArgs args);
 
-    public interface IChatCommand
-    {
-        /// <summary>
-        /// Name of this command plus parent command names
-        /// </summary>
-        string FullName { get; }
-
-        /// <summary>
-        /// Name of this command
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
-        /// Get the description of this command
-        /// </summary>
-        string Description { get; }
-
-        /// <summary>
-        /// Get the detailed description of this command
-        /// </summary>
-        string AdditionalInformation { get; }
-
-        /// <summary>
-        /// Get the examples of this command
-        /// </summary>
-        string[] Examples { get; }
-
-        /// <summary>
-        /// True if either name or privilege has not been set
-        /// </summary>
-        bool Incomplete { get; }
-
-        /// <summary>
-        /// Retrieve subcommand
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IChatCommand this[string name] { get; }
-        /// <summary>
-        /// If return value is error, command cannot be executed
-        /// </summary>
-        /// <param name="p"></param>
-        /// <returns></returns>
-        IChatCommand WithPreCondition(CommandPreconditionDelegate p);
-        /// <summary>
-        /// Sets the command name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IChatCommand WithName(string name);
-        /// <summary>
-        /// Registers alternative names for this command
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IChatCommand WithAlias(params string[] name);
-        /// <summary>
-        /// Registers an alternative name for this command, always at the root level, i.e. /name
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IChatCommand WithRootAlias(string name);
-        /// <summary>
-        /// Set command description
-        /// </summary>
-        /// <param name="description"></param>
-        /// <returns></returns>
-        IChatCommand WithDescription(string description);
-        /// <summary>
-        /// Set additional detailed command description, for command-specific help
-        /// </summary>
-        /// <param name="detail"></param>
-        /// <returns></returns>
-        IChatCommand WithAdditionalInformation(string detail);
-        /// <summary>
-        /// Define one ore more examples on how this command can be executed
-        /// </summary>
-        /// <param name="examaples"></param>
-        /// <returns></returns>
-        IChatCommand WithExamples(params string[] examaples);
-        /// <summary>
-        /// Define command arguments, you'd usually want to use one of the parsers supplied from from capi.ChatCommands.Parsers
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        IChatCommand WithArgs(params ICommandArgumentParser[] args);
-        /// <summary>
-        /// Define the required privilege to run this command / subcommand
-        /// </summary>
-        /// <param name="privilege"></param>
-        /// <returns></returns>
-        IChatCommand RequiresPrivilege(string privilege);
-
-        /// <summary>
-        /// This command can only be run if the caller is a player
-        /// </summary>
-        /// <returns></returns>
-        IChatCommand RequiresPlayer();
-
-        
-        /// <summary>
-        /// Define/Modify a subcommnad. Returns a new subcommand instance.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IChatCommand BeginSubCommand(string name);
-
-        /// <summary>
-        /// Define/Modify multiple subcommands. Returns a new subcommand instance.
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        IChatCommand BeginSubCommands(params string[] name);
-
-        /// <summary>
-        /// Leave current subcommand. Returns parent command instance.
-        /// </summary>
-        /// <returns></returns>
-        IChatCommand EndSubCommand();
-        /// <summary>
-        /// Define method to be called when the command is executed
-        /// </summary>
-        /// <param name="handler"></param>
-        /// <returns></returns>
-        IChatCommand HandleWith(OnCommandDelegate handler);
-        /// <summary>
-        /// Manually execute this command
-        /// </summary>
-        /// <param name="callargs"></param>
-        /// <param name="onCommandComplete"></param>
-        void Execute(TextCommandCallingArgs callargs, Action<TextCommandResult> onCommandComplete = null);
-        /// <summary>
-        /// Confirm whether the specified caller has the required privilege for this command
-        /// </summary>
-        /// <param name="caller"></param>
-        /// <returns></returns>
-        bool IsAvailableTo(Caller caller);
-        /// <summary>
-        /// Optional validation step that ensures that all the command and all its subcommands has a name, handler, privilege and description defined
-        /// </summary>
-        void Validate();
-        IChatCommand IgnoreAdditionalArgs();
-
-        IEnumerable<IChatCommand> Subcommands { get; }
-        Dictionary<string, IChatCommand> AllSubcommands { get; }
-
-        /// <summary>
-        /// Get a string showing how to call this command or subcommand
-        /// </summary>
-        string MethodSyntax(string name);
-
-        /// <summary>
-        /// Add text listing the parameters
-        /// </summary>
-        void AddParameterSyntax(StringBuilder sb);
-        /// <summary>
-        /// Add text explaining the form and interpretation of some of the more complex parameter types
-        /// </summary>
-        void AddSyntaxExplanation(StringBuilder sb);
-    }
-
-    public interface IChatCommandApi
+    public interface IChatCommandApi : IEnumerable<KeyValuePair<string, IChatCommand>>, IEnumerable
     {
         IChatCommand this[string name] { get; }
         IChatCommand Create();
@@ -431,5 +276,25 @@ namespace Vintagestory.API.Common
         /// <param name="onCommandComplete">Called when the command finished executing</param>
         /// <returns></returns>
         void ExecuteUnparsed(string message, TextCommandCallingArgs args, Action<TextCommandResult> onCommandComplete = null);
+        
+        /// <summary>
+        /// Get all commands ordered by name ASC
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static Dictionary<string, IChatCommand> GetOrdered(Dictionary<string, IChatCommand> command)
+        {
+            return command.OrderBy(s => s.Key).ToDictionary(i => i.Key, i => i.Value);
+        }
+
+        /// <summary>
+        /// Get all commands from <see cref="IChatCommandApi"/> ordered by name ASC
+        /// </summary>
+        /// <param name="chatCommandApi"></param>
+        /// <returns></returns>
+        static Dictionary<string, IChatCommand> GetOrdered(IChatCommandApi chatCommandApi)
+        {
+            return chatCommandApi.OrderBy(s => s.Key).ToDictionary(i => i.Key, i => i.Value);
+        }
     }
 }

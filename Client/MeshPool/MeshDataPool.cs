@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -72,6 +71,7 @@ namespace Vintagestory.API.Client
         public int UsedVertices;
 
         internal Vec3i poolOrigin;
+        internal int dimensionId;
 
         /// <summary>
         /// How many triangles are rendered.
@@ -157,9 +157,9 @@ namespace Vintagestory.API.Client
         /// <param name="modelOrigin">The origin point of the model.</param>
         /// <param name="frustumCullSphere">The culling sphere.</param>
         /// <returns>The location of the model (and the data) in the pool.</returns>
-        public ModelDataPoolLocation TryAdd(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere)
+        public ModelDataPoolLocation TryAdd(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, int dimension, Sphere frustumCullSphere)
         {
-            if (poolLocations.Count >= MaxPartsPerPool) return null;
+            if (poolLocations.Count >= MaxPartsPerPool || dimension != this.dimensionId) return null;
 
             // Can't add a model data to far away from our baseposition, otherwise our floating point positions
             // become too inaccurate
@@ -214,11 +214,14 @@ namespace Vintagestory.API.Client
 
 
         ModelDataPoolLocation InsertAt(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, Sphere frustumCullSphere, int indexPosition, int vertexPosition, int listPosition)
-        { 
+        {
             // Shift the indices numbers accordingly
-            for (int i = 0; i < modeldata.IndicesCount; i++)
+            if (vertexPosition > 0)  // not necessary if vertexPosition is zero!
             {
-                modeldata.Indices[i] += vertexPosition;
+                for (int i = 0; i < modeldata.IndicesCount; i++)
+                {
+                    modeldata.Indices[i] += vertexPosition;
+                }
             }
 
             // Relative offset to our pool origin
@@ -343,7 +346,6 @@ namespace Vintagestory.API.Client
         public void FrustumCull(FrustumCulling frustumCuller, EnumFrustumCullMode frustumCullMode)
         {
             indicesGroupsCount = 0;
-
             RenderedTriangles = 0;
             AllocatedTris = 0;
 
@@ -361,6 +363,29 @@ namespace Vintagestory.API.Client
 
                     indicesGroupsCount++;
                 }
+
+                AllocatedTris += size / 3;
+            }
+        }
+
+        public void SetFullyVisible()
+        {
+            indicesGroupsCount = 0;
+
+            RenderedTriangles = 0;
+            AllocatedTris = 0;
+
+            for (int i = 0; i < poolLocations.Count; i++)
+            {
+                ModelDataPoolLocation location = poolLocations[i];
+
+                int size = location.IndicesEnd - location.IndicesStart;
+                indicesStartsByte[indicesGroupsCount * 2] = location.IndicesStart * 4; // Offset in bytes, not ints
+                indicesSizes[indicesGroupsCount] = size;
+
+                RenderedTriangles += size / 3;
+
+                indicesGroupsCount++;
 
                 AllocatedTris += size / 3;
             }

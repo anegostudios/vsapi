@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Util
@@ -37,6 +34,17 @@ namespace Vintagestory.API.Util
             }
             return value;
         }
+
+        public static long ToLong(this string text, long defaultValue = 0)
+        {
+            long value;
+            if (!long.TryParse(text, NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out value))
+            {
+                return defaultValue;
+            }
+            return value;
+        }
+
 
         public static float ToFloat(this string text, float defaultValue = 0)
         {
@@ -162,6 +170,24 @@ namespace Vintagestory.API.Util
             }
 
             return true;
+        }
+
+
+        public static string RemoveDiacritics(this string stIn)
+        {
+            string stFormD = stIn.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+
+            for (int ich = 0; ich < stFormD.Length; ich++)
+            {
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+                if (uc != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(stFormD[ich]);
+                }
+            }
+
+            return (sb.ToString().Normalize(NormalizationForm.FormC));
         }
 
     }

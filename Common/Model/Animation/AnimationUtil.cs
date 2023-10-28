@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -33,7 +32,7 @@ namespace Vintagestory.API.Common
         {
             shape.ResolveReferences(api.World.Logger, cacheDictKey);
             CacheInvTransforms(shape.Elements);
-            shape.ResolveAndLoadJoints();
+            shape.ResolveAndFindJoints(api.World.Logger, cacheDictKey);
 
             TesselationMetaData meta = new TesselationMetaData()
             {

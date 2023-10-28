@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Cairo;
-using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -155,7 +152,6 @@ namespace Vintagestory.API.Client
 
             List<int> currentLine = new List<int>();
             List<TextFlowPath> flowPathList = new List<TextFlowPath>();
-
             flowPathList.Add(new TextFlowPath(Bounds.InnerWidth));
 
             double lineHeight = 0;

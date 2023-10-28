@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
@@ -56,6 +54,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         [JsonProperty]
         public string Code;
+        [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
+        public JsonObject Attributes;
         /// <summary>
         /// The animations code identifier that we want to play
         /// </summary>
@@ -148,6 +148,7 @@ namespace Vintagestory.API.Common
                 Code = this.Code,
                 Animation = this.Animation,
                 Weight = this.Weight,
+                Attributes = this.Attributes?.Clone(),
                 ClientSide = this.ClientSide,
                 ElementWeight = new Dictionary<string, float>(this.ElementWeight),
                 AnimationSpeed = this.AnimationSpeed,
@@ -225,6 +226,7 @@ namespace Vintagestory.API.Common
 
             writer.Write(HoldEyePosAfterEasein);
             writer.Write(ClientSide);
+            writer.Write(Attributes?.ToString() ?? "");
         }
 
         public static AnimationMetaData FromBytes(BinaryReader reader, string version)
@@ -282,7 +284,18 @@ namespace Vintagestory.API.Common
             {
                 animdata.ClientSide = reader.ReadBoolean();
             }
-            
+            if (GameVersion.IsAtLeastVersion(version, "1.19.0-dev.20"))
+            {
+                string attributes = reader.ReadString();
+                if (attributes != "")
+                {
+                    animdata.Attributes = new JsonObject(JToken.Parse(attributes));
+                } else
+                {
+                    animdata.Attributes = new JsonObject(JToken.Parse("{}"));
+                }
+            }
+
 
             animdata.Init();
 

@@ -15,47 +15,6 @@ namespace Vintagestory.API.Common
 {
     public delegate bool CanSpawnNearbyDelegate(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc);
 
-    public class PlayerAnimationManager : AnimationManager
-    {
-        public override bool StartAnimation(AnimationMetaData animdata)
-        {
-            if (api.Side == EnumAppSide.Client && capi.World.Player.ImmersiveFpMode && !animdata.Code.EndsWith("-ifp"))
-            {
-                if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(animdata.Code + "-ifp", out var animdatafp))
-                {
-                    if (ActiveAnimationsByAnimCode.TryGetValue(animdatafp.Animation, out var activeAnimdata) && activeAnimdata == animdatafp) return false;
-                    return base.StartAnimation(animdatafp);
-                }
-            }
-
-            return base.StartAnimation(animdata);
-        }
-
-        public override void StopAnimation(string code)
-        {
-            base.StopAnimation(code);
-            base.StopAnimation(code + "-ifp");
-        }
-
-        public override bool IsAnimationActive(params string[] anims)
-        {
-            if (api.Side == EnumAppSide.Client && capi.World.Player.ImmersiveFpMode)
-            {
-                foreach (var val in anims)
-                {
-                    if (ActiveAnimationsByAnimCode.ContainsKey(val + "-ifp")) return true;
-                }
-            }
-
-            return base.IsAnimationActive(anims);
-        }
-
-        public override void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)
-        {
-            base.OnReceivedServerAnimations(activeAnimations, activeAnimationsCount, activeAnimationSpeeds);
-        }
-    }
-
     public class EntityPlayer : EntityHumanoid
     {
         /// <summary>
@@ -363,10 +322,6 @@ namespace Vintagestory.API.Common
                 WatchedAttributes.SetDouble("lastReviveTotalHours", hrs);
             }
 
-            if (Api.Side == EnumAppSide.Client)
-            {
-                AnimManager.HeadController = new PlayerHeadController(AnimManager, this, Properties.Client.LoadedShapeForEntity);
-            }
 
             randomIdleAnimations = properties.Attributes["randomIdleAnimations"].AsArray<string>(null);
         }
@@ -415,8 +370,6 @@ namespace Vintagestory.API.Common
 
         public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
-            base.OnTesselation(ref entityShape, shapePathForLogging);
-
             IInventory backPackInv = Player?.InventoryManager.GetOwnInventory(GlobalConstants.backpackInvClassName);
 
             Dictionary<string, ItemSlot> uniqueGear = new Dictionary<string, ItemSlot>();
@@ -431,6 +384,12 @@ namespace Vintagestory.API.Common
             {
                 entityShape = addGearToShape(val.Value, entityShape, shapePathForLogging);
             }
+
+            AnimationCache.ClearCache(Api, this);
+
+            base.OnTesselation(ref entityShape, shapePathForLogging);
+
+            AnimManager.HeadController = new PlayerHeadController(AnimManager, this, entityShape);
         }
 
         private void updateEyeHeight(float dt)
@@ -446,6 +405,46 @@ namespace Vintagestory.API.Common
                 bool moving = (controls.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !controls.NoClip && !controls.DetachedMode && OnGround;
                 double newEyeheight = Properties.EyeHeight;
 
+
+
+                double newModelHeight = Properties.CollisionBoxSize.Y;
+
+                if (controls.FloorSitting)
+                {
+                    newEyeheight *= 0.5f;
+                    newModelHeight *= 0.55f;
+                }
+                else if ((controls.Sneak || !PrevFrameCanStandUp) && !controls.IsClimbing && !controls.IsFlying)
+                {
+                    newEyeheight *= 0.8f;
+                    newModelHeight *= 0.8f;
+                }
+                else if (!Alive)
+                {
+                    newEyeheight *= 0.25f;
+                    newModelHeight *= 0.25f;
+                }
+
+                double diff = (newEyeheight - LocalEyePos.Y) * 5 * dt;
+                LocalEyePos.Y = diff > 0 ? Math.Min(LocalEyePos.Y + diff, newEyeheight) : Math.Max(LocalEyePos.Y + diff, newEyeheight);
+
+                diff = (newModelHeight - OriginSelectionBox.Y2) * 5 * dt;
+                OriginSelectionBox.Y2 = SelectionBox.Y2 = (float)(diff > 0 ? Math.Min(SelectionBox.Y2 + diff, newModelHeight) : Math.Max(SelectionBox.Y2 + diff, newModelHeight));
+
+                diff = (newModelHeight - OriginCollisionBox.Y2) * 5 * dt;
+                OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
+
+                LocalEyePos.X = 0;
+                LocalEyePos.Z = 0;
+
+                if (MountedOn?.LocalEyePos != null)
+                {
+                    LocalEyePos.Set(MountedOn.LocalEyePos);
+                }
+
+
+                // Immersive fp mode has its own way of setting the eye pos
+                // but we still need to run above non-ifp code for the hitbox
                 if (player.ImmersiveFpMode)
                 {
                     secondsDead = Alive ? 0 : secondsDead + dt;
@@ -453,44 +452,6 @@ namespace Vintagestory.API.Common
                     updateLocalEyePosImmersiveFpMode();
 
                     newEyeheight = LocalEyePos.Y;
-                }
-                else
-                {
-                    double newModelHeight = Properties.CollisionBoxSize.Y;
-
-                    if (controls.FloorSitting)
-                    {
-                        newEyeheight *= 0.5f;
-                        newModelHeight *= 0.55f;
-                    }
-                    else if ((controls.Sneak || !PrevFrameCanStandUp) && !controls.IsClimbing && !controls.IsFlying)
-                    {
-                        newEyeheight *= 0.8f;
-                        newModelHeight *= 0.8f;
-                    }
-                    else if (!Alive)
-                    {
-                        newEyeheight *= 0.25f;
-                        newModelHeight *= 0.25f;
-                    }
-
-
-                    double diff = (newEyeheight - LocalEyePos.Y) * 5 * dt;
-                    LocalEyePos.Y = diff > 0 ? Math.Min(LocalEyePos.Y + diff, newEyeheight) : Math.Max(LocalEyePos.Y + diff, newEyeheight);
-
-                    diff = (newModelHeight - OriginSelectionBox.Y2) * 5 * dt;
-                    OriginSelectionBox.Y2 = SelectionBox.Y2 = (float)(diff > 0 ? Math.Min(SelectionBox.Y2 + diff, newModelHeight) : Math.Max(SelectionBox.Y2 + diff, newModelHeight));
-
-                    diff = (newModelHeight - OriginCollisionBox.Y2) * 5 * dt;
-                    OriginCollisionBox.Y2 = CollisionBox.Y2 = (float)(diff > 0 ? Math.Min(CollisionBox.Y2 + diff, newModelHeight) : Math.Max(CollisionBox.Y2 + diff, newModelHeight));
-
-                    LocalEyePos.X = 0;
-                    LocalEyePos.Z = 0;
-
-                    if (MountedOn?.LocalEyePos != null)
-                    {
-                        LocalEyePos.Set(MountedOn.LocalEyePos);
-                    }
                 }
 
 
@@ -500,7 +461,7 @@ namespace Vintagestory.API.Common
                 walkCounter = moving ? walkCounter + frequency : 0;
                 walkCounter = walkCounter % GameMath.TWOPI;
 
-                double sneakDiv = (controls.Sneak ? 3 : 1.8);
+                double sneakDiv = (controls.Sneak ? 5 : 1.8);
 
                 double amplitude = (FeetInLiquid ? 0.8 : 1 + (controls.Sprint ? 0.07 : 0)) / (3 * sneakDiv);
                 double offset = -0.2 / sneakDiv;
@@ -648,6 +609,8 @@ namespace Vintagestory.API.Common
 
         void updateLocalEyePosImmersiveFpMode()
         {
+            if (AnimManager.Animator == null) return;
+
             AttachmentPointAndPose apap = AnimManager.Animator.GetAttachmentPointPose("Eyes");
             AttachmentPoint ap = apap.AttachPoint;
 
@@ -680,7 +643,6 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            
 
             tmpModelMat
                 .Set(ModelMat)
@@ -703,15 +665,11 @@ namespace Vintagestory.API.Common
 
 
 
-        protected string lastRunningHeldUseAnimation;
-        protected string lastRunningRightHeldIdleAnimation;
-        protected string lastRunningLeftHeldIdleAnimation;
-        protected string lastRunningHeldHitAnimation;
         float strongWindAccum = 0;
 
         protected override void HandleHandAnimations(float dt)
         {
-            protectedEyesFromWind(dt);
+            protectEyesFromWind(dt);
 
             // Prevent this method from getting called for other players on the client side because it has incomplete information (servercontrols&interact are not synced to client)
             // It's also not necessary to call this method because the server will sync the animations to the client
@@ -721,11 +679,13 @@ namespace Vintagestory.API.Common
 
             EnumHandInteract interact = servercontrols.HandUse;
 
-            bool nowUseStack = (interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract) || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
-            bool wasUseStack = lastRunningHeldUseAnimation != null && AnimManager.IsAnimationActive(lastRunningHeldUseAnimation);
+            PlayerAnimationManager plrAnimMngr = this.AnimManager as PlayerAnimationManager;
 
-            bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || (servercontrols.LeftMouseDown);
-            bool wasHitStack = lastRunningHeldHitAnimation != null && AnimManager.IsAnimationActive(lastRunningHeldHitAnimation);
+            bool nowUseStack = interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
+            bool wasUseStack = plrAnimMngr.IsHeldUseActive();
+
+            bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || servercontrols.LeftMouseDown;
+            bool wasHitStack = plrAnimMngr.IsHeldHitActive();
 
 
             string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
@@ -734,10 +694,10 @@ namespace Vintagestory.API.Common
             string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
 
             bool nowRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack;
-            bool wasRightIdleStack = lastRunningRightHeldIdleAnimation != null && AnimManager.IsAnimationActive(lastRunningRightHeldIdleAnimation);
+            bool wasRightIdleStack = plrAnimMngr.IsRightHeldActive();
 
             bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
-            bool wasLeftIdleStack = lastRunningLeftHeldIdleAnimation != null && AnimManager.IsAnimationActive(lastRunningLeftHeldIdleAnimation);
+            bool wasLeftIdleStack = plrAnimMngr.IsLeftHeldActive();
 
             if (rightstack == null)
             {
@@ -748,60 +708,55 @@ namespace Vintagestory.API.Common
                 {
                     if (EntitySelection.Entity.SelectionBox.Y2 > 0.8) nowHeldRightUseAnim = "petlarge";
                     if (EntitySelection.Entity.SelectionBox.Y2 <= 0.8 && controls.Sneak) nowHeldRightUseAnim = "petsmall";
+                    if (EntitySelection.Entity is EntityPlayer eplr && !eplr.controls.FloorSitting) nowHeldRightUseAnim = "petseraph";
                 }
             }
 
-            if (nowUseStack != wasUseStack || (lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation))
+            if (nowUseStack != wasUseStack || plrAnimMngr.HeldUseAnimChanged(nowHeldRightUseAnim))
             {
-                AnimManager.StopAnimation(lastRunningHeldUseAnimation);
-                lastRunningHeldUseAnimation = null;
+                plrAnimMngr.StopHeldUseAnim();
 
                 if (nowUseStack)
                 {
-                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
-                    AnimManager.StartAnimation(lastRunningHeldUseAnimation = nowHeldRightUseAnim);
+                    plrAnimMngr.StartHeldUseAnim(nowHeldRightUseAnim);
                 }
             }
 
-            if (nowHitStack != wasHitStack || (lastRunningHeldHitAnimation != null && nowHeldRightHitAnim != lastRunningHeldHitAnimation))
+            if (nowHitStack != wasHitStack || plrAnimMngr.HeldHitAnimChanged(nowHeldRightHitAnim))
             {
-                AnimManager.StopAnimation(lastRunningHeldHitAnimation);
-                lastRunningHeldHitAnimation = null;
+                plrAnimMngr.StopHeldAttackAnim();
 
+                // PlayerAnimationManager might change the value of servercontrols.HandUse
+                nowHitStack = servercontrols.HandUse == EnumHandInteract.HeldItemAttack || servercontrols.LeftMouseDown;
 
                 if (nowHitStack)
                 {
-                    AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
-                    AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
-                    AnimManager.StartAnimation(lastRunningHeldHitAnimation = nowHeldRightHitAnim);
+                    plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
                 }
             }
 
-            if (nowRightIdleStack != wasRightIdleStack || (lastRunningRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastRunningRightHeldIdleAnimation))
+            if (nowRightIdleStack != wasRightIdleStack || plrAnimMngr.RightHeldIdleChanged(nowHeldRightIdleAnim))
             {
-                AnimManager.StopAnimation(lastRunningRightHeldIdleAnimation);
-                lastRunningRightHeldIdleAnimation = null;
+                plrAnimMngr.StopRightHeldIdleAnim();
 
                 if (nowRightIdleStack)
                 {
-                    AnimManager.StartAnimation(lastRunningRightHeldIdleAnimation = nowHeldRightIdleAnim);
+                    plrAnimMngr.StartRightHeldIdleAnim(nowHeldRightIdleAnim);
                 }
             }
 
-            if (nowLeftIdleStack != wasLeftIdleStack || (lastRunningLeftHeldIdleAnimation != null && nowHeldLeftIdleAnim != lastRunningLeftHeldIdleAnimation))
+            if (nowLeftIdleStack != wasLeftIdleStack || plrAnimMngr.LeftHeldIdleChanged(nowHeldLeftIdleAnim))
             {
-                AnimManager.StopAnimation(lastRunningLeftHeldIdleAnimation);
-
-                lastRunningLeftHeldIdleAnimation = null;
+                plrAnimMngr.StopLeftHeldIdleAnim();
 
                 if (nowLeftIdleStack)
                 {
-                    AnimManager.StartAnimation(lastRunningLeftHeldIdleAnimation = nowHeldLeftIdleAnim);
+                    plrAnimMngr.StartLeftHeldIdleAnim(nowHeldLeftIdleAnim);
                 }
             }
         }
 
-        protected void protectedEyesFromWind(float dt)
+        protected void protectEyesFromWind(float dt)
         {
             if (Api?.Side == EnumAppSide.Client && AnimManager != null)
             {
@@ -812,13 +767,13 @@ namespace Vintagestory.API.Common
                 bool lookingIntoWind = Math.Abs(yawDiff) < 45 * GameMath.DEG2RAD;
                 bool isOutside = GlobalConstants.CurrentDistanceToRainfallClient < 6;
 
-                if (isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2)
+                if (isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2 && Player.WorldData.CurrentGameMode != EnumGameMode.Creative)
                 {
                     AnimManager.StartAnimation("protecteyes");
                 }
                 else
                 {
-                    AnimManager.StopAnimation("protecteyes");
+                    if (AnimManager.IsAnimationActive("protecteyes")) AnimManager.StopAnimation("protecteyes");
                 }
             }
         }
@@ -844,6 +799,8 @@ namespace Vintagestory.API.Common
                 bool edgeSitActive = this.AnimManager.IsAnimationActive("sitidle");
                 wasActive |= edgeSitActive;
 
+                var capi = Api as ICoreClientAPI;
+
                 if (nowActive)
                 {
                     bool floorSitActive = this.AnimManager.IsAnimationActive(anim.Code);
@@ -857,7 +814,7 @@ namespace Vintagestory.API.Common
                         if (!edgeSitActive)
                         {
                             AnimManager.StartAnimation("sitflooredge");
-
+                            capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(1));
                             BodyYaw = (float)Math.Round(BodyYaw * GameMath.RAD2DEG / 90) * 90f * GameMath.DEG2RAD;
                             BodyYawLimits = new Vec2f(BodyYaw - 0.2f, BodyYaw + 0.2f);
                         }
@@ -866,6 +823,7 @@ namespace Vintagestory.API.Common
                     if (edgeSitActive && !canDoEdgeSit && !floorSitActive)
                     {
                         AnimManager.StopAnimation("sitidle");
+                        capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(0));
                         BodyYawLimits = null;
                     }
                 }
@@ -874,6 +832,7 @@ namespace Vintagestory.API.Common
                     if (wasActive)
                     {
                         AnimManager.StopAnimation("sitidle");
+                        capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(0));
                         BodyYawLimits = null;
                     }
                 }
@@ -905,8 +864,7 @@ namespace Vintagestory.API.Common
             var frontFree = face != null && !frontBlock.CanAttachBlockAt(Api.World.BlockAccessor, frontBlock, frontPos, face);
             var frontBelowFree = frontBelowBlock.GetCollisionBoxes(Api.World.BlockAccessor, frontBelowPos)?.FirstOrDefault(c => c.Y2 > 0.5) == null;
 
-            return /*CollidedVertically && - always false for other players o.o */
-                frontFree && frontBelowFree && backBlock.Replaceable < 6000;
+            return frontFree && frontBelowFree && backBlock.Replaceable < 6000;
         }
 
 
@@ -1022,8 +980,9 @@ namespace Vintagestory.API.Common
 
             LastReviveTotalHours = Api.World.Calendar.TotalHours;
 
-            (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, 196);
+            (Api as ICoreServerAPI).Network.SendEntityPacket(Api.World.PlayerByUid(PlayerUID) as IServerPlayer, this.EntityId, (int)EntityServerPacketId.Revive);
         }
+
 
         public override void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
         {
@@ -1031,13 +990,11 @@ namespace Vintagestory.API.Common
 
             if (type == "hurt")
             {
-                if (World.Side == EnumAppSide.Client && !capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
                 talkUtil?.Talk(EnumTalkType.Hurt2);
                 return;
             }
             if (type == "death")
             {
-                if (World.Side == EnumAppSide.Client && !capi.Settings.Bool["newSeraphVoices"]) { base.PlayEntitySound(type, dualCallByPlayer, randomizePitch, range); return; }
                 talkUtil?.Talk(EnumTalkType.Death);
                 return;
             }
@@ -1057,7 +1014,7 @@ namespace Vintagestory.API.Common
 
         public override void OnReceivedServerPacket(int packetid, byte[] data)
         {
-            if (packetid == 196)
+            if (packetid == (int)EntityServerPacketId.Revive)
             {
                 AnimManager?.StopAnimation("die");
                 return;
@@ -1065,49 +1022,49 @@ namespace Vintagestory.API.Common
 
             ICoreClientAPI capi = Api as ICoreClientAPI;
 
-            if (packetid == 1203)
+            if (packetid == (int)EntityServerPacketId.Emote)
             {
                 string animation = SerializerUtil.Deserialize<string>(data);
                 StartAnimation(animation);
 
-                if (capi.Settings.Bool["newSeraphVoices"] && talkTypeByAnimation.TryGetValue(animation, out var talktype))
+                if (talkTypeByAnimation.TryGetValue(animation, out var talktype))
                 {
                     talkUtil?.Talk(talktype);
                 }
             }
 
-            if (packetid == 1002)
+            if (packetid == (int)EntityServerPacketId.Death)
             {
                 TryStopHandAction(true, EnumItemUseCancelReason.Death);
             }
-
-            if (capi.Settings.Bool["newSeraphVoices"])
+            
+            if (packetid == EntityTalkUtil.TalkPacketId)
             {
-                if (packetid == EntityTalkUtil.TalkPacketId)
-                {
-                    var tt = SerializerUtil.Deserialize<EnumTalkType>(data);
+                var tt = SerializerUtil.Deserialize<EnumTalkType>(data);
 
-                    if (tt != EnumTalkType.Death && !Alive) return;
+                if (tt != EnumTalkType.Death && !Alive) return;
 
-                    talkUtil.Talk(tt);
-                }
-
-                /*if (packetid == 1001)
-                {
-                    if (!Alive) return;
-                    talkUtil.Talk(EnumTalkType.Hurt2);
-                }
-                if (packetid == 1002)
-                {
-                    talkUtil.Talk(EnumTalkType.Death);
-                }*/
-            } else
-            {
-                if (packetid == 1002) base.PlayEntitySound("death", null, true, 24);
-                if (packetid == 1001) base.PlayEntitySound("hurt", null, true, 24);
+                talkUtil.Talk(tt);
             }
 
             base.OnReceivedServerPacket(packetid, data);
+    	}
+        public override void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
+        {
+            base.OnReceivedClientPacket(player, packetid, data);
+
+            if (packetid == (int)EntityClientPacketId.SitfloorEdge)
+            {
+                bool on = SerializerUtil.Deserialize<int>(data) > 0;
+                if (on)
+                {
+                    AnimManager.StopAnimation("sitidle");
+                    AnimManager.StartAnimation("sitflooredge");
+                } else
+                {
+                    AnimManager.StopAnimation("sitflooredge");
+                }
+            }
         }
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)
@@ -1308,30 +1265,8 @@ namespace Vintagestory.API.Common
         {
             base.FromBytes(reader, forClient);
 
-            lastRunningHeldUseAnimation = WatchedAttributes.GetString("lrHeldUseAnim");
-            lastRunningHeldHitAnimation = WatchedAttributes.GetString("lrHeldHitAnim");
-            lastRunningRightHeldIdleAnimation = WatchedAttributes.GetString("lrRightHeldIdleAnim");
-
             walkSpeed = Stats.GetBlended("walkspeed");
         }
 
-        public override void ToBytes(BinaryWriter writer, bool forClient)
-        {
-            if (lastRunningHeldUseAnimation != null)
-            {
-                WatchedAttributes.SetString("lrHeldUseAnim", lastRunningHeldUseAnimation);
-            }
-            if (lastRunningHeldHitAnimation != null)
-            {
-                WatchedAttributes.SetString("lrHeldHitAnim", lastRunningHeldHitAnimation);
-            }
-            if (lastRunningRightHeldIdleAnimation != null)
-            {
-                WatchedAttributes.SetString("lrRightHeldIdleAnim", lastRunningRightHeldIdleAnimation);
-            }
-
-
-            base.ToBytes(writer, forClient);
-        }
     }
 }

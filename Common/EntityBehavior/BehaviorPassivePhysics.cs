@@ -4,11 +4,10 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
-    
+
     public class EntityBehaviorPassivePhysics : EntityBehavior, IRenderer
     {
         /// <summary>

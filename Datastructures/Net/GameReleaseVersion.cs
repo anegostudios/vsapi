@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Vintagestory.API.Net
 {
     public class GameReleaseVersion
     {
         public GameBuild Windows;
-        public GameBuild Server;
+        public GameBuild Windowsserver;
+        public GameBuild Linuxserver;
         public GameBuild Linux;
         public GameBuild Mac;
     }

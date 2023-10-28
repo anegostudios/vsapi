@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Cairo;
-using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     /// <summary>
     /// Holds arbitrary float data for meshes to be used in the shader
@@ -31,6 +25,11 @@ namespace Vintagestory.API.Client
             CustomMeshDataPartFloat cloned = new CustomMeshDataPartFloat();
             cloned.SetFrom(this);
             return cloned;
+        }
+
+        public CustomMeshDataPartFloat EmptyClone()
+        {
+            return EmptyClone(new CustomMeshDataPartFloat()) as CustomMeshDataPartFloat;
         }
     }
 }

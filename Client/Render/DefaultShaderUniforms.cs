@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Client;
-using Vintagestory.API.Common;
+﻿using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -29,7 +23,7 @@ namespace Vintagestory.API.Client
 
         public float ShadowZExtendNear;
         public float ShadowZExtendFar;
-        public float NightVisonStrength;
+        public float NightVisionStrength;
 
 
         public float[] ToShadowMapSpaceMatrixFar = new float[16];
@@ -67,6 +61,7 @@ namespace Vintagestory.API.Client
         public float WindWaveCounterHighFreq = 0f;
 
         public float GlitchStrength = 0f;
+        public float GlitchWaviness = 0f;
         public float WindSpeed = 0f;
         public float WindWaveIntensity = 1f;
         public float WaterWaveIntensity = 1f;

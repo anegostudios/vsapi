@@ -22,7 +22,7 @@ namespace Vintagestory.API.Client
 
         public int GeneralWindMode;
 
-        public bool usesColorMap; // bubble up var
+        public bool UsesColorMap; // bubble up var
         public int[] defaultTextureSize;
 
         public TesselationMetaData Clone()
@@ -38,7 +38,7 @@ namespace Vintagestory.API.Client
                 TexturesSizes = TexturesSizes,
                 TypeForLogging = TypeForLogging,
                 WithJointIds = WithJointIds,
-                usesColorMap = usesColorMap,
+                UsesColorMap = UsesColorMap,
                 defaultTextureSize = defaultTextureSize,
                 GeneralWindMode = GeneralWindMode,
                 WithDamageEffect = WithDamageEffect,
@@ -66,14 +66,14 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="block"></param>
         /// <returns></returns>
-        MeshRef GetDefaultBlockMeshRef(Block block);
+        MultiTextureMeshRef GetDefaultBlockMeshRef(Block block);
 
         /// <summary>
         /// Returns the default block mesh ref that being used by the engine when rendering an item in the inventory. The alternate and inventory versions are seperate.
         /// </summary>
         /// <param name="block"></param>
         /// <returns></returns>
-        MeshRef GetDefaultItemMeshRef(Item block);
+        MultiTextureMeshRef GetDefaultItemMeshRef(Item block);
 
         Shape GetCachedShape(AssetLocation location);
         void ThreadDispose();
@@ -130,6 +130,21 @@ namespace Vintagestory.API.Client
         /// <param name="modeldata"></param>
         /// <param name="texSource"></param>
         void TesselateItem(Item item, out MeshData modeldata, ITexPositionSource texSource);
+
+        /// <summary>
+        /// Tesselate a shape based on its composite shape file
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name"></param>
+        /// <param name="compositeShape"></param>
+        /// <param name="modeldata"></param>
+        /// <param name="texSource"></param>
+        /// <param name="generalGlowLevel"></param>
+        /// <param name="climateColorMapIndex"></param>
+        /// <param name="seasonColorMapIndex"></param>
+        /// <param name="quantityElements"></param>
+        /// <param name="selectiveElements"></param>
+        void TesselateShape(string type, AssetLocation name, CompositeShape compositeShape, out MeshData modeldata, ITexPositionSource texSource, int generalGlowLevel = 0, byte climateColorMapIndex = 0, byte seasonColorMapIndex = 0, int? quantityElements = null, string[] selectiveElements = null);
 
         /// <summary>
         /// Turns a shape into a mesh data object that you can feed into the chunk tesselator or upload to the graphics card for rendering. Uses the given collectible texture configuration as texture source.

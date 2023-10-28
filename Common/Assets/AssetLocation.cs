@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
@@ -55,6 +54,8 @@ namespace Vintagestory.API.Common
     [TypeConverterAttribute(typeof(StringAssetLocationConverter))]
     public class AssetLocationAndSource : AssetLocation, IEquatable<AssetLocation>
     {
+        public bool AddToAllAtlasses;
+
         /// <summary>
         /// The source of a given asset.
         /// </summary>

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Util
@@ -34,6 +33,22 @@ namespace Vintagestory.API.Util
             return array;
         }
 
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T[] FastCopy<T>(this T[] src, int count)
+        {
+            T[] dest = new T[count];
+            if (count > 127) Array.Copy(src, 0, dest, 0, count);
+            else
+            {
+                while (--count >= 0)
+                {
+                    dest[count] = src[count];
+                }
+            }
+
+            return dest;
+        }
 
     }
 
@@ -202,6 +217,25 @@ namespace Vintagestory.API.Util
             Array.Copy(array, grown, array.Length);
 
             grown[array.Length] = value;
+
+            return grown;
+        }
+
+        /// <summary>
+        /// Creates a new copy of the array with <paramref name="value"/> inserted at the given index
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="value"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static T[] InsertAt<T>(this T[] array, T value, int index)
+        {
+            T[] grown = new T[array.Length + 1];
+            if (index > 0) Array.Copy(array, grown, index);
+
+            grown[index] = value;
+            Array.Copy(array, index, grown, index + 1, array.Length - index);
 
             return grown;
         }

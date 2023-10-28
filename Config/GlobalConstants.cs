@@ -24,11 +24,21 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Hard-enforced world size limit, above this the code may break
         /// </summary>
-        public const int MaxWorldSizeXZ = 33554432;   // 32 million equivalent in base 2  (2 to the power of 25;  we can maybe go to 64 million)
+        public const int MaxWorldSizeXZ = 67108864;   // 64m equivalent in base 2  (2 to the power of 26)
         /// <summary>
-        /// Hard-enforced world height limit, above this the code may break
+        /// Hard-enforced world height limit, above this the code may break.
         /// </summary>
-        public const int MaxWorldSizeY = 4096;     // If changing this, check BlockPos.AsLong
+        public const int MaxWorldSizeY = 16384;     // 16k equivalent in base 2  (2 to the power of 14)  From 1.19 any change to this constant may break some blockEntities in dimensions (at minimum, saved BlockEntities in dimensions would have wrong x, y, z values)
+
+        /// <summary>
+        /// Now a hard-coded constant
+        /// </summary>
+        public const int ChunkSize = 32;
+
+        /// <summary>
+        /// Used in various places if the dimension of a chunk is combined into the chunk's y value.
+        /// </summary>
+        public const int DimensionSizeInChunks = MaxWorldSizeY / ChunkSize;
 
         /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card

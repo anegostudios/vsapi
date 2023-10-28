@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.Common;
-
-namespace Vintagestory.API.Server
+﻿namespace Vintagestory.API.Server
 {
     public interface IServerPhysicsTicker
     {

@@ -89,12 +89,12 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, false, (int)depth);
 
             double height = GetMultilineTextHeight();
-            nonPressedYOffset = (Bounds.InnerHeight - height) / 2;
+            nonPressedYOffset = (Bounds.InnerHeight - height) / 2 - 1;
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + nonPressedYOffset, EnumTextOrientation.Center);
 
             if (icon != null && icon.Length > 0)
             {
-                api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + scaled(4), Bounds.absPaddingY + scaled(4), Bounds.InnerWidth - scaled(9), Bounds.InnerHeight - scaled(9), GuiStyle.DialogDefaultTextColor);
+                api.Gui.Icons.DrawIcon(ctx, icon, Bounds.absPaddingX + scaled(4), Bounds.absPaddingY + scaled(4), Bounds.InnerWidth - scaled(9), Bounds.InnerHeight - scaled(9), Font.Color);
             }
 
             generateTexture(surface, ref releasedTexture);
@@ -120,7 +120,7 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, 0, 0, Bounds.OuterWidth, Bounds.OuterHeight, true, (int)depth);
 
             double height = GetMultilineTextHeight();
-            pressedYOffset = (Bounds.InnerHeight - height) / 2 + depth / 2;
+            pressedYOffset = (Bounds.InnerHeight - height) / 2 + depth / 2 - 1;
 
             DrawMultilineTextAt(ctx, Bounds.absPaddingX, Bounds.absPaddingY + pressedYOffset, EnumTextOrientation.Center);
 

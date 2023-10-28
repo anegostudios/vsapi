@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vintagestory.API.Datastructures
+﻿namespace Vintagestory.API.Datastructures
 {
     public class IntRef
     {

@@ -90,14 +90,12 @@ namespace Vintagestory.API.Common
 
             if (alpha != 100)
             {
-                var af = alpha / 100f;
-                var white = (int)(uint)SKColors.White;
+                float af = alpha / 100f;
                 for (int i = 0; i < bmpPixels.Length; i++)
                 {
                     var current = bmpPixels[i];
-                    var currAlpha = (current >> 24);
-                    current &= white;
-                    bmpPixels[i] = (current | ((int)(currAlpha * af) << 24));
+                    int currAlpha = (current >> 24) & 0xff;
+                    bmpPixels[i] = current | (int)(currAlpha * af) << 24;
                 }
             }
 

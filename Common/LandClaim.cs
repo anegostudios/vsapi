@@ -260,6 +260,23 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        /// <summary>
+        /// Ignores y-values
+        /// </summary>
+        /// <param name="rec"></param>
+        /// <returns></returns>
+        public bool Intersects2d(HorRectanglei rec)
+        {
+            for (int i = 0; i < Areas.Count; i++)
+            {
+                if (Areas[i].Intersects(rec))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         public LandClaim Clone()
         {

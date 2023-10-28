@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -29,7 +28,7 @@ namespace Vintagestory.API.Client
         }
 
         public static void AddFace(
-            MeshData modeldata, BlockFacing face, Vec3f centerXyz, Vec3f sizeXyz, Vec2f originUv, Vec2f sizeUv, int color, EnumShadeMode shade, int[] vertexFlags,
+            MeshData modeldata, BlockFacing face, Vec3f centerXyz, Vec3f sizeXyz, Vec2f originUv, Vec2f sizeUv, int textureId, int color, EnumShadeMode shade, int[] vertexFlags,
             float brightness = 1f, int uvRotation = 0, byte climateColorMapId = 0, byte seasonColorMapId = 0, short renderPass = -1)
         {
             int coordPos = face.Index * 12; // 4 * 3 xyz's perface
@@ -95,7 +94,12 @@ namespace Vintagestory.API.Client
             {
                 Array.Resize(ref modeldata.XyzFaces, modeldata.XyzFaces.Length + 32);
             }
+            if (modeldata.TextureIndicesCount >= modeldata.TextureIndices.Length)
+            {
+                Array.Resize(ref modeldata.TextureIndices, modeldata.TextureIndices.Length + 32);
+            }
 
+            modeldata.TextureIndices[modeldata.TextureIndicesCount++] = modeldata.getTextureIndex(textureId);
             modeldata.XyzFaces[modeldata.XyzFacesCount++] = shade != EnumShadeMode.Off ? face.MeshDataIndex : (byte)0;
 
 
@@ -128,7 +132,7 @@ namespace Vintagestory.API.Client
 
 
 
-        public static void AddFace(MeshData modeldata, BlockFacing face, Vec3f centerXyz, Vec3f sizeXyz, int color, float brightness = 1f)
+        public static void AddFaceSkipTex(MeshData modeldata, BlockFacing face, Vec3f centerXyz, Vec3f sizeXyz, int color, float brightness = 1f)
         {
             int coordPos = face.Index * 12; // 4 * 3 xyz's perface
             int lastVertexNumber = modeldata.VerticesCount;
@@ -143,7 +147,7 @@ namespace Vintagestory.API.Client
                     centerXyz.Z + sizeXyz.Z * CubeVertices[coordPos++] / 2
                 };
 
-                modeldata.AddVertex(
+                modeldata.AddVertexSkipTex(
                     pos[0], pos[1], pos[2],
                     ColorUtil.ColorMultiply3(color, brightness)
                 );

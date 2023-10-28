@@ -220,8 +220,13 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         T GetModdata<T>(string key, T defaultValue = default(T));
 
+        /// <summary>
+        /// Can be used to store non-serialized mod data that is only serialized into the standard moddata dictionary on unload. This prevents the need for constant serializing/deserializing. Useful when storing large amounts of data. Is not populated on chunk load, you need to populate it with stored data yourself using GetModData()
+        /// </summary>
+        Dictionary<string, object> LiveModData { get; set; }
 
-        
+
+
         /// <summary>
         /// Retrieve a block from this chunk ignoring ice/water layer, performs Unpack() and a modulo operation on the position arg to get a local position in the 0..chunksize range (it's your job to pick out the right chunk before calling this method)
         /// </summary>

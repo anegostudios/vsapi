@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.MathTools;
-
-namespace Vintagestory.API.MathTools
+﻿namespace Vintagestory.API.MathTools
 {
     public class MapUtil
     {

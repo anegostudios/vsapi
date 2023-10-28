@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -13,6 +9,11 @@ namespace Vintagestory.API.Common
         Bake,
         Convert,
         Fire
+    }
+
+    public interface ICombustible
+    {
+        float GetBurnDuration(IWorldAccessor world, BlockPos pos);
     }
 
     /// <summary>

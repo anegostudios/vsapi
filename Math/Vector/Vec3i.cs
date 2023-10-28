@@ -244,38 +244,6 @@ namespace Vintagestory.API.MathTools
             };
         }
 
-        /// <summary>
-        /// 27 lowest bits for X Coordinate, then 27 bits for Z coordinate and the highest 10 bits for Y coordinate
-        /// </summary>
-        /// <returns></returns>
-        public ulong ToChunkIndex()
-        {
-            ulong index = (ulong)X;
-            index |= (ulong)Z << 27;
-            index |= (ulong)Y << 54;
-            return index;
-        }
-
-        static ulong chunkMask = 134217728 - 1;   // 2^27 - 1
-
-
-        public static Vec3i FromChunkIndex(ulong index)
-        {
-            return new Vec3i(
-                (int)(index & chunkMask),
-                (int)(index >> 54),
-                (int)((index >> 27) & chunkMask)
-            );
-        }
-
-        public static ulong ToChunkIndex(int x, int y, int z)
-        {
-            ulong index = (ulong)x;
-            index |= (ulong)z << 27;
-            index |= (ulong)y << 54;
-            return index;
-        }
-
         int IVec3.XAsInt { get { return X; } }
 
         int IVec3.YAsInt { get { return Y; } }

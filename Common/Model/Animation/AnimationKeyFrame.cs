@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.Common
 {
@@ -28,9 +25,8 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Resolves the keyframe animation for which elements are important.
         /// </summary>
-        /// <param name="anim"></param>
         /// <param name="allElements"></param>
-        public void Resolve(Animation anim, ShapeElement[] allElements)
+        public void Resolve(ShapeElement[] allElements)
         {
             if (Elements == null) return;
 
@@ -67,6 +63,16 @@ namespace Vintagestory.API.Common
             AnimationKeyFrameElement kelem = null;
             ElementsByShapeElement.TryGetValue(forElem, out kelem);
             return kelem;
+        }
+
+        public AnimationKeyFrame Clone()
+        {
+            return new AnimationKeyFrame()
+            {
+                Elements = new Dictionary<string, AnimationKeyFrameElement>(Elements),
+                Frame = Frame
+            };
+
         }
     }
 }

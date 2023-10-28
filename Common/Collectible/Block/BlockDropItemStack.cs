@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
@@ -140,7 +135,7 @@ namespace Vintagestory.API.Common
         {
             BlockDropItemStack stack = new BlockDropItemStack()
             {
-                Code = Code.Clone(),
+                Code = Code?.Clone(),
                 Quantity = Quantity,
                 Type = Type,
                 LastDrop = LastDrop,

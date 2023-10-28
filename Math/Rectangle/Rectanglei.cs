@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Vintagestory.API.MathTools
 {
@@ -13,6 +9,10 @@ namespace Vintagestory.API.MathTools
         public int X2;
         public int Z2;
 
+        public HorRectanglei()
+        {
+        }
+
         public HorRectanglei(int x1, int z1, int x2, int z2)
         {
             X1 = x1;
@@ -20,6 +20,11 @@ namespace Vintagestory.API.MathTools
             X2 = x2;
             Z2 = z2;
         }
+
+        public int MinX => Math.Min(X1, X2);
+        public int MaxX => Math.Max(X1, X2);
+        public int MaxZ => Math.Max(Z1, Z2);
+        public int MinZ => Math.Min(Z1, Z2);
     }
 
     

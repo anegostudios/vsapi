@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Vintagestory.API.Client;
-using Vintagestory.API.Common;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -98,14 +93,12 @@ namespace Vintagestory.API.Common
                 prog.UniformMatrix("modelMatrix", ModelMat);
                 prog.UniformMatrix("viewMatrix", rpi.CameraMatrixOriginf);
                 prog.Uniform("windWaveIntensity", (float)0);
-                prog.Uniform("skipRenderJointId", -2);
-                prog.Uniform("skipRenderJointId2", -2);
                 prog.Uniform("glitchEffectStrength", 0f);
                 prog.Uniform("frostAlpha", 0f);
                 if (!StabilityAffected)
                 {
                     prog.Uniform("globalWarpIntensity", 0f);
-                    prog.Uniform("glitchStrength", 0f);
+                    prog.Uniform("glitchWaviness", 0f);
                 }
             } else
             {

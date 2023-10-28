@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Vintagestory.API.Client
 {
@@ -13,6 +9,9 @@ namespace Vintagestory.API.Client
     {
         List<MeshDataPool> modelPools = new List<MeshDataPool>();
         ICoreClientAPI capi;
+        public float currentDt;
+        public float[] currentModelViewMatrix;
+        public float[] shadowMVPMatrix;
 
 
         /// <summary>
@@ -53,8 +52,11 @@ namespace Vintagestory.API.Client
         }
 
 
-        public void OnFrame()
+        public void OnFrame(float dt, float[] modelviewMatrix, float[] shadowMVPMatrix)
         {
+            this.currentDt = dt;
+            this.currentModelViewMatrix = modelviewMatrix;
+            this.shadowMVPMatrix = shadowMVPMatrix;
             while (removalQueue[3].Count > 0)
             {
                 RemoveLocationsNow(removalQueue[3].Dequeue());

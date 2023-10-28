@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -88,6 +84,11 @@ namespace Vintagestory.API.Common
         /// Triggered when a new entity spawned
         /// </summary>
         event EntityDelegate OnEntitySpawn;
+
+        /// <summary>
+        /// Triggered when a new entity got loaded (either spawned or loaded from disk)
+        /// </summary>
+        event EntityDelegate OnEntityLoaded;
 
         event EntityDeathDelegate OnEntityDeath;
 

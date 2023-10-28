@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Util
@@ -32,14 +27,23 @@ namespace Vintagestory.API.Util
                 if (RuntimeEnv.OS == OS.Windows)
                 {
                     url = url.Replace("&", "^&");
-                    Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+                    if (Uri.TryCreate(url, UriKind.Absolute, out var uri) && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps))
+                    {
+                        Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+                    }
+                    else
+                    {
+                        Process.Start("explorer.exe", url);
+                    }
                 }
                 else if (RuntimeEnv.OS == OS.Linux)
                 {
+                    url = $"\"{url}\"";
                     Process.Start("xdg-open", url);
                 }
                 else if (RuntimeEnv.OS == OS.Mac)
                 {
+                    url = $"\"{url}\"";
                     Process.Start("open", url);
                 }
                 else

@@ -7,6 +7,9 @@ namespace Vintagestory.API.Server
     /// </summary>
     public interface IServerAPI
     {
+        /// <summary>
+        /// The ip adress the server is listening at
+        /// </summary>
         string ServerIp { get; }
 
         /// <summary>
@@ -165,5 +168,16 @@ namespace Vintagestory.API.Server
         /// <param name="message"></param>
         /// <param name="args"></param>
         void LogEvent(string message, params object[] args);
+
+        /// <summary>
+        /// Add the specified dimension to the LoadedMiniDimensions, and return its index.
+        /// <br/>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc
+        /// </summary>
+        int LoadMiniDimension(IMiniDimension blocks);
+        /// <summary>
+        /// Set the specified dimension at the specified LoadedMiniDimensions index, and return its index
+        /// <br/>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc
+        /// </summary>
+        int SetMiniDimension(IMiniDimension miniDimension, int index);
     }
 }

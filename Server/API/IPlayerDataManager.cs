@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Server
@@ -36,11 +33,19 @@ namespace Vintagestory.API.Server
         IServerPlayerData GetPlayerDataByLastKnownName(string name);
 
         /// <summary>
-        /// Resolves a player name to a player uid, indepent on whether this player is online, offline or never even joined the server. This is done by contacting the auth server, so please use this method sparingly.
+        /// Resolves a player name to a player uid, independent on whether this player is online, offline or never even joined the server. This is done by contacting the auth server, so please use this method sparingly.
         /// </summary>
         /// <param name="playername"></param>
         /// <param name="onPlayerReceived"></param>
         void ResolvePlayerName(string playername, Action<EnumServerResponse, string> onPlayerReceived);
+
+        /// <summary>
+        /// Resolves a player uid to a player name, independent on whether this player is online, offline or never even joined the server. This is done by contacting the auth server, so please use this method sparingly.
+        /// </summary>
+        /// <param name="playername"></param>
+        /// <param name="onPlayerReceived"></param>
+        
+        void ResolvePlayerUid(string playeruid, Action<EnumServerResponse, string> onPlayerReceived);
     }
 
     public interface IGroupManager

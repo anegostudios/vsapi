@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
@@ -218,6 +215,6 @@ namespace Vintagestory.API.Client
         /// <param name="targetX"></param>
         /// <param name="targetY"></param>
         /// <param name="alphaTest"></param>
-        void RenderTextureIntoAtlas(LoadedTexture fromTexture, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float targetX, float targetY, float alphaTest = 0.005f);
+        void RenderTextureIntoAtlas(int intoAtlasTextureId, LoadedTexture fromTexture, float sourceX, float sourceY, float sourceWidth, float sourceHeight, float targetX, float targetY, float alphaTest = 0.005f);
     }
 }

@@ -6,6 +6,8 @@
         <OutputPath>..\bin\$(Configuration)</OutputPath>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <Configurations>Debug;Release;PerfTest</Configurations>
+        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <NoWarn>1701;1702;1591;1572;1573;0618</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -20,26 +22,12 @@
         <DefineConstants>TRACE;PERFTEST</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|AnyCPU'">
-        <NoWarn>1701;1702;1591;1572;1573;0618</NoWarn>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
-        <NoWarn>1701;1702;1591;1572;1573;0618</NoWarn>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='PerfTest|net7.0|AnyCPU'">
-        <NoWarn>1701;1702;1591;1572;1573;0618</NoWarn>
-    </PropertyGroup>
-
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-        <PackageReference Include="OpenTK.Windowing.GraphicsLibraryFramework" Version="4.7.7" />
-        <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.7.7" />
+        <PackageReference Include="OpenTK.Windowing.GraphicsLibraryFramework" Version="4.8.2-vs.1" />
+        <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.8.2-vs.1" />
         <PackageReference Include="protobuf-net" Version="2.4.7" />
-        <PackageReference Include="SkiaSharp" Version="2.88.3" />
+        <PackageReference Include="SkiaSharp" Version="2.88.6" />
         <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
     </ItemGroup>
 
