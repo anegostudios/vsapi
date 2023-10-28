@@ -121,6 +121,9 @@
       <a class="xref" href="Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntax">ArgumentParserBase.GetSyntax()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxUnformatted">ArgumentParserBase.GetSyntaxUnformatted()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetLastError">ArgumentParserBase.GetLastError()</a>
     </div>
     <div>
@@ -140,7 +143,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser__ctor_System_String_Vintagestory_API_Common_ICoreAPI_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser.%23ctor(System.String%2CVintagestory.API.Common.ICoreAPI%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L449">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L511">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntitiesArgParser__ctor_" data-uid="Vintagestory.API.Common.EntitiesArgParser.#ctor*"></a>
   <h4 id="Vintagestory_API_Common_EntitiesArgParser__ctor_System_String_Vintagestory_API_Common_ICoreAPI_System_Boolean_" data-uid="Vintagestory.API.Common.EntitiesArgParser.#ctor(System.String,Vintagestory.API.Common.ICoreAPI,System.Boolean)">EntitiesArgParser(String, ICoreAPI, Boolean)</h4>
@@ -181,19 +184,36 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser_GetSyntaxExplanation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser.GetSyntaxExplanation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser_GetSyntaxExplanation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser.GetSyntaxExplanation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L453">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L515">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntitiesArgParser_GetSyntaxExplanation_" data-uid="Vintagestory.API.Common.EntitiesArgParser.GetSyntaxExplanation*"></a>
-  <h4 id="Vintagestory_API_Common_EntitiesArgParser_GetSyntaxExplanation" data-uid="Vintagestory.API.Common.EntitiesArgParser.GetSyntaxExplanation">GetSyntaxExplanation()</h4>
+  <h4 id="Vintagestory_API_Common_EntitiesArgParser_GetSyntaxExplanation_System_String_" data-uid="Vintagestory.API.Common.EntitiesArgParser.GetSyntaxExplanation(System.String)">GetSyntaxExplanation(String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string GetSyntaxExplanation()</code></pre>
+    <pre><code class="lang-csharp hljs">public override string GetSyntaxExplanation(string indent)</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">indent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -210,13 +230,13 @@
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxExplanation">ArgumentParserBase.GetSyntaxExplanation()</a></div>
+  <div><a class="xref" href="Vintagestory.API.Common.ArgumentParserBase.html#Vintagestory_API_Common_ArgumentParserBase_GetSyntaxExplanation_System_String_">ArgumentParserBase.GetSyntaxExplanation(String)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser_GetValue.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser.GetValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L464">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L526">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntitiesArgParser_GetValue_" data-uid="Vintagestory.API.Common.EntitiesArgParser.GetValue*"></a>
   <h4 id="Vintagestory_API_Common_EntitiesArgParser_GetValue" data-uid="Vintagestory.API.Common.EntitiesArgParser.GetValue">GetValue()</h4>
@@ -248,7 +268,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser_PreProcess_Vintagestory_API_Common_TextCommandCallingArgs_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L474">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L536">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntitiesArgParser_PreProcess_" data-uid="Vintagestory.API.Common.EntitiesArgParser.PreProcess*"></a>
   <h4 id="Vintagestory_API_Common_EntitiesArgParser_PreProcess_Vintagestory_API_Common_TextCommandCallingArgs_" data-uid="Vintagestory.API.Common.EntitiesArgParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)">PreProcess(TextCommandCallingArgs)</h4>
@@ -282,7 +302,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser_SetValue_System_Object_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser.SetValue(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L469">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L531">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntitiesArgParser_SetValue_" data-uid="Vintagestory.API.Common.EntitiesArgParser.SetValue*"></a>
   <h4 id="Vintagestory_API_Common_EntitiesArgParser_SetValue_System_Object_" data-uid="Vintagestory.API.Common.EntitiesArgParser.SetValue(System.Object)">SetValue(Object)</h4>
@@ -316,7 +336,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser_TryProcess_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_AsyncParseResults__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs%2CAction%7BVintagestory.API.Common.AsyncParseResults%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L483">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L546">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_EntitiesArgParser_TryProcess_" data-uid="Vintagestory.API.Common.EntitiesArgParser.TryProcess*"></a>
   <h4 id="Vintagestory_API_Common_EntitiesArgParser_TryProcess_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_AsyncParseResults__" data-uid="Vintagestory.API.Common.EntitiesArgParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,Action{Vintagestory.API.Common.AsyncParseResults})">TryProcess(TextCommandCallingArgs, Action&lt;AsyncParseResults&gt;)</h4>
@@ -380,7 +400,7 @@
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntitiesArgParser.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntitiesArgParser%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L444" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L506" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

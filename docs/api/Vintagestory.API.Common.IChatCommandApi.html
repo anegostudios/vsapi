@@ -79,7 +79,7 @@
   <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
   <h5 id="Vintagestory_API_Common_IChatCommandApi_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IChatCommandApi</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IChatCommandApi : IEnumerable&lt;KeyValuePair&lt;string, IChatCommand&gt;&gt;, IEnumerable</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -88,7 +88,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_Item_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L408">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L253">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_Item_" data-uid="Vintagestory.API.Common.IChatCommandApi.Item*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_Item_System_String_" data-uid="Vintagestory.API.Common.IChatCommandApi.Item(System.String)">Item[String]</h4>
@@ -135,7 +135,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_Parsers.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.Parsers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L415">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L260">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_Parsers_" data-uid="Vintagestory.API.Common.IChatCommandApi.Parsers*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_Parsers" data-uid="Vintagestory.API.Common.IChatCommandApi.Parsers">Parsers</h4>
@@ -167,7 +167,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_Create.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.Create%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L409">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L254">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_Create_" data-uid="Vintagestory.API.Common.IChatCommandApi.Create*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_Create" data-uid="Vintagestory.API.Common.IChatCommandApi.Create">Create()</h4>
@@ -197,7 +197,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_Create_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.Create(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L410">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L255">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_Create_" data-uid="Vintagestory.API.Common.IChatCommandApi.Create*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_Create_System_String_" data-uid="Vintagestory.API.Common.IChatCommandApi.Create(System.String)">Create(String)</h4>
@@ -244,7 +244,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_Execute_System_String_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_TextCommandResult__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.Execute(System.String%2CVintagestory.API.Common.TextCommandCallingArgs%2CAction%7BVintagestory.API.Common.TextCommandResult%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L424">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L269">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_Execute_" data-uid="Vintagestory.API.Common.IChatCommandApi.Execute*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_Execute_System_String_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_TextCommandResult__" data-uid="Vintagestory.API.Common.IChatCommandApi.Execute(System.String,Vintagestory.API.Common.TextCommandCallingArgs,Action{Vintagestory.API.Common.TextCommandResult})">Execute(String, TextCommandCallingArgs, Action&lt;TextCommandResult&gt;)</h4>
@@ -289,7 +289,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_ExecuteUnparsed_System_String_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_TextCommandResult__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed(System.String%2CVintagestory.API.Common.TextCommandCallingArgs%2CAction%7BVintagestory.API.Common.TextCommandResult%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L433">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L278">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_ExecuteUnparsed_" data-uid="Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_ExecuteUnparsed_System_String_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_TextCommandResult__" data-uid="Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed(System.String,Vintagestory.API.Common.TextCommandCallingArgs,Action{Vintagestory.API.Common.TextCommandResult})">ExecuteUnparsed(String, TextCommandCallingArgs, Action&lt;TextCommandResult&gt;)</h4>
@@ -334,7 +334,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_Get_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.Get(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L412">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L257">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_Get_" data-uid="Vintagestory.API.Common.IChatCommandApi.Get*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_Get_System_String_" data-uid="Vintagestory.API.Common.IChatCommandApi.Get(System.String)">Get(String)</h4>
@@ -381,7 +381,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_GetOrCreate_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.GetOrCreate(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L413">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L258">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChatCommandApi_GetOrCreate_" data-uid="Vintagestory.API.Common.IChatCommandApi.GetOrCreate*"></a>
   <h4 id="Vintagestory_API_Common_IChatCommandApi_GetOrCreate_System_String_" data-uid="Vintagestory.API.Common.IChatCommandApi.GetOrCreate(System.String)">GetOrCreate(String)</h4>
@@ -423,6 +423,102 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_GetOrdered_Dictionary_System_String_Vintagestory_API_Common_IChatCommand__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.GetOrdered(Dictionary%7BSystem.String%2CVintagestory.API.Common.IChatCommand%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L285">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChatCommandApi_GetOrdered_" data-uid="Vintagestory.API.Common.IChatCommandApi.GetOrdered*"></a>
+  <h4 id="Vintagestory_API_Common_IChatCommandApi_GetOrdered_Dictionary_System_String_Vintagestory_API_Common_IChatCommand__" data-uid="Vintagestory.API.Common.IChatCommandApi.GetOrdered(Dictionary{System.String,Vintagestory.API.Common.IChatCommand})">GetOrdered(Dictionary&lt;String, IChatCommand&gt;)</h4>
+  <div class="markdown level1 summary"><p>Get all commands ordered by name ASC</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">static Dictionary&lt;string, IChatCommand&gt; GetOrdered(Dictionary&lt;string, IChatCommand&gt; command)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a>&gt;</td>
+        <td><span class="parametername">command</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi_GetOrdered_Vintagestory_API_Common_IChatCommandApi_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi.GetOrdered(Vintagestory.API.Common.IChatCommandApi)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L295">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChatCommandApi_GetOrdered_" data-uid="Vintagestory.API.Common.IChatCommandApi.GetOrdered*"></a>
+  <h4 id="Vintagestory_API_Common_IChatCommandApi_GetOrdered_Vintagestory_API_Common_IChatCommandApi_" data-uid="Vintagestory.API.Common.IChatCommandApi.GetOrdered(Vintagestory.API.Common.IChatCommandApi)">GetOrdered(IChatCommandApi)</h4>
+  <div class="markdown level1 summary"><p>Get all commands from <a class="xref" href="Vintagestory.API.Common.IChatCommandApi.html">IChatCommandApi</a> ordered by name ASC</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">static Dictionary&lt;string, IChatCommand&gt; GetOrdered(IChatCommandApi chatCommandApi)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IChatCommandApi.html">IChatCommandApi</a></td>
+        <td><span class="parametername">chatCommandApi</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -434,7 +530,7 @@
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommandApi.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommandApi%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L406" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommandApi.cs/#L251" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

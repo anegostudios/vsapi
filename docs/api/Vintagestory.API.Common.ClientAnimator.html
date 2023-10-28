@@ -107,7 +107,7 @@ this produces always correctly blended animations but is significantly more cost
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_AttachmentPointByCode">AnimatorBase.AttachmentPointByCode</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_curAnimCount">AnimatorBase.curAnimCount</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_activeAnimCount">AnimatorBase.activeAnimCount</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CurAnims">AnimatorBase.CurAnims</a>
@@ -126,9 +126,6 @@ this produces always correctly blended animations but is significantly more cost
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAnimationState_System_String_">AnimatorBase.GetAnimationState(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_OnFrame_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__System_Single_">AnimatorBase.OnFrame(Dictionary&lt;String, AnimationMetaData&gt;, Single)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAttachmentPointPose_System_String_">AnimatorBase.GetAttachmentPointPose(String)</a>
@@ -486,7 +483,7 @@ this produces always correctly blended animations but is significantly more cost
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_calculateMatrices_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.calculateMatrices(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L235">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L248">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_ClientAnimator_calculateMatrices_" data-uid="Vintagestory.API.Common.ClientAnimator.calculateMatrices*"></a>
   <h4 id="Vintagestory_API_Common_ClientAnimator_calculateMatrices_System_Single_" data-uid="Vintagestory.API.Common.ClientAnimator.calculateMatrices(System.Single)">calculateMatrices(Single)</h4>
@@ -782,6 +779,45 @@ this produces always correctly blended animations but is significantly more cost
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ClientAnimator_OnFrame_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ClientAnimator.OnFrame(Dictionary%7BSystem.String%2CVintagestory.API.Common.AnimationMetaData%7D%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/ClientAnimator.cs/#L234">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_ClientAnimator_OnFrame_" data-uid="Vintagestory.API.Common.ClientAnimator.OnFrame*"></a>
+  <h4 id="Vintagestory_API_Common_ClientAnimator_OnFrame_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__System_Single_" data-uid="Vintagestory.API.Common.ClientAnimator.OnFrame(Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)">OnFrame(Dictionary&lt;String, AnimationMetaData&gt;, Single)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnFrame(Dictionary&lt;string, AnimationMetaData&gt; activeAnimationsByAnimCode, float dt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</td>
+        <td><span class="parametername">activeAnimationsByAnimCode</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_OnFrame_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__System_Single_">AnimatorBase.OnFrame(Dictionary&lt;String, AnimationMetaData&gt;, Single)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a>

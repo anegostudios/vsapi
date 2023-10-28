@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IMiniDimension
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IMiniDimension
+   ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IMiniDimension">
+  
+  
+  <h1 id="Vintagestory_API_Common_IMiniDimension" data-uid="Vintagestory.API.Common.IMiniDimension" class="text-break">Interface IMiniDimension
+  </h1>
+  <div class="markdown level0 summary"><p>Provides read/write access to the blocks of a movable mini-dimension. </p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_ChunkSize">IBlockAccessor.ChunkSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_RegionSize">IBlockAccessor.RegionSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MapSizeX">IBlockAccessor.MapSizeX</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MapSizeY">IBlockAccessor.MapSizeY</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MapSizeZ">IBlockAccessor.MapSizeZ</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_RegionMapSizeX">IBlockAccessor.RegionMapSizeX</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_RegionMapSizeY">IBlockAccessor.RegionMapSizeY</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_RegionMapSizeZ">IBlockAccessor.RegionMapSizeZ</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_UpdateSnowAccumMap">IBlockAccessor.UpdateSnowAccumMap</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MapSize">IBlockAccessor.MapSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunk_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetChunk(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunk_System_Int64_">IBlockAccessor.GetChunk(Int64)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMapRegion_System_Int32_System_Int32_">IBlockAccessor.GetMapRegion(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetChunkAtBlockPos(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetChunkAtBlockPos(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetBlockId(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetBlockId(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetBlock(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetBlock(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetInterface__1_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetInterface&lt;T&gt;(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetBlock(Int32, Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_MathTools_BlockPos_System_Int32_">IBlockAccessor.GetBlock(BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockOrNull_System_Int32_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetBlockOrNull(Int32, Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetMostSolidBlock(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetMostSolidBlock(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_WalkBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_Block_System_Int32_System_Int32_System_Int32__System_Boolean_">IBlockAccessor.WalkBlocks(BlockPos, BlockPos, Action&lt;Block, Int32, Int32, Int32&gt;, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SearchBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos__Action_System_Int32_System_Int32_System_Int32__">IBlockAccessor.SearchBlocks(BlockPos, BlockPos, ActionConsumable&lt;Block, BlockPos&gt;, Action&lt;Int32, Int32, Int32&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SearchFluidBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos__Action_System_Int32_System_Int32_System_Int32__">IBlockAccessor.SearchFluidBlocks(BlockPos, BlockPos, ActionConsumable&lt;Block, BlockPos&gt;, Action&lt;Int32, Int32, Int32&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_WalkStructures_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_GeneratedStructure__">IBlockAccessor.WalkStructures(BlockPos, Action&lt;GeneratedStructure&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_WalkStructures_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Action_Vintagestory_API_Common_GeneratedStructure__">IBlockAccessor.WalkStructures(BlockPos, BlockPos, Action&lt;GeneratedStructure&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SetBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.SetBlock(Int32, BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SetBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_System_Int32_">IBlockAccessor.SetBlock(Int32, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SetBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_">IBlockAccessor.SetBlock(Int32, BlockPos, ItemStack)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_ExchangeBlock_System_Int32_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.ExchangeBlock(Int32, BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_BreakBlock_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single_">IBlockAccessor.BreakBlock(BlockPos, IPlayer, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_DamageBlock_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Single_">IBlockAccessor.DamageBlock(BlockPos, BlockFacing, Single)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_">IBlockAccessor.GetBlock(Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_Common_AssetLocation_">IBlockAccessor.GetBlock(AssetLocation)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SpawnBlockEntity_System_String_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_">IBlockAccessor.SpawnBlockEntity(String, BlockPos, ItemStack)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SpawnBlockEntity_Vintagestory_API_Common_BlockEntity_">IBlockAccessor.SpawnBlockEntity(BlockEntity)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_RemoveBlockEntity_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.RemoveBlockEntity(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockEntity_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetBlockEntity(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockEntity__1_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetBlockEntity&lt;T&gt;(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsValidPos_System_Int32_System_Int32_System_Int32_">IBlockAccessor.IsValidPos(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsValidPos_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.IsValidPos(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_System_Double_System_Double_System_Double_">IBlockAccessor.IsNotTraversable(Double, Double, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.IsNotTraversable(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_Commit">IBlockAccessor.Commit()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_Rollback">IBlockAccessor.Rollback()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MarkBlockEntityDirty_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.MarkBlockEntityDirty(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_TriggerNeighbourBlockUpdate_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.TriggerNeighbourBlockUpdate(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_">IBlockAccessor.MarkBlockDirty(BlockPos, IPlayer)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MarkBlockModified_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.MarkBlockModified(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MarkBlockDirty_Vintagestory_API_MathTools_BlockPos_Action_">IBlockAccessor.MarkBlockDirty(BlockPos, Action)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetLightLevel_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumLightLevelType_">IBlockAccessor.GetLightLevel(BlockPos, EnumLightLevelType)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetLightLevel_System_Int32_System_Int32_System_Int32_Vintagestory_API_Common_EnumLightLevelType_">IBlockAccessor.GetLightLevel(Int32, Int32, Int32, EnumLightLevelType)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetLightRGBs(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetLightRGBs_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetLightRGBs(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetLightRGBsAsInt_System_Int32_System_Int32_System_Int32_">IBlockAccessor.GetLightRGBsAsInt(Int32, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetTerrainMapheightAt_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetTerrainMapheightAt(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetRainMapHeightAt(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetDistanceToRainFall_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_">IBlockAccessor.GetDistanceToRainFall(BlockPos, Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetRainMapHeightAt_System_Int32_System_Int32_">IBlockAccessor.GetRainMapHeightAt(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMapChunk_Vintagestory_API_MathTools_Vec2i_">IBlockAccessor.GetMapChunk(Vec2i)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMapChunk_System_Int32_System_Int32_">IBlockAccessor.GetMapChunk(Int32, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMapChunkAtBlockPos_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetMapChunkAtBlockPos(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumGetClimateMode_System_Double_">IBlockAccessor.GetClimateAt(BlockPos, EnumGetClimateMode, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_Common_EnumGetClimateMode_System_Double_">IBlockAccessor.GetClimateAt(BlockPos, ClimateCondition, EnumGetClimateMode, Double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetClimateAt_Vintagestory_API_MathTools_BlockPos_System_Int32_">IBlockAccessor.GetClimateAt(BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_Vintagestory_API_MathTools_Vec3d_">IBlockAccessor.GetWindSpeedAt(Vec3d)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetWindSpeedAt_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetWindSpeedAt(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MarkAbsorptionChanged_System_Int32_System_Int32_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.MarkAbsorptionChanged(Int32, Int32, BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_RemoveBlockLight_System_Byte___Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.RemoveBlockLight(Byte[], BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SetDecor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_">IBlockAccessor.SetDecor(Block, BlockPos, BlockFacing)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_SetDecor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_System_Int32_">IBlockAccessor.SetDecor(Block, BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetDecors_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.GetDecors(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetDecor_Vintagestory_API_MathTools_BlockPos_System_Int32_">IBlockAccessor.GetDecor(BlockPos, Int32)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_BreakDecor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Nullable_System_Int32__">IBlockAccessor.BreakDecor(BlockPos, BlockFacing, Nullable&lt;Int32&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_MarkChunkDecorsModified_Vintagestory_API_MathTools_BlockPos_">IBlockAccessor.MarkChunkDecorsModified(BlockPos)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsSideSolid_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_BlockFacing_">IBlockAccessor.IsSideSolid(Int32, Int32, Int32, BlockFacing)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_CreateMiniDimension_Vintagestory_API_MathTools_Vec3d_">IBlockAccessor.CreateMiniDimension(Vec3d)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
+  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
+  <h5 id="Vintagestory_API_Common_IMiniDimension_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IMiniDimension : IBlockAccessor</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_CurrentPos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.CurrentPos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L14">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_CurrentPos_" data-uid="Vintagestory.API.Common.IMiniDimension.CurrentPos*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_CurrentPos" data-uid="Vintagestory.API.Common.IMiniDimension.CurrentPos">CurrentPos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EntityPos CurrentPos { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_Dirty.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.Dirty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L15">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_Dirty_" data-uid="Vintagestory.API.Common.IMiniDimension.Dirty*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_Dirty" data-uid="Vintagestory.API.Common.IMiniDimension.Dirty">Dirty</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Dirty { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_PreviewPos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.PreviewPos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L17">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_PreviewPos_" data-uid="Vintagestory.API.Common.IMiniDimension.PreviewPos*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_PreviewPos" data-uid="Vintagestory.API.Common.IMiniDimension.PreviewPos">PreviewPos</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">BlockPos PreviewPos { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_subDimensionId.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.subDimensionId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L13">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_subDimensionId_" data-uid="Vintagestory.API.Common.IMiniDimension.subDimensionId*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_subDimensionId" data-uid="Vintagestory.API.Common.IMiniDimension.subDimensionId">subDimensionId</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int subDimensionId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_TrackSelection.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.TrackSelection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L16">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_TrackSelection_" data-uid="Vintagestory.API.Common.IMiniDimension.TrackSelection*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_TrackSelection" data-uid="Vintagestory.API.Common.IMiniDimension.TrackSelection">TrackSelection</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool TrackSelection { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_AdjustPosForSubDimension_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.AdjustPosForSubDimension(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L40">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_AdjustPosForSubDimension_" data-uid="Vintagestory.API.Common.IMiniDimension.AdjustPosForSubDimension*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_AdjustPosForSubDimension_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IMiniDimension.AdjustPosForSubDimension(Vintagestory.API.MathTools.BlockPos)">AdjustPosForSubDimension(BlockPos)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AdjustPosForSubDimension(BlockPos pos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
+        <td><span class="parametername">pos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_ClearChunks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.ClearChunks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L27">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_ClearChunks_" data-uid="Vintagestory.API.Common.IMiniDimension.ClearChunks*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_ClearChunks" data-uid="Vintagestory.API.Common.IMiniDimension.ClearChunks">ClearChunks()</h4>
+  <div class="markdown level1 summary"><p>Clears this mini-dimension (and empties any chunks but does not unload them) ready for re-use</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ClearChunks()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_CollectChunksForSending_Vintagestory_API_Common_IPlayer___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.CollectChunksForSending(Vintagestory.API.Common.IPlayer%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L22">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_CollectChunksForSending_" data-uid="Vintagestory.API.Common.IMiniDimension.CollectChunksForSending*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_CollectChunksForSending_Vintagestory_API_Common_IPlayer___" data-uid="Vintagestory.API.Common.IMiniDimension.CollectChunksForSending(Vintagestory.API.Common.IPlayer[])">CollectChunksForSending(IPlayer[])</h4>
+  <div class="markdown level1 summary"><p>Sends dirty chunks to nearby clients</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CollectChunksForSending(IPlayer[] players)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a>[]</td>
+        <td><span class="parametername">players</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_GetRenderOffset_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.GetRenderOffset(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L36">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_GetRenderOffset_" data-uid="Vintagestory.API.Common.IMiniDimension.GetRenderOffset*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_GetRenderOffset_System_Single_" data-uid="Vintagestory.API.Common.IMiniDimension.GetRenderOffset(System.Single)">GetRenderOffset(Single)</h4>
+  <div class="markdown level1 summary"><p>Used when rendering</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">FastVec3d GetRenderOffset(float dt)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><span class="parametername">dt</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_GetRenderTransformMatrix_System_Single___Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix(System.Single%5B%5D%2CVintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L37">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_GetRenderTransformMatrix_" data-uid="Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_GetRenderTransformMatrix_System_Single___Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix(System.Single[],Vintagestory.API.MathTools.Vec3d)">GetRenderTransformMatrix(Single[], Vec3d)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">float[] GetRenderTransformMatrix(float[] currentModelViewMatrix, Vec3d playerPos)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td><span class="parametername">currentModelViewMatrix</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
+        <td><span class="parametername">playerPos</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_ReceiveClientChunk_System_Int64_Vintagestory_API_Common_IWorldChunk_Vintagestory_API_Common_IWorldAccessor_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.ReceiveClientChunk(System.Int64%2CVintagestory.API.Common.IWorldChunk%2CVintagestory.API.Common.IWorldAccessor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L38">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_ReceiveClientChunk_" data-uid="Vintagestory.API.Common.IMiniDimension.ReceiveClientChunk*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_ReceiveClientChunk_System_Int64_Vintagestory_API_Common_IWorldChunk_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.IMiniDimension.ReceiveClientChunk(System.Int64,Vintagestory.API.Common.IWorldChunk,Vintagestory.API.Common.IWorldAccessor)">ReceiveClientChunk(Int64, IWorldChunk, IWorldAccessor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ReceiveClientChunk(long chunkIndex3d, IWorldChunk chunk, IWorldAccessor world)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">chunkIndex3d</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a></td>
+        <td><span class="parametername">chunk</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">world</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_SetSubDimensionId_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.SetSubDimensionId(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L39">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_SetSubDimensionId_" data-uid="Vintagestory.API.Common.IMiniDimension.SetSubDimensionId*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_SetSubDimensionId_System_Int32_" data-uid="Vintagestory.API.Common.IMiniDimension.SetSubDimensionId(System.Int32)">SetSubDimensionId(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void SetSubDimensionId(int dimensionId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">dimensionId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension_UnloadUnusedServerChunks.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension.UnloadUnusedServerChunks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L31">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IMiniDimension_UnloadUnusedServerChunks_" data-uid="Vintagestory.API.Common.IMiniDimension.UnloadUnusedServerChunks*"></a>
+  <h4 id="Vintagestory_API_Common_IMiniDimension_UnloadUnusedServerChunks" data-uid="Vintagestory.API.Common.IMiniDimension.UnloadUnusedServerChunks">UnloadUnusedServerChunks()</h4>
+  <div class="markdown level1 summary"><p>Unload any chunks which are still empty after the dimension has been re-used</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UnloadUnusedServerChunks()</code></pre>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IMiniDimension.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IMiniDimension%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IMiniDimension.cs/#L11" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

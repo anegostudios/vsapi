@@ -405,6 +405,8 @@ Please note, all arrays are used as a buffer. They do not tightly fit the data b
       <h4><a class="xref" href="Vintagestory.API.Client.MouseWheelEventArgs.html">MouseWheelEventArgs</a></h4>
       <section><p>The event arguments for the mouse.</p>
 </section>
+      <h4><a class="xref" href="Vintagestory.API.Client.MultiTextureMeshRef.html">MultiTextureMeshRef</a></h4>
+      <section></section>
       <h4><a class="xref" href="Vintagestory.API.Client.MusicTrack.html">MusicTrack</a></h4>
       <section><p>Adds a basic music track.</p>
 </section>
@@ -665,7 +667,10 @@ Second word = Y Alignment (top, middle, bottom or fixed)</p>
       <h4><a class="xref" href="Vintagestory.API.Client.EnumVerticalAlign.html">EnumVerticalAlign</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Client.GlKeys.html">GlKeys</a></h4>
-      <section></section>
+      <section><p>Internally the game uses OpenTK and their Keys are by default mapped to US QWERTY Keyboard layout which the GlKeys also do.
+Upon typing text in a Text input field it will produce the correct characters according to your keyboard layout.</p>
+<p>If you need to get the character for the current Keyboard layout use <a class="xref" href="Vintagestory.API.Client.GlKeyNames.html#Vintagestory_API_Client_GlKeyNames_GetKeyName_Vintagestory_API_Client_GlKeys_">GetKeyName(GlKeys)</a></p>
+</section>
       <h4><a class="xref" href="Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html">GuiDialogBlockEntity.EnumPosFlag</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Client.HotkeyType.html">HotkeyType</a></h4>
@@ -720,6 +725,8 @@ Second word = Y Alignment (top, middle, bottom or fixed)</p>
       <section><p>A custom itemstack render handler. This method is called after Collectible.OnBeforeRender(). For render target gui, the gui shader and its uniforms are already fully prepared, you may only call RenderMesh() and ignore the modelMat, position and size values - stack sizes however, are not covered by this.</p>
 </section>
       <h4><a class="xref" href="Vintagestory.API.Client.KeyEventDelegate.html">KeyEventDelegate</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Client.MeshData.MeshDataFilterDelegate.html">MeshData.MeshDataFilterDelegate</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Client.MouseEventDelegate.html">MouseEventDelegate</a></h4>
       <section></section>
