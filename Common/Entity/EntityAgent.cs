@@ -997,7 +997,7 @@ namespace Vintagestory.API.Common
 
                 foreach (var val in gearShape.TextureSizes)
                 {
-                    entityShape.TextureSizes[val.Key] = val.Value;
+                    entityShape.TextureSizes[stack.Collectible.Code + "-" + val.Key] = val.Value;
                 }
             }
 
