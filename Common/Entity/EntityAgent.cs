@@ -860,7 +860,7 @@ namespace Vintagestory.API.Common
             entityShape.StepParentShape(
                 gearShape, 
                 texturePrefixCode, 
-                compGearShape.Base.ToString() + string.Format("defined in {0} {1}", stack.Class, stack.Collectible.Code),
+                compGearShape?.Base.ToString() ?? "Custom texture from ItemWearableShapeSupplier " + string.Format("defined in {0} {1}", stack.Class, stack.Collectible.Code),
                 shapePathForLogging, 
                 Api.World.Logger,
                 (texcode, tloc) =>
