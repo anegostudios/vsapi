@@ -19,6 +19,10 @@ namespace Vintagestory.API.Client
         public IconRendererDelegate SvgIconSource(AssetLocation loc)
         {
             var asset = capi.Assets.TryGet(loc);
+            return SvgIconSource(asset);
+        }
+        public IconRendererDelegate SvgIconSource(IAsset asset)
+        {
             return (ctx, x, y, w, h, rgba) =>
             {
                 capi.Gui.DrawSvg(asset, ctx.GetTarget() as ImageSurface, x, y, (int)w, (int)h, ColorUtil.FromRGBADoubles(rgba));
@@ -35,6 +39,28 @@ namespace Vintagestory.API.Client
 
             CustomIcons["wpCross"] = (ctx, x, y, w, h, rgba) => { ctx.SetSourceRGBA(rgba); capi.Gui.Icons.DrawCross(ctx, x, y, 4, w); };
         }
+
+        public LoadedTexture GenTexture(int width, int height, IAsset asset, double[] rgba = null)
+        {
+            var handler = SvgIconSource(asset);
+            ImageSurface surface = new ImageSurface(Format.Argb32, width, height);
+            Context ctx = new Context(surface);
+
+            handler(ctx,0, 0, width, height, rgba ?? ColorUtil.WhiteArgbDouble);
+
+            int textureId = capi.Gui.LoadCairoTexture(surface, true);
+
+            surface.Dispose();
+            ctx.Dispose();
+
+            return new LoadedTexture(capi)
+            {
+                TextureId = textureId,
+                Width = width,
+                Height = height
+            };
+        }
+
 
         /// <summary>
         /// Generates the texture.  
@@ -23391,6 +23417,7 @@ namespace Vintagestory.API.Client
             cr.Restore();
         }
 
+        
 
 
 

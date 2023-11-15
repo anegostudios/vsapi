@@ -94,7 +94,7 @@ namespace Vintagestory.API.Common
                 EasingFactor = Math.Max(0, EasingFactor - (EasingFactor - 0) * Math.Abs(dt) * meta.EaseOutSpeed);
             }
 
-            float newFrame = (CurrentFrame + 30 * (ShouldRewind ? -dt : dt) * (Animation.EaseAnimationSpeed ? EasingFactor : 1));
+            float newFrame = CurrentFrame + 30 * (ShouldRewind ? -dt : dt) * (Animation.EaseAnimationSpeed ? EasingFactor : 1);
             
             if (!Active && Animation.OnActivityStopped == EnumEntityActivityStoppedHandling.PlayTillEnd && (Iterations >= 1 || newFrame >= Animation.QuantityFrames - 1))
             {

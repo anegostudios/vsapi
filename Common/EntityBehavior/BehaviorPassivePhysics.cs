@@ -20,7 +20,7 @@ namespace Vintagestory.API.Common
         public static bool UsePhysicsDormancyStateServer;
 
         [ThreadStatic]
-        private static CachingCollisionTester collisionTester = new CachingCollisionTester();
+        internal static CachingCollisionTester collisionTester = new CachingCollisionTester();
 
         float accumulator;
         Vec3d outposition = new Vec3d();
@@ -386,7 +386,7 @@ namespace Vintagestory.API.Common
         }
         public void Dispose()
         {
-
+            
         }
 
     }

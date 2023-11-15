@@ -25,6 +25,12 @@ namespace Vintagestory.API.Util
             if (val == "false" || val == "no" || val == "0") return false;
             return defaultValue;
         }
+
+        public static string RemoveFileEnding(this string text)
+        {
+            return text.Substring(0, text.IndexOf("."));
+        }
+
         public static int ToInt(this string text, int defaultValue = 0)
         {
             int value;

@@ -129,8 +129,8 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="blockSel"></param>
         /// <param name="entitySel"></param>
-        /// <param name="handHandling"></param>
-        /// <param name="handling"></param>
+        /// <param name="handHandling">Whether or not to do any subsequent actions. If not set or set to NotHandled, the action will not called on the server.</param>
+        /// <param name="handling">Set to PreventDefault to not try eating the item, set to PreventSubsequent to ignore any subsequent calls to OnHeldInteractStart() of other behaviors</param>
         /// <returns></returns>
         public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handHandling, ref EnumHandling handling)
         {

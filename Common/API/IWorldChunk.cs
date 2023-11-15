@@ -21,6 +21,10 @@ namespace Vintagestory.API.Common
         /// Same as ClearBlocks but initialises the chunkdata palette, so that SetBlockUnsafe can be used  (useful in worldgen)
         /// </summary>
         void ClearBlocksAndPrepare();
+
+        /// <summary>
+        /// Efficiently bulk-set a single block id in a chunk throughout a y-layer.  lenX will be ignored (always treated as 32), the y-position is specified in index3d, the width lenZ will be respected
+        /// </summary>
         void SetBlockBulk(int index3d, int lenX, int lenZ, int value);
         /// <summary>
         /// Not threadsafe, used only in cases where we know that the chunk already has a palette (e.g. in worldgen when replacing rock with other blocks)

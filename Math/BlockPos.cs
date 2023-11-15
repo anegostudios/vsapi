@@ -66,12 +66,14 @@ namespace Vintagestory.API.MathTools
             this.dimension = dim;
         }
 
+        /// <summary>
+        /// Note - for backwards compatibility, this is *not* dimension-aware; explicitly set the dimension in the resulting BlockPos if you need to
+        /// </summary>
         public BlockPos(Vec4i vec)
         {
             this.X = vec.X;
             this.Y = vec.Y;
             this.Z = vec.Z;
-            this.dimension = vec.W;
         }
 
         /// <summary>

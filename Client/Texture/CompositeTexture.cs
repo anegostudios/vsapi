@@ -79,6 +79,8 @@ namespace Vintagestory.API.Client
         {
         }
 
+
+
         /// <summary>
         /// Creates a new empty composite texture with given base texture
         /// </summary>
@@ -355,8 +357,12 @@ namespace Vintagestory.API.Client
                     var tile = ct.Tiles[i];
                     if (tile.Base.EndsWithWildCard)
                     {
-                        var assets = wildcardsCache[ct.Base] = assetManager.GetManyInCategory("textures", ct.Base.Path.Substring(0, ct.Base.Path.Length - 1), ct.Base.Domain);
-                        var sortedassets = assets.OrderBy(asset => asset.Location.GetName().Split(".")[0].ToInt()).ToList();
+                        // Fix borked windows sorting (i.e. 1, 10, 11, 12, ....)
+                        var basePath = ct.Base.Path.Substring(0, ct.Base.Path.Length - 1);
+                        var assets = wildcardsCache[ct.Base] = assetManager.GetManyInCategory("textures", basePath, ct.Base.Domain);
+                        var len = "textures".Length + basePath.Length + "/".Length;
+                        var sortedassets = assets.OrderBy(asset => asset.Location.Path.Substring(len).RemoveFileEnding().ToInt()).ToList();
+
                         for (int j = 0; j < sortedassets.Count; j++)
                         {
                             IAsset asset = sortedassets[j];
@@ -387,6 +393,14 @@ namespace Vintagestory.API.Client
         {
             return Base.ToString() + "@" + Rotation + "a" + Alpha;
         }
+        public void FillPlaceholder(string search, string replace)
+        {
+            Base.Path = Base.Path.Replace(search, replace);
+            if (BlendedOverlays != null) BlendedOverlays.Foreach((ov) => ov.Base.Path = ov.Base.Path.Replace(search, replace));
+            if (Alternates != null) Alternates.Foreach((alt) => alt.FillPlaceholder(search, replace));
+            if (Tiles != null) Tiles.Foreach((tile) => tile.FillPlaceholder(search, replace));
+        }
+
     }
 
 

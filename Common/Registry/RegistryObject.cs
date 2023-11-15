@@ -18,12 +18,12 @@ namespace Vintagestory.API.Common
         public AssetLocation Code = null;
 
         /// <summary>
-        /// Variant values as resolved from blocktype/itemtype or entitytype
+        /// Variant values as resolved from blocktype/itemtype.  NOT set for entities - use entity.Properties.VariantStrict instead.
         /// </summary>
         public OrderedDictionary<string, string> VariantStrict = new OrderedDictionary<string, string>();
 
         /// <summary>
-        /// Variant values as resolved from blocktype/itemtype or entitytype. Will not throw an null pointer exception when the key does not exist, but return null instead.
+        /// Variant values as resolved from blocktype/itemtype. Will not throw an null pointer exception when the key does not exist, but return null instead. NOT set for entities - use entity.Properties.Variant instead
         /// </summary>
         public RelaxedReadOnlyDictionary<string, string> Variant;
 

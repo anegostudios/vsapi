@@ -1215,11 +1215,23 @@ namespace Vintagestory.API.Common
         public virtual void OnHeldInteractStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, bool firstEvent, ref EnumHandHandling handling)
         {
             EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
-            WalkBehaviors(
-                (CollectibleBehavior bh, ref EnumHandling hd) => bh.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref bhHandHandling, ref hd),
-                () => tryEatBegin(slot, byEntity, ref bhHandHandling)
-            );
-            handling = bhHandHandling;
+            bool preventDefault = false;
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling bhHandling = EnumHandling.PassThrough;
+
+                behavior.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref bhHandHandling, ref bhHandling);
+                if (bhHandling != EnumHandling.PassThrough)
+                {
+                    handling = bhHandHandling;
+                    preventDefault = true;
+                }
+
+                if (bhHandling == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (!preventDefault) tryEatBegin(slot, byEntity, ref bhHandHandling);
         }
 
 

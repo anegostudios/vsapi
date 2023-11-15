@@ -54,6 +54,14 @@ namespace Vintagestory.API.Util
 
     public static class EnumerableExtensions
     {
+        public static void Foreach<T>(this IEnumerable<T> array, Action<T> onelement)
+        {
+            foreach (var val in array)
+            {
+                onelement(val);
+            }
+        }
+
         public static T Nearest<T>(this IEnumerable<T> array, Func<T, double> getDistance)
         {
             double nearestDist = double.MaxValue;

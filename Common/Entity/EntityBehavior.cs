@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
@@ -238,6 +239,20 @@ namespace Vintagestory.API.Common.Entities
         }
 
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        {
+            
+        }
+
+        public virtual void ToBytes(bool forClient)
+        {
+            
+        }
+
+        /// <summary>
+        /// This method is not called on the server side
+        /// </summary>
+        /// <param name="isSync"></param>
+        public virtual void FromBytes(bool isSync)
         {
             
         }

@@ -163,6 +163,9 @@ namespace Vintagestory.API.Common
         /// <param name="key"></param>
         /// <returns></returns>
         T GetModdata<T>(string key);
-
+        /// <summary>
+        /// A thread-safe way to add a new GeneratedStructure, also marks DirtyForSaving = true
+        /// </summary>
+        void AddGeneratedStructure(GeneratedStructure generatedStructure);
     }
 }

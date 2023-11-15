@@ -41,7 +41,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.1";
+        public const string ShortGameVersion = OverallVersion + "-pre.6";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
@@ -96,7 +96,7 @@ namespace Vintagestory.API.Config
 
 
         static string[] separators = new string[] { ".", "-" };
-        static int[] splitVersionString(string version)
+        public static int[] SplitVersionString(string version)
         {
             string[] parts = version.Split(separators, StringSplitOptions.None);
             if (parts.Length <= 3)
@@ -122,7 +122,7 @@ namespace Vintagestory.API.Config
 
         public static EnumReleaseType GetReleaseType(string version)
         {
-            switch(splitVersionString(version)[3])
+            switch(SplitVersionString(version)[3])
             {
                 case 0:
                     return EnumReleaseType.Development;
@@ -144,8 +144,8 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsCompatibleApiVersion(string version)
         {
-            int[] partsTheirs = splitVersionString(version);
-            int[] partsMine = splitVersionString(APIVersion);
+            int[] partsTheirs = SplitVersionString(version);
+            int[] partsMine = SplitVersionString(APIVersion);
 
             if (partsTheirs.Length < 2) return false;
 
@@ -159,8 +159,8 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsCompatibleNetworkVersion(string version)
         {
-            int[] partsTheirs = splitVersionString(version);
-            int[] partsMine = splitVersionString(NetworkVersion);
+            int[] partsTheirs = SplitVersionString(version);
+            int[] partsMine = SplitVersionString(NetworkVersion);
 
             if (partsTheirs.Length < 2) return false;
 
@@ -186,8 +186,8 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsAtLeastVersion(string version, string reference)
         {
-            int[] partsMin = splitVersionString(reference);
-            int[] partsCur = splitVersionString(version);
+            int[] partsMin = SplitVersionString(reference);
+            int[] partsCur = SplitVersionString(version);
 
             for (int i = 0; i < partsMin.Length; i++)
             {
@@ -214,8 +214,8 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static bool IsNewerVersionThan(string version, string reference)
         {
-            int[] partsMin = splitVersionString(reference);
-            int[] partsCur = splitVersionString(version);
+            int[] partsMin = SplitVersionString(reference);
+            int[] partsCur = SplitVersionString(version);
 
             for (int i = 0; i < partsMin.Length; i++)
             {

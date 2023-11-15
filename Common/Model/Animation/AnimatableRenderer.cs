@@ -58,7 +58,9 @@ namespace Vintagestory.API.Common
             if (!ShouldRender || meshref.Disposed || !meshref.Initialized) return;
 
             bool shadowPass = stage != EnumRenderStage.Opaque;
-            
+
+            capi.Render.GLDepthMask(true); // Tyron 28 Oct 2023, why is this line needed here? For some reason, in some cases depth masking is off when rendering here
+
             EntityPlayer entityPlayer = capi.World.Player.Entity;
 
             Mat4f.Identity(ModelMat);

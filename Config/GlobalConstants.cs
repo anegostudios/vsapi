@@ -38,7 +38,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Used in various places if the dimension of a chunk is combined into the chunk's y value.
         /// </summary>
-        public const int DimensionSizeInChunks = MaxWorldSizeY / ChunkSize;
+        public const int DimensionSizeInChunks = 2 * MaxWorldSizeY / ChunkSize;
 
         /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card

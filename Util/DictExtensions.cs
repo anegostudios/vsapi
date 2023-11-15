@@ -9,6 +9,21 @@ namespace Vintagestory.API.Util
     public static class DictExtensions
     {
         /// <summary>
+        /// Add several elements to dict
+        /// </summary>
+        /// <typeparam name="K"></typeparam>
+        /// <typeparam name="V"></typeparam>
+        /// <param name="dict"></param>
+        /// <param name="elems"></param>
+        public static void AddRange<K,V>(this IDictionary<K, V> dict, IDictionary<K, V> elems)
+        {
+            foreach (var val in elems)
+            {
+                dict[val.Key] = val.Value;
+            }
+        }
+
+        /// <summary>
         /// Get value or defaultValue if key does not exists
         /// </summary>
         /// <typeparam name="K"></typeparam>

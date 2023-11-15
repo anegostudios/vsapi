@@ -20,6 +20,6 @@ namespace Vintagestory.API.Common
 
     public interface IMaterialExchangeable
     {
-        void ExchangeWith(ItemSlot fromSlot, ItemSlot toSlot);
+        bool ExchangeWith(ItemSlot fromSlot, ItemSlot toSlot);
     }
 }

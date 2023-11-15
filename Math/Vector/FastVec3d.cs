@@ -161,6 +161,14 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public FastVec3d Add(double d)
+        {
+            this.X += d;
+            this.Y += d;
+            this.Z += d;
+            return this;
+        }
+
         /// <summary>
         /// Adds given vector's x/y/z coordinates to the vector
         /// </summary>

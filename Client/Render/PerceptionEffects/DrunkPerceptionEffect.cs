@@ -59,10 +59,14 @@ namespace Vintagestory.API.Client
 
         public override void ApplyToTpPlayer(EntityPlayer entityPlr, float[] modelMatrix, float? playerIntensity = null)
         {
+            var rplr = entityPlr.Player as IClientPlayer;
+            if (rplr.CameraMode == EnumCameraMode.FirstPerson && !rplr.ImmersiveFpMode) return;
+
             float inten = playerIntensity == null ? Intensity : (float)playerIntensity;
 
-            Mat4f.RotateX(modelMatrix, modelMatrix, GameMath.Sin(accum) / 6f * inten);
-            Mat4f.RotateZ(modelMatrix, modelMatrix, GameMath.Sin(accum * 1.2f) / 6f * inten);
+            var pos = entityPlr.AnimManager.Animator.GetPosebyName("root");
+            pos.degOffX = GameMath.Sin(accum) / 5f * inten * GameMath.RAD2DEG;
+            pos.degOffZ = GameMath.Sin(accum * 1.2f) / 5f * inten * GameMath.RAD2DEG;
         }
 
         public override void NowActive(float intensity)
@@ -70,7 +74,6 @@ namespace Vintagestory.API.Client
             base.NowActive(intensity);
 
             capi.Render.ShaderUniforms.PerceptionEffectId = 2;
-            
         }
 
 

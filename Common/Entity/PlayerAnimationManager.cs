@@ -1,5 +1,6 @@
 ﻿using System;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
@@ -18,15 +19,6 @@ namespace Vintagestory.API.Common
             {
                 startHeldReadyAnimIfMouseUp();
             }
-
-            /*for (int i = 0; i < Animator.RunningAnimations.Length; i++)
-            {
-                var anim = Animator.RunningAnimations[i];
-                if (anim.Active)
-                {
-                    entity.World.Logger.Notification(anim.Animation.Code + " " + anim.CurrentFrame);
-                }
-            }*/
         }
 
 
@@ -82,13 +74,6 @@ namespace Vintagestory.API.Common
             string[] anims = new string[] { code, code + "-ifp", code + "-fp" }; 
             foreach (var anim in anims)
             {
-                if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(anim, out var animData))
-                {
-                    if (animData.Attributes?.IsTrue("stopHeldItemAttack") == true)
-                    {
-                        (entity as EntityPlayer).Controls.HandUse = EnumHandInteract.None;
-                    }
-                }
                 base.StopAnimation(anim);
             }
         }
@@ -128,8 +113,8 @@ namespace Vintagestory.API.Common
 
         public void OnActiveSlotChanged(ItemSlot slot)
         {
-            string beginholdAnim = slot.Itemstack?.Collectible?.GetHeldReadyAnimation(slot, entity, EnumHand.Right) ?? "helditemready";
-            StartHeldReadyAnim(beginholdAnim);
+            string beginholdAnim = slot.Itemstack?.Collectible?.GetHeldReadyAnimation(slot, entity, EnumHand.Right);
+            if (beginholdAnim != null) StartHeldReadyAnim(beginholdAnim);
         }
         public void OnHandUseStopped()
         {
@@ -143,8 +128,8 @@ namespace Vintagestory.API.Common
             if (!mouseDown)
             {
                 var slot = capi.World.Player.InventoryManager?.ActiveHotbarSlot;
-                var animCode = slot.Itemstack?.Collectible?.GetHeldReadyAnimation(slot, entity, EnumHand.Right) ?? "helditemready";
-                StartHeldReadyAnim(animCode, true);
+                var animCode = slot.Itemstack?.Collectible?.GetHeldReadyAnimation(slot, entity, EnumHand.Right);
+                if (animCode != null) StartHeldReadyAnim(animCode, true);
                 handUseStopped = true;
                 haveHandUse = false;
             }
@@ -219,6 +204,14 @@ namespace Vintagestory.API.Common
 
         public void StopHeldAttackAnim()
         {
+            if (lastRunningHeldHitAnimation != null && entity.Properties.Client.AnimationsByMetaCode.TryGetValue(lastRunningHeldHitAnimation, out var animData))
+            {
+                if (animData.Attributes?.IsTrue("authorative") == true)
+                {
+                    if (IsHeldHitActive()) return;
+                }
+            }
+
             StopAnimation(lastRunningHeldHitAnimation);
             lastRunningHeldHitAnimation = null;
         }
@@ -234,6 +227,22 @@ namespace Vintagestory.API.Common
             lastRunningLeftHeldIdleAnimation = null;
         }
 
+
+        public bool IsHeldHitAuthorative()
+        {
+            return IsAuthorative(lastRunningHeldHitAnimation);
+        }
+
+        private bool IsAuthorative(string anim)
+        {
+            if (anim == null) return false;
+            if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(anim, out var animData))
+            {
+                return animData.Attributes?.IsTrue("authorative") == true;
+            }
+
+            return false;
+        }
 
         public bool IsHeldUseActive()
         {
@@ -303,6 +312,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        
+
     }
 }

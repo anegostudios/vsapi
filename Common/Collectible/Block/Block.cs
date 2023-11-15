@@ -14,6 +14,13 @@ namespace Vintagestory.API.Common
 {
     public delegate void BlockBehaviorDelegate(BlockBehavior behavior, ref EnumHandling handling);
 
+    public enum EnumRetentionType
+    {
+        Heat,
+        Sound,
+        Water
+    }
+
     /// <summary>
     /// Basic class for a placeable block
     /// </summary>
@@ -1298,7 +1305,6 @@ namespace Vintagestory.API.Common
                 {
                     world.BlockAccessor.SetBlock(notSnowCovered.Id, pos);
                 }
-                
             }
         }
 
@@ -1853,7 +1859,21 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="facing"></param>
         /// <returns></returns>
+        [Obsolete("Use GetRetention() instead")]
         public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing)
+        {
+            return GetRetention(pos, facing, EnumRetentionType.Heat);
+        }
+
+
+        /// <summary>
+        /// Return a positive integer if the block retains something, e.g. (for warm rooms or greenhouses) or a negative integer if something can pass through, e.g. cool for cellars
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="facing"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public virtual int GetRetention(BlockPos pos, BlockFacing facing, EnumRetentionType type)
         {
             bool preventDefault = false;
             int result = 0;
@@ -1862,7 +1882,7 @@ namespace Vintagestory.API.Common
                 int bhresult;
 
                 EnumHandling handled = EnumHandling.PassThrough;
-                bhresult = behavior.GetHeatRetention(pos, facing, ref handled);
+                bhresult = behavior.GetRetention(pos, facing, type, ref handled);
                 if (handled != EnumHandling.PassThrough)
                 {
                     preventDefault = true;
@@ -1873,8 +1893,10 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return result;
 
-            if (/*SideSolid[facing.Opposite.Index] || - Tyron 24sep: Why the eff do we check the opposite side?? */ SideSolid[facing.Index])
+            if (SideSolid[facing.Index])
             {
+                if (type == EnumRetentionType.Sound) return 10;
+
                 var mat = GetBlockMaterial(api.World.BlockAccessor, pos);
                 if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Soil || mat == EnumBlockMaterial.Ceramic)
                 {
@@ -2432,8 +2454,8 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns instance of class that implements this interface in the following order<br/>
-        /// 1. Block<br/>
-        /// 2. BlockBehavior<br/>
+        /// 1. Block (returns itself)<br/>
+        /// 2. BlockBehavior (returns on of our own behavior)<br/>
         /// 3. BlockEntity<br/>
         /// 4. BlockEntityBehavior
         /// </summary>

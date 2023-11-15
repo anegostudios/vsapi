@@ -4,6 +4,8 @@ using System;
 using System.Linq;
 using Vintagestory.API.Util;
 using System.Runtime.Serialization;
+using System.Collections;
+using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common
 {
@@ -100,46 +102,152 @@ namespace Vintagestory.API.Common
             }
         }
 
-        private void CollectAttachmentPoints(ShapeElement elem)
+        /// <summary>
+        /// Adds a step parented shape to this shape
+        /// </summary>
+        /// <param name="childShape"></param>
+        /// <param name="addStack">Used for logging and as texture prefix</param>
+        /// <param name="childLocationForLogging"></param>
+        /// <param name="parentLocationForLogging"></param>
+        /// <param name="logger"></param>
+        /// <param name="damageEffect"></param>
+        /// <returns></returns>
+        public bool StepParentShape(Shape childShape, string texturePrefixCode, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture, float damageEffect = 0)
         {
-            if (elem.AttachmentPoints != null)
-            {
-                for (int j = 0; j < elem.AttachmentPoints.Length; j++)
-                {
-                    var point = elem.AttachmentPoints[j];
-                    AttachmentPointsByCode[point.Code] = point;
-                }
-            }
-
-            if (elem.Children != null)
-            {
-                for (int j = 0; j < elem.Children.Length; j++)
-                {
-                    CollectAttachmentPoints(elem.Children[j]);
-                }
-            }
+            return StepParentShape(null, childShape.Elements, childShape, texturePrefixCode, childLocationForLogging, parentLocationForLogging, logger, onTexture, damageEffect);
         }
 
-        private void ResolveReferences(ILogger errorLogger, string shapeName, Dictionary<string, ShapeElement> elementsByName, AnimationKeyFrame kf)
+        private bool StepParentShape(ShapeElement parentElem, ShapeElement[] elements, Shape childShape, string texturePrefixCode, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture, float damageEffect = 0)
         {
-            if (kf == null) return;
-
-            foreach (var val in kf.Elements)
+            bool anyElementAdded = false;
+            foreach (var childElem in elements)
             {
-                ShapeElement elem;
-                elementsByName.TryGetValue(val.Key, out elem);
+                ShapeElement stepparentElem;
 
-                if (elem == null)
+                if (childElem.Children != null)
                 {
-                    errorLogger.Error("Shape {0} has a key frame elmenent for which the referencing shape element {1} cannot be found.", shapeName, val.Key);
+                    anyElementAdded |= StepParentShape(childElem, childElem.Children, childShape, texturePrefixCode, childLocationForLogging, parentLocationForLogging, logger, onTexture, damageEffect);
+                }
 
-                    val.Value.ForElement = new ShapeElement();
+                if (childElem.StepParentName != null)
+                {
+                    stepparentElem = GetElementByName(childElem.StepParentName, StringComparison.InvariantCultureIgnoreCase);
+                    if (stepparentElem == null)
+                    {
+                        logger.Warning("Step parented shape {0} requires step parent element with name {1}, but no such element was found in parent shape {2}. Will not be visible.", childLocationForLogging, childElem.StepParentName, parentLocationForLogging);
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (parentElem == null)
+                    {
+                        logger.Warning("Step parented shape {0} did not define a step parent element for parent shape {1}. Will not be visible.", childLocationForLogging, parentLocationForLogging);
+                    }
                     continue;
                 }
 
-                val.Value.ForElement = elem;
+                if (parentElem != null)
+                {
+                    parentElem.Children = parentElem.Children.Remove(childElem);
+                }
+
+                if (stepparentElem.Children == null)
+                {
+                    stepparentElem.Children = new ShapeElement[] { childElem };
+                }
+                else
+                {
+                    stepparentElem.Children = stepparentElem.Children.Append(childElem);
+                }
+
+                childElem.ParentElement = stepparentElem;
+
+                childElem.SetJointIdRecursive(stepparentElem.JointId);
+
+                childElem.WalkRecursive((el) =>
+                {
+                    el.DamageEffect = damageEffect;
+
+                    foreach (var face in el.FacesResolved)
+                    {
+                        if (face == null) continue;
+                        face.Texture = texturePrefixCode + "-" + face.Texture;
+                    }
+                });
+
+                anyElementAdded = true;
             }
+
+            if (!anyElementAdded) return false;
+
+
+            if (childShape.Animations != null && Animations != null)
+            {
+                foreach (var gearAnim in childShape.Animations)
+                {
+                    var entityAnim = Animations.FirstOrDefault(anim => anim.Code == gearAnim.Code);
+                    if (entityAnim == null) continue;
+                    
+                    for (int gi = 0; gi < gearAnim.KeyFrames.Length; gi++)
+                    {
+                        var gearKeyFrame = gearAnim.KeyFrames[gi];
+                        var entityKeyFrame = getOrCreateKeyFrame(entityAnim, gearKeyFrame.Frame);
+
+                        foreach (var val in gearKeyFrame.Elements)
+                        {
+                            entityKeyFrame.Elements[val.Key] = val.Value;
+                        }
+                    }
+                }
+            }
+
+
+            if (childShape.Textures != null)
+            {
+                foreach (var val in childShape.Textures)
+                {
+                    onTexture(val.Key, val.Value);
+                }
+
+                foreach (var val in childShape.TextureSizes)
+                {
+                    TextureSizes[texturePrefixCode + "-" + val.Key] = val.Value;
+                }
+            }
+
+            return anyElementAdded;
         }
+
+
+        private AnimationKeyFrame getOrCreateKeyFrame(Animation entityAnim, int frame)
+        {
+            for (int ei = 0; ei < entityAnim.KeyFrames.Length; ei++)
+            {
+                var entityKeyFrame = entityAnim.KeyFrames[ei];
+                if (entityKeyFrame.Frame == frame)
+                {
+                    return entityKeyFrame;
+                }
+            }
+
+            for (int ei = 0; ei < entityAnim.KeyFrames.Length; ei++)
+            {
+                var entityKeyFrame = entityAnim.KeyFrames[ei];
+                if (entityKeyFrame.Frame > frame)
+                {
+                    var kfm = new AnimationKeyFrame() { Frame = frame };
+                    entityAnim.KeyFrames = entityAnim.KeyFrames.InsertAt(kfm, frame);
+                    return kfm;
+                }
+            }
+
+            var kf = new AnimationKeyFrame() { Frame = frame };
+            entityAnim.KeyFrames = entityAnim.KeyFrames.InsertAt(kf, 0);
+            return kf;
+        }
+
+
 
         /// <summary>
         /// Collects all the elements in the shape recursively.
@@ -455,6 +563,49 @@ namespace Vintagestory.API.Common
                 TextureSizes = TextureSizes,
                 Textures = Textures,
             };
+        }
+
+
+
+        private void CollectAttachmentPoints(ShapeElement elem)
+        {
+            if (elem.AttachmentPoints != null)
+            {
+                for (int j = 0; j < elem.AttachmentPoints.Length; j++)
+                {
+                    var point = elem.AttachmentPoints[j];
+                    AttachmentPointsByCode[point.Code] = point;
+                }
+            }
+
+            if (elem.Children != null)
+            {
+                for (int j = 0; j < elem.Children.Length; j++)
+                {
+                    CollectAttachmentPoints(elem.Children[j]);
+                }
+            }
+        }
+
+        private void ResolveReferences(ILogger errorLogger, string shapeName, Dictionary<string, ShapeElement> elementsByName, AnimationKeyFrame kf)
+        {
+            if (kf == null) return;
+
+            foreach (var val in kf.Elements)
+            {
+                ShapeElement elem;
+                elementsByName.TryGetValue(val.Key, out elem);
+
+                if (elem == null)
+                {
+                    errorLogger.Error("Shape {0} has a key frame elmenent for which the referencing shape element {1} cannot be found.", shapeName, val.Key);
+
+                    val.Value.ForElement = new ShapeElement();
+                    continue;
+                }
+
+                val.Value.ForElement = elem;
+            }
         }
 
     }

@@ -247,7 +247,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public static string CleanStackTrace(string stackTrace)
         {
-            return stackTrace.Replace(SourcePath,"");
+            return stackTrace?.Replace(SourcePath,"") ?? "No stack trace";
         }
 
         public void Fatal(string format, params object[] args)

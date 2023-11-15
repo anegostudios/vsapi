@@ -24,6 +24,7 @@ namespace Vintagestory.API.Common.Entities
         protected double x;
         protected double y;
         protected double z;
+        protected int dimension;
         protected float roll; // "rotX"
         protected float yaw; // "rotY"
         protected float pitch; // "rotZ"
@@ -60,6 +61,11 @@ namespace Vintagestory.API.Common.Entities
             set { y = value; }
         }
         
+        public virtual double InternalY
+        {
+            get { return y + dimension * BlockPos.DimensionBoundary; }
+        }
+
         /// <summary>
         /// The Z position of the Entity.
         /// </summary>
@@ -105,7 +111,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public BlockPos AsBlockPos
         {
-            get { return new BlockPos((int)X, (int)Y, (int)Z);  }
+            get { return new BlockPos((int)X, (int)Y, (int)Z, dimension);  }
         }
 
         /// <summary>
@@ -643,6 +649,7 @@ namespace Vintagestory.API.Common.Entities
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
+            dimension = pos.dimension;
             Roll = pos.Roll;
             Yaw = pos.Yaw;
             Pitch = pos.Pitch;
@@ -688,7 +695,7 @@ namespace Vintagestory.API.Common.Entities
         public void ToBytes(BinaryWriter writer)
         {
             writer.Write(x);
-            writer.Write(y);
+            writer.Write(InternalY);
             writer.Write(z);
             writer.Write(roll);
             writer.Write(yaw);
@@ -707,6 +714,8 @@ namespace Vintagestory.API.Common.Entities
         {
             x = reader.ReadDouble();
             y = reader.ReadDouble();
+            dimension = (int)y / BlockPos.DimensionBoundary;
+            y -= dimension * BlockPos.DimensionBoundary;
             z = reader.ReadDouble();
             roll = reader.ReadSingle();
             yaw = reader.ReadSingle();

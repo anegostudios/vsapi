@@ -1,7 +1,17 @@
-﻿using System;
+﻿using SkiaSharp;
+using System;
 
 namespace Vintagestory.API.MathTools
 {
+    public static class SkColorFix
+    {
+        public static int ToInt(this SKColor skcolor)
+        {
+            return skcolor.Blue | (skcolor.Green << 8) | (skcolor.Red << 16) | (skcolor.Alpha << 24);
+        }
+
+    }
+
     /// <summary>
     /// Many utility methods and fields for working with colors
     /// </summary>
@@ -360,9 +370,11 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < colors.Length; i++)
             {
-                r += (int)(weights[i] * ((colors[i] >> 16) & 0xff));
-                g += (int)(weights[i] * ((colors[i] >> 8) & 0xff));
-                b += (int)(weights[i] * (colors[i] & 0xff));
+                float w = weights[i];
+                if (w == 0) continue;
+                r += (int)(w * ((colors[i] >> 16) & 0xff));
+                g += (int)(w * ((colors[i] >> 8) & 0xff));
+                b += (int)(w * (colors[i] & 0xff));
             }
 
             return

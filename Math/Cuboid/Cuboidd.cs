@@ -524,6 +524,23 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// If the given cuboid intersects with this cuboid
         /// </summary>
+        public bool Intersects(Cuboidf other)
+        {
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            if (X2 > other.X1 &&
+                X1 < other.X2 &&
+                Y2 > other.Y1 &&
+                Y1 < other.Y2 &&
+                Z2 > other.Z1 &&
+                Z1 < other.Z2
+            ) return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// If the given cuboid intersects with this cuboid
+        /// </summary>
         public bool Intersects(Cuboidf other, Vec3d offset)
         {
             // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false

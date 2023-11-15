@@ -550,7 +550,7 @@ namespace Vintagestory.API.Common.Entities
             
             if (api.Side == EnumAppSide.Server)
             {
-                AnimManager = AnimationCache.InitManager(api, AnimManager, this, properties.Client.LoadedShapeForEntity, "head");
+                AnimManager = AnimationCache.InitManager(api, AnimManager, this, properties.Client.LoadedShapeForEntity, null, "head");
                 AnimManager.OnServerTick(0);
             } else
             {
@@ -1012,7 +1012,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
             entityShape.ResolveReferences(Api.Logger, shapePathForLogging);
-            AnimManager = AnimationCache.InitManager(World.Api, AnimManager, this, entityShape, "head");
+            AnimManager = AnimationCache.InitManager(World.Api, AnimManager, this, entityShape, AnimManager.Animator?.RunningAnimations, "head");
 
             // Clear cached values. ClientAnimator regenerates these
             if (entityShape.Animations != null)
@@ -1484,6 +1484,96 @@ namespace Vintagestory.API.Common.Entities
 
 
 
+
+        /// <summary>
+        /// Loads the entity from a stored byte array from the SaveGame
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="isSync">True if this is a sync operation, not a chunk read operation</param>
+        public virtual void FromBytes(BinaryReader reader, bool isSync)
+        {
+            string version = "";
+            if (!isSync)
+            {
+                version = reader.ReadString();
+            }
+
+            EntityId = reader.ReadInt64();
+            WatchedAttributes.FromBytes(reader);
+
+            if (!WatchedAttributes.HasAttribute("extraInfoText"))
+            {
+                WatchedAttributes["extraInfoText"] = new TreeAttribute();
+            }
+
+            if (GameVersion.IsLowerVersionThan(version, "1.7.0") && this is EntityPlayer)
+            {
+                ITreeAttribute healthTree = WatchedAttributes.GetTreeAttribute("health");
+                if (healthTree != null)
+                {
+                    healthTree.SetFloat("basemaxhealth", 15);
+                }
+            }
+
+
+            ServerPos.FromBytes(reader);
+
+            GetHeadPositionFromWatchedAttributes();
+
+            Pos.SetFrom(ServerPos);
+            PositionBeforeFalling.X = reader.ReadDouble();
+            PositionBeforeFalling.Y = reader.ReadDouble();
+            PositionBeforeFalling.Z = reader.ReadDouble();
+            Code = new AssetLocation(reader.ReadString());
+
+            if (!isSync)
+            {
+                Attributes.FromBytes(reader);
+            }
+
+            // In 1.8 animation data format was changed to use a TreeAttribute. 
+            if (isSync || GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1"))
+            {
+                TreeAttribute tree = new TreeAttribute();
+                tree.FromBytes(reader);
+                AnimManager?.FromAttributes(tree, version);
+
+                if (Properties?.Server?.Behaviors != null)
+                {
+                    foreach (var bh in Properties.Server.Behaviors)
+                    {
+                        bh.FromBytes(isSync);
+                    }
+                }
+            }
+            else
+            {
+                // Should not be too bad to just ditch pre 1.8 animations
+                // as the entity ai systems start new ones eventually anyway
+            }
+
+
+            // Upgrade to 1500 sat
+            if (GameVersion.IsLowerVersionThan(version, "1.10-dev.2") && this is EntityPlayer)
+            {
+                ITreeAttribute hungerTree = WatchedAttributes.GetTreeAttribute("hunger");
+                if (hungerTree != null)
+                {
+                    hungerTree.SetFloat("maxsaturation", 1500);
+                }
+            }
+
+            Stats.FromTreeAttributes(WatchedAttributes);
+
+
+            // Any new data loading added here should not be loaded if below version 1.8 or 
+            // you might get corrupt data from old binary animation data
+
+
+        }
+
+
+
         /// <summary>
         /// Serializes the slots contents to be stored in the SaveGame
         /// </summary>
@@ -1491,6 +1581,14 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="forClient">True when being used to send an entity to the client</param>
         public virtual void ToBytes(BinaryWriter writer, bool forClient)
         {
+            if (Properties?.Server?.Behaviors != null)
+            {
+                foreach (var bh in Properties.Server.Behaviors)
+                {
+                    bh.ToBytes(forClient);
+                }
+            }
+
             if (!forClient)
             {
                 writer.Write(GameVersion.ShortGameVersion);
@@ -1548,84 +1646,6 @@ namespace Vintagestory.API.Common.Entities
         }
 
 
-
-        /// <summary>
-        /// Loads the entity from a stored byte array from the SaveGame
-        /// </summary>
-        /// <param name="reader"></param>
-        /// <param name="isSync">True if this is a sync operation, not a chunk read operation</param>
-        public virtual void FromBytes(BinaryReader reader, bool isSync)
-        {
-            string version = "";
-            if (!isSync)
-            {
-                version = reader.ReadString();
-            }
-
-            EntityId = reader.ReadInt64();
-            WatchedAttributes.FromBytes(reader);
-
-            if (!WatchedAttributes.HasAttribute("extraInfoText"))
-            {
-                WatchedAttributes["extraInfoText"] = new TreeAttribute();
-            }
-
-            if (GameVersion.IsLowerVersionThan(version, "1.7.0") && this is EntityPlayer)
-            {
-                ITreeAttribute healthTree = WatchedAttributes.GetTreeAttribute("health");
-                if (healthTree != null)
-                {
-                    healthTree.SetFloat("basemaxhealth", 15);
-                }
-            }
-            
-
-            ServerPos.FromBytes(reader);
-
-            GetHeadPositionFromWatchedAttributes();
-
-            Pos.SetFrom(ServerPos);
-            PositionBeforeFalling.X = reader.ReadDouble();
-            PositionBeforeFalling.Y = reader.ReadDouble();
-            PositionBeforeFalling.Z = reader.ReadDouble();
-            Code = new AssetLocation(reader.ReadString());
-
-            if (!isSync)
-            {
-                Attributes.FromBytes(reader);
-            }
-
-            // In 1.8 animation data format was changed to use a TreeAttribute. 
-            if (isSync || GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1"))
-            {
-                TreeAttribute animTree = new TreeAttribute();
-                animTree.FromBytes(reader);
-                AnimManager?.FromAttributes(animTree, version);
-            } else
-            {
-                // Should not be too bad to just ditch pre 1.8 animations
-                // as the entity ai systems start new ones eventually anyway
-            }
-
-
-            // Upgrade to 1500 sat
-            if (GameVersion.IsLowerVersionThan(version, "1.10-dev.2") && this is EntityPlayer)
-            {
-                ITreeAttribute hungerTree = WatchedAttributes.GetTreeAttribute("hunger");
-                if (hungerTree != null)
-                {
-                    hungerTree.SetFloat("maxsaturation", 1500);
-                }
-            }
-
-            Stats.FromTreeAttributes(WatchedAttributes);
-
-
-            // Any new data loading added here should not be loaded if below version 1.8 or 
-            // you might get corrupt data from old binary animation data
-
-            
-        }
 
 
 

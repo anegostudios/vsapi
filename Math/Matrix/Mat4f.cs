@@ -22,6 +22,8 @@
 //SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+using System;
+
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
@@ -1254,6 +1256,31 @@ namespace Vintagestory.API.MathTools
             }
         }
 
+        public static void ExtractEulerAngles(float[] m, ref float thetaX, ref float thetaY, ref float thetaZ)
+        {
+            float sinY = m[8];
+            if (Math.Abs(sinY) == 1f)
+            {
+                //    thetaZ = sinY * (float)Math.Atan2(-m[6], m[5]);
+                //    thetaY = -sinY * GameMath.PIHALF;
+                //    thetaX = 0;
+                //}
+                //else
+                //{
+                //    thetaX = (float)Math.Atan2(m[9], m[10]);
+                //    thetaY = GameMath.Asin(-sinY);
+                //    thetaZ = (float)Math.Atan2(m[4], m[0]);
+                thetaX = sinY * (float)Math.Atan2(m[1], m[5]);
+                thetaY = sinY * GameMath.PIHALF;
+                thetaZ = 0;
+            }
+            else
+            {
+                thetaX = (float)Math.Atan2(-m[9], m[10]);
+                thetaY = GameMath.Asin(sinY);
+                thetaZ = (float)Math.Atan2(-m[4], m[0]);
+            }
+        }
 
         class GlMatrixMathf
         {

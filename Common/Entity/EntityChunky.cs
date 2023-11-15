@@ -28,6 +28,11 @@ namespace Vintagestory.API.Common
             get { return false; }
         }
 
+        public override bool ApplyGravity
+        {
+            get { return false; }
+        }
+
         public EntityChunky() : base(GlobalConstants.DefaultTrackingRange)   // we call a parameterised constructor instead of the parameterless base constructor
         {
             Stats = new EntityStats(this);

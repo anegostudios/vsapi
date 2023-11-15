@@ -15,6 +15,8 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public int Id;
 
+        public string Color;
+
         /// <summary>
         /// The entity code in the code.
         /// </summary>
@@ -197,6 +199,7 @@ namespace Vintagestory.API.Common.Entities
             {
                 Code = Code.Clone(),
                 Class = Class,
+                Color = Color,
                 Habitat = Habitat,
                 CollisionBoxSize = CollisionBoxSize.Clone(),
                 DeadCollisionBoxSize = DeadCollisionBoxSize.Clone(),
@@ -217,7 +220,8 @@ namespace Vintagestory.API.Common.Entities
                 EyeHeight = EyeHeight,
                 SwimmingEyeHeight = SwimmingEyeHeight,
                 Client = Client?.Clone() as EntityClientProperties,
-                Server = Server?.Clone() as EntityServerProperties
+                Server = Server?.Clone() as EntityServerProperties,
+                Variant = new OrderedDictionary<string, string>(Variant)
             };
         }
 

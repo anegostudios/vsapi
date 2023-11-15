@@ -9,6 +9,7 @@ namespace Vintagestory.API.Client
         Music, 
         Ambient,
         Weather,
+        Entity,
         MusicGlitchunaffected,
         AmbientGlitchunaffected,
         SoundGlitchunaffected

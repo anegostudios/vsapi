@@ -345,7 +345,7 @@ namespace Vintagestory.API.Common
         public virtual string GetName()
         {
             var index = Path.LastIndexOf('/');
-            return (index >= 0) ? Path.Substring(index + 1) : Path;
+            return Path.Substring(index + 1);    // Even if index is -1, this works :)
         }
 
         /// <summary>
@@ -353,7 +353,13 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void RemoveEnding()
         {
-            path = path.Substring(0, path.LastIndexOf('.'));
+            path = path[..path.LastIndexOf('.')];
+        }
+
+        public string PathOmittingPrefixAndSuffix(string prefix, string suffix)
+        {
+            int endpoint = path.EndsWith(suffix) ? path.Length - suffix.Length : path.Length;
+            return path[prefix.Length..endpoint];
         }
 
         /// <summary>

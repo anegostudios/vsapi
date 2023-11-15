@@ -295,18 +295,6 @@ namespace Vintagestory.API.Common
         Block GetBlock(BlockPos pos);
 
         /// <summary>
-        /// Tries to find a object that implements an interface at given position in the following order:<br/>
-        /// 1. Block implements T
-        /// 2. BlockBehavior implements T
-        /// 3. BlockEntity implements T
-        /// 4. BlockEntityBehavior implements T
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        T GetInterface<T>(BlockPos pos);
-
-        /// <summary>
         /// Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
         /// <br/>Reads the block from the specified layer(s), see <see cref="BlockLayersAccess"/> documentation for details.
         /// </summary>

@@ -363,7 +363,6 @@ namespace Vintagestory.API.Common
                     var state = Animator.GetAnimationState(trigger.Animation);
                     if (state.CurrentFrame >= trigger.Frame)
                     {
-                        Console.WriteLine("{0} >= {1}", state.CurrentFrame, trigger.Frame);
                         Triggers.RemoveAt(i);
                         trigger.Callback();
                         i--;

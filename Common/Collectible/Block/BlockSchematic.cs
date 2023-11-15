@@ -610,6 +610,8 @@ namespace Vintagestory.API.Common
             EntitiesUnpacked.Clear();
 
             angle = GameMath.Mod(angle, 360);
+            if (angle == 0) return;
+
             if (EntranceRotation != -1)
             {
                 EntranceRotation = GameMath.Mod(EntranceRotation + angle, 360);

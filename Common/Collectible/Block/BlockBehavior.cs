@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -350,7 +351,13 @@ namespace Vintagestory.API.Common
             
         }
 
+        [Obsolete("Use GetRetention() instead")]
         public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing, ref EnumHandling handled)
+        {
+            return 0;
+        }
+
+        public virtual int GetRetention(BlockPos pos, BlockFacing facing, EnumRetentionType type, ref EnumHandling handled)
         {
             return 0;
         }
