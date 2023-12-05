@@ -430,7 +430,7 @@ namespace Vintagestory.API.Common
                     }
 
                     // <div a=b />
-                    if (vtml[pos - 1] == '/')
+                    if (pos > 0 && vtml[pos - 1] == '/')
                     {
                         tagToken = parseTagAttributes(tag.Substring(0, tag.Length - 1));
 
