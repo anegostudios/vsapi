@@ -391,6 +391,7 @@ namespace Vintagestory.API.Common
         /// Returns a human readable description of the item/block
         /// </summary>
         /// <param name="world"></param>
+        /// <param name="inSlot"></param>
         /// <param name="debug"></param>
         /// <returns></returns>
         public string GetDescription(IWorldAccessor world, ItemSlot inSlot, bool debug = false)

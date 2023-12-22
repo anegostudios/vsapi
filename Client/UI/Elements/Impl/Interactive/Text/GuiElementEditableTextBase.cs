@@ -258,6 +258,7 @@ namespace Vintagestory.API.Client
         /// Sets given text, sets the cursor to the end of the text
         /// </summary>
         /// <param name="text"></param>
+        /// <param name="setCaretPosToEnd"></param>
         public void SetValue(string text, bool setCaretPosToEnd = true)
         {
             LoadValue(Lineize(text));
@@ -273,7 +274,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets given texts, leaves cursor position unchanged
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="newLines"></param>
         public void LoadValue(List<string> newLines)
         {
             // Disallow edit if prevent by event or if it adds another line beyond max lines

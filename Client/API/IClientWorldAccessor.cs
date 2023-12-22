@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Client
 {
@@ -142,8 +143,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Same effect as when player left-click breaks a block, but will not cause actual breakage of the block
         /// </summary>
-        /// <param name="pos"></param>
+        /// <param name="withTool"></param>
         /// <param name="damage"></param>
+        /// <param name="blockSelection"></param>
         void IncurBlockDamage(BlockSelection blockSelection, EnumTool? withTool, float damage);
 
         /// <summary>
@@ -167,5 +169,10 @@ namespace Vintagestory.API.Client
         Dictionary<int, IMiniDimension> Dimensions { get; }
         IMiniDimension GetOrCreateDimension(int dimId, Vec3d pos);
         bool TryGetMiniDimension(Vec3i origin, out IMiniDimension dimension);
+
+        /// <summary>
+        /// Exactly like PlaySoundAt except that it returns the duration of the played sound.  (We don't want to change the method signature of PlaySoundAt for API mod breakage reasons)
+        /// </summary>
+        int PlaySoundAtAndGetDuration(AssetLocation sound, double x, double y, double z, IPlayer ignorePlayerUid = null, bool randomizePitch = true, float range = 32, float volume = 1f);
     }
 }

@@ -42,9 +42,11 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Flips through given array of item stacks every second
         /// </summary>
+        /// <param name="capi"></param>
         /// <param name="itemstacks"></param>
         /// <param name="unscaledSize"></param>
         /// <param name="floatType"></param>
+        /// <param name="onStackClicked"></param>
         public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack[] itemstacks, double unscaledSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();
@@ -59,9 +61,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Looks at the collectibles handbook groupBy attribute and makes a list of itemstacks from that
         /// </summary>
+        /// <param name="capi"></param>
         /// <param name="itemstackgroup"></param>
+        /// <param name="allstacks"></param>
         /// <param name="unscaleSize"></param>
         /// <param name="floatType"></param>
+        /// <param name="onStackClicked"></param>
         public SlideshowItemstackTextComponent(ICoreClientAPI capi, ItemStack itemstackgroup, List<ItemStack> allstacks, double unscaleSize, EnumFloat floatType, Action<ItemStack> onStackClicked = null) : base(capi)
         {
             initSlot();

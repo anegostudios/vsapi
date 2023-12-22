@@ -34,6 +34,7 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The Client API</param>
         /// <param name="tabs">The collection of individual tabs.</param>
         /// <param name="font">The font for the group of them all.</param>
+        /// <param name="selectedFont"></param>
         /// <param name="bounds">The bounds of the tabs.</param>
         /// <param name="onTabClicked">The event fired when the tab is clicked.</param>
         public GuiElementVerticalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, CairoFont selectedFont, ElementBounds bounds, Action<int, GuiTab> onTabClicked) : base(capi, "", font, bounds)
@@ -328,21 +329,21 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds multiple tabs to a group of vertical tabs.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="tabs">The tabs being added.</param>
         /// <param name="bounds">The boundaries of the tab group.</param>
-        /// <param name="OnTabClicked">The event fired when any of the tabs are clicked.</param>
+        /// <param name="onTabClicked">The event fired when any of the tabs are clicked.</param>
         /// <param name="key">The name of this tab group.</param>
-        public static GuiComposer AddVerticalToggleTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int, GuiTab> OnTabClicked, string key = null)
+        public static GuiComposer AddVerticalToggleTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int, GuiTab> onTabClicked, string key = null)
         {
             if (!composer.Composed)
             {
                 CairoFont font = CairoFont.WhiteDetailText().WithFontSize(17);
                 CairoFont selectedFont = CairoFont.WhiteDetailText().WithFontSize(17).WithColor(GuiStyle.ActiveButtonTextColor);
-                var tabsElem = new GuiElementVerticalTabs(composer.Api, tabs, font, selectedFont, bounds, OnTabClicked);
+                var tabsElem = new GuiElementVerticalTabs(composer.Api, tabs, font, selectedFont, bounds, onTabClicked);
                 tabsElem.ToggleTabs = true;
                 composer.AddInteractiveElement(tabsElem, key);
             }
@@ -353,17 +354,18 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds multiple tabs to a group of vertical tabs.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="tabs">The tabs being added.</param>
         /// <param name="bounds">The boundaries of the tab group.</param>
-        /// <param name="OnTabClicked">The event fired when any of the tabs are clicked.</param>
+        /// <param name="onTabClicked">The event fired when any of the tabs are clicked.</param>
         /// <param name="key">The name of this tab group.</param>
-        public static GuiComposer AddVerticalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int, GuiTab> OnTabClicked, string key = null)
+        public static GuiComposer AddVerticalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int, GuiTab> onTabClicked, string key = null)
         {
             if (!composer.Composed)
             {
                 CairoFont font = CairoFont.WhiteDetailText().WithFontSize(17);
                 CairoFont selectedFont = CairoFont.WhiteDetailText().WithFontSize(17).WithColor(GuiStyle.ActiveButtonTextColor);
-                composer.AddInteractiveElement(new GuiElementVerticalTabs(composer.Api, tabs, font, selectedFont, bounds, OnTabClicked), key);
+                composer.AddInteractiveElement(new GuiElementVerticalTabs(composer.Api, tabs, font, selectedFont, bounds, onTabClicked), key);
             }
 
             return composer;
@@ -372,6 +374,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the vertical tab group as declared by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the vertical tab group to get.</param>
         public static GuiElementVerticalTabs GetVerticalTab(this GuiComposer composer, string key)
         {

@@ -83,6 +83,7 @@ namespace Vintagestory.API.Common
         /// Weight could be 10 for an empty armor slot and the source slot contains an armor itemtack
         /// </summary>
         /// <param name="sourceSlot"></param>
+        /// <param name="op"></param>
         /// <param name="skipSlots"></param>
         /// <returns></returns>
         WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op = null, List<ItemSlot> skipSlots = null);

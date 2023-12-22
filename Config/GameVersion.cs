@@ -41,7 +41,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.6";
+        public const string ShortGameVersion = OverallVersion + "-pre.10";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
@@ -61,7 +61,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Mod API
         /// </summary>
-        public const string APIVersion = "1.7.0";
+        public const string APIVersion = "1.19.0";
 
         /// <summary>
         /// Version of the Network Protocol

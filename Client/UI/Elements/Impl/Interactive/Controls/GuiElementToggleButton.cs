@@ -259,6 +259,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the toggle button by name in the GUIComposer.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the button.</param>
         /// <returns>A button.</returns>
         public static GuiElementToggleButton GetToggleButton(this GuiComposer composer, string key)
@@ -270,6 +271,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Creates a toggle button with the given parameters.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the button.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="onToggle">The event that happens once the button is toggled.</param>
@@ -287,6 +289,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds an icon button.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="icon">The name of the icon.</param>
         /// <param name="onToggle">The event that happens once the button is toggled.</param>
         /// <param name="bounds">The bounding box of the button.</param>
@@ -303,6 +306,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Toggles the given button.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the button that was set.</param>
         /// <param name="selectedIndex">the index of the button.</param>
         public static void ToggleButtonsSetValue(this GuiComposer composer, string key, int selectedIndex)
@@ -319,6 +323,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds multiple buttons with icons.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="icons">The collection of icons for the buttons.</param>
         /// <param name="font">The font for the buttons.</param>
         /// <param name="onToggle">The event called when the buttons are pressed.</param>
@@ -360,6 +365,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds multiple buttons with Text.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="texts">The texts on all the buttons.</param>
         /// <param name="font">The font for the buttons</param>
         /// <param name="onToggle">The event fired when the button is pressed.</param>

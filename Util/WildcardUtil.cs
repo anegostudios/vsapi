@@ -10,6 +10,7 @@ namespace Vintagestory.API.Util
         /// Returns a new AssetLocation with the wildcards (*) being filled with the blocks other Code parts, if the wildcard matches. 
         /// Example this block is trapdoor-up-north. search is *-up-*, replace is *-down-*, in this case this method will return trapdoor-down-north.
         /// </summary>
+        /// <param name="code"></param>
         /// <param name="search"></param>
         /// <param name="replace"></param>
         /// <returns></returns>

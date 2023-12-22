@@ -82,6 +82,8 @@ namespace Vintagestory.API.Client
         /// Should this current track play?
         /// </summary>
         /// <param name="props">Player Properties</param>
+        /// <param name="conds"></param>
+        /// <param name="pos"></param>
         /// <returns>Should we play the current track?</returns>
         public virtual bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
         {

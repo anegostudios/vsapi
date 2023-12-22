@@ -188,7 +188,8 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Replaces one part from the blocks code and replaces it with components by splitting it up at every occurence of a dash ('-')
         /// </summary>
-        /// <param name="components"></param>
+        /// <param name="part"></param>
+        /// <param name="atPosition"></param>
         /// <returns></returns>
         public AssetLocation CodeWithPart(string part, int atPosition = 0)
         {

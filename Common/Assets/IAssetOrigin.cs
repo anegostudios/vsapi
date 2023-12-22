@@ -23,15 +23,17 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns all assets of the given category which can be found in this origin 
         /// </summary>
-        /// <param name="Category"></param>
+        /// <param name="category"></param>
+        /// <param name="shouldLoad"></param>
         /// <returns></returns>
-        List<IAsset> GetAssets(AssetCategory Category, bool shouldLoad = true);
+        List<IAsset> GetAssets(AssetCategory category, bool shouldLoad = true);
 
 
         /// <summary>
         /// Returns all assets of the given base location path which can be found in this origin 
         /// </summary>
         /// <param name="baseLocation"></param>
+        /// <param name="shouldLoad"></param>
         /// <returns></returns>
         List<IAsset> GetAssets(AssetLocation baseLocation, bool shouldLoad = true);
 

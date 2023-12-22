@@ -18,8 +18,8 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The Client API</param>
         /// <param name="bounds">The bounds of the element.</param>
         /// <param name="withTitlebar">Minor style adjustments to accomodate title bar</param>
-        /// <param name="hotBarLayout">Whether or not the hotbar is rendered in this gui.</param>
         /// <param name="strokeWidth">The top padding area of the GUI</param>
+        /// <param name="alpha"></param>
         public GuiElementDialogBackground(ICoreClientAPI capi, ElementBounds bounds, bool withTitlebar, double strokeWidth = 0, float alpha = 1) : base(capi, bounds)
         {
             this.strokeWidth = strokeWidth;

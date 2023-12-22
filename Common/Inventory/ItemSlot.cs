@@ -90,6 +90,7 @@ namespace Vintagestory.API.Common
         /// Whether or not this slot can take the item from the source slot.
         /// </summary>
         /// <param name="sourceSlot"></param>
+        /// <param name="priority"></param>
         /// <returns></returns>
         public virtual bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {

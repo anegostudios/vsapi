@@ -164,9 +164,9 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                throw new Exception("Exception for the logger to load some exception related info");
+                throw new DummyLoggerException("Exception for the logger to load some exception related info");
             }
-            catch (Exception ex)
+            catch (DummyLoggerException ex)
             {
                 var stackTrace = new StackTrace(ex, true);
                 var frame = stackTrace.GetFrame(0);
@@ -268,5 +268,13 @@ namespace Vintagestory.API.Common
             => Log(EnumLogType.Worldgen, "Exception: {0}\n{1}", e.Message, CleanStackTrace(e.StackTrace));
         public void Worldgen(string message)
             => Log(EnumLogType.Worldgen, message, _emptyArgs);
+    }
+
+    public class DummyLoggerException : Exception
+    {
+        public DummyLoggerException(string message) : base(message)
+        {
+            
+        }
     }
 }

@@ -184,6 +184,8 @@ namespace Vintagestory.API.Client
         /// <param name="modeldata"></param>
         /// <param name="texSource"></param>
         /// <param name="rotation"></param>
+        /// <param name="quantityElements"></param>
+        /// <param name="selectiveElements"></param>
         void TesselateShapeWithJointIds(string typeForLogging, Shape shapeBase, out MeshData modeldata, ITexPositionSource texSource, Vec3f rotation, int? quantityElements = null, string[] selectiveElements = null);
 
         /// <summary>

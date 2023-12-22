@@ -48,6 +48,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the stat bar.</param>
         /// <param name="color">The color of the stat bar.</param>
         /// <param name="rightToLeft">Determines the direction that the bar fills.</param>
+        /// <param name="hideable"></param>
         public GuiElementStatbar(ICoreClientAPI capi, ElementBounds bounds, double[] color, bool rightToLeft, bool hideable) : base(capi, "", CairoFont.WhiteDetailText(), bounds)
         {
             barTexture = new LoadedTexture(capi);
@@ -323,10 +324,10 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a stat bar to the current GUI with a minimum of 0 and a maximum of 100.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the stat bar.</param>
         /// <param name="color">The color of the stat bar.</param>
         /// <param name="hideable">If true, the element can be fully hidden without recompose.</param>
@@ -352,6 +353,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a stat bar with filling in the opposite direction. Default values are from 0 to 100.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">the bounds of the stat bar.</param>
         /// <param name="color">the color of the stat bar.</param>
         /// <param name="key">The internal name of the stat bar.</param>
@@ -367,6 +369,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the stat bar by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The internal name of the stat bar to fetch.</param>
         /// <returns>The named stat bar.</returns>
         public static GuiElementStatbar GetStatbar(this GuiComposer composer, string key)

@@ -115,10 +115,6 @@
         Colorgrade = 37,
         Guigear = 38,
         Ssao = 39,
-        Bilateralblur = 40,
-        Grass = 41,
-        Flowers = 42,
-        Shadowgrass = 43,
-        Shadowflowers = 44
+        Bilateralblur = 40
     }
 }

@@ -1,6 +1,4 @@
-﻿using ProperVersion;
-using System;
-using System.IO;
+﻿using System.IO;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
@@ -33,7 +31,7 @@ namespace Vintagestory.API.Common
             get { return false; }
         }
 
-        public EntityChunky() : base(GlobalConstants.DefaultTrackingRange)   // we call a parameterised constructor instead of the parameterless base constructor
+        public EntityChunky() : base(GlobalConstants.DefaultSimulationRange)   // we call a parameterised constructor instead of the parameterless base constructor
         {
             Stats = new EntityStats(this);
             WatchedAttributes.SetAttribute("dim", new IntAttribute());

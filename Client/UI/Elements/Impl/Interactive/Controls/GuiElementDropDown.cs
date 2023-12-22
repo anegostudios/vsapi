@@ -101,6 +101,8 @@ namespace Vintagestory.API.Client
         /// <param name="selectedIndex">The default selected index.</param>
         /// <param name="onSelectionChanged">The event that occurs when the selection is changed.</param>
         /// <param name="bounds">The bounds of the drop down.</param>
+        /// <param name="font"></param>
+        /// <param name="multiSelect"></param>
         public GuiElementDropDown(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, bool multiSelect) : base(capi, "", font, bounds)
         {
             highlightTexture = new LoadedTexture(capi);
@@ -458,6 +460,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a multiple select dropdown to the current GUI instance.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="values">The values of the current drodown.</param>
         /// <param name="names">The names of those values.</param>
         /// <param name="selectedIndex">The default selected index.</param>
@@ -474,10 +477,10 @@ namespace Vintagestory.API.Client
         }
 
 
-
         /// <summary>
         /// Adds a dropdown to the current GUI instance.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="values">The values of the current drodown.</param>
         /// <param name="names">The names of those values.</param>
         /// <param name="selectedIndex">The default selected index.</param>
@@ -496,11 +499,13 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a dropdown to the current GUI instance.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="values">The values of the current drodown.</param>
         /// <param name="names">The names of those values.</param>
         /// <param name="selectedIndex">The default selected index.</param>
         /// <param name="onSelectionChanged">The event fired when the index is changed.</param>
         /// <param name="bounds">The bounds of the index.</param>
+        /// <param name="font"></param>
         /// <param name="key">The name of this dropdown.</param>
         public static GuiComposer AddDropDown(this GuiComposer composer, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, string key = null)
         {
@@ -512,10 +517,10 @@ namespace Vintagestory.API.Client
         }
 
 
-
         /// <summary>
         /// Gets the Drop Down element from the GUIComposer by their key.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">the name of the dropdown to fetch.</param>
         public static GuiElementDropDown GetDropDown(this GuiComposer composer, string key)
         {

@@ -42,6 +42,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds an inset to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the inset.</param>
         /// <param name="depth">The depth of the inset.</param>
         /// <param name="brightness">The brightness of the inset.</param>

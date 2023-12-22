@@ -290,6 +290,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a vertical scrollbar to the GUI.  
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="onNewScrollbarValue">The action when the scrollbar changes.</param>
         /// <param name="bounds">The bounds of the scrollbar.</param>
         /// <param name="key">The name of the scrollbar.</param>
@@ -301,11 +302,12 @@ namespace Vintagestory.API.Client
             }
             return composer;
         }
-        
+
 
         /// <summary>
         /// Gets the scrollbar by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the scrollbar.</param>
         /// <returns>The scrollbar itself.</returns>
         public static GuiElementScrollbar GetScrollbar(this GuiComposer composer, string key)

@@ -182,6 +182,7 @@ namespace Vintagestory.API.MathTools
         /// Returns a 4 element rgb float with values between 0..1
         /// </summary>
         /// <param name="color"></param>
+        /// <param name="outVal"></param>
         /// <returns></returns>
         public static Vec3f ToRGBVec3f(int color, ref Vec3f outVal)
         {
@@ -274,12 +275,12 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public static int ColorMultiplyEach(int color, int color2)
         {
-            // yaaaay bracket party (o) )o( o// \o/  - hope you enjoyed the party guys not all brackets were necessary, operator precedence * / before << before |
-            // could probably save on some bit masking  - nope, this bit masking is essential especially when right-shifting signed ints
+            // yaaaay bracket party (o) )o( o// \o/  - party now tamed a little for readability, surely everyone knows operator precedence * / is left to right and * / both come before <<
+            // At one time it was thought we might be able to save on some bit masking, but nope, this bit masking is essential especially when right-shifting signed ints
             return
-                ((color >> 24) & 0xff) * ((color2 >> 24) & 0xff) / 255 << 24 |
-                ((color >> 16) & 0xff) * ((color2 >> 16) & 0xff) / 255 << 16 |
-                ((color >> 8) & 0xff) * ((color2 >> 8) & 0xff) / 255 << 8 |
+                (((color >> 24) & 0xff) * ((color2 >> 24) & 0xff) / 255 << 24) |
+                (((color >> 16) & 0xff) * ((color2 >> 16) & 0xff) / 255 << 16) |
+                (((color >> 8) & 0xff) * ((color2 >> 8) & 0xff) / 255 << 8) |
                 (color & 0xff) * (color2 & 0xff) / 255
             ;
         }
@@ -318,13 +319,14 @@ namespace Vintagestory.API.MathTools
         }
 
 
-
-
         /// <summary>
         /// Multiplies a float value to the rgb color channels
         /// </summary>
         /// <param name="color"></param>
-        /// <param name="multiplier"></param>
+        /// <param name="blueMul"></param>
+        /// <param name="redMul"></param>
+        /// <param name="greenMul"></param>
+        /// <param name="alphaMul"></param>
         /// <returns></returns>
         public static int ColorMultiply4(int color, float redMul, float greenMul, float blueMul, float alphaMul)
         {
@@ -828,7 +830,6 @@ namespace Vintagestory.API.MathTools
         /// <param name="h"></param>
         /// <param name="s"></param>
         /// <param name="v"></param>
-        /// <param name="a"></param>
         /// <returns></returns>
         public static int HsvToRgba(int h, int s, int v)
         {
@@ -842,6 +843,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="h"></param>
         /// <param name="s"></param>
         /// <param name="v"></param>
+        /// <param name="a"></param>
         /// <returns></returns>
         public static int HsvToRgba(int h, int s, int v, int a)
         {

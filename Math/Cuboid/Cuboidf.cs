@@ -109,6 +109,16 @@ namespace Vintagestory.API.MathTools
 
         }
 
+        public Cuboidf(double x1, double x2, double y1, double y2, double z1, double z2)
+        {
+            X1 = (float)x1;
+            X2 = (float)x2;
+            Y1 = (float)y1;
+            Y2 = (float)y2;
+            Z1 = (float)z1;
+            Z2 = (float)z2;
+        }
+
         public Cuboidf(Vec3f start, Vec3f end)
         {
             this.X1 = start.X;

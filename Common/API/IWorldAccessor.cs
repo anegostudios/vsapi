@@ -438,11 +438,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="blockPos">The position of the block to take the color from</param>
         /// <param name="pos">The position where the particles should spawn</param>
-        /// <param name="item"></param>
         /// <param name="radius"></param>
         /// <param name="quantity"></param>
         /// <param name="scale"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
+        /// <param name="velocity"></param>
         void SpawnCubeParticles(BlockPos blockPos, Vec3d pos, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
 
 
@@ -455,6 +455,7 @@ namespace Vintagestory.API.Common
         /// <param name="quantity"></param>
         /// <param name="scale"></param>
         /// <param name="dualCallByPlayer">If this call is made on client and on server, set this to the causing playerUID to prevent double spawning. Essentially dualCall will spawn the particles on the client, and send it to all other players except source client</param>
+        /// <param name="velocity"></param>
         void SpawnCubeParticles(Vec3d pos, ItemStack item, float radius, int quantity, float scale = 1f, IPlayer dualCallByPlayer = null, Vec3f velocity = null);
 
 
@@ -504,7 +505,7 @@ namespace Vintagestory.API.Common
         /// <param name="ray"></param>
         /// <param name="blockSelection"></param>
         /// <param name="entitySelection"></param>
-        /// <param name="bfilter">Can be used to ignore certain blocks. Return false to ignore</param>
+        /// <param name="filter"></param>
         /// <param name="efilter">Can be used to ignore certain entities. Return false to ignore</param>
         void RayTraceForSelection(Ray ray, ref BlockSelection blockSelection, ref EntitySelection entitySelection, BlockFilter filter = null, EntityFilter efilter = null);
 
@@ -512,10 +513,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
         /// </summary>
-        /// <param name="OnGameTick"></param>
+        /// <param name="onGameTick"></param>
         /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
         /// <returns>listenerId</returns>
-        long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval, int initialDelayOffsetMs = 0);
+        long RegisterGameTickListener(Action<float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0);
 
         /// <summary>
         /// Removes a game tick listener
@@ -621,6 +623,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Retrieve a customized interface to access blocks in the loaded game world. Does not relight. On commit all touched blocks are updated at once. This method is currently used for the snow accumulation system
         /// </summary>
+        /// <param name="synchronize"></param>
         /// <param name="debug"></param>
         /// <returns></returns>
         IBulkBlockAccessor GetBlockAccessorBulkMinimalUpdate(bool synchronize, bool debug = false);

@@ -13,7 +13,7 @@ namespace Vintagestory.API.Server
     /// Handler for processing a message
     /// </summary>
     /// <param name="fromPlayer"></param>
-    /// <param name="networkMessage"></param>
+    /// <param name="packet"></param>
     public delegate void NetworkClientMessageHandler<T>(IServerPlayer fromPlayer, T packet);
 
 

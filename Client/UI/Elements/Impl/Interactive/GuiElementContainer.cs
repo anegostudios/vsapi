@@ -45,10 +45,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The Client API.</param>
         /// <param name="bounds">The bounds of the list.</param>
-        /// <param name="OnMouseDownOnCellLeft">The function fired when the cell is clicked on the left side.</param>
-        /// <param name="OnMouseDownOnCellRight">The function fired when the cell is clicked on the right side.</param>
-        /// <param name="cellCreator">The event fired when a cell is requested by the gui</param>
-        /// <param name="cells">The array of cells initialized with the list.</param>
         public GuiElementContainer(ICoreClientAPI capi, ElementBounds bounds) : base(capi, bounds)
         {
             listTexture = new LoadedTexture(capi);

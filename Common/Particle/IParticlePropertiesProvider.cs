@@ -169,6 +169,7 @@ namespace Vintagestory.API.Common
         /// For reading from the network
         /// </summary>
         /// <param name="reader"></param>
+        /// <param name="resolver"></param>
         void FromBytes(BinaryReader reader, IWorldAccessor resolver);
 
         /// <summary>

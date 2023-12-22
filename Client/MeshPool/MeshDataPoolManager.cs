@@ -38,6 +38,7 @@ namespace Vintagestory.API.Client
         /// <param name="defaultIndexPoolSize">Size allocated for the Indices</param>
         /// <param name="maxPartsPerPool">The maximum number of parts for this pool.</param>
         /// <param name="customFloats">Additional float data</param>
+        /// <param name="customShorts"></param>
         /// <param name="customBytes">Additional byte data</param>
         /// <param name="customInts">additional int data</param>
         public MeshDataPoolManager(MeshDataPoolMasterManager masterPool, FrustumCulling frustumCuller, ICoreClientAPI capi, int defaultVertexPoolSize, int defaultIndexPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartShort customShorts = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
@@ -59,6 +60,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="modeldata">The model data</param>
         /// <param name="modelOrigin">The origin point of the Model</param>
+        /// <param name="dimension"></param>
         /// <param name="frustumCullSphere">The culling sphere.</param>
         /// <returns>The location identifier for the pooled model.</returns>
         public ModelDataPoolLocation AddModel(MeshData modeldata, Vec3i modelOrigin, int dimension, Sphere frustumCullSphere)
@@ -99,7 +101,7 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Renders the model.
+        /// Renders the chunk models to the GPU.  One of the most important methods in the entire game!
         /// </summary>
         /// <param name="playerpos">The position of the Player</param>
         /// <param name="originUniformName"></param>
@@ -111,6 +113,7 @@ namespace Vintagestory.API.Client
             {
                 bool revertModelviewMatrix = false;
                 bool revertMVPMatrix = false;
+                bool revertTransparency = false;
                 MeshDataPool pool = pools[i];
                 if (pool.dimensionId == Dimensions.MiniDimensions)
                 {
@@ -130,6 +133,11 @@ namespace Vintagestory.API.Client
                     {
                         currShader.UniformMatrix("modelViewMatrix", dimension.GetRenderTransformMatrix(masterPool.currentModelViewMatrix, playerpos));
                         revertModelviewMatrix = true;
+                        if (currShader.HasUniform("forcedTransparency"))
+                        {
+                            currShader.Uniform("forcedTransparency", capi.Settings.Float["previewTransparency"]);
+                            revertTransparency = true;
+                        }
                     }
                     else if (currShader.HasUniform("mvpMatrix"))
                     {
@@ -142,6 +150,20 @@ namespace Vintagestory.API.Client
                         (float)(pool.poolOrigin.Y + renderOffset.Y - playerpos.Y),
                         (float)(pool.poolOrigin.Z + renderOffset.Z - playerpos.Z)
                     ));
+
+                    try
+                    {
+                        pool.RenderMesh(capi.Render);
+                    }
+                    finally
+                    {
+                        if (revertModelviewMatrix)
+                            capi.Render.CurrentActiveShader.UniformMatrix("modelViewMatrix", masterPool.currentModelViewMatrix);
+                        if (revertMVPMatrix)
+                            capi.Render.CurrentActiveShader.UniformMatrix("mvpMatrix", masterPool.shadowMVPMatrix);
+                        if (revertTransparency)
+                            capi.Render.CurrentActiveShader.Uniform("forcedTransparency", 0f);
+                    }
                 }
                 else
                 {
@@ -157,14 +179,9 @@ namespace Vintagestory.API.Client
                         (float)(pool.poolOrigin.Y - playerpos.Y),
                         (float)(pool.poolOrigin.Z - playerpos.Z)
                     ));
+
+                    pool.RenderMesh(capi.Render);
                 }
-
-                capi.Render.RenderMesh(pool.modelRef, pool.indicesStartsByte, pool.indicesSizes, pool.indicesGroupsCount);
-
-                if (revertModelviewMatrix)
-                    capi.Render.CurrentActiveShader.UniformMatrix("modelViewMatrix", masterPool.currentModelViewMatrix);
-                if (revertMVPMatrix)
-                    capi.Render.CurrentActiveShader.UniformMatrix("mvpMatrix", masterPool.shadowMVPMatrix);
             }
         }
 

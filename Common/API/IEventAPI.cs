@@ -31,7 +31,9 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Triggered immediately when the server loads a chunk column from disk or generates a new one, in the SupplyChunks thread (not the main thread)
     /// </summary>
-    /// <param name="chunkCoord"></param>
+    /// <param name="mapChunk"></param>
+    /// <param name="chunkX"></param>
+    /// <param name="chunkZ"></param>
     /// <param name="chunks"></param>
     public delegate void ChunkColumnBeginLoadChunkThread(IServerMapChunk mapChunk, int chunkX, int chunkZ, IWorldChunk[] chunks);
 
@@ -61,6 +63,7 @@ namespace Vintagestory.API.Common
     /// Triggered just before a map region gets unloaded
     /// </summary>
     /// <param name="mapCoord">regionX and regionZ (multiply with region size to get block position)</param>
+    /// <param name="region"></param>
     public delegate void MapRegionUnloadDelegate(Vec2i mapCoord, IMapRegion region);
 
 
@@ -148,20 +151,22 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
         /// </summary>
-        /// <param name="OnGameTick"></param>
+        /// <param name="onGameTick"></param>
         /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
         /// <returns>listenerId</returns>
-        long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval, int initialDelayOffsetMs = 0);
+        long RegisterGameTickListener(Action<float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0);
 
 
         /// <summary>
         /// Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
         /// </summary>
-        /// <param name="OnGameTick"></param>
+        /// <param name="onGameTick"></param>
         /// <param name="pos"></param>
         /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
         /// <returns>listenerId</returns>
-        long RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float> OnGameTick, BlockPos pos, int millisecondInterval, int initialDelayOffsetMs = 0);
+        long RegisterGameTickListener(Action<IWorldAccessor, BlockPos, float> onGameTick, BlockPos pos, int millisecondInterval, int initialDelayOffsetMs = 0);
 
 
 

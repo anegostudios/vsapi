@@ -42,6 +42,7 @@ namespace Vintagestory.API.Config
         /// <param name="languageCode">The language code that this translation service caters for.</param>
         /// <param name="logger">The <see cref="ILogger" /> instance used within the sided API.</param>
         /// <param name="assetManager">The <see cref="IAssetManager" /> instance used within the sided API.</param>
+        /// <param name="lbBehavior"></param>
         public TranslationService(string languageCode, ILogger logger, IAssetManager assetManager = null, EnumLinebreakBehavior lbBehavior = EnumLinebreakBehavior.AfterWord)
         {
             LanguageCode = languageCode;
@@ -96,6 +97,7 @@ namespace Vintagestory.API.Config
         /// Loads only the vanilla JSON files, without dealing with mods, or resource-packs.
         /// </summary>
         /// <param name="assetsPath">The root assets path to load the vanilla files from.</param>
+        /// <param name="lazyLoad"></param>
         public void PreLoad(string assetsPath, bool lazyLoad = false)
         {
             preLoadAssetsPath = assetsPath;
@@ -162,7 +164,7 @@ namespace Vintagestory.API.Config
             {
                 result = string.Format(value, args);
             }
-            catch (Exception _)
+            catch (Exception)
             {
                 result = value;
                 if (logger != null)

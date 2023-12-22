@@ -19,6 +19,7 @@ namespace Vintagestory.API.Client
         GuiElementStaticText pressedText;
 
         LoadedTexture normalTexture;
+        LoadedTexture activeTexture;
         LoadedTexture hoverTexture;
         LoadedTexture disabledTexture;
         
@@ -63,6 +64,7 @@ namespace Vintagestory.API.Client
         public GuiElementTextButton(ICoreClientAPI capi, string text, CairoFont font, CairoFont hoverFont, ActionConsumable onClick, ElementBounds bounds, EnumButtonStyle style = EnumButtonStyle.Normal) : base(capi, bounds)
         {
             hoverTexture = new LoadedTexture(capi);
+            activeTexture = new LoadedTexture(capi);
             normalTexture = new LoadedTexture(capi);
             disabledTexture = new LoadedTexture(capi);
             this.buttonStyle = style;
@@ -108,7 +110,7 @@ namespace Vintagestory.API.Client
             ctx.Clear();
 
 
-            // 2. Hover button
+            // 2. Active button
             if (buttonStyle != EnumButtonStyle.None)
             {
                 ctx.SetSourceRGBA(0, 0, 0, 0.4);
@@ -120,13 +122,23 @@ namespace Vintagestory.API.Client
             pressedText.ComposeElements(ctx, surface);
             pressedText.Bounds.fixedY -= textOffsetY;
 
-            generateTexture(surface, ref hoverTexture);
+            generateTexture(surface, ref activeTexture);
 
+            
+            // 3. Hover button
+            ctx.Clear();
+            if (buttonStyle != EnumButtonStyle.None)
+            {
+                ctx.SetSourceRGBA(1, 1, 1, 0.1);
+                ctx.Rectangle(0, 0, Bounds.OuterWidth, Bounds.OuterHeight);
+                ctx.Fill();
+            }
+            generateTexture(surface, ref hoverTexture);
             ctx.Dispose();
             surface.Dispose();
 
 
-            // 3. Disabled button
+            // 4. Disabled button
             surface = new ImageSurface(Format.Argb32, 2, 2);
             ctx = genContext(surface);
 
@@ -231,7 +243,11 @@ namespace Vintagestory.API.Client
             {
                 api.Render.Render2DTexturePremultipliedAlpha(disabledTexture.TextureId, Bounds);
             }
-            else if (isOver || currentlyMouseDownOnElement)
+            else if (active || currentlyMouseDownOnElement)
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(activeTexture.TextureId, Bounds);
+            }
+            else if (isOver)
             {
                 api.Render.Render2DTexturePremultipliedAlpha(hoverTexture.TextureId, Bounds);
             }
@@ -260,17 +276,14 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
-            if (!Visible) return;
-            if ((enabled && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY)) || active)
-            {
-                if (!isOver && PlaySound) api.Gui.PlaySound("menubutton");
-                isOver = true;
+            bool wasOver = isOver;
+            setIsOver();
+            if (!wasOver && isOver && PlaySound) api.Gui.PlaySound("menubutton");
+        }
 
-            }
-            else
-            {
-                isOver = false;
-            }
+        protected void setIsOver()
+        {
+            isOver = Visible && enabled && Bounds.PointInside(api.Input.MouseX, api.Input.MouseY);
         }
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
@@ -281,11 +294,15 @@ namespace Vintagestory.API.Client
             base.OnMouseDownOnElement(api, args);
 
             currentlyMouseDownOnElement = true;
+
+            if (PlaySound) api.Gui.PlaySound("menubutton_down");
+            setIsOver();
         }
 
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
             if (!Visible) return;
+            if (currentlyMouseDownOnElement && !Bounds.PointInside(args.X, args.Y) && !active && PlaySound) api.Gui.PlaySound("menubutton_up");
 
             base.OnMouseUp(api, args);
 
@@ -297,10 +314,6 @@ namespace Vintagestory.API.Client
         {
             if (enabled && currentlyMouseDownOnElement && Bounds.PointInside(args.X, args.Y) && args.Button == EnumMouseButton.Left)
             {
-                if (PlaySound)
-                {
-                    api.Gui.PlaySound("menubutton_press");
-                }
                 args.Handled = onClick();
             }
 
@@ -322,8 +335,8 @@ namespace Vintagestory.API.Client
         {
             base.Dispose();
 
-            hoverTexture.Dispose();
-            normalText?.Dispose();
+            hoverTexture?.Dispose();
+            activeTexture?.Dispose();
             pressedText?.Dispose();
             disabledTexture?.Dispose();
             normalTexture?.Dispose();

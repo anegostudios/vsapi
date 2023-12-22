@@ -26,7 +26,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Cheese ripening
         /// </summary>
-        Ripen
+        Ripen,
+
+        /// <summary>
+        /// Snow/ice melting
+        /// </summary>
+        Melt
     }
 
 

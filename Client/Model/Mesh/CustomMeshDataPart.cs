@@ -193,7 +193,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Sets a value from a given mesh data part.
         /// </summary>
-        /// <param name="meshdatapart">the mesh data part for this type.</param>
+        /// <param name="cloned">the mesh data part for this type.</param>
         protected CustomMeshDataPart<T> EmptyClone(CustomMeshDataPart<T> cloned)
         {
             cloned.customAllocationSize = customAllocationSize;

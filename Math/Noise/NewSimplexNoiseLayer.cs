@@ -75,8 +75,9 @@ namespace Vintagestory.API.MathTools
             float y1 = yi - 0.5f;
             float z1 = zi - 0.5f;
             float a1 = 0.75f - x1 * x1 - y1 * y1 - z1 * z1;
-            long hash1 = HashPrimes(seed2, xrbp + PrimeX, yrbp + PrimeY, zrbp + PrimeZ);
-            value += (a1 * a1) * (a1 * a1) * Grad(hash1, x1, y1, z1);
+            value += (a1 * a1) * (a1 * a1) * Grad(
+                HashPrimes(seed2, xrbp + PrimeX, yrbp + PrimeY, zrbp + PrimeZ),
+                x1, y1, z1);
 
             // Shortcuts for building the remaining falloffs.
             // Derived by subtracting the polynomials with the offsets plugged in.
@@ -91,32 +92,35 @@ namespace Vintagestory.API.MathTools
             float a2 = xAFlipMask0 + a0;
             if (a2 > 0)
             {
-                float x2 = x0 - (xNMask | 1);
-                float y2 = y0;
-                float z2 = z0;
-                long hash2 = HashPrimes(seed, xrbp + (~xNMask & PrimeX), yrbp + (yNMask & PrimeY), zrbp + (zNMask & PrimeZ));
-                value += (a2 * a2) * (a2 * a2) * Grad(hash2, x2, y2, z2);
+                value += (a2 * a2) * (a2 * a2) * Grad(
+                    HashPrimes(seed, xrbp + (~xNMask & PrimeX), yrbp + (yNMask & PrimeY), zrbp + (zNMask & PrimeZ)),
+                    x0 - (xNMask | 1),
+                    y0,
+                    z0
+                );
             }
             else
             {
                 float a3 = yAFlipMask0 + zAFlipMask0 + a0;
                 if (a3 > 0)
                 {
-                    float x3 = x0;
-                    float y3 = y0 - (yNMask | 1);
-                    float z3 = z0 - (zNMask | 1);
-                    long hash3 = HashPrimes(seed, xrbp + (xNMask & PrimeX), yrbp + (~yNMask & PrimeY), zrbp + (~zNMask & PrimeZ));
-                    value += (a3 * a3) * (a3 * a3) * Grad(hash3, x3, y3, z3);
+                    value += (a3 * a3) * (a3 * a3) * Grad(
+                        HashPrimes(seed, xrbp + (xNMask & PrimeX), yrbp + (~yNMask & PrimeY), zrbp + (~zNMask & PrimeZ)),
+                        x0,
+                        y0 - (yNMask | 1),
+                        z0 - (zNMask | 1)
+                    );
                 }
 
                 float a4 = xAFlipMask1 + a1;
                 if (a4 > 0)
                 {
-                    float x4 = (xNMask | 1) + x1;
-                    float y4 = y1;
-                    float z4 = z1;
-                    long hash4 = HashPrimes(seed2, xrbp + (xNMask & unchecked(PrimeX * 2)), yrbp + PrimeY, zrbp + PrimeZ);
-                    value += (a4 * a4) * (a4 * a4) * Grad(hash4, x4, y4, z4);
+                    value += (a4 * a4) * (a4 * a4) * Grad(
+                        HashPrimes(seed2, xrbp + (xNMask & unchecked(PrimeX * 2)), yrbp + PrimeY, zrbp + PrimeZ),
+                        (xNMask | 1) + x1,
+                        y1,
+                        z1
+                    );
                     skip5 = true;
                 }
             }
@@ -125,32 +129,35 @@ namespace Vintagestory.API.MathTools
             float a6 = yAFlipMask0 + a0;
             if (a6 > 0)
             {
-                float x6 = x0;
-                float y6 = y0 - (yNMask | 1);
-                float z6 = z0;
-                long hash6 = HashPrimes(seed, xrbp + (xNMask & PrimeX), yrbp + (~yNMask & PrimeY), zrbp + (zNMask & PrimeZ));
-                value += (a6 * a6) * (a6 * a6) * Grad(hash6, x6, y6, z6);
+                value += (a6 * a6) * (a6 * a6) * Grad(
+                    HashPrimes(seed, xrbp + (xNMask & PrimeX), yrbp + (~yNMask & PrimeY), zrbp + (zNMask & PrimeZ)),
+                    x0,
+                    y0 - (yNMask | 1),
+                    z0
+                );
             }
             else
             {
                 float a7 = xAFlipMask0 + zAFlipMask0 + a0;
                 if (a7 > 0)
                 {
-                    float x7 = x0 - (xNMask | 1);
-                    float y7 = y0;
-                    float z7 = z0 - (zNMask | 1);
-                    long hash7 = HashPrimes(seed, xrbp + (~xNMask & PrimeX), yrbp + (yNMask & PrimeY), zrbp + (~zNMask & PrimeZ));
-                    value += (a7 * a7) * (a7 * a7) * Grad(hash7, x7, y7, z7);
+                    value += (a7 * a7) * (a7 * a7) * Grad(
+                        HashPrimes(seed, xrbp + (~xNMask & PrimeX), yrbp + (yNMask & PrimeY), zrbp + (~zNMask & PrimeZ)),
+                        x0 - (xNMask | 1),
+                        y0,
+                        z0 - (zNMask | 1)
+                    );
                 }
 
                 float a8 = yAFlipMask1 + a1;
                 if (a8 > 0)
                 {
-                    float x8 = x1;
-                    float y8 = (yNMask | 1) + y1;
-                    float z8 = z1;
-                    long hash8 = HashPrimes(seed2, xrbp + PrimeX, yrbp + (yNMask & (PrimeY << 1)), zrbp + PrimeZ);
-                    value += (a8 * a8) * (a8 * a8) * Grad(hash8, x8, y8, z8);
+                    value += (a8 * a8) * (a8 * a8) * Grad(
+                        HashPrimes(seed2, xrbp + PrimeX, yrbp + (yNMask & (PrimeY << 1)), zrbp + PrimeZ),
+                        x1,
+                        (yNMask | 1) + y1,
+                        z1
+                    );
                     skip9 = true;
                 }
             }
@@ -159,32 +166,35 @@ namespace Vintagestory.API.MathTools
             float aA = zAFlipMask0 + a0;
             if (aA > 0)
             {
-                float xA = x0;
-                float yA = y0;
-                float zA = z0 - (zNMask | 1);
-                long hashA = HashPrimes(seed, xrbp + (xNMask & PrimeX), yrbp + (yNMask & PrimeY), zrbp + (~zNMask & PrimeZ));
-                value += (aA * aA) * (aA * aA) * Grad(hashA, xA, yA, zA);
+                value += (aA * aA) * (aA * aA) * Grad(
+                    HashPrimes(seed, xrbp + (xNMask & PrimeX), yrbp + (yNMask & PrimeY), zrbp + (~zNMask & PrimeZ)),
+                    x0,
+                    y0,
+                    z0 - (zNMask | 1)
+                );
             }
             else
             {
                 float aB = xAFlipMask0 + yAFlipMask0 + a0;
                 if (aB > 0)
                 {
-                    float xB = x0 - (xNMask | 1);
-                    float yB = y0 - (yNMask | 1);
-                    float zB = z0;
-                    long hashB = HashPrimes(seed, xrbp + (~xNMask & PrimeX), yrbp + (~yNMask & PrimeY), zrbp + (zNMask & PrimeZ));
-                    value += (aB * aB) * (aB * aB) * Grad(hashB, xB, yB, zB);
+                    value += (aB * aB) * (aB * aB) * Grad(
+                        HashPrimes(seed, xrbp + (~xNMask & PrimeX), yrbp + (~yNMask & PrimeY), zrbp + (zNMask & PrimeZ)),
+                        x0 - (xNMask | 1),
+                        y0 - (yNMask | 1),
+                        z0
+                    );
                 }
 
                 float aC = zAFlipMask1 + a1;
                 if (aC > 0)
                 {
-                    float xC = x1;
-                    float yC = y1;
-                    float zC = (zNMask | 1) + z1;
-                    long hashC = HashPrimes(seed2, xrbp + PrimeX, yrbp + PrimeY, zrbp + (zNMask & (PrimeZ << 1)));
-                    value += (aC * aC) * (aC * aC) * Grad(hashC, xC, yC, zC);
+                    value += (aC * aC) * (aC * aC) * Grad(
+                        HashPrimes(seed2, xrbp + PrimeX, yrbp + PrimeY, zrbp + (zNMask & (PrimeZ << 1))),
+                        x1,
+                        y1,
+                        (zNMask | 1) + z1
+                    );
                     skipD = true;
                 }
             }
@@ -194,11 +204,12 @@ namespace Vintagestory.API.MathTools
                 float a5 = yAFlipMask1 + zAFlipMask1 + a1;
                 if (a5 > 0)
                 {
-                    float x5 = x1;
-                    float y5 = (yNMask | 1) + y1;
-                    float z5 = (zNMask | 1) + z1;
-                    long hash5 = HashPrimes(seed2, xrbp + PrimeX, yrbp + (yNMask & (PrimeY << 1)), zrbp + (zNMask & (PrimeZ << 1)));
-                    value += (a5 * a5) * (a5 * a5) * Grad(hash5, x5, y5, z5);
+                    value += (a5 * a5) * (a5 * a5) * Grad(
+                        HashPrimes(seed2, xrbp + PrimeX, yrbp + (yNMask & (PrimeY << 1)), zrbp + (zNMask & (PrimeZ << 1))),
+                        x1,
+                        (yNMask | 1) + y1,
+                        (zNMask | 1) + z1
+                    );
                 }
             }
 
@@ -207,11 +218,12 @@ namespace Vintagestory.API.MathTools
                 float a9 = xAFlipMask1 + zAFlipMask1 + a1;
                 if (a9 > 0)
                 {
-                    float x9 = (xNMask | 1) + x1;
-                    float y9 = y1;
-                    float z9 = (zNMask | 1) + z1;
-                    long hash9 = HashPrimes(seed2, xrbp + (xNMask & unchecked(PrimeX * 2)), yrbp + PrimeY, zrbp + (zNMask & (PrimeZ << 1)));
-                    value += (a9 * a9) * (a9 * a9) * Grad(hash9, x9, y9, z9);
+                    value += (a9 * a9) * (a9 * a9) * Grad(
+                        HashPrimes(seed2, xrbp + (xNMask & unchecked(PrimeX * 2)), yrbp + PrimeY, zrbp + (zNMask & (PrimeZ << 1))),
+                        (xNMask | 1) + x1,
+                        y1,
+                        (zNMask | 1) + z1
+                    );
                 }
             }
 
@@ -220,11 +232,12 @@ namespace Vintagestory.API.MathTools
                 float aD = xAFlipMask1 + yAFlipMask1 + a1;
                 if (aD > 0)
                 {
-                    float xD = (xNMask | 1) + x1;
-                    float yD = (yNMask | 1) + y1;
-                    float zD = z1;
-                    long hashD = HashPrimes(seed2, xrbp + (xNMask & (PrimeX << 1)), yrbp + (yNMask & (PrimeY << 1)), zrbp + PrimeZ);
-                    value += (aD * aD) * (aD * aD) * Grad(hashD, xD, yD, zD);
+                    value += (aD * aD) * (aD * aD) * Grad(
+                        HashPrimes(seed2, xrbp + (xNMask & (PrimeX << 1)), yrbp + (yNMask & (PrimeY << 1)), zrbp + PrimeZ),
+                        (xNMask | 1) + x1,
+                        (yNMask | 1) + y1,
+                        z1
+                    );
                 }
             }
 

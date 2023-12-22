@@ -99,6 +99,7 @@ namespace Vintagestory.API.Client
         /// <param name="indicesPoolSize">The index pool size.</param>
         /// <param name="maxPartsPerPool">The maximum parts per pool.</param>
         /// <param name="customFloats">The custom floats of the pool.</param>
+        /// <param name="customShorts"></param>
         /// <param name="customBytes">The custom bytes of the pool.</param>
         /// <param name="customInts">The custom ints of the pool.</param>
         /// <returns>The resulting mesh data pool.</returns>
@@ -155,6 +156,7 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The core client API</param>
         /// <param name="modeldata">The model to add</param>
         /// <param name="modelOrigin">The origin point of the model.</param>
+        /// <param name="dimension"></param>
         /// <param name="frustumCullSphere">The culling sphere.</param>
         /// <returns>The location of the model (and the data) in the pool.</returns>
         public ModelDataPoolLocation TryAdd(ICoreClientAPI capi, MeshData modeldata, Vec3i modelOrigin, int dimension, Sphere frustumCullSphere)
@@ -441,6 +443,11 @@ namespace Vintagestory.API.Client
         public float GetFragmentation()
         {
             return CurrentFragmentation;
+        }
+
+        public void RenderMesh(IRenderAPI render)
+        {
+            render.RenderMesh(modelRef, indicesStartsByte, indicesSizes, indicesGroupsCount);
         }
     }
 

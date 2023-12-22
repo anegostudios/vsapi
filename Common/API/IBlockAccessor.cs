@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -13,6 +14,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         public int OldBlockId;
         /// <summary>
+        /// Contains liquid layer of block
+        /// </summary>
+        public int OldFluidBlockId;
+        /// <summary>
         /// If this value is negative, it indicates no change to the block (neither air block nor anything else) because only the fluid is being updated
         /// </summary>
         public int NewSolidBlockId = -1;
@@ -24,53 +29,32 @@ namespace Vintagestory.API.Common
 
         public byte[] OldBlockEntityData;
         public byte[] NewBlockEntityData;
-    }
-
-    public struct DecorUpdateKey : IEquatable<DecorUpdateKey>
-    {
-        public int X;
-        public int Y;
-        public int Z;
-        public int DecorIndex;
-
-        public bool Equals(DecorUpdateKey other)
-        {
-            return other.X == X && other.Y == Y && other.Z == Z && other.DecorIndex == DecorIndex;
-        }
-
-        public override bool Equals(object obj)
-        {
-            return obj is DecorUpdateKey key && Equals(key);
-        }
-
-        public override int GetHashCode()
-        {
-            int hashCode = -559056482;
-            hashCode = hashCode * -1521134295 + X.GetHashCode();
-            hashCode = hashCode * -1521134295 + Y.GetHashCode();
-            hashCode = hashCode * -1521134295 + Z.GetHashCode();
-            hashCode = hashCode * -1521134295 + DecorIndex.GetHashCode();
-            return hashCode;
-        }
+        public DecorUpdate[] Decor;
     }
 
     public class DecorUpdate
     {
-        public BlockPos Pos;
         public int OldDecorId;
         public int NewDecorId;
-        public int OldDecorIndex;
-        public int NewDecorIndex;
     }
 
-    public class BlockUpdateStruct
+    public class EntityUpdate
     {
-        public BlockPos Pos;
-        public int OldBlockId;
-        public int NewBlockId;
-        public ItemStack ByStack;
-
-        public byte[] BlockEntityData;
+        /// <summary>
+        /// If set this entity was spawned or Moved (position needs to be set too)
+        /// </summary>
+        public long EntityId = -1;
+        
+        /// <summary>
+        /// If set this entity needs to be spawned
+        /// </summary>
+        public EntityProperties EntityProperties;
+        
+        /// <summary>
+        /// If set the entity was moved
+        /// </summary>
+        public EntityPos OldPosition;
+        public EntityPos NewPosition;
     }
 
     /// A climate condition at a given position

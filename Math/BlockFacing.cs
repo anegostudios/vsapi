@@ -257,6 +257,19 @@ namespace Vintagestory.API.MathTools
             return HORIZONTALS_ANGLEORDER[GameMath.Mod(horizontalAngleIndex - 1, 4)];
         }
 
+        /// <summary>
+        /// Gets the Horizontal BlockFacing by applying the given angel
+        /// If used on a UP or DOWN BlockFacing it will return it's current BlockFacing
+        /// </summary>
+        /// <param name="angle"></param>
+        /// <returns></returns>
+        public BlockFacing GetHorizontalRotated(int angle)
+        {
+            if (horizontalAngleIndex < 0) return this;
+            var indexRot = (angle / 90 + index) % 4;
+            return HORIZONTALS[indexRot];
+        }
+
        
         /// <summary>
         /// Applies a 3d rotation on the face and returns the face thats closest to the rotated face

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Metadata;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -80,6 +81,8 @@ namespace Vintagestory.API.Common
         public float walkSpeed = 1f;
 
         string[] randomIdleAnimations;
+        long lastInsideSoundTimeFinishTorso;
+        long lastInsideSoundTimeFinishLegs;
 
         public override float BodyYaw {
             get
@@ -265,10 +268,50 @@ namespace Vintagestory.API.Common
             }
         }
 
+        IAnimationManager animManager;
+        IAnimationManager selfFpAnimManager;
+        bool IsSelf => PlayerUID == (Api as ICoreClientAPI)?.Settings.String["playeruid"];
+        public bool selfNowShadowPass;
+
+        public override IAnimationManager AnimManager
+        {
+            get
+            {
+                var capi = Api as ICoreClientAPI;
+                if (IsSelf && capi.Render.CameraType == EnumCameraMode.FirstPerson && !selfNowShadowPass)
+                {
+                    return selfFpAnimManager;
+                }
+
+                return animManager;
+            }
+            set { }
+        }
+
+        public IAnimationManager OtherAnimManager
+        {
+            get
+            {
+                var capi = Api as ICoreClientAPI;
+                if (IsSelf && capi.Render.CameraType == EnumCameraMode.FirstPerson && !selfNowShadowPass)
+                {
+                    return animManager;
+                }
+
+                return selfFpAnimManager;
+            }
+        }
+
+        public IAnimationManager TpAnimManager => animManager;
 
         public EntityPlayer() : base()
         {
-            AnimManager = new PlayerAnimationManager();
+            // For the first person mode (and just for the current client player, not other players), we have animation sets with hands that are detached from the seraph body,
+            // which must only run while in first person mode and not while doing the shadow pass. 
+            // To achieve this, we run two paralell animation managers and flip back and forth between the two as needed
+            animManager = new PlayerAnimationManager();
+            (animManager as PlayerAnimationManager).UseFpAnmations = false;
+            selfFpAnimManager = new PlayerAnimationManager();
 
             Stats
                 .Register("healingeffectivness")
@@ -298,7 +341,6 @@ namespace Vintagestory.API.Common
                 .Register("temporalGearTLRepairCost", EnumStatBlendType.FlatSum)
                 .Register("animalHarvestingTime")
             ;
-
         }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
@@ -325,6 +367,11 @@ namespace Vintagestory.API.Common
 
 
             randomIdleAnimations = properties.Attributes["randomIdleAnimations"].AsArray<string>(null);
+
+            if (IsSelf)
+            {
+                OtherAnimManager.Init(api, this);
+            }
         }
 
 
@@ -391,6 +438,12 @@ namespace Vintagestory.API.Common
             base.OnTesselation(ref entityShape, shapePathForLogging);
 
             AnimManager.HeadController = new PlayerHeadController(AnimManager, this, entityShape);
+
+            if (IsSelf)
+            {
+                AnimationCache.InitManager(World.Api, OtherAnimManager, this, entityShape, OtherAnimManager.Animator?.RunningAnimations, "head");
+                OtherAnimManager.HeadController = new PlayerHeadController(OtherAnimManager, this, entityShape);
+            }
         }
 
         private void updateEyeHeight(float dt)
@@ -403,11 +456,9 @@ namespace Vintagestory.API.Common
                 var controls = MountedOn != null ? MountedOn.Controls : servercontrols;
 
                 PrevFrameCanStandUp = !controls.Sneak && canStandUp();
-                bool moving = (controls.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !controls.NoClip && !controls.DetachedMode && OnGround;
+                bool moving = (controls.TriesToMove && SidedPos.Motion.LengthSq() > 0.00001) && !controls.NoClip && !controls.DetachedMode;
+                bool walking = moving && OnGround;
                 double newEyeheight = Properties.EyeHeight;
-
-
-
                 double newModelHeight = Properties.CollisionBoxSize.Y;
 
                 if (controls.FloorSitting)
@@ -445,17 +496,16 @@ namespace Vintagestory.API.Common
 
                 // Immersive fp mode has its own way of setting the eye pos
                 // but we still need to run above non-ifp code for the hitbox
-                if (player.ImmersiveFpMode)
+                if (player.ImmersiveFpMode || !Alive)
                 {
                     secondsDead = Alive ? 0 : secondsDead + dt;
                     updateLocalEyePosImmersiveFpMode();
                 }
 
 
-
                 double frequency = dt * controls.MovespeedMultiplier * GetWalkSpeedMultiplier(0.3) * (controls.Sprint ? 0.9 : 1.2) * (controls.Sneak ? 1.2f : 1);
 
-                walkCounter = moving ? walkCounter + frequency : 0;
+                walkCounter = walking ? walkCounter + frequency : 0;
                 walkCounter = walkCounter % GameMath.TWOPI;
 
                 double sneakDiv = (controls.Sneak ? 5 : 1.8);
@@ -477,17 +527,22 @@ namespace Vintagestory.API.Common
 
                 if (moving)
                 {
-                    if (stepHeight > prevStepHeight)
+                    bool playingInsideSound = PlayInsideSound(player);
+
+                    if (walking)
                     {
-                        if (direction == -1)
+                        if (stepHeight > prevStepHeight)
                         {
-                            PlayWalkSound(player);
+                            if (direction == -1)
+                            {
+                                PlayStepSound(player, playingInsideSound);
+                            }
+                            direction = 1;
                         }
-                        direction = 1;
-                    }
-                    else
-                    {
-                        direction = -1;
+                        else
+                        {
+                            direction = -1;
+                        }
                     }
                 }
 
@@ -495,46 +550,101 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public virtual void PlayWalkSound(IPlayer player)
+        const int overlapPercentage = 10;    // Hard-coding crime!
+
+        public virtual Block GetInsideTorsoBlockSoundSource(BlockPos tmpPos)
+        {
+            // We look for a block around the player's torso height, typically leaves are at height 1 above the ground
+            return GetNearestBlockSoundSource(tmpPos, +1.1, BlockLayersAccess.Solid, false);
+        }
+
+        public virtual Block GetInsideLegsBlockSoundSource(BlockPos tmpPos)
+        {
+            // We look for a block around the player's mid-leg height, deliberately chosen to be above the height of small ground clutter like loose stones (0.125 height)
+            return GetNearestBlockSoundSource(tmpPos, +0.2, BlockLayersAccess.Solid, false);
+        }
+
+        public virtual bool PlayInsideSound(IPlayer player)
+        {
+            if (Swimming) return false;   // We don't play solid block's inside sounds while swimming
+
+            BlockPos tmpPos = new BlockPos((int)Pos.X, (int)Pos.Y, (int)Pos.Z, Pos.Dimension);
+            AssetLocation soundinsideTorso = GetInsideTorsoBlockSoundSource(tmpPos)?.GetSounds(Api.World.BlockAccessor, tmpPos).Inside;
+            AssetLocation soundinsideLegs = GetInsideLegsBlockSoundSource(tmpPos)?.GetSounds(Api.World.BlockAccessor, tmpPos).Inside;
+
+            bool makingSound = false;
+            if (soundinsideTorso != null)
+            {
+                if (Api.Side == EnumAppSide.Client)
+                {
+                    long timeNow = Environment.TickCount;
+                    if (timeNow > lastInsideSoundTimeFinishTorso)
+                    {
+                        float volume = controls.Sneak ? 0.25f : 1f;
+                        int duration = PlaySound(player, soundinsideTorso, 12, volume, 1.4);
+                        lastInsideSoundTimeFinishTorso = timeNow + duration * (100 - overlapPercentage) / 100;
+                    }
+                }
+                makingSound = true;
+            }
+
+            if (soundinsideLegs != null && soundinsideLegs != soundinsideTorso)
+            {
+                if (Api.Side == EnumAppSide.Client)
+                {
+                    long timeNow = Environment.TickCount;
+                    if (timeNow > lastInsideSoundTimeFinishLegs)
+                    {
+                        float volume = controls.Sneak ? 0.35f : 1f;
+                        int duration = PlaySound(player, soundinsideLegs, 12, volume, 0.6);
+                        lastInsideSoundTimeFinishLegs = timeNow + duration * (100 - overlapPercentage) / 100;
+                    }
+                }
+                makingSound = true;
+            }
+
+            return makingSound;
+        }
+
+        public virtual void PlayStepSound(IPlayer player, bool playingInsideSound)
         {
             float volume = controls.Sneak ? 0.5f : 1f;
 
             EntityPos pos = SidedPos;
-            BlockPos tmpPos = new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z, pos.Dimension);
-            var blockUnder = BlockUnderPlayer(player, pos, tmpPos);
-            var blockInside = World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z, BlockLayersAccess.Solid);
-            var liquidblockInside = World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z, BlockLayersAccess.Fluid);
+            BlockPos tmpPos = new BlockPos((int)pos.X, (int)pos.Y, (int)pos.Z, pos.Dimension);
 
-            AssetLocation soundwalk = blockUnder.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk;
+            var soundWalkLoc = 
+                GetNearestBlockSoundSource(tmpPos, -0.03, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk ??
+                GetNearestBlockSoundSource(tmpPos, -0.7, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk     // When stepping stairs, seraphs is a bit floaty. And for fences we need to peek further down to find the block
+            ;
+
             tmpPos.Set((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z);
-
-            AssetLocation soundinside = blockInside.GetSounds(Api.World.BlockAccessor, tmpPos)?.Inside;
+            var liquidblockInside = World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.Fluid);
             AssetLocation soundinsideliquid = liquidblockInside.GetSounds(Api.World.BlockAccessor, tmpPos)?.Inside;
-
-            bool isSelf = player.PlayerUID == (Api as ICoreClientAPI)?.World.Player?.PlayerUID;
-            var srvplayer = player as IServerPlayer; // Don't send the sound to the current player, he plays the sound himself
-            double x = 0, y = 0, z = 0;
-            if (!isSelf) { x = Pos.X; y = Pos.Y + 1; z = Pos.Z; }
 
             if (soundinsideliquid != null)
             {
-                World.PlaySoundAt(soundinsideliquid, x, y, z, srvplayer, true, 12, volume);
+                PlaySound(player, soundinsideliquid, 12, volume, 1);
             }
 
-            if (!Swimming && soundwalk != null)
+            if (!Swimming && soundWalkLoc != null)
             {
-                if (blockInside.Id != blockUnder.Id && soundinside != null)
-                {
-                    World.PlaySoundAt(soundwalk, x, y, z, srvplayer, true, 12, volume * 0.5f);
-                    World.PlaySoundAt(soundinside, x, y, z, srvplayer, true, 12, volume);
-                }
-                else
-                {
-                    World.PlaySoundAt(soundwalk, x, y, z, srvplayer, true, 12, volume);
-                }
-
+                PlaySound(player, soundWalkLoc, 12, playingInsideSound ? volume * 0.5f : volume, 0);   // Need to half volume if inside sounds as well
                 OnFootStep?.Invoke();
             }
+        }
+
+        private int PlaySound(IPlayer player, AssetLocation sound, int range, float volume, double yOffset)
+        {
+            bool isSelf = player.PlayerUID == (Api as ICoreClientAPI)?.World.Player?.PlayerUID;
+            var srvplayer = player as IServerPlayer; // Don't send the sound to the current player, he plays the sound himself
+            double x = 0, y = 0, z = 0;
+            if (!isSelf) { x = Pos.X; y = Pos.Y + yOffset; z = Pos.Z; }
+
+            if (Api.Side == EnumAppSide.Client) return ((IClientWorldAccessor)World).PlaySoundAtAndGetDuration(sound, x, y, z, srvplayer, true, range, volume);
+
+            World.PlaySoundAt(sound, x, y, z, srvplayer, true, range, volume);
+            return 0;
         }
 
         public override void OnGameTick(float dt)
@@ -572,7 +682,7 @@ namespace Vintagestory.API.Common
                 base.OnGameTick(dt);
             }
 
-            if (!servercontrols.TriesToMove && !controls.IsFlying && !controls.Gliding && RightHandItemSlot?.Empty == true)
+            if (!servercontrols.TriesToMove && !controls.IsFlying && !controls.Gliding && RightHandItemSlot?.Empty == true && !Swimming)
             {
                 secondsIdleAccum += dt;
                 if (secondsIdleAccum > 20 && World.Rand.NextDouble() < 0.004)
@@ -769,8 +879,8 @@ namespace Vintagestory.API.Common
                 bool lookingIntoWind = Math.Abs(yawDiff) < 45 * GameMath.DEG2RAD;
                 bool isOutside = GlobalConstants.CurrentDistanceToRainfallClient < 6;
 
-                if (isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2 && Player.WorldData.CurrentGameMode != EnumGameMode.Creative)
-                {
+                if (isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2 && Player.WorldData.CurrentGameMode != EnumGameMode.Creative && !hasEyeProtectiveGear())
+                {   
                     AnimManager.StartAnimation("protecteyes");
                 }
                 else
@@ -778,6 +888,11 @@ namespace Vintagestory.API.Common
                     if (AnimManager.IsAnimationActive("protecteyes")) AnimManager.StopAnimation("protecteyes");
                 }
             }
+        }
+
+        private bool hasEyeProtectiveGear()
+        {
+            return GearInventory != null && GearInventory.FirstOrDefault((slot) => !slot.Empty && slot.Itemstack.Collectible.Attributes?.IsTrue("eyeprotective") == true) != null;
         }
 
         private bool canStandUp()
@@ -889,11 +1004,16 @@ namespace Vintagestory.API.Common
             {
                 EntityPos pos = SidedPos;
                 BlockPos tmpPos = new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z, pos.Dimension);
-                var blockUnder = BlockUnderPlayer(player, pos, tmpPos);
-                AssetLocation soundwalk = blockUnder.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk;
-                if (soundwalk != null && !Swimming)
+                var blockUnder = GetNearestBlockSoundSource(tmpPos, -0.1, BlockLayersAccess.MostSolid, true);
+
+                var soundWalkLoc =
+                    GetNearestBlockSoundSource(tmpPos, -0.1, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk ??
+                    GetNearestBlockSoundSource(tmpPos, -0.7, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk     // Stairs and Fences are a special snowflake
+                ;
+
+                if (soundWalkLoc != null && !Swimming)
                 {
-                    World.PlaySoundAt(soundwalk, this, player, true, 12, 1.5f);
+                    World.PlaySoundAt(soundWalkLoc, this, player, true, 12, 1.5f);
                 }
 
                 OnImpact?.Invoke(motionY);
@@ -904,42 +1024,79 @@ namespace Vintagestory.API.Common
 
 
 
-        internal Block BlockUnderPlayer(IPlayer player, EntityPos pos, BlockPos tmpPos)
+        /// <summary>
+        /// Returns null if there is no nearby sound source
+        /// </summary>
+        /// <param name="tmpPos">Might get intentionally modified if the nearest sound source the player is intersecting with is in an adjacent block</param>
+        /// <param name="yOffset"></param>
+        /// <param name="blockLayer"></param>
+        /// <param name="usecollisionboxes"></param>
+        /// <returns></returns>
+        public Block GetNearestBlockSoundSource(BlockPos tmpPos, double yOffset, int blockLayer, bool usecollisionboxes)
         {
+            EntityPos pos = SidedPos;
             Cuboidd entityBox = new Cuboidd();
-            entityBox.SetAndTranslate(player.Entity.CollisionBox, pos.X % 1.0, (pos.Y - 0.1) % 1.0, pos.Z % 1.0);
+            Cuboidf colBox = CollisionBox;
+            entityBox.SetAndTranslate(colBox, pos.X, pos.Y + yOffset, pos.Z);
+            entityBox.GrowBy(-0.001, 0, -0.001);   // Prevent detection when hardly inside, just touching  (movement system or rounding errors can push an entity fractionally inside a block)
 
-            Block block = feetIntersectingBlock(tmpPos, entityBox);
 
-            // Deal with situation where the player is walking along the edge of a block, which is partially under the player (e.g. left foot over air, right foot over a block)
-            if (block.Id == 0)
+            int yo = (int)(pos.Y + yOffset);
+            tmpPos.Set(pos.XInt, yo, pos.ZInt);
+            Block block = getSoundSourceBlockAt(entityBox, tmpPos, blockLayer, usecollisionboxes);
+            if (block != null) return block;
+
+
+            double xdistToBlockCenter = GameMath.Mod(pos.X, 1.0) - 0.5;
+            double zdistToBlockCenter = GameMath.Mod(pos.Z, 1.0) - 0.5;
+
+            int adjacentX = pos.XInt + Math.Sign(xdistToBlockCenter);
+            int adjacentZ = pos.ZInt + Math.Sign(zdistToBlockCenter);
+
+            // A bit of extra code to prioritise the block in x-direction if that one is closer than the block in z-direction and vice versa
+            int nearerNeibX, furtherNeibX, nearerNeibZ, furtherNeibZ;
+            if (Math.Abs(xdistToBlockCenter) > Math.Abs(zdistToBlockCenter))
             {
-                // Figure out the next-nearest neighbouring block position to the player's current position
-                float dx = (float)(GameMath.Mod(pos.X, 1.0) - 0.5);  // ensure pos.X is not negative so that dx always in the range -0.5 to 0.5
-                float dz = (float)(GameMath.Mod(pos.Z, 1.0) - 0.5);  // ensure pos.Z is not negative so that dz always in the range -0.5 to 0.5
-                int idx = Math.Sign(dx);
-                int idz = Math.Sign(dz);
-                if (Math.Abs(dx) > Math.Abs(dz)) idz = 0; else idx = 0;  // Set to zero whichever one is smaller
+                nearerNeibX = adjacentX;
+                nearerNeibZ = pos.ZInt;
 
-                tmpPos.Add(idx, 0, idz);    // This will affect the pos in the calling code too, which is intended
-                block = feetIntersectingBlock(tmpPos, entityBox);
+                furtherNeibX = pos.XInt;
+                furtherNeibZ = adjacentZ;
+            } else
+            {
+                nearerNeibX = pos.XInt;
+                nearerNeibZ = adjacentZ;
+
+                furtherNeibX = adjacentX;
+                furtherNeibZ = pos.ZInt;
             }
 
-            return block;
+            return
+                getSoundSourceBlockAt(entityBox, tmpPos.Set(nearerNeibX, yo, nearerNeibZ), blockLayer, usecollisionboxes) ??
+                getSoundSourceBlockAt(entityBox, tmpPos.Set(furtherNeibX, yo, furtherNeibZ), blockLayer, usecollisionboxes) ??
+                getSoundSourceBlockAt(entityBox, tmpPos.Set(adjacentX, yo, adjacentZ), blockLayer, usecollisionboxes)
+            ;
         }
 
-        protected Block feetIntersectingBlock(BlockPos tmpPos, Cuboidd entityBox)
+
+        protected Block getSoundSourceBlockAt(Cuboidd entityBox, BlockPos tmpPos, int blockLayer, bool usecollisionboxes)
         {
-            Block block = World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.MostSolid);
-            Cuboidf[] collisionBoxes = block.GetCollisionBoxes(World.BlockAccessor, tmpPos);
-            if (collisionBoxes == null) return World.GetBlock(0);
-            for (int i = 0; i < collisionBoxes.Length; i++)
+            Block block = World.BlockAccessor.GetBlock(tmpPos, blockLayer);
+            if (!usecollisionboxes && block.GetSounds(Api.World.BlockAccessor, tmpPos)?.Inside == null) return null;
+
+            Cuboidf[] blockBoxes = usecollisionboxes ? block.GetCollisionBoxes(World.BlockAccessor, tmpPos) : block.GetSelectionBoxes(World.BlockAccessor, tmpPos);
+            if (blockBoxes == null) return null;
+
+            for (int i = 0; i < blockBoxes.Length; i++)
             {
-                Cuboidf blockBox = collisionBoxes[i];
-                if (blockBox == null) continue;
-                if (entityBox.Intersects(blockBox)) return block;
+                Cuboidf blockBox = blockBoxes[i];
+                if (blockBox != null && entityBox.Intersects(blockBox, tmpPos.X, tmpPos.Y, tmpPos.Z))
+                {
+                    return block;
+                }
             }
-            return World.GetBlock(0);
+
+            return null;
         }
 
         
@@ -1012,8 +1169,6 @@ namespace Vintagestory.API.Common
 
         public override void PlayEntitySound(string type, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 24)
         {
-            ICoreClientAPI capi = Api as ICoreClientAPI;
-
             if (type == "hurt")
             {
                 talkUtil?.Talk(EnumTalkType.Hurt2);
@@ -1211,7 +1366,7 @@ namespace Vintagestory.API.Common
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
-                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions()
+                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / GlobalConstants.ChunkSize, (int)ServerPos.Z / GlobalConstants.ChunkSize, new ChunkLoadOptions()
                 {
                     OnLoaded = () =>
                     {
@@ -1224,7 +1379,7 @@ namespace Vintagestory.API.Common
                         {
                             sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
                             IServerPlayer player = this.Player as IServerPlayer;
-                            int chunksize = World.BlockAccessor.ChunkSize;
+                            int chunksize = GlobalConstants.ChunkSize;
                             player.CurrentChunkSentRadius = 0;
                             
                             sapi.Event.RegisterCallback((bla) => {
@@ -1290,6 +1445,35 @@ namespace Vintagestory.API.Common
             base.FromBytes(reader, forClient);
 
             walkSpeed = Stats.GetBlended("walkspeed");
+        }
+
+        public override void UpdateDebugAttributes()
+        {
+            base.UpdateDebugAttributes();
+
+            string anims = "";
+            int i = 0;
+            foreach (string anim in OtherAnimManager.ActiveAnimationsByAnimCode.Keys)
+            {
+                if (i++ > 0) anims += ",";
+                anims += anim;
+            }
+
+            i = 0;
+            StringBuilder runninganims = new StringBuilder();
+            if (OtherAnimManager.Animator != null)
+            {
+                foreach (var anim in OtherAnimManager.Animator.RunningAnimations)
+                {
+                    if (!anim.Active) continue;
+
+                    if (i++ > 0) runninganims.Append(",");
+                    runninganims.Append(anim.Animation.Code);
+                }
+
+                DebugAttributes.SetString("Other Active Animations", anims.Length > 0 ? anims : "-");
+                DebugAttributes.SetString("Other Running Animations", runninganims.Length > 0 ? runninganims.ToString() : "-");
+            }
         }
 
     }

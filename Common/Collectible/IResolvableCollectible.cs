@@ -1,13 +1,10 @@
-﻿using System.IO;
-using Vintagestory.API.Datastructures;
-
-namespace Vintagestory.API.Common
+﻿namespace Vintagestory.API.Common
 {
     /// <summary>
     /// 
     /// </summary>
     public interface IResolvableCollectible
     {
-        void Resolve(ItemSlot intoslot, IWorldAccessor worldForResolve);
+        void Resolve(ItemSlot intoslot, IWorldAccessor worldForResolve, bool resolveImports = true);
     }
 }

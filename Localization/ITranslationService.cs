@@ -31,6 +31,7 @@ namespace Vintagestory.API.Config
         ///     Loads only the vanilla JSON files, without dealing with mods, or resource-packs.
         /// </summary>
         /// <param name="assetsPath">The root assets path to load the vanilla files from.</param>
+        /// <param name="lazyLoad"></param>
         void PreLoad(string assetsPath, bool lazyLoad = false);
 
         /// <summary>

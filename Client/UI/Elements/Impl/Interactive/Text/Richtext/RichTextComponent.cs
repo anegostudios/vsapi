@@ -1,6 +1,5 @@
 ﻿using Cairo;
 using Vintagestory.API.Config;
-using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -74,7 +73,6 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="ctx">Context of the text component.</param>
         /// <param name="surface">The surface of the image.</param>
-        /// <param name="withFont">The font for the element.</param>
         public override void ComposeElements(Context ctx, ImageSurface surface)
         {
             textUtil.DrawMultilineText(ctx, Font, Lines, Font.Orientation);
@@ -90,13 +88,13 @@ namespace Vintagestory.API.Client
         }
 
 
-
         /// <summary>
         /// Renders the text component.
         /// </summary>
         /// <param name="deltaTime"></param>
         /// <param name="renderX"></param>
         /// <param name="renderY"></param>
+        /// <param name="renderZ"></param>
         public override void RenderInteractiveElements(float deltaTime, double renderX, double renderY, double renderZ)
         {
             /*for (int i = 0; i < Lines.Length; i++)
@@ -111,7 +109,10 @@ namespace Vintagestory.API.Client
         /// Initializes the size and stuff. Return true if you had to enter the next line
         /// </summary>
         /// <param name="flowPath"></param>
-        /// <param name="xPos"></param>
+        /// <param name="currentLineHeight"></param>
+        /// <param name="offsetX"></param>
+        /// <param name="lineY"></param>
+        /// <param name="nextOffsetX"></param>
         /// <returns>True when longer than 1 line</returns>
         public override EnumCalcBoundsResult CalcBounds(TextFlowPath[] flowPath, double currentLineHeight, double offsetX, double lineY, out double nextOffsetX)
         {

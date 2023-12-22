@@ -121,10 +121,10 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a switch to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="onToggle">The event that happens when the switch is toggled.</param>
         /// <param name="bounds">The bounds of the switch.</param>
         /// <param name="key">the name of the switch. (Default: null)</param>
@@ -142,6 +142,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the switch by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The internal name of the switch.</param>
         /// <returns>Returns the named switch.</returns>
         public static GuiElementSwitch GetSwitch(this GuiComposer composer, string key)

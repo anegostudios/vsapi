@@ -98,11 +98,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a text area to the GUI.  
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the Text Area</param>
-        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="onTextChanged">The event fired when the text is changed.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="key">The name of the text area.</param>
-        public static GuiComposer AddTextArea(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font = null, string key = null)
+        public static GuiComposer AddTextArea(this GuiComposer composer, ElementBounds bounds, Action<string> onTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
             {
@@ -111,7 +112,7 @@ namespace Vintagestory.API.Client
 
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementTextArea(composer.Api, bounds, OnTextChanged, font), key);
+                composer.AddInteractiveElement(new GuiElementTextArea(composer.Api, bounds, onTextChanged, font), key);
             }
 
             return composer;
@@ -120,6 +121,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the text area by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the text area.</param>
         /// <returns>The named Text Area.</returns>
         public static GuiElementTextArea GetTextArea(this GuiComposer composer, string key)

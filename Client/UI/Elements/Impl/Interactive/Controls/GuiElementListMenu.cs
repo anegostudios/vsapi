@@ -107,6 +107,8 @@ namespace Vintagestory.API.Client
         /// <param name="selectedIndex">The default selected index.</param>
         /// <param name="onSelectionChanged">The event fired when the selection is changed.</param>
         /// <param name="bounds">The bounds of the GUI element.</param>
+        /// <param name="font"></param>
+        /// <param name="multiSelect"></param>
         public GuiElementListMenu(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, bool multiSelect) : base(capi, "", font, bounds)
         {
             if (values.Length != names.Length) throw new ArgumentException("Values and Names arrays must be of the same length!");

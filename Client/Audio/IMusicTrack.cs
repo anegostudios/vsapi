@@ -37,12 +37,15 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="assetManager">the global Asset Manager</param>
         /// <param name="capi">The Core Client API</param>
+        /// <param name="musicEngine"></param>
         void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine);
 
         /// <summary>
         /// Should this current track play?
         /// </summary>
         /// <param name="props">Player Properties</param>
+        /// <param name="conds"></param>
+        /// <param name="pos"></param>
         /// <returns>Should we play the current track?</returns>
         bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos);
 

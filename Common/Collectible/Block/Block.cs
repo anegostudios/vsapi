@@ -480,7 +480,15 @@ namespace Vintagestory.API.Common
         {
             return SideSolid.SidesAndBase;
         }
-        
+
+        /// <summary>
+        /// Called for example when deciding to render water edges at a position, or not
+        /// </summary>
+        public virtual bool SideIsSolid(BlockPos pos, int faceIndex)
+        {
+            return SideSolid[faceIndex];
+        }
+
         /// <summary>
         /// This method gets called when facecull mode is set to 'Callback'. Curently used for custom behaviors when merging ice
         /// </summary>
@@ -614,9 +622,9 @@ namespace Vintagestory.API.Common
             return (EmitSideAo & facing.Flag) != 0;
         }
 
-        public virtual bool DoEmitSideAoByFlag(IGeometryTester caller, Vec3iAndFacingFlags vec)
+        public virtual bool DoEmitSideAoByFlag(IGeometryTester caller, Vec3iAndFacingFlags vec, int flags)
         {
-            return (EmitSideAo & vec.OppositeFlags) != 0;
+            return (EmitSideAo & flags) != 0;
         }
 
         public virtual int GetLightAbsorption(IBlockAccessor blockAccessor, BlockPos pos)
@@ -1283,7 +1291,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Called when any of it's 6 neighbour blocks has been changed
+        /// Called when any of its 6 neighbour blocks has been changed
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos"></param>
@@ -1349,7 +1357,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="world"></param>
         /// <param name="caller"></param>
-        /// <param name="blockSelection"></param>
+        /// <param name="blockSel"></param>
+        /// <param name="activationArgs"></param>
         public virtual void Activate(IWorldAccessor world, Caller caller, BlockSelection blockSel, ITreeAttribute activationArgs = null)
         {
             
@@ -1527,7 +1536,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool ShouldReceiveClientParticleTicks(IWorldAccessor world, IPlayer player, BlockPos pos, out bool isWindAffected)
         {
-            bool result = true;
+            bool result = false;
             bool preventDefault = false;
             isWindAffected = false;
 
@@ -1538,7 +1547,7 @@ namespace Vintagestory.API.Common
                 bool behaviorResult = behavior.ShouldReceiveClientParticleTicks(world, player, pos, ref handled);
                 if (handled != EnumHandling.PassThrough)
                 {
-                    result &= behaviorResult;
+                    result |= behaviorResult;
                     preventDefault = true;
                 }
 
@@ -2460,6 +2469,7 @@ namespace Vintagestory.API.Common
         /// 4. BlockEntityBehavior
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
         public virtual T GetInterface<T>(IWorldAccessor world, BlockPos pos) where T: class

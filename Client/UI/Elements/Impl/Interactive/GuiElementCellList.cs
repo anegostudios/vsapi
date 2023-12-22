@@ -312,6 +312,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a List to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the cell.</param>
         /// <param name="cellCreator">the event fired when the cell is requested by the GUI</param>
         /// <param name="cells">The cells of the list.</param>
@@ -329,6 +330,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the list by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the list to get.</param>
         /// <returns></returns>
         public static GuiElementCellList<T> GetCellList<T>(this GuiComposer composer, string key)

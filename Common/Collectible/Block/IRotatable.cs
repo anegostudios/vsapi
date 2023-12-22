@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Datastructures;
+﻿using System.Collections.Generic;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -12,10 +13,15 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// If flipAxis is null it means it was not flipped, only horizontally rotated. Apply flip first, and then rotation.
         /// </summary>
+        /// <param name="worldAccessor"></param>
         /// <param name="tree"></param>
         /// <param name="degreeRotation"></param>
+        /// <param name="oldBlockIdMapping">Used for rotation of schematics, so microblocks can update their materials</param>
+        /// <param name="oldItemIdMapping"></param>
         /// <param name="flipAxis"></param>
-        void OnTransformed(ITreeAttribute tree, int degreeRotation, EnumAxis? flipAxis);
+        void OnTransformed(IWorldAccessor worldAccessor, ITreeAttribute tree, int degreeRotation,
+            Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping,
+            EnumAxis? flipAxis);
     }
 
     public interface IMaterialExchangeable

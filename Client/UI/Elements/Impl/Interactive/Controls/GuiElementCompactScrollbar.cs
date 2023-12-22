@@ -84,10 +84,10 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a compact vertical scrollbar to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="onNewScrollbarValue">The event fired for the change in the scrollbar.</param>
         /// <param name="bounds">the bounds of the scrollbar.</param>
         /// <param name="key">the internal name of the scrollbar.</param>
@@ -103,6 +103,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the scrollbar from the dialogue.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">the internal name of the scrollbar to be gotten</param>
         /// <returns>The scrollbar with the given key.</returns>
         public static GuiElementCompactScrollbar GetCompactScrollbar(this GuiComposer composer, string key)

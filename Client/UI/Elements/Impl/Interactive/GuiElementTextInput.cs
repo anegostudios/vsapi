@@ -20,12 +20,12 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The Client API</param>
         /// <param name="bounds">The bounds of the text input.</param>
-        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="onTextChanged">The event fired when the text is changed.</param>
         /// <param name="font">The font of the text.</param>
-        public GuiElementTextInput(ICoreClientAPI capi, ElementBounds bounds, Action<string>OnTextChanged, CairoFont font) : base(capi, font, bounds)
+        public GuiElementTextInput(ICoreClientAPI capi, ElementBounds bounds, Action<string>onTextChanged, CairoFont font) : base(capi, font, bounds)
         {
             MouseOverCursor = "textselect";
-            this.OnTextChanged = OnTextChanged;
+            this.OnTextChanged = onTextChanged;
             highlightTexture = new LoadedTexture(capi);
         }
 
@@ -145,15 +145,15 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a text input to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the text input.</param>
-        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="onTextChanged">The event fired when the text is changed.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="key">The name of this text component.</param>
-        public static GuiComposer AddTextInput(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font = null, string key = null)
+        public static GuiComposer AddTextInput(this GuiComposer composer, ElementBounds bounds, Action<string> onTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
             {
@@ -162,7 +162,7 @@ namespace Vintagestory.API.Client
 
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementTextInput(composer.Api, bounds, OnTextChanged, font), key);
+                composer.AddInteractiveElement(new GuiElementTextInput(composer.Api, bounds, onTextChanged, font), key);
             }
 
             return composer;
@@ -171,6 +171,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the text input by input name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the text input to get.</param>
         /// <returns>The named text input</returns>
         public static GuiElementTextInput GetTextInput(this GuiComposer composer, string key)

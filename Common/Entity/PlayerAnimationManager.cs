@@ -1,5 +1,4 @@
-﻿using System;
-using Vintagestory.API.Client;
+﻿using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 
@@ -7,9 +6,20 @@ namespace Vintagestory.API.Common
 {
     public class PlayerAnimationManager : AnimationManager
     {
-        bool isSelf => capi.World.Player.Entity.EntityId == entity.EntityId && capi.World.Player.CameraMode == EnumCameraMode.FirstPerson;
+        public bool UseFpAnmations=true;
 
-        string fpEnding => capi?.World.Player.CameraMode == EnumCameraMode.FirstPerson ? ((api as ICoreClientAPI)?.Settings.Bool["immersiveFpMode"] == true ? "-ifp" : "-fp") : "";
+        bool useFpAnimSet => UseFpAnmations && api.Side == EnumAppSide.Client && capi.World.Player.Entity.EntityId == entity.EntityId && capi.World.Player.CameraMode == EnumCameraMode.FirstPerson;
+
+        string fpEnding => UseFpAnmations && capi?.World.Player.CameraMode == EnumCameraMode.FirstPerson ? ((api as ICoreClientAPI)?.Settings.Bool["immersiveFpMode"] == true ? "-ifp" : "-fp") : "";
+
+        EntityPlayer plrEntity;
+
+        public override void Init(ICoreAPI api, Entity entity)
+        {
+            base.Init(api, entity);
+
+            plrEntity = entity as EntityPlayer;
+        }
 
         public override void OnClientFrame(float dt)
         {
@@ -18,6 +28,11 @@ namespace Vintagestory.API.Common
             if (haveHandUse && handUseStopped)
             {
                 startHeldReadyAnimIfMouseUp();
+            }
+
+            if (useFpAnimSet)
+            {
+                plrEntity.TpAnimManager.OnClientFrame(dt);
             }
         }
 
@@ -33,9 +48,14 @@ namespace Vintagestory.API.Common
         {
             if (configCode == null) return false;
 
+            if (useFpAnimSet)
+            {
+                plrEntity.TpAnimManager.StartAnimation(configCode);
+            }
+
             AnimationMetaData animdata;
 
-            if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode + fpEnding, out animdata))
+            if (useFpAnimSet && entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode + fpEnding, out animdata))
             {
                 StartAnimation(animdata);
                 return true;
@@ -46,8 +66,10 @@ namespace Vintagestory.API.Common
 
         public override bool StartAnimation(AnimationMetaData animdata)
         {
-            if (api.Side == EnumAppSide.Client && isSelf && !animdata.Code.EndsWith(fpEnding))
+            if (useFpAnimSet && !animdata.Code.EndsWith(fpEnding))
             {
+                plrEntity.TpAnimManager.StartAnimation(animdata);
+
                 if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(animdata.Code + fpEnding, out var animdatafp))
                 {
                     if (ActiveAnimationsByAnimCode.TryGetValue(animdatafp.Animation, out var activeAnimdata) && activeAnimdata == animdatafp) return false;
@@ -60,7 +82,7 @@ namespace Vintagestory.API.Common
 
         public override void RegisterFrameCallback(AnimFrameCallback trigger)
         {
-            if (api.Side == EnumAppSide.Client && isSelf && !trigger.Animation.EndsWith(fpEnding) && entity.Properties.Client.AnimationsByMetaCode.ContainsKey(trigger.Animation + fpEnding))
+            if (useFpAnimSet && !trigger.Animation.EndsWith(fpEnding) && entity.Properties.Client.AnimationsByMetaCode.ContainsKey(trigger.Animation + fpEnding))
             {
                 trigger.Animation += fpEnding;
             }
@@ -71,7 +93,13 @@ namespace Vintagestory.API.Common
         {
             if (code == null) return;
 
-            string[] anims = new string[] { code, code + "-ifp", code + "-fp" }; 
+            if (api.Side == EnumAppSide.Client) (plrEntity.OtherAnimManager as PlayerAnimationManager).StopSelfAnimation(code);
+            StopSelfAnimation(code);
+        }
+
+        public void StopSelfAnimation(string code)
+        {
+            string[] anims = new string[] { code, code + "-ifp", code + "-fp" };
             foreach (var anim in anims)
             {
                 base.StopAnimation(anim);
@@ -80,7 +108,7 @@ namespace Vintagestory.API.Common
 
         public override bool IsAnimationActive(params string[] anims)
         {
-            if (api.Side == EnumAppSide.Client && isSelf)
+            if (useFpAnimSet)
             {
                 foreach (var val in anims)
                 {
@@ -291,7 +319,8 @@ namespace Vintagestory.API.Common
 
             lastRunningHeldUseAnimation = tree.GetString("lrHeldUseAnim");
             lastRunningHeldHitAnimation = tree.GetString("lrHeldHitAnim");
-            lastRunningRightHeldIdleAnimation = tree.GetString("lrRightHeldIdleAnim");
+            // Can we not have this line? It breaks fp hands when loading up with a world with a block in hands - the shoulds of the hands become visible when walking and looking down
+            //lastRunningRightHeldIdleAnimation = tree.GetString("lrRightHeldIdleAnim");
         }
 
         public override void ToAttributes(ITreeAttribute tree, bool forClient)
@@ -311,7 +340,6 @@ namespace Vintagestory.API.Common
                 tree.SetString("lrRightHeldIdleAnim", lastRunningRightHeldIdleAnimation);
             }
         }
-
 
     }
 }

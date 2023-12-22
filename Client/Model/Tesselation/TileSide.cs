@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client.Tesselation
 {
@@ -21,6 +22,16 @@ namespace Vintagestory.API.Client.Tesselation
         public static int[] AxisByTileSide = new int[]
         {
             2, 0, 2, 0, 1, 1
+        };
+
+        public static FastVec3i[] OffsetByTileSide = new FastVec3i[]
+        {
+            new FastVec3i(0,0,-1),
+            new FastVec3i(1,0,0),
+            new FastVec3i(0,0,1),
+            new FastVec3i(-1,0,0),
+            new FastVec3i(0,1,0),
+            new FastVec3i(0,-1,0)
         };
 
         public static int[] MoveIndex = new int[6];

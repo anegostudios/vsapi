@@ -1,7 +1,5 @@
-﻿using System;
-using Vintagestory.API.Common.Entities;
+﻿using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {

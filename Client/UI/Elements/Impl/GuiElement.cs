@@ -329,6 +329,8 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The Client API</param>
         /// <param name="textureLoc">The name of the file.</param>
         /// <param name="doCache">Do we cache the file?</param>
+        /// <param name="mulAlpha"></param>
+        /// <param name="scale"></param>
         /// <returns>The resulting surface pattern.</returns>
         public static SurfacePattern getPattern(ICoreClientAPI capi, AssetLocation textureLoc, bool doCache = true, int mulAlpha = 255, float scale = 1)
         {
@@ -359,6 +361,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The Client API</param>
         /// <param name="textureLoc">The name of the text file.</param>
+        /// <param name="mulAlpha"></param>
         /// <returns></returns>
         public unsafe static ImageSurface getImageSurfaceFromAsset(ICoreClientAPI capi, AssetLocation textureLoc, int mulAlpha = 255)
         {
@@ -394,7 +397,10 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The Client API</param>
         /// <param name="ctx">The context of the fill.</param>
         /// <param name="textureLoc">The name of the texture file.</param>
+        /// <param name="nearestScalingFiler"></param>
         /// <param name="preserve">Whether or not to preserve the aspect ratio of the texture.</param>
+        /// <param name="mulAlpha"></param>
+        /// <param name="scale"></param>
         /// <returns>The surface pattern filled with the given texture.</returns>
         public static SurfacePattern fillWithPattern(ICoreClientAPI capi, Context ctx, AssetLocation textureLoc, bool nearestScalingFiler = false, bool preserve = false, int mulAlpha = 255, float scale = 1f)
         {
@@ -602,7 +608,6 @@ namespace Vintagestory.API.Client
         /// <param name="radius">The radius of the corner of the rectangle.</param>
         /// <param name="depth">The thickness of the emboss. (Default: 3)</param>
         /// <param name="intensity">The intensity of the emboss. (Default: 0.4f)</param>
-        /// <param name="fallOff">How quickly the effect falls off around corners (default: 2)</param>
         /// <param name="lightDarkBalance">How skewed is the light/dark balance (Default: 1)</param>
         /// <param name="inverse">Whether or not it goes in or out. (Default: false)</param>
         /// <param name="alphaOffset">The offset for the alpha part of the emboss. (Default: 0)</param>
@@ -689,7 +694,7 @@ namespace Vintagestory.API.Client
         /// The event fired when the mouse is pressed while on the element. Called after OnMouseDown and tells the engine that the event is handled.
         /// </summary>
         /// <param name="api">The Client API</param>
-        /// <param name="mouse">The mouse event args.</param>
+        /// <param name="args">The mouse event args.</param>
         public virtual void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
             args.Handled = true;
@@ -699,7 +704,7 @@ namespace Vintagestory.API.Client
         /// The event fired when the mouse is released on the element.  Called after OnMouseUp.  
         /// </summary>
         /// <param name="api">The Client API</param>
-        /// <param name="mouse">The mouse event args.</param>
+        /// <param name="args">The mouse event args.</param>
         public virtual void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args) { }
 
         /// <summary>
@@ -769,7 +774,7 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public virtual bool IsPositionInside(int posX, int posY)
         {
-            return (InsideClipBounds == null || InsideClipBounds.PointInside(posX, posY)) && Bounds.PointInside(posX, posY);
+            return Bounds.PointInside(posX, posY) && (InsideClipBounds == null || InsideClipBounds.PointInside(posX, posY));
         }
 
         public virtual string MouseOverCursor { get; protected set; } = null;

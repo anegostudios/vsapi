@@ -101,6 +101,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="assetManager">the global Asset Manager</param>
         /// <param name="capi">The Core Client API</param>
+        /// <param name="musicEngine"></param>
         public void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
         {
             this.capi = capi;
@@ -124,6 +125,8 @@ namespace Vintagestory.API.Client
         /// Should the game play this track?
         /// </summary>
         /// <param name="props">The properties of the current track.</param>
+        /// <param name="conds"></param>
+        /// <param name="pos"></param>
         /// <returns>Do we play this track?</returns>
         public bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
         {

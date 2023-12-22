@@ -94,7 +94,7 @@ namespace Vintagestory.API.Server
         bool AllowFireSpread { get; set; }
 
         /// <summary>
-        /// Whether or not falling blocks should fall (e.g. sand and gravel)
+        /// Whether or not falling blocks should fall (e.g. sand and gravel) and floating single rock blocks should break
         /// </summary>
         bool AllowFallingBlocks { get; set; }
         

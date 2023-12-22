@@ -37,6 +37,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds an overlay to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the overlay.</param>
         /// <param name="backgroundColor">The background color of the overlay.</param>
         public static GuiComposer AddGameOverlay(this GuiComposer composer, ElementBounds bounds, double[] backgroundColor = null)

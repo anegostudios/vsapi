@@ -86,6 +86,7 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="blockFace"></param>
         /// <param name="handling"></param>
+        /// <param name="attachmentArea"></param>
         /// <returns></returns>
         public virtual bool CanAttachBlockAt(IBlockAccessor world, Block block, BlockPos pos, BlockFacing blockFace, ref EnumHandling handling, Cuboidi attachmentArea = null)
         {

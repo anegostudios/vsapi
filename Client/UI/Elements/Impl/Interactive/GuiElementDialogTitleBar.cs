@@ -382,15 +382,16 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a dialog title bar to the GUI.  
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the title bar.</param>
-        /// <param name="OnClose">The event fired when the title bar is closed.</param>
+        /// <param name="onClose">The event fired when the title bar is closed.</param>
         /// <param name="font">The font of the title bar.</param>
         /// <param name="bounds">The bounds of the title bar.</param>
-        public static GuiComposer AddDialogTitleBar(this GuiComposer composer, string text, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null)
+        public static GuiComposer AddDialogTitleBar(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementDialogTitleBar(composer.Api, text, composer, OnClose, font, bounds));
+                composer.AddInteractiveElement(new GuiElementDialogTitleBar(composer.Api, text, composer, onClose, font, bounds));
             }
 
             return composer;
@@ -400,15 +401,16 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a dialog title bar to the GUI with a background.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the title bar.</param>
-        /// <param name="OnClose">The event fired when the title bar is closed.</param>
+        /// <param name="onClose">The event fired when the title bar is closed.</param>
         /// <param name="font">The font of the title bar.</param>
         /// <param name="bounds">The bounds of the title bar.</param>
-        public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action OnClose = null, CairoFont font = null, ElementBounds bounds = null)
+        public static GuiComposer AddDialogTitleBarWithBg(this GuiComposer composer, string text, Action onClose = null, CairoFont font = null, ElementBounds bounds = null)
         {
             if (!composer.Composed)
             {
-                GuiElementDialogTitleBar elem = new GuiElementDialogTitleBar(composer.Api, text, composer, OnClose, font, bounds);
+                GuiElementDialogTitleBar elem = new GuiElementDialogTitleBar(composer.Api, text, composer, onClose, font, bounds);
                 elem.drawBg = true;
                 composer.AddInteractiveElement(elem);
             }

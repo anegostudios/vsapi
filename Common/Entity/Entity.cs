@@ -126,7 +126,7 @@ namespace Vintagestory.API.Common.Entities
         /// Server simulated animations. Only takes care of stopping animations once they're done
         /// Set and Called by the Entities ServerSystem
         /// </summary>
-        public IAnimationManager AnimManager;
+        public virtual IAnimationManager AnimManager { get; set; }
 
         /// <summary>
         /// An uptime value running activities. Available on the game client and server. Not synchronized.
@@ -302,6 +302,10 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public object packet;
 
+        /// <summary>
+        /// Used only when deserialising an entity, otherwise null
+        /// </summary>
+        private Dictionary<string, string> codeRemaps;
         #endregion
 
         #region Properties
@@ -444,7 +448,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Entity()
         {
-            SimulationRange = GlobalConstants.DefaultTrackingRange;
+            SimulationRange = GlobalConstants.DefaultSimulationRange;
             AnimManager = new AnimationManager();
             Stats = new EntityStats(this);
             WatchedAttributes.SetAttribute("animations", new TreeAttribute());
@@ -720,6 +724,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
+        /// <param name="onTeleported"></param>
         public virtual void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
         {
             Teleporting = true;
@@ -727,7 +732,7 @@ namespace Vintagestory.API.Common.Entities
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
             if (sapi != null)
             {
-                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / World.BlockAccessor.ChunkSize, (int)ServerPos.Z / World.BlockAccessor.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
+                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / GlobalConstants.ChunkSize, (int)ServerPos.Z / GlobalConstants.ChunkSize, new ChunkLoadOptions() {  OnLoaded = () =>
                     {
                         IsTeleport = true;
                         Pos.SetPos(x, y, z);
@@ -775,6 +780,7 @@ namespace Vintagestory.API.Common.Entities
         /// Teleports the entity to given position
         /// </summary>
         /// <param name="position"></param>
+        /// <param name="onTeleported"></param>
         public virtual void TeleportTo(EntityPos position, Action onTeleported = null)
         {
             Pos.Yaw = position.Yaw;
@@ -1483,7 +1489,18 @@ namespace Vintagestory.API.Common.Entities
         }
 
 
-
+        /// <summary>
+        /// In order to maintain legacy mod API compatibility of FromBytes(BinaryReader reader, bool isSync), we create an overload which server-side calling code will actually call, and store the remaps parameter in a field
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="isSync"></param>
+        /// <param name="serversideRemaps"></param>
+        public virtual void FromBytes(BinaryReader reader, bool isSync, Dictionary<string, string> serversideRemaps)
+        {
+            this.codeRemaps = serversideRemaps;
+            this.FromBytes(reader, isSync);
+            this.codeRemaps = null;
+        }
 
         /// <summary>
         /// Loads the entity from a stored byte array from the SaveGame
@@ -1524,7 +1541,10 @@ namespace Vintagestory.API.Common.Entities
             PositionBeforeFalling.X = reader.ReadDouble();
             PositionBeforeFalling.Y = reader.ReadDouble();
             PositionBeforeFalling.Z = reader.ReadDouble();
-            Code = new AssetLocation(reader.ReadString());
+
+            string codeString = reader.ReadString();
+            if (codeRemaps != null && codeRemaps.TryGetValue(codeString, out string remappedString)) codeString = remappedString;
+            Code = new AssetLocation(codeString);
 
             if (!isSync)
             {
@@ -1834,14 +1854,31 @@ namespace Vintagestory.API.Common.Entities
         /// Note: Some vanilla blocks resolve randomized contents in this method.
         /// Hint: Use itemstack.FixMapping() to do the job for you.
         /// </summary>
+        /// <param name="worldForNewMappings"></param>
         /// <param name="oldBlockIdMapping"></param>
         /// <param name="oldItemIdMapping"></param>
         /// <param name="schematicSeed">If you need some sort of randomness consistency accross an imported schematic, you can use this value</param>
+        [Obsolete("Use the variant with resolveImports parameter")]
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
+        {
+            OnLoadCollectibleMappings(worldForNewMappings, oldItemIdMapping, oldItemIdMapping, schematicSeed, true);
+        }
+
+        /// <summary>
+        /// Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
+        /// Note: Some vanilla blocks resolve randomized contents in this method.
+        /// Hint: Use itemstack.FixMapping() to do the job for you.
+        /// </summary>
+        /// <param name="worldForNewMappings"></param>
+        /// <param name="oldBlockIdMapping"></param>
+        /// <param name="oldItemIdMapping"></param>
+        /// <param name="schematicSeed">If you need some sort of randomness consistency accross an imported schematic, you can use this value</param>
+        /// <param name="resolveImports">Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</param>
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed, bool resolveImports)
         {
             foreach (var val in Properties.Server.Behaviors)
             {
-                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping);
+                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, resolveImports);
             }
         }
 
@@ -1898,6 +1935,13 @@ namespace Vintagestory.API.Common.Entities
                 {
                     infotext.AppendLine(val.Value.ToString());
                 }
+            }
+
+            var capi = Api as ICoreClientAPI;
+            if (capi != null && capi.Settings.Bool["extendedDebugInfo"])
+            {
+                infotext.AppendLine("<font color=\"#bbbbbb\">Id:" + EntityId + "</font>");
+                infotext.AppendLine("<font color=\"#bbbbbb\">Code: " + Code + "</font>");
             }
 
             return infotext.ToString();

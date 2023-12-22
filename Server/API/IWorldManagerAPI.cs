@@ -247,7 +247,9 @@ namespace Vintagestory.API.Server
         /// Asynchrounly checks if this chunk is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up. Does not load the actual chunk data.
         /// </summary>
         /// <param name="chunkX"></param>
+        /// <param name="chunkY"></param>
         /// <param name="chunkZ"></param>
+        /// <param name="onTested"></param>
         /// <returns></returns>
         void TestChunkExists(int chunkX, int chunkY, int chunkZ, Action<bool> onTested);
 
@@ -262,8 +264,8 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Asynchrounly checks if this mapregion is currently loaded or in the savegame database. Calls the callback method with true or false once done looking up. Does not load the actual map region data.
         /// </summary>
-        /// <param name="chunkX"></param>
-        /// <param name="chunkZ"></param>
+        /// <param name="regionX"></param>
+        /// <param name="regionZ"></param>
         /// <param name="onTested"></param>
         void TestMapRegionExists(int regionX, int regionZ, Action<bool> onTested);
 
@@ -292,6 +294,7 @@ namespace Vintagestory.API.Server
         /// <param name="chunkX"></param>
         /// <param name="chunkY"></param>
         /// <param name="chunkZ"></param>
+        /// <param name="player"></param>
         /// <param name="onlyIfInRange">If true, the chunk will not be sent to connected players that are out of range from that chunk</param>
         void SendChunk(int chunkX, int chunkY, int chunkZ, IServerPlayer player, bool onlyIfInRange = true);
 

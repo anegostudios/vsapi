@@ -27,8 +27,10 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// A text component with an embedded link.
         /// </summary>
+        /// <param name="api"></param>
         /// <param name="displayText">The text of the Text.</param>
-        /// <param name="url">The link in the text.</param>
+        /// <param name="font"></param>
+        /// <param name="onLinkClicked"></param>
         public LinkTextComponent(ICoreClientAPI api, string displayText, CairoFont font, Action<LinkTextComponent> onLinkClicked) : base(api, displayText, font)
         {
             this.onLinkClicked = onLinkClicked;

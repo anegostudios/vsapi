@@ -188,6 +188,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="font">The font of the text.</param>
         /// <param name="text">The text itself.</param>
+        /// <param name="linebreak"></param>
         /// <param name="flowPath">The path for the text.</param>
         /// <param name="lineY">The height of the line</param>
         /// <returns>The number of lines.</returns>
@@ -212,6 +213,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="font">The font of the text.</param>
         /// <param name="text">The text itself.</param>
+        /// <param name="linebreak"></param>
         /// <param name="flowPath">The path for the text.</param>
         /// <param name="lineY">The height of the line</param>
         /// <returns>The final height of the text.</returns>
@@ -226,9 +228,11 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="font">The font of the text.</param>
         /// <param name="fulltext">The text of the lines.</param>
+        /// <param name="linebreak"></param>
         /// <param name="flowPath">The flow direction of text.</param>
         /// <param name="startOffsetX">The offset start position for X</param>
         /// <param name="startY">The offset start position for Y</param>
+        /// <param name="keepLinebreakChar"></param>
         /// <returns>The text broken up into lines.</returns>
         public TextLine[] Lineize(CairoFont font, string fulltext, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, bool keepLinebreakChar = false)
         {
@@ -247,15 +251,17 @@ namespace Vintagestory.API.Client
         }
 
 
-
         /// <summary>
         /// Turns the supplied text into line of text constrained by supplied flow path and starting at supplied start coordinates
         /// </summary>
         /// <param name="ctx">Contexts of the GUI.</param>
         /// <param name="text">The text to be split</param>
+        /// <param name="linebreak"></param>
         /// <param name="flowPath">Sets the general flow of text.</param>
         /// <param name="startOffsetX">The offset start position for X</param>
         /// <param name="startY">The offset start position for Y</param>
+        /// <param name="lineHeightMultiplier"></param>
+        /// <param name="keepLinebreakChar"></param>
         /// <returns>The text broken up into lines.</returns>
         public TextLine[] Lineize(Context ctx, string text, EnumLinebreakBehavior linebreak, TextFlowPath[] flowPath, double startOffsetX = 0, double startY = 0, double lineHeightMultiplier = 1f, bool keepLinebreakChar = false)
         {

@@ -221,11 +221,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a numeric input for the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the number input.</param>
-        /// <param name="OnTextChanged">The event fired when the number is changed.</param>
+        /// <param name="onTextChanged">The event fired when the number is changed.</param>
         /// <param name="font">The font for the numbers.</param>
         /// <param name="key">The name for this GuiElementNumberInput</param>
-        public static GuiComposer AddNumberInput(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, CairoFont font = null, string key = null)
+        public static GuiComposer AddNumberInput(this GuiComposer composer, ElementBounds bounds, Action<string> onTextChanged, CairoFont font = null, string key = null)
         {
             if (font == null)
             {
@@ -234,7 +235,7 @@ namespace Vintagestory.API.Client
 
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementNumberInput(composer.Api, bounds, OnTextChanged, font), key);
+                composer.AddInteractiveElement(new GuiElementNumberInput(composer.Api, bounds, onTextChanged, font), key);
             }
 
             return composer;
@@ -243,6 +244,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the number input by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The internal name of the numeric input.</param>
         /// <returns>The named numeric input.</returns>
         public static GuiElementNumberInput GetNumberInput(this GuiComposer composer, string key)

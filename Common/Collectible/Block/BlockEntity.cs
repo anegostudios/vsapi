@@ -99,12 +99,13 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Registers a game tick listener that does the disposing for you when the Block is removed
         /// </summary>
-        /// <param name="OnGameTick"></param>
+        /// <param name="onGameTick"></param>
         /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
         /// <returns></returns>
-        public virtual long RegisterGameTickListener(Action<float> OnGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
+        public virtual long RegisterGameTickListener(Action<float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
         {
-            long listenerId = Api.Event.RegisterGameTickListener(OnGameTick, millisecondInterval, initialDelayOffsetMs);
+            long listenerId = Api.Event.RegisterGameTickListener(onGameTick, millisecondInterval, initialDelayOffsetMs);
             if (TickHandlers == null) TickHandlers = new List<long>(1);
             TickHandlers.Add(listenerId);
             return listenerId;
@@ -347,6 +348,7 @@ namespace Vintagestory.API.Common
         /// When called on Client: Triggers a block changed event on the client, but will not redraw the block unless specified.
         /// </summary>
         /// <param name="redrawOnClient">When true, the block is also marked dirty and thus redrawn. When called serverside a dirty block packet is sent to the client for it to be redrawn</param>
+        /// <param name="skipPlayer"></param>
         public virtual void MarkDirty(bool redrawOnClient = false, IPlayer skipPlayer = null)
         {
             if (Api == null) return;
@@ -362,6 +364,7 @@ namespace Vintagestory.API.Common
         /// Called by the block info HUD for displaying additional information
         /// </summary>
         /// <param name="forPlayer"></param>
+        /// <param name="dsc"></param>
         /// <returns></returns>
         public virtual void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
         {
@@ -390,14 +393,31 @@ namespace Vintagestory.API.Common
         /// Note: Some vanilla blocks resolve randomized contents in this method.
         /// Hint: Use itemstack.FixMapping() to do the job for you.
         /// </summary>
+        /// <param name="worldForNewMappings"></param>
         /// <param name="oldBlockIdMapping"></param>
         /// <param name="oldItemIdMapping"></param>
         /// <param name="schematicSeed">If you need some sort of randomness consistency accross an imported schematic, you can use this value</param>
+        [Obsolete("Use the variant with resolveImports parameter")]
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
+        {
+            OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, schematicSeed, true);
+        }
+
+        /// <summary>
+        /// Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
+        /// Note: Some vanilla blocks resolve randomized contents in this method.
+        /// Hint: Use itemstack.FixMapping() to do the job for you.
+        /// </summary>
+        /// <param name="worldForNewMappings"></param>
+        /// <param name="oldBlockIdMapping"></param>
+        /// <param name="oldItemIdMapping"></param>
+        /// <param name="schematicSeed">If you need some sort of randomness consistency accross an imported schematic, you can use this value</param>
+        /// <param name="resolveImports">Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</param>
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed, bool resolveImports)
         {
             foreach (var val in Behaviors)
             {
-                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, schematicSeed);
+                val.OnLoadCollectibleMappings(worldForNewMappings, oldBlockIdMapping, oldItemIdMapping, schematicSeed, resolveImports);
             }
         }
 
@@ -431,9 +451,15 @@ namespace Vintagestory.API.Common
         /// <param name="replaceBlocks"></param>
         /// <param name="centerrockblockid"></param>
         /// <param name="layerBlock">If block.CustomBlockLayerHandler is true and the block is below the surface, this value is set</param>
-        public virtual void OnPlacementBySchematic(Server.ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos, Dictionary<int, Dictionary<int, int>> replaceBlocks, int centerrockblockid, Block layerBlock)
+        /// <param name="resolveImports">Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</param>
+        public virtual void OnPlacementBySchematic(Server.ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos, Dictionary<int, Dictionary<int, int>> replaceBlocks, int centerrockblockid, Block layerBlock, bool resolveImports)
         {
             Pos = pos.Copy();
+
+            for (int i = 0; i < Behaviors.Count; i++)
+            {
+                Behaviors[i].OnPlacementBySchematic(api, blockAccessor, pos, replaceBlocks, centerrockblockid, layerBlock, resolveImports);
+            }
         }
     }
 

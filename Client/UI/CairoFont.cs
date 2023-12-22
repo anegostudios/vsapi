@@ -100,6 +100,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="text">The text of the object.</param>
         /// <param name="bounds">The bounds of the element where the font is displayed.</param>
+        /// <param name="onlyShrink"></param>
         public void AutoFontSize(string text, ElementBounds bounds, bool onlyShrink = true)
         {
             var origsize = UnscaledFontsize;

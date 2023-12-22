@@ -92,14 +92,15 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a chat input to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the text.</param>
-        /// <param name="OnTextChanged">The event fired when the text is changed.</param>
+        /// <param name="onTextChanged">The event fired when the text is changed.</param>
         /// <param name="key">The name of this chat component.</param>
-        public static GuiComposer AddChatInput(this GuiComposer composer, ElementBounds bounds, Action<string> OnTextChanged, string key = null)
+        public static GuiComposer AddChatInput(this GuiComposer composer, ElementBounds bounds, Action<string> onTextChanged, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementChatInput(composer.Api, bounds, OnTextChanged), key);
+                composer.AddInteractiveElement(new GuiElementChatInput(composer.Api, bounds, onTextChanged), key);
             }
 
             return composer;
@@ -108,6 +109,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the chat input by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the chat input component.</param>
         /// <returns>The named component.</returns>
         public static GuiElementChatInput GetChatInput(this GuiComposer composer, string key)

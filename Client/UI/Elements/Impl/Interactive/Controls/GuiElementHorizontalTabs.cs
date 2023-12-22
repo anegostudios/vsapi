@@ -42,6 +42,7 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The client API</param>
         /// <param name="tabs">A collection of GUI tabs.</param>
         /// <param name="font">The font for the name of each tab.</param>
+        /// <param name="selectedFont"></param>
         /// <param name="bounds">The bounds of each tab.</param>
         /// <param name="onTabClicked">The event fired whenever the tab is clicked.</param>
         public GuiElementHorizontalTabs(ICoreClientAPI capi, GuiTab[] tabs, CairoFont font, CairoFont selectedFont, ElementBounds bounds, Action<int> onTabClicked) : base(capi, "", font, bounds)
@@ -277,6 +278,7 @@ namespace Vintagestory.API.Client
         /// Sets the current tab to the given index.
         /// </summary>
         /// <param name="selectedIndex">The current index of the tab.</param>
+        /// <param name="callhandler"></param>
         public void SetValue(int selectedIndex, bool callhandler=true)
         {
             if (callhandler)
@@ -303,20 +305,21 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a set of horizontal tabs to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="tabs">The collection of tabs.</param>
         /// <param name="bounds">The bounds of the horizontal tabs.</param>
-        /// <param name="OnTabClicked">The event fired when the tab is clicked.</param>
+        /// <param name="onTabClicked">The event fired when the tab is clicked.</param>
         /// <param name="font">The font of the tabs.</param>
+        /// <param name="selectedFont"></param>
         /// <param name="key">The key for the added horizontal tabs.</param>
-        public static GuiComposer AddHorizontalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int> OnTabClicked, CairoFont font, CairoFont selectedFont, string key = null)
+        public static GuiComposer AddHorizontalTabs(this GuiComposer composer, GuiTab[] tabs, ElementBounds bounds, Action<int> onTabClicked, CairoFont font, CairoFont selectedFont, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementHorizontalTabs(composer.Api, tabs, font, selectedFont, bounds, OnTabClicked), key);
+                composer.AddInteractiveElement(new GuiElementHorizontalTabs(composer.Api, tabs, font, selectedFont, bounds, onTabClicked), key);
             }
 
             return composer;
@@ -325,6 +328,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the HorizontalTabs element from the GUI by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The key for the horizontal tabs you want to get.</param>
         public static GuiElementHorizontalTabs GetHorizontalTabs(this GuiComposer composer, string key)
         {

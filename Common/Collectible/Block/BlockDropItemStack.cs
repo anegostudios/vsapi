@@ -69,6 +69,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="resolver"></param>
         /// <param name="sourceForErrorLogging"></param>
+        /// <param name="assetLoc"></param>
         /// <returns></returns>
         public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, AssetLocation assetLoc)
         {

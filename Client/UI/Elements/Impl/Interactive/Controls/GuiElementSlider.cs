@@ -392,10 +392,10 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a slider to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="onNewSliderValue">The event that fires when the slider's value is changed.</param>
         /// <param name="bounds">The bounds of the slider.</param>
         /// <param name="key">the internal name of the slider.</param>
@@ -411,6 +411,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the slider by name from the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">the internal name of the slider.</param>
         /// <returns>the slider.</returns>
         public static GuiElementSlider GetSlider(this GuiComposer composer, string key)

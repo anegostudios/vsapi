@@ -56,7 +56,7 @@ namespace Vintagestory.API.Client
             // We add the ground offset to the winddatabits, but not if this side of the block is flagged in leavesNoShearTileSide (because against a solid block) - in that case, ground offset will remain zero
             for (int vertexNum = 0; vertexNum < verticesCount; vertexNum++)
             {
-                int flag = sourceMesh.Flags[vertexNum] &= VertexFlags.ClearWindDataBitsMask;
+                int groundOffset = 0;
 
                 float fx = sourceMesh.xyz[vertexNum * 3 + 0];
                 float fz = sourceMesh.xyz[vertexNum * 3 + 2];
@@ -72,10 +72,10 @@ namespace Vintagestory.API.Client
                                                                                              // Every vertex has three flags set, because all vertices are on the "outside" of a leaves block - yes, a leaves block is not a standard cube and it has probably been rotated, but this is a good enough approximation to whether this vertex is close to the solid neighbour or not
                 if ((leavesNoShearTileSide & sidesToCheckMask) == 0)
                 {
-                    flag |= (groundOffsetTop == 8 ? 7 : groundOffsetTop + y) << VertexFlags.WindDataBitsPos;
+                    groundOffset = groundOffsetTop == 8 ? 7 : groundOffsetTop + y;
                 }
 
-                sourceMesh.Flags[vertexNum] = flag;
+                VertexFlags.ReplaceWindData(ref sourceMesh.Flags[vertexNum], groundOffset);
             }
         }
 

@@ -70,6 +70,7 @@ namespace Vintagestory.API.Client
         /// <param name="font">The font of the text.</param>
         /// <param name="maxWidth">The width of the text.</param>
         /// <param name="bounds">the bounds of the text.</param>
+        /// <param name="background"></param>
         public GuiElementHoverText(ICoreClientAPI capi, string text, CairoFont font, int maxWidth, ElementBounds bounds, TextBackground background = null) : base(capi, text, font, bounds)
         {
             this.Background = background;
@@ -300,6 +301,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a hover text to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the text.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="width">The width of the text.</param>
@@ -331,6 +333,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a hover text to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the text.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="width">The width of the text.</param>
@@ -350,10 +353,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a hover text to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the text.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="width">The width of the text.</param>
         /// <param name="bounds">The bounds of the text.</param>
+        /// <param name="background"></param>
         /// <param name="key">The name of this hover text component.</param>
         public static GuiComposer AddHoverText(this GuiComposer composer, string text, CairoFont font, int width, ElementBounds bounds, TextBackground background, string key = null)
         {
@@ -368,6 +373,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Fetches the hover text component by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the text component.</param>
         public static GuiElementHoverText GetHoverText(this GuiComposer composer, string key)
         {

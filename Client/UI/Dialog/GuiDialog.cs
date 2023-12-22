@@ -265,6 +265,11 @@ namespace Vintagestory.API.Client
         /// <returns>Was this dialogue successfully opened?</returns>
         public virtual bool TryOpen()
         {
+            return TryOpen(true);
+        }
+
+        public virtual bool TryOpen(bool withFocus)
+        {
             bool wasOpened = opened;
 
             if (!capi.Gui.LoadedGuis.Contains(this))
@@ -273,7 +278,7 @@ namespace Vintagestory.API.Client
             }
 
             opened = true;
-            if (DialogType == EnumDialogType.Dialog)
+            if (DialogType == EnumDialogType.Dialog && withFocus)
             {
                 capi.Gui.RequestFocus(this);
             }

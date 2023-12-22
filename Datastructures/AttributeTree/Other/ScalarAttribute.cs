@@ -12,6 +12,11 @@ namespace Vintagestory.API.Datastructures
             return attr.GetValue().Equals(value) || EqualityUtil.NumberEquals(value as object, attr.GetValue());
         }
 
+        public override bool Equals(object b)
+        {
+            return value.Equals(b);
+        }
+
         public virtual object GetValue()
         {
             return value;

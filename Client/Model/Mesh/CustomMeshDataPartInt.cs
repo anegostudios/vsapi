@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     /// <summary>
     /// Holds arbitrary int data for meshes to be used in the shader
@@ -15,7 +13,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Size initialization constructor.
         /// </summary>
-        /// <param name="arraySize"></param>
+        /// <param name="size"></param>
         public CustomMeshDataPartInt(int size) : base(size) { }
 
         public DataConversion Conversion = DataConversion.Integer;

@@ -263,16 +263,17 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a config List to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="items">The items to add.</param>
-        /// <param name="OnItemClick">The event fired when the item is clicked.</param>
+        /// <param name="onItemClick">The event fired when the item is clicked.</param>
         /// <param name="font">The font of the Config List.</param>
         /// <param name="bounds">The bounds of the config list.</param>
         /// <param name="key">The name of the config list.</param>
-        public static GuiComposer AddConfigList(this GuiComposer composer, List<ConfigItem> items, ConfigItemClickDelegate OnItemClick, CairoFont font, ElementBounds bounds, string key = null)
+        public static GuiComposer AddConfigList(this GuiComposer composer, List<ConfigItem> items, ConfigItemClickDelegate onItemClick, CairoFont font, ElementBounds bounds, string key = null)
         {
             if (!composer.Composed)
             {
-                GuiElementConfigList element = new GuiElementConfigList(composer.Api, items, OnItemClick, font, bounds);
+                GuiElementConfigList element = new GuiElementConfigList(composer.Api, items, onItemClick, font, bounds);
 
                 composer.AddInteractiveElement(element, key);
             }
@@ -282,6 +283,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the config list by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the config list.</param>
         /// <returns></returns>
         public static GuiElementConfigList GetConfigList(this GuiComposer composer, string key)

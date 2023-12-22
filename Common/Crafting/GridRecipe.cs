@@ -546,7 +546,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="patternCode"></param>
         /// <param name="inputSlots"></param>
-        /// <param name="gridWidth"></param>
         /// <returns></returns>
         public ItemStack GetInputStackForPatternCode(string patternCode, ItemSlot[] inputSlots)
         {

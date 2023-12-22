@@ -122,10 +122,10 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds an embossed text component to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the component.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="bounds">The bounds of the component.</param>
@@ -142,6 +142,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the EmbossedText component by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the component.</param>
         /// <returns>the named component of the text.</returns>
         public static GuiElementEmbossedText GetEmbossedText(this GuiComposer composer, string key)

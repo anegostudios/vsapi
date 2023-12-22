@@ -357,6 +357,8 @@ namespace Vintagestory.API.Client
                     var tile = ct.Tiles[i];
                     if (tile.Base.EndsWithWildCard)
                     {
+                        if (wildcardsCache == null) wildcardsCache = new Dictionary<AssetLocation, List<IAsset>>();
+
                         // Fix borked windows sorting (i.e. 1, 10, 11, 12, ....)
                         var basePath = ct.Base.Path.Substring(0, ct.Base.Path.Length - 1);
                         var assets = wildcardsCache[ct.Base] = assetManager.GetManyInCategory("textures", basePath, ct.Base.Domain);

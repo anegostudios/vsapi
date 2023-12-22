@@ -111,7 +111,12 @@ namespace Vintagestory.API.Common
             slots = SlotsFromTreeAttributes(treeAttribute, slots);
 
             int add = cnt - slots.Length;
-            while (add-- > 0)
+            AddSlots(add);
+        }
+
+        public void AddSlots(int amount)
+        {
+            while (amount-- > 0)
             {
                 slots = slots.Append(NewSlot(slots.Length));
             }

@@ -95,12 +95,13 @@ namespace ProperVersion
 			TryParse(s, out var result, true);
 			return result;
 		}
-		
+
 		/// <summary>
 		///   Tries to convert the specified string representation of a
 		///   semantic version to its <see cref="SemVer"/> equivalent,
 		///   returning true if successful.
 		/// </summary>
+		/// <param name="s"></param>
 		/// <param name="result">
 		///   When this method returns, contains a valid, non-null SemVer,
 		///   If the conversion failed, this is set to the parser's best guess.
@@ -108,12 +109,13 @@ namespace ProperVersion
 		/// <exception cref="ArgumentNullException"> Thrown if the specified string is null. </exception>
 		public static bool TryParse(string s, out SemVer result)
 			=> TryParse(s, out result, out var _);
-		
+
 		/// <summary>
 		///   Tries to convert the specified string representation of a
 		///   semantic version to its <see cref="SemVer"/> equivalent,
 		///   returning true if successful.
 		/// </summary>
+		/// <param name="s"></param>
 		/// <param name="result">
 		///   When this method returns, contains a valid, non-null SemVer,
 		///   If the conversion failed, this is set to the method's best guess.

@@ -137,7 +137,7 @@ namespace Vintagestory.API.Common
         /// <param name="code"></param>
         public virtual void StopAnimation(string code)
         {
-            if (code == null) return;
+            if (code == null || entity == null) return;
             
             if (entity.World.Side == EnumAppSide.Server)
             {
@@ -291,11 +291,11 @@ namespace Vintagestory.API.Common
         }
 
 
-
         /// <summary>
         /// Loads the entity from a stored byte array from the SaveGame
         /// </summary>
         /// <param name="tree"></param>
+        /// <param name="version"></param>
         public virtual void FromAttributes(ITreeAttribute tree, string version)
         {
             var animtree = tree["activeAnims"] as ITreeAttribute;

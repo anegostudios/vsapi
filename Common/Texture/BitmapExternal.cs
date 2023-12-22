@@ -76,7 +76,7 @@ namespace Vintagestory.API.Common
                 using var canvas = new SKCanvas(bmp);
                 canvas.DrawBitmap(decode, 0, 0);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
@@ -96,7 +96,7 @@ namespace Vintagestory.API.Common
                 using var canvas = new SKCanvas(bmp);
                 canvas.DrawBitmap(decode, 0, 0);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);

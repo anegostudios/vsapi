@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -51,6 +53,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called right after the block behavior was created
         /// </summary>
+        /// <param name="api"></param>
         /// <param name="properties"></param>
         public virtual void Initialize(ICoreAPI api, JsonObject properties)
         {
@@ -107,7 +110,13 @@ namespace Vintagestory.API.Common
             
         }
 
+        [Obsolete("Use the variant with resolveImports parameter")]
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
+        {
+            OnLoadCollectibleMappings(worldForNewMappings, oldItemIdMapping, oldItemIdMapping, schematicSeed, true);
+        }
+
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed, bool resolveImports)
         {
             
         }
@@ -115,6 +124,11 @@ namespace Vintagestory.API.Common
         public virtual bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator)
         {
             return false;
+        }
+
+        public virtual void OnPlacementBySchematic(ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos, Dictionary<int, Dictionary<int, int>> replaceBlocks, int centerrockblockid, Block layerBlock, bool resolveImports)
+        {
+            
         }
     }
 }

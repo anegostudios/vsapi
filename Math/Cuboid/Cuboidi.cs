@@ -26,91 +26,34 @@ namespace Vintagestory.API.MathTools
 
         public int[] Coordinates => new int[] { X1, Y1, Z1, X2, Y2, Z2 };
 
-        public int MinX
-        {
-            get { return Math.Min(X1, X2); }
-        }
-        public int MinY
-        {
-            get { return Math.Min(Y1, Y2); }
-        }
-        public int MinZ
-        {
-            get { return Math.Min(Z1, Z2); }
-        }
+        public int MinX => Math.Min(X1, X2); 
+        public int MinY => Math.Min(Y1, Y2); 
+        public int MinZ => Math.Min(Z1, Z2); 
 
 
-        public int MaxX
-        {
-            get { return Math.Max(X1, X2); }
-        }
-        public int MaxY
-        {
-            get { return Math.Max(Y1, Y2); }
-        }
-        public int MaxZ
-        {
-            get { return Math.Max(Z1, Z2); }
-        }
+        public int MaxX => Math.Max(X1, X2); 
+        public int MaxY => Math.Max(Y1, Y2); 
+        public int MaxZ => Math.Max(Z1, Z2);
+
+        public int SizeX => MaxX - MinX; 
+        public int SizeY => MaxY - MinY;
+
+        public int SizeZ => MaxZ - MinZ;
+
+        public int SizeXYZ => SizeX * SizeY * SizeZ;
+        public int SizeXZ => SizeX * SizeZ;
+
+        public Vec3i Start => new Vec3i(X1, Y1, Z1);
+        public Vec3i End => new Vec3i(X2, Y2, Z2);
+        public Vec3i Center => new Vec3i((X1 + X2) / 2, (Y1 + Y2) / 2, (Z1 + Z2) / 2);
+
+        public int CenterX => (X1 + X2) / 2;
+        public int CenterY => (Y1 + Y2) / 2;
+        public int CenterZ => (Z1 + Z2) / 2;
+        public int Volume => SizeX * SizeY * SizeZ;
 
 
-
-        public int SizeX
-        {
-            get { return MaxX - MinX; }
-        }
-
-        public int SizeY
-        {
-            get { return MaxY - MinY; }
-        }
-
-        public int SizeZ
-        {
-            get { return MaxZ - MinZ; }
-        }
-
-        public int SizeXYZ
-        {
-            get { return SizeX * SizeY * SizeZ; }
-        }
-
-        public int SizeXZ
-        {
-            get { return SizeX * SizeZ; }
-        }
-
-
-        public Vec3i Start
-        {
-            get { return new Vec3i(X1, Y1, Z1); }
-        }
-
-        public Vec3i End
-        {
-            get { return new Vec3i(X2, Y2, Z2); }
-        }
-
-        public Vec3i Center
-        {
-            get
-            {
-                return new Vec3i((X1 + X2) / 2, (Y1 + Y2) / 2, (Z1 + Z2) / 2);
-            }
-        }
-
-        public int Volume
-        {
-            get
-            {
-                return SizeX * SizeY * SizeZ;
-            }
-        }
-
-        public Cuboidi()
-        {
-
-        }
+        public Cuboidi() { }
 
         public Cuboidi(int[] coordinates)
         {

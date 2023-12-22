@@ -613,7 +613,6 @@ namespace Vintagestory.API.Client
         /// Fires the OnKeyDown events.
         /// </summary>
         /// <param name="args">The keyboard information.</param>
-        /// <param name="haveFocus">Whether or not the gui has focus.</param>
         public void OnKeyUp(KeyEvent args)
         {
             if (!Enabled) return;

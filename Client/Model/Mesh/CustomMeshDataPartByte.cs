@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     public enum DataConversion
     {

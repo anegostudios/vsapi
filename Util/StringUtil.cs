@@ -107,6 +107,7 @@ namespace Vintagestory.API.Util
             return cnt;
         }
 
+
         public static bool ContainsFast(this string value, string reference)
         {
             if (reference.Length > value.Length) return false;
@@ -118,6 +119,16 @@ namespace Vintagestory.API.Util
                 else j = 0;
 
                 if (j >= reference.Length) return true;
+            }
+
+            return false;
+        }
+
+        public static bool ContainsFast(this string value, char reference)
+        {
+            for (int i = 0; i < value.Length; i++)
+            {
+                if (value[i] == reference) return true;
             }
 
             return false;

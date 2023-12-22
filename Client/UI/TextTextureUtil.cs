@@ -26,6 +26,7 @@ namespace Vintagestory.API.Client
         /// <param name="height">The height of the text.</param>
         /// <param name="background">The background of the text. (default: none/null)</param>
         /// <param name="orientation">The orientation of the text. (default: left)</param>
+        /// <param name="demulAlpha"></param>
         /// <returns>The texturized text.</returns>
         public LoadedTexture GenTextTexture(string text, CairoFont font, int width, int height, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left, bool demulAlpha = false)
         {
@@ -44,6 +45,7 @@ namespace Vintagestory.API.Client
         /// <param name="loadedTexture">The texture to be loaded on to.</param>
         /// <param name="background">The background of the text. (default: none/null)</param>
         /// <param name="orientation">The orientation of the text. (default: left)</param>
+        /// <param name="demulAlpha"></param>
         public void GenOrUpdateTextTexture(string text, CairoFont font, int width, int height, ref LoadedTexture loadedTexture, TextBackground background = null, EnumTextOrientation orientation = EnumTextOrientation.Left, bool demulAlpha = false)
         {
             if (background == null) background = defaultBackground;

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
@@ -70,6 +71,9 @@ namespace Vintagestory.API.Common
         WaterPlant = 11
     }
 
+    /// <summary>
+    /// Windmode flags, which can be ORed with existing vertex data to add the specified wind mode (assuming it was 0 previously!)
+    /// </summary>
     public static class EnumWindBitModeMask
     {
         /// <summary>
@@ -114,7 +118,7 @@ namespace Vintagestory.API.Common
     /// Bit 12: Lod 0 Bit<br/>
     /// Bit 13-24: X/Y/Z Normals<br/>
     /// Bit 25, 26, 27, 28: Wind mode<br/>
-    /// Bit 29, 30, 31: Wind data<br/>
+    /// Bit 29, 30, 31: Wind data  (also sometimes used for other data, e.g. reflection mode if Reflective bit is set, or additional water surface data if this is a water block)<br/>
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class VertexFlags
@@ -122,7 +126,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Bit 0..7
         /// </summary>
-        public const int GlowLevelBitMask = 0xFF;
+        public const int GlowLevelBitMask = 0xFF;    // VS 1.19 note: in future if we ever needed more bits, we can find 7 bits here if we change glow level to a 7-bit value with bit 0 signifying glow on/off : with glow off, the 7 bits can be used for some other kind of data
 
         public const int ZOffsetBitPos = 8;
         /// <summary>
@@ -131,7 +135,7 @@ namespace Vintagestory.API.Common
         public const int ZOffsetBitMask = 0x7 << ZOffsetBitPos;
 
         /// <summary>
-        /// Bit 11
+        /// Bit 11.   Note if this is set to 1, then WindData has a different meaning, 
         /// </summary>
         public const int ReflectiveBitMask = 1 << 11;
         /// <summary>
@@ -141,21 +145,22 @@ namespace Vintagestory.API.Common
 
         public const int NormalBitPos = 13;
         /// <summary>
-        /// Bit 13..25
+        /// Bit 13..24
         /// </summary>
         public const int NormalBitMask = 0xFFF << NormalBitPos;
 
         /// <summary>
         /// Bit 25..28
         /// </summary>
-        public const int WindModeBitsMask = 0xF << 25;
+        public const int WindModeBitsMask = 0xF << WindModeBitsPos;
 
         public const int WindModeBitsPos = 25;
 
         /// <summary>
-        /// Bit 29..31
+        /// Bit 29..31   Note that WindData is sometimes used for other purposes if WindMode == 0, for example it can hold reflections data, see EnumReflectiveMode.
+        /// <br/>Also worth noting that WindMode and WindData have totally different meanings for liquid water
         /// </summary>
-        public const int WindDataBitsMask = 0x7 << 29;
+        public const int WindDataBitsMask = 0x7 << WindDataBitsPos;
 
         public const int WindDataBitsPos = 29;
 
@@ -454,6 +459,21 @@ namespace Vintagestory.API.Common
                 "Glow: {0}, ZOffset: {1}, Reflective: {2}, Lod0: {3}, Normal: {4}, WindMode: {5}, WindData: {6}", 
                 glowLevel, ZOffset, reflective, lod0, normal, WindMode, windData
             );
+        }
+
+        public static void SetWindMode(ref int flags, int windMode)
+        {
+            flags |= windMode << VertexFlags.WindModeBitsPos;
+        }
+
+        public static void SetWindData(ref int flags, int windData)
+        {
+            flags |= windData << VertexFlags.WindDataBitsPos;
+        }
+
+        public static void ReplaceWindData(ref int flags, int windData)
+        {
+            flags = flags & VertexFlags.ClearWindDataBitsMask | windData << VertexFlags.WindDataBitsPos;
         }
     }
 }

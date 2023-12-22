@@ -75,6 +75,8 @@ namespace Vintagestory.API.Config
         /// <param name="logger">The <see cref="ILogger" /> instance used within the sided API.</param>
         /// <param name="assetManager">The <see cref="IAssetManager" /> instance used within the sided API.</param>
         /// <param name="languageCode">The language code to use as the default language.</param>
+        /// <param name="lazyLoad"></param>
+        /// <param name="lbBehavior"></param>
         public static void LoadLanguage(ILogger logger, IAssetManager assetManager, string languageCode = "en", bool lazyLoad = false, EnumLinebreakBehavior lbBehavior = EnumLinebreakBehavior.AfterWord)
         {
             if (AvailableLanguages.ContainsKey(languageCode))
@@ -224,6 +226,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="findWildcarded">if set to <c>true</c>, the scan will include any wildcarded values.</param>
+        /// <param name="logErrors"></param>
         /// <returns><c>true</c> if the specified key has a translation; otherwise, <c>false</c>.</returns>
         public static bool HasTranslation(string key, bool findWildcarded = true, bool logErrors = true)
         {

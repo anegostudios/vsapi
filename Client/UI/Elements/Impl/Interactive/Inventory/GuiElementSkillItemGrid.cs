@@ -177,21 +177,21 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a skill item grid to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="skillItems">The items that represent skills.</param>
         /// <param name="columns">the columns in the skill item grid.</param>
         /// <param name="rows">The rows in the skill item grid.</param>
-        /// <param name="OnSlotClick">The effect when a slot is clicked.</param>
+        /// <param name="onSlotClick">The effect when a slot is clicked.</param>
         /// <param name="bounds">The bounds of the item grid.</param>
         /// <param name="key">The name of the item grid to add.</param>
-        public static GuiComposer AddSkillItemGrid(this GuiComposer composer, List<SkillItem> skillItems, int columns, int rows, Action<int> OnSlotClick, ElementBounds bounds, string key = null)
+        public static GuiComposer AddSkillItemGrid(this GuiComposer composer, List<SkillItem> skillItems, int columns, int rows, Action<int> onSlotClick, ElementBounds bounds, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementSkillItemGrid(composer.Api, skillItems, columns, rows, OnSlotClick, bounds), key);
+                composer.AddInteractiveElement(new GuiElementSkillItemGrid(composer.Api, skillItems, columns, rows, onSlotClick, bounds), key);
             }
             return composer;
         }
@@ -199,6 +199,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Fetches the skill item grid by name
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the skill item grid to get.</param>
         /// <returns>The skill item grid to get.</returns>
         public static GuiElementSkillItemGrid GetSkillItemGrid(this GuiComposer composer, string key)

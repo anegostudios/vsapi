@@ -161,7 +161,7 @@ namespace Vintagestory.API.Config
                             return $"Linux ({distro}) [Kernel {Environment.OSVersion.Version}]";
                         }
                     }
-                    catch (Exception _)
+                    catch (Exception)
                     {
                         // ignored
                     }

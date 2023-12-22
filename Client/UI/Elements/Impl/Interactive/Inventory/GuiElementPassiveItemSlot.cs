@@ -80,10 +80,10 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds a passive item slot to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the Slot</param>
         /// <param name="inventory">The inventory attached to the slot.</param>
         /// <param name="slot">The internal slot of the slot.</param>

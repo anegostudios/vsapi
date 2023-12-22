@@ -58,7 +58,6 @@ namespace Vintagestory.API.Client
 
 
         /// <param name="dialogTitle">The title of this dialogue. Ex: "Chest"</param>
-        /// <param name="inventory">The inventory associated with this block entity.</param>
         /// <param name="blockEntityPos">The position of this block entity.</param>
         /// <param name="capi">The Client API</param>
         public GuiDialogBlockEntity(string dialogTitle, BlockPos blockEntityPos, ICoreClientAPI capi)

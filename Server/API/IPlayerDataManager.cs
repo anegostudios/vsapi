@@ -42,7 +42,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Resolves a player uid to a player name, independent on whether this player is online, offline or never even joined the server. This is done by contacting the auth server, so please use this method sparingly.
         /// </summary>
-        /// <param name="playername"></param>
+        /// <param name="playeruid"></param>
         /// <param name="onPlayerReceived"></param>
         
         void ResolvePlayerUid(string playeruid, Action<EnumServerResponse, string> onPlayerReceived);

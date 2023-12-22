@@ -245,6 +245,7 @@ namespace Vintagestory.API.Client
         /// Sets the source slot for stacks.
         /// </summary>
         /// <param name="nowSlot"></param>
+        /// <param name="forceRecompose"></param>
         /// <returns>True if recomposed</returns>
         public bool SetSourceSlot(ItemSlot nowSlot, bool forceRecompose = false)
         {

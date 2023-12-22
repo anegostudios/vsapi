@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     /// <summary>
     /// The position of a texture inside an atlas

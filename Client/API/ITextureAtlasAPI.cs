@@ -17,6 +17,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="item"></param>
         /// <param name="textureName"></param>
+        /// <param name="returnNullWhenMissing"></param>
         /// <returns></returns>
         TextureAtlasPosition GetPosition(Item item, string textureName = null, bool returnNullWhenMissing = false);
         
@@ -32,6 +33,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="block"></param>
         /// <param name="textureName"></param>
+        /// <param name="returnNullWhenMissing"></param>
         /// <returns></returns>
         TextureAtlasPosition GetPosition(Block block, string textureName, bool returnNullWhenMissing = false);
         
@@ -92,6 +94,7 @@ namespace Vintagestory.API.Client
         /// <param name="bmp"></param>
         /// <param name="textureSubId"></param>
         /// <param name="texPos"></param>
+        /// <param name="alphaTest"></param>
         /// <returns></returns>
         bool InsertTexture(IBitmap bmp, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0f);
 
@@ -99,9 +102,10 @@ namespace Vintagestory.API.Client
         /// Inserts a texture into the texture atlas after the atlas has been generated. Updates the in-ram texture atlas as well as the in-gpu-ram texture atlas. 
         /// The textureSubId can be used to find the TextureAtlasPosition again in case you loose it ;-)
         /// </summary>
-        /// <param name="bmp"></param>
+        /// <param name="pngBytes"></param>
         /// <param name="textureSubId"></param>
         /// <param name="texPos"></param>
+        /// <param name="alphaTest"></param>
         /// <returns></returns>
         bool InsertTexture(byte[] pngBytes, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0f);
 
@@ -143,7 +147,7 @@ namespace Vintagestory.API.Client
         /// A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.
         /// </summary>
         /// <param name="path"></param>
-        /// <param name="bmp"></param>
+        /// <param name="pngBytes"></param>
         /// <param name="textureSubId"></param>
         /// <param name="texPos"></param>
         /// <param name="alphaTest"></param>
@@ -185,7 +189,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Returns one of 30 random rgba values inside the given texture (defined by its sub-id)
         /// </summary>
-        /// <param name="textureSubId"></param>
+        /// <param name="texPos"></param>
         /// <param name="rndIndex">0..29 for a specific random pixel, or -1 to randomize, which is the same as calling GetRandomColor without the rndIndex argument</param>
         /// <returns></returns>
         int GetRandomColor(TextureAtlasPosition texPos, int rndIndex);
@@ -207,6 +211,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Renders given texture into the texture atlas at given location
         /// </summary>
+        /// <param name="intoAtlasTextureId"></param>
         /// <param name="fromTexture"></param>
         /// <param name="sourceX"></param>
         /// <param name="sourceY"></param>

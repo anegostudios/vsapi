@@ -312,5 +312,10 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="seasonRel"></param>
         void SetSeasonOverride(float? seasonRel);
+
+        /// <summary>
+        /// Can be used to adjust apparent time of day and season for rendering, e.g. to create a series of timelapse images; restore to 0 when done
+        /// </summary>
+        float Timelapse { get; set; }
     }
 }

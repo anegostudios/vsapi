@@ -110,7 +110,8 @@ namespace Vintagestory.API.Common
 
             if (jointsById.Count >= GlobalConstants.MaxAnimatedElements)
             {
-                throw new Exception("Max joint cap of "+ GlobalConstants.MaxAnimatedElements + " reached. Sorry, you'll have to simplify your model if you want it to be animated. (until some programmer finds another solution to pass on more joint data through shader uniforms)");
+                if (GlobalConstants.MaxAnimatedElements < 46 && jointsById.Count <= 46) throw new Exception("Max joint cap of " + GlobalConstants.MaxAnimatedElements + " reached, needs to be at least " + jointsById.Count + ". In clientsettings.json, please try increasing the \"maxAnimatedElements\": setting to 46.  This works for most GPUs.  Otherwise you might need to disable the creature.");
+                throw new Exception("A mod's entity has " + jointsById.Count + " animations which exceeds the max joint cap of "+ GlobalConstants.MaxAnimatedElements + ". Sorry, you'll have to either disable this creature or simplify the model.");
             }
 
             for (int i = 0; i < resolvedKeyFrames.Length; i++)

@@ -103,14 +103,6 @@ namespace Vintagestory.API.Common
         ItemStack GetHotbarItemstack(int slotId);
         
         /// <summary>
-        /// Returns a slot that would best fit the contents of the source slot. Only tries to place the itemstack into the hotbar.
-        /// </summary>
-        /// <param name="sourceInventory"></param>
-        /// <param name="sourceSlot"></param>
-        /// <returns></returns>
-        //ItemSlot GetBestSuitedHotbarSlot(IInventory sourceInventory, ItemSlot sourceSlot);
-
-        /// <summary>
         /// Returns the hotbar inventory object. Obvious comment is being obvious.
         /// </summary>
         /// <returns></returns>
@@ -130,6 +122,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="sourceSlot"></param>
         /// <param name="onlyPlayerInventory"></param>
+        /// <param name="op"></param>
         /// <param name="skipSlots"></param>
         /// <returns></returns>
         ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, ItemStackMoveOperation op = null, List<ItemSlot> skipSlots = null);

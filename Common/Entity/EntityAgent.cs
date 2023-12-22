@@ -23,7 +23,7 @@ namespace Vintagestory.API.Common
         /// <param name="stack"></param>
         /// <param name="forEntity"></param>
         /// <returns>null for returning back to default behavior (read shape from attributes)</returns>
-        Shape GetShape(ItemStack stack, EntityAgent forEntity);
+        Shape GetShape(ItemStack stack, EntityAgent forEntity, string texturePrefixCode);
     }
 
 
@@ -391,6 +391,7 @@ namespace Vintagestory.API.Common
         /// <param name="saturation">The amount of saturation recieved.</param>
         /// <param name="foodCat">The cat of food... err Category of food.</param>
         /// <param name="saturationLossDelay">The delay before the loss of saturation</param>
+        /// <param name="nutritionGainMultiplier"></param>
         public virtual void ReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10, float nutritionGainMultiplier = 1f)
         {
             if (!Alive) return;
@@ -410,6 +411,7 @@ namespace Vintagestory.API.Common
         /// <param name="saturation">The amount of saturation recieved.</param>
         /// <param name="foodCat">The cat of food... err Category of food.</param>
         /// <param name="saturationLossDelay">The delay before the loss of saturation</param>
+        /// <param name="nutritionGainMultiplier"></param>
         public virtual bool ShouldReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10, float nutritionGainMultiplier = 1f)
         {
             return true;
@@ -497,6 +499,7 @@ namespace Vintagestory.API.Common
                     }
                 }
 
+
                 if (!anyAverageAnimActive && defaultAnim != null && Alive && !skipDefaultAnim)
                 {
                     defaultAnim.WasStartedFromTrigger = true;
@@ -507,7 +510,6 @@ namespace Vintagestory.API.Common
                 {
                     AnimManager.StopAnimation(defaultAnim.Code);
                 }
-
 
                 bool isSelf = (Api as ICoreClientAPI).World.Player.Entity.EntityId == EntityId;
                 if (insideBlock?.GetBlockMaterial(Api.World.BlockAccessor, insidePos) == EnumBlockMaterial.Snow && isSelf)
@@ -827,12 +829,15 @@ namespace Vintagestory.API.Common
 
             if (attrObj?["wearableAttachment"].Exists != true) return entityShape;
 
-            Shape gearShape=null;
+            var textures = Properties.Client.Textures;
+            string texturePrefixCode = stack.Collectible.Code.ToShortString();
+
+            Shape gearShape = null;
             AssetLocation shapePath;
             CompositeShape compGearShape = null;
             if (stack.Collectible is IWearableShapeSupplier iwss)
             {
-                gearShape = iwss.GetShape(stack, this);
+                gearShape = iwss.GetShape(stack, this, texturePrefixCode);
             }
 
             if (gearShape == null) {
@@ -844,9 +849,11 @@ namespace Vintagestory.API.Common
                     Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found or errored, was supposed to be at {3}. Armor piece will be invisible.", compGearShape.Base, stack.Class, stack.Collectible.Code, shapePath);
                     return null;
                 }
+
+                gearShape.SubclassForStepParenting(texturePrefixCode, damageEffect);
             }
 
-            string texturePrefixCode = stack.Collectible.Code.ToShortString();
+            
 
             // Item stack textures take precedence over shape textures
             if (gearShape.Textures == null) gearShape.Textures = new Dictionary<string, AssetLocation>();
@@ -856,11 +863,9 @@ namespace Vintagestory.API.Common
                 gearShape.Textures[val.Key] = val.Value.Base;
             }
 
-            var textures = Properties.Client.Textures;
             entityShape.StepParentShape(
                 gearShape, 
-                texturePrefixCode, 
-                compGearShape.Base.ToString() + string.Format("defined in {0} {1}", stack.Class, stack.Collectible.Code),
+                (compGearShape?.Base.ToString() ?? "Custom texture from ItemWearableShapeSupplier ") + string.Format("defined in {0} {1}", stack.Class, stack.Collectible.Code),
                 shapePathForLogging, 
                 Api.World.Logger,
                 (texcode, tloc) =>
@@ -869,8 +874,7 @@ namespace Vintagestory.API.Common
                     cmpt.Bake(Api.Assets);
                     (Api as ICoreClientAPI).EntityTextureAtlas.GetOrInsertTexture(cmpt.Baked.TextureFilenames[0], out int textureSubid, out _);
                     cmpt.Baked.TextureSubId = textureSubid;
-                },
-                damageEffect
+                }                
             );
 
 
@@ -915,9 +919,9 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
+        public override void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed, bool resolveImports)
         {
-            base.OnLoadCollectibleMappings(worldForResolve, oldBlockIdMapping, oldItemIdMapping, schematicSeed);
+            base.OnLoadCollectibleMappings(worldForResolve, oldBlockIdMapping, oldItemIdMapping, schematicSeed, resolveImports);
 
             if (GearInventory != null)
             {

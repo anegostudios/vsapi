@@ -68,6 +68,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a static text component to the GUI
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the text component.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="bounds">The bounds of the text container.</param>
@@ -84,6 +85,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a static text component to the GUI
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the text component.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="orientation">The orientation of the text.</param>
@@ -101,6 +103,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a static text component to the GUI that automatically resizes as necessary.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the text component.</param>
         /// <param name="font">The font of the text.</param>
         /// <param name="orientation">The orientation of the text.</param>
@@ -121,9 +124,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a static text component to the GUI that automatically resizes as necessary.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="text">The text of the text component.</param>
         /// <param name="font">The font of the text.</param>
-        /// <param name="orientation">The orientation of the text.</param>
         /// <param name="bounds">The bounds of the text container.</param>
         /// <param name="key">The name of the component.</param>
         public static GuiComposer AddStaticTextAutoFontSize(this GuiComposer composer, string text, CairoFont font, ElementBounds bounds, string key = null)
@@ -140,6 +143,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the static text component by name.
         /// </summary>
+        /// <param name="composer" />
         /// <param name="key">The name of the component.</param>
         public static GuiElementStaticText GetStaticText(this GuiComposer composer, string key)
         {

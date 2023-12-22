@@ -189,9 +189,7 @@ namespace Vintagestory.API.MathTools
         public static double NoiseValueCurveInverse(double value) {
             if (value <= 0.0) return double.NegativeInfinity;
             if (value >= 1.0) return double.PositiveInfinity;
-            value *= 2.0;
-            value /= (2.0 - value);
-            return 0.5 * Math.Log(value);
+            return 0.5 * Math.Log(value / (1.0 - value));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -37,8 +37,7 @@ namespace Vintagestory.API.Client
         /// Constructor for the button
         /// </summary>
         /// <param name="capi">The core client API.</param>
-        /// <param name="color"></param>
-        /// <param name="OnToggled">The action that happens when the button is toggled.</param>
+        /// <param name="elem"></param>
         /// <param name="bounds">The bounding box of the button.</param>
         public GuiElementElementListPickerBase(ICoreClientAPI capi, T elem, ElementBounds bounds) : base(capi, bounds)
         {
@@ -170,11 +169,13 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds multiple buttons with Text.
         /// </summary>
-        /// <param name="texts">The texts on all the buttons.</param>
-        /// <param name="font">The font for the buttons</param>
+        /// <param name="elems"></param>
         /// <param name="onToggle">The event fired when the button is pressed.</param>
-        /// <param name="bounds">The bounds of the buttons.</param>
+        /// <param name="startBounds">The bounds of the buttons.</param>
+        /// <param name="maxLineWidth"></param>
         /// <param name="key">The key given to the bundle of buttons.</param>
+        /// <param name="composer"></param>
+        /// <param name="pickertype"></param>
         public static GuiComposer AddElementListPicker<T>(this GuiComposer composer, Type pickertype, T[] elems, Action<int> onToggle, ElementBounds startBounds, int maxLineWidth, string key)
         {
             if (!composer.Composed)

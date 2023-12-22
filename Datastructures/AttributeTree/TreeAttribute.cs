@@ -815,6 +815,7 @@ namespace Vintagestory.API.Datastructures
         /// <summary>
         /// Returns true if given tree contains all of elements of this one, but given tree may contain also more elements. Individual node values are exactly matched.
         /// </summary>
+        /// <param name="worldForResolve"></param>
         /// <param name="other"></param>
         /// <returns></returns>
         public bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other)
@@ -844,6 +845,7 @@ namespace Vintagestory.API.Datastructures
         /// <summary>
         /// Returns true if given tree exactly matches this one
         /// </summary>
+        /// <param name="worldForResolve"></param>
         /// <param name="other"></param>
         /// <returns></returns>
         public bool Equals(IWorldAccessor worldForResolve, IAttribute other)

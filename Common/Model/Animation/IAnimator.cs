@@ -125,12 +125,14 @@ namespace Vintagestory.API.Common
         /// Additional attributes applied to the animation
         /// </summary>
         /// <param name="tree"></param>
+        /// <param name="version"></param>
         void FromAttributes(ITreeAttribute tree, string version);
 
         /// <summary>
         /// Additional attributes applied from the animation
         /// </summary>
         /// <param name="tree"></param>
+        /// <param name="forClient"></param>
         void ToAttributes(ITreeAttribute tree, bool forClient);
 
         /// <summary>

@@ -281,6 +281,7 @@ namespace Vintagestory.API.Common
         /// <br/>'true', 'yes' and '1' will all be interpreted as true.  Parameter trueAlias (with default value 'on') allows one additional word to be used to signify true.  Anything else will return false.
         /// </summary>
         /// <param name="defaultValue"></param>
+        /// <param name="trueAlias"></param>
         /// <returns></returns>
         public bool? PopBool(bool? defaultValue = null, string trueAlias = "on")
         {

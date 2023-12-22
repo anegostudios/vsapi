@@ -119,9 +119,9 @@ namespace Vintagestory.API.Config
         public static float GravityPerSecond = 0.37f;
         
         /// <summary>
-        /// Range in blocks at which clients receive regular updates of this entity
+        /// Range in blocks at where this entity is simulated on the server (MagicNum.cs sets this value)
         /// </summary>
-        public static int DefaultTrackingRange = 128;
+        public static int DefaultSimulationRange = 128;
 
         /// <summary>
         /// Range in blocks a player can interact with blocks (break, use, place)

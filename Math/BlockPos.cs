@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Runtime.Serialization;
 using ProtoBuf;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -30,7 +29,14 @@ namespace Vintagestory.API.MathTools
         public const int DimensionBoundary = GlobalConstants.DimensionSizeInChunks * GlobalConstants.ChunkSize;
 
 
+        [Obsolete("Not dimension-aware. Use new BlockPos(dimensionId) where possible")]
         public BlockPos() { }
+
+
+        public BlockPos(int dim)
+        {
+            this.dimension = dim;
+        }
 
 
         [Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")]
@@ -510,11 +516,14 @@ namespace Vintagestory.API.MathTools
             Z -= pos.Z;
             return this;
         }
-
+        
         /// <summary>
-        /// Substract a position => you'll have the manhatten distance 
+        /// Substract a position =&gt; you'll have the manhatten distance
         /// </summary>
-        /// <param name="pos"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
         public BlockPos Sub(int x, int y, int z)
         {
             X -= x;

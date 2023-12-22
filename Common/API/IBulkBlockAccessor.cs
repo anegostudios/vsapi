@@ -17,8 +17,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         Dictionary<BlockPos, BlockUpdate> StagedBlocks { get; }
 
-        Dictionary<DecorUpdateKey, DecorUpdate> StagedDecors { get; }
-
         /// <summary>
         /// If set to true, the methods GetBlock() and GetBlockId() will behave like GetStagedBlockId() until the next commit
         /// </summary>
@@ -45,5 +43,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         void SetChunks(Vec2i chunkCoord, IWorldChunk[] chunksCol);
         void SetDecorsBulk(long chunkIndex, Dictionary<int, Block> newDecors);
+
+        /// <summary>
+        /// Used to fix certain things like flowing water from the edge of a pasted schematic/selection when undone or /we delete is used
+        /// </summary>
+        /// <param name="updatedBlocks"></param>
+        void PostCommitCleanup(List<BlockUpdate> updatedBlocks);
     }
 }

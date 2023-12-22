@@ -46,7 +46,9 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Checks if this item stack is of the same class, id and has the same stack attributes. Ignores stack size
         /// </summary>
+        /// <param name="worldForResolve"></param>
         /// <param name="sourceStack"></param>
+        /// <param name="ignoreAttributeSubTrees"></param>
         /// <returns></returns>
         bool Equals(IWorldAccessor worldForResolve, ItemStack sourceStack, params string[] ignoreAttributeSubTrees);
         
@@ -65,6 +67,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Checks if the contained item or block name contains given searchtext
         /// </summary>
+        /// <param name="world"></param>
         /// <param name="searchText"></param>
         /// <returns></returns>
         bool MatchesSearchText(IWorldAccessor world, string searchText);
@@ -79,7 +82,7 @@ namespace Vintagestory.API.Common
         /// Returns a multiline description text of the item
         /// </summary>
         /// <param name="world"></param>
-        /// <param name="InSlot"></param>
+        /// <param name="inSlot"></param>
         /// <param name="debug">Whether to show additional debug info</param>
         /// <returns></returns>
         string GetDescription(IWorldAccessor world, ItemSlot inSlot, bool debug = false);

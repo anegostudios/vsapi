@@ -25,6 +25,7 @@ namespace Vintagestory.API.Datastructures
         /// Create a new list with a given maximum capacity
         /// </summary>
         /// <param name="maxCapacity"></param>
+        /// <param name="initialElements"></param>
         public LimitedList(int maxCapacity, IEnumerable<TElem> initialElements)
         {
             if (initialElements == null)

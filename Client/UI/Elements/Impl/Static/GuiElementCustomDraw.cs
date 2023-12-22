@@ -69,13 +69,14 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a static custom draw component to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the component.</param>
-        /// <param name="OnDraw">The event fired when the element is drawn.</param>
-        public static GuiComposer AddStaticCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds OnDraw)
+        /// <param name="onDraw">The event fired when the element is drawn.</param>
+        public static GuiComposer AddStaticCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds onDraw)
         {
             if (!composer.Composed)
             {
-                composer.AddStaticElement(new GuiElementCustomDraw(composer.Api, bounds, OnDraw));
+                composer.AddStaticElement(new GuiElementCustomDraw(composer.Api, bounds, onDraw));
             }
             return composer;
         }
@@ -83,14 +84,15 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a dynamic custom draw component to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the component.</param>
-        /// <param name="OnDraw">The event fired when the element is drawn.</param>
+        /// <param name="onDraw">The event fired when the element is drawn.</param>
         /// <param name="key">The name of the element.</param>
-        public static GuiComposer AddDynamicCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds OnDraw, string key = null)
+        public static GuiComposer AddDynamicCustomDraw(this GuiComposer composer, ElementBounds bounds, DrawDelegateWithBounds onDraw, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementCustomDraw(composer.Api, bounds, OnDraw, true), key);
+                composer.AddInteractiveElement(new GuiElementCustomDraw(composer.Api, bounds, onDraw, true), key);
             }
             return composer;
         }

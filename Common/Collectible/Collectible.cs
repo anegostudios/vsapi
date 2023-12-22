@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -554,6 +552,7 @@ namespace Vintagestory.API.Common
         /// <param name="byEntity"></param>
         /// <param name="itemslot"></param>
         /// <param name="blockSel"></param>
+        /// <param name="dropQuantityMultiplier"></param>
         /// <returns></returns>
         public virtual bool OnBlockBrokenWith(IWorldAccessor world, Entity byEntity, ItemSlot itemslot, BlockSelection blockSel, float dropQuantityMultiplier = 1)
         {
@@ -591,12 +590,13 @@ namespace Vintagestory.API.Common
         }
 
 
-
         /// <summary>
         /// Called every game tick when the player breaks a block with this item in his hands. Returns the mining speed for given block.
         /// </summary>
         /// <param name="itemstack"></param>
+        /// <param name="blockSel"></param>
         /// <param name="block"></param>
+        /// <param name="forPlayer"></param>
         /// <returns></returns>
         public virtual float GetMiningSpeed(IItemStack itemstack, BlockSelection blockSel, Block block, IPlayer forPlayer)
         {
@@ -641,6 +641,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="activeHotbarSlot"></param>
         /// <param name="forEntity"></param>
+        /// <param name="hand"></param>
         /// <returns></returns>
         public virtual string GetHeldReadyAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
@@ -653,6 +654,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="activeHotbarSlot"></param>
         /// <param name="forEntity"></param>
+        /// <param name="hand"></param>
         /// <returns></returns>
         public virtual string GetHeldTpIdleAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
@@ -1021,6 +1023,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Called when this item was collected by an entity
         /// </summary>
+        /// <param name="stack"></param>
         /// <param name="entity"></param>
         public virtual void OnCollected(ItemStack stack, Entity entity)
         {
@@ -1041,7 +1044,7 @@ namespace Vintagestory.API.Common
         /// <param name="firstEvent">True on first mouse down</param>
         /// <param name="handling">Whether or not to do any subsequent actions. If not set or set to NotHandled, the action will not called on the server.</param>
         /// <returns></returns>
-        public void OnHeldUseStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType, bool firstEvent, ref EnumHandHandling handling)
+        public virtual void OnHeldUseStart(ItemSlot slot, EntityAgent byEntity, BlockSelection blockSel, EntitySelection entitySel, EnumHandInteract useType, bool firstEvent, ref EnumHandHandling handling)
         {
             if (useType == EnumHandInteract.HeldItemAttack)
             {
@@ -1052,9 +1055,7 @@ namespace Vintagestory.API.Common
             if (useType == EnumHandInteract.HeldItemInteract)
             {
                 OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref handling);
-                return;
             }
-
         }
 
         /// <summary>
@@ -1216,22 +1217,26 @@ namespace Vintagestory.API.Common
         {
             EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
             bool preventDefault = false;
-
+            
             foreach (CollectibleBehavior behavior in CollectibleBehaviors)
             {
                 EnumHandling bhHandling = EnumHandling.PassThrough;
-
+            
                 behavior.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref bhHandHandling, ref bhHandling);
                 if (bhHandling != EnumHandling.PassThrough)
                 {
                     handling = bhHandHandling;
                     preventDefault = true;
                 }
-
+            
                 if (bhHandling == EnumHandling.PreventSubsequent) return;
             }
 
-            if (!preventDefault) tryEatBegin(slot, byEntity, ref bhHandHandling);
+            if (!preventDefault)
+            {
+                tryEatBegin(slot, byEntity, ref bhHandHandling);
+                handling = bhHandHandling;
+            }
         }
 
 
@@ -1333,13 +1338,14 @@ namespace Vintagestory.API.Common
         }
 
 
-
         /// <summary>
         /// Tries to eat the contents in the slot, first call
         /// </summary>
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
         /// <param name="handling"></param>
+        /// <param name="eatSound"></param>
+        /// <param name="eatSoundRepeats"></param>
         protected virtual void tryEatBegin(ItemSlot slot, EntityAgent byEntity, ref EnumHandHandling handling, string eatSound = "eat", int eatSoundRepeats = 1)
         {
             if (!slot.Empty && GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity) != null)
@@ -1375,6 +1381,7 @@ namespace Vintagestory.API.Common
         /// <param name="secondsUsed"></param>
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
+        /// <param name="spawnParticleStack"></param>
         protected virtual bool tryEatStep(float secondsUsed, ItemSlot slot, EntityAgent byEntity, ItemStack spawnParticleStack = null)
         {
             if (GetNutritionProperties(byEntity.World, slot.Itemstack, byEntity) == null) return false;
@@ -1924,6 +1931,36 @@ namespace Vintagestory.API.Common
                         }
                     }
                     break;
+
+                case EnumTransitionType.Melt:
+                    if (nowSpoiling) break;
+
+                    if (transitionLevel > 0 || freshHoursLeft <= 0)
+                    {
+                        dsc.AppendLine(Lang.Get("itemstack-meltable-melted", (int)Math.Round(transitionLevel * 100)));
+                        dsc.AppendLine(Lang.Get("Melting rate in this container: {0:0.##}x", transitionRate));
+                    }
+                    else
+                    {
+                        double hoursPerday = api.World.Calendar.HoursPerDay;
+
+                        if (transitionRate <= 0)
+                        {
+                            dsc.AppendLine(Lang.Get("itemstack-meltable"));
+                        }
+                        else
+                        {
+                            if (freshHoursLeft > hoursPerday)
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-meltable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                            }
+                            else
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-meltable-duration-hours", Math.Round(freshHoursLeft, 1)));
+                            }
+                        }
+                    }
+                    break;
             }
 
             return 0;
@@ -2004,6 +2041,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="sinkStack"></param>
         /// <param name="sourceStack"></param>
+        /// <param name="priority"></param>
         /// <returns></returns>
         public virtual int GetMergableQuantity(ItemStack sinkStack, ItemStack sourceStack, EnumMergePriority priority)
         {
@@ -2633,12 +2671,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetTemperature(IWorldAccessor world, ItemStack itemstack)
         {
-            if (
-                itemstack == null
-                || itemstack.Attributes == null
-                || itemstack.Attributes["temperature"] == null
-                || !(itemstack.Attributes["temperature"] is ITreeAttribute)
-            )
+            if (itemstack?.Attributes?["temperature"] is not ITreeAttribute)
             {
                 return 20;
             }
@@ -2687,10 +2720,6 @@ namespace Vintagestory.API.Common
             attr.SetDouble("temperatureLastUpdate", nowHours);
             attr.SetFloat("temperature", temperature);
         }
-
-
-        
-
 
         /// <summary>
         /// Returns true if this stack is an empty backpack
@@ -2786,6 +2815,24 @@ namespace Vintagestory.API.Common
             }
 
             OnStoreCollectibleMappings(world, inSlot.Itemstack.Attributes, blockIdMapping, itemIdMapping);
+                
+            // on export of schematic save the temperature to the TreeAttribute since in import we need the temperatureLastUpdate to be up to date
+            if ((inSlot.Itemstack.Attributes["temperature"] as ITreeAttribute)?.HasAttribute("temperatureLastUpdate") == true)
+            {
+                GetTemperature(world, inSlot.Itemstack);
+            }
+        }
+        /// <summary>
+        /// This method is called after a block/item like this has been imported as part of a block schematic. Has to restore fix the block/item id mappings as they are probably different compared to the world from where they were exported. By default iterates over all the itemstacks attributes and searches for attribute sof type ItenStackAttribute and calls .FixMapping() on them.
+        /// </summary>
+        /// <param name="worldForResolve"></param>
+        /// <param name="inSlot"></param>
+        /// <param name="oldBlockIdMapping"></param>
+        /// <param name="oldItemIdMapping"></param>
+        [Obsolete("Use the variant with resolveImports parameter")]
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, ItemSlot inSlot, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        {
+            OnLoadCollectibleMappings(worldForResolve, inSlot, oldBlockIdMapping, oldItemIdMapping, true);
         }
 
         /// <summary>
@@ -2795,7 +2842,8 @@ namespace Vintagestory.API.Common
         /// <param name="inSlot"></param>
         /// <param name="oldBlockIdMapping"></param>
         /// <param name="oldItemIdMapping"></param>
-        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, ItemSlot inSlot, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        /// <param name="resolveImports">Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</param>
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, ItemSlot inSlot, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, bool resolveImports)
         {
             OnLoadCollectibleMappings(worldForResolve, inSlot.Itemstack.Attributes, oldBlockIdMapping, oldItemIdMapping);
         }
@@ -2804,47 +2852,63 @@ namespace Vintagestory.API.Common
         {
             foreach (var val in tree)
             {
-                if (val.Value is ITreeAttribute)
+                if (val.Value is ITreeAttribute treeAttribute)
                 {
-                    OnLoadCollectibleMappings(worldForResolve, val.Value as ITreeAttribute, oldBlockIdMapping, oldItemIdMapping);
+                    OnLoadCollectibleMappings(worldForResolve, treeAttribute, oldBlockIdMapping, oldItemIdMapping);
                     continue;
                 }
 
-                if (val.Value is ItemstackAttribute)
+                if (val.Value is ItemstackAttribute itemAttribute)
                 {
-                    ItemStack stack = (val.Value as ItemstackAttribute).value;
+                    ItemStack stack = itemAttribute.value;
                     stack?.FixMapping(oldBlockIdMapping, oldItemIdMapping, worldForResolve);
+                    stack?.Collectible.OnLoadCollectibleMappings(worldForResolve, stack.Attributes, oldBlockIdMapping, oldItemIdMapping);
                 }
             }
+            // update the time for the temperature to the current ingame time if imported from another game
+            if (tree.HasAttribute("temperatureLastUpdate"))
+            {
+                tree.SetDouble("temperatureLastUpdate", worldForResolve.Calendar.TotalHours);
+            }
+            
+            // update food transition time
+            if (tree.HasAttribute("createdTotalHours"))
+            {
+                var created = tree.GetDouble("createdTotalHours");
+                var lasUpdated = tree.GetDouble("lastUpdatedTotalHours");
+                var diff = lasUpdated - created; 
+                tree.SetDouble("lastUpdatedTotalHours", worldForResolve.Calendar.TotalHours);
+                tree.SetDouble("createdTotalHours", worldForResolve.Calendar.TotalHours - diff);
+            }
+            
         }
 
         void OnStoreCollectibleMappings(IWorldAccessor world, ITreeAttribute tree, Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
         {
             foreach (var val in tree)
             {
-                if (val.Value is ITreeAttribute)
+                if (val.Value is ITreeAttribute treeAttribute)
                 {
-                    OnStoreCollectibleMappings(world, val.Value as ITreeAttribute, blockIdMapping, itemIdMapping);
+                    OnStoreCollectibleMappings(world, treeAttribute, blockIdMapping, itemIdMapping);
                     continue;
                 }
 
-                if (val.Value is ItemstackAttribute)
+                if (val.Value is ItemstackAttribute attribute)
                 {
-                    ItemStack stack = (val.Value as ItemstackAttribute).value;
+                    ItemStack stack = attribute.value;
                     if (stack == null) continue;
 
                     if (stack.Collectible == null) stack.ResolveBlockOrItem(world);
 
                     if (stack.Class == EnumItemClass.Item)
                     {
-                        itemIdMapping[stack.Id] = stack.Collectible.Code;
+                        itemIdMapping[stack.Id] = stack.Collectible?.Code;
                     } else
                     {
-                        blockIdMapping[stack.Id] = stack.Collectible.Code;
+                        blockIdMapping[stack.Id] = stack.Collectible?.Code;
                     }
                 }
             }
-
         }
 
 

@@ -70,7 +70,7 @@ namespace Vintagestory.API.Common
 
 
 
-        public EntityItem() : base(GlobalConstants.DefaultTrackingRange * 3 / 4)   // we call a parameterised constructor instead of the parameterless base constructor
+        public EntityItem() : base(GlobalConstants.DefaultSimulationRange * 3 / 4)   // we call a parameterised constructor instead of the parameterless base constructor
         {
             Stats = new EntityStats(this);
             Slot = new EntityItemSlot(this);
@@ -316,7 +316,7 @@ namespace Vintagestory.API.Common
         {
             EntityItem item = new EntityItem();
             item.Code = GlobalConstants.EntityItemTypeCode;
-            item.SimulationRange = (int)(0.75f * GlobalConstants.DefaultTrackingRange);
+            item.SimulationRange = (int)(0.75f * GlobalConstants.DefaultSimulationRange);
             item.Itemstack = itemstack;
 
             item.ServerPos.SetPos(position);

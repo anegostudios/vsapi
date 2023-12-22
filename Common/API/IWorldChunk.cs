@@ -41,20 +41,33 @@ namespace Vintagestory.API.Common
         void SetFluid(int index3d, int value);
         int GetBlockId(int index3d, int layer);
         int GetFluid(int index3d);
+
         /// <summary>
         /// Like get (i.e. this[]) but not threadsafe - only for use where setting and getting is guaranteed to be all on the same thread (e.g. during worldgen)
         /// </summary>
         /// <param name="index3d"></param>
-        /// <param name="value"></param>
         int GetBlockIdUnsafe(int index3d);
+        
         /// <summary>
         /// Enter a locked section for bulk block reads from this ChunkData, using Unsafe read methods
         /// </summary>
         void TakeBulkReadLock();
+        
         /// <summary>
         /// Leave a locked section for bulk block reads from this ChunkData, using Unsafe read methods
         /// </summary>
         void ReleaseBulkReadLock();
+
+        /// <summary>
+        /// Does this chunk contain any examples of the specified block?
+        /// <br/>(If the result is false, this is a very fast lookup because it quickly scans the blocks palette, not every block individually.)
+        /// </summary>
+        bool ContainsBlock(int blockId);
+        /// <summary>
+        /// Populates the list with all block IDs which are present in this chunk.  The list may contain false positives (i.e. blocks which used to be here but were removed) so that's why it's called a "Fuzzy" list.
+        /// There will be no false negatives, therefore useful as a first-pass filter when scanning chunks for various types of block e.g. ITickable
+        /// </summary>
+        void FuzzyListBlockIds(List<int> reusableList);
     }
 
     public interface IChunkLight
@@ -216,11 +229,13 @@ namespace Vintagestory.API.Common
         /// <param name="data"></param>
 
         void SetModdata<T>(string key, T data);
+
         /// <summary>
         /// Retrieve arbitrary, permantly stored mod data
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
         /// <returns></returns>
         T GetModdata<T>(string key, T defaultValue = default(T));
 
@@ -260,8 +275,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Sets a decor block to the side of an existing block. Use air block (id 0) to remove a decor.<br/>
         /// </summary>
-        /// <param name="blockAccessor"></param>
-        /// <param name="pos"></param>
+        /// <param name="index3d"></param>
         /// <param name="onFace"></param>
         /// <param name="block"></param>
         /// <returns>False if there already exists a block in this position and facing</returns>
@@ -272,14 +286,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Sets a decor block to a specific sub-position on the side of an existing block. Use air block (id 0) to remove a decor.<br/>
         /// </summary>
-        /// <param name="blockAccessor"></param>
-        /// <param name="pos"></param>
-        /// <param name="onFace"></param>
         /// <param name="block"></param>
+        /// <param name="index3d"></param>
+        /// <param name="decorIndex"></param>
         /// <returns>False if there already exists a block in this position and facing</returns>
         bool SetDecor(Block block, int index3d, int decorIndex);
-//        bool SetDecor(IBlockAccessor blockAccessor, Block block, BlockPos pos, int decorIndex);
-
 
         /// <summary>
         /// If allowed by a player action, removes all decors at given position and calls OnBrokenAsDecor() on all selected decors and drops the items that are returned from Block.GetDrops()
@@ -289,7 +300,6 @@ namespace Vintagestory.API.Common
         /// <param name="side">If null, all the decor blocks on all sides are removed</param>
         /// <param name="decorIndex">If not null breaks only this part of the decor for give face. Requires side to be set.</param>
         bool BreakDecor(IWorldAccessor world, BlockPos pos, BlockFacing side = null, int? decorIndex = null);
-
 
         /// <summary>
         /// Removes a decor block from given position, saves a few cpu cycles by not calculating index3d

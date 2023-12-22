@@ -55,6 +55,9 @@ namespace Vintagestory.API.Common
         /// Sets itemstack.block or itemstack.item
         /// </summary>
         /// <param name="resolver"></param>
+        /// <param name="sourceForErrorLogging"></param>
+        /// <param name="assetLoc"></param>
+        /// <param name="printWarningOnError"></param>
         public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging, AssetLocation assetLoc, bool printWarningOnError = true)
         {
             if (Type == EnumItemClass.Block)

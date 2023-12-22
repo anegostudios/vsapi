@@ -181,6 +181,7 @@ namespace Vintagestory.API.Client
             m.SetRgba(rgba);
 
             m.SetUv(uv);
+            m.TextureIndices = new byte[6];
             m.SetVerticesCount(4 * 6);
             m.SetIndices(CubeVertexIndices);
             m.SetIndicesCount(3 * 2 * 6);

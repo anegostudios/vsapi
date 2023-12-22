@@ -4,8 +4,7 @@ using System;
 using System.Linq;
 using Vintagestory.API.Util;
 using System.Runtime.Serialization;
-using System.Collections;
-using Vintagestory.API.Client;
+using System.Xml.Linq;
 
 namespace Vintagestory.API.Common
 {
@@ -102,22 +101,86 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+
         /// <summary>
-        /// Adds a step parented shape to this shape
+        /// Prefixes texturePrefixCode to all textures in this shape. Required pre-step for stepparenting. The long arguments StepParentShape() calls this method.
+        /// </summary>
+        /// <param name="texturePrefixCode"></param>
+        /// <param name="damageEffect"></param>
+        /// <param name="onTexture"></param>
+        /// <returns></returns>
+        public bool SubclassForStepParenting(string texturePrefixCode, float damageEffect = 0f)
+        {
+            HashSet<string> textureCodes = new HashSet<string>();
+
+            foreach (var childElem in Elements)
+            {
+                childElem.WalkRecursive((el) =>
+                {
+                    el.DamageEffect = damageEffect;
+
+                    foreach (var face in el.FacesResolved)
+                    {
+                        if (face == null || !face.Enabled) continue;
+                        textureCodes.Add(face.Texture);
+
+                        face.Texture = texturePrefixCode + "-" + face.Texture;
+                    }
+                });
+            }
+
+            if (Textures != null)
+            {
+                var texturesizes = TextureSizes.ToArray();
+                TextureSizes.Clear();
+                foreach (var val in texturesizes)
+                {
+                    TextureSizes[texturePrefixCode + "-" + val.Key] = val.Value;
+                    textureCodes.Remove(val.Key);
+                }
+
+                // Set default texturewidth/height for those not in the TextureSizes dict
+                foreach (var code in textureCodes)
+                {
+                    TextureSizes[texturePrefixCode + "-" + code] = new int[] { TextureWidth, TextureHeight };
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Adds a step parented shape to this shape. If you plan to cache the childShape use the shorter argument method and call SubclassForStepParenting() only once on it
         /// </summary>
         /// <param name="childShape"></param>
-        /// <param name="addStack">Used for logging and as texture prefix</param>
+        /// <param name="texturePrefixCode"></param>
         /// <param name="childLocationForLogging"></param>
         /// <param name="parentLocationForLogging"></param>
         /// <param name="logger"></param>
+        /// <param name="onTexture"></param>
         /// <param name="damageEffect"></param>
         /// <returns></returns>
         public bool StepParentShape(Shape childShape, string texturePrefixCode, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture, float damageEffect = 0)
         {
-            return StepParentShape(null, childShape.Elements, childShape, texturePrefixCode, childLocationForLogging, parentLocationForLogging, logger, onTexture, damageEffect);
+            childShape.SubclassForStepParenting(texturePrefixCode, damageEffect);
+            return StepParentShape(null, childShape.Elements, childShape, childLocationForLogging, parentLocationForLogging, logger, onTexture);
         }
 
-        private bool StepParentShape(ShapeElement parentElem, ShapeElement[] elements, Shape childShape, string texturePrefixCode, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture, float damageEffect = 0)
+        /// <summary>
+        /// Adds a step parented shape to this shape, does not call the required pre-step SubclassForStepParenting()
+        /// </summary>
+        /// <param name="childShape"></param>
+        /// <param name="childLocationForLogging"></param>
+        /// <param name="parentLocationForLogging"></param>
+        /// <param name="logger"></param>
+        /// <returns></returns>
+        public bool StepParentShape(Shape childShape, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture)
+        {
+            return StepParentShape(null, childShape.Elements, childShape, childLocationForLogging, parentLocationForLogging, logger, onTexture);
+        }
+
+        private bool StepParentShape(ShapeElement parentElem, ShapeElement[] elements, Shape childShape, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture)
         {
             bool anyElementAdded = false;
             foreach (var childElem in elements)
@@ -126,7 +189,8 @@ namespace Vintagestory.API.Common
 
                 if (childElem.Children != null)
                 {
-                    anyElementAdded |= StepParentShape(childElem, childElem.Children, childShape, texturePrefixCode, childLocationForLogging, parentLocationForLogging, logger, onTexture, damageEffect);
+                    bool added = StepParentShape(childElem, childElem.Children, childShape, childLocationForLogging, parentLocationForLogging, logger, onTexture); ;
+                    anyElementAdded |= added;
                 }
 
                 if (childElem.StepParentName != null)
@@ -165,17 +229,6 @@ namespace Vintagestory.API.Common
 
                 childElem.SetJointIdRecursive(stepparentElem.JointId);
 
-                childElem.WalkRecursive((el) =>
-                {
-                    el.DamageEffect = damageEffect;
-
-                    foreach (var face in el.FacesResolved)
-                    {
-                        if (face == null) continue;
-                        face.Texture = texturePrefixCode + "-" + face.Texture;
-                    }
-                });
-
                 anyElementAdded = true;
             }
 
@@ -188,7 +241,7 @@ namespace Vintagestory.API.Common
                 {
                     var entityAnim = Animations.FirstOrDefault(anim => anim.Code == gearAnim.Code);
                     if (entityAnim == null) continue;
-                    
+
                     for (int gi = 0; gi < gearAnim.KeyFrames.Length; gi++)
                     {
                         var gearKeyFrame = gearAnim.KeyFrames[gi];
@@ -202,7 +255,6 @@ namespace Vintagestory.API.Common
                 }
             }
 
-
             if (childShape.Textures != null)
             {
                 foreach (var val in childShape.Textures)
@@ -212,13 +264,12 @@ namespace Vintagestory.API.Common
 
                 foreach (var val in childShape.TextureSizes)
                 {
-                    TextureSizes[texturePrefixCode + "-" + val.Key] = val.Value;
+                    TextureSizes[val.Key] = val.Value;
                 }
             }
 
             return anyElementAdded;
         }
-
 
         private AnimationKeyFrame getOrCreateKeyFrame(Animation entityAnim, int frame)
         {
@@ -277,7 +328,9 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Resolves all joints and loads them.
         /// </summary>
+        /// <param name="shapeName"></param>
         /// <param name="requireJointsForElements"></param>
+        /// <param name="errorLogger"></param>
         public void ResolveAndFindJoints(ILogger errorLogger, string shapeName, params string[] requireJointsForElements)
         {
             if (Animations == null) return;
@@ -453,6 +506,7 @@ namespace Vintagestory.API.Common
         /// Recursively searches the element by name from the shape.
         /// </summary>
         /// <param name="name">The name of the element to get.</param>
+        /// <param name="stringComparison"></param>
         /// <returns>The shape element or null if none was found</returns>
         public ShapeElement GetElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
         {

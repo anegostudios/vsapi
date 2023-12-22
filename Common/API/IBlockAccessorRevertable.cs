@@ -1,21 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
-using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
     public class HistoryState
     {
-        public static HistoryState Empty = new HistoryState() { BlockUpdates = new BlockUpdate[0], DecorUpdates = new DecorUpdate[0] };
+        public static HistoryState Empty() => new() { BlockUpdates = Array.Empty<BlockUpdate>() };
 
         public BlockUpdate[] BlockUpdates;
-        public DecorUpdate[] DecorUpdates;
-        public object Data;
         public BlockPos OldStartMarker;
         public BlockPos OldEndMarker;
 
         public BlockPos NewStartMarker;
         public BlockPos NewEndMarker;
+        public List<EntityUpdate> EntityUpdates;
     }
 
 
@@ -35,7 +35,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// 0 = working on latest version, 1 = undo used one time, 2 = undo used 2 times, etc.
         /// </summary>
-        int CurrentyHistoryState { get; }
+        int CurrentHistoryState { get; }
 
         /// <summary>
         /// 1 = perform 1 undo 
@@ -66,9 +66,13 @@ namespace Vintagestory.API.Common
         void CommitBlockEntityData();
 
         void BeginMultiEdit();
+        
         void EndMultiEdit();
 
         void StoreHistoryState(HistoryState state);
 
+        void StoreEntitySpawnToHistory(Entity entity);
+        
+        void StoreEntityMoveToHistory(BlockPos start, BlockPos end, Vec3i offset);
     }
 }

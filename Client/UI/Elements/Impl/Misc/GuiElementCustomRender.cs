@@ -41,8 +41,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a static custom draw component to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the component.</param>
-        /// <param name="OnDraw">The event fired when the element is drawn.</param>
+        /// <param name="onRender">The event fired when the element is drawn.</param>
         public static GuiComposer AddCustomRender(this GuiComposer composer, ElementBounds bounds, RenderDelegateWithBounds onRender)
         {
             if (!composer.Composed)

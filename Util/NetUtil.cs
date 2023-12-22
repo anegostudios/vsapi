@@ -19,7 +19,7 @@ namespace Vintagestory.API.Util
         {
             try
             {
-                Process.Start(url);
+                Process.Start("start \"" + url + "\"");
             }
             catch
             {

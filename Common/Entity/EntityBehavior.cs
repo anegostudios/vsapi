@@ -101,6 +101,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="saturation">The amount of saturation recieved.</param>
         /// <param name="foodCat">The category of food recieved.</param>
         /// <param name="saturationLossDelay">The delay before the loss of saturation.</param>
+        /// <param name="nutritionGainMultiplier"></param>
         public virtual void OnEntityReceiveSaturation(float saturation, EnumFoodCategory foodCat = EnumFoodCategory.Unknown, float saturationLossDelay = 10, float nutritionGainMultiplier = 1f)
         {
             
@@ -197,7 +198,6 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// The event fired when the client receives a packet.
         /// </summary>
-        /// <param name="player"></param>
         /// <param name="packetid"></param>
         /// <param name="data"></param>
         /// <param name="handled"></param>
@@ -237,8 +237,14 @@ namespace Vintagestory.API.Common.Entities
         {
             
         }
-
+        
+        [Obsolete("Use the variant with resolveImports parameter")]
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        {
+            OnLoadCollectibleMappings(worldForNewMappings, oldItemIdMapping, oldItemIdMapping, true);
+        }
+
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, bool resolveImports)
         {
             
         }
@@ -255,6 +261,14 @@ namespace Vintagestory.API.Common.Entities
         public virtual void FromBytes(bool isSync)
         {
             
+        }
+
+        /// <summary>
+        /// Can be used by the /entity command or maybe other commands, to test behaviors
+        /// <br/>The argument will be an object provided by TextCommandCallingArgs, which can then be cast to the desired type e.g. int
+        /// </summary>
+        public virtual void TestCommand(object arg)
+        {
         }
     }
 }

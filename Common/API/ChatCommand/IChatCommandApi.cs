@@ -181,11 +181,6 @@ namespace Vintagestory.API.Common
         public static TextCommandResult Success(string message = "", object data = null) => new TextCommandResult() { Status = EnumCommandStatus.Success, Data = data, StatusMessage = message };
         public static TextCommandResult Error(string message, string errorCode = "") => new TextCommandResult() { Status = EnumCommandStatus.Error, StatusMessage = message, ErrorCode = errorCode };
 
-        internal static TextCommandResult Success(object fullSyntax)
-        {
-            throw new NotImplementedException();
-        }
-
         public static TextCommandResult Deferred => new TextCommandResult() { Status = EnumCommandStatus.Deferred };
 
         public static OnCommandDelegate DeferredHandler => (args) => Deferred;

@@ -188,7 +188,9 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Triggers a discovery event. HudDiscoveryMessage registers to this event and fades in/out a "discovery message" on the players screen
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="sender"></param>
+        /// <param name="errorCode"></param>
+        /// <param name="text"></param>
         void TriggerIngameDiscovery(object sender, string errorCode, string text);
 
         /// <summary>

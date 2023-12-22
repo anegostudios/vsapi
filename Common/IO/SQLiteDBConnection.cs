@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
-using System.Data.SQLite;
 using System.IO;
+using Microsoft.Data.Sqlite;
 
 namespace Vintagestory.API.Common
 {
     public class SQLiteDBConnection : IDisposable
     {
-        protected SQLiteConnection sqliteConn;
+        protected SqliteConnection sqliteConn;
         protected string databaseFileName;
         protected ILogger logger;
         public object transactionLock = new object();
@@ -48,44 +48,43 @@ namespace Vintagestory.API.Common
 
             try
             {
-                DbConnectionStringBuilder conf = new DbConnectionStringBuilder();
-                conf.Add("Data Source", databaseFileName);
-                conf.Add("Version", "3");
-                conf.Add("New", "True"); // Create new file if it doesnt exist 
-                conf.Add("Compress", "True");
-                
-                if (corruptionProtection)
-                {
-                    conf.Add("Journal Mode", "WAL");
-                    conf.Add("Synchronous", "Normal");
-                } else
-                {
-                    conf.Add("Journal Mode", "Off");
-                }
+                var conf = new DbConnectionStringBuilder { 
+                    { "Data Source", databaseFileName },
+                    { "Pooling","false" }
+                };
 
                 if (!requireWriteAccess)
                 {
-                    conf.Add("read only", "True");
+                    conf.Add("Mode", "ReadOnly");
+                }
+            
+                sqliteConn = new SqliteConnection(conf.ToString());
+                sqliteConn.Open();
+            
+                using (var cmd = sqliteConn.CreateCommand())
+                {
+                    if (corruptionProtection)
+                    {
+                        cmd.CommandText = "PRAGMA journal_mode=WAL;PRAGMA synchronous=Normal;";
+                    }
+                    else
+                    {
+                        cmd.CommandText = "PRAGMA journal_mode=Off;";
+                    }
+                
+                    cmd.ExecuteNonQuery();
                 }
 
-                sqliteConn = new SQLiteConnection(conf.ToString());
-                
-                sqliteConn.Open();
 
                 if (requireWriteAccess)
                 {
                     CreateTablesIfNotExists(sqliteConn);
                 }
-                
 
-                if (doIntegrityCheck)
+                if (doIntegrityCheck && !DoIntegrityCheck(sqliteConn))
                 {
-                    if (!DoIntegrityCheck(sqliteConn))
-                    {
-                        logger.Error(errorMessage = "Database is possibly corrupted.");
-                    }
+                    logger.Error(errorMessage = "Database is possibly corrupted.");
                 }
-
             }
             catch (Exception e)
             {
@@ -117,14 +116,14 @@ namespace Vintagestory.API.Common
         }
 
 
-        protected virtual void CreateTablesIfNotExists(SQLiteConnection sqliteConn)
+        protected virtual void CreateTablesIfNotExists(SqliteConnection sqliteConn)
         {
             // Create your tables here
         }
 
         public void Vacuum()
         {
-            using (SQLiteCommand command = sqliteConn.CreateCommand())
+            using (var command = sqliteConn.CreateCommand())
             {
                 command.CommandText = "vacuum;";
                 command.ExecuteNonQuery();
@@ -132,14 +131,14 @@ namespace Vintagestory.API.Common
         }
 
 
-        public bool DoIntegrityCheck(SQLiteConnection sqliteConn, bool logResults = true)
+        public bool DoIntegrityCheck(SqliteConnection sqliteConn, bool logResults = true)
         {
-            bool okay = false;
-            using (SQLiteCommand command = sqliteConn.CreateCommand())
+            var okay = false;
+            using (var command = sqliteConn.CreateCommand())
             {
                 command.CommandText = "PRAGMA integrity_check";
 
-                using (SQLiteDataReader sqlite_datareader = command.ExecuteReader())
+                using (var sqlite_datareader = command.ExecuteReader())
                 {
                     if (logResults) logger.Notification(string.Format("Database: {0}. Running SQLite integrity check:", sqliteConn.DataSource));
 
@@ -170,7 +169,7 @@ namespace Vintagestory.API.Common
 
             try
             {
-                string testfilename = Path.Combine(folderPath, "temp.txt");
+                var testfilename = Path.Combine(folderPath, "temp.txt");
                 File.Create(testfilename).Close();
                 File.Delete(testfilename);
                 return true;
@@ -214,7 +213,7 @@ namespace Vintagestory.API.Common
 
         protected DbParameter CreateParameter(string parameterName, DbType dbType, object value, DbCommand command)
         {
-            DbParameter p = command.CreateParameter();
+            var p = command.CreateParameter();
             p.ParameterName = parameterName;
             p.DbType = dbType;
             p.Value = value;

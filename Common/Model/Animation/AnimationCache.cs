@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Util;
 
@@ -38,6 +37,7 @@ namespace Vintagestory.API.Common
         /// Clears the animation cache.
         /// </summary>
         /// <param name="api"></param>
+        /// <param name="entity"></param>
         public static void ClearCache(ICoreAPI api, Entity entity)
         {
             var animCache = ObjectCacheUtil.GetOrCreate(api, "animCache", () => new Dictionary<string, AnimCacheEntry>());
@@ -52,6 +52,7 @@ namespace Vintagestory.API.Common
         /// <param name="manager"></param>
         /// <param name="entity"></param>
         /// <param name="entityShape"></param>
+        /// <param name="copyOverAnims"></param>
         /// <param name="requireJointsForElements"></param>
         /// <returns></returns>
         public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, params string[] requireJointsForElements)

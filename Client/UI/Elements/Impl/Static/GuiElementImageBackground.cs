@@ -17,6 +17,8 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the element.</param>
         /// <param name="textureLoc">The name of the texture.</param>
         /// <param name="brightness">The brightness of the texture. (Default: 1f)</param>
+        /// <param name="alpha"></param>
+        /// <param name="scale"></param>
         public GuiElementImageBackground(ICoreClientAPI capi, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f, float alpha = 1, float scale = 1f) : base(capi, bounds)
         {
             this.alpha = alpha;
@@ -50,9 +52,12 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a background to the current GUI
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the background</param>
         /// <param name="textureLoc">The name of the background texture.</param>
         /// <param name="brightness">The brightness of the texture (default: 1f)</param>
+        /// <param name="alpha"></param>
+        /// <param name="scale"></param>
         public static GuiComposer AddImageBG(this GuiComposer composer, ElementBounds bounds, AssetLocation textureLoc, float brightness = 1f, float alpha = 1, float scale = 1f)
         {
             if (!composer.Composed)

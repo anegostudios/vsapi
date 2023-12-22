@@ -30,7 +30,7 @@ namespace Vintagestory.API.Datastructures
         /// <summary>
         /// Create a new instance of a JsonObject
         /// </summary>
-        /// <param name="token"></param>
+        /// <param name="original"></param>
         /// <param name="unused">Only present so that the Constructor with a sole null parameter has an unambiguous signature</param>
         public JsonObject(JsonObject original, bool unused)
         {
@@ -165,6 +165,7 @@ namespace Vintagestory.API.Datastructures
         /// Turn the token into an array
         /// </summary>
         /// <param name="defaultValue">If the conversion fails, this value is used instead</param>
+        /// <param name="defaultDomain"></param>
         /// <returns></returns>
         public T[] AsArray<T>(T[] defaultValue = null, string defaultDomain = null)
         {

@@ -4,10 +4,8 @@
         <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
         <TargetFramework>net7.0</TargetFramework>
         <OutputPath>..\bin\$(Configuration)</OutputPath>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <Configurations>Debug;Release;PerfTest</Configurations>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-        <NoWarn>1701;1702;1591;1572;1573;0618</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -28,7 +26,7 @@
         <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.8.2-vs.1" />
         <PackageReference Include="protobuf-net" Version="2.4.7" />
         <PackageReference Include="SkiaSharp" Version="2.88.6" />
-        <PackageReference Include="System.Data.SQLite.Core" Version="1.0.118" />
+        <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.14" />
     </ItemGroup>
 
     <ItemGroup>

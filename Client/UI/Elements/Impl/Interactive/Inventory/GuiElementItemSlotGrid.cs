@@ -50,20 +50,20 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds an item slot grid to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="inventory">The inventory attached to the slot grid.</param>
-        /// <param name="SendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
+        /// <param name="sendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
         /// <param name="columns">The number of columns in the slot grid.</param>
         /// <param name="bounds">the bounds of the slot grid.</param>
         /// <param name="key">The key for this particular slot grid.</param>
-        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, ElementBounds bounds, string key=null)
+        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> sendPacket, int columns, ElementBounds bounds, string key=null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementItemSlotGrid(composer.Api, inventory, SendPacket, columns, null, bounds), key);
+                composer.AddInteractiveElement(new GuiElementItemSlotGrid(composer.Api, inventory, sendPacket, columns, null, bounds), key);
                 GuiElementItemSlotGridBase.UpdateLastSlotGridFlag(composer);
             }
             return composer;
@@ -72,17 +72,18 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds an item slot grid to the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="inventory">The inventory attached to the slot grid.</param>
-        /// <param name="SendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
+        /// <param name="sendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
         /// <param name="columns">The number of columns in the slot grid.</param>
         /// <param name="selectiveSlots">The slots within the inventory that are currently accessible.</param>
         /// <param name="bounds">the bounds of the slot grid.</param>
         /// <param name="key">The key for this particular slot grid.</param>
-        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, int[] selectiveSlots, ElementBounds bounds, string key = null)
+        public static GuiComposer AddItemSlotGrid(this GuiComposer composer, IInventory inventory, Action<object> sendPacket, int columns, int[] selectiveSlots, ElementBounds bounds, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementItemSlotGrid(composer.Api, inventory, SendPacket, columns, selectiveSlots, bounds), key);
+                composer.AddInteractiveElement(new GuiElementItemSlotGrid(composer.Api, inventory, sendPacket, columns, selectiveSlots, bounds), key);
                 GuiElementItemSlotGridBase.UpdateLastSlotGridFlag(composer);
             }
 
@@ -92,6 +93,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the slot grid by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the slot grid to get.</param>
         public static GuiElementItemSlotGrid GetSlotGrid(this GuiComposer composer, string key)
         {

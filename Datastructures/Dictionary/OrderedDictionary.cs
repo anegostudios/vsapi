@@ -391,11 +391,12 @@ namespace Vintagestory.API.Datastructures
 			return Dictionary.ContainsValue(value);
         }
 
-		/// <summary>
-		/// Adds values, but for performance does not replace any existing values which have the same key; that's fine for asset loading
-		/// </summary>
-		/// <param name="src"></param>
-		internal void AddRange(Dictionary<TKey, TValue> src, ILogger logger)
+        /// <summary>
+        /// Adds values, but for performance does not replace any existing values which have the same key; that's fine for asset loading
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="logger"></param>
+        internal void AddRange(Dictionary<TKey, TValue> src, ILogger logger)
 		{
 			foreach (KeyValuePair<TKey, TValue> val in src)
 			{

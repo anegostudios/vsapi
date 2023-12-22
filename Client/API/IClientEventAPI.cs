@@ -55,6 +55,7 @@ namespace Vintagestory.API.Client
     /// <summary>
     /// Return false to stop spawning particles
     /// </summary>
+    /// <param name="dt"></param>
     /// <param name="manager"></param>
     /// <returns></returns>
     public delegate bool ContinousParticleSpawnTaskDelegate(float dt, IAsyncParticleManager manager);
@@ -189,6 +190,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Registers a custom itemstack renderer for given collectible object. If none is registered, the default renderer is used. For render target gui, the gui shader and its uniforms are already fully prepared, you may only call RenderMesh() and ignore the modelMat, position and size values - stack sizes however, are not covered by this.
         /// </summary>
+        /// <param name="forObj"></param>
         /// <param name="rendererDelegate"></param>
         /// <param name="target"></param>
         void RegisterItemstackRenderer(CollectibleObject forObj, ItemRenderDelegate rendererDelegate, EnumItemRenderTarget target);
@@ -197,6 +199,7 @@ namespace Vintagestory.API.Client
         /// Removes a previously registered itemstack renderer
         /// </summary>
         /// <param name="forObj"></param>
+        /// <param name="target"></param>
         void UnregisterItemstackRenderer(CollectibleObject forObj, EnumItemRenderTarget target);
 
 

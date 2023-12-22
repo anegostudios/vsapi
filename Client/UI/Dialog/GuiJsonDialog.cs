@@ -31,14 +31,26 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Builds the dialogue using the dialogue settings from JSON.
+        /// Builds the dialog using the dialog settings from JSON.
         /// </summary>
-        /// <param name="settings">The dialogue settings.</param>
+        /// <param name="settings">The dialog settings.</param>
         /// <param name="capi">The Client API</param>
         public GuiJsonDialog(JsonDialogSettings settings, ICoreClientAPI capi) : base("", capi)
         {
             this.settings = settings;
-            ComposeDialog();
+            ComposeDialog(true);
+        }
+
+        /// <summary>
+        /// Builds the dialog using the dialog settings from JSON.
+        /// </summary>
+        /// <param name="settings">The dialog settings.</param>
+        /// <param name="capi">The Client API</param>
+        /// <param name="focusFirstElement">Should the first element be focused, after building the dialog?</param>
+        public GuiJsonDialog(JsonDialogSettings settings, ICoreClientAPI capi, bool focusFirstElement) : base("", capi)
+        {
+            this.settings = settings;
+            ComposeDialog(focusFirstElement);
         }
 
         /// <summary>
@@ -46,7 +58,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public override void Recompose()
         {
-            ComposeDialog();
+            ComposeDialog(false);
         }
 
         public override bool PrefersUngrabbedMouse => settings.DisableWorldInteract;
@@ -54,7 +66,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Composes the dialogue with specifications dictated by JSON.
         /// </summary>
-        public void ComposeDialog()
+        public void ComposeDialog(bool focusFirstElement = false)
         {
             double factor = settings.SizeMultiplier;
 
@@ -101,7 +113,7 @@ namespace Vintagestory.API.Client
             }
 
 
-            Composers["cmdDlg" + settings.Code] = composer.EndChildElements().Compose();
+            Composers["cmdDlg" + settings.Code] = composer.EndChildElements().Compose(focusFirstElement);
         }
 
         int elementNumber = 0;

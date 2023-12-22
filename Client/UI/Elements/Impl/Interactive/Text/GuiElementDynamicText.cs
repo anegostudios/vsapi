@@ -30,7 +30,6 @@ namespace Vintagestory.API.Client
         /// <param name="capi">The client API.</param>
         /// <param name="text">The starting text on the component.</param>
         /// <param name="font">The font of the text.</param>
-        /// <param name="orientation">The orientation of the text.</param>
         /// <param name="bounds">the bounds of the text.</param>
         public GuiElementDynamicText(ICoreClientAPI capi, string text, CairoFont font, ElementBounds bounds) : base(capi, text, font, bounds)
         {
@@ -112,6 +111,7 @@ namespace Vintagestory.API.Client
         /// <param name="text">The text of the component.</param>
         /// <param name="autoHeight">Whether the height of the component should be modified.</param>
         /// <param name="forceRedraw">Whether the element should be redrawn.</param>
+        /// <param name="async"></param>
         public void SetNewText(string text, bool autoHeight = false, bool forceRedraw = false, bool async = false)
         {
             if (this.text != text || forceRedraw)
@@ -141,7 +141,6 @@ namespace Vintagestory.API.Client
         /// <param name="composer"></param>
         /// <param name="text"></param>
         /// <param name="font"></param>
-        /// <param name="orientation"></param>
         /// <param name="bounds"></param>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -171,6 +170,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the Dynamic Text by name from the GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the element.</param>
         public static GuiElementDynamicText GetDynamicText(this GuiComposer composer, string key)
         {

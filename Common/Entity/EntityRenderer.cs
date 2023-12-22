@@ -70,8 +70,6 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="posZ"></param>
         /// <param name="yawDelta"></param>
         /// <param name="size"></param>
-        /// <param name="meshRef"></param>
-        /// <param name="modelviewMatrix"></param>
         public virtual void RenderToGui(float dt, double posX, double posY, double posZ, float yawDelta, float size) {
             
         }

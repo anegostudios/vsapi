@@ -17,15 +17,15 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The Client API</param>
         /// <param name="inventory">The attached inventory.</param>
-        /// <param name="SendPacketHandler">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
+        /// <param name="sendPacketHandler">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
         /// <param name="columns">The number of columns in the slot grid.</param>
         /// <param name="excludingSlots">The slots that have been excluded.</param>
         /// <param name="bounds">The bounds of the slot grid.</param>
-        public GuiElementItemSlotGridExcl(ICoreClientAPI capi, IInventory inventory, Action<object> SendPacketHandler, int columns, int[] excludingSlots, ElementBounds bounds) : base(capi, inventory, SendPacketHandler, columns, bounds)
+        public GuiElementItemSlotGridExcl(ICoreClientAPI capi, IInventory inventory, Action<object> sendPacketHandler, int columns, int[] excludingSlots, ElementBounds bounds) : base(capi, inventory, sendPacketHandler, columns, bounds)
         {
             this.excludingSlots = excludingSlots;
             InitDicts();
-            this.SendPacketHandler = SendPacketHandler;
+            this.SendPacketHandler = sendPacketHandler;
         }
 
 
@@ -77,21 +77,21 @@ namespace Vintagestory.API.Client
 
     public static partial class GuiComposerHelpers
     {
-
         /// <summary>
         /// Adds an ItemSlotGrid with Exclusions.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="inventory">The attached inventory.</param>
-        /// <param name="SendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
+        /// <param name="sendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
         /// <param name="columns">The number of columns.</param>
         /// <param name="excludingSlots">The slots that have been excluded from the slot grid.</param>
         /// <param name="bounds">The bounds of the slot grid.</param>
         /// <param name="key">The name of the slot grid.</param>
-        public static GuiComposer AddItemSlotGridExcl(this GuiComposer composer, IInventory inventory, Action<object> SendPacket, int columns, int[] excludingSlots, ElementBounds bounds, string key = null)
+        public static GuiComposer AddItemSlotGridExcl(this GuiComposer composer, IInventory inventory, Action<object> sendPacket, int columns, int[] excludingSlots, ElementBounds bounds, string key = null)
         {
             if (!composer.Composed)
             {
-                composer.AddInteractiveElement(new GuiElementItemSlotGridExcl(composer.Api, inventory, SendPacket, columns, excludingSlots, bounds), key);
+                composer.AddInteractiveElement(new GuiElementItemSlotGridExcl(composer.Api, inventory, sendPacket, columns, excludingSlots, bounds), key);
                 GuiElementItemSlotGridBase.UpdateLastSlotGridFlag(composer);
             }
             return composer;
@@ -100,6 +100,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Gets the ItemSlotGridExcl by name.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="key">The name of the ItemSlotGridExcl</param>
         public static GuiElementItemSlotGridExcl GetSlotGridExcl(this GuiComposer composer, string key)
         {

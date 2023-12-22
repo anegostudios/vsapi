@@ -47,7 +47,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Creates a entity instance from given entity type 
         /// </summary>
-        /// <param name="entityClass"></param>
+        /// <param name="entityType"></param>
         /// <returns></returns>
         Entity CreateEntity(EntityProperties entityType);
 

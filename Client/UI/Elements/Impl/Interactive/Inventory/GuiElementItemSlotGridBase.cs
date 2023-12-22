@@ -80,10 +80,10 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="capi">The client API</param>
         /// <param name="inventory">The attached inventory</param>
-        /// <param name="SendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
+        /// <param name="sendPacket">A handler that should send supplied network packet to the server, if the inventory modifications should be synced</param>
         /// <param name="columns">The number of columns in the GUI.</param>
         /// <param name="bounds">The bounds of the slot grid.</param>
-        public GuiElementItemSlotGridBase(ICoreClientAPI capi, IInventory inventory, Action<object> SendPacket, int columns, ElementBounds bounds) : base(capi, bounds)
+        public GuiElementItemSlotGridBase(ICoreClientAPI capi, IInventory inventory, Action<object> sendPacket, int columns, ElementBounds bounds) : base(capi, bounds)
         {
             slotTexture = new LoadedTexture(capi);
             highlightSlotTexture = new LoadedTexture(capi);
@@ -92,7 +92,7 @@ namespace Vintagestory.API.Client
             prevSlotQuantity = inventory.Count;
             this.inventory = inventory;
             cols = columns;
-            SendPacketHandler = SendPacket;
+            SendPacketHandler = sendPacket;
 
             inventory.SlotNotified += OnSlotNotified;
 
@@ -527,13 +527,13 @@ namespace Vintagestory.API.Client
             return (255 << 8) + (255 << 24);
         }
 
-        
 
         /// <summary>
         /// Renders only a subset of all available slots filtered by searching given text on the item name/description
         /// </summary>
         /// <param name="text"></param>
         /// <param name="searchCache">Can be set to increase search performance, otherwise a slow search is performed</param>
+        /// <param name="searchCacheNames"></param>
         public void FilterItemsBySearchText(string text, Dictionary<int, string> searchCache = null, Dictionary<int, string> searchCacheNames = null)
         {
             searchText = text.RemoveDiacritics().ToLowerInvariant();

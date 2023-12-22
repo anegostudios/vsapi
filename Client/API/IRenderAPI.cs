@@ -91,6 +91,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="inSlot"></param>
         /// <param name="ground"></param>
+        /// <param name="dt"></param>
         /// <returns></returns>
         ItemRenderInfo GetItemStackRenderInfo(ItemSlot inSlot, EnumItemRenderTarget ground, float dt);
 
@@ -429,6 +430,7 @@ namespace Vintagestory.API.Client
         /// <param name="posX">The position for light level reading</param>
         /// <param name="posY">The position for light level reading</param>
         /// <param name="posZ">The position for light level reading</param>
+        /// <param name="colorMul"></param>
         /// <returns></returns>
         IStandardShaderProgram PreparedStandardShader(int posX, int posY, int posZ, Vec4f colorMul = null);
 
@@ -452,6 +454,7 @@ namespace Vintagestory.API.Client
         /// <param name="indicesSize">Size of the indices</param>
         /// <param name="customFloats">Float values of the mesh</param>
         /// <param name="customInts">Float values of the mesh</param>
+        /// <param name="customShorts"></param>
         /// <param name="customBytes">Byte values of the mesh</param>
         /// <param name="drawMode">The current draw mode</param>
         /// <param name="staticDraw">whether the draw should be static or dynamic.</param>
@@ -507,13 +510,13 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="mmr"></param>
         /// <param name="textureSampleName"></param>
+        /// <param name="textureNumber"></param>
         void RenderMultiTextureMesh(MultiTextureMeshRef mmr, string textureSampleName, int textureNumber = 0);
 
         /// <summary>
         /// Renders given mesh onto the screen, with the mesh requiring multiple render calls for each texture, does not asign any texture
         /// </summary>
         /// <param name="mmr"></param>
-        /// <param name="textureSampleName"></param>
         void RenderMultiTextureMesh(MultiTextureMeshRef mmr);
 
 
@@ -598,6 +601,9 @@ namespace Vintagestory.API.Client
         /// <param name="atlas"></param>
         /// <param name="size"></param>
         /// <param name="onComplete">Once rendered, this returns a texture subid, which you can use to retrieve the textureAtlasPosition from the atlas</param>
+        /// <param name="color"></param>
+        /// <param name="sepiaLevel"></param>
+        /// <param name="scale"></param>
         /// <returns>True if the render could complete immediatly, false if it has to wait until the next ortho render stage</returns>
         bool RenderItemStackToAtlas(ItemStack stack, ITextureAtlasAPI atlas, int size, Action<int> onComplete, int color = ColorUtil.WhiteArgb, float sepiaLevel = 0f, float scale = 1f);
 
@@ -680,17 +686,16 @@ namespace Vintagestory.API.Client
         void Render2DTexture(int textureid, float posX, float posY, float width, float height, float z = 50, Vec4f color = null);
 
 
-
         /// <summary>
         /// Renders given texture onto the screen, uses supplied quad for rendering (gui mode)
         /// </summary>
+        /// <param name="quadModel"></param>
         /// <param name="textureid"></param>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <param name="z"></param>
-        /// <param name="color"></param>
         void Render2DTexture(MeshRef quadModel, int textureid, float posX, float posY, float width, float height, float z = 50);
 
 
@@ -727,6 +732,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Inefficiently renders a line between 2 points 
         /// </summary>
+        /// <param name="origin"></param>
         /// <param name="posX1"></param>
         /// <param name="posY1"></param>
         /// <param name="posZ1"></param>

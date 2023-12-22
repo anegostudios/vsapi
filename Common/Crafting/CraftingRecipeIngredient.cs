@@ -80,6 +80,7 @@ namespace Vintagestory.API.Common
         /// Turns Type, Code and Attributes into an IItemStack
         /// </summary>
         /// <param name="resolver"></param>
+        /// <param name="sourceForErrorLogging"></param>
         public bool Resolve(IWorldAccessor resolver, string sourceForErrorLogging)
         {
             if (ReturnedStack != null)
@@ -131,6 +132,7 @@ namespace Vintagestory.API.Common
         /// Checks whether or not the input satisfies as an ingredient for the recipe.
         /// </summary>
         /// <param name="inputStack"></param>
+        /// <param name="checkStacksize"></param>
         /// <returns></returns>
         public bool SatisfiesAsIngredient(ItemStack inputStack, bool checkStacksize = true)
         {

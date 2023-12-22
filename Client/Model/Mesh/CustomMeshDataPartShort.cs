@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Vintagestory.API.Client
+﻿namespace Vintagestory.API.Client
 {
     /// <summary>
     /// Holds arbitrary short data for meshes to be used in the shader
@@ -17,7 +15,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Size initialization constructor.
         /// </summary>
-        /// <param name="arraySize"></param>
+        /// <param name="size"></param>
         public CustomMeshDataPartShort(int size) : base(size) { }
 
 

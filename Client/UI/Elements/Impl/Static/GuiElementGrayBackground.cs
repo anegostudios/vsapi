@@ -31,6 +31,7 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// Adds a gray background to the current GUI.
         /// </summary>
+        /// <param name="composer"></param>
         /// <param name="bounds">The bounds of the backgrounds.</param>
         public static GuiComposer AddGrayBG(this GuiComposer composer, ElementBounds bounds)
         {

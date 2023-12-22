@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using ProperVersion;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -98,10 +99,55 @@ namespace Vintagestory.API.Common
         public BlockPos[][] PathwayOffsets;
 
         public BlockPos[] UndergroundCheckPositions;
+        
+        /// <summary>
+        /// Set by the RemapperAssistant in OnFinalizeAssets
+        /// </summary>
+        public static Dictionary<string, Dictionary<string, string>> BlockRemaps { get; set; }
+        
+        /// <summary>
+        /// Set by the RemapperAssistant in OnFinalizeAssets
+        /// </summary>
+        public static Dictionary<string, Dictionary<string, string>> ItemRemaps { get; set; }
 
         public virtual void Init(IBlockAccessor blockAccessor)
         {
+            SemVer.TryParse(Config.GameVersion.OverallVersion, out var currentVersion);
+            SemVer.TryParse(GameVersion ?? "0.0.0", out var schematicVersion);
+                
+            if (schematicVersion < currentVersion)
+            {
+                Remap();
+            }
+            
             InitMetaBlocks(blockAccessor);
+        }
+
+        private void Remap()
+        {
+            // now do block remapping
+            foreach (var map in BlockRemaps)
+            {
+                foreach (var blockCode in BlockCodes)
+                {
+                    if (map.Value.TryGetValue(blockCode.Value.Path, out var newBlockCode))
+                    {
+                        BlockCodes[blockCode.Key] = new AssetLocation(newBlockCode);
+                    }
+                }
+            }
+            
+            // now do item remapping
+            foreach (var map in ItemRemaps)
+            {
+                foreach (var itemCode in ItemCodes)
+                {
+                    if (map.Value.TryGetValue(itemCode.Value.Path, out var newItemCode))
+                    {
+                        ItemCodes[itemCode.Key] = new AssetLocation(newItemCode);
+                    }
+                }
+            }
         }
 
         public void InitMetaBlocks(IBlockAccessor blockAccessor)
@@ -390,6 +436,27 @@ namespace Vintagestory.API.Common
                     BlockIds.Add(fluidid);
                 }
             }
+            
+            // also export fluid locks that do not have any other blocks in the same position
+            foreach (var (pos, blockId) in FluidsLayerUnpacked)
+            {
+                if (BlocksUnpacked.ContainsKey(pos)) continue;
+                
+                // Store a block mapping
+                if (blockId != 0) BlockCodes[blockId] = world.BlockAccessor.GetBlock(blockId).Code;
+
+                // Store relative position and the block id
+                int dx = pos.X - minX;
+                int dy = pos.Y - minY;
+                int dz = pos.Z - minZ;
+
+                SizeX = Math.Max(dx, SizeX);
+                SizeY = Math.Max(dy, SizeY);
+                SizeZ = Math.Max(dz, SizeZ);
+
+                Indices.Add((uint)((dy << 20) | (dz << 10) | dx));
+                BlockIds.Add(blockId);
+            }
 
             foreach (var val in DecorsUnpacked)
             {
@@ -471,6 +538,7 @@ namespace Vintagestory.API.Common
         /// <param name="startPos"></param>
         /// <param name="mode"></param>
         /// <param name="replaceMetaBlocks"></param>
+        /// <param name="resolveImports">Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</param>
         /// <returns></returns>
         public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumReplaceMode mode, bool replaceMetaBlocks = true)
         {
@@ -537,7 +605,7 @@ namespace Vintagestory.API.Common
 
             if (!(blockAccessor is IBlockAccessorRevertable))
             {
-                PlaceEntitiesAndBlockEntities(blockAccessor, worldForCollectibleResolve, startPos, BlockCodes, ItemCodes);
+                PlaceEntitiesAndBlockEntities(blockAccessor, worldForCollectibleResolve, startPos, BlockCodes, ItemCodes, false, null, 0 , null, replaceMetaBlocks);
             }
 
             return placed;
@@ -752,7 +820,8 @@ namespace Vintagestory.API.Common
                     decorsTmp = new Block[6];
                     DecorsUnpacked[pos] = decorsTmp;
                 }
-                decorsTmp[face.Index] = newBlock;
+                
+                decorsTmp[face.GetHorizontalRotated(angle).Index] = newBlock;
             }
 
 
@@ -776,13 +845,12 @@ namespace Vintagestory.API.Common
                 if (entityclass != null)
                 {
                     BlockEntity be = worldForResolve.ClassRegistry.CreateBlockEntity(entityclass);
-                    if (be is IRotatable)
+                    if (be is IRotatable rotatable)
                     {
                         be.Pos = pos;
                         be.CreateBehaviors(block, worldForResolve);
                         ITreeAttribute tree = DecodeBlockEntityData(beData);
-
-                        (be as IRotatable).OnTransformed(tree, angle, flipAxis);
+                        rotatable.OnTransformed(worldForResolve ,tree, angle, BlockCodes, ItemCodes, flipAxis);
                         beData = StringEncodeTreeAttribute(tree);
                     }
 
@@ -897,10 +965,6 @@ namespace Vintagestory.API.Common
         }
 
 
-
-
-
-
         /// <summary>
         /// Places all the entities and blocks in the schematic at the position.
         /// </summary>
@@ -912,7 +976,9 @@ namespace Vintagestory.API.Common
         /// <param name="replaceBlockEntities"></param>
         /// <param name="replaceBlocks"></param>
         /// <param name="centerrockblockid"></param>
-        public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, Dictionary<int, AssetLocation> blockCodes, Dictionary<int, AssetLocation> itemCodes, bool replaceBlockEntities = false, Dictionary<int, Dictionary<int, int>> replaceBlocks = null, int centerrockblockid = 0, Dictionary<BlockPos, Block> layerBlockForBlockEntities = null)
+        /// <param name="layerBlockForBlockEntities"></param>
+        /// <param name="resolveImports">Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</param>
+        public void PlaceEntitiesAndBlockEntities(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, Dictionary<int, AssetLocation> blockCodes, Dictionary<int, AssetLocation> itemCodes, bool replaceBlockEntities = false, Dictionary<int, Dictionary<int, int>> replaceBlocks = null, int centerrockblockid = 0, Dictionary<BlockPos, Block> layerBlockForBlockEntities = null, bool resolveImports = true)
         {
             BlockPos curPos = startPos.Copy();
 
@@ -959,10 +1025,10 @@ namespace Vintagestory.API.Common
                     tree.SetInt("posz", curPos.Z);
 
                     be.FromTreeAttributes(tree, worldForCollectibleResolve);
-                    be.OnLoadCollectibleMappings(worldForCollectibleResolve, blockCodes, itemCodes, schematicSeed);
+                    be.OnLoadCollectibleMappings(worldForCollectibleResolve, blockCodes, itemCodes, schematicSeed, resolveImports);
                     Block layerBlock = null;
                     layerBlockForBlockEntities?.TryGetValue(curPos, out layerBlock);
-                    be.OnPlacementBySchematic(worldForCollectibleResolve.Api as ICoreServerAPI, blockAccessor, curPos, replaceBlocks, centerrockblockid, layerBlock);
+                    be.OnPlacementBySchematic(worldForCollectibleResolve.Api as ICoreServerAPI, blockAccessor, curPos, replaceBlocks, centerrockblockid, layerBlock, resolveImports);
                     if (!(blockAccessor is IWorldGenBlockAccessor)) be.MarkDirty();
                 }
             }
@@ -976,21 +1042,29 @@ namespace Vintagestory.API.Common
                     string className = reader.ReadString();
                     Entity entity = worldForCollectibleResolve.ClassRegistry.CreateEntity(className);
 
-                    entity.FromBytes(reader, false);
+                    entity.FromBytes(reader, false, ((IServerWorldAccessor)worldForCollectibleResolve).RemappedEntities);
                     entity.DidImportOrExport(startPos);
 
-                    // Not ideal but whatever
-                    if (blockAccessor is IWorldGenBlockAccessor)
+                    if (worldForCollectibleResolve.GetEntityType(entity.Code) != null) // Can be null if its a no longer existent mob type
                     {
-                        (blockAccessor as IWorldGenBlockAccessor).AddEntity(entity);
-                        entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
-                    } else
-                    {
-                        if (entity.Properties != null) // Can be null if its a no longer existant mob type
+                        // Not ideal but whatever
+                        if (blockAccessor is IWorldGenBlockAccessor accessor)
+                        {
+                            accessor.AddEntity(entity);
+                            entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
+                        } else
                         {
                             worldForCollectibleResolve.SpawnEntity(entity);
-                            entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed);
+                            if (blockAccessor is IBlockAccessorRevertable re)
+                            {
+                                re.StoreEntitySpawnToHistory(entity);
+                            }
+                            entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
                         }
+                    }
+                    else
+                    {
+                        worldForCollectibleResolve.Logger.Error("Couldn't import entity {0} with id {1} and code {2} - it's Type is null! Maybe from an older game version or a missing mod.", entity.GetType(), entity.EntityId, entity.Code);
                     }
                 }
             }
@@ -1217,9 +1291,6 @@ namespace Vintagestory.API.Common
 
         protected virtual int PlaceReplaceAll(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
-            // In BlockAccessorWorldGen, SetBlock run on liquids does not clear solid blocks, we have to clear them manually
-            if (newBlock.ForFluidsLayer) blockAccessor.SetBlock(0, pos, BlockLayersAccess.Solid);
-
             blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
             return 1;
         }
@@ -1238,9 +1309,6 @@ namespace Vintagestory.API.Common
         {
             if (newBlock.BlockId != 0)
             {
-                // In BlockAccessorWorldGen, SetBlock run on liquids does not clear solid blocks, we have to clear them manually
-                if (newBlock.ForFluidsLayer) blockAccessor.SetBlock(0, pos, BlockLayersAccess.Solid);
-
                 blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }

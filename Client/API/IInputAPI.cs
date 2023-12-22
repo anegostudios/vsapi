@@ -8,6 +8,13 @@ namespace Vintagestory.API.Client
         public bool Left;
         public bool Middle;
         public bool Right;
+
+        public void Clear()
+        {
+            Left = false;
+            Middle = false;
+            Right = false;
+        }
     }
 
     public delegate void OnHotKeyDelegate(string hotkeycode, KeyCombination keyComb);

@@ -17,6 +17,7 @@ namespace Vintagestory.API.Server
         /// <param name="chunkX"></param>
         /// <param name="chunkY"></param>
         /// <param name="chunkZ"></param>
+        /// <param name="notRecentlyAccessed"></param>
         /// <returns></returns>
         IWorldChunk GetUnpackedChunkFast(int chunkX, int chunkY, int chunkZ, bool notRecentlyAccessed = false);
 

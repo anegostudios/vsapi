@@ -212,10 +212,10 @@ namespace Vintagestory.API.MathTools
                 double valueTempMax = inverseCurvedThresholder;
                 for (int j = 0; j < orderedOctaveEntries.Length; j++)
                 {
-                    ref readonly OctaveEntry octaveEntry = ref orderedOctaveEntries[j];
-
                     // Exit if we couldn't possibly trigger an early return within this loop.
                     if (!(valueTempMax <= 0) && !(valueTempMin >= 0)) break;
+
+                    ref readonly OctaveEntry octaveEntry = ref orderedOctaveEntries[j];
 
                     // Stop if no further noise calculation is necessary to know the sign of the result.
                     if (valueTempMin >= octaveEntry.StopBound) return valueTempMin;

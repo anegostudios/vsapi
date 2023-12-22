@@ -94,6 +94,17 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+
+        public void Set(Cuboidd other)
+        {
+            this.X1 = other.X1;
+            this.Y1 = other.Y1;
+            this.Z1 = other.Z1;
+            this.X2 = other.X2;
+            this.Y2 = other.Y2;
+            this.Z2 = other.Z2;
+        }
+
         /// <summary>
         /// Sets the cuboid to the selectionBox, translated by vec
         /// </summary>
@@ -556,6 +567,21 @@ namespace Vintagestory.API.MathTools
             return false;
         }
 
+        public bool Intersects(Cuboidf other, double offsetx, double offsety, double offsetz)
+        {
+            // For performance, this is a conditional statement with && conjunction: the conditional will fail early if any is false
+            // We test the X pair first, then the Z pair, then the Y pair, as it's quite easy for any given pair to test false
+            if (X2 > other.X1 + offsetx &&
+                X1 < other.X2 + offsetx &&
+                Z2 > other.Z1 + offsetz &&
+                Z1 < other.Z2 + offsetz &&
+                Y2 > other.Y1 + offsety &&
+                Y1 < Math.Round(other.Y2 + offsety, 5) // Fix float/double rounding errors. Only need to fix the vertical because gravity. Thankfully we don't have horizontal gravity.
+            ) return true;
+
+            return false;
+        }
+
 
         /// <summary>
         /// If the given cuboid intersects with this cuboid
@@ -630,6 +656,5 @@ namespace Vintagestory.API.MathTools
         {
             return other.X1 == X1 && other.Y1 == Y1 && other.Z1 == Z1 && other.X2 == X2 && other.Y2 == Y2 && other.Z2 == Z2;
         }
-
     }
 }

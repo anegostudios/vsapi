@@ -14,6 +14,10 @@ namespace Vintagestory.API.Common
     public enum EnumEntityAction
     {
         /// <summary>
+        /// No action - used when setting preCondition
+        /// </summary>
+        None = -1,
+        /// <summary>
         /// Walk forwards
         /// </summary>
         Forward = 0,

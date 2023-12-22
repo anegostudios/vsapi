@@ -3,7 +3,6 @@ using System.Runtime.CompilerServices;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Vintagestory.API.Client
 {
@@ -1620,7 +1619,7 @@ namespace Vintagestory.API.Client
 
                 if (RenderPassesAndExtraBits != null)
                 {
-                    dest.RenderPassesAndExtraBits = RenderPasses.FastCopy(RenderPassCount);
+                    dest.RenderPassesAndExtraBits = RenderPassesAndExtraBits.FastCopy(RenderPassCount);
                     dest.RenderPassCount = RenderPassCount;
                 }
 
