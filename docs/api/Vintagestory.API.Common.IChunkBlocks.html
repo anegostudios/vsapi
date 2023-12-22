@@ -196,6 +196,89 @@
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_ContainsBlock_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.ContainsBlock(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L65">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_ContainsBlock_" data-uid="Vintagestory.API.Common.IChunkBlocks.ContainsBlock*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_ContainsBlock_System_Int32_" data-uid="Vintagestory.API.Common.IChunkBlocks.ContainsBlock(System.Int32)">ContainsBlock(Int32)</h4>
+  <div class="markdown level1 summary"><p>Does this chunk contain any examples of the specified block?
+<br>(If the result is false, this is a very fast lookup because it quickly scans the blocks palette, not every block individually.)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool ContainsBlock(int blockId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">blockId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_FuzzyListBlockIds_List_System_Int32__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.FuzzyListBlockIds(List%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L70">View Source</a>
+  </span>
+  <a id="Vintagestory_API_Common_IChunkBlocks_FuzzyListBlockIds_" data-uid="Vintagestory.API.Common.IChunkBlocks.FuzzyListBlockIds*"></a>
+  <h4 id="Vintagestory_API_Common_IChunkBlocks_FuzzyListBlockIds_List_System_Int32__" data-uid="Vintagestory.API.Common.IChunkBlocks.FuzzyListBlockIds(List{System.Int32})">FuzzyListBlockIds(List&lt;Int32&gt;)</h4>
+  <div class="markdown level1 summary"><p>Populates the list with all block IDs which are present in this chunk.  The list may contain false positives (i.e. blocks which used to be here but were removed) so that&apos;s why it&apos;s called a &quot;Fuzzy&quot; list.
+There will be no false negatives, therefore useful as a first-pass filter when scanning chunks for various types of block e.g. ITickable</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void FuzzyListBlockIds(List&lt;int&gt; reusableList)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">reusableList</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_GetBlockId_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.GetBlockId(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -346,7 +429,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_ReleaseBulkReadLock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.ReleaseBulkReadLock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L57">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L59">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChunkBlocks_ReleaseBulkReadLock_" data-uid="Vintagestory.API.Common.IChunkBlocks.ReleaseBulkReadLock*"></a>
   <h4 id="Vintagestory_API_Common_IChunkBlocks_ReleaseBulkReadLock" data-uid="Vintagestory.API.Common.IChunkBlocks.ReleaseBulkReadLock">ReleaseBulkReadLock()</h4>
@@ -518,7 +601,7 @@
     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChunkBlocks_TakeBulkReadLock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChunkBlocks.TakeBulkReadLock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L53">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/IWorldChunk.cs/#L54">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IChunkBlocks_TakeBulkReadLock_" data-uid="Vintagestory.API.Common.IChunkBlocks.TakeBulkReadLock*"></a>
   <h4 id="Vintagestory_API_Common_IChunkBlocks_TakeBulkReadLock" data-uid="Vintagestory.API.Common.IChunkBlocks.TakeBulkReadLock">TakeBulkReadLock()</h4>

@@ -206,8 +206,6 @@ Process</p>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.BlockUpdate.html">BlockUpdate</a></h4>
       <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockUpdateStruct.html">BlockUpdateStruct</a></h4>
-      <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.BoolArgParser.html">BoolArgParser</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></h4>
@@ -280,6 +278,8 @@ this produces always correctly blended animations but is significantly more cost
       <h4><a class="xref" href="Vintagestory.API.Common.DummyInventory.html">DummyInventory</a></h4>
       <section><p>A place holder inventory, useful, e.g., for when you want to render an itemstack and not have it spoil</p>
 </section>
+      <h4><a class="xref" href="Vintagestory.API.Common.DummyLoggerException.html">DummyLoggerException</a></h4>
+      <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.DummySlot.html">DummySlot</a></h4>
       <section><p>A single slot not attached to a given inventory.</p>
 </section>
@@ -324,10 +324,13 @@ this produces always correctly blended animations but is significantly more cost
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.EntityTypeArgParser.html">EntityTypeArgParser</a></h4>
       <section></section>
+      <h4><a class="xref" href="Vintagestory.API.Common.EntityUpdate.html">EntityUpdate</a></h4>
+      <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.EnumAppSideExtensions.html">EnumAppSideExtensions</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.EnumWindBitModeMask.html">EnumWindBitModeMask</a></h4>
-      <section></section>
+      <section><p>Windmode flags, which can be ORed with existing vertex data to add the specified wind mode (assuming it was 0 previously!)</p>
+</section>
       <h4><a class="xref" href="Vintagestory.API.Common.ExplosionParticles.html">ExplosionParticles</a></h4>
       <section><p>A subclass of ExplosionSmokeParticles.</p>
 </section>
@@ -573,7 +576,7 @@ Bit 11: Reflective bit<br>
 Bit 12: Lod 0 Bit<br>
 Bit 13-24: X/Y/Z Normals<br>
 Bit 25, 26, 27, 28: Wind mode<br>
-Bit 29, 30, 31: Wind data<br></p>
+Bit 29, 30, 31: Wind data  (also sometimes used for other data, e.g. reflection mode if Reflective bit is set, or additional water surface data if this is a water block)<br></p>
 </section>
       <h4><a class="xref" href="Vintagestory.API.Common.VtmlParser.html">VtmlParser</a></h4>
       <section></section>
@@ -609,8 +612,6 @@ Bit 29, 30, 31: Wind data<br></p>
       <section></section>
     <h3 id="structs">Structs
   </h3>
-      <h4><a class="xref" href="Vintagestory.API.Common.DecorUpdateKey.html">DecorUpdateKey</a></h4>
-      <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.SolarSphericalCoords.html">SolarSphericalCoords</a></h4>
       <section></section>
       <h4><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></h4>

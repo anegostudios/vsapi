@@ -87,19 +87,19 @@ the block entity existing in the world (yet). The modified tree will then be use
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IRotatable_OnTransformed_Vintagestory_API_Datastructures_ITreeAttribute_System_Int32_System_Nullable_Vintagestory_API_MathTools_EnumAxis__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IRotatable.OnTransformed(Vintagestory.API.Datastructures.ITreeAttribute%2CSystem.Int32%2CSystem.Nullable%7BVintagestory.API.MathTools.EnumAxis%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IRotatable_OnTransformed_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_ITreeAttribute_System_Int32_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Nullable_Vintagestory_API_MathTools_EnumAxis__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IRotatable.OnTransformed(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Datastructures.ITreeAttribute%2CSystem.Int32%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CSystem.Nullable%7BVintagestory.API.MathTools.EnumAxis%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/IRotatable.cs/#L18">View Source</a>
+    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/IRotatable.cs/#L22">View Source</a>
   </span>
   <a id="Vintagestory_API_Common_IRotatable_OnTransformed_" data-uid="Vintagestory.API.Common.IRotatable.OnTransformed*"></a>
-  <h4 id="Vintagestory_API_Common_IRotatable_OnTransformed_Vintagestory_API_Datastructures_ITreeAttribute_System_Int32_System_Nullable_Vintagestory_API_MathTools_EnumAxis__" data-uid="Vintagestory.API.Common.IRotatable.OnTransformed(Vintagestory.API.Datastructures.ITreeAttribute,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis})">OnTransformed(ITreeAttribute, Int32, Nullable&lt;EnumAxis&gt;)</h4>
+  <h4 id="Vintagestory_API_Common_IRotatable_OnTransformed_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_ITreeAttribute_System_Int32_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Nullable_Vintagestory_API_MathTools_EnumAxis__" data-uid="Vintagestory.API.Common.IRotatable.OnTransformed(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.ITreeAttribute,System.Int32,Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Nullable{Vintagestory.API.MathTools.EnumAxis})">OnTransformed(IWorldAccessor, ITreeAttribute, Int32, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;, Nullable&lt;EnumAxis&gt;)</h4>
   <div class="markdown level1 summary"><p>If flipAxis is null it means it was not flipped, only horizontally rotated. Apply flip first, and then rotation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnTransformed(ITreeAttribute tree, int degreeRotation, EnumAxis? flipAxis)</code></pre>
+    <pre><code class="lang-csharp hljs">void OnTransformed(IWorldAccessor worldAccessor, ITreeAttribute tree, int degreeRotation, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, EnumAxis? flipAxis)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -112,6 +112,11 @@ the block entity existing in the world (yet). The modified tree will then be use
     </thead>
     <tbody>
       <tr>
+        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
+        <td><span class="parametername">worldAccessor</span></td>
+        <td></td>
+      </tr>
+      <tr>
         <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
         <td><span class="parametername">tree</span></td>
         <td></td>
@@ -119,6 +124,17 @@ the block entity existing in the world (yet). The modified tree will then be use
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">degreeRotation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
+        <td><span class="parametername">oldBlockIdMapping</span></td>
+        <td><p>Used for rotation of schematics, so microblocks can update their materials</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
+        <td><span class="parametername">oldItemIdMapping</span></td>
         <td></td>
       </tr>
       <tr>
@@ -139,7 +155,7 @@ the block entity existing in the world (yet). The modified tree will then be use
                     <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IRotatable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IRotatable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/IRotatable.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/IRotatable.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
