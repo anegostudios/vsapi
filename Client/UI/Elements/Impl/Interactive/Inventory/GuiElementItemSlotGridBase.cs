@@ -255,7 +255,7 @@ namespace Vintagestory.API.Client
             double[] bgcolor;
             double[] fontcolor;
 
-            if(slot.HexBackgroundColor == null)
+            if(slot.HexBackgroundColor != null)
             {
                 bgcolor = ColorUtil.Hex2Doubles(slot.HexBackgroundColor);
                 fontcolor = new double[4] {bgcolor[0] * 0.25, bgcolor[1] * 0.25, bgcolor[2] * 0.25, 1};
