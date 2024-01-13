@@ -246,9 +246,8 @@ namespace Vintagestory.API.Client
         }
 
 
-        int DrawSlotBackgrounds(ItemSlot slot, double absSlotPadding, double absSlotWidth, double absSlotHeight) {
-            string key = slot.BackgroundIcon + "-" + slot.HexBackgroundColor;
-
+        int DrawSlotBackgrounds(ItemSlot slot, double absSlotPadding, double absSlotWidth, double absSlotHeight)
+        {
             ImageSurface slotSurface = new ImageSurface(Format.Argb32, (int)absSlotWidth, (int)absSlotWidth);
             Context slotCtx = genContext(slotSurface);
 
@@ -259,7 +258,8 @@ namespace Vintagestory.API.Client
             {
                 bgcolor = ColorUtil.Hex2Doubles(slot.HexBackgroundColor);
                 fontcolor = new double[4] {bgcolor[0] * 0.25, bgcolor[1] * 0.25, bgcolor[2] * 0.25, 1};
-            } else
+            }
+            else
             {
                 bgcolor = GuiStyle.DialogSlotBackColor;
                 fontcolor = GuiStyle.DialogSlotFrontColor;
