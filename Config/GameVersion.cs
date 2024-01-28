@@ -31,17 +31,17 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.19.0";
+        public const string OverallVersion = "1.19.3";
 
         /// <summary>
         /// Whether this is a stable or unstable version
         /// </summary>
-        public const EnumGameBranch Branch = EnumGameBranch.Unstable;
+        public const EnumGameBranch Branch = EnumGameBranch.Stable;
 
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-pre.10";
+        public const string ShortGameVersion = OverallVersion + "";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
@@ -66,7 +66,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.19.2";
+        public const string NetworkVersion = "1.19.5";
 
         /// <summary>
         /// Version of the world generator - a change in version will insert a smoothed chunk between old and new version
@@ -98,6 +98,15 @@ namespace Vintagestory.API.Config
         static string[] separators = new string[] { ".", "-" };
         public static int[] SplitVersionString(string version)
         {
+            // Initial check to see if calling code (is a little borked) and using version string like 1.17-pre.1 instead of 1.17.0-pre.1, which would break stuff later in this method because later code assumes that "pre" is in parts[3]
+            int hyphenIndex = version.IndexOf('-');
+            string majorMinorVersion = hyphenIndex < 1 ? version : version.Substring(0, hyphenIndex);
+            if (majorMinorVersion.CountChars('.') == 1)   // example, 1.17 instead of 1.17.0 has only one '.' separator
+            {
+                majorMinorVersion += ".0";     // Add the missing ".0"
+                version = hyphenIndex < 1 ? majorMinorVersion : majorMinorVersion + version.Substring(hyphenIndex);   // Now version can be parsed consistently
+            }
+
             string[] parts = version.Split(separators, StringSplitOptions.None);
             if (parts.Length <= 3)
             {

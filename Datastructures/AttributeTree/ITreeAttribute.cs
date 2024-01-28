@@ -255,6 +255,12 @@ namespace Vintagestory.API.Datastructures
         /// <param name="tree"></param>
         void MergeTree(ITreeAttribute tree);
 
+        /// <summary>
+        /// Returns a ITreeAttribute sorted alphabetically by key. Does not modify the existing ITreeAttribute
+        /// </summary>
+        /// <param name="recursive"></param>
+        /// <returns></returns>
+        ITreeAttribute SortedCopy(bool recursive = false);
 
         bool Equals(IWorldAccessor worldForResolve, IAttribute attr, params string[] ignoreSubTrees);
         bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other);

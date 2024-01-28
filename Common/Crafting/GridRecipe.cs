@@ -646,6 +646,15 @@ namespace Vintagestory.API.Common
             }
 
             writer.Write(ShowInCreatedBy);
+
+            writer.Write(Ingredients.Count);
+            foreach (var val in Ingredients)
+            {
+                writer.Write(val.Key);
+                val.Value.ToBytes(writer);
+            }
+
+            writer.Write(IngredientPattern);
         }
 
         /// <summary>
@@ -692,6 +701,18 @@ namespace Vintagestory.API.Common
             }
 
             ShowInCreatedBy = reader.ReadBoolean();
+
+            int cnt = reader.ReadInt32();
+            Ingredients = new Dictionary<string, CraftingRecipeIngredient>();
+            for (int i = 0; i < cnt; i++)
+            {
+                var key = reader.ReadString();
+                var ing = new CraftingRecipeIngredient();
+                ing.FromBytes(reader, resolver);
+                Ingredients[key] = ing;
+            }
+
+            IngredientPattern = reader.ReadString();
         }
 
         /// <summary>

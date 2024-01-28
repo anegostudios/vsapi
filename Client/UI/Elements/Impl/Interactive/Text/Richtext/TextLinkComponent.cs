@@ -194,7 +194,7 @@ namespace Vintagestory.API.Client
         {
             if (onLinkClicked == null)
             {
-                HandleLink();
+                if (Href != null) HandleLink();
             }
             else
             {

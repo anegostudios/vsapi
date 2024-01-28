@@ -744,7 +744,7 @@ namespace Vintagestory.API.Common
         /// Get a list of all decors at this position
         /// </summary>
         /// <param name="position"></param>
-        /// <returns>Always a 6 element long list of decor blocks, any of which may be null if not set</returns>
+        /// <returns>null if this block has no decors. Otherwise a 6 element long list of decor blocks, any of which may be null if not set</returns>
         Block[] GetDecors(BlockPos position);
 
         /// <summary>

@@ -84,7 +84,7 @@ namespace Vintagestory.API.Common
             this.Class = properties.Class;
             this.InChunkIndex3d = chunkindex3d;
 
-            if (Itemstack == null || !Itemstack.ResolveBlockOrItem(World))
+            if (Itemstack == null || Itemstack.StackSize == 0 || !Itemstack.ResolveBlockOrItem(World))
             {
                 Die();
                 this.Itemstack = null;

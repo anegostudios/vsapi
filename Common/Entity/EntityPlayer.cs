@@ -80,7 +80,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         public float walkSpeed = 1f;
 
-        string[] randomIdleAnimations;
         long lastInsideSoundTimeFinishTorso;
         long lastInsideSoundTimeFinishLegs;
 
@@ -365,9 +364,6 @@ namespace Vintagestory.API.Common
                 WatchedAttributes.SetDouble("lastReviveTotalHours", hrs);
             }
 
-
-            randomIdleAnimations = properties.Attributes["randomIdleAnimations"].AsArray<string>(null);
-
             if (IsSelf)
             {
                 OtherAnimManager.Init(api, this);
@@ -382,7 +378,6 @@ namespace Vintagestory.API.Common
         public bool PrevFrameCanStandUp;
         public ClimateCondition selfClimateCond;
         float climateCondAccum;
-        float secondsIdleAccum;
 
         public override double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
@@ -681,17 +676,6 @@ namespace Vintagestory.API.Common
             {
                 base.OnGameTick(dt);
             }
-
-            if (!servercontrols.TriesToMove && !controls.IsFlying && !controls.Gliding && RightHandItemSlot?.Empty == true && !Swimming)
-            {
-                secondsIdleAccum += dt;
-                if (secondsIdleAccum > 20 && World.Rand.NextDouble() < 0.004)
-                {
-                    StartAnimation(randomIdleAnimations[World.Rand.Next(randomIdleAnimations.Length)]);
-                    secondsIdleAccum = 0;
-                }
-            }
-            else secondsIdleAccum = 0;
         }
 
         public override void OnAsyncParticleTick(float dt, IAsyncParticleManager manager)
@@ -775,6 +759,7 @@ namespace Vintagestory.API.Common
 
 
         float strongWindAccum = 0;
+        bool haveHandUseOrHit;
 
         protected override void HandleHandAnimations(float dt)
         {
@@ -801,12 +786,22 @@ namespace Vintagestory.API.Common
             string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
             string nowHeldRightIdleAnim = rightstack?.Collectible.GetHeldTpIdleAnimation(RightHandItemSlot, this, EnumHand.Right);
             string nowHeldLeftIdleAnim = LeftHandItemSlot?.Itemstack?.Collectible.GetHeldTpIdleAnimation(LeftHandItemSlot, this, EnumHand.Left);
+            string nowHeldRightReadyAnim = rightstack?.Collectible.GetHeldReadyAnimation(RightHandItemSlot, this, EnumHand.Right);
 
-            bool nowRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack;
-            bool wasRightIdleStack = plrAnimMngr.IsRightHeldActive();
 
-            bool nowLeftIdleStack = nowHeldLeftIdleAnim != null;
-            bool wasLeftIdleStack = plrAnimMngr.IsLeftHeldActive();
+            bool shouldRightReadyStack = 
+                haveHandUseOrHit 
+                && !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown 
+                && Controls.HandUse == EnumHandInteract.None 
+                && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldUseAnimation)
+            ;
+            bool isRightReadyStack = plrAnimMngr.IsRightHeldReadyActive();
+
+            bool shouldRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack && !shouldRightReadyStack && !isRightReadyStack && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldUseAnimation);
+            bool isRightIdleStack = plrAnimMngr.IsRightHeldActive();
+
+            bool shouldLeftIdleStack = nowHeldLeftIdleAnim != null;
+            bool isLeftIdleStack = plrAnimMngr.IsLeftHeldActive();
 
             if (rightstack == null)
             {
@@ -821,6 +816,14 @@ namespace Vintagestory.API.Common
                 }
             }
 
+
+            if (shouldRightReadyStack && !isRightReadyStack)
+            {
+                plrAnimMngr.StopRightHeldIdleAnim();
+                plrAnimMngr.StartHeldReadyAnim(nowHeldRightReadyAnim);
+                haveHandUseOrHit = false;
+            }
+
             if (nowUseStack != wasUseStack || plrAnimMngr.HeldUseAnimChanged(nowHeldRightUseAnim))
             {
                 plrAnimMngr.StopHeldUseAnim();
@@ -828,6 +831,8 @@ namespace Vintagestory.API.Common
                 if (nowUseStack)
                 {
                     plrAnimMngr.StartHeldUseAnim(nowHeldRightUseAnim);
+                    haveHandUseOrHit = true;
+
                 }
             }
 
@@ -839,24 +844,25 @@ namespace Vintagestory.API.Common
                 if (!authorative && nowHitStack)
                 {
                     plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
+                    haveHandUseOrHit = true;
                 }
             }
 
-            if (nowRightIdleStack != wasRightIdleStack || plrAnimMngr.RightHeldIdleChanged(nowHeldRightIdleAnim))
+            if (shouldRightIdleStack != isRightIdleStack || plrAnimMngr.RightHeldIdleChanged(nowHeldRightIdleAnim))
             {
                 plrAnimMngr.StopRightHeldIdleAnim();
 
-                if (nowRightIdleStack)
+                if (shouldRightIdleStack)
                 {
                     plrAnimMngr.StartRightHeldIdleAnim(nowHeldRightIdleAnim);
                 }
             }
 
-            if (nowLeftIdleStack != wasLeftIdleStack || plrAnimMngr.LeftHeldIdleChanged(nowHeldLeftIdleAnim))
+            if (shouldLeftIdleStack != isLeftIdleStack || plrAnimMngr.LeftHeldIdleChanged(nowHeldLeftIdleAnim))
             {
                 plrAnimMngr.StopLeftHeldIdleAnim();
 
-                if (nowLeftIdleStack)
+                if (shouldLeftIdleStack)
                 {
                     plrAnimMngr.StartLeftHeldIdleAnim(nowHeldLeftIdleAnim);
                 }
@@ -1328,7 +1334,7 @@ namespace Vintagestory.API.Common
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
 
-            foreach (InventoryBase inv in player.InventoryManager.Inventories.Values)
+            foreach (InventoryBase inv in player.InventoryManager.InventoriesOrdered)
             {
                 if (inv.ClassName == "creative") continue;
                 if (!inv.HasOpened(player)) continue;

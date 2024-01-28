@@ -21,7 +21,7 @@ namespace Vintagestory.API.Server
         /// Tells the server to relight this position once RunScheduledBlockLightUpdates() is called
         /// </summary>
         /// <param name="pos"></param>
-        /// <param name="oldBlockid"></param>
+        /// <param name="oldBlockid">currently unused but might be used in the future to make sure old light is removed properly</param>
         /// <param name="newBlockId"></param>
         void ScheduleBlockLightUpdate(BlockPos pos, int oldBlockid, int newBlockId);
 

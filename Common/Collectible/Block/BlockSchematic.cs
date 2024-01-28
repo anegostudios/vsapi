@@ -99,7 +99,7 @@ namespace Vintagestory.API.Common
         public BlockPos[][] PathwayOffsets;
 
         public BlockPos[] UndergroundCheckPositions;
-        
+
         /// <summary>
         /// Set by the RemapperAssistant in OnFinalizeAssets
         /// </summary>
@@ -109,6 +109,11 @@ namespace Vintagestory.API.Common
         /// Set by the RemapperAssistant in OnFinalizeAssets
         /// </summary>
         public static Dictionary<string, Dictionary<string, string>> ItemRemaps { get; set; }
+        
+        public BlockSchematic()
+        {
+            GameVersion = Config.GameVersion.OverallVersion;
+        }
 
         public virtual void Init(IBlockAccessor blockAccessor)
         {
@@ -538,7 +543,6 @@ namespace Vintagestory.API.Common
         /// <param name="startPos"></param>
         /// <param name="mode"></param>
         /// <param name="replaceMetaBlocks"></param>
-        /// <param name="resolveImports">Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</param>
         /// <returns></returns>
         public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumReplaceMode mode, bool replaceMetaBlocks = true)
         {
@@ -1201,8 +1205,6 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string Save(string outfilepath)
         {
-            this.GameVersion = API.Config.GameVersion.ShortGameVersion;
-
             if (!outfilepath.EndsWith(".json"))
             {
                 outfilepath += ".json";
@@ -1227,7 +1229,6 @@ namespace Vintagestory.API.Common
 
         public virtual string ToJson()
         {
-            this.GameVersion = API.Config.GameVersion.ShortGameVersion;
             return JsonConvert.SerializeObject(this, Formatting.None);
         }
 

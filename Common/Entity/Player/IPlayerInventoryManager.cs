@@ -26,9 +26,15 @@ namespace Vintagestory.API.Common
         ItemSlot ActiveHotbarSlot { get; }
 
         /// <summary>
-        /// List of inventories currently available to the player (may however not be opened)
+        /// Dictionary of all inventories currently available to the player (some may however not be opened)
+        /// <br/>Note: for iterating through these, Inventories.Values will not be ordered.  Instead use InventoriesOrdered if you want consistent ordering on server and client e.g. for shift-click operations
         /// </summary>
         Dictionary<string, IInventory> Inventories { get; }
+
+        /// <summary>
+        /// An iterable collection of all inventories currently available to the player, arranged in the same order (by creation order) on both server and client to prevent syncing / ghosting issues
+        /// </summary>
+        IEnumerable<InventoryBase> InventoriesOrdered { get; }
 
         /// <summary>
         /// List of inventories currently opened by the player

@@ -7,6 +7,8 @@
     {
         public override EnumItemStorageFlags StorageType { get { return EnumItemStorageFlags.Backpack; } }
 
+        public override int MaxSlotStackSize => 1;
+
         public ItemSlotBackpack(InventoryBase inventory) : base(inventory)
         {
             this.BackgroundIcon = "basket";

@@ -104,6 +104,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns a square outline of given radius (only for odd lengths)
         /// </summary>
+        /// <param name="halflength"></param>
         /// <returns></returns>
         public static Vec2i[] GetHollowSquarePoints(int halflength)
         {

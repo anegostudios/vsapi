@@ -174,6 +174,11 @@ namespace Vintagestory.API.Server
         event Action SaveGameCreated;
 
         /// <summary>
+        /// Triggered when starting up worldgen during server startup (as the final stage of the WorldReady EnumServerRunPhase)
+        /// </summary>
+        event Action WorldgenStartup;
+
+        /// <summary>
         /// Triggered before the game world data is being saved to disk 
         /// </summary>
         event Action GameWorldSave;

@@ -169,6 +169,7 @@ namespace Vintagestory.API.Client
         Dictionary<int, IMiniDimension> Dimensions { get; }
         IMiniDimension GetOrCreateDimension(int dimId, Vec3d pos);
         bool TryGetMiniDimension(Vec3i origin, out IMiniDimension dimension);
+        void SetBlocksPreviewDimension(int dimId);
 
         /// <summary>
         /// Exactly like PlaySoundAt except that it returns the duration of the played sound.  (We don't want to change the method signature of PlaySoundAt for API mod breakage reasons)

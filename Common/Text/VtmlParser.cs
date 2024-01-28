@@ -91,7 +91,10 @@ namespace Vintagestory.API.Common
 
                     case "a":
                         LinkTextComponent cmp = new LinkTextComponent(capi, tagToken.ContentText, fontStack.Peek(), didClickLink);
-                        tagToken.Attributes.TryGetValue("href", out cmp.Href);
+                        if (!tagToken.Attributes.TryGetValue("href", out cmp.Href))
+                        {
+                            capi.Logger.Warning("Language file includes an <a /> link missing href");
+                        }
 
                         elems.Add(cmp);
                         break;

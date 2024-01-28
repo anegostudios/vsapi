@@ -58,7 +58,7 @@ namespace Vintagestory.API.Server
         LoadGame = 6,
 
         /// <summary>
-        /// Spawn chunks now loaded.
+        /// Notifies mods that the world is ready, after all other loading steps. Following this, worldgen will start and spawn chunks loaded (no separate RunPhase in 1.19)
         /// </summary>
         WorldReady = 7,
 
