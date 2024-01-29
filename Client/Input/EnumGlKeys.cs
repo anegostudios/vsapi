@@ -43,13 +43,23 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static string GetKeyName(GlKeys key)
         {
-            var keycode = KeyConverter.GlKeysToNew[(int)key];
-            var keyName = GLFW.GetKeyName((Keys)keycode, 0);
+            var keyName = GetPrintableChar((int)key);
             if (string.IsNullOrWhiteSpace(keyName))
             {
                 return key.ToString();
             }
             return keyName.ToUpperInvariant();
+        }
+        
+        /// <summary>
+        /// Returns the printable character for a key. Does return null on none printable keys like <see cref="GlKeys.Enter"/>
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetPrintableChar(int key)
+        {
+            var keycode = KeyConverter.GlKeysToNew[key];
+            return GLFW.GetKeyName((Keys)keycode, 0);
         }
     }
 

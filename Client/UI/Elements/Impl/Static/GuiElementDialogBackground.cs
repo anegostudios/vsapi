@@ -32,22 +32,15 @@ namespace Vintagestory.API.Client
         {
             Bounds.CalcWorldBounds();
             double titleBarOffY = withTitlebar ? scaled(GuiStyle.TitleBarHeight) : 0;
-
-            
             
             RoundRectangle(ctx, Bounds.bgDrawX, Bounds.bgDrawY + titleBarOffY, Bounds.OuterWidth, Bounds.OuterHeight - titleBarOffY - 1, GuiStyle.DialogBGRadius);
 
             ctx.SetSourceRGBA(GuiStyle.DialogStrongBgColor[0] * 1, GuiStyle.DialogStrongBgColor[1] * 1, GuiStyle.DialogStrongBgColor[2] * 1, GuiStyle.DialogStrongBgColor[3] * 1);
-
-            //ctx.SetSourceRGBA(1,1,1,1);
-
             ctx.FillPreserve();
             
             if (Shade)
             {
                 ctx.SetSourceRGBA(GuiStyle.DialogLightBgColor[0] * 2.1, GuiStyle.DialogStrongBgColor[1] * 2.1, GuiStyle.DialogStrongBgColor[2] * 2.1, 1);
-
-                //ctx.SetSourceRGBA(0, 0, 0, 0.75);
 
                 ctx.LineWidth = strokeWidth * 2;
                 ctx.StrokePreserve();
@@ -63,11 +56,8 @@ namespace Vintagestory.API.Client
             }
 
             SurfacePattern pattern = getPattern(api, dirtTextureName, true, 64, 0.125f);
-            //ctx.Operator = Operator.Multiply;
             ctx.SetSource(pattern);
             ctx.FillPreserve();
-
-
             ctx.Operator = Operator.Over;
 
             if (Shade)
@@ -81,8 +71,6 @@ namespace Vintagestory.API.Client
                 ctx.LineWidth = scaled(2);
                 ctx.Stroke();
             }
-
-
         }
     }
 

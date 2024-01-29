@@ -29,6 +29,8 @@ namespace Vintagestory.API.Common
 
         public ShapeElementWeights[] ElementWeights;
 
+        public float AnimProgress => CurrentFrame / Animation.QuantityFrames;
+
         public void LoadWeights(ShapeElement[] rootElements)
         {
             ElementWeights = new ShapeElementWeights[rootElements.Length];
@@ -78,7 +80,7 @@ namespace Vintagestory.API.Common
                 return;
             }
 
-            BlendedWeight = GameMath.Clamp(blendMode == EnumAnimationBlendMode.Add ? EasingFactor : EasingFactor / weightSum, 0, 1);
+            BlendedWeight = GameMath.Clamp(blendMode == EnumAnimationBlendMode.Add ? EasingFactor : EasingFactor / Math.Max(meta.WeightCapFactor, weightSum), 0, 1);
         }
 
         public void Progress(float dt, float walkspeed)
@@ -100,6 +102,7 @@ namespace Vintagestory.API.Common
             {
                 EasingFactor = 0;
                 CurrentFrame = Animation.QuantityFrames - 1;
+                Stop();
                 return;
             }
 

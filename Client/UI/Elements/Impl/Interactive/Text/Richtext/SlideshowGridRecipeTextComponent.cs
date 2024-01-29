@@ -93,6 +93,15 @@ namespace Vintagestory.API.Client
                             allResolved = false;
                             thisResolved = false;
                             ItemStack[] stacks = ResolveWildCard(capi.World, ingred, allStacks);
+                            if (stacks.Length == 0)
+                            {
+                                resolveCache.Remove(ingred.Code);
+                                stacks = ResolveWildCard(capi.World, ingred, null);
+                                if (stacks.Length == 0)
+                                {
+                                    throw new ArgumentException("Attempted to resolve the recipe ingredient wildcard " + ingred.Type + " " + ingred.Code + " but there are no such items/blocks!");
+                                }
+                            }
 
                             if (ingred.Name == null)
                             {
@@ -100,11 +109,6 @@ namespace Vintagestory.API.Client
                                 unnamedIngredients[j] = ((ItemStack[])stacks.Clone()).Shuffle(fixedRand);
                                 thisResolved = true;
                                 continue;
-                            }
-
-                            if (stacks.Length == 0)
-                            {
-                                throw new ArgumentException("Attempted to resolve the recipe ingredient wildcard " + ingred.Type + " " + ingred.Code + " but there are no such items/blocks!");
                             }
 
                             for (int k = 0; k < stacks.Length; k++)
@@ -204,8 +208,8 @@ namespace Vintagestory.API.Client
             {
                 foreach (var val in allStacks)
                 {
-                    if (val.Collectible.Code == null) continue;
                     if (val.Class != ingred.Type) continue;
+                    if (val.Collectible.Code == null) continue;
                     if (WildcardUtil.Match(ingred.Code, val.Collectible.Code, ingred.AllowedVariants)) matches.Add(new ItemStack(val.Collectible, ingred.Quantity));
                 }
 
@@ -310,7 +314,7 @@ namespace Vintagestory.API.Client
                     api.Render.PushScissor(scissorBounds, true);
 
                     ItemStack[] unnamedWildcardStacklist = null;
-                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true)
+                    if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true && unnamedWildcardStacklist.Length > 0)
                     {
                         dummyslot.Itemstack = unnamedWildcardStacklist[secondCounter % unnamedWildcardStacklist.Length];
                         dummyslot.Itemstack.StackSize = ingred.Quantity;

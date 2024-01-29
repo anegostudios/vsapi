@@ -211,7 +211,8 @@ namespace Vintagestory.API.Common
             writer.Write(Quantity);
             if (!IsWildCard)
             {
-                ResolvedItemstack.ToBytes(writer);
+                writer.Write(ResolvedItemstack != null);
+                ResolvedItemstack?.ToBytes(writer);
             }
 
             writer.Write(IsTool);
@@ -259,7 +260,7 @@ namespace Vintagestory.API.Common
             Type = (EnumItemClass)reader.ReadInt32();
             Code = new AssetLocation(reader.ReadString());
             Quantity = reader.ReadInt32();
-            if (!IsWildCard)
+            if (!IsWildCard && reader.ReadBoolean())
             {
                 ResolvedItemstack = new ItemStack(reader, resolver);
             }

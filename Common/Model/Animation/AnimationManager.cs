@@ -361,7 +361,7 @@ namespace Vintagestory.API.Common
                 if (ActiveAnimationsByAnimCode.ContainsKey(trigger.Animation))
                 {
                     var state = Animator.GetAnimationState(trigger.Animation);
-                    if (state.CurrentFrame >= trigger.Frame)
+                    if (state != null && state.CurrentFrame >= trigger.Frame)
                     {
                         Triggers.RemoveAt(i);
                         trigger.Callback();

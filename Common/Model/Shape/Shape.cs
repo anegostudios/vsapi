@@ -108,7 +108,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="texturePrefixCode"></param>
         /// <param name="damageEffect"></param>
-        /// <param name="onTexture"></param>
         /// <returns></returns>
         public bool SubclassForStepParenting(string texturePrefixCode, float damageEffect = 0f)
         {
@@ -174,6 +173,7 @@ namespace Vintagestory.API.Common
         /// <param name="childLocationForLogging"></param>
         /// <param name="parentLocationForLogging"></param>
         /// <param name="logger"></param>
+        /// <param name="onTexture"></param>
         /// <returns></returns>
         public bool StepParentShape(Shape childShape, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture)
         {

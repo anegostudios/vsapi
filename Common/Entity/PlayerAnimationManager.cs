@@ -25,11 +25,6 @@ namespace Vintagestory.API.Common
         {
             base.OnClientFrame(dt);
 
-            if (haveHandUse && handUseStopped)
-            {
-                startHeldReadyAnimIfMouseUp();
-            }
-
             if (useFpAnimSet)
             {
                 plrEntity.TpAnimManager.OnClientFrame(dt);
@@ -119,6 +114,18 @@ namespace Vintagestory.API.Common
             return base.IsAnimationActive(anims);
         }
 
+        public bool IsAnimationActiveOrRunning(string anim)
+        {
+            if (anim == null || Animator == null) return false;
+            return IsAnimationMostlyRunning(anim) || IsAnimationMostlyRunning(anim + fpEnding) || IsAnimationActive(anim);
+        }
+
+        protected bool IsAnimationMostlyRunning(string anim)
+        {
+            var ranim = Animator.GetAnimationState(anim);
+            return ranim != null && ranim.Running; // && ranim.AnimProgress < 0.9;
+        }
+
         protected override void onReceivedServerAnimation(AnimationMetaData animmetadata)
         {
             StartAnimation(animmetadata);
@@ -130,109 +137,93 @@ namespace Vintagestory.API.Common
         }
 
 
-        string prevHeldReadyAnim;
-        protected string lastRunningHeldUseAnimation;
-        protected string lastRunningRightHeldIdleAnimation;
-        protected string lastRunningLeftHeldIdleAnimation;
-        protected string lastRunningHeldHitAnimation;
+        protected string lastActiveHeldReadyAnimation;
+        protected string lastActiveRightHeldIdleAnimation;
+        protected string lastActiveLeftHeldIdleAnimation;
 
-        bool haveHandUse;
-        bool handUseStopped;
+        protected string lastActiveHeldHitAnimation;
+        protected string lastActiveHeldUseAnimation;
+
+        public string lastRunningHeldHitAnimation;
+        public string lastRunningHeldUseAnimation;
 
         public void OnActiveSlotChanged(ItemSlot slot)
         {
             string beginholdAnim = slot.Itemstack?.Collectible?.GetHeldReadyAnimation(slot, entity, EnumHand.Right);
             if (beginholdAnim != null) StartHeldReadyAnim(beginholdAnim);
         }
-        public void OnHandUseStopped()
-        {
-            handUseStopped = true;
-            startHeldReadyAnimIfMouseUp();
-        }
-
-        private void startHeldReadyAnimIfMouseUp()
-        {
-            bool mouseDown = capi.Input.MouseButton.Left || capi.Input.MouseButton.Right;
-            if (!mouseDown)
-            {
-                var slot = capi.World.Player.InventoryManager?.ActiveHotbarSlot;
-                var animCode = slot.Itemstack?.Collectible?.GetHeldReadyAnimation(slot, entity, EnumHand.Right);
-                if (animCode != null) StartHeldReadyAnim(animCode, true);
-                handUseStopped = true;
-                haveHandUse = false;
-            }
-        }
+        
 
         public void StartHeldReadyAnim(string heldReadyAnim, bool force = false)
         {
             if (!force && (IsHeldHitActive() || IsHeldUseActive())) return;
             
-            if (prevHeldReadyAnim != null) StopAnimation(prevHeldReadyAnim);
+            if (lastActiveHeldReadyAnimation != null) StopAnimation(lastActiveHeldReadyAnimation);
 
             ResetAnimation(heldReadyAnim);
             StartAnimation(heldReadyAnim);
 
-            prevHeldReadyAnim = heldReadyAnim;
+            lastActiveHeldReadyAnimation = heldReadyAnim;
         }
         
 
         public void StartHeldUseAnim(string animCode)
         {
             StopHeldReadyAnim();
-            StopAnimation(lastRunningRightHeldIdleAnimation);
-            StopAnimation(lastRunningHeldHitAnimation);
+            StopAnimation(lastActiveRightHeldIdleAnimation);
+            StopAnimation(lastActiveHeldHitAnimation);
             StartAnimation(animCode);
+            lastActiveHeldUseAnimation = animCode;
             lastRunningHeldUseAnimation = animCode;
-
-            haveHandUse = true;
-            handUseStopped = false;
         }
 
         public void StartHeldHitAnim(string animCode)
         {
             StopHeldReadyAnim();
-            StopAnimation(lastRunningRightHeldIdleAnimation);
-            StopAnimation(lastRunningHeldUseAnimation);
+            StopAnimation(lastActiveRightHeldIdleAnimation);
+            StopAnimation(lastActiveHeldUseAnimation);
             StartAnimation(animCode);
-            lastRunningHeldHitAnimation = animCode;
-
-            haveHandUse = true;
-            handUseStopped = false;
+            lastActiveHeldHitAnimation = animCode;
+            lastRunningHeldHitAnimation= animCode;
         }
 
         public void StartRightHeldIdleAnim(string animCode)
         {
-            StopAnimation(lastRunningRightHeldIdleAnimation);
-            StopAnimation(lastRunningHeldUseAnimation);
+            StopAnimation(lastActiveRightHeldIdleAnimation);
+            StopAnimation(lastActiveHeldUseAnimation);
             StartAnimation(animCode);
-            lastRunningRightHeldIdleAnimation = animCode;
+            lastActiveRightHeldIdleAnimation = animCode;
         }
 
 
         public void StartLeftHeldIdleAnim(string animCode)
         {
-            StopAnimation(lastRunningLeftHeldIdleAnimation);
+            StopAnimation(lastActiveLeftHeldIdleAnimation);
             StartAnimation(animCode);
-            lastRunningLeftHeldIdleAnimation = animCode;
+            lastActiveLeftHeldIdleAnimation = animCode;
         }
 
 
 
         public void StopHeldReadyAnim()
         {
-            StopAnimation(prevHeldReadyAnim);
-            prevHeldReadyAnim = null;
+            if (!plrEntity.RightHandItemSlot.Empty)
+            {
+                if (plrEntity.RightHandItemSlot.Itemstack.ItemAttributes?.IsTrue("alwaysPlayHeldReady") == true) return;
+            }
+            StopAnimation(lastActiveHeldReadyAnimation);
+            lastActiveHeldReadyAnimation = null;
         }
 
         public void StopHeldUseAnim()
         {
-            StopAnimation(lastRunningHeldUseAnimation);
-            lastRunningHeldUseAnimation = null;
+            StopAnimation(lastActiveHeldUseAnimation);
+            lastActiveHeldUseAnimation = null;
         }
 
         public void StopHeldAttackAnim()
         {
-            if (lastRunningHeldHitAnimation != null && entity.Properties.Client.AnimationsByMetaCode.TryGetValue(lastRunningHeldHitAnimation, out var animData))
+            if (lastActiveHeldHitAnimation != null && entity.Properties.Client.AnimationsByMetaCode.TryGetValue(lastActiveHeldHitAnimation, out var animData))
             {
                 if (animData.Attributes?.IsTrue("authorative") == true)
                 {
@@ -240,25 +231,25 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            StopAnimation(lastRunningHeldHitAnimation);
-            lastRunningHeldHitAnimation = null;
+            StopAnimation(lastActiveHeldHitAnimation);
+            lastActiveHeldHitAnimation = null;
         }
 
         public void StopRightHeldIdleAnim()
         {
-            StopAnimation(lastRunningRightHeldIdleAnimation);
-            lastRunningRightHeldIdleAnimation = null;
+            StopAnimation(lastActiveRightHeldIdleAnimation);
+            lastActiveRightHeldIdleAnimation = null;
         }
         public void StopLeftHeldIdleAnim()
         {
-            StopAnimation(lastRunningLeftHeldIdleAnimation);
-            lastRunningLeftHeldIdleAnimation = null;
+            StopAnimation(lastActiveLeftHeldIdleAnimation);
+            lastActiveLeftHeldIdleAnimation = null;
         }
 
 
         public bool IsHeldHitAuthorative()
         {
-            return IsAuthorative(lastRunningHeldHitAnimation);
+            return IsAuthorative(lastActiveHeldHitAnimation);
         }
 
         private bool IsAuthorative(string anim)
@@ -274,42 +265,52 @@ namespace Vintagestory.API.Common
 
         public bool IsHeldUseActive()
         {
-            return lastRunningHeldUseAnimation != null && IsAnimationActive(lastRunningHeldUseAnimation);
+            return lastActiveHeldUseAnimation != null && IsAnimationActiveOrRunning(lastActiveHeldUseAnimation);
         }
 
         public bool IsHeldHitActive()
         {
-            return lastRunningHeldHitAnimation != null && IsAnimationActive(lastRunningHeldHitAnimation);
+            return lastActiveHeldHitAnimation != null && IsAnimationActiveOrRunning(lastActiveHeldHitAnimation);
         }
 
         public bool IsLeftHeldActive()
         {
-            return lastRunningLeftHeldIdleAnimation != null && IsAnimationActive(lastRunningLeftHeldIdleAnimation);
+            return lastActiveLeftHeldIdleAnimation != null && IsAnimationActiveOrRunning(lastActiveLeftHeldIdleAnimation);
         }
 
         public bool IsRightHeldActive()
         {
-            return lastRunningRightHeldIdleAnimation != null && IsAnimationActive(lastRunningRightHeldIdleAnimation);
+            return lastActiveRightHeldIdleAnimation != null && IsAnimationActiveOrRunning(lastActiveRightHeldIdleAnimation);
+        }
+
+        public bool IsRightHeldReadyActive()
+        {
+            return lastActiveHeldReadyAnimation != null && IsAnimationActiveOrRunning(lastActiveHeldReadyAnimation);
+        }
+
+        public bool HeldRightReadyAnimChanged(string nowHeldRightReadyAnim)
+        {
+            return lastActiveHeldReadyAnimation != null && nowHeldRightReadyAnim != lastActiveHeldReadyAnimation;
         }
 
         public bool HeldUseAnimChanged(string nowHeldRightUseAnim)
         {
-            return lastRunningHeldUseAnimation != null && nowHeldRightUseAnim != lastRunningHeldUseAnimation;
+            return lastActiveHeldUseAnimation != null && nowHeldRightUseAnim != lastActiveHeldUseAnimation;
         }
 
         public bool HeldHitAnimChanged(string nowHeldRightHitAnim)
         {
-            return lastRunningHeldHitAnimation != null && nowHeldRightHitAnim != lastRunningHeldHitAnimation;
+            return lastActiveHeldHitAnimation != null && nowHeldRightHitAnim != lastActiveHeldHitAnimation;
         }
 
         public bool RightHeldIdleChanged(string nowHeldRightIdleAnim)
         {
-            return lastRunningRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastRunningRightHeldIdleAnimation;
+            return lastActiveRightHeldIdleAnimation != null && nowHeldRightIdleAnim != lastActiveRightHeldIdleAnimation;
         }
 
         public bool LeftHeldIdleChanged(string nowHeldLeftIdleAnim)
         {
-            return lastRunningLeftHeldIdleAnimation != null && nowHeldLeftIdleAnim != lastRunningLeftHeldIdleAnimation;
+            return lastActiveLeftHeldIdleAnimation != null && nowHeldLeftIdleAnim != lastActiveLeftHeldIdleAnimation;
         }
 
 
@@ -317,8 +318,8 @@ namespace Vintagestory.API.Common
         {
             base.FromAttributes(tree, version);
 
-            lastRunningHeldUseAnimation = tree.GetString("lrHeldUseAnim");
-            lastRunningHeldHitAnimation = tree.GetString("lrHeldHitAnim");
+            lastActiveHeldUseAnimation = tree.GetString("lrHeldUseAnim");
+            lastActiveHeldHitAnimation = tree.GetString("lrHeldHitAnim");
             // Can we not have this line? It breaks fp hands when loading up with a world with a block in hands - the shoulds of the hands become visible when walking and looking down
             //lastRunningRightHeldIdleAnimation = tree.GetString("lrRightHeldIdleAnim");
         }
@@ -327,17 +328,17 @@ namespace Vintagestory.API.Common
         {
             base.ToAttributes(tree, forClient);
 
-            if (lastRunningHeldUseAnimation != null)
+            if (lastActiveHeldUseAnimation != null)
             {
-                tree.SetString("lrHeldUseAnim", lastRunningHeldUseAnimation);
+                tree.SetString("lrHeldUseAnim", lastActiveHeldUseAnimation);
             }
-            if (lastRunningHeldHitAnimation != null)
+            if (lastActiveHeldHitAnimation != null)
             {
-                tree.SetString("lrHeldHitAnim", lastRunningHeldHitAnimation);
+                tree.SetString("lrHeldHitAnim", lastActiveHeldHitAnimation);
             }
-            if (lastRunningRightHeldIdleAnimation != null)
+            if (lastActiveRightHeldIdleAnimation != null)
             {
-                tree.SetString("lrRightHeldIdleAnim", lastRunningRightHeldIdleAnimation);
+                tree.SetString("lrRightHeldIdleAnim", lastActiveRightHeldIdleAnimation);
             }
         }
 

@@ -6,6 +6,7 @@
         Dropped,
         ChangeSlot,
         MovedAway,
-        Death
+        Death,
+        Destroyed
     }
 }

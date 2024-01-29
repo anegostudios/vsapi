@@ -12,5 +12,7 @@
         public const int NotFullFace = 8;
         /// <summary>If true, this decor is removable using the players hands, without breaking the parent block</summary>
         public const int Removable = 16;
+        /// <summary>If true, this decor is removable using the players hands, without breaking the parent block</summary>
+        public const int HasSidedVariants = 32;
     }
 }

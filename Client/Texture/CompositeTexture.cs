@@ -72,6 +72,23 @@ namespace Vintagestory.API.Client
         [ThreadStatic]
         public static Dictionary<AssetLocation, List<IAsset>> wildcardsCache;
 
+        public AssetLocation WildCardNoFiles;
+
+        public AssetLocation AnyWildCardNoFiles
+        {
+            get
+            {
+                if (WildCardNoFiles != null) return WildCardNoFiles;
+                if (Alternates != null)
+                {
+                    var f = Alternates.Select(ct => ct.WildCardNoFiles).FirstOrDefault();
+                    if (f != null) return f;
+                }
+                
+                return null;
+            }
+        }
+
         /// <summary>
         /// Creates a new empty composite texture
         /// </summary>
@@ -179,7 +196,7 @@ namespace Vintagestory.API.Client
         public bool IsBasic()
         {
             if (Rotation != 0 || Alpha != 255) return false;
-            return Alternates == null && BlendedOverlays == null && Tiles==null;
+            return Alternates == null && BlendedOverlays == null && Tiles == null;
         }
 
         /// <summary>
@@ -240,6 +257,8 @@ namespace Vintagestory.API.Client
         {
             BakedCompositeTexture bct = new BakedCompositeTexture();
 
+            ct.WildCardNoFiles = null;
+
             if (ct.Base.EndsWithWildCard)
             {
                 if (wildcardsCache == null) wildcardsCache = new Dictionary<AssetLocation, List<IAsset>>();
@@ -248,7 +267,8 @@ namespace Vintagestory.API.Client
                     assets = wildcardsCache[ct.Base] = assetManager.GetManyInCategory("textures", ct.Base.Path.Substring(0, ct.Base.Path.Length - 1), ct.Base.Domain);
                 }
                 if (assets.Count == 0)
-                {
+                {                  
+                    ct.WildCardNoFiles = ct.Base;
                     ct.Base = new AssetLocation("unknown");
                 }
                 else

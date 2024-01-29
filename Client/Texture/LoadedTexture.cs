@@ -88,11 +88,11 @@ namespace Vintagestory.API.Client
 
             if (trace == null)
             {
-                capi?.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Set env var TEXTURE_DEBUG_DISPOSE to get allocation trace.", TextureId);
+                capi?.Logger.Debug("Texture with texture id {0} is leaking memory, missing call to Dispose. Set env var TEXTURE_DEBUG_DISPOSE to get allocation trace.", TextureId);
             }
             else
             {
-                capi?.Logger.Warning("Texture with texture id {0} is leaking memory, missing call to Dispose. Allocated at {1}.", TextureId, trace);
+                capi?.Logger.Debug("Texture with texture id {0} is leaking memory, missing call to Dispose. Allocated at {1}.", TextureId, trace);
             }
 
         }

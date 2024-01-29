@@ -1477,7 +1477,7 @@ namespace Vintagestory.API.Common.Entities
             {
                 foreach (var anim in AnimManager.Animator.RunningAnimations)
                 {
-                    if (!anim.Active) continue;
+                    if (!anim.Running) continue;
 
                     if (i++ > 0) runninganims.Append(",");
                     runninganims.Append(anim.Animation.Code);

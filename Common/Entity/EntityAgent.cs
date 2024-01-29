@@ -22,6 +22,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="stack"></param>
         /// <param name="forEntity"></param>
+        /// <param name="texturePrefixCode"></param>
         /// <returns>null for returning back to default behavior (read shape from attributes)</returns>
         Shape GetShape(ItemStack stack, EntityAgent forEntity, string texturePrefixCode);
     }

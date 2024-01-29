@@ -70,6 +70,14 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public bool MulWithWalkSpeed = false;
         /// <summary>
+        /// This property can be used in cases where a animation with high weight is played alongside another animation with low element weight. In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue
+        /// 0f = uncapped weight
+        /// 0.5f = weight cannot exceed 2
+        /// 1f = weight cannot exceed 1
+        /// </summary>
+        [JsonProperty]
+        public float WeightCapFactor = 0f;
+        /// <summary>
         /// A multiplier applied to the weight value to "ease in" the animation. Choose a high value for looping animations or it will be glitchy
         /// </summary>
         [JsonProperty]
@@ -163,7 +171,8 @@ namespace Vintagestory.API.Common
                 WasStartedFromTrigger = this.WasStartedFromTrigger,
                 HoldEyePosAfterEasein = HoldEyePosAfterEasein,
                 StartFrameOnce = StartFrameOnce,
-                SupressDefaultAnimation = SupressDefaultAnimation
+                SupressDefaultAnimation = SupressDefaultAnimation,
+                WeightCapFactor = WeightCapFactor
             };
         }
 
@@ -227,6 +236,7 @@ namespace Vintagestory.API.Common
             writer.Write(HoldEyePosAfterEasein);
             writer.Write(ClientSide);
             writer.Write(Attributes?.ToString() ?? "");
+            writer.Write(WeightCapFactor);
         }
 
         public static AnimationMetaData FromBytes(BinaryReader reader, string version)
@@ -294,6 +304,10 @@ namespace Vintagestory.API.Common
                 {
                     animdata.Attributes = new JsonObject(JToken.Parse("{}"));
                 }
+            }
+            if (GameVersion.IsAtLeastVersion(version, "1.19.0-rc.6"))
+            {
+                animdata.WeightCapFactor = reader.ReadSingle();
             }
 
 

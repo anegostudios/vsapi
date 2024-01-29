@@ -78,8 +78,11 @@ namespace Vintagestory.API.Common
         {
 
         }
-        
 
+        /// <summary>
+        /// When called on a server, all Block.OnLoaded() methods etc. have already been called, this is for any final asset set-up steps to be done after that.  See VSSurvivalMod system BlockReinforcement.cs for an example.
+        /// </summary>
+        /// <param name="api"></param>
         public virtual void AssetsFinalize(ICoreAPI api)
         {
 
@@ -99,8 +102,8 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Full start to the mod on the server side
-        /// <br/><br/>In 1.17+ do NOT use this to add or update behaviors or attributes or other fixed properties of any block, item or entity, in code (additional to what is read from JSON). Do not register recipes either.
-        /// It is already too late to do that here, it will not be seen client-side. Instead, code which needs to do that should be placed in the overriden method AssetsFinalize(). See VSSurvivalMod system BlockReinforcement.cs for an example.
+        /// <br/><br/>Note: preferably, your code which adds or updates behaviors or attributes or other fixed properties of any block, item or entity, should have been run before now.
+        /// For example, code which needs to do that could be placed in an overridden AssetsFinalize() method. See VSSurvivalMod system BlockReinforcement.cs for an example.
         /// </summary>
         /// <param name="api"></param>
         public virtual void StartServerSide(ICoreServerAPI api)

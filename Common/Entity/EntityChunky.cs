@@ -164,11 +164,19 @@ namespace Vintagestory.API.Common
             if (!Alive) return;
 
             Alive = false;
-            if (this.blocks != null && Api.Side == EnumAppSide.Server)
+            if (this.blocks != null)
             {
-                this.blocks.ClearChunks();
-                this.blocks.UnloadUnusedServerChunks();
+                if (Api.Side == EnumAppSide.Server)
+                {
+                    this.blocks.ClearChunks();
+                    this.blocks.UnloadUnusedServerChunks();
+                }
+                else
+                {
+                    ((IClientWorldAccessor)this.World).SetBlocksPreviewDimension(-1);
+                }
             }
+
 
             DespawnReason = new EntityDespawnData()
             {

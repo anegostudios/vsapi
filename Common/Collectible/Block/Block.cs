@@ -482,7 +482,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Called for example when deciding to render water edges at a position, or not
+        /// Does the side APPEAR fully solid?  Called for example when deciding to render water edges at a position, or not
         /// </summary>
         public virtual bool SideIsSolid(BlockPos pos, int faceIndex)
         {
@@ -2267,6 +2267,15 @@ namespace Vintagestory.API.Common
         {
             (Textures as TextureDictionary).BakeAndCollect(api.Assets, textureDict, Code, "Baked variant of block ");
             (TexturesInventory as TextureDictionary).BakeAndCollect(api.Assets, textureDict, Code, "Baked inventory variant of block ");
+
+            foreach (var val in Textures)
+            {
+                var f = val.Value.AnyWildCardNoFiles;
+                if (f != null)
+                {
+                    api.Logger.Warning("Block {0} defines a wildcard texture {1} (or one of its alternates), key {2}, but no matching texture found", Code, f, val.Key);
+                }
+            }
         }
 
 

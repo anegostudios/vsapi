@@ -1002,6 +1002,23 @@ namespace Vintagestory.API.Datastructures
             }
         }
 
+        public ITreeAttribute SortedCopy(bool recursive = false)
+        {
+            var sorted = attributes.OrderBy(x => x.Key).ToDictionary(pair => pair.Key,pair => pair.Value);
+            if (recursive)
+            {
+                foreach (var (key, attribute) in sorted)
+                {
+                    if (attribute is ITreeAttribute tree)
+                    {
+                        sorted[key] = tree.SortedCopy(true);
+                    }
+                }
+            }
+            var sortedTree = new TreeAttribute();
+            sortedTree.attributes.AddRange(sorted);
+            return sortedTree;
+        }
 
         public override int GetHashCode()
         {

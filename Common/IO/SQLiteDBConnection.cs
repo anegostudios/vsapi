@@ -125,7 +125,7 @@ namespace Vintagestory.API.Common
         {
             using (var command = sqliteConn.CreateCommand())
             {
-                command.CommandText = "vacuum;";
+                command.CommandText = "VACUUM;";
                 command.ExecuteNonQuery();
             }
         }

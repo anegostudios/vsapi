@@ -151,6 +151,11 @@ namespace Vintagestory.API.Client
         event BlockChangedDelegate BlockChanged;
 
         /// <summary>
+        /// When player tries to modify a block
+        /// </summary>
+        event TestBlockAccessDelegate TestBlockAccess;
+
+        /// <summary>
         /// Fired before a player changes their active slot (such as selected hotbar slot).
         /// Allows for the event to be cancelled depending on the return value.
         /// Note: Not called when the server forcefully changes active slot.

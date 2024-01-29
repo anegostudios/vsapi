@@ -2,7 +2,7 @@
     <PropertyGroup>
         <AssemblyName>VintagestoryAPI</AssemblyName>
         <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>$(FrameworkVersion)</TargetFramework>
         <OutputPath>..\bin\$(Configuration)</OutputPath>
         <Configurations>Debug;Release;PerfTest</Configurations>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -22,8 +22,9 @@
 
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-        <PackageReference Include="OpenTK.Windowing.GraphicsLibraryFramework" Version="4.8.2-vs.1" />
-        <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.8.2-vs.1" />
+        <PackageReference Include="OpenTK.Windowing.GraphicsLibraryFramework" Version="4.8.2" />
+        <PackageReference Include="OpenTK.redist.glfw" Version="3.3.9-vs.1" />
+        <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.8.2" />
         <PackageReference Include="protobuf-net" Version="2.4.7" />
         <PackageReference Include="SkiaSharp" Version="2.88.6" />
         <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.14" />

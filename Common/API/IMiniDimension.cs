@@ -12,7 +12,7 @@ namespace Vintagestory.API.Common
         EntityPos CurrentPos { get; set; }
         bool Dirty { get; set; }
         bool TrackSelection { get; }
-        BlockPos PreviewPos { get; set; }
+        BlockPos selectionTrackingOriginalPos { get; set; }
 
         /// <summary>
         /// Sends dirty chunks to nearby clients
@@ -35,6 +35,7 @@ namespace Vintagestory.API.Common
         float[] GetRenderTransformMatrix(float[] currentModelViewMatrix, Vec3d playerPos);
         void ReceiveClientChunk(long chunkIndex3d, IWorldChunk chunk, IWorldAccessor world);
         void SetSubDimensionId(int dimensionId);
+        void SetSelectionTrackingSubId_Server(int dimensionId);
         void AdjustPosForSubDimension(BlockPos pos);
     }
 }
